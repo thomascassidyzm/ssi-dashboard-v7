@@ -61,62 +61,25 @@ There's also a **temporary MAR** (`temp/mar/`) used for crash-safety during gene
 
 ## Complete Workflow
 
-### Phase 1: Pre-Generation
+### Phase 1: Pre-Generation (Automatic with --plan)
 
-#### Step 1.1: S3 Sync Canonical Resources
-
-```bash
-aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/ --exclude ".DS_Store"
-```
-
-This syncs:
-- `voices.json` - Voice configuration and assignments
-- `welcomes.json` - Course welcome message metadata
-- `eng_encouragements.json` - English encouragement text + UUIDs
-- `welcomes/*.wav` - Welcome audio files
-
-#### Step 1.2: Manifest Deduplication (Pre-Generation Cleanup)
-
-```bash
-node scripts/manifest-deduplication.cjs <course_code>
-```
-
-**What it does:**
-1. Creates a backup of the manifest
-2. Removes encouragements (will be re-added post-generation)
-3. Finds and removes duplicate seeds/intro_items/nodes
-4. Validates expected vs actual samples
-5. Adds missing sample placeholders (empty ID, duration=0)
-6. Checks orphaned samples exist in MAR before removing
-7. **Normalizes and deduplicates** - "Hablo" and "hablo." become one sample "hablo"
-8. Saves cleaned manifest
-
-**Why deduplication matters:**
-- Reduces TTS API calls and costs
-- "Hablo", "hablo", "hablo." all need the same audio
-
-### Phase 2: Planning
-
-#### Step 2.1: Show Plan
+Running `--plan` automatically executes all pre-generation steps:
 
 ```bash
 node scripts/phase8-audio-generation.cjs <course_code> --plan
 ```
 
-**Output includes:**
-- Total samples to generate
-- Samples already in MAR (will be skipped)
-- Cost breakdown (Azure = free tier, ElevenLabs = paid)
-- Time estimates
-- Voice assignments per role
+This runs the **unified preflight** which includes:
 
-**CRITICAL**: Agent must wait for user approval before proceeding.
+#### Step 1.1: S3 Sync Canonical Resources
 
-### Phase 3: Generation
+Syncs from `s3://popty-bach-lfs/canonical/`:
+- `voices.json` - Voice configuration and assignments
+- `welcomes.json` - Course welcome message metadata
+- `eng_encouragements.json` - English encouragement text + UUIDs
+- `welcomes/*.wav` - Welcome audio files
 
-#### Step 3.1: Pre-flight Checks (Automatic)
-
-Pre-flight checks run automatically at the start of `--execute` and include:
+#### Step 1.2: Preflight Checks (with auto-fix)
 
 **Core Service Checks:**
 - Node dependencies installed
@@ -135,6 +98,67 @@ Pre-flight checks run automatically at the start of `--execute` and include:
 - Encouragements empty (auto-fixed)
 - Slashes in presentations (auto-fixed)
 - Presentation/target text matching
+
+Issues are either:
+- **Auto-fixed** by the script
+- **Agent actions** provided for manual fixes
+- **Blocking issues** that prevent generation
+
+#### Step 1.3: Manifest Deduplication
+
+**What it does:**
+1. Creates a backup of the manifest
+2. Removes encouragements (will be re-added post-generation)
+3. Finds and removes duplicate seeds/intro_items/nodes
+4. Validates expected vs actual samples
+5. Adds missing sample placeholders (empty ID, duration=0)
+6. Checks orphaned samples exist in MAR before removing
+7. **Normalizes and deduplicates** - "Hablo" and "hablo." become one sample "hablo"
+8. Saves cleaned manifest
+
+**Why deduplication matters:**
+- Reduces TTS API calls and costs
+- "Hablo", "hablo", "hablo." all need the same audio
+
+#### Standalone Preflight (Optional)
+
+You can also run preflight separately before planning:
+
+```bash
+node scripts/audio-gen-preflight.cjs <course_code> [options]
+
+Options:
+  --skip-sync         Skip S3 sync step
+  --skip-dedup        Skip deduplication step
+  --no-auto-fix       Don't auto-fix issues (report only)
+  --verbose           Show detailed output
+```
+
+### Phase 2: Planning
+
+After preflight passes, `--plan` shows the generation plan:
+
+**Output includes:**
+- Total samples to generate
+- Samples already in MAR (will be skipped)
+- Cost breakdown (Azure = free tier, ElevenLabs = paid)
+- Time estimates
+- Voice assignments per role
+
+**CRITICAL**: Agent must wait for user approval before proceeding.
+
+**Plan Options:**
+```bash
+--skip-sync                 # Skip S3 sync during preflight
+--skip-dedup                # Skip deduplication during preflight
+--ignore-preflight-errors   # Show plan even if preflight fails (not recommended)
+```
+
+### Phase 3: Generation
+
+#### Step 3.1: Pre-flight Checks (Also runs in --execute)
+
+Pre-flight checks also run at the start of `--execute` to catch any issues
 
 Issues are either:
 - **Auto-fixed** by the script
@@ -303,12 +327,10 @@ Validates:
 ### Commands
 
 ```bash
-# Pre-generation
-aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
-node scripts/manifest-deduplication.cjs <code>
-
-# Planning
-node scripts/phase8-audio-generation.cjs <code> --plan
+# Pre-generation (unified preflight - runs automatically with --plan)
+node scripts/audio-gen-preflight.cjs <code>           # Standalone preflight
+# OR
+node scripts/phase8-audio-generation.cjs <code> --plan # Runs preflight + shows plan
 
 # Generation (after user approval)
 node scripts/phase8-audio-generation.cjs <code> --execute
@@ -329,12 +351,15 @@ node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 
 | Flag | Purpose |
 |------|---------|
-| `--plan` | Show generation plan without executing |
+| `--plan` | Run preflight + show generation plan |
 | `--execute` | Run audio generation |
 | `--continue-processing` | Continue Phase A after QC |
 | `--regenerate=UUIDs` | Regenerate specific samples |
 | `--phase=targets` | Phase A only |
 | `--phase=presentations` | Phase B only |
+| `--skip-sync` | Skip S3 sync during preflight |
+| `--skip-dedup` | Skip deduplication during preflight |
+| `--ignore-preflight-errors` | Show plan even if preflight fails |
 | `--skip-qc` | Skip QC checkpoint |
 | `--skip-upload` | Don't upload to S3 (testing) |
 | `--prod` | Upload to production bucket |

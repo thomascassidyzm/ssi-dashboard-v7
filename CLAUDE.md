@@ -4,7 +4,31 @@
 
 ## ⚠️ CRITICAL RULES
 
-### **NEVER Delete Generated Assets Without Permission**
+### **Agent Autonomy Principle**
+
+Solve problems autonomously and proceed to the next workflow step without human input **when**:
+- Documentation clearly defines what to do
+- Decisions won't incur unexpected costs (TTS API calls, cloud storage)
+- Actions are reversible or non-destructive
+
+**Require explicit user approval for:**
+- TTS audio generation (costs money)
+- Deleting generated assets (irreversible)
+- Any action with cost or data-loss implications
+
+### **NEVER Generate TTS Audio Without Approval**
+
+**❌ NEVER:**
+- Run `--execute` without showing `--plan` first and getting user approval
+- Auto-regenerate samples without user consent
+- Launch audio generation in the background
+
+**✅ ALWAYS:**
+- Show the plan with cost estimates first
+- Wait for explicit "approved" / "proceed" / "yes" from user
+- Let preflight auto-fix issues, but pause at the plan for approval
+
+### **NEVER Delete Generated Assets Without Approval**
 
 **❌ NEVER run cleanup commands on:**
 - `temp/audio/` - Generated audio files (costly TTS API calls)
@@ -12,11 +36,11 @@
 - Any directory with generated MP3s, MP4s, or media files
 - MAR databases with sample data
 
-**✅ ALWAYS:**
-- Ask user first: "Should I clean up temp/audio/? This will delete X files."
-- Check file counts before any `rm -rf` command
-- When debugging, work WITH existing files, don't delete them
-- Assume generated assets are expensive and time-consuming to recreate
+**✅ ALWAYS present a deletion plan including:**
+- What will be deleted (file count, size, location)
+- Backup situation (what's backed up, what isn't)
+- Alternative options (archive vs delete, selective cleanup)
+- Consequences (what would need to be regenerated, at what cost)
 
 **Why:** Generated audio/video represents significant API costs (Azure TTS, ElevenLabs) and generation time. Deleting 1000+ files without permission wastes hours of work and money.
 
@@ -294,50 +318,17 @@ node tools/orchestrators/automation_server.cjs
 
 ### **4. Audio Generation (TTS)**
 
-⚠️ **IMPORTANT**: Audio generation requires special workflow attention. See `docs/workflows/AUDIO_GENERATION_WORKFLOW.md` for complete details.
+📖 **Read the workflow doc**: `docs/workflows/AUDIO_GENERATION_WORKFLOW.md`
 
-**Critical Rules:**
-1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
-2. **Run manifest deduplication**: Clean and deduplicate samples before generation
-3. **Show plan and WAIT for user approval** before executing
-4. **DO NOT auto-launch `--execute`** in background
-5. **Review QC checkpoint** before continuing processing
+This is the single source of truth for the complete audio generation workflow, including preflight checks, QC gates, and post-generation steps.
 
-**Basic Workflow:**
-
+**Quick start:**
 ```bash
-# 1. Sync canonical resources (voices, welcomes, encouragements)
-aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
-
-# 2. Run manifest deduplication (pre-generation cleanup)
-node scripts/manifest-deduplication.cjs <course_code>
-
-# 3. Show plan (DO NOT proceed without user approval!)
-node scripts/phase8-audio-generation.cjs <course_code> --plan
-
-# 4. After user approves, execute (preflight checks run automatically with auto-fix)
-node scripts/phase8-audio-generation.cjs <course_code> --execute
-
-# 5. At QC checkpoint, review flagged samples:
-#    - Read: vfs/courses/<course_code>/qc_report_raw.json
-#    - Listen: vfs/courses/<course_code>/qc_review/<role>/*.mp3
-
-# 6a. If regeneration needed:
-node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
-
-# 6b. If approved, continue processing:
-node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
-
-# 7. Post-generation: restore variants and verify
-node scripts/manifest-repopulation.cjs <course_code>
-node scripts/extract-s3-durations-parallel.cjs <course_code>
+node scripts/phase8-audio-generation.cjs <course_code> --plan   # Show plan (requires approval)
+node scripts/phase8-audio-generation.cjs <course_code> --execute # After approval
 ```
 
-**Common Issues:**
-- **Multiple background processes**: Always check for running Audio generation processes before starting
-- **Missing QC reports**: Verify files exist before presenting to user
-- **Auto-execution**: Audio generation should NEVER run `--execute` without explicit user confirmation
-- **Preflight failures**: Check the agent action instructions if preflight checks fail
+⚠️ **Remember**: Never run `--execute` without user approval. See Critical Rules above.
 
 ---
 

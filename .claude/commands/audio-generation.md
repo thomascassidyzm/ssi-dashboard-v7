@@ -296,6 +296,82 @@ Save manifest with:
 
 ---
 
+## Phase D: Post-Generation Validation
+
+After all audio generation is complete, run these validation steps before deploying to stage.
+
+### 7.1 Structure Validation
+
+Validate manifest structure against reference:
+
+```bash
+node tools/validators/manifest-structure-validator.cjs <course_code>
+```
+
+**Checks:**
+- All required keys at all levels (top, slice, seed, intro_item, sample)
+- UUID matching (seed.id = seed.node.id, item.id = item.node.id)
+- UUID format (all uppercase)
+- No empty seeds (seeds without introduction_items)
+- Tokens/lemmas populated
+- Encouragements in slices (not top-level)
+
+**Auto-fix mode:**
+```bash
+node tools/validators/manifest-structure-validator.cjs <course_code> --fix
+```
+
+### 7.2 S3 Duration Extraction
+
+Extract actual durations from S3 audio files and update manifest:
+
+```bash
+node scripts/extract-s3-durations-parallel.cjs <course_code>
+```
+
+**What it does:**
+1. Collects all sample UUIDs from manifest (including encouragements)
+2. Downloads audio from S3 (`ssi-audio-stage/mastered/`)
+3. Extracts duration using `sox`
+4. Updates manifest with actual durations
+5. Reports missing files (samples with no audio in S3)
+
+**Note:** Run this AFTER audio generation is complete and uploaded to S3.
+
+### 7.3 Final Duration Check
+
+After S3 extraction, verify all samples have durations:
+
+```bash
+node tools/validators/manifest-structure-validator.cjs <course_code> --check-durations
+```
+
+**Expected results:**
+- 0 samples with missing duration
+- 0 samples with duration = 0
+
+**If samples have duration = 0:**
+- These are samples without audio in S3
+- Check if they're encouragements (expected if encouragement audio not generated yet)
+- Check if there were upload failures during generation
+
+### 7.4 Complete Validation Workflow
+
+```bash
+# 1. Validate structure
+node tools/validators/manifest-structure-validator.cjs <course_code>
+
+# 2. Extract S3 durations (run after audio is in S3)
+node scripts/extract-s3-durations-parallel.cjs <course_code>
+
+# 3. Verify durations populated
+node tools/validators/manifest-structure-validator.cjs <course_code> --check-durations
+
+# 4. If all passes, course is ready for stage deployment
+```
+
+---
+
 ## Error Handling
 
 ### API Errors
@@ -378,6 +454,10 @@ aws s3 cp public/vfs/canonical/voices.json s3://popty-bach-lfs/canonical/voices.
 | `public/vfs/canonical/voices.json` | Voice registry |
 | `samples_database/voices/` | MAR voice sample storage |
 | `samples_database/encouragement_samples/` | Encouragement audio samples |
+| **Validation** | |
+| `tools/validators/manifest-structure-validator.cjs` | Structure validation & auto-fix |
+| `scripts/extract-s3-durations-parallel.cjs` | S3 duration extraction |
+| `scripts/validate-and-fix-samples.cjs` | Sample/orphan validation |
 
 ---
 
@@ -392,9 +472,14 @@ node scripts/phase8-audio-generation.cjs <course> --execute --continue-processin
 # Regenerate specific samples
 node scripts/phase8-audio-generation.cjs <course> --execute --regenerate UUID1,UUID2
 
+# Post-generation validation (Phase D)
+node tools/validators/manifest-structure-validator.cjs <course>              # Structure check
+node scripts/extract-s3-durations-parallel.cjs <course>                       # Extract S3 durations
+node tools/validators/manifest-structure-validator.cjs <course> --check-durations  # Verify durations
+
+# Sample/structure validation
+node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course>/course_manifest.json
+
 # Rebuild MAR from manifest (recovery)
 node scripts/rebuild-mar-from-manifest.cjs <course>
-
-# Validate manifest
-node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course>/course_manifest.json
 ```

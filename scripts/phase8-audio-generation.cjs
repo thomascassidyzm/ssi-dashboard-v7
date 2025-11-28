@@ -25,6 +25,7 @@ const encouragementService = require('../services/encouragement-service.cjs');
 const welcomeService = require('../services/welcome-service.cjs');
 const preflightCheck = require('../services/preflight-check-service.cjs');
 const presentationService = require('../services/presentation-service.cjs');
+const { runAudioGenPreflight } = require('./audio-gen-preflight.cjs');
 const { createQCReviewDirectory } = require('./create-qc-review.cjs');
 const structureValidator = require('../tools/validators/manifest-structure-validator.cjs');
 
@@ -3406,6 +3407,9 @@ Planning Options:
   --elevenlabs-tier=<tier>    ElevenLabs tier for cost estimates (creator, pro, etc.)
   --elevenlabs-usage=<chars>  Current monthly usage in characters
   --save                      Save plan to course directory
+  --skip-sync                 Skip S3 sync during preflight
+  --skip-dedup                Skip deduplication during preflight
+  --ignore-preflight-errors   Show plan even if preflight fails (not recommended)
 
 Execution Options:
   --phase=<phase>        Which phase to run (targets, presentations, auto)
@@ -3473,7 +3477,41 @@ Features:
   const isExecuteMode = args.includes('--execute');
 
   if (isPlanMode) {
-    // Planning mode - analyze and show estimates
+    // Planning mode - run preflight first, then analyze and show estimates
+
+    const ignorePreflightErrors = args.includes('--ignore-preflight-errors');
+    const skipSync = args.includes('--skip-sync');
+    const skipDedup = args.includes('--skip-dedup');
+
+    // Run unified preflight (S3 sync + preflight checks + deduplication)
+    console.log('\n📋 Running preflight checks before showing plan...\n');
+    const preflightResult = await runAudioGenPreflight(courseCode, {
+      skipSync,
+      skipDedup,
+      autoFix: true,
+      verbose: true
+    });
+
+    if (!preflightResult.success && !ignorePreflightErrors) {
+      console.error('\n❌ Preflight failed. Fix the issues above before running --plan.\n');
+
+      if (preflightResult.agentActions.length > 0) {
+        console.log('🤖 Agent actions required:');
+        preflightResult.agentActions.forEach(a => {
+          console.log(`   ${a.service}: ${a.action}`);
+        });
+        console.log();
+      }
+
+      console.log('To bypass preflight (not recommended):');
+      console.log(`  node scripts/phase8-audio-generation.cjs ${courseCode} --plan --ignore-preflight-errors\n`);
+
+      process.exit(1);
+    }
+
+    if (!preflightResult.success && ignorePreflightErrors) {
+      console.warn('\n⚠️  Proceeding despite preflight errors (--ignore-preflight-errors)\n');
+    }
 
     // Check actual ElevenLabs tier from API (unless overridden by command line)
     let elevenLabsTier = getArgValue('--elevenlabs-tier');

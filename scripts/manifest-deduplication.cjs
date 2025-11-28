@@ -552,7 +552,167 @@ function deduplicateSamples(manifest) {
 }
 
 // ============================================================================
-// MAIN
+// MAIN EXPORTED FUNCTION
+// ============================================================================
+
+/**
+ * Run deduplication on a course manifest
+ * Can be called programmatically or via CLI
+ *
+ * @param {string} courseCode - Course code (e.g., 'spa_for_eng')
+ * @param {Object} options - Options
+ * @param {boolean} options.verbose - Show detailed output (default: true)
+ * @param {boolean} options.save - Save changes to file (default: true)
+ * @returns {Promise<Object>} Result object
+ */
+async function runDeduplication(courseCode, options = {}) {
+  const { verbose = true, save = true } = options;
+
+  const manifestPath = path.join(VFS_COURSES_PATH, courseCode, 'course_manifest.json');
+
+  const log = verbose ? console.log.bind(console) : () => {};
+
+  log('='.repeat(60));
+  log('Manifest Deduplication (Pre-Generation Cleanup)');
+  log('='.repeat(60));
+  log(`\nCourse: ${courseCode}`);
+  log(`Manifest: ${manifestPath}\n`);
+
+  if (!await fs.pathExists(manifestPath)) {
+    return {
+      success: false,
+      error: `Manifest not found at ${manifestPath}`,
+      sampleCount: 0
+    };
+  }
+
+  const manifest = await fs.readJson(manifestPath);
+  let modified = false;
+  const changes = [];
+
+  // Step 1: Remove encouragements
+  log('Step 1: Removing encouragements...\n');
+  const encRemoved = removeEncouragements(manifest);
+  if (encRemoved.pooled > 0 || encRemoved.ordered > 0) {
+    log(`  Removed: ${encRemoved.pooled} pooled, ${encRemoved.ordered} ordered`);
+    changes.push(`Removed ${encRemoved.pooled + encRemoved.ordered} encouragements`);
+    modified = true;
+  } else {
+    log('  No encouragements found');
+  }
+
+  // Step 2: Find and remove duplicates
+  log('\nStep 2: Finding duplicates...\n');
+
+  const duplicateSeeds = findDuplicateSeeds(manifest);
+  const duplicateIntros = findDuplicateIntroItems(manifest);
+  const duplicateNodes = findDuplicateNodes(manifest);
+
+  if (duplicateSeeds.length > 0) {
+    const removed = removeDuplicateSeeds(manifest, duplicateSeeds);
+    log(`  Removed ${removed} duplicate seeds`);
+    changes.push(`Removed ${removed} duplicate seeds`);
+    modified = true;
+  }
+  if (duplicateIntros.length > 0) {
+    const removed = removeDuplicateIntroItems(manifest, duplicateIntros);
+    log(`  Removed ${removed} duplicate intro items`);
+    changes.push(`Removed ${removed} duplicate intro items`);
+    modified = true;
+  }
+  if (duplicateNodes.length > 0) {
+    const removed = removeDuplicateNodes(manifest, duplicateNodes);
+    log(`  Removed ${removed} duplicate nodes`);
+    changes.push(`Removed ${removed} duplicate nodes`);
+    modified = true;
+  }
+  if (duplicateSeeds.length === 0 && duplicateIntros.length === 0 && duplicateNodes.length === 0) {
+    log('  No duplicates found');
+  }
+
+  // Step 3: Validate samples
+  log('\nStep 3: Validating samples...\n');
+  const validation = validateCourse(manifest);
+
+  // Step 4: Add missing samples
+  if (validation.missing.size > 0) {
+    log(`\nStep 4: Adding ${validation.missing.size} missing samples...\n`);
+    const added = addMissingSamples(manifest, validation.missing);
+    for (const [role, count] of Object.entries(added)) {
+      if (count > 0) log(`  ${role}: ${count}`);
+    }
+    changes.push(`Added ${validation.missing.size} missing sample placeholders`);
+    modified = true;
+  }
+
+  // Step 5: Handle orphaned samples
+  if (validation.orphaned.size > 0) {
+    log(`\nStep 5: Checking ${validation.orphaned.size} orphaned samples...\n`);
+    const notInMAR = await checkOrphanedInMAR(validation.orphaned);
+
+    if (notInMAR.length > 0) {
+      log(`\n  WARNING: ${notInMAR.length} orphaned samples NOT in MAR:`);
+      for (const key of notInMAR.slice(0, 5)) {
+        const [text, role] = key.split('|');
+        log(`    ${role}: "${text.substring(0, 50)}..."`);
+      }
+      if (notInMAR.length > 5) log(`    ... and ${notInMAR.length - 5} more`);
+      log('\n  Skipping orphan removal - run audio generation first');
+    } else {
+      log('  All orphaned samples found in MAR - safe to remove');
+      const removed = removeOrphanedSamples(manifest, validation.orphaned);
+      for (const [role, count] of Object.entries(removed)) {
+        if (count > 0) log(`  Removed ${role}: ${count}`);
+      }
+      changes.push(`Removed ${validation.orphaned.size} orphaned samples`);
+      modified = true;
+    }
+  }
+
+  // Step 6: Deduplicate samples
+  log('\nStep 6: Deduplicating samples...\n');
+  const { deduplicated } = deduplicateSamples(manifest);
+  if (deduplicated.groups > 0) {
+    log(`  Merged ${deduplicated.groups} text variants (removed ${deduplicated.removed} duplicates)`);
+    changes.push(`Deduplicated ${deduplicated.groups} text variants`);
+    modified = true;
+  } else {
+    log('  No duplicates found');
+  }
+
+  // Save
+  if (modified && save) {
+    // Create backup
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    const backupPath = manifestPath.replace('.json', `_backup_${timestamp}.json`);
+    await fs.copy(manifestPath, backupPath);
+    log(`\nBackup: ${backupPath}`);
+
+    // Save
+    await fs.writeJson(manifestPath, manifest, { spaces: 2 });
+    const stats = await fs.stat(manifestPath);
+    log(`Saved: ${manifestPath} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  } else if (!modified) {
+    log('\nNo changes needed - manifest is already clean');
+  }
+
+  // Summary
+  const finalSampleCount = Object.keys(manifest.slices[0].samples || {}).length;
+  log(`\n${'='.repeat(60)}`);
+  log(`Done! ${finalSampleCount} unique samples ready for audio generation`);
+  log('='.repeat(60));
+
+  return {
+    success: true,
+    modified,
+    sampleCount: finalSampleCount,
+    changes,
+    stats: validation.stats
+  };
+}
+
+// ============================================================================
+// CLI
 // ============================================================================
 
 async function main() {
@@ -565,130 +725,27 @@ async function main() {
     process.exit(1);
   }
 
-  const manifestPath = path.join(VFS_COURSES_PATH, courseCode, 'course_manifest.json');
+  const result = await runDeduplication(courseCode, { verbose: true, save: true });
 
-  console.log('='.repeat(60));
-  console.log('Manifest Deduplication (Pre-Generation Cleanup)');
-  console.log('='.repeat(60));
-  console.log(`\nCourse: ${courseCode}`);
-  console.log(`Manifest: ${manifestPath}\n`);
-
-  if (!await fs.pathExists(manifestPath)) {
-    console.error(`Error: Manifest not found at ${manifestPath}`);
+  if (!result.success) {
+    console.error(`Error: ${result.error}`);
     process.exit(1);
   }
-
-  const manifest = await fs.readJson(manifestPath);
-  let modified = false;
-
-  // Step 1: Remove encouragements
-  console.log('Step 1: Removing encouragements...\n');
-  const encRemoved = removeEncouragements(manifest);
-  if (encRemoved.pooled > 0 || encRemoved.ordered > 0) {
-    console.log(`  Removed: ${encRemoved.pooled} pooled, ${encRemoved.ordered} ordered`);
-    modified = true;
-  } else {
-    console.log('  No encouragements found');
-  }
-
-  // Step 2: Find and remove duplicates
-  console.log('\nStep 2: Finding duplicates...\n');
-
-  const duplicateSeeds = findDuplicateSeeds(manifest);
-  const duplicateIntros = findDuplicateIntroItems(manifest);
-  const duplicateNodes = findDuplicateNodes(manifest);
-
-  if (duplicateSeeds.length > 0) {
-    const removed = removeDuplicateSeeds(manifest, duplicateSeeds);
-    console.log(`  Removed ${removed} duplicate seeds`);
-    modified = true;
-  }
-  if (duplicateIntros.length > 0) {
-    const removed = removeDuplicateIntroItems(manifest, duplicateIntros);
-    console.log(`  Removed ${removed} duplicate intro items`);
-    modified = true;
-  }
-  if (duplicateNodes.length > 0) {
-    const removed = removeDuplicateNodes(manifest, duplicateNodes);
-    console.log(`  Removed ${removed} duplicate nodes`);
-    modified = true;
-  }
-  if (duplicateSeeds.length === 0 && duplicateIntros.length === 0 && duplicateNodes.length === 0) {
-    console.log('  No duplicates found');
-  }
-
-  // Step 3: Validate samples
-  console.log('\nStep 3: Validating samples...\n');
-  const validation = validateCourse(manifest);
-
-  // Step 4: Add missing samples
-  if (validation.missing.size > 0) {
-    console.log(`\nStep 4: Adding ${validation.missing.size} missing samples...\n`);
-    const added = addMissingSamples(manifest, validation.missing);
-    for (const [role, count] of Object.entries(added)) {
-      if (count > 0) console.log(`  ${role}: ${count}`);
-    }
-    modified = true;
-  }
-
-  // Step 5: Handle orphaned samples
-  if (validation.orphaned.size > 0) {
-    console.log(`\nStep 5: Checking ${validation.orphaned.size} orphaned samples...\n`);
-    const notInMAR = await checkOrphanedInMAR(validation.orphaned);
-
-    if (notInMAR.length > 0) {
-      console.log(`\n  WARNING: ${notInMAR.length} orphaned samples NOT in MAR:`);
-      for (const key of notInMAR.slice(0, 5)) {
-        const [text, role] = key.split('|');
-        console.log(`    ${role}: "${text.substring(0, 50)}..."`);
-      }
-      if (notInMAR.length > 5) console.log(`    ... and ${notInMAR.length - 5} more`);
-      console.log('\n  Skipping orphan removal - run audio generation first');
-    } else {
-      console.log('  All orphaned samples found in MAR - safe to remove');
-      const removed = removeOrphanedSamples(manifest, validation.orphaned);
-      for (const [role, count] of Object.entries(removed)) {
-        if (count > 0) console.log(`  Removed ${role}: ${count}`);
-      }
-      modified = true;
-    }
-  }
-
-  // Step 6: Deduplicate samples
-  console.log('\nStep 6: Deduplicating samples...\n');
-  const { deduplicated } = deduplicateSamples(manifest);
-  if (deduplicated.groups > 0) {
-    console.log(`  Merged ${deduplicated.groups} text variants (removed ${deduplicated.removed} duplicates)`);
-    modified = true;
-  } else {
-    console.log('  No duplicates found');
-  }
-
-  // Save
-  if (modified) {
-    // Create backup
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    const backupPath = manifestPath.replace('.json', `_backup_${timestamp}.json`);
-    await fs.copy(manifestPath, backupPath);
-    console.log(`\nBackup: ${backupPath}`);
-
-    // Save
-    await fs.writeJson(manifestPath, manifest, { spaces: 2 });
-    const stats = await fs.stat(manifestPath);
-    console.log(`Saved: ${manifestPath} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
-  } else {
-    console.log('\nNo changes needed - manifest is already clean');
-  }
-
-  // Summary
-  const finalSampleCount = Object.keys(manifest.slices[0].samples || {}).length;
-  console.log(`\n${'='.repeat(60)}`);
-  console.log(`Done! ${finalSampleCount} unique samples ready for audio generation`);
-  console.log('='.repeat(60));
 }
 
-main().catch(err => {
-  console.error('Error:', err.message);
-  console.error(err.stack);
-  process.exit(1);
-});
+// Run CLI if called directly
+if (require.main === module) {
+  main().catch(err => {
+    console.error('Error:', err.message);
+    console.error(err.stack);
+    process.exit(1);
+  });
+}
+
+// Export for use as module
+module.exports = {
+  runDeduplication,
+  normalizeText,
+  validateCourse,
+  deduplicateSamples
+};
