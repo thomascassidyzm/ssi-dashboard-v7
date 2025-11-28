@@ -21,6 +21,25 @@ Audio generation creates TTS samples for language courses using Azure Speech and
 | Duration Extraction | `scripts/extract-s3-durations-parallel.cjs` | S3 existence + duration check |
 | Format Validation | `tools/validators/manifest-structure-validator.cjs` | Final structure validation |
 
+### Sample Roles and Types
+
+Audio generation produces four types of samples, organized by **role**:
+
+| Role | Language | Voice | Cadence | Purpose |
+|------|----------|-------|---------|---------|
+| `target1` | Target (e.g., Spanish) | Azure Female | slow | Primary target vocabulary |
+| `target2` | Target (e.g., Spanish) | Azure Male | slow | Alternate target voice |
+| `source` | Source (e.g., English) | ElevenLabs | natural | Translations/prompts |
+| `presentation` | Source (e.g., English) | ElevenLabs | natural | Introductory narration |
+
+**Phase A** generates target1, target2, and source samples (simple TTS).
+
+**Phase B** generates presentation samples (composite audio combining narration + target clips).
+
+**Cadence** controls playback speed:
+- `slow` - Slowed down for learner comprehension (applied via time-stretch)
+- `natural` - Normal speaking pace
+
 ### S3 Buckets
 
 | Bucket | Purpose |
@@ -168,13 +187,36 @@ node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-proc
 
 Runs automatically after Phase A (or manually with `--phase=presentations`).
 
+**What are presentations?**
+
+Presentations are composite audio files that introduce new vocabulary. They combine:
+- **Source narration** (TTS): "The Spanish for 'I want', is:"
+- **Target audio clips** (from Phase A): The actual pronunciation of the word
+- **Optional explanation**: Additional context with embedded target clips
+
+**Example presentation text in manifest:**
+```
+The Spanish for 'I want', is: ... 'quiero' ... 'quiero'
+```
+
+The `...` markers indicate where target audio clips are inserted. The quoted word `'quiero'` is played using the pre-recorded target1/target2 audio from Phase A.
+
+**More complex presentations with explanations:**
+```
+The Spanish for 'I want', is: ... 'quiero' ... 'quiero' - {target1}'Quiero' means I want something.
+```
+
+The `{target1}` tag indicates an embedded clip using target1 voice.
+
+**Generation process:**
+
 1. Downloads target audio files from S3 (needed for presentation assembly)
-2. Identifies required segments
-3. Generates missing segments
-4. Assembles presentations from segments
+2. Extracts unique text segments from all presentations
+3. Generates narration segments via TTS (ElevenLabs presentation voice)
+4. Assembles final audio by concatenating: narration + silence + target clip + silence + target clip
 5. Normalizes and uploads to S3
 
-**No QC checkpoint for presentations.**
+**No QC checkpoint for presentations** - they use already-QC'd target audio.
 
 #### Step 3.6: Encouragements (Automatic)
 
