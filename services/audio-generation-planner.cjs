@@ -726,6 +726,19 @@ function buildVoiceSelectionGuidance(courseCode, languagePair, precedentAnalysis
   lines.push(`- presentation: Voice for known language presentations\n`);
 
   lines.push(`${'─'.repeat(80)}`);
+  lines.push(`GENERATING VOICE DEMOS\n`);
+  lines.push(`If no voice exists for a language, generate demo clips to help select:`);
+  lines.push(`1. Use voice-discovery-service to list available voices for the language`);
+  lines.push(`2. Generate a sample phrase with each candidate voice`);
+  lines.push(`3. Save demos to: temp/voice_demos/{voice_id}.mp3 (temporary, NOT synced to S3)`);
+  lines.push(`4. Present demos to user for selection`);
+  lines.push(`5. Add selected voice to voices.json`);
+  lines.push(`6. Delete demo files after selection is made\n`);
+  lines.push(`Demo phrase suggestions:`);
+  lines.push(`  - Target language: "Hello, how are you today?" (translated to target)`);
+  lines.push(`  - Source language: "Now try saying it yourself"\n`);
+
+  lines.push(`${'─'.repeat(80)}`);
   lines.push(`HOW TO UPDATE voices.json\n`);
   lines.push(`Add to "language_pair_assignments" section (preferred for reusability):`);
   lines.push(`\n"${languagePair}": {`);
