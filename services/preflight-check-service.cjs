@@ -412,6 +412,104 @@ async function checkAndFixS3Access(options = {}) {
 }
 
 /**
+ * Check MAR (Master Audio Registry) sync status
+ * Verifies samples_database is synced to S3 for team collaboration
+ */
+async function checkMARSyncStatus() {
+  const localMARPath = path.join(__dirname, '..', 'samples_database', 'voices');
+  const s3Bucket = 'popty-bach-lfs';
+  const s3Prefix = 'samples_database/voices/';
+
+  try {
+    // Check if local MAR exists
+    if (!await fs.pathExists(localMARPath)) {
+      return {
+        success: false,
+        service: 'MAR Sync',
+        error: 'Local samples_database/voices/ not found',
+        autoFixable: false,
+        agentAction: 'Pull MAR from S3: aws s3 sync s3://popty-bach-lfs/samples_database/ samples_database/ --profile default'
+      };
+    }
+
+    // Count local samples
+    const localVoiceDirs = await fs.readdir(localMARPath);
+    const validVoiceDirs = localVoiceDirs.filter(d => !d.startsWith('.'));
+
+    return {
+      success: true,
+      service: 'MAR Sync',
+      message: `${validVoiceDirs.length} voice directories in local MAR`,
+      details: {
+        localPath: localMARPath,
+        s3Location: `s3://${s3Bucket}/${s3Prefix}`,
+        voiceCount: validVoiceDirs.length,
+        syncCommand: 'aws s3 sync samples_database/ s3://popty-bach-lfs/samples_database/ --profile default'
+      }
+    };
+  } catch (error) {
+    return {
+      success: false,
+      service: 'MAR Sync',
+      error: `MAR check failed: ${error.message}`,
+      autoFixable: false,
+      agentAction: 'Check samples_database/ directory'
+    };
+  }
+}
+
+/**
+ * Check segment cache sync status
+ * Segment cache stores pre-generated audio segments for reuse
+ */
+async function checkSegmentCacheSyncStatus() {
+  const localCachePath = path.join(__dirname, '..', 'temp', 'audio', 'segment_cache');
+  const s3Bucket = 'popty-bach-lfs';
+  const s3Prefix = 'segment_cache/';
+
+  try {
+    // Check if local cache exists
+    if (!await fs.pathExists(localCachePath)) {
+      return {
+        success: true,
+        service: 'Segment Cache',
+        message: 'No local segment cache (will be created during generation)',
+        details: {
+          localPath: localCachePath,
+          s3Location: `s3://${s3Bucket}/${s3Prefix}`,
+          pullCommand: 'aws s3 sync s3://popty-bach-lfs/segment_cache/ temp/audio/segment_cache/ --profile default'
+        }
+      };
+    }
+
+    // Count local segments
+    const files = await fs.readdir(localCachePath);
+    const segmentCount = files.filter(f => f.endsWith('.mp3')).length;
+
+    return {
+      success: true,
+      service: 'Segment Cache',
+      message: `${segmentCount.toLocaleString()} segments in local cache`,
+      details: {
+        localPath: localCachePath,
+        s3Location: `s3://${s3Bucket}/${s3Prefix}`,
+        segmentCount,
+        syncToS3: 'aws s3 sync temp/audio/segment_cache/ s3://popty-bach-lfs/segment_cache/ --profile default',
+        syncFromS3: 'aws s3 sync s3://popty-bach-lfs/segment_cache/ temp/audio/segment_cache/ --profile default'
+      }
+    };
+  } catch (error) {
+    return {
+      success: false,
+      service: 'Segment Cache',
+      error: `Segment cache check failed: ${error.message}`,
+      autoFixable: false,
+      agentAction: 'Check temp/audio/segment_cache/ directory'
+    };
+  }
+}
+
+/**
  * Check voice assignments exist for course
  */
 async function checkAndFixVoiceAssignments(courseCode) {
@@ -925,6 +1023,13 @@ async function runPreflightChecks(options = {}) {
   if (verbose) console.log('Checking disk space...');
   results.push(await checkDiskSpace());
 
+  // Shared resource sync checks (important for team collaboration)
+  if (verbose) console.log('Checking MAR sync status...');
+  results.push(await checkMARSyncStatus());
+
+  if (verbose) console.log('Checking segment cache...');
+  results.push(await checkSegmentCacheSyncStatus());
+
   // Course-specific manifest checks (if courseCode provided)
   if (courseCode) {
     if (verbose) console.log(`\nCourse-specific checks for ${courseCode}...`);
@@ -1042,6 +1147,9 @@ module.exports = {
   checkDependencies,
   checkSoxAvailability,
   checkDiskSpace,
+  // Shared resource sync checks
+  checkMARSyncStatus,
+  checkSegmentCacheSyncStatus,
   // New manifest-specific checks with auto-fix
   checkAndFixS3Access,
   checkAndFixVoiceAssignments,
