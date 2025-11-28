@@ -242,19 +242,34 @@ The `{target1}` tag indicates an embedded clip using target1 voice.
 
 **No QC checkpoint for presentations** - they use already-QC'd target audio.
 
-#### Step 3.6: Encouragements (Automatic)
+#### Step 3.6: Encouragements
 
-After Phase B, the script automatically:
+Runs with `--phase=auto`, `--phase=encouragements`, or `--phase=finalize`.
+
 1. Checks `popty-bach-lfs` for existing encouragement audio
 2. If missing for this language, generates via ElevenLabs
 3. Adds encouragements to manifest (`slices[0].orderedEncouragements`, `slices[0].pooledEncouragements`)
 
-#### Step 3.7: Welcome (Automatic)
+```bash
+# Run encouragements only (if presentations completed but encouragements failed)
+node scripts/phase8-audio-generation.cjs <code> --execute --phase=encouragements
+```
 
-After encouragements, the script automatically:
+#### Step 3.7: Welcome
+
+Runs with `--phase=auto`, `--phase=welcome`, or `--phase=finalize`.
+
 1. Checks if welcome exists for this course in `welcomes.json`
 2. If configured but audio missing, generates via presentation voice
 3. Updates manifest introduction (id, duration)
+
+```bash
+# Run welcome only
+node scripts/phase8-audio-generation.cjs <code> --execute --phase=welcome
+
+# Run both encouragements + welcome (pick up after presentations)
+node scripts/phase8-audio-generation.cjs <code> --execute --phase=finalize
+```
 
 If no welcome is configured, helpful instructions are shown:
 ```
@@ -355,8 +370,11 @@ node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 | `--execute` | Run audio generation |
 | `--continue-processing` | Continue Phase A after QC |
 | `--regenerate=UUIDs` | Regenerate specific samples |
-| `--phase=targets` | Phase A only |
-| `--phase=presentations` | Phase B only |
+| `--phase=targets` | Phase A only (target1, target2, source) |
+| `--phase=presentations` | Phase B only (no encouragements/welcome) |
+| `--phase=encouragements` | Encouragements only |
+| `--phase=welcome` | Welcome audio only |
+| `--phase=finalize` | Encouragements + welcome (pick up after presentations) |
 | `--skip-sync` | Skip S3 sync during preflight |
 | `--skip-dedup` | Skip deduplication during preflight |
 | `--ignore-preflight-errors` | Show plan even if preflight fails |

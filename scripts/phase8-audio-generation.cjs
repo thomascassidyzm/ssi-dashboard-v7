@@ -3188,7 +3188,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     // 11. Handle encouragements (after Phase A + B complete, after MAR sync)
     // Check if they exist, generate if needed, add to MAR + manifest
     let encouragementData = null;
-    if (phase === 'auto' || phase === 'presentations') {
+    if (phase === 'auto' || phase === 'encouragements' || phase === 'finalize') {
       encouragementData = await handleEncouragements(
         languages.source,
         voiceAssignments,
@@ -3211,7 +3211,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     // 12. Handle welcome (after encouragements, uses synced welcomes.json)
     // Check if it exists, generate if needed, update manifest
     let welcomeData = null;
-    if (phase === 'auto' || phase === 'presentations') {
+    if (phase === 'auto' || phase === 'welcome' || phase === 'finalize') {
       welcomeData = await handleWelcome(
         courseCode,
         languages.source,
@@ -3412,10 +3412,13 @@ Planning Options:
   --ignore-preflight-errors   Show plan even if preflight fails (not recommended)
 
 Execution Options:
-  --phase=<phase>        Which phase to run (targets, presentations, auto)
+  --phase=<phase>        Which phase to run:
                          - targets: Phase A only (target1, target2, source)
-                         - presentations: Phase B only (requires Phase A complete)
-                         - auto: Both phases with QC gates (default)
+                         - presentations: Phase B only (no encouragements/welcome)
+                         - encouragements: Encouragements only
+                         - welcome: Welcome audio only
+                         - finalize: Encouragements + welcome (pick up after presentations)
+                         - auto: Full workflow with QC gates (default)
   --continue-processing  Continue processing Phase A after QC approval
   --regenerate=<uuids>   Regenerate specific samples (comma-separated UUIDs)
   --skip-qc              Skip QC pause (auto-approve and continue)
@@ -3585,10 +3588,10 @@ Features:
     } else {
       // Normal generation workflow
       const phaseArg = getArgValue('--phase') || 'auto';
-      const validPhases = ['targets', 'source', 'presentations', 'auto'];
+      const validPhases = ['targets', 'source', 'presentations', 'encouragements', 'welcome', 'finalize', 'auto'];
 
       if (!validPhases.includes(phaseArg)) {
-        console.error(`\n⚠️  ERROR: Invalid phase '${phaseArg}'. Must be: targets, source, presentations, or auto\n`);
+        console.error(`\n⚠️  ERROR: Invalid phase '${phaseArg}'. Must be one of: ${validPhases.join(', ')}\n`);
         process.exit(1);
       }
 
