@@ -4114,7 +4114,13 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
 
 /**
  * GET /api/audio/random-cycle/:courseCode
- * Get a random complete learning cycle (source + target1 + target2 for same text)
+ * Get a random complete learning cycle (source + target1 + target2 for a LEGO node)
+ *
+ * A learning cycle is: known audio -> pause -> target1 audio -> target2 audio
+ * We find nodes where we have:
+ *   - source sample keyed by node.known.text
+ *   - target1 sample keyed by node.target.text
+ *   - target2 sample keyed by node.target.text
  */
 app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
@@ -4128,21 +4134,63 @@ app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
 
     const manifest = await fs.readJson(manifestPath);
     const samples = manifest.slices?.[0]?.samples || {};
+    const seeds = manifest.slices?.[0]?.seeds || [];
 
-    // Find texts that have source, target1, and target2
+    // Collect all nodes from introduction_items (LEGOs)
+    // Each node has known.text and target.text
     const completeCycles = [];
-    for (const [text, sampleList] of Object.entries(samples)) {
-      const source = sampleList.find(s => s.role === 'source' && s.id);
-      const target1 = sampleList.find(s => s.role === 'target1' && s.id);
-      const target2 = sampleList.find(s => s.role === 'target2' && s.id);
 
-      if (source && target1 && target2) {
-        completeCycles.push({
-          text,
-          source,
-          target1,
-          target2
-        });
+    for (const seed of seeds) {
+      for (const item of seed.introduction_items || []) {
+        // Check the main node
+        if (item.node) {
+          const knownText = item.node.known?.text;
+          const targetText = item.node.target?.text;
+
+          if (knownText && targetText) {
+            const sourceSamples = samples[knownText] || [];
+            const targetSamples = samples[targetText] || [];
+
+            const source = sourceSamples.find(s => s.role === 'source' && s.id);
+            const target1 = targetSamples.find(s => s.role === 'target1' && s.id);
+            const target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+
+            if (source && target1 && target2) {
+              completeCycles.push({
+                knownText,
+                targetText,
+                source,
+                target1,
+                target2
+              });
+            }
+          }
+        }
+
+        // Also check inner nodes (recombinations)
+        for (const innerNode of item.nodes || []) {
+          const knownText = innerNode.known?.text;
+          const targetText = innerNode.target?.text;
+
+          if (knownText && targetText) {
+            const sourceSamples = samples[knownText] || [];
+            const targetSamples = samples[targetText] || [];
+
+            const source = sourceSamples.find(s => s.role === 'source' && s.id);
+            const target1 = targetSamples.find(s => s.role === 'target1' && s.id);
+            const target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+
+            if (source && target1 && target2) {
+              completeCycles.push({
+                knownText,
+                targetText,
+                source,
+                target1,
+                target2
+              });
+            }
+          }
+        }
       }
     }
 
@@ -4154,32 +4202,14 @@ app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
     const randomIndex = Math.floor(Math.random() * completeCycles.length);
     const cycle = completeCycles[randomIndex];
 
-    // Get the source text (known language) from seed_pairs if available
-    let sourceText = cycle.text; // Default to target text
-    const seedPairsPath = path.join(VFS_ROOT, courseCode, 'seed_pairs.json');
-    if (await fs.pathExists(seedPairsPath)) {
-      try {
-        const seedPairs = await fs.readJson(seedPairsPath);
-        // Try to find matching seed by target text
-        const matchingSeed = seedPairs.seeds?.find(s =>
-          s.target?.toLowerCase().trim() === cycle.text.toLowerCase().trim()
-        );
-        if (matchingSeed?.source) {
-          sourceText = matchingSeed.source;
-        }
-      } catch (e) {
-        // Ignore seed lookup errors
-      }
-    }
-
-    console.log(`[Audio QA] Random cycle for ${courseCode}: ${cycle.source.id}`);
+    console.log(`[Audio QA] Random cycle for ${courseCode}: "${cycle.knownText}" -> "${cycle.targetText}"`);
 
     res.json({
       success: true,
       cycle: {
         id: cycle.source.id,
-        sourceText: sourceText,
-        targetText: cycle.text,
+        sourceText: cycle.knownText,
+        targetText: cycle.targetText,
         sourceId: cycle.source.id,
         target1Id: cycle.target1.id,
         target2Id: cycle.target2.id,
