@@ -1025,6 +1025,12 @@ export default {
     return response.data
   },
 
+  // Get a random complete learning cycle (source + target1 + target2)
+  async getRandomLearningCycle(courseCode) {
+    const response = await api.get(`/api/audio/random-cycle/${courseCode}`)
+    return response.data
+  },
+
   // Get audio stream URL for a sample UUID
   getAudioStreamUrl(uuid) {
     return `${API_BASE_URL}/api/audio/stream/${uuid}`

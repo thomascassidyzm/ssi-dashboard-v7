@@ -633,6 +633,19 @@
               </div>
 
               <div v-else class="space-y-6">
+                <!-- Learning Cycle Mini-Player -->
+                <div class="mb-8">
+                  <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Learning Cycle Player</h4>
+                  <LearningCyclePlayer
+                    :course-code="courseCode"
+                    @flag="handleCycleFlag"
+                  />
+                </div>
+
+                <div class="border-t border-slate-700 pt-6">
+                  <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Individual Sample Testing</h4>
+                </div>
+
                 <!-- Role Selection Cards -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div
@@ -1079,6 +1092,7 @@ import { GITHUB_CONFIG } from '../config/github'
 
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
+import LearningCyclePlayer from '../components/LearningCyclePlayer.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -1969,6 +1983,12 @@ async function flagCurrentSample() {
 
   // TODO: Save flag to backend
   toast.success('Sample flagged for review')
+}
+
+// Handle flag from learning cycle player
+function handleCycleFlag(sampleId) {
+  toast.success(`Cycle sample ${sampleId} flagged for review`)
+  // TODO: Save flag to backend
 }
 
 // Cleanup on component unmount

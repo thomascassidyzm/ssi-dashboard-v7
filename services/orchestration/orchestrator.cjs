@@ -23,6 +23,9 @@ const path = require('path');
 const axios = require('axios');
 const { execSync, spawn } = require('child_process');
 
+// Load .env file for AWS credentials etc.
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
+
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
 const VFS_ROOT = process.env.VFS_ROOT;
@@ -3997,6 +4000,233 @@ app.post('/phase5/abort/:courseCode', async (req, res) => {
       console.error(`[Orchestrator] Phase 3 abort failed: ${error.message}`);
       res.status(500).json({ error: error.message });
     }
+  }
+});
+
+// =============================================================================
+// AUDIO QA ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/audio/random-sample/:courseCode/:role
+ * Get a random sample from the course manifest by role
+ */
+app.get('/api/audio/random-sample/:courseCode/:role', async (req, res) => {
+  const { courseCode, role } = req.params;
+
+  try {
+    const manifestPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({ success: false, error: 'Course manifest not found' });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const samples = manifest.slices?.[0]?.samples || {};
+
+    // Collect all samples for the requested role
+    const roleSamples = [];
+    for (const [text, sampleList] of Object.entries(samples)) {
+      for (const sample of sampleList) {
+        if (sample.role === role && sample.id) {
+          roleSamples.push({
+            id: sample.id,
+            text: text,
+            role: sample.role,
+            cadence: sample.cadence || 'natural',
+            duration: sample.duration || 0
+          });
+        }
+      }
+    }
+
+    if (roleSamples.length === 0) {
+      return res.status(404).json({ success: false, error: `No samples found for role: ${role}` });
+    }
+
+    // Pick a random sample
+    const randomIndex = Math.floor(Math.random() * roleSamples.length);
+    const sample = roleSamples[randomIndex];
+
+    console.log(`[Audio QA] Random sample for ${courseCode}/${role}: ${sample.id}`);
+
+    res.json({
+      success: true,
+      sample,
+      totalForRole: roleSamples.length
+    });
+
+  } catch (err) {
+    console.error('[Audio QA] Error getting random sample:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/audio/stream/:uuid
+ * Stream audio file from S3
+ */
+app.get('/api/audio/stream/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+
+  try {
+    const s3Bucket = process.env.AWS_S3_BUCKET || 'ssi-audio-stage';
+    const s3Key = `mastered/${uuid}.mp3`;
+
+    const AWS = require('aws-sdk');
+    const s3 = new AWS.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      region: process.env.AWS_REGION || 'eu-west-1'
+    });
+
+    const params = { Bucket: s3Bucket, Key: s3Key };
+
+    // Check if file exists
+    try {
+      await s3.headObject(params).promise();
+    } catch (headErr) {
+      if (headErr.code === 'NotFound') {
+        return res.status(404).json({ error: 'Audio file not found in S3' });
+      }
+      throw headErr;
+    }
+
+    // Stream the file
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.setHeader('Accept-Ranges', 'bytes');
+
+    const stream = s3.getObject(params).createReadStream();
+    stream.on('error', (err) => {
+      console.error('[Audio QA] S3 stream error:', err);
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream audio' });
+      }
+    });
+
+    stream.pipe(res);
+
+  } catch (err) {
+    console.error('[Audio QA] Error streaming audio:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/audio/random-cycle/:courseCode
+ * Get a random complete learning cycle (source + target1 + target2 for same text)
+ */
+app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const manifestPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({ success: false, error: 'Course manifest not found' });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const samples = manifest.slices?.[0]?.samples || {};
+
+    // Find texts that have source, target1, and target2
+    const completeCycles = [];
+    for (const [text, sampleList] of Object.entries(samples)) {
+      const source = sampleList.find(s => s.role === 'source' && s.id);
+      const target1 = sampleList.find(s => s.role === 'target1' && s.id);
+      const target2 = sampleList.find(s => s.role === 'target2' && s.id);
+
+      if (source && target1 && target2) {
+        completeCycles.push({
+          text,
+          source,
+          target1,
+          target2
+        });
+      }
+    }
+
+    if (completeCycles.length === 0) {
+      return res.status(404).json({ success: false, error: 'No complete learning cycles found' });
+    }
+
+    // Pick a random cycle
+    const randomIndex = Math.floor(Math.random() * completeCycles.length);
+    const cycle = completeCycles[randomIndex];
+
+    // Get the source text (known language) from seed_pairs if available
+    let sourceText = cycle.text; // Default to target text
+    const seedPairsPath = path.join(VFS_ROOT, courseCode, 'seed_pairs.json');
+    if (await fs.pathExists(seedPairsPath)) {
+      try {
+        const seedPairs = await fs.readJson(seedPairsPath);
+        // Try to find matching seed by target text
+        const matchingSeed = seedPairs.seeds?.find(s =>
+          s.target?.toLowerCase().trim() === cycle.text.toLowerCase().trim()
+        );
+        if (matchingSeed?.source) {
+          sourceText = matchingSeed.source;
+        }
+      } catch (e) {
+        // Ignore seed lookup errors
+      }
+    }
+
+    console.log(`[Audio QA] Random cycle for ${courseCode}: ${cycle.source.id}`);
+
+    res.json({
+      success: true,
+      cycle: {
+        id: cycle.source.id,
+        sourceText: sourceText,
+        targetText: cycle.text,
+        sourceId: cycle.source.id,
+        target1Id: cycle.target1.id,
+        target2Id: cycle.target2.id,
+        sourceCadence: cycle.source.cadence,
+        target1Cadence: cycle.target1.cadence,
+        target2Cadence: cycle.target2.cadence
+      },
+      totalCycles: completeCycles.length
+    });
+
+  } catch (err) {
+    console.error('[Audio QA] Error getting random cycle:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/audio/flag-sample
+ * Flag a sample for review
+ */
+app.post('/api/audio/flag-sample', async (req, res) => {
+  const { courseCode, uuid, reason } = req.body;
+
+  try {
+    const flagsPath = path.join(VFS_ROOT, courseCode, 'audio_flags.json');
+
+    let flags = [];
+    if (await fs.pathExists(flagsPath)) {
+      flags = await fs.readJson(flagsPath);
+    }
+
+    flags.push({
+      uuid,
+      reason: reason || 'Manual QA flag',
+      flaggedAt: new Date().toISOString(),
+      status: 'pending'
+    });
+
+    await fs.writeJson(flagsPath, flags, { spaces: 2 });
+
+    console.log(`[Audio QA] Flagged sample ${uuid} for ${courseCode}`);
+
+    res.json({ success: true, totalFlags: flags.length });
+
+  } catch (err) {
+    console.error('[Audio QA] Error flagging sample:', err);
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
