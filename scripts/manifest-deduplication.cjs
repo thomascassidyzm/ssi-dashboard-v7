@@ -16,6 +16,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const uuidService = require('../services/uuid-service.cjs');
 
 // Paths
 const VFS_COURSES_PATH = path.join(__dirname, '..', 'public', 'vfs', 'courses');
@@ -410,11 +411,16 @@ function removeEncouragements(manifest) {
 // ============================================================================
 
 /**
- * Add missing samples to manifest with placeholder metadata
+ * Add missing samples to manifest with deterministic UUIDs
+ * Uses uuid-service for consistent UUID generation: text|language|role|cadence
  */
 function addMissingSamples(manifest, missingSamples) {
   const slice = manifest.slices[0];
   if (!slice.samples) slice.samples = {};
+
+  // Get language codes from manifest
+  const targetLang = manifest.target;  // e.g., 'cmn', 'spa'
+  const knownLang = manifest.known;    // e.g., 'eng'
 
   const added = { source: 0, target1: 0, target2: 0, presentation: 0 };
 
@@ -426,8 +432,11 @@ function addMissingSamples(manifest, missingSamples) {
     const exists = slice.samples[text].some(s => s.role === role);
     if (!exists) {
       const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
+      // Determine language based on role
+      const language = ['target1', 'target2'].includes(role) ? targetLang : knownLang;
+
       slice.samples[text].push({
-        id: '',
+        id: uuidService.generateSampleUUID(text, language, role, cadence),
         cadence: cadence,
         role: role,
         duration: 0
