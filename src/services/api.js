@@ -1027,7 +1027,7 @@ export default {
 
   // Get audio stream URL for a sample UUID
   getAudioStreamUrl(uuid) {
-    return `${API_URL}/api/audio/stream/${uuid}`
+    return `${API_BASE_URL}/api/audio/stream/${uuid}`
   },
 
   // Flag a sample for review
