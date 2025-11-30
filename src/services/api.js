@@ -1013,5 +1013,30 @@ export default {
   },
   async getPhase8QCReport(courseCode) {
     return this.getAudioQCReport(courseCode)
+  },
+
+  // ============================================================================
+  // AUDIO QA ENDPOINTS
+  // ============================================================================
+
+  // Get a random audio sample by role from course manifest
+  async getRandomAudioSample(courseCode, role) {
+    const response = await api.get(`/api/audio/random-sample/${courseCode}/${role}`)
+    return response.data
+  },
+
+  // Get audio stream URL for a sample UUID
+  getAudioStreamUrl(uuid) {
+    return `${API_URL}/api/audio/stream/${uuid}`
+  },
+
+  // Flag a sample for review
+  async flagAudioSample(courseCode, uuid, reason = '') {
+    const response = await api.post('/api/audio/flag-sample', {
+      courseCode,
+      uuid,
+      reason
+    })
+    return response.data
   }
 }

@@ -10480,6 +10480,156 @@ app.delete('/api/courses/:courseCode/job', (req, res) => {
 });
 
 // =============================================================================
+// AUDIO QA ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/audio/random-sample/:courseCode/:role
+ * Get a random sample from the course manifest by role
+ */
+app.get('/api/audio/random-sample/:courseCode/:role', async (req, res) => {
+  const { courseCode, role } = req.params;
+
+  try {
+    const manifestPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({ success: false, error: 'Course manifest not found' });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const samples = manifest.slices?.[0]?.samples || {};
+
+    // Collect all samples for the requested role
+    const roleSamples = [];
+    for (const [text, sampleList] of Object.entries(samples)) {
+      for (const sample of sampleList) {
+        if (sample.role === role && sample.id) {
+          roleSamples.push({
+            id: sample.id,
+            text: text,
+            role: sample.role,
+            cadence: sample.cadence || 'natural',
+            duration: sample.duration || 0
+          });
+        }
+      }
+    }
+
+    if (roleSamples.length === 0) {
+      return res.status(404).json({ success: false, error: `No samples found for role: ${role}` });
+    }
+
+    // Pick a random sample
+    const randomIndex = Math.floor(Math.random() * roleSamples.length);
+    const sample = roleSamples[randomIndex];
+
+    console.log(`[Audio QA] Random sample for ${courseCode}/${role}: ${sample.id}`);
+
+    res.json({
+      success: true,
+      sample,
+      totalForRole: roleSamples.length
+    });
+
+  } catch (err) {
+    console.error('[Audio QA] Error getting random sample:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/audio/stream/:uuid
+ * Stream audio file from S3
+ */
+app.get('/api/audio/stream/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+
+  try {
+    // Construct S3 URL
+    const s3Bucket = process.env.AWS_S3_BUCKET || 'ssi-audio-stage';
+    const s3Key = `mastered/${uuid}.mp3`;
+
+    // Use AWS SDK to get the file
+    const AWS = require('aws-sdk');
+    const s3 = new AWS.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      region: process.env.AWS_REGION || 'eu-west-1'
+    });
+
+    const params = {
+      Bucket: s3Bucket,
+      Key: s3Key
+    };
+
+    // Check if file exists
+    try {
+      await s3.headObject(params).promise();
+    } catch (headErr) {
+      if (headErr.code === 'NotFound') {
+        return res.status(404).json({ error: 'Audio file not found in S3' });
+      }
+      throw headErr;
+    }
+
+    // Stream the file
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.setHeader('Accept-Ranges', 'bytes');
+
+    const stream = s3.getObject(params).createReadStream();
+    stream.on('error', (err) => {
+      console.error('[Audio QA] S3 stream error:', err);
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream audio' });
+      }
+    });
+
+    stream.pipe(res);
+
+  } catch (err) {
+    console.error('[Audio QA] Error streaming audio:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/audio/flag-sample
+ * Flag a sample for review
+ */
+app.post('/api/audio/flag-sample', async (req, res) => {
+  const { courseCode, uuid, reason } = req.body;
+
+  try {
+    // Store flag in a flags file
+    const flagsPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'audio_flags.json');
+
+    let flags = [];
+    if (await fs.pathExists(flagsPath)) {
+      flags = await fs.readJson(flagsPath);
+    }
+
+    // Add flag
+    flags.push({
+      uuid,
+      reason: reason || 'Manual QA flag',
+      flaggedAt: new Date().toISOString(),
+      status: 'pending'
+    });
+
+    await fs.writeJson(flagsPath, flags, { spaces: 2 });
+
+    console.log(`[Audio QA] Flagged sample ${uuid} for ${courseCode}`);
+
+    res.json({ success: true, totalFlags: flags.length });
+
+  } catch (err) {
+    console.error('[Audio QA] Error flagging sample:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// =============================================================================
 // SERVER START
 // =============================================================================
 
