@@ -248,13 +248,21 @@ const router = createRouter({
 })
 
 // Auth guard and page title
-router.beforeEach(async (to, from, next) => {
-  const { isAuthenticated, checkSession } = useAuth()
+// AUTH DISABLED FOR NOW - set AUTH_ENABLED = true when ready to enforce login
+const AUTH_ENABLED = false
 
+router.beforeEach(async (to, from, next) => {
   // Set page title
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
     : 'Popty v8.2.2 - SSi Course Production Dashboard'
+
+  // Skip auth entirely if disabled
+  if (!AUTH_ENABLED) {
+    return next()
+  }
+
+  const { isAuthenticated, checkSession } = useAuth()
 
   // Skip auth check for public routes
   if (to.meta.public) {
