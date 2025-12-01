@@ -17,6 +17,7 @@ import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
 import RecordingStudio from '../views/RecordingStudio.vue'
+import UserManagement from '../views/UserManagement.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -108,6 +109,12 @@ const routes = [
     name: 'RecordingStudio',
     component: RecordingStudio,
     meta: { title: 'Recording Studio', requiresAuth: true }
+  },
+  {
+    path: '/users',
+    name: 'UserManagement',
+    component: UserManagement,
+    meta: { title: 'User Management', requiresAuth: true, requiresAdmin: true }
   },
   {
     path: '/reference/overview',

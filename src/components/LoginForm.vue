@@ -72,11 +72,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 
 const router = useRouter()
+const route = useRoute()
 const { requestMagicLink, devBypassLogin, loading, error } = useAuth()
 
 const email = ref('')
@@ -85,6 +86,13 @@ const devLink = ref(null)
 
 // Only show dev login in development mode
 const isDev = computed(() => import.meta.env.DEV)
+
+// Pre-fill email from URL query param (for invite links)
+onMounted(() => {
+  if (route.query.email) {
+    email.value = route.query.email
+  }
+})
 
 async function sendLink() {
   if (!email.value) return
