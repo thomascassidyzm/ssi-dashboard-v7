@@ -4151,9 +4151,12 @@ app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
             const sourceSamples = samples[knownText] || [];
             const targetSamples = samples[targetText] || [];
 
-            const source = sourceSamples.find(s => s.role === 'source' && s.id);
-            const target1 = targetSamples.find(s => s.role === 'target1' && s.id);
-            const target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+            // Support both old roles (source/target1/target2) and new roles (practice_known/practice_target/lego_target)
+            const source = sourceSamples.find(s => (s.role === 'source' || s.role === 'practice_known' || s.role === 'lego_known') && s.id);
+            const target1 = targetSamples.find(s => (s.role === 'target1' || s.role === 'practice_target' || s.role === 'lego_target') && s.id);
+            // For target2, try target2 first, then fall back to same as target1 (some manifests only have one target voice)
+            let target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+            if (!target2) target2 = targetSamples.find(s => (s.role === 'practice_target' || s.role === 'lego_target') && s.id);
 
             if (source && target1 && target2) {
               completeCycles.push({
@@ -4176,9 +4179,11 @@ app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
             const sourceSamples = samples[knownText] || [];
             const targetSamples = samples[targetText] || [];
 
-            const source = sourceSamples.find(s => s.role === 'source' && s.id);
-            const target1 = targetSamples.find(s => s.role === 'target1' && s.id);
-            const target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+            // Support both old roles (source/target1/target2) and new roles (practice_known/practice_target/lego_target)
+            const source = sourceSamples.find(s => (s.role === 'source' || s.role === 'practice_known' || s.role === 'lego_known') && s.id);
+            const target1 = targetSamples.find(s => (s.role === 'target1' || s.role === 'practice_target' || s.role === 'lego_target') && s.id);
+            let target2 = targetSamples.find(s => s.role === 'target2' && s.id);
+            if (!target2) target2 = targetSamples.find(s => (s.role === 'practice_target' || s.role === 'lego_target') && s.id);
 
             if (source && target1 && target2) {
               completeCycles.push({
