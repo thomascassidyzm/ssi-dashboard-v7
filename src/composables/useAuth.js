@@ -122,6 +122,43 @@ function logout() {
 }
 
 /**
+ * Dev bypass login - skips magic link for testing
+ * Only works in development mode
+ */
+async function devBypassLogin(email) {
+  if (import.meta.env.PROD) {
+    throw new Error('Dev bypass not available in production')
+  }
+
+  loading.value = true
+  error.value = null
+
+  try {
+    const response = await fetch('/api/auth/dev-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Dev login failed')
+    }
+
+    session.value = data.session
+    user.value = data.user
+
+    return data
+  } catch (err) {
+    error.value = err.message
+    throw err
+  } finally {
+    loading.value = false
+  }
+}
+
+/**
  * Check if user can access a course
  */
 function canAccessCourse(courseCode) {
@@ -147,6 +184,7 @@ export function useAuth() {
     verifyToken,
     checkSession,
     logout,
-    canAccessCourse
+    canAccessCourse,
+    devBypassLogin
   }
 }

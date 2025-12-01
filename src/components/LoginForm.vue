@@ -26,6 +26,16 @@
         <span v-else>Send Magic Link</span>
       </button>
 
+      <!-- Dev bypass for testing -->
+      <button
+        v-if="isDev"
+        @click="devLogin"
+        :disabled="loading"
+        class="w-full bg-yellow-600 hover:bg-yellow-500 disabled:bg-slate-700 text-white py-2 rounded-lg text-sm transition-colors"
+      >
+        Dev Login (tom@ssi.com)
+      </button>
+
       <p v-if="error" class="text-red-400 text-sm text-center">
         {{ error }}
       </p>
@@ -62,14 +72,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 
-const { requestMagicLink, loading, error } = useAuth()
+const router = useRouter()
+const { requestMagicLink, devBypassLogin, loading, error } = useAuth()
 
 const email = ref('')
 const linkSent = ref(false)
 const devLink = ref(null)
+
+// Only show dev login in development mode
+const isDev = computed(() => import.meta.env.DEV)
 
 async function sendLink() {
   if (!email.value) return
@@ -78,6 +93,15 @@ async function sendLink() {
     const result = await requestMagicLink(email.value)
     linkSent.value = true
     devLink.value = result.link || null // Only in dev mode
+  } catch (err) {
+    // Error is handled in composable
+  }
+}
+
+async function devLogin() {
+  try {
+    await devBypassLogin('tom@ssi.com')
+    router.push('/')
   } catch (err) {
     // Error is handled in composable
   }
