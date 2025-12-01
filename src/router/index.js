@@ -16,6 +16,7 @@ import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
+import RecordingStudio from '../views/RecordingStudio.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -27,6 +28,11 @@ import CourseHealthReport from '../components/quality/CourseHealthReport.vue'
 
 // Editing Components
 import IntroductionsViewer from '../components/IntroductionsViewer.vue'
+
+// Auth Components
+import Login from '../views/Login.vue'
+import AuthVerify from '../views/AuthVerify.vue'
+import { useAuth } from '../composables/useAuth'
 
 
 const routes = [
@@ -96,6 +102,12 @@ const routes = [
     component: AudioPipelineView,
     props: true,
     meta: { title: 'Audio Pipeline' }
+  },
+  {
+    path: '/record',
+    name: 'RecordingStudio',
+    component: RecordingStudio,
+    meta: { title: 'Recording Studio', requiresAuth: true }
   },
   {
     path: '/reference/overview',
@@ -195,6 +207,20 @@ const routes = [
     redirect: to => ({ name: 'CourseEditor', params: { courseCode: to.params.courseCode } })
   },
 
+  // Auth Routes
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { public: true }
+  },
+  {
+    path: '/auth/verify',
+    name: 'AuthVerify',
+    component: AuthVerify,
+    meta: { public: true }
+  },
+
   // Catch-all route
   {
     path: '/:pathMatch(.*)*',
@@ -214,11 +240,29 @@ const router = createRouter({
   }
 })
 
-// Set page title based on route meta
-router.beforeEach((to, from, next) => {
+// Auth guard and page title
+router.beforeEach(async (to, from, next) => {
+  const { isAuthenticated, checkSession } = useAuth()
+
+  // Set page title
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
     : 'Popty v8.2.2 - SSi Course Production Dashboard'
+
+  // Skip auth check for public routes
+  if (to.meta.public) {
+    return next()
+  }
+
+  // Check if authenticated
+  if (!isAuthenticated.value) {
+    await checkSession()
+  }
+
+  if (!isAuthenticated.value) {
+    return next({ name: 'Login', query: { redirect: to.fullPath } })
+  }
+
   next()
 })
 

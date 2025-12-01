@@ -2,10 +2,10 @@
  * PUT /api/courses/:courseCode/introductions/:legoId
  *
  * Updates an introduction/presentation in introductions.json
- * Reads from GitHub and commits back to GitHub
+ * Reads from S3 and writes back to S3
  */
 
-import { readFromGitHub, commitToGitHub } from '../../../lib/github.js';
+import { readCourseFile, writeCourseFile } from '../../../lib/s3-course.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -35,10 +35,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Read from GitHub
-    const githubPath = `public/vfs/courses/${courseCode}/introductions.json`;
-    const { content } = await readFromGitHub(githubPath);
-    const data = JSON.parse(content);
+    // Read from S3
+    const { content: data } = await readCourseFile(courseCode, 'introductions.json');
 
     // Update the presentation
     if (!data.presentations) {
@@ -57,29 +55,29 @@ export default async function handler(req, res) {
     data.updated = new Date().toISOString();
     data.updated_by = 'dashboard_edit';
 
-    // Commit to GitHub
-    const jsonContent = JSON.stringify(data, null, 2);
-    const result = await commitToGitHub({
-      path: githubPath,
-      content: jsonContent,
-      message: `Update introduction ${legoId}`
-    });
-    const githubCommit = result.commit;
-    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
+    // Write to S3
+    const { etag, url } = await writeCourseFile(courseCode, 'introductions.json', data);
+    console.log(`[API] Wrote to S3: ${url} (etag: ${etag})`);
 
     res.status(200).json({
       success: true,
-      message: 'Introduction updated and committed to GitHub',
+      message: 'Introduction updated and saved to S3',
       updated: {
         legoId,
         text
       },
-      github: githubCommit
+      s3: {
+        etag,
+        url
+      }
     });
 
   } catch (error) {
     console.error('[API] Error updating introduction:', error);
-    res.status(500).json({
+
+    // Return 404 for missing files, 500 for other errors
+    const statusCode = error.code === 'NOT_FOUND' ? 404 : 500;
+    res.status(statusCode).json({
       error: 'Failed to update introduction',
       message: error.message
     });

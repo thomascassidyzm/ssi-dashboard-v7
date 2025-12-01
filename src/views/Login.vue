@@ -1,0 +1,9 @@
+<template>
+  <div class="min-h-screen bg-slate-900 flex items-center justify-center p-8">
+    <LoginForm />
+  </div>
+</template>
+
+<script setup>
+import LoginForm from '../components/LoginForm.vue'
+</script>

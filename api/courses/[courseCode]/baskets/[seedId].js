@@ -2,10 +2,10 @@
  * PUT /api/courses/:courseCode/baskets/:seedId
  *
  * Updates a basket in lego_baskets.json
- * Reads from GitHub and commits back to GitHub
+ * Reads from S3 and writes back to S3
  */
 
-import { readFromGitHub, commitToGitHub } from '../../../lib/github.js';
+import { readCourseFile, writeCourseFile } from '../../../lib/s3-course.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -35,10 +35,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Read from GitHub
-    const githubPath = `public/vfs/courses/${courseCode}/lego_baskets.json`;
-    const { content } = await readFromGitHub(githubPath);
-    const data = JSON.parse(content);
+    // Read from S3
+    const { content: data } = await readCourseFile(courseCode, 'lego_baskets.json');
 
     // Update baskets for this seed
     if (!data.baskets) {
@@ -67,26 +65,26 @@ export default async function handler(req, res) {
     data.updated = new Date().toISOString();
     data.updated_by = 'dashboard_edit';
 
-    // Commit to GitHub
-    const jsonContent = JSON.stringify(data, null, 2);
-    const result = await commitToGitHub({
-      path: githubPath,
-      content: jsonContent,
-      message: `Update basket ${seedId}`
-    });
-    const githubCommit = result.commit;
-    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
+    // Write to S3
+    const { etag, url } = await writeCourseFile(courseCode, 'lego_baskets.json', data);
+    console.log(`[API] Wrote to S3: ${url} (etag: ${etag})`);
 
     res.status(200).json({
       success: true,
-      message: 'Basket updated and committed to GitHub',
+      message: 'Basket updated and saved to S3',
       seedId,
-      github: githubCommit
+      s3: {
+        etag,
+        url
+      }
     });
 
   } catch (error) {
     console.error('[API] Error updating basket:', error);
-    res.status(500).json({
+
+    // Return 404 for missing files, 500 for other errors
+    const statusCode = error.code === 'NOT_FOUND' ? 404 : 500;
+    res.status(statusCode).json({
       error: 'Failed to update basket',
       message: error.message
     });

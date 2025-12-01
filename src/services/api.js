@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
-import { GITHUB_CONFIG } from '../config/github.js'
+import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 function getApiBaseUrl() {
@@ -15,9 +15,6 @@ function getApiBaseUrl() {
 }
 
 const API_BASE_URL = getApiBaseUrl()
-
-// GitHub raw content base URL for course data
-const GITHUB_VFS_BASE = GITHUB_CONFIG.coursesPath
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -126,17 +123,16 @@ export default {
     },
 
     async list() {
-      // ALWAYS use static manifest (GitHub is single source of truth)
-      // This ensures everyone (Tom, Kai, anyone) sees the same courses
-      // Differences only appear temporarily until changes are pushed to GitHub
-      console.log('[API] Loading courses from static manifest (GitHub SSoT)')
+      // Use S3 as primary storage, GitHub as fallback
+      const storage = getStorageConfig();
+      console.log('[API] Loading courses from S3 manifest (primary storage)');
 
       try {
-        // Use pre-generated manifest (created at build time by generate-course-manifest.js)
-        const manifestRes = await fetch(GITHUB_CONFIG.manifestUrl)
+        // Try S3 first (primary storage)
+        const manifestRes = await fetch(storage.manifestUrl);
         if (manifestRes.ok) {
-          const manifest = await manifestRes.json()
-          console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
+          const manifest = await manifestRes.json();
+          console.log(`[API] ✓ Loaded ${manifest.courses.length} courses from S3 manifest (generated ${manifest.generated_at})`);
 
           // Transform manifest format to API format
           // Show courses with any pipeline output files (baskets, seed_pairs, or lego_pairs)
@@ -163,14 +159,51 @@ export default {
               phases_completed: course.phases_completed || []
             }))
 
-          return { courses }
+          return { courses };
+        }
+      } catch (err) {
+        console.error('[API] Failed to load from S3, trying GitHub fallback:', err);
+      }
+
+      // Fallback to GitHub if S3 fails
+      try {
+        console.log('[API] Falling back to GitHub manifest');
+        const manifestRes = await fetch(STORAGE_CONFIG.github.manifestUrl);
+        if (manifestRes.ok) {
+          const manifest = await manifestRes.json();
+          console.log(`[API] ✓ Loaded ${manifest.courses.length} courses from GitHub manifest (fallback)`);
+
+          // Transform manifest format to API format (same as above)
+          const courses = manifest.courses
+            .filter(course =>
+              course.has_baskets ||
+              course.files?.seed_pairs ||
+              course.files?.lego_pairs
+            )
+            .map(course => ({
+              course_code: course.course_code,
+              source_language: course.source_language,
+              target_language: course.target_language,
+              total_seeds: course.total_seeds,
+              version: course.format,
+              created_at: new Date().toISOString(),
+              status: course.phase || 'unknown',
+              seed_pairs: course.actual_seed_count,
+              lego_pairs: course.lego_count,
+              lego_baskets: course.basket_count || 0,
+              amino_acids: {
+                introductions: course.introductions_count || 0
+              },
+              phases_completed: course.phases_completed || []
+            }))
+
+          return { courses };
         }
 
-        // Manifest fetch failed
-        throw new Error('Failed to fetch courses manifest')
+        throw new Error('GitHub manifest not available');
       } catch (err) {
-        console.error('[API] Failed to load course manifest:', err)
-        throw err
+        console.error('[API] Failed to load course manifest from both S3 and GitHub:', err);
+        throw err;
       }
     },
 
@@ -309,12 +342,12 @@ export default {
         }
       }
 
-      // ALWAYS use static files (GitHub SSoT)
-      // Don't try API server - ensures everyone sees same data
-      console.log(`[API] Loading ${courseCode} from static files (GitHub SSoT)`)
+      // Use S3 as primary storage, GitHub as fallback
+      const storage = getStorageConfig();
+      console.log(`[API] Loading ${courseCode} from S3 (primary storage)`);
 
       try {
-        // Try to load all possible phase output files
+        // Try to load all possible phase output files from S3
         // seed_pairs.json, lego_pairs.json, lego_baskets.json are all optional now
         let seedPairsData = null
         let legoPairsData = null
@@ -323,7 +356,7 @@ export default {
 
         // Try seed_pairs.json (Phase 1)
         try {
-          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+          const res = await fetch(storage.getCourseFileUrl(courseCode, 'seed_pairs.json'))
           if (res.ok) seedPairsData = await res.json()
         } catch (e) {
           console.log(`[API] No seed_pairs.json for ${courseCode}`)
@@ -331,7 +364,7 @@ export default {
 
         // Try lego_pairs.json (Phase 3)
         try {
-          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+          const res = await fetch(storage.getCourseFileUrl(courseCode, 'lego_pairs.json'))
           if (res.ok) legoPairsData = await res.json()
         } catch (e) {
           console.log(`[API] No lego_pairs.json for ${courseCode}`)
@@ -339,7 +372,7 @@ export default {
 
         // Try lego_baskets.json (Phase 5)
         try {
-          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
+          const res = await fetch(storage.getCourseFileUrl(courseCode, 'lego_baskets.json'))
           if (res.ok) legoBasketsData = await res.json()
         } catch (e) {
           console.log(`[API] No lego_baskets.json for ${courseCode}`)
@@ -347,7 +380,7 @@ export default {
 
         // Try introductions.json (Phase 6)
         try {
-          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json'))
+          const res = await fetch(storage.getCourseFileUrl(courseCode, 'introductions.json'))
           if (res.ok) introductionsData = await res.json()
         } catch (e) {
           console.log(`[API] No introductions.json for ${courseCode}`)
@@ -495,21 +528,211 @@ export default {
           return result
         }
 
-        // Files not found
-        throw new Error(`Course files not found for ${courseCode}`)
+        // Files not found in S3, try GitHub fallback
+        console.log(`[API] No files found in S3 for ${courseCode}, trying GitHub fallback`);
       } catch (err) {
-        console.error(`[API] Failed to load course ${courseCode}:`, err)
+        console.error(`[API] Failed to load from S3 for ${courseCode}:`, err);
+      }
+
+      // GitHub fallback - try loading from GitHub
+      try {
+        console.log(`[API] Loading ${courseCode} from GitHub (fallback)`);
+        const githubStorage = STORAGE_CONFIG.github;
+
+        let seedPairsData = null
+        let legoPairsData = null
+        let legoBasketsData = null
+        let introductionsData = null
+
+        // Try seed_pairs.json (Phase 1)
+        try {
+          const res = await fetch(githubStorage.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+          if (res.ok) seedPairsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No seed_pairs.json for ${courseCode} in GitHub`)
+        }
+
+        // Try lego_pairs.json (Phase 3)
+        try {
+          const res = await fetch(githubStorage.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+          if (res.ok) legoPairsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No lego_pairs.json for ${courseCode} in GitHub`)
+        }
+
+        // Try lego_baskets.json (Phase 5)
+        try {
+          const res = await fetch(githubStorage.getCourseFileUrl(courseCode, 'lego_baskets.json'))
+          if (res.ok) legoBasketsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No lego_baskets.json for ${courseCode} in GitHub`)
+        }
+
+        // Try introductions.json (Phase 6)
+        try {
+          const res = await fetch(githubStorage.getCourseFileUrl(courseCode, 'introductions.json'))
+          if (res.ok) introductionsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No introductions.json for ${courseCode} in GitHub`)
+        }
+
+        // Process data if we have at least one phase output file
+        if (seedPairsData || legoPairsData || legoBasketsData) {
+          console.log(`[API] ✓ Found course files in GitHub for ${courseCode}`);
+
+          // Parse seed_pairs.json if available
+          const translations = []
+          if (seedPairsData) {
+            const translationsObj = seedPairsData.translations || {}
+            translations.push(...Object.entries(translationsObj).map(([seed_id, translation]) => {
+              // Handle both old array format and new object format (APML v8.2.0+)
+              let target_phrase, known_phrase
+              if (Array.isArray(translation)) {
+                // Old format: ["target", "known"]
+                [target_phrase, known_phrase] = translation
+              } else {
+                // New format: {target: "...", known: "..."}
+                target_phrase = translation.target
+                known_phrase = translation.known
+              }
+              return {
+                seed_id,
+                target_phrase,
+                known_phrase,
+                canonical_seed: null
+              }
+            }))
+            translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+          }
+
+          // Parse lego_pairs.json if available (same logic as S3 path)
+          const legos = []
+          let seedsArray = []
+          if (legoPairsData) {
+            seedsArray = legoPairsData.seeds || []
+
+            // Detect format by checking first seed structure
+            if (seedsArray.length > 0) {
+              const firstSeed = seedsArray[0]
+
+              if (Array.isArray(firstSeed)) {
+                // v7.7 format
+                for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+                  for (const legoEntry of legoArray) {
+                    const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                    legos.push({
+                      seed_id,
+                      lego_id,
+                      lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                      target_chunk,
+                      known_chunk
+                    })
+                  }
+                }
+              } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+                // v5.0.1 format
+                for (const seed of seedsArray) {
+                  const newLegos = seed.legos.filter(l => l.new === true)
+                  for (const lego of newLegos) {
+                    legos.push({
+                      seed_id: seed.seed_id,
+                      lego_id: lego.id,
+                      lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                      target_chunk: lego.target,
+                      known_chunk: lego.known,
+                      components: lego.components
+                    })
+                  }
+                }
+              }
+            }
+          }
+
+          // Flexible course code parsing
+          const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+          const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+          const match = matchStandard || matchBasic
+
+          // Count baskets and introductions
+          const basketCount = legoBasketsData?.baskets ? Object.keys(legoBasketsData.baskets).length : 0
+          const introductionsCount = introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0
+
+          // Determine which phases are complete based on data availability
+          const manifestData = await this.list()
+          const courseFromManifest = manifestData.courses.find(c => c.course_code === courseCode)
+          const phasesCompleted = courseFromManifest?.phases_completed || []
+
+          // Fallback: if manifest doesn't have phases, detect from loaded data
+          if (phasesCompleted.length === 0) {
+            if (translations.length > 0) phasesCompleted.push('1')
+            if (legos.length > 0) phasesCompleted.push('3')
+            if (basketCount > 0) phasesCompleted.push('5')
+          }
+
+          const course = {
+            course_code: courseCode,
+            source_language: match ? match[2].toUpperCase() : 'UNK',
+            target_language: match ? match[1].toUpperCase() : 'UNK',
+            total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
+            version: '1.0',
+            created_at: new Date().toISOString(),
+            status: phasesCompleted[phasesCompleted.length - 1] ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
+            seed_pairs: translations.length,
+            lego_pairs: legos.length,
+            lego_baskets: basketCount,
+            amino_acids: {
+              introductions: introductionsCount
+            },
+            phases_completed: phasesCompleted,
+            target_language_name: match ? match[1] : 'unknown',
+            known_language_name: match ? match[2] : 'unknown'
+          }
+
+          const result = {
+            course,
+            translations,
+            legos,
+            lego_breakdowns: seedsArray,
+            baskets: legoBasketsData?.baskets || []
+          }
+
+          // Cache the data from GitHub
+          await setCachedCourse(courseCode, course.version, {
+            seedPairs: seedPairsData,
+            legoPairs: legoPairsData,
+            legoBaskets: legoBasketsData?.baskets || []
+          }).catch(err => {
+            console.warn('[API] Failed to cache course data:', err)
+          })
+
+          return result
+        }
+
+        // Files not found in both S3 and GitHub
+        throw new Error(`Course files not found for ${courseCode} in S3 or GitHub`)
+      } catch (err) {
+        console.error(`[API] Failed to load course ${courseCode} from both S3 and GitHub:`, err)
         throw err
       }
     },
 
     async traceProvenance(courseCode, seedId) {
-      // Use static files directly (provenance endpoint not available on Vercel)
-      const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
-      const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+      // Use S3 as primary storage, GitHub as fallback
+      const storage = getStorageConfig();
+
+      let seedPairsRes = await fetch(storage.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+      let legoPairsRes = await fetch(storage.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+
+      // Try GitHub fallback if S3 fails
+      if (!seedPairsRes.ok || !legoPairsRes.ok) {
+        console.log('[API] traceProvenance: Trying GitHub fallback');
+        const githubStorage = STORAGE_CONFIG.github;
+        seedPairsRes = await fetch(githubStorage.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+        legoPairsRes = await fetch(githubStorage.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+      }
 
       if (!seedPairsRes.ok || !legoPairsRes.ok) {
-        throw new Error(`Failed to load course data for ${courseCode}`)
+        throw new Error(`Failed to load course data for ${courseCode} from S3 or GitHub`)
       }
 
       const seedPairsData = await seedPairsRes.json()
@@ -583,47 +806,63 @@ export default {
     _basketsCache: {},
 
     async getBasket(courseCode, seedId) {
-      // ALWAYS use static files (GitHub SSoT)
-      console.log(`[API] Loading basket ${seedId} from static files (GitHub SSoT)`)
+      // Use S3 as primary storage, GitHub as fallback
+      const storage = getStorageConfig();
+      console.log(`[API] Loading basket ${seedId} from S3 (primary storage)`);
 
       try {
         // Load from merged lego_baskets.json (Phase 5+ format)
         // Cache it to avoid re-fetching the 5MB file for every seed
         if (!this._basketsCache[courseCode]) {
-          console.log(`[API] Fetching lego_baskets.json for ${courseCode} (not cached)`)
-          // Add cache-busting to bypass GitHub CDN cache
-          const basketsRes = await fetch(`${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json')}?t=${Date.now()}`)
+          console.log(`[API] Fetching lego_baskets.json for ${courseCode} (not cached)`);
+
+          // Try S3 first with cache-busting
+          let basketsRes = await fetch(`${storage.getCourseFileUrl(courseCode, 'lego_baskets.json')}?t=${Date.now()}`);
+
+          // Fallback to GitHub if S3 fails
+          if (!basketsRes.ok) {
+            console.log('[API] S3 fetch failed, trying GitHub fallback');
+            const githubStorage = STORAGE_CONFIG.github;
+            basketsRes = await fetch(`${githubStorage.getCourseFileUrl(courseCode, 'lego_baskets.json')}?t=${Date.now()}`);
+          }
+
           if (basketsRes.ok) {
-            this._basketsCache[courseCode] = await basketsRes.json()
+            this._basketsCache[courseCode] = await basketsRes.json();
           } else {
-            throw new Error('lego_baskets.json not found')
+            throw new Error('lego_baskets.json not found in S3 or GitHub');
           }
         }
 
-        const allBaskets = this._basketsCache[courseCode]
+        const allBaskets = this._basketsCache[courseCode];
 
         // Find basket by seedId in baskets object
         // Baskets are keyed like "S0001L01", "S0001L02" etc - find all for this seed
         const seedBaskets = {}
         for (const [key, basketData] of Object.entries(allBaskets.baskets || {})) {
           if (key.startsWith(seedId)) {
-            seedBaskets[key] = basketData
+            seedBaskets[key] = basketData;
           }
         }
 
         if (Object.keys(seedBaskets).length > 0) {
-          console.log(`[API] ✓ Found ${Object.keys(seedBaskets).length} basket(s) for ${seedId} in ${courseCode}`)
+          console.log(`[API] ✓ Found ${Object.keys(seedBaskets).length} basket(s) for ${seedId} in ${courseCode}`);
         } else {
-          console.warn(`[API] ⚠️  MISSING BASKET: ${seedId} not found in ${courseCode}/lego_baskets.json`)
+          console.warn(`[API] ⚠️  MISSING BASKET: ${seedId} not found in ${courseCode}/lego_baskets.json`);
         }
 
         if (Object.keys(seedBaskets).length > 0) {
-          // Get seed_pair from seed_pairs.json
-          const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
-          let seedPair = null
+          // Get seed_pair from seed_pairs.json (try S3, fallback to GitHub)
+          let seedPairsRes = await fetch(storage.getCourseFileUrl(courseCode, 'seed_pairs.json'));
+          if (!seedPairsRes.ok) {
+            console.log('[API] Trying GitHub for seed_pairs.json');
+            const githubStorage = STORAGE_CONFIG.github;
+            seedPairsRes = await fetch(githubStorage.getCourseFileUrl(courseCode, 'seed_pairs.json'));
+          }
+
+          let seedPair = null;
           if (seedPairsRes.ok) {
-            const seedPairsData = await seedPairsRes.json()
-            const translation = seedPairsData.translations?.[seedId]
+            const seedPairsData = await seedPairsRes.json();
+            const translation = seedPairsData.translations?.[seedId];
             if (translation) {
               // Handle both old array format and new object format (APML v8.2.0+)
               if (Array.isArray(translation)) {
@@ -631,13 +870,13 @@ export default {
                 seedPair = {
                   target: translation[1],
                   known: translation[0]
-                }
+                };
               } else {
                 // New format: {target: "...", known: "..."}
                 seedPair = {
                   target: translation.target,
                   known: translation.known
-                }
+                };
               }
             }
           }
@@ -649,13 +888,13 @@ export default {
               legos: seedBaskets,  // v6.2+ format with LEGOs nested
               generation_stage: 'COMPLETE'
             }
-          }
+          };
         }
 
-        throw new Error(`Basket not found for ${seedId}`)
+        throw new Error(`Basket not found for ${seedId}`);
       } catch (err) {
-        console.error(`[API] Failed to fetch basket for ${seedId}:`, err)
-        throw err
+        console.error(`[API] Failed to fetch basket for ${seedId}:`, err);
+        throw err;
       }
     },
 

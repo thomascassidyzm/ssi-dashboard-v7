@@ -15,7 +15,15 @@
               APML v9.0.0 | Phase 1 → Phase 2 → Phase 3 → Manifest → Audio
             </p>
           </div>
-          <EnvironmentSwitcher />
+          <div class="flex items-center gap-6">
+            <EnvironmentSwitcher />
+            <div class="flex items-center gap-4">
+              <span class="text-slate-400 text-sm">{{ user?.name || user?.email }}</span>
+              <button @click="handleLogout" class="text-slate-500 hover:text-slate-300 text-sm">
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -26,7 +34,7 @@
       <!-- User Workflow -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">User Workflow</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Generate New Course -->
           <router-link to="/generate" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
             <div class="flex items-center justify-between">
@@ -56,6 +64,23 @@
               <div class="text-emerald-400">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
+          <!-- Recording Studio -->
+          <router-link to="/record" class="block bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 rounded-lg border border-red-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">🎙️ Recording Studio</h3>
+                <p class="text-red-100 text-sm">
+                  Record human voice samples for phrases that need authentic pronunciation
+                </p>
+              </div>
+              <div class="text-white">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
                 </svg>
               </div>
             </div>
@@ -238,7 +263,17 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
+import { useAuth } from '../composables/useAuth'
+
+const router = useRouter()
+const { user, logout } = useAuth()
+
+function handleLogout() {
+  logout()
+  router.push('/login')
+}
 
 console.log('🚀 Dashboard View Loaded')
 </script>
