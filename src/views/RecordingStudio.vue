@@ -323,33 +323,49 @@ const languageNames = {
   'cat': 'Catalan'
 }
 
-// Test phrases for different languages
+// Test phrases - longer seed-sentence-length phrases only
 const TEST_PHRASES = {
   test_course: [
-    // Spanish - natural speed
-    { text: 'Quiero', language: 'spa', role: 'target', cadence: 'natural', translation: 'I want' },
-    { text: 'Quiero café', language: 'spa', role: 'target', cadence: 'natural', translation: 'I want coffee' },
-    { text: 'Quiero un café', language: 'spa', role: 'target', cadence: 'natural', translation: 'I want a coffee' },
+    // Spanish - natural speed (seed sentence length)
+    { text: 'Quiero un café con leche por favor', language: 'spa', role: 'target', cadence: 'natural', translation: 'I want a coffee with milk please' },
+    { text: 'Me gustaría ir al cine esta noche', language: 'spa', role: 'target', cadence: 'natural', translation: 'I would like to go to the cinema tonight' },
+    { text: 'Necesito comprar pan en la tienda', language: 'spa', role: 'target', cadence: 'natural', translation: 'I need to buy bread at the shop' },
+    { text: 'Ella trabaja en una oficina grande', language: 'spa', role: 'target', cadence: 'natural', translation: 'She works in a big office' },
+    { text: 'Vamos a la playa el domingo', language: 'spa', role: 'target', cadence: 'natural', translation: 'We are going to the beach on Sunday' },
     // Spanish - slow with gaps
-    { text: 'Quiero', language: 'spa', role: 'target', cadence: 'slow', translation: 'I want (slow)' },
-    { text: 'Quiero café', language: 'spa', role: 'target', cadence: 'slow', translation: 'I want coffee (slow)' },
-    { text: 'Quiero un café', language: 'spa', role: 'target', cadence: 'slow', translation: 'I want a coffee (slow)' },
+    { text: 'Quiero un café con leche por favor', language: 'spa', role: 'target', cadence: 'slow', translation: 'I want a coffee with milk please (slow)' },
+    { text: 'Me gustaría ir al cine esta noche', language: 'spa', role: 'target', cadence: 'slow', translation: 'I would like to go to the cinema tonight (slow)' },
+    { text: 'Necesito comprar pan en la tienda', language: 'spa', role: 'target', cadence: 'slow', translation: 'I need to buy bread at the shop (slow)' },
+    { text: 'Ella trabaja en una oficina grande', language: 'spa', role: 'target', cadence: 'slow', translation: 'She works in a big office (slow)' },
+    { text: 'Vamos a la playa el domingo', language: 'spa', role: 'target', cadence: 'slow', translation: 'We are going to the beach on Sunday (slow)' },
   ],
   mkd_for_cat: [
-    { text: 'Сакам', language: 'mkd', role: 'target', cadence: 'natural', translation: 'I want' },
-    { text: 'Јас сакам', language: 'mkd', role: 'target', cadence: 'natural', translation: 'I want' },
-    { text: 'Ти сакаш', language: 'mkd', role: 'target', cadence: 'natural', translation: 'You want' },
-    { text: 'Сакам', language: 'mkd', role: 'target', cadence: 'slow', translation: 'I want (slow)' },
-    { text: 'Јас сакам', language: 'mkd', role: 'target', cadence: 'slow', translation: 'I want (slow)' },
-    { text: 'Ти сакаш', language: 'mkd', role: 'target', cadence: 'slow', translation: 'You want (slow)' },
+    // Macedonian - natural speed (seed sentence length)
+    { text: 'Јас сакам да одам на работа', language: 'mkd', role: 'target', cadence: 'natural', translation: 'I want to go to work' },
+    { text: 'Таа готви вечера во кујната', language: 'mkd', role: 'target', cadence: 'natural', translation: 'She is cooking dinner in the kitchen' },
+    { text: 'Ние живееме во голем град', language: 'mkd', role: 'target', cadence: 'natural', translation: 'We live in a big city' },
+    { text: 'Тој чита книга секој ден', language: 'mkd', role: 'target', cadence: 'natural', translation: 'He reads a book every day' },
+    { text: 'Децата играат во паркот', language: 'mkd', role: 'target', cadence: 'natural', translation: 'The children play in the park' },
+    // Macedonian - slow with gaps
+    { text: 'Јас сакам да одам на работа', language: 'mkd', role: 'target', cadence: 'slow', translation: 'I want to go to work (slow)' },
+    { text: 'Таа готви вечера во кујната', language: 'mkd', role: 'target', cadence: 'slow', translation: 'She is cooking dinner in the kitchen (slow)' },
+    { text: 'Ние живееме во голем град', language: 'mkd', role: 'target', cadence: 'slow', translation: 'We live in a big city (slow)' },
+    { text: 'Тој чита книга секој ден', language: 'mkd', role: 'target', cadence: 'slow', translation: 'He reads a book every day (slow)' },
+    { text: 'Децата играат во паркот', language: 'mkd', role: 'target', cadence: 'slow', translation: 'The children play in the park (slow)' },
   ],
   wel_for_eng: [
-    { text: 'Dw i', language: 'cym', role: 'target', cadence: 'natural', translation: 'I am' },
-    { text: 'Dw i eisiau', language: 'cym', role: 'target', cadence: 'natural', translation: 'I want' },
-    { text: 'Dw i eisiau coffi', language: 'cym', role: 'target', cadence: 'natural', translation: 'I want coffee' },
-    { text: 'Dw i', language: 'cym', role: 'target', cadence: 'slow', translation: 'I am (slow)' },
-    { text: 'Dw i eisiau', language: 'cym', role: 'target', cadence: 'slow', translation: 'I want (slow)' },
-    { text: 'Dw i eisiau coffi', language: 'cym', role: 'target', cadence: 'slow', translation: 'I want coffee (slow)' },
+    // Welsh - natural speed (seed sentence length)
+    { text: 'Dw i eisiau mynd i\'r dref heddiw', language: 'cym', role: 'target', cadence: 'natural', translation: 'I want to go to town today' },
+    { text: 'Mae hi\'n bwrw glaw y tu allan', language: 'cym', role: 'target', cadence: 'natural', translation: 'It is raining outside' },
+    { text: 'Rydyn ni\'n hoffi bwyta pizza', language: 'cym', role: 'target', cadence: 'natural', translation: 'We like to eat pizza' },
+    { text: 'Mae\'r plant yn chwarae yn yr ardd', language: 'cym', role: 'target', cadence: 'natural', translation: 'The children are playing in the garden' },
+    { text: 'Dw i\'n gweithio mewn swyddfa fawr', language: 'cym', role: 'target', cadence: 'natural', translation: 'I work in a big office' },
+    // Welsh - slow with gaps
+    { text: 'Dw i eisiau mynd i\'r dref heddiw', language: 'cym', role: 'target', cadence: 'slow', translation: 'I want to go to town today (slow)' },
+    { text: 'Mae hi\'n bwrw glaw y tu allan', language: 'cym', role: 'target', cadence: 'slow', translation: 'It is raining outside (slow)' },
+    { text: 'Rydyn ni\'n hoffi bwyta pizza', language: 'cym', role: 'target', cadence: 'slow', translation: 'We like to eat pizza (slow)' },
+    { text: 'Mae\'r plant yn chwarae yn yr ardd', language: 'cym', role: 'target', cadence: 'slow', translation: 'The children are playing in the garden (slow)' },
+    { text: 'Dw i\'n gweithio mewn swyddfa fawr', language: 'cym', role: 'target', cadence: 'slow', translation: 'I work in a big office (slow)' },
   ]
 }
 
