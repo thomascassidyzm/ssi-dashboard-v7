@@ -2,10 +2,10 @@
  * PUT /api/courses/:courseCode/translations/:uuid
  *
  * Updates a translation in seed_pairs.json
- * Writes to local VFS and commits to GitHub for persistence
+ * Reads from and writes to S3 (SSoT)
  */
 
-import { readFromGitHub, commitToGitHub, isGitHubConfigured } from '../../../lib/github.js';
+import { readCourseFile, writeCourseFile } from '../../../lib/s3-course.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -35,10 +35,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Read from GitHub
-    const githubPath = `public/vfs/courses/${courseCode}/seed_pairs.json`;
-    const { content } = await readFromGitHub(githubPath);
-    const data = JSON.parse(content);
+    // Read from S3
+    const { content: data } = await readCourseFile(courseCode, 'seed_pairs.json');
 
     // Find and update the translation
     let found = false;
@@ -66,25 +64,19 @@ export default async function handler(req, res) {
     data.updated = new Date().toISOString();
     data.updated_by = 'dashboard_edit';
 
-    // Commit to GitHub
-    const jsonContent = JSON.stringify(data, null, 2);
-    const result = await commitToGitHub({
-      path: githubPath,
-      content: jsonContent,
-      message: `Update translation ${uuid}: "${target.substring(0, 30)}..."`
-    });
-    const githubCommit = result.commit;
-    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
+    // Write to S3
+    const { etag, url } = await writeCourseFile(courseCode, 'seed_pairs.json', data);
+    console.log(`[API] Wrote to S3 (etag: ${etag})`);
 
     res.status(200).json({
       success: true,
-      message: 'Translation updated and committed to GitHub',
+      message: 'Translation updated and saved to S3',
       updated: {
         uuid,
         source,
         target
       },
-      github: githubCommit
+      s3: { etag, url }
     });
 
   } catch (error) {

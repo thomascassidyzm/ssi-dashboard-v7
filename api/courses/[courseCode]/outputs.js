@@ -1,12 +1,11 @@
 /**
  * POST /api/courses/:courseCode/outputs
  *
- * Receives extraction outputs from Claude Code agents and writes to VFS
+ * Receives extraction outputs from Claude Code agents and writes to S3
  * Agents POST their results directly to this endpoint (no git branch merging needed)
  */
 
-import fs from 'fs/promises';
-import path from 'path';
+import { readCourseFile, writeCourseFile } from '../../lib/s3-course.js';
 
 export default async function handler(req, res) {
   // CORS headers for agents calling from claude.ai
@@ -43,19 +42,13 @@ export default async function handler(req, res) {
       ? 'lego_baskets.json'
       : `phase_${phase}_output.json`;
 
-    // Build path: public/vfs/courses/{courseCode}/{outputFileName}
-    const vfsPath = path.join(process.cwd(), 'public', 'vfs', 'courses', courseCode);
-    const outputPath = path.join(vfsPath, outputFileName);
-
-    // Ensure directory exists
-    await fs.mkdir(vfsPath, { recursive: true });
-
-    // Read existing file if it exists (for merging segments)
+    // Read existing file from S3 if it exists (for merging segments)
     let existingData = null;
     try {
-      const existingContent = await fs.readFile(outputPath, 'utf-8');
-      existingData = JSON.parse(existingContent);
+      const { content } = await readCourseFile(courseCode, outputFileName);
+      existingData = content;
     } catch (err) {
+      if (err.code !== 'NOT_FOUND') throw err;
       // File doesn't exist yet, that's fine
     }
 
@@ -103,16 +96,16 @@ export default async function handler(req, res) {
       };
     }
 
-    // Write to file
-    await fs.writeFile(outputPath, JSON.stringify(finalData, null, 2), 'utf-8');
+    // Write to S3
+    const { etag, url } = await writeCourseFile(courseCode, outputFileName, finalData);
 
-    console.log(`[API] ✅ Wrote ${seeds.length} seeds to ${outputPath}`);
-    console.log(`[API] Segment: ${segmentId}, Agent: ${agentId}, Phase: ${phase}`);
+    console.log(`[API] ✅ Wrote ${seeds.length} seeds to S3: courses/${courseCode}/${outputFileName}`);
+    console.log(`[API] Segment: ${segmentId}, Agent: ${agentId}, Phase: ${phase}, ETag: ${etag}`);
 
     res.status(200).json({
       success: true,
       message: `Successfully wrote ${seeds.length} seeds to ${outputFileName}`,
-      path: `/vfs/courses/${courseCode}/${outputFileName}`,
+      s3: { url, etag },
       totalSeeds: finalData.seeds.length,
       segment: {
         segmentId,
