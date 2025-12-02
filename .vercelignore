@@ -1,6 +1,35 @@
-# Exclude course data from Vercel uploads
-# Dashboard fetches this data from GitHub at runtime
-#
-# Exclude all course directories but keep the manifest
+# Exclude large directories from Vercel uploads
+# Dashboard fetches data from GitHub/S3 at runtime
+
+# Course data (1.5GB+)
 public/vfs/courses/*
 !public/vfs/courses-manifest.json
+vfs/
+
+# Temp files (1.4GB)
+temp/
+
+# Logs (500MB+)
+logs/
+
+# Build artifacts (handled by Vercel)
+dist/
+
+# Development files
+.env*
+*.log
+
+# Samples database
+samples_database/
+
+# Scripts and tools (not needed at runtime)
+scripts/
+tools/
+validators/
+tests/
+
+# Documentation
+docs/
+
+# Archive
+archive/
