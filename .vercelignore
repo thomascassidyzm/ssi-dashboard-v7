@@ -28,8 +28,8 @@ tools/
 validators/
 tests/
 
-# Documentation
-docs/
+# Documentation (root docs/, NOT public/docs/ which is used in build)
+/docs/
 
 # Archive
 archive/
