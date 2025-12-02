@@ -50,12 +50,27 @@ Audio generation produces four types of samples, organized by **role**:
 
 ### MAR (Master Audio Registry)
 
-The MAR tracks audio samples by voice, enabling cross-course reuse:
-- If "hello" was generated for `spa_for_eng`, it can be reused in `cmn_for_eng`
-- Samples are matched by **normalized text** (lowercase, trimmed, no trailing periods)
-- Location: `samples_database/voices/{voiceId}/samples.json`
+The MAR is a **text → UUID lookup database**, organized by voice. It enables:
+- Cross-course reuse: "hello" generated for `spa_for_eng` can be reused in `cmn_for_eng`
+- Deduplication: Same text with same voice always gets the same UUID
 
-There's also a **temporary MAR** (`temp/mar/`) used for crash-safety during generation.
+**Key concept**: The **manifest is the source of truth** for UUIDs. The MAR is populated FROM the manifest.
+
+```
+┌─────────────┐     UUIDs flow     ┌─────────────┐     Audio lives     ┌─────────────┐
+│  Manifest   │ ─────────────────► │     MAR     │                     │     S3      │
+│ (has UUIDs) │                    │ (text→UUID) │ ◄──────────────────►│  (by UUID)  │
+└─────────────┘                    └─────────────┘     referenced by    └─────────────┘
+```
+
+**Structure:**
+- Location: `samples_database/voices/{voiceId}/samples.json`
+- Samples matched by **normalized text** (lowercase, trimmed, no trailing periods)
+- Temporary MAR (`temp/mar/`) used for crash-safety during generation
+
+**Common confusion:**
+- "I have audio files but MAR doesn't have the UUIDs" → You need the manifest that has the UUIDs
+- "I have a manifest but MAR doesn't match" → Run MAR sync from manifest (see Step 4.1)
 
 ---
 
@@ -283,12 +298,31 @@ To add a welcome message:
 
 #### Step 4.1: Sync Manifest to Permanent MAR
 
+The manifest contains the authoritative UUIDs for all samples. This step copies those UUIDs to the MAR so they can be reused by other courses or agents.
+
+**Automatic** (runs at end of `generateAudioForCourse()`):
 ```javascript
-// Called at end of generateAudioForCourse()
 marService.syncManifestToMAR(manifest, voiceAssignments, targetLang, sourceLang)
 ```
 
-This backs up all generated samples to permanent MAR for future course reuse.
+**Standalone** (run manually if MAR is out of sync):
+```bash
+node scripts/rebuild-mar-from-manifest.cjs <course_code>
+
+# Preview what will be synced (no changes)
+node scripts/rebuild-mar-from-manifest.cjs <course_code> --dry-run
+```
+
+**What it does:**
+1. Reads all samples with UUIDs from the manifest
+2. Groups samples by voice (role → voice mapping from `voices.json`)
+3. Adds samples to `samples_database/voices/{voiceId}/samples.json`
+4. Does NOT overwrite existing entries (additive only)
+
+**When to run manually:**
+- Another agent needs your UUIDs but MAR doesn't have them
+- MAR was accidentally deleted or corrupted
+- You're setting up a new machine with an existing manifest
 
 #### Step 4.2: Manifest Repopulation
 
@@ -357,8 +391,9 @@ node scripts/phase8-audio-generation.cjs <code> --execute --continue-processing
 node scripts/phase8-audio-generation.cjs <code> --execute --regenerate UUID1,UUID2
 
 # Post-generation
-node scripts/manifest-repopulation.cjs <code>
-node scripts/extract-s3-durations-parallel.cjs <code>
+node scripts/rebuild-mar-from-manifest.cjs <code>               # Sync manifest UUIDs to MAR
+node scripts/manifest-repopulation.cjs <code>                   # Restore text variants
+node scripts/extract-s3-durations-parallel.cjs <code>           # Verify S3 + get durations
 node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 ```
 

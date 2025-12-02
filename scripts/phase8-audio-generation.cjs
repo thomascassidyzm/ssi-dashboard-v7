@@ -516,12 +516,16 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       });
 
       // Update manifest with existing UUID and duration
+      // IMPORTANT: Only update UUID if manifest doesn't already have one
+      // This preserves manifest as source of truth when running specific phases
       const samples = manifest.slices?.[0]?.samples || {};
       const variantInManifest = samples[variant.text]?.find(
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
-        variantInManifest.id = existing.uuid;
+        if (!variantInManifest.id) {
+          variantInManifest.id = existing.uuid;
+        }
         variantInManifest.duration = existing.sample.duration;
       }
     } else {

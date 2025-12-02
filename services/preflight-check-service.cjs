@@ -18,6 +18,182 @@ const https = require('https');
 const VFS_COURSES_PATH = path.join(__dirname, '..', 'public', 'vfs', 'courses');
 const CANONICAL_PATH = path.join(__dirname, '..', 'public', 'vfs', 'canonical');
 
+// ============================================================================
+// ORPHAN SAMPLE DETECTION
+// ============================================================================
+
+/**
+ * Extract tagged examples from presentation/explanation text
+ * Handles patterns like {target1}'text' or {target2}"text"
+ * @param {string} text - Presentation or explanation text
+ * @returns {Array<{tag: string, text: string}>} - Array of tagged examples
+ */
+function extractTaggedExamples(text) {
+  if (!text) return [];
+
+  // Pattern: {tag}'text' or {tag}"text" - handles apostrophes by matching same quote at start/end
+  const pattern = /\{(\w+(?:-\w+)?)\}\s*(['"])(.*?)\2/g;
+  const results = [];
+  let match;
+
+  while ((match = pattern.exec(text)) !== null) {
+    const [, tag, , exampleText] = match;
+    if (tag && exampleText) {
+      results.push({ tag, text: exampleText });
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Build set of expected samples from manifest structure
+ * Does NOT include encouragements (they should be cleared before audio gen)
+ * @param {Object} manifest - Course manifest
+ * @returns {Set<string>} - Set of "text|role" keys for expected samples
+ */
+function buildExpectedSamples(manifest) {
+  const expected = new Set();
+  const slice = manifest.slices?.[0];
+  if (!slice) return expected;
+
+  const addSample = (text, role) => {
+    if (text && role) {
+      expected.add(`${text}|${role}`);
+    }
+  };
+
+  // Process seeds
+  for (const seed of slice.seeds || []) {
+    // Seed node
+    if (seed.node) {
+      const knownText = seed.node.known?.text;
+      const targetText = seed.node.target?.text;
+      addSample(knownText, 'source');
+      addSample(targetText, 'target1');
+      addSample(targetText, 'target2');
+    }
+
+    // Introduction items
+    for (const item of seed.introduction_items || []) {
+      // Item node
+      if (item.node) {
+        const knownText = item.node.known?.text;
+        const targetText = item.node.target?.text;
+        addSample(knownText, 'source');
+        addSample(targetText, 'target1');
+        addSample(targetText, 'target2');
+      }
+
+      // Presentation text
+      if (item.presentation) {
+        addSample(item.presentation, 'presentation');
+
+        // Extract tagged examples from presentation
+        const taggedExamples = extractTaggedExamples(item.presentation);
+        for (const { tag, text } of taggedExamples) {
+          if (tag === 'target1' || tag === 'target2' || tag === 'source') {
+            addSample(text, tag);
+          }
+        }
+      }
+
+      // Nodes array
+      for (const node of item.nodes || []) {
+        const knownText = node.known?.text;
+        const targetText = node.target?.text;
+        addSample(knownText, 'source');
+        addSample(targetText, 'target1');
+        addSample(targetText, 'target2');
+      }
+    }
+  }
+
+  return expected;
+}
+
+/**
+ * Find orphaned samples in manifest (samples that exist but aren't referenced)
+ * @param {Object} manifest - Course manifest
+ * @returns {{orphaned: Set<string>, stats: Object}} - Orphaned sample keys and stats
+ */
+function findOrphanedSamples(manifest) {
+  const expected = buildExpectedSamples(manifest);
+  const actual = new Set();
+  const slice = manifest.slices?.[0];
+
+  if (slice?.samples) {
+    for (const [text, variants] of Object.entries(slice.samples)) {
+      for (const variant of variants) {
+        if (variant.role) {
+          actual.add(`${text}|${variant.role}`);
+        }
+      }
+    }
+  }
+
+  // Orphaned = actual samples that aren't in expected
+  const orphaned = new Set();
+  for (const key of actual) {
+    if (!expected.has(key)) {
+      orphaned.add(key);
+    }
+  }
+
+  return {
+    orphaned,
+    stats: {
+      expected: expected.size,
+      actual: actual.size,
+      orphaned: orphaned.size
+    }
+  };
+}
+
+/**
+ * Remove orphaned samples from manifest
+ * @param {Object} manifest - Course manifest (modified in place)
+ * @param {Set<string>} orphanedKeys - Set of "text|role" keys to remove
+ * @returns {Object} - Count of removed samples by role
+ */
+function removeOrphanedSamples(manifest, orphanedKeys) {
+  const slice = manifest.slices?.[0];
+  if (!slice?.samples) return {};
+
+  const removed = {};
+  const textsToDelete = [];
+
+  for (const [text, variants] of Object.entries(slice.samples)) {
+    const originalLength = variants.length;
+
+    // Filter out orphaned variants
+    slice.samples[text] = variants.filter(v => {
+      const key = `${text}|${v.role}`;
+      if (orphanedKeys.has(key)) {
+        removed[v.role] = (removed[v.role] || 0) + 1;
+        return false;
+      }
+      return true;
+    });
+
+    // Mark for deletion if no variants left
+    if (slice.samples[text].length === 0) {
+      textsToDelete.push(text);
+    }
+  }
+
+  // Delete empty entries
+  for (const text of textsToDelete) {
+    delete slice.samples[text];
+  }
+
+  return removed;
+}
+
+// ============================================================================
+// SERVICE CHECKS
+// ============================================================================
+
 /**
  * Check if Azure Speech API is accessible and working
  */
@@ -675,7 +851,13 @@ async function checkAndFixManifestStructure(courseCode, options = {}) {
     const validator = require('../tools/validators/manifest-structure-validator.cjs');
     const result = validator.validateCourse(courseCode, { fix: autoFix });
 
-    if (result.valid) {
+    // Filter out encouragement-related issues - preflight has its own check that expects them empty
+    const preflightIssues = result.issues.filter(issue =>
+      !issue.includes('orderedEncouragements') &&
+      !issue.includes('pooledEncouragements')
+    );
+
+    if (preflightIssues.length === 0) {
       return {
         success: true,
         service: 'Manifest Structure',
@@ -688,7 +870,7 @@ async function checkAndFixManifestStructure(courseCode, options = {}) {
     return {
       success: false,
       service: 'Manifest Structure',
-      error: result.issues.join('; '),
+      error: preflightIssues.join('; '),
       autoFixable: true,
       agentAction: 'Run: node tools/validators/manifest-structure-validator.cjs ' + courseCode + ' --fix'
     };
@@ -776,7 +958,7 @@ async function checkAndFixWelcomeState(courseCode, options = {}) {
 
 /**
  * Check and fix encouragements empty state (should be empty before generation)
- * AUTO-FIXABLE: Removes encouragements from manifest
+ * AUTO-FIXABLE: Removes encouragements from manifest AND removes orphaned samples
  */
 async function checkAndFixEncouragementsEmpty(courseCode, options = {}) {
   const { autoFix = true } = options;
@@ -801,8 +983,27 @@ async function checkAndFixEncouragementsEmpty(courseCode, options = {}) {
 
     const hasOrdered = slice.orderedEncouragements && slice.orderedEncouragements.length > 0;
     const hasPooled = slice.pooledEncouragements && slice.pooledEncouragements.length > 0;
+    const orderedCount = slice.orderedEncouragements?.length || 0;
+    const pooledCount = slice.pooledEncouragements?.length || 0;
 
     if (!hasOrdered && !hasPooled) {
+      // Even if encouragement arrays are empty, check for orphaned samples
+      // (may be leftover from previous runs)
+      const { orphaned, stats } = findOrphanedSamples(manifest);
+
+      if (orphaned.size > 0 && autoFix) {
+        const removed = removeOrphanedSamples(manifest, orphaned);
+        await fs.writeJson(manifestPath, manifest, { spaces: 2 });
+
+        const removedStr = Object.entries(removed).map(([r, c]) => `${c} ${r}`).join(', ');
+        return {
+          success: true,
+          service: 'Encouragements Empty',
+          message: `AUTO-FIXED: Removed ${orphaned.size} orphaned samples (${removedStr})`,
+          fixed: true
+        };
+      }
+
       return {
         success: true,
         service: 'Encouragements Empty',
@@ -811,14 +1012,26 @@ async function checkAndFixEncouragementsEmpty(courseCode, options = {}) {
     }
 
     if (autoFix) {
+      // Step 1: Clear encouragement arrays
       delete slice.orderedEncouragements;
       delete slice.pooledEncouragements;
+
+      // Step 2: Find and remove orphaned samples (encouragement samples are now orphans)
+      const { orphaned, stats } = findOrphanedSamples(manifest);
+      let orphanMsg = '';
+
+      if (orphaned.size > 0) {
+        const removed = removeOrphanedSamples(manifest, orphaned);
+        const removedStr = Object.entries(removed).map(([r, c]) => `${c} ${r}`).join(', ');
+        orphanMsg = `, removed ${orphaned.size} orphaned samples (${removedStr})`;
+      }
+
       await fs.writeJson(manifestPath, manifest, { spaces: 2 });
 
       return {
         success: true,
         service: 'Encouragements Empty',
-        message: 'AUTO-FIXED: Removed encouragements (will be re-added post-generation)',
+        message: `AUTO-FIXED: Removed ${orderedCount + pooledCount} encouragements${orphanMsg}`,
         fixed: true
       };
     }
@@ -826,7 +1039,7 @@ async function checkAndFixEncouragementsEmpty(courseCode, options = {}) {
     return {
       success: false,
       service: 'Encouragements Empty',
-      error: `Encouragements present (${(slice.orderedEncouragements?.length || 0) + (slice.pooledEncouragements?.length || 0)} total)`,
+      error: `Encouragements present (${orderedCount + pooledCount} total)`,
       autoFixable: true,
       agentAction: 'Remove encouragements before deduplication'
     };
