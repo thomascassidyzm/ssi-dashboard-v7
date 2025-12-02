@@ -239,7 +239,7 @@
 
             <button
               @click="saveAndNext"
-              :disabled="!hasRecording || saving"
+              :disabled="!recorderHasRecording || saving"
               class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
             >
               <span v-if="saving">Saving...</span>
@@ -274,6 +274,19 @@
               {{ lastSaveStatus.message }}
             </span>
           </div>
+
+          <!-- Keyboard Shortcuts Help -->
+          <div class="mt-6 bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
+            <p class="text-xs text-slate-500 mb-2 font-semibold">KEYBOARD SHORTCUTS</p>
+            <div class="flex flex-wrap gap-4 text-xs text-slate-400">
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">SPACE</kbd> Record</span>
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">ENTER</kbd> Save & Next</span>
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">S</kbd> Skip</span>
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">P</kbd> Play</span>
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">R</kbd> Re-record</span>
+              <span><kbd class="bg-slate-700 px-2 py-0.5 rounded text-slate-300">←/→</kbd> Navigate</span>
+            </div>
+          </div>
         </div>
 
         <!-- Loading -->
@@ -298,7 +311,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import AudioRecorder from '../components/AudioRecorder.vue'
 import api from '../services/api'
 
@@ -406,6 +419,9 @@ const filteredCourses = computed(() => {
 const currentPhrase = computed(() => phrases.value[currentIndex.value])
 const recordedCount = computed(() => recordedPhrases.value.size)
 
+// Fix: Use component method to check for recording (not local ref)
+const recorderHasRecording = computed(() => recorder.value?.hasRecording() || false)
+
 // Generate deterministic UUID from phrase metadata
 function generatePhraseUUID(phrase) {
   const key = `${phrase.text}:${phrase.language}:${phrase.role}:${phrase.cadence}`
@@ -421,18 +437,6 @@ function generatePhraseUUID(phrase) {
   return `${hex.slice(0, 8)}-${hex.slice(0, 4)}-4${hex.slice(1, 4)}-a${hex.slice(1, 4)}-${hex.slice(0, 12).padEnd(12, '0')}`
 }
 
-// Load recorder name from localStorage on mount
-onMounted(async () => {
-  const savedName = localStorage.getItem('ssi_recorder_name')
-  if (savedName) {
-    recorderName.value = savedName
-    voiceId.value = `human_${savedName.toLowerCase().replace(/[^a-z0-9]/g, '_')}`
-  } else {
-    showNamePrompt.value = true
-  }
-  await loadCourses()
-})
-
 function setRecorderName() {
   if (!recorderName.value.trim()) return
   const name = recorderName.value.trim()
@@ -444,6 +448,74 @@ function setRecorderName() {
 function changeRecorder() {
   showNamePrompt.value = true
 }
+
+// Keyboard shortcuts for rapid recording
+function handleKeyPress(e) {
+  // Ignore if in input/textarea or modal is showing
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
+  if (showNamePrompt.value) return
+  if (!selectedCourse.value) return // Only active in recording view
+
+  switch (e.key) {
+    case ' ': // Spacebar - toggle recording
+      e.preventDefault()
+      if (recorder.value?.toggleRecording) {
+        recorder.value.toggleRecording()
+      }
+      break
+    case 'Enter': // Save & next
+      e.preventDefault()
+      if (recorderHasRecording.value && !saving.value) {
+        saveAndNext()
+      }
+      break
+    case 's': // Skip
+    case 'S':
+      e.preventDefault()
+      skipPhrase()
+      break
+    case 'p': // Play back
+    case 'P':
+      e.preventDefault()
+      if (recorder.value?.playRecording) {
+        recorder.value.playRecording()
+      }
+      break
+    case 'r': // Re-record (clear)
+    case 'R':
+      e.preventDefault()
+      if (recorder.value?.clearRecording) {
+        recorder.value.clearRecording()
+      }
+      break
+    case 'ArrowLeft': // Previous phrase
+      e.preventDefault()
+      prevPhrase()
+      break
+    case 'ArrowRight': // Next phrase (without saving)
+      e.preventDefault()
+      nextPhrase()
+      break
+  }
+}
+
+onMounted(async () => {
+  // Add keyboard listener
+  window.addEventListener('keydown', handleKeyPress)
+
+  const savedName = localStorage.getItem('ssi_recorder_name')
+  if (savedName) {
+    recorderName.value = savedName
+    voiceId.value = `human_${savedName.toLowerCase().replace(/[^a-z0-9]/g, '_')}`
+  } else {
+    showNamePrompt.value = true
+  }
+  await loadCourses()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyPress)
+})
 
 // Watch course selection
 watch(selectedCourse, async (course) => {

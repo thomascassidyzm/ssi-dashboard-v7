@@ -229,10 +229,24 @@ function formatDuration(seconds) {
   return `${mins}:${secs.toString().padStart(2, '0')}.${ms}`
 }
 
-// Expose recording blob for parent components
+// Toggle recording (for keyboard shortcuts)
+function toggleRecording() {
+  if (isRecording.value) {
+    stopRecording()
+  } else {
+    startRecording()
+  }
+}
+
+// Expose methods for parent components
 defineExpose({
   getRecording: () => recordingBlob.value,
-  hasRecording: () => hasRecording.value
+  hasRecording: () => hasRecording.value,
+  toggleRecording,
+  playRecording,
+  clearRecording,
+  startRecording,
+  stopRecording
 })
 
 onUnmounted(() => {
