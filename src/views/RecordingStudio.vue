@@ -558,6 +558,20 @@ async function loadPhrases(courseCode) {
   }
 }
 
+// Convert blob to base64
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      // Remove data URL prefix (e.g., "data:audio/webm;base64,")
+      const base64 = reader.result.split(',')[1]
+      resolve(base64)
+    }
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  })
+}
+
 function onRecorded(blob) {
   hasRecording.value = true
 }
@@ -577,23 +591,28 @@ async function saveAndNext() {
     const phrase = currentPhrase.value
     const phraseVoiceId = `${voiceId.value}_${phrase.language}`
 
-    // Create form data
-    const formData = new FormData()
-    formData.append('audio', blob, 'recording.webm')
-    formData.append('metadata', JSON.stringify({
-      text: phrase.text,
-      language: phrase.language,
-      role: phrase.role,
-      cadence: phrase.cadence,
-      courseCode: selectedCourse.value,
-      voiceId: phraseVoiceId,
-      uuid: phrase.uuid
-    }))
+    // Convert blob to base64
+    const base64Audio = await blobToBase64(blob)
 
-    // Upload to API
+    // Send as JSON (avoids multipart parsing issues)
     const response = await fetch('/api/audio/record', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        audio: base64Audio,
+        mimeType: blob.type,
+        metadata: {
+          text: phrase.text,
+          language: phrase.language,
+          role: phrase.role,
+          cadence: phrase.cadence,
+          courseCode: selectedCourse.value,
+          voiceId: phraseVoiceId,
+          uuid: phrase.uuid
+        }
+      })
     })
 
     if (!response.ok) {
