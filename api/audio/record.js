@@ -5,6 +5,7 @@
 
 import AWS from 'aws-sdk';
 import crypto from 'crypto';
+import Busboy from 'busboy';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
 const s3 = new AWS.S3({
@@ -19,46 +20,67 @@ export const config = {
   }
 };
 
+// Parse multipart form data using busboy
+function parseMultipart(req) {
+  return new Promise((resolve, reject) => {
+    const busboy = Busboy({ headers: req.headers });
+    const result = {
+      audioBuffer: null,
+      metadata: null
+    };
+
+    busboy.on('file', (fieldname, file, info) => {
+      const chunks = [];
+      file.on('data', (chunk) => chunks.push(chunk));
+      file.on('end', () => {
+        if (fieldname === 'audio') {
+          result.audioBuffer = Buffer.concat(chunks);
+        }
+      });
+    });
+
+    busboy.on('field', (fieldname, value) => {
+      if (fieldname === 'metadata') {
+        try {
+          result.metadata = JSON.parse(value);
+        } catch (e) {
+          // ignore parse errors
+        }
+      }
+    });
+
+    busboy.on('finish', () => resolve(result));
+    busboy.on('error', reject);
+
+    req.pipe(busboy);
+  });
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    // Parse multipart form data (simplified - in production use formidable or multer)
-    const chunks = [];
-    for await (const chunk of req) {
-      chunks.push(chunk);
+    // Parse multipart form data
+    const { audioBuffer, metadata } = await parseMultipart(req);
+
+    if (!audioBuffer || audioBuffer.length === 0) {
+      return res.status(400).json({ error: 'Missing audio data' });
     }
-    const buffer = Buffer.concat(chunks);
-
-    // Extract metadata from boundary (simplified parsing)
-    // In production, use proper multipart parser
-    const boundary = req.headers['content-type'].split('boundary=')[1];
-    const parts = buffer.toString().split(`--${boundary}`);
-
-    let audioBuffer = null;
-    let metadata = null;
-
-    // Parse parts (simplified)
-    for (const part of parts) {
-      if (part.includes('name="metadata"')) {
-        const jsonStart = part.indexOf('{');
-        const jsonEnd = part.lastIndexOf('}') + 1;
-        metadata = JSON.parse(part.slice(jsonStart, jsonEnd));
-      }
-      if (part.includes('name="audio"')) {
-        // Extract binary data after headers
-        const dataStart = part.indexOf('\r\n\r\n') + 4;
-        audioBuffer = Buffer.from(part.slice(dataStart), 'binary');
-      }
+    if (!metadata) {
+      return res.status(400).json({ error: 'Missing metadata' });
     }
 
-    if (!audioBuffer || !metadata) {
-      return res.status(400).json({ error: 'Missing audio or metadata' });
-    }
+    console.log('[Recording] Received:', {
+      audioSize: audioBuffer.length,
+      text: metadata.text?.slice(0, 50),
+      language: metadata.language,
+      voiceId: metadata.voiceId
+    });
 
     // Generate key: {text_hash}_{lang}_{role}_{cadence}_{voice_id}
     const textHash = crypto.createHash('md5').update(metadata.text).digest('hex').slice(0, 8);
@@ -71,16 +93,19 @@ export default async function handler(req, res) {
       Body: audioBuffer,
       ContentType: 'audio/webm',
       Metadata: {
-        text: metadata.text,
+        text: encodeURIComponent(metadata.text), // Encode for S3 metadata
         language: metadata.language,
         role: metadata.role,
+        cadence: metadata.cadence || 'normal',
         voiceId: metadata.voiceId,
-        courseCode: metadata.courseCode,
+        courseCode: metadata.courseCode || '',
         recordedAt: new Date().toISOString()
       }
     }).promise();
 
     const url = `https://${S3_BUCKET}.s3.${process.env.AWS_REGION || 'eu-west-1'}.amazonaws.com/${key}`;
+
+    console.log('[Recording] Uploaded:', key);
 
     res.json({
       success: true,
