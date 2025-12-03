@@ -48,22 +48,44 @@ const welcome = welcomes.welcomes[courseCode];
 // Language code to full name mapping
 const langNames = {
   'eng': 'English',
+  'en': 'English',
   'cmn': 'Chinese',
   'spa': 'Spanish',
+  'es': 'Spanish',
   'fra': 'French',
+  'fr': 'French',
   'deu': 'German',
+  'de': 'German',
   'ita': 'Italian',
+  'it': 'Italian',
   'por': 'Portuguese',
+  'pt': 'Portuguese',
   'rus': 'Russian',
+  'ru': 'Russian',
   'ara': 'Arabic',
+  'ar': 'Arabic',
   'jpn': 'Japanese',
+  'ja': 'Japanese',
   'kor': 'Korean',
+  'ko': 'Korean',
   'bre': 'Breton',
+  'br': 'Breton',
   'cym': 'Welsh',
+  'cy': 'Welsh',
   'gle': 'Irish',
+  'ga': 'Irish',
   'nld': 'Dutch',
+  'nl': 'Dutch',
   'tur': 'Turkish',
-  'ces': 'Czech'
+  'tr': 'Turkish',
+  'ces': 'Czech',
+  'cs': 'Czech'
+};
+
+// Mapping from 3-letter to 2-letter codes (for English only - target languages stay 3-letter)
+const shortCodeMap = {
+  'eng': 'en'  // English uses 2-letter code in manifest
+  // All other languages use their existing codes (3-letter for targets)
 };
 
 const targetName = langNames[targetLang] || targetLang;
@@ -142,10 +164,16 @@ function createNode(knownText, targetText) {
 
 console.log('Building manifest structure...\n');
 
+// Apply language code mapping: English uses 2-letter 'en', target languages use 3-letter codes
+const manifestKnown = shortCodeMap[knownLang] || knownLang;
+const manifestTarget = targetLang;  // Target languages keep their 3-letter codes
+
+console.log(`✓ Manifest codes: known=${manifestKnown}, target=${manifestTarget}`);
+
 const manifest = {
-  id: `${knownLang}-${targetLang}`,
-  known: knownLang,
-  target: targetLang,
+  id: `${manifestKnown}-${manifestTarget}`,
+  known: manifestKnown,
+  target: manifestTarget,
   version: "8.2.0",
   status: "alpha",
   introduction: {

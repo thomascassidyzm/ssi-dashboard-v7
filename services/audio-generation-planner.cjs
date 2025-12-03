@@ -29,7 +29,8 @@ const PRICING = {
       creator: { chars: 100000, cost: 22, overage: 0.30 },     // $0.30 per 1k chars
       pro: { chars: 500000, cost: 99, overage: 0.24 },         // $0.24 per 1k chars
       scale: { chars: 2000000, cost: 330, overage: 0.18 },     // $0.18 per 1k chars
-      business: { chars: 11000000, cost: 1320, overage: 0.18 } // $0.18 per 1k chars
+      business: { chars: 11000000, cost: 1320, overage: 0.18 }, // $0.18 per 1k chars
+      growing_business: { chars: 2270218, cost: 99, overage: 0.18 } // Growing business tier
     },
     rate_limits: {
       free: 1,       // 1 req/sec
@@ -37,7 +38,8 @@ const PRICING = {
       creator: 3,    // 3 req/sec
       pro: 5,        // 5 req/sec
       scale: 8,      // 8 req/sec
-      business: 15   // 15 req/sec
+      business: 15,  // 15 req/sec
+      growing_business: 10 // ~10 req/sec for growing business
     }
   }
 };

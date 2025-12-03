@@ -4628,7 +4628,7 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
 
   try {
     // S3 bucket for audio
-    const s3Bucket = process.env.AWS_S3_BUCKET || 'ssi-audio-staging';
+    const s3Bucket = process.env.AWS_S3_AUDIO_BUCKET || 'ssi-audio-stage';
     const s3Key = `mastered/${uuid}.mp3`;
 
     // Use AWS SDK to get the file
