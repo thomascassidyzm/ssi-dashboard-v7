@@ -1,209 +1,103 @@
-# SSi Course Production Dashboard v9.0.0
+# SSi Course Production Dashboard v10.1.0
 
-**APML v9.0.0: Simplified Phase Structure**
+**APML v10.1: S3 as Single Source of Truth**
 
 ## Overview
 
-Clean, minimal dashboard for SSi Course Production with locked phase intelligence (APML v9.0).
+Course production dashboard for SSi language learning system. All course data lives in S3 (not GitHub).
 
-**New in v9.0:** Simplified phase structure - Phase 1 (Translation + LEGOs), Phase 3 (Baskets), Manifest (Compilation), Audio (TTS Generation).
+**v10.1 Features:**
+- S3 is SSoT for all course data (bucket: `popty-bach-lfs`, region: `eu-west-1`)
+- LEGO Debut cycle in basket generation
+- API proxy for course files (avoids CORS)
+- Support for TTS (primary) and human recordings (edge-case languages)
 
-### Features
-
-- ✅ All v7.0 phases (0, 1, 2, 3, 3.5, 4, 5, 6)
-- ✅ Amino acid storage architecture
-- ✅ Graph intelligence (Phase 3.5)
-- ✅ **Inline Translation Editing** with impact analysis
-- ✅ **Provenance Tracking** - trace seed impact through all phases
-- ✅ **Course Library Browser** - view and edit existing courses
-- ✅ Beautiful, subtle design (emerald/slate theme)
-- ✅ No garish colors or flickering animations
-- ✅ Zero legacy baggage
-
-### Tech Stack
-
-- Vue 3 (Composition API)
-- Vite (Build tool)
-- Tailwind CSS 4
-- No router (single page for now)
-
-### Phase Coverage (APML v9.0 - Locked Intelligence)
-
-**Active Workflow**: Phase 1 → Phase 3 → Manifest → Audio
-
-**APML v9.0 Simplified Structure**:
-- **Phase 1**: Translation + LEGO Extraction + Introductions (single integrated phase)
-- **Phase 3**: Basket Generation (practice phrases)
-- **Manifest**: Course Compilation (formerly Phase 7)
-- **Audio**: TTS Generation (formerly Phase 8)
-
-| Phase | Name | Version | Status | Description |
-|-------|------|---------|--------|-------------|
-| 1 | Translation + LEGOs | v2.6 🔒 | ACTIVE | Translations, LEGO extraction, introductions (integrated) |
-| 2 | Conflict Resolution | v1.0 | Optional | LEGO conflict resolution (human-assisted) |
-| 3 | Basket Generation | v3.0 🔒 | ACTIVE | Eternal/debut phrases, GATE constraint |
-| M | Manifest Compilation | v1.1 🔐 | IMMUTABLE | Fixed app manifest format (API contract) |
-| A | Audio Generation | v1.1 | Documented | TTS + S3 upload |
-
-🔒 = Locked, production-ready SSoT (evolvable)
-🔐 = Immutable contract (cannot change without external system update)
-
-**Phase Intelligence**: See `docs/phase_intelligence/README.md` for detailed methodology
-
-## Development
+## Quick Start
 
 ```bash
 npm install
-npm run dev
+npm run dev          # Frontend (port 5173)
 ```
-
-## Build
-
-```bash
-npm run build
-```
-
-## Deploy to Vercel
-
-```bash
-vercel --prod
-```
-
-Or connect to GitHub and auto-deploy.
 
 ## Architecture
 
-### Editing Workflow
+### Data Flow
 
-1. **User edits translation** in Course Editor UI
-2. **Impact analysis** shown before save (LEGOs affected, baskets impacted)
-3. **PUT /api/courses/:code/translations/:uuid** updates amino acid file
-4. **Course metadata flagged** with `needs_regeneration: true`
-5. **Phases 3-6 regenerate** to propagate changes through pipeline
-6. **Deterministic UUIDs** ensure automatic reference updates
+```
+S3 (popty-bach-lfs)
+    └── courses/{course_code}/
+         ├── lego_pairs.json      (Phase 1+2 output - SSoT)
+         ├── lego_baskets.json    (Phase 3 output - SSoT)
+         ├── introductions.json   (derived)
+         └── course_manifest.json (compiled for app)
+```
+
+### Pipeline (APML v10.1)
+
+| Phase | Name | Port | Description |
+|-------|------|------|-------------|
+| 1 | Translation + LEGO Extraction | 3457 | Translate seeds, extract LEGOs |
+| 2 | Conflict Resolution | 3458 | Resolve LEGO conflicts |
+| 3 | Basket Generation | 3459 | Generate practice baskets with LEGO Debut cycle |
+| - | Manifest Compilation | script | Compile course_manifest.json |
+| - | Audio Generation | 3465 | TTS generation (Azure/ElevenLabs) |
+
+**v10.1 Basket Cycle Sequence (M-type LEGOs):**
+1. Components (`is_component: true`) - building blocks
+2. LEGO Debut (`is_debut: true`) - the complete LEGO
+3. Practice sentences - LEGO used in context
 
 ### API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/courses` | List all courses |
-| GET | `/api/courses/:code` | Get full course data |
-| GET | `/api/courses/:code/analyze` | **NEW** Analyze progress + smart resume suggestions |
-| GET | `/api/courses/:code/provenance/:seedId` | Trace provenance chain |
-| PUT | `/api/courses/:code/translations/:uuid` | Update translation |
-| POST | `/api/courses/generate` | Generate new course (supports startSeed/endSeed) |
+| GET | `/api/courses` | List all courses (from S3) |
+| GET | `/api/courses/:code/files/:filename` | Get course file (proxy to S3) |
+| POST | `/api/courses/:code/outputs` | Save phase outputs to S3 |
 
-### VFS Structure
-
-```
-vfs/courses/:courseCode/
-├── amino_acids/
-│   ├── translations/
-│   │   └── {uuid}.json          # Translation amino acids
-│   ├── legos/
-│   │   └── {uuid}.json          # LEGO amino acids
-│   ├── legos_deduplicated/
-│   │   └── {uuid}.json          # Deduplicated LEGOs
-│   ├── baskets/
-│   │   └── basket_{id}.json     # Basket amino acids
-│   └── introductions/
-│       └── intro_basket_{id}.json
-├── phase_outputs/
-│   ├── phase_2_corpus_intelligence.json
-│   ├── phase_3_lego_extraction.json
-│   ├── phase_3.5_graph.json
-│   ├── phase_4_deduplication.json
-│   ├── phase_5_baskets.json
-│   └── phase_6_introductions.json
-└── course_metadata.json
-```
-
-## Course Validation
-
-Comprehensive validation tools for quality assurance and self-healing batch generation.
-
-### Evolution Principle
-
-**Validators are NOT fixed specifications** - they are v1.0 measurement tools that can evolve. The system can refine validators, create new ones, and iterate on measurement algorithms as it learns. Validators feed the SELF-REGULATION layer, enabling batch-aware course generation where each batch reads previous quality metrics and self-corrects.
-
-### Validators (v1.0)
-
-| Tool | Purpose | Key Metrics |
-|------|---------|-------------|
-| **analyze-lego-frequency.cjs** | Vocabulary coverage | Practice distribution, under/over-practiced LEGOs |
-| **analyze-pattern-coverage.cjs** | LEGO combination diversity | Pattern density, missing/over-used edges |
-| **analyze-completeness.cjs** | Overall quality score | Multi-dimensional completeness (0-100%) |
-
-### Quick Start
+### Services (PM2)
 
 ```bash
-# Run all validators on a course
-COURSE="spa_for_eng_20seeds"
-
-node validators/analyze-lego-frequency.cjs $COURSE --output vfs/courses/$COURSE/frequency_report.json
-node validators/analyze-pattern-coverage.cjs $COURSE --output vfs/courses/$COURSE/pattern_report.json
-node validators/analyze-completeness.cjs $COURSE --output vfs/courses/$COURSE/completeness_report.json
+pm2 start ecosystem.config.cjs
+pm2 status
 ```
 
-### Completeness Score Dimensions
+| Service | Port | Description |
+|---------|------|-------------|
+| ssi-orchestrator | 3456 | Main orchestrator |
+| phase1-translation | 3457 | Phase 1 server |
+| phase2-conflict | 3458 | Phase 2 server |
+| phase3-baskets | 3459 | Phase 3 server |
+| phase7-manifest | 3464 | Manifest compilation |
+| phase8-audio | 3465 | Audio generation |
 
-1. **Vocabulary (35%)** - Coverage + balance of practice distribution
-2. **Patterns (35%)** - Diversity of LEGO combinations (edge coverage)
-3. **Distribution (15%)** - Semantic diversity across LEGO types
-4. **Progression (15%)** - Complexity increase over time
-
-**Target**: Overall score > 70% for production courses
-
-### Self-Healing Batch Generation
-
-When generating courses in batches (e.g., 20 seeds at a time), validators provide feedback for the next batch:
-- Pattern density too low? Next batch prioritizes underused LEGO combinations
-- Vocabulary imbalanced? Next batch targets under-practiced LEGOs
-- System reads validator output and self-corrects recursively
-
-**See**: `validators/README.md` for detailed documentation and `ssi-course-production.apml` for batch-aware generation architecture
-
-## Design Philosophy
-
-- Clean, professional aesthetic
-- Subtle emerald green accents (#10b981)
-- Slate gray backgrounds
-- Simple hover effects (translateY, no scale/flicker)
-- Matches training page design language
-
-## What's NOT Included
-
-- No legacy v6.x workflows (pre-v7.0 architecture)
-- No manual APML registry compilation (now markdown-based intelligence)
-- No monolithic phase orchestration (now modular, locked intelligence)
-- Clean v7.0+ architecture with locked SSoT
-
-## Smart Resume (NEW in v7.8.3)
-
-The dashboard now intelligently analyzes course progress and suggests sensible next actions:
+## Build & Deploy
 
 ```bash
-GET /api/courses/cmn_for_eng/analyze
+npm run build
+vercel --prod
 ```
 
-Returns:
-- What seed_pairs exist (Phase 1 status)
-- What lego_pairs exist (Phase 3 status)
-- Missing seed ranges
-- Smart recommendations:
-  - "Test Run: First 50 Seeds" (always available)
-  - "Resume: Seeds 1-70" (if missing contiguous range)
-  - "Process All Missing" (if partial completion)
-  - "Continue: Phase 4" (if Phase 3 complete)
+## SSoT Files
 
-**No config files needed** - dashboard inspects actual VFS files and figures out what's done.
+| File | Owner | Location |
+|------|-------|----------|
+| `lego_pairs.json` | Phase 2 | S3: `courses/{code}/lego_pairs.json` |
+| `lego_baskets.json` | Phase 3 | S3: `courses/{code}/lego_baskets.json` |
+| `course_manifest.json` | Manifest Script | S3: `courses/{code}/course_manifest.json` |
+| Audio files | Audio Phase | S3: `ssiborg-assets/mastered/{uuid}.mp3` |
 
-See: `docs/SMART_RESUME_API.md` for details
+## Tech Stack
+
+- Vue 3 (Composition API)
+- Vite
+- Tailwind CSS 4
+- Express (API)
+- AWS SDK v3 (S3)
 
 ---
 
-**Version:** 9.0.0 (APML v9.0 - Simplified Phase Structure)
-**Build:** Clean
-**Phase Intelligence**: Phase 1 v2.6 (Translation+LEGOs), Phase 3 v3.0 (Baskets), Manifest v1.1, Audio v1.1 (🔒 Locked SSoT)
-**Date:** 2025-11-25
-**Note:** APML v9.0 migration complete - simplified phase structure
+**Version:** 10.1.0
+**APML:** v10.1.0
+**S3 Bucket:** popty-bach-lfs (eu-west-1)
+**Date:** 2025-12-03

@@ -498,7 +498,7 @@ Before starting work, verify:
 - [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `README.md`
 - [ ] **I've checked recent commits** (`git log --oneline -10`)
 - [ ] **I understand what changed recently** (cleanup? new tools?)
-- [ ] I understand the APML v9.0 pipeline (Phase 1 → Phase 2 → Phase 3 → Manifest → Audio)
+- [ ] I understand the APML v10.1 pipeline (Phase 1 → Phase 2 → Phase 3 → Manifest → Audio)
 - [ ] I know where to create files (NOT in root!)
 - [ ] I've checked `.gitignore` for file placement
 - [ ] I have access to `tools/` for shared utilities
