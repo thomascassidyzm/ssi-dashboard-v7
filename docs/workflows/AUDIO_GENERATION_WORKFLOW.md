@@ -231,21 +231,13 @@ Runs automatically after Phase A (or manually with `--phase=presentations`).
 Presentations are composite audio files that introduce new vocabulary. They combine:
 - **Source narration** (TTS): "The Spanish for 'I want', is:"
 - **Target audio clips** (from Phase A): The actual pronunciation of the word
-- **Optional explanation**: Additional context with embedded target clips
 
 **Example presentation text in manifest:**
 ```
-The Spanish for 'I want', is: ... 'quiero' ... 'quiero'
+The Spanish for 'I want', as in 'I want to speak Spanish.', is: ... 'quiero' ... 'quiero'
 ```
 
 The `...` markers indicate where target audio clips are inserted. The quoted word `'quiero'` is played using the pre-recorded target1/target2 audio from Phase A.
-
-**More complex presentations with explanations:**
-```
-The Spanish for 'I want', is: ... 'quiero' ... 'quiero' - {target1}'Quiero' means I want something.
-```
-
-The `{target1}` tag indicates an embedded clip using target1 voice.
 
 **Generation process:**
 

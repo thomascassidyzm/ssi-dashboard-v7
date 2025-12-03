@@ -477,7 +477,7 @@ Agent-generated basket data, one file per seed.
   "generated": "2025-11-17T09:12:52.796Z",
   "presentations": {
     "S0001L01": "The Spanish for 'I want', as in 'I want to speak Spanish with you now.', is: ... 'quiero' ... 'quiero'",
-    "S0002L01": "The Spanish for 'I'm trying', as in 'I'm trying to learn.', is: ... 'estoy intentando' ... 'estoy intentando' - {target1}'estoy' means I'm, {target1}'intentando' means trying",
+    "S0002L01": "The Spanish for 'I'm trying', as in 'I'm trying to learn.', is: ... 'estoy intentando' ... 'estoy intentando'",
     ...
   }
 }
@@ -485,23 +485,20 @@ Agent-generated basket data, one file per seed.
 
 ### Presentation Template
 
-**Atomic (A) LEGOs:**
+**All LEGOs (both Atomic and Molecular):**
 ```
 The {target_language} for '{known}', as in '{seed_context}', is: ... '{target}' ... '{target}'
-```
-
-**Molecular (M) LEGOs:**
-```
-The {target_language} for '{known}', as in '{seed_context}', is: ... '{target}' ... '{target}' - {target1}'{component1}' means {gloss1}, {target1}'{component2}' means {gloss2}
 ```
 
 ### Actual Example (spa_for_eng)
 
 ```json
 {
-  "S0002L01": "The Spanish for 'I'm trying', as in 'I'm trying to learn.', is: ... 'estoy intentando' ... 'estoy intentando' - {target1}'estoy' means I'm, {target1}'intentando' means trying"
+  "S0002L01": "The Spanish for 'I'm trying', as in 'I'm trying to learn.', is: ... 'estoy intentando' ... 'estoy intentando'"
 }
 ```
+
+> **Note:** Presentations no longer include component breakdowns/explanations. The simpler format focuses on the target phrase repeated twice with audio markers.
 
 ### Version Truth
 - **Documented in SYSTEM.md:** Not specifically documented
@@ -510,7 +507,7 @@ The {target_language} for '{known}', as in '{seed_context}', is: ... '{target}' 
 - **Consistency:** ✅ Both courses use same version
 
 ### Notes
-- `{target1}` is a placeholder for TTS voice markers
+- `...` markers indicate where target audio clips are inserted during audio assembly
 - Presentations reference the seed context for pedagogical clarity
 - Generated automatically from lego_pairs.json (no AI agents needed)
 
