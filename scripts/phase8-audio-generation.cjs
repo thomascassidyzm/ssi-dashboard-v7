@@ -540,7 +540,8 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
           variant.text,
           language,
           variant.role,
-          variant.cadence
+          variant.cadence,
+          voiceId
         );
       }
 

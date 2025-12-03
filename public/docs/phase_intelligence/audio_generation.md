@@ -238,7 +238,7 @@ If welcome audio exists (from canonical `welcomes.json`):
 // Generate welcome audio
 const welcomeText = "Welcome to this Spanish course for English speakers...";
 const welcomeAudio = await generateTTS(welcomeText, voiceConfig.source, 'natural');
-const welcomeUUID = generateSampleUUID(welcomeText, knownLang, 'presentation', 'natural');
+const welcomeUUID = generateSampleUUID(welcomeText, knownLang, 'presentation', 'natural', voiceId);
 
 // Save and upload
 await fs.writeFile(`audio/${welcomeUUID}.mp3`, welcomeAudio);

@@ -358,7 +358,7 @@ for (const [text, variants] of Object.entries(samples)) {
       variant.duration = existing.duration;
     } else {
       // Generate new valid UUID v5
-      const newUUID = generateSampleUUID(text, language, role, cadence);
+      const newUUID = generateSampleUUID(text, language, role, cadence, voiceId);
       variant.id = newUUID;
       toGenerate.push({ text, role, cadence, uuid: newUUID, voiceId });
     }
