@@ -4426,8 +4426,9 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     // Fibonacci sequence for spaced repetition
     const FIBONACCI = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-    const MAX_DEBUT_PHRASES = 7;
-    const MAX_REVIEW_PHRASES = 3;
+    const INTRO_PHRASES = 7;      // First introduction
+    const FIRST_REP_PHRASES = 3;  // First review
+    const SUBSEQUENT_PHRASES = 1; // Every review after that
 
     // Organize baskets by seed
     const basketsBySeed = new Map();
@@ -4515,8 +4516,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
           });
         }
 
-        // 3. Up to 7 practice phrases for this new LEGO
-        const debutPractice = practiceOnly.slice(0, MAX_DEBUT_PHRASES);
+        // 3. Up to 7 practice phrases for this new LEGO (introduction)
+        const debutPractice = practiceOnly.slice(0, INTRO_PHRASES);
         for (const phrase of debutPractice) {
           cycleNum++;
           const audio = getAudioIds(phrase.known, phrase.target);
@@ -4540,8 +4541,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
         legoState.set(basketKey, {
           fibPosition: 0,
           lastCycle: cycleNum,
-          practiceCount: 0,
-          remainingPhrases: practiceOnly.slice(MAX_DEBUT_PHRASES), // Phrases left for reviews
+          reviewCount: 0, // Track how many times this LEGO has been reviewed
+          remainingPhrases: practiceOnly.slice(INTRO_PHRASES), // Phrases left for reviews
           seedId,
           lego
         });
@@ -4563,9 +4564,11 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
         // Sort by most overdue first
         dueForReview.sort((a, b) => b.overdue - a.overdue);
 
-        // Add up to 3 review phrases from each due LEGO
+        // Add review phrases from each due LEGO
+        // First review = 3 phrases, subsequent reviews = 1 phrase
         for (const { key: reviewKey, state } of dueForReview.slice(0, 3)) { // Max 3 LEGOs reviewed per introduction
-          const reviewPhrases = state.remainingPhrases.splice(0, MAX_REVIEW_PHRASES);
+          const phraseCount = state.reviewCount === 0 ? FIRST_REP_PHRASES : SUBSEQUENT_PHRASES;
+          const reviewPhrases = state.remainingPhrases.splice(0, phraseCount);
 
           for (const phrase of reviewPhrases) {
             cycleNum++;
@@ -4583,14 +4586,15 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
               target2Id: audio.target2Id,
               hasAudio: !!(audio.sourceId && audio.target1Id),
               isNew: false,
-              fibPosition: state.fibPosition
+              fibPosition: state.fibPosition,
+              reviewNum: state.reviewCount + 1
             });
           }
 
-          // Advance Fibonacci position for this LEGO
+          // Advance Fibonacci position and increment review count
           state.lastCycle = cycleNum;
           state.fibPosition = Math.min(state.fibPosition + 1, FIBONACCI.length - 1);
-          state.practiceCount += reviewPhrases.length;
+          state.reviewCount++;
         }
       }
     }
