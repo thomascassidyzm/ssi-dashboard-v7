@@ -64,11 +64,12 @@
       >
         <!-- Cycle number and type badge -->
         <div class="flex items-center gap-3 mb-2">
-          <span class="text-xs text-slate-500 font-mono w-12">{{ String(index + 1).padStart(3, '0') }}</span>
+          <span class="text-xs text-slate-500 font-mono w-12">{{ String(item.cycleNum || index + 1).padStart(3, '0') }}</span>
           <span :class="getTypeBadgeClass(item.type)" class="text-xs px-2 py-0.5 rounded">
             {{ item.type.toUpperCase() }}
           </span>
-          <span class="text-xs text-slate-600">{{ item.seedId }}</span>
+          <span class="text-xs text-slate-600">{{ item.legoKey || item.seedId }}</span>
+          <span v-if="item.isNew === false" class="text-[10px] text-cyan-400 italic">review</span>
           <span
             v-if="item.hasAudio"
             class="w-2 h-2 rounded-full bg-emerald-500"
@@ -267,7 +268,8 @@ export default {
         introduction: 'bg-purple-600/50 text-purple-200',
         component: 'bg-blue-600/50 text-blue-200',
         debut: 'bg-amber-600/50 text-amber-200',
-        practice: 'bg-emerald-600/50 text-emerald-200'
+        practice: 'bg-emerald-600/50 text-emerald-200',
+        review: 'bg-cyan-600/50 text-cyan-200'
       }
       return classes[type] || 'bg-slate-600 text-slate-300'
     },

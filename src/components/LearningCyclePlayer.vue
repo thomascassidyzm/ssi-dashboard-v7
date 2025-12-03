@@ -159,6 +159,11 @@ const props = defineProps({
   courseCode: {
     type: String,
     required: true
+  },
+  targetItem: {
+    type: Object,
+    default: null
+    // { sourceText, targetText, sourceId, target1Id, target2Id }
   }
 })
 
@@ -210,17 +215,49 @@ const hasPrevious = computed(() => historyIndex.value > 0)
 async function loadRandomCycle() {
   loading.value = true
   try {
-    // Fetch source, target1, target2 samples that share the same text pattern
-    const response = await api.getRandomLearningCycle(props.courseCode)
-    if (response.success && response.cycle) {
-      currentCycle.value = response.cycle
+    // If targetItem is provided, use it directly
+    if (props.targetItem) {
+      currentCycle.value = {
+        id: props.targetItem.sourceId || 'preview',
+        sourceText: props.targetItem.sourceText,
+        targetText: props.targetItem.targetText,
+        sourceId: props.targetItem.sourceId,
+        target1Id: props.targetItem.target1Id,
+        target2Id: props.targetItem.target2Id
+      }
+
+      // Calculate dynamic pause duration based on target1 audio duration
+      if (props.targetItem.target1Id) {
+        try {
+          const audioElement = new Audio(api.getAudioStreamUrl(props.targetItem.target1Id))
+          audioElement.addEventListener('loadedmetadata', () => {
+            // Set pause to 2x the audio duration
+            pauseDuration.value = Math.min(Math.max(audioElement.duration * 2, 1), 5)
+          })
+        } catch (err) {
+          console.warn('Could not calculate dynamic pause duration:', err)
+        }
+      }
 
       // Add to history
-      history.value.push(response.cycle)
+      history.value.push(currentCycle.value)
       historyIndex.value = history.value.length - 1
 
       // Preload audio
-      preloadCycleAudio(response.cycle)
+      preloadCycleAudio(currentCycle.value)
+    } else {
+      // Fetch source, target1, target2 samples that share the same text pattern
+      const response = await api.getRandomLearningCycle(props.courseCode)
+      if (response.success && response.cycle) {
+        currentCycle.value = response.cycle
+
+        // Add to history
+        history.value.push(response.cycle)
+        historyIndex.value = history.value.length - 1
+
+        // Preload audio
+        preloadCycleAudio(response.cycle)
+      }
     }
   } catch (err) {
     console.error('Failed to load learning cycle:', err)
@@ -388,7 +425,11 @@ onUnmounted(() => {
 })
 
 // Initial load
-if (mode.value === 'cycle') {
+if (props.targetItem) {
+  // If targetItem is provided, always use cycle mode
+  mode.value = 'cycle'
+  loadRandomCycle()
+} else if (mode.value === 'cycle') {
   loadRandomCycle()
 } else {
   loadRandomPresentation()

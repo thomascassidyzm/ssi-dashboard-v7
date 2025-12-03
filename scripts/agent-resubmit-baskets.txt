@@ -1,0 +1,24 @@
+Instructions for agents to resubmit locally saved baskets:
+
+1. In each browser window, find the locally saved basket data in the agent's output
+2. Copy the basket JSON data
+3. Run this curl command:
+
+```bash
+curl -X POST http://localhost:3456/phase5/upload-basket \
+  -H "Content-Type: application/json" \
+  -d @<your_saved_basket_file.json>
+```
+
+OR if you have the data in a variable, use:
+
+```javascript
+// In browser console where agent ran:
+await fetch('http://localhost:3456/phase5/upload-basket', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(savedBaskets) // Your locally saved basket data
+})
+```
+
+The orchestrator will merge these baskets into lego_baskets.json automatically.

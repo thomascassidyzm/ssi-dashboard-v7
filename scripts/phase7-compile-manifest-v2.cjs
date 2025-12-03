@@ -245,24 +245,29 @@ legoPairs.seeds.forEach((seedData, seedIndex) => {
     const legoKnown = lego.lego.known;
     const legoTarget = lego.lego.target;
     const basket = legoBaskets.baskets[legoId];
-    const presentation = introductions.presentations[legoId];
+    const presentationData = introductions.presentations[legoId];
 
     // Skip if no basket (expected for new=false review LEGOs)
     if (!basket) {
       return;
     }
 
-    if (!presentation) {
+    if (!presentationData) {
       console.warn(`⚠️  Missing presentation for ${legoId}`);
       return;
     }
+
+    // Handle both v2 format (object with .text) and legacy format (string)
+    const presentationText = typeof presentationData === 'string'
+      ? presentationData
+      : presentationData.text;
 
     // Create introduction item
     const introItem = {
       id: generateUUID('intro:' + legoId),
       node: createNode(legoKnown, legoTarget),
       nodes: [],
-      presentation: presentation
+      presentation: presentationText
     };
 
     // Add LEGO to samples
@@ -280,7 +285,7 @@ legoPairs.seeds.forEach((seedData, seedIndex) => {
     });
 
     // Add presentation to samples
-    allSamples.set(presentation, {
+    allSamples.set(presentationText, {
       duration: 0,
       id: generateUUID('sample:presentation:' + legoId),
       cadence: "natural",

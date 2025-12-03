@@ -4352,9 +4352,13 @@ app.post('/api/audio/flag-sample', async (req, res) => {
 
 /**
  * GET /api/courses/:courseCode/script
- * Generate a learning script for a seed range
+ * Generate a learning script simulating the actual learner journey
  * Query params: startSeed (number), endSeed (number)
- * Returns items ordered by: Seed > Introduction > Components > Debut > Practice
+ *
+ * Algorithm:
+ * - For each LEGO introduced: components (if M-type) → debut → up to 7 practice phrases
+ * - Interleaved with Fibonacci spaced repetition reviews of previous LEGOs
+ * - Each previous LEGO gets up to 3 "eternal" phrases when due for review
  */
 app.get('/api/courses/:courseCode/script', async (req, res) => {
   const { courseCode } = req.params;
@@ -4363,7 +4367,6 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
   try {
     // Load lego_baskets.json
-    // VFS_ROOT already includes 'courses' directory
     const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
 
     if (!await fs.pathExists(basketsPath)) {
@@ -4372,8 +4375,7 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     const baskets = await fs.readJson(basketsPath);
 
-    // Load manifest for audio lookup (check multiple possible filenames)
-    let manifest = null;
+    // Load manifest for audio lookup
     let samples = {};
     const manifestPaths = [
       path.join(VFS_ROOT, courseCode, 'course_manifest.json'),
@@ -4382,7 +4384,7 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     for (const mPath of manifestPaths) {
       if (await fs.pathExists(mPath)) {
-        manifest = await fs.readJson(mPath);
+        const manifest = await fs.readJson(mPath);
         samples = manifest.slices?.[0]?.samples || {};
         console.log(`[Script] Loaded manifest from ${path.basename(mPath)}, samples: ${Object.keys(samples).length}`);
         break;
@@ -4422,10 +4424,13 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
       return { sourceId, target1Id, target2Id };
     };
 
-    // Filter baskets by seed range
-    const items = [];
-    const seedIds = new Set();
+    // Fibonacci sequence for spaced repetition
+    const FIBONACCI = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+    const MAX_DEBUT_PHRASES = 7;
+    const MAX_REVIEW_PHRASES = 3;
 
+    // Organize baskets by seed
+    const basketsBySeed = new Map();
     for (const [basketKey, basket] of Object.entries(baskets.baskets || {})) {
       const seedMatch = basketKey.match(/^(S\d{4})/);
       if (!seedMatch) continue;
@@ -4435,69 +4440,169 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
       if (seedNum < startSeed || seedNum > endSeed) continue;
 
-      seedIds.add(seedId);
-
-      const lego = basket.lego;
-      const phrases = basket.practice_phrases || [];
-
-      // Add Introduction
-      const introAudio = getAudioIds(lego.known, lego.target);
-      items.push({
-        uuid: `${basketKey}_intro`,
-        seedId,
-        legoKey: basketKey,
-        type: 'introduction',
-        knownText: lego.known,
-        targetText: lego.target,
-        sourceId: introAudio.sourceId,
-        target1Id: introAudio.target1Id,
-        target2Id: introAudio.target2Id,
-        hasAudio: !!(introAudio.sourceId && introAudio.target1Id),
-        order: seedNum * 1000 + 0
-      });
-
-      // Add phrases
-      phrases.forEach((phrase, idx) => {
-        const isDebut = phrase.known === lego.known && phrase.target.toLowerCase() === lego.target.toLowerCase();
-        const isComponent = phrase.is_component === true;
-
-        let phraseType = 'practice';
-        let orderOffset = 300 + idx;
-
-        if (isComponent) {
-          phraseType = 'component';
-          orderOffset = 100 + idx;
-        } else if (isDebut) {
-          phraseType = 'debut';
-          orderOffset = 200;
-        }
-
-        const phraseAudio = getAudioIds(phrase.known, phrase.target);
-        items.push({
-          uuid: `${basketKey}_p${idx}`,
-          seedId,
-          legoKey: basketKey,
-          type: phraseType,
-          knownText: phrase.known,
-          targetText: phrase.target,
-          sourceId: phraseAudio.sourceId,
-          target1Id: phraseAudio.target1Id,
-          target2Id: phraseAudio.target2Id,
-          hasAudio: !!(phraseAudio.sourceId && phraseAudio.target1Id),
-          order: seedNum * 1000 + orderOffset
-        });
-      });
+      if (!basketsBySeed.has(seedNum)) {
+        basketsBySeed.set(seedNum, []);
+      }
+      basketsBySeed.get(seedNum).push({ basketKey, basket, seedId });
     }
 
-    items.sort((a, b) => a.order - b.order);
+    // Sort seeds
+    const sortedSeedNums = Array.from(basketsBySeed.keys()).sort((a, b) => a - b);
 
-    console.log(`[Script] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed}`);
+    // Track LEGO state for spaced repetition
+    // legoKey -> { fibPosition, lastCycle, practiceCount, phrases (remaining for review) }
+    const legoState = new Map();
+
+    // Build the script
+    const items = [];
+    let cycleNum = 0;
+
+    // Process each seed in order
+    for (const seedNum of sortedSeedNums) {
+      const seedBaskets = basketsBySeed.get(seedNum);
+
+      // Sort LEGOs within seed by their key (L01, L02, etc.)
+      seedBaskets.sort((a, b) => a.basketKey.localeCompare(b.basketKey));
+
+      for (const { basketKey, basket, seedId } of seedBaskets) {
+        const lego = basket.lego;
+        const allPhrases = basket.practice_phrases || [];
+
+        // Separate components, debut, and practice phrases
+        const components = allPhrases.filter(p => p.is_component === true);
+        const debutPhrase = allPhrases.find(p => p.is_debut === true);
+        const practiceOnly = allPhrases.filter(p => !p.is_component && !p.is_debut);
+
+        // === INTRODUCE NEW LEGO ===
+
+        // 1. Components first (if M-type)
+        for (const comp of components) {
+          cycleNum++;
+          const audio = getAudioIds(comp.known, comp.target);
+          items.push({
+            uuid: `${basketKey}_comp_${cycleNum}`,
+            cycleNum,
+            seedId,
+            legoKey: basketKey,
+            type: 'component',
+            knownText: comp.known,
+            targetText: comp.target,
+            sourceId: audio.sourceId,
+            target1Id: audio.target1Id,
+            target2Id: audio.target2Id,
+            hasAudio: !!(audio.sourceId && audio.target1Id),
+            isNew: true
+          });
+        }
+
+        // 2. LEGO Debut (the LEGO itself)
+        if (debutPhrase) {
+          cycleNum++;
+          const audio = getAudioIds(debutPhrase.known, debutPhrase.target);
+          items.push({
+            uuid: `${basketKey}_debut_${cycleNum}`,
+            cycleNum,
+            seedId,
+            legoKey: basketKey,
+            type: 'debut',
+            knownText: debutPhrase.known,
+            targetText: debutPhrase.target,
+            sourceId: audio.sourceId,
+            target1Id: audio.target1Id,
+            target2Id: audio.target2Id,
+            hasAudio: !!(audio.sourceId && audio.target1Id),
+            isNew: true
+          });
+        }
+
+        // 3. Up to 7 practice phrases for this new LEGO
+        const debutPractice = practiceOnly.slice(0, MAX_DEBUT_PHRASES);
+        for (const phrase of debutPractice) {
+          cycleNum++;
+          const audio = getAudioIds(phrase.known, phrase.target);
+          items.push({
+            uuid: `${basketKey}_practice_${cycleNum}`,
+            cycleNum,
+            seedId,
+            legoKey: basketKey,
+            type: 'practice',
+            knownText: phrase.known,
+            targetText: phrase.target,
+            sourceId: audio.sourceId,
+            target1Id: audio.target1Id,
+            target2Id: audio.target2Id,
+            hasAudio: !!(audio.sourceId && audio.target1Id),
+            isNew: true
+          });
+        }
+
+        // Initialize this LEGO for future spaced rep
+        legoState.set(basketKey, {
+          fibPosition: 0,
+          lastCycle: cycleNum,
+          practiceCount: 0,
+          remainingPhrases: practiceOnly.slice(MAX_DEBUT_PHRASES), // Phrases left for reviews
+          seedId,
+          lego
+        });
+
+        // === INTERLEAVE SPACED REPETITION REVIEWS ===
+        // Check which previous LEGOs are due for review
+        const dueForReview = [];
+        for (const [prevKey, state] of legoState.entries()) {
+          if (prevKey === basketKey) continue; // Skip the one we just introduced
+
+          const skipNum = FIBONACCI[Math.min(state.fibPosition, FIBONACCI.length - 1)];
+          const nextDue = state.lastCycle + skipNum;
+
+          if (cycleNum >= nextDue && state.remainingPhrases.length > 0) {
+            dueForReview.push({ key: prevKey, state, overdue: cycleNum - nextDue });
+          }
+        }
+
+        // Sort by most overdue first
+        dueForReview.sort((a, b) => b.overdue - a.overdue);
+
+        // Add up to 3 review phrases from each due LEGO
+        for (const { key: reviewKey, state } of dueForReview.slice(0, 3)) { // Max 3 LEGOs reviewed per introduction
+          const reviewPhrases = state.remainingPhrases.splice(0, MAX_REVIEW_PHRASES);
+
+          for (const phrase of reviewPhrases) {
+            cycleNum++;
+            const audio = getAudioIds(phrase.known, phrase.target);
+            items.push({
+              uuid: `${reviewKey}_review_${cycleNum}`,
+              cycleNum,
+              seedId: state.seedId,
+              legoKey: reviewKey,
+              type: 'review',
+              knownText: phrase.known,
+              targetText: phrase.target,
+              sourceId: audio.sourceId,
+              target1Id: audio.target1Id,
+              target2Id: audio.target2Id,
+              hasAudio: !!(audio.sourceId && audio.target1Id),
+              isNew: false,
+              fibPosition: state.fibPosition
+            });
+          }
+
+          // Advance Fibonacci position for this LEGO
+          state.lastCycle = cycleNum;
+          state.fibPosition = Math.min(state.fibPosition + 1, FIBONACCI.length - 1);
+          state.practiceCount += reviewPhrases.length;
+        }
+      }
+    }
+
+    console.log(`[Script] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed} (${cycleNum} cycles)`);
 
     res.json({
       courseCode,
       startSeed,
       endSeed,
-      seedCount: seedIds.size,
+      seedCount: sortedSeedNums.length,
+      cycleCount: cycleNum,
       itemCount: items.length,
       items
     });
