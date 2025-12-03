@@ -38,21 +38,10 @@ export const STORAGE_CONFIG = {
 };
 
 // Export the active storage backend
-// Always use API proxy to avoid CORS issues
+// Always use S3 API proxy - the dashboard runs remotely (Vercel)
+// and tunnels to local machines for processing, but reads data from S3
 export function getStorageConfig() {
-  // In DEV mode, use local Vite server
-  if (import.meta.env.DEV) {
-    return {
-      getCourseFileUrl(courseCode, filename) {
-        return `/vfs/courses/${courseCode}/${filename}`;
-      },
-      get manifestUrl() {
-        return '/vfs/courses-manifest.json';
-      }
-    };
-  }
-
-  // Production: always use API proxy
+  // Always use S3 API proxy - no local dev mode
   return STORAGE_CONFIG.s3;
 }
 
