@@ -96,6 +96,41 @@ phase Phase2ConflictResolution:
                 target: "eisiau"
 
   ## ==========================================================================
+  ## LEGO REUSE TRACKING
+  ## ==========================================================================
+
+  lego_reuse_tracking:
+    description: |
+      Phase 2 marks LEGO reuse across the course. Two types of reuse:
+
+    exact_duplicates:
+      description: "Same LEGO appearing again later in course"
+      detection: "Global check against all previously seen LEGOs"
+      marking:
+        new: false
+        ref: "original seed ID"
+
+    embedded_legos:
+      description: "LEGO that appeared as substring within a recent larger LEGO"
+      detection: "10-LEGO sliding window, character-level substring match"
+      marking:
+        new: false
+        ref: null  # No ref for embedded matches
+      example:
+        container: { known: "to remember a word", target: "recordar una palabra" }
+        embedded: { known: "a word", target: "una palabra" }
+        reason: "Learner already heard 'una palabra' within the larger phrase"
+
+    window_size: 10
+    rationale: |
+      10 LEGOs catches the "just heard it" annoyance. Beyond 10 LEGOs,
+      re-introducing as "new" is pedagogically appropriate.
+
+    character_matching: |
+      Uses character-level substring matching (not word boundaries).
+      Works for all languages including Chinese: "说" matches inside "说中文"
+
+  ## ==========================================================================
   ## AGENT REQUIREMENTS
   ## ==========================================================================
 
@@ -109,10 +144,26 @@ phase Phase2ConflictResolution:
       When learner hears KNOWN, there is exactly ONE TARGET they should produce.
 
   ## ==========================================================================
+  ## SCRIPTS
+  ## ==========================================================================
+
+  scripts:
+    standalone: "scripts/phase2_lego_reuse_tracking.cjs"
+    server: "services/phases/phase1-lego-extraction/server.cjs (port 3458)"
+
+  ## ==========================================================================
   ## VERSION HISTORY
   ## ==========================================================================
 
   version_history:
+    v10_1_1:
+      date: "2025-12-03"
+      status: "Production Ready"
+      changes:
+        - "Added embedded LEGO detection (10-LEGO sliding window)"
+        - "Character-level substring matching for all languages"
+        - "Baskets for new:false LEGOs are removed from lego_baskets.json"
+
     v10_1_0:
       date: "2025-12-03"
       status: "Production Ready"

@@ -98,29 +98,55 @@ Phase 2 is responsible for marking LEGO reuse across the entire course. Every se
 
 ### The Algorithm
 
+Two types of reuse are detected:
+
+#### 1. Exact Duplicates (global check)
 ```
-seen_legos = {} // key: "known|target" (normalized) → value: original LEGO ID
+seen_legos = {} // key: "known|target" (normalized) → value: original seed ID
 
 FOR each seed in order (S0001, S0002, ...):
     FOR each LEGO in seed.legos:
         key = normalize(lego.known) + "|" + normalize(lego.target)
 
         IF key in seen_legos:
-            // REUSED LEGO - mark as not new, reference original ID
+            // EXACT DUPLICATE - mark as not new, reference original
             lego.new = false
-            lego.ref = seen_legos[key]  // Original LEGO ID
+            lego.ref = seen_legos[key]
         ELSE:
-            // NEW LEGO - first occurrence
-            lego.new = true
-            seen_legos[key] = lego.id
+            seen_legos[key] = seed.seed_id
 ```
+
+#### 2. Embedded LEGOs (10-LEGO sliding window)
+
+If a LEGO appears as a **substring** within any of the last 10 LEGOs (both known AND target sides), it's marked as `new: false` without a `ref`.
+
+```
+recent_legos = [] // sliding window of last 10 LEGOs
+
+FOR each LEGO:
+    IF not exact duplicate:
+        FOR each recent in recent_legos:
+            IF recent.target.includes(lego.target) AND recent.known.includes(lego.known):
+                // EMBEDDED - learner already saw this within a larger phrase
+                lego.new = false
+                // No ref needed - just marking as not new
+
+    recent_legos.push(lego)
+    IF recent_legos.length > 10: recent_legos.shift()
+```
+
+**Example**: If "recordar una palabra" / "to remember a word" was introduced, then "una palabra" / "a word" appearing within the next 10 LEGOs is marked `new: false`.
+
+**Why 10 LEGOs?** This catches the "just heard it" cases where it would be annoying to re-introduce something the learner just encountered. If it's been more than 10 LEGOs, re-introducing it as "new" is pedagogically appropriate.
+
+**Character-level matching**: Works for all languages including Chinese where there are no word boundaries. "说" matches inside "说中文".
 
 ### Key Rules
 
 1. **NEVER remove** a LEGO from a seed's breakdown just because it appeared before
-2. **Mark as `new: false`** any LEGO that matches a previously-seen LEGO
+2. **Mark as `new: false`** for exact duplicates (with `ref`) OR embedded LEGOs (no `ref`)
 3. **Keep complete breakdowns** - every seed lists ALL LEGOs needed to decompose it
-4. **Reference original ID** via `ref` field for traceability
+4. **Reference original ID** via `ref` field for exact duplicates only
 
 ### Example Output
 
@@ -180,5 +206,10 @@ Phase 3 (Basket Generation) reads lego_pairs.json and generates practice baskets
 
 ---
 
-**Last Updated**: Nov 25, 2025
+**Last Updated**: Dec 3, 2025
 **Related**: See `public/docs/APML_v9.0_PIPELINE_ARCHITECTURE.md` for full specification
+
+### Scripts
+
+- `scripts/phase2_lego_reuse_tracking.cjs` - Standalone script for LEGO reuse tracking
+- `services/phases/phase1-lego-extraction/server.cjs` - Phase 2 server (port 3458) with integrated reuse tracking

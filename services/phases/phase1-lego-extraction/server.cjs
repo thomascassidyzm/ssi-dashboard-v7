@@ -619,11 +619,12 @@ app.post('/start', async (req, res) => {
 });
 
 /**
- * Run deduplication (Phase 3.5) after all segments merged
+ * Run LEGO reuse tracking (Phase 2: Conflict Resolution)
  * Marks duplicate LEGOs with new: false and ref: firstSeedId
+ * Also detects LEGOs embedded within recently seen LEGOs (10-LEGO window)
  */
 async function runDeduplication(courseCode) {
-  console.log(`\n🔍 Running deduplication (Phase 3.5) for ${courseCode}...`);
+  console.log(`\n🔍 Running LEGO reuse tracking (Phase 2) for ${courseCode}...`);
 
   const legoPairsPath = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
 
@@ -632,35 +633,77 @@ async function runDeduplication(courseCode) {
     return;
   }
 
+  // Helper: normalize text for comparison (lowercase, remove punctuation)
+  const normalize = (text) => text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').trim();
+
+  // Helper: check if phrase exists as substring within container (character-level)
+  const containsSubstring = (container, phrase) => {
+    if (container === phrase) return false; // Must be proper subset
+    return container.includes(phrase);
+  };
+
   try {
-    // Read lego_pairs.json
     const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
 
-    // Track seen LEGOs: key = "target|known", value = first seed_id
-    const seenLegos = new Map();
-    let duplicateCount = 0;
-    let totalLegos = 0;
+    // Track ALL seen LEGOs for exact duplicate detection
+    const seenLegos = new Map(); // key -> seedId (for ref)
 
-    // Process each seed in order
+    // Track last 10 LEGOs for embedded detection (sliding window)
+    const recentLegos = []; // Array of {target, known} normalized
+    const EMBEDDED_WINDOW = 10;
+
+    let totalLegos = 0;
+    let exactDuplicates = 0;
+    let embeddedMatches = 0;
+
     legoPairs.seeds.forEach((seed) => {
       const seedId = seed.seed_id;
 
       seed.legos.forEach((lego) => {
         totalLegos++;
-        const key = `${lego.target}|${lego.known}`;
+        const target = lego.lego?.target || lego.target;
+        const known = lego.lego?.known || lego.known;
 
+        const normTarget = normalize(target);
+        const normKnown = normalize(known);
+        const key = `${normTarget}|${normKnown}`;
+
+        // Check 1: Exact match against ALL seen LEGOs
         if (seenLegos.has(key)) {
-          // Duplicate found - mark as repeat
-          const firstSeedId = seenLegos.get(key);
           lego.new = false;
-          lego.ref = firstSeedId;
-          duplicateCount++;
+          lego.ref = seenLegos.get(key);
+          exactDuplicates++;
+
+          // Still add to recent window
+          recentLegos.push({ target: normTarget, known: normKnown });
+          if (recentLegos.length > EMBEDDED_WINDOW) recentLegos.shift();
+          return;
+        }
+
+        // Check 2: Embedded in last 10 LEGOs only
+        let isEmbedded = false;
+        for (const recent of recentLegos) {
+          if (containsSubstring(recent.target, normTarget) &&
+              containsSubstring(recent.known, normKnown)) {
+            isEmbedded = true;
+            break;
+          }
+        }
+
+        if (isEmbedded) {
+          lego.new = false;
+          delete lego.ref;
+          embeddedMatches++;
         } else {
           // First occurrence - mark as debut
-          seenLegos.set(key, seedId);
           lego.new = true;
-          delete lego.ref; // Remove ref if exists from previous runs
+          delete lego.ref;
         }
+
+        // Add to both tracking structures
+        seenLegos.set(key, seedId);
+        recentLegos.push({ target: normTarget, known: normKnown });
+        if (recentLegos.length > EMBEDDED_WINDOW) recentLegos.shift();
       });
     });
 
@@ -669,8 +712,9 @@ async function runDeduplication(courseCode) {
 
     console.log(`   ✅ Deduplication complete!`);
     console.log(`      Total LEGOs: ${totalLegos}`);
-    console.log(`      Unique (new: true): ${seenLegos.size}`);
-    console.log(`      Duplicates (new: false): ${duplicateCount}`);
+    console.log(`      Unique (new: true): ${seenLegos.size - embeddedMatches}`);
+    console.log(`      Exact duplicates: ${exactDuplicates}`);
+    console.log(`      Embedded (within last 10): ${embeddedMatches}`);
 
   } catch (error) {
     console.error(`   ❌ Deduplication failed:`, error.message);
