@@ -981,11 +981,21 @@ async function processGeneratedAudio(results) {
   for (const result of results) {
     if (!result.success) continue;
 
-    const { sample, outputPath } = result;
-    const voiceDetails = await getVoiceDetails(sample.voiceId);
+    // Support both flat structure (from worker) and nested structure (sample property)
+    const sample = result.sample || result;
+    const outputPath = result.outputPath;
+    const voiceId = sample.voiceId || result.voiceId;
+    const cadence = sample.cadence || result.cadence || 'natural';
+
+    if (!voiceId) {
+      console.warn(`Warning: No voiceId for result with uuid ${result.uuid || sample.uuid}`);
+      continue;
+    }
+
+    const voiceDetails = await getVoiceDetails(voiceId);
 
     // Get cadence-specific processing settings
-    const cadenceSettings = voiceDetails.processing?.cadences?.[sample.cadence] ||
+    const cadenceSettings = voiceDetails.processing?.cadences?.[cadence] ||
                            voiceDetails.processing?.cadences?.natural ||
                            {};
 
