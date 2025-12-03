@@ -5,7 +5,10 @@
  * Combines all voice samples from the local MAR into a single
  * audio-index.json file and uploads to S3.
  *
- * The index maps: text:role:cadence -> { uuid, voice, language }
+ * The index maps: language|text|role|cadence -> { uuid, voice, duration }
+ *
+ * Language is required in the key because words like "content", "camera",
+ * "piano" exist in multiple languages with different pronunciations.
  *
  * Usage:
  *   node scripts/build-audio-index.cjs [--upload]
@@ -27,10 +30,10 @@ function normalizeText(text) {
   return text.toLowerCase().trim().replace(/^[,.\s]+|[,.\s]+$/g, '').replace(/\s+/g, ' ');
 }
 
-// Build lookup key
-function buildKey(text, role, cadence = 'natural') {
+// Build lookup key: language|text|role|cadence
+function buildKey(language, text, role, cadence = 'natural') {
   const normalized = normalizeText(text);
-  return `${normalized}|${role}|${cadence}`;
+  return `${language}|${normalized}|${role}|${cadence}`;
 }
 
 async function buildIndex() {
@@ -64,16 +67,14 @@ async function buildIndex() {
 
       // Add each sample to the index
       for (const [uuid, sample] of Object.entries(voiceSamples.samples || {})) {
-        const key = buildKey(sample.text, sample.role, sample.cadence);
+        const key = buildKey(sample.language, sample.text, sample.role, sample.cadence);
 
         // Only add if not already present (first voice wins)
         if (!index.samples[key]) {
           index.samples[key] = {
             uuid,
             voice: voiceId,
-            language: sample.language,
-            role: sample.role,
-            cadence: sample.cadence || 'natural'
+            duration: sample.duration || 0
           };
         }
       }

@@ -2,11 +2,11 @@
  * POST /api/audio/lookup/:courseCode
  * Look up audio UUIDs by text content
  *
- * Uses the audio-index.json from S3 which maps text:role:cadence -> UUID
+ * Uses the audio-index.json from S3 which maps language|text|role|cadence -> UUID
  * This index is built from the MAR (Master Audio Registry) and contains
  * all generated audio samples.
  *
- * Body: { knownText: string, targetText: string }
+ * Body: { knownText: string, targetText: string, cadence?: string }
  *
  * Returns: {
  *   success: boolean,
@@ -44,9 +44,10 @@ function normalizeText(text) {
 }
 
 // Build lookup key (must match build-audio-index.cjs)
-function buildKey(text, role, cadence = 'natural') {
+// Format: language|text|role|cadence
+function buildKey(language, text, role, cadence = 'natural') {
   const normalized = normalizeText(text);
-  return `${normalized}|${role}|${cadence}`;
+  return `${language}|${normalized}|${role}|${cadence}`;
 }
 
 // Load audio index from S3
@@ -94,6 +95,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'At least one of knownText or targetText required' });
   }
 
+  // Parse languages from courseCode (e.g., 'spa_for_eng' -> target='spa', known='eng')
+  const parts = courseCode.split('_for_');
+  if (parts.length !== 2) {
+    return res.status(400).json({ error: 'Invalid course code format. Expected: target_for_known (e.g., spa_for_eng)' });
+  }
+  const targetLang = parts[0];  // e.g., 'spa', 'cmn', 'ita'
+  const knownLang = parts[1];   // e.g., 'eng'
+
   try {
     // Load audio index
     const index = await loadAudioIndex();
@@ -105,26 +114,26 @@ export default async function handler(req, res) {
       target2Id: null
     };
 
-    // Source (known text in English)
+    // Source (known text - usually English)
     if (knownText) {
-      const sourceKey = buildKey(knownText, 'source', cadence);
+      const sourceKey = buildKey(knownLang, knownText, 'source', cadence);
       const sourceSample = index.samples[sourceKey];
       if (sourceSample) {
         audio.sourceId = sourceSample.uuid;
       }
     }
 
-    // Target voices
+    // Target voices (target language)
     if (targetText) {
       // Try target1
-      const target1Key = buildKey(targetText, 'target1', cadence);
+      const target1Key = buildKey(targetLang, targetText, 'target1', cadence);
       const target1Sample = index.samples[target1Key];
       if (target1Sample) {
         audio.target1Id = target1Sample.uuid;
       }
 
       // Try target2
-      const target2Key = buildKey(targetText, 'target2', cadence);
+      const target2Key = buildKey(targetLang, targetText, 'target2', cadence);
       const target2Sample = index.samples[target2Key];
       if (target2Sample) {
         audio.target2Id = target2Sample.uuid;
