@@ -4618,6 +4618,63 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 });
 
 /**
+ * GET /api/audio/stream/:uuid
+ * Stream audio file from S3 (ssi-audio-staging bucket)
+ */
+app.get('/api/audio/stream/:uuid', async (req, res) => {
+  const { uuid } = req.params;
+
+  try {
+    // S3 bucket for audio
+    const s3Bucket = process.env.AWS_S3_BUCKET || 'ssi-audio-staging';
+    const s3Key = `mastered/${uuid}.mp3`;
+
+    // Use AWS SDK to get the file
+    const AWS = require('aws-sdk');
+    const s3 = new AWS.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      region: process.env.AWS_REGION || 'eu-west-1'
+    });
+
+    const params = {
+      Bucket: s3Bucket,
+      Key: s3Key
+    };
+
+    // Check if file exists
+    try {
+      await s3.headObject(params).promise();
+    } catch (headErr) {
+      if (headErr.code === 'NotFound') {
+        console.warn(`[Audio] Not found: ${s3Bucket}/${s3Key}`);
+        return res.status(404).json({ error: 'Audio file not found in S3' });
+      }
+      throw headErr;
+    }
+
+    // Stream the file
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.setHeader('Accept-Ranges', 'bytes');
+    res.setHeader('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
+
+    const stream = s3.getObject(params).createReadStream();
+    stream.on('error', (err) => {
+      console.error('[Audio] S3 stream error:', err);
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream audio' });
+      }
+    });
+
+    stream.pipe(res);
+
+  } catch (err) {
+    console.error('[Audio] Error streaming audio:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * Start server
  */
 app.listen(PORT, () => {
