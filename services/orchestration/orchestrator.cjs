@@ -4365,7 +4365,6 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
     // Load lego_baskets.json
     // VFS_ROOT already includes 'courses' directory
     const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
-    const manifestPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
 
     if (!await fs.pathExists(basketsPath)) {
       return res.status(404).json({ error: 'LEGO baskets not found for course' });
@@ -4373,12 +4372,21 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     const baskets = await fs.readJson(basketsPath);
 
-    // Load manifest for audio lookup (optional)
+    // Load manifest for audio lookup (check multiple possible filenames)
     let manifest = null;
     let samples = {};
-    if (await fs.pathExists(manifestPath)) {
-      manifest = await fs.readJson(manifestPath);
-      samples = manifest.slices?.[0]?.samples || {};
+    const manifestPaths = [
+      path.join(VFS_ROOT, courseCode, 'course_manifest.json'),
+      path.join(VFS_ROOT, courseCode, `${courseCode}_course_manifest.json`)
+    ];
+
+    for (const mPath of manifestPaths) {
+      if (await fs.pathExists(mPath)) {
+        manifest = await fs.readJson(mPath);
+        samples = manifest.slices?.[0]?.samples || {};
+        console.log(`[Script] Loaded manifest from ${path.basename(mPath)}, samples: ${Object.keys(samples).length}`);
+        break;
+      }
     }
 
     // Helper to get audio IDs for a phrase
