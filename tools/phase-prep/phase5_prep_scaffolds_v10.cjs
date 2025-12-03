@@ -29,43 +29,25 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const langService = require('../../services/language-code-service.cjs');
 
 /**
  * Detect target language from course directory name
+ * Uses centralized language-code-service for lookups
  * Examples: spa_for_eng → spanish, fra_for_eng → french
  */
 function detectTargetLanguage(courseDir) {
   const dirName = path.basename(courseDir);
-  const match = dirName.match(/^([a-z]{3})_for_([a-z]{3})$/);
+  const parsed = langService.parseCourseCode(dirName);
 
-  if (!match) {
+  if (!parsed) {
     throw new Error(`Invalid course directory format: ${dirName}. Expected format: xxx_for_yyy (e.g., spa_for_eng)`);
   }
 
-  const targetCode = match[1];
-  const sourceCode = match[2];
-
-  const languageMap = {
-    'spa': 'spanish',
-    'fra': 'french',
-    'deu': 'german',
-    'cmn': 'mandarin',
-    'ita': 'italian',
-    'jpn': 'japanese',
-    'kor': 'korean',
-    'eng': 'english',
-    'por': 'portuguese',
-    'rus': 'russian',
-    'ara': 'arabic',
-    'hin': 'hindi'
-  };
-
-  const targetLang = languageMap[targetCode];
-  const sourceLang = languageMap[sourceCode];
-
-  if (!targetLang || !sourceLang) {
-    throw new Error(`Unknown language code: ${targetCode} or ${sourceCode}`);
-  }
+  const targetLang = parsed.targetName.toLowerCase();
+  const sourceLang = parsed.knownName.toLowerCase();
+  const targetCode = parsed.targetLegacy;
+  const sourceCode = parsed.knownLegacy;
 
   return { targetLang, sourceLang, targetCode, sourceCode };
 }

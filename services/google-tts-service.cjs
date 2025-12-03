@@ -20,6 +20,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const langService = require('./language-code-service.cjs');
 
 // Configuration from environment
 const GOOGLE_TTS_API_KEY = process.env.GOOGLE_TTS_API_KEY;
@@ -67,43 +68,8 @@ const CHIRP3_VOICES = {
   'Zubenelgenubi': { gender: 'male', style: 'grounded' }
 };
 
-// Language code mappings (SSi 3-letter to Google BCP-47)
-const LANGUAGE_MAP = {
-  'eng': 'en-US',
-  'ita': 'it-IT',
-  'spa': 'es-ES',
-  'fra': 'fr-FR',
-  'deu': 'de-DE',
-  'por': 'pt-PT',
-  'cmn': 'cmn-CN',
-  'jpn': 'ja-JP',
-  'kor': 'ko-KR',
-  'ara': 'ar-XA',
-  'rus': 'ru-RU',
-  'nld': 'nl-NL',
-  'swe': 'sv-SE',
-  'fin': 'fi-FI',
-  'gle': 'ga-IE',  // Irish
-  'cym': 'cy-GB',  // Welsh
-  'hin': 'hi-IN',
-  'ben': 'bn-IN',
-  'tur': 'tr-TR',
-  'pol': 'pl-PL',
-  'ukr': 'uk-UA',
-  'vie': 'vi-VN',
-  'tha': 'th-TH',
-  'ind': 'id-ID',
-  'msa': 'ms-MY',
-  'fil': 'fil-PH',
-  'heb': 'he-IL',
-  'ell': 'el-GR',
-  'ces': 'cs-CZ',
-  'ron': 'ro-RO',
-  'hun': 'hu-HU',
-  'dan': 'da-DK',
-  'nor': 'nb-NO',
-  'cat': 'ca-ES'
-};
+// Language code mappings now handled by centralized language-code-service
+// See services/language-code-service.cjs for the source of truth
 
 /**
  * Rate limit requests
@@ -121,12 +87,19 @@ async function rateLimitRequest() {
 }
 
 /**
- * Get Google BCP-47 language code from SSi language code
- * @param {string} ssiLangCode - SSi 3-letter code (e.g., 'ita')
+ * Get Google BCP-47 language code from any language code format
+ * Delegates to centralized language-code-service
+ * @param {string} langCode - Language code (2-letter, 3-letter, or legacy)
  * @returns {string} Google BCP-47 code (e.g., 'it-IT')
  */
-function getGoogleLanguageCode(ssiLangCode) {
-  return LANGUAGE_MAP[ssiLangCode?.toLowerCase()] || ssiLangCode;
+function getGoogleLanguageCode(langCode) {
+  try {
+    return langService.getGoogleLocale(langCode);
+  } catch (error) {
+    // Fallback for unconfigured languages - return code as-is
+    console.warn(`[Google TTS] ${error.message}`);
+    return langCode;
+  }
 }
 
 /**
@@ -543,6 +516,5 @@ module.exports = {
   getGoogleLanguageCode,
   parseVoiceId,
   buildVoiceName,
-  CHIRP3_VOICES,
-  LANGUAGE_MAP
+  CHIRP3_VOICES
 };

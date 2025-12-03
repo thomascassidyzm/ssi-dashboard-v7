@@ -8,6 +8,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
+const langService = require('./language-code-service.cjs');
 
 // Configuration from environment
 const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
@@ -370,32 +371,19 @@ async function listVoices(languageCode = null) {
 
 /**
  * Get Azure locale code for a language
+ * Delegates to centralized language-code-service
  *
- * @param {string} langCode - 2-letter language code
+ * @param {string} langCode - Language code (2-letter, 3-letter, or legacy)
  * @returns {string} Azure locale (e.g., 'it-IT', 'ga-IE')
  */
 function getAzureLocale(langCode) {
-  const localeMap = {
-    'en': 'en-US',
-    'it': 'it-IT',
-    'es': 'es-ES',
-    'fr': 'fr-FR',
-    'de': 'de-DE',
-    'pt': 'pt-PT',
-    'ja': 'ja-JP',
-    'ko': 'ko-KR',
-    'zh': 'zh-CN',
-    'cmn': 'zh-CN',
-    'ar': 'ar-EG',
-    'sv': 'sv-SE',
-    'fi': 'fi-FI',
-    'ga': 'ga-IE',
-    'cy': 'cy-GB',
-    'nl': 'nl-NL',
-    'ru': 'ru-RU'
-  };
-
-  return localeMap[langCode.toLowerCase()] || langCode;
+  try {
+    return langService.getAzureLocale(langCode);
+  } catch (error) {
+    // Fallback for unconfigured languages - return code as-is for voice filtering
+    console.warn(`[Azure TTS] ${error.message}`);
+    return langCode;
+  }
 }
 
 /**

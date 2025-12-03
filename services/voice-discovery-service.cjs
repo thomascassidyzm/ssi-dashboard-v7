@@ -10,42 +10,25 @@ const fetch = require('node-fetch');
 const fs = require('fs-extra');
 const path = require('path');
 const azureTTS = require('./azure-tts-service.cjs');
+const langService = require('./language-code-service.cjs');
 
 /**
- * Language code mappings (ISO 639-1 to Azure locale prefixes)
+ * Get Azure locale prefix from language code
+ * Uses centralized language-code-service for legacy→standard conversion
+ * Special case: cmn (Mandarin) → 'zh' for Azure locales
  */
-const LANGUAGE_CODES = {
-  'deu': 'de',  // German
-  'fra': 'fr',  // French
-  'ita': 'it',  // Italian
-  'spa': 'es',  // Spanish
-  'cmn': 'zh',  // Mandarin Chinese
-  'eng': 'en',  // English
-  'por': 'pt',  // Portuguese
-  'rus': 'ru',  // Russian
-  'jpn': 'ja',  // Japanese
-  'kor': 'ko',  // Korean
-  'ara': 'ar',  // Arabic
-  'hin': 'hi',  // Hindi
-  'nld': 'nl',  // Dutch
-  'pol': 'pl',  // Polish
-  'tur': 'tr',  // Turkish
-  'swe': 'sv',  // Swedish
-  'dan': 'da',  // Danish
-  'nor': 'no',  // Norwegian
-  'fin': 'fi',  // Finnish
-  'ell': 'el',  // Greek
-  'tha': 'th',  // Thai
-  'vie': 'vi',  // Vietnamese
-  'ind': 'id',  // Indonesian
-  'msa': 'ms',  // Malay
-  'ces': 'cs',  // Czech
-  'ron': 'ro',  // Romanian
-  'hun': 'hu',  // Hungarian
-  'ukr': 'uk',  // Ukrainian
-  'heb': 'he',  // Hebrew
-  'cat': 'ca'   // Catalan
-};
+function getLocalePrefix(languageCode) {
+  if (!languageCode) return null;
+  const code = languageCode.toLowerCase();
+
+  // Special case: Mandarin uses 'zh' prefix in Azure
+  if (code === 'cmn') return 'zh';
+
+  // Convert legacy codes (spa, eng, ita) to standard (es, en, it)
+  const standardCode = langService.legacyToStandard(code);
+
+  return standardCode;
+}
 
 /**
  * Sample sentences for voice testing
@@ -123,8 +106,8 @@ async function discoverAzureVoices(languageCode) {
     throw new Error('AZURE_SPEECH_KEY environment variable not set');
   }
 
-  // Convert to Azure locale prefix
-  const localePrefix = LANGUAGE_CODES[languageCode] || languageCode.substring(0, 2);
+  // Convert to Azure locale prefix using centralized service
+  const localePrefix = getLocalePrefix(languageCode) || languageCode.substring(0, 2);
 
   console.log(`Fetching Azure voices for ${languageCode} (${localePrefix})...`);
 
@@ -299,7 +282,7 @@ function getRecommendationReason(voice, index) {
  * @returns {Array} Sample sentences
  */
 function getSampleSentences(languageCode, count = 5) {
-  const localePrefix = LANGUAGE_CODES[languageCode] || languageCode.substring(0, 2);
+  const localePrefix = getLocalePrefix(languageCode) || languageCode.substring(0, 2);
   const samples = SAMPLE_SENTENCES[localePrefix] || SAMPLE_SENTENCES['en'];
   return samples.slice(0, count);
 }
@@ -394,5 +377,5 @@ module.exports = {
   generateVoiceSamples,
   createVoiceEntry,
   calculateVoiceQuality,
-  LANGUAGE_CODES
+  getLocalePrefix  // Use language-code-service for full mapping
 };

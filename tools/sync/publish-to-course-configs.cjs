@@ -24,6 +24,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const langService = require('../../services/language-code-service.cjs');
 
 // Paths
 const SCRIPT_DIR = __dirname;
@@ -35,28 +36,8 @@ const COURSE_CONFIGS_COURSES_DIR = path.join(COURSE_CONFIGS_REPO, 'Courses');
 const S3_BUCKET = 'popty-bach-lfs';
 const S3_COURSES_PREFIX = 'courses';
 
-// ISO 639-3 to course-configs code mapping (for languages where they differ)
-// The CSV has the course-configs codes; we need to map from our 3-letter codes
-const ISO_639_3_TO_COURSE_CONFIGS = {
-  'spa': 'es',   // Spanish
-  'fra': 'fr',   // French
-  'deu': 'de',   // German
-  'ita': 'it',   // Italian
-  'por': 'pt',   // Portuguese
-  'jpn': 'ja',   // Japanese
-  'kor': 'ko',   // Korean
-  'zho': 'cmn',  // Chinese (we might use zho, they use cmn)
-  'cmn': 'cmn',  // Chinese Mandarin (same)
-  'eng': 'en',   // English
-  'cym': 'cy',   // Welsh (default to cy, variants handled separately)
-  'gle': 'ga',   // Irish
-  'nld': 'nl',   // Dutch
-  'swe': 'sv',   // Swedish
-  'fin': 'fi',   // Finnish
-  'ara': 'ar',   // Arabic
-  'tur': 'tr',   // Turkish
-  'bre': 'br',   // Breton
-};
+// Legacy mapping is now handled by language-code-service
+// See services/language-code-service.cjs for the centralized conversion logic
 
 // Canonical key order for JSON formatting (ensures clean diffs)
 const KEY_ORDER = {
@@ -119,19 +100,16 @@ function loadLanguageCodes() {
 
 /**
  * Convert our course code (e.g., spa_for_eng) to course-configs format (e.g., en-es)
+ * Uses centralized language-code-service for conversions
  */
 function convertCourseCode(ourCode) {
-  // Parse our format: {target}_for_{known}
-  const match = ourCode.match(/^([a-z]+)_for_([a-z]+)$/i);
-  if (!match) {
+  const parsed = langService.parseCourseCode(ourCode);
+  if (!parsed) {
     throw new Error(`Invalid course code format: ${ourCode}. Expected format: xxx_for_yyy`);
   }
 
-  const [, targetLang, knownLang] = match;
-
-  // Convert to course-configs codes
-  const targetCode = ISO_639_3_TO_COURSE_CONFIGS[targetLang.toLowerCase()] || targetLang.toLowerCase();
-  let knownCode = ISO_639_3_TO_COURSE_CONFIGS[knownLang.toLowerCase()] || knownLang.toLowerCase();
+  const targetCode = parsed.target;  // Already standard (es, en, cmn, etc.)
+  const knownCode = parsed.known;
 
   // Special handling for Welsh - default to cy-north
   if (targetCode === 'cy') {

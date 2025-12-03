@@ -13,6 +13,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const https = require('https');
+const langService = require('./language-code-service.cjs');
 
 // Paths
 const VFS_COURSES_PATH = path.join(__dirname, '..', 'public', 'vfs', 'courses');
@@ -736,12 +737,10 @@ async function checkAndFixVoiceAssignments(courseCode) {
       };
     }
 
-    // Try language pair
-    const match = courseCode.match(/^(\w{3})_for_(\w{3})/);
-    if (match) {
-      const targetLang = match[1];
-      const sourceLang = match[2];
-      const langPair = `${sourceLang}-${targetLang}`;
+    // Try language pair (convert legacy codes to standard)
+    const parsed = langService.parseCourseCode(courseCode);
+    if (parsed) {
+      const langPair = langService.toLanguagePair(parsed.known, parsed.target);
 
       if (voicesConfig.language_pair_assignments && voicesConfig.language_pair_assignments[langPair]) {
         return {

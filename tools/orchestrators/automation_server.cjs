@@ -42,6 +42,9 @@ const ajv = new Ajv({ allErrors: true });
 const ttsService = require('./services/tts-service.cjs');
 const s3AudioService = require('./services/s3-audio-service.cjs');
 
+// Language code service (centralized)
+const langService = require('../../services/language-code-service.cjs');
+
 // =============================================================================
 // CONFIGURATION
 // =============================================================================
@@ -273,27 +276,11 @@ const STATE = {
 // =============================================================================
 
 /**
- * Convert 3-letter language code to full language name
+ * Convert language code to full language name
+ * Uses centralized language-code-service
  */
 function getLanguageName(code) {
-  const names = {
-    'eng': 'English',
-    'ita': 'Italian',
-    'spa': 'Spanish',
-    'fra': 'French',
-    'gle': 'Irish',
-    'cym': 'Welsh',
-    'cmn': 'Mandarin Chinese',
-    'mkd': 'Macedonian',
-    'deu': 'German',
-    'por': 'Portuguese',
-    'nld': 'Dutch',
-    'swe': 'Swedish',
-    'nor': 'Norwegian',
-    'dan': 'Danish',
-    'fin': 'Finnish'
-  };
-  return names[code.toLowerCase()] || code.toUpperCase();
+  return langService.getName(code);
 }
 
 /**
