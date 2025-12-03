@@ -318,6 +318,53 @@ app.get('/api/courses/:courseCode', async (req, res) => {
   }
 });
 
+/**
+ * GET /api/courses/:courseCode/files/:filename
+ * Proxy course files from S3 to avoid CORS issues
+ */
+app.get('/api/courses/:courseCode/files/:filename', async (req, res) => {
+  const { courseCode, filename } = req.params;
+
+  // Validate filename to prevent directory traversal
+  const allowedFiles = [
+    'lego_pairs.json',
+    'lego_baskets.json',
+    'introductions.json',
+    'seed_pairs.json',
+    'course_manifest.json',
+    'draft_lego_pairs.json'
+  ];
+
+  if (!allowedFiles.includes(filename)) {
+    return res.status(400).json({
+      error: 'Invalid filename',
+      allowed: allowedFiles
+    });
+  }
+
+  try {
+    const s3Service = require('../s3-service.cjs');
+    const data = await s3Service.readCourseFile(courseCode, filename);
+
+    // Set cache headers (5 minutes for course data)
+    res.setHeader('Cache-Control', 'public, max-age=300');
+    res.setHeader('Content-Type', 'application/json');
+
+    res.json(data);
+  } catch (err) {
+    if (err.code === 'NotFound' || err.code === 'NoSuchKey') {
+      return res.status(404).json({
+        error: 'File not found',
+        courseCode,
+        filename
+      });
+    }
+
+    console.error(`[Files] Failed to read ${courseCode}/${filename}:`, err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // =======================================
 // PHASE VALIDATION FUNCTIONS
 // =======================================

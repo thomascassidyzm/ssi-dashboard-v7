@@ -1,41 +1,34 @@
 /**
- * GitHub Configuration
+ * Course Data Configuration
  *
- * Dashboard fetches course data from GitHub raw content API instead of bundling it.
- * This keeps Vercel deployments lightweight and separates production tooling from course data.
+ * Course data is stored in S3 (popty-bach-lfs bucket).
+ * Frontend fetches via API endpoints to avoid CORS issues.
+ *
+ * Architecture:
+ * - S3 is the Single Source of Truth for course data
+ * - API endpoints proxy to S3 (/api/courses/:code/files/:filename)
+ * - Frontend never fetches directly from S3
  */
 
+import { baseURL } from '../services/api.js'
+
 export const GITHUB_CONFIG = {
-  // GitHub repository info
-  owner: 'thomascassidyzm',
-  repo: 'ssi-dashboard-v7',
-  branch: 'main',
+  // Named GITHUB_CONFIG for backward compatibility with existing code
+  // Actually fetches from API which proxies to S3
 
-  // Base URL for raw content
-  get rawBaseUrl() {
-    return `https://raw.githubusercontent.com/${this.owner}/${this.repo}/${this.branch}`
-  },
-
-  // Course data path
-  get coursesPath() {
-    return `${this.rawBaseUrl}/public/vfs/courses`
-  },
-
-  // Helper to build course file URL
+  // Helper to build course file URL (via API proxy)
   getCourseFileUrl(courseCode, filename) {
-    return `${this.coursesPath}/${courseCode}/${filename}`
+    // Use API endpoint that proxies to S3
+    return `${baseURL}/api/courses/${courseCode}/files/${filename}`
   },
 
-  // Manifest URL (always available, lightweight)
+  // Manifest URL (via API)
   get manifestUrl() {
-    return `${this.rawBaseUrl}/public/vfs/courses-manifest.json`
+    return `${baseURL}/api/courses/manifest`
   }
 }
 
-// For local development, always use localhost for immediate feedback
-// This lets you see manifest changes immediately after regeneration
+// For local development, use localhost for immediate feedback
 if (import.meta.env.DEV) {
-  GITHUB_CONFIG.rawBaseUrl = 'http://localhost:5173'
-  GITHUB_CONFIG.coursesPath = '/vfs/courses'
-  console.log('[GitHub Config] DEV mode: Using local VFS at http://localhost:5173/vfs')
+  console.log('[Course Config] Using API proxy for course files')
 }
