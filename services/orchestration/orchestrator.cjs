@@ -217,34 +217,56 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
 
 /**
  * GET /api/courses
- * List all available courses
+ * List all available courses from S3
  */
 app.get('/api/courses', async (req, res) => {
   try {
-    const manifestPath = path.join(__dirname, '../../public/vfs/courses-manifest.json');
-    const manifest = await fs.readJson(manifestPath);
+    // Use S3 service to list courses
+    const s3Service = require('../s3-service.cjs');
+    const includeStatus = req.query.status === 'true';
 
-    const courses = manifest.courses
-      .filter(c => c.actual_seed_count > 0)
-      .map(c => ({
-        course_code: c.course_code,
-        source_language: c.source_language,
-        target_language: c.target_language,
-        total_seeds: c.total_seeds,
-        version: c.format,
-        status: determineStatus(c),
-        seed_pairs: c.actual_seed_count,
-        lego_pairs: c.lego_count,
-        lego_baskets: c.basket_count || 0,
-        amino_acids: {
-          introductions: c.introductions_count || 0
-        },
-        phases_completed: c.phases_completed || []
-      }));
+    // List all course directories from S3
+    const courseList = await s3Service.listCourseDirectories();
 
-    res.json({ courses });
+    if (includeStatus) {
+      // Check key files for each course
+      const keyFiles = ['lego_pairs.json', 'lego_baskets.json', 'introductions.json', 'course_manifest.json'];
+
+      const coursesWithStatus = await Promise.all(
+        courseList.map(async (courseCode) => {
+          const fileStatus = {};
+          for (const file of keyFiles) {
+            const key = file.replace('.json', '');
+            fileStatus[key] = await s3Service.courseFileExists(courseCode, file);
+          }
+          return {
+            code: courseCode,
+            name: courseCode.replace(/_/g, ' ').replace(/for/g, '→'),
+            files: fileStatus,
+            complete: Object.values(fileStatus).every(Boolean)
+          };
+        })
+      );
+
+      return res.json({
+        courses: coursesWithStatus,
+        total: coursesWithStatus.length,
+        complete: coursesWithStatus.filter(c => c.complete).length
+      });
+    }
+
+    // Simple list without status
+    const courses = courseList.map(code => ({
+      code,
+      name: code.replace(/_/g, ' ').replace(/for/g, '→')
+    }));
+
+    res.json({
+      courses,
+      total: courses.length
+    });
   } catch (error) {
-    console.error('Failed to load courses:', error);
+    console.error('Failed to load courses from S3:', error);
     res.status(500).json({ error: error.message });
   }
 });

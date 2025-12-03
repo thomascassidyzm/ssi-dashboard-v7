@@ -304,7 +304,65 @@ async function existsInLFS(key) {
   }
 }
 
+/**
+ * List all course directories in the LFS bucket
+ *
+ * @returns {Promise<string[]>} Array of course codes
+ */
+async function listCourseDirectories() {
+  const response = await s3.listObjectsV2({
+    Bucket: LFS_BUCKET,
+    Prefix: 'courses/',
+    Delimiter: '/'
+  }).promise();
+
+  // Extract course codes from common prefixes
+  const courses = (response.CommonPrefixes || [])
+    .map(prefix => prefix.Prefix.replace('courses/', '').replace('/', ''))
+    .filter(code => code.length > 0);
+
+  return courses;
+}
+
+/**
+ * Check if a course file exists in S3
+ *
+ * @param {string} courseCode - Course identifier (e.g., 'spa_for_eng')
+ * @param {string} filename - File name (e.g., 'lego_pairs.json')
+ * @returns {Promise<boolean>} True if exists
+ */
+async function courseFileExists(courseCode, filename) {
+  const key = `courses/${courseCode}/${filename}`;
+  return existsInLFS(key);
+}
+
+/**
+ * Read a course file from S3
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {string} filename - File name
+ * @returns {Promise<object>} Parsed JSON content
+ */
+async function readCourseFile(courseCode, filename) {
+  const key = `courses/${courseCode}/${filename}`;
+  const data = await downloadFromLFS(key);
+  return JSON.parse(data.toString());
+}
+
+/**
+ * Write a course file to S3
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {string} filename - File name
+ * @param {object} content - JSON content to write
+ */
+async function writeCourseFile(courseCode, filename, content) {
+  const key = `courses/${courseCode}/${filename}`;
+  await uploadToLFS(key, JSON.stringify(content, null, 2), 'application/json');
+}
+
 module.exports = {
+  // Audio functions
   uploadAudio,
   uploadAudioFile,
   audioExists,
@@ -315,9 +373,16 @@ module.exports = {
   batchCheckAudio,
   deleteAudio,
   copyAudio,
+  // LFS functions
   uploadToLFS,
   downloadFromLFS,
   existsInLFS,
+  // Course functions
+  listCourseDirectories,
+  courseFileExists,
+  readCourseFile,
+  writeCourseFile,
+  // Constants
   STAGE_BUCKET,
   PROD_BUCKET,
   LFS_BUCKET
