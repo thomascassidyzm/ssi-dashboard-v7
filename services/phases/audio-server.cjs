@@ -6,6 +6,23 @@
  * Wraps Kai's comprehensive audio generation orchestrator
  * Port: 3465
  *
+ * Endpoints:
+ *   POST /plan              - Run preflight + show generation plan (REQUIRES APPROVAL)
+ *   POST /start             - Start audio generation (after plan approval)
+ *   POST /continue          - Continue after QC checkpoint
+ *   POST /regenerate        - Regenerate specific samples
+ *   GET  /status/:courseCode - Get job status
+ *   GET  /voices/:courseCode - Get voice assignments
+ *   POST /voices/discover   - Discover voices for new course
+ *   GET  /health            - Health check
+ *
+ * Workflow (matches AUDIO_GENERATION_WORKFLOW.md):
+ *   1. POST /plan           → Review costs, approve
+ *   2. POST /start          → Phase A generation (targets/source)
+ *   3. [QC checkpoint]      → Review samples
+ *   4. POST /continue       → Phase A processing + Phase B (presentations)
+ *   5. [Auto: encouragements, welcome]
+ *
  * Features:
  * - Two-phase generation (Phase A: targets/source, Phase B: presentations)
  * - QC checkpoints before processing/upload
@@ -26,6 +43,16 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 8 (Audio)';
 // Import Kai's audio generation orchestrator
 const audioOrchestrator = require('../../scripts/phase8-audio-generation.cjs');
 
+// Import preflight service for plan endpoint
+let preflightService;
+let plannerService;
+try {
+  preflightService = require('../preflight-check-service.cjs');
+  plannerService = require('../audio-generation-planner.cjs');
+} catch (e) {
+  console.warn('[Phase 8] Could not load preflight/planner services:', e.message);
+}
+
 // Enable CORS for all origins (adjust as needed)
 app.use(cors());
 
@@ -34,21 +61,31 @@ app.use(express.json());
 // Active job tracking
 const activeJobs = new Map();
 
+// Plan cache (stores approved plans)
+const approvedPlans = new Map();
+
 /**
- * Start audio generation for a course
+ * Run preflight checks and show generation plan
  *
- * POST /start
+ * POST /plan
  * Body: {
  *   courseCode: "spa_for_eng",
  *   options: {
- *     phase: "auto",        // "targets", "presentations", or "auto"
- *     skipUpload: false,    // Skip S3 upload (for testing)
- *     skipQC: false,        // Skip QC pause (auto-approve)
- *     uploadBucket: "stage" // "stage" or "prod"
+ *     skipSync: false,     // Skip S3 sync during preflight
+ *     skipDedup: false     // Skip deduplication during preflight
  *   }
  * }
+ *
+ * Response includes:
+ * - Preflight check results (pass/fail with details)
+ * - Sample counts by role
+ * - Cost estimates (Azure free, ElevenLabs paid)
+ * - Time estimates
+ * - Voice assignments
+ *
+ * IMPORTANT: This does NOT start generation. User must call /start after reviewing.
  */
-app.post('/start', async (req, res) => {
+app.post('/plan', async (req, res) => {
   const { courseCode, options = {} } = req.body;
 
   if (!courseCode) {
@@ -58,16 +95,179 @@ app.post('/start', async (req, res) => {
     });
   }
 
+  console.log(`\n[Phase 8] Running plan for ${courseCode}`);
+
+  try {
+    // Load manifest and voice assignments
+    const manifest = await audioOrchestrator.loadCourseManifest(courseCode);
+    const voices = await audioOrchestrator.getVoiceAssignments(courseCode);
+
+    // Analyze what needs to be generated
+    // Note: Parameter order is (manifest, courseCode, voiceAssignments) - manifest first!
+    const analysis = await audioOrchestrator.analyzeRequiredGeneration(manifest, courseCode, voices);
+
+    // Run preflight if service available
+    let preflightResult = { passed: true, checks: [], warnings: [] };
+    if (preflightService && preflightService.runPreflight) {
+      try {
+        preflightResult = await preflightService.runPreflight(courseCode, {
+          skipSync: options.skipSync,
+          skipDedup: options.skipDedup,
+          autoFix: true
+        });
+      } catch (e) {
+        preflightResult = {
+          passed: false,
+          checks: [{ name: 'preflight', passed: false, error: e.message }],
+          warnings: []
+        };
+      }
+    }
+
+    // Build plan summary
+    // Note: analyzeRequiredGeneration returns { toGenerate: [], matched: [] }
+    const toGenerateList = analysis.toGenerate || [];
+    const matchedList = analysis.matched || [];
+
+    // Count samples by role
+    const byRole = {};
+    for (const sample of toGenerateList) {
+      byRole[sample.role] = (byRole[sample.role] || 0) + 1;
+    }
+
+    // Estimate costs (Azure is free tier, ElevenLabs is paid)
+    const azureRoles = ['target1', 'target2'];
+    const elevenLabsRoles = ['source', 'presentation'];
+    const azureCount = toGenerateList.filter(s => azureRoles.includes(s.role)).length;
+    const elevenLabsCount = toGenerateList.filter(s => elevenLabsRoles.includes(s.role)).length;
+
+    // Rough cost estimate: ElevenLabs ~$0.30 per 1000 chars, avg 20 chars per sample
+    const estimatedCost = elevenLabsCount > 0
+      ? `~$${((elevenLabsCount * 20 * 0.30) / 1000).toFixed(2)} (ElevenLabs)`
+      : '$0 (Azure free tier only)';
+
+    // Rough time estimate: ~2 samples/sec for Azure, ~1 sample/sec for ElevenLabs
+    const estimatedSeconds = (azureCount / 2) + (elevenLabsCount / 1);
+    const estimatedTime = estimatedSeconds > 60
+      ? `~${Math.ceil(estimatedSeconds / 60)} minutes`
+      : `~${Math.ceil(estimatedSeconds)} seconds`;
+
+    const plan = {
+      courseCode,
+      timestamp: new Date().toISOString(),
+      preflight: preflightResult,
+      voices,
+      analysis: {
+        totalSamples: toGenerateList.length + matchedList.length,
+        alreadyInMAR: matchedList.length,
+        toGenerate: toGenerateList.length,
+        byRole
+      },
+      estimates: {
+        azureSamples: azureCount,
+        elevenLabsSamples: elevenLabsCount,
+        estimatedCost,
+        estimatedTime
+      },
+      readyToStart: preflightResult.passed
+    };
+
+    // Cache the plan for approval
+    approvedPlans.set(courseCode, {
+      plan,
+      createdAt: Date.now(),
+      approved: false
+    });
+
+    // Expire plan cache after 1 hour
+    setTimeout(() => approvedPlans.delete(courseCode), 3600000);
+
+    res.json({
+      success: true,
+      message: preflightResult.passed
+        ? 'Plan ready. Review and call POST /start to begin generation.'
+        : 'Preflight checks failed. Fix issues before starting.',
+      plan,
+      nextStep: preflightResult.passed
+        ? `POST /start with courseCode: "${courseCode}"`
+        : 'Fix preflight issues and re-run POST /plan'
+    });
+
+  } catch (error) {
+    console.error(`[Phase 8] Error creating plan for ${courseCode}:`, error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
+/**
+ * Start audio generation for a course
+ *
+ * POST /start
+ * Body: {
+ *   courseCode: "spa_for_eng",
+ *   approved: true,         // Must be true to confirm plan review
+ *   options: {
+ *     phase: "auto",        // "targets", "presentations", "encouragements", "welcome", "finalize", or "auto"
+ *     skipUpload: false,    // Skip S3 upload (for testing)
+ *     skipQC: false,        // Skip QC pause (auto-approve)
+ *     uploadBucket: "stage" // "stage" or "prod"
+ *   }
+ * }
+ */
+app.post('/start', async (req, res) => {
+  const { courseCode, approved, options = {} } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({
+      success: false,
+      error: 'Missing required field: courseCode'
+    });
+  }
+
+  // Check if plan was reviewed (warn but don't block)
+  const cachedPlan = approvedPlans.get(courseCode);
+  if (!cachedPlan && !approved) {
+    return res.status(400).json({
+      success: false,
+      error: 'No plan found. Run POST /plan first to review costs and time estimates.',
+      hint: 'Or set approved: true to skip plan review (not recommended)'
+    });
+  }
+
+  if (cachedPlan && !cachedPlan.plan.readyToStart && !options.force) {
+    return res.status(400).json({
+      success: false,
+      error: 'Preflight checks failed. Fix issues before starting.',
+      preflight: cachedPlan.plan.preflight,
+      hint: 'Set options.force: true to start anyway (not recommended)'
+    });
+  }
+
   // Check if job already running
   if (activeJobs.has(courseCode)) {
+    const existingJob = activeJobs.get(courseCode);
     return res.status(409).json({
       success: false,
-      error: `Audio generation already in progress for ${courseCode}`
+      error: `Audio generation already in progress for ${courseCode}`,
+      job: {
+        jobId: existingJob.jobId,
+        status: existingJob.status,
+        startedAt: existingJob.startedAt
+      }
     });
   }
 
   console.log(`\n[Phase 8] Starting audio generation for ${courseCode}`);
   console.log(`[Phase 8] Options:`, JSON.stringify(options, null, 2));
+
+  // Mark plan as approved
+  if (cachedPlan) {
+    cachedPlan.approved = true;
+  }
 
   // Start job (non-blocking)
   const jobId = `${courseCode}-${Date.now()}`;
@@ -75,8 +275,13 @@ app.post('/start', async (req, res) => {
     courseCode,
     jobId,
     status: 'running',
+    phase: 'phase-a',
     startedAt: new Date().toISOString(),
-    options
+    options,
+    progress: {
+      current: 0,
+      total: cachedPlan?.plan?.analysis?.toGenerate || 0
+    }
   };
 
   activeJobs.set(courseCode, jobState);
@@ -84,15 +289,23 @@ app.post('/start', async (req, res) => {
   // Run audio generation in background
   audioOrchestrator.generateAudioForCourse(courseCode, options)
     .then(result => {
-      jobState.status = result.success ? 'complete' : 'failed';
-      jobState.completedAt = new Date().toISOString();
-      jobState.result = result;
+      // Check if paused at QC checkpoint
+      if (result.pausedAtQC) {
+        jobState.status = 'qc-review';
+        jobState.phase = 'qc-checkpoint';
+        jobState.qcReport = result.qcReport;
+        console.log(`\n[Phase 8] Audio generation paused at QC checkpoint for ${courseCode}`);
+      } else {
+        jobState.status = result.success ? 'complete' : 'failed';
+        jobState.completedAt = new Date().toISOString();
+        jobState.result = result;
 
-      console.log(`\n[Phase 8] Audio generation ${result.success ? 'complete' : 'failed'} for ${courseCode}`);
+        console.log(`\n[Phase 8] Audio generation ${result.success ? 'complete' : 'failed'} for ${courseCode}`);
 
-      // Notify orchestrator of completion
-      if (result.success) {
-        notifyOrchestrator(courseCode, 8, { success: true, ...result });
+        // Notify orchestrator of completion
+        if (result.success) {
+          notifyOrchestrator(courseCode, 8, { success: true, ...result });
+        }
       }
     })
     .catch(error => {
@@ -103,8 +316,10 @@ app.post('/start', async (req, res) => {
       console.error(`\n[Phase 8] Error in audio generation for ${courseCode}:`, error);
     })
     .finally(() => {
-      // Keep job in memory for status queries (cleanup after 1 hour)
-      setTimeout(() => activeJobs.delete(courseCode), 3600000);
+      // Keep job in memory for status queries (cleanup after 1 hour, unless at QC)
+      if (jobState.status !== 'qc-review') {
+        setTimeout(() => activeJobs.delete(courseCode), 3600000);
+      }
     });
 
   // Return immediately with job ID
@@ -113,7 +328,14 @@ app.post('/start', async (req, res) => {
     message: `Audio generation started for ${courseCode}`,
     jobId,
     courseCode,
-    phase: options.phase || 'auto'
+    phase: options.phase || 'auto',
+    workflow: [
+      '1. Phase A: Generate target1, target2, source samples',
+      '2. QC Checkpoint: Review flagged samples (if not skipped)',
+      '3. POST /continue to process and upload Phase A',
+      '4. Phase B: Generate presentation samples',
+      '5. Finalize: Encouragements + Welcome'
+    ]
   });
 });
 
@@ -149,13 +371,26 @@ app.get('/status/:courseCode', (req, res) => {
 });
 
 /**
- * Continue Phase A processing after QC approval
+ * Continue processing after QC approval
  *
- * POST /continue-phase-a
- * Body: { courseCode: "spa_for_eng", options: {...} }
+ * POST /continue
+ * Body: {
+ *   courseCode: "spa_for_eng",
+ *   qcApproved: true,       // Confirm QC review was done
+ *   options: {
+ *     skipUpload: false,
+ *     uploadBucket: "stage"
+ *   }
+ * }
+ *
+ * This continues the workflow after QC checkpoint:
+ * - Normalizes and processes Phase A audio
+ * - Uploads to S3
+ * - Proceeds to Phase B (presentations)
+ * - Finishes with encouragements and welcome
  */
-app.post('/continue-phase-a', async (req, res) => {
-  const { courseCode, options = {} } = req.body;
+app.post('/continue', async (req, res) => {
+  const { courseCode, qcApproved, options = {} } = req.body;
 
   if (!courseCode) {
     return res.status(400).json({
@@ -164,23 +399,78 @@ app.post('/continue-phase-a', async (req, res) => {
     });
   }
 
+  // Check if there's a job at QC checkpoint
+  const job = activeJobs.get(courseCode);
+  if (!job) {
+    return res.status(404).json({
+      success: false,
+      error: `No active job found for ${courseCode}. Start with POST /start first.`
+    });
+  }
+
+  if (job.status !== 'qc-review' && !options.force) {
+    return res.status(400).json({
+      success: false,
+      error: `Job is not at QC checkpoint. Current status: ${job.status}`,
+      hint: 'Set options.force: true to continue anyway'
+    });
+  }
+
+  if (!qcApproved && !options.skipQC) {
+    return res.status(400).json({
+      success: false,
+      error: 'QC not approved. Set qcApproved: true to confirm you reviewed the samples.',
+      qcReport: job.qcReport,
+      hint: 'Review samples in qc_review/ directory, then call with qcApproved: true'
+    });
+  }
+
   try {
-    console.log(`\n[Phase 8] Continuing Phase A processing for ${courseCode}`);
+    console.log(`\n[Phase 8] Continuing processing for ${courseCode} (QC approved: ${qcApproved})`);
+
+    // Update job status
+    job.status = 'processing';
+    job.phase = 'phase-a-processing';
 
     const result = await audioOrchestrator.continuePhaseAProcessing(courseCode, options);
 
+    // Update job with result
+    job.status = result.success ? 'complete' : 'failed';
+    job.completedAt = new Date().toISOString();
+    job.result = result;
+
+    // Notify orchestrator if complete
+    if (result.success) {
+      notifyOrchestrator(courseCode, 8, { success: true, ...result });
+    }
+
+    // Schedule cleanup
+    setTimeout(() => activeJobs.delete(courseCode), 3600000);
+
     res.json({
       success: true,
-      message: 'Phase A processing complete',
+      message: 'Audio generation complete',
       result
     });
   } catch (error) {
-    console.error(`[Phase 8] Error in Phase A processing:`, error);
+    console.error(`[Phase 8] Error continuing processing:`, error);
+
+    // Update job status
+    job.status = 'failed';
+    job.error = error.message;
+
     res.status(500).json({
       success: false,
       error: error.message
     });
   }
+});
+
+// Legacy endpoint alias
+app.post('/continue-phase-a', (req, res) => {
+  console.warn('[Phase 8] /continue-phase-a is deprecated. Use /continue instead.');
+  req.body.qcApproved = true; // Assume approved for legacy calls
+  app._router.handle({ ...req, url: '/continue' }, res);
 });
 
 /**
