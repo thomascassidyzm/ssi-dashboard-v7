@@ -1,12 +1,12 @@
 # APML: Manifest Compilation Script
-# Version: 9.2.0 (2025-12-01)
+# Version: 10.0.0 (2025-12-03)
 # Status: Production
 # Type: SCRIPT (not a phase - no agent involvement)
 
 script ManifestCompilation:
   name: "Manifest Compilation"
   purpose: "Transform SSoT files into app-ready course manifest"
-  version: "9.2.0"
+  version: "10.0.0"
   type: "deterministic_script"
 
   ## ==========================================================================
@@ -14,7 +14,7 @@ script ManifestCompilation:
   ## ==========================================================================
 
   description: |
-    This SCRIPT (not a phase) compiles all SSoT files into the app-ready
+    This SCRIPT (not a phase) compiles SSoT files into the app-ready
     manifest format that the SSi mobile app expects.
 
     KEY PRINCIPLE: This is a deterministic transformation with no agent
@@ -22,9 +22,10 @@ script ManifestCompilation:
 
     Input Files (SSoT):
     - lego_pairs.json (LEGOs with types and components)
-    - lego_baskets_v2.json (practice phrases with component drills)
-    - introductions_v2.json (simplified presentation text)
-    - voices.json (encouragements)
+    - lego_baskets.json (practice phrases)
+    - seed_pairs.json (optional fallback for seed sentences)
+    - welcomes.json (course welcome messages)
+    - eng_encouragements.json (encouragement messages)
 
     Output File:
     - course_manifest.json (app-ready manifest)
@@ -43,29 +44,29 @@ script ManifestCompilation:
         - LEGOs with types (A/M) and components
         - Seed → LEGO relationships
 
-    lego_baskets_v2:
-      location: "vfs/courses/{course_code}/lego_baskets_v2.json"
+    lego_baskets:
+      location: "vfs/courses/{course_code}/lego_baskets.json"
       required: true
-      version: "2.0.0"
       provides:
         - Practice phrases for each LEGO
-        - Component drills prepended for M-type LEGOs
-        - is_component flags for drill identification
 
-    introductions_v2:
-      location: "vfs/courses/{course_code}/introductions_v2.json"
-      required: true
-      version: "2.0.0"
+    seed_pairs:
+      location: "vfs/courses/{course_code}/seed_pairs.json"
+      required: false
       provides:
-        - Simplified presentation text per LEGO
-        - Format: "The {language} for '{known}', as in '{seed}', is:"
-        - target_text for audio concatenation
+        - Fallback seed sentences if not in lego_pairs
 
-    voices:
-      location: "vfs/canonical/voices.json"
+    welcomes:
+      location: "vfs/canonical/welcomes.json"
       required: true
       provides:
-        - Encouragement messages with UUIDs
+        - Course-specific welcome messages
+
+    eng_encouragements:
+      location: "vfs/canonical/eng_encouragements.json"
+      required: true
+      provides:
+        - Pooled and ordered encouragement messages
 
   ## ==========================================================================
   ## OUTPUT SPECIFICATION: APP MANIFEST
@@ -77,10 +78,10 @@ script ManifestCompilation:
       backup: "vfs/courses/{course_code}/{CourseTitle}_COURSE_{timestamp}.json"
 
       top_level_schema:
-        id: string                 # "en-cm" (short codes)
-        known: string              # "en"
-        target: string             # "cm"
-        version: string            # "9.2.0"
+        id: string                 # "en-spa" (en + 3-letter target code)
+        known: string              # "en" (always 2-letter for English)
+        target: string             # "spa" (3-letter target language code)
+        version: string            # "8.2.0"
         status: string             # "alpha" | "beta" | "production"
         introduction: AudioRef     # Course intro audio reference
         slices: Array<Slice>       # Single slice containing all content
@@ -90,12 +91,12 @@ script ManifestCompilation:
   ## ==========================================================================
 
   slice_schema:
-    id: UUID                       # Deterministic v5 UUID
+    id: UUID                       # Deterministic UUID
     version: string                # Same as manifest version
     seeds: Array<Seed>             # All seeds in the course
-    pooledEncouragements: Array<AudioRef>
-    orderedEncouragements: Array<AudioRef>
-    samples: Record<string, Array<AudioRef>>  # Text → audio lookup
+    pooledEncouragements: Array<EncouragementRef>
+    orderedEncouragements: Array<EncouragementRef>
+    samples: Record<string, Array<SampleEntry>>  # Text → audio entries
 
   ## ==========================================================================
   ## STRUCTURE: SEED
@@ -130,90 +131,52 @@ script ManifestCompilation:
         tokens: Array<string>
         lemmas: Array<string>
       target:
-        text: string               # Target LEGO (e.g., "我想")
+        text: string               # Target LEGO (e.g., "quiero")
         tokens: Array<string>
         lemmas: Array<string>
     nodes: Array<Node>             # Practice nodes (see NODES ARRAY below)
     presentation: string           # The presentation text for TTS
 
   ## ==========================================================================
-  ## CRITICAL: NODES ARRAY STRUCTURE
+  ## CRITICAL: NODES ARRAY STRUCTURE (Practice Phrase Ordering)
   ## ==========================================================================
 
   nodes_array:
     purpose: |
       The `nodes` array contains all practice content for a LEGO.
-      It is populated from lego_baskets_v2.json which has component drills
-      prepended for M-type LEGOs.
+      The ordering follows pedagogical principles for optimal learning.
 
-    structure:
-      nodes[0]: "The LEGO itself (always first)"
-      nodes[1..N]: "Practice phrases from basket"
+    ordering:
+      1_components: "For M-type LEGOs only - component building blocks first"
+      2_lego_debut: "The LEGO itself (always present)"
+      3_practice_phrases: "Remaining phrases sorted by length (shortest first)"
 
     for_atomic_legos:
       description: "A-type LEGOs have no components"
       example:
-        lego: "now = 现在"
+        lego: "with you = contigo"
         nodes:
-          - { known: "now", target: "现在" }                    # LEGO itself
-          - { known: "It's right now.", target: "它是现在。" }  # Practice 1
-          - { known: "Do it now.", target: "现在做。" }         # Practice 2
+          - { known: "with you", target: "contigo" }                     # LEGO debut
+          - { known: "I want to speak with you", target: "Quiero hablar contigo" }
+          - { known: "to speak Spanish with you", target: "hablar español contigo" }
 
     for_molecular_legos:
       description: "M-type LEGOs have component drills FIRST"
       example:
-        lego: "I want to = 我想"
+        lego: "I'm trying = estoy intentando"
         nodes:
-          - { known: "I want to", target: "我想" }              # LEGO itself
-          - { known: "I", target: "我" }                        # Component 1
-          - { known: "want", target: "想" }                     # Component 2
-          - { known: "I want to go", target: "我想去" }         # Recombination 1
-          - { known: "I want to stay", target: "我想留下" }     # Recombination 2
+          - { known: "I'm", target: "estoy" }                            # Component 1
+          - { known: "trying", target: "intentando" }                    # Component 2
+          - { known: "I'm trying", target: "estoy intentando" }          # LEGO debut
+          - { known: "I'm trying to speak", target: "Estoy intentando hablar" }
+          - { known: "I'm trying to speak Spanish", target: "Estoy intentando hablar español" }
 
     pedagogical_rationale: |
-      Component drills come BEFORE recombination phrases so learners
+      Component drills come BEFORE the LEGO debut so learners
       ACTIVELY PRACTICE the building blocks before combining them.
 
-      OLD approach: Passive explanation in audio ("'我' means I")
-      NEW approach: Active drilling (practice "我 = I" first)
-
   ## ==========================================================================
-  ## STRUCTURE: AUDIO REF
-  ## ==========================================================================
-
-  audio_ref_schema:
-    id: UUID                       # Deterministic v5 UUID
-    cadence: "natural" | "slow"
-    role: string                   # See AUDIO_ROLES
-    duration: number               # 0 until audio generated
-
-  audio_roles:
-    presentation:
-      description: "LEGO introduction/presentation audio"
-      example: "The Chinese for 'now', as in '...', is: ... '现在' ... '现在'"
-
-    presentation_encouragement:
-      description: "Encouragement messages between practice"
-      example: "You're doing excellently..."
-
-    practice_known:
-      description: "Known language (English) practice phrase"
-      example: "I want to speak Chinese now"
-
-    practice_target:
-      description: "Target language practice phrase"
-      example: "我现在想说中文"
-
-    lego_known:
-      description: "Known language LEGO (for drilling)"
-      example: "now"
-
-    lego_target:
-      description: "Target language LEGO (for drilling)"
-      example: "现在"
-
-  ## ==========================================================================
-  ## SAMPLES DICTIONARY
+  ## STRUCTURE: SAMPLES DICTIONARY
   ## ==========================================================================
 
   samples_dictionary:
@@ -224,52 +187,99 @@ script ManifestCompilation:
 
     structure:
       key: "The exact text content (string)"
-      value: "Array of AudioRef objects (different cadences/roles)"
+      value: "Array of SampleEntry objects"
+
+    critical_rule: |
+      Each target language text MUST have TWO entries:
+      - One with role: "target1" (female voice)
+      - One with role: "target2" (male voice)
+
+      Each known/English text has ONE entry with role: "source"
 
     example: |
       "samples": {
-        "now": [
-          { "id": "UUID1", "cadence": "natural", "role": "practice_known", "duration": 0 }
+        "I want to speak Spanish with you now.": [
+          { "duration": 0, "id": "UUID1", "cadence": "natural", "role": "source" }
         ],
-        "现在": [
-          { "id": "UUID2", "cadence": "natural", "role": "lego_target", "duration": 0 },
-          { "id": "UUID3", "cadence": "natural", "role": "practice_target", "duration": 0 }
+        "Quiero hablar español contigo ahora.": [
+          { "duration": 0, "id": "UUID2", "cadence": "natural", "role": "target1" },
+          { "duration": 0, "id": "UUID3", "cadence": "natural", "role": "target2" }
         ],
-        "The Chinese for 'now', as in 'I want to...', is:": [
-          { "id": "UUID4", "cadence": "natural", "role": "presentation", "duration": 0 }
+        "The Spanish for 'i want', is: ... 'quiero' ... 'quiero'": [
+          { "duration": 0, "id": "UUID4", "cadence": "natural", "role": "presentation" }
+        ],
+        "And remember that your brain has got...": [
+          { "duration": 0, "id": "UUID5", "cadence": "natural", "role": "presentation_encouragement" }
         ]
       }
 
-    deduplication: |
-      If the same text appears multiple times (e.g., same LEGO in multiple
-      seeds, or same phrase in multiple baskets), it gets ONE entry in samples.
-      The UUID is deterministic, so regenerating produces identical IDs.
+  ## ==========================================================================
+  ## AUDIO ROLES (CRITICAL - Only These 5 Roles Are Valid)
+  ## ==========================================================================
+
+  audio_roles:
+    source:
+      description: "English/known language text (single entry per text)"
+      voice: "English voice (Aran clone via ElevenLabs)"
+      examples:
+        - "I want to speak Spanish with you now."
+        - "I want"
+        - "to speak"
+
+    target1:
+      description: "Target language text - female voice"
+      voice: "Female target language voice (Azure TTS)"
+      examples:
+        - "Quiero hablar español contigo ahora."
+        - "quiero"
+
+    target2:
+      description: "Target language text - male voice"
+      voice: "Male target language voice (Azure TTS)"
+      note: "Same texts as target1, different voice"
+
+    presentation:
+      description: "LEGO introduction/presentation audio"
+      voice: "English voice (Aran clone via ElevenLabs)"
+      format: "The {Language} for '{known}', is: ... '{target}' ... '{target}'"
+      examples:
+        - "The Spanish for 'i want', is: ... 'quiero' ... 'quiero'"
+        - Course welcome message
+
+    presentation_encouragement:
+      description: "Encouragement messages between practice"
+      voice: "English voice (Aran clone via ElevenLabs)"
+      examples:
+        - "And remember that your brain has got as many neurons..."
+        - "You're doing excellently..."
+
+  ## ==========================================================================
+  ## SAMPLE ENTRY STRUCTURE
+  ## ==========================================================================
+
+  sample_entry_schema:
+    duration: number               # 0 until audio generated (populated by MAR)
+    id: UUID                       # Deterministic UUID
+    cadence: "natural"             # Always "natural" for initial compilation
+    role: string                   # One of the 5 valid roles above
 
   ## ==========================================================================
   ## UUID GENERATION
   ## ==========================================================================
 
   uuid_generation:
-    version: "UUIDv5 (deterministic)"
-    namespace: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"  # URL namespace
+    method: "MD5 hash formatted as UUID"
+    format: "UPPERCASE with hyphens (8-4-4-4-12)"
 
     formula: |
-      UUIDv5(namespace, `${text}|${language}|${role}|${cadence}`)
-
-    parameters:
-      text: "The actual text content"
-      language: "eng | cmn | spa | ita | etc."
-      role: "One of AUDIO_ROLES"
-      cadence: "natural | slow"
-
-    format: "UPPERCASE with hyphens (8-4-4-4-12)"
-    example: "C9C2501F-CCBB-5BE5-89B3-310919B5BD2D"
+      hash = MD5(`sample:${role}:${idSuffix}`)
+      uuid = hash[0:8]-hash[8:12]-hash[12:16]-hash[16:20]-hash[20:32]
 
     determinism: |
       Same inputs ALWAYS produce same UUID.
       This enables:
       - Audio file caching (don't regenerate existing files)
-      - Incremental updates (only generate new content)
+      - MAR lookup for existing audio
       - Manifest regeneration without breaking audio links
 
   ## ==========================================================================
@@ -277,77 +287,112 @@ script ManifestCompilation:
   ## ==========================================================================
 
   workflow:
-    STEP_1_LOAD_SSOT:
-      description: "Load all SSoT files"
+    STEP_1_LOAD_FILES:
+      description: "Load all input files"
       files:
         - lego_pairs.json
-        - lego_baskets_v2.json
-        - introductions_v2.json
-        - voices.json
+        - lego_baskets.json
+        - seed_pairs.json (optional)
+        - welcomes.json
+        - eng_encouragements.json
 
-    STEP_2_BUILD_LOOKUP_MAPS:
-      description: "Create efficient lookup structures"
-      maps:
-        lego_by_target: "Map target text → LEGO info"
-        basket_by_target: "Map target text → basket with practice phrases"
+    STEP_2_INITIALIZE:
+      description: "Initialize manifest structure and samples Map"
+      actions:
+        - Create manifest header (id, known, target, version, status)
+        - Create introduction with welcome reference
+        - Initialize empty samples Map
+        - Add welcome text to samples (role: presentation)
+        - Add encouragements to samples (role: presentation_encouragement)
 
-    STEP_3_INITIALIZE_SAMPLES:
-      description: "Initialize empty samples dictionary"
-
-    STEP_4_BUILD_SEEDS:
-      description: "Transform lego_pairs into app seeds format"
+    STEP_3_PROCESS_SEEDS:
+      description: "Process each seed and its LEGOs"
       for_each_seed:
-        - Create seed UUID
+        - Get seed sentence (from lego_pairs or seed_pairs fallback)
         - Create seed node
-        - For each LEGO in seed:
-          - Get presentation text from introductions_v2
-          - Get practice phrases from basket_by_target
-          - Build nodes array (LEGO first, then basket phrases)
-          - Add all texts to samples dictionary
+        - Add seed known text to samples (role: source)
+        - Add seed target text to samples (role: target1 + target2)
+        - Process each LEGO in seed
 
-    STEP_5_ADD_ENCOURAGEMENTS:
-      description: "Add encouragement messages from voices.json"
-      add_to:
-        - pooledEncouragements array
-        - orderedEncouragements array
-        - samples dictionary
+    STEP_4_PROCESS_LEGOS:
+      description: "Process each LEGO"
+      for_each_lego:
+        - Skip review LEGOs (new=false) without baskets
+        - Generate presentation text dynamically
+        - Create introduction_item with node
+        - Add LEGO known to samples (role: source)
+        - Add LEGO target to samples (role: target1 + target2)
+        - Add presentation to samples (role: presentation)
+        - Build nodes array with correct ordering
 
-    STEP_6_COMPILE_MANIFEST:
-      description: "Assemble final manifest"
-      structure:
-        - Set course metadata (id, known, target, version, status)
-        - Create single slice containing all content
+    STEP_5_BUILD_NODES:
+      description: "Build nodes array for each LEGO"
+      ordering:
+        - If M-type: Add components first (source + target1 + target2 for each)
+        - Add LEGO debut (already in samples)
+        - Add practice phrases sorted by length (source + target1 + target2 for each)
+
+    STEP_6_FINALIZE:
+      description: "Assemble and write manifest"
+      actions:
+        - Convert samples Map to object
+        - Assemble final manifest structure
         - Write timestamped JSON file
         - Copy to course_manifest.json
+
+  ## ==========================================================================
+  ## PRESENTATION TEXT GENERATION
+  ## ==========================================================================
+
+  presentation_format:
+    template: "The {TargetLanguage} for '{known}', is: ... '{target}' ... '{target}'"
+    example: "The Spanish for 'i want', is: ... 'quiero' ... 'quiero'"
+    note: "Known text is lowercased in the template"
 
   ## ==========================================================================
   ## SCRIPT LOCATION
   ## ==========================================================================
 
   script:
-    location: "scripts/compile-app-manifest.cjs"
-    usage: "node scripts/compile-app-manifest.cjs {course_code}"
-    example: "node scripts/compile-app-manifest.cjs cmn_for_eng"
+    location: "scripts/phase7-compile-manifest-v3.cjs"
+    usage: "node scripts/phase7-compile-manifest-v3.cjs {course_code}"
+    example: "node scripts/phase7-compile-manifest-v3.cjs spa_for_eng"
 
     dependencies:
-      - lego_pairs.json (from Phase 1)
-      - lego_baskets_v2.json (generated by generate-baskets-with-components.cjs)
-      - introductions_v2.json (generated by generate-simplified-introductions.cjs)
-      - voices.json (canonical)
+      - lego_pairs.json
+      - lego_baskets.json
+      - seed_pairs.json (optional)
+      - welcomes.json (canonical)
+      - eng_encouragements.json (canonical)
 
   ## ==========================================================================
-  ## STATISTICS (cmn_for_eng)
+  ## COMPARISON TOOL
+  ## ==========================================================================
+
+  comparison_script:
+    location: "scripts/compare-manifests.cjs"
+    usage: "node scripts/compare-manifests.cjs <new_manifest> [reference_manifest]"
+    purpose: "Compare manifest structure against Italian reference"
+
+  ## ==========================================================================
+  ## STATISTICS (spa_for_eng)
   ## ==========================================================================
 
   statistics:
-    seeds: 668
-    introduction_items: 3467
-    practice_phrases: 35235
-    unique_sample_entries: ~60000
-    component_drills: 6813
-    file_size: ~16MB
+    seeds: 630
+    introduction_items: 1912
+    practice_nodes: 18820
+    unique_sample_texts: 30118
+    total_sample_entries: 43979
+    role_breakdown:
+      source: 14358
+      target1: 13841
+      target2: 13841
+      presentation: 1913
+      presentation_encouragement: 26
+    file_size: ~14.5MB
 
 ## ============================================================================
-## GENERATED: 2025-12-01
-## APML v9.2.0
+## GENERATED: 2025-12-03
+## APML v10.0.0
 ## ============================================================================
