@@ -29,6 +29,7 @@ const presentationService = require('../services/presentation-service.cjs');
 const { runAudioGenPreflight } = require('./audio-gen-preflight.cjs');
 const { createQCReviewDirectory } = require('./create-qc-review.cjs');
 const structureValidator = require('../tools/validators/manifest-structure-validator.cjs');
+const audioIndexUpdater = require('./update-audio-index.cjs');
 
 // Configuration
 const VFS_BASE = path.join(__dirname, '../vfs');
@@ -464,10 +465,9 @@ function deduplicatePhaseASamples(samples) {
 }
 
 /**
- * Match samples against MAR and identify missing ones
- * Includes encouragements in the analysis
- * Now checks both permanent and temporary MARs
- * OPTIMIZED: Uses in-memory MAR index for O(1) lookups
+ * Match samples against S3 and identify missing ones
+ * S3 is the Single Source of Truth - never check local MAR
+ * OPTIMIZED: Builds S3 UUID index once, then O(1) lookups
  */
 async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments) {
   const variants = collectSampleVariants(manifest);
@@ -478,12 +478,14 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
   const targetLang = manifest.target;
   const knownLang = manifest.known;
 
-  // PERFORMANCE OPTIMIZATION: Build MAR index once before loop
   console.log(`\nAnalyzing required generation for ${variants.length} samples...`);
-  const uniqueVoiceIds = [...new Set(Object.values(voiceAssignments))];
-  const marIndex = await marService.loadMARIndex(uniqueVoiceIds);
+  console.log('  Building S3 UUID index (this may take a moment)...');
 
-  // Check regular samples
+  // Build S3 index - get all existing UUIDs from ssi-audio-stage/mastered/
+  const s3Index = await s3Service.buildMasteredIndex();
+  console.log(`  ✓ S3 index built: ${s3Index.size} existing samples`);
+
+  // First pass: generate all UUIDs and check against S3
   for (const variant of variants) {
     const voiceId = voiceAssignments[variant.role];
 
@@ -495,57 +497,53 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
     // Determine language for this role
     const language = ['target1', 'target2'].includes(variant.role) ? targetLang : knownLang;
 
-    // Check MAR index (O(1) lookup instead of file I/O)
-    const existing = marService.findSampleInIndex(
-      marIndex,
-      voiceId,
-      variant.text,
-      variant.role,
-      language,
-      variant.cadence
-    );
+    // Generate deterministic UUID for NEW samples (includes voiceId)
+    // For presentations: use existing manifest ID if available
+    let newSampleUUID;
+    if (variant.role === 'presentation' && variant.id) {
+      newSampleUUID = variant.id;
+    } else {
+      newSampleUUID = uuidService.generateSampleUUID(
+        variant.text,
+        language,
+        variant.role,
+        variant.cadence,
+        voiceId
+      );
+    }
 
-    if (existing) {
-      // Found existing sample
+    // Check S3 index using LEGACY UUID (text|lang|role|cadence - no voiceId)
+    // S3 is the Single Source of Truth - existing files use the old UUID scheme
+    // generateLegacyUUID auto-normalizes 2-letter codes to 3-letter (en → eng)
+    const legacyUUID = uuidService.generateLegacyUUID(variant.text, language, variant.role, variant.cadence);
+    const existsInS3 = s3Index.has(legacyUUID);
+
+    // Use legacy UUID if found in S3, otherwise use new UUID scheme for generation
+    const sampleUUID = existsInS3 ? legacyUUID : newSampleUUID;
+
+    // Check S3 index (O(1) lookup)
+    if (existsInS3) {
+      // Found existing sample in S3
       matched.push({
         text: variant.text,
         role: variant.role,
         cadence: variant.cadence,
-        uuid: existing.uuid,
-        duration: existing.sample.duration,
+        uuid: sampleUUID,
         voiceId
       });
 
-      // Update manifest with existing UUID and duration
-      // IMPORTANT: Only update UUID if manifest doesn't already have one
-      // This preserves manifest as source of truth when running specific phases
+      // Update manifest with UUID
       const samples = manifest.slices?.[0]?.samples || {};
       const variantInManifest = samples[variant.text]?.find(
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
         if (!variantInManifest.id) {
-          variantInManifest.id = existing.uuid;
+          variantInManifest.id = sampleUUID;
         }
-        variantInManifest.duration = existing.sample.duration;
       }
     } else {
       // Need to generate
-      // For presentations: use existing manifest ID if available (text may have changed after ID was assigned)
-      // For other roles: generate deterministic UUID from current text
-      let sampleUUID;
-      if (variant.role === 'presentation' && variant.id) {
-        sampleUUID = variant.id;
-      } else {
-        sampleUUID = uuidService.generateSampleUUID(
-          variant.text,
-          language,
-          variant.role,
-          variant.cadence,
-          voiceId
-        );
-      }
-
       toGenerate.push({
         text: variant.text,
         role: variant.role,
@@ -2609,6 +2607,7 @@ async function uploadToS3(processResults, bucket = s3Service.STAGE_BUCKET, concu
  * Samples stay in temp MAR until QC passes and S3 upload is verified
  *
  * Uses batched writing for performance (500 samples per disk write)
+ * Also updates the S3 audio-index.json for dashboard lookup
  */
 async function updateMAR(generationResults, durations) {
   console.log('\n=== Updating Temporary MAR (Batched) ===\n');
@@ -2616,6 +2615,9 @@ async function updateMAR(generationResults, durations) {
   const batchedWriter = marService.getBatchedTempMARWriter(500);
   let added = 0;
   let skipped = 0;
+
+  // Collect samples for S3 audio index update
+  const s3IndexSamples = [];
 
   for (const result of generationResults) {
     if (!result.success) continue;
@@ -2637,6 +2639,18 @@ async function updateMAR(generationResults, durations) {
         duration,
         filename: `${sample.uuid}.mp3`
       });
+
+      // Collect for S3 index update
+      s3IndexSamples.push({
+        uuid: sample.uuid,
+        language: sample.language,
+        text: sample.text,
+        role: sample.role,
+        cadence: sample.cadence || 'natural',
+        voice: sample.voiceId,
+        duration
+      });
+
       added++;
     } catch (error) {
       console.error(`Failed to add sample ${sample.uuid}: ${error.message}`);
@@ -2647,6 +2661,20 @@ async function updateMAR(generationResults, durations) {
   await batchedWriter.flush();
 
   console.log(`✓ MAR update complete: ${added} samples added, ${skipped} skipped (no duration)`);
+
+  // Update S3 audio index for dashboard lookup
+  if (s3IndexSamples.length > 0) {
+    console.log('\n=== Updating S3 Audio Index ===\n');
+    try {
+      const index = await audioIndexUpdater.loadAudioIndex();
+      const result = audioIndexUpdater.addSamplesToIndex(index, s3IndexSamples);
+      await audioIndexUpdater.saveAudioIndex(index);
+      console.log(`✓ S3 audio index updated: +${result.added} new, ~${result.updated} updated`);
+    } catch (error) {
+      console.error(`⚠️ Failed to update S3 audio index: ${error.message}`);
+      console.log('Run manually: node scripts/build-audio-index.cjs --upload');
+    }
+  }
 }
 
 /**
