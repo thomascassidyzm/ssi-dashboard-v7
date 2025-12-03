@@ -6,14 +6,18 @@
  * Body: { audio: "base64...", mimeType: "audio/webm", metadata: {...} }
  */
 
-import AWS from 'aws-sdk';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION || 'eu-west-1'
+const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
+
+const s3 = new S3Client({
+  region: AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
 
 export const config = {
@@ -74,7 +78,7 @@ export default async function handler(req, res) {
     console.log('[Recording] Uploading to S3:', key);
 
     // Upload to S3
-    await s3.putObject({
+    const command = new PutObjectCommand({
       Bucket: S3_BUCKET,
       Key: key,
       Body: audioBuffer,
@@ -89,9 +93,10 @@ export default async function handler(req, res) {
         uuid: metadata.uuid || '',
         recordedAt: new Date().toISOString()
       }
-    }).promise();
+    });
+    await s3.send(command);
 
-    const url = `https://${S3_BUCKET}.s3.${process.env.AWS_REGION || 'eu-west-1'}.amazonaws.com/${key}`;
+    const url = `https://${S3_BUCKET}.s3.${AWS_REGION}.amazonaws.com/${key}`;
 
     console.log('[Recording] Success! Key:', key, 'Size:', audioBuffer.length);
 

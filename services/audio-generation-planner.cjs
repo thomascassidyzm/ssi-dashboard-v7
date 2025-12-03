@@ -228,7 +228,8 @@ function parseMainPresentation(mainPresentation) {
  */
 function parseExplanationSegments(explanation) {
   const segments = [];
-  const pattern = /\{(target1|target2)\}\s*(["'])(.*?)\2(?=[\s,.;:!?)]|$)/g;
+  // Support both straight quotes ('") and curly/smart quotes ('' "")
+  const pattern = /\{(target1|target2)\}\s*([''""])(.*?)([''""])(?=[\s,.;:!?)]|$)/g;
 
   let lastPosition = 0;
   let match;

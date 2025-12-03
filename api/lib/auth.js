@@ -4,34 +4,47 @@
  * Storage: S3 bucket popty-bach-lfs/auth/
  */
 
-import AWS from 'aws-sdk';
+import { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 const AUTH_PREFIX = 'auth/';
 const MAGIC_LINK_TTL = 15 * 60 * 1000; // 15 minutes
 const SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION || 'eu-west-1'
+const s3 = new S3Client({
+  region: AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
+
+// Helper to convert stream to string
+async function streamToString(stream) {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks).toString('utf-8');
+}
 
 /**
  * Get user from users.json
  */
 export async function getUser(email) {
   try {
-    const { Body } = await s3.getObject({
+    const command = new GetObjectCommand({
       Bucket: S3_BUCKET,
       Key: `${AUTH_PREFIX}users.json`
-    }).promise();
-
-    const users = JSON.parse(Body.toString());
+    });
+    const result = await s3.send(command);
+    const bodyString = await streamToString(result.Body);
+    const users = JSON.parse(bodyString);
     return users.users?.[email] || null;
   } catch (err) {
-    if (err.code === 'NoSuchKey') return null;
+    if (err.name === 'NoSuchKey') return null;
     throw err;
   }
 }
@@ -47,12 +60,13 @@ export async function generateMagicLink(email) {
   const expires = Date.now() + MAGIC_LINK_TTL;
 
   // Store token in S3
-  await s3.putObject({
+  const command = new PutObjectCommand({
     Bucket: S3_BUCKET,
     Key: `${AUTH_PREFIX}magic-links/${token}.json`,
     Body: JSON.stringify({ email, expires }),
     ContentType: 'application/json'
-  }).promise();
+  });
+  await s3.send(command);
 
   return { token, expires };
 }
@@ -62,26 +76,28 @@ export async function generateMagicLink(email) {
  */
 export async function verifyMagicLink(token) {
   try {
-    const { Body } = await s3.getObject({
+    const getCommand = new GetObjectCommand({
       Bucket: S3_BUCKET,
       Key: `${AUTH_PREFIX}magic-links/${token}.json`
-    }).promise();
-
-    const data = JSON.parse(Body.toString());
+    });
+    const result = await s3.send(getCommand);
+    const bodyString = await streamToString(result.Body);
+    const data = JSON.parse(bodyString);
 
     if (Date.now() > data.expires) {
       return { error: 'Token expired' };
     }
 
     // Delete the used token
-    await s3.deleteObject({
+    const deleteCommand = new DeleteObjectCommand({
       Bucket: S3_BUCKET,
       Key: `${AUTH_PREFIX}magic-links/${token}.json`
-    }).promise();
+    });
+    await s3.send(deleteCommand);
 
     return { email: data.email };
   } catch (err) {
-    if (err.code === 'NoSuchKey') return { error: 'Invalid token' };
+    if (err.name === 'NoSuchKey') return { error: 'Invalid token' };
     throw err;
   }
 }
@@ -94,12 +110,13 @@ export async function createSession(email) {
   const expires = Date.now() + SESSION_TTL;
   const user = await getUser(email);
 
-  await s3.putObject({
+  const command = new PutObjectCommand({
     Bucket: S3_BUCKET,
     Key: `${AUTH_PREFIX}sessions/${sessionId}.json`,
     Body: JSON.stringify({ email, expires, user }),
     ContentType: 'application/json'
-  }).promise();
+  });
+  await s3.send(command);
 
   return { sessionId, expires, user };
 }
@@ -109,12 +126,13 @@ export async function createSession(email) {
  */
 export async function validateSession(sessionId) {
   try {
-    const { Body } = await s3.getObject({
+    const command = new GetObjectCommand({
       Bucket: S3_BUCKET,
       Key: `${AUTH_PREFIX}sessions/${sessionId}.json`
-    }).promise();
-
-    const data = JSON.parse(Body.toString());
+    });
+    const result = await s3.send(command);
+    const bodyString = await streamToString(result.Body);
+    const data = JSON.parse(bodyString);
 
     if (Date.now() > data.expires) {
       return null;
@@ -122,7 +140,7 @@ export async function validateSession(sessionId) {
 
     return data.user;
   } catch (err) {
-    if (err.code === 'NoSuchKey') return null;
+    if (err.name === 'NoSuchKey') return null;
     throw err;
   }
 }
@@ -131,8 +149,9 @@ export async function validateSession(sessionId) {
  * Delete a session (logout)
  */
 export async function deleteSession(sessionId) {
-  await s3.deleteObject({
+  const command = new DeleteObjectCommand({
     Bucket: S3_BUCKET,
     Key: `${AUTH_PREFIX}sessions/${sessionId}.json`
-  }).promise();
+  });
+  await s3.send(command);
 }

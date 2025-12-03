@@ -1,0 +1,269 @@
+# APML Phase 6: Content Generation v2 (Simplified)
+# Version: 2.0 (2025-12-01)
+# Status: Production-ready
+# Purpose: Generate simplified introductions and component-enhanced baskets
+
+phase Phase6ContentGenerationV2:
+  name: "Phase 6: Content Generation v2 (Simplified)"
+  purpose: "Generate introductions_v2.json and lego_baskets_v2.json from SSoT"
+  version: "2.0"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This phase generates derived content files from the Single Source of Truth:
+    - lego_pairs.json (SSoT for LEGOs and components)
+    - lego_baskets.json (SSoT for practice phrases)
+
+    Output files are optimized for audio generation:
+    - introductions_v2.json: Simple template-based introductions
+    - lego_baskets_v2.json: Baskets with component drills prepended
+
+    KEY SIMPLIFICATIONS from v1:
+    - No more {target1}/{target2} tags in text
+    - No more inline component explanations
+    - Components become ACTIVE practice (first N basket phrases)
+    - Audio generation becomes straightforward concatenation
+
+  design_philosophy: |
+    BEFORE (v1): Complex parsing of "{target1}'我' means I"
+    AFTER (v2):  Active drilling of "我 = I" as first practice phrase
+
+    The learner now PRACTICES the components rather than passively
+    hearing an explanation. This aligns with SSi methodology.
+
+  ## ==========================================================================
+  ## SOURCE OF TRUTH
+  ## ==========================================================================
+
+  single_source_of_truth:
+    primary:
+      - file: "lego_pairs.json"
+        contains: "668 seeds with LEGOs, types (A/M), components"
+        example:
+          lego_id: "S0001L02"
+          type: "M"
+          lego: { known: "I want to", target: "我想" }
+          components: [
+            { known: "I", target: "我" },
+            { known: "want", target: "想" }
+          ]
+
+      - file: "lego_baskets.json"
+        contains: "2872 baskets with 10+ practice phrases each"
+        example:
+          lego: { known: "I want to", target: "我想" }
+          practice_phrases: [
+            { known: "I want to eat", target: "我想吃" },
+            { known: "I want to go", target: "我想去" }
+          ]
+
+    derived:
+      - file: "introductions_v2.json"
+        purpose: "Presentation text for audio generation"
+
+      - file: "lego_baskets_v2.json"
+        purpose: "Baskets with component drills prepended"
+
+  ## ==========================================================================
+  ## OUTPUT 1: introductions_v2.json
+  ## ==========================================================================
+
+  output_introductions:
+    filename: "introductions_v2.json"
+    version: "2.0.0"
+    format: "simplified"
+
+    schema:
+      version: string
+      format: "simplified"
+      course: string
+      target: string      # e.g. "cmn"
+      known: string       # e.g. "eng"
+      generated: ISO8601
+      presentations:
+        "[LEGO_ID]":
+          text: string         # Template: "The Chinese for '{known}', as in '{seed}', is:"
+          target_text: string  # e.g. "我想"
+          type: "A" | "M"
+          components?: array   # Only for M-type LEGOs
+
+    template: |
+      "The {target_language} for '{known_lego}', as in '{seed_sentence}', is:"
+
+    example_atomic:
+      S0001L01:
+        text: "The Chinese for 'now', as in 'I want to speak Chinese with you now.', is:"
+        target_text: "现在"
+        type: "A"
+
+    example_molecular:
+      S0001L02:
+        text: "The Chinese for 'I want to', as in 'I want to speak Chinese with you now.', is:"
+        target_text: "我想"
+        type: "M"
+        components:
+          - { known: "I", target: "我" }
+          - { known: "want", target: "想" }
+
+    generation_script: "scripts/generate-simplified-introductions.cjs"
+
+  ## ==========================================================================
+  ## OUTPUT 2: lego_baskets_v2.json
+  ## ==========================================================================
+
+  output_baskets:
+    filename: "lego_baskets_v2.json"
+    version: "2.0.0"
+    format: "component-drills"
+
+    schema:
+      version: string
+      format: "component-drills"
+      course: string
+      generated: ISO8601
+      baskets:
+        "[index]":
+          lego_id: string          # e.g. "S0001L02"
+          type: "A" | "M"
+          lego:
+            known: string
+            target: string
+          practice_phrases: array   # For M-type: components first, then practice
+            - known: string
+              target: string
+              is_component?: boolean  # true for component drills
+          phrase_count: integer
+          is_final_lego?: boolean
+
+    transformation:
+      atomic_legos: |
+        No change - practice phrases remain as-is
+
+      molecular_legos: |
+        Prepend N component drills as first N practice phrases
+        Mark each with is_component: true
+
+        BEFORE: practice_phrases = [phrase1, phrase2, ...]
+        AFTER:  practice_phrases = [comp1, comp2, ..., phrase1, phrase2, ...]
+
+    example_molecular_basket:
+      basket_0:
+        lego_id: "S0522L01"
+        type: "M"
+        lego: { known: "let's agree", target: "我们同意" }
+        practice_phrases:
+          - { known: "we/let's", target: "我们", is_component: true }
+          - { known: "agree", target: "同意", is_component: true }
+          - { known: "Let's agree on a time", target: "我们同意一个时间" }
+          - { known: "Let's agree on the price", target: "我们同意价格" }
+        phrase_count: 12
+
+    generation_script: "scripts/generate-baskets-with-components.cjs"
+
+  ## ==========================================================================
+  ## AUDIO GENERATION (Phase 8 simplified)
+  ## ==========================================================================
+
+  audio_generation:
+    introduction_audio:
+      description: "Generate audio for each introduction"
+      steps:
+        1: "TTS the 'text' field with English presentation voice"
+        2: "TTS 'target_text' with target1 voice (female)"
+        3: "Generate 1 second silence"
+        4: "TTS 'target_text' with target2 voice (male)"
+        5: "Concatenate: [text_audio] + [target1] + [silence] + [target2]"
+
+      output_format: "MP3"
+      naming: "{lego_id}_presentation.mp3"
+
+    basket_audio:
+      description: "Generate audio for each practice phrase"
+      steps:
+        1: "For each phrase in practice_phrases:"
+        2: "  TTS 'known' with source voice (English)"
+        3: "  TTS 'target' with target1 voice (slow cadence)"
+        4: "  TTS 'target' with target2 voice (natural cadence)"
+
+      component_handling: |
+        Component drills (is_component: true) are treated identically
+        to regular practice phrases - they just come first in the basket
+
+  ## ==========================================================================
+  ## WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    STEP_1_VALIDATE_SSOT:
+      description: "Verify SSoT files exist and are valid"
+      files:
+        - lego_pairs.json
+        - lego_baskets.json
+      validations:
+        - All LEGOs have unique IDs
+        - M-type LEGOs have components
+        - Baskets match LEGOs by target text
+
+    STEP_2_GENERATE_INTRODUCTIONS:
+      description: "Generate introductions_v2.json"
+      script: "node scripts/generate-simplified-introductions.cjs {course_code}"
+      output: "introductions_v2.json"
+
+    STEP_3_GENERATE_BASKETS:
+      description: "Generate lego_baskets_v2.json"
+      script: "node scripts/generate-baskets-with-components.cjs {course_code}"
+      output: "lego_baskets_v2.json"
+
+    STEP_4_VALIDATE_OUTPUT:
+      description: "Verify generated files"
+      validations:
+        - All LEGOs have introductions
+        - All baskets have lego_id
+        - M-type baskets have components first
+        - Phrase counts are accurate
+
+  ## ==========================================================================
+  ## STATISTICS (cmn_for_eng)
+  ## ==========================================================================
+
+  statistics_cmn_for_eng:
+    introductions:
+      total: 3467
+      atomic: 767
+      molecular: 2700
+
+    baskets:
+      total: 2872
+      atomic: 515
+      molecular: 2303
+      unmatched: 54
+      components_added: 6813
+
+    audio_items:
+      presentations: 3467
+      basket_phrases: ~34000   # 2872 baskets × ~12 phrases avg
+      component_drills: 6813   # First N phrases of M-type baskets
+
+  ## ==========================================================================
+  ## MIGRATION PATH
+  ## ==========================================================================
+
+  migration:
+    from_v1:
+      old_files:
+        - introductions.json (complex format with {target1} tags)
+        - lego_baskets.json (no component drills)
+
+      new_files:
+        - introductions_v2.json (simplified)
+        - lego_baskets_v2.json (component drills prepended)
+
+      backward_compatibility: |
+        Old files are preserved. New files use _v2 suffix.
+        When ready to switch:
+        1. Backup old files
+        2. Rename v2 files to replace originals
+        3. Update manifest generation to use new format

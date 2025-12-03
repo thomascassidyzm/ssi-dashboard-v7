@@ -1,0 +1,346 @@
+# APML: Audio Generation Phase
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: PHASE (agent-based orchestration required)
+
+phase AudioGeneration:
+  name: "Audio Generation"
+  purpose: "Generate TTS audio for all course content (human recordings for edge cases)"
+  version: "10.0.0"
+  type: "agent_phase"
+
+  ## ==========================================================================
+  ## OVERVIEW (v10.0.0 CHANGES)
+  ## ==========================================================================
+
+  description: |
+    Version 10.0.0 CHANGES:
+    - TTS remains the PRIMARY audio source (Azure, ElevenLabs)
+    - Human recordings added for languages WITHOUT good TTS support
+    - S3 is now the storage layer (not local filesystem)
+    - Support for multiple voice types in same course
+
+    This phase remains a TRUE PHASE because it requires agent orchestration:
+    - Decision-making for QC review
+    - Error handling and recovery
+    - Cost management approval
+    - Multi-step coordination
+
+  audio_priority:
+    standard_languages:
+      description: "Languages with good TTS (Spanish, Chinese, French, etc.)"
+      1: "TTS-generated (primary)"
+      2: "Human recordings (optional enhancement)"
+
+    edge_case_languages:
+      description: "Languages without good TTS support"
+      1: "Human recordings (required)"
+      2: "LEGO-assembled phrases (from human recordings)"
+      3: "TTS fallback (if available)"
+
+  ## ==========================================================================
+  ## AUDIO SOURCE HIERARCHY
+  ## ==========================================================================
+
+  audio_sources:
+    tts:
+      providers:
+        azure:
+          tier: "Free tier (500K chars/month)"
+          languages: "100+ languages"
+          quality: "High quality neural voices"
+          use_for: "Target language vocabulary"
+        elevenlabs:
+          tier: "Paid (~$0.30 per 1000 chars)"
+          languages: "English primarily"
+          quality: "Premium natural voices"
+          use_for: "English narration, presentations, encouragements"
+      format: "mp3"
+      priority: "PRIMARY (for most languages)"
+      use_for:
+        - "All target language vocabulary (Azure)"
+        - "Presentation narration (ElevenLabs)"
+        - "Encouragement messages (ElevenLabs)"
+        - "Course introduction/welcome"
+
+    human:
+      location: "S3: recordings/"
+      format: "webm"
+      priority: "FOR EDGE CASES"
+      use_when:
+        - "Target language has no good TTS support"
+        - "TTS quality is insufficient for the language"
+        - "Premium native speaker option desired"
+      examples:
+        - "Welsh (Cymraeg) - limited TTS options"
+        - "Regional dialects not covered by TTS"
+        - "Languages with tonal nuances TTS handles poorly"
+
+    lego_assembled:
+      location: "S3: practice_audio/"
+      format: "webm"
+      priority: "DERIVED FROM HUMAN"
+      use_for:
+        - "Practice phrases in human-recorded courses"
+        - "Recombination from extracted LEGO chunks"
+      note: "Only used when human recordings are the base"
+
+  ## ==========================================================================
+  ## VOICE TYPES (v10.0.0)
+  ## ==========================================================================
+
+  voice_types:
+    human:
+      format: "human_{name}_{language}"
+      examples:
+        - "human_maria_spa"
+        - "human_tom_spa"
+        - "human_xiaoming_cmn"
+      source: "Dashboard recording studio"
+      quality: "Native speaker, natural"
+
+    tts_azure:
+      format: "azure_{voice_name}"
+      examples:
+        - "azure_xiaoxiao"
+        - "azure_yunyang"
+        - "azure_lucia"
+      source: "Azure Cognitive Services"
+      languages: "100+ languages"
+
+    tts_elevenlabs:
+      format: "elevenlabs_{voice_id}"
+      examples:
+        - "elevenlabs_rachel"
+        - "elevenlabs_josh"
+      source: "ElevenLabs API"
+      quality: "High-quality English narration"
+
+  ## ==========================================================================
+  ## PHASE A: CHECK HUMAN RECORDINGS
+  ## ==========================================================================
+
+  phase_a:
+    name: "Human Recording Inventory"
+    description: |
+      NEW IN v10: Before generating any TTS, check what human recordings exist.
+      This prevents wasteful TTS generation for content already recorded.
+
+    workflow:
+      1: "List all files in S3: recordings/"
+      2: "Parse keys to extract: text_hash, lang, cadence, voiceId"
+      3: "Build inventory map: text → recording"
+      4: "Identify gaps (content needing TTS)"
+
+    output:
+      human_inventory:
+        format: |
+          {
+            "recordings": {
+              "a1b2c3d4_spa": { "natural": true, "slow": true },
+              "e5f6g7h8_spa": { "natural": true, "slow": false }
+            },
+            "coverage": {
+              "natural": 47,
+              "slow": 45,
+              "complete": 45
+            }
+          }
+
+  ## ==========================================================================
+  ## PHASE B: LEGO ASSEMBLY CHECK
+  ## ==========================================================================
+
+  phase_b:
+    name: "LEGO Assembly Inventory"
+    description: |
+      Check which practice phrases have been assembled from LEGOs.
+      These don't need TTS generation.
+
+    workflow:
+      1: "List all files in S3: lego_audio/"
+      2: "List all files in S3: practice_audio/"
+      3: "Build coverage map"
+
+    output:
+      assembly_inventory:
+        format: |
+          {
+            "legos_available": ["quiero", "hablar", "espanol", ...],
+            "phrases_assembled": ["uuid1", "uuid2", ...],
+            "phrases_missing": ["uuid3"]
+          }
+
+  ## ==========================================================================
+  ## PHASE C: TTS GAP FILLING
+  ## ==========================================================================
+
+  phase_c:
+    name: "TTS Gap Filling"
+    description: |
+      Generate TTS only for content without human recordings.
+      This is typically presentations and encouragements.
+
+    required_tts:
+      presentations:
+        description: "LEGO introduction narration (English)"
+        voice: "ElevenLabs presentation voice"
+        example: "The Spanish for 'I want to', as in 'I want to speak Spanish', is:"
+
+      encouragements:
+        description: "Motivational messages between practice"
+        voice: "ElevenLabs warm voice"
+        source: "vfs/canonical/eng_encouragements.json"
+
+      welcome:
+        description: "Course introduction audio"
+        voice: "ElevenLabs presentation voice"
+        source: "vfs/canonical/welcomes.json"
+
+    optional_tts:
+      missing_legos:
+        description: "LEGOs without human recording"
+        voice: "Azure target language voice"
+        trigger: "Only if LEGO not in lego_audio/"
+
+      missing_phrases:
+        description: "Phrases that couldn't be assembled"
+        voice: "Azure target language voice"
+        trigger: "Only if not in practice_audio/"
+
+  ## ==========================================================================
+  ## PRESENTATION ASSEMBLY (HYBRID)
+  ## ==========================================================================
+
+  presentation_assembly:
+    description: |
+      Presentations combine TTS narration with human LEGO audio.
+      This creates a natural flow: English explanation → native speaker model.
+
+    components:
+      narration: "TTS (ElevenLabs) - English presentation text"
+      lego_demo: "Human recording - LEGO from lego_audio/"
+
+    assembly_pattern: |
+      1. TTS: "The Spanish for 'I want to', as in '...', is:"
+      2. Silence (1 second)
+      3. Human LEGO audio (slow cadence)
+      4. Silence (1 second)
+      5. Human LEGO audio (natural cadence, if available)
+
+    example:
+      text: "The Spanish for 'I want to', as in '...', is:"
+      lego: "quiero"
+      assembly: "[TTS narration] + [silence] + [human: quiero slow] + [silence] + [human: quiero natural]"
+
+  ## ==========================================================================
+  ## TTS WORKFLOW (unchanged from v9)
+  ## ==========================================================================
+
+  tts_workflow:
+    step_1: "Load manifest and identify TTS-required content"
+    step_2: "Check MAR for existing audio (skip if found)"
+    step_3: "Generate TTS for each sample (Azure + ElevenLabs in parallel)"
+    step_4: "Normalize audio (target LUFS: -16)"
+    step_5: "Pause for QC checkpoint"
+    step_6: "Upload to S3"
+    step_7: "Update MAR"
+
+    qc_checkpoint:
+      description: |
+        Script pauses for agent QC review.
+        Focus on presentation assemblies (hybrid TTS + human).
+
+  ## ==========================================================================
+  ## UUID GENERATION (unchanged)
+  ## ==========================================================================
+
+  uuid_generation:
+    version: "UUIDv5 (deterministic)"
+    namespace: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+
+    formula: |
+      UUIDv5(namespace, `${text}|${language}|${role}|${cadence}`)
+
+    compatibility: |
+      Same formula as v9 ensures existing audio files remain valid.
+      Adding human recordings doesn't break UUID-based lookups.
+
+  ## ==========================================================================
+  ## MANIFEST AUDIO REFERENCES
+  ## ==========================================================================
+
+  manifest_audio:
+    legacy_format:
+      description: "UUID-based lookup in samples dictionary"
+      lookup: "samples[text] → [{ id: UUID, cadence, role, duration }]"
+      audio_url: "https://cdn.example.com/audio/{UUID}.mp3"
+
+    v2_format:
+      description: "Direct S3 URLs with voice metadata"
+      lookup: "Direct URL in each audio reference"
+      example: |
+        {
+          "audio": {
+            "natural": {
+              "url": "s3://popty-bach-lfs/recordings/a1b2_spa_natural_human_maria.webm",
+              "voice": "human_maria_spa",
+              "type": "human"
+            },
+            "slow": {
+              "url": "s3://popty-bach-lfs/lego_audio/quiero_spa_human_maria.webm",
+              "voice": "human_maria_spa",
+              "type": "lego"
+            }
+          }
+        }
+
+  ## ==========================================================================
+  ## COST OPTIMIZATION (v10.0.0)
+  ## ==========================================================================
+
+  cost_optimization:
+    azure_free_tier: |
+      Azure provides 500K characters/month free.
+      Most courses fit within this limit for target vocabulary.
+
+    elevenlabs_for_english: |
+      ElevenLabs used only for English narration:
+      - Presentations (~3000 per course)
+      - Encouragements (~50 messages)
+      - Course welcome
+      Estimated cost: ~$15-20 per course
+
+    human_for_edge_cases: |
+      For languages without TTS, human recordings eliminate API costs
+      but require recording time investment.
+      LEGO assembly reduces recording burden (668 seeds → thousands of phrases).
+
+    mar_reuse: |
+      Master Audio Registry enables cross-course reuse.
+      English encouragements recorded once, reused across all courses.
+
+    approval_required: |
+      Agent MUST show cost estimate and wait for user approval.
+      Standard course (TTS): ~$15-20
+      Human-recorded course: $0 API cost (time investment instead)
+
+  ## ==========================================================================
+  ## SCRIPT LOCATION
+  ## ==========================================================================
+
+  script:
+    main: "scripts/phase8-audio-generation-v10.cjs"
+    preflight: "services/preflight-check-service.cjs"
+    inventory: "scripts/inventory-human-recordings.cjs"
+    assembly: "scripts/assemble-presentations-v10.cjs"
+
+    usage:
+      inventory: "node scripts/inventory-human-recordings.cjs {course_code}"
+      plan: "node scripts/phase8-audio-generation-v10.cjs {course_code} --plan"
+      execute: "node scripts/phase8-audio-generation-v10.cjs {course_code} --execute"
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

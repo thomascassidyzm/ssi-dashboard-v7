@@ -1,0 +1,439 @@
+# APML v9.1.0 - Course Structure Specification
+# SSI Course Production Dashboard
+# Version: 9.1.0 (2025-12-01)
+# Status: Production
+
+## ============================================================================
+## OVERVIEW
+## ============================================================================
+
+SPECIFICATION_HISTORY:
+  v7.x: Array-based formats (deprecated)
+  v8.x: Object-based formats introduced
+  v9.0: Simplified content generation (Phase 6 v2)
+  v9.1: App-ready manifest schema documented
+
+DATA_FLOW:
+  Phase 1-3 → lego_pairs.json (SSoT)
+  Phase 5   → lego_baskets.json (SSoT)
+  Phase 6   → introductions.json (derived)
+  Phase 7   → app_manifest.json (compiled for app)
+
+## ============================================================================
+## SINGLE SOURCE OF TRUTH (SSoT)
+## ============================================================================
+
+PRIMARY_SSOT_FILES:
+  lego_pairs.json:
+    PURPOSE: All LEGOs with types (A/M), components, and seed context
+    PHASE: Output of Phase 1-3
+
+  lego_baskets.json:
+    PURPOSE: Practice phrases for each LEGO
+    PHASE: Output of Phase 5
+
+DERIVED_FILES:
+  introductions.json:
+    PURPOSE: Presentation text for each LEGO
+    SOURCE: Generated from lego_pairs.json
+    PHASE: Phase 6
+
+  app_manifest.json:
+    PURPOSE: App-ready compiled course
+    SOURCE: All SSoT files combined
+    PHASE: Phase 7
+
+## ============================================================================
+## FILE FORMAT: lego_pairs.json (SSoT)
+## ============================================================================
+
+FILE_FORMAT: lego_pairs.json
+  LOCATION: {courseDir}/lego_pairs.json
+  ENCODING: UTF-8
+
+  SCHEMA:
+    compiled_at: ISO8601           # "2025-11-14T17:05:19.488Z"
+    course_code: string            # "cmn_for_eng"
+    methodology: string            # "Phase 3 v7.0 - Two Heuristics Edition"
+    total_seeds: number            # 668
+    seeds: Array<Seed>
+
+  SEED_SCHEMA:
+    seed_id: string                # "S0001"
+    seed_pair:
+      known: string                # "I want to speak Chinese with you now."
+      target: string               # "我现在想和你说中文。"
+    legos: Array<LEGO>
+
+  LEGO_SCHEMA:
+    id: string                     # "S0001L01"
+    type: "A" | "M"                # A = Atomic, M = Molecular
+    new: boolean                   # true if first occurrence
+    lego:
+      known: string                # "now"
+      target: string               # "现在"
+    components?: Array<Component>  # Only for type "M"
+
+  COMPONENT_SCHEMA:
+    known: string                  # "I"
+    target: string                 # "我"
+
+  EXAMPLE:
+    {
+      "compiled_at": "2025-11-14T17:05:19.488Z",
+      "course_code": "cmn_for_eng",
+      "methodology": "Phase 3 v7.0",
+      "total_seeds": 668,
+      "seeds": [
+        {
+          "seed_id": "S0001",
+          "seed_pair": {
+            "known": "I want to speak Chinese with you now.",
+            "target": "我现在想和你说中文。"
+          },
+          "legos": [
+            {
+              "id": "S0001L01",
+              "type": "A",
+              "new": true,
+              "lego": { "known": "now", "target": "现在" }
+            },
+            {
+              "id": "S0001L02",
+              "type": "M",
+              "new": true,
+              "lego": { "known": "I want to", "target": "我想" },
+              "components": [
+                { "known": "I", "target": "我" },
+                { "known": "want", "target": "想" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+## ============================================================================
+## FILE FORMAT: lego_baskets.json (SSoT)
+## ============================================================================
+
+FILE_FORMAT: lego_baskets.json
+  LOCATION: {courseDir}/lego_baskets.json
+  ENCODING: UTF-8
+
+  SCHEMA:
+    baskets: Record<string, Basket>  # Keyed by index "0", "1", etc.
+
+  BASKET_SCHEMA:
+    phase: number                  # 3
+    lego:
+      known: string                # "let's agree"
+      target: string               # "我们同意"
+    practice_phrases: Array<Phrase>
+    is_final_lego?: boolean
+    phrase_count?: number
+
+  PHRASE_SCHEMA:
+    known: string                  # "Let's agree on a time"
+    target: string                 # "我们同意一个时间"
+
+  EXAMPLE:
+    {
+      "baskets": {
+        "0": {
+          "phase": 3,
+          "lego": {
+            "known": "let's agree",
+            "target": "我们同意"
+          },
+          "practice_phrases": [
+            { "known": "Let's agree on a time", "target": "我们同意一个时间" },
+            { "known": "Let's agree on the price", "target": "我们同意价格" }
+          ],
+          "is_final_lego": false,
+          "phrase_count": 10
+        }
+      }
+    }
+
+## ============================================================================
+## FILE FORMAT: introductions.json (Derived)
+## ============================================================================
+
+FILE_FORMAT: introductions.json
+  LOCATION: {courseDir}/introductions.json
+  ENCODING: UTF-8
+  VERSION: v2 (simplified)
+
+  SCHEMA:
+    version: string                # "2.0.0"
+    format: string                 # "simplified"
+    course: string                 # "cmn_for_eng"
+    target: string                 # "cmn"
+    known: string                  # "eng"
+    generated: ISO8601
+    presentations: Record<LegoID, Presentation>
+
+  PRESENTATION_SCHEMA:
+    text: string                   # "The Chinese for 'now', as in '...', is:"
+    target_text: string            # "现在"
+    type: "A" | "M"
+    components?: Array<Component>  # Only for type "M"
+
+  TEMPLATE:
+    "The {target_language} for '{known_lego}', as in '{seed_sentence}', is:"
+
+  EXAMPLE:
+    {
+      "version": "2.0.0",
+      "format": "simplified",
+      "course": "cmn_for_eng",
+      "target": "cmn",
+      "known": "eng",
+      "generated": "2025-12-01T16:07:00.000Z",
+      "presentations": {
+        "S0001L01": {
+          "text": "The Chinese for 'now', as in 'I want to speak Chinese with you now.', is:",
+          "target_text": "现在",
+          "type": "A"
+        },
+        "S0001L02": {
+          "text": "The Chinese for 'I want to', as in 'I want to speak Chinese with you now.', is:",
+          "target_text": "我想",
+          "type": "M",
+          "components": [
+            { "known": "I", "target": "我" },
+            { "known": "want", "target": "想" }
+          ]
+        }
+      }
+    }
+
+## ============================================================================
+## FILE FORMAT: app_manifest.json (App-Ready)
+## ============================================================================
+
+FILE_FORMAT: app_manifest.json
+  LOCATION: {courseDir}/{CourseTitle}_COURSE_{timestamp}.json
+  ENCODING: UTF-8
+  PURPOSE: Compiled course for SSi mobile app
+  NAMING: "Chinese_for_English_speakers_COURSE_20251125_182430.json"
+
+  TOP_LEVEL_SCHEMA:
+    id: string                     # "en-cm"
+    known: string                  # "en" (2-letter code)
+    target: string                 # "cm" (2-letter code)
+    version: string                # "8.2.0"
+    status: string                 # "alpha"
+    introduction: AudioRef
+    slices: Array<Slice>
+
+  AUDIO_REF_SCHEMA:
+    id: UUID                       # Audio file UUID
+    cadence: string                # "natural" | "slow"
+    role: string                   # Audio role (see AUDIO_ROLES)
+    duration: number               # Duration in ms (0 if not computed)
+
+  AUDIO_ROLES:
+    - presentation                 # Introduction/explanation audio
+    - presentation_encouragement   # Encouragement messages
+    - practice_known               # English practice phrase
+    - practice_target              # Target language practice phrase
+    - lego_known                   # English LEGO audio
+    - lego_target                  # Target language LEGO audio
+
+  SLICE_SCHEMA:
+    id: UUID                       # Slice UUID
+    version: string
+    seeds: Array<Seed>
+    pooledEncouragements: Array<Encouragement>
+    orderedEncouragements: Array<Encouragement>
+    samples: Record<string, Array<AudioRef>>  # Text → Audio lookup
+
+  SEED_SCHEMA:
+    id: UUID                       # Seed UUID
+    seed_sentence:
+      canonical: string            # English seed sentence
+    node:
+      id: UUID
+      known:
+        text: string
+        tokens: Array<string>
+        lemmas: Array<string>
+      target:
+        text: string
+        tokens: Array<string>
+        lemmas: Array<string>
+    introduction_items: Array<IntroductionItem>
+
+  INTRODUCTION_ITEM_SCHEMA:       # This represents a LEGO
+    id: UUID
+    node:
+      id: UUID
+      known:
+        text: string               # English LEGO
+        tokens: Array<string>
+        lemmas: Array<string>
+      target:
+        text: string               # Target LEGO
+        tokens: Array<string>
+        lemmas: Array<string>
+    nodes: Array<Node>             # Component nodes (if applicable)
+    presentation: string           # The presentation text
+
+  SAMPLES_DICTIONARY:
+    PURPOSE: Maps text content to audio file references
+    KEY: The text content (English or target language)
+    VALUE: Array of AudioRef objects
+
+    EXAMPLE:
+      "samples": {
+        "now": [
+          { "id": "UUID", "cadence": "natural", "role": "practice_known", "duration": 0 }
+        ],
+        "现在": [
+          { "id": "UUID", "cadence": "natural", "role": "lego_target", "duration": 0 }
+        ],
+        "The Chinese for 'now'...": [
+          { "id": "UUID", "cadence": "natural", "role": "presentation", "duration": 0 }
+        ]
+      }
+
+## ============================================================================
+## UUID GENERATION
+## ============================================================================
+
+UUID_STRATEGY:
+  VERSION: UUIDv5 (deterministic)
+  NAMESPACE: "6ba7b810-9dad-11d1-80b4-00c04fd430c8" (URL namespace)
+
+  INPUTS:
+    text: string                   # The content text
+    language: string               # "eng" | "cmn" | etc.
+    role: string                   # Audio role
+    cadence: string                # "natural" | "slow"
+
+  FORMULA: UUIDv5(namespace, `${text}|${language}|${role}|${cadence}`)
+
+  PROPERTIES:
+    - Same inputs always produce same UUID
+    - Different inputs produce different UUIDs
+    - Audio files named: {UUID}.mp3
+
+## ============================================================================
+## TRANSFORMATION: SSoT → App Manifest
+## ============================================================================
+
+COMPILATION_STEPS:
+  1. Load SSoT files:
+     - lego_pairs.json
+     - lego_baskets.json
+     - introductions.json
+     - voices.json (for voice assignments)
+
+  2. Build UUID registry:
+     - Generate deterministic UUIDs for all text content
+     - Track text → UUID mappings
+
+  3. Build seeds array:
+     - For each seed in lego_pairs:
+       - Create seed object with UUIDs
+       - Build introduction_items from LEGOs
+       - Add presentation text from introductions.json
+
+  4. Build samples dictionary:
+     - Collect all unique text entries
+     - Map each to its audio UUID and role
+
+  5. Add encouragements:
+     - Load from canonical voices.json
+     - Add to pooledEncouragements and orderedEncouragements
+
+  6. Output manifest:
+     - Write to timestamped JSON file
+     - Validate structure
+
+## ============================================================================
+## COURSE NAMING CONVENTIONS
+## ============================================================================
+
+COURSE_CODE_FORMAT:
+  PATTERN: "{target}_for_{known}"
+  EXAMPLES:
+    cmn_for_eng                    # Chinese for English speakers
+    spa_for_eng                    # Spanish for English speakers
+    ita_for_eng                    # Italian for English speakers
+
+LANGUAGE_CODES:
+  ISO_639_3:
+    eng: English
+    cmn: Mandarin Chinese
+    spa: Spanish
+    ita: Italian
+    fra: French
+
+  APP_SHORT_CODES:
+    en: English
+    cm: Mandarin Chinese
+    es: Spanish
+    it: Italian
+    fr: French
+
+SEED_ID_FORMAT:
+  PATTERN: "S{NNNN}"               # 4-digit zero-padded
+  RANGE: S0001 to S0668
+
+LEGO_ID_FORMAT:
+  PATTERN: "S{NNNN}L{NN}"          # Seed + 2-digit LEGO number
+  EXAMPLES: S0001L01, S0001L02, S0668L05
+
+## ============================================================================
+## VALIDATION RULES
+## ============================================================================
+
+SSOT_VALIDATION:
+  lego_pairs.json:
+    - All seeds have unique seed_id
+    - All LEGOs have unique id within course
+    - M-type LEGOs must have components array
+    - A-type LEGOs must not have components
+
+  lego_baskets.json:
+    - All baskets have lego with known and target
+    - practice_phrases is non-empty array
+    - Each phrase has known and target
+
+APP_MANIFEST_VALIDATION:
+  - All UUIDs are valid v5 format (uppercase hex, 8-4-4-4-12)
+  - All text keys in samples have audio references
+  - All introduction_items have presentation text
+  - Slice seeds array is non-empty
+
+## ============================================================================
+## MIGRATION FROM v7.x
+## ============================================================================
+
+DEPRECATED_FORMATS:
+  OLD_lego_pairs:
+    FORMAT: Array of arrays
+    EXAMPLE: ["S0001L01", "B", "Quiero", "I want"]
+    STATUS: DEPRECATED since v8.0
+
+  OLD_lego_baskets:
+    FORMAT: { lego: [target, known], e: [...], d: {...} }
+    STATUS: DEPRECATED since v8.0
+
+CURRENT_FORMATS:
+  NEW_lego_pairs:
+    FORMAT: Objects with named keys
+    EXAMPLE: { id: "S0001L01", type: "A", lego: { known: "...", target: "..." } }
+    STATUS: CURRENT (v9.x)
+
+  NEW_lego_baskets:
+    FORMAT: { lego: { known, target }, practice_phrases: [...] }
+    STATUS: CURRENT (v9.x)
+
+## ============================================================================
+## GENERATED: 2025-12-01
+## APML v9.1.0
+## ============================================================================

@@ -6,18 +6,29 @@
  * Course files are stored in: s3://popty-bach-lfs/courses/{courseCode}/{filename}
  */
 
-import AWS from 'aws-sdk';
+import { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 const COURSES_PREFIX = 'courses/';
 
-// Initialize S3 client
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: AWS_REGION
+// Initialize S3 client (AWS SDK v3)
+const s3 = new S3Client({
+  region: AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
+
+// Helper to convert stream to string
+async function streamToString(stream) {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks).toString('utf-8');
+}
 
 /**
  * Read a course file from S3
@@ -29,19 +40,21 @@ export async function readCourseFile(courseCode, filename) {
   const key = `${COURSES_PREFIX}${courseCode}/${filename}`;
 
   try {
-    const result = await s3.getObject({
+    const command = new GetObjectCommand({
       Bucket: S3_BUCKET,
       Key: key
-    }).promise();
+    });
+    const result = await s3.send(command);
 
-    const content = JSON.parse(result.Body.toString('utf-8'));
+    const bodyString = await streamToString(result.Body);
+    const content = JSON.parse(bodyString);
     const etag = result.ETag ? result.ETag.replace(/"/g, '') : null;
 
     console.log(`[S3] Read ${key} (etag: ${etag})`);
 
     return { content, etag };
   } catch (error) {
-    if (error.code === 'NoSuchKey') {
+    if (error.name === 'NoSuchKey') {
       console.error(`[S3] File not found: ${key}`);
       const notFoundError = new Error(`Course file not found: ${courseCode}/${filename}`);
       notFoundError.code = 'NOT_FOUND';
@@ -64,13 +77,14 @@ export async function writeCourseFile(courseCode, filename, data) {
   const jsonContent = JSON.stringify(data, null, 2);
 
   try {
-    const result = await s3.putObject({
+    const command = new PutObjectCommand({
       Bucket: S3_BUCKET,
       Key: key,
       Body: jsonContent,
       ContentType: 'application/json',
       CacheControl: 'no-cache'
-    }).promise();
+    });
+    const result = await s3.send(command);
 
     const etag = result.ETag ? result.ETag.replace(/"/g, '') : null;
     const url = getCourseFileUrl(courseCode, filename);
@@ -94,14 +108,15 @@ export async function courseFileExists(courseCode, filename) {
   const key = `${COURSES_PREFIX}${courseCode}/${filename}`;
 
   try {
-    await s3.headObject({
+    const command = new HeadObjectCommand({
       Bucket: S3_BUCKET,
       Key: key
-    }).promise();
+    });
+    await s3.send(command);
 
     return true;
   } catch (error) {
-    if (error.code === 'NotFound' || error.code === 'NoSuchKey') {
+    if (error.name === 'NotFound' || error.name === 'NoSuchKey') {
       return false;
     }
     throw error;
@@ -115,11 +130,12 @@ export async function courseFileExists(courseCode, filename) {
 export async function listCourses() {
   try {
     // List all prefixes under courses/
-    const result = await s3.listObjectsV2({
+    const command = new ListObjectsV2Command({
       Bucket: S3_BUCKET,
       Prefix: COURSES_PREFIX,
       Delimiter: '/'
-    }).promise();
+    });
+    const result = await s3.send(command);
 
     const courses = (result.CommonPrefixes || [])
       .map(prefix => {

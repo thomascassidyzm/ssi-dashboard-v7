@@ -1,0 +1,211 @@
+# APML Phase Index v9.1.0
+# SSI Course Production Pipeline
+# Version: 9.1.0 (2025-12-01)
+# Status: Production
+
+## ============================================================================
+## PHASE DEFINITION
+## ============================================================================
+
+PRINCIPLE: |
+  A PHASE is defined by the involvement of AI AGENTS in a PROCESS.
+  Script-only operations (no agent involvement) are NOT phases.
+
+  PHASE = Agent-based process
+  SCRIPT = Automated transformation (no agent intelligence required)
+
+## ============================================================================
+## PIPELINE OVERVIEW
+## ============================================================================
+
+PIPELINE_STAGES:
+
+  PHASE_1:
+    name: "Translation + LEGO Extraction"
+    type: "PHASE (agent-based)"
+    description: |
+      Single agent prompt that performs BOTH:
+      1. Pedagogical translation of canonical seeds to target/known pairs
+      2. LEGO extraction with FD testing and type classification (A/M)
+
+    agent_involvement: "YES - same agent prompt handles both"
+
+    input:
+      - canonical_seeds.json (668 seeds)
+
+    output:
+      - lego_pairs.json (SSoT - seeds with translated LEGOs)
+
+    apml_docs:
+      - phase-1-translation.apml (translation rules)
+      - phase-3-lego-extraction.apml (LEGO extraction rules)
+
+    note: |
+      Historical naming shows "Phase 1" and "Phase 3" separately, but they
+      are part of the SAME agent prompt and happen in a single session.
+      The LEGO extraction happens AS part of translation, not as a separate step.
+
+  PHASE_2:
+    name: "Basket Generation"
+    type: "PHASE (agent-based)"
+    description: |
+      Generate practice phrases for each LEGO using linguistic intelligence.
+      Agent uses extended thinking to create natural, contextual phrases.
+
+    agent_involvement: "YES - requires linguistic reasoning"
+
+    input:
+      - lego_pairs.json (from Phase 1)
+      - scaffold files (pre-built by script)
+
+    output:
+      - lego_baskets.json (SSoT - practice phrases per LEGO)
+
+    apml_docs:
+      - phase-5-basket-generation.apml
+
+    note: |
+      Historically called "Phase 5" but is actually the second agent phase.
+      Basket scaffold preparation is a script, not part of the phase.
+
+  SCRIPT_CONTENT_GENERATION:
+    name: "Content Generation Scripts"
+    type: "SCRIPT (no agent)"
+    description: |
+      Automated scripts that transform SSoT files into derived content.
+      No agent intelligence required - pure transformation.
+
+    agent_involvement: "NO - deterministic script"
+
+    scripts:
+      - generate-simplified-introductions.cjs
+        input: lego_pairs.json
+        output: introductions_v2.json
+
+      - generate-baskets-with-components.cjs
+        input: lego_pairs.json, lego_baskets.json
+        output: lego_baskets_v2.json
+
+    apml_docs:
+      - phase-6-content-generation-v2.apml (documents the transformation)
+
+    note: |
+      NOT a phase because no agent is involved. These are mechanical
+      transformations that follow deterministic rules.
+
+  SCRIPT_MANIFEST_COMPILATION:
+    name: "Manifest Compilation Script"
+    type: "SCRIPT (no agent)"
+    description: |
+      Compile all SSoT files into app-ready course manifest.
+      Deterministic transformation with UUID generation.
+
+    agent_involvement: "NO - deterministic script"
+
+    scripts:
+      - compile-app-manifest.cjs
+        input: lego_pairs.json, lego_baskets.json, introductions_v2.json, voices.json
+        output: {CourseTitle}_COURSE_{timestamp}.json
+
+    apml_docs:
+      - phase-7-manifest-compilation.apml (documents the compilation)
+
+    note: |
+      NOT a phase because no agent is involved. Manifest compilation is
+      a mechanical process that follows the app's required schema.
+
+  PHASE_3:
+    name: "Audio Generation"
+    type: "PHASE (agent-based) - SERIES"
+    description: |
+      Generate TTS audio for all course content. This IS a phase (or
+      series of phases) because agents orchestrate the generation.
+
+    agent_involvement: "YES - orchestration and quality control"
+
+    sub_phases:
+      - Audio planning and batching
+      - TTS API calls (Azure/ElevenLabs)
+      - Quality control and validation
+      - Mastering and normalization
+
+    input:
+      - course_manifest.json (from compilation script)
+
+    output:
+      - audio/*.mp3 files
+      - audio_manifest.json (duration data)
+
+    note: |
+      Audio generation requires agent involvement for orchestration,
+      error handling, quality control, and decision-making.
+
+## ============================================================================
+## SSoT (SINGLE SOURCE OF TRUTH) FILES
+## ============================================================================
+
+SSOT_FILES:
+  lego_pairs.json:
+    owner: "Phase 1 (Translation + LEGO Extraction)"
+    contents: "Seeds with translated LEGOs, types, components"
+    format: "v9.x object-based"
+
+  lego_baskets.json:
+    owner: "Phase 2 (Basket Generation)"
+    contents: "Practice phrases for each LEGO"
+    format: "v9.x object-based"
+
+DERIVED_FILES:
+  introductions_v2.json:
+    source: "lego_pairs.json"
+    generator: "scripts/generate-simplified-introductions.cjs"
+
+  lego_baskets_v2.json:
+    source: "lego_pairs.json + lego_baskets.json"
+    generator: "scripts/generate-baskets-with-components.cjs"
+
+  course_manifest.json:
+    source: "All SSoT + derived files"
+    generator: "scripts/compile-app-manifest.cjs"
+
+## ============================================================================
+## HISTORICAL PHASE NUMBERING
+## ============================================================================
+
+HISTORICAL_MAPPING:
+  note: |
+    The original numbering had gaps and treated scripts as phases.
+    This mapping shows how old docs relate to the corrected structure.
+
+  mappings:
+    "Phase 1 (old)": "Phase 1 - Translation (part 1)"
+    "Phase 2 (old)": "Phase 1 - Conflict Resolution (validator step)"
+    "Phase 3 (old)": "Phase 1 - LEGO Extraction (part 2)"
+    "Phase 5 (old)": "Phase 2 - Basket Generation"
+    "Phase 6 (old)": "SCRIPT - Content Generation (not a phase)"
+    "Phase 7 (old)": "SCRIPT - Manifest Compilation (not a phase)"
+    "Phase 8 (old)": "Phase 3 - Audio Generation"
+
+## ============================================================================
+## SUMMARY
+## ============================================================================
+
+SUMMARY:
+  true_phases:
+    - "Phase 1: Translation + LEGO Extraction (agent)"
+    - "Phase 2: Basket Generation (agent)"
+    - "Phase 3: Audio Generation (agent series)"
+
+  scripts:
+    - "Content Generation (introductions, baskets v2)"
+    - "Manifest Compilation (app-ready JSON)"
+
+  principle: |
+    PHASES involve agent intelligence and decision-making.
+    SCRIPTS are deterministic transformations.
+    This distinction matters for documentation and tooling.
+
+## ============================================================================
+## GENERATED: 2025-12-01
+## APML v9.1.0
+## ============================================================================

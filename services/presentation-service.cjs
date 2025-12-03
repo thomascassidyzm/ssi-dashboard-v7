@@ -131,7 +131,8 @@ function extractTargetsFromExplanation(explanation) {
 
   // Pattern: {target1}'word' or {target2}'word'
   // Using back-references to handle apostrophes correctly
-  const pattern = /\{(target1|target2)\}\s*(["'])(.*?)\2(?=[\s,.;:!?)]|$)/g;
+  // Support both straight quotes ('") and curly/smart quotes ('' "")
+  const pattern = /\{(target1|target2)\}\s*([''""])(.*?)([''""])(?=[\s,.;:!?)]|$)/g;
 
   let match;
   while ((match = pattern.exec(explanation)) !== null) {
@@ -445,11 +446,12 @@ async function generatePresentationAudio(sample, manifest, voiceAssignments, opt
           { pauseDuration: 0, normalize: true } // No pause between explanation segments
         );
 
-        // Concatenate main + explanation with 1s pause
+        // Concatenate main + explanation with longer pause for natural pacing
+        // This pause separates "... '它现在' ... '它现在'" from "- '它' means it..."
         await audioProcessor.concatenateAudio(
           [mainAudioPath, explanationAudioPath],
           finalOutputPath,
-          { pauseDuration: 1000, normalize: true }
+          { pauseDuration: 1800, normalize: true }  // 1.8s pause before explanation
         );
       } else {
         // No valid explanation segments, just use main audio
@@ -743,6 +745,25 @@ async function bulkDownloadTargets(targetUuids, cacheDir, bucket, concurrency = 
   return { downloaded, skipped, failed };
 }
 
+/**
+ * Strip {target1} and {target2} voice control tags from presentation text for display
+ * Keeps the quoted content but removes the tag prefix
+ *
+ * Example:
+ *   Input:  "{target1}'它' means it, {target1}'现在' means now"
+ *   Output: "'它' means it, '现在' means now"
+ *
+ * @param {string} text - Presentation text with {target} tags
+ * @returns {string} Text with tags stripped, suitable for display
+ */
+function stripDisplayTags(text) {
+  if (!text) return text;
+
+  // Remove {target1} and {target2} tags but keep everything after them
+  // Handles both curly quotes (' ') and straight quotes (' ")
+  return text.replace(/\{target[12]\}/g, '');
+}
+
 module.exports = {
   parsePresentation,
   parseMainPresentation,
@@ -755,5 +776,6 @@ module.exports = {
   extractAllUniqueSegments,
   generateSegmentBatch,
   collectRequiredTargets,
-  bulkDownloadTargets
+  bulkDownloadTargets,
+  stripDisplayTags
 };

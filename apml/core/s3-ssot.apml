@@ -1,0 +1,370 @@
+# APML: S3 Single Source of Truth Architecture
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: ARCHITECTURE SPECIFICATION
+
+architecture S3SSoT:
+  name: "S3 as Single Source of Truth"
+  purpose: "Define S3 storage architecture for all course data and audio"
+  version: "10.0.0"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    Version 10.0.0 establishes S3 as the Single Source of Truth (SSoT) for all
+    course content. This replaces the previous Git-based storage model.
+
+    KEY CHANGES:
+    - Course data files (JSON) stored in S3, not GitHub
+    - Audio files stored in S3 (recordings, LEGOs, assembled phrases)
+    - GitHub used for CODE only, not content
+    - Dashboard reads/writes directly to S3 via API
+    - Agents POST outputs to S3 via API endpoints
+
+  benefits:
+    - "Real-time updates: No git push/merge cycle"
+    - "Multi-user access: Dashboard users can edit simultaneously"
+    - "Audio colocation: All content in one storage layer"
+    - "CDN-ready: CloudFront for fast global delivery"
+    - "Versioning: S3 versioning for rollback capability"
+
+  ## ==========================================================================
+  ## S3 BUCKET CONFIGURATION
+  ## ==========================================================================
+
+  bucket:
+    name: "popty-bach-lfs"
+    region: "eu-west-2"
+    versioning: "enabled"
+    access: "private (accessed via API)"
+
+    cors:
+      allowed_origins:
+        - "https://ssi-dashboard-v7.vercel.app"
+        - "https://*.vercel.app"
+        - "http://localhost:*"
+      allowed_methods:
+        - "GET"
+        - "PUT"
+        - "POST"
+        - "DELETE"
+        - "HEAD"
+      allowed_headers:
+        - "*"
+      expose_headers:
+        - "ETag"
+        - "Content-Length"
+        - "Content-Type"
+
+  ## ==========================================================================
+  ## DIRECTORY STRUCTURE
+  ## ==========================================================================
+
+  structure:
+    courses:
+      path: "courses/{course_code}/"
+      description: "Course data files (JSON)"
+      files:
+        canonical_seeds.json:
+          description: "Original 668 English seed sentences"
+          owner: "Course designer"
+          format: "Array of seed objects with canonical text"
+
+        seed_pairs.json:
+          description: "Translated seed pairs (target + known)"
+          owner: "Phase 1 agent"
+          format: |
+            {
+              "translations": {
+                "S0001": ["target_text", "known_text"],
+                "S0002": ["target_text", "known_text"],
+                ...
+              },
+              "metadata": { ... }
+            }
+
+        lego_pairs.json:
+          description: "Seeds with extracted LEGOs"
+          owner: "Phase 1 agent"
+          format: "Object-based v10 format with types and components"
+
+        lego_baskets.json:
+          description: "Practice phrases per LEGO"
+          owner: "Phase 2 agent"
+          format: "Object-based v10 format with recombinations"
+
+        introductions_v2.json:
+          description: "Simplified presentation text"
+          owner: "Content generation script"
+          derived_from: "lego_pairs.json"
+
+        lego_baskets_v2.json:
+          description: "Baskets with component drills"
+          owner: "Content generation script"
+          derived_from: "lego_pairs.json + lego_baskets.json"
+
+        course_manifest.json:
+          description: "App-ready manifest (latest)"
+          owner: "Manifest compilation script"
+          derived_from: "All SSoT files"
+
+        voices.json:
+          description: "Voice configuration for this course"
+          contents: "Voice IDs, TTS settings, human speaker info"
+
+    recordings:
+      path: "recordings/"
+      description: "Raw human recordings of seed phrases"
+      key_format: "{text_hash}_{lang}_{role}_{cadence}_{voiceId}.webm"
+      parameters:
+        text_hash:
+          description: "MD5 hash of normalized target text (lowercase, trimmed)"
+          length: "8 characters"
+          purpose: "Enables sharing across courses (same text = same key)"
+
+        lang:
+          description: "ISO 639-3 language code"
+          examples: ["spa", "cmn", "ita", "fra"]
+
+        role:
+          description: "Speaker role"
+          values: ["model"]
+          note: "Model voice = native speaker demonstration"
+
+        cadence:
+          description: "Speaking speed"
+          values:
+            natural: "Full speed, natural rhythm"
+            slow: "Slow with gaps between words (for LEGO extraction)"
+
+        voiceId:
+          description: "Unique voice identifier"
+          format: "human_{name}_{language}"
+          examples: ["human_maria_spa", "human_tom_spa"]
+
+      example_keys:
+        - "a1b2c3d4_spa_model_natural_human_maria.webm"
+        - "a1b2c3d4_spa_model_slow_human_maria.webm"
+        - "e5f6g7h8_spa_model_natural_human_tom.webm"
+
+    lego_audio:
+      path: "lego_audio/"
+      description: "Individual LEGO audio chunks (extracted from slow recordings)"
+      key_format: "{lego_id}_{lang}_{voiceId}.webm"
+      parameters:
+        lego_id:
+          description: "Normalized LEGO text (lowercase, underscores for spaces)"
+          examples: ["quiero", "hablar", "contigo", "ahora"]
+
+        lang:
+          description: "ISO 639-3 language code"
+
+        voiceId:
+          description: "Voice identifier (same as recordings)"
+
+      example_keys:
+        - "quiero_spa_human_maria.webm"
+        - "hablar_spa_human_maria.webm"
+        - "contigo_spa_human_maria.webm"
+
+    practice_audio:
+      path: "practice_audio/"
+      description: "Assembled practice phrase audio (concatenated from LEGOs)"
+      key_format: "{phrase_uuid}_{lang}_{voiceId}.webm"
+      parameters:
+        phrase_uuid:
+          description: "UUID of the practice phrase from lego_baskets.json"
+          format: "UUIDv5 deterministic"
+
+        lang:
+          description: "ISO 639-3 language code"
+
+        voiceId:
+          description: "Voice identifier"
+
+      example_keys:
+        - "C9C2501F-CCBB-5BE5-89B3-310919B5BD2D_spa_human_maria.webm"
+
+    tts_audio:
+      path: "audio/"
+      description: "TTS-generated audio (presentations, encouragements)"
+      key_format: "{uuid}.mp3"
+      note: "Maintains compatibility with existing audio generation pipeline"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    read_course_file:
+      method: "GET"
+      path: "/api/courses/{courseCode}/{fileName}"
+      description: "Read a course file from S3"
+      returns: "JSON content"
+      example: "GET /api/courses/spa_for_eng/lego_pairs.json"
+
+    write_course_file:
+      method: "PUT"
+      path: "/api/courses/{courseCode}/{fileName}"
+      description: "Write a course file to S3"
+      body: "JSON content"
+      returns: "{ etag, url }"
+      example: "PUT /api/courses/spa_for_eng/seed_pairs.json"
+
+    update_translation:
+      method: "PUT"
+      path: "/api/courses/{courseCode}/translations/{uuid}"
+      description: "Update a single translation in seed_pairs.json"
+      body: "{ source, target }"
+      returns: "{ success, updated, s3 }"
+
+    agent_output:
+      method: "POST"
+      path: "/api/courses/{courseCode}/outputs"
+      description: "Receive phase outputs from Claude agents"
+      body: "{ phase, segmentId, seeds, agentId, metadata }"
+      returns: "{ success, s3, totalSeeds }"
+
+    upload_recording:
+      method: "PUT"
+      path: "/api/recordings/upload"
+      description: "Upload a human recording"
+      body: "{ key, blob (base64), contentType }"
+      returns: "{ success, url, etag }"
+
+    get_signed_url:
+      method: "GET"
+      path: "/api/recordings/signed-url"
+      description: "Get presigned URL for direct S3 upload"
+      query: "key={s3_key}"
+      returns: "{ url, expires }"
+
+  ## ==========================================================================
+  ## S3 LIBRARY
+  ## ==========================================================================
+
+  library:
+    location: "api/lib/s3-course.js"
+    functions:
+      readCourseFile:
+        signature: "async (courseCode, fileName) => { content, etag, lastModified }"
+        description: "Read JSON file from S3"
+        caching: "In-memory cache with ETag validation"
+
+      writeCourseFile:
+        signature: "async (courseCode, fileName, data) => { etag, url }"
+        description: "Write JSON file to S3"
+        validation: "Validates JSON before writing"
+
+      listCourseFiles:
+        signature: "async (courseCode) => [{ key, size, lastModified }]"
+        description: "List all files in a course directory"
+
+      deleteCourseFile:
+        signature: "async (courseCode, fileName) => { success }"
+        description: "Delete a file from S3"
+
+    dependencies:
+      - "@aws-sdk/client-s3"
+      - "@aws-sdk/lib-storage"
+
+    credentials:
+      source: "Environment variables"
+      variables:
+        - "AWS_ACCESS_KEY_ID"
+        - "AWS_SECRET_ACCESS_KEY"
+        - "AWS_REGION"
+        - "S3_BUCKET_NAME"
+
+  ## ==========================================================================
+  ## MIGRATION FROM GIT
+  ## ==========================================================================
+
+  migration:
+    completed: "2025-12-02"
+    changes:
+      backend:
+        - "api/courses/[courseCode]/outputs.js: Now writes to S3"
+        - "api/courses/[courseCode]/translations/[uuid].js: Now uses S3"
+        - "api/lib/github.js: DELETED (no longer needed)"
+
+      frontend:
+        - "All course data fetched via API (already S3-backed)"
+        - "Recording uploads use S3 presigned URLs"
+
+    git_usage: |
+      Git is now used ONLY for code, not content:
+      - Source code (src/, api/, tools/)
+      - Configuration files
+      - APML specifications
+      - Documentation
+
+      Course data lives ONLY in S3:
+      - seed_pairs.json
+      - lego_pairs.json
+      - lego_baskets.json
+      - Audio files
+
+  ## ==========================================================================
+  ## CACHING STRATEGY
+  ## ==========================================================================
+
+  caching:
+    api_layer:
+      description: "In-memory cache with ETag validation"
+      implementation: |
+        const cache = new Map()
+
+        async function readCourseFile(courseCode, fileName) {
+          const key = `courses/${courseCode}/${fileName}`
+          const cached = cache.get(key)
+
+          if (cached) {
+            // Conditional GET with If-None-Match
+            const result = await s3.headObject({ Key: key })
+            if (result.ETag === cached.etag) {
+              return cached.content
+            }
+          }
+
+          const result = await s3.getObject({ Key: key })
+          const content = JSON.parse(await streamToString(result.Body))
+          cache.set(key, { content, etag: result.ETag })
+          return content
+        }
+
+    cdn_layer:
+      provider: "CloudFront"
+      configuration:
+        audio_files:
+          ttl: "1 year (immutable by UUID)"
+          behavior: "Cache on edge, no origin fetches after first"
+
+        json_files:
+          ttl: "5 minutes"
+          behavior: "Short cache, frequent revalidation"
+
+  ## ==========================================================================
+  ## SECURITY
+  ## ==========================================================================
+
+  security:
+    bucket_access: "Private (no public access)"
+    api_access: "CORS-protected, origin validation"
+    credentials: "Server-side only (never exposed to client)"
+
+    presigned_urls:
+      purpose: "Allow browser to upload directly to S3"
+      expiry: "5 minutes"
+      scope: "Single object, PUT only"
+
+    cors_validation: |
+      API endpoints validate Origin header and reject
+      requests from unauthorized domains.
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

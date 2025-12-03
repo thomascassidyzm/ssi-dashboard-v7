@@ -52,11 +52,12 @@ Solve problems autonomously and proceed to the next workflow step without human 
 
 ### Quick Facts
 - **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio (APML v9.0)
+- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio (APML v10.1)
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
-- **Pipeline Server**: Port 3457 (`npm run pipeline`)
+- **Storage**: S3 as Single Source of Truth (popty-bach-lfs, eu-west-1)
+- **Orchestrator**: Port 3456
 
 ---
 
@@ -122,8 +123,13 @@ Express API for course data access and validation.
 Orchestration, automation, and processing services.
 ```
 services/
-├── orchestration/       # Multi-agent coordination
-├── phases/             # Phase servers (APML v9.0: Phase 1, Phase 2, Phase 3, Manifest, Audio)
+├── orchestration/       # Multi-agent coordination (Port 3456)
+├── phases/             # Phase servers (APML v10.1)
+│   ├── phase1-translation/       # Port 3457: Translation + LEGO Extraction
+│   ├── phase1-lego-extraction/   # Port 3458: Conflict Resolution (Phase 2)
+│   ├── phase3-basket-generation/ # Port 3459: Basket Generation (Phase 3)
+│   ├── manifest-compilation/     # Port 3464: Manifest Compilation (script)
+│   └── audio-server.cjs          # Port 3465: TTS Generation (script)
 └── web/                # Web services
 ```
 
@@ -168,12 +174,22 @@ If you're generating files, verify they're in gitignored directories.
 
 APML is our custom format for language learning content. Key concepts:
 
-### **Phase Outputs (APML v9.0)**
+### **Phase Outputs (APML v10.1)**
 - **Phase 1 (Translation + LEGO Extraction)**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
-- **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)
-- **Phase 3 (Basket Generation)**: `lego_baskets.json` - Organized practice baskets
-- **Manifest (Course Compilation)**: `course_manifest.json` - Compiled for audio generation
-- **Audio (TTS Generation)**: `audio/*.mp3` - Generated audio files
+- **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs (SSoT)
+- **Phase 3 (Basket Generation)**: `lego_baskets.json` - Practice baskets with LEGO Debut cycle
+- **Manifest (Script)**: `course_manifest.json` - Compiled for audio generation
+- **Audio (Script/TTS)**: `mastered/{uuid}.mp3` - Generated audio files
+
+### **LEGO Types**
+- **A-type (Atomic)**: Single words (e.g., "want" / "quiero")
+- **M-type (Molecular)**: Multi-word phrases (e.g., "I want to" / "quiero")
+
+### **Basket Cycle Sequence (v10.1)**
+For M-type LEGOs, baskets follow this order:
+1. **Components** (is_component: true) - Building blocks
+2. **LEGO Debut** (is_debut: true) - The complete LEGO
+3. **Practice sentences** - LEGO used in context
 
 ### **LEGO Components**
 Language is broken into reusable "LEGO" pieces:
@@ -181,14 +197,19 @@ Language is broken into reusable "LEGO" pieces:
 - **LUT** (Look-Up Tables): Higher-order patterns
 - **Recombination**: LEGOs combine to form new phrases
 
-### **Validation Gates**
-Every phase has quality gates:
-- Grammar validation
-- Infinitive form checks
-- FD/LUT collision detection
-- Coverage analysis
+### **Phase Servers**
+A "Phase" = one server = one prompt = one agent job
 
-**📖 For deep dive**: See `docs/architecture/` and `apml/` directory.
+| Port | Phase | Description |
+|------|-------|-------------|
+| 3456 | - | Orchestrator |
+| 3457 | 1 | Translation + LEGO Extraction |
+| 3458 | 2 | Conflict Resolution |
+| 3459 | 3 | Basket Generation |
+| 3464 | - | Manifest Compilation (script) |
+| 3465 | - | Audio/TTS Generation (script) |
+
+**📖 For deep dive**: See `docs/architecture/`, `docs/PHASE_SERVER_ARCHITECTURE.md`, and `apml/` directory.
 
 ---
 

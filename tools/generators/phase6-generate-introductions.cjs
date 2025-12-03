@@ -40,11 +40,12 @@ function generateAtomicPresentation(targetLang, knownLego, targetLego, knownSeed
 
 function generateMolecularPresentation(targetLang, knownLego, targetLego, knownSeed, components) {
   // Build component explanation with {target1} tags
-  // Component format: [[targetPart, knownPart], ...]
+  // Component format: [{known, target}, ...] or [[targetPart, knownPart], ...]
   // All target language parts use {target1} for consistent TTS voice
   const componentParts = components.map((comp, index) => {
-    const targetPart = comp[0];
-    const knownPart = comp[1];
+    // Support both object {known, target} and array [target, known] formats
+    const targetPart = comp.target || comp[0];
+    const knownPart = comp.known || comp[1];
     return `{target1}'${targetPart}' means ${knownPart}`;
   });
 
@@ -135,8 +136,9 @@ async function generateIntroductions(courseDir) {
       // Handle both array and object formats
       const legoId = lego.id || lego[0];
       const type = lego.type || lego[1];
-      const targetLego = lego.target || lego[2];
-      const knownLego = lego.known || lego[3];
+      // LEGO data can be nested in .lego property or directly on object
+      const targetLego = lego.lego?.target || lego.target || lego[2];
+      const knownLego = lego.lego?.known || lego.known || lego[3];
       const components = lego.components || lego[4]; // Only for COMPOSITE/M-type
 
       let presentation;

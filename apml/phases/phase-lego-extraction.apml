@@ -1,0 +1,315 @@
+# APML: LEGO Audio Extraction Phase
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: PHASE (hybrid: automated + human review)
+
+phase LegoExtraction:
+  name: "LEGO Audio Extraction"
+  purpose: "Extract individual LEGO audio chunks from slow recordings"
+  version: "10.0.0"
+  type: "hybrid_phase"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This phase extracts individual LEGO audio chunks from slow recordings.
+    The slow recordings have deliberate gaps between words/LEGOs, which
+    enables automatic silence detection with human boundary adjustment.
+
+    HYBRID APPROACH:
+    - Automatic silence detection identifies potential boundaries
+    - User reviews and adjusts boundaries in waveform editor
+    - Individual LEGO chunks are extracted and saved to S3
+
+    OUTPUT: Reusable LEGO audio that can be concatenated to form
+    practice phrases without additional recording.
+
+  ## ==========================================================================
+  ## INPUT
+  ## ==========================================================================
+
+  input:
+    slow_recordings:
+      location: "S3: recordings/{hash}_{lang}_model_slow_{voiceId}.webm"
+      description: "Slow cadence recordings with gaps between words"
+
+    lego_pairs:
+      location: "S3: courses/{course_code}/lego_pairs.json"
+      description: "Expected LEGOs for each seed"
+      purpose: "Know what LEGOs to expect in each recording"
+
+  ## ==========================================================================
+  ## SILENCE DETECTION
+  ## ==========================================================================
+
+  silence_detection:
+    purpose: "Automatically find word boundaries in slow recordings"
+
+    methods:
+      web_audio_api:
+        description: "Client-side detection using AnalyserNode"
+        parameters:
+          silence_threshold: "-40dB"
+          min_silence_duration: "0.3 seconds"
+          smoothing: "0.8"
+
+        implementation: |
+          const audioContext = new AudioContext()
+          const analyser = audioContext.createAnalyser()
+          analyser.fftSize = 2048
+
+          // Get frequency data
+          const dataArray = new Uint8Array(analyser.frequencyBinCount)
+          analyser.getByteFrequencyData(dataArray)
+
+          // Calculate RMS level
+          const rms = Math.sqrt(dataArray.reduce((sum, v) => sum + v * v, 0) / dataArray.length)
+
+          // Compare against threshold
+          const isSilence = rms < SILENCE_THRESHOLD
+
+      ffmpeg_backend:
+        description: "Server-side detection using FFmpeg"
+        command: |
+          ffmpeg -i slow_recording.webm \
+            -af silencedetect=n=-40dB:d=0.3 \
+            -f null - 2>&1 | grep silencedetect
+
+        output_format: |
+          [silencedetect @ 0x...] silence_start: 1.234
+          [silencedetect @ 0x...] silence_end: 1.567 | silence_duration: 0.333
+          [silencedetect @ 0x...] silence_start: 2.891
+          ...
+
+    output:
+      boundaries:
+        format: "Array of { start, end } timestamps"
+        example: |
+          [
+            { "start": 0, "end": 0.8, "lego": "Quiero" },
+            { "start": 1.1, "end": 1.7, "lego": "hablar" },
+            { "start": 2.0, "end": 2.8, "lego": "español" },
+            { "start": 3.1, "end": 3.8, "lego": "contigo" },
+            { "start": 4.1, "end": 4.6, "lego": "ahora" }
+          ]
+
+  ## ==========================================================================
+  ## WAVEFORM EDITOR UI
+  ## ==========================================================================
+
+  waveform_editor:
+    location: "src/components/WaveformEditor.vue"
+    view: "src/views/LegoExtractor.vue"
+
+    features:
+      waveform_display:
+        description: "Visual representation of audio amplitude"
+        zoom: "Adjustable zoom level"
+        scroll: "Horizontal scroll for long recordings"
+
+      boundary_markers:
+        description: "Vertical lines showing detected boundaries"
+        interaction: "Drag to adjust position"
+        color: "Red for start, green for end"
+
+      lego_labels:
+        description: "Expected LEGO text above each segment"
+        source: "lego_pairs.json"
+        editable: false
+
+      playback:
+        play_all: "Play entire recording"
+        play_segment: "Play individual LEGO segment"
+        loop: "Loop current segment"
+
+      controls:
+        adjust_left: "Move boundary left"
+        adjust_right: "Move boundary right"
+        split: "Split segment at cursor"
+        merge: "Merge adjacent segments"
+        confirm: "Confirm and extract all LEGOs"
+
+    ui_mockup: |
+      ┌─────────────────────────────────────────────────────────────────┐
+      │  LEGO EXTRACTION · S0048                                        │
+      │  "Quiero hablar español contigo ahora"                         │
+      ├─────────────────────────────────────────────────────────────────┤
+      │                                                                 │
+      │  [══════|════════|══════════|═════════|════════]               │
+      │     ↑       ↑         ↑          ↑        ↑                   │
+      │  Quiero  hablar   español    contigo   ahora                   │
+      │                                                                 │
+      │  Detected LEGOs: 5                Expected: 5                   │
+      │                                                                 │
+      │  [▶ Play All]  [Adjust]  [Confirm]  [Skip]                     │
+      │                                                                 │
+      │  Segment 1: Quiero [▶] [◀|▶]                                   │
+      │  Segment 2: hablar [▶] [◀|▶]                                   │
+      │  Segment 3: español [▶] [◀|▶]                                  │
+      │  Segment 4: contigo [▶] [◀|▶]                                  │
+      │  Segment 5: ahora [▶] [◀|▶]                                    │
+      │                                                                 │
+      └─────────────────────────────────────────────────────────────────┘
+
+  ## ==========================================================================
+  ## EXTRACTION WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    step_1:
+      name: "Load slow recording"
+      action: "Fetch recording from S3"
+      input: "recordings/{hash}_{lang}_model_slow_{voiceId}.webm"
+
+    step_2:
+      name: "Load expected LEGOs"
+      action: "Get LEGO list from lego_pairs.json"
+      output: "Array of expected LEGO texts"
+
+    step_3:
+      name: "Run silence detection"
+      action: "Identify gaps in audio"
+      output: "Array of boundary timestamps"
+
+    step_4:
+      name: "Match boundaries to LEGOs"
+      action: "Assign expected LEGO to each segment"
+      validation: "Count matches expected LEGO count"
+
+    step_5:
+      name: "Display in waveform editor"
+      action: "Show waveform with boundary markers"
+      interaction: "User reviews and adjusts"
+
+    step_6:
+      name: "User confirms boundaries"
+      action: "Click 'Confirm' when satisfied"
+      validation: "All segments must have valid boundaries"
+
+    step_7:
+      name: "Extract LEGO chunks"
+      action: "Cut audio at confirmed boundaries"
+      output: "Individual audio files per LEGO"
+
+    step_8:
+      name: "Save to S3"
+      action: "Upload each LEGO chunk"
+      location: "lego_audio/{lego_id}_{lang}_{voiceId}.webm"
+
+  ## ==========================================================================
+  ## OUTPUT
+  ## ==========================================================================
+
+  output:
+    lego_audio:
+      path: "S3: lego_audio/"
+      key_format: "{lego_id}_{lang}_{voiceId}.webm"
+
+      lego_id:
+        description: "Normalized LEGO text"
+        normalization: |
+          - Lowercase
+          - Replace spaces with underscores
+          - Remove punctuation
+          - Trim whitespace
+        examples:
+          "Quiero" -> "quiero"
+          "I want to" -> "i_want_to"
+          "现在" -> "现在"
+
+      lang:
+        description: "ISO 639-3 language code"
+
+      voiceId:
+        description: "Voice identifier (same as recording)"
+
+    example_outputs:
+      - "lego_audio/quiero_spa_human_maria.webm"
+      - "lego_audio/hablar_spa_human_maria.webm"
+      - "lego_audio/espanol_spa_human_maria.webm"
+      - "lego_audio/contigo_spa_human_maria.webm"
+      - "lego_audio/ahora_spa_human_maria.webm"
+
+  ## ==========================================================================
+  ## EDGE CASES
+  ## ==========================================================================
+
+  edge_cases:
+    too_few_segments:
+      description: "Fewer segments detected than expected LEGOs"
+      cause: "Gaps too short, words run together"
+      solution: "User manually splits segments in waveform editor"
+
+    too_many_segments:
+      description: "More segments detected than expected LEGOs"
+      cause: "False positives in silence detection"
+      solution: "User merges adjacent segments"
+
+    no_silence_detected:
+      description: "Recording has no clear gaps"
+      cause: "User spoke too fast"
+      solution: "Flag for re-recording with slower pace"
+
+    wrong_word_order:
+      description: "LEGOs appear in different order than expected"
+      cause: "Speaker variation or LEGO grouping"
+      solution: "User reorders segments in editor"
+
+  ## ==========================================================================
+  ## BATCH PROCESSING
+  ## ==========================================================================
+
+  batch_processing:
+    description: "Process multiple recordings in sequence"
+
+    workflow:
+      1: "List all slow recordings for course"
+      2: "Identify unprocessed recordings"
+      3: "Present first unprocessed recording"
+      4: "User confirms boundaries"
+      5: "Extract and save LEGOs"
+      6: "Auto-advance to next recording"
+
+    progress_tracking:
+      extracted: "Count of recordings with all LEGOs extracted"
+      pending: "Recordings awaiting processing"
+      failed: "Recordings flagged for re-recording"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    detect_boundaries:
+      method: "POST"
+      path: "/api/audio/detect-boundaries"
+      body: "{ recordingKey, expectedLegos }"
+      returns: "{ boundaries: [{ start, end, lego }] }"
+
+    extract_lego:
+      method: "POST"
+      path: "/api/audio/extract-lego"
+      body: "{ recordingKey, legoId, start, end, voiceId }"
+      returns: "{ success, legoKey, url }"
+
+    confirm_extraction:
+      method: "POST"
+      path: "/api/audio/confirm-extraction"
+      body: "{ recordingKey, segments: [{ legoId, start, end }] }"
+      returns: "{ success, legoKeys: [...] }"
+
+  ## ==========================================================================
+  ## NEXT PHASE
+  ## ==========================================================================
+
+  next_phase:
+    name: "Practice Phrase Assembly"
+    input: "LEGO audio chunks"
+    purpose: "Concatenate LEGOs to form practice phrases"
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

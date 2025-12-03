@@ -1,0 +1,330 @@
+# APML: Incremental Publishing Phase
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: SCRIPT (automated publishing)
+
+script IncrementalPublishing:
+  name: "Incremental Publishing"
+  purpose: "Publish course incrementally as seeds become available"
+  version: "10.0.0"
+  type: "deterministic_script"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This script enables progressive course publishing. Instead of waiting for
+    all 668 seeds to be recorded, the course publishes as content becomes
+    available: 10 seeds recorded = 10 seeds available to learners.
+
+    PRINCIPLE: Don't block learners waiting for perfection.
+    Start with a small course and grow it organically.
+
+    APPROACH:
+    - Calculate which seeds are "publishable"
+    - Generate manifest with only publishable content
+    - Deploy incrementally
+    - Track progress transparently
+
+  ## ==========================================================================
+  ## PUBLISHABILITY CRITERIA
+  ## ==========================================================================
+
+  publishability:
+    seed_is_publishable: |
+      A seed is "publishable" when ALL of the following are true:
+
+      1. NATURAL RECORDING EXISTS
+         - S3: recordings/{hash}_{lang}_model_natural_{voiceId}.webm
+
+      2. ALL LEGOs EXTRACTED
+         - Every LEGO from this seed has audio in lego_audio/
+         - OR the seed is A-type (atomic, no extraction needed)
+
+      3. ALL PRACTICE PHRASES ASSEMBLED
+         - Every practice phrase for this seed's LEGOs is assembled
+         - OR flagged and has manual recording
+
+    lego_is_ready: |
+      - Audio extracted: lego_audio/{lego_id}_{lang}_{voiceId}.webm exists
+      - All phrases using this LEGO are assembled or recorded
+
+    phrase_is_ready: |
+      - Assembled audio exists: practice_audio/{uuid}_{lang}_{voiceId}.webm
+      - OR manually recorded audio exists
+
+  ## ==========================================================================
+  ## CALCULATION WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    step_1:
+      name: "Inventory recordings"
+      action: "List all recordings in S3"
+      output: "Set of recorded seed text hashes"
+
+    step_2:
+      name: "Inventory LEGO audio"
+      action: "List all files in lego_audio/"
+      output: "Set of available LEGO IDs"
+
+    step_3:
+      name: "Inventory practice audio"
+      action: "List all files in practice_audio/"
+      output: "Set of assembled phrase UUIDs"
+
+    step_4:
+      name: "Calculate publishable seeds"
+      action: |
+        For each seed in lego_pairs.json:
+          - Check natural recording exists
+          - Check all LEGOs extracted
+          - Check all practice phrases assembled
+          - If all true: add to publishable set
+
+      output: "Array of publishable seed IDs"
+
+    step_5:
+      name: "Generate incremental manifest"
+      action: "Compile manifest with only publishable seeds"
+      format: "Same as full manifest, fewer seeds"
+
+    step_6:
+      name: "Update course metadata"
+      action: "Set availability status in manifest"
+      fields:
+        available_seeds: "47"
+        total_seeds: "668"
+        completeness: "7%"
+        last_updated: "ISO timestamp"
+
+  ## ==========================================================================
+  ## MANIFEST COMPILATION
+  ## ==========================================================================
+
+  manifest_compilation:
+    legacy_format:
+      script: "scripts/compile-incremental-manifest.cjs"
+      input:
+        - "lego_pairs.json"
+        - "lego_baskets.json"
+        - "publishable_seeds[] (calculated)"
+      output: "course_manifest.json (with subset of seeds)"
+
+      structure: |
+        {
+          "id": "spa-eng",
+          "version": "10.0.0",
+          "status": "incremental",
+          "availability": {
+            "seeds": 47,
+            "total": 668,
+            "percent": 7
+          },
+          "slices": [{ ... }],  // Only publishable seeds
+          "samples": { ... }     // Only referenced audio
+        }
+
+    v2_format:
+      script: "scripts/compile-manifest-v2.cjs"
+      additions:
+        - "Direct S3 audio URLs"
+        - "Human voice metadata"
+        - "Incremental loading support"
+
+      structure: |
+        {
+          "id": "spa-eng",
+          "version": "10.0.0",
+          "format": "v2",
+          "voices": {
+            "human_maria_spa": {
+              "name": "Maria",
+              "language": "Spanish",
+              "type": "human"
+            }
+          },
+          "availability": {
+            "published_seeds": 47,
+            "total_seeds": 668,
+            "last_batch": "2025-12-02T10:30:00Z"
+          },
+          "seeds": [...]  // With direct S3 URLs
+        }
+
+  ## ==========================================================================
+  ## PUBLISHING UI
+  ## ==========================================================================
+
+  publishing_ui:
+    location: "src/views/CoursePublisher.vue"
+
+    features:
+      progress_overview:
+        - "Publishable seeds count"
+        - "Progress bar (% complete)"
+        - "Seeds since last publish"
+        - "Estimated completion"
+
+      publish_button:
+        - "Publish Now"
+        - "Preview Changes"
+        - "View Manifest"
+
+      history:
+        - "Previous publishes"
+        - "Seed count per publish"
+        - "Timestamps"
+
+    ui_mockup: |
+      ┌─────────────────────────────────────────────────────────────────┐
+      │  PUBLISH · spa_for_eng                                         │
+      ├─────────────────────────────────────────────────────────────────┤
+      │                                                                 │
+      │  Ready to publish: 47 seeds                                    │
+      │  │▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░│ 7%                        │
+      │                                                                 │
+      │  Last published: 40 seeds (2 hours ago)                        │
+      │  New since last publish: 7 seeds                               │
+      │                                                                 │
+      │  ┌─────────────────────────────────────────┐                   │
+      │  │ New seeds:                              │                   │
+      │  │  S0041: "Quiero hablar español"         │                   │
+      │  │  S0042: "Me gusta mucho"                │                   │
+      │  │  S0043: "Es muy importante"             │                   │
+      │  │  S0044: "Necesito practicar"            │                   │
+      │  │  S0045: "Puedo hacerlo"                 │                   │
+      │  │  S0046: "Voy a intentarlo"              │                   │
+      │  │  S0047: "Es muy fácil"                  │                   │
+      │  └─────────────────────────────────────────┘                   │
+      │                                                                 │
+      │  [Publish Now]  [Preview Changes]                              │
+      │                                                                 │
+      │  ─────────────────────────────────────────────────────────     │
+      │  Publishing History                                            │
+      │                                                                 │
+      │  • 40 seeds - Dec 2, 2025 08:30                               │
+      │  • 35 seeds - Dec 1, 2025 16:45                               │
+      │  • 25 seeds - Nov 30, 2025 14:20                              │
+      │                                                                 │
+      └─────────────────────────────────────────────────────────────────┘
+
+  ## ==========================================================================
+  ## DEPLOYMENT
+  ## ==========================================================================
+
+  deployment:
+    targets:
+      legacy_app:
+        description: "Current SSi mobile app"
+        manifest: "course_manifest.json (legacy format)"
+        audio: "S3 via CloudFront CDN"
+        action: "Update manifest in S3"
+
+      new_player:
+        description: "ssi-learning-app"
+        manifest: "course_manifest_v2.json"
+        audio: "Direct S3 URLs in manifest"
+        action: "Update manifest in S3"
+
+      schools:
+        description: "ssi-schools-mockup"
+        inherits: "new_player"
+        additional: "Class assignment data"
+
+    workflow:
+      1: "Generate manifests (legacy + v2)"
+      2: "Upload to S3"
+      3: "Invalidate CDN cache (if applicable)"
+      4: "Update publishing history"
+      5: "Notify (webhook, email, etc.)"
+
+  ## ==========================================================================
+  ## VERSIONING
+  ## ==========================================================================
+
+  versioning:
+    scheme: "{major}.{minor}.{patch}-{seedCount}"
+    example: "10.0.0-47"
+
+    meaning:
+      major: "APML version (breaking changes)"
+      minor: "Feature additions"
+      patch: "Bug fixes"
+      seedCount: "Number of publishable seeds"
+
+    history: |
+      Each publish creates a versioned snapshot:
+      - 10.0.0-47 (current)
+      - 10.0.0-40 (previous)
+      - 10.0.0-35 (before that)
+
+      Old versions can be retrieved for rollback.
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    calculate_publishable:
+      method: "GET"
+      path: "/api/courses/{courseCode}/publishable"
+      returns: |
+        {
+          "publishable_seeds": 47,
+          "total_seeds": 668,
+          "new_since_last": 7,
+          "seeds": ["S0001", "S0002", ...],
+          "blocked": [
+            { "seed": "S0048", "reason": "missing LEGO: pan" }
+          ]
+        }
+
+    publish:
+      method: "POST"
+      path: "/api/courses/{courseCode}/publish"
+      body: "{ format: 'legacy' | 'v2' | 'both' }"
+      returns: |
+        {
+          "success": true,
+          "version": "10.0.0-47",
+          "manifest_urls": {
+            "legacy": "s3://...course_manifest.json",
+            "v2": "s3://...course_manifest_v2.json"
+          }
+        }
+
+    publishing_history:
+      method: "GET"
+      path: "/api/courses/{courseCode}/publishing-history"
+      returns: |
+        {
+          "history": [
+            { "version": "10.0.0-47", "seeds": 47, "timestamp": "..." },
+            { "version": "10.0.0-40", "seeds": 40, "timestamp": "..." }
+          ]
+        }
+
+  ## ==========================================================================
+  ## LEARNER EXPERIENCE
+  ## ==========================================================================
+
+  learner_experience:
+    course_display:
+      title: "Spanish for English Speakers"
+      subtitle: "47 lessons available (of 668)"
+      progress_indicator: "Growing course - new lessons added regularly"
+
+    notifications:
+      - "New lessons available!"
+      - "7 new phrases added since your last session"
+
+    seamless_growth: |
+      As new seeds are published, they appear naturally in the
+      learner's lesson queue. No app update required.
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

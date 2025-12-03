@@ -1,13 +1,13 @@
-# APML Phase 5: Practice Basket Generation
-# Extracted from: docs/phase_intelligence/phase_5_lego_baskets.md
-# Version: 5.0 - Ultimate Edition (2025-11-09)
-# Status: Production-ready (Staged Pipeline with Correct Whitelist Logic)
-# Last updated: 2025-11-10
+# APML Phase 3: Practice Basket Generation
+# Version: 10.1.0 (2025-12-03)
+# Status: Production-ready
+# Server Port: 3459
 
-phase Phase5BasketGeneration:
-  name: "Phase 5: Practice Basket Generation"
+phase Phase3BasketGeneration:
+  name: "Phase 3: Practice Basket Generation"
   purpose: "Generate high-quality practice phrase baskets using linguistic reasoning"
-  version: "5.0"
+  version: "10.1.0"
+  server_port: 3459
 
   ## ==========================================================================
   ## OVERVIEW
@@ -168,6 +168,55 @@ phase Phase5BasketGeneration:
           ✅ "lo más posible" (the whole phrase)
           ✅ "lo más" alone (knows it means "the most")
           ✅ "posible" alone (knows it means "possible")
+
+  ## ==========================================================================
+  ## BASKET CYCLE SEQUENCE (v10.1)
+  ## ==========================================================================
+
+  basket_cycle_sequence:
+    description: |
+      For M-type (molecular) LEGOs, the basket includes a "LEGO Debut" cycle
+      immediately after components and before practice sentences.
+      This ensures learners combine the components before using the LEGO in full sentences.
+
+    sequence_for_M_type:
+      1_components:
+        description: "Individual component words (is_component: true)"
+        purpose: "Learner hears and understands the building blocks"
+        example:
+          - ["I", "我", "is_component: true"]
+          - ["want", "想", "is_component: true"]
+
+      2_lego_debut:
+        description: "The LEGO itself (is_debut: true)"
+        purpose: "Learner combines components into the complete LEGO"
+        example:
+          - ["I want to", "我想", "is_debut: true"]
+
+      3_practice_sentences:
+        description: "Practice phrases using the LEGO"
+        purpose: "Learner uses LEGO in natural sentences"
+        example:
+          - ["I want to go", "我想去", null]
+          - ["I want to eat", "我想吃", null]
+
+    sequence_for_A_type:
+      description: "A-type (atomic) LEGOs skip components and debut"
+      note: "A-type LEGOs are single words, no decomposition needed"
+      sequence:
+        - "Practice sentences only (10 phrases)"
+
+    example_M_type_basket:
+      lego: ["I want to", "我想"]
+      type: "M"
+      cycles:
+        - { known: "I", target: "我", is_component: true, word_count: 1 }
+        - { known: "want", target: "想", is_component: true, word_count: 1 }
+        - { known: "I want to", target: "我想", is_debut: true, word_count: 2 }
+        - { known: "I want to go", target: "我想去", word_count: 3 }
+        - { known: "I want to eat", target: "我想吃", word_count: 3 }
+        - { known: "I want to sleep", target: "我想睡觉", word_count: 4 }
+        # ... more practice sentences
 
   ## ==========================================================================
   ## PHRASE GENERATION PROCESS

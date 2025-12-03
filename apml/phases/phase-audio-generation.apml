@@ -1,0 +1,306 @@
+# APML: Audio Generation Phase
+# Version: 9.2.0 (2025-12-01)
+# Status: Production
+# Type: PHASE (agent-based orchestration required)
+
+phase AudioGeneration:
+  name: "Audio Generation"
+  purpose: "Generate TTS audio for all course content"
+  version: "9.2.0"
+  type: "agent_phase"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This is a TRUE PHASE because it requires agent orchestration:
+    - Decision-making for QC review
+    - Error handling and recovery
+    - Cost management approval
+    - Multi-step coordination
+
+    Audio generation produces MP3 files for all text content in the manifest.
+    The app uses UUID-based lookup to play audio for each text entry.
+
+  sub_phases:
+    - "Phase A: Core Vocabulary (target1, target2, source)"
+    - "Phase B: Presentations (composite audio)"
+    - "Phase C: Encouragements + Welcome"
+
+  ## ==========================================================================
+  ## INPUT SPECIFICATION
+  ## ==========================================================================
+
+  input:
+    manifest:
+      location: "vfs/courses/{course_code}/course_manifest.json"
+      required: true
+      provides:
+        - All text content needing audio
+        - UUIDs for each sample
+        - Presentation text with target_text
+
+    voices:
+      location: "vfs/canonical/voices.json"
+      required: true
+      provides:
+        - Voice assignments per language pair
+        - TTS provider configuration (Azure, ElevenLabs)
+        - Cadence settings (slow, natural)
+
+    welcomes:
+      location: "vfs/canonical/welcomes.json"
+      required: true
+      provides:
+        - Course welcome text
+
+    encouragements:
+      location: "vfs/canonical/eng_encouragements.json"
+      required: true
+      provides:
+        - Encouragement texts and UUIDs
+
+  ## ==========================================================================
+  ## AUDIO ROLES AND VOICES
+  ## ==========================================================================
+
+  audio_roles:
+    target1:
+      language: "target (e.g., Chinese)"
+      voice: "Azure Female"
+      cadence: "slow"
+      purpose: "Primary target vocabulary pronunciation"
+
+    target2:
+      language: "target (e.g., Chinese)"
+      voice: "Azure Male"
+      cadence: "slow"
+      purpose: "Alternate target voice (reinforcement)"
+
+    source:
+      language: "known (English)"
+      voice: "ElevenLabs"
+      cadence: "natural"
+      purpose: "English prompts and translations"
+
+    presentation:
+      language: "known (English)"
+      voice: "ElevenLabs (presentation voice)"
+      cadence: "natural"
+      purpose: "LEGO introduction narration"
+
+    presentation_encouragement:
+      language: "known (English)"
+      voice: "ElevenLabs"
+      cadence: "natural"
+      purpose: "Encouragement messages"
+
+  ## ==========================================================================
+  ## PHASE A: CORE VOCABULARY
+  ## ==========================================================================
+
+  phase_a:
+    name: "Core Vocabulary Generation"
+    description: |
+      Generates audio for all text in the samples dictionary.
+      This includes LEGOs, practice phrases, and component drills.
+
+    samples_from:
+      - "samples dictionary keys (all unique text content)"
+
+    generates:
+      target1: "Target language, female voice, slow cadence"
+      target2: "Target language, male voice, slow cadence"
+      source: "English, ElevenLabs, natural cadence"
+
+    workflow:
+      1: "Load manifest and extract all sample texts"
+      2: "Check MAR for existing audio (skip if found)"
+      3: "Generate TTS for each sample (Azure + ElevenLabs in parallel)"
+      4: "Normalize audio (target LUFS: -16)"
+      5: "Apply time-stretch for slow cadence"
+      6: "Pause for QC checkpoint"
+      7: "Upload to S3"
+      8: "Update temporary MAR"
+
+    qc_checkpoint:
+      description: |
+        Script pauses and generates QC reports. Agent reviews flagged
+        samples (especially shortest phrases) and approves or requests
+        regeneration.
+
+      outputs:
+        - qc_report_raw.json
+        - qc_report_raw.md
+        - qc_review/ directory with flagged samples
+
+  ## ==========================================================================
+  ## PHASE B: PRESENTATIONS (SIMPLIFIED FORMAT)
+  ## ==========================================================================
+
+  phase_b:
+    name: "Presentation Generation"
+    description: |
+      Generates composite audio for LEGO introductions.
+
+      NEW SIMPLIFIED FORMAT (v9.2):
+      - presentation field contains English narration text
+      - target_text in introductions_v2.json contains the LEGO to pronounce
+      - NO MORE {target1}/{target2} tags in text
+
+    input_format:
+      manifest_field: "introduction_items[].presentation"
+      example: "The Chinese for 'now', as in 'I want to speak Chinese with you now.', is:"
+
+      introductions_v2:
+        text: "The Chinese for 'now', as in 'I want to speak Chinese with you now.', is:"
+        target_text: "现在"
+
+    assembly_pattern:
+      description: |
+        Presentation audio is assembled by concatenating:
+        1. TTS of presentation text (source voice)
+        2. Silence (1 second)
+        3. target_text audio (target1 voice from Phase A)
+        4. Silence (1 second)
+        5. target_text audio (target2 voice from Phase A)
+
+      example:
+        input:
+          text: "The Chinese for 'now', as in '...', is:"
+          target_text: "现在"
+        output:
+          assembly: "[TTS: 'The Chinese for now, as in...'] + [silence] + [现在 target1] + [silence] + [现在 target2]"
+
+    workflow:
+      1: "Download target audio files from S3 (needed for assembly)"
+      2: "For each introduction_item:"
+      3: "  - Get presentation text and target_text"
+      4: "  - Generate TTS for presentation text (ElevenLabs)"
+      5: "  - Look up target_text audio from Phase A"
+      6: "  - Assemble: narration + silence + target1 + silence + target2"
+      7: "Normalize and upload to S3"
+
+    no_qc_checkpoint: |
+      Presentations use already-QC'd target audio from Phase A.
+      Only the narration text is new TTS.
+
+  ## ==========================================================================
+  ## MIGRATION NOTE: OLD FORMAT HANDLING
+  ## ==========================================================================
+
+  migration:
+    old_format:
+      description: |
+        OLD presentations had {target1} and {target2} tags embedded in text:
+        "The Spanish for 'I want', is: ... 'quiero' ... 'quiero' - {target1}'Quiero' means I want something."
+
+      parsing_required: "Complex regex to find and replace tags with audio clips"
+
+    new_format:
+      description: |
+        NEW presentations have simple text with separate target_text:
+        text: "The Chinese for 'now', as in '...', is:"
+        target_text: "现在"
+
+      parsing_required: "Simple concatenation - no regex needed"
+
+    backward_compatibility: |
+      The audio generation script should detect format by checking for
+      {target1} or {target2} in presentation text. If found, use old
+      parsing logic. If not found, use new simple concatenation.
+
+  ## ==========================================================================
+  ## PHASE C: ENCOURAGEMENTS + WELCOME
+  ## ==========================================================================
+
+  phase_c:
+    name: "Encouragements and Welcome"
+
+    encouragements:
+      source: "vfs/canonical/eng_encouragements.json"
+      check: "Check S3 for existing audio first"
+      generate: "TTS via ElevenLabs if missing"
+      add_to:
+        - "slices[0].pooledEncouragements"
+        - "slices[0].orderedEncouragements"
+
+    welcome:
+      source: "vfs/canonical/welcomes.json"
+      check: "Check if configured for this course"
+      generate: "TTS via presentation voice if missing"
+      update: "manifest.introduction (id, duration)"
+
+  ## ==========================================================================
+  ## UUID AND FILE NAMING
+  ## ==========================================================================
+
+  file_naming:
+    pattern: "{UUID}.mp3"
+    location: "s3://ssi-audio-stage/mastered/"
+    example: "C9C2501F-CCBB-5BE5-89B3-310919B5BD2D.mp3"
+
+    determinism: |
+      Same text + language + role + cadence = Same UUID
+      This enables:
+      - Audio caching (don't regenerate existing files)
+      - MAR cross-course reuse
+      - Manifest regeneration without breaking audio links
+
+  ## ==========================================================================
+  ## MAR (MASTER AUDIO REGISTRY)
+  ## ==========================================================================
+
+  mar:
+    purpose: |
+      Track audio samples by voice for cross-course reuse.
+      If "hello" was generated for spa_for_eng, reuse for cmn_for_eng.
+
+    location: "samples_database/voices/{voiceId}/samples.json"
+
+    matching: |
+      Samples matched by normalized text (lowercase, trimmed, no trailing periods).
+      "Hablo", "hablo", "hablo." all match the same audio.
+
+    temp_mar: |
+      temp/mar/ used for crash-safety during generation.
+      Synced to permanent MAR after successful generation.
+
+  ## ==========================================================================
+  ## SCRIPT LOCATION
+  ## ==========================================================================
+
+  script:
+    main: "scripts/phase8-audio-generation.cjs"
+    preflight: "services/preflight-check-service.cjs"
+    deduplication: "scripts/manifest-deduplication.cjs"
+    repopulation: "scripts/manifest-repopulation.cjs"
+    duration_check: "scripts/extract-s3-durations-parallel.cjs"
+
+    usage:
+      plan: "node scripts/phase8-audio-generation.cjs {course_code} --plan"
+      execute: "node scripts/phase8-audio-generation.cjs {course_code} --execute"
+      continue: "node scripts/phase8-audio-generation.cjs {course_code} --execute --continue-processing"
+
+  ## ==========================================================================
+  ## COST CONSIDERATIONS
+  ## ==========================================================================
+
+  cost:
+    azure: "Free tier (500K chars/month)"
+    elevenlabs: "Paid (~$0.30 per 1000 chars)"
+
+    approval_required: |
+      Agent MUST show cost estimate and wait for user approval before
+      running --execute. TTS API calls cost money.
+
+    optimization:
+      - "MAR reuse (don't regenerate existing audio)"
+      - "Deduplication (one audio per unique text)"
+      - "Parallel generation (Azure + ElevenLabs simultaneously)"
+
+## ============================================================================
+## GENERATED: 2025-12-01
+## APML v9.2.0
+## ============================================================================

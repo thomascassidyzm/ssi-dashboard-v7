@@ -1,0 +1,314 @@
+# APML: Human Audio Recording Phase
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: PHASE (human + dashboard)
+
+phase HumanRecording:
+  name: "Human Audio Recording"
+  purpose: "Record native speaker audio for all seed phrases"
+  version: "10.0.0"
+  type: "human_phase"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This phase enables human speakers to record all seed phrases in two cadences:
+    - NATURAL: Full speed, natural rhythm (for comprehension)
+    - SLOW: With gaps between words (for LEGO extraction)
+
+    The slow recordings are later processed to extract individual LEGO audio
+    chunks, which are then recombined to auto-generate practice phrase audio.
+
+    PRINCIPLE: Audio-first course building
+    - Recordings drive content availability
+    - Course publishes incrementally as seeds are recorded
+    - 10 seeds recorded = 10 seeds available to learners
+
+  ## ==========================================================================
+  ## RECORDING STUDIO UI
+  ## ==========================================================================
+
+  recording_studio:
+    location: "src/views/RecordingStudio.vue"
+    component: "src/components/AudioRecorder.vue"
+
+    features:
+      - "Course selection dropdown"
+      - "Voice ID input (human_{name}_{language})"
+      - "Seed navigation (previous/next)"
+      - "Dual recording (Natural + Slow per phrase)"
+      - "Progress tracking (N/668 seeds)"
+      - "Keyboard shortcuts for rapid recording"
+
+    keyboard_shortcuts:
+      SPACE: "Toggle recording (start/stop)"
+      ENTER: "Save current recording and advance"
+      S: "Skip current phrase"
+      P: "Play back recording"
+      R: "Re-record (clear current)"
+      ArrowLeft: "Previous phrase"
+      ArrowRight: "Next phrase"
+
+    display:
+      phrase:
+        target: "Target language phrase (large, prominent)"
+        english: "English translation (smaller, reference)"
+      status:
+        recording: "Red dot + 'Recording...' + duration"
+        ready: "Green dot + 'Recording ready'"
+        empty: "Grey dot + 'Ready to record'"
+      progress:
+        format: "47/668 seeds (94/1336 recordings)"
+        bar: "Visual progress indicator"
+
+  ## ==========================================================================
+  ## RECORDING WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    overview: |
+      For each seed, the user records TWO cadences:
+      1. Natural (full speed)
+      2. Slow (with gaps)
+
+      This enables LEGO extraction from the slow recording while
+      maintaining a natural-sounding version for the learner.
+
+    step_by_step:
+      1:
+        action: "Select course and enter voice ID"
+        example: "spa_for_eng, human_maria_spa"
+
+      2:
+        action: "View first seed phrase"
+        display: |
+          Target: "Quiero hablar español contigo ahora"
+          English: "I want to speak Spanish with you now"
+
+      3:
+        action: "Record Natural cadence"
+        instructions: "Press SPACE, speak naturally, press SPACE"
+        tip: "Full speed, natural rhythm"
+
+      4:
+        action: "Save and switch to Slow"
+        instructions: "Press ENTER to save"
+        display: "Same phrase, now showing 'Slow' indicator"
+
+      5:
+        action: "Record Slow cadence"
+        instructions: "Press SPACE, speak slowly with gaps between words"
+        tip: "Clear pause between each word/LEGO"
+
+      6:
+        action: "Save and advance"
+        instructions: "Press ENTER"
+        result: "Next seed appears, Natural cadence"
+
+      7:
+        action: "Repeat for all 668 seeds"
+        total_recordings: "1336 (668 Natural + 668 Slow)"
+
+  ## ==========================================================================
+  ## VOICE ID SPECIFICATION
+  ## ==========================================================================
+
+  voice_id:
+    format: "human_{name}_{language}"
+    components:
+      human: "Literal prefix indicating human recording"
+      name: "Speaker name (lowercase)"
+      language: "ISO 639-3 code of target language"
+
+    examples:
+      - "human_maria_spa"
+      - "human_tom_spa"
+      - "human_xiaoming_cmn"
+      - "human_giuseppe_ita"
+
+    usage:
+      - "Embedded in S3 recording key"
+      - "Referenced in course manifest"
+      - "Used for voice selection in app"
+
+    validation:
+      pattern: "^human_[a-z]+_[a-z]{3}$"
+      error: "Voice ID must be format: human_{name}_{lang}"
+
+  ## ==========================================================================
+  ## S3 STORAGE
+  ## ==========================================================================
+
+  s3_storage:
+    path: "recordings/"
+    key_format: "{text_hash}_{lang}_{role}_{cadence}_{voiceId}.webm"
+
+    parameters:
+      text_hash:
+        description: "MD5 hash of normalized target text"
+        normalization: "lowercase, trim whitespace"
+        length: "8 characters (truncated MD5)"
+        purpose: "Enables cross-course sharing for same text"
+
+      lang:
+        description: "Target language code"
+        values: ["spa", "cmn", "ita", "fra", "deu", "jpn"]
+
+      role:
+        description: "Speaker role"
+        value: "model"
+        note: "Native speaker demonstration"
+
+      cadence:
+        description: "Recording speed"
+        values:
+          natural: "Full speed"
+          slow: "Gaps between words"
+
+      voiceId:
+        description: "Voice identifier"
+        format: "human_{name}_{language}"
+
+    example_keys:
+      - "a1b2c3d4_spa_model_natural_human_maria.webm"
+      - "a1b2c3d4_spa_model_slow_human_maria.webm"
+
+    deduplication: |
+      Same target text produces same text_hash.
+      If "hola" appears in multiple seeds, same key is used.
+      Re-recording overwrites the existing file.
+
+  ## ==========================================================================
+  ## RECORDING QUALITY
+  ## ==========================================================================
+
+  recording_quality:
+    format:
+      container: "webm"
+      codec: "Opus"
+      sample_rate: "48kHz"
+      channels: "mono"
+      bitrate: "~128kbps"
+
+    requirements:
+      natural:
+        - "Clear pronunciation"
+        - "Natural pace and rhythm"
+        - "No long pauses at start/end"
+        - "Consistent volume"
+
+      slow:
+        - "Clear pronunciation"
+        - "Distinct pause between each word/LEGO"
+        - "Gap duration: ~0.3-0.5 seconds"
+        - "Each word clearly separated for extraction"
+
+    tips_for_slow:
+      - "Think of it as dictation speed"
+      - "Pause after each word, not after each syllable"
+      - "Keep LEGOs together (e.g., 'I want to' as one unit)"
+      - "Consistent gap duration helps auto-detection"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    get_signed_url:
+      method: "GET"
+      path: "/api/recordings/signed-url"
+      query: "key={s3_key}"
+      returns: "{ url, expires }"
+      purpose: "Get presigned URL for direct upload"
+
+    upload_recording:
+      method: "PUT"
+      path: "/api/recordings/upload"
+      body: |
+        {
+          "key": "recordings/a1b2c3d4_spa_model_natural_human_maria.webm",
+          "blob": "base64_encoded_audio",
+          "contentType": "audio/webm"
+        }
+      returns: "{ success, url, etag }"
+
+    list_recordings:
+      method: "GET"
+      path: "/api/courses/{courseCode}/recordings"
+      returns: "Array of recording keys for this course"
+
+    check_recording_exists:
+      method: "HEAD"
+      path: "/api/recordings/{key}"
+      returns: "200 if exists, 404 if not"
+
+  ## ==========================================================================
+  ## PROGRESS TRACKING
+  ## ==========================================================================
+
+  progress_tracking:
+    per_course:
+      total_seeds: 668
+      total_recordings: 1336
+      recorded:
+        - "Count of existing recordings"
+        - "Broken down by cadence"
+      remaining:
+        - "Seeds without both recordings"
+
+    display:
+      format: "47/668 seeds (94/1336 recordings)"
+      bar: "Visual progress 7%"
+
+    resumption: |
+      Recording studio tracks which seeds have been recorded.
+      User can skip to unrecorded seeds or re-record existing.
+      Progress persists via S3 (check for existing keys).
+
+  ## ==========================================================================
+  ## BATCH RECORDING TIPS
+  ## ==========================================================================
+
+  batch_recording:
+    goal: "Record all 668 seeds efficiently"
+
+    tips:
+      - "Use keyboard shortcuts (no mouse needed)"
+      - "Find a quiet environment"
+      - "Record in batches (50-100 seeds per session)"
+      - "Take breaks to maintain voice quality"
+      - "Review difficult phrases before recording"
+
+    session_flow:
+      1: "Open Recording Studio"
+      2: "Select course and voice ID"
+      3: "Record Natural + Slow for each seed"
+      4: "Progress auto-saves to S3"
+      5: "Return anytime to continue"
+
+    time_estimate: |
+      Average time per seed (both cadences): ~30 seconds
+      668 seeds = ~5.5 hours of recording
+      Recommended: 4-6 sessions of 1-1.5 hours each
+
+  ## ==========================================================================
+  ## OUTPUT
+  ## ==========================================================================
+
+  output:
+    recordings:
+      location: "S3: recordings/"
+      format: "webm (Opus codec)"
+      count: "1336 files (668 Natural + 668 Slow)"
+
+    next_phase:
+      name: "LEGO Audio Extraction"
+      input: "Slow recordings"
+      purpose: "Extract individual LEGO chunks for phrase assembly"
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

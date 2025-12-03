@@ -1,204 +1,110 @@
+# ===========================================
+# SSi Dashboard v7 - .gitignore
+# ===========================================
+# Architecture:
+#   - GitHub: Code, specs, prompts, scripts (SSoT)
+#   - S3 (popty-bach): Working course data
+#   - S3 (published): Final course manifests
+#   - S3 (staging): Audio samples
+# ===========================================
+
+# --------------------------
+# Node.js / Build
+# --------------------------
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# --------------------------
 # Logs
-logs
+# --------------------------
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+server.log
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# --------------------------
+# Editor / OS
+# --------------------------
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.vercel
-logs/
 
-# Environment variables (contains credentials)
+# --------------------------
+# Environment / Secrets
+# --------------------------
 .env
+.env.*
+!.env.example
 
-# Local automation server config (per-developer settings, gitignored)
-.env.automation
+# --------------------------
+# Vercel
+# --------------------------
+.vercel/
 
-# Orchestrator temp files
-.orchestrator-*.md
+# --------------------------
+# Course Data (S3 is SSoT)
+# --------------------------
+# All course content lives in S3, not git
+public/vfs/courses/
+public/vfs/canonical/
+public/vfs/courses-manifest.json
 
-# Server logs
-server.log
+# --------------------------
+# Audio Samples (S3 is SSoT)
+# --------------------------
+samples_database/
 
-# Local VFS directory removed - all courses now in public/vfs/courses/
-
-# Temporary development files (don't commit these)
+# --------------------------
+# Temp / Working Files
+# --------------------------
+temp/
 temp_*
 test-*
 test_*
-validate_*.cjs
-validate_*.json
-*_whitelist.json
+archive/
+recovered_*/
+extracted-*/
 
-# Exceptions: Keep useful scripts
-!validate_extraction.js
-!test_v5_1_api.js
-public/vfs/courses/*/phase5_scaffolds/
-
-# Python cache and temporary generation scripts
+# --------------------------
+# Python
+# --------------------------
 __pycache__/
 *.pyc
-generate_phrases_*.py
-comprehensive_phrase_gen.py
-examine_vocab.py
-linguistic_phrase_generator.py
-agent_02_phrase_generator.py
-generate_final.py
-generate_simple.py
-generate_ultra_fast.py
-generate_agent_03_baskets_fast.py
-generation_log.txt
 
-# Agent-generated scripts (experimental workspace, not committed)
-scripts/agent*
-scripts/batch-temp/
-scripts/*_generator.py
-scripts/*_generator.cjs
-scripts/AGENT*_COMPLETION_REPORT.md
-scripts/generate_agent*.cjs
-scripts/generate_agent*.py
-scripts/patch*_*.cjs
-scripts/patch*_*.py
-scripts/generate_*.py
-
-# Patch-specific temporary files (Patch 5 and similar batch work)
-scripts/patch5_*.json
-scripts/verify_patch5_*.cjs
-scripts/create_patch5_*.cjs
-scripts/generate_cmn_batch*.py
-scripts/generate_cmn_batch*.cjs
-scripts/verify_cmn_batch*.py
-scripts/grammar_check_cmn_*.py
-scripts/fix_cmn_batch*.cjs
-scripts/generate_batch*_cmn_baskets.py
-scripts/verify_batch*.cjs
-scripts/BATCH*_COMPLETION_REPORT.txt
-scripts/batch*_summary*.py
-scripts/batch*_summary*.txt
-scripts/batch*_summary*.md
-scripts/batch*_SUMMARY*.md
-scripts/batch_*_grammar_check.md
-scripts/cmn_batch*_generation_report.md
-
-# Phase 5: Full outputs with metadata (local debugging only)
-public/vfs/courses/*/phase5_outputs/*_FULL.json
-
-# Keep stripped basket files (these ARE pushed to branches)
-!public/vfs/courses/*/phase5_outputs/*_baskets.json
-
-# Phase 5 Working Files vs Final Output
-# =====================================
-# DO commit:
-#   - lego_baskets.json (final merged output, ~5MB)
-#   - phase5_outputs/*_baskets.json (stripped, ~7KB each, on branches only)
-# DON'T commit:
-#   - phase5_outputs/*_FULL.json (336KB each with debug metadata)
-#
-# Workflow:
-# 1. Agent generates phase5_outputs/seed_SXXXX_FULL.json (gitignored, local only)
-# 2. Agent strips metadata → seed_SXXXX_baskets.json (7KB, pushed to branch)
-# 3. Server merges all baskets → lego_baskets.json
-# 4. Server deletes phase5_outputs/ directory after completion
-#
-# Storage savings: 218MB → 9.6MB (96% reduction in git history)
-
-# Course Data - Pipeline State Preservation
-# ==========================================
-# KEEP phase outputs (pipeline state):
-# - Phase 1: seed_pairs.json (~500KB stripped of metadata)
-# - Phase 3: lego_pairs.json (~2MB stripped of metadata)
-# - Phase 5: lego_baskets.json (~5MB, final merged output with all LEGO baskets)
-# - Phase 6: introductions.json (~500KB, presentation content)
-#
-# IGNORE intermediate/working files:
-public/vfs/courses/*/phase5_outputs/         # Individual seed baskets (merged into lego_baskets.json)
-public/vfs/courses/*/phase5_scaffolds/        # Phase 5 input scaffolds (derivable)
-public/vfs/courses/*/*.cjs                    # Scripts
-public/vfs/courses/*/gate_*.json              # Reports
-public/vfs/courses/*/grammar_*.json           # Reports
-public/vfs/courses/*/infinitive_*.json        # Reports
-public/vfs/courses/*/*_report.json            # Reports
-public/vfs/courses/*/*_changelog.json         # Reports
-public/vfs/courses/*/*_errors.json            # Error logs
-public/vfs/courses/archive/                   # Old versions
-
-# Additional intermediate/working files to ignore
-public/vfs/courses/*/*_provisional.json           # Agent working files
-public/vfs/courses/*/*_backup.json                # Backup files
-public/vfs/courses/*/*_deletion_report.json       # Deletion reports
-public/vfs/courses/*/*_gaps_report.json           # Gap analysis reports
-public/vfs/courses/*/*_reextraction_manifest.json # Re-extraction manifests
-public/vfs/courses/*/*_fd_report.json             # FD/LUT collision reports
-public/vfs/courses/*/*_collision*.json            # Collision files
-public/vfs/courses/*/*_collision*.txt             # Collision text files
-
-# Essential files committed to git:
-# - courses-manifest.json (course index, 3KB)
-# - seed_pairs.json (Phase 1 output, ~500KB)
-# - lego_pairs.json (Phase 3 output, ~2MB)
-# - lego_baskets.json (Phase 5 output, ~5MB - contains ALL course data)
-# - introductions.json (Phase 6 output, ~500KB)
-archive/old_test_batches/
-public/vfs/courses/*/lego_pairs_fd_report.json
-public/vfs/courses/*/lego_pairs_reextraction_manifest.json
-public/vfs/courses/*/basket_*.json
-public/vfs/courses/*/deleted_baskets_backup.json
-public/vfs/courses/*/phase3_collision_reextraction_manifest.json
-# Phase 5 outputs - track directory but let course-specific .gitignore control file tracking
-!public/vfs/courses/*/phase5_outputs/
-!public/vfs/courses/*/phase5_outputs/.gitignore
-dist/docs
-
-# Project management docs (local planning artifacts)
-.project/
-
-# Claude recovery prompts (local context, not needed in repo)
-.claude/recovery_prompts/
-
-# Session-specific documentation (ephemeral agent communications)
-docs/sessions/
-
-# Old logs (already gitignored via logs/ but being explicit)
-*.log
-
-# Recovered/temporary data directories
-recovered_phase5_seeds/
-phase3_s0201_s0668/
-
-# Phase 5 staging environment (agent outputs - safe landing zone)
-public/vfs/courses/*/phase5_baskets_staging/
-public/vfs/courses/*/phase5_baskets_normalized.json
-!public/vfs/courses/*/phase5_baskets_staging/.gitignore
-
-# PM2 process management
+# --------------------------
+# PM2 / Process Management
+# --------------------------
 .pm2/
 ecosystem.config.js
 
-# Phase 8: Audio generation temporary files
-temp/
-extracted-welcomes/
-vfs/canonical/voices.json
-vfs/canonical/welcomes.json
-public/vfs/courses/*/backups/
+# --------------------------
+# Local Development
+# --------------------------
+# Orchestrator temp files
+.orchestrator-*.md
 
-# Course manifests (compiled artifacts - deploy to S3, not GitHub)
-public/vfs/courses/*/course_manifest.json
-public/vfs/courses/*/*.json.bak
-public/vfs/courses/*/*_COURSE_*.json
+# Claude recovery prompts
+.claude/recovery_prompts/
+
+# Session docs (ephemeral)
+docs/sessions/
+
+# Project management (local)
+.project/
+
+# --------------------------
+# Tests (local only)
+# --------------------------
+tests/

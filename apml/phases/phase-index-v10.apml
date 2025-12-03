@@ -1,0 +1,520 @@
+# APML Phase Index v10.1.0
+# SSI Course Production Pipeline
+# Version: 10.1.0 (2025-12-03)
+# Status: Production
+# Changes: LEGO Debut cycle added to basket generation
+
+## ============================================================================
+## VERSION 10 BREAKING CHANGES
+## ============================================================================
+
+BREAKING_CHANGES:
+  summary: |
+    Version 10.0.0 introduces fundamental architectural changes:
+    1. S3 becomes the Single Source of Truth (SSoT) for all course data
+    2. Human recordings system for languages without good TTS
+    3. LEGO audio extraction from slow recordings (for human-recorded courses)
+    4. Practice phrase auto-assembly from LEGO audio chunks
+    5. Incremental course publishing
+
+  from_v9:
+    - "Git → S3: Course data now lives in S3, not GitHub"
+    - "TTS primary: TTS remains primary for most languages"
+    - "Human for edge cases: Human recordings for languages without TTS"
+    - "Batch → Incremental: Publish courses incrementally"
+
+## ============================================================================
+## PHASE DEFINITION (unchanged from v9)
+## ============================================================================
+
+PRINCIPLE: |
+  A PHASE is defined by the involvement of AI AGENTS in a PROCESS.
+  Script-only operations (no agent involvement) are NOT phases.
+
+  PHASE = Agent-based process
+  SCRIPT = Automated transformation (no agent intelligence required)
+
+## ============================================================================
+## PIPELINE OVERVIEW (v10.1.0)
+## ============================================================================
+
+# CONTENT CREATION PHASES (Agent-based)
+# These are the TRUE phases - each has its own server and prompt
+
+CONTENT_PHASES:
+
+  PHASE_1:
+    name: "Translation + LEGO Extraction"
+    type: "PHASE (agent-based)"
+    version: "10.1.0"
+    server_port: 3457
+    description: |
+      Single agent prompt that performs:
+      1. Pedagogical translation of canonical seeds to target/known pairs
+      2. LEGO extraction with FD testing and type classification (A/M)
+
+    agent_involvement: "YES - linguistic intelligence required"
+
+    input:
+      - canonical_seeds.json (668 seeds)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/canonical_seeds.json"
+
+    output:
+      - draft_lego_pairs.json (may have conflicts)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/draft_lego_pairs.json"
+
+    apml_docs:
+      - phase-1-translation.apml
+
+  PHASE_2:
+    name: "Conflict Resolution"
+    type: "PHASE (agent-based)"
+    version: "10.1.0"
+    server_port: 3458
+    description: |
+      Resolve LEGO conflicts from Phase 1 output.
+      Ensures no duplicate or conflicting LEGO definitions.
+
+    agent_involvement: "YES - requires judgment on conflicts"
+
+    input:
+      - draft_lego_pairs.json (from Phase 1)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/draft_lego_pairs.json"
+
+    output:
+      - lego_pairs.json (SSoT - conflict-free LEGOs)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/lego_pairs.json"
+
+    apml_docs:
+      - phase-2-conflict-resolution.apml
+
+  PHASE_3:
+    name: "Basket Generation"
+    type: "PHASE (agent-based)"
+    version: "10.1.0"
+    server_port: 3459
+    description: |
+      Generate practice phrases for each LEGO using linguistic intelligence.
+      Agent uses extended thinking to create natural, contextual phrases.
+
+    agent_involvement: "YES - requires linguistic reasoning"
+
+    input:
+      - lego_pairs.json (from Phase 2)
+      - scaffold files (pre-built by script)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/lego_pairs.json"
+
+    output:
+      - lego_baskets.json (SSoT - practice phrases per LEGO)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/lego_baskets.json"
+
+    basket_cycle_sequence_v10_1:
+      description: |
+        For M-type (molecular) LEGOs, baskets now include a "LEGO Debut" cycle
+        immediately after components and before practice sentences.
+
+      M_type_sequence:
+        1: "Components (is_component: true) - individual building blocks"
+        2: "LEGO Debut (is_debut: true) - the complete LEGO"
+        3: "Practice sentences - LEGO used in context"
+
+      A_type_sequence:
+        1: "Practice sentences only (no components/debut for atomic LEGOs)"
+
+      example:
+        lego: "I want to / 我想"
+        cycles:
+          - { type: "component", known: "I", target: "我" }
+          - { type: "component", known: "want", target: "想" }
+          - { type: "debut", known: "I want to", target: "我想" }
+          - { type: "practice", known: "I want to go", target: "我想去" }
+          - { type: "practice", known: "I want to eat", target: "我想吃" }
+
+    apml_docs:
+      - phase-3-basket-generation.apml
+
+  SCRIPT_CONTENT_GENERATION:
+    name: "Content Generation Scripts"
+    type: "SCRIPT (no agent)"
+    version: "10.0.0"
+    description: |
+      Automated scripts that transform SSoT files into derived content.
+      No agent intelligence required - pure transformation.
+
+    agent_involvement: "NO - deterministic script"
+
+    scripts:
+      - generate-simplified-introductions.cjs
+        input: lego_pairs.json (from S3)
+        output: introductions_v2.json (to S3)
+
+      - generate-baskets-with-components.cjs
+        input: lego_pairs.json, lego_baskets.json (from S3)
+        output: lego_baskets_v2.json (to S3)
+
+  SCRIPT_MANIFEST_COMPILATION:
+    name: "Manifest Compilation Script"
+    type: "SCRIPT (no agent)"
+    version: "10.0.0"
+    description: |
+      Compile all SSoT files into app-ready course manifest.
+      Deterministic transformation with UUID generation.
+
+      v10 ADDITION: Supports multiple output formats for different players.
+
+    agent_involvement: "NO - deterministic script"
+
+    output_formats:
+      legacy:
+        description: "Current SSi app format (backwards compatible)"
+        output: "{CourseTitle}_COURSE_{timestamp}.json"
+
+      v2:
+        description: "New player format (ssi-learning-app)"
+        output: "course_manifest_v2.json"
+        features:
+          - "Direct S3 audio references"
+          - "Human voice support"
+          - "Incremental seed availability"
+
+    apml_docs:
+      - phase-7-manifest-compilation.apml
+
+  PHASE_3_HUMAN_RECORDING:
+    name: "Human Audio Recording"
+    type: "PHASE (human + agent)"
+    version: "10.0.0 NEW"
+    description: |
+      NEW IN v10: Human speakers record seed phrases in two cadences:
+      - Natural (full speed for comprehension)
+      - Slow (with gaps between words for LEGO extraction)
+
+      NOTE: This phase is ONLY for languages without good TTS support.
+      For standard languages (Spanish, Chinese, French, etc.), TTS is primary.
+
+    when_to_use:
+      - "Target language has no good TTS (e.g., Welsh, minority languages)"
+      - "TTS quality is insufficient for the language"
+      - "Premium native speaker option desired"
+
+    involvement: "Human speakers + dashboard UI"
+
+    input:
+      - seed_pairs.json (translations from Phase 1)
+      - location: "S3: s3://popty-bach-lfs/courses/{course_code}/seed_pairs.json"
+
+    output:
+      - Raw recordings per seed (Natural + Slow)
+      - location: "S3: s3://popty-bach-lfs/recordings/{text_hash}_{lang}_{role}_{cadence}_{voiceId}.webm"
+
+    workflow:
+      1: "User selects course and voice ID"
+      2: "Recording studio presents seed (target + English)"
+      3: "User records Natural cadence"
+      4: "User records Slow cadence (with gaps)"
+      5: "Both recordings saved to S3"
+      6: "Repeat for all 668 seeds"
+
+    apml_docs:
+      - phase-human-recording.apml
+
+  PHASE_4_LEGO_EXTRACTION:
+    name: "LEGO Audio Extraction"
+    type: "PHASE (hybrid: auto + human)"
+    version: "10.0.0 NEW"
+    description: |
+      NEW IN v10: Extract individual LEGO audio chunks from slow recordings.
+      Uses silence detection + human boundary adjustment.
+
+    involvement: "Automated detection + human review"
+
+    input:
+      - Slow recordings (from Phase 3)
+      - lego_pairs.json (to know expected LEGOs)
+
+    output:
+      - Individual LEGO audio chunks
+      - location: "S3: s3://popty-bach-lfs/lego_audio/{lego_id}_{lang}_{voiceId}.webm"
+
+    workflow:
+      1: "Load slow recording"
+      2: "Auto-detect silence boundaries (FFmpeg or Web Audio API)"
+      3: "Present waveform with detected boundaries to user"
+      4: "User adjusts boundaries if needed"
+      5: "Extract individual LEGO chunks"
+      6: "Save to S3"
+
+    apml_docs:
+      - phase-lego-extraction.apml
+
+  PHASE_5_PHRASE_ASSEMBLY:
+    name: "Practice Phrase Assembly"
+    type: "PHASE (automated + flagging)"
+    version: "10.0.0 NEW"
+    description: |
+      NEW IN v10: Auto-assemble practice phrases by concatenating LEGO audio.
+      Flags phrases that can't be assembled due to missing LEGOs.
+
+    involvement: "Automated with human fallback"
+
+    input:
+      - lego_baskets.json (practice phrase definitions)
+      - LEGO audio chunks (from Phase 4)
+
+    output:
+      - Assembled practice phrase audio
+      - location: "S3: s3://popty-bach-lfs/practice_audio/{phrase_uuid}_{lang}_{voiceId}.webm"
+      - Missing LEGO queue (phrases needing direct recording)
+
+    workflow:
+      1: "For each practice phrase in lego_baskets.json"
+      2: "Look up LEGO sequence"
+      3: "Fetch LEGO audio chunks from S3"
+      4: "If all LEGOs available: concatenate into phrase audio"
+      5: "If any LEGO missing: flag for manual recording"
+      6: "Save assembled audio to S3"
+
+    apml_docs:
+      - phase-phrase-assembly.apml
+
+  PHASE_6_TTS_AUDIO:
+    name: "TTS Audio Generation"
+    type: "PHASE (agent-based) - SERIES"
+    version: "10.0.0"
+    description: |
+      Generate TTS audio for all course content.
+      PRIMARY audio source for most languages.
+
+    agent_involvement: "YES - orchestration and quality control"
+
+    sub_phases:
+      - "Audio planning and batching"
+      - "TTS API calls (Azure for target, ElevenLabs for English)"
+      - "Quality control and validation"
+      - "Mastering and normalization"
+
+    input:
+      - course_manifest.json (compiled manifest)
+
+    output:
+      - audio/*.mp3 files
+      - audio_manifest.json (duration data)
+
+    note: |
+      TTS is the PRIMARY audio source for standard languages.
+      Human recordings are only used for languages without good TTS support.
+
+  SCRIPT_INCREMENTAL_PUBLISH:
+    name: "Incremental Publishing Script"
+    type: "SCRIPT (no agent)"
+    version: "10.0.0 NEW"
+    description: |
+      NEW IN v10: Publish course incrementally as seeds become available.
+      A seed is "publishable" when:
+      - Natural recording exists
+      - All LEGOs extracted from slow recording
+      - All practice phrases assembled (or flagged)
+
+    workflow:
+      1: "Calculate publishable seed count"
+      2: "Generate manifest with only publishable seeds"
+      3: "Update course version"
+      4: "Deploy to production"
+
+    output:
+      - Incremental manifest (N seeds of 668)
+      - Publishing status dashboard
+
+    apml_docs:
+      - phase-incremental-publishing.apml
+
+## ============================================================================
+## S3 AS SINGLE SOURCE OF TRUTH
+## ============================================================================
+
+S3_SSOT:
+  bucket: "popty-bach-lfs"
+  region: "eu-west-1"
+
+  structure:
+    courses:
+      pattern: "courses/{course_code}/"
+      contents:
+        - canonical_seeds.json
+        - seed_pairs.json
+        - lego_pairs.json
+        - lego_baskets.json
+        - course_manifest.json
+
+    recordings:
+      pattern: "recordings/"
+      key_format: "{text_hash}_{lang}_{role}_{cadence}_{voiceId}.webm"
+      example: "a1b2c3d4_spa_model_natural_human_maria.webm"
+
+    lego_audio:
+      pattern: "lego_audio/"
+      key_format: "{lego_id}_{lang}_{voiceId}.webm"
+      example: "quiero_spa_human_maria.webm"
+
+    practice_audio:
+      pattern: "practice_audio/"
+      key_format: "{phrase_uuid}_{lang}_{voiceId}.webm"
+
+  access:
+    dashboard: "Full CRUD via API endpoints"
+    agents: "Write via /api/courses/{courseCode}/outputs"
+    app: "Read via CloudFront CDN"
+
+## ============================================================================
+## VOICE SYSTEM (v10.0.0)
+## ============================================================================
+
+VOICE_SYSTEM:
+  voice_types:
+    tts:
+      format: "azure_{name}" | "elevenlabs_{name}"
+      examples:
+        - "azure_xiaoxiao"
+        - "elevenlabs_rachel"
+      source: "TTS API"
+
+    human:
+      format: "human_{name}_{language}"
+      examples:
+        - "human_maria_spa"
+        - "human_tom_spa"
+      source: "Dashboard recording studio"
+
+  voice_id_usage:
+    s3_key: "Embedded in recording filename"
+    manifest: "Referenced in audio entries"
+    lookup: "App fetches by voice ID + text hash"
+
+## ============================================================================
+## BACKWARDS COMPATIBILITY
+## ============================================================================
+
+BACKWARDS_COMPATIBILITY:
+  current_app:
+    description: "SSi mobile app (current production)"
+    manifest_format: "v9.x format with slices, seeds, samples dictionary"
+    audio_lookup: "UUID-based from samples dictionary"
+    support: "Full support via legacy manifest compilation"
+
+  new_player:
+    repo: "ssi-learning-app"
+    manifest_format: "v10 format with direct S3 references"
+    audio_lookup: "Direct S3 URL from manifest"
+    features:
+      - "Human voice selection"
+      - "Incremental course loading"
+      - "Offline caching"
+
+  schools_version:
+    repo: "ssi-schools-mockup"
+    inherits: "new_player format"
+    additions:
+      - "Class management"
+      - "Progress tracking"
+      - "Teacher dashboard"
+
+  compilation_modes:
+    legacy:
+      script: "compile-app-manifest.cjs"
+      output: "{CourseTitle}_COURSE_{timestamp}.json"
+      for: "Current SSi app"
+
+    v2:
+      script: "compile-manifest-v2.cjs"
+      output: "course_manifest_v2.json"
+      for: "New player + schools"
+
+## ============================================================================
+## SSoT FILES (v10.0.0)
+## ============================================================================
+
+SSOT_FILES:
+  lego_pairs.json:
+    owner: "Phase 1 (Translation + LEGO Extraction)"
+    location: "S3: courses/{course_code}/lego_pairs.json"
+    contents: "Seeds with translated LEGOs, types, components"
+    format: "v10.x object-based"
+
+  lego_baskets.json:
+    owner: "Phase 2 (Basket Generation)"
+    location: "S3: courses/{course_code}/lego_baskets.json"
+    contents: "Practice phrases for each LEGO"
+    format: "v10.x object-based"
+
+  recordings:
+    owner: "Phase 3 (Human Recording)"
+    location: "S3: recordings/"
+    contents: "Raw human recordings (Natural + Slow)"
+    format: "webm audio"
+
+  lego_audio:
+    owner: "Phase 4 (LEGO Extraction)"
+    location: "S3: lego_audio/"
+    contents: "Individual LEGO audio chunks"
+    format: "webm audio"
+
+  practice_audio:
+    owner: "Phase 5 (Phrase Assembly)"
+    location: "S3: practice_audio/"
+    contents: "Assembled practice phrase audio"
+    format: "webm audio"
+
+DERIVED_FILES:
+  introductions_v2.json:
+    source: "lego_pairs.json"
+    location: "S3: courses/{course_code}/introductions_v2.json"
+    generator: "scripts/generate-simplified-introductions.cjs"
+
+  lego_baskets_v2.json:
+    source: "lego_pairs.json + lego_baskets.json"
+    location: "S3: courses/{course_code}/lego_baskets_v2.json"
+    generator: "scripts/generate-baskets-with-components.cjs"
+
+  course_manifest.json:
+    source: "All SSoT + derived files"
+    location: "S3: courses/{course_code}/course_manifest.json"
+    generator: "scripts/compile-app-manifest.cjs (legacy) or compile-manifest-v2.cjs (v2)"
+
+## ============================================================================
+## PIPELINE SUMMARY (v10.0.0)
+## ============================================================================
+
+SUMMARY:
+  true_phases:
+    - "Phase 1: Translation + LEGO Extraction (agent)"
+    - "Phase 2: Basket Generation (agent)"
+    - "Phase 3: Human Audio Recording (for edge-case languages only)"
+    - "Phase 4: LEGO Audio Extraction (for human-recorded courses)"
+    - "Phase 5: Practice Phrase Assembly (for human-recorded courses)"
+    - "Phase 6: TTS Audio Generation (primary for most languages)"
+
+  scripts:
+    - "Content Generation (introductions, baskets v2)"
+    - "Manifest Compilation (legacy + v2 formats)"
+    - "Incremental Publishing (progressive course availability)"
+
+  storage:
+    - "S3 is SSoT for all course data and audio"
+    - "GitHub for code only, not content"
+
+  audio_sources:
+    standard_languages:
+      - "TTS (Azure + ElevenLabs) - PRIMARY"
+    edge_case_languages:
+      - "Human recordings (for languages without TTS)"
+      - "LEGO assembly (derived from human recordings)"
+
+  principle: |
+    TTS is PRIMARY for most languages.
+    Human recordings enable courses for languages without good TTS.
+    S3 is the Single Source of Truth for all content.
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

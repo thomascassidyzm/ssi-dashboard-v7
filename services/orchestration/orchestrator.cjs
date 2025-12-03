@@ -4024,11 +4024,27 @@ app.get('/api/audio/random-sample/:courseCode/:role', async (req, res) => {
     const manifest = await fs.readJson(manifestPath);
     const samples = manifest.slices?.[0]?.samples || {};
 
+    // Map requested roles to manifest roles (support both naming conventions)
+    const roleMapping = {
+      'target1': ['target1', 'practice_target', 'lego_target'],
+      'target2': ['target2', 'practice_target', 'lego_target'],
+      'source': ['source', 'practice_known', 'lego_known'],
+      'presentation': ['presentation'],
+      'presentation_encouragement': ['presentation_encouragement'],
+      // Also support direct old role names
+      'practice_target': ['practice_target', 'lego_target'],
+      'practice_known': ['practice_known', 'lego_known'],
+      'lego_target': ['lego_target'],
+      'lego_known': ['lego_known']
+    };
+
+    const matchRoles = roleMapping[role] || [role];
+
     // Collect all samples for the requested role
     const roleSamples = [];
     for (const [text, sampleList] of Object.entries(samples)) {
       for (const sample of sampleList) {
-        if (sample.role === role && sample.id) {
+        if (matchRoles.includes(sample.role) && sample.id) {
           roleSamples.push({
             id: sample.id,
             text: text,

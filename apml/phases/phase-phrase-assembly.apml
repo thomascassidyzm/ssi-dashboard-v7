@@ -1,0 +1,351 @@
+# APML: Practice Phrase Assembly Phase
+# Version: 10.0.0 (2025-12-02)
+# Status: Production
+# Type: PHASE (automated + flagging)
+
+phase PhraseAssembly:
+  name: "Practice Phrase Assembly"
+  purpose: "Assemble practice phrases by concatenating LEGO audio chunks"
+  version: "10.0.0"
+  type: "automated_phase"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    This phase auto-generates practice phrase audio by concatenating
+    individual LEGO audio chunks. Each practice phrase in lego_baskets.json
+    defines a sequence of LEGOs, which are fetched and stitched together.
+
+    KEY BENEFITS:
+    - No need to record every practice phrase individually
+    - One recording per LEGO serves many phrases
+    - Scales efficiently: 668 seeds → thousands of practice phrases
+
+    FALLBACK: Phrases with missing LEGOs are flagged for manual recording.
+
+  ## ==========================================================================
+  ## INPUT
+  ## ==========================================================================
+
+  input:
+    lego_baskets:
+      location: "S3: courses/{course_code}/lego_baskets.json"
+      description: "Practice phrases with LEGO sequences"
+      format: |
+        {
+          "quiero": {
+            "phrases": [
+              {
+                "uuid": "...",
+                "target": "Quiero ir contigo",
+                "known": "I want to go with you",
+                "lego_sequence": ["quiero", "ir", "contigo"]
+              },
+              ...
+            ]
+          }
+        }
+
+    lego_audio:
+      location: "S3: lego_audio/"
+      description: "Individual LEGO audio chunks"
+      format: "{lego_id}_{lang}_{voiceId}.webm"
+
+  ## ==========================================================================
+  ## ASSEMBLY ALGORITHM
+  ## ==========================================================================
+
+  algorithm:
+    step_1:
+      name: "Load practice phrase"
+      action: "Get phrase definition from lego_baskets.json"
+      output: "{ uuid, target, known, lego_sequence }"
+
+    step_2:
+      name: "Fetch LEGO audio"
+      action: "For each LEGO in sequence, fetch audio from S3"
+      parallel: true
+      code: |
+        const audioChunks = await Promise.all(
+          lego_sequence.map(legoId =>
+            fetchLegoAudio(legoId, lang, voiceId)
+          )
+        )
+
+    step_3:
+      name: "Check availability"
+      action: "Verify all LEGOs have audio"
+      conditions:
+        all_available: "Proceed to assembly"
+        any_missing: "Flag phrase for manual recording"
+
+    step_4:
+      name: "Add silence between LEGOs"
+      action: "Insert short silence (100-200ms) between chunks"
+      purpose: "Natural phrase rhythm without gaps being too long"
+
+    step_5:
+      name: "Concatenate audio"
+      action: "Stitch audio chunks into single phrase"
+      method: "Web Audio API or FFmpeg"
+
+    step_6:
+      name: "Normalize output"
+      action: "Apply consistent volume level"
+      target: "-16 LUFS"
+
+    step_7:
+      name: "Save to S3"
+      action: "Upload assembled phrase"
+      location: "practice_audio/{phrase_uuid}_{lang}_{voiceId}.webm"
+
+  ## ==========================================================================
+  ## CONCATENATION METHODS
+  ## ==========================================================================
+
+  concatenation:
+    client_side:
+      description: "Web Audio API buffer concatenation"
+      use_case: "Preview and quick assembly"
+      implementation: |
+        async function concatenateAudio(chunks, silenceDuration = 0.15) {
+          const audioContext = new AudioContext()
+
+          // Decode all chunks
+          const buffers = await Promise.all(
+            chunks.map(chunk => audioContext.decodeAudioData(chunk))
+          )
+
+          // Calculate total length
+          const silenceFrames = silenceDuration * audioContext.sampleRate
+          const totalLength = buffers.reduce(
+            (sum, buf) => sum + buf.length + silenceFrames, 0
+          ) - silenceFrames
+
+          // Create output buffer
+          const output = audioContext.createBuffer(
+            1, totalLength, audioContext.sampleRate
+          )
+
+          // Copy data with silence gaps
+          let offset = 0
+          for (const buffer of buffers) {
+            output.copyToChannel(buffer.getChannelData(0), 0, offset)
+            offset += buffer.length + silenceFrames
+          }
+
+          return output
+        }
+
+    server_side:
+      description: "FFmpeg concat filter"
+      use_case: "Batch processing and production"
+      command: |
+        # Create file list
+        echo "file 'quiero.webm'" > filelist.txt
+        echo "file 'silence.webm'" >> filelist.txt
+        echo "file 'ir.webm'" >> filelist.txt
+        echo "file 'silence.webm'" >> filelist.txt
+        echo "file 'contigo.webm'" >> filelist.txt
+
+        # Concatenate
+        ffmpeg -f concat -safe 0 -i filelist.txt -c copy output.webm
+
+    hybrid:
+      description: "Client previews, server generates final"
+      workflow:
+        1: "Client concatenates for preview playback"
+        2: "User approves assembled phrase"
+        3: "Server generates production-quality file"
+        4: "Upload to S3"
+
+  ## ==========================================================================
+  ## MISSING LEGO HANDLING
+  ## ==========================================================================
+
+  missing_legos:
+    detection: |
+      Before assembly, check if all LEGOs in the sequence have audio.
+      Missing LEGOs are logged and the phrase is flagged.
+
+    flagging:
+      location: "S3: courses/{course_code}/assembly_queue.json"
+      format: |
+        {
+          "needs_recording": [
+            {
+              "phrase_uuid": "...",
+              "target": "Necesito comprar pan",
+              "known": "I need to buy bread",
+              "missing_legos": ["pan"]
+            }
+          ],
+          "pending": [
+            { "phrase_uuid": "...", "status": "awaiting_lego" }
+          ]
+        }
+
+    resolution:
+      option_1: "Record missing LEGO"
+      option_2: "Record phrase directly (bypass assembly)"
+      option_3: "Skip phrase (exclude from course)"
+
+  ## ==========================================================================
+  ## REVIEW UI
+  ## ==========================================================================
+
+  review_ui:
+    location: "src/views/PracticePhrasesReview.vue"
+
+    features:
+      phrase_list:
+        description: "List of all practice phrases"
+        columns:
+          - "Status (assembled/needs recording/pending)"
+          - "Target phrase"
+          - "Known phrase"
+          - "Action (play/record)"
+
+      filters:
+        - "All"
+        - "Assembled"
+        - "Needs Recording"
+        - "Pending"
+
+      playback:
+        description: "Play assembled phrase audio"
+        controls: "Play/Pause, Seek"
+
+      recording:
+        description: "Direct recording for phrases that can't be assembled"
+        action: "Opens recording interface for specific phrase"
+
+    ui_mockup: |
+      ┌─────────────────────────────────────────────────────────────────┐
+      │  PRACTICE PHRASES · spa_for_eng                                │
+      │  423 assembled · 45 need recording · 200 pending               │
+      ├─────────────────────────────────────────────────────────────────┤
+      │                                                                 │
+      │  [All] [Assembled] [Need Recording] [Pending]                  │
+      │                                                                 │
+      │  ✓ "Quiero ir contigo"                          [▶ Play]       │
+      │    I want to go with you                                       │
+      │                                                                 │
+      │  ✓ "Me gustaría hablar español"                 [▶ Play]       │
+      │    I would like to speak Spanish                               │
+      │                                                                 │
+      │  ⚠ "Necesito comprar pan"                       [Record]       │
+      │    I need to buy bread                                         │
+      │    Missing: "pan"                                              │
+      │                                                                 │
+      │  ○ "Ella trabaja aquí"                          Pending...     │
+      │    She works here                                              │
+      │    Waiting for: "trabaja"                                      │
+      │                                                                 │
+      └─────────────────────────────────────────────────────────────────┘
+
+  ## ==========================================================================
+  ## OUTPUT
+  ## ==========================================================================
+
+  output:
+    practice_audio:
+      path: "S3: practice_audio/"
+      key_format: "{phrase_uuid}_{lang}_{voiceId}.webm"
+      example: "C9C2501F-CCBB-5BE5-89B3-310919B5BD2D_spa_human_maria.webm"
+
+    assembly_manifest:
+      path: "S3: courses/{course_code}/assembly_manifest.json"
+      description: "Track assembly status for all phrases"
+      format: |
+        {
+          "assembled": ["uuid1", "uuid2", ...],
+          "needs_recording": [
+            { "uuid": "...", "missing": ["lego1"] }
+          ],
+          "pending": ["uuid3", "uuid4", ...]
+        }
+
+  ## ==========================================================================
+  ## BATCH PROCESSING
+  ## ==========================================================================
+
+  batch_processing:
+    trigger: "After LEGO extraction phase completes"
+
+    workflow:
+      1: "List all practice phrases from lego_baskets.json"
+      2: "Check LEGO audio availability for each"
+      3: "Batch assemble phrases with all LEGOs available"
+      4: "Flag phrases with missing LEGOs"
+      5: "Update assembly_manifest.json"
+
+    progress:
+      total_phrases: "~35,000"
+      assembled: "Count successfully assembled"
+      needs_recording: "Count flagged for manual recording"
+      pending: "Count awaiting LEGO availability"
+
+  ## ==========================================================================
+  ## INCREMENTAL ASSEMBLY
+  ## ==========================================================================
+
+  incremental_assembly:
+    description: |
+      As new LEGOs are extracted, re-run assembly for pending phrases.
+      This enables progressive course building.
+
+    trigger:
+      - "New LEGO audio uploaded"
+      - "User manually triggers re-assembly"
+
+    workflow:
+      1: "Identify pending phrases using the new LEGO"
+      2: "Check if all LEGOs now available"
+      3: "Assemble newly-complete phrases"
+      4: "Update manifest"
+      5: "Increment publishable phrase count"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    assemble_phrase:
+      method: "POST"
+      path: "/api/audio/assemble-phrase"
+      body: "{ phraseUuid, legoSequence, lang, voiceId }"
+      returns: "{ success, audioUrl } | { missing: [legoIds] }"
+
+    batch_assemble:
+      method: "POST"
+      path: "/api/audio/batch-assemble"
+      body: "{ courseCode, voiceId }"
+      returns: "{ assembled: N, needs_recording: N, pending: N }"
+
+    get_assembly_status:
+      method: "GET"
+      path: "/api/courses/{courseCode}/assembly-status"
+      returns: "{ assembled: N, needs_recording: [...], pending: [...] }"
+
+    flag_for_recording:
+      method: "POST"
+      path: "/api/audio/flag-for-recording"
+      body: "{ phraseUuid, reason }"
+      returns: "{ success }"
+
+  ## ==========================================================================
+  ## NEXT PHASE
+  ## ==========================================================================
+
+  next_phase:
+    name: "Incremental Publishing"
+    input: "Assembled phrases + human recordings"
+    purpose: "Publish course incrementally as content becomes available"
+
+## ============================================================================
+## GENERATED: 2025-12-02
+## APML v10.0.0
+## ============================================================================

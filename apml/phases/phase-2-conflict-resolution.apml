@@ -1,0 +1,122 @@
+# APML Phase 2: Conflict Resolution (Upchunking)
+# Version: 10.1.0 (2025-12-03)
+# Status: Production-ready
+# Server Port: 3458
+#
+# Source prompts:
+#   - public/docs/phase_intelligence/phase_2_conflict_resolution.md
+
+phase Phase2ConflictResolution:
+  name: "Phase 2: Conflict Resolution"
+  purpose: "Resolve LEGO conflicts through upchunking"
+  version: "10.1.0"
+  server_port: 3458
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    Phase 2 resolves KNOWN→TARGET conflicts from Phase 1's draft_lego_pairs.json
+    through **upchunking** - creating M-type LEGOs that teach conflicting patterns
+    explicitly with disambiguating context.
+
+  input:
+    file: "draft_lego_pairs.json"
+    location: "S3: s3://popty-bach-lfs/courses/{course_code}/draft_lego_pairs.json"
+    description: "LEGOs from Phase 1 that may have conflicts"
+
+  output:
+    file: "lego_pairs.json"
+    location: "S3: s3://popty-bach-lfs/courses/{course_code}/lego_pairs.json"
+    description: "Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)"
+
+  ## ==========================================================================
+  ## CONFLICT TYPES
+  ## ==========================================================================
+
+  conflict_types:
+    known_to_target:
+      description: "Same KNOWN word maps to multiple TARGET translations"
+      example:
+        conflict: "'tarde' → 'afternoon' vs 'tarde' → 'late'"
+        resolution: "Create M-type LEGO 'por la tarde' → 'in the afternoon'"
+
+  ## ==========================================================================
+  ## UPCHUNKING ALGORITHM
+  ## ==========================================================================
+
+  upchunking_algorithm:
+    description: "Create M-type LEGOs with disambiguating context"
+
+    steps:
+      1: "Identify all seeds where conflict occurs"
+      2: "Analyze context words around conflicting KNOWN word"
+      3: "Create M-type LEGO with:"
+         - "KNOWN: conflicting word + context (2+ words)"
+         - "TARGET: full translation (2+ words)"
+         - "Type: 'M' (Molecular)"
+      4: "Record resolution in upchunk_resolutions.json"
+
+    example:
+      conflict:
+        word: "tarde"
+        meanings:
+          - { target: "afternoon", context: "por la tarde" }
+          - { target: "late", context: "llegó tarde" }
+
+      resolution:
+        - { id: "UPCHUNK001", type: "M", known: "in the afternoon", target: "por la tarde" }
+        - { id: "UPCHUNK002", type: "M", known: "arrived late", target: "llegó tarde" }
+
+  ## ==========================================================================
+  ## OUTPUT FORMAT
+  ## ==========================================================================
+
+  output_format:
+    description: "lego_pairs.json (APML v10.1 format)"
+
+    schema:
+      version: "10.1"
+      seeds:
+        - seed_id: "S0001"
+          seed_pair:
+            known: "I want"
+            target: "Dw i eisiau"
+          legos:
+            - id: "S0001L01"
+              type: "A"
+              lego:
+                known: "I"
+                target: "Dw i"
+            - id: "S0001L02"
+              type: "A"
+              lego:
+                known: "want"
+                target: "eisiau"
+
+  ## ==========================================================================
+  ## AGENT REQUIREMENTS
+  ## ==========================================================================
+
+  agent_requirements:
+    linguistic_judgment: |
+      Agent must understand context to determine which meaning applies
+      and create appropriate upchunked LEGOs.
+
+    zero_ambiguity_rule: |
+      After upchunking, every LEGO must have ZERO ambiguity:
+      When learner hears KNOWN, there is exactly ONE TARGET they should produce.
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v10_1_0:
+      date: "2025-12-03"
+      status: "Production Ready"
+      changes:
+        - "Extracted as separate phase from old Phase 3"
+        - "Added server_port 3458"
+        - "Updated to v10.1 phase numbering"
