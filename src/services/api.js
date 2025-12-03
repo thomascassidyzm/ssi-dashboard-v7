@@ -123,86 +123,42 @@ export default {
     },
 
     async list() {
-      // Use S3 as primary storage, GitHub as fallback
-      const storage = getStorageConfig();
-      console.log('[API] Loading courses from S3 manifest (primary storage)');
+      // Use API endpoint (proxies to S3, avoids CORS issues)
+      console.log('[API] Loading courses from /api/courses');
 
       try {
-        // Try S3 first (primary storage)
-        const manifestRes = await fetch(storage.manifestUrl);
-        if (manifestRes.ok) {
-          const manifest = await manifestRes.json();
-          console.log(`[API] ✓ Loaded ${manifest.courses.length} courses from S3 manifest (generated ${manifest.generated_at})`);
+        const response = await api.get('/api/courses', { params: { status: 'true' } });
+        const data = response.data;
 
-          // Transform manifest format to API format
-          // Show courses with any pipeline output files (baskets, seed_pairs, or lego_pairs)
-          const courses = manifest.courses
-            .filter(course =>
-              course.has_baskets ||
-              course.files?.seed_pairs ||
-              course.files?.lego_pairs
-            )
-            .map(course => ({
-              course_code: course.course_code,
-              source_language: course.source_language,
-              target_language: course.target_language,
-              total_seeds: course.total_seeds,
-              version: course.format,
-              created_at: new Date().toISOString(),
-              status: course.phase || 'unknown',
-              seed_pairs: course.actual_seed_count,
-              lego_pairs: course.lego_count,
-              lego_baskets: course.basket_count || 0,
-              amino_acids: {
-                introductions: course.introductions_count || 0
-              },
-              phases_completed: course.phases_completed || []
-            }))
+        console.log(`[API] ✓ Loaded ${data.courses?.length || 0} courses from API`);
 
-          return { courses };
-        }
+        // Transform API response to expected format
+        const courses = (data.courses || []).map(course => ({
+          course_code: course.code,
+          source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
+          target_language: course.code?.split('_for_')[0]?.toUpperCase() || 'UNK',
+          total_seeds: 668, // Default, will be updated when course is loaded
+          version: '1.0',
+          created_at: new Date().toISOString(),
+          status: course.complete ? 'complete' : 'in_progress',
+          seed_pairs: 0,
+          lego_pairs: course.files?.lego_pairs ? 1 : 0,
+          lego_baskets: course.files?.lego_baskets ? 1 : 0,
+          amino_acids: {
+            introductions: course.files?.introductions ? 1 : 0
+          },
+          phases_completed: [
+            ...(course.files?.lego_pairs ? ['1', '3'] : []),
+            ...(course.files?.lego_baskets ? ['5'] : []),
+            ...(course.files?.introductions ? ['6'] : []),
+            ...(course.files?.course_manifest ? ['7'] : [])
+          ],
+          files: course.files
+        }));
+
+        return { courses };
       } catch (err) {
-        console.error('[API] Failed to load from S3, trying GitHub fallback:', err);
-      }
-
-      // Fallback to GitHub if S3 fails
-      try {
-        console.log('[API] Falling back to GitHub manifest');
-        const manifestRes = await fetch(STORAGE_CONFIG.github.manifestUrl);
-        if (manifestRes.ok) {
-          const manifest = await manifestRes.json();
-          console.log(`[API] ✓ Loaded ${manifest.courses.length} courses from GitHub manifest (fallback)`);
-
-          // Transform manifest format to API format (same as above)
-          const courses = manifest.courses
-            .filter(course =>
-              course.has_baskets ||
-              course.files?.seed_pairs ||
-              course.files?.lego_pairs
-            )
-            .map(course => ({
-              course_code: course.course_code,
-              source_language: course.source_language,
-              target_language: course.target_language,
-              total_seeds: course.total_seeds,
-              version: course.format,
-              created_at: new Date().toISOString(),
-              status: course.phase || 'unknown',
-              seed_pairs: course.actual_seed_count,
-              lego_pairs: course.lego_count,
-              lego_baskets: course.basket_count || 0,
-              amino_acids: {
-                introductions: course.introductions_count || 0
-              },
-              phases_completed: course.phases_completed || []
-            }))
-
-          return { courses };
-        }
-
-        throw new Error('GitHub manifest not available');
-      } catch (err) {
-        console.error('[API] Failed to load course manifest from both S3 and GitHub:', err);
+        console.error('[API] Failed to load courses from API:', err);
         throw err;
       }
     },
