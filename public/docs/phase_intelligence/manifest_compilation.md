@@ -1,14 +1,17 @@
-# Manifest: Course Compilation (Script)
+# Manifest Compilation (Script)
 
-**Version**: 9.0.0
+**Version**: 10.0.0
 **Status**: Active
-**Type**: Script (runs instantly - not a phase)
-**Input**: lego_pairs.json, lego_baskets.json, introductions.json
-**Output**: course_manifest.json
+**Type**: Script (deterministic transformation - not a phase)
+**Script**: `scripts/phase7-compile-manifest-v3.cjs`
+**Input**: `lego_pairs.json`, `lego_baskets.json`, `welcomes.json`, `eng_encouragements.json`
+**Output**: `course_manifest.json`
+
+---
 
 ## Overview
 
-The Manifest script compiles all phase outputs into a final course manifest ready for audio generation. This is **not a phase** - it's a deterministic script that runs instantly without agent orchestration.
+The Manifest Compilation script transforms SSoT files into the app-ready course manifest format that the SSi mobile app expects. This is **not a phase** - it's a deterministic transformation with no agent intelligence required. Same inputs always produce same outputs.
 
 ## Key Distinction: Script vs Phase
 
@@ -17,169 +20,257 @@ The Manifest script compiles all phase outputs into a final course manifest read
 
 **Manifest is a script** - it transforms existing data into the fixed format required by the mobile app.
 
+---
+
 ## Input Files
 
-### 1. lego_pairs.json (SINGLE SOURCE OF TRUTH)
+### 1. lego_pairs.json (SSoT - from Phase 2)
+Contains seeds with LEGOs, types (A/M), and components:
 ```json
 {
-  "version": "9.0",
+  "version": "10.0",
+  "known_language": "eng",
+  "target_language": "spa",
   "seeds": [
-    ["S0001", ["I want", "Dw i"], [["S0001L01", "B", "I", "Dw i"]]]
+    {
+      "seed_id": "S0001",
+      "seed": { "known": "I want to speak Spanish...", "target": "Quiero hablar español..." },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": { "known": "I want", "target": "quiero" }
+        }
+      ]
+    }
   ]
 }
 ```
 
-### 2. lego_baskets.json
+### 2. lego_baskets.json (from Phase 3)
+Practice phrases for each LEGO:
 ```json
 {
-  "version": "9.0",
+  "version": "10.0",
   "baskets": {
-    "S0001L01": [
-      [["S0001L01", "B", "I", "Dw i"]],
-      [["I want", "Dw i eisiau"]],
-      [["Do you want?", "Wyt ti eisiau?"]]
+    "S0001L01": {
+      "lego_id": "S0001L01",
+      "practice_phrases": [
+        { "known": "I want to speak", "target": "Quiero hablar" }
+      ]
+    }
+  }
+}
+```
+
+### 3. welcomes.json (canonical)
+Course welcome messages with pre-generated audio references.
+
+### 4. eng_encouragements.json (canonical)
+Pooled and ordered encouragement messages.
+
+---
+
+## Output Format: course_manifest.json
+
+### Top-Level Structure
+```json
+{
+  "id": "en-spa",
+  "known": "en",
+  "target": "spa",
+  "version": "8.2.0",
+  "status": "alpha",
+  "introduction": {
+    "id": "UUID",
+    "cadence": "natural",
+    "role": "presentation",
+    "duration": 45.83
+  },
+  "slices": [...]
+}
+```
+
+### Language Codes
+- **Known (English)**: Uses 2-letter code `en`
+- **Target languages**: Use 3-letter codes (`spa`, `cmn`, `ita`, etc.)
+- **ID format**: `{known}-{target}` (e.g., `en-spa`, `en-cmn`)
+
+---
+
+## Audio Roles (CRITICAL - Only 5 Valid Roles)
+
+| Role | Description | Entries Per Text | Voice |
+|------|-------------|------------------|-------|
+| `source` | English/known language text | 1 | English (Aran clone) |
+| `target1` | Target language - female | 1 | Female target voice |
+| `target2` | Target language - male | 1 | Male target voice |
+| `presentation` | LEGO introduction text | 1 | English (Aran clone) |
+| `presentation_encouragement` | Encouragement messages | 1 | English (Aran clone) |
+
+### Critical Rules
+- Every **target language text** MUST have TWO entries: `target1` AND `target2`
+- Every **known/English text** has ONE entry: `source`
+- Presentations have ONE entry: `presentation`
+- Encouragements have ONE entry: `presentation_encouragement`
+
+---
+
+## Samples Dictionary Structure
+
+The samples dictionary maps text content to audio file references. The app looks up audio by TEXT CONTENT, not by LEGO ID.
+
+```json
+{
+  "samples": {
+    "I want to speak Spanish with you now.": [
+      { "duration": 0, "id": "UUID1", "cadence": "natural", "role": "source" }
+    ],
+    "Quiero hablar español contigo ahora.": [
+      { "duration": 0, "id": "UUID2", "cadence": "natural", "role": "target1" },
+      { "duration": 0, "id": "UUID3", "cadence": "natural", "role": "target2" }
+    ],
+    "The Spanish for 'i want', is: ... 'quiero' ... 'quiero'": [
+      { "duration": 0, "id": "UUID4", "cadence": "natural", "role": "presentation" }
+    ],
+    "And remember that your brain has got...": [
+      { "duration": 0, "id": "UUID5", "cadence": "natural", "role": "presentation_encouragement" }
     ]
   }
 }
 ```
 
-### 3. introductions.json (auto-scripted at end of Phase 2)
-```json
-{
-  "version": "9.0",
-  "intros": [
-    {
-      "id": "INTRO_S0001",
-      "seed_id": "S0001",
-      "target": "Dw i eisiau",
-      "known": "I want"
-    }
-  ]
-}
-```
+---
 
-## Output Format: course_manifest.json
+## Practice Phrase Ordering (nodes array)
 
-Fixed format consumed by mobile app (iOS/Android):
+The `nodes` array in each introduction_item follows pedagogical principles:
 
-```json
-{
-  "version": "9.0.0",
-  "course_code": "spa_for_eng",
-  "target_language": "Spanish",
-  "known_language": "English",
-  "created_at": "2025-11-24T12:00:00Z",
-  "samples": [
-    {
-      "uuid": "550e8400-e29b-41d4-a716-446655440000",
-      "type": "introduction",
-      "seed_id": "S0001",
-      "target": "Quiero",
-      "known": "I want",
-      "audio": {
-        "target": "audio/intros/S0001_target.mp3",
-        "known": "audio/intros/S0001_known.mp3"
-      }
-    },
-    {
-      "uuid": "550e8400-e29b-41d4-a716-446655440001",
-      "type": "basket",
-      "lego_id": "S0001L01",
-      "phrases": [...],
-      "audio": [...]
-    }
-  ]
-}
-```
+### For A-type (Atomic) LEGOs
+1. **LEGO debut** - The LEGO itself
+2. **Practice phrases** - Sorted by length (shortest first)
 
-## Compilation Algorithm
+### For M-type (Molecular) LEGOs
+1. **Components** - Building blocks first (active practice before combining)
+2. **LEGO debut** - The complete LEGO
+3. **Practice phrases** - Sorted by length (shortest first)
 
-```javascript
-// 1. Load all inputs
-const legoPairs = readJSON('lego_pairs.json')
-const legoBaskets = readJSON('lego_baskets.json')
-const introductions = readJSON('introductions.json')
-
-// 2. Compile samples
-const samples = []
-
-// 2a. Add introductions
-for (const intro of introductions.intros) {
-  samples.push({
-    uuid: generateDeterministicUUID(intro.id),
-    type: 'introduction',
-    seed_id: intro.seed_id,
-    target: intro.target,
-    known: intro.known,
-    audio: {
-      target: `audio/intros/${intro.seed_id}_target.mp3`,
-      known: `audio/intros/${intro.seed_id}_known.mp3`
-    }
-  })
-}
-
-// 2b. Add baskets
-for (const [legoId, basket] of Object.entries(legoBaskets.baskets)) {
-  samples.push({
-    uuid: generateDeterministicUUID(legoId),
-    type: 'basket',
-    lego_id: legoId,
-    phrases: basket[0], // LEGOs
-    enabling_phrases: basket[1],
-    discovery_phrases: basket[2],
-    audio: generateAudioPaths(legoId)
-  })
-}
-
-// 3. Write manifest
-writeJSON('course_manifest.json', { version: '9.0.0', samples })
-```
-
-## UUID Generation (SSi Legacy Format)
-
-For backward compatibility with existing mobile apps:
-
-```javascript
-function generateDeterministicUUID(id) {
-  // Use MD5 hash of ID string
-  const hash = crypto.createHash('md5').update(id).digest('hex')
-
-  // Format as UUID v4
-  return `${hash.substr(0,8)}-${hash.substr(8,4)}-${hash.substr(12,4)}-${hash.substr(16,4)}-${hash.substr(20,12)}`
-}
-```
-
-## Language-Specific Encouragements
-
-The manifest embeds language-specific encouragements from `public/vfs/canonical/encouragements_{target_lang}.json`:
-
-```json
-{
-  "encouragements": [
-    { "target": "¡Excelente!", "known": "Excellent!" },
-    { "target": "¡Muy bien!", "known": "Very good!" }
-  ]
-}
-```
-
-## Validation Gates
-
-✅ **Pre-Manifest**:
-- lego_pairs.json exists (conflict-free)
-- lego_baskets.json exists
-- introductions.json exists
-
-✅ **Post-Manifest**:
-- course_manifest.json exists
-- Valid v9.0.0 format
-- All UUIDs are deterministic (reproducible)
-- All audio paths are correct
-
-## Handoff to Audio Generation
-
-The Audio process reads course_manifest.json and generates MP3 files using TTS services (Azure/ElevenLabs). This is handled by Kai as a separate process.
+**Pedagogical rationale**: Component drills come BEFORE the LEGO debut so learners actively practice the building blocks before combining them.
 
 ---
 
-**Last Updated**: Nov 24, 2025
-**Related**: See `public/docs/APML_v9.0_PIPELINE_ARCHITECTURE.md` for full specification
+## UUID Generation
+
+Deterministic UUIDs ensure same inputs always produce same outputs:
+
+```javascript
+function generateUUID(content) {
+  const hash = crypto.createHash('md5').update(content).digest('hex');
+  return [
+    hash.substring(0, 8),
+    hash.substring(8, 12),
+    hash.substring(12, 16),
+    hash.substring(16, 20),
+    hash.substring(20, 32)
+  ].join('-').toUpperCase();
+}
+```
+
+**Format**: `UPPERCASE` with hyphens (8-4-4-4-12)
+**Example**: `C6A82DE8-6044-AC07-8F4E-412F54FEF5F7`
+
+---
+
+## Presentation Text Format
+
+```
+The {TargetLanguage} for '{known}', is: ... '{target}' ... '{target}'
+```
+
+**Example**: `The Spanish for 'i want', is: ... 'quiero' ... 'quiero'`
+
+Note: Known text is lowercased in the template.
+
+---
+
+## Running the Script
+
+```bash
+node scripts/phase7-compile-manifest-v3.cjs <course_code>
+
+# Examples:
+node scripts/phase7-compile-manifest-v3.cjs spa_for_eng
+node scripts/phase7-compile-manifest-v3.cjs cmn_for_eng
+```
+
+### Output
+- **Primary**: `course_manifest.json`
+- **Backup**: `{Target}_for_{Known}_speakers_COURSE_{timestamp}.json`
+
+---
+
+## Validation
+
+Use the comparison tool to validate manifest structure:
+
+```bash
+node scripts/compare-manifests.cjs <manifest_path> [reference_path]
+
+# Example:
+node scripts/compare-manifests.cjs public/vfs/courses/spa_for_eng/course_manifest.json
+```
+
+Validates against Italian reference manifest for structural compatibility.
+
+---
+
+## Statistics (Production Courses)
+
+### Spanish (spa_for_eng)
+- Seeds: 630
+- Introduction items: 1,912
+- Practice nodes: 18,820
+- Unique sample texts: 30,118
+- Total sample entries: 43,979
+- File size: ~14.5 MB
+
+### Chinese (cmn_for_eng)
+- Seeds: 659
+- Introduction items: 2,266
+- Practice nodes: 34,979
+- Unique sample texts: 47,821
+- Total sample entries: 69,974
+- File size: ~23.7 MB
+
+---
+
+## Validation Gates
+
+**Pre-Manifest**:
+- ✅ lego_pairs.json exists (conflict-free, from Phase 2)
+- ✅ lego_baskets.json exists (from Phase 3)
+- ✅ welcomes.json exists (canonical)
+- ✅ eng_encouragements.json exists (canonical)
+
+**Post-Manifest**:
+- ✅ course_manifest.json exists
+- ✅ Valid structure (matches Italian reference)
+- ✅ All UUIDs are deterministic (reproducible)
+- ✅ Target texts have both target1 AND target2 entries
+- ✅ All 5 roles present and correct
+
+---
+
+## Handoff to Audio Generation
+
+The Audio process (Phase 8) reads course_manifest.json and generates MP3 files:
+- Iterates through samples dictionary
+- Generates audio for each entry using appropriate voice
+- Names files with UUID from manifest
+- Uploads to S3
+
+---
+
+**Last Updated**: Dec 3, 2025
+**Related**: See `apml/phases/phase-7-manifest-compilation.apml` for full APML specification

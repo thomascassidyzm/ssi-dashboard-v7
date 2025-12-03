@@ -132,7 +132,7 @@
             </div>
           </div>
 
-          <!-- Phases Completed (APML v9.0) -->
+          <!-- Phases Completed (APML v10.0) -->
           <div class="mb-4">
             <div class="text-xs text-slate-400 mb-2">Phases Completed</div>
             <div class="flex gap-1">
@@ -332,7 +332,7 @@ function getStatusClass(status) {
 }
 
 function getPhaseTitle(phase) {
-  // APML v9.0 phase naming
+  // APML v10.0 phase naming
   const titles = {
     '1': 'Phase 1: Translation + LEGOs',
     '3': 'Phase 3: Basket Generation',

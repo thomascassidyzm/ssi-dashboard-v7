@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-24 | APML v9.0.0 | Status: Current definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-24 | APML v10.0.0 | Status: Current definitions</p>
       </div>
 
       <!-- Quick Reference -->
@@ -406,7 +406,7 @@
             </div>
           </div>
           <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
-            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v9.0.0, introduction generation is integrated into Phase 1 and runs automatically during LEGO extraction.</p>
+            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v10.0.0, introduction generation is integrated into Phase 1 and runs automatically during LEGO extraction.</p>
           </div>
         </div>
       </section>

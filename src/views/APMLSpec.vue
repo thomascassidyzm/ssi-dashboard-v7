@@ -8,13 +8,13 @@
           <span>Back to Dashboard</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v9.0.0 Specification
+          APML v10.0.0 Specification
         </h1>
         <p class="mt-2 text-slate-400">
           Streamlined pipeline: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: v9.0.0 | Nov 24, 2025
+          Build: v10.0.0 | Nov 24, 2025
         </p>
       </div>
     </header>
@@ -26,7 +26,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">APML Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>APML (Adaptive Pedagogy Markup Language)</strong> v9.0.0 is the current architectural specification for the SSi Course Production system. It introduces a streamlined pipeline (Phase 1 → Phase 2 → Phase 3 → Manifest → Audio). A phase triggers agents. Scripts run instantly.</p>
+            <p><strong>APML (Adaptive Pedagogy Markup Language)</strong> v10.0.0 is the current architectural specification for the SSi Course Production system. It introduces a streamlined pipeline (Phase 1 → Phase 2 → Phase 3 → Manifest → Audio). A phase triggers agents. Scripts run instantly.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
               <p class="text-xs text-slate-400">Pipeline: <span class="text-emerald-400">Phase 1 (Translation + LEGO) → Phase 2 (Conflict Resolution) → Phase 3 (Baskets) → Manifest (Script) → Audio (Process)</span></p>

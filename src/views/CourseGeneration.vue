@@ -20,7 +20,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          Popty v9.0.0 - SSi Course Production Dashboard
+          Popty v10.0.0 - SSi Course Production Dashboard
         </p>
       </div>
     </header>
@@ -756,7 +756,7 @@ const showManualInput = ref(false)
 
 let pollInterval = null
 
-// Phase names for UI (APML v9.0)
+// Phase names for UI (APML v10.0)
 const phaseNames = [
   { id: 0, name: 'Phase 1: Translation + LEGO Extraction (Swarm)' },
   { id: 1, name: 'Phase 2: Conflict Resolution (Upchunking)' },

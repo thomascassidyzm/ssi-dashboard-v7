@@ -10,7 +10,7 @@
 
 ---
 
-## Naming Convention (APML v9.0)
+## Naming Convention (APML v10.0)
 
 **Pattern**: `phase_[N]_[OUTPUT_FILE_NAME].md` or `[stage]_[OUTPUT_FILE_NAME].md`
 
@@ -325,13 +325,13 @@ For a complete overview of the course generation pipeline and canonical content 
 
 ## Locked Intelligence Status
 
-**Active Workflow (APML v9.0)**: Phase 1 → Phase 3 → Manifest → Audio
+**Active Workflow (APML v10.0)**: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio
 
 **Output Pipeline**:
-- Phase 1: `seed_pairs.json` + `lego_pairs.json` + `introductions.json` (Translation, LEGO extraction, intro generation)
-- Phase 2: `lego_pairs.json` (conflict resolution - optional human-assisted step)
-- Phase 3: `lego_baskets.json` (practice phrases - baskets)
-- Manifest: `course_manifest.json` (compiled course for app)
+- Phase 1: `draft_lego_pairs.json` (Translation + LEGO extraction)
+- Phase 2: `lego_pairs.json` (Conflict resolution - SSoT)
+- Phase 3: `lego_baskets.json` (Practice phrases - baskets)
+- Manifest: `course_manifest.json` (Compiled course for app - script, not phase)
 - Audio: `audio/*.mp3` + duration population (TTS generation)
 
 **Note**: Phase 1 is now an integrated phase that includes what was previously Phases 1 (Translation), 3 (LEGO Extraction), and 6 (Introductions). This simplifies the pipeline significantly.

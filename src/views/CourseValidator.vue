@@ -83,7 +83,7 @@
               </div>
             </div>
 
-            <!-- Phase Status (APML v9.0) -->
+            <!-- Phase Status (APML v10.0) -->
             <div class="space-y-1 text-sm">
               <div
                 v-for="phase in ['phase_1', 'phase_3', 'manifest']"
@@ -526,7 +526,7 @@ const availableCourses = computed(() => {
   return Object.keys(allValidation.value.courses).sort()
 })
 
-// APML v9.0 phase labels
+// APML v10.0 phase labels
 const PHASE_LABELS = {
   phase_1: 'Phase 1: Translation + LEGOs',
   phase_3: 'Phase 3: Practice Baskets',
