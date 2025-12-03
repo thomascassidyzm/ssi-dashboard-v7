@@ -17,6 +17,7 @@ const marService = require('../services/mar-service.cjs');
 const s3Service = require('../services/s3-service.cjs');
 const uuidService = require('../services/uuid-service.cjs');
 const cadenceService = require('../services/cadence-service.cjs');
+const languageCodeService = require('../services/language-code-service.cjs');
 const planner = require('../services/audio-generation-planner.cjs');
 const voiceDiscovery = require('../services/voice-discovery-service.cjs');
 const qcService = require('../services/quality-control-service.cjs');
@@ -117,17 +118,20 @@ async function getAllExistingSampleUUIDs() {
     }
   }
 
-  // Also check legacy flat structure (temp/audio/)
-  if (await fs.pathExists(AUDIO_TEMP_DIR)) {
-    try {
-      const files = await fs.readdir(AUDIO_TEMP_DIR);
-      for (const f of files) {
-        if (f.endsWith('.mp3') && /^[0-9A-F]/.test(f)) {
-          existingUUIDs.add(f.replace('.mp3', ''));
+  // Also check legacy flat structures (temp/audio/ and temp/audio/processed/)
+  const legacyDirs = [AUDIO_TEMP_DIR, path.join(AUDIO_TEMP_DIR, 'processed')];
+  for (const legacyDir of legacyDirs) {
+    if (await fs.pathExists(legacyDir)) {
+      try {
+        const files = await fs.readdir(legacyDir);
+        for (const f of files) {
+          if (f.endsWith('.mp3') && /^[0-9A-F]/.test(f)) {
+            existingUUIDs.add(f.replace('.mp3', ''));
+          }
         }
+      } catch (err) {
+        // Ignore errors reading legacy directory
       }
-    } catch (err) {
-      // Ignore errors reading legacy directory
     }
   }
 
@@ -137,21 +141,25 @@ async function getAllExistingSampleUUIDs() {
 /**
  * Extract language codes from course code
  * Format: <target>_for_<source>_<seeds>
- * Example: deu_for_eng_30seeds → { target: 'deu', source: 'eng' }
+ * Example: deu_for_eng_30seeds → { target: 'de', source: 'en' }
+ *
+ * Returns standard ISO 639-1/639-3 codes (e.g., 'es', 'en', 'cmn')
+ * NOT legacy codes (e.g., 'spa', 'eng')
  *
  * @param {string} courseCode - Course code
  * @returns {Object} { target, source }
  */
 function getLanguagesFromCourseCode(courseCode) {
-  const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_/);
+  const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})(?:_|$)/);
 
   if (!match) {
-    throw new Error(`Invalid course code format: ${courseCode}. Expected format: <lang>_for_<lang>_<seeds>`);
+    throw new Error(`Invalid course code format: ${courseCode}. Expected format: <lang>_for_<lang>[_<seeds>]`);
   }
 
+  // Convert legacy codes (spa, eng, ita) to standard (es, en, it)
   return {
-    target: match[1],
-    source: match[2]
+    target: languageCodeService.legacyToStandard(match[1]),
+    source: languageCodeService.legacyToStandard(match[2])
   };
 }
 
@@ -402,7 +410,7 @@ async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target
 
       if (existing) {
         variant.id = existing.uuid;
-        variant.duration = existing.duration;
+        variant.duration = existing.duration || 0;
         assigned++;
       } else {
         missing++;
@@ -965,12 +973,10 @@ async function generateMissingAudioParallel(toGenerate, courseCode) {
 
 /**
  * Process audio files (normalize + optional time-stretch)
+ * Processed files go to {course}/{role}/{cadence}_processed/ alongside raw files
  */
 async function processGeneratedAudio(results) {
   console.log('\n=== Processing Audio ===\n');
-
-  const processedDir = path.join(AUDIO_TEMP_DIR, 'processed');
-  await fs.ensureDir(processedDir);
 
   const processConfigs = [];
 
@@ -985,6 +991,12 @@ async function processGeneratedAudio(results) {
                            voiceDetails.processing?.cadences?.natural ||
                            {};
 
+    // Put processed files in {cadence}_processed folder alongside raw files
+    // e.g., temp/spa_for_eng/source/natural/*.mp3 -> temp/spa_for_eng/source/natural_processed/*.mp3
+    const inputDir = path.dirname(outputPath);
+    const cadenceDir = path.basename(inputDir);
+    const processedDir = path.join(path.dirname(inputDir), `${cadenceDir}_processed`);
+    await fs.ensureDir(processedDir);
     const processedPath = path.join(processedDir, `${sample.uuid}.mp3`);
 
     processConfigs.push({
@@ -1799,31 +1811,85 @@ async function continuePhaseAProcessing(courseCode, options = {}) {
   console.log(`Phase A: Continue Processing (Post-QC)`);
   console.log(`${'='.repeat(60)}\n`);
 
-  // Load raw generation results from temp directory
-  const rawDir = path.join(AUDIO_TEMP_DIR);
-  const files = await fs.readdir(rawDir);
-  const mp3Files = files.filter(f => f.endsWith('.mp3'));
+  // Load raw generation results from HIERARCHICAL temp directory structure
+  // New structure: temp/{course}/{role}/{cadence}/*.mp3
+  const courseDir = path.join(TEMP_BASE, courseCode);
 
-  console.log(`Found ${mp3Files.length} raw audio files to process\n`);
+  // Collect all MP3 files with their role/cadence metadata
+  const mp3FilesWithMeta = [];
 
-  if (mp3Files.length === 0) {
-    throw new Error('No raw audio files found. Run Phase A generation first.');
+  if (await fs.pathExists(courseDir)) {
+    const roles = await fs.readdir(courseDir);
+    for (const role of roles) {
+      // Skip Phase A roles only (target1, target2, source)
+      if (!['target1', 'target2', 'source'].includes(role)) continue;
+
+      const roleDir = path.join(courseDir, role);
+      const roleStat = await fs.stat(roleDir).catch(() => null);
+      if (!roleStat || !roleStat.isDirectory()) continue;
+
+      const cadences = await fs.readdir(roleDir);
+      for (const cadence of cadences) {
+        const cadenceDir = path.join(roleDir, cadence);
+        const cadenceStat = await fs.stat(cadenceDir).catch(() => null);
+        if (!cadenceStat || !cadenceStat.isDirectory()) continue;
+
+        const files = await fs.readdir(cadenceDir);
+        for (const file of files) {
+          if (file.endsWith('.mp3')) {
+            mp3FilesWithMeta.push({
+              filename: file,
+              fullPath: path.join(cadenceDir, file),
+              role,
+              cadence
+            });
+          }
+        }
+      }
+    }
+  }
+
+  console.log(`Found ${mp3FilesWithMeta.length} raw audio files in hierarchical structure to process\n`);
+
+  if (mp3FilesWithMeta.length === 0) {
+    // Fall back to legacy flat structure for backwards compatibility
+    const rawDir = path.join(AUDIO_TEMP_DIR);
+    const files = await fs.readdir(rawDir).catch(() => []);
+    const legacyMp3Files = files.filter(f => f.endsWith('.mp3'));
+
+    if (legacyMp3Files.length > 0) {
+      console.log(`Found ${legacyMp3Files.length} files in legacy temp/audio/ structure\n`);
+      for (const file of legacyMp3Files) {
+        mp3FilesWithMeta.push({
+          filename: file,
+          fullPath: path.join(rawDir, file),
+          role: null,  // Will be looked up from manifest
+          cadence: 'natural'
+        });
+      }
+    }
+  }
+
+  if (mp3FilesWithMeta.length === 0) {
+    throw new Error(`No raw audio files found. Run Phase A generation first.\nExpected location: ${courseDir}/{role}/{cadence}/`);
   }
 
   // Load voice assignments for the course
   const voiceAssignments = await getVoiceAssignments(courseCode);
   console.log(`Voice assignments: ${JSON.stringify(voiceAssignments)}`);
 
-  // Build UUID→role map from manifest for fallback lookup
+  // Build UUID→role map and UUID→text map from manifest for fallback lookup
   const manifest = await loadCourseManifest(courseCode);
   const uuidToRole = {};
+  const uuidToText = {};
   if (manifest.slices) {
     for (const slice of manifest.slices) {
       if (slice.samples) {
-        for (const samples of Object.values(slice.samples)) {
+        for (const [text, samples] of Object.entries(slice.samples)) {
           for (const sample of samples) {
             if (sample.id && sample.role) {
               uuidToRole[sample.id] = sample.role;
+              uuidToText[sample.id] = text;
             }
           }
         }
@@ -1870,20 +1936,26 @@ async function continuePhaseAProcessing(courseCode, options = {}) {
   const defaultAzureVoice = voiceAssignments.target1 || 'azure_es-ES-TrianaNeural';
   console.log(`Total known mappings from worker results: ${Object.keys(uuidToVoiceId).length}`);
 
-  // Create results with voiceId from worker outputs, or manifest lookup
+  // Create results with voiceId from hierarchical structure, worker outputs, or manifest lookup
+  let fromHierarchy = 0;
   let fromWorkerResults = 0;
   let fromManifest = 0;
   let fromDefault = 0;
 
-  const results = mp3Files.map(filename => {
-    const uuid = path.basename(filename, '.mp3');
+  const results = mp3FilesWithMeta.map(fileMeta => {
+    const uuid = path.basename(fileMeta.filename, '.mp3');
     let voiceId = uuidToVoiceId[uuid];
+    let role = fileMeta.role;
 
     if (voiceId) {
       fromWorkerResults++;
+    } else if (role && voiceAssignments[role]) {
+      // Use role from hierarchical directory structure
+      voiceId = voiceAssignments[role];
+      fromHierarchy++;
     } else {
       // Look up role from manifest and get voiceId
-      const role = uuidToRole[uuid];
+      role = uuidToRole[uuid];
       if (role && voiceAssignments[role]) {
         voiceId = voiceAssignments[role];
         fromManifest++;
@@ -1896,15 +1968,17 @@ async function continuePhaseAProcessing(courseCode, options = {}) {
 
     return {
       success: true,
-      outputPath: path.join(rawDir, filename),
+      outputPath: fileMeta.fullPath,
       sample: {
         uuid,
-        voiceId
+        voiceId,
+        role: role || uuidToRole[uuid],
+        cadence: fileMeta.cadence
       }
     };
   });
 
-  console.log(`Voice mapping: ${fromWorkerResults} from worker results, ${fromManifest} from manifest, ${fromDefault} defaulted\n`);
+  console.log(`Voice mapping: ${fromHierarchy} from hierarchy, ${fromWorkerResults} from worker results, ${fromManifest} from manifest, ${fromDefault} defaulted\n`);
 
   // Process audio
   const processResults = await processGeneratedAudio(results);
@@ -1933,6 +2007,63 @@ async function continuePhaseAProcessing(courseCode, options = {}) {
 
   // Update MAR
   await updateMAR(results, durations);
+
+  // Update manifest with UUIDs
+  console.log('\n=== Updating Manifest with UUIDs ===\n');
+
+  // Reload manifest to get latest state
+  const updatedManifest = await loadCourseManifest(courseCode);
+
+  if (!updatedManifest.slices || !updatedManifest.slices[0] || !updatedManifest.slices[0].samples) {
+    console.warn('Warning: No samples found in manifest to update');
+  } else {
+    // Build lookup from results: {text: {role: {cadence: uuid}}}
+    const textRoleCadenceLookup = {};
+    for (const result of results) {
+      if (!result.success) continue;
+
+      const { uuid, role, cadence } = result.sample;
+      const text = uuidToText[uuid];
+
+      if (!text) {
+        console.warn(`Warning: No text found for UUID ${uuid}`);
+        continue;
+      }
+
+      if (!textRoleCadenceLookup[text]) {
+        textRoleCadenceLookup[text] = {};
+      }
+      if (!textRoleCadenceLookup[text][role]) {
+        textRoleCadenceLookup[text][role] = {};
+      }
+      textRoleCadenceLookup[text][role][cadence] = uuid;
+    }
+
+    // Update manifest samples with UUIDs
+    let updatedCount = 0;
+    const samples = updatedManifest.slices[0].samples;
+
+    for (const [text, sampleVariants] of Object.entries(samples)) {
+      if (!textRoleCadenceLookup[text]) continue;
+
+      for (const variant of sampleVariants) {
+        const role = variant.role;
+        const cadence = variant.cadence || 'natural';
+
+        if (textRoleCadenceLookup[text][role] && textRoleCadenceLookup[text][role][cadence]) {
+          const uuid = textRoleCadenceLookup[text][role][cadence];
+          variant.id = uuid;
+          updatedCount++;
+        }
+      }
+    }
+
+    console.log(`Updated ${updatedCount} manifest entries with UUIDs`);
+
+    // Save updated manifest
+    await saveCourseManifest(courseCode, updatedManifest);
+    console.log(`✓ Manifest saved with UUID updates\n`);
+  }
 
   console.log(`\n✓ Phase A processing complete\n`);
   console.log(`NEXT STEP: Ask Claude Code to launch Phase B (presentations)\n`);
@@ -2991,20 +3122,22 @@ async function generateAudioForCourse(courseCode, options = {}) {
   console.log(`${'='.repeat(60)}\n`);
 
   try {
-    // Run pre-flight checks (including course-specific manifest checks with auto-fix)
-    const preflightResults = await preflightCheck.runPreflightChecks({
-      verbose: true,
-      courseCode: courseCode,
-      autoFix: true
+    // Run unified preflight (same as --plan: S3 sync + checks + deduplication)
+    // This ensures --execute uses identical preflight logic to --plan
+    const preflightResult = await runAudioGenPreflight(courseCode, {
+      skipSync: true,  // Skip S3 sync (already done during --plan)
+      skipDedup: false, // Always run dedup to ensure samples are properly added
+      autoFix: true,
+      verbose: true
     });
 
-    if (!preflightResults.allPassed) {
+    if (!preflightResult.success) {
       console.error('\n❌ Pre-flight checks failed. Please fix the issues above before continuing.\n');
 
       // Show agent actions if any
-      if (preflightResults.agentActions && preflightResults.agentActions.length > 0) {
+      if (preflightResult.agentActions && preflightResult.agentActions.length > 0) {
         console.error('Agent actions required:');
-        for (const action of preflightResults.agentActions) {
+        for (const action of preflightResult.agentActions) {
           console.error(`  ${action.service}: ${action.action}`);
         }
       }
@@ -3012,14 +3145,14 @@ async function generateAudioForCourse(courseCode, options = {}) {
       return {
         success: false,
         error: 'Pre-flight checks failed',
-        details: preflightResults
+        details: preflightResult
       };
     }
 
     // Report auto-fixes applied
-    if (preflightResults.fixed && preflightResults.fixed.length > 0) {
+    if (preflightResult.autoFixes && preflightResult.autoFixes.length > 0) {
       console.log('🔧 Auto-fixes applied during preflight:');
-      for (const fix of preflightResults.fixed) {
+      for (const fix of preflightResult.autoFixes) {
         console.log(`  ${fix.service}: ${fix.message}`);
       }
       console.log();
@@ -3579,6 +3712,30 @@ Features:
     if (continueProcessing) {
       // Continue Phase A processing after QC approval
       result = await continuePhaseAProcessing(courseCode, execOptions);
+
+      // After Phase A post-processing completes, continue to remaining phases
+      if (result.success) {
+        console.log('\n' + '='.repeat(60));
+        console.log('Phase A post-processing complete. Continuing to Phase B...');
+        console.log('='.repeat(60) + '\n');
+
+        // Continue with presentations (Phase B), then encouragements + welcome
+        execOptions.phase = 'presentations';
+        const phaseBResult = await generateAudioForCourse(courseCode, execOptions);
+
+        if (phaseBResult.success) {
+          // Continue to encouragements and welcome
+          execOptions.phase = 'finalize';
+          const finalizeResult = await generateAudioForCourse(courseCode, execOptions);
+          result = {
+            success: finalizeResult.success,
+            generated: result.generated + phaseBResult.generated + finalizeResult.generated,
+            message: 'All phases completed'
+          };
+        } else {
+          result = phaseBResult;
+        }
+      }
     } else if (regenerateArg) {
       // Regenerate specific samples
       const uuids = regenerateArg.split(',').map(u => u.trim());

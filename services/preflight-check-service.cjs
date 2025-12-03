@@ -48,6 +48,21 @@ function extractTaggedExamples(text) {
 }
 
 /**
+ * Normalize text for comparison (matches deduplication normalization)
+ * Lowercase, trim, remove trailing periods, normalize whitespace
+ * @param {string} text - Text to normalize
+ * @returns {string} - Normalized text
+ */
+function normalizeText(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/^[,.\s]+|[,.\s]+$/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+/**
  * Build set of expected samples from manifest structure
  * Does NOT include encouragements (they should be cleared before audio gen)
  * @param {Object} manifest - Course manifest

@@ -67,6 +67,8 @@ The MAR is a **text → UUID lookup database**, organized by voice. It enables:
 - Location: `samples_database/voices/{voiceId}/samples.json`
 - Samples matched by **normalized text** (lowercase, trimmed, no trailing periods)
 - Temporary MAR (`temp/mar/`) used for crash-safety during generation
+- After ALL phases complete successfully, temp MAR syncs to permanent MAR
+- Permanent MAR enables cross-course reuse
 
 **Common confusion:**
 - "I have audio files but MAR doesn't have the UUIDs" → You need the manifest that has the UUIDs
@@ -171,9 +173,15 @@ After preflight passes, `--plan` shows the generation plan:
 
 ### Phase 3: Generation
 
-#### Step 3.1: Pre-flight Checks (Also runs in --execute)
+#### Step 3.1: Unified Preflight (Same as --plan)
 
-Pre-flight checks also run at the start of `--execute` to catch any issues
+`--execute` runs the **same unified preflight** as `--plan`, ensuring consistency:
+
+1. **S3 Sync** (skipped by default during execute - already done in plan)
+2. **Preflight Checks** - validates services, manifest structure, voice assignments
+3. **Deduplication** - normalizes text, adds missing samples, removes duplicates
+
+This ensures samples are properly added before generation. Previously, `--execute` used a different preflight that could remove samples without adding missing ones.
 
 Issues are either:
 - **Auto-fixed** by the script
@@ -220,11 +228,16 @@ node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-proc
 1. Normalizes audio (target LUFS: -16)
 2. Applies time-stretch based on voice config (for slow cadence)
 3. Uploads to S3
-4. Writes to temporary MAR
+4. Writes to temporary MAR (`temp/mar/`)
+5. **Updates manifest with UUIDs** for all generated samples
+6. **Automatically continues to Phase B** (presentations)
+7. **Automatically continues to finalize** (encouragements + welcome)
+
+**Important:** `--continue-processing` runs the complete remaining workflow. After Phase A post-processing, it automatically launches Phase B, then encouragements and welcome. The manifest is updated with UUIDs at each step.
 
 #### Step 3.5: Phase B - Presentations
 
-Runs automatically after Phase A (or manually with `--phase=presentations`).
+Runs automatically after Phase A post-processing (via `--continue-processing`) or manually with `--phase=presentations`.
 
 **What are presentations?**
 
@@ -288,9 +301,11 @@ To add a welcome message:
 
 ### Phase 4: Post-Generation
 
+**IMPORTANT:** All post-generation steps assume Phase A, Phase B, encouragements, and welcome have completed successfully. The temporary MAR syncs to permanent MAR at the end of the full generation workflow.
+
 #### Step 4.1: Sync Manifest to Permanent MAR
 
-The manifest contains the authoritative UUIDs for all samples. This step copies those UUIDs to the MAR so they can be reused by other courses or agents.
+The manifest contains the authoritative UUIDs for all samples. After ALL phases complete (Phase A → Phase B → encouragements → welcome), this step copies those UUIDs from the temporary MAR to the permanent MAR so they can be reused by other courses or agents.
 
 **Automatic** (runs at end of `generateAudioForCourse()`):
 ```javascript
@@ -324,14 +339,17 @@ node scripts/manifest-repopulation.cjs <course_code>
 
 **What it does:**
 1. Re-extracts ALL text variants from course structure (exact text, NOT normalized)
-2. "hablo" becomes "Hablo" and "hablo." again as separate samples
-3. Queries MAR by normalized text to get UUIDs
+2. Restores deduplicated variants: "hablo" becomes "Hablo" and "hablo." again as separate samples
+3. Queries permanent MAR by normalized text to get UUIDs (UUIDs were written during generation)
 4. Assigns matched UUIDs to all variants
 5. Reports errors for any samples without MAR matches
 6. Adds encouragements back to manifest
 
+**Common confusion:** This script does NOT add UUIDs to the manifest. UUIDs are already in the manifest after `--continue-processing`. This script restores text VARIANTS that were deduplicated before generation and matches them to their UUIDs via MAR lookup.
+
 **When to run:**
-- After audio generation completes
+- After audio generation completes successfully
+- After temp MAR has synced to permanent MAR
 - If you need to restore variants that were deduplicated
 
 #### Step 4.3: S3 Existence + Duration Check
@@ -376,15 +394,15 @@ node scripts/phase8-audio-generation.cjs <code> --plan # Runs preflight + shows 
 # Generation (after user approval)
 node scripts/phase8-audio-generation.cjs <code> --execute
 
-# After QC
+# After QC (normalizes, uploads, writes UUIDs to temp MAR + manifest)
 node scripts/phase8-audio-generation.cjs <code> --execute --continue-processing
 
 # Regeneration (if needed)
 node scripts/phase8-audio-generation.cjs <code> --execute --regenerate UUID1,UUID2
 
-# Post-generation
-node scripts/rebuild-mar-from-manifest.cjs <code>               # Sync manifest UUIDs to MAR
-node scripts/manifest-repopulation.cjs <code>                   # Restore text variants
+# Post-generation (after ALL phases complete)
+node scripts/rebuild-mar-from-manifest.cjs <code>               # Sync temp MAR → permanent MAR
+node scripts/manifest-repopulation.cjs <code>                   # Restore text variants (matches via MAR)
 node scripts/extract-s3-durations-parallel.cjs <code>           # Verify S3 + get durations
 node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 ```
@@ -395,7 +413,7 @@ node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 |------|---------|
 | `--plan` | Run preflight + show generation plan |
 | `--execute` | Run audio generation |
-| `--continue-processing` | Continue Phase A after QC |
+| `--continue-processing` | Continue Phase A after QC (normalize, upload, write UUIDs) |
 | `--regenerate=UUIDs` | Regenerate specific samples |
 | `--phase=targets` | Phase A only (target1, target2, source) |
 | `--phase=presentations` | Phase B only (no encouragements/welcome) |
@@ -415,8 +433,10 @@ node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 
 | Path | Contents |
 |------|----------|
-| `temp/audio/` | Raw generated audio (expensive - don't delete!) |
-| `temp/audio/processed/` | Normalized/processed audio |
+| `temp/{course}/{role}/{cadence}/` | Raw generated audio (e.g., `temp/spa_for_eng/source/natural/`) - expensive, don't delete! |
+| `temp/{course}/{role}/{cadence}_processed/` | Normalized/processed audio (e.g., `temp/spa_for_eng/source/natural_processed/`) |
+| `temp/audio/` | Legacy flat structure + worker I/O directories |
+| `temp/audio/processed/` | Legacy processed audio (deprecated - new files go to `{cadence}_processed/`) |
 | `temp/mar/` | Temporary MAR (crash-safety) |
 | `samples_database/voices/` | Permanent MAR |
 | `public/vfs/canonical/` | Canonical resources (synced from S3) |
@@ -425,4 +445,4 @@ node tools/validators/manifest-structure-validator.cjs <code> --check-durations
 
 ---
 
-**Last Updated**: 2025-11-28
+**Last Updated**: 2025-12-03
