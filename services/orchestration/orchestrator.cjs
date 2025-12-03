@@ -4351,6 +4351,156 @@ app.post('/api/audio/flag-sample', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/script
+ * Generate a learning script for a seed range
+ * Query params: startSeed (number), endSeed (number)
+ * Returns items ordered by: Seed > Introduction > Components > Debut > Practice
+ */
+app.get('/api/courses/:courseCode/script', async (req, res) => {
+  const { courseCode } = req.params;
+  const startSeed = parseInt(req.query.startSeed) || 1;
+  const endSeed = parseInt(req.query.endSeed) || 10;
+
+  try {
+    // Load lego_baskets.json
+    // VFS_ROOT already includes 'courses' directory
+    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+    const manifestPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({ error: 'LEGO baskets not found for course' });
+    }
+
+    const baskets = await fs.readJson(basketsPath);
+
+    // Load manifest for audio lookup (optional)
+    let manifest = null;
+    let samples = {};
+    if (await fs.pathExists(manifestPath)) {
+      manifest = await fs.readJson(manifestPath);
+      samples = manifest.slices?.[0]?.samples || {};
+    }
+
+    // Helper to get audio IDs for a phrase
+    const getAudioIds = (knownText, targetText) => {
+      let sourceId = null;
+      let target1Id = null;
+      let target2Id = null;
+
+      if (knownText && samples[knownText]) {
+        for (const sample of samples[knownText]) {
+          if (sample.role === 'source' && sample.id) {
+            sourceId = sample.id;
+            break;
+          }
+        }
+      }
+
+      if (targetText && samples[targetText]) {
+        for (const sample of samples[targetText]) {
+          if (sample.role === 'target1' && sample.id) {
+            target1Id = sample.id;
+          }
+          if (sample.role === 'target2' && sample.id) {
+            target2Id = sample.id;
+          }
+        }
+      }
+
+      if (target1Id && !target2Id) {
+        target2Id = target1Id;
+      }
+
+      return { sourceId, target1Id, target2Id };
+    };
+
+    // Filter baskets by seed range
+    const items = [];
+    const seedIds = new Set();
+
+    for (const [basketKey, basket] of Object.entries(baskets.baskets || {})) {
+      const seedMatch = basketKey.match(/^(S\d{4})/);
+      if (!seedMatch) continue;
+
+      const seedId = seedMatch[1];
+      const seedNum = parseInt(seedId.replace('S', ''));
+
+      if (seedNum < startSeed || seedNum > endSeed) continue;
+
+      seedIds.add(seedId);
+
+      const lego = basket.lego;
+      const phrases = basket.practice_phrases || [];
+
+      // Add Introduction
+      const introAudio = getAudioIds(lego.known, lego.target);
+      items.push({
+        uuid: `${basketKey}_intro`,
+        seedId,
+        legoKey: basketKey,
+        type: 'introduction',
+        knownText: lego.known,
+        targetText: lego.target,
+        sourceId: introAudio.sourceId,
+        target1Id: introAudio.target1Id,
+        target2Id: introAudio.target2Id,
+        hasAudio: !!(introAudio.sourceId && introAudio.target1Id),
+        order: seedNum * 1000 + 0
+      });
+
+      // Add phrases
+      phrases.forEach((phrase, idx) => {
+        const isDebut = phrase.known === lego.known && phrase.target.toLowerCase() === lego.target.toLowerCase();
+        const isComponent = phrase.is_component === true;
+
+        let phraseType = 'practice';
+        let orderOffset = 300 + idx;
+
+        if (isComponent) {
+          phraseType = 'component';
+          orderOffset = 100 + idx;
+        } else if (isDebut) {
+          phraseType = 'debut';
+          orderOffset = 200;
+        }
+
+        const phraseAudio = getAudioIds(phrase.known, phrase.target);
+        items.push({
+          uuid: `${basketKey}_p${idx}`,
+          seedId,
+          legoKey: basketKey,
+          type: phraseType,
+          knownText: phrase.known,
+          targetText: phrase.target,
+          sourceId: phraseAudio.sourceId,
+          target1Id: phraseAudio.target1Id,
+          target2Id: phraseAudio.target2Id,
+          hasAudio: !!(phraseAudio.sourceId && phraseAudio.target1Id),
+          order: seedNum * 1000 + orderOffset
+        });
+      });
+    }
+
+    items.sort((a, b) => a.order - b.order);
+
+    console.log(`[Script] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed}`);
+
+    res.json({
+      courseCode,
+      startSeed,
+      endSeed,
+      seedCount: seedIds.size,
+      itemCount: items.length,
+      items
+    });
+
+  } catch (err) {
+    console.error('[Script] Error generating script:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * Start server
  */
 app.listen(PORT, () => {
