@@ -4392,31 +4392,33 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
     }
 
     // Helper to get audio IDs for a phrase
+    // Roles in manifest: practice_known, practice_target, lego_known, lego_target, seed_known, seed_target
     const getAudioIds = (knownText, targetText) => {
       let sourceId = null;
       let target1Id = null;
       let target2Id = null;
 
+      // Look up known (source) audio - can be practice_known, lego_known, or seed_known
       if (knownText && samples[knownText]) {
         for (const sample of samples[knownText]) {
-          if (sample.role === 'source' && sample.id) {
+          if ((sample.role === 'practice_known' || sample.role === 'lego_known' || sample.role === 'seed_known') && sample.id) {
             sourceId = sample.id;
             break;
           }
         }
       }
 
+      // Look up target audio - can be practice_target, lego_target, or seed_target
       if (targetText && samples[targetText]) {
         for (const sample of samples[targetText]) {
-          if (sample.role === 'target1' && sample.id) {
+          if ((sample.role === 'practice_target' || sample.role === 'lego_target' || sample.role === 'seed_target') && sample.id) {
             target1Id = sample.id;
-          }
-          if (sample.role === 'target2' && sample.id) {
-            target2Id = sample.id;
+            break;
           }
         }
       }
 
+      // For now, use same audio for both voices (until we have voice2 in manifest)
       if (target1Id && !target2Id) {
         target2Id = target1Id;
       }

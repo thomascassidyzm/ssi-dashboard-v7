@@ -143,9 +143,9 @@ function createNode(knownText, targetText) {
 console.log('Building manifest structure...\n');
 
 const manifest = {
-  id: `${knownLang.substring(0, 2)}-${targetLang.substring(0, 2)}`,
-  known: knownLang.substring(0, 2),
-  target: targetLang.substring(0, 2),
+  id: `${knownLang}-${targetLang}`,
+  known: knownLang,
+  target: targetLang,
   version: "8.2.0",
   status: "alpha",
   introduction: {
