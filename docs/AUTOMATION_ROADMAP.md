@@ -248,3 +248,67 @@ Total: **~2.5 hours** to close the most critical gaps!
 - Phase 5 Validators: `/scripts/phase5_*.cjs`
 - Checkpoint Config: `automation_server.cjs` lines 43-70
 - TODOs: Lines 2466, 9266, 9549, 9619
+
+---
+
+## course-configs Integration
+
+### Overview
+Integration with `saysomethingin/course-configs` repo for publishing courses.
+
+**Repo:** `git@github.com:saysomethingin/course-configs.git`
+**Branch workflow:** author → stage → qa → prod
+**Local clone:** `~/Documents/GitHub/course-configs/`
+
+### Status
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Canonical JSON Formatter | ✅ DONE | Consistent key ordering, 2-space indent |
+| Naming Convention Mapping | ✅ DONE | `spa_for_eng` → `en-es.json` |
+| Validator Integration | ✅ DONE | `--publish` flag on validator |
+| Major Version Bump | ✅ DONE | Default behavior, `--version` override |
+| Automatic Semantic Versioning | ⏳ TODO | Team to provide specifics |
+
+### Usage
+
+**Validate and publish:**
+```bash
+# Validate manifest, show publish instructions if valid
+node tools/validators/manifest-structure-validator.cjs spa_for_eng
+
+# Validate and publish (dry-run) if valid
+node tools/validators/manifest-structure-validator.cjs spa_for_eng --publish
+```
+
+**Publish directly:**
+```bash
+# Dry run (preview)
+node tools/sync/publish-to-course-configs.cjs spa_for_eng --dry-run
+
+# Commit to author branch
+node tools/sync/publish-to-course-configs.cjs spa_for_eng --commit
+
+# Set specific version
+node tools/sync/publish-to-course-configs.cjs spa_for_eng --version 2.1.0
+```
+
+### Language Code Mapping
+
+| Our Code | course-configs | Notes |
+|----------|---------------|-------|
+| `spa_for_eng` | `en-es.json` | Spanish |
+| `cmn_for_eng` | `en-cmn.json` | Mandarin Chinese |
+| `fra_for_eng` | `en-fr.json` | French |
+| `cym_for_eng` | `en-cy-north.json` | Welsh (North) |
+
+### Future: Automatic Semantic Versioning
+When team provides specifics:
+- Compare new manifest against previous version
+- Auto-detect change type (MAJOR/MINOR/PATCH)
+- Auto-increment version number
+- Generate changelog
+
+### Notes
+- Date added: 2025-12-03
+- Last updated: 2025-12-03

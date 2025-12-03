@@ -251,6 +251,10 @@ node tools/sync/sync-course-to-s3.cjs spa_for_eng
 
 # Pull from S3
 node tools/sync/sync-course-from-s3.cjs spa_for_eng
+
+# Publish to course-configs repo (author branch)
+node tools/sync/publish-to-course-configs.cjs spa_for_eng --dry-run
+node tools/sync/publish-to-course-configs.cjs spa_for_eng --commit
 ```
 
 ### **For Development**

@@ -30,9 +30,10 @@ All stable, production-ready tools for SSi course generation.
 **automation_server.cjs** ⭐ Main automation server
 **orchestrator-workflow.cjs** - Workflow coordination
 
-### `sync/` - S3 Synchronization
+### `sync/` - S3 Synchronization & Publishing
 **sync-course-to-s3.cjs** - Upload to S3
 **sync-course-from-s3.cjs** - Download from S3
+**publish-to-course-configs.cjs** - Publish manifests to course-configs repo
 
 ## 📖 See Also
 - `CLAUDE.md` - Agent onboarding

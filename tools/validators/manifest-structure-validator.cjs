@@ -550,11 +550,13 @@ Options:
   --check            Validate only (default, no changes)
   --fix              Validate and auto-fix fixable issues
   --check-durations  Include sample duration check (run after S3 extraction)
+  --publish          If valid, publish to course-configs repo (dry-run)
 
 Examples:
   node manifest-structure-validator.cjs spa_for_eng
   node manifest-structure-validator.cjs spa_for_eng --fix
   node manifest-structure-validator.cjs spa_for_eng --fix --check-durations
+  node manifest-structure-validator.cjs spa_for_eng --publish
 
 Checks performed:
   1. Structure      - All required keys at all levels
@@ -575,7 +577,8 @@ Auto-fixable (with --fix):
 
   const options = {
     fix: args.includes('--fix'),
-    checkDurations: args.includes('--check-durations')
+    checkDurations: args.includes('--check-durations'),
+    publish: args.includes('--publish')
   };
 
   console.log(`\n=== Manifest Validation: ${courseCode} ===`);
@@ -609,6 +612,28 @@ Auto-fixable (with --fix):
   // Summary
   if (result.valid) {
     console.log('✓ Manifest is valid\n');
+
+    if (options.publish) {
+      // Run publish script
+      console.log('Publishing to course-configs...\n');
+      const { execSync } = require('child_process');
+      const publishScript = path.join(__dirname, '..', 'sync', 'publish-to-course-configs.cjs');
+      try {
+        execSync(`node "${publishScript}" ${courseCode} --dry-run`, { stdio: 'inherit' });
+        console.log('\nTo commit, run:');
+        console.log(`  node tools/sync/publish-to-course-configs.cjs ${courseCode} --commit\n`);
+      } catch (e) {
+        console.error('Publish failed:', e.message);
+        process.exit(1);
+      }
+    } else {
+      // Print publish instructions
+      console.log('To publish to course-configs:');
+      console.log(`  node tools/validators/manifest-structure-validator.cjs ${courseCode} --publish\n`);
+      console.log('Or publish directly:');
+      console.log(`  node tools/sync/publish-to-course-configs.cjs ${courseCode} --dry-run`);
+      console.log(`  node tools/sync/publish-to-course-configs.cjs ${courseCode} --commit\n`);
+    }
   } else {
     console.log('✗ Manifest has issues\n');
   }
