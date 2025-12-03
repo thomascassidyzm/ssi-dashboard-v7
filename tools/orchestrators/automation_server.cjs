@@ -4696,6 +4696,227 @@ app.delete('/api/courses/:code/seeds/:seedId', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/script
+ * Generate course script with LEGOs in delivery order
+ *
+ * Query params:
+ * - startSeed: Starting seed number (default: 1)
+ * - endSeed: Ending seed number (default: 20)
+ *
+ * Returns ordered items array with:
+ * - Introductions/presentations (for LEGOs that have them)
+ * - Components (for M-type molecular LEGOs)
+ * - LEGO debut (the full LEGO)
+ * - Practice phrases
+ */
+app.get('/api/courses/:courseCode/script', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const startSeed = parseInt(req.query.startSeed) || 1;
+    const endSeed = parseInt(req.query.endSeed) || 20;
+
+    // Validate course exists
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({
+        success: false,
+        error: 'Course not found',
+        courseCode
+      });
+    }
+
+    // Load required files
+    const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+    const manifestPath = path.join(courseDir, `${courseCode}_668seedsV4.json`);
+    const introductionsPath = path.join(courseDir, 'introductions.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoBasketsPath)) {
+      return res.status(404).json({
+        success: false,
+        error: 'lego_baskets.json not found',
+        courseCode
+      });
+    }
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({
+        success: false,
+        error: 'lego_pairs.json not found',
+        courseCode
+      });
+    }
+
+    const legoBaskets = await fs.readJson(legoBasketsPath);
+    const legoPairs = await fs.readJson(legoPairsPath);
+    const manifest = await fs.pathExists(manifestPath) ? await fs.readJson(manifestPath) : null;
+    const introductions = await fs.pathExists(introductionsPath) ? await fs.readJson(introductionsPath) : null;
+
+    // Build audio UUID lookup from manifest
+    const audioLookup = {};
+    if (manifest && manifest.slices && manifest.slices[0] && manifest.slices[0].samples) {
+      const samples = manifest.slices[0].samples;
+      for (const [text, audioList] of Object.entries(samples)) {
+        audioLookup[text.toLowerCase()] = {};
+        for (const audio of audioList) {
+          audioLookup[text.toLowerCase()][audio.role] = audio.id;
+        }
+      }
+    }
+
+    // Build LEGO type lookup from lego_pairs
+    const legoTypeMap = {};
+    const legoComponentsMap = {};
+    if (legoPairs && legoPairs.seeds) {
+      for (const seed of legoPairs.seeds) {
+        for (const lego of seed.legos) {
+          legoTypeMap[lego.id] = lego.type;
+          if (lego.type === 'M' && lego.components) {
+            legoComponentsMap[lego.id] = lego.components;
+          }
+        }
+      }
+    }
+
+    // Helper function to lookup audio UUID by text and role
+    const getAudioUUID = (text, role) => {
+      if (!text) return null;
+      const key = text.toLowerCase();
+      return audioLookup[key] && audioLookup[key][role] ? audioLookup[key][role] : null;
+    };
+
+    // Generate script items
+    const items = [];
+    let sequence = 1;
+
+    // Process seeds in range
+    for (let seedNum = startSeed; seedNum <= endSeed; seedNum++) {
+      const seedId = `S${String(seedNum).padStart(4, '0')}`;
+
+      // Find all LEGOs for this seed (format: S0001L01, S0001L02, etc.)
+      const seedLegos = Object.keys(legoBaskets.baskets)
+        .filter(legoId => legoId.startsWith(seedId))
+        .sort();
+
+      for (const legoId of seedLegos) {
+        const basket = legoBaskets.baskets[legoId];
+        const legoType = legoTypeMap[legoId] || 'A';
+        const components = legoComponentsMap[legoId] || [];
+
+        // 1. Add introduction/presentation if exists
+        if (introductions && introductions.presentations && introductions.presentations[legoId]) {
+          const presentation = introductions.presentations[legoId];
+          items.push({
+            id: `${legoId}-intro`,
+            type: 'introduction',
+            seedId,
+            legoId,
+            sequence: sequence++,
+            known: basket.lego.known,
+            target: basket.lego.target,
+            legoType,
+            presentation,
+            audio: {
+              presentation: getAudioUUID(presentation, 'presentation'),
+              source: null,
+              target1: null,
+              target2: null
+            }
+          });
+        }
+
+        // 2. Add components for M-type LEGOs
+        if (legoType === 'M' && components.length > 0) {
+          for (let i = 0; i < components.length; i++) {
+            const component = components[i];
+            items.push({
+              id: `${legoId}-component-${i + 1}`,
+              type: 'component',
+              seedId,
+              legoId,
+              sequence: sequence++,
+              known: component.known,
+              target: component.target,
+              legoType,
+              is_component: true,
+              audio: {
+                presentation: null,
+                source: getAudioUUID(component.known, 'source'),
+                target1: getAudioUUID(component.target, 'target1'),
+                target2: getAudioUUID(component.target, 'target2')
+              }
+            });
+          }
+        }
+
+        // 3. Add LEGO debut (the full LEGO)
+        items.push({
+          id: `${legoId}-debut`,
+          type: 'debut',
+          seedId,
+          legoId,
+          sequence: sequence++,
+          known: basket.lego.known,
+          target: basket.lego.target,
+          legoType,
+          is_debut: true,
+          audio: {
+            presentation: null,
+            source: getAudioUUID(basket.lego.known, 'source'),
+            target1: getAudioUUID(basket.lego.target, 'target1'),
+            target2: getAudioUUID(basket.lego.target, 'target2')
+          }
+        });
+
+        // 4. Add practice phrases
+        if (basket.practice_phrases && basket.practice_phrases.length > 0) {
+          for (let i = 0; i < basket.practice_phrases.length; i++) {
+            const phrase = basket.practice_phrases[i];
+            items.push({
+              id: `${legoId}-practice-${i + 1}`,
+              type: 'practice_phrase',
+              seedId,
+              legoId,
+              sequence: sequence++,
+              known: phrase.known,
+              target: phrase.target,
+              legoType,
+              audio: {
+                presentation: null,
+                source: getAudioUUID(phrase.known, 'source'),
+                target1: getAudioUUID(phrase.target, 'target1'),
+                target2: getAudioUUID(phrase.target, 'target2')
+              }
+            });
+          }
+        }
+      }
+    }
+
+    // Return response
+    res.json({
+      success: true,
+      courseCode,
+      seedRange: {
+        start: startSeed,
+        end: endSeed
+      },
+      generatedAt: new Date().toISOString(),
+      totalItems: items.length,
+      items
+    });
+
+  } catch (error) {
+    console.error('[API] Error generating course script:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to generate course script',
+      message: error.message
+    });
+  }
+});
+
+/**
  * GET /api/courses/:code/prompt-evolution
  * Get prompt evolution data including learned rules and success rates
  */
@@ -10594,6 +10815,172 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
 });
 
 /**
+ * GET /api/audio/random-cycle/:courseCode
+ * Get a random complete learning cycle (source + target1 + target2 matching same text)
+ */
+app.get('/api/audio/random-cycle/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const manifestPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({ success: false, error: 'Course manifest not found' });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const samples = manifest.slices?.[0]?.samples || {};
+
+    // Find complete cycles (entries that have both source and target)
+    const completeCycles = [];
+
+    // Group by known text
+    const knownTexts = {};
+    for (const [text, sampleList] of Object.entries(samples)) {
+      for (const sample of sampleList) {
+        if (sample.role === 'source' && sample.id) {
+          if (!knownTexts[text]) knownTexts[text] = { known: text, sourceId: null, target1Id: null, target2Id: null, targetText: null };
+          knownTexts[text].sourceId = sample.id;
+        }
+      }
+    }
+
+    // Now find matching targets
+    for (const [text, sampleList] of Object.entries(samples)) {
+      for (const sample of sampleList) {
+        if ((sample.role === 'target1' || sample.role === 'target2') && sample.id) {
+          // Check if any known text maps to this target text
+          // For now, we'll assume target texts are unique and just find cycles
+          const cycle = { targetText: text, target1Id: null, target2Id: null };
+          for (const s of sampleList) {
+            if (s.role === 'target1') cycle.target1Id = s.id;
+            if (s.role === 'target2') cycle.target2Id = s.id;
+          }
+          if (cycle.target1Id && cycle.target2Id) {
+            // Find a matching source - look through seed_pairs to find known/target pairs
+            // For now, we'll just store the target info
+            completeCycles.push(cycle);
+          }
+        }
+      }
+    }
+
+    // Pick a random known text that has a source
+    const knownWithSource = Object.values(knownTexts).filter(k => k.sourceId);
+    if (knownWithSource.length === 0) {
+      return res.status(404).json({ success: false, error: 'No complete cycles found' });
+    }
+
+    // Pick random source entry
+    const randomIndex = Math.floor(Math.random() * knownWithSource.length);
+    const selected = knownWithSource[randomIndex];
+
+    // Try to find matching targets by loading seed_pairs
+    const seedPairsPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'seed_pairs.json');
+    let targetText = null;
+    if (await fs.pathExists(seedPairsPath)) {
+      const seedPairs = await fs.readJson(seedPairsPath);
+      const matchingPair = seedPairs.find(sp => sp.known === selected.known);
+      if (matchingPair) {
+        targetText = matchingPair.target;
+        // Look up target audio
+        const targetSamples = samples[targetText];
+        if (targetSamples) {
+          for (const s of targetSamples) {
+            if (s.role === 'target1') selected.target1Id = s.id;
+            if (s.role === 'target2') selected.target2Id = s.id;
+          }
+          selected.targetText = targetText;
+        }
+      }
+    }
+
+    console.log(`[Audio QA] Random cycle for ${courseCode}: source=${selected.sourceId}, target1=${selected.target1Id}`);
+
+    res.json({
+      success: true,
+      cycle: {
+        knownText: selected.known,
+        targetText: selected.targetText,
+        sourceId: selected.sourceId,
+        target1Id: selected.target1Id,
+        target2Id: selected.target2Id || selected.target1Id
+      }
+    });
+
+  } catch (err) {
+    console.error('[Audio QA] Error getting random cycle:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/audio/lookup/:courseCode
+ * Look up audio UUIDs by known and target text
+ * Body: { knownText: string, targetText: string }
+ */
+app.post('/api/audio/lookup/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { knownText, targetText } = req.body;
+
+  try {
+    const manifestPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({ success: false, error: 'Course manifest not found' });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const samples = manifest.slices?.[0]?.samples || {};
+
+    const result = {
+      sourceId: null,
+      target1Id: null,
+      target2Id: null
+    };
+
+    // Look up source audio by known text
+    if (knownText && samples[knownText]) {
+      for (const sample of samples[knownText]) {
+        if (sample.role === 'source' && sample.id) {
+          result.sourceId = sample.id;
+          break;
+        }
+      }
+    }
+
+    // Look up target audio by target text
+    if (targetText && samples[targetText]) {
+      for (const sample of samples[targetText]) {
+        if (sample.role === 'target1' && sample.id) {
+          result.target1Id = sample.id;
+        }
+        if (sample.role === 'target2' && sample.id) {
+          result.target2Id = sample.id;
+        }
+      }
+    }
+
+    // Fallback: target2 = target1 if not found
+    if (result.target1Id && !result.target2Id) {
+      result.target2Id = result.target1Id;
+    }
+
+    console.log(`[Audio Lookup] ${courseCode}: known="${knownText?.slice(0,30)}" target="${targetText?.slice(0,30)}" -> source=${result.sourceId}, target1=${result.target1Id}`);
+
+    res.json({
+      success: true,
+      audio: result,
+      hasAudio: !!(result.sourceId && result.target1Id)
+    });
+
+  } catch (err) {
+    console.error('[Audio Lookup] Error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
  * POST /api/audio/flag-sample
  * Flag a sample for review
  */
@@ -10626,6 +11013,168 @@ app.post('/api/audio/flag-sample', async (req, res) => {
   } catch (err) {
     console.error('[Audio QA] Error flagging sample:', err);
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/script
+ * Generate a learning script for a seed range
+ * Query params: startSeed (number), endSeed (number)
+ * Returns items ordered by: Seed > Introduction > Components > Debut > Practice
+ */
+app.get('/api/courses/:courseCode/script', async (req, res) => {
+  const { courseCode } = req.params;
+  const startSeed = parseInt(req.query.startSeed) || 1;
+  const endSeed = parseInt(req.query.endSeed) || 10;
+
+  try {
+    // Load lego_baskets.json
+    const basketsPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'lego_baskets.json');
+    const manifestPath = path.join(CONFIG.VFS_ROOT, 'courses', courseCode, 'course_manifest.json');
+
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({ error: 'LEGO baskets not found for course' });
+    }
+
+    const baskets = await fs.readJson(basketsPath);
+
+    // Load manifest for audio lookup (optional)
+    let manifest = null;
+    let samples = {};
+    if (await fs.pathExists(manifestPath)) {
+      manifest = await fs.readJson(manifestPath);
+      samples = manifest.slices?.[0]?.samples || {};
+    }
+
+    // Helper to get audio IDs for a phrase
+    const getAudioIds = (knownText, targetText) => {
+      let sourceId = null;
+      let target1Id = null;
+      let target2Id = null;
+
+      // Look up source audio by known text
+      if (knownText && samples[knownText]) {
+        for (const sample of samples[knownText]) {
+          if (sample.role === 'source' && sample.id) {
+            sourceId = sample.id;
+            break;
+          }
+        }
+      }
+
+      // Look up target audio by target text
+      if (targetText && samples[targetText]) {
+        for (const sample of samples[targetText]) {
+          if (sample.role === 'target1' && sample.id) {
+            target1Id = sample.id;
+          }
+          if (sample.role === 'target2' && sample.id) {
+            target2Id = sample.id;
+          }
+        }
+      }
+
+      // Fallback: target2 = target1 if not found
+      if (target1Id && !target2Id) {
+        target2Id = target1Id;
+      }
+
+      return { sourceId, target1Id, target2Id };
+    };
+
+    // Helper to check if audio exists for a phrase
+    const hasAudio = (knownText, targetText) => {
+      const audio = getAudioIds(knownText, targetText);
+      return !!(audio.sourceId && audio.target1Id);
+    };
+
+    // Filter baskets by seed range
+    const items = [];
+    const seedIds = new Set();
+
+    // Iterate through baskets in order
+    for (const [basketKey, basket] of Object.entries(baskets.baskets || {})) {
+      // Extract seed ID from basket key (e.g., S0001L01 -> S0001)
+      const seedMatch = basketKey.match(/^(S\d{4})/);
+      if (!seedMatch) continue;
+
+      const seedId = seedMatch[1];
+      const seedNum = parseInt(seedId.replace('S', ''));
+
+      // Check if in range
+      if (seedNum < startSeed || seedNum > endSeed) continue;
+
+      seedIds.add(seedId);
+
+      const lego = basket.lego;
+      const phrases = basket.practice_phrases || [];
+
+      // 1. Add Introduction (known-only priming for the LEGO)
+      const introAudio = getAudioIds(lego.known, lego.target);
+      items.push({
+        uuid: `${basketKey}_intro`,
+        seedId,
+        legoKey: basketKey,
+        type: 'introduction',
+        knownText: lego.known,
+        targetText: lego.target,
+        sourceId: introAudio.sourceId,
+        target1Id: introAudio.target1Id,
+        target2Id: introAudio.target2Id,
+        hasAudio: !!(introAudio.sourceId && introAudio.target1Id),
+        order: seedNum * 1000 + 0  // Introduction comes first
+      });
+
+      // 2. Add phrases in order: components, debut, practice
+      phrases.forEach((phrase, idx) => {
+        const isDebut = phrase.known === lego.known && phrase.target.toLowerCase() === lego.target.toLowerCase();
+        const isComponent = phrase.is_component === true;
+
+        let phraseType = 'practice';
+        let orderOffset = 300 + idx;  // Practice items come after debut
+
+        if (isComponent) {
+          phraseType = 'component';
+          orderOffset = 100 + idx;  // Components first
+        } else if (isDebut) {
+          phraseType = 'debut';
+          orderOffset = 200;  // Debut after components
+        }
+
+        const phraseAudio = getAudioIds(phrase.known, phrase.target);
+        items.push({
+          uuid: `${basketKey}_p${idx}`,
+          seedId,
+          legoKey: basketKey,
+          type: phraseType,
+          knownText: phrase.known,
+          targetText: phrase.target,
+          sourceId: phraseAudio.sourceId,
+          target1Id: phraseAudio.target1Id,
+          target2Id: phraseAudio.target2Id,
+          hasAudio: !!(phraseAudio.sourceId && phraseAudio.target1Id),
+          order: seedNum * 1000 + orderOffset
+        });
+      });
+    }
+
+    // Sort items by order
+    items.sort((a, b) => a.order - b.order);
+
+    console.log(`[Script] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed}`);
+
+    res.json({
+      courseCode,
+      startSeed,
+      endSeed,
+      seedCount: seedIds.size,
+      itemCount: items.length,
+      items
+    });
+
+  } catch (err) {
+    console.error('[Script] Error generating script:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 

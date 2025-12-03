@@ -18,6 +18,7 @@ import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
 import RecordingStudio from '../views/RecordingStudio.vue'
 import UserManagement from '../views/UserManagement.vue'
+import CourseScriptView from '../views/CourseScriptView.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -70,6 +71,13 @@ const routes = [
     name: 'CourseEditor',
     component: CourseEditor,
     props: true
+  },
+  {
+    path: '/courses/:courseCode/script',
+    name: 'CourseScriptView',
+    component: CourseScriptView,
+    props: true,
+    meta: { title: 'Course Script Viewer' }
   },
   {
     path: '/courses/:code/progress',

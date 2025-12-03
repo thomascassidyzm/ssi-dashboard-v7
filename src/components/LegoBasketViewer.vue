@@ -375,6 +375,14 @@
                       </div>
                     </div>
                     <div class="flex items-center gap-2">
+                      <!-- Audio preview button -->
+                      <button
+                        @click.stop="openAudioPreview(phrase)"
+                        class="text-sm text-blue-400 hover:text-blue-300 hover:scale-110 transition-all opacity-60 hover:opacity-100"
+                        title="Preview audio cycle"
+                      >
+                        ▶
+                      </button>
                       <!-- Delete button in edit mode -->
                       <button
                         v-if="editMode[seedData.seedId]"
@@ -441,6 +449,28 @@
     <div v-else class="text-center py-12 text-slate-400">
       <div class="text-lg">Select a batch to view seeds</div>
     </div>
+
+    <!-- Audio Preview Modal -->
+    <teleport to="body">
+      <div v-if="showAudioPreview" class="audio-preview-modal-overlay" @click.self="closeAudioPreview">
+        <div class="audio-preview-modal">
+          <div class="modal-header">
+            <h3 class="text-lg font-bold text-emerald-400">Audio Preview</h3>
+            <button @click="closeAudioPreview" class="text-slate-400 hover:text-white text-xl">✕</button>
+          </div>
+          <div class="modal-content">
+            <AudioPreviewPlayer
+              v-if="previewPhrase"
+              :known-text="previewPhrase.known"
+              :target-text="previewPhrase.target"
+              :course-code="selectedCourseCode"
+              @close="closeAudioPreview"
+              @cycle-complete="closeAudioPreview"
+            />
+          </div>
+        </div>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -448,11 +478,15 @@
 import api from '@/services/api'
 import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
 import { useToast } from 'vue-toastification'
+import AudioPreviewPlayer from './AudioPreviewPlayer.vue'
 
 const toast = useToast()
 
 export default {
   name: 'LegoBasketViewer',
+  components: {
+    AudioPreviewPlayer
+  },
   props: {
     courseCode: {
       type: String,
@@ -477,7 +511,10 @@ export default {
       editedPhrases: {}, // Track edited phrase text {seedId_legoKey_idx: {known: '', target: ''}}
       deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
       hasUnsavedChanges: {}, // Track which seeds have unsaved changes {seedId: true}
-      recompilingManifest: false // Track if Manifest recompilation is in progress
+      recompilingManifest: false, // Track if Manifest recompilation is in progress
+      // Audio preview
+      showAudioPreview: false,
+      previewPhrase: null
     }
   },
   computed: {
@@ -965,6 +1002,18 @@ export default {
       } finally {
         this.recompilingManifest = false
       }
+    },
+    // Audio preview methods
+    openAudioPreview(phrase) {
+      this.previewPhrase = {
+        known: phrase.known || phrase[0],
+        target: phrase.target || phrase[1]
+      }
+      this.showAudioPreview = true
+    },
+    closeAudioPreview() {
+      this.showAudioPreview = false
+      this.previewPhrase = null
     }
   }
 }
@@ -977,5 +1026,42 @@ export default {
 
 table {
   @apply border-collapse;
+}
+
+/* Audio Preview Modal */
+.audio-preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.audio-preview-modal {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  width: min(90vw, 440px);
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #334155;
+}
+
+.modal-content {
+  padding: 0;
 }
 </style>

@@ -1239,5 +1239,14 @@ export default {
       reason
     })
     return response.data
+  },
+
+  // Lookup audio UUIDs by known and target text
+  async lookupAudio(courseCode, knownText, targetText) {
+    const response = await api.post(`/api/audio/lookup/${courseCode}`, {
+      knownText,
+      targetText
+    })
+    return response.data
   }
 }

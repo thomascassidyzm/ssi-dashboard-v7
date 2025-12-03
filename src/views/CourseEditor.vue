@@ -24,6 +24,15 @@
           </div>
           <div class="flex items-center gap-3">
             <router-link
+              :to="`/courses/${courseCode}/script`"
+              class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+              </svg>
+              Script Viewer
+            </router-link>
+            <router-link
               :to="generatorLink"
               class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
