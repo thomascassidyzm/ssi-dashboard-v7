@@ -228,29 +228,22 @@ async function getVoiceAssignments(courseCode) {
 
   // Extract language pair from manifest (known-target format, e.g., "en-es")
   const languagePair = `${manifest.known}-${manifest.target}`;
-  const reversePair = `${manifest.target}-${manifest.known}`;
 
-  // 1. Try language pair assignments first (new preferred method)
+  // 1. Course-specific assignments take priority (allows overrides per course)
+  if (registry.course_assignments && registry.course_assignments[courseCode]) {
+    console.log(`✓ Using course-specific voice assignments for: ${courseCode}`);
+    return registry.course_assignments[courseCode];
+  }
+
+  // 2. Fall back to language pair assignments (default for all courses with this pair)
   if (registry.language_pair_assignments && registry.language_pair_assignments[languagePair]) {
     console.log(`✓ Using voice assignments for language pair: ${languagePair}`);
     return registry.language_pair_assignments[languagePair];
   }
 
-  // 2. Check if reverse pair exists (e.g., "es-en" when we need "en-es")
-  if (registry.language_pair_assignments && registry.language_pair_assignments[reversePair]) {
-    console.log(`⚠️  Language pair ${languagePair} not found.`);
-    console.log(`   Found reverse pair: ${reversePair}`);
-    console.log(`   Note: Using the same voices for reversed language pairs usually works,`);
-    console.log(`   but you may want to configure specific voices for ${languagePair}.`);
-    console.log(`   Using ${reversePair} voices for now.\n`);
-    return registry.language_pair_assignments[reversePair];
-  }
-
-  // 3. Fall back to course-specific assignments (legacy/backward compatibility)
-  if (registry.course_assignments && registry.course_assignments[courseCode]) {
-    console.log(`✓ Using course-specific voice assignments for: ${courseCode}`);
-    return registry.course_assignments[courseCode];
-  }
+  // NOTE: We intentionally do NOT fall back to reverse pairs (e.g., using "en-es" for "es-en")
+  // because source/presentation voices must match the KNOWN language, not the target.
+  // Each language pair direction needs explicit configuration.
 
   // No assignments found - error and instruct user to configure voices first
   throw new Error(
