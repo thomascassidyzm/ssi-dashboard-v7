@@ -23,14 +23,14 @@
               Regenerate Manifest
             </button>
             <button
-              @click="pushToGitHub"
-              :disabled="pushing"
-              class="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-800 disabled:text-slate-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
-              title="Push all course data to GitHub (Vercel will auto-deploy)"
+              @click="syncToS3"
+              :disabled="syncing"
+              class="bg-amber-600 hover:bg-amber-700 disabled:bg-slate-800 disabled:text-slate-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
+              title="Sync local course files to S3 (SSoT)"
             >
-              <span v-if="pushing">⏳</span>
-              <span v-else>📤</span>
-              Push to GitHub
+              <span v-if="syncing">⏳</span>
+              <span v-else>☁️</span>
+              Sync to S3
             </button>
           </div>
         </div>
@@ -168,56 +168,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Push to GitHub Confirmation Modal -->
-    <div
-      v-if="showPushModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-      @click.self="showPushModal = false"
-    >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-lg w-full shadow-2xl">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-emerald-400 mb-4">📤 Push to GitHub?</h3>
-
-          <div class="mb-6 space-y-3">
-            <p class="text-slate-300">
-              This will commit and push all course data changes to GitHub.
-            </p>
-
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <p class="text-sm font-medium text-slate-400 mb-2">What happens next:</p>
-              <ul class="text-sm text-slate-300 space-y-1">
-                <li>✓ Commits changes to <code class="text-emerald-400">public/vfs/courses/</code></li>
-                <li>✓ Pushes to <code class="text-emerald-400">main</code> branch</li>
-                <li>✓ Triggers Vercel deployment (~30s)</li>
-                <li>✓ Dashboard shows latest data</li>
-              </ul>
-            </div>
-
-            <p class="text-xs text-slate-500">
-              Note: If no changes exist, this will skip the commit.
-            </p>
-          </div>
-
-          <div class="flex gap-3 justify-end">
-            <button
-              @click="showPushModal = false"
-              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              @click="confirmPush"
-              :disabled="pushing"
-              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition-colors font-medium"
-            >
-              <span v-if="pushing">Pushing...</span>
-              <span v-else>Push to GitHub</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -251,9 +201,8 @@ const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
 const regenerating = ref(false)
-const pushing = ref(false)
+const syncing = ref(false)
 const searchQuery = ref('')
-const showPushModal = ref(false)
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
 // Computed: Filtered courses based on search query
@@ -429,33 +378,52 @@ async function regenerateManifest() {
   }
 }
 
-function pushToGitHub() {
-  showPushModal.value = true
-}
-
-async function confirmPush() {
-  pushing.value = true
+async function syncToS3() {
+  // Sync all courses that have local changes to S3
+  syncing.value = true
   try {
-    const response = await api.pushAllCourses()
+    let totalSynced = 0
+    let totalSkipped = 0
+    let errors = []
 
-    if (response.skipped) {
-      toast.info('ℹ️ No changes to push')
-    } else {
-      toast.success('✅ All course data pushed to GitHub! Vercel will deploy automatically.')
+    // Sync each course that is loaded
+    for (const course of courses.value) {
+      try {
+        const response = await fetch(`/api/courses/${course.course_code}/sync`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ force: false })
+        })
+
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}))
+          errors.push({ course: course.course_code, error: data.error || response.statusText })
+          continue
+        }
+
+        const result = await response.json()
+        totalSynced += result.synced?.length || 0
+        totalSkipped += result.skipped?.length || 0
+
+      } catch (err) {
+        errors.push({ course: course.course_code, error: err.message })
+      }
     }
 
-    showPushModal.value = false
+    // Show result
+    if (errors.length > 0) {
+      toast.warning(`⚠️ Synced with ${errors.length} error(s). ${totalSynced} files uploaded.`)
+    } else if (totalSynced === 0) {
+      toast.info('ℹ️ All files already in sync with S3')
+    } else {
+      toast.success(`✅ Synced ${totalSynced} files to S3`)
+    }
+
   } catch (err) {
-    console.error('Failed to push to GitHub:', err)
-    if (err.response?.status === 404) {
-      toast.error('❌ Orchestrator doesn\'t support GitHub push. Make sure it\'s running and up to date.')
-    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
-      toast.error('❌ Cannot reach orchestrator.')
-    } else {
-      toast.error('❌ Failed to push to GitHub')
-    }
+    console.error('Failed to sync to S3:', err)
+    toast.error('❌ Failed to sync to S3: ' + err.message)
   } finally {
-    pushing.value = false
+    syncing.value = false
   }
 }
 </script>
