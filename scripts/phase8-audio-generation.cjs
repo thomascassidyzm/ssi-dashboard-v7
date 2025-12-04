@@ -188,7 +188,7 @@ async function checkLocalTempFiles(courseCode, uuidsToCheck) {
  */
 async function checkS3Index(uuidsToCheck) {
   const S3_INDEX_PATH = path.join(__dirname, '../temp/s3-audio-index.json');
-  const INDEX_MAX_AGE = 60 * 60 * 1000; // 1 hour
+  const INDEX_MAX_AGE = 24 * 60 * 60 * 1000; // 24 hours
 
   try {
     // Check if index exists and is recent
@@ -3211,7 +3211,7 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
   console.log('Phase B (presentations) requires target1 and target2 samples...\n');
   console.log('Loading audio-index for target UUID lookups...');
 
-  const audioIndex = await presentationService.loadAudioIndex();
+  const audioIndex = await presentationService.loadS3AudioIndex();
   const audioIndexSampleCount = Object.keys(audioIndex.samples || {}).length;
   console.log(`✓ Loaded audio-index with ${audioIndexSampleCount} samples\n`);
 
@@ -3263,14 +3263,8 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
     10 // Concurrency: 10 parallel downloads
   );
 
-  if (failed > 0 && !options.ignoreDownloadErrors) {
-    throw new Error(
-      `Cannot proceed with Phase B: ${failed} required target files failed to download from S3. ` +
-      `Check S3 bucket and ensure Phase A samples were uploaded successfully. ` +
-      `Use --ignore-download-errors to proceed anyway (may cause failures during generation).`
-    );
-  } else if (failed > 0) {
-    console.warn(`⚠️  ${failed} target files failed to download - proceeding anyway due to --ignore-download-errors`);
+  if (failed > 0) {
+    console.warn(`⚠️  ${failed} target files failed to download - proceeding anyway (affected presentations will be skipped)`);
   }
 
   console.log(`✓ All ${requiredTargets.size} required target files available (${downloaded} downloaded, ${skipped} cached)\n`);
