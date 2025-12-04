@@ -2,8 +2,9 @@
 
 **Navigation Guide for All Architecture Documents**
 
-Version: 1.0.0
+Version: 2.0.0
 Date: 2025-12-04
+Pipeline: Supabase-backed (APML v10.2)
 
 ---
 

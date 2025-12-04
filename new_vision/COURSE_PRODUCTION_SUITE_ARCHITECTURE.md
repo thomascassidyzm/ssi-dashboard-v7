@@ -1,9 +1,10 @@
 # Course Production Suite Architecture
 **Integrated QA, Recording, and Audio Pipeline System**
 
-Version: 1.0.0
+Version: 2.0.0
 Date: 2025-12-04
 Status: Architecture Design
+Pipeline: Supabase-backed (APML v10.2)
 
 ---
 
@@ -70,12 +71,16 @@ This document defines how these components share data, communicate, and present 
                                   │
                                   ▼
                     ┌──────────────────────────┐
-                    │    S3 Storage (SSoT)     │
-                    │  bucket: popty-bach-lfs  │
+                    │   Storage (SSoT)         │
                     ├──────────────────────────┤
+                    │ Supabase:                │
+                    │ • audio_samples (MAR)    │
+                    │ • sample_flags (QA)      │
+                    │ • voices (registry)      │
+                    │                          │
+                    │ S3 (popty-bach-lfs):     │
                     │ • course_manifest.json   │
                     │ • mastered/{uuid}.mp3    │
-                    │ • sample_flags.json      │
                     └──────────────────────────┘
 ```
 
@@ -83,15 +88,19 @@ This document defines how these components share data, communicate, and present 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    SINGLE SOURCE OF TRUTH (S3)                       │
+│                    SINGLE SOURCE OF TRUTH                            │
 │                                                                      │
-│  courses/{code}/                                                     │
-│    ├── course_manifest.json      ← Phase 7 output (includes UUIDs) │
-│    ├── sample_flags.json          ← QA decisions & status tracking  │
-│    └── audio_metadata.json        ← Duration, voice_id, timestamps  │
+│  Supabase (Master Audio Registry):                                  │
+│    ├── audio_samples             ← All audio metadata + UUIDs       │
+│    ├── sample_flags              ← QA decisions & status tracking   │
+│    ├── voices                    ← TTS & human voice registry       │
+│    └── course_audio_usage        ← Which courses use which audio    │
 │                                                                      │
-│  ssiborg-assets/                                                     │
-│    └── mastered/{uuid}.mp3        ← All audio files (TTS + human)  │
+│  S3 (popty-bach-lfs):                                               │
+│    ├── courses/{code}/                                              │
+│    │   ├── lego_baskets.json     ← Phase 3 output                  │
+│    │   └── course_manifest.json  ← Phase 9 output                  │
+│    └── ssiborg-assets/mastered/{uuid}.mp3  ← Audio files           │
 └─────────────────────────────────────────────────────────────────────┘
                     │
                     │ (All tools read/write through API)
@@ -164,9 +173,12 @@ ssiborg-assets/
       └── f7e8d9c0-b1a2-3456.mp3
 ```
 
-### sample_flags.json Schema
+### sample_flags Table Schema (Supabase)
+
+**Note:** Sample flags are now stored in Supabase `sample_flags` table, not JSON files.
 
 ```json
+// Example row structure (stored in Supabase)
 {
   "version": "1.0.0",
   "course_code": "spa_for_eng",

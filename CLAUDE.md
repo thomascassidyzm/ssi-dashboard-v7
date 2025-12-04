@@ -52,12 +52,13 @@ Solve problems autonomously and proceed to the next workflow step without human 
 
 ### Quick Facts
 - **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio (APML v10.1)
+- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Phase 8 (Audio) → Phase 9 (Manifest) (APML v10.2)
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
-- **Storage**: S3 as Single Source of Truth (popty-bach-lfs, eu-west-1)
+- **Storage**: S3 for files (popty-bach-lfs, eu-west-1), **Supabase for audio registry**
 - **Orchestrator**: Port 3456
+- **Audio/Manifest**: Supabase-backed (Ports 3465, 3466)
 
 ---
 
@@ -124,20 +125,27 @@ Orchestration, automation, and processing services.
 ```
 services/
 ├── orchestration/       # Multi-agent coordination (Port 3456)
-├── phases/             # Phase servers (APML v10.1)
+├── phases/             # Phase servers (APML v10.2)
 │   ├── phase1-translation/       # Port 3457: Translation + LEGO Extraction
 │   ├── phase1-lego-extraction/   # Port 3458: Conflict Resolution (Phase 2)
 │   ├── phase3-basket-generation/ # Port 3459: Basket Generation (Phase 3)
-│   ├── manifest-compilation/     # Port 3464: Manifest Compilation (script)
-│   └── audio-server.cjs          # Port 3465: TTS Generation (script)
+│   ├── manifest-compilation/     # Port 3464: Legacy Manifest (deprecated)
+│   ├── phase8-audio-supabase.cjs # Port 3465: Audio Generation (Supabase)
+│   └── phase9-manifest-supabase.cjs # Port 3466: Manifest Compilation (Supabase)
+├── supabase-client.cjs  # Shared Supabase client configuration
 └── web/                # Web services
 ```
 
-**Manifest Compilation Service** (`services/phases/manifest-compilation/`)
-- Transforms Phase 3 outputs into final APML manifests
-- Generates deterministic UUIDs (SSi legacy format)
-- Embeds language-specific encouragements
-- Separate from legacy manifest generation implementations
+**Phase 8 Audio Generation** (`services/phases/phase8-audio-supabase.cjs`)
+- Reads `lego_baskets.json` directly (not manifest)
+- Generates TTS audio (Azure/ElevenLabs)
+- Stores audio files in S3, records in Supabase `audio_samples` table
+- Deduplicates audio across courses
+
+**Phase 9 Manifest Compilation** (`services/phases/phase9-manifest-supabase.cjs`)
+- Queries Supabase for audio UUIDs by text+role
+- Validates 100% audio coverage
+- Outputs final `course_manifest.json`
 
 #### `public/vfs/courses/` - Course Data
 Language course data organized by language pair (e.g., `spa_for_eng/`).
@@ -174,18 +182,18 @@ If you're generating files, verify they're in gitignored directories.
 
 APML is our custom format for language learning content. Key concepts:
 
-### **Phase Outputs (APML v10.1)**
+### **Phase Outputs (APML v10.2)**
 - **Phase 1 (Translation + LEGO Extraction)**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
 - **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs (SSoT)
 - **Phase 3 (Basket Generation)**: `lego_baskets.json` - Practice baskets with LEGO Debut cycle
-- **Manifest (Script)**: `course_manifest.json` - Compiled for audio generation
-- **Audio (Script/TTS)**: `mastered/{uuid}.mp3` - Generated audio files
+- **Phase 8 (Audio Generation)**: Supabase `audio_samples` table + S3 `mastered/{uuid}.mp3`
+- **Phase 9 (Manifest Compilation)**: `course_manifest.json` - Compiled by looking up UUIDs from Supabase
 
 ### **LEGO Types**
 - **A-type (Atomic)**: Single words (e.g., "want" / "quiero")
 - **M-type (Molecular)**: Multi-word phrases (e.g., "I want to" / "quiero")
 
-### **Basket Cycle Sequence (v10.1)**
+### **Basket Cycle Sequence (v10.2)**
 For M-type LEGOs, baskets follow this order:
 1. **Components** (is_component: true) - Building blocks
 2. **LEGO Debut** (is_debut: true) - The complete LEGO
@@ -206,8 +214,28 @@ A "Phase" = one server = one prompt = one agent job
 | 3457 | 1 | Translation + LEGO Extraction |
 | 3458 | 2 | Conflict Resolution |
 | 3459 | 3 | Basket Generation |
-| 3464 | - | Manifest Compilation (script) |
-| 3465 | - | Audio/TTS Generation (script) |
+| 3464 | - | Legacy Manifest (deprecated) |
+| **3465** | **8** | **Audio Generator (Supabase)** |
+| **3466** | **9** | **Manifest Compiler (Supabase)** |
+| **3470** | **-** | **Production API (QA + WebSocket)** |
+
+### **Environment Variables**
+
+```bash
+# Supabase Configuration (required for Phase 8 & 9)
+SUPABASE_URL=https://xxxxx.supabase.co
+SUPABASE_SERVICE_KEY=sb_secret_xxxxx
+
+# TTS APIs
+AZURE_SPEECH_KEY=xxxxx
+AZURE_SPEECH_REGION=westeurope
+ELEVENLABS_API_KEY=xxxxx
+
+# S3 Configuration
+AWS_ACCESS_KEY_ID=xxxxx
+AWS_SECRET_ACCESS_KEY=xxxxx
+AWS_REGION=eu-west-1
+```
 
 **📖 For deep dive**: See `docs/architecture/`, `docs/PHASE_SERVER_ARCHITECTURE.md`, and `apml/` directory.
 
@@ -341,19 +369,40 @@ node tools/orchestrators/automation_server.cjs
 # Server merges completed work automatically
 ```
 
-### **4. Audio Generation (TTS)**
+### **4. Audio Generation (Supabase-backed)**
 
 📖 **Read the workflow doc**: `docs/workflows/AUDIO_GENERATION_WORKFLOW.md`
 
-This is the single source of truth for the complete audio generation workflow, including preflight checks, QC gates, and post-generation steps.
+The audio pipeline now uses Supabase as the Master Audio Registry (MAR):
 
-**Quick start:**
+**Phase 8: Audio Generation**
 ```bash
-node scripts/phase8-audio-generation.cjs <course_code> --plan   # Show plan (requires approval)
-node scripts/phase8-audio-generation.cjs <course_code> --execute # After approval
+# Start audio generation service
+node services/phases/phase8-audio-supabase.cjs
+
+# API Endpoints (port 3465):
+POST /generate              # Start audio generation
+GET  /status/:courseCode    # Check job status
+GET  /health                # Health check
 ```
 
-⚠️ **Remember**: Never run `--execute` without user approval. See Critical Rules above.
+**Phase 9: Manifest Compilation**
+```bash
+# Start manifest compilation service
+node services/phases/phase9-manifest-supabase.cjs
+
+# API Endpoints (port 3466):
+POST /compile               # Compile manifest from Supabase
+GET  /validate/:courseCode  # Validate audio coverage
+GET  /health                # Health check
+```
+
+**Flow:**
+1. Phase 8 reads `lego_baskets.json` and generates TTS audio
+2. Audio files uploaded to S3, records inserted into Supabase
+3. Phase 9 queries Supabase for UUIDs and compiles `course_manifest.json`
+
+⚠️ **Remember**: Audio generation costs money (TTS API calls). Always require user approval.
 
 ---
 
@@ -539,4 +588,5 @@ You're doing well if:
 
 **Welcome to the team! Keep the mojo alive, keep the repo clean. 🚀**
 
-*Last updated: 2025-11-26*
+*Last updated: 2025-12-04*
+*APML: v10.2 | Pipeline: v2.0 (Supabase-backed)*

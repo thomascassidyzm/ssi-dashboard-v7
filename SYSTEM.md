@@ -1,9 +1,10 @@
 # SSi Dashboard v7 - System Documentation
 
-**Last Updated:** 2025-11-21
+**Last Updated:** 2025-12-04
 **Status:** Working ✅
-**Architecture:** Microservices + Standalone Scripts + Canonical Content + Live Progress Monitoring
-**APML Version:** v8.2.3
+**Architecture:** Microservices + Supabase Audio Pipeline + S3 Storage
+**APML Version:** v10.2
+**Pipeline Version:** v2.0 (Supabase-backed)
 
 ---
 
@@ -157,7 +158,7 @@ The system automatically discovers courses by scanning `public/vfs/courses/` and
 
 ## Pipeline Architecture
 
-### Active Workflow: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+### Active Workflow: Phase 1 → 3 → 8 → 9
 
 ```
 Canonical Content (3 inputs)
@@ -165,44 +166,73 @@ Canonical Content (3 inputs)
     ├── eng_encouragements.json
     └── welcomes.json
          ↓
-Phase 1: Translation (Port 3457)
+Phase 1: Translation + LEGO Extraction (Port 3457)
     ├── Substitutes {target} placeholders
     ├── Translates 668 seeds to target language
-    └── Outputs: seed_pairs.json
-         ↓
-Phase 3: LEGO Extraction + Introductions (Port 3458)
     ├── Extracts LEGO components
-    ├── Generates introduction presentations
-    └── Outputs: lego_pairs.json + introductions.json
+    └── Outputs: draft_lego_pairs.json (may have conflicts)
          ↓
-Phase 5: Basket Generation (Port 3459)
-    ├── Generates practice phrases
+Phase 2: Conflict Resolution (Port 3458)
+    ├── Resolves LEGO conflicts
+    └── Outputs: lego_pairs.json (SSoT)
+         ↓
+Phase 3: Basket Generation (Port 3459)
+    ├── Generates practice phrases with LEGO Debut cycle
     └── Outputs: lego_baskets.json
          ↓
-Phase 7: Manifest Compilation (Port 3462)
-    ├── Compiles all phase outputs
-    ├── Generates deterministic UUIDs
-    ├── Creates placeholders for Phase 8
-    └── Outputs: course_manifest.json
+Phase 8: Audio Generation (Port 3465) ← NEW: Supabase-backed
+    ├── Reads lego_baskets.json (NOT manifest)
+    ├── For each unique (text, lang, role):
+    │   ├── Generate deterministic UUID
+    │   ├── Check Supabase - if exists, SKIP
+    │   ├── Generate TTS (Azure/ElevenLabs)
+    │   └── Upload to S3, insert into Supabase
+    └── Outputs: audio files to S3, records to Supabase
          ↓
-Phase 8: Audio/TTS Generation (Port 3463)
-    ├── Reads manifest samples object
-    ├── Generates ~110,000 audio files
-    ├── Uploads to S3
-    └── Optionally populates duration fields
+Phase 9: Manifest Compilation (Port 3466) ← NEW: Supabase-backed
+    ├── Queries Supabase for all audio samples
+    ├── Builds manifest by looking up UUIDs
+    ├── Validates 100% audio coverage
+    └── Outputs: course_manifest.json
+
+Production API (Port 3470)
+    ├── QA workflow (sample flagging)
+    ├── WebSocket for real-time updates
+    └── Course production status
 ```
 
-### Phase Server Ports
+### Phase Server Ports (Updated)
 
-| Phase | Server | Port | Status |
-|-------|--------|------|--------|
-| 1 | Translation (includes Phase 2 LUT) | 3457 | ✅ Active |
-| 3 | LEGO Extraction (includes Phase 6) | 3458 | ✅ Active |
-| 5 | Basket Generation | 3459 | ✅ Active |
-| 7 | Manifest Compilation | 3462 | ✅ Active |
-| 8 | Audio/TTS Generation | 3463 | 🔧 In Development (Kai) |
+| Port | Phase | Description | Status |
+|------|-------|-------------|--------|
+| 3456 | - | Orchestrator | ✅ Active |
+| 3457 | 1 | Translation + LEGO Extraction | ✅ Active |
+| 3458 | 2 | Conflict Resolution | ✅ Active |
+| 3459 | 3 | Basket Generation | ✅ Active |
+| 3464 | - | Legacy Manifest (deprecated) | ⚠️ Deprecated |
+| **3465** | **8** | **Audio Generator (Supabase)** | ✅ Active |
+| **3466** | **9** | **Manifest Compiler (Supabase)** | ✅ Active |
+| **3470** | **-** | **Production API (QA + WebSocket)** | ✅ Active |
 
-**Note**: Phase 6 (introductions) is integrated into Phase 3 server and runs automatically after LEGO extraction (<1s overhead).
+### Architecture Change Summary
+
+**Old Architecture (Deprecated):**
+```
+Phase 7 (Manifest) → Phase 8 (Audio) → MAR (JSON files)
+```
+- Manifest compiled first with UUIDs
+- Audio generated after manifest
+- MAR was JSON file-based (audio_index.json)
+- Vulnerable to data loss, no proper database
+
+**New Architecture (Current - v2.0):**
+```
+lego_baskets.json → Phase 8 (Audio Gen) → Supabase + S3 → Phase 9 (Manifest)
+```
+- Audio generated directly from baskets
+- Supabase is source of truth for audio samples
+- Manifest compiled last by looking up UUIDs from Supabase
+- Proper database with RLS, realtime, audit trails
 
 ### Canonical Content System
 
@@ -225,6 +255,89 @@ Phase 8: Audio/TTS Generation (Port 3463)
 - `welcomes.json` - Course introduction template
 
 **See**: `public/docs/phase_intelligence/CANONICAL_CONTENT.md` for details.
+
+---
+
+## Supabase Integration
+
+### Overview
+
+Supabase serves as the **Master Audio Registry (MAR)** and QA workflow database. It replaces the previous JSON file-based MAR system.
+
+### Environment Variables
+
+```bash
+SUPABASE_URL=https://xxxxx.supabase.co
+SUPABASE_SERVICE_KEY=sb_secret_xxxxx
+```
+
+### Database Schema
+
+```
+Tables:
+├── voices              # TTS and human voice registry
+│   ├── id              # e.g., "azure_es_ES_female"
+│   ├── provider        # azure, elevenlabs, human
+│   ├── language        # ISO 639-3 code
+│   └── config          # Provider-specific settings
+│
+├── audio_samples       # Master Audio Registry (MAR)
+│   ├── uuid            # Deterministic: hash(voice|text|lang|role|cadence)
+│   ├── text            # Normalized text
+│   ├── language        # ISO 639-3 code
+│   ├── role            # target1, target2, source, presentation
+│   ├── voice_id        # FK to voices
+│   ├── s3_key          # Path in S3 bucket
+│   ├── duration_ms     # Audio duration
+│   └── created_at      # Timestamp
+│
+├── course_audio_usage  # Which courses use which audio
+│   ├── course_code     # e.g., spa_for_eng
+│   ├── sample_uuid     # FK to audio_samples
+│   └── usage_count     # How many times in course
+│
+├── sample_flags        # QA workflow state
+│   ├── uuid            # FK to audio_samples
+│   ├── status          # pending, flagged, approved, etc.
+│   ├── notes           # Reviewer notes
+│   ├── flagged_by      # User email
+│   └── history         # Status change log
+│
+└── courses             # Course configuration
+    ├── code            # e.g., spa_for_eng
+    ├── target_lang     # ISO 639-3
+    ├── known_lang      # ISO 639-3
+    └── status          # draft, production, published
+```
+
+### Key Queries
+
+**Check if audio exists:**
+```sql
+SELECT uuid, s3_key FROM audio_samples
+WHERE text = $1 AND language = $2 AND role = $3 AND voice_id = $4;
+```
+
+**Get all audio for course manifest:**
+```sql
+SELECT s.uuid, s.text, s.role, s.duration_ms
+FROM audio_samples s
+JOIN course_audio_usage u ON s.uuid = u.sample_uuid
+WHERE u.course_code = $1;
+```
+
+**Flag sample for regeneration:**
+```sql
+UPDATE sample_flags
+SET status = 'flagged_regen_tts', notes = $2, flagged_by = $3
+WHERE uuid = $1;
+```
+
+### Services
+
+- `services/phases/phase8-audio-supabase.cjs` - Audio generation with Supabase
+- `services/phases/phase9-manifest-supabase.cjs` - Manifest compilation from Supabase
+- `services/supabase-client.cjs` - Shared Supabase client configuration
 
 ---
 
