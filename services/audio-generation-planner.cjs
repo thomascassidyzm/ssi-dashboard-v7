@@ -32,6 +32,7 @@ const PRICING = {
       pro: { chars: 500000, cost: 99, overage: 0.24 },         // $0.24 per 1k chars
       scale: { chars: 2000000, cost: 330, overage: 0.18 },     // $0.18 per 1k chars
       business: { chars: 11000000, cost: 1320, overage: 0.18 }, // $0.18 per 1k chars
+      growth: { chars: 2000000, cost: 300, overage: 0.15 },    // SSi's actual plan: 2M chars, $300/mo
       growing_business: { chars: 2270218, cost: 99, overage: 0.18 } // Growing business tier
     },
     rate_limits: {
@@ -41,6 +42,7 @@ const PRICING = {
       pro: 5,        // 5 req/sec
       scale: 8,      // 8 req/sec
       business: 15,  // 15 req/sec
+      growth: 8,     // SSi's growth plan rate limit
       growing_business: 10 // ~10 req/sec for growing business
     }
   }

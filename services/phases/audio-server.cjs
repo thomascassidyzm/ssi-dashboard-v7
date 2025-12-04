@@ -177,27 +177,44 @@ app.post('/plan', async (req, res) => {
       const voiceId = voices[role] || '';
       if (voiceId.startsWith('elevenlabs_')) return 'elevenlabs';
       if (voiceId.startsWith('azure_')) return 'azure';
-      return 'azure'; // default to azure (free)
+      return 'azure'; // default to azure
     };
 
     let azureCount = 0;
     let elevenLabsCount = 0;
+    let azureChars = 0;
+    let elevenLabsChars = 0;
+    const AVG_CHARS_PER_SAMPLE = 25; // Average characters per sample
+
     for (const sample of toGenerateList) {
       const provider = getProvider(sample.role);
+      const textLen = sample.text?.length || AVG_CHARS_PER_SAMPLE;
       if (provider === 'elevenlabs') {
         elevenLabsCount++;
+        elevenLabsChars += textLen;
       } else {
         azureCount++;
+        azureChars += textLen;
       }
     }
 
-    // Rough cost estimate: ElevenLabs ~$0.30 per 1000 chars, avg 20 chars per sample
-    const estimatedCost = elevenLabsCount > 0
-      ? `~$${((elevenLabsCount * 20 * 0.30) / 1000).toFixed(2)} (ElevenLabs: ${elevenLabsCount} samples)`
-      : '$0 (Azure free tier only)';
+    // Use proper cost calculation from planner
+    // Azure: $4 per 1M chars (S0 tier)
+    const azureCost = (azureChars / 1000000) * 4;
+    // ElevenLabs: Using growth plan ($300/mo for 2M chars, $0.15/1k overage)
+    const elevenLabsCost = (elevenLabsChars / 1000) * 0.15; // Simplified: chars used as portion of quota
 
-    // Rough time estimate: ~2 samples/sec for Azure, ~1 sample/sec for ElevenLabs
-    const estimatedSeconds = (azureCount / 2) + (elevenLabsCount / 1);
+    const totalCost = azureCost + elevenLabsCost;
+    const costBreakdown = [];
+    if (azureCount > 0) costBreakdown.push(`Azure: $${azureCost.toFixed(2)} (${azureCount} samples, ${azureChars.toLocaleString()} chars)`);
+    if (elevenLabsCount > 0) costBreakdown.push(`ElevenLabs: $${elevenLabsCost.toFixed(2)} (${elevenLabsCount} samples, ${elevenLabsChars.toLocaleString()} chars)`);
+
+    const estimatedCost = totalCost > 0
+      ? `~$${totalCost.toFixed(2)} (${costBreakdown.join(' + ')})`
+      : '$0';
+
+    // Time estimate: ~2 samples/sec for Azure, ~8 samples/sec for ElevenLabs (growth tier rate limit)
+    const estimatedSeconds = (azureCount / 2) + (elevenLabsCount / 8);
     const estimatedTime = estimatedSeconds > 60
       ? `~${Math.ceil(estimatedSeconds / 60)} minutes`
       : `~${Math.ceil(estimatedSeconds)} seconds`;
