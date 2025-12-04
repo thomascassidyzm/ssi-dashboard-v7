@@ -164,7 +164,7 @@
         </section>
 
         <!-- Prerequisites Check (when idle) -->
-        <section v-if="jobStatus === 'idle'" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
+        <section v-if="jobStatus === 'idle' && !audioPlan" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
           <h2 class="text-2xl font-semibold text-slate-100 mb-4 flex items-center gap-2">
             <span>📋</span>
             Prerequisites
@@ -196,6 +196,99 @@
                 <span class="font-semibold text-slate-100">S3 Access</span>
               </div>
               <p class="text-sm text-slate-400">Upload bucket ready</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Audio Plan Review (after getting plan) -->
+        <section v-if="audioPlan && jobStatus === 'idle'" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-6">
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4 flex items-center gap-2">
+            <span>📊</span>
+            Audio Generation Plan
+          </h2>
+
+          <!-- Plan Summary -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-700">
+              <div class="text-3xl font-bold text-emerald-400">{{ audioPlan.analysis?.alreadyInMAR || 0 }}</div>
+              <div class="text-sm text-slate-400">Already Exist</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-yellow-500/30">
+              <div class="text-3xl font-bold text-yellow-400">{{ audioPlan.analysis?.toGenerate || 0 }}</div>
+              <div class="text-sm text-slate-400">To Generate</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-blue-500/30">
+              <div class="text-3xl font-bold text-blue-400">{{ audioPlan.estimates?.estimatedCost || '$0' }}</div>
+              <div class="text-sm text-slate-400">Est. Cost</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-lg p-4 text-center border border-slate-600">
+              <div class="text-3xl font-bold text-slate-300">{{ audioPlan.estimates?.estimatedTime || '--' }}</div>
+              <div class="text-sm text-slate-400">Est. Time</div>
+            </div>
+          </div>
+
+          <!-- Voice Selection -->
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-slate-100 mb-3 flex items-center gap-2">
+              <span>🎙️</span>
+              Voice Assignments
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <label class="block text-sm text-slate-400 mb-2">Target 1 (Primary Target Language)</label>
+                <select
+                  v-model="selectedVoices.target1"
+                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                >
+                  <option v-for="voice in availableVoices.target" :key="voice.id" :value="voice.id">
+                    {{ voice.display_name || voice.id }}
+                  </option>
+                </select>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <label class="block text-sm text-slate-400 mb-2">Target 2 (Alternate Target Language)</label>
+                <select
+                  v-model="selectedVoices.target2"
+                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                >
+                  <option v-for="voice in availableVoices.target" :key="voice.id" :value="voice.id">
+                    {{ voice.display_name || voice.id }}
+                  </option>
+                </select>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <label class="block text-sm text-slate-400 mb-2">Source (Known Language)</label>
+                <select
+                  v-model="selectedVoices.source"
+                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                >
+                  <option v-for="voice in availableVoices.source" :key="voice.id" :value="voice.id">
+                    {{ voice.display_name || voice.id }}
+                  </option>
+                </select>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <label class="block text-sm text-slate-400 mb-2">Presentation (English Narrator)</label>
+                <select
+                  v-model="selectedVoices.presentation"
+                  class="w-full bg-slate-800 text-slate-100 p-2 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none"
+                >
+                  <option v-for="voice in availableVoices.source" :key="voice.id" :value="voice.id">
+                    {{ voice.display_name || voice.id }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Breakdown by Role -->
+          <div v-if="audioPlan.analysis?.byRole" class="mb-4">
+            <h3 class="text-sm font-semibold text-slate-400 mb-2">Breakdown by Role:</h3>
+            <div class="flex flex-wrap gap-2">
+              <span v-for="(count, role) in audioPlan.analysis.byRole" :key="role"
+                class="px-3 py-1 bg-slate-700 rounded-full text-sm">
+                {{ role }}: {{ count }}
+              </span>
             </div>
           </div>
         </section>
@@ -234,14 +327,41 @@
           >
             Cancel
           </button>
+
+          <!-- Step 1: Get Plan (before we have audioPlan) -->
           <button
-            @click="startGeneration"
-            :disabled="!isManifestComplete || generating"
+            v-if="!audioPlan"
+            @click="getPlan"
+            :disabled="!isManifestComplete || loadingPlan"
+            class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-blue-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/20 flex items-center gap-2 text-white"
+          >
+            <span v-if="loadingPlan">⏳</span>
+            <span v-else>📋</span>
+            {{ loadingPlan ? 'Loading Plan...' : 'Get Generation Plan' }}
+          </button>
+
+          <!-- Step 2: Start Phase A (after we have audioPlan) -->
+          <button
+            v-if="audioPlan"
+            @click="startPhaseA"
+            :disabled="generating"
             class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-emerald-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2 text-white"
           >
             <span v-if="generating">⏳</span>
             <span v-else>🚀</span>
-            {{ generating ? 'Starting...' : 'Start Audio Generation' }}
+            {{ generating ? 'Starting...' : 'Start Phase A (Targets + Source)' }}
+          </button>
+
+          <!-- Step 3: Start Phase B (presentations, shown after Phase A complete) -->
+          <button
+            v-if="audioPlan && phaseAComplete"
+            @click="startPhaseB"
+            :disabled="generating"
+            class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-purple-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-purple-500/20 flex items-center gap-2 text-white"
+          >
+            <span v-if="generating">⏳</span>
+            <span v-else>🎬</span>
+            {{ generating ? 'Starting...' : 'Start Phase B (Presentations)' }}
           </button>
         </div>
 
@@ -268,6 +388,7 @@ const course = ref({})
 const loading = ref(true)
 const error = ref(null)
 const generating = ref(false)
+const loadingPlan = ref(false)
 
 // Job tracking
 const jobStatus = ref('idle') // 'idle', 'running', 'qc_checkpoint', 'complete', 'failed'
@@ -275,6 +396,21 @@ const jobData = ref(null)
 const qcReport = ref(null)
 const selectedForRegeneration = ref([])
 const processingAction = ref(false)
+const phaseAComplete = ref(false)
+
+// Audio plan and voice selection
+const audioPlan = ref(null)
+const selectedVoices = ref({
+  target1: '',
+  target2: '',
+  source: '',
+  presentation: ''
+})
+const availableVoices = ref({
+  target: [],  // Voices for target language (Chinese, Spanish, etc.)
+  source: []   // Voices for English
+})
+const voicesLoaded = ref(false)
 
 // Audio playback
 const audioPlayer = ref(null)
@@ -369,15 +505,51 @@ async function loadQCReport() {
   }
 }
 
-async function startGeneration() {
+async function loadAvailableVoices() {
+  if (voicesLoaded.value) return
+
+  try {
+    const response = await api.getAvailableVoices()
+    if (response.success) {
+      // Get target language from course manifest
+      const targetLang = course.value.target || 'cmn'
+
+      // Set available voices based on course's target language
+      availableVoices.value.target = response.byLanguage[targetLang] || []
+      availableVoices.value.source = response.english || []
+      voicesLoaded.value = true
+
+      // Set defaults from course assignments or language pair assignments
+      const languagePair = `${course.value.known || 'en'}-${targetLang}`
+      const defaultAssignment = response.courseAssignments?.[courseCode.value] ||
+                                response.languagePairAssignments?.[languagePair]
+
+      if (defaultAssignment) {
+        selectedVoices.value = {
+          target1: defaultAssignment.target1 || '',
+          target2: defaultAssignment.target2 || '',
+          source: defaultAssignment.source || '',
+          presentation: defaultAssignment.presentation || ''
+        }
+      }
+    }
+  } catch (err) {
+    console.error('Failed to load available voices:', err)
+  }
+}
+
+async function getPlan() {
   if (!isManifestComplete.value) {
     toast.error('Manifest must be complete before generating audio')
     return
   }
 
-  generating.value = true
+  loadingPlan.value = true
   try {
-    // Step 1: Get the generation plan (costs, estimates, preflight checks)
+    // Load available voices first
+    await loadAvailableVoices()
+
+    // Get the generation plan
     toast.info('📋 Getting audio generation plan...')
     const planResponse = await api.getAudioPlan(courseCode.value)
 
@@ -386,41 +558,105 @@ async function startGeneration() {
       return
     }
 
-    // Show plan summary
+    audioPlan.value = planResponse.plan
     const plan = planResponse.plan
     const toGenerate = plan.analysis?.toGenerate || 0
     const alreadyInMAR = plan.analysis?.alreadyInMAR || 0
-    const estimatedCost = plan.estimates?.estimatedCost || 'Unknown'
-    const estimatedTime = plan.estimates?.estimatedTime || 'Unknown'
 
-    toast.info(`📊 Plan: ${toGenerate} samples to generate (${alreadyInMAR} already exist). Est: ${estimatedCost}, ${estimatedTime}`)
+    toast.success(`📊 Plan ready: ${toGenerate} samples to generate (${alreadyInMAR} already exist)`)
 
-    // Check if preflight passed (warn but don't block - we can force start)
+    // Check preflight
     if (!plan.readyToStart) {
-      toast.warning('⚠️ Preflight checks have warnings - proceeding anyway')
+      toast.warning('⚠️ Preflight checks have warnings - review before starting')
       console.warn('Preflight issues:', plan.preflight)
     }
+  } catch (err) {
+    console.error('Failed to get audio plan:', err)
+    if (err.response?.status === 404 || err.response?.status === 503) {
+      toast.error('❌ Audio generation server is not available. Start it with: node services/phases/audio-server.cjs')
+    } else {
+      const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
+      toast.error(`❌ Failed to get plan: ${errorMsg}`)
+    }
+  } finally {
+    loadingPlan.value = false
+  }
+}
 
-    // Step 2: Start generation with approved flag (force: true to skip preflight warnings)
-    const startResponse = await api.startPhase8Audio(courseCode.value, { approved: true, force: true })
+async function startPhaseA() {
+  generating.value = true
+  try {
+    // Build voice overrides from selected voices
+    const voiceOverrides = {
+      target1: selectedVoices.value.target1,
+      target2: selectedVoices.value.target2,
+      source: selectedVoices.value.source,
+      presentation: selectedVoices.value.presentation
+    }
+
+    toast.info('🚀 Starting Phase A (targets + source)...')
+    const startResponse = await api.startAudioGeneration(courseCode.value, {
+      approved: true,
+      force: true,
+      phase: 'targets',  // Only generate targets and source
+      voices: voiceOverrides
+    })
 
     if (startResponse.success) {
-      toast.success('🎵 Audio generation started!')
+      toast.success('🎵 Phase A generation started!')
       jobStatus.value = 'running'
       startPolling()
     } else {
       toast.error(`❌ Failed to start: ${startResponse.error}`)
     }
   } catch (err) {
-    console.error('Failed to start audio generation:', err)
-    if (err.response?.status === 404 || err.response?.status === 503) {
-      toast.error('❌ Audio generation server is not available. Start it with: node services/phases/audio-server.cjs')
-    } else if (err.response?.status === 409) {
+    console.error('Failed to start Phase A:', err)
+    if (err.response?.status === 409) {
       toast.error('⚠️ Audio generation already in progress.')
       await checkJobStatus()
     } else {
       const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
-      toast.error(`❌ Failed to start audio generation: ${errorMsg}`)
+      toast.error(`❌ Failed to start Phase A: ${errorMsg}`)
+    }
+  } finally {
+    generating.value = false
+  }
+}
+
+async function startPhaseB() {
+  generating.value = true
+  try {
+    // Build voice overrides - especially for presentation voice
+    const voiceOverrides = {
+      target1: selectedVoices.value.target1,
+      target2: selectedVoices.value.target2,
+      source: selectedVoices.value.source,
+      presentation: selectedVoices.value.presentation
+    }
+
+    toast.info('🎬 Starting Phase B (presentations)...')
+    const startResponse = await api.startAudioGeneration(courseCode.value, {
+      approved: true,
+      force: true,
+      phase: 'presentations',  // Only generate presentations
+      voices: voiceOverrides
+    })
+
+    if (startResponse.success) {
+      toast.success('🎵 Phase B generation started!')
+      jobStatus.value = 'running'
+      startPolling()
+    } else {
+      toast.error(`❌ Failed to start: ${startResponse.error}`)
+    }
+  } catch (err) {
+    console.error('Failed to start Phase B:', err)
+    if (err.response?.status === 409) {
+      toast.error('⚠️ Audio generation already in progress.')
+      await checkJobStatus()
+    } else {
+      const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
+      toast.error(`❌ Failed to start Phase B: ${errorMsg}`)
     }
   } finally {
     generating.value = false
@@ -441,10 +677,16 @@ function startPolling() {
         if (response.job.status === 'qc_checkpoint') {
           await loadQCReport()
           stopPolling()
+          // Phase A is complete when at QC checkpoint
+          phaseAComplete.value = true
         } else if (response.job.status === 'complete' || response.job.status === 'failed') {
           stopPolling()
           if (response.job.status === 'complete') {
             toast.success('✅ Audio generation complete!')
+            // If phase was targets, Phase A is complete
+            if (response.job.phase === 'targets' || response.job.phase === 'A') {
+              phaseAComplete.value = true
+            }
           }
         }
       }

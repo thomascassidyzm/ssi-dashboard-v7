@@ -1146,6 +1146,12 @@ export default {
   // APML v9.0: Audio Generation (was Phase 8 in legacy versions)
   // =============================================================================
 
+  // Get available voices from voices.json (for voice selection UI)
+  async getAvailableVoices() {
+    const response = await api.get('/api/audio/voices')
+    return response.data
+  },
+
   // Get Audio generation plan (costs, time estimates, preflight checks)
   async getAudioPlan(courseCode, options = {}) {
     const response = await api.post('/api/audio/plan', {
@@ -1164,6 +1170,7 @@ export default {
     const response = await api.post('/api/audio/start', {
       courseCode,
       approved: options.approved || false,  // Set true after reviewing plan
+      voices: options.voices || null,  // Optional voice overrides {target1, target2, source, presentation}
       options: {
         phase: options.phase || 'auto',  // 'auto', 'targets', or 'presentations'
         skipUpload: options.skipUpload || false,

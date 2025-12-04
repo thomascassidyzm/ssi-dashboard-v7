@@ -2423,6 +2423,52 @@ app.get('/api/audio/qc-report/:courseCode', handleAudioQCReport);
 app.get('/api/phase8/qc-report/:courseCode', handleAudioQCReport);  // Legacy
 
 /**
+ * GET /api/audio/voices - Get all available voices for selection UI
+ */
+app.get('/api/audio/voices', async (req, res) => {
+  try {
+    // Forward to audio server
+    const audioServerUrl = 'http://localhost:3465/voices';
+    const response = await fetch(audioServerUrl);
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    // Fallback: read voices.json directly
+    try {
+      const voicesPath = path.join(__dirname, '../../vfs/canonical/voices.json');
+      const registry = await fs.readJson(voicesPath);
+
+      // Group voices by language for the UI
+      const voicesByLanguage = {};
+      const englishVoices = [];
+
+      for (const [voiceId, voice] of Object.entries(registry.voices)) {
+        const lang = voice.language;
+        if (lang === 'eng') {
+          englishVoices.push({ id: voiceId, ...voice });
+        } else {
+          if (!voicesByLanguage[lang]) {
+            voicesByLanguage[lang] = [];
+          }
+          voicesByLanguage[lang].push({ id: voiceId, ...voice });
+        }
+      }
+
+      res.json({
+        success: true,
+        voices: registry.voices,
+        byLanguage: voicesByLanguage,
+        english: englishVoices,
+        languagePairAssignments: registry.language_pair_assignments,
+        courseAssignments: registry.course_assignments
+      });
+    } catch (fallbackError) {
+      res.status(500).json({ success: false, error: 'Failed to load voices: ' + error.message });
+    }
+  }
+});
+
+/**
  * Run Phase 1 Validation: LUT Collision Check
  * Checks if same KNOWN phrase maps to multiple TARGET translations
  * This is inline validation, not a separate phase

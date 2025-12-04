@@ -210,6 +210,12 @@ app.post('/plan', async (req, res) => {
  * Body: {
  *   courseCode: "spa_for_eng",
  *   approved: true,         // Must be true to confirm plan review
+ *   voices: {               // Optional: override voice assignments
+ *     target1: "azure_zh-CN-XiaoxiaoNeural",
+ *     target2: "azure_zh-CN-YunxiNeural",
+ *     source: "azure_en-GB-BellaNeural",
+ *     presentation: "elevenlabs_FOIN928B9X0jwgJ95cLt"
+ *   },
  *   options: {
  *     phase: "auto",        // "targets", "presentations", "encouragements", "welcome", "finalize", or "auto"
  *     skipUpload: false,    // Skip S3 upload (for testing)
@@ -219,7 +225,7 @@ app.post('/plan', async (req, res) => {
  * }
  */
 app.post('/start', async (req, res) => {
-  const { courseCode, approved, options = {} } = req.body;
+  const { courseCode, approved, voices, options = {} } = req.body;
 
   if (!courseCode) {
     return res.status(400).json({
@@ -286,8 +292,15 @@ app.post('/start', async (req, res) => {
 
   activeJobs.set(courseCode, jobState);
 
+  // If custom voice assignments provided, add them to options
+  const generationOptions = { ...options };
+  if (voices) {
+    generationOptions.voiceOverrides = voices;
+    console.log(`[Phase 8] Using custom voice assignments:`, JSON.stringify(voices, null, 2));
+  }
+
   // Run audio generation in background
-  audioOrchestrator.generateAudioForCourse(courseCode, options)
+  audioOrchestrator.generateAudioForCourse(courseCode, generationOptions)
     .then(result => {
       // Check if paused at QC checkpoint
       if (result.pausedAtQC) {
@@ -505,6 +518,49 @@ app.post('/regenerate', async (req, res) => {
     });
   } catch (error) {
     console.error(`[Phase 8] Error regenerating samples:`, error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * Get all available voices from voices.json
+ * Returns voices grouped by language for selection UI
+ *
+ * GET /voices
+ */
+app.get('/voices', async (req, res) => {
+  try {
+    const registry = await audioOrchestrator.loadVoiceRegistry();
+
+    // Group voices by language for the UI
+    const voicesByLanguage = {};
+    const englishVoices = [];
+
+    for (const [voiceId, voice] of Object.entries(registry.voices)) {
+      const lang = voice.language;
+      if (lang === 'eng') {
+        englishVoices.push({ id: voiceId, ...voice });
+      } else {
+        if (!voicesByLanguage[lang]) {
+          voicesByLanguage[lang] = [];
+        }
+        voicesByLanguage[lang].push({ id: voiceId, ...voice });
+      }
+    }
+
+    res.json({
+      success: true,
+      voices: registry.voices,
+      byLanguage: voicesByLanguage,
+      english: englishVoices,
+      languagePairAssignments: registry.language_pair_assignments,
+      courseAssignments: registry.course_assignments
+    });
+  } catch (error) {
+    console.error(`[Phase 8] Error loading voices:`, error);
     res.status(500).json({
       success: false,
       error: error.message

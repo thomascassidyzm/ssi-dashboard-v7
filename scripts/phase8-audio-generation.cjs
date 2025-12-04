@@ -3154,7 +3154,8 @@ async function generateAudioForCourse(courseCode, options = {}) {
     sequential = false, // Use sequential instead of parallel provider generation
     phase = 'auto', // 'targets', 'presentations', or 'auto'
     blockTTS = false, // Block all TTS generation - fail if any would be required
-    ignoreDownloadErrors = false // Continue even if target downloads fail
+    ignoreDownloadErrors = false, // Continue even if target downloads fail
+    voiceOverrides = null // Custom voice assignments to override defaults
   } = options;
 
   console.log(`\n${'='.repeat(60)}`);
@@ -3219,10 +3220,18 @@ async function generateAudioForCourse(courseCode, options = {}) {
     // 3. Normalize cadences based on roles
     normalizeCadences(manifest);
 
-    // 4. Get voice assignments
+    // 4. Get voice assignments (use overrides if provided)
     console.log('Loading voice assignments...');
-    const voiceAssignments = await getVoiceAssignments(courseCode);
-    console.log('Voice assignments:', voiceAssignments, '\n');
+    let voiceAssignments;
+    if (voiceOverrides) {
+      // Use custom voice assignments from options
+      voiceAssignments = voiceOverrides;
+      console.log('Using custom voice overrides:', voiceAssignments, '\n');
+    } else {
+      // Load from voices.json (course_assignments or language_pair_assignments)
+      voiceAssignments = await getVoiceAssignments(courseCode);
+      console.log('Voice assignments:', voiceAssignments, '\n');
+    }
 
     // 5. Analyze what needs to be generated (checks both permanent and temp MAR)
     console.log('Analyzing required generation...');

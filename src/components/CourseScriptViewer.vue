@@ -1,86 +1,136 @@
 <template>
-  <div class="autocue-viewer" :class="{ 'is-playing': isPlaying }">
-    <!-- Compact Controls Bar -->
-    <div class="controls-bar">
-      <div class="controls-left">
-        <label class="seed-label">Seeds:</label>
-        <input
-          v-model.number="startSeed"
-          type="number"
-          min="1"
-          max="668"
-          class="seed-input"
-        />
-        <span class="seed-divider">to</span>
-        <input
-          v-model.number="endSeed"
-          type="number"
-          min="1"
-          max="668"
-          class="seed-input"
-        />
+  <div class="journey-viewer" :class="{ 'is-playing': isPlaying }">
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Header Console -->
+    <header class="console-header">
+      <div class="console-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-text">JOURNEY</span>
+      </div>
+      <div class="console-controls">
+        <div class="seed-range">
+          <span class="range-label">SEEDS</span>
+          <input
+            v-model.number="startSeed"
+            type="number"
+            min="1"
+            max="668"
+            class="range-input"
+          />
+          <span class="range-sep">→</span>
+          <input
+            v-model.number="endSeed"
+            type="number"
+            min="1"
+            max="668"
+            class="range-input"
+          />
+        </div>
         <button
           @click="generateScript"
           :disabled="loading"
-          class="generate-btn"
+          class="launch-btn"
         >
-          {{ loading ? 'Loading...' : 'Generate' }}
+          <span class="btn-text">{{ loading ? 'LOADING' : 'LAUNCH' }}</span>
+          <span class="btn-glow"></span>
         </button>
       </div>
-      <div v-if="scriptItems.length" class="controls-right">
-        {{ scriptItems.length }} cycles • {{ estimatedDuration }}
+      <div v-if="scriptItems.length" class="console-stats">
+        <div class="stat">
+          <span class="stat-value">{{ scriptItems.length }}</span>
+          <span class="stat-label">cycles</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">{{ estimatedDuration }}</span>
+          <span class="stat-label">duration</span>
+        </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Loading -->
+    <!-- Loading State -->
     <div v-if="loading" class="loading-state">
-      <div class="loading-spinner"></div>
-      <span>Generating script...</span>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring delay-1"></div>
+      <div class="pulse-ring delay-2"></div>
+      <span class="loading-text">Mapping journey...</span>
     </div>
 
-    <!-- Error -->
+    <!-- Error State -->
     <div v-else-if="error" class="error-state">
-      {{ error }}
+      <span class="error-icon">⚠</span>
+      <span class="error-text">{{ error }}</span>
     </div>
 
-    <!-- Autocue Script Display -->
+    <!-- Journey Timeline -->
     <div
       v-else-if="scriptItems.length"
       ref="scriptContainer"
-      class="autocue-container"
+      class="timeline-container"
     >
-      <!-- Gradient overlays for depth -->
-      <div class="gradient-top"></div>
-      <div class="gradient-bottom"></div>
+      <!-- Fade overlays -->
+      <div class="fade-top"></div>
+      <div class="fade-bottom"></div>
 
-      <!-- Script items - teleprompter style -->
-      <div class="script-track" :style="trackStyle">
+      <!-- Timeline track -->
+      <div class="timeline-track">
+        <!-- Timeline spine -->
+        <div class="timeline-spine">
+          <div class="spine-progress" :style="{ height: progressHeight }"></div>
+        </div>
+
+        <!-- Waypoints -->
         <div
           v-for="(item, index) in scriptItems"
           :key="item.uuid"
           :ref="el => setItemRef(el, index)"
-          :class="[
-            'script-line',
-            getLineState(index)
-          ]"
+          :class="['waypoint', getLineState(index)]"
           @click="jumpToItem(index)"
         >
-          <!-- Single line: meta + content + phase dots -->
-          <div class="line-row">
-            <span class="line-code">{{ item.seedCode || `S${String(item.seedNum || index + 1).padStart(4, '0')}` }}{{ item.legoCode ? `L${String(item.legoCode).padStart(2, '0')}` : '' }}</span>
-            <span :class="['line-type', item.type]">{{ getTypeLabel(item.type) }}</span>
-            <span class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">{{ item.knownText }}</span>
-            <span class="separator">:</span>
-            <span class="target-text" :class="{
-              'voice1': currentIndex === index && currentPhase === 'voice1',
-              'voice2': currentIndex === index && currentPhase === 'voice2'
-            }">{{ item.targetText }}</span>
-            <span v-if="currentIndex === index" class="phase-dots-inline">
-              <span :class="['dot', { active: currentPhase === 'prompt' }]"></span>
-              <span :class="['dot pause', { active: currentPhase === 'pause' }]"></span>
-              <span :class="['dot', { active: currentPhase === 'voice1' }]"></span>
-              <span :class="['dot', { active: currentPhase === 'voice2' }]"></span>
-            </span>
+          <!-- Waypoint marker -->
+          <div class="waypoint-marker">
+            <div class="marker-dot" :class="{ pulse: currentIndex === index && isPlaying }"></div>
+            <div v-if="currentIndex === index" class="marker-ring"></div>
+          </div>
+
+          <!-- Waypoint content -->
+          <div class="waypoint-content">
+            <div class="waypoint-meta">
+              <span class="meta-code">{{ item.seedCode || `S${String(item.seedNum || index + 1).padStart(4, '0')}` }}{{ item.legoCode ? `·L${item.legoCode}` : '' }}</span>
+              <span :class="['meta-type', item.type]">{{ getTypeLabel(item.type) }}</span>
+            </div>
+            <div class="waypoint-phrases">
+              <span class="phrase-known" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">{{ item.knownText }}</span>
+              <span class="phrase-arrow">→</span>
+              <span class="phrase-target" :class="{
+                'voice1': currentIndex === index && currentPhase === 'voice1',
+                'voice2': currentIndex === index && currentPhase === 'voice2'
+              }">{{ item.targetText }}</span>
+            </div>
+            <!-- Phase indicators -->
+            <div v-if="currentIndex === index" class="phase-strip">
+              <div :class="['phase-segment', { active: currentPhase === 'prompt' }]">
+                <span class="phase-icon">◉</span>
+                <span class="phase-name">PROMPT</span>
+              </div>
+              <div :class="['phase-segment pause', { active: currentPhase === 'pause' }]">
+                <span class="phase-icon">⏸</span>
+                <span class="phase-name">THINK</span>
+              </div>
+              <div :class="['phase-segment', { active: currentPhase === 'voice1' }]">
+                <span class="phase-icon">◉</span>
+                <span class="phase-name">VOICE 1</span>
+              </div>
+              <div :class="['phase-segment', { active: currentPhase === 'voice2' }]">
+                <span class="phase-icon">◉</span>
+                <span class="phase-name">VOICE 2</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,47 +138,51 @@
 
     <!-- Empty State -->
     <div v-else class="empty-state">
-      <div class="empty-icon">📜</div>
-      <div class="empty-text">Select seed range and click Generate</div>
-      <div class="empty-subtext">Preview the complete learning sequence</div>
+      <div class="empty-visual">
+        <div class="empty-orbit">
+          <div class="orbit-dot"></div>
+        </div>
+        <div class="empty-center">◈</div>
+      </div>
+      <h2 class="empty-title">Begin Your Journey</h2>
+      <p class="empty-subtitle">Select a seed range and launch to preview the learning path</p>
     </div>
 
-    <!-- Floating Playback Controls -->
-    <div v-if="scriptItems.length" class="playback-controls">
-      <button
-        @click="previousItem"
-        :disabled="currentIndex <= 0"
-        class="control-btn nav-btn"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-      </button>
+    <!-- Floating Transport -->
+    <div v-if="scriptItems.length" class="transport-bar">
+      <div class="transport-inner">
+        <button
+          @click="previousItem"
+          :disabled="currentIndex <= 0"
+          class="transport-btn"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
 
-      <button
-        @click="togglePlayback"
-        class="control-btn play-btn"
-      >
-        <svg v-if="!isPlaying" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        <svg v-else viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
+        <button
+          @click="togglePlayback"
+          class="transport-btn play"
+          :class="{ playing: isPlaying }"
+        >
+          <svg v-if="!isPlaying" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg v-else viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          <div class="play-glow"></div>
+        </button>
 
-      <button
-        @click="nextItem"
-        :disabled="currentIndex >= scriptItems.length - 1"
-        class="control-btn nav-btn"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-      </button>
+        <button
+          @click="nextItem"
+          :disabled="currentIndex >= scriptItems.length - 1"
+          class="transport-btn"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
 
-      <div class="progress-indicator">
-        {{ currentIndex + 1 }} / {{ scriptItems.length }}
-      </div>
-
-      <!-- Phase dots -->
-      <div class="phase-dots">
-        <div :class="['dot', { active: currentPhase === 'prompt' }]" title="Prompt"></div>
-        <div :class="['dot', { active: currentPhase === 'pause' }]" title="Pause"></div>
-        <div :class="['dot', { active: currentPhase === 'voice1' }]" title="Voice 1"></div>
-        <div :class="['dot', { active: currentPhase === 'voice2' }]" title="Voice 2"></div>
+        <div class="transport-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" :style="{ width: `${(currentIndex / (scriptItems.length - 1)) * 100}%` }"></div>
+          </div>
+          <span class="progress-text">{{ currentIndex + 1 }} / {{ scriptItems.length }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -158,7 +212,6 @@ export default {
       audio: null,
       phaseTimer: null,
       itemRefs: {},
-      // Lazy loading: track which audio batches have been preloaded
       preloadedBatches: new Set(),
       preloadBatchSize: 10,
       audioCache: new Map()
@@ -169,11 +222,11 @@ export default {
       const totalSeconds = this.scriptItems.length * 10
       const minutes = Math.floor(totalSeconds / 60)
       const seconds = totalSeconds % 60
-      return `~${minutes}:${String(seconds).padStart(2, '0')}`
+      return `${minutes}:${String(seconds).padStart(2, '0')}`
     },
-    trackStyle() {
-      // No transform needed - we use scrollIntoView instead
-      return {}
+    progressHeight() {
+      if (!this.scriptItems.length) return '0%'
+      return `${(this.currentIndex / (this.scriptItems.length - 1)) * 100}%`
     }
   },
   methods: {
@@ -195,7 +248,6 @@ export default {
       this.currentIndex = 0
       this.currentPhase = null
       this.stopPlayback()
-      // Reset lazy loading state
       this.preloadedBatches = new Set()
       this.audioCache = new Map()
 
@@ -214,7 +266,6 @@ export default {
         this.scriptItems = data.items || []
         console.log(`[ScriptViewer] Loaded ${this.scriptItems.length} items`)
 
-        // Immediately preload first batch of audio
         if (this.scriptItems.length > 0) {
           this.preloadBatch(0)
         }
@@ -247,7 +298,6 @@ export default {
       this.currentIndex = index
       this.currentPhase = null
       this.scrollToCurrentItem()
-      // Preload this batch if user jumps ahead
       const batch = Math.floor(index / this.preloadBatchSize)
       this.preloadBatch(batch)
     },
@@ -296,10 +346,9 @@ export default {
       }
     },
 
-    // Preload audio for a batch of cycles (lazy loading)
     async preloadBatch(batchIndex) {
       if (this.preloadedBatches.has(batchIndex)) {
-        return // Already preloaded
+        return
       }
 
       this.preloadedBatches.add(batchIndex)
@@ -309,7 +358,6 @@ export default {
 
       console.log(`[ScriptViewer] Preloading batch ${batchIndex}: cycles ${startIdx + 1}-${endIdx}`)
 
-      // Collect all UUIDs for this batch
       const uuids = []
       for (let i = startIdx; i < endIdx; i++) {
         const item = this.scriptItems[i]
@@ -318,7 +366,6 @@ export default {
         if (item.target2Id) uuids.push(item.target2Id)
       }
 
-      // Preload each audio file (don't wait for all - just start the requests)
       for (const uuid of uuids) {
         if (!this.audioCache.has(uuid)) {
           const audio = new Audio()
@@ -335,10 +382,8 @@ export default {
         return
       }
 
-      // Lazy load: preload current batch and next batch
       const currentBatch = Math.floor(this.currentIndex / this.preloadBatchSize)
       await this.preloadBatch(currentBatch)
-      // Preload next batch in advance
       if ((this.currentIndex + 1) % this.preloadBatchSize === 0) {
         this.preloadBatch(currentBatch + 1)
       }
@@ -356,7 +401,7 @@ export default {
 
       if (!this.isPlaying) return
 
-      // Phase 2: PAUSE (2s default)
+      // Phase 2: PAUSE
       this.currentPhase = 'pause'
       await this.wait(2000)
 
@@ -386,7 +431,6 @@ export default {
       this.currentIndex++
       this.currentPhase = null
 
-      // 2s gap between cycles
       await this.wait(2000)
 
       if (this.isPlaying && this.currentIndex < this.scriptItems.length) {
@@ -403,10 +447,8 @@ export default {
           return
         }
 
-        // Use cached audio element if available, otherwise use the main audio element
         let audioElement = this.audioCache.get(uuid)
         if (!audioElement) {
-          // Fallback to main audio if not cached
           audioElement = this.audio
           if (!audioElement) {
             resolve()
@@ -418,7 +460,6 @@ export default {
         const onEnded = () => {
           audioElement.removeEventListener('ended', onEnded)
           audioElement.removeEventListener('error', onError)
-          // Reset cached audio for potential replay
           audioElement.currentTime = 0
           resolve()
         }
@@ -469,7 +510,6 @@ export default {
       this.audio.src = ''
       this.audio = null
     }
-    // Clean up cached audio elements
     if (this.audioCache) {
       for (const audio of this.audioCache.values()) {
         audio.src = ''
@@ -481,94 +521,214 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap');
 
-.autocue-viewer {
-  --bg-dark: #0a0a0a;
-  --bg-surface: #141414;
-  --text-primary: #ffffff;
-  --text-secondary: #888888;
-  --text-muted: #555555;
-  --accent: #10b981;
-  --accent-glow: rgba(16, 185, 129, 0.3);
+.journey-viewer {
+  --void: #030305;
+  --surface: #0a0a0f;
+  --surface-elevated: #12121a;
+  --line: #1a1a24;
+  --text-bright: #f0f0f5;
+  --text-dim: #6a6a7a;
+  --text-muted: #3a3a4a;
+  --accent: #00ffc8;
+  --accent-glow: rgba(0, 255, 200, 0.15);
+  --accent-soft: rgba(0, 255, 200, 0.08);
+  --voice2: #c4a7ff;
+  --voice2-glow: rgba(196, 167, 255, 0.2);
+  --pause: #ffd700;
 
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg-dark);
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--void);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
-/* Controls Bar - Minimal */
-.controls-bar {
+/* Ambient Background */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--voice2-glow) 0%, transparent 70%);
+  bottom: -150px;
+  left: -150px;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+}
+
+/* Console Header */
+.console-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
-  background: var(--bg-surface);
-  border-bottom: 1px solid #222;
-  position: sticky;
-  top: 0;
+  padding: 16px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: relative;
   z-index: 100;
 }
 
-.controls-left {
+.console-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  font-size: 20px;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.brand-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+
+.console-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.seed-range {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.seed-label {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.seed-input {
-  width: 60px;
-  padding: 6px 10px;
-  background: var(--bg-dark);
-  border: 1px solid #333;
-  border-radius: 6px;
-  color: var(--text-primary);
-  font-size: 13px;
-  text-align: center;
-}
-
-.seed-input:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-.seed-divider {
+.range-label {
+  font-size: 10px;
+  letter-spacing: 1px;
   color: var(--text-muted);
-  font-size: 12px;
 }
 
-.generate-btn {
-  padding: 6px 16px;
-  background: var(--accent);
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
+.range-input {
+  width: 56px;
+  padding: 8px 10px;
+  background: var(--void);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text-bright);
+  font-family: inherit;
+  font-size: 12px;
+  text-align: center;
   transition: all 0.2s;
 }
 
-.generate-btn:hover {
-  background: #0ea571;
+.range-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.generate-btn:disabled {
-  opacity: 0.5;
+.range-sep {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.launch-btn {
+  position: relative;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.launch-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--void);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.launch-btn:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-.controls-right {
-  font-size: 13px;
-  color: var(--text-secondary);
+.btn-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+  transform: translateX(-100%);
+}
+
+.launch-btn:hover .btn-glow {
+  animation: shimmer 1s ease-in-out;
+}
+
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+.console-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-bright);
+}
+
+.stat-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 /* Loading State */
@@ -578,31 +738,51 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  color: var(--text-secondary);
+  gap: 24px;
+  position: relative;
 }
 
-.loading-spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid #333;
-  border-top-color: var(--accent);
+.pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--accent);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: pulse-out 2s ease-out infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.pulse-ring.delay-1 { animation-delay: 0.4s; }
+.pulse-ring.delay-2 { animation-delay: 0.8s; }
+
+@keyframes pulse-out {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.loading-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
 }
 
 /* Error State */
 .error-state {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #ef4444;
-  padding: 40px;
+  gap: 12px;
+  color: #ff6b6b;
+}
+
+.error-icon {
+  font-size: 32px;
+}
+
+.error-text {
+  font-size: 13px;
 }
 
 /* Empty State */
@@ -612,320 +792,463 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  color: var(--text-secondary);
+  gap: 20px;
 }
 
-.empty-icon {
-  font-size: 48px;
-  opacity: 0.5;
+.empty-visual {
+  position: relative;
+  width: 120px;
+  height: 120px;
 }
 
-.empty-text {
-  font-size: 18px;
-  font-weight: 500;
+.empty-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+  animation: orbit-spin 10s linear infinite;
 }
 
-.empty-subtext {
-  font-size: 14px;
+.orbit-dot {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.empty-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
   color: var(--text-muted);
 }
 
-/* Autocue Container - The main teleprompter view */
-.autocue-container {
+.empty-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-bright);
+  margin: 0;
+}
+
+.empty-subtitle {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Timeline Container */
+.timeline-container {
   flex: 1;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  z-index: 1;
 }
 
-/* Gradient overlays for depth effect */
-.gradient-top,
-.gradient-bottom {
+.fade-top,
+.fade-bottom {
   position: fixed;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 100px;
   pointer-events: none;
   z-index: 10;
 }
 
-.gradient-top {
-  top: 48px;
-  background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 100%);
+.fade-top {
+  top: 65px;
+  background: linear-gradient(to bottom, var(--void) 0%, transparent 100%);
 }
 
-.gradient-bottom {
+.fade-bottom {
   bottom: 80px;
-  background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+  background: linear-gradient(to top, var(--void) 0%, transparent 100%);
 }
 
-/* Script Track */
-.script-track {
-  padding: 20vh 0;
-  max-width: 900px;
+/* Timeline Track */
+.timeline-track {
+  position: relative;
+  padding: 15vh 0 20vh;
+  max-width: 800px;
   margin: 0 auto;
+  padding-left: 60px;
 }
 
-/* Individual Script Lines - compact */
-.script-line {
-  padding: 10px 20px;
-  margin: 2px 16px;
-  border-radius: 6px;
+.timeline-spine {
+  position: absolute;
+  left: 28px;
+  top: 15vh;
+  bottom: 20vh;
+  width: 2px;
+  background: var(--line);
+}
+
+.spine-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--voice2));
+  transition: height 0.3s ease;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Waypoints */
+.waypoint {
+  position: relative;
+  padding: 12px 20px 12px 40px;
+  margin: 4px 0;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
 }
 
-.script-line.past {
-  opacity: 0.25;
-  transform: scale(0.95);
+.waypoint.past {
+  opacity: 0.3;
 }
 
-.script-line.future {
-  opacity: 0.4;
-}
-
-.script-line.current {
-  opacity: 1;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  transform: scale(1);
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
-}
-
-.script-line:hover:not(.current) {
-  opacity: 0.7;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Single line row */
-.line-row {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: nowrap;
-}
-
-.line-code {
-  font-family: 'SF Mono', Monaco, monospace;
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 0.3px;
-  flex-shrink: 0;
-}
-
-.line-type {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 3px;
-  letter-spacing: 0.3px;
-  flex-shrink: 0;
-}
-
-.line-type.introduction { background: #7c3aed20; color: #a78bfa; }
-.line-type.component { background: #3b82f620; color: #60a5fa; }
-.line-type.debut { background: #f59e0b20; color: #fbbf24; }
-.line-type.practice { background: #10b98120; color: #34d399; }
-.line-type.review { background: #06b6d420; color: #22d3ee; }
-
-.review-badge {
-  font-size: 9px;
-  color: #06b6d4;
-  font-style: italic;
-}
-
-.known-text {
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  line-height: 1.3;
-  transition: all 0.2s;
-}
-
-.known-text.active {
-  color: var(--text-primary);
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-}
-
-.separator {
-  font-size: 22px;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-
-.target-text {
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--accent);
-  line-height: 1.3;
-  transition: all 0.2s;
-  opacity: 0.35;
-}
-
-/* Voice 1 - slightly brighter */
-.target-text.voice1 {
-  opacity: 0.6;
-}
-
-/* Voice 2 - full brightness, purple tint */
-.target-text.voice2 {
-  opacity: 1;
-  color: #a78bfa;
-  text-shadow: 0 0 16px rgba(167, 139, 250, 0.4);
-}
-
-/* Current line - boost visibility */
-.script-line.current .known-text {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.script-line.current .target-text {
+.waypoint.future {
   opacity: 0.5;
 }
 
-/* Inline Phase Dots */
-.phase-dots-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: 12px;
+.waypoint.current {
+  opacity: 1;
 }
 
-.phase-dots-inline .dot {
-  width: 6px;
-  height: 6px;
+.waypoint:hover:not(.current) {
+  opacity: 0.8;
+  background: var(--surface);
+  border-radius: 8px;
+}
+
+/* Waypoint Marker */
+.waypoint-marker {
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--text-muted);
   border-radius: 50%;
-  background: #333;
+  transition: all 0.3s;
+}
+
+.waypoint.current .marker-dot {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.marker-dot.pulse {
+  animation: marker-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 12px var(--accent); }
+  50% { transform: scale(1.3); box-shadow: 0 0 20px var(--accent); }
+}
+
+.marker-ring {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  animation: ring-expand 2s ease-out infinite;
+}
+
+@keyframes ring-expand {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Waypoint Content */
+.waypoint-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.waypoint-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-code {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.meta-type {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+
+.meta-type.introduction { background: #7c3aed20; color: #a78bfa; }
+.meta-type.component { background: #3b82f620; color: #60a5fa; }
+.meta-type.debut { background: #f59e0b20; color: #fbbf24; }
+.meta-type.practice { background: var(--accent-soft); color: var(--accent); }
+.meta-type.review { background: #06b6d420; color: #22d3ee; }
+
+.waypoint-phrases {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.phrase-known {
+  font-family: 'Crimson Pro', serif;
+  font-size: 22px;
+  color: var(--text-dim);
+  transition: all 0.3s;
+}
+
+.phrase-known.active {
+  color: var(--text-bright);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.phrase-arrow {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.phrase-target {
+  font-family: 'Crimson Pro', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--accent);
+  opacity: 0.4;
+  transition: all 0.3s;
+}
+
+.phrase-target.voice1 {
+  opacity: 0.7;
+}
+
+.phrase-target.voice2 {
+  opacity: 1;
+  color: var(--voice2);
+  text-shadow: 0 0 20px var(--voice2-glow);
+}
+
+.waypoint.current .phrase-known {
+  color: var(--text-bright);
+}
+
+.waypoint.current .phrase-target {
+  opacity: 0.6;
+}
+
+/* Phase Strip */
+.phase-strip {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.phase-segment {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--surface);
+  border-radius: 3px;
+  opacity: 0.3;
   transition: all 0.2s;
 }
 
-.phase-dots-inline .dot.active {
-  background: var(--accent);
-  box-shadow: 0 0 6px var(--accent-glow);
+.phase-segment.active {
+  opacity: 1;
+  background: var(--accent-soft);
 }
 
-.phase-dots-inline .dot.pause.active {
-  background: #fbbf24;
-  box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);
+.phase-segment.pause.active {
+  background: rgba(255, 215, 0, 0.15);
 }
 
-/* Playback Controls */
-.playback-controls {
+.phase-segment.pause.active .phase-icon,
+.phase-segment.pause.active .phase-name {
+  color: var(--pause);
+}
+
+.phase-icon {
+  font-size: 8px;
+  color: var(--accent);
+}
+
+.phase-name {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+/* Transport Bar */
+.transport-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 16px 24px;
+  background: linear-gradient(to top, var(--surface) 0%, var(--surface) 80%, transparent 100%);
+  z-index: 100;
+}
+
+.transport-inner {
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 16px 24px;
-  background: linear-gradient(to top, var(--bg-dark) 0%, rgba(10, 10, 10, 0.95) 100%);
-  border-top: 1px solid #222;
-  z-index: 100;
+  background: var(--surface-elevated);
+  border: 1px solid var(--line);
+  border-radius: 40px;
+  padding: 8px 20px;
 }
 
-.control-btn {
+.transport-btn {
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text-dim);
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.nav-btn {
-  width: 40px;
-  height: 40px;
-  background: #222;
-  border-radius: 50%;
-  color: var(--text-secondary);
+.transport-btn:hover:not(:disabled) {
+  border-color: var(--text-dim);
+  color: var(--text-bright);
 }
 
-.nav-btn:hover:not(:disabled) {
-  background: #333;
-  color: var(--text-primary);
-}
-
-.nav-btn:disabled {
+.transport-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
-.nav-btn svg {
-  width: 20px;
-  height: 20px;
+.transport-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
-.play-btn {
-  width: 56px;
-  height: 56px;
+.transport-btn.play {
+  width: 52px;
+  height: 52px;
   background: var(--accent);
-  border-radius: 50%;
-  color: white;
+  border-color: var(--accent);
+  color: var(--void);
+  position: relative;
 }
 
-.play-btn:hover {
-  background: #0ea571;
+.transport-btn.play:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 24px var(--accent-glow);
 }
 
-.play-btn svg {
-  width: 28px;
-  height: 28px;
+.transport-btn.play.playing {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-.progress-indicator {
-  font-size: 13px;
-  color: var(--text-secondary);
-  min-width: 60px;
+.play-glow {
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.transport-btn.play.playing .play-glow {
+  opacity: 0.3;
+  animation: play-pulse 2s ease-in-out infinite;
+}
+
+@keyframes play-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
+.transport-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 100px;
+}
+
+.progress-bar {
+  height: 3px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--voice2));
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 10px;
+  color: var(--text-muted);
   text-align: center;
 }
 
-.phase-dots {
-  display: flex;
-  gap: 6px;
-  margin-left: 8px;
+/* Scrollbar */
+.timeline-container::-webkit-scrollbar {
+  width: 6px;
 }
 
-.phase-dots .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #333;
-  transition: all 0.2s;
-}
-
-.phase-dots .dot.active {
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
-  transform: scale(1.3);
-}
-
-/* Custom Scrollbar */
-.autocue-container::-webkit-scrollbar {
-  width: 4px;
-}
-
-.autocue-container::-webkit-scrollbar-track {
+.timeline-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.autocue-container::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+.timeline-container::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
 }
 
-.autocue-container::-webkit-scrollbar-thumb:hover {
-  background: #444;
+.timeline-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
-/* Playing state glow */
-.autocue-viewer.is-playing .script-line.current {
-  box-shadow: 0 0 60px rgba(16, 185, 129, 0.15);
+/* Playing state enhancements */
+.journey-viewer.is-playing .waypoint.current {
+  background: var(--accent-soft);
+  border-radius: 8px;
+  margin-left: -8px;
+  padding-left: 48px;
 }
 </style>
