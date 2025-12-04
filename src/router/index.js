@@ -36,6 +36,10 @@ import Login from '../views/Login.vue'
 import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 
+// Production Suite Components
+import MissionControl from '../components/production/dashboard/MissionControl.vue'
+import AudioPipeline from '../components/production/audio/AudioPipeline.vue'
+
 
 const routes = [
   {
@@ -243,6 +247,21 @@ const routes = [
     name: 'AuthVerify',
     component: AuthVerify,
     meta: { public: true }
+  },
+
+  // Production Suite Routes
+  {
+    path: '/production',
+    name: 'MissionControl',
+    component: MissionControl,
+    meta: { title: 'Mission Control - Course Production Suite' }
+  },
+  {
+    path: '/production/:courseCode/pipeline',
+    name: 'AudioPipelineProduction',
+    component: AudioPipeline,
+    props: true,
+    meta: { title: 'Audio Pipeline' }
   },
 
   // Catch-all route
