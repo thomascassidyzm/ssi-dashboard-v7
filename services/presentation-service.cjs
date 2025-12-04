@@ -1,12 +1,10 @@
 /**
- * Presentation Service
+ * Presentation Service (Simplified - No Explanations)
  *
  * Handles generation of presentation audio with concatenation
- * Presentations consist of:
- * 1. Main presentation: source narration + target1 + target2
- * 2. Optional explanation: source narration with embedded {target1}/{target2} clips
+ * Format: "The Spanish for 'I want', is: ... 'quiero' ... 'quiero'"
  *
- * Format: "The Spanish for 'I want', is: ... 'quiero' ... 'quiero' - [optional explanation]"
+ * Audio structure: source TTS + target1 audio + target2 audio
  */
 
 const fs = require('fs-extra');
@@ -15,20 +13,16 @@ const audioProcessor = require('./audio-processor.cjs');
 const s3Service = require('./s3-service.cjs');
 const elevenlabsService = require('./elevenlabs-service.cjs');
 const azureTTS = require('./azure-tts-service.cjs');
+const uuidService = require('./uuid-service.cjs');
 
 /**
  * Generate TTS audio using the appropriate provider based on voice ID
- * @param {string} text - Text to synthesize
- * @param {Object} voiceDetails - Voice configuration object
- * @param {string} outputPath - Path to save the audio file
- * @param {Object} options - Additional TTS options
  */
 async function generateTTS(text, voiceDetails, outputPath, options = {}) {
   const isAzure = voiceDetails.provider === 'azure' ||
                   (voiceDetails.id && voiceDetails.id.startsWith('azure_'));
 
   if (isAzure) {
-    // Azure TTS
     await azureTTS.generateAudio(
       text,
       voiceDetails.provider_id,
@@ -40,7 +34,6 @@ async function generateTTS(text, voiceDetails, outputPath, options = {}) {
       }
     );
   } else {
-    // ElevenLabs TTS
     await elevenlabsService.generateAudioWithRetry(
       text,
       voiceDetails.provider_id,
@@ -56,41 +49,20 @@ async function generateTTS(text, voiceDetails, outputPath, options = {}) {
 }
 
 /**
- * Extract all unique text segments from presentation samples
- * Returns a map of unique segments to avoid regenerating the same narration
- *
- * @param {Array<Object>} samples - Array of presentation samples
- * @returns {Object} { uniqueSegments: Set, segmentMap: Map }
+ * Extract all unique source text segments from presentation samples
+ * Returns a set of unique segments to avoid regenerating the same narration
  */
 function extractAllUniqueSegments(samples) {
   const uniqueSegments = new Set();
-  const segmentMap = new Map(); // text -> count
+  const segmentMap = new Map();
 
   for (const sample of samples) {
     try {
-      const { mainPresentation, explanation } = parsePresentation(sample.text);
-
-      // Extract main presentation source part
-      const { sourcePart } = parseMainPresentation(mainPresentation);
+      const { sourcePart } = parseMainPresentation(sample.text);
       uniqueSegments.add(sourcePart);
       segmentMap.set(sourcePart, (segmentMap.get(sourcePart) || 0) + 1);
-
-      // Extract explanation text segments if present
-      if (explanation) {
-        const segments = parseExplanationSegments(explanation);
-        for (const segment of segments) {
-          if (segment.type === 'text') {
-            // Skip punctuation-only segments
-            const textContent = segment.content.replace(/[^\w\s]/g, '').trim();
-            if (textContent) {
-              uniqueSegments.add(segment.content);
-              segmentMap.set(segment.content, (segmentMap.get(segment.content) || 0) + 1);
-            }
-          }
-        }
-      }
     } catch (error) {
-      console.warn(`Failed to parse presentation for segment extraction: ${sample.text.substring(0, 60)}`);
+      console.warn(`Failed to parse presentation: ${sample.text.substring(0, 60)}`);
     }
   }
 
@@ -98,51 +70,14 @@ function extractAllUniqueSegments(samples) {
 }
 
 /**
- * Parse presentation text into main and optional explanation parts
- *
- * @param {string} phrase - Full presentation text
- * @returns {Object} { mainPresentation, explanation }
- */
-function parsePresentation(phrase) {
-  // The standard presentation format ends with "... '[target]' ... '[target]'"
-  // Find the first " - " after this pattern to split main from explanation
-  const presentationPattern = /^(.*?\.\.\. '[^']+' \.\.\. '[^']+')(.*)$/;
-  const match = phrase.match(presentationPattern);
-
-  if (!match) {
-    throw new Error(`Invalid presentation format: ${phrase}`);
-  }
-
-  const mainPresentation = match[1].trim();
-  const remainder = match[2].trim();
-
-  // Check if there's an explanation that starts with " - "
-  let explanation = null;
-  if (remainder.startsWith('-')) {
-    explanation = remainder.substring(1).trim();
-  } else if (remainder.length > 0) {
-    // If there's content but no dash, it might be part of main presentation
-    // This handles edge cases - return as explanation with warning
-    console.warn(`Found trailing content without ' - ' separator: "${remainder}"`);
-    explanation = remainder;
-  }
-
-  return { mainPresentation, explanation };
-}
-
-/**
- * Parse main presentation to extract source narration and target word
- *
+ * Parse presentation to extract source narration and target word
  * Format: "The Spanish for 'I want', is: ... 'quiero' ... 'quiero'"
- *
- * @param {string} mainPresentation - Main presentation text
- * @returns {Object} { sourcePart, targetPart }
  */
-function parseMainPresentation(mainPresentation) {
+function parseMainPresentation(text) {
   // Split on ": ... '"
-  const parts = mainPresentation.split(": ... '");
+  const parts = text.split(": ... '");
   if (parts.length !== 2) {
-    throw new Error(`Could not find ': ... \\'' in main presentation: ${mainPresentation}`);
+    throw new Error(`Could not find ': ... \\'' in presentation: ${text}`);
   }
 
   const sourcePart = parts[0].trim();
@@ -151,7 +86,7 @@ function parseMainPresentation(mainPresentation) {
   // Split on "' ... '"
   const targetParts = rest.split("' ... '");
   if (targetParts.length !== 2) {
-    throw new Error(`Could not find '\\' ... \\'' in main presentation: ${rest}`);
+    throw new Error(`Could not find '\\' ... \\'' in presentation: ${rest}`);
   }
 
   const targetPart = targetParts[0].trim();
@@ -160,127 +95,16 @@ function parseMainPresentation(mainPresentation) {
 }
 
 /**
- * Extract target examples from explanation text
- * Finds patterns like {target1}'word' or {target2}'word'
- *
- * @param {string} explanation - Explanation text
- * @returns {Array<Object>} Array of { role, text, startPos, endPos }
- */
-function extractTargetsFromExplanation(explanation) {
-  const targets = [];
-
-  // Pattern: {target1}'word' or {target2}'word'
-  // Using back-references to handle apostrophes correctly
-  // Support both straight quotes ('") and curly/smart quotes ('' "")
-  const pattern = /\{(target1|target2)\}\s*([''""])(.*?)([''""])(?=[\s,.;:!?)]|$)/g;
-
-  let match;
-  while ((match = pattern.exec(explanation)) !== null) {
-    targets.push({
-      role: match[1],           // 'target1' or 'target2'
-      text: match[3],           // The target word
-      startPos: match.index,
-      endPos: match.index + match[0].length
-    });
-  }
-
-  return targets;
-}
-
-/**
- * Parse explanation into segments (text and target audio)
- *
- * @param {string} explanation - Explanation text with {target} markers
- * @returns {Array<Object>} Array of segments: { type: 'text'|'target', content }
- */
-function parseExplanationSegments(explanation) {
-  const targets = extractTargetsFromExplanation(explanation);
-
-  if (targets.length === 0) {
-    // No targets, entire explanation is text
-    return [{ type: 'text', content: explanation }];
-  }
-
-  // Sort targets by position
-  targets.sort((a, b) => a.startPos - b.startPos);
-
-  const segments = [];
-  let lastPosition = 0;
-
-  for (const target of targets) {
-    // Add text segment before this target (if any)
-    if (target.startPos > lastPosition) {
-      const textSegment = explanation.substring(lastPosition, target.startPos);
-      segments.push({ type: 'text', content: textSegment });
-    }
-
-    // Add target segment
-    segments.push({
-      type: 'target',
-      role: target.role,
-      text: target.text
-    });
-
-    lastPosition = target.endPos;
-  }
-
-  // Add final text segment (if any)
-  if (lastPosition < explanation.length) {
-    const textSegment = explanation.substring(lastPosition);
-    segments.push({ type: 'text', content: textSegment });
-  }
-
-  return segments;
-}
-
-/**
- * Find target sample in manifest by text and role
- *
- * @param {Object} manifest - Course manifest
- * @param {string} text - Target text to find
- * @param {string} role - Sample role ('target1', 'target2')
- * @returns {Object|null} Sample object with id, or null if not found
- */
-function findTargetSample(manifest, text, role) {
-  const samples = manifest.slices?.[0]?.samples || {};
-
-  // Normalize text for matching (case-insensitive, trim whitespace, remove trailing punctuation)
-  const normalizedText = text.toLowerCase().trim().replace(/[.!?]+$/, '');
-
-  for (const [sampleText, variants] of Object.entries(samples)) {
-    const normalizedSampleText = sampleText.toLowerCase().trim().replace(/[.!?]+$/, '');
-
-    if (normalizedSampleText === normalizedText) {
-      const variant = variants.find(v => v.role === role);
-      if (variant && variant.id) {
-        return { id: variant.id, text: sampleText, role: variant.role };
-      }
-    }
-  }
-
-  return null;
-}
-
-/**
  * Download target audio from S3 to local temp directory
- *
- * @param {string} uuid - Sample UUID
- * @param {string} targetDir - Local directory to save file
- * @param {string} bucket - S3 bucket name
- * @returns {Promise<string>} Local file path
  */
 async function downloadTargetFromS3(uuid, targetDir, bucket) {
   await fs.ensureDir(targetDir);
 
   const localPath = path.join(targetDir, `${uuid}.mp3`);
 
-  // Check if already downloaded
   if (await fs.pathExists(localPath)) {
     return localPath;
   }
-
-  // Download from S3
-  const s3Key = `mastered/${uuid}.mp3`;
 
   try {
     await s3Service.downloadAudioFile(uuid, localPath, bucket);
@@ -291,20 +115,8 @@ async function downloadTargetFromS3(uuid, targetDir, bucket) {
 }
 
 /**
- * Generate presentation audio with concatenation
- *
- * Main workflow:
- * 1. Parse presentation into main + optional explanation
- * 2. Generate main presentation audio (source TTS + target1 + target2)
- * 3. If explanation exists, generate explanation audio (with embedded targets)
- * 4. Concatenate main + explanation with pause
- *
- * @param {Object} sample - Sample object with text, uuid, language, voiceId
- * @param {Object} manifest - Course manifest
- * @param {Object} voiceAssignments - Voice assignments by role
- * @param {Object} options - Generation options
- * @param {Map} options.segmentCache - Optional pre-generated segment cache (text -> file path)
- * @returns {Promise<Object>} { success, outputPath, uuid, error }
+ * Generate presentation audio
+ * Structure: source TTS + target1 + target2
  */
 async function generatePresentationAudio(sample, manifest, voiceAssignments, options = {}) {
   const {
@@ -326,165 +138,75 @@ async function generatePresentationAudio(sample, manifest, voiceAssignments, opt
     await fs.ensureDir(workDir);
 
     // Step 1: Parse presentation
-    const { mainPresentation, explanation } = parsePresentation(text);
-    console.log(`  Main: "${mainPresentation.substring(0, 60)}..."`);
-    if (explanation) {
-      console.log(`  Explanation: "${explanation.substring(0, 60)}..."`);
-    }
+    const { sourcePart, targetPart } = parseMainPresentation(text);
+    console.log(`  Source: "${sourcePart.substring(0, 60)}..."`);
+    console.log(`  Target: "${targetPart}"`);
 
-    console.log(`  [DEBUG] Work directory: ${workDir}`);
-
-    // Step 2: Parse main presentation
-    const { sourcePart, targetPart } = parseMainPresentation(mainPresentation);
-
-    // Step 3: Get or generate source narration TTS
+    // Step 2: Get or generate source narration TTS
     const sourceAudioPath = path.join(workDir, `${uuid}_source.mp3`);
     const voiceDetails = await getVoiceDetails(voiceId);
 
-    // Check segment cache first (if provided)
     if (segmentCache && segmentCache.has(sourcePart)) {
-      console.log(`  [DEBUG] Using cached source TTS: "${sourcePart.substring(0, 60)}..."`);
+      console.log(`  Using cached source TTS`);
       await fs.copyFile(segmentCache.get(sourcePart), sourceAudioPath);
     } else {
-      console.log(`  [DEBUG] Generating source TTS (${voiceDetails.provider || 'elevenlabs'}): "${sourcePart.substring(0, 60)}..."`);
+      console.log(`  Generating source TTS (${voiceDetails.provider || 'elevenlabs'})`);
       await generateTTS(sourcePart, voiceDetails, sourceAudioPath, { language: sourceLanguage });
-      console.log(`  [DEBUG] Source TTS saved to: ${sourceAudioPath}`);
     }
 
-    // Step 4: Download target1 and target2 from S3
-    const target1Sample = findTargetSample(manifest, targetPart, 'target1');
-    const target2Sample = findTargetSample(manifest, targetPart, 'target2');
+    // Step 3: Download target1 and target2 from S3 using legacy UUID
+    const targetLang = targetLanguage || manifest.target || manifest.course_code?.split('_')[0];
 
-    if (!target1Sample || !target2Sample) {
-      throw new Error(`Could not find target samples for "${targetPart}"`);
-    }
+    const target1UUID = uuidService.generateLegacyUUID(targetPart, targetLang, 'target1', 'slow');
+    const target2UUID = uuidService.generateLegacyUUID(targetPart, targetLang, 'target2', 'slow');
+
+    console.log(`  Target1 UUID: ${target1UUID}`);
+    console.log(`  Target2 UUID: ${target2UUID}`);
 
     const targetsDir = path.join(workDir, 'targets');
     await fs.ensureDir(targetsDir);
 
-    // Check if we have a pre-downloaded targets cache
     const targetCacheDir = options.targetCacheDir;
 
     // Get target1
     let target1Path;
     if (targetCacheDir) {
-      const cachedTarget1 = path.join(targetCacheDir, `${target1Sample.id}.mp3`);
+      const cachedTarget1 = path.join(targetCacheDir, `${target1UUID}.mp3`);
       if (await fs.pathExists(cachedTarget1)) {
-        target1Path = path.join(targetsDir, `${target1Sample.id}.mp3`);
+        target1Path = path.join(targetsDir, `${target1UUID}.mp3`);
         await fs.copyFile(cachedTarget1, target1Path);
-        console.log(`  [DEBUG] Using cached target1: ${target1Sample.id}`);
+        console.log(`  Using cached target1`);
       }
     }
     if (!target1Path) {
-      console.log(`  [DEBUG] Downloading target1: ${target1Sample.id}`);
-      target1Path = await downloadTargetFromS3(target1Sample.id, targetsDir, bucket);
-      console.log(`  [DEBUG] Downloaded to: ${target1Path}`);
+      console.log(`  Downloading target1 from S3`);
+      target1Path = await downloadTargetFromS3(target1UUID, targetsDir, bucket);
     }
 
     // Get target2
     let target2Path;
     if (targetCacheDir) {
-      const cachedTarget2 = path.join(targetCacheDir, `${target2Sample.id}.mp3`);
+      const cachedTarget2 = path.join(targetCacheDir, `${target2UUID}.mp3`);
       if (await fs.pathExists(cachedTarget2)) {
-        target2Path = path.join(targetsDir, `${target2Sample.id}.mp3`);
+        target2Path = path.join(targetsDir, `${target2UUID}.mp3`);
         await fs.copyFile(cachedTarget2, target2Path);
-        console.log(`  [DEBUG] Using cached target2: ${target2Sample.id}`);
+        console.log(`  Using cached target2`);
       }
     }
     if (!target2Path) {
-      console.log(`  [DEBUG] Downloading target2: ${target2Sample.id}`);
-      target2Path = await downloadTargetFromS3(target2Sample.id, targetsDir, bucket);
-      console.log(`  [DEBUG] Downloaded to: ${target2Path}`);
+      console.log(`  Downloading target2 from S3`);
+      target2Path = await downloadTargetFromS3(target2UUID, targetsDir, bucket);
     }
 
-    // Step 5: Concatenate main presentation
-    const mainAudioPath = path.join(workDir, `${uuid}_main.mp3`);
-    console.log(`  [DEBUG] Concatenating main: source + target1 + target2`);
-    console.log(`  [DEBUG]   Source: ${sourceAudioPath}`);
-    console.log(`  [DEBUG]   Target1: ${target1Path}`);
-    console.log(`  [DEBUG]   Target2: ${target2Path}`);
-    console.log(`  [DEBUG]   Output: ${mainAudioPath}`);
-
+    // Step 4: Concatenate: source + target1 + target2
+    console.log(`  Concatenating audio...`);
     await audioProcessor.concatenateAudio(
       [sourceAudioPath, target1Path, target2Path],
-      mainAudioPath,
+      finalOutputPath,
       { pauseDuration: 1000, normalize: true }
     );
 
-    console.log(`  [DEBUG] Main concatenation complete`);
-
-    // Step 6: Handle explanation if present
-    if (explanation) {
-      console.log(`  [DEBUG] Processing explanation with ${parseExplanationSegments(explanation).length} segments`);
-      const segments = parseExplanationSegments(explanation);
-      const segmentAudioPaths = [];
-
-      for (let i = 0; i < segments.length; i++) {
-        const segment = segments[i];
-        const segmentPath = path.join(workDir, `segment_${i}.mp3`);
-
-        if (segment.type === 'text') {
-          // Skip segments that are only punctuation/whitespace
-          const textContent = segment.content.replace(/[^\w\s]/g, '').trim();
-          if (!textContent) {
-            continue;
-          }
-
-          // Check segment cache first (if provided)
-          if (segmentCache && segmentCache.has(segment.content)) {
-            await fs.copyFile(segmentCache.get(segment.content), segmentPath);
-          } else {
-            // Generate TTS for text segment using appropriate provider
-            await generateTTS(segment.content, voiceDetails, segmentPath, { language: sourceLanguage });
-          }
-
-          segmentAudioPaths.push(segmentPath);
-
-        } else if (segment.type === 'target') {
-          // Download target audio from S3
-          const targetSample = findTargetSample(manifest, segment.text, segment.role);
-
-          if (!targetSample) {
-            console.warn(`  Warning: Could not find ${segment.role} sample for "${segment.text}"`);
-            continue;
-          }
-
-          const targetPath = await downloadTargetFromS3(targetSample.id, targetsDir, bucket);
-
-          // Copy to segment path
-          await fs.copyFile(targetPath, segmentPath);
-          segmentAudioPaths.push(segmentPath);
-        }
-      }
-
-      if (segmentAudioPaths.length > 0) {
-        // Concatenate explanation segments
-        const explanationAudioPath = path.join(workDir, `${uuid}_explanation.mp3`);
-        await audioProcessor.concatenateAudio(
-          segmentAudioPaths,
-          explanationAudioPath,
-          { pauseDuration: 0, normalize: true } // No pause between explanation segments
-        );
-
-        // Concatenate main + explanation with longer pause for natural pacing
-        // This pause separates "... '它现在' ... '它现在'" from "- '它' means it..."
-        await audioProcessor.concatenateAudio(
-          [mainAudioPath, explanationAudioPath],
-          finalOutputPath,
-          { pauseDuration: 1800, normalize: true }  // 1.8s pause before explanation
-        );
-      } else {
-        // No valid explanation segments, just use main audio
-        await fs.copyFile(mainAudioPath, finalOutputPath);
-      }
-    } else {
-      // No explanation, main audio is final
-      console.log(`  [DEBUG] No explanation, copying main to final output`);
-      console.log(`  [DEBUG]   From: ${mainAudioPath}`);
-      console.log(`  [DEBUG]   To: ${finalOutputPath}`);
-      await fs.copyFile(mainAudioPath, finalOutputPath);
-      console.log(`  [DEBUG] Final copy complete`);
-    }
+    console.log(`  ✓ Generated: ${uuid}.mp3`);
 
     return {
       success: true,
@@ -502,11 +224,10 @@ async function generatePresentationAudio(sample, manifest, voiceAssignments, opt
       error: error.message
     };
   } finally {
-    // Cleanup work directory
     try {
       await fs.remove(workDir);
     } catch (error) {
-      console.warn(`  Warning: Failed to cleanup work directory: ${error.message}`);
+      // Ignore cleanup errors
     }
   }
 }
@@ -521,14 +242,6 @@ function getSegmentHash(text) {
 
 /**
  * Generate all unique text segments in batch
- * Avoids regenerating duplicate narration like "means 'trying'"
- * Checks for existing cached segments and only generates missing ones
- *
- * @param {Set<string>} uniqueSegments - Set of unique text segments
- * @param {string} voiceId - Voice ID for generation
- * @param {string} tempDir - Temp directory for audio files
- * @param {Object} options - Generation options
- * @returns {Promise<Map>} Map of text -> file path
  */
 async function generateSegmentBatch(uniqueSegments, voiceId, tempDir, options = {}) {
   const segmentCache = new Map();
@@ -564,7 +277,7 @@ async function generateSegmentBatch(uniqueSegments, voiceId, tempDir, options = 
 
   // Step 2: Generate missing segments
   const voice = await getVoiceDetails(voiceId);
-  const MAX_CONCURRENT = 8; // Higher concurrency for simple narration
+  const MAX_CONCURRENT = 8;
 
   for (let i = 0; i < toGenerate.length; i += MAX_CONCURRENT) {
     const batch = toGenerate.slice(i, i + MAX_CONCURRENT);
@@ -576,17 +289,12 @@ async function generateSegmentBatch(uniqueSegments, voiceId, tempDir, options = 
         const segmentPath = path.join(tempDir, `seg_${hash}.mp3`);
 
         try {
-          // Check if TTS is blocked at runtime (safety net)
           if (global.BLOCK_TTS) {
             console.error(`\n❌ BLOCKED: Segment TTS generation attempted with --block-tts flag!`);
-            console.error(`   Segment: "${text.substring(0, 60)}..."`);
-            console.error(`\nThis indicates unexpected TTS usage. Exiting immediately.`);
             process.exit(1);
           }
 
-          // Generate TTS using appropriate provider (Azure or ElevenLabs)
           await generateTTS(text, voice, segmentPath, { language: options.sourceLanguage || 'eng' });
-
           segmentCache.set(text, segmentPath);
 
           if ((segmentNum) % 50 === 0) {
@@ -607,9 +315,6 @@ async function generateSegmentBatch(uniqueSegments, voiceId, tempDir, options = 
 
 /**
  * Get voice details from voice registry
- *
- * @param {string} voiceId - Voice ID
- * @returns {Promise<Object>} Voice details
  */
 async function getVoiceDetails(voiceId) {
   const voiceRegistry = await fs.readJson(
@@ -625,91 +330,83 @@ async function getVoiceDetails(voiceId) {
 }
 
 /**
- * Collect all unique target UUIDs required for presentations
- * Used to pre-download target files in bulk instead of on-demand
- *
- * @param {Array<Object>} samples - Array of presentation samples
- * @param {Object} manifest - Course manifest
- * @returns {Set<string>} Set of unique target UUIDs
+ * Load S3 audio index (list of UUIDs that exist in S3)
  */
-function collectRequiredTargets(samples, manifest) {
+async function loadS3AudioIndex() {
+  const s3IndexPath = path.join(__dirname, '../temp/s3-audio-index.json');
+  try {
+    const index = await fs.readJson(s3IndexPath);
+    return new Set(index.uuids || []);
+  } catch (error) {
+    console.warn(`Could not load s3-audio-index.json: ${error.message}`);
+    return new Set();
+  }
+}
+
+/**
+ * Collect all unique target UUIDs required for presentations
+ * Uses legacy UUID generation and checks against S3 index
+ */
+async function collectRequiredTargets(samples, manifest, s3UuidIndex = null) {
+  if (!s3UuidIndex) {
+    s3UuidIndex = await loadS3AudioIndex();
+  }
+
   const requiredTargets = new Set();
   const missingTargets = [];
+  const targetTextMap = new Map();
+
+  const targetLang = manifest.target || manifest.course_code?.split('_')[0] || 'cmn';
+
+  console.log(`Collecting targets (language: ${targetLang})`);
+  console.log(`S3 index has ${s3UuidIndex.size} UUIDs`);
 
   for (const sample of samples) {
     try {
-      const { mainPresentation, explanation } = parsePresentation(sample.text);
-      const { targetPart } = parseMainPresentation(mainPresentation);
+      const { targetPart } = parseMainPresentation(sample.text);
 
-      // Find target1 and target2 for main presentation
-      const target1 = findTargetSample(manifest, targetPart, 'target1');
-      const target2 = findTargetSample(manifest, targetPart, 'target2');
+      const target1UUID = uuidService.generateLegacyUUID(targetPart, targetLang, 'target1', 'slow');
+      const target2UUID = uuidService.generateLegacyUUID(targetPart, targetLang, 'target2', 'slow');
 
-      if (target1?.id) {
-        requiredTargets.add(target1.id);
+      if (s3UuidIndex.has(target1UUID)) {
+        requiredTargets.add(target1UUID);
+        targetTextMap.set(target1UUID, { text: targetPart, role: 'target1' });
       } else {
         missingTargets.push({
-          presentationId: sample.id,
-          presentationText: sample.text.substring(0, 100) + '...',
+          presentationId: sample.id || sample.uuid,
           targetText: targetPart,
-          role: 'target1'
+          role: 'target1',
+          legacyUUID: target1UUID
         });
       }
 
-      if (target2?.id) {
-        requiredTargets.add(target2.id);
+      if (s3UuidIndex.has(target2UUID)) {
+        requiredTargets.add(target2UUID);
+        targetTextMap.set(target2UUID, { text: targetPart, role: 'target2' });
       } else {
         missingTargets.push({
-          presentationId: sample.id,
-          presentationText: sample.text.substring(0, 100) + '...',
+          presentationId: sample.id || sample.uuid,
           targetText: targetPart,
-          role: 'target2'
+          role: 'target2',
+          legacyUUID: target2UUID
         });
-      }
-
-      // Also collect targets from explanation if present
-      if (explanation) {
-        const segments = parseExplanationSegments(explanation);
-        for (const segment of segments) {
-          if (segment.type === 'target1' || segment.type === 'target2') {
-            const targetSample = findTargetSample(manifest, segment.content, segment.type);
-            if (targetSample?.id) {
-              requiredTargets.add(targetSample.id);
-            } else {
-              missingTargets.push({
-                presentationId: sample.id,
-                presentationText: sample.text.substring(0, 100) + '...',
-                targetText: segment.content,
-                role: segment.type
-              });
-            }
-          }
-        }
       }
     } catch (error) {
-      console.warn(`Failed to parse presentation for target collection: ${sample.text.substring(0, 60)}`);
+      console.warn(`Failed to parse: ${sample.text.substring(0, 60)}`);
     }
   }
 
-  return { requiredTargets, missingTargets };
+  return { requiredTargets, missingTargets, targetTextMap };
 }
 
 /**
  * Bulk download target files from S3 to local cache
- * Downloads all required targets upfront for faster presentation generation
- *
- * @param {Set<string>|Array<string>} targetUuids - Set or array of target UUIDs
- * @param {string} cacheDir - Local directory to cache files
- * @param {string} bucket - S3 bucket name
- * @param {number} concurrency - Number of parallel downloads (default: 10)
- * @returns {Promise<Object>} { downloaded: number, skipped: number, failed: number }
  */
 async function bulkDownloadTargets(targetUuids, cacheDir, bucket, concurrency = 10) {
   await fs.ensureDir(cacheDir);
 
   const uuidsArray = Array.isArray(targetUuids) ? targetUuids : Array.from(targetUuids);
 
-  // Filter out files that already exist in cache
   const toDownload = [];
   for (const uuid of uuidsArray) {
     const cachePath = path.join(cacheDir, `${uuid}.mp3`);
@@ -724,7 +421,6 @@ async function bulkDownloadTargets(targetUuids, cacheDir, bucket, concurrency = 
 
   console.log(`\nBulk downloading ${toDownload.length} target files (${skipped} already cached)...`);
 
-  // Download in batches for concurrency control
   for (let i = 0; i < toDownload.length; i += concurrency) {
     const batch = toDownload.slice(i, i + concurrency);
 
@@ -741,7 +437,6 @@ async function bulkDownloadTargets(targetUuids, cacheDir, bucket, concurrency = 
       })
     );
 
-    // Progress update
     if ((i + concurrency) % 100 === 0 || i + concurrency >= toDownload.length) {
       console.log(`  Downloaded: ${Math.min(i + concurrency, toDownload.length)}/${toDownload.length}`);
     }
@@ -752,31 +447,8 @@ async function bulkDownloadTargets(targetUuids, cacheDir, bucket, concurrency = 
   return { downloaded, skipped, failed };
 }
 
-/**
- * Strip {target1} and {target2} voice control tags from presentation text for display
- * Keeps the quoted content but removes the tag prefix
- *
- * Example:
- *   Input:  "{target1}'它' means it, {target1}'现在' means now"
- *   Output: "'它' means it, '现在' means now"
- *
- * @param {string} text - Presentation text with {target} tags
- * @returns {string} Text with tags stripped, suitable for display
- */
-function stripDisplayTags(text) {
-  if (!text) return text;
-
-  // Remove {target1} and {target2} tags but keep everything after them
-  // Handles both curly quotes (' ') and straight quotes (' ")
-  return text.replace(/\{target[12]\}/g, '');
-}
-
 module.exports = {
-  parsePresentation,
   parseMainPresentation,
-  extractTargetsFromExplanation,
-  parseExplanationSegments,
-  findTargetSample,
   downloadTargetFromS3,
   generatePresentationAudio,
   getVoiceDetails,
@@ -784,5 +456,5 @@ module.exports = {
   generateSegmentBatch,
   collectRequiredTargets,
   bulkDownloadTargets,
-  stripDisplayTags
+  loadS3AudioIndex
 };

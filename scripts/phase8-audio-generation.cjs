@@ -3035,7 +3035,7 @@ async function executePhaseA(phaseASamples, courseCode, options) {
  * @returns {Promise<Array>} Generation results
  */
 async function generatePresentationSamples(samples, manifest, voiceAssignments, options = {}) {
-  const { uploadBucket = s3Service.STAGE_BUCKET } = options;
+  const { uploadBucket = s3Service.STAGE_BUCKET, audioIndex = null, targetCacheDir = null } = options;
 
   console.log(`\n=== Generating ${samples.length} Presentation Samples ===\n`);
 
@@ -3111,7 +3111,9 @@ async function generatePresentationSamples(samples, manifest, voiceAssignments, 
               bucket: uploadBucket,
               sourceLanguage: manifest.known,
               targetLanguage: manifest.target,
-              segmentCache // Pass the pre-generated segment cache
+              segmentCache, // Pass the pre-generated segment cache
+              audioIndex,   // Pass audio-index for target UUID lookups
+              targetCacheDir // Pass pre-downloaded targets cache
             }
           );
 
@@ -3204,15 +3206,21 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
     };
   }
 
-  // 1. Collect required target UUIDs only for samples that need generation
+  // 1. Load audio-index for reliable UUID lookups
   console.log('\n=== Downloading Target Files from S3 ===\n');
   console.log('Phase B (presentations) requires target1 and target2 samples...\n');
+  console.log('Loading audio-index for target UUID lookups...');
 
-  const { requiredTargets, missingTargets } = presentationService.collectRequiredTargets(samplesToGenerate, manifest);
+  const audioIndex = await presentationService.loadAudioIndex();
+  const audioIndexSampleCount = Object.keys(audioIndex.samples || {}).length;
+  console.log(`✓ Loaded audio-index with ${audioIndexSampleCount} samples\n`);
 
-  // Fail fast if any required targets are missing from manifest
+  // 2. Collect required target UUIDs using audio-index
+  const { requiredTargets, missingTargets, targetTextMap } = await presentationService.collectRequiredTargets(samplesToGenerate, manifest, audioIndex);
+
+  // Fail fast if any required targets are missing from audio-index
   if (missingTargets.length > 0) {
-    console.error(`\n❌ ERROR: ${missingTargets.length} required target samples are missing from the manifest:\n`);
+    console.error(`\n❌ ERROR: ${missingTargets.length} required target samples are missing from audio-index:\n`);
 
     // Group by target text to avoid duplicates
     const grouped = {};
@@ -3225,18 +3233,23 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
       grouped[key].presentations.push(missing.presentationId);
     }
 
-    for (const [key, info] of Object.entries(grouped)) {
+    // Show first 10 missing targets
+    const groupedEntries = Object.entries(grouped).slice(0, 10);
+    for (const [key, info] of groupedEntries) {
       console.error(`  Target text: "${info.targetText}" (${info.role})`);
+      console.error(`  Lookup key: ${info.lookupKey || 'unknown'}`);
       console.error(`  Needed by: ${info.count} presentation(s)`);
-      console.error(`  Example presentation: ${info.presentationText}`);
-      console.error(`  Presentation IDs: ${info.presentations.slice(0, 3).join(', ')}${info.presentations.length > 3 ? '...' : ''}`);
       console.error('');
     }
 
+    if (Object.keys(grouped).length > 10) {
+      console.error(`  ... and ${Object.keys(grouped).length - 10} more missing targets\n`);
+    }
+
     throw new Error(
-      `Cannot proceed with Phase B: ${missingTargets.length} required target samples are missing from the manifest. ` +
-      `These target samples need to be generated in Phase A first, or the manifest data may have incorrect roles. ` +
-      `Fix the manifest and regenerate the missing target samples, then retry Phase B.`
+      `Cannot proceed with Phase B: ${missingTargets.length} required target samples are missing from audio-index. ` +
+      `These target samples need to be generated in Phase A first. ` +
+      `Run Phase A to generate the missing targets, then retry Phase B.`
     );
   }
 
@@ -3262,9 +3275,10 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
 
   console.log(`✓ All ${requiredTargets.size} required target files available (${downloaded} downloaded, ${skipped} cached)\n`);
 
-  // 2. Generate presentation audio with concatenation (only for samples that need generation)
+  // 3. Generate presentation audio with concatenation (only for samples that need generation)
   const voiceAssignments = await getVoiceAssignments(courseCode);
-  const generationResults = await generatePresentationSamples(samplesToGenerate, manifest, voiceAssignments, options);
+  const generationOptions = { ...options, audioIndex, targetCacheDir };
+  const generationResults = await generatePresentationSamples(samplesToGenerate, manifest, voiceAssignments, generationOptions);
   const successCount = generationResults.filter(r => r.success).length;
   console.log(`\nGenerated: ${successCount}/${samplesToGenerate.length} files (${skippedCount} skipped)`);
 
