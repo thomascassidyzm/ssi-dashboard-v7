@@ -606,49 +606,118 @@ async function checkAndFixS3Access(options = {}) {
 
 /**
  * Check MAR (Master Audio Registry) sync status
- * Verifies samples_database is synced to S3 for team collaboration
+ * AUTO-FIXABLE: Downloads missing voice samples.json files from S3
+ *
+ * @param {Array<string>} voiceIds - Optional: specific voices to sync (otherwise checks all)
  */
-async function checkMARSyncStatus() {
+async function checkMARSyncStatus(voiceIds = null) {
   const localMARPath = path.join(__dirname, '..', 'samples_database', 'voices');
   const s3Bucket = 'popty-bach-lfs';
-  const s3Prefix = 'samples_database/voices/';
 
   try {
-    // Check if local MAR exists
-    if (!await fs.pathExists(localMARPath)) {
+    // Ensure local MAR directory exists
+    await fs.ensureDir(localMARPath);
+
+    // If specific voices requested, sync those
+    if (voiceIds && voiceIds.length > 0) {
+      const syncResult = await syncMARVoicesFromS3(voiceIds, localMARPath, s3Bucket);
+
+      if (syncResult.errors > 0 && syncResult.synced === 0) {
+        return {
+          success: false,
+          service: 'MAR Sync',
+          error: `Failed to sync ${syncResult.errors} voices from S3`,
+          details: syncResult
+        };
+      }
+
       return {
-        success: false,
+        success: true,
         service: 'MAR Sync',
-        error: 'Local samples_database/voices/ not found',
-        autoFixable: false,
-        agentAction: 'Pull MAR from S3: aws s3 sync s3://popty-bach-lfs/samples_database/ samples_database/ --profile default'
+        message: syncResult.synced > 0
+          ? `AUTO-SYNCED: Downloaded ${syncResult.synced} voice(s) from S3`
+          : `${syncResult.skipped} voice(s) already synced`,
+        fixed: syncResult.synced > 0,
+        details: syncResult
       };
     }
 
-    // Count local samples
+    // Otherwise just check if local MAR has any voices
     const localVoiceDirs = await fs.readdir(localMARPath);
     const validVoiceDirs = localVoiceDirs.filter(d => !d.startsWith('.'));
+
+    if (validVoiceDirs.length === 0) {
+      return {
+        success: true,  // Non-blocking - will sync when we know which voices are needed
+        service: 'MAR Sync',
+        message: 'No local MAR voices (will sync when voice assignments known)',
+        warning: 'MAR will be synced from S3 when audio generation starts'
+      };
+    }
 
     return {
       success: true,
       service: 'MAR Sync',
-      message: `${validVoiceDirs.length} voice directories in local MAR`,
-      details: {
-        localPath: localMARPath,
-        s3Location: `s3://${s3Bucket}/${s3Prefix}`,
-        voiceCount: validVoiceDirs.length,
-        syncCommand: 'aws s3 sync samples_database/ s3://popty-bach-lfs/samples_database/ --profile default'
-      }
+      message: `${validVoiceDirs.length} voice(s) in local MAR`,
+      details: { voiceCount: validVoiceDirs.length, voices: validVoiceDirs }
     };
   } catch (error) {
     return {
       success: false,
       service: 'MAR Sync',
-      error: `MAR check failed: ${error.message}`,
-      autoFixable: false,
-      agentAction: 'Check samples_database/ directory'
+      error: `MAR check failed: ${error.message}`
     };
   }
+}
+
+/**
+ * Sync specific voice samples.json files from S3
+ */
+async function syncMARVoicesFromS3(voiceIds, localMARPath, s3Bucket) {
+  const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+  const s3 = new S3Client({
+    region: process.env.AWS_REGION || 'eu-west-1',
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+  });
+
+  const stats = { synced: 0, skipped: 0, errors: 0, voices: [] };
+
+  for (const voiceId of voiceIds) {
+    const localPath = path.join(localMARPath, voiceId, 'samples.json');
+    const s3Key = `samples_database/voices/${voiceId}/samples.json`;
+
+    try {
+      // Skip if already exists locally
+      if (await fs.pathExists(localPath)) {
+        stats.skipped++;
+        continue;
+      }
+
+      // Download from S3
+      console.log(`    Syncing MAR: ${voiceId}...`);
+      const command = new GetObjectCommand({ Bucket: s3Bucket, Key: s3Key });
+      const result = await s3.send(command);
+      const body = await result.Body.transformToString();
+
+      // Save locally
+      await fs.ensureDir(path.dirname(localPath));
+      await fs.writeFile(localPath, body);
+      stats.synced++;
+      stats.voices.push(voiceId);
+    } catch (err) {
+      if (err.name === 'NoSuchKey') {
+        console.warn(`    Warning: ${voiceId} not found in S3 MAR (new voice?)`);
+      } else {
+        console.warn(`    Warning: Failed to sync ${voiceId}: ${err.message}`);
+      }
+      stats.errors++;
+    }
+  }
+
+  return stats;
 }
 
 /**

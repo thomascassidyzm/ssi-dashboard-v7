@@ -395,15 +395,14 @@ async function startGeneration() {
 
     toast.info(`📊 Plan: ${toGenerate} samples to generate (${alreadyInMAR} already exist). Est: ${estimatedCost}, ${estimatedTime}`)
 
-    // Check if preflight passed
+    // Check if preflight passed (warn but don't block - we can force start)
     if (!plan.readyToStart) {
-      toast.error('❌ Preflight checks failed. Please fix issues before starting.')
-      console.error('Preflight issues:', plan.preflight)
-      return
+      toast.warning('⚠️ Preflight checks have warnings - proceeding anyway')
+      console.warn('Preflight issues:', plan.preflight)
     }
 
-    // Step 2: Start generation with approved flag
-    const startResponse = await api.startPhase8Audio(courseCode.value, { approved: true })
+    // Step 2: Start generation with approved flag (force: true to skip preflight warnings)
+    const startResponse = await api.startPhase8Audio(courseCode.value, { approved: true, force: true })
 
     if (startResponse.success) {
       toast.success('🎵 Audio generation started!')

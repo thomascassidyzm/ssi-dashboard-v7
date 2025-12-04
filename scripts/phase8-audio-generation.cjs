@@ -479,11 +479,25 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
   const knownLang = manifest.known;
 
   console.log(`\nAnalyzing required generation for ${variants.length} samples...`);
-  console.log('  Building S3 UUID index (this may take a moment)...');
 
-  // Build S3 index - get all existing UUIDs from ssi-audio-stage/mastered/
-  const s3Index = await s3Service.buildMasteredIndex();
-  console.log(`  ✓ S3 index built: ${s3Index.size} existing samples`);
+  // Get the voice IDs we'll be using for this course
+  const voiceIds = Object.values(voiceAssignments).filter(Boolean);
+  const uniqueVoiceIds = [...new Set(voiceIds)];
+
+  // Sync MAR from S3 for the voices we need (downloads missing samples.json files)
+  console.log(`  Syncing MAR for ${uniqueVoiceIds.length} voices...`);
+  const marSyncResult = await preflightCheck.checkMARSyncStatus(uniqueVoiceIds);
+  if (marSyncResult.fixed) {
+    console.log(`  ✓ ${marSyncResult.message}`);
+  } else {
+    console.log(`  ✓ ${marSyncResult.message}`);
+  }
+
+  // Load MAR index from local samples_database (fast - just reads local JSON files)
+  console.log('  Building MAR index...');
+  const marIndex = await marService.loadMARIndex(uniqueVoiceIds);
+  const totalSamples = Object.values(marIndex).reduce((sum, voiceSamples) => sum + Object.keys(voiceSamples).length, 0);
+  console.log(`  ✓ MAR index loaded: ${totalSamples} samples across ${uniqueVoiceIds.length} voices`);
 
   // First pass: generate all UUIDs and check against S3
   for (const variant of variants) {
@@ -512,17 +526,18 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       );
     }
 
-    // Check S3 index using LEGACY UUID (text|lang|role|cadence - no voiceId)
-    // S3 is the Single Source of Truth - existing files use the old UUID scheme
-    // generateLegacyUUID auto-normalizes 2-letter codes to 3-letter (en → eng)
-    const legacyUUID = uuidService.generateLegacyUUID(variant.text, language, variant.role, variant.cadence);
-    const existsInS3 = s3Index.has(legacyUUID);
+    // Check MAR index using key format: text|role|cadence (per voice)
+    // MAR is the source of truth for existing generated samples
+    const marKey = marService.buildIndexKey(variant.text, variant.role, variant.cadence);
+    const voiceIndex = marIndex[voiceId] || {};
+    const existingEntry = voiceIndex[marKey];
+    const existsInMAR = !!existingEntry;
 
-    // Use legacy UUID if found in S3, otherwise use new UUID scheme for generation
-    const sampleUUID = existsInS3 ? legacyUUID : newSampleUUID;
+    // Use existing UUID if found, otherwise use new UUID scheme for generation
+    const sampleUUID = existsInMAR ? existingEntry.uuid : newSampleUUID;
 
-    // Check S3 index (O(1) lookup)
-    if (existsInS3) {
+    // Check MAR (O(1) lookup)
+    if (existsInMAR) {
       // Found existing sample in S3
       matched.push({
         text: variant.text,
