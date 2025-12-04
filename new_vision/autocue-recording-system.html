@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocue Recording System - Welsh to Mandarin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Studio Confidence Palette */
+            --color-studio-dark: #1a1d23;
+            --color-studio-mid: #2a2f38;
+            --color-studio-light: #3a404c;
+            --color-amber-glow: #f4a261;
+            --color-amber-bright: #e76f51;
+            --color-sage-success: #84a98c;
+            --color-sage-light: #a8c5ab;
+            --color-cream: #f8f4ed;
+            --color-cream-dim: #d4cfc2;
+            --color-warning: #e9c46a;
+            --color-error: #d32f2f;
+
+            /* Typography */
+            --font-display: 'Fraunces', serif;
+            --font-ui: 'Public Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+
+            /* Timing */
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background: var(--color-studio-dark);
+            color: var(--color-cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        /* Layout Container */
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--color-studio-light);
+        }
+
+        .project-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-amber-glow), var(--color-amber-bright));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(244, 162, 97, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(244, 162, 97, 0.6); }
+        }
+
+        .project-meta h1 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-cream);
+            margin-bottom: 0.25rem;
+        }
+
+        .project-meta p {
+            font-size: 0.95rem;
+            color: var(--color-cream-dim);
+        }
+
+        .session-stats {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-sage-success);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-cream-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        /* View Switcher */
+        .view-switcher {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            background: var(--color-studio-mid);
+            padding: var(--space-xs);
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .view-btn {
+            background: transparent;
+            border: none;
+            color: var(--color-cream-dim);
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .view-btn.active {
+            background: var(--color-amber-glow);
+            color: var(--color-studio-dark);
+            box-shadow: 0 4px 12px rgba(244, 162, 97, 0.4);
+        }
+
+        .view-btn:hover:not(.active) {
+            background: var(--color-studio-light);
+            color: var(--color-cream);
+        }
+
+        /* View Containers */
+        .view {
+            display: none;
+            animation: fadeIn 0.5s var(--ease-smooth);
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Session Planning View */
+        .session-planner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+
+        .planner-card {
+            background: var(--color-studio-mid);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            border: 2px solid var(--color-studio-light);
+            transition: border-color 0.3s var(--ease-smooth);
+        }
+
+        .planner-card:hover {
+            border-color: var(--color-amber-glow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-cream);
+        }
+
+        .card-badge {
+            background: var(--color-amber-glow);
+            color: var(--color-studio-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .phrase-group {
+            background: var(--color-studio-light);
+            border-radius: 12px;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-left: 4px solid var(--color-sage-success);
+        }
+
+        .phrase-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .phrase-group-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-cream);
+        }
+
+        .phrase-count {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-cream-dim);
+        }
+
+        .phrase-examples {
+            font-size: 0.9rem;
+            color: var(--color-cream-dim);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+
+        .time-estimate {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.85rem;
+            color: var(--color-amber-glow);
+            font-weight: 500;
+        }
+
+        .start-session-btn {
+            background: linear-gradient(135deg, var(--color-amber-glow), var(--color-amber-bright));
+            color: var(--color-studio-dark);
+            border: none;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 12px;
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: var(--space-md);
+            transition: all 0.3s var(--ease-smooth);
+            box-shadow: 0 4px 16px rgba(244, 162, 97, 0.3);
+        }
+
+        .start-session-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 162, 97, 0.5);
+        }
+
+        .start-session-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Autocue Recording View */
+        .recording-interface {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .progress-bar-container {
+            background: var(--color-studio-mid);
+            border-radius: 12px;
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .progress-label {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--color-cream-dim);
+            white-space: nowrap;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 12px;
+            background: var(--color-studio-light);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-sage-success), var(--color-sage-light));
+            border-radius: 6px;
+            width: 47%;
+            transition: width 0.5s var(--ease-smooth);
+            box-shadow: 0 0 12px rgba(132, 169, 140, 0.5);
+        }
+
+        .autocue-display {
+            background: var(--color-studio-mid);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            border: 3px solid var(--color-studio-light);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .autocue-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--color-amber-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-smooth);
+        }
+
+        .autocue-display.recording::before {
+            opacity: 1;
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .phrase-number {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-cream-dim);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .phrase-text {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--color-cream);
+            line-height: 1.4;
+            margin-bottom: var(--space-md);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .autocue-display.recording .phrase-text {
+            color: var(--color-amber-glow);
+            text-shadow: 0 0 20px rgba(244, 162, 97, 0.4);
+        }
+
+        .phrase-translation {
+            font-size: 1.1rem;
+            color: var(--color-cream-dim);
+            font-style: italic;
+        }
+
+        .recording-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .control-btn {
+            background: var(--color-studio-light);
+            border: 2px solid var(--color-studio-light);
+            color: var(--color-cream);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 12px;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .control-btn.primary {
+            background: linear-gradient(135deg, var(--color-amber-glow), var(--color-amber-bright));
+            color: var(--color-studio-dark);
+            border-color: var(--color-amber-bright);
+            font-size: 1.2rem;
+            padding: var(--space-md) var(--space-xl);
+            min-width: 180px;
+        }
+
+        .control-btn.primary:hover {
+            box-shadow: 0 8px 24px rgba(244, 162, 97, 0.5);
+        }
+
+        .control-btn.success {
+            background: var(--color-sage-success);
+            color: var(--color-studio-dark);
+            border-color: var(--color-sage-success);
+        }
+
+        .control-btn.danger {
+            background: var(--color-amber-bright);
+            color: var(--color-cream);
+            border-color: var(--color-amber-bright);
+        }
+
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Waveform Display */
+        .waveform-container {
+            background: var(--color-studio-mid);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .waveform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .waveform-title {
+            font-weight: 600;
+            color: var(--color-cream);
+        }
+
+        .waveform-time {
+            font-family: var(--font-mono);
+            color: var(--color-cream-dim);
+            font-size: 0.9rem;
+        }
+
+        .waveform-canvas {
+            width: 100%;
+            height: 120px;
+            background: var(--color-studio-dark);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .waveform-bars {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 3px;
+            padding: var(--space-sm);
+        }
+
+        .waveform-bar {
+            width: 4px;
+            background: var(--color-sage-success);
+            border-radius: 2px;
+            transition: height 0.1s var(--ease-smooth);
+            opacity: 0.7;
+        }
+
+        .waveform-bar.active {
+            background: var(--color-amber-glow);
+            opacity: 1;
+            box-shadow: 0 0 8px var(--color-amber-glow);
+        }
+
+        /* Quality Indicators */
+        .quality-checks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .quality-check {
+            background: var(--color-studio-mid);
+            border-radius: 12px;
+            padding: var(--space-md);
+            border-left: 4px solid var(--color-studio-light);
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .quality-check.pass {
+            border-left-color: var(--color-sage-success);
+        }
+
+        .quality-check.fail {
+            border-left-color: var(--color-error);
+        }
+
+        .quality-check.warning {
+            border-left-color: var(--color-warning);
+        }
+
+        .quality-label {
+            font-size: 0.85rem;
+            color: var(--color-cream-dim);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quality-status {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .quality-check.pass .quality-status {
+            color: var(--color-sage-success);
+        }
+
+        .quality-check.fail .quality-status {
+            color: var(--color-error);
+        }
+
+        .quality-check.warning .quality-status {
+            color: var(--color-warning);
+        }
+
+        /* Slow-with-Gaps View */
+        .gaps-interface {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gaps-autocue {
+            background: var(--color-studio-mid);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        .gaps-phrase {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            line-height: 1.8;
+            color: var(--color-cream);
+        }
+
+        .word-segment {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            margin: 0 0.25rem;
+            border-radius: 6px;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .word-segment:hover {
+            background: var(--color-studio-light);
+        }
+
+        .gap-marker {
+            display: inline-block;
+            width: 40px;
+            height: 8px;
+            background: var(--color-amber-glow);
+            margin: 0 var(--space-sm);
+            border-radius: 4px;
+            vertical-align: middle;
+            animation: gapPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gapPulse {
+            0%, 100% { opacity: 0.4; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.2); }
+        }
+
+        .metronome {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .metronome-beat {
+            width: 16px;
+            height: 16px;
+            background: var(--color-studio-light);
+            border-radius: 50%;
+            transition: all 0.2s var(--ease-smooth);
+        }
+
+        .metronome-beat.active {
+            background: var(--color-amber-glow);
+            transform: scale(1.5);
+            box-shadow: 0 0 16px var(--color-amber-glow);
+        }
+
+        /* Segment Chopper */
+        .segment-chopper {
+            background: var(--color-studio-mid);
+            border-radius: 16px;
+            padding: var(--space-lg);
+        }
+
+        .segment-timeline {
+            position: relative;
+            height: 150px;
+            background: var(--color-studio-dark);
+            border-radius: 12px;
+            margin-bottom: var(--space-lg);
+            overflow: hidden;
+        }
+
+        .timeline-waveform {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            gap: 2px;
+        }
+
+        .timeline-bar {
+            flex: 1;
+            background: var(--color-sage-success);
+            opacity: 0.5;
+            border-radius: 1px;
+            transition: all 0.2s var(--ease-smooth);
+        }
+
+        .timeline-bar:hover {
+            opacity: 0.8;
+        }
+
+        .chop-marker {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-amber-bright);
+            cursor: ew-resize;
+            box-shadow: 0 0 12px var(--color-amber-bright);
+            z-index: 10;
+        }
+
+        .chop-marker::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--color-amber-bright);
+            border-radius: 50%;
+            border: 3px solid var(--color-studio-dark);
+        }
+
+        .segment-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .segment-card {
+            background: var(--color-studio-light);
+            border-radius: 12px;
+            padding: var(--space-md);
+            border: 2px solid transparent;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .segment-card:hover {
+            border-color: var(--color-amber-glow);
+            transform: translateY(-2px);
+        }
+
+        .segment-label {
+            font-weight: 600;
+            color: var(--color-cream);
+            margin-bottom: var(--space-xs);
+            font-size: 0.95rem;
+        }
+
+        .segment-duration {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-cream-dim);
+            margin-bottom: var(--space-sm);
+        }
+
+        .segment-actions {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .segment-btn {
+            background: var(--color-studio-dark);
+            border: none;
+            color: var(--color-cream);
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            flex: 1;
+            transition: all 0.2s var(--ease-smooth);
+        }
+
+        .segment-btn:hover {
+            background: var(--color-amber-glow);
+            color: var(--color-studio-dark);
+        }
+
+        /* Encouragement Messages */
+        .encouragement {
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.1), rgba(231, 111, 81, 0.1));
+            border-left: 4px solid var(--color-amber-glow);
+            border-radius: 12px;
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-lg) 0;
+            font-style: italic;
+            color: var(--color-cream);
+        }
+
+        .encouragement::before {
+            content: '💪 ';
+            margin-right: var(--space-xs);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .session-planner {
+                grid-template-columns: 1fr;
+            }
+
+            .session-stats {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .quality-checks {
+                grid-template-columns: 1fr;
+            }
+
+            .recording-controls {
+                flex-direction: column;
+            }
+
+            .control-btn {
+                width: 100%;
+            }
+
+            .phrase-text {
+                font-size: 1.8rem;
+            }
+
+            .gaps-phrase {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Loading States */
+        .loading-shimmer {
+            background: linear-gradient(90deg, var(--color-studio-light) 25%, var(--color-studio-mid) 50%, var(--color-studio-light) 75%);
+            background-size: 200% 100%;
+            animation: shimmerLoading 2s infinite;
+        }
+
+        @keyframes shimmerLoading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="project-title">
+                <div class="project-icon">🎙️</div>
+                <div class="project-meta">
+                    <h1>Autocue Recording System</h1>
+                    <p>Welsh → Mandarin Language Pair</p>
+                </div>
+            </div>
+            <div class="session-stats">
+                <div class="stat-item">
+                    <span class="stat-value">234</span>
+                    <span class="stat-label">Recorded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">500</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">47%</span>
+                    <span class="stat-label">Complete</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- View Switcher -->
+        <div class="view-switcher">
+            <button class="view-btn active" onclick="switchView('planning')">Session Planning</button>
+            <button class="view-btn" onclick="switchView('recording')">Record</button>
+            <button class="view-btn" onclick="switchView('gaps')">Slow-with-Gaps</button>
+        </div>
+
+        <!-- Session Planning View -->
+        <div id="planning-view" class="view active">
+            <div class="session-planner">
+                <div class="planner-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Today's Session</h2>
+                        <span class="card-badge">47 phrases</span>
+                    </div>
+
+                    <div class="phrase-group">
+                        <div class="phrase-group-header">
+                            <div class="phrase-group-title">Greetings & Introductions</div>
+                            <div class="phrase-count">12 phrases</div>
+                        </div>
+                        <div class="phrase-examples">
+                            "Sut mae!", "Bore da", "Nos da"...
+                        </div>
+                        <div class="time-estimate">
+                            ⏱️ ~3 minutes
+                        </div>
+                    </div>
+
+                    <div class="phrase-group">
+                        <div class="phrase-group-header">
+                            <div class="phrase-group-title">Asking for Directions</div>
+                            <div class="phrase-count">18 phrases</div>
+                        </div>
+                        <div class="phrase-examples">
+                            "Ble mae'r...?", "Sut ydw i'n cyrraedd...?"...
+                        </div>
+                        <div class="time-estimate">
+                            ⏱️ ~5 minutes
+                        </div>
+                    </div>
+
+                    <div class="phrase-group">
+                        <div class="phrase-group-header">
+                            <div class="phrase-group-title">Food & Drink Orders</div>
+                            <div class="phrase-count">17 phrases</div>
+                        </div>
+                        <div class="phrase-examples">
+                            "Hoffwn i goffi", "Ga i de, os gwelwch yn dda?"...
+                        </div>
+                        <div class="time-estimate">
+                            ⏱️ ~4 minutes
+                        </div>
+                    </div>
+
+                    <button class="start-session-btn" onclick="switchView('recording')">
+                        Start Recording Session
+                    </button>
+                </div>
+
+                <div class="planner-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recording Strategy</h2>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h3 style="font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--color-sage-success);">
+                            💡 Intelligent Grouping
+                        </h3>
+                        <p style="color: var(--color-cream-dim); font-size: 0.95rem; line-height: 1.6;">
+                            We've organized phrases that start with similar patterns together. This minimizes context-switching and helps you maintain a consistent tone.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h3 style="font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--color-sage-success);">
+                            ⚡ Minimum Set Optimization
+                        </h3>
+                        <p style="color: var(--color-cream-dim); font-size: 0.95rem; line-height: 1.6;">
+                            Our AI identified that 12 of these phrases can be synthesized from existing recordings. You'll only record 35 unique items!
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h3 style="font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--color-sage-success);">
+                            🎯 Two Recording Modes
+                        </h3>
+                        <p style="color: var(--color-cream-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: var(--space-sm);">
+                            <strong style="color: var(--color-cream);">Standard:</strong> Record full phrases normally<br>
+                            <strong style="color: var(--color-cream);">Slow-with-Gaps:</strong> Read slowly with pauses for word-level chopping
+                        </p>
+                    </div>
+
+                    <div class="encouragement">
+                        You're making incredible progress! 234 phrases already recorded. At this pace, you'll complete the entire Welsh-Mandarin dataset this week.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recording View -->
+        <div id="recording-view" class="view">
+            <div class="recording-interface">
+                <div class="progress-bar-container">
+                    <span class="progress-label">Phrase 235 of 500</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-label">47%</span>
+                </div>
+
+                <div class="autocue-display" id="autocue">
+                    <div class="phrase-number">Phrase #235 • Greetings & Introductions</div>
+                    <div class="phrase-text">Sut mae! Sut dych chi heddiw?</div>
+                    <div class="phrase-translation">Hello! How are you today?</div>
+                </div>
+
+                <div class="recording-controls">
+                    <button class="control-btn" id="playback-btn" disabled>
+                        🔊 Playback
+                    </button>
+                    <button class="control-btn primary" id="record-btn" onclick="toggleRecording()">
+                        ⏺️ Start Recording
+                    </button>
+                    <button class="control-btn danger" id="retake-btn" disabled>
+                        ↻ Retake
+                    </button>
+                    <button class="control-btn success" id="accept-btn" disabled>
+                        ✓ Accept & Next
+                    </button>
+                </div>
+
+                <div class="waveform-container">
+                    <div class="waveform-header">
+                        <span class="waveform-title">Audio Preview</span>
+                        <span class="waveform-time" id="waveform-time">0:00</span>
+                    </div>
+                    <div class="waveform-canvas">
+                        <div class="waveform-bars" id="waveform">
+                            <!-- Waveform bars will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quality-checks">
+                    <div class="quality-check pass">
+                        <div class="quality-label">Silence Detection</div>
+                        <div class="quality-status">✓ No Issues</div>
+                    </div>
+                    <div class="quality-check pass">
+                        <div class="quality-label">Clipping Check</div>
+                        <div class="quality-status">✓ Clear Audio</div>
+                    </div>
+                    <div class="quality-check pass">
+                        <div class="quality-label">Background Noise</div>
+                        <div class="quality-status">✓ Clean</div>
+                    </div>
+                </div>
+
+                <div class="encouragement">
+                    Great pacing! Your recordings are consistently high quality. Keep up the excellent work!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slow-with-Gaps View -->
+        <div id="gaps-view" class="view">
+            <div class="gaps-interface">
+                <div class="progress-bar-container">
+                    <span class="progress-label">Phrase 236 of 500</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 47.2%;"></div>
+                    </div>
+                    <span class="progress-label">47%</span>
+                </div>
+
+                <div class="gaps-autocue">
+                    <div class="phrase-number">Slow Recording Mode • Food & Drink</div>
+                    <div class="gaps-phrase">
+                        <span class="word-segment">Hoffwn</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">i</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">goffi</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">os</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">gwelwch</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">yn</span>
+                        <span class="gap-marker"></span>
+                        <span class="word-segment">dda</span>
+                    </div>
+                    <div class="phrase-translation" style="margin-top: var(--space-md);">
+                        I would like coffee, please
+                    </div>
+                    <div class="metronome">
+                        <div class="metronome-beat"></div>
+                        <div class="metronome-beat"></div>
+                        <div class="metronome-beat"></div>
+                        <div class="metronome-beat"></div>
+                        <div class="metronome-beat"></div>
+                    </div>
+                </div>
+
+                <div class="recording-controls">
+                    <button class="control-btn">
+                        🎵 Start Metronome
+                    </button>
+                    <button class="control-btn primary">
+                        ⏺️ Record with Gaps
+                    </button>
+                </div>
+
+                <div class="segment-chopper">
+                    <h3 style="font-size: 1.3rem; font-family: var(--font-display); margin-bottom: var(--space-md); color: var(--color-cream);">
+                        Segment Timeline
+                    </h3>
+                    <p style="color: var(--color-cream-dim); margin-bottom: var(--space-md); font-size: 0.95rem;">
+                        Drag the markers to adjust where each word segment begins and ends. The AI has detected 7 gaps in your recording.
+                    </p>
+                    <div class="segment-timeline">
+                        <div class="timeline-waveform" id="timeline-waveform">
+                            <!-- Waveform bars -->
+                        </div>
+                        <div class="chop-marker" style="left: 12%;"></div>
+                        <div class="chop-marker" style="left: 24%;"></div>
+                        <div class="chop-marker" style="left: 38%;"></div>
+                        <div class="chop-marker" style="left: 52%;"></div>
+                        <div class="chop-marker" style="left: 68%;"></div>
+                        <div class="chop-marker" style="left: 82%;"></div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; font-family: var(--font-display); margin: var(--space-lg) 0 var(--space-md); color: var(--color-cream);">
+                        Extracted Segments
+                    </h3>
+
+                    <div class="segment-list">
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 1: Hoffwn</div>
+                            <div class="segment-duration">0.8s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 2: i</div>
+                            <div class="segment-duration">0.3s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 3: goffi</div>
+                            <div class="segment-duration">0.7s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 4: os</div>
+                            <div class="segment-duration">0.5s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 5: gwelwch</div>
+                            <div class="segment-duration">0.9s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 6: yn</div>
+                            <div class="segment-duration">0.4s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                        <div class="segment-card">
+                            <div class="segment-label">Segment 7: dda</div>
+                            <div class="segment-duration">0.6s</div>
+                            <div class="segment-actions">
+                                <button class="segment-btn">▶ Play</button>
+                                <button class="segment-btn">↻ Redo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="start-session-btn" style="margin-top: var(--space-lg);">
+                        ✓ Accept All Segments & Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // View Switching
+        function switchView(viewName) {
+            // Update buttons
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update views
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+            document.getElementById(`${viewName}-view`).classList.add('active');
+        }
+
+        // Recording State
+        let isRecording = false;
+        let recordingTime = 0;
+        let recordingInterval;
+        let audioContext;
+        let analyser;
+        let dataArray;
+        let animationId;
+
+        // Initialize waveform
+        function initWaveform() {
+            const waveformContainer = document.getElementById('waveform');
+            waveformContainer.innerHTML = '';
+            for (let i = 0; i < 80; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'waveform-bar';
+                bar.style.height = '10px';
+                waveformContainer.appendChild(bar);
+            }
+        }
+
+        // Initialize timeline waveform
+        function initTimelineWaveform() {
+            const timelineContainer = document.getElementById('timeline-waveform');
+            if (!timelineContainer) return;
+
+            for (let i = 0; i < 200; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'timeline-bar';
+                const height = Math.random() * 100 + 20;
+                bar.style.height = height + 'px';
+                bar.style.opacity = 0.3 + Math.random() * 0.4;
+                timelineContainer.appendChild(bar);
+            }
+        }
+
+        // Animate waveform during recording
+        function animateWaveform() {
+            const bars = document.querySelectorAll('#waveform .waveform-bar');
+            bars.forEach((bar, index) => {
+                const height = Math.random() * 100 + 10;
+                bar.style.height = height + 'px';
+                bar.classList.toggle('active', Math.random() > 0.7);
+            });
+
+            if (isRecording) {
+                animationId = requestAnimationFrame(animateWaveform);
+            }
+        }
+
+        // Toggle recording
+        function toggleRecording() {
+            isRecording = !isRecording;
+            const recordBtn = document.getElementById('record-btn');
+            const autocue = document.getElementById('autocue');
+            const playbackBtn = document.getElementById('playback-btn');
+            const retakeBtn = document.getElementById('retake-btn');
+            const acceptBtn = document.getElementById('accept-btn');
+
+            if (isRecording) {
+                // Start recording
+                recordBtn.innerHTML = '⏹️ Stop Recording';
+                recordBtn.classList.remove('primary');
+                recordBtn.classList.add('danger');
+                autocue.classList.add('recording');
+
+                recordingTime = 0;
+                recordingInterval = setInterval(() => {
+                    recordingTime++;
+                    const minutes = Math.floor(recordingTime / 60);
+                    const seconds = recordingTime % 60;
+                    document.getElementById('waveform-time').textContent =
+                        `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+
+                animateWaveform();
+            } else {
+                // Stop recording
+                recordBtn.innerHTML = '⏺️ Start Recording';
+                recordBtn.classList.add('primary');
+                recordBtn.classList.remove('danger');
+                autocue.classList.remove('recording');
+
+                clearInterval(recordingInterval);
+                cancelAnimationFrame(animationId);
+
+                // Enable other buttons
+                playbackBtn.disabled = false;
+                retakeBtn.disabled = false;
+                acceptBtn.disabled = false;
+
+                // Set final waveform
+                const bars = document.querySelectorAll('#waveform .waveform-bar');
+                bars.forEach((bar) => {
+                    bar.classList.remove('active');
+                });
+            }
+        }
+
+        // Metronome animation
+        let metronomeBeat = 0;
+        function animateMetronome() {
+            const beats = document.querySelectorAll('.metronome-beat');
+            beats.forEach((beat, index) => {
+                beat.classList.toggle('active', index === metronomeBeat);
+            });
+            metronomeBeat = (metronomeBeat + 1) % beats.length;
+        }
+
+        // Drag chop markers
+        function initChopMarkers() {
+            const markers = document.querySelectorAll('.chop-marker');
+            markers.forEach(marker => {
+                let isDragging = false;
+
+                marker.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    e.preventDefault();
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+
+                    const timeline = marker.parentElement;
+                    const rect = timeline.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const percentage = (x / rect.width) * 100;
+
+                    if (percentage >= 0 && percentage <= 100) {
+                        marker.style.left = percentage + '%';
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+            });
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initWaveform();
+            initTimelineWaveform();
+            initChopMarkers();
+
+            // Start metronome animation as demo
+            setInterval(animateMetronome, 800);
+        });
+    </script>
+</body>
+</html>

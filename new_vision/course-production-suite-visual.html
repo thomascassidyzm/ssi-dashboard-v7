@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Production Suite - Visual Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Berkeley Mono', 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 3px solid #10b981;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #10b981;
+            margin: 3rem 0 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-left: 5px solid #10b981;
+            padding-left: 1rem;
+        }
+
+        .diagram-section {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid #1e293b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #334155;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981 0%, #06b6d4 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .component-card:hover {
+            border-color: #10b981;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .component-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .component-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-title {
+            font-size: 1.5rem;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .component-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding: 0.3rem 0;
+            color: #cbd5e1;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .flow-diagram {
+            background: #0f172a;
+            border: 2px solid #1e293b;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .flow-box {
+            background: #1e293b;
+            border: 2px solid #10b981;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: #10b981;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .status-badge {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .status-badge:hover {
+            border-color: #10b981;
+            transform: scale(1.05);
+        }
+
+        .status-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-label {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .wireframe {
+            background: #0a0e1a;
+            border: 3px solid #1e293b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .wireframe-header {
+            background: #1e293b;
+            padding: 0.75rem;
+            margin: -1.5rem -1.5rem 1rem;
+            border-bottom: 2px solid #10b981;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #0a0e1a;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .muted {
+            color: #64748b;
+        }
+
+        .data-flow-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .data-node {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .data-node::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #10b981;
+            font-size: 1.5rem;
+        }
+
+        .data-node:last-child::after {
+            content: '';
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-flow-container {
+                grid-template-columns: 1fr;
+            }
+
+            .data-node::after {
+                content: '↓';
+                right: auto;
+                top: auto;
+                bottom: -1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .data-node:last-child::after {
+                content: '';
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Course Production Suite</h1>
+            <p class="subtitle">Integrated QA, Recording & Audio Pipeline Architecture</p>
+        </header>
+
+        <!-- System Overview -->
+        <section class="diagram-section">
+            <h2>System Overview</h2>
+            <div class="component-grid">
+                <div class="component-card">
+                    <div class="component-icon">📄</div>
+                    <div class="component-title">Script Viewer</div>
+                    <div class="component-desc">QA Tool for reviewing entire course scripts with Descript-style browsing</div>
+                    <ul class="feature-list">
+                        <li>Flag items for editing</li>
+                        <li>Audio regeneration controls</li>
+                        <li>Filter flagged items</li>
+                        <li>Deep linking support</li>
+                    </ul>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-icon">⚙️</div>
+                    <div class="component-title">Audio Pipeline</div>
+                    <div class="component-desc">TTS batch generation and monitoring system</div>
+                    <ul class="feature-list">
+                        <li>Queue management</li>
+                        <li>Real-time progress</li>
+                        <li>Retry failed samples</li>
+                        <li>Preview & approve</li>
+                    </ul>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-icon">🎤</div>
+                    <div class="component-title">Recording Studio</div>
+                    <div class="component-desc">Autocue system for manual voice recording</div>
+                    <ul class="feature-list">
+                        <li>Phrase grouping</li>
+                        <li>Slow-with-gaps mode</li>
+                        <li>Queue-based workflow</li>
+                        <li>S3 upload integration</li>
+                    </ul>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-icon">🔊</div>
+                    <div class="component-title">Samples Browser</div>
+                    <div class="component-desc">Quality review interface for all audio</div>
+                    <ul class="feature-list">
+                        <li>Grid/list views</li>
+                        <li>Compare TTS vs Human</li>
+                        <li>Approve/reject workflow</li>
+                        <li>Bulk operations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Flow -->
+        <section class="diagram-section">
+            <h2>Data Flow Architecture</h2>
+            <div class="flow-diagram">
+                <div class="flow-box">
+                    <strong>S3 Storage (Single Source of Truth)</strong><br>
+                    bucket: popty-bach-lfs<br>
+                    ├─ courses/{code}/course_manifest.json<br>
+                    ├─ courses/{code}/sample_flags.json<br>
+                    ├─ courses/{code}/audio_metadata.json<br>
+                    └─ ssiborg-assets/mastered/{uuid}.mp3
+                </div>
+                <div class="flow-arrow">↓ All tools read/write through API ↓</div>
+                <div class="data-flow-container">
+                    <div class="data-node">
+                        <strong>Script Viewer</strong><br>
+                        Flags samples
+                    </div>
+                    <div class="data-node">
+                        <strong>Audio Pipeline</strong><br>
+                        Generates TTS
+                    </div>
+                    <div class="data-node">
+                        <strong>Recording Studio</strong><br>
+                        Captures voice
+                    </div>
+                    <div class="data-node">
+                        <strong>Samples Browser</strong><br>
+                        Reviews & approves
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Lifecycle -->
+        <section class="diagram-section">
+            <h2>Sample Status Lifecycle</h2>
+            <div class="status-grid">
+                <div class="status-badge">
+                    <div class="status-icon">⚪</div>
+                    <div class="status-label">Pending</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">🚩</div>
+                    <div class="status-label">Flagged</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">⚙️</div>
+                    <div class="status-label">In Pipeline</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">✅</div>
+                    <div class="status-label">TTS Complete</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">🎤</div>
+                    <div class="status-label">In Recording</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">📝</div>
+                    <div class="status-label">Needs Review</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">✔️</div>
+                    <div class="status-label">Approved</div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-icon">🎯</div>
+                    <div class="status-label">Complete</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Control Wireframe -->
+        <section class="diagram-section">
+            <h2>Mission Control Dashboard</h2>
+            <div class="wireframe">
+                <div class="wireframe-header">COURSE PRODUCTION SUITE - MISSION CONTROL</div>
+                <pre>
+Course: <span class="highlight">Spanish for English (spa_for_eng)</span>
+
+<span class="highlight">OVERALL PROGRESS</span>
+═══════════════════════════════════════════ 68% Complete
+
+8,543 / 12,543 samples approved
+Estimated completion: 2025-12-15 (11 days)
+
+<span class="highlight">BLOCKERS & ATTENTION NEEDED</span>
+
+🚨 18 samples flagged for human recording (Macedonian)
+   → [Create Recording Queue]
+
+⚠️  127 samples flagged for TTS regeneration
+   → [Send to Audio Pipeline]
+
+✅ Audio Pipeline: 56 samples processing (ETA: 23 minutes)
+
+<span class="highlight">PIPELINE STATUS BY STAGE</span>
+
+QA Review (Script Viewer)
+════════════════════════════════════ 8,234 / 12,543 reviewed
+Status: In Progress | Last: 5 min ago
+
+TTS Generation (Audio Pipeline)
+═════════════════════ 3,891 / 12,543 completed
+Status: Running (56 in queue) | Last: Active now
+
+Human Recording (Recording Studio)
+══════ 12 / 18 recorded
+Status: 6 remaining | Assigned: maria@volunteers.org
+
+Final Review (Samples Browser)
+89 samples awaiting review
+Status: Needs attention | Last: 30 min ago
+
+<span class="highlight">TOOLS QUICK ACCESS</span>
+[📄 Script Viewer]    [⚙️ Audio Pipeline]
+[🎤 Recording Studio] [🔊 Samples Browser]
+                </pre>
+            </div>
+        </section>
+
+        <!-- Script Viewer Wireframe -->
+        <section class="diagram-section">
+            <h2>Script Viewer Interface</h2>
+            <div class="wireframe">
+                <div class="wireframe-header">Script Viewer - spa_for_eng [Filter: All ▼]</div>
+                <pre>
+┌── <span class="highlight">S0042</span>: "Yo quiero aprender español" ──────────────┐
+│                                                           │
+│  🔊 Introduction Cycle                                   │
+│  ├─ [▶️] "Yo quiero aprender español"                    │
+│  │   UUID: a1b2c3d4-e5f6-7890                           │
+│  │   Status: <span class="highlight">🟢 Approved</span>                                │
+│  │   [🚩 Flag] [✏️ Edit] [👂 Listen]                    │
+│  │                                                       │
+│  └─ [▶️] "I want to learn Spanish"                      │
+│      UUID: b2c3d4e5-f6a7-8901                           │
+│      Status: <span class="highlight">🟢 Approved</span>                                │
+│                                                           │
+│  🧱 LEGO Debut: "quiero" (S0042L01)                     │
+│  ├─ [▶️] "quiero"                                        │
+│  │   UUID: c3d4e5f6-a7b8-9012                           │
+│  │   Status: <span class="muted">🟡 Flagged: Regen TTS</span>                     │
+│  │   Note: "Pronunciation unnatural"                    │
+│  │   [🔄 Re-record] [👥 Send to Studio]                │
+│  │                                                       │
+│  └─ [▶️] "want"                                          │
+│      UUID: d4e5f6a7-b8c9-0123                           │
+│      Status: <span class="highlight">🟢 Approved</span>                                │
+│                                                           │
+│  📝 Practice Phrase 1                                    │
+│  ├─ [▶️] "Yo quiero ir"                                 │
+│  └─ [▶️] "I want to go"                                 │
+│      Status: <span class="highlight">🟢 Approved</span>                                │
+└───────────────────────────────────────────────────────────┘
+
+[📊 Export Report] [🔄 Sync Flags] [⚡ Batch Actions]
+                </pre>
+            </div>
+        </section>
+
+        <!-- Recording Studio Wireframe -->
+        <section class="diagram-section">
+            <h2>Recording Studio Interface</h2>
+            <div class="wireframe">
+                <div class="wireframe-header">Recording Studio - mkd_for_eng | Queue: 18 items</div>
+                <pre>
+Progress: 12 / 18 recorded  ═════════════░░░░░░ 67%
+Estimated time remaining: 15 minutes
+
+                    <span class="highlight">AUTOCUE DISPLAY</span>
+
+                     Јас сакам да учам
+
+                  (I want to learn)
+
+  ┌────────────────────────────────────────────────────────┐
+  │ Context: S0042 - LEGO Debut                            │
+  │ UUID: f6a7b8c9-d0e1-2345                               │
+  └────────────────────────────────────────────────────────┘
+
+  ┌────────────────────────────────────────────────────────┐
+  │  [<span class="highlight">🔴 Record</span>]  [⏹️ Stop]  [▶️ Playback]  [✅ Accept]  │
+  │                                                         │
+  │  Waveform:  ▁▃▅▇▆▄▂▁▂▄▆▇▅▃▁                          │
+  │                                                         │
+  │  Duration: 2.3s                                         │
+  └────────────────────────────────────────────────────────┘
+
+  [⏭️ Skip] [🔄 Redo] [📝 Add Note] [🐌 Slow Mode: OFF]
+
+<span class="highlight">QUEUE PREVIEW</span>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+✅ #1: "Јас сакам"
+✅ #2: "да учам"
+✅ #3: "македонски"
+... (9 more completed)
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+<span class="highlight">▶️ #13: "Јас сакам да учам" (current)</span>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+⏳ #14: "Можеш ли да ми помогнеш?"
+⏳ #15: "Не сум сигурен"
+... (3 more remaining)
+                </pre>
+            </div>
+        </section>
+
+        <!-- API Routes -->
+        <section class="diagram-section">
+            <h2>API Endpoint Structure</h2>
+            <div class="code-block">
+<pre><span class="highlight">/api/production/:courseCode</span>
+  ├─ GET  /manifest              → Load course manifest
+  ├─ GET  /flags                 → Load sample_flags.json
+  ├─ POST /flags/update          → Update flag status
+  ├─ GET  /audio-metadata        → Load audio metadata
+  └─ POST /audio-metadata/update → Update audio info
+
+<span class="highlight">/api/production/:courseCode/script</span>
+  ├─ GET  /seeds                 → Load all seeds
+  ├─ GET  /seeds/:seedId         → Load specific seed
+  └─ GET  /samples               → Load filtered samples
+
+<span class="highlight">/api/production/:courseCode/audio-pipeline</span>
+  ├─ GET  /status                → Pipeline status
+  ├─ POST /queue/add             → Add to TTS queue
+  ├─ POST /queue/retry           → Retry failed
+  └─ GET  /queue/history         → Generation history
+
+<span class="highlight">/api/production/:courseCode/recording</span>
+  ├─ GET  /queues                → List recording queues
+  ├─ POST /queues/create         → Create new queue
+  ├─ POST /upload                → Upload recorded audio
+  └─ POST /complete              → Mark complete
+
+<span class="highlight">/api/production/:courseCode/samples</span>
+  ├─ GET  /list                  → List all samples
+  ├─ GET  /:uuid                 → Get sample details
+  ├─ POST /:uuid/approve         → Approve sample
+  ├─ POST /:uuid/reject          → Reject sample
+  └─ POST /:uuid/compare         → Compare TTS vs Human
+
+<span class="highlight">/api/production/websocket</span>      → Real-time updates</pre>
+            </div>
+        </section>
+
+        <!-- Navigation Structure -->
+        <section class="diagram-section">
+            <h2>Navigation & Route Structure</h2>
+            <div class="code-block">
+<pre><span class="highlight">ROUTE HIERARCHY</span>
+
+/production
+  → Mission Control Dashboard
+  → Overview of all courses
+
+/production/:courseCode
+  → Course Production Overview
+  → Status cards for all tools
+
+/production/:courseCode/script
+  → Script Viewer (QA Tool)
+  → ?seed=S0042 (deep link)
+
+/production/:courseCode/audio-pipeline
+  → Audio Pipeline Status & Control
+
+/production/:courseCode/recording
+  → Recording Studio Interface
+  → ?queue=xyz (specific queue)
+
+/production/:courseCode/samples
+  → Audio Samples Browser
+  → ?status=flagged (filtered view)</pre>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin: 4rem 0 2rem; padding-top: 2rem; border-top: 2px solid #1e293b;">
+            <p style="color: #64748b; font-size: 0.9rem;">
+                Course Production Suite Architecture v1.0.0<br>
+                Designed for SSi Language Learning Platform<br>
+                Created: 2025-12-04
+            </p>
+        </div>
+    </div>
+</body>
+</html>

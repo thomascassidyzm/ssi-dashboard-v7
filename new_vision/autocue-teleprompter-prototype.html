@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocue Teleprompter - Two-Mode Recording System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cinematic Dark Palette - Film Studio Aesthetic */
+            --color-void: #0a0b0f;
+            --color-shadow: #16181f;
+            --color-slate: #23262f;
+            --color-graphite: #34384a;
+
+            /* Accent Colors - Warm Cinematic Glow */
+            --color-film-red: #e63946;
+            --color-film-red-dim: #c4313d;
+            --color-tungsten: #ffa630;
+            --color-tungsten-glow: #ffba5c;
+            --color-emerald: #06ffa5;
+            --color-emerald-dim: #04cc84;
+
+            /* Text Colors */
+            --color-paper: #f7f7f2;
+            --color-paper-dim: #c1c1bb;
+            --color-ink: #2b2d31;
+
+            /* Typography */
+            --font-display: 'Crimson Pro', serif;
+            --font-ui: 'Josefin Sans', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+
+            /* Transitions */
+            --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background: var(--color-void);
+            color: var(--color-paper);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Cinematic film grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+            animation: grainShift 8s steps(10) infinite;
+        }
+
+        @keyframes grainShift {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -5%); }
+            20% { transform: translate(-10%, 5%); }
+            30% { transform: translate(5%, -10%); }
+            40% { transform: translate(-5%, 10%); }
+            50% { transform: translate(10%, 5%); }
+            60% { transform: translate(5%, -5%); }
+            70% { transform: translate(-10%, -10%); }
+            80% { transform: translate(10%, 10%); }
+            90% { transform: translate(-5%, 0); }
+        }
+
+        /* Layout */
+        .app-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-graphite);
+            position: relative;
+        }
+
+        .project-branding {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .studio-badge {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-film-red), var(--color-film-red-dim));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.4);
+            position: relative;
+        }
+
+        .studio-badge::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--color-film-red);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0; }
+        }
+
+        .project-meta h1 {
+            font-family: var(--font-ui);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-paper);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-meta p {
+            font-size: 1rem;
+            color: var(--color-paper-dim);
+            font-family: var(--font-mono);
+            letter-spacing: 0.02em;
+        }
+
+        .session-stats {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--color-shadow);
+            border-radius: 8px;
+            border: 1px solid var(--color-graphite);
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--color-emerald);
+            display: block;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--color-paper-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Mode Selector */
+        .mode-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, var(--color-shadow), var(--color-slate));
+            border: 2px solid var(--color-graphite);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            cursor: pointer;
+            transition: all 0.4s var(--ease-silk);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 166, 48, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s var(--ease-silk);
+        }
+
+        .mode-card:hover {
+            border-color: var(--color-tungsten);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(255, 166, 48, 0.3);
+        }
+
+        .mode-card:hover::before {
+            opacity: 1;
+        }
+
+        .mode-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .mode-title {
+            font-family: var(--font-ui);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-paper);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .mode-description {
+            color: var(--color-paper-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .mode-features {
+            list-style: none;
+            margin-top: var(--space-md);
+        }
+
+        .mode-features li {
+            padding-left: var(--space-md);
+            position: relative;
+            margin-bottom: var(--space-xs);
+            font-size: 0.9rem;
+            color: var(--color-paper-dim);
+        }
+
+        .mode-features li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--color-tungsten);
+            font-weight: bold;
+        }
+
+        /* Role Selector */
+        .role-selector-screen {
+            max-width: 900px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .role-selector-screen.active {
+            display: block;
+        }
+
+        .role-setup-card {
+            background: linear-gradient(135deg, var(--color-shadow), var(--color-slate));
+            border: 2px solid var(--color-graphite);
+            border-radius: 16px;
+            padding: var(--space-xl);
+        }
+
+        .role-setup-title {
+            font-family: var(--font-ui);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-paper);
+            margin-bottom: var(--space-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .course-info {
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .course-name {
+            font-size: 1.2rem;
+            color: var(--color-paper-dim);
+            margin-bottom: var(--space-sm);
+        }
+
+        .course-name strong {
+            color: var(--color-paper);
+            font-weight: 600;
+        }
+
+        .role-selection-label {
+            font-family: var(--font-ui);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-paper-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+            display: block;
+            text-align: center;
+        }
+
+        .role-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .role-option {
+            background: var(--color-void);
+            border: 2px solid var(--color-graphite);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-silk);
+            text-align: center;
+            position: relative;
+        }
+
+        .role-option:hover {
+            border-color: var(--color-tungsten);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 166, 48, 0.3);
+        }
+
+        .role-option.selected {
+            border-color: var(--color-tungsten);
+            background: linear-gradient(135deg, rgba(255, 166, 48, 0.15), transparent);
+            box-shadow: 0 0 30px rgba(255, 166, 48, 0.3);
+        }
+
+        .role-type {
+            font-family: var(--font-ui);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-paper);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .role-language {
+            font-size: 1.3rem;
+            color: var(--color-paper-dim);
+            margin-bottom: var(--space-md);
+        }
+
+        .role-radio {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--color-graphite);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-silk);
+        }
+
+        .role-option.selected .role-radio {
+            border-color: var(--color-tungsten);
+            background: var(--color-tungsten);
+            box-shadow: 0 0 16px rgba(255, 166, 48, 0.6);
+        }
+
+        .role-option.selected .role-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-void);
+            border-radius: 50%;
+        }
+
+        .session-summary {
+            background: var(--color-void);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .session-summary-line {
+            font-size: 1rem;
+            color: var(--color-paper-dim);
+            margin-bottom: var(--space-xs);
+        }
+
+        .session-summary-line strong {
+            color: var(--color-emerald);
+            font-family: var(--font-mono);
+        }
+
+        .begin-session-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--color-film-red), var(--color-film-red-dim));
+            border: 2px solid var(--color-film-red);
+            color: var(--color-paper);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 12px;
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-silk);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 16px rgba(230, 57, 70, 0.4);
+        }
+
+        .begin-session-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(230, 57, 70, 0.6);
+        }
+
+        .begin-session-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Teleprompter Interface */
+        .teleprompter-interface {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .teleprompter-interface.active {
+            display: block;
+        }
+
+        /* Pass Indicator */
+        .pass-indicator {
+            background: var(--color-shadow);
+            border: 1px solid var(--color-graphite);
+            border-radius: 12px;
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pass-label {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-paper-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pass-title {
+            font-family: var(--font-ui);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-tungsten);
+        }
+
+        .pass-progress {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--color-emerald);
+        }
+
+        /* Recording Status Bar */
+        .recording-status {
+            position: fixed;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: var(--color-shadow);
+            border: 1px solid var(--color-graphite);
+            border-radius: 8px;
+            padding: var(--space-sm) var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-silk);
+        }
+
+        .recording-status.active {
+            opacity: 1;
+        }
+
+        .rec-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--color-film-red);
+            border-radius: 50%;
+            box-shadow: 0 0 16px var(--color-film-red);
+            animation: recPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes recPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.9); }
+        }
+
+        .rec-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-film-red);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .rec-timer {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--color-paper);
+            margin-left: var(--space-sm);
+        }
+
+        /* Teleprompter Display */
+        .teleprompter-viewport {
+            background: var(--color-void);
+            border: 3px solid var(--color-graphite);
+            border-radius: 20px;
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            min-height: 600px;
+            max-height: 600px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .teleprompter-viewport.recording {
+            border-color: var(--color-tungsten);
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 166, 48, 0.3);
+        }
+
+        .teleprompter-viewport::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--color-tungsten), transparent);
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-silk);
+        }
+
+        .teleprompter-viewport.recording::before {
+            opacity: 1;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .teleprompter-scroller {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: var(--space-sm);
+            transition: transform 0.8s var(--ease-silk);
+        }
+
+        .phrase-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            transition: all 0.6s var(--ease-silk);
+            border-left: 3px solid transparent;
+        }
+
+        .phrase-marker {
+            font-size: 1.2rem;
+            min-width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .phrase-card.done .phrase-marker {
+            color: var(--color-emerald);
+        }
+
+        .phrase-card.current .phrase-marker {
+            color: var(--color-tungsten);
+            font-size: 1.5rem;
+        }
+
+        .phrase-card.upcoming .phrase-marker {
+            color: var(--color-paper-dim);
+        }
+
+        .phrase-content {
+            flex: 1;
+        }
+
+        .phrase-text {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--color-paper);
+            line-height: 1.4;
+            transition: all 0.5s var(--ease-silk);
+        }
+
+        .phrase-card.done {
+            opacity: 0.35;
+        }
+
+        .phrase-card.done .phrase-text {
+            color: var(--color-paper-dim);
+            text-decoration: line-through;
+            text-decoration-color: var(--color-emerald);
+            text-decoration-thickness: 1px;
+        }
+
+        .phrase-card.current {
+            opacity: 1;
+            background: linear-gradient(90deg, transparent, rgba(255, 166, 48, 0.1), transparent);
+            border-left-color: var(--color-tungsten);
+            box-shadow: 0 0 20px rgba(255, 166, 48, 0.2);
+        }
+
+        .phrase-card.current .phrase-text {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .phrase-card.upcoming {
+            opacity: 0.6;
+        }
+
+        .recording .phrase-card.current .phrase-text {
+            color: var(--color-tungsten);
+            text-shadow: 0 0 20px rgba(255, 186, 92, 0.4);
+        }
+
+        /* Pass 2: Gap Markers */
+        .phrase-with-gaps {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-paper);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .word-segment {
+            display: inline-block;
+            padding: 0.2rem 0.4rem;
+            transition: all 0.3s var(--ease-silk);
+        }
+
+        .gap-marker {
+            display: inline-block;
+            width: 50px;
+            height: 6px;
+            background: var(--color-tungsten);
+            margin: 0 var(--space-sm);
+            border-radius: 3px;
+            vertical-align: middle;
+            animation: gapPulse 2.5s ease-in-out infinite;
+            box-shadow: 0 0 12px rgba(255, 166, 48, 0.6);
+        }
+
+        @keyframes gapPulse {
+            0%, 100% { opacity: 0.5; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.15); }
+        }
+
+        .phrase-translation {
+            font-family: var(--font-ui);
+            font-size: 1.4rem;
+            color: var(--color-paper-dim);
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Metronome */
+        .metronome {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .metronome-beat {
+            width: 18px;
+            height: 18px;
+            background: var(--color-slate);
+            border: 2px solid var(--color-graphite);
+            border-radius: 50%;
+            transition: all 0.2s var(--ease-snap);
+        }
+
+        .metronome-beat.active {
+            background: var(--color-tungsten);
+            border-color: var(--color-tungsten);
+            transform: scale(1.5);
+            box-shadow: 0 0 20px var(--color-tungsten);
+        }
+
+        /* Controls */
+        .teleprompter-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .control-btn {
+            background: var(--color-slate);
+            border: 2px solid var(--color-graphite);
+            color: var(--color-paper);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 12px;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-silk);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 160px;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .control-btn.primary {
+            background: linear-gradient(135deg, var(--color-film-red), var(--color-film-red-dim));
+            border-color: var(--color-film-red);
+            font-size: 1.2rem;
+            padding: var(--space-md) var(--space-xl);
+            min-width: 200px;
+            box-shadow: 0 4px 16px rgba(230, 57, 70, 0.4);
+        }
+
+        .control-btn.primary:hover {
+            box-shadow: 0 8px 32px rgba(230, 57, 70, 0.6);
+        }
+
+        .control-btn.success {
+            background: linear-gradient(135deg, var(--color-emerald-dim), var(--color-emerald));
+            border-color: var(--color-emerald);
+            color: var(--color-ink);
+        }
+
+        .control-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Review Interface */
+        .review-interface {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .review-interface.active {
+            display: block;
+        }
+
+        .review-header {
+            background: var(--color-shadow);
+            border: 1px solid var(--color-graphite);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .review-title {
+            font-family: var(--font-ui);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-paper);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+        }
+
+        .review-summary {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        .summary-stat {
+            flex: 1;
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--color-void);
+            border-radius: 8px;
+        }
+
+        .summary-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .summary-value.high { color: var(--color-emerald); }
+        .summary-value.medium { color: var(--color-tungsten); }
+        .summary-value.low { color: var(--color-film-red); }
+
+        .summary-label {
+            font-size: 0.85rem;
+            color: var(--color-paper-dim);
+            text-transform: uppercase;
+        }
+
+        /* Batch Actions */
+        .batch-actions {
+            background: var(--color-shadow);
+            border: 1px solid var(--color-graphite);
+            border-radius: 12px;
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .batch-btn {
+            flex: 1;
+            background: var(--color-slate);
+            border: 1px solid var(--color-graphite);
+            color: var(--color-paper);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 8px;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-silk);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .batch-btn:hover {
+            background: var(--color-graphite);
+            transform: translateY(-2px);
+        }
+
+        /* Segment Cards Grid */
+        .segments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .segment-card {
+            background: var(--color-shadow);
+            border-radius: 12px;
+            padding: var(--space-md);
+            border-left: 4px solid var(--color-graphite);
+            transition: all 0.3s var(--ease-silk);
+        }
+
+        .segment-card.high {
+            border-left-color: var(--color-emerald);
+        }
+
+        .segment-card.medium {
+            border-left-color: var(--color-tungsten);
+        }
+
+        .segment-card.low {
+            border-left-color: var(--color-film-red);
+        }
+
+        .segment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .segment-label {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--color-paper);
+        }
+
+        .confidence-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .confidence-badge.high {
+            background: rgba(6, 255, 165, 0.2);
+            color: var(--color-emerald);
+        }
+
+        .confidence-badge.medium {
+            background: rgba(255, 166, 48, 0.2);
+            color: var(--color-tungsten);
+        }
+
+        .confidence-badge.low {
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--color-film-red);
+        }
+
+        .segment-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-paper-dim);
+            margin-bottom: var(--space-sm);
+            font-style: italic;
+        }
+
+        .segment-meta {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-paper-dim);
+        }
+
+        .segment-waveform {
+            height: 60px;
+            background: var(--color-void);
+            border-radius: 6px;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 0 var(--space-xs);
+        }
+
+        .waveform-bar {
+            flex: 1;
+            background: var(--color-emerald);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .segment-actions {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .segment-btn {
+            flex: 1;
+            background: var(--color-void);
+            border: 1px solid var(--color-graphite);
+            color: var(--color-paper);
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-silk);
+            text-transform: uppercase;
+        }
+
+        .segment-btn:hover {
+            background: var(--color-tungsten);
+            color: var(--color-ink);
+            border-color: var(--color-tungsten);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mode-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .role-options {
+                grid-template-columns: 1fr;
+            }
+
+            .session-stats {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .phrase-text {
+                font-size: 1.3rem;
+            }
+
+            .phrase-card.current .phrase-text {
+                font-size: 1.5rem;
+            }
+
+            .phrase-with-gaps {
+                font-size: 1.8rem;
+            }
+
+            .teleprompter-controls {
+                flex-direction: column;
+            }
+
+            .segments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="project-branding">
+                <div class="studio-badge">🎙️</div>
+                <div class="project-meta">
+                    <h1>Autocue Studio</h1>
+                    <p>Welsh → Mandarin • Session 001</p>
+                </div>
+            </div>
+            <div class="session-stats">
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Recorded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">47</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0%</span>
+                    <span class="stat-label">Complete</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Recording Status Indicator (Fixed) -->
+        <div class="recording-status" id="recordingStatus">
+            <div class="rec-dot"></div>
+            <span class="rec-label">REC</span>
+            <span class="rec-timer" id="recTimer">00:00:00</span>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="mode-selector" id="modeSelector">
+            <div class="mode-card" onclick="selectMode('new-course')">
+                <span class="mode-icon">🎬</span>
+                <h2 class="mode-title">Mode 1: New Course</h2>
+                <p class="mode-description">
+                    Record a complete course section with two-pass flow. Natural speed first, then slow with gaps for LEGO extraction.
+                </p>
+                <ul class="mode-features">
+                    <li>Continuous teleprompter recording</li>
+                    <li>Pass 1: Natural prosody (10 min)</li>
+                    <li>Pass 2: Slow with gaps (15 min)</li>
+                    <li>AI-powered segmentation</li>
+                    <li>Batch review and approval</li>
+                </ul>
+            </div>
+
+            <div class="mode-card" onclick="selectMode('regeneration')">
+                <span class="mode-icon">🔧</span>
+                <h2 class="mode-title">Mode 2: Regeneration</h2>
+                <p class="mode-description">
+                    Re-record specific flagged items from QA review. Targeted fixes without re-recording the entire course.
+                </p>
+                <ul class="mode-features">
+                    <li>Queue of flagged items only</li>
+                    <li>See original recording context</li>
+                    <li>Compare old vs. new versions</li>
+                    <li>Skip and return to items</li>
+                    <li>Quick targeted workflow</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Role Selector -->
+        <div class="role-selector-screen" id="roleSelectorScreen">
+            <div class="role-setup-card">
+                <h2 class="role-setup-title">Recording Session Setup</h2>
+
+                <div class="course-info">
+                    <div class="course-name">Course: <strong>Welsh for English Speakers</strong></div>
+                </div>
+
+                <label class="role-selection-label">Recording Role:</label>
+
+                <div class="role-options">
+                    <div class="role-option" onclick="selectRole('known')" id="roleKnown">
+                        <div class="role-type">Known</div>
+                        <div class="role-language">English</div>
+                        <div class="role-radio"></div>
+                    </div>
+
+                    <div class="role-option" onclick="selectRole('target1')" id="roleTarget1">
+                        <div class="role-type">Target 1</div>
+                        <div class="role-language">Welsh</div>
+                        <div class="role-radio"></div>
+                    </div>
+
+                    <div class="role-option" onclick="selectRole('target2')" id="roleTarget2">
+                        <div class="role-type">Target 2</div>
+                        <div class="role-language">Welsh</div>
+                        <div class="role-radio"></div>
+                    </div>
+                </div>
+
+                <div class="session-summary">
+                    <div class="session-summary-line">This session: <strong id="sessionPhraseCount">287 Welsh phrases</strong></div>
+                    <div class="session-summary-line">Estimated time: <strong>~25 minutes</strong></div>
+                </div>
+
+                <button class="begin-session-btn" id="beginSessionBtn" onclick="beginSession()" disabled>
+                    Begin Session
+                </button>
+            </div>
+        </div>
+
+        <!-- Teleprompter Interface (Mode 1) -->
+        <div class="teleprompter-interface" id="teleprompterInterface">
+            <!-- Pass Indicator -->
+            <div class="pass-indicator">
+                <div>
+                    <div class="pass-label">Current Pass</div>
+                    <div class="pass-title" id="passTitle">Pass 1: Natural Speed</div>
+                </div>
+                <div class="pass-progress" id="passProgress">Phrase 1 / 47</div>
+            </div>
+
+            <!-- Teleprompter Viewport -->
+            <div class="teleprompter-viewport" id="teleprompterViewport">
+                <div class="teleprompter-scroller" id="teleprompterScroller">
+                    <!-- Phrases will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="teleprompter-controls">
+                <button class="control-btn" onclick="adjustSpeed(-1)">
+                    ⏪ Slower
+                </button>
+                <button class="control-btn primary" id="recordBtn" onclick="toggleRecording()">
+                    ⏺️ Start Recording
+                </button>
+                <button class="control-btn" onclick="adjustSpeed(1)">
+                    ⏩ Faster
+                </button>
+            </div>
+
+            <div class="teleprompter-controls">
+                <button class="control-btn" onclick="skipPhrase(-1)">
+                    ⬅️ Previous
+                </button>
+                <button class="control-btn" onclick="pauseScroll()">
+                    ⏸️ Pause
+                </button>
+                <button class="control-btn" onclick="skipPhrase(1)">
+                    ➡️ Next
+                </button>
+            </div>
+        </div>
+
+        <!-- Review Interface -->
+        <div class="review-interface" id="reviewInterface">
+            <!-- Review Header -->
+            <div class="review-header">
+                <h2 class="review-title">Session Review</h2>
+                <p style="color: var(--color-paper-dim); margin-top: var(--space-sm);">
+                    Recording complete! Review AI-detected segments and approve for upload.
+                </p>
+                <div class="review-summary">
+                    <div class="summary-stat">
+                        <span class="summary-value high">37</span>
+                        <span class="summary-label">High Confidence</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-value medium">8</span>
+                        <span class="summary-label">Medium Confidence</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-value low">2</span>
+                        <span class="summary-label">Needs Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Actions -->
+            <div class="batch-actions">
+                <button class="batch-btn" onclick="approveAll('high')">
+                    ✓ Approve All High (37)
+                </button>
+                <button class="batch-btn" onclick="filterByConfidence('medium')">
+                    ⚠ Review Medium (8)
+                </button>
+                <button class="batch-btn" onclick="filterByConfidence('low')">
+                    ↻ Queue Low for Re-record (2)
+                </button>
+                <button class="batch-btn" onclick="playAllSequence()">
+                    ▶ Play All
+                </button>
+            </div>
+
+            <!-- Segments Grid -->
+            <div class="segments-grid" id="segmentsGrid">
+                <!-- High Confidence Segment -->
+                <div class="segment-card high">
+                    <div class="segment-header">
+                        <div class="segment-label">Phrase #001</div>
+                        <div class="confidence-badge high">95% High</div>
+                    </div>
+                    <div class="segment-text">"Sut mae!"</div>
+                    <div class="segment-meta">
+                        <span>Duration: 1.2s</span>
+                        <span>Quality: Excellent</span>
+                    </div>
+                    <div class="segment-waveform">
+                        <div class="waveform-bar" style="height: 40%;"></div>
+                        <div class="waveform-bar" style="height: 60%;"></div>
+                        <div class="waveform-bar" style="height: 80%;"></div>
+                        <div class="waveform-bar" style="height: 100%;"></div>
+                        <div class="waveform-bar" style="height: 85%;"></div>
+                        <div class="waveform-bar" style="height: 70%;"></div>
+                        <div class="waveform-bar" style="height: 50%;"></div>
+                        <div class="waveform-bar" style="height: 30%;"></div>
+                    </div>
+                    <div class="segment-actions">
+                        <button class="segment-btn">▶ Play</button>
+                        <button class="segment-btn">↻ Redo</button>
+                        <button class="segment-btn">✓ Approve</button>
+                    </div>
+                </div>
+
+                <!-- Medium Confidence Segment -->
+                <div class="segment-card medium">
+                    <div class="segment-header">
+                        <div class="segment-label">Phrase #002</div>
+                        <div class="confidence-badge medium">78% Med</div>
+                    </div>
+                    <div class="segment-text">"Hoffwn i goffi"</div>
+                    <div class="segment-meta">
+                        <span>Duration: 1.8s</span>
+                        <span>Quality: Good</span>
+                    </div>
+                    <div class="segment-waveform">
+                        <div class="waveform-bar" style="height: 35%;"></div>
+                        <div class="waveform-bar" style="height: 55%;"></div>
+                        <div class="waveform-bar" style="height: 75%;"></div>
+                        <div class="waveform-bar" style="height: 90%;"></div>
+                        <div class="waveform-bar" style="height: 80%;"></div>
+                        <div class="waveform-bar" style="height: 60%;"></div>
+                        <div class="waveform-bar" style="height: 45%;"></div>
+                        <div class="waveform-bar" style="height: 25%;"></div>
+                    </div>
+                    <div class="segment-actions">
+                        <button class="segment-btn">▶ Play</button>
+                        <button class="segment-btn">↻ Redo</button>
+                        <button class="segment-btn">✓ Approve</button>
+                    </div>
+                </div>
+
+                <!-- Low Confidence Segment -->
+                <div class="segment-card low">
+                    <div class="segment-header">
+                        <div class="segment-label">Phrase #003</div>
+                        <div class="confidence-badge low">62% Low</div>
+                    </div>
+                    <div class="segment-text">"Ble mae'r tŷ bach?"</div>
+                    <div class="segment-meta">
+                        <span>Duration: 2.1s</span>
+                        <span>⚠ Slight noise</span>
+                    </div>
+                    <div class="segment-waveform">
+                        <div class="waveform-bar" style="height: 30%;"></div>
+                        <div class="waveform-bar" style="height: 50%;"></div>
+                        <div class="waveform-bar" style="height: 70%;"></div>
+                        <div class="waveform-bar" style="height: 85%;"></div>
+                        <div class="waveform-bar" style="height: 75%;"></div>
+                        <div class="waveform-bar" style="height: 55%;"></div>
+                        <div class="waveform-bar" style="height: 40%;"></div>
+                        <div class="waveform-bar" style="height: 20%;"></div>
+                    </div>
+                    <div class="segment-actions">
+                        <button class="segment-btn">▶ Play</button>
+                        <button class="segment-btn">↻ Redo</button>
+                        <button class="segment-btn">✓ Approve</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Actions -->
+            <div style="display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-xl);">
+                <button class="control-btn" onclick="backToRecording()">
+                    ⬅️ Back to Recording
+                </button>
+                <button class="control-btn success" onclick="finalizeSession()">
+                    ✓ Finalize & Upload Session
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global State
+        let currentMode = null;
+        let selectedRole = null;
+        let currentPass = 1;
+        let isRecording = false;
+        let isPaused = false;
+        let scrollSpeed = 3; // seconds per phrase
+        let currentPhraseIndex = 0;
+        let recordingStartTime = 0;
+        let timerInterval = null;
+
+        // Sample phrases with both languages
+        const phrasesData = {
+            known: [
+                "Hello! How are you today?",
+                "I would like coffee please",
+                "Where is the bathroom?",
+                "Thank you very much",
+                "Nice to meet you",
+                "What time is it?",
+                "I don't understand",
+                "Can you help me?",
+                "How much does this cost?",
+                "Where is the train station?",
+                "I'm learning Welsh",
+                "Good morning"
+            ],
+            target: [
+                "Sut mae! Sut dych chi heddiw?",
+                "Hoffwn i goffi os gwelwch yn dda",
+                "Ble mae'r tŷ bach?",
+                "Diolch yn fawr iawn",
+                "Mae'n braf cwrdd â chi",
+                "Beth yw'r amser?",
+                "Dw i ddim yn deall",
+                "Allwch chi fy helpu i?",
+                "Faint mae hwn yn costio?",
+                "Ble mae'r orsaf trên?",
+                "Dw i'n dysgu Cymraeg",
+                "Bore da"
+            ]
+        };
+
+        // Mode Selection
+        function selectMode(mode) {
+            currentMode = mode;
+            document.getElementById('modeSelector').style.display = 'none';
+            document.getElementById('roleSelectorScreen').classList.add('active');
+        }
+
+        // Role Selection
+        function selectRole(role) {
+            selectedRole = role;
+
+            // Update UI
+            document.querySelectorAll('.role-option').forEach(el => el.classList.remove('selected'));
+
+            if (role === 'known') {
+                document.getElementById('roleKnown').classList.add('selected');
+                document.getElementById('sessionPhraseCount').textContent = phrasesData.known.length + ' English phrases';
+            } else if (role === 'target1') {
+                document.getElementById('roleTarget1').classList.add('selected');
+                document.getElementById('sessionPhraseCount').textContent = phrasesData.target.length + ' Welsh phrases';
+            } else if (role === 'target2') {
+                document.getElementById('roleTarget2').classList.add('selected');
+                document.getElementById('sessionPhraseCount').textContent = phrasesData.target.length + ' Welsh phrases';
+            }
+
+            // Enable begin button
+            document.getElementById('beginSessionBtn').disabled = false;
+        }
+
+        // Begin Session
+        function beginSession() {
+            document.getElementById('roleSelectorScreen').classList.remove('active');
+            document.getElementById('teleprompterInterface').classList.add('active');
+            initializeTeleprompter();
+        }
+
+        // Initialize Teleprompter
+        function initializeTeleprompter() {
+            const scroller = document.getElementById('teleprompterScroller');
+            scroller.innerHTML = '';
+
+            // Get phrases for selected role
+            const phrases = selectedRole === 'known' ? phrasesData.known : phrasesData.target;
+
+            // Create phrase cards
+            phrases.forEach((text, index) => {
+                const card = document.createElement('div');
+                card.className = 'phrase-card';
+                card.setAttribute('data-index', index);
+
+                // Determine state
+                if (index < currentPhraseIndex) {
+                    card.classList.add('done');
+                } else if (index === currentPhraseIndex) {
+                    card.classList.add('current');
+                } else {
+                    card.classList.add('upcoming');
+                }
+
+                // Create marker
+                const marker = document.createElement('div');
+                marker.className = 'phrase-marker';
+                if (index < currentPhraseIndex) {
+                    marker.textContent = '✓';
+                } else if (index === currentPhraseIndex) {
+                    marker.innerHTML = '══►';
+                } else {
+                    marker.textContent = '○';
+                }
+
+                // Create content
+                const content = document.createElement('div');
+                content.className = 'phrase-content';
+
+                const phraseText = document.createElement('div');
+                phraseText.className = 'phrase-text';
+                phraseText.textContent = text;
+
+                content.appendChild(phraseText);
+                card.appendChild(marker);
+                card.appendChild(content);
+                scroller.appendChild(card);
+            });
+
+            updatePassIndicator();
+            scrollToCurrentPhrase();
+        }
+
+        // Scroll to current phrase
+        function scrollToCurrentPhrase() {
+            const scroller = document.getElementById('teleprompterScroller');
+            const currentCard = scroller.querySelector('.phrase-card.current');
+
+            if (currentCard) {
+                const scrollerHeight = scroller.parentElement.clientHeight;
+                const cardOffsetTop = currentCard.offsetTop;
+                const cardHeight = currentCard.clientHeight;
+
+                // Center the current phrase
+                const scrollTarget = cardOffsetTop - (scrollerHeight / 2) + (cardHeight / 2);
+                scroller.style.transform = `translateY(-${scrollTarget}px)`;
+            }
+        }
+
+        // Update Pass Indicator
+        function updatePassIndicator() {
+            const passTitle = document.getElementById('passTitle');
+            const passProgress = document.getElementById('passProgress');
+            const phrases = selectedRole === 'known' ? phrasesData.known : phrasesData.target;
+            const totalPhrases = phrases.length;
+
+            if (currentPass === 1) {
+                passTitle.textContent = 'Pass 1: Natural Speed';
+            } else {
+                passTitle.textContent = 'Pass 2: Slow with Gaps';
+            }
+
+            passProgress.textContent = `Phrase ${currentPhraseIndex + 1} / ${totalPhrases}`;
+        }
+
+        // Toggle Recording
+        function toggleRecording() {
+            isRecording = !isRecording;
+            const recordBtn = document.getElementById('recordBtn');
+            const viewport = document.getElementById('teleprompterViewport');
+            const status = document.getElementById('recordingStatus');
+
+            if (isRecording) {
+                // Start recording
+                recordBtn.innerHTML = '⏹️ Stop Recording';
+                recordBtn.classList.remove('primary');
+                recordBtn.style.background = 'linear-gradient(135deg, var(--color-graphite), var(--color-slate))';
+                viewport.classList.add('recording');
+                status.classList.add('active');
+
+                recordingStartTime = Date.now();
+                timerInterval = setInterval(updateRecordingTimer, 1000);
+
+                // Start auto-scroll
+                if (!isPaused) {
+                    startAutoScroll();
+                }
+            } else {
+                // Stop recording
+                recordBtn.innerHTML = '⏺️ Start Recording';
+                recordBtn.classList.add('primary');
+                recordBtn.style.background = 'linear-gradient(135deg, var(--color-film-red), var(--color-film-red-dim))';
+                viewport.classList.remove('recording');
+                status.classList.remove('active');
+
+                clearInterval(timerInterval);
+
+                // Show review interface
+                setTimeout(() => {
+                    document.getElementById('teleprompterInterface').classList.remove('active');
+                    document.getElementById('reviewInterface').classList.add('active');
+                }, 500);
+            }
+        }
+
+        // Update Recording Timer
+        function updateRecordingTimer() {
+            const elapsed = Math.floor((Date.now() - recordingStartTime) / 1000);
+            const hours = Math.floor(elapsed / 3600);
+            const minutes = Math.floor((elapsed % 3600) / 60);
+            const seconds = elapsed % 60;
+
+            document.getElementById('recTimer').textContent =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Auto-scroll
+        function startAutoScroll() {
+            const phrases = selectedRole === 'known' ? phrasesData.known : phrasesData.target;
+            const totalPhrases = phrases.length;
+
+            // Simulate auto-scrolling every few seconds
+            // In production, this would be synchronized with recording progress
+            const scrollInterval = setInterval(() => {
+                if (!isRecording || isPaused) {
+                    clearInterval(scrollInterval);
+                    return;
+                }
+
+                skipPhrase(1);
+
+                if (currentPhraseIndex >= totalPhrases - 1) {
+                    clearInterval(scrollInterval);
+                    setTimeout(() => {
+                        toggleRecording(); // Auto-stop at end
+                    }, scrollSpeed * 1000);
+                }
+            }, scrollSpeed * 1000);
+        }
+
+        // Adjust Scroll Speed
+        function adjustSpeed(delta) {
+            scrollSpeed = Math.max(1, Math.min(10, scrollSpeed + delta));
+            // Visual feedback could be added here
+        }
+
+        // Pause Scroll
+        function pauseScroll() {
+            isPaused = !isPaused;
+        }
+
+        // Skip Phrase
+        function skipPhrase(direction) {
+            const phrases = selectedRole === 'known' ? phrasesData.known : phrasesData.target;
+            const totalPhrases = phrases.length;
+
+            currentPhraseIndex = Math.max(0, Math.min(totalPhrases - 1, currentPhraseIndex + direction));
+            updatePassIndicator();
+
+            // Update visual state of phrase cards
+            const cards = document.querySelectorAll('.phrase-card');
+            cards.forEach((card, index) => {
+                card.classList.remove('done', 'current', 'upcoming');
+
+                const marker = card.querySelector('.phrase-marker');
+                const phraseText = card.querySelector('.phrase-text');
+
+                if (index < currentPhraseIndex) {
+                    card.classList.add('done');
+                    marker.textContent = '✓';
+                } else if (index === currentPhraseIndex) {
+                    card.classList.add('current');
+                    marker.innerHTML = '══►';
+                } else {
+                    card.classList.add('upcoming');
+                    marker.textContent = '○';
+                }
+            });
+
+            scrollToCurrentPhrase();
+        }
+
+        // Review Actions
+        function approveAll(confidence) {
+            alert(`Approved all ${confidence} confidence segments!`);
+        }
+
+        function filterByConfidence(level) {
+            alert(`Filtering to show only ${level} confidence segments`);
+        }
+
+        function playAllSequence() {
+            alert('Playing all segments in sequence...');
+        }
+
+        function backToRecording() {
+            document.getElementById('reviewInterface').classList.remove('active');
+            document.getElementById('teleprompterInterface').classList.add('active');
+        }
+
+        function finalizeSession() {
+            alert('Session finalized! Uploading to S3...\n\n✓ 47 phrases recorded\n✓ 127 LEGO components extracted\n✓ Average quality: 94%');
+
+            // Reset to mode selection
+            document.getElementById('reviewInterface').classList.remove('active');
+            document.getElementById('modeSelector').style.display = 'grid';
+            currentMode = null;
+            currentPass = 1;
+            currentPhraseIndex = 1;
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (currentMode === null) return;
+
+            switch(e.key) {
+                case ' ':
+                    e.preventDefault();
+                    if (document.getElementById('teleprompterInterface').classList.contains('active')) {
+                        toggleRecording();
+                    }
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    adjustSpeed(-1);
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    adjustSpeed(1);
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    skipPhrase(-1);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    skipPhrase(1);
+                    break;
+                case 'p':
+                case 'P':
+                    pauseScroll();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
