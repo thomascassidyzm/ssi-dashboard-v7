@@ -40,6 +40,28 @@ const app = express();
 const PORT = process.env.PORT || 3465;
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 8 (Audio)';
 
+// Plan cache - avoids re-running 65k UUID checks on every page load
+// Cache expires after 5 minutes (S3 state can change)
+const planCache = new Map();
+const PLAN_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+function getCachedPlan(courseCode) {
+  const cached = planCache.get(courseCode);
+  if (cached && (Date.now() - cached.timestamp) < PLAN_CACHE_TTL) {
+    console.log(`[Phase 8] Using cached plan for ${courseCode} (${Math.round((Date.now() - cached.timestamp) / 1000)}s old)`);
+    return cached.plan;
+  }
+  return null;
+}
+
+function setCachedPlan(courseCode, plan) {
+  planCache.set(courseCode, { plan, timestamp: Date.now() });
+}
+
+function invalidatePlanCache(courseCode) {
+  planCache.delete(courseCode);
+}
+
 // Import Kai's audio generation orchestrator
 const audioOrchestrator = require('../../scripts/phase8-audio-generation.cjs');
 
@@ -93,6 +115,14 @@ app.post('/plan', async (req, res) => {
       success: false,
       error: 'Missing required field: courseCode'
     });
+  }
+
+  // Check cache first (unless force refresh requested)
+  if (!options.forceRefresh) {
+    const cachedPlan = getCachedPlan(courseCode);
+    if (cachedPlan) {
+      return res.json(cachedPlan);
+    }
   }
 
   console.log(`\n[Phase 8] Running plan for ${courseCode}`);
@@ -182,7 +212,7 @@ app.post('/plan', async (req, res) => {
     // Expire plan cache after 1 hour
     setTimeout(() => approvedPlans.delete(courseCode), 3600000);
 
-    res.json({
+    const response = {
       success: true,
       message: preflightResult.passed
         ? 'Plan ready. Review and call POST /start to begin generation.'
@@ -191,7 +221,12 @@ app.post('/plan', async (req, res) => {
       nextStep: preflightResult.passed
         ? `POST /start with courseCode: "${courseCode}"`
         : 'Fix preflight issues and re-run POST /plan'
-    });
+    };
+
+    // Cache the response for quick subsequent loads
+    setCachedPlan(courseCode, response);
+
+    res.json(response);
 
   } catch (error) {
     console.error(`[Phase 8] Error creating plan for ${courseCode}:`, error);
@@ -269,6 +304,9 @@ app.post('/start', async (req, res) => {
 
   console.log(`\n[Phase 8] Starting audio generation for ${courseCode}`);
   console.log(`[Phase 8] Options:`, JSON.stringify(options, null, 2));
+
+  // Invalidate plan cache since S3 state will change
+  invalidatePlanCache(courseCode);
 
   // Mark plan as approved
   if (cachedPlan) {
