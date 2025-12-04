@@ -5,6 +5,7 @@ const { createServer } = require('http')
 const { Server } = require('socket.io')
 
 const s3Service = require('./s3-production-service.cjs')
+const supabaseClient = require('./supabase-client.cjs')
 
 const app = express()
 const httpServer = createServer(app)
@@ -23,7 +24,12 @@ app.use(express.json())
 
 // Health check
 app.get('/api/production/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() })
+  const supabaseInitialized = supabaseClient.isInitialized()
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    supabase: supabaseInitialized ? 'connected' : 'not initialized'
+  })
 })
 
 // Get course manifest
@@ -47,7 +53,30 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
 app.get('/api/production/:courseCode/flags', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const flags = await s3Service.getSampleFlags(courseCode)
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Get flags from Supabase
+    const flagsArray = await supabaseClient.getCourseFlags(courseCode)
+
+    // Transform Supabase format to legacy S3 format for backward compatibility
+    const flags = {
+      courseCode,
+      samples: {}
+    }
+
+    for (const flag of flagsArray) {
+      flags.samples[flag.audio_uuid] = {
+        status: flag.status,
+        notes: flag.notes,
+        flaggedBy: flag.flagged_by,
+        updatedAt: flag.flagged_at,
+        history: flag.history || []
+      }
+    }
+
     res.json(flags)
   } catch (error) {
     console.error('Error fetching flags:', error)
@@ -65,43 +94,43 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
       return res.status(400).json({ error: 'uuid and status required' })
     }
 
-    // Get current flags
-    const currentFlags = await s3Service.getSampleFlags(courseCode)
-
-    // Update the specific sample
-    if (!currentFlags.samples) {
-      currentFlags.samples = {}
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    currentFlags.samples[uuid] = {
-      ...currentFlags.samples[uuid],
+    // Update flag in Supabase (includes automatic history tracking)
+    const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
+    const updated = await supabaseClient.updateSampleFlag(
+      uuid,
+      courseCode,
       status,
-      reason: reason || currentFlags.samples[uuid]?.reason,
-      notes: notes || currentFlags.samples[uuid]?.notes,
-      flaggedBy: flaggedBy || currentFlags.samples[uuid]?.flaggedBy,
-      updatedAt: new Date().toISOString(),
-      history: [
-        ...(currentFlags.samples[uuid]?.history || []),
-        {
-          status,
-          reason,
-          timestamp: new Date().toISOString(),
-          by: flaggedBy
-        }
-      ]
-    }
-
-    // Save back to S3
-    const saved = await s3Service.saveSampleFlags(courseCode, currentFlags)
+      combinedNotes,
+      flaggedBy
+    )
 
     // Broadcast update via WebSocket
     io.to(`course:${courseCode}`).emit('sample_updated', {
       courseCode,
       uuid,
-      update: currentFlags.samples[uuid]
+      update: {
+        status: updated.status,
+        notes: updated.notes,
+        flaggedBy: updated.flagged_by,
+        updatedAt: updated.flagged_at,
+        history: updated.history
+      }
     })
 
-    res.json({ success: true, sample: currentFlags.samples[uuid] })
+    res.json({
+      success: true,
+      sample: {
+        status: updated.status,
+        notes: updated.notes,
+        flaggedBy: updated.flagged_by,
+        updatedAt: updated.flagged_at,
+        history: updated.history
+      }
+    })
   } catch (error) {
     console.error('Error updating flag:', error)
     res.status(500).json({ error: error.message })
@@ -118,27 +147,23 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
       return res.status(400).json({ error: 'updates array required' })
     }
 
-    // Get current flags
-    const currentFlags = await s3Service.getSampleFlags(courseCode)
-
-    if (!currentFlags.samples) {
-      currentFlags.samples = {}
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    // Apply all updates
+    // Apply all updates to Supabase
+    const results = []
     for (const { uuid, status, reason, notes, flaggedBy } of updates) {
-      currentFlags.samples[uuid] = {
-        ...currentFlags.samples[uuid],
+      const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
+      const updated = await supabaseClient.updateSampleFlag(
+        uuid,
+        courseCode,
         status,
-        reason: reason || currentFlags.samples[uuid]?.reason,
-        notes: notes || currentFlags.samples[uuid]?.notes,
-        flaggedBy: flaggedBy || currentFlags.samples[uuid]?.flaggedBy,
-        updatedAt: new Date().toISOString()
-      }
+        combinedNotes,
+        flaggedBy
+      )
+      results.push(updated)
     }
-
-    // Save back to S3
-    await s3Service.saveSampleFlags(courseCode, currentFlags)
 
     // Broadcast bulk update
     io.to(`course:${courseCode}`).emit('bulk_update', {
@@ -210,20 +235,16 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       source: 'recording'
     })
 
-    // Update the sample flag to mark as recorded
-    const currentFlags = await s3Service.getSampleFlags(courseCode)
-    if (!currentFlags.samples) {
-      currentFlags.samples = {}
+    // Update the sample flag in Supabase to mark as recorded
+    if (supabaseClient.isInitialized()) {
+      await supabaseClient.updateSampleFlag(
+        uuid,
+        courseCode,
+        'needs_review',
+        `Recorded by ${metadata.recordedBy || 'human'} at ${new Date().toISOString()}`,
+        metadata.recordedBy || 'human'
+      )
     }
-
-    currentFlags.samples[uuid] = {
-      ...currentFlags.samples[uuid],
-      status: 'needs_review',
-      recordedAt: new Date().toISOString(),
-      recordedBy: metadata.recordedBy || 'human',
-      updatedAt: new Date().toISOString()
-    }
-    await s3Service.saveSampleFlags(courseCode, currentFlags)
 
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {

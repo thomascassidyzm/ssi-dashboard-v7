@@ -1,11 +1,31 @@
 # SSi Course Pipeline Server Architecture
 
-> Design document for the unified course generation pipeline server.
+> ⚠️ **DEPRECATED - ARCHIVED FOR REFERENCE ONLY**
+>
+> This document describes the **LEGACY** unified pipeline server (`services/pipeline/pipeline-server.cjs`) which has been **DEPRECATED** as of 2025-12-04.
+>
+> **Current Architecture:** Individual microservices (see below)
+> - Phase 1 Translation: `services/phases/phase1-translation/server.cjs` (Port 3457)
+> - Phase 2 Conflict Resolution: `services/phases/phase1-lego-extraction/server.cjs` (Port 3458)
+> - Phase 3 Basket Generation: `services/phases/phase3-basket-generation/server.cjs` (Port 3459)
+>
+> **Use the new automation system:** `npm run automation` or `node start-automation.js`
+>
+> See: [start-automation.cjs](../../start-automation.cjs) for current service orchestration
+>
+> **Deprecated:** 2025-12-04
+> **Reason:** Port 3457 conflict with Phase 1 Translation server, superseded by microservices architecture
+>
+> ---
+>
+> Design document for the unified course generation pipeline server (LEGACY).
 > Updated: 2025-11-24 (APML v9.0)
 
-## Overview
+## Overview (LEGACY)
 
 A single Express server orchestrating the complete course generation pipeline, from raw seeds to conflict-free LEGOs.
+
+**NOTE:** This architecture has been replaced by individual phase servers (microservices).
 
 ## Phase Architecture (APML v9.0)
 

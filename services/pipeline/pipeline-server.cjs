@@ -1,7 +1,28 @@
 #!/usr/bin/env node
 
 /**
- * SSi Course Pipeline Server
+ * ⚠️ DEPRECATED - DO NOT USE
+ *
+ * This file has been DEPRECATED in favor of the new microservices architecture.
+ *
+ * This unified pipeline server has been replaced by individual phase servers:
+ * - Phase 1 Translation: services/phases/phase1-translation/server.cjs (Port 3457)
+ * - Phase 2 Conflict Resolution: services/phases/phase1-lego-extraction/server.cjs (Port 3458)
+ * - Phase 3 Basket Generation: services/phases/phase3-basket-generation/server.cjs (Port 3459)
+ *
+ * Use the new automation system instead:
+ *   npm run automation
+ *   or
+ *   node start-automation.js
+ *
+ * See: start-automation.cjs for the current service orchestration
+ *
+ * Deprecated: 2025-12-04
+ * Reason: Port 3457 conflict with Phase 1 Translation server
+ *
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * SSi Course Pipeline Server (LEGACY - ARCHIVED)
  *
  * Unified server for course generation pipeline:
  * - Phase 1: Translation + LEGO Extraction (Swarm)
@@ -13,6 +34,37 @@
  * - Real-time progress for dashboard
  * - Script endpoints for instant operations
  */
+
+// Exit immediately with deprecation notice
+console.error('');
+console.error('═══════════════════════════════════════════════════════════════════════════');
+console.error('⚠️  DEPRECATED: pipeline-server.cjs is no longer supported');
+console.error('═══════════════════════════════════════════════════════════════════════════');
+console.error('');
+console.error('This unified pipeline server has been replaced by individual phase servers.');
+console.error('');
+console.error('Please use the new automation system instead:');
+console.error('');
+console.error('  npm run automation');
+console.error('  or');
+console.error('  node start-automation.js');
+console.error('');
+console.error('The new architecture provides:');
+console.error('  • Individual microservices for each phase');
+console.error('  • Better isolation and fault tolerance');
+console.error('  • Cleaner port assignments');
+console.error('  • Phase 1 Translation: Port 3457');
+console.error('  • Phase 2 Conflict Resolution: Port 3458');
+console.error('  • Phase 3 Basket Generation: Port 3459');
+console.error('');
+console.error('See start-automation.cjs for current service orchestration.');
+console.error('═══════════════════════════════════════════════════════════════════════════');
+console.error('');
+process.exit(1);
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LEGACY CODE BELOW - ARCHIVED FOR REFERENCE ONLY
+// ═══════════════════════════════════════════════════════════════════════════
 
 const express = require('express');
 const cors = require('cors');

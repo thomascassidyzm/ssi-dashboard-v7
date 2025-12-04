@@ -1,7 +1,24 @@
 #!/usr/bin/env node
 
 /**
- * Phase 8: Audio/TTS Server
+ * ⚠️ DEPRECATED - DO NOT USE
+ *
+ * This file has been replaced by phase8-audio-generator.cjs
+ *
+ * REASON: This is the LEGACY audio server that does NOT use Supabase.
+ * The current version (phase8-audio-generator.cjs) uses Supabase as the
+ * Master Audio Registry (MAR) and is the actively maintained version.
+ *
+ * PORT CONFLICT: Both files claim port 3465. Use phase8-audio-generator.cjs instead.
+ *
+ * This file is kept for historical reference only and may be removed in a future cleanup.
+ *
+ * @deprecated Use phase8-audio-generator.cjs instead
+ * @see services/phases/phase8-audio-generator.cjs
+ */
+
+/**
+ * Phase 8: Audio/TTS Server (LEGACY - NO SUPABASE)
  *
  * Wraps Kai's comprehensive audio generation orchestrator
  * Port: 3465

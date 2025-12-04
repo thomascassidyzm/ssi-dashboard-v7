@@ -162,7 +162,7 @@ module.exports = {
     // ===========================================
     {
       name: 'phase8-audio',
-      script: 'services/phases/audio-server.cjs',
+      script: 'services/phases/phase8-audio-generator.cjs',
       cwd: __dirname,
       instances: 1,
       autorestart: true,

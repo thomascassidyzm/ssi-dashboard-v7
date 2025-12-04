@@ -648,7 +648,7 @@ async function getPlan() {
   } catch (err) {
     console.error('Failed to get audio plan:', err)
     if (err.response?.status === 404 || err.response?.status === 503) {
-      toast.error('❌ Audio generation server is not available. Start it with: node services/phases/audio-server.cjs')
+      toast.error('❌ Audio generation server is not available. Start it with: node services/phases/phase8-audio-generator.cjs')
     } else {
       const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
       toast.error(`❌ Failed to get plan: ${errorMsg}`)
