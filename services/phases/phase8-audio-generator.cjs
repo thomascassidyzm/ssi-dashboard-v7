@@ -22,6 +22,9 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs-extra')
 const crypto = require('crypto')
+const createLogger = require('../shared/logger.cjs')
+
+const logger = createLogger('Phase8')
 
 const db = require('../supabase-client.cjs')
 
@@ -31,19 +34,19 @@ let azureTTS, elevenLabsTTS, s3Service
 try {
   azureTTS = require('../azure-tts-service.cjs')
 } catch (e) {
-  console.warn('[Phase 8] Azure TTS service not available')
+  logger.warn('Azure TTS service not available')
 }
 
 try {
   elevenLabsTTS = require('../elevenlabs-service.cjs')
 } catch (e) {
-  console.warn('[Phase 8] ElevenLabs service not available')
+  logger.warn('ElevenLabs service not available')
 }
 
 try {
   s3Service = require('../s3-production-service.cjs')
 } catch (e) {
-  console.warn('[Phase 8] S3 production service not available')
+  logger.warn('S3 production service not available')
 }
 
 const app = express()
@@ -258,7 +261,7 @@ app.post('/generate', async (req, res) => {
     const needs = extractAudioNeeds(baskets, targetLang, knownLang)
     job.progress.total = needs.length
 
-    console.log(`[Phase 8] ${courseCode}: ${needs.length} audio samples needed`)
+    logger.log(`${courseCode}: ${needs.length} audio samples needed`)
 
     // Get voice config
     const voiceConfig = voices || await db.getCourseVoices(courseCode) || {}
@@ -276,7 +279,7 @@ app.post('/generate', async (req, res) => {
       const voiceId = voiceConfig[need.role]
 
       if (!voiceId) {
-        console.warn(`[Phase 8] No voice configured for role: ${need.role}`)
+        logger.warn(`No voice configured for role: ${need.role}`)
         job.progress.failed++
         continue
       }
@@ -317,7 +320,7 @@ app.post('/generate', async (req, res) => {
         if (s3Service) {
           await s3Service.uploadAudio(uuid, audioBuffer)
         } else {
-          console.warn(`[Phase 8] S3 service not available, skipping upload for ${uuid}`)
+          logger.warn(`S3 service not available, skipping upload for ${uuid}`)
         }
 
         // Insert into Supabase
@@ -343,10 +346,10 @@ app.post('/generate', async (req, res) => {
         await db.recordCourseUsage(courseCode, uuid, 'basket', need.seedId, need.legoId)
 
         job.progress.generated++
-        console.log(`[Phase 8] Generated ${i + 1}/${needs.length}: ${uuid}`)
+        logger.log(`Generated ${i + 1}/${needs.length}: ${uuid}`)
 
       } catch (err) {
-        console.error(`[Phase 8] Failed to generate ${uuid}:`, err.message)
+        logger.error(`Failed to generate ${uuid}:`, err.message)
         job.progress.failed++
       }
 
@@ -359,7 +362,7 @@ app.post('/generate', async (req, res) => {
     job.status = 'complete'
     job.completedAt = new Date().toISOString()
 
-    console.log(`[Phase 8] ${courseCode} complete:`, job.progress)
+    logger.log(`${courseCode} complete:`, job.progress)
 
     // Emit generation_complete event
     emitGenerationComplete(courseCode, job.progress)
@@ -367,7 +370,7 @@ app.post('/generate', async (req, res) => {
   } catch (err) {
     job.status = 'failed'
     job.error = err.message
-    console.error(`[Phase 8] ${courseCode} failed:`, err)
+    logger.error(`${courseCode} failed:`, err)
   }
 })
 
@@ -450,7 +453,7 @@ app.post('/plan', async (req, res) => {
     })
 
   } catch (err) {
-    console.error('[Phase 8] Plan error:', err)
+    logger.error('Plan error:', err)
     res.status(500).json({ error: err.message })
   }
 })
@@ -499,9 +502,10 @@ app.delete('/cancel/:courseCode', (req, res) => {
  */
 app.get('/health', (req, res) => {
   res.json({
+    status: 'ok',
     service: 'Phase 8 Audio Generator',
-    status: 'running',
     port: PORT,
+    timestamp: new Date().toISOString(),
     supabase: db.isInitialized() ? 'connected' : 'not configured',
     azureTts: azureTTS ? 'available' : 'not available',
     elevenLabs: elevenLabsTTS ? 'available' : 'not available',
@@ -573,8 +577,8 @@ async function emitGenerationComplete(courseCode, progress) {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`[Phase 8] Audio Generator running on port ${PORT}`)
-  console.log(`[Phase 8] Supabase: ${db.isInitialized() ? 'connected' : 'not configured'}`)
+  logger.log(`Audio Generator running on port ${PORT}`)
+  logger.log(`Supabase: ${db.isInitialized() ? 'connected' : 'not configured'}`)
 })
 
 module.exports = { app, extractAudioNeeds, getCadenceForRole }

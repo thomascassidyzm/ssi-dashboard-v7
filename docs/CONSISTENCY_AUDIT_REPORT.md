@@ -327,9 +327,10 @@ GET  /health
 
 ### 14. Consider Removing Duplicate config-loader.cjs
 
+**Status:** RESOLVED
 **Files:**
-- `services/config-loader.cjs`
-- `services/shared/config-loader.cjs`
+- `services/config-loader.cjs` (DELETED)
+- `services/shared/config-loader.cjs` (KEPT)
 
 **Suggestion:** Consolidate to single location.
 

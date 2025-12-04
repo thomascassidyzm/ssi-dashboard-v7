@@ -16,12 +16,15 @@
 
 const { createClient } = require('@supabase/supabase-js')
 const crypto = require('crypto')
+const createLogger = require('./shared/logger.cjs')
+
+const logger = createLogger('Supabase')
 
 const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY
 
 if (!supabaseUrl || !supabaseKey) {
-  console.warn('[Supabase] Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
+  logger.warn('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
 }
 
 // Service role client - bypasses RLS for server-side admin operations

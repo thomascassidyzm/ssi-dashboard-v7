@@ -87,7 +87,7 @@
 
 ### **4. `config-loader.cjs` (UNIQUE - 1 user)**
 
-**Location:** `/services/config-loader.cjs`
+**Location:** `/services/shared/config-loader.cjs`
 
 **Used By:**
 - ✅ **Phase 5** (Baskets) - Loads parallelization config (browsers, agents per browser)
@@ -172,7 +172,7 @@ services/
 **Changes Required:**
 1. Create `services/shared/` directory
 2. Move `spawn_claude_web_agent.cjs` → `services/shared/spawn-agent.cjs`
-3. Move `config-loader.cjs` → `services/shared/config-loader.cjs`
+3. ✅ `config-loader.cjs` → Already moved to `services/shared/config-loader.cjs`
 4. Create phase directories (phase1-translation/, phase3-lego-extraction/, phase5-basket-generation/)
 5. Move servers and their specific dependencies into phase directories
 6. Update require paths
@@ -181,7 +181,7 @@ services/
 ```bash
 # Shared utilities
 spawn_claude_web_agent.cjs          → services/shared/spawn-agent.cjs
-services/config-loader.cjs          → services/shared/config-loader.cjs
+# config-loader.cjs already moved to services/shared/config-loader.cjs ✓
 
 # Phase-specific
 scripts/phase6-generate-introductions.cjs → services/phases/phase3-lego-extraction/generate-introductions.cjs

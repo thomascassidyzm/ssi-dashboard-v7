@@ -264,9 +264,10 @@ app.get('/health', (req, res) => {
   }
 
   res.json({
+    status: 'ok',
     service: 'SSi Pipeline Server',
-    status: 'healthy',
     port: PORT,
+    timestamp: new Date().toISOString(),
     vfsRoot: VFS_ROOT,
     activeCourses: courseState.size,
     courses

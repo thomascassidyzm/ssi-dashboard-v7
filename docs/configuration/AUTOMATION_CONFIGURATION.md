@@ -15,7 +15,7 @@ The SSi Course Production automation system is configured via `automation.config
 All services use the centralized `config-loader.cjs`:
 
 ```javascript
-const { loadConfig, getPhase3Segmentation, getCollisionInstructions } = require('./services/config-loader.cjs');
+const { loadConfig, getPhase3Segmentation, getCollisionInstructions } = require('./services/shared/config-loader.cjs');
 
 // Load full config
 const config = loadConfig();
@@ -311,7 +311,8 @@ Pipeline runs fully automated with no user intervention.
 ssi-dashboard-v7-clean/
 ├── automation.config.json          # Main configuration file
 ├── services/
-│   ├── config-loader.cjs           # Configuration loader utility
+│   ├── shared/
+│   │   └── config-loader.cjs       # Configuration loader utility
 │   ├── orchestration/
 │   │   └── orchestrator.cjs        # Uses loadConfig()
 │   └── phases/

@@ -43,7 +43,7 @@
 **Dependencies:**
 | File | Expected Path | Actual Path | Status |
 |------|---------------|-------------|--------|
-| `config-loader.cjs` | `../config-loader.cjs` | ✅ `/services/config-loader.cjs` | OK |
+| `config-loader.cjs` | `../../shared/config-loader.cjs` | ✅ `/services/shared/config-loader.cjs` | OK |
 | `phase5_prep_scaffolds.cjs` | `../../scripts/phase5_prep_scaffolds.cjs` | ❌ `/tools/phase-prep/phase5_prep_scaffolds_v10.cjs` | **BROKEN** |
 
 **Purpose:**

@@ -1441,9 +1441,10 @@ app.get('/api/vfs/courses/:code/:file(*)', async (req, res) => {
  */
 app.get('/health', (req, res) => {
   res.json({
+    status: 'ok',
     service: SERVICE_NAME,
-    status: 'healthy',
     port: PORT,
+    timestamp: new Date().toISOString(),
     vfsRoot: VFS_ROOT,
     checkpointMode: CHECKPOINT_MODE,
     phaseServers: PHASE_SERVERS,
@@ -1481,9 +1482,11 @@ app.get('/health/all', async (req, res) => {
  */
 app.get('/api/health', (req, res) => {
   res.json({
-    status: 'healthy',
-    version: '7.0.0',
+    status: 'ok',
+    service: SERVICE_NAME,
+    port: PORT,
     timestamp: new Date().toISOString(),
+    version: '7.0.0',
     vfs_root: VFS_ROOT,
     jobs_active: courseStates.size
   });

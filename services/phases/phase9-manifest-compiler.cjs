@@ -385,9 +385,10 @@ app.get('/status/:courseCode', async (req, res) => {
  */
 app.get('/health', (req, res) => {
   res.json({
+    status: 'ok',
     service: 'Phase 9 Manifest Compiler',
-    status: 'running',
     port: PORT,
+    timestamp: new Date().toISOString(),
     supabase: db.isInitialized() ? 'connected' : 'not configured'
   })
 })

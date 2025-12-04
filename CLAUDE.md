@@ -246,7 +246,21 @@ AWS_SECRET_ACCESS_KEY=xxxxx
 AWS_REGION=eu-west-1
 ```
 
-**📖 For deep dive**: See `docs/architecture/`, `docs/PHASE_SERVER_ARCHITECTURE.md`, and `apml/` directory.
+### **Service Mesh URLs**
+
+Services discover each other via environment variables (auto-configured by `start-automation.cjs`):
+
+- `ORCHESTRATOR_URL` - Main orchestrator (port 3456)
+- `PHASE1_TRANSLATION_URL` - Translation service (port 3457)
+- `PHASE1_LEGO_URL` - LEGO extraction (port 3458)
+- `PHASE3_URL` - Basket generation (port 3459)
+- `PHASE8_URL` - Audio generation (port 3465)
+- `PHASE9_URL` - Manifest compilation (port 3466)
+- `PRODUCTION_API_URL` - QA workflow API (port 3470)
+
+**Default:** All services run on localhost. Override for ngrok tunnels or remote services.
+
+**📖 For deep dive**: See `docs/setup/SERVICE_MESH.md`, `docs/architecture/`, `docs/PHASE_SERVER_ARCHITECTURE.md`, and `apml/` directory.
 
 ---
 

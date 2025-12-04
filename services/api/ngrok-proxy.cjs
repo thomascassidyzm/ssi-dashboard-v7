@@ -69,6 +69,7 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
     service: 'ngrok Reverse Proxy',
+    port: PORT,
     timestamp: new Date().toISOString(),
     routes: {
       '/api/production/*': 'http://localhost:3470',

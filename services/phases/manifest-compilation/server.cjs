@@ -247,6 +247,7 @@ app.get('/health', (req, res) => {
     status: 'ok',
     service: 'Phase 7 (Manifest Compilation)',
     port: PORT,
+    timestamp: new Date().toISOString(),
     activeJobs: activeJobs.size
   });
 });

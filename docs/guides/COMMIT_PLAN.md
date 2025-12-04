@@ -7,7 +7,7 @@
 **1. Configuration System**
 - `automation.config.simple.json` - Simple numeric config
 - `automation.config.json` - Complex config (optional)
-- `services/config-loader.cjs` - Centralized config loader with validation thresholds
+- `services/shared/config-loader.cjs` - Centralized config loader with validation thresholds
 
 **2. Phase 5 Migration**
 - `services/phases/phase5-basket-server.cjs` - Properly migrated with all working logic
@@ -86,7 +86,7 @@ Commit only the essential improvements:
 # 1. Add configuration system
 git add automation.config.simple.json
 git add automation.config.json
-git add services/config-loader.cjs
+git add services/shared/config-loader.cjs
 
 # 2. Add Phase 5 improvements
 git add services/phases/phase5-basket-server.cjs

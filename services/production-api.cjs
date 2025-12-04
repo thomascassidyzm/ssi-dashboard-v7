@@ -3,6 +3,9 @@ const express = require('express')
 const cors = require('cors')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
+const createLogger = require('./shared/logger.cjs')
+
+const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
@@ -27,6 +30,8 @@ app.get('/api/production/health', (req, res) => {
   const supabaseInitialized = supabaseClient.isInitialized()
   res.json({
     status: 'ok',
+    service: 'Production API',
+    port: PORT,
     timestamp: new Date().toISOString(),
     supabase: supabaseInitialized ? 'connected' : 'not initialized'
   })
@@ -44,7 +49,7 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
 
     res.json(manifest)
   } catch (error) {
-    console.error('Error fetching manifest:', error)
+    logger.error('Error fetching manifest:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -79,7 +84,7 @@ app.get('/api/production/:courseCode/flags', async (req, res) => {
 
     res.json(flags)
   } catch (error) {
-    console.error('Error fetching flags:', error)
+    logger.error('Error fetching flags:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -132,7 +137,7 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
       }
     })
   } catch (error) {
-    console.error('Error updating flag:', error)
+    logger.error('Error updating flag:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -173,7 +178,7 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
 
     res.json({ success: true, updated: updates.length })
   } catch (error) {
-    console.error('Error bulk updating flags:', error)
+    logger.error('Error bulk updating flags:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -185,7 +190,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
     const metadata = await s3Service.getAudioMetadata(courseCode)
     res.json(metadata)
   } catch (error) {
-    console.error('Error fetching audio metadata:', error)
+    logger.error('Error fetching audio metadata:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -197,7 +202,7 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
     const url = await s3Service.getAudioSignedUrl(uuid)
     res.json({ url })
   } catch (error) {
-    console.error('Error generating signed URL:', error)
+    logger.error('Error generating signed URL:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -209,7 +214,7 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
     const exists = await s3Service.audioFileExists(uuid)
     res.json({ exists })
   } catch (error) {
-    console.error('Error checking audio existence:', error)
+    logger.error('Error checking audio existence:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -260,27 +265,27 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
 
     res.json({ success: true, uuid, uploaded: true })
   } catch (error) {
-    console.error('Error uploading recording:', error)
+    logger.error('Error uploading recording:', error)
     res.status(500).json({ error: error.message })
   }
 })
 
 // WebSocket connection handling
 io.on('connection', (socket) => {
-  console.log(`[WS] Client connected: ${socket.id}`)
+  logger.log(`Client connected: ${socket.id}`)
 
   socket.on('join_course', ({ courseCode }) => {
     socket.join(`course:${courseCode}`)
-    console.log(`[WS] ${socket.id} joined course:${courseCode}`)
+    logger.log(`${socket.id} joined course:${courseCode}`)
   })
 
   socket.on('leave_course', ({ courseCode }) => {
     socket.leave(`course:${courseCode}`)
-    console.log(`[WS] ${socket.id} left course:${courseCode}`)
+    logger.log(`${socket.id} left course:${courseCode}`)
   })
 
   socket.on('disconnect', () => {
-    console.log(`[WS] Client disconnected: ${socket.id}`)
+    logger.log(`Client disconnected: ${socket.id}`)
   })
 })
 
@@ -299,7 +304,7 @@ app.post('/api/production/internal/emit', (req, res) => {
   }
 
   emitToRoom(courseCode, event, { courseCode, ...data })
-  console.log(`[WS] Emitted ${event} to course:${courseCode}`)
+  logger.log(`Emitted ${event} to course:${courseCode}`)
 
   res.json({ success: true, event, courseCode })
 })
@@ -307,8 +312,8 @@ app.post('/api/production/internal/emit', (req, res) => {
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
-  console.log(`Production API server running on port ${PORT}`)
-  console.log(`WebSocket path: /api/production/websocket`)
+  logger.log(`Production API server running on port ${PORT}`)
+  logger.log(`WebSocket path: /api/production/websocket`)
 })
 
 module.exports = { app, io, emitToRoom }

@@ -356,6 +356,7 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
     service: 'Progress Tracker API',
+    port: PORT,
     timestamp: new Date().toISOString()
   });
 });

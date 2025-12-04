@@ -754,9 +754,10 @@ async function notifyOrchestrator(courseCode, status) {
  */
 app.get('/health', (req, res) => {
   res.json({
+    status: 'ok',
     service: SERVICE_NAME,
-    status: 'healthy',
     port: PORT,
+    timestamp: new Date().toISOString(),
     vfsRoot: VFS_ROOT,
     activeJobs: activeJobs.size,
     watchers: watchers.size

@@ -490,6 +490,6 @@ Dashboard could offer presets:
 ## Related Files
 
 - `automation.config.json` - Config storage
-- `services/config-loader.cjs` - Config loading utility
+- `services/shared/config-loader.cjs` - Config loading utility
 - Dashboard component: `src/components/AutomationSettings.tsx` (to be created)
 - API routes: `src/routes/api/config.ts` (to be created)
