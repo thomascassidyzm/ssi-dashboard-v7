@@ -226,6 +226,11 @@ export default {
         const data = await response.json()
         this.scriptItems = data.items || []
         console.log(`[ScriptViewer] Loaded ${this.scriptItems.length} items`)
+
+        // Immediately preload first batch of audio
+        if (this.scriptItems.length > 0) {
+          this.preloadBatch(0)
+        }
       } catch (err) {
         console.error('[ScriptViewer] Error:', err)
         this.error = err.message
@@ -255,6 +260,9 @@ export default {
       this.currentIndex = index
       this.currentPhase = null
       this.scrollToCurrentItem()
+      // Preload this batch if user jumps ahead
+      const batch = Math.floor(index / this.preloadBatchSize)
+      this.preloadBatch(batch)
     },
 
     scrollToCurrentItem() {
