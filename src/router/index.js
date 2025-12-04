@@ -216,6 +216,15 @@ const routes = [
     meta: { title: 'Recursive Up-Regulation' }
   },
 
+  // Production QA Tools
+  {
+    path: '/production/:courseCode/samples',
+    name: 'SamplesBrowser',
+    component: () => import('@/components/production/qa/SamplesBrowser.vue'),
+    props: true,
+    meta: { title: 'Samples Browser' }
+  },
+
   {
     path: '/edit/:courseCode',
     name: 'CourseEditorAlt',
