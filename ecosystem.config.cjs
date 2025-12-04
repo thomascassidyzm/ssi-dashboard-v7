@@ -30,6 +30,9 @@
 // Load environment variables from .env file
 require('dotenv').config();
 
+// VFS_ROOT - used by all phase servers
+const VFS_ROOT = process.env.VFS_ROOT || require('path').join(__dirname, 'public/vfs/courses');
+
 module.exports = {
   apps: [
     // ===========================================
@@ -46,10 +49,12 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3456,
+        VFS_ROOT: VFS_ROOT,
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
         AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
         S3_BUCKET: process.env.S3_BUCKET || 'popty-bach-lfs',
+        S3_AUDIO_BUCKET: process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage',
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },
       error_file: 'logs/orchestrator-error.log',
@@ -71,6 +76,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3457,
+        VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 1 (Translation)',
         ORCHESTRATOR_URL: 'http://localhost:3456',
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
@@ -94,6 +100,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3458,
+        VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 2 (Conflict Resolution)',
         ORCHESTRATOR_URL: 'http://localhost:3456',
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
@@ -117,6 +124,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3459,
+        VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 3 (Baskets)',
         ORCHESTRATOR_URL: 'http://localhost:3456',
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
@@ -140,6 +148,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3464,
+        VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 7 (Manifest)',
         ORCHESTRATOR_URL: 'http://localhost:3456'
       },
@@ -162,6 +171,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 3465,
+        VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 8 (Audio)',
         ORCHESTRATOR_URL: 'http://localhost:3456',
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,

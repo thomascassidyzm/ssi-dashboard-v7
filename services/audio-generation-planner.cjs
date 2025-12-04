@@ -7,6 +7,8 @@
 
 const marService = require('./mar-service.cjs');
 const cadenceService = require('./cadence-service.cjs');
+const s3Service = require('./s3-service.cjs');
+const uuidService = require('./uuid-service.cjs');
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
@@ -427,26 +429,14 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
     }
   };
 
-  // Pre-load all voice samples ONCE and create index (performance optimization)
-  console.log('Loading voice samples from MAR...');
-  const voiceSamplesCache = {};
-  const voiceIndexCache = {}; // Index for O(1) lookups
+  // Build S3 index ONCE - S3 is the Single Source of Truth for existing audio
+  console.log('Building S3 audio index (this may take a moment)...');
+  const s3UuidIndex = await s3Service.buildMasteredIndex();
+  console.log(`  ✓ S3 index built: ${s3UuidIndex.size.toLocaleString()} existing samples in ssi-audio-stage/mastered/`);
+
+  // Log unique voices for reference
   const uniqueVoices = [...new Set(Object.values(voiceAssignments))];
-
-  for (const voiceId of uniqueVoices) {
-    voiceSamplesCache[voiceId] = await marService.loadVoiceSamples(voiceId);
-    const count = Object.keys(voiceSamplesCache[voiceId].samples || {}).length;
-    console.log(`  ${voiceId}: ${count.toLocaleString()} existing samples`);
-
-    // Build index: key = normalizedText|role|language|cadence, value = uuid
-    // Use normalized text for case-insensitive, punctuation-agnostic matching
-    voiceIndexCache[voiceId] = new Map();
-    for (const [uuid, sample] of Object.entries(voiceSamplesCache[voiceId].samples || {})) {
-      const normalizedText = marService.normalizeText(sample.text);
-      const key = `${normalizedText}|${sample.role}|${sample.language}|${sample.cadence}`;
-      voiceIndexCache[voiceId].set(key, { uuid, ...sample });
-    }
-  }
+  console.log(`  Voices for this course: ${uniqueVoices.join(', ')}`);
   console.log('');
 
   // Group samples by voice and deduplicate by normalized text + role + cadence
@@ -516,17 +506,18 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
         };
       }
 
-      // Check if exists in MAR (use indexed lookup for O(1) performance)
-      // Use already-normalized text from deduplication
+      // Check if exists in S3 using LEGACY UUID (text|lang|role|cadence - no voiceId)
+      // S3 is the Single Source of Truth - existing files use the old UUID scheme
+      // generateLegacyUUID auto-normalizes 2-letter codes to 3-letter (en → eng)
       const language = variant.role.startsWith('target') ? manifest.target : manifest.known;
-      const lookupKey = `${normalized}|${variant.role}|${language}|${cadence}`;
-      const existing = voiceIndexCache[voiceId]?.get(lookupKey) || null;
+      const legacyUUID = uuidService.generateLegacyUUID(text, language, variant.role, cadence);
+      const existsInS3 = s3UuidIndex.has(legacyUUID);
 
       // Get voice info to determine model (for character multiplier)
       const voiceInfo = voiceRegistry.voices[voiceId];
       const model = voiceInfo?.model || null;
       const charCount = countCharacters(text, model);
-      const isNew = !existing;
+      const isNew = !existsInS3;
 
       analysis.byVoice[voiceId].samples.push({
         text,

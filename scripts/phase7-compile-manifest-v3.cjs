@@ -6,7 +6,13 @@ const crypto = require('crypto');
 // PHASE 7 MANIFEST COMPILER V3
 // ============================================================================
 // Compiles course manifest from lego_pairs.json and lego_baskets.json
-// Output: course_manifest.json with empty samples (populated later by MAR)
+// Output: course_manifest.json with PLACEHOLDER UUIDs (populated later by lookup)
+//
+// KEY ARCHITECTURE:
+// - Samples are stored with BLANK/placeholder UUIDs initially
+// - Samples are matched via lang|text|role|cadence lookup against MAR/S3 index
+// - Found samples get their UUIDs and durations populated from the index
+// - Only samples that cannot be found get UUIDs assigned at generation time
 //
 // Practice phrase ordering:
 // 1. Components (if M-type LEGO) - building blocks first
@@ -159,13 +165,16 @@ const manifest = {
 // Track all samples (text -> array of entries)
 const allSamples = new Map();
 
+// Placeholder UUID - indicates sample needs lookup/generation
+const PLACEHOLDER_UUID = '00000000-0000-0000-0000-000000000000';
+
 /**
  * Add a sample entry for a text
  * @param {string} text - The text content
+ * @param {string} language - Language code (e.g., 'eng', 'spa', 'cmn')
  * @param {string} role - One of: source, target1, target2, presentation, presentation_encouragement
- * @param {string} idSuffix - Suffix for UUID generation
  */
-function addSample(text, role, idSuffix) {
+function addSample(text, language, role) {
   if (!allSamples.has(text)) {
     allSamples.set(text, []);
   }
@@ -175,34 +184,43 @@ function addSample(text, role, idSuffix) {
   const hasRole = existing.some(e => e.role === role);
   if (hasRole) return;  // Don't add duplicate roles
 
+  // Target roles (target1, target2) use slow cadence for learner comprehension
+  // Source/presentation roles use natural cadence
+  const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
+
+  // Use placeholder UUID - will be populated later via lang|text|role|cadence lookup
   existing.push({
     duration: 0,
-    id: generateUUID(`sample:${role}:${idSuffix}`),
-    cadence: "natural",
-    role: role
+    id: PLACEHOLDER_UUID,
+    cadence: cadence,
+    role: role,
+    language: language  // Include language for lookup
   });
 }
 
 /**
  * Add samples for a known (source) text - single entry
+ * Uses knownLang (typically 'eng')
  */
-function addSourceSample(text, idSuffix) {
-  addSample(text, 'source', `source:${idSuffix}`);
+function addSourceSample(text) {
+  addSample(text, knownLang, 'source');
 }
 
 /**
  * Add samples for a target text - TWO entries (target1 and target2)
+ * Uses targetLang (e.g., 'spa', 'cmn', 'ita')
  */
-function addTargetSamples(text, idSuffix) {
-  addSample(text, 'target1', `target1:${idSuffix}`);
-  addSample(text, 'target2', `target2:${idSuffix}`);
+function addTargetSamples(text) {
+  addSample(text, targetLang, 'target1');
+  addSample(text, targetLang, 'target2');
 }
 
 /**
  * Add sample for presentation text - single entry
+ * Presentations are typically in the known language (English)
  */
-function addPresentationSample(text, idSuffix) {
-  addSample(text, 'presentation', `presentation:${idSuffix}`);
+function addPresentationSample(text) {
+  addSample(text, knownLang, 'presentation');
 }
 
 // Single slice
@@ -221,14 +239,14 @@ const slice = {
   version: "8.2.0"
 };
 
-// Add welcome to samples (presentation role)
+// Add welcome to samples (presentation role - in English/known language)
 if (welcome && welcome.text) {
-  addSample(welcome.text, 'presentation', 'welcome:' + courseCode);
+  addSample(welcome.text, knownLang, 'presentation');
 }
 
-// Add encouragements to samples (presentation_encouragement role)
+// Add encouragements to samples (presentation_encouragement role - in English/known language)
 encouragements.pooledEncouragements.forEach((enc, idx) => {
-  addSample(enc.text, 'presentation_encouragement', `encouragement:${idx}`);
+  addSample(enc.text, knownLang, 'presentation_encouragement');
 });
 
 // ============================================================================
@@ -269,8 +287,8 @@ legoPairs.seeds.forEach((seedData) => {
   };
 
   // Add seed samples
-  addSourceSample(seedKnown, seedId);
-  addTargetSamples(seedTarget, seedId);
+  addSourceSample(seedKnown);
+  addTargetSamples(seedTarget);
 
   // Process each LEGO in this seed
   seedData.legos.forEach((lego) => {
@@ -307,9 +325,9 @@ legoPairs.seeds.forEach((seedData) => {
     };
 
     // Add LEGO samples
-    addSourceSample(legoKnown, legoId);
-    addTargetSamples(legoTarget, legoId);
-    addPresentationSample(presentationText, legoId);
+    addSourceSample(legoKnown);
+    addTargetSamples(legoTarget);
+    addPresentationSample(presentationText);
 
     // Build ordered practice nodes:
     // 1. Components (if M-type LEGO)
@@ -324,8 +342,8 @@ legoPairs.seeds.forEach((seedData) => {
         const node = createNode(comp.known, comp.target, `comp:${legoId}:${idx}`);
         practiceNodes.push(node);
         // Add component samples
-        addSourceSample(comp.known, `${legoId}:comp:${idx}`);
-        addTargetSamples(comp.target, `${legoId}:comp:${idx}`);
+        addSourceSample(comp.known);
+        addTargetSamples(comp.target);
         processedNodes++;
       });
     }
@@ -349,8 +367,8 @@ legoPairs.seeds.forEach((seedData) => {
         const node = createNode(phrase.known, phrase.target, `phrase:${legoId}:${idx}`);
         practiceNodes.push(node);
         // Add phrase samples
-        addSourceSample(phrase.known, `${legoId}:phrase:${idx}`);
-        addTargetSamples(phrase.target, `${legoId}:phrase:${idx}`);
+        addSourceSample(phrase.known);
+        addTargetSamples(phrase.target);
         processedNodes++;
       });
     }

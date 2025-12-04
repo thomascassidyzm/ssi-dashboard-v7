@@ -1,0 +1,17 @@
+{
+  "course_code": "spa_for_eng",
+  "last_sync": "2025-12-03T16:13:45.212Z",
+  "last_modified": null,
+  "synced_from_s3": true,
+  "sync_timestamp": "2025-12-03T16:13:45.212Z",
+  "files_synced": [
+    "seed_pairs.json",
+    "lego_pairs.json",
+    "lego_baskets.json"
+  ],
+  "s3_source": {
+    "bucket": "popty-bach-lfs",
+    "prefix": "courses/spa_for_eng/",
+    "region": "eu-west-1"
+  }
+}

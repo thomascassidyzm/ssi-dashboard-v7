@@ -100,11 +100,34 @@ async function saveVoiceSamples(voiceId, voiceSamples) {
 function findExistingSample(voiceSamples, text, role, language, cadence = 'natural') {
   const normalizedText = normalizeText(text);
 
+  // Language code mapping: 2-letter to 3-letter (legacy files used 3-letter codes)
+  const langCodeMap = {
+    'en': 'eng',
+    'es': 'spa',
+    'zh': 'cmn',
+    'it': 'ita',
+    'fr': 'fra',
+    'de': 'deu',
+    'pt': 'por',
+    'ja': 'jpn',
+    'ko': 'kor'
+  };
+
+  // Try both the provided language code and its alternative (2-letter <-> 3-letter)
+  const languagesToTry = [language];
+  if (langCodeMap[language]) {
+    languagesToTry.push(langCodeMap[language]);
+  } else {
+    // Reverse lookup: if 3-letter provided, try 2-letter
+    const twoLetter = Object.entries(langCodeMap).find(([k, v]) => v === language)?.[0];
+    if (twoLetter) languagesToTry.push(twoLetter);
+  }
+
   for (const [uuid, sample] of Object.entries(voiceSamples.samples)) {
     if (
       normalizeText(sample.text) === normalizedText &&
       sample.role === role &&
-      sample.language === language &&
+      languagesToTry.includes(sample.language) &&
       sample.cadence === cadence
     ) {
       return { uuid, ...sample };

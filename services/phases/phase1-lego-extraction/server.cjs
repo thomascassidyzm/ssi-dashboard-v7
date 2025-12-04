@@ -430,8 +430,8 @@ fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
   "legoCount": 15,
   "introCount": 0,
   "savedTo": {
-    "lego_pairs": "public/vfs/courses/${courseCode}/phase_3/lego_pairs.json",
-    "introductions": "public/vfs/courses/${courseCode}/phase_6/introductions.json"
+    "lego_pairs": "public/vfs/courses/${courseCode}/lego_pairs.json",
+    "introductions": "public/vfs/courses/${courseCode}/introductions.json"
   }
 }
 \`\`\`
@@ -626,7 +626,7 @@ app.post('/start', async (req, res) => {
 async function runDeduplication(courseCode) {
   console.log(`\n🔍 Running LEGO reuse tracking (Phase 2) for ${courseCode}...`);
 
-  const legoPairsPath = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
+  const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
 
   if (!fs.existsSync(legoPairsPath)) {
     console.log(`   ⚠️  lego_pairs.json not found, skipping deduplication`);
@@ -732,7 +732,7 @@ async function runAutomaticCollisionCheck(courseCode, job) {
   console.log(`\n🔍 [Phase 3.6] Running automatic LUT check for ${courseCode}...`);
 
   const courseDir = path.join(VFS_ROOT, courseCode);
-  const legoPairsPath = path.join(courseDir, 'phase_3', 'lego_pairs.json');
+  const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
 
   if (!fs.existsSync(legoPairsPath)) {
     console.log(`   ⚠️  lego_pairs.json not found, skipping LUT check`);

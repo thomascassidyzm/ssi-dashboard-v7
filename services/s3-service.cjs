@@ -350,6 +350,41 @@ async function readCourseFile(courseCode, filename) {
 }
 
 /**
+ * Build an index of all UUIDs in ssi-audio-stage/mastered/
+ * S3 is the Single Source of Truth for existing audio samples.
+ *
+ * @param {string} bucket - S3 bucket name (default: STAGE_BUCKET)
+ * @returns {Promise<Set<string>>} Set of existing UUIDs (uppercase, without .mp3)
+ */
+async function buildMasteredIndex(bucket = STAGE_BUCKET) {
+  const uuids = new Set();
+  let continuationToken = undefined;
+
+  do {
+    const params = {
+      Bucket: bucket,
+      Prefix: 'mastered/',
+      MaxKeys: 1000,
+      ContinuationToken: continuationToken
+    };
+
+    const data = await s3.listObjectsV2(params).promise();
+
+    for (const obj of data.Contents || []) {
+      if (obj.Key.endsWith('.mp3')) {
+        // Extract UUID from key: mastered/{uuid}.mp3
+        const uuid = obj.Key.replace('mastered/', '').replace('.mp3', '').toUpperCase();
+        uuids.add(uuid);
+      }
+    }
+
+    continuationToken = data.NextContinuationToken;
+  } while (continuationToken);
+
+  return uuids;
+}
+
+/**
  * Write a course file to S3
  *
  * @param {string} courseCode - Course identifier
@@ -373,6 +408,7 @@ module.exports = {
   batchCheckAudio,
   deleteAudio,
   copyAudio,
+  buildMasteredIndex,  // S3 as Single Source of Truth
   // LFS functions
   uploadToLFS,
   downloadFromLFS,

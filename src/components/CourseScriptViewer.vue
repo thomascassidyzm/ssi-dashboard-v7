@@ -1,192 +1,147 @@
 <template>
-  <div class="course-script-viewer">
-    <!-- Header Controls -->
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 mb-4">
-      <div class="flex items-center gap-4 flex-wrap">
-        <div class="flex items-center gap-2">
-          <label class="text-sm text-slate-400">Seeds:</label>
-          <input
-            v-model.number="startSeed"
-            type="number"
-            min="1"
-            max="668"
-            class="w-20 px-2 py-1 bg-slate-700 text-slate-200 border border-slate-600 rounded text-sm"
-          />
-          <span class="text-slate-500">to</span>
-          <input
-            v-model.number="endSeed"
-            type="number"
-            min="1"
-            max="668"
-            class="w-20 px-2 py-1 bg-slate-700 text-slate-200 border border-slate-600 rounded text-sm"
-          />
-        </div>
+  <div class="autocue-viewer" :class="{ 'is-playing': isPlaying }">
+    <!-- Compact Controls Bar -->
+    <div class="controls-bar">
+      <div class="controls-left">
+        <label class="seed-label">Seeds:</label>
+        <input
+          v-model.number="startSeed"
+          type="number"
+          min="1"
+          max="668"
+          class="seed-input"
+        />
+        <span class="seed-divider">to</span>
+        <input
+          v-model.number="endSeed"
+          type="number"
+          min="1"
+          max="668"
+          class="seed-input"
+        />
         <button
           @click="generateScript"
           :disabled="loading"
-          class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-sm font-medium disabled:opacity-50"
+          class="generate-btn"
         >
           {{ loading ? 'Loading...' : 'Generate' }}
         </button>
-        <div v-if="scriptItems.length" class="text-sm text-slate-400 ml-auto">
-          {{ scriptItems.length }} cycles • {{ estimatedDuration }}
-        </div>
+      </div>
+      <div v-if="scriptItems.length" class="controls-right">
+        {{ scriptItems.length }} cycles • {{ estimatedDuration }}
       </div>
     </div>
 
     <!-- Loading -->
-    <div v-if="loading" class="text-center py-12 text-slate-400">
-      Generating script...
+    <div v-if="loading" class="loading-state">
+      <div class="loading-spinner"></div>
+      <span>Generating script...</span>
     </div>
 
     <!-- Error -->
-    <div v-else-if="error" class="bg-red-900/20 border border-red-700 rounded-lg p-4 text-red-400">
+    <div v-else-if="error" class="error-state">
       {{ error }}
     </div>
 
-    <!-- Script Display - Spotify Lyrics Style -->
+    <!-- Autocue Script Display -->
     <div
       v-else-if="scriptItems.length"
       ref="scriptContainer"
-      class="script-container bg-slate-900 rounded-lg overflow-hidden"
+      class="autocue-container"
     >
-      <!-- Each cycle is a "lyric line" -->
-      <div
-        v-for="(item, index) in scriptItems"
-        :key="item.uuid"
-        :ref="el => { if (currentIndex === index) currentItemRef = el }"
-        :class="[
-          'script-item p-4 border-b border-slate-800 transition-all duration-300',
-          currentIndex === index ? 'bg-slate-800 scale-[1.02]' : 'opacity-60 hover:opacity-80',
-          index < currentIndex ? 'opacity-40' : ''
-        ]"
-        @click="jumpToItem(index)"
-      >
-        <!-- Cycle number and type badge -->
-        <div class="flex items-center gap-3 mb-2">
-          <span class="text-xs text-slate-500 font-mono w-12">{{ String(item.cycleNum || index + 1).padStart(3, '0') }}</span>
-          <span :class="getTypeBadgeClass(item.type)" class="text-xs px-2 py-0.5 rounded">
-            {{ item.type.toUpperCase() }}
-          </span>
-          <span class="text-xs text-slate-600">{{ item.legoKey || item.seedId }}</span>
-          <span v-if="item.isNew === false" class="text-[10px] text-cyan-400 italic">review</span>
-          <span
-            v-if="item.hasAudio"
-            class="w-2 h-2 rounded-full bg-emerald-500"
-            title="Audio available"
-          ></span>
-        </div>
+      <!-- Gradient overlays for depth -->
+      <div class="gradient-top"></div>
+      <div class="gradient-bottom"></div>
 
-        <!-- The 4-phase cycle visualization -->
-        <div class="flex items-stretch gap-1 mb-3">
-          <!-- PROMPT phase -->
-          <div :class="[
-            'flex-1 rounded-l px-3 py-2 text-center transition-all',
-            currentIndex === index && currentPhase === 'prompt'
-              ? 'bg-blue-600 text-white'
-              : 'bg-slate-700/50 text-slate-400'
-          ]">
-            <div class="text-[10px] uppercase tracking-wider mb-1 opacity-70">Prompt</div>
-            <div class="text-sm truncate">{{ item.knownText }}</div>
+      <!-- Script items - teleprompter style -->
+      <div class="script-track" :style="trackStyle">
+        <div
+          v-for="(item, index) in scriptItems"
+          :key="item.uuid"
+          :ref="el => setItemRef(el, index)"
+          :class="[
+            'script-line',
+            getLineState(index)
+          ]"
+          @click="jumpToItem(index)"
+        >
+          <!-- Line number and type indicator -->
+          <div class="line-meta">
+            <span class="line-number">{{ String(item.cycleNum || index + 1).padStart(3, '0') }}</span>
+            <span :class="['line-type', item.type]">{{ getTypeLabel(item.type) }}</span>
+            <span v-if="item.isNew === false" class="review-badge">review</span>
           </div>
 
-          <!-- PAUSE phase -->
-          <div :class="[
-            'w-16 px-2 py-2 text-center transition-all flex flex-col justify-center',
-            currentIndex === index && currentPhase === 'pause'
-              ? 'bg-amber-600 text-white'
-              : 'bg-slate-700/50 text-slate-400'
-          ]">
-            <div class="text-[10px] uppercase tracking-wider opacity-70">Pause</div>
-            <div class="text-lg">⏸</div>
+          <!-- Main content - the text that scrolls like an autocue -->
+          <div class="line-content">
+            <!-- English (Known) -->
+            <div class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">
+              {{ item.knownText }}
+            </div>
+
+            <!-- Target language -->
+            <div class="target-text" :class="{
+              active: currentIndex === index && (currentPhase === 'voice1' || currentPhase === 'voice2'),
+              'voice2': currentIndex === index && currentPhase === 'voice2'
+            }">
+              {{ item.targetText }}
+            </div>
           </div>
 
-          <!-- VOICE_1 phase -->
-          <div :class="[
-            'flex-1 px-3 py-2 text-center transition-all',
-            currentIndex === index && currentPhase === 'voice1'
-              ? 'bg-emerald-600 text-white'
-              : 'bg-slate-700/50 text-slate-400'
-          ]">
-            <div class="text-[10px] uppercase tracking-wider mb-1 opacity-70">Voice 1</div>
-            <div class="text-sm truncate">{{ item.targetText }}</div>
+          <!-- Phase indicator for current line -->
+          <div v-if="currentIndex === index" class="phase-indicator">
+            <span :class="['phase-dot', { active: currentPhase === 'prompt' }]">●</span>
+            <span :class="['phase-dot pause', { active: currentPhase === 'pause' }]">⏸</span>
+            <span :class="['phase-dot', { active: currentPhase === 'voice1' }]">●</span>
+            <span :class="['phase-dot', { active: currentPhase === 'voice2' }]">●</span>
           </div>
-
-          <!-- VOICE_2 phase -->
-          <div :class="[
-            'flex-1 rounded-r px-3 py-2 text-center transition-all',
-            currentIndex === index && currentPhase === 'voice2'
-              ? 'bg-purple-600 text-white'
-              : 'bg-slate-700/50 text-slate-400'
-          ]">
-            <div class="text-[10px] uppercase tracking-wider mb-1 opacity-70">Voice 2</div>
-            <div class="text-sm truncate">{{ item.targetText }}</div>
-          </div>
-        </div>
-
-        <!-- Full text display when this item is current -->
-        <div v-if="currentIndex === index" class="mt-3 pt-3 border-t border-slate-700">
-          <div class="text-slate-300 text-lg">{{ item.knownText }}</div>
-          <div class="text-emerald-400 text-xl font-medium mt-1">{{ item.targetText }}</div>
         </div>
       </div>
     </div>
 
     <!-- Empty State -->
-    <div v-else class="text-center py-12 text-slate-500">
-      Select seed range and click Generate to preview the learning script
+    <div v-else class="empty-state">
+      <div class="empty-icon">📜</div>
+      <div class="empty-text">Select seed range and click Generate</div>
+      <div class="empty-subtext">Preview the complete learning sequence</div>
     </div>
 
-    <!-- Playback Controls (sticky at bottom) -->
-    <div v-if="scriptItems.length" class="sticky bottom-0 bg-slate-800 border-t border-slate-700 p-4 mt-4 rounded-b-lg">
-      <div class="flex items-center justify-center gap-4">
-        <!-- Previous -->
-        <button
-          @click="previousItem"
-          :disabled="currentIndex <= 0"
-          class="p-2 rounded-full bg-slate-700 hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-          </svg>
-        </button>
+    <!-- Floating Playback Controls -->
+    <div v-if="scriptItems.length" class="playback-controls">
+      <button
+        @click="previousItem"
+        :disabled="currentIndex <= 0"
+        class="control-btn nav-btn"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+      </button>
 
-        <!-- Play/Pause -->
-        <button
-          @click="togglePlayback"
-          class="p-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white"
-        >
-          <svg v-if="!isPlaying" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          <svg v-else class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-          </svg>
-        </button>
+      <button
+        @click="togglePlayback"
+        class="control-btn play-btn"
+      >
+        <svg v-if="!isPlaying" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg v-else viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
 
-        <!-- Next -->
-        <button
-          @click="nextItem"
-          :disabled="currentIndex >= scriptItems.length - 1"
-          class="p-2 rounded-full bg-slate-700 hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-          </svg>
-        </button>
+      <button
+        @click="nextItem"
+        :disabled="currentIndex >= scriptItems.length - 1"
+        class="control-btn nav-btn"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+      </button>
 
-        <!-- Progress indicator -->
-        <div class="ml-4 text-sm text-slate-400">
-          {{ currentIndex + 1 }} / {{ scriptItems.length }}
-        </div>
+      <div class="progress-indicator">
+        {{ currentIndex + 1 }} / {{ scriptItems.length }}
       </div>
 
       <!-- Phase dots -->
-      <div class="flex justify-center gap-2 mt-3">
-        <div :class="['w-3 h-3 rounded-full transition-all', currentPhase === 'prompt' ? 'bg-blue-500 scale-125' : 'bg-slate-600']"></div>
-        <div :class="['w-3 h-3 rounded-full transition-all', currentPhase === 'pause' ? 'bg-amber-500 scale-125' : 'bg-slate-600']"></div>
-        <div :class="['w-3 h-3 rounded-full transition-all', currentPhase === 'voice1' ? 'bg-emerald-500 scale-125' : 'bg-slate-600']"></div>
-        <div :class="['w-3 h-3 rounded-full transition-all', currentPhase === 'voice2' ? 'bg-purple-500 scale-125' : 'bg-slate-600']"></div>
+      <div class="phase-dots">
+        <div :class="['dot', { active: currentPhase === 'prompt' }]" title="Prompt"></div>
+        <div :class="['dot', { active: currentPhase === 'pause' }]" title="Pause"></div>
+        <div :class="['dot', { active: currentPhase === 'voice1' }]" title="Voice 1"></div>
+        <div :class="['dot', { active: currentPhase === 'voice2' }]" title="Voice 2"></div>
       </div>
     </div>
   </div>
@@ -211,23 +166,32 @@ export default {
       error: null,
       scriptItems: [],
       currentIndex: 0,
-      currentPhase: null, // 'prompt' | 'pause' | 'voice1' | 'voice2'
+      currentPhase: null,
       isPlaying: false,
       audio: null,
       phaseTimer: null,
-      currentItemRef: null
+      itemRefs: {}
     }
   },
   computed: {
     estimatedDuration() {
-      // Rough estimate: ~10 seconds per cycle
       const totalSeconds = this.scriptItems.length * 10
       const minutes = Math.floor(totalSeconds / 60)
       const seconds = totalSeconds % 60
       return `~${minutes}:${String(seconds).padStart(2, '0')}`
+    },
+    trackStyle() {
+      // No transform needed - we use scrollIntoView instead
+      return {}
     }
   },
   methods: {
+    setItemRef(el, index) {
+      if (el) {
+        this.itemRefs[index] = el
+      }
+    },
+
     async generateScript() {
       if (!this.courseCode || !this.startSeed || !this.endSeed) {
         this.error = 'Please provide valid seed range'
@@ -263,15 +227,21 @@ export default {
       }
     },
 
-    getTypeBadgeClass(type) {
-      const classes = {
-        introduction: 'bg-purple-600/50 text-purple-200',
-        component: 'bg-blue-600/50 text-blue-200',
-        debut: 'bg-amber-600/50 text-amber-200',
-        practice: 'bg-emerald-600/50 text-emerald-200',
-        review: 'bg-cyan-600/50 text-cyan-200'
+    getLineState(index) {
+      if (index === this.currentIndex) return 'current'
+      if (index < this.currentIndex) return 'past'
+      return 'future'
+    },
+
+    getTypeLabel(type) {
+      const labels = {
+        introduction: 'INTRO',
+        component: 'COMP',
+        debut: 'DEBUT',
+        practice: 'PRAC',
+        review: 'REV'
       }
-      return classes[type] || 'bg-slate-600 text-slate-300'
+      return labels[type] || type?.toUpperCase() || '—'
     },
 
     jumpToItem(index) {
@@ -282,8 +252,9 @@ export default {
 
     scrollToCurrentItem() {
       this.$nextTick(() => {
-        if (this.currentItemRef) {
-          this.currentItemRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        const el = this.itemRefs[this.currentIndex]
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
       })
     },
@@ -301,7 +272,6 @@ export default {
 
       this.isPlaying = true
 
-      // Initialize audio element if needed
       if (!this.audio) {
         this.audio = new Audio()
       }
@@ -333,23 +303,23 @@ export default {
       const item = this.scriptItems[this.currentIndex]
       this.scrollToCurrentItem()
 
-      // Phase 1: PROMPT (play known audio)
+      // Phase 1: PROMPT
       this.currentPhase = 'prompt'
       if (item.sourceId) {
         await this.playAudio(item.sourceId)
       } else {
-        await this.wait(1500) // Simulate if no audio
+        await this.wait(1500)
       }
 
       if (!this.isPlaying) return
 
-      // Phase 2: PAUSE (learner response time)
+      // Phase 2: PAUSE
       this.currentPhase = 'pause'
-      await this.wait(3000) // Default 3 second pause
+      await this.wait(3000)
 
       if (!this.isPlaying) return
 
-      // Phase 3: VOICE_1 (first target voice)
+      // Phase 3: VOICE_1
       this.currentPhase = 'voice1'
       if (item.target1Id) {
         await this.playAudio(item.target1Id)
@@ -359,7 +329,7 @@ export default {
 
       if (!this.isPlaying) return
 
-      // Phase 4: VOICE_2 (second target voice)
+      // Phase 4: VOICE_2
       this.currentPhase = 'voice2'
       if (item.target2Id) {
         await this.playAudio(item.target2Id)
@@ -369,14 +339,12 @@ export default {
 
       if (!this.isPlaying) return
 
-      // Move to next item
+      // Move to next
       this.currentIndex++
       this.currentPhase = null
 
-      // Small gap between cycles
       await this.wait(500)
 
-      // Continue with next cycle
       if (this.isPlaying && this.currentIndex < this.scriptItems.length) {
         this.playCycle()
       } else {
@@ -449,41 +417,451 @@ export default {
 </script>
 
 <style scoped>
-.course-script-viewer {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.autocue-viewer {
+  --bg-dark: #0a0a0a;
+  --bg-surface: #141414;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+  --accent: #10b981;
+  --accent-glow: rgba(16, 185, 129, 0.3);
+
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.script-container {
-  max-height: 60vh;
+/* Controls Bar - Minimal */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.controls-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seed-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.seed-input {
+  width: 60px;
+  padding: 6px 10px;
+  background: var(--bg-dark);
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 13px;
+  text-align: center;
+}
+
+.seed-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.seed-divider {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.generate-btn {
+  padding: 6px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.generate-btn:hover {
+  background: #0ea571;
+}
+
+.generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.controls-right {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Loading State */
+.loading-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #333;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  padding: 40px;
+}
+
+/* Empty State */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.empty-subtext {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Autocue Container - The main teleprompter view */
+.autocue-container {
+  flex: 1;
+  position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-.script-item {
+/* Gradient overlays for depth effect */
+.gradient-top,
+.gradient-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.gradient-top {
+  top: 48px;
+  background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 100%);
+}
+
+.gradient-bottom {
+  bottom: 80px;
+  background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+}
+
+/* Script Track */
+.script-track {
+  padding: 30vh 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Individual Script Lines */
+.script-line {
+  padding: 24px 32px;
+  margin: 8px 20px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
 }
 
-.script-item:hover {
-  background: rgba(51, 65, 85, 0.5);
+.script-line.past {
+  opacity: 0.25;
+  transform: scale(0.95);
 }
 
-/* Custom scrollbar */
-.script-container::-webkit-scrollbar {
-  width: 6px;
+.script-line.future {
+  opacity: 0.4;
 }
 
-.script-container::-webkit-scrollbar-track {
-  background: #1e293b;
+.script-line.current {
+  opacity: 1;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transform: scale(1);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
 }
 
-.script-container::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 3px;
+.script-line:hover:not(.current) {
+  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.script-container::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+/* Line Meta */
+.line-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.line-number {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.line-type {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.line-type.introduction { background: #7c3aed20; color: #a78bfa; }
+.line-type.component { background: #3b82f620; color: #60a5fa; }
+.line-type.debut { background: #f59e0b20; color: #fbbf24; }
+.line-type.practice { background: #10b98120; color: #34d399; }
+.line-type.review { background: #06b6d420; color: #22d3ee; }
+
+.review-badge {
+  font-size: 10px;
+  color: #06b6d4;
+  font-style: italic;
+}
+
+/* Line Content - The main text */
+.line-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.known-text {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  transition: all 0.3s;
+}
+
+.known-text.active {
+  color: var(--text-primary);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.target-text {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.3;
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
+.target-text.active {
+  opacity: 1;
+  text-shadow: 0 0 30px var(--accent-glow);
+}
+
+.target-text.voice2 {
+  color: #a78bfa;
+  text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
+}
+
+/* Current line only shows in current state */
+.script-line.current .known-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.script-line.current .target-text {
+  opacity: 1;
+}
+
+/* Phase Indicator */
+.phase-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #222;
+}
+
+.phase-dot {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.phase-dot.active {
+  color: var(--accent);
+  transform: scale(1.5);
+}
+
+.phase-dot.pause {
+  font-size: 12px;
+}
+
+.phase-dot.pause.active {
+  color: #fbbf24;
+}
+
+/* Playback Controls */
+.playback-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background: linear-gradient(to top, var(--bg-dark) 0%, rgba(10, 10, 10, 0.95) 100%);
+  border-top: 1px solid #222;
+  z-index: 100;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  background: #222;
+  border-radius: 50%;
+  color: var(--text-secondary);
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #333;
+  color: var(--text-primary);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.play-btn {
+  width: 56px;
+  height: 56px;
+  background: var(--accent);
+  border-radius: 50%;
+  color: white;
+}
+
+.play-btn:hover {
+  background: #0ea571;
+  transform: scale(1.05);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.play-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.progress-indicator {
+  font-size: 13px;
+  color: var(--text-secondary);
+  min-width: 60px;
+  text-align: center;
+}
+
+.phase-dots {
+  display: flex;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.phase-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  transition: all 0.2s;
+}
+
+.phase-dots .dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  transform: scale(1.3);
+}
+
+/* Custom Scrollbar */
+.autocue-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.autocue-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.autocue-container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+.autocue-container::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Playing state glow */
+.autocue-viewer.is-playing .script-line.current {
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.15);
 }
 </style>

@@ -4149,13 +4149,14 @@ app.get('/api/audio/random-sample/:courseCode/:role', async (req, res) => {
 
 /**
  * GET /api/audio/stream/:uuid
- * Stream audio file from S3
+ * Stream audio file from S3 (ssi-audio-stage bucket)
  */
 app.get('/api/audio/stream/:uuid', async (req, res) => {
   const { uuid } = req.params;
 
   try {
-    const s3Bucket = process.env.AWS_S3_BUCKET || 'ssi-audio-stage';
+    // Audio files are in ssi-audio-stage bucket (separate from course data in popty-bach-lfs)
+    const s3Bucket = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage';
     const s3Key = `mastered/${uuid}.mp3`;
 
     const AWS = require('aws-sdk');
@@ -4375,52 +4376,32 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     const baskets = await fs.readJson(basketsPath);
 
-    // Load manifest for audio lookup
-    let samples = {};
-    const manifestPaths = [
-      path.join(VFS_ROOT, courseCode, 'course_manifest.json'),
-      path.join(VFS_ROOT, courseCode, `${courseCode}_course_manifest.json`)
-    ];
+    // Parse languages from courseCode (e.g., 'cmn_for_eng' -> target='cmn', known='eng')
+    const langParts = courseCode.split('_for_');
+    const targetLang = langParts[0] || 'spa';  // e.g., 'cmn', 'spa'
+    const knownLang = langParts[1] || 'eng';   // e.g., 'eng'
 
-    for (const mPath of manifestPaths) {
-      if (await fs.pathExists(mPath)) {
-        const manifest = await fs.readJson(mPath);
-        samples = manifest.slices?.[0]?.samples || {};
-        console.log(`[Script] Loaded manifest from ${path.basename(mPath)}, samples: ${Object.keys(samples).length}`);
-        break;
-      }
-    }
+    // Use UUID service to generate deterministic UUIDs from text|lang|role|cadence
+    // Audio files in S3 are named by UUID - we generate the same UUID to find them
+    const uuidService = require('../../services/uuid-service.cjs');
 
     // Helper to get audio IDs for a phrase
-    // Roles in manifest: practice_known, practice_target, lego_known, lego_target, seed_known, seed_target
+    // UUIDs are deterministic: same text+lang+role+cadence = same UUID
+    // Text must be lowercase, targets use 'slow' cadence
     const getAudioIds = (knownText, targetText) => {
       let sourceId = null;
       let target1Id = null;
       let target2Id = null;
 
-      // Look up known (source) audio - can be practice_known, lego_known, or seed_known
-      if (knownText && samples[knownText]) {
-        for (const sample of samples[knownText]) {
-          if ((sample.role === 'practice_known' || sample.role === 'lego_known' || sample.role === 'seed_known') && sample.id) {
-            sourceId = sample.id;
-            break;
-          }
-        }
+      // Source audio (English prompt) - lowercase, natural cadence
+      if (knownText) {
+        sourceId = uuidService.generateLegacyUUID(knownText.toLowerCase(), knownLang, 'source', 'natural');
       }
 
-      // Look up target audio - can be practice_target, lego_target, or seed_target
-      if (targetText && samples[targetText]) {
-        for (const sample of samples[targetText]) {
-          if ((sample.role === 'practice_target' || sample.role === 'lego_target' || sample.role === 'seed_target') && sample.id) {
-            target1Id = sample.id;
-            break;
-          }
-        }
-      }
-
-      // For now, use same audio for both voices (until we have voice2 in manifest)
-      if (target1Id && !target2Id) {
-        target2Id = target1Id;
+      // Target audio (target language) - lowercase, slow cadence
+      if (targetText) {
+        target1Id = uuidService.generateLegacyUUID(targetText.toLowerCase(), targetLang, 'target1', 'slow');
+        target2Id = uuidService.generateLegacyUUID(targetText.toLowerCase(), targetLang, 'target2', 'slow');
       }
 
       return { sourceId, target1Id, target2Id };
@@ -4620,15 +4601,16 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 });
 
 /**
- * GET /api/audio/stream/:uuid
- * Stream audio file from S3 (ssi-audio-staging bucket)
+ * GET /api/audio/stream/:uuid (duplicate - keeping for reference)
+ * Stream audio file from S3 (ssi-audio-stage bucket)
+ * NOTE: This is a duplicate endpoint - the first one at line ~4150 takes precedence
  */
 app.get('/api/audio/stream/:uuid', async (req, res) => {
   const { uuid } = req.params;
 
   try {
-    // S3 bucket for audio
-    const s3Bucket = process.env.AWS_S3_AUDIO_BUCKET || 'ssi-audio-stage';
+    // Audio files are in ssi-audio-stage bucket (separate from course data in popty-bach-lfs)
+    const s3Bucket = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage';
     const s3Key = `mastered/${uuid}.mp3`;
 
     // Use AWS SDK to get the file

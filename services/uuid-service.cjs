@@ -11,6 +11,40 @@ const { v5: uuidv5 } = require('uuid');
 // This ensures our UUIDs are unique to SSi and deterministic
 const SSI_NAMESPACE = '6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f';
 
+// Language code mapping: 2-letter (ISO 639-1) to 3-letter (ISO 639-3)
+// Legacy S3 files used 3-letter codes
+const LANG_CODE_MAP = {
+  'en': 'eng',
+  'es': 'spa',
+  'zh': 'cmn',
+  'it': 'ita',
+  'fr': 'fra',
+  'de': 'deu',
+  'pt': 'por',
+  'ja': 'jpn',
+  'ko': 'kor',
+  'nl': 'nld',
+  'ru': 'rus',
+  'ar': 'ara',
+  'hi': 'hin',
+  'pl': 'pol',
+  'tr': 'tur',
+  'vi': 'vie',
+  'th': 'tha',
+  'sv': 'swe',
+  'da': 'dan',
+  'no': 'nor',
+  'fi': 'fin'
+};
+
+/**
+ * Convert 2-letter language code to 3-letter (legacy format)
+ * Returns the input unchanged if already 3-letter or unknown
+ */
+function toLegacyLangCode(langCode) {
+  return LANG_CODE_MAP[langCode] || langCode;
+}
+
 /**
  * Generate deterministic, RFC 4122 compliant UUID v5
  *
@@ -42,6 +76,25 @@ function generateSampleUUID(text, language, role, cadence, voiceId) {
     throw new Error('voiceId is required for UUID generation');
   }
   const key = `${text}|${language}|${role}|${cadence}|${voiceId}`;
+  return uuidv5(key, SSI_NAMESPACE).toUpperCase();
+}
+
+/**
+ * Generate LEGACY UUID (without voiceId) - for checking existing S3 files
+ *
+ * The old system used text|language|role|cadence (no voiceId).
+ * Use this to cross-reference with existing audio in S3.
+ *
+ * @param {string} text - The phrase/text
+ * @param {string} language - Language code (e.g., 'cmn', 'spa')
+ * @param {string} role - Sample role ('target1', 'target2', 'source', 'presentation')
+ * @param {string} cadence - Speech cadence ('natural', 'slow')
+ * @returns {string} RFC 4122 UUID v5 in uppercase
+ */
+function generateLegacyUUID(text, language, role, cadence) {
+  // Auto-normalize 2-letter codes to 3-letter (legacy format used in S3)
+  const normalizedLang = toLegacyLangCode(language);
+  const key = `${text}|${normalizedLang}|${role}|${cadence}`;
   return uuidv5(key, SSI_NAMESPACE).toUpperCase();
 }
 
@@ -101,8 +154,11 @@ function analyzeUUID(uuid) {
 
 module.exports = {
   generateSampleUUID,
+  generateLegacyUUID,  // For checking existing S3 files (auto-normalizes lang codes)
+  toLegacyLangCode,    // Convert 2-letter to 3-letter language codes
   isValidFormat,
   isRFC4122Compliant,
   analyzeUUID,
-  SSI_NAMESPACE
+  SSI_NAMESPACE,
+  LANG_CODE_MAP
 };
