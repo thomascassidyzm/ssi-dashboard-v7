@@ -189,6 +189,61 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
   }
 })
 
+// Upload human recording
+// POST /api/production/:courseCode/recording/upload
+app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { uuid, audioData, metadata = {} } = req.body
+
+    if (!uuid || !audioData) {
+      return res.status(400).json({ error: 'uuid and audioData required' })
+    }
+
+    // Decode base64 audio data
+    const audioBuffer = Buffer.from(audioData, 'base64')
+
+    // Upload to S3
+    const result = await s3Service.uploadRecording(courseCode, uuid, audioBuffer, {
+      ...metadata,
+      recordedBy: 'human',
+      source: 'recording'
+    })
+
+    // Update the sample flag to mark as recorded
+    const currentFlags = await s3Service.getSampleFlags(courseCode)
+    if (!currentFlags.samples) {
+      currentFlags.samples = {}
+    }
+
+    currentFlags.samples[uuid] = {
+      ...currentFlags.samples[uuid],
+      status: 'needs_review',
+      recordedAt: new Date().toISOString(),
+      recordedBy: metadata.recordedBy || 'human',
+      updatedAt: new Date().toISOString()
+    }
+    await s3Service.saveSampleFlags(courseCode, currentFlags)
+
+    // Emit recording_completed event
+    io.to(`course:${courseCode}`).emit('recording_completed', {
+      courseCode,
+      uuid,
+      metadata: {
+        recordedAt: new Date().toISOString(),
+        recordedBy: metadata.recordedBy || 'human',
+        source: 'recording',
+        ...metadata
+      }
+    })
+
+    res.json({ success: true, uuid, uploaded: true })
+  } catch (error) {
+    console.error('Error uploading recording:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // WebSocket connection handling
 io.on('connection', (socket) => {
   console.log(`[WS] Client connected: ${socket.id}`)
@@ -212,6 +267,21 @@ io.on('connection', (socket) => {
 function emitToRoom(courseCode, event, data) {
   io.to(`course:${courseCode}`).emit(event, data)
 }
+
+// Internal emit endpoint - for phase servers to emit WebSocket events
+// POST /api/production/internal/emit
+app.post('/api/production/internal/emit', (req, res) => {
+  const { courseCode, event, data } = req.body
+
+  if (!courseCode || !event) {
+    return res.status(400).json({ error: 'courseCode and event required' })
+  }
+
+  emitToRoom(courseCode, event, { courseCode, ...data })
+  console.log(`[WS] Emitted ${event} to course:${courseCode}`)
+
+  res.json({ success: true, event, courseCode })
+})
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 

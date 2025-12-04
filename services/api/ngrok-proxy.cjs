@@ -51,6 +51,7 @@ app.get('/health', (req, res) => {
     service: 'ngrok Reverse Proxy',
     timestamp: new Date().toISOString(),
     routes: {
+      '/api/production/*': 'http://localhost:3470',
       '/api/*': 'http://localhost:3456',
       '/phase1/*': 'http://localhost:3457',
       '/phase3/*': 'http://localhost:3458',
@@ -159,6 +160,25 @@ app.use('/phase8', createProxyMiddleware({
   }
 }));
 
+// Production API proxy (QA workflow, flags, WebSocket) - BEFORE general API proxy
+app.use('/api/production', createProxyMiddleware({
+  target: 'http://localhost:3470',
+  changeOrigin: true,
+  ws: true, // Enable WebSocket proxying
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Production API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3470${req.originalUrl}`);
+  },
+  onError: (err, req, res) => {
+    console.error(`[Production API Proxy Error] ${err.message}`);
+    res.status(500).json({
+      success: false,
+      error: 'Production API server unavailable',
+      details: err.message
+    });
+  }
+}));
+
 // API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
 // Use a filter function to match /api/* without stripping the prefix
 app.use(createProxyMiddleware({
@@ -213,7 +233,7 @@ app.use((req, res) => {
   res.status(404).json({
     error: 'Route not found',
     path: req.path,
-    availableRoutes: ['/api/*', '/phase1/*', '/phase3/*', '/phase5/*', '/phase8/*', '/health']
+    availableRoutes: ['/api/production/*', '/api/*', '/phase1/*', '/phase3/*', '/phase5/*', '/phase8/*', '/health']
   });
 });
 
@@ -222,14 +242,16 @@ app.listen(PORT, () => {
   console.log(`✅ ngrok Reverse Proxy listening on port ${PORT}`);
   console.log('');
   console.log(`📡 Routes:`);
-  console.log(`   /api/*    → http://localhost:3456 (Dashboard API)`);
-  console.log(`   /phase1/* → http://localhost:3457 (Phase 1: Translation)`);
-  console.log(`   /phase3/* → http://localhost:3458 (Phase 3: LEGO Extraction)`);
-  console.log(`   /phase5/* → http://localhost:3459 (Phase 5: Basket Generation)`);
-  console.log(`   /phase8/* → http://localhost:3465 (Phase 8: Audio/TTS)`);
+  console.log(`   /api/production/* → http://localhost:3470 (Production API + WebSocket)`);
+  console.log(`   /api/*            → http://localhost:3456 (Dashboard API)`);
+  console.log(`   /phase1/*         → http://localhost:3457 (Phase 1: Translation)`);
+  console.log(`   /phase3/*         → http://localhost:3458 (Phase 3: LEGO Extraction)`);
+  console.log(`   /phase5/*         → http://localhost:3459 (Phase 5: Basket Generation)`);
+  console.log(`   /phase8/*         → http://localhost:3465 (Phase 8: Audio/TTS)`);
   console.log('');
   console.log(`🌐 Usage:`);
   console.log(`   Dashboard: GET https://your-ngrok-url/api/languages`);
+  console.log(`   Production: GET https://your-ngrok-url/api/production/spa_for_eng/manifest`);
   console.log(`   Phase 1: POST https://your-ngrok-url/phase1/upload-translations`);
   console.log(`   Phase 3: POST https://your-ngrok-url/phase3/upload-legos`);
   console.log(`   Phase 5: POST https://your-ngrok-url/phase5/upload-basket`);

@@ -100,6 +100,12 @@ const SERVICES = {
     port: BASE_PORT + 9,  // 3465
     name: 'Audio Generation',
     color: '\x1b[36m'    // Cyan
+  },
+  production_api: {
+    script: 'services/production-api.cjs',
+    port: BASE_PORT + 14, // 3470
+    name: 'Production API',
+    color: '\x1b[95m'    // Bright Magenta
   }
 };
 
@@ -133,6 +139,7 @@ for (const [key, config] of Object.entries(SERVICES)) {
       PHASE3_URL: `http://localhost:${BASE_PORT + 3}`,              // 3459 - Basket Generation
       MANIFEST_URL: `http://localhost:${BASE_PORT + 8}`,            // 3464 - Course Manifest Compilation
       AUDIO_URL: `http://localhost:${BASE_PORT + 9}`,               // 3465 - TTS Audio Generation
+      PRODUCTION_API_URL: `http://localhost:${BASE_PORT + 14}`,     // 3470 - Production API (QA workflow + WebSocket)
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });

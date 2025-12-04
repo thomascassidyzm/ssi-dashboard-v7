@@ -374,15 +374,54 @@ app.post('/start', async (req, res) => {
     console.log(`[Phase 8] Using custom voice assignments:`, JSON.stringify(voices, null, 2));
   }
 
+  // Emit initial progress event
+  emitPipelineProgress(courseCode, 'phase_a', 0, jobState.progress.total, 'Starting audio generation...');
+
+  // Set up progress polling to emit WebSocket updates
+  const progressInterval = setInterval(async () => {
+    if (jobState.status !== 'running') {
+      clearInterval(progressInterval);
+      return;
+    }
+
+    // Count generated files
+    try {
+      const tempAudioDir = path.join(__dirname, '../../temp/audio');
+      if (await fs.pathExists(tempAudioDir)) {
+        const files = await fs.readdir(tempAudioDir);
+        const current = files.filter(f => f.endsWith('.mp3')).length;
+        const total = jobState.progress.total || 0;
+
+        if (current !== jobState.progress.current) {
+          jobState.progress.current = current;
+          emitPipelineProgress(
+            courseCode,
+            jobState.phase,
+            current,
+            total,
+            `Generating audio samples (${current}/${total})...`
+          );
+        }
+      }
+    } catch (e) {
+      // Ignore errors in progress polling
+    }
+  }, 2000); // Poll every 2 seconds
+
   // Run audio generation in background
   audioOrchestrator.generateAudioForCourse(courseCode, generationOptions)
     .then(result => {
+      clearInterval(progressInterval);
+
       // Check if paused at QC checkpoint
       if (result.pausedAtQC) {
         jobState.status = 'qc-review';
         jobState.phase = 'qc-checkpoint';
         jobState.qcReport = result.qcReport;
         console.log(`\n[Phase 8] Audio generation paused at QC checkpoint for ${courseCode}`);
+
+        // Emit QC checkpoint event
+        emitPipelineProgress(courseCode, 'qc_checkpoint', jobState.progress.current, jobState.progress.total, 'Paused at QC checkpoint - review required');
       } else {
         jobState.status = result.success ? 'complete' : 'failed';
         jobState.completedAt = new Date().toISOString();
@@ -390,18 +429,28 @@ app.post('/start', async (req, res) => {
 
         console.log(`\n[Phase 8] Audio generation ${result.success ? 'complete' : 'failed'} for ${courseCode}`);
 
-        // Notify orchestrator of completion
+        // Emit completion/failure event
         if (result.success) {
+          emitPipelineProgress(courseCode, 'complete', jobState.progress.total, jobState.progress.total, 'Audio generation complete');
           notifyOrchestrator(courseCode, 8, { success: true, ...result });
+        } else {
+          emitPipelineProgress(courseCode, 'failed', jobState.progress.current, jobState.progress.total, 'Audio generation failed');
         }
       }
     })
     .catch(error => {
+      clearInterval(progressInterval);
       jobState.status = 'failed';
       jobState.completedAt = new Date().toISOString();
       jobState.error = error.message;
 
       console.error(`\n[Phase 8] Error in audio generation for ${courseCode}:`, error);
+
+      // Emit error event
+      emitWebSocketEvent(courseCode, 'error', {
+        message: 'Audio generation failed',
+        details: error.message
+      });
     })
     .finally(() => {
       // Keep job in memory for status queries (cleanup after 1 hour, unless at QC)
@@ -610,6 +659,9 @@ app.post('/continue', async (req, res) => {
     job.status = 'processing';
     job.phase = 'phase-a-processing';
 
+    // Emit continue event
+    emitPipelineProgress(courseCode, 'phase_a_processing', 0, 100, 'Processing Phase A audio...');
+
     const result = await audioOrchestrator.continuePhaseAProcessing(courseCode, options);
 
     // Update job with result
@@ -619,7 +671,10 @@ app.post('/continue', async (req, res) => {
 
     // Notify orchestrator if complete
     if (result.success) {
+      emitPipelineProgress(courseCode, 'complete', 100, 100, 'Audio generation complete');
       notifyOrchestrator(courseCode, 8, { success: true, ...result });
+    } else {
+      emitPipelineProgress(courseCode, 'failed', 0, 100, 'Audio processing failed');
     }
 
     // Schedule cleanup
@@ -636,6 +691,12 @@ app.post('/continue', async (req, res) => {
     // Update job status
     job.status = 'failed';
     job.error = error.message;
+
+    // Emit error event
+    emitWebSocketEvent(courseCode, 'error', {
+      message: 'Audio processing failed',
+      details: error.message
+    });
 
     res.status(500).json({
       success: false,
@@ -674,7 +735,21 @@ app.post('/regenerate', async (req, res) => {
   try {
     console.log(`\n[Phase 8] Regenerating ${uuids.length} samples for ${courseCode}`);
 
+    // Emit regeneration start event
+    emitPipelineProgress(courseCode, 'regenerating', 0, uuids.length, `Regenerating ${uuids.length} samples...`);
+
     const result = await audioOrchestrator.regenerateSamples(courseCode, uuids, options);
+
+    // Emit completion events for each regenerated sample
+    for (const uuid of uuids) {
+      emitGenerationComplete(courseCode, uuid, {
+        regenerated: true,
+        provider: result.provider || 'unknown'
+      });
+    }
+
+    // Emit regeneration complete
+    emitPipelineProgress(courseCode, 'regeneration_complete', uuids.length, uuids.length, `Regenerated ${result.regenerated} samples`);
 
     res.json({
       success: true,
@@ -683,6 +758,12 @@ app.post('/regenerate', async (req, res) => {
     });
   } catch (error) {
     console.error(`[Phase 8] Error regenerating samples:`, error);
+
+    emitWebSocketEvent(courseCode, 'error', {
+      message: 'Regeneration failed',
+      details: error.message
+    });
+
     res.status(500).json({
       success: false,
       error: error.message
@@ -839,6 +920,55 @@ async function notifyOrchestrator(courseCode, phase, result) {
   } catch (error) {
     console.error(`[Phase 8] Failed to notify orchestrator:`, error.message);
   }
+}
+
+/**
+ * Emit WebSocket event via Production API
+ * Used to notify connected clients of audio generation progress/completion
+ */
+async function emitWebSocketEvent(courseCode, event, data) {
+  const productionApiUrl = process.env.PRODUCTION_API_URL || 'http://localhost:3470';
+
+  try {
+    const fetch = require('node-fetch');
+    await fetch(`${productionApiUrl}/api/production/internal/emit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        courseCode,
+        event,
+        data
+      })
+    });
+  } catch (error) {
+    // Don't log errors - production API might not be running
+  }
+}
+
+/**
+ * Emit pipeline progress event
+ */
+function emitPipelineProgress(courseCode, phase, current, total, message) {
+  emitWebSocketEvent(courseCode, 'pipeline_progress', {
+    phase,
+    progress: total > 0 ? current / total : 0,
+    current,
+    total,
+    message
+  });
+}
+
+/**
+ * Emit generation complete event for a single sample
+ */
+function emitGenerationComplete(courseCode, uuid, metadata) {
+  emitWebSocketEvent(courseCode, 'generation_complete', {
+    uuid,
+    metadata: {
+      generatedAt: new Date().toISOString(),
+      ...metadata
+    }
+  });
 }
 
 // Start server
