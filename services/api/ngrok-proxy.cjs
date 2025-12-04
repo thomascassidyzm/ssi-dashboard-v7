@@ -55,6 +55,7 @@ app.get('/health', (req, res) => {
       '/phase1/*': 'http://localhost:3457',
       '/phase3/*': 'http://localhost:3458',
       '/phase5/*': 'http://localhost:3459',
+      '/phase8/*': 'http://localhost:3465',
       backward_compat: {
         '/upload-translations': 'http://localhost:3457',
         '/upload-legos': 'http://localhost:3458',
@@ -137,6 +138,27 @@ app.use('/phase5', createProxyMiddleware({
   }
 }));
 
+// Phase 8 proxy (Audio/TTS Generation) - BEFORE API proxy to avoid conflicts
+app.use('/phase8', createProxyMiddleware({
+  target: 'http://localhost:3465',
+  changeOrigin: true,
+  pathRewrite: {
+    '^/phase8': '' // Remove /phase8 prefix before forwarding
+  },
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Phase 8 Proxy] ${req.method} ${req.path} → http://localhost:3465${req.path.replace('/phase8', '')}`);
+  },
+  onError: (err, req, res) => {
+    console.error(`[Phase 8 Proxy Error] ${err.message}`);
+    res.status(500).json({
+      success: false,
+      error: 'Phase 8 Audio server unavailable',
+      details: err.message
+    });
+  }
+}));
+
 // API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
 // Use a filter function to match /api/* without stripping the prefix
 app.use(createProxyMiddleware({
@@ -191,7 +213,7 @@ app.use((req, res) => {
   res.status(404).json({
     error: 'Route not found',
     path: req.path,
-    availableRoutes: ['/api/*', '/phase1/*', '/phase3/*', '/phase5/*', '/health']
+    availableRoutes: ['/api/*', '/phase1/*', '/phase3/*', '/phase5/*', '/phase8/*', '/health']
   });
 });
 
@@ -204,12 +226,14 @@ app.listen(PORT, () => {
   console.log(`   /phase1/* → http://localhost:3457 (Phase 1: Translation)`);
   console.log(`   /phase3/* → http://localhost:3458 (Phase 3: LEGO Extraction)`);
   console.log(`   /phase5/* → http://localhost:3459 (Phase 5: Basket Generation)`);
+  console.log(`   /phase8/* → http://localhost:3465 (Phase 8: Audio/TTS)`);
   console.log('');
   console.log(`🌐 Usage:`);
   console.log(`   Dashboard: GET https://your-ngrok-url/api/languages`);
   console.log(`   Phase 1: POST https://your-ngrok-url/phase1/upload-translations`);
   console.log(`   Phase 3: POST https://your-ngrok-url/phase3/upload-legos`);
   console.log(`   Phase 5: POST https://your-ngrok-url/phase5/upload-basket`);
+  console.log(`   Phase 8: POST https://your-ngrok-url/phase8/plan`);
   console.log('');
   console.log(`💡 Configure ngrok to tunnel to this port:`);
   console.log(`   ngrok http ${PORT} --domain=mirthlessly-nonanesthetized-marilyn.ngrok-free.dev`);

@@ -191,10 +191,13 @@ This script:
   console.log(`\n✅ Audio index updated: +${result.added} new, ~${result.updated} updated\n`);
 }
 
-main().catch(err => {
-  console.error('Error:', err.message);
-  process.exit(1);
-});
+// Only run main() when executed directly as a script, not when required as a module
+if (require.main === module) {
+  main().catch(err => {
+    console.error('Error:', err.message);
+    process.exit(1);
+  });
+}
 
 module.exports = {
   loadAudioIndex,

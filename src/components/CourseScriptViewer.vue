@@ -170,7 +170,11 @@ export default {
       isPlaying: false,
       audio: null,
       phaseTimer: null,
-      itemRefs: {}
+      itemRefs: {},
+      // Lazy loading: track which audio batches have been preloaded
+      preloadedBatches: new Set(),
+      preloadBatchSize: 10,
+      audioCache: new Map()
     }
   },
   computed: {
@@ -204,6 +208,9 @@ export default {
       this.currentIndex = 0
       this.currentPhase = null
       this.stopPlayback()
+      // Reset lazy loading state
+      this.preloadedBatches = new Set()
+      this.audioCache = new Map()
 
       try {
         const response = await fetch(
@@ -294,10 +301,51 @@ export default {
       }
     },
 
+    // Preload audio for a batch of cycles (lazy loading)
+    async preloadBatch(batchIndex) {
+      if (this.preloadedBatches.has(batchIndex)) {
+        return // Already preloaded
+      }
+
+      this.preloadedBatches.add(batchIndex)
+
+      const startIdx = batchIndex * this.preloadBatchSize
+      const endIdx = Math.min(startIdx + this.preloadBatchSize, this.scriptItems.length)
+
+      console.log(`[ScriptViewer] Preloading batch ${batchIndex}: cycles ${startIdx + 1}-${endIdx}`)
+
+      // Collect all UUIDs for this batch
+      const uuids = []
+      for (let i = startIdx; i < endIdx; i++) {
+        const item = this.scriptItems[i]
+        if (item.sourceId) uuids.push(item.sourceId)
+        if (item.target1Id) uuids.push(item.target1Id)
+        if (item.target2Id) uuids.push(item.target2Id)
+      }
+
+      // Preload each audio file (don't wait for all - just start the requests)
+      for (const uuid of uuids) {
+        if (!this.audioCache.has(uuid)) {
+          const audio = new Audio()
+          audio.preload = 'auto'
+          audio.src = `${baseURL}/api/audio/stream/${uuid}`
+          this.audioCache.set(uuid, audio)
+        }
+      }
+    },
+
     async playCycle() {
       if (!this.isPlaying || this.currentIndex >= this.scriptItems.length) {
         this.stopPlayback()
         return
+      }
+
+      // Lazy load: preload current batch and next batch
+      const currentBatch = Math.floor(this.currentIndex / this.preloadBatchSize)
+      await this.preloadBatch(currentBatch)
+      // Preload next batch in advance
+      if ((this.currentIndex + 1) % this.preloadBatchSize === 0) {
+        this.preloadBatch(currentBatch + 1)
       }
 
       const item = this.scriptItems[this.currentIndex]
@@ -313,9 +361,9 @@ export default {
 
       if (!this.isPlaying) return
 
-      // Phase 2: PAUSE
+      // Phase 2: PAUSE (2s default)
       this.currentPhase = 'pause'
-      await this.wait(3000)
+      await this.wait(2000)
 
       if (!this.isPlaying) return
 
@@ -343,7 +391,8 @@ export default {
       this.currentIndex++
       this.currentPhase = null
 
-      await this.wait(500)
+      // 2s gap between cycles
+      await this.wait(2000)
 
       if (this.isPlaying && this.currentIndex < this.scriptItems.length) {
         this.playCycle()
@@ -354,30 +403,43 @@ export default {
 
     playAudio(uuid) {
       return new Promise((resolve) => {
-        if (!this.audio || !uuid) {
+        if (!uuid) {
           resolve()
           return
         }
 
+        // Use cached audio element if available, otherwise use the main audio element
+        let audioElement = this.audioCache.get(uuid)
+        if (!audioElement) {
+          // Fallback to main audio if not cached
+          audioElement = this.audio
+          if (!audioElement) {
+            resolve()
+            return
+          }
+          audioElement.src = `${baseURL}/api/audio/stream/${uuid}`
+        }
+
         const onEnded = () => {
-          this.audio.removeEventListener('ended', onEnded)
-          this.audio.removeEventListener('error', onError)
+          audioElement.removeEventListener('ended', onEnded)
+          audioElement.removeEventListener('error', onError)
+          // Reset cached audio for potential replay
+          audioElement.currentTime = 0
           resolve()
         }
 
         const onError = () => {
           console.warn('[ScriptViewer] Audio error for', uuid)
-          this.audio.removeEventListener('ended', onEnded)
-          this.audio.removeEventListener('error', onError)
+          audioElement.removeEventListener('ended', onEnded)
+          audioElement.removeEventListener('error', onError)
           resolve()
         }
 
-        this.audio.addEventListener('ended', onEnded)
-        this.audio.addEventListener('error', onError)
+        audioElement.addEventListener('ended', onEnded)
+        audioElement.addEventListener('error', onError)
 
-        this.audio.src = `${baseURL}/api/audio/stream/${uuid}`
-        this.audio.load()
-        this.audio.play().catch(() => {
+        audioElement.currentTime = 0
+        audioElement.play().catch(() => {
           onError()
         })
       })
@@ -411,6 +473,13 @@ export default {
     if (this.audio) {
       this.audio.src = ''
       this.audio = null
+    }
+    // Clean up cached audio elements
+    if (this.audioCache) {
+      for (const audio of this.audioCache.values()) {
+        audio.src = ''
+      }
+      this.audioCache.clear()
     }
   }
 }
