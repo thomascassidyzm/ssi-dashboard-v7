@@ -95,11 +95,17 @@ const SERVICES = {
     name: 'Manifest Compilation',
     color: '\x1b[34m'    // Blue
   },
-  audio: {
-    script: 'services/phases/audio-server.cjs',
+  phase8_audio: {
+    script: 'services/phases/phase8-audio-generator.cjs',
     port: BASE_PORT + 9,  // 3465
-    name: 'Audio Generation',
-    color: '\x1b[36m'    // Cyan
+    name: 'Phase 8 (Audio Generator)',
+    color: '\x1b[96m'    // Bright Cyan
+  },
+  phase9_manifest: {
+    script: 'services/phases/phase9-manifest-compiler.cjs',
+    port: BASE_PORT + 10, // 3466
+    name: 'Phase 9 (Manifest Compiler)',
+    color: '\x1b[92m'    // Bright Green
   },
   production_api: {
     script: 'services/production-api.cjs',
@@ -137,8 +143,10 @@ for (const [key, config] of Object.entries(SERVICES)) {
       PHASE1_TRANSLATION_URL: `http://localhost:${BASE_PORT + 1}`,  // 3457 - Translation
       PHASE1_LEGO_URL: `http://localhost:${BASE_PORT + 2}`,         // 3458 - LEGO Extraction (+ conflict resolution)
       PHASE3_URL: `http://localhost:${BASE_PORT + 3}`,              // 3459 - Basket Generation
-      MANIFEST_URL: `http://localhost:${BASE_PORT + 8}`,            // 3464 - Course Manifest Compilation
-      AUDIO_URL: `http://localhost:${BASE_PORT + 9}`,               // 3465 - TTS Audio Generation
+      MANIFEST_URL: `http://localhost:${BASE_PORT + 8}`,            // 3464 - Course Manifest Compilation (legacy)
+      PHASE8_URL: `http://localhost:${BASE_PORT + 9}`,              // 3465 - Phase 8 Audio Generator (Supabase)
+      PHASE9_URL: `http://localhost:${BASE_PORT + 10}`,             // 3466 - Phase 9 Manifest Compiler (Supabase)
+      AUDIO_URL: `http://localhost:${BASE_PORT + 9}`,               // 3465 - TTS Audio Generation (alias)
       PRODUCTION_API_URL: `http://localhost:${BASE_PORT + 14}`,     // 3470 - Production API (QA workflow + WebSocket)
     },
     stdio: ['ignore', 'pipe', 'pipe']
