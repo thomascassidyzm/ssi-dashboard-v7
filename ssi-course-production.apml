@@ -1,15 +1,83 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "8.2.3"
-  apml_version: "1.1.0"
+  version: "11.0.0"
+  apml_version: "1.2.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
     This system transforms 668 canonical concepts (expressed in English as a reference language)
-    into pedagogically optimized language learning courses through a 5-phase pipeline
+    into pedagogically optimized language learning courses through a multi-phase pipeline
     orchestrated by Claude Code agents and microservices.
+
+    v11 introduces Supabase as the database layer, audio-first generation,
+    and manifest pruning for reused LEGOs.
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
+
+  changelog_v11_0_0: |
+    **Date:** 2025-12-04
+    **Summary:** Supabase Database Layer & Audio-First Architecture
+
+    MAJOR ARCHITECTURAL CHANGES:
+    - Supabase (Postgres) replaces file-based MAR for audio metadata
+    - Audio-first generation: lego_baskets → audio → Supabase → manifest (last)
+    - Manifest pruning: LEGOs with new: false don't create introduction_items
+    - Supabase Realtime replaces Socket.io for live updates
+    - Cross-course audio deduplication via shared samples
+
+    AUDIO KEY STRUCTURE:
+    - Composite key: voice_id | text | lang | role | cadence
+    - voice_id: azure_zh-CN-XiaoxiaoNeural | human_aran_jones
+    - Cadence rules: source=natural, target=slow
+    - UUID generation: hash(voice_id|text|lang|role|cadence) - deterministic
+
+    SUPABASE TABLES:
+    - voices: Registry of TTS and human voices
+    - audio_samples: Master audio registry with UUIDs
+    - course_audio_usage: Track which courses use which audio
+    - sample_flags: QA workflow state (12-status lifecycle)
+    - recording_provenance: Metadata for human recordings
+    - courses: Course registry with voice configuration
+
+    MANIFEST PRUNING:
+    - LEGOs marked new: false in lego_pairs.json are REUSED LEGOs
+    - They were already introduced in an earlier seed
+    - They do NOT get their own introduction_items in manifest
+    - Script: scripts/prune-manifest-false-legos.cjs
+
+    AUDIO GENERATION FLOW (NEW):
+    1. Load lego_baskets.json
+    2. Extract unique audio requirements
+    3. Check Supabase for existing audio (deduplication)
+    4. Generate missing audio via TTS
+    5. Upload to S3, insert to Supabase
+    6. Compile manifest LAST (only after all audio exists)
+
+    QA WORKFLOW:
+    - Status stored in Supabase sample_flags table
+    - 12-status lifecycle: pending → ... → complete
+    - Supabase Realtime broadcasts changes to all connected dashboards
+
+    TECHNICAL STACK:
+    - Frontend: Vue 3, Vite, Tailwind CSS 4, Pinia
+    - Backend: Vercel Serverless, AWS SDK v3
+    - Database: Supabase (Postgres + Realtime)
+    - Storage: S3 (popty-bach-lfs)
+
+    NEW FILES:
+    - apml/phases/phase-index-v11.apml (phase index)
+    - new_vision/supabase-schema.sql (database schema)
+    - new_vision/COURSE_PRODUCTION_SUITE_ARCHITECTURE.md (full architecture)
+    - scripts/prune-manifest-false-legos.cjs (manifest pruning)
+    - services/uuid-service.cjs (deterministic UUID generation)
+
+    BREAKING CHANGES:
+    - MAR files deprecated (use Supabase)
+    - sample_flags.json deprecated (use Supabase)
+    - Socket.io deprecated (use Supabase Realtime)
+    - Manifest structure changed (no intro_items for new: false LEGOs)
+
+    See: apml/phases/phase-index-v11.apml for complete specification
 
   changelog_v8_2_3: |
     **Date:** 2025-11-21

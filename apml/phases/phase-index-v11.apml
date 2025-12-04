@@ -1,0 +1,514 @@
+# APML Phase Index v11.0.0
+# SSI Course Production Pipeline
+# Version: 11.0.0 (2025-12-04)
+# Status: Production
+#
+# MAJOR CHANGES from v10:
+# - Supabase replaces file-based MAR as database layer
+# - Audio-first generation: lego_baskets → audio → Supabase → manifest (last)
+# - Manifest pruning: new: false LEGOs don't get introduction_items
+# - Deterministic UUID: hash(voice_id|text|lang|role|cadence)
+# - Cadence rules: source=natural, target=slow
+
+## ============================================================================
+## VERSION 11 BREAKING CHANGES
+## ============================================================================
+
+BREAKING_CHANGES:
+  summary: |
+    Version 11.0.0 introduces database-first audio architecture:
+    1. Supabase (Postgres) replaces file-based MAR for audio metadata
+    2. Audio generated BEFORE manifest compilation
+    3. Manifest pruning removes intro_items for reused LEGOs (new: false)
+    4. Course deduplication via shared audio samples
+    5. Recording provenance for endangered language documentation
+
+  from_v10:
+    - "MAR files → Supabase: Audio metadata moves to database"
+    - "Manifest-first → Audio-first: Generate audio, then compile manifest"
+    - "new: false pruning: LEGOs marked new: false don't create intro_items"
+    - "File-based flags → Supabase sample_flags: QA workflow in database"
+    - "Socket.io → Supabase Realtime: Built-in live updates"
+
+## ============================================================================
+## DATA LAYER ARCHITECTURE (v11 NEW)
+## ============================================================================
+
+DATA_LAYER:
+  supabase:
+    description: |
+      Postgres database for all metadata, workflow state, and audio registry.
+      Replaces file-based sample_flags.json, audio_metadata.json, and MAR.
+
+    tables:
+      voices:
+        description: "Registry of available voices (TTS and human)"
+        primary_key: "voice_id (TEXT)"
+        fields:
+          - "voice_id: azure_zh-CN-XiaoxiaoNeural | human_aran_jones"
+          - "type: tts | human"
+          - "languages: TEXT[] of ISO 639-3 codes"
+          - "sample_count: auto-incremented on audio insert"
+
+      audio_samples:
+        description: "Master registry of all audio files"
+        primary_key: "uuid (TEXT) - deterministic hash"
+        fields:
+          - "voice_id, text, text_normalized, lang, role, cadence"
+          - "s3_bucket, s3_key"
+          - "duration_ms, file_size_bytes, checksum_md5"
+          - "source: tts_azure | tts_elevenlabs | human_recording"
+          - "hash_input: the string that was hashed (for debugging)"
+
+      course_audio_usage:
+        description: "Track which courses use which audio samples"
+        primary_key: "(course_code, audio_uuid)"
+        purpose: "Cross-course deduplication tracking"
+
+      sample_flags:
+        description: "QA workflow state per audio per course"
+        fields:
+          - "audio_uuid, course_code"
+          - "status: 12-state lifecycle"
+          - "notes, flagged_by, flagged_at"
+          - "context: JSONB with seed_id, cycle_index"
+          - "history: JSONB array of status changes"
+
+      recording_provenance:
+        description: "Metadata for human recordings (endangered languages)"
+        fields:
+          - "Speaker info: name, native_language, dialect, region"
+          - "Session: recorded_at, location, device, environment"
+          - "Rights: consent, usage_rights"
+
+    realtime:
+      description: "Supabase Realtime for live UI updates"
+      enabled_tables:
+        - "sample_flags: QA workflow changes"
+        - "audio_samples: New audio generated"
+
+  s3:
+    bucket: "popty-bach-lfs"
+    region: "eu-west-1"
+    structure:
+      audio_files: "mastered/{uuid}.mp3"
+      course_data: "courses/{course_code}/*.json"
+
+## ============================================================================
+## AUDIO KEY STRUCTURE (v11 NEW)
+## ============================================================================
+
+AUDIO_KEY:
+  structure: "voice_id | text | lang | role | cadence"
+
+  components:
+    voice_id:
+      description: "Unique identifier for the voice"
+      format_tts: "azure_{locale}-{VoiceName} | elevenlabs_{voice_name}"
+      format_human: "human_{name}_{language}"
+      examples:
+        - "azure_zh-CN-XiaoxiaoNeural"
+        - "azure_es-ES-ElviraNeural"
+        - "human_aran_jones_cym"
+        - "elevenlabs_rachel"
+
+    text:
+      description: "The phrase to speak"
+      normalization: "lowercase, trimmed, whitespace normalized"
+      examples:
+        - "i want to learn"
+        - "quiero aprender"
+        - "我想学"
+
+    lang:
+      description: "ISO 639-3 language code"
+      examples:
+        - "eng: English"
+        - "spa: Spanish"
+        - "cmn: Mandarin Chinese"
+        - "cym: Welsh"
+
+    role:
+      description: "Sample role in learning flow"
+      values:
+        source: "Known language (English for most courses)"
+        target1: "Target language, first presentation"
+        target2: "Target language, second presentation"
+        presentation: "Instructor voiceover"
+
+    cadence:
+      description: "Speech speed"
+      values:
+        natural: "Normal conversational speed"
+        slow: "Deliberately slowed for learning"
+      rules:
+        source: "ALWAYS natural"
+        target1: "ALWAYS slow"
+        target2: "ALWAYS slow"
+        presentation: "natural"
+
+  uuid_generation:
+    algorithm: "UUID v5 (RFC 4122)"
+    namespace: "6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f (SSi namespace)"
+    input: "voice_id|text|lang|role|cadence"
+    output: "Deterministic UUID - same inputs ALWAYS produce same UUID"
+
+    code: |
+      // uuid-service.cjs
+      const key = `${voiceId}|${text}|${lang}|${role}|${cadence}`;
+      return uuidv5(key, SSI_NAMESPACE).toUpperCase();
+
+## ============================================================================
+## AUDIO GENERATION FLOW (v11 NEW)
+## ============================================================================
+
+AUDIO_GENERATION_FLOW:
+  principle: |
+    Audio is generated FIRST, manifest is compiled LAST.
+    This ensures the manifest only references audio that actually exists.
+
+  old_flow_v10:
+    description: "Manifest-first (problematic)"
+    steps:
+      - "lego_baskets.json → course_manifest.json (with placeholder UUIDs)"
+      - "Manifest → Audio generation"
+      - "Audio files → MAR (file-based registry)"
+      - "Update manifest with actual UUIDs"
+    problems:
+      - "Manifest contains placeholder UUIDs"
+      - "Two-pass update required"
+      - "File-based MAR doesn't scale"
+
+  new_flow_v11:
+    description: "Audio-first (correct)"
+    steps:
+      1:
+        name: "Load lego_baskets.json"
+        input: "S3: courses/{course_code}/lego_baskets.json"
+        output: "In-memory basket data"
+
+      2:
+        name: "Extract unique audio requirements"
+        description: |
+          For each basket cycle, extract:
+          - Target phrase (slow cadence)
+          - Source phrase (natural cadence)
+          - Presentation text (natural cadence)
+
+      3:
+        name: "Check Supabase for existing audio"
+        description: |
+          Query audio_samples by (voice_id, text_normalized, lang, role, cadence).
+          Skip generation for samples that already exist.
+        benefit: "Cross-course deduplication - same phrase reuses existing audio"
+
+      4:
+        name: "Generate missing audio (TTS)"
+        description: |
+          For each missing sample:
+          - Generate UUID from composite key
+          - Call TTS API (Azure or ElevenLabs)
+          - Upload to S3: mastered/{uuid}.mp3
+          - Insert into Supabase audio_samples
+          - Insert into course_audio_usage
+
+      5:
+        name: "Compile manifest"
+        description: |
+          Only after ALL audio exists, compile the manifest.
+          Look up UUIDs from Supabase by text.
+          Manifest references are guaranteed to exist.
+        output: "S3: courses/{course_code}/course_manifest.json"
+
+    benefits:
+      - "Supabase is source of truth for 'what audio exists'"
+      - "No placeholder UUIDs - manifest only has real references"
+      - "Cross-course deduplication automatic"
+      - "Manifest can be regenerated anytime from Supabase"
+
+## ============================================================================
+## MANIFEST PRUNING (v11 NEW)
+## ============================================================================
+
+MANIFEST_PRUNING:
+  description: |
+    LEGOs marked `new: false` in lego_pairs.json are REUSED LEGOs.
+    They were already introduced in an earlier seed.
+    They should NOT have their own introduction_items in the manifest.
+
+  rule: |
+    When compiling the manifest (or pruning an existing one):
+    1. Load lego_pairs.json
+    2. Build set of LEGOs where new: false
+    3. For each seed's introduction_items:
+       - Check if the intro_item's known|target matches a new: false LEGO
+       - If yes: REMOVE the intro_item and its associated samples
+    4. Update samples dictionary (remove orphaned text keys)
+
+  example:
+    lego_pairs: |
+      {
+        "seed_id": "S0042",
+        "legos": [
+          { "id": "S0042L01", "new": true, "lego": { "known": "I'm starting", "target": "estoy comenzando" } },
+          { "id": "S0042L02", "new": false, "lego": { "known": "to feel", "target": "sentirme" } }
+        ]
+      }
+
+    result: |
+      S0042L01 (new: true) → Gets introduction_item in manifest
+      S0042L02 (new: false) → NO introduction_item (already introduced earlier)
+
+  script: "scripts/prune-manifest-false-legos.cjs"
+
+## ============================================================================
+## PIPELINE PHASES (v11)
+## ============================================================================
+
+CONTENT_PHASES:
+
+  PHASE_1:
+    name: "Translation + LEGO Extraction"
+    type: "PHASE (agent-based)"
+    version: "11.0.0"
+    server_port: 3457
+    description: |
+      Single agent prompt that performs:
+      1. Pedagogical translation of canonical seeds to target/known pairs
+      2. LEGO extraction with FD testing and type classification (A/M)
+
+    input:
+      - "canonical_seeds.json"
+      - "location: S3 or local VFS"
+
+    output:
+      - "draft_lego_pairs.json (may have conflicts)"
+
+  PHASE_2:
+    name: "Conflict Resolution"
+    type: "PHASE (agent-based)"
+    version: "11.0.0"
+    server_port: 3458
+    description: |
+      Resolve LEGO conflicts from Phase 1 output.
+      Ensures no duplicate or conflicting LEGO definitions.
+
+    input:
+      - "draft_lego_pairs.json"
+
+    output:
+      - "lego_pairs.json (SSoT - conflict-free)"
+      - "Each LEGO has new: true or new: false flag"
+
+  PHASE_3:
+    name: "Basket Generation"
+    type: "PHASE (agent-based)"
+    version: "11.0.0"
+    server_port: 3459
+    description: |
+      Generate practice phrases for each LEGO.
+      Agent uses linguistic intelligence to create natural, contextual phrases.
+
+    input:
+      - "lego_pairs.json"
+
+    output:
+      - "lego_baskets.json (practice phrases per LEGO)"
+
+    basket_cycle_sequence:
+      M_type:
+        1: "Components (is_component: true)"
+        2: "LEGO Debut (is_debut: true)"
+        3: "Practice sentences"
+
+      A_type:
+        1: "Practice sentences only"
+
+  SCRIPT_AUDIO_GENERATION:
+    name: "Audio Generation"
+    type: "SCRIPT (no agent)"
+    version: "11.0.0 NEW ARCHITECTURE"
+    description: |
+      Generate TTS audio from lego_baskets.
+      Audio-first: generate all audio BEFORE manifest.
+
+    input:
+      - "lego_baskets.json"
+      - "Voice configuration"
+
+    output:
+      - "Audio files: S3 mastered/{uuid}.mp3"
+      - "Audio metadata: Supabase audio_samples table"
+      - "Course usage: Supabase course_audio_usage table"
+
+    process:
+      1: "Load lego_baskets.json"
+      2: "Extract unique phrases (target slow, source natural)"
+      3: "Query Supabase for existing audio"
+      4: "Generate missing audio via TTS API"
+      5: "Upload to S3, insert to Supabase"
+
+  SCRIPT_MANIFEST_COMPILATION:
+    name: "Manifest Compilation"
+    type: "SCRIPT (no agent)"
+    version: "11.0.0"
+    description: |
+      Compile all SSoT files into app-ready course manifest.
+      ONLY runs after all audio exists in Supabase.
+
+    input:
+      - "lego_pairs.json"
+      - "lego_baskets.json"
+      - "Supabase audio_samples (for UUID lookup)"
+
+    output:
+      - "course_manifest.json"
+
+    process:
+      1: "Load lego_pairs and lego_baskets"
+      2: "Build introduction_items (skip new: false LEGOs)"
+      3: "Look up audio UUIDs from Supabase by text"
+      4: "Build samples dictionary"
+      5: "Write manifest to S3"
+
+    pruning: |
+      LEGOs with new: false do NOT get introduction_items.
+      They are reused LEGOs already introduced in earlier seeds.
+
+## ============================================================================
+## QA WORKFLOW (v11)
+## ============================================================================
+
+QA_WORKFLOW:
+  description: |
+    QA state stored in Supabase sample_flags table.
+    Realtime subscriptions enable live UI updates.
+
+  status_lifecycle:
+    pending: "Initial state"
+    flagged_text_edit: "Text needs correction"
+    flagged_regen_tts: "Audio needs TTS regeneration"
+    flagged_human_needed: "Requires human recording"
+    in_pipeline: "TTS generation queued"
+    tts_complete: "TTS generated"
+    tts_failed: "TTS failed"
+    in_recording: "Human recording in progress"
+    recorded: "Human recording uploaded"
+    needs_review: "Audio ready for QA"
+    approved: "Final approval"
+    rejected: "Sent back for regen"
+    complete: "Published"
+
+  realtime: |
+    Supabase Realtime broadcasts changes to sample_flags.
+    All connected dashboards update automatically.
+
+## ============================================================================
+## SSOT FILES (v11)
+## ============================================================================
+
+SSOT_FILES:
+  lego_pairs.json:
+    owner: "Phase 2 (Conflict Resolution)"
+    location: "courses/{course_code}/lego_pairs.json"
+    contents: |
+      Seeds with translated LEGOs.
+      Each LEGO has new: true (first appearance) or new: false (reused).
+
+  lego_baskets.json:
+    owner: "Phase 3 (Basket Generation)"
+    location: "courses/{course_code}/lego_baskets.json"
+    contents: "Practice phrases for each LEGO"
+
+  audio_samples:
+    owner: "Audio Generation Script"
+    location: "Supabase audio_samples table"
+    contents: "Master registry of all audio with UUIDs"
+
+  course_manifest.json:
+    owner: "Manifest Compilation Script"
+    location: "courses/{course_code}/course_manifest.json"
+    contents: "Compiled manifest for app consumption"
+    note: "Only generated after ALL audio exists"
+
+## ============================================================================
+## TECHNICAL STACK (v11)
+## ============================================================================
+
+STACK:
+  frontend:
+    - "Vue 3 (Composition API)"
+    - "Vite"
+    - "Tailwind CSS 4"
+    - "Pinia (state management)"
+    - "@supabase/supabase-js"
+
+  backend:
+    - "Vercel Serverless Functions"
+    - "AWS SDK v3 (S3)"
+    - "Supabase (database + realtime)"
+
+  database:
+    - "Supabase (Postgres)"
+    - "Tables: voices, audio_samples, course_audio_usage, sample_flags, recording_provenance"
+
+  storage:
+    - "S3 (popty-bach-lfs) for audio files and course JSON"
+
+  audio:
+    - "Azure Cognitive Services (target language TTS)"
+    - "ElevenLabs (English/presentation TTS)"
+
+## ============================================================================
+## MIGRATION FROM v10
+## ============================================================================
+
+MIGRATION:
+  from_v10_to_v11:
+    database:
+      - "Create Supabase project"
+      - "Run supabase-schema.sql"
+      - "Migrate MAR data to audio_samples"
+      - "Migrate sample_flags.json to sample_flags table"
+
+    audio_generation:
+      - "Update scripts to write to Supabase instead of MAR"
+      - "Add duplicate check before TTS generation"
+      - "Update manifest compilation to read UUIDs from Supabase"
+
+    manifest:
+      - "Run prune-manifest-false-legos.cjs on existing manifests"
+      - "Remove intro_items for new: false LEGOs"
+      - "Regenerate samples dictionary"
+
+    realtime:
+      - "Replace Socket.io with Supabase Realtime subscriptions"
+      - "Update dashboard components to use Supabase client"
+
+## ============================================================================
+## SUMMARY
+## ============================================================================
+
+SUMMARY:
+  version: "11.0.0"
+  date: "2025-12-04"
+
+  key_changes:
+    - "Supabase database layer (replaces file-based MAR)"
+    - "Audio-first generation flow"
+    - "Manifest pruning for new: false LEGOs"
+    - "Deterministic UUID from voice_id|text|lang|role|cadence"
+    - "Supabase Realtime (replaces Socket.io)"
+    - "Cross-course audio deduplication"
+    - "Recording provenance for endangered languages"
+
+  principle: |
+    Audio is generated first from lego_baskets.
+    Supabase is the source of truth for what audio exists.
+    Manifest is compiled last, referencing only existing audio.
+    LEGOs with new: false don't create introduction_items.
+
+## ============================================================================
+## GENERATED: 2025-12-04
+## APML v11.0.0
+## ============================================================================
