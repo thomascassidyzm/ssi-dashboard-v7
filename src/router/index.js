@@ -122,6 +122,21 @@ const routes = [
     component: RecordingStudio,
     meta: { title: 'Recording Studio', requiresAuth: true }
   },
+
+  // Autocue Recording System (Two-Mode Teleprompter)
+  {
+    path: '/autocue',
+    name: 'AutocueStudio',
+    component: () => import('../components/production/autocue/AutocueStudio.vue'),
+    meta: { title: 'Autocue Studio', requiresAuth: true }
+  },
+  {
+    path: '/production/:courseCode/recording',
+    name: 'AutocueStudioCourse',
+    component: () => import('../components/production/autocue/AutocueStudio.vue'),
+    props: true,
+    meta: { title: 'Autocue Studio', requiresAuth: true }
+  },
   {
     path: '/users',
     name: 'UserManagement',
