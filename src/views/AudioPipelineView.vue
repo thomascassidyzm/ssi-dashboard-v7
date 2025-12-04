@@ -697,11 +697,11 @@ async function startPhaseA() {
       presentation: selectedVoices.value.presentation
     }
 
-    toast.info('🚀 Starting Phase A (targets + source)...')
+    toast.info('🚀 Starting audio generation...')
     const startResponse = await api.startAudioGeneration(courseCode.value, {
       approved: true,
       force: true,
-      phase: 'targets',  // Only generate targets and source
+      phase: 'auto',  // Generate all phases (targets, source, presentations)
       voices: voiceOverrides
     })
 

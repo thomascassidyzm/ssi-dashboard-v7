@@ -3519,7 +3519,9 @@ async function generateAudioForCourse(courseCode, options = {}) {
     }
 
     // 8. Execute Phase B (presentations)
+    console.log(`\n[DEBUG] Phase B check: phase='${phase}', phaseB.length=${phaseB.length}`);
     if (phase === 'auto' || phase === 'presentations') {
+      console.log(`[DEBUG] Executing Phase B with ${phaseB.length} presentations...`);
       const resultB = await executePhaseB(phaseB, manifest, courseCode, { skipUpload, uploadBucket, skipQC, ignoreDownloadErrors });
       totalGenerated += resultB.generated;
       totalQCFlagged += resultB.qcFlagged;
