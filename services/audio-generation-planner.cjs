@@ -409,6 +409,7 @@ async function analyzePresentationSegments(manifest, cacheDir) {
 
 /**
  * Analyze generation requirements
+ * OPTIMIZED: Uses batch headObject checks instead of listing all 700k+ S3 files
  */
 async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRegistry) {
   const analysis = {
@@ -429,22 +430,17 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
     }
   };
 
-  // Build S3 index ONCE - S3 is the Single Source of Truth for existing audio
-  console.log('Building S3 audio index (this may take a moment)...');
-  const s3UuidIndex = await s3Service.buildMasteredIndex();
-  console.log(`  ✓ S3 index built: ${s3UuidIndex.size.toLocaleString()} existing samples in ssi-audio-stage/mastered/`);
-
   // Log unique voices for reference
   const uniqueVoices = [...new Set(Object.values(voiceAssignments))];
   console.log(`  Voices for this course: ${uniqueVoices.join(', ')}`);
-  console.log('');
 
   // Group samples by voice and deduplicate by normalized text + role + cadence
   // Samples are in the slice, not at top level
   const samples = manifest.slices?.[0]?.samples || {};
 
-  // First pass: deduplicate variants with the same normalized form
-  const uniqueSamples = new Map(); // key: normalized|role|cadence, value: { text, variant, uuids }
+  // First pass: deduplicate variants and collect all UUIDs to check
+  const uniqueSamples = new Map(); // key: normalized|role|cadence, value: { text, variant, uuids, legacyUUID }
+  const allUUIDsToCheck = new Set();
 
   for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
@@ -452,13 +448,19 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
       const cadence = variant.cadence || 'natural';
       const dedupeKey = `${normalized}|${variant.role}|${cadence}`;
 
+      // Generate legacy UUID for S3 check
+      const language = variant.role.startsWith('target') ? manifest.target : manifest.known;
+      const legacyUUID = uuidService.generateLegacyUUID(text, language, variant.role, cadence);
+
       if (!uniqueSamples.has(dedupeKey)) {
         uniqueSamples.set(dedupeKey, {
           text,
           normalized,
           variant,
-          uuids: []
+          uuids: [],
+          legacyUUID
         });
+        allUUIDsToCheck.add(legacyUUID);
       }
 
       // Track all UUIDs that map to this normalized form
@@ -466,10 +468,17 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
     }
   }
 
-  console.log(`Deduplication: ${Object.keys(samples).flatMap(k => samples[k]).length} variants → ${uniqueSamples.size} unique samples\n`);
+  console.log(`Deduplication: ${Object.keys(samples).flatMap(k => samples[k]).length} variants → ${uniqueSamples.size} unique samples`);
 
-  // Second pass: analyze only unique samples
-  for (const [dedupeKey, { text, normalized, variant, uuids }] of uniqueSamples) {
+  // Batch check all UUIDs against S3 (much faster than listing all 700k+ files)
+  console.log(`Checking ${allUUIDsToCheck.size} unique UUIDs against S3...`);
+  const uuidsArray = [...allUUIDsToCheck];
+  const { existing: existingUUIDs } = await s3Service.batchCheckAudio(uuidsArray);
+  const s3UuidIndex = new Set(existingUUIDs);
+  console.log(`  ✓ Found ${s3UuidIndex.size} existing samples in S3\n`);
+
+  // Second pass: analyze only unique samples using the batch check results
+  for (const [dedupeKey, { text, normalized, variant, uuids, legacyUUID }] of uniqueSamples) {
     const variantData = variant; // Rename for clarity
     for (const variant of [variantData]) { // Keep the loop structure for minimal code changes
       const voiceId = voiceAssignments[variant.role];
@@ -506,11 +515,7 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
         };
       }
 
-      // Check if exists in S3 using LEGACY UUID (text|lang|role|cadence - no voiceId)
-      // S3 is the Single Source of Truth - existing files use the old UUID scheme
-      // generateLegacyUUID auto-normalizes 2-letter codes to 3-letter (en → eng)
-      const language = variant.role.startsWith('target') ? manifest.target : manifest.known;
-      const legacyUUID = uuidService.generateLegacyUUID(text, language, variant.role, cadence);
+      // Check if exists in S3 using pre-computed batch check results
       const existsInS3 = s3UuidIndex.has(legacyUUID);
 
       // Get voice info to determine model (for character multiplier)

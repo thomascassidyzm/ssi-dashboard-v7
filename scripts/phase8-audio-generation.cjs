@@ -480,13 +480,10 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
 
   console.log(`\nAnalyzing required generation for ${variants.length} samples...`);
 
-  // Build S3 index - lists all existing audio files in ssi-audio-stage/mastered/
-  // This is the authoritative source of what audio exists (not MAR, not audio-index)
-  console.log('  Building S3 mastered index (listing existing audio files)...');
-  const existingUUIDs = await s3Service.buildMasteredIndex();
-  console.log(`  ✓ Found ${existingUUIDs.size} existing samples in S3`);
+  // First pass: generate deterministic UUIDs for all variants
+  console.log('  Generating deterministic UUIDs for all samples...');
+  const variantsWithUUIDs = [];
 
-  // First pass: generate deterministic UUIDs and check against S3 existence
   for (const variant of variants) {
     const voiceId = voiceAssignments[variant.role];
 
@@ -500,7 +497,6 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
 
     // Generate deterministic UUID using legacy format (text|language|role|cadence)
     // Text must be lowercase to match how audio was originally generated
-    // This is the UUID that the audio file is stored under in S3
     const sampleUUID = uuidService.generateLegacyUUID(
       variant.text.toLowerCase(),
       language,
@@ -508,18 +504,37 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       variant.cadence
     );
 
-    // Check if this UUID exists in S3 mastered folder
-    const existsInS3 = existingUUIDs.has(sampleUUID);
+    variantsWithUUIDs.push({
+      ...variant,
+      uuid: sampleUUID,
+      voiceId,
+      language
+    });
+  }
 
-    // Check S3 existence (O(1) lookup against Set)
+  console.log(`  ✓ Generated ${variantsWithUUIDs.length} UUIDs`);
+
+  // Get unique UUIDs to check (some may be duplicates due to capitalization)
+  const uniqueUUIDs = [...new Set(variantsWithUUIDs.map(v => v.uuid))];
+  console.log(`  Checking ${uniqueUUIDs.length} unique UUIDs against S3...`);
+
+  // Batch check UUIDs against S3 (much faster than listing all 700k+ files)
+  const { existing: existingUUIDs } = await s3Service.batchCheckAudio(uniqueUUIDs);
+  const existingSet = new Set(existingUUIDs);
+  console.log(`  ✓ Found ${existingSet.size} existing samples in S3`);
+
+  // Second pass: categorize variants based on S3 existence
+  for (const variant of variantsWithUUIDs) {
+    const existsInS3 = existingSet.has(variant.uuid);
+
     if (existsInS3) {
       // Found existing sample in S3
       matched.push({
         text: variant.text,
         role: variant.role,
         cadence: variant.cadence,
-        uuid: sampleUUID,
-        voiceId
+        uuid: variant.uuid,
+        voiceId: variant.voiceId
       });
 
       // Update manifest with UUID
@@ -529,7 +544,7 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       );
       if (variantInManifest) {
         if (!variantInManifest.id) {
-          variantInManifest.id = sampleUUID;
+          variantInManifest.id = variant.uuid;
         }
       }
     } else {
@@ -538,9 +553,9 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
         text: variant.text,
         role: variant.role,
         cadence: variant.cadence,
-        uuid: sampleUUID,
-        voiceId,
-        language
+        uuid: variant.uuid,
+        voiceId: variant.voiceId,
+        language: variant.language
       });
 
       // Update manifest with UUID (duration will be set after generation)
@@ -549,7 +564,7 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
-        variantInManifest.id = sampleUUID;
+        variantInManifest.id = variant.uuid;
       }
     }
   }
