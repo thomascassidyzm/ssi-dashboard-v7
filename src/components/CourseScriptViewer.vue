@@ -65,27 +65,21 @@
           ]"
           @click="jumpToItem(index)"
         >
-          <!-- Line number and type indicator -->
+          <!-- Line meta: code and type -->
           <div class="line-meta">
-            <span class="line-number">{{ String(item.cycleNum || index + 1).padStart(3, '0') }}</span>
+            <span class="line-code">{{ item.seedCode || `S${String(item.seedNum || index + 1).padStart(4, '0')}` }}{{ item.legoCode ? `L${String(item.legoCode).padStart(2, '0')}` : '' }}</span>
             <span :class="['line-type', item.type]">{{ getTypeLabel(item.type) }}</span>
-            <span v-if="item.isNew === false" class="review-badge">review</span>
+            <span v-if="item.isNew === false" class="review-badge">rev</span>
           </div>
 
-          <!-- Main content - the text that scrolls like an autocue -->
+          <!-- Main content - known : target side by side -->
           <div class="line-content">
-            <!-- English (Known) -->
-            <div class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">
-              {{ item.knownText }}
-            </div>
-
-            <!-- Target language -->
-            <div class="target-text" :class="{
-              active: currentIndex === index && (currentPhase === 'voice1' || currentPhase === 'voice2'),
+            <span class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">{{ item.knownText }}</span>
+            <span class="separator">:</span>
+            <span class="target-text" :class="{
+              'voice1': currentIndex === index && currentPhase === 'voice1',
               'voice2': currentIndex === index && currentPhase === 'voice2'
-            }">
-              {{ item.targetText }}
-            </div>
+            }">{{ item.targetText }}</span>
           </div>
 
           <!-- Phase indicator for current line -->
@@ -676,18 +670,18 @@ export default {
 
 /* Script Track */
 .script-track {
-  padding: 30vh 0;
-  max-width: 800px;
+  padding: 20vh 0;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* Individual Script Lines */
+/* Individual Script Lines - compact */
 .script-line {
-  padding: 24px 32px;
-  margin: 8px 20px;
-  border-radius: 12px;
+  padding: 10px 20px;
+  margin: 2px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -713,27 +707,27 @@ export default {
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* Line Meta */
+/* Line Meta - compact */
 .line-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
-.line-number {
+.line-code {
   font-family: 'SF Mono', Monaco, monospace;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-muted);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .line-type {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
 }
 
 .line-type.introduction { background: #7c3aed20; color: #a78bfa; }
@@ -743,57 +737,65 @@ export default {
 .line-type.review { background: #06b6d420; color: #22d3ee; }
 
 .review-badge {
-  font-size: 10px;
+  font-size: 9px;
   color: #06b6d4;
   font-style: italic;
 }
 
-/* Line Content - The main text */
+/* Line Content - horizontal layout */
 .line-content {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .known-text {
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--text-secondary);
-  line-height: 1.4;
-  transition: all 0.3s;
+  line-height: 1.3;
+  transition: all 0.2s;
 }
 
 .known-text.active {
   color: var(--text-primary);
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.separator {
+  font-size: 14px;
+  color: var(--text-muted);
 }
 
 .target-text {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--accent);
   line-height: 1.3;
-  transition: all 0.3s;
-  opacity: 0.7;
+  transition: all 0.2s;
+  opacity: 0.35;
 }
 
-.target-text.active {
-  opacity: 1;
-  text-shadow: 0 0 30px var(--accent-glow);
+/* Voice 1 - slightly brighter */
+.target-text.voice1 {
+  opacity: 0.6;
 }
 
+/* Voice 2 - full brightness, purple tint */
 .target-text.voice2 {
+  opacity: 1;
   color: #a78bfa;
-  text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
+  text-shadow: 0 0 16px rgba(167, 139, 250, 0.4);
 }
 
-/* Current line only shows in current state */
+/* Current line - boost visibility */
 .script-line.current .known-text {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .script-line.current .target-text {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 /* Phase Indicator */

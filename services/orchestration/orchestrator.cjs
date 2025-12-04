@@ -4506,6 +4506,9 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
         // === INTRODUCE NEW LEGO ===
 
+        // Extract lego number from basketKey (e.g., "S0001L01" -> "01")
+        const legoNum = basketKey.match(/L(\d+)/)?.[1] || '';
+
         // 1. Components first (if M-type)
         for (const comp of components) {
           cycleNum++;
@@ -4515,6 +4518,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
             cycleNum,
             seedId,
             legoKey: basketKey,
+            seedCode: seedId,
+            legoCode: legoNum,
             type: 'component',
             knownText: comp.known,
             targetText: comp.target,
@@ -4535,6 +4540,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
             cycleNum,
             seedId,
             legoKey: basketKey,
+            seedCode: seedId,
+            legoCode: legoNum,
             type: 'debut',
             knownText: debutPhrase.known,
             targetText: debutPhrase.target,
@@ -4556,6 +4563,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
             cycleNum,
             seedId,
             legoKey: basketKey,
+            seedCode: seedId,
+            legoCode: legoNum,
             type: 'practice',
             knownText: phrase.known,
             targetText: phrase.target,
@@ -4600,6 +4609,9 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
           const phraseCount = state.reviewCount === 0 ? FIRST_REP_PHRASES : SUBSEQUENT_PHRASES;
           const reviewPhrases = state.remainingPhrases.splice(0, phraseCount);
 
+          // Extract lego number from reviewKey
+          const reviewLegoNum = reviewKey.match(/L(\d+)/)?.[1] || '';
+
           for (const phrase of reviewPhrases) {
             cycleNum++;
             const audio = getAudioIds(phrase.known, phrase.target);
@@ -4608,6 +4620,8 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
               cycleNum,
               seedId: state.seedId,
               legoKey: reviewKey,
+              seedCode: state.seedId,
+              legoCode: reviewLegoNum,
               type: 'review',
               knownText: phrase.known,
               targetText: phrase.target,
