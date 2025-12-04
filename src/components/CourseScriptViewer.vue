@@ -72,7 +72,7 @@
             <span v-if="item.isNew === false" class="review-badge">rev</span>
           </div>
 
-          <!-- Main content - known : target side by side -->
+          <!-- Main content - known : target side by side with inline phase dots -->
           <div class="line-content">
             <span class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">{{ item.knownText }}</span>
             <span class="separator">:</span>
@@ -80,14 +80,13 @@
               'voice1': currentIndex === index && currentPhase === 'voice1',
               'voice2': currentIndex === index && currentPhase === 'voice2'
             }">{{ item.targetText }}</span>
-          </div>
-
-          <!-- Phase indicator for current line -->
-          <div v-if="currentIndex === index" class="phase-indicator">
-            <span :class="['phase-dot', { active: currentPhase === 'prompt' }]">●</span>
-            <span :class="['phase-dot pause', { active: currentPhase === 'pause' }]">⏸</span>
-            <span :class="['phase-dot', { active: currentPhase === 'voice1' }]">●</span>
-            <span :class="['phase-dot', { active: currentPhase === 'voice2' }]">●</span>
+            <!-- Inline phase dots -->
+            <span v-if="currentIndex === index" class="phase-dots-inline">
+              <span :class="['dot', { active: currentPhase === 'prompt' }]"></span>
+              <span :class="['dot pause', { active: currentPhase === 'pause' }]"></span>
+              <span :class="['dot', { active: currentPhase === 'voice1' }]"></span>
+              <span :class="['dot', { active: currentPhase === 'voice2' }]"></span>
+            </span>
           </div>
         </div>
       </div>
@@ -751,7 +750,7 @@ export default {
 }
 
 .known-text {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.3;
@@ -764,12 +763,12 @@ export default {
 }
 
 .separator {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--text-muted);
 }
 
 .target-text {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 500;
   color: var(--accent);
   line-height: 1.3;
@@ -798,33 +797,30 @@ export default {
   opacity: 0.5;
 }
 
-/* Phase Indicator */
-.phase-indicator {
-  display: flex;
+/* Inline Phase Dots */
+.phase-dots-inline {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #222;
+  gap: 4px;
+  margin-left: 12px;
 }
 
-.phase-dot {
-  font-size: 10px;
-  color: var(--text-muted);
+.phase-dots-inline .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #333;
   transition: all 0.2s;
 }
 
-.phase-dot.active {
-  color: var(--accent);
-  transform: scale(1.5);
+.phase-dots-inline .dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 
-.phase-dot.pause {
-  font-size: 12px;
-}
-
-.phase-dot.pause.active {
-  color: #fbbf24;
+.phase-dots-inline .dot.pause.active {
+  background: #fbbf24;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);
 }
 
 /* Playback Controls */
