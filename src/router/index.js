@@ -38,6 +38,7 @@ import { useAuth } from '../composables/useAuth'
 
 // Production Suite Components
 import MissionControl from '../components/production/dashboard/MissionControl.vue'
+import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
 import AudioPipeline from '../components/production/audio/AudioPipeline.vue'
 
 
@@ -237,9 +238,16 @@ const routes = [
 
   // Production QA Tools
   {
+    path: '/production/:courseCode/qa',
+    name: 'ProductionQA',
+    component: SamplesBrowser,
+    props: true,
+    meta: { title: 'QA Browser' }
+  },
+  {
     path: '/production/:courseCode/samples',
     name: 'SamplesBrowser',
-    component: () => import('@/components/production/qa/SamplesBrowser.vue'),
+    component: SamplesBrowser,
     props: true,
     meta: { title: 'Samples Browser' }
   },
@@ -267,8 +275,20 @@ const routes = [
   // Production Suite Routes
   {
     path: '/production',
-    name: 'MissionControl',
+    name: 'ProductionHome',
+    redirect: '/production/courses'
+  },
+  {
+    path: '/production/courses',
+    name: 'ProductionCourses',
+    component: () => import('@/components/production/CourseSelector.vue'),
+    meta: { title: 'Course Selection - Production Suite' }
+  },
+  {
+    path: '/production/:courseCode',
+    name: 'ProductionDashboard',
     component: MissionControl,
+    props: true,
     meta: { title: 'Mission Control - Course Production Suite' }
   },
   {

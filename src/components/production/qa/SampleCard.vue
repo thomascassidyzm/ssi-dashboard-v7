@@ -14,6 +14,13 @@
     </div>
 
     <div class="card-waveform" @click="togglePlayback">
+      <!-- Hidden audio element for playback -->
+      <audio
+        ref="audioRef"
+        :src="audioUrl"
+        @ended="onAudioEnded"
+        preload="none"
+      />
       <div class="waveform-bars">
         <div
           v-for="(height, i) in waveformBars"
@@ -53,6 +60,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useProductionStore } from '@/stores/production'
 import StatusBadge from './StatusBadge.vue'
 import FlagMenu from './FlagMenu.vue'
 
@@ -62,7 +70,16 @@ const props = defineProps({
 
 const emit = defineEmits(['play', 'pause', 'flagged', 'cleared'])
 
+const store = useProductionStore()
 const isPlaying = ref(false)
+const audioRef = ref(null)
+
+// Construct audio URL based on course and sample UUID
+const audioUrl = computed(() => {
+  const courseCode = store.currentCourseCode
+  if (!courseCode || !props.sample.uuid) return null
+  return `/api/production/${courseCode}/audio/${props.sample.uuid}.mp3`
+})
 
 // Generate fake waveform for visual
 const waveformBars = computed(() => {
@@ -92,8 +109,23 @@ function formatDuration(seconds) {
 }
 
 function togglePlayback() {
-  isPlaying.value = !isPlaying.value
-  emit(isPlaying.value ? 'play' : 'pause', props.sample)
+  if (!audioRef.value) return
+
+  if (isPlaying.value) {
+    audioRef.value.pause()
+    isPlaying.value = false
+    emit('pause', props.sample)
+  } else {
+    audioRef.value.play().catch(err => {
+      console.error('Audio playback failed:', err)
+    })
+    isPlaying.value = true
+    emit('play', props.sample)
+  }
+}
+
+function onAudioEnded() {
+  isPlaying.value = false
 }
 
 function onFlagged(data) {

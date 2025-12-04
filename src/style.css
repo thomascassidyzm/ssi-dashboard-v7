@@ -15,6 +15,24 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Cinematic Dark Palette - Production Suite */
+  --color-void: #0a0b0f;
+  --color-shadow: #16181f;
+  --color-slate: #23262f;
+  --color-graphite: #34384a;
+
+  --color-film-red: #e63946;
+  --color-tungsten: #ffa630;
+  --color-emerald: #06ffa5;
+
+  --color-paper: #f7f7f2;
+  --color-paper-dim: #c1c1bb;
+
+  /* Typography */
+  --font-display: 'Crimson Pro', serif;
+  --font-ui: 'Josefin Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 body {
