@@ -58,7 +58,7 @@ export default {
     _basketsCache: {},
 
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false, stagingOnly = false }) {
-      // APML v9.0: Route Phase 3 (Basket Generation) requests to the basket server
+      // APML v11.0: Route Phase 3 (Basket Generation) requests to the basket server
       // Legacy: 'phase5' selection maintained for backward compatibility (old Phase 5 → new Phase 3)
       if (phaseSelection === 'phase3' || phaseSelection === 'phase5') {
         const courseCode = `${target}_for_${known}`
@@ -971,7 +971,7 @@ export default {
       return response.data
     },
 
-    // APML v9.0: Regenerate Manifest (was Phase 7 in legacy versions)
+    // APML v11.0: Regenerate Manifest (was Phase 7 in legacy versions)
     async regenerateManifest(courseCode) {
       const response = await api.post(`/api/courses/${courseCode}/regenerate/manifest`, {})
       // Clear cache since manifest will be regenerated
@@ -1143,7 +1143,7 @@ export default {
   },
 
   // =============================================================================
-  // APML v9.0: Audio Generation (was Phase 8 in legacy versions)
+  // APML v11.0: Audio Generation (was Phase 8 in legacy versions)
   // =============================================================================
 
   // Get available voices from voices.json (for voice selection UI)

@@ -1,16 +1,17 @@
-# SSi Course Production Dashboard v10.2.0
+# SSi Course Production Dashboard v11.0.0
 
-**APML v10.2: Supabase-Backed Audio Pipeline**
+**APML v11.0: Audio-First Supabase Pipeline**
 
 ## Overview
 
 Course production dashboard for SSi language learning system. Course content lives in S3, audio samples are managed via Supabase.
 
-**v10.2 Features:**
+**v11.0 Features:**
+- **Audio-first workflow**: Generate audio from lego_baskets BEFORE manifest compilation
 - **Supabase** as Master Audio Registry (MAR) - source of truth for audio samples
+- **Deterministic UUID**: hash(voice_id|text|lang|role|cadence) for cross-course deduplication
 - S3 for course data and audio file storage
-- Audio generated directly from baskets (Phase 8)
-- Manifest compiled last by looking up UUIDs from Supabase (Phase 9)
+- Manifest compiled LAST after all audio exists (Phase 9)
 - QA workflow with sample flagging and real-time status
 - LEGO Debut cycle in basket generation
 - API proxy for course files (avoids CORS)
@@ -39,7 +40,7 @@ AWS_REGION=eu-west-1
 
 ## Architecture
 
-### Data Flow (APML v10.2)
+### Data Flow (APML v11.0)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

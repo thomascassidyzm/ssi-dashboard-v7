@@ -3,7 +3,7 @@
 **Last Updated:** 2025-12-04
 **Status:** Working ✅
 **Architecture:** Microservices + Supabase Audio Pipeline + S3 Storage
-**APML Version:** v10.2
+**APML Version:** v11.0
 **Pipeline Version:** v2.0 (Supabase-backed)
 
 ---

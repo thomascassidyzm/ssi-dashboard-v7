@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-12-04 | APML v10.2 | Status: Current definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-12-04 | APML v11.0 | Status: Current definitions</p>
       </div>
 
       <!-- Quick Reference -->
@@ -31,7 +31,7 @@
             </ul>
           </div>
           <div>
-            <p class="text-blue-400 font-semibold mb-2">Storage (v10.2)</p>
+            <p class="text-blue-400 font-semibold mb-2">Storage (v11.0)</p>
             <ul class="text-slate-300 space-y-1">
               <li>• lego_baskets.json (Phase 3)</li>
               <li>• Supabase audio_samples (Phase 8)</li>
@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="mt-3 bg-amber-900/20 border border-amber-500/50 rounded p-3">
-            <p class="text-xs text-amber-300"><strong>v9.0 Change:</strong> seed_pairs.json is now embedded in lego_pairs.json. Seeds are stored alongside their extracted LEGOs.</p>
+            <p class="text-xs text-amber-300"><strong>v11.0 Change:</strong> seed_pairs.json is now embedded in lego_pairs.json. Seeds are stored alongside their extracted LEGOs.</p>
           </div>
         </div>
 
@@ -162,7 +162,7 @@
             </div>
           </div>
           <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
-            <p class="text-xs text-teal-300"><strong>v9.0 Pipeline:</strong> Phase 1 outputs draft_lego_pairs.json (may have conflicts). Phase 2 resolves conflicts via upchunking, producing lego_pairs.json (SINGLE SOURCE OF TRUTH).</p>
+            <p class="text-xs text-teal-300"><strong>v11.0 Pipeline:</strong> Phase 1 outputs draft_lego_pairs.json (may have conflicts). Phase 2 resolves conflicts via upchunking, producing lego_pairs.json (SINGLE SOURCE OF TRUTH).</p>
           </div>
         </div>
 
@@ -339,7 +339,7 @@
 
         <!-- Upchunking -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-          <h3 class="text-lg font-semibold text-amber-300 mb-3">UPCHUNKING (v9.0)</h3>
+          <h3 class="text-lg font-semibold text-amber-300 mb-3">UPCHUNKING (v11.0)</h3>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Definition:</span>
@@ -406,7 +406,7 @@
             </div>
           </div>
           <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
-            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v10.0.0, introduction generation is integrated into Phase 1 and runs automatically during LEGO extraction.</p>
+            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v11.0, introduction generation is integrated into Phase 1 and runs automatically during LEGO extraction.</p>
           </div>
         </div>
       </section>
@@ -451,12 +451,12 @@
             <li>❌ <strong>"Lessons"</strong> → Use <span class="text-emerald-400">LEGO_BASKETS</span></li>
           </ul>
 
-          <p class="text-sm text-red-300 mb-4 font-semibold">Files (v9.0 Changes)</p>
+          <p class="text-sm text-red-300 mb-4 font-semibold">Files (v11.0 Changes)</p>
           <ul class="space-y-2 text-slate-200 mb-6">
             <li>❌ <strong>seed_pairs.json</strong> → Now embedded in <span class="text-emerald-400">lego_pairs.json</span></li>
           </ul>
 
-          <p class="text-sm text-red-300 mb-4 font-semibold">Phase Numbers (v10.2 - Supabase Pipeline)</p>
+          <p class="text-sm text-red-300 mb-4 font-semibold">Phase Numbers (v11.0 - Supabase Pipeline)</p>
           <ul class="space-y-2 text-slate-200">
             <li>❌ <strong>Phase 7 (Old Manifest)</strong> → Now <span class="text-emerald-400">Phase 9 (Supabase)</span></li>
             <li>❌ <strong>JSON MAR (audio_index.json)</strong> → Now <span class="text-emerald-400">Supabase audio_samples table</span></li>
@@ -464,11 +464,11 @@
             <li>✅ <strong>Phase 9 (Manifest)</strong> → <span class="text-emerald-400">Port 3466 (compiles from Supabase)</span></li>
           </ul>
 
-          <p class="text-sm text-teal-300 mt-4 mb-2 font-semibold">Current Pipeline (v10.2)</p>
+          <p class="text-sm text-teal-300 mt-4 mb-2 font-semibold">Current Pipeline (v11.0)</p>
           <ul class="space-y-1 text-slate-200 text-sm">
             <li>• <strong>Phase 1-3:</strong> Content generation (unchanged)</li>
-            <li>• <strong>Phase 8:</strong> Audio generation → Supabase + S3</li>
-            <li>• <strong>Phase 9:</strong> Manifest compilation from Supabase</li>
+            <li>• <strong>Phase 8:</strong> Audio generation → Supabase + S3 (audio-first)</li>
+            <li>• <strong>Phase 9:</strong> Manifest compilation from Supabase (compiled LAST)</li>
           </ul>
         </div>
       </section>

@@ -1,0 +1,58 @@
+{
+  "version": "11.0.0",
+  "course_code": "spa_for_eng",
+  "generated_at": "2025-12-04T12:00:00Z",
+  "baskets": {
+    "S0042L01": {
+      "lego_id": "S0042L01",
+      "seed_id": "S0042",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I want to",
+        "target": "quiero"
+      },
+      "components": [
+        { "id": "S0042L01-C01", "known": "I", "target": "yo" },
+        { "id": "S0042L01-C02", "known": "want", "target": "quiero" }
+      ],
+      "debut": {
+        "id": "S0042L01-DEB0",
+        "known": "I want to",
+        "target": "quiero"
+      },
+      "practice_phrases": [
+        { "id": "S0042L01-P001", "known": "I want water", "target": "quiero agua" },
+        { "id": "S0042L01-P002", "known": "I want to eat", "target": "quiero comer" },
+        { "id": "S0042L01-P003", "known": "I want to learn Spanish", "target": "quiero aprender español" }
+      ],
+      "eternal_phrases": [
+        { "id": "S0042L01-E001", "known": "I want to go home", "target": "quiero ir a casa" },
+        { "id": "S0042L01-E002", "known": "I want to see you", "target": "quiero verte" }
+      ]
+    },
+    "S0042L02": {
+      "lego_id": "S0042L02",
+      "seed_id": "S0042",
+      "type": "A",
+      "new": false,
+      "lego": {
+        "known": "to learn",
+        "target": "aprender"
+      },
+      "components": [],
+      "debut": {
+        "id": "S0042L02-DEB0",
+        "known": "to learn",
+        "target": "aprender"
+      },
+      "practice_phrases": [
+        { "id": "S0042L02-P001", "known": "to learn quickly", "target": "aprender rápido" },
+        { "id": "S0042L02-P002", "known": "to learn Spanish", "target": "aprender español" }
+      ],
+      "eternal_phrases": [
+        { "id": "S0042L02-E001", "known": "to learn to cook", "target": "aprender a cocinar" }
+      ]
+    }
+  }
+}

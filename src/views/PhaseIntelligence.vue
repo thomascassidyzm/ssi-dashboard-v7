@@ -142,26 +142,26 @@ import manifestRaw from '../../public/docs/phase_intelligence/manifest_compilati
 import audioRaw from '../../public/docs/phase_intelligence/audio_generation.md?raw'
 
 const phaseContent = {
-  '1': phase1Raw || `# Phase 1: Translation + LEGO Extraction\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 1 translates canonical seeds and extracts LEGOs in a single pass.\n\n## Output\n\n- draft_lego_pairs.json (may contain conflicts)\n\n## Key Concepts\n\n- Seed pairs embedded in lego_pairs.json (no separate seed_pairs.json)\n- A-type LEGOs: Atomic, single word either side\n- M-type LEGOs: Molecular, 2+ words both sides, teaches pattern\n\nSee APML v10.0 specification for full details.`,
-  '2': phase2Raw || `# Phase 2: Conflict Resolution\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 2 resolves KNOWN->TARGET conflicts through upchunking.\n\n## Input\n\n- draft_lego_pairs.json (from Phase 1)\n\n## Output\n\n- lego_pairs.json (SINGLE SOURCE OF TRUTH - conflict-free)\n- upchunk_resolutions.json (record of conflict resolutions)\n\n## Key Concepts\n\n- Upchunking: Creating M-types to resolve KNOWN->TARGET conflicts\n- All conflicts must be resolved before Phase 3\n\nSee APML v10.0 specification for full details.`,
-  '3': phase3Raw || `# Phase 3: Basket Generation\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 3 generates practice baskets from conflict-free LEGOs.\n\n## Input\n\n- lego_pairs.json (from Phase 2)\n\n## Output\n\n- lego_baskets.json\n\n## Key Properties\n\n- One basket per new LEGO\n- 10 phrases per basket (progressive complexity)\n- Only uses previously-learned LEGOs\n\nSee APML v10.0 specification for full details.`,
-  'manifest': manifestRaw || `# Manifest: Course Compilation\n\n**Version**: 9.0.0\n**Status**: Script\n\n## Overview\n\nCompiles phase outputs into final course manifest for audio generation.\n\n## Input\n\n- lego_pairs.json\n- lego_baskets.json\n- introductions.json\n\n## Output\n\n- course_manifest.json\n\nSee APML v10.0 specification for full details.`,
-  'audio': audioRaw || `# Audio: TTS Generation\n\n**Version**: 9.0.0\n**Status**: Separate\n\n## Overview\n\nGenerates audio files from course manifest using TTS services.\n\n## Input\n\n- course_manifest.json\n\n## Output\n\n- audio/*.mp3 files\n\n## Notes\n\n- Handled by Kai (separate process)\n- Uses Azure TTS / ElevenLabs\n\nSee APML v10.0 specification for full details.`
+  '1': phase1Raw || `# Phase 1: Translation + LEGO Extraction\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 1 translates canonical seeds and extracts LEGOs in a single pass.\n\n## Output\n\n- draft_lego_pairs.json (may contain conflicts)\n\n## Key Concepts\n\n- Seed pairs embedded in lego_pairs.json (no separate seed_pairs.json)\n- A-type LEGOs: Atomic, single word either side\n- M-type LEGOs: Molecular, 2+ words both sides, teaches pattern\n\nSee APML v11.0 specification for full details.`,
+  '2': phase2Raw || `# Phase 2: Conflict Resolution\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 2 resolves KNOWN->TARGET conflicts through upchunking.\n\n## Input\n\n- draft_lego_pairs.json (from Phase 1)\n\n## Output\n\n- lego_pairs.json (SINGLE SOURCE OF TRUTH - conflict-free)\n- upchunk_resolutions.json (record of conflict resolutions)\n\n## Key Concepts\n\n- Upchunking: Creating M-types to resolve KNOWN->TARGET conflicts\n- All conflicts must be resolved before Phase 3\n\nSee APML v11.0 specification for full details.`,
+  '3': phase3Raw || `# Phase 3: Basket Generation\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 3 generates practice baskets from conflict-free LEGOs.\n\n## Input\n\n- lego_pairs.json (from Phase 2)\n\n## Output\n\n- lego_baskets.json\n\n## Key Properties\n\n- One basket per new LEGO\n- 10 phrases per basket (progressive complexity)\n- Only uses previously-learned LEGOs\n\nSee APML v11.0 specification for full details.`,
+  'manifest': manifestRaw || `# Manifest: Course Compilation\n\n**Version**: 11.0.0\n**Status**: Script\n\n## Overview\n\nAudio-first workflow: Generate audio from lego_baskets BEFORE manifest compilation.\n\n## Input\n\n- lego_baskets.json (audio generation)\n- Supabase audio_samples table (manifest compilation)\n\n## Output\n\n- course_manifest.json (compiled LAST after all audio exists)\n\n## Key v11.0 Changes\n\n- Audio-first: TTS generation happens BEFORE manifest\n- Supabase: Audio metadata stored in database (not file-based MAR)\n- Deterministic UUID: hash(voice_id|text|lang|role|cadence)\n\nSee APML v11.0 specification for full details.`,
+  'audio': audioRaw || `# Audio: TTS Generation\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nGenerates audio files from lego_baskets using Supabase-backed pipeline.\n\n## Key v11.0 Changes\n\n- Audio-first: Generate BEFORE manifest compilation\n- Reads directly from lego_baskets.json (not manifest)\n- Stores in Supabase audio_samples table + S3\n- Deterministic UUID for cross-course deduplication\n\n## Input\n\n- lego_baskets.json\n\n## Output\n\n- S3: mastered/{uuid}.mp3 files\n- Supabase: audio_samples table records\n\n## Notes\n\n- Port 3465 (Phase 8 Audio Generator)\n- Supabase replaces file-based MAR\n\nSee APML v11.0 specification for full details.`
 }
 
 const phases = [
-  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '9.0.0', locked: true },
-  { id: '2', name: 'Conflict Resolution', status: 'active', version: '9.0.0', locked: true },
-  { id: '3', name: 'Basket Generation', status: 'active', version: '9.0.0', locked: true },
-  { id: 'manifest', name: 'Course Compilation', status: 'active', version: '9.0.0', locked: true },
-  { id: 'audio', name: 'TTS Generation', status: 'documented', version: '9.0.0' }
+  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '11.0.0', locked: true },
+  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true },
+  { id: '3', name: 'Basket Generation', status: 'active', version: '11.0.0', locked: true },
+  { id: 'manifest', name: 'Course Compilation', status: 'active', version: '11.0.0', locked: true },
+  { id: 'audio', name: 'TTS Generation', status: 'active', version: '11.0.0', locked: true }
 ]
 
 const selectedPhase = ref('1')
 const intelligence = ref('')
 
 const activePhases = computed(() => {
-  // Show all phases (no deprecated phases in v9.0)
+  // Show all phases (no deprecated phases in v11.0)
   return phases
 })
 

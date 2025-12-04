@@ -388,4 +388,4 @@ Azure and ElevenLabs have rate limits. Phase 8 handles this with:
 
 **Last Updated:** 2025-12-04
 **Version:** 2.0 (Supabase-backed)
-**APML:** v10.2
+**APML:** v11.0
