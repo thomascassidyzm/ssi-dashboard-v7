@@ -175,17 +175,25 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
-import { initWebSocket, joinCourseRoom, disconnectWebSocket } from '@/services/websocket'
+import { initWebSocket, joinCourseRoom, leaveCourseRoom, disconnectWebSocket } from '@/services/websocket'
 import ProgressRing from './ProgressRing.vue'
 import BlockerCard from './BlockerCard.vue'
+
+const props = defineProps({
+  courseCode: {
+    type: String,
+    default: null
+  }
+})
 
 const router = useRouter()
 const store = useProductionStore()
 
-const currentCourseCode = ref(null)
+// Use prop if provided, otherwise use internal state
+const currentCourseCode = ref(props.courseCode || null)
 const lastUpdateTime = ref('just now')
 
 // Available courses (would come from API in real app)
@@ -319,12 +327,34 @@ function navigateTo(tool) {
 }
 
 // Lifecycle
-onMounted(() => {
+onMounted(async () => {
   initWebSocket()
+
+  // If courseCode prop is provided, load it immediately
+  if (props.courseCode) {
+    currentCourseCode.value = props.courseCode
+    await store.loadCourse(props.courseCode)
+    joinCourseRoom(props.courseCode)
+  }
 })
 
 onUnmounted(() => {
+  if (currentCourseCode.value) {
+    leaveCourseRoom(currentCourseCode.value)
+  }
   disconnectWebSocket()
+})
+
+// Watch for courseCode prop changes
+watch(() => props.courseCode, async (newCode, oldCode) => {
+  if (newCode && newCode !== oldCode) {
+    if (oldCode) {
+      leaveCourseRoom(oldCode)
+    }
+    currentCourseCode.value = newCode
+    await store.loadCourse(newCode)
+    joinCourseRoom(newCode)
+  }
 })
 </script>
 
