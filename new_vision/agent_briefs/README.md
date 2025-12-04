@@ -4,6 +4,8 @@ This folder contains standalone briefs for each Master Agent building the Course
 
 ## Execution Order
 
+### Phase 1: UI Components (COMPLETE)
+
 ```
 MASTER 1 (Infrastructure) ──────────────────┐
          │                                   │
@@ -18,33 +20,67 @@ MASTER 2  MASTER 3    MASTER 4              │
     └─────────┴────────────┘                │
               │                              │
               ▼                              │
-         MERGE TO MAIN ◄────────────────────┘
+         MERGE TO MAIN ◄────────────────────┘  ✓ DONE
+```
+
+### Phase 2: Backend Integration (CURRENT)
+
+```
+    ┌─────────────────────────────────┐
+    │                                 │
+    ▼                                 ▼
+AGENT 5                           AGENT 6
+(Backend)                         (Frontend)
+    │                                 │
+    ├─ Production API                 ├─ Router setup
+    ├─ WebSocket server               ├─ API client calls
+    └─ Flag persistence               └─ WebSocket wiring
+    │                                 │
+    └─────────────┬───────────────────┘
+                  │
+                  ▼
+             MERGE TO MAIN
 ```
 
 ## Brief Files
 
+### Phase 1 (Complete)
+
+| File | Agent | Focus | Status |
+|------|-------|-------|--------|
+| `MASTER_AGENT_1_INFRASTRUCTURE.md` | Master 1 | Pinia store, S3 service, API, WebSocket | ✓ Merged |
+| `MASTER_AGENT_2_QA_WORKFLOW.md` | Master 2 | Script Viewer, Samples Browser, FlagMenu | ✓ Merged |
+| `MASTER_AGENT_3_AUDIO_PRODUCTION.md` | Master 3 | Mission Control, Audio Pipeline | ✓ Merged |
+| `MASTER_AGENT_4_AUTOCUE_RECORDING.md` | Master 4 | Autocue Studio, Teleprompter, Recording | ✓ Merged |
+
+### Phase 2 (Current)
+
 | File | Agent | Focus | Dependencies |
 |------|-------|-------|--------------|
-| `MASTER_AGENT_1_INFRASTRUCTURE.md` | Master 1 | Pinia store, S3 service, API, WebSocket | None (start first) |
-| `MASTER_AGENT_2_QA_WORKFLOW.md` | Master 2 | Script Viewer, Samples Browser, FlagMenu | Master 1 |
-| `MASTER_AGENT_3_AUDIO_PRODUCTION.md` | Master 3 | Mission Control, Audio Pipeline | Master 1 |
-| `MASTER_AGENT_4_AUTOCUE_RECORDING.md` | Master 4 | Autocue Studio, Teleprompter, Recording | Master 1 |
+| `AGENT_5_BACKEND_INTEGRATION.md` | Agent 5 | Production API, WebSocket server, Flag persistence | None (can start) |
+| `AGENT_6_FRONTEND_WIRING.md` | Agent 6 | Router, API calls, WebSocket subscription | None (can start in parallel) |
 
 ## For Master Orchestrator
 
-1. Launch **Master 1** first and wait for PR
-2. Review and merge Master 1's PR to main
-3. Launch **Masters 2, 3, 4** in parallel
-4. Review PRs as they come in
-5. Merge in any order (they don't conflict)
-6. Final integration test after all merged
+### Phase 2 Instructions
+
+1. Launch **Agent 5** and **Agent 6** in parallel
+2. They can work independently - API contract already defined
+3. Review PRs as they come in
+4. Merge in any order
+5. Final integration test after both merged
 
 ## Branch Names
 
-- `feature/production-suite-infrastructure` (Master 1)
-- `feature/production-suite-qa` (Master 2)
-- `feature/production-suite-audio` (Master 3)
-- `feature/autocue-recording` (Master 4)
+### Phase 1 (Merged)
+- `claude/master-agent-1-infrastructure-*` ✓
+- `claude/review-qa-workflow-brief-*` ✓
+- `claude/audio-production-tools-*` ✓
+- `claude/autocue-recording-system-*` ✓
+
+### Phase 2 (Current)
+- `feature/production-backend-integration` (Agent 5)
+- `feature/production-frontend-wiring` (Agent 6)
 
 ## Design Reference
 
