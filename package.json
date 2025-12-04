@@ -20,6 +20,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
     "@aws-sdk/client-s3": "^3.929.0",
+    "@aws-sdk/s3-request-presigner": "^3.943.0",
     "@octokit/rest": "^22.0.1",
     "ajv": "^8.17.1",
     "aws-sdk": "^2.1692.0",
@@ -30,6 +31,9 @@
     "http-proxy-middleware": "^3.0.5",
     "idb": "^8.0.3",
     "microsoft-cognitiveservices-speech-sdk": "^1.46.0",
+    "pinia": "^3.0.4",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "uuid": "^13.0.0",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1",

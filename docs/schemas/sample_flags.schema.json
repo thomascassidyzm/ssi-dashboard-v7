@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sample Flags",
+  "description": "QA decisions and status tracking for course samples",
+  "type": "object",
+  "properties": {
+    "courseCode": {
+      "type": "string",
+      "description": "Course identifier (e.g., spa_for_eng)"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "samples": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "flagged_regen_tts",
+              "flagged_human_needed",
+              "in_pipeline",
+              "in_recording",
+              "needs_review",
+              "approved",
+              "rejected"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason for flagging"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes from reviewer"
+          },
+          "flaggedBy": {
+            "type": "string",
+            "description": "User who flagged the sample"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": { "type": "string" },
+                "reason": { "type": "string" },
+                "timestamp": { "type": "string", "format": "date-time" },
+                "by": { "type": "string" }
+              }
+            }
+          }
+        },
+        "required": ["status"]
+      }
+    }
+  },
+  "required": ["courseCode", "samples"]
+}
