@@ -508,6 +508,12 @@ async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target
         continue;
       }
 
+      // Skip if variant already has a UUID assigned (from analysis phase)
+      if (variant.id) {
+        assigned++;
+        continue;
+      }
+
       const voiceId = voiceAssignments[variant.role];
       if (!voiceId) {
         console.warn(`No voice assigned for role: ${variant.role}`);
@@ -531,26 +537,43 @@ async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target
         variant.duration = existing.duration || 0;
         assigned++;
       } else {
-        // Not in MAR - generate the deterministic UUID and check other sources
-        const expectedUUID = uuidService.generateSampleUUID(text, language, variant.role, variant.cadence);
+        // Not in MAR - check if variant already has a UUID (from manifest) or generate one
+        const existingUUID = variant.id;
+        const expectedUUID = uuidService.generateSampleUUID(text, language, variant.role, variant.cadence, voiceId);
 
-        if (localUUIDs.has(expectedUUID)) {
-          // Found in local temp files!
-          variant.id = expectedUUID;
-          try {
-            const filePath = path.join(AUDIO_TEMP_DIR, `${expectedUUID}.mp3`);
-            const stats = await fs.stat(filePath);
-            variant.duration = Math.round(stats.size / 2000 * 10) / 10;
-          } catch (e) {
-            variant.duration = 0;
+        // Check both the existing UUID (if any) and the expected UUID
+        const uuidsToCheck = existingUUID ? [existingUUID, expectedUUID] : [expectedUUID];
+        let foundUUID = null;
+        let foundIn = null;
+
+        for (const uuid of uuidsToCheck) {
+          if (localUUIDs.has(uuid) || localUUIDs.has(uuid.toUpperCase())) {
+            foundUUID = uuid;
+            foundIn = 'local';
+            break;
           }
-          foundLocal++;
-          assigned++;
-        } else if (s3UUIDs.has(expectedUUID) || s3UUIDs.has(expectedUUID.toUpperCase())) {
-          // Found in S3 index!
-          variant.id = expectedUUID;
-          variant.duration = 0; // Duration unknown from index
-          foundS3++;
+          if (s3UUIDs.has(uuid) || s3UUIDs.has(uuid.toUpperCase())) {
+            foundUUID = uuid;
+            foundIn = 's3';
+            break;
+          }
+        }
+
+        if (foundUUID) {
+          variant.id = foundUUID;
+          if (foundIn === 'local') {
+            try {
+              const filePath = path.join(AUDIO_TEMP_DIR, `${foundUUID}.mp3`);
+              const stats = await fs.stat(filePath);
+              variant.duration = Math.round(stats.size / 2000 * 10) / 10;
+            } catch (e) {
+              variant.duration = 0;
+            }
+            foundLocal++;
+          } else {
+            variant.duration = 0; // Duration unknown from S3 index
+            foundS3++;
+          }
           assigned++;
         } else {
           missing++;
