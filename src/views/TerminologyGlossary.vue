@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-24 | APML v10.0.0 | Status: Current definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-12-04 | APML v10.2 | Status: Current definitions</p>
       </div>
 
       <!-- Quick Reference -->
@@ -31,12 +31,12 @@
             </ul>
           </div>
           <div>
-            <p class="text-blue-400 font-semibold mb-2">Storage Format (v9.0)</p>
+            <p class="text-blue-400 font-semibold mb-2">Storage (v10.2)</p>
             <ul class="text-slate-300 space-y-1">
-              <li>• draft_lego_pairs.json (Phase 1)</li>
-              <li>• lego_pairs.json (Phase 2 - SSoT)</li>
-              <li>• upchunk_resolutions.json</li>
-              <li>• lego_baskets.json</li>
+              <li>• lego_baskets.json (Phase 3)</li>
+              <li>• Supabase audio_samples (Phase 8)</li>
+              <li>• course_manifest.json (Phase 9)</li>
+              <li>• S3 mastered/{uuid}.mp3</li>
             </ul>
           </div>
         </div>
@@ -456,14 +456,19 @@
             <li>❌ <strong>seed_pairs.json</strong> → Now embedded in <span class="text-emerald-400">lego_pairs.json</span></li>
           </ul>
 
-          <p class="text-sm text-red-300 mb-4 font-semibold">Phase Numbers (v9.0 Renumbering)</p>
+          <p class="text-sm text-red-300 mb-4 font-semibold">Phase Numbers (v10.2 - Supabase Pipeline)</p>
           <ul class="space-y-2 text-slate-200">
-            <li>❌ <strong>Phase 3 (LEGO Extraction)</strong> → Now <span class="text-emerald-400">Phase 1</span></li>
-            <li>❌ <strong>Phase 5 (Baskets)</strong> → Now <span class="text-emerald-400">Phase 3</span></li>
-            <li>❌ <strong>Phase 5.5 (Grammar Validation)</strong> → <span class="text-amber-400">Removed</span></li>
-            <li>❌ <strong>Phase 6 (Introductions)</strong> → Integrated into <span class="text-emerald-400">Phase 1</span></li>
-            <li>❌ <strong>Phase 7 (Compilation)</strong> → Now <span class="text-emerald-400">Manifest</span> (script)</li>
-            <li>❌ <strong>Phase 8 (Audio)</strong> → Now <span class="text-emerald-400">Audio</span> (separate)</li>
+            <li>❌ <strong>Phase 7 (Old Manifest)</strong> → Now <span class="text-emerald-400">Phase 9 (Supabase)</span></li>
+            <li>❌ <strong>JSON MAR (audio_index.json)</strong> → Now <span class="text-emerald-400">Supabase audio_samples table</span></li>
+            <li>✅ <strong>Phase 8 (Audio)</strong> → <span class="text-emerald-400">Port 3465 (Supabase-backed)</span></li>
+            <li>✅ <strong>Phase 9 (Manifest)</strong> → <span class="text-emerald-400">Port 3466 (compiles from Supabase)</span></li>
+          </ul>
+
+          <p class="text-sm text-teal-300 mt-4 mb-2 font-semibold">Current Pipeline (v10.2)</p>
+          <ul class="space-y-1 text-slate-200 text-sm">
+            <li>• <strong>Phase 1-3:</strong> Content generation (unchanged)</li>
+            <li>• <strong>Phase 8:</strong> Audio generation → Supabase + S3</li>
+            <li>• <strong>Phase 9:</strong> Manifest compilation from Supabase</li>
           </ul>
         </div>
       </section>

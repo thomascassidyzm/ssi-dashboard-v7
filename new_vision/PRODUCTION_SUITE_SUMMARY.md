@@ -2,8 +2,9 @@
 
 **Comprehensive Architecture Design**
 
-Version: 1.0.0
+Version: 2.0.0
 Date: 2025-12-04
+Pipeline: Supabase-backed (APML v10.2)
 
 ---
 
@@ -119,23 +120,27 @@ Open in any web browser for a styled, visual representation of the architecture.
 
 ## Key Architectural Decisions
 
-### 1. S3 as Single Source of Truth
+### 1. Supabase + S3 as Single Source of Truth
 
 **Why:**
-- No database synchronization issues
-- Simple versioning (S3 versioning built-in)
-- Easy backups and disaster recovery
-- Serverless-friendly architecture
+- Supabase for audio registry and QA workflow (structured queries, realtime updates)
+- S3 for course files and audio storage (scalable, cost-effective)
+- Proper database with RLS, audit trails, and realtime subscriptions
+- Cross-course audio deduplication via Supabase
 
-**Files:**
+**Storage:**
 ```
-courses/{code}/
-  ├── course_manifest.json      (Phase 7 output - read-only)
-  ├── sample_flags.json          (QA decisions - read/write)
-  └── audio_metadata.json        (generated audio info)
+Supabase:
+  ├── audio_samples              (Master Audio Registry - MAR)
+  ├── sample_flags               (QA decisions - read/write)
+  ├── voices                     (TTS & human voice registry)
+  └── course_audio_usage         (cross-course deduplication)
 
-ssiborg-assets/mastered/
-  └── {uuid}.mp3                 (all audio files)
+S3 (popty-bach-lfs):
+  ├── courses/{code}/
+  │   ├── lego_baskets.json      (Phase 3 output)
+  │   └── course_manifest.json   (Phase 9 output)
+  └── ssiborg-assets/mastered/{uuid}.mp3 (all audio files)
 ```
 
 ---

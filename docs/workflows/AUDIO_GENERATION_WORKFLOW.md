@@ -1,29 +1,128 @@
-# Audio Generation Workflow
+# Audio Generation Workflow (v2.0 - Supabase)
 
 ## Overview
 
-Audio generation creates TTS samples for language courses using Azure Speech and ElevenLabs APIs. This document describes the complete workflow from pre-generation to post-generation validation.
+Audio generation creates TTS samples for language courses using Azure Speech and ElevenLabs APIs. This document describes the complete workflow using the **Supabase-backed audio pipeline** (Phase 8 & 9).
+
+**Key Change:** Audio samples are now stored in Supabase (`audio_samples` table), not JSON files. Manifests are compiled last by looking up UUIDs from Supabase.
 
 ## Architecture Summary
 
+### Pipeline Flow
+
+```
+lego_baskets.json
+       ↓
+Phase 8: Audio Generation (Port 3465)
+       ↓
+┌──────────────────────────────────────┐
+│  For each unique (text, lang, role): │
+│    1. UUID = hash(voice|text|...)    │
+│    2. Check Supabase - exists? SKIP  │
+│    3. Generate TTS (Azure/ElevenLabs)│
+│    4. Upload to S3                   │
+│    5. Insert into Supabase           │
+└──────────────────────────────────────┘
+       ↓
+Supabase audio_samples table + S3 files
+       ↓
+Phase 9: Manifest Compilation (Port 3466)
+       ↓
+┌──────────────────────────────────────┐
+│  For each sample needed:             │
+│    1. Query Supabase by text+role    │
+│    2. Get UUID + duration            │
+│    3. Build manifest entry           │
+│                                      │
+│  Validation: 100% audio coverage     │
+│    YES → write course_manifest.json  │
+│    NO  → fail with missing list      │
+└──────────────────────────────────────┘
+       ↓
+course_manifest.json (to S3)
+```
+
 ### Key Components
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| Main script | `scripts/phase8-audio-generation.cjs` | Orchestrates generation |
-| Pre-flight checks | `services/preflight-check-service.cjs` | Validates credentials/tools with auto-fix |
-| MAR Service | `services/mar-service.cjs` | Master Audio Registry for cross-course reuse |
-| Encouragement Service | `services/encouragement-service.cjs` | Manages encouragement audio |
-| Welcome Service | `services/welcome-service.cjs` | Manages course welcome audio |
-| S3 Service | `services/s3-service.cjs` | Audio upload/download |
-| Deduplication | `scripts/manifest-deduplication.cjs` | Pre-generation sample cleanup |
-| Repopulation | `scripts/manifest-repopulation.cjs` | Post-generation variant restoration + MAR matching |
-| Duration Extraction | `scripts/extract-s3-durations-parallel.cjs` | S3 existence + duration check |
-| Format Validation | `tools/validators/manifest-structure-validator.cjs` | Final structure validation |
+| Component | Port | Description |
+|-----------|------|-------------|
+| Phase 8 Audio Generator | 3465 | TTS generation → Supabase + S3 |
+| Phase 9 Manifest Compiler | 3466 | Manifest compilation from Supabase |
+| Production API | 3470 | QA workflow + WebSocket |
 
-### Sample Roles and Types
+### Supabase Tables
 
-Audio generation produces four types of samples, organized by **role**:
+| Table | Purpose |
+|-------|---------|
+| `voices` | TTS and human voice registry |
+| `audio_samples` | Master Audio Registry (MAR) |
+| `course_audio_usage` | Which courses use which audio |
+| `sample_flags` | QA workflow state |
+
+### S3 Buckets
+
+| Bucket | Purpose |
+|--------|---------|
+| `popty-bach-lfs` | Course files (lego_baskets.json, course_manifest.json) |
+| `ssiborg-assets` | Audio files (mastered/{uuid}.mp3) |
+
+---
+
+## Environment Setup
+
+### Required Environment Variables
+
+```bash
+# Supabase Configuration
+SUPABASE_URL=https://xxxxx.supabase.co
+SUPABASE_SERVICE_KEY=sb_secret_xxxxx
+
+# TTS APIs
+AZURE_SPEECH_KEY=xxxxx
+AZURE_SPEECH_REGION=westeurope
+ELEVENLABS_API_KEY=xxxxx
+
+# S3 Configuration
+AWS_ACCESS_KEY_ID=xxxxx
+AWS_SECRET_ACCESS_KEY=xxxxx
+AWS_REGION=eu-west-1
+```
+
+### Supabase Setup
+
+1. Create a Supabase project at https://supabase.com
+2. Run the schema migrations in `supabase/migrations/`
+3. Copy the project URL and service key to `.env`
+
+---
+
+## Phase 8: Audio Generation
+
+### Starting the Service
+
+```bash
+node services/phases/phase8-audio-supabase.cjs
+```
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/generate` | Start audio generation for a course |
+| GET | `/status/:courseCode` | Check job status |
+| GET | `/health` | Health check |
+
+### Generation Flow
+
+1. **Load baskets** - Read `lego_baskets.json` from S3
+2. **Extract samples** - Collect all unique (text, language, role) combinations
+3. **Check Supabase** - For each sample, check if it already exists
+4. **Generate TTS** - For missing samples, generate audio via Azure/ElevenLabs
+5. **Upload to S3** - Store audio file in `ssiborg-assets/mastered/{uuid}.mp3`
+6. **Insert to Supabase** - Create record in `audio_samples` table
+7. **Track usage** - Record course-to-sample relationship in `course_audio_usage`
+
+### Sample Roles
 
 | Role | Language | Voice | Cadence | Purpose |
 |------|----------|-------|---------|---------|
@@ -32,352 +131,154 @@ Audio generation produces four types of samples, organized by **role**:
 | `source` | Source (e.g., English) | ElevenLabs | natural | Translations/prompts |
 | `presentation` | Source (e.g., English) | ElevenLabs | natural | Introductory narration |
 
-**Phase A** generates target1, target2, and source samples (simple TTS).
+### UUID Generation
 
-**Phase B** generates presentation samples (composite audio combining narration + target clips).
+UUIDs are deterministic hashes of:
+- voice_id
+- normalized text (lowercase, trimmed)
+- language code
+- role
+- cadence
 
-**Cadence** controls playback speed:
-- `slow` - Slowed down for learner comprehension (applied via time-stretch)
-- `natural` - Normal speaking pace
+This ensures the same text+voice always produces the same UUID, enabling cross-course deduplication.
 
-### S3 Buckets
+### Example Request
 
-| Bucket | Purpose |
-|--------|---------|
-| `ssi-audio-stage` | Development/testing audio |
-| `ssiborg-assets` | Production audio |
-| `popty-bach-lfs` | Canonical resources (voices.json, encouragements, welcomes) |
-
-### MAR (Master Audio Registry)
-
-The MAR is a **text → UUID lookup database**, organized by voice. It enables:
-- Cross-course reuse: "hello" generated for `spa_for_eng` can be reused in `cmn_for_eng`
-- Deduplication: Same text with same voice always gets the same UUID
-
-**Key concept**: The **manifest is the source of truth** for UUIDs. The MAR is populated FROM the manifest.
-
-```
-┌─────────────┐     UUIDs flow     ┌─────────────┐     Audio lives     ┌─────────────┐
-│  Manifest   │ ─────────────────► │     MAR     │                     │     S3      │
-│ (has UUIDs) │                    │ (text→UUID) │ ◄──────────────────►│  (by UUID)  │
-└─────────────┘                    └─────────────┘     referenced by    └─────────────┘
+```bash
+curl -X POST http://localhost:3465/generate \
+  -H "Content-Type: application/json" \
+  -d '{"courseCode": "spa_for_eng"}'
 ```
 
-**Structure:**
-- Location: `samples_database/voices/{voiceId}/samples.json`
-- Samples matched by **normalized text** (lowercase, trimmed, no trailing periods)
-- Temporary MAR (`temp/mar/`) used for crash-safety during generation
-- After ALL phases complete successfully, temp MAR syncs to permanent MAR
-- Permanent MAR enables cross-course reuse
+### Example Response
 
-**Common confusion:**
-- "I have audio files but MAR doesn't have the UUIDs" → You need the manifest that has the UUIDs
-- "I have a manifest but MAR doesn't match" → Run MAR sync from manifest (see Step 4.1)
+```json
+{
+  "status": "started",
+  "jobId": "abc123",
+  "courseCode": "spa_for_eng",
+  "estimatedSamples": 12543,
+  "existingSamples": 8234,
+  "toGenerate": 4309
+}
+```
 
 ---
 
-## Complete Workflow
+## Phase 9: Manifest Compilation
 
-### Phase 1: Pre-Generation (Automatic with --plan)
-
-Running `--plan` automatically executes all pre-generation steps:
+### Starting the Service
 
 ```bash
-node scripts/phase8-audio-generation.cjs <course_code> --plan
+node services/phases/phase9-manifest-supabase.cjs
 ```
 
-This runs the **unified preflight** which includes:
+### API Endpoints
 
-#### Step 1.1: S3 Sync Canonical Resources
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/compile` | Compile manifest for a course |
+| GET | `/validate/:courseCode` | Validate audio coverage |
+| GET | `/health` | Health check |
 
-Syncs from `s3://popty-bach-lfs/canonical/`:
-- `voices.json` - Voice configuration and assignments
-- `welcomes.json` - Course welcome message metadata
-- `eng_encouragements.json` - English encouragement text + UUIDs
-- `welcomes/*.wav` - Welcome audio files
+### Compilation Flow
 
-#### Step 1.2: Preflight Checks (with auto-fix)
+1. **Load baskets** - Read `lego_baskets.json` from S3
+2. **Extract required samples** - List all text+role combinations needed
+3. **Query Supabase** - Look up each sample's UUID and duration
+4. **Validate coverage** - Ensure 100% of samples have audio
+5. **Build manifest** - Construct `course_manifest.json` with all UUIDs
+6. **Upload to S3** - Store manifest in `courses/{code}/course_manifest.json`
 
-**Core Service Checks:**
-- Node dependencies installed
-- Azure Speech API connection
-- ElevenLabs API connection
-- S3 configuration and access
-- SoX audio processor available
-- Disk space (minimum 5GB)
+### Validation
 
-**Course-Specific Manifest Checks (with auto-fix):**
-- S3 bucket access verification
-- Voice assignments for all roles
-- Empty seeds removal (auto-fixed)
-- Manifest structure validation (auto-fixed)
-- Welcome state validation (auto-fixed)
-- Encouragements empty (auto-fixed)
-- Slashes in presentations (auto-fixed)
-- Presentation/target text matching
+Before writing the manifest, Phase 9 validates:
+- All required samples exist in Supabase
+- All audio files exist in S3
+- All durations are populated
 
-Issues are either:
-- **Auto-fixed** by the script
-- **Agent actions** provided for manual fixes
-- **Blocking issues** that prevent generation
+If any samples are missing, the compilation fails with a list of missing items.
 
-#### Step 1.3: Manifest Deduplication
-
-**What it does:**
-1. Creates a backup of the manifest
-2. Removes encouragements (will be re-added post-generation)
-3. Finds and removes duplicate seeds/intro_items/nodes
-4. Validates expected vs actual samples
-5. Adds missing sample placeholders (empty ID, duration=0)
-6. Checks orphaned samples exist in MAR before removing
-7. **Normalizes and deduplicates** - "Hablo" and "hablo." become one sample "hablo"
-8. Saves cleaned manifest
-
-**Why deduplication matters:**
-- Reduces TTS API calls and costs
-- "Hablo", "hablo", "hablo." all need the same audio
-
-#### Standalone Preflight (Optional)
-
-You can also run preflight separately before planning:
+### Example Request
 
 ```bash
-node scripts/audio-gen-preflight.cjs <course_code> [options]
-
-Options:
-  --skip-sync         Skip S3 sync step
-  --skip-dedup        Skip deduplication step
-  --no-auto-fix       Don't auto-fix issues (report only)
-  --verbose           Show detailed output
+curl -X POST http://localhost:3466/compile \
+  -H "Content-Type: application/json" \
+  -d '{"courseCode": "spa_for_eng"}'
 ```
 
-### Phase 2: Planning
+### Example Response
 
-After preflight passes, `--plan` shows the generation plan:
-
-**Output includes:**
-- Total samples to generate
-- Samples already in MAR (will be skipped)
-- Cost breakdown (Azure = free tier, ElevenLabs = paid)
-- Time estimates
-- Voice assignments per role
-
-**CRITICAL**: Agent must wait for user approval before proceeding.
-
-**Plan Options:**
-```bash
---skip-sync                 # Skip S3 sync during preflight
---skip-dedup                # Skip deduplication during preflight
---ignore-preflight-errors   # Show plan even if preflight fails (not recommended)
+```json
+{
+  "status": "complete",
+  "courseCode": "spa_for_eng",
+  "totalSamples": 12543,
+  "manifestPath": "courses/spa_for_eng/course_manifest.json",
+  "s3Url": "s3://popty-bach-lfs/courses/spa_for_eng/course_manifest.json"
+}
 ```
 
-### Phase 3: Generation
+---
 
-#### Step 3.1: Unified Preflight (Same as --plan)
+## QA Workflow
 
-`--execute` runs the **same unified preflight** as `--plan`, ensuring consistency:
+### Sample Flagging
 
-1. **S3 Sync** (skipped by default during execute - already done in plan)
-2. **Preflight Checks** - validates services, manifest structure, voice assignments
-3. **Deduplication** - normalizes text, adds missing samples, removes duplicates
-
-This ensures samples are properly added before generation. Previously, `--execute` used a different preflight that could remove samples without adding missing ones.
-
-Issues are either:
-- **Auto-fixed** by the script
-- **Agent actions** provided for manual fixes
-- **Blocking issues** that prevent generation
-
-#### Step 3.2: Phase A - Core Vocabulary
+The Production API (port 3470) provides QA workflow capabilities:
 
 ```bash
-node scripts/phase8-audio-generation.cjs <course_code> --execute
+# Flag a sample for regeneration
+curl -X POST http://localhost:3470/api/samples/flag \
+  -H "Content-Type: application/json" \
+  -d '{
+    "uuid": "a1b2c3d4-e5f6-7890",
+    "status": "flagged_regen_tts",
+    "notes": "Pronunciation sounds unnatural",
+    "flaggedBy": "qa@example.com"
+  }'
 ```
 
-Generates audio for:
-- `target1` - Target language, female voice (Azure)
-- `target2` - Target language, male voice (Azure)
-- `source` - Source language (ElevenLabs)
+### Sample Status Lifecycle
 
-**Parallel generation**: Azure and ElevenLabs workers run simultaneously (~50% faster).
-
-#### Step 3.3: Phase A QC Checkpoint
-
-Script pauses and generates:
-- `qc_report_raw.json` - Machine-readable QC data
-- `qc_report_raw.md` - Human-readable summary
-- `qc_review/` directory with flagged samples organized by role
-
-**QC is optional** - User can:
-1. Listen to flagged samples (especially shortest phrases)
-2. Note any that sound wrong
-3. Request regeneration with `"..."` suffix for different TTS output
-4. Or just approve and continue
-
-```bash
-# If regeneration needed
-node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
-
-# To continue after QC
-node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
+```
+[pending] → Initial state
+    │
+    ├─→ [flagged_regen_tts]     → Audio needs regeneration
+    ├─→ [flagged_human_needed]  → Requires human recording
+    ├─→ [approved]              → Audio is good
+    │
+    ↓
+[in_pipeline] → TTS generation queued
+    │
+    ├─→ [tts_complete]          → TTS generated
+    ├─→ [tts_failed]            → Generation failed
+    │
+    ↓
+[needs_review] → Ready for QA review
+    │
+    ├─→ [approved]              → Final approval
+    ├─→ [rejected]              → Send back for regen
+    │
+    ↓
+[complete] → Published
 ```
 
-#### Step 3.4: Phase A Post-Processing
+### WebSocket Updates
 
-`--continue-processing` does:
-1. Normalizes audio (target LUFS: -16)
-2. Applies time-stretch based on voice config (for slow cadence)
-3. Uploads to S3
-4. Writes to temporary MAR (`temp/mar/`)
-5. **Updates manifest with UUIDs** for all generated samples
-6. **Automatically continues to Phase B** (presentations)
-7. **Automatically continues to finalize** (encouragements + welcome)
+The Production API provides real-time updates via WebSocket:
 
-**Important:** `--continue-processing` runs the complete remaining workflow. After Phase A post-processing, it automatically launches Phase B, then encouragements and welcome. The manifest is updated with UUIDs at each step.
-
-#### Step 3.5: Phase B - Presentations
-
-Runs automatically after Phase A post-processing (via `--continue-processing`) or manually with `--phase=presentations`.
-
-**What are presentations?**
-
-Presentations are composite audio files that introduce new vocabulary. They combine:
-- **Source narration** (TTS): "The Spanish for 'I want', is:"
-- **Target audio clips** (from Phase A): The actual pronunciation of the word
-
-**Example presentation text in manifest:**
-```
-The Spanish for 'I want', as in 'I want to speak Spanish.', is: ... 'quiero' ... 'quiero'
-```
-
-The `...` markers indicate where target audio clips are inserted. The quoted word `'quiero'` is played using the pre-recorded target1/target2 audio from Phase A.
-
-**Generation process:**
-
-1. Downloads target audio files from S3 (needed for presentation assembly)
-2. Extracts unique text segments from all presentations
-3. Generates narration segments via TTS (ElevenLabs presentation voice)
-4. Assembles final audio by concatenating: narration + silence + target clip + silence + target clip
-5. Normalizes and uploads to S3
-
-**No QC checkpoint for presentations** - they use already-QC'd target audio.
-
-#### Step 3.6: Encouragements
-
-Runs with `--phase=auto`, `--phase=encouragements`, or `--phase=finalize`.
-
-1. Checks `popty-bach-lfs` for existing encouragement audio
-2. If missing for this language, generates via ElevenLabs
-3. Adds encouragements to manifest (`slices[0].orderedEncouragements`, `slices[0].pooledEncouragements`)
-
-```bash
-# Run encouragements only (if presentations completed but encouragements failed)
-node scripts/phase8-audio-generation.cjs <code> --execute --phase=encouragements
-```
-
-#### Step 3.7: Welcome
-
-Runs with `--phase=auto`, `--phase=welcome`, or `--phase=finalize`.
-
-1. Checks if welcome exists for this course in `welcomes.json`
-2. If configured but audio missing, generates via presentation voice
-3. Updates manifest introduction (id, duration)
-
-```bash
-# Run welcome only
-node scripts/phase8-audio-generation.cjs <code> --execute --phase=welcome
-
-# Run both encouragements + welcome (pick up after presentations)
-node scripts/phase8-audio-generation.cjs <code> --execute --phase=finalize
-```
-
-If no welcome is configured, helpful instructions are shown:
-```
-To add a welcome message:
-1. Edit: public/vfs/canonical/welcomes.json
-2. Add: "cmn_for_eng": { "text": "Welcome to..." }
-3. Re-run audio generation
-```
-
-### Phase 4: Post-Generation
-
-**IMPORTANT:** All post-generation steps assume Phase A, Phase B, encouragements, and welcome have completed successfully. The temporary MAR syncs to permanent MAR at the end of the full generation workflow.
-
-#### Step 4.1: Sync Manifest to Permanent MAR
-
-The manifest contains the authoritative UUIDs for all samples. After ALL phases complete (Phase A → Phase B → encouragements → welcome), this step copies those UUIDs from the temporary MAR to the permanent MAR so they can be reused by other courses or agents.
-
-**Automatic** (runs at end of `generateAudioForCourse()`):
 ```javascript
-marService.syncManifestToMAR(manifest, voiceAssignments, targetLang, sourceLang)
+const socket = io('http://localhost:3470');
+
+socket.on('sample_updated', (data) => {
+  console.log('Sample updated:', data.uuid, data.status);
+});
+
+socket.on('generation_progress', (data) => {
+  console.log('Progress:', data.completed, '/', data.total);
+});
 ```
-
-**Standalone** (run manually if MAR is out of sync):
-```bash
-node scripts/rebuild-mar-from-manifest.cjs <course_code>
-
-# Preview what will be synced (no changes)
-node scripts/rebuild-mar-from-manifest.cjs <course_code> --dry-run
-```
-
-**What it does:**
-1. Reads all samples with UUIDs from the manifest
-2. Groups samples by voice (role → voice mapping from `voices.json`)
-3. Adds samples to `samples_database/voices/{voiceId}/samples.json`
-4. Does NOT overwrite existing entries (additive only)
-
-**When to run manually:**
-- Another agent needs your UUIDs but MAR doesn't have them
-- MAR was accidentally deleted or corrupted
-- You're setting up a new machine with an existing manifest
-
-#### Step 4.2: Manifest Repopulation
-
-```bash
-node scripts/manifest-repopulation.cjs <course_code>
-```
-
-**What it does:**
-1. Re-extracts ALL text variants from course structure (exact text, NOT normalized)
-2. Restores deduplicated variants: "hablo" becomes "Hablo" and "hablo." again as separate samples
-3. Queries permanent MAR by normalized text to get UUIDs (UUIDs were written during generation)
-4. Assigns matched UUIDs to all variants
-5. Reports errors for any samples without MAR matches
-6. Adds encouragements back to manifest
-
-**Common confusion:** This script does NOT add UUIDs to the manifest. UUIDs are already in the manifest after `--continue-processing`. This script restores text VARIANTS that were deduplicated before generation and matches them to their UUIDs via MAR lookup.
-
-**When to run:**
-- After audio generation completes successfully
-- After temp MAR has synced to permanent MAR
-- If you need to restore variants that were deduplicated
-
-#### Step 4.3: S3 Existence + Duration Check
-
-```bash
-node scripts/extract-s3-durations-parallel.cjs <course_code>
-```
-
-For each sample UUID in manifest:
-1. Downloads file from S3
-2. Extracts duration with sox
-3. Deletes local copy
-4. Updates manifest with duration
-
-Reports missing files and case mismatches.
-
-#### Step 4.4: Format Validation
-
-```bash
-node tools/validators/manifest-structure-validator.cjs <course_code> --check-durations
-```
-
-Validates:
-- Expected keys at each level (top-level, slices, seeds, samples)
-- No empty seeds (seeds with no introduction_items)
-- No missing durations
-- No zero durations (suggests missing S3 audio)
-- Sample structure (id, cadence, role, duration)
 
 ---
 
@@ -386,63 +287,105 @@ Validates:
 ### Commands
 
 ```bash
-# Pre-generation (unified preflight - runs automatically with --plan)
-node scripts/audio-gen-preflight.cjs <code>           # Standalone preflight
-# OR
-node scripts/phase8-audio-generation.cjs <code> --plan # Runs preflight + shows plan
+# Start Phase 8 Audio Generator
+node services/phases/phase8-audio-supabase.cjs
 
-# Generation (after user approval)
-node scripts/phase8-audio-generation.cjs <code> --execute
+# Start Phase 9 Manifest Compiler
+node services/phases/phase9-manifest-supabase.cjs
 
-# After QC (normalizes, uploads, writes UUIDs to temp MAR + manifest)
-node scripts/phase8-audio-generation.cjs <code> --execute --continue-processing
+# Start Production API (QA workflow)
+node services/production-api.cjs
 
-# Regeneration (if needed)
-node scripts/phase8-audio-generation.cjs <code> --execute --regenerate UUID1,UUID2
+# Generate audio for a course
+curl -X POST http://localhost:3465/generate -d '{"courseCode":"spa_for_eng"}'
 
-# Post-generation (after ALL phases complete)
-node scripts/rebuild-mar-from-manifest.cjs <code>               # Sync temp MAR → permanent MAR
-node scripts/manifest-repopulation.cjs <code>                   # Restore text variants (matches via MAR)
-node scripts/extract-s3-durations-parallel.cjs <code>           # Verify S3 + get durations
-node tools/validators/manifest-structure-validator.cjs <code> --check-durations
+# Compile manifest for a course
+curl -X POST http://localhost:3466/compile -d '{"courseCode":"spa_for_eng"}'
+
+# Check audio coverage
+curl http://localhost:3466/validate/spa_for_eng
+
+# Check generation status
+curl http://localhost:3465/status/spa_for_eng
 ```
 
-### Flags
+### Port Reference
 
-| Flag | Purpose |
-|------|---------|
-| `--plan` | Run preflight + show generation plan |
-| `--execute` | Run audio generation |
-| `--continue-processing` | Continue Phase A after QC (normalize, upload, write UUIDs) |
-| `--regenerate=UUIDs` | Regenerate specific samples |
-| `--phase=targets` | Phase A only (target1, target2, source) |
-| `--phase=presentations` | Phase B only (no encouragements/welcome) |
-| `--phase=encouragements` | Encouragements only |
-| `--phase=welcome` | Welcome audio only |
-| `--phase=finalize` | Encouragements + welcome (pick up after presentations) |
-| `--skip-sync` | Skip S3 sync during preflight |
-| `--skip-dedup` | Skip deduplication during preflight |
-| `--ignore-preflight-errors` | Show plan even if preflight fails |
-| `--skip-qc` | Skip QC checkpoint |
-| `--skip-upload` | Don't upload to S3 (testing) |
-| `--prod` | Upload to production bucket |
-| `--sequential` | Disable parallel generation |
-| `--keep-temp` | Don't delete temp files |
-
-### Key Directories
-
-| Path | Contents |
-|------|----------|
-| `temp/{course}/{role}/{cadence}/` | Raw generated audio (e.g., `temp/spa_for_eng/source/natural/`) - expensive, don't delete! |
-| `temp/{course}/{role}/{cadence}_processed/` | Normalized/processed audio (e.g., `temp/spa_for_eng/source/natural_processed/`) |
-| `temp/audio/` | Legacy flat structure + worker I/O directories |
-| `temp/audio/processed/` | Legacy processed audio (deprecated - new files go to `{cadence}_processed/`) |
-| `temp/mar/` | Temporary MAR (crash-safety) |
-| `samples_database/voices/` | Permanent MAR |
-| `public/vfs/canonical/` | Canonical resources (synced from S3) |
-| `public/vfs/courses/<code>/` | Course manifest and QC reports |
-| `public/vfs/courses/<code>/qc_review/` | Flagged samples for review |
+| Port | Service | Description |
+|------|---------|-------------|
+| 3456 | Orchestrator | Main coordinator |
+| 3457 | Phase 1 | Translation + LEGO Extraction |
+| 3458 | Phase 2 | Conflict Resolution |
+| 3459 | Phase 3 | Basket Generation |
+| 3464 | Legacy Manifest | Deprecated |
+| **3465** | **Phase 8** | **Audio Generator (Supabase)** |
+| **3466** | **Phase 9** | **Manifest Compiler (Supabase)** |
+| **3470** | **Production API** | **QA workflow + WebSocket** |
 
 ---
 
-**Last Updated**: 2025-12-03
+## Migration from v1.0 (JSON-based MAR)
+
+If you have audio from the old JSON-based MAR system:
+
+1. **Export existing audio metadata** - Extract UUIDs from `audio_index.json`
+2. **Run migration script** - `node scripts/migrate-mar-to-supabase.cjs`
+3. **Verify audio in S3** - Ensure all files exist
+4. **Test manifest compilation** - Run Phase 9 to validate
+
+The migration script:
+- Reads the old JSON MAR files
+- Inserts records into Supabase `audio_samples` table
+- Does NOT re-generate audio (reuses existing S3 files)
+
+---
+
+## Troubleshooting
+
+### "Sample not found in Supabase"
+
+The sample hasn't been generated yet. Run Phase 8 first:
+
+```bash
+curl -X POST http://localhost:3465/generate -d '{"courseCode":"spa_for_eng"}'
+```
+
+### "Audio file missing in S3"
+
+The Supabase record exists but S3 file is missing. Check:
+
+1. S3 bucket permissions
+2. S3 region configuration
+3. Re-run Phase 8 to regenerate missing files
+
+### "Manifest compilation failed - missing samples"
+
+Not all required samples exist in Supabase. Check:
+
+1. Phase 8 completed successfully
+2. All voice configurations are correct
+3. Run `/validate/:courseCode` to see what's missing
+
+### "TTS API rate limit"
+
+Azure and ElevenLabs have rate limits. Phase 8 handles this with:
+
+- Exponential backoff
+- Parallel generation with concurrency limits
+- Automatic retry for transient failures
+
+---
+
+## Best Practices
+
+1. **Always run Phase 8 before Phase 9** - Audio must exist before manifest compilation
+2. **Check coverage before production** - Use `/validate/:courseCode` endpoint
+3. **Monitor generation progress** - Connect to WebSocket for real-time updates
+4. **Use QA workflow for issues** - Flag samples instead of regenerating everything
+5. **Deduplication is automatic** - Same text+voice reuses existing audio
+
+---
+
+**Last Updated:** 2025-12-04
+**Version:** 2.0 (Supabase-backed)
+**APML:** v10.2
