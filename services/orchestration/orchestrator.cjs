@@ -2246,12 +2246,58 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
 // =============================================================================
 
 /**
+ * POST /api/audio/plan (APML v9.0) and /api/phase8/plan (legacy)
+ * Get generation plan with cost/time estimates - MUST be called before /start
+ */
+async function handleAudioPlan(req, res) {
+  try {
+    const { courseCode, options = {} } = req.body;
+
+    if (!courseCode) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required field: courseCode'
+      });
+    }
+
+    console.log(`[Orchestrator] 📋 Getting Audio generation plan for ${courseCode}`);
+
+    const audioUrl = PHASE_SERVERS['audio'];
+
+    const response = await axios.post(`${audioUrl}/plan`, {
+      courseCode,
+      options
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Audio plan error:', error.message);
+
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        success: false,
+        error: 'Audio server is not running',
+        message: 'Please start the Audio server (port 3465)'
+      });
+    }
+
+    res.status(error.response?.status || 500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to get Audio generation plan'
+    });
+  }
+}
+app.post('/api/audio/plan', handleAudioPlan);
+app.post('/api/phase8/plan', handleAudioPlan);  // Legacy
+
+/**
  * POST /api/audio/start (APML v9.0) and /api/phase8/start (legacy)
  * Proxy to Audio server (port 3465)
  */
 async function handleAudioStart(req, res) {
   try {
-    const { courseCode, options = {} } = req.body;
+    const { courseCode, approved, options = {} } = req.body;
 
     if (!courseCode) {
       return res.status(400).json({
@@ -2266,6 +2312,7 @@ async function handleAudioStart(req, res) {
 
     const response = await axios.post(`${audioUrl}/start`, {
       courseCode,
+      approved,
       options
     });
 
@@ -2283,7 +2330,7 @@ async function handleAudioStart(req, res) {
 
     res.status(error.response?.status || 500).json({
       success: false,
-      error: error.message,
+      error: error.response?.data?.error || error.message,
       message: 'Failed to start Audio generation'
     });
   }

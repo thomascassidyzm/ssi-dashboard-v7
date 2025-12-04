@@ -1146,16 +1146,30 @@ export default {
   // APML v9.0: Audio Generation (was Phase 8 in legacy versions)
   // =============================================================================
 
-  // Start Audio generation
+  // Get Audio generation plan (costs, time estimates, preflight checks)
+  async getAudioPlan(courseCode, options = {}) {
+    const response = await api.post('/api/audio/plan', {
+      courseCode,
+      options: {
+        skipSync: options.skipSync || false,
+        skipDedup: options.skipDedup || false
+      }
+    })
+    return response.data
+  },
+
+  // Start Audio generation (requires plan first, or approved: true to skip)
   async startAudioGeneration(courseCode, options = {}) {
     // Call through orchestrator proxy (works from Vercel via ngrok)
     const response = await api.post('/api/audio/start', {
       courseCode,
+      approved: options.approved || false,  // Set true after reviewing plan
       options: {
         phase: options.phase || 'auto',  // 'auto', 'targets', or 'presentations'
         skipUpload: options.skipUpload || false,
         skipQC: options.skipQC || false,
-        uploadBucket: options.uploadBucket || 'stage'
+        uploadBucket: options.uploadBucket || 'stage',
+        force: options.force || false
       }
     })
     return response.data

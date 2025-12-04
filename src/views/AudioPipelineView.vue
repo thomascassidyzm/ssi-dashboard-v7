@@ -377,10 +377,41 @@ async function startGeneration() {
 
   generating.value = true
   try {
-    await api.startPhase8Audio(courseCode.value)
-    toast.success('🎵 Audio generation started!')
-    jobStatus.value = 'running'
-    startPolling()
+    // Step 1: Get the generation plan (costs, estimates, preflight checks)
+    toast.info('📋 Getting audio generation plan...')
+    const planResponse = await api.getAudioPlan(courseCode.value)
+
+    if (!planResponse.success) {
+      toast.error(`❌ Plan failed: ${planResponse.error}`)
+      return
+    }
+
+    // Show plan summary
+    const plan = planResponse.plan
+    const toGenerate = plan.analysis?.toGenerate || 0
+    const alreadyInMAR = plan.analysis?.alreadyInMAR || 0
+    const estimatedCost = plan.estimates?.estimatedCost || 'Unknown'
+    const estimatedTime = plan.estimates?.estimatedTime || 'Unknown'
+
+    toast.info(`📊 Plan: ${toGenerate} samples to generate (${alreadyInMAR} already exist). Est: ${estimatedCost}, ${estimatedTime}`)
+
+    // Check if preflight passed
+    if (!plan.readyToStart) {
+      toast.error('❌ Preflight checks failed. Please fix issues before starting.')
+      console.error('Preflight issues:', plan.preflight)
+      return
+    }
+
+    // Step 2: Start generation with approved flag
+    const startResponse = await api.startPhase8Audio(courseCode.value, { approved: true })
+
+    if (startResponse.success) {
+      toast.success('🎵 Audio generation started!')
+      jobStatus.value = 'running'
+      startPolling()
+    } else {
+      toast.error(`❌ Failed to start: ${startResponse.error}`)
+    }
   } catch (err) {
     console.error('Failed to start audio generation:', err)
     if (err.response?.status === 404 || err.response?.status === 503) {
@@ -389,7 +420,8 @@ async function startGeneration() {
       toast.error('⚠️ Audio generation already in progress.')
       await checkJobStatus()
     } else {
-      toast.error('❌ Failed to start audio generation')
+      const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
+      toast.error(`❌ Failed to start audio generation: ${errorMsg}`)
     }
   } finally {
     generating.value = false
