@@ -24,8 +24,17 @@ if (!supabaseUrl || !supabaseKey) {
   console.warn('[Supabase] Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
 }
 
+// Service role client - bypasses RLS for server-side admin operations
+// Must disable session handling for server-side usage
+// See: https://supabase.com/docs/guides/troubleshooting/performing-administration-tasks-on-the-server-side-with-the-servicerole-secret-BYM4Fa
 const supabase = supabaseUrl && supabaseKey
-  ? createClient(supabaseUrl, supabaseKey)
+  ? createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    })
   : null
 
 /**
