@@ -3,46 +3,25 @@
  *
  * Generates deterministic, RFC 4122 compliant UUID v5 for audio samples.
  * Same inputs will ALWAYS produce the same UUID.
+ *
+ * Language code conversions use centralized language-code-service.
+ * @see /docs/architecture/LANGUAGE_CODE_STRATEGY.md
  */
 
 const { v5: uuidv5 } = require('uuid');
+const langService = require('./language-code-service.cjs');
 
 // SSi namespace UUID (permanent, never changes)
 // This ensures our UUIDs are unique to SSi and deterministic
 const SSI_NAMESPACE = '6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f';
 
-// Language code mapping: 2-letter (ISO 639-1) to 3-letter (ISO 639-3)
-// Legacy S3 files used 3-letter codes
-const LANG_CODE_MAP = {
-  'en': 'eng',
-  'es': 'spa',
-  'zh': 'cmn',
-  'it': 'ita',
-  'fr': 'fra',
-  'de': 'deu',
-  'pt': 'por',
-  'ja': 'jpn',
-  'ko': 'kor',
-  'nl': 'nld',
-  'ru': 'rus',
-  'ar': 'ara',
-  'hi': 'hin',
-  'pl': 'pol',
-  'tr': 'tur',
-  'vi': 'vie',
-  'th': 'tha',
-  'sv': 'swe',
-  'da': 'dan',
-  'no': 'nor',
-  'fi': 'fin'
-};
-
 /**
  * Convert 2-letter language code to 3-letter (legacy format)
  * Returns the input unchanged if already 3-letter or unknown
+ * Uses centralized language-code-service for conversions
  */
 function toLegacyLangCode(langCode) {
-  return LANG_CODE_MAP[langCode] || langCode;
+  return langService.standardToLegacy(langCode);
 }
 
 /**
@@ -155,10 +134,9 @@ function analyzeUUID(uuid) {
 module.exports = {
   generateSampleUUID,
   generateLegacyUUID,  // For checking existing S3 files (auto-normalizes lang codes)
-  toLegacyLangCode,    // Convert 2-letter to 3-letter language codes
+  toLegacyLangCode,    // Convert 2-letter to 3-letter language codes (uses language-code-service)
   isValidFormat,
   isRFC4122Compliant,
   analyzeUUID,
-  SSI_NAMESPACE,
-  LANG_CODE_MAP
+  SSI_NAMESPACE
 };

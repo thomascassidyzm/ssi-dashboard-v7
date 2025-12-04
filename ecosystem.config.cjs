@@ -208,8 +208,11 @@ module.exports = {
     },
 
     // ===========================================
-    // PROGRESS API (Port 3462)
+    // PROGRESS API (Port 3462) - DEPRECATED
     // ===========================================
+    // ⚠️ NOT USED IN PRODUCTION
+    // Dashboard uses orchestrator WebSocket (3456) for progress tracking
+    // Kept in PM2 config for manual testing/debugging only
     {
       name: 'progress-api',
       script: 'services/api/progress-tracker.cjs',
@@ -229,8 +232,14 @@ module.exports = {
     },
 
     // ===========================================
-    // NGROK PROXY (Port 3463)
+    // NGROK PROXY (Port 3463) - PRODUCTION SERVICE
     // ===========================================
+    // ✅ ACTIVE - Routes external agents to internal services
+    // Used by: Dashboard EnvironmentSwitcher, external Claude Projects
+    // NOT in start-automation.cjs because:
+    //   - Requires ngrok tunnel (separate process below)
+    //   - Only needed for external agent access
+    //   - Local dev uses direct localhost connections
     {
       name: 'ngrok-proxy',
       script: 'services/api/ngrok-proxy.cjs',
@@ -249,8 +258,10 @@ module.exports = {
     },
 
     // ===========================================
-    // NGROK TUNNEL (external)
+    // NGROK TUNNEL (external) - PRODUCTION SERVICE
     // ===========================================
+    // ✅ ACTIVE - Public tunnel to ngrok-proxy (port 3463)
+    // Domain: mirthlessly-nonanesthetized-marilyn.ngrok-free.dev
     {
       name: 'ngrok-tunnel',
       script: 'ngrok',

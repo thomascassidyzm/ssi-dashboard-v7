@@ -191,7 +191,7 @@ export default {
         onProgress(status)
       }
 
-      if (status.job.status === 'completed' || status.job.status === 'failed') {
+      if (status.job.status === 'complete' || status.job.status === 'failed') {
         return status
       }
 

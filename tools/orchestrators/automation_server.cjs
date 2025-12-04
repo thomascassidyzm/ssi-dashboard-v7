@@ -2229,7 +2229,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
             console.log(`[Resume] (To regenerate: delete ${basketsDir})\n`);
             job.phase = 'phase_5_complete';
             job.progress = 100;
-            job.status = 'completed';
+            job.status = 'complete';
             job.message = 'Phase 5 already completed';
           } else {
             console.log(`[Resume] 🔄 Phase 5 needs extension! Existing: ${basketCount} baskets, will process lego_pairs.json for all ${seeds} seeds\n`);
@@ -2455,7 +2455,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         console.log(`[Web Orchestrator] ✅ Phase 5 complete!`);
         job.phase = 'phase_5_complete';
         job.progress = 100;
-        job.status = 'completed';
+        job.status = 'complete';
         job.message = 'Phase 5 completed successfully';
       }
 
@@ -2625,7 +2625,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       }
       job.phase = 'phase_1_complete';
       job.progress = 30;
-      job.status = 'completed';
+      job.status = 'complete';
       job.message = 'Phase 1 completed successfully';
 
       // Exit if Phase 1 Only was selected
@@ -2775,7 +2775,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       console.log(`[Web Orchestrator] ✅ Phase 3 complete! Created lego_pairs.json with deduplication and reordering`);
       job.phase = 'phase_3_complete';
       job.progress = 60;
-      job.status = 'completed';
+      job.status = 'complete';
       job.message = 'Phase 3 completed successfully';
 
       // Exit if Phase 3 Only was selected
@@ -2840,7 +2840,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           console.log(`[Resume] (To regenerate: delete ${basketsDir})\n`);
           job.phase = 'phase_5_complete';
           job.progress = 100;
-          job.status = 'completed';
+          job.status = 'complete';
           job.message = 'All phases completed successfully';
         } else {
           console.log(`[Resume] 🔄 Phase 5 needs extension! Existing: ${basketCount} baskets, will process lego_pairs.json for all ${seeds} seeds\n`);
@@ -2966,7 +2966,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       console.log(`[Resume] Skipping Phase 7, all phases complete!`);
       console.log(`[Resume] (To regenerate: delete ${manifestPath})\n`);
       job.progress = 100;
-      job.status = 'completed';
+      job.status = 'complete';
       job.message = 'All phases completed successfully';
     }
 
@@ -2976,7 +2976,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       await compileManifest(courseDir);
       console.log(`[Web Orchestrator] ✅ Phase 7 complete! Generated course_manifest.json`);
       job.progress = 100;
-      job.status = 'completed';
+      job.status = 'complete';
       job.message = 'All phases completed successfully';
     }
 
@@ -3147,7 +3147,7 @@ async function spawnCourseOrchestratorAPI(courseCode, params) {
 
     job.phase = 'phase_5_complete';
     job.progress = 100;
-    job.status = 'completed';
+    job.status = 'complete';
     job.message = 'All phases completed successfully via API';
 
     console.log(`\n[API Orchestrator] ====================================`);
@@ -3552,7 +3552,7 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
           console.log(`[Resume] ✅ Phase 5 already complete! Found ${actualBaskets} baskets (expected ~${expectedBaskets})`);
           console.log(`[Resume] Skipping Phase 5 generation. Course generation complete!\n`);
           job.phase = 'completed';
-          job.status = 'completed';
+          job.status = 'complete';
           job.progress = 100;
           job.endTime = new Date();
           return; // Skip Phase 5 entirely
@@ -3660,7 +3660,7 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
     job.progress = 100;
     job.phase = 'completed';
-    job.status = 'completed';
+    job.status = 'complete';
     job.endTime = new Date();
 
     console.log(`✅ COURSE GENERATION COMPLETE: ${courseCode}`);
@@ -3889,7 +3889,7 @@ async function cascadePhases(courseCode, params) {
     await compileManifest(courseCode);
 
     // Complete
-    job.status = 'completed';
+    job.status = 'complete';
     job.endTime = new Date();
     console.log(`[Cascade] Course generation complete: ${courseCode}`);
 
@@ -5401,7 +5401,7 @@ app.get('/api/phase5/progress/:batchName', async (req, res) => {
           return {
             agentId,
             agentNum,
-            status: hasAllPhrases ? 'completed' : 'incomplete',
+            status: hasAllPhrases ? 'complete' : 'incomplete',
             legoCount: basket.length,
             totalPhrases: basket.reduce((sum, lego) =>
               sum + (lego.practice_phrases?.length || 0), 0
@@ -5424,7 +5424,7 @@ app.get('/api/phase5/progress/:batchName', async (req, res) => {
       })
     );
 
-    const completed = agentStatuses.filter(a => a.status === 'completed').length;
+    const completed = agentStatuses.filter(a => a.status === 'complete').length;
     const total = parseInt(agentCount);
 
     res.json({
@@ -7134,7 +7134,7 @@ async function triggerRegenerationCascade(courseCode, seedId, translationUuid) {
       }
 
       // Mark job complete
-      job.status = 'completed';
+      job.status = 'complete';
       job.progress = 100;
       job.endTime = new Date();
       job.duration = job.endTime - job.startTime;
@@ -10164,7 +10164,7 @@ app.post('/api/courses/:courseCode/compile', async (req, res) => {
     const manifestPath = path.join(courseDir, 'proteins', 'manifest.json');
     const manifest = await fs.readJson(manifestPath);
 
-    job.status = 'completed';
+    job.status = 'complete';
     job.progress = 100;
     job.endTime = new Date();
 
@@ -10408,7 +10408,7 @@ async function generateAudioInBackground(jobId, courseCode, samples, config, man
     }
 
     // Job complete
-    job.status = 'completed';
+    job.status = 'complete';
     job.currentFile = '';
 
     console.log(`\n[Audio] Job ${jobId} completed`);

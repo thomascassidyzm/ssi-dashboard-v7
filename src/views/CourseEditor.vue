@@ -769,7 +769,7 @@
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold text-emerald-400">Regenerating Course</h3>
         <button
-          v-if="regenerationState.status === 'completed' || regenerationState.status === 'failed'"
+          v-if="regenerationState.status === 'complete' || regenerationState.status === 'failed'"
           @click="dismissRegenerationProgress"
           class="text-slate-400 hover:text-slate-300"
         >
@@ -796,7 +796,7 @@
           <span>Phase {{ regenerationState.currentPhase }} in progress...</span>
         </div>
 
-        <div v-else-if="regenerationState.status === 'completed'" class="flex items-center gap-2 text-green-400">
+        <div v-else-if="regenerationState.status === 'complete'" class="flex items-center gap-2 text-green-400">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
@@ -1765,7 +1765,7 @@ function startRegenerationPolling() {
       regenerationState.value.progress = status.progress || 0
 
       // Check if regeneration is complete or failed
-      if (status.status === 'completed' || status.status === 'failed') {
+      if (status.status === 'complete' || status.status === 'failed') {
         stopRegenerationPolling()
         regenerationState.value.completionTime = Date.now()
 
@@ -1774,7 +1774,7 @@ function startRegenerationPolling() {
         }
 
         // Reload course data to show updated results
-        if (status.status === 'completed') {
+        if (status.status === 'complete') {
           await loadCourse()
         }
       }

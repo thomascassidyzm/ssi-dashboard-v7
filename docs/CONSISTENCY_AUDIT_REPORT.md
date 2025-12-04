@@ -197,7 +197,7 @@ Schema uses `complete`, not `completed`.
 
 ---
 
-### 10. Language Code Inconsistency
+### 10. Language Code Inconsistency ✅ FIXED
 
 **Problem:** Mix of ISO 639-3 (3-letter) and ISO 639-1 (2-letter) codes throughout codebase:
 
@@ -206,26 +206,63 @@ Schema uses `complete`, not `completed`.
 | ISO 639-3 | `eng`, `spa`, `cmn`, `cym` | Supabase schema, course configs |
 | ISO 639-1 | `en`, `es`, `zh` | Azure TTS locales, some manifests |
 
-**Locations with mappings:**
-- `services/audio-generation-planner.cjs:587-596`
-- `services/voice-discovery-service.cjs:24-25`
-- `scripts/phase7-compile-manifest-v3.cjs:60`
-- `services/mar-service.cjs:105-107`
+**Locations with mappings (BEFORE):**
+- `services/audio-generation-planner.cjs:587-596` - Had inline `normalizeLanguageCode()` mapping
+- `services/voice-discovery-service.cjs:24-25` - Used `langService.legacyToStandard()` ✅
+- `scripts/phase7-compile-manifest-v3.cjs:60` - Had inline `shortCodeMap` and `langNames`
+- `services/mar-service.cjs:105-107` - Had inline `langCodeMap`
+- `services/uuid-service.cjs:16-38` - Had inline `LANG_CODE_MAP`
 
-**Fix:** Document the canonical format and ensure consistent conversion.
+**Fix Applied:**
+1. ✅ Created comprehensive documentation: `/docs/architecture/LANGUAGE_CODE_STRATEGY.md`
+2. ✅ Updated `audio-generation-planner.cjs` to use `langService.legacyToStandard()`
+3. ✅ Updated `uuid-service.cjs` to use `langService.standardToLegacy()`
+4. ✅ Updated `phase7-compile-manifest-v3.cjs` to use language-code-service for all mappings
+5. ✅ Updated `mar-service.cjs` to use language-code-service for conversions
+
+**Canonical Standard:** ISO 639-3 (3-letter codes) for internal use, converted at TTS boundaries.
+**Source of Truth:** `/tools/sync/reference/language_codes.csv` via `/services/language-code-service.cjs`
 
 ---
 
-### 11. Orphaned Services Not in start-automation.cjs
+### 11. Orphaned Services Not in start-automation.cjs ✅ FIXED
 
 **Services that exist but aren't started by automation:**
-- `services/pipeline/pipeline-server.cjs` (Port 3457)
-- `services/api/progress-tracker.cjs` (Port 3462)
-- `services/api/ngrok-proxy.cjs` (Port 3463)
+- ~~`services/pipeline/pipeline-server.cjs` (Port 3457)~~ - **DEPRECATED** (Fixed in Critical #3)
+- `services/api/progress-tracker.cjs` (Port 3462) - **DEPRECATED** ✅
+- `services/api/ngrok-proxy.cjs` (Port 3463) - **DOCUMENTED** ✅
 
-**Status:** Unclear if these are needed or deprecated.
+**Status:** ✅ RESOLVED
 
-**Fix:** Either add to `start-automation.cjs` or mark as deprecated.
+**Actions Taken:**
+
+1. **progress-tracker.cjs (Port 3462)** - ⚠️ DEPRECATED
+   - Added deprecation notice in file header
+   - Dashboard uses orchestrator WebSocket (3456) instead
+   - Kept in PM2 config for manual testing only
+   - Documented why it's not in start-automation.cjs
+
+2. **ngrok-proxy.cjs (Port 3463)** - ✅ ACTIVE IN PRODUCTION
+   - Documented as critical production service
+   - Used by dashboard EnvironmentSwitcher and external agents
+   - NOT in start-automation.cjs by design:
+     - Requires ngrok tunnel (separate process)
+     - Only needed for external agent access
+     - Local development uses direct localhost
+   - Added comprehensive documentation to file header
+
+3. **ecosystem.config.cjs** - Updated with inline comments:
+   - Progress API marked as deprecated with explanation
+   - Ngrok services marked as active with usage details
+   - Documented why they're in PM2 but not start-automation
+
+4. **Created comprehensive guide:**
+   - `/docs/setup/SERVICE_STARTUP_GUIDE.md`
+   - Explains all service startup methods
+   - Documents which services are in which config
+   - Provides troubleshooting guide
+
+**See:** `/docs/setup/SERVICE_STARTUP_GUIDE.md`
 
 ---
 

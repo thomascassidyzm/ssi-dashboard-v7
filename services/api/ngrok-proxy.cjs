@@ -1,16 +1,36 @@
 #!/usr/bin/env node
 
 /**
- * ngrok Reverse Proxy
+ * ngrok Reverse Proxy - CRITICAL PRODUCTION SERVICE
  *
- * Single ngrok tunnel that routes to multiple phase servers:
+ * Single ngrok tunnel that routes to multiple backend services.
+ * This is THE entry point for external agents working via Claude Projects.
+ *
+ * Routes:
+ * - /api/production/* → localhost:3470 (Production API + WebSocket)
+ * - /api/* → localhost:3456 (Dashboard API / Orchestrator)
  * - /phase1/* → localhost:3457 (Phase 1: Translation)
  * - /phase3/* → localhost:3458 (Phase 3: LEGO Extraction)
  * - /phase5/* → localhost:3459 (Phase 5: Basket Generation)
- *
- * This allows agents to use one ngrok URL with different paths.
+ * - /phase8/* → localhost:3465 (Phase 8: Audio/TTS)
  *
  * Port: 3463 (ngrok tunnels to this port)
+ * Ngrok Domain: mirthlessly-nonanesthetized-marilyn.ngrok-free.dev
+ *
+ * STATUS: ✅ ACTIVE - Used by dashboard EnvironmentSwitcher.vue and external agents
+ * STARTED BY: PM2 (ecosystem.config.cjs), NOT in start-automation.cjs
+ *
+ * Why not in start-automation.cjs:
+ * - Requires ngrok tunnel setup (separate process in PM2)
+ * - Only needed for external agent access
+ * - Local development typically uses direct localhost connections
+ *
+ * To start manually:
+ *   PORT=3463 node services/api/ngrok-proxy.cjs
+ *   ngrok http 3463 --domain=mirthlessly-nonanesthetized-marilyn.ngrok-free.dev
+ *
+ * To start with PM2:
+ *   pm2 start ecosystem.config.cjs --only ngrok-proxy,ngrok-tunnel
  */
 
 const express = require('express');
@@ -240,6 +260,7 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log('');
   console.log(`✅ ngrok Reverse Proxy listening on port ${PORT}`);
+  console.log(`   🌐 Public URL: https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev`);
   console.log('');
   console.log(`📡 Routes:`);
   console.log(`   /api/production/* → http://localhost:3470 (Production API + WebSocket)`);
@@ -250,15 +271,20 @@ app.listen(PORT, () => {
   console.log(`   /phase8/*         → http://localhost:3465 (Phase 8: Audio/TTS)`);
   console.log('');
   console.log(`🌐 Usage:`);
-  console.log(`   Dashboard: GET https://your-ngrok-url/api/languages`);
-  console.log(`   Production: GET https://your-ngrok-url/api/production/spa_for_eng/manifest`);
-  console.log(`   Phase 1: POST https://your-ngrok-url/phase1/upload-translations`);
-  console.log(`   Phase 3: POST https://your-ngrok-url/phase3/upload-legos`);
-  console.log(`   Phase 5: POST https://your-ngrok-url/phase5/upload-basket`);
-  console.log(`   Phase 8: POST https://your-ngrok-url/phase8/plan`);
+  console.log(`   Dashboard: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/languages`);
+  console.log(`   Production: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/production/spa_for_eng/manifest`);
+  console.log(`   Phase 1: POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase1/upload-translations`);
+  console.log(`   Phase 3: POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase3/upload-legos`);
+  console.log(`   Phase 5: POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase5/upload-basket`);
+  console.log(`   Phase 8: POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase8/plan`);
   console.log('');
-  console.log(`💡 Configure ngrok to tunnel to this port:`);
+  console.log(`💡 Start ngrok tunnel (if not already running):`);
   console.log(`   ngrok http ${PORT} --domain=mirthlessly-nonanesthetized-marilyn.ngrok-free.dev`);
+  console.log('');
+  console.log(`ℹ️  This proxy is ACTIVE in production. Used by:`);
+  console.log(`   - Dashboard EnvironmentSwitcher (Tom's Machine option)`);
+  console.log(`   - External agents working via Claude Projects`);
+  console.log(`   - PM2 automation (ecosystem.config.cjs)`);
   console.log('');
 });
 

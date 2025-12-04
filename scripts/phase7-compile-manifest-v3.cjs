@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const langService = require('../services/language-code-service.cjs');
 
 // ============================================================================
 // PHASE 7 MANIFEST COMPILER V3
@@ -56,26 +57,13 @@ try {
 const knownLang = seedPairs?.known_language || legoPairs.known_language || 'eng';
 const targetLang = seedPairs?.target_language || legoPairs.target_language || courseCode.split('_')[0];
 
-// Language code mapping: English uses 2-letter 'en', others use 3-letter
-const shortCodeMap = { 'eng': 'en' };
-const manifestKnown = shortCodeMap[knownLang] || knownLang;
-const manifestTarget = targetLang;
+// Use centralized language-code-service for conversions
+// @see /docs/architecture/LANGUAGE_CODE_STRATEGY.md
+const manifestKnown = langService.legacyToStandard(knownLang);
+const manifestTarget = langService.legacyToStandard(targetLang);
 
-// Language names for presentations
-const langNames = {
-  'eng': 'English', 'en': 'English',
-  'spa': 'Spanish', 'es': 'Spanish',
-  'ita': 'Italian', 'it': 'Italian',
-  'cmn': 'Chinese', 'zh': 'Chinese',
-  'fra': 'French', 'fr': 'French',
-  'deu': 'German', 'de': 'German',
-  'por': 'Portuguese', 'pt': 'Portuguese',
-  'cym': 'Welsh', 'cy': 'Welsh',
-  'gle': 'Irish', 'ga': 'Irish',
-  'jpn': 'Japanese', 'ja': 'Japanese'
-};
-
-const targetName = langNames[targetLang] || targetLang;
+// Get language names from service
+const targetName = langService.getName(targetLang);
 const welcome = welcomes.welcomes[courseCode];
 
 console.log(`Known: ${knownLang} -> ${manifestKnown}`);

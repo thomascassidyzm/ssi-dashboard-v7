@@ -486,7 +486,7 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     if (endPhase < 3) {
       console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
       job.phase = 'complete';
-      job.status = 'completed';
+      job.status = 'complete';
       job.progress = 100;
       return;
     }
@@ -568,7 +568,7 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     if (endPhase < 4) {
       console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
       job.phase = 'complete';
-      job.status = 'completed';
+      job.status = 'complete';
       job.progress = 100;
       return;
     }
@@ -612,7 +612,7 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     if (endPhase < 5) {
       console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
       job.phase = 'complete';
-      job.status = 'completed';
+      job.status = 'complete';
       job.progress = 100;
       return;
     }
@@ -690,7 +690,7 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     if (endPhase < 6) {
       console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
       job.phase = 'complete';
-      job.status = 'completed';
+      job.status = 'complete';
       job.progress = 100;
       return;
     }
@@ -781,8 +781,8 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     console.log(`  ✓ lego_intros.json`);
     console.log('\n' + '='.repeat(60) + '\n');
 
-    job.status = 'completed';
-    job.phase = 'completed';
+    job.status = 'complete';
+    job.phase = 'complete';
     job.progress = 100;
     job.endTime = new Date();
 

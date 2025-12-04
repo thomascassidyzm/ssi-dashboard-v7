@@ -201,7 +201,7 @@ async function test4_pollJob(jobId, maxAttempts = 10) {
     log(`\nAttempt ${i}/${maxAttempts} (${elapsed}s elapsed):`);
     log(`  Status: ${status.job.status}`);
 
-    if (status.job.status === 'completed') {
+    if (status.job.status === 'complete') {
       log('\nJob completed!', 'green');
       return status;
     } else if (status.job.status === 'failed') {

@@ -2732,7 +2732,7 @@ async function waitForGrammarValidation(courseCode) {
 
       const status = await response.json();
 
-      if (status.status === 'completed') {
+      if (status.status === 'complete') {
         const deletionRate = status.stats.phrasesDeleted / (status.stats.phrasesDeleted + status.stats.phrasesKept);
 
         console.log(`   Grammar validation results:`);

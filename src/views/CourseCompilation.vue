@@ -586,7 +586,7 @@ async function pollGenerationProgress(jobId) {
       generationProgress.value.completed = data.completed || 0
       generationProgress.value.progress = (data.completed / generationProgress.value.total) * 100
 
-      if (data.status === 'completed') {
+      if (data.status === 'complete') {
         clearInterval(pollInterval)
         generationProgress.value.active = false
 

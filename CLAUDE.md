@@ -137,13 +137,15 @@ services/
 └── web/                # Web services
 ```
 
-**Phase 8 Audio Generation** (`services/phases/phase8-audio-supabase.cjs`)
+**Phase 8 Audio Generation** (`services/phases/phase8-audio-generator.cjs`)
+- Port: 3465
 - Reads `lego_baskets.json` directly (not manifest)
 - Generates TTS audio (Azure/ElevenLabs)
 - Stores audio files in S3, records in Supabase `audio_samples` table
 - Deduplicates audio across courses
 
-**Phase 9 Manifest Compilation** (`services/phases/phase9-manifest-supabase.cjs`)
+**Phase 9 Manifest Compilation** (`services/phases/phase9-manifest-compiler.cjs`)
+- Port: 3466
 - Queries Supabase for audio UUIDs by text+role
 - Validates 100% audio coverage
 - Outputs final `course_manifest.json`
@@ -215,16 +217,16 @@ Language is broken into reusable "LEGO" pieces:
 ### **Phase Servers**
 A "Phase" = one server = one prompt = one agent job
 
-| Port | Phase | Description |
-|------|-------|-------------|
-| 3456 | - | Orchestrator |
-| 3457 | 1 | Translation + LEGO Extraction |
-| 3458 | 2 | Conflict Resolution |
-| 3459 | 3 | Basket Generation |
-| 3464 | - | Legacy Manifest (deprecated) |
-| **3465** | **8** | **Audio Generator (Supabase)** |
-| **3466** | **9** | **Manifest Compiler (Supabase)** |
-| **3470** | **-** | **Production API (QA + WebSocket)** |
+| Port | Phase | Service | Endpoints |
+|------|-------|---------|-----------|
+| 3456 | - | Orchestrator | Multi-agent coordination |
+| 3457 | 1 | Translation + LEGO Extraction | POST /translate, GET /status, GET /health |
+| 3458 | 2 | Conflict Resolution | POST /resolve, GET /status, GET /health |
+| 3459 | 3 | Basket Generation | POST /generate, GET /status, GET /health |
+| 3464 | - | Legacy Manifest (deprecated) | - |
+| **3465** | **8** | **Audio Generator** | **POST /generate, POST /plan, GET /status/:courseCode, DELETE /cancel/:courseCode, GET /health** |
+| **3466** | **9** | **Manifest Compiler** | **POST /compile, GET /validate/:courseCode, GET /status/:courseCode, GET /health** |
+| **3470** | **-** | **Production API** | **See detailed list above (QA + WebSocket)** |
 
 ### **Environment Variables**
 
@@ -385,23 +387,47 @@ The audio pipeline now uses Supabase as the Master Audio Registry (MAR):
 **Phase 8: Audio Generation**
 ```bash
 # Start audio generation service
-node services/phases/phase8-audio-supabase.cjs
+node services/phases/phase8-audio-generator.cjs
 
 # API Endpoints (port 3465):
-POST /generate              # Start audio generation
-GET  /status/:courseCode    # Check job status
-GET  /health                # Health check
+POST   /generate                 # Start audio generation
+POST   /plan                     # Show generation plan (dry-run)
+GET    /status/:courseCode       # Check job status
+DELETE /cancel/:courseCode       # Cancel active job
+GET    /health                   # Health check
 ```
 
 **Phase 9: Manifest Compilation**
 ```bash
 # Start manifest compilation service
-node services/phases/phase9-manifest-supabase.cjs
+node services/phases/phase9-manifest-compiler.cjs
 
 # API Endpoints (port 3466):
 POST /compile               # Compile manifest from Supabase
 GET  /validate/:courseCode  # Validate audio coverage
+GET  /status/:courseCode    # Get manifest status
 GET  /health                # Health check
+```
+
+**Production API: QA + WebSocket** (`services/production-api.cjs`)
+```bash
+# Start production API server
+node services/production-api.cjs
+
+# API Endpoints (port 3470):
+GET  /api/production/health                              # Health check
+GET  /api/production/:courseCode/manifest                # Get course manifest
+GET  /api/production/:courseCode/flags                   # Get sample flags
+POST /api/production/:courseCode/flags/update            # Update single flag
+POST /api/production/:courseCode/flags/bulk-update       # Bulk update flags
+GET  /api/production/:courseCode/audio-metadata          # Get audio metadata
+GET  /api/production/:courseCode/audio/:uuid/url         # Get signed audio URL
+GET  /api/production/:courseCode/audio/:uuid/exists      # Check audio exists
+POST /api/production/:courseCode/recording/upload        # Upload human recording
+POST /api/production/internal/emit                       # Internal WebSocket emit
+
+# WebSocket endpoint:
+/api/production/websocket    # Socket.IO for real-time updates
 ```
 
 **Flow:**

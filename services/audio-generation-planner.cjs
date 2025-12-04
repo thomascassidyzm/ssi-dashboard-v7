@@ -9,6 +9,7 @@ const marService = require('./mar-service.cjs');
 const cadenceService = require('./cadence-service.cjs');
 const s3Service = require('./s3-service.cjs');
 const uuidService = require('./uuid-service.cjs');
+const langService = require('./language-code-service.cjs');
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
@@ -581,21 +582,11 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
 
 /**
  * Convert 3-letter language codes to 2-letter codes for voice registry lookup
+ * Uses centralized language-code-service for conversions
+ * @see /docs/architecture/LANGUAGE_CODE_STRATEGY.md
  */
 function normalizeLanguageCode(code) {
-  const mapping = {
-    'eng': 'en',
-    'spa': 'es',
-    'ita': 'it',
-    'fra': 'fr',
-    'deu': 'de',
-    'por': 'pt',
-    'rus': 'ru',
-    'jpn': 'ja',
-    'kor': 'ko',
-    'cmn': 'zh'
-  };
-  return mapping[code] || code;
+  return langService.legacyToStandard(code);
 }
 
 /**

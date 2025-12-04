@@ -1,14 +1,29 @@
 #!/usr/bin/env node
 
 /**
+ * ⚠️ DEPRECATED - NOT USED IN PRODUCTION
+ *
  * Unified Progress Tracker API
  *
- * Provides a single endpoint to query progress across all phases
- * for real-time dashboard monitoring.
+ * This service was designed to provide real-time progress monitoring across all phases,
+ * but is NOT currently used by the dashboard or any active workflows.
  *
- * Endpoints:
+ * STATUS: Exists in PM2 config (ecosystem.config.cjs) but NOT in start-automation.cjs
+ * REPLACEMENT: Dashboard gets progress from orchestrator (port 3456) WebSocket events
+ * HISTORICAL CONTEXT: Created during v9 for unified progress tracking before WebSocket implementation
+ *
+ * If you need progress tracking:
+ * - Use orchestrator WebSocket: ws://localhost:3456 (for real-time events)
+ * - Use production API: http://localhost:3470/api/production/:course/status (for QA workflow)
+ * - Check phase-specific status endpoints on each phase server
+ *
+ * Endpoints (if manually started):
  * - GET /api/progress/:course - Get progress for all phases
  * - GET /api/progress/:course/:phase - Get progress for specific phase
+ * - GET /health - Health check
+ *
+ * To manually start (if needed for debugging):
+ *   PORT=3462 node services/api/progress-tracker.cjs
  */
 
 const express = require('express');
@@ -347,7 +362,12 @@ app.get('/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log('');
-  console.log(`✅ Progress Tracker API listening on port ${PORT}`);
+  console.log(`⚠️  DEPRECATED SERVICE - Progress Tracker API`);
+  console.log(`   This service is NOT used in production. Consider using:`);
+  console.log(`   - Orchestrator WebSocket: ws://localhost:3456`);
+  console.log(`   - Production API: http://localhost:3470/api/production/:course/status`);
+  console.log('');
+  console.log(`✅ Listening on port ${PORT} (for manual testing only)`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log('');
   console.log(`📊 Endpoints:`);

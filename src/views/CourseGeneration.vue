@@ -778,7 +778,7 @@ const currentPhaseIndex = computed(() => {
   if (phase.includes('phase_3')) return 2
   if (phase.includes('manifest') || phase === 'compilation') return 3
   if (phase.includes('audio') || phase === 'tts') return 4
-  if (phase === 'completed') return 5
+  if (phase === 'complete') return 5
   return -1
 })
 
@@ -1135,7 +1135,7 @@ const startPolling = (code) => {
       }
 
       // Check if completed or error
-      if (status.status === 'completed') {
+      if (status.status === 'complete') {
         isCompleted.value = true
         isGenerating.value = false
         stopPolling()

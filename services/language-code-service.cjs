@@ -134,6 +134,11 @@ function loadCSV() {
         }
         if (legacyCode) {
           codeToLegacy[code] = legacyCode;
+          // Also populate reverse mapping: legacyCode → code (for legacyToStandard)
+          // Only add if not already in hardcoded LEGACY_TO_STANDARD
+          if (!LEGACY_TO_STANDARD[legacyCode]) {
+            LEGACY_TO_STANDARD[legacyCode] = code;
+          }
         }
         if (googleLocale) {
           codeToGoogle[code] = googleLocale;
@@ -143,6 +148,7 @@ function loadCSV() {
 
     console.log(`[language-code-service] Loaded ${Object.keys(codeToName).length} language codes from CSV`);
     console.log(`[language-code-service] TTS configured: ${Object.keys(codeToAzure).length} Azure, ${Object.keys(codeToElevenLabs).length} ElevenLabs, ${Object.keys(codeToGoogle).length} Google`);
+    console.log(`[language-code-service] Legacy mappings: ${Object.keys(LEGACY_TO_STANDARD).length} total (${Object.keys(codeToLegacy).length} from CSV)`);
   } catch (error) {
     console.error(`[language-code-service] Failed to load CSV: ${error.message}`);
     // Provide minimal fallback for common languages
@@ -348,7 +354,7 @@ function legacyToStandard(code) {
 
 /**
  * Convert a standard ISO code to the legacy format used in directory names
- * e.g., 'es' → 'spa', 'en' → 'eng'
+ * e.g., 'es' → 'spa', 'en' → 'eng', 'cy' → 'cym'
  *
  * @param {string} code - Standard ISO code
  * @returns {string} Legacy code (or original if no legacy equivalent)
@@ -356,7 +362,8 @@ function legacyToStandard(code) {
 function standardToLegacy(code) {
   if (!code) return code;
   const normalized = code.toLowerCase().trim();
-  return STANDARD_TO_LEGACY[normalized] || normalized;
+  // First check hardcoded mapping, then CSV data, then return original
+  return STANDARD_TO_LEGACY[normalized] || codeToLegacy[normalized] || normalized;
 }
 
 // ============================================================================

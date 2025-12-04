@@ -361,6 +361,9 @@ app.post('/generate', async (req, res) => {
 
     console.log(`[Phase 8] ${courseCode} complete:`, job.progress)
 
+    // Emit generation_complete event
+    emitGenerationComplete(courseCode, job.progress)
+
   } catch (err) {
     job.status = 'failed'
     job.error = err.message
@@ -527,6 +530,39 @@ async function emitProgress(courseCode, progress) {
           phase: 'audio_generation',
           ...progress,
           percentage: progress.total > 0 ? Math.round((progress.current / progress.total) * 100) : 0
+        }
+      })
+    })
+  } catch (e) {
+    // Ignore - production API might not be running
+  }
+}
+
+/**
+ * Emit generation complete event to Production API WebSocket
+ *
+ * @param {string} courseCode
+ * @param {Object} progress - Final progress stats
+ */
+async function emitGenerationComplete(courseCode, progress) {
+  const productionApiUrl = process.env.PRODUCTION_API_URL || 'http://localhost:3470'
+
+  try {
+    const fetch = require('node-fetch')
+    await fetch(`${productionApiUrl}/api/production/internal/emit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        courseCode,
+        event: 'generation_complete',
+        data: {
+          phase: 'audio_generation',
+          completedAt: new Date().toISOString(),
+          total: progress.total,
+          generated: progress.generated,
+          skipped: progress.skipped,
+          failed: progress.failed,
+          percentage: 100
         }
       })
     })
