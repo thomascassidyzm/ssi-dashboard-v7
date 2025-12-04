@@ -1156,9 +1156,11 @@ export default {
   async getAudioPlan(courseCode, options = {}) {
     const response = await api.post('/api/audio/plan', {
       courseCode,
+      voices: options.voices || null, // Voice overrides to calculate accurate cost
       options: {
         skipSync: options.skipSync || false,
-        skipDedup: options.skipDedup || false
+        skipDedup: options.skipDedup || false,
+        forceRefresh: options.forceRefresh || false
       }
     })
     return response.data

@@ -291,6 +291,20 @@
               </span>
             </div>
           </div>
+
+          <!-- Refresh Cost Button -->
+          <div class="mt-4 pt-4 border-t border-slate-700">
+            <button
+              @click="refreshCostEstimate"
+              :disabled="loadingPlan"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 border border-slate-600 rounded-lg text-sm transition-all flex items-center gap-2"
+            >
+              <span v-if="loadingPlan">⏳</span>
+              <span v-else>🔄</span>
+              {{ loadingPlan ? 'Refreshing...' : 'Refresh Cost Estimate' }}
+            </button>
+            <p class="text-xs text-slate-500 mt-2">Click after changing voices to update cost estimate</p>
+          </div>
         </section>
 
         <!-- Pipeline Summary -->
@@ -560,9 +574,11 @@ async function getPlan() {
     // Load available voices first
     await loadAvailableVoices()
 
-    // Get the generation plan
+    // Get the generation plan (pass selected voices for accurate cost)
     toast.info('📋 Getting audio generation plan...')
-    const planResponse = await api.getAudioPlan(courseCode.value)
+    const planResponse = await api.getAudioPlan(courseCode.value, {
+      voices: hasVoiceSelection() ? selectedVoices.value : null
+    })
 
     if (!planResponse.success) {
       toast.error(`❌ Plan failed: ${planResponse.error}`)
@@ -589,6 +605,34 @@ async function getPlan() {
       const errorMsg = err.response?.data?.error || err.message || 'Unknown error'
       toast.error(`❌ Failed to get plan: ${errorMsg}`)
     }
+  } finally {
+    loadingPlan.value = false
+  }
+}
+
+function hasVoiceSelection() {
+  return selectedVoices.value.target1 || selectedVoices.value.target2 ||
+         selectedVoices.value.source || selectedVoices.value.presentation
+}
+
+async function refreshCostEstimate() {
+  if (!audioPlan.value) return
+
+  loadingPlan.value = true
+  try {
+    toast.info('🔄 Refreshing cost estimate with selected voices...')
+    const planResponse = await api.getAudioPlan(courseCode.value, {
+      voices: selectedVoices.value,
+      forceRefresh: true
+    })
+
+    if (planResponse.success) {
+      audioPlan.value = planResponse.plan
+      toast.success(`💰 Cost updated: ${planResponse.plan.estimates?.estimatedCost || '$0'}`)
+    }
+  } catch (err) {
+    console.error('Failed to refresh cost:', err)
+    toast.error('❌ Failed to refresh cost estimate')
   } finally {
     loadingPlan.value = false
   }

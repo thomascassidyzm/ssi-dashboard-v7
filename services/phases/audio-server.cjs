@@ -108,7 +108,7 @@ const approvedPlans = new Map();
  * IMPORTANT: This does NOT start generation. User must call /start after reviewing.
  */
 app.post('/plan', async (req, res) => {
-  const { courseCode, options = {} } = req.body;
+  const { courseCode, options = {}, voices: voiceOverrides } = req.body;
 
   if (!courseCode) {
     return res.status(400).json({
@@ -117,8 +117,8 @@ app.post('/plan', async (req, res) => {
     });
   }
 
-  // Check cache first (unless force refresh requested)
-  if (!options.forceRefresh) {
+  // Check cache first (unless force refresh requested or voices provided)
+  if (!options.forceRefresh && !voiceOverrides) {
     const cachedPlan = getCachedPlan(courseCode);
     if (cachedPlan) {
       return res.json(cachedPlan);
@@ -130,7 +130,13 @@ app.post('/plan', async (req, res) => {
   try {
     // Load manifest and voice assignments
     const manifest = await audioOrchestrator.loadCourseManifest(courseCode);
-    const voices = await audioOrchestrator.getVoiceAssignments(courseCode);
+    let voices = await audioOrchestrator.getVoiceAssignments(courseCode);
+
+    // Apply voice overrides if provided
+    if (voiceOverrides) {
+      voices = { ...voices, ...voiceOverrides };
+      console.log('[Phase 8] Using voice overrides:', voiceOverrides);
+    }
 
     // Analyze what needs to be generated
     // Note: Parameter order is (manifest, courseCode, voiceAssignments) - manifest first!
@@ -165,15 +171,29 @@ app.post('/plan', async (req, res) => {
       byRole[sample.role] = (byRole[sample.role] || 0) + 1;
     }
 
-    // Estimate costs (Azure is free tier, ElevenLabs is paid)
-    const azureRoles = ['target1', 'target2'];
-    const elevenLabsRoles = ['source', 'presentation'];
-    const azureCount = toGenerateList.filter(s => azureRoles.includes(s.role)).length;
-    const elevenLabsCount = toGenerateList.filter(s => elevenLabsRoles.includes(s.role)).length;
+    // Estimate costs based on actual voice provider selection
+    // Check voice prefix to determine provider: azure_ vs elevenlabs_
+    const getProvider = (role) => {
+      const voiceId = voices[role] || '';
+      if (voiceId.startsWith('elevenlabs_')) return 'elevenlabs';
+      if (voiceId.startsWith('azure_')) return 'azure';
+      return 'azure'; // default to azure (free)
+    };
+
+    let azureCount = 0;
+    let elevenLabsCount = 0;
+    for (const sample of toGenerateList) {
+      const provider = getProvider(sample.role);
+      if (provider === 'elevenlabs') {
+        elevenLabsCount++;
+      } else {
+        azureCount++;
+      }
+    }
 
     // Rough cost estimate: ElevenLabs ~$0.30 per 1000 chars, avg 20 chars per sample
     const estimatedCost = elevenLabsCount > 0
-      ? `~$${((elevenLabsCount * 20 * 0.30) / 1000).toFixed(2)} (ElevenLabs)`
+      ? `~$${((elevenLabsCount * 20 * 0.30) / 1000).toFixed(2)} (ElevenLabs: ${elevenLabsCount} samples)`
       : '$0 (Azure free tier only)';
 
     // Rough time estimate: ~2 samples/sec for Azure, ~1 sample/sec for ElevenLabs
