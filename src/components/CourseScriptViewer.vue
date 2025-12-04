@@ -881,9 +881,10 @@ export default {
 .timeline-track {
   position: relative;
   padding: 15vh 0 20vh;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 60px;
+  padding-right: 24px;
 }
 
 .timeline-spine {
@@ -1018,7 +1019,8 @@ export default {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .phrase-known {
