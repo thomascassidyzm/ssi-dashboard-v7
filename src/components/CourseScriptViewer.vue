@@ -65,22 +65,16 @@
           ]"
           @click="jumpToItem(index)"
         >
-          <!-- Line meta: code and type -->
-          <div class="line-meta">
+          <!-- Single line: meta + content + phase dots -->
+          <div class="line-row">
             <span class="line-code">{{ item.seedCode || `S${String(item.seedNum || index + 1).padStart(4, '0')}` }}{{ item.legoCode ? `L${String(item.legoCode).padStart(2, '0')}` : '' }}</span>
             <span :class="['line-type', item.type]">{{ getTypeLabel(item.type) }}</span>
-            <span v-if="item.isNew === false" class="review-badge">rev</span>
-          </div>
-
-          <!-- Main content - known : target side by side with inline phase dots -->
-          <div class="line-content">
             <span class="known-text" :class="{ active: currentIndex === index && currentPhase === 'prompt' }">{{ item.knownText }}</span>
             <span class="separator">:</span>
             <span class="target-text" :class="{
               'voice1': currentIndex === index && currentPhase === 'voice1',
               'voice2': currentIndex === index && currentPhase === 'voice2'
             }">{{ item.targetText }}</span>
-            <!-- Inline phase dots -->
             <span v-if="currentIndex === index" class="phase-dots-inline">
               <span :class="['dot', { active: currentPhase === 'prompt' }]"></span>
               <span :class="['dot pause', { active: currentPhase === 'pause' }]"></span>
@@ -706,27 +700,29 @@ export default {
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* Line Meta - compact */
-.line-meta {
+/* Single line row */
+.line-row {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: nowrap;
 }
 
 .line-code {
   font-family: 'SF Mono', Monaco, monospace;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-muted);
   letter-spacing: 0.3px;
+  flex-shrink: 0;
 }
 
 .line-type {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   padding: 2px 6px;
   border-radius: 3px;
   letter-spacing: 0.3px;
+  flex-shrink: 0;
 }
 
 .line-type.introduction { background: #7c3aed20; color: #a78bfa; }
@@ -741,16 +737,8 @@ export default {
   font-style: italic;
 }
 
-/* Line Content - horizontal layout */
-.line-content {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 .known-text {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.3;
@@ -763,12 +751,13 @@ export default {
 }
 
 .separator {
-  font-size: 18px;
+  font-size: 22px;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .target-text {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--accent);
   line-height: 1.3;
