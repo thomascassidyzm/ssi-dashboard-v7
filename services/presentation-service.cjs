@@ -14,6 +14,46 @@ const path = require('path');
 const audioProcessor = require('./audio-processor.cjs');
 const s3Service = require('./s3-service.cjs');
 const elevenlabsService = require('./elevenlabs-service.cjs');
+const azureTTS = require('./azure-tts-service.cjs');
+
+/**
+ * Generate TTS audio using the appropriate provider based on voice ID
+ * @param {string} text - Text to synthesize
+ * @param {Object} voiceDetails - Voice configuration object
+ * @param {string} outputPath - Path to save the audio file
+ * @param {Object} options - Additional TTS options
+ */
+async function generateTTS(text, voiceDetails, outputPath, options = {}) {
+  const isAzure = voiceDetails.provider === 'azure' ||
+                  (voiceDetails.id && voiceDetails.id.startsWith('azure_'));
+
+  if (isAzure) {
+    // Azure TTS
+    await azureTTS.generateAudio(
+      text,
+      voiceDetails.provider_id,
+      outputPath,
+      {
+        style: voiceDetails.style || 'friendly',
+        rate: options.rate || '0%',
+        pitch: options.pitch || '0%'
+      }
+    );
+  } else {
+    // ElevenLabs TTS
+    await elevenlabsService.generateAudioWithRetry(
+      text,
+      voiceDetails.provider_id,
+      outputPath,
+      {
+        model: voiceDetails.model || elevenlabsService.MODELS.FLASH_V2_5,
+        stability: voiceDetails.stability || 0.5,
+        similarityBoost: voiceDetails.similarity_boost || 0.75,
+        language: options.language || 'eng'
+      }
+    );
+  }
+}
 
 /**
  * Extract all unique text segments from presentation samples
@@ -306,18 +346,8 @@ async function generatePresentationAudio(sample, manifest, voiceAssignments, opt
       console.log(`  [DEBUG] Using cached source TTS: "${sourcePart.substring(0, 60)}..."`);
       await fs.copyFile(segmentCache.get(sourcePart), sourceAudioPath);
     } else {
-      console.log(`  [DEBUG] Generating source TTS: "${sourcePart.substring(0, 60)}..."`);
-      await elevenlabsService.generateAudioWithRetry(
-        sourcePart,
-        voiceDetails.provider_id,
-        sourceAudioPath,
-        {
-          model: voiceDetails.model || elevenlabsService.MODELS.FLASH_V2_5,
-          stability: voiceDetails.stability || 0.5,
-          similarityBoost: voiceDetails.similarity_boost || 0.75,
-          language: sourceLanguage
-        }
-      );
+      console.log(`  [DEBUG] Generating source TTS (${voiceDetails.provider || 'elevenlabs'}): "${sourcePart.substring(0, 60)}..."`);
+      await generateTTS(sourcePart, voiceDetails, sourceAudioPath, { language: sourceLanguage });
       console.log(`  [DEBUG] Source TTS saved to: ${sourceAudioPath}`);
     }
 
@@ -404,18 +434,8 @@ async function generatePresentationAudio(sample, manifest, voiceAssignments, opt
           if (segmentCache && segmentCache.has(segment.content)) {
             await fs.copyFile(segmentCache.get(segment.content), segmentPath);
           } else {
-            // Generate TTS for text segment
-            await elevenlabsService.generateAudioWithRetry(
-              segment.content,
-              voiceDetails.provider_id,
-              segmentPath,
-              {
-                model: voiceDetails.model || elevenlabsService.MODELS.FLASH_V2_5,
-                stability: voiceDetails.stability || 0.5,
-                similarityBoost: voiceDetails.similarity_boost || 0.75,
-                language: sourceLanguage
-              }
-            );
+            // Generate TTS for text segment using appropriate provider
+            await generateTTS(segment.content, voiceDetails, segmentPath, { language: sourceLanguage });
           }
 
           segmentAudioPaths.push(segmentPath);
@@ -564,21 +584,8 @@ async function generateSegmentBatch(uniqueSegments, voiceId, tempDir, options = 
             process.exit(1);
           }
 
-          // Generate TTS
-          const generationOptions = {
-            model: voice.model || elevenlabsService.MODELS.FLASH_V2_5,
-            stability: voice.stability || 0.5,
-            similarityBoost: voice.similarity_boost || 0.75,
-            language: options.sourceLanguage || 'eng',
-            enablePriming: voice.priming === 'enabled'
-          };
-
-          await elevenlabsService.generateAudioWithRetry(
-            text,
-            voice.provider_id,
-            segmentPath,
-            generationOptions
-          );
+          // Generate TTS using appropriate provider (Azure or ElevenLabs)
+          await generateTTS(text, voice, segmentPath, { language: options.sourceLanguage || 'eng' });
 
           segmentCache.set(text, segmentPath);
 

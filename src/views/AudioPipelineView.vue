@@ -42,7 +42,7 @@
           'bg-emerald-900/20 border-emerald-500/50': jobStatus === 'complete',
           'bg-red-900/20 border-red-500/50': jobStatus === 'failed'
         }">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div v-if="jobStatus === 'running'" class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-400"></div>
               <span v-else-if="jobStatus === 'qc_checkpoint'" class="text-2xl">⏸️</span>
@@ -62,6 +62,53 @@
             </div>
             <div v-if="jobData?.startedAt" class="text-sm text-slate-500">
               Started: {{ formatTime(jobData.startedAt) }}
+            </div>
+          </div>
+
+          <!-- Real-time Progress (when running) -->
+          <div v-if="jobStatus === 'running' && progressData" class="mt-4 space-y-4">
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-500"
+                :style="{ width: progressData.progress?.percentage + '%' }"
+              ></div>
+            </div>
+
+            <!-- Progress Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-2xl font-bold text-blue-400">
+                  {{ progressData.progress?.current || 0 }} / {{ progressData.progress?.total || '?' }}
+                </div>
+                <div class="text-xs text-slate-400">Samples Generated</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-2xl font-bold text-cyan-400">
+                  {{ progressData.progress?.percentage || 0 }}%
+                </div>
+                <div class="text-xs text-slate-400">Complete</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-2xl font-bold text-emerald-400">
+                  {{ progressData.progress?.rate || 0 }}/sec
+                </div>
+                <div class="text-xs text-slate-400">Generation Rate</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-2xl font-bold text-yellow-400">
+                  {{ progressData.progress?.etaFormatted || '--' }}
+                </div>
+                <div class="text-xs text-slate-400">Remaining</div>
+              </div>
+            </div>
+
+            <!-- Elapsed Time -->
+            <div class="text-center text-sm text-slate-500">
+              Elapsed: {{ progressData.progress?.elapsedFormatted || '--' }}
+              <span v-if="progressData.phase" class="ml-4">
+                Phase: {{ progressData.phase }}
+              </span>
             </div>
           </div>
         </section>
@@ -411,6 +458,7 @@ const qcReport = ref(null)
 const selectedForRegeneration = ref([])
 const processingAction = ref(false)
 const phaseAComplete = ref(false)
+const progressData = ref(null) // Real-time progress from /progress endpoint
 
 // Audio plan and voice selection
 const audioPlan = ref(null)
@@ -723,24 +771,42 @@ function startPolling() {
 
   pollInterval = setInterval(async () => {
     try {
-      const response = await api.getPhase8Status(courseCode.value)
-      if (response.success && response.job) {
-        jobData.value = response.job
-        jobStatus.value = response.job.status
+      // Get real-time progress data
+      const progressResponse = await api.getAudioProgress(courseCode.value)
+      if (progressResponse.success) {
+        progressData.value = progressResponse
 
-        // Load QC report if at checkpoint
-        if (response.job.status === 'qc_checkpoint') {
-          await loadQCReport()
-          stopPolling()
-          // Phase A is complete when at QC checkpoint
-          phaseAComplete.value = true
-        } else if (response.job.status === 'complete' || response.job.status === 'failed') {
-          stopPolling()
-          if (response.job.status === 'complete') {
-            toast.success('✅ Audio generation complete!')
-            // If phase was targets, Phase A is complete
-            if (response.job.phase === 'targets' || response.job.phase === 'A') {
-              phaseAComplete.value = true
+        // Update status from progress if active
+        if (progressResponse.active) {
+          jobStatus.value = progressResponse.status
+          jobData.value = {
+            ...jobData.value,
+            status: progressResponse.status,
+            phase: progressResponse.phase
+          }
+        }
+
+        // Also check full job status for completion/QC states
+        const statusResponse = await api.getPhase8Status(courseCode.value)
+        if (statusResponse.success && statusResponse.job) {
+          jobData.value = statusResponse.job
+          jobStatus.value = statusResponse.job.status
+
+          // Load QC report if at checkpoint
+          if (statusResponse.job.status === 'qc_checkpoint') {
+            await loadQCReport()
+            stopPolling()
+            // Phase A is complete when at QC checkpoint
+            phaseAComplete.value = true
+          } else if (statusResponse.job.status === 'complete' || statusResponse.job.status === 'failed') {
+            stopPolling()
+            progressData.value = null
+            if (statusResponse.job.status === 'complete') {
+              toast.success('✅ Audio generation complete!')
+              // If phase was targets, Phase A is complete
+              if (statusResponse.job.phase === 'targets' || statusResponse.job.phase === 'A') {
+                phaseAComplete.value = true
+              }
             }
           }
         }
@@ -748,7 +814,7 @@ function startPolling() {
     } catch (err) {
       console.error('Polling error:', err)
     }
-  }, 5000)
+  }, 2000) // Poll every 2 seconds for smoother progress updates
 }
 
 function stopPolling() {

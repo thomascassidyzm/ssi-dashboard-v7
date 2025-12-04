@@ -1190,6 +1190,12 @@ export default {
     return response.data
   },
 
+  // Get real-time Audio generation progress
+  async getAudioProgress(courseCode) {
+    const response = await api.get(`/api/audio/progress/${courseCode}`)
+    return response.data
+  },
+
   // Continue Audio processing after QC approval
   async continueAudioProcessing(courseCode, options = {}) {
     const response = await api.post('/api/audio/continue', {

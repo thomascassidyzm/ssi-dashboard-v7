@@ -466,9 +466,40 @@ async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target
   const samples = manifest.slices?.[0]?.samples || {};
   const targetLang = manifest.target;
   const knownLang = manifest.known;
+  const courseCode = `${targetLang}_for_${knownLang}`;
 
   let assigned = 0;
   let missing = 0;
+  let foundLocal = 0;
+  let foundS3 = 0;
+
+  // Pre-load all local temp file UUIDs for fast lookup
+  const localUUIDs = new Set();
+  if (await fs.pathExists(AUDIO_TEMP_DIR)) {
+    const files = await fs.readdir(AUDIO_TEMP_DIR);
+    for (const f of files) {
+      if (f.endsWith('.mp3')) {
+        localUUIDs.add(f.replace('.mp3', ''));
+      }
+    }
+  }
+  console.log(`[reassignUUIDs] Found ${localUUIDs.size} local temp files`);
+
+  // Pre-load S3 index for fast lookup
+  const s3UUIDs = new Set();
+  const S3_INDEX_PATH = path.join(__dirname, '../temp/s3-audio-index.json');
+  if (await fs.pathExists(S3_INDEX_PATH)) {
+    try {
+      const index = await fs.readJson(S3_INDEX_PATH);
+      for (const uuid of index.uuids || []) {
+        s3UUIDs.add(uuid);
+        s3UUIDs.add(uuid.toUpperCase()); // Handle case variations
+      }
+      console.log(`[reassignUUIDs] Loaded S3 index with ${index.uuids?.length || 0} UUIDs`);
+    } catch (e) {
+      console.warn(`[reassignUUIDs] Could not load S3 index: ${e.message}`);
+    }
+  }
 
   for (const [text, variantList] of Object.entries(samples)) {
     for (const variant of variantList) {
@@ -500,10 +531,44 @@ async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target
         variant.duration = existing.duration || 0;
         assigned++;
       } else {
-        missing++;
-        console.warn(`Missing sample in MAR: [${variant.role}/${variant.cadence}] "${text.substring(0, 60)}..."`);
+        // Not in MAR - generate the deterministic UUID and check other sources
+        const expectedUUID = uuidService.generateSampleUUID(text, language, variant.role, variant.cadence);
+
+        if (localUUIDs.has(expectedUUID)) {
+          // Found in local temp files!
+          variant.id = expectedUUID;
+          try {
+            const filePath = path.join(AUDIO_TEMP_DIR, `${expectedUUID}.mp3`);
+            const stats = await fs.stat(filePath);
+            variant.duration = Math.round(stats.size / 2000 * 10) / 10;
+          } catch (e) {
+            variant.duration = 0;
+          }
+          foundLocal++;
+          assigned++;
+        } else if (s3UUIDs.has(expectedUUID) || s3UUIDs.has(expectedUUID.toUpperCase())) {
+          // Found in S3 index!
+          variant.id = expectedUUID;
+          variant.duration = 0; // Duration unknown from index
+          foundS3++;
+          assigned++;
+        } else {
+          missing++;
+          if (missing <= 20) {
+            console.warn(`Missing sample: [${variant.role}/${variant.cadence}] "${text.substring(0, 50)}..." UUID: ${expectedUUID}`);
+          } else if (missing === 21) {
+            console.warn(`... (suppressing further missing sample warnings)`);
+          }
+        }
       }
     }
+  }
+
+  if (foundLocal > 0) {
+    console.log(`[reassignUUIDs] Found ${foundLocal} samples in local temp files`);
+  }
+  if (foundS3 > 0) {
+    console.log(`[reassignUUIDs] Found ${foundS3} samples in S3 index`);
   }
 
   return { assigned, missing };

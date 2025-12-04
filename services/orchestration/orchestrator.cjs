@@ -2362,6 +2362,28 @@ app.get('/api/audio/status/:courseCode', handleAudioStatus);
 app.get('/api/phase8/status/:courseCode', handleAudioStatus);  // Legacy
 
 /**
+ * GET /api/audio/progress/:courseCode - Real-time progress during generation
+ */
+async function handleAudioProgress(req, res) {
+  try {
+    const { courseCode } = req.params;
+    const audioUrl = PHASE_SERVERS['audio'];
+
+    const response = await axios.get(`${audioUrl}/progress/${courseCode}`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ success: false, error: 'Audio server not running' });
+    }
+    if (error.response?.status === 404) {
+      return res.json({ success: true, active: false, message: 'No active job' });
+    }
+    res.status(error.response?.status || 500).json({ success: false, error: error.message });
+  }
+}
+app.get('/api/audio/progress/:courseCode', handleAudioProgress);
+
+/**
  * POST /api/audio/continue (APML v9.0) and /api/phase8/continue (legacy)
  */
 async function handleAudioContinue(req, res) {

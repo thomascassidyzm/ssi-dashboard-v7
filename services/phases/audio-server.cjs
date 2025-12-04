@@ -459,6 +459,96 @@ app.get('/status/:courseCode', (req, res) => {
 });
 
 /**
+ * Get real-time progress of audio generation
+ *
+ * GET /progress/:courseCode
+ *
+ * Returns:
+ * - current: number of files generated
+ * - total: total files to generate
+ * - percentage: completion percentage
+ * - rate: samples per second
+ * - eta: estimated seconds remaining
+ * - phase: current phase (phase-a, phase-b, etc)
+ */
+app.get('/progress/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  const job = activeJobs.get(courseCode);
+
+  if (!job) {
+    return res.json({
+      success: true,
+      active: false,
+      message: 'No active job'
+    });
+  }
+
+  try {
+    // Count files in temp/audio/ directory
+    const tempAudioDir = path.join(__dirname, '../../temp/audio');
+    let current = 0;
+
+    if (await fs.pathExists(tempAudioDir)) {
+      const files = await fs.readdir(tempAudioDir);
+      current = files.filter(f => f.endsWith('.mp3')).length;
+    }
+
+    // Get total from job state or cached plan
+    const total = job.progress?.total || 0;
+    const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
+
+    // Calculate rate and ETA
+    const startTime = new Date(job.startedAt).getTime();
+    const elapsed = (Date.now() - startTime) / 1000; // seconds
+    const rate = elapsed > 0 ? (current / elapsed).toFixed(2) : 0;
+    const remaining = total - current;
+    const eta = rate > 0 ? Math.round(remaining / rate) : null;
+
+    res.json({
+      success: true,
+      active: job.status === 'running',
+      courseCode: job.courseCode,
+      jobId: job.jobId,
+      status: job.status,
+      phase: job.phase,
+      progress: {
+        current,
+        total,
+        percentage,
+        rate: parseFloat(rate),
+        eta,
+        etaFormatted: eta ? formatDuration(eta) : null,
+        elapsed: Math.round(elapsed),
+        elapsedFormatted: formatDuration(Math.round(elapsed))
+      },
+      startedAt: job.startedAt
+    });
+  } catch (error) {
+    console.error('[Phase 8] Error getting progress:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * Format seconds into human-readable duration
+ */
+function formatDuration(seconds) {
+  if (seconds < 60) return `${seconds}s`;
+  if (seconds < 3600) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}m ${secs}s`;
+  }
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  return `${hours}h ${mins}m`;
+}
+
+/**
  * Continue processing after QC approval
  *
  * POST /continue
