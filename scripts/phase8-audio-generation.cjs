@@ -180,6 +180,52 @@ async function checkLocalTempFiles(courseCode, uuidsToCheck) {
 }
 
 /**
+ * Check UUIDs against the local S3 index file
+ * Falls back to batch S3 API calls if index is missing or stale
+ *
+ * @param {string[]} uuidsToCheck - Array of UUIDs to check
+ * @returns {Promise<Set<string>>} Set of UUIDs that exist in S3
+ */
+async function checkS3Index(uuidsToCheck) {
+  const S3_INDEX_PATH = path.join(__dirname, '../temp/s3-audio-index.json');
+  const INDEX_MAX_AGE = 60 * 60 * 1000; // 1 hour
+
+  try {
+    // Check if index exists and is recent
+    if (await fs.pathExists(S3_INDEX_PATH)) {
+      const index = await fs.readJson(S3_INDEX_PATH);
+      const indexAge = Date.now() - new Date(index.timestamp).getTime();
+
+      if (indexAge < INDEX_MAX_AGE) {
+        // Use index - fast Set lookup
+        const indexSet = new Set(index.uuids);
+        const found = new Set();
+
+        for (const uuid of uuidsToCheck) {
+          if (indexSet.has(uuid) || indexSet.has(uuid.toUpperCase())) {
+            found.add(uuid);
+          }
+        }
+
+        console.log(`    (using S3 index from ${Math.round(indexAge / 1000)}s ago)`);
+        return found;
+      } else {
+        console.log(`    (S3 index is ${Math.round(indexAge / 60000)} mins old, using fallback)`);
+      }
+    } else {
+      console.log('    (S3 index not found, using fallback)');
+    }
+  } catch (error) {
+    console.warn('    (S3 index error, using fallback):', error.message);
+  }
+
+  // Fallback to batch S3 API calls (slow but works without index)
+  console.log('    Falling back to S3 API batch check...');
+  const { existing } = await s3Service.batchCheckAudio(uuidsToCheck);
+  return new Set(existing);
+}
+
+/**
  * Extract language codes from course code
  * Format: <target>_for_<source>_<seeds>
  * Example: deu_for_eng_30seeds → { target: 'de', source: 'en' }
@@ -562,16 +608,17 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
   const localExisting = await checkLocalTempFiles(courseCode, uniqueUUIDs);
   console.log(`  ✓ Found ${localExisting.size} existing samples in local temp`);
 
-  // Check remaining UUIDs against S3
+  // Check remaining UUIDs against S3 index (fast local lookup)
   const uuidsToCheckS3 = uniqueUUIDs.filter(uuid => !localExisting.has(uuid));
-  console.log(`  Checking ${uuidsToCheckS3.length} remaining UUIDs against S3...`);
+  console.log(`  Checking ${uuidsToCheckS3.length} remaining UUIDs against S3 index...`);
 
-  // Batch check UUIDs against S3 (much faster than listing all 700k+ files)
-  const { existing: existingUUIDs } = await s3Service.batchCheckAudio(uuidsToCheckS3);
+  // Use local S3 index instead of individual HEAD requests
+  const s3Existing = await checkS3Index(uuidsToCheckS3);
+  console.log(`  ✓ Found ${s3Existing.size} in S3 index`);
 
   // Combine local and S3 existing sets
-  const existingSet = new Set([...localExisting, ...existingUUIDs]);
-  console.log(`  ✓ Found ${existingUUIDs.length} in S3, ${existingSet.size} total existing samples`);
+  const existingSet = new Set([...localExisting, ...s3Existing]);
+  console.log(`  ✓ Total: ${existingSet.size} existing samples (${localExisting.size} local + ${s3Existing.size} S3)`);
 
   // Second pass: categorize variants based on S3 existence
   for (const variant of variantsWithUUIDs) {
