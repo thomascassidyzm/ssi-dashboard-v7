@@ -140,6 +140,46 @@ async function getAllExistingSampleUUIDs() {
 }
 
 /**
+ * Check local temp directories for existing audio files
+ * Returns a Set of UUIDs that exist locally (to avoid re-generating them)
+ *
+ * @param {string} courseCode - Course identifier (e.g., 'cmn_for_eng')
+ * @param {string[]} uuidsToCheck - Array of UUIDs to check for
+ * @returns {Promise<Set<string>>} Set of UUIDs that exist locally
+ */
+async function checkLocalTempFiles(courseCode, uuidsToCheck) {
+  // Get all existing local UUIDs for this course
+  const localUUIDs = await getExistingSampleUUIDs(courseCode);
+
+  // Also check legacy flat directory (temp/audio/)
+  const legacyDir = AUDIO_TEMP_DIR;
+  if (await fs.pathExists(legacyDir)) {
+    try {
+      const files = await fs.readdir(legacyDir);
+      for (const f of files) {
+        if (f.endsWith('.mp3') && /^[0-9A-F]/.test(f)) {
+          localUUIDs.add(f.replace('.mp3', ''));
+        }
+      }
+    } catch (err) {
+      // Ignore errors reading legacy directory
+    }
+  }
+
+  // Filter to only the UUIDs we're checking for
+  const uuidsToCheckSet = new Set(uuidsToCheck);
+  const foundLocally = new Set();
+
+  for (const uuid of localUUIDs) {
+    if (uuidsToCheckSet.has(uuid)) {
+      foundLocally.add(uuid);
+    }
+  }
+
+  return foundLocally;
+}
+
+/**
  * Extract language codes from course code
  * Format: <target>_for_<source>_<seeds>
  * Example: deu_for_eng_30seeds → { target: 'de', source: 'en' }
@@ -516,12 +556,22 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
 
   // Get unique UUIDs to check (some may be duplicates due to capitalization)
   const uniqueUUIDs = [...new Set(variantsWithUUIDs.map(v => v.uuid))];
-  console.log(`  Checking ${uniqueUUIDs.length} unique UUIDs against S3...`);
+  console.log(`  Checking ${uniqueUUIDs.length} unique UUIDs...`);
+
+  // Check local temp directories first (fast filesystem scan)
+  const localExisting = await checkLocalTempFiles(courseCode, uniqueUUIDs);
+  console.log(`  ✓ Found ${localExisting.size} existing samples in local temp`);
+
+  // Check remaining UUIDs against S3
+  const uuidsToCheckS3 = uniqueUUIDs.filter(uuid => !localExisting.has(uuid));
+  console.log(`  Checking ${uuidsToCheckS3.length} remaining UUIDs against S3...`);
 
   // Batch check UUIDs against S3 (much faster than listing all 700k+ files)
-  const { existing: existingUUIDs } = await s3Service.batchCheckAudio(uniqueUUIDs);
-  const existingSet = new Set(existingUUIDs);
-  console.log(`  ✓ Found ${existingSet.size} existing samples in S3`);
+  const { existing: existingUUIDs } = await s3Service.batchCheckAudio(uuidsToCheckS3);
+
+  // Combine local and S3 existing sets
+  const existingSet = new Set([...localExisting, ...existingUUIDs]);
+  console.log(`  ✓ Found ${existingUUIDs.length} in S3, ${existingSet.size} total existing samples`);
 
   // Second pass: categorize variants based on S3 existence
   for (const variant of variantsWithUUIDs) {
