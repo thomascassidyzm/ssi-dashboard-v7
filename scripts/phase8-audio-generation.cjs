@@ -480,26 +480,13 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
 
   console.log(`\nAnalyzing required generation for ${variants.length} samples...`);
 
-  // Get the voice IDs we'll be using for this course
-  const voiceIds = Object.values(voiceAssignments).filter(Boolean);
-  const uniqueVoiceIds = [...new Set(voiceIds)];
+  // Build S3 index - lists all existing audio files in ssi-audio-stage/mastered/
+  // This is the authoritative source of what audio exists (not MAR, not audio-index)
+  console.log('  Building S3 mastered index (listing existing audio files)...');
+  const existingUUIDs = await s3Service.buildMasteredIndex();
+  console.log(`  ✓ Found ${existingUUIDs.size} existing samples in S3`);
 
-  // Sync MAR from S3 for the voices we need (downloads missing samples.json files)
-  console.log(`  Syncing MAR for ${uniqueVoiceIds.length} voices...`);
-  const marSyncResult = await preflightCheck.checkMARSyncStatus(uniqueVoiceIds);
-  if (marSyncResult.fixed) {
-    console.log(`  ✓ ${marSyncResult.message}`);
-  } else {
-    console.log(`  ✓ ${marSyncResult.message}`);
-  }
-
-  // Load MAR index from local samples_database (fast - just reads local JSON files)
-  console.log('  Building MAR index...');
-  const marIndex = await marService.loadMARIndex(uniqueVoiceIds);
-  const totalSamples = Object.values(marIndex).reduce((sum, voiceSamples) => sum + Object.keys(voiceSamples).length, 0);
-  console.log(`  ✓ MAR index loaded: ${totalSamples} samples across ${uniqueVoiceIds.length} voices`);
-
-  // First pass: generate all UUIDs and check against S3
+  // First pass: generate deterministic UUIDs and check against S3 existence
   for (const variant of variants) {
     const voiceId = voiceAssignments[variant.role];
 
@@ -511,33 +498,21 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
     // Determine language for this role
     const language = ['target1', 'target2'].includes(variant.role) ? targetLang : knownLang;
 
-    // Generate deterministic UUID for NEW samples (includes voiceId)
-    // For presentations: use existing manifest ID if available
-    let newSampleUUID;
-    if (variant.role === 'presentation' && variant.id) {
-      newSampleUUID = variant.id;
-    } else {
-      newSampleUUID = uuidService.generateSampleUUID(
-        variant.text,
-        language,
-        variant.role,
-        variant.cadence,
-        voiceId
-      );
-    }
+    // Generate deterministic UUID using legacy format (text|language|role|cadence)
+    // Text must be lowercase to match how audio was originally generated
+    // This is the UUID that the audio file is stored under in S3
+    const sampleUUID = uuidService.generateLegacyUUID(
+      variant.text.toLowerCase(),
+      language,
+      variant.role,
+      variant.cadence
+    );
 
-    // Check MAR index using key format: text|role|cadence (per voice)
-    // MAR is the source of truth for existing generated samples
-    const marKey = marService.buildIndexKey(variant.text, variant.role, variant.cadence);
-    const voiceIndex = marIndex[voiceId] || {};
-    const existingEntry = voiceIndex[marKey];
-    const existsInMAR = !!existingEntry;
+    // Check if this UUID exists in S3 mastered folder
+    const existsInS3 = existingUUIDs.has(sampleUUID);
 
-    // Use existing UUID if found, otherwise use new UUID scheme for generation
-    const sampleUUID = existsInMAR ? existingEntry.uuid : newSampleUUID;
-
-    // Check MAR (O(1) lookup)
-    if (existsInMAR) {
+    // Check S3 existence (O(1) lookup against Set)
+    if (existsInS3) {
       // Found existing sample in S3
       matched.push({
         text: variant.text,
