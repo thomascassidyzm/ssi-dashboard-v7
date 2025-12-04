@@ -419,9 +419,20 @@ const currentlyPlaying = ref(null)
 // Polling
 let pollInterval = null
 
-// Calculate sample counts
-const phaseASamples = computed(() => (course.value.actual_seed_count || 0) * 3)
-const phaseBSamples = computed(() => (course.value.lego_count || 0) * 3)
+// Calculate sample counts - use plan data if available, otherwise fall back to course metadata
+const phaseASamples = computed(() => {
+  if (audioPlan.value?.analysis?.byRole) {
+    const byRole = audioPlan.value.analysis.byRole
+    return (byRole.target1 || 0) + (byRole.target2 || 0) + (byRole.source || 0)
+  }
+  return (course.value.actual_seed_count || 0) * 3
+})
+const phaseBSamples = computed(() => {
+  if (audioPlan.value?.analysis?.byRole) {
+    return audioPlan.value.analysis.byRole.presentation || 0
+  }
+  return (course.value.lego_count || 0) * 3
+})
 const totalSamples = computed(() => phaseASamples.value + phaseBSamples.value + 77)
 
 // Check if manifest is complete (supports both new and legacy phase identifiers)
