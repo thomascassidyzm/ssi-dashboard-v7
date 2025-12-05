@@ -1,0 +1,1037 @@
+# APML Reverse-Compilation: Popty/SSi Dashboard v7
+# Generated: 2025-12-05
+# APML Version: 1.0.0 (with proposed extensions)
+# Source: Vue 3 + TypeScript application
+
+# =============================================================================
+# APPLICATION DECLARATION
+# =============================================================================
+
+app SSiDashboard:
+  title: "Popty - SSi Course Production Dashboard"
+  version: "10.0.0"
+  description: "Language learning course production system with LEGO-based recombination pedagogy"
+  triadic_compliance: verified
+
+  conservation_properties:
+    intent_preservation: across_all_platforms
+    business_logic: preserved
+    data_relationships: maintained
+    workflow_completeness: guaranteed
+
+# =============================================================================
+# DOMAIN VOCABULARY (SSi-SPECIFIC)
+# =============================================================================
+
+vocabulary SSiPedagogy:
+  # Core pedagogical concepts that inform the entire application
+  seed: "Canonical English sentence forming course backbone"
+  lego: "Reusable language building block"
+  basket: "Collection of practice phrases for a LEGO"
+  slice: "Group of seeds for batched processing"
+  phase: "Pipeline processing stage"
+  provenance: "Origin tracking format S{seed}L{num}"
+  debut: "First introduction of a LEGO"
+  eternal: "LEGO that appears repeatedly across course"
+  fd: "Fundamental Dependency - atomic building block"
+  lut: "Look-Up Table - pattern registry"
+
+# =============================================================================
+# DATA MODELS
+# =============================================================================
+
+data Seed:
+  # Canonical sentence that forms the course backbone
+  seed_id: string required unique  # Format: S0001-S0668
+  known: string required           # English phrase
+  target: string required          # Target language translation
+  canonical_index: integer         # Position in canonical corpus
+
+  constraints:
+    seed_id.pattern: "S[0-9]{4}"
+    seed_id.range: "S0001..S0668"
+
+  conservation_properties:
+    intent_preservation: across_all_platforms
+
+data LEGO:
+  # Reusable language building block
+  id: string required unique       # Format: S{seed}L{num}
+  type: enum("A", "M") required    # A=Atomic, M=Molecular
+  new: boolean required            # true=debut, false=reuse
+
+  lego:
+    known: string required         # English phrase
+    target: string required        # Target language phrase
+
+  components: LEGO[] optional      # For M-type: constituent LEGOs
+  teaches: string optional         # Pedagogical note
+  ref: string optional             # Reference to first introduction
+
+  constraints:
+    id.pattern: "S[0-9]{4}L[0-9]{2}"
+    type.values: ["A", "M"]
+
+  validation:
+    if type == "M":
+      require components.length > 0
+    if new == false:
+      require ref.exists
+
+data Basket:
+  # Practice phrase collection for a LEGO
+  lego_id: string required         # Reference to LEGO
+
+  phrases: PracticePhrase[]        # Practice items
+
+  cycle_order:                     # Learning sequence
+    - components                   # Building blocks first
+    - debut                        # Full LEGO introduction
+    - practice                     # Context sentences
+
+  conservation_properties:
+    pedagogical_sequence: preserved
+
+data PracticePhrase:
+  known: string required
+  target: string required
+  audio_uuid: string optional      # Reference to generated audio
+  is_component: boolean
+  is_debut: boolean
+  role: enum("source", "target1", "target2", "presentation")
+
+data Course:
+  course_code: string required unique  # Format: {target}_for_{known}
+  source_language: string required     # ISO 639-3
+  target_language: string required     # ISO 639-3
+  total_seeds: integer
+  version: string
+  status: enum("draft", "phase_1", "phase_2", "phase_3", "audio", "manifest", "complete")
+
+  phases_completed: string[]       # ["1", "2", "3", "audio", "manifest"]
+
+  files:
+    seed_pairs: boolean
+    lego_pairs: boolean
+    lego_baskets: boolean
+    introductions: boolean
+    course_manifest: boolean
+
+  conservation_properties:
+    integrity: validated_per_phase
+
+data AudioSample:
+  uuid: string required unique     # Deterministic: hash(voice_id|text|lang|role|cadence)
+  text: string required
+  language: string required
+  role: enum("source", "target1", "target2", "presentation")
+  cadence: enum("natural", "slow")
+  voice_id: string required
+  s3_path: string
+  duration_ms: integer
+
+  status: enum("pending", "flagged_regen_tts", "flagged_human_needed", "in_pipeline", "in_recording", "needs_review", "approved", "rejected")
+
+data CourseManifest:
+  course_code: string required
+  version: string required
+  generated_at: datetime
+
+  slices: Slice[]
+
+  audio_coverage:
+    total_samples: integer
+    approved: integer
+    flagged: integer
+    pending: integer
+
+data Slice:
+  slice_id: string required
+  seeds: ManifestSeed[]
+  legos: ManifestLEGO[]
+
+data ManifestSeed:
+  seed_id: string required
+  known: string
+  target: string
+  lego_refs: string[]              # LEGOs used in this seed
+
+data ManifestLEGO:
+  lego_id: string required
+  new: boolean
+  introduction_items: IntroductionItem[] optional  # Only if new==true
+
+data IntroductionItem:
+  role: string
+  text: string
+  audio_uuid: string
+
+# =============================================================================
+# PIPELINE DEFINITION
+# =============================================================================
+
+pipeline CourseGeneration:
+  description: "Multi-phase course production pipeline"
+
+  # Phase definition with clear inputs/outputs
+  phase Phase1_Translation:
+    name: "Translation + LEGO Extraction"
+    port: 3457
+    input: canonical_seeds.json
+    output: draft_lego_pairs.json
+
+    process:
+      for each seed in canonical_seeds:
+        translate seed.known to target_language
+        extract LEGOs from translation
+        emit draft_lego_pair
+
+    endpoints:
+      POST /translate: start_translation
+      GET /status: check_status
+      GET /health: health_check
+
+  phase Phase2_Conflict:
+    name: "Conflict Resolution"
+    port: 3458
+    input: draft_lego_pairs.json
+    output: lego_pairs.json
+
+    process:
+      load all draft_lego_pairs
+      detect collisions (same target, different known)
+      resolve via upchunking
+      mark new vs reused LEGOs
+      emit lego_pairs (SSoT)
+
+    endpoints:
+      POST /resolve: start_resolution
+      GET /status: check_status
+      GET /health: health_check
+
+  phase Phase3_Baskets:
+    name: "Basket Generation"
+    port: 3459
+    input: lego_pairs.json
+    output: lego_baskets.json
+
+    process:
+      for each new LEGO in lego_pairs:
+        generate practice basket
+        include debut cycle
+        validate coverage
+      emit lego_baskets
+
+    endpoints:
+      POST /generate: start_generation
+      GET /status: check_status
+      GET /health: health_check
+
+  phase Audio_Generation:
+    name: "TTS Audio Generation"
+    port: 3465
+    input: lego_baskets.json
+    output: Supabase audio_samples
+
+    cost_aware: true
+    requires_approval: true
+
+    process:
+      plan generation (show costs)
+      await user approval
+      generate TTS audio (Azure/ElevenLabs)
+      upload to S3
+      record in Supabase
+      deduplicate across courses
+
+    endpoints:
+      POST /generate: start_generation
+      POST /plan: show_plan
+      GET /status/:courseCode: check_status
+      DELETE /cancel/:courseCode: cancel_job
+      GET /health: health_check
+
+  phase Manifest_Compilation:
+    name: "Course Manifest Compilation"
+    port: 3466
+    input: [lego_baskets.json, Supabase audio_samples]
+    output: course_manifest.json
+
+    process:
+      query Supabase for audio UUIDs
+      validate 100% audio coverage
+      compile final manifest
+      emit course_manifest
+
+    endpoints:
+      POST /compile: start_compilation
+      GET /validate/:courseCode: validate_coverage
+      GET /status/:courseCode: check_status
+      GET /health: health_check
+
+  orchestrator:
+    port: 3456
+    coordinates: [Phase1, Phase2, Phase3, Audio, Manifest]
+
+    transitions:
+      Phase1 -> Phase2: on_complete
+      Phase2 -> Phase3: on_complete
+      Phase3 -> Audio: requires_approval
+      Audio -> Manifest: on_complete
+
+# =============================================================================
+# INTERFACES (Views)
+# =============================================================================
+
+interface Dashboard:
+  route: "/"
+  layout: full_screen
+
+  trinity_compliance:
+    system_to_user: complete
+    user_to_system: handled
+
+  show header:
+    title: "Popty v10.0.0"
+    subtitle: "SSi Course Production Dashboard"
+    version_badge: "{git_commit}"
+    environment_switcher: EnvironmentSwitcher
+    user_info: current_user
+    logout_button: on_click -> logout()
+
+  show section UserWorkflow:
+    title: "User Workflow"
+    cards:
+      - GenerateCourseCard:
+          icon: rocket
+          title: "Generate New Course"
+          description: "Start the linear pipeline"
+          action: navigate("/generate")
+          style: gradient(emerald, teal)
+
+      - BrowseCoursesCard:
+          icon: folder
+          title: "Browse & Compile Courses"
+          description: "View, edit, compile courses"
+          action: navigate("/courses")
+          style: gradient(slate)
+
+      - RecordingStudioCard:
+          icon: microphone
+          title: "Recording Studio"
+          description: "Record human voice samples"
+          action: navigate("/record")
+          style: gradient(red, pink)
+
+  show section PipelineArchitecture:
+    title: "Pipeline Architecture"
+
+    description: "Linear microservice architecture with sequential phase progression"
+
+    phase_flow:
+      - Phase1: "Translation + LEGO Extraction"
+      - arrow
+      - Phase2: "Conflict Resolution"
+      - arrow
+      - Phase3: "Basket Generation"
+      - arrow
+      - Manifest: "Course Compilation"
+      - arrow
+      - Audio: "TTS Generation"
+
+  show section ReferenceLinks:
+    title: "Reference Materials"
+    links:
+      - ProcessOverview: "/reference/overview"
+      - PhaseIntelligence: "/intelligence"
+      - CanonicalContent: "/reference/canonical"
+      - APMLSpec: "/reference/apml"
+      - Terminology: "/reference/terminology"
+      - Pedagogy: "/reference/pedagogy"
+
+interface CourseGeneration:
+  route: "/generate"
+  layout: form_wizard
+
+  trinity_compliance:
+    system_to_user: complete
+    user_to_system: handled
+
+  state:
+    known_language: string
+    target_language: string
+    start_seed: integer default(1)
+    end_seed: integer default(30)
+    execution_mode: enum("local", "api", "web") default("web")
+    phase_selection: enum("all", "phase1", "phase2", "phase3") default("all")
+    selected_preset: enum("test", "full", "custom") default("test")
+    selected_model: enum("haiku", "sonnet", "opus") default("sonnet")
+    is_generating: boolean default(false)
+    is_completed: boolean default(false)
+    error_message: string
+    analysis: AnalysisResult optional
+
+  show form LanguageSelection:
+    when: not is_generating and not is_completed
+
+    field known_language:
+      type: select
+      label: "Known Language (Learning FROM)"
+      options: load_languages()
+
+    field target_language:
+      type: select
+      label: "Target Language (Learning TO)"
+      options: load_languages()
+
+    button analyze:
+      label: "Analyze Course & Get Smart Recommendations"
+      when: known_language and target_language and not analysis
+      action: analyze_course()
+
+  show section SmartRecommendations:
+    when: analysis and not is_generating
+
+    for recommendation in analysis.recommendations:
+      card:
+        icon: recommendation.icon
+        title: recommendation.title
+        description: recommendation.description
+        action: select_recommendation(recommendation)
+
+  show section CoursePresets:
+    when: not analysis
+
+    preset_cards:
+      - test:
+          icon: flask
+          title: "30 Seeds (Test)"
+          config: { seeds: 30, tabs: 6, workers: 5 }
+          estimate: "~10-15 minutes"
+
+      - full:
+          icon: rocket
+          title: "668 Seeds (Full)"
+          config: { seeds: 668, tabs: 15, workers: 15 }
+          estimate: "~2-3 hours"
+
+      - custom:
+          icon: gear
+          title: "Custom Range"
+          action: show_custom_range_input()
+
+  show section ExecutionModeSelector:
+    component: ExecutionModeSelector
+    bind: execution_mode
+
+  show section GenerateButton:
+    button generate:
+      label: "Generate Course ({seed_count} seeds)"
+      disabled: not (start_seed and end_seed and start_seed <= end_seed)
+      action: start_generation()
+
+  show section ProgressDisplay:
+    when: is_generating or is_completed
+
+    component PipelineProgress:
+      course_code: course_code
+      current_phase: current_phase
+      seeds_processed: seeds_processed
+      total_seeds: seed_count
+
+    when is_completed:
+      success_message: "Course Ready!"
+      actions:
+        - generate_another: start_new()
+        - push_to_github: push_to_github()
+        - view_files: view_course()
+
+interface MissionControl:
+  route: "/production/:courseCode"
+  layout: dashboard
+
+  trinity_compliance:
+    system_to_user: complete
+    user_to_system: handled
+
+  state:
+    course_code: string from_route
+    ws_connected: boolean
+    last_update_time: string
+
+  store: useProductionStore
+
+  on_mount:
+    init_websocket()
+    load_course(course_code)
+    join_course_room(course_code)
+
+  on_unmount:
+    leave_course_room(course_code)
+    disconnect_websocket()
+
+  show header:
+    badge: "MC"
+    title: "Mission Control"
+    subtitle: "Course Production Suite"
+    status:
+      ws_indicator: ws_connected
+      last_update: last_update_time
+
+  show section CourseSelector:
+    when: not course_code
+
+    grid:
+      for course in available_courses:
+        card:
+          name: course.name
+          code: course.code
+          action: select_course(course.code)
+
+  show section OverallProgress:
+    when: course_code
+
+    progress_ring:
+      percent: store.progressStats.percentComplete
+      size: 160
+      label: "Complete"
+
+    stats:
+      - total: store.progressStats.total
+      - approved: store.progressStats.approved
+      - flagged: store.progressStats.flagged
+      - in_progress: store.progressStats.inProgress
+      - pending: store.progressStats.pending
+
+  show section Blockers:
+    when: blockers.length > 0
+
+    for blocker in blockers:
+      blocker_card:
+        type: blocker.type
+        title: blocker.title
+        description: blocker.description
+        count: blocker.count
+        action: handle_blocker_action(blocker)
+
+  show section PipelineStages:
+    stages:
+      - qa_review: QA Review
+      - tts_gen: TTS Generation
+      - recording: Human Recording
+      - final_qa: Final QA
+
+    for stage in stages:
+      stage_card:
+        icon: stage.icon
+        name: stage.name
+        progress: stage.percent
+        stats: "{stage.completed} / {stage.total}"
+
+  show section QuickActions:
+    actions:
+      - script_viewer: navigate("script")
+      - samples_browser: navigate("samples")
+      - audio_pipeline: navigate("pipeline")
+      - recording_studio: navigate("recording")
+
+  show section RecentActivity:
+    feed: activity_feed
+    max_items: 10
+
+interface LegoVisualizer:
+  route: embedded_component
+
+  props:
+    course_code: string required
+    editable: boolean default(true)
+    initial_filters: object
+
+  state:
+    legos: LEGO[]
+    loading: boolean
+    error: string
+    current_page: integer default(1)
+    items_per_page: integer default(20)
+    sort_by: enum("fcfs-desc", "fcfs-asc", "utility-desc", "utility-asc", "alphabetical") default("fcfs-desc")
+
+    filters:
+      search_text: string
+      fcfs_min: number default(0)
+      fcfs_max: number default(100)
+      utility_min: number default(0)
+      utility_max: number default(100)
+
+    editing_lego: LEGO optional
+    provenance_modal: ProvenanceModalState
+
+  computed:
+    filtered_legos: apply_filters(legos, filters, sort_by)
+    paginated_legos: paginate(filtered_legos, current_page, items_per_page)
+    total_pages: ceil(filtered_legos.length / items_per_page)
+
+  on_mount:
+    load_legos()
+
+  show section Controls:
+    search_input:
+      placeholder: "Search LEGO text..."
+      bind: filters.search_text
+
+    range_sliders:
+      - fcfs_min_max: bind filters.fcfs_min, filters.fcfs_max
+      - utility_min_max: bind filters.utility_min, filters.utility_max
+
+    sort_select:
+      options: ["FCFS Score (High to Low)", "FCFS Score (Low to High)", ...]
+      bind: sort_by
+
+    button reset:
+      label: "Reset Filters"
+      action: reset_filters()
+
+  show section LegoList:
+    when: not loading and not error
+
+    for lego in paginated_legos:
+      lego_card:
+        text: lego.text
+        provenance: lego.provenance
+        scores:
+          fcfs: lego.fcfs_score
+          utility: lego.utility_score
+          pedagogical: lego.pedagogical_score
+        metadata:
+          uuid: lego.uuid
+          duplicate_count: lego.metadata.duplicate_count
+          created_at: lego.metadata.created_at
+
+        actions:
+          - edit: when editable -> start_edit(lego)
+          - save: when editing_lego.uuid == lego.uuid -> save_lego()
+          - cancel: when editing_lego.uuid == lego.uuid -> cancel_edit()
+          - show_impact: show_impact(lego)
+
+  show section Pagination:
+    showing: "{start_index + 1}-{end_index} of {filtered_legos.length}"
+
+    buttons:
+      - previous: disabled when current_page == 1
+      - page_numbers: visible_pages
+      - next: disabled when current_page == total_pages
+
+  show modal ProvenanceModal:
+    when: provenance_modal.open
+
+    lego_info: provenance_modal.lego
+    provenance_details: provenance_modal.provenance
+
+    actions:
+      - close: close_provenance_modal()
+
+# =============================================================================
+# LOGIC (Business Rules)
+# =============================================================================
+
+logic CourseOperations:
+
+  process generate_course:
+    input: { target, known, start_seed, end_seed, execution_mode, phase_selection }
+
+    validate:
+      target != known
+      start_seed <= end_seed
+      start_seed >= 1
+      end_seed <= 668
+
+    when phase_selection == "phase3":
+      post to "/phase3/start" with { course_code, start_seed, end_seed }
+    else:
+      post to "/api/courses/generate" with input
+
+    return course_code
+
+    intent_preservation: verified
+
+  process load_course:
+    input: course_code
+
+    # Multi-layer caching strategy
+    check IndexedDB cache:
+      if valid:
+        return cached_data
+
+    fetch from S3:
+      if success:
+        parse_and_transform()
+        cache_in_indexeddb()
+        return data
+
+    fallback to GitHub:
+      if success:
+        parse_and_transform()
+        cache_in_indexeddb()
+        return data
+
+    throw error "Course not found"
+
+    intent_preservation: verified
+
+  process apply_lego_filters:
+    input: { legos, filters, sort_by }
+
+    result = legos
+
+    if filters.search_text:
+      result = result.filter(l => l.text.includes(filters.search_text))
+
+    result = result.filter(l =>
+      l.fcfs_score >= filters.fcfs_min and
+      l.fcfs_score <= filters.fcfs_max and
+      l.utility_score >= filters.utility_min and
+      l.utility_score <= filters.utility_max
+    )
+
+    result = result.sort(by: sort_by)
+
+    return result
+
+    intent_preservation: verified
+
+logic AudioOperations:
+
+  process plan_audio_generation:
+    input: { course_code, voices }
+
+    load lego_baskets
+    count unique phrases
+    calculate cost by voice provider
+    estimate time
+
+    return plan with cost_warning
+
+    requires_approval: true
+    intent_preservation: verified
+
+  process start_audio_generation:
+    input: { course_code, approved, voices, options }
+
+    require approved == true or show_plan_first
+
+    for each phrase in lego_baskets:
+      generate_uuid = hash(voice_id, text, lang, role, cadence)
+
+      if not exists_in_supabase(generate_uuid):
+        call_tts_api(phrase, voice)
+        upload_to_s3(audio_file)
+        insert_supabase_record(audio_sample)
+
+    emit progress via websocket
+
+    intent_preservation: verified
+
+  process compile_manifest:
+    input: course_code
+
+    load lego_baskets
+    query supabase for all audio_uuids
+
+    validate:
+      all phrases have audio_uuid
+      no missing coverage
+
+    assemble course_manifest
+    write to S3
+
+    return manifest
+
+    intent_preservation: verified
+
+logic WebSocketOperations:
+
+  process init_websocket:
+    connect to PRODUCTION_API_URL + "/api/production/websocket"
+
+    on connect:
+      set ws_connected = true
+
+    on disconnect:
+      set ws_connected = false
+
+    on "sample_updated":
+      update_local_state(data)
+
+    on "audio_metadata_updated":
+      update_audio_metadata(data)
+
+  process join_course_room:
+    input: course_code
+    emit "join" with { room: course_code }
+
+  process leave_course_room:
+    input: course_code
+    emit "leave" with { room: course_code }
+
+# =============================================================================
+# STATE MANAGEMENT
+# =============================================================================
+
+store ProductionStore:
+  # Pinia store for production QA state
+
+  state:
+    current_course_code: string nullable
+    course_manifest: CourseManifest nullable
+    sample_flags: { samples: { [uuid]: SampleFlag } }
+    audio_metadata: { audio: { [uuid]: AudioMetadata } }
+    is_loading: boolean default(false)
+    error: string nullable
+    ws_connected: boolean default(false)
+
+  computed:
+    samples_by_status:
+      group sample_flags.samples by status
+      return { pending, flagged_regen_tts, flagged_human_needed, in_pipeline, in_recording, needs_review, approved, rejected }
+
+    progress_stats:
+      total = count(sample_flags.samples)
+      approved = count where status == "approved"
+      flagged = count where status starts_with "flagged_"
+      in_progress = count where status in ["in_pipeline", "in_recording"]
+      pending = total - approved - flagged - in_progress
+      percent_complete = (approved / total) * 100
+      return { total, approved, flagged, in_progress, pending, percent_complete }
+
+  actions:
+    load_course(course_code):
+      is_loading = true
+      fetch manifest, flags, metadata in parallel
+      update state
+      is_loading = false
+
+    update_sample_flag(uuid, flag_data):
+      post to API
+      update local sample_flags[uuid]
+
+    bulk_update_flags(updates):
+      post to API
+      update local state for each
+
+    handle_websocket_update(data):
+      if data.type == "sample_updated":
+        update sample_flags[data.uuid]
+      if data.type == "audio_metadata_updated":
+        update audio_metadata[data.uuid]
+
+    reset():
+      clear all state
+
+# =============================================================================
+# VFS (Virtual File System) ABSTRACTION
+# =============================================================================
+
+service VFS:
+  description: "Virtual File System wrapper over S3 with GitHub fallback"
+
+  config:
+    api_base: env.VITE_API_URL or "http://localhost:3456"
+    s3_bucket: "popty-bach-lfs"
+    s3_region: "eu-west-1"
+    github_base: "https://raw.githubusercontent.com/..."
+
+  operations:
+    list_courses():
+      GET {api_base}/api/vfs/courses
+      return courses[]
+
+    read_course_file(course_code, filename):
+      GET {api_base}/api/vfs/courses/{course_code}/{filename}
+      if json file: parse and return
+      else: return text
+
+    write_course_file(course_code, filename, content):
+      PUT {api_base}/api/vfs/courses/{course_code}/{filename}
+      body: stringify if object
+
+    delete_course_file(course_code, filename):
+      DELETE {api_base}/api/vfs/courses/{course_code}/{filename}
+
+    file_exists(course_code, filename):
+      try read_course_file
+      return success
+
+    read_all_phase_files(course_code):
+      files = [seed_pairs.json, corpus_intelligence.json, lego_pairs.json, lego_graph.json, lego_baskets.json, introductions.json, course_manifest.json]
+      return Promise.all(files.map(read_course_file))
+
+# =============================================================================
+# API ROUTES
+# =============================================================================
+
+api CourseAPI:
+  base_path: "/api/courses"
+
+  routes:
+    GET /:
+      handler: list_courses
+      returns: { courses: Course[], total: integer }
+
+    GET /:courseCode:
+      handler: get_course
+      returns: { course: Course, translations: [], legos: [], baskets: [] }
+
+    GET /:courseCode/status:
+      handler: get_status
+      returns: { status: string, phase: integer, progress: number }
+
+    POST /generate:
+      handler: generate_course
+      body: { target, known, start_seed, end_seed, execution_mode, phase_selection }
+      returns: { course_code: string, job_id: string }
+
+    GET /:courseCode/baskets/:seedId:
+      handler: get_basket
+      returns: { basket: Basket }
+
+    PUT /:courseCode/baskets/:seedId:
+      handler: save_basket
+      body: Basket
+
+    GET /:courseCode/analyze:
+      handler: analyze_course
+      returns: { phase1, phase2, phase3, recommendations[] }
+
+api AudioAPI:
+  base_path: "/api/audio"
+
+  routes:
+    POST /plan:
+      handler: plan_generation
+      body: { courseCode, voices?, options? }
+      returns: { cost_estimate, time_estimate, sample_count, warnings[] }
+
+    POST /start:
+      handler: start_generation
+      body: { courseCode, approved, voices?, options? }
+      returns: { job_id, status }
+
+    GET /status/:courseCode:
+      handler: get_status
+      returns: { status, progress, samples_completed, samples_total }
+
+    GET /stream/:uuid:
+      handler: stream_audio
+      returns: audio/mpeg
+
+api ProductionAPI:
+  base_path: "/api/production"
+
+  routes:
+    GET /:courseCode/manifest:
+      handler: get_manifest
+
+    GET /:courseCode/flags:
+      handler: get_flags
+
+    POST /:courseCode/flags/update:
+      handler: update_flag
+      body: { uuid, status, reason?, updatedBy? }
+
+    POST /:courseCode/flags/bulk-update:
+      handler: bulk_update_flags
+      body: { updates: [] }
+
+    GET /:courseCode/audio-metadata:
+      handler: get_audio_metadata
+
+    websocket /websocket:
+      events:
+        - join: join_room
+        - leave: leave_room
+        - sample_updated: broadcast_update
+        - audio_metadata_updated: broadcast_update
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+
+validation CourseValidation:
+
+  rule complete_seed_coverage:
+    description: "All seeds must have LEGO breakdowns"
+    check: lego_pairs.seeds.length == 668
+    severity: error
+
+  rule no_fd_violations:
+    description: "No Fundamental Dependency violations"
+    check: for all seed in lego_pairs.seeds:
+             seed.legos.cover(seed.seed_pair.target)
+    severity: error
+
+  rule unique_lego_ids:
+    description: "All LEGO IDs must be unique within course"
+    check: lego_pairs.seeds.flatMap(s => s.legos).map(l => l.id).unique()
+    severity: error
+
+  rule valid_new_flags:
+    description: "LEGOs with new:false must have ref to first introduction"
+    check: for all lego where new == false:
+             lego.ref exists and lego.ref appears earlier
+    severity: warning
+
+  rule molecular_has_components:
+    description: "M-type LEGOs must have components"
+    check: for all lego where type == "M":
+             lego.components.length > 0
+    severity: error
+
+  rule audio_coverage:
+    description: "All manifest items must have audio"
+    check: for all item in course_manifest.items:
+             item.audio_uuid exists in audio_samples
+    severity: error
+
+# =============================================================================
+# TESTING SPECIFICATION
+# =============================================================================
+
+test LEGOFilteringTests:
+  describe "LEGO filtering functionality":
+
+    it "filters by search text":
+      legos = [{ text: "quiero" }, { text: "hablar" }]
+      filtered = apply_filters(legos, { search_text: "qui" })
+      expect filtered.length == 1
+      expect filtered[0].text == "quiero"
+
+    it "filters by FCFS score range":
+      legos = [{ fcfs_score: 30 }, { fcfs_score: 70 }, { fcfs_score: 90 }]
+      filtered = apply_filters(legos, { fcfs_min: 50, fcfs_max: 80 })
+      expect filtered.length == 1
+      expect filtered[0].fcfs_score == 70
+
+    it "sorts by score descending":
+      legos = [{ fcfs_score: 50 }, { fcfs_score: 90 }, { fcfs_score: 30 }]
+      sorted = apply_filters(legos, {}, "fcfs-desc")
+      expect sorted[0].fcfs_score == 90
+      expect sorted[2].fcfs_score == 30
+
+test PipelineIntegrationTests:
+  describe "Pipeline phase transitions":
+
+    it "Phase 1 produces draft_lego_pairs.json":
+      result = run_phase1(canonical_seeds)
+      expect result.file_exists("draft_lego_pairs.json")
+      expect result.seeds.length == canonical_seeds.length
+
+    it "Phase 2 resolves conflicts and marks new/reuse":
+      result = run_phase2(draft_lego_pairs)
+      expect result.file_exists("lego_pairs.json")
+      for lego in result.legos:
+        expect lego.new in [true, false]
+
+    it "Phase 3 generates baskets for new LEGOs":
+      result = run_phase3(lego_pairs)
+      expect result.file_exists("lego_baskets.json")
+      new_legos = lego_pairs.filter(l => l.new == true)
+      expect result.baskets.length >= new_legos.length
