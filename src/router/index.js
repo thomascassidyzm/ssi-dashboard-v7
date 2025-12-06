@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import MissionControlHub from '../views/MissionControl.vue'
 import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
@@ -49,20 +49,41 @@ const AudioPipelineV1 = () => import('../components/production/audio/AudioPipeli
 
 
 const routes = [
+  // ============================================
+  // Mission Control Hub - Main Entry Point
+  // ============================================
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'MissionControl',
+    component: MissionControlHub,
+    meta: { title: 'Mission Control' }
+  },
+  {
+    path: '/docs',
+    name: 'DocsIndex',
+    component: () => import('../views/DocsIndex.vue'),
+    meta: { title: 'Documentation' }
+  },
+
+  // ============================================
+  // Course Management
+  // ============================================
+  {
+    path: '/courses',
+    name: 'CourseBrowser',
+    component: CourseBrowser,
+    meta: { title: 'Course Library' }
+  },
+  {
+    path: '/courses/new',
+    name: 'NewCourse',
+    component: () => import('../views/NewCourse.vue'),
+    meta: { title: 'Create New Course' }
   },
   {
     path: '/generate',
     name: 'CourseGeneration',
     component: CourseGeneration
-  },
-  {
-    path: '/courses',
-    name: 'CourseBrowser',
-    component: CourseBrowser
   },
   {
     path: '/validate',
