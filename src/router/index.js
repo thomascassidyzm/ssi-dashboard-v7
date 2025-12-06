@@ -36,16 +36,16 @@ import Login from '../views/Login.vue'
 import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 
-// Production Suite Components (Legacy)
-import MissionControl from '../components/production/dashboard/MissionControl.vue'
-import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
-import AudioPipeline from '../components/production/audio/AudioPipeline.vue'
-
-// Production Suite v2.1 Components (APML-generated)
-const MissionControlV2 = () => import('../views/production/MissionControl.vue')
-const ScriptViewerV2 = () => import('../views/production/ScriptViewer.vue')
-const AudioPipelineV2 = () => import('../views/production/AudioPipeline.vue')
+// Production Suite v2.1 Components (APML-generated) - Now the default
+const MissionControl = () => import('../views/production/MissionControl.vue')
+const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
+const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
+
+// Production Suite v1 Components (Legacy fallback at /v1/...)
+const MissionControlV1 = () => import('../components/production/dashboard/MissionControl.vue')
+import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
+const AudioPipelineV1 = () => import('../components/production/audio/AudioPipeline.vue')
 
 
 const routes = [
@@ -278,7 +278,9 @@ const routes = [
     meta: { public: true }
   },
 
-  // Production Suite Routes
+  // ===========================================
+  // Production Suite v2.1 Routes (Default)
+  // ===========================================
   {
     path: '/production',
     name: 'ProductionHome',
@@ -295,44 +297,46 @@ const routes = [
     name: 'ProductionDashboard',
     component: MissionControl,
     props: true,
-    meta: { title: 'Mission Control - Course Production Suite' }
+    meta: { title: 'Mission Control - Production Suite' }
+  },
+  {
+    path: '/production/:courseCode/script',
+    name: 'ScriptViewer',
+    component: ScriptViewer,
+    props: true,
+    meta: { title: 'Script Viewer - Production Suite' }
   },
   {
     path: '/production/:courseCode/pipeline',
     name: 'AudioPipelineProduction',
     component: AudioPipeline,
     props: true,
-    meta: { title: 'Audio Pipeline' }
-  },
-
-  // Production Suite v2.1 Routes (APML-generated components)
-  {
-    path: '/v2/production/:courseCode',
-    name: 'MissionControlV2',
-    component: MissionControlV2,
-    props: true,
-    meta: { title: 'Mission Control v2' }
+    meta: { title: 'Audio Pipeline - Production Suite' }
   },
   {
-    path: '/v2/production/:courseCode/script',
-    name: 'ScriptViewerV2',
-    component: ScriptViewerV2,
-    props: true,
-    meta: { title: 'Script Viewer v2' }
-  },
-  {
-    path: '/v2/production/:courseCode/audio-pipeline',
-    name: 'AudioPipelineV2',
-    component: AudioPipelineV2,
-    props: true,
-    meta: { title: 'Audio Pipeline v2' }
-  },
-  {
-    path: '/v2/production/:courseCode/recording',
-    name: 'RecordingStudioV2',
+    path: '/production/:courseCode/recording-studio',
+    name: 'RecordingStudioProduction',
     component: RecordingStudioV2,
     props: true,
-    meta: { title: 'Recording Studio v2' }
+    meta: { title: 'Recording Studio - Production Suite' }
+  },
+
+  // ===========================================
+  // Production Suite v1 Routes (Legacy Fallback)
+  // ===========================================
+  {
+    path: '/v1/production/:courseCode',
+    name: 'MissionControlV1',
+    component: MissionControlV1,
+    props: true,
+    meta: { title: 'Mission Control v1 (Legacy)' }
+  },
+  {
+    path: '/v1/production/:courseCode/pipeline',
+    name: 'AudioPipelineV1',
+    component: AudioPipelineV1,
+    props: true,
+    meta: { title: 'Audio Pipeline v1 (Legacy)' }
   },
 
   // Catch-all route
