@@ -4858,7 +4858,9 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
   const voiceSettings = req.body;
 
   try {
-    const validRoles = ['target1', 'target2', 'source', 'presentation'];
+    // NOTE: We use "known" (not "source") for the known language voice
+    // Legacy manifest compatibility: source → known conversion happens elsewhere
+    const validRoles = ['target1', 'target2', 'known', 'presentation'];
     if (!validRoles.includes(role)) {
       return res.status(400).json({
         success: false,

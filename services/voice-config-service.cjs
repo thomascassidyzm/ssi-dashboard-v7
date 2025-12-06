@@ -41,7 +41,9 @@ const DEFAULT_VOICE_CONFIG = {
         similarityBoost: 0.75
       }
     },
-    source: {
+    // NOTE: We use "known" (not "source") for the known language voice
+    // Legacy manifest compatibility: use convertRoleForLegacyManifest() when needed
+    known: {
       voiceId: '',
       provider: 'elevenlabs',
       name: '',
@@ -187,7 +189,7 @@ async function saveVoiceConfig(courseCode, config) {
  * Update a specific voice role configuration
  *
  * @param {string} courseCode
- * @param {string} role - 'target1' | 'target2' | 'source' | 'presentation'
+ * @param {string} role - 'target1' | 'target2' | 'known' | 'presentation'
  * @param {object} voiceSettings - Voice settings to update
  * @returns {Promise<object>} Updated configuration
  */
@@ -379,8 +381,8 @@ function validateVoiceConfig(config) {
     errors.push('Course code is required');
   }
 
-  // Check voice configurations
-  const roles = ['target1', 'target2', 'source'];
+  // Check voice configurations (known = known language, target = target language)
+  const roles = ['target1', 'target2', 'known'];
   for (const role of roles) {
     const voice = config.voices?.[role];
     if (!voice) {
@@ -409,6 +411,84 @@ function validateVoiceConfig(config) {
   };
 }
 
+/**
+ * Convert role name for legacy manifest compatibility
+ * The legacy manifest uses "source" but we use "known" everywhere else.
+ *
+ * @param {string} role - Modern role name ('known', 'target1', 'target2', 'presentation')
+ * @returns {string} Role name for legacy manifest format
+ */
+function convertRoleForLegacyManifest(role) {
+  if (role === 'known') {
+    return 'source';
+  }
+  return role;
+}
+
+/**
+ * Convert role name from legacy manifest to modern terminology
+ *
+ * @param {string} legacyRole - Legacy role name ('source', 'target1', 'target2', 'presentation')
+ * @returns {string} Modern role name
+ */
+function convertRoleFromLegacyManifest(legacyRole) {
+  if (legacyRole === 'source') {
+    return 'known';
+  }
+  return legacyRole;
+}
+
+/**
+ * Convert an entire voice config object for legacy manifest compatibility
+ * Converts 'known' key to 'source' in voices object
+ *
+ * @param {object} config - Voice configuration using modern 'known' terminology
+ * @returns {object} Voice configuration with 'source' for legacy manifest
+ */
+function convertConfigForLegacyManifest(config) {
+  if (!config || !config.voices) {
+    return config;
+  }
+
+  const legacyVoices = { ...config.voices };
+
+  // Convert 'known' to 'source' if present
+  if (legacyVoices.known) {
+    legacyVoices.source = legacyVoices.known;
+    delete legacyVoices.known;
+  }
+
+  return {
+    ...config,
+    voices: legacyVoices
+  };
+}
+
+/**
+ * Convert legacy config (with 'source') to modern config (with 'known')
+ *
+ * @param {object} legacyConfig - Voice configuration using legacy 'source' terminology
+ * @returns {object} Voice configuration with 'known' for modern usage
+ */
+function convertConfigFromLegacyManifest(legacyConfig) {
+  if (!legacyConfig || !legacyConfig.voices) {
+    return legacyConfig;
+  }
+
+  const modernVoices = { ...legacyConfig.voices };
+
+  // Convert 'source' to 'known' if present
+  if (modernVoices.source) {
+    modernVoices.known = modernVoices.source;
+    delete modernVoices.source;
+  }
+
+  return {
+    ...legacyConfig,
+    voices: modernVoices
+  };
+}
+
 module.exports = {
   loadVoiceConfig,
   saveVoiceConfig,
@@ -417,5 +497,10 @@ module.exports = {
   buildTTSConfig,
   getSamplePhrases,
   validateVoiceConfig,
+  // Backwards compatibility functions
+  convertRoleForLegacyManifest,
+  convertRoleFromLegacyManifest,
+  convertConfigForLegacyManifest,
+  convertConfigFromLegacyManifest,
   DEFAULT_VOICE_CONFIG
 };

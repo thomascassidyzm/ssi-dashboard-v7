@@ -239,10 +239,11 @@ const playingId = ref(null)
 const audioPlayer = ref(null)
 
 // Role definitions
+// NOTE: We use "known" not "source" - backwards compat layer converts to "source" for old manifest
 const roles = [
   { id: 'target1', name: 'Target 1', icon: '1', description: 'Primary target language voice' },
   { id: 'target2', name: 'Target 2', icon: '2', description: 'Secondary target language voice' },
-  { id: 'source', name: 'Source', icon: 'S', description: 'Known language (English) voice' },
+  { id: 'known', name: 'Known', icon: 'K', description: 'Known language voice (e.g., English)' },
   { id: 'presentation', name: 'Presentation', icon: 'P', description: 'Voice for instructions/presentation' }
 ]
 

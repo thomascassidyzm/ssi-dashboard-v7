@@ -63,7 +63,7 @@ function getPreviewUrl(courseCode, previewId) {
  * @param {object} options
  * @param {string} options.courseCode - Course code
  * @param {string} options.text - Text to synthesize
- * @param {string} options.role - Voice role ('target1', 'target2', 'source')
+ * @param {string} options.role - Voice role ('target1', 'target2', 'known')
  * @param {string} options.cadence - Cadence ('natural', 'slow')
  * @param {object} options.voiceConfig - Voice configuration for the role
  * @param {object} options.cadenceProfiles - Cadence profile definitions
