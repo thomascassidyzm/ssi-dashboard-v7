@@ -92,9 +92,19 @@
         </div>
       </div>
 
-      <!-- TTS Service Configuration -->
-      <div v-if="manifest" class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
-        <h2 class="text-xl font-semibold text-emerald-400 mb-4">TTS Service Configuration</h2>
+      <!-- Voice Configuration (New Parameterized System) -->
+      <VoiceConfiguration
+        v-if="selectedCourse"
+        :course-code="selectedCourse"
+        :api-base-url="apiBaseUrl"
+        class="mb-6"
+        @config-saved="onVoiceConfigSaved"
+        @config-loaded="onVoiceConfigLoaded"
+      />
+
+      <!-- TTS Service Configuration (Legacy - will be replaced by VoiceConfiguration) -->
+      <div v-if="manifest && !useNewVoiceConfig" class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-emerald-400 mb-4">TTS Service Configuration (Legacy)</h2>
 
         <!-- Service Provider Selection -->
         <div class="mb-6">
@@ -444,6 +454,23 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
+
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+// Voice configuration state
+const useNewVoiceConfig = ref(true)  // Toggle to use new parameterized system
+const savedVoiceConfig = ref(null)
+
+function onVoiceConfigSaved(config) {
+  savedVoiceConfig.value = config
+  console.log('[AudioGeneration] Voice config saved:', config)
+}
+
+function onVoiceConfigLoaded(config) {
+  savedVoiceConfig.value = config
+  console.log('[AudioGeneration] Voice config loaded:', config)
+}
 
 const availableCourses = ref([])
 const selectedCourse = ref('')
