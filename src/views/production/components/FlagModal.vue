@@ -138,7 +138,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import type { AudioSample, FlagType } from '@/types/production';
 
 // Props
@@ -205,17 +205,14 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
-// Add keyboard listener
-if (typeof window !== 'undefined') {
+// Add keyboard listener on mount
+onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
-}
+});
 
-// Cleanup
-import { onBeforeUnmount } from 'vue';
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('keydown', handleKeydown);
-  }
+// Cleanup on unmount
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown);
 });
 </script>
 

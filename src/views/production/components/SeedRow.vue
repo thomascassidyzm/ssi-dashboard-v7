@@ -86,7 +86,7 @@
               :key="phrase.phrase_id"
               :phrase="phrase"
               :flag-notes="getFlagNotes(phrase)"
-              @flag="onPhraseFlag"
+              @phrase-flag="onPhraseFlag"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
             />

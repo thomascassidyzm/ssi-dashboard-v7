@@ -2,7 +2,7 @@
   <div class="lego-row ml-6 mb-4">
     <!-- LEGO Header -->
     <div
-      class="lego-header bg-slate-700 rounded-lg p-4 cursor-pointer hover:bg-slate-650 transition-all"
+      class="lego-header bg-slate-700 rounded-lg p-4 cursor-pointer hover:bg-slate-600 transition-all"
       @click="toggleExpand"
     >
       <div class="flex items-center justify-between">
@@ -62,7 +62,7 @@
           :key="phrase.phrase_id"
           :phrase="phrase"
           :flag-notes="getFlagNotes(phrase)"
-          @flag="onPhraseFlag"
+          @phrase-flag="onPhraseFlag"
           @play="onPhrasePlay"
           @pause="onPhrasePause"
         />

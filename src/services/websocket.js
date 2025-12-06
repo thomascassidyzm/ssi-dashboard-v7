@@ -1,5 +1,5 @@
 // src/services/websocket.js
-import { io } from 'socket.io-client'
+import io from 'socket.io-client'
 import { useProductionStore } from '@/stores/production'
 
 let socket = null

@@ -270,6 +270,150 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
   }
 })
 
+// Helper function to proxy requests to Phase 8 Audio Generator (port 3465)
+async function proxyToPhase8(method, path, body = null) {
+  const http = require('http')
+
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'localhost',
+      port: 3465,
+      path,
+      method,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const req = http.request(options, (res) => {
+      let data = ''
+
+      res.on('data', (chunk) => {
+        data += chunk
+      })
+
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(data)
+          resolve({ status: res.statusCode, data: parsed })
+        } catch (error) {
+          resolve({ status: res.statusCode, data })
+        }
+      })
+    })
+
+    req.on('error', (error) => {
+      reject(error)
+    })
+
+    if (body) {
+      req.write(JSON.stringify(body))
+    }
+
+    req.end()
+  })
+}
+
+// Audio Pipeline: Start audio generation
+// POST /api/production/:courseCode/audio-pipeline/start
+app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { options } = req.body
+
+    logger.log(`Starting audio pipeline for ${courseCode}`)
+
+    const response = await proxyToPhase8('POST', '/generate', {
+      courseCode,
+      ...options
+    })
+
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error starting audio pipeline:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Audio Pipeline: Cancel audio generation
+// POST /api/production/:courseCode/audio-pipeline/cancel
+app.post('/api/production/:courseCode/audio-pipeline/cancel', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    logger.log(`Cancelling audio pipeline for ${courseCode}`)
+
+    const response = await proxyToPhase8('DELETE', `/cancel/${courseCode}`)
+
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error cancelling audio pipeline:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Audio Pipeline: Retry audio generation
+// POST /api/production/:courseCode/audio-pipeline/retry
+app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { options } = req.body
+
+    logger.log(`Retrying audio pipeline for ${courseCode}`)
+
+    const response = await proxyToPhase8('POST', '/generate', {
+      courseCode,
+      retry: true,
+      ...options
+    })
+
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error retrying audio pipeline:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Audio Pipeline: Get generation plan (dry-run)
+// GET /api/production/:courseCode/audio-pipeline/plan
+app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    logger.log(`Getting audio pipeline plan for ${courseCode}`)
+
+    const response = await proxyToPhase8('POST', '/plan', { courseCode })
+
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Error getting audio pipeline plan:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Recording Queue: Get recording queue (mock for now)
+// GET /api/production/:courseCode/recording/queue
+app.get('/api/production/:courseCode/recording/queue', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { page = 1, pageSize = 20 } = req.query
+
+    logger.log(`Getting recording queue for ${courseCode}`)
+
+    // TODO: Implement real recording queue from Supabase
+    // For now, return mock data
+    res.json({
+      items: [],
+      total: 0,
+      page: parseInt(page),
+      pageSize: parseInt(pageSize)
+    })
+  } catch (error) {
+    logger.error('Error getting recording queue:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // WebSocket connection handling
 io.on('connection', (socket) => {
   logger.log(`Client connected: ${socket.id}`)

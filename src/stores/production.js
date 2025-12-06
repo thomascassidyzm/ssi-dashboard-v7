@@ -48,11 +48,16 @@ export const useProductionStore = defineStore('production', () => {
       pending: [],
       flagged_regen_tts: [],
       flagged_human_needed: [],
+      flagged_text_edit: [],
       in_pipeline: [],
       in_recording: [],
       needs_review: [],
       approved: [],
-      rejected: []
+      rejected: [],
+      tts_complete: [],
+      tts_failed: [],
+      recorded: [],
+      complete: []
     }
 
     if (!sampleFlags.value.samples) return grouped

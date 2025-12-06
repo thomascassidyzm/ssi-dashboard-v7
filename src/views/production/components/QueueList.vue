@@ -92,9 +92,8 @@ const filteredItems = computed(() => {
 
 // Paginate for performance
 const visibleItems = computed(() => {
-  const start = 0
-  const end = currentPage.value * pageSize.value
-  return filteredItems.value.slice(start, end)
+  const start = (currentPage.value - 1) * pageSize.value
+  return filteredItems.value.slice(start, start + pageSize.value)
 })
 
 const hasMore = computed(() => {

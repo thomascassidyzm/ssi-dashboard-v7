@@ -120,7 +120,7 @@ const props = defineProps<{
 
 // Emits
 const emit = defineEmits<{
-  flag: [phrase: PhraseRowData];
+  phraseFlag: [phrase: PhraseRowData];
   play: [sample: AudioSample];
   pause: [];
 }>();
@@ -185,7 +185,7 @@ const flagButtonClass = computed(() => {
 
 // Methods
 const toggleFlag = () => {
-  emit('flag', props.phrase);
+  emit('phraseFlag', props.phrase);
 };
 
 const onPlay = (sample: AudioSample) => {

@@ -378,9 +378,93 @@ const loadCourseData = async () => {
 };
 
 const transformManifestToSeeds = (manifest: any): SeedRowData[] => {
-  // TODO: Implement proper transformation from course manifest to SeedRowData
-  // For now, return empty array
-  return [];
+  if (!manifest || !manifest.seeds) return [];
+
+  return manifest.seeds.map((seed: any) => {
+    // Extract introduction cycles (type === 'introduction')
+    const introductionCycles = seed.cycles?.filter((c: any) => c.type === 'introduction') || [];
+    const introduction_phrases: PhraseRowData[] = introductionCycles.map((cycle: any, idx: number) => ({
+      phrase_id: cycle.uuid,
+      type: 'ETER' as PhraseType, // introduction phrases
+      known_text: cycle.known,
+      target_text: cycle.target,
+      known_audio: {
+        uuid: cycle.known_audio_uuid,
+        text: cycle.known,
+        role: 'source' as Role,
+        cadence: 'natural' as Cadence,
+        voice_id: '',
+      },
+      target_audio_1: {
+        uuid: cycle.target_audio_uuid,
+        text: cycle.target,
+        role: 'target' as Role,
+        cadence: 'natural' as Cadence,
+        voice_id: '',
+      },
+      is_flagged: false,
+      seed_id: seed.seed_id,
+      cycle_index: idx,
+    }));
+
+    // Build legos with their phrases
+    const legos: LegoRowData[] = (seed.legos || []).map((lego: any) => {
+      // Get all cycles for this lego
+      const legoCycles = seed.cycles?.filter((c: any) => c.lego_id === lego.id) || [];
+
+      const phrases: PhraseRowData[] = legoCycles.map((cycle: any, idx: number) => {
+        // Determine phrase type based on cycle type
+        let phraseType: PhraseType = 'PRAC'; // default to practice
+        if (cycle.type === 'lego_component') phraseType = 'COMP';
+        else if (cycle.type === 'lego_debut') phraseType = 'DEBU';
+
+        return {
+          phrase_id: cycle.uuid,
+          type: phraseType,
+          known_text: cycle.known,
+          target_text: cycle.target,
+          known_audio: {
+            uuid: cycle.known_audio_uuid,
+            text: cycle.known,
+            role: 'source' as Role,
+            cadence: 'natural' as Cadence,
+            voice_id: '',
+          },
+          target_audio_1: {
+            uuid: cycle.target_audio_uuid,
+            text: cycle.target,
+            role: 'target' as Role,
+            cadence: 'natural' as Cadence,
+            voice_id: '',
+          },
+          is_flagged: false,
+          seed_id: seed.seed_id,
+          cycle_index: idx,
+          is_debut: cycle.context?.is_debut,
+          is_component: cycle.context?.is_component,
+        };
+      });
+
+      return {
+        lego_id: lego.id,
+        type: lego.type,
+        target: lego.target,
+        known: lego.known,
+        is_new: lego.is_new ?? false,
+        phrases,
+        expanded: false,
+      };
+    });
+
+    return {
+      seed_id: seed.seed_id,
+      known_text: seed.seed_pair[1], // second element is known
+      target_text: seed.seed_pair[0], // first element is target
+      legos,
+      introduction_phrases,
+      expanded: false,
+    };
+  });
 };
 
 const toggleSeed = (seedId: string) => {
