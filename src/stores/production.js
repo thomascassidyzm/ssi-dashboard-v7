@@ -224,6 +224,12 @@ export const useProductionStore = defineStore('production', () => {
 
   // Actions
   async function loadCourse(courseCode) {
+    // Guard against undefined courseCode
+    if (!courseCode) {
+      error.value = 'No course code provided'
+      return
+    }
+
     isLoading.value = true
     error.value = null
     currentCourseCode.value = courseCode

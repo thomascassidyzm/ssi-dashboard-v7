@@ -102,6 +102,9 @@
       <div class="empty-icon">🎯</div>
       <h2>Select a Course to Begin</h2>
       <p>Choose a course from the dropdown above to view its production status.</p>
+      <router-link to="/production/courses" class="browse-courses-btn">
+        Browse All Courses
+      </router-link>
     </div>
   </div>
 </template>
@@ -479,6 +482,25 @@ onUnmounted(() => {
 
 .retry-btn:hover {
   background: #059669;
+  transform: translateY(-1px);
+}
+
+.browse-courses-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.browse-courses-btn:hover {
+  background: #4f46e5;
   transform: translateY(-1px);
 }
 
