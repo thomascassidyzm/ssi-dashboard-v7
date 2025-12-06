@@ -85,6 +85,23 @@
               </div>
             </div>
           </router-link>
+
+          <!-- Production Suite -->
+          <router-link to="/production/courses" class="block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-lg border border-purple-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-purple-500/20">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">🎛️ Production Suite</h3>
+                <p class="text-purple-100 text-sm">
+                  Mission Control, Script Viewer, Audio Pipeline & Recording Studio (v2.1)
+                </p>
+              </div>
+              <div class="text-white">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
+                </svg>
+              </div>
+            </div>
+          </router-link>
         </div>
       </section>
 
