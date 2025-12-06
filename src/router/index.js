@@ -36,10 +36,16 @@ import Login from '../views/Login.vue'
 import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 
-// Production Suite Components
+// Production Suite Components (Legacy)
 import MissionControl from '../components/production/dashboard/MissionControl.vue'
 import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
 import AudioPipeline from '../components/production/audio/AudioPipeline.vue'
+
+// Production Suite v2.1 Components (APML-generated)
+const MissionControlV2 = () => import('../views/production/MissionControl.vue')
+const ScriptViewerV2 = () => import('../views/production/ScriptViewer.vue')
+const AudioPipelineV2 = () => import('../views/production/AudioPipeline.vue')
+const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
 
 
 const routes = [
@@ -297,6 +303,36 @@ const routes = [
     component: AudioPipeline,
     props: true,
     meta: { title: 'Audio Pipeline' }
+  },
+
+  // Production Suite v2.1 Routes (APML-generated components)
+  {
+    path: '/v2/production/:courseCode',
+    name: 'MissionControlV2',
+    component: MissionControlV2,
+    props: true,
+    meta: { title: 'Mission Control v2' }
+  },
+  {
+    path: '/v2/production/:courseCode/script',
+    name: 'ScriptViewerV2',
+    component: ScriptViewerV2,
+    props: true,
+    meta: { title: 'Script Viewer v2' }
+  },
+  {
+    path: '/v2/production/:courseCode/audio-pipeline',
+    name: 'AudioPipelineV2',
+    component: AudioPipelineV2,
+    props: true,
+    meta: { title: 'Audio Pipeline v2' }
+  },
+  {
+    path: '/v2/production/:courseCode/recording',
+    name: 'RecordingStudioV2',
+    component: RecordingStudioV2,
+    props: true,
+    meta: { title: 'Recording Studio v2' }
   },
 
   // Catch-all route
