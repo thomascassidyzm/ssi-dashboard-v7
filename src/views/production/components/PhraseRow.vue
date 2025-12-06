@@ -209,6 +209,6 @@ const formatStatus = (status: SampleStatus): string => {
 }
 
 .phrase-row:hover {
-  @apply bg-slate-750;
+  @apply bg-slate-700;
 }
 </style>

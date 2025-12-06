@@ -2,7 +2,7 @@
   <div class="seed-row mb-6">
     <!-- Seed Header -->
     <div
-      class="seed-header bg-slate-800 border border-slate-700 rounded-lg p-5 cursor-pointer hover:bg-slate-750 hover:border-slate-600 transition-all shadow-md"
+      class="seed-header bg-slate-800 border border-slate-700 rounded-lg p-5 cursor-pointer hover:bg-slate-700 hover:border-slate-600 transition-all shadow-md"
       @click="toggleExpand"
     >
       <div class="flex items-center justify-between">

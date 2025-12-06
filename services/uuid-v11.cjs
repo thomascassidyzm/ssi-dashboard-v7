@@ -26,13 +26,16 @@ const SSI_AUDIO_NAMESPACE = '6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f';
 
 /**
  * Node types for the second segment of node IDs
+ *
+ * Introduction flow: COMP → LEGO → DEBU
+ * Subsequent practice: ETER
  */
 const NODE_TYPES = {
   SEED: 'SEED',  // Seed sentence
-  DEBT: 'DEBT',  // LEGO debut (the LEGO itself as first practice)
-  COMP: 'COMP',  // Component (M-type LEGO building blocks)
-  PRAC: 'PRAC',  // Practice phrase
-  ETER: 'ETER'   // Eternal phrase (spaced repetition)
+  COMP: 'COMP',  // Component (M-type LEGO building blocks) - introduction only
+  LEGO: 'LEGO',  // The LEGO itself - introduction only
+  DEBU: 'DEBU',  // Debut phrases (practice during introduction)
+  ETER: 'ETER'   // Eternal phrases (all practice after introduction)
 };
 
 /**
@@ -89,16 +92,16 @@ function generateSeedNodeId(seedId, known, target) {
   return generateNodeId(seedId, null, NODE_TYPES.SEED, 0, known, target);
 }
 
-function generateDebutNodeId(seedId, legoId, known, target) {
-  return generateNodeId(seedId, legoId, NODE_TYPES.DEBT, 0, known, target);
-}
-
 function generateComponentNodeId(seedId, legoId, order, known, target) {
   return generateNodeId(seedId, legoId, NODE_TYPES.COMP, order, known, target);
 }
 
-function generatePracticeNodeId(seedId, legoId, order, known, target) {
-  return generateNodeId(seedId, legoId, NODE_TYPES.PRAC, order, known, target);
+function generateLegoNodeId(seedId, legoId, known, target) {
+  return generateNodeId(seedId, legoId, NODE_TYPES.LEGO, 0, known, target);
+}
+
+function generateDebutNodeId(seedId, legoId, order, known, target) {
+  return generateNodeId(seedId, legoId, NODE_TYPES.DEBU, order, known, target);
 }
 
 function generateEternalNodeId(seedId, legoId, order, known, target) {
@@ -212,9 +215,9 @@ module.exports = {
   NODE_TYPES,
   generateNodeId,
   generateSeedNodeId,
-  generateDebutNodeId,
   generateComponentNodeId,
-  generatePracticeNodeId,
+  generateLegoNodeId,
+  generateDebutNodeId,
   generateEternalNodeId,
   parseNodeId,
 

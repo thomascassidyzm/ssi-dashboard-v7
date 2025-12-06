@@ -11869,83 +11869,6 @@
       "is_final_lego": true,
       "phrase_count": 12
     },
-    "S0037L01": {
-      "lego": {
-        "known": "I started",
-        "target": "comencé"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0037L03": {
-      "lego": {
-        "known": "to think",
-        "target": "pensar"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0037L04": {
-      "lego": {
-        "known": "to think about it",
-        "target": "pensar sobre eso"
-      },
-      "is_final_lego": true,
-      "practice_phrases": [
-        {
-          "known": "I started to think about it carefully last month.",
-          "target": "我上个月开始仔细地考虑这件事。"
-        }
-      ],
-      "phrase_count": 1,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0038L01": {
-      "lego": {
-        "known": "I've been learning",
-        "target": "llevo aprendiendo"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0038L02": {
-      "lego": {
-        "known": "learning",
-        "target": "aprendiendo"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0039L02": {
-      "lego": {
-        "known": "I'm",
-        "target": "estoy"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0039L04": {
       "lego_id": "S0039L04",
       "type": "M",
@@ -12011,30 +11934,6 @@
       ],
       "is_final_lego": true,
       "phrase_count": 13
-    },
-    "S0040L01": {
-      "lego": {
-        "known": "how",
-        "target": "cómo"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0040L02": {
-      "lego": {
-        "known": "how do you feel",
-        "target": "cómo te sientes"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0041L01": {
       "lego_id": "S0041L01",
@@ -12247,35 +12146,6 @@
       "is_final_lego": false,
       "phrase_count": 15
     },
-    "S0043L01": {
-      "lego": {
-        "known": "I wasn't thinking",
-        "target": "no estaba pensando"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0043L03": {
-      "lego": {
-        "known": "about how to answer",
-        "target": "en cómo responder"
-      },
-      "is_final_lego": true,
-      "practice_phrases": [
-        {
-          "known": "I wasn't thinking about how to answer.",
-          "target": "我没在想怎么回答。"
-        }
-      ],
-      "phrase_count": 1,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0044L01": {
       "lego_id": "S0044L01",
       "type": "A",
@@ -12404,7 +12274,7 @@
       "lego_id": "S0044L03",
       "type": "M",
       "lego": {
-        "known": "if/whether need to",
+        "known": "if",
         "target": "是否需要"
       },
       "practice_phrases": [
@@ -12997,59 +12867,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 12
-    },
-    "S0048L02": {
-      "is_final_lego": true,
-      "lego": {
-        "known": "don't care about",
-        "target": "不在乎"
-      },
-      "practice_phrases": [
-        {
-          "known": "I don't care about making mistakes.",
-          "target": "我不在乎犯错。"
-        },
-        {
-          "known": "You don't care about making mistakes.",
-          "target": "你不在乎犯错。"
-        },
-        {
-          "known": "I don't care about making mistakes right now.",
-          "target": "我现在不在乎犯错。"
-        },
-        {
-          "known": "I'm starting not to care about making mistakes.",
-          "target": "我开始不在乎犯错。"
-        },
-        {
-          "known": "I didn't care about making mistakes this morning.",
-          "target": "我今天早上不在乎犯错。"
-        },
-        {
-          "known": "I feel I don't care about making mistakes.",
-          "target": "我觉得我不在乎犯错。"
-        },
-        {
-          "known": "Because I think making mistakes is a good thing, I don't care about making mistakes.",
-          "target": "因为我认为犯错是件好事,我不在乎犯错。"
-        },
-        {
-          "known": "I don't worry about making mistakes, I don't care about making mistakes.",
-          "target": "我不担心犯错,我不在乎犯错。"
-        },
-        {
-          "known": "I've been learning about a week, I don't care about making mistakes.",
-          "target": "我已经学了大约一个星期,我不在乎犯错。"
-        },
-        {
-          "known": "I don't need to know everything, I don't care about making mistakes.",
-          "target": "我不需要知道所有事情,我不在乎犯错。"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0049L01": {
       "lego_id": "S0049L01",
@@ -14138,30 +13955,6 @@
       "is_final_lego": false,
       "phrase_count": 14
     },
-    "S0055L01": {
-      "lego": {
-        "known": "I don't enjoy",
-        "target": "no disfruto"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0055L02": {
-      "lego": {
-        "known": "waking up",
-        "target": "despertarme"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0055L04": {
       "lego_id": "S0240L02",
       "type": "M",
@@ -14223,23 +14016,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 12
-    },
-    "S0055L05": {
-      "lego": {
-        "known": "I didn't sleep",
-        "target": "no dormí"
-      },
-      "is_final_lego": true,
-      "practice_phrases": [
-        {
-          "known": "I don't enjoy waking up when I didn't sleep very well.",
-          "target": "当我没睡好的时候我不喜欢醒来。"
-        }
-      ],
-      "phrase_count": 1,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0056L01": {
       "lego_id": "S0056L01",
@@ -14646,7 +14422,7 @@
       "lego_id": "S0057L04",
       "type": "M",
       "lego": {
-        "known": "what to say / wanted to say",
+        "known": "what to say",
         "target": "想说的话"
       },
       "practice_phrases": [
@@ -15000,7 +14776,7 @@
       "lego_id": "S0167L02",
       "type": "M",
       "lego": {
-        "known": "need to do what / what...need to do",
+        "known": "need to do what",
         "target": "需要做什么"
       },
       "practice_phrases": [
@@ -15141,7 +14917,7 @@
       "type": "M",
       "lego": {
         "id": "S0060L02",
-        "known": "don't know yet / still don't know",
+        "known": "don't know yet",
         "target": "还不知道"
       },
       "practice_phrases": [
@@ -19216,7 +18992,7 @@
       "lego_id": "S0109L05",
       "type": "A",
       "lego": {
-        "known": "learn/study",
+        "known": "learn",
         "target": "学习"
       },
       "practice_phrases": [
@@ -20030,7 +19806,7 @@
       "lego_id": "S0081L05",
       "type": "A",
       "lego": {
-        "known": "start/begin",
+        "known": "start",
         "target": "开始"
       },
       "practice_phrases": [
@@ -20082,7 +19858,7 @@
       "lego_id": "S0077L09",
       "type": "A",
       "lego": {
-        "known": "quick/fast/quickly",
+        "known": "quick",
         "target": "快"
       },
       "practice_phrases": [
@@ -20268,7 +20044,7 @@
       "lego_id": "S0078L05",
       "type": "A",
       "lego": {
-        "known": "words/speech",
+        "known": "words",
         "target": "话"
       },
       "practice_phrases": [
@@ -20320,7 +20096,7 @@
       "lego_id": "S0449L01",
       "type": "A",
       "lego": {
-        "known": "say/speak",
+        "known": "say",
         "target": "说"
       },
       "practice_phrases": [
@@ -20717,7 +20493,7 @@
       "lego_id": "S0340L03",
       "type": "A",
       "lego": {
-        "known": "sure/certain",
+        "known": "sure",
         "target": "确定"
       },
       "practice_phrases": [
@@ -20821,7 +20597,7 @@
       "lego_id": "S0633L04",
       "type": "A",
       "lego": {
-        "known": "good/well/okay",
+        "known": "good",
         "target": "好"
       },
       "practice_phrases": [
@@ -33982,7 +33758,7 @@
       "lego_id": "S0132L04",
       "type": "M",
       "lego": {
-        "known": "not so exciting/less exciting",
+        "known": "not so exciting",
         "target": "不那么令人兴奋"
       },
       "practice_phrases": [
@@ -34126,7 +33902,7 @@
       "lego_id": "S0133L03",
       "type": "A",
       "lego": {
-        "known": "you will/you get to",
+        "known": "you will",
         "target": "你会"
       },
       "practice_phrases": [
@@ -34321,7 +34097,7 @@
       "lego_id": "S0134L01",
       "type": "M",
       "lego": {
-        "known": "it's not a problem/this is not a problem",
+        "known": "it's not a problem",
         "target": "这不是问题"
       },
       "practice_phrases": [
@@ -34388,7 +34164,7 @@
       "lego_id": "S0134L02",
       "type": "M",
       "lego": {
-        "known": "something difficult/difficult thing",
+        "known": "something difficult",
         "target": "困难的事情"
       },
       "practice_phrases": [
@@ -34455,7 +34231,7 @@
       "lego_id": "S0134L03",
       "type": "M",
       "lego": {
-        "known": "work at something difficult/do difficult things",
+        "known": "work at something difficult",
         "target": "做困难的事情"
       },
       "practice_phrases": [
@@ -34527,7 +34303,7 @@
       "lego_id": "S0134L04",
       "type": "M",
       "lego": {
-        "known": "with them/together with them",
+        "known": "with them",
         "target": "和他们一起"
       },
       "practice_phrases": [
@@ -35164,7 +34940,7 @@
       "lego_id": "S0137L01",
       "type": "M",
       "lego": {
-        "known": "talk often/to talk often",
+        "known": "talk often",
         "target": "经常说话"
       },
       "practice_phrases": [
@@ -35226,7 +35002,7 @@
       "lego_id": "S0355L02",
       "type": "M",
       "lego": {
-        "known": "talk/speak",
+        "known": "talk",
         "target": "说话"
       },
       "practice_phrases": [
@@ -35288,7 +35064,7 @@
       "lego_id": "S0137L03",
       "type": "A",
       "lego": {
-        "known": "perfect/to be perfect",
+        "known": "perfect",
         "target": "完美"
       },
       "practice_phrases": [
@@ -35412,7 +35188,7 @@
       "lego_id": "S0573L01",
       "type": "M",
       "lego": {
-        "known": "this was/this is",
+        "known": "this was",
         "target": "这是"
       },
       "practice_phrases": [
@@ -35474,7 +35250,7 @@
       "lego_id": "S0138L03",
       "type": "M",
       "lego": {
-        "known": "meet us/meet with us",
+        "known": "meet us",
         "target": "和我们见面"
       },
       "practice_phrases": [
@@ -35761,7 +35537,7 @@
       "lego_id": "S0596L01",
       "type": "M",
       "lego": {
-        "known": "I need to/I need",
+        "known": "I need to",
         "target": "我需要"
       },
       "practice_phrases": [
@@ -37160,30 +36936,6 @@
       "is_final_lego": false,
       "phrase_count": 16
     },
-    "S0147L01": {
-      "lego": {
-        "known": "She was very kind",
-        "target": "Ella era muy amable"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0147L02": {
-      "lego": {
-        "known": "was very kind",
-        "target": "era muy amable"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0147L04": {
       "lego_id": "S0147L04",
       "type": "M",
@@ -37250,30 +37002,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 13
-    },
-    "S0148L01": {
-      "lego": {
-        "known": "He wasn't very patient",
-        "target": "Él no era muy paciente"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0148L02": {
-      "lego": {
-        "known": "wasn't very patient",
-        "target": "no era muy paciente"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0149L01": {
       "lego_id": "S0149L01",
@@ -37588,18 +37316,6 @@
       "is_final_lego": false,
       "phrase_count": 19
     },
-    "S0151L01": {
-      "lego": {
-        "known": "that wasn't",
-        "target": "eso no era"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0151L02": {
       "lego_id": "S0668L01",
       "type": "M",
@@ -37661,42 +37377,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 12
-    },
-    "S0151L03": {
-      "lego": {
-        "known": "was hoping",
-        "target": "estaba esperando"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0151L04": {
-      "lego": {
-        "known": "hoping would happen",
-        "target": "esperando que pasara"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0151L05": {
-      "lego": {
-        "known": "what I was hoping would happen",
-        "target": "lo que estaba esperando que pasara"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0151L06": {
       "lego_id": "S0151L06",
@@ -37775,42 +37455,6 @@
       ],
       "is_final_lego": true,
       "phrase_count": 15
-    },
-    "S0152L01": {
-      "lego": {
-        "known": "I would have done it",
-        "target": "lo habría hecho"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0152L02": {
-      "lego": {
-        "known": "differently",
-        "target": "diferentemente"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0152L03": {
-      "lego": {
-        "known": "if I had known",
-        "target": "si hubiera sabido"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0152L04": {
       "lego_id": "S0152L04",
@@ -37893,35 +37537,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 16
-    },
-    "S0152L05": {
-      "lego": {
-        "known": "you wanted",
-        "target": "querías"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0152L06": {
-      "lego": {
-        "known": "what you wanted",
-        "target": "lo que querías"
-      },
-      "is_final_lego": true,
-      "practice_phrases": [
-        {
-          "known": "I would have done it differently if I had known what you wanted.",
-          "target": "如果我知道你想要什么，我会做得不同。"
-        }
-      ],
-      "phrase_count": 1,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0153L01": {
       "lego_id": "S0153L01",
@@ -38287,30 +37902,6 @@
       ],
       "is_final_lego": true,
       "phrase_count": 16
-    },
-    "S0154L02": {
-      "lego": {
-        "known": "you want to meet",
-        "target": "quieres encontrarte"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0154L03": {
-      "lego": {
-        "known": "on Saturday night",
-        "target": "el sábado por la noche"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0154L04": {
       "lego_id": "S0154L04",
@@ -44931,42 +44522,6 @@
       "is_final_lego": false,
       "phrase_count": 12
     },
-    "S0185L02": {
-      "lego": {
-        "known": "you left them",
-        "target": "las dejaste"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0185L03": {
-      "lego": {
-        "known": "I think you left them",
-        "target": "Creo que las dejaste"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0185L04": {
-      "lego": {
-        "known": "at work",
-        "target": "en el trabajo"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0185L05": {
       "lego_id": "S0185L05",
       "type": "M",
@@ -45559,42 +45114,6 @@
       "is_final_lego": false,
       "phrase_count": 10
     },
-    "S0188L02": {
-      "lego": {
-        "known": "I don't need to",
-        "target": "no necesito"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0188L03": {
-      "lego": {
-        "known": "So I don't need",
-        "target": "Así que no necesito"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0188L04": {
-      "lego": {
-        "known": "I don't need to change",
-        "target": "no necesito cambiar"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0189L02": {
       "lego_id": "S0635L03",
       "type": "M",
@@ -45656,35 +45175,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 12
-    },
-    "S0189L03": {
-      "lego": {
-        "known": "a good idea",
-        "target": "una buena idea"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_count": 0,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0189L04": {
-      "lego": {
-        "known": "that's a good idea",
-        "target": "esa es una buena idea"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "Yes that's a good idea.",
-          "target": "是的，那是个好主意。"
-        }
-      ],
-      "phrase_count": 1,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0190L01": {
       "lego_id": "S0667L02",
@@ -57516,7 +57006,7 @@
       "lego_id": "S0492L01",
       "type": "M",
       "lego": {
-        "known": "you think/you feel",
+        "known": "you think",
         "target": "你觉得"
       },
       "practice_phrases": [
@@ -58032,7 +57522,7 @@
       "lego_id": "S0258L04",
       "type": "M",
       "lego": {
-        "known": "is what/what is",
+        "known": "is what",
         "target": "是什么"
       },
       "practice_phrases": [
@@ -58160,7 +57650,7 @@
       "lego_id": "S0260L01",
       "type": "M",
       "lego": {
-        "known": "not at all/not even a bit",
+        "known": "not at all",
         "target": "一点也不"
       },
       "practice_phrases": [
@@ -58227,7 +57717,7 @@
       "lego_id": "S0260L02",
       "type": "M",
       "lego": {
-        "known": "don't know at all/don't have the faintest idea",
+        "known": "don't know at all",
         "target": "一点也不知道"
       },
       "practice_phrases": [
@@ -58567,7 +58057,7 @@
       "lego_id": "S0262L03",
       "type": "M",
       "lego": {
-        "known": "talking to/with",
+        "known": "talking to",
         "target": "和...说话"
       },
       "practice_phrases": [
@@ -58629,7 +58119,7 @@
       "lego_id": "S0527L02",
       "type": "M",
       "lego": {
-        "known": "who is/was",
+        "known": "who is",
         "target": "是谁"
       },
       "practice_phrases": [
@@ -58972,7 +58462,7 @@
       "lego_id": "S0266L01",
       "type": "M",
       "lego": {
-        "known": "he was/is",
+        "known": "he was",
         "target": "他是"
       },
       "practice_phrases": [
@@ -59359,7 +58849,7 @@
       "lego_id": "S0267L03",
       "type": "M",
       "lego": {
-        "known": "news/message from",
+        "known": "news",
         "target": "的消息"
       },
       "practice_phrases": [
@@ -63700,59 +63190,6 @@
       "is_final_lego": false,
       "phrase_count": 13
     },
-    "S0283L02": {
-      "lego": {
-        "known": "speak Chinese",
-        "target": "说普通话"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "Speak",
-          "target": "说"
-        },
-        {
-          "known": "Chinese",
-          "target": "普通话"
-        },
-        {
-          "known": "Speak Chinese",
-          "target": "说普通话"
-        },
-        {
-          "known": "I can speak Chinese",
-          "target": "我可以说普通话"
-        },
-        {
-          "known": "Your friends speak Chinese",
-          "target": "你的朋友说普通话"
-        },
-        {
-          "known": "Which friends speak Chinese?",
-          "target": "哪些朋友说普通话？"
-        },
-        {
-          "known": "Do you mind if I speak Chinese?",
-          "target": "你介意我说普通话吗？"
-        },
-        {
-          "known": "Which of your friends can speak Chinese?",
-          "target": "你的哪些朋友可以说普通话？"
-        },
-        {
-          "known": "I must finish speaking Chinese before you start",
-          "target": "我必须在你开始之前说完普通话"
-        },
-        {
-          "known": "Which of your friends speak Chinese?",
-          "target": "你的哪些朋友说普通话？"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0284L01": {
       "lego_id": "S0284L01",
       "type": "M",
@@ -64000,165 +63437,6 @@
       ],
       "is_final_lego": false,
       "phrase_count": 12
-    },
-    "S0285L02": {
-      "lego": {
-        "known": "she speaks Chinese",
-        "target": "她说普通话"
-      },
-      "is_final_lego": true,
-      "practice_phrases": [
-        {
-          "known": "She speaks Chinese",
-          "target": "她说普通话"
-        },
-        {
-          "known": "She speaks Chinese here",
-          "target": "她在这里说普通话"
-        },
-        {
-          "known": "She speaks Chinese at work",
-          "target": "她在工作时说普通话"
-        },
-        {
-          "known": "Does she speak Chinese?",
-          "target": "她说普通话吗？"
-        },
-        {
-          "known": "She speaks Chinese with friends",
-          "target": "她和朋友说普通话"
-        },
-        {
-          "known": "She speaks Chinese with my sister",
-          "target": "她和我姐姐说普通话"
-        },
-        {
-          "known": "Do you know she speaks Chinese?",
-          "target": "你认识她说普通话吗？"
-        },
-        {
-          "known": "She speaks Chinese at important meetings next week",
-          "target": "她下周在重要的会议上说普通话"
-        },
-        {
-          "known": "Which of your friends know that she speaks Chinese?",
-          "target": "你的哪些朋友知道她说普通话？"
-        },
-        {
-          "known": "She speaks Chinese.",
-          "target": "她说普通话。"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0286L01": {
-      "lego": {
-        "known": "like speaking Chinese",
-        "target": "喜欢说普通话"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "I like speaking Chinese",
-          "target": "我喜欢说普通话"
-        },
-        {
-          "known": "She likes speaking Chinese",
-          "target": "她喜欢说普通话"
-        },
-        {
-          "known": "My sister likes speaking Chinese",
-          "target": "我姐姐喜欢说普通话"
-        },
-        {
-          "known": "Which of your friends like speaking Chinese?",
-          "target": "你的哪些朋友喜欢说普通话？"
-        },
-        {
-          "known": "Do you know people who like speaking Chinese?",
-          "target": "你认识喜欢说普通话的人吗？"
-        },
-        {
-          "known": "My sister's friend likes speaking Chinese",
-          "target": "我姐姐的朋友喜欢说普通话"
-        },
-        {
-          "known": "I only need to finish things before I like speaking Chinese",
-          "target": "我只需要在我喜欢说普通话之前完成事情"
-        },
-        {
-          "known": "Do you mind if she likes speaking Chinese?",
-          "target": "你介意她喜欢说普通话吗？"
-        },
-        {
-          "known": "Which of your friends like speaking Chinese before you start?",
-          "target": "你的哪些朋友在你开始之前喜欢说普通话？"
-        },
-        {
-          "known": "That's not a problem if my sister likes speaking Chinese",
-          "target": "如果我姐姐喜欢说普通话，那不是问题"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
-    "S0286L02": {
-      "lego": {
-        "known": "people who like speaking Chinese",
-        "target": "喜欢说普通话的人"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "People who like speaking Chinese",
-          "target": "喜欢说普通话的人"
-        },
-        {
-          "known": "Do you know people who like speaking Chinese?",
-          "target": "你认识喜欢说普通话的人吗？"
-        },
-        {
-          "known": "Which people who like speaking Chinese do you know?",
-          "target": "你认识哪些喜欢说普通话的人？"
-        },
-        {
-          "known": "My sister knows people who like speaking Chinese",
-          "target": "我姐姐认识喜欢说普通话的人"
-        },
-        {
-          "known": "She knows people who like speaking Chinese",
-          "target": "她认识喜欢说普通话的人"
-        },
-        {
-          "known": "Which of your friends are people who like speaking Chinese?",
-          "target": "你的哪些朋友是喜欢说普通话的人？"
-        },
-        {
-          "known": "I only know people who like speaking Chinese",
-          "target": "我只认识喜欢说普通话的人"
-        },
-        {
-          "known": "Do you mind if she knows people who like speaking Chinese?",
-          "target": "你介意她认识喜欢说普通话的人吗？"
-        },
-        {
-          "known": "My sister's friend knows people who like speaking Chinese",
-          "target": "我姐姐的朋友认识喜欢说普通话的人"
-        },
-        {
-          "known": "People who like speaking Chinese.",
-          "target": "喜欢说普通话的人。"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
     },
     "S0287L01": {
       "lego_id": "S0287L01",
@@ -64711,7 +63989,7 @@
       "lego_id": "S0290L01",
       "type": "M",
       "lego": {
-        "known": "knows or not / whether knows",
+        "known": "knows or not",
         "target": "知不知道"
       },
       "practice_phrases": [
@@ -66173,64 +65451,11 @@
       "is_final_lego": false,
       "phrase_count": 13
     },
-    "S0297L03": {
-      "lego": {
-        "known": "many people who speak Chinese",
-        "target": "很多说普通话的人"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "Many people",
-          "target": "很多人"
-        },
-        {
-          "known": "People who speak",
-          "target": "说的人"
-        },
-        {
-          "known": "Many people who speak",
-          "target": "很多说的人"
-        },
-        {
-          "known": "I know many people who",
-          "target": "我认识很多的人"
-        },
-        {
-          "known": "Many people who speak Chinese here",
-          "target": "这里很多说普通话的人"
-        },
-        {
-          "known": "I know many people who speak",
-          "target": "我认识很多说的人"
-        },
-        {
-          "known": "I wonder how many people who speak Chinese I know",
-          "target": "我想知道我认识多少说普通话的人"
-        },
-        {
-          "known": "She said she knows many people who speak Chinese",
-          "target": "她说她认识很多说普通话的人"
-        },
-        {
-          "known": "Most people I know don't know many people who speak Chinese",
-          "target": "我认识的大多数人不认识很多说普通话的人"
-        },
-        {
-          "known": "I hope I'll be able to meet many people who speak Chinese tonight",
-          "target": "我希望我今晚能见很多说普通话的人"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0298L01": {
       "lego_id": "S0378L02",
       "type": "M",
       "lego": {
-        "known": "I've got...not/I don't have",
+        "known": "I've got...not",
         "target": "我没有"
       },
       "practice_phrases": [
@@ -67158,7 +66383,7 @@
       "lego_id": "S0500L03",
       "type": "M",
       "lego": {
-        "known": "don't want / doesn't want",
+        "known": "don't want",
         "target": "不想"
       },
       "practice_phrases": [
@@ -67910,7 +67135,7 @@
       "lego_id": "S0355L02",
       "type": "M",
       "lego": {
-        "known": "talk / speak",
+        "known": "talk",
         "target": "说话"
       },
       "practice_phrases": [
@@ -67972,7 +67197,7 @@
       "lego_id": "S0306L08",
       "type": "M",
       "lego": {
-        "known": "with your friend / to your friend",
+        "known": "with your friend",
         "target": "和你朋友"
       },
       "practice_phrases": [
@@ -68111,7 +67336,7 @@
       "lego_id": "S0306L10",
       "type": "M",
       "lego": {
-        "known": "is talking / are talking",
+        "known": "is talking",
         "target": "正在说话"
       },
       "practice_phrases": [
@@ -68467,7 +67692,7 @@
       "lego_id": "S0498L03",
       "type": "A",
       "lego": {
-        "known": "there / over there",
+        "known": "there",
         "target": "那边"
       },
       "practice_phrases": [
@@ -68519,7 +67744,7 @@
       "lego_id": "S0307L07",
       "type": "M",
       "lego": {
-        "known": "sit over there / sitting over there",
+        "known": "sit over there",
         "target": "坐在那边"
       },
       "practice_phrases": [
@@ -68668,7 +67893,7 @@
       "lego_id": "S0308L02",
       "type": "M",
       "lego": {
-        "known": "she is / she's",
+        "known": "she is",
         "target": "她是"
       },
       "practice_phrases": [
@@ -68730,7 +67955,7 @@
       "lego_id": "S0308L04",
       "type": "A",
       "lego": {
-        "known": "mother / mom",
+        "known": "mother",
         "target": "妈妈"
       },
       "practice_phrases": [
@@ -68782,7 +68007,7 @@
       "lego_id": "S0308L05",
       "type": "M",
       "lego": {
-        "known": "my mother's / of my mother",
+        "known": "my mother's",
         "target": "我妈妈的"
       },
       "practice_phrases": [
@@ -68849,7 +68074,7 @@
       "lego_id": "S0308L06",
       "type": "M",
       "lego": {
-        "known": "my mother's friend / a friend of my mother",
+        "known": "my mother's friend",
         "target": "我妈妈的朋友"
       },
       "practice_phrases": [
@@ -69045,7 +68270,7 @@
       "lego_id": "S0519L03",
       "type": "M",
       "lego": {
-        "known": "have seen / seen",
+        "known": "have seen",
         "target": "见过"
       },
       "practice_phrases": [
@@ -69107,7 +68332,7 @@
       "lego_id": "S0309L05",
       "type": "M",
       "lego": {
-        "known": "seen her / have seen her",
+        "known": "seen her",
         "target": "见过她"
       },
       "practice_phrases": [
@@ -69468,7 +68693,7 @@
       "lego_id": "S0310L02",
       "type": "M",
       "lego": {
-        "known": "can write / could write",
+        "known": "can write",
         "target": "可以写"
       },
       "practice_phrases": [
@@ -84642,7 +83867,7 @@
       "lego_id": "S0391L03",
       "type": "A",
       "lego": {
-        "known": "walk/go",
+        "known": "walk",
         "target": "走去"
       },
       "practice_phrases": [
@@ -86727,7 +85952,7 @@
       "lego_id": "S0396L02",
       "type": "A",
       "lego": {
-        "known": "stand/standing",
+        "known": "stand",
         "target": "站着"
       },
       "practice_phrases": [
@@ -86841,7 +86066,7 @@
       "lego_id": "S0396L04",
       "type": "M",
       "lego": {
-        "known": "other people/everybody else",
+        "known": "other people",
         "target": "其他人"
       },
       "practice_phrases": [
@@ -86903,7 +86128,7 @@
       "lego_id": "S0611L02",
       "type": "A",
       "lego": {
-        "known": "ready/prepared",
+        "known": "ready",
         "target": "准备好"
       },
       "practice_phrases": [
@@ -87233,7 +86458,7 @@
       "lego_id": "S0397L02",
       "type": "A",
       "lego": {
-        "known": "soon/quickly",
+        "known": "soon",
         "target": "很快"
       },
       "practice_phrases": [
@@ -87542,7 +86767,7 @@
       "lego_id": "S0398L02",
       "type": "A",
       "lego": {
-        "known": "child/children",
+        "known": "child",
         "target": "孩子"
       },
       "practice_phrases": [
@@ -87661,7 +86886,7 @@
       "lego_id": "S0398L04",
       "type": "M",
       "lego": {
-        "known": "with our children/towards our children",
+        "known": "with our children",
         "target": "对我们的孩子"
       },
       "practice_phrases": [
@@ -87780,7 +87005,7 @@
       "lego_id": "S0398L06",
       "type": "M",
       "lego": {
-        "known": "patient/have patience",
+        "known": "patient",
         "target": "有耐心"
       },
       "practice_phrases": [
@@ -88361,7 +87586,7 @@
       "lego_id": "S0400L04",
       "type": "M",
       "lego": {
-        "known": "something/a bit of thing",
+        "known": "something",
         "target": "点东西"
       },
       "practice_phrases": [
@@ -89911,7 +89136,7 @@
       "lego_id": "S0525L02",
       "type": "M",
       "lego": {
-        "known": "if/whether",
+        "known": "if",
         "target": "是否"
       },
       "practice_phrases": [
@@ -90276,7 +89501,7 @@
       "lego_id": "S0406L03",
       "type": "M",
       "lego": {
-        "known": "no problem/okay",
+        "known": "no problem",
         "target": "没问题"
       },
       "practice_phrases": [
@@ -90877,7 +90102,7 @@
       "lego_id": "S0408L03",
       "type": "M",
       "lego": {
-        "known": "to make/establish",
+        "known": "to make",
         "target": "建立"
       },
       "practice_phrases": [
@@ -94744,7 +93969,7 @@
       "lego_id": "S0426L04",
       "type": "M",
       "lego": {
-        "known": "unhappy/not happy",
+        "known": "unhappy",
         "target": "不开心"
       },
       "practice_phrases": [
@@ -95378,7 +94603,7 @@
       "lego_id": "S0430L03",
       "type": "M",
       "lego": {
-        "known": "not possible/impossible",
+        "known": "not possible",
         "target": "不可能的"
       },
       "practice_phrases": [
@@ -95726,7 +94951,7 @@
       "lego_id": "S0528L01",
       "type": "A",
       "lego": {
-        "known": "could/possibly",
+        "known": "could",
         "target": "可能"
       },
       "practice_phrases": [
@@ -96061,7 +95286,7 @@
       "lego_id": "S0434L02",
       "type": "A",
       "lego": {
-        "known": "cut/reduce",
+        "known": "cut",
         "target": "减少"
       },
       "practice_phrases": [
@@ -96262,7 +95487,7 @@
       "lego_id": "S0435L03",
       "type": "A",
       "lego": {
-        "known": "(if/conditional marker)",
+        "known": "(if",
         "target": "的话"
       },
       "practice_phrases": [
@@ -96530,7 +95755,7 @@
       "lego_id": "S0437L04",
       "type": "A",
       "lego": {
-        "known": "raise/collect",
+        "known": "raise",
         "target": "筹集"
       },
       "practice_phrases": [
@@ -96947,7 +96172,7 @@
       "lego_id": "S0512L04",
       "type": "M",
       "lego": {
-        "known": "when/while",
+        "known": "when",
         "target": "的时候"
       },
       "practice_phrases": [
@@ -97009,7 +96234,7 @@
       "lego_id": "S0443L04",
       "type": "A",
       "lego": {
-        "known": "approach/method",
+        "known": "approach",
         "target": "方法"
       },
       "practice_phrases": [
@@ -97418,7 +96643,7 @@
       "lego_id": "S0443L02",
       "type": "A",
       "lego": {
-        "known": "keep/continue",
+        "known": "keep",
         "target": "继续"
       },
       "practice_phrases": [
@@ -97532,7 +96757,7 @@
       "lego_id": "S0443L04",
       "type": "A",
       "lego": {
-        "known": "way/method",
+        "known": "way",
         "target": "方法"
       },
       "practice_phrases": [
@@ -97780,7 +97005,7 @@
       "lego_id": "S0444L02",
       "type": "A",
       "lego": {
-        "known": "think/thought",
+        "known": "think",
         "target": "觉得"
       },
       "practice_phrases": [
@@ -97832,7 +97057,7 @@
       "lego_id": "S0630L02",
       "type": "A",
       "lego": {
-        "known": "can/could",
+        "known": "can",
         "target": "可以"
       },
       "practice_phrases": [
@@ -97936,7 +97161,7 @@
       "lego_id": "S0444L05",
       "type": "A",
       "lego": {
-        "known": "efficient/effective",
+        "known": "efficient",
         "target": "有效"
       },
       "practice_phrases": [
@@ -98112,7 +97337,7 @@
       "lego_id": "S0444L08",
       "type": "A",
       "lego": {
-        "known": "do/done",
+        "known": "do",
         "target": "做"
       },
       "practice_phrases": [
@@ -98351,7 +97576,7 @@
       "lego_id": "S0445L04",
       "type": "A",
       "lego": {
-        "known": "carry/take",
+        "known": "carry",
         "target": "拿"
       },
       "practice_phrases": [
@@ -98527,7 +97752,7 @@
       "lego_id": "S0446L01",
       "type": "M",
       "lego": {
-        "known": "won't/will not",
+        "known": "won't",
         "target": "不会"
       },
       "practice_phrases": [
@@ -98832,7 +98057,7 @@
       "lego_id": "S0530L02",
       "type": "A",
       "lego": {
-        "known": "can/be able to",
+        "known": "can",
         "target": "能"
       },
       "practice_phrases": [
@@ -98884,7 +98109,7 @@
       "lego_id": "S0447L02",
       "type": "A",
       "lego": {
-        "known": "meal/food",
+        "known": "meal",
         "target": "饭"
       },
       "practice_phrases": [
@@ -99164,7 +98389,7 @@
       "lego_id": "S0447L07",
       "type": "A",
       "lego": {
-        "known": "take/send",
+        "known": "take",
         "target": "送"
       },
       "practice_phrases": [
@@ -99216,7 +98441,7 @@
       "lego_id": "S0447L08",
       "type": "A",
       "lego": {
-        "known": "we/us",
+        "known": "we",
         "target": "我们"
       },
       "practice_phrases": [
@@ -99268,7 +98493,7 @@
       "lego_id": "S0447L09",
       "type": "M",
       "lego": {
-        "known": "return home/go home",
+        "known": "return home",
         "target": "回家"
       },
       "practice_phrases": [
@@ -99521,7 +98746,7 @@
       "lego_id": "S0599L06",
       "type": "A",
       "lego": {
-        "known": "happy/glad",
+        "known": "happy",
         "target": "高兴"
       },
       "practice_phrases": [
@@ -99573,7 +98798,7 @@
       "lego_id": "S0599L05",
       "type": "M",
       "lego": {
-        "known": "very happy/happy",
+        "known": "very happy",
         "target": "很高兴"
       },
       "practice_phrases": [
@@ -99764,7 +98989,7 @@
       "lego_id": "S0449L01",
       "type": "A",
       "lego": {
-        "known": "say/said",
+        "known": "say",
         "target": "说"
       },
       "practice_phrases": [
@@ -99883,7 +99108,7 @@
       "lego_id": "S0633L04",
       "type": "A",
       "lego": {
-        "known": "good/well",
+        "known": "good",
         "target": "好"
       },
       "practice_phrases": [
@@ -99935,7 +99160,7 @@
       "lego_id": "S0664L02",
       "type": "M",
       "lego": {
-        "known": "were ready/are ready",
+        "known": "were ready",
         "target": "准备好了"
       },
       "practice_phrases": [
@@ -101581,59 +100806,6 @@
       "is_final_lego": true,
       "phrase_count": 10
     },
-    "S0459L01": {
-      "lego": {
-        "known": "it wasn't in front of",
-        "target": "它不在...的前面"
-      },
-      "is_final_lego": false,
-      "practice_phrases": [
-        {
-          "known": "in front of",
-          "target": "...的前面"
-        },
-        {
-          "known": "wasn't there",
-          "target": "不在那里"
-        },
-        {
-          "known": "it wasn't in front",
-          "target": "它不在前面"
-        },
-        {
-          "known": "wasn't in the front",
-          "target": "不在前面"
-        },
-        {
-          "known": "wasn't in front of the window",
-          "target": "不在窗户的前面"
-        },
-        {
-          "known": "it was not in front",
-          "target": "它不在前面"
-        },
-        {
-          "known": "it wasn't in front of what we said",
-          "target": "它不在我们说的前面"
-        },
-        {
-          "known": "it wasn't in front of the different areas like we thought",
-          "target": "它不在我们想的不同地区的前面"
-        },
-        {
-          "known": "it wasn't in front of the blue sign where they said we should wait",
-          "target": "它不在他们说我们应该等的蓝色标志的前面"
-        },
-        {
-          "known": "It wasn't in front of the blue sign.",
-          "target": "它不在蓝色标志的前面。"
-        }
-      ],
-      "phrase_count": 10,
-      "lego_id": null,
-      "type": "UNKNOWN",
-      "warning": "No matching LEGO found in lego_pairs.json"
-    },
     "S0459L03": {
       "lego_id": "S0459L03",
       "type": "M",
@@ -101993,7 +101165,7 @@
       "lego_id": "S0461L02",
       "type": "A",
       "lego": {
-        "known": "postcard/postcards",
+        "known": "postcard",
         "target": "明信片"
       },
       "practice_phrases": [
@@ -102675,7 +101847,7 @@
       "lego_id": "S0462L07",
       "type": "A",
       "lego": {
-        "known": "fight/fought",
+        "known": "fight",
         "target": "战斗"
       },
       "practice_phrases": [
@@ -104481,7 +103653,7 @@
       "lego_id": "S0573L01",
       "type": "M",
       "lego": {
-        "known": "this is/it is",
+        "known": "this is",
         "target": "这是"
       },
       "practice_phrases": [
@@ -104857,7 +104029,7 @@
       "lego_id": "S0469L02",
       "type": "M",
       "lego": {
-        "known": "mean/means",
+        "known": "mean",
         "target": "意味着"
       },
       "practice_phrases": [
@@ -106340,7 +105512,7 @@
       "lego_id": "S0606L06",
       "type": "A",
       "lego": {
-        "known": "to wait/waiting",
+        "known": "to wait",
         "target": "等待"
       },
       "practice_phrases": [
@@ -107036,7 +106208,7 @@
       "lego_id": "S0573L01",
       "type": "M",
       "lego": {
-        "known": "this is/it's",
+        "known": "this is",
         "target": "这是"
       },
       "practice_phrases": [
@@ -107433,7 +106605,7 @@
       "lego_id": "S0480L03",
       "type": "A",
       "lego": {
-        "known": "no matter/regardless",
+        "known": "no matter",
         "target": "无论"
       },
       "practice_phrases": [
@@ -112631,7 +111803,7 @@
       "lego_id": "S0501L06",
       "type": "M",
       "lego": {
-        "known": "would be good/if only (ending particle)",
+        "known": "would be good",
         "target": "就好了"
       },
       "practice_phrases": [
@@ -114082,7 +113254,7 @@
       "lego_id": "S0508L04",
       "type": "M",
       "lego": {
-        "known": "no point/meaningless",
+        "known": "no point",
         "target": "没有意义"
       },
       "practice_phrases": [
@@ -114148,7 +113320,7 @@
       "lego_id": "S0509L02",
       "type": "M",
       "lego": {
-        "known": "you're going to pay for/buy",
+        "known": "you're going to pay for",
         "target": "你要买"
       },
       "practice_phrases": [
@@ -115084,7 +114256,7 @@
       "lego_id": "S0512L04",
       "type": "M",
       "lego": {
-        "known": "while/when",
+        "known": "while",
         "target": "的时候"
       },
       "practice_phrases": [
@@ -116327,7 +115499,7 @@
       "lego_id": "S0518L04",
       "type": "A",
       "lego": {
-        "known": "own/self",
+        "known": "own",
         "target": "自己"
       },
       "practice_phrases": [
@@ -141536,7 +140708,7 @@
       "lego_id": "S0635L02",
       "type": "A",
       "lego": {
-        "known": "is/are",
+        "known": "is",
         "target": "是"
       },
       "practice_phrases": [
@@ -141998,7 +141170,7 @@
       "lego_id": "S0637L02",
       "type": "A",
       "lego": {
-        "known": "at/in/is (location)",
+        "known": "at",
         "target": "在"
       },
       "practice_phrases": [
@@ -142370,7 +141542,7 @@
       "lego_id": "S0654L04",
       "type": "A",
       "lego": {
-        "known": "sir/mister",
+        "known": "sir",
         "target": "先生"
       },
       "practice_phrases": [
@@ -143744,7 +142916,7 @@
       "lego_id": "S0646L04",
       "type": "M",
       "lego": {
-        "known": "something/what thing",
+        "known": "something",
         "target": "什么事"
       },
       "practice_phrases": [
@@ -145216,7 +144388,7 @@
       "lego_id": "S0668L02",
       "type": "M",
       "lego": {
-        "known": "you're all / you all",
+        "known": "you're all",
         "target": "你们大家都"
       },
       "practice_phrases": [
@@ -145431,7 +144603,7 @@
       "lego_id": "S0664L02",
       "type": "M",
       "lego": {
-        "known": "ready / prepared (completed)",
+        "known": "ready",
         "target": "准备好了"
       },
       "practice_phrases": [
@@ -145498,7 +144670,7 @@
       "lego_id": "S0664L03",
       "type": "M",
       "lego": {
-        "known": "ready? / Are (you) ready?",
+        "known": "ready?",
         "target": "准备好了吗"
       },
       "practice_phrases": [
@@ -145574,7 +144746,7 @@
       "lego_id": "S0665L03",
       "type": "M",
       "lego": {
-        "known": "want to go? / Do (you) want to go?",
+        "known": "want to go?",
         "target": "想去吗"
       },
       "practice_phrases": [
@@ -145645,7 +144817,7 @@
       "lego_id": "S0666L02",
       "type": "M",
       "lego": {
-        "known": "think what / what do (you) think",
+        "known": "think what",
         "target": "认为怎么样"
       },
       "practice_phrases": [
@@ -145707,7 +144879,7 @@
       "lego_id": "S0666L03",
       "type": "A",
       "lego": {
-        "known": "how / what about / how is it",
+        "known": "how",
         "target": "怎么样"
       },
       "practice_phrases": [
@@ -145759,7 +144931,7 @@
       "lego_id": "S0667L02",
       "type": "A",
       "lego": {
-        "known": "mind / care",
+        "known": "mind",
         "target": "介意"
       },
       "practice_phrases": [
@@ -145811,7 +144983,7 @@
       "lego_id": "S0667L03",
       "type": "M",
       "lego": {
-        "known": "mind? / Do (you) mind?",
+        "known": "mind?",
         "target": "介意吗"
       },
       "practice_phrases": [
@@ -145873,7 +145045,7 @@
       "lego_id": "S0668L03",
       "type": "M",
       "lego": {
-        "known": "be able to go / can go",
+        "known": "be able to go",
         "target": "能去"
       },
       "practice_phrases": [
