@@ -1,0 +1,43 @@
+# Simple APML Example
+# Tests basic data models, interfaces, and computed values
+
+app SimpleExample:
+  title: "Simple APML Example"
+  version: "1.0.0"
+  apml_version: "2.0.0"
+
+# Data Model
+data Post:
+  id: unique_id auto
+  title: text required
+  content: text required
+  author: text required
+  likes_count: number default: 0
+  created_at: timestamp auto
+  category: text optional
+
+# Computed Value
+computed filtered_posts: posts.filter(p => p.category == selected_category)
+
+computed total_likes: posts.sum(p => p.likes_count)
+
+# Interface
+interface feed_view:
+
+  show header:
+    title: "My Feed"
+    subtitle: "Latest posts"
+
+  show post_list:
+    items: filtered_posts
+
+    for each post in filtered_posts:
+      show post_card:
+        title: post.title
+        content: post.content
+        author: post.author
+        likes: post.likes_count
+
+  show stats:
+    total_posts: filtered_posts.length
+    total_likes: total_likes

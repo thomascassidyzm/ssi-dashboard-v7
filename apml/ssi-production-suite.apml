@@ -1,0 +1,1468 @@
+app SSiProductionSuite:
+  title: "SSI Course Production Suite"
+  version: "2.0.0"
+  apml_version: "2.1.0"
+  extensions: [APML-EDU]
+  description: "Integrated QA, recording, and audio pipeline system for language course production"
+
+# ============================================
+# DATA MODELS
+# ============================================
+
+data Course:
+  course_code: text unique required
+  version: text required
+  target_language: text required
+  known_language: text required
+  total_seeds: number default: 668
+  status: text default: "draft"
+  created_at: timestamp auto
+  updated_at: timestamp auto
+
+  relationships:
+    has_many: Seed
+    has_many: AudioSample
+    has_many: GenerationJob
+
+data Seed:
+  seed_id: text required
+  course_code: text required
+  known_text: text required
+  target_text: text required
+  sequence_number: number required
+  known_audio_uuid: text optional
+  target_audio_uuid: text optional
+  created_at: timestamp auto
+
+  relationships:
+    belongs_to: Course via course_code
+    has_many: LEGO
+
+data LEGO:
+  lego_id: text required
+  seed_id: text required
+  course_code: text required
+  type: text required  # A or M
+  known_text: text required
+  target_text: text required
+  is_new: boolean default: true
+  presentation_text: text optional
+  components: json optional  # For M-type LEGOs
+  created_at: timestamp auto
+
+  relationships:
+    belongs_to: Seed via seed_id
+    has_one: Basket
+    has_many: PracticePhrase
+
+data Basket:
+  basket_id: text required
+  lego_id: text required
+  course_code: text required
+  created_at: timestamp auto
+
+  relationships:
+    belongs_to: LEGO via lego_id
+    has_many: PracticePhrase
+
+data PracticePhrase:
+  phrase_id: text required
+  basket_id: text required
+  lego_id: text required
+  course_code: text required
+  known_text: text required
+  target_text: text required
+  phrase_type: text required  # COMP, LEGO, DEBU, ETER
+  phrase_order: number required
+  is_debut: boolean default: false
+  is_component: boolean default: false
+  known_audio_uuid: text optional
+  target1_audio_uuid: text optional
+  target2_audio_uuid: text optional
+  created_at: timestamp auto
+
+  relationships:
+    belongs_to: Basket via basket_id
+    belongs_to: LEGO via lego_id
+
+data AudioSample:
+  uuid: unique_id auto
+  text_normalized: text required
+  language: text required
+  voice_id: text required
+  role: text required  # source, target1, target2, presentation, encouragement
+  cadence: text required  # natural, slow, fast
+  s3_key: text required
+  duration_ms: number required
+  is_human_voiced: boolean default: false
+  approved: boolean default: false
+  course_code: text optional
+  created_at: timestamp auto
+  updated_at: timestamp auto
+
+  relationships:
+    belongs_to: Voice via voice_id
+    has_many: SampleFlag
+
+data SampleFlag:
+  flag_id: unique_id auto
+  sample_uuid: text required
+  course_code: text required
+  status: text required  # pending, flagged, approved, human_needed, regenerating
+  flag_type: text optional  # text_edit, regen_tts, needs_human
+  notes: text optional
+  flagged_by: text optional
+  flagged_at: timestamp optional
+  resolved_at: timestamp optional
+  context: json optional
+  history: json default: []
+
+  relationships:
+    belongs_to: AudioSample via sample_uuid
+
+data Voice:
+  voice_id: text unique required
+  provider: text required  # azure, elevenlabs, human
+  language: text required
+  role: text required
+  name: text required
+  is_active: boolean default: true
+  metadata: json optional
+  created_at: timestamp auto
+
+  relationships:
+    has_many: AudioSample
+
+data GenerationJob:
+  job_id: unique_id auto
+  course_code: text required
+  status: text required  # idle, planning, generating, complete, failed
+  total_samples: number default: 0
+  processed_samples: number default: 0
+  failed_samples: number default: 0
+  started_at: timestamp optional
+  completed_at: timestamp optional
+  error_log: json default: []
+
+  relationships:
+    belongs_to: Course via course_code
+
+data RecordingQueue:
+  queue_id: unique_id auto
+  course_code: text required
+  language: text required
+  assigned_to: text optional
+  status: text required  # pending, in_progress, completed
+  total_items: number default: 0
+  recorded_items: number default: 0
+  created_at: timestamp auto
+  updated_at: timestamp auto
+
+  relationships:
+    belongs_to: Course via course_code
+
+data RecordingItem:
+  item_id: unique_id auto
+  queue_id: text required
+  sample_uuid: text required
+  phrase: text required
+  recorded: boolean default: false
+  recorded_at: timestamp optional
+  recorded_by: text optional
+  s3_key: text optional
+
+  relationships:
+    belongs_to: RecordingQueue via queue_id
+    belongs_to: AudioSample via sample_uuid
+
+# ============================================
+# CONTENT HIERARCHIES
+# ============================================
+
+content Course:
+  id: course_code
+  fields:
+    target_language: text required
+    known_language: text required
+    version: text required
+    total_seeds: number default: 668
+  structure:
+    contains: Seed[]
+
+content Seed:
+  id: seed_id
+  fields:
+    known_text: text required
+    target_text: text required
+    sequence_number: number required
+  structure:
+    extracts: LEGO[]
+  audio:
+    known_audio: AudioSample
+    target_audio: AudioSample
+
+content LEGO:
+  id: lego_id
+  fields:
+    known_text: text required
+    target_text: text required
+    type: enum [A, M]
+    is_new: boolean default: true
+    presentation_text: text required
+  structure:
+    when type == M:
+      has_components: LEGO[]
+    has_basket: Basket
+  audio:
+    known_audio: AudioSample
+    target_audio: AudioSample
+    presentation_audio: AudioSample
+
+content Basket:
+  belongs_to: LEGO
+  structure:
+    contains:
+      components: PracticePhrase[]
+      debut: PracticePhrase[]
+      debu: PracticePhrase[]
+      eter: PracticePhrase[]
+
+content PracticePhrase:
+  id: phrase_id
+  fields:
+    known_text: text required
+    target_text: text required
+    phrase_type: enum [COMP, LEGO, DEBU, ETER]
+    phrase_order: number required
+  audio:
+    known_audio: AudioSample
+    target1_audio: AudioSample
+    target2_audio: AudioSample
+
+# ============================================
+# INTERFACE - MISSION CONTROL
+# ============================================
+
+interface mission_control:
+  show header:
+    title: "Mission Control"
+    course_selector:
+      options: courses
+      selected: current_course
+
+  show overall_progress:
+    show progress_ring:
+      value: overall_completion_percentage
+      label: "Overall Progress"
+      color: when value > 75 then "emerald" else "amber"
+
+    show stats_grid:
+      stat approved_count:
+        value: approved_samples
+        label: "Approved"
+        icon: "check-circle"
+
+      stat total_count:
+        value: total_samples
+        label: "Total Samples"
+        icon: "musical-note"
+
+      stat estimated_days:
+        value: days_to_complete
+        label: "Days to Complete"
+        icon: "calendar"
+
+  when has_blockers:
+    show blocker_section:
+      title: "Attention Needed"
+
+      for each blocker in active_blockers:
+        show blocker_card:
+          severity: blocker.severity
+          icon: blocker.icon
+          message: blocker.message
+
+          show action_button:
+            label: blocker.action_label
+            on click:
+              navigate to blocker.resolution_url
+
+  show pipeline_stages:
+    title: "Pipeline Status"
+
+    for each stage in pipeline_stages:
+      show stage_card:
+        name: stage.name
+        status: stage.status
+        progress: stage.progress_percentage
+
+        show progress_bar:
+          value: stage.progress_percentage
+          max: 100
+
+        when stage.has_blockers:
+          show blocker_badge:
+            count: stage.blocker_count
+            color: "red"
+
+        show last_activity:
+          text: stage.last_activity_text
+          timestamp: stage.last_activity_at
+
+  show quick_actions:
+    title: "Quick Access"
+
+    show tool_grid:
+      show tool_card script_viewer:
+        icon: "document-text"
+        title: "Script Viewer"
+        description: "Review and flag samples"
+        badge: flagged_count when flagged_count > 0
+        on click:
+          navigate to /production/{course_code}/script
+
+      show tool_card audio_pipeline:
+        icon: "cpu-chip"
+        title: "Audio Pipeline"
+        description: "Generate TTS audio"
+        badge: pipeline_active_count when pipeline_active
+        on click:
+          navigate to /production/{course_code}/audio-pipeline
+
+      show tool_card recording_studio:
+        icon: "microphone"
+        title: "Recording Studio"
+        description: "Manual recordings"
+        badge: recording_queue_count when recording_queue_count > 0
+        on click:
+          navigate to /production/{course_code}/recording
+
+      show tool_card samples_browser:
+        icon: "musical-note"
+        title: "Samples Browser"
+        description: "Quality review"
+        badge: needs_review_count when needs_review_count > 0
+        on click:
+          navigate to /production/{course_code}/samples
+
+# ============================================
+# INTERFACE - SCRIPT VIEWER
+# ============================================
+
+interface script_viewer:
+  show toolbar:
+    show search_input:
+      placeholder: "Search seeds or phrases..."
+      model: search_query
+
+    show filter_select:
+      options: ["all", "flagged", "approved", "pending", "human_needed"]
+      model: filter_status
+
+    show view_controls:
+      show collapse_all_button:
+        on click:
+          call collapse_all_seeds
+
+      show expand_all_button:
+        on click:
+          call expand_all_seeds
+
+  show script_tree:
+    for each seed in filtered_seeds:
+      show seed_node:
+        id: seed.seed_id
+        known: seed.known_text
+        target: seed.target_text
+        expanded: expanded_seeds.has(seed.seed_id)
+
+        on toggle:
+          call toggle_seed_expansion(seed.seed_id)
+
+        for each lego in seed.legos:
+          show lego_node:
+            id: lego.lego_id
+            type: lego.type
+            is_new: lego.is_new
+            known: lego.known_text
+            target: lego.target_text
+
+            for each phrase in lego.phrases:
+              show phrase_row:
+                id: phrase.phrase_id
+                type: phrase.phrase_type
+                known: phrase.known_text
+                target: phrase.target_text
+
+                show audio_controls:
+                  show play_button known_audio:
+                    icon: "play"
+                    on click:
+                      call play_sample(phrase.known_audio_uuid)
+
+                  show play_button target1_audio:
+                    icon: "play"
+                    on click:
+                      call play_sample(phrase.target1_audio_uuid)
+
+                  show play_button target2_audio:
+                    icon: "play"
+                    on click:
+                      call play_sample(phrase.target2_audio_uuid)
+
+                show flag_status:
+                  status: phrase.flag_status
+                  color: when status == "approved" then "green"
+                        when status == "flagged" then "amber"
+                        when status == "human_needed" then "red"
+                        else "gray"
+
+                show flag_button:
+                  on click:
+                    show flag_modal for phrase
+
+  when current_sample:
+    show audio_playback_bar:
+      sample: current_sample
+      is_playing: is_playing
+
+      show playback_controls:
+        show play_pause_button:
+          icon: when is_playing then "pause" else "play"
+          on click:
+            toggle playback
+
+        show previous_button:
+          on click:
+            call play_previous
+
+        show next_button:
+          on click:
+            call play_next
+
+      show waveform_display:
+        peaks: current_sample.waveform_peaks
+        current_time: playback_time
+        duration: current_sample.duration_ms
+
+# ============================================
+# INTERFACE - AUDIO PIPELINE
+# ============================================
+
+interface audio_pipeline:
+  show header:
+    title: "Audio Pipeline"
+    course: current_course.course_code
+
+  show progress_dashboard:
+    show overall_progress:
+      show progress_bar:
+        value: completion_percentage
+        max: 100
+        label: "{generated_count} / {total_phrases}"
+
+      show stats_row:
+        stat generated:
+          value: generated_count
+          label: "Generated"
+          color: "green"
+
+        stat pending:
+          value: pending_count
+          label: "Pending"
+          color: "gray"
+
+        stat failed:
+          value: failed_count
+          label: "Failed"
+          color: "red"
+
+  show queue_controls:
+    show start_button:
+      label: "Generate Audio"
+      disabled: when job_running
+      on click:
+        call start_generation
+
+    show cancel_button:
+      label: "Cancel"
+      disabled: when not job_running
+      on click:
+        call cancel_generation
+
+    show add_flagged_button:
+      label: "Add Flagged Samples"
+      badge: flagged_for_regen_count
+      disabled: when job_running
+      on click:
+        call add_flagged_to_queue
+
+  when job_running:
+    show processing_section:
+      title: "Processing Now"
+
+      show current_item:
+        text: current_job.current_item.text
+        voice: current_job.current_item.voice_id
+        progress: current_job.current_item.progress
+
+        show progress_bar:
+          value: current_job.current_item.progress
+          max: 100
+
+  show virtualized_list queue_items:
+    items: generation_queue
+    item_height: estimated 60px
+    overscan: 5
+
+    template queue_item:
+      show queue_row:
+        uuid: item.uuid
+        text: item.text
+        voice: item.voice_id
+        status: item.status
+
+        when item.status == "complete":
+          show audio_preview:
+            src: item.s3_url
+            duration: item.duration_ms
+
+            show preview_button:
+              icon: "play"
+              on click:
+                call play_preview(item.uuid)
+
+        when item.status == "failed":
+          show error_message:
+            text: item.error
+
+          show retry_button:
+            label: "Retry"
+            on click:
+              call retry_generation(item.uuid)
+
+# ============================================
+# INTERFACE - RECORDING STUDIO
+# ============================================
+
+interface recording_studio:
+  show header:
+    title: "Recording Studio"
+    queue_name: current_queue.queue_id
+    progress: "{current_queue.recorded_items} / {current_queue.total_items}"
+
+  show progress_bar:
+    value: (current_queue.recorded_items / current_queue.total_items) * 100
+    max: 100
+
+  show autocue_display:
+    phrase: current_phrase.phrase
+    translation: current_phrase.translation
+    font_size: "large"
+
+    show context_info:
+      seed_id: current_phrase.context.seed_id
+      cycle_type: current_phrase.context.cycle_type
+      is_debut: current_phrase.context.is_debut
+
+  show recording_controls:
+    show record_button:
+      state: recording_state
+      label: when recording_state == "recording" then "Stop"
+            when recording_state == "idle" then "Record"
+            else "Processing"
+      color: when recording_state == "recording" then "red" else "green"
+
+      on click:
+        call toggle_recording
+
+    show playback_button:
+      disabled: when not has_recording
+      on click:
+        call play_recording
+
+    show upload_button:
+      disabled: when not has_recording
+      label: "Accept & Upload"
+      on click:
+        call upload_recording
+
+    show redo_button:
+      disabled: when not has_recording
+      label: "Redo"
+      on click:
+        call clear_recording
+
+  when has_recording:
+    show waveform_display:
+      audio_data: current_recording.waveform
+      duration: current_recording.duration_ms
+
+  show queue_panel:
+    title: "Recording Queue"
+
+    show virtualized_list recording_queue:
+      items: queue_items
+      item_height: estimated 80px
+
+      template queue_item:
+        show recording_queue_row:
+          phrase: item.phrase
+          recorded: item.recorded
+          status: when item.recorded then "✓ Complete" else "Pending"
+
+          on click:
+            call set_current_phrase(item)
+
+  show queue_actions:
+    show skip_button:
+      label: "Skip"
+      on click:
+        call skip_to_next
+
+    show add_note_button:
+      label: "Add Note"
+      on click:
+        show note_modal
+
+    show slow_mode_toggle:
+      label: "Slow Mode"
+      model: slow_mode_enabled
+
+# ============================================
+# INTERFACE - SAMPLES BROWSER
+# ============================================
+
+interface samples_browser:
+  show header:
+    title: "Audio Samples Browser"
+    course: current_course.course_code
+
+  show filter_bar:
+    show status_filter:
+      label: "Status"
+      options: ["all", "pending", "flagged", "approved", "human_needed", "needs_review"]
+      model: filter_status
+
+    show voice_filter:
+      label: "Voice"
+      options: available_voices
+      model: filter_voice
+
+    show seed_filter:
+      label: "Seed"
+      options: available_seeds
+      model: filter_seed
+
+    show sort_select:
+      label: "Sort"
+      options: ["recently_added", "alphabetical", "duration", "status"]
+      model: sort_by
+
+    show view_toggle:
+      options: ["grid", "list"]
+      model: view_mode
+
+  when view_mode == "grid":
+    show virtualized_list sample_grid:
+      items: filtered_samples
+      item_height: estimated 200px
+      columns: 3
+
+      template sample_card:
+        show card:
+          uuid: item.uuid
+          text: item.text_normalized
+          duration: item.duration_ms
+          voice: item.voice_id
+          status: item.status
+          is_human: item.is_human_voiced
+
+          show play_button:
+            icon: "play"
+            on click:
+              call play_sample(item.uuid)
+
+          show status_badge:
+            status: item.status
+            color: when item.status == "approved" then "green"
+                  when item.status == "flagged" then "amber"
+                  when item.status == "human_needed" then "red"
+                  else "gray"
+
+          show action_buttons:
+            show approve_button:
+              icon: "check"
+              disabled: when item.status == "approved"
+              on click:
+                call approve_sample(item.uuid)
+
+            show reject_button:
+              icon: "x"
+              on click:
+                call reject_sample(item.uuid)
+
+            show flag_button:
+              icon: "flag"
+              on click:
+                show flag_modal for item
+
+  else:
+    show virtualized_list sample_list:
+      items: filtered_samples
+      item_height: estimated 60px
+
+      template sample_row:
+        show row:
+          uuid: item.uuid
+          text: item.text_normalized
+          duration: item.duration_ms
+          voice: item.voice_id
+          status: item.status
+
+          show inline_actions:
+            show play_button:
+              on click:
+                call play_sample(item.uuid)
+
+            show approve_button:
+              on click:
+                call approve_sample(item.uuid)
+
+            show reject_button:
+              on click:
+                call reject_sample(item.uuid)
+
+  show pagination_controls:
+    current_page: current_page
+    total_pages: total_pages
+
+    show previous_button:
+      disabled: when current_page == 1
+      on click:
+        call go_to_page(current_page - 1)
+
+    show next_button:
+      disabled: when current_page == total_pages
+      on click:
+        call go_to_page(current_page + 1)
+
+# ============================================
+# INTERFACE - VOICE CONFIGURATION
+# ============================================
+
+interface voice_config:
+  show header:
+    title: "Voice Configuration"
+    course: current_course.course_code
+
+  show voice_assignments:
+    for each role in ["source", "target1", "target2", "presentation", "encouragement"]:
+      show voice_assignment_row:
+        role: role
+        current_voice: get_voice_for_role(role)
+
+        show voice_select:
+          options: available_voices_for_role(role)
+          model: voice_assignments[role]
+
+        show preview_button:
+          label: "Preview"
+          on click:
+            call preview_voice(role, voice_assignments[role])
+
+  show timing_controls:
+    show cadence_settings:
+      title: "Cadence Configuration"
+
+      show cadence_row slow:
+        label: "Slow"
+        azure_speed: 0.85
+        time_stretch: 1.15
+        model: cadence_settings.slow
+
+      show cadence_row natural:
+        label: "Natural"
+        azure_speed: 1.0
+        model: cadence_settings.natural
+
+      show cadence_row fast:
+        label: "Fast"
+        azure_speed: 1.2
+        model: cadence_settings.fast
+
+  show preset_management:
+    title: "Voice Presets"
+
+    for each preset in voice_presets:
+      show preset_card:
+        name: preset.name
+        voices: preset.voice_assignments
+
+        show load_button:
+          label: "Load"
+          on click:
+            call load_preset(preset.id)
+
+        show delete_button:
+          label: "Delete"
+          on click:
+            call delete_preset(preset.id)
+
+    show save_preset_button:
+      label: "Save Current as Preset"
+      on click:
+        show save_preset_modal
+
+# ============================================
+# LOGIC - PRODUCTION LOGIC
+# ============================================
+
+logic production_logic:
+  state:
+    current_course: Course optional
+    job_running: boolean default: false
+    generation_queue: list default: []
+    recording_state: text default: "idle"
+    current_sample: AudioSample optional
+    is_playing: boolean default: false
+
+  process start_generation:
+    when user clicks start_button:
+      optimistic:
+        set job_running to true
+        show notification "Starting audio generation..."
+
+      call api POST /api/production/{course_code}/audio/generate
+
+      on_success:
+        show notification "Generation started"
+        subscribe to progress_updates
+
+      on_error:
+        rollback
+        show notification "Failed to start generation"
+
+  process cancel_generation:
+    when user clicks cancel_button:
+      optimistic:
+        set job_running to false
+        show notification "Cancelling generation..."
+
+      call api DELETE /api/production/{course_code}/audio/cancel
+
+      on_success:
+        clear generation_queue
+        show notification "Generation cancelled"
+
+      on_error:
+        rollback
+        show notification "Failed to cancel"
+
+  process flag_sample:
+    when user flags sample:
+      optimistic:
+        update sample.status to flagged_status
+        show notification "Sample flagged"
+
+      call api POST /api/production/{course_code}/flags/update
+        with { uuid: sample.uuid, status: flagged_status, note: flag_note }
+
+      on_success:
+        show notification "Flag saved"
+        broadcast flag_update via websocket
+
+      on_error:
+        rollback
+        show notification "Failed to save flag"
+
+  process upload_recording:
+    when user clicks upload_button:
+      optimistic:
+        set current_phrase.status to "uploading"
+        show progress_modal
+
+      call api POST /api/production/{course_code}/recording/upload
+        with { phrase_id, audio_blob, metadata }
+
+      on_success:
+        set current_phrase.status to "uploaded"
+        advance to next_phrase
+        show notification "Recording uploaded"
+
+      on_error:
+        rollback
+        show notification "Upload failed"
+
+  process play_sample:
+    when user clicks play_button:
+      if is_playing and current_sample.uuid == sample.uuid:
+        pause audio
+        set is_playing to false
+      else:
+        load audio from sample.s3_url
+        play audio
+        set current_sample to sample
+        set is_playing to true
+
+        on audio_ended:
+          set is_playing to false
+          call play_next
+
+# ============================================
+# LOGIC - RECORDING LOGIC
+# ============================================
+
+logic recording_logic:
+  state:
+    recording_state: text default: "idle"
+    current_recording: blob optional
+    current_phrase: RecordingItem optional
+    has_recording: boolean default: false
+
+  process toggle_recording:
+    when user clicks record_button:
+      if recording_state == "idle":
+        start audio_capture
+        set recording_state to "recording"
+        show notification "Recording..."
+
+      else if recording_state == "recording":
+        stop audio_capture
+        set recording_state to "idle"
+        set has_recording to true
+        set current_recording to captured_audio
+        show notification "Recording stopped"
+
+  process play_recording:
+    when user clicks playback_button:
+      if has_recording:
+        play current_recording
+
+  process clear_recording:
+    when user clicks redo_button:
+      set has_recording to false
+      set current_recording to null
+      show notification "Recording cleared"
+
+  process skip_to_next:
+    when user clicks skip_button:
+      if current_phrase.index < queue_items.length - 1:
+        set current_phrase to queue_items[current_phrase.index + 1]
+        clear current_recording
+      else:
+        show notification "Queue complete"
+
+# ============================================
+# LOGIC - REVIEW LOGIC
+# ============================================
+
+logic review_logic:
+  state:
+    review_mode: text default: "normal"
+    compare_samples: list default: []
+
+  process approve_sample:
+    when user clicks approve_button:
+      optimistic:
+        set sample.status to "approved"
+        set sample.approved to true
+
+      call api POST /api/production/{course_code}/samples/{uuid}/approve
+
+      on_success:
+        show notification "Sample approved"
+        broadcast approval via websocket
+
+      on_error:
+        rollback
+        show notification "Failed to approve"
+
+  process reject_sample:
+    when user clicks reject_button:
+      show rejection_modal:
+        reason_input: text
+        action_select: ["regen_tts", "needs_human", "text_edit"]
+
+        on confirm:
+          optimistic:
+            set sample.status to rejection_status
+            set sample.approved to false
+
+          call api POST /api/production/{course_code}/samples/{uuid}/reject
+            with { reason, action }
+
+          on_success:
+            show notification "Sample rejected"
+            broadcast rejection via websocket
+
+          on_error:
+            rollback
+
+  process compare_samples:
+    when user selects multiple samples:
+      set compare_samples to selected_samples
+      navigate to /production/{course_code}/samples/compare
+        with query: { uuids: selected_sample_uuids }
+
+# ============================================
+# COMPUTED VALUES
+# ============================================
+
+computed completion_percentage:
+  value: (generated_count / total_phrases) * 100
+  format: percentage
+
+computed generated_count:
+  value: audio_samples.filter(s => s.status == "complete").length
+
+computed pending_count:
+  value: audio_samples.filter(s => s.status == "pending").length
+
+computed failed_count:
+  value: audio_samples.filter(s => s.status == "failed").length
+
+computed human_needed_samples:
+  value: sample_flags.filter(f => f.status == "human_needed")
+
+computed flagged_samples:
+  value: sample_flags.filter(f => f.status.startsWith("flagged"))
+
+computed approved_samples:
+  value: sample_flags.filter(f => f.status == "approved").length
+
+computed needs_review_count:
+  value: sample_flags.filter(f => f.status == "needs_review").length
+
+computed active_blockers:
+  value: pipeline_stages.flatMap(s => s.blockers).filter(b => !b.resolved)
+
+computed pipeline_status:
+  value: when job_running then "active"
+        when failed_count > 0 then "has_errors"
+        when completion_percentage == 100 then "complete"
+        else "idle"
+
+computed overall_completion_percentage:
+  value: (approved_samples / total_samples) * 100
+  format: percentage
+
+computed days_to_complete:
+  value: Math.ceil((total_samples - approved_samples) / average_daily_rate)
+  format: number
+
+computed flagged_for_regen_count:
+  value: sample_flags.filter(f => f.flag_type == "regen_tts").length
+
+computed recording_queue_count:
+  value: recording_queues.filter(q => q.status == "in_progress").length
+
+computed pipeline_active_count:
+  value: generation_jobs.filter(j => j.status == "generating").length
+
+# ============================================
+# STATE MACHINES
+# ============================================
+
+state_machine sample_review:
+  states: [pending, flagged, regenerating, approved, human_needed, needs_review, rejected]
+  initial: pending
+
+  transitions:
+    from pending to approved:
+      when: reviewer clicks approve
+      action: mark_sample_approved
+
+    from pending to flagged:
+      when: reviewer clicks flag
+      action: show_flag_options
+
+    from flagged to regenerating:
+      when: flag_type == "regen_tts"
+      action: queue_for_regeneration
+
+    from flagged to human_needed:
+      when: flag_type == "needs_human"
+      action: add_to_recording_queue
+
+    from regenerating to pending:
+      when: regeneration_complete
+      action: ready_for_review
+
+    from pending to needs_review:
+      when: new_audio_generated
+      action: notify_reviewers
+
+    from needs_review to approved:
+      when: reviewer approves
+      action: mark_approved
+
+    from needs_review to rejected:
+      when: reviewer rejects
+      action: handle_rejection
+
+state_machine generation_job:
+  states: [idle, planning, generating, complete, failed, cancelled]
+  initial: idle
+
+  transitions:
+    from idle to planning:
+      when: user starts generation
+      action: analyze_required_samples
+
+    from planning to generating:
+      when: plan_approved
+      action: start_batch_generation
+
+    from generating to complete:
+      when: all_samples_processed and no_failures
+      action: finalize_job
+
+    from generating to failed:
+      when: critical_error_occurred
+      action: log_error_and_cleanup
+
+    from generating to cancelled:
+      when: user cancels
+      action: stop_processing
+
+    from failed to planning:
+      when: user retries
+      action: reanalyze_failures
+
+state_machine recording_session:
+  states: [idle, recording, reviewing, uploading, complete, error]
+  initial: idle
+
+  transitions:
+    from idle to recording:
+      when: user starts recording
+      action: start_audio_capture
+
+    from recording to reviewing:
+      when: user stops recording
+      action: save_recording_buffer
+
+    from reviewing to uploading:
+      when: user accepts recording
+      action: upload_to_s3
+
+    from reviewing to idle:
+      when: user redos recording
+      action: clear_buffer
+
+    from uploading to complete:
+      when: upload_successful
+      action: mark_item_recorded
+
+    from uploading to error:
+      when: upload_failed
+      action: show_error_retry
+
+    from complete to idle:
+      when: auto_advance_enabled
+      action: load_next_item
+
+# ============================================
+# REALTIME
+# ============================================
+
+realtime production_updates:
+  url: "wss://api.ssi.com/production/ws"
+
+  on_connected:
+    sync pending_updates
+    show notification "Connected to production updates"
+
+  on_disconnected:
+    show offline_indicator
+    retry_connection after 5 seconds
+
+  subscribe "audio_progress":
+    filter: { course_code: current_course.course_code }
+    on_message(update):
+      update generation_queue item with update
+      recalculate completion_percentage
+      if update.status == "complete":
+        show notification "Audio sample generated"
+
+  subscribe "flag_updates":
+    filter: { course_code: current_course.course_code }
+    on_message(flag):
+      update sample_flags with flag
+      refresh affected_components
+      show notification "Sample flag updated"
+
+  subscribe "job_status":
+    filter: { course_code: current_course.course_code }
+    on_message(job):
+      update generation_jobs with job
+      if job.status == "complete":
+        show notification "Generation job complete"
+      if job.status == "failed":
+        show notification "Generation job failed" type: error
+
+  subscribe "recording_updates":
+    filter: { course_code: current_course.course_code }
+    on_message(recording):
+      update recording_queues with recording
+      refresh recording_studio_state
+
+  heartbeat: 30 seconds
+  reconnect_policy: exponential_backoff(max: 5 minutes)
+
+# ============================================
+# NAVIGATION
+# ============================================
+
+navigation:
+  route /production:
+    component: MissionControl
+    guard: authenticated
+    fallback: /login
+
+  route /production/{courseCode}:
+    component: CourseOverview
+    guards:
+      - authenticated
+      - has_course_access
+    on_guard_fail:
+      log access_attempt
+      redirect to "/unauthorized"
+
+  route /production/{courseCode}/script:
+    component: ScriptViewer
+    guards:
+      - authenticated
+      - has_course_access
+
+  route /production/{courseCode}/audio-pipeline:
+    component: AudioPipeline
+    guards:
+      - authenticated
+      - has_course_access
+
+  route /production/{courseCode}/recording:
+    component: RecordingStudio
+    guards:
+      - authenticated
+      - role in [admin, voice_talent]
+    on_guard_fail:
+      redirect to "/production/{courseCode}"
+
+  route /production/{courseCode}/samples:
+    component: SamplesBrowser
+    guards:
+      - authenticated
+      - has_course_access
+
+  route /production/{courseCode}/samples/compare:
+    component: SampleComparison
+    guards:
+      - authenticated
+      - has_course_access
+
+  route /production/{courseCode}/voice-config:
+    component: VoiceConfiguration
+    guards:
+      - authenticated
+      - role in [admin, audio_engineer]
+
+# ============================================
+# AUDIO CONFIGURATION
+# ============================================
+
+audio:
+  voices:
+    source:
+      id: azure_en_GB_BellaNeural
+      provider: azure
+      language: eng
+      role: instructor
+      is_active: true
+
+    target1:
+      id: azure_es_ES_TrianaNeural
+      provider: azure
+      language: spa
+      role: target_primary
+      is_active: true
+
+    target2:
+      id: azure_es_ES_AlvaroNeural
+      provider: azure
+      language: spa
+      role: target_echo
+      is_active: true
+
+    presentation:
+      id: elevenlabs_narrator_001
+      provider: elevenlabs
+      language: eng
+      role: presentation
+      is_active: true
+
+    encouragement:
+      id: elevenlabs_warm_001
+      provider: elevenlabs
+      language: eng
+      role: encouragement
+      is_active: true
+
+  samples:
+    storage:
+      provider: S3
+      bucket: popty-bach-lfs
+      region: eu-west-1
+      path_template: ssiborg-assets/mastered/{uuid}.mp3
+
+    registry:
+      provider: Supabase
+      table: audio_samples
+
+    uuid_generation:
+      method: deterministic
+      hash: SHA256(voice_id | text_normalized | language | role | cadence)
+
+  generation:
+    default_provider: azure
+
+    cadences:
+      slow:
+        azure_speed: 0.85
+        time_stretch: 1.15
+        normalize: true
+
+      natural:
+        azure_speed: 1.0
+        normalize: true
+
+      fast:
+        azure_speed: 1.2
+        normalize: true
+
+  pipeline:
+    phases:
+      8: audio_generation
+         port: 3465
+         input: lego_baskets.json
+         output: Supabase.audio_samples + S3
+         process: generate_tts_audio
+
+      9: manifest_compilation
+         port: 3466
+         input: Supabase queries
+         output: course_manifest.json
+         requires: 100% audio coverage
+
+# ============================================
+# PARAMETERS
+# ============================================
+
+parameters:
+  scope system:
+    debu_count: 7
+    eter_schedule: [{offset: 1, cycles: 3}, {offset: 2, cycles: 1}, {offset: 3, cycles: 1}]
+    response_pause: 2000ms
+    cycle_pause: 1000ms
+
+  scope course:
+    voices: voice_assignments
+    timing: timing_configuration
+    debu_count: number
+    eter_schedule: list
+
+  scope session:
+    session_overrides: map
+
+  scope learner:
+    difficulty_level: enum [easy, normal, challenging]
+    current_eter_schedule: list
+    adaptation_history: list
+
+  inheritance: learner <- session <- course <- system
+
+# ============================================
+# EXTERNAL INTEGRATIONS
+# ============================================
+
+external supabase:
+  type: database
+  sdk: "@supabase/supabase-js"
+
+  provides:
+    - audio_samples_query
+    - sample_flags_query
+    - realtime_subscriptions
+
+  on sample_updated:
+    refresh local_cache
+    notify connected_clients
+
+external s3:
+  type: storage
+  sdk: "@aws-sdk/client-s3"
+
+  provides:
+    - upload_audio
+    - get_signed_url
+    - delete_audio
+
+  webhook s3_upload_complete:
+    verify: signature
+    on event "ObjectCreated":
+      update audio_metadata
+      notify production_api
+
+external azure_tts:
+  type: tts_provider
+  sdk: "microsoft-cognitiveservices-speech-sdk"
+
+  provides:
+    - synthesize_speech
+    - get_available_voices
+
+external elevenlabs:
+  type: tts_provider
+  sdk: "elevenlabs-node"
+
+  provides:
+    - synthesize_speech
+    - get_available_voices
+
+# ============================================
+# VALIDATION
+# ============================================
+
+validate trinity_completeness:
+  system_to_user:
+    status: complete
+    coverage: All UI components defined in interface sections
+
+  user_to_system:
+    status: complete
+    coverage: All user actions handled via logic processes
+
+  system_to_system:
+    status: complete
+    coverage: Audio pipeline, WebSocket updates, external integrations
+
+validate data_integrity:
+  check all_samples_have_uuid:
+    error: "Every audio sample must have a deterministic UUID"
+
+  check all_flags_have_sample:
+    error: "Every flag must reference an existing audio sample"
+
+  check voice_assignments_complete:
+    error: "All required voice roles must be assigned"
+
+validate audio_pipeline:
+  check audio_coverage:
+    error: "Manifest compilation requires 100% audio coverage"
+
+  check s3_upload_success:
+    error: "All generated audio must be uploaded to S3"
+
+  check supabase_registry:
+    error: "All audio must be registered in Supabase audio_samples table"

@@ -1,0 +1,1627 @@
+# APML v2.1.0 Language Specification
+
+**Adaptive Pedagogy Markup Language**
+**Version:** 2.1.0
+**Status:** Release Candidate
+**Date:** 2025-12-06
+
+---
+
+## Executive Summary
+
+APML v2.1.0 unifies the battle-tested v2.0.0 core with APML-EDU extensions for educational and pedagogical applications. This specification enables deterministic compilation from declarative specs to production code for web applications, with special support for language learning systems.
+
+---
+
+## 1. Language Overview
+
+### 1.1 Design Principles
+
+1. **Declarative First** - Describe what, not how
+2. **Deterministic Compilation** - Same input → identical output
+3. **Trinity Principle** - Every feature covers System↔User↔System flows
+4. **Conservation Physics** - Intent preserved across compilation targets
+5. **Pedagogical Native** - First-class support for learning content
+
+### 1.2 File Structure
+
+```apml
+app ApplicationName:
+  title: "Application Title"
+  version: "1.0.0"
+  apml_version: "2.1.0"
+  extensions: [APML-EDU]  # Optional extensions
+
+  # Core Sections (v2.0)
+  data: [...]
+  interface: [...]
+  logic: [...]
+  computed: [...]
+  validate: [...]
+
+  # v2.0 Constructs
+  state_machine: [...]
+  realtime: [...]
+  external: [...]
+  navigation: [...]
+
+  # APML-EDU Extensions (v2.1)
+  content: [...]
+  methodology: [...]
+  production: [...]
+  audio: [...]
+  parameters: [...]
+  adaptation: [...]
+```
+
+---
+
+## 2. Core Constructs (v2.0 Foundation)
+
+### 2.1 DATA - Data Model Definitions
+
+```apml
+data ModelName:
+  field_name: type modifiers
+  field_name: type modifiers
+
+  relationships:
+    belongs_to: OtherModel via field_id
+    has_many: OtherModel
+    has_one: OtherModel
+```
+
+**Primitive Types:**
+| Type | Description | TypeScript |
+|------|-------------|------------|
+| `text` | String values | `string` |
+| `number` | Integer or decimal | `number` |
+| `boolean` | True/false | `boolean` |
+| `date` | Date only | `Date` |
+| `timestamp` | Date with time | `Date` |
+| `email` | Validated email | `string` |
+| `url` | Validated URL | `string` |
+| `unique_id` | UUID/auto-generated | `string` |
+| `money` | Currency value | `number` |
+| `percentage` | Percentage value | `number` |
+| `json` | Arbitrary JSON | `Record<string, any>` |
+
+**Modifiers:**
+- `required` - Must have value
+- `optional` - Can be null
+- `default: value` - Default value
+- `unique` - Unique constraint
+- `auto` - Auto-generated
+- `list` - Array of type
+
+**Example:**
+```apml
+data AudioSample:
+  uuid: unique_id auto
+  text_normalized: text required
+  language: text required
+  voice_id: text required
+  role: text required  # source, target1, target2, presentation
+  cadence: text required  # natural, slow, fast
+  s3_key: text required
+  duration_ms: number required
+  is_human_voiced: boolean default: false
+  approved: boolean default: false
+  created_at: timestamp auto
+
+  relationships:
+    belongs_to: Voice via voice_id
+    has_many: PracticePhrase
+```
+
+---
+
+### 2.2 INTERFACE - UI Sections
+
+```apml
+interface section_name:
+  show element_name:
+    property: value
+    property: value
+
+  when condition:
+    show element_a
+  else:
+    show element_b
+
+  for each item in collection:
+    show item_card:
+      title: item.name
+```
+
+**Display Constructs:**
+- `show` / `display` - Render UI element
+- `hide` - Conditionally hide element
+
+**Control Flow:**
+- `when ... else` - Conditional rendering (compiles to v-if/v-else)
+- `for each in` - Iteration (compiles to v-for)
+- `if ... else` - Alias for when
+
+**Event Handlers:**
+```apml
+show button:
+  label: "Submit"
+  on click:
+    call process_name
+```
+
+---
+
+### 2.3 LOGIC - Business Logic
+
+```apml
+logic section_name:
+  state:
+    variable_name: type default: value
+
+  process process_name:
+    when trigger:
+      action_1
+      action_2
+
+  calculate calculation_name:
+    input: field_a, field_b
+    return: field_a + field_b
+```
+
+**Triggers:**
+- `when user clicks element`
+- `when user submits form`
+- `when page loads`
+- `when data changes`
+- `when timer expires`
+
+**Actions:**
+- `create Model with { field: value }`
+- `update record with { field: value }`
+- `delete record`
+- `navigate to page`
+- `show notification`
+- `call api endpoint`
+
+---
+
+### 2.4 COMPUTED - Reactive Derived Values
+
+```apml
+# Simple form
+computed property_name: expression
+
+# Full form
+computed property_name:
+  value: expression
+  format: format_type
+  cache: boolean
+```
+
+**Format Types:** `percentage`, `currency`, `number`, `date`, `timestamp`, `duration`
+
+**Examples:**
+```apml
+computed filtered_samples: audio_samples.filter(s => s.approved == true)
+computed total_duration:
+  value: samples.sum(s => s.duration_ms)
+  format: duration
+computed completion_percentage:
+  value: (completed_seeds / total_seeds) * 100
+  format: percentage
+```
+
+---
+
+### 2.5 VALIDATE - Validation Rules
+
+```apml
+validate validation_name:
+  check condition_1:
+    error: "Error message"
+  check condition_2:
+    error: "Another error"
+```
+
+---
+
+### 2.6 STATE_MACHINE - Finite State Machines
+
+```apml
+state_machine machine_name:
+  states: [state1, state2, state3]
+  initial: state1
+
+  transitions:
+    from state1 to state2:
+      when: condition
+      action: side_effect
+
+    from state2 to state3:
+      when: other_condition
+      cooldown: 24 hours
+      action: side_effect
+```
+
+**Example - Sample Review Workflow:**
+```apml
+state_machine sample_review:
+  states: [pending, flagged, regenerating, approved, human_needed]
+  initial: pending
+
+  transitions:
+    from pending to approved:
+      when: reviewer clicks approve_button
+      action: mark_sample_approved
+
+    from pending to flagged:
+      when: reviewer clicks flag_button
+      action: show_flag_options
+
+    from flagged to regenerating:
+      when: flag_type == "regenerate_tts"
+      action: queue_for_regeneration
+
+    from flagged to human_needed:
+      when: flag_type == "needs_human"
+      action: add_to_recording_queue
+
+    from regenerating to pending:
+      when: regeneration_complete
+      action: show_for_review
+```
+
+---
+
+### 2.7 REALTIME - WebSocket Connections
+
+```apml
+realtime connection_name:
+  url: "wss://api.example.com/ws"
+
+  on_connected:
+    sync pending_updates
+
+  on_disconnected:
+    show offline_indicator
+
+  subscribe channel_name:
+    filter: condition
+    on_message(event_data):
+      update_local_state with event_data
+
+  heartbeat: 30 seconds
+  reconnect_policy: exponential_backoff(max: 5 minutes)
+```
+
+---
+
+### 2.8 OPTIMISTIC - Optimistic UI Updates
+
+```apml
+process action_name:
+  when trigger:
+    optimistic:
+      # Immediate UI updates
+      increment counter by 1
+      set item.status to "processing"
+
+    call api endpoint with params
+
+    on_error:
+      rollback
+      show notification "Failed"
+
+    on_success:
+      show notification "Success"
+```
+
+---
+
+### 2.9 VIRTUALIZED_LIST - Efficient Large Lists
+
+```apml
+show virtualized_list list_name:
+  items: data_source
+  item_height: estimated 120px
+  overscan: 5
+
+  pagination:
+    strategy: cursor
+    load_more: on_scroll_end
+
+  on scroll_near_end(threshold: 80%):
+    load_more_items()
+
+  template item_card:
+    show card:
+      content: item.data
+```
+
+---
+
+### 2.10 EXTERNAL - Third-Party Integrations
+
+```apml
+external integration_name:
+  type: integration_type  # auth_provider, payments, storage, etc.
+  sdk: "package_name"
+
+  provides:
+    - exposed_value
+    - exposed_method
+
+  on event_name:
+    action_to_perform
+
+  webhook webhook_name:
+    verify: signature_type
+    on event "event.name":
+      handle_event
+```
+
+---
+
+### 2.11 NAVIGATION - Route Guards
+
+```apml
+navigation:
+  route /path:
+    component: ComponentName
+
+  route /protected:
+    component: ProtectedView
+    guard: authenticated
+    fallback: /login
+
+  route /admin/{id}:
+    component: AdminPanel
+    guards:
+      - authenticated
+      - role in [admin, superadmin]
+    on_guard_fail:
+      log access_attempt
+      redirect to "/unauthorized"
+```
+
+---
+
+## 3. APML-EDU Extensions (v2.1)
+
+### 3.1 CONTENT - Pedagogical Content Hierarchies
+
+Define learning content structures with relationships and sequencing.
+
+```apml
+content hierarchy_name:
+  type: course | module | lesson | seed | lego | basket | phrase
+
+  structure:
+    # For courses
+    contains: Seed[668]
+
+    # For seeds
+    extracts: LEGO[]
+
+    # For LEGOs
+    when M-type:
+      has_components: LEGO[]
+    has_basket: Basket
+```
+
+**Full Example - SSi Content Hierarchy:**
+```apml
+content Course:
+  id: course_code
+  fields:
+    target_language: text required  # spa, cmn
+    known_language: text required   # eng
+    version: text required
+    total_seeds: number default: 668
+  structure:
+    contains: Seed[]
+
+content Seed:
+  id: seed_id  # S0001 format
+  fields:
+    known_text: text required
+    target_text: text required
+    sequence_number: number required
+  structure:
+    extracts: LEGO[]
+  audio:
+    known_audio: AudioSample
+    target_audio: AudioSample
+
+content LEGO:
+  id: lego_id  # S0001L01 format
+  fields:
+    known_text: text required
+    target_text: text required
+    type: enum [A, M]  # Atomic or Molecular
+    is_new: boolean default: true
+    presentation_text: text required
+  structure:
+    when type == M:
+      has_components: LEGO[]
+    has_basket: Basket
+  audio:
+    known_audio: AudioSample
+    target_audio: AudioSample
+    presentation_audio: AudioSample
+
+content Basket:
+  belongs_to: LEGO
+  structure:
+    contains:
+      components: PracticePhrase[]  # When parent is M-type
+      debut: PracticePhrase[]
+      debu: PracticePhrase[]
+      eter: PracticePhrase[]
+
+content PracticePhrase:
+  id: phrase_id  # S0001L01-DEBU-0001 format
+  fields:
+    known_text: text required
+    target_text: text required
+    phrase_type: enum [COMP, LEGO, DEBU, ETER]
+    phrase_order: number required
+  audio:
+    known_audio: AudioSample
+    target1_audio: AudioSample
+    target2_audio: AudioSample  # Echo
+```
+
+---
+
+### 3.2 METHODOLOGY - Learning Rules
+
+Define pedagogical rules that govern how content is sequenced and practiced.
+
+```apml
+methodology methodology_name:
+  description: "Human-readable description"
+  triggers_when: condition
+
+  sequence:
+    step_1: action
+    step_2: action
+
+  parameters:
+    param_name: type default: value
+```
+
+**Example - DEBU (Debut Practice):**
+```apml
+methodology DEBU:
+  description: "Initial practice of newly introduced LEGO"
+  triggers_when: LEGO.is_new == true
+
+  sequence:
+    1: present LEGO.introduction
+    2: practice LEGO.debut_phrase
+    3: repeat debu_phrases for debu_count cycles
+
+  parameters:
+    debu_count: number default: 7
+    selection_strategy: enum [sequential, difficulty_curve, random] default: sequential
+    difficulty_curve: list optional  # e.g., [3,4,5,6,7,6,5]
+
+  timing:
+    cycle_pause: duration default: 1000ms
+    response_pause: duration default: 2000ms
+
+  voices:
+    known: voice_ref
+    target: voice_ref
+    cadence_target: enum [natural, slow] default: slow
+```
+
+**Example - ETER (Spaced Repetition):**
+```apml
+methodology ETER:
+  description: "Expanding Time-based Exponential Review"
+  triggers_when: Set.debu_complete == true
+
+  schedule:
+    N-1: 3 cycles   # Previous session
+    N-2: 1 cycle
+    N-3: 1 cycle
+    N-5: 1 cycle
+    N-8: 1 cycle
+    # Fibonacci-based expansion
+
+  parameters:
+    decay_function: enum [exponential, linear, custom] default: exponential
+    decay_rate: number default: 0.9
+    max_lookback: number default: 50
+    min_cycles: number default: 1
+    max_cycles: number default: 5
+
+  adaptation:
+    when learner.accuracy > 0.9:
+      reduce cycles by 1
+    when learner.accuracy < 0.6:
+      increase cycles by 1
+
+  timing:
+    cycle_pause: duration default: 1000ms
+    response_pause: duration default: 1500ms
+
+  voices:
+    known: voice_ref
+    target: voice_ref
+    cadence_target: enum [natural, slow] default: natural
+```
+
+**Example - Set Structure:**
+```apml
+methodology Set_Structure:
+  description: "Atomic learning unit composition"
+
+  sequence:
+    1: Introduction
+       when: LEGO.is_new == true
+       content: presentation_audio + target_repetitions
+
+    2: Components
+       when: LEGO.type == M
+       content: component_legos.practice
+
+    3: LEGO_Debut
+       content: lego.debut_phrase
+
+    4: DEBU_Practice
+       methodology: DEBU
+
+    5: ETER_Review
+       methodology: ETER
+       interleave: true
+
+    6: Encouragement
+       when: session_boundary OR milestone_reached
+       content: encouragement_phrase
+
+  constraints:
+    atomic: true  # Never interrupt mid-set
+    min_duration: 5 minutes
+    max_duration: 15 minutes
+```
+
+---
+
+### 3.3 PRODUCTION - Runtime Learner Activity
+
+Define the structure of learning interactions at runtime.
+
+```apml
+production unit_name:
+  type: cycle | set | session
+
+  # For cycles (atomic interaction)
+  structure:
+    prompt: { lang: known, source: Phrase.known }
+    pause: timing.response_pause
+    response: { expected: Phrase.target, from: learner }
+    echo: { target1, pause, target2 }
+
+  # For sets (molecular unit)
+  contains: Cycle[]
+  bounded_by: Introduction -> next_Introduction
+
+  # For sessions
+  tracks:
+    cycles_completed: number
+    sets_completed: number
+    duration_ms: number
+    accuracy_rate: percentage
+```
+
+**Example - Cycle Definition:**
+```apml
+production Cycle:
+  atomic: true
+
+  structure:
+    1: prompt
+       audio: phrase.known_audio
+       display: phrase.known_text (if show_text enabled)
+
+    2: pause
+       duration: parameters.response_pause
+       purpose: learner_thinks
+
+    3: cue
+       audio: phrase.target1_audio
+       cadence: parameters.target_cadence
+
+    4: pause
+       duration: parameters.echo_pause
+       purpose: learner_echoes
+
+    5: echo
+       audio: phrase.target2_audio
+       cadence: natural
+
+    6: pause
+       duration: parameters.cycle_pause
+       purpose: between_cycles
+
+  timing:
+    total_estimated: sum(audio_durations) + sum(pauses)
+
+  tracking:
+    cycle_id: generated
+    phrase_id: reference
+    lego_id: reference
+    started_at: timestamp
+    completed_at: timestamp
+```
+
+**Example - Session Definition:**
+```apml
+production Session:
+  contains: Set[]
+  bounded_by: app_open -> app_close
+
+  lifecycle:
+    on_start:
+      load learner_progress
+      calculate next_sets
+      prefetch audio for 30 minutes
+
+    on_pause:
+      save state_snapshot
+      pause audio_playback
+
+    on_resume:
+      restore state_snapshot
+      resume from last_cycle
+
+    on_complete:
+      calculate session_metrics
+      update learner_progress
+      sync to server
+
+  tracks:
+    session_id: unique_id
+    learner_id: reference
+    course_code: reference
+    started_at: timestamp
+    ended_at: timestamp
+    duration_ms: number
+    sets_completed: number
+    cycles_completed: number
+    legos_introduced: list
+    legos_reviewed: list
+    accuracy_rate: percentage
+
+  storage:
+    local: IndexedDB
+    remote: Supabase.learner_sessions
+```
+
+---
+
+### 3.4 AUDIO - Audio Pipeline Configuration
+
+Define audio generation, storage, and playback.
+
+```apml
+audio:
+  voices:
+    - voice_definition
+
+  samples:
+    storage: S3 | Supabase | local
+    registry: Supabase.audio_samples
+
+  generation:
+    providers: [azure, elevenlabs, google, human]
+    default_provider: azure
+
+  compilation:
+    deterministic_uuid: hash(voice_id | text | lang | role | cadence)
+```
+
+**Example - Full Audio Configuration:**
+```apml
+audio:
+  voices:
+    source:
+      id: azure_en_GB_BellaNeural
+      provider: azure
+      language: eng
+      role: instructor
+
+    target1:
+      id: azure_es_ES_TrianaNeural
+      provider: azure
+      language: spa
+      role: target_primary
+
+    target2:
+      id: azure_es_ES_AlvaroNeural
+      provider: azure
+      language: spa
+      role: target_echo
+
+    presentation:
+      id: elevenlabs_narrator_001
+      provider: elevenlabs
+      language: eng
+      role: presentation
+
+    encouragement:
+      id: elevenlabs_warm_001
+      provider: elevenlabs
+      language: eng
+      role: encouragement
+
+  samples:
+    storage:
+      provider: S3
+      bucket: popty-bach-lfs
+      region: eu-west-1
+      path_template: mastered/{uuid}.mp3
+
+    registry:
+      provider: Supabase
+      table: audio_samples
+
+    uuid_generation:
+      method: deterministic
+      hash: SHA256(voice_id | text_normalized | language | role | cadence)
+
+  generation:
+    default_provider: azure
+
+    cadences:
+      slow:
+        azure_speed: 0.85
+        time_stretch: 1.15
+        normalize: true
+
+      natural:
+        azure_speed: 1.0
+        normalize: true
+
+      fast:
+        azure_speed: 1.2
+        normalize: true
+
+  pipeline:
+    phases:
+      8: audio_generation
+         port: 3465
+         input: lego_baskets.json
+         output: Supabase.audio_samples + S3
+
+      9: manifest_compilation
+         port: 3466
+         input: Supabase queries
+         output: course_manifest.json
+         requires: 100% audio coverage
+```
+
+---
+
+### 3.5 PARAMETERS - Scoped Configuration
+
+Define hierarchical, inheritable parameters.
+
+```apml
+parameters:
+  scope level_name:
+    param_name: type default: value
+
+  inheritance: child <- parent <- grandparent
+```
+
+**Example - Full Parameter Hierarchy:**
+```apml
+parameters:
+  scope system:
+    # Hard-coded defaults
+    debu_count: 7
+    eter_schedule: [{offset: 1, cycles: 3}, {offset: 2, cycles: 1}, ...]
+    response_pause: 2000ms
+    cycle_pause: 1000ms
+
+  scope language_pair:
+    # Override for specific language pairs
+    spa_for_eng:
+      speed_multiplier: 1.0
+
+    cmn_for_eng:
+      speed_multiplier: 0.85  # Mandarin needs slower
+      debu_count: 10
+
+  scope course:
+    # Course creator's configuration
+    voices: {...}
+    timing: {...}
+    debu_count: number
+    eter_schedule: list
+
+  scope session:
+    # Override for specific sessions
+    session_overrides:
+      S0001:
+        reason: "First session - extra slow"
+        speed_multiplier: 0.9
+        debu_count: 10
+
+      S0042:
+        reason: "Difficult LEGO"
+        debu_count: 12
+
+  scope learner:
+    # Runtime per-learner adjustments
+    difficulty_level: enum [easy, normal, challenging]
+    current_eter_schedule: list
+    adaptation_history: list
+
+  inheritance: learner <- session <- course <- language_pair <- system
+```
+
+---
+
+### 3.6 ADAPTATION - Dynamic Learning Adjustments
+
+Define rules that adjust learning based on performance.
+
+```apml
+adaptation rule_name:
+  observe: metric_to_watch
+
+  when condition:
+    adjust: parameter
+    by: amount
+
+  triggers:
+    on_high_performance: actions
+    on_low_performance: actions
+```
+
+**Example - Performance-Based Adaptation:**
+```apml
+adaptation Performance_Adjustment:
+  observe: learner.session_accuracy
+
+  thresholds:
+    high_performance: 0.85
+    low_performance: 0.65
+
+  when accuracy > high_performance for 3 consecutive sessions:
+    if difficulty < challenging:
+      increase difficulty by 1 level
+    reduce debu_count by 1 (min: 5)
+    apply eter_schedule: boost
+    log: "Learner excelling, increasing challenge"
+
+  when accuracy < low_performance for 3 consecutive sessions:
+    if difficulty > easy:
+      decrease difficulty by 1 level
+    increase debu_count by 2 (max: 12)
+    apply eter_schedule: extended
+    enable: recovery_mode
+    log: "Learner struggling, providing support"
+
+adaptation ETER_Adjustment:
+  observe: lego.recall_rate
+
+  when recall_rate < 0.7:
+    add lego to eter_schedule at N+1
+    increase eter_cycles for this lego
+
+  when recall_rate > 0.95 for 5 sessions:
+    reduce eter_cycles for this lego
+    extend eter_interval
+
+adaptation Recovery_Mode:
+  triggers_when: consecutive_low_sessions >= 5
+
+  adjustments:
+    session_length: 50%
+    eter_schedule: only N-1
+    encouragement_frequency: every 3 cycles
+    show: encouragement_modal
+
+  exit_when: accuracy > 0.75 for 2 sessions
+
+difficulty_profiles:
+  easy:
+    speed_multiplier: 0.85
+    debu_count: 10
+    pause_multiplier: 1.3
+    eter_schedule: full
+
+  normal:
+    speed_multiplier: 1.0
+    debu_count: 7
+    pause_multiplier: 1.0
+    eter_schedule: standard
+
+  challenging:
+    speed_multiplier: 1.15
+    debu_count: 5
+    pause_multiplier: 0.85
+    eter_schedule: aggressive
+```
+
+---
+
+## 4. Variable Registry Standard
+
+Centralized declaration of all identifiers.
+
+```apml
+registry:
+  content_units:
+    CONT-001: { name: Seed, type: ContentUnit }
+    CONT-002: { name: LEGO, type: ContentUnit }
+    CONT-003: { name: A-type LEGO, type: ContentUnit, parent: LEGO }
+    CONT-004: { name: M-type LEGO, type: ContentUnit, parent: LEGO }
+    CONT-005: { name: Basket, type: ContentUnit }
+    CONT-006: { name: PracticePhrase, type: ContentUnit }
+
+  production_units:
+    PROD-001: { name: Cycle, type: ProductionUnit }
+    PROD-002: { name: Set, type: ProductionUnit }
+    PROD-003: { name: Session, type: ProductionUnit }
+
+  methodology:
+    METH-001: { name: DEBU, type: Methodology }
+    METH-002: { name: ETER, type: Methodology }
+
+  api_endpoints:
+    - POST /api/production/:courseCode/audio/generate
+    - POST /api/production/:courseCode/manifest/compile
+    - GET /api/learner/:id/next-session
+
+  database_tables:
+    - courses: Course
+    - seeds: Seed
+    - legos: LEGO
+    - practice_phrases: PracticePhrase
+    - audio_samples: AudioSample
+    - learner_sessions: LearnerSession
+```
+
+---
+
+## 5. Compilation Targets
+
+### 5.1 TypeScript Generation
+
+```apml
+# Compiles to:
+export interface Seed {
+  seed_id: string;
+  course_code: string;
+  known_text: string;
+  target_text: string;
+  sequence_number: number;
+  known_audio_uuid: string;
+  target_audio_uuid: string;
+}
+```
+
+### 5.2 Vue 3 Component Generation
+
+```apml
+# Compiles to Vue SFC with:
+# - <template> from interface sections
+# - <script setup> with Composition API
+# - Pinia store integration
+# - TypeScript types
+```
+
+### 5.3 Pinia Store Generation
+
+```apml
+# Compiles to:
+export const useProductionStore = defineStore('production', () => {
+  // State from data models
+  const seeds = ref<Seed[]>([]);
+  const audioSamples = ref<AudioSample[]>([]);
+
+  // Computed from computed sections
+  const approvedSamples = computed(() =>
+    audioSamples.value.filter(s => s.approved)
+  );
+
+  // Actions from logic sections
+  async function generateAudio(seedId: string) { ... }
+
+  return { seeds, audioSamples, approvedSamples, generateAudio };
+});
+```
+
+### 5.4 SQL Schema Generation
+
+```apml
+# Compiles to:
+CREATE TABLE audio_samples (
+  uuid UUID PRIMARY KEY,
+  text_normalized TEXT NOT NULL,
+  language VARCHAR(3) NOT NULL,
+  voice_id TEXT NOT NULL,
+  role TEXT NOT NULL,
+  cadence TEXT NOT NULL,
+  s3_key TEXT NOT NULL,
+  duration_ms INTEGER NOT NULL,
+  is_human_voiced BOOLEAN DEFAULT FALSE,
+  approved BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+---
+
+## 6. Trinity Principle Validation
+
+Every APML specification must cover:
+
+### 6.1 System-to-User (Output)
+- What the system shows to users
+- UI elements, feedback, notifications
+- Audio playback, progress indicators
+
+### 6.2 User-to-System (Input)
+- What users can do
+- Clicks, inputs, gestures, voice
+- Navigation, form submissions
+
+### 6.3 System-to-System (Internal)
+- Internal operations
+- API calls, data transformations
+- Audio generation, manifest compilation
+
+```apml
+validate trinity_completeness:
+  system_to_user:
+    - interface sections define all UI
+    - computed values provide formatted output
+    - state_machines show current state
+
+  user_to_system:
+    - logic processes handle all user actions
+    - validate rules check all inputs
+    - navigation guards control access
+
+  system_to_system:
+    - external integrations connect services
+    - realtime connections sync data
+    - audio pipeline generates content
+```
+
+---
+
+## 7. Example: SSI Production Suite
+
+Complete example using all APML v2.1.0 constructs:
+
+```apml
+app SSiProductionSuite:
+  title: "SSI Course Production Suite"
+  version: "2.0.0"
+  apml_version: "2.1.0"
+  extensions: [APML-EDU]
+
+# ============================================
+# DATA MODELS
+# ============================================
+
+data Course:
+  course_code: text unique required
+  version: text required
+  target_language: text required
+  known_language: text required
+  total_seeds: number default: 668
+  status: text default: "draft"
+  created_at: timestamp auto
+
+data AudioSample:
+  uuid: unique_id auto
+  text_normalized: text required
+  language: text required
+  voice_id: text required
+  role: text required
+  cadence: text required
+  s3_key: text required
+  duration_ms: number required
+  is_human_voiced: boolean default: false
+  approved: boolean default: false
+
+data SampleFlag:
+  sample_uuid: text required
+  status: text required  # pending, flagged, approved, human_needed
+  flag_type: text optional  # text_edit, regen_tts, needs_human
+  notes: text optional
+  flagged_by: text optional
+  flagged_at: timestamp optional
+
+# ============================================
+# CONTENT HIERARCHIES
+# ============================================
+
+content Course:
+  id: course_code
+  structure:
+    contains: Seed[668]
+
+content Seed:
+  id: seed_id
+  fields:
+    known_text: text required
+    target_text: text required
+  structure:
+    extracts: LEGO[]
+
+# (Full content hierarchy as defined above)
+
+# ============================================
+# METHODOLOGY
+# ============================================
+
+methodology DEBU:
+  description: "Debut practice for new LEGOs"
+  triggers_when: LEGO.is_new == true
+  parameters:
+    debu_count: 7
+    selection_strategy: sequential
+
+methodology ETER:
+  description: "Spaced repetition review"
+  schedule:
+    N-1: 3 cycles
+    N-2: 1 cycle
+    N-3: 1 cycle
+    N-5: 1 cycle
+
+# ============================================
+# INTERFACE - SCRIPT VIEWER
+# ============================================
+
+interface script_viewer:
+  show header:
+    title: "Script Viewer"
+    course: current_course.course_code
+
+  show seed_tree:
+    for each seed in seeds:
+      show seed_row:
+        id: seed.seed_id
+        known: seed.known_text
+        target: seed.target_text
+
+        for each lego in seed.legos:
+          show lego_row:
+            id: lego.lego_id
+            type: lego.type
+            is_new: lego.is_new
+
+            for each phrase in lego.phrases:
+              show phrase_row:
+                id: phrase.phrase_id
+                type: phrase.phrase_type
+                known: phrase.known_text
+                target: phrase.target_text
+
+                show audio_controls:
+                  known_audio: phrase.known_audio
+                  target1_audio: phrase.target1_audio
+                  target2_audio: phrase.target2_audio
+
+                show flag_button:
+                  status: phrase.flag_status
+                  on click:
+                    show flag_modal for phrase
+
+# ============================================
+# INTERFACE - AUDIO PIPELINE
+# ============================================
+
+interface audio_pipeline:
+  show header:
+    title: "Audio Pipeline"
+
+  show progress_dashboard:
+    total: total_phrases
+    generated: generated_count
+    pending: pending_count
+    failed: failed_count
+
+    show progress_bar:
+      value: completion_percentage
+
+  show queue_controls:
+    show start_button:
+      label: "Generate Audio"
+      disabled: when job_running
+      on click:
+        call start_generation
+
+    show cancel_button:
+      label: "Cancel"
+      disabled: when not job_running
+      on click:
+        call cancel_generation
+
+  show virtualized_list queue_items:
+    items: generation_queue
+    item_height: estimated 60px
+
+    template queue_item:
+      show queue_row:
+        text: item.text
+        voice: item.voice_id
+        status: item.status
+
+        when item.status == "complete":
+          show audio_preview:
+            src: item.s3_url
+
+        when item.status == "failed":
+          show retry_button:
+            on click:
+              call retry_generation for item
+
+# ============================================
+# INTERFACE - RECORDING STUDIO
+# ============================================
+
+interface recording_studio:
+  show header:
+    title: "Recording Studio"
+
+  show autocue_display:
+    phrase: current_phrase.target_text
+    font_size: large
+
+  show recording_controls:
+    show record_button:
+      state: recording_state
+      on click:
+        toggle recording
+
+    show playback_button:
+      disabled: when no recording
+      on click:
+        play recording
+
+    show upload_button:
+      disabled: when no recording
+      on click:
+        call upload_recording
+
+  show queue_panel:
+    show virtualized_list recording_queue:
+      items: human_needed_samples
+      item_height: estimated 80px
+
+      template queue_item:
+        show recording_queue_row:
+          text: item.text
+          voice: item.voice_id
+
+          on click:
+            set current_phrase to item
+
+# ============================================
+# INTERFACE - MISSION CONTROL DASHBOARD
+# ============================================
+
+interface mission_control:
+  show header:
+    title: "Mission Control"
+    course: current_course.course_code
+
+  show overall_progress:
+    show progress_ring:
+      value: overall_completion
+      label: "Overall Progress"
+
+  show stage_progress:
+    for each stage in pipeline_stages:
+      show stage_card:
+        name: stage.name
+        status: stage.status
+        progress: stage.progress
+
+        when stage.has_blockers:
+          show blocker_badge:
+            count: stage.blocker_count
+
+  show blocker_list:
+    when blockers_exist:
+      for each blocker in active_blockers:
+        show blocker_row:
+          description: blocker.description
+          action: blocker.suggested_action
+
+          show resolve_button:
+            on click:
+              navigate to blocker.resolution_url
+
+  show quick_actions:
+    show action_button:
+      label: "Generate Audio"
+      icon: audio
+      on click:
+        navigate to /audio-pipeline
+
+    show action_button:
+      label: "Review Samples"
+      icon: review
+      on click:
+        navigate to /script-viewer?filter=flagged
+
+    show action_button:
+      label: "Record Human"
+      icon: microphone
+      on click:
+        navigate to /recording-studio
+
+# ============================================
+# LOGIC
+# ============================================
+
+logic production_logic:
+  state:
+    current_course: Course optional
+    job_running: boolean default: false
+    generation_queue: list default: []
+    recording_state: text default: "idle"
+
+  process start_generation:
+    when user clicks start_button:
+      optimistic:
+        set job_running to true
+        show notification "Starting audio generation..."
+
+      call api POST /api/production/{course_code}/audio/generate
+
+      on_success:
+        show notification "Generation started"
+        subscribe to progress_updates
+
+      on_error:
+        rollback
+        show notification "Failed to start generation"
+
+  process upload_recording:
+    when user clicks upload_button:
+      optimistic:
+        set current_phrase.status to "uploading"
+
+      call api POST /api/production/{course_code}/recording/upload
+        with { phrase_id, audio_blob }
+
+      on_success:
+        set current_phrase.status to "uploaded"
+        advance to next_phrase
+        show notification "Recording uploaded"
+
+      on_error:
+        rollback
+        show notification "Upload failed"
+
+# ============================================
+# COMPUTED VALUES
+# ============================================
+
+computed completion_percentage:
+  value: (generated_count / total_phrases) * 100
+  format: percentage
+
+computed generated_count:
+  value: audio_samples.filter(s => s.status == "complete").length
+
+computed pending_count:
+  value: audio_samples.filter(s => s.status == "pending").length
+
+computed failed_count:
+  value: audio_samples.filter(s => s.status == "failed").length
+
+computed human_needed_samples:
+  value: sample_flags.filter(f => f.status == "human_needed")
+
+computed active_blockers:
+  value: pipeline_stages.flatMap(s => s.blockers).filter(b => !b.resolved)
+
+# ============================================
+# STATE MACHINE - SAMPLE REVIEW
+# ============================================
+
+state_machine sample_review:
+  states: [pending, flagged, regenerating, approved, human_needed]
+  initial: pending
+
+  transitions:
+    from pending to approved:
+      when: reviewer clicks approve
+      action: mark_approved
+
+    from pending to flagged:
+      when: reviewer clicks flag
+      action: show_flag_options
+
+    from flagged to regenerating:
+      when: flag_type == "regen_tts"
+      action: queue_regeneration
+
+    from flagged to human_needed:
+      when: flag_type == "needs_human"
+      action: add_to_recording_queue
+
+    from regenerating to pending:
+      when: regeneration_complete
+      action: ready_for_review
+
+# ============================================
+# REALTIME
+# ============================================
+
+realtime production_updates:
+  url: "wss://api.ssi.com/production/ws"
+
+  subscribe "audio_progress":
+    on_message(update):
+      update generation_queue item with update
+      recalculate completion_percentage
+
+  subscribe "flag_updates":
+    on_message(flag):
+      update sample_flags with flag
+
+  heartbeat: 30 seconds
+  reconnect_policy: exponential_backoff
+
+# ============================================
+# NAVIGATION
+# ============================================
+
+navigation:
+  route /production/{courseCode}:
+    component: MissionControl
+    guard: authenticated
+
+  route /production/{courseCode}/script:
+    component: ScriptViewer
+    guard: authenticated
+
+  route /production/{courseCode}/audio:
+    component: AudioPipeline
+    guard: authenticated
+
+  route /production/{courseCode}/recording:
+    component: RecordingStudio
+    guards:
+      - authenticated
+      - role in [admin, voice_talent]
+
+# ============================================
+# AUDIO PIPELINE
+# ============================================
+
+audio:
+  voices:
+    source:
+      id: azure_en_GB_BellaNeural
+      provider: azure
+      language: eng
+
+    target1:
+      id: azure_es_ES_TrianaNeural
+      provider: azure
+      language: spa
+
+  generation:
+    default_provider: azure
+    phases:
+      8: audio_generation
+      9: manifest_compilation
+
+# ============================================
+# PARAMETERS
+# ============================================
+
+parameters:
+  scope course:
+    debu_count: 7
+    eter_schedule: [{offset: 1, cycles: 3}, {offset: 2, cycles: 1}]
+
+  inheritance: session <- course <- system
+
+# ============================================
+# VALIDATION
+# ============================================
+
+validate trinity_completeness:
+  system_to_user:
+    status: complete
+    coverage: All UI components defined
+
+  user_to_system:
+    status: complete
+    coverage: All user actions handled
+
+  system_to_system:
+    status: complete
+    coverage: Audio pipeline, WebSocket updates
+```
+
+---
+
+## 8. Compiler Implementation
+
+### 8.1 Parse Phase
+```
+APML Text → APMLParser → APMLDocument (AST)
+```
+
+### 8.2 Validate Phase
+```
+APMLDocument → Validators → Validation Report
+- Trinity completeness
+- Type safety
+- Reference integrity
+```
+
+### 8.3 Generate Phase
+```
+APMLDocument → Generators → Output Files
+- TypeScript types
+- Vue components
+- Pinia stores
+- SQL schemas
+- API routes
+```
+
+---
+
+## 9. Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0.0 | 2025-10 | Initial APML specification |
+| 1.1.0 | 2025-11 | Variable Registry, PSS |
+| 2.0.0 | 2025-12 | computed, realtime, optimistic, state_machine, virtualized_list, external, navigation |
+| **2.1.0** | **2025-12** | **APML-EDU: content, methodology, production, audio, parameters, adaptation** |
+
+---
+
+## 10. Appendix: Quick Reference
+
+### Core Constructs (v2.0)
+- `data` - Data models
+- `interface` - UI sections
+- `logic` - Business logic
+- `computed` - Derived values
+- `validate` - Validation rules
+- `state_machine` - State management
+- `realtime` - WebSocket connections
+- `optimistic` - Optimistic updates
+- `virtualized_list` - Large list rendering
+- `external` - Third-party integrations
+- `navigation` - Route guards
+
+### APML-EDU Extensions (v2.1)
+- `content` - Learning content hierarchies
+- `methodology` - Pedagogical rules
+- `production` - Runtime learning units
+- `audio` - Audio pipeline configuration
+- `parameters` - Scoped configuration
+- `adaptation` - Dynamic adjustments
+
+---
+
+**END OF SPECIFICATION**
+
+*APML v2.1.0 - Adaptive Pedagogy Markup Language*
+*© 2025 - Open Specification*
