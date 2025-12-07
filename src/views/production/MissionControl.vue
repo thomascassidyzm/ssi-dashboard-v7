@@ -120,15 +120,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import ProgressRing from './components/ProgressRing.vue'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 
+// Accept courseCode from router props
+const props = defineProps<{
+  courseCode?: string
+}>()
+
 const router = useRouter()
+const route = useRoute()
 const store = useProductionStore()
 
 const selectedCourse = ref('')
@@ -281,10 +287,21 @@ function getBlockerCountForStage(stageId: string): number {
 function connectWebSocket() {
   if (!selectedCourse.value) return
 
+  // Skip WebSocket on production (Vercel serverless doesn't support WebSockets)
+  // WebSocket is only available when running the local production-api service
+  const isProduction = window.location.hostname !== 'localhost' && !window.location.hostname.includes('127.0.0.1')
+  const wsUrl = import.meta.env.VITE_WS_URL
+
+  if (isProduction && !wsUrl) {
+    console.log('WebSocket disabled in production (serverless environment)')
+    // Don't show as error - just operate without real-time updates
+    return
+  }
+
   try {
-    // Use production API WebSocket endpoint
-    const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:3470'
-    ws = new WebSocket(`${wsUrl}/api/production/websocket?courseCode=${selectedCourse.value}`)
+    // Use production API WebSocket endpoint (local dev only unless VITE_WS_URL is set)
+    const url = wsUrl || 'ws://localhost:3470'
+    ws = new WebSocket(`${url}/api/production/websocket?courseCode=${selectedCourse.value}`)
 
     ws.onopen = () => {
       console.log('WebSocket connected')
@@ -294,16 +311,21 @@ function connectWebSocket() {
     ws.onclose = () => {
       console.log('WebSocket disconnected')
       store.setWsConnected(false)
-      // Attempt reconnect after 5 seconds
-      setTimeout(() => {
-        if (selectedCourse.value) {
-          connectWebSocket()
-        }
-      }, 5000)
+      // Attempt reconnect after 5 seconds (only on localhost)
+      if (!isProduction) {
+        setTimeout(() => {
+          if (selectedCourse.value) {
+            connectWebSocket()
+          }
+        }, 5000)
+      }
     }
 
     ws.onerror = (error) => {
-      console.error('WebSocket error:', error)
+      // Don't spam console on production where WebSocket isn't available
+      if (!isProduction) {
+        console.error('WebSocket error:', error)
+      }
       store.setWsConnected(false)
     }
 
@@ -316,7 +338,9 @@ function connectWebSocket() {
       }
     }
   } catch (err) {
-    console.error('Failed to connect WebSocket:', err)
+    if (!isProduction) {
+      console.error('Failed to connect WebSocket:', err)
+    }
   }
 }
 
@@ -330,10 +354,18 @@ function disconnectWebSocket() {
 
 // Lifecycle
 onMounted(() => {
-  // Check if course code is in route params
-  const courseCode = router.currentRoute.value.params.courseCode as string
+  // Get course code from props (router) or route params
+  const courseCode = props.courseCode || route.params.courseCode as string
   if (courseCode) {
     selectedCourse.value = courseCode
+    handleCourseChange()
+  }
+})
+
+// Watch for prop changes (navigation between courses)
+watch(() => props.courseCode, (newCode) => {
+  if (newCode && newCode !== selectedCourse.value) {
+    selectedCourse.value = newCode
     handleCourseChange()
   }
 })
