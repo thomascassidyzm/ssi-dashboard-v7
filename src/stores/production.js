@@ -3,6 +3,24 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import io from 'socket.io-client'
 
+// API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
+// This allows routing through ngrok tunnel to local automation server
+function getApiBaseUrl() {
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+}
+
+// Common headers for API requests (ngrok tunnel compatibility)
+function getApiHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
+  }
+}
+
 export const useProductionStore = defineStore('production', () => {
   // Course state
   const currentCourseCode = ref(null)
@@ -235,10 +253,13 @@ export const useProductionStore = defineStore('production', () => {
     currentCourseCode.value = courseCode
 
     try {
+      const baseUrl = getApiBaseUrl()
+      const headers = getApiHeaders()
+
       const [manifestRes, flagsRes, metadataRes] = await Promise.all([
-        fetch(`/api/production/${courseCode}/manifest`),
-        fetch(`/api/production/${courseCode}/flags`),
-        fetch(`/api/production/${courseCode}/audio-metadata`)
+        fetch(`${baseUrl}/api/production/${courseCode}/manifest`, { headers }),
+        fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }),
+        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers })
       ])
 
       // Check if Production API is available (404 means endpoint exists but no data, network error means API not running)
@@ -269,9 +290,10 @@ export const useProductionStore = defineStore('production', () => {
 
   async function updateSampleFlag(uuid, flagData) {
     try {
-      const response = await fetch(`/api/production/${currentCourseCode.value}/flags/update`, {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/flags/update`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({ uuid, ...flagData })
       })
 
@@ -296,9 +318,10 @@ export const useProductionStore = defineStore('production', () => {
 
   async function bulkUpdateFlags(updates) {
     try {
-      const response = await fetch(`/api/production/${currentCourseCode.value}/flags/bulk-update`, {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/flags/bulk-update`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({ updates })
       })
 
@@ -378,8 +401,11 @@ export const useProductionStore = defineStore('production', () => {
   // Recording Studio Actions
   async function loadRecordingQueue(courseCode, filters = {}) {
     try {
+      const baseUrl = getApiBaseUrl()
       const params = new URLSearchParams(filters)
-      const response = await fetch(`/api/production/${courseCode}/recording/queue?${params}`)
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/recording/queue?${params}`, {
+        headers: getApiHeaders()
+      })
 
       if (!response.ok) throw new Error('Failed to load recording queue')
 
@@ -408,12 +434,14 @@ export const useProductionStore = defineStore('production', () => {
     recordingState.value = 'uploading'
 
     try {
+      const baseUrl = getApiBaseUrl()
+
       // Convert blob to base64
       const base64Audio = await blobToBase64(audioBlob)
 
-      const response = await fetch(`/api/production/${currentCourseCode.value}/recording/upload`, {
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/recording/upload`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({
           audio: base64Audio,
           mimeType: audioBlob.type,
@@ -463,11 +491,15 @@ export const useProductionStore = defineStore('production', () => {
       socket.disconnect()
     }
 
-    const PRODUCTION_API_URL = import.meta.env.VITE_PRODUCTION_API_URL || 'http://localhost:3470'
+    // Use the same API base URL for WebSocket (works through ngrok tunnel)
+    const baseUrl = getApiBaseUrl()
 
-    socket = io(PRODUCTION_API_URL, {
+    socket = io(baseUrl, {
       path: '/api/production/websocket',
-      transports: ['websocket', 'polling']
+      transports: ['websocket', 'polling'],
+      extraHeaders: {
+        'ngrok-skip-browser-warning': 'true'
+      }
     })
 
     socket.on('connect', () => {
@@ -523,9 +555,10 @@ export const useProductionStore = defineStore('production', () => {
   // Audio Pipeline actions
   async function startGeneration(courseCode) {
     try {
-      const response = await fetch(`/api/production/${courseCode}/audio-pipeline/start`, {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({ approved: true })
       })
 
@@ -542,8 +575,10 @@ export const useProductionStore = defineStore('production', () => {
 
   async function cancelGeneration(courseCode) {
     try {
-      const response = await fetch(`/api/production/${courseCode}/audio-pipeline/cancel`, {
-        method: 'POST'
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/cancel`, {
+        method: 'POST',
+        headers: getApiHeaders()
       })
 
       if (!response.ok) throw new Error('Failed to cancel generation')
@@ -558,13 +593,14 @@ export const useProductionStore = defineStore('production', () => {
 
   async function retryFailed(courseCode) {
     try {
+      const baseUrl = getApiBaseUrl()
       const failedItems = generationQueue.value
         .filter(item => item.status === 'failed')
         .map(item => item.uuid)
 
-      const response = await fetch(`/api/production/${courseCode}/audio-pipeline/retry`, {
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/retry`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({ uuids: failedItems })
       })
 
@@ -579,7 +615,10 @@ export const useProductionStore = defineStore('production', () => {
 
   async function generatePlan(courseCode) {
     try {
-      const response = await fetch(`/api/production/${courseCode}/audio-pipeline/plan`)
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, {
+        headers: getApiHeaders()
+      })
 
       if (!response.ok) throw new Error('Failed to generate plan')
 
