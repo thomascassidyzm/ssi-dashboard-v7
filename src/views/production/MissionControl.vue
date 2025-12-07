@@ -13,9 +13,13 @@
             @change="handleCourseChange"
           >
             <option value="">Select a course...</option>
-            <option value="spa_for_eng">Spanish for English</option>
-            <option value="fra_for_eng">French for English</option>
-            <option value="mkd_for_eng">Macedonian for English</option>
+            <option
+              v-for="course in availableCourses"
+              :key="course.code"
+              :value="course.code"
+            >
+              {{ course.name }}
+            </option>
           </select>
         </div>
         <div class="ws-status" :class="{ connected: store.wsConnected }">
@@ -138,7 +142,40 @@ const route = useRoute()
 const store = useProductionStore()
 
 const selectedCourse = ref('')
+const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
 let ws: WebSocket | null = null
+
+// Fetch available courses from API
+async function loadCourses() {
+  try {
+    const response = await fetch('/api/courses')
+    if (response.ok) {
+      const data = await response.json()
+      courses.value = data.map((c: any) => ({
+        code: c.code || c.id,
+        name: c.name || c.code || c.id,
+        status: c.status
+      }))
+    }
+  } catch (err) {
+    console.error('Failed to load courses:', err)
+  }
+}
+
+// Computed: available courses (from API + current course if not in list)
+const availableCourses = computed(() => {
+  const list = [...courses.value]
+
+  // Ensure current course is in the list even if API didn't return it
+  if (selectedCourse.value && !list.find(c => c.code === selectedCourse.value)) {
+    list.unshift({
+      code: selectedCourse.value,
+      name: selectedCourse.value.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+    })
+  }
+
+  return list
+})
 
 // Computed
 const estimatedDays = computed(() => {
@@ -353,7 +390,10 @@ function disconnectWebSocket() {
 }
 
 // Lifecycle
-onMounted(() => {
+onMounted(async () => {
+  // Load available courses for the dropdown
+  await loadCourses()
+
   // Get course code from props (router) or route params
   const courseCode = props.courseCode || route.params.courseCode as string
   if (courseCode) {
