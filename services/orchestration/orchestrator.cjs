@@ -4790,6 +4790,287 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
   }
 });
 
+// ============================================================
+// VOICE CONFIGURATION & PREVIEW ENDPOINTS
+// ============================================================
+
+const voiceConfigService = require('../voice-config-service.cjs');
+const previewGenerationService = require('../preview-generation-service.cjs');
+
+/**
+ * GET /api/courses/:courseCode/voice-config
+ * Load voice configuration for a course
+ */
+app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const config = await voiceConfigService.loadVoiceConfig(courseCode);
+    res.json({
+      success: true,
+      config
+    });
+  } catch (err) {
+    console.error(`[VoiceConfig] Error loading config for ${courseCode}:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * PUT /api/courses/:courseCode/voice-config
+ * Save voice configuration for a course
+ */
+app.put('/api/courses/:courseCode/voice-config', async (req, res) => {
+  const { courseCode } = req.params;
+  const config = req.body;
+
+  try {
+    // Validate configuration
+    const validation = voiceConfigService.validateVoiceConfig({
+      ...config,
+      courseCode
+    });
+
+    if (!validation.valid) {
+      return res.status(400).json({
+        success: false,
+        errors: validation.errors
+      });
+    }
+
+    const savedConfig = await voiceConfigService.saveVoiceConfig(courseCode, config);
+    res.json({
+      success: true,
+      config: savedConfig
+    });
+  } catch (err) {
+    console.error(`[VoiceConfig] Error saving config for ${courseCode}:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * PATCH /api/courses/:courseCode/voice-config/:role
+ * Update a specific voice role configuration
+ */
+app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
+  const { courseCode, role } = req.params;
+  const voiceSettings = req.body;
+
+  try {
+    // NOTE: We use "known" (not "source") for the known language voice
+    // Legacy manifest compatibility: source → known conversion happens elsewhere
+    const validRoles = ['target1', 'target2', 'known', 'presentation'];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({
+        success: false,
+        error: `Invalid role: ${role}. Must be one of: ${validRoles.join(', ')}`
+      });
+    }
+
+    const updatedConfig = await voiceConfigService.updateVoiceRole(courseCode, role, voiceSettings);
+    res.json({
+      success: true,
+      config: updatedConfig
+    });
+  } catch (err) {
+    console.error(`[VoiceConfig] Error updating ${role} for ${courseCode}:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/sample-phrases
+ * Get sample phrases for preview generation
+ */
+app.get('/api/courses/:courseCode/sample-phrases', async (req, res) => {
+  const { courseCode } = req.params;
+  const count = parseInt(req.query.count) || 5;
+
+  try {
+    const phrases = await voiceConfigService.getSamplePhrases(courseCode, count);
+    res.json({
+      success: true,
+      courseCode,
+      count: phrases.length,
+      phrases
+    });
+  } catch (err) {
+    console.error(`[VoiceConfig] Error getting sample phrases for ${courseCode}:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/preview/generate
+ * Generate preview audio samples for a voice configuration
+ *
+ * Body: {
+ *   role: 'target1' | 'target2' | 'source',
+ *   cadence: 'natural' | 'slow',
+ *   voiceConfig: { voiceId, provider, name, settings: { speed, stability, ... } },
+ *   count: 5  // optional, default 5
+ * }
+ */
+app.post('/api/courses/:courseCode/preview/generate', async (req, res) => {
+  const { courseCode } = req.params;
+  const { role, cadence = 'natural', voiceConfig, count = 5 } = req.body;
+
+  try {
+    if (!role || !voiceConfig || !voiceConfig.voiceId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: role, voiceConfig.voiceId'
+      });
+    }
+
+    // Load current config to get cadence profiles
+    const fullConfig = await voiceConfigService.loadVoiceConfig(courseCode);
+
+    const result = await previewGenerationService.generatePreviewBatch({
+      courseCode,
+      role,
+      cadence,
+      voiceConfig,
+      cadenceProfiles: fullConfig.cadenceProfiles,
+      count
+    });
+
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (err) {
+    console.error(`[Preview] Error generating previews for ${courseCode}:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/preview/generate-single
+ * Generate a single preview audio sample
+ *
+ * Body: {
+ *   text: 'Text to synthesize',
+ *   role: 'target1',
+ *   cadence: 'natural',
+ *   voiceConfig: { voiceId, provider, settings }
+ * }
+ */
+app.post('/api/courses/:courseCode/preview/generate-single', async (req, res) => {
+  const { courseCode } = req.params;
+  const { text, role, cadence = 'natural', voiceConfig } = req.body;
+
+  try {
+    if (!text || !voiceConfig || !voiceConfig.voiceId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: text, voiceConfig.voiceId'
+      });
+    }
+
+    const fullConfig = await voiceConfigService.loadVoiceConfig(courseCode);
+
+    const result = await previewGenerationService.generatePreviewSample({
+      courseCode,
+      text,
+      role: role || 'preview',
+      cadence,
+      voiceConfig,
+      cadenceProfiles: fullConfig.cadenceProfiles
+    });
+
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (err) {
+    console.error(`[Preview] Error generating single preview:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/preview/compare
+ * Compare two voice configurations side by side
+ *
+ * Body: {
+ *   configA: { voiceId, provider, settings },
+ *   configB: { voiceId, provider, settings },
+ *   phrases: ['phrase1', 'phrase2'],
+ *   cadence: 'natural'
+ * }
+ */
+app.post('/api/courses/:courseCode/preview/compare', async (req, res) => {
+  const { courseCode } = req.params;
+  const { configA, configB, phrases, cadence = 'natural' } = req.body;
+
+  try {
+    if (!configA || !configB || !phrases || phrases.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: configA, configB, phrases'
+      });
+    }
+
+    const result = await previewGenerationService.compareVoiceConfigs(
+      courseCode,
+      configA,
+      configB,
+      phrases,
+      cadence
+    );
+
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (err) {
+    console.error(`[Preview] Error comparing configurations:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/courses/:courseCode/preview/:previewId
+ * Delete a specific preview sample
+ */
+app.delete('/api/courses/:courseCode/preview/:previewId', async (req, res) => {
+  const { courseCode, previewId } = req.params;
+
+  try {
+    const deleted = await previewGenerationService.deletePreview(courseCode, previewId);
+    res.json({ success: deleted });
+  } catch (err) {
+    console.error(`[Preview] Error deleting preview:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/preview/cleanup
+ * Clean up old preview files (older than 24 hours by default)
+ */
+app.post('/api/courses/:courseCode/preview/cleanup', async (req, res) => {
+  const { courseCode } = req.params;
+  const { maxAgeHours = 24 } = req.body;
+
+  try {
+    const result = await previewGenerationService.cleanupOldPreviews(courseCode, maxAgeHours);
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (err) {
+    console.error(`[Preview] Error cleaning up previews:`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ============================================================
+// END VOICE CONFIGURATION & PREVIEW ENDPOINTS
+// ============================================================
+
 /**
  * Start server
  */
