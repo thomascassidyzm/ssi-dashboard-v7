@@ -318,17 +318,17 @@ onMounted(() => {
    MISSION CONTROL - Premium Control Room Design
    ============================================ */
 
-/* CSS Custom Properties */
+/* CSS Custom Properties - Harmonized with slate palette */
 .mission-control {
-  --mc-void: #05060a;
-  --mc-deep: #0a0c12;
-  --mc-surface: #12151e;
-  --mc-elevated: #1a1e2a;
-  --mc-border: #252a3a;
-  --mc-border-light: #353d52;
-  --mc-text: #e8eaf0;
-  --mc-text-dim: #8b92a8;
-  --mc-text-muted: #5a6178;
+  --mc-void: #0f172a;        /* slate-900 - matches existing pages */
+  --mc-deep: #1e293b;        /* slate-800 */
+  --mc-surface: #1e293b;     /* slate-800 */
+  --mc-elevated: #334155;    /* slate-700 */
+  --mc-border: #334155;      /* slate-700 */
+  --mc-border-light: #475569; /* slate-600 */
+  --mc-text: #f1f5f9;        /* slate-100 */
+  --mc-text-dim: #94a3b8;    /* slate-400 */
+  --mc-text-muted: #64748b;  /* slate-500 */
   --mc-accent: #10b981;
   --mc-accent-dim: #059669;
   --mc-accent-glow: rgba(16, 185, 129, 0.15);
