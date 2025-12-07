@@ -186,7 +186,7 @@ export const useProductionStore = defineStore('production', () => {
         id: 'tts_generation',
         name: 'TTS Generation',
         icon: '⚙️',
-        route: 'AudioPipeline',
+        route: 'AudioPipelineProduction',
         progress: generationProgress.value.total > 0
           ? Math.round((generationProgress.value.current / generationProgress.value.total) * 100)
           : 0,
@@ -199,7 +199,7 @@ export const useProductionStore = defineStore('production', () => {
         id: 'human_recording',
         name: 'Human Recording',
         icon: '🎤',
-        route: 'RecordingStudio',
+        route: 'RecordingStudioProduction',
         progress: 0,
         status: 'pending',
         count: samplesByStatus.value.in_recording?.length || 0,

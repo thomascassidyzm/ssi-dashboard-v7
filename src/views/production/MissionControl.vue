@@ -151,7 +151,9 @@ async function loadCourses() {
     const response = await fetch('/api/courses')
     if (response.ok) {
       const data = await response.json()
-      courses.value = data.map((c: any) => ({
+      // API returns { courses: [...] } or just [...]
+      const courseList = Array.isArray(data) ? data : data.courses || []
+      courses.value = courseList.map((c: any) => ({
         code: c.code || c.id,
         name: c.name || c.code || c.id,
         status: c.status
