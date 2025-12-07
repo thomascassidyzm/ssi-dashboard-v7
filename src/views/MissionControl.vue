@@ -106,6 +106,33 @@
             </div>
           </router-link>
 
+          <!-- Production Suite Card -->
+          <router-link to="/production/courses" class="action-card card-production">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                  </svg>
+                </div>
+                <div class="card-badge production">
+                  <span class="badge-label">audio & QA</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Production Suite</h2>
+                <p class="card-description">Audio generation, quality review, and manifest compilation</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Open Suite</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
             <div class="card-glow"></div>
@@ -334,6 +361,8 @@ onMounted(() => {
   --mc-accent-glow: rgba(16, 185, 129, 0.15);
   --mc-create: #3b82f6;
   --mc-create-glow: rgba(59, 130, 246, 0.15);
+  --mc-production: #f59e0b;
+  --mc-production-glow: rgba(245, 158, 11, 0.15);
   --mc-docs: #a855f7;
   --mc-docs-glow: rgba(168, 85, 247, 0.15);
 
@@ -532,11 +561,11 @@ onMounted(() => {
 
 .actions-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .actions-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -586,6 +615,10 @@ onMounted(() => {
   background: linear-gradient(180deg, var(--mc-create-glow) 0%, transparent 100%);
 }
 
+.card-production .card-glow {
+  background: linear-gradient(180deg, var(--mc-production-glow) 0%, transparent 100%);
+}
+
 .card-docs .card-glow {
   background: linear-gradient(180deg, var(--mc-docs-glow) 0%, transparent 100%);
 }
@@ -602,6 +635,11 @@ onMounted(() => {
 .card-create:hover {
   border-color: var(--mc-create);
   box-shadow: 0 20px 40px -20px var(--mc-create-glow);
+}
+
+.card-production:hover {
+  border-color: var(--mc-production);
+  box-shadow: 0 20px 40px -20px var(--mc-production-glow);
 }
 
 .card-docs:hover {
@@ -650,6 +688,10 @@ onMounted(() => {
   color: var(--mc-create);
 }
 
+.card-production .card-icon {
+  color: var(--mc-production);
+}
+
 .card-docs .card-icon {
   color: var(--mc-docs);
 }
@@ -663,6 +705,12 @@ onMounted(() => {
 .card-create:hover .card-icon {
   background: var(--mc-create);
   border-color: var(--mc-create);
+  color: white;
+}
+
+.card-production:hover .card-icon {
+  background: var(--mc-production);
+  border-color: var(--mc-production);
   color: white;
 }
 
@@ -718,6 +766,15 @@ onMounted(() => {
 
 .card-badge.docs .badge-label {
   color: var(--mc-docs);
+}
+
+.card-badge.production {
+  background: var(--mc-production-glow);
+  border-color: var(--mc-production);
+}
+
+.card-badge.production .badge-label {
+  color: var(--mc-production);
 }
 
 .card-badge.loading {
@@ -776,6 +833,7 @@ onMounted(() => {
 
 .card-library:hover .card-action { color: var(--mc-accent); }
 .card-create:hover .card-action { color: var(--mc-create); }
+.card-production:hover .card-action { color: var(--mc-production); }
 .card-docs:hover .card-action { color: var(--mc-docs); }
 
 .card-arrow {
@@ -791,6 +849,7 @@ onMounted(() => {
 
 .card-library:hover .card-arrow { color: var(--mc-accent); }
 .card-create:hover .card-arrow { color: var(--mc-create); }
+.card-production:hover .card-arrow { color: var(--mc-production); }
 .card-docs:hover .card-arrow { color: var(--mc-docs); }
 
 /* Activity Section */
