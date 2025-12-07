@@ -313,7 +313,7 @@ function onSampleFlagged(data) {
 <style scoped>
 .samples-browser {
   padding: 1.5rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   min-height: 100vh;
 }
 
@@ -326,7 +326,7 @@ function onSampleFlagged(data) {
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .header-title h2 {
@@ -353,7 +353,7 @@ function onSampleFlagged(data) {
 
 .view-toggle {
   display: flex;
-  background: var(--color-shadow, #16181f);
+  background: var(--color-shadow, #1e293b);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -371,13 +371,13 @@ function onSampleFlagged(data) {
 
 .toggle-btn.active {
   background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .filter-select {
   padding: 0.5rem 1rem;
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   color: var(--color-paper, #f7f7f2);
   font-family: 'Josefin Sans', sans-serif;
@@ -386,8 +386,8 @@ function onSampleFlagged(data) {
 
 .search-input {
   padding: 0.5rem 1rem;
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   color: var(--color-paper, #f7f7f2);
   font-family: 'Josefin Sans', sans-serif;
@@ -406,7 +406,7 @@ function onSampleFlagged(data) {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: var(--color-shadow, #16181f);
+  background: var(--color-shadow, #1e293b);
   border: 1px solid var(--color-tungsten, #ffa630);
   border-radius: 8px;
   margin-bottom: 1.5rem;
@@ -443,7 +443,7 @@ function onSampleFlagged(data) {
 
 .batch-btn.clear {
   background: transparent;
-  border: 1px solid var(--color-graphite, #34384a);
+  border: 1px solid var(--color-graphite, #475569);
   color: var(--color-paper-dim, #c1c1bb);
 }
 
@@ -456,8 +456,8 @@ function onSampleFlagged(data) {
 }
 
 .stat-card {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
@@ -493,8 +493,8 @@ function onSampleFlagged(data) {
 
 /* List View */
 .samples-list {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -504,7 +504,7 @@ function onSampleFlagged(data) {
   grid-template-columns: 40px 100px 1fr 120px 100px 120px;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -518,7 +518,7 @@ function onSampleFlagged(data) {
   grid-template-columns: 40px 100px 1fr 120px 100px 120px;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  border-bottom: 1px solid var(--color-graphite, #475569);
   align-items: center;
   transition: background 0.2s ease;
 }
@@ -565,8 +565,8 @@ function onSampleFlagged(data) {
 .mini-btn {
   width: 32px;
   height: 32px;
-  background: var(--color-void, #0a0b0f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   color: var(--color-paper, #f7f7f2);
   cursor: pointer;
@@ -575,7 +575,7 @@ function onSampleFlagged(data) {
 
 .mini-btn:hover {
   background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 /* Empty State */
@@ -591,7 +591,7 @@ function onSampleFlagged(data) {
   background: var(--color-tungsten, #ffa630);
   border: none;
   border-radius: 6px;
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   cursor: pointer;

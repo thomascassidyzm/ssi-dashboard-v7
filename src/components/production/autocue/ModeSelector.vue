@@ -64,8 +64,8 @@ function selectMode(mode) {
 }
 
 .mode-card {
-  background: linear-gradient(135deg, var(--color-shadow, #16181f), var(--color-slate, #23262f));
-  border: 2px solid var(--color-graphite, #34384a);
+  background: linear-gradient(135deg, var(--color-shadow, #1e293b), var(--color-slate, #334155));
+  border: 2px solid var(--color-graphite, #475569);
   border-radius: 16px;
   padding: 2rem;
   cursor: pointer;

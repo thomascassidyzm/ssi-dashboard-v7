@@ -42,7 +42,7 @@ const icon = computed(() => {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: #16181f;
+  background: #1e293b;
   border-radius: 12px;
   border-left: 4px solid;
   transition: all 0.3s ease;
@@ -121,8 +121,8 @@ const icon = computed(() => {
 
 .blocker-action {
   padding: 0.5rem 1rem;
-  background: #23262f;
-  border: 1px solid #34384a;
+  background: #334155;
+  border: 1px solid #475569;
   border-radius: 8px;
   color: #f7f7f2;
   font-family: 'Josefin Sans', sans-serif;
@@ -135,7 +135,7 @@ const icon = computed(() => {
 
 .blocker-action:hover {
   background: #ffa630;
-  color: #0a0b0f;
+  color: #0f172a;
   border-color: #ffa630;
 }
 </style>

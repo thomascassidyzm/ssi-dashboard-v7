@@ -103,7 +103,7 @@ onUnmounted(() => {
 
 <style scoped>
 .waveform-visualizer {
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 200px;
@@ -192,7 +192,7 @@ onUnmounted(() => {
 .meter-bar {
   flex: 1;
   height: 8px;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 4px;
   overflow: hidden;
 }

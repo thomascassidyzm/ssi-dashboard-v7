@@ -92,8 +92,8 @@ function beginSession() {
 }
 
 .role-setup-card {
-  background: linear-gradient(135deg, var(--color-shadow, #16181f), var(--color-slate, #23262f));
-  border: 2px solid var(--color-graphite, #34384a);
+  background: linear-gradient(135deg, var(--color-shadow, #1e293b), var(--color-slate, #334155));
+  border: 2px solid var(--color-graphite, #475569);
   border-radius: 16px;
   padding: 2.5rem;
 }
@@ -144,8 +144,8 @@ function beginSession() {
 }
 
 .role-option {
-  background: var(--color-void, #0a0b0f);
-  border: 2px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 2px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 1.5rem;
   cursor: pointer;
@@ -184,7 +184,7 @@ function beginSession() {
 .role-radio {
   width: 24px;
   height: 24px;
-  border: 3px solid var(--color-graphite, #34384a);
+  border: 3px solid var(--color-graphite, #475569);
   border-radius: 50%;
   margin: 0 auto;
   display: flex;
@@ -203,12 +203,12 @@ function beginSession() {
   content: '';
   width: 8px;
   height: 8px;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 50%;
 }
 
 .session-summary {
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;

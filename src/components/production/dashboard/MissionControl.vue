@@ -361,7 +361,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 <style scoped>
 .mission-control {
   min-height: 100vh;
-  background: #0a0b0f;
+  background: #0f172a;
   padding: 1.5rem;
 }
 
@@ -372,7 +372,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #34384a;
+  border-bottom: 1px solid #475569;
 }
 
 .mc-branding {
@@ -392,7 +392,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
   font-weight: bold;
-  color: #0a0b0f;
+  color: #0f172a;
   box-shadow: 0 0 24px rgba(255, 166, 48, 0.4);
 }
 
@@ -474,8 +474,8 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 }
 
 .course-select-card {
-  background: #16181f;
-  border: 2px solid #34384a;
+  background: #1e293b;
+  border: 2px solid #475569;
   border-radius: 12px;
   padding: 1.5rem;
   cursor: pointer;
@@ -505,8 +505,8 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 
 /* Dashboard Sections */
 .mc-section {
-  background: #16181f;
-  border: 1px solid #34384a;
+  background: #1e293b;
+  border: 1px solid #475569;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -535,7 +535,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 
 .back-btn {
   background: transparent;
-  border: 1px solid #34384a;
+  border: 1px solid #475569;
   border-radius: 6px;
   padding: 0.5rem 1rem;
   color: #c1c1bb;
@@ -565,7 +565,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #34384a;
+  border-bottom: 1px solid #475569;
 }
 
 .stat-row:last-child {
@@ -605,7 +605,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 }
 
 .stage-card {
-  background: #0a0b0f;
+  background: #0f172a;
   border-radius: 12px;
   padding: 1rem;
 }
@@ -643,7 +643,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 .stage-bar {
   flex: 1;
   height: 8px;
-  background: #34384a;
+  background: #475569;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -660,7 +660,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 }
 
 .stage-fill.pending {
-  background: #34384a;
+  background: #475569;
 }
 
 .stage-stats {
@@ -678,8 +678,8 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
 }
 
 .action-card {
-  background: #0a0b0f;
-  border: 2px solid #34384a;
+  background: #0f172a;
+  border: 2px solid #475569;
   border-radius: 12px;
   padding: 1.25rem;
   text-align: center;
@@ -732,7 +732,7 @@ watch(() => props.courseCode, async (newCode, oldCode) => {
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem 0;
-  border-bottom: 1px solid #34384a;
+  border-bottom: 1px solid #475569;
 }
 
 .activity-item:last-child {

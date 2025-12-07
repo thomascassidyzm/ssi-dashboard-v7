@@ -67,7 +67,7 @@ function selectCourse(courseCode) {
 <style scoped>
 .course-selector {
   padding: 2rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   min-height: 100vh;
 }
 
@@ -91,8 +91,8 @@ function selectCourse(courseCode) {
 }
 
 .course-card {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   padding: 1.5rem;
   cursor: pointer;

@@ -139,8 +139,8 @@ function onCleared(data) {
 
 <style scoped>
 .sample-card {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 1rem;
   transition: all 0.3s ease;
@@ -208,7 +208,7 @@ function onCleared(data) {
 .card-waveform {
   position: relative;
   height: 48px;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 6px;
   margin-bottom: 0.75rem;
   cursor: pointer;
@@ -288,8 +288,8 @@ function onCleared(data) {
 .action-btn {
   flex: 1;
   padding: 0.5rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   color: var(--color-paper, #f7f7f2);
   font-family: 'Josefin Sans', sans-serif;
@@ -300,10 +300,10 @@ function onCleared(data) {
 }
 
 .action-btn:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
 }
 
 .action-btn.play {
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
 }
 </style>

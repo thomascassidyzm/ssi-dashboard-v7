@@ -16,11 +16,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Cinematic Dark Palette - Production Suite */
-  --color-void: #0a0b0f;
-  --color-shadow: #16181f;
-  --color-slate: #23262f;
-  --color-graphite: #34384a;
+  /* Cinematic Dark Palette - Production Suite (Harmonized with Tailwind Slate) */
+  --color-void: #0f172a;      /* slate-900 - Main background */
+  --color-shadow: #1e293b;    /* slate-800 - Elevated surfaces */
+  --color-slate: #334155;     /* slate-700 - Cards & panels */
+  --color-graphite: #475569;  /* slate-600 - Borders & dividers */
 
   --color-film-red: #e63946;
   --color-tungsten: #ffa630;

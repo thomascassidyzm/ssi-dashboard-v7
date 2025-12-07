@@ -77,8 +77,8 @@ onMounted(() => {
 <style scoped>
 .teleprompter-viewport {
   position: relative;
-  background: var(--color-void, #0a0b0f);
-  border: 3px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 3px solid var(--color-graphite, #475569);
   border-radius: 20px;
   padding: 2rem;
   height: 500px;
@@ -133,11 +133,11 @@ onMounted(() => {
 
 .gradient-top {
   top: 0;
-  background: linear-gradient(to bottom, var(--color-void, #0a0b0f), transparent);
+  background: linear-gradient(to bottom, var(--color-void, #0f172a), transparent);
 }
 
 .gradient-bottom {
   bottom: 0;
-  background: linear-gradient(to top, var(--color-void, #0a0b0f), transparent);
+  background: linear-gradient(to top, var(--color-void, #0f172a), transparent);
 }
 </style>

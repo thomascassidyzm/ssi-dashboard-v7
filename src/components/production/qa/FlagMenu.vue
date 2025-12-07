@@ -166,8 +166,8 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   color: var(--color-paper-dim, #c1c1bb);
   font-family: 'Josefin Sans', sans-serif;
@@ -178,7 +178,7 @@ onUnmounted(() => {
 }
 
 .flag-trigger:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   border-color: var(--color-tungsten, #ffa630);
 }
 
@@ -193,8 +193,8 @@ onUnmounted(() => {
   top: calc(100% + 8px);
   right: 0;
   width: 280px;
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   z-index: 100;
@@ -203,7 +203,7 @@ onUnmounted(() => {
 
 .flag-dropdown-header {
   padding: 0.75rem 1rem;
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -226,7 +226,7 @@ onUnmounted(() => {
 }
 
 .flag-option:hover {
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
 }
 
 .flag-option.active {
@@ -258,7 +258,7 @@ onUnmounted(() => {
 
 .flag-divider {
   height: 1px;
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   margin: 0.5rem 0;
 }
 
@@ -277,8 +277,8 @@ onUnmounted(() => {
 .notes-input {
   width: 100%;
   padding: 0.5rem;
-  background: var(--color-void, #0a0b0f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   color: var(--color-paper, #f7f7f2);
   font-family: inherit;
@@ -295,7 +295,7 @@ onUnmounted(() => {
   display: flex;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
 }
 
 .action-btn {
@@ -311,12 +311,12 @@ onUnmounted(() => {
 
 .action-btn.cancel {
   background: transparent;
-  border: 1px solid var(--color-graphite, #34384a);
+  border: 1px solid var(--color-graphite, #475569);
   color: var(--color-paper-dim, #c1c1bb);
 }
 
 .action-btn.cancel:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
 }
 
 .action-btn.clear {

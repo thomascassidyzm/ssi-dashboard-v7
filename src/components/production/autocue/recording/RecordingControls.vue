@@ -67,8 +67,8 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 }
 
 .control-btn {
-  background: var(--color-slate, #23262f);
-  border: 2px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 2px solid var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
@@ -116,8 +116,8 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 }
 
 .control-btn.record.recording {
-  background: var(--color-graphite, #34384a);
-  border-color: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
+  border-color: var(--color-graphite, #475569);
   box-shadow: none;
 }
 
@@ -134,8 +134,8 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 }
 
 kbd {
-  background: var(--color-void, #0a0b0f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 4px;
   padding: 0.15rem 0.4rem;
   margin-right: 0.25rem;

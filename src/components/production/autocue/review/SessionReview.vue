@@ -87,8 +87,8 @@ const stats = computed(() => {
 }
 
 .review-header {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -118,7 +118,7 @@ const stats = computed(() => {
   flex: 1;
   text-align: center;
   padding: 1rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 8px;
 }
 
@@ -154,8 +154,8 @@ const stats = computed(() => {
 
 /* Batch Actions */
 .batch-actions {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -165,8 +165,8 @@ const stats = computed(() => {
 
 .batch-btn {
   flex: 1;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -188,7 +188,7 @@ const stats = computed(() => {
 }
 
 .batch-btn:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
@@ -208,12 +208,12 @@ const stats = computed(() => {
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-graphite, #34384a);
+  border-top: 1px solid var(--color-graphite, #475569);
 }
 
 .control-btn {
-  background: var(--color-slate, #23262f);
-  border: 2px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 2px solid var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
@@ -238,7 +238,7 @@ const stats = computed(() => {
 .control-btn.success {
   background: linear-gradient(135deg, var(--color-emerald, #06ffa5), #04cc84);
   border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .control-btn.success:hover {

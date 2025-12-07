@@ -196,15 +196,15 @@ onUnmounted(() => {
 <style scoped>
 .autocue-studio {
   min-height: 100vh;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   padding: 2rem;
   position: relative;
 
   /* CSS Variables for the cinematic theme */
-  --color-void: #0a0b0f;
-  --color-shadow: #16181f;
-  --color-slate: #23262f;
-  --color-graphite: #34384a;
+  --color-void: #0f172a;
+  --color-shadow: #1e293b;
+  --color-slate: #334155;
+  --color-graphite: #475569;
   --color-film-red: #e63946;
   --color-tungsten: #ffa630;
   --color-emerald: #06ffa5;

@@ -119,8 +119,8 @@ const emit = defineEmits<{
 
 <style scoped>
 .recording-controls {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 2rem;
   display: flex;
@@ -196,17 +196,17 @@ const emit = defineEmits<{
 }
 
 .stop-btn {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
 }
 
 .stop-btn:hover {
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
 }
 
 .play-btn {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .play-btn:hover {
@@ -215,19 +215,19 @@ const emit = defineEmits<{
 }
 
 .re-record-btn {
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
   color: var(--color-paper-dim, #c1c1bb);
-  border: 1px solid var(--color-graphite, #34384a);
+  border: 1px solid var(--color-graphite, #475569);
 }
 
 .re-record-btn:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
 }
 
 .upload-btn {
   background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.3);
 }
 
@@ -266,7 +266,7 @@ const emit = defineEmits<{
   align-items: center;
   gap: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, #34384a);
+  border-top: 1px solid var(--color-graphite, #475569);
   flex-wrap: wrap;
 }
 
@@ -279,8 +279,8 @@ const emit = defineEmits<{
 kbd {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 4px;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;

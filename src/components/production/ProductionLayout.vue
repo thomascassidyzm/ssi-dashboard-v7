@@ -37,7 +37,7 @@ const wsConnected = computed(() => store.wsConnected)
 <style scoped>
 .production-layout {
   min-height: 100vh;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
 }
 
 .production-header {
@@ -45,8 +45,8 @@ const wsConnected = computed(() => store.wsConnected)
   align-items: center;
   gap: 1rem;
   padding: 1rem 2rem;
-  background: var(--color-shadow, #16181f);
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .back-link {
@@ -78,7 +78,7 @@ const wsConnected = computed(() => store.wsConnected)
 
 .connection-status.connected {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .production-content {

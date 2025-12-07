@@ -65,10 +65,10 @@ function getBarHeight(index) {
 
 <style scoped>
 .segment-card {
-  background: var(--color-shadow, #16181f);
+  background: var(--color-shadow, #1e293b);
   border-radius: 12px;
   padding: 1rem;
-  border-left: 4px solid var(--color-graphite, #34384a);
+  border-left: 4px solid var(--color-graphite, #475569);
   transition: all 0.3s ease;
 }
 
@@ -149,7 +149,7 @@ function getBarHeight(index) {
 
 .segment-waveform {
   height: 60px;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 6px;
   margin-bottom: 0.75rem;
   display: flex;
@@ -186,8 +186,8 @@ function getBarHeight(index) {
 
 .segment-btn {
   flex: 1;
-  background: var(--color-void, #0a0b0f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-void, #0f172a);
+  border: 1px solid var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
   padding: 0.5rem;
   border-radius: 6px;
@@ -209,7 +209,7 @@ function getBarHeight(index) {
 
 .segment-btn:hover {
   background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
   border-color: var(--color-tungsten, #ffa630);
 }
 

@@ -109,8 +109,8 @@ function toggleSlowMode() {
 
 <style scoped>
 .autocue-display {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 2rem;
   display: flex;
@@ -146,7 +146,7 @@ function toggleSlowMode() {
 }
 
 .current-phrase {
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -158,7 +158,7 @@ function toggleSlowMode() {
 }
 
 .current-phrase.slow-mode {
-  background: linear-gradient(135deg, var(--color-slate, #23262f), var(--color-graphite, #34384a));
+  background: linear-gradient(135deg, var(--color-slate, #334155), var(--color-graphite, #475569));
 }
 
 .phrase-meta {
@@ -191,7 +191,7 @@ function toggleSlowMode() {
   display: inline-block;
   margin: 0 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 4px;
   animation: wordPulse 2s ease-in-out infinite;
 }
@@ -227,7 +227,7 @@ function toggleSlowMode() {
   gap: 0.75rem;
   padding: 1rem;
   background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
   border-radius: 6px;
   margin-top: 1rem;
 }
@@ -248,7 +248,7 @@ function toggleSlowMode() {
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, #34384a);
+  border-top: 1px solid var(--color-graphite, #475569);
 }
 
 .slow-mode-toggle {
@@ -256,8 +256,8 @@ function toggleSlowMode() {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   color: var(--color-paper-dim, #c1c1bb);
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
@@ -268,14 +268,14 @@ function toggleSlowMode() {
 }
 
 .slow-mode-toggle:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   color: var(--color-paper, #f7f7f2);
 }
 
 .slow-mode-toggle.active {
   background: var(--color-tungsten, #ffa630);
   border-color: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .slow-mode-toggle .icon {
@@ -295,7 +295,7 @@ function toggleSlowMode() {
 
 .uuid-display {
   padding: 0.25rem 0.5rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 4px;
 }
 

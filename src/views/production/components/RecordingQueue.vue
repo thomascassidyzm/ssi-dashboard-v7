@@ -167,7 +167,7 @@ function updateFilters() {
 
 .queue-header {
   padding: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .queue-title {
@@ -189,15 +189,15 @@ function updateFilters() {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .filter-select {
   flex: 1;
   min-width: 120px;
   padding: 0.5rem 0.75rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
   color: var(--color-paper-dim, #c1c1bb);
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
@@ -222,20 +222,20 @@ function updateFilters() {
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  background: var(--color-slate, #23262f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .queue-item:hover {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   border-color: var(--color-emerald, #06ffa5);
 }
 
 .queue-item.active {
-  background: var(--color-graphite, #34384a);
+  background: var(--color-graphite, #475569);
   border-color: var(--color-tungsten, #ffa630);
   box-shadow: 0 0 20px rgba(255, 166, 48, 0.2);
 }
@@ -294,7 +294,7 @@ function updateFilters() {
 
 .meta-badge {
   padding: 0.125rem 0.5rem;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   border-radius: 4px;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.6875rem;
@@ -324,7 +324,7 @@ function updateFilters() {
 
 .queue-footer {
   padding: 1rem 1.5rem;
-  border-top: 1px solid var(--color-graphite, #34384a);
+  border-top: 1px solid var(--color-graphite, #475569);
   display: flex;
   justify-content: space-around;
 }

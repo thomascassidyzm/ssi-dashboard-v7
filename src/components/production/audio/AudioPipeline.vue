@@ -259,7 +259,7 @@ onUnmounted(() => {
 <style scoped>
 .audio-pipeline {
   padding: 1.5rem;
-  background: #0a0b0f;
+  background: #0f172a;
   min-height: 100vh;
 }
 
@@ -269,7 +269,7 @@ onUnmounted(() => {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #34384a;
+  border-bottom: 1px solid #475569;
 }
 
 .header-title h1 {
@@ -295,8 +295,8 @@ onUnmounted(() => {
 
 .action-btn {
   padding: 0.6rem 1.25rem;
-  background: #23262f;
-  border: 1px solid #34384a;
+  background: #334155;
+  border: 1px solid #475569;
   border-radius: 8px;
   color: #f7f7f2;
   font-family: 'Josefin Sans', sans-serif;
@@ -307,13 +307,13 @@ onUnmounted(() => {
 }
 
 .action-btn:hover {
-  background: #34384a;
+  background: #475569;
 }
 
 .action-btn.primary {
   background: linear-gradient(135deg, #ffa630, #e6951c);
   border-color: #ffa630;
-  color: #0a0b0f;
+  color: #0f172a;
 }
 
 .action-btn.primary:hover {
@@ -334,8 +334,8 @@ onUnmounted(() => {
 }
 
 .stat {
-  background: #16181f;
-  border: 1px solid #34384a;
+  background: #1e293b;
+  border: 1px solid #475569;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -371,8 +371,8 @@ onUnmounted(() => {
 
 .filter-btn {
   padding: 0.5rem 1rem;
-  background: #16181f;
-  border: 1px solid #34384a;
+  background: #1e293b;
+  border: 1px solid #475569;
   border-radius: 20px;
   color: #c1c1bb;
   font-family: 'Josefin Sans', sans-serif;
@@ -388,7 +388,7 @@ onUnmounted(() => {
 .filter-btn.active {
   background: #ffa630;
   border-color: #ffa630;
-  color: #0a0b0f;
+  color: #0f172a;
 }
 
 /* Queue List */
@@ -407,7 +407,7 @@ onUnmounted(() => {
 
 /* Add Section */
 .add-section {
-  background: #16181f;
+  background: #1e293b;
   border: 1px solid #ffa630;
   border-radius: 12px;
   padding: 1.5rem;

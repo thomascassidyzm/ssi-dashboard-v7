@@ -54,8 +54,8 @@ onUnmounted(() => {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   display: flex;

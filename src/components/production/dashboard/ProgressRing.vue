@@ -70,7 +70,7 @@ const dashOffset = computed(() => {
 }
 
 .progress-ring-bg {
-  stroke: #34384a;
+  stroke: #475569;
 }
 
 .progress-ring-progress {

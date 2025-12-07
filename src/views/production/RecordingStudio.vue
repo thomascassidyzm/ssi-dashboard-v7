@@ -241,7 +241,7 @@ watch(courseCode, () => {
 <style scoped>
 .recording-studio {
   min-height: 100vh;
-  background: var(--color-void, #0a0b0f);
+  background: var(--color-void, #0f172a);
   padding: 2rem;
 }
 
@@ -251,7 +251,7 @@ watch(courseCode, () => {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .header-left {
@@ -314,15 +314,15 @@ watch(courseCode, () => {
 }
 
 .queue-panel {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .no-phrase-message {
-  background: var(--color-shadow, #16181f);
-  border: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;
   padding: 4rem 2rem;
   text-align: center;
@@ -353,7 +353,7 @@ watch(courseCode, () => {
 
 .upload-toast.success {
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0a0b0f);
+  color: var(--color-void, #0f172a);
 }
 
 .upload-toast.error {

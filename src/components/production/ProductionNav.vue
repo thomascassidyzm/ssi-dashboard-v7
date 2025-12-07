@@ -53,8 +53,8 @@ function isActive(routeName) {
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
-  background: var(--color-shadow, #16181f);
-  border-bottom: 1px solid var(--color-graphite, #34384a);
+  background: var(--color-shadow, #1e293b);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 
 .nav-item {
@@ -68,11 +68,11 @@ function isActive(routeName) {
 
 .nav-item:hover {
   color: var(--color-paper, #f7f7f2);
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
 }
 
 .nav-item.active {
   color: var(--color-tungsten, #ffa630);
-  background: var(--color-slate, #23262f);
+  background: var(--color-slate, #334155);
 }
 </style>

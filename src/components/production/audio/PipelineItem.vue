@@ -104,8 +104,8 @@ function formatTime(timestamp) {
 
 <style scoped>
 .pipeline-item {
-  background: #16181f;
-  border: 1px solid #34384a;
+  background: #1e293b;
+  border: 1px solid #475569;
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -191,7 +191,7 @@ function formatTime(timestamp) {
 .progress-bar {
   flex: 1;
   height: 6px;
-  background: #34384a;
+  background: #475569;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -236,8 +236,8 @@ function formatTime(timestamp) {
 /* Expanded Details */
 .item-details {
   padding: 1rem;
-  background: #0a0b0f;
-  border-top: 1px solid #34384a;
+  background: #0f172a;
+  border-top: 1px solid #475569;
 }
 
 .detail-row {
@@ -274,8 +274,8 @@ function formatTime(timestamp) {
 
 .action-btn {
   padding: 0.4rem 0.75rem;
-  background: #23262f;
-  border: 1px solid #34384a;
+  background: #334155;
+  border: 1px solid #475569;
   border-radius: 6px;
   color: #f7f7f2;
   font-family: 'Josefin Sans', sans-serif;
@@ -285,7 +285,7 @@ function formatTime(timestamp) {
 }
 
 .action-btn:hover {
-  background: #34384a;
+  background: #475569;
 }
 
 .action-btn.retry:hover {
