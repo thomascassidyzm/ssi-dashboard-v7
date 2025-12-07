@@ -241,6 +241,13 @@ export const useProductionStore = defineStore('production', () => {
         fetch(`/api/production/${courseCode}/audio-metadata`)
       ])
 
+      // Check if Production API is available (404 means endpoint exists but no data, network error means API not running)
+      if (manifestRes.status === 404 && flagsRes.status === 404) {
+        // Production API endpoints exist but course has no production data yet
+        error.value = 'Production API not available. Make sure the production-api service is running on port 3470.'
+        return
+      }
+
       if (!manifestRes.ok) throw new Error('Failed to load manifest')
 
       courseManifest.value = await manifestRes.json()
@@ -248,7 +255,12 @@ export const useProductionStore = defineStore('production', () => {
       audioMetadata.value = metadataRes.ok ? await metadataRes.json() : { audio: {} }
 
     } catch (err) {
-      error.value = err.message
+      // Network errors indicate Production API is not running
+      if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        error.value = 'Production API not available. Start the production-api service (port 3470) to use the Production Suite.'
+      } else {
+        error.value = err.message
+      }
       console.error('Failed to load course:', err)
     } finally {
       isLoading.value = false

@@ -34,9 +34,19 @@
     <!-- Error State -->
     <div v-else-if="store.error" class="error-state">
       <div class="error-icon">⚠️</div>
-      <h2>Error Loading Course</h2>
+      <h2>Production API Not Available</h2>
       <p>{{ store.error }}</p>
-      <button @click="retryLoad" class="retry-btn">Retry</button>
+      <div class="error-help">
+        <p class="help-text">The Production Suite requires the production-api service to be running locally.</p>
+        <div class="help-commands">
+          <code>cd services && node production-api.cjs</code>
+        </div>
+        <p class="help-note">Or use the Course Library to view and edit course content without the Production API.</p>
+      </div>
+      <div class="error-actions">
+        <button @click="retryLoad" class="retry-btn">Retry</button>
+        <router-link to="/courses" class="back-btn">← Back to Course Library</router-link>
+      </div>
     </div>
 
     <!-- Main Dashboard -->
@@ -482,6 +492,64 @@ onUnmounted(() => {
 
 .retry-btn:hover {
   background: #059669;
+  transform: translateY(-1px);
+}
+
+.error-help {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgb(51 65 85 / 0.3);
+  border-radius: 0.75rem;
+  max-width: 500px;
+}
+
+.help-text {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.help-commands {
+  background: rgb(15 23 42);
+  border: 1px solid rgb(51 65 85);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.help-commands code {
+  color: #10b981;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.8rem;
+}
+
+.help-note {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.back-btn {
+  padding: 0.75rem 1.5rem;
+  background: rgb(51 65 85);
+  color: #e2e8f0;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgb(71 85 105);
   transform: translateY(-1px);
 }
 
