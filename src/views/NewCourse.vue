@@ -67,70 +67,32 @@
 
       <!-- Wizard Content -->
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-        <!-- Step 1: Course Basics -->
+        <!-- Step 1: Language Selection -->
         <div v-if="currentStep === 0">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Course Basics</h2>
+          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Select Languages</h2>
 
           <div class="space-y-6">
-            <!-- Course Code -->
-            <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                Course Code <span class="text-red-400">*</span>
-              </label>
-              <input
-                v-model="formData.courseCode"
-                type="text"
-                placeholder="e.g., spa_for_eng"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                :class="{ 'border-red-500': errors.courseCode }"
-                @input="validateCourseCode"
-              />
-              <p v-if="errors.courseCode" class="mt-1 text-sm text-red-400">
-                {{ errors.courseCode }}
-              </p>
-              <p v-else class="mt-1 text-xs text-slate-500">
-                Use lowercase letters and underscores only (e.g., target_for_known)
-              </p>
-            </div>
-
-            <!-- Display Name -->
-            <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                Display Name <span class="text-red-400">*</span>
-              </label>
-              <input
-                v-model="formData.displayName"
-                type="text"
-                placeholder="e.g., Spanish for English Speakers"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                :class="{ 'border-red-500': errors.displayName }"
-                @input="validateDisplayName"
-              />
-              <p v-if="errors.displayName" class="mt-1 text-sm text-red-400">
-                {{ errors.displayName }}
-              </p>
-            </div>
-
             <!-- Language Selection -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Source Language -->
+              <!-- Known Language (Source) -->
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2">
-                  Source Language (Known) <span class="text-red-400">*</span>
+                  Known Language (Learning FROM) <span class="text-red-400">*</span>
                 </label>
                 <select
                   v-model="formData.sourceLanguage"
+                  :disabled="languagesLoading"
                   class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
                   :class="{ 'border-red-500': errors.sourceLanguage }"
-                  @change="validateSourceLanguage"
+                  @change="onLanguageChange"
                 >
-                  <option value="" disabled>Select source language</option>
+                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
                     :value="lang.code"
                   >
-                    {{ lang.name }} ({{ lang.code }})
+                    {{ lang.name }} ({{ lang.code }}) {{ lang.native ? `- ${lang.native}` : '' }}
                   </option>
                 </select>
                 <p v-if="errors.sourceLanguage" class="mt-1 text-sm text-red-400">
@@ -144,21 +106,22 @@
               <!-- Target Language -->
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2">
-                  Target Language (Learning) <span class="text-red-400">*</span>
+                  Target Language (Learning TO) <span class="text-red-400">*</span>
                 </label>
                 <select
                   v-model="formData.targetLanguage"
+                  :disabled="languagesLoading"
                   class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
                   :class="{ 'border-red-500': errors.targetLanguage }"
-                  @change="validateTargetLanguage"
+                  @change="onLanguageChange"
                 >
-                  <option value="" disabled>Select target language</option>
+                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
                     :value="lang.code"
                   >
-                    {{ lang.name }} ({{ lang.code }})
+                    {{ lang.name }} ({{ lang.code }}) {{ lang.native ? `- ${lang.native}` : '' }}
                   </option>
                 </select>
                 <p v-if="errors.targetLanguage" class="mt-1 text-sm text-red-400">
@@ -167,6 +130,21 @@
                 <p v-else class="mt-1 text-xs text-slate-500">
                   The language learners want to learn
                 </p>
+              </div>
+            </div>
+
+            <!-- Auto-computed Course Code Preview -->
+            <div v-if="formData.sourceLanguage && formData.targetLanguage" class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+              <div class="flex items-center gap-3">
+                <span class="text-emerald-400 text-xl">✨</span>
+                <div>
+                  <p class="text-emerald-300 font-medium">Course will be created as:</p>
+                  <p class="text-slate-300 mt-1">
+                    <span class="font-mono text-emerald-400">{{ computedCourseCode }}</span>
+                    <span class="text-slate-500 mx-2">→</span>
+                    <span>{{ computedDisplayName }}</span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -237,14 +215,14 @@
               <div class="space-y-3">
                 <div class="flex justify-between">
                   <span class="text-slate-400">Course Code:</span>
-                  <span class="text-emerald-400 font-mono">{{ formData.courseCode }}</span>
+                  <span class="text-emerald-400 font-mono">{{ computedCourseCode }}</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-slate-400">Display Name:</span>
-                  <span class="text-slate-200">{{ formData.displayName }}</span>
+                  <span class="text-slate-200">{{ computedDisplayName }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Source Language:</span>
+                  <span class="text-slate-400">Known Language:</span>
                   <span class="text-slate-200">{{ getLanguageName(formData.sourceLanguage) }}</span>
                 </div>
                 <div class="flex justify-between">
@@ -316,14 +294,15 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { apiClient } from '@/services/api'
 
 const router = useRouter()
 
 // Wizard Steps
 const steps = [
-  { title: 'Course Basics', subtitle: 'Essential information' },
+  { title: 'Languages', subtitle: 'Select language pair' },
   { title: 'Configuration', subtitle: 'Settings & options' },
   { title: 'Review', subtitle: 'Summary & create' }
 ]
@@ -331,10 +310,12 @@ const steps = [
 const currentStep = ref(0)
 const creating = ref(false)
 
+// Language loading state
+const languages = ref([])
+const languagesLoading = ref(true)
+
 // Form Data
 const formData = ref({
-  courseCode: '',
-  displayName: '',
   sourceLanguage: '',
   targetLanguage: '',
   numberOfSeeds: 668,
@@ -343,64 +324,104 @@ const formData = ref({
 
 // Validation Errors
 const errors = ref({
-  courseCode: '',
-  displayName: '',
   sourceLanguage: '',
   targetLanguage: ''
 })
 
-// Language Options
-const languages = [
-  { code: 'eng', name: 'English' },
-  { code: 'spa', name: 'Spanish' },
-  { code: 'fra', name: 'French' },
-  { code: 'ita', name: 'Italian' },
-  { code: 'deu', name: 'German' },
-  { code: 'por', name: 'Portuguese' },
-  { code: 'cmn', name: 'Chinese (Mandarin)' },
-  { code: 'jpn', name: 'Japanese' },
-  { code: 'kor', name: 'Korean' },
-  { code: 'ara', name: 'Arabic' },
-  { code: 'rus', name: 'Russian' },
-  { code: 'cym', name: 'Welsh' },
-  { code: 'gle', name: 'Irish' }
-]
+// Load languages from API on mount
+onMounted(async () => {
+  await loadLanguages()
+})
+
+async function loadLanguages() {
+  languagesLoading.value = true
+  try {
+    const response = await apiClient.get('/api/languages')
+    languages.value = response.data
+  } catch (error) {
+    console.error('Failed to load languages:', error)
+    // Fallback to comprehensive list if API fails
+    languages.value = [
+      { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
+      { code: 'ara', name: 'Arabic', native: 'العربية' },
+      { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
+      { code: 'cat', name: 'Catalan', native: 'Català' },
+      { code: 'ces', name: 'Czech', native: 'Čeština' },
+      { code: 'cmn', name: 'Chinese (Mandarin)', native: '中文 (普通话)' },
+      { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
+      { code: 'dan', name: 'Danish', native: 'Dansk' },
+      { code: 'deu', name: 'German', native: 'Deutsch' },
+      { code: 'ell', name: 'Greek', native: 'Ελληνικά' },
+      { code: 'eng', name: 'English', native: 'English' },
+      { code: 'eus', name: 'Basque', native: 'Euskara' },
+      { code: 'fin', name: 'Finnish', native: 'Suomi' },
+      { code: 'fra', name: 'French', native: 'Français' },
+      { code: 'gla', name: 'Scottish Gaelic', native: 'Gàidhlig' },
+      { code: 'gle', name: 'Irish', native: 'Gaeilge' },
+      { code: 'glv', name: 'Manx', native: 'Gaelg' },
+      { code: 'heb', name: 'Hebrew', native: 'עברית' },
+      { code: 'hin', name: 'Hindi', native: 'हिन्दी' },
+      { code: 'hun', name: 'Hungarian', native: 'Magyar' },
+      { code: 'ind', name: 'Indonesian', native: 'Bahasa Indonesia' },
+      { code: 'ita', name: 'Italian', native: 'Italiano' },
+      { code: 'jpn', name: 'Japanese', native: '日本語' },
+      { code: 'kor', name: 'Korean', native: '한국어' },
+      { code: 'lit', name: 'Lithuanian', native: 'Lietuvių' },
+      { code: 'ltz', name: 'Luxembourgish', native: 'Lëtzebuergesch' },
+      { code: 'nld', name: 'Dutch', native: 'Nederlands' },
+      { code: 'nor', name: 'Norwegian', native: 'Norsk' },
+      { code: 'pol', name: 'Polish', native: 'Polski' },
+      { code: 'por', name: 'Portuguese', native: 'Português' },
+      { code: 'ron', name: 'Romanian', native: 'Română' },
+      { code: 'rus', name: 'Russian', native: 'Русский' },
+      { code: 'slk', name: 'Slovak', native: 'Slovenčina' },
+      { code: 'slv', name: 'Slovenian', native: 'Slovenščina' },
+      { code: 'spa', name: 'Spanish', native: 'Español' },
+      { code: 'swe', name: 'Swedish', native: 'Svenska' },
+      { code: 'tha', name: 'Thai', native: 'ไทย' },
+      { code: 'tur', name: 'Turkish', native: 'Türkçe' },
+      { code: 'ukr', name: 'Ukrainian', native: 'Українська' },
+      { code: 'vie', name: 'Vietnamese', native: 'Tiếng Việt' },
+      { code: 'yue', name: 'Chinese (Cantonese)', native: '中文 (粤语)' },
+      { code: 'zho', name: 'Chinese', native: '中文' }
+    ]
+  } finally {
+    languagesLoading.value = false
+  }
+}
+
+// Auto-compute course code from language selections
+const computedCourseCode = computed(() => {
+  if (!formData.value.targetLanguage || !formData.value.sourceLanguage) {
+    return ''
+  }
+  return `${formData.value.targetLanguage}_for_${formData.value.sourceLanguage}`
+})
+
+// Auto-compute display name from language selections
+const computedDisplayName = computed(() => {
+  if (!formData.value.targetLanguage || !formData.value.sourceLanguage) {
+    return ''
+  }
+  const targetLang = languages.value.find(l => l.code === formData.value.targetLanguage)
+  const sourceLang = languages.value.find(l => l.code === formData.value.sourceLanguage)
+
+  const targetName = targetLang?.name || formData.value.targetLanguage.toUpperCase()
+  const sourceName = sourceLang?.name || formData.value.sourceLanguage.toUpperCase()
+
+  return `${targetName} for ${sourceName} Speakers`
+})
+
+// Called when language selection changes
+function onLanguageChange() {
+  validateSourceLanguage()
+  validateTargetLanguage()
+}
 
 // Validation Functions
-const validateCourseCode = () => {
-  const code = formData.value.courseCode.trim()
-
-  if (!code) {
-    errors.value.courseCode = 'Course code is required'
-    return false
-  }
-
-  // Must be lowercase with underscores only
-  const pattern = /^[a-z_]+$/
-  if (!pattern.test(code)) {
-    errors.value.courseCode = 'Course code must be lowercase with underscores only'
-    return false
-  }
-
-  errors.value.courseCode = ''
-  return true
-}
-
-const validateDisplayName = () => {
-  const name = formData.value.displayName.trim()
-
-  if (!name) {
-    errors.value.displayName = 'Display name is required'
-    return false
-  }
-
-  errors.value.displayName = ''
-  return true
-}
-
 const validateSourceLanguage = () => {
   if (!formData.value.sourceLanguage) {
-    errors.value.sourceLanguage = 'Source language is required'
+    errors.value.sourceLanguage = 'Known language is required'
     return false
   }
 
@@ -415,7 +436,7 @@ const validateTargetLanguage = () => {
   }
 
   if (formData.value.targetLanguage === formData.value.sourceLanguage) {
-    errors.value.targetLanguage = 'Target language must be different from source language'
+    errors.value.targetLanguage = 'Target language must be different from known language'
     return false
   }
 
@@ -427,8 +448,6 @@ const validateTargetLanguage = () => {
 const validateStep = (step) => {
   if (step === 0) {
     return (
-      validateCourseCode() &&
-      validateDisplayName() &&
       validateSourceLanguage() &&
       validateTargetLanguage()
     )
@@ -439,6 +458,11 @@ const validateStep = (step) => {
 
 // Can Proceed to Next Step
 const canProceed = computed(() => {
+  if (currentStep.value === 0) {
+    return formData.value.sourceLanguage &&
+           formData.value.targetLanguage &&
+           formData.value.sourceLanguage !== formData.value.targetLanguage
+  }
   return validateStep(currentStep.value)
 })
 
@@ -457,7 +481,7 @@ const previousStep = () => {
 
 // Helper Functions
 const getLanguageName = (code) => {
-  const lang = languages.find(l => l.code === code)
+  const lang = languages.value.find(l => l.code === code)
   return lang ? `${lang.name} (${lang.code})` : code
 }
 
@@ -466,11 +490,19 @@ const createCourse = async () => {
   creating.value = true
 
   try {
-    // Log course data (in production, this would call an API)
-    console.log('Creating course with data:', formData.value)
+    const courseData = {
+      courseCode: computedCourseCode.value,
+      displayName: computedDisplayName.value,
+      sourceLanguage: formData.value.sourceLanguage,
+      targetLanguage: formData.value.targetLanguage,
+      numberOfSeeds: formData.value.numberOfSeeds,
+      version: formData.value.version
+    }
 
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    console.log('Creating course with data:', courseData)
+
+    // Call API to create course
+    await apiClient.post('/api/courses/create', courseData)
 
     // Success - redirect to courses page
     router.push('/courses')
