@@ -187,7 +187,11 @@ async function handleCourseChange() {
   if (!selectedCourse.value) return
 
   await store.loadCourse(selectedCourse.value)
-  connectWebSocket()
+
+  // Only connect WebSocket if course loaded successfully
+  if (!store.error) {
+    connectWebSocket()
+  }
 }
 
 function retryLoad() {
