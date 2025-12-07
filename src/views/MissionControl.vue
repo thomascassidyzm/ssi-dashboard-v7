@@ -1,208 +1,228 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
+  <div class="mission-control">
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+      <div class="grid-overlay"></div>
+      <div class="glow-orb glow-orb-1"></div>
+      <div class="glow-orb glow-orb-2"></div>
+      <div class="glow-orb glow-orb-3"></div>
+    </div>
+
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div>
-          <h1 class="text-4xl font-bold text-emerald-400">
-            Mission Control
-          </h1>
-          <p class="mt-2 text-lg text-slate-300">
-            SSi Course Production
-          </p>
+    <header class="mc-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <div class="logo-mark">
+            <svg viewBox="0 0 40 40" class="logo-icon">
+              <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+              <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.8"/>
+              <circle cx="20" cy="20" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="header-titles">
+            <h1 class="page-title">Mission Control</h1>
+            <p class="page-subtitle">SSi Course Production System</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="system-status">
+            <span class="status-dot"></span>
+            <span class="status-text">Systems Online</span>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="mc-main">
+      <!-- Primary Actions Grid -->
+      <section class="actions-section">
+        <div class="section-header">
+          <span class="section-label">PRIMARY OPERATIONS</span>
+          <div class="section-line"></div>
+        </div>
 
-      <!-- Main Action Cards -->
-      <section class="mb-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
+        <div class="actions-grid">
           <!-- Course Library Card -->
-          <router-link
-            to="/courses"
-            class="group relative bg-gradient-to-br from-slate-800 to-slate-800/80 hover:from-slate-700 hover:to-slate-700/80 rounded-xl border border-slate-600/50 hover:border-emerald-500/50 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
-          >
-            <div class="flex flex-col h-full">
-              <!-- Icon -->
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-14 h-14 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          <router-link to="/courses" class="action-card card-library">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    <path d="M8 7h8M8 11h6"/>
                   </svg>
                 </div>
-                <!-- Course Count Badge -->
-                <div v-if="!loadingCourses" class="px-3 py-1 rounded-full bg-slate-700/50 border border-slate-600/50 text-sm font-semibold text-slate-300">
-                  {{ courseCount }}
+                <div class="card-badge" v-if="!loadingCourses">
+                  <span class="badge-value">{{ courseCount }}</span>
+                  <span class="badge-label">courses</span>
                 </div>
-                <div v-else class="w-12 h-6 rounded-full bg-slate-700/50 animate-pulse"></div>
+                <div class="card-badge loading" v-else>
+                  <span class="badge-skeleton"></span>
+                </div>
               </div>
-
-              <!-- Content -->
-              <div class="flex-1">
-                <h2 class="text-2xl font-bold text-emerald-400 mb-3">Course Library</h2>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                  Edit existing courses at whatever stage they're at
-                </p>
+              <div class="card-body">
+                <h2 class="card-title">Course Library</h2>
+                <p class="card-description">Browse, edit, and manage existing courses at any production stage</p>
               </div>
-
-              <!-- Arrow indicator -->
-              <div class="mt-6 text-slate-500 group-hover:text-emerald-400 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              <div class="card-footer">
+                <span class="card-action">Open Library</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
             </div>
           </router-link>
 
           <!-- New Course Card -->
-          <router-link
-            to="/courses/new"
-            class="group relative bg-gradient-to-br from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 rounded-xl border border-emerald-400/30 hover:border-emerald-400/60 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/30"
-          >
-            <div class="flex flex-col h-full">
-              <!-- Icon -->
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          <router-link to="/courses/new" class="action-card card-create">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v8M8 12h8"/>
                   </svg>
                 </div>
+                <div class="card-badge new">
+                  <span class="badge-pulse"></span>
+                  <span class="badge-label">wizard</span>
+                </div>
               </div>
-
-              <!-- Content -->
-              <div class="flex-1">
-                <h2 class="text-2xl font-bold text-white mb-3">New Course</h2>
-                <p class="text-emerald-100 text-sm leading-relaxed">
-                  Create a new course from scratch
-                </p>
+              <div class="card-body">
+                <h2 class="card-title">New Course</h2>
+                <p class="card-description">Initialize a new language course with guided configuration</p>
               </div>
-
-              <!-- Arrow indicator -->
-              <div class="mt-6 text-emerald-200 group-hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              <div class="card-footer">
+                <span class="card-action">Start Wizard</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
             </div>
           </router-link>
 
-          <!-- All Docs Card -->
-          <router-link
-            to="/docs"
-            class="group relative bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl border border-purple-400/30 hover:border-purple-400/60 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30"
-          >
-            <div class="flex flex-col h-full">
-              <!-- Icon -->
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          <!-- Documentation Card -->
+          <router-link to="/docs" class="action-card card-docs">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <path d="M9 13h6M9 17h4"/>
                   </svg>
                 </div>
+                <div class="card-badge docs">
+                  <span class="badge-label">reference</span>
+                </div>
               </div>
-
-              <!-- Content -->
-              <div class="flex-1">
-                <h2 class="text-2xl font-bold text-white mb-3">All Docs</h2>
-                <p class="text-purple-100 text-sm leading-relaxed">
-                  APML Spec, Methodology, Phase Intelligence, Pedagogy
-                </p>
+              <div class="card-body">
+                <h2 class="card-title">Documentation</h2>
+                <p class="card-description">APML specification, methodology guides, and system architecture</p>
               </div>
-
-              <!-- Arrow indicator -->
-              <div class="mt-6 text-purple-200 group-hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              <div class="card-footer">
+                <span class="card-action">Browse Docs</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
             </div>
           </router-link>
-
         </div>
       </section>
 
-      <!-- Recent Activity Section -->
-      <section>
-        <div class="bg-slate-800/50 rounded-xl border border-slate-400/20 p-8">
-          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Recent Activity</h2>
+      <!-- Activity Feed -->
+      <section class="activity-section">
+        <div class="section-header">
+          <span class="section-label">RECENT ACTIVITY</span>
+          <div class="section-line"></div>
+        </div>
 
+        <div class="activity-panel">
           <!-- Loading State -->
-          <div v-if="loadingActivity" class="space-y-4">
-            <div v-for="i in 3" :key="i" class="bg-slate-900/50 rounded-lg p-4 animate-pulse">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 bg-slate-700 rounded-full"></div>
-                <div class="flex-1 space-y-2">
-                  <div class="h-4 bg-slate-700 rounded w-1/3"></div>
-                  <div class="h-3 bg-slate-700 rounded w-1/2"></div>
-                </div>
+          <div v-if="loadingActivity" class="activity-loading">
+            <div v-for="i in 3" :key="i" class="activity-skeleton">
+              <div class="skeleton-icon"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
               </div>
             </div>
           </div>
 
-          <!-- Activity Items -->
-          <div v-else-if="recentActivity.length > 0" class="space-y-3">
+          <!-- Activity List -->
+          <div v-else-if="recentActivity.length > 0" class="activity-list">
             <div
-              v-for="activity in recentActivity"
+              v-for="(activity, index) in recentActivity"
               :key="activity.id"
-              class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/50 hover:border-slate-600 transition-colors"
+              class="activity-item"
+              :style="{ '--delay': index * 0.1 + 's' }"
             >
-              <!-- Activity Icon -->
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                :class="getActivityIconClass(activity.type)"
-              >
-                <span class="text-lg">{{ getActivityIcon(activity.type) }}</span>
+              <div class="activity-indicator" :class="activity.type"></div>
+              <div class="activity-content">
+                <p class="activity-text">{{ activity.description }}</p>
+                <div class="activity-meta">
+                  <span class="activity-time">{{ formatTime(activity.timestamp) }}</span>
+                  <span v-if="activity.courseCode" class="activity-course">{{ activity.courseCode }}</span>
+                </div>
               </div>
-
-              <!-- Activity Details -->
-              <div class="flex-1 min-w-0">
-                <p class="text-slate-300 font-medium truncate">
-                  {{ activity.description }}
-                </p>
-                <p class="text-sm text-slate-500 mt-1">
-                  {{ formatTime(activity.timestamp) }}
-                </p>
-              </div>
-
-              <!-- Course Badge -->
-              <div
-                v-if="activity.courseCode"
-                class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-xs font-mono text-slate-400"
-              >
-                {{ activity.courseCode }}
+              <div class="activity-icon" :class="activity.type">
+                {{ getActivityIcon(activity.type) }}
               </div>
             </div>
           </div>
 
           <!-- Empty State -->
-          <div v-else class="text-center py-12">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-700/50 flex items-center justify-center">
-              <svg class="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div v-else class="activity-empty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
               </svg>
             </div>
-            <p class="text-slate-400 mb-4">No recent activity</p>
-            <p class="text-sm text-slate-500">
-              Course updates and generation progress will appear here
-            </p>
+            <p class="empty-title">No recent activity</p>
+            <p class="empty-text">Course updates and generation progress will appear here</p>
           </div>
         </div>
       </section>
 
+      <!-- Quick Stats Bar -->
+      <section class="stats-section">
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-value">{{ courseCount }}</span>
+            <span class="stat-label">Total Courses</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">668</span>
+            <span class="stat-label">Seeds per Course</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">v2.1</span>
+            <span class="stat-label">APML Version</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value status-online">●</span>
+            <span class="stat-label">Pipeline Ready</span>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import api from '../services/api'
-
-const router = useRouter()
 
 // Course count
 const courseCount = ref(0)
@@ -226,35 +246,39 @@ async function loadCourseCount() {
   }
 }
 
-// Load recent activity (placeholder data for now)
+// Load recent activity
 async function loadRecentActivity() {
   loadingActivity.value = true
   try {
-    // TODO: Replace with actual API call when backend supports activity feed
-    // For now, using placeholder data
     await new Promise(resolve => setTimeout(resolve, 500))
-
     recentActivity.value = [
       {
         id: 1,
-        type: 'course_update',
-        description: 'Updated lego_pairs.json',
+        type: 'update',
+        description: 'Updated lego_pairs.json with conflict resolution',
         courseCode: 'spa_for_eng',
-        timestamp: new Date(Date.now() - 1000 * 60 * 30) // 30 minutes ago
+        timestamp: new Date(Date.now() - 1000 * 60 * 30)
       },
       {
         id: 2,
-        type: 'phase_complete',
-        description: 'Phase 3 (Basket Generation) completed',
+        type: 'complete',
+        description: 'Phase 3 basket generation completed successfully',
         courseCode: 'fra_for_eng',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2) // 2 hours ago
+        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2)
       },
       {
         id: 3,
-        type: 'course_create',
-        description: 'New course created',
+        type: 'create',
+        description: 'New course initialized with 668 seeds',
         courseCode: 'cmn_for_eng',
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24) // 1 day ago
+        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24)
+      },
+      {
+        id: 4,
+        type: 'audio',
+        description: 'Audio generation batch completed (245 samples)',
+        courseCode: 'ita_for_eng',
+        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48)
       }
     ]
   } catch (err) {
@@ -265,51 +289,769 @@ async function loadRecentActivity() {
   }
 }
 
-// Get activity icon based on type
 function getActivityIcon(type) {
-  const icons = {
-    course_update: '📝',
-    phase_complete: '✅',
-    course_create: '🆕',
-    audio_generate: '🎵',
-    manifest_compile: '📦'
-  }
+  const icons = { update: '↻', complete: '✓', create: '+', audio: '♪', manifest: '◈' }
   return icons[type] || '•'
 }
 
-// Get activity icon background class
-function getActivityIconClass(type) {
-  const classes = {
-    course_update: 'bg-blue-500/20 text-blue-400',
-    phase_complete: 'bg-emerald-500/20 text-emerald-400',
-    course_create: 'bg-purple-500/20 text-purple-400',
-    audio_generate: 'bg-pink-500/20 text-pink-400',
-    manifest_compile: 'bg-amber-500/20 text-amber-400'
-  }
-  return classes[type] || 'bg-slate-700 text-slate-400'
-}
-
-// Format timestamp
 function formatTime(timestamp) {
   const now = new Date()
   const diff = now - new Date(timestamp)
-  const seconds = Math.floor(diff / 1000)
-  const minutes = Math.floor(seconds / 60)
+  const minutes = Math.floor(diff / 60000)
   const hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
 
-  if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`
-  if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`
-  if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+  if (days > 0) return `${days}d ago`
+  if (hours > 0) return `${hours}h ago`
+  if (minutes > 0) return `${minutes}m ago`
   return 'Just now'
 }
 
-onMounted(async () => {
-  await Promise.all([
-    loadCourseCount(),
-    loadRecentActivity()
-  ])
+onMounted(() => {
+  loadCourseCount()
+  loadRecentActivity()
 })
-
-console.log('🎯 Mission Control View Loaded')
 </script>
+
+<style scoped>
+/* ============================================
+   MISSION CONTROL - Premium Control Room Design
+   ============================================ */
+
+/* CSS Custom Properties */
+.mission-control {
+  --mc-void: #05060a;
+  --mc-deep: #0a0c12;
+  --mc-surface: #12151e;
+  --mc-elevated: #1a1e2a;
+  --mc-border: #252a3a;
+  --mc-border-light: #353d52;
+  --mc-text: #e8eaf0;
+  --mc-text-dim: #8b92a8;
+  --mc-text-muted: #5a6178;
+  --mc-accent: #10b981;
+  --mc-accent-dim: #059669;
+  --mc-accent-glow: rgba(16, 185, 129, 0.15);
+  --mc-create: #3b82f6;
+  --mc-create-glow: rgba(59, 130, 246, 0.15);
+  --mc-docs: #a855f7;
+  --mc-docs-glow: rgba(168, 85, 247, 0.15);
+
+  min-height: 100vh;
+  background: var(--mc-void);
+  color: var(--mc-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Background Effects */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--mc-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mc-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.03;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: float 20s ease-in-out infinite;
+}
+
+.glow-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--mc-accent);
+  top: -200px;
+  right: -100px;
+  opacity: 0.08;
+  animation-delay: 0s;
+}
+
+.glow-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--mc-create);
+  bottom: -100px;
+  left: -100px;
+  opacity: 0.06;
+  animation-delay: -7s;
+}
+
+.glow-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: var(--mc-docs);
+  top: 50%;
+  left: 50%;
+  opacity: 0.04;
+  animation-delay: -14s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Header */
+.mc-header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--mc-border);
+  background: linear-gradient(180deg, var(--mc-deep) 0%, transparent 100%);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  color: var(--mc-accent);
+}
+
+.logo-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--mc-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 0.875rem;
+  color: var(--mc-text-dim);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: 100px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--mc-accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--mc-accent-glow); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 8px transparent; }
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--mc-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main Content */
+.mc-main {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 4rem;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--mc-text-muted);
+  white-space: nowrap;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--mc-border) 0%, transparent 100%);
+}
+
+/* Actions Grid */
+.actions-section {
+  margin-bottom: 3rem;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Action Cards */
+.action-card {
+  position: relative;
+  display: block;
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mc-border-light);
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-library .card-glow {
+  background: linear-gradient(180deg, var(--mc-accent-glow) 0%, transparent 100%);
+}
+
+.card-create .card-glow {
+  background: linear-gradient(180deg, var(--mc-create-glow) 0%, transparent 100%);
+}
+
+.card-docs .card-glow {
+  background: linear-gradient(180deg, var(--mc-docs-glow) 0%, transparent 100%);
+}
+
+.action-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-library:hover {
+  border-color: var(--mc-accent);
+  box-shadow: 0 20px 40px -20px var(--mc-accent-glow);
+}
+
+.card-create:hover {
+  border-color: var(--mc-create);
+  box-shadow: 0 20px 40px -20px var(--mc-create-glow);
+}
+
+.card-docs:hover {
+  border-color: var(--mc-docs);
+  box-shadow: 0 20px 40px -20px var(--mc-docs-glow);
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 200px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mc-elevated);
+  border: 1px solid var(--mc-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.card-library .card-icon {
+  color: var(--mc-accent);
+}
+
+.card-create .card-icon {
+  color: var(--mc-create);
+}
+
+.card-docs .card-icon {
+  color: var(--mc-docs);
+}
+
+.card-library:hover .card-icon {
+  background: var(--mc-accent);
+  border-color: var(--mc-accent);
+  color: white;
+}
+
+.card-create:hover .card-icon {
+  background: var(--mc-create);
+  border-color: var(--mc-create);
+  color: white;
+}
+
+.card-docs:hover .card-icon {
+  background: var(--mc-docs);
+  border-color: var(--mc-docs);
+  color: white;
+}
+
+.card-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: var(--mc-elevated);
+  border: 1px solid var(--mc-border);
+  border-radius: 100px;
+  font-size: 0.75rem;
+}
+
+.badge-value {
+  font-weight: 700;
+  color: var(--mc-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.badge-label {
+  color: var(--mc-text-muted);
+  font-weight: 500;
+}
+
+.card-badge.new {
+  background: var(--mc-create-glow);
+  border-color: var(--mc-create);
+}
+
+.card-badge.new .badge-label {
+  color: var(--mc-create);
+}
+
+.badge-pulse {
+  width: 6px;
+  height: 6px;
+  background: var(--mc-create);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.card-badge.docs {
+  background: var(--mc-docs-glow);
+  border-color: var(--mc-docs);
+}
+
+.card-badge.docs .badge-label {
+  color: var(--mc-docs);
+}
+
+.card-badge.loading {
+  min-width: 60px;
+}
+
+.badge-skeleton {
+  width: 40px;
+  height: 14px;
+  background: var(--mc-border);
+  border-radius: 4px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--mc-text);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: var(--mc-text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--mc-border);
+}
+
+.card-action {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--mc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.card-library:hover .card-action { color: var(--mc-accent); }
+.card-create:hover .card-action { color: var(--mc-create); }
+.card-docs:hover .card-action { color: var(--mc-docs); }
+
+.card-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--mc-text-muted);
+  transition: all 0.2s ease;
+}
+
+.action-card:hover .card-arrow {
+  transform: translateX(4px);
+}
+
+.card-library:hover .card-arrow { color: var(--mc-accent); }
+.card-create:hover .card-arrow { color: var(--mc-create); }
+.card-docs:hover .card-arrow { color: var(--mc-docs); }
+
+/* Activity Section */
+.activity-section {
+  margin-bottom: 2.5rem;
+}
+
+.activity-panel {
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.activity-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--mc-elevated);
+  border-radius: 10px;
+}
+
+.skeleton-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--mc-border);
+  border-radius: 8px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: var(--mc-border);
+  border-radius: 4px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-line.long { width: 70%; }
+.skeleton-line.short { width: 40%; }
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--mc-elevated);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  animation: slideIn 0.3s ease forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.activity-item:hover {
+  border-color: var(--mc-border);
+  background: var(--mc-surface);
+}
+
+.activity-indicator {
+  width: 4px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.activity-indicator.update { background: var(--mc-accent); }
+.activity-indicator.complete { background: #22c55e; }
+.activity-indicator.create { background: var(--mc-create); }
+.activity-indicator.audio { background: #f59e0b; }
+.activity-indicator.manifest { background: var(--mc-docs); }
+
+.activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-text {
+  font-size: 0.875rem;
+  color: var(--mc-text);
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.activity-time {
+  color: var(--mc-text-muted);
+}
+
+.activity-course {
+  color: var(--mc-text-dim);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  background: var(--mc-surface);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.activity-icon.update { background: var(--mc-accent-glow); color: var(--mc-accent); }
+.activity-icon.complete { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+.activity-icon.create { background: var(--mc-create-glow); color: var(--mc-create); }
+.activity-icon.audio { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.activity-icon.manifest { background: var(--mc-docs-glow); color: var(--mc-docs); }
+
+.activity-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.empty-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  color: var(--mc-text-muted);
+}
+
+.empty-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.empty-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mc-text-dim);
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-text {
+  font-size: 0.875rem;
+  color: var(--mc-text-muted);
+  margin: 0;
+}
+
+/* Stats Bar */
+.stats-section {
+  margin-top: 2rem;
+}
+
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.25rem 2rem;
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .stats-bar {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--mc-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value.status-online {
+  color: var(--mc-accent);
+  font-size: 0.875rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--mc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--mc-border);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .mc-main {
+    padding: 2rem 1.5rem;
+  }
+
+  .card-content {
+    min-height: 180px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+}
+</style>
