@@ -2003,6 +2003,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
  * GET /api/phase-intelligence/:phase
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
+ *
+ * APML v11.0: Prompts are co-located with services in services/phases/*/PROMPT.md
  */
 app.get('/api/phase-intelligence/:phase', async (req, res) => {
   try {
@@ -2011,28 +2013,30 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
     // Normalize phase number (handle "phase1" or "1")
     phase = phase.replace(/^phase/, '');
 
-    // Map phase numbers to intelligence files (APML v9.0 terminology)
-    const phaseFiles = {
-      '1': 'phase_1_seed_pairs.md',
-      '3': 'phase_3_lego_baskets.md',  // Phase 3: Basket Generation
-      '5': 'phase_3_lego_baskets.md',  // Legacy: Phase 5 → Phase 3
-      '5.5': 'phase_5.5_grammar_review.md',
-      '6': 'phase_6_introductions.md',
-      '7': 'manifest_compilation.md',  // Manifest: Course Compilation
-      '8': 'audio_generation.md'  // Audio: TTS Generation
+    // Map phase numbers to PROMPT.md files co-located with services (APML v11.0)
+    // SSoT: Each phase's prompt lives alongside its service code
+    const phasePaths = {
+      '1': 'phase1-translation/PROMPT.md',           // Phase 1: Translation + LEGO Extraction
+      '2': 'phase1-lego-extraction/PROMPT.md',       // Phase 2: Conflict Resolution
+      '3': 'phase3-basket-generation/PROMPT.md',     // Phase 3: Basket Generation
+      '5': 'phase3-basket-generation/PROMPT.md',     // Legacy: Phase 5 → Phase 3
+      '8': 'phase8-audio-generation/PROMPT.md',      // Phase 8: Audio Generation
+      '9': 'phase9-manifest-compilation/PROMPT.md',  // Phase 9: Manifest Compilation
+      'manifest': 'phase9-manifest-compilation/PROMPT.md',  // Alias
+      'audio': 'phase8-audio-generation/PROMPT.md'   // Alias
     };
 
-    const filename = phaseFiles[phase];
-    if (!filename) {
+    const relativePath = phasePaths[phase];
+    if (!relativePath) {
       return res.status(404).json({ error: `No intelligence found for phase ${phase}` });
     }
 
-    const intelligencePath = path.join(__dirname, '../../public/docs/phase_intelligence', filename);
+    const intelligencePath = path.join(__dirname, '../phases', relativePath);
     const content = await fs.readFile(intelligencePath, 'utf8');
 
     res.json({
       phase,
-      filename,
+      path: relativePath,
       content,
       format: 'markdown'
     });

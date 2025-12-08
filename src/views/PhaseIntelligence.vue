@@ -106,7 +106,7 @@
                 </p>
               </div>
               <div class="text-sm text-slate-400">
-                <span class="font-mono">public/docs/phase_intelligence/phase_{{ selectedPhase }}.md</span>
+                <span class="font-mono">{{ currentPhase.path }}</span>
               </div>
             </div>
           </div>
@@ -118,13 +118,16 @@
 
       <!-- Workflow Info -->
       <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
-        <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow</h3>
+        <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow (APML v11.0)</h3>
         <ol class="text-slate-400 space-y-2 text-sm">
-          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">public/docs/phase_intelligence/phase_X_*.md</code></li>
+          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">services/phases/{phase}/PROMPT.md</code></li>
           <li>2. Rebuild app: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">npm run build</code></li>
           <li>3. Deploy: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">git push</code> (auto-deploys to Vercel)</li>
-          <li>4. Done: Intelligence files are embedded in app and accessible at /docs URLs</li>
+          <li>4. Done: Prompts are co-located with services and served via API</li>
         </ol>
+        <p class="text-slate-500 text-xs mt-4">
+          SSoT: Each phase's PROMPT.md lives alongside its service code in services/phases/
+        </p>
       </div>
 
     </main>
@@ -134,27 +137,31 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// Import phase intelligence files directly
-import phase1Raw from '../../public/docs/phase_intelligence/phase_1_seed_pairs.md?raw'
-import phase2Raw from '../../public/docs/phase_intelligence/phase_2_conflict_resolution.md?raw'
-import phase3Raw from '../../public/docs/phase_intelligence/phase_3_lego_baskets.md?raw'
-import manifestRaw from '../../public/docs/phase_intelligence/manifest_compilation.md?raw'
-import audioRaw from '../../public/docs/phase_intelligence/audio_generation.md?raw'
+// Import phase intelligence files from co-located service directories (APML v11.0)
+// SSoT: Prompts live alongside their services
+import phase1Raw from '../../services/phases/phase1-translation/PROMPT.md?raw'
+import phase2Raw from '../../services/phases/phase1-lego-extraction/PROMPT.md?raw'
+import phase3Raw from '../../services/phases/phase3-basket-generation/PROMPT.md?raw'
+import phase8Raw from '../../services/phases/phase8-audio-generation/PROMPT.md?raw'
+import phase9Raw from '../../services/phases/phase9-manifest-compilation/PROMPT.md?raw'
 
 const phaseContent = {
-  '1': phase1Raw || `# Phase 1: Translation + LEGO Extraction\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 1 translates canonical seeds and extracts LEGOs in a single pass.\n\n## Output\n\n- draft_lego_pairs.json (may contain conflicts)\n\n## Key Concepts\n\n- Seed pairs embedded in lego_pairs.json (no separate seed_pairs.json)\n- A-type LEGOs: Atomic, single word either side\n- M-type LEGOs: Molecular, 2+ words both sides, teaches pattern\n\nSee APML v11.0 specification for full details.`,
-  '2': phase2Raw || `# Phase 2: Conflict Resolution\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 2 resolves KNOWN->TARGET conflicts through upchunking.\n\n## Input\n\n- draft_lego_pairs.json (from Phase 1)\n\n## Output\n\n- lego_pairs.json (SINGLE SOURCE OF TRUTH - conflict-free)\n- upchunk_resolutions.json (record of conflict resolutions)\n\n## Key Concepts\n\n- Upchunking: Creating M-types to resolve KNOWN->TARGET conflicts\n- All conflicts must be resolved before Phase 3\n\nSee APML v11.0 specification for full details.`,
-  '3': phase3Raw || `# Phase 3: Basket Generation\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nPhase 3 generates practice baskets from conflict-free LEGOs.\n\n## Input\n\n- lego_pairs.json (from Phase 2)\n\n## Output\n\n- lego_baskets.json\n\n## Key Properties\n\n- One basket per new LEGO\n- 10 phrases per basket (progressive complexity)\n- Only uses previously-learned LEGOs\n\nSee APML v11.0 specification for full details.`,
-  'manifest': manifestRaw || `# Manifest: Course Compilation\n\n**Version**: 11.0.0\n**Status**: Script\n\n## Overview\n\nAudio-first workflow: Generate audio from lego_baskets BEFORE manifest compilation.\n\n## Input\n\n- lego_baskets.json (audio generation)\n- Supabase audio_samples table (manifest compilation)\n\n## Output\n\n- course_manifest.json (compiled LAST after all audio exists)\n\n## Key v11.0 Changes\n\n- Audio-first: TTS generation happens BEFORE manifest\n- Supabase: Audio metadata stored in database (not file-based MAR)\n- Deterministic UUID: hash(voice_id|text|lang|role|cadence)\n\nSee APML v11.0 specification for full details.`,
-  'audio': audioRaw || `# Audio: TTS Generation\n\n**Version**: 11.0.0\n**Status**: Active\n\n## Overview\n\nGenerates audio files from lego_baskets using Supabase-backed pipeline.\n\n## Key v11.0 Changes\n\n- Audio-first: Generate BEFORE manifest compilation\n- Reads directly from lego_baskets.json (not manifest)\n- Stores in Supabase audio_samples table + S3\n- Deterministic UUID for cross-course deduplication\n\n## Input\n\n- lego_baskets.json\n\n## Output\n\n- S3: mastered/{uuid}.mp3 files\n- Supabase: audio_samples table records\n\n## Notes\n\n- Port 3465 (Phase 8 Audio Generator)\n- Supabase replaces file-based MAR\n\nSee APML v11.0 specification for full details.`
+  '1': phase1Raw,
+  '2': phase2Raw,
+  '3': phase3Raw,
+  '8': phase8Raw,
+  '9': phase9Raw,
+  // Aliases for legacy/friendly names
+  'audio': phase8Raw,
+  'manifest': phase9Raw
 }
 
 const phases = [
-  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '11.0.0', locked: true },
-  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true },
-  { id: '3', name: 'Basket Generation', status: 'active', version: '11.0.0', locked: true },
-  { id: 'manifest', name: 'Course Compilation', status: 'active', version: '11.0.0', locked: true },
-  { id: 'audio', name: 'TTS Generation', status: 'active', version: '11.0.0', locked: true }
+  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '4.2', locked: true, path: 'services/phases/phase1-translation/PROMPT.md' },
+  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase1-lego-extraction/PROMPT.md' },
+  { id: '3', name: 'Basket Generation', status: 'active', version: '7.0', locked: true, path: 'services/phases/phase3-basket-generation/PROMPT.md' },
+  { id: '8', name: 'Audio Generation', status: 'active', version: '1.1', locked: true, path: 'services/phases/phase8-audio-generation/PROMPT.md' },
+  { id: '9', name: 'Manifest Compilation', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase9-manifest-compilation/PROMPT.md' }
 ]
 
 const selectedPhase = ref('1')

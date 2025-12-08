@@ -1,13 +1,18 @@
 # Phase 2: Conflict Resolution (Upchunking)
 
-**Version**: 9.0.0
+**Port**: 3458
+**Version**: 11.0.0
 **Status**: Active
 **Input**: draft_lego_pairs.json
 **Output**: lego_pairs.json (SINGLE SOURCE OF TRUTH)
 
+---
+
 ## Overview
 
 Phase 2 resolves KNOWN→TARGET conflicts identified in draft_lego_pairs.json through **upchunking** - creating M-type LEGOs that teach the conflicting patterns explicitly.
+
+---
 
 ## Key Concepts
 
@@ -35,19 +40,23 @@ For each conflict in draft_lego_pairs.json:
 
 ### Output Structure
 
-**lego_pairs.json** (APML v9.0 format):
+**lego_pairs.json** (APML v11.0 format):
 ```json
 {
-  "version": "9.0",
+  "version": "11.0",
   "seeds": [
-    [
-      "S0001",
-      ["I want", "Dw i"],
-      [
-        ["S0001L01", "B", "I", "Dw i"],
-        ["S0001L02", "B", "want", "eisiau"]
+    {
+      "seed_id": "S0001",
+      "seed_pair": { "known": "I want to speak...", "target": "Quiero hablar..." },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": { "known": "I want", "target": "quiero" }
+        }
       ]
-    ]
+    }
   ]
 }
 ```
@@ -56,6 +65,8 @@ For each conflict in draft_lego_pairs.json:
 - Embeds seed_pairs (no separate seed_pairs.json file)
 - All conflicts resolved
 - Ready for Phase 3 (basket generation)
+
+---
 
 ## Agent Instructions
 
@@ -92,7 +103,7 @@ For each conflict in draft_lego_pairs.json:
 
 ---
 
-## 🔄 LEGO Reuse Tracking (CRITICAL)
+## LEGO Reuse Tracking (CRITICAL)
 
 Phase 2 is responsible for marking LEGO reuse across the entire course. Every seed's breakdown must be **complete** (all LEGOs needed to reconstruct the sentence), with proper `new` flags.
 
@@ -185,11 +196,13 @@ With proper reuse tracking:
 - ✅ New LEGOs highlighted, reused LEGOs shown dimmed
 - ✅ Clear visualization of how vocabulary builds over time
 
+---
+
 ## Validation Gates
 
 ✅ **Pre-Phase 2**:
 - draft_lego_pairs.json exists
-- Valid v9.0 format
+- Valid v11.0 format
 - All seeds have LEGOs
 
 ✅ **Post-Phase 2**:
@@ -200,16 +213,24 @@ With proper reuse tracking:
 - **Reuse tracking applied** (new: true/false flags set correctly)
 - Introductions auto-scripted
 
+---
+
 ## Handoff to Phase 3
 
 Phase 3 (Basket Generation) reads lego_pairs.json and generates practice baskets. No manual intervention needed - the pipeline is fully automated.
 
 ---
 
-**Last Updated**: Dec 3, 2025
-**Related**: See `public/docs/APML_v9.0_PIPELINE_ARCHITECTURE.md` for full specification
-
-### Scripts
+## Scripts
 
 - `scripts/phase2_lego_reuse_tracking.cjs` - Standalone script for LEGO reuse tracking
 - `services/phases/phase1-lego-extraction/server.cjs` - Phase 2 server (port 3458) with integrated reuse tracking
+
+---
+
+## Version History
+
+- v9.0.0: Initial conflict resolution with upchunking
+- v11.0.0: Integrated with APML v11.0 pipeline, updated field names (seed_pair instead of seed)
+
+**Last Updated**: Dec 8, 2025
