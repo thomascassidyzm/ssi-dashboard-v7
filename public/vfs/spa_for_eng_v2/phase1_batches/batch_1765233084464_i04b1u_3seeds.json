@@ -1,0 +1,190 @@
+[
+  {
+    "seed_id": "S0271",
+    "seed_pair": {
+      "known": "Would you like to come with us next month?",
+      "target": "¿Te gustaría venir con nosotros el próximo mes?"
+    },
+    "legos": [
+      {
+        "id": "S0271L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "would you like",
+          "target": "te gustaría"
+        },
+        "components": [
+          {
+            "known": "you",
+            "target": "te"
+          },
+          {
+            "known": "would like",
+            "target": "gustaría"
+          }
+        ]
+      },
+      {
+        "id": "S0271L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to come",
+          "target": "venir"
+        }
+      },
+      {
+        "id": "S0271L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "with us",
+          "target": "con nosotros"
+        },
+        "components": [
+          {
+            "known": "with",
+            "target": "con"
+          },
+          {
+            "known": "us",
+            "target": "nosotros"
+          }
+        ]
+      },
+      {
+        "id": "S0271L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "next month",
+          "target": "el próximo mes"
+        },
+        "components": [
+          {
+            "known": "next",
+            "target": "próximo"
+          },
+          {
+            "known": "month",
+            "target": "mes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0272",
+    "seed_pair": {
+      "known": "Yes that sounds like a great idea.",
+      "target": "Sí, eso parece una gran idea."
+    },
+    "legos": [
+      {
+        "id": "S0272L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0272L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "eso"
+        }
+      },
+      {
+        "id": "S0272L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "sounds like",
+          "target": "parece"
+        }
+      },
+      {
+        "id": "S0272L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a great idea",
+          "target": "una gran idea"
+        },
+        "components": [
+          {
+            "known": "a",
+            "target": "una"
+          },
+          {
+            "known": "great",
+            "target": "gran"
+          },
+          {
+            "known": "idea",
+            "target": "idea"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0273",
+    "seed_pair": {
+      "known": "No unfortunately I've got too much work.",
+      "target": "No, desafortunadamente tengo demasiado trabajo."
+    },
+    "legos": [
+      {
+        "id": "S0273L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "no",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0273L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "unfortunately",
+          "target": "desafortunadamente"
+        }
+      },
+      {
+        "id": "S0273L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I've got",
+          "target": "tengo"
+        }
+      },
+      {
+        "id": "S0273L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "too much",
+          "target": "demasiado"
+        }
+      },
+      {
+        "id": "S0273L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "work",
+          "target": "trabajo"
+        }
+      }
+    ]
+  }
+]

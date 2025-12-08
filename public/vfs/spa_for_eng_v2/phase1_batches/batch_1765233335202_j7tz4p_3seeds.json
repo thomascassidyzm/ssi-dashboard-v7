@@ -1,0 +1,146 @@
+[
+  {
+    "seed_id": "S0355",
+    "seed_pair": {
+      "known": "Did she need to talk to that woman you know?",
+      "target": "¿Necesitaba hablar con esa mujer que conoces?"
+    },
+    "legos": [
+      {
+        "id": "S0355L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to talk to",
+          "target": "hablar con"
+        }
+      },
+      {
+        "id": "S0355L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to talk",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0355L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "that woman you know",
+          "target": "esa mujer que conoces"
+        }
+      },
+      {
+        "id": "S0355L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you know",
+          "target": "conoces"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0356",
+    "seed_pair": {
+      "known": "Yes they had something important to discuss.",
+      "target": "Sí, tenían algo importante que discutir."
+    },
+    "legos": [
+      {
+        "id": "S0356L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "something important to discuss",
+          "target": "algo importante que discutir"
+        }
+      },
+      {
+        "id": "S0356L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "something to discuss",
+          "target": "algo que discutir"
+        }
+      },
+      {
+        "id": "S0356L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to discuss",
+          "target": "discutir"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0357",
+    "seed_pair": {
+      "known": "No she just wanted to send her a message.",
+      "target": "No, ella solo quería enviarle un mensaje."
+    },
+    "legos": [
+      {
+        "id": "S0357L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "just wanted to",
+          "target": "solo quería"
+        }
+      },
+      {
+        "id": "S0357L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "wanted to",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0357L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to send her a message",
+          "target": "enviarle un mensaje"
+        }
+      },
+      {
+        "id": "S0357L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to send her",
+          "target": "enviarle"
+        }
+      },
+      {
+        "id": "S0357L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to send",
+          "target": "enviar"
+        }
+      },
+      {
+        "id": "S0357L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "a message",
+          "target": "un mensaje"
+        }
+      }
+    ]
+  }
+]

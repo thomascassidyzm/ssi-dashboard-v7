@@ -1,0 +1,182 @@
+[
+  {
+    "seed_id": "S0307",
+    "seed_pair": {
+      "known": "I know that young man who's sitting over there.",
+      "target": "Conozco a ese joven que está sentado allí."
+    },
+    "legos": [
+      {
+        "id": "S0307L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I know",
+          "target": "conozco"
+        }
+      },
+      {
+        "id": "S0307L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "ese"
+        }
+      },
+      {
+        "id": "S0307L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "young man",
+          "target": "joven"
+        }
+      },
+      {
+        "id": "S0307L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "who's sitting",
+          "target": "que está sentado"
+        }
+      },
+      {
+        "id": "S0307L05",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "is sitting",
+          "target": "está sentado"
+        }
+      },
+      {
+        "id": "S0307L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "over there",
+          "target": "allí"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0308",
+    "seed_pair": {
+      "known": "Yes she's a friend of my mother.",
+      "target": "Sí, es una amiga de mi madre."
+    },
+    "legos": [
+      {
+        "id": "S0308L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0308L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she is",
+          "target": "es"
+        }
+      },
+      {
+        "id": "S0308L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a friend",
+          "target": "una amiga"
+        }
+      },
+      {
+        "id": "S0308L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "friend",
+          "target": "amiga"
+        }
+      },
+      {
+        "id": "S0308L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "of my mother",
+          "target": "de mi madre"
+        }
+      },
+      {
+        "id": "S0308L06",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "my mother",
+          "target": "mi madre"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0309",
+    "seed_pair": {
+      "known": "No I've never seen her before.",
+      "target": "No, nunca la he visto antes."
+    },
+    "legos": [
+      {
+        "id": "S0309L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "no",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0309L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I've never seen her",
+          "target": "nunca la he visto"
+        }
+      },
+      {
+        "id": "S0309L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "never",
+          "target": "nunca"
+        }
+      },
+      {
+        "id": "S0309L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "her",
+          "target": "la"
+        }
+      },
+      {
+        "id": "S0309L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "before",
+          "target": "antes"
+        }
+      }
+    ]
+  }
+]

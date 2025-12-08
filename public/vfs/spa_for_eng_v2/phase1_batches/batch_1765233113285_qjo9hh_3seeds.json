@@ -1,0 +1,236 @@
+[
+  {
+    "seed_id": "S0322",
+    "seed_pair": {
+      "known": "She said that she needs to read the same book.",
+      "target": "Ella dijo que necesita leer el mismo libro."
+    },
+    "legos": [
+      {
+        "id": "S0322L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she",
+          "target": "ella"
+        }
+      },
+      {
+        "id": "S0322L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "said",
+          "target": "dijo"
+        }
+      },
+      {
+        "id": "S0322L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "que"
+        }
+      },
+      {
+        "id": "S0322L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "needs",
+          "target": "necesita"
+        }
+      },
+      {
+        "id": "S0322L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to read",
+          "target": "leer"
+        }
+      },
+      {
+        "id": "S0322L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "the same",
+          "target": "el mismo"
+        }
+      },
+      {
+        "id": "S0322L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "same",
+          "target": "mismo"
+        }
+      },
+      {
+        "id": "S0322L08",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "book",
+          "target": "libro"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0323",
+    "seed_pair": {
+      "known": "He said that he doesn't need to walk to school.",
+      "target": "Él dijo que no necesita caminar a la escuela."
+    },
+    "legos": [
+      {
+        "id": "S0323L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he",
+          "target": "él"
+        }
+      },
+      {
+        "id": "S0323L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "said",
+          "target": "dijo"
+        }
+      },
+      {
+        "id": "S0323L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "que"
+        }
+      },
+      {
+        "id": "S0323L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "doesn't need",
+          "target": "no necesita"
+        }
+      },
+      {
+        "id": "S0323L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "need",
+          "target": "necesita"
+        }
+      },
+      {
+        "id": "S0323L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to walk",
+          "target": "caminar"
+        }
+      },
+      {
+        "id": "S0323L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to school",
+          "target": "a la escuela"
+        }
+      },
+      {
+        "id": "S0323L08",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "school",
+          "target": "escuela"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0324",
+    "seed_pair": {
+      "known": "That student has both of her hands up.",
+      "target": "Esa estudiante tiene ambas manos arriba."
+    },
+    "legos": [
+      {
+        "id": "S0324L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "esa"
+        }
+      },
+      {
+        "id": "S0324L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "student",
+          "target": "estudiante"
+        }
+      },
+      {
+        "id": "S0324L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "has",
+          "target": "tiene"
+        }
+      },
+      {
+        "id": "S0324L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "both of her hands",
+          "target": "ambas manos"
+        }
+      },
+      {
+        "id": "S0324L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "both",
+          "target": "ambas"
+        }
+      },
+      {
+        "id": "S0324L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "hands",
+          "target": "manos"
+        }
+      },
+      {
+        "id": "S0324L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "up",
+          "target": "arriba"
+        }
+      }
+    ]
+  }
+]

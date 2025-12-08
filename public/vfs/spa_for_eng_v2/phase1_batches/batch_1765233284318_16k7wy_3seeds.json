@@ -1,0 +1,209 @@
+[
+  {
+    "seed_id": "S0316",
+    "seed_pair": {
+      "known": "Do you think that she could bring her brother on Monday?",
+      "target": "¿Crees que ella podría traer a su hermano el lunes?"
+    },
+    "legos": [
+      {
+        "id": "S0316L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Do you think that",
+          "target": "Crees que"
+        }
+      },
+      {
+        "id": "S0316L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she",
+          "target": "ella"
+        }
+      },
+      {
+        "id": "S0316L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "could bring",
+          "target": "podría traer"
+        }
+      },
+      {
+        "id": "S0316L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "could",
+          "target": "podría"
+        }
+      },
+      {
+        "id": "S0316L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "bring",
+          "target": "traer"
+        }
+      },
+      {
+        "id": "S0316L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "her",
+          "target": "su"
+        }
+      },
+      {
+        "id": "S0316L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "brother",
+          "target": "hermano"
+        }
+      },
+      {
+        "id": "S0316L08",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "on Monday",
+          "target": "el lunes"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0317",
+    "seed_pair": {
+      "known": "Yes I think she could if she wanted to.",
+      "target": "Sí, creo que ella podría si quisiera."
+    },
+    "legos": [
+      {
+        "id": "S0317L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Yes",
+          "target": "Sí"
+        }
+      },
+      {
+        "id": "S0317L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I think",
+          "target": "creo que"
+        }
+      },
+      {
+        "id": "S0317L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she",
+          "target": "ella"
+        }
+      },
+      {
+        "id": "S0317L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "could",
+          "target": "podría"
+        }
+      },
+      {
+        "id": "S0317L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "if she wanted to",
+          "target": "si quisiera"
+        }
+      },
+      {
+        "id": "S0317L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "if",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0317L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "she wanted to",
+          "target": "quisiera"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0318",
+    "seed_pair": {
+      "known": "No I don't think she could this time.",
+      "target": "No, no creo que ella podría esta vez."
+    },
+    "legos": [
+      {
+        "id": "S0318L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "No",
+          "target": "No"
+        }
+      },
+      {
+        "id": "S0318L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I don't think",
+          "target": "no creo que"
+        }
+      },
+      {
+        "id": "S0318L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she",
+          "target": "ella"
+        }
+      },
+      {
+        "id": "S0318L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "could",
+          "target": "podría"
+        }
+      },
+      {
+        "id": "S0318L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "this time",
+          "target": "esta vez"
+        }
+      }
+    ]
+  }
+]

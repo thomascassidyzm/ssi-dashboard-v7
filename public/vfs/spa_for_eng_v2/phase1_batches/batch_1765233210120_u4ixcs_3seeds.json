@@ -1,0 +1,128 @@
+[
+  {
+    "seed_id": "S0352",
+    "seed_pair": {
+      "known": "Even if he wanted to he wouldn't be able to.",
+      "target": "Aunque quisiera no podría."
+    },
+    "legos": [
+      {
+        "id": "S0352L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "even if",
+          "target": "aunque"
+        }
+      },
+      {
+        "id": "S0352L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "wanted to",
+          "target": "quisiera"
+        }
+      },
+      {
+        "id": "S0352L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "wouldn't be able to",
+          "target": "no podría"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0353",
+    "seed_pair": {
+      "known": "She needed to run around the field.",
+      "target": "Necesitaba correr alrededor del campo."
+    },
+    "legos": [
+      {
+        "id": "S0353L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "needed to",
+          "target": "necesitaba"
+        }
+      },
+      {
+        "id": "S0353L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to run",
+          "target": "correr"
+        }
+      },
+      {
+        "id": "S0353L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "around the field",
+          "target": "alrededor del campo"
+        }
+      },
+      {
+        "id": "S0353L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "the field",
+          "target": "el campo"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0354",
+    "seed_pair": {
+      "known": "He didn't need to appear angry.",
+      "target": "No necesitaba parecer enojado."
+    },
+    "legos": [
+      {
+        "id": "S0354L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "didn't need to",
+          "target": "no necesitaba"
+        }
+      },
+      {
+        "id": "S0354L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "needed to",
+          "target": "necesitaba"
+        }
+      },
+      {
+        "id": "S0354L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to appear",
+          "target": "parecer"
+        }
+      },
+      {
+        "id": "S0354L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "angry",
+          "target": "enojado"
+        }
+      }
+    ]
+  }
+]

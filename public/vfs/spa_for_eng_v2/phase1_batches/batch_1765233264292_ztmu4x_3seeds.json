@@ -1,0 +1,173 @@
+[
+  {
+    "seed_id": "S0349",
+    "seed_pair": {
+      "known": "Did he want to go out on Friday night?",
+      "target": "¿Quería salir el viernes por la noche?"
+    },
+    "legos": [
+      {
+        "id": "S0349L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "did he want to",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0349L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to go out",
+          "target": "salir"
+        }
+      },
+      {
+        "id": "S0349L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "on Friday night",
+          "target": "el viernes por la noche"
+        }
+      },
+      {
+        "id": "S0349L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "Friday",
+          "target": "viernes"
+        }
+      },
+      {
+        "id": "S0349L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "night",
+          "target": "noche"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0350",
+    "seed_pair": {
+      "known": "Yes he wanted to see some old friends.",
+      "target": "Sí quería ver a unos viejos amigos."
+    },
+    "legos": [
+      {
+        "id": "S0350L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0350L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he wanted to",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0350L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to see",
+          "target": "ver"
+        }
+      },
+      {
+        "id": "S0350L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "old friends",
+          "target": "viejos amigos"
+        }
+      },
+      {
+        "id": "S0350L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "old",
+          "target": "viejos"
+        }
+      },
+      {
+        "id": "S0350L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "friends",
+          "target": "amigos"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0351",
+    "seed_pair": {
+      "known": "No he didn't want to leave me on my own.",
+      "target": "No, no quería dejarme solo."
+    },
+    "legos": [
+      {
+        "id": "S0351L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "no",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0351L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "didn't want to",
+          "target": "no quería"
+        }
+      },
+      {
+        "id": "S0351L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to leave",
+          "target": "dejar"
+        }
+      },
+      {
+        "id": "S0351L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "leave me",
+          "target": "dejarme"
+        }
+      },
+      {
+        "id": "S0351L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "on my own",
+          "target": "solo"
+        }
+      }
+    ]
+  }
+]

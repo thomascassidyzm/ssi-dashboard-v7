@@ -1,0 +1,110 @@
+[
+  {
+    "seed_id": "S0328",
+    "seed_pair": {
+      "known": "Yes I think she ought to.",
+      "target": "Sí, creo que debería."
+    },
+    "legos": [
+      {
+        "id": "S0328L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0328L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I think",
+          "target": "creo"
+        }
+      },
+      {
+        "id": "S0328L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "she ought to",
+          "target": "debería"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0329",
+    "seed_pair": {
+      "known": "It's important.",
+      "target": "Es importante."
+    },
+    "legos": [
+      {
+        "id": "S0329L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "it's",
+          "target": "es"
+        }
+      },
+      {
+        "id": "S0329L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "important",
+          "target": "importante"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0330",
+    "seed_pair": {
+      "known": "No I don't think it's very important.",
+      "target": "No, no creo que sea muy importante."
+    },
+    "legos": [
+      {
+        "id": "S0330L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "no",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0330L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I don't think",
+          "target": "no creo"
+        }
+      },
+      {
+        "id": "S0330L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0330L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "important",
+          "target": "importante"
+        }
+      }
+    ]
+  }
+]
