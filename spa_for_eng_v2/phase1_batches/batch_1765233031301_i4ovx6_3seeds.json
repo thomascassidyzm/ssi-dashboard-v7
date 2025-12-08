@@ -1,0 +1,219 @@
+[
+  {
+    "seed_id": "S0148",
+    "seed_pair": {
+      "known": "He wasn't very patient when I couldn't answer.",
+      "target": "Él no fue muy paciente cuando no pude responder."
+    },
+    "legos": [
+      {
+        "id": "S0148L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he",
+          "target": "él"
+        }
+      },
+      {
+        "id": "S0148L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "wasn't",
+          "target": "no fue"
+        }
+      },
+      {
+        "id": "S0148L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0148L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "patient",
+          "target": "paciente"
+        }
+      },
+      {
+        "id": "S0148L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "when",
+          "target": "cuando"
+        }
+      },
+      {
+        "id": "S0148L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "couldn't",
+          "target": "no pude"
+        }
+      },
+      {
+        "id": "S0148L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "answer",
+          "target": "responder"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0149",
+    "seed_pair": {
+      "known": "This isn't very difficult, so I hope you'll finish soon.",
+      "target": "Esto no es muy difícil, así que espero que termines pronto."
+    },
+    "legos": [
+      {
+        "id": "S0149L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "this",
+          "target": "esto"
+        }
+      },
+      {
+        "id": "S0149L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "isn't",
+          "target": "no es"
+        }
+      },
+      {
+        "id": "S0149L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0149L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "difficult",
+          "target": "difícil"
+        }
+      },
+      {
+        "id": "S0149L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "so",
+          "target": "así que"
+        }
+      },
+      {
+        "id": "S0149L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I hope",
+          "target": "espero"
+        }
+      },
+      {
+        "id": "S0149L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I hope you'll finish",
+          "target": "espero que termines"
+        },
+        "components": [
+          {
+            "known": "I hope",
+            "target": "espero"
+          },
+          {
+            "known": "you'll finish",
+            "target": "termines"
+          }
+        ]
+      },
+      {
+        "id": "S0149L08",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "soon",
+          "target": "pronto"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0150",
+    "seed_pair": {
+      "known": "Can you tell me what your name is?",
+      "target": "¿Puedes decirme cuál es tu nombre?"
+    },
+    "legos": [
+      {
+        "id": "S0150L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "can you",
+          "target": "puedes"
+        }
+      },
+      {
+        "id": "S0150L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tell me",
+          "target": "decirme"
+        }
+      },
+      {
+        "id": "S0150L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "what your name is",
+          "target": "cuál es tu nombre"
+        },
+        "components": [
+          {
+            "known": "what",
+            "target": "cuál"
+          },
+          {
+            "known": "is",
+            "target": "es"
+          },
+          {
+            "known": "your",
+            "target": "tu"
+          },
+          {
+            "known": "name",
+            "target": "nombre"
+          }
+        ]
+      }
+    ]
+  }
+]

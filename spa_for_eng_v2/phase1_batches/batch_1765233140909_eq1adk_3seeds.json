@@ -1,0 +1,230 @@
+[
+  {
+    "seed_id": "S0178",
+    "seed_pair": {
+      "known": "I didn't have time, although I wanted to see you.",
+      "target": "No tuve tiempo, aunque quería verte."
+    },
+    "legos": [
+      {
+        "id": "S0178L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I didn't have",
+          "target": "no tuve"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "yo"
+          },
+          {
+            "known": "didn't",
+            "target": "no"
+          },
+          {
+            "known": "have",
+            "target": "tuve"
+          }
+        ]
+      },
+      {
+        "id": "S0178L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "time",
+          "target": "tiempo"
+        }
+      },
+      {
+        "id": "S0178L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "although",
+          "target": "aunque"
+        }
+      },
+      {
+        "id": "S0178L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I wanted",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0178L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to see",
+          "target": "ver"
+        }
+      },
+      {
+        "id": "S0178L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to see you",
+          "target": "verte"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0179",
+    "seed_pair": {
+      "known": "What are you going to do on Sunday afternoon?",
+      "target": "¿Qué vas a hacer el domingo por la tarde?"
+    },
+    "legos": [
+      {
+        "id": "S0179L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "qué"
+        }
+      },
+      {
+        "id": "S0179L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "are you going to",
+          "target": "vas a"
+        },
+        "components": [
+          {
+            "known": "you",
+            "target": "tú"
+          },
+          {
+            "known": "are going",
+            "target": "vas"
+          },
+          {
+            "known": "to",
+            "target": "a"
+          }
+        ]
+      },
+      {
+        "id": "S0179L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to do",
+          "target": "hacer"
+        }
+      },
+      {
+        "id": "S0179L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "on Sunday afternoon",
+          "target": "el domingo por la tarde"
+        },
+        "components": [
+          {
+            "known": "on",
+            "target": "el"
+          },
+          {
+            "known": "Sunday",
+            "target": "domingo"
+          },
+          {
+            "known": "afternoon",
+            "target": "tarde"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0180",
+    "seed_pair": {
+      "known": "I'd like to read my book for a while.",
+      "target": "Me gustaría leer mi libro por un rato."
+    },
+    "legos": [
+      {
+        "id": "S0180L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'd like",
+          "target": "me gustaría"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "me"
+          },
+          {
+            "known": "would like",
+            "target": "gustaría"
+          }
+        ]
+      },
+      {
+        "id": "S0180L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to read",
+          "target": "leer"
+        }
+      },
+      {
+        "id": "S0180L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "my",
+          "target": "mi"
+        }
+      },
+      {
+        "id": "S0180L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "book",
+          "target": "libro"
+        }
+      },
+      {
+        "id": "S0180L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "for a while",
+          "target": "por un rato"
+        },
+        "components": [
+          {
+            "known": "for",
+            "target": "por"
+          },
+          {
+            "known": "a",
+            "target": "un"
+          },
+          {
+            "known": "while",
+            "target": "rato"
+          }
+        ]
+      }
+    ]
+  }
+]

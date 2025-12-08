@@ -1,0 +1,305 @@
+[
+  {
+    "seed_id": "S0169",
+    "seed_pair": {
+      "known": "What do you want me to do?",
+      "target": "¿Qué quieres que haga?"
+    },
+    "legos": [
+      {
+        "id": "S0169L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "qué"
+        }
+      },
+      {
+        "id": "S0169L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0169L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0169L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to do",
+          "target": "hacer"
+        }
+      },
+      {
+        "id": "S0169L05",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "me to do",
+          "target": "que haga"
+        },
+        "components": [
+          {
+            "known": "to do",
+            "target": "hacer"
+          }
+        ]
+      },
+      {
+        "id": "S0169L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "want me to do",
+          "target": "quieres que haga"
+        },
+        "components": [
+          {
+            "known": "you want",
+            "target": "quieres"
+          },
+          {
+            "known": "to do",
+            "target": "hacer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0170",
+    "seed_pair": {
+      "known": "I'd like you to tell me what you need.",
+      "target": "Me gustaría que me dijeras lo que necesitas."
+    },
+    "legos": [
+      {
+        "id": "S0170L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I'd like",
+          "target": "me gustaría"
+        }
+      },
+      {
+        "id": "S0170L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to tell",
+          "target": "decir"
+        }
+      },
+      {
+        "id": "S0170L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "me",
+          "target": "me"
+        }
+      },
+      {
+        "id": "S0170L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0170L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you need",
+          "target": "necesitas"
+        }
+      },
+      {
+        "id": "S0170L06",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "you to tell me",
+          "target": "que me dijeras"
+        },
+        "components": [
+          {
+            "known": "to tell",
+            "target": "decir"
+          },
+          {
+            "known": "me",
+            "target": "me"
+          }
+        ]
+      },
+      {
+        "id": "S0170L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'd like you to tell me",
+          "target": "me gustaría que me dijeras"
+        },
+        "components": [
+          {
+            "known": "I'd like",
+            "target": "me gustaría"
+          },
+          {
+            "known": "to tell",
+            "target": "decir"
+          },
+          {
+            "known": "me",
+            "target": "me"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0171",
+    "seed_pair": {
+      "known": "Do you want me to help you look for it?",
+      "target": "¿Quieres que te ayude a buscarlo?"
+    },
+    "legos": [
+      {
+        "id": "S0171L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0171L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0171L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to help",
+          "target": "ayudar"
+        }
+      },
+      {
+        "id": "S0171L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you",
+          "target": "te"
+        }
+      },
+      {
+        "id": "S0171L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to look for",
+          "target": "buscar"
+        }
+      },
+      {
+        "id": "S0171L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "it",
+          "target": "lo"
+        }
+      },
+      {
+        "id": "S0171L07",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "look for it",
+          "target": "buscarlo"
+        },
+        "components": [
+          {
+            "known": "to look for",
+            "target": "buscar"
+          },
+          {
+            "known": "it",
+            "target": "lo"
+          }
+        ]
+      },
+      {
+        "id": "S0171L08",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "me to help you",
+          "target": "que te ayude"
+        },
+        "components": [
+          {
+            "known": "to help",
+            "target": "ayudar"
+          },
+          {
+            "known": "you",
+            "target": "te"
+          }
+        ]
+      },
+      {
+        "id": "S0171L09",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "me to help you look for it",
+          "target": "que te ayude a buscarlo"
+        },
+        "components": [
+          {
+            "known": "to help",
+            "target": "ayudar"
+          },
+          {
+            "known": "you",
+            "target": "te"
+          },
+          {
+            "known": "to look for",
+            "target": "buscar"
+          },
+          {
+            "known": "it",
+            "target": "lo"
+          }
+        ]
+      }
+    ]
+  }
+]

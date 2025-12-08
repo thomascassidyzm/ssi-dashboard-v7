@@ -1,0 +1,245 @@
+[
+  {
+    "seed_id": "S0163",
+    "seed_pair": {
+      "known": "I think that it's interesting.",
+      "target": "Creo que es interesante."
+    },
+    "legos": [
+      {
+        "id": "S0163L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I think that",
+          "target": "creo que"
+        },
+        "components": [
+          {
+            "known": "I think",
+            "target": "creo"
+          },
+          {
+            "known": "that",
+            "target": "que"
+          }
+        ]
+      },
+      {
+        "id": "S0163L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I think",
+          "target": "creo"
+        }
+      },
+      {
+        "id": "S0163L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "that",
+          "target": "que"
+        }
+      },
+      {
+        "id": "S0163L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "it's interesting",
+          "target": "es interesante"
+        },
+        "components": [
+          {
+            "known": "it's",
+            "target": "es"
+          },
+          {
+            "known": "interesting",
+            "target": "interesante"
+          }
+        ]
+      },
+      {
+        "id": "S0163L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it's",
+          "target": "es"
+        }
+      },
+      {
+        "id": "S0163L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "interesting",
+          "target": "interesante"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0164",
+    "seed_pair": {
+      "known": "An interesting book",
+      "target": "Un libro interesante"
+    },
+    "legos": [
+      {
+        "id": "S0164L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "an interesting book",
+          "target": "un libro interesante"
+        },
+        "components": [
+          {
+            "known": "an",
+            "target": "un"
+          },
+          {
+            "known": "interesting",
+            "target": "interesante"
+          },
+          {
+            "known": "book",
+            "target": "libro"
+          }
+        ]
+      },
+      {
+        "id": "S0164L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "an",
+          "target": "un"
+        }
+      },
+      {
+        "id": "S0164L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "interesting",
+          "target": "interesante"
+        }
+      },
+      {
+        "id": "S0164L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "book",
+          "target": "libro"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0165",
+    "seed_pair": {
+      "known": "But I'm not sure if it's true.",
+      "target": "Pero no estoy seguro si es verdad."
+    },
+    "legos": [
+      {
+        "id": "S0165L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "but",
+          "target": "pero"
+        }
+      },
+      {
+        "id": "S0165L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm not sure",
+          "target": "no estoy seguro"
+        },
+        "components": [
+          {
+            "known": "not",
+            "target": "no"
+          },
+          {
+            "known": "sure",
+            "target": "seguro"
+          }
+        ]
+      },
+      {
+        "id": "S0165L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "not",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0165L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "sure",
+          "target": "seguro"
+        }
+      },
+      {
+        "id": "S0165L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "if",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0165L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "it's true",
+          "target": "es verdad"
+        },
+        "components": [
+          {
+            "known": "it's",
+            "target": "es"
+          },
+          {
+            "known": "true",
+            "target": "verdad"
+          }
+        ]
+      },
+      {
+        "id": "S0165L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it's",
+          "target": "es"
+        }
+      },
+      {
+        "id": "S0165L08",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "true",
+          "target": "verdad"
+        }
+      }
+    ]
+  }
+]

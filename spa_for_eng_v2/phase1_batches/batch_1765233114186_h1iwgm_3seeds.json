@@ -1,0 +1,242 @@
+[
+  {
+    "seed_id": "S0151",
+    "seed_pair": {
+      "known": "That wasn't what I was hoping would happen.",
+      "target": "Eso no era lo que esperaba que pasara."
+    },
+    "legos": [
+      {
+        "id": "S0151L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "eso"
+        }
+      },
+      {
+        "id": "S0151L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "wasn't",
+          "target": "no era"
+        }
+      },
+      {
+        "id": "S0151L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0151L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I was hoping",
+          "target": "esperaba"
+        },
+        "components": [
+          {
+            "known": "to hope",
+            "target": "esperar"
+          }
+        ]
+      },
+      {
+        "id": "S0151L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "would happen",
+          "target": "que pasara"
+        },
+        "components": [
+          {
+            "known": "to happen",
+            "target": "pasar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0152",
+    "seed_pair": {
+      "known": "I would have done it differently if I had known what you wanted.",
+      "target": "Lo habría hecho de otra manera si hubiera sabido lo que querías."
+    },
+    "legos": [
+      {
+        "id": "S0152L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it",
+          "target": "lo"
+        }
+      },
+      {
+        "id": "S0152L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I would have done it",
+          "target": "lo habría hecho"
+        },
+        "components": [
+          {
+            "known": "to do",
+            "target": "hacer"
+          }
+        ]
+      },
+      {
+        "id": "S0152L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "differently",
+          "target": "de otra manera"
+        },
+        "components": [
+          {
+            "known": "way",
+            "target": "manera"
+          }
+        ]
+      },
+      {
+        "id": "S0152L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "if",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0152L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I had known",
+          "target": "hubiera sabido"
+        },
+        "components": [
+          {
+            "known": "to know",
+            "target": "saber"
+          }
+        ]
+      },
+      {
+        "id": "S0152L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0152L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "what you wanted",
+          "target": "lo que querías"
+        },
+        "components": [
+          {
+            "known": "what",
+            "target": "lo que"
+          },
+          {
+            "known": "to want",
+            "target": "querer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0153",
+    "seed_pair": {
+      "known": "I wouldn't have said it in exactly the same way.",
+      "target": "No lo habría dicho exactamente de la misma manera."
+    },
+    "legos": [
+      {
+        "id": "S0153L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it",
+          "target": "lo"
+        }
+      },
+      {
+        "id": "S0153L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I wouldn't have said it",
+          "target": "no lo habría dicho"
+        },
+        "components": [
+          {
+            "known": "to say",
+            "target": "decir"
+          }
+        ]
+      },
+      {
+        "id": "S0153L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "exactly",
+          "target": "exactamente"
+        }
+      },
+      {
+        "id": "S0153L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "way",
+          "target": "manera"
+        }
+      },
+      {
+        "id": "S0153L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "in exactly the same way",
+          "target": "exactamente de la misma manera"
+        },
+        "components": [
+          {
+            "known": "exactly",
+            "target": "exactamente"
+          },
+          {
+            "known": "same",
+            "target": "mismo"
+          },
+          {
+            "known": "way",
+            "target": "manera"
+          }
+        ]
+      }
+    ]
+  }
+]

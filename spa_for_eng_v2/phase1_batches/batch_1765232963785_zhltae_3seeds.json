@@ -1,0 +1,177 @@
+[
+  {
+    "seed_id": "S0157",
+    "seed_pair": {
+      "known": "I won't be able to be there next month.",
+      "target": "No podré estar allí el próximo mes."
+    },
+    "legos": [
+      {
+        "id": "S0157L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I won't be able to",
+          "target": "no podré"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "yo"
+          },
+          {
+            "known": "be able to",
+            "target": "poder"
+          }
+        ]
+      },
+      {
+        "id": "S0157L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to be",
+          "target": "estar"
+        }
+      },
+      {
+        "id": "S0157L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "there",
+          "target": "allí"
+        }
+      },
+      {
+        "id": "S0157L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "next month",
+          "target": "el próximo mes"
+        },
+        "components": [
+          {
+            "known": "next",
+            "target": "próximo"
+          },
+          {
+            "known": "month",
+            "target": "mes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0158",
+    "seed_pair": {
+      "known": "Let's talk about something else.",
+      "target": "Hablemos de otra cosa."
+    },
+    "legos": [
+      {
+        "id": "S0158L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "let's talk",
+          "target": "hablemos"
+        }
+      },
+      {
+        "id": "S0158L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "about",
+          "target": "de"
+        }
+      },
+      {
+        "id": "S0158L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "something else",
+          "target": "otra cosa"
+        },
+        "components": [
+          {
+            "known": "something",
+            "target": "cosa"
+          },
+          {
+            "known": "else",
+            "target": "otra"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0159",
+    "seed_pair": {
+      "known": "That isn't what I'm trying to say.",
+      "target": "Eso no es lo que estoy tratando de decir."
+    },
+    "legos": [
+      {
+        "id": "S0159L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "that",
+          "target": "eso"
+        }
+      },
+      {
+        "id": "S0159L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "isn't",
+          "target": "no es"
+        }
+      },
+      {
+        "id": "S0159L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0159L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm trying to",
+          "target": "estoy tratando de"
+        },
+        "components": [
+          {
+            "known": "I'm trying",
+            "target": "estoy tratando"
+          },
+          {
+            "known": "to",
+            "target": "de"
+          }
+        ]
+      },
+      {
+        "id": "S0159L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to say",
+          "target": "decir"
+        }
+      }
+    ]
+  }
+]

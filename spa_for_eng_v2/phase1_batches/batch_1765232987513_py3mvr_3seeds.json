@@ -1,0 +1,174 @@
+[
+  {
+    "seed_id": "S0166",
+    "seed_pair": {
+      "known": "My name is not very unusual.",
+      "target": "Mi nombre no es muy inusual."
+    },
+    "legos": [
+      {
+        "id": "S0166L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "my name",
+          "target": "mi nombre"
+        }
+      },
+      {
+        "id": "S0166L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "is not",
+          "target": "no es"
+        }
+      },
+      {
+        "id": "S0166L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0166L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "unusual",
+          "target": "inusual"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0167",
+    "seed_pair": {
+      "known": "What do you need to do tomorrow afternoon?",
+      "target": "¿Qué necesitas hacer mañana por la tarde?"
+    },
+    "legos": [
+      {
+        "id": "S0167L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "qué"
+        }
+      },
+      {
+        "id": "S0167L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do you need",
+          "target": "necesitas"
+        }
+      },
+      {
+        "id": "S0167L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to do",
+          "target": "hacer"
+        }
+      },
+      {
+        "id": "S0167L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tomorrow",
+          "target": "mañana"
+        }
+      },
+      {
+        "id": "S0167L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "tomorrow afternoon",
+          "target": "mañana por la tarde"
+        },
+        "components": [
+          {
+            "known": "tomorrow",
+            "target": "mañana"
+          },
+          {
+            "known": "afternoon",
+            "target": "tarde"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0168",
+    "seed_pair": {
+      "known": "And then I'll be able to come and help later on.",
+      "target": "Y luego podré venir y ayudar más tarde."
+    },
+    "legos": [
+      {
+        "id": "S0168L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "and",
+          "target": "y"
+        }
+      },
+      {
+        "id": "S0168L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "then",
+          "target": "luego"
+        }
+      },
+      {
+        "id": "S0168L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I'll be able to",
+          "target": "podré"
+        }
+      },
+      {
+        "id": "S0168L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to come",
+          "target": "venir"
+        }
+      },
+      {
+        "id": "S0168L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to help",
+          "target": "ayudar"
+        }
+      },
+      {
+        "id": "S0168L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "later on",
+          "target": "más tarde"
+        }
+      }
+    ]
+  }
+]

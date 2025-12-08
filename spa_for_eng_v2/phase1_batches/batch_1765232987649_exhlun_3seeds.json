@@ -1,0 +1,174 @@
+[
+  {
+    "seed_id": "S0139",
+    "seed_pair": {
+      "known": "I'm sorry that I need to leave so early.",
+      "target": "Lo siento, necesito irme tan temprano."
+    },
+    "legos": [
+      {
+        "id": "S0139L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I'm sorry",
+          "target": "lo siento"
+        }
+      },
+      {
+        "id": "S0139L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I need to",
+          "target": "necesito"
+        }
+      },
+      {
+        "id": "S0139L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to leave",
+          "target": "irme"
+        }
+      },
+      {
+        "id": "S0139L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "so",
+          "target": "tan"
+        }
+      },
+      {
+        "id": "S0139L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "early",
+          "target": "temprano"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0140",
+    "seed_pair": {
+      "known": "I'm sorry that I can't see what you're trying to show me.",
+      "target": "Lo siento, no puedo ver lo que intentas mostrarme."
+    },
+    "legos": [
+      {
+        "id": "S0140L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I'm sorry",
+          "target": "lo siento"
+        }
+      },
+      {
+        "id": "S0140L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I can't",
+          "target": "no puedo"
+        }
+      },
+      {
+        "id": "S0140L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to see",
+          "target": "ver"
+        }
+      },
+      {
+        "id": "S0140L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0140L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you're trying to",
+          "target": "intentas"
+        }
+      },
+      {
+        "id": "S0140L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to show me",
+          "target": "mostrarme"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0141",
+    "seed_pair": {
+      "known": "No problem. Everything is okay.",
+      "target": "No hay problema. Todo está bien."
+    },
+    "legos": [
+      {
+        "id": "S0141L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "no problem",
+          "target": "no hay problema"
+        },
+        "components": [
+          {
+            "known": "no",
+            "target": "no"
+          },
+          {
+            "known": "problem",
+            "target": "problema"
+          }
+        ]
+      },
+      {
+        "id": "S0141L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "everything",
+          "target": "todo"
+        }
+      },
+      {
+        "id": "S0141L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "is",
+          "target": "está"
+        }
+      },
+      {
+        "id": "S0141L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "okay",
+          "target": "bien"
+        }
+      }
+    ]
+  }
+]

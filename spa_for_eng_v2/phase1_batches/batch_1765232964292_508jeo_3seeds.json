@@ -1,0 +1,356 @@
+[
+  {
+    "seed_id": "S0145",
+    "seed_pair": {
+      "known": "Why are you not happy any more?",
+      "target": "¿Por qué ya no estás feliz?"
+    },
+    "legos": [
+      {
+        "id": "S0145L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "why",
+          "target": "por qué"
+        }
+      },
+      {
+        "id": "S0145L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you are",
+          "target": "estás"
+        }
+      },
+      {
+        "id": "S0145L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "happy",
+          "target": "feliz"
+        }
+      },
+      {
+        "id": "S0145L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you are not happy any more",
+          "target": "ya no estás feliz"
+        },
+        "components": [
+          {
+            "known": "you are",
+            "target": "estás"
+          },
+          {
+            "known": "happy",
+            "target": "feliz"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0146",
+    "seed_pair": {
+      "known": "Nothing seems to be working since we tried to fix it.",
+      "target": "Nada parece estar funcionando desde que intentamos arreglarlo."
+    },
+    "legos": [
+      {
+        "id": "S0146L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "nothing",
+          "target": "nada"
+        }
+      },
+      {
+        "id": "S0146L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "seems",
+          "target": "parece"
+        }
+      },
+      {
+        "id": "S0146L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to be",
+          "target": "estar"
+        }
+      },
+      {
+        "id": "S0146L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "working",
+          "target": "funcionando"
+        }
+      },
+      {
+        "id": "S0146L05",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "to be working",
+          "target": "estar funcionando"
+        },
+        "components": [
+          {
+            "known": "to be",
+            "target": "estar"
+          },
+          {
+            "known": "working",
+            "target": "funcionando"
+          }
+        ]
+      },
+      {
+        "id": "S0146L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "seems to be working",
+          "target": "parece estar funcionando"
+        },
+        "components": [
+          {
+            "known": "seems",
+            "target": "parece"
+          },
+          {
+            "known": "to be working",
+            "target": "estar funcionando"
+          }
+        ]
+      },
+      {
+        "id": "S0146L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "we tried",
+          "target": "intentamos"
+        }
+      },
+      {
+        "id": "S0146L08",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to fix",
+          "target": "arreglar"
+        }
+      },
+      {
+        "id": "S0146L09",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it",
+          "target": "lo"
+        }
+      },
+      {
+        "id": "S0146L10",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "to fix it",
+          "target": "arreglarlo"
+        },
+        "components": [
+          {
+            "known": "to fix",
+            "target": "arreglar"
+          },
+          {
+            "known": "it",
+            "target": "lo"
+          }
+        ]
+      },
+      {
+        "id": "S0146L11",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "since",
+          "target": "desde que"
+        }
+      },
+      {
+        "id": "S0146L12",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "since we tried to fix it",
+          "target": "desde que intentamos arreglarlo"
+        },
+        "components": [
+          {
+            "known": "since",
+            "target": "desde que"
+          },
+          {
+            "known": "we tried",
+            "target": "intentamos"
+          },
+          {
+            "known": "to fix it",
+            "target": "arreglarlo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0147",
+    "seed_pair": {
+      "known": "She was very kind when she saw me feeling nervous.",
+      "target": "Ella fue muy amable cuando me vio nervioso."
+    },
+    "legos": [
+      {
+        "id": "S0147L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "she",
+          "target": "ella"
+        }
+      },
+      {
+        "id": "S0147L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "was",
+          "target": "fue"
+        }
+      },
+      {
+        "id": "S0147L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0147L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "kind",
+          "target": "amable"
+        }
+      },
+      {
+        "id": "S0147L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "when",
+          "target": "cuando"
+        }
+      },
+      {
+        "id": "S0147L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "she saw",
+          "target": "vio"
+        }
+      },
+      {
+        "id": "S0147L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "me",
+          "target": "me"
+        }
+      },
+      {
+        "id": "S0147L08",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "nervous",
+          "target": "nervioso"
+        }
+      },
+      {
+        "id": "S0147L09",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "she saw me",
+          "target": "me vio"
+        },
+        "components": [
+          {
+            "known": "she saw",
+            "target": "vio"
+          },
+          {
+            "known": "me",
+            "target": "me"
+          }
+        ]
+      },
+      {
+        "id": "S0147L10",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "feeling nervous",
+          "target": "nervioso"
+        },
+        "components": [
+          {
+            "known": "nervous",
+            "target": "nervioso"
+          }
+        ]
+      },
+      {
+        "id": "S0147L11",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "when she saw me feeling nervous",
+          "target": "cuando me vio nervioso"
+        },
+        "components": [
+          {
+            "known": "when",
+            "target": "cuando"
+          },
+          {
+            "known": "she saw me",
+            "target": "me vio"
+          },
+          {
+            "known": "feeling nervous",
+            "target": "nervioso"
+          }
+        ]
+      }
+    ]
+  }
+]

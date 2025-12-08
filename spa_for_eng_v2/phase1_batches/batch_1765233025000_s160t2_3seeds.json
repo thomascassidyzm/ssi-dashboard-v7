@@ -1,0 +1,171 @@
+[
+  {
+    "seed_id": "S0160",
+    "seed_pair": {
+      "known": "How do you say this word in Spanish?",
+      "target": "¿Cómo se dice esta palabra en español?"
+    },
+    "legos": [
+      {
+        "id": "S0160L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "how", "target": "cómo"}
+      },
+      {
+        "id": "S0160L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "do you say", "target": "se dice"},
+        "components": [
+          {"known": "say", "target": "dice"}
+        ]
+      },
+      {
+        "id": "S0160L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "this", "target": "esta"}
+      },
+      {
+        "id": "S0160L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "word", "target": "palabra"}
+      },
+      {
+        "id": "S0160L05",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "in Spanish", "target": "en español"},
+        "components": [
+          {"known": "in", "target": "en"},
+          {"known": "Spanish", "target": "español"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0161",
+    "seed_pair": {
+      "known": "Can you give me that book on Sunday morning?",
+      "target": "¿Puedes darme ese libro el domingo por la mañana?"
+    },
+    "legos": [
+      {
+        "id": "S0161L01",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "can you", "target": "puedes"},
+        "components": [
+          {"known": "can", "target": "puedes"},
+          {"known": "you", "target": "tú"}
+        ]
+      },
+      {
+        "id": "S0161L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to give", "target": "dar"}
+      },
+      {
+        "id": "S0161L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "me", "target": "me"}
+      },
+      {
+        "id": "S0161L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "give me", "target": "darme"},
+        "components": [
+          {"known": "give", "target": "dar"},
+          {"known": "me", "target": "me"}
+        ]
+      },
+      {
+        "id": "S0161L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "ese"}
+      },
+      {
+        "id": "S0161L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "book", "target": "libro"}
+      },
+      {
+        "id": "S0161L07",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "Sunday", "target": "domingo"}
+      },
+      {
+        "id": "S0161L08",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "morning", "target": "mañana"}
+      },
+      {
+        "id": "S0161L09",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "on Sunday", "target": "el domingo"},
+        "components": [
+          {"known": "on", "target": "el"},
+          {"known": "Sunday", "target": "domingo"}
+        ]
+      },
+      {
+        "id": "S0161L10",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "in the morning", "target": "por la mañana"},
+        "components": [
+          {"known": "in", "target": "por"},
+          {"known": "the", "target": "la"},
+          {"known": "morning", "target": "mañana"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0162",
+    "seed_pair": {
+      "known": "What do you think about that?",
+      "target": "¿Qué piensas de eso?"
+    },
+    "legos": [
+      {
+        "id": "S0162L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "what", "target": "qué"}
+      },
+      {
+        "id": "S0162L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "do you think", "target": "piensas"},
+        "components": [
+          {"known": "think", "target": "pensar"},
+          {"known": "you", "target": "tú"}
+        ]
+      },
+      {
+        "id": "S0162L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "about", "target": "de"}
+      },
+      {
+        "id": "S0162L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "eso"}
+      }
+    ]
+  }
+]
