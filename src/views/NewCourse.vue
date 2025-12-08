@@ -155,21 +155,64 @@
           <h2 class="text-2xl font-semibold text-slate-100 mb-6">Configuration</h2>
 
           <div class="space-y-6">
-            <!-- Number of Seeds -->
+            <!-- Seed Range -->
             <div>
               <label class="block text-sm font-medium text-slate-300 mb-2">
-                Number of Seeds
+                Seed Range
               </label>
-              <input
-                v-model.number="formData.numberOfSeeds"
-                type="number"
-                min="1"
-                max="668"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-              />
-              <p class="mt-1 text-xs text-slate-500">
-                Default: 668 (full course). Use fewer for testing.
+              <div class="flex items-center gap-3">
+                <div class="flex-1">
+                  <label class="block text-xs text-slate-500 mb-1">Start</label>
+                  <input
+                    v-model.number="formData.seedStart"
+                    type="number"
+                    min="1"
+                    max="668"
+                    class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                  />
+                </div>
+                <span class="text-slate-500 pt-5">→</span>
+                <div class="flex-1">
+                  <label class="block text-xs text-slate-500 mb-1">End</label>
+                  <input
+                    v-model.number="formData.seedEnd"
+                    type="number"
+                    min="1"
+                    max="668"
+                    class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition font-mono"
+                  />
+                </div>
+                <div class="pt-5">
+                  <span class="text-slate-400 text-sm">({{ seedCount }} seeds)</span>
+                </div>
+              </div>
+              <p class="mt-2 text-xs text-slate-500">
+                Default: S0001-S0668 (full course). Use S0001-S0030 for a quick test run.
               </p>
+              <!-- Quick presets -->
+              <div class="mt-3 flex gap-2">
+                <button
+                  type="button"
+                  @click="setSeedRange(1, 30)"
+                  class="text-xs px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition"
+                >
+                  Test (1-30)
+                </button>
+                <button
+                  type="button"
+                  @click="setSeedRange(1, 100)"
+                  class="text-xs px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition"
+                >
+                  First 100
+                </button>
+                <button
+                  type="button"
+                  @click="setSeedRange(1, 668)"
+                  class="text-xs px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white transition"
+                >
+                  Full Course (668)
+                </button>
+              </div>
             </div>
 
             <!-- Version -->
@@ -230,8 +273,13 @@
                   <span class="text-slate-200">{{ getLanguageName(formData.targetLanguage) }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-slate-400">Number of Seeds:</span>
-                  <span class="text-slate-200">{{ formData.numberOfSeeds }}</span>
+                  <span class="text-slate-400">Seed Range:</span>
+                  <span class="text-slate-200">
+                    <span class="font-mono">S{{ String(formData.seedStart).padStart(4, '0') }}</span>
+                    <span class="text-slate-500 mx-1">→</span>
+                    <span class="font-mono">S{{ String(formData.seedEnd).padStart(4, '0') }}</span>
+                    <span class="text-slate-400 ml-2">({{ seedCount }} seeds)</span>
+                  </span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-slate-400">Version:</span>
@@ -318,9 +366,23 @@ const languagesLoading = ref(true)
 const formData = ref({
   sourceLanguage: '',
   targetLanguage: '',
-  numberOfSeeds: 668,
+  seedStart: 1,
+  seedEnd: 668,
   version: '1.0'
 })
+
+// Computed seed count
+const seedCount = computed(() => {
+  const start = formData.value.seedStart || 1
+  const end = formData.value.seedEnd || 668
+  return Math.max(0, end - start + 1)
+})
+
+// Set seed range preset
+function setSeedRange(start, end) {
+  formData.value.seedStart = start
+  formData.value.seedEnd = end
+}
 
 // Validation Errors
 const errors = ref({
@@ -495,7 +557,9 @@ const createCourse = async () => {
       displayName: computedDisplayName.value,
       sourceLanguage: formData.value.sourceLanguage,
       targetLanguage: formData.value.targetLanguage,
-      numberOfSeeds: formData.value.numberOfSeeds,
+      seedStart: formData.value.seedStart,
+      seedEnd: formData.value.seedEnd,
+      seedCount: seedCount.value,
       version: formData.value.version
     }
 
