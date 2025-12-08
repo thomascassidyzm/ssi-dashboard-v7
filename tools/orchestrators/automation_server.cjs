@@ -39,8 +39,8 @@ const execAsync = promisify(exec);
 const ajv = new Ajv({ allErrors: true });
 
 // Phase 8: Audio generation services
-const ttsService = require('./services/tts-service.cjs');
-const s3AudioService = require('./services/s3-audio-service.cjs');
+const ttsService = require('../../services/tts-service.cjs');
+const s3AudioService = require('../../services/s3-audio-service.cjs');
 
 // Language code service (centralized)
 const langService = require('../../services/language-code-service.cjs');
@@ -9190,9 +9190,9 @@ app.post('/api/fine-tuning/compare', async (req, res) => {
 
 // Load schemas
 const SCHEMAS = {
-  phase1: require('./schemas/phase1-seed_pairs.json'),
-  phase3: require('./schemas/phase3-lego_pairs.json'),
-  phase5: require('./schemas/phase5-lego_baskets.json')
+  phase1: require('../../schemas/phase1-seed_pairs.json'),
+  phase3: require('../../schemas/phase3-lego_pairs.json'),
+  phase5: require('../../schemas/phase5-lego_baskets.json')
 };
 
 // Compile validators
