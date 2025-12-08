@@ -1,0 +1,123 @@
+[
+  {
+    "seed_id": "S0367",
+    "seed_pair": {
+      "known": "No nobody told me.",
+      "target": "No, nadie me dijo."
+    },
+    "legos": [
+      {
+        "id": "S0367L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "no", "target": "no"}
+      },
+      {
+        "id": "S0367L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "nobody", "target": "nadie"}
+      },
+      {
+        "id": "S0367L03",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "told me", "target": "me dijo"},
+        "components": [
+          {"known": "me", "target": "me"},
+          {"known": "told", "target": "dijo"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0368",
+    "seed_pair": {
+      "known": "Yes I heard that he wanted to grow tomatoes.",
+      "target": "Sí, oí que quería cultivar tomates."
+    },
+    "legos": [
+      {
+        "id": "S0368L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "yes", "target": "sí"}
+      },
+      {
+        "id": "S0368L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I heard", "target": "oí"}
+      },
+      {
+        "id": "S0368L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "que"}
+      },
+      {
+        "id": "S0368L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "he wanted", "target": "quería"}
+      },
+      {
+        "id": "S0368L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to grow", "target": "cultivar"}
+      },
+      {
+        "id": "S0368L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "tomatoes", "target": "tomates"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0369",
+    "seed_pair": {
+      "known": "I saw several horses on the road.",
+      "target": "Vi varios caballos en el camino."
+    },
+    "legos": [
+      {
+        "id": "S0369L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I saw", "target": "vi"}
+      },
+      {
+        "id": "S0369L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "several", "target": "varios"}
+      },
+      {
+        "id": "S0369L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "horses", "target": "caballos"}
+      },
+      {
+        "id": "S0369L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "on", "target": "en"}
+      },
+      {
+        "id": "S0369L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "the", "target": "el"}
+      },
+      {
+        "id": "S0369L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "road", "target": "camino"}
+      }
+    ]
+  }
+]

@@ -1,0 +1,188 @@
+[
+  {
+    "seed_id": "S0400",
+    "seed_pair": {
+      "known": "Do we want to eat something later on?",
+      "target": "¿Queremos comer algo más tarde?"
+    },
+    "legos": [
+      {
+        "id": "S0400L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do we want",
+          "target": "queremos"
+        }
+      },
+      {
+        "id": "S0400L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to eat",
+          "target": "comer"
+        }
+      },
+      {
+        "id": "S0400L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "something",
+          "target": "algo"
+        }
+      },
+      {
+        "id": "S0400L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "later on",
+          "target": "más tarde"
+        },
+        "components": [
+          {"known": "later", "target": "más tarde"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0401",
+    "seed_pair": {
+      "known": "No it would be better to go straight home.",
+      "target": "No, sería mejor ir directamente a casa."
+    },
+    "legos": [
+      {
+        "id": "S0401L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "no",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0401L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it would be",
+          "target": "sería"
+        }
+      },
+      {
+        "id": "S0401L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "it would be better",
+          "target": "sería mejor"
+        },
+        "components": [
+          {"known": "it would be", "target": "sería"},
+          {"known": "better", "target": "mejor"}
+        ]
+      },
+      {
+        "id": "S0401L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to go",
+          "target": "ir"
+        }
+      },
+      {
+        "id": "S0401L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "straight",
+          "target": "directamente"
+        }
+      },
+      {
+        "id": "S0401L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "home",
+          "target": "a casa"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0402",
+    "seed_pair": {
+      "known": "Yes it would be nice to stop somewhere for food.",
+      "target": "Sí, sería agradable parar en algún sitio para comer."
+    },
+    "legos": [
+      {
+        "id": "S0402L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0402L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "it would be",
+          "target": "sería"
+        }
+      },
+      {
+        "id": "S0402L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "it would be nice",
+          "target": "sería agradable"
+        },
+        "components": [
+          {"known": "it would be", "target": "sería"},
+          {"known": "nice", "target": "agradable"}
+        ]
+      },
+      {
+        "id": "S0402L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to stop",
+          "target": "parar"
+        }
+      },
+      {
+        "id": "S0402L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "somewhere",
+          "target": "en algún sitio"
+        }
+      },
+      {
+        "id": "S0402L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "for food",
+          "target": "para comer"
+        },
+        "components": [
+          {"known": "for", "target": "para"},
+          {"known": "food", "target": "comer"}
+        ]
+      }
+    ]
+  }
+]

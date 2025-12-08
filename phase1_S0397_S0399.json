@@ -1,0 +1,193 @@
+[
+  {
+    "seed_id": "S0397",
+    "seed_pair": {
+      "known": "Do we need to get ready soon?",
+      "target": "¿Necesitamos prepararnos pronto?"
+    },
+    "legos": [
+      {
+        "id": "S0397L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "we need",
+          "target": "necesitamos"
+        }
+      },
+      {
+        "id": "S0397L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to get ready",
+          "target": "prepararse"
+        }
+      },
+      {
+        "id": "S0397L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "soon",
+          "target": "pronto"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0398",
+    "seed_pair": {
+      "known": "We want to become more patient with our children.",
+      "target": "Queremos volvernos más pacientes con nuestros hijos."
+    },
+    "legos": [
+      {
+        "id": "S0398L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "we want",
+          "target": "queremos"
+        }
+      },
+      {
+        "id": "S0398L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to become",
+          "target": "volverse"
+        }
+      },
+      {
+        "id": "S0398L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "more",
+          "target": "más"
+        }
+      },
+      {
+        "id": "S0398L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "patient",
+          "target": "paciente"
+        }
+      },
+      {
+        "id": "S0398L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "with our",
+          "target": "con nuestros"
+        },
+        "components": [
+          {
+            "known": "with",
+            "target": "con"
+          },
+          {
+            "known": "our",
+            "target": "nuestros"
+          }
+        ]
+      },
+      {
+        "id": "S0398L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "with",
+          "target": "con"
+        }
+      },
+      {
+        "id": "S0398L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "our",
+          "target": "nuestros"
+        }
+      },
+      {
+        "id": "S0398L08",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "children",
+          "target": "hijos"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0399",
+    "seed_pair": {
+      "known": "We don't want to lose hope.",
+      "target": "No queremos perder la esperanza."
+    },
+    "legos": [
+      {
+        "id": "S0399L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "we don't want",
+          "target": "no queremos"
+        },
+        "components": [
+          {
+            "known": "don't",
+            "target": "no"
+          },
+          {
+            "known": "we want",
+            "target": "queremos"
+          }
+        ]
+      },
+      {
+        "id": "S0399L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "we want",
+          "target": "queremos"
+        }
+      },
+      {
+        "id": "S0399L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "don't",
+          "target": "no"
+        }
+      },
+      {
+        "id": "S0399L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to lose",
+          "target": "perder"
+        }
+      },
+      {
+        "id": "S0399L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "hope",
+          "target": "la esperanza"
+        }
+      }
+    ]
+  }
+]

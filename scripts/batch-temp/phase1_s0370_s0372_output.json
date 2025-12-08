@@ -1,0 +1,167 @@
+[
+  {
+    "seed_id": "S0370",
+    "seed_pair": {
+      "known": "I didn't see anyone that I knew.",
+      "target": "No vi a nadie que conocía."
+    },
+    "legos": [
+      {
+        "id": "S0370L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "see", "target": "ver"}
+      },
+      {
+        "id": "S0370L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I didn't see", "target": "no vi"},
+        "components": [
+          {"known": "didn't", "target": "no"},
+          {"known": "see", "target": "vi"}
+        ]
+      },
+      {
+        "id": "S0370L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "anyone", "target": "a nadie"}
+      },
+      {
+        "id": "S0370L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "que"}
+      },
+      {
+        "id": "S0370L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I knew", "target": "conocía"}
+      },
+      {
+        "id": "S0370L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "knew", "target": "conocía"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0371",
+    "seed_pair": {
+      "known": "I went to see a film on Wednesday.",
+      "target": "Fui a ver una película el miércoles."
+    },
+    "legos": [
+      {
+        "id": "S0371L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "went", "target": "fui"}
+      },
+      {
+        "id": "S0371L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to see", "target": "a ver"}
+      },
+      {
+        "id": "S0371L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "see", "target": "ver"}
+      },
+      {
+        "id": "S0371L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "a film", "target": "una película"}
+      },
+      {
+        "id": "S0371L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "film", "target": "película"}
+      },
+      {
+        "id": "S0371L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "on Wednesday", "target": "el miércoles"}
+      },
+      {
+        "id": "S0371L07",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "Wednesday", "target": "miércoles"}
+      },
+      {
+        "id": "S0371L08",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I went to see", "target": "fui a ver"},
+        "components": [
+          {"known": "went", "target": "fui"},
+          {"known": "to see", "target": "a ver"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0372",
+    "seed_pair": {
+      "known": "Did you see what she was trying to create?",
+      "target": "¿Viste lo que estaba intentando crear?"
+    },
+    "legos": [
+      {
+        "id": "S0372L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "see", "target": "ver"}
+      },
+      {
+        "id": "S0372L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "did you see", "target": "viste"}
+      },
+      {
+        "id": "S0372L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "what", "target": "lo que"}
+      },
+      {
+        "id": "S0372L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "she was trying", "target": "estaba intentando"},
+        "components": [
+          {"known": "was", "target": "estaba"},
+          {"known": "trying", "target": "intentando"}
+        ]
+      },
+      {
+        "id": "S0372L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "trying", "target": "intentando"}
+      },
+      {
+        "id": "S0372L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to create", "target": "crear"}
+      },
+      {
+        "id": "S0372L07",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "create", "target": "crear"}
+      }
+    ]
+  }
+]

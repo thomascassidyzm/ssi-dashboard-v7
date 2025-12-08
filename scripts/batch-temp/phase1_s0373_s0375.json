@@ -1,0 +1,123 @@
+[
+  {
+    "seed_id": "S0373",
+    "seed_pair": {
+      "known": "It was beautiful.",
+      "target": "Era hermoso."
+    },
+    "legos": [
+      {
+        "id": "S0373L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "it was", "target": "era"}
+      },
+      {
+        "id": "S0373L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "beautiful", "target": "hermoso"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0374",
+    "seed_pair": {
+      "known": "Yes I thought it was very beautiful.",
+      "target": "Sí, pensé que era muy hermoso."
+    },
+    "legos": [
+      {
+        "id": "S0374L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "yes", "target": "sí"}
+      },
+      {
+        "id": "S0374L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I thought", "target": "pensé"}
+      },
+      {
+        "id": "S0374L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "it was", "target": "era"}
+      },
+      {
+        "id": "S0374L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I thought it was", "target": "pensé que era"},
+        "components": [
+          {"known": "I thought", "target": "pensé"},
+          {"known": "it was", "target": "era"}
+        ]
+      },
+      {
+        "id": "S0374L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "very", "target": "muy"}
+      },
+      {
+        "id": "S0374L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "beautiful", "target": "hermoso"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0375",
+    "seed_pair": {
+      "known": "No I didn't know what she was doing.",
+      "target": "No, no sabía qué estaba haciendo."
+    },
+    "legos": [
+      {
+        "id": "S0375L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "no", "target": "no"}
+      },
+      {
+        "id": "S0375L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I didn't know", "target": "no sabía"},
+        "components": [
+          {"known": "didn't", "target": "no"},
+          {"known": "know", "target": "sabía"}
+        ]
+      },
+      {
+        "id": "S0375L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "what", "target": "qué"}
+      },
+      {
+        "id": "S0375L04",
+        "type": "M",
+        "new": false,
+        "lego": {"known": "she was doing", "target": "estaba haciendo"},
+        "components": [
+          {"known": "was", "target": "estaba"},
+          {"known": "doing", "target": "haciendo"}
+        ]
+      },
+      {
+        "id": "S0375L05",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "what she was doing", "target": "qué estaba haciendo"},
+        "components": [
+          {"known": "what", "target": "qué"},
+          {"known": "she was doing", "target": "estaba haciendo"}
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "seed_id": "S0385",
+    "seed_pair": {
+      "known": "Did you agree with her?",
+      "target": "¿Estuviste de acuerdo con ella?"
+    },
+    "legos": [
+      {
+        "id": "S0385L01",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "did you agree with", "target": "estuviste de acuerdo con"},
+        "components": [
+          {"known": "you", "target": "tú"},
+          {"known": "with", "target": "con"}
+        ]
+      },
+      {
+        "id": "S0385L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "with", "target": "con"}
+      },
+      {
+        "id": "S0385L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "her", "target": "ella"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0386",
+    "seed_pair": {
+      "known": "Yes I agreed with her.",
+      "target": "Sí, estuve de acuerdo con ella."
+    },
+    "legos": [
+      {
+        "id": "S0386L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "yes", "target": "sí"}
+      },
+      {
+        "id": "S0386L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I agreed with", "target": "estuve de acuerdo con"},
+        "components": [
+          {"known": "I", "target": "yo"},
+          {"known": "with", "target": "con"}
+        ]
+      },
+      {
+        "id": "S0386L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "with", "target": "con"}
+      },
+      {
+        "id": "S0386L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "her", "target": "ella"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0387",
+    "seed_pair": {
+      "known": "No I didn't think she was right.",
+      "target": "No, no pensé que ella tenía razón."
+    },
+    "legos": [
+      {
+        "id": "S0387L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "no", "target": "no"}
+      },
+      {
+        "id": "S0387L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I didn't think", "target": "no pensé"},
+        "components": [
+          {"known": "I", "target": "yo"},
+          {"known": "think", "target": "pensar"}
+        ]
+      },
+      {
+        "id": "S0387L03",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "she was right", "target": "ella tenía razón"},
+        "components": [
+          {"known": "she", "target": "ella"},
+          {"known": "was right", "target": "tenía razón"}
+        ]
+      },
+      {
+        "id": "S0387L04",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "she", "target": "ella"}
+      },
+      {
+        "id": "S0387L05",
+        "type": "M",
+        "new": false,
+        "lego": {"known": "was right", "target": "tenía razón"},
+        "components": [
+          {"known": "right", "target": "razón"}
+        ]
+      },
+      {
+        "id": "S0387L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "right", "target": "razón"}
+      }
+    ]
+  }
+]

@@ -1,0 +1,193 @@
+[
+  {
+    "seed_id": "S0382",
+    "seed_pair": {
+      "known": "Did you ask where he wanted to put it?",
+      "target": "¿Preguntaste dónde quería ponerlo?"
+    },
+    "legos": [
+      {
+        "id": "S0382L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "did you ask",
+          "target": "preguntaste"
+        }
+      },
+      {
+        "id": "S0382L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "where",
+          "target": "dónde"
+        }
+      },
+      {
+        "id": "S0382L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he wanted",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0382L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to put it",
+          "target": "ponerlo"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0383",
+    "seed_pair": {
+      "known": "Yes he said he wanted to put it in the garden.",
+      "target": "Sí, dijo que quería ponerlo en el jardín."
+    },
+    "legos": [
+      {
+        "id": "S0383L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yes",
+          "target": "sí"
+        }
+      },
+      {
+        "id": "S0383L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he said",
+          "target": "dijo"
+        }
+      },
+      {
+        "id": "S0383L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "he wanted",
+          "target": "quería"
+        }
+      },
+      {
+        "id": "S0383L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to put it",
+          "target": "ponerlo"
+        }
+      },
+      {
+        "id": "S0383L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "in",
+          "target": "en"
+        }
+      },
+      {
+        "id": "S0383L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "the garden",
+          "target": "el jardín"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0384",
+    "seed_pair": {
+      "known": "I couldn't agree with what he said a moment ago.",
+      "target": "No pude estar de acuerdo con lo que dijo hace un momento."
+    },
+    "legos": [
+      {
+        "id": "S0384L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "couldn't",
+          "target": "no pude"
+        }
+      },
+      {
+        "id": "S0384L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "agree",
+          "target": "estar de acuerdo"
+        }
+      },
+      {
+        "id": "S0384L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "with",
+          "target": "con"
+        }
+      },
+      {
+        "id": "S0384L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "what he said",
+          "target": "lo que dijo"
+        },
+        "components": [
+          {
+            "known": "what",
+            "target": "lo que"
+          },
+          {
+            "known": "he said",
+            "target": "dijo"
+          }
+        ]
+      },
+      {
+        "id": "S0384L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "he said",
+          "target": "dijo"
+        }
+      },
+      {
+        "id": "S0384L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a moment ago",
+          "target": "hace un momento"
+        },
+        "components": [
+          {
+            "known": "a moment",
+            "target": "un momento"
+          },
+          {
+            "known": "ago",
+            "target": "hace"
+          }
+        ]
+      }
+    ]
+  }
+]
