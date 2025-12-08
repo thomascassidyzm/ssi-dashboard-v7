@@ -513,6 +513,88 @@ app.post('/api/courses/:courseCode/sync', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/create
+ * Create a new course directory structure
+ *
+ * Creates the local VFS directory and initializes course metadata.
+ * The course can then be populated through the pipeline phases.
+ */
+app.post('/api/courses/create', async (req, res) => {
+  const { courseCode, displayName, sourceLanguage, targetLanguage, seedStart, seedEnd, seedCount, version } = req.body;
+
+  console.log(`[Orchestrator] Creating course: ${courseCode}`);
+
+  if (!courseCode || !sourceLanguage || !targetLanguage) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      required: ['courseCode', 'sourceLanguage', 'targetLanguage']
+    });
+  }
+
+  try {
+    const coursePath = path.join(__dirname, '../../public/vfs/courses', courseCode);
+
+    // Check if directory already exists
+    if (fs.existsSync(coursePath)) {
+      return res.status(409).json({
+        error: 'Course already exists',
+        courseCode,
+        path: coursePath
+      });
+    }
+
+    // Create course directory
+    fs.mkdirSync(coursePath, { recursive: true });
+
+    // Create course metadata file
+    const metadata = {
+      courseCode,
+      displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+      sourceLanguage,
+      targetLanguage,
+      seedRange: {
+        start: seedStart || 1,
+        end: seedEnd || 668
+      },
+      seedCount: seedCount || (seedEnd - seedStart + 1),
+      version: version || '1.0',
+      createdAt: new Date().toISOString(),
+      status: 'initialized',
+      phases: {
+        phase1: { status: 'pending' },
+        phase2: { status: 'pending' },
+        phase3: { status: 'pending' },
+        phase8: { status: 'pending' },
+        phase9: { status: 'pending' }
+      }
+    };
+
+    // Write metadata file
+    fs.writeFileSync(
+      path.join(coursePath, 'course_metadata.json'),
+      JSON.stringify(metadata, null, 2)
+    );
+
+    console.log(`[Orchestrator] Course created: ${courseCode} at ${coursePath}`);
+
+    res.json({
+      success: true,
+      courseCode,
+      path: coursePath,
+      metadata
+    });
+
+  } catch (error) {
+    console.error(`[Orchestrator] Failed to create course ${courseCode}:`, error);
+    res.status(500).json({
+      error: 'Failed to create course',
+      message: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/files/:filename
  * Proxy course files from S3 to avoid CORS issues
  */
