@@ -2085,7 +2085,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
  *
- * APML v11.0: Prompts are co-located with services in services/phases/*/PROMPT.md
+ * APML v11.0: Prompts are co-located with services in services/phases/{phase}/PROMPT.md
  */
 app.get('/api/phase-intelligence/:phase', async (req, res) => {
   try {
