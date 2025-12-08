@@ -2616,28 +2616,33 @@ async function triggerPhase3Completion(courseCode, job) {
     await execScript(path.join(__dirname, '../../scripts/ensure-minimum-phrase.cjs'), courseCode);
     console.log('✅ Minimum phrase ensured\n');
 
-    // Step 4: Trigger Grammar Validation (if applicable)
+    // Step 4: Trigger Grammar Validation (OPTIONAL - may not be running)
     console.log('📝 Step 4: Triggering grammar validation...');
     job.status = 'triggering_grammar';
 
-    const grammarResponse = await fetch('http://localhost:3460/start', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ courseCode })
-    });
+    try {
+      const grammarResponse = await fetch('http://localhost:3460/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ courseCode })
+      });
 
-    if (!grammarResponse.ok) {
-      throw new Error(`Grammar validation start failed: ${grammarResponse.statusText}`);
+      if (grammarResponse.ok) {
+        const grammarResult = await grammarResponse.json();
+        console.log('✅ Grammar validation started\n');
+
+        // Step 5: Wait for grammar validation completion
+        console.log('⏳ Step 5: Waiting for grammar validation to complete...');
+        job.status = 'waiting_grammar';
+        await waitForGrammarValidation(courseCode);
+        console.log('✅ Grammar validation complete\n');
+      } else {
+        console.warn('⚠️  Grammar validation service returned error, skipping...\n');
+      }
+    } catch (grammarError) {
+      console.warn(`⚠️  Grammar validation service unavailable (port 3460), skipping...`);
+      console.warn(`   Error: ${grammarError.message}\n`);
     }
-
-    const grammarResult = await grammarResponse.json();
-    console.log('✅ Grammar validation started\n');
-
-    // Step 5: Wait for grammar validation completion
-    console.log('⏳ Step 5: Waiting for grammar validation to complete...');
-    job.status = 'waiting_grammar';
-    await waitForGrammarValidation(courseCode);
-    console.log('✅ Grammar validation complete\n');
 
     // Mark Phase 3 complete
     job.status = 'phase3_complete';

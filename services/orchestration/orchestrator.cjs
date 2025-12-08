@@ -37,6 +37,8 @@ const PHASE_SERVERS = {
   // Phase 1: Translation + LEGO Extraction (two services, one conceptual phase)
   '1_translation': process.env.PHASE1_TRANSLATION_URL || 'http://localhost:3457',
   '1_lego': process.env.PHASE1_LEGO_URL || 'http://localhost:3458',
+  // Phase 2: Conflict Resolution (uses same server as 1_lego)
+  2: process.env.PHASE1_LEGO_URL || 'http://localhost:3458',
   // Phase 3: Basket Generation (APML v9.0 terminology)
   3: process.env.PHASE3_URL || 'http://localhost:3459',
   // Manifest: Course Compilation (APML v9.0 terminology)
@@ -1795,24 +1797,27 @@ app.get('/api/languages', async (req, res) => {
 /**
  * GET /api/canonical-seeds
  * Serve canonical seeds to agents via ngrok
- * Query params: ?limit=N&start=M (defaults: limit=668, start=1)
+ * Query params: ?start=N&end=M or ?start=N&limit=M (defaults: all 668 seeds)
  */
 app.get('/api/canonical-seeds', async (req, res) => {
   try {
     const canonicalPath = path.join(__dirname, '../../public/vfs/canonical/canonical_seeds.json');
     const seedsArray = await fs.readJSON(canonicalPath);
 
-    const limit = parseInt(req.query.limit) || 668;
+    // Support both limit-based and range-based queries
     const start = parseInt(req.query.start) || 1;
+    const end = parseInt(req.query.end);
+    const limit = end ? (end - start + 1) : (parseInt(req.query.limit) || 668);
 
     // Filter seeds by range (array is 0-indexed, but seed_id is 1-indexed)
     const startIdx = start - 1;
-    const endIdx = Math.min(startIdx + limit, 668);
+    const endIdx = Math.min(startIdx + limit, seedsArray.length);
     const filteredSeeds = seedsArray.slice(startIdx, endIdx);
 
     res.json({
-      total_available: 668,
+      total_available: seedsArray.length,
       start,
+      end: end || (start + filteredSeeds.length - 1),
       limit,
       count: filteredSeeds.length,
       seeds: filteredSeeds
@@ -2815,6 +2820,124 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
 });
 
 /**
+ * POST /api/phase1/:courseCode/upload-batch
+ * Proxy to Phase 1 server - workers upload their completed batches here
+ */
+app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
+  const { courseCode } = req.params;
+  const batchData = req.body;
+
+  if (!Array.isArray(batchData)) {
+    return res.status(400).json({ error: 'Expected JSON array of seed objects' });
+  }
+
+  const batchesDir = path.join(VFS_ROOT, courseCode, 'phase1_batches');
+  await fs.ensureDir(batchesDir);
+
+  // Save batch with timestamp + random suffix to avoid collisions
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
+  await fs.writeJSON(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
+
+  console.log(`[Orchestrator] ✅ Phase 1 batch received: ${batchData.length} seeds → ${batchFile}`);
+
+  res.json({ success: true, received: batchData.length, file: batchFile });
+});
+
+/**
+ * POST /api/phase1/:courseCode/master-complete
+ * Masters report completion here
+ */
+app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
+  const { courseCode } = req.params;
+  const { masterNum, seedsProcessed } = req.body;
+
+  console.log(`[Orchestrator] ✅ Phase 1 Master ${masterNum} complete: ${seedsProcessed} seeds`);
+
+  // Track master completion
+  let phase1State = courseProgress.get(`${courseCode}_phase1`) || { mastersComplete: 0, totalMasters: 15, seedsProcessed: 0 };
+  phase1State.mastersComplete++;
+  phase1State.seedsProcessed += seedsProcessed || 0;
+  courseProgress.set(`${courseCode}_phase1`, phase1State);
+
+  // Check if all masters complete
+  if (phase1State.mastersComplete >= phase1State.totalMasters) {
+    console.log(`[Orchestrator] 🎉 All Phase 1 masters complete! Merging batches...`);
+
+    // Merge all batch files
+    const batchesDir = path.join(VFS_ROOT, courseCode, 'phase1_batches');
+    const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+
+    const allSeeds = [];
+    for (const file of batchFiles) {
+      const batch = await fs.readJSON(path.join(batchesDir, file));
+      allSeeds.push(...batch);
+    }
+
+    // Sort by seed_id
+    allSeeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+    // Write draft_lego_pairs.json
+    const outputPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+    await fs.writeJSON(outputPath, allSeeds, { spaces: 2 });
+
+    console.log(`[Orchestrator] ✅ Merged ${allSeeds.length} seeds → draft_lego_pairs.json`);
+
+    // Trigger Phase 2 (Conflict Resolution)
+    console.log(`[Orchestrator] → Triggering Phase 2 (Conflict Resolution)...`);
+
+    const phase2Server = PHASE_SERVERS[2];
+
+    try {
+      // Step 1: Detect conflicts
+      console.log(`[Orchestrator]    Step 1: Detecting conflicts...`);
+      const detectResponse = await axios.post(`${phase2Server}/phase2/detect`, { courseCode });
+      const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
+      console.log(`[Orchestrator]    ✓ Found ${conflictCount} conflicts`);
+
+      // Step 2: Apply LEGO reuse tracking
+      console.log(`[Orchestrator]    Step 2: Applying LEGO reuse tracking...`);
+      const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
+      let resolutions = [];
+      if (await fs.pathExists(resolutionsPath)) {
+        const resData = await fs.readJSON(resolutionsPath);
+        resolutions = resData.resolutions || resData || [];
+        console.log(`[Orchestrator]    📄 Found ${resolutions.length} manual resolutions`);
+      }
+
+      const applyResponse = await axios.post(`${phase2Server}/phase2/apply`, {
+        courseCode,
+        resolutions
+      });
+
+      const summary = applyResponse.data?.summary || {};
+      console.log(`[Orchestrator]    ✓ Created lego_pairs.json`);
+      console.log(`[Orchestrator]      - Unique LEGOs (new: true): ${summary.uniqueNew || 'N/A'}`);
+      console.log(`[Orchestrator]      - Exact duplicates: ${summary.exactDuplicates || 'N/A'}`);
+      console.log(`[Orchestrator]      - Embedded: ${summary.embeddedMatches || 'N/A'}`);
+
+      // Step 3: Trigger Phase 3
+      console.log(`[Orchestrator] → Phase 2 complete, triggering Phase 3 in 2s...`);
+      setTimeout(async () => {
+        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
+        try {
+          const phase3Server = PHASE_SERVERS[3];
+          await axios.post(`${phase3Server}/start`, { courseCode, totalSeeds: allSeeds.length });
+          console.log(`[Orchestrator] ✅ Phase 3 started`);
+        } catch (phase3Error) {
+          console.error(`[Orchestrator] ❌ Failed to start Phase 3:`, phase3Error.message);
+        }
+      }, 2000);
+
+    } catch (phase2Error) {
+      console.error(`[Orchestrator] ❌ Phase 2 failed:`, phase2Error.message);
+    }
+  }
+
+  res.json({ success: true, masterNum, acknowledged: true });
+});
+
+/**
  * POST /api/phase3/:courseCode/submit
  * Accept completed lego_pairs.json and introductions.json from agents via ngrok
  */
@@ -3050,7 +3173,7 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
       setTimeout(() => {
         console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
         addProgressLog(courseCode, 'Starting Phase 3 (basket generation)');
-        triggerPhase(courseCode, 5);
+        triggerPhase(courseCode, 3);
       }, 2000);
 
       // Auto-publish to GitHub for live dashboard visibility
