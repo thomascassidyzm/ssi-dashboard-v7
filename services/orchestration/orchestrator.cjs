@@ -400,6 +400,117 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/:courseCode/sync
+ * Sync local course files to S3
+ *
+ * Uploads course files from local VFS to S3 (popty-bach-lfs bucket).
+ * This allows syncing courses at any stage of progress.
+ *
+ * Request body (optional):
+ * {
+ *   "files": ["lego_pairs.json", "lego_baskets.json"],  // specific files (default: all)
+ *   "force": true  // force upload even if unchanged
+ * }
+ */
+app.post('/api/courses/:courseCode/sync', async (req, res) => {
+  const { courseCode } = req.params;
+  const { files, force = false } = req.body || {};
+
+  console.log(`[Orchestrator] Sync request for ${courseCode}`);
+
+  // All syncable course files
+  const allFiles = [
+    'seed_pairs.json',
+    'draft_lego_pairs.json',
+    'lego_pairs.json',
+    'lego_baskets.json',
+    'introductions.json',
+    'course_manifest.json'
+  ];
+
+  const filesToSync = files && files.length > 0 ? files : allFiles;
+
+  try {
+    const s3Service = require('../s3-service.cjs');
+    const vfsPath = path.join(__dirname, '../../public/vfs/courses', courseCode);
+
+    // Check if local course directory exists
+    if (!fs.existsSync(vfsPath)) {
+      return res.status(404).json({
+        error: 'Course directory not found locally',
+        path: vfsPath
+      });
+    }
+
+    const results = {
+      success: true,
+      courseCode,
+      synced: [],
+      skipped: [],
+      errors: [],
+      timestamp: new Date().toISOString()
+    };
+
+    for (const filename of filesToSync) {
+      const localPath = path.join(vfsPath, filename);
+
+      // Check if local file exists
+      if (!fs.existsSync(localPath)) {
+        results.skipped.push({ file: filename, reason: 'not_found_locally' });
+        continue;
+      }
+
+      try {
+        // Read local file
+        const localContent = fs.readFileSync(localPath, 'utf-8');
+        const localData = JSON.parse(localContent);
+
+        // Check if S3 version differs (unless force)
+        if (!force) {
+          try {
+            const s3Data = await s3Service.readCourseFile(courseCode, filename);
+            if (JSON.stringify(s3Data) === JSON.stringify(localData)) {
+              results.skipped.push({ file: filename, reason: 'unchanged' });
+              continue;
+            }
+          } catch (e) {
+            // File doesn't exist on S3 - proceed with upload
+          }
+        }
+
+        // Upload to S3
+        await s3Service.writeCourseFile(courseCode, filename, localData);
+        console.log(`[Orchestrator] Synced ${courseCode}/${filename} to S3`);
+
+        results.synced.push({
+          file: filename,
+          size: localContent.length
+        });
+
+      } catch (fileError) {
+        console.error(`[Orchestrator] Error syncing ${filename}:`, fileError.message);
+        results.errors.push({ file: filename, error: fileError.message });
+      }
+    }
+
+    results.success = results.errors.length === 0;
+
+    console.log(`[Orchestrator] Sync complete for ${courseCode}: ${results.synced.length} synced, ${results.skipped.length} skipped, ${results.errors.length} errors`);
+
+    res.json(results);
+
+  } catch (error) {
+    console.error(`[Orchestrator] Sync failed for ${courseCode}:`, error);
+    res.status(500).json({
+      success: false,
+      error: 'Sync failed',
+      message: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/files/:filename
  * Proxy course files from S3 to avoid CORS issues
  */

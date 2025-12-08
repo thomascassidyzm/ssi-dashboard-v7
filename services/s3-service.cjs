@@ -393,7 +393,9 @@ async function buildMasteredIndex(bucket = STAGE_BUCKET) {
  */
 async function writeCourseFile(courseCode, filename, content) {
   const key = `courses/${courseCode}/${filename}`;
-  await uploadToLFS(key, JSON.stringify(content, null, 2), 'application/json');
+  // Convert to Buffer to avoid uploadToLFS treating the string as a file path
+  const jsonContent = JSON.stringify(content, null, 2);
+  await uploadToLFS(key, Buffer.from(jsonContent, 'utf-8'), 'application/json');
 }
 
 module.exports = {
