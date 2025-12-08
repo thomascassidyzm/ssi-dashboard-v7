@@ -288,8 +288,45 @@
               </div>
             </div>
 
-            <!-- Next Steps Info -->
-            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
+            <!-- Existence Check Result -->
+            <div v-if="existenceCheck.checking" class="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
+              <div class="flex items-center gap-3">
+                <div class="animate-spin w-5 h-5 border-2 border-emerald-500 border-t-transparent rounded-full"></div>
+                <span class="text-slate-300">Checking if course already exists...</span>
+              </div>
+            </div>
+
+            <div v-else-if="existenceCheck.exists" class="bg-amber-900/20 border border-amber-500/30 rounded-lg p-4">
+              <div class="flex items-start gap-3">
+                <span class="text-amber-400 text-xl">⚠️</span>
+                <div class="text-sm flex-1">
+                  <p class="text-amber-300 font-medium mb-2">Course already exists!</p>
+                  <p class="text-slate-400 mb-3">
+                    A course with code <span class="font-mono text-amber-400">{{ computedCourseCode }}</span> already exists
+                    <span v-if="existenceCheck.existsLocal && existenceCheck.existsS3">(locally and in S3)</span>
+                    <span v-else-if="existenceCheck.existsLocal">(locally)</span>
+                    <span v-else-if="existenceCheck.existsS3">(in S3)</span>.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <button
+                      @click="useNewVersion"
+                      class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm px-4 py-2 rounded transition"
+                    >
+                      Create as {{ existenceCheck.suggestedVersion }}
+                    </button>
+                    <router-link
+                      :to="`/production/${computedCourseCode}`"
+                      class="bg-slate-600 hover:bg-slate-500 text-white text-sm px-4 py-2 rounded transition"
+                    >
+                      View existing course
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Next Steps Info (only show if no conflict) -->
+            <div v-else class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4">
               <div class="flex items-start gap-3">
                 <span class="text-emerald-400 text-xl">✨</span>
                 <div class="text-sm">
@@ -330,10 +367,12 @@
         <button
           v-else
           @click="createCourse"
-          :disabled="creating"
+          :disabled="creating || existenceCheck.checking || existenceCheck.exists"
           class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-lg transition hover:-translate-y-0.5"
         >
           <span v-if="creating">Creating...</span>
+          <span v-else-if="existenceCheck.checking">Checking...</span>
+          <span v-else-if="existenceCheck.exists">Resolve Conflict First</span>
           <span v-else>Create Course</span>
         </button>
       </div>
@@ -389,6 +428,18 @@ const errors = ref({
   sourceLanguage: '',
   targetLanguage: ''
 })
+
+// Course existence check state
+const existenceCheck = ref({
+  checking: false,
+  exists: false,
+  existsLocal: false,
+  existsS3: false,
+  suggestedVersion: null
+})
+
+// Override course code (when user chooses new version)
+const overrideCourseCode = ref(null)
 
 // Load languages from API on mount
 onMounted(async () => {
@@ -454,6 +505,10 @@ async function loadLanguages() {
 
 // Auto-compute course code from language selections
 const computedCourseCode = computed(() => {
+  // Use override if set (when user chooses new version)
+  if (overrideCourseCode.value) {
+    return overrideCourseCode.value
+  }
   if (!formData.value.targetLanguage || !formData.value.sourceLanguage) {
     return ''
   }
@@ -528,15 +583,64 @@ const canProceed = computed(() => {
   return validateStep(currentStep.value)
 })
 
+// Check if course already exists
+async function checkCourseExists() {
+  if (!computedCourseCode.value) return
+
+  existenceCheck.value.checking = true
+  existenceCheck.value.exists = false
+
+  try {
+    const response = await apiClient.get(`/api/courses/${computedCourseCode.value}/exists`)
+    existenceCheck.value = {
+      checking: false,
+      exists: response.data.exists,
+      existsLocal: response.data.existsLocal,
+      existsS3: response.data.existsS3,
+      suggestedVersion: response.data.suggestedVersion
+    }
+  } catch (error) {
+    console.error('Failed to check course existence:', error)
+    existenceCheck.value.checking = false
+    // Assume doesn't exist if check fails
+    existenceCheck.value.exists = false
+  }
+}
+
+// Use suggested new version
+function useNewVersion() {
+  if (existenceCheck.value.suggestedVersion) {
+    overrideCourseCode.value = existenceCheck.value.suggestedVersion
+    existenceCheck.value.exists = false
+    existenceCheck.value.suggestedVersion = null
+  }
+}
+
 // Navigation
-const nextStep = () => {
+const nextStep = async () => {
   if (validateStep(currentStep.value) && currentStep.value < steps.length - 1) {
     currentStep.value++
+
+    // Check course existence when entering Review step
+    if (currentStep.value === 2) {
+      await checkCourseExists()
+    }
   }
 }
 
 const previousStep = () => {
   if (currentStep.value > 0) {
+    // Reset override and existence check when going back
+    if (currentStep.value === 2) {
+      overrideCourseCode.value = null
+      existenceCheck.value = {
+        checking: false,
+        exists: false,
+        existsLocal: false,
+        existsS3: false,
+        suggestedVersion: null
+      }
+    }
     currentStep.value--
   }
 }

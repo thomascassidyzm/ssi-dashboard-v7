@@ -319,6 +319,87 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/exists
+ * Check if a course exists (local VFS or S3)
+ * Used by Create New Course wizard to handle conflicts
+ */
+app.get('/api/courses/:courseCode/exists', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const coursePath = path.join(VFS_ROOT, courseCode);
+    let existsLocal = false;
+    let existsS3 = false;
+    let localFiles = [];
+    let s3Files = [];
+
+    // Check local VFS
+    try {
+      const stats = await fs.stat(coursePath);
+      if (stats.isDirectory()) {
+        existsLocal = true;
+        const files = await fs.readdir(coursePath);
+        localFiles = files.filter(f => f.endsWith('.json'));
+      }
+    } catch (err) {
+      // Directory doesn't exist locally
+    }
+
+    // Check S3
+    try {
+      const s3Service = require('../s3-service.cjs');
+      const s3Contents = await s3Service.listCourseFiles(courseCode);
+      if (s3Contents && s3Contents.length > 0) {
+        existsS3 = true;
+        s3Files = s3Contents.map(f => f.Key.split('/').pop());
+      }
+    } catch (err) {
+      // S3 check failed or course doesn't exist there
+      console.log(`[Orchestrator] S3 check for ${courseCode}: ${err.message}`);
+    }
+
+    const exists = existsLocal || existsS3;
+
+    // Suggest next version if course exists
+    let suggestedVersion = null;
+    if (exists) {
+      // Find existing versions
+      const baseCode = courseCode.replace(/_v\d+$/, '');
+      const versionMatch = courseCode.match(/_v(\d+)$/);
+      const currentVersion = versionMatch ? parseInt(versionMatch[1]) : 1;
+
+      // Check for existing versioned courses
+      let nextVersion = currentVersion + 1;
+      let suggestedCode = `${baseCode}_v${nextVersion}`;
+
+      // Keep incrementing if suggested version also exists
+      try {
+        while (await fs.stat(path.join(VFS_ROOT, suggestedCode)).catch(() => false)) {
+          nextVersion++;
+          suggestedCode = `${baseCode}_v${nextVersion}`;
+        }
+      } catch (err) {
+        // Fine, suggested version doesn't exist
+      }
+
+      suggestedVersion = suggestedCode;
+    }
+
+    res.json({
+      exists,
+      existsLocal,
+      existsS3,
+      localFiles,
+      s3Files,
+      suggestedVersion
+    });
+  } catch (error) {
+    console.error(`Failed to check course existence ${courseCode}:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/files/:filename
  * Proxy course files from S3 to avoid CORS issues
  */
