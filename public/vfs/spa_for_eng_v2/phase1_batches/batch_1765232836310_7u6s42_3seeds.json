@@ -1,0 +1,266 @@
+[
+  {
+    "seed_id": "S0028",
+    "seed_pair": {
+      "known": "It's useful to start talking as soon as you can.",
+      "target": "Es útil empezar a hablar tan pronto como puedas."
+    },
+    "legos": [
+      {
+        "id": "S0028L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "useful",
+          "target": "útil"
+        }
+      },
+      {
+        "id": "S0028L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to start",
+          "target": "empezar"
+        }
+      },
+      {
+        "id": "S0028L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to talk",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0028L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you can",
+          "target": "puedas"
+        }
+      },
+      {
+        "id": "S0028L05",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "as soon as",
+          "target": "tan pronto como"
+        },
+        "components": [
+          {
+            "known": "soon",
+            "target": "pronto"
+          }
+        ]
+      },
+      {
+        "id": "S0028L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "as soon as you can",
+          "target": "tan pronto como puedas"
+        },
+        "components": [
+          {
+            "known": "as soon as",
+            "target": "tan pronto como"
+          },
+          {
+            "known": "you can",
+            "target": "puedas"
+          }
+        ]
+      },
+      {
+        "id": "S0028L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to start talking",
+          "target": "empezar a hablar"
+        },
+        "components": [
+          {
+            "known": "to start",
+            "target": "empezar"
+          },
+          {
+            "known": "talking",
+            "target": "hablar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0029",
+    "seed_pair": {
+      "known": "I'm looking forward to speaking better as soon as I can.",
+      "target": "Tengo ganas de hablar mejor tan pronto como pueda."
+    },
+    "legos": [
+      {
+        "id": "S0029L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm looking forward to",
+          "target": "Tengo ganas de"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "tengo"
+          },
+          {
+            "known": "looking forward",
+            "target": "ganas"
+          }
+        ]
+      },
+      {
+        "id": "S0029L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0029L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "better",
+          "target": "mejor"
+        }
+      },
+      {
+        "id": "S0029L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "speaking better",
+          "target": "hablar mejor"
+        },
+        "components": [
+          {
+            "known": "speaking",
+            "target": "hablar"
+          },
+          {
+            "known": "better",
+            "target": "mejor"
+          }
+        ]
+      },
+      {
+        "id": "S0029L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I can",
+          "target": "pueda"
+        }
+      },
+      {
+        "id": "S0029L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "as soon as I can",
+          "target": "tan pronto como pueda"
+        },
+        "components": [
+          {
+            "known": "as soon as",
+            "target": "tan pronto como"
+          },
+          {
+            "known": "I can",
+            "target": "pueda"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0030",
+    "seed_pair": {
+      "known": "I wanted to ask you something yesterday.",
+      "target": "Quería preguntarte algo ayer."
+    },
+    "legos": [
+      {
+        "id": "S0030L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I wanted",
+          "target": "Quería"
+        }
+      },
+      {
+        "id": "S0030L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to ask",
+          "target": "preguntar"
+        }
+      },
+      {
+        "id": "S0030L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you",
+          "target": "te"
+        }
+      },
+      {
+        "id": "S0030L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to ask you",
+          "target": "preguntarte"
+        },
+        "components": [
+          {
+            "known": "to ask",
+            "target": "preguntar"
+          },
+          {
+            "known": "you",
+            "target": "te"
+          }
+        ]
+      },
+      {
+        "id": "S0030L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "something",
+          "target": "algo"
+        }
+      },
+      {
+        "id": "S0030L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "yesterday",
+          "target": "ayer"
+        }
+      }
+    ]
+  }
+]

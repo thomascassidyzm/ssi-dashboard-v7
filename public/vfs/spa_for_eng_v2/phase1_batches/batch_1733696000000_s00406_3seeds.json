@@ -1,0 +1,279 @@
+[
+  {
+    "seed_id": "S0004",
+    "seed_pair": {
+      "known": "how to say something in Spanish",
+      "target": "cómo decir algo en español"
+    },
+    "legos": [
+      {
+        "id": "S0004L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "how",
+          "target": "cómo"
+        }
+      },
+      {
+        "id": "S0004L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to say",
+          "target": "decir"
+        }
+      },
+      {
+        "id": "S0004L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "something",
+          "target": "algo"
+        }
+      },
+      {
+        "id": "S0004L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "in",
+          "target": "en"
+        }
+      },
+      {
+        "id": "S0004L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      },
+      {
+        "id": "S0004L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "how to say",
+          "target": "cómo decir"
+        },
+        "components": [
+          {
+            "known": "how",
+            "target": "cómo"
+          },
+          {
+            "known": "to say",
+            "target": "decir"
+          }
+        ]
+      },
+      {
+        "id": "S0004L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "in Spanish",
+          "target": "en español"
+        },
+        "components": [
+          {
+            "known": "in",
+            "target": "en"
+          },
+          {
+            "known": "Spanish",
+            "target": "español"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0005",
+    "seed_pair": {
+      "known": "I'm going to practise speaking with someone else.",
+      "target": "Voy a practicar hablando con alguien más."
+    },
+    "legos": [
+      {
+        "id": "S0005L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to practise",
+          "target": "practicar"
+        }
+      },
+      {
+        "id": "S0005L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "speaking",
+          "target": "hablando"
+        }
+      },
+      {
+        "id": "S0005L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "with",
+          "target": "con"
+        }
+      },
+      {
+        "id": "S0005L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "someone",
+          "target": "alguien"
+        }
+      },
+      {
+        "id": "S0005L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "else",
+          "target": "más"
+        }
+      },
+      {
+        "id": "S0005L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm going to",
+          "target": "voy a"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "yo"
+          },
+          {
+            "known": "going to",
+            "target": "voy a"
+          }
+        ]
+      },
+      {
+        "id": "S0005L07",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "someone else",
+          "target": "alguien más"
+        },
+        "components": [
+          {
+            "known": "someone",
+            "target": "alguien"
+          },
+          {
+            "known": "else",
+            "target": "más"
+          }
+        ]
+      },
+      {
+        "id": "S0005L08",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "with someone else",
+          "target": "con alguien más"
+        },
+        "components": [
+          {
+            "known": "with",
+            "target": "con"
+          },
+          {
+            "known": "someone else",
+            "target": "alguien más"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0006",
+    "seed_pair": {
+      "known": "I'm trying to remember a word.",
+      "target": "Estoy intentando recordar una palabra."
+    },
+    "legos": [
+      {
+        "id": "S0006L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to remember",
+          "target": "recordar"
+        }
+      },
+      {
+        "id": "S0006L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "a",
+          "target": "una"
+        }
+      },
+      {
+        "id": "S0006L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "word",
+          "target": "palabra"
+        }
+      },
+      {
+        "id": "S0006L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm trying to",
+          "target": "estoy intentando"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "yo"
+          },
+          {
+            "known": "trying",
+            "target": "intentando"
+          }
+        ]
+      },
+      {
+        "id": "S0006L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a word",
+          "target": "una palabra"
+        },
+        "components": [
+          {
+            "known": "a",
+            "target": "una"
+          },
+          {
+            "known": "word",
+            "target": "palabra"
+          }
+        ]
+      }
+    ]
+  }
+]

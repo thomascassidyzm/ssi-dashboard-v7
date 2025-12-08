@@ -1,0 +1,213 @@
+[
+  {
+    "seed_id": "S0043",
+    "seed_pair": {
+      "known": "I wasn't thinking about how to answer.",
+      "target": "No estaba pensando en cómo responder."
+    },
+    "legos": [
+      {
+        "id": "S0043L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I wasn't thinking",
+          "target": "no estaba pensando"
+        },
+        "components": [
+          {
+            "known": "I wasn't",
+            "target": "no estaba"
+          },
+          {
+            "known": "thinking",
+            "target": "pensando"
+          }
+        ]
+      },
+      {
+        "id": "S0043L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I wasn't",
+          "target": "no estaba"
+        }
+      },
+      {
+        "id": "S0043L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "thinking",
+          "target": "pensando"
+        }
+      },
+      {
+        "id": "S0043L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "about",
+          "target": "en"
+        }
+      },
+      {
+        "id": "S0043L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "how to answer",
+          "target": "cómo responder"
+        },
+        "components": [
+          {
+            "known": "how",
+            "target": "cómo"
+          },
+          {
+            "known": "to answer",
+            "target": "responder"
+          }
+        ]
+      },
+      {
+        "id": "S0043L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "how",
+          "target": "cómo"
+        }
+      },
+      {
+        "id": "S0043L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to answer",
+          "target": "responder"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0044",
+    "seed_pair": {
+      "known": "Or if I need to improve.",
+      "target": "O si necesito mejorar."
+    },
+    "legos": [
+      {
+        "id": "S0044L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "or",
+          "target": "o"
+        }
+      },
+      {
+        "id": "S0044L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "if",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0044L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I need to improve",
+          "target": "necesito mejorar"
+        },
+        "components": [
+          {
+            "known": "I need",
+            "target": "necesito"
+          },
+          {
+            "known": "to improve",
+            "target": "mejorar"
+          }
+        ]
+      },
+      {
+        "id": "S0044L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I need",
+          "target": "necesito"
+        }
+      },
+      {
+        "id": "S0044L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to improve",
+          "target": "mejorar"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0045",
+    "seed_pair": {
+      "known": "I don't need to know everything.",
+      "target": "No necesito saber todo."
+    },
+    "legos": [
+      {
+        "id": "S0045L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I don't need to know",
+          "target": "no necesito saber"
+        },
+        "components": [
+          {
+            "known": "I don't need",
+            "target": "no necesito"
+          },
+          {
+            "known": "to know",
+            "target": "saber"
+          }
+        ]
+      },
+      {
+        "id": "S0045L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "everything",
+          "target": "todo"
+        }
+      },
+      {
+        "id": "S0045L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I don't need",
+          "target": "no necesito"
+        }
+      },
+      {
+        "id": "S0045L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to know",
+          "target": "saber"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,234 @@
+[
+  {
+    "seed_id": "S0037",
+    "seed_pair": {
+      "known": "I started to think about it carefully last month.",
+      "target": "Empecé a pensar en ello cuidadosamente el mes pasado."
+    },
+    "legos": [
+      {
+        "id": "S0037L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I started to think",
+          "target": "empecé a pensar"
+        },
+        "components": [
+          {
+            "known": "I started",
+            "target": "empecé"
+          },
+          {
+            "known": "to think",
+            "target": "pensar"
+          }
+        ]
+      },
+      {
+        "id": "S0037L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to think",
+          "target": "pensar"
+        }
+      },
+      {
+        "id": "S0037L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "about it",
+          "target": "en ello"
+        },
+        "components": [
+          {
+            "known": "about",
+            "target": "en"
+          },
+          {
+            "known": "it",
+            "target": "ello"
+          }
+        ]
+      },
+      {
+        "id": "S0037L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "carefully",
+          "target": "cuidadosamente"
+        }
+      },
+      {
+        "id": "S0037L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "last month",
+          "target": "el mes pasado"
+        },
+        "components": [
+          {
+            "known": "last",
+            "target": "pasado"
+          },
+          {
+            "known": "month",
+            "target": "mes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0038",
+    "seed_pair": {
+      "known": "I've been learning for about a week.",
+      "target": "He estado aprendiendo durante aproximadamente una semana."
+    },
+    "legos": [
+      {
+        "id": "S0038L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I've been learning",
+          "target": "he estado aprendiendo"
+        },
+        "components": [
+          {
+            "known": "I've been",
+            "target": "he estado"
+          },
+          {
+            "known": "learning",
+            "target": "aprendiendo"
+          }
+        ]
+      },
+      {
+        "id": "S0038L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      },
+      {
+        "id": "S0038L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "for",
+          "target": "durante"
+        }
+      },
+      {
+        "id": "S0038L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "about",
+          "target": "aproximadamente"
+        }
+      },
+      {
+        "id": "S0038L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a week",
+          "target": "una semana"
+        },
+        "components": [
+          {
+            "known": "a",
+            "target": "una"
+          },
+          {
+            "known": "week",
+            "target": "semana"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0039",
+    "seed_pair": {
+      "known": "But I'm a little tired this morning.",
+      "target": "Pero estoy un poco cansado esta mañana."
+    },
+    "legos": [
+      {
+        "id": "S0039L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "but",
+          "target": "pero"
+        }
+      },
+      {
+        "id": "S0039L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I'm",
+          "target": "estoy"
+        }
+      },
+      {
+        "id": "S0039L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a little",
+          "target": "un poco"
+        },
+        "components": [
+          {
+            "known": "a",
+            "target": "un"
+          },
+          {
+            "known": "little",
+            "target": "poco"
+          }
+        ]
+      },
+      {
+        "id": "S0039L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tired",
+          "target": "cansado"
+        }
+      },
+      {
+        "id": "S0039L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "this morning",
+          "target": "esta mañana"
+        },
+        "components": [
+          {
+            "known": "this",
+            "target": "esta"
+          },
+          {
+            "known": "morning",
+            "target": "mañana"
+          }
+        ]
+      }
+    ]
+  }
+]

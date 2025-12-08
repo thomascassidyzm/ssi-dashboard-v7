@@ -1,0 +1,207 @@
+[
+  {
+    "seed_id": "S0040",
+    "seed_pair": {
+      "known": "How do you feel at the moment?",
+      "target": "¿Cómo te sientes en este momento?"
+    },
+    "legos": [
+      {
+        "id": "S0040L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "how",
+          "target": "cómo"
+        }
+      },
+      {
+        "id": "S0040L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you feel",
+          "target": "te sientes"
+        },
+        "components": [
+          {
+            "known": "you",
+            "target": "te"
+          },
+          {
+            "known": "feel",
+            "target": "sientes"
+          }
+        ]
+      },
+      {
+        "id": "S0040L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "at the moment",
+          "target": "en este momento"
+        },
+        "components": [
+          {
+            "known": "at",
+            "target": "en"
+          },
+          {
+            "known": "the",
+            "target": "este"
+          },
+          {
+            "known": "moment",
+            "target": "momento"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0041",
+    "seed_pair": {
+      "known": "I feel okay, but I'm starting to feel tired.",
+      "target": "Me siento bien, pero estoy empezando a sentirme cansado."
+    },
+    "legos": [
+      {
+        "id": "S0041L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I feel",
+          "target": "me siento"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "me"
+          },
+          {
+            "known": "feel",
+            "target": "siento"
+          }
+        ]
+      },
+      {
+        "id": "S0041L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "okay",
+          "target": "bien"
+        }
+      },
+      {
+        "id": "S0041L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "but",
+          "target": "pero"
+        }
+      },
+      {
+        "id": "S0041L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm starting to feel",
+          "target": "estoy empezando a sentirme"
+        },
+        "components": [
+          {
+            "known": "I'm",
+            "target": "estoy"
+          },
+          {
+            "known": "starting",
+            "target": "empezando"
+          },
+          {
+            "known": "to",
+            "target": "a"
+          },
+          {
+            "known": "feel",
+            "target": "sentirme"
+          }
+        ]
+      },
+      {
+        "id": "S0041L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tired",
+          "target": "cansado"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0042",
+    "seed_pair": {
+      "known": "I was starting to feel better than last night.",
+      "target": "Estaba empezando a sentirme mejor que anoche."
+    },
+    "legos": [
+      {
+        "id": "S0042L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I was starting to feel",
+          "target": "estaba empezando a sentirme"
+        },
+        "components": [
+          {
+            "known": "I was",
+            "target": "estaba"
+          },
+          {
+            "known": "starting",
+            "target": "empezando"
+          },
+          {
+            "known": "to",
+            "target": "a"
+          },
+          {
+            "known": "feel",
+            "target": "sentirme"
+          }
+        ]
+      },
+      {
+        "id": "S0042L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "better",
+          "target": "mejor"
+        }
+      },
+      {
+        "id": "S0042L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "than",
+          "target": "que"
+        }
+      },
+      {
+        "id": "S0042L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "last night",
+          "target": "anoche"
+        }
+      }
+    ]
+  }
+]

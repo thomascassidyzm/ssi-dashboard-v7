@@ -1,0 +1,189 @@
+[
+  {
+    "seed_id": "S0013",
+    "seed_pair": {
+      "known": "You speak Spanish very well.",
+      "target": "Hablas español muy bien."
+    },
+    "legos": [
+      {
+        "id": "S0013L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you speak",
+          "target": "hablas"
+        }
+      },
+      {
+        "id": "S0013L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      },
+      {
+        "id": "S0013L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "very",
+          "target": "muy"
+        }
+      },
+      {
+        "id": "S0013L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "well",
+          "target": "bien"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0014",
+    "seed_pair": {
+      "known": "Do you speak Spanish all day?",
+      "target": "¿Hablas español todo el día?"
+    },
+    "legos": [
+      {
+        "id": "S0014L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do you speak",
+          "target": "hablas"
+        }
+      },
+      {
+        "id": "S0014L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      },
+      {
+        "id": "S0014L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "all day",
+          "target": "todo el día"
+        },
+        "components": [
+          {
+            "known": "all",
+            "target": "todo"
+          },
+          {
+            "known": "day",
+            "target": "día"
+          }
+        ]
+      },
+      {
+        "id": "S0014L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "day",
+          "target": "día"
+        }
+      },
+      {
+        "id": "S0014L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "all",
+          "target": "todo"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0015",
+    "seed_pair": {
+      "known": "And I want you to speak Spanish with me tomorrow.",
+      "target": "Y quiero que hables español conmigo mañana."
+    },
+    "legos": [
+      {
+        "id": "S0015L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "and",
+          "target": "y"
+        }
+      },
+      {
+        "id": "S0015L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I want",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0015L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you to speak",
+          "target": "que hables"
+        },
+        "components": [
+          {
+            "known": "to speak",
+            "target": "hablar"
+          }
+        ]
+      },
+      {
+        "id": "S0015L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0015L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      },
+      {
+        "id": "S0015L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "with me",
+          "target": "conmigo"
+        }
+      },
+      {
+        "id": "S0015L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tomorrow",
+          "target": "mañana"
+        }
+      }
+    ]
+  }
+]

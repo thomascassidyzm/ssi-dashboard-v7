@@ -1,0 +1,210 @@
+[
+  {
+    "seed_id": "S0031",
+    "seed_pair": {
+      "known": "You wanted to speak with me tonight.",
+      "target": "Querías hablar conmigo esta noche."
+    },
+    "legos": [
+      {
+        "id": "S0031L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you wanted",
+          "target": "querías"
+        }
+      },
+      {
+        "id": "S0031L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0031L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "with me",
+          "target": "conmigo"
+        }
+      },
+      {
+        "id": "S0031L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tonight",
+          "target": "esta noche"
+        }
+      },
+      {
+        "id": "S0031L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you wanted to speak",
+          "target": "querías hablar"
+        },
+        "components": [
+          {
+            "known": "you wanted",
+            "target": "querías"
+          },
+          {
+            "known": "to speak",
+            "target": "hablar"
+          }
+        ]
+      },
+      {
+        "id": "S0031L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to speak with me",
+          "target": "hablar conmigo"
+        },
+        "components": [
+          {
+            "known": "to speak",
+            "target": "hablar"
+          },
+          {
+            "known": "with me",
+            "target": "conmigo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0032",
+    "seed_pair": {
+      "known": "Did you want to show me something?",
+      "target": "¿Querías mostrarme algo?"
+    },
+    "legos": [
+      {
+        "id": "S0032L01",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "did you want",
+          "target": "querías"
+        }
+      },
+      {
+        "id": "S0032L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to show",
+          "target": "mostrar"
+        }
+      },
+      {
+        "id": "S0032L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to show me",
+          "target": "mostrarme"
+        }
+      },
+      {
+        "id": "S0032L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "something",
+          "target": "algo"
+        }
+      },
+      {
+        "id": "S0032L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "did you want to show",
+          "target": "querías mostrar"
+        },
+        "components": [
+          {
+            "known": "did you want",
+            "target": "querías"
+          },
+          {
+            "known": "to show",
+            "target": "mostrar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0033",
+    "seed_pair": {
+      "known": "How long have you been learning {target}?",
+      "target": "¿Cuánto tiempo llevas aprendiendo español?"
+    },
+    "legos": [
+      {
+        "id": "S0033L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "how long",
+          "target": "cuánto tiempo"
+        },
+        "components": [
+          {
+            "known": "how",
+            "target": "cuánto"
+          },
+          {
+            "known": "long",
+            "target": "tiempo"
+          }
+        ]
+      },
+      {
+        "id": "S0033L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "have you been learning",
+          "target": "llevas aprendiendo"
+        },
+        "components": [
+          {
+            "known": "learning",
+            "target": "aprendiendo"
+          }
+        ]
+      },
+      {
+        "id": "S0033L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      },
+      {
+        "id": "S0033L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "{target}",
+          "target": "español"
+        }
+      }
+    ]
+  }
+]

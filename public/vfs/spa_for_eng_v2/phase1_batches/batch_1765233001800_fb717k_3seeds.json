@@ -1,0 +1,297 @@
+[
+  {
+    "seed_id": "S0007",
+    "seed_pair": {
+      "known": "I want to try as hard as I can today.",
+      "target": "Quiero esforzarme tanto como pueda hoy."
+    },
+    "legos": [
+      {
+        "id": "S0007L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I want to",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0007L02",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I want",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0007L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "try as hard as I can",
+          "target": "esforzarme tanto como pueda"
+        },
+        "components": [
+          {
+            "known": "try",
+            "target": "esforzarme"
+          },
+          {
+            "known": "as hard as I can",
+            "target": "tanto como pueda"
+          }
+        ]
+      },
+      {
+        "id": "S0007L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "try",
+          "target": "esforzarme"
+        }
+      },
+      {
+        "id": "S0007L05",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "as hard as I can",
+          "target": "tanto como pueda"
+        },
+        "components": [
+          {
+            "known": "as hard as",
+            "target": "tanto como"
+          },
+          {
+            "known": "I can",
+            "target": "pueda"
+          }
+        ]
+      },
+      {
+        "id": "S0007L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "I can",
+          "target": "pueda"
+        }
+      },
+      {
+        "id": "S0007L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "today",
+          "target": "hoy"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0008",
+    "seed_pair": {
+      "known": "I'm going to try to explain what I mean.",
+      "target": "Voy a intentar explicar lo que quiero decir."
+    },
+    "legos": [
+      {
+        "id": "S0008L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I'm going to",
+          "target": "voy a"
+        }
+      },
+      {
+        "id": "S0008L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "try to explain",
+          "target": "intentar explicar"
+        },
+        "components": [
+          {
+            "known": "try to",
+            "target": "intentar"
+          },
+          {
+            "known": "explain",
+            "target": "explicar"
+          }
+        ]
+      },
+      {
+        "id": "S0008L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "try to",
+          "target": "intentar"
+        }
+      },
+      {
+        "id": "S0008L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to explain",
+          "target": "explicar"
+        }
+      },
+      {
+        "id": "S0008L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "explain",
+          "target": "explicar"
+        }
+      },
+      {
+        "id": "S0008L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "what I mean",
+          "target": "lo que quiero decir"
+        },
+        "components": [
+          {
+            "known": "what",
+            "target": "lo que"
+          },
+          {
+            "known": "I mean",
+            "target": "quiero decir"
+          }
+        ]
+      },
+      {
+        "id": "S0008L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "what",
+          "target": "lo que"
+        }
+      },
+      {
+        "id": "S0008L08",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "I mean",
+          "target": "quiero decir"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "quiero"
+          },
+          {
+            "known": "mean",
+            "target": "decir"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0009",
+    "seed_pair": {
+      "known": "I speak a little Spanish now.",
+      "target": "Hablo un poco de español ahora."
+    },
+    "legos": [
+      {
+        "id": "S0009L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I speak",
+          "target": "hablo"
+        }
+      },
+      {
+        "id": "S0009L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "a little Spanish",
+          "target": "un poco de español"
+        },
+        "components": [
+          {
+            "known": "a little",
+            "target": "un poco"
+          },
+          {
+            "known": "Spanish",
+            "target": "español"
+          }
+        ]
+      },
+      {
+        "id": "S0009L03",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "a little",
+          "target": "un poco"
+        },
+        "components": [
+          {
+            "known": "a",
+            "target": "un"
+          },
+          {
+            "known": "little",
+            "target": "poco"
+          }
+        ]
+      },
+      {
+        "id": "S0009L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "a",
+          "target": "un"
+        }
+      },
+      {
+        "id": "S0009L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "little",
+          "target": "poco"
+        }
+      },
+      {
+        "id": "S0009L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      },
+      {
+        "id": "S0009L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "now",
+          "target": "ahora"
+        }
+      }
+    ]
+  }
+]

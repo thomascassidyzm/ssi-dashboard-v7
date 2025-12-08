@@ -1,0 +1,258 @@
+[
+  {
+    "seed_id": "S0022",
+    "seed_pair": {
+      "known": "Because I want to meet people who speak Spanish.",
+      "target": "Porque quiero conocer a gente que hable español."
+    },
+    "legos": [
+      {
+        "id": "S0022L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Because",
+          "target": "Porque"
+        }
+      },
+      {
+        "id": "S0022L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I want",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0022L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to meet",
+          "target": "conocer"
+        }
+      },
+      {
+        "id": "S0022L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "people who speak",
+          "target": "gente que hable"
+        },
+        "components": [
+          {
+            "known": "people",
+            "target": "gente"
+          },
+          {
+            "known": "who",
+            "target": "que"
+          },
+          {
+            "known": "speak",
+            "target": "hable"
+          }
+        ]
+      },
+      {
+        "id": "S0022L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "people",
+          "target": "gente"
+        }
+      },
+      {
+        "id": "S0022L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "who",
+          "target": "que"
+        }
+      },
+      {
+        "id": "S0022L07",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0022L08",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Spanish",
+          "target": "español"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0023",
+    "seed_pair": {
+      "known": "I'm going to start talking more soon.",
+      "target": "Voy a empezar a hablar más pronto."
+    },
+    "legos": [
+      {
+        "id": "S0023L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm going to",
+          "target": "Voy a"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": ""
+          },
+          {
+            "known": "am going to",
+            "target": "Voy a"
+          }
+        ]
+      },
+      {
+        "id": "S0023L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "start talking",
+          "target": "empezar a hablar"
+        },
+        "components": [
+          {
+            "known": "start",
+            "target": "empezar"
+          },
+          {
+            "known": "to",
+            "target": "a"
+          },
+          {
+            "known": "talking",
+            "target": "hablar"
+          }
+        ]
+      },
+      {
+        "id": "S0023L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to start",
+          "target": "empezar"
+        }
+      },
+      {
+        "id": "S0023L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to talk",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0023L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "more",
+          "target": "más"
+        }
+      },
+      {
+        "id": "S0023L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "soon",
+          "target": "pronto"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0024",
+    "seed_pair": {
+      "known": "I'm not going to be able to remember easily.",
+      "target": "No voy a poder recordar fácilmente."
+    },
+    "legos": [
+      {
+        "id": "S0024L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm not going to",
+          "target": "No voy a"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": ""
+          },
+          {
+            "known": "am not going to",
+            "target": "No voy a"
+          }
+        ]
+      },
+      {
+        "id": "S0024L02",
+        "type": "M",
+        "new": false,
+        "lego": {
+          "known": "going to",
+          "target": "voy a"
+        },
+        "components": [
+          {
+            "known": "going",
+            "target": "voy"
+          },
+          {
+            "known": "to",
+            "target": "a"
+          }
+        ]
+      },
+      {
+        "id": "S0024L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "be able to",
+          "target": "poder"
+        }
+      },
+      {
+        "id": "S0024L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to remember",
+          "target": "recordar"
+        }
+      },
+      {
+        "id": "S0024L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "easily",
+          "target": "fácilmente"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,246 @@
+[
+  {
+    "seed_id": "S0010",
+    "seed_pair": {
+      "known": "I'm not sure if I can remember the whole sentence.",
+      "target": "No estoy seguro si puedo recordar toda la frase."
+    },
+    "legos": [
+      {
+        "id": "S0010L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm not sure",
+          "target": "no estoy seguro"
+        },
+        "components": [
+          {
+            "known": "I am",
+            "target": "estoy"
+          },
+          {
+            "known": "not",
+            "target": "no"
+          },
+          {
+            "known": "sure",
+            "target": "seguro"
+          }
+        ]
+      },
+      {
+        "id": "S0010L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "if",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0010L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I can",
+          "target": "puedo"
+        }
+      },
+      {
+        "id": "S0010L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to remember",
+          "target": "recordar"
+        }
+      },
+      {
+        "id": "S0010L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "the whole",
+          "target": "toda la"
+        },
+        "components": [
+          {
+            "known": "the",
+            "target": "la"
+          },
+          {
+            "known": "whole",
+            "target": "toda"
+          }
+        ]
+      },
+      {
+        "id": "S0010L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "sentence",
+          "target": "frase"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0011",
+    "seed_pair": {
+      "known": "I'd like to be able to speak after you finish.",
+      "target": "Me gustaría poder hablar después de que termines."
+    },
+    "legos": [
+      {
+        "id": "S0011L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'd like",
+          "target": "me gustaría"
+        },
+        "components": [
+          {
+            "known": "I",
+            "target": "me"
+          },
+          {
+            "known": "would like",
+            "target": "gustaría"
+          }
+        ]
+      },
+      {
+        "id": "S0011L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to be able to",
+          "target": "poder"
+        }
+      },
+      {
+        "id": "S0011L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0011L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "you finish",
+          "target": "termines"
+        }
+      },
+      {
+        "id": "S0011L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "after you finish",
+          "target": "después de que termines"
+        },
+        "components": [
+          {
+            "known": "after",
+            "target": "después de que"
+          },
+          {
+            "known": "you finish",
+            "target": "termines"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0012",
+    "seed_pair": {
+      "known": "I wouldn't like to guess what's going to happen tomorrow.",
+      "target": "No me gustaría adivinar qué va a pasar mañana."
+    },
+    "legos": [
+      {
+        "id": "S0012L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I wouldn't like",
+          "target": "no me gustaría"
+        },
+        "components": [
+          {
+            "known": "I would like",
+            "target": "me gustaría"
+          },
+          {
+            "known": "not",
+            "target": "no"
+          }
+        ]
+      },
+      {
+        "id": "S0012L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to guess",
+          "target": "adivinar"
+        }
+      },
+      {
+        "id": "S0012L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "qué"
+        }
+      },
+      {
+        "id": "S0012L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to happen",
+          "target": "pasar"
+        }
+      },
+      {
+        "id": "S0012L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "is going to happen",
+          "target": "va a pasar"
+        },
+        "components": [
+          {
+            "known": "is going to",
+            "target": "va a"
+          },
+          {
+            "known": "happen",
+            "target": "pasar"
+          }
+        ]
+      },
+      {
+        "id": "S0012L06",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "tomorrow",
+          "target": "mañana"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,251 @@
+[
+  {
+    "seed_id": "S0019",
+    "seed_pair": {
+      "known": "But I don't want to stop talking.",
+      "target": "Pero no quiero dejar de hablar."
+    },
+    "legos": [
+      {
+        "id": "S0019L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "but",
+          "target": "pero"
+        }
+      },
+      {
+        "id": "S0019L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I want",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0019L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to stop",
+          "target": "dejar de"
+        }
+      },
+      {
+        "id": "S0019L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "talking",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0019L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I don't want",
+          "target": "no quiero"
+        },
+        "components": [
+          {
+            "known": "not",
+            "target": "no"
+          },
+          {
+            "known": "I want",
+            "target": "quiero"
+          }
+        ]
+      },
+      {
+        "id": "S0019L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "stop talking",
+          "target": "dejar de hablar"
+        },
+        "components": [
+          {
+            "known": "to stop",
+            "target": "dejar de"
+          },
+          {
+            "known": "talking",
+            "target": "hablar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0020",
+    "seed_pair": {
+      "known": "You want to learn his name quickly.",
+      "target": "Quieres aprender su nombre rápidamente."
+    },
+    "legos": [
+      {
+        "id": "S0020L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0020L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to learn",
+          "target": "aprender"
+        }
+      },
+      {
+        "id": "S0020L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "his",
+          "target": "su"
+        }
+      },
+      {
+        "id": "S0020L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "name",
+          "target": "nombre"
+        }
+      },
+      {
+        "id": "S0020L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "quickly",
+          "target": "rápidamente"
+        }
+      },
+      {
+        "id": "S0020L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "his name",
+          "target": "su nombre"
+        },
+        "components": [
+          {
+            "known": "his",
+            "target": "su"
+          },
+          {
+            "known": "name",
+            "target": "nombre"
+          }
+        ]
+      },
+      {
+        "id": "S0020L07",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you want to learn",
+          "target": "quieres aprender"
+        },
+        "components": [
+          {
+            "known": "you want",
+            "target": "quieres"
+          },
+          {
+            "known": "to learn",
+            "target": "aprender"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0021",
+    "seed_pair": {
+      "known": "Why are you learning her name?",
+      "target": "¿Por qué estás aprendiendo su nombre?"
+    },
+    "legos": [
+      {
+        "id": "S0021L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "why",
+          "target": "por qué"
+        }
+      },
+      {
+        "id": "S0021L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      },
+      {
+        "id": "S0021L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "her",
+          "target": "su"
+        }
+      },
+      {
+        "id": "S0021L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "you are learning",
+          "target": "estás aprendiendo"
+        },
+        "components": [
+          {
+            "known": "you are",
+            "target": "estás"
+          },
+          {
+            "known": "learning",
+            "target": "aprendiendo"
+          }
+        ]
+      },
+      {
+        "id": "S0021L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "her name",
+          "target": "su nombre"
+        },
+        "components": [
+          {
+            "known": "her",
+            "target": "su"
+          },
+          {
+            "known": "name",
+            "target": "nombre"
+          }
+        ]
+      }
+    ]
+  }
+]

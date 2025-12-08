@@ -39,8 +39,8 @@ const execAsync = promisify(exec);
 const ajv = new Ajv({ allErrors: true });
 
 // Phase 8: Audio generation services
-const ttsService = require('./services/tts-service.cjs');
-const s3AudioService = require('./services/s3-audio-service.cjs');
+const ttsService = require('../../services/tts-service.cjs');
+const s3AudioService = require('../../services/s3-audio-service.cjs');
 
 // Language code service (centralized)
 const langService = require('../../services/language-code-service.cjs');
