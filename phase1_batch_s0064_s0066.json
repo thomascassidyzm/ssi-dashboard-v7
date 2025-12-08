@@ -1,0 +1,169 @@
+[
+  {
+    "seed_id": "S0064",
+    "seed_pair": {
+      "known": "Learning Spanish isn't easy but it is fun.",
+      "target": "Aprender español no es fácil pero es divertido."
+    },
+    "legos": [
+      {
+        "id": "S0064L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "learning", "target": "aprender"}
+      },
+      {
+        "id": "S0064L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "Spanish", "target": "español"}
+      },
+      {
+        "id": "S0064L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "isn't", "target": "no es"}
+      },
+      {
+        "id": "S0064L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "easy", "target": "fácil"}
+      },
+      {
+        "id": "S0064L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "but", "target": "pero"}
+      },
+      {
+        "id": "S0064L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "it is", "target": "es"}
+      },
+      {
+        "id": "S0064L07",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "fun", "target": "divertido"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0065",
+    "seed_pair": {
+      "known": "It's important to take time to test yourself.",
+      "target": "Es importante tomarte tiempo para ponerte a prueba."
+    },
+    "legos": [
+      {
+        "id": "S0065L01",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "it's important", "target": "es importante"},
+        "components": [
+          {"known": "is", "target": "es"},
+          {"known": "important", "target": "importante"}
+        ]
+      },
+      {
+        "id": "S0065L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "important", "target": "importante"}
+      },
+      {
+        "id": "S0065L03",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "to take time", "target": "tomarte tiempo"},
+        "components": [
+          {"known": "to take", "target": "tomar"},
+          {"known": "time", "target": "tiempo"}
+        ]
+      },
+      {
+        "id": "S0065L04",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "to take", "target": "tomar"}
+      },
+      {
+        "id": "S0065L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "time", "target": "tiempo"}
+      },
+      {
+        "id": "S0065L06",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "to test yourself", "target": "ponerte a prueba"},
+        "components": [
+          {"known": "to put", "target": "poner"},
+          {"known": "yourself", "target": "te"}
+        ]
+      },
+      {
+        "id": "S0065L07",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "to put", "target": "poner"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0066",
+    "seed_pair": {
+      "known": "It's not difficult to find the answer.",
+      "target": "No es difícil encontrar la respuesta."
+    },
+    "legos": [
+      {
+        "id": "S0066L01",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "it's not", "target": "no es"},
+        "components": [
+          {"known": "not", "target": "no"},
+          {"known": "is", "target": "es"}
+        ]
+      },
+      {
+        "id": "S0066L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "not", "target": "no"}
+      },
+      {
+        "id": "S0066L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "difficult", "target": "difícil"}
+      },
+      {
+        "id": "S0066L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to find", "target": "encontrar"}
+      },
+      {
+        "id": "S0066L05",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "the answer", "target": "la respuesta"},
+        "components": [
+          {"known": "the", "target": "la"},
+          {"known": "answer", "target": "respuesta"}
+        ]
+      },
+      {
+        "id": "S0066L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "answer", "target": "respuesta"}
+      }
+    ]
+  }
+]

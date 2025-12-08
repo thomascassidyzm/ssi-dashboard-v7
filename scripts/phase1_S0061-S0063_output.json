@@ -1,0 +1,211 @@
+[
+  {
+    "seed_id": "S0061",
+    "seed_pair": {
+      "known": "Could you say that again a little more slowly?",
+      "target": "¿Podrías decir eso otra vez un poco más despacio?"
+    },
+    "legos": [
+      {
+        "id": "S0061L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "could you", "target": "podrías"}
+      },
+      {
+        "id": "S0061L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "say", "target": "decir"}
+      },
+      {
+        "id": "S0061L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "eso"}
+      },
+      {
+        "id": "S0061L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "again", "target": "otra vez"}
+      },
+      {
+        "id": "S0061L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "a little", "target": "un poco"}
+      },
+      {
+        "id": "S0061L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "more", "target": "más"}
+      },
+      {
+        "id": "S0061L07",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "slowly", "target": "despacio"}
+      },
+      {
+        "id": "S0061L08",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "a little more slowly", "target": "un poco más despacio"},
+        "components": [
+          {"known": "a little", "target": "un poco"},
+          {"known": "more", "target": "más"},
+          {"known": "slowly", "target": "despacio"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0062",
+    "seed_pair": {
+      "known": "I'm not sure if I can help you at the same time.",
+      "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
+    },
+    "legos": [
+      {
+        "id": "S0062L01",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I'm", "target": "estoy"}
+      },
+      {
+        "id": "S0062L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "not", "target": "no"}
+      },
+      {
+        "id": "S0062L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "sure", "target": "seguro"}
+      },
+      {
+        "id": "S0062L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I'm not sure", "target": "no estoy seguro"},
+        "components": [
+          {"known": "I'm", "target": "estoy"},
+          {"known": "not", "target": "no"},
+          {"known": "sure", "target": "seguro"}
+        ]
+      },
+      {
+        "id": "S0062L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "if", "target": "si"}
+      },
+      {
+        "id": "S0062L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I can", "target": "puedo"}
+      },
+      {
+        "id": "S0062L07",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "help you", "target": "ayudarte"}
+      },
+      {
+        "id": "S0062L08",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "at the", "target": "al"}
+      },
+      {
+        "id": "S0062L09",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "same", "target": "mismo"}
+      },
+      {
+        "id": "S0062L10",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "time", "target": "tiempo"}
+      },
+      {
+        "id": "S0062L11",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "at the same time", "target": "al mismo tiempo"},
+        "components": [
+          {"known": "at the", "target": "al"},
+          {"known": "same", "target": "mismo"},
+          {"known": "time", "target": "tiempo"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0063",
+    "seed_pair": {
+      "known": "Are you sure you don't mind helping me?",
+      "target": "¿Estás seguro de que no te importa ayudarme?"
+    },
+    "legos": [
+      {
+        "id": "S0063L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "are you", "target": "estás"}
+      },
+      {
+        "id": "S0063L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "sure", "target": "seguro"}
+      },
+      {
+        "id": "S0063L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "that", "target": "que"}
+      },
+      {
+        "id": "S0063L04",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "you", "target": "te"}
+      },
+      {
+        "id": "S0063L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "don't", "target": "no"}
+      },
+      {
+        "id": "S0063L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "mind", "target": "importa"}
+      },
+      {
+        "id": "S0063L07",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "you don't mind", "target": "no te importa"},
+        "components": [
+          {"known": "you", "target": "te"},
+          {"known": "don't", "target": "no"},
+          {"known": "mind", "target": "importa"}
+        ]
+      },
+      {
+        "id": "S0063L08",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "helping me", "target": "ayudarme"}
+      }
+    ]
+  }
+]

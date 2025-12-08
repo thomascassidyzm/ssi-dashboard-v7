@@ -1,0 +1,166 @@
+[
+  {
+    "seed_id": "S0067",
+    "seed_pair": {
+      "known": "Why do you want to stop?",
+      "target": "¿Por qué quieres parar?"
+    },
+    "legos": [
+      {
+        "id": "S0067L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "why",
+          "target": "por qué"
+        }
+      },
+      {
+        "id": "S0067L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "do you want",
+          "target": "quieres"
+        }
+      },
+      {
+        "id": "S0067L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to stop",
+          "target": "parar"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0068",
+    "seed_pair": {
+      "known": "What are you looking for?",
+      "target": "¿Qué estás buscando?"
+    },
+    "legos": [
+      {
+        "id": "S0068L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "what",
+          "target": "qué"
+        }
+      },
+      {
+        "id": "S0068L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "are you",
+          "target": "estás"
+        }
+      },
+      {
+        "id": "S0068L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "looking for",
+          "target": "buscando"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0069",
+    "seed_pair": {
+      "known": "He didn't want to look after the young dog all afternoon.",
+      "target": "No quiso cuidar al perro joven toda la tarde."
+    },
+    "legos": [
+      {
+        "id": "S0069L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "didn't want",
+          "target": "no quiso"
+        }
+      },
+      {
+        "id": "S0069L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to look after the young dog",
+          "target": "cuidar al perro joven"
+        },
+        "components": [
+          {
+            "known": "to look after",
+            "target": "cuidar"
+          },
+          {
+            "known": "young",
+            "target": "joven"
+          },
+          {
+            "known": "dog",
+            "target": "perro"
+          }
+        ]
+      },
+      {
+        "id": "S0069L03",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to look after",
+          "target": "cuidar"
+        }
+      },
+      {
+        "id": "S0069L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "young",
+          "target": "joven"
+        }
+      },
+      {
+        "id": "S0069L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "dog",
+          "target": "perro"
+        }
+      },
+      {
+        "id": "S0069L06",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "all afternoon",
+          "target": "toda la tarde"
+        },
+        "components": [
+          {
+            "known": "afternoon",
+            "target": "tarde"
+          }
+        ]
+      },
+      {
+        "id": "S0069L07",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "afternoon",
+          "target": "tarde"
+        }
+      }
+    ]
+  }
+]

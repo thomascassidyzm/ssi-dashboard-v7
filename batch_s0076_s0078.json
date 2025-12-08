@@ -1,0 +1,141 @@
+[
+  {
+    "seed_id": "S0076",
+    "seed_pair": {
+      "known": "I'm very happy with how much I've learnt already.",
+      "target": "Estoy muy feliz con cuánto he aprendido ya."
+    },
+    "legos": [
+      {
+        "id": "S0076L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I'm", "target": "estoy"}
+      },
+      {
+        "id": "S0076L02",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "very", "target": "muy"}
+      },
+      {
+        "id": "S0076L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "happy", "target": "feliz"}
+      },
+      {
+        "id": "S0076L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "with", "target": "con"}
+      },
+      {
+        "id": "S0076L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "how much", "target": "cuánto"}
+      },
+      {
+        "id": "S0076L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "I've", "target": "he"}
+      },
+      {
+        "id": "S0076L07",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "learnt", "target": "aprendido"}
+      },
+      {
+        "id": "S0076L08",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "already", "target": "ya"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0077",
+    "seed_pair": {
+      "known": "I'm surprised at how quickly I'm starting to understand.",
+      "target": "Estoy sorprendido de lo rápido que estoy empezando a entender."
+    },
+    "legos": [
+      {
+        "id": "S0077L01",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I'm", "target": "estoy"}
+      },
+      {
+        "id": "S0077L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "surprised at", "target": "sorprendido de"},
+        "components": [
+          {"known": "surprised", "target": "sorprendido"}
+        ]
+      },
+      {
+        "id": "S0077L03",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "how quickly", "target": "lo rápido que"},
+        "components": [
+          {"known": "quickly", "target": "rápido"}
+        ]
+      },
+      {
+        "id": "S0077L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "starting to understand", "target": "empezando a entender"},
+        "components": [
+          {"known": "starting", "target": "empezando"},
+          {"known": "to understand", "target": "entender"}
+        ]
+      },
+      {
+        "id": "S0077L05",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "to understand", "target": "entender"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0078",
+    "seed_pair": {
+      "known": "I don't understand what you said.",
+      "target": "No entiendo lo que dijiste."
+    },
+    "legos": [
+      {
+        "id": "S0078L01",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I don't understand", "target": "no entiendo"},
+        "components": [
+          {"known": "I understand", "target": "entiendo"}
+        ]
+      },
+      {
+        "id": "S0078L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "what you said", "target": "lo que dijiste"},
+        "components": [
+          {"known": "you said", "target": "dijiste"}
+        ]
+      },
+      {
+        "id": "S0078L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "you said", "target": "dijiste"}
+      }
+    ]
+  }
+]

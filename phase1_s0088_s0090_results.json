@@ -1,0 +1,175 @@
+[
+  {
+    "seed_id": "S0088",
+    "seed_pair": {
+      "known": "I'm not ready to talk to people I don't know yet.",
+      "target": "No estoy listo para hablar con gente que no conozco todavía."
+    },
+    "legos": [
+      {
+        "id": "S0088L01",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I'm", "target": "estoy"}
+      },
+      {
+        "id": "S0088L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I'm not ready", "target": "no estoy listo"},
+        "components": [
+          {"known": "I'm", "target": "estoy"},
+          {"known": "ready", "target": "listo"}
+        ]
+      },
+      {
+        "id": "S0088L03",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "to talk", "target": "hablar"}
+      },
+      {
+        "id": "S0088L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "people", "target": "gente"}
+      },
+      {
+        "id": "S0088L05",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I don't know", "target": "no conozco"},
+        "components": [
+          {"known": "I know", "target": "conozco"}
+        ]
+      },
+      {
+        "id": "S0088L06",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "yet", "target": "todavía"}
+      }
+    ]
+  },
+  {
+    "seed_id": "S0089",
+    "seed_pair": {
+      "known": "I think that I've done a lot in a short time.",
+      "target": "Creo que he hecho mucho en poco tiempo."
+    },
+    "legos": [
+      {
+        "id": "S0089L01",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I think", "target": "creo"}
+      },
+      {
+        "id": "S0089L02",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I think that", "target": "creo que"},
+        "components": [
+          {"known": "I think", "target": "creo"}
+        ]
+      },
+      {
+        "id": "S0089L03",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "I've", "target": "he"}
+      },
+      {
+        "id": "S0089L04",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "I've done", "target": "he hecho"},
+        "components": [
+          {"known": "I've", "target": "he"},
+          {"known": "done", "target": "hecho"}
+        ]
+      },
+      {
+        "id": "S0089L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "a lot", "target": "mucho"}
+      },
+      {
+        "id": "S0089L06",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "in a short time", "target": "en poco tiempo"},
+        "components": [
+          {"known": "time", "target": "tiempo"},
+          {"known": "short", "target": "poco"}
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0090",
+    "seed_pair": {
+      "known": "If you can speak more slowly that would be great.",
+      "target": "Si puedes hablar más despacio, sería genial."
+    },
+    "legos": [
+      {
+        "id": "S0090L01",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "if", "target": "si"}
+      },
+      {
+        "id": "S0090L02",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "you can", "target": "puedes"}
+      },
+      {
+        "id": "S0090L03",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "you can speak", "target": "puedes hablar"},
+        "components": [
+          {"known": "you can", "target": "puedes"},
+          {"known": "speak", "target": "hablar"}
+        ]
+      },
+      {
+        "id": "S0090L04",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "more", "target": "más"}
+      },
+      {
+        "id": "S0090L05",
+        "type": "A",
+        "new": true,
+        "lego": {"known": "slowly", "target": "despacio"}
+      },
+      {
+        "id": "S0090L06",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "would be", "target": "sería"}
+      },
+      {
+        "id": "S0090L07",
+        "type": "A",
+        "new": false,
+        "lego": {"known": "great", "target": "genial"}
+      },
+      {
+        "id": "S0090L08",
+        "type": "M",
+        "new": true,
+        "lego": {"known": "that would be great", "target": "sería genial"},
+        "components": [
+          {"known": "would be", "target": "sería"},
+          {"known": "great", "target": "genial"}
+        ]
+      }
+    ]
+  }
+]
