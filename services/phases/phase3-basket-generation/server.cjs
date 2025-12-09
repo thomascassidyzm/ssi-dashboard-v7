@@ -2101,9 +2101,9 @@ Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned
         console.error(`[Phase 3]   ⚠️  Failed to launch ${browser.name}:`, error.message);
       }
 
-      // 5 second delay between launches (critical for reliability)
+      // 8 second delay between launches (critical for reliability - 5s caused tab failures)
       if (i < actualBrowsers - 1) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
       }
     }
 
@@ -2133,6 +2133,381 @@ Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned
       stack: error.stack
     });
   }
+});
+
+/**
+ * POST /launch-15-masters
+ * 15×15×3 pattern: 15 masters × 15 workers × ~3 LEGOs = 675 LEGOs per wave
+ * Similar to Phase 2's launch-full pattern
+ */
+app.post('/launch-15-masters', async (req, res) => {
+  const {
+    courseCode,
+    target = 'spa',
+    known = 'eng',
+    mastersCount = 15,
+    workersPerMaster = 15,
+    legosPerWorker = 3
+  } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  const legosPerMaster = workersPerMaster * legosPerWorker;
+  const totalCapacity = mastersCount * legosPerMaster;
+
+  console.log(`\n[Phase 3] ====================================`);
+  console.log(`[Phase 3] LAUNCH 15 MASTERS (15×15×3 pattern)`);
+  console.log(`[Phase 3] ====================================`);
+  console.log(`[Phase 3] Course: ${courseCode}`);
+  console.log(`[Phase 3] Config: ${mastersCount} masters × ${workersPerMaster} workers × ${legosPerWorker} LEGOs`);
+  console.log(`[Phase 3] Capacity: ${totalCapacity} LEGOs per wave`);
+
+  const baseCourseDir = path.join(VFS_ROOT, courseCode);
+
+  try {
+    // STEP 1: Find missing baskets
+    console.log(`\n[Phase 3] Step 1: Detecting missing baskets...`);
+
+    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+    const legoBasketsPath = path.join(baseCourseDir, 'lego_baskets.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(400).json({
+        error: 'lego_pairs.json not found - run Phase 2 first',
+        hint: 'POST /phase2/launch-full to generate lego_pairs.json'
+      });
+    }
+
+    const legoPairs = await fs.readJson(legoPairsPath);
+
+    // Load existing baskets
+    let existingBaskets = {};
+    if (await fs.pathExists(legoBasketsPath)) {
+      const basketsData = await fs.readJson(legoBasketsPath);
+      existingBaskets = basketsData.baskets || {};
+    }
+
+    // Find all LEGOs that need baskets (new:true and no existing basket)
+    const missingLegos = [];
+    for (const seed of legoPairs.seeds || []) {
+      for (const lego of seed.legos || []) {
+        if (lego.new === true && !existingBaskets[lego.id]) {
+          missingLegos.push({
+            legoId: lego.id,
+            seedId: seed.seed_id,
+            known: lego.lego?.known || '',
+            target: lego.lego?.target || '',
+            type: lego.type || 'M'
+          });
+        }
+      }
+    }
+
+    // Sort by seed ID for contiguous ranges
+    missingLegos.sort((a, b) => {
+      const seedA = parseInt(a.seedId.replace('S', ''));
+      const seedB = parseInt(b.seedId.replace('S', ''));
+      if (seedA !== seedB) return seedA - seedB;
+      const legoA = parseInt(a.legoId.replace(/S\d+L/, ''));
+      const legoB = parseInt(b.legoId.replace(/S\d+L/, ''));
+      return legoA - legoB;
+    });
+
+    const totalMissing = missingLegos.length;
+    console.log(`[Phase 3] Found ${totalMissing} missing baskets`);
+    console.log(`[Phase 3] Existing baskets: ${Object.keys(existingBaskets).length}`);
+
+    if (totalMissing === 0) {
+      return res.json({
+        success: true,
+        message: 'No missing baskets - Phase 3 already complete!',
+        totalMissing: 0,
+        existingBaskets: Object.keys(existingBaskets).length
+      });
+    }
+
+    // STEP 2: Calculate actual masters needed
+    const actualMasters = Math.min(mastersCount, Math.ceil(totalMissing / legosPerMaster));
+    console.log(`\n[Phase 3] Step 2: Distribution planning...`);
+    console.log(`[Phase 3] Launching ${actualMasters} masters for ${totalMissing} LEGOs`);
+
+    // STEP 3: Distribute LEGOs across masters and workers
+    const masters = [];
+    for (let m = 0; m < actualMasters; m++) {
+      const masterStartIdx = m * legosPerMaster;
+      if (masterStartIdx >= totalMissing) break;
+
+      const masterLegos = missingLegos.slice(masterStartIdx, masterStartIdx + legosPerMaster);
+
+      // Generate workers for this master
+      const workers = [];
+      for (let w = 0; w < workersPerMaster; w++) {
+        const workerStartIdx = w * legosPerWorker;
+        if (workerStartIdx >= masterLegos.length) break;
+
+        const workerLegos = masterLegos.slice(workerStartIdx, workerStartIdx + legosPerWorker);
+        workers.push({
+          workerNum: w + 1,
+          legoIds: workerLegos.map(l => l.legoId),
+          legoCount: workerLegos.length,
+          legos: workerLegos
+        });
+      }
+
+      // Calculate seed range for logging
+      const seedIds = [...new Set(masterLegos.map(l => l.seedId))].sort();
+      const seedRange = seedIds.length > 0 ? `${seedIds[0]}-${seedIds[seedIds.length - 1]}` : 'N/A';
+
+      masters.push({
+        masterNum: m + 1,
+        workers,
+        legoCount: masterLegos.length,
+        seedRange,
+        legos: masterLegos
+      });
+    }
+
+    // STEP 4: Generate and save prompts
+    console.log(`\n[Phase 3] Step 3: Generating ${actualMasters} master prompts...`);
+
+    const promptsDir = path.join(baseCourseDir, 'phase3_master_prompts');
+    await fs.ensureDir(promptsDir);
+    await fs.remove(promptsDir);
+    await fs.ensureDir(promptsDir);
+
+    for (const master of masters) {
+      const prompt = generatePhase3MasterPrompt({
+        courseCode,
+        target,
+        known,
+        masterNum: master.masterNum,
+        workers: master.workers,
+        totalLegos: master.legoCount,
+        seedRange: master.seedRange
+      });
+
+      await fs.writeFile(
+        path.join(promptsDir, `phase3_master_${master.masterNum}.md`),
+        prompt
+      );
+    }
+
+    // STEP 5: Launch masters with 8s delay
+    console.log(`\n[Phase 3] Step 4: Launching ${actualMasters} Safari tabs...`);
+
+    for (const master of masters) {
+      const promptPath = path.join(promptsDir, `phase3_master_${master.masterNum}.md`);
+      const promptContent = await fs.readFile(promptPath, 'utf8');
+
+      console.log(`[Phase 3] Launching Master ${master.masterNum}: ${master.seedRange} (${master.legoCount} LEGOs, ${master.workers.length} workers)`);
+
+      try {
+        await spawnClaudeCodeSession(promptContent, `phase3-master-${master.masterNum}`);
+      } catch (error) {
+        console.error(`[Phase 3] ❌ Master ${master.masterNum} launch failed:`, error.message);
+      }
+
+      // 8s delay between spawns (critical for reliability)
+      if (master.masterNum < actualMasters) {
+        await new Promise(r => setTimeout(r, 8000));
+      }
+    }
+
+    console.log(`\n[Phase 3] ✅ Launched ${actualMasters} masters`);
+    console.log(`[Phase 3] Total workers: ${masters.reduce((sum, m) => sum + m.workers.length, 0)}`);
+    console.log(`[Phase 3] Total LEGOs: ${totalMissing}`);
+
+    res.json({
+      success: true,
+      message: `Launched ${actualMasters} Phase 3 masters`,
+      totalMissing,
+      existingBaskets: Object.keys(existingBaskets).length,
+      masters: masters.map(m => ({
+        masterNum: m.masterNum,
+        seedRange: m.seedRange,
+        workers: m.workers.length,
+        legos: m.legoCount
+      })),
+      promptsDir
+    });
+
+  } catch (error) {
+    console.error(`[Phase 3] ❌ Launch failed:`, error);
+    res.status(500).json({
+      error: error.message,
+      stack: error.stack
+    });
+  }
+});
+
+/**
+ * Generate Phase 3 Master prompt with explicit worker assignments
+ */
+function generatePhase3MasterPrompt({ courseCode, target, known, masterNum, workers, totalLegos, seedRange }) {
+  const workerPrompts = workers.map(w => {
+    const legoList = w.legoIds.join(', ');
+    return `
+## WORKER ${w.workerNum} PROMPT (copy exactly):
+
+\`\`\`
+# Phase 3 Worker ${w.workerNum}: Basket Generation
+
+Course: ${courseCode}
+**MY ASSIGNED LEGOs**: ${legoList}
+**LEGO COUNT**: ${w.legoCount}
+
+---
+
+## STEP 1: FETCH MY LEGO DATA
+
+**CRITICAL: Fetch data for EXACTLY these LEGO IDs - no others!**
+
+\`\`\`bash
+curl -s "${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json"
+\`\`\`
+
+Look up LEGOs: ${legoList}
+Verify you found ${w.legoCount} LEGOs. If not, STOP and report an error.
+
+---
+
+## STEP 2: GENERATE BASKETS
+
+For EACH LEGO, generate 10 practice phrases following these rules:
+
+**CRITICAL RULES:**
+1. EVERY phrase MUST contain the COMPLETE LEGO (not partial)
+2. Build FROM the LEGO, not TO it - phrase 1 already has the full LEGO
+3. Use ONLY vocabulary available up to this seed
+4. Natural grammar in BOTH languages
+
+**Progressive complexity (2-2-2-4):**
+- Phrases 1-2: SHORT (LEGO alone or +1 word)
+- Phrases 3-4: MEDIUM (LEGO +2-3 words)
+- Phrases 5-6: LONGER (LEGO +4-6 words)
+- Phrases 7-10: LONGEST (LEGO +6+ words)
+
+---
+
+## STEP 3: OUTPUT FORMAT
+
+For each LEGO, output:
+\`\`\`json
+{
+  "lego_id": "S0001L01",
+  "practice_phrases": [
+    {"known": "I want", "target": "quiero"},
+    {"known": "I want that", "target": "quiero eso"},
+    ...
+  ]
+}
+\`\`\`
+
+---
+
+## STEP 4: UPLOAD WITH RETRY
+
+For each LEGO, upload via POST:
+
+\`\`\`bash
+# Save basket to temp file
+cat > /tmp/basket.json << 'JSONEOF'
+{
+  "course": "${courseCode}",
+  "seed": "[SEED_ID]",
+  "baskets": {
+    "[LEGO_ID]": {
+      "lego_id": "[LEGO_ID]",
+      "practice_phrases": [...]
+    }
+  }
+}
+JSONEOF
+
+# Upload with retry
+for i in 1 2 3; do
+  response=$(curl -s -w "\\n%{http_code}" -X POST "${ngrokUrl}/upload-basket" \\
+    -H "Content-Type: application/json" \\
+    -d @/tmp/basket.json)
+
+  http_code=$(echo "$response" | tail -n1)
+  if [ "$http_code" = "200" ]; then
+    echo "✅ Uploaded [LEGO_ID]"
+    break
+  else
+    echo "⚠️ Retry $i..."
+    sleep $((i * 2))
+  fi
+done
+\`\`\`
+
+---
+
+**IMPORTANT:**
+- Use curl for ALL HTTP requests (NOT WebFetch)
+- Upload each LEGO as you complete it (don't batch)
+- Report completion: "✅ Worker ${w.workerNum} complete: ${w.legoCount} LEGOs uploaded"
+\`\`\`
+`;
+  }).join('\n');
+
+  return `# Phase 3 Master ${masterNum}: Basket Generation
+
+**Course**: ${courseCode}
+**Target**: ${target}
+**Known**: ${known}
+**LEGOs**: ${totalLegos} (${seedRange})
+**Mode**: master-${masterNum}
+
+---
+
+## YOUR ROLE: BASKET GENERATION MASTER
+
+You spawn ${workers.length} worker agents via Task tool. Each worker:
+1. Fetches their assigned LEGOs via curl
+2. Generates 10 practice phrases per LEGO
+3. Uploads baskets via REST API with retry logic
+
+**Worker assignments:**
+${workers.map(w => `  - Worker ${w.workerNum}: ${w.legoIds.join(', ')} (${w.legoCount} LEGOs)`).join('\n')}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+---
+${workerPrompts}
+---
+
+## STEP 2: WAIT FOR COMPLETION
+
+After spawning all workers, wait for their Task tool results.
+Collect success/failure status from each worker.
+
+## STEP 3: REPORT COMPLETION
+
+When all workers complete, report:
+"✅ Master ${masterNum} complete: ${workers.length} workers, ${totalLegos} LEGOs"
+
+---
+
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+`;
+}
+
+/**
+ * POST /resume
+ * Alias for /launch-15-masters - both do intelligent resume (only missing LEGOs)
+ */
+app.post('/resume', async (req, res) => {
+  console.log(`[Phase 3] /resume called - forwarding to /launch-15-masters`);
+  // Forward to launch-15-masters which already does intelligent resume
+  req.url = '/launch-15-masters';
+  app._router.handle(req, res, () => {});
 });
 
 /**

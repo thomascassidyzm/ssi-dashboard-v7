@@ -1,236 +1,82 @@
-# Phase 2: Conflict Resolution (Upchunking)
+# Phase 2: Conflict Resolution v7.0
 
-**Port**: 3458
-**Version**: 11.0.0
-**Status**: Active
-**Input**: draft_lego_pairs.json
-**Output**: lego_pairs.json (SINGLE SOURCE OF TRUTH)
+## YOUR ROLE
 
----
+You resolve KNOWN→TARGET conflicts through **upchunking** and track LEGO reuse across seeds.
 
-## Overview
-
-Phase 2 resolves KNOWN→TARGET conflicts identified in draft_lego_pairs.json through **upchunking** - creating M-type LEGOs that teach the conflicting patterns explicitly.
+**Input**: draft_lego_pairs.json (from Phase 1)
+**Output**: lego_pairs.json (conflict-free, reuse-tracked)
 
 ---
 
-## Key Concepts
+## Conflict Resolution
 
-### Conflict Types
+> **If same KNOWN maps to multiple TARGETs, upchunk to disambiguate.**
 
-1. **KNOWN→TARGET conflicts**: Same KNOWN word maps to multiple TARGET translations
-   - Example: "tarde" → "afternoon" (in some seeds) vs "tarde" → "late" (in others)
+Example conflict:
+- "tarde" → "afternoon" (in S0020)
+- "tarde" → "late" (in S0045)
 
-2. **Resolution Strategy**: Upchunking
-   - Create M-type LEGO that includes the conflicting word + disambiguating context
-   - Example: Create "por la tarde" → "in the afternoon" to resolve "tarde" conflict
-
-### Upchunking Algorithm
-
-```
-For each conflict in draft_lego_pairs.json:
-  1. Identify all seeds where conflict occurs
-  2. Analyze context words around conflicting KNOWN word
-  3. Create M-type LEGO with:
-     - KNOWN: conflicting word + context (2+ words)
-     - TARGET: full translation (2+ words)
-     - Type: "M" (Molecular)
-  4. Record resolution in upchunk_resolutions.json
-```
-
-### Output Structure
-
-**lego_pairs.json** (APML v11.0 format):
-```json
-{
-  "version": "11.0",
-  "seeds": [
-    {
-      "seed_id": "S0001",
-      "seed_pair": { "known": "I want to speak...", "target": "Quiero hablar..." },
-      "legos": [
-        {
-          "id": "S0001L01",
-          "type": "A",
-          "new": true,
-          "lego": { "known": "I want", "target": "quiero" }
-        }
-      ]
-    }
-  ]
-}
-```
-
-**Key Properties**:
-- Embeds seed_pairs (no separate seed_pairs.json file)
-- All conflicts resolved
-- Ready for Phase 3 (basket generation)
+Resolution: Create M-types with context:
+- "por la tarde" → "in the afternoon"
+- "llegar tarde" → "to arrive late"
 
 ---
 
-## Agent Instructions
+## LEGO Reuse Tracking
 
-### Detection Phase (POST /phase2/detect)
+### Cross-Seed Exact Duplicates
+When identical LEGO (same known AND target) appears in multiple seeds:
+- First occurrence: `new: true`
+- Later occurrences: `new: false` with `ref` to original
 
-1. Load draft_lego_pairs.json
-2. Build KNOWN→TARGET collision map
-3. Identify conflicts (same KNOWN → multiple TARGETs)
-4. Output conflict report with:
-   - Conflict count
-   - Affected LEGOs
-   - Suggested upchunk opportunities
+```
+S0001: "quiero" / "I want" → new: true, id: "S0001L01"
+S0010: "quiero" / "I want" → new: false, ref: "S0001L01"
+```
 
-### Upchunking Phase (Claude Agent)
+**Note**: Same-seed embedding is handled by Phase 1. Phase 2 only tracks exact duplicates across seeds.
 
-1. Read conflict report
-2. For each conflict:
-   - Read source seeds
-   - Analyze context
-   - Design M-type upchunk
-   - Record resolution
-3. Write upchunk_resolutions.json
-
-### Apply Phase (POST /phase2/apply)
-
-1. Load draft_lego_pairs.json
-2. Load upchunk_resolutions.json
-3. Apply resolutions:
-   - Add M-type upchunks
-   - Update affected A-types if needed
-4. **Apply LEGO reuse tracking** (see below)
-5. Write lego_pairs.json (conflict-free, with reuse markers)
-6. Auto-script introductions at end
+**NEVER remove a LEGO** - keep complete breakdowns, just update `new` flag.
 
 ---
 
-## LEGO Reuse Tracking (CRITICAL)
+## Output Format (v7 HYBRID)
 
-Phase 2 is responsible for marking LEGO reuse across the entire course. Every seed's breakdown must be **complete** (all LEGOs needed to reconstruct the sentence), with proper `new` flags.
-
-### The Algorithm
-
-Two types of reuse are detected:
-
-#### 1. Exact Duplicates (global check)
-```
-seen_legos = {} // key: "known|target" (normalized) → value: original seed ID
-
-FOR each seed in order (S0001, S0002, ...):
-    FOR each LEGO in seed.legos:
-        key = normalize(lego.known) + "|" + normalize(lego.target)
-
-        IF key in seen_legos:
-            // EXACT DUPLICATE - mark as not new, reference original
-            lego.new = false
-            lego.ref = seen_legos[key]
-        ELSE:
-            seen_legos[key] = seed.seed_id
-```
-
-#### 2. Embedded LEGOs (10-LEGO sliding window)
-
-If a LEGO appears as a **substring** within any of the last 10 LEGOs (both known AND target sides), it's marked as `new: false` without a `ref`.
-
-```
-recent_legos = [] // sliding window of last 10 LEGOs
-
-FOR each LEGO:
-    IF not exact duplicate:
-        FOR each recent in recent_legos:
-            IF recent.target.includes(lego.target) AND recent.known.includes(lego.known):
-                // EMBEDDED - learner already saw this within a larger phrase
-                lego.new = false
-                // No ref needed - just marking as not new
-
-    recent_legos.push(lego)
-    IF recent_legos.length > 10: recent_legos.shift()
-```
-
-**Example**: If "recordar una palabra" / "to remember a word" was introduced, then "una palabra" / "a word" appearing within the next 10 LEGOs is marked `new: false`.
-
-**Why 10 LEGOs?** This catches the "just heard it" cases where it would be annoying to re-introduce something the learner just encountered. If it's been more than 10 LEGOs, re-introducing it as "new" is pedagogically appropriate.
-
-**Character-level matching**: Works for all languages including Chinese where there are no word boundaries. "说" matches inside "说中文".
-
-### Key Rules
-
-1. **NEVER remove** a LEGO from a seed's breakdown just because it appeared before
-2. **Mark as `new: false`** for exact duplicates (with `ref`) OR embedded LEGOs (no `ref`)
-3. **Keep complete breakdowns** - every seed lists ALL LEGOs needed to decompose it
-4. **Reference original ID** via `ref` field for exact duplicates only
-
-### Example Output
+Same as Phase 1 - array-based with keyed k/t pairs:
 
 ```json
-{
-  "seeds": [
-    {
-      "seed_id": "S0001",
-      "seed_pair": {"known": "I want to speak", "target": "Quiero hablar"},
-      "legos": [
-        {"id": "S0001L01", "type": "A", "new": true, "lego": {"known": "I want to", "target": "quiero"}},
-        {"id": "S0001L02", "type": "A", "new": true, "lego": {"known": "to speak", "target": "hablar"}}
-      ]
-    },
-    {
-      "seed_id": "S0010",
-      "seed_pair": {"known": "I want to go", "target": "Quiero ir"},
-      "legos": [
-        {"id": "S0001L01", "type": "A", "new": false, "ref": "S0001L01", "lego": {"known": "I want to", "target": "quiero"}},
-        {"id": "S0010L01", "type": "A", "new": true, "lego": {"known": "to go", "target": "ir"}}
-      ]
-    }
-  ]
-}
+[
+  ["S0001", {"k":"I want to speak Spanish","t":"Quiero hablar español"}, [
+    ["A", 1, {"k":"I want","t":"quiero"}],
+    ["A", 1, {"k":"to speak","t":"hablar"}],
+    ["A", 1, {"k":"Spanish","t":"español"}]
+  ]],
+  ["S0010", {"k":"I want to go","t":"Quiero ir"}, [
+    ["A", 0, {"k":"I want","t":"quiero"}, null, "S0001L01"],
+    ["A", 1, {"k":"to go","t":"ir"}]
+  ]]
+]
 ```
 
-### Why This Matters
-
-The dashboard displays complete seed breakdowns. Without reuse tracking:
-- ❌ Seeds appear incomplete (missing LEGOs)
-- ❌ Can't show how sentences decompose into their LEGO parts
-- ❌ No visibility into vocabulary building progression
-
-With proper reuse tracking:
-- ✅ Every seed shows complete breakdown
-- ✅ New LEGOs highlighted, reused LEGOs shown dimmed
-- ✅ Clear visualization of how vocabulary builds over time
+**Structure per lego:**
+- `[type, new, {k,t}]` - basic
+- `[type, new, {k,t}, null, ref]` - with reference to original
 
 ---
 
-## Validation Gates
+## Checklist Before Output
 
-✅ **Pre-Phase 2**:
-- draft_lego_pairs.json exists
-- Valid v11.0 format
-- All seeds have LEGOs
-
-✅ **Post-Phase 2**:
-- lego_pairs.json exists
-- No KNOWN→TARGET conflicts
-- All upchunks are valid M-types (2+ words both sides)
-- **All seeds have complete breakdowns** (no missing LEGOs)
-- **Reuse tracking applied** (new: true/false flags set correctly)
-- Introductions auto-scripted
+- [ ] No KNOWN→TARGET conflicts remain
+- [ ] All upchunks are M-types (2+ words both sides)
+- [ ] Cross-seed exact duplicates marked `new: 0` with `ref`
+- [ ] Complete breakdowns preserved (no LEGOs removed)
+- [ ] Gender markers (`o/a`) preserved from Phase 1
 
 ---
 
-## Handoff to Phase 3
+## Fetch Language-Specific Rules
 
-Phase 3 (Basket Generation) reads lego_pairs.json and generates practice baskets. No manual intervention needed - the pipeline is fully automated.
-
----
-
-## Scripts
-
-- `scripts/phase2_lego_reuse_tracking.cjs` - Standalone script for LEGO reuse tracking
-- `services/phases/phase1-lego-extraction/server.cjs` - Phase 2 server (port 3458) with integrated reuse tracking
-
----
-
-## Version History
-
-- v9.0.0: Initial conflict resolution with upchunking
-- v11.0.0: Integrated with APML v11.0 pipeline, updated field names (seed_pair instead of seed)
-
-**Last Updated**: Dec 8, 2025
+```
+curl -s [ORCHESTRATOR]/api/phase-intelligence/2
+```

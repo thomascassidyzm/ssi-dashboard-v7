@@ -31,7 +31,7 @@
 
     "browser_sessions": {
       "max_concurrent_browsers": 10,
-      "browser_spawn_delay_ms": 5000,
+      "browser_spawn_delay_ms": 8000,
       "browser_timeout_ms": 300000,
       "headless": false
     },
@@ -82,7 +82,7 @@
 
     "browser_sessions": {
       "max_concurrent_browsers": 10,
-      "browser_spawn_delay_ms": 5000,
+      "browser_spawn_delay_ms": 8000,
       "browser_timeout_ms": 300000,
       "headless": false
     },

@@ -2326,6 +2326,97 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
 });
 
 /**
+ * GET /api/zut-examples/:known/:target
+ * Generate language-pair specific ZUT examples
+ * These show what fails/passes ZUT for the specific language combination
+ */
+app.get('/api/zut-examples/:known/:target', (req, res) => {
+  const { known, target } = req.params;
+
+  // Language-specific ZUT examples
+  const zutExamples = {
+    'eng-spa': {
+      fails: [
+        { known: 'the', why: 'el? la? los? las? - gender/number ambiguous' },
+        { known: 'a', why: 'un? una? - gender ambiguous' },
+        { known: 'an', why: 'un? una? - gender ambiguous' },
+        { known: 'you', why: 'tú? usted? vosotros? ustedes? - formality/number ambiguous' },
+        { known: 'in', why: 'en? dentro de? por? - context determines' },
+        { known: 'to', why: 'a? para? hacia? infinitive marker? - many meanings' },
+        { known: 'for', why: 'para? por? - purpose vs reason ambiguous' }
+      ],
+      passes: [
+        { known: 'I want', target: 'quiero', why: 'single unambiguous form' },
+        { known: 'Spanish', target: 'español', why: 'no ambiguity' },
+        { known: 'to speak', target: 'hablar', why: 'infinitive marker disambiguates' },
+        { known: 'in Spanish', target: 'en español', why: 'preposition absorbed in context' },
+        { known: 'a word', target: 'una palabra', why: 'article absorbed, gender determined' },
+        { known: 'with you', target: 'contigo', why: 'informal singular, unambiguous' }
+      ]
+    },
+    'eng-cmn': {
+      fails: [
+        { known: 'the', why: 'Chinese rarely uses articles - context dependent' },
+        { known: 'a', why: 'Chinese rarely uses articles - 一个? nothing?' },
+        { known: 'le (了)', why: 'particle cannot stand alone' },
+        { known: 'ma (吗)', why: 'particle cannot stand alone' },
+        { known: 'de (的/得/地)', why: 'three different particles, different functions' }
+      ],
+      passes: [
+        { known: 'I want', target: '我想', why: 'unambiguous' },
+        { known: 'Chinese', target: '中文', why: 'unambiguous' },
+        { known: 'have eaten', target: '吃了', why: '了 absorbed in verb context' },
+        { known: 'speak well', target: '说得好', why: '得 absorbed in complement structure' },
+        { known: 'is it good?', target: '好吗', why: '吗 absorbed in question' }
+      ]
+    },
+    'eng-ita': {
+      fails: [
+        { known: 'the', why: 'il? la? lo? i? le? gli? - gender/number ambiguous' },
+        { known: 'a', why: 'un? una? uno? - gender ambiguous' },
+        { known: 'you', why: 'tu? Lei? voi? - formality ambiguous' },
+        { known: 'in', why: 'in? a? nel? nella? - context determines' }
+      ],
+      passes: [
+        { known: 'I want', target: 'voglio', why: 'unambiguous' },
+        { known: 'Italian', target: 'italiano', why: 'no ambiguity' },
+        { known: 'to speak', target: 'parlare', why: 'infinitive marker disambiguates' },
+        { known: 'in Italian', target: 'in italiano', why: 'preposition absorbed' }
+      ]
+    }
+  };
+
+  const key = `${known}-${target}`;
+  const examples = zutExamples[key];
+
+  if (!examples) {
+    // Generate generic examples for unknown pairs
+    return res.json({
+      known,
+      target,
+      fails: [
+        { known: 'the', why: 'articles are almost always ambiguous' },
+        { known: 'a', why: 'articles are almost always ambiguous' },
+        { known: 'in', why: 'prepositions rarely map 1:1' },
+        { known: 'to', why: 'prepositions rarely map 1:1' },
+        { known: 'for', why: 'prepositions rarely map 1:1' }
+      ],
+      passes: [
+        { known: 'I want', why: 'verb conjugations often unambiguous' },
+        { known: 'to speak', why: 'infinitive with marker often unambiguous' }
+      ],
+      note: 'Generic examples - specific language pair not configured'
+    });
+  }
+
+  res.json({
+    known,
+    target,
+    ...examples
+  });
+});
+
+/**
  * POST /api/regenerate-manifest
  * Trigger manual manifest regeneration (local dev only)
  * Scans public/vfs/courses/ and updates courses-manifest.json
@@ -3017,6 +3108,125 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
   }
 
   res.json({ success: true, masterNum, acknowledged: true });
+});
+
+/**
+ * GET /api/phase2/:courseCode/draft
+ * Return all seeds from draft_lego_pairs.json
+ */
+app.get('/api/phase2/:courseCode/draft', async (req, res) => {
+  const { courseCode } = req.params;
+  const draftPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+
+  if (!await fs.pathExists(draftPath)) {
+    return res.status(404).json({ error: `draft_lego_pairs.json not found for ${courseCode}` });
+  }
+
+  try {
+    const draftData = await fs.readJSON(draftPath);
+    console.log(`[Orchestrator] Phase 2 draft requested: ${courseCode} → ${Array.isArray(draftData) ? draftData.length : 'N/A'} seeds`);
+    res.json(draftData);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /api/phase2/:courseCode/seeds
+ * Return seeds from draft_lego_pairs.json by IDs
+ * Query: ?ids=S0001,S0002,S0003
+ */
+app.get('/api/phase2/:courseCode/seeds', async (req, res) => {
+  const { courseCode } = req.params;
+  const { ids } = req.query;
+
+  if (!ids) {
+    return res.status(400).json({ error: 'ids query parameter required (comma-separated)' });
+  }
+
+  const seedIds = ids.split(',').map(s => s.trim());
+  const draftPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+
+  if (!await fs.pathExists(draftPath)) {
+    return res.status(404).json({ error: `draft_lego_pairs.json not found for ${courseCode}` });
+  }
+
+  try {
+    const draftData = await fs.readJSON(draftPath);
+    const seeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+    const requestedSeeds = seeds.filter(s => seedIds.includes(s.seed_id));
+
+    console.log(`[Orchestrator] Phase 2 seeds requested: ${seedIds.join(', ')} → ${requestedSeeds.length} found`);
+
+    res.json({
+      courseCode,
+      requested: seedIds.length,
+      found: requestedSeeds.length,
+      seeds: requestedSeeds
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/phase2/:courseCode/upload
+ * Simple upload endpoint for Phase 2 results (writes to lego_pairs.json)
+ */
+app.post('/api/phase2/:courseCode/upload', async (req, res) => {
+  const { courseCode } = req.params;
+  const data = req.body;
+
+  if (!Array.isArray(data)) {
+    return res.status(400).json({ error: 'Expected JSON array of seed objects' });
+  }
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  await fs.ensureDir(courseDir);
+  const outputPath = path.join(courseDir, 'lego_pairs.json');
+  await fs.writeJSON(outputPath, data, { spaces: 2 });
+
+  console.log(`[Orchestrator] ✅ Phase 2 complete: ${data.length} seeds → lego_pairs.json`);
+
+  res.json({ success: true, received: data.length, file: 'lego_pairs.json' });
+});
+
+/**
+ * POST /api/phase2/:courseCode/upload-batch
+ * Workers upload their resolved seeds here
+ */
+app.post('/api/phase2/:courseCode/upload-batch', async (req, res) => {
+  const { courseCode } = req.params;
+  const batchData = req.body;
+
+  if (!Array.isArray(batchData)) {
+    return res.status(400).json({ error: 'Expected JSON array of seed objects' });
+  }
+
+  const batchesDir = path.join(VFS_ROOT, courseCode, 'phase2_batches');
+  await fs.ensureDir(batchesDir);
+
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
+  await fs.writeJSON(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
+
+  console.log(`[Orchestrator] ✅ Phase 2 batch received: ${batchData.length} seeds → ${batchFile}`);
+
+  res.json({ success: true, received: batchData.length, file: batchFile });
+});
+
+/**
+ * POST /api/phase2/:courseCode/master-complete
+ * Masters report completion here
+ */
+app.post('/api/phase2/:courseCode/master-complete', async (req, res) => {
+  const { courseCode } = req.params;
+  const { seedsProcessed } = req.body;
+
+  console.log(`[Orchestrator] ✅ Phase 2 Master complete: ${seedsProcessed} seeds`);
+
+  res.json({ success: true, acknowledged: true });
 });
 
 /**

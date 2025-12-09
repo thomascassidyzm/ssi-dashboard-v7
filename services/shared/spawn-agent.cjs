@@ -152,7 +152,7 @@ function getBrowserAppName(browser) {
 async function spawnParallelAgents(prompts, options = {}) {
   const {
     browser = 'chrome',
-    delayBetweenAgents = 2000, // 2 seconds between spawns to avoid overwhelming browser
+    delayBetweenAgents = 8000, // 8 seconds between spawns - 2s causes tab failures
     batchSize = 10 // Spawn 10 at a time
   } = options;
 

@@ -80,7 +80,7 @@ function getDefaultConfig() {
       browsers: 5,
       agents_per_browser: 4,
       seeds_per_agent: 3,
-      browser_spawn_delay_ms: 5000,
+      browser_spawn_delay_ms: 8000,  // 8s between spawns - 5s or less causes tab failures
       parallelization: {
         small_course_threshold: 50,
         medium_course_threshold: 200,

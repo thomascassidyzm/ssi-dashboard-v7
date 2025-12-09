@@ -79,21 +79,24 @@ function getLanguageName(code) {
 
 /**
  * Generate Phase 1 Master Prompt
- * Creates a prompt that spawns parallel translation agents
+ * Reads v4.4 unified prompt from PROMPT.md and adds operational instructions
  */
 function generatePhase1MasterPrompt(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 
-  // SEQUENTIAL PROCESSING: One agent handles all seeds for consistency
-  // Critical for maintaining:
-  // - Cognate preference (trabajar vs laborer)
-  // - Zero variation (same translation for repeated concepts)
-  // - Consistent register (formal/informal choices)
-  const seedsPerAgent = totalSeeds;
-  const agentCount = 1;
+  // Read the v4.4 unified prompt from PROMPT.md
+  const promptPath = path.join(__dirname, 'PROMPT.md');
+  let unifiedPrompt = '';
+  try {
+    unifiedPrompt = require('fs').readFileSync(promptPath, 'utf8');
+  } catch (err) {
+    console.error(`⚠️  Failed to read PROMPT.md: ${err.message}`);
+    unifiedPrompt = '# Phase 1 Prompt Missing - check services/phases/phase1-translation/PROMPT.md';
+  }
 
-  return `# Phase 1: Pedagogical Translation (Sequential)
+  return `# Phase 1: Translation + LEGO Extraction
 
 **Course**: ${courseCode}
 **Target**: ${getLanguageName(target)} (${target})
@@ -102,116 +105,67 @@ function generatePhase1MasterPrompt(courseCode, params, courseDir) {
 
 ---
 
-## 📚 STEP 1: READ METHODOLOGY (CRITICAL)
+## 📥 STEP 1: FETCH CANONICAL SEEDS
 
-**Fetch Phase 1 Intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
+**GET**: ${orchestratorUrl}/api/canonical-seeds?limit=${endSeed}
 
-This document contains:
-- Two absolute rules (NEVER violate)
-- Zero-variation principle (first word wins)
-- Cognate preference for seeds 1-100
-- Extended thinking protocol
-- Complete examples (Spanish, French, German, Mandarin)
-- Grammatical simplicity guidelines
-
-**Read this BEFORE translating** - it's the complete methodology.
+Returns all ${totalSeeds} seeds in English. You will translate each to ${getLanguageName(target)} and extract LEGOs.
 
 ---
 
-## 📥 STEP 2: FETCH CANONICAL SEEDS
+## 📚 STEP 2: METHODOLOGY (READ CAREFULLY)
 
-**GET**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
-
-Returns all ${totalSeeds} seeds. You need the full context for consistency.
+${unifiedPrompt}
 
 ---
 
-## ✍️ STEP 3: TRANSLATE (Seeds ${startSeed}-${endSeed})
+## ✍️ STEP 3: PROCESS SEEDS (${startSeed}-${endSeed})
+
+For EACH seed:
+1. Translate to ${getLanguageName(target)} (following Translation Rules above)
+2. Extract LEGOs (following LEGO Types and Algorithm above)
+3. Mark embedded LEGOs as \`new: false\` (same-seed only!)
+4. Output in EXACT format shown above
 
 **CRITICAL - DO NOT CREATE SCRIPTS:**
 - ❌ Do NOT write Python/Node/bash automation
-- ❌ Do NOT create translation tools
-- ✅ Translate directly, seed by seed
-- ✅ Build up translations object as you work
-- **Why?** Translation requires human judgment (cognates, register, consistency)
-
-**Process:**
-1. Replace \`{target}\` placeholder with "${getLanguageName(target)}"
-2. Translate to ${getLanguageName(target)} (apply Phase 1 methodology)
-3. Translate to ${getLanguageName(known)} (or use canonical if English)
-4. Maintain glossary (same concept = same word)
-5. Use extended thinking for each seed
+- ✅ Process directly, seed by seed
+- ✅ Build up the output array as you work
 
 ---
 
-## 📊 STEP 4: REPORT PROGRESS (Every 10 Seeds)
+## 📊 STEP 4: REPORT PROGRESS (Every 50 Seeds)
 
-**POST**: \`${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/courses/${courseCode}/progress\`
+**POST**: \`${orchestratorUrl}/api/courses/${courseCode}/progress\`
 
-**After every 10 seeds** (S0010, S0020, S0030, etc.), POST:
 \`\`\`json
 {
   "phase": 1,
   "updates": {
     "status": "running",
-    "seedsCompleted": 20,
+    "seedsCompleted": 50,
     "seedsTotal": ${totalSeeds},
-    "currentSeed": "S0020",
-    "startTime": "2025-11-21T10:30:00.000Z"
+    "currentSeed": "S0050"
   },
-  "logMessage": "Completed S0020 - ${totalSeeds - 20} remaining"
+  "logMessage": "Completed S0050"
 }
 \`\`\`
 
-**When to report:**
-- After every 10 seeds
-- When you finish all seeds
-- Store startTime when you begin (for ETA)
+---
+
+## 📝 STEP 5: OUTPUT
+
+Write to: \`public/vfs/courses/${courseCode}/draft_lego_pairs.json\`
+
+The output is a JSON array of seed objects (see Output Format above).
+
+**After completing all seeds:**
+1. Write to \`public/vfs/courses/${courseCode}/draft_lego_pairs.json\`
+2. POST completion to: \`${orchestratorUrl}/api/phase1/${courseCode}/submit\`
 
 ---
 
-## 📝 STEP 5: OUTPUT FORMAT
-
-Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
-
-**Structure:**
-\`\`\`json
-{
-  "version": "8.2.0",
-  "course": "${courseCode}",
-  "target_language": "${target}",
-  "known_language": "${known}",
-  "generated": "<ISO 8601 timestamp>",
-  "total_seeds": ${totalSeeds},
-  "translations": {
-    "S${String(startSeed).padStart(4, '0')}": {
-      "known": "...",
-      "target": "..."
-    }
-  }
-}
-\`\`\`
-
-**CRITICAL:**
-- Use object format: \`{"known": "...", "target": "..."}\`
-- "known" comes FIRST, then "target"
-- If known OR target is English → use canonical English directly
-- See Phase 1 intelligence doc for full examples across languages
-
-**After completing all translations:**
-1. **Submit via API**: POST your completed seed_pairs.json to:
-   \`\`\`
-   ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase1/${courseCode}/submit
-   \`\`\`
-   Use the exact JSON structure shown above.
-
-2. **Backup locally**: Also write to \`public/vfs/courses/${courseCode}/seed_pairs.json\`
-
-3. **Commit and push**: Push to your Claude Code session branch for audit trail
-
----
-
-**Target completion time**: ~10 minutes for ${totalSeeds} seeds (Sonnet 4.5 is fast!)
+**Target**: ~${Math.ceil(totalSeeds / 60)} minutes for ${totalSeeds} seeds
 `;
 }
 
@@ -747,6 +701,694 @@ async function notifyOrchestrator(courseCode, status) {
     console.error(`⚠️  Failed to notify orchestrator:`, error.message);
   }
 }
+
+/**
+ * POST /launch-15-masters
+ * Launch 15-master orchestration for Phase 1 (Translation + LEGO Extraction)
+ *
+ * 15 masters × 15 workers × 3 seeds = 675 seeds (covers 668)
+ */
+app.post('/launch-15-masters', async (req, res) => {
+  const { courseCode, target, known, totalSeeds = 668 } = req.body;
+
+  if (!courseCode || !target || !known) {
+    return res.status(400).json({ error: 'courseCode, target, known required' });
+  }
+
+  console.log(`\n[Phase 1] ====================================`);
+  console.log(`[Phase 1] 15-MASTER PARALLEL LAUNCH`);
+  console.log(`[Phase 1] ====================================`);
+  console.log(`[Phase 1] Course: ${courseCode}`);
+  console.log(`[Phase 1] Target: ${target}, Known: ${known}`);
+  console.log(`[Phase 1] Total Seeds: ${totalSeeds}`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const courseDir = path.join(VFS_ROOT, courseCode);
+
+  // Read the v4.4 unified prompt
+  const promptPath = path.join(__dirname, 'PROMPT.md');
+  let unifiedPrompt = '';
+  try {
+    unifiedPrompt = require('fs').readFileSync(promptPath, 'utf8');
+  } catch (err) {
+    return res.status(500).json({ error: `Failed to read PROMPT.md: ${err.message}` });
+  }
+
+  // Distribution: 15 masters, each spawns 15 workers, each does 3 seeds
+  const mastersCount = 15;
+  const workersPerMaster = 15;
+  const seedsPerWorker = 3;
+  const seedsPerMaster = workersPerMaster * seedsPerWorker; // 45 seeds per master
+
+  console.log(`[Phase 1] Distribution: ${mastersCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
+
+  // Generate master assignments
+  const masters = [];
+  for (let m = 0; m < mastersCount; m++) {
+    const startSeed = m * seedsPerMaster + 1;
+    const endSeed = Math.min(startSeed + seedsPerMaster - 1, totalSeeds);
+
+    if (startSeed > totalSeeds) break;
+
+    // Divide into worker batches
+    const workers = [];
+    for (let w = 0; w < workersPerMaster; w++) {
+      const workerStart = startSeed + w * seedsPerWorker;
+      const workerEnd = Math.min(workerStart + seedsPerWorker - 1, endSeed);
+
+      if (workerStart > endSeed) break;
+
+      workers.push({
+        workerNum: w + 1,
+        startSeed: workerStart,
+        endSeed: workerEnd,
+        seedCount: workerEnd - workerStart + 1
+      });
+    }
+
+    masters.push({
+      masterNum: m + 1,
+      name: `phase1_master_${String(m + 1).padStart(2, '0')}`,
+      startSeed,
+      endSeed,
+      seedCount: endSeed - startSeed + 1,
+      workers
+    });
+  }
+
+  console.log(`[Phase 1] Created ${masters.length} master assignments`);
+
+  // Generate master prompts
+  const generateMasterPrompt = (master) => {
+    const workerInstructions = master.workers.map(w =>
+      `  - Worker ${w.workerNum}: Seeds S${String(w.startSeed).padStart(4, '0')}-S${String(w.endSeed).padStart(4, '0')} (${w.seedCount} seeds)`
+    ).join('\n');
+
+    return `# Phase 1 Master ${master.masterNum}: Translation + LEGO Extraction
+
+**Course**: ${courseCode}
+**Target**: ${getLanguageName(target)} (${target})
+**Known**: ${getLanguageName(known)} (${known})
+**Your Seeds**: S${String(master.startSeed).padStart(4, '0')}-S${String(master.endSeed).padStart(4, '0')} (${master.seedCount} seeds)
+
+---
+
+## YOUR ROLE: MASTER ORCHESTRATOR
+
+You spawn ${master.workers.length} worker agents via Task tool. Each worker processes a batch of seeds.
+
+**Worker assignments:**
+${workerInstructions}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${master.workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+Each worker prompt should include:
+1. The seed range they process
+2. Instructions to FETCH methodology from the API
+3. The upload endpoint
+
+**CRITICAL**: Workers fetch their own methodology - do NOT summarize or paraphrase it!
+
+---
+
+## WORKER PROMPT TEMPLATE
+
+For each worker, use this prompt (fill in START and END seed numbers):
+
+\`\`\`
+# Phase 1 Worker: Seeds S[START]-S[END]
+
+Course: ${courseCode}
+Target: ${getLanguageName(target)}
+Known: ${getLanguageName(known)}
+
+## STEP 1: FETCH ZUT EXAMPLES (language-specific)
+
+curl -s "${orchestratorUrl}/api/zut-examples/${known}/${target}"
+
+This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLanguageName(target)}.
+
+## STEP 2: FETCH METHODOLOGY
+
+curl -s "${orchestratorUrl}/api/phase-intelligence/1"
+
+Read BOTH responses before proceeding.
+
+## STEP 3: FETCH YOUR SEEDS
+
+curl -s "${orchestratorUrl}/api/canonical-seeds?start=[START]&end=[END]"
+
+## STEP 4: PROCESS EACH SEED
+
+Apply ZUT to every potential LEGO:
+1. Translate seed to ${getLanguageName(target)}
+2. For each chunk: does learner ALWAYS know what to produce?
+3. If uncertain → chunk UP until zero ambiguity
+4. Mark embedded chunks as new: 0
+
+## STEP 5: UPLOAD (COMPACT FORMAT)
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_COMPACT_JSON]'
+
+**COMPACT FORMAT** (saves tokens):
+\`\`\`json
+[{"s":"S0001","k":"known text","t":"target text","l":[
+  {"y":"A","n":1,"k":"I want","t":"quiero"},
+  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+]}]
+\`\`\`
+Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
+\`\`\`
+
+---
+
+## STEP 2: WAIT FOR COMPLETION
+
+After spawning all workers, wait for their Task tool results.
+
+## STEP 3: REPORT COMPLETION
+
+When all workers complete, use curl to POST:
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${master.seedCount}}'
+
+---
+
+**DO NOT process seeds yourself - spawn workers and coordinate!**
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+`;
+  };
+
+  // Save prompts and launch browsers
+  const promptsDir = path.join(courseDir, 'phase1_master_prompts');
+  await fs.ensureDir(promptsDir);
+
+  for (const master of masters) {
+    const prompt = generateMasterPrompt(master);
+    await fs.writeFile(path.join(promptsDir, `${master.name}.md`), prompt);
+  }
+
+  console.log(`[Phase 1] ✅ Generated ${masters.length} master prompts in ${promptsDir}`);
+
+  // Load web agent spawner
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+  if (!spawnClaudeWebAgent) {
+    return res.status(500).json({ error: 'Web agent spawner not available' });
+  }
+
+  // Launch all masters in Safari
+  console.log(`[Phase 1] Launching ${masters.length} Safari windows...`);
+
+  const launchResults = [];
+  for (const master of masters) {
+    try {
+      const prompt = generateMasterPrompt(master);
+      await spawnClaudeWebAgent(prompt, master.masterNum, 'safari');
+      launchResults.push({ master: master.masterNum, status: 'launched' });
+      console.log(`[Phase 1]   ✅ Master ${master.masterNum} launched`);
+
+      // Delay between launches - needs to be long enough for Safari to load page and paste before next clipboard write
+      // 8 seconds: 3s page load + 0.5s paste + 4.5s buffer to prevent clipboard race
+      await new Promise(r => setTimeout(r, 8000));
+    } catch (err) {
+      launchResults.push({ master: master.masterNum, status: 'failed', error: err.message });
+      console.error(`[Phase 1]   ❌ Master ${master.masterNum} failed: ${err.message}`);
+    }
+  }
+
+  // Track the job
+  activeJobs.set(courseCode, {
+    status: 'running',
+    masters: masters.length,
+    totalSeeds,
+    startedAt: new Date().toISOString(),
+    launchResults
+  });
+
+  res.json({
+    success: true,
+    message: `Launched ${masters.length} masters for Phase 1`,
+    courseCode,
+    masters: masters.length,
+    workersPerMaster,
+    seedsPerWorker,
+    totalSeeds,
+    launchResults
+  });
+});
+
+/**
+ * Expand compact format to full format
+ *
+ * v6 Compact: {s, k, t, l: [{y, n, k, t, c?}]}
+ * v7 Hybrid:  ["S0001", {k,t}, [[type, new, {k,t}, ?[{k,t}...]]]]
+ * Full: {seed_id, seed_pair: {known, target}, legos: [{id, type, new, lego: {known, target}, components?}]}
+ */
+function expandCompactFormat(compactData) {
+  return compactData.map(seed => {
+    // Check if already in full format
+    if (seed.seed_id) return seed;
+
+    // v7 Hybrid format: array-based
+    // ["S0001", {k:"known",t:"target"}, [[type, new, {k,t}, ?components]]]
+    if (Array.isArray(seed)) {
+      const [seedId, seedPair, legos] = seed;
+      return {
+        seed_id: seedId,
+        seed_pair: {
+          known: seedPair.k,
+          target: seedPair.t
+        },
+        legos: (legos || []).map((lego, idx) => {
+          // lego = [type, new, {k,t}, ?[{k,t}...]]
+          const [type, isNew, legoPair, components] = lego;
+          const expanded = {
+            id: `${seedId}L${String(idx + 1).padStart(2, '0')}`,
+            type: type,
+            new: isNew === 1 || isNew === true,
+            lego: {
+              known: legoPair.k,
+              target: legoPair.t
+            }
+          };
+          if (components && components.length > 0) {
+            expanded.components = components.map(c => ({
+              known: c.k,
+              target: c.t
+            }));
+          }
+          return expanded;
+        })
+      };
+    }
+
+    // v6 Compact format: object-based {s, k, t, l}
+    const seedId = seed.s;
+    return {
+      seed_id: seedId,
+      seed_pair: {
+        known: seed.k,
+        target: seed.t
+      },
+      legos: (seed.l || []).map((lego, idx) => {
+        const expanded = {
+          id: `${seedId}L${String(idx + 1).padStart(2, '0')}`,
+          type: lego.y,
+          new: lego.n === 1 || lego.n === true,
+          lego: {
+            known: lego.k,
+            target: lego.t
+          }
+        };
+        if (lego.c) {
+          expanded.components = lego.c.map(c => ({
+            known: c.k,
+            target: c.t
+          }));
+        }
+        return expanded;
+      })
+    };
+  });
+}
+
+/**
+ * POST /api/phase1/:courseCode/upload-batch
+ * Workers upload their completed batches here
+ * Accepts both compact and full format
+ */
+app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
+  const { courseCode } = req.params;
+  let batchData = req.body;
+
+  if (!Array.isArray(batchData)) {
+    return res.status(400).json({ error: 'Expected JSON array of seed objects' });
+  }
+
+  // Detect and expand compact formats (v6 object-based or v7 array-based)
+  const isV7Hybrid = batchData.length > 0 && Array.isArray(batchData[0]);
+  const isV6Compact = batchData.length > 0 && batchData[0].s && !batchData[0].seed_id;
+
+  if (isV7Hybrid) {
+    console.log(`[Phase 1] 📦 Expanding v7 hybrid format (${batchData.length} seeds)`);
+    batchData = expandCompactFormat(batchData);
+  } else if (isV6Compact) {
+    console.log(`[Phase 1] 📦 Expanding v6 compact format (${batchData.length} seeds)`);
+    batchData = expandCompactFormat(batchData);
+  }
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'phase1_batches');
+  await fs.ensureDir(batchesDir);
+
+  // Save batch with timestamp + random suffix to avoid collisions
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
+  await fs.writeJson(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
+
+  console.log(`[Phase 1] ✅ Received batch: ${batchData.length} seeds → ${batchFile}`);
+
+  res.json({ success: true, received: batchData.length, file: batchFile, expanded: isCompact });
+});
+
+/**
+ * POST /api/phase1/:courseCode/master-complete
+ * Masters report completion here
+ */
+app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
+  const { courseCode } = req.params;
+  const { masterNum, seedsProcessed } = req.body;
+
+  console.log(`[Phase 1] ✅ Master ${masterNum} complete: ${seedsProcessed} seeds`);
+
+  const job = activeJobs.get(courseCode);
+  if (job) {
+    job.mastersComplete = (job.mastersComplete || 0) + 1;
+    job.seedsProcessed = (job.seedsProcessed || 0) + seedsProcessed;
+
+    // Check if all masters complete
+    if (job.mastersComplete >= job.masters) {
+      console.log(`[Phase 1] 🎉 All masters complete! Merging batches...`);
+      await mergeBatches(courseCode);
+      job.status = 'complete';
+    }
+  }
+
+  res.json({ success: true, masterNum, acknowledged: true });
+});
+
+/**
+ * Merge all batch files into draft_lego_pairs.json
+ */
+async function mergeBatches(courseCode) {
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'phase1_batches');
+
+  if (!await fs.pathExists(batchesDir)) {
+    console.log(`[Phase 1] No batches directory found`);
+    return;
+  }
+
+  const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+  console.log(`[Phase 1] Merging ${batchFiles.length} batch files...`);
+
+  const allSeeds = [];
+  for (const file of batchFiles) {
+    const batch = await fs.readJson(path.join(batchesDir, file));
+    allSeeds.push(...batch);
+  }
+
+  // Sort by seed_id
+  allSeeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+  // Write draft_lego_pairs.json
+  const outputPath = path.join(courseDir, 'draft_lego_pairs.json');
+  await fs.writeJson(outputPath, allSeeds, { spaces: 2 });
+
+  console.log(`[Phase 1] ✅ Merged ${allSeeds.length} seeds → draft_lego_pairs.json`);
+
+  // Notify orchestrator
+  await notifyOrchestrator(courseCode, 'complete');
+}
+
+/**
+ * POST /resume
+ * Intelligent gap-fill: scan for missing seeds and launch targeted masters
+ *
+ * 1. Scans batch files to find processed seeds
+ * 2. Compares against totalSeeds to find gaps
+ * 3. Groups missing seeds into masters (5 workers each, 3 seeds per worker)
+ * 4. Generates prompts with EXACT seed IDs (not ranges)
+ * 5. Launches Safari windows
+ */
+app.post('/resume', async (req, res) => {
+  const { courseCode, target, known, totalSeeds = 668, workersPerMaster = 5, seedsPerWorker = 3 } = req.body;
+
+  if (!courseCode || !target || !known) {
+    return res.status(400).json({ error: 'courseCode, target, known required' });
+  }
+
+  console.log(`\n[Phase 1] ====================================`);
+  console.log(`[Phase 1] RESUME / GAP-FILL MODE`);
+  console.log(`[Phase 1] ====================================`);
+  console.log(`[Phase 1] Course: ${courseCode}`);
+  console.log(`[Phase 1] Total Seeds Expected: ${totalSeeds}`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'phase1_batches');
+
+  // Step 1: Scan draft_lego_pairs.json (the actual output file) for processed seeds
+  // Fall back to batch files if draft doesn't exist yet
+  const processedSeeds = new Set();
+  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+
+  if (await fs.pathExists(draftPath)) {
+    // Primary: scan the merged output file
+    try {
+      const draft = await fs.readJson(draftPath);
+      for (const seed of draft) {
+        if (seed.seed_id) {
+          processedSeeds.add(seed.seed_id);
+        }
+      }
+      console.log(`[Phase 1] Scanned draft_lego_pairs.json: ${processedSeeds.size} seeds`);
+    } catch (err) {
+      console.error(`[Phase 1] Error reading draft_lego_pairs.json: ${err.message}`);
+    }
+  } else if (await fs.pathExists(batchesDir)) {
+    // Fallback: scan batch files if draft doesn't exist
+    console.log(`[Phase 1] No draft_lego_pairs.json found, scanning batch files...`);
+    const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+    for (const file of batchFiles) {
+      try {
+        const batch = await fs.readJson(path.join(batchesDir, file));
+        for (const seed of batch) {
+          if (seed.seed_id) {
+            processedSeeds.add(seed.seed_id);
+          }
+        }
+      } catch (err) {
+        console.error(`[Phase 1] Error reading ${file}: ${err.message}`);
+      }
+    }
+    console.log(`[Phase 1] Scanned ${batchFiles.length} batch files: ${processedSeeds.size} seeds`);
+  }
+
+  console.log(`[Phase 1] Processed seeds found: ${processedSeeds.size}`);
+
+  // Step 2: Find missing seeds
+  const missingSeeds = [];
+  for (let i = 1; i <= totalSeeds; i++) {
+    const seedId = 'S' + String(i).padStart(4, '0');
+    if (!processedSeeds.has(seedId)) {
+      missingSeeds.push(seedId);
+    }
+  }
+
+  console.log(`[Phase 1] Missing seeds: ${missingSeeds.length}`);
+
+  if (missingSeeds.length === 0) {
+    return res.json({
+      success: true,
+      message: 'No missing seeds - Phase 1 is complete!',
+      processedSeeds: processedSeeds.size,
+      missingSeeds: 0
+    });
+  }
+
+  // Step 3: Group into batches of seedsPerWorker
+  const workerBatches = [];
+  for (let i = 0; i < missingSeeds.length; i += seedsPerWorker) {
+    workerBatches.push(missingSeeds.slice(i, i + seedsPerWorker));
+  }
+
+  // Step 4: Group into masters of workersPerMaster each
+  const masters = [];
+  for (let m = 0; m * workersPerMaster < workerBatches.length; m++) {
+    const masterWorkers = workerBatches.slice(m * workersPerMaster, (m + 1) * workersPerMaster);
+    masters.push({
+      masterNum: m + 1,
+      workers: masterWorkers.map((seeds, idx) => ({
+        workerNum: idx + 1,
+        seeds: seeds  // EXACT seed IDs, not ranges
+      }))
+    });
+  }
+
+  console.log(`[Phase 1] Gap-fill plan: ${masters.length} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
+
+  // Read the v4.4 unified prompt
+  const promptPath = path.join(__dirname, 'PROMPT.md');
+  let unifiedPrompt = '';
+  try {
+    unifiedPrompt = require('fs').readFileSync(promptPath, 'utf8');
+  } catch (err) {
+    return res.status(500).json({ error: `Failed to read PROMPT.md: ${err.message}` });
+  }
+
+  // Generate master prompts with EXACT seed IDs
+  const generateGapFillMasterPrompt = (master) => {
+    const workerInstructions = master.workers.map(w =>
+      `  - Worker ${w.workerNum}: Seeds ${w.seeds.join(', ')} (${w.seeds.length} seeds)`
+    ).join('\n');
+
+    const totalMasterSeeds = master.workers.reduce((sum, w) => sum + w.seeds.length, 0);
+
+    return `# Phase 1 Gap-Fill Master ${master.masterNum}: Translation + LEGO Extraction
+
+**Course**: ${courseCode}
+**Target**: ${getLanguageName(target)} (${target})
+**Known**: ${getLanguageName(known)} (${known})
+**Your Seeds**: ${totalMasterSeeds} specific seeds (gap-fill mode)
+
+---
+
+## YOUR ROLE: MASTER ORCHESTRATOR
+
+You spawn ${master.workers.length} worker agents via Task tool. Each worker processes SPECIFIC seeds (not ranges).
+
+**Worker assignments:**
+${workerInstructions}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${master.workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+Each worker prompt should include:
+1. The EXACT seed IDs they process
+2. The methodology below
+3. The output format
+4. The upload endpoint
+
+---
+
+## WORKER PROMPT TEMPLATE
+
+For each worker, use this prompt (fill in the EXACT SEED_IDS):
+
+\`\`\`
+# Phase 1 Worker: Seeds [SEED_IDS]
+
+Course: ${courseCode}
+Target: ${getLanguageName(target)}
+Known: ${getLanguageName(known)}
+
+## STEP 1: FETCH SEEDS
+GET: ${orchestratorUrl}/api/canonical-seeds?ids=[SEED_IDS_COMMA_SEPARATED]
+
+Example: ${orchestratorUrl}/api/canonical-seeds?ids=S0049,S0050,S0051
+
+## STEP 2: METHODOLOGY
+${unifiedPrompt}
+
+## STEP 3: PROCESS EACH SEED
+For each seed in your list:
+1. Translate to ${getLanguageName(target)}
+2. Extract LEGOs (A-type and M-type)
+3. Mark embedded LEGOs as new: false (same-seed only)
+
+## STEP 4: UPLOAD RESULTS
+Use curl (NOT WebFetch) to POST your JSON array:
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_JSON_ARRAY]'
+
+Output format: JSON array of seed objects (see methodology above)
+\`\`\`
+
+---
+
+## STEP 2: WAIT FOR COMPLETION
+
+After spawning all workers, wait for their Task tool results.
+
+## STEP 3: REPORT COMPLETION
+
+When all workers complete, use curl to POST:
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${totalMasterSeeds}}'
+
+---
+
+**DO NOT process seeds yourself - spawn workers and coordinate!**
+**IMPORTANT: Tell workers to use curl for uploads, NOT WebFetch!**
+`;
+  };
+
+  // Save prompts
+  const promptsDir = path.join(courseDir, 'phase1_gapfill_prompts');
+  await fs.ensureDir(promptsDir);
+
+  for (const master of masters) {
+    const prompt = generateGapFillMasterPrompt(master);
+    const filename = `gapfill_master_${String(master.masterNum).padStart(2, '0')}.md`;
+    await fs.writeFile(path.join(promptsDir, filename), prompt);
+  }
+
+  console.log(`[Phase 1] ✅ Generated ${masters.length} gap-fill prompts in ${promptsDir}`);
+
+  // Load web agent spawner
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+  if (!spawnClaudeWebAgent) {
+    return res.status(500).json({ error: 'Web agent spawner not available' });
+  }
+
+  // Launch all masters in Safari
+  console.log(`[Phase 1] Launching ${masters.length} Safari windows...`);
+
+  const launchResults = [];
+  for (const master of masters) {
+    try {
+      const prompt = generateGapFillMasterPrompt(master);
+      await spawnClaudeWebAgent(prompt, master.masterNum, 'safari');
+      launchResults.push({ master: master.masterNum, status: 'launched' });
+      console.log(`[Phase 1]   ✅ Gap-fill Master ${master.masterNum} launched`);
+
+      // Delay between launches
+      await new Promise(r => setTimeout(r, 8000));
+    } catch (err) {
+      launchResults.push({ master: master.masterNum, status: 'failed', error: err.message });
+      console.error(`[Phase 1]   ❌ Gap-fill Master ${master.masterNum} failed: ${err.message}`);
+    }
+  }
+
+  // Track the job
+  activeJobs.set(courseCode + '_gapfill', {
+    status: 'running',
+    mode: 'gap-fill',
+    masters: masters.length,
+    missingSeeds: missingSeeds.length,
+    startedAt: new Date().toISOString(),
+    launchResults
+  });
+
+  res.json({
+    success: true,
+    message: `Launched ${masters.length} gap-fill masters for ${missingSeeds.length} missing seeds`,
+    courseCode,
+    processedSeeds: processedSeeds.size,
+    missingSeeds: missingSeeds.length,
+    masters: masters.length,
+    workersPerMaster,
+    seedsPerWorker,
+    missingSeedsList: missingSeeds,
+    launchResults
+  });
+});
 
 /**
  * GET /health

@@ -51,7 +51,14 @@ const containsSubstring = (container, phrase) => {
 console.log('🔍 Phase 2: LEGO Reuse Tracking (with embedded detection)');
 console.log(`📁 Course: ${coursePath}\n`);
 
-const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+let legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+
+// Handle both formats: array of seeds OR {seeds: [...]}
+const isArrayFormat = Array.isArray(legoPairs);
+if (isArrayFormat) {
+  console.log('📝 Detected array format, wrapping in {seeds: [...]}');
+  legoPairs = { seeds: legoPairs };
+}
 
 // Track ALL seen LEGOs for exact duplicate detection
 const seenLegos = new Map(); // key -> seedId (for ref)
@@ -115,8 +122,9 @@ legoPairs.seeds.forEach((seed) => {
   });
 });
 
-// Write updated file
-fs.writeFileSync(legoPairsPath, JSON.stringify(legoPairs, null, 2));
+// Write updated file (preserve original format)
+const outputData = isArrayFormat ? legoPairs.seeds : legoPairs;
+fs.writeFileSync(legoPairsPath, JSON.stringify(outputData, null, 2));
 
 console.log(`📊 Summary:`);
 console.log(`   Total seeds: ${legoPairs.seeds.length}`);

@@ -1,4 +1,4 @@
-# Phase 1: LEGO Pair Generation v7.0
+# Phase 1: LEGO Pair Generation v6.0
 
 ## YOUR ROLE
 
@@ -39,20 +39,6 @@ These show what fails/passes ZUT for your specific language pair.
 
 ---
 
-## Gender Marking (Romance Languages)
-
-For first-person phrases with gendered adjectives, mark with `o/a` so both male and female learners get appropriate audio.
-
-```
-"I'm tired" → "estoy cansado/a"     ✓ gender marked
-"I'm ready" → "estoy listo/a"       ✓ gender marked
-"I'm sure" → "estoy seguro/a"       ✓ gender marked
-```
-
-Apply this to ANY adjective describing the speaker that inflects for gender - don't use a fixed list, use your linguistic knowledge.
-
----
-
 ## LEGO Types
 
 **A-type:** Single word on at least one side. Must pass ZUT.
@@ -71,35 +57,27 @@ Apply this to ANY adjective describing the speaker that inflects for gender - do
 
 ---
 
-## Output Format (v7 HYBRID - saves tokens, swap-safe)
+## Output Format (COMPACT)
 
-Array-based with keyed k/t pairs to prevent target/known swaps:
+Use short keys to minimize tokens. Server expands to full format.
 
 ```json
 [
-  ["S0001", {"k":"I want to speak Spanish","t":"Quiero hablar español"}, [
-    ["A", 1, {"k":"I want","t":"quiero"}],
-    ["A", 1, {"k":"to speak","t":"hablar"}],
-    ["A", 1, {"k":"Spanish","t":"español"}]
-  ]],
-  ["S0002", {"k":"in Spanish","t":"en español"}, [
-    ["M", 1, {"k":"in Spanish","t":"en español"}, [{"k":"Spanish","t":"español"}]]
-  ]]
+  {"s":"S0001","k":"I want to speak Spanish","t":"Quiero hablar español","l":[
+    {"y":"A","n":1,"k":"I want","t":"quiero"},
+    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+  ]}
 ]
 ```
 
-**Structure:**
-- Position 0: seed_id (string)
-- Position 1: seed pair object `{k: "known", t: "target"}`
-- Position 2: legos array, each lego is:
-  - `[type, new, {k,t}]` for A-types
-  - `[type, new, {k,t}, [{k,t}...]]` for M-types (with components)
-
 **Keys:**
-- `k` = known text (ALWAYS the learner's language)
-- `t` = target text (ALWAYS the language being learned)
-- `type` = "A" or "M"
-- `new` = 1 (first occurrence) or 0 (already introduced)
+- `s` = seed_id ("S0001")
+- `k` = known text
+- `t` = target text
+- `l` = legos array
+- `y` = type ("A" or "M")
+- `n` = new (1=true, 0=false)
+- `c` = components (M-types only)
 
 ---
 
@@ -108,9 +86,7 @@ Array-based with keyed k/t pairs to prevent target/known swaps:
 - [ ] Every LEGO passes ZUT (zero uncertainty)
 - [ ] No bare articles ("a", "the", "an")
 - [ ] No bare prepositions ("in", "on", "to", "for")
-- [ ] First-person gendered adjectives marked with `o/a`
-- [ ] Embedded chunks marked `new: 0`
+- [ ] Embedded chunks marked `new: false`
 - [ ] Components listed for M-types
-- [ ] All k/t pairs use keyed objects (NOT positional)
 
 **If uncertain about ANY LEGO, chunk it UP.**

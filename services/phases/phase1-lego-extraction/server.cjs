@@ -1636,9 +1636,9 @@ async function spawnReextractionSessions(courseCode, job) {
         job.milestones.orchestratorsSpawned = spawned;
         console.log(`    ✅ ${seedId} session spawned (${spawned}/${job.affectedSeeds.length})`);
 
-        // Brief delay between spawns
+        // Brief delay between spawns (8s works better than 2s)
         if (i + batch.indexOf(seedId) < job.affectedSeeds.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          await new Promise(resolve => setTimeout(resolve, 8000));
         }
       } catch (error) {
         console.error(`    ❌ Failed to spawn ${seedId}:`, error.message);
@@ -1852,6 +1852,1060 @@ app.post('/reextract', async (req, res) => {
       courseCode
     });
   }
+});
+
+/**
+ * ==========================================================================
+ * PHASE 2: CONFLICT RESOLUTION ENDPOINTS
+ * ==========================================================================
+ */
+
+/**
+ * POST /phase2/detect
+ * Detect KNOWN→TARGET conflicts in draft_lego_pairs.json
+ *
+ * Body: { courseCode: string }
+ * Returns: Conflict report with affected LEGOs and suggested upchunks
+ */
+app.post('/phase2/detect', async (req, res) => {
+  const { courseCode } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  const draftPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+
+  if (!fs.existsSync(draftPath)) {
+    return res.status(404).json({
+      error: `draft_lego_pairs.json not found for ${courseCode}`,
+      path: draftPath
+    });
+  }
+
+  console.log(`\n🔍 Phase 2: Detecting conflicts for ${courseCode}...`);
+
+  try {
+    let draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+
+    // Handle both array format and {seeds: [...]} format
+    const seeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+    if (!seeds || seeds.length === 0) {
+      return res.status(400).json({ error: 'No seeds found in draft_lego_pairs.json' });
+    }
+
+    // Build KNOWN→TARGET collision map
+    // Key: normalized known text → Map of target texts → array of {seedId, legoId}
+    const knownToTargets = new Map();
+
+    // Helper: normalize text for comparison
+    const normalize = (text) => text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').trim();
+
+    let totalLegos = 0;
+
+    seeds.forEach((seed) => {
+      const seedId = seed.seed_id;
+
+      (seed.legos || []).forEach((lego) => {
+        totalLegos++;
+        const known = normalize(lego.lego?.known || lego.known || '');
+        const target = lego.lego?.target || lego.target || '';
+        const legoId = lego.id;
+
+        if (!known || !target) return;
+
+        if (!knownToTargets.has(known)) {
+          knownToTargets.set(known, new Map());
+        }
+
+        const targetMap = knownToTargets.get(known);
+        if (!targetMap.has(target)) {
+          targetMap.set(target, []);
+        }
+        targetMap.get(target).push({ seedId, legoId, target });
+      });
+    });
+
+    // Find conflicts (same KNOWN → multiple different TARGETs)
+    const conflicts = [];
+
+    for (const [known, targetMap] of knownToTargets.entries()) {
+      if (targetMap.size > 1) {
+        // This KNOWN maps to multiple TARGETs - conflict!
+        const targets = [];
+        for (const [target, occurrences] of targetMap.entries()) {
+          targets.push({
+            target,
+            occurrences: occurrences.length,
+            seeds: occurrences.slice(0, 5).map(o => o.seedId) // First 5 seeds
+          });
+        }
+
+        conflicts.push({
+          known,
+          targetCount: targetMap.size,
+          targets,
+          totalOccurrences: targets.reduce((sum, t) => sum + t.occurrences, 0)
+        });
+      }
+    }
+
+    // Sort by total occurrences (most common conflicts first)
+    conflicts.sort((a, b) => b.totalOccurrences - a.totalOccurrences);
+
+    // Generate report
+    const report = {
+      courseCode,
+      timestamp: new Date().toISOString(),
+      summary: {
+        totalSeeds: seeds.length,
+        totalLegos: totalLegos,
+        uniqueKnownWords: knownToTargets.size,
+        conflictCount: conflicts.length,
+        affectedLegos: conflicts.reduce((sum, c) => sum + c.totalOccurrences, 0)
+      },
+      conflicts: conflicts.slice(0, 50), // Top 50 conflicts
+      allConflicts: conflicts
+    };
+
+    // Save report to course directory
+    const reportPath = path.join(VFS_ROOT, courseCode, 'phase2_conflict_report.json');
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+
+    console.log(`   ✅ Found ${conflicts.length} conflicts`);
+    console.log(`   📄 Report saved to: ${reportPath}`);
+
+    res.json({
+      success: true,
+      summary: report.summary,
+      topConflicts: conflicts.slice(0, 10),
+      reportPath
+    });
+
+  } catch (error) {
+    console.error(`   ❌ Detection failed:`, error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /phase2/apply
+ * Apply conflict resolutions and LEGO reuse tracking
+ *
+ * Body: {
+ *   courseCode: string,
+ *   resolutions?: array (optional - if not provided, just does reuse tracking)
+ * }
+ *
+ * Reads: draft_lego_pairs.json, upchunk_resolutions.json (if exists)
+ * Writes: lego_pairs.json (conflict-free, with reuse markers)
+ */
+app.post('/phase2/apply', async (req, res) => {
+  const { courseCode, resolutions } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  const draftPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+  const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
+  const outputPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+  if (!fs.existsSync(draftPath)) {
+    return res.status(404).json({
+      error: `draft_lego_pairs.json not found for ${courseCode}`
+    });
+  }
+
+  console.log(`\n🔧 Phase 2: Applying resolutions for ${courseCode}...`);
+
+  try {
+    let draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+
+    // Handle both array format and {seeds: [...]} format
+    const isArrayFormat = Array.isArray(draftData);
+    const seeds = isArrayFormat ? draftData : draftData.seeds;
+
+    // Load resolutions if provided or if file exists
+    let upchunkResolutions = resolutions || [];
+    if (!resolutions && fs.existsSync(resolutionsPath)) {
+      const resData = JSON.parse(fs.readFileSync(resolutionsPath, 'utf8'));
+      upchunkResolutions = resData.resolutions || resData || [];
+      console.log(`   📄 Loaded ${upchunkResolutions.length} resolutions from file`);
+    }
+
+    // TODO: Apply upchunk resolutions (for now, just log)
+    if (upchunkResolutions.length > 0) {
+      console.log(`   ⚠️  Upchunk application not yet implemented - ${upchunkResolutions.length} resolutions pending`);
+    }
+
+    // Apply LEGO reuse tracking
+    console.log(`   🔍 Running LEGO reuse tracking...`);
+
+    const normalize = (text) => text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').trim();
+    const containsSubstring = (container, phrase) => {
+      if (container === phrase) return false;
+      return container.includes(phrase);
+    };
+
+    const seenLegos = new Map();
+    const recentLegos = [];
+    const EMBEDDED_WINDOW = 10;
+
+    let totalLegos = 0;
+    let exactDuplicates = 0;
+    let embeddedMatches = 0;
+
+    seeds.forEach((seed) => {
+      const seedId = seed.seed_id;
+
+      (seed.legos || []).forEach((lego) => {
+        totalLegos++;
+        const target = lego.lego?.target || lego.target;
+        const known = lego.lego?.known || lego.known;
+
+        if (!target || !known) return;
+
+        const normTarget = normalize(target);
+        const normKnown = normalize(known);
+        const key = `${normTarget}|${normKnown}`;
+
+        // Check 1: Exact match against ALL seen LEGOs
+        if (seenLegos.has(key)) {
+          lego.new = false;
+          lego.ref = seenLegos.get(key);
+          exactDuplicates++;
+
+          recentLegos.push({ target: normTarget, known: normKnown });
+          if (recentLegos.length > EMBEDDED_WINDOW) recentLegos.shift();
+          return;
+        }
+
+        // Check 2: Embedded in last 10 LEGOs only
+        let isEmbedded = false;
+        for (const recent of recentLegos) {
+          if (containsSubstring(recent.target, normTarget) &&
+              containsSubstring(recent.known, normKnown)) {
+            isEmbedded = true;
+            break;
+          }
+        }
+
+        if (isEmbedded) {
+          lego.new = false;
+          delete lego.ref;
+          embeddedMatches++;
+        } else {
+          lego.new = true;
+          delete lego.ref;
+        }
+
+        seenLegos.set(key, seedId);
+        recentLegos.push({ target: normTarget, known: normKnown });
+        if (recentLegos.length > EMBEDDED_WINDOW) recentLegos.shift();
+      });
+    });
+
+    // Write output (preserve original format)
+    const outputData = isArrayFormat ? seeds : { ...draftData, seeds };
+    fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
+
+    const summary = {
+      courseCode,
+      timestamp: new Date().toISOString(),
+      totalSeeds: seeds.length,
+      totalLegos,
+      exactDuplicates,
+      embeddedMatches,
+      uniqueNew: seenLegos.size,
+      resolutionsApplied: upchunkResolutions.length,
+      outputPath
+    };
+
+    console.log(`   ✅ Reuse tracking complete!`);
+    console.log(`      - Total LEGOs: ${totalLegos}`);
+    console.log(`      - Exact duplicates: ${exactDuplicates}`);
+    console.log(`      - Embedded (last 10): ${embeddedMatches}`);
+    console.log(`      - Unique (new: true): ${seenLegos.size}`);
+    console.log(`   📄 Output: ${outputPath}`);
+
+    res.json({
+      success: true,
+      summary
+    });
+
+  } catch (error) {
+    console.error(`   ❌ Apply failed:`, error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /phase2/status/:courseCode
+ * Get Phase 2 status for a course
+ */
+app.get('/phase2/status/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+
+  const draftPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+  const reportPath = path.join(VFS_ROOT, courseCode, 'phase2_conflict_report.json');
+  const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
+  const outputPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+  const status = {
+    courseCode,
+    files: {
+      draft_lego_pairs: fs.existsSync(draftPath),
+      conflict_report: fs.existsSync(reportPath),
+      upchunk_resolutions: fs.existsSync(resolutionsPath),
+      lego_pairs: fs.existsSync(outputPath)
+    },
+    phase2Ready: fs.existsSync(draftPath),
+    conflictsDetected: fs.existsSync(reportPath),
+    resolutionsReady: fs.existsSync(resolutionsPath),
+    phase2Complete: fs.existsSync(outputPath)
+  };
+
+  // If conflict report exists, include summary
+  if (fs.existsSync(reportPath)) {
+    try {
+      const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      status.conflictSummary = report.summary;
+    } catch (e) {
+      status.conflictSummary = null;
+    }
+  }
+
+  res.json(status);
+});
+
+/**
+ * Load web agent spawner
+ */
+async function loadWebAgentSpawner() {
+  try {
+    const spawnerPath = path.join(__dirname, '../../shared/spawn-agent.cjs');
+    if (await fs.pathExists(spawnerPath)) {
+      const { spawnClaudeWebAgent } = require(spawnerPath);
+      return spawnClaudeWebAgent;
+    }
+  } catch (error) {
+    console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
+  }
+  return null;
+}
+
+/**
+ * Language code to full name mapping
+ */
+function getLanguageName(code) {
+  const names = {
+    'eng': 'English', 'spa': 'Spanish', 'ita': 'Italian', 'fra': 'French',
+    'deu': 'German', 'por': 'Portuguese', 'cmn': 'Mandarin Chinese'
+  };
+  return names[code.toLowerCase()] || code.toUpperCase();
+}
+
+/**
+ * Generate Phase 2 master prompt with retry logic
+ */
+function generatePhase2MasterPrompt({ courseCode, target, known, orchestratorUrl, workers, relevantConflicts, totalSeeds, mode }) {
+  const seedRange = workers.length > 0
+    ? `${workers[0].seedIds[0]}-${workers[workers.length - 1].seedIds[workers[workers.length - 1].seedIds.length - 1]}`
+    : 'N/A';
+
+  return `# Phase 2 Master: Conflict Resolution + Upchunking
+
+**Course**: ${courseCode}
+**Target**: ${getLanguageName(target)} (${target})
+**Known**: ${getLanguageName(known)} (${known})
+**Seeds**: ${seedRange} (${totalSeeds} seeds total)
+**Mode**: ${mode}
+
+---
+
+## YOUR ROLE: CONFLICT RESOLUTION MASTER
+
+You spawn ${workers.length} worker agents via Task tool. Each worker:
+1. Fetches their assigned seeds via curl
+2. Identifies conflicting LEGOs (same known → multiple targets)
+3. Creates M-type upchunks to disambiguate
+4. Uploads resolved LEGOs with retry logic
+
+**Worker assignments:**
+${workers.map(w => `  - Worker ${w.workerNum}: ${w.seedIds.join(', ')} (${w.seedCount} seeds)`).join('\n')}
+
+---
+
+## CONFLICT SUMMARY (from detection)
+
+${relevantConflicts.length} conflicts affecting these seeds:
+${relevantConflicts.slice(0, 15).map(c =>
+  `- "${c.known}" → ${c.targets.map(t => `"${t.target}"`).join(' | ')} (${c.totalOccurrences} uses)`
+).join('\n')}
+${relevantConflicts.length > 15 ? `\n... and ${relevantConflicts.length - 15} more conflicts` : ''}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+**CRITICAL**: Workers fetch their own methodology - do NOT summarize or paraphrase it!
+
+---
+
+${workers.map(w => `
+## WORKER ${w.workerNum} PROMPT (copy exactly):
+
+\`\`\`
+# Phase 2 Worker ${w.workerNum}: Conflict Resolution
+
+Course: ${courseCode}
+**MY ASSIGNED SEEDS**: ${w.seedIds.join(', ')}
+**SEED COUNT**: ${w.seedCount}
+Orchestrator: ${orchestratorUrl}
+
+---
+
+## STEP 1: FETCH METHODOLOGY (CRITICAL - DO THIS FIRST!)
+
+You MUST fetch and READ the complete methodology before processing any seeds:
+
+curl -s "${orchestratorUrl}/api/phase-intelligence/2"
+
+**READ THE ENTIRE RESPONSE.** It contains:
+- ZUT (Zero Uncertainty Test) rules
+- Conflict resolution strategies
+- Upchunking rules
+- Output format specification
+
+**DO NOT PROCEED** until you have read and understood the methodology.
+
+## STEP 2: FETCH MY SEEDS
+
+**CRITICAL: Fetch EXACTLY these seed IDs - no others!**
+
+curl -s "${orchestratorUrl}/api/phase2/${courseCode}/seeds?ids=${w.seedIds.join(',')}"
+
+Verify the response contains ${w.seedCount} seeds with IDs: ${w.seedIds.join(', ')}
+If you get different seeds, STOP and report an error.
+
+## STEP 3: APPLY CONFLICT RESOLUTION
+
+Following the methodology you fetched in Step 1:
+1. Identify conflicting LEGOs (same known → multiple targets)
+2. Create M-type upchunks to disambiguate
+3. Mark component A-types as new: false when covered by M-types
+4. Ensure every LEGO passes ZUT
+
+## STEP 4: UPLOAD WITH RETRY
+
+curl -X POST "${orchestratorUrl}/api/phase2/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_JSON_ARRAY]'
+
+If upload fails, retry up to 3 times with exponential backoff.
+\`\`\`
+`).join('\n')}
+
+---
+
+## STEP 2: WAIT FOR COMPLETION
+
+After spawning all workers, wait for their Task tool results.
+Collect success/failure status from each worker.
+
+## STEP 3: REPORT COMPLETION
+
+\`\`\`bash
+curl -X POST "${orchestratorUrl}/api/phase2/${courseCode}/master-complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{"seedsProcessed": ${totalSeeds}, "workers": ${workers.length}}'
+\`\`\`
+
+---
+
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+`;
+}
+
+/**
+ * POST /phase2/launch-test
+ * Test Phase 2 with configurable seeds (default: 45 seeds = 3 workers × 15 seeds)
+ */
+app.post('/phase2/launch-test', async (req, res) => {
+  const {
+    courseCode,
+    target = 'spa',
+    known = 'eng',
+    seedCount = 45,      // Default: 45 seeds for test
+    workersCount = 3,    // Default: 3 workers for test
+    seedsPerWorker = 15  // Bigger windows for better consistency
+  } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`\n[Phase 2] ====================================`);
+  console.log(`[Phase 2] TEST LAUNCH: ${seedCount} seeds`);
+  console.log(`[Phase 2] ====================================`);
+  console.log(`[Phase 2] Course: ${courseCode}`);
+  console.log(`[Phase 2] Workers: ${workersCount} × ${seedsPerWorker} seeds each`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const courseDir = path.join(VFS_ROOT, courseCode);
+
+  // Load conflict report
+  const reportPath = path.join(courseDir, 'phase2_conflict_report.json');
+  if (!fs.existsSync(reportPath)) {
+    return res.status(400).json({
+      error: 'Run /phase2/detect first to generate conflict report',
+      hint: 'POST /phase2/detect with {"courseCode":"spa_for_eng_v2"}'
+    });
+  }
+
+  const conflictReport = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+
+  // Load draft_lego_pairs.json to get seed data
+  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+  const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+  const seeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+  // Get first N seeds
+  const testSeeds = seeds.slice(0, seedCount);
+
+  // Find conflicts that affect our test seeds
+  const testSeedIds = new Set(testSeeds.map(s => s.seed_id));
+  const relevantConflicts = conflictReport.allConflicts.filter(c =>
+    c.targets.some(t => t.seeds.some(s => testSeedIds.has(s)))
+  );
+
+  console.log(`[Phase 2] Found ${relevantConflicts.length} conflicts affecting first ${seedCount} seeds`);
+
+  // Generate worker assignments
+  const workers = [];
+  for (let w = 0; w < workersCount; w++) {
+    const startIdx = w * seedsPerWorker;
+    const endIdx = Math.min(startIdx + seedsPerWorker, seedCount);
+    if (startIdx >= seedCount) break;
+
+    const workerSeeds = testSeeds.slice(startIdx, endIdx);
+    workers.push({
+      workerNum: w + 1,
+      seedIds: workerSeeds.map(s => s.seed_id),
+      seedCount: workerSeeds.length
+    });
+  }
+
+  // Generate master prompt for Phase 2 (Conflict Resolution)
+  const masterPrompt = generatePhase2MasterPrompt({
+    courseCode,
+    target,
+    known,
+    orchestratorUrl,
+    workers,
+    relevantConflicts,
+    totalSeeds: seedCount,
+    mode: 'test'
+  });
+
+  // Save prompt
+  const promptsDir = path.join(courseDir, 'phase2_master_prompts');
+  await fs.ensureDir(promptsDir);
+  await fs.writeFile(path.join(promptsDir, 'phase2_test_master.md'), masterPrompt);
+
+  console.log(`[Phase 2] ✅ Generated master prompt in ${promptsDir}`);
+
+  // Load web agent spawner and launch
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+  if (!spawnClaudeWebAgent) {
+    return res.status(500).json({
+      error: 'Web agent spawner not available',
+      promptPath: path.join(promptsDir, 'phase2_test_master.md')
+    });
+  }
+
+  // Launch single master
+  console.log(`[Phase 2] Launching Safari window...`);
+  try {
+    await spawnClaudeWebAgent(masterPrompt, 1, 'safari');
+    console.log(`[Phase 2] ✅ Test master launched`);
+  } catch (error) {
+    console.error(`[Phase 2] ❌ Launch failed:`, error.message);
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.json({
+    success: true,
+    message: `Launched Phase 2 test with ${seedCount} seeds`,
+    workers: workers.length,
+    seedsPerWorker,
+    relevantConflicts: relevantConflicts.length,
+    promptPath: path.join(promptsDir, 'phase2_test_master.md')
+  });
+});
+
+/**
+ * POST /phase2/upload-batch
+ * Receive Phase 2 results from workers
+ */
+app.post('/phase2/upload-batch', async (req, res) => {
+  const courseCode = req.params.courseCode || req.body.courseCode;
+  const seeds = req.body.seeds || req.body;
+
+  if (!Array.isArray(seeds)) {
+    return res.status(400).json({ error: 'Expected array of seeds' });
+  }
+
+  const courseDir = path.join(VFS_ROOT, courseCode || 'spa_for_eng_v2');
+  const batchesDir = path.join(courseDir, 'phase2_batches');
+  await fs.ensureDir(batchesDir);
+
+  const timestamp = Date.now();
+  const randomId = Math.random().toString(36).substring(2, 8);
+  const filename = `batch_${timestamp}_${randomId}_${seeds.length}seeds.json`;
+
+  await fs.writeFile(path.join(batchesDir, filename), JSON.stringify(seeds, null, 2));
+
+  console.log(`[Phase 2] ✅ Received batch: ${seeds.length} seeds → ${filename}`);
+
+  res.json({
+    success: true,
+    message: `Saved ${seeds.length} seeds`,
+    filename
+  });
+});
+
+/**
+ * POST /phase2/launch-full
+ * Full Phase 2 launch: 9 masters × 5 workers × 15 seeds = 675 seeds per wave
+ */
+app.post('/phase2/launch-full', async (req, res) => {
+  const {
+    courseCode,
+    target = 'spa',
+    known = 'eng',
+    mastersCount = 9,
+    workersPerMaster = 5,
+    seedsPerWorker = 15
+  } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  const seedsPerMaster = workersPerMaster * seedsPerWorker;
+  const totalCapacity = mastersCount * seedsPerMaster;
+
+  console.log(`\n[Phase 2] ====================================`);
+  console.log(`[Phase 2] FULL LAUNCH: ${mastersCount} masters`);
+  console.log(`[Phase 2] ====================================`);
+  console.log(`[Phase 2] Course: ${courseCode}`);
+  console.log(`[Phase 2] Config: ${mastersCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
+  console.log(`[Phase 2] Capacity: ${totalCapacity} seeds per wave`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const courseDir = path.join(VFS_ROOT, courseCode);
+
+  // Load conflict report
+  const reportPath = path.join(courseDir, 'phase2_conflict_report.json');
+  if (!fs.existsSync(reportPath)) {
+    return res.status(400).json({
+      error: 'Run /phase2/detect first to generate conflict report',
+      hint: 'POST /phase2/detect with {"courseCode":"spa_for_eng_v2"}'
+    });
+  }
+
+  const conflictReport = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+
+  // Load draft_lego_pairs.json
+  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+  const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+  const allSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+  console.log(`[Phase 2] Total seeds: ${allSeeds.length}`);
+  console.log(`[Phase 2] Total conflicts: ${conflictReport.allConflicts.length}`);
+
+  // Generate master assignments
+  const masters = [];
+  for (let m = 0; m < mastersCount; m++) {
+    const masterStartIdx = m * seedsPerMaster;
+    if (masterStartIdx >= allSeeds.length) break;
+
+    const masterSeeds = allSeeds.slice(masterStartIdx, masterStartIdx + seedsPerMaster);
+
+    // Generate workers for this master
+    const workers = [];
+    for (let w = 0; w < workersPerMaster; w++) {
+      const workerStartIdx = w * seedsPerWorker;
+      if (workerStartIdx >= masterSeeds.length) break;
+
+      const workerSeeds = masterSeeds.slice(workerStartIdx, workerStartIdx + seedsPerWorker);
+      workers.push({
+        workerNum: w + 1,
+        seedIds: workerSeeds.map(s => s.seed_id),
+        seedCount: workerSeeds.length
+      });
+    }
+
+    // Find conflicts for this master's seeds
+    const masterSeedIds = new Set(masterSeeds.map(s => s.seed_id));
+    const relevantConflicts = conflictReport.allConflicts.filter(c =>
+      c.targets.some(t => t.seeds.some(s => masterSeedIds.has(s)))
+    );
+
+    masters.push({
+      masterNum: m + 1,
+      workers,
+      relevantConflicts,
+      seedCount: masterSeeds.length,
+      seedRange: `${masterSeeds[0].seed_id}-${masterSeeds[masterSeeds.length - 1].seed_id}`
+    });
+  }
+
+  // Save prompts and launch masters
+  const promptsDir = path.join(courseDir, 'phase2_master_prompts');
+  await fs.ensureDir(promptsDir);
+  await fs.remove(promptsDir);
+  await fs.ensureDir(promptsDir);
+
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+
+  for (const master of masters) {
+    const prompt = generatePhase2MasterPrompt({
+      courseCode,
+      target,
+      known,
+      orchestratorUrl,
+      workers: master.workers,
+      relevantConflicts: master.relevantConflicts,
+      totalSeeds: master.seedCount,
+      mode: `full-master-${master.masterNum}`
+    });
+
+    await fs.writeFile(
+      path.join(promptsDir, `phase2_master_${master.masterNum}.md`),
+      prompt
+    );
+
+    if (spawnClaudeWebAgent) {
+      console.log(`[Phase 2] Launching Master ${master.masterNum}: ${master.seedRange} (${master.seedCount} seeds)`);
+      try {
+        await spawnClaudeWebAgent(prompt, master.masterNum, 'safari');
+        // 8s delay between master spawns for stability
+        if (master.masterNum < masters.length) {
+          await new Promise(r => setTimeout(r, 8000));
+        }
+      } catch (error) {
+        console.error(`[Phase 2] ❌ Master ${master.masterNum} launch failed:`, error.message);
+      }
+    }
+  }
+
+  res.json({
+    success: true,
+    message: `Launched ${masters.length} Phase 2 masters`,
+    masters: masters.map(m => ({
+      masterNum: m.masterNum,
+      seedRange: m.seedRange,
+      workers: m.workers.length,
+      conflicts: m.relevantConflicts.length
+    })),
+    totalSeeds: allSeeds.length,
+    promptsDir
+  });
+});
+
+/**
+ * POST /phase2/finalize
+ * Merge Phase 2 batches and deduplicate (first-wins canonicalization)
+ */
+app.post('/phase2/finalize', async (req, res) => {
+  const { courseCode } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`\n[Phase 2] ====================================`);
+  console.log(`[Phase 2] FINALIZE: Merge + Deduplicate`);
+  console.log(`[Phase 2] ====================================`);
+  console.log(`[Phase 2] Course: ${courseCode}`);
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'phase2_batches');
+
+  // Load all batch files
+  const batchFiles = await fs.readdir(batchesDir);
+  const jsonFiles = batchFiles.filter(f => f.endsWith('.json')).sort();
+
+  console.log(`[Phase 2] Found ${jsonFiles.length} batch files`);
+
+  // Merge all seeds
+  const seedMap = new Map();
+  let totalLoaded = 0;
+
+  for (const file of jsonFiles) {
+    const batch = JSON.parse(await fs.readFile(path.join(batchesDir, file), 'utf8'));
+    for (const seed of batch) {
+      seedMap.set(seed.seed_id, seed);
+      totalLoaded++;
+    }
+  }
+
+  console.log(`[Phase 2] Loaded ${totalLoaded} seeds, ${seedMap.size} unique`);
+
+  // First-wins canonicalization for LEGOs
+  // Track: { known: target } → first seen wins
+  const canonicalLegos = new Map();
+  const conflictsResolved = [];
+
+  const seeds = Array.from(seedMap.values()).sort((a, b) =>
+    parseInt(a.seed_id.slice(1)) - parseInt(b.seed_id.slice(1))
+  );
+
+  for (const seed of seeds) {
+    if (!seed.legos) continue;
+
+    for (const lego of seed.legos) {
+      const known = lego.lego?.known?.toLowerCase();
+      if (!known) continue;
+
+      const existing = canonicalLegos.get(known);
+      if (!existing) {
+        // First occurrence - this becomes canonical
+        canonicalLegos.set(known, {
+          target: lego.lego.target,
+          firstSeed: seed.seed_id,
+          legoId: lego.id
+        });
+      } else if (existing.target !== lego.lego.target) {
+        // Conflict! First-wins
+        conflictsResolved.push({
+          known,
+          canonicalTarget: existing.target,
+          variantTarget: lego.lego.target,
+          canonicalSeed: existing.firstSeed,
+          variantSeed: seed.seed_id
+        });
+        // Update the LEGO to match canonical
+        lego.lego.target = existing.target;
+        lego.canonicalized = true;
+      }
+    }
+  }
+
+  console.log(`[Phase 2] Resolved ${conflictsResolved.length} conflicts via first-wins`);
+
+  // Mark new:true/false based on first occurrence
+  const seenLegos = new Set();
+  for (const seed of seeds) {
+    if (!seed.legos) continue;
+
+    for (const lego of seed.legos) {
+      const key = `${lego.lego?.known?.toLowerCase()}|${lego.lego?.target?.toLowerCase()}`;
+      if (seenLegos.has(key)) {
+        lego.new = false;
+      } else {
+        lego.new = true;
+        seenLegos.add(key);
+      }
+    }
+  }
+
+  // Save finalized lego_pairs.json
+  const outputPath = path.join(courseDir, 'lego_pairs.json');
+  await fs.writeFile(outputPath, JSON.stringify({
+    metadata: {
+      phase: 2,
+      action: 'finalize',
+      timestamp: new Date().toISOString(),
+      totalSeeds: seeds.length,
+      totalLegos: Array.from(seenLegos).length,
+      conflictsResolved: conflictsResolved.length
+    },
+    seeds
+  }, null, 2));
+
+  console.log(`[Phase 2] ✅ Saved ${seeds.length} seeds to lego_pairs.json`);
+
+  // Save conflicts report
+  if (conflictsResolved.length > 0) {
+    const conflictsPath = path.join(courseDir, 'phase2_canonicalization_report.json');
+    await fs.writeFile(conflictsPath, JSON.stringify({
+      timestamp: new Date().toISOString(),
+      totalResolved: conflictsResolved.length,
+      conflicts: conflictsResolved
+    }, null, 2));
+    console.log(`[Phase 2] ✅ Saved canonicalization report`);
+  }
+
+  res.json({
+    success: true,
+    message: `Finalized ${seeds.length} seeds`,
+    totalSeeds: seeds.length,
+    uniqueLegos: seenLegos.size,
+    conflictsResolved: conflictsResolved.length,
+    outputPath
+  });
+});
+
+/**
+ * POST /phase2/resume
+ * Resume Phase 2 for missing seeds (gap-fill)
+ */
+app.post('/phase2/resume', async (req, res) => {
+  const {
+    courseCode,
+    target = 'spa',
+    known = 'eng',
+    workersPerMaster = 5,
+    seedsPerWorker = 15
+  } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`\n[Phase 2] ====================================`);
+  console.log(`[Phase 2] RESUME: Gap-fill missing seeds`);
+  console.log(`[Phase 2] ====================================`);
+  console.log(`[Phase 2] Course: ${courseCode}`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'phase2_batches');
+
+  // Load draft_lego_pairs.json for expected seeds
+  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+  const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+  const allSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+  const expectedIds = new Set(allSeeds.map(s => s.seed_id));
+
+  // Scan batches for processed seeds
+  const processedIds = new Set();
+  if (fs.existsSync(batchesDir)) {
+    const batchFiles = await fs.readdir(batchesDir);
+    for (const file of batchFiles.filter(f => f.endsWith('.json'))) {
+      try {
+        const batch = JSON.parse(await fs.readFile(path.join(batchesDir, file), 'utf8'));
+        for (const seed of batch) {
+          processedIds.add(seed.seed_id);
+        }
+      } catch (e) {
+        console.warn(`[Phase 2] Could not read ${file}`);
+      }
+    }
+  }
+
+  // Find missing seeds
+  const missingIds = [...expectedIds].filter(id => !processedIds.has(id));
+
+  console.log(`[Phase 2] Expected: ${expectedIds.size}, Processed: ${processedIds.size}, Missing: ${missingIds.length}`);
+
+  if (missingIds.length === 0) {
+    return res.json({
+      success: true,
+      message: 'All seeds already processed',
+      expected: expectedIds.size,
+      processed: processedIds.size,
+      missing: 0
+    });
+  }
+
+  // Get missing seed data
+  const missingSeeds = allSeeds.filter(s => missingIds.includes(s.seed_id));
+
+  // Load conflict report
+  const reportPath = path.join(courseDir, 'phase2_conflict_report.json');
+  const conflictReport = fs.existsSync(reportPath)
+    ? JSON.parse(fs.readFileSync(reportPath, 'utf8'))
+    : { allConflicts: [] };
+
+  // Calculate masters needed
+  const seedsPerMaster = workersPerMaster * seedsPerWorker;
+  const mastersNeeded = Math.ceil(missingSeeds.length / seedsPerMaster);
+
+  console.log(`[Phase 2] Launching ${mastersNeeded} gap-fill masters`);
+
+  const promptsDir = path.join(courseDir, 'phase2_master_prompts');
+  await fs.ensureDir(promptsDir);
+
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+  const mastersLaunched = [];
+
+  for (let m = 0; m < mastersNeeded; m++) {
+    const masterStartIdx = m * seedsPerMaster;
+    const masterSeeds = missingSeeds.slice(masterStartIdx, masterStartIdx + seedsPerMaster);
+
+    if (masterSeeds.length === 0) break;
+
+    // Generate workers
+    const workers = [];
+    for (let w = 0; w < workersPerMaster; w++) {
+      const workerStartIdx = w * seedsPerWorker;
+      if (workerStartIdx >= masterSeeds.length) break;
+
+      const workerSeeds = masterSeeds.slice(workerStartIdx, workerStartIdx + seedsPerWorker);
+      workers.push({
+        workerNum: w + 1,
+        seedIds: workerSeeds.map(s => s.seed_id),
+        seedCount: workerSeeds.length
+      });
+    }
+
+    // Find relevant conflicts
+    const masterSeedIds = new Set(masterSeeds.map(s => s.seed_id));
+    const relevantConflicts = conflictReport.allConflicts.filter(c =>
+      c.targets.some(t => t.seeds.some(s => masterSeedIds.has(s)))
+    );
+
+    const prompt = generatePhase2MasterPrompt({
+      courseCode,
+      target,
+      known,
+      orchestratorUrl,
+      workers,
+      relevantConflicts,
+      totalSeeds: masterSeeds.length,
+      mode: `resume-master-${m + 1}`
+    });
+
+    await fs.writeFile(
+      path.join(promptsDir, `phase2_resume_master_${m + 1}.md`),
+      prompt
+    );
+
+    if (spawnClaudeWebAgent) {
+      try {
+        await spawnClaudeWebAgent(prompt, m + 1, 'safari');
+        mastersLaunched.push({
+          masterNum: m + 1,
+          seedRange: `${masterSeeds[0].seed_id}-${masterSeeds[masterSeeds.length - 1].seed_id}`,
+          seedCount: masterSeeds.length,
+          workers: workers.length
+        });
+        // 8s delay between master spawns for stability
+        if (m + 1 < mastersNeeded) {
+          await new Promise(r => setTimeout(r, 8000));
+        }
+      } catch (error) {
+        console.error(`[Phase 2] ❌ Resume master ${m + 1} failed:`, error.message);
+      }
+    }
+  }
+
+  res.json({
+    success: true,
+    message: `Launched ${mastersLaunched.length} gap-fill masters for ${missingIds.length} seeds`,
+    expected: expectedIds.size,
+    processed: processedIds.size,
+    missing: missingIds.length,
+    mastersLaunched
+  });
 });
 
 /**
