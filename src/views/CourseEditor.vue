@@ -1315,13 +1315,12 @@ async function loadCourse() {
     legos.value = []
     legoBreakdowns.value = []
 
-    // Load lego_baskets.json from VFS (v7.7+ format)
-    // ALWAYS use static files (GitHub SSoT)
+    // Load lego_baskets.json from S3 (via API proxy)
     try {
-      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      // Add cache-busting timestamp
       const timestamp = Date.now()
       const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json')}?_t=${timestamp}`
-      console.log('🔍 Fetching lego_baskets.json from GitHub:', url)
+      console.log('🔍 Fetching lego_baskets.json from S3:', url)
 
       const basketsResponse = await fetch(url)
 
@@ -1337,13 +1336,12 @@ async function loadCourse() {
       basketsData.value = null
     }
 
-    // Load introductions.json from VFS (Phase 6)
-    // ALWAYS use static files (GitHub SSoT)
+    // Load introductions.json from S3 (via API proxy)
     try {
-      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      // Add cache-busting timestamp
       const timestamp = Date.now()
       const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json')}?_t=${timestamp}`
-      console.log('🔍 Fetching introductions.json from GitHub:', url)
+      console.log('🔍 Fetching introductions.json from S3:', url)
 
       const introsResponse = await fetch(url)
 
@@ -1359,14 +1357,13 @@ async function loadCourse() {
       introductionsData.value = null
     }
 
-    // Load lego_pairs.json from VFS (v2 format with nested structure)
-    // ALWAYS use static files (GitHub SSoT)
+    // Load lego_pairs.json from S3 (via API proxy)
     console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
     try {
-      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      // Add cache-busting timestamp
       const timestamp = Date.now()
       const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json')}?_t=${timestamp}`
-      console.log('🔍 Fetching from GitHub:', url)
+      console.log('🔍 Fetching lego_pairs.json from S3:', url)
 
       const legoPairsResponse = await fetch(url)
 
