@@ -55,7 +55,9 @@ module.exports = {
         AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
         S3_BUCKET: process.env.S3_BUCKET || 'popty-bach-lfs',
         S3_AUDIO_BUCKET: process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage',
-        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
+        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+        SUPABASE_URL: process.env.SUPABASE_URL,
+        SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY
       },
       error_file: 'logs/orchestrator-error.log',
       out_file: 'logs/orchestrator-out.log',
@@ -179,7 +181,9 @@ module.exports = {
         AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
         AZURE_SPEECH_KEY: process.env.AZURE_SPEECH_KEY,
         AZURE_SPEECH_REGION: process.env.AZURE_SPEECH_REGION,
-        ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY
+        ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY,
+        SUPABASE_URL: process.env.SUPABASE_URL,
+        SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY
       },
       error_file: 'logs/phase8-error.log',
       out_file: 'logs/phase8-out.log',
