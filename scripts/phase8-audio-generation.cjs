@@ -12,6 +12,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 const azureTTS = require('../services/azure-tts-service.cjs');
 const elevenlabsService = require('../services/elevenlabs-service.cjs');
+const genderExpansion = require('../services/gender-expansion-service.cjs');
 const audioProcessor = require('../services/audio-processor.cjs');
 const marService = require('../services/mar-service.cjs');
 const s3Service = require('../services/s3-service.cjs');
@@ -625,17 +626,26 @@ async function generateAudioFile(sample, voiceDetails, outputPath) {
     process.exit(1);
   }
 
+  // Expand gender markers for target roles (e.g., "seguro(a)" → "segura" for female voice)
+  // target1 = female voice, target2 = male voice
+  const ttsText = genderExpansion.expandForVoice(text, voiceId, role);
+
+  // Log if gender expansion occurred
+  if (ttsText !== text) {
+    console.log(`  Gender expanded: "${text}" → "${ttsText}"`);
+  }
+
   // Get cadence-specific settings
   const cadenceSettings = processing?.cadences?.[cadence] ||
                          processing?.cadences?.natural ||
                          {};
 
-  console.log(`Generating [${role}/${cadence}] ${provider}/${provider_id}: "${text.substring(0, 60)}..."`);
+  console.log(`Generating [${role}/${cadence}] ${provider}/${provider_id}: "${ttsText.substring(0, 60)}..."`);
 
   if (provider === 'azure') {
     // Use cadence-specific Azure speed (set in SSML)
     const speed = cadenceSettings.azure_speed || 1.0;
-    await azureTTS.generateAudioWithRetry(text, provider_id, outputPath, speed);
+    await azureTTS.generateAudioWithRetry(ttsText, provider_id, outputPath, speed);
 
   } else if (provider === 'elevenlabs') {
     const options = {
@@ -646,7 +656,7 @@ async function generateAudioFile(sample, voiceDetails, outputPath) {
       enablePriming: voiceDetails.priming === 'enabled'
     };
 
-    await elevenlabsService.generateAudioWithRetry(text, provider_id, outputPath, options);
+    await elevenlabsService.generateAudioWithRetry(ttsText, provider_id, outputPath, options);
 
   } else {
     throw new Error(`Unknown provider: ${provider}`);

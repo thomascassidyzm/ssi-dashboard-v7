@@ -41,15 +41,23 @@ These show what fails/passes ZUT for your specific language pair.
 
 ## Gender Marking (Romance Languages)
 
-For first-person phrases with gendered adjectives, mark with `o/a` so both male and female learners get appropriate audio.
+For phrases with gendered words, mark masculine first with feminine in parentheses: `o(a)`
+
+This allows TTS to generate both variants - female voice uses feminine, male voice uses masculine.
 
 ```
-"I'm tired" → "estoy cansado/a"     ✓ gender marked
-"I'm ready" → "estoy listo/a"       ✓ gender marked
-"I'm sure" → "estoy seguro/a"       ✓ gender marked
+"I'm tired" → "estoy cansado(a)"       ✓ gender marked
+"I'm ready" → "estoy listo(a)"         ✓ gender marked
+"I'm sure" → "estoy seguro(a)"         ✓ gender marked
+"my friends" → "mis amigos(as)"        ✓ plural gender marked
 ```
 
-Apply this to ANY adjective describing the speaker that inflects for gender - don't use a fixed list, use your linguistic knowledge.
+**When to mark:**
+- First-person adjectives describing the speaker
+- Nouns where gender varies by referent (amigo/amiga, niño/niña)
+- Any word where both genders would naturally occur in conversation
+
+**Keep it simple:** Just use the `o(a)` pattern. Don't mark irregular forms - learners extrapolate from exposure.
 
 ---
 
@@ -108,7 +116,7 @@ Array-based with keyed k/t pairs to prevent target/known swaps:
 - [ ] Every LEGO passes ZUT (zero uncertainty)
 - [ ] No bare articles ("a", "the", "an")
 - [ ] No bare prepositions ("in", "on", "to", "for")
-- [ ] First-person gendered adjectives marked with `o/a`
+- [ ] Gendered words marked with `o(a)` pattern
 - [ ] Embedded chunks marked `new: 0`
 - [ ] Components listed for M-types
 - [ ] All k/t pairs use keyed objects (NOT positional)
