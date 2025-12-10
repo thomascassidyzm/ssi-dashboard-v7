@@ -75,7 +75,8 @@ function buildExpectedSamples(manifest) {
 
   const addSample = (text, role) => {
     if (text && role) {
-      expected.add(`${text}|${role}`);
+      // Normalize text to match how samples object keys are normalized
+      expected.add(`${normalizeText(text)}|${role}`);
     }
   };
 
@@ -142,7 +143,8 @@ function findOrphanedSamples(manifest) {
     for (const [text, variants] of Object.entries(slice.samples)) {
       for (const variant of variants) {
         if (variant.role) {
-          actual.add(`${text}|${variant.role}`);
+          // Normalize text to match how expected keys are built
+          actual.add(`${normalizeText(text)}|${variant.role}`);
         }
       }
     }
@@ -184,7 +186,8 @@ function removeOrphanedSamples(manifest, orphanedKeys) {
 
     // Filter out orphaned variants
     slice.samples[text] = variants.filter(v => {
-      const key = `${text}|${v.role}`;
+      // Normalize text to match how orphanedKeys are built
+      const key = `${normalizeText(text)}|${v.role}`;
       if (orphanedKeys.has(key)) {
         removed[v.role] = (removed[v.role] || 0) + 1;
         return false;
@@ -1100,9 +1103,9 @@ async function checkAndFixEncouragementsEmpty(courseCode, options = {}) {
     }
 
     if (autoFix) {
-      // Step 1: Clear encouragement arrays
-      delete slice.orderedEncouragements;
-      delete slice.pooledEncouragements;
+      // Step 1: Clear encouragement arrays (preserve keys for schema)
+      slice.orderedEncouragements = [];
+      slice.pooledEncouragements = [];
 
       // Step 2: Find and remove orphaned samples (encouragement samples are now orphans)
       const { orphaned, stats } = findOrphanedSamples(manifest);

@@ -95,14 +95,34 @@ function generateWelcomeUUID(courseCode, text) {
 }
 
 /**
- * Check if welcome audio exists in MAR/S3
+ * Check if welcome audio exists in canonical registry or MAR
+ *
+ * Checks canonical welcomes.json first (source of truth for manual welcomes),
+ * then falls back to MAR file. Voice mismatch is ignored - if audio exists,
+ * we don't regenerate regardless of which voice was used.
  *
  * @param {string} courseCode - Course code
- * @param {string} voiceId - Voice ID to use
+ * @param {string} voiceId - Voice ID (unused but kept for API compatibility)
  * @returns {Promise<Object>} { exists: boolean, sample: object|null }
  */
 async function checkExistingWelcome(courseCode, voiceId) {
-  // Load welcome samples from MAR
+  // 1. First check canonical registry (source of truth for manual welcomes)
+  const registry = await loadWelcomeRegistry();
+  const canonicalEntry = registry.welcomes[courseCode];
+
+  if (canonicalEntry && canonicalEntry.id) {
+    return {
+      exists: true,
+      sample: {
+        uuid: canonicalEntry.id,
+        duration: canonicalEntry.duration || 0,
+        text: canonicalEntry.text,
+        voice: canonicalEntry.voice  // May differ from requested voiceId
+      }
+    };
+  }
+
+  // 2. Fallback to MAR file
   const samplesPath = path.join(WELCOME_SAMPLES_DIR, 'welcome_samples.json');
 
   if (!await fs.pathExists(samplesPath)) {

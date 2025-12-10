@@ -13,7 +13,6 @@ const path = require('path');
 const langService = require('./language-code-service.cjs');
 
 const MAR_BASE = path.join(__dirname, '..', 'samples_database');
-const TEMP_MAR_BASE = path.join(__dirname, '..', 'temp', 'mar');
 
 /**
  * Normalize text for duplicate detection
@@ -438,184 +437,6 @@ async function addEncouragementSample(language, voiceId, uuid, sampleData) {
 }
 
 // ============================================================================
-// Temporary MAR Functions (Phase 8 crash-safe generation)
-// ============================================================================
-
-/**
- * Initialize temporary MAR directory structure
- * Temp MAR persists in temp/mar/ until explicitly merged or cleared
- * This ensures crash-safety - generated samples are not lost if process crashes
- */
-async function initTempMAR() {
-  await fs.ensureDir(TEMP_MAR_BASE);
-  await fs.ensureDir(path.join(TEMP_MAR_BASE, 'voices'));
-
-  // Create voices.json if it doesn't exist
-  const voicesPath = path.join(TEMP_MAR_BASE, 'voices.json');
-  if (!await fs.pathExists(voicesPath)) {
-    await fs.writeJson(voicesPath, {
-      version: '1.0.0',
-      last_updated: new Date().toISOString(),
-      voices: {}
-    }, { spaces: 2 });
-  }
-
-  console.log('✓ Temporary MAR initialized at:', TEMP_MAR_BASE);
-}
-
-/**
- * Get sample checking BOTH permanent MAR and temp MAR
- * Used during Phase 8 generation to avoid regenerating samples from this run
- *
- * @param {string} voiceId - Voice ID
- * @param {string} uuid - Sample UUID
- * @returns {Promise<object|null>} Sample data or null
- */
-async function getSampleFromBothMARs(voiceId, uuid) {
-  // Check permanent MAR first
-  let sample = await getSample(voiceId, uuid);
-  if (sample) return { ...sample, source: 'permanent' };
-
-  // Check temp MAR
-  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
-  if (await fs.pathExists(tempSamplesPath)) {
-    const tempSamples = await fs.readJson(tempSamplesPath);
-    if (tempSamples.samples && tempSamples.samples[uuid]) {
-      return { ...tempSamples.samples[uuid], source: 'temp' };
-    }
-  }
-
-  return null;
-}
-
-/**
- * Find existing sample in BOTH permanent and temp MAR
- * Searches by text/role/language/cadence to find matching sample
- * Used during analysis phase to check if sample needs generation
- *
- * @param {string} voiceId - Voice ID
- * @param {string} text - The phrase/text
- * @param {string} role - Sample role
- * @param {string} language - Language code
- * @param {string} cadence - Speech cadence (default: 'natural')
- * @returns {Promise<object|null>} Sample with UUID if exists, null otherwise
- */
-async function findExistingSampleInBothMARs(voiceId, text, role, language, cadence = 'natural') {
-  // Check permanent MAR first
-  const permanentSamples = await loadVoiceSamples(voiceId);
-  const inPermanent = findExistingSample(permanentSamples, text, role, language, cadence);
-  if (inPermanent) {
-    return { ...inPermanent, source: 'permanent' };
-  }
-
-  // Check temp MAR
-  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
-  if (await fs.pathExists(tempSamplesPath)) {
-    const tempSamples = await fs.readJson(tempSamplesPath);
-    const inTemp = findExistingSample(tempSamples, text, role, language, cadence);
-    if (inTemp) {
-      return { ...inTemp, source: 'temp' };
-    }
-  }
-
-  return null;
-}
-
-/**
- * Save sample to temporary MAR only
- * Used during Phase 8 generation before QC/upload verification
- *
- * @param {string} voiceId - Voice ID
- * @param {string} uuid - Sample UUID
- * @param {object} sample - Sample metadata
- */
-async function saveSampleToTempMAR(voiceId, uuid, sample) {
-  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
-  await fs.ensureDir(path.dirname(tempSamplesPath));
-
-  let tempSamples;
-  if (await fs.pathExists(tempSamplesPath)) {
-    tempSamples = await fs.readJson(tempSamplesPath);
-  } else {
-    tempSamples = {
-      voice_id: voiceId,
-      version: '1.0.0',
-      last_updated: new Date().toISOString(),
-      sample_count: 0,
-      samples: {}
-    };
-  }
-
-  tempSamples.samples[uuid] = sample;
-  tempSamples.sample_count = Object.keys(tempSamples.samples).length;
-  tempSamples.last_updated = new Date().toISOString();
-
-  await fs.writeJson(tempSamplesPath, tempSamples, { spaces: 2 });
-}
-
-/**
- * Merge temporary MAR into permanent MAR
- * Called after successful QC and S3 upload verification
- *
- * @returns {Promise<object>} Merge statistics
- */
-async function mergeTempMARToPermanent() {
-  const stats = {
-    voicesMerged: 0,
-    samplesMerged: 0,
-    errors: []
-  };
-
-  const tempVoicesDir = path.join(TEMP_MAR_BASE, 'voices');
-  if (!await fs.pathExists(tempVoicesDir)) {
-    console.log('✓ No temporary MAR to merge');
-    return stats;
-  }
-
-  const voiceDirs = await fs.readdir(tempVoicesDir);
-
-  for (const voiceId of voiceDirs) {
-    const tempSamplesPath = path.join(tempVoicesDir, voiceId, 'samples.json');
-    if (!await fs.pathExists(tempSamplesPath)) continue;
-
-    try {
-      const tempSamples = await fs.readJson(tempSamplesPath);
-      const permanentSamples = await loadVoiceSamples(voiceId);
-
-      // Merge samples
-      for (const [uuid, sample] of Object.entries(tempSamples.samples)) {
-        if (!permanentSamples.samples[uuid]) {
-          permanentSamples.samples[uuid] = sample;
-          stats.samplesMerged++;
-        }
-      }
-
-      permanentSamples.sample_count = Object.keys(permanentSamples.samples).length;
-      await saveVoiceSamples(voiceId, permanentSamples);
-
-      stats.voicesMerged++;
-      console.log(`✓ Merged ${voiceId}: ${Object.keys(tempSamples.samples).length} samples`);
-    } catch (error) {
-      stats.errors.push({ voiceId, error: error.message });
-      console.error(`✗ Failed to merge ${voiceId}:`, error.message);
-    }
-  }
-
-  return stats;
-}
-
-/**
- * Clear temporary MAR after successful merge
- * Optional - temp MAR can also be left as a backup until next run
- */
-async function clearTempMAR() {
-  if (await fs.pathExists(TEMP_MAR_BASE)) {
-    await fs.remove(TEMP_MAR_BASE);
-    console.log('✓ Temporary MAR cleared');
-  }
-}
-
-// ============================================================================
 // MAR Index Functions (Performance Optimization)
 // ============================================================================
 
@@ -638,28 +459,17 @@ async function loadMARIndex(voiceIds) {
   for (const voiceId of voiceIds) {
     index[voiceId] = {};
 
-    // Load permanent MAR samples
+    // Load permanent MAR samples (temp MAR no longer used)
+    // NOTE: Use "first wins" to handle duplicates - the first entry is typically
+    // the one that was actually uploaded to S3 (duplicates created later often weren't)
     const permanentSamples = await loadVoiceSamples(voiceId);
     for (const [uuid, sample] of Object.entries(permanentSamples.samples)) {
       const key = buildIndexKey(sample.text, sample.role, sample.cadence);
-      index[voiceId][key] = {
-        uuid,
-        sample,
-        source: 'permanent'
-      };
-    }
-
-    // Load temp MAR samples
-    const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
-    if (await fs.pathExists(tempSamplesPath)) {
-      const tempSamples = await fs.readJson(tempSamplesPath);
-      for (const [uuid, sample] of Object.entries(tempSamples.samples || {})) {
-        const key = buildIndexKey(sample.text, sample.role, sample.cadence);
-        // Temp samples override permanent (shouldn't happen, but just in case)
+      if (!index[voiceId][key]) {
         index[voiceId][key] = {
           uuid,
           sample,
-          source: 'temp'
+          source: 'permanent'
         };
       }
     }
@@ -798,103 +608,6 @@ async function syncManifestToMAR(manifest, voiceAssignments, targetLanguage, sou
   return stats;
 }
 
-// ============================================================================
-// Batched MAR Writer (Performance Optimization)
-// ============================================================================
-
-/**
- * BatchedTempMARWriter - Accumulates samples in memory and writes in batches
- * Dramatically reduces I/O for large sample sets (68k samples: 30min -> 30sec)
- */
-class BatchedTempMARWriter {
-  constructor(batchSize = 500) {
-    this.batchSize = batchSize;
-    this.pendingSamples = {}; // voiceId -> { uuid -> sample }
-    this.pendingCount = 0;
-  }
-
-  /**
-   * Add sample to pending batch (does not write to disk)
-   */
-  addSample(voiceId, uuid, sample) {
-    if (!this.pendingSamples[voiceId]) {
-      this.pendingSamples[voiceId] = {};
-    }
-    this.pendingSamples[voiceId][uuid] = sample;
-    this.pendingCount++;
-
-    // Auto-flush if batch size reached
-    if (this.pendingCount >= this.batchSize) {
-      return this.flush();
-    }
-    return Promise.resolve();
-  }
-
-  /**
-   * Write all pending samples to disk (grouped by voice)
-   */
-  async flush() {
-    if (this.pendingCount === 0) return;
-
-    const startTime = Date.now();
-    let written = 0;
-
-    for (const [voiceId, samples] of Object.entries(this.pendingSamples)) {
-      const sampleCount = Object.keys(samples).length;
-      if (sampleCount === 0) continue;
-
-      const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
-      await fs.ensureDir(path.dirname(tempSamplesPath));
-
-      // Load existing
-      let tempSamples;
-      if (await fs.pathExists(tempSamplesPath)) {
-        tempSamples = await fs.readJson(tempSamplesPath);
-      } else {
-        tempSamples = {
-          voice_id: voiceId,
-          version: '1.0.0',
-          last_updated: new Date().toISOString(),
-          sample_count: 0,
-          samples: {}
-        };
-      }
-
-      // Merge all pending samples for this voice
-      Object.assign(tempSamples.samples, samples);
-      tempSamples.sample_count = Object.keys(tempSamples.samples).length;
-      tempSamples.last_updated = new Date().toISOString();
-
-      // Write once
-      await fs.writeJson(tempSamplesPath, tempSamples, { spaces: 2 });
-      written += sampleCount;
-    }
-
-    const elapsed = Date.now() - startTime;
-    console.log(`✓ Batched MAR flush: ${written} samples in ${elapsed}ms`);
-
-    // Clear pending
-    this.pendingSamples = {};
-    this.pendingCount = 0;
-  }
-}
-
-// Singleton instance for global use
-let _batchedWriter = null;
-
-function getBatchedTempMARWriter(batchSize = 500) {
-  if (!_batchedWriter) {
-    _batchedWriter = new BatchedTempMARWriter(batchSize);
-  }
-  return _batchedWriter;
-}
-
-async function flushBatchedTempMAR() {
-  if (_batchedWriter) {
-    await _batchedWriter.flush();
-  }
-}
-
 module.exports = {
   normalizeText,
   loadVoiceRegistry,
@@ -916,22 +629,10 @@ module.exports = {
   saveEncouragementSamples,
   findEncouragementSampleByText,
   addEncouragementSample,
-  // Temporary MAR functions (legacy - prefer syncManifestToMAR)
-  initTempMAR,
-  getSampleFromBothMARs,
-  findExistingSampleInBothMARs,
-  saveSampleToTempMAR,
-  mergeTempMARToPermanent,
-  clearTempMAR,
-  TEMP_MAR_BASE,
   // MAR Index functions (performance optimization)
   loadMARIndex,
   buildIndexKey,
   findSampleInIndex,
   // Manifest-based MAR sync (preferred method)
-  syncManifestToMAR,
-  // Batched writer (major performance optimization)
-  BatchedTempMARWriter,
-  getBatchedTempMARWriter,
-  flushBatchedTempMAR
+  syncManifestToMAR
 };

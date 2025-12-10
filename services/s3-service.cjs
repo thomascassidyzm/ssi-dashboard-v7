@@ -126,15 +126,32 @@ async function findAudio(uuid) {
  * @param {string} bucket - S3 bucket name
  * @returns {Promise<Buffer>} Audio file buffer
  */
-async function downloadAudio(uuid, bucket = STAGE_BUCKET) {
+async function downloadAudio(uuid, bucket = STAGE_BUCKET, retries = 3) {
   const key = `mastered/${uuid}.mp3`;
 
-  const response = await s3.getObject({
-    Bucket: bucket,
-    Key: key
-  }).promise();
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await s3.getObject({
+        Bucket: bucket,
+        Key: key
+      }).promise();
 
-  return response.Body;
+      return response.Body;
+    } catch (error) {
+      // If file doesn't exist (NoSuchKey), don't retry
+      if (error.code === 'NoSuchKey') {
+        throw new Error(`File not found in S3: ${key}`);
+      }
+
+      // For other errors, retry with exponential backoff
+      if (attempt < retries) {
+        const delay = Math.pow(2, attempt) * 100; // 200ms, 400ms, 800ms
+        await new Promise(resolve => setTimeout(resolve, delay));
+      } else {
+        throw new Error(`S3 download failed after ${retries} attempts: ${error.message}`);
+      }
+    }
+  }
 }
 
 /**

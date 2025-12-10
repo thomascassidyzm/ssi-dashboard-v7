@@ -28,16 +28,39 @@ const ENCOURAGEMENT_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
 // Path to canonical encouragements file (synced from S3)
 const CANONICAL_ENCOURAGEMENTS_PATH = path.join(__dirname, '../public/vfs/canonical');
 
+// Common 3-letter to 2-letter language code mappings
+const LANGUAGE_CODE_MAP = {
+  eng: 'en',
+  spa: 'es',
+  fra: 'fr',
+  deu: 'de',
+  ita: 'it',
+  por: 'pt',
+  cmn: 'zh',
+  jpn: 'ja',
+  kor: 'ko',
+  ara: 'ar',
+  rus: 'ru',
+  hin: 'hi',
+  cym: 'cy'  // Welsh
+};
+
 /**
  * Load canonical encouragements from file
  * Returns objects with text and pre-assigned UUIDs, separated by type
  *
- * @param {string} language - Language code (e.g., 'eng')
+ * @param {string} language - Language code (e.g., 'eng' or 'en')
  * @param {boolean} [combined=true] - If true, return combined array (legacy). If false, return { pooled, ordered }
  * @returns {Promise<Array|Object>} Encouragements with UUIDs
  */
 async function loadCanonicalEncouragements(language, combined = true) {
-  const filePath = path.join(CANONICAL_ENCOURAGEMENTS_PATH, `${language}_encouragements.json`);
+  // Try the provided language code first
+  let filePath = path.join(CANONICAL_ENCOURAGEMENTS_PATH, `${language}_encouragements.json`);
+
+  // If file doesn't exist and we have a 3-letter code, try the 2-letter equivalent
+  if (!await fs.pathExists(filePath) && LANGUAGE_CODE_MAP[language]) {
+    filePath = path.join(CANONICAL_ENCOURAGEMENTS_PATH, `${LANGUAGE_CODE_MAP[language]}_encouragements.json`);
+  }
 
   if (!await fs.pathExists(filePath)) {
     console.log(`No canonical encouragements found at ${filePath}`);
@@ -403,12 +426,16 @@ async function addEncouragementsToManifest(manifest, encouragements, language = 
 
   if (Array.isArray(encouragements)) {
     // Legacy: array passed in, need to load canonical to categorize
+    // Each encouragement should have:
+    //   - id: canonical encouragement item ID (for categorization)
+    //   - uuid: audio sample UUID (for playback)
     const canonical = await loadCanonicalEncouragements(language, false);
     const pooledIds = new Set(canonical.pooled.map(e => e.id));
     const orderedIds = new Set(canonical.ordered.map(e => e.id));
 
-    pooled = encouragements.filter(e => pooledIds.has(e.uuid || e.id));
-    ordered = encouragements.filter(e => orderedIds.has(e.uuid || e.id));
+    // Use 'id' (canonical item ID) for categorization, NOT 'uuid' (sample UUID)
+    pooled = encouragements.filter(e => pooledIds.has(e.id));
+    ordered = encouragements.filter(e => orderedIds.has(e.id));
   } else {
     // New format: { pooled, ordered }
     pooled = encouragements.pooled || [];
@@ -416,40 +443,43 @@ async function addEncouragementsToManifest(manifest, encouragements, language = 
   }
 
   // Populate slices[0].orderedEncouragements and pooledEncouragements
-  // Format: { text, id }
+  // Format: { text, id } where id is the canonical encouragement item ID
   slice.orderedEncouragements = ordered.map(enc => ({
     text: enc.text,
-    id: enc.uuid || enc.id
+    id: enc.id  // Canonical item ID (NOT sample UUID)
   }));
 
   slice.pooledEncouragements = pooled.map(enc => ({
     text: enc.text,
-    id: enc.uuid || enc.id
+    id: enc.id  // Canonical item ID (NOT sample UUID)
   }));
 
   console.log(`Set orderedEncouragements: ${slice.orderedEncouragements.length}`);
   console.log(`Set pooledEncouragements: ${slice.pooledEncouragements.length}`);
 
-  // Also add to samples (for duration tracking)
+  // Also add to samples section (for audio playback)
+  // Each encouragement needs an entry in samples with:
+  //   - role: 'encouragement' (distinct from 'presentation')
+  //   - id: the audio sample UUID (for fetching the audio file)
   const allEncouragements = [...pooled, ...ordered];
   for (const enc of allEncouragements) {
     const text = enc.text;
-    const uuid = enc.uuid || enc.id;
+    const sampleUuid = enc.uuid || enc.id;  // Prefer sample UUID, fall back to canonical ID
 
     if (!samples[text]) {
       samples[text] = [];
     }
 
-    // Check if already exists
+    // Check if already exists (encouragements use role: 'presentation')
     const existing = samples[text].find(
-      v => v.role === 'presentation' && (v.uuid === uuid || v.id === uuid)
+      v => v.role === 'presentation' && v.id === sampleUuid
     );
 
     if (!existing) {
       samples[text].push({
-        role: 'presentation',
+        role: 'presentation',  // Encouragements use presentation role
         cadence: 'natural',
-        id: uuid,
+        id: sampleUuid,  // Audio sample UUID for playback
         duration: enc.duration || 0
       });
     }

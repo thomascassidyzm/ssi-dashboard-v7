@@ -78,6 +78,18 @@ function generateLegacyUUID(text, language, role, cadence) {
 }
 
 /**
+ * Generate deterministic UUID from any key string
+ * Simpler version for cases where full sample parameters aren't needed
+ * (e.g., encouragements, welcomes, or other non-sample audio)
+ *
+ * @param {string} key - Unique key string to generate UUID from
+ * @returns {string} RFC 4122 UUID v5 in uppercase
+ */
+function generateDeterministicUUID(key) {
+  return uuidv5(key, SSI_NAMESPACE).toUpperCase();
+}
+
+/**
  * Validate UUID format (accepts both valid and legacy invalid UUIDs)
  *
  * @param {string} uuid - UUID to validate
@@ -134,6 +146,7 @@ function analyzeUUID(uuid) {
 module.exports = {
   generateSampleUUID,
   generateLegacyUUID,  // For checking existing S3 files (auto-normalizes lang codes)
+  generateDeterministicUUID,
   toLegacyLangCode,    // Convert 2-letter to 3-letter language codes (uses language-code-service)
   isValidFormat,
   isRFC4122Compliant,
