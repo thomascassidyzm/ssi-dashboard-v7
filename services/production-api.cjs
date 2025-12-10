@@ -349,82 +349,8 @@ async function proxyToPhase8(method, path, body = null) {
   })
 }
 
-// Audio Pipeline: Start audio generation
-// POST /api/production/:courseCode/audio-pipeline/start
-app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) => {
-  try {
-    const { courseCode } = req.params
-    const { options } = req.body
-
-    logger.log(`Starting audio pipeline for ${courseCode}`)
-
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      ...options
-    })
-
-    res.status(response.status).json(response.data)
-  } catch (error) {
-    logger.error('Error starting audio pipeline:', error)
-    res.status(500).json({ error: error.message })
-  }
-})
-
-// Audio Pipeline: Cancel audio generation
-// POST /api/production/:courseCode/audio-pipeline/cancel
-app.post('/api/production/:courseCode/audio-pipeline/cancel', async (req, res) => {
-  try {
-    const { courseCode } = req.params
-
-    logger.log(`Cancelling audio pipeline for ${courseCode}`)
-
-    const response = await proxyToPhase8('DELETE', `/cancel/${courseCode}`)
-
-    res.status(response.status).json(response.data)
-  } catch (error) {
-    logger.error('Error cancelling audio pipeline:', error)
-    res.status(500).json({ error: error.message })
-  }
-})
-
-// Audio Pipeline: Retry audio generation
-// POST /api/production/:courseCode/audio-pipeline/retry
-app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) => {
-  try {
-    const { courseCode } = req.params
-    const { options } = req.body
-
-    logger.log(`Retrying audio pipeline for ${courseCode}`)
-
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      retry: true,
-      ...options
-    })
-
-    res.status(response.status).json(response.data)
-  } catch (error) {
-    logger.error('Error retrying audio pipeline:', error)
-    res.status(500).json({ error: error.message })
-  }
-})
-
-// Audio Pipeline: Get generation plan (dry-run)
-// GET /api/production/:courseCode/audio-pipeline/plan
-app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
-  try {
-    const { courseCode } = req.params
-
-    logger.log(`Getting audio pipeline plan for ${courseCode}`)
-
-    const response = await proxyToPhase8('POST', '/plan', { courseCode })
-
-    res.status(response.status).json(response.data)
-  } catch (error) {
-    logger.error('Error getting audio pipeline plan:', error)
-    res.status(500).json({ error: error.message })
-  }
-})
+// NOTE: Audio Pipeline routes are defined at the bottom of this file (lines ~940+)
+// They use axios with proper response transformation for the frontend
 
 // Recording Queue: Get recording queue
 // GET /api/production/:courseCode/recording/queue
@@ -926,6 +852,117 @@ app.post('/api/production/internal/emit', (req, res) => {
   logger.log(`Emitted ${event} to course:${courseCode}`)
 
   res.json({ success: true, event, courseCode })
+})
+
+// =============================================================================
+// AUDIO PIPELINE ROUTES - Proxy to Phase 8 service on port 3465
+// =============================================================================
+
+const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
+const axios = require('axios')
+
+// GET /api/production/:courseCode/audio-pipeline/plan
+// Get generation plan with cost estimates
+app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const response = await axios.post(`${PHASE8_URL}/plan`, { courseCode })
+    // Transform response for frontend
+    const plan = response.data.plan || {}
+    res.json({
+      success: true,
+      estimatedCost: `$${plan.estimatedCostUSD || '0.00'}`,
+      estimatedTime: `${Math.ceil((plan.missingSamples || 0) / 60)} min`,
+      total: plan.totalSamples || 0,
+      existing: plan.existingSamples || 0,
+      missing: plan.missingSamples || 0,
+      breakdown: [
+        { role: 'source', count: plan.sampleBreakdown?.source || 0 },
+        { role: 'target1', count: plan.sampleBreakdown?.target1 || 0 },
+        { role: 'target2', count: plan.sampleBreakdown?.target2 || 0 }
+      ],
+      voices: plan.voiceAssignments || {}
+    })
+  } catch (error) {
+    logger.error(`Audio plan error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/start
+// Start audio generation
+app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) => {
+  const { courseCode } = req.params
+  const { options } = req.body
+  try {
+    const response = await axios.post(`${PHASE8_URL}/generate`, { courseCode, options })
+    res.json(response.data)
+  } catch (error) {
+    logger.error(`Audio start error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/audio-pipeline/status
+// Get generation status
+app.get('/api/production/:courseCode/audio-pipeline/status', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const response = await axios.get(`${PHASE8_URL}/status/${courseCode}`)
+    res.json(response.data)
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return res.json({ success: true, job: null, message: 'No active job' })
+    }
+    logger.error(`Audio status error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/cancel
+// Cancel generation (POST to match frontend expectation)
+app.post('/api/production/:courseCode/audio-pipeline/cancel', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const response = await axios.delete(`${PHASE8_URL}/cancel/${courseCode}`)
+    res.json(response.data)
+  } catch (error) {
+    logger.error(`Audio cancel error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/retry
+// Retry failed audio generation
+app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) => {
+  const { courseCode } = req.params
+  const { options } = req.body
+  try {
+    const response = await axios.post(`${PHASE8_URL}/generate`, {
+      courseCode,
+      retry: true,
+      ...options
+    })
+    res.json(response.data)
+  } catch (error) {
+    logger.error(`Audio retry error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
 })
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470
