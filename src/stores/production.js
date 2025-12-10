@@ -271,9 +271,34 @@ export const useProductionStore = defineStore('production', () => {
 
       if (!manifestRes.ok) throw new Error('Failed to load manifest')
 
-      courseManifest.value = await manifestRes.json()
+      const manifestData = await manifestRes.json()
+      courseManifest.value = manifestData
       sampleFlags.value = flagsRes.ok ? await flagsRes.json() : { samples: {} }
       audioMetadata.value = metadataRes.ok ? await metadataRes.json() : { audio: {} }
+
+      // If stub manifest (pre-audio state), auto-load pipeline plan
+      if (manifestData._stub) {
+        console.log('[Production] Course in pre-audio state, loading pipeline plan...')
+        try {
+          const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
+          if (planRes.ok) {
+            const planData = await planRes.json()
+            // Populate pipeline stats from plan
+            costEstimate.value = {
+              estimated: planData.estimatedCost || '$0.00',
+              estimatedTime: planData.estimatedTime || '0 min',
+              breakdown: planData.breakdown || []
+            }
+            // Create generation queue items from plan counts
+            generationQueue.value = Array.from({ length: planData.missing || 0 }, (_, i) => ({
+              id: `pending-${i}`,
+              status: 'queued'
+            }))
+          }
+        } catch (planErr) {
+          console.warn('[Production] Could not load pipeline plan:', planErr.message)
+        }
+      }
 
     } catch (err) {
       // Network errors indicate Production API is not running

@@ -2,6 +2,8 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
+const fs = require('fs-extra')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
@@ -10,6 +12,11 @@ const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
+
+// VFS root for local file checks
+const VFS_ROOT = process.env.VFS_ROOT?.endsWith('/courses')
+  ? process.env.VFS_ROOT
+  : path.join(process.env.VFS_ROOT || path.join(__dirname, '../public/vfs'), 'courses')
 
 const app = express()
 const httpServer = createServer(app)
@@ -45,6 +52,23 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
     const manifest = await s3Service.getCourseManifest(courseCode)
 
     if (!manifest) {
+      // Check if lego_baskets.json exists (course is in pre-audio state)
+      const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json')
+      if (await fs.pathExists(basketsPath)) {
+        // Return stub manifest indicating audio needs to be generated
+        const baskets = await fs.readJson(basketsPath)
+        const basketCount = Object.keys(baskets).length
+        return res.json({
+          _stub: true,
+          _message: 'Manifest not yet compiled. Run audio generation first.',
+          courseCode,
+          status: 'pre-audio',
+          basketCount,
+          seeds: [],
+          audio: {},
+          version: 'stub'
+        })
+      }
       return res.status(404).json({ error: 'Manifest not found' })
     }
 
