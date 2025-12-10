@@ -140,7 +140,7 @@ import { ref, computed } from 'vue'
 // Import phase intelligence files from co-located service directories (APML v11.0)
 // SSoT: Prompts live alongside their services
 import phase1Raw from '../../services/phases/phase1-translation/PROMPT.md?raw'
-import phase2Raw from '../../services/phases/phase1-lego-extraction/PROMPT.md?raw'
+import phase2Raw from '../../services/phases/phase2-conflict-resolution/PROMPT.md?raw'
 import phase3Raw from '../../services/phases/phase3-basket-generation/PROMPT.md?raw'
 import phase8Raw from '../../services/phases/phase8-audio-generation/PROMPT.md?raw'
 import phase9Raw from '../../services/phases/phase9-manifest-compilation/PROMPT.md?raw'
@@ -158,7 +158,7 @@ const phaseContent = {
 
 const phases = [
   { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '4.2', locked: true, path: 'services/phases/phase1-translation/PROMPT.md' },
-  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase1-lego-extraction/PROMPT.md' },
+  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase2-conflict-resolution/PROMPT.md' },
   { id: '3', name: 'Basket Generation', status: 'active', version: '7.0', locked: true, path: 'services/phases/phase3-basket-generation/PROMPT.md' },
   { id: '8', name: 'Audio Generation', status: 'active', version: '1.1', locked: true, path: 'services/phases/phase8-audio-generation/PROMPT.md' },
   { id: '9', name: 'Manifest Compilation', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase9-manifest-compilation/PROMPT.md' }

@@ -77,10 +77,10 @@ const SERVICES = {
     name: 'Phase 1 (Translation)',
     color: '\x1b[32m'    // Green
   },
-  phase1_lego: {
-    script: 'services/phases/phase1-lego-extraction/server.cjs',
+  phase2: {
+    script: 'services/phases/phase2-conflict-resolution/server.cjs',
     port: BASE_PORT + 2,  // 3458
-    name: 'Phase 1 (LEGO Extraction)',
+    name: 'Phase 2 (Conflict Resolution)',
     color: '\x1b[33m'    // Yellow
   },
   phase3: {

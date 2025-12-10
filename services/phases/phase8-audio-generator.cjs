@@ -22,11 +22,13 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs-extra')
 const crypto = require('crypto')
+const os = require('os')
 const createLogger = require('../shared/logger.cjs')
 
 const logger = createLogger('Phase8')
 
 const db = require('../supabase-client.cjs')
+const audioProcessor = require('../audio-processor.cjs')
 
 // TTS services (may not exist yet - graceful fallback)
 let azureTTS, elevenLabsTTS, s3Service
@@ -323,6 +325,26 @@ app.post('/generate', async (req, res) => {
           logger.warn(`S3 service not available, skipping upload for ${uuid}`)
         }
 
+        // Extract audio duration
+        let durationMs = null
+        try {
+          // Write buffer to temporary file for duration extraction
+          const tempFile = path.join(os.tmpdir(), `${uuid}-temp.mp3`)
+          await fs.writeFile(tempFile, audioBuffer)
+
+          // Get duration in seconds using sox
+          const durationSec = await audioProcessor.getAudioDuration(tempFile)
+          durationMs = Math.round(durationSec * 1000) // Convert to milliseconds
+
+          // Cleanup temp file
+          await fs.remove(tempFile)
+
+          logger.log(`Extracted duration for ${uuid}: ${durationMs}ms`)
+        } catch (durationErr) {
+          logger.warn(`Failed to extract duration for ${uuid}: ${durationErr.message}`)
+          // Continue without duration - not critical
+        }
+
         // Insert into Supabase
         await db.insertAudioSample({
           uuid,
@@ -333,7 +355,7 @@ app.post('/generate', async (req, res) => {
           cadence,
           s3Bucket: 'popty-bach-lfs',
           s3Key,
-          durationMs: null, // Would need audio analysis
+          durationMs,
           fileSizeBytes: audioBuffer.length,
           checksumMd5: checksum,
           source: `tts_${ttsEngine}`,

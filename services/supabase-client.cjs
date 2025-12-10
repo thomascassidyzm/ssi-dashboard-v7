@@ -516,6 +516,269 @@ async function getCourseStats(courseCode) {
   }
 }
 
+/**
+ * Insert recording provenance metadata for human recordings
+ *
+ * @param {Object} params
+ * @param {string} params.audioUuid - Audio sample UUID
+ * @param {string} params.recordedBy - Speaker name/identifier
+ * @param {string|null} params.speakerNativeLanguage - Speaker's L1
+ * @param {string|null} params.speakerProficiency - native, fluent_l2, heritage_speaker
+ * @param {string|null} params.speakerAgeRange - 18-25, 26-35, 36-45, 46-55, 56-65, 65+
+ * @param {string|null} params.speakerDialect - North Welsh, Castilian Spanish, etc.
+ * @param {string|null} params.speakerRegion - Geographic region
+ * @param {Date|string} params.recordedAt - Recording timestamp
+ * @param {string|null} params.recordingLocation - Where recorded
+ * @param {string|null} params.recordingDevice - Microphone/setup used
+ * @param {string|null} params.recordingEnvironment - studio, home, outdoor
+ * @param {boolean} params.speakerConsent - Consent given
+ * @param {string|null} params.consentFormRef - Reference to consent documentation
+ * @param {string|null} params.usageRights - CC-BY, internal-only, etc.
+ * @param {string|null} params.qualityNotes - Quality observations
+ * @param {number} params.retakeCount - Number of retakes
+ * @returns {Promise<Object>}
+ */
+async function insertRecordingProvenance({
+  audioUuid,
+  recordedBy,
+  speakerNativeLanguage = null,
+  speakerProficiency = null,
+  speakerAgeRange = null,
+  speakerDialect = null,
+  speakerRegion = null,
+  recordedAt,
+  recordingLocation = null,
+  recordingDevice = null,
+  recordingEnvironment = null,
+  speakerConsent = true,
+  consentFormRef = null,
+  usageRights = null,
+  qualityNotes = null,
+  retakeCount = 0
+}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('recording_provenance')
+    .insert({
+      audio_uuid: audioUuid,
+      recorded_by: recordedBy,
+      speaker_native_language: speakerNativeLanguage,
+      speaker_proficiency: speakerProficiency,
+      speaker_age_range: speakerAgeRange,
+      speaker_dialect: speakerDialect,
+      speaker_region: speakerRegion,
+      recorded_at: recordedAt,
+      recording_location: recordingLocation,
+      recording_device: recordingDevice,
+      recording_environment: recordingEnvironment,
+      speaker_consent: speakerConsent,
+      consent_form_ref: consentFormRef,
+      usage_rights: usageRights,
+      quality_notes: qualityNotes,
+      retake_count: retakeCount
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Register a new human voice
+ *
+ * @param {Object} params
+ * @param {string} params.voiceId - Voice identifier (e.g., 'human_maria_spa')
+ * @param {string} params.humanName - Human name (e.g., 'Maria Garcia')
+ * @param {string|null} params.humanEmail - Human email (optional)
+ * @param {Array<string>} params.languages - Array of ISO 639-3 language codes
+ * @param {Object|null} params.metadata - Additional metadata (optional)
+ * @returns {Promise<Object>}
+ */
+async function registerHumanVoice({ voiceId, humanName, humanEmail = null, languages, metadata = {} }) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Validation
+  if (!voiceId || !voiceId.startsWith('human_')) {
+    throw new Error('voiceId must start with "human_"')
+  }
+  if (!humanName) {
+    throw new Error('humanName is required')
+  }
+  if (!languages || !Array.isArray(languages) || languages.length === 0) {
+    throw new Error('languages array must have at least one entry')
+  }
+
+  // Check for duplicate
+  const existing = await getVoice(voiceId)
+  if (existing) {
+    throw new Error(`Voice with ID '${voiceId}' already exists`)
+  }
+
+  // Insert new human voice
+  const { data, error } = await supabase
+    .from('voices')
+    .insert({
+      voice_id: voiceId,
+      type: 'human',
+      human_name: humanName,
+      human_email: humanEmail,
+      languages,
+      is_active: true,
+      ...metadata
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * List all voices with optional filters
+ *
+ * @param {Object} filters
+ * @param {string|null} filters.type - Filter by type ('tts' or 'human')
+ * @param {string|null} filters.language - Filter by language code
+ * @param {boolean|null} filters.isActive - Filter by active status
+ * @returns {Promise<Array>}
+ */
+async function listVoices({ type = null, language = null, isActive = null } = {}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  let query = supabase.from('voices').select('*')
+
+  if (type) {
+    query = query.eq('type', type)
+  }
+
+  if (language) {
+    query = query.contains('languages', [language])
+  }
+
+  if (isActive !== null) {
+    query = query.eq('is_active', isActive)
+  }
+
+  const { data, error } = await query.order('voice_id')
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Update voice status (activate/deactivate)
+ *
+ * @param {string} voiceId
+ * @param {boolean} isActive
+ * @returns {Promise<Object>}
+ */
+async function updateVoiceStatus(voiceId, isActive) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  if (typeof isActive !== 'boolean') {
+    throw new Error('isActive must be a boolean')
+  }
+
+  const { data, error } = await supabase
+    .from('voices')
+    .update({ is_active: isActive })
+    .eq('voice_id', voiceId)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Get samples flagged for regeneration
+ * Returns samples with status 'flagged_regen_tts' or 'flagged_text_edit'
+ * Includes the audio_sample details (text, lang, role, voice_id, cadence)
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Array>}
+ */
+async function getFlaggedForRegeneration(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .select(`
+      *,
+      audio_samples (
+        uuid,
+        text,
+        lang,
+        role,
+        voice_id,
+        cadence
+      )
+    `)
+    .eq('course_code', courseCode)
+    .in('status', ['flagged_regen_tts', 'flagged_text_edit'])
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Bulk update flag status for multiple samples
+ * Updates status and appends to history
+ *
+ * @param {Array<string>} uuids - Array of audio UUIDs
+ * @param {string} courseCode
+ * @param {string} newStatus
+ * @param {string|null} note
+ * @returns {Promise<Array>}
+ */
+async function bulkUpdateFlagStatus(uuids, courseCode, newStatus, note = null) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const results = []
+
+  for (const uuid of uuids) {
+    // Get existing flag to append to history
+    const { data: existing } = await supabase
+      .from('sample_flags')
+      .select('id, history')
+      .eq('audio_uuid', uuid)
+      .eq('course_code', courseCode)
+      .single()
+
+    const historyEntry = {
+      status: newStatus,
+      timestamp: new Date().toISOString(),
+      note
+    }
+
+    const history = existing?.history || []
+    history.push(historyEntry)
+
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .upsert({
+        id: existing?.id,
+        audio_uuid: uuid,
+        course_code: courseCode,
+        status: newStatus,
+        notes: note,
+        flagged_at: new Date().toISOString(),
+        history
+      }, {
+        onConflict: 'audio_uuid,course_code'
+      })
+      .select()
+      .single()
+
+    if (error) throw error
+    results.push(data)
+  }
+
+  return results
+}
+
 module.exports = {
   supabase,
   generateAudioUUID,
@@ -536,5 +799,9 @@ module.exports = {
   getCourseFlags,
   getFlagsByStatus,
   isInitialized,
-  getCourseStats
+  getCourseStats,
+  insertRecordingProvenance,
+  registerHumanVoice,
+  listVoices,
+  updateVoiceStatus
 }

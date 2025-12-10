@@ -93,7 +93,7 @@ module.exports = {
     // ===========================================
     {
       name: 'phase2-conflict',
-      script: 'services/phases/phase1-lego-extraction/server.cjs',
+      script: 'services/phases/phase2-conflict-resolution/server.cjs',
       cwd: __dirname,
       instances: 1,
       autorestart: true,

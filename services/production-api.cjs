@@ -224,7 +224,12 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
 app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { uuid, audioData, metadata = {} } = req.body
+    const {
+      uuid,
+      audioData,
+      metadata = {},
+      provenance = {}
+    } = req.body
 
     if (!uuid || !audioData) {
       return res.status(400).json({ error: 'uuid and audioData required' })
@@ -246,9 +251,38 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         uuid,
         courseCode,
         'needs_review',
-        `Recorded by ${metadata.recordedBy || 'human'} at ${new Date().toISOString()}`,
-        metadata.recordedBy || 'human'
+        `Recorded by ${metadata.recordedBy || provenance.recordedBy || 'human'} at ${new Date().toISOString()}`,
+        metadata.recordedBy || provenance.recordedBy || 'human'
       )
+
+      // Insert recording provenance if metadata provided
+      if (provenance.recordedBy) {
+        try {
+          await supabaseClient.insertRecordingProvenance({
+            audioUuid: uuid,
+            recordedBy: provenance.recordedBy,
+            speakerNativeLanguage: provenance.speakerNativeLanguage,
+            speakerProficiency: provenance.speakerProficiency,
+            speakerAgeRange: provenance.speakerAgeRange,
+            speakerDialect: provenance.speakerDialect,
+            speakerRegion: provenance.speakerRegion,
+            recordedAt: provenance.recordedAt || new Date().toISOString(),
+            recordingLocation: provenance.recordingLocation,
+            recordingDevice: provenance.recordingDevice,
+            recordingEnvironment: provenance.recordingEnvironment,
+            speakerConsent: provenance.speakerConsent !== undefined ? provenance.speakerConsent : true,
+            consentFormRef: provenance.consentFormRef,
+            usageRights: provenance.usageRights,
+            qualityNotes: provenance.qualityNotes,
+            retakeCount: provenance.retakeCount || 0
+          })
+          logger.log(`Provenance metadata recorded for ${uuid}`)
+        } catch (provenanceError) {
+          // Log error but don't fail the upload
+          logger.error('Error inserting provenance metadata:', provenanceError)
+          logger.error('Upload succeeded but provenance recording failed')
+        }
+      }
     }
 
     // Emit recording_completed event
@@ -256,8 +290,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       courseCode,
       uuid,
       metadata: {
-        recordedAt: new Date().toISOString(),
-        recordedBy: metadata.recordedBy || 'human',
+        recordedAt: provenance.recordedAt || new Date().toISOString(),
+        recordedBy: metadata.recordedBy || provenance.recordedBy || 'human',
         source: 'recording',
         ...metadata
       }

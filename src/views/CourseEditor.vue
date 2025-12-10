@@ -1384,39 +1384,88 @@ async function loadCourse() {
           const isArrayFormat = Array.isArray(firstSeed)
 
           if (isArrayFormat) {
-            // v7.x array format: [seed_id, [target, known], [[lego_id, type, target, known, components?], ...]]
-            console.log('🔍 Detected v7.x array format')
-            legoBreakdowns.value = loadedLegoPairsData.seeds.map(seed => {
-              const [seedId, seedPair, legos] = seed
-              return {
-                seed_id: seedId,
-                original_target: seedPair[0],
-                original_known: seedPair[1],
-                lego_pairs: legos.map(lego => {
-                  // lego format: [lego_id, type, target, known, components?]
-                  const [legoId, legoType, target, known, components] = lego
+            // Detect v7 hybrid format: ["S0001", {k,t}, [[type, new, {k,t}, components?], ...]]
+            // vs old array format: [seed_id, [target, known], [[lego_id, type, target, known], ...]]
+            const [, seedPairTest] = firstSeed
+            const isV7Hybrid = seedPairTest && typeof seedPairTest === 'object' && 'k' in seedPairTest
+
+            if (isV7Hybrid) {
+              // v7 hybrid format: ["S0001", {k:"known", t:"target"}, [[type, new, {k,t}, components?], ...]]
+              console.log('🔍 Detected v7 hybrid compact format')
+              legoBreakdowns.value = loadedLegoPairsData.seeds.map((seed, seedIdx) => {
+                const [seedId, seedPair, legos] = seed
+                return {
+                  seed_id: seedId,
+                  original_target: seedPair.t,
+                  original_known: seedPair.k,
+                  lego_pairs: (legos || []).map((lego, legoIdx) => {
+                    // lego format: [type, new, {k,t}, components?] or [type, new, {k,t}, components?, ref?]
+                    const [legoType, isNew, legoPair, components, ref] = lego
+                    const legoId = `${seedId}L${String(legoIdx + 1).padStart(2, '0')}`
+                    return {
+                      lego_id: legoId,
+                      target_chunk: legoPair.t,
+                      known_chunk: legoPair.k,
+                      lego_type: legoType === 'M' ? 'COMPOSITE' : 'ATOMIC',
+                      is_new: isNew === 1 || isNew === true,
+                      ref: ref || null,
+                      componentization: components && components.length > 0 ?
+                        components.map(c => `${c.k} = ${c.t}`).join(', ') :
+                        null
+                    }
+                  })
+                }
+              })
+
+              // Extract flat list of LEGOs
+              legos.value = loadedLegoPairsData.seeds.flatMap((seed, seedIdx) => {
+                const [seedId, , seedLegos] = seed
+                return (seedLegos || []).map((lego, legoIdx) => {
+                  const [type, isNew, legoPair] = lego
                   return {
-                    lego_id: legoId,
-                    target_chunk: target,
-                    known_chunk: known,
-                    lego_type: legoType === 'C' ? 'COMPOSITE' : 'ATOMIC',
-                    is_new: true,
-                    componentization: components ?
-                      components.map(c => `${c[1]} = ${c[0]}`).join(', ') :
-                      null
+                    id: `${seedId}L${String(legoIdx + 1).padStart(2, '0')}`,
+                    target: legoPair.t,
+                    known: legoPair.k,
+                    type,
+                    new: isNew === 1 || isNew === true
                   }
                 })
-              }
-            })
-
-            // Extract flat list of LEGOs
-            legos.value = loadedLegoPairsData.seeds.flatMap(seed => {
-              const [, , seedLegos] = seed
-              return seedLegos.map(lego => {
-                const [id, type, target, known] = lego
-                return { id, target, known, type }
               })
-            })
+            } else {
+              // Old v7.x array format: [seed_id, [target, known], [[lego_id, type, target, known, components?], ...]]
+              console.log('🔍 Detected v7.x array format (legacy)')
+              legoBreakdowns.value = loadedLegoPairsData.seeds.map(seed => {
+                const [seedId, seedPair, legos] = seed
+                return {
+                  seed_id: seedId,
+                  original_target: seedPair[0],
+                  original_known: seedPair[1],
+                  lego_pairs: legos.map(lego => {
+                    // lego format: [lego_id, type, target, known, components?]
+                    const [legoId, legoType, target, known, components] = lego
+                    return {
+                      lego_id: legoId,
+                      target_chunk: target,
+                      known_chunk: known,
+                      lego_type: legoType === 'C' ? 'COMPOSITE' : 'ATOMIC',
+                      is_new: true,
+                      componentization: components ?
+                        components.map(c => `${c[1]} = ${c[0]}`).join(', ') :
+                        null
+                    }
+                  })
+                }
+              })
+
+              // Extract flat list of LEGOs
+              legos.value = loadedLegoPairsData.seeds.flatMap(seed => {
+                const [, , seedLegos] = seed
+                return seedLegos.map(lego => {
+                  const [id, type, target, known] = lego
+                  return { id, target, known, type }
+                })
+              })
+            }
           } else {
             // v2 object format: { seed_id, seed_pair: { target, known }, legos: [...] }
             console.log('🔍 Detected v2 object format')
