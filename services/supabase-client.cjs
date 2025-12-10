@@ -387,6 +387,83 @@ async function batchCheckExists(uuids) {
 }
 
 /**
+ * Check which sample UUIDs already exist in Supabase
+ * Returns array of UUIDs that exist
+ *
+ * @param {Array<string>} uuids - UUIDs to check
+ * @returns {Promise<Array<string>>} UUIDs that exist
+ */
+async function checkSamplesExist(uuids) {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!uuids || uuids.length === 0) return []
+
+  const { data, error } = await supabase
+    .from('audio_samples')
+    .select('uuid')
+    .in('uuid', uuids)
+
+  if (error) throw error
+  return (data || []).map(d => d.uuid)
+}
+
+/**
+ * Register a new audio sample in Supabase
+ * Used by Phase 8 after generating TTS audio
+ *
+ * @param {Object} params
+ * @param {string} params.uuid - Deterministic UUID
+ * @param {string} params.text - Original text
+ * @param {string} params.tts_text - Text sent to TTS (after gender expansion)
+ * @param {string} params.lang - Language code
+ * @param {string} params.role - source, target1, target2
+ * @param {string} params.voice_id - Voice identifier
+ * @param {string} params.cadence - natural or slow
+ * @param {string} params.s3_key - S3 key where audio is stored
+ * @param {string} params.course_code - Course that generated this
+ * @returns {Promise<Object>}
+ */
+async function registerSample({
+  uuid,
+  text,
+  tts_text,
+  lang,
+  role,
+  voice_id,
+  cadence,
+  s3_key,
+  course_code
+}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('audio_samples')
+    .upsert({
+      uuid,
+      text,
+      text_normalized: normalizeText(text),
+      tts_text,
+      lang,
+      role,
+      voice_id,
+      cadence,
+      s3_key,
+      source: 'tts',
+      created_at: new Date().toISOString()
+    }, {
+      onConflict: 'uuid'
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+
+  // Also record usage for this course
+  await recordCourseUsage(course_code, uuid, 'basket')
+
+  return data
+}
+
+/**
  * Update sample flag (QA workflow)
  *
  * @param {string} audioUuid
@@ -941,6 +1018,8 @@ module.exports = {
   getVoice,
   getVoicesForLanguage,
   batchCheckExists,
+  checkSamplesExist,
+  registerSample,
   updateSampleFlag,
   getCourseFlags,
   getFlagsByStatus,
