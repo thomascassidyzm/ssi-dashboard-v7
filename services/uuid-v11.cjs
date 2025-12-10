@@ -175,16 +175,22 @@ function uuidv5(input, namespace) {
 /**
  * Generate a sample ID (audio file UUID)
  *
+ * Hash input order: voiceId:lang:role:cadence:text
+ * (Ordered from least to most variable - gives most "space" to text)
+ *
+ * Output format: 8-4-4-4-12 (standard UUID v5 format)
+ *
  * @param {string} voiceId - e.g., "azure_es-ES-ElviraNeural"
  * @param {string} text - The text to speak
  * @param {string} lang - ISO 639-3 language code, e.g., "spa"
  * @param {string} role - source, target1, target2, presentation
  * @param {string} cadence - natural or slow
- * @returns {string} Deterministic UUID v5
+ * @returns {string} Deterministic UUID v5 in 8-4-4-4-12 format
  */
 function generateSampleId(voiceId, text, lang, role, cadence) {
   const normalizedText = normalizeText(text);
-  const key = `${voiceId}|${normalizedText}|${lang}|${role}|${cadence}`;
+  // Order: voiceId:lang:role:cadence:text (least to most variable)
+  const key = `${voiceId}:${lang}:${role}:${cadence}:${normalizedText}`;
   return uuidv5(key, SSI_AUDIO_NAMESPACE);
 }
 

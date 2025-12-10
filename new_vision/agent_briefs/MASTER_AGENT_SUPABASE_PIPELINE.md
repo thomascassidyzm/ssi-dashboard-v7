@@ -21,7 +21,7 @@ lego_baskets.json
 │  For each unique (text, lang, role): │
 │    1. Get voice_id from course config│
 │    2. Derive cadence from role       │
-│    3. UUID = hash(voice|text|lang|role|cadence)
+│    3. UUID = UUIDv5(voiceId:lang:role:cadence:text)
 │    4. Check Supabase - exists?       │
 │       YES → skip                     │
 │       NO  → generate TTS → save S3   │
@@ -118,12 +118,22 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 
 /**
  * Generate deterministic UUID from audio parameters
- * UUID = SHA256(voice_id|text|lang|role|cadence) truncated to 32 chars
+ *
+ * Uses UUID v5 (RFC 4122) with SSi Audio namespace.
+ * Order: voiceId:lang:role:cadence:text (least to most variable)
+ * Format: 8-4-4-4-12 (e.g., B9D6E203-BA26-530F-9FC5-EBE50D6F5779)
+ *
+ * NOTE: Delegate to services/uuid-v11.cjs for canonical implementation
  */
 function generateAudioUUID(voiceId, text, lang, role, cadence) {
-  const hashInput = `${voiceId}|${text}|${lang}|${role}|${cadence}`
-  const hash = crypto.createHash('sha256').update(hashInput).digest('hex')
-  return hash.substring(0, 32) // 32 char UUID
+  // Import from uuid-v11.cjs for production use:
+  // const { generateSampleId } = require('../services/uuid-v11.cjs')
+  // return generateSampleId(voiceId, text, lang, role, cadence)
+
+  const normalizedText = text.toLowerCase().trim().replace(/\s+/g, ' ')
+  const key = `${voiceId}:${lang}:${role}:${cadence}:${normalizedText}`
+  // Use uuid-v11.cjs implementation for RFC 4122 compliant UUID v5
+  return require('../services/uuid-v11.cjs').generateSampleId(voiceId, text, lang, role, cadence)
 }
 
 /**

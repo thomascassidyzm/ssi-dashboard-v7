@@ -1,0 +1,667 @@
+# Audio Pipeline Architecture
+
+> SSI Dashboard v7 - Comprehensive Audio Generation & QA System
+
+## Overview
+
+The audio pipeline transforms course content into production-ready audio samples through TTS generation, human recording, and quality assurance workflows.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                 │
+│                          AUDIO PIPELINE OVERVIEW                                │
+│                                                                                 │
+│   ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐ │
+│   │  PHASE   │    │  PHASE   │    │  PHASE   │    │    QA    │    │  PHASE   │ │
+│   │    3     │───▶│    8     │───▶│  REVIEW  │───▶│ WORKFLOW │───▶│    9     │ │
+│   │ Baskets  │    │  Audio   │    │          │    │          │    │ Manifest │ │
+│   └──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘ │
+│                                                                                 │
+│   lego_baskets     TTS Gen +        Supabase       Flag/Regen    course_manifest│
+│      .json         S3 Upload      audio_samples    Human Rec         .json     │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 1. Deterministic UUID System
+
+Every audio sample has a unique, reproducible identifier based on its content:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         UUID GENERATION (v11)                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ALGORITHM: UUID v5 (RFC 4122 compliant)                                   │
+│   NAMESPACE: 6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f (SSi Audio)               │
+│   SOURCE: services/uuid-v11.cjs (Single Source of Truth)                    │
+│                                                                             │
+│   INPUT ORDER (optimized for readability - most variable component last):   │
+│                                                                             │
+│     voiceId : lang : role : cadence : text                                  │
+│        │        │      │       │        │                                   │
+│        ▼        ▼      ▼       ▼        ▼                                   │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │  "azure_es-ES-ElviraNeural:spa:target1:slow:quiero"                 │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│                                    ▼                                        │
+│                           ┌─────────────────┐                               │
+│                           │  UUID v5 (SHA1) │                               │
+│                           │  RFC 4122       │                               │
+│                           └─────────────────┘                               │
+│                                    │                                        │
+│                                    ▼                                        │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                      UUID FORMAT: 8-4-4-4-12                         │   │
+│   │                                                                     │   │
+│   │          B9D6E203-BA26-530F-9FC5-EBE50D6F5779                        │   │
+│   │          ────────  ────  ────  ────  ────────────                    │   │
+│   │             8       4     4     4        12                          │   │
+│   │                      │                                              │   │
+│   │                      └── "5" = UUID version 5                       │   │
+│   │                                                                     │   │
+│   │          (RFC 4122 UUID v5 format - uppercase, deterministic)       │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   COMPONENT ORDER RATIONALE:                                                │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │  voiceId  │ Least variable  │ Same voice used for many samples      │   │
+│   │  lang     │ Low variability │ Usually one target language           │   │
+│   │  role     │ Low variability │ Only 4 roles: source/target1/2/pres   │   │
+│   │  cadence  │ Low variability │ Only 2: natural, slow                 │   │
+│   │  text     │ MOST variable   │ Thousands of unique phrases           │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   This order gives the most "space" to the most variable component (text)   │
+│                                                                             │
+│   CODE REFERENCE:                                                           │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │  // services/uuid-v11.cjs - generateSampleId()                      │   │
+│   │  const key = `${voiceId}:${lang}:${role}:${cadence}:${text}`;       │   │
+│   │  return uuidv5(key, SSI_AUDIO_NAMESPACE);                           │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Benefits:**
+- Same phrase + voice = Same UUID across ALL courses
+- Automatic deduplication (no regenerating existing audio)
+- Verifiable integrity (hash can be recalculated)
+- **RFC 4122 compliant** - proper UUID v5 format
+- **8-4-4-4-12 format** matches standard UUID convention for readability
+
+---
+
+## 2. Audio Roles
+
+Each phrase may have multiple audio variants:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      AUDIO ROLES                                │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   PHRASE: "quiero" (I want)                                     │
+│                                                                 │
+│   ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│   │   SOURCE    │  │   TARGET1   │  │   TARGET2   │             │
+│   │  (English)  │  │   (Female)  │  │   (Male)    │             │
+│   ├─────────────┤  ├─────────────┤  ├─────────────┤             │
+│   │ "I want"    │  │  "quiero"   │  │  "quiero"   │             │
+│   │ natural     │  │    slow     │  │    slow     │             │
+│   │ cadence     │  │   cadence   │  │   cadence   │             │
+│   └─────────────┘  └─────────────┘  └─────────────┘             │
+│                                                                 │
+│   ┌─────────────────────────────────────────────────┐           │
+│   │              PRESENTATION                        │           │
+│   ├─────────────────────────────────────────────────┤           │
+│   │  "The Spanish for 'I want', is: ... 'quiero'    │           │
+│   │   ... 'quiero'"                                 │           │
+│   │                                                 │           │
+│   │  = source TTS + 1s pause + target1 + 1s +       │           │
+│   │    target2 (concatenated)                       │           │
+│   └─────────────────────────────────────────────────┘           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. Phase 8: Audio Generation
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         PHASE 8: AUDIO GENERATION                           │
+│                              Port 3465                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   INPUT: lego_baskets.json                                                  │
+│            │                                                                │
+│            ▼                                                                │
+│   ┌─────────────────┐                                                       │
+│   │  Extract all    │                                                       │
+│   │  unique phrases │                                                       │
+│   └────────┬────────┘                                                       │
+│            │                                                                │
+│            ▼                                                                │
+│   ┌─────────────────┐     ┌─────────────────┐                               │
+│   │  Check Supabase │────▶│  Skip existing  │                               │
+│   │  for existing   │     │  (deduplication)│                               │
+│   └────────┬────────┘     └─────────────────┘                               │
+│            │                                                                │
+│            ▼ (missing only)                                                 │
+│   ┌─────────────────────────────────────────────────────────┐               │
+│   │                   TTS GENERATION                         │               │
+│   │  ┌───────────┐              ┌───────────┐               │               │
+│   │  │   Azure   │              │ ElevenLabs│               │               │
+│   │  │    TTS    │              │    TTS    │               │               │
+│   │  └─────┬─────┘              └─────┬─────┘               │               │
+│   │        │                          │                     │               │
+│   │        └──────────┬───────────────┘                     │               │
+│   │                   ▼                                     │               │
+│   │          ┌─────────────────┐                            │               │
+│   │          │   Normalize     │                            │               │
+│   │          │  -16 LUFS       │                            │               │
+│   │          │  (EBU R128)     │                            │               │
+│   │          └────────┬────────┘                            │               │
+│   │                   │                                     │               │
+│   │                   ▼                                     │               │
+│   │          ┌─────────────────┐                            │               │
+│   │          │ Extract Duration│                            │               │
+│   │          │   (sox/ffprobe) │                            │               │
+│   │          └────────┬────────┘                            │               │
+│   └───────────────────┼─────────────────────────────────────┘               │
+│                       │                                                     │
+│                       ▼                                                     │
+│   ┌─────────────────────────────────────────────────────────┐               │
+│   │                   STORAGE                                │               │
+│   │                                                         │               │
+│   │   ┌─────────────┐              ┌─────────────┐          │               │
+│   │   │     S3      │              │  Supabase   │          │               │
+│   │   │  mastered/  │              │audio_samples│          │               │
+│   │   │  {uuid}.mp3 │              │   table     │          │               │
+│   │   └─────────────┘              └─────────────┘          │               │
+│   │                                                         │               │
+│   └─────────────────────────────────────────────────────────┘               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Phase 8 API Endpoints
+
+| Method | Endpoint | Purpose |
+|--------|----------|---------|
+| POST | `/generate` | Start audio generation job |
+| POST | `/plan` | Dry-run showing what would be generated |
+| GET | `/status/:courseCode` | Check job progress |
+| DELETE | `/cancel/:courseCode` | Cancel active job |
+| GET | `/health` | Health check |
+
+---
+
+## 4. Sample Flag Lifecycle (12 Statuses)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        SAMPLE FLAG LIFECYCLE                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                           ┌──────────┐                                      │
+│                           │ pending  │ ◄─── Initial TTS generated           │
+│                           └────┬─────┘                                      │
+│                                │                                            │
+│               ┌────────────────┼────────────────┐                           │
+│               │                │                │                           │
+│               ▼                ▼                ▼                           │
+│   ┌───────────────────┐ ┌──────────────┐ ┌─────────────────┐                │
+│   │ flagged_text_edit │ │flagged_regen │ │flagged_human    │                │
+│   │                   │ │    _tts      │ │   _needed       │                │
+│   └─────────┬─────────┘ └──────┬───────┘ └────────┬────────┘                │
+│             │                  │                  │                         │
+│             │     ┌────────────┘                  │                         │
+│             │     │                               │                         │
+│             ▼     ▼                               ▼                         │
+│       ┌─────────────────┐                 ┌─────────────┐                   │
+│       │   in_pipeline   │                 │in_recording │ ◄── Claimed       │
+│       │   (TTS regen)   │                 │             │                   │
+│       └────────┬────────┘                 └──────┬──────┘                   │
+│                │                                 │                          │
+│       ┌────────┴────────┐                        │                          │
+│       │                 │                        │                          │
+│       ▼                 ▼                        ▼                          │
+│ ┌────────────┐   ┌────────────┐          ┌────────────┐                     │
+│ │tts_complete│   │ tts_failed │          │  recorded  │ ◄── Upload done     │
+│ └─────┬──────┘   └────────────┘          └──────┬─────┘                     │
+│       │                                         │                           │
+│       └──────────────┬──────────────────────────┘                           │
+│                      │                                                      │
+│                      ▼                                                      │
+│               ┌─────────────┐                                               │
+│               │needs_review │ ◄── Ready for QA                              │
+│               └──────┬──────┘                                               │
+│                      │                                                      │
+│            ┌─────────┴─────────┐                                            │
+│            │                   │                                            │
+│            ▼                   ▼                                            │
+│     ┌──────────┐        ┌──────────┐                                        │
+│     │ approved │        │ rejected │ ───▶ Back to flagged state             │
+│     └────┬─────┘        └──────────┘                                        │
+│          │                                                                  │
+│          ▼                                                                  │
+│     ┌──────────┐                                                            │
+│     │ complete │ ◄── Production ready                                       │
+│     └──────────┘                                                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 5. Human Recording Workflow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      HUMAN RECORDING WORKFLOW                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                     RECORDING QUEUE                                  │   │
+│   │   GET /api/production/:courseCode/recording/queue                   │   │
+│   │                                                                     │   │
+│   │   ┌─────────┬─────────────────┬────────┬───────────┬──────────┐     │   │
+│   │   │  UUID   │      Text       │  Lang  │   Status  │ Flagged  │     │   │
+│   │   ├─────────┼─────────────────┼────────┼───────────┼──────────┤     │   │
+│   │   │ a7b3c9d │ "quiero agua"   │  spa   │in_recording│ Maria   │     │   │
+│   │   │ b8c4d0e │ "necesito"      │  spa   │flagged_   │ -       │     │   │
+│   │   │         │                 │        │human_need │         │     │   │
+│   │   └─────────┴─────────────────┴────────┴───────────┴──────────┘     │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│                                    │                                        │
+│                                    ▼                                        │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                        CLAIM SAMPLE                                  │   │
+│   │   POST /api/production/:courseCode/recording/claim                  │   │
+│   │   { uuid: "b8c4d0e", claimedBy: "maria@example.com" }               │   │
+│   │                                                                     │   │
+│   │   Status: flagged_human_needed ──▶ in_recording                     │   │
+│   │   WebSocket: 'recording_claimed' event emitted                      │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│                                    │                                        │
+│                                    ▼                                        │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                      RECORD & UPLOAD                                 │   │
+│   │   POST /api/production/:courseCode/recording/upload                 │   │
+│   │                                                                     │   │
+│   │   {                                                                 │   │
+│   │     uuid: "b8c4d0e",                                                │   │
+│   │     audioData: "base64...",  // The recording                       │   │
+│   │     provenance: {                                                   │   │
+│   │       recordedBy: "Maria Garcia",                                   │   │
+│   │       speakerProficiency: "native",                                 │   │
+│   │       speakerDialect: "Castilian Spanish",                          │   │
+│   │       recordingDevice: "Blue Yeti",                                 │   │
+│   │       recordingEnvironment: "home",                                 │   │
+│   │       speakerConsent: true                                          │   │
+│   │     }                                                               │   │
+│   │   }                                                                 │   │
+│   │                                                                     │   │
+│   │   ┌──────────────────────────────────────────────────────────┐      │   │
+│   │   │  1. Upload to S3: mastered/{uuid}.mp3                    │      │   │
+│   │   │  2. Update Supabase audio_samples                        │      │   │
+│   │   │  3. Insert recording_provenance                          │      │   │
+│   │   │  4. Update flag: recorded → needs_review                 │      │   │
+│   │   │  5. Emit 'recording_completed' WebSocket event           │      │   │
+│   │   └──────────────────────────────────────────────────────────┘      │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                      RELEASE (Optional)                              │   │
+│   │   POST /api/production/:courseCode/recording/release                │   │
+│   │   { uuid: "b8c4d0e", releasedBy: "maria@example.com" }              │   │
+│   │                                                                     │   │
+│   │   Status: in_recording ──▶ flagged_human_needed                     │   │
+│   │   (Returns sample to queue for someone else)                        │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 6. TTS Regeneration Workflow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      TTS REGENERATION WORKFLOW                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                   REGENERATION QUEUE                                 │   │
+│   │   GET /api/production/:courseCode/regeneration/queue                │   │
+│   │                                                                     │   │
+│   │   Returns samples with status:                                      │   │
+│   │   • flagged_regen_tts   (bad pronunciation, wrong voice, etc.)      │   │
+│   │   • flagged_text_edit   (text was corrected)                        │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│                          │                                                  │
+│         ┌────────────────┴────────────────┐                                 │
+│         │                                 │                                 │
+│         ▼                                 ▼                                 │
+│   ┌─────────────────┐            ┌─────────────────┐                        │
+│   │ TRIGGER SPECIFIC│            │  TRIGGER ALL    │                        │
+│   │                 │            │                 │                        │
+│   │ POST .../trigger│            │POST .../trigger │                        │
+│   │ {uuids: [...]}  │            │      -all       │                        │
+│   └────────┬────────┘            └────────┬────────┘                        │
+│            │                              │                                 │
+│            └──────────────┬───────────────┘                                 │
+│                           │                                                 │
+│                           ▼                                                 │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                    REGENERATION PROCESS                              │   │
+│   │                                                                     │   │
+│   │   1. Update status: flagged_* ──▶ in_pipeline                       │   │
+│   │   2. Emit 'regeneration_started' WebSocket event                    │   │
+│   │   3. Call Phase 8: POST /generate { regenerate: true, uuids: [...] }│   │
+│   │                                                                     │   │
+│   │   ┌───────────────────────────────────────────────────────────┐     │   │
+│   │   │                    PHASE 8                                 │     │   │
+│   │   │                                                           │     │   │
+│   │   │   • Generate new TTS audio                                │     │   │
+│   │   │   • Normalize to -16 LUFS                                 │     │   │
+│   │   │   • Extract duration                                      │     │   │
+│   │   │   • Upload to S3 (overwrites existing)                    │     │   │
+│   │   │   • Update Supabase audio_samples                         │     │   │
+│   │   │                                                           │     │   │
+│   │   └───────────────────────────────────────────────────────────┘     │   │
+│   │                                                                     │   │
+│   │   4. On success: status ──▶ tts_complete ──▶ needs_review           │   │
+│   │   5. On failure: status ──▶ tts_failed (with error note)            │   │
+│   │                                                                     │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 7. Voice Management
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         VOICE MANAGEMENT                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                      VOICE TYPES                                     │   │
+│   │                                                                     │   │
+│   │   ┌─────────────────────────┐    ┌─────────────────────────┐        │   │
+│   │   │      TTS VOICES         │    │     HUMAN VOICES        │        │   │
+│   │   ├─────────────────────────┤    ├─────────────────────────┤        │   │
+│   │   │ type: "tts"             │    │ type: "human"           │        │   │
+│   │   │ tts_engine: "azure"     │    │ human_name: "Maria"     │        │   │
+│   │   │ tts_voice_name: "Elvira"│    │ human_email: "..."      │        │   │
+│   │   │ tts_locale: "es-ES"     │    │ languages: ["spa","eng"]│        │   │
+│   │   │ languages: ["spa"]      │    │                         │        │   │
+│   │   └─────────────────────────┘    └─────────────────────────┘        │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                      VOICE API                                       │   │
+│   │                                                                     │   │
+│   │   GET  /api/production/voices                                       │   │
+│   │        ?type=human&language=spa&active=true                         │   │
+│   │                                                                     │   │
+│   │   GET  /api/production/voices/:voiceId                              │   │
+│   │                                                                     │   │
+│   │   POST /api/production/voices/register-human                        │   │
+│   │        {                                                            │   │
+│   │          voiceId: "human_maria_spa",    // Must start with human_   │   │
+│   │          humanName: "Maria Garcia",     // Required                 │   │
+│   │          humanEmail: "maria@...",       // Optional                 │   │
+│   │          languages: ["spa", "eng"]      // At least one required    │   │
+│   │        }                                                            │   │
+│   │                                                                     │   │
+│   │   PATCH /api/production/voices/:voiceId/status                      │   │
+│   │         { isActive: false }  // Deactivate voice                    │   │
+│   │                                                                     │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 8. Data Storage Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        DATA STORAGE LAYERS                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                         AWS S3                                       │   │
+│   │                   (popty-bach-lfs bucket)                           │   │
+│   │                                                                     │   │
+│   │   courses/                                                          │   │
+│   │   └── spa_for_eng/                                                  │   │
+│   │       ├── course_manifest.json                                      │   │
+│   │       ├── lego_pairs.json                                           │   │
+│   │       └── lego_baskets.json                                         │   │
+│   │                                                                     │   │
+│   │   mastered/                       ◄── Audio files (flat structure)  │   │
+│   │   ├── a7b3c9d2e4f6789012345678901234ab.mp3                          │   │
+│   │   ├── b8c4d0e5f6a7890123456789012345bc.mp3                          │   │
+│   │   └── ...                                                           │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                       SUPABASE                                       │   │
+│   │                                                                     │   │
+│   │   ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐     │   │
+│   │   │  audio_samples  │  │  sample_flags   │  │     voices      │     │   │
+│   │   ├─────────────────┤  ├─────────────────┤  ├─────────────────┤     │   │
+│   │   │ uuid (PK)       │  │ audio_uuid (FK) │  │ voice_id (PK)   │     │   │
+│   │   │ voice_id        │  │ course_code     │  │ type            │     │   │
+│   │   │ text            │  │ status          │  │ tts_engine      │     │   │
+│   │   │ lang            │  │ notes           │  │ human_name      │     │   │
+│   │   │ role            │  │ flagged_by      │  │ languages[]     │     │   │
+│   │   │ cadence         │  │ history[]       │  │ is_active       │     │   │
+│   │   │ duration_ms     │  │ context         │  │ sample_count    │     │   │
+│   │   │ s3_bucket       │  └─────────────────┘  └─────────────────┘     │   │
+│   │   │ s3_key          │                                               │   │
+│   │   │ checksum_md5    │  ┌─────────────────┐  ┌─────────────────┐     │   │
+│   │   │ source          │  │course_audio_    │  │   recording_    │     │   │
+│   │   └─────────────────┘  │    usage        │  │   provenance    │     │   │
+│   │                        ├─────────────────┤  ├─────────────────┤     │   │
+│   │                        │ course_code     │  │ audio_uuid (PK) │     │   │
+│   │                        │ audio_uuid      │  │ recorded_by     │     │   │
+│   │                        │ used_in         │  │ speaker_dialect │     │   │
+│   │                        │ seed_id         │  │ recording_device│     │   │
+│   │                        │ lego_id         │  │ speaker_consent │     │   │
+│   │                        └─────────────────┘  └─────────────────┘     │   │
+│   │                                                                     │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 9. WebSocket Real-Time Events
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      WEBSOCKET EVENTS                                       │
+│                   Path: /api/production/websocket                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   CLIENT                                           SERVER                   │
+│     │                                                │                      │
+│     │──── join_course { courseCode } ───────────────▶│                      │
+│     │                                                │                      │
+│     │◀─── sample_updated ────────────────────────────│  Flag changed        │
+│     │     { courseCode, uuid, update }               │                      │
+│     │                                                │                      │
+│     │◀─── recording_claimed ─────────────────────────│  Sample claimed      │
+│     │     { courseCode, uuid, claimedBy }            │                      │
+│     │                                                │                      │
+│     │◀─── recording_released ────────────────────────│  Sample released     │
+│     │     { courseCode, uuid, releasedBy }           │                      │
+│     │                                                │                      │
+│     │◀─── recording_completed ───────────────────────│  Upload done         │
+│     │     { courseCode, uuid, metadata }             │                      │
+│     │                                                │                      │
+│     │◀─── regeneration_started ──────────────────────│  Regen triggered     │
+│     │     { courseCode, uuids, count }               │                      │
+│     │                                                │                      │
+│     │◀─── bulk_update ───────────────────────────────│  Multiple updated    │
+│     │     { courseCode, count }                      │                      │
+│     │                                                │                      │
+│     │──── leave_course { courseCode } ──────────────▶│                      │
+│     │                                                │                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 10. Complete API Reference
+
+### Production API (Port 3470)
+
+#### Recording Workflow
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production/:courseCode/recording/queue` | Get paginated recording queue |
+| POST | `/api/production/:courseCode/recording/claim` | Claim sample for recording |
+| POST | `/api/production/:courseCode/recording/release` | Release claimed sample |
+| POST | `/api/production/:courseCode/recording/upload` | Upload recording with provenance |
+
+#### Regeneration
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production/:courseCode/regeneration/queue` | Get samples needing regen |
+| POST | `/api/production/:courseCode/regeneration/trigger` | Trigger regen for specific UUIDs |
+| POST | `/api/production/:courseCode/regeneration/trigger-all` | Trigger regen for all flagged |
+
+#### Voice Management
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production/voices` | List voices with filters |
+| GET | `/api/production/voices/:voiceId` | Get voice details |
+| POST | `/api/production/voices/register-human` | Register human voice |
+| PATCH | `/api/production/voices/:voiceId/status` | Activate/deactivate voice |
+
+#### Sample Flags
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production/:courseCode/flags` | Get all sample flags |
+| POST | `/api/production/:courseCode/flags/update` | Update single flag |
+| POST | `/api/production/:courseCode/flags/bulk-update` | Bulk update flags |
+
+#### Audio Pipeline
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/production/:courseCode/audio-pipeline/plan` | Get generation plan |
+| POST | `/api/production/:courseCode/audio-pipeline/start` | Start generation |
+| POST | `/api/production/:courseCode/audio-pipeline/cancel` | Cancel generation |
+| POST | `/api/production/:courseCode/audio-pipeline/retry` | Retry generation |
+
+### Phase 8 Audio Generator (Port 3465)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/generate` | Start audio generation |
+| POST | `/plan` | Dry-run plan |
+| GET | `/status/:courseCode` | Check job status |
+| DELETE | `/cancel/:courseCode` | Cancel job |
+| GET | `/health` | Health check |
+
+---
+
+## 11. End-to-End Flow Example
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              COMPLETE AUDIO LIFECYCLE: "quiero" (I want)                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. PHASE 3: Basket Generation                                              │
+│     └── lego_baskets.json contains: { text: "quiero", role: "target1" }     │
+│                                                                             │
+│  2. PHASE 8: Audio Generation                                               │
+│     ├── Calculate UUID: SHA256("azure_es|quiero|spa|target1|slow")          │
+│     ├── Check Supabase: Does UUID exist? NO                                 │
+│     ├── Generate TTS: Azure es-ES-ElviraNeural                              │
+│     ├── Normalize: -16 LUFS                                                 │
+│     ├── Extract duration: 847ms                                             │
+│     ├── Upload to S3: mastered/a7b3c9d2...mp3                               │
+│     └── Insert to Supabase: audio_samples + course_audio_usage              │
+│                                                                             │
+│  3. QA REVIEW                                                               │
+│     ├── Reviewer listens to sample                                          │
+│     ├── Flags as: flagged_regen_tts (pronunciation issue)                   │
+│     └── WebSocket: 'sample_updated' event                                   │
+│                                                                             │
+│  4. REGENERATION                                                            │
+│     ├── POST /regeneration/trigger { uuids: ["a7b3c9d2..."] }               │
+│     ├── Status: flagged_regen_tts → in_pipeline                             │
+│     ├── Phase 8 regenerates with different voice settings                   │
+│     ├── Status: in_pipeline → tts_complete → needs_review                   │
+│     └── WebSocket: 'regeneration_started' event                             │
+│                                                                             │
+│  5. SECOND QA REVIEW                                                        │
+│     ├── Reviewer listens again                                              │
+│     ├── Still not happy → flagged_human_needed                              │
+│     └── Appears in recording queue                                          │
+│                                                                             │
+│  6. HUMAN RECORDING                                                         │
+│     ├── Maria claims sample: POST /recording/claim                          │
+│     ├── Status: flagged_human_needed → in_recording                         │
+│     ├── Records in home studio                                              │
+│     ├── Uploads: POST /recording/upload (with provenance)                   │
+│     ├── Status: in_recording → recorded → needs_review                      │
+│     └── WebSocket: 'recording_completed' event                              │
+│                                                                             │
+│  7. FINAL QA                                                                │
+│     ├── Reviewer approves                                                   │
+│     ├── Status: needs_review → approved → complete                          │
+│     └── Sample ready for production                                         │
+│                                                                             │
+│  8. PHASE 9: Manifest Compilation                                           │
+│     ├── Query Supabase for all approved audio UUIDs                         │
+│     ├── Validate 100% coverage                                              │
+│     └── Generate course_manifest.json                                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 12. Service Ports Summary
+
+| Port | Service | Purpose |
+|------|---------|---------|
+| 3456 | Orchestrator | Main coordination |
+| 3457 | Phase 1 | Translation + LEGO Extraction |
+| 3458 | Phase 2 | Conflict Resolution |
+| 3459 | Phase 3 | Basket Generation |
+| 3464 | Phase 7 | Manifest (Legacy) |
+| 3465 | Phase 8 | Audio Generation |
+| 3466 | Phase 9 | Manifest Compilation |
+| 3470 | Production API | QA Workflow + WebSocket |
+| 5173 | Dashboard UI | Vite dev server |
+
+---
+
+*Document Version: 1.0.0*
+*Last Updated: 2025-12-10*
+*APML: v11.0 | Pipeline: v2.0 (Supabase + Audio-first)*

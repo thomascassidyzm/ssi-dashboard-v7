@@ -252,19 +252,36 @@ phase AudioGeneration:
         Focus on presentation assemblies (hybrid TTS + human).
 
   ## ==========================================================================
-  ## UUID GENERATION (unchanged)
+  ## UUID GENERATION (v11 UPDATED)
   ## ==========================================================================
 
   uuid_generation:
-    version: "UUIDv5 (deterministic)"
-    namespace: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+    version: "UUIDv5 (RFC 4122 deterministic)"
+    namespace: "6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f (SSi Audio)"
+    source_of_truth: "services/uuid-v11.cjs"
+
+    format: "8-4-4-4-12 (standard UUID)"
+    example: "B9D6E203-BA26-530F-9FC5-EBE50D6F5779"
+
+    input_order: |
+      voiceId : lang : role : cadence : text
+      (Ordered from LEAST to MOST variable - gives most space to text)
 
     formula: |
-      UUIDv5(namespace, `${text}|${language}|${role}|${cadence}`)
+      const key = `${voiceId}:${lang}:${role}:${cadence}:${normalizedText}`;
+      return uuidv5(key, SSI_AUDIO_NAMESPACE);
+
+    component_variability:
+      voiceId: "LEAST - same voice for many samples"
+      lang: "LOW - typically one target language per course"
+      role: "LOW - only 4 values (source, target1, target2, presentation)"
+      cadence: "LOW - only 2 values (natural, slow)"
+      text: "MOST - thousands of unique phrases"
 
     compatibility: |
-      Same formula as v9 ensures existing audio files remain valid.
-      Adding human recordings doesn't break UUID-based lookups.
+      v11 changes the input order from v9/v10.
+      Existing audio must be regenerated OR migrated.
+      New order optimizes for maximum hash distribution on text.
 
   ## ==========================================================================
   ## MANIFEST AUDIO REFERENCES

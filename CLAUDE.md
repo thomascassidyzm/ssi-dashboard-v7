@@ -57,7 +57,7 @@ Solve problems autonomously and proceed to the next workflow step without human 
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
 - **Storage**: S3 for files (popty-bach-lfs, eu-west-1), **Supabase for audio registry**
-- **Audio Key**: `voice_id | text | lang | role | cadence` → deterministic UUID
+- **Audio Key**: `voiceId:lang:role:cadence:text` → UUID v5 (RFC 4122) - see `services/uuid-v11.cjs`
 - **Flow**: Audio-first (generate audio BEFORE manifest compilation)
 - **Orchestrator**: Port 3456
 

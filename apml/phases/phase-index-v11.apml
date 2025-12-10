@@ -99,10 +99,18 @@ DATA_LAYER:
 ## ============================================================================
 
 AUDIO_KEY:
-  structure: "voice_id | text | lang | role | cadence"
+  structure: "voiceId : lang : role : cadence : text"
+  delimiter: ":" (colon)
+  source_of_truth: "services/uuid-v11.cjs"
+
+  ordering_rationale: |
+    Components ordered from LEAST to MOST variable.
+    This gives maximum "space" in the hash to the text component,
+    which has thousands of unique values vs ~10 voices.
 
   components:
-    voice_id:
+    voiceId:
+      position: 1 (FIRST - least variable)
       description: "Unique identifier for the voice"
       format_tts: "azure_{locale}-{VoiceName} | elevenlabs_{voice_name}"
       format_human: "human_{name}_{language}"
@@ -112,15 +120,8 @@ AUDIO_KEY:
         - "human_aran_jones_cym"
         - "elevenlabs_rachel"
 
-    text:
-      description: "The phrase to speak"
-      normalization: "lowercase, trimmed, whitespace normalized"
-      examples:
-        - "i want to learn"
-        - "quiero aprender"
-        - "我想学"
-
     lang:
+      position: 2
       description: "ISO 639-3 language code"
       examples:
         - "eng: English"
@@ -129,6 +130,7 @@ AUDIO_KEY:
         - "cym: Welsh"
 
     role:
+      position: 3
       description: "Sample role in learning flow"
       values:
         source: "Known language (English for most courses)"
@@ -137,6 +139,7 @@ AUDIO_KEY:
         presentation: "Instructor voiceover"
 
     cadence:
+      position: 4
       description: "Speech speed"
       values:
         natural: "Normal conversational speed"
@@ -147,16 +150,28 @@ AUDIO_KEY:
         target2: "ALWAYS slow"
         presentation: "natural"
 
+    text:
+      position: 5 (LAST - most variable)
+      description: "The phrase to speak"
+      normalization: "lowercase, trimmed, whitespace normalized"
+      examples:
+        - "i want to learn"
+        - "quiero aprender"
+        - "我想学"
+
   uuid_generation:
-    algorithm: "UUID v5 (RFC 4122)"
-    namespace: "6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f (SSi namespace)"
-    input: "voice_id|text|lang|role|cadence"
+    algorithm: "UUID v5 (RFC 4122 compliant)"
+    namespace: "6e2d1e3a-2c4a-4b5d-8e6f-1a2b3c4d5e6f (SSi Audio namespace)"
+    format: "8-4-4-4-12 (standard UUID, uppercase)"
+    example: "B9D6E203-BA26-530F-9FC5-EBE50D6F5779"
+    input_order: "voiceId:lang:role:cadence:text"
     output: "Deterministic UUID - same inputs ALWAYS produce same UUID"
 
     code: |
-      // uuid-service.cjs
-      const key = `${voiceId}|${text}|${lang}|${role}|${cadence}`;
-      return uuidv5(key, SSI_NAMESPACE).toUpperCase();
+      // services/uuid-v11.cjs - generateSampleId()
+      const normalizedText = normalizeText(text);
+      const key = `${voiceId}:${lang}:${role}:${cadence}:${normalizedText}`;
+      return uuidv5(key, SSI_AUDIO_NAMESPACE);  // Returns uppercase 8-4-4-4-12
 
 ## ============================================================================
 ## AUDIO GENERATION FLOW (v11 NEW)

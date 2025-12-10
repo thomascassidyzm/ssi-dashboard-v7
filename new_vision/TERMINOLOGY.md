@@ -84,7 +84,7 @@ These relate to audio production and delivery.
 | `AUD-002` | **Voice** | A TTS voice or human voice talent used for recording. | |
 | `AUD-003` | **Role** | The function of a voice: instructor, target_primary, target_echo, encouragement. | voice_role |
 | `AUD-004` | **Cadence** | The speed/style of audio: natural, slow, fast. | |
-| `AUD-005` | **UUID** | Deterministic identifier for audio: hash(voice_id\|text\|lang\|role\|cadence). | |
+| `AUD-005` | **UUID** | Deterministic UUID v5 (RFC 4122): voiceId:lang:role:cadence:text → 8-4-4-4-12 format. SSoT: services/uuid-v11.cjs | |
 | `AUD-006` | **MAR** | Master Audio Registry - Supabase table storing all audio metadata. | audio_samples table |
 
 ---

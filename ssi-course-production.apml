@@ -26,10 +26,12 @@ app ssi_course_production:
     - Cross-course audio deduplication via shared samples
 
     AUDIO KEY STRUCTURE:
-    - Composite key: voice_id | text | lang | role | cadence
-    - voice_id: azure_zh-CN-XiaoxiaoNeural | human_aran_jones
+    - Composite key: voiceId:lang:role:cadence:text (colon-delimited)
+    - Order: LEAST to MOST variable (gives max hash space to text)
+    - voiceId: azure_es-ES-ElviraNeural | human_aran_jones_cym
     - Cadence rules: source=natural, target=slow
-    - UUID generation: hash(voice_id|text|lang|role|cadence) - deterministic
+    - UUID generation: UUID v5 (RFC 4122) via services/uuid-v11.cjs
+    - Format: 8-4-4-4-12 (e.g., B9D6E203-BA26-530F-9FC5-EBE50D6F5779)
 
     SUPABASE TABLES:
     - voices: Registry of TTS and human voices

@@ -15,8 +15,8 @@
  */
 
 const { createClient } = require('@supabase/supabase-js')
-const crypto = require('crypto')
 const createLogger = require('./shared/logger.cjs')
+const { generateSampleId, normalizeText: uuidNormalizeText } = require('./uuid-v11.cjs')
 
 const logger = createLogger('Supabase')
 
@@ -42,23 +42,30 @@ const supabase = supabaseUrl && supabaseKey
 
 /**
  * Generate deterministic UUID from audio parameters
- * UUID = SHA256(voice_id|text|lang|role|cadence) truncated to 32 chars
+ *
+ * Delegates to uuid-v11.cjs generateSampleId() - the single source of truth.
+ *
+ * Hash input order: voiceId:lang:role:cadence:text
+ * (Ordered from least to most variable - gives most "space" to text)
+ *
+ * Output format: 8-4-4-4-12 (RFC 4122 UUID v5 format)
+ * Example: A7B3C9D2-E4F6-5890-9234-567890123456
  *
  * @param {string} voiceId - Voice identifier (e.g., 'azure_es-ES-ElviraNeural')
  * @param {string} text - The phrase text
  * @param {string} lang - ISO 639-3 language code (e.g., 'spa', 'eng')
  * @param {string} role - Audio role (source, target1, target2, presentation)
  * @param {string} cadence - Speaking cadence (natural, slow)
- * @returns {string} 32-character deterministic UUID
+ * @returns {string} UUID v5 in 8-4-4-4-12 format
  */
 function generateAudioUUID(voiceId, text, lang, role, cadence) {
-  const hashInput = `${voiceId}|${text}|${lang}|${role}|${cadence}`
-  const hash = crypto.createHash('sha256').update(hashInput).digest('hex')
-  return hash.substring(0, 32) // 32 char UUID
+  // Delegate to uuid-v11.cjs - the single source of truth
+  return generateSampleId(voiceId, text, lang, role, cadence)
 }
 
 /**
  * Get the hash input string (for debugging/verification)
+ * Order: voiceId:lang:role:cadence:text
  *
  * @param {string} voiceId
  * @param {string} text
@@ -68,18 +75,19 @@ function generateAudioUUID(voiceId, text, lang, role, cadence) {
  * @returns {string} The raw input string used for hashing
  */
 function getHashInput(voiceId, text, lang, role, cadence) {
-  return `${voiceId}|${text}|${lang}|${role}|${cadence}`
+  return `${voiceId}:${lang}:${role}:${cadence}:${text}`
 }
 
 /**
  * Normalize text for consistent matching
- * Lowercases, trims, and collapses whitespace
+ * Delegates to uuid-v11.cjs normalizeText() for consistency.
+ * Lowercases, trims, and collapses whitespace.
  *
  * @param {string} text
  * @returns {string}
  */
 function normalizeText(text) {
-  return text.toLowerCase().trim().replace(/\s+/g, ' ')
+  return uuidNormalizeText(text)
 }
 
 /**
@@ -779,6 +787,144 @@ async function bulkUpdateFlagStatus(uuids, courseCode, newStatus, note = null) {
   return results
 }
 
+/**
+ * Get recording queue - samples that need human recording
+ * Returns paginated list of samples with status 'flagged_human_needed' or 'in_recording'
+ *
+ * @param {string} courseCode
+ * @param {number} page - Page number (1-indexed)
+ * @param {number} pageSize - Items per page
+ * @returns {Promise<Object>} { items, total, page, pageSize }
+ */
+async function getRecordingQueue(courseCode, page = 1, pageSize = 20) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Calculate offset for pagination
+  const offset = (page - 1) * pageSize
+
+  // Query sample_flags with status 'flagged_human_needed' or 'in_recording'
+  // Join with audio_samples to get the text, lang, role info
+  const { data, error, count } = await supabase
+    .from('sample_flags')
+    .select(`
+      *,
+      audio_samples!inner(
+        uuid,
+        text,
+        lang,
+        role,
+        cadence,
+        voice_id,
+        s3_key
+      )
+    `, { count: 'exact' })
+    .eq('course_code', courseCode)
+    .in('status', ['flagged_human_needed', 'in_recording'])
+    .order('status', { ascending: false }) // 'in_recording' comes before 'flagged_human_needed'
+    .order('flagged_at', { ascending: true }) // Oldest first within each status
+    .range(offset, offset + pageSize - 1)
+
+  if (error) throw error
+
+  // Transform the data to flatten the audio_samples join
+  const items = (data || []).map(flag => ({
+    uuid: flag.audio_samples.uuid,
+    text: flag.audio_samples.text,
+    lang: flag.audio_samples.lang,
+    role: flag.audio_samples.role,
+    cadence: flag.audio_samples.cadence,
+    voice_id: flag.audio_samples.voice_id,
+    status: flag.status,
+    notes: flag.notes,
+    flagged_by: flag.flagged_by,
+    flagged_at: flag.flagged_at,
+    context: flag.context,
+    history: flag.history
+  }))
+
+  return {
+    items,
+    total: count || 0,
+    page,
+    pageSize
+  }
+}
+
+/**
+ * Update recording status - transitions sample between recording workflow states
+ * Valid transitions:
+ * - flagged_human_needed -> in_recording (someone started recording)
+ * - in_recording -> recorded (recording uploaded)
+ * - recorded -> needs_review (automatic after upload)
+ *
+ * @param {string} audioUuid
+ * @param {string} courseCode
+ * @param {string} newStatus
+ * @param {string|null} notes - Optional notes about the status change
+ * @param {string|null} updatedBy - User who made the change
+ * @returns {Promise<Object>}
+ */
+async function updateRecordingStatus(audioUuid, courseCode, newStatus, notes = null, updatedBy = null) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get existing flag to validate transition and preserve history
+  const { data: existing, error: fetchError } = await supabase
+    .from('sample_flags')
+    .select('id, status, history, flagged_by')
+    .eq('audio_uuid', audioUuid)
+    .eq('course_code', courseCode)
+    .single()
+
+  if (fetchError) throw fetchError
+
+  if (!existing) {
+    throw new Error(`No flag found for audio ${audioUuid} in course ${courseCode}`)
+  }
+
+  // Validate state transitions
+  const validTransitions = {
+    'flagged_human_needed': ['in_recording'],
+    'in_recording': ['recorded', 'flagged_human_needed'], // Can unclaim
+    'recorded': ['needs_review', 'in_recording'] // Can re-record
+  }
+
+  const allowedNextStates = validTransitions[existing.status] || []
+  if (!allowedNextStates.includes(newStatus)) {
+    throw new Error(
+      `Invalid transition from ${existing.status} to ${newStatus}. ` +
+      `Allowed: ${allowedNextStates.join(', ')}`
+    )
+  }
+
+  // Add to history
+  const historyEntry = {
+    status: newStatus,
+    timestamp: new Date().toISOString(),
+    by: updatedBy,
+    notes
+  }
+
+  const history = existing.history || []
+  history.push(historyEntry)
+
+  // Update the flag
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .update({
+      status: newStatus,
+      notes,
+      flagged_by: updatedBy || existing.flagged_by,
+      flagged_at: new Date().toISOString(),
+      history
+    })
+    .eq('id', existing.id)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
 module.exports = {
   supabase,
   generateAudioUUID,
@@ -798,6 +944,10 @@ module.exports = {
   updateSampleFlag,
   getCourseFlags,
   getFlagsByStatus,
+  getFlaggedForRegeneration,
+  bulkUpdateFlagStatus,
+  getRecordingQueue,
+  updateRecordingStatus,
   isInitialized,
   getCourseStats,
   insertRecordingProvenance,

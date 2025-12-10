@@ -186,7 +186,7 @@ audio Voice:
   roles: instructor | target_primary | target_echo | encouragement
 
 audio Sample:
-  uuid: deterministic_hash(voice_id|text|lang|role|cadence)
+  uuid: UUID_v5(voiceId:lang:role:cadence:text)  # RFC 4122, 8-4-4-4-12 format
   storage: S3.mastered/{uuid}.mp3
   registry: Supabase.audio_samples
 
