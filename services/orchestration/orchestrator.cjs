@@ -5682,6 +5682,44 @@ app.post('/api/courses/:courseCode/preview/cleanup', async (req, res) => {
 // END VOICE CONFIGURATION & PREVIEW ENDPOINTS
 // ============================================================
 
+// ============================================================
+// PRODUCTION API PROXY
+// Forward /api/production/* requests to production-api on port 3470
+// ============================================================
+
+const PRODUCTION_API_URL = process.env.PRODUCTION_API_URL || 'http://localhost:3470';
+
+app.use('/api/production', async (req, res) => {
+  const targetUrl = `${PRODUCTION_API_URL}/api/production${req.url}`;
+
+  try {
+    const response = await axios({
+      method: req.method,
+      url: targetUrl,
+      data: req.body,
+      headers: {
+        'Content-Type': 'application/json',
+        ...req.headers.authorization && { 'Authorization': req.headers.authorization }
+      },
+      timeout: 30000
+    });
+
+    res.status(response.status).json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        success: false,
+        error: 'Production API not running',
+        message: 'Start production-api with: pm2 start services/production-api.cjs --name production-api'
+      });
+    }
+
+    const status = error.response?.status || 500;
+    const data = error.response?.data || { success: false, error: error.message };
+    res.status(status).json(data);
+  }
+});
+
 /**
  * Start server
  */
