@@ -379,6 +379,224 @@ function checkEncouragements(manifest, issues) {
 }
 
 // ============================================================================
+// SAMPLE COMPLETENESS CHECK (Critical, Report Only)
+// Verifies every item in structure has a matching sample with UUID
+// ============================================================================
+
+function normalizeText(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/^[,.\s]+|[,.\s]+$/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+function checkSampleCompleteness(manifest, issues) {
+  const samples = manifest.slices?.[0]?.samples || {};
+
+  // Build sample index by normalized text + role
+  const sampleIndex = new Map();
+  for (const [text, variants] of Object.entries(samples)) {
+    const normalizedText = normalizeText(text);
+    for (const variant of variants) {
+      const key = `${normalizedText}|${variant.role}`;
+      if (!sampleIndex.has(key)) {
+        sampleIndex.set(key, []);
+      }
+      sampleIndex.get(key).push(variant);
+    }
+  }
+
+  const missing = {
+    source: [],
+    target1: [],
+    target2: [],
+    presentation: [],
+    encouragement: [],
+    introduction: []
+  };
+
+  let totalItems = 0;
+  let itemsWithMissingSamples = 0;
+
+  // Check introduction/welcome has UUID
+  if (manifest.introduction) {
+    if (!manifest.introduction.id || manifest.introduction.id.length === 0) {
+      missing.introduction.push('Welcome/introduction missing UUID');
+    }
+  }
+
+  // Check each seed and introduction_item
+  for (const seed of manifest.slices?.[0]?.seeds || []) {
+    for (const item of seed.introduction_items || []) {
+      totalItems++;
+      let itemHasMissing = false;
+
+      // Check known.text -> source sample
+      if (item.node?.known?.text) {
+        const normalizedKnown = normalizeText(item.node.known.text);
+        const sourceKey = `${normalizedKnown}|source`;
+        const sourceVariants = sampleIndex.get(sourceKey);
+
+        if (!sourceVariants || sourceVariants.length === 0) {
+          if (missing.source.length < 5) {
+            missing.source.push(item.node.known.text.substring(0, 50));
+          }
+          itemHasMissing = true;
+        } else {
+          // Check for valid UUID
+          const hasValidUuid = sourceVariants.some(v => v.id && v.id.length > 0);
+          if (!hasValidUuid) {
+            if (missing.source.length < 5) {
+              missing.source.push(`(no UUID) ${item.node.known.text.substring(0, 40)}`);
+            }
+            itemHasMissing = true;
+          }
+        }
+      }
+
+      // Check target.text -> BOTH target1 AND target2 samples required
+      if (item.node?.target?.text) {
+        const normalizedTarget = normalizeText(item.node.target.text);
+        const target1Key = `${normalizedTarget}|target1`;
+        const target2Key = `${normalizedTarget}|target2`;
+        const target1Variants = sampleIndex.get(target1Key);
+        const target2Variants = sampleIndex.get(target2Key);
+
+        // Check target1
+        if (!target1Variants || target1Variants.length === 0) {
+          if (missing.target1.length < 5) {
+            missing.target1.push(item.node.target.text.substring(0, 50));
+          }
+          itemHasMissing = true;
+        } else {
+          const hasValidUuid = target1Variants.some(v => v.id && v.id.length > 0);
+          if (!hasValidUuid) {
+            if (missing.target1.length < 5) {
+              missing.target1.push(`(no UUID) ${item.node.target.text.substring(0, 40)}`);
+            }
+            itemHasMissing = true;
+          }
+        }
+
+        // Check target2
+        if (!target2Variants || target2Variants.length === 0) {
+          if (missing.target2.length < 5) {
+            missing.target2.push(item.node.target.text.substring(0, 50));
+          }
+          itemHasMissing = true;
+        } else {
+          const hasValidUuid = target2Variants.some(v => v.id && v.id.length > 0);
+          if (!hasValidUuid) {
+            if (missing.target2.length < 5) {
+              missing.target2.push(`(no UUID) ${item.node.target.text.substring(0, 40)}`);
+            }
+            itemHasMissing = true;
+          }
+        }
+      }
+
+      // Check presentation -> presentation sample
+      if (item.presentation) {
+        const normalizedPres = normalizeText(item.presentation);
+        const presKey = `${normalizedPres}|presentation`;
+        const presVariants = sampleIndex.get(presKey);
+
+        if (!presVariants || presVariants.length === 0) {
+          if (missing.presentation.length < 5) {
+            missing.presentation.push(item.presentation.substring(0, 50));
+          }
+          itemHasMissing = true;
+        } else {
+          // Check for valid UUID
+          const hasValidUuid = presVariants.some(v => v.id && v.id.length > 0);
+          if (!hasValidUuid) {
+            if (missing.presentation.length < 5) {
+              missing.presentation.push(`(no UUID) ${item.presentation.substring(0, 40)}`);
+            }
+            itemHasMissing = true;
+          }
+        }
+      }
+
+      if (itemHasMissing) {
+        itemsWithMissingSamples++;
+      }
+    }
+  }
+
+  // Check encouragements have matching samples with UUIDs
+  // Each encouragement must have:
+  // 1. An id in the structure (canonical item ID)
+  // 2. A matching sample entry with role='presentation' and exact text match
+  // Note: Encouragements use role='presentation', same as regular presentations
+  const allEncouragements = [
+    ...(manifest.slices?.[0]?.orderedEncouragements || []),
+    ...(manifest.slices?.[0]?.pooledEncouragements || [])
+  ];
+
+  for (const enc of allEncouragements) {
+    // Check structure has UUID
+    if (!enc.id || enc.id.length === 0) {
+      if (missing.encouragement.length < 5) {
+        missing.encouragement.push(`(no UUID) ${(enc.text || 'unknown').substring(0, 40)}`);
+      }
+      continue;
+    }
+
+    // Check for matching sample with exact text match and role='presentation'
+    const sampleVariants = samples[enc.text];
+    if (!sampleVariants) {
+      if (missing.encouragement.length < 5) {
+        missing.encouragement.push(`(no sample) ${(enc.text || 'unknown').substring(0, 40)}`);
+      }
+      continue;
+    }
+
+    // Encouragements use role='presentation' (same as regular presentations)
+    const encouragementSample = sampleVariants.find(v => v.role === 'presentation' && v.id);
+    if (!encouragementSample) {
+      if (missing.encouragement.length < 5) {
+        missing.encouragement.push(`(no presentation sample) ${(enc.text || 'unknown').substring(0, 40)}`);
+      }
+    }
+  }
+
+  // Report issues
+  if (missing.introduction.length > 0) {
+    issues.push(`CRITICAL: ${missing.introduction[0]}`);
+  }
+  if (missing.source.length > 0) {
+    issues.push(`CRITICAL: ${missing.source.length}+ items missing source samples (e.g., "${missing.source[0]}...")`);
+  }
+  if (missing.target1.length > 0) {
+    issues.push(`CRITICAL: ${missing.target1.length}+ items missing target1 samples (e.g., "${missing.target1[0]}...")`);
+  }
+  if (missing.target2.length > 0) {
+    issues.push(`CRITICAL: ${missing.target2.length}+ items missing target2 samples (e.g., "${missing.target2[0]}...")`);
+  }
+  if (missing.presentation.length > 0) {
+    issues.push(`CRITICAL: ${missing.presentation.length}+ items missing presentation samples (e.g., "${missing.presentation[0]}...")`);
+  }
+  if (missing.encouragement.length > 0) {
+    issues.push(`CRITICAL: ${missing.encouragement.length}+ encouragements missing samples (e.g., "${missing.encouragement[0]}...")`);
+  }
+
+  if (itemsWithMissingSamples > 0) {
+    issues.push(`CRITICAL: ${itemsWithMissingSamples}/${totalItems} introduction_items have incomplete samples`);
+  }
+
+  return {
+    totalItems,
+    itemsWithMissingSamples,
+    complete: itemsWithMissingSamples === 0 &&
+              missing.introduction.length === 0 &&
+              missing.encouragement.length === 0
+  };
+}
+
+// ============================================================================
 // SAMPLE DURATIONS CHECK (Optional, Report Only)
 // ============================================================================
 
@@ -479,6 +697,14 @@ function validateAndFixManifest(manifest, options = {}) {
     checkSampleDurations(manifest, issues);
   }
 
+  // 8. Sample Completeness (critical for publishing)
+  if (options.checkCompleteness) {
+    const completenessResult = checkSampleCompleteness(manifest, issues);
+    if (!completenessResult.complete) {
+      console.log(`\nSample Completeness: ${completenessResult.totalItems - completenessResult.itemsWithMissingSamples}/${completenessResult.totalItems} items complete`);
+    }
+  }
+
   return {
     valid: issues.length === 0 && warnings.length === 0,
     issues,
@@ -547,10 +773,11 @@ Usage:
   node manifest-structure-validator.cjs <course_code> [options]
 
 Options:
-  --check            Validate only (default, no changes)
-  --fix              Validate and auto-fix fixable issues
-  --check-durations  Include sample duration check (run after S3 extraction)
-  --publish          If valid, publish to course-configs repo (dry-run)
+  --check              Validate only (default, no changes)
+  --fix                Validate and auto-fix fixable issues
+  --check-durations    Include sample duration check (run after S3 extraction)
+  --skip-completeness  Skip sample completeness check (enabled by default)
+  --publish            If valid, publish to course-configs repo (dry-run)
 
 Examples:
   node manifest-structure-validator.cjs spa_for_eng
@@ -578,12 +805,14 @@ Auto-fixable (with --fix):
   const options = {
     fix: args.includes('--fix'),
     checkDurations: args.includes('--check-durations'),
+    checkCompleteness: !args.includes('--skip-completeness'), // Enabled by default
     publish: args.includes('--publish')
   };
 
   console.log(`\n=== Manifest Validation: ${courseCode} ===`);
   console.log(`Mode: ${options.fix ? 'FIX' : 'CHECK'}`);
   if (options.checkDurations) console.log('Including duration check');
+  if (options.checkCompleteness) console.log('Including sample completeness check (required for publishing)');
   console.log('');
 
   const result = validateCourse(courseCode, options);

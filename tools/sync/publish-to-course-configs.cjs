@@ -9,13 +9,14 @@
  *
  * Options:
  *   --version X.Y.Z  Set specific version (default: major bump)
+ *   --status STATUS  Set status (alpha, beta, release) - default: preserve existing
  *   --dry-run        Show what would happen without writing
  *   --commit         Auto-commit to author branch after copying
  *
  * Examples:
  *   node tools/sync/publish-to-course-configs.cjs spa_for_eng --dry-run
  *   node tools/sync/publish-to-course-configs.cjs cmn_for_eng --version 2.0.0
- *   node tools/sync/publish-to-course-configs.cjs spa_for_eng --commit
+ *   node tools/sync/publish-to-course-configs.cjs spa_for_eng --version 3.0.1 --status beta --commit
  *
  * NOTE: Version auto-detection (MAJOR/MINOR/PATCH based on diff) is planned
  * for a future enhancement. Currently defaults to major version bump.
@@ -53,6 +54,60 @@ const KEY_ORDER = {
 };
 
 /**
+ * Simple tokenizer - split on whitespace
+ */
+function tokenize(text) {
+  if (!text) return [];
+  return text.split(/\s+/).filter(t => t.length > 0);
+}
+
+/**
+ * Populate tokens and lemmas for a language object (known/target)
+ */
+function populateLanguageObj(langObj) {
+  if (!langObj || !langObj.text) return;
+  langObj.tokens = tokenize(langObj.text);
+  langObj.lemmas = tokenize(langObj.text); // Same as tokens for now
+}
+
+/**
+ * Populate tokens and lemmas for all nodes in a manifest
+ */
+function populateTokensAndLemmas(manifest) {
+  let nodesPopulated = 0;
+
+  for (const slice of manifest.slices || []) {
+    for (const seed of slice.seeds || []) {
+      // Seed node
+      if (seed.node) {
+        populateLanguageObj(seed.node.known);
+        populateLanguageObj(seed.node.target);
+        nodesPopulated++;
+      }
+
+      // Introduction items
+      for (const introItem of seed.introduction_items || []) {
+        // IntroItem node
+        if (introItem.node) {
+          populateLanguageObj(introItem.node.known);
+          populateLanguageObj(introItem.node.target);
+          nodesPopulated++;
+        }
+
+        // Nodes array within introItem
+        for (const node of introItem.nodes || []) {
+          populateLanguageObj(node.known);
+          populateLanguageObj(node.target);
+          nodesPopulated++;
+        }
+      }
+    }
+  }
+
+  return nodesPopulated;
+}
+
+/**
  * Parse command line arguments
  */
 function parseArgs() {
@@ -60,6 +115,7 @@ function parseArgs() {
   const result = {
     courseCode: null,
     version: null,
+    status: null,
     dryRun: false,
     commit: false,
   };
@@ -72,6 +128,8 @@ function parseArgs() {
       result.commit = true;
     } else if (arg === '--version' && args[i + 1]) {
       result.version = args[++i];
+    } else if (arg === '--status' && args[i + 1]) {
+      result.status = args[++i];
     } else if (!arg.startsWith('--')) {
       result.courseCode = arg;
     }
@@ -330,11 +388,11 @@ async function main() {
   console.log('=== Publish to course-configs ===\n');
 
   // Parse arguments
-  const { courseCode, version, dryRun, commit } = parseArgs();
+  const { courseCode, version, status, dryRun, commit } = parseArgs();
 
   if (!courseCode) {
-    console.error('Usage: node publish-to-course-configs.cjs <course_code> [--version X.Y.Z] [--dry-run] [--commit]');
-    console.error('Example: node publish-to-course-configs.cjs spa_for_eng --dry-run');
+    console.error('Usage: node publish-to-course-configs.cjs <course_code> [--version X.Y.Z] [--status STATUS] [--dry-run] [--commit]');
+    console.error('Example: node publish-to-course-configs.cjs spa_for_eng --version 3.0.1 --status beta --commit');
     process.exit(1);
   }
 
@@ -366,8 +424,27 @@ async function main() {
     console.log(`Bumping major version: ${existingVersion} → ${newVersion}`);
   }
 
-  // Update manifest version
+  // Update manifest metadata for course-configs format
   manifest.version = newVersion;
+  manifest.id = courseConfigsFilename;  // e.g., "en-es" not "en-spa"
+
+  // Convert language codes to ISO 2-letter format for course-configs
+  const parsed = langService.parseCourseCode(courseCode);
+  if (parsed) {
+    manifest.known = parsed.known;   // Already 2-letter (en, es, etc.)
+    manifest.target = parsed.target; // Already 2-letter (es, cmn, etc.)
+  }
+
+  // Apply status if specified
+  if (status) {
+    manifest.status = status;
+    console.log(`Setting status: ${status}`);
+  }
+
+  // Populate tokens and lemmas for all nodes
+  console.log('Populating tokens and lemmas...');
+  const nodesPopulated = populateTokensAndLemmas(manifest);
+  console.log(`Populated tokens/lemmas for ${nodesPopulated} nodes`);
 
   // Canonicalize JSON
   console.log('Canonicalizing JSON structure...');
