@@ -157,6 +157,20 @@ async function generateAzureSamples() {
         // Ensure output directory exists (for hierarchical structure)
         await fs.ensureDir(path.dirname(outputPath));
 
+        // SAFETY CHECK: Skip if file already exists (prevents expensive regeneration)
+        if (await fs.pathExists(outputPath)) {
+          results.push({
+            ...sample,
+            success: true,
+            outputPath,
+            provider: 'azure',
+            skipped: true,
+            reason: 'file_exists'
+          });
+          completed++;
+          continue;
+        }
+
         console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${azureVoiceName}: "${sample.text.substring(0, 50)}..."`);
 
         try {

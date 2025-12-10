@@ -125,9 +125,6 @@ async function recoverGeneratedSamples() {
   console.log('='.repeat(60));
   console.log();
 
-  // Initialize temp MAR
-  await marService.initTempMAR();
-
   // Load sample metadata from worker output files (if available) or manifest
   const sampleMetadata = {};
 
@@ -156,12 +153,12 @@ async function recoverGeneratedSamples() {
     console.log(`Loaded metadata from worker output files: ${Object.keys(sampleMetadata).length} samples\n`);
   }
 
-  // Also load metadata from temp MAR for samples already imported there
-  const tempMarVoicesDir = path.join(__dirname, '..', 'temp', 'mar', 'voices');
-  if (await fs.pathExists(tempMarVoicesDir)) {
-    const voiceDirs = await fs.readdir(tempMarVoicesDir);
+  // Also load metadata from permanent MAR for samples already imported there
+  const marVoicesDir = path.join(__dirname, '..', 'samples_database', 'voices');
+  if (await fs.pathExists(marVoicesDir)) {
+    const voiceDirs = await fs.readdir(marVoicesDir);
     for (const voiceDir of voiceDirs) {
-      const samplesPath = path.join(tempMarVoicesDir, voiceDir, 'samples.json');
+      const samplesPath = path.join(marVoicesDir, voiceDir, 'samples.json');
       if (await fs.pathExists(samplesPath)) {
         const voiceSamples = await fs.readJson(samplesPath);
         for (const [uuid, sample] of Object.entries(voiceSamples.samples || {})) {
@@ -177,7 +174,7 @@ async function recoverGeneratedSamples() {
         }
       }
     }
-    console.log(`After loading from temp MAR: ${Object.keys(sampleMetadata).length} samples\n`);
+    console.log(`After loading from permanent MAR: ${Object.keys(sampleMetadata).length} samples\n`);
   }
 
   // Fall back to manifest if worker files don't exist
@@ -236,10 +233,12 @@ async function recoverGeneratedSamples() {
     return;
   }
 
-  // Check which are already in temp MAR
+  // Check which are already in permanent MAR
   const toProcess = [];
   for (const file of mp3Files) {
-    const existsInMAR = await marService.getSampleFromBothMARs(file.uuid);
+    // Check if sample exists in permanent MAR by searching the voice's samples
+    const voiceId = sampleMetadata[file.uuid]?.voiceId || file.voiceId;
+    const existsInMAR = voiceId ? await marService.getSample(voiceId, file.uuid) : null;
     if (!existsInMAR) {
       const metadata = sampleMetadata[file.uuid];
       if (metadata) {
@@ -311,75 +310,52 @@ async function recoverGeneratedSamples() {
   const processedCount = processResults.filter(r => r.success).length;
   console.log(`\n✅ Processed: ${processedCount}/${toProcess.length} files\n`);
 
-  // Import to temp MAR
-  console.log('='.repeat(60));
-  console.log('Importing to Temp MAR');
-  console.log('='.repeat(60));
-  console.log();
-
-  let imported = 0;
+  // Prepare upload configs with duration info
+  const uploadConfigs = [];
   for (const result of processResults) {
     if (!result.success) continue;
 
-    // Match result to config by output path
     const config = processConfigs.find(c => c.output === result.output);
     if (!config) {
       console.warn(`⚠️  Could not find config for ${result.output}`);
       continue;
     }
 
-    const { sample } = config;
-
     try {
       const duration = await audioProcessor.getAudioDuration(result.output);
-
-      // Use language from metadata if available, otherwise determine from manifest
-      const language = sample.language || (
-        ['target1', 'target2'].includes(sample.role)
+      const language = config.sample.language || (
+        ['target1', 'target2'].includes(config.sample.role)
           ? manifest.target
           : manifest.known
       );
 
-      await marService.saveSampleToTempMAR(sample.voiceId, sample.uuid, {
-        text: sample.text,
-        language,
-        role: sample.role,
-        cadence: sample.cadence,
+      uploadConfigs.push({
+        uuid: config.uuid,
+        localPath: result.output,
+        sample: config.sample,
         duration,
-        filename: `${sample.uuid}.mp3`
+        language
       });
-
-      imported++;
-      console.log(`✓ ${sample.voiceId} / ${sample.text.substring(0, 40)}... (${duration.toFixed(2)}s)`);
     } catch (error) {
-      console.error(`✗ Failed to import ${sample.uuid}: ${error.message}`);
+      console.error(`✗ Failed to get duration for ${config.uuid}: ${error.message}`);
     }
   }
 
-  console.log(`\n✅ Imported: ${imported}/${processedCount} samples to temp MAR\n`);
-
-  // Upload to S3
+  // Upload to S3 (Phase B must happen before MAR import)
   let uploaded = 0;
+  const successfulUploads = [];
+
   if (!skipUpload) {
     console.log('='.repeat(60));
     console.log('Uploading to S3');
     console.log('='.repeat(60));
     console.log();
 
-    const uploadConfigs = processResults
-      .filter(r => r.success)
-      .map(r => {
-        const config = processConfigs.find(c => c.output === r.output);
-        return {
-          uuid: config.uuid,
-          localPath: r.output,
-          sample: config.sample
-        };
-      });
     for (const config of uploadConfigs) {
       try {
         await s3Service.uploadAudioFile(config.uuid, config.localPath, uploadBucket);
         uploaded++;
+        successfulUploads.push(config);
         console.log(`✓ ${config.sample.voiceId} / ${config.sample.text.substring(0, 40)}...`);
       } catch (error) {
         console.error(`✗ Failed to upload ${config.uuid}: ${error.message}`);
@@ -387,6 +363,37 @@ async function recoverGeneratedSamples() {
     }
 
     console.log(`\n✅ Uploaded: ${uploaded}/${uploadConfigs.length} samples to S3 (${uploadBucket})\n`);
+  } else {
+    console.log('⚠️  Skipping S3 upload (--skip-upload) - MAR will not be updated\n');
+  }
+
+  // Import to MAR only after successful S3 upload
+  let imported = 0;
+  if (successfulUploads.length > 0) {
+    console.log('='.repeat(60));
+    console.log('Importing to MAR (after successful S3 upload)');
+    console.log('='.repeat(60));
+    console.log();
+
+    for (const config of successfulUploads) {
+      try {
+        await marService.saveSample(config.sample.voiceId, config.sample.uuid, {
+          text: config.sample.text,
+          language: config.language,
+          role: config.sample.role,
+          cadence: config.sample.cadence,
+          duration: config.duration,
+          filename: `${config.sample.uuid}.mp3`
+        });
+
+        imported++;
+        console.log(`✓ ${config.sample.voiceId} / ${config.sample.text.substring(0, 40)}... (${config.duration.toFixed(2)}s)`);
+      } catch (error) {
+        console.error(`✗ Failed to import ${config.uuid}: ${error.message}`);
+      }
+    }
+
+    console.log(`\n✅ Imported: ${imported}/${successfulUploads.length} samples to MAR\n`);
   }
 
   console.log('='.repeat(60));
@@ -394,9 +401,9 @@ async function recoverGeneratedSamples() {
   console.log('='.repeat(60));
   console.log();
   console.log(`Processed: ${processedCount}`);
-  console.log(`Imported to MAR: ${imported}`);
   if (!skipUpload) {
     console.log(`Uploaded to S3: ${uploaded}`);
+    console.log(`Imported to MAR: ${imported}`);
   }
   console.log();
   console.log('You can now continue Phase 8 generation with:');

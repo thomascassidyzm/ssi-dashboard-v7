@@ -69,6 +69,18 @@ async function generateElevenLabsSamples() {
           // Ensure output directory exists (for hierarchical structure)
           await fs.ensureDir(path.dirname(outputPath));
 
+          // SAFETY CHECK: Skip if file already exists (prevents expensive regeneration)
+          if (await fs.pathExists(outputPath)) {
+            return {
+              ...sample,
+              success: true,
+              outputPath,
+              provider: 'elevenlabs',
+              skipped: true,
+              reason: 'file_exists'
+            };
+          }
+
           console.log(`[ElevenLabs Worker] Generating [${sample.role}/${sample.cadence}] ${providerId}: "${sample.text}..."`);
 
           try {
