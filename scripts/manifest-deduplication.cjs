@@ -386,7 +386,8 @@ function removeDuplicateNodes(manifest, duplicates) {
 // ============================================================================
 
 /**
- * Remove encouragements from manifest (added back post-generation)
+ * Clear encouragements from manifest (added back post-generation)
+ * Sets arrays to empty rather than deleting keys to preserve schema
  */
 function removeEncouragements(manifest) {
   const slice = manifest.slices[0];
@@ -394,13 +395,13 @@ function removeEncouragements(manifest) {
 
   if (slice.pooledEncouragements) {
     removed.pooled = slice.pooledEncouragements.length;
-    delete slice.pooledEncouragements;
   }
+  slice.pooledEncouragements = [];
 
   if (slice.orderedEncouragements) {
     removed.ordered = slice.orderedEncouragements.length;
-    delete slice.orderedEncouragements;
   }
+  slice.orderedEncouragements = [];
 
   return removed;
 }
@@ -628,6 +629,20 @@ async function runDeduplication(courseCode, options = {}) {
   }
   if (duplicateSeeds.length === 0 && duplicateIntros.length === 0 && duplicateNodes.length === 0) {
     log('  No duplicates found');
+  }
+
+  // CRITICAL: Check for empty seeds after deduplication
+  // If removing duplicate intro items left any seed with no introduction_items, this is a critical error
+  const emptySeeds = manifest.slices[0].seeds.filter(
+    seed => !seed.introduction_items || seed.introduction_items.length === 0
+  );
+  if (emptySeeds.length > 0) {
+    const seedIds = emptySeeds.slice(0, 5).map(s => s.id).join(', ');
+    const moreText = emptySeeds.length > 5 ? ` (and ${emptySeeds.length - 5} more)` : '';
+    throw new Error(
+      `CRITICAL: Deduplication created ${emptySeeds.length} empty seeds (no introduction_items): ${seedIds}${moreText}. ` +
+      `This indicates a problem with the source manifest - seeds should not have all intro items be duplicates.`
+    );
   }
 
   // Step 3: Validate samples

@@ -191,7 +191,7 @@ This script:
   console.log(`\n✅ Audio index updated: +${result.added} new, ~${result.updated} updated\n`);
 }
 
-// Only run main() when executed directly as a script, not when required as a module
+// Only run main() when executed directly, not when require()'d
 if (require.main === module) {
   main().catch(err => {
     console.error('Error:', err.message);

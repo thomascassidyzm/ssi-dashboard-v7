@@ -23,10 +23,11 @@ const MAR_PERMANENT_PATH = path.join(__dirname, '..', 'samples_database', 'voice
 const MAR_TEMP_PATH = path.join(__dirname, '..', 'temp', 'mar', 'voices');
 
 // Import services (relative paths)
-let marService, encouragementService;
+let marService, encouragementService, languageCodeService;
 try {
   marService = require('../services/mar-service.cjs');
   encouragementService = require('../services/encouragement-service.cjs');
+  languageCodeService = require('../services/language-code-service.cjs');
 } catch (e) {
   console.error('Failed to load services:', e.message);
   console.error('Make sure you are running from the project root');
@@ -97,13 +98,11 @@ async function getVoiceAssignments(courseCode) {
     return voicesConfig.course_assignments[courseCode];
   }
 
-  // Try to derive from course code (e.g., spa_for_eng -> eng-spa)
-  const match = courseCode.match(/^(\w{3})_for_(\w{3})/);
-  if (match) {
-    const targetLang = match[1]; // spa
-    const sourceLang = match[2]; // eng
-    const langPair = `${sourceLang}-${targetLang}`; // eng-spa
-
+  // Try to derive from course code (e.g., spa_for_eng -> en-es)
+  // parseCourseCode gives {known: "en", target: "es"}
+  const parsed = languageCodeService.parseCourseCode(courseCode);
+  if (parsed) {
+    const langPair = `${parsed.known}-${parsed.target}`; // en-es
     if (voicesConfig.language_pair_assignments && voicesConfig.language_pair_assignments[langPair]) {
       console.log(`Using language pair assignments for ${langPair}`);
       return voicesConfig.language_pair_assignments[langPair];
@@ -452,22 +451,23 @@ async function main() {
     console.log('\n  WARNING: Some samples have no MAR match. Run audio generation first.');
   }
 
-  // Step 5: Add encouragements
-  console.log('\nStep 5: Adding encouragements...\n');
+  // Step 5: Update manifest samples (before adding encouragements)
+  manifest.slices[0].samples = newSamples;
+
+  // Step 6: Add encouragements (AFTER setting samples, so they don't get overwritten)
+  console.log('\nStep 6: Adding encouragements...\n');
   const encResult = await addEncouragements(manifest, sourceLang);
   console.log(`  Added ${encResult.added} encouragements (${encResult.ordered} ordered, ${encResult.pooled} pooled)`);
 
-  // Step 6: Update manifest
-  manifest.slices[0].samples = newSamples;
-
-  // Count final samples
-  const finalSampleCount = Object.keys(newSamples).length;
+  // Count final samples (including encouragements)
+  const finalSamples = manifest.slices[0].samples;
+  const finalSampleCount = Object.keys(finalSamples).length;
   let finalVariantCount = 0;
-  for (const variants of Object.values(newSamples)) {
+  for (const variants of Object.values(finalSamples)) {
     finalVariantCount += variants.length;
   }
 
-  console.log(`\nStep 6: Finalizing manifest...\n`);
+  console.log(`\nStep 7: Finalizing manifest...\n`);
   console.log(`  Sample texts: ${finalSampleCount}`);
   console.log(`  Sample variants: ${finalVariantCount}`);
 
