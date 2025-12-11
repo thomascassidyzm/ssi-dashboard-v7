@@ -318,9 +318,16 @@ async function addEncouragements(manifest, sourceLang) {
     return { added: 0 };
   }
 
+  // Load encouragement samples to get actual audio UUIDs
+  const encSamplesData = await marService.loadEncouragementSamples(sourceLang);
+  const encSamplesByText = new Map();
+  for (const sample of encSamplesData.samples || []) {
+    encSamplesByText.set(sample.text, sample);
+  }
+
   const slice = manifest.slices[0];
 
-  // Set ordered and pooled encouragements
+  // Set ordered and pooled encouragements (these use canonical IDs for structure)
   slice.orderedEncouragements = ordered.map(enc => ({
     text: enc.text,
     id: enc.id
@@ -331,7 +338,7 @@ async function addEncouragements(manifest, sourceLang) {
     id: enc.id
   }));
 
-  // Also add to samples for duration tracking
+  // Also add to samples for duration tracking - use AUDIO UUIDs from en_samples.json
   const samples = slice.samples || {};
   const allEncouragements = [...pooled, ...ordered];
 
@@ -341,16 +348,20 @@ async function addEncouragements(manifest, sourceLang) {
       samples[text] = [];
     }
 
-    // Remove any existing presentation entry (may have wrong ID from MAR)
-    // Encouragements should use canonical IDs, not MAR-generated IDs
+    // Remove any existing presentation entry
     samples[text] = samples[text].filter(s => s.role !== 'presentation');
 
-    // Add with correct canonical ID
+    // Look up the actual audio UUID from encouragement samples
+    const sampleEntry = encSamplesByText.get(text);
+    const audioUUID = sampleEntry?.uuid || enc.id; // Fall back to canonical ID if not found
+    const duration = sampleEntry?.duration || enc.duration || 0;
+
+    // Add with audio file UUID (not canonical ID)
     samples[text].push({
-      id: enc.id,
+      id: audioUUID,
       role: 'presentation',
       cadence: 'natural',
-      duration: enc.duration || 0
+      duration: duration
     });
   }
 
