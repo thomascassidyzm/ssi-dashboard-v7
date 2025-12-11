@@ -83,6 +83,216 @@ app.use(bodyParser.json({ limit: '50mb' }));
 const activeJobs = new Map();
 
 // ==============================================================================
+// VALIDATION FUNCTIONS: GATE + HAS_LEGO CHECKS
+// ==============================================================================
+
+/**
+ * Common British/American spelling equivalents
+ * We normalize to accept both variants
+ */
+const SPELLING_VARIANTS = {
+  // British -> American (we store both directions)
+  'practise': 'practice',
+  'practising': 'practicing',
+  'practised': 'practiced',
+  'recognise': 'recognize',
+  'recognising': 'recognizing',
+  'recognised': 'recognized',
+  'organise': 'organize',
+  'organising': 'organizing',
+  'organised': 'organized',
+  'realise': 'realize',
+  'realising': 'realizing',
+  'realised': 'realized',
+  'apologise': 'apologize',
+  'apologising': 'apologizing',
+  'apologised': 'apologized',
+  'colour': 'color',
+  'colours': 'colors',
+  'favour': 'favor',
+  'favours': 'favors',
+  'favourite': 'favorite',
+  'favourites': 'favorites',
+  'honour': 'honor',
+  'honours': 'honors',
+  'behaviour': 'behavior',
+  'behaviours': 'behaviors',
+  'neighbour': 'neighbor',
+  'neighbours': 'neighbors',
+  'travelling': 'traveling',
+  'travelled': 'traveled',
+  'traveller': 'traveler',
+  'cancelled': 'canceled',
+  'cancelling': 'canceling',
+  'centre': 'center',
+  'centres': 'centers',
+  'theatre': 'theater',
+  'theatres': 'theaters',
+  'metre': 'meter',
+  'metres': 'meters',
+  'litre': 'liter',
+  'litres': 'liters',
+  'defence': 'defense',
+  'offence': 'offense',
+  'licence': 'license',
+  'grey': 'gray'
+};
+
+// Build reverse mapping (American -> British)
+const SPELLING_NORMALIZE = {};
+for (const [british, american] of Object.entries(SPELLING_VARIANTS)) {
+  SPELLING_NORMALIZE[british] = british;  // British maps to itself
+  SPELLING_NORMALIZE[american] = british; // American maps to British (canonical)
+}
+
+/**
+ * Normalize a word to canonical spelling (British)
+ */
+function normalizeSpelling(word) {
+  return SPELLING_NORMALIZE[word] || word;
+}
+
+/**
+ * Extract words from text (lowercase, alphanumeric, normalized spelling)
+ */
+function extractWords(text) {
+  const matches = text.toLowerCase().match(/[\wáéíóúüñ]+/g);
+  if (!matches) return [];
+  return matches.map(normalizeSpelling);
+}
+
+/**
+ * Build cumulative vocabulary up to a given LEGO position
+ * @param {Object} legoPairs - The lego_pairs.json data
+ * @param {string} targetLegoId - The LEGO we're building vocab for (e.g., "S0010L01")
+ * @returns {Object} { known: Set<string>, target: Set<string> } Available vocabulary in both languages
+ */
+function buildAvailableVocab(legoPairs, targetLegoId) {
+  const knownVocab = new Set();
+  const targetVocab = new Set();
+
+  // Parse target seed and lego numbers
+  const targetMatch = targetLegoId.match(/S(\d+)L(\d+)/);
+  if (!targetMatch) return { known: knownVocab, target: targetVocab };
+
+  const targetSeedNum = parseInt(targetMatch[1]);
+  const targetLegoNum = parseInt(targetMatch[2]);
+
+  for (const seed of legoPairs.seeds) {
+    const seedNum = parseInt(seed.seed_id.replace('S', ''));
+    if (seedNum > targetSeedNum) break;
+
+    // Add seed sentence words (available for all LEGOs in that seed)
+    if (seed.seed_pair && seedNum <= targetSeedNum) {
+      extractWords(seed.seed_pair.known).forEach(w => knownVocab.add(w));
+      extractWords(seed.seed_pair.target).forEach(w => targetVocab.add(w));
+    }
+
+    for (let i = 0; i < seed.legos.length; i++) {
+      const lego = seed.legos[i];
+      const legoNum = i + 1;
+
+      // Include LEGOs up to AND including target LEGO
+      if (seedNum === targetSeedNum && legoNum > targetLegoNum) break;
+
+      // Add this LEGO's words to vocabulary (both languages)
+      const knownWords = extractWords(lego.lego.known);
+      const targetWords = extractWords(lego.lego.target);
+      knownWords.forEach(w => knownVocab.add(w));
+      targetWords.forEach(w => targetVocab.add(w));
+    }
+  }
+
+  return { known: knownVocab, target: targetVocab };
+}
+
+/**
+ * Check if phrase contains the complete LEGO (case-insensitive)
+ * @param {string} phraseTarget - The target language phrase
+ * @param {string} legoTarget - The LEGO's target text
+ * @returns {boolean}
+ */
+function phraseContainsLego(phraseTarget, legoTarget) {
+  // Normalize both for comparison
+  const normalizedPhrase = phraseTarget.toLowerCase();
+  const normalizedLego = legoTarget.toLowerCase();
+  return normalizedPhrase.includes(normalizedLego);
+}
+
+/**
+ * Validate a single basket's phrases for GATE compliance and LEGO presence
+ * GATE checks BOTH languages - known (prompt) and target (response)
+ * ZUT (Zero Uncertainty Test): learner must know all words in both directions
+ *
+ * @param {Object} basket - The basket with lego and practice_phrases
+ * @param {string} legoId - The LEGO ID (e.g., "S0010L01")
+ * @param {Object} legoPairs - The lego_pairs.json data
+ * @returns {Object} { valid: boolean, errors: Array<{phrase, error}> }
+ */
+function validateBasketPhrases(basket, legoId, legoPairs) {
+  const errors = [];
+  const legoKnown = basket.lego.known;
+  const legoTarget = basket.lego.target;
+
+  // Build available vocabulary for this LEGO position (both languages)
+  const availableVocab = buildAvailableVocab(legoPairs, legoId);
+
+  // Also add the current LEGO's words (it's always available)
+  const legoKnownWords = extractWords(legoKnown);
+  const legoTargetWords = extractWords(legoTarget);
+  legoKnownWords.forEach(w => availableVocab.known.add(w));
+  legoTargetWords.forEach(w => availableVocab.target.add(w));
+
+  for (let i = 0; i < basket.practice_phrases.length; i++) {
+    const phrase = basket.practice_phrases[i];
+    const phraseNum = i + 1;
+
+    // Check 1: LEGO presence in target
+    if (!phraseContainsLego(phrase.target, legoTarget)) {
+      errors.push({
+        phraseNum,
+        phrase: phrase.target,
+        error: `Phrase ${phraseNum} target does not contain LEGO "${legoTarget}"`,
+        type: 'missing_lego'
+      });
+    }
+
+    // Check 2: GATE compliance - TARGET language
+    const targetWords = extractWords(phrase.target);
+    const unknownTargetWords = targetWords.filter(w => !availableVocab.target.has(w));
+
+    if (unknownTargetWords.length > 0) {
+      errors.push({
+        phraseNum,
+        phrase: phrase.target,
+        error: `GATE violation (target): unknown words [${unknownTargetWords.join(', ')}] not in available vocabulary`,
+        type: 'gate_violation_target',
+        unknownWords: unknownTargetWords
+      });
+    }
+
+    // Check 3: GATE compliance - KNOWN language (ZUT: learner must understand the prompt)
+    const knownWords = extractWords(phrase.known);
+    const unknownKnownWords = knownWords.filter(w => !availableVocab.known.has(w));
+
+    if (unknownKnownWords.length > 0) {
+      errors.push({
+        phraseNum,
+        phrase: phrase.known,
+        error: `GATE violation (known): unknown words [${unknownKnownWords.join(', ')}] - learner won't understand prompt (ZUT fail)`,
+        type: 'gate_violation_known',
+        unknownWords: unknownKnownWords
+      });
+    }
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+
+// ==============================================================================
 // HELPER FUNCTIONS: LEGO DATA PREPARATION FOR WEB AGENTS
 // ==============================================================================
 
@@ -132,11 +342,21 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
   // Load lego_pairs to get all LEGOs
   const legoPairs = await fs.readJson(legoPairsPath);
 
-  // Load existing baskets (if exists)
+  // Load existing baskets (if exists) - handle both formats:
+  // Format A: { baskets: { S0001L01: {...}, ... } }
+  // Format B: { S0001L01: {...}, ... } (flat)
   let existingBaskets = {};
   if (await fs.pathExists(basketsPath)) {
     const basketsData = await fs.readJson(basketsPath);
-    existingBaskets = basketsData.baskets || {};
+    // Check if wrapped in 'baskets' property or flat at root
+    if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+      existingBaskets = basketsData.baskets;
+    } else {
+      // Flat format - use as-is (filter out metadata keys)
+      existingBaskets = Object.fromEntries(
+        Object.entries(basketsData).filter(([k]) => k.match(/^S\d{4}L\d{2}$/))
+      );
+    }
   }
 
   // Find all LEGOs in seed range that don't have baskets
@@ -372,11 +592,21 @@ app.post('/start', async (req, res) => {
   const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
   const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
 
-  if (!await fs.pathExists(seedPairsPath)) {
-    return res.status(400).json({ error: `Phase 3 requires seed_pairs.json in ${baseCourseCode} - run Phase 1 first` });
-  }
+  // lego_pairs.json is always required
   if (!await fs.pathExists(legoPairsPath)) {
     return res.status(400).json({ error: `Phase 3 requires lego_pairs.json in ${baseCourseCode} - run Phase 2 first` });
+  }
+
+  // seed_pairs.json is optional in v2 format (seed_pair embedded in lego_pairs.json)
+  const hasSeedPairs = await fs.pathExists(seedPairsPath);
+  if (!hasSeedPairs) {
+    // Check if lego_pairs.json has embedded seed_pair (v2 format)
+    const legoPairs = await fs.readJson(legoPairsPath);
+    const hasEmbeddedSeedPairs = legoPairs.seeds?.some(s => s.seed_pair);
+    if (!hasEmbeddedSeedPairs) {
+      return res.status(400).json({ error: `Phase 3 requires seed_pairs.json OR embedded seed_pair in lego_pairs.json - run Phase 1 first` });
+    }
+    console.log(`[Phase 3] ✅ Using v2 format (seed_pair embedded in lego_pairs.json)`);
   }
 
   console.log(`[Phase 3] ✅ Prerequisites found`);
@@ -1255,8 +1485,8 @@ app.get('/health', (req, res) => {
 
 /**
  * GET /scaffold/:courseCode/:legoId
- * Generate and serve text scaffold for a specific LEGO
- * Note: ngrok proxy strips /phase3 prefix before forwarding
+ * Serve pre-generated scaffold for a specific LEGO (JSON format)
+ * Scaffolds must be pre-generated via: node generate-all-scaffolds.cjs <courseDir>
  */
 app.get('/scaffold/:courseCode/:legoId', async (req, res) => {
   try {
@@ -1267,63 +1497,161 @@ app.get('/scaffold/:courseCode/:legoId', async (req, res) => {
       return res.status(400).json({ error: 'Invalid LEGO ID format. Expected: S0117L01' });
     }
 
-    // Extract seed from LEGO ID (e.g., S0117L01 → s0117)
-    const seedNum = legoId.substring(1, 5); // "0117"
-    const seedId = `seed_s${seedNum}.json`;
+    // Extract seed from LEGO ID (e.g., S0117L01 → S0117)
+    const seedId = legoId.substring(0, 5); // "S0117"
 
     const baseCourseDir = path.join(VFS_ROOT, courseCode);
-    const scaffoldPath = path.join(baseCourseDir, 'phase3_scaffolds', seedId);
-    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+    const scaffoldPath = path.join(baseCourseDir, 'phase3_scaffolds', `${seedId}.json`);
 
     // Check if scaffold file exists
     if (!await fs.pathExists(scaffoldPath)) {
       return res.status(404).json({
-        error: 'Scaffold not found',
+        error: 'Scaffold not found - run generate-all-scaffolds.cjs first',
         legoId,
         seedId,
-        path: scaffoldPath
+        expectedPath: scaffoldPath
       });
     }
 
-    // Load scaffold JSON and lego_pairs
+    // Load pre-generated scaffold
     const seedScaffold = await fs.readJson(scaffoldPath);
-    const legoPairs = await fs.readJson(legoPairsPath);
-
-    // Find this LEGO in the scaffold (legos is an object keyed by LEGO ID)
     const legoScaffold = seedScaffold.legos?.[legoId];
 
     if (!legoScaffold) {
       return res.status(404).json({
-        error: 'LEGO not found in scaffold',
+        error: 'LEGO not found in scaffold (may not be a new LEGO)',
         legoId,
         availableLegos: Object.keys(seedScaffold.legos || {})
       });
     }
 
-    // Generate text scaffold using the text scaffold generator
-    const { generateTextScaffold } = require('./generate-text-scaffold.cjs');
-
-    // Scaffold stores lego as array [known, target]
-    const [known, target] = legoScaffold.lego;
-
-    const textScaffold = generateTextScaffold(
-      {
-        legoId,
-        seed: seedScaffold.seed_id,
-        known,
-        target,
-        type: legoScaffold.type
-      },
-      legoPairs,
-      seedScaffold
-    );
-
-    res.type('text/plain').send(textScaffold);
+    // Return JSON scaffold directly (pre-computed, no generation needed)
+    res.json(legoScaffold);
 
   } catch (error) {
     console.error('[Phase 3] Error serving scaffold:', error);
     res.status(500).json({
-      error: 'Failed to generate scaffold',
+      error: 'Failed to load scaffold',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /scaffolds/:courseCode/seed/:seedId
+ * Serve all scaffolds for a specific seed (batch fetch for efficiency)
+ */
+app.get('/scaffolds/:courseCode/seed/:seedId', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+
+    // Validate seed ID format
+    if (!/^S\d{4}$/.test(seedId)) {
+      return res.status(400).json({ error: 'Invalid seed ID format. Expected: S0117' });
+    }
+
+    const baseCourseDir = path.join(VFS_ROOT, courseCode);
+    const scaffoldPath = path.join(baseCourseDir, 'phase3_scaffolds', `${seedId}.json`);
+
+    if (!await fs.pathExists(scaffoldPath)) {
+      return res.status(404).json({
+        error: 'Scaffold not found - run generate-all-scaffolds.cjs first',
+        seedId,
+        expectedPath: scaffoldPath
+      });
+    }
+
+    const seedScaffold = await fs.readJson(scaffoldPath);
+    res.json(seedScaffold);
+
+  } catch (error) {
+    console.error('[Phase 3] Error serving seed scaffolds:', error);
+    res.status(500).json({
+      error: 'Failed to load scaffolds',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /scaffolds/:courseCode/batch?seeds=S0001,S0002,S0003
+ * Batch fetch scaffolds for multiple seeds (efficient for workers)
+ */
+app.get('/scaffolds/:courseCode/batch', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const seedsParam = req.query.seeds;
+
+    if (!seedsParam) {
+      return res.status(400).json({ error: 'seeds query parameter required. Example: ?seeds=S0001,S0002,S0003' });
+    }
+
+    const seedIds = seedsParam.split(',').map(s => s.trim());
+
+    // Validate all seed IDs
+    for (const seedId of seedIds) {
+      if (!/^S\d{4}$/.test(seedId)) {
+        return res.status(400).json({ error: `Invalid seed ID format: ${seedId}. Expected: S0117` });
+      }
+    }
+
+    const baseCourseDir = path.join(VFS_ROOT, courseCode);
+    const result = {
+      course: courseCode,
+      seeds_requested: seedIds.length,
+      seeds: {}
+    };
+
+    let totalLegos = 0;
+
+    for (const seedId of seedIds) {
+      const scaffoldPath = path.join(baseCourseDir, 'phase3_scaffolds', `${seedId}.json`);
+
+      if (await fs.pathExists(scaffoldPath)) {
+        const seedScaffold = await fs.readJson(scaffoldPath);
+        result.seeds[seedId] = seedScaffold;
+        totalLegos += Object.keys(seedScaffold.legos || {}).length;
+      } else {
+        result.seeds[seedId] = { error: 'not found' };
+      }
+    }
+
+    result.total_legos = totalLegos;
+    res.json(result);
+
+  } catch (error) {
+    console.error('[Phase 3] Error serving batch scaffolds:', error);
+    res.status(500).json({
+      error: 'Failed to load batch scaffolds',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /scaffolds/:courseCode/index
+ * Get scaffold index (which seeds have scaffolds, how many LEGOs)
+ */
+app.get('/scaffolds/:courseCode/index', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const baseCourseDir = path.join(VFS_ROOT, courseCode);
+    const indexPath = path.join(baseCourseDir, 'phase3_scaffolds', 'index.json');
+
+    if (!await fs.pathExists(indexPath)) {
+      return res.status(404).json({
+        error: 'Scaffold index not found - run generate-all-scaffolds.cjs first',
+        expectedPath: indexPath
+      });
+    }
+
+    const index = await fs.readJson(indexPath);
+    res.json(index);
+
+  } catch (error) {
+    console.error('[Phase 3] Error serving scaffold index:', error);
+    res.status(500).json({
+      error: 'Failed to load scaffold index',
       message: error.message
     });
   }
@@ -2532,13 +2860,19 @@ app.post('/upload-basket', async (req, res) => {
 
     console.log(`📥 Receiving basket upload: ${course} / ${seed} (${Object.keys(baskets).length} LEGOs)${agentId ? ` from ${agentId}` : ''}`);
 
+    // Load course data (used for enrichment and validation)
+    const legoPairsPath = path.join(VFS_ROOT, course, 'lego_pairs.json');
+    const seedPairsPath = path.join(VFS_ROOT, course, 'seed_pairs.json');
+    const legoPairs = await fs.readJson(legoPairsPath);
+
+    // Load seed_pairs if it exists, otherwise extract from lego_pairs
+    let seedPairs = null;
+    if (await fs.pathExists(seedPairsPath)) {
+      seedPairs = await fs.readJson(seedPairsPath);
+    }
+
     // Enrich baskets with server-added fields before validation
     try {
-      const legoPairsPath = path.join(VFS_ROOT, course, 'lego_pairs.json');
-      const seedPairsPath = path.join(VFS_ROOT, course, 'seed_pairs.json');
-
-      const legoPairs = await fs.readJson(legoPairsPath);
-      const seedPairs = await fs.readJson(seedPairsPath);
 
       // Find the seed entry in lego_pairs
       const seedEntry = legoPairs.seeds.find(s => s.seed_id === seed);
@@ -2549,8 +2883,15 @@ app.post('/upload-basket', async (req, res) => {
         });
       }
 
-      // Get the seed sentence from seed_pairs
-      const seedSentence = seedPairs.translations[seed];
+      // Get the seed sentence - prefer seed_pairs.json, fallback to lego_pairs.json
+      let seedSentence;
+      if (seedPairs && seedPairs.translations && seedPairs.translations[seed]) {
+        seedSentence = seedPairs.translations[seed];
+      } else if (seedEntry.seed_pair) {
+        // Use seed_pair from lego_pairs.json (v2 format)
+        seedSentence = seedEntry.seed_pair;
+      }
+
       if (!seedSentence) {
         return res.status(400).json({
           success: false,
@@ -2678,6 +3019,55 @@ app.post('/upload-basket', async (req, res) => {
       }
     }
 
+    // ==============================================================================
+    // CONTENT VALIDATION: GATE compliance + LEGO presence
+    // ==============================================================================
+    const allValidationErrors = [];
+
+    for (const [legoId, basket] of Object.entries(baskets)) {
+      const validation = validateBasketPhrases(basket, legoId, legoPairs);
+
+      if (!validation.valid) {
+        allValidationErrors.push({
+          legoId,
+          errors: validation.errors
+        });
+      }
+    }
+
+    // If validation errors, reject with detailed feedback
+    if (allValidationErrors.length > 0) {
+      const errorCount = allValidationErrors.reduce((sum, v) => sum + v.errors.length, 0);
+      console.log(`❌ Validation failed: ${errorCount} errors across ${allValidationErrors.length} LEGOs`);
+
+      // Log first few errors for debugging
+      for (const v of allValidationErrors.slice(0, 3)) {
+        console.log(`   ${v.legoId}:`);
+        for (const e of v.errors.slice(0, 2)) {
+          console.log(`     - ${e.error}`);
+        }
+      }
+
+      return res.status(400).json({
+        success: false,
+        error: 'Validation failed: phrases have GATE violations or missing LEGO',
+        validationErrors: allValidationErrors,
+        tip: 'Fix the failing phrases and resubmit. Each phrase must contain the LEGO and use only available vocabulary in BOTH languages.',
+        summary: {
+          totalErrors: errorCount,
+          legosAffected: allValidationErrors.length,
+          gateViolationsTarget: allValidationErrors.reduce((sum, v) =>
+            sum + v.errors.filter(e => e.type === 'gate_violation_target').length, 0),
+          gateViolationsKnown: allValidationErrors.reduce((sum, v) =>
+            sum + v.errors.filter(e => e.type === 'gate_violation_known').length, 0),
+          missingLego: allValidationErrors.reduce((sum, v) =>
+            sum + v.errors.filter(e => e.type === 'missing_lego').length, 0)
+        }
+      });
+    }
+
+    console.log(`✅ Content validation passed: all phrases GATE-compliant with LEGO present`);
+
     // Course directory (VFS_ROOT already points to public/vfs/courses)
     const courseDir = path.join(VFS_ROOT, course);
     const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
@@ -2791,93 +3181,6 @@ app.post('/upload-basket', async (req, res) => {
       basketCount: Object.keys(baskets).length,
       reviewCommand: `node tools/phase3/preview-merge.cjs ${course}`,
       mergeCommand: `node tools/phase3/extract-and-normalize.cjs ${course}`
-    });
-
-    // LEGACY AUTO-MERGE CODE (disabled - use extract-and-normalize.cjs instead)
-    // Load or create lego_baskets.json
-    // let legoBaskets = { metadata: {}, baskets: {} };
-    // if (await fs.pathExists(legoBasketsPath)) {
-    //   legoBaskets = await fs.readJson(legoBasketsPath);
-    // }
-
-    // Merge baskets
-    let addedCount = 0;
-    let updatedCount = 0;
-    for (const [legoId, basket] of Object.entries(baskets)) {
-      if (legoBaskets.baskets[legoId]) {
-        updatedCount++;
-      } else {
-        addedCount++;
-      }
-      legoBaskets.baskets[legoId] = basket;
-    }
-
-    // Calculate progress metrics
-    const totalBaskets = Object.keys(legoBaskets.baskets).length;
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
-    let totalNeeded = 0;
-    let progress = 0;
-    let missing = 0;
-
-    if (await fs.pathExists(legoPairsPath)) {
-      const legoPairs = await fs.readJson(legoPairsPath);
-      legoPairs.seeds.forEach(s => {
-        s.legos.forEach(l => {
-          if (l.new === true) totalNeeded++;
-        });
-      });
-      missing = Math.max(0, totalNeeded - totalBaskets);
-      progress = totalNeeded > 0 ? Math.round((totalBaskets / totalNeeded) * 10000) / 100 : 0;
-    }
-
-    // Update metadata with enhanced tracking
-    if (!legoBaskets.metadata.uploads) {
-      legoBaskets.metadata.uploads = [];
-    }
-
-    legoBaskets.metadata = {
-      ...legoBaskets.metadata,
-      last_upload: new Date().toISOString(),
-      last_seed: seed,
-      last_agent: agentId || 'unknown',
-      total_baskets: totalBaskets,
-      total_needed: totalNeeded,
-      missing: missing,
-      progress: progress
-    };
-
-    // Record upload event (keep last 50)
-    legoBaskets.metadata.uploads.push({
-      timestamp: new Date().toISOString(),
-      seed,
-      agentId: agentId || 'unknown',
-      legosAdded: addedCount,
-      legosUpdated: updatedCount,
-      totalAfter: totalBaskets
-    });
-
-    if (legoBaskets.metadata.uploads.length > 50) {
-      legoBaskets.metadata.uploads = legoBaskets.metadata.uploads.slice(-50);
-    }
-
-    // Save merged file
-    await fs.writeJson(legoBasketsPath, legoBaskets, { spaces: 2 });
-
-    console.log(`   ✅ Merged into lego_baskets.json (${addedCount} added, ${updatedCount} updated)`);
-    console.log(`   📊 Total baskets: ${totalBaskets}/${totalNeeded} (${progress}%)`);
-
-    res.json({
-      success: true,
-      seed,
-      agentId: agentId || 'unknown',
-      timestamp: new Date().toISOString(),
-      legosReceived: Object.keys(baskets).length,
-      added: addedCount,
-      updated: updatedCount,
-      totalBaskets,
-      totalNeeded,
-      missing,
-      progress
     });
 
   } catch (error) {

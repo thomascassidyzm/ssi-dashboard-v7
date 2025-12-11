@@ -63,8 +63,9 @@ You will receive a **SCAFFOLD JSON** containing:
 
 Before you start, confirm you understand these critical principles:
 
-- [ ] **Vocabulary sources**: 10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)
-- [ ] **GATE compliance**: Every target language word MUST be available from these three sources
+- [ ] **Vocabulary constraint**: Use ONLY words from `available_vocab.known` and `available_vocab.target`
+- [ ] **GATE compliance**: Every word MUST exist in `available_vocab` - check BEFORE writing each phrase
+- [ ] **Recombination priority**: Try to use LEGOs from `recent_legos` (30 most recent) in your phrases
 - [ ] **Distribution**: ALWAYS 2-2-2-4 (10 phrases per LEGO) - **EXCEPT early seeds S0001-S0010 where fewer natural phrases is OK**
 - [ ] **Early seed flexibility**: For S0001-S0010, prioritize grammar and naturalness over phrase count
 - [ ] **Final LEGO rule**: Highest phrase number = complete seed sentence
@@ -77,28 +78,26 @@ Before you start, confirm you understand these critical principles:
 
 ---
 
-## Vocabulary Sources (NO MASSIVE WHITELIST!)
+## Vocabulary Sources
 
-For each LEGO, you can ONLY use target language words from these three sources:
+Each LEGO in the scaffold contains two critical fields:
 
-### 1. Recent Context (10 Most Recent Seeds)
+### 1. `available_vocab` - HARD CONSTRAINT (GATE)
 
-**Primary source** - shown in `recent_context` with:
-- **sentence**: Piped LEGO tiles showing natural patterns
-- **new_legos**: Highlighted new LEGOs introduced in that seed
+**This is your ONLY allowed vocabulary.** The scaffold provides:
+- `available_vocab.known` - Array of allowed known language words
+- `available_vocab.target` - Array of allowed target language words
 
-### 2. Current Seed's Earlier LEGOs (Incremental Availability)
+**Every word in your phrases MUST appear in these lists.** No exceptions.
 
-**Secondary source** - LEGOs taught earlier in THIS seed
+### 2. `recent_legos` - PRIORITIZE FOR RECOMBINATION
 
-Listed in `current_seed_earlier_legos` array - grows incrementally:
-- L01 has `[]` (no earlier LEGOs)
-- L02 has `[L01]`
-- L03 has `[L01, L02]`
+**30 most recent new:true LEGOs** - these should be prioritized in your phrases to create recombination practice. Each entry has:
+- `id` - LEGO identifier
+- `known` - Known language phrase
+- `target` - Target language phrase
 
-### 3. Current LEGO (The One You're Teaching)
-
-**Always available** - obviously, since you're teaching it!
+**Try to incorporate these LEGOs into your practice phrases** to reinforce recently learned material.
 
 ---
 
@@ -113,10 +112,10 @@ Listed in `current_seed_earlier_legos` array - grows incrementally:
 - Enables true spaced repetition
 
 **How to validate:**
-1. Write your target language phrase
-2. Split it into individual words
-3. Check EACH word exists in vocabulary sources
-4. If ANY word is missing → choose a different known language utterance and try again
+1. Write your phrase
+2. Split known language phrase → check each word is in `available_vocab.known`
+3. Split target language phrase → check each word is in `available_vocab.target`
+4. If ANY word is missing → choose a different utterance and try again
 
 **No exceptions** - GATE compliance is mandatory.
 
@@ -145,10 +144,10 @@ Translate your known language thoughts to the target language, checking each wor
 
 ### Step 4: Validate ALL Words (GATE Compliance)
 
-**CRITICAL: Every target language word must be available**
-- Split target language phrase on spaces
-- Check each word exists in vocabulary sources
-- If ANY word is unavailable → Try a different known language thought
+**CRITICAL: Every word must be in `available_vocab`**
+- Split known phrase → check each word in `available_vocab.known`
+- Split target phrase → check each word in `available_vocab.target`
+- If ANY word is missing → Try a different phrase
 
 ### Step 5: Build 2-2-2-4 Distribution (ALWAYS 10 Phrases)
 

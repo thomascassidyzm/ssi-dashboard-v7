@@ -340,53 +340,85 @@ app.post('/generate', async (req, res) => {
 });
 
 /**
- * Process audio generation in background
+ * Process a single audio sample
+ */
+async function processSingleSample(spec, courseCode, azureTTS, s3Service) {
+  const speed = spec.cadence === 'slow' ? 0.8 : 1.0;
+
+  // Strip provider prefix from voice ID (e.g., azure_es-ES-TrianaNeural -> es-ES-TrianaNeural)
+  const azureVoiceName = spec.voiceId.replace(/^azure_/, '');
+
+  const audioBuffer = await azureTTS.generateSpeech(
+    spec.ttsText,
+    azureVoiceName,
+    spec.lang,
+    { rate: speed }
+  );
+
+  // Upload to S3 (uploadAudio expects uuid, not full key)
+  const s3Result = await s3Service.uploadAudio(spec.uuid, audioBuffer);
+
+  // Register in Supabase
+  if (supabaseClient.isInitialized()) {
+    await supabaseClient.registerSample({
+      uuid: spec.uuid,
+      text: spec.text,
+      tts_text: spec.ttsText,
+      lang: spec.lang,
+      role: spec.role,
+      voice_id: spec.voiceId,
+      cadence: spec.cadence,
+      s3_key: s3Result.key,
+      course_code: courseCode
+    });
+  }
+
+  return { success: true, uuid: spec.uuid, text: spec.text, role: spec.role };
+}
+
+/**
+ * Process audio generation in background with parallel batches
  */
 async function processGeneration(courseCode, specs, job) {
   const azureTTS = require('../../services/azure-tts-service.cjs');
   const s3Service = require('../../services/s3-service.cjs');
 
-  for (const spec of specs) {
+  const BATCH_SIZE = 10;  // Process 10 samples concurrently
+
+  for (let i = 0; i < specs.length; i += BATCH_SIZE) {
     if (job.status === 'cancelled') {
       break;
     }
 
-    try {
-      // Generate audio
-      const audioBuffer = await azureTTS.synthesize(spec.ttsText, spec.voiceId, {
-        rate: spec.cadence === 'slow' ? '0.8' : '1.0'
-      });
+    const batch = specs.slice(i, i + BATCH_SIZE);
 
-      // Upload to S3
-      const s3Key = `mastered/${spec.uuid}.mp3`;
-      await s3Service.uploadAudio(s3Key, audioBuffer);
+    // Process batch in parallel
+    const results = await Promise.allSettled(
+      batch.map(spec => processSingleSample(spec, courseCode, azureTTS, s3Service))
+    );
 
-      // Register in Supabase
-      if (supabaseClient.isInitialized()) {
-        await supabaseClient.registerSample({
+    // Tally results
+    for (let j = 0; j < results.length; j++) {
+      const result = results[j];
+      const spec = batch[j];
+
+      if (result.status === 'fulfilled') {
+        job.completed++;
+        logger.log(`Generated ${spec.uuid} (${spec.role}): "${spec.text.substring(0, 30)}..."`);
+      } else {
+        job.failed++;
+        job.errors.push({
           uuid: spec.uuid,
           text: spec.text,
-          tts_text: spec.ttsText,
-          lang: spec.lang,
-          role: spec.role,
-          voice_id: spec.voiceId,
-          cadence: spec.cadence,
-          s3_key: s3Key,
-          course_code: courseCode
+          error: result.reason?.message || 'Unknown error'
         });
+        logger.error(`Failed ${spec.uuid}:`, result.reason?.message);
       }
-
-      job.completed++;
-
-    } catch (error) {
-      logger.error(`Failed to generate ${spec.uuid}:`, error);
-      job.failed++;
-      job.errors.push({
-        uuid: spec.uuid,
-        text: spec.text,
-        error: error.message
-      });
     }
+
+    // Log batch progress
+    const progress = ((job.completed + job.failed) / job.total * 100).toFixed(1);
+    logger.log(`Progress: ${job.completed + job.failed}/${job.total} (${progress}%) - ${job.failed} errors`);
   }
 
   job.status = job.failed > 0 ? 'completed_with_errors' : 'completed';

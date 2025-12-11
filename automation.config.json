@@ -50,10 +50,11 @@
   },
 
   "phase3_basket_generation": {
-    "browsers": 5,
+    "browsers": 9,
     "agents_per_browser": 5,
-    "seeds_per_agent": 3,
-    "browser_spawn_delay_ms": 8000
+    "seeds_per_agent": 15,
+    "browser_spawn_delay_ms": 8000,
+    "comment": "9/5/15 = 675 capacity. For resume: tabs = ceil(seeds / 75)"
   },
 
   "phase5_basket_generation": {
