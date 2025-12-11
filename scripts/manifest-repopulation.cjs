@@ -341,16 +341,17 @@ async function addEncouragements(manifest, sourceLang) {
       samples[text] = [];
     }
 
-    // Add if not exists
-    const existing = samples[text].find(s => s.role === 'presentation' && s.id === enc.id);
-    if (!existing) {
-      samples[text].push({
-        id: enc.id,
-        role: 'presentation',
-        cadence: 'natural',
-        duration: enc.duration || 0
-      });
-    }
+    // Remove any existing presentation entry (may have wrong ID from MAR)
+    // Encouragements should use canonical IDs, not MAR-generated IDs
+    samples[text] = samples[text].filter(s => s.role !== 'presentation');
+
+    // Add with correct canonical ID
+    samples[text].push({
+      id: enc.id,
+      role: 'presentation',
+      cadence: 'natural',
+      duration: enc.duration || 0
+    });
   }
 
   slice.samples = samples;

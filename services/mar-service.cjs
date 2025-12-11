@@ -351,10 +351,20 @@ async function addEncouragementToIndex(language, voiceId, uuid) {
  * @returns {Promise<object>} Encouragement samples object
  */
 async function loadEncouragementSamples(language) {
-  const samplesPath = path.join(MAR_BASE, 'encouragement_samples', `${language}_samples.json`);
+  // Map 3-letter codes to 2-letter codes for file lookup
+  const langCodeMap = { eng: 'en', spa: 'es', cmn: 'zh', deu: 'de', fra: 'fr' };
+  const shortCode = langCodeMap[language] || language;
 
-  if (await fs.pathExists(samplesPath)) {
-    return await fs.readJson(samplesPath);
+  // Try both the passed language code and the short code
+  const paths = [
+    path.join(MAR_BASE, 'encouragement_samples', `${language}_samples.json`),
+    path.join(MAR_BASE, 'encouragement_samples', `${shortCode}_samples.json`)
+  ];
+
+  for (const samplesPath of paths) {
+    if (await fs.pathExists(samplesPath)) {
+      return await fs.readJson(samplesPath);
+    }
   }
 
   // No samples yet for this language - return empty structure
