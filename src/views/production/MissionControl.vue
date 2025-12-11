@@ -3,6 +3,7 @@
     <!-- Header -->
     <header class="mission-control-header">
       <div class="header-content">
+        <router-link to="/" class="back-link">← Back to Dashboard</router-link>
         <h1 class="page-title">Mission Control</h1>
         <div class="course-selector">
           <label for="course-select">Course:</label>
@@ -430,6 +431,18 @@ onUnmounted(() => {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgb(51 65 85);
+}
+
+.back-link {
+  color: #10b981;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #34d399;
 }
 
 .header-content {

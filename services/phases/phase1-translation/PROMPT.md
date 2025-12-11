@@ -28,6 +28,12 @@ Before extracting LEGOs, choose the most **teachable** translation:
 - Even if alternatives are more common in some contexts
 - Consistency > native naturalness for learning
 
+**Exception: Context changes meaning → chunk UP**
+- "try" (attempt) = "intentar" ✓
+- "try this sandwich" (taste) ≠ "intentar" → chunk UP to M-type
+- "try this" → "probar esto" (M-type, taste sense absorbed)
+- The learner gets TWO separate LEGOs, zero ambiguity on either
+
 **2. Reduce Cognitive Load**
 - Prefer cognates where natural (frecuentemente > a menudo)
 - Simpler constructions over complex ones
@@ -144,6 +150,153 @@ Components:
 
 Note: "at" and "o'clock" absorbed - no useful standalone form
 ```
+
+---
+
+## Worked Examples
+
+These show the complete thought process from seed to LEGOs.
+
+### Example 1: Simple Seed (All A-types)
+
+**Seed:** "I want to speak Spanish now"
+
+**Translation reasoning:**
+- "I want" → "quiero" (single word target, cognate-ish)
+- "to speak" → "hablar" (infinitive, A-type)
+- "Spanish" → "español" (cognate)
+- "now" → "ahora" (common, simple)
+- Full: "Quiero hablar español ahora"
+
+**LEGO extraction:**
+- "I want" → "quiero" - A-type (multi-word → single word)
+- "to speak" → "hablar" - A-type (infinitive marker disambiguates)
+- "Spanish" → "español" - A-type (single word both sides)
+- "now" → "ahora" - A-type (single word both sides)
+
+All pass ZUT independently, no M-types needed.
+
+```json
+{
+  "seed_id": "S0001",
+  "seed_pair": {"known": "I want to speak Spanish now", "target": "Quiero hablar español ahora"},
+  "legos": [
+    {"id": "S0001L01", "type": "A", "new": true, "lego": {"known": "I want", "target": "quiero"}},
+    {"id": "S0001L02", "type": "A", "new": true, "lego": {"known": "to speak", "target": "hablar"}},
+    {"id": "S0001L03", "type": "A", "new": true, "lego": {"known": "Spanish", "target": "español"}},
+    {"id": "S0001L04", "type": "A", "new": true, "lego": {"known": "now", "target": "ahora"}}
+  ]
+}
+```
+
+---
+
+### Example 2: M-type with Components
+
+**Seed:** "I'm trying to learn as frequently as possible"
+
+**Translation reasoning:**
+- "I'm trying" → "estoy intentando" (not "estoy tratando de" - intentar is cognate)
+- "to learn" → "aprender" (cognate)
+- "as frequently as possible" → "lo más frecuentemente posible"
+  - NOT "tan a menudo como sea posible" (6 words, no cognates)
+  - "frecuentemente" is cognate with "frequently"
+  - Fewer words, componentizable
+- Full: "Estoy intentando aprender lo más frecuentemente posible"
+
+**LEGO extraction:**
+
+1. "I'm trying" → "estoy intentando"
+   - Multi-word both sides, but CAN break down usefully
+   - Components: "I'm..." → "estoy", "trying" → "intentando"
+   - **M-type** with components
+
+2. "to learn" → "aprender"
+   - Single word target → **A-type**
+
+3. "as frequently as possible" → "lo más frecuentemente posible"
+   - Multi-word, CAN break down:
+   - Components: "possible" → "posible", "frequently" → "frecuentemente"
+   - **M-type** with components
+
+```json
+{
+  "seed_id": "S0003",
+  "seed_pair": {"known": "I'm trying to learn as frequently as possible", "target": "Estoy intentando aprender lo más frecuentemente posible"},
+  "legos": [
+    {"id": "S0003L01", "type": "M", "new": true,
+     "lego": {"known": "I'm trying", "target": "estoy intentando"},
+     "components": [{"known": "I'm...", "target": "estoy"}, {"known": "trying", "target": "intentando"}]},
+    {"id": "S0003L02", "type": "A", "new": true, "lego": {"known": "to learn", "target": "aprender"}},
+    {"id": "S0003L03", "type": "M", "new": true,
+     "lego": {"known": "as frequently as possible", "target": "lo más frecuentemente posible"},
+     "components": [{"known": "possible", "target": "posible"}, {"known": "frequently", "target": "frecuentemente"}]}
+  ]
+}
+```
+
+---
+
+### Example 3: Tricky Seed (Idioms, ZUT failures, Chunk-ups)
+
+**Seed:** "I'm looking forward to trying the food with you"
+
+**Translation reasoning:**
+- "I'm looking forward to" → "tengo ganas de"
+  - Completely idiomatic, NO word-level mapping
+  - Can't break down: "I'm" ≠ "tengo", "looking" ≠ "ganas"
+- "trying" (taste sense) → NOT "intentar" (that's attempt sense)
+  - Must chunk UP: "trying the food" → "probar la comida"
+  - Or even: "to try" (taste) → "probar" as A-type if context clear
+- "the food" → "la comida"
+  - "the" alone fails ZUT (el? la? los? las?)
+  - Chunk UP: "the food" → "la comida" (M-type, article absorbed)
+- "with you" → "contigo" (single word target)
+- Full: "Tengo ganas de probar la comida contigo"
+
+**LEGO extraction:**
+
+1. "I'm looking forward to" → "tengo ganas de"
+   - Idiomatic, NO useful breakdown
+   - **A-type** (atomic even though multi-word)
+
+2. "to try" (taste sense) → "probar"
+   - Different from "try" (attempt) = "intentar"
+   - Context disambiguates - this is taste, not attempt
+   - **A-type** (single word target)
+
+3. "the food" → "la comida"
+   - "the" alone fails ZUT → chunk UP
+   - "food" → "comida" is A-type component
+   - **M-type** with component
+
+4. "with you" → "contigo"
+   - Multi-word → single word
+   - **A-type**
+
+```json
+{
+  "seed_id": "S0010",
+  "seed_pair": {"known": "I'm looking forward to trying the food with you", "target": "Tengo ganas de probar la comida contigo"},
+  "legos": [
+    {"id": "S0010L01", "type": "A", "new": true,
+     "lego": {"known": "I'm looking forward to", "target": "tengo ganas de"}},
+    {"id": "S0010L02", "type": "A", "new": true,
+     "lego": {"known": "to try", "target": "probar"}},
+    {"id": "S0010L03", "type": "M", "new": true,
+     "lego": {"known": "the food", "target": "la comida"},
+     "components": [{"known": "food", "target": "comida"}]},
+    {"id": "S0010L04", "type": "A", "new": true,
+     "lego": {"known": "with you", "target": "contigo"}}
+  ]
+}
+```
+
+**Key decisions in Example 3:**
+- "I'm looking forward to" = A-type (idiomatic, no breakdown)
+- "to try" (taste) = separate LEGO from "to try" (attempt) = "intentar"
+- "the food" = M-type (article absorbed, "food" as component)
+- "with you" = A-type (multi-word → single word)
 
 ---
 
