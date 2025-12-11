@@ -26,6 +26,7 @@ const createLogger = require('../../services/shared/logger.cjs');
 const uuidService = require('../../services/uuid-v11.cjs');
 const supabaseClient = require('../../services/supabase-client.cjs');
 const genderExpansion = require('../../services/gender-expansion-service.cjs');
+const { findBaskets, findVoiceAssignments } = require('../../services/data-finders.cjs');
 
 const logger = createLogger('Phase8-Baskets');
 
@@ -45,6 +46,7 @@ const activeJobs = new Map();
 
 /**
  * Load lego_baskets.json for a course
+ * Uses data-finders for resilient data extraction
  */
 async function loadLegoBaskets(courseCode) {
   const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
@@ -53,13 +55,21 @@ async function loadLegoBaskets(courseCode) {
     throw new Error(`lego_baskets.json not found for course: ${courseCode}`);
   }
 
-  return fs.readJson(basketsPath);
+  const data = await fs.readJson(basketsPath);
+  const baskets = findBaskets(data);
+
+  if (!baskets) {
+    throw new Error(`Could not find baskets in lego_baskets.json for course: ${courseCode}`);
+  }
+
+  return baskets;
 }
 
 /**
  * Load voice assignments for a course
+ * Uses data-finders for resilient data extraction
  */
-async function loadVoiceAssignments(courseCode) {
+async function loadVoiceAssignmentsForCourse(courseCode) {
   // voices.json is in canonical folder, not per-course
   const voicesPath = path.join(VFS_ROOT, '../canonical/voices.json');
 
@@ -68,31 +78,13 @@ async function loadVoiceAssignments(courseCode) {
   }
 
   const registry = await fs.readJson(voicesPath);
+  const assignments = findVoiceAssignments(registry, courseCode);
 
-  // Check for course-specific assignments first
-  if (registry.course_assignments && registry.course_assignments[courseCode]) {
-    return registry.course_assignments[courseCode];
+  if (!assignments) {
+    throw new Error(`No voice assignments found for course: ${courseCode}`);
   }
 
-  // Fall back to language_pair_assignments
-  // courseCode format: spa_for_eng or spa_for_eng_v2 -> language pair key: en-es
-  // Extract just the core language pair (ignoring suffixes like _v2, _10seeds)
-  const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/);
-  if (!match) {
-    throw new Error(`Cannot parse language pair from course code: ${courseCode}`);
-  }
-  const [, targetLang, knownLang] = match;
-  // Convert ISO 639-3 (spa, eng) to ISO 639-1 (es, en) for the lookup key
-  const langMap = { eng: 'en', spa: 'es', ita: 'it', cmn: 'cmn', fra: 'fr', deu: 'de' };
-  const knownShort = langMap[knownLang] || knownLang.substring(0, 2);
-  const targetShort = langMap[targetLang] || targetLang.substring(0, 2);
-  const langPairKey = `${knownShort}-${targetShort}`;
-
-  if (registry.language_pair_assignments && registry.language_pair_assignments[langPairKey]) {
-    return registry.language_pair_assignments[langPairKey];
-  }
-
-  throw new Error(`No voice assignments found for course: ${courseCode} (tried ${langPairKey})`);
+  return assignments;
 }
 
 /**
@@ -247,7 +239,7 @@ app.post('/plan', async (req, res) => {
 
     // Load inputs
     const baskets = await loadLegoBaskets(courseCode);
-    const voiceAssignments = await loadVoiceAssignments(courseCode);
+    const voiceAssignments = await loadVoiceAssignmentsForCourse(courseCode);
 
     // Extract and generate specs
     const samples = extractUniqueSamples(baskets, courseCode);
@@ -304,7 +296,7 @@ app.post('/generate', async (req, res) => {
 
     // Load inputs
     const baskets = await loadLegoBaskets(courseCode);
-    const voiceAssignments = await loadVoiceAssignments(courseCode);
+    const voiceAssignments = await loadVoiceAssignmentsForCourse(courseCode);
 
     // Extract and generate specs
     const samples = extractUniqueSamples(baskets, courseCode);
