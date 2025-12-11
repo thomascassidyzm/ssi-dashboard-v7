@@ -519,9 +519,18 @@ export const useProductionStore = defineStore('production', () => {
     // Use the same API base URL for WebSocket (works through ngrok tunnel)
     const baseUrl = getApiBaseUrl()
 
+    // Skip WebSocket in ngrok/production environments - use polling instead
+    if (baseUrl.includes('ngrok') || baseUrl.includes('vercel') || baseUrl.includes('popty.app')) {
+      console.log('[Production] WebSocket disabled for remote environment, using polling')
+      wsConnected.value = false
+      return
+    }
+
     socket = io(baseUrl, {
       path: '/api/production/websocket',
       transports: ['websocket', 'polling'],
+      reconnectionAttempts: 3,
+      timeout: 5000,
       extraHeaders: {
         'ngrok-skip-browser-warning': 'true'
       }
