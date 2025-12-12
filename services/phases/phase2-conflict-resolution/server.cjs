@@ -31,6 +31,9 @@ const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (LEGO Extraction)';
 const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 6000; // 6s to avoid clipboard race
 
+// Database service for database-first writes
+const courseDataService = require('../../course-data-service.cjs');
+
 // Validate config
 if (!VFS_ROOT) {
   console.error('❌ Error: VFS_ROOT not set');
@@ -2732,6 +2735,45 @@ app.post('/phase2/finalize', async (req, res) => {
 
   console.log(`[Phase 2] ✅ Saved ${seeds.length} seeds to lego_pairs.json`);
 
+  // DATABASE-FIRST: Update is_new flags in database
+  let dbUpdates = 0;
+  if (courseDataService.USE_DATABASE_WRITES) {
+    try {
+      // Get all LEGOs for this course from database to update is_new flags
+      const dbLegos = await courseDataService.getLegosByCourse(courseCode);
+      const legoByKey = new Map();
+
+      // Build lookup by known|target key
+      for (const lego of dbLegos) {
+        const key = `${lego.known_text?.toLowerCase()}|${lego.target_text?.toLowerCase()}`;
+        legoByKey.set(key, lego);
+      }
+
+      // Update is_new flags based on seenLegos
+      const seenInJson = new Set();
+      for (const seed of seeds) {
+        if (!seed.legos) continue;
+        for (const lego of seed.legos) {
+          const key = `${lego.lego?.known?.toLowerCase()}|${lego.lego?.target?.toLowerCase()}`;
+          const dbLego = legoByKey.get(key);
+          if (dbLego) {
+            const isNew = !seenInJson.has(key);
+            seenInJson.add(key);
+
+            // Update if different from current state
+            if (dbLego.is_new !== isNew) {
+              await courseDataService.markLegoAsNew(dbLego.id, isNew);
+              dbUpdates++;
+            }
+          }
+        }
+      }
+      console.log(`[Phase 2] 💾 Database: Updated ${dbUpdates} is_new flags`);
+    } catch (dbError) {
+      console.error(`[Phase 2] ⚠️  Database update failed:`, dbError.message);
+    }
+  }
+
   // Save conflicts report
   if (conflictsResolved.length > 0) {
     const conflictsPath = path.join(courseDir, 'phase2_canonicalization_report.json');
@@ -2749,6 +2791,7 @@ app.post('/phase2/finalize', async (req, res) => {
     totalSeeds: seeds.length,
     uniqueLegos: seenLegos.size,
     conflictsResolved: conflictsResolved.length,
+    databaseUpdates: dbUpdates,
     outputPath
   });
 });

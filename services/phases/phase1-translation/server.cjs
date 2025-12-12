@@ -31,6 +31,9 @@ const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 1 (Translation)';
 const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 6000; // 6s to avoid clipboard race
 
+// Database service for database-first writes
+const courseDataService = require('../../course-data-service.cjs');
+
 // Validate config
 if (!VFS_ROOT) {
   console.error('❌ Error: VFS_ROOT not set');
@@ -1024,6 +1027,7 @@ function expandCompactFormat(compactData) {
  * POST /api/phase1/:courseCode/upload-batch
  * Workers upload their completed batches here
  * Accepts both compact and full format
+ * Now also writes to database (dual-write for backwards compatibility)
  */
 app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
   const { courseCode } = req.params;
@@ -1036,6 +1040,7 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
   // Detect and expand compact formats (v6 object-based or v7 array-based)
   const isV7Hybrid = batchData.length > 0 && Array.isArray(batchData[0]);
   const isV6Compact = batchData.length > 0 && batchData[0].s && !batchData[0].seed_id;
+  const isCompact = isV7Hybrid || isV6Compact;
 
   if (isV7Hybrid) {
     console.log(`[Phase 1] 📦 Expanding v7 hybrid format (${batchData.length} seeds)`);
@@ -1049,14 +1054,42 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
   const batchesDir = path.join(courseDir, 'phase1_batches');
   await fs.ensureDir(batchesDir);
 
-  // Save batch with timestamp + random suffix to avoid collisions
+  // Save batch with timestamp + random suffix to avoid collisions (JSON fallback)
   const randomSuffix = Math.random().toString(36).substring(2, 8);
   const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
   await fs.writeJson(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
 
   console.log(`[Phase 1] ✅ Received batch: ${batchData.length} seeds → ${batchFile}`);
 
-  res.json({ success: true, received: batchData.length, file: batchFile, expanded: isCompact });
+  // DATABASE-FIRST: Write to Supabase
+  let dbStats = { seeds: 0, legos: 0, components: 0 };
+  if (courseDataService.USE_DATABASE_WRITES) {
+    try {
+      // Ensure course exists in database
+      await courseDataService.ensureCourse(courseCode);
+
+      // Import each seed to database
+      for (const seedData of batchData) {
+        const result = await courseDataService.importSeedWithLegos(courseCode, seedData);
+        if (result) {
+          dbStats.seeds++;
+          dbStats.legos += result.legoCount || 0;
+          dbStats.components += result.componentCount || 0;
+        }
+      }
+      console.log(`[Phase 1] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos, ${dbStats.components} components`);
+    } catch (dbError) {
+      console.error(`[Phase 1] ⚠️  Database write failed (JSON saved as fallback):`, dbError.message);
+    }
+  }
+
+  res.json({
+    success: true,
+    received: batchData.length,
+    file: batchFile,
+    expanded: isCompact,
+    database: dbStats
+  });
 });
 
 /**

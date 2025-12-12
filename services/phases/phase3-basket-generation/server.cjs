@@ -34,6 +34,9 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
 // ngrok URL for prompts sent to remote Claude browsers (they can't reach localhost)
 const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
+// Database service for database-first writes
+const courseDataService = require('../../course-data-service.cjs');
+
 // Load configuration
 const { loadConfig } = require('../../shared/config-loader.cjs');
 
@@ -471,13 +474,29 @@ async function mergePhase3Outputs(baseCourseDir, courseCode) {
     merged_from_phase3_outputs: basketFiles.length
   };
 
-  // Write merged file
+  // Write merged file (JSON fallback)
   await fs.writeJson(basketsPath, legoBaskets, { spaces: 2 });
 
   console.log(`[Phase 3] ✅ Merge complete:`);
   console.log(`[Phase 3]    Added ${totalBaskets} baskets`);
   console.log(`[Phase 3]    Total ${totalPhrases} practice phrases`);
   console.log(`[Phase 3]    Output: ${basketsPath}`);
+
+  // DATABASE-FIRST: Write basket phrases to database
+  let dbPhrases = 0;
+  if (courseDataService.USE_DATABASE_WRITES) {
+    try {
+      for (const [legoId, basketData] of Object.entries(legoBaskets.baskets || {})) {
+        const result = await courseDataService.importBasket(courseCode, legoId, basketData);
+        if (result) {
+          dbPhrases += result.phraseCount || 0;
+        }
+      }
+      console.log(`[Phase 3] 💾 Database: Saved ${dbPhrases} phrases to database`);
+    } catch (dbError) {
+      console.error(`[Phase 3] ⚠️  Database write failed:`, dbError.message);
+    }
+  }
 }
 
 /**

@@ -12,6 +12,8 @@ const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
+const manifestGenerator = require('./manifest-generator.cjs')
+const courseDataService = require('./course-data-service.cjs')
 
 // VFS root for local file checks
 const VFS_ROOT = process.env.VFS_ROOT?.endsWith('/courses')
@@ -46,35 +48,111 @@ app.get('/api/production/health', (req, res) => {
 })
 
 // Get course manifest
+// Priority: 1) Database (if course structure exists), 2) S3 static file, 3) Stub
 app.get('/api/production/:courseCode/manifest', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const manifest = await s3Service.getCourseManifest(courseCode)
+    const source = req.query.source // 'db', 's3', or auto (default)
 
-    if (!manifest) {
-      // Check if lego_baskets.json exists (course is in pre-audio state)
-      const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json')
-      if (await fs.pathExists(basketsPath)) {
-        // Return stub manifest indicating audio needs to be generated
-        const baskets = await fs.readJson(basketsPath)
-        const basketCount = Object.keys(baskets).length
-        return res.json({
-          _stub: true,
-          _message: 'Manifest not yet compiled. Run audio generation first.',
-          courseCode,
-          status: 'pre-audio',
-          basketCount,
-          seeds: [],
-          audio: {},
-          version: 'stub'
-        })
+    // Option 1: Try database-first generation (new architecture)
+    if (source !== 's3' && supabaseClient.isInitialized()) {
+      try {
+        const manifest = await manifestGenerator.generateManifest(courseCode)
+        if (manifest && manifest.slices?.[0]?.seeds?.length > 0) {
+          logger.info(`Manifest for ${courseCode} generated from database`)
+          return res.json({
+            ...manifest,
+            _source: 'database'
+          })
+        }
+      } catch (dbError) {
+        // Course not in database yet, fall through to S3
+        logger.debug(`Database manifest generation failed for ${courseCode}: ${dbError.message}`)
       }
-      return res.status(404).json({ error: 'Manifest not found' })
     }
 
-    res.json(manifest)
+    // Option 2: Try S3 static manifest (legacy)
+    if (source !== 'db') {
+      const manifest = await s3Service.getCourseManifest(courseCode)
+      if (manifest) {
+        logger.info(`Manifest for ${courseCode} loaded from S3`)
+        return res.json({
+          ...manifest,
+          _source: 's3'
+        })
+      }
+    }
+
+    // Option 3: Return stub if course exists but manifest not ready
+    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json')
+    if (await fs.pathExists(basketsPath)) {
+      const baskets = await fs.readJson(basketsPath)
+      const basketCount = Object.keys(baskets.baskets || baskets || {}).length
+      return res.json({
+        _stub: true,
+        _source: 'stub',
+        _message: 'Manifest not yet compiled. Import course to database or run audio generation.',
+        courseCode,
+        status: 'pre-audio',
+        basketCount,
+        seeds: [],
+        audio: {},
+        version: 'stub'
+      })
+    }
+
+    return res.status(404).json({ error: 'Course not found' })
   } catch (error) {
     logger.error('Error fetching manifest:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Generate manifest from database (explicit trigger)
+app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    logger.info(`Generating manifest for ${courseCode} from database...`)
+    const manifest = await manifestGenerator.generateManifest(courseCode)
+
+    // Validate it
+    const validation = await manifestGenerator.validateManifest(manifest)
+
+    res.json({
+      success: true,
+      manifest,
+      validation,
+      stats: {
+        seeds: manifest.slices?.[0]?.seeds?.length || 0,
+        samples: Object.keys(manifest.slices?.[0]?.samples || {}).length
+      }
+    })
+  } catch (error) {
+    logger.error('Error generating manifest:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Validate manifest audio coverage
+app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const manifest = await manifestGenerator.generateManifest(courseCode)
+    const validation = await manifestGenerator.validateManifest(manifest)
+
+    res.json(validation)
+  } catch (error) {
+    logger.error('Error validating manifest:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -986,6 +1064,129 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
       return res.status(503).json({ error: 'Phase 8 audio service not running' })
     }
     res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// =============================================================================
+// Database-First Course Data Endpoints
+// =============================================================================
+
+// Get seeds from database
+app.get('/api/production/:courseCode/seeds', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const seeds = await courseDataService.getSeedsByCourse(courseCode)
+    res.json({
+      courseCode,
+      count: seeds.length,
+      seeds
+    })
+  } catch (error) {
+    logger.error(`Error fetching seeds for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Get LEGOs from database
+app.get('/api/production/:courseCode/legos', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const legos = await courseDataService.getLegosByCourse(courseCode)
+    res.json({
+      courseCode,
+      count: legos.length,
+      legos
+    })
+  } catch (error) {
+    logger.error(`Error fetching legos for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Get course progress from database
+app.get('/api/production/:courseCode/progress', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const progress = await courseDataService.getCourseProgress(courseCode)
+    res.json(progress)
+  } catch (error) {
+    logger.error(`Error fetching progress for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Update a LEGO in database
+app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const updates = req.body
+  try {
+    // Validate the LEGO belongs to this course
+    const legos = await courseDataService.getLegosByCourse(courseCode)
+    const lego = legos.find(l => l.id === legoId)
+    if (!lego) {
+      return res.status(404).json({ error: `LEGO ${legoId} not found in course ${courseCode}` })
+    }
+
+    const result = await courseDataService.updateLego(legoId, updates)
+    res.json({
+      success: true,
+      lego: result
+    })
+  } catch (error) {
+    logger.error(`Error updating lego ${legoId}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Delete a seed from database (soft delete by removing from course)
+app.delete('/api/production/:courseCode/seed/:seedNumber', async (req, res) => {
+  const { courseCode, seedNumber } = req.params
+  try {
+    const seedId = courseDataService.formatSeedId(courseCode, parseInt(seedNumber))
+    const result = await courseDataService.deleteSeed(seedId)
+    if (!result) {
+      return res.status(404).json({ error: `Seed ${seedNumber} not found in course ${courseCode}` })
+    }
+    res.json({
+      success: true,
+      deleted: seedId
+    })
+  } catch (error) {
+    logger.error(`Error deleting seed ${seedNumber} from ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Get basket phrases for a LEGO
+app.get('/api/production/:courseCode/lego/:legoId/basket', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  try {
+    const phrases = await courseDataService.getBasketPhrases(legoId)
+    res.json({
+      courseCode,
+      legoId,
+      count: phrases.length,
+      phrases
+    })
+  } catch (error) {
+    logger.error(`Error fetching basket for lego ${legoId}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Mark LEGO as new/not-new
+app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const { isNew } = req.body
+  try {
+    const result = await courseDataService.markLegoAsNew(legoId, isNew)
+    res.json({
+      success: true,
+      lego: result
+    })
+  } catch (error) {
+    logger.error(`Error marking lego ${legoId} as new:`, error.message)
+    res.status(500).json({ error: error.message })
   }
 })
 
