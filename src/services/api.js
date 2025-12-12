@@ -14,6 +14,25 @@ function getApiBaseUrl() {
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
 
+// Production API URL for database-backed endpoints (APML v11.2.0)
+function getProductionApiUrl() {
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    // If using custom URL, assume production API is on port 3470 of same host
+    try {
+      const url = new URL(storedUrl)
+      url.port = '3470'
+      return url.origin
+    } catch {
+      return 'http://localhost:3470'
+    }
+  }
+  return import.meta.env.VITE_PRODUCTION_API_URL || 'http://localhost:3470'
+}
+
+// Export production API URL for direct access
+export { getProductionApiUrl }
+
 const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({
@@ -52,10 +71,162 @@ export default {
     return response.data
   },
 
+  // Production API URL for database-backed endpoints (uses module-level function)
+  getProductionApiUrl,
+
   // Course generation
   course: {
     // Initialize cache for baskets to avoid re-fetching 5MB files
     _basketsCache: {},
+
+    // Database-first course data loading (APML v11.2.0)
+    // Fetches from production API which reads from Supabase
+    async getFromDatabase(courseCode) {
+      const productionApiUrl = getProductionApiUrl()
+
+      console.log(`[API] Trying database-first load for ${courseCode} from ${productionApiUrl}`)
+
+      try {
+        // Fetch seeds with nested legos and basket_phrases from production API
+        const seedsRes = await fetch(`${productionApiUrl}/api/production/${courseCode}/seeds`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
+
+        if (!seedsRes.ok) {
+          if (seedsRes.status === 404) {
+            console.log(`[API] Course ${courseCode} not found in database`)
+            return null
+          }
+          throw new Error(`Database API returned ${seedsRes.status}`)
+        }
+
+        const seedsData = await seedsRes.json()
+
+        // If no seeds in database, return null to fall back to S3/GitHub
+        if (!seedsData.seeds || seedsData.seeds.length === 0) {
+          console.log(`[API] No seeds in database for ${courseCode}`)
+          return null
+        }
+
+        console.log(`[API] ✓ Loaded ${seedsData.count} seeds from database for ${courseCode}`)
+
+        // Transform database format to expected dashboard format
+        const translations = []
+        const legos = []
+        const baskets = {}
+        const seedsArray = [] // For lego_breakdowns (v5.0.1 format)
+
+        for (const seed of seedsData.seeds) {
+          // Add translation
+          translations.push({
+            seed_id: seed.seed_id,
+            target_phrase: seed.target_text,
+            known_phrase: seed.known_text,
+            canonical_seed: seed.canonical
+          })
+
+          // Build seed entry for lego_breakdowns
+          const seedEntry = {
+            seed_id: seed.seed_id,
+            seed_pair: {
+              target: seed.target_text,
+              known: seed.known_text
+            },
+            legos: []
+          }
+
+          // Process legos for this seed
+          if (seed.legos && Array.isArray(seed.legos)) {
+            for (const lego of seed.legos) {
+              // Add to flat legos list (only new ones)
+              if (lego.is_new) {
+                legos.push({
+                  seed_id: seed.seed_id,
+                  lego_id: lego.lego_id,
+                  lego_type: lego.type,
+                  target_chunk: lego.target_text,
+                  known_chunk: lego.known_text,
+                  components: lego.components || null
+                })
+              }
+
+              // Add to seed's legos array
+              seedEntry.legos.push({
+                id: lego.lego_id,
+                type: lego.type,
+                target: lego.target_text,
+                known: lego.known_text,
+                new: lego.is_new,
+                ref: !lego.is_new,
+                components: lego.components || null
+              })
+
+              // Process basket phrases for this lego
+              if (lego.basket_phrases && Array.isArray(lego.basket_phrases)) {
+                baskets[lego.lego_id] = {
+                  lego_id: lego.lego_id,
+                  target: lego.target_text,
+                  known: lego.known_text,
+                  type: lego.type,
+                  phrases: lego.basket_phrases.map(bp => ({
+                    target: bp.target_text,
+                    known: bp.known_text,
+                    is_debut: bp.is_debut,
+                    is_component: bp.is_component,
+                    phrase_type: bp.phrase_type
+                  }))
+                }
+              }
+            }
+          }
+
+          seedsArray.push(seedEntry)
+        }
+
+        // Sort translations by seed_id
+        translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+
+        // Parse course code for metadata
+        const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+        const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+        const match = matchStandard || matchBasic
+
+        // Determine completed phases from data
+        const phasesCompleted = []
+        if (translations.length > 0) phasesCompleted.push('1')
+        if (legos.length > 0) phasesCompleted.push('2', '3')
+        if (Object.keys(baskets).length > 0) phasesCompleted.push('5')
+
+        const course = {
+          course_code: courseCode,
+          source_language: match ? match[2].toUpperCase() : 'UNK',
+          target_language: match ? match[1].toUpperCase() : 'UNK',
+          total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
+          version: '1.0-db',
+          created_at: new Date().toISOString(),
+          status: phasesCompleted.length > 0 ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
+          seed_pairs: translations.length,
+          lego_pairs: legos.length,
+          lego_baskets: Object.keys(baskets).length,
+          phases_completed: phasesCompleted,
+          target_language_name: match ? match[1] : 'unknown',
+          known_language_name: match ? match[2] : 'unknown',
+          data_source: 'database' // Flag to identify database-backed data
+        }
+
+        return {
+          course,
+          translations,
+          legos,
+          lego_breakdowns: seedsArray,
+          baskets
+        }
+
+      } catch (err) {
+        console.warn(`[API] Database fetch failed for ${courseCode}:`, err.message)
+        return null
+      }
+    },
 
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false, stagingOnly = false }) {
       // APML v11.0: Route Phase 3 (Basket Generation) requests to the basket server
@@ -164,7 +335,15 @@ export default {
     },
 
     async get(courseCode) {
-      // Check cache first
+      // APML v11.2.0: Try database first for real-time data
+      // This is the new primary data source for courses in the database
+      const dbData = await this.getFromDatabase(courseCode)
+      if (dbData) {
+        console.log(`[API] ✓ Using database data for ${courseCode} (${dbData.translations.length} seeds, ${dbData.legos.length} legos)`)
+        return dbData
+      }
+
+      // Fallback: Check cache for legacy courses not in database
       const cachedData = await getCachedCourse(courseCode)
       if (cachedData) {
         console.log(`[API] Using cached data for ${courseCode}`)
