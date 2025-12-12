@@ -53,12 +53,12 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v10.0.0 specification to generate complete language courses from canonical seed pairs through a streamlined pipeline. A phase triggers agents. Scripts run instantly.</p>
+            <p>The SSi Course Production system uses APML v11.2.0 specification to generate complete language courses from canonical seed pairs through an audio-first pipeline. A phase triggers agents. Scripts run instantly.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">v10.0.0</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v10.0.0</span> | Pipeline: <span class="text-emerald-400">Phase 1 → Phase 2 → Phase 3 → Manifest → Audio</span></p>
-              <p class="text-xs text-emerald-400 mt-1">lego_pairs.json embeds seed_pairs (no separate file)</p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">v11.2.0</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v11.2.0</span> | Pipeline: <span class="text-emerald-400">Phase 1 → Phase 2 → Phase 3 → Audio → Manifest</span></p>
+              <p class="text-xs text-emerald-400 mt-1">Audio-first with Supabase | lego_pairs.json embeds seed_pairs</p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>

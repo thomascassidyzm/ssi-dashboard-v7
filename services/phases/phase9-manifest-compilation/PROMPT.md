@@ -1,7 +1,8 @@
 # Phase 9: Manifest Compilation
 
+**APML**: v11.2.0
 **Port**: 3466
-**Version**: 11.0.0
+**Version**: 11.2.0
 **Status**: Active
 **Type**: Script (deterministic transformation)
 **Input**: `lego_pairs.json`, `lego_baskets.json`, Supabase `audio_samples` table

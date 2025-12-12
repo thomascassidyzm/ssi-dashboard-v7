@@ -1,5 +1,6 @@
 # Phase 3: Basket Generation (v7.0)
 
+**APML**: v11.2.0
 **Port**: 3459
 **Version**: 7.0 - Simplified Vocabulary Context, Always 2-2-2-4
 **Status**: Production Ready

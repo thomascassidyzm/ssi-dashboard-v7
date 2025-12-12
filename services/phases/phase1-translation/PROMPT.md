@@ -1,4 +1,10 @@
-# Phase 1: LEGO Pair Generation v8.1
+# Phase 1: LEGO Pair Generation v8.2
+
+**APML**: v11.2.0
+**Port**: 3457
+**Output**: draft_lego_pairs.json
+
+---
 
 ## YOUR ROLE
 
@@ -15,6 +21,28 @@ The SSi methodology is about finding the **smallest possible units that pass ZUT
 > **ZUT (Zero Uncertainty Test):** When learner hears X, do they ALWAYS know to produce Y with ZERO uncertainty?
 
 Your job: Break sentences into the smallest chunks that still pass ZUT.
+
+---
+
+## Language-Specific ZUT Examples
+
+**Fetch these first before starting any extraction:**
+```
+curl -s [ORCHESTRATOR]/api/zut-examples/[KNOWN]/[TARGET]
+```
+
+For example, for Spanish-for-English-speakers:
+```
+curl -s http://localhost:3456/api/zut-examples/english/spanish
+```
+
+These show what fails/passes ZUT for your specific language pair. Different language pairs have different ZUT failure patterns:
+
+- **Spanish**: Article gender (el/la), verb conjugations
+- **Welsh**: Mutations, verb-subject-object order
+- **Mandarin**: Measure words, tones
+
+Review these examples BEFORE extracting LEGOs to understand the specific challenges.
 
 ---
 

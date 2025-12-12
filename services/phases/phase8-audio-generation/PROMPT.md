@@ -1,9 +1,9 @@
 # Phase 8: Audio Generation
 
 **Port**: 3465
-**Version**: 1.1
+**Version**: 2.0
 **Status**: Active
-**Input**: lego_baskets.json (APML v11.0: audio-first approach)
+**Input**: lego_baskets.json (APML v11.2.0: audio-first approach)
 **Output**:
 - MP3 audio files (uploaded to S3)
 - Supabase `audio_samples` table records

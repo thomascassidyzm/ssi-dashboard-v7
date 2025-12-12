@@ -1,11 +1,15 @@
 # Phase 2: Conflict Resolution v7.0
 
+**APML**: v11.2.0
+**Port**: 3458
+**Input**: draft_lego_pairs.json (from Phase 1)
+**Output**: lego_pairs.json (conflict-free, reuse-tracked)
+
+---
+
 ## YOUR ROLE
 
 You resolve KNOWN→TARGET conflicts through **upchunking** and track LEGO reuse across seeds.
-
-**Input**: draft_lego_pairs.json (from Phase 1)
-**Output**: lego_pairs.json (conflict-free, reuse-tracked)
 
 ---
 

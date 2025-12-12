@@ -118,7 +118,7 @@
 
       <!-- Workflow Info -->
       <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
-        <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow (APML v11.0)</h3>
+        <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow (APML v11.2.0)</h3>
         <ol class="text-slate-400 space-y-2 text-sm">
           <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">services/phases/{phase}/PROMPT.md</code></li>
           <li>2. Rebuild app: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">npm run build</code></li>
@@ -157,11 +157,11 @@ const phaseContent = {
 }
 
 const phases = [
-  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '4.2', locked: true, path: 'services/phases/phase1-translation/PROMPT.md' },
-  { id: '2', name: 'Conflict Resolution', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase2-conflict-resolution/PROMPT.md' },
+  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '8.2', locked: true, path: 'services/phases/phase1-translation/PROMPT.md' },
+  { id: '2', name: 'Conflict Resolution', status: 'active', version: '7.0', locked: true, path: 'services/phases/phase2-conflict-resolution/PROMPT.md' },
   { id: '3', name: 'Basket Generation', status: 'active', version: '7.0', locked: true, path: 'services/phases/phase3-basket-generation/PROMPT.md' },
-  { id: '8', name: 'Audio Generation', status: 'active', version: '1.1', locked: true, path: 'services/phases/phase8-audio-generation/PROMPT.md' },
-  { id: '9', name: 'Manifest Compilation', status: 'active', version: '11.0.0', locked: true, path: 'services/phases/phase9-manifest-compilation/PROMPT.md' }
+  { id: '8', name: 'Audio Generation', status: 'active', version: '2.0', locked: true, path: 'services/phases/phase8-audio-generation/PROMPT.md' },
+  { id: '9', name: 'Manifest Compilation', status: 'active', version: '11.2.0', locked: true, path: 'services/phases/phase9-manifest-compilation/PROMPT.md' }
 ]
 
 const selectedPhase = ref('1')

@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              Popty v10.0.0
+              Popty v11.2.0
             </h1>
             <p class="mt-2 text-slate-400">
               SSi Course Production Dashboard
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              APML v10.0.0 | Phase 1 → Phase 2 → Phase 3 → Manifest → Audio
+              APML v11.2.0 | Phase 1 → Phase 2 → Phase 3 → Audio → Manifest
             </p>
           </div>
           <div class="flex items-center gap-6">
