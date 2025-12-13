@@ -18,11 +18,16 @@ function getApiBaseUrl() {
 function getProductionApiUrl() {
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
-    // If using custom URL, assume production API is on port 3470 of same host
     try {
       const url = new URL(storedUrl)
-      url.port = '3470'
-      return url.origin
+      // ngrok URLs don't support port modification - they route internally
+      // Only modify localhost URLs where port changes make sense
+      if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
+        url.port = '3470'
+        return url.origin
+      }
+      // For ngrok/remote URLs, use as-is (production API should be proxied through same tunnel)
+      return storedUrl
     } catch {
       return 'http://localhost:3470'
     }
