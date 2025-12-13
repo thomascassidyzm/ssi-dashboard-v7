@@ -81,7 +81,7 @@
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ basketsData?.baskets ? Object.keys(basketsData.baskets).length : 0 }}</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ actualBasketsCount }}</div>
             <div class="text-xs text-slate-500 mt-1">Phase 3 lesson groupings</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
@@ -1235,8 +1235,28 @@ const tabs = [
   { id: 'audio', label: 'AUDIO_SAMPLES' }
 ]
 
-// Count actual LEGOs (only new: true) from lego_pairs.json structure
+// Count baskets from database data or basketsData from S3
+const actualBasketsCount = computed(() => {
+  // First check if we have database data (baskets object directly)
+  if (baskets.value && typeof baskets.value === 'object' && !Array.isArray(baskets.value)) {
+    return Object.keys(baskets.value).length
+  }
+  // Fall back to basketsData from S3
+  if (basketsData.value?.baskets) {
+    return Object.keys(basketsData.value.baskets).length
+  }
+  return 0
+})
+
+// Count actual LEGOs (only new: true) from lego_pairs.json structure or database data
 const actualLegoCount = computed(() => {
+  // First check if we have database data (legos array directly)
+  if (legos.value && legos.value.length > 0) {
+    // Count only NEW LEGOs from database data
+    return legos.value.filter(lego => lego.new !== false).length
+  }
+
+  // Fall back to legoPairsData from S3/VFS
   if (!legoPairsData.value?.seeds) return 0
 
   // Count only NEW LEGOs (new: true) - these are the actual teaching units
