@@ -166,8 +166,8 @@ export default {
                 components: lego.components || null
               })
 
-              // Process basket phrases for this lego
-              if (lego.basket_phrases && Array.isArray(lego.basket_phrases)) {
+              // Process basket phrases for this lego (only new LEGOs get baskets)
+              if (lego.is_new && lego.basket_phrases && Array.isArray(lego.basket_phrases)) {
                 baskets[lego.lego_id] = {
                   lego_id: lego.lego_id,
                   target: lego.target_text,
