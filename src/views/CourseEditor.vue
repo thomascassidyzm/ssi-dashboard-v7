@@ -1310,10 +1310,37 @@ async function loadCourse() {
     }))
     baskets.value = response.baskets || []
 
-    // Don't use API data for legos/legoBreakdowns - we'll load directly from VFS below
-    // This ensures we always get the latest data from the files, not from cache
-    legos.value = []
-    legoBreakdowns.value = []
+    // Check if data came from database (has real-time data, no need to fetch from S3)
+    const isFromDatabase = response.course?.data_source === 'database'
+
+    if (isFromDatabase && response.lego_breakdowns?.length > 0) {
+      // Use database data - transform to component format
+      console.log('🗄️ Using database data for LEGOs:', response.legos?.length, 'legos from', response.lego_breakdowns?.length, 'seeds')
+
+      legoBreakdowns.value = response.lego_breakdowns.map(seed => ({
+        seed_id: seed.seed_id,
+        original_target: seed.seed_pair?.target || '',
+        original_known: seed.seed_pair?.known || '',
+        lego_pairs: (seed.legos || []).map(lego => ({
+          lego_id: lego.id,
+          target_chunk: lego.target,
+          known_chunk: lego.known,
+          lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
+          is_new: lego.new !== false,
+          ref: lego.ref || null,
+          componentization: lego.components ?
+            lego.components.map(c => `${c.known} = ${c.target}`).join(', ') :
+            null
+        }))
+      }))
+
+      legos.value = response.legos || []
+      console.log(`✅ Loaded ${legoBreakdowns.value.length} seeds with ${legos.value.length} LEGOs from database`)
+    } else {
+      // Legacy: load from S3/VFS files
+      legos.value = []
+      legoBreakdowns.value = []
+    }
 
     // Load lego_baskets.json from S3 (via API proxy)
     try {
@@ -1357,19 +1384,20 @@ async function loadCourse() {
       introductionsData.value = null
     }
 
-    // Load lego_pairs.json from S3 (via API proxy)
-    console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
-    try {
-      // Add cache-busting timestamp
-      const timestamp = Date.now()
-      const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json')}?_t=${timestamp}`
-      console.log('🔍 Fetching lego_pairs.json from S3:', url)
+    // Load lego_pairs.json from S3 (via API proxy) - only if not using database data
+    if (!isFromDatabase || legoBreakdowns.value.length === 0) {
+      console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
+      try {
+        // Add cache-busting timestamp
+        const timestamp = Date.now()
+        const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json')}?_t=${timestamp}`
+          console.log('🔍 Fetching lego_pairs.json from S3:', url)
 
-      const legoPairsResponse = await fetch(url)
+        const legoPairsResponse = await fetch(url)
 
-      console.log('🔍 Response status:', legoPairsResponse.status, legoPairsResponse.ok)
+        console.log('🔍 Response status:', legoPairsResponse.status, legoPairsResponse.ok)
 
-      if (legoPairsResponse.ok) {
+        if (legoPairsResponse.ok) {
         const loadedLegoPairsData = await legoPairsResponse.json()
         legoPairsData.value = loadedLegoPairsData
         console.log('📦 Loaded lego_pairs.json - seeds count:', loadedLegoPairsData.seeds?.length)
@@ -1506,9 +1534,12 @@ async function loadCourse() {
       } else {
         console.error('❌ ERROR: Failed to fetch lego_pairs.json - status:', legoPairsResponse.status)
       }
-    } catch (err) {
-      console.error('❌ ERROR loading lego_pairs.json:', err)
-      console.error('Stack:', err.stack)
+      } catch (err) {
+        console.error('❌ ERROR loading lego_pairs.json:', err)
+        console.error('Stack:', err.stack)
+      }
+    } else {
+      console.log('🗄️ Skipping S3 fetch - using database data for lego_pairs')
     }
 
     // Load QC flags
