@@ -50,11 +50,20 @@ function parseSeedNumber(seedId) {
 
 /**
  * Parse LEGO index from lego_id
- * "lego_s0042_001" -> 1
+ * Handles multiple formats:
+ * - "S0001L01" -> 1
+ * - "S0001L02" -> 2
+ * - "lego_s0042_001" -> 1
  */
 function parseLegoIndex(legoId) {
-  const match = legoId.match(/_(\d+)$/);
-  return match ? parseInt(match[1], 10) : 1;
+  // Try new format first: S0001L01, S0001L02
+  const newMatch = legoId.match(/L(\d+)$/i);
+  if (newMatch) {
+    return parseInt(newMatch[1], 10);
+  }
+  // Fall back to old format: lego_s0042_001
+  const oldMatch = legoId.match(/_(\d+)$/);
+  return oldMatch ? parseInt(oldMatch[1], 10) : 1;
 }
 
 // =============================================================================

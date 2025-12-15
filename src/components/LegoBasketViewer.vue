@@ -524,9 +524,13 @@ export default {
         return []
       }
 
-      // Extract seed numbers from translations
+      // Extract seed numbers - prefer direct seed_number (database), fallback to parsing seed_id (S3)
       const seedNumbers = this.courseData.translations.map(t => {
-        const match = t.seed_id.match(/S(\d+)/)
+        if (typeof t.seed_number === 'number') {
+          return t.seed_number
+        }
+        // Fallback: parse from seed_id (S3 format)
+        const match = t.seed_id?.match(/s(\d+)/i)
         return match ? parseInt(match[1]) : 0
       }).filter(n => n > 0).sort((a, b) => a - b)
 

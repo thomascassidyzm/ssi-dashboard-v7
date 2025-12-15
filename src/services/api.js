@@ -122,9 +122,14 @@ export default {
         const seedsArray = [] // For lego_breakdowns (v5.0.1 format)
 
         for (const seed of seedsData.seeds) {
+          // Derive seed_id display format from seed_number: 'S' + seed_number.toString().padStart(4, '0')
+          const derivedSeedId = 'S' + seed.seed_number.toString().padStart(4, '0')
+          const normalizedSeedId = derivedSeedId.toUpperCase()
+
           // Add translation
           translations.push({
-            seed_id: seed.seed_id,
+            seed_id: normalizedSeedId,
+            seed_number: seed.seed_number,  // Include integer for direct use
             target_phrase: seed.target_text,
             known_phrase: seed.known_text,
             canonical_seed: seed.canonical
@@ -132,7 +137,7 @@ export default {
 
           // Build seed entry for lego_breakdowns
           const seedEntry = {
-            seed_id: seed.seed_id,
+            seed_id: normalizedSeedId,
             seed_pair: {
               target: seed.target_text,
               known: seed.known_text
@@ -143,11 +148,14 @@ export default {
           // Process legos for this seed
           if (seed.legos && Array.isArray(seed.legos)) {
             for (const lego of seed.legos) {
+              // Derive lego_id display format: seed_id + 'L' + lego_index.toString().padStart(2, '0')
+              const derivedLegoId = normalizedSeedId + 'L' + lego.lego_index.toString().padStart(2, '0')
+
               // Add to flat legos list (only new ones)
               if (lego.is_new) {
                 legos.push({
-                  seed_id: seed.seed_id,
-                  lego_id: lego.lego_id,
+                  seed_id: normalizedSeedId,
+                  lego_id: derivedLegoId,
                   lego_type: lego.type,
                   target_chunk: lego.target_text,
                   known_chunk: lego.known_text,
@@ -157,7 +165,7 @@ export default {
 
               // Add to seed's legos array
               seedEntry.legos.push({
-                id: lego.lego_id,
+                id: derivedLegoId,
                 type: lego.type,
                 target: lego.target_text,
                 known: lego.known_text,
@@ -168,8 +176,8 @@ export default {
 
               // Process basket phrases for this lego (only new LEGOs get baskets)
               if (lego.is_new && lego.basket_phrases && Array.isArray(lego.basket_phrases)) {
-                baskets[lego.lego_id] = {
-                  lego_id: lego.lego_id,
+                baskets[derivedLegoId] = {
+                  lego_id: derivedLegoId,
                   target: lego.target_text,
                   known: lego.known_text,
                   type: lego.type,
@@ -177,8 +185,8 @@ export default {
                     target: bp.target_text,
                     known: bp.known_text,
                     is_debut: bp.is_debut,
-                    is_component: bp.is_component,
-                    phrase_type: bp.phrase_type
+                    is_component: bp.is_component
+                    // Note: phrase_type removed - compute at runtime if needed
                   }))
                 }
               }
@@ -946,9 +954,36 @@ export default {
     _basketsCache: {},
 
     async getBasket(courseCode, seedId) {
-      // Use S3 as primary storage, GitHub as fallback
+      // Try database first (via production API), then S3/GitHub as fallback
+      const productionApiUrl = getProductionApiUrl();
+      console.log(`[API] Loading basket ${seedId} - trying database first`);
+
+      try {
+        // Try production API (database-first)
+        const dbResponse = await fetch(`${productionApiUrl}/api/production/${courseCode}/seed/${seedId}/baskets`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
+
+        if (dbResponse.ok) {
+          const dbData = await dbResponse.json();
+          if (dbData.baskets && Object.keys(dbData.baskets).length > 0) {
+            console.log(`[API] ✓ Loaded ${Object.keys(dbData.baskets).length} basket(s) for ${seedId} from database`);
+            return {
+              basket: {
+                seed_pair: dbData.seed_pair,
+                legos: dbData.baskets,
+                generation_stage: 'COMPLETE'
+              }
+            };
+          }
+        }
+      } catch (err) {
+        console.log(`[API] Database fetch failed for ${seedId}, trying S3:`, err.message);
+      }
+
+      // Fall back to S3/GitHub
       const storage = getStorageConfig();
-      console.log(`[API] Loading basket ${seedId} from S3 (primary storage)`);
+      console.log(`[API] Loading basket ${seedId} from S3 (fallback)`);
 
       try {
         // Load from merged lego_baskets.json (Phase 5+ format)

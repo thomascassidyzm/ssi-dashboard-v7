@@ -223,6 +223,27 @@ function phraseContainsLego(phraseTarget, legoTarget) {
 }
 
 /**
+ * Count words in text (target language)
+ * @param {string} text - The text to count words in
+ * @returns {number} Word count
+ */
+function countWords(text) {
+  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+}
+
+/**
+ * Count unique LEGOs present in a phrase
+ * @param {string} phraseTarget - The phrase's target text
+ * @param {Array<string>} legoTargets - Array of LEGO target texts from this seed
+ * @returns {number} Number of unique LEGOs found in the phrase
+ */
+function countLegosInPhrase(phraseTarget, legoTargets) {
+  return legoTargets.filter(legoTarget =>
+    phraseContainsLego(phraseTarget, legoTarget)
+  ).length;
+}
+
+/**
  * Validate a single basket's phrases for GATE compliance and LEGO presence
  * GATE checks BOTH languages - known (prompt) and target (response)
  * ZUT (Zero Uncertainty Test): learner must know all words in both directions
@@ -2939,6 +2960,20 @@ app.post('/upload-basket', async (req, res) => {
               target: seedSentence.target
             });
           }
+        }
+
+        // 2.5 NEW: Enrich practice phrases with word_count, lego_count, and position
+        if (basket.practice_phrases && Array.isArray(basket.practice_phrases)) {
+          // Collect all LEGO target texts from this seed (for lego_count calculation)
+          const legoTargetsInSeed = legosInSeed.map(lego => lego.lego.target);
+
+          // Enrich each phrase
+          basket.practice_phrases = basket.practice_phrases.map((phrase, index) => ({
+            ...phrase,
+            word_count: countWords(phrase.target),
+            lego_count: countLegosInPhrase(phrase.target, legoTargetsInSeed),
+            position: index + 1  // 1-based position
+          }));
         }
 
         // 3. Add phrase_count

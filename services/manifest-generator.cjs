@@ -130,52 +130,76 @@ async function generateManifest(courseCode, options = {}) {
 
   // Get voice assignments
   const voiceAssignments = {
-    source: course.source_voice_id,
-    target1: course.target1_voice_id,
-    target2: course.target2_voice_id,
-    presentation: course.presentation_voice_id
+    source: course.known_voice,
+    target1: course.target_voice_1,
+    target2: course.target_voice_2,
+    presentation: course.presentation_voice || course.known_voice  // Default to known_voice if not set
   };
 
   // Get all seeds with LEGOs
   const { data: seeds, error: seedsError } = await supabase
-    .from('seeds')
+    .from('course_seeds')
     .select(`
       id,
       seed_number,
       seed_id,
       known_text,
       target_text,
-      canonical,
-      position,
-      legos (
-        id,
-        lego_index,
-        known_text,
-        target_text,
-        type,
-        is_new,
-        position,
-        lego_components (
-          position,
-          known_text,
-          target_text
-        ),
-        basket_phrases (
-          position,
-          known_text,
-          target_text,
-          phrase_type,
-          is_debut,
-          is_component
-        )
-      )
+      status
     `)
     .eq('course_code', courseCode)
-    .eq('is_active', true)
-    .order('position');
+    .eq('status', 'released')
+    .order('seed_number');
 
   if (seedsError) {
     throw seedsError;
+  }
+
+  // Get all LEGOs for this course
+  const { data: legos, error: legosError } = await supabase
+    .from('course_legos')
+    .select('*')
+    .eq('course_code', courseCode)
+    .eq('status', 'released')
+    .order('seed_number')
+    .order('lego_index');
+
+  if (legosError) {
+    throw legosError;
+  }
+
+  // Get all practice phrases for this course
+  const { data: phrases, error: phrasesError } = await supabase
+    .from('course_practice_phrases')
+    .select('*')
+    .eq('course_code', courseCode)
+    .eq('status', 'released')
+    .order('seed_number')
+    .order('lego_index')
+    .order('position');
+
+  if (phrasesError) {
+    throw phrasesError;
+  }
+
+  // Organize LEGOs by seed
+  const legosBySeed = {};
+  for (const lego of legos) {
+    const key = lego.seed_number;
+    if (!legosBySeed[key]) {
+      legosBySeed[key] = [];
+    }
+    legosBySeed[key].push(lego);
+  }
+
+  // Organize phrases by LEGO
+  const phrasesByLego = {};
+  for (const phrase of phrases) {
+    const key = `${phrase.seed_number}-${phrase.lego_index}`;
+    if (!phrasesByLego[key]) {
+      phrasesByLego[key] = [];
+    }
+    phrasesByLego[key].push(phrase);
   }
 
   // Get encouragements
@@ -246,18 +270,21 @@ async function generateManifest(courseCode, options = {}) {
   let totalNodes = 0;
 
   for (const seed of seeds) {
+    // Get LEGOs for this seed
+    const seedLegos = legosBySeed[seed.seed_number] || [];
+
     // Filter LEGOs to only new ones if requested
-    const legos = onlyNewLegos
-      ? seed.legos.filter(l => l.is_new === true)
-      : seed.legos;
+    const filteredLegos = onlyNewLegos
+      ? seedLegos.filter(l => l.is_new === true)
+      : seedLegos;
 
     // Skip seeds with no LEGOs to include
-    if (legos.length === 0) continue;
+    if (filteredLegos.length === 0) continue;
 
     // Build introduction_items for LEGOs
     const introductionItems = [];
 
-    for (const lego of legos) {
+    for (const lego of filteredLegos) {
       const legoNodeId = generateNodeId(
         seed.seed_number,
         lego.lego_index,
@@ -265,37 +292,40 @@ async function generateManifest(courseCode, options = {}) {
         lego.target_text
       );
 
-      // Build nodes array from basket phrases and components
+      // Build nodes array from components and practice phrases
       const nodes = [];
 
       // Add components first (for M-type LEGOs)
-      if (lego.type === 'M' && lego.lego_components) {
-        for (const comp of lego.lego_components.sort((a, b) => a.position - b.position)) {
+      // Components are stored as JSONB array: [{"known": "I", "target": "yo"}, ...]
+      if (lego.type === 'M' && lego.components) {
+        const components = Array.isArray(lego.components) ? lego.components : [];
+        for (const comp of components) {
           const compNodeId = generateNodeId(
             seed.seed_number,
             lego.lego_index,
-            comp.known_text,
-            comp.target_text
+            comp.known,
+            comp.target
           );
-          nodes.push(createNode(compNodeId, comp.known_text, comp.target_text));
-          await addPairSamples(comp.known_text, comp.target_text);
+          nodes.push(createNode(compNodeId, comp.known, comp.target));
+          await addPairSamples(comp.known, comp.target);
           totalNodes++;
         }
       }
 
-      // Add basket phrases
-      if (lego.basket_phrases) {
-        for (const phrase of lego.basket_phrases.sort((a, b) => a.position - b.position)) {
-          const phraseNodeId = generateNodeId(
-            seed.seed_number,
-            lego.lego_index,
-            phrase.known_text,
-            phrase.target_text
-          );
-          nodes.push(createNode(phraseNodeId, phrase.known_text, phrase.target_text));
-          await addPairSamples(phrase.known_text, phrase.target_text);
-          totalNodes++;
-        }
+      // Add practice phrases
+      const legoKey = `${seed.seed_number}-${lego.lego_index}`;
+      const legoPhrases = phrasesByLego[legoKey] || [];
+
+      for (const phrase of legoPhrases) {
+        const phraseNodeId = generateNodeId(
+          seed.seed_number,
+          lego.lego_index,
+          phrase.known_text,
+          phrase.target_text
+        );
+        nodes.push(createNode(phraseNodeId, phrase.known_text, phrase.target_text));
+        await addPairSamples(phrase.known_text, phrase.target_text);
+        totalNodes++;
       }
 
       // Generate presentation text
@@ -332,7 +362,7 @@ async function generateManifest(courseCode, options = {}) {
     manifestSeeds.push({
       id: seedNodeId,
       seed_sentence: {
-        canonical: seed.canonical || seed.known_text
+        canonical: seed.known_text  // No separate canonical field in new schema
       },
       node: createNode(seedNodeId, seed.known_text, seed.target_text),
       introduction_items: introductionItems

@@ -46,6 +46,56 @@ Solve problems autonomously and proceed to the next workflow step without human 
 
 ---
 
+## 🌐 ECOSYSTEM CONTEXT (December 2025)
+
+This dashboard (Popty) is the **content creation** half of the SSi system. The other half is the **learning app** that delivers content to learners.
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          SSi ECOSYSTEM                                   │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  THIS REPO (Popty)                       ssi-learning-app               │
+│  ═══════════════════                     ═══════════════════            │
+│  Content CREATION                         Content DELIVERY               │
+│  • Phase 1-3: Translation, LEGOs         • @ssi/core: Engine            │
+│  • Phase 8: Audio generation (TTS)       • player-vue: Demo UI          │
+│  • Phase 9: Manifest compilation         • apps/web: PWA (TODO)         │
+│  • Production API: QA, recording         • apps/schools-dashboard       │
+│  • Database-first writes ✅               • Database-first reads (TODO)  │
+│                                                                          │
+│  Dashboard → Supabase/S3 → Learning App → Learner                       │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### TRANSITION STATE
+
+We are migrating from **manifest-first** to **database-first** architecture:
+
+| Aspect | Old (Manifest-first) | New (Database-first) |
+|--------|---------------------|---------------------|
+| Phase outputs | JSON files only | Supabase + JSON (dual-write) |
+| Manifest compilation | Read JSON files | Query Supabase |
+| Content updates | Recompile + rebuild app | Hot-swap in database |
+| Learning app | Load manifest.json | Query Supabase directly |
+
+**Current Status (Dec 2025):**
+- ✅ Phase 1-3 services write to Supabase (dual-write with JSON)
+- ✅ `course-data-service.cjs` provides unified database operations
+- ✅ Manifest generator queries Supabase for audio UUIDs
+- 🔄 Learning app still uses manifest (Supabase integration pending)
+- 📋 PWA with cache-as-you-go planned for community courses
+
+### Backwards Compatibility Strategy
+
+1. **Dual-write**: All phase outputs go to BOTH Supabase AND JSON files
+2. **DB-first reads**: New code reads from Supabase, falls back to JSON
+3. **Manifest still generated**: Legacy native app requires it
+4. **Feature flags**: `USE_DATABASE_WRITES`, `USE_DATABASE_READS` in `.env`
+
+---
+
 ## 🎯 Project Overview
 
 **SSi Dashboard v7 Clean** is a language learning pipeline that generates and manages course content through multiple processing phases. You're working on a system that transforms seed phrases into complete language courses with LEGO-based recombination for maximum learning efficiency.
@@ -564,6 +614,11 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 3. **docs/workflows/** - Process documentation
 4. **ssi-course-production.apml** - APML format spec
 5. **tools/README.md** - Tool usage reference
+6. **new_vision/** - Future architecture plans:
+   - `COURSE_CREATION_MASTER_OVERVIEW.md` - Full system overview
+   - `LEARNING_APP_DATA_FLOW.md` - Database-first architecture
+   - `LEGO_SESSION_SPECIFICATION.md` - Session structure & parameters
+   - `VOICE_CONFIGURATION_SPEC.md` - Voice configuration UI spec
 
 ---
 
@@ -635,5 +690,18 @@ You're doing well if:
 
 **Welcome to the team! Keep the mojo alive, keep the repo clean. 🚀**
 
-*Last updated: 2025-12-04*
+---
+
+## 🔗 Related Projects
+
+| Project | Purpose | CLAUDE.md |
+|---------|---------|-----------|
+| **ssi-learning-app** | Content delivery (learner-facing) | Yes - see ecosystem overview |
+| **ssi-learning-app/apps/web** | PWA for community courses (TODO) | Planned |
+| **ssi-learning-app/apps/schools-dashboard** | Schools/classroom version | Planned |
+
+---
+
+*Last updated: 2025-12-13*
 *APML: v11.0 | Pipeline: v2.0 (Supabase + Audio-first)*
+*Status: TRANSITION - Manifest-first → Database-first*

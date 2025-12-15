@@ -1120,14 +1120,15 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
   const { courseCode, legoId } = req.params
   const updates = req.body
   try {
-    // Validate the LEGO belongs to this course
-    const legos = await courseDataService.getLegosByCourse(courseCode)
-    const lego = legos.find(l => l.id === legoId)
-    if (!lego) {
-      return res.status(404).json({ error: `LEGO ${legoId} not found in course ${courseCode}` })
+    // Parse legoId: "S0001L02" -> seedNumber=1, legoIndex=2
+    const seedNumber = courseDataService.parseSeedNumber(legoId)
+    const legoIndex = courseDataService.parseLegoIndex(legoId)
+
+    if (!seedNumber || !legoIndex) {
+      return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
     }
 
-    const result = await courseDataService.updateLego(legoId, updates)
+    const result = await courseDataService.updateLego(courseCode, seedNumber, legoIndex, updates)
     res.json({
       success: true,
       lego: result
@@ -1142,14 +1143,13 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
 app.delete('/api/production/:courseCode/seed/:seedNumber', async (req, res) => {
   const { courseCode, seedNumber } = req.params
   try {
-    const seedId = courseDataService.formatSeedId(courseCode, parseInt(seedNumber))
-    const result = await courseDataService.deleteSeed(seedId)
+    const result = await courseDataService.deleteSeed(courseCode, parseInt(seedNumber))
     if (!result) {
       return res.status(404).json({ error: `Seed ${seedNumber} not found in course ${courseCode}` })
     }
     res.json({
       success: true,
-      deleted: seedId
+      deleted: courseDataService.formatSeedId(parseInt(seedNumber))
     })
   } catch (error) {
     logger.error(`Error deleting seed ${seedNumber} from ${courseCode}:`, error.message)
@@ -1161,7 +1161,15 @@ app.delete('/api/production/:courseCode/seed/:seedNumber', async (req, res) => {
 app.get('/api/production/:courseCode/lego/:legoId/basket', async (req, res) => {
   const { courseCode, legoId } = req.params
   try {
-    const phrases = await courseDataService.getBasketPhrases(legoId)
+    // Parse legoId: "S0001L02" -> seedNumber=1, legoIndex=2
+    const seedNumber = courseDataService.parseSeedNumber(legoId)
+    const legoIndex = courseDataService.parseLegoIndex(legoId)
+
+    if (!seedNumber || !legoIndex) {
+      return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
+    }
+
+    const phrases = await courseDataService.getPracticePhrases(courseCode, seedNumber, legoIndex)
     res.json({
       courseCode,
       legoId,
@@ -1174,12 +1182,78 @@ app.get('/api/production/:courseCode/lego/:legoId/basket', async (req, res) => {
   }
 })
 
+// Get all baskets for a seed (for LegoBasketViewer)
+app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => {
+  const { courseCode, seedId } = req.params
+  try {
+    // Get seed with all legos and their basket phrases (nested via includeLegos)
+    const seedData = await courseDataService.getSeed(courseCode, seedId.toUpperCase(), {
+      includeLegos: true  // This includes lego_components and basket_phrases
+    })
+
+    if (!seedData) {
+      return res.status(404).json({ error: `Seed ${seedId} not found in ${courseCode}` })
+    }
+
+    // Build baskets object keyed by lego_id (e.g., "S0001L01")
+    const baskets = {}
+    for (const lego of seedData.course_legos || []) {
+      // Derive lego_id from seed_number and lego_index
+      const derivedSeedId = 'S' + seedData.seed_number.toString().padStart(4, '0')
+      const derivedLegoId = derivedSeedId + 'L' + lego.lego_index.toString().padStart(2, '0')
+
+      if (lego.course_practice_phrases && lego.course_practice_phrases.length > 0) {
+        baskets[derivedLegoId] = {
+          lego: {
+            known: lego.known_text,
+            target: lego.target_text
+          },
+          type: lego.type,
+          is_new: lego.is_new,
+          components: (lego.lego_components || []).map(c => ({
+            known: c.known_text,
+            target: c.target_text
+          })),
+          practice_phrases: lego.course_practice_phrases.sort((a, b) => a.position - b.position).map(bp => ({
+            known: bp.known_text,
+            target: bp.target_text,
+            is_debut: bp.is_debut,
+            is_component: bp.is_component
+          }))
+        }
+      }
+    }
+
+    res.json({
+      courseCode,
+      seedId: courseDataService.formatSeedId(seedData.seed_number),
+      seed_pair: {
+        known: seedData.known_text,
+        target: seedData.target_text
+      },
+      basketCount: Object.keys(baskets).length,
+      baskets
+    })
+  } catch (error) {
+    logger.error(`Error fetching baskets for seed ${seedId}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Mark LEGO as new/not-new
 app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) => {
   const { courseCode, legoId } = req.params
   const { isNew } = req.body
   try {
-    const result = await courseDataService.markLegoAsNew(legoId, isNew)
+    // Parse legoId: "S0001L02" -> seedNumber=1, legoIndex=2
+    const seedNumber = courseDataService.parseSeedNumber(legoId)
+    const legoIndex = courseDataService.parseLegoIndex(legoId)
+
+    if (!seedNumber || !legoIndex) {
+      return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
+    }
+
+    const result = await courseDataService.markLegoAsNew(courseCode, seedNumber, legoIndex, isNew)
     res.json({
       success: true,
       lego: result

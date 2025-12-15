@@ -68,6 +68,26 @@ function createLogger(serviceName, options = {}) {
     },
 
     /**
+     * Log an informational message (alias for log)
+     *
+     * @param {...*} args - Message and optional additional data
+     */
+    info(...args) {
+      console.log(...formatArgs(args))
+    },
+
+    /**
+     * Log a debug message (only in debug mode)
+     *
+     * @param {...*} args - Message and optional additional data
+     */
+    debug(...args) {
+      if (process.env.DEBUG) {
+        console.log(...formatArgs(args))
+      }
+    },
+
+    /**
      * Log a warning message
      *
      * @param {...*} args - Message and optional additional data
