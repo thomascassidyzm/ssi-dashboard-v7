@@ -240,37 +240,17 @@ const languageNames = {
 // Execution mode (simplified - server handles execution)
 const executionMode = ref('server')
 
-// Generation modes (three-mode system)
-// IDs must match backend: quick_test, mvp_course, full_course
-const generationModes = ref([
-  {
-    id: 'quick_test',
-    name: 'Quick Test',
-    icon: '⚡',
-    description: 'Rapid testing and validation',
-    seedCount: 10,
-    pattern: '5 browsers × 2 agents × 1 seed',
-    estimatedTime: '~2 min'
-  },
-  {
-    id: 'mvp_course',
-    name: 'MVP Course',
-    icon: '🎯',
-    description: 'Minimum viable production course',
-    seedCount: 250,
-    pattern: '5 browsers × 5 agents × 10 seeds',
-    estimatedTime: '~15 min'
-  },
-  {
-    id: 'full_course',
-    name: 'Full Course',
-    icon: '🚀',
-    description: 'Complete course production',
-    seedCount: 668,
-    pattern: '9 browsers × 5 agents × 15 seeds',
-    estimatedTime: '~20 min'
-  }
-])
+// Generation modes - LOADED FROM API (single source of truth: APML registry)
+// See: apml/core/ssi-variable-registry.apml → CourseGenerationMode entity
+const modesLoading = ref(true)
+const generationModes = ref([])
+
+// Mode icon mapping (UI concern, not in registry)
+const modeIcons = {
+  quick_test: '⚡',
+  mvp_course: '🎯',
+  full_course: '🚀'
+}
 
 const selectedMode = ref(null)
 
@@ -303,7 +283,7 @@ const canStart = computed(() => {
   return knownLanguage.value && targetLanguage.value && selectedMode.value
 })
 
-// Load languages on mount
+// Load languages and modes on mount
 onMounted(async () => {
   // Check URL params (pre-selected from CourseEditor or dashboard)
   if (route.query.target && route.query.known) {
@@ -312,8 +292,56 @@ onMounted(async () => {
     isPreselected.value = true  // Mark as pre-selected to hide dropdowns
   }
 
-  await loadLanguages()
+  // Load both in parallel
+  await Promise.all([loadLanguages(), loadModes()])
 })
+
+// Load generation modes from API (single source of truth: APML registry)
+async function loadModes() {
+  modesLoading.value = true
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const res = await fetch(`${apiBase}/api/modes`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (res.ok) {
+      const data = await res.json()
+      // Transform API response to UI format
+      generationModes.value = (data.modes || []).map(mode => ({
+        id: mode.id,
+        name: mode.name,
+        icon: modeIcons[mode.id] || '📦',
+        description: mode.description,
+        seedCount: mode.seeds,
+        pattern: formatPattern(mode.pattern),
+        estimatedTime: `~${mode.estimatedMinutes} min`
+      }))
+    }
+  } catch (err) {
+    console.error('Failed to load modes:', err)
+    // Fallback modes if API fails
+    generationModes.value = [
+      { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Rapid testing', seedCount: 10, pattern: '5 browsers × 2 agents × 1 seed', estimatedTime: '~2 min' },
+      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Production MVP', seedCount: 250, pattern: '5 browsers × 5 agents × 10 seeds', estimatedTime: '~15 min' },
+      { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete course', seedCount: 668, pattern: '9 browsers × 5 agents × 15 seeds', estimatedTime: '~20 min' }
+    ]
+  } finally {
+    modesLoading.value = false
+  }
+}
+
+// Format pattern string (e.g., "5/2/1" → "5 browsers × 2 agents × 1 seed")
+function formatPattern(pattern) {
+  if (typeof pattern === 'string') {
+    const parts = pattern.split('/')
+    if (parts.length === 3) {
+      const [b, a, s] = parts
+      return `${b} browsers × ${a} agents × ${s} seed${s === '1' ? '' : 's'}`
+    }
+    return pattern
+  }
+  return pattern
+}
 
 async function loadLanguages() {
   languagesLoading.value = true

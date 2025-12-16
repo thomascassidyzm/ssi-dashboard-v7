@@ -1,8 +1,10 @@
 {
   "$schema": "./course-modes.schema.json",
-  "version": "2.0.0",
-  "description": "Centralized course generation modes - SINGLE SOURCE OF TRUTH",
+  "version": "2.1.0",
+  "description": "Course generation modes - DERIVED FROM APML REGISTRY",
+  "canonicalSource": "apml/core/ssi-variable-registry.apml → CourseGenerationMode entity",
   "lastUpdated": "2025-12-16",
+  "note": "Mode IDs (quick_test, mvp_course, full_course) MUST match registry. Dashboard fetches from /api/modes which reads this file.",
 
   "modes": {
     "quick_test": {
