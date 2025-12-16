@@ -192,7 +192,7 @@ Apply ZUT to every potential LEGO:
 
 ## STEP 5: UPLOAD (COMPACT FORMAT)
 
-curl -X POST "${phase1Url}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
   -H "Content-Type: application/json" \\
   -d '[YOUR_COMPACT_JSON]'
 
@@ -219,7 +219,7 @@ After spawning all workers, wait for their Task tool results.
 
 When all workers complete, use curl to POST:
 
-curl -X POST "${phase1Url}/api/phase1/${courseCode}/master-complete" \\
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
   -H "Content-Type: application/json" \\
   -d '{"masterNum": ${masterNum}, "seedsProcessed": ${totalSeeds}}'
 
