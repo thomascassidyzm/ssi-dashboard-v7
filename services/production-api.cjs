@@ -1186,9 +1186,9 @@ app.get('/api/production/:courseCode/lego/:legoId/basket', async (req, res) => {
 app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => {
   const { courseCode, seedId } = req.params
   try {
-    // Get seed with all legos and their basket phrases (nested via includeLegos)
+    // Get seed with all legos and their practice phrases (nested via includeLegos)
     const seedData = await courseDataService.getSeed(courseCode, seedId.toUpperCase(), {
-      includeLegos: true  // This includes lego_components and basket_phrases
+      includeLegos: true  // This includes course_legos (with components JSONB) and course_practice_phrases
     })
 
     if (!seedData) {
@@ -1210,15 +1210,17 @@ app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => 
           },
           type: lego.type,
           is_new: lego.is_new,
-          components: (lego.lego_components || []).map(c => ({
-            known: c.known_text,
-            target: c.target_text
+          components: (lego.components || []).map(c => ({
+            known: c.known,
+            target: c.target
           })),
           practice_phrases: lego.course_practice_phrases.sort((a, b) => a.position - b.position).map(bp => ({
             known: bp.known_text,
             target: bp.target_text,
-            is_debut: bp.is_debut,
-            is_component: bp.is_component
+            position: bp.position,
+            word_count: bp.word_count,
+            lego_count: bp.lego_count
+            // NOTE: phrase_type computed at runtime from position/word_count/lego_count per registry v1.1.0
           }))
         }
       }
