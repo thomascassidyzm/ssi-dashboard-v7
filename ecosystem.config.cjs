@@ -33,6 +33,10 @@ require('dotenv').config();
 // VFS_ROOT - used by all phase servers
 const VFS_ROOT = process.env.VFS_ROOT || require('path').join(__dirname, 'public/vfs/courses');
 
+// EXTERNAL_URL - the ngrok URL that browser agents use to reach the orchestrator
+// This is CRITICAL - agents in browser tabs cannot reach localhost!
+const EXTERNAL_URL = process.env.EXTERNAL_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
+
 module.exports = {
   apps: [
     // ===========================================
@@ -81,7 +85,7 @@ module.exports = {
         PORT: 3457,
         VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 1 (Translation + LEGO Extraction)',
-        ORCHESTRATOR_URL: 'http://localhost:3456',
+        ORCHESTRATOR_URL: EXTERNAL_URL,  // MUST be ngrok URL - agents can't reach localhost!
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
         SUPABASE_URL: process.env.SUPABASE_URL,
         SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY
@@ -107,7 +111,7 @@ module.exports = {
         PORT: 3458,
         VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 2 (Conflict Resolution)',
-        ORCHESTRATOR_URL: 'http://localhost:3456',
+        ORCHESTRATOR_URL: EXTERNAL_URL,  // MUST be ngrok URL - agents can't reach localhost!
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },
       error_file: 'logs/phase2-error.log',
@@ -131,7 +135,7 @@ module.exports = {
         PORT: 3459,
         VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 3 (Baskets)',
-        ORCHESTRATOR_URL: 'http://localhost:3456',
+        ORCHESTRATOR_URL: EXTERNAL_URL,  // MUST be ngrok URL - agents can't reach localhost!
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },
       error_file: 'logs/phase3-error.log',
