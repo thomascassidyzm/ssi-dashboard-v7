@@ -205,11 +205,15 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { io } from 'socket.io-client'
 
 const router = useRouter()
 const route = useRoute()
+
+// WebSocket connection for real-time progress
+let socket = null
 
 // Languages
 const languagesLoading = ref(true)
@@ -294,6 +298,11 @@ onMounted(async () => {
 
   // Load both in parallel
   await Promise.all([loadLanguages(), loadModes()])
+})
+
+// Clean up WebSocket on unmount
+onUnmounted(() => {
+  disconnectWebSocket()
 })
 
 // Load generation modes from API (single source of truth: APML registry)
@@ -411,17 +420,117 @@ async function startGeneration() {
       throw new Error(data.error || 'Generation failed')
     }
 
-    // Poll for status
-    await pollStatus()
+    // Connect to WebSocket for real-time progress
+    connectWebSocket()
 
   } catch (err) {
     errorMessage.value = err.message
     isGenerating.value = false
+    disconnectWebSocket()
   }
 }
 
-async function pollStatus() {
+/**
+ * Connect to WebSocket for real-time progress updates
+ */
+function connectWebSocket() {
   const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+  // Create Socket.IO connection
+  socket = io(apiBase, {
+    path: '/api/orchestrator/websocket',
+    transports: ['websocket', 'polling']
+  })
+
+  socket.on('connect', () => {
+    console.log('[WebSocket] Connected:', socket.id)
+    // Subscribe to this course's progress
+    socket.emit('subscribe', courseCode.value)
+  })
+
+  socket.on('progress', (progress) => {
+    console.log('[WebSocket] Progress update:', progress)
+    handleProgressUpdate(progress)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('[WebSocket] Disconnected')
+  })
+
+  socket.on('connect_error', (err) => {
+    console.error('[WebSocket] Connection error:', err.message)
+    // Fall back to polling if WebSocket fails
+    fallbackToPollStatus()
+  })
+}
+
+/**
+ * Handle progress update from WebSocket or polling
+ */
+function handleProgressUpdate(progress) {
+  // Update phase statuses from progress data
+  const phaseData = progress.phases || {}
+
+  // Phase 1: Translation + LEGO Extraction
+  const p1Status = phaseData['1_translation']?.status || phaseData['1']?.status
+  if (p1Status === 'complete' || p1Status === 'completed') {
+    phases.value[0].status = 'complete'
+    phases.value[0].detail = 'Seeds translated, LEGOs extracted'
+  } else if (p1Status === 'running') {
+    phases.value[0].status = 'active'
+    phases.value[0].detail = progress.recentLogs?.[0]?.message || 'Processing...'
+  }
+
+  // Phase 2: Conflict Resolution
+  const p2Status = phaseData['2']?.status
+  if (p2Status === 'complete' || p2Status === 'completed') {
+    phases.value[1].status = 'complete'
+    phases.value[1].detail = 'Conflicts resolved'
+  } else if (p2Status === 'running') {
+    phases.value[1].status = 'active'
+    currentPhase.value = 'Phase 2'
+  }
+
+  // Phase 3: Basket Generation
+  const p3Status = phaseData['3']?.status
+  if (p3Status === 'complete' || p3Status === 'completed') {
+    phases.value[2].status = 'complete'
+    phases.value[2].detail = 'Baskets generated'
+    isGenerating.value = false
+    isCompleted.value = true
+    disconnectWebSocket()
+  } else if (p3Status === 'running') {
+    phases.value[2].status = 'active'
+    currentPhase.value = 'Phase 3'
+  }
+
+  // Update current phase from progress
+  if (progress.currentPhase) {
+    if (progress.currentPhase.includes('1')) currentPhase.value = 'Phase 1'
+    else if (progress.currentPhase === '2') currentPhase.value = 'Phase 2'
+    else if (progress.currentPhase === '3') currentPhase.value = 'Phase 3'
+  }
+
+  // Check for overall completion or error
+  if (progress.overallStatus === 'complete' || progress.overallStatus === 'completed') {
+    isGenerating.value = false
+    isCompleted.value = true
+    disconnectWebSocket()
+  }
+
+  if (progress.error) {
+    errorMessage.value = progress.error
+    isGenerating.value = false
+    disconnectWebSocket()
+  }
+}
+
+/**
+ * Fallback to polling if WebSocket fails
+ */
+async function fallbackToPollStatus() {
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  console.log('[Progress] Falling back to polling...')
 
   while (isGenerating.value) {
     try {
@@ -431,68 +540,24 @@ async function pollStatus() {
 
       if (res.ok) {
         const progress = await res.json()
-
-        // Update phase statuses from progress data
-        const phaseData = progress.phases || {}
-
-        // Phase 1: Translation + LEGO Extraction
-        const p1Status = phaseData['1_translation']?.status || phaseData['1']?.status
-        if (p1Status === 'complete' || p1Status === 'completed') {
-          phases.value[0].status = 'complete'
-          phases.value[0].detail = 'Seeds translated, LEGOs extracted'
-        } else if (p1Status === 'running') {
-          phases.value[0].status = 'active'
-          phases.value[0].detail = progress.recentLogs?.[0]?.message || 'Processing...'
-        }
-
-        // Phase 2: Conflict Resolution
-        const p2Status = phaseData['2']?.status
-        if (p2Status === 'complete' || p2Status === 'completed') {
-          phases.value[1].status = 'complete'
-          phases.value[1].detail = 'Conflicts resolved'
-        } else if (p2Status === 'running') {
-          phases.value[1].status = 'active'
-          currentPhase.value = 'Phase 2'
-        }
-
-        // Phase 3: Basket Generation
-        const p3Status = phaseData['3']?.status
-        if (p3Status === 'complete' || p3Status === 'completed') {
-          phases.value[2].status = 'complete'
-          phases.value[2].detail = 'Baskets generated'
-          isGenerating.value = false
-          isCompleted.value = true
-        } else if (p3Status === 'running') {
-          phases.value[2].status = 'active'
-          currentPhase.value = 'Phase 3'
-        }
-
-        // Update current phase from progress
-        if (progress.currentPhase) {
-          if (progress.currentPhase.includes('1')) currentPhase.value = 'Phase 1'
-          else if (progress.currentPhase === '2') currentPhase.value = 'Phase 2'
-          else if (progress.currentPhase === '3') currentPhase.value = 'Phase 3'
-        }
-
-        // Check for overall completion or error
-        if (progress.overallStatus === 'complete' || progress.overallStatus === 'completed') {
-          isGenerating.value = false
-          isCompleted.value = true
-        }
-
-        if (progress.error) {
-          throw new Error(progress.error)
-        }
-      } else if (res.status === 404) {
-        // Course not found or no active progress - might be idle
-        console.log('[Progress] No active progress found')
+        handleProgressUpdate(progress)
       }
     } catch (err) {
       console.error('[Progress] Poll error:', err.message)
-      // Don't show error to user for polling failures, just log
     }
 
-    await new Promise(r => setTimeout(r, 2000)) // Poll every 2s
+    await new Promise(r => setTimeout(r, 2000))
+  }
+}
+
+/**
+ * Disconnect WebSocket cleanly
+ */
+function disconnectWebSocket() {
+  if (socket) {
+    socket.emit('unsubscribe', courseCode.value)
+    socket.disconnect()
+    socket = null
   }
 }
 

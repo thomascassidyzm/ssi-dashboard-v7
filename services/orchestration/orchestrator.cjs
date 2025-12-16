@@ -22,6 +22,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 const { execSync, spawn } = require('child_process');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
 
 // Load centralized course mode configuration
 const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes } = require('../config/course-mode-loader.cjs');
@@ -66,6 +68,51 @@ if (!VFS_ROOT) {
 
 // Initialize Express
 const app = express();
+const httpServer = createServer(app);
+
+// WebSocket setup for real-time progress
+const io = new Server(httpServer, {
+  path: '/api/orchestrator/websocket',
+  cors: {
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://ssi-dashboard-v7.vercel.app',
+      'https://popty.app',
+      /\.vercel\.app$/,
+      /\.popty\.app$/,
+      /ngrok.*\.app$/
+    ],
+    methods: ['GET', 'POST']
+  }
+});
+
+// WebSocket connection handling
+io.on('connection', (socket) => {
+  console.log(`[WebSocket] Client connected: ${socket.id}`);
+
+  // Client can subscribe to specific course progress
+  socket.on('subscribe', (courseCode) => {
+    socket.join(`course:${courseCode}`);
+    console.log(`[WebSocket] ${socket.id} subscribed to course:${courseCode}`);
+
+    // Send current progress if available
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      socket.emit('progress', progress);
+    }
+  });
+
+  socket.on('unsubscribe', (courseCode) => {
+    socket.leave(`course:${courseCode}`);
+    console.log(`[WebSocket] ${socket.id} unsubscribed from course:${courseCode}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`[WebSocket] Client disconnected: ${socket.id}`);
+  });
+});
+
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -73,7 +120,8 @@ app.use(cors({
     'https://ssi-dashboard-v7.vercel.app',
     'https://popty.app',
     /\.vercel\.app$/,
-    /\.popty\.app$/
+    /\.popty\.app$/,
+    /ngrok.*\.app$/
   ]
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -111,6 +159,17 @@ function initializeCourseProgress(courseCode, startPhase, totalSeeds) {
 }
 
 /**
+ * Emit progress update via WebSocket to subscribed clients
+ */
+function emitProgress(courseCode) {
+  const progress = courseProgress.get(courseCode);
+  if (!progress) return;
+
+  // Emit to all clients subscribed to this course
+  io.to(`course:${courseCode}`).emit('progress', progress);
+}
+
+/**
  * Update phase progress
  */
 function updatePhaseProgress(courseCode, phase, updates) {
@@ -125,14 +184,17 @@ function updatePhaseProgress(courseCode, phase, updates) {
 
   // Add log entry
   if (updates.status) {
-    addProgressLog(courseCode, `Phase ${phase}: ${updates.status}`);
+    addProgressLog(courseCode, `Phase ${phase}: ${updates.status}`, 'info', false);
   }
+
+  // Emit WebSocket update
+  emitProgress(courseCode);
 }
 
 /**
  * Add log entry to progress
  */
-function addProgressLog(courseCode, message, level = 'info') {
+function addProgressLog(courseCode, message, level = 'info', emit = true) {
   const progress = courseProgress.get(courseCode);
   if (!progress) return;
 
@@ -145,6 +207,11 @@ function addProgressLog(courseCode, message, level = 'info') {
   // Keep only last 50 logs
   if (progress.recentLogs.length > 50) {
     progress.recentLogs = progress.recentLogs.slice(0, 50);
+  }
+
+  // Emit WebSocket update (unless called from updatePhaseProgress which emits after)
+  if (emit) {
+    emitProgress(courseCode);
   }
 }
 
@@ -5870,11 +5937,12 @@ app.use('/api/production', async (req, res) => {
 /**
  * Start server
  */
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log('');
   console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log(`   Checkpoint Mode: ${CHECKPOINT_MODE}`);
+  console.log(`   WebSocket: /api/orchestrator/websocket`);
   console.log('');
   console.log('   Phase Servers:');
   for (const [phase, url] of Object.entries(PHASE_SERVERS)) {
