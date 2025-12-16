@@ -103,6 +103,74 @@
         </section>
 
 
+        <!-- Course State Analysis (Intelligent Resume) -->
+        <section v-if="knownLanguage && targetLanguage" class="flow-section">
+          <div class="section-label">
+            <span class="label-text">COURSE STATE</span>
+            <div class="label-line"></div>
+          </div>
+
+          <div class="state-card">
+            <!-- Loading state -->
+            <div v-if="isAnalyzing" class="state-loading">
+              <div class="spinner"></div>
+              <span>Analyzing course state...</span>
+            </div>
+
+            <!-- No existing progress -->
+            <div v-else-if="!hasExistingProgress" class="state-empty">
+              <div class="state-icon">✨</div>
+              <div class="state-text">
+                <strong>New Course</strong>
+                <p>No existing data found. Ready to generate from scratch.</p>
+              </div>
+            </div>
+
+            <!-- Has existing progress -->
+            <div v-else class="state-progress">
+              <div class="state-header">
+                <div class="state-icon">📊</div>
+                <div class="state-summary">
+                  <strong>Existing Progress Found</strong>
+                  <p>{{ courseState.seeds?.total || 0 }} seeds processed</p>
+                </div>
+              </div>
+
+              <!-- Phase status grid -->
+              <div class="phase-status-grid">
+                <div :class="['phase-status', courseState.phase1?.status]">
+                  <span class="phase-num">1</span>
+                  <span class="phase-label">Translation</span>
+                  <span class="phase-badge">{{ courseState.phase1?.status }}</span>
+                </div>
+                <div :class="['phase-status', courseState.phase2?.status]">
+                  <span class="phase-num">2</span>
+                  <span class="phase-label">Conflicts</span>
+                  <span class="phase-badge">{{ courseState.phase2?.status }}</span>
+                </div>
+                <div :class="['phase-status', courseState.phase3?.status]">
+                  <span class="phase-num">3</span>
+                  <span class="phase-label">Baskets</span>
+                  <span class="phase-badge">{{ courseState.phase3?.status }}</span>
+                </div>
+              </div>
+
+              <!-- Recommendations -->
+              <div v-if="courseState.recommendations?.length > 0" class="recommendations">
+                <div class="rec-header">Recommended Actions:</div>
+                <div
+                  v-for="(rec, idx) in courseState.recommendations.slice(0, 2)"
+                  :key="idx"
+                  class="rec-item"
+                >
+                  <span class="rec-title">{{ rec.title }}</span>
+                  <span class="rec-desc">{{ rec.description }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Generation Mode Selection -->
         <section v-if="knownLanguage && targetLanguage" class="flow-section">
           <div class="section-label">
@@ -269,6 +337,11 @@ const phases = ref([
   { id: 3, name: 'Basket Generation', status: 'pending', detail: '' }
 ])
 
+// Course state analysis (intelligent resume)
+const courseState = ref(null)
+const isAnalyzing = ref(false)
+const hasExistingProgress = computed(() => courseState.value?.exists === true)
+
 // Computed
 const courseCode = computed(() => {
   if (!knownLanguage.value || !targetLanguage.value) return ''
@@ -387,6 +460,40 @@ async function loadLanguages() {
 
 function selectMode(mode) {
   selectedMode.value = mode
+}
+
+// Watch courseCode and analyze when it changes
+watch(courseCode, async (newCode) => {
+  if (newCode) {
+    await analyzeCourseState(newCode)
+  } else {
+    courseState.value = null
+  }
+})
+
+/**
+ * Analyze existing course state for intelligent resume
+ */
+async function analyzeCourseState(code) {
+  isAnalyzing.value = true
+  courseState.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const res = await fetch(`${apiBase}/api/courses/${code}/analyze`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (res.ok) {
+      courseState.value = await res.json()
+      console.log('[CourseGen] Course state:', courseState.value)
+    }
+  } catch (err) {
+    console.error('[CourseGen] Failed to analyze course:', err)
+    courseState.value = null
+  } finally {
+    isAnalyzing.value = false
+  }
 }
 
 async function startGeneration() {
@@ -870,6 +977,153 @@ function resetForm() {
   font-size: 1.125rem;
   color: var(--text);
   font-weight: 500;
+}
+
+/* Course State Card (Intelligent Resume) */
+.state-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.state-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+.state-loading .spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.state-empty, .state-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.state-empty {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.state-icon {
+  font-size: 1.5rem;
+}
+
+.state-text strong, .state-summary strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.state-text p, .state-summary p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.state-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phase-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.phase-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--elevated);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.phase-status.complete {
+  border-color: var(--success);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.phase-status.incomplete, .phase-status.missing {
+  border-color: var(--warning);
+  background: rgba(234, 179, 8, 0.1);
+}
+
+.phase-status.flagged {
+  border-color: var(--error);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.phase-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.phase-label {
+  font-size: 0.8125rem;
+  color: var(--text);
+}
+
+.phase-badge {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.recommendations {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.rec-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.rec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.5rem 0;
+}
+
+.rec-item + .rec-item {
+  border-top: 1px solid var(--border-light);
+}
+
+.rec-title {
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.rec-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
 }
 
 /* Mode Selection Card */

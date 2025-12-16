@@ -88,105 +88,146 @@ function getLanguageName(code) {
 
 /**
  * Generate Phase 1 Master Prompt
- * Reads v4.4 unified prompt from PROMPT.md and adds operational instructions
+ * Uses Master/Worker pattern where workers fetch prompts from URLs and POST results to endpoints
+ * DO NOT write files - all output goes through /upload-batch endpoint
+ *
+ * @param {string} courseCode - Course code
+ * @param {object} params - { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, masterNum }
+ * @param {string} courseDir - Course directory path
  */
 function generatePhase1MasterPrompt(courseCode, params, courseDir) {
-  const { target, known, startSeed, endSeed } = params;
+  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, masterNum } = params;
   const totalSeeds = endSeed - startSeed + 1;
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const phase1Url = `http://localhost:${PORT}`;
 
-  // Read the v4.4 unified prompt from PROMPT.md
-  const promptPath = path.join(__dirname, 'PROMPT.md');
-  let unifiedPrompt = '';
-  try {
-    unifiedPrompt = require('fs').readFileSync(promptPath, 'utf8');
-  } catch (err) {
-    console.error(`⚠️  Failed to read PROMPT.md: ${err.message}`);
-    unifiedPrompt = '# Phase 1 Prompt Missing - check services/phases/phase1-translation/PROMPT.md';
+  // Generate worker assignments for THIS master
+  const workers = [];
+  for (let w = 0; w < workersPerMaster; w++) {
+    const workerStart = startSeed + (w * seedsPerWorker);
+    const workerEnd = Math.min(workerStart + seedsPerWorker - 1, endSeed);
+    if (workerStart <= endSeed) {
+      workers.push({ num: w + 1, startSeed: workerStart, endSeed: workerEnd });
+    }
   }
 
-  return `# Phase 1: Translation + LEGO Extraction
+  const workerInstructions = workers.map(w =>
+    `  - Worker ${w.num}: Seeds S${String(w.startSeed).padStart(4, '0')}-S${String(w.endSeed).padStart(4, '0')} (${w.endSeed - w.startSeed + 1} seeds)`
+  ).join('\n');
+
+  return `# Phase 1 Master ${masterNum}: Translation + LEGO Extraction
 
 **Course**: ${courseCode}
 **Target**: ${getLanguageName(target)} (${target})
 **Known**: ${getLanguageName(known)} (${known})
-**Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Your Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
 
 ---
 
-## 📥 STEP 1: FETCH CANONICAL SEEDS
+## YOUR ROLE: MASTER ORCHESTRATOR
 
-**GET**: ${orchestratorUrl}/api/canonical-seeds?limit=${endSeed}
+You spawn ${workers.length} worker agents via Task tool. Each worker processes a batch of seeds.
 
-Returns all ${totalSeeds} seeds in English (canonical source language).
+**Worker assignments:**
+${workerInstructions}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+Each worker prompt should include:
+1. The seed range they process
+2. Instructions to FETCH methodology from the API
+3. The upload endpoint
+
+**CRITICAL**: Workers fetch their own methodology - do NOT summarize or paraphrase it!
+
+---
+
+## WORKER PROMPT TEMPLATE
+
+For each worker, use this prompt (fill in START and END seed numbers):
+
+\`\`\`
+# Phase 1 Worker: Seeds S[START]-S[END]
+
+Course: ${courseCode}
+Target: ${getLanguageName(target)}
+Known: ${getLanguageName(known)}
+
+## STEP 1: FETCH ZUT EXAMPLES (language-specific)
+
+curl -s "${orchestratorUrl}/api/zut-examples/${known}/${target}"
+
+This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLanguageName(target)}.
+
+## STEP 2: FETCH METHODOLOGY
+
+curl -s "${orchestratorUrl}/api/phase-intelligence/1"
+
+Read BOTH responses before proceeding.
+
+## STEP 3: FETCH YOUR SEEDS
+
+curl -s "${orchestratorUrl}/api/canonical-seeds?start=[START]&end=[END]"
+
+## STEP 4: PROCESS EACH SEED
 
 ${known === 'eng'
-  ? `**Since Known = English:** The English canonical text IS your "known" text. Only translate to ${getLanguageName(target)} for the "target" field.`
-  : `**IMPORTANT - Bidirectional Translation Required:**
-- The canonical seeds are in English (source)
-- You must translate English → **${getLanguageName(known)}** for the "known" field (what ${getLanguageName(known)} speakers see)
-- You must translate English → **${getLanguageName(target)}** for the "target" field (what they're learning)
+  ? `Since Known = English: The English canonical text IS your "known" text.
+Only translate to ${getLanguageName(target)} for the "target" field.`
+  : `IMPORTANT - Bidirectional Translation Required:
+- Canonical seeds are in English
+- Translate English → ${getLanguageName(known)} for "known" field
+- Translate English → ${getLanguageName(target)} for "target" field
 - LEGOs map ${getLanguageName(known)} ↔ ${getLanguageName(target)} (NOT English)`}
 
----
+Apply ZUT to every potential LEGO:
+1. Translate seed
+2. For each chunk: does learner ALWAYS know what to produce?
+3. If uncertain → chunk UP until zero ambiguity
+4. Mark embedded chunks as new: false
 
-## 📚 STEP 2: METHODOLOGY (READ CAREFULLY)
+## STEP 5: UPLOAD (COMPACT FORMAT)
 
-${unifiedPrompt}
+curl -X POST "${phase1Url}/api/phase1/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_COMPACT_JSON]'
 
----
-
-## ✍️ STEP 3: PROCESS SEEDS (${startSeed}-${endSeed})
-
-For EACH seed:
-${known === 'eng'
-  ? `1. Use English canonical as "known" text
-2. Translate to ${getLanguageName(target)} for "target" text`
-  : `1. Translate English canonical → ${getLanguageName(known)} for "known" text
-2. Translate English canonical → ${getLanguageName(target)} for "target" text`}
-3. Extract LEGOs mapping ${getLanguageName(known)} ↔ ${getLanguageName(target)}
-4. Mark embedded LEGOs as \`new: false\` (same-seed only!)
-5. Output in EXACT format shown above
-
-**CRITICAL - DO NOT CREATE SCRIPTS:**
-- ❌ Do NOT write Python/Node/bash automation
-- ✅ Process directly, seed by seed
-- ✅ Build up the output array as you work
-
----
-
-## 📊 STEP 4: REPORT PROGRESS (Every 50 Seeds)
-
-**POST**: \`${orchestratorUrl}/api/courses/${courseCode}/progress\`
-
+**COMPACT FORMAT** (saves tokens):
 \`\`\`json
-{
-  "phase": 1,
-  "updates": {
-    "status": "running",
-    "seedsCompleted": 50,
-    "seedsTotal": ${totalSeeds},
-    "currentSeed": "S0050"
-  },
-  "logMessage": "Completed S0050"
-}
+[{"s":"S0001","k":"known text","t":"target text","l":[
+  {"y":"A","n":1,"k":"I want","t":"quiero"},
+  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+]}]
+\`\`\`
+Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
+
+**IMPORTANT: Use curl for uploads, NOT WebFetch!**
+**DO NOT write files - only POST to the endpoint!**
 \`\`\`
 
 ---
 
-## 📝 STEP 5: OUTPUT
+## STEP 2: WAIT FOR COMPLETION
 
-Write to: \`public/vfs/courses/${courseCode}/draft_lego_pairs.json\`
+After spawning all workers, wait for their Task tool results.
 
-The output is a JSON array of seed objects (see Output Format above).
+## STEP 3: REPORT COMPLETION
 
-**After completing all seeds:**
-1. Write to \`public/vfs/courses/${courseCode}/draft_lego_pairs.json\`
-2. POST completion to: \`${orchestratorUrl}/api/phase1/${courseCode}/submit\`
+When all workers complete, use curl to POST:
+
+curl -X POST "${phase1Url}/api/phase1/${courseCode}/master-complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{"masterNum": ${masterNum}, "seedsProcessed": ${totalSeeds}}'
 
 ---
 
-**Target**: ~${Math.ceil(totalSeeds / 60)} minutes for ${totalSeeds} seeds
+**DO NOT process seeds yourself - spawn workers and coordinate!**
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+**DO NOT write files - all output goes through /upload-batch endpoint!**
 `;
 }
 
@@ -275,22 +316,17 @@ app.post('/start', async (req, res) => {
   console.log(`   Range: S${String(startSeed).padStart(4, '0')}-S${String(finalEndSeed).padStart(4, '0')}`);
   console.log(`   Pattern: ${browsers} browsers × ${agents_per_browser} agents × ${seeds_per_agent} seeds = ${browsers * agents_per_browser * seeds_per_agent} capacity`);
 
-  // For small tests (quick_test), use the parallel pattern
-  // For larger courses, use sequential mode for now
-  let agentCount;
-  let seedsPerAgent;
+  // MASTER/WORKER ARCHITECTURE:
+  // - Spawn `browsers` MASTERS (browser tabs)
+  // - Each master spawns `agents_per_browser` WORKERS via Task tool
+  // - Each worker processes `seeds_per_agent` seeds
+  const masterCount = browsers;
+  const workersPerMaster = agents_per_browser;
+  const seedsPerWorker = seeds_per_agent;
+  const seedsPerMaster = workersPerMaster * seedsPerWorker;
 
-  if (totalSeeds <= SEED_COUNTS.QUICK_TEST) {
-    // Quick test mode - use parallel pattern
-    agentCount = browsers * agents_per_browser;
-    seedsPerAgent = seeds_per_agent;
-    console.log(`   Mode: Parallel (${agentCount} agents, ${seedsPerAgent} seeds each)`);
-  } else {
-    // Sequential processing for consistency (larger courses)
-    agentCount = 1;
-    seedsPerAgent = totalSeeds;
-    console.log(`   Mode: Sequential (1 agent for all ${totalSeeds} seeds)`);
-  }
+  console.log(`   Architecture: ${masterCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
+  console.log(`   Seeds per master: ${seedsPerMaster}`);
 
   // Initialize job state
   const job = {
@@ -301,18 +337,20 @@ app.post('/start', async (req, res) => {
     known,
     startSeed,
     endSeed: finalEndSeed,
-    agentCount,
-    seedsPerAgent,
+    masterCount,
+    workersPerMaster,
+    seedsPerWorker,
+    seedsPerMaster,
     pattern: {
       browsers,
       agents_per_browser,
       seeds_per_agent,
       capacity: browsers * agents_per_browser * seeds_per_agent
     },
-    status: 'spawning_agents',
+    status: 'spawning_masters',
     startedAt: new Date().toISOString(),
     orchestratorSpawned: false,
-    agentsSpawned: 0,
+    mastersSpawned: 0,
     branchesDetected: 0,
     merged: false,
     error: null
@@ -324,18 +362,17 @@ app.post('/start', async (req, res) => {
     // Ensure course directory exists
     const courseDir = path.join(VFS_ROOT, courseCode);
     await fs.ensureDir(courseDir);
-    await fs.ensureDir(path.join(courseDir, 'translations'));
+    await fs.ensureDir(path.join(courseDir, 'phase1_batches'));
 
-    // Start branch watcher for phase1-* branches
-    await startBranchWatcher(courseCode, agentCount);
-
-    // Spawn parallel agents with their assigned seed ranges
-    await spawnParallelAgents(courseCode, {
+    // Spawn MASTERS (browser tabs) - each master spawns workers via Task tool
+    await spawnMasters(courseCode, {
       target,
       known,
       startSeed,
-      endSeed: finalEndSeed
-    }, courseDir, agentCount, seedsPerAgent);
+      endSeed: finalEndSeed,
+      workersPerMaster,
+      seedsPerWorker
+    }, courseDir, masterCount, seedsPerMaster);
 
     res.json({
       success: true,
@@ -345,8 +382,9 @@ app.post('/start', async (req, res) => {
         totalSeeds,
         target: getLanguageName(target),
         known: getLanguageName(known),
-        agentCount,
-        seedsPerAgent,
+        masterCount,
+        workersPerMaster,
+        seedsPerWorker,
         status: 'running'
       }
     });
@@ -442,19 +480,26 @@ async function startBranchWatcher(courseCode, expectedAgents) {
 }
 
 /**
- * Spawn parallel agents for translation
- * Each agent processes one or more seeds based on the pattern
+ * Spawn MASTERS for translation (browser tabs)
+ * Each master spawns workers via Task tool
+ *
+ * Architecture: N masters × M workers × S seeds
+ * - Masters = browser tabs (spawned here)
+ * - Workers = sub-agents spawned by masters via Task tool
+ * - Seeds = work units processed by workers
  */
-async function spawnParallelAgents(courseCode, params, courseDir, agentCount, seedsPerAgent) {
-  console.log(`\n🌐 Spawning ${agentCount} parallel Phase 1 agents...`);
-  console.log(`   Seeds per agent: ${seedsPerAgent}`);
+async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPerMaster) {
+  console.log(`\n🌐 Spawning ${masterCount} Phase 1 MASTERS...`);
+  console.log(`   Seeds per master: ${seedsPerMaster}`);
+  console.log(`   Workers per master: ${params.workersPerMaster}`);
+  console.log(`   Seeds per worker: ${params.seedsPerWorker}`);
 
-  const { target, known, startSeed, endSeed } = params;
+  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker } = params;
 
   // Import browser spawning utility
   const spawner = await loadWebAgentSpawner();
   if (!spawner) {
-    console.error(`⚠️  Web agent spawner not available - cannot spawn agents`);
+    console.error(`⚠️  Web agent spawner not available - cannot spawn masters`);
     const job = activeJobs.get(courseCode);
     if (job) {
       job.status = 'spawner_unavailable';
@@ -464,48 +509,51 @@ async function spawnParallelAgents(courseCode, params, courseDir, agentCount, se
 
   const { spawnParallelAgents: parallelSpawner } = spawner;
 
-  // Generate prompts for each agent with their assigned seed range
+  // Generate prompts for each MASTER with their assigned seed range
   const prompts = [];
-  for (let i = 0; i < agentCount; i++) {
-    const agentStartSeed = startSeed + (i * seedsPerAgent);
-    const agentEndSeed = Math.min(agentStartSeed + seedsPerAgent - 1, endSeed);
+  for (let m = 0; m < masterCount; m++) {
+    const masterStartSeed = startSeed + (m * seedsPerMaster);
+    const masterEndSeed = Math.min(masterStartSeed + seedsPerMaster - 1, endSeed);
 
-    // Skip if agent has no seeds to process
-    if (agentStartSeed > endSeed) {
+    // Skip if master has no seeds to process
+    if (masterStartSeed > endSeed) {
       break;
     }
 
-    const agentPrompt = generatePhase1MasterPrompt(courseCode, {
+    const masterPrompt = generatePhase1MasterPrompt(courseCode, {
       target,
       known,
-      startSeed: agentStartSeed,
-      endSeed: agentEndSeed
+      startSeed: masterStartSeed,
+      endSeed: masterEndSeed,
+      workersPerMaster,
+      seedsPerWorker,
+      masterNum: m + 1
     }, courseDir);
 
-    prompts.push(agentPrompt);
+    prompts.push(masterPrompt);
   }
 
-  console.log(`   Generated ${prompts.length} agent prompts`);
+  console.log(`   Generated ${prompts.length} master prompts`);
 
-  // Spawn all agents in parallel
+  // Spawn all masters in parallel (browser tabs)
   try {
     const results = await parallelSpawner(prompts, {
       browser: 'safari',
       delayBetweenAgents: parseInt(AGENT_SPAWN_DELAY) || 6000,
-      batchSize: 10
+      batchSize: masterCount
     });
 
     const successCount = results.filter(r => r.success).length;
-    console.log(`✅ ${successCount}/${prompts.length} agents spawned successfully`);
+    console.log(`✅ ${successCount}/${prompts.length} masters spawned successfully`);
 
     const job = activeJobs.get(courseCode);
     if (job) {
       job.orchestratorSpawned = true;
-      job.agentsSpawned = successCount;
+      job.mastersSpawned = successCount;
       job.status = 'waiting_for_completion';
     }
   } catch (error) {
-    console.error(`❌ Failed to spawn parallel agents:`, error.message);
+    console.error(`❌ Failed to spawn masters:`, error.message);
     throw error;
   }
 }
