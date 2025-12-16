@@ -610,13 +610,40 @@ app.post('/api/courses/create', async (req, res) => {
       JSON.stringify(metadata, null, 2)
     );
 
+    // Insert into Supabase courses table
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
+    let dbInserted = false;
+
+    if (isInitialized()) {
+      const { error: dbError } = await supabase
+        .from('courses')
+        .insert({
+          course_code: courseCode,
+          known_lang: sourceLanguage,
+          target_lang: targetLanguage,
+          display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+          status: 'draft'
+        });
+
+      if (dbError) {
+        console.error(`[Orchestrator] Failed to insert course into database:`, dbError);
+        // Don't fail the request - VFS was created successfully
+      } else {
+        dbInserted = true;
+        console.log(`[Orchestrator] Course inserted into Supabase: ${courseCode}`);
+      }
+    } else {
+      console.warn(`[Orchestrator] Supabase not initialized, course only created in VFS`);
+    }
+
     console.log(`[Orchestrator] Course created: ${courseCode} at ${coursePath}`);
 
     res.json({
       success: true,
       courseCode,
       path: coursePath,
-      metadata
+      metadata,
+      database: dbInserted
     });
 
   } catch (error) {
