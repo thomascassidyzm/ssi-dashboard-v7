@@ -31,60 +31,74 @@
         <!-- Language Selection Card -->
         <section class="flow-section">
           <div class="section-label">
-            <span class="label-text">LANGUAGE PAIR</span>
+            <span class="label-text">COURSE</span>
             <div class="label-line"></div>
           </div>
 
           <div class="lang-card">
-            <div class="lang-grid">
-              <!-- Known Language -->
-              <div class="lang-field">
-                <label>Learning FROM</label>
-                <div class="select-wrapper">
-                  <select v-model="knownLanguage" :disabled="languagesLoading">
-                    <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
-                    <option v-for="lang in knownLanguages" :key="lang.code" :value="lang.code">
-                      {{ lang.name }} ({{ lang.code }})
-                    </option>
-                  </select>
-                  <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 9l6 6 6-6"/>
+            <!-- Pre-selected course: show simple display, no dropdowns -->
+            <template v-if="isPreselected">
+              <div class="preselected-course">
+                <div class="preview-badge large">
+                  <span class="badge-dot"></span>
+                  <span>{{ courseCode }}</span>
+                </div>
+                <span class="preview-name large">{{ displayName }}</span>
+              </div>
+            </template>
+
+            <!-- New course: show language selectors -->
+            <template v-else>
+              <div class="lang-grid">
+                <!-- Known Language -->
+                <div class="lang-field">
+                  <label>Learning FROM</label>
+                  <div class="select-wrapper">
+                    <select v-model="knownLanguage" :disabled="languagesLoading">
+                      <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+                      <option v-for="lang in knownLanguages" :key="lang.code" :value="lang.code">
+                        {{ lang.name }} ({{ lang.code }})
+                      </option>
+                    </select>
+                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="lang-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
+                </div>
+
+                <!-- Target Language -->
+                <div class="lang-field">
+                  <label>Learning TO</label>
+                  <div class="select-wrapper">
+                    <select v-model="targetLanguage" :disabled="languagesLoading">
+                      <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+                      <option v-for="lang in targetLanguages" :key="lang.code" :value="lang.code">
+                        {{ lang.name }} ({{ lang.code }})
+                      </option>
+                    </select>
+                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
 
-              <!-- Arrow -->
-              <div class="lang-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-
-              <!-- Target Language -->
-              <div class="lang-field">
-                <label>Learning TO</label>
-                <div class="select-wrapper">
-                  <select v-model="targetLanguage" :disabled="languagesLoading">
-                    <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
-                    <option v-for="lang in targetLanguages" :key="lang.code" :value="lang.code">
-                      {{ lang.name }} ({{ lang.code }})
-                    </option>
-                  </select>
-                  <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
+              <!-- Course Preview (when both selected) -->
+              <div v-if="knownLanguage && targetLanguage" class="course-preview">
+                <div class="preview-badge">
+                  <span class="badge-dot"></span>
+                  <span>{{ courseCode }}</span>
                 </div>
+                <span class="preview-name">{{ displayName }}</span>
               </div>
-            </div>
-
-            <!-- Course Preview -->
-            <div v-if="knownLanguage && targetLanguage" class="course-preview">
-              <div class="preview-badge">
-                <span class="badge-dot"></span>
-                <span>{{ courseCode }}</span>
-              </div>
-              <span class="preview-name">{{ displayName }}</span>
-            </div>
+            </template>
           </div>
         </section>
 
@@ -240,6 +254,25 @@ const knownLanguages = ref([])
 const targetLanguages = ref([])
 const knownLanguage = ref('')
 const targetLanguage = ref('')
+const isPreselected = ref(false)  // True when loaded from URL params (e.g., from CourseEditor)
+
+// Language name lookup (English names for production system)
+const languageNames = {
+  eng: 'English',
+  spa: 'Spanish',
+  fra: 'French',
+  deu: 'German',
+  ita: 'Italian',
+  por: 'Portuguese',
+  cmn: 'Mandarin Chinese',
+  jpn: 'Japanese',
+  kor: 'Korean',
+  cym: 'Welsh',
+  nld: 'Dutch',
+  rus: 'Russian',
+  ara: 'Arabic',
+  hin: 'Hindi'
+}
 
 // Execution mode
 const executionMode = ref('web')
@@ -272,9 +305,10 @@ const courseCode = computed(() => {
 
 const displayName = computed(() => {
   if (!knownLanguage.value || !targetLanguage.value) return ''
-  const known = knownLanguages.value.find(l => l.code === knownLanguage.value)
-  const target = targetLanguages.value.find(l => l.code === targetLanguage.value)
-  return `${target?.name || targetLanguage.value} for ${known?.name || knownLanguage.value} speakers`
+  // Use English names for production system clarity (APML principle)
+  const knownName = languageNames[knownLanguage.value] || knownLanguage.value
+  const targetName = languageNames[targetLanguage.value] || targetLanguage.value
+  return `${targetName} for ${knownName} speakers`
 })
 
 const canStart = computed(() => {
@@ -283,9 +317,12 @@ const canStart = computed(() => {
 
 // Load languages on mount
 onMounted(async () => {
-  // Check URL params
-  if (route.query.target) targetLanguage.value = route.query.target
-  if (route.query.known) knownLanguage.value = route.query.known
+  // Check URL params (pre-selected from CourseEditor or dashboard)
+  if (route.query.target && route.query.known) {
+    targetLanguage.value = route.query.target
+    knownLanguage.value = route.query.known
+    isPreselected.value = true  // Mark as pre-selected to hide dropdowns
+  }
 
   await loadLanguages()
 })
@@ -725,6 +762,30 @@ function resetForm() {
 .preview-name {
   color: var(--text-dim);
   font-size: 0.875rem;
+}
+
+/* Pre-selected course display (cleaner, no dropdowns) */
+.preselected-course {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+}
+
+.preview-badge.large {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.preview-badge.large .badge-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.preview-name.large {
+  font-size: 1.125rem;
+  color: var(--text);
+  font-weight: 500;
 }
 
 /* Mode Cards */
