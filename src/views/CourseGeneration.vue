@@ -102,34 +102,6 @@
           </div>
         </section>
 
-        <!-- Execution Mode -->
-        <section class="flow-section">
-          <div class="section-label">
-            <span class="label-text">EXECUTION MODE</span>
-            <div class="label-line"></div>
-          </div>
-
-          <div class="mode-cards">
-            <button
-              v-for="mode in modes"
-              :key="mode.id"
-              @click="executionMode = mode.id"
-              :class="['mode-card', { active: executionMode === mode.id }]"
-            >
-              <div class="mode-icon">{{ mode.icon }}</div>
-              <div class="mode-info">
-                <span class="mode-name">{{ mode.name }}</span>
-                <span class="mode-desc">{{ mode.desc }}</span>
-              </div>
-              <div v-if="mode.recommended" class="mode-badge">recommended</div>
-              <div v-if="executionMode === mode.id" class="mode-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <path d="M5 12l5 5L20 7"/>
-                </svg>
-              </div>
-            </button>
-          </div>
-        </section>
 
         <!-- Smart Analysis (when available) -->
         <section v-if="analysis" class="flow-section">
@@ -274,13 +246,8 @@ const languageNames = {
   hin: 'Hindi'
 }
 
-// Execution mode
-const executionMode = ref('web')
-const modes = [
-  { id: 'web', name: 'Web Browser', desc: 'Claude Pro subscription', icon: '🌐', recommended: true },
-  { id: 'local', name: 'Local Machine', desc: 'iTerm2 + Claude CLI', icon: '💻' },
-  { id: 'api', name: 'Direct API', desc: 'Server-side execution', icon: '⚡' }
-]
+// Execution mode (simplified - server handles execution)
+const executionMode = ref('server')
 
 // Analysis
 const analysis = ref(null)
@@ -379,10 +346,14 @@ async function analyzeCourse() {
   }
 }
 
+// Selected recommendation (affects seed range)
+const selectedRecommendation = ref(null)
+
 function selectRecommendation(rec) {
   // Apply recommendation settings and start
   console.log('Selected recommendation:', rec)
-  startGeneration()
+  selectedRecommendation.value = rec
+  startGeneration(rec)
 }
 
 function getRecIcon(type) {
@@ -396,7 +367,7 @@ function getRecIcon(type) {
   return icons[type] || '➡️'
 }
 
-async function startGeneration() {
+async function startGeneration(rec = null) {
   if (!canStart.value) return
 
   isGenerating.value = true
@@ -407,7 +378,22 @@ async function startGeneration() {
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
-    // Start generation
+    // Determine seed range from recommendation or default
+    let startSeed = 1
+    let endSeed = 668  // Full course default
+
+    if (rec) {
+      // Use recommendation's settings
+      if (rec.type === 'test') {
+        startSeed = 1
+        endSeed = 10  // Quick test: 10 seeds
+      } else if (rec.startSeed && rec.endSeed) {
+        startSeed = rec.startSeed
+        endSeed = rec.endSeed
+      }
+    }
+
+    // Start generation with orchestrator-expected parameters
     const res = await fetch(`${apiBase}/api/courses/generate`, {
       method: 'POST',
       headers: {
@@ -416,9 +402,13 @@ async function startGeneration() {
       },
       body: JSON.stringify({
         courseCode: courseCode.value,
-        knownLanguage: knownLanguage.value,
-        targetLanguage: targetLanguage.value,
-        executionMode: executionMode.value
+        target: targetLanguage.value,
+        known: knownLanguage.value,
+        startSeed,
+        endSeed,
+        phaseSelection: 'all',
+        executionMode: executionMode.value,
+        strategy: 'balanced'
       })
     })
 
