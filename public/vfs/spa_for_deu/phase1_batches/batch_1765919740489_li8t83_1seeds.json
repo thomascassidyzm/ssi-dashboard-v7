@@ -1,0 +1,76 @@
+[
+  {
+    "seed_id": "S0010",
+    "seed_pair": {
+      "known": "Ich bin nicht sicher, ob ich den ganzen Satz behalten kann.",
+      "target": "No estoy seguro(a) si puedo recordar toda la frase."
+    },
+    "legos": [
+      {
+        "id": "S0010L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Ich bin nicht sicher",
+          "target": "No estoy seguro(a)"
+        },
+        "components": [
+          {
+            "known": "ich bin",
+            "target": "estoy"
+          },
+          {
+            "known": "sicher",
+            "target": "seguro(a)"
+          }
+        ]
+      },
+      {
+        "id": "S0010L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "ob",
+          "target": "si"
+        }
+      },
+      {
+        "id": "S0010L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "ich kann",
+          "target": "puedo"
+        }
+      },
+      {
+        "id": "S0010L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "behalten",
+          "target": "recordar"
+        }
+      },
+      {
+        "id": "S0010L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "den ganzen Satz",
+          "target": "toda la frase"
+        },
+        "components": [
+          {
+            "known": "Satz",
+            "target": "frase"
+          },
+          {
+            "known": "ganz",
+            "target": "todo(a)"
+          }
+        ]
+      }
+    ]
+  }
+]

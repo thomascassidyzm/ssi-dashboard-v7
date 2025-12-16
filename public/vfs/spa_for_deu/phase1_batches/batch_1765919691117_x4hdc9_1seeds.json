@@ -1,0 +1,44 @@
+[
+  {
+    "seed_id": "S0009",
+    "seed_pair": {
+      "known": "Ich spreche ein wenig Spanisch jetzt.",
+      "target": "Hablo un poco de español ahora."
+    },
+    "legos": [
+      {
+        "id": "S0009L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Ich spreche",
+          "target": "hablo"
+        }
+      },
+      {
+        "id": "S0009L02",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "ein wenig Spanisch",
+          "target": "un poco de español"
+        },
+        "components": [
+          {
+            "known": "Spanisch",
+            "target": "español"
+          }
+        ]
+      },
+      {
+        "id": "S0009L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "jetzt",
+          "target": "ahora"
+        }
+      }
+    ]
+  }
+]
