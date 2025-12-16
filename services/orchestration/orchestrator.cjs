@@ -1662,6 +1662,9 @@ function normalizePhaseIdentifier(phase) {
  *   - Pattern from mode config is passed to phase servers
  */
 app.post('/api/courses/generate', async (req, res) => {
+  // Debug: log exactly what the dashboard sends
+  console.log(`[Orchestrator] /api/courses/generate received:`, JSON.stringify(req.body, null, 2));
+
   const {
     target,
     known,
@@ -1784,7 +1787,7 @@ app.post('/api/courses/generate', async (req, res) => {
     addProgressLog(courseCode, `Starting ${phaseName} for ${totalSeeds} seeds`);
 
     // Pass pattern configuration to phase server
-    const response = await axios.post(`${phaseServer}/start`, {
+    const payload = {
       courseCode,
       totalSeeds,
       target: resolvedTarget,
@@ -1794,7 +1797,9 @@ app.post('/api/courses/generate', async (req, res) => {
       endSeed,
       pattern,  // NEW: Pass parallelization pattern to phase server
       mode: mode || 'custom'  // NEW: Pass mode for logging/tracking
-    });
+    };
+    console.log(`[Orchestrator] Sending to Phase 1:`, JSON.stringify(payload, null, 2));
+    const response = await axios.post(`${phaseServer}/start`, payload);
 
     res.json({
       success: true,

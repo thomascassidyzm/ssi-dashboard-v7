@@ -241,33 +241,34 @@ const languageNames = {
 const executionMode = ref('server')
 
 // Generation modes (three-mode system)
+// IDs must match backend: quick_test, mvp_course, full_course
 const generationModes = ref([
   {
-    id: 'quick',
+    id: 'quick_test',
     name: 'Quick Test',
     icon: '⚡',
     description: 'Rapid testing and validation',
     seedCount: 10,
     pattern: '5 browsers × 2 agents × 1 seed',
-    estimatedTime: '2 min'
+    estimatedTime: '~2 min'
   },
   {
-    id: 'mvp',
+    id: 'mvp_course',
     name: 'MVP Course',
     icon: '🎯',
     description: 'Minimum viable production course',
     seedCount: 250,
     pattern: '5 browsers × 5 agents × 10 seeds',
-    estimatedTime: '15 min'
+    estimatedTime: '~15 min'
   },
   {
-    id: 'full',
+    id: 'full_course',
     name: 'Full Course',
     icon: '🚀',
     description: 'Complete course production',
     seedCount: 668,
     pattern: '9 browsers × 5 agents × 15 seeds',
-    estimatedTime: '20 min'
+    estimatedTime: '~20 min'
   }
 ])
 

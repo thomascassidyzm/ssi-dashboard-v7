@@ -205,6 +205,9 @@ The output is a JSON array of seed objects (see Output Format above).
  * }
  */
 app.post('/start', async (req, res) => {
+  // Debug: log exactly what we receive
+  console.log(`[Phase 1] /start received:`, JSON.stringify(req.body, null, 2));
+
   const {
     courseCode,
     mode,
@@ -216,8 +219,10 @@ app.post('/start', async (req, res) => {
   } = req.body;
 
   if (!courseCode || !target || !known) {
+    console.log(`[Phase 1] ❌ Missing required fields: courseCode=${courseCode}, target=${target}, known=${known}`);
     return res.status(400).json({
-      error: 'courseCode, target, and known are required'
+      error: 'courseCode, target, and known are required',
+      received: { courseCode, target, known }
     });
   }
 
