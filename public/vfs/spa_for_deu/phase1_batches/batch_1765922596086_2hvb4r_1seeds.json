@@ -1,0 +1,57 @@
+[
+  {
+    "seed_id": "S0005",
+    "seed_pair": {
+      "known": "Ich werde üben mit jemand anders zu sprechen",
+      "target": "Voy a practicar hablar con otra persona"
+    },
+    "legos": [
+      {
+        "id": "S0005L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Ich werde üben",
+          "target": "Voy a practicar"
+        },
+        "components": [
+          {
+            "known": "Ich werde",
+            "target": "Voy a"
+          },
+          {
+            "known": "üben",
+            "target": "practicar"
+          }
+        ]
+      },
+      {
+        "id": "S0005L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "zu sprechen",
+          "target": "hablar"
+        }
+      },
+      {
+        "id": "S0005L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "mit",
+          "target": "con"
+        }
+      },
+      {
+        "id": "S0005L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "jemand anders",
+          "target": "otra persona"
+        }
+      }
+    ]
+  }
+]
