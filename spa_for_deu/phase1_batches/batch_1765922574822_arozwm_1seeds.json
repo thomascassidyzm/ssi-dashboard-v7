@@ -1,0 +1,39 @@
+[
+  {
+    "seed_id": "S0002",
+    "seed_pair": {
+      "known": "Ich versuche zu lernen.",
+      "target": "Estoy intentando aprender."
+    },
+    "legos": [
+      {
+        "id": "S0002L01",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Ich versuche",
+          "target": "estoy intentando"
+        },
+        "components": [
+          {
+            "known": "Ich",
+            "target": "estoy"
+          },
+          {
+            "known": "versuche",
+            "target": "intentando"
+          }
+        ]
+      },
+      {
+        "id": "S0002L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "zu lernen",
+          "target": "aprender"
+        }
+      }
+    ]
+  }
+]
