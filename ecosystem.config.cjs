@@ -17,7 +17,7 @@
  * === USAGE ===
  * Start all:       pm2 start ecosystem.config.cjs
  * Start core:      pm2 start ecosystem.config.cjs --only ssi-orchestrator,phase3-baskets
- * Start phases:    pm2 start ecosystem.config.cjs --only phase1-translation,phase2-conflict,phase3-baskets
+ * Start phases:    pm2 start ecosystem.config.cjs --only phase1,phase2-conflict,phase3-baskets
  * Stop all:        pm2 stop all
  * Restart all:     pm2 restart all
  * View logs:       pm2 logs
@@ -66,9 +66,10 @@ module.exports = {
 
     // ===========================================
     // PHASE 1: Translation + LEGO Extraction (Port 3457)
+    // Combined phase: translates canonical seeds AND extracts LEGOs
     // ===========================================
     {
-      name: 'phase1-translation',
+      name: 'phase1',
       script: 'services/phases/phase1-translation/server.cjs',
       cwd: __dirname,
       instances: 1,
@@ -79,9 +80,11 @@ module.exports = {
         NODE_ENV: 'development',
         PORT: 3457,
         VFS_ROOT: VFS_ROOT,
-        SERVICE_NAME: 'Phase 1 (Translation)',
+        SERVICE_NAME: 'Phase 1 (Translation + LEGO Extraction)',
         ORCHESTRATOR_URL: 'http://localhost:3456',
-        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
+        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+        SUPABASE_URL: process.env.SUPABASE_URL,
+        SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY
       },
       error_file: 'logs/phase1-error.log',
       out_file: 'logs/phase1-out.log',

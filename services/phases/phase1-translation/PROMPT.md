@@ -14,6 +14,78 @@ You are a world-class language course creator building teachable units.
 
 ---
 
+## CRITICAL: Bidirectional Translation
+
+> **WARNING**: This is the most common mistake in Phase 1. Read carefully!
+
+### Understanding Canonical Seeds vs. LEGOs
+
+**Canonical Seeds:**
+- ALWAYS written in English (regardless of course)
+- Single source of truth for content
+- Example: "I want to speak Spanish now" (canonical seed for ALL Spanish courses)
+
+**LEGOs:**
+- Map between Known language ↔ Target language
+- For English speakers: English is the known language
+- For non-English speakers: Known language is NOT English
+
+### Translation Rules by Course Type
+
+#### **For English Speakers (known=eng)**
+Example: spa_for_eng (Spanish for English speakers)
+
+- **English IS the known text** - use seed text directly
+- **Only translate English → Spanish**
+- LEGOs map: English ↔ Spanish
+
+```
+Seed (canonical): "I want to speak Spanish now"
+Known (eng):      "I want to speak Spanish now"    [use as-is]
+Target (spa):     "Quiero hablar español ahora"    [translate eng→spa]
+
+LEGOs:
+  "I want" → "quiero"
+  "to speak" → "hablar"
+  "Spanish" → "español"
+  "now" → "ahora"
+```
+
+#### **For Non-English Speakers (known≠eng)**
+Example: spa_for_deu (Spanish for German speakers)
+
+- **English is NOT the known text** - must translate
+- **Translate English → German AND English → Spanish**
+- LEGOs map: German ↔ Spanish (NOT English ↔ Spanish!)
+
+```
+Seed (canonical): "I want to speak Spanish now"
+Known (deu):      "Ich möchte Spanisch sprechen jetzt"    [translate eng→deu]
+Target (spa):     "Quiero hablar español ahora"           [translate eng→spa]
+
+LEGOs:
+  "Ich möchte" → "quiero"           [German↔Spanish]
+  "sprechen" → "hablar"             [German↔Spanish]
+  "Spanisch" → "español"            [German↔Spanish]
+  "jetzt" → "ahora"                 [German↔Spanish]
+```
+
+### Why This Matters
+
+```
+WRONG (common mistake):
+spa_for_deu LEGOs: "I want" → "quiero"           ✗ English↔Spanish
+                   "to speak" → "hablar"          ✗ English↔Spanish
+
+RIGHT:
+spa_for_deu LEGOs: "Ich möchte" → "quiero"       ✓ German↔Spanish
+                   "sprechen" → "hablar"          ✓ German↔Spanish
+```
+
+**The learner speaks German, not English!** LEGOs must bridge their native language to the target language.
+
+---
+
 ## THE CORE PRINCIPLE: Smallest Teachable Units
 
 The SSi methodology is about finding the **smallest possible units that pass ZUT**.
@@ -34,6 +106,11 @@ curl -s [ORCHESTRATOR]/api/zut-examples/[KNOWN]/[TARGET]
 For example, for Spanish-for-English-speakers:
 ```
 curl -s http://localhost:3456/api/zut-examples/english/spanish
+```
+
+For Spanish-for-German-speakers:
+```
+curl -s http://localhost:3456/api/zut-examples/german/spanish
 ```
 
 These show what fails/passes ZUT for your specific language pair. Different language pairs have different ZUT failure patterns:
@@ -185,11 +262,13 @@ Note: "at" and "o'clock" absorbed - no useful standalone form
 
 These show the complete thought process from seed to LEGOs.
 
-### Example 1: Simple Seed (All A-types)
+### Example 1: English Speakers (spa_for_eng)
 
-**Seed:** "I want to speak Spanish now"
+**Seed (canonical):** "I want to speak Spanish now"
 
 **Translation reasoning:**
+- Known = English (use seed as-is)
+- Target = Spanish (translate eng→spa)
 - "I want" → "quiero" (single word target, cognate-ish)
 - "to speak" → "hablar" (infinitive, A-type)
 - "Spanish" → "español" (cognate)
@@ -219,55 +298,85 @@ All pass ZUT independently, no M-types needed.
 
 ---
 
-### Example 2: M-type with Components
+### Example 2: Non-English Speakers (spa_for_deu)
 
-**Seed:** "I'm trying to learn as frequently as possible"
+**Seed (canonical):** "I want to speak Spanish now"
 
 **Translation reasoning:**
-- "I'm trying" → "estoy intentando" (not "estoy tratando de" - intentar is cognate)
-- "to learn" → "aprender" (cognate)
-- "as frequently as possible" → "lo más frecuentemente posible"
-  - NOT "tan a menudo como sea posible" (6 words, no cognates)
-  - "frecuentemente" is cognate with "frequently"
-  - Fewer words, componentizable
-- Full: "Estoy intentando aprender lo más frecuentemente posible"
+- Known = German (translate eng→deu)
+- Target = Spanish (translate eng→spa)
+- "I want" → "Ich möchte" (German) / "quiero" (Spanish)
+- "to speak" → "sprechen" (German) / "hablar" (Spanish)
+- "Spanish" → "Spanisch" (German) / "español" (Spanish)
+- "now" → "jetzt" (German) / "ahora" (Spanish)
+- Full Known: "Ich möchte Spanisch sprechen jetzt"
+- Full Target: "Quiero hablar español ahora"
 
-**LEGO extraction:**
+**LEGO extraction (German↔Spanish):**
+- "Ich möchte" → "quiero" - A-type (German phrase → single Spanish word)
+- "sprechen" → "hablar" - A-type (German infinitive → Spanish infinitive)
+- "Spanisch" → "español" - A-type (German → Spanish)
+- "jetzt" → "ahora" - A-type (German → Spanish)
 
-1. "I'm trying" → "estoy intentando"
-   - Multi-word both sides, but CAN break down usefully
-   - Components: "I'm..." → "estoy", "trying" → "intentando"
-   - **M-type** with components
-
-2. "to learn" → "aprender"
-   - Single word target → **A-type**
-
-3. "as frequently as possible" → "lo más frecuentemente posible"
-   - Multi-word, CAN break down:
-   - Components: "possible" → "posible", "frequently" → "frecuentemente"
-   - **M-type** with components
+**CRITICAL:** LEGOs bridge German to Spanish, NOT English to Spanish!
 
 ```json
 {
-  "seed_id": "S0003",
-  "seed_pair": {"known": "I'm trying to learn as frequently as possible", "target": "Estoy intentando aprender lo más frecuentemente posible"},
+  "seed_id": "S0001",
+  "seed_pair": {"known": "Ich möchte Spanisch sprechen jetzt", "target": "Quiero hablar español ahora"},
   "legos": [
-    {"id": "S0003L01", "type": "M", "new": true,
-     "lego": {"known": "I'm trying", "target": "estoy intentando"},
-     "components": [{"known": "I'm...", "target": "estoy"}, {"known": "trying", "target": "intentando"}]},
-    {"id": "S0003L02", "type": "A", "new": true, "lego": {"known": "to learn", "target": "aprender"}},
-    {"id": "S0003L03", "type": "M", "new": true,
-     "lego": {"known": "as frequently as possible", "target": "lo más frecuentemente posible"},
-     "components": [{"known": "possible", "target": "posible"}, {"known": "frequently", "target": "frecuentemente"}]}
+    {"id": "S0001L01", "type": "A", "new": true, "lego": {"known": "Ich möchte", "target": "quiero"}},
+    {"id": "S0001L02", "type": "A", "new": true, "lego": {"known": "sprechen", "target": "hablar"}},
+    {"id": "S0001L03", "type": "A", "new": true, "lego": {"known": "Spanisch", "target": "español"}},
+    {"id": "S0001L04", "type": "A", "new": true, "lego": {"known": "jetzt", "target": "ahora"}}
   ]
 }
 ```
 
 ---
 
-### Example 3: Tricky Seed (Idioms, ZUT failures, Chunk-ups)
+### Example 3: M-type with Components (Generic)
 
-**Seed:** "I'm looking forward to trying the food with you"
+**Seed (canonical):** "I'm trying to learn as frequently as possible"
+
+**Translation reasoning:**
+- "I'm trying" → "[known_trying]" / "[target_trying]"
+- "to learn" → "[known_learn]" / "[target_learn]"
+- "as frequently as possible" → "[known_frequently_possible]" / "[target_frequently_possible]"
+
+**For spa_for_eng:**
+```
+Known: "I'm trying to learn as frequently as possible"
+Target: "Estoy intentando aprender lo más frecuentemente posible"
+
+LEGOs (English↔Spanish):
+- "I'm trying" → "estoy intentando" (M-type)
+  Components: "I'm..." → "estoy", "trying" → "intentando"
+- "to learn" → "aprender" (A-type)
+- "as frequently as possible" → "lo más frecuentemente posible" (M-type)
+  Components: "possible" → "posible", "frequently" → "frecuentemente"
+```
+
+**For spa_for_deu:**
+```
+Known: "Ich versuche so häufig wie möglich zu lernen"
+Target: "Estoy intentando aprender lo más frecuentemente posible"
+
+LEGOs (German↔Spanish):
+- "Ich versuche" → "estoy intentando" (M-type)
+  Components: "Ich" → "estoy", "versuche" → "intentando"
+- "zu lernen" → "aprender" (A-type)
+- "so häufig wie möglich" → "lo más frecuentemente posible" (M-type)
+  Components: "möglich" → "posible", "häufig" → "frecuentemente"
+```
+
+---
+
+### Example 4: Tricky Seed (Idioms, ZUT failures, Chunk-ups)
+
+**Seed (canonical):** "I'm looking forward to trying the food with you"
+
+**For spa_for_eng:**
 
 **Translation reasoning:**
 - "I'm looking forward to" → "tengo ganas de"
@@ -320,7 +429,7 @@ All pass ZUT independently, no M-types needed.
 }
 ```
 
-**Key decisions in Example 3:**
+**Key decisions in Example 4:**
 - "I'm looking forward to" = A-type (idiomatic, no breakdown)
 - "to try" (taste) = separate LEGO from "to try" (attempt) = "intentar"
 - "the food" = M-type (article absorbed, "food" as component)
@@ -346,52 +455,52 @@ Mark gendered words with masculine first, feminine in parentheses: `o(a)`
   {
     "seed_id": "S0001",
     "seed_pair": {
-      "known": "I want to speak Spanish",
-      "target": "Quiero hablar español"
+      "known": "[text in learner's native language]",
+      "target": "[text in language being learned]"
     },
     "legos": [
       {
         "id": "S0001L01",
         "type": "A",
         "new": true,
-        "lego": {"known": "I want", "target": "quiero"}
+        "lego": {"known": "[known_text]", "target": "[target_text]"}
       },
       {
         "id": "S0001L02",
         "type": "A",
         "new": true,
-        "lego": {"known": "to speak", "target": "hablar"}
+        "lego": {"known": "[known_text]", "target": "[target_text]"}
       },
       {
         "id": "S0001L03",
         "type": "A",
         "new": true,
-        "lego": {"known": "Spanish", "target": "español"}
+        "lego": {"known": "[known_text]", "target": "[target_text]"}
       }
     ]
   },
   {
     "seed_id": "S0002",
     "seed_pair": {
-      "known": "I'm trying to learn",
-      "target": "Estoy intentando aprender"
+      "known": "[text in learner's native language]",
+      "target": "[text in language being learned]"
     },
     "legos": [
       {
         "id": "S0002L01",
         "type": "M",
         "new": true,
-        "lego": {"known": "I'm trying", "target": "estoy intentando"},
+        "lego": {"known": "[known_text]", "target": "[target_text]"},
         "components": [
-          {"known": "I'm...", "target": "estoy"},
-          {"known": "trying", "target": "intentando"}
+          {"known": "[component_known]", "target": "[component_target]"},
+          {"known": "[component_known]", "target": "[component_target]"}
         ]
       },
       {
         "id": "S0002L02",
         "type": "A",
         "new": true,
-        "lego": {"known": "to learn", "target": "aprender"}
+        "lego": {"known": "[known_text]", "target": "[target_text]"}
       }
     ]
   }
@@ -404,7 +513,7 @@ Mark gendered words with masculine first, feminine in parentheses: `o(a)`
   "id": "S0010L01",
   "type": "A",
   "new": true,
-  "lego": {"known": "I'm looking forward to", "target": "tengo ganas de"}
+  "lego": {"known": "[idiomatic_phrase_known]", "target": "[idiomatic_phrase_target]"}
 }
 ```
 
@@ -414,10 +523,10 @@ Mark gendered words with masculine first, feminine in parentheses: `o(a)`
   "id": "S0010L02",
   "type": "M",
   "new": true,
-  "lego": {"known": "I'm trying", "target": "estoy intentando"},
+  "lego": {"known": "[multi_word_known]", "target": "[multi_word_target]"},
   "components": [
-    {"known": "I'm...", "target": "estoy"},
-    {"known": "trying", "target": "intentando"}
+    {"known": "[component_1_known]", "target": "[component_1_target]"},
+    {"known": "[component_2_known]", "target": "[component_2_target]"}
   ]
 }
 ```
@@ -441,8 +550,10 @@ Mark gendered words with masculine first, feminine in parentheses: `o(a)`
 - [ ] Components are pedagogically useful (not just a parse tree)
 - [ ] Gender marked with `o(a)` pattern
 - [ ] Output is valid JSON array
+- [ ] **For non-English courses: LEGOs bridge Known↔Target, NOT English↔Target**
 
 **Key rules:**
 - A-type = atomic (no build-up possible/useful)
 - M-type = molecular (has components for build-up)
 - When in doubt: try smaller first, chunk UP only if ZUT fails
+- **Bidirectional translation: Known language may not be English!**

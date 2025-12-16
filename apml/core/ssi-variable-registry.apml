@@ -7,8 +7,8 @@
 # When updating, edit the canonical file first, then sync here.
 # ============================================================================
 #
-# Version: 1.1.0
-# Date: 2025-12-15
+# Version: 1.2.0
+# Date: 2025-12-16
 # APML Version: 2.0.0
 #
 # This registry defines:
@@ -24,8 +24,8 @@
 # - TypeScript type generation
 
 registry SSiContent:
-  version: "1.1.0"
-  last_updated: "2025-12-15"
+  version: "1.2.0"
+  last_updated: "2025-12-16"
 
   # ============================================================================
   # ENUM DEFINITIONS
@@ -675,6 +675,125 @@ registry SSiContent:
       storage: "IndexedDB blobs or Cache API"
 
   # ============================================================================
+  # COURSE GENERATION & ORCHESTRATION
+  # ============================================================================
+
+  entity CourseGenerationMode:
+    description: "Defines parallelization strategy for multi-agent course generation"
+    primary_key: mode_key
+    fields:
+      mode_key:
+        type: text
+        required: true
+        example: "quick_test"
+        description: "Unique identifier for generation mode"
+
+      name:
+        type: text
+        required: true
+        example: "Quick Test"
+        description: "Display name for mode"
+
+      description:
+        type: text
+        required: false
+        example: "Fast validation with maximum parallelization"
+
+      seed_count:
+        type: integer
+        required: true
+        description: "Number of seeds to generate in this mode"
+        example: 10
+
+      browsers:
+        type: integer
+        required: true
+        description: "Number of browser contexts to spawn"
+        example: 5
+
+      agents_per_browser:
+        type: integer
+        required: true
+        description: "Number of agent instances per browser"
+        example: 2
+
+      seeds_per_agent:
+        type: integer
+        required: true
+        description: "Number of seeds each agent processes"
+        example: 1
+
+      capacity:
+        type: integer
+        required: false
+        description: "Total capacity (browsers * agents_per_browser * seeds_per_agent)"
+        derived_from: "browsers * agents_per_browser * seeds_per_agent"
+
+      estimated_time_minutes:
+        type: integer
+        required: false
+        description: "Estimated completion time in minutes"
+
+      use_case:
+        type: text
+        required: false
+        description: "Primary use case for this mode"
+        example: "Validation, fast feedback loop"
+
+      phase_overrides:
+        type: jsonb
+        required: false
+        default: {}
+        description: "Phase-specific tuning (e.g., seeds_per_agent_multiplier)"
+
+      status:
+        type: enum [active, deprecated]
+        required: true
+        default: "active"
+
+      created_at:
+        type: timestamp
+        auto: true
+
+      updated_at:
+        type: timestamp
+        auto: true
+
+    predefined_modes:
+      quick_test:
+        name: "Quick Test"
+        description: "Fast validation with maximum parallelization"
+        seed_count: 10
+        browsers: 5
+        agents_per_browser: 2
+        seeds_per_agent: 1
+        capacity: 10
+        estimated_time_minutes: 2
+        use_case: "Validation, fast feedback loop"
+
+      mvp_course:
+        name: "MVP Course"
+        description: "Big 10 language pairs - production MVP"
+        seed_count: 250
+        browsers: 5
+        agents_per_browser: 5
+        seeds_per_agent: 10
+        capacity: 250
+        estimated_time_minutes: 15
+        use_case: "Production courses for Big 10 language pairs"
+
+      full_course:
+        name: "Full Course"
+        description: "Complete legacy-scale course"
+        seed_count: 668
+        browsers: 9
+        agents_per_browser: 5
+        seeds_per_agent: 15
+        capacity: 675
+        estimated_time_minutes: 20
+        use_case: "Complete courses (legacy Spanish for English scale)"
+
+  # ============================================================================
   # SYSTEM PARAMETERS (D01: Everything is a parameter)
   # ============================================================================
 
@@ -683,6 +802,31 @@ registry SSiContent:
       All configurable values - no magic numbers in code.
       These are system-wide defaults. Course-specific overrides
       use ClassificationConfig entity or course.metadata JSONB.
+
+    # -------------------------------------------------------------------------
+    # Course Generation Constants
+    # -------------------------------------------------------------------------
+
+    course_generation:
+      description: "Standard seed counts for different generation modes"
+
+      seed_count_quick_test:
+        value: 10
+        type: integer
+        description: "Quick test mode - fast validation"
+        use_case: "Validation, fast feedback loop"
+
+      seed_count_mvp_course:
+        value: 250
+        type: integer
+        description: "MVP course mode - production Big 10 language pairs"
+        use_case: "Production courses for MVP release"
+
+      seed_count_full_course:
+        value: 668
+        type: integer
+        description: "Full course mode - complete legacy-scale course"
+        use_case: "Complete courses (legacy Spanish for English scale)"
 
     # -------------------------------------------------------------------------
     # Course Structure
@@ -839,6 +983,48 @@ registry SSiContent:
         description: "Show progress indicators during session"
 
     # -------------------------------------------------------------------------
+    # Orchestration & Multi-Agent
+    # -------------------------------------------------------------------------
+
+    orchestration:
+      description: "Multi-agent orchestration timing and error handling"
+
+      browser_spawn_delay_ms:
+        value: 8000
+        type: integer
+        description: "Delay between spawning browser contexts to avoid rate limits"
+        note: "Prevents overwhelming API endpoints or browser automation"
+
+      agent_timeout_ms:
+        value: 300000
+        type: integer
+        description: "Maximum time (5 minutes) for a single agent task"
+        rationale: "Prevents hung agents from blocking pipeline"
+
+      max_retries:
+        value: 3
+        type: integer
+        description: "Maximum retry attempts for failed agent tasks"
+        note: "Exponential backoff applied between retries"
+
+      retry_backoff_ms:
+        value: 5000
+        type: integer
+        description: "Initial backoff delay for retries (doubles each attempt)"
+        example: "5s, 10s, 20s for 3 retries"
+
+      max_concurrent_browsers:
+        value: 10
+        type: integer
+        description: "Hard limit on simultaneous browser contexts"
+        rationale: "Memory and CPU constraints"
+
+      agent_health_check_interval_ms:
+        value: 30000
+        type: integer
+        description: "How often to check agent heartbeat (30 seconds)"
+
+    # -------------------------------------------------------------------------
     # Future Parameters (D01: Escape hatch)
     # -------------------------------------------------------------------------
 
@@ -892,6 +1078,25 @@ registry SSiContent:
 # ============================================================================
 
 version_history:
+  v1.2.0:
+    date: "2025-12-16"
+    changes:
+      - "Added CourseGenerationMode entity for multi-agent orchestration"
+      - "Defined predefined modes: quick_test (10), mvp_course (250), full_course (668)"
+      - "Added parallelization pattern fields: browsers, agents_per_browser, seeds_per_agent"
+      - "Added seed count constants: seed_count_quick_test, seed_count_mvp_course, seed_count_full_course"
+      - "Added orchestration parameters: browser_spawn_delay_ms, agent_timeout_ms, max_retries, retry_backoff_ms"
+      - "Added max_concurrent_browsers and agent_health_check_interval_ms"
+      - "Registry now covers all course-modes.json configuration - SINGLE SOURCE OF TRUTH"
+    contributors:
+      - "Tom Cassidy"
+      - "Claude (AI Assistant)"
+    design_direction: "APML registry as single source of truth - course-modes.json should derive from this"
+    migration_notes: |
+      The registry now defines CourseGenerationMode with all parallelization patterns.
+      Services should query this registry rather than reading course-modes.json directly.
+      course-modes.json will be updated to reference this registry as the canonical source.
+
   v1.1.0:
     date: "2025-12-15"
     changes:
@@ -923,7 +1128,7 @@ version_history:
       - "Claude (AI Assistant)"
 
 # ============================================================================
-# SYNCED: 2025-12-15 from ssi-learning-app/apml/core/ssi-variable-registry.apml
+# SYNCED: 2025-12-16 from ssi-learning-app/apml/core/ssi-variable-registry.apml
 # CANONICAL LOCATION: ssi-learning-app/apml/core/ssi-variable-registry.apml
 # This file is the Single Source of Truth for SSi data structures.
 # Changes here should propagate to:
@@ -931,4 +1136,5 @@ version_history:
 # - TypeScript types
 # - Phase output validators
 # - API documentation
+# - services/config/course-modes.json (derives from CourseGenerationMode entity)
 # ============================================================================

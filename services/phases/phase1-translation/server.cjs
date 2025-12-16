@@ -297,15 +297,17 @@ app.post('/start', async (req, res) => {
     startSeed,
     endSeed: finalEndSeed,
     agentCount,
+    seedsPerAgent,
     pattern: {
       browsers,
       agents_per_browser,
       seeds_per_agent,
       capacity: browsers * agents_per_browser * seeds_per_agent
     },
-    status: 'spawning_orchestrator',
+    status: 'spawning_agents',
     startedAt: new Date().toISOString(),
     orchestratorSpawned: false,
+    agentsSpawned: 0,
     branchesDetected: 0,
     merged: false,
     error: null
@@ -322,13 +324,13 @@ app.post('/start', async (req, res) => {
     // Start branch watcher for phase1-* branches
     await startBranchWatcher(courseCode, agentCount);
 
-    // Spawn master orchestrator in browser
-    await spawnMasterOrchestrator(courseCode, {
+    // Spawn parallel agents with their assigned seed ranges
+    await spawnParallelAgents(courseCode, {
       target,
       known,
       startSeed,
-      endSeed
-    }, courseDir);
+      endSeed: finalEndSeed
+    }, courseDir, agentCount, seedsPerAgent);
 
     res.json({
       success: true,
@@ -339,6 +341,7 @@ app.post('/start', async (req, res) => {
         target: getLanguageName(target),
         known: getLanguageName(known),
         agentCount,
+        seedsPerAgent,
         status: 'running'
       }
     });
@@ -434,41 +437,71 @@ async function startBranchWatcher(courseCode, expectedAgents) {
 }
 
 /**
- * Spawn master orchestrator in browser
+ * Spawn parallel agents for translation
+ * Each agent processes one or more seeds based on the pattern
  */
-async function spawnMasterOrchestrator(courseCode, params, courseDir) {
-  console.log(`\n🌐 Spawning Phase 1 master orchestrator...`);
+async function spawnParallelAgents(courseCode, params, courseDir, agentCount, seedsPerAgent) {
+  console.log(`\n🌐 Spawning ${agentCount} parallel Phase 1 agents...`);
+  console.log(`   Seeds per agent: ${seedsPerAgent}`);
 
-  // Generate master prompt
-  const prompt = generatePhase1MasterPrompt(courseCode, params, courseDir);
+  const { target, known, startSeed, endSeed } = params;
 
   // Import browser spawning utility
-  const spawnClaudeWebAgent = await loadWebAgentSpawner();
-
-  if (spawnClaudeWebAgent) {
-    try {
-      await spawnClaudeWebAgent(prompt, 1, 'safari');
-      console.log(`✅ Master orchestrator spawned`);
-
-      const job = activeJobs.get(courseCode);
-      if (job) {
-        job.orchestratorSpawned = true;
-        job.status = 'waiting_for_completion';
-      }
-    } catch (error) {
-      console.error(`❌ Failed to spawn orchestrator:`, error.message);
-      throw error;
+  const spawner = await loadWebAgentSpawner();
+  if (!spawner) {
+    console.error(`⚠️  Web agent spawner not available - cannot spawn agents`);
+    const job = activeJobs.get(courseCode);
+    if (job) {
+      job.status = 'spawner_unavailable';
     }
-  } else {
-    // Fallback: just log the prompt
-    console.log(`\n📝 Phase 1 Master Prompt:`);
-    console.log(prompt);
-    console.log('\n' + '='.repeat(80) + '\n');
+    return;
+  }
+
+  const { spawnParallelAgents: parallelSpawner } = spawner;
+
+  // Generate prompts for each agent with their assigned seed range
+  const prompts = [];
+  for (let i = 0; i < agentCount; i++) {
+    const agentStartSeed = startSeed + (i * seedsPerAgent);
+    const agentEndSeed = Math.min(agentStartSeed + seedsPerAgent - 1, endSeed);
+
+    // Skip if agent has no seeds to process
+    if (agentStartSeed > endSeed) {
+      break;
+    }
+
+    const agentPrompt = generatePhase1MasterPrompt(courseCode, {
+      target,
+      known,
+      startSeed: agentStartSeed,
+      endSeed: agentEndSeed
+    }, courseDir);
+
+    prompts.push(agentPrompt);
+  }
+
+  console.log(`   Generated ${prompts.length} agent prompts`);
+
+  // Spawn all agents in parallel
+  try {
+    const results = await parallelSpawner(prompts, {
+      browser: 'safari',
+      delayBetweenAgents: parseInt(AGENT_SPAWN_DELAY) || 6000,
+      batchSize: 10
+    });
+
+    const successCount = results.filter(r => r.success).length;
+    console.log(`✅ ${successCount}/${prompts.length} agents spawned successfully`);
 
     const job = activeJobs.get(courseCode);
     if (job) {
-      job.status = 'prompt_ready';
+      job.orchestratorSpawned = true;
+      job.agentsSpawned = successCount;
+      job.status = 'waiting_for_completion';
     }
+  } catch (error) {
+    console.error(`❌ Failed to spawn parallel agents:`, error.message);
+    throw error;
   }
 }
 
@@ -479,8 +512,7 @@ async function loadWebAgentSpawner() {
   try {
     const spawnerPath = path.join(__dirname, '../../shared/spawn-agent.cjs');
     if (await fs.pathExists(spawnerPath)) {
-      const { spawnClaudeWebAgent } = require(spawnerPath);
-      return spawnClaudeWebAgent;
+      return require(spawnerPath);
     }
   } catch (error) {
     console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
