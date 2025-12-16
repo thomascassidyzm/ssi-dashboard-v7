@@ -1,0 +1,57 @@
+[
+  {
+    "seed_id": "S0007",
+    "seed_pair": {
+      "known": "Ich will heute so viel wie ich kann versuchen.",
+      "target": "Quiero intentar tanto como pueda hoy."
+    },
+    "legos": [
+      {
+        "id": "S0007L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Ich will",
+          "target": "quiero"
+        }
+      },
+      {
+        "id": "S0007L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "versuchen",
+          "target": "intentar"
+        }
+      },
+      {
+        "id": "S0007L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "so viel wie ich kann",
+          "target": "tanto como pueda"
+        },
+        "components": [
+          {
+            "known": "viel",
+            "target": "mucho"
+          },
+          {
+            "known": "ich kann",
+            "target": "puedo"
+          }
+        ]
+      },
+      {
+        "id": "S0007L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "heute",
+          "target": "hoy"
+        }
+      }
+    ]
+  }
+]
