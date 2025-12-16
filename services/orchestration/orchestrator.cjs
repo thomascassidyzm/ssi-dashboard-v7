@@ -219,19 +219,53 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
 
 /**
  * GET /api/courses
- * List all available courses from S3
+ * List all available courses from Supabase (database-first)
+ * Falls back to S3 if ?source=s3 is specified (legacy)
  */
 app.get('/api/courses', async (req, res) => {
   try {
-    // Use S3 service to list courses
-    const s3Service = require('../s3-service.cjs');
+    const source = req.query.source || 'database';
     const includeStatus = req.query.status === 'true';
 
-    // List all course directories from S3
+    // Database-first: Query Supabase courses table
+    if (source === 'database') {
+      const { supabase, isInitialized } = require('../supabase-client.cjs');
+
+      if (!isInitialized()) {
+        console.warn('[Orchestrator] Supabase not initialized, falling back to S3');
+        // Fall through to S3 logic below
+      } else {
+        const { data: dbCourses, error } = await supabase
+          .from('courses')
+          .select('course_code, known_lang, target_lang, display_name, status')
+          .order('course_code');
+
+        if (error) {
+          console.error('[Orchestrator] Supabase query error:', error);
+          throw error;
+        }
+
+        const courses = dbCourses.map(c => ({
+          code: c.course_code,
+          name: c.display_name || c.course_code.replace(/_/g, ' ').replace(/for/g, '→'),
+          knownLang: c.known_lang,
+          targetLang: c.target_lang,
+          status: c.status
+        }));
+
+        return res.json({
+          courses,
+          total: courses.length,
+          source: 'database'
+        });
+      }
+    }
+
+    // Legacy S3 fallback
+    const s3Service = require('../s3-service.cjs');
     const courseList = await s3Service.listCourseDirectories();
 
     if (includeStatus) {
-      // Check key files for each course
       const keyFiles = ['lego_pairs.json', 'lego_baskets.json', 'introductions.json', 'course_manifest.json'];
 
       const coursesWithStatus = await Promise.all(
@@ -253,11 +287,11 @@ app.get('/api/courses', async (req, res) => {
       return res.json({
         courses: coursesWithStatus,
         total: coursesWithStatus.length,
-        complete: coursesWithStatus.filter(c => c.complete).length
+        complete: coursesWithStatus.filter(c => c.complete).length,
+        source: 's3'
       });
     }
 
-    // Simple list without status
     const courses = courseList.map(code => ({
       code,
       name: code.replace(/_/g, ' ').replace(/for/g, '→')
@@ -265,10 +299,11 @@ app.get('/api/courses', async (req, res) => {
 
     res.json({
       courses,
-      total: courses.length
+      total: courses.length,
+      source: 's3'
     });
   } catch (error) {
-    console.error('Failed to load courses from S3:', error);
+    console.error('Failed to load courses:', error);
     res.status(500).json({ error: error.message });
   }
 });
