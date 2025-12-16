@@ -107,9 +107,54 @@ export default {
 
         const seedsData = await seedsRes.json()
 
-        // If no seeds in database, return null to fall back to S3/GitHub
+        // If no seeds in database, check if course record exists (empty course case)
         if (!seedsData.seeds || seedsData.seeds.length === 0) {
           console.log(`[API] No seeds in database for ${courseCode}`)
+
+          // Check if course record exists via orchestrator
+          const orchestratorUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+          try {
+            const coursesRes = await fetch(`${orchestratorUrl}/api/courses`, {
+              headers: { 'ngrok-skip-browser-warning': 'true' }
+            })
+            if (coursesRes.ok) {
+              const coursesData = await coursesRes.json()
+              const courseRecord = coursesData.courses?.find(c => c.code === courseCode)
+
+              if (courseRecord) {
+                // Course exists but has no content - return empty course structure
+                console.log(`[API] Course ${courseCode} exists but is empty - showing generator UI`)
+                const match = courseCode.match(/^(\w+)_for_(\w+)$/)
+                return {
+                  course: {
+                    course_code: courseCode,
+                    name: courseRecord.name || `${courseCode} Course`,
+                    display_name: courseRecord.name,
+                    known_lang: courseRecord.knownLang,
+                    target_lang: courseRecord.targetLang,
+                    status: courseRecord.status || 'draft',
+                    total_seeds: 0,
+                    seed_pairs: 0,
+                    lego_pairs: 0,
+                    lego_baskets: 0,
+                    version: '1.0',
+                    phases_completed: [],
+                    target_language_name: match ? match[1] : 'unknown',
+                    known_language_name: match ? match[2] : 'unknown',
+                    data_source: 'database',
+                    isEmpty: true  // Flag for CourseEditor to show generator
+                  },
+                  translations: [],
+                  legos: [],
+                  lego_breakdowns: [],
+                  baskets: {}
+                }
+              }
+            }
+          } catch (err) {
+            console.log(`[API] Could not check course record: ${err.message}`)
+          }
+
           return null
         }
 

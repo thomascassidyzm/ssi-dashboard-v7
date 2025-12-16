@@ -20,7 +20,14 @@
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">
               {{ formatCourseCode(course.course_code) }}
             </h1>
-            <p class="text-slate-400">{{ course.total_seeds }} seeds • Version {{ course.version }}</p>
+            <p class="text-slate-400">
+              <template v-if="course.isEmpty">
+                {{ course.display_name || course.name }} • <span class="text-amber-400">Ready to generate</span>
+              </template>
+              <template v-else>
+                {{ course.total_seeds }} seeds • Version {{ course.version }}
+              </template>
+            </p>
           </div>
           <div class="flex items-center gap-3">
             <router-link
@@ -63,6 +70,55 @@
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-red-400 font-semibold mb-2">Error Loading Course</h3>
         <p class="text-slate-300">{{ error }}</p>
+      </div>
+
+      <!-- Empty Course State - Show Generator UI -->
+      <div v-else-if="course?.isEmpty" class="space-y-6">
+        <div class="bg-slate-800 border border-emerald-500/50 rounded-lg p-8 text-center">
+          <div class="text-6xl mb-4">🌱</div>
+          <h2 class="text-2xl font-bold text-emerald-400 mb-2">New Course Created</h2>
+          <p class="text-slate-400 mb-6 max-w-lg mx-auto">
+            <strong>{{ course.display_name || course.name }}</strong> has been created but has no content yet.
+            Start the generation pipeline to create translations and LEGOs.
+          </p>
+          <div class="flex flex-col items-center gap-4">
+            <router-link
+              :to="generatorLink"
+              class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-lg transition-colors font-semibold text-lg flex items-center gap-3"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Start Course Generator
+            </router-link>
+            <p class="text-sm text-slate-500">
+              This will run Phase 1 (Translation) → Phase 2 (LEGO Extraction) → Phase 3 (Basket Generation)
+            </p>
+          </div>
+        </div>
+
+        <!-- Course Info Card -->
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-300 mb-4">Course Details</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <div class="text-slate-500">Code</div>
+              <div class="text-slate-300 font-mono">{{ course.course_code }}</div>
+            </div>
+            <div>
+              <div class="text-slate-500">Target Language</div>
+              <div class="text-slate-300">{{ course.target_lang }}</div>
+            </div>
+            <div>
+              <div class="text-slate-500">Known Language</div>
+              <div class="text-slate-300">{{ course.known_lang }}</div>
+            </div>
+            <div>
+              <div class="text-slate-500">Status</div>
+              <div class="text-amber-400">{{ course.status }}</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Course Content -->
