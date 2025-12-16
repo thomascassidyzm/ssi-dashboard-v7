@@ -1689,6 +1689,24 @@ app.post('/api/courses/generate', async (req, res) => {
     return res.status(400).json({ error: 'Either courseCode or both target and known are required' });
   }
 
+  // Extract target and known from courseCode if not provided
+  // Format: {target}_for_{known} e.g., spa_for_deu → target: spa, known: deu
+  let resolvedTarget = target;
+  let resolvedKnown = known;
+  if (!resolvedTarget || !resolvedKnown) {
+    const match = courseCode.match(/^([a-z]{2,3})_for_([a-z]{2,3})(?:_.*)?$/);
+    if (match) {
+      resolvedTarget = resolvedTarget || match[1];
+      resolvedKnown = resolvedKnown || match[2];
+      console.log(`[Orchestrator] Extracted from courseCode: target=${resolvedTarget}, known=${resolvedKnown}`);
+    } else {
+      return res.status(400).json({
+        error: 'Could not extract target/known from courseCode. Expected format: {target}_for_{known}',
+        courseCode
+      });
+    }
+  }
+
   // Determine seed range: mode takes precedence over explicit startSeed/endSeed
   let startSeed, endSeed, totalSeeds, modeConfig, pattern;
 
@@ -1769,8 +1787,8 @@ app.post('/api/courses/generate', async (req, res) => {
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
       totalSeeds,
-      target,
-      known,
+      target: resolvedTarget,
+      known: resolvedKnown,
       strategy,
       startSeed,
       endSeed,
