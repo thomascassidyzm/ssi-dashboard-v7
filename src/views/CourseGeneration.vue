@@ -425,39 +425,74 @@ async function pollStatus() {
 
   while (isGenerating.value) {
     try {
-      const res = await fetch(`${apiBase}/api/courses/${courseCode.value}/status`, {
+      const res = await fetch(`${apiBase}/api/courses/${courseCode.value}/progress`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
 
       if (res.ok) {
-        const status = await res.json()
+        const progress = await res.json()
 
-        // Update phases
-        if (status.phase1 === 'complete') {
+        // Update phase statuses from progress data
+        const phaseData = progress.phases || {}
+
+        // Phase 1: Translation + LEGO Extraction
+        const p1Status = phaseData['1_translation']?.status || phaseData['1']?.status
+        if (p1Status === 'complete' || p1Status === 'completed') {
           phases.value[0].status = 'complete'
+          phases.value[0].detail = 'Seeds translated, LEGOs extracted'
+        } else if (p1Status === 'running') {
+          phases.value[0].status = 'active'
+          phases.value[0].detail = progress.recentLogs?.[0]?.message || 'Processing...'
+        }
+
+        // Phase 2: Conflict Resolution
+        const p2Status = phaseData['2']?.status
+        if (p2Status === 'complete' || p2Status === 'completed') {
+          phases.value[1].status = 'complete'
+          phases.value[1].detail = 'Conflicts resolved'
+        } else if (p2Status === 'running') {
           phases.value[1].status = 'active'
           currentPhase.value = 'Phase 2'
         }
-        if (status.phase2 === 'complete') {
-          phases.value[1].status = 'complete'
+
+        // Phase 3: Basket Generation
+        const p3Status = phaseData['3']?.status
+        if (p3Status === 'complete' || p3Status === 'completed') {
+          phases.value[2].status = 'complete'
+          phases.value[2].detail = 'Baskets generated'
+          isGenerating.value = false
+          isCompleted.value = true
+        } else if (p3Status === 'running') {
           phases.value[2].status = 'active'
           currentPhase.value = 'Phase 3'
         }
-        if (status.phase3 === 'complete') {
-          phases.value[2].status = 'complete'
+
+        // Update current phase from progress
+        if (progress.currentPhase) {
+          if (progress.currentPhase.includes('1')) currentPhase.value = 'Phase 1'
+          else if (progress.currentPhase === '2') currentPhase.value = 'Phase 2'
+          else if (progress.currentPhase === '3') currentPhase.value = 'Phase 3'
+        }
+
+        // Check for overall completion or error
+        if (progress.overallStatus === 'complete' || progress.overallStatus === 'completed') {
           isGenerating.value = false
           isCompleted.value = true
         }
 
-        if (status.error) {
-          throw new Error(status.error)
+        if (progress.error) {
+          throw new Error(progress.error)
         }
+      } else if (res.status === 404) {
+        // Course not found or no active progress - might be idle
+        console.log('[Progress] No active progress found')
       }
     } catch (err) {
-      errorMessage.value = err.message
+      console.error('[Progress] Poll error:', err.message)
+      // Don't show error to user for polling failures, just log
     }
 
-    await new Promise(r => setTimeout(r, 3000))
+    await new Promise(r => setTimeout(r, 2000)) // Poll every 2s
   }
 }
 
