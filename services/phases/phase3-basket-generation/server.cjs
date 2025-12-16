@@ -2482,17 +2482,21 @@ Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned
 
 /**
  * POST /launch-15-masters
- * 15×15×3 pattern: 15 masters × 15 workers × ~3 LEGOs = 675 LEGOs per wave
- * Similar to Phase 2's launch-full pattern
+ * DEPRECATED: Use /start with mode parameter instead
+ * Legacy endpoint - defaults now come from centralized config
  */
 app.post('/launch-15-masters', async (req, res) => {
+  // Get defaults from centralized config (full_course mode)
+  const fullCourseConfig = getModeConfig(MODES.FULL_COURSE);
+  const defaultPattern = fullCourseConfig.pattern;
+
   const {
     courseCode,
     target = 'spa',
     known = 'eng',
-    mastersCount = 15,
-    workersPerMaster = 15,
-    legosPerWorker = 3
+    mastersCount = defaultPattern.browsers,
+    workersPerMaster = defaultPattern.agents_per_browser,
+    legosPerWorker = defaultPattern.seeds_per_agent
   } = req.body;
 
   if (!courseCode) {
