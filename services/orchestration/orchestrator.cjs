@@ -23,6 +23,9 @@ const path = require('path');
 const axios = require('axios');
 const { execSync, spawn } = require('child_process');
 
+// Load centralized course mode configuration
+const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes } = require('../config/course-mode-loader.cjs');
+
 // Load .env file for AWS credentials etc.
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
@@ -589,7 +592,7 @@ app.post('/api/courses/create', async (req, res) => {
       targetLanguage,
       seedRange: {
         start: seedStart || 1,
-        end: seedEnd || 668
+        end: seedEnd || SEED_COUNTS.FULL_COURSE
       },
       seedCount: seedCount || (seedEnd - seedStart + 1),
       version: version || '1.0',
@@ -976,9 +979,9 @@ async function regenerateCourseManifest() {
  * Programmatically trigger a phase (used by auto-progression)
  * @param {string} courseCode - Course identifier
  * @param {number} phase - Phase number to trigger
- * @param {number} totalSeeds - Number of seeds (defaults to 668)
+ * @param {number} totalSeeds - Number of seeds (defaults to full course)
  */
-async function triggerPhase(courseCode, phase, totalSeeds = 668) {
+async function triggerPhase(courseCode, phase, totalSeeds = SEED_COUNTS.FULL_COURSE) {
   try {
     console.log(`\n🚀 Auto-triggering Phase ${phase} for ${courseCode}`);
 
@@ -1104,15 +1107,15 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         recommendations: [
           {
             type: 'test',
-            title: '✨ Quick Test (10 seeds)',
+            title: `✨ Quick Test (${SEED_COUNTS.QUICK_TEST} seeds)`,
             description: 'Test the pipeline with 10 random seeds (~5 min)',
-            action: { startSeed: Math.floor(Math.random() * 659) + 1, count: 10 }
+            action: { startSeed: Math.floor(Math.random() * (SEED_COUNTS.FULL_COURSE - SEED_COUNTS.QUICK_TEST)) + 1, count: SEED_COUNTS.QUICK_TEST }
           },
           {
             type: 'full',
-            title: '🚀 Full Course (668 seeds)',
+            title: `🚀 Full Course (${SEED_COUNTS.FULL_COURSE} seeds)`,
             description: 'Generate complete course (~2-3 hours)',
-            action: { startSeed: 1, endSeed: 668 }
+            action: { startSeed: 1, endSeed: SEED_COUNTS.FULL_COURSE }
           }
         ]
       });
@@ -1190,21 +1193,21 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     }
 
     // Extend course if not full
-    if (totalSeeds < 668) {
+    if (totalSeeds < SEED_COUNTS.FULL_COURSE) {
       recommendations.push({
         type: 'extend',
         title: `🚀 Extend to Full Course`,
-        description: `Add ${668 - totalSeeds} more seeds (currently ${totalSeeds})`,
-        action: { startSeed: totalSeeds + 1, endSeed: 668 }
+        description: `Add ${SEED_COUNTS.FULL_COURSE - totalSeeds} more seeds (currently ${totalSeeds})`,
+        action: { startSeed: totalSeeds + 1, endSeed: SEED_COUNTS.FULL_COURSE }
       });
     }
 
     // Quick test option
     recommendations.push({
       type: 'test',
-      title: '✨ Quick Test (10 seeds)',
+      title: `✨ Quick Test (${SEED_COUNTS.QUICK_TEST} seeds)`,
       description: 'Test pipeline with 10 random seeds',
-      action: { startSeed: Math.floor(Math.random() * 659) + 1, count: 10 }
+      action: { startSeed: Math.floor(Math.random() * (SEED_COUNTS.FULL_COURSE - SEED_COUNTS.QUICK_TEST)) + 1, count: SEED_COUNTS.QUICK_TEST }
     });
 
     // Nuclear option
@@ -1212,7 +1215,7 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       type: 'regenerate-all',
       title: '🔄 Regenerate Everything',
       description: 'Force regenerate all phases (nuclear option)',
-      action: { startSeed: 1, endSeed: 668, force: true }
+      action: { startSeed: 1, endSeed: SEED_COUNTS.FULL_COURSE, force: true }
     });
 
     res.json({
@@ -1389,7 +1392,7 @@ app.post('/api/courses/:courseCode/progress', async (req, res) => {
 
   // Initialize progress if not exists
   if (!courseProgress.has(courseCode)) {
-    initializeCourseProgress(courseCode, phase, updates.seedsTotal || 668);
+    initializeCourseProgress(courseCode, phase, updates.seedsTotal || SEED_COUNTS.FULL_COURSE);
   }
 
   // Update phase progress
@@ -1508,7 +1511,7 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
 
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
-      totalSeeds: totalSeeds || 668
+      totalSeeds: totalSeeds || SEED_COUNTS.FULL_COURSE
     });
 
     res.json({
@@ -1652,18 +1655,24 @@ function normalizePhaseIdentifier(phase) {
  * POST /api/courses/generate
  * Dashboard compatibility endpoint - triggers course generation
  * Routes to appropriate phase based on phaseSelection parameter
+ *
+ * Supports mode-based configuration:
+ *   - mode: 'quick_test' (10 seeds), 'mvp_course' (250 seeds), 'full_course' (668 seeds)
+ *   - If mode is provided, it overrides startSeed/endSeed
+ *   - Pattern from mode config is passed to phase servers
  */
 app.post('/api/courses/generate', async (req, res) => {
   const {
     target,
     known,
-    startSeed,
-    endSeed,
+    startSeed: providedStartSeed,
+    endSeed: providedEndSeed,
     phaseSelection = 'all',
     executionMode,
     strategy = 'balanced',
     courseCode: providedCourseCode,
-    modelSuffix  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
+    modelSuffix,  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
+    mode  // NEW: Course mode (quick_test, mvp_course, full_course)
   } = req.body;
 
   // Generate or use provided course code
@@ -1680,11 +1689,41 @@ app.post('/api/courses/generate', async (req, res) => {
     return res.status(400).json({ error: 'Either courseCode or both target and known are required' });
   }
 
-  const totalSeeds = endSeed - startSeed + 1;
+  // Determine seed range: mode takes precedence over explicit startSeed/endSeed
+  let startSeed, endSeed, totalSeeds, modeConfig, pattern;
+
+  if (mode) {
+    // Use mode configuration
+    try {
+      modeConfig = getModeConfig(mode);
+      startSeed = 1;
+      endSeed = modeConfig.seeds;
+      totalSeeds = modeConfig.seeds;
+      pattern = modeConfig.pattern;
+      console.log(`[Orchestrator] Using mode: ${modeConfig.name} (${totalSeeds} seeds)`);
+      console.log(`[Orchestrator] Pattern: ${pattern.browsers}b/${pattern.agents_per_browser}a/${pattern.seeds_per_agent}s`);
+    } catch (error) {
+      return res.status(400).json({
+        error: `Invalid mode: ${mode}`,
+        validModes: Object.values(MODES),
+        details: error.message
+      });
+    }
+  } else {
+    // Use explicit seed range (legacy behavior)
+    startSeed = providedStartSeed || 1;
+    endSeed = providedEndSeed || SEED_COUNTS.FULL_COURSE;
+    totalSeeds = endSeed - startSeed + 1;
+
+    // Auto-select pattern based on seed count
+    modeConfig = getPatternForSeeds(totalSeeds);
+    pattern = modeConfig.pattern;
+  }
 
   console.log(`\n📋 Course generation request from dashboard:`);
   console.log(`   Course: ${courseCode}`);
   console.log(`   Seeds: ${startSeed}-${endSeed} (${totalSeeds} seeds)`);
+  console.log(`   Mode: ${mode || 'custom'} (Pattern: ${pattern.browsers}b/${pattern.agents_per_browser}a/${pattern.seeds_per_agent}s)`);
   console.log(`   Phase: ${phaseSelection}`);
   console.log(`   Strategy: ${strategy}`);
 
@@ -1726,6 +1765,7 @@ app.post('/api/courses/generate', async (req, res) => {
     updatePhaseProgress(courseCode, phase, { status: 'running', startTime: new Date().toISOString() });
     addProgressLog(courseCode, `Starting ${phaseName} for ${totalSeeds} seeds`);
 
+    // Pass pattern configuration to phase server
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
       totalSeeds,
@@ -1733,7 +1773,9 @@ app.post('/api/courses/generate', async (req, res) => {
       known,
       strategy,
       startSeed,
-      endSeed
+      endSeed,
+      pattern,  // NEW: Pass parallelization pattern to phase server
+      mode: mode || 'custom'  // NEW: Pass mode for logging/tracking
     });
 
     res.json({
@@ -1749,6 +1791,26 @@ app.post('/api/courses/generate', async (req, res) => {
       error: error.message,
       courseCode
     });
+  }
+});
+
+/**
+ * GET /api/modes
+ * Get available course generation modes
+ * Returns mode configurations for UI display
+ */
+app.get('/api/modes', (req, res) => {
+  try {
+    const modes = getAllModes();
+    res.json({
+      modes,
+      constants: {
+        SEED_COUNTS,
+        MODES
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to load modes', details: error.message });
   }
 });
 
@@ -1941,7 +2003,7 @@ app.get('/api/languages', async (req, res) => {
 /**
  * GET /api/canonical-seeds
  * Serve canonical seeds to agents via ngrok
- * Query params: ?start=N&end=M or ?start=N&limit=M (defaults: all 668 seeds)
+ * Query params: ?start=N&end=M or ?start=N&limit=M (defaults: all seeds in full course)
  */
 app.get('/api/canonical-seeds', async (req, res) => {
   try {
@@ -1951,7 +2013,7 @@ app.get('/api/canonical-seeds', async (req, res) => {
     // Support both limit-based and range-based queries
     const start = parseInt(req.query.start) || 1;
     const end = parseInt(req.query.end);
-    const limit = end ? (end - start + 1) : (parseInt(req.query.limit) || 668);
+    const limit = end ? (end - start + 1) : (parseInt(req.query.limit) || SEED_COUNTS.FULL_COURSE);
 
     // Filter seeds by range (array is 0-indexed, but seed_id is 1-indexed)
     const startIdx = start - 1;
@@ -4784,7 +4846,7 @@ app.post('/phase3/start', async (req, res) => {
     const response = await axios.post(`${PHASE_SERVERS[3]}/start`, {
       courseCode,
       startSeed: startSeed || 1,
-      endSeed: endSeed || 668,
+      endSeed: endSeed || SEED_COUNTS.FULL_COURSE,
       target: target || courseCode.split('_for_')[0],
       known: known || courseCode.split('_for_')[1],
       stagingOnly

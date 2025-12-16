@@ -24,6 +24,9 @@ const { promisify } = require('util');
 const execAsync = promisify(require('child_process').exec);
 const { generateIntroductions } = require('./generate-introductions.cjs');
 
+// Load centralized course mode configuration
+const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
+
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3458;
 const VFS_ROOT = process.env.VFS_ROOT;
@@ -83,30 +86,19 @@ function getLanguageName(code) {
 /**
  * Calculate segmentation strategy based on course size
  *
- * Strategies (matching Phase 5's parallelization):
- * - SMALL_TEST: ≤30 seeds → 5-6 seeds/agent (6 agents for 30 seeds)
- * - MEDIUM: 31-100 seeds → 5-6 seeds/agent
- * - LARGE: >100 seeds → 10 seeds/agent (67 agents for 668 seeds)
+ * Uses centralized config from course-mode-loader.cjs:
+ * - quick_test (≤10 seeds): 5 browsers × 2 agents × 1 seed = 10
+ * - mvp_course (≤250 seeds): 5 browsers × 5 agents × 10 seeds = 250
+ * - full_course (>250 seeds): 9 browsers × 5 agents × 15 seeds = 675
  */
 function calculateSegmentation(totalSeeds) {
-  // 3-tier parallelization: BROWSERS × AGENTS × SEEDS
-  // Two modes only:
-  // - Test mode (≤30 seeds): 6 browsers × 5 agents × 1 seed = 30
-  // - Production mode (>30 seeds): 15 browsers × 15 agents × 3 seeds = 675
+  // Get the appropriate mode configuration based on seed count
+  const modeConfig = getPatternForSeeds(totalSeeds);
+  const { pattern } = modeConfig;
 
-  let browsers, agentsPerBrowser, seedsPerAgent;
-
-  if (totalSeeds <= 30) {
-    // TEST MODE: 6/5/1
-    browsers = 6;
-    agentsPerBrowser = 5;
-    seedsPerAgent = 1;
-  } else {
-    // PRODUCTION MODE: 15/15/3
-    browsers = 15;
-    agentsPerBrowser = 15;
-    seedsPerAgent = 3;
-  }
+  const browsers = pattern.browsers;
+  const agentsPerBrowser = pattern.agents_per_browser;
+  const seedsPerAgent = pattern.seeds_per_agent;
 
   // Calculate segments (each browser gets a segment)
   const segments = [];
@@ -130,7 +122,7 @@ function calculateSegmentation(totalSeeds) {
   }
 
   const totalAgents = segments.reduce((sum, seg) => sum + seg.agentCount, 0);
-  const capacity = browsers * agentsPerBrowser * seedsPerAgent;
+  const capacity = modeConfig.capacity;
 
   return {
     totalSeeds,
@@ -141,7 +133,8 @@ function calculateSegmentation(totalSeeds) {
     totalAgents,
     capacity,
     segments,
-    strategy: totalSeeds <= 30 ? 'TEST_6_5_1' : 'PRODUCTION_15_15_3'
+    strategy: `${modeConfig.name.toUpperCase().replace(' ', '_')}_${browsers}_${agentsPerBrowser}_${seedsPerAgent}`,
+    modeName: modeConfig.name
   };
 }
 
@@ -751,15 +744,18 @@ async function runAutomaticCollisionCheck(courseCode, job) {
     const violationsBySeed = {};
     let totalViolations = 0;
 
-    // Scan LEGOs to build LUT (only first 100 seeds)
-    // After 100 seeds, learners have enough exposure to handle ambiguity
-    // and can benefit from larger chunks anyway
+    // Define early learning threshold: LUT violations only matter in early seeds
+    // After this threshold, learners have enough exposure to handle ambiguity
+    // Use MVP course size as a reasonable threshold for "early learning"
+    const EARLY_LEARNING_THRESHOLD = SEED_COUNTS.MVP_COURSE; // 250 seeds
+
+    // Scan LEGOs to build LUT (only first N seeds)
     legoPairs.seeds.forEach((seed) => {
       const seedId = seed.seed_id;
       const seedNum = parseInt(seedId.replace('S', ''));
 
-      // Only check LUT violations in first 100 seeds
-      if (seedNum > 100) return;
+      // Only check LUT violations in early learning seeds
+      if (seedNum > EARLY_LEARNING_THRESHOLD) return;
 
       seed.legos.forEach((lego) => {
         const knownPhrase = lego.known;

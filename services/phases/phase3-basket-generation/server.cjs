@@ -39,6 +39,7 @@ const courseDataService = require('../../course-data-service.cjs');
 
 // Load configuration
 const { loadConfig } = require('../../shared/config-loader.cjs');
+const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
 
 /**
  * Load a prompt template and substitute placeholders
@@ -772,58 +773,34 @@ app.post('/start', async (req, res) => {
     job.uploads.expectedLegos = targetLegos.length;
 
     // STEP 2: MASTER/WORKER CONFIGURATION - DYNAMIC SCALING
-    // Scale from 1×1 (tiny runs) up to 15×15×3 (full course)
+    // Use centralized config for parallelization patterns
     const config = loadConfig();
-    const SEEDS_PER_WORKER = config.phase3_basket_generation.seeds_per_agent || 3;
-    const MAX_BROWSERS = 15;
-    const MAX_WORKERS_PER_BROWSER = 15;
 
     // Count unique seeds to process
     const uniqueSeeds = new Set(targetLegos.map(l => l.seed));
     const seedsToProcess = uniqueSeeds.size;
 
-    // Calculate browser/worker distribution dynamically based on workload
-    let masterCount, workersPerMaster;
+    // Get the appropriate pattern based on seed count from centralized config
+    let masterCount, workersPerMaster, SEEDS_PER_WORKER;
 
     if (seedsToProcess === 0) {
       masterCount = 0;
       workersPerMaster = 0;
+      SEEDS_PER_WORKER = 0;
     } else {
-      // Calculate total workers needed (target SEEDS_PER_WORKER seeds each)
-      const workersNeeded = Math.ceil(seedsToProcess / SEEDS_PER_WORKER);
+      // Use centralized config to determine parallelization pattern
+      const modeConfig = getPatternForSeeds(seedsToProcess);
+      const pattern = modeConfig.pattern;
 
-      // Distribute workers across browsers
-      // Strategy: prefer fewer browsers with more workers (reduces browser spawn overhead)
-      if (workersNeeded <= 5) {
-        // Tiny run: 1 browser
-        masterCount = 1;
-        workersPerMaster = Math.max(1, workersNeeded);
-      } else if (workersNeeded <= 15) {
-        // Small run: 1-3 browsers
-        masterCount = Math.ceil(workersNeeded / 5);
-        workersPerMaster = Math.ceil(workersNeeded / masterCount);
-      } else if (workersNeeded <= 50) {
-        // Medium run: 3-5 browsers
-        masterCount = Math.min(5, Math.ceil(workersNeeded / 10));
-        workersPerMaster = Math.ceil(workersNeeded / masterCount);
-      } else if (workersNeeded <= 150) {
-        // Large run: 5-10 browsers
-        masterCount = Math.min(10, Math.ceil(workersNeeded / 15));
-        workersPerMaster = Math.ceil(workersNeeded / masterCount);
-      } else {
-        // Full course: up to 15×15
-        masterCount = Math.min(MAX_BROWSERS, Math.ceil(workersNeeded / MAX_WORKERS_PER_BROWSER));
-        workersPerMaster = Math.min(MAX_WORKERS_PER_BROWSER, Math.ceil(workersNeeded / masterCount));
-      }
+      masterCount = pattern.browsers;
+      workersPerMaster = pattern.agents_per_browser;
+      SEEDS_PER_WORKER = pattern.seeds_per_agent;
 
-      // Cap at maximums
-      masterCount = Math.min(masterCount, MAX_BROWSERS);
-      workersPerMaster = Math.min(workersPerMaster, MAX_WORKERS_PER_BROWSER);
-
-      console.log(`\n[Phase 3] 📊 Dynamic Scaling:`);
+      console.log(`\n[Phase 3] 📊 Dynamic Scaling (from centralized config):`);
+      console.log(`[Phase 3]    Mode: ${modeConfig.name} (${modeConfig.description})`);
       console.log(`[Phase 3]    Seeds to process: ${seedsToProcess}`);
-      console.log(`[Phase 3]    Workers needed: ${workersNeeded} (at ${SEEDS_PER_WORKER} seeds/worker)`);
-      console.log(`[Phase 3]    Scaled to: ${masterCount} browsers × ${workersPerMaster} workers = ${masterCount * workersPerMaster} workers`);
+      console.log(`[Phase 3]    Pattern: ${masterCount} browsers × ${workersPerMaster} workers × ${SEEDS_PER_WORKER} seeds/worker`);
+      console.log(`[Phase 3]    Total capacity: ${modeConfig.capacity} seeds`);
     }
 
     const totalWorkers = masterCount * workersPerMaster;
@@ -2030,7 +2007,7 @@ app.post('/launch-12-masters', async (req, res) => {
 
     // Calculate seed-level statistics
     const seedStats = {};
-    for (let i = 1; i <= 668; i++) {
+    for (let i = 1; i <= SEED_COUNTS.FULL_COURSE; i++) {
       const seedId = `S${String(i).padStart(4, '0')}`;
       seedStats[seedId] = { total: 0, complete: 0, missing: 0 };
     }
@@ -2069,7 +2046,7 @@ app.post('/launch-12-masters', async (req, res) => {
 
     console.log(`[Phase 3]   Total introductions: ${totalIntroductions}`);
     console.log(`[Phase 3]   Existing baskets: ${Object.keys(existingBaskets).length}`);
-    console.log(`[Phase 3]   Complete seeds: ${completeSeeds.length}/668`);
+    console.log(`[Phase 3]   Complete seeds: ${completeSeeds.length}/${SEED_COUNTS.FULL_COURSE}`);
     console.log(`[Phase 3]   Incomplete seeds: ${incompleteSeeds.length}`);
     console.log(`[Phase 3]   Empty seeds: ${emptySeeds.length}`);
 
@@ -2149,7 +2126,7 @@ app.post('/launch-12-masters', async (req, res) => {
         total_missing: totalMissing,
         completion_percentage: totalIntroductions > 0 ? Math.round((Object.keys(existingBaskets).length / totalIntroductions) * 100) : 0,
         seeds: {
-          total: 668,
+          total: SEED_COUNTS.FULL_COURSE,
           complete: completeSeeds.length,
           incomplete: incompleteSeeds.length,
           empty: emptySeeds.length
@@ -2180,7 +2157,7 @@ app.post('/launch-12-masters', async (req, res) => {
     const manifestPath = path.join(baseCourseDir, 'phase3_lego_distribution_manifest.json');
     await fs.writeJson(manifestPath, manifest, { spaces: 2 });
     console.log(`[Phase 3] ✅ Manifest saved: ${totalMissing} LEGOs across ${actualBrowsers} browsers`);
-    console.log(`[Phase 3]   Course completion: ${manifest.course_state.completion_percentage}% (${completeSeeds.length}/668 seeds complete)`);
+    console.log(`[Phase 3]   Course completion: ${manifest.course_state.completion_percentage}% (${completeSeeds.length}/${SEED_COUNTS.FULL_COURSE} seeds complete)`);
 
     // STEP 5: Generate browser prompts
     console.log(`\n[Phase 3] Step 5: Generating ${actualBrowsers} browser prompts...`);

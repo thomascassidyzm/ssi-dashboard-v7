@@ -103,41 +103,42 @@
         </section>
 
 
-        <!-- Smart Analysis (when available) -->
-        <section v-if="analysis" class="flow-section">
+        <!-- Generation Mode Selection -->
+        <section v-if="knownLanguage && targetLanguage" class="flow-section">
           <div class="section-label">
-            <span class="label-text">SMART RECOMMENDATIONS</span>
+            <span class="label-text">GENERATION MODE</span>
             <div class="label-line"></div>
           </div>
 
-          <div class="analysis-card">
-            <div class="analysis-status">
-              <div class="status-item" :class="{ complete: analysis.phase1?.status === 'complete' }">
-                <span class="status-dot"></span>
-                <span>Phase 1</span>
-              </div>
-              <div class="status-item" :class="{ complete: analysis.phase2?.status === 'complete' }">
-                <span class="status-dot"></span>
-                <span>Phase 2</span>
-              </div>
-              <div class="status-item" :class="{ complete: analysis.phase3?.status === 'complete' }">
-                <span class="status-dot"></span>
-                <span>Phase 3</span>
-              </div>
-            </div>
-
-            <div class="recommendations">
+          <div class="mode-selection-card">
+            <div class="mode-options">
               <button
-                v-for="rec in analysis.recommendations?.slice(0, 3)"
-                :key="rec.title"
-                @click="selectRecommendation(rec)"
-                class="rec-button"
+                v-for="mode in generationModes"
+                :key="mode.id"
+                @click="selectMode(mode)"
+                :class="['mode-option', { active: selectedMode?.id === mode.id }]"
               >
-                <span class="rec-icon">{{ getRecIcon(rec.type) }}</span>
-                <span class="rec-text">{{ rec.title }}</span>
-                <svg class="rec-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <div class="mode-header">
+                  <span class="mode-icon">{{ mode.icon }}</span>
+                  <span class="mode-name">{{ mode.name }}</span>
+                </div>
+                <div class="mode-details">
+                  <p class="mode-description">{{ mode.description }}</p>
+                  <div class="mode-specs">
+                    <div class="spec-item">
+                      <span class="spec-label">Seeds:</span>
+                      <span class="spec-value">{{ mode.seedCount }}</span>
+                    </div>
+                    <div class="spec-item">
+                      <span class="spec-label">Pattern:</span>
+                      <span class="spec-value">{{ mode.pattern }}</span>
+                    </div>
+                    <div class="spec-item">
+                      <span class="spec-label">Time:</span>
+                      <span class="spec-value">~{{ mode.estimatedTime }}</span>
+                    </div>
+                  </div>
+                </div>
               </button>
             </div>
           </div>
@@ -145,16 +146,6 @@
 
         <!-- Action Buttons -->
         <section class="flow-section actions">
-          <button
-            v-if="!analysis && knownLanguage && targetLanguage"
-            @click="analyzeCourse"
-            :disabled="analyzing"
-            class="btn-secondary"
-          >
-            <span v-if="analyzing" class="btn-spinner"></span>
-            <span>{{ analyzing ? 'Analyzing...' : 'Analyze Existing Progress' }}</span>
-          </button>
-
           <button
             @click="startGeneration"
             :disabled="!canStart || isGenerating"
@@ -249,9 +240,38 @@ const languageNames = {
 // Execution mode (simplified - server handles execution)
 const executionMode = ref('server')
 
-// Analysis
-const analysis = ref(null)
-const analyzing = ref(false)
+// Generation modes (three-mode system)
+const generationModes = ref([
+  {
+    id: 'quick',
+    name: 'Quick Test',
+    icon: '⚡',
+    description: 'Rapid testing and validation',
+    seedCount: 10,
+    pattern: '5 browsers × 2 agents × 1 seed',
+    estimatedTime: '2 min'
+  },
+  {
+    id: 'mvp',
+    name: 'MVP Course',
+    icon: '🎯',
+    description: 'Minimum viable production course',
+    seedCount: 250,
+    pattern: '5 browsers × 5 agents × 10 seeds',
+    estimatedTime: '15 min'
+  },
+  {
+    id: 'full',
+    name: 'Full Course',
+    icon: '🚀',
+    description: 'Complete course production',
+    seedCount: 668,
+    pattern: '9 browsers × 5 agents × 15 seeds',
+    estimatedTime: '20 min'
+  }
+])
+
+const selectedMode = ref(null)
 
 // Generation state
 const isGenerating = ref(false)
@@ -279,7 +299,7 @@ const displayName = computed(() => {
 })
 
 const canStart = computed(() => {
-  return knownLanguage.value && targetLanguage.value && executionMode.value
+  return knownLanguage.value && targetLanguage.value && selectedMode.value
 })
 
 // Load languages on mount
@@ -327,47 +347,11 @@ async function loadLanguages() {
   }
 }
 
-async function analyzeCourse() {
-  if (!courseCode.value) return
-  analyzing.value = true
-
-  try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const res = await fetch(`${apiBase}/api/courses/${courseCode.value}/analyze`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (res.ok) {
-      analysis.value = await res.json()
-    }
-  } catch (err) {
-    console.error('Analysis failed:', err)
-  } finally {
-    analyzing.value = false
-  }
+function selectMode(mode) {
+  selectedMode.value = mode
 }
 
-// Selected recommendation (affects seed range)
-const selectedRecommendation = ref(null)
-
-function selectRecommendation(rec) {
-  // Apply recommendation settings and start
-  console.log('Selected recommendation:', rec)
-  selectedRecommendation.value = rec
-  startGeneration(rec)
-}
-
-function getRecIcon(type) {
-  const icons = {
-    'regenerate-flagged': '🚩',
-    'test': '✨',
-    'resume-baskets': '📦',
-    'resume': '📝',
-    'full': '🚀'
-  }
-  return icons[type] || '➡️'
-}
-
-async function startGeneration(rec = null) {
+async function startGeneration() {
   if (!canStart.value) return
 
   isGenerating.value = true
@@ -378,22 +362,7 @@ async function startGeneration(rec = null) {
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
-    // Determine seed range from recommendation or default
-    let startSeed = 1
-    let endSeed = 668  // Full course default
-
-    if (rec) {
-      // Use recommendation's settings
-      if (rec.type === 'test') {
-        startSeed = 1
-        endSeed = 10  // Quick test: 10 seeds
-      } else if (rec.startSeed && rec.endSeed) {
-        startSeed = rec.startSeed
-        endSeed = rec.endSeed
-      }
-    }
-
-    // Start generation with orchestrator-expected parameters
+    // Start generation with mode parameter
     const res = await fetch(`${apiBase}/api/courses/generate`, {
       method: 'POST',
       headers: {
@@ -404,11 +373,7 @@ async function startGeneration(rec = null) {
         courseCode: courseCode.value,
         target: targetLanguage.value,
         known: knownLanguage.value,
-        startSeed,
-        endSeed,
-        phaseSelection: 'all',
-        executionMode: executionMode.value,
-        strategy: 'balanced'
+        mode: selectedMode.value.id
       })
     })
 
@@ -475,7 +440,7 @@ function retryGeneration() {
 function resetForm() {
   isGenerating.value = false
   isCompleted.value = false
-  analysis.value = null
+  selectedMode.value = null
   phases.value.forEach(p => p.status = 'pending')
 }
 </script>
@@ -778,177 +743,99 @@ function resetForm() {
   font-weight: 500;
 }
 
-/* Mode Cards */
-.mode-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-
-.mode-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  padding: 1rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: left;
-}
-
-.mode-card:hover {
-  border-color: var(--border-light);
-  background: var(--elevated);
-}
-
-.mode-card.active {
-  border-color: var(--accent);
-  background: var(--accent-glow);
-}
-
-.mode-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.mode-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.mode-name {
-  display: block;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.mode-desc {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.125rem;
-}
-
-.mode-badge {
-  position: absolute;
-  top: -8px;
-  right: 12px;
-  padding: 0.25rem 0.5rem;
-  background: #3b82f6;
-  border-radius: 4px;
-  font-size: 0.625rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: white;
-}
-
-.mode-check {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.mode-check svg {
-  width: 12px;
-  height: 12px;
-  color: white;
-}
-
-/* Analysis Card */
-.analysis-card {
+/* Mode Selection Card */
+.mode-selection-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
-.analysis-status {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+.mode-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-}
-
-.status-item.complete {
-  color: var(--accent);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border-light);
-}
-
-.status-item.complete .status-dot {
-  background: var(--accent);
-}
-
-.recommendations {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.rec-button {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+.mode-option {
   background: var(--elevated);
-  border: 1px solid transparent;
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
   cursor: pointer;
   transition: all 0.2s;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.rec-button:hover {
+.mode-option:hover {
+  border-color: var(--border-light);
+  background: var(--surface);
+  transform: translateY(-2px);
+}
+
+.mode-option.active {
   border-color: var(--accent);
   background: var(--accent-glow);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
-.rec-icon {
-  font-size: 1.25rem;
+.mode-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.rec-text {
-  flex: 1;
-  font-size: 0.875rem;
+.mode-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.mode-name {
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text);
 }
 
-.rec-arrow {
-  width: 16px;
-  height: 16px;
-  color: var(--text-muted);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: all 0.2s;
+.mode-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.rec-button:hover .rec-arrow {
-  opacity: 1;
-  transform: translateX(0);
+.mode-description {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.mode-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.spec-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.spec-value {
+  color: var(--text);
+  font-weight: 600;
+  font-family: 'SF Mono', Monaco, monospace;
 }
 
 /* Action Buttons */
@@ -1196,7 +1083,7 @@ function resetForm() {
     padding: 0.5rem 0;
   }
 
-  .mode-cards {
+  .mode-options {
     grid-template-columns: 1fr;
   }
 

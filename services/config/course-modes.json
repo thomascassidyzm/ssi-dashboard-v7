@@ -1,0 +1,77 @@
+{
+  "$schema": "./course-modes.schema.json",
+  "version": "2.0.0",
+  "description": "Centralized course generation modes - SINGLE SOURCE OF TRUTH",
+  "lastUpdated": "2025-12-16",
+
+  "modes": {
+    "quick_test": {
+      "name": "Quick Test",
+      "description": "Fast validation with maximum parallelization",
+      "seeds": 10,
+      "pattern": {
+        "browsers": 5,
+        "agents_per_browser": 2,
+        "seeds_per_agent": 1
+      },
+      "capacity": 10,
+      "estimated_time_minutes": 2,
+      "use_case": "Validation, fast feedback loop"
+    },
+
+    "mvp_course": {
+      "name": "MVP Course",
+      "description": "Big 10 language pairs - production MVP",
+      "seeds": 250,
+      "pattern": {
+        "browsers": 5,
+        "agents_per_browser": 5,
+        "seeds_per_agent": 10
+      },
+      "capacity": 250,
+      "estimated_time_minutes": 15,
+      "use_case": "Production courses for Big 10 language pairs"
+    },
+
+    "full_course": {
+      "name": "Full Course",
+      "description": "Complete legacy-scale course",
+      "seeds": 668,
+      "pattern": {
+        "browsers": 9,
+        "agents_per_browser": 5,
+        "seeds_per_agent": 15
+      },
+      "capacity": 675,
+      "estimated_time_minutes": 20,
+      "use_case": "Complete courses (legacy Spanish for English scale)"
+    }
+  },
+
+  "defaults": {
+    "browser_spawn_delay_ms": 8000,
+    "agent_timeout_ms": 300000,
+    "max_retries": 3,
+    "retry_backoff_ms": 5000
+  },
+
+  "phase_overrides": {
+    "phase1_translation": {
+      "comment": "Phase 1 can use same patterns - translation is lightweight"
+    },
+    "phase2_conflict_resolution": {
+      "comment": "Phase 2 uses same patterns - LEGO extraction is medium weight"
+    },
+    "phase3_basket_generation": {
+      "comment": "Phase 3 is token-heavy - may need reduced seeds_per_agent",
+      "seeds_per_agent_multiplier": 1.0
+    }
+  },
+
+  "deprecated": {
+    "30_seed_mode": {
+      "reason": "Replaced by quick_test (10) and mvp_course (250)",
+      "migration": "Use quick_test for validation, mvp_course for production"
+    }
+  }
+}

@@ -5,7 +5,7 @@
  *
  * Responsibilities:
  * - Spawn parallel Claude Code browser sessions for translation
- * - Coordinate multiple translation agents (typically 70 seeds/agent)
+ * - Coordinate multiple translation agents (parallelization from centralized config)
  * - Watch for phase1-* branches
  * - Merge translation outputs into seed_pairs.json
  * - Validate translation quality
@@ -13,6 +13,9 @@
  * - Report completion to orchestrator
  *
  * Port: 3457 (auto-configured by start-automation.js)
+ *
+ * Uses centralized config from services/config/course-modes.json
+ * Supports modes: quick_test (10 seeds), mvp_course (250 seeds), full_course (668 seeds)
  */
 
 const express = require('express');
@@ -23,6 +26,9 @@ const fs = require('fs-extra');
 const path = require('path');
 const { promisify } = require('util');
 const execAsync = promisify(require('child_process').exec);
+
+// Import centralized config - SINGLE SOURCE OF TRUTH
+const { getModeConfig, getPatternForSeeds, getParallelizationPattern, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3457;
@@ -178,9 +184,10 @@ The output is a JSON array of seed objects (see Output Format above).
  *
  * Body: {
  *   courseCode: string,
- *   totalSeeds: number,
- *   target: string,    // e.g., 'spa', 'cmn'
- *   known: string,     // e.g., 'eng'
+ *   mode?: string,        // 'quick_test', 'mvp_course', 'full_course' (optional)
+ *   totalSeeds?: number,  // Alternative to mode (for custom seed counts)
+ *   target: string,       // e.g., 'spa', 'cmn'
+ *   known: string,        // e.g., 'eng'
  *   startSeed?: number,
  *   endSeed?: number
  * }
@@ -188,18 +195,49 @@ The output is a JSON array of seed objects (see Output Format above).
 app.post('/start', async (req, res) => {
   const {
     courseCode,
-    totalSeeds,
+    mode,
+    totalSeeds: customSeedCount,
     target,
     known,
     startSeed = 1,
-    endSeed = totalSeeds
+    endSeed
   } = req.body;
 
-  if (!courseCode || !totalSeeds || !target || !known) {
+  if (!courseCode || !target || !known) {
     return res.status(400).json({
-      error: 'courseCode, totalSeeds, target, and known are required'
+      error: 'courseCode, target, and known are required'
     });
   }
+
+  // Determine seed count and mode
+  let totalSeeds;
+  let modeConfig;
+  let modeName;
+
+  if (mode) {
+    // Mode explicitly provided (quick_test, mvp_course, full_course)
+    try {
+      modeConfig = getModeConfig(mode);
+      totalSeeds = modeConfig.seeds;
+      modeName = modeConfig.name;
+    } catch (err) {
+      return res.status(400).json({
+        error: err.message,
+        validModes: Object.values(MODES)
+      });
+    }
+  } else if (customSeedCount) {
+    // Custom seed count provided
+    totalSeeds = customSeedCount;
+    modeConfig = getPatternForSeeds(totalSeeds);
+    modeName = `${modeConfig.name} (${totalSeeds} seeds)`;
+  } else {
+    return res.status(400).json({
+      error: 'Either mode or totalSeeds must be provided'
+    });
+  }
+
+  const finalEndSeed = endSeed || totalSeeds;
 
   // Check if already running
   if (activeJobs.has(courseCode)) {
@@ -208,27 +246,51 @@ app.post('/start', async (req, res) => {
     });
   }
 
+  // Get parallelization pattern from config
+  const pattern = modeConfig.pattern;
+  const { browsers, agents_per_browser, seeds_per_agent } = pattern;
+
   console.log(`\n🚀 Starting Phase 1 for ${courseCode}`);
+  console.log(`   Mode: ${modeName}`);
   console.log(`   Target: ${getLanguageName(target)}`);
   console.log(`   Known: ${getLanguageName(known)}`);
   console.log(`   Total seeds: ${totalSeeds}`);
-  console.log(`   Range: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+  console.log(`   Range: S${String(startSeed).padStart(4, '0')}-S${String(finalEndSeed).padStart(4, '0')}`);
+  console.log(`   Pattern: ${browsers} browsers × ${agents_per_browser} agents × ${seeds_per_agent} seeds = ${browsers * agents_per_browser * seeds_per_agent} capacity`);
 
-  // Sequential processing for consistency
-  const seedsPerAgent = totalSeeds;
-  const agentCount = 1;
+  // For small tests (quick_test), use the parallel pattern
+  // For larger courses, use sequential mode for now
+  let agentCount;
+  let seedsPerAgent;
 
-  console.log(`   Mode: Sequential (1 agent for all ${totalSeeds} seeds)`);
+  if (totalSeeds <= SEED_COUNTS.QUICK_TEST) {
+    // Quick test mode - use parallel pattern
+    agentCount = browsers * agents_per_browser;
+    seedsPerAgent = seeds_per_agent;
+    console.log(`   Mode: Parallel (${agentCount} agents, ${seedsPerAgent} seeds each)`);
+  } else {
+    // Sequential processing for consistency (larger courses)
+    agentCount = 1;
+    seedsPerAgent = totalSeeds;
+    console.log(`   Mode: Sequential (1 agent for all ${totalSeeds} seeds)`);
+  }
 
   // Initialize job state
   const job = {
     courseCode,
+    mode: modeName,
     totalSeeds,
     target,
     known,
     startSeed,
-    endSeed,
+    endSeed: finalEndSeed,
     agentCount,
+    pattern: {
+      browsers,
+      agents_per_browser,
+      seeds_per_agent,
+      capacity: browsers * agents_per_browser * seeds_per_agent
+    },
     status: 'spawning_orchestrator',
     startedAt: new Date().toISOString(),
     orchestratorSpawned: false,
@@ -707,23 +769,52 @@ async function notifyOrchestrator(courseCode, status) {
 
 /**
  * POST /launch-15-masters
- * Launch 15-master orchestration for Phase 1 (Translation + LEGO Extraction)
+ * Launch multi-master orchestration for Phase 1 (Translation + LEGO Extraction)
+ * Uses centralized config to determine parallelization pattern
  *
- * 15 masters × 15 workers × 3 seeds = 675 seeds (covers 668)
+ * DEPRECATED: Use POST /start with mode='full_course' instead
  */
 app.post('/launch-15-masters', async (req, res) => {
-  const { courseCode, target, known, totalSeeds = 668 } = req.body;
+  const { courseCode, target, known, mode = 'full_course', totalSeeds: customSeedCount } = req.body;
 
   if (!courseCode || !target || !known) {
     return res.status(400).json({ error: 'courseCode, target, known required' });
   }
 
+  // Determine seed count and pattern from config
+  let totalSeeds;
+  let modeConfig;
+  let modeName;
+
+  if (mode) {
+    try {
+      modeConfig = getModeConfig(mode);
+      totalSeeds = customSeedCount || modeConfig.seeds;
+      modeName = modeConfig.name;
+    } catch (err) {
+      return res.status(400).json({
+        error: err.message,
+        validModes: Object.values(MODES)
+      });
+    }
+  } else {
+    totalSeeds = customSeedCount || SEED_COUNTS.FULL_COURSE;
+    modeConfig = getPatternForSeeds(totalSeeds);
+    modeName = modeConfig.name;
+  }
+
+  const pattern = modeConfig.pattern;
+  const { browsers: mastersCount, agents_per_browser: workersPerMaster, seeds_per_agent: seedsPerWorker } = pattern;
+  const seedsPerMaster = workersPerMaster * seedsPerWorker;
+
   console.log(`\n[Phase 1] ====================================`);
-  console.log(`[Phase 1] 15-MASTER PARALLEL LAUNCH`);
+  console.log(`[Phase 1] MULTI-MASTER PARALLEL LAUNCH`);
   console.log(`[Phase 1] ====================================`);
   console.log(`[Phase 1] Course: ${courseCode}`);
+  console.log(`[Phase 1] Mode: ${modeName}`);
   console.log(`[Phase 1] Target: ${target}, Known: ${known}`);
   console.log(`[Phase 1] Total Seeds: ${totalSeeds}`);
+  console.log(`[Phase 1] Pattern: ${mastersCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds = ${mastersCount * workersPerMaster * seedsPerWorker} capacity`);
 
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
   const courseDir = path.join(VFS_ROOT, courseCode);
@@ -737,13 +828,7 @@ app.post('/launch-15-masters', async (req, res) => {
     return res.status(500).json({ error: `Failed to read PROMPT.md: ${err.message}` });
   }
 
-  // Distribution: 15 masters, each spawns 15 workers, each does 3 seeds
-  const mastersCount = 15;
-  const workersPerMaster = 15;
-  const seedsPerWorker = 3;
-  const seedsPerMaster = workersPerMaster * seedsPerWorker; // 45 seeds per master
-
-  console.log(`[Phase 1] Distribution: ${mastersCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
+  console.log(`[Phase 1] Distribution from config: ${mastersCount} masters × ${workersPerMaster} workers × ${seedsPerWorker} seeds`);
 
   // Generate master assignments
   const masters = [];
@@ -1158,22 +1243,49 @@ async function mergeBatches(courseCode) {
  *
  * 1. Scans batch files to find processed seeds
  * 2. Compares against totalSeeds to find gaps
- * 3. Groups missing seeds into masters (5 workers each, 3 seeds per worker)
+ * 3. Groups missing seeds into masters using centralized config pattern
  * 4. Generates prompts with EXACT seed IDs (not ranges)
  * 5. Launches Safari windows
  */
 app.post('/resume', async (req, res) => {
-  const { courseCode, target, known, totalSeeds = 668, workersPerMaster = 5, seedsPerWorker = 3 } = req.body;
+  const { courseCode, target, known, mode = 'mvp_course', totalSeeds: customSeedCount } = req.body;
 
   if (!courseCode || !target || !known) {
     return res.status(400).json({ error: 'courseCode, target, known required' });
   }
 
+  // Determine seed count and pattern from config
+  let totalSeeds;
+  let modeConfig;
+  let modeName;
+
+  if (mode) {
+    try {
+      modeConfig = getModeConfig(mode);
+      totalSeeds = customSeedCount || modeConfig.seeds;
+      modeName = modeConfig.name;
+    } catch (err) {
+      return res.status(400).json({
+        error: err.message,
+        validModes: Object.values(MODES)
+      });
+    }
+  } else {
+    totalSeeds = customSeedCount || SEED_COUNTS.MVP_COURSE;
+    modeConfig = getPatternForSeeds(totalSeeds);
+    modeName = modeConfig.name;
+  }
+
+  const pattern = modeConfig.pattern;
+  const { agents_per_browser: workersPerMaster, seeds_per_agent: seedsPerWorker } = pattern;
+
   console.log(`\n[Phase 1] ====================================`);
   console.log(`[Phase 1] RESUME / GAP-FILL MODE`);
   console.log(`[Phase 1] ====================================`);
   console.log(`[Phase 1] Course: ${courseCode}`);
+  console.log(`[Phase 1] Mode: ${modeName}`);
   console.log(`[Phase 1] Total Seeds Expected: ${totalSeeds}`);
+  console.log(`[Phase 1] Pattern: ${workersPerMaster} workers × ${seedsPerWorker} seeds (from config)`);
 
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
   const courseDir = path.join(VFS_ROOT, courseCode);
