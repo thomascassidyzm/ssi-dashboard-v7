@@ -144,7 +144,8 @@ function getBrowserAppName(browser) {
 }
 
 /**
- * Spawn multiple Claude Code on the Web agents in parallel
+ * Spawn multiple Claude Code on the Web agents SEQUENTIALLY
+ * (Cannot be parallel - clipboard is shared resource!)
  * @param {Array<string>} prompts - Array of prompts for each agent
  * @param {Object} options - Configuration options
  * @returns {Promise<Array<{agentId: number, success: boolean, tabId: string}>>}
@@ -152,43 +153,43 @@ function getBrowserAppName(browser) {
 async function spawnParallelAgents(prompts, options = {}) {
   const {
     browser = 'chrome',
-    delayBetweenAgents = 8000, // 8 seconds between spawns - 2s causes tab failures
-    batchSize = 10 // Spawn 10 at a time
+    delayBetweenAgents = 6000, // 6 seconds between spawns (clipboard + paste time)
+    batchSize = 10 // Ignored - must be sequential due to clipboard
   } = options;
 
-  console.log(`[Parallel Spawn] Starting ${prompts.length} agents in batches of ${batchSize}...`);
+  console.log(`[Sequential Spawn] Starting ${prompts.length} agents with ${delayBetweenAgents}ms delay...`);
+  console.log(`[Sequential Spawn] NOTE: Sequential spawn required - clipboard is shared resource`);
 
   const results = [];
 
-  // Spawn in batches to avoid browser lockup
-  for (let i = 0; i < prompts.length; i += batchSize) {
-    const batch = prompts.slice(i, i + batchSize);
-    const batchNumber = Math.floor(i / batchSize) + 1;
+  // Spawn SEQUENTIALLY - clipboard can only hold one prompt at a time!
+  for (let i = 0; i < prompts.length; i++) {
+    const prompt = prompts[i];
+    const agentId = i + 1;
 
-    console.log(`[Parallel Spawn] Batch ${batchNumber}: Spawning agents ${i + 1} to ${i + batch.length}...`);
+    console.log(`[Sequential Spawn] Agent ${agentId}/${prompts.length}: Spawning...`);
 
-    const batchResults = await Promise.all(
-      batch.map((prompt, idx) =>
-        spawnClaudeWebAgent(prompt, i + idx + 1, browser)
-          .catch(err => ({
-            success: false,
-            agentId: i + idx + 1,
-            error: err.message
-          }))
-      )
-    );
+    try {
+      const result = await spawnClaudeWebAgent(prompt, agentId, browser);
+      results.push({ ...result, agentId });
+    } catch (err) {
+      console.error(`[Sequential Spawn] Agent ${agentId} failed: ${err.message}`);
+      results.push({
+        success: false,
+        agentId,
+        error: err.message
+      });
+    }
 
-    results.push(...batchResults);
-
-    // Delay between batches
-    if (i + batchSize < prompts.length) {
-      console.log(`[Parallel Spawn] Waiting ${delayBetweenAgents}ms before next batch...`);
+    // Delay between agents (except after the last one)
+    if (i < prompts.length - 1) {
+      console.log(`[Sequential Spawn] Waiting ${delayBetweenAgents}ms before next agent...`);
       await new Promise(resolve => setTimeout(resolve, delayBetweenAgents));
     }
   }
 
   const successCount = results.filter(r => r.success).length;
-  console.log(`[Parallel Spawn] ✅ ${successCount}/${prompts.length} agents spawned successfully`);
+  console.log(`[Sequential Spawn] ✅ ${successCount}/${prompts.length} agents spawned successfully`);
 
   return results;
 }
