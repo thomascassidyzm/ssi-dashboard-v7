@@ -118,7 +118,15 @@ function generatePhase1MasterPrompt(courseCode, params, courseDir) {
 
 **GET**: ${orchestratorUrl}/api/canonical-seeds?limit=${endSeed}
 
-Returns all ${totalSeeds} seeds in English. You will translate each to ${getLanguageName(target)} and extract LEGOs.
+Returns all ${totalSeeds} seeds in English (canonical source language).
+
+${known === 'eng'
+  ? `**Since Known = English:** The English canonical text IS your "known" text. Only translate to ${getLanguageName(target)} for the "target" field.`
+  : `**IMPORTANT - Bidirectional Translation Required:**
+- The canonical seeds are in English (source)
+- You must translate English → **${getLanguageName(known)}** for the "known" field (what ${getLanguageName(known)} speakers see)
+- You must translate English → **${getLanguageName(target)}** for the "target" field (what they're learning)
+- LEGOs map ${getLanguageName(known)} ↔ ${getLanguageName(target)} (NOT English)`}
 
 ---
 
@@ -131,10 +139,14 @@ ${unifiedPrompt}
 ## ✍️ STEP 3: PROCESS SEEDS (${startSeed}-${endSeed})
 
 For EACH seed:
-1. Translate to ${getLanguageName(target)} (following Translation Rules above)
-2. Extract LEGOs (following LEGO Types and Algorithm above)
-3. Mark embedded LEGOs as \`new: false\` (same-seed only!)
-4. Output in EXACT format shown above
+${known === 'eng'
+  ? `1. Use English canonical as "known" text
+2. Translate to ${getLanguageName(target)} for "target" text`
+  : `1. Translate English canonical → ${getLanguageName(known)} for "known" text
+2. Translate English canonical → ${getLanguageName(target)} for "target" text`}
+3. Extract LEGOs mapping ${getLanguageName(known)} ↔ ${getLanguageName(target)}
+4. Mark embedded LEGOs as \`new: false\` (same-seed only!)
+5. Output in EXACT format shown above
 
 **CRITICAL - DO NOT CREATE SCRIPTS:**
 - ❌ Do NOT write Python/Node/bash automation
