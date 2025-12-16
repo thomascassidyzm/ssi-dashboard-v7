@@ -1418,6 +1418,16 @@ async function loadCourse() {
       legoBreakdowns.value = []
     }
 
+    // Skip S3 fetches for empty courses - no files exist yet
+    if (response.course?.isEmpty) {
+      console.log('🌱 Empty course - skipping S3 file fetches')
+      basketsData.value = null
+      introductionsData.value = null
+      legoPairsData.value = null
+      await loadFlags()
+      return
+    }
+
     // Load lego_baskets.json from S3 (via API proxy)
     try {
       // Add cache-busting timestamp
