@@ -425,7 +425,7 @@ async function pollStatus() {
 
   while (isGenerating.value) {
     try {
-      const res = await fetch(`${apiBase}/api/courses/${courseCode.value}/generation-status`, {
+      const res = await fetch(`${apiBase}/api/courses/${courseCode.value}/status`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
 
