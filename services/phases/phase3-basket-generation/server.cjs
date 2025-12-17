@@ -2946,7 +2946,7 @@ app.post('/upload-basket', async (req, res) => {
         // 2.5 NEW: Enrich practice phrases with word_count, lego_count, and position
         if (basket.practice_phrases && Array.isArray(basket.practice_phrases)) {
           // Collect all LEGO target texts from this seed (for lego_count calculation)
-          const legoTargetsInSeed = legosInSeed.map(lego => lego.lego.target);
+          const legoTargetsInSeed = legosInSeed.map(lego => lego.target);
 
           // Enrich each phrase
           basket.practice_phrases = basket.practice_phrases.map((phrase, index) => ({
