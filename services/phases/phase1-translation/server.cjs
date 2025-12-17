@@ -96,7 +96,7 @@ function getLanguageName(code) {
  * @param {string} courseDir - Course directory path
  */
 function generatePhase1MasterPrompt(courseCode, params, courseDir) {
-  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, masterNum } = params;
+  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, masterNum, totalMasters } = params;
   const totalSeeds = endSeed - startSeed + 1;
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
   const phase1Url = `http://localhost:${PORT}`;
@@ -221,7 +221,7 @@ When all workers complete, use curl to POST:
 
 curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
   -H "Content-Type: application/json" \\
-  -d '{"masterNum": ${masterNum}, "seedsProcessed": ${totalSeeds}}'
+  -d '{"masterNum": ${masterNum}, "seedsProcessed": ${totalSeeds}, "totalMasters": ${totalMasters}}'
 
 ---
 
@@ -527,7 +527,8 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
       endSeed: masterEndSeed,
       workersPerMaster,
       seedsPerWorker,
-      masterNum: m + 1
+      masterNum: m + 1,
+      totalMasters: masterCount
     }, courseDir);
 
     prompts.push(masterPrompt);
@@ -565,7 +566,8 @@ async function loadWebAgentSpawner() {
   try {
     const spawnerPath = path.join(__dirname, '../../shared/spawn-agent.cjs');
     if (await fs.pathExists(spawnerPath)) {
-      return require(spawnerPath);
+      const module = require(spawnerPath);
+      return module.spawnClaudeWebAgent;
     }
   } catch (error) {
     console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
@@ -1063,7 +1065,7 @@ When all workers complete, use curl to POST:
 
 curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
   -H "Content-Type: application/json" \\
-  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${master.seedCount}}'
+  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${master.seedCount}, "totalMasters": ${masters.length}}'
 
 ---
 
@@ -1562,7 +1564,7 @@ When all workers complete, use curl to POST:
 
 curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
   -H "Content-Type: application/json" \\
-  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${totalMasterSeeds}}'
+  -d '{"masterNum": ${master.masterNum}, "seedsProcessed": ${totalMasterSeeds}, "totalMasters": ${masters.length}}'
 
 ---
 
@@ -1628,6 +1630,136 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
     workersPerMaster,
     seedsPerWorker,
     missingSeedsList: missingSeeds,
+    launchResults
+  });
+});
+
+/**
+ * POST /gap-fill
+ * Orchestrator calls this when stall is detected with missing seeds
+ * Accepts explicit seed numbers and spawns targeted agents
+ */
+app.post('/gap-fill', async (req, res) => {
+  const { courseCode, seeds, target, known } = req.body;
+
+  if (!courseCode || !seeds || !Array.isArray(seeds) || seeds.length === 0) {
+    return res.status(400).json({ error: 'courseCode and seeds array required' });
+  }
+
+  if (!target || !known) {
+    return res.status(400).json({ error: 'target and known language required' });
+  }
+
+  console.log(`\n[Phase 1] ====================================`);
+  console.log(`[Phase 1] GAP-FILL REQUEST FROM ORCHESTRATOR`);
+  console.log(`[Phase 1] ====================================`);
+  console.log(`[Phase 1] Course: ${courseCode}`);
+  console.log(`[Phase 1] Missing seeds: ${seeds.length} → ${seeds.map(s => 'S' + String(s).padStart(4, '0')).join(', ')}`);
+
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+
+  // Convert seed numbers to seed IDs
+  const missingSeedIds = seeds.map(s => 'S' + String(s).padStart(4, '0'));
+
+  // For gap-fill, spawn ONE master per missing seed (simpler and more reliable)
+  // This avoids the complexity of master/worker coordination for small gaps
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+  if (!spawnClaudeWebAgent) {
+    return res.status(500).json({ error: 'Web agent spawner not available' });
+  }
+
+  // Generate direct worker prompts (no master/worker split for gap-fill)
+  const launchResults = [];
+
+  for (let i = 0; i < missingSeedIds.length; i++) {
+    const seedId = missingSeedIds[i];
+    const seedNum = seeds[i];
+
+    const workerPrompt = `# Phase 1 Gap-Fill Worker: ${seedId}
+
+Course: ${courseCode}
+Target: ${getLanguageName(target)} (${target})
+Known: ${getLanguageName(known)} (${known})
+
+---
+
+## YOUR TASK: Process ONE seed (${seedId})
+
+## STEP 1: FETCH ZUT EXAMPLES (language-specific)
+
+curl -s "${orchestratorUrl}/api/zut-examples/${known}/${target}"
+
+This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLanguageName(target)}.
+
+## STEP 2: FETCH METHODOLOGY
+
+curl -s "${orchestratorUrl}/api/phase-intelligence/1"
+
+Read BOTH responses before proceeding.
+
+## STEP 3: FETCH YOUR SEED
+
+curl -s "${orchestratorUrl}/api/canonical-seeds?start=${seedNum}&end=${seedNum}"
+
+## STEP 4: PROCESS THE SEED
+
+${known === 'eng'
+  ? `Since Known = English: The English canonical text IS your "known" text.
+Translate to ${getLanguageName(target)} (target).`
+  : `Since Known = ${getLanguageName(known)}: First translate the English canonical to ${getLanguageName(known)}.
+Then translate that ${getLanguageName(known)} text to ${getLanguageName(target)} (target).`}
+
+Apply methodology from Step 2. Extract LEGOs.
+
+## STEP 5: UPLOAD YOUR RESULT
+
+POST your completed seed to:
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_SEED_JSON]'
+
+**OUTPUT FORMAT (v6 Compact):**
+\`\`\`json
+[{
+  "s": "${seedId}",
+  "k": "known text",
+  "t": "target text",
+  "l": [
+    {"y": "A", "n": 1, "k": "word", "t": "palabra"},
+    {"y": "M", "n": 1, "k": "phrase", "t": "frase", "c": [{"k": "sub", "t": "sub"}]}
+  ]
+}]
+\`\`\`
+Keys: s=seed_id, k=known, t=target, l=legos, y=type(A/M), n=new(1/0), c=components
+
+---
+
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+`;
+
+    try {
+      await spawnClaudeWebAgent(workerPrompt, i + 1, 'safari');
+      launchResults.push({ seed: seedId, status: 'launched' });
+      console.log(`[Phase 1]   ✅ Gap-fill worker for ${seedId} launched`);
+
+      // Delay between launches to avoid clipboard race
+      if (i < missingSeedIds.length - 1) {
+        await new Promise(r => setTimeout(r, 8000));
+      }
+    } catch (err) {
+      launchResults.push({ seed: seedId, status: 'failed', error: err.message });
+      console.error(`[Phase 1]   ❌ Gap-fill worker for ${seedId} failed: ${err.message}`);
+    }
+  }
+
+  console.log(`[Phase 1] Gap-fill complete: ${launchResults.filter(r => r.status === 'launched').length}/${missingSeedIds.length} workers launched`);
+
+  res.json({
+    success: true,
+    message: `Gap-fill launched for ${missingSeedIds.length} missing seeds`,
+    courseCode,
+    seeds: missingSeedIds,
     launchResults
   });
 });

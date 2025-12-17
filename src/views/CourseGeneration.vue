@@ -193,21 +193,24 @@
                 <div class="mode-details">
                   <p class="mode-description">{{ mode.description }}</p>
                   <div class="mode-specs">
-                    <div class="spec-item">
+                    <div class="spec-row">
                       <span class="spec-label">Seeds:</span>
                       <span class="spec-value">{{ mode.seedCount }}</span>
                     </div>
-                    <div class="spec-item">
-                      <span class="spec-label">Pattern:</span>
-                      <span class="spec-value">{{ mode.pattern }}</span>
-                    </div>
-                    <div class="spec-item">
-                      <span class="spec-label">Time:</span>
-                      <span class="spec-value">~{{ mode.estimatedTime }}</span>
+                    <div class="spec-row pattern-row">
+                      <span class="pattern-numbers">{{ mode.patternNums }}</span>
                     </div>
                   </div>
                 </div>
               </button>
+            </div>
+            <div class="pattern-key">
+              <span class="key-label">Pattern:</span>
+              <span class="key-item">browsers</span>
+              <span class="key-sep">×</span>
+              <span class="key-item">agents</span>
+              <span class="key-sep">×</span>
+              <span class="key-item">seeds each</span>
             </div>
           </div>
         </section>
@@ -395,30 +398,31 @@ async function loadModes() {
         icon: modeIcons[mode.id] || '📦',
         description: mode.description,
         seedCount: mode.seeds,
-        pattern: formatPattern(mode.pattern),
-        estimatedTime: `~${mode.estimatedMinutes} min`
+        patternNums: formatPatternNums(mode.pattern)
       }))
     }
   } catch (err) {
     console.error('Failed to load modes:', err)
     // Fallback modes if API fails
     generationModes.value = [
-      { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Rapid testing', seedCount: 10, pattern: '5 browsers × 2 agents × 1 seed', estimatedTime: '~2 min' },
-      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Production MVP', seedCount: 250, pattern: '5 browsers × 5 agents × 10 seeds', estimatedTime: '~15 min' },
-      { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete course', seedCount: 668, pattern: '9 browsers × 5 agents × 15 seeds', estimatedTime: '~20 min' }
+      { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Fast validation with maximum parallelization', seedCount: 10, patternNums: '5 × 2 × 1' },
+      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Big 10 language pairs - production MVP', seedCount: 250, patternNums: '5 × 5 × 10' },
+      { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete legacy-scale course', seedCount: 668, patternNums: '9 × 5 × 15' }
     ]
   } finally {
     modesLoading.value = false
   }
 }
 
-// Format pattern string (e.g., "5/2/1" → "5 browsers × 2 agents × 1 seed")
-function formatPattern(pattern) {
+// Format pattern to numbers only (e.g., {browsers: 5, agents: 2, seeds: 1} → "5 × 2 × 1")
+function formatPatternNums(pattern) {
+  if (typeof pattern === 'object' && pattern.browsers) {
+    return `${pattern.browsers} × ${pattern.agents_per_browser} × ${pattern.seeds_per_agent}`
+  }
   if (typeof pattern === 'string') {
     const parts = pattern.split('/')
     if (parts.length === 3) {
-      const [b, a, s] = parts
-      return `${b} browsers × ${a} agents × ${s} seed${s === '1' ? '' : 's'}`
+      return `${parts[0]} × ${parts[1]} × ${parts[2]}`
     }
     return pattern
   }
@@ -1198,12 +1202,12 @@ function resetForm() {
 .mode-specs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--border);
 }
 
-.spec-item {
+.spec-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1218,7 +1222,51 @@ function resetForm() {
 .spec-value {
   color: var(--text);
   font-weight: 600;
+}
+
+.spec-value.mono {
   font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.pattern-row {
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.pattern-numbers {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.pattern-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.key-label {
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.key-item {
+  color: var(--text-dim);
+}
+
+.key-sep {
+  color: var(--text-muted);
+  opacity: 0.6;
 }
 
 /* Action Buttons */

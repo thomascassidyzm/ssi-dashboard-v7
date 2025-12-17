@@ -8,7 +8,7 @@
  *   import { listCourses, readCourseFile, writeCourseFile } from '@/services/vfs'
  */
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3456'
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
 /**
  * List all courses in S3

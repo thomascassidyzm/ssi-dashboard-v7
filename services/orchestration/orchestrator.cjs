@@ -60,6 +60,36 @@ const LEGACY_PHASE_ALIASES = {
   8: PHASE_SERVERS['audio']
 };
 
+/**
+ * Convert ISO 639-3 language code to human-readable name
+ * Used for Phase 3 basket generation prompts
+ */
+const LANGUAGE_NAMES = {
+  'afr': 'Afrikaans',
+  'ara': 'Arabic',
+  'bre': 'Breton',
+  'cmn': 'Chinese (Mandarin)',
+  'cym': 'Welsh',
+  'deu': 'German',
+  'eng': 'English',
+  'eus': 'Basque',
+  'fra': 'French',
+  'gla': 'Scottish Gaelic',
+  'gle': 'Irish',
+  'glv': 'Manx',
+  'ita': 'Italian',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'mkd': 'Macedonian',
+  'por': 'Portuguese',
+  'rus': 'Russian',
+  'spa': 'Spanish'
+};
+
+function getLanguageName(code) {
+  return LANGUAGE_NAMES[code.toLowerCase()] || code.toUpperCase();
+}
+
 // Validate config
 if (!VFS_ROOT) {
   console.error('❌ Error: VFS_ROOT not set');
@@ -224,6 +254,189 @@ function formatDuration(seconds) {
   const hours = Math.floor(seconds / 3600);
   const mins = Math.floor((seconds % 3600) / 60);
   return `${hours}h ${mins}m`;
+}
+
+/**
+ * Scan Phase 1 batch files and extract all received seed IDs
+ * Returns { receivedSeeds: Set<string>, seedCount: number, batchCount: number }
+ */
+async function scanPhase1Batches(courseCode) {
+  const batchesDir = path.join(VFS_ROOT, courseCode, 'phase1_batches');
+
+  if (!await fs.pathExists(batchesDir)) {
+    return { receivedSeeds: new Set(), seedCount: 0, batchCount: 0 };
+  }
+
+  const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+  const receivedSeeds = new Set();
+
+  for (const file of batchFiles) {
+    try {
+      const batch = await fs.readJSON(path.join(batchesDir, file));
+      // Each seed has an 's' field (seed_id like "S0001") or 'seed_id' field
+      for (const seed of batch) {
+        const seedId = seed.s || seed.seed_id;
+        if (seedId) {
+          receivedSeeds.add(seedId);
+        }
+      }
+    } catch (err) {
+      console.warn(`[Orchestrator] Failed to read batch file ${file}: ${err.message}`);
+    }
+  }
+
+  return { receivedSeeds, seedCount: receivedSeeds.size, batchCount: batchFiles.length };
+}
+
+/**
+ * Check if all expected seeds have been received for Phase 1
+ * Returns { complete: boolean, received: Set, missing: string[], stats: object }
+ */
+async function checkPhase1SeedCoverage(courseCode, expectedStart, expectedEnd) {
+  // Generate expected seed IDs (S0001, S0002, ..., S0010, etc.)
+  const expectedSeeds = new Set();
+  for (let i = expectedStart; i <= expectedEnd; i++) {
+    expectedSeeds.add(`S${String(i).padStart(4, '0')}`);
+  }
+
+  // Scan actual received seeds from batch files
+  const { receivedSeeds, seedCount, batchCount } = await scanPhase1Batches(courseCode);
+
+  // Find missing seeds
+  const missing = [];
+  for (const seedId of expectedSeeds) {
+    if (!receivedSeeds.has(seedId)) {
+      missing.push(seedId);
+    }
+  }
+
+  return {
+    complete: missing.length === 0,
+    received: receivedSeeds,
+    missing,
+    stats: {
+      expected: expectedSeeds.size,
+      received: seedCount,
+      missing: missing.length,
+      batchFiles: batchCount,
+      coverage: ((seedCount / expectedSeeds.size) * 100).toFixed(1) + '%'
+    }
+  };
+}
+
+// Store active watchdog intervals so we can clear them
+const phase1Watchdogs = new Map();
+
+// Stall detection constants
+const STALL_CHECK_INTERVAL = 30000;  // Check every 30 seconds
+const STALL_TIMEOUT = 90000;         // Consider stalled if no batch for 90 seconds
+const MAX_GAP_FILL_ATTEMPTS = 3;     // Maximum gap-fill attempts per course
+
+/**
+ * Start a watchdog that monitors Phase 1 progress and triggers gap-fill if stalled
+ */
+function startPhase1StallWatchdog(courseCode) {
+  // Clear any existing watchdog for this course
+  if (phase1Watchdogs.has(courseCode)) {
+    clearInterval(phase1Watchdogs.get(courseCode));
+  }
+
+  console.log(`[Watchdog] Started stall detection for ${courseCode} (check every ${STALL_CHECK_INTERVAL/1000}s, stall after ${STALL_TIMEOUT/1000}s)`);
+
+  const watchdog = setInterval(async () => {
+    const phase1State = courseProgress.get(`${courseCode}_phase1`);
+
+    // Stop if no state or already complete
+    if (!phase1State) {
+      console.log(`[Watchdog] ${courseCode}: No state found, stopping watchdog`);
+      clearInterval(watchdog);
+      phase1Watchdogs.delete(courseCode);
+      return;
+    }
+
+    // Check seed coverage
+    const coverage = await checkPhase1SeedCoverage(
+      courseCode,
+      phase1State.expectedStartSeed,
+      phase1State.expectedEndSeed
+    );
+
+    // If complete, stop watchdog
+    if (coverage.complete) {
+      console.log(`[Watchdog] ${courseCode}: All seeds received, stopping watchdog`);
+      clearInterval(watchdog);
+      phase1Watchdogs.delete(courseCode);
+      return;
+    }
+
+    // Check for stall: no new batch for STALL_TIMEOUT
+    const timeSinceLastBatch = Date.now() - phase1State.lastBatchTime;
+    const isStalled = timeSinceLastBatch > STALL_TIMEOUT;
+
+    if (isStalled && !phase1State.gapFillTriggered) {
+      console.log(`[Watchdog] ⚠️ ${courseCode}: STALL DETECTED!`);
+      console.log(`   → Last batch: ${Math.round(timeSinceLastBatch/1000)}s ago`);
+      console.log(`   → Coverage: ${coverage.stats.coverage} (${coverage.stats.missing} seeds missing)`);
+      console.log(`   → Missing: ${coverage.missing.join(', ')}`);
+
+      // Trigger gap-fill
+      await triggerPhase1GapFill(courseCode, coverage.missing, phase1State);
+    }
+  }, STALL_CHECK_INTERVAL);
+
+  phase1Watchdogs.set(courseCode, watchdog);
+}
+
+/**
+ * Trigger gap-fill for missing seeds
+ * Calls Phase 1 server to spawn targeted agents for specific seeds
+ */
+async function triggerPhase1GapFill(courseCode, missingSeeds, phase1State) {
+  // Mark gap-fill as triggered to prevent duplicate triggers
+  phase1State.gapFillTriggered = true;
+  phase1State.gapFillAttempt = (phase1State.gapFillAttempt || 0) + 1;
+  courseProgress.set(`${courseCode}_phase1`, phase1State);
+
+  if (phase1State.gapFillAttempt > MAX_GAP_FILL_ATTEMPTS) {
+    console.log(`[GapFill] ❌ ${courseCode}: Max gap-fill attempts (${MAX_GAP_FILL_ATTEMPTS}) reached`);
+    addProgressLog(courseCode, `Gap-fill failed after ${MAX_GAP_FILL_ATTEMPTS} attempts. Missing: ${missingSeeds.join(', ')}`, 'error');
+    return;
+  }
+
+  console.log(`[GapFill] 🔄 ${courseCode}: Triggering gap-fill (attempt ${phase1State.gapFillAttempt}/${MAX_GAP_FILL_ATTEMPTS})`);
+  console.log(`   → Missing seeds: ${missingSeeds.join(', ')}`);
+  addProgressLog(courseCode, `Gap-fill triggered for ${missingSeeds.length} missing seeds: ${missingSeeds.join(', ')}`);
+
+  try {
+    const phase1Server = PHASE_SERVERS['1_translation'];
+
+    // Convert seed IDs to seed numbers (S0003 -> 3)
+    const seedNumbers = missingSeeds.map(s => parseInt(s.replace('S', ''), 10));
+
+    const response = await axios.post(`${phase1Server}/gap-fill`, {
+      courseCode,
+      seeds: seedNumbers,
+      target: phase1State.target,
+      known: phase1State.known
+    });
+
+    console.log(`[GapFill] ✅ ${courseCode}: Gap-fill request sent`);
+    console.log(`   → Response: ${JSON.stringify(response.data)}`);
+    addProgressLog(courseCode, `Gap-fill agents spawned for seeds: ${missingSeeds.join(', ')}`);
+
+    // Reset lastBatchTime to give gap-fill agents time to work
+    phase1State.lastBatchTime = Date.now();
+    phase1State.gapFillTriggered = false;  // Allow another gap-fill if this one stalls
+    courseProgress.set(`${courseCode}_phase1`, phase1State);
+
+  } catch (error) {
+    console.error(`[GapFill] ❌ ${courseCode}: Gap-fill request failed:`, error.message);
+    addProgressLog(courseCode, `Gap-fill failed: ${error.message}`, 'error');
+
+    // Reset to allow retry
+    phase1State.gapFillTriggered = false;
+    courseProgress.set(`${courseCode}_phase1`, phase1State);
+  }
 }
 
 /**
@@ -1076,10 +1289,72 @@ async function triggerPhase(courseCode, phase, totalSeeds = SEED_COUNTS.FULL_COU
 
     console.log(`   Delegating to: ${phaseServer}`);
 
-    await axios.post(`${phaseServer}/start`, {
-      courseCode,
-      totalSeeds
-    });
+    // Phase 2 requires detect + apply workflow
+    if (phase === 2) {
+      // Step 1: Detect conflicts
+      console.log(`   Step 1: Detecting conflicts...`);
+      const detectResponse = await axios.post(`${phaseServer}/phase2/detect`, { courseCode });
+      const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
+      console.log(`   ✓ Found ${conflictCount} conflicts`);
+
+      // Step 2: Apply LEGO reuse tracking
+      console.log(`   Step 2: Applying LEGO reuse tracking...`);
+      const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
+      let resolutions = [];
+      if (fs.existsSync(resolutionsPath)) {
+        const resData = JSON.parse(fs.readFileSync(resolutionsPath, 'utf8'));
+        resolutions = resData.resolutions || resData || [];
+        console.log(`   📄 Found ${resolutions.length} manual resolutions`);
+      }
+
+      await axios.post(`${phaseServer}/phase2/apply`, {
+        courseCode,
+        resolutions
+      });
+
+      // Phase 2 complete - notify orchestrator (triggers Phase 3 via handlePhaseProgression)
+      await axios.post(`http://localhost:${PORT}/phase-complete`, {
+        phase: 2,
+        courseCode,
+        status: 'complete',
+        success: true,
+        stats: { conflictCount }
+      });
+    }
+    // Phase 3 requires additional parameters (startSeed, endSeed, target, known)
+    else if (phase === 3) {
+      // Abort any stale Phase 3 job before starting (prevents 409 conflicts)
+      try {
+        await axios.post(`${phaseServer}/abort/${courseCode}`);
+        console.log(`   Cleared any stale Phase 3 job for ${courseCode}`);
+      } catch (e) {
+        // Ignore - no job to abort
+      }
+
+      // Extract language codes from courseCode (e.g., "spa_for_eng" -> target="spa", known="eng")
+      const langParts = courseCode.split('_for_');
+      const targetCode = langParts[0] || 'spa';
+      const knownCode = langParts[1] || 'eng';
+
+      // Convert to language names for Phase 3 prompts
+      const targetName = getLanguageName(targetCode);
+      const knownName = getLanguageName(knownCode);
+
+      console.log(`   Target: ${targetName} (${targetCode}), Known: ${knownName} (${knownCode})`);
+
+      await axios.post(`${phaseServer}/start`, {
+        courseCode,
+        startSeed: 1,
+        endSeed: totalSeeds,
+        target: targetName,
+        known: knownName
+      });
+    } else {
+      await axios.post(`${phaseServer}/start`, {
+        courseCode,
+        totalSeeds
+      });
+    }
 
     console.log(`   ✓ Phase ${phase} started successfully`);
   } catch (error) {
@@ -1610,9 +1885,19 @@ app.post('/phase-complete', async (req, res) => {
 
   console.log(`\n✅ Phase ${phase} ${status || (success ? 'complete' : 'failed')} for ${courseCode}`);
 
-  const state = courseStates.get(courseCode);
+  let state = courseStates.get(courseCode);
   if (!state) {
-    return res.json({ acknowledged: true });
+    // Auto-initialize state for courses not started via orchestrator
+    state = {
+      courseCode,
+      status: 'running',
+      currentPhase: phase,
+      phasesCompleted: [],
+      startedAt: new Date().toISOString(),
+      lastUpdated: new Date().toISOString()
+    };
+    courseStates.set(courseCode, state);
+    console.log(`   (Auto-initialized course state for ${courseCode})`);
   }
 
   // Update pipeline state for parallel coordination
@@ -1673,8 +1958,13 @@ async function handlePhaseProgression(courseCode, completedPhase, state, pipelin
   const normalizedPhase = normalizePhaseIdentifier(completedPhase);
 
   if (normalizedPhase === 'phase1') {
-    // Phase 1 complete → Phase 3 (Baskets)
-    console.log(`   → Phase 1 complete, triggering Phase 3 (Baskets)`);
+    // Phase 1 complete → Phase 2 (Conflict Resolution)
+    // Note: Phase 2 may auto-trigger Phase 3 if no conflicts
+    console.log(`   → Phase 1 complete, triggering Phase 2 (Conflict Resolution)`);
+    setTimeout(() => triggerPhase(courseCode, 2), 2000);
+  } else if (normalizedPhase === 'phase2') {
+    // Phase 2 complete → Phase 3 (Baskets)
+    console.log(`   → Phase 2 complete, triggering Phase 3 (Baskets)`);
     setTimeout(() => triggerPhase(courseCode, 3), 2000);
   } else if (normalizedPhase === 'phase3') {
     // Phase 3 (Baskets) → Manifest
@@ -1708,6 +1998,7 @@ async function handlePhaseProgression(courseCode, completedPhase, state, pipelin
 function normalizePhaseIdentifier(phase) {
   const mapping = {
     1: 'phase1', 'phase1': 'phase1',
+    2: 'phase2', 'phase2': 'phase2',
     3: 'phase3', 'phase3': 'phase3',
     5: 'phase3', 'phase5': 'phase3',  // Legacy Phase 5 → Phase 3 (APML v9.0)
     7: 'manifest', 'phase7': 'manifest',
@@ -1815,6 +2106,35 @@ app.post('/api/courses/generate', async (req, res) => {
   console.log(`   Phase: ${phaseSelection}`);
   console.log(`   Strategy: ${strategy}`);
 
+  // Ensure course exists in Supabase database (upsert - create if not exists)
+  try {
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
+    if (isInitialized()) {
+      const { error: dbError } = await supabase
+        .from('courses')
+        .upsert({
+          course_code: courseCode,
+          known_lang: resolvedKnown,
+          target_lang: resolvedTarget,
+          display_name: `${resolvedTarget} for ${resolvedKnown} speakers`,
+          status: 'draft',  // Valid enum: draft, published, archived
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: 'course_code'
+        });
+
+      if (dbError) {
+        console.error(`[Orchestrator] Failed to upsert course in database:`, dbError);
+      } else {
+        console.log(`   → Database: Course ${courseCode} upserted in Supabase`);
+      }
+    } else {
+      console.warn(`   → Database: Supabase not initialized`);
+    }
+  } catch (dbErr) {
+    console.error(`[Orchestrator] Database error:`, dbErr.message);
+  }
+
   try {
     // APML v9.0 Phase Selection
     // Maps user selection to internal phase identifier
@@ -1867,6 +2187,35 @@ app.post('/api/courses/generate', async (req, res) => {
     };
     console.log(`[Orchestrator] Sending to Phase 1:`, JSON.stringify(payload, null, 2));
     const response = await axios.post(`${phaseServer}/start`, payload);
+
+    // Store Phase 1 tracking state with expected seed range for seed-based completion
+    // The completion logic checks actual seeds received, not just master count
+    const phase1StateKey = `${courseCode}_phase1`;
+    courseProgress.set(phase1StateKey, {
+      // Expected seed range - these are what we MUST have before merge
+      expectedStartSeed: startSeed,
+      expectedEndSeed: endSeed,
+      expectedTotalSeeds: totalSeeds,
+      // Master tracking (informational only - not used for completion)
+      mastersComplete: 0,
+      totalMasters: response.data?.job?.masterCount || 1,
+      // Seed tracking (actual received seeds - drives completion)
+      seedsProcessed: 0,
+      receivedSeedIds: new Set(),
+      // Timing tracking for stall detection
+      startTime: Date.now(),
+      lastBatchTime: Date.now(),
+      gapFillTriggered: false,
+      // Language params needed for gap-fill
+      target: resolvedTarget,
+      known: resolvedKnown
+    });
+    console.log(`[Orchestrator] Phase 1 tracking initialized:`);
+    console.log(`   → Expected seeds: S${String(startSeed).padStart(4, '0')} to S${String(endSeed).padStart(4, '0')} (${totalSeeds} total)`);
+    console.log(`   → Masters spawned: ${response.data?.job?.masterCount || 1}`);
+
+    // Start stall watchdog for this course
+    startPhase1StallWatchdog(courseCode);
 
     res.json({
       success: true,
@@ -3228,100 +3577,258 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
 
   console.log(`[Orchestrator] ✅ Phase 1 batch received: ${batchData.length} seeds → ${batchFile}`);
 
+  // Update progress for dashboard visibility (safe init if not exists)
+  if (!courseProgress.has(courseCode)) {
+    initializeCourseProgress(courseCode, 1, batchData.length);
+  }
+  addProgressLog(courseCode, `Phase 1 batch received: ${batchData.length} seeds`);
+
+  // Update lastBatchTime for stall detection
+  const phase1State = courseProgress.get(`${courseCode}_phase1`);
+  if (phase1State) {
+    phase1State.lastBatchTime = Date.now();
+    courseProgress.set(`${courseCode}_phase1`, phase1State);
+  }
+
   res.json({ success: true, received: batchData.length, file: batchFile });
 });
 
 /**
  * POST /api/phase1/:courseCode/master-complete
  * Masters report completion here
+ *
+ * SEED-BASED COMPLETION: We use actual seed coverage, not master count
+ * This ensures we have ALL expected seeds before proceeding
  */
 app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
   const { courseCode } = req.params;
-  const { masterNum, seedsProcessed } = req.body;
+  const { masterNum, seedsProcessed, totalMasters: reportedTotalMasters, startSeed: reportedStart, endSeed: reportedEnd } = req.body;
 
   console.log(`[Orchestrator] ✅ Phase 1 Master ${masterNum} complete: ${seedsProcessed} seeds`);
 
-  // Track master completion
-  let phase1State = courseProgress.get(`${courseCode}_phase1`) || { mastersComplete: 0, totalMasters: 15, seedsProcessed: 0 };
-  phase1State.mastersComplete++;
-  phase1State.seedsProcessed += seedsProcessed || 0;
-  courseProgress.set(`${courseCode}_phase1`, phase1State);
-
-  // Check if all masters complete
-  if (phase1State.mastersComplete >= phase1State.totalMasters) {
-    console.log(`[Orchestrator] 🎉 All Phase 1 masters complete! Merging batches...`);
-
-    // Merge all batch files
-    const batchesDir = path.join(VFS_ROOT, courseCode, 'phase1_batches');
-    const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
-
-    const allSeeds = [];
-    for (const file of batchFiles) {
-      const batch = await fs.readJSON(path.join(batchesDir, file));
-      allSeeds.push(...batch);
-    }
-
-    // Sort by seed_id
-    allSeeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
-
-    // Write draft_lego_pairs.json
-    const outputPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
-    await fs.writeJSON(outputPath, allSeeds, { spaces: 2 });
-
-    console.log(`[Orchestrator] ✅ Merged ${allSeeds.length} seeds → draft_lego_pairs.json`);
-
-    // Trigger Phase 2 (Conflict Resolution)
-    console.log(`[Orchestrator] → Triggering Phase 2 (Conflict Resolution)...`);
-
-    const phase2Server = PHASE_SERVERS[2];
-
-    try {
-      // Step 1: Detect conflicts
-      console.log(`[Orchestrator]    Step 1: Detecting conflicts...`);
-      const detectResponse = await axios.post(`${phase2Server}/phase2/detect`, { courseCode });
-      const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
-      console.log(`[Orchestrator]    ✓ Found ${conflictCount} conflicts`);
-
-      // Step 2: Apply LEGO reuse tracking
-      console.log(`[Orchestrator]    Step 2: Applying LEGO reuse tracking...`);
-      const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
-      let resolutions = [];
-      if (await fs.pathExists(resolutionsPath)) {
-        const resData = await fs.readJSON(resolutionsPath);
-        resolutions = resData.resolutions || resData || [];
-        console.log(`[Orchestrator]    📄 Found ${resolutions.length} manual resolutions`);
-      }
-
-      const applyResponse = await axios.post(`${phase2Server}/phase2/apply`, {
-        courseCode,
-        resolutions
-      });
-
-      const summary = applyResponse.data?.summary || {};
-      console.log(`[Orchestrator]    ✓ Created lego_pairs.json`);
-      console.log(`[Orchestrator]      - Unique LEGOs (new: true): ${summary.uniqueNew || 'N/A'}`);
-      console.log(`[Orchestrator]      - Exact duplicates: ${summary.exactDuplicates || 'N/A'}`);
-      console.log(`[Orchestrator]      - Embedded: ${summary.embeddedMatches || 'N/A'}`);
-
-      // Step 3: Trigger Phase 3
-      console.log(`[Orchestrator] → Phase 2 complete, triggering Phase 3 in 2s...`);
-      setTimeout(async () => {
-        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
-        try {
-          const phase3Server = PHASE_SERVERS[3];
-          await axios.post(`${phase3Server}/start`, { courseCode, totalSeeds: allSeeds.length });
-          console.log(`[Orchestrator] ✅ Phase 3 started`);
-        } catch (phase3Error) {
-          console.error(`[Orchestrator] ❌ Failed to start Phase 3:`, phase3Error.message);
-        }
-      }, 2000);
-
-    } catch (phase2Error) {
-      console.error(`[Orchestrator] ❌ Phase 2 failed:`, phase2Error.message);
-    }
+  // Get or initialize Phase 1 state
+  let phase1State = courseProgress.get(`${courseCode}_phase1`);
+  if (!phase1State) {
+    // State doesn't exist - this can happen after orchestrator restart
+    // Use reported values from the agent, or infer from context
+    const inferredStart = reportedStart || 1;
+    const inferredEnd = reportedEnd || (reportedTotalMasters ? reportedTotalMasters * 2 : 10);  // Rough estimate
+    phase1State = {
+      expectedStartSeed: inferredStart,
+      expectedEndSeed: inferredEnd,
+      expectedTotalSeeds: inferredEnd - inferredStart + 1,
+      mastersComplete: 0,
+      totalMasters: reportedTotalMasters || masterNum || 1,
+      seedsProcessed: 0,
+      receivedSeedIds: new Set()
+    };
+    console.log(`[Orchestrator] Phase 1 state recovered: expecting seeds S${String(inferredStart).padStart(4, '0')} to S${String(inferredEnd).padStart(4, '0')}`);
   }
 
-  res.json({ success: true, masterNum, acknowledged: true });
+  // Update master count (informational only)
+  phase1State.mastersComplete++;
+  phase1State.seedsProcessed += seedsProcessed || 0;
+  if (reportedTotalMasters) {
+    phase1State.totalMasters = reportedTotalMasters;
+  }
+  courseProgress.set(`${courseCode}_phase1`, phase1State);
+
+  // ========== SEED-BASED COMPLETION CHECK ==========
+  // The key insight: check actual seed coverage, not master count
+  const coverage = await checkPhase1SeedCoverage(
+    courseCode,
+    phase1State.expectedStartSeed,
+    phase1State.expectedEndSeed
+  );
+
+  console.log(`[Orchestrator] Seed coverage check for ${courseCode}:`);
+  console.log(`   → Expected: ${coverage.stats.expected} seeds (S${String(phase1State.expectedStartSeed).padStart(4, '0')} to S${String(phase1State.expectedEndSeed).padStart(4, '0')})`);
+  console.log(`   → Received: ${coverage.stats.received} seeds (${coverage.stats.coverage})`);
+  console.log(`   → Missing: ${coverage.stats.missing} seeds`);
+  if (coverage.missing.length > 0 && coverage.missing.length <= 10) {
+    console.log(`   → Missing IDs: ${coverage.missing.join(', ')}`);
+  } else if (coverage.missing.length > 10) {
+    console.log(`   → Missing IDs: ${coverage.missing.slice(0, 10).join(', ')}... and ${coverage.missing.length - 10} more`);
+  }
+
+  // Update main course progress for dashboard visibility
+  if (!courseProgress.has(courseCode)) {
+    initializeCourseProgress(courseCode, 1, phase1State.expectedTotalSeeds);
+  }
+  updatePhaseProgress(courseCode, 1, {
+    status: coverage.complete ? 'complete' : 'running',
+    mastersComplete: phase1State.mastersComplete,
+    totalMasters: phase1State.totalMasters,
+    seedsProcessed: coverage.stats.received,
+    expectedSeeds: coverage.stats.expected,
+    coverage: coverage.stats.coverage
+  });
+  addProgressLog(courseCode, `Phase 1 Master ${masterNum} complete (${seedsProcessed} seeds, total coverage: ${coverage.stats.coverage})`);
+
+  // ========== COMPLETION DECISION ==========
+  if (!coverage.complete) {
+    // Not all seeds received yet - report status and wait
+    console.log(`[Orchestrator] ⏳ Phase 1 not complete: ${coverage.stats.missing} seeds still missing`);
+    addProgressLog(courseCode, `Waiting for ${coverage.stats.missing} more seeds (${coverage.stats.coverage} complete)`);
+
+    // TODO: Future enhancement - intelligent gap-filling
+    // If masters are all done but seeds are missing, spawn targeted agents:
+    // if (phase1State.mastersComplete >= phase1State.totalMasters && coverage.missing.length > 0) {
+    //   console.log(`[Orchestrator] All masters done but ${coverage.missing.length} seeds missing - spawning gap-fill agents`);
+    //   await spawnGapFillAgents(courseCode, coverage.missing);
+    // }
+
+    return res.json({
+      success: true,
+      status: 'waiting',
+      masterNum,
+      coverage: coverage.stats,
+      missing: coverage.missing.length <= 20 ? coverage.missing : coverage.missing.slice(0, 20)
+    });
+  }
+
+  // ========== ALL SEEDS RECEIVED - MERGE AND PROCEED ==========
+  console.log(`[Orchestrator] 🎉 Phase 1 complete! All ${coverage.stats.expected} seeds received.`);
+  addProgressLog(courseCode, `Phase 1 complete! All ${coverage.stats.expected} seeds received. Merging...`);
+
+  // Merge all batch files
+  const batchesDir = path.join(VFS_ROOT, courseCode, 'phase1_batches');
+  const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+
+  const allSeeds = [];
+  for (const file of batchFiles) {
+    const batch = await fs.readJSON(path.join(batchesDir, file));
+    allSeeds.push(...batch);
+  }
+
+  // Deduplicate by seed_id (in case of retries/duplicates)
+  const seedMap = new Map();
+  for (const seed of allSeeds) {
+    const seedId = seed.s || seed.seed_id;
+    if (!seedMap.has(seedId)) {
+      seedMap.set(seedId, seed);
+    }
+  }
+  const deduplicatedSeeds = Array.from(seedMap.values());
+
+  // Sort by seed_id
+  deduplicatedSeeds.sort((a, b) => {
+    const aId = a.s || a.seed_id;
+    const bId = b.s || b.seed_id;
+    return aId.localeCompare(bId);
+  });
+
+  // Write draft_lego_pairs.json
+  const outputPath = path.join(VFS_ROOT, courseCode, 'draft_lego_pairs.json');
+  await fs.writeJSON(outputPath, deduplicatedSeeds, { spaces: 2 });
+
+  console.log(`[Orchestrator] ✅ Merged ${deduplicatedSeeds.length} seeds → draft_lego_pairs.json`);
+  addProgressLog(courseCode, `Merged ${deduplicatedSeeds.length} seeds into draft_lego_pairs.json`);
+
+  // Trigger Phase 2 (Conflict Resolution)
+  console.log(`[Orchestrator] → Triggering Phase 2 (Conflict Resolution)...`);
+  updatePhaseProgress(courseCode, 2, { status: 'running', startTime: new Date().toISOString() });
+  addProgressLog(courseCode, `Phase 2: Starting conflict detection...`);
+
+  const phase2Server = PHASE_SERVERS[2];
+
+  try {
+    // Step 1: Detect conflicts
+    console.log(`[Orchestrator]    Step 1: Detecting conflicts...`);
+    const detectResponse = await axios.post(`${phase2Server}/phase2/detect`, { courseCode });
+    const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
+    console.log(`[Orchestrator]    ✓ Found ${conflictCount} conflicts`);
+    addProgressLog(courseCode, `Phase 2: Found ${conflictCount} conflicts`);
+
+    // Step 2: Apply LEGO reuse tracking
+    console.log(`[Orchestrator]    Step 2: Applying LEGO reuse tracking...`);
+    addProgressLog(courseCode, `Phase 2: Applying LEGO reuse tracking...`);
+    const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
+    let resolutions = [];
+    if (await fs.pathExists(resolutionsPath)) {
+      const resData = await fs.readJSON(resolutionsPath);
+      resolutions = resData.resolutions || resData || [];
+      console.log(`[Orchestrator]    📄 Found ${resolutions.length} manual resolutions`);
+      addProgressLog(courseCode, `Phase 2: Found ${resolutions.length} manual resolutions`);
+    }
+
+    const applyResponse = await axios.post(`${phase2Server}/phase2/apply`, {
+      courseCode,
+      resolutions
+    });
+
+    const summary = applyResponse.data?.summary || {};
+    console.log(`[Orchestrator]    ✓ Created lego_pairs.json`);
+    console.log(`[Orchestrator]      - Unique LEGOs (new: true): ${summary.uniqueNew || 'N/A'}`);
+    console.log(`[Orchestrator]      - Exact duplicates: ${summary.exactDuplicates || 'N/A'}`);
+    console.log(`[Orchestrator]      - Embedded: ${summary.embeddedMatches || 'N/A'}`);
+
+    // Update Phase 2 as complete with summary
+    updatePhaseProgress(courseCode, 2, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      uniqueNew: summary.uniqueNew || 0,
+      exactDuplicates: summary.exactDuplicates || 0,
+      embeddedMatches: summary.embeddedMatches || 0
+    });
+    addProgressLog(courseCode, `Phase 2: Complete. Created lego_pairs.json (${summary.uniqueNew || 0} unique, ${summary.exactDuplicates || 0} duplicates)`);
+
+    // Step 3: Trigger Phase 3
+    console.log(`[Orchestrator] → Phase 2 complete, triggering Phase 3 in 2s...`);
+    addProgressLog(courseCode, `Phase 2 complete. Auto-triggering Phase 3 in 2s...`);
+
+    // Store seed count for Phase 3 closure
+    const seedCount = deduplicatedSeeds.length;
+
+    setTimeout(async () => {
+      console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
+      updatePhaseProgress(courseCode, 3, { status: 'starting', startTime: new Date().toISOString() });
+      addProgressLog(courseCode, `Phase 3: Starting basket generation for ${seedCount} seeds...`);
+
+      try {
+        const phase3Server = PHASE_SERVERS[3];
+
+        // Extract language codes from courseCode (e.g., "spa_for_eng" -> target="spa", known="eng")
+        const langParts = courseCode.split('_for_');
+        const targetCode = langParts[0] || 'spa';
+        const knownCode = langParts[1] || 'eng';
+
+        // Convert to language names for Phase 3 prompts
+        const targetName = getLanguageName(targetCode);
+        const knownName = getLanguageName(knownCode);
+
+        console.log(`[Orchestrator]    Target: ${targetName} (${targetCode}), Known: ${knownName} (${knownCode})`);
+
+        await axios.post(`${phase3Server}/start`, {
+          courseCode,
+          startSeed: 1,
+          endSeed: seedCount,
+          target: targetName,
+          known: knownName
+        });
+        console.log(`[Orchestrator] ✅ Phase 3 started`);
+        updatePhaseProgress(courseCode, 3, { status: 'running' });
+        addProgressLog(courseCode, `Phase 3: Basket generation started successfully`);
+      } catch (phase3Error) {
+        console.error(`[Orchestrator] ❌ Failed to start Phase 3:`, phase3Error.message);
+        updatePhaseProgress(courseCode, 3, { status: 'error', error: phase3Error.message });
+        addProgressLog(courseCode, `Phase 3: Failed to start - ${phase3Error.message}`, 'error');
+      }
+    }, 2000);
+
+  } catch (phase2Error) {
+    console.error(`[Orchestrator] ❌ Phase 2 failed:`, phase2Error.message);
+    updatePhaseProgress(courseCode, 2, { status: 'error', error: phase2Error.message });
+    addProgressLog(courseCode, `Phase 2: Failed - ${phase2Error.message}`, 'error');
+  }
+
+  res.json({
+    success: true,
+    masterNum,
+    status: 'complete',
+    coverage: coverage.stats,
+    seedCount: deduplicatedSeeds.length
+  });
 });
 
 /**
@@ -3436,9 +3943,19 @@ app.post('/api/phase2/:courseCode/upload-batch', async (req, res) => {
  */
 app.post('/api/phase2/:courseCode/master-complete', async (req, res) => {
   const { courseCode } = req.params;
-  const { seedsProcessed } = req.body;
+  const { seedsProcessed, masterNum } = req.body;
 
   console.log(`[Orchestrator] ✅ Phase 2 Master complete: ${seedsProcessed} seeds`);
+
+  // Update main course progress for dashboard visibility (safe init if not exists)
+  if (!courseProgress.has(courseCode)) {
+    initializeCourseProgress(courseCode, 2, seedsProcessed || 10);
+  }
+  updatePhaseProgress(courseCode, 2, {
+    status: 'complete',
+    seedsProcessed: seedsProcessed || 0
+  });
+  addProgressLog(courseCode, `Phase 2 Master ${masterNum || '?'} complete (${seedsProcessed} seeds)`);
 
   res.json({ success: true, acknowledged: true });
 });
@@ -3671,15 +4188,15 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
 
       // Advance to next phase
       if (progress) {
-        progress.currentPhase = 5;
+        progress.currentPhase = 'manifest';
       }
 
-      // Trigger Phase 3 automatically (with 2s delay for GitHub sync)
-      console.log(`[Orchestrator] → Phase 2 complete, triggering Phase 3 in 2s...`);
+      // Trigger Manifest compilation automatically (with 2s delay for GitHub sync)
+      console.log(`[Orchestrator] → Phase 3 complete, triggering Manifest compilation in 2s...`);
       setTimeout(() => {
-        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
-        addProgressLog(courseCode, 'Starting Phase 3 (basket generation)');
-        triggerPhase(courseCode, 3);
+        console.log(`[Orchestrator] 🚀 Auto-triggering Manifest compilation for ${courseCode}`);
+        addProgressLog(courseCode, 'Starting Manifest compilation');
+        triggerPhase(courseCode, 'manifest');
       }, 2000);
 
       // Auto-publish to GitHub for live dashboard visibility

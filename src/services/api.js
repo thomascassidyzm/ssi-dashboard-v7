@@ -401,6 +401,13 @@ export default {
         return dbData
       }
 
+      // DATABASE_ONLY mode: Skip S3/GitHub fallbacks for testing new courses
+      const databaseOnly = import.meta.env.VITE_DATABASE_ONLY === 'true'
+      if (databaseOnly) {
+        console.log(`[API] DATABASE_ONLY mode: No fallback to S3/GitHub for ${courseCode}`)
+        throw new Error(`Course ${courseCode} not found in database (DATABASE_ONLY mode - no S3/GitHub fallback)`)
+      }
+
       // Fallback: Check cache for legacy courses not in database
       const cachedData = await getCachedCourse(courseCode)
       if (cachedData) {

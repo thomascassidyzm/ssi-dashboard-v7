@@ -84,6 +84,109 @@ function getLanguageName(code) {
 }
 
 /**
+ * Convert Phase 1 compact format to canonical v2 format
+ *
+ * Compact formats supported:
+ * - v6 object: {s, k, t, l: [{y, n, k, t, c?}]}
+ * - v7 array:  ["S0001", {k,t}, [[type, new, {k,t}, ?components]]]
+ *
+ * Canonical v2 format:
+ * {seed_id, seed_pair: {known, target}, legos: [{id, type, known, target, new, components?}]}
+ *
+ * Also handles already-expanded format with nested lego: {known, target}
+ */
+function convertToCanonicalFormat(rawSeeds) {
+  if (!Array.isArray(rawSeeds)) return rawSeeds;
+
+  return rawSeeds.map((seed, seedIndex) => {
+    // Already in canonical format (has seed_id)
+    if (seed.seed_id) {
+      // Ensure LEGOs have flat known/target (not nested lego: {known, target})
+      return {
+        seed_id: seed.seed_id,
+        seed_pair: seed.seed_pair || { known: seed.known, target: seed.target },
+        legos: (seed.legos || []).map((lego, legoIndex) => ({
+          id: lego.id || `${seed.seed_id}L${String(legoIndex + 1).padStart(2, '0')}`,
+          type: lego.type || lego.y || 'A',
+          known: lego.known || lego.lego?.known || lego.k || '',
+          target: lego.target || lego.lego?.target || lego.t || '',
+          new: lego.new !== undefined ? lego.new : (lego.n !== undefined ? (lego.n === 1 || lego.n === true) : true),
+          ...(lego.components ? { components: lego.components } : {}),
+          ...(lego.c ? { components: lego.c.map(c => ({ known: c.k || c.known, target: c.t || c.target })) } : {})
+        }))
+      };
+    }
+
+    // v7 array format: ["S0001", {k,t}, [[type, new, {k,t}, ?components]]]
+    if (Array.isArray(seed)) {
+      const [seedId, seedPair, legos] = seed;
+      return {
+        seed_id: seedId,
+        seed_pair: {
+          known: seedPair.k || seedPair.known,
+          target: seedPair.t || seedPair.target
+        },
+        legos: (legos || []).map((lego, legoIndex) => {
+          const [type, isNew, legoPair, components] = lego;
+          return {
+            id: `${seedId}L${String(legoIndex + 1).padStart(2, '0')}`,
+            type: type,
+            known: legoPair.k || legoPair.known,
+            target: legoPair.t || legoPair.target,
+            new: isNew === 1 || isNew === true,
+            ...(components && components.length > 0 ? {
+              components: components.map(c => ({
+                known: c.k || c.known,
+                target: c.t || c.target
+              }))
+            } : {})
+          };
+        })
+      };
+    }
+
+    // v6 compact format: {s, k, t, l: [{y, n, k, t, c?}]}
+    if (seed.s !== undefined) {
+      const seedId = seed.s;
+      return {
+        seed_id: seedId,
+        seed_pair: {
+          known: seed.k || '',
+          target: seed.t || ''
+        },
+        legos: (seed.l || []).map((lego, legoIndex) => ({
+          id: `${seedId}L${String(legoIndex + 1).padStart(2, '0')}`,
+          type: lego.y || 'A',
+          known: lego.k || '',
+          target: lego.t || '',
+          new: lego.n !== undefined ? (lego.n === 1 || lego.n === true) : true,
+          ...(lego.c ? {
+            components: lego.c.map(c => ({
+              known: c.k || c.known,
+              target: c.t || c.target
+            }))
+          } : {})
+        }))
+      };
+    }
+
+    // Fallback: generate seed_id from index
+    const seedId = `S${String(seedIndex + 1).padStart(4, '0')}`;
+    return {
+      seed_id: seedId,
+      seed_pair: seed.seed_pair || { known: seed.known || '', target: seed.target || '' },
+      legos: (seed.legos || []).map((lego, legoIndex) => ({
+        id: lego.id || `${seedId}L${String(legoIndex + 1).padStart(2, '0')}`,
+        type: lego.type || 'A',
+        known: lego.known || lego.lego?.known || '',
+        target: lego.target || lego.lego?.target || '',
+        new: lego.new !== undefined ? lego.new : true
+      }))
+    };
+  });
+}
+
+/**
  * Calculate segmentation strategy based on course size
  *
  * Uses centralized config from course-mode-loader.cjs:
@@ -1888,11 +1991,15 @@ app.post('/phase2/detect', async (req, res) => {
     let draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
 
     // Handle both array format and {seeds: [...]} format
-    const seeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+    const rawSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
 
-    if (!seeds || seeds.length === 0) {
+    if (!rawSeeds || rawSeeds.length === 0) {
       return res.status(400).json({ error: 'No seeds found in draft_lego_pairs.json' });
     }
+
+    // Convert to canonical format (handles v6 compact, v7 hybrid, and nested formats)
+    const seeds = convertToCanonicalFormat(rawSeeds);
+    console.log(`   📦 Converted ${rawSeeds.length} seeds to canonical format`);
 
     // Build KNOWN→TARGET collision map
     // Key: normalized known text → Map of target texts → array of {seedId, legoId}
@@ -1908,8 +2015,8 @@ app.post('/phase2/detect', async (req, res) => {
 
       (seed.legos || []).forEach((lego) => {
         totalLegos++;
-        const known = normalize(lego.lego?.known || lego.known || '');
-        const target = lego.lego?.target || lego.target || '';
+        const known = normalize(lego.known || '');
+        const target = lego.target || '';
         const legoId = lego.id;
 
         if (!known || !target) return;
@@ -1989,6 +2096,246 @@ app.post('/phase2/detect', async (req, res) => {
 });
 
 /**
+ * POST /phase2/passthrough
+ * Passthrough mode for courses with 0 conflicts.
+ *
+ * When /phase2/detect finds 0 conflicts, no agent work is needed.
+ * This endpoint simply converts draft_lego_pairs.json to lego_pairs.json
+ * with proper format conversion and reuse tracking.
+ *
+ * Body: { courseCode: string }
+ *
+ * Reads: draft_lego_pairs.json, phase2_conflict_report.json
+ * Writes: lego_pairs.json (in canonical format with new:true/false flags)
+ *
+ * Output format: {seeds: [{seed_id, seed_pair: {known, target}, legos: [{id, type, known, target, new}]}]}
+ */
+app.post('/phase2/passthrough', async (req, res) => {
+  const { courseCode } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`\n[Phase 2] ====================================`);
+  console.log(`[Phase 2] PASSTHROUGH: 0-conflict conversion`);
+  console.log(`[Phase 2] ====================================`);
+  console.log(`[Phase 2] Course: ${courseCode}`);
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+  const reportPath = path.join(courseDir, 'phase2_conflict_report.json');
+  const outputPath = path.join(courseDir, 'lego_pairs.json');
+
+  // Check draft exists
+  if (!fs.existsSync(draftPath)) {
+    return res.status(404).json({
+      error: `draft_lego_pairs.json not found for ${courseCode}`,
+      hint: 'Run Phase 1 first to generate draft_lego_pairs.json'
+    });
+  }
+
+  // Check conflict report exists and has 0 conflicts
+  if (fs.existsSync(reportPath)) {
+    try {
+      const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      if (report.summary?.conflictCount > 0) {
+        return res.status(400).json({
+          error: `Course has ${report.summary.conflictCount} conflicts - passthrough not appropriate`,
+          hint: 'Use /phase2/launch-full or /phase2/finalize instead'
+        });
+      }
+      console.log(`[Phase 2] Verified 0 conflicts from conflict report`);
+    } catch (e) {
+      console.log(`[Phase 2] Warning: Could not read conflict report, proceeding anyway`);
+    }
+  } else {
+    console.log(`[Phase 2] Warning: No conflict report found. Run /phase2/detect first to verify 0 conflicts.`);
+  }
+
+  try {
+    let draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
+
+    // Handle both array format and {seeds: [...]} format
+    const rawSeeds = Array.isArray(draftData) ? draftData : (draftData.seeds || []);
+
+    if (!rawSeeds || rawSeeds.length === 0) {
+      return res.status(400).json({ error: 'No seeds found in draft_lego_pairs.json' });
+    }
+
+    console.log(`[Phase 2] Processing ${rawSeeds.length} seeds from draft`);
+
+    // Helper: detect if seed is in compact format
+    const isCompactFormat = (seed) => {
+      return seed.s !== undefined || seed.k !== undefined || seed.t !== undefined;
+    };
+
+    // Helper: convert compact format to canonical format
+    const convertSeed = (seed, seedIndex) => {
+      if (!isCompactFormat(seed)) {
+        // Already in canonical format, but ensure lego IDs exist
+        const seedId = seed.seed_id || `S${String(seedIndex + 1).padStart(4, '0')}`;
+        return {
+          seed_id: seedId,
+          seed_pair: seed.seed_pair || { known: seed.known, target: seed.target },
+          legos: (seed.legos || []).map((lego, legoIndex) => ({
+            id: lego.id || `${seedId}L${String(legoIndex + 1).padStart(2, '0')}`,
+            type: lego.type || lego.y || 'A',
+            known: lego.known || lego.lego?.known || '',
+            target: lego.target || lego.lego?.target || '',
+            new: lego.new !== undefined ? lego.new : true
+          }))
+        };
+      }
+
+      // Convert from compact format
+      const seedId = seed.s || `S${String(seedIndex + 1).padStart(4, '0')}`;
+      return {
+        seed_id: seedId,
+        seed_pair: {
+          known: seed.k || '',
+          target: seed.t || ''
+        },
+        legos: (seed.l || []).map((lego, legoIndex) => ({
+          id: `${seedId}L${String(legoIndex + 1).padStart(2, '0')}`,
+          type: lego.y || 'A',
+          known: lego.k || '',
+          target: lego.t || '',
+          new: lego.n !== undefined ? (lego.n === 1 || lego.n === true) : true
+        }))
+      };
+    };
+
+    // Convert all seeds to canonical format
+    let seeds = rawSeeds.map((seed, i) => convertSeed(seed, i));
+
+    // Sort seeds by seed_id
+    seeds = seeds.sort((a, b) => {
+      const numA = parseInt(a.seed_id.replace(/\D/g, '')) || 0;
+      const numB = parseInt(b.seed_id.replace(/\D/g, '')) || 0;
+      return numA - numB;
+    });
+
+    // Apply LEGO reuse tracking (first-wins canonicalization)
+    console.log(`[Phase 2] Applying reuse tracking...`);
+
+    const normalize = (text) => (text || '').toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').trim();
+    const seenLegos = new Map(); // key = "target|known" -> first seed_id
+    let totalLegos = 0;
+    let newLegos = 0;
+    let reusedLegos = 0;
+
+    for (const seed of seeds) {
+      for (const lego of seed.legos) {
+        totalLegos++;
+        const key = `${normalize(lego.target)}|${normalize(lego.known)}`;
+
+        if (seenLegos.has(key)) {
+          // Already seen - mark as reused
+          lego.new = false;
+          reusedLegos++;
+        } else {
+          // First occurrence - mark as new
+          lego.new = true;
+          seenLegos.set(key, seed.seed_id);
+          newLegos++;
+        }
+      }
+    }
+
+    console.log(`[Phase 2] Reuse tracking: ${newLegos} new, ${reusedLegos} reused out of ${totalLegos} total`);
+
+    // Write output in canonical format
+    const output = {
+      metadata: {
+        phase: 2,
+        action: 'passthrough',
+        timestamp: new Date().toISOString(),
+        totalSeeds: seeds.length,
+        totalLegos: totalLegos,
+        newLegos: newLegos,
+        reusedLegos: reusedLegos,
+        conflictsResolved: 0,
+        note: 'Passthrough mode - 0 conflicts detected'
+      },
+      seeds
+    };
+
+    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+    console.log(`[Phase 2] Saved ${seeds.length} seeds to lego_pairs.json`);
+
+    // DATABASE-FIRST: Update is_new flags in database if enabled
+    let dbUpdates = 0;
+    if (courseDataService.USE_DATABASE_WRITES) {
+      try {
+        const dbLegos = await courseDataService.getLegosByCourse(courseCode);
+        const legoByKey = new Map();
+
+        for (const lego of dbLegos) {
+          const key = `${normalize(lego.target_text)}|${normalize(lego.known_text)}`;
+          legoByKey.set(key, lego);
+        }
+
+        for (const seed of seeds) {
+          for (const lego of seed.legos) {
+            const key = `${normalize(lego.target)}|${normalize(lego.known)}`;
+            const dbLego = legoByKey.get(key);
+            if (dbLego && dbLego.is_new !== lego.new) {
+              await courseDataService.markLegoAsNew(dbLego.id, lego.new);
+              dbUpdates++;
+            }
+          }
+        }
+        console.log(`[Phase 2] Database: Updated ${dbUpdates} is_new flags`);
+      } catch (dbError) {
+        console.error(`[Phase 2] Warning: Database update failed:`, dbError.message);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Passthrough complete - converted ${seeds.length} seeds with 0 conflicts`,
+      summary: {
+        totalSeeds: seeds.length,
+        totalLegos: totalLegos,
+        newLegos: newLegos,
+        reusedLegos: reusedLegos,
+        conflictsResolved: 0,
+        databaseUpdates: dbUpdates
+      },
+      outputPath
+    });
+
+    // Auto-trigger Phase 3 via orchestrator callback
+    console.log(`[Phase 2] → Notifying orchestrator of Phase 2 completion...`);
+    try {
+      const axios = require('axios');
+      await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
+        phase: 2,
+        courseCode,
+        status: 'complete',
+        success: true,
+        stats: {
+          totalSeeds: seeds.length,
+          totalLegos: totalLegos,
+          newLegos: newLegos,
+          reusedLegos: reusedLegos,
+          conflictsResolved: 0
+        }
+      });
+      console.log(`[Phase 2] ✅ Orchestrator notified - Phase 3 will auto-trigger`);
+    } catch (notifyError) {
+      console.error(`[Phase 2] ⚠️  Failed to notify orchestrator:`, notifyError.message);
+      console.log(`[Phase 2]    (Phase 3 can still be triggered manually)`);
+    }
+
+  } catch (error) {
+    console.error(`[Phase 2] Passthrough failed:`, error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * POST /phase2/apply
  * Apply conflict resolutions and LEGO reuse tracking
  *
@@ -2023,8 +2370,11 @@ app.post('/phase2/apply', async (req, res) => {
     let draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
 
     // Handle both array format and {seeds: [...]} format
-    const isArrayFormat = Array.isArray(draftData);
-    const seeds = isArrayFormat ? draftData : draftData.seeds;
+    const rawSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+    // Convert to canonical format (handles v6 compact, v7 hybrid, and nested formats)
+    const seeds = convertToCanonicalFormat(rawSeeds);
+    console.log(`   📦 Converted ${rawSeeds.length} seeds to canonical format`);
 
     // Load resolutions if provided or if file exists
     let upchunkResolutions = resolutions || [];
@@ -2061,8 +2411,8 @@ app.post('/phase2/apply', async (req, res) => {
 
       (seed.legos || []).forEach((lego) => {
         totalLegos++;
-        const target = lego.lego?.target || lego.target;
-        const known = lego.lego?.known || lego.known;
+        const target = lego.target;
+        const known = lego.known;
 
         if (!target || !known) return;
 
@@ -2106,8 +2456,21 @@ app.post('/phase2/apply', async (req, res) => {
       });
     });
 
-    // Write output (preserve original format)
-    const outputData = isArrayFormat ? seeds : { ...draftData, seeds };
+    // Write output in canonical v2 format (always {seeds: [...]})
+    const outputData = {
+      metadata: {
+        phase: 2,
+        action: 'apply',
+        timestamp: new Date().toISOString(),
+        totalSeeds: seeds.length,
+        totalLegos,
+        exactDuplicates,
+        embeddedMatches,
+        uniqueNew: seenLegos.size,
+        resolutionsApplied: upchunkResolutions.length
+      },
+      seeds
+    };
     fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
 
     const summary = {
@@ -2133,6 +2496,30 @@ app.post('/phase2/apply', async (req, res) => {
       success: true,
       summary
     });
+
+    // Auto-trigger Phase 3 via orchestrator callback
+    console.log(`[Phase 2] → Notifying orchestrator of Phase 2 completion...`);
+    try {
+      const axios = require('axios');
+      await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
+        phase: 2,
+        courseCode,
+        status: 'complete',
+        success: true,
+        stats: {
+          totalSeeds: summary.totalSeeds,
+          totalLegos: summary.totalLegos,
+          uniqueNew: summary.uniqueNew,
+          exactDuplicates: summary.exactDuplicates,
+          embeddedMatches: summary.embeddedMatches,
+          resolutionsApplied: summary.resolutionsApplied
+        }
+      });
+      console.log(`[Phase 2] ✅ Orchestrator notified - Phase 3 will auto-trigger`);
+    } catch (notifyError) {
+      console.error(`[Phase 2] ⚠️  Failed to notify orchestrator:`, notifyError.message);
+      console.log(`[Phase 2]    (Phase 3 can still be triggered manually)`);
+    }
 
   } catch (error) {
     console.error(`   ❌ Apply failed:`, error.message);
@@ -2371,7 +2758,10 @@ app.post('/phase2/launch-test', async (req, res) => {
   // Load draft_lego_pairs.json to get seed data
   const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
   const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
-  const seeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+  const rawSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+  // Convert to canonical format (handles v6 compact, v7 hybrid, and nested formats)
+  const seeds = convertToCanonicalFormat(rawSeeds);
 
   // Get first N seeds
   const testSeeds = seeds.slice(0, seedCount);
@@ -2523,7 +2913,10 @@ app.post('/phase2/launch-full', async (req, res) => {
   // Load draft_lego_pairs.json
   const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
   const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
-  const allSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+  const rawSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+  // Convert to canonical format (handles v6 compact, v7 hybrid, and nested formats)
+  const allSeeds = convertToCanonicalFormat(rawSeeds);
 
   console.log(`[Phase 2] Total seeds: ${allSeeds.length}`);
   console.log(`[Phase 2] Total conflicts: ${conflictReport.allConflicts.length}`);
@@ -2621,6 +3014,9 @@ app.post('/phase2/launch-full', async (req, res) => {
 /**
  * POST /phase2/finalize
  * Merge Phase 2 batches and deduplicate (first-wins canonicalization)
+ *
+ * If phase2_batches/ directory doesn't exist (0 conflicts case),
+ * returns helpful error suggesting /phase2/passthrough instead.
  */
 app.post('/phase2/finalize', async (req, res) => {
   const { courseCode } = req.body;
@@ -2636,6 +3032,39 @@ app.post('/phase2/finalize', async (req, res) => {
 
   const courseDir = path.join(VFS_ROOT, courseCode);
   const batchesDir = path.join(courseDir, 'phase2_batches');
+
+  // Check if batches directory exists
+  if (!fs.existsSync(batchesDir)) {
+    // Check if this is a 0-conflict case
+    const reportPath = path.join(courseDir, 'phase2_conflict_report.json');
+    let conflictCount = -1;
+
+    if (fs.existsSync(reportPath)) {
+      try {
+        const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+        conflictCount = report.summary?.conflictCount ?? -1;
+      } catch (e) {
+        // Ignore parse errors
+      }
+    }
+
+    if (conflictCount === 0) {
+      console.log(`[Phase 2] No batches directory and 0 conflicts detected - use /phase2/passthrough instead`);
+      return res.status(400).json({
+        error: 'No phase2_batches directory found - this course has 0 conflicts',
+        hint: 'Use POST /phase2/passthrough for courses with 0 conflicts',
+        conflictCount: 0,
+        action: 'passthrough'
+      });
+    }
+
+    console.log(`[Phase 2] Error: No phase2_batches directory found`);
+    return res.status(404).json({
+      error: 'phase2_batches directory not found',
+      hint: 'Run /phase2/launch-full first to generate batches, or use /phase2/passthrough for 0-conflict courses',
+      path: batchesDir
+    });
+  }
 
   // Load all batch files
   const batchFiles = await fs.readdir(batchesDir);
@@ -2821,7 +3250,10 @@ app.post('/phase2/resume', async (req, res) => {
   // Load draft_lego_pairs.json for expected seeds
   const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
   const draftData = JSON.parse(fs.readFileSync(draftPath, 'utf8'));
-  const allSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+  const rawSeeds = Array.isArray(draftData) ? draftData : draftData.seeds;
+
+  // Convert to canonical format (handles v6 compact, v7 hybrid, and nested formats)
+  const allSeeds = convertToCanonicalFormat(rawSeeds);
   const expectedIds = new Set(allSeeds.map(s => s.seed_id));
 
   // Scan batches for processed seeds

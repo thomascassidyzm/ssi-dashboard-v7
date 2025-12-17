@@ -37,6 +37,12 @@ const VFS_ROOT = process.env.VFS_ROOT || require('path').join(__dirname, 'public
 // This is CRITICAL - agents in browser tabs cannot reach localhost!
 const EXTERNAL_URL = process.env.EXTERNAL_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
+// NGROK_DOMAIN - extracted from EXTERNAL_URL (without https://)
+const NGROK_DOMAIN = process.env.NGROK_DOMAIN || EXTERNAL_URL.replace(/^https?:\/\//, '');
+
+// GRAMMAR_SERVICE_URL - grammar correction service
+const GRAMMAR_SERVICE_URL = process.env.GRAMMAR_SERVICE_URL || 'http://localhost:3460';
+
 module.exports = {
   apps: [
     // ===========================================
@@ -54,6 +60,8 @@ module.exports = {
         NODE_ENV: 'development',
         PORT: 3456,
         VFS_ROOT: VFS_ROOT,
+        NGROK_DOMAIN: NGROK_DOMAIN,
+        GRAMMAR_SERVICE_URL: GRAMMAR_SERVICE_URL,
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
         AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
@@ -111,6 +119,7 @@ module.exports = {
         PORT: 3458,
         VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 2 (Conflict Resolution)',
+        EXTERNAL_URL: EXTERNAL_URL,  // ngrok URL for browser agents
         ORCHESTRATOR_URL: EXTERNAL_URL,  // MUST be ngrok URL - agents can't reach localhost!
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },
@@ -135,6 +144,7 @@ module.exports = {
         PORT: 3459,
         VFS_ROOT: VFS_ROOT,
         SERVICE_NAME: 'Phase 3 (Baskets)',
+        EXTERNAL_URL: EXTERNAL_URL,  // ngrok URL for browser agents
         ORCHESTRATOR_URL: EXTERNAL_URL,  // MUST be ngrok URL - agents can't reach localhost!
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },

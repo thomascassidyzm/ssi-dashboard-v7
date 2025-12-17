@@ -32,7 +32,7 @@ const VFS_ROOT = process.env.VFS_ROOT;
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
 // ngrok URL for prompts sent to remote Claude browsers (they can't reach localhost)
-const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
+const ngrokUrl = process.env.EXTERNAL_URL || process.env.ORCHESTRATOR_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
 // Database service for database-first writes
 const courseDataService = require('../../course-data-service.cjs');
@@ -1374,7 +1374,7 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
     WORKER_ASSIGNMENTS: workerAssignmentsText,
     KNOWN_LANGUAGE: known,
     TARGET_LANGUAGE: target,
-    ORCHESTRATOR_URL: process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev'
+    ORCHESTRATOR_URL: process.env.EXTERNAL_URL
   });
 }
 
@@ -3334,7 +3334,7 @@ async function triggerPhase3Completion(courseCode, job) {
     job.status = 'triggering_grammar';
 
     try {
-      const grammarResponse = await fetch('http://localhost:3460/start', {
+      const grammarResponse = await fetch(`${process.env.GRAMMAR_SERVICE_URL || 'http://localhost:3460'}/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ courseCode })
@@ -3444,7 +3444,7 @@ async function waitForGrammarValidation(courseCode) {
 
   while (Date.now() - startTime < maxWaitTime) {
     try {
-      const response = await fetch(`http://localhost:3460/status/${courseCode}`);
+      const response = await fetch(`${process.env.GRAMMAR_SERVICE_URL || 'http://localhost:3460'}/status/${courseCode}`);
       if (!response.ok) {
         throw new Error(`Grammar validation status check failed: ${response.statusText}`);
       }
