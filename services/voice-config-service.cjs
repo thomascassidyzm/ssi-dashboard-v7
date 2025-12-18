@@ -212,10 +212,10 @@ async function saveVoiceConfig(courseCode, config) {
         known_lang: knownLang,
         target_lang: targetLang,
         voice_config: fullConfig,
-        // Also update the individual voice columns for backwards compatibility
+        // Also update the individual voice columns (APML-aligned names)
         known_voice: fullConfig.voices?.known?.voiceId || null,
-        target_voice_1: fullConfig.voices?.target1?.voiceId || null,
-        target_voice_2: fullConfig.voices?.target2?.voiceId || null,
+        target1_voice: fullConfig.voices?.target1?.voiceId || null,
+        target2_voice: fullConfig.voices?.target2?.voiceId || null,
         presentation_voice: fullConfig.voices?.presentation?.voiceId || null
       }, {
         onConflict: 'course_code'
