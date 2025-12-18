@@ -17,36 +17,137 @@ Current course generation is a black box:
 
 Following APML principles of transparency, traceability, and progressive disclosure.
 
+### Full Pipeline View
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         COURSE GENERATION MONITOR                            │
+│  COURSE PIPELINE: zho_for_eng                    Mode: Quick Test (10)      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
-│  Course: zho_for_eng    Phase: 1 (Translation)    Mode: Quick Test (10)     │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │   PHASE 1    │───▶│   PHASE 2    │───▶│   PHASE 3    │───▶│   AUDIO    │ │
+│  │ Translation  │    │  Conflict    │    │   Baskets    │    │    TTS     │ │
+│  │              │    │  Resolution  │    │              │    │            │ │
+│  │  ████████░░  │    │  ░░░░░░░░░░  │    │  ░░░░░░░░░░  │    │  ░░░░░░░░  │ │
+│  │   8/10 ✓    │    │   pending    │    │   pending    │    │  pending   │ │
+│  │  Job: p1-001 │    │              │    │              │    │            │ │
+│  └──────────────┘    └──────────────┘    └──────────────┘    └────────────┘ │
+│                                                                              │
+│  ▼ PHASE 1 DETAIL (click to expand/collapse)                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Job ID: p1-001    Status: RUNNING    Started: 14:39:17                     │
 │                                                                              │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
 │  │ Browser 1       │  │ Browser 2       │  │ Browser 3       │              │
-│  │ Status: RUNNING │  │ Status: FAILED  │  │ Status: RUNNING │              │
+│  │ Status: COMPLETE│  │ Status: FAILED  │  │ Status: RUNNING │              │
 │  ├─────────────────┤  ├─────────────────┤  ├─────────────────┤              │
 │  │ Agent 1.1       │  │ Agent 2.1       │  │ Agent 3.1       │              │
 │  │ S0001 ✓ S0002 ✓│  │ S0005 ✗ S0006 ✗│  │ S0009 ⏳ S0010 ⏳│              │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘              │
 │                                                                              │
-│  Seed Progress: ✓✓✗✗✗✗⏳⏳⏳⏳  (2/10 complete, 4 failed, 4 pending)        │
+│  Seeds: ✓✓✓✓✗✗✓✓⏳⏳  (8/10 complete, 2 failed, 0 pending)                  │
 │                                                                              │
-│  ┌─ Live Events ──────────────────────────────────────────────────────────┐ │
-│  │ 14:43:40  Browser 2 failed to spawn (timeout after 30s)                │ │
-│  │ 14:43:35  Agent 1.1 completed S0001                                    │ │
-│  │ 14:43:30  Agent 1.1 started processing S0001                           │ │
-│  │ 14:43:25  Browser 1 ready, spawning agents                             │ │
-│  │ 14:43:20  Spawning Browser 1 with seeds [S0001, S0002]                 │ │
-│  └────────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### Phase Progression with Job History
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PHASE 2: Conflict Resolution                                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Input: 10 seeds from Phase 1 (p1-001)                                      │
+│  Job ID: p2-001    Status: COMPLETE    Duration: 45s                        │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │ Conflicts Found: 3                                                      ││
+│  │ ├─ S0003: "quiero" vs "deseo" → Resolved: "quiero" (frequency)         ││
+│  │ ├─ S0007: duplicate LEGO "el" → Merged                                  ││
+│  │ └─ S0009: type mismatch A/M → Resolved: M-type                          ││
+│  │                                                                          ││
+│  │ Output: lego_pairs.json (10 seeds, 47 LEGOs)                            ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                              │
+│  ▶ Auto-advancing to Phase 3...                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PHASE 3: Basket Generation                                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Input: 47 LEGOs from Phase 2 (p2-001)                                      │
+│  Job ID: p3-001    Status: RUNNING    Elapsed: 2m 15s                       │
+│                                                                              │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
+│  │ Browser 1       │  │ Browser 2       │  │ Browser 3       │              │
+│  │ LEGOs 1-16      │  │ LEGOs 17-32     │  │ LEGOs 33-47     │              │
+│  │ ████████████░░  │  │ ██████░░░░░░░░  │  │ ████░░░░░░░░░░  │              │
+│  │ 12/16 complete  │  │ 6/16 complete   │  │ 4/15 complete   │              │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘              │
+│                                                                              │
+│  Baskets Generated: 22/47                                                   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Single Phase Detail View (Current)
+
 ## Data Model
 
-### 1. Generation Job
+### 0. Pipeline (Top Level)
+
+```typescript
+interface Pipeline {
+  pipelineId: string;       // "pipeline-zho_for_eng-20251218"
+  courseCode: string;
+  mode: 'quick_test' | 'mvp_course' | 'full_course';
+  status: 'running' | 'complete' | 'failed' | 'paused';
+
+  // Phase progression
+  phases: {
+    phase1: PhaseStatus;
+    phase2: PhaseStatus;
+    phase3: PhaseStatus;
+    audio: PhaseStatus;
+    manifest: PhaseStatus;
+  };
+
+  // Current active phase
+  currentPhase: 'phase1' | 'phase2' | 'phase3' | 'audio' | 'manifest' | null;
+
+  // Job history (all jobs across all phases)
+  jobs: GenerationJob[];
+
+  // Timing
+  startedAt: string;
+  completedAt?: string;
+  totalDuration?: number;   // seconds
+
+  // Summary stats
+  stats: {
+    seedsTotal: number;
+    seedsComplete: number;
+    legosGenerated: number;
+    basketsGenerated: number;
+    audioFilesGenerated: number;
+  };
+}
+
+interface PhaseStatus {
+  status: 'pending' | 'running' | 'complete' | 'failed' | 'skipped';
+  jobId?: string;           // Current or last job for this phase
+  startedAt?: string;
+  completedAt?: string;
+  duration?: number;
+  inputCount?: number;      // Seeds/LEGOs/etc going in
+  outputCount?: number;     // Items produced
+  error?: string;
+}
+```
+
+### 1. Generation Job (Per-Phase)
 
 ```typescript
 interface GenerationJob {
