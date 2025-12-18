@@ -351,6 +351,7 @@ const modeIcons = {
 }
 
 const selectedMode = ref(null)
+const selectedPhase = ref('all')  // 'all', 'phase1', 'phase2', 'phase3'
 
 // Generation state
 const isGenerating = ref(false)
@@ -545,7 +546,8 @@ async function startGeneration() {
         courseCode: courseCode.value,
         target: targetLanguage.value,
         known: knownLanguage.value,
-        mode: selectedMode.value.id
+        mode: selectedMode.value.id,
+        phaseSelection: selectedPhase.value  // 'all', 'phase1', 'phase3', etc.
       })
     })
 
