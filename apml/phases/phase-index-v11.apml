@@ -1,7 +1,13 @@
-# APML Phase Index v11.0.0
+# APML Phase Index v11.1.0
 # SSI Course Production Pipeline
-# Version: 11.0.0 (2025-12-04)
+# Version: 11.1.0 (2025-12-18)
 # Status: Production
+#
+# CHANGES in v11.1.0:
+# - Added PHASE_COMPLETION_ARCHITECTURE section
+# - Documented all phase endpoints (launch, submission, resume, finalize)
+# - Added COURSE_SIZE_MODES with parallelization patterns
+# - Added INTELLIGENT_RESUME pattern documentation
 #
 # MAJOR CHANGES from v10:
 # - Supabase replaces file-based MAR as database layer
@@ -391,6 +397,503 @@ CONTENT_PHASES:
       They are reused LEGOs already introduced in earlier seeds.
 
 ## ============================================================================
+## PHASE COMPLETION ARCHITECTURE (v11)
+## ============================================================================
+
+PHASE_COMPLETION_ARCHITECTURE:
+  description: |
+    Each phase has a complete lifecycle: launch → agent work → submission →
+    merge → completion signal → next phase trigger.
+    All phases support intelligent resume (gap-fill) for partial completion.
+
+  orchestrator:
+    port: 3456
+    completion_endpoint: "POST /phase-complete"
+    description: |
+      Central coordinator that receives completion signals from phase servers
+      and triggers the next phase in sequence.
+
+    auto_progression:
+      Phase_1_complete: "→ 2s delay → Phase 2"
+      Phase_2_complete: "→ 2s delay → Phase 3"
+      Phase_3_complete: "→ 2s delay → Phase 8 (audio)"
+      Phase_8_complete: "→ 2s delay → Phase 9 (manifest)"
+      Phase_9_complete: "→ Pipeline complete! → QA review (async)"
+
+## ----------------------------------------------------------------------------
+## DRY RUN / PREFLIGHT VALIDATION
+## ----------------------------------------------------------------------------
+
+DRY_RUN:
+  description: |
+    Validate canonical content and prerequisites before committing to
+    actual pipeline execution. Each phase creates inputs for the next,
+    so dry run validates "do we have what we need to start?"
+
+  endpoint:
+    method: "POST /orchestrate/dry-run"
+    description: "Validate entire pipeline before execution"
+    parameters:
+      courseCode: "string (required)"
+      fromPhase: "number (1-9, default 1)"
+      toPhase: "number (1-9, default 9)"
+
+  per_phase_checks:
+    phase_1:
+      validates:
+        - "seed_pairs.json exists and is valid"
+        - "Source/target language codes are supported"
+        - "Seed count matches expected for course"
+      estimates:
+        - "Expected LEGO output count"
+
+    phase_2:
+      validates:
+        - "draft_lego_pairs.json exists (from Phase 1)"
+        - "Valid LEGO structure"
+      estimates:
+        - "Expected conflict count"
+
+    phase_3:
+      validates:
+        - "lego_pairs.json exists (from Phase 2)"
+        - "All LEGOs have required fields"
+        - "new: true/false flags present"
+      estimates:
+        - "Expected basket count"
+        - "Expected phrase count"
+
+    phase_8:
+      validates:
+        - "lego_baskets.json exists (from Phase 3)"
+        - "Voice configurations exist for languages"
+        - "TTS API credentials valid and reachable"
+        - "Supabase connection valid"
+      estimates:
+        - "Total phrases to generate"
+        - "Already cached in Supabase"
+        - "New audio needed"
+        - "Estimated TTS cost"
+
+    phase_9:
+      validates:
+        - "All required audio exists in Supabase"
+        - "100% audio coverage for all phrases"
+      estimates:
+        - "Manifest entry count"
+
+  response_format: |
+    {
+      courseCode: "ita_for_eng",
+
+      phases: {
+        phase_1: {
+          status: "ready",
+          seeds: 668,
+          blockers: []
+        },
+        phase_2: {
+          status: "skipped",  // already has lego_pairs.json
+          reason: "Output exists"
+        },
+        phase_3: {
+          status: "skipped",
+          reason: "Output exists"
+        },
+        phase_8: {
+          status: "ready",
+          total_phrases: 6000,
+          already_cached: 1800,
+          new_audio_needed: 4200,
+          estimated_cost: "$8.40",
+          blockers: []
+        },
+        phase_9: {
+          status: "blocked",
+          reason: "Phase 8 not complete",
+          missing_audio: 4200
+        }
+      },
+
+      overall: "READY through Phase 8",
+      first_blocker: "Phase 9 awaiting Phase 8 audio",
+      estimated_total_cost: "$8.40",
+
+      recommended_action: "Run phases 1-8, then Phase 9"
+    }
+
+  philosophy: |
+    Dry run is about VISIBILITY before COMMITMENT.
+
+    - See what will happen before it happens
+    - Know costs before incurring them
+    - Identify blockers before hitting them
+    - Validate canonical content completeness
+
+    Each phase's dry run is cheap (just checks, no generation).
+    Actual execution happens only after human approval.
+
+## ----------------------------------------------------------------------------
+## PHASE 1: Translation + LEGO Extraction
+## ----------------------------------------------------------------------------
+
+PHASE_1_COMPLETION:
+  port: 3457
+  server: "services/phases/phase1-translation/server.cjs"
+
+  endpoints:
+    launch:
+      method: "POST /launch-full"
+      description: "Spawn master agents via Safari browser automation"
+      parameters:
+        courseCode: "string (required)"
+        target: "ISO 639-3 code (e.g., 'spa')"
+        known: "ISO 639-3 code (e.g., 'eng')"
+        mode: "quick_test | mvp_course | full_course"
+
+    submission:
+      method: "POST /api/phase1/:courseCode/upload-batch"
+      description: "Workers upload completed seed batches"
+      body: "JSON array of seed objects"
+      dual_write: true
+      database: "course-data-service.cjs → Supabase"
+
+    master_complete:
+      method: "POST /api/phase1/:courseCode/master-complete"
+      description: "Masters report completion"
+      body: "{ masterNum, seedsProcessed }"
+
+    resume:
+      method: "POST /resume"
+      description: "Intelligent gap-fill for missing seeds"
+      process:
+        1: "Scan draft_lego_pairs.json or phase1_batches/ for processed seeds"
+        2: "Compare against expected seeds from mode config"
+        3: "Group missing seeds into masters"
+        4: "Spawn targeted masters for gaps only"
+
+  merge:
+    function: "mergeBatches()"
+    trigger: "When mastersComplete >= totalMasters"
+    process:
+      1: "Load all phase1_batches/*.json files"
+      2: "Combine into single array"
+      3: "Sort by seed_id"
+      4: "Write to draft_lego_pairs.json"
+
+  completion_detection: "mastersComplete >= totalMasters → auto-merge"
+  output: "draft_lego_pairs.json (may have conflicts)"
+  next_phase_trigger: "notifyOrchestrator() → Phase 2"
+
+## ----------------------------------------------------------------------------
+## PHASE 2: Conflict Resolution
+## ----------------------------------------------------------------------------
+
+PHASE_2_COMPLETION:
+  port: 3458
+  server: "services/phases/phase2-conflict-resolution/server.cjs"
+
+  flow_diagram: |
+    /phase2/detect → conflicts?
+      ├─ NO  → /phase2/passthrough → lego_pairs.json
+      └─ YES → /phase2/launch-full → agents work → /phase2/upload-batch × N → /phase2/finalize
+
+  endpoints:
+    detect:
+      method: "POST /phase2/detect"
+      description: "Detect KNOWN→TARGET conflicts in draft_lego_pairs"
+      output: "phase2_conflict_report.json"
+
+    passthrough:
+      method: "POST /phase2/passthrough"
+      description: "For 0-conflict courses - copies draft → lego_pairs.json"
+      use_case: "Skip agent work when no conflicts exist"
+
+    launch_full:
+      method: "POST /phase2/launch-full"
+      description: "Spawn upchunking agents for conflict resolution"
+      parameters:
+        courseCode: "string (required)"
+        mastersCount: "default 9"
+        workersPerMaster: "default 5"
+        seedsPerWorker: "default 15"
+      prerequisite: "phase2_conflict_report.json must exist"
+
+    submission:
+      method: "POST /phase2/upload-batch"
+      description: "Agents upload resolved seed batches"
+      storage: "phase2_batches/batch_{timestamp}_{random}_{count}seeds.json"
+
+    resume:
+      method: "POST /phase2/resume"
+      description: "Gap-fill for missing seeds"
+      process:
+        1: "Load expected seeds from draft_lego_pairs.json"
+        2: "Scan phase2_batches/ for processed seeds"
+        3: "Calculate missing seeds"
+        4: "Launch targeted masters for gaps"
+
+    finalize:
+      method: "POST /phase2/finalize"
+      description: "Merge all batches with first-wins canonicalization"
+      process:
+        1: "Load all phase2_batches/*.json files"
+        2: "Merge seeds (dedup by seed_id)"
+        3: "First-wins canonicalization for conflicting LEGOs"
+        4: "Mark new: true/false based on first occurrence"
+        5: "Write to lego_pairs.json"
+        6: "Update is_new flags in Supabase"
+      dual_write: true
+
+  completion_detection: "Manual call to /phase2/finalize after agents complete"
+  output: "lego_pairs.json (SSoT - conflict-free with new: true/false flags)"
+  next_phase_trigger: "Orchestrator auto-triggers Phase 3"
+
+## ----------------------------------------------------------------------------
+## PHASE 3: Basket Generation
+## ----------------------------------------------------------------------------
+
+PHASE_3_COMPLETION:
+  port: 3459
+  server: "services/phases/phase3-basket-generation/server.cjs"
+
+  endpoints:
+    launch:
+      method: "POST /launch-15-masters"
+      description: "Spawn master agents for basket generation"
+      intelligent_resume: true
+      note: "Auto-detects missing baskets and only processes those"
+
+    submission:
+      method: "POST /upload-basket"
+      description: "Agents upload baskets per seed"
+      body: |
+        {
+          course: "spa_for_eng",
+          seed: "S0532",
+          baskets: { S0532L01: {...}, S0532L02: {...} }
+        }
+      enrichment:
+        - "Server adds is_final_lego flag"
+        - "Server adds phrase_count"
+        - "Server adds word_count, lego_count, position to phrases"
+
+    resume:
+      method: "POST /resume"
+      description: "Alias for /launch-15-masters (intelligent resume built-in)"
+
+    detect_missing:
+      method: "POST /phase3/detect-missing"
+      description: "Check which baskets are missing"
+
+  merge:
+    process: "Auto-merge on each upload"
+    staging: "phase3_baskets_staging/{seed}.json"
+    intermediate: "phase3_outputs/*.json"
+    final: "lego_baskets.json"
+    behavior: "Each upload merges into main lego_baskets.json"
+
+  completion_detection: "All expected seeds have baskets → phase3_complete"
+  output: "lego_baskets.json"
+  next_phase_trigger: "Orchestrator auto-triggers Phase 8 (audio)"
+
+## ----------------------------------------------------------------------------
+## PHASE 8: Audio Generation (Script)
+## ----------------------------------------------------------------------------
+
+PHASE_8_COMPLETION:
+  port: 3465
+  server: "services/phases/phase8-audio-generator.cjs"
+
+  endpoints:
+    plan:
+      method: "POST /plan"
+      description: "Dry-run showing what audio needs generating"
+      parameters:
+        courseCode: "string (required)"
+      response: "Count of missing samples, estimated cost"
+
+    generate:
+      method: "POST /generate"
+      description: "Start TTS audio generation"
+      parameters:
+        courseCode: "string (required)"
+      behavior: "Skips existing audio (inherent resume)"
+
+    status:
+      method: "GET /status/:courseCode"
+      description: "Check job progress"
+      response: "{ status, progress, samplesGenerated, samplesTotal }"
+
+    cancel:
+      method: "DELETE /cancel/:courseCode"
+      description: "Abort active generation job"
+
+  data_source:
+    primary: "Supabase (course_legos, course_practice_phrases)"
+    fallback: "Local JSON (lego_baskets.json)"
+
+  output:
+    files: "S3: mastered/{uuid}.mp3"
+    metadata: "Supabase: audio_samples table"
+    usage: "Supabase: course_audio_usage table"
+
+  resume: "Inherent - queries Supabase for existing UUIDs, skips those"
+  next_phase_trigger: "Orchestrator auto-triggers Phase 9"
+
+## ----------------------------------------------------------------------------
+## PHASE 9: Output Generation (Two Paths)
+## ----------------------------------------------------------------------------
+
+PHASE_9_COMPLETION:
+  port: 3466
+  server: "services/phases/phase9-manifest-compiler.cjs"
+
+  description: |
+    Phase 9 has TWO output paths for different consumers:
+
+    Path A: Legacy Manifest (current)
+      - Generates course_manifest.json
+      - Required for backwards compatibility with native app
+      - Self-contained file with embedded audio UUIDs
+
+    Path B: Database-First Validation (ssi-learning-app)
+      - No manifest file needed
+      - App queries Supabase directly at runtime
+      - Phase 9B validates data is correctly structured in Supabase
+
+    Both paths can run - they serve different consumers.
+
+  path_a_manifest:
+    description: "Legacy manifest compilation for native app"
+    endpoints:
+      compile:
+        method: "POST /compile"
+        description: "Generate final course manifest"
+        parameters:
+          courseCode: "string (required)"
+
+      validate:
+        method: "GET /validate/:courseCode"
+        description: "Check audio coverage before compilation"
+        response: "{ valid, missingAudio, coverage }"
+
+      status:
+        method: "GET /status/:courseCode"
+        description: "Check manifest status and data availability"
+        response: |
+          {
+            basketsExist: { supabase: bool, local: bool },
+            preferredSource: "supabase | local_json | none"
+          }
+
+    data_source:
+      primary: "Supabase"
+      fallback: "Local JSON"
+
+    output: "course_manifest.json"
+
+  path_b_database:
+    description: "Database-first validation for ssi-learning-app"
+    status: "DESIGN - loose ends to resolve"
+
+    concept: |
+      ssi-learning-app queries Supabase directly:
+      - courses table → course metadata
+      - course_seeds → seed progression
+      - course_legos → LEGO definitions
+      - course_practice_phrases → practice content
+      - audio_samples → audio UUIDs for playback
+
+      No manifest compilation needed - data IS the API.
+
+    validation_endpoint:
+      method: "GET /validate-database/:courseCode"
+      description: "Verify Supabase has all required data for runtime"
+      checks:
+        - "All seeds exist in course_seeds"
+        - "All LEGOs exist in course_legos"
+        - "All practice phrases exist with audio UUIDs"
+        - "All referenced audio exists in audio_samples"
+        - "Foreign key integrity across tables"
+
+    loose_ends: |
+      TODO: Clarify ssi-learning-app data requirements
+      - What tables does it query?
+      - What's the expected schema?
+      - Does it need any denormalized views?
+      - Cache strategy for offline/PWA?
+
+  completion: "Pipeline complete! Both consumers can access course."
+
+## ============================================================================
+## COURSE SIZE MODES
+## ============================================================================
+
+COURSE_SIZE_MODES:
+  config_file: "services/config/course-modes.json"
+  description: |
+    Parallelization patterns for different course sizes.
+    All phases use this centralized config for consistent batching.
+
+  modes:
+    quick_test:
+      name: "Quick Test"
+      seeds: 10
+      pattern:
+        browsers: 5
+        agents_per_browser: 2
+        seeds_per_agent: 1
+      capacity: 10
+      use_case: "Validation, fast feedback loop"
+
+    mvp_course:
+      name: "MVP Course"
+      seeds: 250
+      pattern:
+        browsers: 5
+        agents_per_browser: 5
+        seeds_per_agent: 10
+      capacity: 250
+      use_case: "Production courses for Big 10 language pairs"
+
+    full_course:
+      name: "Full Course"
+      seeds: 668
+      pattern:
+        browsers: 9
+        agents_per_browser: 5
+        seeds_per_agent: 15
+      capacity: 675
+      use_case: "Complete courses (legacy Spanish for English scale)"
+
+  defaults:
+    browser_spawn_delay_ms: 8000
+    agent_timeout_ms: 300000
+    max_retries: 3
+
+## ============================================================================
+## INTELLIGENT RESUME PATTERN
+## ============================================================================
+
+INTELLIGENT_RESUME:
+  description: |
+    All phases implement the same pattern for gap-filling partial completions.
+    This allows continuation without re-running completed work.
+
+  algorithm:
+    1: "Determine expected seeds (from mode config or input file)"
+    2: "Scan processed seeds (from batch files or output file)"
+    3: "Calculate missing = expected - processed"
+    4: "Group missing into masters/workers"
+    5: "Spawn only for missing seeds"
+
+  benefits:
+    - "Fault tolerance: recover from interrupted runs"
+    - "Incremental processing: add new seeds without re-running all"
+    - "Cost efficiency: don't re-process completed work"
+
+## ============================================================================
 ## QA WORKFLOW (v11)
 ## ============================================================================
 
@@ -398,6 +901,82 @@ QA_WORKFLOW:
   description: |
     QA state stored in Supabase sample_flags table.
     Realtime subscriptions enable live UI updates.
+    Includes audio quality review AND natural language review.
+
+  natural_language_review:
+    spec: "apml/phases/natural-language-qa.apml"
+    trigger: "After Phase 9 (manifest complete) - async, non-blocking"
+    description: |
+      Agent reviews all practice phrases for linguistic quality.
+      Flags potential issues for human sampling and review.
+      Based on 12 Directions: D01, D07, D08, D10 favor observability over gatekeeping.
+
+    methodology_context: |
+      Agent understands the LEGO build-up methodology:
+      - Short phrases (< 5 syllables) are scaffolding - can be clunky, must not be WRONG
+      - Long phrases (≥ 5 syllables) are eternal - must be NATURAL
+      - Debut phrases heard once, eternal phrases heard 20+ times
+
+    why_syllables_not_words: |
+      SYLLABLE COUNT is the measure of cognitive load, not word count.
+
+      Distinction Theory: Learners parse sound streams through progressive distinction:
+      1. Sound vs no sound (most basic boundary)
+      2. Louder vs quieter (amplitude changes)
+      3. Rapid volume change vs continuous (attack/decay)
+      4. Syllable vs "just a blob" (rhythmic segmentation)
+      5. Recognizable syllable vs something similar to known language
+      6. Distinct syllable variations (male vs female voice)
+      7. Significant vs irrelevant changes between speakers
+
+      Syllables are the fundamental perceptual unit - sounds stopping and starting,
+      mapped to meanings. Word count is an artifact of writing systems (spaces),
+      irrelevant for non-Roman scripts (Chinese, Japanese, Thai, Arabic).
+
+      A 3-syllable phrase in ANY language represents similar cognitive load:
+      - "I want to" (3 syllables, English)
+      - "我想要" wǒ xiǎng yào (3 syllables, Mandarin)
+      - "Quiero" (2 syllables, Spanish)
+
+    validation_rules:
+      short_phrases:
+        syllable_count: "< 5 syllables in known language"
+        standard: "CORRECT"
+        tolerance: "Clunky OK, WRONG is not OK"
+        rationale: "Short utterances are scaffolding - heard once during build-up"
+        examples_ok:
+          - "I want to (3 syllables)"
+          - "how to say (3 syllables)"
+          - "我想 wǒ xiǎng (2 syllables)"
+        examples_bad:
+          - "To want I (wrong word order)"
+          - "I wants to (agreement error)"
+
+      long_phrases:
+        syllable_count: "≥ 5 syllables in known language"
+        standard: "NATURAL"
+        tolerance: "Zero - native speaker would say this"
+        rationale: "Longer utterances return in spaced repetition - heard 20+ times"
+        check: "Would a native speaker actually say this exact sentence?"
+        examples:
+          - "I want to learn how to say (7 syllables) → must be natural"
+          - "我想学习怎么说 (6 syllables) → must be natural"
+
+    workflow:
+      1: "Agent reviews baskets with methodology context"
+      2: "Flags concerns with reasoning"
+      3: "Human samples 10-20 flags"
+      4: "If good judgment → bulk dismiss remaining"
+      5: "If real issues → prune phrases, re-compile manifest"
+
+    output:
+      flags: "qa_phrase_flags.json"
+      dashboard: "Review queue with flagged phrases"
+
+    rationale: |
+      TTS costs ~$1/course - blocking pipeline to save $0.05 (5% bad phrases)
+      is not justified. Better to generate audio, then prune bad phrases
+      during QA review. Course is usable while QA refines quality.
 
   status_lifecycle:
     pending: "Initial state"
@@ -505,10 +1084,21 @@ MIGRATION:
 ## ============================================================================
 
 SUMMARY:
-  version: "11.0.0"
-  date: "2025-12-04"
+  version: "11.1.0"
+  date: "2025-12-18"
 
-  key_changes:
+  key_changes_v11_1:
+    - "Natural Language QA Review (post-production, non-blocking)"
+    - "12 Directions assessment: D01, D07, D08, D10 favor observability over gatekeeping"
+    - "SYLLABLE COUNT as cognitive load measure (not word count)"
+    - "Distinction Theory: syllables are perceptual units, words are orthographic artifacts"
+    - "Validation: < 5 syllables → CORRECT, ≥ 5 syllables → NATURAL"
+    - "Language-agnostic: works for Chinese, Japanese, Arabic, Thai (no word boundaries)"
+    - "Phase Completion Architecture documentation"
+    - "Course Size Modes (quick_test: 10, mvp_course: 250, full_course: 668)"
+    - "Intelligent Resume pattern for all phases"
+
+  key_changes_v11_0:
     - "Supabase database layer (replaces file-based MAR)"
     - "Audio-first generation flow"
     - "Manifest pruning for new: false LEGOs"
@@ -524,6 +1114,6 @@ SUMMARY:
     LEGOs with new: false don't create introduction_items.
 
 ## ============================================================================
-## GENERATED: 2025-12-04
-## APML v11.0.0
+## GENERATED: 2025-12-18
+## APML v11.1.0
 ## ============================================================================

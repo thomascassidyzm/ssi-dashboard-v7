@@ -1,0 +1,589 @@
+# APML: Natural Language QA Review
+# SSI Course Production Pipeline
+# Version: 1.1.0 (2025-12-18)
+# Status: Design
+#
+# PURPOSE: Post-production QA review for phrase quality
+# Flags phrases for human review based on naturalness standards.
+#
+# DESIGN DECISION: QA Review, not Blocking Gate
+# Based on APML 12 Directions assessment:
+# - D01 (Parameterization): Tolerances adjustable, not hardcoded gates
+# - D07 (Context-Agnostic): Same pattern reusable for audio QA
+# - D08 (Explicitness): Flags with reasons > opaque pass/fail
+# - D10 (Observability): See what was flagged and why
+#
+# TTS costs are marginal (~$1/course), so blocking the pipeline
+# to prevent audio generation is not cost-justified.
+
+## ============================================================================
+## OVERVIEW
+## ============================================================================
+
+NATURAL_LANGUAGE_QA:
+  name: "Natural Language QA Review"
+  type: "QA WORKFLOW (agent-based)"
+  version: "1.1.0"
+  integration: "Part of Production API QA workflow"
+
+  description: |
+    Post-production review of practice phrases for linguistic quality.
+    Agent reviews completed course and FLAGS potential issues for human review.
+    Does NOT block the pipeline - TTS costs are marginal (~$1/course).
+
+    Applies DIFFERENT standards based on SYLLABLE COUNT (not word count):
+    - Short phrases (< 5 syllables): Must be CORRECT (not wrong, can be clunky)
+    - Long phrases (≥ 5 syllables): Must be NATURAL (native speaker would say)
+
+  why_syllables: |
+    SYLLABLE COUNT is the true measure of cognitive load for language learners.
+
+    Distinction Theory: Learners parse sound streams through progressive distinction:
+    1. Sound vs no sound (most basic boundary)
+    2. Louder vs quieter (amplitude changes)
+    3. Rapid volume change vs continuous (attack/decay)
+    4. Syllable vs "just a blob" (rhythmic segmentation)
+    5. Recognizable syllable vs something similar to known language
+    6. Distinct syllable variations (male vs female voice)
+    7. Significant vs irrelevant changes between speakers
+
+    Syllables are the fundamental perceptual unit - sounds stopping and starting,
+    mapped to meanings. Word count is an artifact of writing systems (spaces),
+    completely irrelevant for non-Roman scripts (Chinese, Japanese, Thai, Arabic).
+
+    Language-agnostic equivalence:
+    - "I want to" = 3 syllables (English)
+    - "我想要" wǒ xiǎng yào = 3 syllables (Mandarin)
+    - "Quiero" = 2 syllables (Spanish)
+
+    All represent similar cognitive load regardless of how they're written.
+
+  methodology_context: |
+    Debut phrases (short, used once during LEGO introduction) serve as
+    scaffolding - they build up to the full LEGO. Learners hear them once.
+    They can be literal, fragmentary, even slightly clunky - as long as
+    they are grammatically correct "as far as they go" and could be
+    continued by appending or prepending words.
+
+    Eternal phrases (long, used in spaced repetition) come back again and
+    again over months of learning. Learners will encounter these 20+ times.
+    These MUST be natural - something a native speaker would actually say.
+    Zero tolerance for awkward or unnatural constructions.
+
+  workflow:
+    trigger: "After Phase 9 (manifest compilation) - course is usable"
+    process:
+      1: "Agent reviews all baskets with methodology context"
+      2: "Flags potential issues with reasoning"
+      3: "Human samples flagged items"
+      4: "Bulk dismiss OR investigate further"
+      5: "Prune bad phrases if confirmed"
+      6: "Re-compile manifest if changes made"
+
+  input:
+    - "lego_baskets.json (complete course)"
+    - "course_manifest.json (for audio context)"
+
+  output:
+    - "qa_phrase_flags.json (flagged issues with reasons)"
+    - "Human review queue in dashboard"
+
+## ============================================================================
+## PHRASE CLASSIFICATION (SIMPLIFIED)
+## ============================================================================
+
+PHRASE_CLASSIFICATION:
+  description: |
+    Classification is based on SYLLABLE COUNT in the known language.
+    This is simpler and more linguistically meaningful than the complex
+    runtime classification (eternal_count, debut_max positions).
+
+    Syllable count directly measures cognitive load - the perceptual
+    units the learner must parse, regardless of writing system.
+
+  algorithm:
+    simple_rule: |
+      Count syllables in the KNOWN LANGUAGE phrase:
+      - < 5 syllables → SHORT (apply CORRECT standard)
+      - ≥ 5 syllables → LONG (apply NATURAL standard)
+
+    components:
+      rule: "Phrases with is_component: true"
+      standard: "CORRECT (always short by definition)"
+
+  rationale: |
+    The learning app's runtime classification (eternal_count, debut_max)
+    determines WHICH phrases are shown during debut vs revisit.
+
+    The QA review's syllable-based classification determines
+    WHAT QUALITY STANDARD to apply during validation.
+
+    These are complementary, not redundant:
+    - Runtime: "Show these 5 phrases on revisit"
+    - QA: "Is this phrase natural enough for repeated exposure?"
+
+  examples:
+    short_phrases:
+      - "I want to" → 3 syllables → CORRECT standard
+      - "how to say" → 3 syllables → CORRECT standard
+      - "我想" wǒ xiǎng → 2 syllables → CORRECT standard
+      - "Quiero" → 2 syllables → CORRECT standard
+
+    long_phrases:
+      - "I want to learn how to say" → 7 syllables → NATURAL standard
+      - "我想学习怎么说" → 6 syllables → NATURAL standard
+      - "Quiero aprender cómo se dice" → 9 syllables → NATURAL standard
+
+## ============================================================================
+## VALIDATION STANDARDS
+## ============================================================================
+
+VALIDATION_STANDARDS:
+
+  SHORT_PHRASES:
+    applies_to: "< 5 syllables in known language"
+    standard: "CORRECT"
+    description: |
+      Short phrases are scaffolding - they build up to the LEGO.
+      Learners hear them once during introduction.
+      They can be fragments, literal, even slightly clunky.
+
+    rules:
+      must:
+        - "Grammatically correct AS FAR AS IT GOES"
+        - "Word order must be correct"
+        - "No agreement errors (gender, number, tense)"
+        - "Could be continued by appending/prepending words"
+        - "LEGO used correctly in context"
+
+      acceptable:
+        - "Can be a fragment (doesn't need to be complete sentence)"
+        - "Can be literal/direct translation"
+        - "Slightly clunky is OK"
+
+      not_acceptable:
+        - "Wrong word order"
+        - "Agreement errors"
+        - "Syntactically broken"
+
+    tolerance: "Clunky OK, WRONG is not OK"
+
+    examples:
+      acceptable:
+        - "I want to (3 syl) - fragment, continuable"
+        - "how to say (3 syl) - slightly literal, correct"
+        - "我想 wǒ xiǎng (2 syl) - fragment"
+
+      not_acceptable:
+        - "To want I - wrong word order"
+        - "I wants to - agreement error"
+        - "How say to - syntactically broken"
+
+  LONG_PHRASES:
+    applies_to: "≥ 5 syllables in known language"
+    standard: "NATURAL"
+    description: |
+      Long phrases return in spaced repetition - learners hear them 20+ times.
+      They MUST sound natural. Zero tolerance for awkwardness.
+
+    rules:
+      must:
+        - "Native speaker would actually say this"
+        - "Grammatically perfect in BOTH languages"
+        - "Semantically equivalent (not just structurally parallel)"
+        - "Natural word choice (not dictionary-first-entry syndrome)"
+        - "LEGO appears in natural context"
+
+      not_acceptable:
+        - "Translationese / overly literal"
+        - "Awkward constructions"
+        - "Unnatural word choice"
+        - "Forced or awkward LEGO placement"
+
+    tolerance: "ZERO - must be perfect"
+
+    examples:
+      acceptable:
+        - "I want to learn how to say something (9 syl) - natural, complete"
+        - "Could you tell me how to say this? (8 syl) - idiomatic question"
+
+      not_acceptable:
+        - "I am wanting to make learning of how to say - awkward"
+        - "For the Italian, how is the saying? - unnatural structure"
+        - "I desire to acquire knowledge of speaking - unnaturally formal"
+
+  COMPONENTS:
+    applies_to: "Phrases with is_component: true"
+    standard: "CORRECT"
+    description: "Individual word components for M-type LEGOs"
+    rules:
+      - "Must be a valid word in the target language"
+      - "Translation must be accurate"
+      - "Can be isolated (doesn't need sentence context)"
+    tolerance: "High - these are building blocks"
+    note: "Components are always short by definition"
+
+## ============================================================================
+## VALIDATION PROCESS (SIMPLIFIED)
+## ============================================================================
+
+VALIDATION_PROCESS:
+
+  per_basket:
+    step_1:
+      name: "Count Syllables and Classify"
+      action: |
+        For each phrase in basket:
+        1. Count syllables in KNOWN language phrase
+        2. Classify: < 5 syllables → SHORT, ≥ 5 syllables → LONG
+        3. Components (is_component: true) → always SHORT
+
+    step_2:
+      name: "Apply Standard"
+      action: |
+        SHORT phrases: Is it grammatically correct? (clunky OK)
+        LONG phrases: Would a native speaker say this? (must be natural)
+
+    step_3:
+      name: "Flag Concerns"
+      action: |
+        For any phrase that concerns you:
+        - Record phrase (known + target)
+        - Record syllable count and classification
+        - Record WHY it concerns you
+        - Suggest fix if obvious
+
+  agent_mindset: |
+    Trust your linguistic judgment.
+    Don't overthink - if it sounds wrong, flag it.
+    If it sounds clunky but short, that's probably OK.
+    If it sounds unnatural and it's long, definitely flag it.
+
+## ============================================================================
+## OUTPUT FORMAT
+## ============================================================================
+
+OUTPUT_FORMAT:
+
+  qa_flags:
+    filename: "qa_phrase_flags.json"
+    structure:
+      metadata:
+        course_code: "string"
+        reviewed_at: "ISO timestamp"
+        total_phrases: "number"
+        syllable_threshold: 5
+
+      summary:
+        flagged: "number"
+        short_flagged: "number (< 5 syllables)"
+        long_flagged: "number (≥ 5 syllables)"
+
+      flags:
+        - seed_id: "S0042"
+          lego_id: "S0042L01"
+          phrase:
+            known: "I am wanting to make learning"
+            target: "Estoy queriendo hacer aprendizaje"
+          syllables: 9
+          classification: "LONG"
+          severity: "ERROR"
+          reason: "Unnatural construction - 'wanting to make learning' is not natural English"
+          suggestion: "I want to learn"
+          target_suggestion: "Quiero aprender"
+
+      by_classification:
+        COMPONENT:
+          total: "number"
+          passed: "number"
+          failed: "number"
+        DEBUT:
+          total: "number"
+          passed: "number"
+          failed: "number"
+        ETERNAL:
+          total: "number"
+          passed: "number"
+          failed: "number"
+
+  validated_baskets:
+    filename: "lego_baskets_validated.json"
+    description: "Copy of lego_baskets.json with validation metadata"
+    additions_per_phrase:
+      - "_classification: COMPONENT | DEBUT | ETERNAL"
+      - "_validated: true | false"
+      - "_validation_notes: string (if issues)"
+
+## ============================================================================
+## QA WORKFLOW ARCHITECTURE
+## ============================================================================
+
+QA_WORKFLOW:
+  description: |
+    This is a POST-PRODUCTION QA workflow, not a pipeline phase.
+    It runs AFTER Phase 9 (manifest compilation) when the course is already
+    complete and usable. It flags issues for human review but does NOT block.
+
+  trigger: "After Phase 9 completes - course is production-ready"
+
+  integration_options:
+    option_1_production_api:
+      description: "Part of Production API QA workflow (port 3470)"
+      endpoint: "POST /api/production/:courseCode/qa/natural-language"
+
+    option_2_standalone:
+      description: "Standalone QA service"
+      port: 3471
+      server: "services/qa/natural-language-qa.cjs"
+
+  endpoints:
+    launch:
+      method: "POST /qa/natural-language/launch"
+      description: "Start QA review for a completed course"
+      parameters:
+        courseCode: "string (required)"
+
+    status:
+      method: "GET /qa/natural-language/status/:courseCode"
+      description: "Check QA review progress"
+      response: |
+        {
+          status: "in_progress | complete",
+          progress: { reviewed: N, total: M },
+          summary: { flagged: N }
+        }
+
+    flags:
+      method: "GET /qa/natural-language/flags/:courseCode"
+      description: "Get flagged issues for human review"
+
+    dismiss:
+      method: "POST /qa/natural-language/dismiss"
+      description: "Human dismisses a flag (good judgment)"
+      body: |
+        { courseCode, flagId, reason: "acceptable" | "will_fix_later" }
+
+    prune:
+      method: "POST /qa/natural-language/prune"
+      description: "Remove a flagged phrase from the course"
+      body: |
+        { courseCode, legoId, phraseIndex }
+
+      behavior: |
+        SIMPLE APPROACH: Delete reference, leave audio orphaned.
+
+        Steps:
+        1. Remove phrase from lego_baskets.json at specified index
+        2. Mark manifest as stale (needs recompile)
+        3. Log what was pruned (for audit trail)
+        4. DO NOT delete audio from Supabase or S3
+
+        Why orphan audio is fine:
+        - Storage costs ~$0.02/GB/month (pennies)
+        - Same audio may be used by other courses
+        - Preserves option to restore phrase later
+        - No complex reference counting needed
+
+        Future consideration (not v1):
+        - Cross-course phrase flagging
+        - Orphan cleanup job (quarterly?)
+        - Shared phrase issue tracking
+
+      response: |
+        {
+          success: true,
+          pruned: {
+            courseCode: "ita_for_eng",
+            legoId: "S0004L01",
+            phraseIndex: 7,
+            phrase: { known: "...", target: "..." }
+          },
+          audio_status: "orphaned",  // not deleted
+          manifest_status: "stale",  // needs recompile
+          note: "Audio preserved in Supabase/S3"
+        }
+
+    recompile:
+      method: "POST /qa/natural-language/recompile"
+      description: "Recompile manifest after pruning phrases"
+      body: |
+        { courseCode }
+      behavior: |
+        Triggers Phase 9 manifest compilation for the course.
+        Only needed if phrases were pruned.
+        Can batch multiple prunes before recompiling.
+
+    orphans:
+      method: "GET /qa/audio/orphans"
+      description: "List audio samples not referenced by any manifest"
+      behavior: |
+        Compares Supabase audio_samples table against all course manifests.
+        Returns audio that exists but is not referenced anywhere.
+
+        Use cases:
+        - Visibility into storage usage
+        - Identify pruned phrases' leftover audio
+        - Inform quarterly cleanup decisions (if ever needed)
+
+        Note: Orphaned audio is NOT a problem. Storage is cheap.
+        This endpoint is for visibility, not action.
+
+      response: |
+        {
+          count: 42,
+          total_size_mb: 12.3,
+          oldest: "2025-01-15T...",
+          newest: "2025-12-18T...",
+          samples: [
+            { uuid, text, language, voice_id, created_at, size_kb },
+            ...
+          ]
+        }
+
+      query_example: |
+        -- SQL equivalent
+        SELECT uuid, text, language, voice_id, created_at
+        FROM audio_samples
+        WHERE uuid NOT IN (
+          SELECT DISTINCT unnest(audio_uuids)
+          FROM course_manifests
+        );
+
+  non_blocking: |
+    This workflow does NOT block the pipeline.
+    The course is already usable - QA is refinement, not gatekeeping.
+
+    If issues are found:
+    1. Dashboard shows flag count
+    2. Human samples flagged items
+    3. Bulk dismiss OR investigate further
+    4. Prune bad phrases if confirmed
+    5. Re-compile manifest if changes made (optional)
+
+## ============================================================================
+## AGENT PROMPT TEMPLATE
+## ============================================================================
+
+AGENT_PROMPT:
+  structure: |
+    # Natural Language QA Review
+
+    ## Your Task
+    Review practice phrases for linguistic quality.
+    Flag anything that concerns you - a human will review your flags.
+
+    ## Course: {courseCode}
+
+    ## SYLLABLE-BASED CLASSIFICATION
+
+    Count syllables in the KNOWN LANGUAGE phrase:
+    - < 5 syllables → SHORT phrase → CORRECT standard
+    - ≥ 5 syllables → LONG phrase → NATURAL standard
+
+    ### SHORT phrases (< 5 syllables)
+    Standard: CORRECT
+    - Grammatically valid AS A FRAGMENT
+    - Could be continued by adding words
+    - Does NOT need to be natural/idiomatic
+    - Clunky is OK, WRONG is not OK
+
+    ### LONG phrases (≥ 5 syllables)
+    Standard: NATURAL
+    - Native speaker would actually say this
+    - Grammatically perfect in BOTH languages
+    - Not translationese or awkward
+    - ZERO TOLERANCE for unnaturalness
+
+    ## Why Syllables?
+    Syllables are the perceptual unit learners parse from sound streams.
+    Word count is meaningless for non-Roman scripts (Chinese, Japanese, Thai).
+    "I want to" (3 syl) ≈ "我想要" (3 syl) ≈ "Quiero" (2 syl)
+
+    ## Process
+    1. Read all baskets for the course
+    2. For each phrase:
+       a. Count syllables in known language
+       b. Apply appropriate standard (CORRECT or NATURAL)
+       c. If it concerns you, flag it with reasoning
+    3. Submit flags
+
+    ## Output Format
+    For flagged phrases only:
+    ```json
+    {
+      "legoId": "S0042L01",
+      "flags": [
+        {
+          "phraseIndex": 7,
+          "known": "I am wanting to make learning",
+          "target": "Estoy queriendo hacer aprendizaje",
+          "syllables": 9,
+          "classification": "LONG",
+          "reason": "Unnatural - 'wanting to make learning' not natural English",
+          "suggestion": { "known": "I want to learn", "target": "Quiero aprender" }
+        }
+      ]
+    }
+    ```
+
+## ============================================================================
+## INTEGRATION WITH PIPELINE
+## ============================================================================
+
+PIPELINE_INTEGRATION:
+  position: "AFTER Phase 9 - Post-production QA"
+
+  flow: |
+    Phase 1 (Translation)
+      → Phase 2 (Upchunking)
+        → Phase 3 (Baskets)
+          → Phase 8 (Audio)
+            → Phase 9 (Manifest)
+              → ✅ Course is COMPLETE and USABLE
+              → Natural Language QA (async, non-blocking)
+
+  key_point: |
+    The pipeline completes without waiting for QA.
+    QA runs asynchronously and flags issues for human review.
+    Course can be used while QA is in progress.
+
+  dashboard_integration:
+    - "Show QA status alongside course (not blocking)"
+    - "Display error count and issue list"
+    - "Provide 'Fix Issues' workflow"
+    - "Allow re-validation after fixes"
+
+## ============================================================================
+## FUTURE ENHANCEMENTS
+## ============================================================================
+
+FUTURE_ENHANCEMENTS:
+  auto_fix:
+    description: "Automatically fix common issues"
+    candidates:
+      - "Capitalization normalization"
+      - "Punctuation standardization"
+      - "Simple word choice improvements"
+    implementation: "LLM suggests fix, human approves or agent auto-applies"
+
+  severity_tuning:
+    description: "Per-course severity configuration"
+    use_case: "Some courses may accept higher tolerance for certain issues"
+
+  language_specific_rules:
+    description: "Rules tailored to specific language pairs"
+    examples:
+      - "Chinese: validate tone marks if included"
+      - "Spanish: validate accent marks"
+      - "Arabic: validate diacritics"
+
+  syllable_threshold_tuning:
+    description: "Test different syllable thresholds"
+    purpose: "Optimize classification boundaries per language pair"
+    current: "< 5 syllables = SHORT, ≥ 5 syllables = LONG"
+    note: "5 seems reasonable as default, but may need adjustment for specific language pairs"
+
+## ============================================================================
+## GENERATED: 2025-12-18
+## APML Natural Language QA v1.1.0
+## ============================================================================
