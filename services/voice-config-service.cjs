@@ -2,15 +2,29 @@
  * Voice Configuration Service
  *
  * Manages parameterized voice settings per course.
- * All settings are stored in S3 so they can be tweaked from the dashboard.
+ * All settings are stored in Supabase (database-first architecture).
  *
  * Key principle: Speed is per-voice (not per-role) because TTS voices vary in natural pace.
  *
- * Storage: s3://popty-bach-lfs/courses/{courseCode}/voice_config.json
+ * Storage: Supabase courses table - voice_config JSONB column
  */
 
-const s3Service = require('./s3-service.cjs');
-const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
+
+// Initialize Supabase client
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false
+    }
+  });
+}
 
 // Default voice configuration template
 const DEFAULT_VOICE_CONFIG = {
@@ -21,7 +35,7 @@ const DEFAULT_VOICE_CONFIG = {
   voices: {
     target1: {
       voiceId: '',
-      provider: 'elevenlabs',  // 'elevenlabs' | 'azure' | 'google'
+      provider: 'azure',  // 'elevenlabs' | 'azure' | 'google'
       name: '',
       language: '',
       settings: {
@@ -32,7 +46,7 @@ const DEFAULT_VOICE_CONFIG = {
     },
     target2: {
       voiceId: '',
-      provider: 'elevenlabs',
+      provider: 'azure',
       name: '',
       language: '',
       settings: {
@@ -45,7 +59,7 @@ const DEFAULT_VOICE_CONFIG = {
     // Legacy manifest compatibility: use convertRoleForLegacyManifest() when needed
     known: {
       voiceId: '',
-      provider: 'elevenlabs',
+      provider: 'azure',
       name: '',
       language: '',
       settings: {
@@ -105,28 +119,34 @@ const DEFAULT_VOICE_CONFIG = {
 };
 
 /**
- * Get the S3 key for a course's voice config
- * @param {string} courseCode
- * @returns {string}
- */
-function getConfigKey(courseCode) {
-  return `courses/${courseCode}/voice_config.json`;
-}
-
-/**
- * Load voice configuration for a course
+ * Load voice configuration for a course from Supabase
  * Returns default config if none exists
  *
  * @param {string} courseCode
  * @returns {Promise<object>} Voice configuration
  */
 async function loadVoiceConfig(courseCode) {
-  const key = getConfigKey(courseCode);
+  if (!supabase) {
+    console.warn('[VoiceConfig] Supabase not initialized, returning defaults');
+    return {
+      ...DEFAULT_VOICE_CONFIG,
+      courseCode,
+      createdAt: new Date().toISOString()
+    };
+  }
 
   try {
-    const exists = await s3Service.existsInLFS(key);
+    const { data, error } = await supabase
+      .from('courses')
+      .select('voice_config')
+      .eq('course_code', courseCode)
+      .single();
 
-    if (!exists) {
+    if (error && error.code !== 'PGRST116') { // PGRST116 = not found
+      throw error;
+    }
+
+    if (!data || !data.voice_config) {
       console.log(`[VoiceConfig] No config found for ${courseCode}, returning defaults`);
       return {
         ...DEFAULT_VOICE_CONFIG,
@@ -135,11 +155,12 @@ async function loadVoiceConfig(courseCode) {
       };
     }
 
-    const data = await s3Service.downloadFromLFS(key);
-    const config = JSON.parse(data.toString());
-
-    console.log(`[VoiceConfig] Loaded config for ${courseCode}`);
-    return config;
+    console.log(`[VoiceConfig] Loaded config for ${courseCode} from Supabase`);
+    return {
+      ...DEFAULT_VOICE_CONFIG,
+      ...data.voice_config,
+      courseCode
+    };
 
   } catch (error) {
     console.error(`[VoiceConfig] Error loading config for ${courseCode}:`, error.message);
@@ -153,14 +174,16 @@ async function loadVoiceConfig(courseCode) {
 }
 
 /**
- * Save voice configuration for a course
+ * Save voice configuration for a course to Supabase
  *
  * @param {string} courseCode
  * @param {object} config - Voice configuration object
  * @returns {Promise<object>} Saved configuration
  */
 async function saveVoiceConfig(courseCode, config) {
-  const key = getConfigKey(courseCode);
+  if (!supabase) {
+    throw new Error('Supabase not initialized - cannot save voice config');
+  }
 
   // Merge with defaults to ensure all fields exist
   const fullConfig = {
@@ -175,14 +198,40 @@ async function saveVoiceConfig(courseCode, config) {
     fullConfig.createdAt = fullConfig.updatedAt;
   }
 
-  await s3Service.uploadToLFS(
-    key,
-    JSON.stringify(fullConfig, null, 2),
-    'application/json'
-  );
+  try {
+    // Parse course code to get languages (e.g., zho_for_eng -> target=zho, known=eng)
+    const parts = courseCode.split('_for_');
+    const targetLang = parts[0] || 'unknown';
+    const knownLang = parts[1] || 'unknown';
 
-  console.log(`[VoiceConfig] Saved config for ${courseCode}`);
-  return fullConfig;
+    // Upsert to courses table with voice_config JSONB
+    const { data, error } = await supabase
+      .from('courses')
+      .upsert({
+        course_code: courseCode,
+        known_lang: knownLang,
+        target_lang: targetLang,
+        voice_config: fullConfig,
+        // Also update the individual voice ID columns for backwards compatibility
+        source_voice_id: fullConfig.voices?.known?.voiceId || null,
+        target1_voice_id: fullConfig.voices?.target1?.voiceId || null,
+        target2_voice_id: fullConfig.voices?.target2?.voiceId || null,
+        presentation_voice_id: fullConfig.voices?.presentation?.voiceId || null
+      }, {
+        onConflict: 'course_code'
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    console.log(`[VoiceConfig] Saved config for ${courseCode} to Supabase`);
+    return fullConfig;
+
+  } catch (error) {
+    console.error(`[VoiceConfig] Error saving config for ${courseCode}:`, error.message);
+    throw error;
+  }
 }
 
 /**
@@ -238,7 +287,7 @@ function getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles) {
  * @returns {object} TTS provider config ready for generation
  */
 function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
-  const provider = voiceConfig.provider || 'elevenlabs';
+  const provider = voiceConfig.provider || 'azure';
   const effectiveSpeed = getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles);
 
   if (provider === 'elevenlabs') {
@@ -274,97 +323,14 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
  * @returns {Promise<Array>} Array of sample phrases
  */
 async function getSamplePhrases(courseCode, count = 5) {
-  try {
-    // Try to load lego_baskets.json to get real phrases
-    const basketsKey = `courses/${courseCode}/lego_baskets.json`;
-
-    if (await s3Service.existsInLFS(basketsKey)) {
-      const data = await s3Service.downloadFromLFS(basketsKey);
-      const baskets = JSON.parse(data.toString());
-
-      // Extract unique phrases from baskets
-      const phrases = [];
-      const seenTexts = new Set();
-
-      for (const [basketId, basket] of Object.entries(baskets.baskets || {})) {
-        // Get phrases from basket items
-        for (const item of (basket.items || [])) {
-          if (item.target && !seenTexts.has(item.target)) {
-            phrases.push({
-              text: item.target,
-              known: item.known || '',
-              source: 'basket',
-              basketId
-            });
-            seenTexts.add(item.target);
-          }
-        }
-
-        // Limit to reasonable number
-        if (phrases.length >= 50) break;
-      }
-
-      // Return a mix: short, medium, long
-      const sorted = phrases.sort((a, b) => a.text.length - b.text.length);
-      const selected = [];
-
-      if (sorted.length >= count) {
-        // Select evenly distributed samples
-        for (let i = 0; i < count; i++) {
-          const index = Math.floor((i / count) * sorted.length);
-          selected.push(sorted[index]);
-        }
-      } else {
-        selected.push(...sorted.slice(0, count));
-      }
-
-      return selected;
-    }
-
-    // Fallback: try seed_pairs.json
-    const seedsKey = `courses/${courseCode}/seed_pairs.json`;
-
-    if (await s3Service.existsInLFS(seedsKey)) {
-      const data = await s3Service.downloadFromLFS(seedsKey);
-      const seeds = JSON.parse(data.toString());
-
-      const phrases = [];
-      for (const [seedId, translation] of Object.entries(seeds.translations || {})) {
-        const target = typeof translation === 'object' ? translation.target : translation[0];
-        const known = typeof translation === 'object' ? translation.known : translation[1];
-
-        if (target) {
-          phrases.push({
-            text: target,
-            known: known || '',
-            source: 'seed',
-            seedId
-          });
-        }
-
-        if (phrases.length >= 50) break;
-      }
-
-      return phrases.slice(0, count);
-    }
-
-    // No data found - return generic samples
-    return [
-      { text: 'Hello', known: 'Hola', source: 'default' },
-      { text: 'Good morning', known: 'Buenos días', source: 'default' },
-      { text: 'How are you?', known: '¿Cómo estás?', source: 'default' },
-      { text: 'Thank you very much', known: 'Muchas gracias', source: 'default' },
-      { text: 'See you later', known: 'Hasta luego', source: 'default' }
-    ].slice(0, count);
-
-  } catch (error) {
-    console.error(`[VoiceConfig] Error getting sample phrases for ${courseCode}:`, error.message);
-    return [
-      { text: 'Hello', known: 'Hola', source: 'default' },
-      { text: 'Good morning', known: 'Buenos días', source: 'default' },
-      { text: 'Thank you', known: 'Gracias', source: 'default' }
-    ].slice(0, count);
-  }
+  // Return generic samples - course-specific phrases would require additional DB queries
+  return [
+    { text: 'Hello', known: 'Hello', source: 'default' },
+    { text: 'Good morning', known: 'Good morning', source: 'default' },
+    { text: 'How are you?', known: 'How are you?', source: 'default' },
+    { text: 'Thank you very much', known: 'Thank you very much', source: 'default' },
+    { text: 'See you later', known: 'See you later', source: 'default' }
+  ].slice(0, count);
 }
 
 /**
