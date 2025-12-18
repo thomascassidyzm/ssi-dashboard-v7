@@ -1216,6 +1216,72 @@ async function checkPhase1SeedCoverage(courseCode, expectedStart, expectedEnd) {
 
 // Store active watchdog intervals so we can clear them
 const phase1Watchdogs = new Map();
+const phase3Watchdogs = new Map();
+
+// ============================================================================
+// MASTER HEARTBEAT TRACKING
+// ============================================================================
+// Tracks active masters and their worker progress
+// Key: `${courseCode}_${phase}_${masterId}` → { status, activeSeeds, progress, lastHeartbeat }
+const masterHeartbeats = new Map();
+
+/**
+ * Update master state from heartbeat
+ */
+function updateMasterHeartbeat(courseCode, phase, masterId, data) {
+  const key = `${courseCode}_phase${phase}_${masterId}`;
+  const existing = masterHeartbeats.get(key) || {};
+
+  masterHeartbeats.set(key, {
+    ...existing,
+    courseCode,
+    phase,
+    masterId,
+    ...data,
+    lastHeartbeat: Date.now()
+  });
+
+  return masterHeartbeats.get(key);
+}
+
+/**
+ * Get all masters for a course/phase
+ */
+function getMastersForPhase(courseCode, phase) {
+  const masters = [];
+  for (const [key, state] of masterHeartbeats) {
+    if (key.startsWith(`${courseCode}_phase${phase}_`)) {
+      masters.push(state);
+    }
+  }
+  return masters;
+}
+
+/**
+ * Check if any master has reported recently
+ */
+function hasRecentMasterHeartbeat(courseCode, phase, maxAge = 60000) {
+  const masters = getMastersForPhase(courseCode, phase);
+  const now = Date.now();
+  return masters.some(m => (now - m.lastHeartbeat) < maxAge);
+}
+
+/**
+ * Clean up stale master entries (older than 10 minutes)
+ */
+function cleanupStaleMasters() {
+  const now = Date.now();
+  const staleThreshold = 10 * 60 * 1000; // 10 minutes
+
+  for (const [key, state] of masterHeartbeats) {
+    if (now - state.lastHeartbeat > staleThreshold) {
+      masterHeartbeats.delete(key);
+    }
+  }
+}
+
+// Clean up stale masters every 5 minutes
+setInterval(cleanupStaleMasters, 5 * 60 * 1000);
 
 // Stall detection constants
 const STALL_CHECK_INTERVAL = 30000;  // Check every 30 seconds
@@ -1326,6 +1392,208 @@ async function triggerPhase1GapFill(courseCode, missingSeeds, phase1State) {
     // Reset to allow retry
     phase1State.gapFillTriggered = false;
     courseProgress.set(`${courseCode}_phase1`, phase1State);
+  }
+}
+
+// ============================================================================
+// PHASE 3 STALL DETECTION
+// ============================================================================
+
+/**
+ * Check Phase 3 seed coverage - which seeds have baskets generated
+ */
+async function checkPhase3SeedCoverage(courseCode, startSeed, endSeed) {
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const stagingDir = path.join(courseDir, 'phase3_baskets_staging');
+
+  // Get expected seeds from lego_pairs.json
+  const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+  let expectedSeeds = [];
+
+  try {
+    const legoPairs = JSON.parse(await fs.readFile(legoPairsPath, 'utf8'));
+    expectedSeeds = (legoPairs.seeds || [])
+      .map(s => s.seed_id)
+      .filter(id => {
+        const num = parseInt(id.replace('S', ''), 10);
+        return num >= startSeed && num <= endSeed;
+      });
+  } catch (e) {
+    console.log(`[Phase3Coverage] Could not read lego_pairs.json: ${e.message}`);
+    return { complete: false, missing: [], received: [], stats: { coverage: '0%', missing: 0 } };
+  }
+
+  // Get received seeds from staging directory
+  let receivedSeeds = [];
+  try {
+    const files = await fs.readdir(stagingDir);
+    receivedSeeds = files
+      .filter(f => f.startsWith('seed_S') && f.endsWith('_baskets.json'))
+      .map(f => f.replace('seed_', '').replace('_baskets.json', ''));
+  } catch (e) {
+    // Directory doesn't exist yet
+  }
+
+  const receivedSet = new Set(receivedSeeds);
+  const missing = expectedSeeds.filter(s => !receivedSet.has(s));
+  const complete = missing.length === 0 && expectedSeeds.length > 0;
+
+  return {
+    complete,
+    missing,
+    received: receivedSeeds,
+    stats: {
+      expected: expectedSeeds.length,
+      received: receivedSeeds.length,
+      missing: missing.length,
+      coverage: expectedSeeds.length > 0
+        ? `${Math.round(receivedSeeds.length / expectedSeeds.length * 100)}%`
+        : '0%'
+    }
+  };
+}
+
+/**
+ * Start a watchdog that monitors Phase 3 progress and triggers gap-fill if stalled
+ */
+function startPhase3StallWatchdog(courseCode) {
+  // Clear any existing watchdog for this course
+  if (phase3Watchdogs.has(courseCode)) {
+    clearInterval(phase3Watchdogs.get(courseCode));
+  }
+
+  console.log(`[Phase3Watchdog] Started stall detection for ${courseCode}`);
+
+  const watchdog = setInterval(async () => {
+    const phase3State = courseProgress.get(`${courseCode}_phase3`);
+
+    // Stop if no state or already complete
+    if (!phase3State) {
+      console.log(`[Phase3Watchdog] ${courseCode}: No state found, stopping watchdog`);
+      clearInterval(watchdog);
+      phase3Watchdogs.delete(courseCode);
+      return;
+    }
+
+    // Check seed coverage
+    const coverage = await checkPhase3SeedCoverage(
+      courseCode,
+      phase3State.expectedStartSeed,
+      phase3State.expectedEndSeed
+    );
+
+    // If complete, stop watchdog
+    if (coverage.complete) {
+      console.log(`[Phase3Watchdog] ✅ ${courseCode}: All seeds complete, stopping watchdog`);
+      addProgressLog(courseCode, `Phase 3 complete: ${coverage.stats.received}/${coverage.stats.expected} seeds`, 'success');
+      clearInterval(watchdog);
+      phase3Watchdogs.delete(courseCode);
+      return;
+    }
+
+    // Check for stall: no new basket for STALL_TIMEOUT
+    const timeSinceLastBatch = Date.now() - phase3State.lastBatchTime;
+    const outputStale = timeSinceLastBatch > STALL_TIMEOUT;
+
+    // Check if any master has reported recently (within 60s)
+    const hasRecentHeartbeat = hasRecentMasterHeartbeat(courseCode, 3, 60000);
+
+    // Only stalled if NO output AND NO heartbeat
+    const isStalled = outputStale && !hasRecentHeartbeat;
+
+    if (isStalled && !phase3State.gapFillTriggered) {
+      console.log(`[Phase3Watchdog] ⚠️ ${courseCode}: STALL DETECTED!`);
+      console.log(`   → Last basket: ${Math.round(timeSinceLastBatch/1000)}s ago`);
+      console.log(`   → Recent heartbeat: ${hasRecentHeartbeat ? 'YES' : 'NO'}`);
+      console.log(`   → Coverage: ${coverage.stats.coverage} (${coverage.stats.missing} seeds missing)`);
+      console.log(`   → Missing: ${coverage.missing.join(', ')}`);
+
+      // Log stall but DON'T auto-trigger gap-fill - too risky with overlapping jobs
+      // User should manually retry via dashboard
+      addProgressLog(courseCode, `Phase 3 stalled: ${coverage.stats.missing} seeds missing (${coverage.missing.join(', ')})`, 'warning');
+      phase3State.gapFillTriggered = true;  // Prevent spam logging
+      courseProgress.set(`${courseCode}_phase3`, phase3State);
+
+      // Emit stall event for UI
+      if (io) {
+        io.to(`course:${courseCode}`).emit('phase-stalled', {
+          courseCode,
+          phase: 3,
+          missingSeeds: coverage.missing,
+          lastBasket: timeSinceLastBatch,
+          timestamp: Date.now()
+        });
+      }
+
+      // Stop watchdog - user intervention needed
+      console.log(`[Phase3Watchdog] Stopping watchdog - manual retry recommended`);
+      clearInterval(watchdog);
+      phase3Watchdogs.delete(courseCode);
+    } else if (outputStale && hasRecentHeartbeat) {
+      // Masters still working, just slow - log but don't flag as stalled
+      console.log(`[Phase3Watchdog] ${courseCode}: Output stale but masters active (heartbeat within 60s)`);
+    }
+  }, STALL_CHECK_INTERVAL);
+
+  phase3Watchdogs.set(courseCode, watchdog);
+}
+
+/**
+ * Trigger gap-fill for missing Phase 3 seeds
+ * Calls Phase 3 server to regenerate baskets for specific seeds
+ */
+async function triggerPhase3GapFill(courseCode, missingSeeds, phase3State) {
+  // Mark gap-fill as triggered to prevent duplicate triggers
+  phase3State.gapFillTriggered = true;
+  phase3State.gapFillAttempt = (phase3State.gapFillAttempt || 0) + 1;
+  courseProgress.set(`${courseCode}_phase3`, phase3State);
+
+  if (phase3State.gapFillAttempt > MAX_GAP_FILL_ATTEMPTS) {
+    console.log(`[Phase3GapFill] ❌ ${courseCode}: Max gap-fill attempts (${MAX_GAP_FILL_ATTEMPTS}) reached`);
+    addProgressLog(courseCode, `Phase 3 gap-fill failed after ${MAX_GAP_FILL_ATTEMPTS} attempts. Missing: ${missingSeeds.join(', ')}`, 'error');
+    return;
+  }
+
+  console.log(`[Phase3GapFill] 🔄 ${courseCode}: Triggering gap-fill (attempt ${phase3State.gapFillAttempt}/${MAX_GAP_FILL_ATTEMPTS})`);
+  console.log(`   → Missing seeds: ${missingSeeds.join(', ')}`);
+  addProgressLog(courseCode, `Phase 3 gap-fill: regenerating ${missingSeeds.length} seeds: ${missingSeeds.join(', ')}`);
+
+  try {
+    const phase3Server = PHASE_SERVERS[3];
+
+    // Convert seed IDs to numbers and get range
+    const seedNumbers = missingSeeds.map(s => parseInt(s.replace('S', ''), 10)).sort((a, b) => a - b);
+    const startSeed = seedNumbers[0];
+    const endSeed = seedNumbers[seedNumbers.length - 1];
+
+    console.log(`[Phase3GapFill] Calling /start for seeds ${startSeed}-${endSeed}`);
+
+    // Call Phase 3 /start with the range covering missing seeds
+    // Note: This may regenerate some seeds that already exist, but they'll be deduplicated
+    const response = await axios.post(`${phase3Server}/start`, {
+      courseCode,
+      startSeed,
+      endSeed,
+      target: phase3State.target,
+      known: phase3State.known
+    }, { timeout: 30000 });
+
+    console.log(`[Phase3GapFill] ✅ ${courseCode}: Gap-fill request sent`);
+    addProgressLog(courseCode, `Phase 3 gap-fill: spawning agents for seeds ${startSeed}-${endSeed}`);
+
+    // Reset lastBatchTime to give gap-fill agents time to work
+    // Keep gapFillTriggered = true until a basket arrives (see upload-basket handler)
+    phase3State.lastBatchTime = Date.now();
+    // Don't reset gapFillTriggered here - wait for basket upload to reset it
+    courseProgress.set(`${courseCode}_phase3`, phase3State);
+
+  } catch (error) {
+    console.error(`[Phase3GapFill] ❌ ${courseCode}: Gap-fill request failed:`, error.message);
+    addProgressLog(courseCode, `Phase 3 gap-fill failed: ${error.message}`, 'error');
+
+    // Reset to allow retry
+    phase3State.gapFillTriggered = false;
+    courseProgress.set(`${courseCode}_phase3`, phase3State);
   }
 }
 
@@ -5103,6 +5371,21 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
         console.log(`[Orchestrator] ✅ Phase 3 started`);
         updatePhaseProgress(courseCode, 3, { status: 'running' });
         addProgressLog(courseCode, `Phase 3: Basket generation started successfully`);
+
+        // Initialize Phase 3 state for stall detection
+        courseProgress.set(`${courseCode}_phase3`, {
+          expectedStartSeed: 1,
+          expectedEndSeed: seedCount,
+          target: targetName,
+          known: knownName,
+          startTime: Date.now(),
+          lastBatchTime: Date.now(),
+          gapFillTriggered: false,
+          gapFillAttempt: 0
+        });
+
+        // Start stall watchdog for Phase 3
+        startPhase3StallWatchdog(courseCode);
       } catch (phase3Error) {
         console.error(`[Orchestrator] ❌ Failed to start Phase 3:`, phase3Error.message);
         updatePhaseProgress(courseCode, 3, { status: 'error', error: phase3Error.message });
@@ -6697,19 +6980,40 @@ app.post('/phase3/start', async (req, res) => {
     return res.status(400).json({ error: 'courseCode required' });
   }
 
-  console.log(`[Orchestrator] Phase 3 start request for ${courseCode}`);
+  const resolvedStartSeed = startSeed || 1;
+  const resolvedEndSeed = endSeed || SEED_COUNTS.FULL_COURSE;
+  const resolvedTarget = target || courseCode.split('_for_')[0];
+  const resolvedKnown = known || courseCode.split('_for_')[1];
+
+  console.log(`[Orchestrator] Phase 3 start request for ${courseCode} (seeds ${resolvedStartSeed}-${resolvedEndSeed})`);
 
   try {
     const response = await axios.post(`${PHASE_SERVERS[3]}/start`, {
       courseCode,
-      startSeed: startSeed || 1,
-      endSeed: endSeed || SEED_COUNTS.FULL_COURSE,
-      target: target || courseCode.split('_for_')[0],
-      known: known || courseCode.split('_for_')[1],
+      startSeed: resolvedStartSeed,
+      endSeed: resolvedEndSeed,
+      target: resolvedTarget,
+      known: resolvedKnown,
       stagingOnly
     }, { timeout: 30000 });
 
     console.log(`[Orchestrator] Phase 3 started for ${courseCode}`);
+
+    // Initialize Phase 3 state for stall detection
+    courseProgress.set(`${courseCode}_phase3`, {
+      expectedStartSeed: resolvedStartSeed,
+      expectedEndSeed: resolvedEndSeed,
+      target: resolvedTarget,
+      known: resolvedKnown,
+      startTime: Date.now(),
+      lastBatchTime: Date.now(),
+      gapFillTriggered: false,
+      gapFillAttempt: 0
+    });
+
+    // Start stall watchdog for Phase 3
+    startPhase3StallWatchdog(courseCode);
+
     res.json(response.data);
   } catch (error) {
     console.error(`[Orchestrator] Phase 3 start failed: ${error.message}`);
@@ -6721,18 +7025,121 @@ app.post('/phase3/start', async (req, res) => {
   }
 });
 
+// ============================================================================
+// MASTER HEARTBEAT ENDPOINT
+// ============================================================================
+
+/**
+ * POST /master-heartbeat
+ * Masters report their status - enables real-time monitoring and intelligent stall detection
+ *
+ * Body: {
+ *   courseCode: string,
+ *   phase: number (1, 2, or 3),
+ *   masterId: string (e.g., "M1", "M2"),
+ *   status: "starting" | "spawning" | "running" | "complete" | "error",
+ *   workersTotal: number,
+ *   workersComplete: number,
+ *   activeSeeds: string[] (e.g., ["S0005", "S0006"]),
+ *   currentTask?: string (human-readable description),
+ *   error?: string (if status is "error")
+ * }
+ */
+app.post('/master-heartbeat', (req, res) => {
+  const {
+    courseCode,
+    phase,
+    masterId,
+    status,
+    workersTotal,
+    workersComplete,
+    activeSeeds,
+    currentTask,
+    error
+  } = req.body;
+
+  if (!courseCode || !phase || !masterId) {
+    return res.status(400).json({ error: 'courseCode, phase, and masterId required' });
+  }
+
+  // Update master state
+  const masterState = updateMasterHeartbeat(courseCode, phase, masterId, {
+    status: status || 'running',
+    workersTotal: workersTotal || 0,
+    workersComplete: workersComplete || 0,
+    activeSeeds: activeSeeds || [],
+    currentTask,
+    error
+  });
+
+  console.log(`[Heartbeat] ${courseCode} Phase ${phase} ${masterId}: ${status || 'running'} (${workersComplete || 0}/${workersTotal || 0} workers)`);
+
+  // Emit WebSocket event for real-time UI updates
+  if (io) {
+    io.to(`course:${courseCode}`).emit('master-heartbeat', {
+      courseCode,
+      phase,
+      masterId,
+      status: masterState.status,
+      workersTotal: masterState.workersTotal,
+      workersComplete: masterState.workersComplete,
+      activeSeeds: masterState.activeSeeds,
+      currentTask: masterState.currentTask,
+      error: masterState.error,
+      timestamp: masterState.lastHeartbeat
+    });
+  }
+
+  // Also update phase progress state (for stall detection)
+  const phaseKey = `${courseCode}_phase${phase}`;
+  const phaseState = courseProgress.get(phaseKey);
+  if (phaseState) {
+    phaseState.lastHeartbeat = Date.now();
+    courseProgress.set(phaseKey, phaseState);
+  }
+
+  res.json({ ok: true, received: masterState });
+});
+
+/**
+ * GET /masters/:courseCode/:phase
+ * Get all active masters for a course/phase
+ */
+app.get('/masters/:courseCode/:phase', (req, res) => {
+  const { courseCode, phase } = req.params;
+  const masters = getMastersForPhase(courseCode, parseInt(phase));
+
+  res.json({
+    courseCode,
+    phase: parseInt(phase),
+    masters,
+    count: masters.length
+  });
+});
+
 /**
  * POST /phase3/upload-basket
  * Proxy basket uploads to Phase 3 server - agents submit one LEGO at a time
  */
 app.post('/phase3/upload-basket', async (req, res) => {
-  console.log(`[Orchestrator] Basket upload received`);
+  const courseCode = req.body.courseCode;
+  console.log(`[Orchestrator] Basket upload received for ${courseCode || 'unknown'}`);
 
   try {
     const response = await axios.post(`${PHASE_SERVERS[3]}/upload-basket`, req.body, {
       timeout: 30000,
       headers: { 'Content-Type': 'application/json' }
     });
+
+    // Update lastBatchTime for stall detection and reset gapFillTriggered
+    if (courseCode) {
+      const phase3State = courseProgress.get(`${courseCode}_phase3`);
+      if (phase3State) {
+        phase3State.lastBatchTime = Date.now();
+        phase3State.gapFillTriggered = false;  // Reset - basket arrived, gap-fill worked
+        courseProgress.set(`${courseCode}_phase3`, phase3State);
+      }
+    }
 
     console.log(`[Orchestrator] Basket uploaded: ${response.data.legoId || 'unknown'}`);
     res.json(response.data);
@@ -6751,11 +7158,24 @@ app.post('/phase3/upload-basket', async (req, res) => {
  * Same as /phase3/upload-basket
  */
 app.post('/upload-basket', async (req, res) => {
+  const courseCode = req.body.courseCode;
+
   try {
     const response = await axios.post(`${PHASE_SERVERS[3]}/upload-basket`, req.body, {
       timeout: 30000,
       headers: { 'Content-Type': 'application/json' }
     });
+
+    // Update lastBatchTime for stall detection and reset gapFillTriggered
+    if (courseCode) {
+      const phase3State = courseProgress.get(`${courseCode}_phase3`);
+      if (phase3State) {
+        phase3State.lastBatchTime = Date.now();
+        phase3State.gapFillTriggered = false;  // Reset - basket arrived, gap-fill worked
+        courseProgress.set(`${courseCode}_phase3`, phase3State);
+      }
+    }
+
     res.json(response.data);
   } catch (error) {
     if (error.response) {

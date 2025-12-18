@@ -714,8 +714,9 @@ async function importSeedWithLegos(courseCode, seedData) {
     await saveLego(courseCode, seed.seed_number, {
       legoIndex: legoData.lego_index || parseLegoIndex(legoData.id),
       legoId: legoData.id,
-      knownText: legoData.lego?.known,
-      targetText: legoData.lego?.target,
+      // Handle both flat format { known, target } and nested format { lego: { known, target } }
+      knownText: legoData.lego?.known || legoData.known,
+      targetText: legoData.lego?.target || legoData.target,
       type: legoData.type || 'A',
       isNew: legoData.new !== false,
       components: components,

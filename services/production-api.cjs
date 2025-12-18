@@ -1074,8 +1074,9 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
 // Get seeds from database
 app.get('/api/production/:courseCode/seeds', async (req, res) => {
   const { courseCode } = req.params
+  const status = req.query.status || 'all'  // Default to all statuses (draft, released, etc.)
   try {
-    const seeds = await courseDataService.getSeedsByCourse(courseCode)
+    const seeds = await courseDataService.getSeedsByCourse(courseCode, { status })
     res.json({
       courseCode,
       count: seeds.length,

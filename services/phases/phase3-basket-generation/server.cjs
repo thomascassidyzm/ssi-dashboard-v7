@@ -200,8 +200,9 @@ function buildAvailableVocab(legoPairs, targetLegoId) {
       if (seedNum === targetSeedNum && legoNum > targetLegoNum) break;
 
       // Add this LEGO's words to vocabulary (both languages)
-      const knownWords = extractWords(lego.lego.known);
-      const targetWords = extractWords(lego.lego.target);
+      // Handle both flat format { known, target } and nested format { lego: { known, target } }
+      const knownWords = extractWords(lego.lego?.known || lego.known);
+      const targetWords = extractWords(lego.lego?.target || lego.target);
       knownWords.forEach(w => knownVocab.add(w));
       targetWords.forEach(w => targetVocab.add(w));
     }
@@ -340,12 +341,15 @@ async function getAllLegosInRange(baseCourseDir, startSeed, endSeed) {
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
-        if (lego.new && lego.lego) {
+        // Handle both flat format { known, target } and nested format { lego: { known, target } }
+        const legoTarget = lego.lego?.target || lego.target;
+        const legoKnown = lego.lego?.known || lego.known;
+        if (lego.new && legoTarget && legoKnown) {
           allLegos.push({
             legoId: lego.id,
             seed: seed.seed_id,
-            target: lego.lego.target,
-            known: lego.lego.known,
+            target: legoTarget,
+            known: legoKnown,
             type: lego.type || 'M'
           });
         }
