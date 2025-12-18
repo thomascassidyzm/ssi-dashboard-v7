@@ -33,6 +33,43 @@
 
       <!-- Pipeline View -->
       <div v-else class="space-y-6">
+        <!-- Voice Configuration (Collapsible) -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden">
+          <button
+            @click="showVoiceConfig = !showVoiceConfig"
+            class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+              <span class="text-lg font-semibold text-slate-100">Voice Configuration</span>
+              <span v-if="voicesConfigured" class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded">
+                Configured
+              </span>
+              <span v-else class="px-2 py-0.5 text-xs bg-amber-500/20 text-amber-400 rounded">
+                Setup Required
+              </span>
+            </div>
+            <svg
+              class="w-5 h-5 text-slate-400 transition-transform"
+              :class="{ 'rotate-180': showVoiceConfig }"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div v-show="showVoiceConfig" class="border-t border-slate-700">
+            <VoiceConfiguration
+              :course-code="courseCode"
+              @config-saved="onVoiceConfigSaved"
+              @config-loaded="onVoiceConfigLoaded"
+            />
+          </div>
+        </div>
+
         <!-- Progress Dashboard -->
         <PipelineProgress
           :total="progressStats.total"
@@ -72,6 +109,7 @@ import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import QueueControls from './components/QueueControls.vue'
 import QueueList from './components/QueueList.vue'
+import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
 const route = useRoute()
 const productionStore = useProductionStore()
@@ -80,6 +118,11 @@ const courseCode = computed(() => route.params.courseCode as string)
 const loading = ref(true)
 const error = ref<string | null>(null)
 const statusFilter = ref<string>('all')
+
+// Voice configuration state
+const showVoiceConfig = ref(false)
+const voicesConfigured = ref(false)
+const voiceConfig = ref<any>(null)
 
 // Load data on mount
 onMounted(async () => {
@@ -127,6 +170,36 @@ const retryFailed = async () => {
 
 const showPlan = async () => {
   await productionStore.generatePlan(courseCode.value)
+}
+
+// Voice configuration handlers
+const onVoiceConfigLoaded = (config: any) => {
+  voiceConfig.value = config
+  // Check if all required voices are configured
+  const voices = config?.voices || {}
+  voicesConfigured.value = !!(
+    voices.target1?.voiceId &&
+    voices.target2?.voiceId &&
+    voices.known?.voiceId
+  )
+  // Auto-expand if not configured
+  if (!voicesConfigured.value) {
+    showVoiceConfig.value = true
+  }
+}
+
+const onVoiceConfigSaved = (config: any) => {
+  voiceConfig.value = config
+  const voices = config?.voices || {}
+  voicesConfigured.value = !!(
+    voices.target1?.voiceId &&
+    voices.target2?.voiceId &&
+    voices.known?.voiceId
+  )
+  // Collapse after saving if configured
+  if (voicesConfigured.value) {
+    showVoiceConfig.value = false
+  }
 }
 
 const updateFilter = (filter: string) => {
