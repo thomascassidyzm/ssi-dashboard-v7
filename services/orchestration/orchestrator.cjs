@@ -167,6 +167,423 @@ const pipelineJobs = new Map();
 // courseCode -> { currentPhase, overallStatus, phases: {...}, recentLogs: [] }
 const courseProgress = new Map();
 
+// =======================================
+// PIPELINE STATE MODEL (Course Generation Transparency)
+// =======================================
+
+/**
+ * @typedef {'quick_test' | 'mvp_course' | 'full_course'} CourseMode
+ */
+
+/**
+ * @typedef {'pending' | 'running' | 'complete' | 'failed' | 'skipped'} PhaseStatusType
+ */
+
+/**
+ * @typedef {'running' | 'complete' | 'failed' | 'paused'} PipelineStatusType
+ */
+
+/**
+ * @typedef {'spawning' | 'ready' | 'running' | 'complete' | 'failed' | 'timeout'} BrowserStatusType
+ */
+
+/**
+ * @typedef {'spawning' | 'running' | 'complete' | 'failed'} AgentStatusType
+ */
+
+/**
+ * @typedef {'pending' | 'assigned' | 'processing' | 'complete' | 'failed'} SeedStatusType
+ */
+
+/**
+ * PhaseStatus - Status tracking for individual pipeline phases
+ * @typedef {Object} PhaseStatus
+ * @property {PhaseStatusType} status - Current phase status
+ * @property {string} [jobId] - Current or last job for this phase
+ * @property {string} [startedAt] - ISO timestamp when phase started
+ * @property {string} [completedAt] - ISO timestamp when phase completed
+ * @property {number} [duration] - Duration in seconds
+ * @property {number} [inputCount] - Seeds/LEGOs/etc going in
+ * @property {number} [outputCount] - Items produced
+ * @property {string} [error] - Error message if failed
+ */
+
+/**
+ * SeedStatus - Individual seed tracking within a job
+ * @typedef {Object} SeedStatus
+ * @property {string} seedId - Seed identifier (e.g., "S0001")
+ * @property {SeedStatusType} status - Current status
+ * @property {string} [browserId] - Assigned browser
+ * @property {string} [agentId] - Assigned agent
+ * @property {string} [assignedAt] - ISO timestamp when assigned
+ * @property {string} [processingStartedAt] - ISO timestamp when processing began
+ * @property {string} [completedAt] - ISO timestamp when completed
+ * @property {*} [result] - The actual translation/LEGO data
+ * @property {string} [error] - Error message if failed
+ */
+
+/**
+ * AgentInstance - Agent within a browser
+ * @typedef {Object} AgentInstance
+ * @property {string} agentId - Agent identifier (e.g., "browser-1-agent-1")
+ * @property {string} browserId - Parent browser ID
+ * @property {AgentStatusType} status - Current status
+ * @property {string[]} assignedSeeds - Seeds assigned to this agent
+ * @property {string[]} completedSeeds - Seeds completed by this agent
+ * @property {string[]} failedSeeds - Seeds that failed in this agent
+ * @property {string} [currentSeed] - Currently processing seed
+ * @property {string} startedAt - ISO timestamp when agent started
+ * @property {string} lastActivityAt - ISO timestamp of last activity
+ * @property {string} [completedAt] - ISO timestamp when completed
+ */
+
+/**
+ * BrowserInstance - Browser spawned for parallel processing
+ * @typedef {Object} BrowserInstance
+ * @property {string} browserId - Browser identifier (e.g., "browser-1")
+ * @property {BrowserStatusType} status - Current status
+ * @property {string[]} assignedSeeds - Seeds this browser is responsible for
+ * @property {AgentInstance[]} agents - Agents within this browser
+ * @property {string} spawnedAt - ISO timestamp when browser spawned
+ * @property {string} [readyAt] - ISO timestamp when browser became ready
+ * @property {string} [completedAt] - ISO timestamp when browser completed
+ * @property {string} [error] - Error message if failed
+ */
+
+/**
+ * GenerationJob - Per-phase job tracking
+ * @typedef {Object} GenerationJob
+ * @property {string} jobId - Unique job identifier (e.g., "p1-001")
+ * @property {string} courseCode - Course being processed
+ * @property {CourseMode} mode - Generation mode
+ * @property {number} phase - Phase number (1, 2, 3, etc.)
+ * @property {Object} seeds - Seed tracking
+ * @property {number} seeds.total - Total seeds in job
+ * @property {string[]} seeds.pending - Seeds not yet assigned
+ * @property {string[]} seeds.processing - Seeds currently being processed
+ * @property {string[]} seeds.completed - Seeds successfully completed
+ * @property {string[]} seeds.failed - Seeds that failed
+ * @property {BrowserInstance[]} browsers - Browser instances
+ * @property {string} startedAt - ISO timestamp when job started
+ * @property {string} lastActivityAt - ISO timestamp of last activity
+ * @property {string} [completedAt] - ISO timestamp when completed
+ * @property {number} gapFillAttempts - Number of gap-fill attempts made
+ * @property {number} maxGapFillAttempts - Maximum gap-fill attempts allowed
+ */
+
+/**
+ * Pipeline - Top-level pipeline state for course generation
+ * @typedef {Object} Pipeline
+ * @property {string} pipelineId - Unique pipeline identifier (e.g., "pipeline-zho_for_eng-20251218")
+ * @property {string} courseCode - Course being generated
+ * @property {CourseMode} mode - Generation mode (quick_test, mvp_course, full_course)
+ * @property {PipelineStatusType} status - Overall pipeline status
+ * @property {Object} phases - Phase progression tracking
+ * @property {PhaseStatus} phases.phase1 - Phase 1: Translation + LEGO Extraction
+ * @property {PhaseStatus} phases.phase2 - Phase 2: Conflict Resolution
+ * @property {PhaseStatus} phases.phase3 - Phase 3: Basket Generation
+ * @property {PhaseStatus} phases.audio - Audio: TTS Generation
+ * @property {PhaseStatus} phases.manifest - Manifest: Course Compilation
+ * @property {'phase1' | 'phase2' | 'phase3' | 'audio' | 'manifest' | null} currentPhase - Current active phase
+ * @property {GenerationJob[]} jobs - Job history across all phases
+ * @property {string} startedAt - ISO timestamp when pipeline started
+ * @property {string} [completedAt] - ISO timestamp when pipeline completed
+ * @property {number} [totalDuration] - Total duration in seconds
+ * @property {Object} stats - Summary statistics
+ * @property {number} stats.seedsTotal - Total seeds to process
+ * @property {number} stats.seedsComplete - Seeds completed
+ * @property {number} stats.legosGenerated - LEGOs generated
+ * @property {number} stats.basketsGenerated - Baskets generated
+ * @property {number} stats.audioFilesGenerated - Audio files generated
+ */
+
+/**
+ * Pipeline storage - Maps pipelineId to Pipeline state
+ * @type {Map<string, Pipeline>}
+ */
+const pipelines = new Map();
+
+/**
+ * Generate a unique pipeline ID
+ * @param {string} courseCode - Course code
+ * @returns {string} Pipeline ID (e.g., "pipeline-spa_for_eng-20251218-143917")
+ */
+function generatePipelineId(courseCode) {
+  const now = new Date();
+  const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
+  const timeStr = now.toISOString().slice(11, 19).replace(/:/g, '');
+  return `pipeline-${courseCode}-${dateStr}-${timeStr}`;
+}
+
+/**
+ * Generate a unique job ID for a phase
+ * @param {number|string} phase - Phase number or name
+ * @param {number} [attempt=1] - Attempt number for retries
+ * @returns {string} Job ID (e.g., "p1-001", "p3-002")
+ */
+function generateJobId(phase, attempt = 1) {
+  const phaseNum = typeof phase === 'string' ? phase.replace('phase', '') : phase;
+  return `p${phaseNum}-${String(attempt).padStart(3, '0')}`;
+}
+
+/**
+ * Create a new pipeline for course generation
+ * @param {string} courseCode - Course identifier
+ * @param {CourseMode} mode - Generation mode
+ * @param {number} [seedsTotal=668] - Total seeds to process
+ * @returns {Pipeline} The newly created pipeline
+ */
+function createPipeline(courseCode, mode, seedsTotal = SEED_COUNTS.FULL_COURSE) {
+  const pipelineId = generatePipelineId(courseCode);
+  const now = new Date().toISOString();
+
+  /** @type {Pipeline} */
+  const pipeline = {
+    pipelineId,
+    courseCode,
+    mode,
+    status: 'running',
+    phases: {
+      phase1: { status: 'pending' },
+      phase2: { status: 'pending' },
+      phase3: { status: 'pending' },
+      audio: { status: 'pending' },
+      manifest: { status: 'pending' }
+    },
+    currentPhase: null,
+    jobs: [],
+    startedAt: now,
+    completedAt: undefined,
+    totalDuration: undefined,
+    stats: {
+      seedsTotal,
+      seedsComplete: 0,
+      legosGenerated: 0,
+      basketsGenerated: 0,
+      audioFilesGenerated: 0
+    }
+  };
+
+  pipelines.set(pipelineId, pipeline);
+
+  // Also index by courseCode for easy lookup
+  pipelines.set(`course:${courseCode}`, pipeline);
+
+  console.log(`[Pipeline] Created pipeline ${pipelineId} for ${courseCode} (mode: ${mode}, seeds: ${seedsTotal})`);
+
+  return pipeline;
+}
+
+/**
+ * Update phase status in a pipeline
+ * @param {string} pipelineId - Pipeline ID or courseCode
+ * @param {'phase1' | 'phase2' | 'phase3' | 'audio' | 'manifest'} phase - Phase to update
+ * @param {Partial<PhaseStatus>} updates - Status updates to apply
+ * @returns {Pipeline|null} Updated pipeline or null if not found
+ */
+function updatePipelinePhaseStatus(pipelineId, phase, updates) {
+  // Support lookup by either pipelineId or courseCode
+  let pipeline = pipelines.get(pipelineId);
+  if (!pipeline) {
+    pipeline = pipelines.get(`course:${pipelineId}`);
+  }
+
+  if (!pipeline) {
+    console.warn(`[Pipeline] Pipeline not found: ${pipelineId}`);
+    return null;
+  }
+
+  if (!pipeline.phases[phase]) {
+    console.warn(`[Pipeline] Invalid phase: ${phase}`);
+    return null;
+  }
+
+  // Merge updates into phase status
+  Object.assign(pipeline.phases[phase], updates);
+
+  // Update currentPhase if this phase is now running
+  if (updates.status === 'running') {
+    pipeline.currentPhase = phase;
+  }
+
+  // Calculate duration if phase just completed
+  if (updates.status === 'complete' || updates.status === 'failed') {
+    if (pipeline.phases[phase].startedAt && updates.completedAt) {
+      const start = new Date(pipeline.phases[phase].startedAt);
+      const end = new Date(updates.completedAt);
+      pipeline.phases[phase].duration = Math.round((end - start) / 1000);
+    }
+
+    // Clear currentPhase if the completed phase was the active one
+    if (pipeline.currentPhase === phase) {
+      pipeline.currentPhase = null;
+    }
+  }
+
+  // Check if all phases are complete to update pipeline status
+  const allPhases = ['phase1', 'phase2', 'phase3', 'audio', 'manifest'];
+  const phaseStatuses = allPhases.map(p => pipeline.phases[p].status);
+
+  if (phaseStatuses.every(s => s === 'complete' || s === 'skipped')) {
+    pipeline.status = 'complete';
+    pipeline.completedAt = new Date().toISOString();
+    if (pipeline.startedAt) {
+      pipeline.totalDuration = Math.round(
+        (new Date(pipeline.completedAt) - new Date(pipeline.startedAt)) / 1000
+      );
+    }
+    console.log(`[Pipeline] Pipeline ${pipeline.pipelineId} completed in ${formatDuration(pipeline.totalDuration)}`);
+  } else if (phaseStatuses.some(s => s === 'failed')) {
+    pipeline.status = 'failed';
+    console.log(`[Pipeline] Pipeline ${pipeline.pipelineId} failed at phase ${phase}`);
+  }
+
+  console.log(`[Pipeline] Updated ${pipeline.pipelineId} phase ${phase}: ${JSON.stringify(updates)}`);
+
+  return pipeline;
+}
+
+/**
+ * Add a job to a pipeline
+ * @param {string} pipelineId - Pipeline ID or courseCode
+ * @param {GenerationJob} job - Job to add
+ * @returns {Pipeline|null} Updated pipeline or null if not found
+ */
+function addJobToPipeline(pipelineId, job) {
+  // Support lookup by either pipelineId or courseCode
+  let pipeline = pipelines.get(pipelineId);
+  if (!pipeline) {
+    pipeline = pipelines.get(`course:${pipelineId}`);
+  }
+
+  if (!pipeline) {
+    console.warn(`[Pipeline] Pipeline not found: ${pipelineId}`);
+    return null;
+  }
+
+  pipeline.jobs.push(job);
+
+  // Update phase with job reference
+  const phaseKey = `phase${job.phase}`;
+  if (pipeline.phases[phaseKey]) {
+    pipeline.phases[phaseKey].jobId = job.jobId;
+  }
+
+  console.log(`[Pipeline] Added job ${job.jobId} to pipeline ${pipeline.pipelineId}`);
+
+  return pipeline;
+}
+
+/**
+ * Get a pipeline by ID or courseCode
+ * @param {string} pipelineId - Pipeline ID or courseCode
+ * @returns {Pipeline|null} Pipeline or null if not found
+ */
+function getPipeline(pipelineId) {
+  // Try direct lookup first
+  let pipeline = pipelines.get(pipelineId);
+  if (pipeline) return pipeline;
+
+  // Try courseCode lookup
+  pipeline = pipelines.get(`course:${pipelineId}`);
+  if (pipeline) return pipeline;
+
+  return null;
+}
+
+/**
+ * Get all active pipelines (status = running)
+ * @returns {Pipeline[]} Array of active pipelines
+ */
+function getActivePipelines() {
+  const active = [];
+  for (const [key, pipeline] of pipelines.entries()) {
+    // Skip courseCode index entries
+    if (key.startsWith('course:')) continue;
+    if (pipeline.status === 'running') {
+      active.push(pipeline);
+    }
+  }
+  return active;
+}
+
+/**
+ * Create a new GenerationJob
+ * @param {string} courseCode - Course identifier
+ * @param {CourseMode} mode - Generation mode
+ * @param {number} phase - Phase number
+ * @param {string[]} seedIds - Seed IDs to process
+ * @returns {GenerationJob} The newly created job
+ */
+function createJob(courseCode, mode, phase, seedIds) {
+  // Find existing jobs for this phase to determine attempt number
+  const pipeline = getPipeline(courseCode);
+  let attempt = 1;
+  if (pipeline) {
+    const existingJobs = pipeline.jobs.filter(j => j.phase === phase);
+    attempt = existingJobs.length + 1;
+  }
+
+  const jobId = generateJobId(phase, attempt);
+  const now = new Date().toISOString();
+
+  /** @type {GenerationJob} */
+  const job = {
+    jobId,
+    courseCode,
+    mode,
+    phase,
+    seeds: {
+      total: seedIds.length,
+      pending: [...seedIds],
+      processing: [],
+      completed: [],
+      failed: []
+    },
+    browsers: [],
+    startedAt: now,
+    lastActivityAt: now,
+    completedAt: undefined,
+    gapFillAttempts: 0,
+    maxGapFillAttempts: MAX_GAP_FILL_ATTEMPTS
+  };
+
+  console.log(`[Pipeline] Created job ${jobId} for ${courseCode} phase ${phase} (${seedIds.length} seeds)`);
+
+  return job;
+}
+
+/**
+ * Update job with browser/seed status
+ * @param {GenerationJob} job - Job to update
+ * @param {Object} updates - Updates to apply
+ * @returns {GenerationJob} Updated job
+ */
+function updateJob(job, updates) {
+  job.lastActivityAt = new Date().toISOString();
+
+  if (updates.browsers) {
+    job.browsers = updates.browsers;
+  }
+
+  if (updates.seeds) {
+    Object.assign(job.seeds, updates.seeds);
+  }
+
+  if (updates.gapFillAttempts !== undefined) {
+    job.gapFillAttempts = updates.gapFillAttempts;
+  }
+
+  // Check if job is complete
+  const totalProcessed = job.seeds.completed.length + job.seeds.failed.length;
+  if (totalProcessed >= job.seeds.total) {
+    job.completedAt = new Date().toISOString();
+    console.log(`[Pipeline] Job ${job.jobId} completed: ${job.seeds.completed.length} success, ${job.seeds.failed.length} failed`);
+  }
+
+  return job;
+}
+
 /**
  * Initialize progress tracking for a course
  */
@@ -243,6 +660,479 @@ function addProgressLog(courseCode, message, level = 'info', emit = true) {
   if (emit) {
     emitProgress(courseCode);
   }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GRANULAR WEBSOCKET EMIT FUNCTIONS (Course Generation Transparency)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Active generation jobs (courseCode -> job state with live browser/agent tracking)
+ * This tracks real-time browser/agent state during generation
+ * @type {Map<string, Object>}
+ */
+const activeGenerationJobs = new Map();
+
+/**
+ * Get or create an active generation job for real-time tracking
+ * @param {string} courseCode - Course identifier
+ * @param {number} [phase=1] - Phase number
+ * @returns {Object} Active generation job state
+ */
+function getOrCreateActiveJob(courseCode, phase = 1) {
+  if (!activeGenerationJobs.has(courseCode)) {
+    activeGenerationJobs.set(courseCode, {
+      courseCode,
+      phase,
+      status: 'pending',
+      browsers: new Map(),  // browserId -> BrowserInstance
+      seeds: {
+        total: 0,
+        pending: [],
+        processing: [],
+        completed: [],
+        failed: []
+      },
+      gapFillAttempts: 0,
+      startedAt: new Date().toISOString(),
+      lastActivityAt: new Date().toISOString()
+    });
+  }
+  return activeGenerationJobs.get(courseCode);
+}
+
+/**
+ * Convert active job to JSON-serializable format
+ * @param {Object} job - Active job with Map structures
+ * @returns {Object|null} JSON-serializable job state
+ */
+function serializeActiveJob(job) {
+  if (!job) return null;
+  return {
+    ...job,
+    browsers: Array.from(job.browsers.values()).map(browser => ({
+      ...browser,
+      agents: browser.agents || []
+    }))
+  };
+}
+
+/**
+ * Emit browser lifecycle event via WebSocket
+ * Events: browser:spawning, browser:ready, browser:running, browser:complete, browser:failed, browser:timeout
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} event - Event data
+ * @param {string} event.type - Event type (e.g., 'browser:spawning')
+ * @param {string} event.browserId - Browser identifier
+ * @param {string[]} [event.assignedSeeds] - Seeds assigned to this browser
+ * @param {string} [event.error] - Error message if failed
+ */
+function emitBrowserEvent(courseCode, event) {
+  const { type, browserId, assignedSeeds, error } = event;
+  const job = getOrCreateActiveJob(courseCode);
+  job.lastActivityAt = new Date().toISOString();
+
+  // Get or create browser instance
+  let browser = job.browsers.get(browserId);
+  if (!browser) {
+    browser = {
+      browserId,
+      status: 'spawning',
+      assignedSeeds: assignedSeeds || [],
+      agents: [],
+      spawnedAt: new Date().toISOString()
+    };
+    job.browsers.set(browserId, browser);
+  }
+
+  // Map event type to status
+  const statusMap = {
+    'browser:spawning': 'spawning',
+    'browser:ready': 'ready',
+    'browser:running': 'running',
+    'browser:complete': 'complete',
+    'browser:failed': 'failed',
+    'browser:timeout': 'timeout'
+  };
+
+  const newStatus = statusMap[type];
+  if (newStatus) browser.status = newStatus;
+  if (assignedSeeds) browser.assignedSeeds = assignedSeeds;
+  if (error) browser.error = error;
+  if (type === 'browser:ready') browser.readyAt = new Date().toISOString();
+  if (type === 'browser:complete') browser.completedAt = new Date().toISOString();
+
+  // Log the event
+  const logLevel = error ? 'error' : 'info';
+  const logMessage = error
+    ? `Browser ${browserId}: ${type.split(':')[1]} - ${error}`
+    : `Browser ${browserId}: ${type.split(':')[1]}${assignedSeeds ? ` (${assignedSeeds.length} seeds)` : ''}`;
+  addProgressLog(courseCode, logMessage, logLevel, false);
+
+  // Emit granular browser event
+  io.to(`course:${courseCode}`).emit('browser:update', {
+    browser: { ...browser },
+    event: type,
+    timestamp: new Date().toISOString()
+  });
+
+  // Also emit aggregated progress
+  emitProgress(courseCode);
+
+  console.log(`[WebSocket] ${courseCode} ${type} browserId=${browserId}`);
+}
+
+/**
+ * Emit agent lifecycle event via WebSocket
+ * Events: agent:spawning, agent:running, agent:complete, agent:failed
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} event - Event data
+ * @param {string} event.type - Event type (e.g., 'agent:spawning')
+ * @param {string} event.browserId - Parent browser identifier
+ * @param {string} event.agentId - Agent identifier
+ * @param {string[]} [event.assignedSeeds] - Seeds assigned to this agent
+ * @param {string[]} [event.completedSeeds] - Seeds completed by this agent
+ * @param {string} [event.error] - Error message if failed
+ */
+function emitAgentEvent(courseCode, event) {
+  const { type, browserId, agentId, assignedSeeds, completedSeeds, error } = event;
+  const job = getOrCreateActiveJob(courseCode);
+  job.lastActivityAt = new Date().toISOString();
+
+  // Get or create browser
+  let browser = job.browsers.get(browserId);
+  if (!browser) {
+    browser = {
+      browserId,
+      status: 'running',
+      assignedSeeds: [],
+      agents: [],
+      spawnedAt: new Date().toISOString()
+    };
+    job.browsers.set(browserId, browser);
+  }
+
+  // Find or create agent
+  let agent = browser.agents.find(a => a.agentId === agentId);
+  if (!agent) {
+    agent = {
+      agentId,
+      browserId,
+      status: 'spawning',
+      assignedSeeds: assignedSeeds || [],
+      completedSeeds: [],
+      failedSeeds: [],
+      startedAt: new Date().toISOString(),
+      lastActivityAt: new Date().toISOString()
+    };
+    browser.agents.push(agent);
+  }
+
+  // Map event type to status
+  const statusMap = {
+    'agent:spawning': 'spawning',
+    'agent:running': 'running',
+    'agent:complete': 'complete',
+    'agent:failed': 'failed'
+  };
+
+  const newStatus = statusMap[type];
+  if (newStatus) agent.status = newStatus;
+  agent.lastActivityAt = new Date().toISOString();
+  if (assignedSeeds) agent.assignedSeeds = assignedSeeds;
+  if (completedSeeds) agent.completedSeeds = completedSeeds;
+  if (error) agent.error = error;
+  if (type === 'agent:complete') agent.completedAt = new Date().toISOString();
+
+  // Log the event
+  const logLevel = error ? 'error' : 'info';
+  const logMessage = error
+    ? `Agent ${agentId}: ${type.split(':')[1]} - ${error}`
+    : `Agent ${agentId}: ${type.split(':')[1]}`;
+  addProgressLog(courseCode, logMessage, logLevel, false);
+
+  // Emit granular agent event
+  io.to(`course:${courseCode}`).emit('agent:update', {
+    agent: { ...agent },
+    browserId,
+    event: type,
+    timestamp: new Date().toISOString()
+  });
+
+  // Also emit aggregated progress
+  emitProgress(courseCode);
+
+  console.log(`[WebSocket] ${courseCode} ${type} agentId=${agentId}`);
+}
+
+/**
+ * Emit seed lifecycle event via WebSocket
+ * Events: seed:assigned, seed:processing, seed:complete, seed:failed
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} event - Event data
+ * @param {string} event.type - Event type (e.g., 'seed:processing')
+ * @param {string} event.seedId - Seed identifier
+ * @param {string} [event.agentId] - Agent processing the seed
+ * @param {string} [event.browserId] - Browser containing the agent
+ * @param {string} [event.error] - Error message if failed
+ * @param {*} [event.result] - Result data if complete
+ */
+function emitSeedEvent(courseCode, event) {
+  const { type, seedId, agentId, browserId, error, result } = event;
+  const job = getOrCreateActiveJob(courseCode);
+  job.lastActivityAt = new Date().toISOString();
+
+  // Helper to remove seed from all arrays
+  const removeFromAllArrays = (id) => {
+    job.seeds.pending = job.seeds.pending.filter(s => s !== id);
+    job.seeds.processing = job.seeds.processing.filter(s => s !== id);
+    job.seeds.completed = job.seeds.completed.filter(s => s !== id);
+    job.seeds.failed = job.seeds.failed.filter(s => s !== id);
+  };
+
+  // Update seed status
+  removeFromAllArrays(seedId);
+  switch (type) {
+    case 'seed:assigned':
+    case 'seed:processing':
+      job.seeds.processing.push(seedId);
+      break;
+    case 'seed:complete':
+      job.seeds.completed.push(seedId);
+      break;
+    case 'seed:failed':
+      job.seeds.failed.push(seedId);
+      break;
+    default:
+      job.seeds.pending.push(seedId);
+  }
+
+  // Update agent's tracking if we have agent info
+  if (agentId && browserId) {
+    const browser = job.browsers.get(browserId);
+    if (browser) {
+      const agent = browser.agents.find(a => a.agentId === agentId);
+      if (agent) {
+        agent.lastActivityAt = new Date().toISOString();
+        if (type === 'seed:processing') {
+          agent.currentSeed = seedId;
+        } else if (type === 'seed:complete') {
+          agent.currentSeed = null;
+          if (!agent.completedSeeds.includes(seedId)) {
+            agent.completedSeeds.push(seedId);
+          }
+        } else if (type === 'seed:failed') {
+          agent.currentSeed = null;
+          if (!agent.failedSeeds) agent.failedSeeds = [];
+          if (!agent.failedSeeds.includes(seedId)) {
+            agent.failedSeeds.push(seedId);
+          }
+        }
+      }
+    }
+  }
+
+  // Build seed status for event
+  const seedStatus = {
+    seedId,
+    status: type.split(':')[1],
+    browserId,
+    agentId,
+    timestamp: new Date().toISOString()
+  };
+  if (error) seedStatus.error = error;
+  if (result) seedStatus.result = result;
+
+  // Log failures only (too noisy to log every seed)
+  if (type === 'seed:failed') {
+    addProgressLog(courseCode, `Seed ${seedId}: failed - ${error || 'unknown error'}`, 'error', false);
+  }
+
+  // Emit granular seed event
+  io.to(`course:${courseCode}`).emit('seed:update', {
+    seed: seedStatus,
+    event: type,
+    stats: {
+      total: job.seeds.total,
+      pending: job.seeds.pending.length,
+      processing: job.seeds.processing.length,
+      completed: job.seeds.completed.length,
+      failed: job.seeds.failed.length
+    },
+    timestamp: new Date().toISOString()
+  });
+
+  // Emit full progress update periodically (every 5 completions or on failures)
+  if (type === 'seed:failed' || job.seeds.completed.length % 5 === 0) {
+    emitProgress(courseCode);
+  }
+
+  // Debug logging only for failures
+  if (type === 'seed:failed') {
+    console.log(`[WebSocket] ${courseCode} ${type} seedId=${seedId} error=${error}`);
+  }
+}
+
+/**
+ * Emit pipeline event via WebSocket
+ * Events: job start/complete/failed, phase transitions, gap-fill triggers
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} event - Event data
+ * @param {string} event.type - Event type (e.g., 'pipeline:job:start')
+ * @param {number} [event.phase] - Phase number
+ * @param {string} [event.jobId] - Job identifier
+ * @param {Object} [event.data] - Additional event data
+ * @param {string} [event.error] - Error message if failed
+ */
+function emitPipelineEvent(courseCode, event) {
+  const { type, phase, jobId, data, error } = event;
+  const job = getOrCreateActiveJob(courseCode, phase);
+  job.lastActivityAt = new Date().toISOString();
+
+  // Update job state based on event type
+  switch (type) {
+    case 'pipeline:job:start':
+      job.status = 'running';
+      if (phase) job.phase = phase;
+      if (data?.mode) job.mode = data.mode;
+      if (data?.seeds) {
+        job.seeds.total = data.seeds.length;
+        job.seeds.pending = [...data.seeds];
+        job.seeds.processing = [];
+        job.seeds.completed = [];
+        job.seeds.failed = [];
+      }
+      break;
+
+    case 'pipeline:job:complete':
+      job.status = 'complete';
+      job.completedAt = new Date().toISOString();
+      break;
+
+    case 'pipeline:job:failed':
+      job.status = 'failed';
+      job.error = error;
+      break;
+
+    case 'pipeline:phase:start':
+      if (phase) job.phase = phase;
+      job.status = 'running';
+      break;
+
+    case 'pipeline:phase:complete':
+      // Phase complete, job may continue with next phase
+      break;
+
+    case 'pipeline:gap-fill:triggered':
+      job.gapFillAttempts = (job.gapFillAttempts || 0) + 1;
+      if (data?.missingSeeds) {
+        job.seeds.pending = [...data.missingSeeds];
+        job.seeds.processing = [];
+      }
+      break;
+
+    case 'pipeline:gap-fill:complete':
+      if (data?.recoveredSeeds) {
+        for (const seedId of data.recoveredSeeds) {
+          if (!job.seeds.completed.includes(seedId)) {
+            job.seeds.completed.push(seedId);
+          }
+          job.seeds.failed = job.seeds.failed.filter(s => s !== seedId);
+        }
+      }
+      break;
+
+    case 'pipeline:gap-fill:failed':
+      // Gap-fill exhausted, remaining seeds stay failed
+      break;
+  }
+
+  // Log the event
+  const logLevel = error ? 'error' : 'info';
+  const logMessage = error
+    ? `Pipeline: ${type.replace('pipeline:', '')} - ${error}`
+    : `Pipeline: ${type.replace('pipeline:', '')}${phase ? ` (phase ${phase})` : ''}`;
+  addProgressLog(courseCode, logMessage, logLevel, false);
+
+  // Emit pipeline event with full job state
+  io.to(`course:${courseCode}`).emit('pipeline:update', {
+    job: serializeActiveJob(job),
+    event: type,
+    phase,
+    jobId,
+    data,
+    error,
+    timestamp: new Date().toISOString()
+  });
+
+  // Also emit aggregated progress
+  emitProgress(courseCode);
+
+  console.log(`[WebSocket] ${courseCode} ${type}${phase ? ` phase=${phase}` : ''}${error ? ` error=${error}` : ''}`);
+}
+
+/**
+ * Emit batch received event (for bulk seed submissions)
+ * Event: batch:received
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} event - Event data
+ * @param {string} event.type - Event type ('batch:received')
+ * @param {string[]} event.seedIds - Seed IDs in the batch
+ * @param {string} [event.agentId] - Agent that submitted the batch
+ * @param {string} [event.browserId] - Browser containing the agent
+ */
+function emitBatchEvent(courseCode, event) {
+  const { type, seedIds, agentId, browserId } = event;
+  const job = getOrCreateActiveJob(courseCode);
+  job.lastActivityAt = new Date().toISOString();
+
+  if (type === 'batch:received' && seedIds && Array.isArray(seedIds)) {
+    // Mark all seeds in batch as completed
+    for (const seedId of seedIds) {
+      job.seeds.pending = job.seeds.pending.filter(s => s !== seedId);
+      job.seeds.processing = job.seeds.processing.filter(s => s !== seedId);
+      if (!job.seeds.completed.includes(seedId)) {
+        job.seeds.completed.push(seedId);
+      }
+    }
+
+    addProgressLog(courseCode, `Batch received: ${seedIds.length} seeds from ${agentId || 'unknown'}`, 'info', false);
+  }
+
+  // Emit batch event
+  io.to(`course:${courseCode}`).emit('batch:update', {
+    event: type,
+    seedIds,
+    agentId,
+    browserId,
+    stats: {
+      total: job.seeds.total,
+      pending: job.seeds.pending.length,
+      processing: job.seeds.processing.length,
+      completed: job.seeds.completed.length,
+      failed: job.seeds.failed.length
+    },
+    timestamp: new Date().toISOString()
+  });
+
+  emitProgress(courseCode);
+
+  console.log(`[WebSocket] ${courseCode} batch:received count=${seedIds?.length || 0}`);
+}
+
+/**
+ * Get the current active job state for a course (for API endpoint)
+ * @param {string} courseCode - Course identifier
+ * @returns {Object|null} Serialized job state or null if not found
+ */
+function getActiveJobState(courseCode) {
+  const job = activeGenerationJobs.get(courseCode);
+  return serializeActiveJob(job);
 }
 
 /**
@@ -1664,6 +2554,179 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
   res.json(progress);
 });
 
+// =======================================
+// PIPELINE STATE API ENDPOINTS
+// =======================================
+
+/**
+ * GET /api/pipelines
+ * Get all pipelines (optionally filtered by status)
+ * Query params: ?status=running|complete|failed|paused
+ */
+app.get('/api/pipelines', (req, res) => {
+  const { status } = req.query;
+
+  const results = [];
+  for (const [key, pipeline] of pipelines.entries()) {
+    // Skip courseCode index entries
+    if (key.startsWith('course:')) continue;
+
+    // Filter by status if provided
+    if (status && pipeline.status !== status) continue;
+
+    results.push(pipeline);
+  }
+
+  res.json({
+    count: results.length,
+    pipelines: results
+  });
+});
+
+/**
+ * GET /api/pipelines/active
+ * Get all active (running) pipelines
+ */
+app.get('/api/pipelines/active', (req, res) => {
+  const active = getActivePipelines();
+  res.json({
+    count: active.length,
+    pipelines: active
+  });
+});
+
+/**
+ * GET /api/pipelines/:pipelineId
+ * Get a specific pipeline by ID or courseCode
+ */
+app.get('/api/pipelines/:pipelineId', (req, res) => {
+  const { pipelineId } = req.params;
+  const pipeline = getPipeline(pipelineId);
+
+  if (!pipeline) {
+    return res.status(404).json({
+      error: 'Pipeline not found',
+      pipelineId
+    });
+  }
+
+  res.json(pipeline);
+});
+
+/**
+ * GET /api/courses/:courseCode/pipeline
+ * Get the current pipeline for a course
+ */
+app.get('/api/courses/:courseCode/pipeline', (req, res) => {
+  const { courseCode } = req.params;
+  const pipeline = getPipeline(courseCode);
+
+  if (!pipeline) {
+    return res.status(404).json({
+      error: 'No active pipeline for this course',
+      courseCode,
+      suggestion: 'Start a generation job to create a pipeline'
+    });
+  }
+
+  res.json(pipeline);
+});
+
+/**
+ * POST /api/courses/:courseCode/pipeline
+ * Create a new pipeline for a course (internal use - typically called by /api/courses/generate)
+ * Body: { mode: 'quick_test' | 'mvp_course' | 'full_course', seedsTotal?: number }
+ */
+app.post('/api/courses/:courseCode/pipeline', (req, res) => {
+  const { courseCode } = req.params;
+  const { mode = 'full_course', seedsTotal } = req.body;
+
+  // Check if pipeline already exists and is running
+  const existing = getPipeline(courseCode);
+  if (existing && existing.status === 'running') {
+    return res.status(409).json({
+      error: 'Pipeline already running for this course',
+      pipelineId: existing.pipelineId,
+      status: existing.status,
+      currentPhase: existing.currentPhase
+    });
+  }
+
+  // Create new pipeline
+  const pipeline = createPipeline(courseCode, mode, seedsTotal);
+
+  res.status(201).json(pipeline);
+});
+
+/**
+ * PUT /api/pipelines/:pipelineId/phases/:phase
+ * Update phase status in a pipeline
+ * Body: { status, startedAt?, completedAt?, inputCount?, outputCount?, error? }
+ */
+app.put('/api/pipelines/:pipelineId/phases/:phase', (req, res) => {
+  const { pipelineId, phase } = req.params;
+  const updates = req.body;
+
+  const pipeline = updatePipelinePhaseStatus(pipelineId, phase, updates);
+
+  if (!pipeline) {
+    return res.status(404).json({
+      error: 'Pipeline not found',
+      pipelineId
+    });
+  }
+
+  res.json(pipeline);
+});
+
+/**
+ * POST /api/pipelines/:pipelineId/jobs
+ * Add a job to a pipeline
+ * Body: { phase, seedIds }
+ */
+app.post('/api/pipelines/:pipelineId/jobs', (req, res) => {
+  const { pipelineId } = req.params;
+  const { phase, seedIds } = req.body;
+
+  const pipeline = getPipeline(pipelineId);
+  if (!pipeline) {
+    return res.status(404).json({
+      error: 'Pipeline not found',
+      pipelineId
+    });
+  }
+
+  // Create job
+  const job = createJob(pipeline.courseCode, pipeline.mode, phase, seedIds || []);
+
+  // Add to pipeline
+  addJobToPipeline(pipelineId, job);
+
+  res.status(201).json(job);
+});
+
+/**
+ * GET /api/pipelines/:pipelineId/jobs
+ * Get all jobs in a pipeline
+ */
+app.get('/api/pipelines/:pipelineId/jobs', (req, res) => {
+  const { pipelineId } = req.params;
+  const pipeline = getPipeline(pipelineId);
+
+  if (!pipeline) {
+    return res.status(404).json({
+      error: 'Pipeline not found',
+      pipelineId
+    });
+  }
+
+  res.json({
+    pipelineId: pipeline.pipelineId,
+    count: pipeline.jobs.length,
+    jobs: pipeline.jobs
+  });
+});
+
 /**
  * POST /api/courses/:courseCode/progress
  * Phase servers report progress updates
@@ -1844,7 +2907,7 @@ app.post('/phase-complete', async (req, res) => {
     console.log(`   (Auto-initialized course state for ${courseCode})`);
   }
 
-  // Update pipeline state for parallel coordination
+  // Update pipeline state for parallel coordination (legacy pipelineJobs)
   let pipelineJob = pipelineJobs.get(courseCode) || {};
   const phaseKey = `phase${phase}`;
   pipelineJob[phaseKey] = {
@@ -1853,6 +2916,32 @@ app.post('/phase-complete', async (req, res) => {
     stats: stats || {}
   };
   pipelineJobs.set(courseCode, pipelineJob);
+
+  // Update new Pipeline state model (Course Generation Transparency)
+  const normalizedPhaseKey = normalizePhaseIdentifier(phase);
+  const isSuccess = success !== undefined ? success : status === 'complete';
+  const pipelineUpdates = {
+    status: isSuccess ? 'complete' : 'failed',
+    completedAt: new Date().toISOString()
+  };
+  if (stats) {
+    if (stats.seedCount !== undefined) pipelineUpdates.outputCount = stats.seedCount;
+    if (stats.legoCount !== undefined) pipelineUpdates.outputCount = stats.legoCount;
+    if (stats.basketCount !== undefined) pipelineUpdates.outputCount = stats.basketCount;
+  }
+  if (!isSuccess && stats?.error) {
+    pipelineUpdates.error = stats.error;
+  }
+  updatePipelinePhaseStatus(courseCode, normalizedPhaseKey, pipelineUpdates);
+
+  // Update pipeline stats
+  const currentPipeline = getPipeline(courseCode);
+  if (currentPipeline && stats) {
+    if (stats.seedCount !== undefined) currentPipeline.stats.seedsComplete = stats.seedCount;
+    if (stats.legoCount !== undefined) currentPipeline.stats.legosGenerated = stats.legoCount;
+    if (stats.basketCount !== undefined) currentPipeline.stats.basketsGenerated = stats.basketCount;
+    if (stats.audioCount !== undefined) currentPipeline.stats.audioFilesGenerated = stats.audioCount;
+  }
 
   // Update state
   if (status === 'complete' || success) {
@@ -2112,10 +3201,37 @@ app.post('/api/courses/generate', async (req, res) => {
 
     console.log(`   → Delegating to ${phaseName} server: ${phaseServer}`);
 
-    // Initialize progress tracking
+    // Initialize progress tracking (legacy)
     const progress = initializeCourseProgress(courseCode, phase, totalSeeds);
     updatePhaseProgress(courseCode, phase, { status: 'running', startTime: new Date().toISOString() });
     addProgressLog(courseCode, `Starting ${phaseName} for ${totalSeeds} seeds`);
+
+    // Initialize pipeline state (new transparency model)
+    const resolvedMode = mode || 'custom';
+    let pipeline = getPipeline(courseCode);
+    if (!pipeline || pipeline.status !== 'running') {
+      // Create new pipeline
+      pipeline = createPipeline(courseCode, resolvedMode, totalSeeds);
+    }
+
+    // Update pipeline phase status
+    const pipelinePhase = normalizePhaseIdentifier(phase);
+    updatePipelinePhaseStatus(courseCode, pipelinePhase, {
+      status: 'running',
+      startedAt: new Date().toISOString(),
+      inputCount: totalSeeds
+    });
+
+    // Generate seed IDs for job tracking
+    const seedIds = [];
+    for (let i = startSeed; i <= endSeed; i++) {
+      seedIds.push(`S${String(i).padStart(4, '0')}`);
+    }
+
+    // Create and add job to pipeline
+    const phaseNum = typeof phase === 'number' ? phase : (phase === '1_translation' ? 1 : parseInt(phase.replace('phase', '')));
+    const job = createJob(courseCode, resolvedMode, phaseNum, seedIds);
+    addJobToPipeline(courseCode, job);
 
     // Pass pattern configuration to phase server
     const payload = {
@@ -2272,6 +3388,172 @@ app.get('/api/health', (req, res) => {
     version: '7.0.0',
     vfs_root: VFS_ROOT,
     jobs_active: courseStates.size
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// EVENTS API - For phase servers to POST granular events
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/**
+ * POST /api/events/:courseCode
+ *
+ * Endpoint for phase servers to report granular events during generation.
+ * Events are processed, internal state is updated, and WebSocket events are emitted.
+ *
+ * Request body:
+ * {
+ *   event: string,           // Event type (e.g., 'browser:spawning', 'agent:complete', 'seed:failed')
+ *   browserId?: string,      // Browser identifier
+ *   agentId?: string,        // Agent identifier
+ *   seedId?: string,         // Seed identifier
+ *   seedIds?: string[],      // Batch of seed IDs
+ *   assignedSeeds?: string[],// Seeds assigned to browser/agent
+ *   completedSeeds?: string[],// Seeds completed by agent
+ *   phase?: number,          // Phase number
+ *   jobId?: string,          // Job identifier
+ *   error?: string,          // Error message
+ *   data?: object            // Additional event data (mode, seeds, missingSeeds, recoveredSeeds, etc.)
+ * }
+ *
+ * Supported events:
+ * - browser:spawning, browser:ready, browser:running, browser:complete, browser:failed, browser:timeout
+ * - agent:spawning, agent:running, agent:complete, agent:failed
+ * - seed:assigned, seed:processing, seed:complete, seed:failed
+ * - batch:received
+ * - pipeline:job:start, pipeline:job:complete, pipeline:job:failed
+ * - pipeline:phase:start, pipeline:phase:complete
+ * - pipeline:gap-fill:triggered, pipeline:gap-fill:complete, pipeline:gap-fill:failed
+ */
+app.post('/api/events/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const eventData = req.body;
+
+  if (!eventData || !eventData.event) {
+    return res.status(400).json({
+      error: 'Missing required field: event',
+      example: { event: 'browser:spawning', browserId: 'browser-1', assignedSeeds: ['S0001', 'S0002'] }
+    });
+  }
+
+  const eventType = eventData.event;
+  console.log(`[Events API] ${courseCode} received: ${eventType}`);
+
+  try {
+    // Route event to appropriate handler based on prefix
+    if (eventType.startsWith('browser:')) {
+      emitBrowserEvent(courseCode, {
+        type: eventType,
+        browserId: eventData.browserId,
+        assignedSeeds: eventData.assignedSeeds,
+        error: eventData.error
+      });
+    } else if (eventType.startsWith('agent:')) {
+      emitAgentEvent(courseCode, {
+        type: eventType,
+        browserId: eventData.browserId,
+        agentId: eventData.agentId,
+        assignedSeeds: eventData.assignedSeeds,
+        completedSeeds: eventData.completedSeeds,
+        error: eventData.error
+      });
+    } else if (eventType.startsWith('seed:')) {
+      emitSeedEvent(courseCode, {
+        type: eventType,
+        seedId: eventData.seedId,
+        agentId: eventData.agentId,
+        browserId: eventData.browserId,
+        error: eventData.error,
+        result: eventData.result
+      });
+    } else if (eventType.startsWith('batch:')) {
+      emitBatchEvent(courseCode, {
+        type: eventType,
+        seedIds: eventData.seedIds,
+        agentId: eventData.agentId,
+        browserId: eventData.browserId
+      });
+    } else if (eventType.startsWith('pipeline:') || eventType.startsWith('gap-fill:')) {
+      // Normalize gap-fill events to pipeline namespace
+      const normalizedType = eventType.startsWith('gap-fill:')
+        ? `pipeline:${eventType}`
+        : eventType;
+      emitPipelineEvent(courseCode, {
+        type: normalizedType,
+        phase: eventData.phase,
+        jobId: eventData.jobId,
+        data: eventData.data,
+        error: eventData.error
+      });
+    } else {
+      // Unknown event type - log but still emit as generic event
+      console.warn(`[Events API] Unknown event type: ${eventType}`);
+      io.to(`course:${courseCode}`).emit('event', {
+        ...eventData,
+        courseCode,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    res.json({
+      success: true,
+      event: eventType,
+      courseCode,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error(`[Events API] Error processing event ${eventType}:`, error);
+    res.status(500).json({
+      error: 'Failed to process event',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/events/:courseCode/state
+ *
+ * Get the current job state for a course (browsers, agents, seeds).
+ * Useful for reconnecting clients or debugging.
+ */
+app.get('/api/events/:courseCode/state', (req, res) => {
+  const { courseCode } = req.params;
+  const state = getActiveJobState(courseCode);
+
+  if (!state) {
+    return res.status(404).json({
+      error: 'No active job found',
+      courseCode
+    });
+  }
+
+  res.json({
+    success: true,
+    courseCode,
+    state,
+    timestamp: new Date().toISOString()
+  });
+});
+
+/**
+ * DELETE /api/events/:courseCode
+ *
+ * Clear the active job state for a course.
+ * Used when starting a new generation run.
+ */
+app.delete('/api/events/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const existed = activeGenerationJobs.has(courseCode);
+
+  activeGenerationJobs.delete(courseCode);
+
+  console.log(`[Events API] Cleared job state for ${courseCode} (existed: ${existed})`);
+
+  res.json({
+    success: true,
+    courseCode,
+    cleared: existed,
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -6153,6 +7435,7 @@ httpServer.listen(PORT, () => {
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log(`   Checkpoint Mode: ${CHECKPOINT_MODE}`);
   console.log(`   WebSocket: /api/orchestrator/websocket`);
+  console.log(`   Events API: POST /api/events/:courseCode`);
   console.log('');
   console.log('   Phase Servers:');
   for (const [phase, url] of Object.entries(PHASE_SERVERS)) {

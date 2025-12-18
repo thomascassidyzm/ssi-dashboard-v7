@@ -37,6 +37,28 @@ const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 1 (Translation)';
 const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 6000; // 6s to avoid clipboard race
 
+// Axios for HTTP requests (fire-and-forget event reporting)
+const axios = require('axios');
+
+/**
+ * Report event to orchestrator (fire and forget - don't block on response)
+ * Events follow the schema from COURSE_GENERATION_TRANSPARENCY.md
+ *
+ * @param {string} courseCode - Course code for event routing
+ * @param {object} eventData - Event payload (event, browserId, agentId, etc.)
+ */
+function reportEvent(courseCode, eventData) {
+  const url = `${ORCHESTRATOR_URL}/api/events/${courseCode}`;
+  axios.post(url, eventData)
+    .then(() => {
+      console.log(`[Phase 1] 📡 Event reported: ${eventData.event}${eventData.browserId ? ` (${eventData.browserId})` : ''}`);
+    })
+    .catch((err) => {
+      // Don't fail the main operation - just log the error
+      console.warn(`[Phase 1] ⚠️  Failed to report event ${eventData.event}: ${err.message}`);
+    });
+}
+
 // Database service for database-first writes
 const courseDataService = require('../../course-data-service.cjs');
 
@@ -487,6 +509,11 @@ async function startBranchWatcher(courseCode, expectedAgents) {
  * - Masters = browser tabs (spawned here)
  * - Workers = sub-agents spawned by masters via Task tool
  * - Seeds = work units processed by workers
+ *
+ * Reports granular events to orchestrator:
+ * - browser:spawning when starting to spawn each browser
+ * - browser:ready when spawn succeeds
+ * - browser:failed when spawn fails
  */
 async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPerMaster) {
   console.log(`\n🌐 Spawning ${masterCount} Phase 1 MASTERS...`);
@@ -507,10 +534,10 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
     return;
   }
 
-  const { spawnParallelAgents: parallelSpawner } = spawner;
+  const { spawnClaudeWebAgent } = spawner;
 
-  // Generate prompts for each MASTER with their assigned seed range
-  const prompts = [];
+  // Build master assignments with their seed ranges
+  const masterAssignments = [];
   for (let m = 0; m < masterCount; m++) {
     const masterStartSeed = startSeed + (m * seedsPerMaster);
     const masterEndSeed = Math.min(masterStartSeed + seedsPerMaster - 1, endSeed);
@@ -518,6 +545,12 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
     // Skip if master has no seeds to process
     if (masterStartSeed > endSeed) {
       break;
+    }
+
+    const browserId = `browser-${m + 1}`;
+    const assignedSeeds = [];
+    for (let s = masterStartSeed; s <= masterEndSeed; s++) {
+      assignedSeeds.push(`S${String(s).padStart(4, '0')}`);
     }
 
     const masterPrompt = generatePhase1MasterPrompt(courseCode, {
@@ -531,31 +564,76 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
       totalMasters: masterCount
     }, courseDir);
 
-    prompts.push(masterPrompt);
+    masterAssignments.push({
+      browserId,
+      masterNum: m + 1,
+      assignedSeeds,
+      prompt: masterPrompt
+    });
   }
 
-  console.log(`   Generated ${prompts.length} master prompts`);
+  console.log(`   Generated ${masterAssignments.length} master prompts`);
 
-  // Spawn all masters in parallel (browser tabs)
-  try {
-    const results = await parallelSpawner(prompts, {
-      browser: 'safari',
-      delayBetweenAgents: parseInt(AGENT_SPAWN_DELAY) || 6000,
-      batchSize: masterCount
+  // Spawn masters sequentially with granular event reporting
+  const results = [];
+  const delayBetweenAgents = parseInt(AGENT_SPAWN_DELAY) || 6000;
+
+  for (let i = 0; i < masterAssignments.length; i++) {
+    const { browserId, masterNum, assignedSeeds, prompt } = masterAssignments[i];
+
+    // Report browser:spawning event
+    reportEvent(courseCode, {
+      event: 'browser:spawning',
+      browserId,
+      assignedSeeds,
+      masterNum,
+      workersPerMaster,
+      seedsPerWorker
     });
 
-    const successCount = results.filter(r => r.success).length;
-    console.log(`✅ ${successCount}/${prompts.length} masters spawned successfully`);
+    try {
+      const result = await spawnClaudeWebAgent(prompt, masterNum, 'safari');
+      results.push({ ...result, browserId, masterNum });
 
-    const job = activeJobs.get(courseCode);
-    if (job) {
-      job.orchestratorSpawned = true;
-      job.mastersSpawned = successCount;
-      job.status = 'waiting_for_completion';
+      // Report browser:ready event
+      reportEvent(courseCode, {
+        event: 'browser:ready',
+        browserId,
+        masterNum
+      });
+
+    } catch (err) {
+      console.error(`[Phase 1] ❌ Master ${masterNum} (${browserId}) failed: ${err.message}`);
+      results.push({
+        success: false,
+        browserId,
+        masterNum,
+        error: err.message
+      });
+
+      // Report browser:failed event
+      reportEvent(courseCode, {
+        event: 'browser:failed',
+        browserId,
+        masterNum,
+        error: err.message
+      });
     }
-  } catch (error) {
-    console.error(`❌ Failed to spawn masters:`, error.message);
-    throw error;
+
+    // Delay between agents (except after the last one)
+    if (i < masterAssignments.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, delayBetweenAgents));
+    }
+  }
+
+  const successCount = results.filter(r => r.success).length;
+  console.log(`✅ ${successCount}/${masterAssignments.length} masters spawned successfully`);
+
+  const job = activeJobs.get(courseCode);
+  if (job) {
+    job.orchestratorSpawned = true;
+    job.mastersSpawned = successCount;
+    job.status = 'waiting_for_completion';
   }
 }
 
@@ -853,7 +931,6 @@ async function runPhase2CollisionCheck(courseDir, seedPairsPath) {
  */
 async function notifyOrchestrator(courseCode, status) {
   try {
-    const axios = require('axios');
     await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
       phase: 1,
       courseCode,
@@ -1091,16 +1168,41 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
     return res.status(500).json({ error: 'Web agent spawner not available' });
   }
 
-  // Launch all masters in Safari
+  // Launch all masters in Safari with event reporting
   console.log(`[Phase 1] Launching ${masters.length} Safari windows...`);
 
   const launchResults = [];
   for (const master of masters) {
+    const browserId = `browser-${master.masterNum}`;
+
+    // Build assigned seeds list for this master
+    const assignedSeeds = [];
+    for (let s = master.startSeed; s <= master.endSeed; s++) {
+      assignedSeeds.push(`S${String(s).padStart(4, '0')}`);
+    }
+
+    // Report browser:spawning event
+    reportEvent(courseCode, {
+      event: 'browser:spawning',
+      browserId,
+      assignedSeeds,
+      masterNum: master.masterNum,
+      workersPerMaster,
+      seedsPerWorker
+    });
+
     try {
       const prompt = generateMasterPrompt(master);
       await spawnClaudeWebAgent(prompt, master.masterNum, 'safari');
       launchResults.push({ master: master.masterNum, status: 'launched' });
       console.log(`[Phase 1]   ✅ Master ${master.masterNum} launched`);
+
+      // Report browser:ready event
+      reportEvent(courseCode, {
+        event: 'browser:ready',
+        browserId,
+        masterNum: master.masterNum
+      });
 
       // Delay between launches - needs to be long enough for Safari to load page and paste before next clipboard write
       // 8 seconds: 3s page load + 0.5s paste + 4.5s buffer to prevent clipboard race
@@ -1108,6 +1210,14 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
     } catch (err) {
       launchResults.push({ master: master.masterNum, status: 'failed', error: err.message });
       console.error(`[Phase 1]   ❌ Master ${master.masterNum} failed: ${err.message}`);
+
+      // Report browser:failed event
+      reportEvent(courseCode, {
+        event: 'browser:failed',
+        browserId,
+        masterNum: master.masterNum,
+        error: err.message
+      });
     }
   }
 
@@ -1245,6 +1355,28 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
 
   console.log(`[Phase 1] ✅ Received batch: ${batchData.length} seeds → ${batchFile}`);
 
+  // Extract seed IDs and report batch:received event
+  const seedIds = batchData.map(seed => seed.seed_id).filter(Boolean);
+  const agentId = req.body.agentId || req.headers['x-agent-id'] || 'unknown';
+
+  // Report batch:received event
+  reportEvent(courseCode, {
+    event: 'batch:received',
+    seedIds,
+    agentId,
+    batchFile,
+    seedCount: batchData.length
+  });
+
+  // Report seed:complete events for each seed in the batch
+  for (const seedId of seedIds) {
+    reportEvent(courseCode, {
+      event: 'seed:complete',
+      seedId,
+      agentId
+    });
+  }
+
   // DATABASE-FIRST: Write to Supabase
   let dbStats = { seeds: 0, legos: 0, components: 0 };
   if (courseDataService.USE_DATABASE_WRITES) {
@@ -1282,9 +1414,19 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
  */
 app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
   const { courseCode } = req.params;
-  const { masterNum, seedsProcessed } = req.body;
+  const { masterNum, seedsProcessed, totalMasters } = req.body;
 
   console.log(`[Phase 1] ✅ Master ${masterNum} complete: ${seedsProcessed} seeds`);
+
+  const browserId = `browser-${masterNum}`;
+
+  // Report browser:complete event
+  reportEvent(courseCode, {
+    event: 'browser:complete',
+    browserId,
+    masterNum,
+    seedsProcessed
+  });
 
   const job = activeJobs.get(courseCode);
   if (job) {
@@ -1591,22 +1733,53 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
     return res.status(500).json({ error: 'Web agent spawner not available' });
   }
 
-  // Launch all masters in Safari
+  // Launch all masters in Safari with event reporting
   console.log(`[Phase 1] Launching ${masters.length} Safari windows...`);
 
   const launchResults = [];
   for (const master of masters) {
+    const browserId = `browser-gapfill-${master.masterNum}`;
+
+    // Collect all seeds assigned to this master
+    const assignedSeeds = master.workers.flatMap(w => w.seeds);
+
+    // Report browser:spawning event
+    reportEvent(courseCode, {
+      event: 'browser:spawning',
+      browserId,
+      assignedSeeds,
+      masterNum: master.masterNum,
+      mode: 'gap-fill'
+    });
+
     try {
       const prompt = generateGapFillMasterPrompt(master);
       await spawnClaudeWebAgent(prompt, master.masterNum, 'safari');
       launchResults.push({ master: master.masterNum, status: 'launched' });
       console.log(`[Phase 1]   ✅ Gap-fill Master ${master.masterNum} launched`);
 
+      // Report browser:ready event
+      reportEvent(courseCode, {
+        event: 'browser:ready',
+        browserId,
+        masterNum: master.masterNum,
+        mode: 'gap-fill'
+      });
+
       // Delay between launches
       await new Promise(r => setTimeout(r, 8000));
     } catch (err) {
       launchResults.push({ master: master.masterNum, status: 'failed', error: err.message });
       console.error(`[Phase 1]   ❌ Gap-fill Master ${master.masterNum} failed: ${err.message}`);
+
+      // Report browser:failed event
+      reportEvent(courseCode, {
+        event: 'browser:failed',
+        browserId,
+        masterNum: master.masterNum,
+        mode: 'gap-fill',
+        error: err.message
+      });
     }
   }
 
@@ -1738,10 +1911,28 @@ Keys: s=seed_id, k=known, t=target, l=legos, y=type(A/M), n=new(1/0), c=componen
 **IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
 `;
 
+    const browserId = `browser-gapfill-single-${i + 1}`;
+
+    // Report browser:spawning event (single-seed gap-fill uses one browser per seed)
+    reportEvent(courseCode, {
+      event: 'browser:spawning',
+      browserId,
+      assignedSeeds: [seedId],
+      mode: 'gap-fill-single'
+    });
+
     try {
       await spawnClaudeWebAgent(workerPrompt, i + 1, 'safari');
       launchResults.push({ seed: seedId, status: 'launched' });
       console.log(`[Phase 1]   ✅ Gap-fill worker for ${seedId} launched`);
+
+      // Report browser:ready event
+      reportEvent(courseCode, {
+        event: 'browser:ready',
+        browserId,
+        seedId,
+        mode: 'gap-fill-single'
+      });
 
       // Delay between launches to avoid clipboard race
       if (i < missingSeedIds.length - 1) {
@@ -1750,6 +1941,15 @@ Keys: s=seed_id, k=known, t=target, l=legos, y=type(A/M), n=new(1/0), c=componen
     } catch (err) {
       launchResults.push({ seed: seedId, status: 'failed', error: err.message });
       console.error(`[Phase 1]   ❌ Gap-fill worker for ${seedId} failed: ${err.message}`);
+
+      // Report browser:failed event
+      reportEvent(courseCode, {
+        event: 'browser:failed',
+        browserId,
+        seedId,
+        mode: 'gap-fill-single',
+        error: err.message
+      });
     }
   }
 

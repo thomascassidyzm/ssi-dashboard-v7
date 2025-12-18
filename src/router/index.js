@@ -86,6 +86,13 @@ const routes = [
     component: CourseGeneration
   },
   {
+    path: '/generate/:courseCode/monitor',
+    name: 'GenerationMonitor',
+    component: () => import('../components/generation/GenerationMonitor.vue'),
+    props: true,
+    meta: { title: 'Generation Monitor' }
+  },
+  {
     path: '/validate',
     name: 'CourseValidator',
     component: CourseValidator,
