@@ -2285,12 +2285,30 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         rawBatchCount = jsonFiles.length;
 
         // Read each batch file and extract seed IDs
+        // Batch files can be:
+        //   - Array format: [ { s: "S0001", k: "...", t: "...", l: [...] }, ... ]
+        //   - Object format: { seeds: [ { seed_id: "S0001", ... } ] }
         for (const file of jsonFiles) {
           try {
             const batchData = await fs.readJSON(path.join(phase1BatchesDir, file));
-            if (batchData.seeds && Array.isArray(batchData.seeds)) {
+
+            // Handle array format (compact batch files)
+            if (Array.isArray(batchData)) {
+              for (const seed of batchData) {
+                // Compact format uses 's' for seed_id
+                if (seed.s) {
+                  rawBatchSeeds.push(seed.s);
+                } else if (seed.seed_id) {
+                  rawBatchSeeds.push(seed.seed_id);
+                }
+              }
+            }
+            // Handle object format with seeds array
+            else if (batchData.seeds && Array.isArray(batchData.seeds)) {
               for (const seed of batchData.seeds) {
-                if (seed.seed_id) {
+                if (seed.s) {
+                  rawBatchSeeds.push(seed.s);
+                } else if (seed.seed_id) {
                   rawBatchSeeds.push(seed.seed_id);
                 }
               }
