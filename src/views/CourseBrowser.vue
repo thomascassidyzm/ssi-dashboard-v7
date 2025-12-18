@@ -11,28 +11,6 @@
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
             <p class="text-slate-400">Browse and edit existing courses</p>
           </div>
-          <div class="flex gap-3">
-            <button
-              @click="regenerateManifest"
-              :disabled="regenerating"
-              class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-slate-300 px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
-              title="Regenerate course manifest from local files (requires orchestrator running)"
-            >
-              <span v-if="regenerating">⏳</span>
-              <span v-else>🔄</span>
-              Regenerate Manifest
-            </button>
-            <button
-              @click="syncToS3"
-              :disabled="syncing"
-              class="bg-amber-600 hover:bg-amber-700 disabled:bg-slate-800 disabled:text-slate-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
-              title="Sync local course files to S3 (SSoT)"
-            >
-              <span v-if="syncing">⏳</span>
-              <span v-else>☁️</span>
-              Sync to S3
-            </button>
-          </div>
         </div>
       </div>
 
@@ -207,8 +185,6 @@ const languageNames = {
 const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
-const regenerating = ref(false)
-const syncing = ref(false)
 const searchQuery = ref('')
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
@@ -314,123 +290,5 @@ function isPhaseComplete(course, phase) {
 
 function showDetails(course) {
   router.push(`/courses/${course.course_code}`)
-}
-
-async function regenerateManifest() {
-  regenerating.value = true
-  try {
-    const response = await api.regenerateManifest()
-
-    // Build summary message
-    const { comparison, total_courses } = response
-    const parts = []
-
-    if (comparison.added.length > 0) {
-      parts.push(`${comparison.added.length} new course${comparison.added.length > 1 ? 's' : ''}`)
-    }
-    if (comparison.updated.length > 0) {
-      parts.push(`${comparison.updated.length} updated`)
-    }
-    if (comparison.removed.length > 0) {
-      parts.push(`${comparison.removed.length} removed`)
-    }
-
-    const summary = parts.length > 0
-      ? parts.join(', ')
-      : 'No changes detected'
-
-    // Show toast with summary
-    if (parts.length > 0) {
-      toast.success(`✅ Manifest regenerated! ${summary}. Total: ${total_courses} courses.`, {
-        timeout: 5000
-      })
-
-      // Highlight new and updated courses
-      highlightedCourses.value = new Set([
-        ...comparison.added,
-        ...comparison.updated.map(u => u.course_code)
-      ])
-
-      // Clear highlights after 10 seconds
-      setTimeout(() => {
-        highlightedCourses.value.clear()
-      }, 10000)
-    } else {
-      toast.info(`ℹ️ Manifest regenerated. ${summary}.`)
-    }
-
-    // Reload courses to show updated manifest
-    await loadCourses()
-
-    // Scroll to first new course if any
-    if (comparison.added.length > 0) {
-      setTimeout(() => {
-        const firstNew = document.querySelector('.border-emerald-500')
-        if (firstNew) {
-          firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-      }, 100)
-    }
-  } catch (err) {
-    console.error('Failed to regenerate manifest:', err)
-    if (err.response?.status === 404) {
-      toast.error('❌ Orchestrator doesn\'t support manifest regeneration. Make sure it\'s running and up to date.')
-    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
-      toast.error('❌ Cannot reach orchestrator.')
-    } else {
-      toast.error('❌ Failed to regenerate manifest')
-    }
-  } finally {
-    regenerating.value = false
-  }
-}
-
-async function syncToS3() {
-  // Sync all courses that have local changes to S3
-  syncing.value = true
-  try {
-    let totalSynced = 0
-    let totalSkipped = 0
-    let errors = []
-
-    // Sync each course that is loaded
-    for (const course of courses.value) {
-      try {
-        const response = await fetch(`/api/courses/${course.course_code}/sync`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ force: false })
-        })
-
-        if (!response.ok) {
-          const data = await response.json().catch(() => ({}))
-          errors.push({ course: course.course_code, error: data.error || response.statusText })
-          continue
-        }
-
-        const result = await response.json()
-        totalSynced += result.synced?.length || 0
-        totalSkipped += result.skipped?.length || 0
-
-      } catch (err) {
-        errors.push({ course: course.course_code, error: err.message })
-      }
-    }
-
-    // Show result
-    if (errors.length > 0) {
-      toast.warning(`⚠️ Synced with ${errors.length} error(s). ${totalSynced} files uploaded.`)
-    } else if (totalSynced === 0) {
-      toast.info('ℹ️ All files already in sync with S3')
-    } else {
-      toast.success(`✅ Synced ${totalSynced} files to S3`)
-    }
-
-  } catch (err) {
-    console.error('Failed to sync to S3:', err)
-    toast.error('❌ Failed to sync to S3: ' + err.message)
-  } finally {
-    syncing.value = false
-  }
 }
 </script>
