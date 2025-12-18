@@ -9,44 +9,47 @@
   "modes": {
     "quick_test": {
       "name": "Quick Test",
-      "description": "Fast validation with maximum parallelization",
+      "description": "Fast validation - fewer browsers, more agents per browser",
       "seeds": 10,
       "pattern": {
-        "browsers": 5,
-        "agents_per_browser": 2,
+        "browsers": 2,
+        "agents_per_browser": 5,
         "seeds_per_agent": 1
       },
       "capacity": 10,
       "estimated_time_minutes": 2,
-      "use_case": "Validation, fast feedback loop"
+      "use_case": "Validation, fast feedback loop",
+      "rationale": "2 browsers with 5 agents each is more robust than 5 browsers with 2 agents"
     },
 
     "mvp_course": {
       "name": "MVP Course",
-      "description": "Big 10 language pairs - production MVP",
+      "description": "Big 10 language pairs - high agent parallelization",
       "seeds": 250,
       "pattern": {
         "browsers": 5,
-        "agents_per_browser": 5,
-        "seeds_per_agent": 10
+        "agents_per_browser": 10,
+        "seeds_per_agent": 5
       },
       "capacity": 250,
       "estimated_time_minutes": 15,
-      "use_case": "Production courses for Big 10 language pairs"
+      "use_case": "Production courses for Big 10 language pairs",
+      "rationale": "10 agents per browser maximizes agent parallelization while keeping browser count low"
     },
 
     "full_course": {
       "name": "Full Course",
-      "description": "Complete legacy-scale course",
+      "description": "Complete legacy-scale course - agent-heavy distribution",
       "seeds": 668,
       "pattern": {
-        "browsers": 9,
-        "agents_per_browser": 5,
+        "browsers": 5,
+        "agents_per_browser": 9,
         "seeds_per_agent": 15
       },
       "capacity": 675,
       "estimated_time_minutes": 20,
-      "use_case": "Complete courses (legacy Spanish for English scale)"
+      "use_case": "Complete courses (legacy Spanish for English scale)",
+      "rationale": "5 browsers × 9 agents is more robust than 9 browsers × 5 agents"
     }
   },
 
