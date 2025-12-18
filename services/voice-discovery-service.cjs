@@ -15,14 +15,16 @@ const langService = require('./language-code-service.cjs');
 /**
  * Get Azure locale prefix from language code
  * Uses centralized language-code-service for legacy→standard conversion
- * Special case: cmn (Mandarin) → 'zh' for Azure locales
+ * Special case: cmn/zho (Mandarin/Chinese) → 'zh' for Azure locales
  */
 function getLocalePrefix(languageCode) {
   if (!languageCode) return null;
   const code = languageCode.toLowerCase();
 
-  // Special case: Mandarin uses 'zh' prefix in Azure
-  if (code === 'cmn') return 'zh';
+  // Special case: Chinese language codes → 'zh' prefix in Azure
+  // cmn = Mandarin Chinese (ISO 639-3)
+  // zho = Chinese macro language (ISO 639-3)
+  if (code === 'cmn' || code === 'zho') return 'zh';
 
   // Convert legacy codes (spa, eng, ita) to standard (es, en, it)
   const standardCode = langService.legacyToStandard(code);
