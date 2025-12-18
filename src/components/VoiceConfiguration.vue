@@ -26,12 +26,13 @@
         <button
           v-for="role in roles"
           :key="role.id"
-          :class="['role-tab', { active: activeRole === role.id }]"
+          :class="['role-tab', { active: activeRole === role.id, configured: isRoleConfigured(role.id) }]"
           @click="selectRole(role.id)"
         >
           <span class="role-icon">{{ role.icon }}</span>
           <span class="role-name">{{ role.name }}</span>
-          <span v-if="config.voices[role.id]?.voiceId" class="role-configured"></span>
+          <span v-if="isRoleConfigured(role.id)" class="role-status configured">✓</span>
+          <span v-else class="role-status missing">○</span>
         </button>
       </div>
 
@@ -245,10 +246,31 @@
         </div>
       </div>
 
+      <!-- Configuration Status Banner -->
+      <div v-if="!allRolesConfigured" class="config-status warning">
+        <span class="status-icon">⚠️</span>
+        <div class="status-text">
+          <strong>Configuration incomplete</strong>
+          <span>Configure all roles to save: {{ missingRolesText }}</span>
+        </div>
+      </div>
+      <div v-else-if="hasChanges" class="config-status ready">
+        <span class="status-icon">✓</span>
+        <div class="status-text">
+          <strong>All voices configured</strong>
+          <span>Ready to save</span>
+        </div>
+      </div>
+
       <!-- Action Buttons -->
       <div class="config-actions">
         <button @click="resetConfig" class="action-btn secondary">Reset</button>
-        <button @click="saveConfig" :disabled="saving || !hasChanges" class="action-btn primary">
+        <button
+          @click="saveConfig"
+          :disabled="saving || !hasChanges || !allRolesConfigured"
+          class="action-btn primary"
+          :title="!allRolesConfigured ? 'Configure all roles before saving' : ''"
+        >
           {{ saving ? 'Saving...' : 'Save Configuration' }}
         </button>
       </div>
@@ -332,6 +354,34 @@ const filteredVoices = computed(() => {
 const hasChanges = computed(() => {
   return JSON.stringify(config.value) !== JSON.stringify(originalConfig.value)
 })
+
+// Check if all required roles have voices configured
+const allRolesConfigured = computed(() => {
+  if (!config.value?.voices) return false
+  return roles.every(role => {
+    const voice = config.value.voices[role.id]
+    return voice && voice.voiceId && voice.provider
+  })
+})
+
+// Get list of missing roles for display
+const missingRoles = computed(() => {
+  if (!config.value?.voices) return roles.map(r => r.name)
+  return roles.filter(role => {
+    const voice = config.value.voices[role.id]
+    return !voice || !voice.voiceId || !voice.provider
+  }).map(r => r.name)
+})
+
+const missingRolesText = computed(() => {
+  return missingRoles.value.join(', ')
+})
+
+// Check if a specific role is configured
+function isRoleConfigured(roleId) {
+  const voice = config.value?.voices?.[roleId]
+  return !!(voice && voice.voiceId && voice.provider)
+}
 
 // Get language code for role
 function getLanguageForRole(roleId) {
@@ -729,15 +779,30 @@ onMounted(() => {
   font-weight: 500;
 }
 
-.role-configured {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
-  border-radius: 50%;
+.role-status {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
-.role-tab.active .role-configured {
-  background: #0f172a;
+.role-status.configured {
+  color: #10b981;
+}
+
+.role-status.missing {
+  color: #64748b;
+}
+
+.role-tab.active .role-status.configured {
+  color: #0f172a;
+}
+
+.role-tab.active .role-status.missing {
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.role-tab.configured:not(.active) {
+  border-color: rgba(16, 185, 129, 0.4);
 }
 
 /* Current Selection */
@@ -1174,6 +1239,55 @@ onMounted(() => {
 .test-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Configuration Status Banner */
+.config-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.config-status.warning {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.config-status.ready {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.config-status .status-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.config-status .status-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.config-status .status-text strong {
+  color: #e2e8f0;
+  font-size: 0.875rem;
+}
+
+.config-status .status-text span {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.config-status.ready .status-icon {
+  color: #10b981;
+}
+
+.config-status.warning .status-text strong {
+  color: #f59e0b;
 }
 
 /* Action Buttons */
