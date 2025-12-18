@@ -733,11 +733,23 @@ const createCourse = async () => {
 
     console.log('Creating course with data:', courseData)
 
-    // Call API to create course
+    // Step 1: Create course directory structure
     await apiClient.post('/api/courses/create', courseData)
 
-    // Success - redirect to courses page
-    router.push('/courses')
+    // Step 2: Trigger the production pipeline (Phase 1 → Phase 2 → Phase 3 → etc.)
+    console.log('Triggering production pipeline...')
+    await apiClient.post('/api/courses/generate', {
+      courseCode: computedCourseCode.value,
+      target: formData.value.targetLanguage,
+      known: formData.value.sourceLanguage,
+      startSeed: formData.value.seedStart,
+      endSeed: formData.value.seedEnd,
+      mode: selectedMode.value,
+      phaseSelection: 'phase1'  // Start with Phase 1
+    })
+
+    // Success - redirect to production page to monitor progress
+    router.push(`/production/${computedCourseCode.value}`)
   } catch (error) {
     console.error('Failed to create course:', error)
     alert('Failed to create course. Please try again.')
