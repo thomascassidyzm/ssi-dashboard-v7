@@ -3523,17 +3523,13 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
     // Update current phase to next
     const progress = courseProgress.get(courseCode);
     if (progress) {
-      progress.currentPhase = 3;
+      progress.currentPhase = 2;
     }
 
-    // Trigger Phase 3 automatically (with 2s delay for GitHub sync)
-    console.log(`[Orchestrator] → Phase 1 complete, triggering Phase 3 in 2s...`);
-    addProgressLog(courseCode, 'Phase 1: complete');
-    setTimeout(() => {
-      console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
-      addProgressLog(courseCode, 'Starting Phase 3 for 10 seeds');
-      triggerPhase(courseCode, 3);
-    }, 2000);
+    // Phase 1 submit received - Phase 2 is triggered by master completion, not here
+    // (The master complete handler runs Phase 2 inline and then triggers Phase 3)
+    console.log(`[Orchestrator] → Phase 1 data submitted, awaiting master completion for Phase 2`);
+    addProgressLog(courseCode, 'Phase 1: data submitted');
 
     // Auto-publish to GitHub for live dashboard visibility
     autoPublishCourseData(
