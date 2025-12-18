@@ -1077,10 +1077,30 @@ app.get('/api/production/:courseCode/seeds', async (req, res) => {
   const status = req.query.status || 'all'  // Default to all statuses (draft, released, etc.)
   try {
     const seeds = await courseDataService.getSeedsByCourse(courseCode, { status })
+
+    // Transform database format to match frontend expectations:
+    // - course_legos → legos
+    // - course_practice_phrases → basket_phrases
+    const transformedSeeds = seeds.map(seed => ({
+      ...seed,
+      legos: (seed.course_legos || []).map(lego => ({
+        ...lego,
+        basket_phrases: lego.course_practice_phrases || []
+      }))
+    }))
+
+    // Remove the original nested properties to avoid confusion
+    transformedSeeds.forEach(seed => {
+      delete seed.course_legos
+      seed.legos.forEach(lego => {
+        delete lego.course_practice_phrases
+      })
+    })
+
     res.json({
       courseCode,
-      count: seeds.length,
-      seeds
+      count: transformedSeeds.length,
+      seeds: transformedSeeds
     })
   } catch (error) {
     logger.error(`Error fetching seeds for ${courseCode}:`, error.message)
