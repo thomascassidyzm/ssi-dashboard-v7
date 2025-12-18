@@ -60,6 +60,111 @@ app.use(express.json())
 const activeJobs = new Map()
 
 /**
+ * Load baskets from Supabase (database-first approach)
+ * Transforms course_legos + course_practice_phrases into basket format
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Object|null>} Baskets in lego_baskets.json format, or null if not available
+ */
+async function loadBasketsFromSupabase(courseCode) {
+  if (!db.isInitialized()) {
+    logger.warn('Supabase not initialized, cannot load from database')
+    return null
+  }
+
+  try {
+    const supabase = db.getClient()
+
+    // Get all LEGOs for this course
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('*')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index')
+
+    if (legosError) {
+      logger.warn(`Error loading LEGOs from Supabase: ${legosError.message}`)
+      return null
+    }
+
+    if (!legos || legos.length === 0) {
+      logger.warn(`No LEGOs found in Supabase for ${courseCode}`)
+      return null
+    }
+
+    // Get all practice phrases for this course
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('*')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index')
+      .order('position')
+
+    if (phrasesError) {
+      logger.warn(`Error loading phrases from Supabase: ${phrasesError.message}`)
+      return null
+    }
+
+    if (!phrases || phrases.length === 0) {
+      logger.warn(`No practice phrases found in Supabase for ${courseCode}`)
+      return null
+    }
+
+    // Transform into basket format
+    // Group LEGOs by seed
+    const legosBySeed = {}
+    for (const lego of legos) {
+      const seedId = 'S' + String(lego.seed_number).padStart(4, '0')
+      if (!legosBySeed[seedId]) {
+        legosBySeed[seedId] = []
+      }
+      legosBySeed[seedId].push(lego)
+    }
+
+    // Group phrases by seed+lego
+    const phrasesByLego = {}
+    for (const phrase of phrases) {
+      const key = `${phrase.seed_number}-${phrase.lego_index}`
+      if (!phrasesByLego[key]) {
+        phrasesByLego[key] = []
+      }
+      phrasesByLego[key].push(phrase)
+    }
+
+    // Build basket structure
+    const baskets = {}
+    for (const [seedId, seedLegos] of Object.entries(legosBySeed)) {
+      baskets[seedId] = {
+        baskets: seedLegos.map(lego => {
+          const legoId = `${seedId}L${String(lego.lego_index).padStart(2, '0')}`
+          const phraseKey = `${lego.seed_number}-${lego.lego_index}`
+          const legoPhrases = phrasesByLego[phraseKey] || []
+
+          return {
+            lego_id: legoId,
+            is_debut: lego.is_new === true,
+            is_component: lego.is_component === true,
+            cycles: legoPhrases.map(p => ({
+              target: p.target_text,
+              source: p.known_text
+            }))
+          }
+        })
+      }
+    }
+
+    logger.log(`Loaded ${legos.length} LEGOs and ${phrases.length} phrases from Supabase for ${courseCode}`)
+    return baskets
+
+  } catch (error) {
+    logger.warn(`Failed to load baskets from Supabase: ${error.message}`)
+    return null
+  }
+}
+
+/**
  * Extract unique audio needs from lego_baskets.json
  * Returns array of { text, lang, role, seedId, legoId }
  *
@@ -233,17 +338,27 @@ app.post('/generate', async (req, res) => {
 
   // Background processing
   try {
-    // Load lego_baskets.json
-    const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
-    const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
+    // Try Supabase first (database-first approach), fallback to local JSON
+    let baskets = await loadBasketsFromSupabase(courseCode)
+    let dataSource = 'supabase'
 
-    if (!await fs.pathExists(basketsPath)) {
-      job.status = 'failed'
-      job.error = `lego_baskets.json not found at ${basketsPath}`
-      return
+    if (!baskets) {
+      // Fallback to local JSON file
+      const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
+      const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
+
+      if (!await fs.pathExists(basketsPath)) {
+        job.status = 'failed'
+        job.error = `No baskets found in Supabase or local file (${basketsPath})`
+        return
+      }
+
+      baskets = await fs.readJson(basketsPath)
+      dataSource = 'local_json'
+      logger.log(`Loaded baskets from local JSON for ${courseCode}`)
     }
 
-    const baskets = await fs.readJson(basketsPath)
+    job.dataSource = dataSource
 
     // Parse course code for languages (e.g., spa_for_eng)
     const parts = courseCode.split('_')
@@ -410,14 +525,21 @@ app.post('/plan', async (req, res) => {
   }
 
   try {
-    const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
-    const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
+    // Try Supabase first (database-first approach), fallback to local JSON
+    let baskets = await loadBasketsFromSupabase(courseCode)
+    let dataSource = 'supabase'
 
-    if (!await fs.pathExists(basketsPath)) {
-      return res.status(404).json({ error: 'lego_baskets.json not found' })
+    if (!baskets) {
+      const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
+      const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
+
+      if (!await fs.pathExists(basketsPath)) {
+        return res.status(404).json({ error: 'No baskets found in Supabase or local file' })
+      }
+
+      baskets = await fs.readJson(basketsPath)
+      dataSource = 'local_json'
     }
-
-    const baskets = await fs.readJson(basketsPath)
 
     // Parse course code
     const parts = courseCode.split('_')
@@ -470,6 +592,7 @@ app.post('/plan', async (req, res) => {
     res.json({
       success: true,
       courseCode,
+      dataSource,
       plan: results,
       voices: voiceConfig
     })

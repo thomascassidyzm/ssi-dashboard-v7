@@ -440,65 +440,9 @@ async function triggerPhase1GapFill(courseCode, missingSeeds, phase1State) {
 }
 
 /**
- * Auto-publish course data to GitHub
- * Commits and pushes course output files after each phase completion
- * This allows the deployed dashboard to show live progress
+ * NOTE: GitHub auto-publish removed - using database-first approach
+ * Course data is synced to Supabase, not GitHub
  */
-async function autoPublishCourseData(courseCode, phase, message) {
-  try {
-    console.log(`[Auto-Publish] Publishing ${courseCode} Phase ${phase} to GitHub...`);
-
-    const repoRoot = path.join(__dirname, '../..');
-    const courseRelativePath = `public/vfs/courses/${courseCode}/`;
-
-    // Check if there are changes specifically in the course directory
-    const status = execSync(`git status --porcelain ${courseRelativePath}`, {
-      cwd: repoRoot,
-      encoding: 'utf-8'
-    });
-
-    if (!status.trim()) {
-      console.log(`[Auto-Publish] No changes to publish for ${courseCode}`);
-      return { success: true, skipped: true };
-    }
-
-    // Regenerate manifest to include this course
-    console.log(`[Auto-Publish] Regenerating manifest to include ${courseCode}...`);
-    await regenerateCourseManifest();
-
-    // Stage course files AND manifest
-    execSync(`git add ${courseRelativePath} public/vfs/courses-manifest.json`, {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    // Create commit with formatted message
-    const commitMsg = message || `Phase ${phase}: Auto-publish ${courseCode} output`;
-    const fullCommitMsg = `${commitMsg}
-
-🤖 Auto-published via orchestrator
-
-Co-Authored-By: Claude <noreply@anthropic.com>`;
-
-    execSync(`git commit -m "${fullCommitMsg.replace(/"/g, '\\"')}"`, {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    // Push to GitHub
-    execSync('git push', {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    console.log(`[Auto-Publish] ✅ Published ${courseCode} to GitHub`);
-    return { success: true, published: true };
-  } catch (error) {
-    console.error(`[Auto-Publish] ⚠️  Failed to publish:`, error.message);
-    // Don't fail the phase if git push fails - just log it
-    return { success: false, error: error.message };
-  }
-}
 
 /**
  * GET /api/courses
@@ -2681,51 +2625,11 @@ app.post('/api/courses/:courseCode/flags', async (req, res) => {
     await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
     console.log(`[Orchestrator] Successfully created flag ${newFlag.id} in ${courseCode}`);
 
-    // Commit to GitHub (SSoT)
-    let gitResult = null;
-    try {
-      const repoRoot = path.join(__dirname, '../..');
-      const flagsRelativePath = `public/vfs/courses/${courseCode}/flags.json`;
-
-      execSync(`git add ${flagsRelativePath}`, {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      const commitMsg = `flag(${courseCode}): ${seedId}${legoId ? '/' + legoId : ''} - ${issueType}
-
-🚩 QC flag submitted for review
-
-🤖 Generated with Claude Code
-
-Co-Authored-By: Claude <noreply@anthropic.com>`;
-
-      execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      const sha = execSync('git rev-parse HEAD', {
-        cwd: repoRoot,
-        encoding: 'utf-8'
-      }).trim();
-
-      execSync('git push', {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      gitResult = { sha, pushed: true };
-      console.log(`[Orchestrator] ✅ Flag committed to GitHub: ${sha.substring(0, 7)}`);
-    } catch (gitError) {
-      console.error(`[Orchestrator] Git commit failed (flag still saved locally):`, gitError.message);
-      gitResult = { error: gitError.message };
-    }
+    // NOTE: Git commit/push removed - flags saved locally only (database-first approach)
 
     res.json({
       success: true,
-      flag: newFlag,
-      github: gitResult
+      flag: newFlag
     });
   } catch (error) {
     console.error(`[Orchestrator] Error creating flag:`, error);
@@ -2761,7 +2665,7 @@ app.get('/api/courses/:courseCode/flags', async (req, res) => {
 
 /**
  * DELETE /api/courses/:courseCode/flags/:flagId
- * Mark a flag as resolved (commits to GitHub)
+ * Mark a flag as resolved
  */
 app.delete('/api/courses/:courseCode/flags/:flagId', async (req, res) => {
   const { courseCode, flagId } = req.params;
@@ -2793,48 +2697,9 @@ app.delete('/api/courses/:courseCode/flags/:flagId', async (req, res) => {
     await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
     console.log(`[Orchestrator] Successfully resolved flag ${flagId} in ${courseCode}`);
 
-    // Commit to GitHub
-    let gitResult = null;
-    try {
-      const repoRoot = path.join(__dirname, '../..');
-      const flagsRelativePath = `public/vfs/courses/${courseCode}/flags.json`;
+    // NOTE: Git commit/push removed - flags saved locally only (database-first approach)
 
-      execSync(`git add ${flagsRelativePath}`, {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      const commitMsg = `flag(${courseCode}): resolved ${flag.seedId}${flag.legoId ? '/' + flag.legoId : ''}
-
-✅ QC flag marked as resolved
-
-🤖 Generated with Claude Code
-
-Co-Authored-By: Claude <noreply@anthropic.com>`;
-
-      execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      const sha = execSync('git rev-parse HEAD', {
-        cwd: repoRoot,
-        encoding: 'utf-8'
-      }).trim();
-
-      execSync('git push', {
-        cwd: repoRoot,
-        stdio: 'pipe'
-      });
-
-      gitResult = { sha, pushed: true };
-      console.log(`[Orchestrator] ✅ Flag resolution committed to GitHub: ${sha.substring(0, 7)}`);
-    } catch (gitError) {
-      console.error(`[Orchestrator] Git commit failed:`, gitError.message);
-      gitResult = { error: gitError.message };
-    }
-
-    res.json({ success: true, github: gitResult });
+    res.json({ success: true });
   } catch (error) {
     console.error(`[Orchestrator] Error resolving flag:`, error);
     res.status(500).json({ error: 'Failed to resolve flag', details: error.message });
@@ -3059,126 +2924,9 @@ app.post('/api/regenerate-manifest', async (req, res) => {
   }
 });
 
-/**
- * POST /api/push-to-github
- * Manual git push for course data (like Regenerate Manifest button)
- */
-app.post('/api/push-to-github', async (req, res) => {
-  try {
-    const { courseCode, message } = req.body;
+// NOTE: /api/push-to-github removed - using database-first approach
 
-    if (!courseCode) {
-      return res.status(400).json({
-        success: false,
-        error: 'Missing required field: courseCode'
-      });
-    }
-
-    console.log(`[Orchestrator] 📤 Manual GitHub push requested for ${courseCode}`);
-
-    // Use the same auto-publish function that phases use
-    const result = await autoPublishCourseData(
-      courseCode,
-      'manual',
-      message || `Manual update: ${courseCode} course data`
-    );
-
-    if (result.skipped) {
-      return res.json({
-        success: true,
-        skipped: true,
-        message: 'No changes to push'
-      });
-    }
-
-    if (result.success) {
-      res.json({
-        success: true,
-        message: '✅ Course data pushed to GitHub! Vercel will deploy automatically.',
-        timestamp: new Date().toISOString()
-      });
-    } else {
-      res.status(500).json({
-        success: false,
-        error: result.error,
-        message: 'Failed to push to GitHub'
-      });
-    }
-  } catch (error) {
-    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
-    res.status(500).json({
-      success: false,
-      error: error.message,
-      message: 'Failed to push to GitHub'
-    });
-  }
-});
-
-/**
- * POST /api/push-all-courses
- * Push all course data to GitHub (used from Course Library page)
- */
-app.post('/api/push-all-courses', async (req, res) => {
-  try {
-    console.log('[Orchestrator] 📤 Manual GitHub push requested for ALL courses');
-
-    const repoRoot = path.join(__dirname, '../..');
-    const coursesPath = 'public/vfs/courses/';
-
-    // Check if there are changes in courses directory
-    const status = execSync(`git status --porcelain ${coursesPath}`, {
-      cwd: repoRoot,
-      encoding: 'utf-8'
-    });
-
-    if (!status.trim()) {
-      return res.json({
-        success: true,
-        skipped: true,
-        message: 'No changes to push'
-      });
-    }
-
-    // Stage all course files
-    execSync(`git add ${coursesPath}`, {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    // Create commit
-    const commitMsg = `Update course data
-
-🤖 Auto-published via orchestrator
-
-Co-Authored-By: Claude <noreply@anthropic.com>`;
-
-    execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    // Push to GitHub
-    execSync('git push', {
-      cwd: repoRoot,
-      stdio: 'inherit'
-    });
-
-    console.log('[Auto-Publish] ✅ All course data pushed to GitHub');
-
-    res.json({
-      success: true,
-      message: '✅ All course data pushed to GitHub! Vercel will deploy automatically.',
-      timestamp: new Date().toISOString()
-    });
-  } catch (error) {
-    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
-    res.status(500).json({
-      success: false,
-      error: error.message,
-      message: 'Failed to push to GitHub'
-    });
-  }
-});
+// NOTE: /api/push-all-courses removed - using database-first approach
 
 // =============================================================================
 // AUDIO GENERATION ENDPOINTS (APML v9.0)
@@ -3530,13 +3278,6 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
     // (The master complete handler runs Phase 2 inline and then triggers Phase 3)
     console.log(`[Orchestrator] → Phase 1 data submitted, awaiting master completion for Phase 2`);
     addProgressLog(courseCode, 'Phase 1: data submitted');
-
-    // Auto-publish to GitHub for live dashboard visibility
-    autoPublishCourseData(
-      courseCode,
-      1,
-      `Phase 1: ${seedCount} pedagogical translations`
-    ).catch(err => console.error('[Phase 1] Auto-publish failed:', err));
 
     res.json({
       success: true,
@@ -4194,13 +3935,6 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
         addProgressLog(courseCode, 'Starting Manifest compilation');
         triggerPhase(courseCode, 'manifest');
       }, 2000);
-
-      // Auto-publish to GitHub for live dashboard visibility
-      autoPublishCourseData(
-        courseCode,
-        3,
-        `Phase 3: ${legoCount} LEGOs + ${introCount} introductions across ${seedCount} seeds`
-      ).catch(err => console.error('[Phase 3] Auto-publish failed:', err));
     } else {
       // More agents still working - keep running
       updatePhaseProgress(courseCode, 3, {
@@ -4391,13 +4125,6 @@ async function handlePhase3Submit(req, res) {
       triggerPhase(courseCode, 'manifest');
     }, 2000);
 
-    // Auto-publish to GitHub for live dashboard visibility
-    autoPublishCourseData(
-      courseCode,
-      3,
-      `Phase 3: ${basketCount} LEGOs with ${phraseCount.toLocaleString()} practice phrases`
-    ).catch(err => console.error('[Phase 3] Auto-publish failed:', err));
-
     res.json({
       success: true,
       message: `Phase 3 (Baskets) submission received for ${courseCode}`,
@@ -4477,12 +4204,7 @@ async function handleManifestSubmit(req, res) {
       progress.overallStatus = 'manifest_complete'; // Ready for audio generation
     }
 
-    // Auto-publish to GitHub for live dashboard visibility
-    autoPublishCourseData(
-      courseCode,
-      'manifest',
-      `Manifest: Course manifest with ${phraseCount.toLocaleString()} phrases`
-    ).catch(err => console.error('[Manifest] Auto-publish failed:', err));
+    // NOTE: GitHub auto-publish removed - using database-first approach
 
     res.json({
       success: true,
@@ -5167,32 +4889,7 @@ app.post('/api/courses/:courseCode/baskets/cleanup', async (req, res) => {
     await fs.writeJson(basketsPath, basketsData, { spaces: 2 });
     console.log(`   ✅ Updated baskets file: ${basketsPath}`);
 
-    // Commit changes to git
-    try {
-      console.log(`   📦 Committing changes to git...`);
-
-      execSync('git add lego_baskets.json deleted_baskets_backup.json', {
-        cwd: path.join(VFS_ROOT, courseCode),
-        stdio: 'inherit'
-      });
-
-      const commitMessage = `chore(${courseCode}): cleanup ${deletedCount} deprecated/orphaned baskets
-
-Automated basket cleanup after LEGO re-extraction.
-
-- Deleted: ${deletedCount} baskets
-- Backup: deleted_baskets_backup.json
-- Basket IDs: ${basketIdsToDelete.slice(0, 5).join(', ')}${basketIdsToDelete.length > 5 ? ` ... and ${basketIdsToDelete.length - 5} more` : ''}`;
-
-      execSync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, {
-        cwd: path.join(VFS_ROOT, courseCode),
-        stdio: 'inherit'
-      });
-
-      console.log(`   ✅ Changes committed to git`);
-    } catch (gitError) {
-      console.log(`   ⚠️  Git commit failed (non-fatal): ${gitError.message}`);
-    }
+    // NOTE: Git commit removed - using database-first approach
 
     res.json({
       courseCode,
