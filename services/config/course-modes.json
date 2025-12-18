@@ -39,17 +39,17 @@
 
     "full_course": {
       "name": "Full Course",
-      "description": "Complete legacy-scale course - agent-heavy distribution",
+      "description": "Complete legacy-scale course - maximum agent parallelization",
       "seeds": 668,
       "pattern": {
-        "browsers": 5,
-        "agents_per_browser": 9,
-        "seeds_per_agent": 15
+        "browsers": 9,
+        "agents_per_browser": 15,
+        "seeds_per_agent": 5
       },
       "capacity": 675,
       "estimated_time_minutes": 20,
       "use_case": "Complete courses (legacy Spanish for English scale)",
-      "rationale": "5 browsers × 9 agents is more robust than 9 browsers × 5 agents"
+      "rationale": "5 seeds per agent (same as MVP) keeps agent workload consistent; 15 agents per browser maximizes parallelization"
     }
   },
 
