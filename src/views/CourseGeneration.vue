@@ -129,11 +129,27 @@
             <!-- Has existing progress -->
             <div v-else class="state-progress">
               <div class="state-header">
-                <div class="state-icon">📊</div>
+                <div class="state-icon">{{ courseState.partial ? '🔄' : '📊' }}</div>
                 <div class="state-summary">
-                  <strong>Existing Progress Found</strong>
-                  <p>{{ courseState.seeds?.total || 0 }} seeds processed</p>
+                  <strong>{{ courseState.partial ? 'Generation In Progress' : 'Existing Progress Found' }}</strong>
+                  <p v-if="courseState.partial && courseState.phase1?.batchCount">
+                    {{ courseState.seeds?.fromBatches || 0 }} seeds in {{ courseState.phase1.batchCount }} batches
+                  </p>
+                  <p v-else>{{ courseState.seeds?.total || 0 }} seeds processed</p>
                 </div>
+                <!-- Monitor link for partial state -->
+                <router-link
+                  v-if="courseState.partial"
+                  :to="`/generate/${courseCode}/monitor`"
+                  class="monitor-link"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                  Open Monitor
+                </router-link>
               </div>
 
               <!-- Phase status grid -->
@@ -141,27 +157,34 @@
                 <div :class="['phase-status', courseState.phase1?.status]">
                   <span class="phase-num">1</span>
                   <span class="phase-label">Translation</span>
-                  <span class="phase-badge">{{ courseState.phase1?.status }}</span>
+                  <span class="phase-badge">{{ formatPhaseStatus(courseState.phase1?.status) }}</span>
                 </div>
                 <div :class="['phase-status', courseState.phase2?.status]">
                   <span class="phase-num">2</span>
                   <span class="phase-label">Conflicts</span>
-                  <span class="phase-badge">{{ courseState.phase2?.status }}</span>
+                  <span class="phase-badge">{{ formatPhaseStatus(courseState.phase2?.status) }}</span>
                 </div>
                 <div :class="['phase-status', courseState.phase3?.status]">
                   <span class="phase-num">3</span>
                   <span class="phase-label">Baskets</span>
-                  <span class="phase-badge">{{ courseState.phase3?.status }}</span>
+                  <span class="phase-badge">{{ formatPhaseStatus(courseState.phase3?.status) }}</span>
                 </div>
+              </div>
+
+              <!-- Seeds completed (for partial progress) -->
+              <div v-if="courseState.partial && courseState.phase1?.seedsCompleted?.length > 0" class="seeds-completed">
+                <span class="seeds-label">Seeds completed:</span>
+                <span class="seeds-list">{{ courseState.phase1.seedsCompleted.join(', ') }}</span>
               </div>
 
               <!-- Recommendations -->
               <div v-if="courseState.recommendations?.length > 0" class="recommendations">
                 <div class="rec-header">Recommended Actions:</div>
                 <div
-                  v-for="(rec, idx) in courseState.recommendations.slice(0, 2)"
+                  v-for="(rec, idx) in courseState.recommendations.slice(0, 3)"
                   :key="idx"
-                  class="rec-item"
+                  :class="['rec-item', { clickable: rec.action?.route }]"
+                  @click="handleRecommendation(rec)"
                 >
                   <span class="rec-title">{{ rec.title }}</span>
                   <span class="rec-desc">{{ rec.description }}</span>
@@ -683,6 +706,29 @@ function resetForm() {
   selectedMode.value = null
   phases.value.forEach(p => p.status = 'pending')
 }
+
+/**
+ * Format phase status for display
+ */
+function formatPhaseStatus(status) {
+  const statusMap = {
+    'in_progress': 'running',
+    'complete': 'complete',
+    'pending': 'pending',
+    'missing': 'missing',
+    'flagged': 'flagged'
+  }
+  return statusMap[status] || status
+}
+
+/**
+ * Handle recommendation click
+ */
+function handleRecommendation(rec) {
+  if (rec.action?.route) {
+    router.push(rec.action.route)
+  }
+}
 </script>
 
 <style scoped>
@@ -1045,6 +1091,51 @@ function resetForm() {
   gap: 1rem;
 }
 
+.monitor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  margin-left: auto;
+  background: var(--accent-glow);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.monitor-link:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--accent);
+}
+
+.monitor-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.seeds-completed {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--elevated);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+}
+
+.seeds-label {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.seeds-list {
+  color: var(--text);
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
 .phase-status-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1075,6 +1166,16 @@ function resetForm() {
 .phase-status.flagged {
   border-color: var(--error);
   background: rgba(239, 68, 68, 0.1);
+}
+
+.phase-status.in_progress {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.phase-status.pending {
+  border-color: var(--border);
+  background: var(--elevated);
 }
 
 .phase-num {
@@ -1118,6 +1219,18 @@ function resetForm() {
 
 .rec-item + .rec-item {
   border-top: 1px solid var(--border-light);
+}
+
+.rec-item.clickable {
+  cursor: pointer;
+  padding: 0.625rem 0.75rem;
+  margin: 0 -0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.rec-item.clickable:hover {
+  background: var(--elevated);
 }
 
 .rec-title {

@@ -2270,8 +2270,105 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     const basketsExists = await fs.pathExists(basketsPath);
     const flagsExists = await fs.pathExists(flagsPath);
 
-    // No course data
+    // No merged lego_pairs.json - check for raw phase1_batches
     if (!legoPairsExists) {
+      const phase1BatchesDir = path.join(courseDir, 'phase1_batches');
+      const phase1BatchesExists = await fs.pathExists(phase1BatchesDir);
+
+      // Check for raw batch files
+      let rawBatchSeeds = [];
+      let rawBatchCount = 0;
+
+      if (phase1BatchesExists) {
+        const batchFiles = await fs.readdir(phase1BatchesDir);
+        const jsonFiles = batchFiles.filter(f => f.endsWith('.json'));
+        rawBatchCount = jsonFiles.length;
+
+        // Read each batch file and extract seed IDs
+        for (const file of jsonFiles) {
+          try {
+            const batchData = await fs.readJSON(path.join(phase1BatchesDir, file));
+            if (batchData.seeds && Array.isArray(batchData.seeds)) {
+              for (const seed of batchData.seeds) {
+                if (seed.seed_id) {
+                  rawBatchSeeds.push(seed.seed_id);
+                }
+              }
+            }
+          } catch (err) {
+            console.warn(`[Analyze] Failed to read batch file ${file}:`, err.message);
+          }
+        }
+      }
+
+      // Also check for draft_lego_pairs.json (Phase 1 complete, Phase 2 pending)
+      const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json');
+      const draftExists = await fs.pathExists(draftLegoPairsPath);
+      let draftSeeds = [];
+
+      if (draftExists) {
+        try {
+          const draftData = await fs.readJSON(draftLegoPairsPath);
+          draftSeeds = (draftData.seeds || []).map(s => s.seed_id);
+        } catch (err) {
+          console.warn('[Analyze] Failed to read draft_lego_pairs.json:', err.message);
+        }
+      }
+
+      // If we have raw batches or draft, show partial progress
+      if (rawBatchSeeds.length > 0 || draftSeeds.length > 0) {
+        const totalRawSeeds = rawBatchSeeds.length || draftSeeds.length;
+        const phase1Status = draftExists ? 'complete' : 'in_progress';
+        const phase2Status = draftExists ? 'pending' : 'pending';
+
+        return res.json({
+          courseCode,
+          exists: true,
+          partial: true,
+          seeds: {
+            total: totalRawSeeds,
+            fromBatches: rawBatchSeeds.length,
+            fromDraft: draftSeeds.length
+          },
+          phase1: {
+            status: phase1Status,
+            batchCount: rawBatchCount,
+            seedsCompleted: rawBatchSeeds,
+            flaggedSeeds: []
+          },
+          phase2: { status: phase2Status },
+          phase3: { status: 'pending', seedsMissingBaskets: [] },
+          flags: { total: 0, unresolved: 0, items: [] },
+          recommendations: [
+            rawBatchSeeds.length > 0 && rawBatchSeeds.length < SEED_COUNTS.QUICK_TEST ? {
+              type: 'continue',
+              title: `▶️ Continue Generation (${SEED_COUNTS.QUICK_TEST - rawBatchSeeds.length} seeds remaining)`,
+              description: `${rawBatchSeeds.length}/${SEED_COUNTS.QUICK_TEST} seeds complete. Continue to finish Quick Test.`,
+              action: { mode: 'continue', missingSeeds: SEED_COUNTS.QUICK_TEST - rawBatchSeeds.length }
+            } : null,
+            draftExists ? {
+              type: 'merge-phase1',
+              title: '🔀 Run Phase 2 (Merge & Resolve)',
+              description: `${draftSeeds.length} seeds ready for conflict resolution`,
+              action: { phase: 2, seedCount: draftSeeds.length }
+            } : null,
+            {
+              type: 'view-monitor',
+              title: '📊 View Generation Monitor',
+              description: 'See detailed pipeline progress and browser status',
+              action: { route: `/generate/${courseCode}/monitor` }
+            },
+            {
+              type: 'regenerate',
+              title: '🔄 Regenerate All (Quick Test)',
+              description: 'Start fresh with a new Quick Test',
+              action: { startSeed: 1, count: SEED_COUNTS.QUICK_TEST, force: true }
+            }
+          ].filter(Boolean)
+        });
+      }
+
+      // Truly no data
       return res.json({
         courseCode,
         exists: false,
