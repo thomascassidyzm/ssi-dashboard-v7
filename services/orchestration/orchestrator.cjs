@@ -5005,6 +5005,139 @@ app.get('/api/audio/voices', async (req, res) => {
   }
 });
 
+// =============================================================================
+// VOICE DISCOVERY API - Browse and preview Azure/ElevenLabs voices
+// =============================================================================
+
+const voiceDiscovery = require('../voice-discovery-service.cjs');
+const azureTTS = require('../azure-tts-service.cjs');
+
+/**
+ * GET /api/voices/discover/:languageCode
+ * Discover available Azure voices for a language
+ *
+ * Returns list of voices with quality scores, filtered to Neural voices
+ */
+app.get('/api/voices/discover/:languageCode', async (req, res) => {
+  const { languageCode } = req.params;
+
+  console.log(`[VoiceDiscovery] Discovering voices for: ${languageCode}`);
+
+  try {
+    const voices = await voiceDiscovery.discoverAzureVoices(languageCode);
+
+    // Sort by quality score (Neural first, then by features)
+    const sorted = voices.sort((a, b) => b.quality - a.quality);
+
+    // Get recommended voices
+    const recommended = voiceDiscovery.selectBestVoices(voices, 4);
+
+    res.json({
+      success: true,
+      languageCode,
+      total: voices.length,
+      voices: sorted,
+      recommended: recommended.map((v, i) => ({
+        ...v,
+        reason: voiceDiscovery.getRecommendationReason(v, i)
+      })),
+      sampleSentences: voiceDiscovery.getSampleSentences(languageCode, 3)
+    });
+  } catch (error) {
+    console.error(`[VoiceDiscovery] Error:`, error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      hint: 'Check AZURE_SPEECH_KEY and AZURE_SPEECH_REGION environment variables'
+    });
+  }
+});
+
+/**
+ * POST /api/voices/preview
+ * Generate a preview audio sample for a voice
+ *
+ * Body: {
+ *   voiceId: "zh-CN-XiaoxiaoNeural",
+ *   text: "你好，你好吗？",
+ *   speed: 1.0,
+ *   provider: "azure"  // or "elevenlabs"
+ * }
+ */
+app.post('/api/voices/preview', async (req, res) => {
+  const { voiceId, text, speed = 1.0, provider = 'azure' } = req.body;
+
+  if (!voiceId || !text) {
+    return res.status(400).json({
+      success: false,
+      error: 'voiceId and text are required'
+    });
+  }
+
+  console.log(`[VoicePreview] Generating preview: ${voiceId} @ ${speed}x`);
+
+  try {
+    const previewDir = path.join(__dirname, '../../temp/voice_previews');
+    await fs.ensureDir(previewDir);
+
+    const sanitizedId = voiceId.replace(/[^a-zA-Z0-9-]/g, '_');
+    const timestamp = Date.now();
+    const outputPath = path.join(previewDir, `preview_${sanitizedId}_${timestamp}.mp3`);
+
+    if (provider === 'azure') {
+      await azureTTS.generateAudioWithRetry(text, voiceId, outputPath, speed);
+    } else if (provider === 'elevenlabs') {
+      // ElevenLabs preview support - delegate to elevenlabs service
+      const elevenLabs = require('../elevenlabs-service.cjs');
+      await elevenLabs.generateAudio(text, voiceId, outputPath, { speed });
+    } else {
+      return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` });
+    }
+
+    // Read the file and send as base64 for easy frontend playback
+    const audioBuffer = await fs.readFile(outputPath);
+    const base64Audio = audioBuffer.toString('base64');
+
+    // Clean up the temp file after a delay
+    setTimeout(() => {
+      fs.remove(outputPath).catch(() => {});
+    }, 60000); // 1 minute
+
+    res.json({
+      success: true,
+      voiceId,
+      text,
+      speed,
+      provider,
+      audio: `data:audio/mpeg;base64,${base64Audio}`,
+      duration: audioBuffer.length / 16000 // Rough estimate
+    });
+  } catch (error) {
+    console.error(`[VoicePreview] Error:`, error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/voices/samples/:languageCode
+ * Get sample sentences for testing voices
+ */
+app.get('/api/voices/samples/:languageCode', (req, res) => {
+  const { languageCode } = req.params;
+  const count = parseInt(req.query.count) || 5;
+
+  const samples = voiceDiscovery.getSampleSentences(languageCode, count);
+
+  res.json({
+    success: true,
+    languageCode,
+    samples
+  });
+});
+
 /**
  * Run Phase 1 Validation: LUT Collision Check
  * Checks if same KNOWN phrase maps to multiple TARGET translations
