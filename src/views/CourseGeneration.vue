@@ -556,13 +556,12 @@ async function startGeneration() {
       throw new Error(data.error || 'Generation failed')
     }
 
-    // Connect to WebSocket for real-time progress
-    connectWebSocket()
+    // Navigate to the Generation Monitor for real-time progress
+    router.push(`/generate/${courseCode.value}/monitor`)
 
   } catch (err) {
     errorMessage.value = err.message
     isGenerating.value = false
-    disconnectWebSocket()
   }
 }
 
