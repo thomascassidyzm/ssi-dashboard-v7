@@ -567,7 +567,7 @@ async function loadWebAgentSpawner() {
     const spawnerPath = path.join(__dirname, '../../shared/spawn-agent.cjs');
     if (await fs.pathExists(spawnerPath)) {
       const module = require(spawnerPath);
-      return module.spawnClaudeWebAgent;
+      return module;  // Return full module (has spawnClaudeWebAgent, spawnParallelAgents, etc.)
     }
   } catch (error) {
     console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
