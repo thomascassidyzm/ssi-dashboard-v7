@@ -155,10 +155,47 @@
           <h2 class="text-2xl font-semibold text-slate-100 mb-6">Configuration</h2>
 
           <div class="space-y-6">
-            <!-- Seed Range -->
+            <!-- Course Mode Selection -->
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">
+                Course Mode <span class="text-red-400">*</span>
+              </label>
+              <div v-if="modesLoading" class="text-slate-400 text-sm">Loading modes...</div>
+              <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <button
+                  v-for="mode in modes"
+                  :key="mode.id"
+                  type="button"
+                  @click="selectedMode = mode.id; onModeChange()"
+                  :class="[
+                    'p-4 rounded-lg border-2 text-left transition-all',
+                    selectedMode === mode.id
+                      ? 'border-emerald-500 bg-emerald-900/30'
+                      : 'border-slate-600 bg-slate-800/50 hover:border-slate-500'
+                  ]"
+                >
+                  <div class="flex items-center justify-between mb-1">
+                    <span :class="['font-medium', selectedMode === mode.id ? 'text-emerald-400' : 'text-slate-200']">
+                      {{ mode.name }}
+                    </span>
+                    <span class="text-xs text-slate-500">~{{ mode.estimatedMinutes }}min</span>
+                  </div>
+                  <div class="text-sm text-slate-400 mb-2">{{ mode.description }}</div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-700 text-emerald-400">
+                      {{ mode.seeds }} seeds
+                    </span>
+                    <span v-if="mode.pattern" class="text-xs text-slate-500">{{ mode.pattern }}</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Seed Range (Advanced) -->
             <div>
               <label class="block text-sm font-medium text-slate-300 mb-2">
                 Seed Range
+                <span class="text-xs text-slate-500 ml-2">(auto-set by mode, can be customized)</span>
               </label>
               <div class="flex items-center gap-3">
                 <div class="flex-1">
@@ -187,32 +224,8 @@
                 </div>
               </div>
               <p class="mt-2 text-xs text-slate-500">
-                Default: S0001-S0668 (full course). Use S0001-S0030 for a quick test run.
+                Seed range is set automatically based on the selected mode. Customize if needed.
               </p>
-              <!-- Quick presets -->
-              <div class="mt-3 flex gap-2">
-                <button
-                  type="button"
-                  @click="setSeedRange(1, 30)"
-                  class="text-xs px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition"
-                >
-                  Test (1-30)
-                </button>
-                <button
-                  type="button"
-                  @click="setSeedRange(1, 100)"
-                  class="text-xs px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition"
-                >
-                  First 100
-                </button>
-                <button
-                  type="button"
-                  @click="setSeedRange(1, 668)"
-                  class="text-xs px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white transition"
-                >
-                  Full Course (668)
-                </button>
-              </div>
             </div>
 
             <!-- Version -->
@@ -271,6 +284,10 @@
                 <div class="flex justify-between">
                   <span class="text-slate-400">Target Language:</span>
                   <span class="text-slate-200">{{ getLanguageName(formData.targetLanguage) }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Course Mode:</span>
+                  <span class="text-emerald-400">{{ getModeName(selectedMode) }}</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-slate-400">Seed Range:</span>
@@ -401,12 +418,17 @@ const creating = ref(false)
 const languages = ref([])
 const languagesLoading = ref(true)
 
+// Course modes loading state
+const modes = ref([])
+const modesLoading = ref(true)
+const selectedMode = ref(null)
+
 // Form Data
 const formData = ref({
   sourceLanguage: '',
   targetLanguage: '',
   seedStart: 1,
-  seedEnd: 668,
+  seedEnd: 10,  // Default to quick_test size
   version: '1.0'
 })
 
@@ -441,9 +463,9 @@ const existenceCheck = ref({
 // Override course code (when user chooses new version)
 const overrideCourseCode = ref(null)
 
-// Load languages from API on mount
+// Load languages and modes from API on mount
 onMounted(async () => {
-  await loadLanguages()
+  await Promise.all([loadLanguages(), loadModes()])
 })
 
 async function loadLanguages() {
@@ -500,6 +522,42 @@ async function loadLanguages() {
     ]
   } finally {
     languagesLoading.value = false
+  }
+}
+
+async function loadModes() {
+  modesLoading.value = true
+  try {
+    const response = await apiClient.get('/api/modes')
+    modes.value = response.data.modes
+    // Pre-select quick_test as default
+    const quickTest = modes.value.find(m => m.id === 'quick_test')
+    if (quickTest) {
+      selectedMode.value = quickTest.id
+      // Apply quick_test seed range
+      formData.value.seedStart = 1
+      formData.value.seedEnd = quickTest.seeds
+    }
+  } catch (error) {
+    console.error('Failed to load modes:', error)
+    // Fallback modes if API fails
+    modes.value = [
+      { id: 'quick_test', name: 'Quick Test', seeds: 10, description: 'Fast validation (10 seeds)', estimatedMinutes: 2 },
+      { id: 'mvp_course', name: 'MVP Course', seeds: 250, description: 'Production MVP (250 seeds)', estimatedMinutes: 15 },
+      { id: 'full_course', name: 'Full Course', seeds: 668, description: 'Complete course (668 seeds)', estimatedMinutes: 20 }
+    ]
+    selectedMode.value = 'quick_test'
+  } finally {
+    modesLoading.value = false
+  }
+}
+
+// Handle mode selection change
+function onModeChange() {
+  const mode = modes.value.find(m => m.id === selectedMode.value)
+  if (mode) {
+    formData.value.seedStart = 1
+    formData.value.seedEnd = mode.seeds
   }
 }
 
@@ -651,6 +709,11 @@ const getLanguageName = (code) => {
   return lang ? `${lang.name} (${lang.code})` : code
 }
 
+const getModeName = (modeId) => {
+  const mode = modes.value.find(m => m.id === modeId)
+  return mode ? `${mode.name} (${mode.seeds} seeds)` : modeId
+}
+
 // Create Course
 const createCourse = async () => {
   creating.value = true
@@ -664,7 +727,8 @@ const createCourse = async () => {
       seedStart: formData.value.seedStart,
       seedEnd: formData.value.seedEnd,
       seedCount: seedCount.value,
-      version: formData.value.version
+      version: formData.value.version,
+      mode: selectedMode.value
     }
 
     console.log('Creating course with data:', courseData)
