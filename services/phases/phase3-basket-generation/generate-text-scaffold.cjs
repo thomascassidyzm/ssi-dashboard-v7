@@ -90,15 +90,34 @@ ${recentLegos.join('\n')}
 
 GENERATION REQUIREMENTS:
 - Generate 10 practice phrases with progressive complexity
-- Phrase length progression (HEURISTIC - flexible guidelines):
-  * Phrases 1-2: SHORT (2-3 words each)
-  * Phrases 3-4: MEDIUM (3-4 words each)
-  * Phrases 5-6: LONGER (4-6 words each)
-  * Phrases 7-10: LONGEST (6+ words, aim for 7-10 words average)
+- Complexity is measured by ADDITIONAL SYLLABLES in the TARGET language
+  (beyond the LEGO itself - the LEGO's syllables are fixed)
+
+SYLLABLE COUNTING (Language-Agnostic):
+- Count syllables in the TARGET language output
+- This works for ANY language:
+  * Chinese: each character ≈ 1 syllable (我 = 1, 想要 = 2)
+  * Spanish/Italian: count vowel sounds (quiero = 2, recordar = 3)
+  * German: count vowel sounds even in compounds (Freundschaft = 2)
+  * English: standard syllable counting (remember = 3)
+- Word count is NOT a good proxy (German compounds, Chinese, etc.)
+
+PHRASE PROGRESSION (by ADDITIONAL target syllables beyond the LEGO):
+  * Phrases 1-2: DEBUT (+1-2 syllables) - Minimal context around LEGO
+  * Phrases 3-4: EARLY (+3-4 syllables) - Short additional context
+  * Phrases 5-6: MIDDLE (+5-7 syllables) - Medium context with 1-2 PREV LEGOs
+  * Phrases 7-10: ETERNAL (+8+ syllables) - Full sentences with multiple PREV LEGOs
+
+Example for LEGO "quiero" (2 syllables in Spanish):
+  - DEBUT: "Quiero agua" → +2 syllables (a-gua) = 4 total ✓
+  - EARLY: "Quiero ir contigo" → +5 syllables = 7 total ✓
+  - MIDDLE: "Quiero aprender a cocinar" → +8 syllables = 10 total ✓
+  - ETERNAL: "Quiero que me ayudes con esto" → +9 syllables = 11 total ✓
+
 - Use ONLY vocabulary from "Available Vocabulary" above (GATE compliance!)
 - Each phrase must be natural and meaningful in both languages
-- Use extended thinking to ensure linguistic accuracy
-- Progressive length creates natural learning curve
+- Use extended thinking to count syllables accurately for the target language
+- Progressive syllable count creates a natural cognitive load curve
 
 FINAL LEGO RULE (Server handles automatically):
 - If this is the last LEGO in the seed, server adds the complete seed sentence as phrase #10
@@ -113,16 +132,16 @@ OUTPUT FORMAT (EXACT - Copy this structure and fill in your phrases):
       "target": "${target}"
     },
     "practice_phrases": [
-      { "known": "<${knownLang} 2-3 words>", "target": "<${targetLang} 2-3 words>" },
-      { "known": "<${knownLang} 2-3 words>", "target": "<${targetLang} 2-3 words>" },
-      { "known": "<${knownLang} 3-4 words>", "target": "<${targetLang} 3-4 words>" },
-      { "known": "<${knownLang} 3-4 words>", "target": "<${targetLang} 3-4 words>" },
-      { "known": "<${knownLang} 4-6 words>", "target": "<${targetLang} 4-6 words>" },
-      { "known": "<${knownLang} 4-6 words>", "target": "<${targetLang} 4-6 words>" },
-      { "known": "<${knownLang} 7-10 words>", "target": "<${targetLang} 7-10 words>" },
-      { "known": "<${knownLang} 7-10 words>", "target": "<${targetLang} 7-10 words>" },
-      { "known": "<${knownLang} 7-10 words>", "target": "<${targetLang} 7-10 words>" },
-      { "known": "<${knownLang} 7-10 words>", "target": "<${targetLang} 7-10 words>" }
+      { "known": "<${knownLang}>", "target": "<${targetLang} DEBUT +1-2 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} DEBUT +1-2 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} EARLY +3-4 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} EARLY +3-4 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} MIDDLE +5-7 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} MIDDLE +5-7 syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" }
     ]
   }
 }
@@ -132,11 +151,16 @@ NOTE: Server will automatically add these fields - you don't need to include the
   → If TRUE: Server adds the complete seed sentence as your highest practice phrase
 - "phrase_count": Actual count of phrases you provided
 
-PHRASE LENGTH GUIDELINES (Heuristics):
-- SHORT (1-2): 2-3 words - Simple, direct usage
-- MEDIUM (3-4): 3-4 words - Adding context
-- LONGER (5-6): 4-6 words - More complete thoughts
-- LONGEST (7-10): 6+ words, targeting 7-10 words average - Full natural sentences
+SYLLABLE PROGRESSION GUIDELINES (Language-Agnostic):
+- DEBUT (1-2): +1-2 target syllables beyond LEGO - Minimal context, easiest recall
+- EARLY (3-4): +3-4 target syllables beyond LEGO - Short additional context
+- MIDDLE (5-6): +5-7 target syllables beyond LEGO - Building complexity with PREV LEGOs
+- ETERNAL (7-10): +8+ target syllables beyond LEGO - Full sentences, highest cognitive load
+
+WHY SYLLABLES (not words)?
+- Language-agnostic: works for Chinese (1 char = 1 syl), German compounds, etc.
+- Correlates with cognitive load: more syllables = more to process and produce
+- The LEGO syllable count is FIXED - we measure ADDITIONAL syllables only
 
 CRITICAL FORMAT RULES:
 ✅ "lego": { "known": "English", "target": "Spanish" } - Object with labels
