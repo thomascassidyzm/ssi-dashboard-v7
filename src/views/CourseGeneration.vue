@@ -180,15 +180,15 @@
               <!-- Recommendations -->
               <div v-if="courseState.recommendations?.length > 0" class="recommendations">
                 <div class="rec-header">Recommended Actions:</div>
-                <div
+                <button
                   v-for="(rec, idx) in courseState.recommendations.slice(0, 3)"
                   :key="idx"
-                  :class="['rec-item', { clickable: rec.action?.route }]"
+                  :class="['rec-item', 'clickable']"
                   @click="handleRecommendation(rec)"
                 >
                   <span class="rec-title">{{ rec.title }}</span>
                   <span class="rec-desc">{{ rec.description }}</span>
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -725,9 +725,69 @@ function formatPhaseStatus(status) {
  * Handle recommendation click
  */
 function handleRecommendation(rec) {
-  if (rec.action?.route) {
-    router.push(rec.action.route)
+  if (!rec.action) return
+
+  const action = rec.action
+
+  // Route navigation (e.g., to monitor page)
+  if (action.route) {
+    router.push(action.route)
+    return
   }
+
+  // Resume mode - select Quick Test and start
+  if (action.mode === 'resume') {
+    const quickTest = generationModes.value.find(m => m.id === 'quick_test')
+    if (quickTest) {
+      selectedMode.value = quickTest
+      // Trigger generation after a brief delay to show selection
+      setTimeout(() => startGeneration(), 100)
+    }
+    return
+  }
+
+  // Phase 3 - Generate baskets
+  if (action.phase === 3 || rec.type === 'phase3') {
+    selectedPhase.value = 'phase3'
+    setTimeout(() => startGeneration(), 100)
+    return
+  }
+
+  // Phase 2 - Conflict resolution
+  if (action.phase === 2 || rec.type === 'merge-phase1') {
+    selectedPhase.value = 'phase2'
+    setTimeout(() => startGeneration(), 100)
+    return
+  }
+
+  // Quick Test - select mode and optionally set seed range
+  if (rec.type === 'test' || action.count === 10) {
+    const quickTest = generationModes.value.find(m => m.id === 'quick_test')
+    if (quickTest) {
+      selectedMode.value = quickTest
+    }
+    return
+  }
+
+  // Extend to Full Course
+  if (rec.type === 'full' || action.endSeed) {
+    const fullCourse = generationModes.value.find(m => m.id === 'full_course')
+    if (fullCourse) {
+      selectedMode.value = fullCourse
+    }
+    return
+  }
+
+  // Regenerate - force mode with specific settings
+  if (action.force) {
+    const quickTest = generationModes.value.find(m => m.id === 'quick_test')
+    if (quickTest) {
+      selectedMode.value = quickTest
+    }
+    return
+  }
+
+  console.log('[CourseGen] Unhandled recommendation action:', action)
 }
 </script>
 
@@ -1213,24 +1273,30 @@ function handleRecommendation(rec) {
 .rec-item {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.125rem;
-  padding: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  text-align: left;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .rec-item + .rec-item {
-  border-top: 1px solid var(--border-light);
+  margin-top: 0.5rem;
 }
 
-.rec-item.clickable {
-  cursor: pointer;
-  padding: 0.625rem 0.75rem;
-  margin: 0 -0.75rem;
-  border-radius: 6px;
-  transition: background 0.2s;
+.rec-item:hover {
+  background: var(--border);
+  border-color: var(--accent);
+  transform: translateX(4px);
 }
 
-.rec-item.clickable:hover {
-  background: var(--elevated);
+.rec-item:active {
+  transform: translateX(2px);
 }
 
 .rec-title {
