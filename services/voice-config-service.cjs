@@ -212,11 +212,11 @@ async function saveVoiceConfig(courseCode, config) {
         known_lang: knownLang,
         target_lang: targetLang,
         voice_config: fullConfig,
-        // Also update the individual voice ID columns for backwards compatibility
-        source_voice_id: fullConfig.voices?.known?.voiceId || null,
-        target1_voice_id: fullConfig.voices?.target1?.voiceId || null,
-        target2_voice_id: fullConfig.voices?.target2?.voiceId || null,
-        presentation_voice_id: fullConfig.voices?.presentation?.voiceId || null
+        // Also update the individual voice columns for backwards compatibility
+        known_voice: fullConfig.voices?.known?.voiceId || null,
+        target_voice_1: fullConfig.voices?.target1?.voiceId || null,
+        target_voice_2: fullConfig.voices?.target2?.voiceId || null,
+        presentation_voice: fullConfig.voices?.presentation?.voiceId || null
       }, {
         onConflict: 'course_code'
       })
