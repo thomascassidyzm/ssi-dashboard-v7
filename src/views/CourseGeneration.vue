@@ -728,6 +728,7 @@ function handleRecommendation(rec) {
   if (!rec.action) return
 
   const action = rec.action
+  console.log('[CourseGen] Handling recommendation:', rec.type, action)
 
   // Route navigation (e.g., to monitor page)
   if (action.route) {
@@ -735,59 +736,68 @@ function handleRecommendation(rec) {
     return
   }
 
-  // Resume mode - select Quick Test and start
-  if (action.mode === 'resume') {
+  // Generate baskets - Phase 3 (action.phases includes 'phase3')
+  if (rec.type === 'generate-baskets' || action.phases?.includes('phase3')) {
+    selectedPhase.value = 'phase3'
+    // Select appropriate mode based on seed count
+    const seedCount = action.seeds?.length || 10
+    if (seedCount <= 10) {
+      selectedMode.value = generationModes.value.find(m => m.id === 'quick_test')
+    } else if (seedCount <= 250) {
+      selectedMode.value = generationModes.value.find(m => m.id === 'mvp_course')
+    } else {
+      selectedMode.value = generationModes.value.find(m => m.id === 'full_course')
+    }
+    return
+  }
+
+  // Regenerate flagged seeds - Phase 1 with force
+  if (rec.type === 'regenerate-flagged' || action.phases?.includes('phase1')) {
+    selectedPhase.value = 'phase1'
     const quickTest = generationModes.value.find(m => m.id === 'quick_test')
-    if (quickTest) {
-      selectedMode.value = quickTest
-      // Trigger generation after a brief delay to show selection
+    if (quickTest) selectedMode.value = quickTest
+    return
+  }
+
+  // Resume mode - select appropriate mode and start
+  if (action.mode === 'resume' || rec.type === 'continue') {
+    const targetMode = action.targetMode || 'quick_test'
+    const mode = generationModes.value.find(m => m.id === targetMode)
+    if (mode) {
+      selectedMode.value = mode
       setTimeout(() => startGeneration(), 100)
     }
     return
   }
 
-  // Phase 3 - Generate baskets
-  if (action.phase === 3 || rec.type === 'phase3') {
-    selectedPhase.value = 'phase3'
-    setTimeout(() => startGeneration(), 100)
-    return
-  }
-
-  // Phase 2 - Conflict resolution
-  if (action.phase === 2 || rec.type === 'merge-phase1') {
+  // Phase 2 - Conflict resolution / merge
+  if (rec.type === 'merge-phase1' || action.phases?.includes('phase2')) {
     selectedPhase.value = 'phase2'
-    setTimeout(() => startGeneration(), 100)
     return
   }
 
-  // Quick Test - select mode and optionally set seed range
-  if (rec.type === 'test' || action.count === 10) {
+  // Quick Test - select mode
+  if (rec.type === 'test') {
     const quickTest = generationModes.value.find(m => m.id === 'quick_test')
-    if (quickTest) {
-      selectedMode.value = quickTest
-    }
+    if (quickTest) selectedMode.value = quickTest
     return
   }
 
   // Extend to Full Course
-  if (rec.type === 'full' || action.endSeed) {
+  if (rec.type === 'extend') {
     const fullCourse = generationModes.value.find(m => m.id === 'full_course')
-    if (fullCourse) {
-      selectedMode.value = fullCourse
-    }
+    if (fullCourse) selectedMode.value = fullCourse
     return
   }
 
-  // Regenerate - force mode with specific settings
-  if (action.force) {
-    const quickTest = generationModes.value.find(m => m.id === 'quick_test')
-    if (quickTest) {
-      selectedMode.value = quickTest
-    }
+  // Regenerate all - nuclear option
+  if (rec.type === 'regenerate-all') {
+    const fullCourse = generationModes.value.find(m => m.id === 'full_course')
+    if (fullCourse) selectedMode.value = fullCourse
     return
   }
 
-  console.log('[CourseGen] Unhandled recommendation action:', action)
+  console.log('[CourseGen] Unhandled recommendation:', rec.type, action)
 }
 </script>
 
