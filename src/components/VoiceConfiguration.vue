@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="config-header">
       <h2 class="config-title">Voice Configuration</h2>
-      <p class="config-subtitle">Select and preview voices for each role. Test different speeds before committing.</p>
+      <p class="config-subtitle">Select voices for each role. Changes save automatically.</p>
     </div>
 
     <!-- Loading State -->
@@ -19,49 +19,87 @@
       <button @click="loadConfig" class="retry-btn">Retry</button>
     </div>
 
-    <!-- Configuration Panel -->
-    <div v-else class="config-panel">
-      <!-- Role Tabs -->
-      <div class="role-tabs">
-        <button
-          v-for="role in roles"
-          :key="role.id"
-          :class="['role-tab', { active: activeRole === role.id, configured: isRoleConfigured(role.id) }]"
-          @click="selectRole(role.id)"
-        >
-          <span class="role-icon">{{ role.icon }}</span>
-          <span class="role-name">{{ role.name }}</span>
-          <span v-if="isRoleConfigured(role.id)" class="role-status configured">✓</span>
-          <span v-else class="role-status missing">○</span>
-        </button>
-      </div>
-
-      <!-- Active Role Configuration -->
-      <div class="role-config">
-        <div class="role-header">
-          <h3>{{ activeRoleInfo.name }}</h3>
-          <span class="role-description">{{ activeRoleInfo.description }}</span>
-        </div>
-
-        <!-- Current Selection Summary -->
-        <div v-if="currentVoice.voiceId" class="current-selection">
-          <div class="selection-info">
-            <span class="selection-label">Selected:</span>
-            <span class="selection-value">{{ currentVoice.name || currentVoice.voiceId }}</span>
-            <span class="selection-provider" :class="currentVoice.provider">{{ currentVoice.provider }}</span>
+    <!-- Swim Lanes - All 3 roles visible -->
+    <div v-else class="swim-lanes">
+      <div
+        v-for="role in roles"
+        :key="role.id"
+        :class="['swim-lane', { expanded: expandedRole === role.id }]"
+      >
+        <!-- Lane Header -->
+        <div class="lane-header">
+          <div class="lane-title">
+            <span class="lane-icon">{{ role.icon }}</span>
+            <span class="lane-name">{{ role.name }}</span>
           </div>
-          <button @click="clearSelection" class="clear-btn">Change</button>
+          <span class="lane-lang">{{ getLanguageForRole(role.id).toUpperCase() }}</span>
         </div>
 
-        <!-- Voice Browser (when no voice selected or changing) -->
-        <div v-if="!currentVoice.voiceId || showVoiceBrowser" class="voice-browser">
+        <!-- Current Selection -->
+        <div v-if="getVoiceForRole(role.id).voiceId" class="lane-selection">
+          <div class="selection-details">
+            <span class="selection-name">{{ getVoiceForRole(role.id).name || getVoiceForRole(role.id).voiceId }}</span>
+            <span class="selection-provider" :class="getVoiceForRole(role.id).provider">
+              {{ getVoiceForRole(role.id).provider }}
+            </span>
+          </div>
+
+          <!-- Speed Control -->
+          <div class="speed-control">
+            <label class="speed-label">
+              Speed: <span class="speed-value">{{ formatSpeed(getVoiceForRole(role.id).settings?.speed || 1.0) }}</span>
+            </label>
+            <div class="speed-notches">
+              <button
+                v-for="speed in speedOptions"
+                :key="speed"
+                :class="['speed-notch', { active: isSpeedActive(role.id, speed) }]"
+                @click="setSpeed(role.id, speed)"
+                :title="`${speed}x`"
+              >
+                <span class="notch-mark"></span>
+                <span class="notch-label">{{ speed === 1.0 ? '1x' : speed + 'x' }}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Test Button -->
+          <button
+            @click="testVoice(role.id)"
+            :disabled="testingRole === role.id"
+            class="test-btn"
+          >
+            <span v-if="testingRole === role.id" class="btn-spinner"></span>
+            {{ testingRole === role.id ? 'Playing...' : 'Test' }}
+          </button>
+
+          <!-- Change Voice -->
+          <button @click="expandRole(role.id)" class="change-btn">
+            Change Voice
+          </button>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else class="lane-empty">
+          <button @click="expandRole(role.id)" class="select-voice-btn">
+            Select Voice
+          </button>
+        </div>
+
+        <!-- Expanded Voice Browser -->
+        <div v-if="expandedRole === role.id" class="voice-browser">
+          <div class="browser-header">
+            <span>Choose a voice for {{ role.name }}</span>
+            <button @click="expandedRole = null" class="close-btn">x</button>
+          </div>
+
           <!-- Provider Toggle -->
           <div class="provider-toggle">
             <button
               :class="['provider-btn', { active: selectedProvider === 'azure' }]"
-              @click="selectedProvider = 'azure'"
+              @click="selectedProvider = 'azure'; discoverVoices(role.id)"
             >
-              Azure (Recommended)
+              Azure
             </button>
             <button
               :class="['provider-btn', { active: selectedProvider === 'elevenlabs' }]"
@@ -71,209 +109,91 @@
             </button>
           </div>
 
-          <!-- Azure Voice Browser -->
-          <div v-if="selectedProvider === 'azure'" class="azure-browser">
-            <!-- Language Detection -->
-            <div class="browser-info">
-              <span class="info-label">Language:</span>
-              <span class="info-value">{{ getLanguageForRole(activeRole) }}</span>
-              <button @click="discoverVoices" :disabled="discovering" class="discover-btn">
-                <span v-if="discovering" class="btn-spinner"></span>
-                {{ discovering ? 'Loading...' : 'Refresh Voices' }}
-              </button>
+          <!-- Azure Voices -->
+          <div v-if="selectedProvider === 'azure'" class="azure-voices">
+            <div v-if="discovering" class="discovering">
+              <div class="btn-spinner"></div>
+              <span>Loading voices...</span>
             </div>
 
-            <!-- Voice List -->
-            <div v-if="discoveredVoices.length > 0" class="voice-list">
-              <!-- Recommended Section -->
-              <div v-if="recommendedVoices.length > 0" class="voice-section">
-                <h4 class="section-title">Recommended</h4>
-                <div class="voice-grid">
-                  <div
-                    v-for="voice in recommendedVoices"
-                    :key="voice.id"
-                    :class="['voice-card', { selected: previewingVoiceId === voice.id }]"
-                  >
-                    <div class="voice-info">
-                      <span class="voice-name">{{ voice.displayName || voice.name }}</span>
-                      <span class="voice-meta">
-                        <span :class="['gender-badge', voice.gender.toLowerCase()]">{{ voice.gender }}</span>
-                        <span class="voice-locale">{{ voice.locale }}</span>
-                      </span>
-                      <span v-if="voice.reason" class="voice-reason">{{ voice.reason }}</span>
-                    </div>
-                    <div class="voice-actions">
-                      <button
-                        @click="previewVoice(voice)"
-                        :disabled="previewingVoiceId === voice.id"
-                        class="preview-btn"
-                      >
-                        <span v-if="previewingVoiceId === voice.id" class="btn-spinner"></span>
-                        {{ previewingVoiceId === voice.id ? 'Playing...' : 'Preview' }}
-                      </button>
-                      <button @click="selectVoice(voice)" class="select-btn">Select</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- All Voices Section -->
-              <div class="voice-section">
-                <h4 class="section-title">
-                  All Voices ({{ filteredVoices.length }})
-                  <div class="filter-controls">
-                    <select v-model="genderFilter" class="gender-filter">
-                      <option value="all">All Genders</option>
-                      <option value="Female">Female</option>
-                      <option value="Male">Male</option>
-                    </select>
-                  </div>
-                </h4>
-                <div class="voice-grid">
-                  <div
-                    v-for="voice in filteredVoices.slice(0, showAllVoices ? undefined : 8)"
-                    :key="voice.id"
-                    :class="['voice-card', { selected: previewingVoiceId === voice.id }]"
-                  >
-                    <div class="voice-info">
-                      <span class="voice-name">{{ voice.displayName || voice.name }}</span>
-                      <span class="voice-meta">
-                        <span :class="['gender-badge', voice.gender.toLowerCase()]">{{ voice.gender }}</span>
-                        <span class="voice-locale">{{ voice.locale }}</span>
-                      </span>
-                    </div>
-                    <div class="voice-actions">
-                      <button
-                        @click="previewVoice(voice)"
-                        :disabled="previewingVoiceId === voice.id"
-                        class="preview-btn"
-                      >
-                        {{ previewingVoiceId === voice.id ? 'Playing...' : 'Preview' }}
-                      </button>
-                      <button @click="selectVoice(voice)" class="select-btn">Select</button>
-                    </div>
-                  </div>
-                </div>
+            <div v-else-if="discoveredVoices.length > 0" class="voice-list">
+              <!-- Gender Filter -->
+              <div class="voice-filter">
                 <button
-                  v-if="filteredVoices.length > 8"
-                  @click="showAllVoices = !showAllVoices"
-                  class="show-more-btn"
+                  v-for="gender in ['all', 'Female', 'Male']"
+                  :key="gender"
+                  :class="['filter-btn', { active: genderFilter === gender }]"
+                  @click="genderFilter = gender"
                 >
-                  {{ showAllVoices ? 'Show Less' : `Show All (${filteredVoices.length})` }}
+                  {{ gender === 'all' ? 'All' : gender }}
                 </button>
               </div>
+
+              <!-- Voice Options -->
+              <div class="voice-options">
+                <button
+                  v-for="voice in filteredVoices.slice(0, 12)"
+                  :key="voice.id"
+                  :class="['voice-option', { previewing: previewingVoiceId === voice.id }]"
+                  @click="selectVoiceForRole(role.id, voice)"
+                >
+                  <div class="voice-info">
+                    <span class="voice-name">{{ voice.displayName || voice.name }}</span>
+                    <span :class="['voice-gender', voice.gender.toLowerCase()]">{{ voice.gender }}</span>
+                  </div>
+                  <button
+                    @click.stop="previewVoice(voice, role.id)"
+                    :disabled="previewingVoiceId === voice.id"
+                    class="preview-btn"
+                  >
+                    {{ previewingVoiceId === voice.id ? '...' : 'Preview' }}
+                  </button>
+                </button>
+              </div>
+
+              <div v-if="filteredVoices.length > 12" class="more-voices">
+                + {{ filteredVoices.length - 12 }} more voices
+              </div>
             </div>
 
-            <!-- No Voices State -->
-            <div v-else-if="!discovering" class="no-voices">
-              <p>No voices discovered yet. Click "Refresh Voices" to load available voices.</p>
-            </div>
+            <button
+              v-else
+              @click="discoverVoices(role.id)"
+              class="load-voices-btn"
+            >
+              Load Available Voices
+            </button>
           </div>
 
           <!-- ElevenLabs Manual Entry -->
           <div v-else class="elevenlabs-entry">
-            <div class="config-section">
-              <label class="config-label">ElevenLabs Voice ID</label>
-              <input
-                type="text"
-                v-model="manualVoiceId"
-                placeholder="e.g., 21m00Tcm4TlvDq8ikWAM"
-                class="config-input"
-              />
-              <span class="config-hint">Enter your ElevenLabs Voice ID from your voice library</span>
-            </div>
-            <div class="config-section">
-              <label class="config-label">Voice Name (for display)</label>
-              <input
-                type="text"
-                v-model="manualVoiceName"
-                placeholder="e.g., Sofia"
-                class="config-input"
-              />
-            </div>
+            <input
+              type="text"
+              v-model="manualVoiceId"
+              placeholder="Voice ID"
+              class="voice-input"
+            />
+            <input
+              type="text"
+              v-model="manualVoiceName"
+              placeholder="Display Name"
+              class="voice-input"
+            />
             <button
-              @click="selectManualVoice"
+              @click="selectManualVoiceForRole(role.id)"
               :disabled="!manualVoiceId"
-              class="select-btn full-width"
+              class="use-voice-btn"
             >
               Use This Voice
             </button>
           </div>
         </div>
-
-        <!-- Speed Configuration (after voice selected) -->
-        <div v-if="currentVoice.voiceId && !showVoiceBrowser" class="speed-config">
-          <div class="config-section">
-            <label class="config-label">
-              Speed
-              <span class="speed-value">{{ (currentVoice.settings?.speed || 1.0).toFixed(2) }}x</span>
-            </label>
-            <div class="slider-container">
-              <span class="slider-label">0.5x</span>
-              <input
-                type="range"
-                min="0.5"
-                max="1.5"
-                step="0.05"
-                :value="currentVoice.settings?.speed || 1.0"
-                @input="updateVoiceSettings({ speed: parseFloat($event.target.value) })"
-                class="speed-slider"
-              />
-              <span class="slider-label">1.5x</span>
-            </div>
-            <span class="config-hint">Adjust if this voice naturally speaks faster or slower</span>
-          </div>
-
-          <!-- Test with Speed -->
-          <div class="test-section">
-            <div class="test-header">
-              <span>Test Voice</span>
-              <select v-model="testText" class="test-select">
-                <option v-for="sample in sampleSentences" :key="sample" :value="sample">
-                  {{ sample.slice(0, 40) }}{{ sample.length > 40 ? '...' : '' }}
-                </option>
-              </select>
-            </div>
-            <button
-              @click="testCurrentVoice"
-              :disabled="testing"
-              class="test-btn"
-            >
-              <span v-if="testing" class="btn-spinner"></span>
-              {{ testing ? 'Generating...' : 'Test at Current Speed' }}
-            </button>
-          </div>
-        </div>
       </div>
+    </div>
 
-      <!-- Configuration Status Banner -->
-      <div v-if="!allRolesConfigured" class="config-status warning">
-        <span class="status-icon">⚠️</span>
-        <div class="status-text">
-          <strong>Configuration incomplete</strong>
-          <span>Configure all roles to save: {{ missingRolesText }}</span>
-        </div>
-      </div>
-      <div v-else-if="hasChanges" class="config-status ready">
-        <span class="status-icon">✓</span>
-        <div class="status-text">
-          <strong>All voices configured</strong>
-          <span>Ready to save</span>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="config-actions">
-        <button @click="resetConfig" class="action-btn secondary">Reset</button>
-        <button
-          @click="saveConfig"
-          :disabled="saving || !hasChanges || !allRolesConfigured"
-          class="action-btn primary"
-          :title="!allRolesConfigured ? 'Configure all roles before saving' : ''"
-        >
-          {{ saving ? 'Saving...' : 'Save Configuration' }}
-        </button>
-      </div>
+    <!-- Save Status -->
+    <div v-if="saveStatus" :class="['save-status', saveStatus.type]">
+      {{ saveStatus.message }}
     </div>
 
     <!-- Hidden audio element -->
@@ -299,107 +219,103 @@ const emit = defineEmits(['config-saved', 'config-loaded'])
 
 // State
 const loading = ref(true)
-const saving = ref(false)
 const error = ref(null)
 const config = ref(null)
-const originalConfig = ref(null)
-const activeRole = ref('target1')
+const expandedRole = ref(null)
+const saveStatus = ref(null)
 
 // Voice browser state
-const showVoiceBrowser = ref(false)
 const selectedProvider = ref('azure')
 const discovering = ref(false)
 const discoveredVoices = ref([])
-const recommendedVoices = ref([])
-const sampleSentences = ref([])
 const genderFilter = ref('all')
-const showAllVoices = ref(false)
-
-// Preview state
 const previewingVoiceId = ref(null)
-const testing = ref(false)
-const testText = ref('')
-const audioPlayer = ref(null)
+const testingRole = ref(null)
 
 // Manual ElevenLabs entry
 const manualVoiceId = ref('')
 const manualVoiceName = ref('')
 
-// Role definitions - using "known" not "source"
+// Audio
+const audioPlayer = ref(null)
+
+// Speed options (discrete notches)
+const speedOptions = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
+
+// Role definitions
 const roles = [
-  { id: 'target1', name: 'Target 1', icon: '🎯', description: 'Primary target language voice (e.g., Chinese female)', lang: 'target' },
-  { id: 'target2', name: 'Target 2', icon: '🎯', description: 'Secondary target language voice (e.g., Chinese male)', lang: 'target' },
-  { id: 'known', name: 'Known', icon: '🏠', description: 'Known language voice (e.g., English)', lang: 'known' }
+  { id: 'target1', name: 'Target 1', icon: '🎯', description: 'Primary target voice', lang: 'target' },
+  { id: 'target2', name: 'Target 2', icon: '🎯', description: 'Secondary target voice', lang: 'target' },
+  { id: 'known', name: 'Known', icon: '🏠', description: 'Known language voice', lang: 'known' }
 ]
 
+// Sample sentences per language
+const sampleSentences = {
+  'zh': '你好，你好吗？',
+  'zho': '你好，你好吗？',
+  'cmn': '你好，你好吗？',
+  'en': 'Hello, how are you today?',
+  'eng': 'Hello, how are you today?',
+  'es': 'Hola, ¿cómo estás?',
+  'spa': 'Hola, ¿cómo estás?',
+  'it': 'Ciao, come stai?',
+  'ita': 'Ciao, come stai?',
+  'default': 'Hello, this is a voice test.'
+}
+
 // Computed
-const activeRoleInfo = computed(() => {
-  return roles.find(r => r.id === activeRole.value) || roles[0]
-})
-
-const currentVoice = computed(() => {
-  return config.value?.voices?.[activeRole.value] || {
-    voiceId: '',
-    provider: 'azure',
-    name: '',
-    settings: { speed: 1.0 }
-  }
-})
-
 const filteredVoices = computed(() => {
   if (genderFilter.value === 'all') return discoveredVoices.value
   return discoveredVoices.value.filter(v => v.gender === genderFilter.value)
 })
 
-const hasChanges = computed(() => {
-  return JSON.stringify(config.value) !== JSON.stringify(originalConfig.value)
-})
-
-// Check if all required roles have voices configured
-const allRolesConfigured = computed(() => {
-  if (!config.value?.voices) return false
-  return roles.every(role => {
-    const voice = config.value.voices[role.id]
-    return voice && voice.voiceId && voice.provider
-  })
-})
-
-// Get list of missing roles for display
-const missingRoles = computed(() => {
-  if (!config.value?.voices) return roles.map(r => r.name)
-  return roles.filter(role => {
-    const voice = config.value.voices[role.id]
-    return !voice || !voice.voiceId || !voice.provider
-  }).map(r => r.name)
-})
-
-const missingRolesText = computed(() => {
-  return missingRoles.value.join(', ')
-})
-
-// Check if a specific role is configured
-function isRoleConfigured(roleId) {
-  const voice = config.value?.voices?.[roleId]
-  return !!(voice && voice.voiceId && voice.provider)
+// Methods
+function getVoiceForRole(roleId) {
+  return config.value?.voices?.[roleId] || { voiceId: '', provider: 'azure', settings: { speed: 1.0 } }
 }
 
-// Get language code for role
 function getLanguageForRole(roleId) {
   const role = roles.find(r => r.id === roleId)
   if (!role) return 'unknown'
-
-  // Parse course code: zho_for_eng -> target=zho, known=eng
   const parts = props.courseCode.split('_for_')
   if (parts.length !== 2) return props.courseCode
+  return role.lang === 'target' ? parts[0] : parts[1]
+}
 
-  if (role.lang === 'target') {
-    return parts[0] // e.g., 'zho'
-  } else {
-    return parts[1] // e.g., 'eng'
+function getSampleText(roleId) {
+  const lang = getLanguageForRole(roleId)
+  return sampleSentences[lang] || sampleSentences['default']
+}
+
+function formatSpeed(speed) {
+  return speed.toFixed(1) + 'x'
+}
+
+function isSpeedActive(roleId, speed) {
+  const currentSpeed = getVoiceForRole(roleId).settings?.speed || 1.0
+  return Math.abs(currentSpeed - speed) < 0.05
+}
+
+async function setSpeed(roleId, speed) {
+  if (!config.value.voices[roleId]) return
+
+  config.value.voices[roleId].settings = {
+    ...config.value.voices[roleId].settings,
+    speed
+  }
+
+  await saveConfig()
+}
+
+function expandRole(roleId) {
+  expandedRole.value = roleId
+  genderFilter.value = 'all'
+  discoveredVoices.value = []
+  if (selectedProvider.value === 'azure') {
+    discoverVoices(roleId)
   }
 }
 
-// Methods
 async function loadConfig() {
   loading.value = true
   error.value = null
@@ -409,17 +325,11 @@ async function loadConfig() {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
-    if (!response.ok) {
-      throw new Error('Failed to load voice configuration')
-    }
+    if (!response.ok) throw new Error('Failed to load voice configuration')
 
     const data = await response.json()
     config.value = data.config
-    originalConfig.value = JSON.parse(JSON.stringify(data.config))
     emit('config-loaded', config.value)
-
-    // Load sample sentences for the current role's language
-    await loadSampleSentences()
   } catch (err) {
     error.value = err.message
     console.error('[VoiceConfig] Load error:', err)
@@ -429,7 +339,7 @@ async function loadConfig() {
 }
 
 async function saveConfig() {
-  saving.value = true
+  saveStatus.value = { type: 'saving', message: 'Saving...' }
 
   try {
     const response = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config`, {
@@ -443,94 +353,58 @@ async function saveConfig() {
 
     if (!response.ok) {
       const data = await response.json()
-      throw new Error(data.error || 'Failed to save configuration')
+      throw new Error(data.error || 'Failed to save')
     }
 
     const data = await response.json()
     config.value = data.config
-    originalConfig.value = JSON.parse(JSON.stringify(data.config))
     emit('config-saved', config.value)
+
+    saveStatus.value = { type: 'success', message: 'Saved!' }
+    setTimeout(() => { saveStatus.value = null }, 2000)
   } catch (err) {
-    error.value = err.message
+    saveStatus.value = { type: 'error', message: err.message }
     console.error('[VoiceConfig] Save error:', err)
-  } finally {
-    saving.value = false
   }
 }
 
-async function discoverVoices() {
+async function discoverVoices(roleId) {
   discovering.value = true
   discoveredVoices.value = []
-  recommendedVoices.value = []
 
   try {
-    const langCode = getLanguageForRole(activeRole.value)
+    const langCode = getLanguageForRole(roleId)
     const response = await fetch(`${props.apiBaseUrl}/api/voices/discover/${langCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
-    if (!response.ok) {
-      throw new Error('Failed to discover voices')
-    }
+    if (!response.ok) throw new Error('Failed to discover voices')
 
     const data = await response.json()
     discoveredVoices.value = data.voices || []
-    recommendedVoices.value = data.recommended || []
-    sampleSentences.value = data.sampleSentences || []
-    if (sampleSentences.value.length > 0) {
-      testText.value = sampleSentences.value[0]
-    }
   } catch (err) {
     console.error('[VoiceConfig] Discovery error:', err)
-    error.value = err.message
   } finally {
     discovering.value = false
   }
 }
 
-async function loadSampleSentences() {
-  try {
-    const langCode = getLanguageForRole(activeRole.value)
-    const response = await fetch(`${props.apiBaseUrl}/api/voices/samples/${langCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (response.ok) {
-      const data = await response.json()
-      sampleSentences.value = data.samples || []
-      if (sampleSentences.value.length > 0) {
-        testText.value = sampleSentences.value[0]
-      }
-    }
-  } catch (err) {
-    console.error('[VoiceConfig] Failed to load samples:', err)
-  }
-}
-
-async function previewVoice(voice) {
+async function previewVoice(voice, roleId) {
   if (previewingVoiceId.value === voice.id) return
-
   previewingVoiceId.value = voice.id
 
   try {
-    const text = sampleSentences.value[0] || 'Hello, this is a voice preview.'
+    const text = getSampleText(roleId)
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({
-        voiceId: voice.id,
-        text,
-        speed: 1.0,
-        provider: 'azure'
-      })
+      body: JSON.stringify({ voiceId: voice.id, text, speed: 1.0, provider: 'azure' })
     })
 
-    if (!response.ok) {
-      throw new Error('Failed to generate preview')
-    }
+    if (!response.ok) throw new Error('Failed to preview')
 
     const data = await response.json()
     if (data.audio && audioPlayer.value) {
@@ -539,15 +413,18 @@ async function previewVoice(voice) {
     }
   } catch (err) {
     console.error('[VoiceConfig] Preview error:', err)
+    previewingVoiceId.value = null
   }
 }
 
-async function testCurrentVoice() {
-  if (!currentVoice.value.voiceId || testing.value) return
+async function testVoice(roleId) {
+  const voice = getVoiceForRole(roleId)
+  if (!voice.voiceId || testingRole.value === roleId) return
 
-  testing.value = true
+  testingRole.value = roleId
 
   try {
+    const text = getSampleText(roleId)
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
@@ -555,16 +432,14 @@ async function testCurrentVoice() {
         'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
-        voiceId: currentVoice.value.voiceId,
-        text: testText.value,
-        speed: currentVoice.value.settings?.speed || 1.0,
-        provider: currentVoice.value.provider || 'azure'
+        voiceId: voice.voiceId,
+        text,
+        speed: voice.settings?.speed || 1.0,
+        provider: voice.provider || 'azure'
       })
     })
 
-    if (!response.ok) {
-      throw new Error('Failed to generate test audio')
-    }
+    if (!response.ok) throw new Error('Failed to test')
 
     const data = await response.json()
     if (data.audio && audioPlayer.value) {
@@ -574,16 +449,15 @@ async function testCurrentVoice() {
   } catch (err) {
     console.error('[VoiceConfig] Test error:', err)
   } finally {
-    testing.value = false
+    testingRole.value = null
   }
 }
 
-function selectVoice(voice) {
-  if (!config.value.voices[activeRole.value]) {
-    config.value.voices[activeRole.value] = {}
-  }
+async function selectVoiceForRole(roleId, voice) {
+  if (!config.value.voices) config.value.voices = {}
+  if (!config.value.voices[roleId]) config.value.voices[roleId] = {}
 
-  config.value.voices[activeRole.value] = {
+  config.value.voices[roleId] = {
     voiceId: voice.id,
     provider: 'azure',
     name: voice.displayName || voice.name,
@@ -591,73 +465,43 @@ function selectVoice(voice) {
     settings: { speed: 1.0 }
   }
 
-  showVoiceBrowser.value = false
+  expandedRole.value = null
+  await saveConfig()
 }
 
-function selectManualVoice() {
+async function selectManualVoiceForRole(roleId) {
   if (!manualVoiceId.value) return
 
-  if (!config.value.voices[activeRole.value]) {
-    config.value.voices[activeRole.value] = {}
-  }
+  if (!config.value.voices) config.value.voices = {}
+  if (!config.value.voices[roleId]) config.value.voices[roleId] = {}
 
-  config.value.voices[activeRole.value] = {
+  config.value.voices[roleId] = {
     voiceId: manualVoiceId.value,
     provider: 'elevenlabs',
     name: manualVoiceName.value || manualVoiceId.value,
-    language: getLanguageForRole(activeRole.value),
+    language: getLanguageForRole(roleId),
     settings: { speed: 1.0, stability: 0.5, similarityBoost: 0.75 }
   }
 
-  showVoiceBrowser.value = false
+  expandedRole.value = null
   manualVoiceId.value = ''
   manualVoiceName.value = ''
-}
-
-function clearSelection() {
-  showVoiceBrowser.value = true
-}
-
-function selectRole(roleId) {
-  activeRole.value = roleId
-  showVoiceBrowser.value = false
-  discoveredVoices.value = []
-  recommendedVoices.value = []
-  genderFilter.value = 'all'
-  showAllVoices.value = false
-  loadSampleSentences()
-}
-
-function updateVoiceSettings(updates) {
-  if (!config.value.voices[activeRole.value]) return
-
-  config.value.voices[activeRole.value].settings = {
-    ...config.value.voices[activeRole.value].settings,
-    ...updates
-  }
-}
-
-function resetConfig() {
-  config.value = JSON.parse(JSON.stringify(originalConfig.value))
-  showVoiceBrowser.value = false
+  await saveConfig()
 }
 
 function onAudioEnded() {
   previewingVoiceId.value = null
+  testingRole.value = null
 }
 
 // Watch for course code changes
 watch(() => props.courseCode, () => {
-  if (props.courseCode) {
-    loadConfig()
-  }
+  if (props.courseCode) loadConfig()
 })
 
 // Load on mount
 onMounted(() => {
-  if (props.courseCode) {
-    loadConfig()
-  }
+  if (props.courseCode) loadConfig()
 })
 </script>
 
@@ -685,9 +529,8 @@ onMounted(() => {
   margin: 0;
 }
 
-/* Loading & Error States */
-.loading-state,
-.error-state {
+/* Loading & Error */
+.loading-state, .error-state {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -696,8 +539,7 @@ onMounted(() => {
   color: #94a3b8;
 }
 
-.spinner,
-.btn-spinner {
+.spinner, .btn-spinner {
   width: 20px;
   height: 20px;
   border: 2px solid #334155;
@@ -710,7 +552,6 @@ onMounted(() => {
   width: 14px;
   height: 14px;
   display: inline-block;
-  margin-right: 8px;
 }
 
 @keyframes spin {
@@ -738,106 +579,90 @@ onMounted(() => {
   cursor: pointer;
 }
 
-/* Role Tabs */
-.role-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 16px;
+/* Swim Lanes */
+.swim-lanes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.role-tab {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
+@media (max-width: 900px) {
+  .swim-lanes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.swim-lane {
   background: #0f172a;
   border: 1px solid #334155;
-  border-radius: 8px;
-  color: #94a3b8;
-  cursor: pointer;
+  border-radius: 12px;
+  padding: 16px;
   transition: all 0.2s;
 }
 
-.role-tab:hover {
+.swim-lane.expanded {
   border-color: #10b981;
+}
+
+.lane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #334155;
+}
+
+.lane-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lane-icon {
+  font-size: 1.25rem;
+}
+
+.lane-name {
+  font-weight: 600;
   color: #e2e8f0;
 }
 
-.role-tab.active {
-  background: #10b981;
-  border-color: #10b981;
-  color: #0f172a;
-}
-
-.role-icon {
-  font-size: 1rem;
-}
-
-.role-name {
-  font-weight: 500;
-}
-
-.role-status {
-  font-size: 0.875rem;
+.lane-lang {
+  background: #334155;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
   font-weight: 600;
-  line-height: 1;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
 }
 
-.role-status.configured {
-  color: #10b981;
-}
-
-.role-status.missing {
-  color: #64748b;
-}
-
-.role-tab.active .role-status.configured {
-  color: #0f172a;
-}
-
-.role-tab.active .role-status.missing {
-  color: rgba(15, 23, 42, 0.6);
-}
-
-.role-tab.configured:not(.active) {
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-/* Current Selection */
-.current-selection {
+/* Lane Selection */
+.lane-selection {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.selection-info {
-  display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
 }
 
-.selection-label {
-  color: #64748b;
-  font-size: 0.875rem;
+.selection-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.selection-value {
+.selection-name {
   color: #e2e8f0;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .selection-provider {
-  padding: 2px 8px;
+  padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .selection-provider.azure {
@@ -850,40 +675,186 @@ onMounted(() => {
   color: white;
 }
 
-.clear-btn {
-  padding: 8px 16px;
-  background: #334155;
+/* Speed Control with Notches */
+.speed-control {
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.speed-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.speed-value {
+  color: #10b981;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.speed-notches {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 32px;
+  padding: 0 4px;
+}
+
+.speed-notch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
   border: none;
-  border-radius: 6px;
-  color: #e2e8f0;
+  padding: 0;
   cursor: pointer;
 }
 
-.clear-btn:hover {
+.notch-mark {
+  width: 3px;
+  height: 12px;
+  background: #334155;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+.speed-notch:hover .notch-mark {
+  background: #64748b;
+  height: 16px;
+}
+
+.speed-notch.active .notch-mark {
+  background: #10b981;
+  height: 20px;
+}
+
+.notch-label {
+  font-size: 0.6rem;
+  color: #64748b;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.speed-notch:hover .notch-label,
+.speed-notch.active .notch-label {
+  opacity: 1;
+}
+
+.speed-notch.active .notch-label {
+  color: #10b981;
+}
+
+/* Buttons */
+.test-btn, .change-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.test-btn {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.test-btn:hover:not(:disabled) {
   background: #475569;
 }
 
-/* Provider Toggle */
-.provider-toggle {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+.change-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
 }
 
-.provider-btn {
-  flex: 1;
-  padding: 12px;
-  background: #0f172a;
-  border: 1px solid #334155;
+.change-btn:hover {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+/* Lane Empty */
+.lane-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.select-voice-btn {
+  padding: 16px 32px;
+  background: #10b981;
+  color: #0f172a;
+  border: none;
   border-radius: 8px;
-  color: #94a3b8;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.provider-btn:hover {
-  border-color: #10b981;
+.select-voice-btn:hover {
+  background: #059669;
+}
+
+/* Voice Browser */
+.voice-browser {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #334155;
+}
+
+.browser-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.close-btn {
+  width: 24px;
+  height: 24px;
+  background: #334155;
+  border: none;
+  border-radius: 4px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  background: #475569;
+  color: #e2e8f0;
+}
+
+.provider-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.provider-btn {
+  flex: 1;
+  padding: 8px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .provider-btn.active {
@@ -892,468 +863,188 @@ onMounted(() => {
   color: #0f172a;
 }
 
-/* Browser Info */
-.browser-info {
+/* Azure Voices */
+.discovering {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: #0f172a;
-  border-radius: 8px;
-}
-
-.info-label {
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
   color: #64748b;
+  font-size: 0.85rem;
 }
 
-.info-value {
-  color: #e2e8f0;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.discover-btn {
-  margin-left: auto;
+.voice-filter {
   display: flex;
-  align-items: center;
-  padding: 8px 16px;
-  background: #334155;
-  border: none;
-  border-radius: 6px;
-  color: #e2e8f0;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 6px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  color: #64748b;
+  font-size: 0.7rem;
   cursor: pointer;
 }
 
-.discover-btn:hover:not(:disabled) {
-  background: #475569;
-}
-
-.discover-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Voice List */
-.voice-section {
-  margin-bottom: 24px;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #94a3b8;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.filter-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.gender-filter {
-  padding: 4px 8px;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 4px;
+.filter-btn.active {
+  background: #334155;
   color: #e2e8f0;
-  font-size: 0.75rem;
 }
 
-.voice-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
+.voice-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
 }
 
-.voice-card {
+.voice-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  background: #0f172a;
+  padding: 10px 12px;
+  background: #1e293b;
   border: 1px solid #334155;
-  border-radius: 8px;
-  transition: all 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
 }
 
-.voice-card:hover {
-  border-color: #10b981;
-}
-
-.voice-card.selected {
+.voice-option:hover {
   border-color: #10b981;
   background: #10b981/10;
 }
 
 .voice-info {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
 }
 
 .voice-name {
   color: #e2e8f0;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 
-.voice-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.gender-badge {
+.voice-gender {
   padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 600;
 }
 
-.gender-badge.female {
+.voice-gender.female {
   background: #ec4899;
   color: white;
 }
 
-.gender-badge.male {
+.voice-gender.male {
   background: #3b82f6;
   color: white;
 }
 
-.voice-locale {
-  color: #64748b;
-  font-size: 0.75rem;
-}
-
-.voice-reason {
-  color: #10b981;
-  font-size: 0.7rem;
-}
-
-.voice-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.preview-btn,
-.select-btn {
-  padding: 6px 12px;
+.preview-btn {
+  padding: 4px 10px;
+  background: #334155;
   border: none;
   border-radius: 4px;
-  font-size: 0.75rem;
+  color: #94a3b8;
+  font-size: 0.7rem;
   cursor: pointer;
-  transition: all 0.2s;
-}
-
-.preview-btn {
-  background: #334155;
-  color: #e2e8f0;
 }
 
 .preview-btn:hover:not(:disabled) {
   background: #475569;
+  color: #e2e8f0;
 }
 
-.preview-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.select-btn {
-  background: #10b981;
-  color: #0f172a;
-  font-weight: 600;
-}
-
-.select-btn:hover {
-  background: #059669;
-}
-
-.select-btn.full-width {
-  width: 100%;
-  padding: 12px;
-  margin-top: 16px;
-}
-
-.show-more-btn {
-  width: 100%;
-  padding: 12px;
-  background: #0f172a;
-  border: 1px dashed #334155;
-  border-radius: 8px;
-  color: #94a3b8;
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-.show-more-btn:hover {
-  border-color: #10b981;
-  color: #10b981;
-}
-
-.no-voices {
+.more-voices {
   text-align: center;
-  padding: 40px;
+  padding: 8px;
   color: #64748b;
+  font-size: 0.75rem;
+}
+
+.load-voices-btn {
+  width: 100%;
+  padding: 12px;
+  background: #334155;
+  border: none;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.load-voices-btn:hover {
+  background: #475569;
 }
 
 /* ElevenLabs Entry */
 .elevenlabs-entry {
-  padding: 20px;
-  background: #0f172a;
-  border-radius: 8px;
-}
-
-.config-section {
-  margin-bottom: 20px;
-}
-
-.config-label {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #94a3b8;
-  margin-bottom: 8px;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.config-input {
-  width: 100%;
-  padding: 12px;
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  color: #e2e8f0;
-  font-size: 0.875rem;
-}
-
-.config-input:focus {
-  outline: none;
-  border-color: #10b981;
-}
-
-.config-hint {
-  display: block;
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 6px;
-}
-
-/* Speed Config */
-.speed-config {
-  padding: 20px;
-  background: #0f172a;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.speed-value {
-  color: #10b981;
-  font-family: monospace;
-}
-
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.slider-label {
-  font-size: 0.75rem;
-  color: #64748b;
-  min-width: 40px;
-}
-
-.slider-label:last-child {
-  text-align: right;
-}
-
-.speed-slider {
-  flex: 1;
-  height: 6px;
-  -webkit-appearance: none;
-  background: #334155;
-  border-radius: 3px;
-  outline: none;
-}
-
-.speed-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  background: #10b981;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Test Section */
-.test-section {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #334155;
-}
-
-.test-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  color: #94a3b8;
-  font-size: 0.875rem;
-}
-
-.test-select {
-  flex: 1;
-  margin-left: 12px;
-  padding: 8px;
+.voice-input {
+  padding: 10px;
   background: #1e293b;
   border: 1px solid #334155;
   border-radius: 6px;
   color: #e2e8f0;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 }
 
-.test-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  background: #334155;
+.voice-input:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+.use-voice-btn {
+  padding: 10px;
+  background: #10b981;
   border: none;
-  border-radius: 8px;
-  color: #e2e8f0;
-  font-weight: 500;
+  border-radius: 6px;
+  color: #0f172a;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.test-btn:hover:not(:disabled) {
-  background: #475569;
-}
-
-.test-btn:disabled {
+.use-voice-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Configuration Status Banner */
-.config-status {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
+/* Save Status */
+.save-status {
+  margin-top: 16px;
+  padding: 12px 16px;
   border-radius: 8px;
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
-.config-status.warning {
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-}
-
-.config-status.ready {
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-}
-
-.config-status .status-icon {
-  font-size: 1.25rem;
-  line-height: 1;
-}
-
-.config-status .status-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.config-status .status-text strong {
-  color: #e2e8f0;
-  font-size: 0.875rem;
-}
-
-.config-status .status-text span {
+.save-status.saving {
+  background: #334155;
   color: #94a3b8;
-  font-size: 0.8rem;
 }
 
-.config-status.ready .status-icon {
+.save-status.success {
+  background: rgba(16, 185, 129, 0.2);
   color: #10b981;
 }
 
-.config-status.warning .status-text strong {
-  color: #f59e0b;
-}
-
-/* Action Buttons */
-.config-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid #334155;
-}
-
-.action-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.action-btn.secondary {
-  background: #334155;
-  color: #e2e8f0;
-}
-
-.action-btn.secondary:hover {
-  background: #475569;
-}
-
-.action-btn.primary {
-  background: #10b981;
-  color: #0f172a;
-}
-
-.action-btn.primary:hover:not(:disabled) {
-  background: #059669;
-}
-
-.action-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .role-tabs {
-    flex-wrap: wrap;
-  }
-
-  .role-tab {
-    flex: 1 1 calc(50% - 4px);
-  }
-
-  .voice-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .current-selection {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .clear-btn {
-    width: 100%;
-  }
+.save-status.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
 }
 </style>

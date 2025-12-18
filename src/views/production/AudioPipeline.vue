@@ -196,10 +196,6 @@ const onVoiceConfigSaved = (config: any) => {
     voices.target2?.voiceId &&
     voices.known?.voiceId
   )
-  // Collapse after saving if configured
-  if (voicesConfigured.value) {
-    showVoiceConfig.value = false
-  }
 }
 
 const updateFilter = (filter: string) => {
