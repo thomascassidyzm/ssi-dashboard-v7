@@ -2339,6 +2339,23 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         const phase1Status = draftExists ? 'complete' : 'in_progress';
         const phase2Status = draftExists ? 'pending' : 'pending';
 
+        // Calculate missing seeds based on most likely target mode
+        let targetSeedCount = SEED_COUNTS.QUICK_TEST;
+        if (totalRawSeeds > SEED_COUNTS.QUICK_TEST) {
+          targetSeedCount = totalRawSeeds <= SEED_COUNTS.MVP_COURSE
+            ? SEED_COUNTS.MVP_COURSE
+            : SEED_COUNTS.FULL_COURSE;
+        }
+
+        // Build list of missing seed IDs
+        const completedSeedNums = new Set(rawBatchSeeds.map(s => parseInt(s.replace('S', ''))));
+        const missingSeeds = [];
+        for (let i = 1; i <= targetSeedCount; i++) {
+          if (!completedSeedNums.has(i)) {
+            missingSeeds.push(`S${String(i).padStart(4, '0')}`);
+          }
+        }
+
         return res.json({
           courseCode,
           exists: true,
@@ -2346,7 +2363,11 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
           seeds: {
             total: totalRawSeeds,
             fromBatches: rawBatchSeeds.length,
-            fromDraft: draftSeeds.length
+            fromDraft: draftSeeds.length,
+            targetTotal: targetSeedCount,
+            missing: missingSeeds.length,
+            missingSeeds: missingSeeds.slice(0, 20), // First 20 for display
+            completedSeeds: rawBatchSeeds.sort()
           },
           phase1: {
             status: phase1Status,
@@ -2358,12 +2379,35 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
           phase3: { status: 'pending', seedsMissingBaskets: [] },
           flags: { total: 0, unresolved: 0, items: [] },
           recommendations: [
-            rawBatchSeeds.length > 0 && rawBatchSeeds.length < SEED_COUNTS.QUICK_TEST ? {
-              type: 'continue',
-              title: `▶️ Continue Generation (${SEED_COUNTS.QUICK_TEST - rawBatchSeeds.length} seeds remaining)`,
-              description: `${rawBatchSeeds.length}/${SEED_COUNTS.QUICK_TEST} seeds complete. Continue to finish Quick Test.`,
-              action: { mode: 'continue', missingSeeds: SEED_COUNTS.QUICK_TEST - rawBatchSeeds.length }
-            } : null,
+            // Smart resume recommendation - detect the mode from existing seed count
+            rawBatchSeeds.length > 0 ? (() => {
+              // Determine the likely target mode based on completed seeds
+              let targetMode = 'quick_test';
+              let targetSeedCount = SEED_COUNTS.QUICK_TEST;
+
+              if (rawBatchSeeds.length > SEED_COUNTS.QUICK_TEST) {
+                if (rawBatchSeeds.length <= SEED_COUNTS.MVP_COURSE) {
+                  targetMode = 'mvp_course';
+                  targetSeedCount = SEED_COUNTS.MVP_COURSE;
+                } else {
+                  targetMode = 'full_course';
+                  targetSeedCount = SEED_COUNTS.FULL_COURSE;
+                }
+              }
+
+              const missingCount = targetSeedCount - rawBatchSeeds.length;
+
+              // Only show continue if there are missing seeds
+              if (missingCount > 0) {
+                return {
+                  type: 'continue',
+                  title: `▶️ Resume (${missingCount} seeds remaining)`,
+                  description: `${rawBatchSeeds.length}/${targetSeedCount} seeds complete. Resume to finish ${targetMode.replace('_', ' ')}.`,
+                  action: { mode: 'resume', targetMode, missingSeeds: missingCount }
+                };
+              }
+              return null;
+            })() : null,
             draftExists ? {
               type: 'merge-phase1',
               title: '🔀 Run Phase 2 (Merge & Resolve)',
@@ -3254,6 +3298,77 @@ app.post('/api/courses/generate', async (req, res) => {
   console.log(`   Phase: ${phaseSelection}`);
   console.log(`   Strategy: ${strategy}`);
 
+  // ============================================
+  // INTELLIGENT RESUME: Check for existing seeds
+  // ============================================
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const phase1BatchesDir = path.join(courseDir, 'phase1_batches');
+  let existingSeeds = [];
+  let missingSeeds = [];
+
+  // Check what seeds already exist in phase1_batches
+  if (await fs.pathExists(phase1BatchesDir)) {
+    const batchFiles = await fs.readdir(phase1BatchesDir);
+    const jsonFiles = batchFiles.filter(f => f.endsWith('.json'));
+
+    for (const file of jsonFiles) {
+      try {
+        const batchData = await fs.readJSON(path.join(phase1BatchesDir, file));
+        // Handle array format (compact batch files)
+        if (Array.isArray(batchData)) {
+          for (const seed of batchData) {
+            if (seed.s) existingSeeds.push(seed.s);
+            else if (seed.seed_id) existingSeeds.push(seed.seed_id);
+          }
+        }
+        // Handle object format with seeds array
+        else if (batchData.seeds && Array.isArray(batchData.seeds)) {
+          for (const seed of batchData.seeds) {
+            if (seed.s) existingSeeds.push(seed.s);
+            else if (seed.seed_id) existingSeeds.push(seed.seed_id);
+          }
+        }
+      } catch (err) {
+        console.warn(`[Resume] Failed to read batch file ${file}:`, err.message);
+      }
+    }
+  }
+
+  // Calculate which seeds are missing
+  const allRequiredSeeds = [];
+  for (let i = startSeed; i <= endSeed; i++) {
+    allRequiredSeeds.push(`S${String(i).padStart(4, '0')}`);
+  }
+  missingSeeds = allRequiredSeeds.filter(s => !existingSeeds.includes(s));
+
+  console.log(`   → Existing seeds: ${existingSeeds.length} (${existingSeeds.join(', ') || 'none'})`);
+  console.log(`   → Missing seeds: ${missingSeeds.length} (${missingSeeds.join(', ') || 'none'})`);
+
+  // If all seeds exist, skip Phase 1 or return success
+  if (missingSeeds.length === 0 && phaseSelection === 'all') {
+    console.log(`   ✅ All ${totalSeeds} seeds already complete in Phase 1 - skipping to Phase 2`);
+    // TODO: Auto-advance to Phase 2 (conflict resolution)
+    return res.json({
+      success: true,
+      message: `Phase 1 already complete for ${courseCode}`,
+      existingSeeds: existingSeeds.length,
+      missingSeeds: 0,
+      recommendation: 'Run Phase 2 (Conflict Resolution) to merge and resolve'
+    });
+  }
+
+  // Update seed range to only generate missing seeds
+  let effectiveStartSeed = startSeed;
+  let effectiveEndSeed = endSeed;
+  let effectiveTotalSeeds = totalSeeds;
+
+  if (missingSeeds.length > 0 && missingSeeds.length < totalSeeds) {
+    // We have SOME seeds - only generate missing ones
+    console.log(`   → INTELLIGENT RESUME: Only generating ${missingSeeds.length} missing seeds`);
+    effectiveTotalSeeds = missingSeeds.length;
+    // Pass missing seeds list to phase server instead of range
+  }
+
   // Ensure course exists in Supabase database (upsert - create if not exists)
   try {
     const { supabase, isInitialized } = require('../supabase-client.cjs');
@@ -3349,28 +3464,45 @@ app.post('/api/courses/generate', async (req, res) => {
     addJobToPipeline(courseCode, job);
 
     // Pass pattern configuration to phase server
+    // INTELLIGENT RESUME: If we have missing seeds, send those instead of full range
+    const isResume = missingSeeds.length > 0 && missingSeeds.length < totalSeeds;
+
     const payload = {
       courseCode,
-      totalSeeds,
+      totalSeeds: isResume ? missingSeeds.length : totalSeeds,
       target: resolvedTarget,
       known: resolvedKnown,
       strategy,
-      startSeed,
-      endSeed,
-      pattern,  // NEW: Pass parallelization pattern to phase server
-      mode: mode || 'custom'  // NEW: Pass mode for logging/tracking
+      // For intelligent resume: send specific seeds to generate
+      ...(isResume ? {
+        specificSeeds: missingSeeds,  // NEW: Array of specific seed IDs to generate
+        isResume: true
+      } : {
+        startSeed,
+        endSeed
+      }),
+      pattern,  // Pass parallelization pattern to phase server
+      mode: mode || 'custom'  // Pass mode for logging/tracking
     };
+
+    if (isResume) {
+      console.log(`[Orchestrator] INTELLIGENT RESUME - Sending ${missingSeeds.length} missing seeds to Phase 1`);
+      console.log(`   → Missing seeds: ${missingSeeds.slice(0, 10).join(', ')}${missingSeeds.length > 10 ? '...' : ''}`);
+    }
     console.log(`[Orchestrator] Sending to Phase 1:`, JSON.stringify(payload, null, 2));
     const response = await axios.post(`${phaseServer}/start`, payload);
 
     // Store Phase 1 tracking state with expected seed range for seed-based completion
     // The completion logic checks actual seeds received, not just master count
     const phase1StateKey = `${courseCode}_phase1`;
+    const expectedSeeds = isResume ? missingSeeds : allRequiredSeeds;
     courseProgress.set(phase1StateKey, {
-      // Expected seed range - these are what we MUST have before merge
-      expectedStartSeed: startSeed,
-      expectedEndSeed: endSeed,
-      expectedTotalSeeds: totalSeeds,
+      // Expected seeds - these are what we MUST have before merge
+      expectedSeeds: expectedSeeds,  // NEW: Array of specific seed IDs expected
+      expectedStartSeed: isResume ? null : startSeed,  // null if resume (using specificSeeds)
+      expectedEndSeed: isResume ? null : endSeed,
+      expectedTotalSeeds: expectedSeeds.length,
+      isResume: isResume,  // Track if this is a resume operation
       // Master tracking (informational only - not used for completion)
       mastersComplete: 0,
       totalMasters: response.data?.job?.masterCount || 1,
@@ -3386,7 +3518,12 @@ app.post('/api/courses/generate', async (req, res) => {
       known: resolvedKnown
     });
     console.log(`[Orchestrator] Phase 1 tracking initialized:`);
-    console.log(`   → Expected seeds: S${String(startSeed).padStart(4, '0')} to S${String(endSeed).padStart(4, '0')} (${totalSeeds} total)`);
+    if (isResume) {
+      console.log(`   → RESUME MODE: Expecting ${expectedSeeds.length} specific seeds`);
+      console.log(`   → Seeds: ${expectedSeeds.slice(0, 5).join(', ')}${expectedSeeds.length > 5 ? `... (${expectedSeeds.length} total)` : ''}`);
+    } else {
+      console.log(`   → Expected seeds: S${String(startSeed).padStart(4, '0')} to S${String(endSeed).padStart(4, '0')} (${totalSeeds} total)`);
+    }
     console.log(`   → Masters spawned: ${response.data?.job?.masterCount || 1}`);
 
     // Start stall watchdog for this course
@@ -3396,7 +3533,12 @@ app.post('/api/courses/generate', async (req, res) => {
       success: true,
       courseCode,
       phase,
-      message: `${phaseSelection === 'all' ? 'Full course generation' : `Phase ${phase}`} started for ${courseCode}`,
+      message: isResume
+        ? `Resuming Phase 1 for ${courseCode} - generating ${missingSeeds.length} missing seeds`
+        : `${phaseSelection === 'all' ? 'Full course generation' : `Phase ${phase}`} started for ${courseCode}`,
+      isResume: isResume,
+      existingSeeds: existingSeeds.length,
+      missingSeeds: missingSeeds.length,
       details: response.data
     });
   } catch (error) {
@@ -3783,14 +3925,31 @@ app.get('/api/languages', async (req, res) => {
 /**
  * GET /api/canonical-seeds
  * Serve canonical seeds to agents via ngrok
- * Query params: ?start=N&end=M or ?start=N&limit=M (defaults: all seeds in full course)
+ * Query params:
+ *   - ?start=N&end=M or ?start=N&limit=M (range-based, defaults: all seeds)
+ *   - ?seeds=S0001,S0005,S0009 (specific seed IDs for intelligent resume)
  */
 app.get('/api/canonical-seeds', async (req, res) => {
   try {
     const canonicalPath = path.join(__dirname, '../../public/vfs/canonical/canonical_seeds.json');
     const seedsArray = await fs.readJSON(canonicalPath);
 
-    // Support both limit-based and range-based queries
+    // INTELLIGENT RESUME: Support specific seed IDs
+    if (req.query.seeds) {
+      const requestedIds = req.query.seeds.split(',').map(s => s.trim());
+      const filteredSeeds = seedsArray.filter(seed => requestedIds.includes(seed.seed_id));
+
+      return res.json({
+        total_available: seedsArray.length,
+        mode: 'specific_seeds',
+        requested: requestedIds.length,
+        found: filteredSeeds.length,
+        missing: requestedIds.filter(id => !filteredSeeds.find(s => s.seed_id === id)),
+        seeds: filteredSeeds
+      });
+    }
+
+    // Standard range-based query
     const start = parseInt(req.query.start) || 1;
     const end = parseInt(req.query.end);
     const limit = end ? (end - start + 1) : (parseInt(req.query.limit) || SEED_COUNTS.FULL_COURSE);
@@ -3802,6 +3961,7 @@ app.get('/api/canonical-seeds', async (req, res) => {
 
     res.json({
       total_available: seedsArray.length,
+      mode: 'range',
       start,
       end: end || (start + filteredSeeds.length - 1),
       limit,

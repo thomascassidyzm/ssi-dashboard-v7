@@ -254,6 +254,169 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
 }
 
 /**
+ * Generate Phase 1 Master Prompt for SPECIFIC SEEDS (intelligent resume)
+ * Used when resuming a partially completed course - processes only missing seeds
+ *
+ * @param {string} courseCode - Course code
+ * @param {object} params - { target, known, specificSeeds, workersPerMaster, seedsPerWorker, masterNum }
+ * @param {string} courseDir - Course directory path
+ */
+function generatePhase1MasterPromptForSpecificSeeds(courseCode, params, courseDir) {
+  const { target, known, specificSeeds, workersPerMaster, seedsPerWorker, masterNum, totalMasters } = params;
+  const totalSeeds = specificSeeds.length;
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
+  const phase1Url = `http://localhost:${PORT}`;
+
+  // Generate worker assignments for THIS master - distribute specific seeds among workers
+  const workers = [];
+  for (let w = 0; w < workersPerMaster; w++) {
+    const seedStart = w * seedsPerWorker;
+    const seedEnd = Math.min(seedStart + seedsPerWorker, specificSeeds.length);
+    const workerSeeds = specificSeeds.slice(seedStart, seedEnd);
+
+    if (workerSeeds.length > 0) {
+      workers.push({ num: w + 1, seeds: workerSeeds });
+    }
+  }
+
+  const workerInstructions = workers.map(w =>
+    `  - Worker ${w.num}: ${w.seeds.length} seeds: ${w.seeds.join(', ')}`
+  ).join('\n');
+
+  // Create seed list for the prompt (workers will use exact IDs)
+  const seedListForWorkers = specificSeeds.join(', ');
+
+  return `# Phase 1 Master ${masterNum}: Translation + LEGO Extraction (RESUME)
+
+**Course**: ${courseCode}
+**Target**: ${getLanguageName(target)} (${target})
+**Known**: ${getLanguageName(known)} (${known})
+**Your Seeds**: ${totalSeeds} SPECIFIC seeds (resume mode)
+**Seeds**: ${seedListForWorkers}
+
+---
+
+## RESUME MODE - SPECIFIC SEEDS ONLY
+
+This is a RESUME operation. Process ONLY the specific seeds listed above.
+These seeds were missing from a previous generation run.
+
+---
+
+## YOUR ROLE: MASTER ORCHESTRATOR
+
+You spawn ${workers.length} worker agents via Task tool. Each worker processes their assigned seeds.
+
+**Worker assignments:**
+${workerInstructions}
+
+---
+
+## STEP 1: SPAWN ALL WORKERS IN PARALLEL
+
+Use the Task tool ${workers.length} times in a SINGLE message to spawn all workers in parallel.
+
+Each worker prompt should include:
+1. The EXACT seed IDs they process (not a range!)
+2. Instructions to FETCH methodology from the API
+3. The upload endpoint
+
+**CRITICAL**: Workers fetch their own methodology - do NOT summarize or paraphrase it!
+
+---
+
+## WORKER PROMPT TEMPLATE
+
+For each worker, use this prompt (fill in the SEED_IDS list):
+
+\`\`\`
+# Phase 1 Worker: Specific Seeds [SEED_IDS]
+
+Course: ${courseCode}
+Target: ${getLanguageName(target)}
+Known: ${getLanguageName(known)}
+
+## IMPORTANT: SPECIFIC SEEDS ONLY
+Process ONLY these seeds (not a range): [SEED_IDS]
+
+## STEP 1: FETCH ZUT EXAMPLES (language-specific)
+
+curl -s "${orchestratorUrl}/api/zut-examples/${known}/${target}"
+
+This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLanguageName(target)}.
+
+## STEP 2: FETCH METHODOLOGY
+
+curl -s "${orchestratorUrl}/api/phase-intelligence/1"
+
+Read BOTH responses before proceeding.
+
+## STEP 3: FETCH YOUR SPECIFIC SEEDS
+
+For each seed ID in your list, fetch it individually:
+curl -s "${orchestratorUrl}/api/canonical-seeds?seeds=[COMMA_SEPARATED_IDS]"
+
+Or use the seeds parameter: ?seeds=S0005,S0007,S0009
+
+## STEP 4: PROCESS EACH SEED
+
+${known === 'eng'
+  ? `Since Known = English: The English canonical text IS your "known" text.
+Only translate to ${getLanguageName(target)} for the "target" field.`
+  : `IMPORTANT - Bidirectional Translation Required:
+- Canonical seeds are in English
+- Translate English → ${getLanguageName(known)} for "known" field
+- Translate English → ${getLanguageName(target)} for "target" field
+- LEGOs map ${getLanguageName(known)} ↔ ${getLanguageName(target)} (NOT English)`}
+
+Apply ZUT to every potential LEGO:
+1. Translate seed
+2. For each chunk: does learner ALWAYS know what to produce?
+3. If uncertain → chunk UP until zero ambiguity
+4. Mark embedded chunks as new: false
+
+## STEP 5: UPLOAD (COMPACT FORMAT)
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+  -H "Content-Type: application/json" \\
+  -d '[YOUR_COMPACT_JSON]'
+
+**COMPACT FORMAT** (saves tokens):
+\`\`\`json
+[{"s":"S0001","k":"known text","t":"target text","l":[
+  {"y":"A","n":1,"k":"I want","t":"quiero"},
+  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+]}]
+\`\`\`
+Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
+
+**IMPORTANT: Use curl for uploads, NOT WebFetch!**
+**DO NOT write files - only POST to the endpoint!**
+\`\`\`
+
+---
+
+## STEP 2: WAIT FOR COMPLETION
+
+After spawning all workers, wait for their Task tool results.
+
+## STEP 3: REPORT COMPLETION
+
+When all workers complete, use curl to POST:
+
+curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{"masterNum": ${masterNum}, "seedsProcessed": ${totalSeeds}, "totalMasters": ${totalMasters}, "isResume": true}'
+
+---
+
+**DO NOT process seeds yourself - spawn workers and coordinate!**
+**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+**DO NOT write files - all output goes through /upload-batch endpoint!**
+`;
+}
+
+/**
  * POST /start
  * Start Phase 1 translation for a course
  *
@@ -278,7 +441,10 @@ app.post('/start', async (req, res) => {
     target,
     known,
     startSeed = 1,
-    endSeed
+    endSeed,
+    specificSeeds,  // NEW: Array of specific seed IDs for intelligent resume
+    isResume = false,  // NEW: Flag indicating this is a resume operation
+    pattern: providedPattern  // NEW: Original pattern from orchestrator (for resume)
   } = req.body;
 
   if (!courseCode || !target || !known) {
@@ -294,7 +460,44 @@ app.post('/start', async (req, res) => {
   let modeConfig;
   let modeName;
 
-  if (mode) {
+  // INTELLIGENT RESUME: If specificSeeds provided, use that count
+  // But keep seeds_per_agent FIXED from the original pattern
+  if (specificSeeds && Array.isArray(specificSeeds) && specificSeeds.length > 0) {
+    totalSeeds = specificSeeds.length;
+
+    // Use provided pattern (from orchestrator) to keep seeds_per_agent fixed
+    // Then calculate optimal agents/browsers for the missing seeds
+    if (providedPattern) {
+      const { seeds_per_agent, agents_per_browser } = providedPattern;
+
+      // Calculate how many agents we need (keeping seeds_per_agent fixed)
+      const agentsNeeded = Math.ceil(totalSeeds / seeds_per_agent);
+
+      // Calculate how many browsers we need
+      const browsersNeeded = Math.ceil(agentsNeeded / agents_per_browser);
+
+      // Build a scaled-down pattern
+      modeConfig = {
+        name: `Resume`,
+        pattern: {
+          browsers: browsersNeeded,
+          agents_per_browser: Math.min(agentsNeeded, agents_per_browser),
+          seeds_per_agent: seeds_per_agent  // FIXED from original
+        }
+      };
+
+      console.log(`[Phase 1] 🔄 RESUME MODE: Keeping seeds_per_agent=${seeds_per_agent} fixed`);
+      console.log(`[Phase 1]    Agents needed: ${agentsNeeded}, Browsers: ${browsersNeeded}`);
+    } else {
+      // Fallback: use default pattern but with fixed seeds_per_agent
+      modeConfig = getPatternForSeeds(totalSeeds);
+      console.log(`[Phase 1] ⚠️  No pattern provided for resume, using default`);
+    }
+
+    modeName = isResume ? `Resume (${totalSeeds} missing seeds)` : `Specific (${totalSeeds} seeds)`;
+    console.log(`[Phase 1] 🔄 RESUME MODE: Processing ${totalSeeds} specific seeds`);
+    console.log(`[Phase 1]    Seeds: ${specificSeeds.slice(0, 5).join(', ')}${specificSeeds.length > 5 ? '...' : ''}`);
+  } else if (mode) {
     // Mode explicitly provided (quick_test, mvp_course, full_course)
     try {
       modeConfig = getModeConfig(mode);
@@ -313,7 +516,7 @@ app.post('/start', async (req, res) => {
     modeName = `${modeConfig.name} (${totalSeeds} seeds)`;
   } else {
     return res.status(400).json({
-      error: 'Either mode or totalSeeds must be provided'
+      error: 'Either mode, totalSeeds, or specificSeeds must be provided'
     });
   }
 
@@ -359,6 +562,8 @@ app.post('/start', async (req, res) => {
     known,
     startSeed,
     endSeed: finalEndSeed,
+    specificSeeds: specificSeeds || null,  // NEW: Store specific seeds for resume
+    isResume: isResume,  // NEW: Track if this is a resume operation
     masterCount,
     workersPerMaster,
     seedsPerWorker,
@@ -393,7 +598,9 @@ app.post('/start', async (req, res) => {
       startSeed,
       endSeed: finalEndSeed,
       workersPerMaster,
-      seedsPerWorker
+      seedsPerWorker,
+      specificSeeds: specificSeeds || null,  // NEW: Pass specific seeds for resume
+      isResume: isResume
     }, courseDir, masterCount, seedsPerMaster);
 
     res.json({
@@ -521,7 +728,7 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
   console.log(`   Workers per master: ${params.workersPerMaster}`);
   console.log(`   Seeds per worker: ${params.seedsPerWorker}`);
 
-  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker } = params;
+  const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, specificSeeds, isResume } = params;
 
   // Import browser spawning utility
   const spawner = await loadWebAgentSpawner();
@@ -538,38 +745,80 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
 
   // Build master assignments with their seed ranges
   const masterAssignments = [];
-  for (let m = 0; m < masterCount; m++) {
-    const masterStartSeed = startSeed + (m * seedsPerMaster);
-    const masterEndSeed = Math.min(masterStartSeed + seedsPerMaster - 1, endSeed);
 
-    // Skip if master has no seeds to process
-    if (masterStartSeed > endSeed) {
-      break;
+  // INTELLIGENT RESUME: If specificSeeds provided, distribute them among masters
+  if (specificSeeds && Array.isArray(specificSeeds) && specificSeeds.length > 0) {
+    console.log(`   🔄 RESUME MODE: Distributing ${specificSeeds.length} specific seeds among ${masterCount} masters`);
+
+    // Calculate how many masters we actually need
+    const actualMasterCount = Math.min(masterCount, Math.ceil(specificSeeds.length / seedsPerMaster));
+
+    for (let m = 0; m < actualMasterCount; m++) {
+      const seedStart = m * seedsPerMaster;
+      const seedEnd = Math.min(seedStart + seedsPerMaster, specificSeeds.length);
+      const assignedSeeds = specificSeeds.slice(seedStart, seedEnd);
+
+      // Skip if no seeds for this master
+      if (assignedSeeds.length === 0) break;
+
+      const browserId = `browser-${m + 1}`;
+
+      // Extract numeric seed range for prompt generation
+      const firstSeedNum = parseInt(assignedSeeds[0].replace('S', ''));
+      const lastSeedNum = parseInt(assignedSeeds[assignedSeeds.length - 1].replace('S', ''));
+
+      const masterPrompt = generatePhase1MasterPromptForSpecificSeeds(courseCode, {
+        target,
+        known,
+        specificSeeds: assignedSeeds,
+        workersPerMaster,
+        seedsPerWorker,
+        masterNum: m + 1,
+        totalMasters: actualMasterCount
+      }, courseDir);
+
+      masterAssignments.push({
+        browserId,
+        masterNum: m + 1,
+        assignedSeeds,
+        prompt: masterPrompt
+      });
     }
+  } else {
+    // Standard range-based assignment
+    for (let m = 0; m < masterCount; m++) {
+      const masterStartSeed = startSeed + (m * seedsPerMaster);
+      const masterEndSeed = Math.min(masterStartSeed + seedsPerMaster - 1, endSeed);
 
-    const browserId = `browser-${m + 1}`;
-    const assignedSeeds = [];
-    for (let s = masterStartSeed; s <= masterEndSeed; s++) {
-      assignedSeeds.push(`S${String(s).padStart(4, '0')}`);
+      // Skip if master has no seeds to process
+      if (masterStartSeed > endSeed) {
+        break;
+      }
+
+      const browserId = `browser-${m + 1}`;
+      const assignedSeeds = [];
+      for (let s = masterStartSeed; s <= masterEndSeed; s++) {
+        assignedSeeds.push(`S${String(s).padStart(4, '0')}`);
+      }
+
+      const masterPrompt = generatePhase1MasterPrompt(courseCode, {
+        target,
+        known,
+        startSeed: masterStartSeed,
+        endSeed: masterEndSeed,
+        workersPerMaster,
+        seedsPerWorker,
+        masterNum: m + 1,
+        totalMasters: masterCount
+      }, courseDir);
+
+      masterAssignments.push({
+        browserId,
+        masterNum: m + 1,
+        assignedSeeds,
+        prompt: masterPrompt
+      });
     }
-
-    const masterPrompt = generatePhase1MasterPrompt(courseCode, {
-      target,
-      known,
-      startSeed: masterStartSeed,
-      endSeed: masterEndSeed,
-      workersPerMaster,
-      seedsPerWorker,
-      masterNum: m + 1,
-      totalMasters: masterCount
-    }, courseDir);
-
-    masterAssignments.push({
-      browserId,
-      masterNum: m + 1,
-      assignedSeeds,
-      prompt: masterPrompt
-    });
   }
 
   console.log(`   Generated ${masterAssignments.length} master prompts`);
