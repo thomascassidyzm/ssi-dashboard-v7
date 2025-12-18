@@ -4849,6 +4849,7 @@ async function handleAudioStart(req, res) {
   }
 }
 app.post('/api/audio/start', handleAudioStart);
+app.post('/api/audio/generate', handleAudioStart);  // Dashboard compatibility
 app.post('/api/phase8/start', handleAudioStart);  // Legacy
 
 /**
@@ -4872,6 +4873,7 @@ async function handleAudioStatus(req, res) {
   }
 }
 app.get('/api/audio/status/:courseCode', handleAudioStatus);
+app.get('/api/audio/generation-status/:courseCode', handleAudioStatus);  // Dashboard compatibility (jobId = courseCode)
 app.get('/api/phase8/status/:courseCode', handleAudioStatus);  // Legacy
 
 /**
