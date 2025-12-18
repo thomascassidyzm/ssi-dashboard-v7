@@ -562,11 +562,11 @@
                               pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
                               pair.lego_type === 'COMPOSITE'
                                 ? (pair.is_new ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30' : 'bg-purple-900/10 border-purple-700/30 hover:bg-purple-900/20')
-                                : (pair.is_new ? 'bg-slate-700/50 border-slate-600 hover:bg-slate-700' : 'bg-slate-800/30 border-slate-600/30 hover:bg-slate-800/50')
+                                : (pair.is_new ? 'bg-blue-900/20 border-blue-600/50 hover:bg-blue-900/30' : 'bg-blue-900/10 border-blue-700/30 hover:bg-blue-900/20')
                             ]"
                             title="Click to flag this LEGO for review"
                           >
-                            <div :class="pair.is_new ? 'text-slate-100' : 'text-slate-400'" class="font-medium text-center">
+                            <div :class="pair.is_new ? 'text-blue-100' : 'text-slate-400'" class="font-medium text-center">
                               {{ pair.known_chunk }}
                             </div>
                           </div>
