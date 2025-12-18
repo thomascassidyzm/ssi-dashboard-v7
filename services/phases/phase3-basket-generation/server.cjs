@@ -200,8 +200,8 @@ function buildAvailableVocab(legoPairs, targetLegoId) {
       if (seedNum === targetSeedNum && legoNum > targetLegoNum) break;
 
       // Add this LEGO's words to vocabulary (both languages)
-      const knownWords = extractWords(lego.lego.known);
-      const targetWords = extractWords(lego.lego.target);
+      const knownWords = extractWords(lego.known);
+      const targetWords = extractWords(lego.target);
       knownWords.forEach(w => knownVocab.add(w));
       targetWords.forEach(w => targetVocab.add(w));
     }
@@ -340,12 +340,12 @@ async function getAllLegosInRange(baseCourseDir, startSeed, endSeed) {
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
-        if (lego.new && lego.lego) {
+        if (lego.new && lego.target) {
           allLegos.push({
             legoId: lego.id,
             seed: seed.seed_id,
-            target: lego.lego.target,
-            known: lego.lego.known,
+            target: lego.target,
+            known: lego.known,
             type: lego.type || 'M'
           });
         }
@@ -2946,7 +2946,7 @@ app.post('/upload-basket', async (req, res) => {
         // 2.5 NEW: Enrich practice phrases with word_count, lego_count, and position
         if (basket.practice_phrases && Array.isArray(basket.practice_phrases)) {
           // Collect all LEGO target texts from this seed (for lego_count calculation)
-          const legoTargetsInSeed = legosInSeed.map(lego => lego.lego.target);
+          const legoTargetsInSeed = legosInSeed.map(lego => lego.target);
 
           // Enrich each phrase
           basket.practice_phrases = basket.practice_phrases.map((phrase, index) => ({
