@@ -431,11 +431,14 @@ app.post('/generate', async (req, res) => {
 
         // Calculate metadata
         const checksum = crypto.createHash('md5').update(audioBuffer).digest('hex')
-        const s3Key = `mastered/${uuid}.mp3`
+        let s3Key = `mastered/${uuid}.mp3`
+        let s3Bucket = 'ssi-audio-stage' // default
 
         // Upload to S3
         if (s3Service) {
-          await s3Service.uploadAudio(uuid, audioBuffer)
+          const s3Result = await s3Service.uploadAudio(uuid, audioBuffer)
+          s3Key = s3Result.key
+          s3Bucket = s3Result.bucket
         } else {
           logger.warn(`S3 service not available, skipping upload for ${uuid}`)
         }
@@ -468,7 +471,7 @@ app.post('/generate', async (req, res) => {
           lang: need.lang,
           role: need.role,
           cadence,
-          s3Bucket: 'popty-bach-lfs',
+          s3Bucket,
           s3Key,
           durationMs,
           fileSizeBytes: audioBuffer.length,

@@ -369,6 +369,7 @@ async function processSingleSample(spec, courseCode, azureTTS, s3Service) {
       voice_id: spec.voiceId,
       cadence: spec.cadence,
       s3_key: s3Result.key,
+      s3_bucket: s3Result.bucket,
       course_code: courseCode
     });
   }

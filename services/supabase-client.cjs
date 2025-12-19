@@ -419,6 +419,7 @@ async function checkSamplesExist(uuids) {
  * @param {string} params.voice_id - Voice identifier
  * @param {string} params.cadence - natural or slow
  * @param {string} params.s3_key - S3 key where audio is stored
+ * @param {string} params.s3_bucket - S3 bucket name (default: ssi-audio-stage)
  * @param {string} params.course_code - Course that generated this
  * @returns {Promise<Object>}
  */
@@ -431,6 +432,7 @@ async function registerSample({
   voice_id,
   cadence,
   s3_key,
+  s3_bucket = 'ssi-audio-stage',
   course_code
 }) {
   if (!supabase) throw new Error('Supabase not initialized')
@@ -447,6 +449,7 @@ async function registerSample({
       voice_id,
       cadence,
       s3_key,
+      s3_bucket,
       source: 'tts',
       created_at: new Date().toISOString()
     }, {
