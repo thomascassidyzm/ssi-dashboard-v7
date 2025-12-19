@@ -772,6 +772,7 @@ export const useProductionStore = defineStore('production', () => {
     generationQueue,
     jobStatus,
     costEstimate,
+    audioCourseStats,
     isLoading,
     error,
     wsConnected,

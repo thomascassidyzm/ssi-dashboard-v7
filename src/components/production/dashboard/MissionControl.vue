@@ -49,33 +49,35 @@
 
         <div class="progress-overview">
           <ProgressRing
-            :percent="progressStats.percentComplete"
+            :percent="audioProgressPercent"
             :size="160"
             :stroke-width="12"
-            label="Complete"
+            label="Audio"
             color="emerald"
           />
 
           <div class="progress-stats">
-            <div class="stat-row">
-              <span class="stat-label">Total Samples</span>
-              <span class="stat-value">{{ progressStats.total.toLocaleString() }}</span>
+            <!-- Audio Generation Stats (primary for pre-audio courses) -->
+            <div class="stat-row" v-if="audioCourseStats.total > 0">
+              <span class="stat-label">Audio Files Needed</span>
+              <span class="stat-value">{{ audioCourseStats.total.toLocaleString() }}</span>
             </div>
-            <div class="stat-row">
-              <span class="stat-label">Approved</span>
+            <div class="stat-row" v-if="audioCourseStats.total > 0">
+              <span class="stat-label">Generated</span>
+              <span class="stat-value approved">{{ audioCourseStats.existing.toLocaleString() }}</span>
+            </div>
+            <div class="stat-row" v-if="audioCourseStats.total > 0">
+              <span class="stat-label">Pending Generation</span>
+              <span class="stat-value pending">{{ audioCourseStats.missing.toLocaleString() }}</span>
+            </div>
+            <!-- QA Stats (show when we have samples to review) -->
+            <div class="stat-row" v-if="progressStats.total > 0">
+              <span class="stat-label">QA Approved</span>
               <span class="stat-value approved">{{ progressStats.approved.toLocaleString() }}</span>
             </div>
-            <div class="stat-row">
+            <div class="stat-row" v-if="progressStats.flagged > 0">
               <span class="stat-label">Flagged</span>
               <span class="stat-value flagged">{{ progressStats.flagged.toLocaleString() }}</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">In Progress</span>
-              <span class="stat-value in-progress">{{ progressStats.inProgress.toLocaleString() }}</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">Pending</span>
-              <span class="stat-value pending">{{ progressStats.pending.toLocaleString() }}</span>
             </div>
           </div>
         </div>
@@ -206,6 +208,14 @@ const availableCourses = ref([
 // Computed from store
 const wsConnected = computed(() => store.wsConnected)
 const progressStats = computed(() => store.progressStats)
+const audioCourseStats = computed(() => store.audioCourseStats)
+
+// Audio progress percentage for the ring
+const audioProgressPercent = computed(() => {
+  const audio = audioCourseStats.value
+  if (!audio || audio.total === 0) return 0
+  return Math.round((audio.existing / audio.total) * 100)
+})
 
 // Blockers computed from flagged items
 const blockers = computed(() => {
@@ -251,7 +261,13 @@ const blockers = computed(() => {
 // Pipeline stages
 const pipelineStages = computed(() => {
   const stats = store.progressStats
+  const audio = audioCourseStats.value
   const total = stats.total || 1
+
+  // Audio stats: use actual audio needs if available
+  const audioTotal = audio.total || 0
+  const audioGenerated = audio.existing || 0
+  const audioPercent = audioTotal > 0 ? Math.round((audioGenerated / audioTotal) * 100) : 0
 
   return [
     {
@@ -267,10 +283,10 @@ const pipelineStages = computed(() => {
       id: 'tts-gen',
       name: 'TTS Generation',
       icon: 'TTS',
-      completed: stats.approved,
-      total: total,
-      percent: Math.round((stats.approved / total) * 100),
-      status: 'active'
+      completed: audioGenerated,
+      total: audioTotal,
+      percent: audioPercent,
+      status: audioTotal > 0 ? 'active' : 'pending'
     },
     {
       id: 'recording',

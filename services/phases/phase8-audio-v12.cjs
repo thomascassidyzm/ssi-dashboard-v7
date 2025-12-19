@@ -260,10 +260,62 @@ async function extractAudioNeeds(courseCode) {
 // =============================================================================
 
 /**
+ * FAST check for planning - batch query to see what audio already exists
+ * Does NOT create records, just checks existence
+ */
+async function checkAudioStatusFast(needs) {
+  logger.log(`Fast-checking audio status for ${needs.length} needs`)
+
+  // Query existing audio_files that have s3_key set (already generated)
+  const { data: existingAudio, error } = await supabase
+    .from('audio_files')
+    .select('id, text_id, voice_id, cadence, s3_key, texts!inner(content, language)')
+    .not('s3_key', 'is', null)
+
+  if (error) {
+    logger.warn(`Could not query existing audio: ${error.message}`)
+    // Fall back to assuming all need generation
+    return {
+      results: needs.map(n => ({ ...n, needsGeneration: true })),
+      needsGeneration: needs
+    }
+  }
+
+  // Build lookup set of existing audio (normalized text + voice + cadence)
+  const existingSet = new Set()
+  for (const audio of existingAudio || []) {
+    const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}|${audio.cadence}`
+    existingSet.add(key)
+  }
+
+  logger.log(`Found ${existingSet.size} existing audio files in database`)
+
+  // Check each need against existing
+  const results = []
+  const needsGeneration = []
+
+  for (const need of needs) {
+    const key = `${need.text.toLowerCase().trim()}|${need.language}|${need.voiceId}|${need.cadence}`
+    const exists = existingSet.has(key)
+
+    results.push({ ...need, needsGeneration: !exists })
+
+    if (!exists) {
+      needsGeneration.push(need)
+    }
+  }
+
+  logger.log(`Status: ${results.length} checked, ${needsGeneration.length} need generation`)
+
+  return { results, needsGeneration }
+}
+
+/**
  * For each need, call find_or_create_audio to get audio_id and check if generation needed
+ * Used during actual generation (slower but creates records)
  */
 async function checkAudioStatus(needs) {
-  logger.log(`Checking audio status for ${needs.length} needs`)
+  logger.log(`Checking audio status for ${needs.length} needs (with record creation)`)
 
   const results = []
   const needsGeneration = []
@@ -456,8 +508,8 @@ app.post('/plan', async (req, res) => {
     // Extract needs
     const { needs, voiceConfig, phraseCount } = await extractAudioNeeds(courseCode)
 
-    // Check what already exists
-    const { results, needsGeneration } = await checkAudioStatus(needs)
+    // Check what already exists (fast batch query for planning)
+    const { results, needsGeneration } = await checkAudioStatusFast(needs)
 
     const plan = {
       courseCode,
