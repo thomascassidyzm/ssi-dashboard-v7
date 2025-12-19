@@ -275,7 +275,7 @@ async function getCourseVoices(courseCode) {
 
   const { data, error } = await supabase
     .from('courses')
-    .select('source_voice_id, target1_voice_id, target2_voice_id, presentation_voice_id')
+    .select('known_voice, target1_voice, target2_voice, presentation_voice')
     .eq('course_code', courseCode)
     .single()
 
@@ -287,10 +287,10 @@ async function getCourseVoices(courseCode) {
 
   // Map to simpler keys
   return {
-    source: data.source_voice_id,
-    target1: data.target1_voice_id,
-    target2: data.target2_voice_id,
-    presentation: data.presentation_voice_id
+    known: data.known_voice,
+    target1: data.target1_voice,
+    target2: data.target2_voice,
+    presentation: data.presentation_voice
   }
 }
 
@@ -312,10 +312,10 @@ async function upsertCourse(courseCode, knownLang, targetLang, voices = {}) {
       course_code: courseCode,
       known_lang: knownLang,
       target_lang: targetLang,
-      source_voice_id: voices.source,
-      target1_voice_id: voices.target1,
-      target2_voice_id: voices.target2,
-      presentation_voice_id: voices.presentation
+      known_voice: voices.known,
+      target1_voice: voices.target1,
+      target2_voice: voices.target2,
+      presentation_voice: voices.presentation
     }, {
       onConflict: 'course_code'
     })
@@ -561,6 +561,14 @@ async function getFlagsByStatus(courseCode, status) {
  */
 function isInitialized() {
   return !!supabase
+}
+
+/**
+ * Get the Supabase client instance
+ * @returns {Object|null} The Supabase client
+ */
+function getClient() {
+  return supabase
 }
 
 /**
@@ -1096,6 +1104,7 @@ module.exports = {
   getRecordingQueue,
   updateRecordingStatus,
   isInitialized,
+  getClient,
   getCourseStats,
   getAllCourseContentStats,
   insertRecordingProvenance,

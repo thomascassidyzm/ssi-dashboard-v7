@@ -35,7 +35,9 @@ function getLanguageName(code) {
 }
 
 function generateAtomicPresentation(targetLang, knownLego, targetLego, knownSeed) {
-  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... '${targetLego}' ... '${targetLego}'`;
+  // Voice tags: {target1} for first presentation, {target2} for reinforcement
+  // The known language narration is spoken by the 'known' voice (no tag needed - default)
+  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... {target1}'${targetLego}' ... {target2}'${targetLego}'`;
 }
 
 function generateMolecularPresentation(targetLang, knownLego, targetLego, knownSeed, components) {
@@ -59,7 +61,8 @@ function generateMolecularPresentation(targetLang, knownLego, targetLego, knownS
     explanation = componentParts.join(', ');
   }
 
-  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... '${targetLego}' ... '${targetLego}' - ${explanation}`;
+  // Voice tags: {target1} for first presentation, {target2} for reinforcement
+  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... {target1}'${targetLego}' ... {target2}'${targetLego}' - ${explanation}`;
 }
 
 async function generateIntroductions(courseDir) {

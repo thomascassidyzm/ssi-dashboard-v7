@@ -991,21 +991,41 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
   const { courseCode } = req.params
   try {
     const response = await axios.post(`${PHASE8_URL}/plan`, { courseCode })
-    // Transform response for frontend
+    // Transform Phase 8 response for frontend
+    // Phase 8 returns: { plan: { total, phraseNeeds, introNeeds, existing, toGenerate, ... } }
     const plan = response.data.plan || {}
+    const voices = response.data.voices || {}
+
+    // Calculate breakdown by role from samples if available
+    const samples = plan.samples || []
+    const breakdown = {
+      known: samples.filter(s => s.role === 'known').length,
+      target1: samples.filter(s => s.role === 'target1').length,
+      target2: samples.filter(s => s.role === 'target2').length,
+      introduction: plan.introNeeds || 0
+    }
+
+    // Estimate cost: ~$0.004 per TTS request (Azure average)
+    const toGenerate = plan.toGenerate || plan.total || 0
+    const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
+
     res.json({
       success: true,
-      estimatedCost: `$${plan.estimatedCostUSD || '0.00'}`,
-      estimatedTime: `${Math.ceil((plan.missingSamples || 0) / 60)} min`,
-      total: plan.totalSamples || 0,
-      existing: plan.existingSamples || 0,
-      missing: plan.missingSamples || 0,
+      estimatedCost: `$${estimatedCostUSD}`,
+      estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
+      total: plan.total || 0,
+      existing: plan.existing || 0,
+      missing: toGenerate,
+      phraseNeeds: plan.phraseNeeds || 0,
+      introNeeds: plan.introNeeds || 0,
       breakdown: [
-        { role: 'source', count: plan.sampleBreakdown?.source || 0 },
-        { role: 'target1', count: plan.sampleBreakdown?.target1 || 0 },
-        { role: 'target2', count: plan.sampleBreakdown?.target2 || 0 }
+        { role: 'known', count: breakdown.known || Math.floor((plan.phraseNeeds || 0) / 3) },
+        { role: 'target1', count: breakdown.target1 || Math.floor((plan.phraseNeeds || 0) / 3) },
+        { role: 'target2', count: breakdown.target2 || Math.floor((plan.phraseNeeds || 0) / 3) },
+        { role: 'introduction', count: breakdown.introduction }
       ],
-      voices: plan.voiceAssignments || {}
+      voices: voices,
+      dataSource: response.data.dataSource || 'unknown'
     })
   } catch (error) {
     logger.error(`Audio plan error for ${courseCode}:`, error.message)
@@ -1086,6 +1106,155 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
       return res.status(503).json({ error: 'Phase 8 audio service not running' })
     }
     res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/sync-s3
+// Sync existing S3 audio files to Supabase (import existing audio)
+app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) => {
+  const { courseCode } = req.params
+  logger.info(`Starting S3 to Supabase sync for ${courseCode}`)
+
+  try {
+    // Step 1: Get ALL audio needs directly from database (not limited like Phase 8 plan)
+    const supabase = supabaseClient.getClient()
+
+    // Get course voices
+    const { data: courseData } = await supabase
+      .from('courses')
+      .select('known_voice, target1_voice, target2_voice')
+      .eq('course_code', courseCode)
+      .single()
+
+    const voices = {
+      known: courseData?.known_voice,
+      target1: courseData?.target1_voice,
+      target2: courseData?.target2_voice
+    }
+
+    // Get all practice phrases for this course
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, position, known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) throw phrasesError
+
+    logger.info(`Found ${phrases?.length || 0} practice phrases in database for ${courseCode}`)
+
+    // Parse course code for languages
+    const parts = courseCode.split('_for_')
+    const targetLang = parts[0] || 'zho'
+    const knownLang = parts[1] || 'eng'
+
+    // Build samples list with UUIDs
+    const samples = []
+    const seen = new Set()
+
+    for (const phrase of phrases || []) {
+      // Target1 audio
+      if (phrase.target_text && voices.target1) {
+        const uuid = supabaseClient.generateAudioUUID(voices.target1, phrase.target_text, targetLang, 'target1', 'slow')
+        if (!seen.has(uuid)) {
+          seen.add(uuid)
+          samples.push({ uuid, text: phrase.target_text, lang: targetLang, role: 'target1' })
+        }
+      }
+      // Target2 audio
+      if (phrase.target_text && voices.target2) {
+        const uuid = supabaseClient.generateAudioUUID(voices.target2, phrase.target_text, targetLang, 'target2', 'slow')
+        if (!seen.has(uuid)) {
+          seen.add(uuid)
+          samples.push({ uuid, text: phrase.target_text, lang: targetLang, role: 'target2' })
+        }
+      }
+      // Known audio
+      if (phrase.known_text && voices.known) {
+        const uuid = supabaseClient.generateAudioUUID(voices.known, phrase.known_text, knownLang, 'known', 'natural')
+        if (!seen.has(uuid)) {
+          seen.add(uuid)
+          samples.push({ uuid, text: phrase.known_text, lang: knownLang, role: 'known' })
+        }
+      }
+    }
+
+    logger.info(`Extracted ${samples.length} unique audio needs from database`)
+
+    if (samples.length === 0) {
+      return res.json({ success: true, message: 'No audio samples needed', synced: 0 })
+    }
+
+    // Step 2: Batch check which UUIDs exist in S3
+    const uuids = samples.map(s => s.uuid)
+    const existsResults = await s3Service.batchCheckAudio(uuids, 'ssi-audio-stage')
+
+    const existingInS3 = samples.filter(s => existsResults[s.uuid])
+    logger.info(`Found ${existingInS3.length}/${samples.length} samples in S3`)
+
+    if (existingInS3.length === 0) {
+      return res.json({ success: true, message: 'No matching audio in S3', synced: 0 })
+    }
+
+    // Step 3: Register in Supabase (supabase client already declared above)
+    let synced = 0
+    let skipped = 0
+    let errors = 0
+
+    for (const sample of existingInS3) {
+      try {
+        // Check if already registered
+        const { data: existing } = await supabase
+          .from('audio_samples')
+          .select('uuid')
+          .eq('uuid', sample.uuid)
+          .single()
+
+        if (existing) {
+          skipped++
+          continue
+        }
+
+        // Register the sample
+        const { error } = await supabase
+          .from('audio_samples')
+          .insert({
+            uuid: sample.uuid,
+            text: sample.text,
+            lang: sample.lang,
+            role: sample.role,
+            voice_id: voices[sample.role] || null,
+            cadence: sample.role === 'known' ? 'natural' : 'slow',
+            s3_bucket: 'ssi-audio-stage',
+            s3_key: `mastered/${sample.uuid}.mp3`,
+            course_code: courseCode,
+            source: 's3-sync',
+            created_at: new Date().toISOString()
+          })
+
+        if (error && error.code !== '23505') {
+          logger.warn(`Error registering ${sample.uuid}: ${error.message}`)
+          errors++
+        } else {
+          synced++
+        }
+      } catch (err) {
+        logger.warn(`Error processing ${sample.uuid}: ${err.message}`)
+        errors++
+      }
+    }
+
+    logger.info(`S3 sync complete: ${synced} synced, ${skipped} skipped, ${errors} errors`)
+    res.json({
+      success: true,
+      totalInPlan: samples.length,
+      foundInS3: existingInS3.length,
+      synced,
+      skipped,
+      errors
+    })
+  } catch (error) {
+    logger.error(`S3 sync error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
   }
 })
 

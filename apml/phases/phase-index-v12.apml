@@ -1,0 +1,414 @@
+# APML Phase Index v12.0.0
+# SSI Course Production Pipeline
+# Version: 12.0.0 (2025-12-19)
+# Status: DRAFT - Proposed new architecture
+#
+# BREAKING CHANGES from v11:
+# - Hash-based UUIDs REMOVED - database-assigned UUIDs only
+# - Text is a first-class entity (texts table)
+# - Audio is a rendering of text (audio_files table)
+# - Role is course-specific, not part of audio identity
+# - Query-based lookup replaces hash matching
+
+## ============================================================================
+## VERSION 12 BREAKING CHANGES
+## ============================================================================
+
+BREAKING_CHANGES:
+  summary: |
+    Version 12 fundamentally changes audio identification from hash-based
+    to registry-based. This eliminates the fragility of hash mismatches.
+
+  from_v11:
+    removed:
+      - "Hash-based UUID generation (uuid-v11.cjs)"
+      - "AUDIO_KEY structure (voiceId:lang:role:cadence:text)"
+      - "generateSampleId() and generateAudioUUID() functions"
+      - "SSI_AUDIO_NAMESPACE constant"
+
+    added:
+      - "texts table: all unique text across all courses"
+      - "audio_files table: renderings with database-assigned UUIDs"
+      - "course_audio table: course-specific usage (role, context)"
+      - "Query-based audio lookup with flexible matching"
+
+    changed:
+      - "Audio identity: hash(params) → database-assigned random UUID"
+      - "Audio lookup: compute hash → query database"
+      - "Deduplication: hash collision → UNIQUE constraint"
+      - "Cross-course sharing: same hash → same text_id + voice_id + cadence"
+
+  rationale: |
+    Hash-based UUIDs were fragile:
+    - Any parameter variation = different hash = orphaned audio
+    - Voice ID format: "XiaoxiaoNeural" vs "zh-CN-XiaoxiaoNeural"
+    - Language codes: "zho" vs "zh" vs "zh-CN"
+    - Parameter order in hash input
+    - Text normalization inconsistencies
+
+    Registry-based approach separates identity from lookup:
+    - UUID is arbitrary (database-assigned)
+    - Lookup is flexible (database query with normalization)
+    - Can fix lookup logic without touching S3 files
+
+## ============================================================================
+## DATA LAYER ARCHITECTURE (v12)
+## ============================================================================
+
+DATA_LAYER:
+  core_spec: "apml/core/audio-registry-v12.apml"
+
+  principle: |
+    Text is the foundation. Audio is a rendering.
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │  texts              audio_files           course_audio          │
+    │  ──────             ───────────           ────────────          │
+    │  id (UUID)    ←──   text_id               audio_id    ──→       │
+    │  content            voice_id              course_code           │
+    │  language           cadence               role                  │
+    │                     s3_key                context               │
+    └─────────────────────────────────────────────────────────────────┘
+
+    - texts: Unique by (content_normalized, language)
+    - audio_files: Unique by (text_id, voice_id, cadence)
+    - course_audio: Links courses to audio with role context
+
+  supabase:
+    tables:
+      texts:
+        description: "All unique text units across all courses"
+        key_columns: ["content", "language"]
+        uniqueness: "(LOWER(TRIM(content)), language)"
+
+      voices:
+        description: "Registry of TTS and human voices"
+        key_columns: ["voice_id"]
+        canonical_format: "{provider}:{locale}-{name}"
+
+      audio_files:
+        description: "Audio renderings of text"
+        key_columns: ["text_id", "voice_id", "cadence"]
+        uuid_source: "Database-assigned (gen_random_uuid())"
+
+      course_audio:
+        description: "Course-specific usage of audio"
+        key_columns: ["course_code", "audio_id", "role", "context"]
+
+  s3:
+    bucket: "ssi-audio-stage"
+    region: "eu-west-1"
+    key_format: "mastered/{uuid}.mp3"
+    uuid_source: "audio_files.id (database-assigned)"
+
+## ============================================================================
+## AUDIO LOOKUP FLOW (v12 - Registry-Based)
+## ============================================================================
+
+AUDIO_LOOKUP:
+  description: |
+    Finding audio is now a database query, not a hash computation.
+    This allows flexible matching and handles variations gracefully.
+
+  flow:
+    1:
+      name: "Find or create text"
+      sql: |
+        INSERT INTO texts (content, language)
+        VALUES ($text, $language)
+        ON CONFLICT (content_normalized, language)
+        DO UPDATE SET content = EXCLUDED.content
+        RETURNING id
+
+    2:
+      name: "Find or create audio entry"
+      sql: |
+        INSERT INTO audio_files (text_id, voice_id, cadence)
+        VALUES ($text_id, $voice_id, $cadence)
+        ON CONFLICT (text_id, voice_id, cadence) DO NOTHING
+        RETURNING id, s3_key
+
+    3:
+      name: "Check if generation needed"
+      condition: "s3_key IS NULL"
+      action: "Generate TTS, upload to S3, update s3_key"
+
+    4:
+      name: "Link to course"
+      sql: |
+        INSERT INTO course_audio (course_code, audio_id, role, context)
+        VALUES ($course_code, $audio_id, $role, $context)
+        ON CONFLICT DO NOTHING
+
+  cross_course_deduplication: |
+    Course A needs "怎么" with voice X:
+      → texts row created (or found)
+      → audio_files row created (or found)
+      → course_audio links Course A to audio
+
+    Course B needs same "怎么" with voice X:
+      → Same texts row found
+      → Same audio_files row found
+      → course_audio links Course B to SAME audio
+
+    No hash computation. No collision risk. Just foreign keys.
+
+## ============================================================================
+## AUDIO GENERATION FLOW (v12)
+## ============================================================================
+
+AUDIO_GENERATION_FLOW:
+  description: |
+    Generate audio from lego_baskets.json using registry-based lookup.
+    Audio-first principle retained: generate all audio before manifest.
+
+  steps:
+    1:
+      name: "Load content requirements"
+      source: "lego_baskets.json OR Supabase course_practice_phrases"
+
+    2:
+      name: "Extract unique text requirements"
+      for_each: "phrase in baskets"
+      extract:
+        - "target_text (zho, spa, etc.)"
+        - "known_text (eng)"
+
+    3:
+      name: "Ensure texts exist"
+      sql: |
+        INSERT INTO texts (content, language)
+        SELECT DISTINCT target_text, $target_lang FROM phrases
+        UNION
+        SELECT DISTINCT known_text, $known_lang FROM phrases
+        ON CONFLICT DO NOTHING
+
+    4:
+      name: "Ensure audio entries exist"
+      for_each: "(text, voice, cadence) combination needed"
+      sql: |
+        INSERT INTO audio_files (text_id, voice_id, cadence)
+        SELECT t.id, $voice_id, $cadence
+        FROM texts t
+        WHERE t.content_normalized = LOWER(TRIM($text))
+          AND t.language = $lang
+        ON CONFLICT DO NOTHING
+
+    5:
+      name: "Find audio needing generation"
+      sql: |
+        SELECT af.id, t.content, v.voice_id, af.cadence
+        FROM audio_files af
+        JOIN texts t ON t.id = af.text_id
+        JOIN voices v ON v.id = af.voice_id
+        WHERE af.s3_key IS NULL
+
+    6:
+      name: "Generate TTS and upload"
+      for_each: "audio entry with s3_key IS NULL"
+      process:
+        - "Call TTS API (Azure/ElevenLabs)"
+        - "Upload to S3: mastered/{audio_files.id}.mp3"
+        - "UPDATE audio_files SET s3_key = ... WHERE id = ..."
+
+    7:
+      name: "Link to course"
+      sql: |
+        INSERT INTO course_audio (course_code, audio_id, role, context)
+        SELECT $course_code, af.id, $role, $context
+        FROM audio_files af
+        JOIN texts t ON t.id = af.text_id
+        WHERE t.content = $text AND t.language = $lang
+        ON CONFLICT DO NOTHING
+
+## ============================================================================
+## MANIFEST COMPILATION (v12)
+## ============================================================================
+
+MANIFEST_COMPILATION:
+  description: |
+    Compile manifest by querying audio_files for UUIDs.
+    No hash computation - just join on text content.
+
+  lookup_query: |
+    SELECT af.id as uuid, t.content as text, af.cadence
+    FROM audio_files af
+    JOIN texts t ON t.id = af.text_id
+    JOIN voices v ON v.id = af.voice_id
+    WHERE t.content_normalized = LOWER(TRIM($text))
+      AND t.language = $language
+      AND v.voice_id = $voice_id
+      AND af.cadence = $cadence
+
+  validation: |
+    Before compiling manifest, verify 100% audio coverage:
+
+    SELECT COUNT(*) as missing
+    FROM required_phrases rp
+    LEFT JOIN texts t ON t.content_normalized = LOWER(TRIM(rp.text))
+                     AND t.language = rp.language
+    LEFT JOIN audio_files af ON af.text_id = t.id
+                            AND af.voice_id = $voice_id
+                            AND af.cadence = $cadence
+    WHERE af.id IS NULL
+
+## ============================================================================
+## PIPELINE PHASES (v12)
+## ============================================================================
+
+CONTENT_PHASES:
+  note: |
+    Phases 1-3 unchanged from v11. Only audio-related phases updated.
+
+  PHASE_1:
+    name: "Translation + LEGO Extraction"
+    version: "12.0.0"
+    changes_from_v11: "None - content generation unchanged"
+
+  PHASE_2:
+    name: "Conflict Resolution"
+    version: "12.0.0"
+    changes_from_v11: "None - conflict resolution unchanged"
+
+  PHASE_3:
+    name: "Basket Generation"
+    version: "12.0.0"
+    changes_from_v11: "None - basket generation unchanged"
+
+  PHASE_8:
+    name: "Audio Generation"
+    version: "12.0.0 MAJOR CHANGES"
+    changes_from_v11:
+      - "Hash-based UUID generation REMOVED"
+      - "Uses registry-based lookup (INSERT...ON CONFLICT)"
+      - "Audio identity from database, not hash"
+      - "S3 key uses database-assigned UUID"
+
+    endpoints:
+      plan:
+        method: "POST /plan"
+        description: "Count missing audio by checking s3_key IS NULL"
+
+      generate:
+        method: "POST /generate"
+        description: "Generate TTS for audio_files with s3_key IS NULL"
+
+  PHASE_9:
+    name: "Manifest Compilation"
+    version: "12.0.0 CHANGES"
+    changes_from_v11:
+      - "UUID lookup via JOIN, not hash computation"
+      - "Validation query checks audio_files existence"
+
+## ============================================================================
+## APML SCHEMA COMPILER
+## ============================================================================
+
+SCHEMA_COMPILER:
+  description: |
+    The APML compiler reads schema definitions from audio-registry-v12.apml
+    and generates:
+    1. PostgreSQL DDL for Supabase migrations
+    2. TypeScript types for frontend/backend
+    3. Validation functions
+
+  input: "apml/core/audio-registry-v12.apml"
+
+  outputs:
+    postgresql:
+      target: "supabase/migrations/YYYYMMDD_audio_registry_v12.sql"
+      generates:
+        - "CREATE TABLE statements"
+        - "UNIQUE constraints"
+        - "Foreign key constraints"
+        - "Indexes"
+        - "Generated columns"
+
+    typescript:
+      target: "src/types/audio-registry.ts"
+      generates:
+        - "Interface for each table"
+        - "Enum types for constrained columns"
+        - "Insert/Update types"
+
+    supabase:
+      target: "src/types/supabase.ts"
+      method: "supabase gen types typescript"
+
+  usage: |
+    # Compile APML to SQL
+    node apml/compiler/compile.js --target postgresql apml/core/audio-registry-v12.apml
+
+    # Compile APML to TypeScript
+    node apml/compiler/compile.js --target typescript apml/core/audio-registry-v12.apml
+
+    # Generate full migration
+    node apml/compiler/compile.js --target migration apml/core/audio-registry-v12.apml
+
+## ============================================================================
+## MIGRATION FROM v11
+## ============================================================================
+
+MIGRATION:
+  strategy: |
+    Clean break recommended. Audio is cheap to regenerate.
+    Time spent fixing hash mismatches >> cost of regenerating audio.
+
+  option_1_clean_break:
+    description: "Start fresh with v12 schema, regenerate all audio"
+    steps:
+      1: "Deploy v12 schema (texts, audio_files, course_audio)"
+      2: "Populate texts from lego_baskets content"
+      3: "Create audio_files entries (s3_key = NULL)"
+      4: "Run Phase 8 to generate all audio"
+      5: "Run Phase 9 to compile manifests"
+    cost: "~$1-5 per course in TTS"
+    benefit: "Clean slate, no legacy issues"
+
+  option_2_migrate_existing:
+    description: "Import existing audio to v12 schema"
+    steps:
+      1: "Deploy v12 schema"
+      2: "Scan S3 for existing audio files"
+      3: "For each file, extract metadata (voice, text, lang)"
+      4: "Create texts and audio_files entries"
+      5: "Copy/rename S3 files to new UUID-based keys"
+    complexity: "High - need to reverse-engineer what generated each file"
+    risk: "May not recover all metadata accurately"
+
+  recommendation: |
+    For production: Option 1 (clean break).
+    Audio regeneration is cheap. Engineering time fixing fragile hashes is expensive.
+
+## ============================================================================
+## SUMMARY
+## ============================================================================
+
+SUMMARY:
+  version: "12.0.0"
+  date: "2025-12-19"
+
+  key_changes:
+    - "Hash-based UUIDs REMOVED entirely"
+    - "Database-assigned UUIDs (gen_random_uuid())"
+    - "texts table: first-class entity for all text"
+    - "audio_files table: renderings linked to texts"
+    - "Query-based lookup with flexible matching"
+    - "Role is course-specific (course_audio), not audio identity"
+    - "APML schema compiler generates SQL and TypeScript"
+
+  benefits:
+    - "No hash fragility - lookup handles variations"
+    - "Cross-course deduplication via foreign keys"
+    - "Debuggable - can query by any field"
+    - "Evolvable - change matching logic without touching S3"
+    - "Clean separation: text → audio → course usage"
+
+  principle: |
+    Text exists. Audio is a rendering. UUID is a handle.
+    Query finds audio. Hash is gone.
+
+## ============================================================================
+## GENERATED: 2025-12-19
+## APML v12.0.0
+## ============================================================================

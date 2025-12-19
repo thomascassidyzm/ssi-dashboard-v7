@@ -174,6 +174,81 @@ async function loadVoiceConfig(courseCode) {
 }
 
 /**
+ * Auto-register an Azure voice in the voices table if it doesn't exist
+ * This ensures any voice selected from Azure discovery is available for audio generation
+ *
+ * @param {object} voiceSettings - Voice settings from config
+ * @returns {Promise<void>}
+ */
+async function ensureVoiceRegistered(voiceSettings) {
+  if (!supabase || !voiceSettings?.voiceId) return;
+
+  const voiceId = voiceSettings.voiceId;
+  const provider = voiceSettings.provider || 'azure';
+
+  // Only auto-register Azure voices (ElevenLabs should be manually added)
+  if (provider !== 'azure') return;
+
+  try {
+    // Check if voice already exists
+    const { data: existing } = await supabase
+      .from('voices')
+      .select('voice_id')
+      .eq('voice_id', voiceId)
+      .single();
+
+    if (existing) {
+      // Voice already registered
+      return;
+    }
+
+    // Parse Azure voice name to extract locale (e.g., "zh-CN-XiaoxiaoMultilingualNeural" -> "zh-CN")
+    const localeParts = voiceId.match(/^([a-z]{2}-[A-Z]{2})/);
+    const locale = localeParts ? localeParts[1] : null;
+
+    // Extract voice name (e.g., "XiaoxiaoMultilingualNeural")
+    const voiceName = voiceId.replace(/^[a-z]{2}-[A-Z]{2}-/, '');
+
+    // Map locale to ISO 639-3 language code
+    const localeToLang = {
+      'zh-CN': 'zho', 'zh-TW': 'zho', 'zh-HK': 'zho',
+      'en-GB': 'eng', 'en-US': 'eng', 'en-AU': 'eng', 'en-IE': 'eng',
+      'es-ES': 'spa', 'es-MX': 'spa', 'es-AR': 'spa',
+      'it-IT': 'ita',
+      'de-DE': 'deu',
+      'fr-FR': 'fra',
+      'ja-JP': 'jpn',
+      'ko-KR': 'kor',
+      'cy-GB': 'cym',
+      'ga-IE': 'gle'
+    };
+    const langCode = localeToLang[locale] || locale?.split('-')[0] || 'unknown';
+
+    // Insert new voice
+    const { error } = await supabase
+      .from('voices')
+      .insert({
+        voice_id: voiceId,
+        type: 'tts',
+        tts_engine: 'azure',
+        tts_voice_name: voiceName,
+        tts_locale: locale,
+        languages: [langCode],
+        display_name: voiceSettings.name || voiceName,
+        is_active: true
+      });
+
+    if (error && error.code !== '23505') { // Ignore duplicate key errors
+      console.warn(`[VoiceConfig] Could not auto-register voice ${voiceId}:`, error.message);
+    } else {
+      console.log(`[VoiceConfig] Auto-registered Azure voice: ${voiceId}`);
+    }
+  } catch (err) {
+    console.warn(`[VoiceConfig] Error checking/registering voice ${voiceId}:`, err.message);
+  }
+}
+
+/**
  * Save voice configuration for a course to Supabase
  *
  * @param {string} courseCode
@@ -199,6 +274,15 @@ async function saveVoiceConfig(courseCode, config) {
   }
 
   try {
+    // Auto-register any Azure voices that don't exist in the voices table
+    // This ensures Phase 8 can look up the voice when generating audio
+    const voiceRoles = ['target1', 'target2', 'known', 'presentation'];
+    for (const role of voiceRoles) {
+      if (fullConfig.voices?.[role]?.voiceId) {
+        await ensureVoiceRegistered(fullConfig.voices[role]);
+      }
+    }
+
     // Parse course code to get languages (e.g., zho_for_eng -> target=zho, known=eng)
     const parts = courseCode.split('_for_');
     const targetLang = parts[0] || 'unknown';

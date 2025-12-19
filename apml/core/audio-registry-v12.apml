@@ -1,0 +1,404 @@
+# APML: Audio Registry Architecture
+# Version: 12.0.0 (2025-12-19)
+# Status: DRAFT - Proposed new architecture
+# Type: CORE ARCHITECTURE SPECIFICATION
+
+architecture AudioRegistry:
+  name: "Registry-First Audio Architecture"
+  purpose: "Replace hash-based UUIDs with database-first registry approach"
+  version: "12.0.0"
+
+  ## ==========================================================================
+  ## BREAKING CHANGE: Hash-Based UUIDs Removed
+  ## ==========================================================================
+
+  breaking_change:
+    summary: |
+      Version 12 REMOVES hash-based UUID generation entirely.
+      UUIDs are now database-assigned, not computed from parameters.
+
+    problem_with_v11: |
+      Hash-based UUIDs (UUID = hash(voice:text:lang:role:cadence)) are FRAGILE:
+
+      1. Parameter order sensitivity:
+         hash("voice:text:lang") ≠ hash("voice:lang:text")
+
+      2. Voice ID format variations:
+         hash("XiaoxiaoNeural:...") ≠ hash("zh-CN-XiaoxiaoNeural:...")
+
+      3. Language code variations:
+         hash("...:zho:...") ≠ hash("...:zh:...") ≠ hash("...:zh-CN:...")
+
+      4. Text normalization inconsistencies:
+         hash("hello") ≠ hash(" hello ") ≠ hash("Hello")
+
+      Result: Audio exists in S3 but can't be found because lookup params
+      don't EXACTLY match generation params. Orphaned audio, wasted TTS costs.
+
+    solution: |
+      SEPARATE identity from lookup:
+      - UUID = random (database-assigned at creation)
+      - Lookup = flexible database query (can normalize, fuzzy match)
+
+      The database query handles variations. The UUID is just a handle.
+
+  ## ==========================================================================
+  ## CORE PRINCIPLE: Text is the Foundation
+  ## ==========================================================================
+
+  principle: |
+    Text exists. Audio is just a RENDERING of text with a specific voice.
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                     CONTENT LIBRARY                              │
+    │                                                                  │
+    │  texts ─────────────── audio_files ─────────────── s3           │
+    │  (what to say)         (renderings)                (bytes)       │
+    │                                                                  │
+    │         ↑                    ↑                                   │
+    │         └────── courses reference what they need ────────┘       │
+    └─────────────────────────────────────────────────────────────────┘
+
+    - Text: Unique by (content, language) - "content" in English ≠ "content" in French
+    - Audio: Rendering of text with voice + cadence
+    - Course: References audio it needs (role is course-specific context)
+
+  ## ==========================================================================
+  ## SCHEMA DEFINITION (APML Compilable)
+  ## ==========================================================================
+
+  schema:
+    version: "12.0.0"
+    database: "supabase"
+    compiler_target: "postgresql"
+
+    ## ------------------------------------------------------------------------
+    ## TEXTS TABLE - All unique text across all courses
+    ## ------------------------------------------------------------------------
+
+    table texts:
+      description: "All unique text units across all courses"
+      purpose: "Single source of truth for what needs to be spoken"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+          description: "Database-assigned unique identifier"
+
+        content:
+          type: "TEXT"
+          nullable: false
+          description: "The actual text content to speak"
+
+        language:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 language code (eng, zho, spa, etc.)"
+
+        content_normalized:
+          type: "TEXT"
+          generated: "LOWER(TRIM(content))"
+          stored: true
+          description: "Normalized for deduplication matching"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_text_per_language:
+          type: "UNIQUE"
+          columns: ["content_normalized", "language"]
+          description: "Same text in different languages = different rows"
+
+      indexes:
+        idx_texts_normalized:
+          columns: ["content_normalized", "language"]
+          purpose: "Fast lookup for deduplication"
+
+        idx_texts_language:
+          columns: ["language"]
+          purpose: "Filter by language"
+
+    ## ------------------------------------------------------------------------
+    ## VOICES TABLE - EXISTING (not created by this migration)
+    ## ------------------------------------------------------------------------
+    ##
+    ## The voices table already exists with this structure:
+    ##   voice_id (TEXT, PRIMARY KEY) - e.g., "azure_zh-CN-XiaoxiaoNeural"
+    ##   type (TEXT) - "tts" or "human"
+    ##   tts_engine (TEXT) - "azure", "elevenlabs"
+    ##   tts_voice_name (TEXT) - "XiaoxiaoNeural"
+    ##   tts_locale (TEXT) - "zh-CN"
+    ##   languages (TEXT[]) - ["zho"]
+    ##   is_active (BOOLEAN)
+    ##   ... and more
+    ##
+    ## We reference this existing table, not recreate it.
+    ##
+
+    existing_table voices:
+      description: "Registry of available voices (TTS and human) - ALREADY EXISTS"
+      primary_key: "voice_id"
+      primary_key_type: "TEXT"
+
+      key_columns:
+        voice_id:
+          type: "TEXT"
+          description: "Canonical voice identifier (e.g., azure_zh-CN-XiaoxiaoNeural)"
+
+    ## ------------------------------------------------------------------------
+    ## AUDIO_FILES TABLE - Renderings of text
+    ## ------------------------------------------------------------------------
+
+    table audio_files:
+      description: "Audio renderings - each is a specific voice speaking specific text"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+          description: "Database-assigned, NOT hash-computed"
+
+        text_id:
+          type: "UUID"
+          nullable: false
+          references: "texts(id)"
+          on_delete: "RESTRICT"
+          description: "What text this audio speaks"
+
+        voice_id:
+          type: "TEXT"
+          nullable: false
+          references: "voices(voice_id)"
+          on_delete: "RESTRICT"
+          description: "Which voice speaks it (references existing voices table)"
+
+        cadence:
+          type: "TEXT"
+          nullable: false
+          values: ["slow", "natural"]
+          description: "Speaking speed"
+
+        s3_bucket:
+          type: "TEXT"
+          description: "S3 bucket containing the file"
+
+        s3_key:
+          type: "TEXT"
+          description: "S3 object key (path)"
+
+        duration_ms:
+          type: "INTEGER"
+          description: "Audio duration in milliseconds"
+
+        file_size_bytes:
+          type: "INTEGER"
+
+        source:
+          type: "TEXT"
+          values: ["tts_azure", "tts_elevenlabs", "human_recording"]
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_rendering:
+          type: "UNIQUE"
+          columns: ["text_id", "voice_id", "cadence"]
+          description: "One audio file per text+voice+cadence combination"
+
+      indexes:
+        idx_audio_text:
+          columns: ["text_id"]
+          purpose: "Find all renderings of a text"
+
+        idx_audio_voice:
+          columns: ["voice_id"]
+          purpose: "Find all audio by a voice"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_AUDIO TABLE - Course usage of audio
+    ## ------------------------------------------------------------------------
+
+    table course_audio:
+      description: "Which courses use which audio files"
+      purpose: "Role is course-specific context, not part of audio identity"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+
+        audio_id:
+          type: "UUID"
+          nullable: false
+          references: "audio_files(id)"
+          on_delete: "RESTRICT"
+
+        role:
+          type: "TEXT"
+          nullable: false
+          values: ["target1", "target2", "known", "presentation"]
+          description: "How this course uses the audio"
+
+        context:
+          type: "TEXT"
+          description: "Seed/LEGO reference (e.g., S0001L01)"
+
+        position:
+          type: "INTEGER"
+          description: "Order within course"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_usage:
+          type: "UNIQUE"
+          columns: ["course_code", "audio_id", "role", "context"]
+
+      indexes:
+        idx_course_audio_course:
+          columns: ["course_code"]
+          purpose: "Find all audio for a course"
+
+  ## ==========================================================================
+  ## LOOKUP FLOW (Registry-Based)
+  ## ==========================================================================
+
+  lookup_flow:
+    description: |
+      How to find or create audio for a phrase.
+      No hashing - just database queries with flexible matching.
+
+    pseudocode: |
+      function getOrCreateAudio(text, language, voiceId, cadence):
+        # Step 1: Find or create text entry
+        text_row = db.query("""
+          INSERT INTO texts (content, language)
+          VALUES ($1, $2)
+          ON CONFLICT (content_normalized, language)
+          DO UPDATE SET content = EXCLUDED.content  -- no-op, just return existing
+          RETURNING id
+        """, [text, language])
+
+        text_id = text_row.id
+
+        # Step 2: Find or create audio entry
+        audio_row = db.query("""
+          INSERT INTO audio_files (text_id, voice_id, cadence)
+          VALUES ($1, $2, $3)
+          ON CONFLICT (text_id, voice_id, cadence)
+          DO NOTHING
+          RETURNING id, s3_key
+        """, [text_id, voiceId, cadence])
+
+        if audio_row.s3_key is null:
+          # Audio entry exists but file not generated yet
+          # OR new entry was created
+          return { id: audio_row.id, needs_generation: true }
+        else:
+          return { id: audio_row.id, s3_key: audio_row.s3_key, needs_generation: false }
+
+    benefits:
+      deduplication: "UNIQUE constraint prevents duplicates"
+      normalization: "Generated column handles text normalization"
+      cross_course: "Same text+voice+cadence = same audio_files row"
+      flexibility: "Can add fuzzy matching to queries later"
+      debugging: "Can query by any column, see all related data"
+
+  ## ==========================================================================
+  ## COMPARISON: Hash vs Registry
+  ## ==========================================================================
+
+  comparison:
+    hash_based_v11:
+      identity: "UUID = hash(voice:lang:role:cadence:text)"
+      lookup: "Compute hash, check S3"
+      fragility: "Any parameter variation = different hash = orphaned audio"
+      debugging: "Hash is opaque, can't reverse to see what made it"
+      migration: "Changing normalization breaks all existing hashes"
+
+    registry_based_v12:
+      identity: "UUID = random (database-assigned)"
+      lookup: "Query database with flexible matching"
+      robustness: "Query logic handles variations, can be improved"
+      debugging: "SELECT * FROM texts WHERE content LIKE '%怎么%'"
+      migration: "Update query logic, existing audio unchanged"
+
+  ## ==========================================================================
+  ## MIGRATION FROM v11
+  ## ==========================================================================
+
+  migration:
+    from_v11:
+      strategy: |
+        For existing audio with hash-based UUIDs:
+        1. Create texts entries from audio_samples.text
+        2. Create audio_files entries with NEW random UUIDs
+        3. Remap course references
+        4. Keep old S3 files, copy with new UUID names (or rename)
+
+      sql_migration: |
+        -- Create texts from existing audio
+        INSERT INTO texts (content, language)
+        SELECT DISTINCT text, lang FROM audio_samples
+        ON CONFLICT DO NOTHING;
+
+        -- Create audio_files with new UUIDs
+        INSERT INTO audio_files (text_id, voice_id, cadence, s3_bucket, s3_key)
+        SELECT
+          t.id,
+          v.id,
+          a.cadence,
+          a.s3_bucket,
+          'mastered/' || gen_random_uuid() || '.mp3'  -- New key
+        FROM audio_samples a
+        JOIN texts t ON t.content_normalized = LOWER(TRIM(a.text)) AND t.language = a.lang
+        JOIN voices v ON v.voice_id = a.voice_id;
+
+      s3_migration: |
+        For each audio_files row:
+          - Copy from old s3_key (hash-based) to new s3_key (uuid-based)
+          - Or rename in place if S3 supports it
+
+  ## ==========================================================================
+  ## APML COMPILER OUTPUT
+  ## ==========================================================================
+
+  compiler:
+    description: |
+      The APML compiler reads this schema definition and generates:
+      1. PostgreSQL DDL (CREATE TABLE statements)
+      2. TypeScript types
+      3. API route stubs
+      4. Supabase migration files
+
+    output_targets:
+      postgresql:
+        file: "supabase/migrations/YYYYMMDD_audio_registry_v12.sql"
+        format: "Standard PostgreSQL DDL"
+
+      typescript:
+        file: "src/types/audio-registry.ts"
+        format: "TypeScript interfaces matching schema"
+
+      supabase_types:
+        file: "src/types/supabase.ts"
+        format: "Supabase generated types"
+
+## ============================================================================
+## GENERATED: 2025-12-19
+## APML v12.0.0
+## ============================================================================

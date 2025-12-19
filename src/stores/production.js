@@ -54,6 +54,18 @@ export const useProductionStore = defineStore('production', () => {
     breakdown: []
   })
 
+  // Full course audio stats (database-first)
+  const audioCourseStats = ref({
+    total: 0,        // Total audio needs for entire course
+    existing: 0,     // Already generated
+    missing: 0,      // Still need to generate
+    phraseNeeds: 0,  // Phrase audio needs
+    introNeeds: 0    // Introduction audio needs
+  })
+
+  // Polling interval for status updates
+  let statusPollingInterval = null
+
   // Recording Studio state
   const recordingState = ref('idle') // idle, recording, reviewing, uploading
   const currentRecordingPhrase = ref(null)
@@ -283,17 +295,26 @@ export const useProductionStore = defineStore('production', () => {
           const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
           if (planRes.ok) {
             const planData = await planRes.json()
+            // Populate full course stats
+            audioCourseStats.value = {
+              total: planData.total || 0,
+              existing: planData.existing || 0,
+              missing: planData.missing || planData.total || 0,
+              phraseNeeds: planData.phraseNeeds || 0,
+              introNeeds: planData.introNeeds || 0
+            }
             // Populate pipeline stats from plan
             costEstimate.value = {
               estimated: planData.estimatedCost || '$0.00',
               estimatedTime: planData.estimatedTime || '0 min',
               breakdown: planData.breakdown || []
             }
-            // Create generation queue items from plan counts
-            generationQueue.value = Array.from({ length: planData.missing || 0 }, (_, i) => ({
+            // Create generation queue items from plan counts (use total for full visibility)
+            generationQueue.value = Array.from({ length: planData.total || 0 }, (_, i) => ({
               id: `pending-${i}`,
-              status: 'queued'
+              status: i < (planData.existing || 0) ? 'complete' : 'queued'
             }))
+            console.log(`[Production] Loaded plan: ${planData.total} total, ${planData.existing} existing, ${planData.missing} to generate`)
           }
         } catch (planErr) {
           console.warn('[Production] Could not load pipeline plan:', planErr.message)
@@ -586,6 +607,74 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
+  // Status polling for remote environments (no WebSocket)
+  async function pollStatus(courseCode) {
+    try {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/status`, {
+        headers: getApiHeaders()
+      })
+
+      if (!response.ok) {
+        console.warn('[Production] Status poll failed:', response.status)
+        return
+      }
+
+      const data = await response.json()
+
+      if (data.job) {
+        // Update job status
+        jobStatus.value = data.job.status || 'running'
+
+        // Update progress stats from job
+        if (data.job.progress) {
+          const progress = data.job.progress
+          // Update generation queue to reflect current progress
+          generationQueue.value = generationQueue.value.map((item, index) => {
+            if (index < progress.generated) {
+              return { ...item, status: 'complete' }
+            } else if (index < progress.current) {
+              return { ...item, status: progress.failed > progress.generated ? 'failed' : 'processing' }
+            }
+            return item
+          })
+
+          console.log(`[Production] Status: ${progress.current}/${progress.total} (${progress.generated} generated, ${progress.failed} failed)`)
+        }
+
+        // Stop polling if job is complete or cancelled
+        if (data.job.status === 'complete' || data.job.status === 'cancelled' || data.job.status === 'failed') {
+          stopStatusPolling()
+          jobStatus.value = data.job.status
+        }
+      } else {
+        // No active job
+        jobStatus.value = 'idle'
+        stopStatusPolling()
+      }
+    } catch (err) {
+      console.warn('[Production] Status poll error:', err.message)
+    }
+  }
+
+  function startStatusPolling(courseCode) {
+    // Don't start if already polling
+    if (statusPollingInterval) return
+
+    console.log('[Production] Starting status polling for', courseCode)
+    // Poll immediately, then every 2 seconds
+    pollStatus(courseCode)
+    statusPollingInterval = setInterval(() => pollStatus(courseCode), 2000)
+  }
+
+  function stopStatusPolling() {
+    if (statusPollingInterval) {
+      console.log('[Production] Stopping status polling')
+      clearInterval(statusPollingInterval)
+      statusPollingInterval = null
+    }
+  }
+
   // Audio Pipeline actions
   async function startGeneration(courseCode) {
     try {
@@ -600,6 +689,10 @@ export const useProductionStore = defineStore('production', () => {
 
       const data = await response.json()
       jobStatus.value = 'running'
+
+      // Start polling for status updates (especially for remote environments)
+      startStatusPolling(courseCode)
+
       return data
     } catch (err) {
       error.value = err.message
@@ -617,6 +710,7 @@ export const useProductionStore = defineStore('production', () => {
 
       if (!response.ok) throw new Error('Failed to cancel generation')
 
+      stopStatusPolling()
       jobStatus.value = 'idle'
       return await response.json()
     } catch (err) {

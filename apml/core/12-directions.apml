@@ -1,0 +1,388 @@
+# APML: The 12 Directions
+# Version: 1.0.0 (2025-12-19)
+# Status: Canonical Reference
+# Type: CORE PHILOSOPHY
+#
+# The 12 Directions are the guiding principles of APML architecture.
+# All design decisions should be evaluated against these directions.
+# When in doubt, ask: "Does this align with the 12 Directions?"
+
+## ============================================================================
+## THE 12 DIRECTIONS
+## ============================================================================
+
+directions:
+
+  D01:
+    name: "Parameterization"
+    principle: "Everything is a parameter"
+    description: |
+      No magic numbers. No hardcoded values. Every configurable aspect
+      of the system should be exposed as a parameter that can be adjusted
+      without code changes.
+
+    implications:
+      - "Thresholds (syllable count, batch size) are parameters"
+      - "Tolerances (QA strictness) are adjustable per-course"
+      - "Algorithm choices (normalization, matching) are swappable"
+      - "Default values exist but can be overridden"
+
+    anti_pattern: |
+      Hardcoded values buried in code:
+        if (syllables < 5) { ... }  // Magic number 5
+
+    correct_pattern: |
+      Parameterized with defaults:
+        const threshold = config.syllableThreshold ?? DEFAULT_SYLLABLE_THRESHOLD
+
+    escape_hatch: |
+      When a parameter doesn't exist yet, the system should gracefully
+      fall back to sensible defaults. New parameters can be added without
+      breaking existing deployments.
+
+  D02:
+    name: "Separation of Concerns"
+    principle: "Each component does one thing well"
+    description: |
+      Clear boundaries between components. Data, logic, and presentation
+      are separate. Each service has a single responsibility.
+
+    implications:
+      - "Text storage ≠ Audio storage ≠ Course logic"
+      - "Generation ≠ Validation ≠ Compilation"
+      - "Database schema ≠ API layer ≠ UI"
+
+    anti_pattern: |
+      Monolithic functions that do everything:
+        function processAudio(text, voice, course, role, ...) {
+          // validate, generate, store, link, notify...
+        }
+
+    correct_pattern: |
+      Single-responsibility components:
+        texts.findOrCreate(content, language)
+        audio.generate(textId, voiceId, cadence)
+        courses.linkAudio(courseCode, audioId, role)
+
+  D03:
+    name: "Immutability of Source"
+    principle: "Source data is never mutated, only extended"
+    description: |
+      Original data (seeds, recordings, canonical content) is immutable.
+      Processing creates NEW artifacts, never modifies source.
+
+    implications:
+      - "canonical_seeds.json is read-only"
+      - "Human recordings are preserved forever"
+      - "Corrections create new versions, don't overwrite"
+      - "Audit trail of all changes"
+
+    anti_pattern: |
+      Mutating source files:
+        seeds[42].text = "corrected text"  // Destroys history
+
+    correct_pattern: |
+      Versioned corrections:
+        corrections.add({ seedId: 42, original: "...", corrected: "...", reason: "..." })
+
+  D04:
+    name: "Idempotency"
+    principle: "Running the same operation twice produces the same result"
+    description: |
+      All operations are safe to retry. Processing the same input
+      multiple times doesn't create duplicates or side effects.
+
+    implications:
+      - "INSERT ... ON CONFLICT DO NOTHING"
+      - "Audio generation checks existence before creating"
+      - "Phase servers can be restarted mid-job"
+      - "Network failures don't corrupt state"
+
+    anti_pattern: |
+      Operations that accumulate:
+        samples.push(newSample)  // Creates duplicates on retry
+
+    correct_pattern: |
+      Idempotent operations:
+        INSERT INTO audio_files (text_id, voice_id, cadence)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (text_id, voice_id, cadence) DO NOTHING
+
+  D05:
+    name: "Store Raw, Compute Derived"
+    principle: "Persist source of truth, compute everything else"
+    description: |
+      Store the minimal, canonical data. Derive everything else at runtime
+      or through materialized views. Don't store what can be computed.
+
+    implications:
+      - "Store: text content, language, voice, cadence"
+      - "Compute: UUID, relationships, statistics"
+      - "Store: word_count, lego_count, position (raw)"
+      - "Compute: phrase_type classification (derived)"
+
+    anti_pattern: |
+      Storing computed values as source of truth:
+        uuid = hash(voice + text + lang)  // Fragile, breaks on param change
+        store(uuid)
+
+    correct_pattern: |
+      Store raw, compute or cache derived:
+        store(text, language, voice, cadence)
+        uuid = database_assigned()  // Stable identity
+        classification = compute_from_raw(word_count, position)
+
+  D06:
+    name: "Explicit over Implicit"
+    principle: "Make relationships and dependencies visible"
+    description: |
+      No hidden dependencies. No implicit ordering. No magic.
+      If two things are related, the relationship is explicit.
+
+    implications:
+      - "Foreign keys for all relationships"
+      - "Explicit phase dependencies in pipeline"
+      - "Configuration over convention"
+      - "Named parameters over positional"
+
+    anti_pattern: |
+      Implicit dependencies:
+        // Assumes files exist in specific locations
+        // Assumes processing order
+        // Assumes naming conventions
+
+    correct_pattern: |
+      Explicit dependencies:
+        audio_files.text_id REFERENCES texts(id)
+        phase_8.requires = ['phase_3.complete']
+
+  D07:
+    name: "Context-Agnostic Components"
+    principle: "Components work regardless of where they're used"
+    description: |
+      A component that works for one course works for all courses.
+      A pattern that works for audio works for any content type.
+      No special cases baked into core logic.
+
+    implications:
+      - "Text registry works for any language"
+      - "Audio generation works for any voice provider"
+      - "QA workflow works for any content type"
+      - "Same API for production and testing"
+
+    anti_pattern: |
+      Context-specific logic in core:
+        if (courseCode === 'spa_for_eng') { specialHandling() }
+
+    correct_pattern: |
+      Context via parameters:
+        generateAudio(textId, voiceId, cadence)  // Works for any context
+
+  D08:
+    name: "Explicitness in Feedback"
+    principle: "Errors and flags include reasons, not just status"
+    description: |
+      When something fails or is flagged, explain WHY.
+      Binary pass/fail is insufficient. Context enables debugging.
+
+    implications:
+      - "Validation errors include field, value, and reason"
+      - "QA flags include phrase, issue, and suggestion"
+      - "API errors include error code, message, and context"
+      - "Logs include correlation IDs"
+
+    anti_pattern: |
+      Opaque failures:
+        return { success: false }  // Why did it fail?
+        throw new Error("Invalid")  // Invalid what?
+
+    correct_pattern: |
+      Explicit feedback:
+        return {
+          success: false,
+          error: "AUDIO_NOT_FOUND",
+          context: { textId, voiceId, cadence },
+          suggestion: "Check voice configuration"
+        }
+
+  D09:
+    name: "Progressive Enhancement"
+    principle: "Core functionality works without optional features"
+    description: |
+      The system has layers. Core functionality is always available.
+      Enhanced features add value but aren't required for operation.
+
+    implications:
+      - "Course works without QA review (QA is enhancement)"
+      - "Audio plays without analytics (analytics is enhancement)"
+      - "Pipeline runs without dashboard (dashboard is enhancement)"
+      - "Offline mode degrades gracefully"
+
+    anti_pattern: |
+      All-or-nothing dependencies:
+        if (!analyticsService.isAvailable()) {
+          throw new Error("Cannot proceed without analytics")
+        }
+
+    correct_pattern: |
+      Graceful degradation:
+        analytics?.track(event)  // Works with or without analytics
+
+  D10:
+    name: "Observability"
+    principle: "Everything can be queried, inspected, and debugged"
+    description: |
+      The system's state is always visible. You can ask "what exists?",
+      "why did this happen?", "what's related to this?". No black boxes.
+
+    implications:
+      - "All data in queryable database"
+      - "All operations logged with context"
+      - "All relationships traversable"
+      - "State visible through API endpoints"
+
+    anti_pattern: |
+      Opaque state:
+        hash = computeHash(params)  // Can't query what made this hash
+        if (!fileExists(hash)) { regenerate() }  // Can't see why it's missing
+
+    correct_pattern: |
+      Observable state:
+        SELECT * FROM audio_files WHERE text_id = $1
+        SELECT * FROM texts WHERE content ILIKE '%怎么%'
+        -- Can see exactly what exists and why
+
+  D11:
+    name: "Reversibility"
+    principle: "Actions can be undone or their effects understood"
+    description: |
+      Destructive operations are minimized. When they occur, they're
+      logged with enough context to understand and potentially reverse.
+
+    implications:
+      - "Soft deletes preferred over hard deletes"
+      - "Pruned content is orphaned, not destroyed"
+      - "Version history for important changes"
+      - "Audit log of all mutations"
+
+    anti_pattern: |
+      Irreversible destruction:
+        DELETE FROM audio_files WHERE course_code = $1  // Gone forever
+
+    correct_pattern: |
+      Reversible operations:
+        UPDATE audio_files SET deleted_at = NOW() WHERE ...  // Soft delete
+        INSERT INTO audit_log (action, data, timestamp) ...  // Record what happened
+
+  D12:
+    name: "Composition over Configuration"
+    principle: "Build complex behavior from simple, composable parts"
+    description: |
+      Complex workflows are built by composing simple operations.
+      Each operation is self-contained and can be used independently
+      or combined with others.
+
+    implications:
+      - "Phases are independent, composable steps"
+      - "Services expose atomic operations"
+      - "Complex queries built from simple joins"
+      - "Pipelines are sequences of simple stages"
+
+    anti_pattern: |
+      Monolithic operations:
+        processFullCourse(courseCode)  // Does everything, hard to debug/extend
+
+    correct_pattern: |
+      Composable operations:
+        texts.ensure(content, language)
+          .then(textId => audio.ensure(textId, voiceId, cadence))
+          .then(audioId => courses.link(courseCode, audioId, role))
+
+## ============================================================================
+## APPLICATION TO AUDIO REGISTRY (v12)
+## ============================================================================
+
+application:
+  audio_registry_v12:
+    description: |
+      The registry-based audio architecture (v12) was designed to align
+      with the 12 Directions. Here's how:
+
+    alignment:
+      D01_parameterization:
+        aspect: "Normalization and matching logic"
+        implementation: "Query logic is adjustable, not hardcoded hash"
+
+      D04_idempotency:
+        aspect: "Audio creation"
+        implementation: "INSERT ... ON CONFLICT DO NOTHING"
+
+      D05_store_raw:
+        aspect: "Audio identity"
+        implementation: "Store text+voice+cadence, database assigns UUID"
+
+      D06_explicit:
+        aspect: "Relationships"
+        implementation: "Foreign keys: audio_files → texts, audio_files → voices"
+
+      D07_context_agnostic:
+        aspect: "Cross-course sharing"
+        implementation: "Same text+voice+cadence = same audio, any course can reference"
+
+      D08_explicit_feedback:
+        aspect: "Lookup failures"
+        implementation: "Query returns what exists, not opaque 'not found'"
+
+      D10_observability:
+        aspect: "Debugging"
+        implementation: "SELECT * FROM texts WHERE content LIKE '...' works"
+
+      D11_reversibility:
+        aspect: "Pruning"
+        implementation: "Orphan audio, don't delete. Can always restore reference."
+
+## ============================================================================
+## DECISION FRAMEWORK
+## ============================================================================
+
+decision_framework:
+  description: |
+    When making architectural decisions, evaluate against the 12 Directions.
+    Score each direction 0-2:
+      0 = Violates the direction
+      1 = Neutral / doesn't apply
+      2 = Strongly aligns with the direction
+
+    Higher scores indicate more APML-aligned design.
+
+  example_evaluation:
+    question: "Hash-based UUID vs Database-assigned UUID?"
+
+    hash_based:
+      D01: 0  # Hardcoded algorithm, not parameterized
+      D04: 2  # Idempotent - same input = same hash
+      D05: 0  # Stores computed value as identity
+      D06: 1  # Implicit relationship (hash encodes params)
+      D07: 1  # Works across contexts (if params match exactly)
+      D08: 0  # Opaque - can't see why hash differs
+      D10: 0  # Not queryable - hash is one-way
+      D11: 0  # Not reversible - can't change hash algorithm
+      score: 4
+
+    database_assigned:
+      D01: 2  # Matching logic is parameterized
+      D04: 2  # INSERT ON CONFLICT is idempotent
+      D05: 2  # Stores raw data, UUID is just a handle
+      D06: 2  # Explicit foreign keys
+      D07: 2  # Same text+voice = same audio, any context
+      D08: 2  # Query shows exactly what exists/missing
+      D10: 2  # Full SQL queryability
+      D11: 2  # Can adjust logic without breaking data
+      score: 16
+
+    conclusion: "Database-assigned UUID scores 4x higher. Clear winner."
+
+## ============================================================================
+## GENERATED: 2025-12-19
+## APML 12 Directions v1.0.0
+## ============================================================================

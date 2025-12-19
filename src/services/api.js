@@ -399,7 +399,8 @@ export default {
               ...(stats.legos > 0 ? ['3'] : []),
               ...(stats.baskets > 0 ? ['5'] : []),
               ...(course.files?.introductions ? ['6'] : []),
-              ...(course.files?.course_manifest ? ['7'] : [])
+              // For database-first: baskets in DB means ready for audio (no manifest file needed)
+              ...(course.files?.course_manifest || stats.baskets > 0 ? ['7', 'manifest'] : [])
             ],
             files: course.files
           }
@@ -534,7 +535,11 @@ export default {
         if (phasesCompleted.length === 0) {
           if (translations.length > 0) phasesCompleted.push('1')
           if (legos.length > 0) phasesCompleted.push('3')
-          if (baskets.length > 0) phasesCompleted.push('5')
+          if (baskets.length > 0) {
+            phasesCompleted.push('5')
+            // Database-first: baskets in DB means ready for audio
+            phasesCompleted.push('7', 'manifest')
+          }
         }
 
         const course = {
@@ -706,7 +711,11 @@ export default {
           if (phasesCompleted.length === 0) {
             if (translations.length > 0) phasesCompleted.push('1')
             if (legos.length > 0) phasesCompleted.push('3')
-            if (basketCount > 0) phasesCompleted.push('5')
+            if (basketCount > 0) {
+              phasesCompleted.push('5')
+              // Database-first: baskets in DB means ready for audio
+              phasesCompleted.push('7', 'manifest')
+            }
           }
 
           const course = {
@@ -886,7 +895,11 @@ export default {
           if (phasesCompleted.length === 0) {
             if (translations.length > 0) phasesCompleted.push('1')
             if (legos.length > 0) phasesCompleted.push('3')
-            if (basketCount > 0) phasesCompleted.push('5')
+            if (basketCount > 0) {
+              phasesCompleted.push('5')
+              // Database-first: baskets in DB means ready for audio
+              phasesCompleted.push('7', 'manifest')
+            }
           }
 
           const course = {

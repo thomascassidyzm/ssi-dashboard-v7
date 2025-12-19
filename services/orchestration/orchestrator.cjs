@@ -1630,13 +1630,36 @@ app.get('/api/courses', async (req, res) => {
           throw error;
         }
 
-        const courses = dbCourses.map(c => ({
-          code: c.course_code,
-          name: c.display_name || c.course_code.replace(/_/g, ' ').replace(/for/g, '→'),
-          knownLang: c.known_lang,
-          targetLang: c.target_lang,
-          status: c.status
-        }));
+        // Get content stats for each course to determine phases_completed
+        const { getAllCourseContentStats } = require('../supabase-client.cjs');
+        const contentStats = await getAllCourseContentStats();
+
+        const courses = dbCourses.map(c => {
+          const stats = contentStats[c.course_code] || { seeds: 0, legos: 0, baskets: 0 };
+
+          // Compute phases_completed based on database content
+          const phases = [];
+          if (stats.seeds > 0) phases.push('1');
+          if (stats.legos > 0) phases.push('3');
+          if (stats.baskets > 0) {
+            phases.push('5');
+            // Database-first: baskets in DB means ready for audio (no manifest file needed)
+            phases.push('7', 'manifest');
+          }
+
+          return {
+            code: c.course_code,
+            course_code: c.course_code,  // Include both for compatibility
+            name: c.display_name || c.course_code.replace(/_/g, ' ').replace(/for/g, '→'),
+            knownLang: c.known_lang,
+            targetLang: c.target_lang,
+            status: c.status,
+            seed_pairs: stats.seeds,
+            lego_pairs: stats.legos,
+            lego_baskets: stats.baskets,
+            phases_completed: phases
+          };
+        });
 
         return res.json({
           courses,

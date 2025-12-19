@@ -164,12 +164,44 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}) {
   return { uuid, uploaded: true }
 }
 
+// Batch check if audio files exist in ssi-audio-stage bucket
+async function batchCheckAudio(uuids, bucket = 'ssi-audio-stage') {
+  const results = {}
+
+  // Process in parallel batches of 50
+  const batchSize = 50
+  for (let i = 0; i < uuids.length; i += batchSize) {
+    const batch = uuids.slice(i, i + batchSize)
+    const checks = batch.map(async (uuid) => {
+      try {
+        const command = new HeadObjectCommand({
+          Bucket: bucket,
+          Key: `mastered/${uuid}.mp3`
+        })
+        await s3Client.send(command)
+        results[uuid] = true
+      } catch (error) {
+        if (error.name === 'NotFound' || error.$metadata?.httpStatusCode === 404) {
+          results[uuid] = false
+        } else {
+          console.warn(`Error checking ${uuid}:`, error.message)
+          results[uuid] = false
+        }
+      }
+    })
+    await Promise.all(checks)
+  }
+
+  return results
+}
+
 module.exports = {
   getCourseManifest,
   getSampleFlags,
   saveSampleFlags,
   getAudioMetadata,
   saveAudioMetadata,
+  batchCheckAudio,
   getAudioSignedUrl,
   audioFileExists,
   uploadRecording

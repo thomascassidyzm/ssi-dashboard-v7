@@ -12,11 +12,15 @@
  * - Records in Supabase
  * - Tracks course audio usage
  * - Reports real-time progress via WebSocket
+ * - Generates consolidated introduction audio
  *
  * Port: 3465 (BASE_PORT + 9)
  *
- * @version 1.0.0
+ * @version 2.0.0 - Added consolidated introduction support
  */
+
+// Load environment variables
+require('dotenv').config({ path: require('path').join(__dirname, '../../.env') })
 
 const express = require('express')
 const path = require('path')
@@ -52,7 +56,7 @@ try {
 }
 
 const app = express()
-const PORT = process.env.PORT || 3465
+const PORT = process.env.PHASE8_PORT || 3465  // Use PHASE8_PORT to avoid conflict with other services
 
 app.use(express.json())
 
@@ -164,6 +168,490 @@ async function loadBasketsFromSupabase(courseCode) {
   }
 }
 
+// Language name mapping for introduction generation
+const LANGUAGE_NAMES = {
+  'ita': 'Italian',
+  'spa': 'Spanish',
+  'fra': 'French',
+  'zho': 'Chinese',
+  'cmn': 'Chinese',
+  'cym': 'Welsh',
+  'gle': 'Irish',
+  'eus': 'Basque',
+  'mkd': 'Macedonian',
+  'deu': 'German',
+  'por': 'Portuguese',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'rus': 'Russian',
+  'ara': 'Arabic',
+  'hin': 'Hindi',
+  'eng': 'English'
+}
+
+function getLanguageName(code) {
+  return LANGUAGE_NAMES[code] || code.toUpperCase()
+}
+
+/**
+ * Generate introduction text for a LEGO
+ * Format: "The {targetLang} for '{knownLego}', as in '{knownSeed}', is: ... {target1}'{targetLego}' ... {target2}'{targetLego}'"
+ *
+ * @param {string} targetLangName - Full language name (e.g., "Spanish")
+ * @param {string} knownLego - Known language LEGO text
+ * @param {string} targetLego - Target language LEGO text
+ * @param {string} knownSeed - Known language seed sentence
+ * @returns {string} The introduction presentation text
+ */
+function generateIntroductionText(targetLangName, knownLego, targetLego, knownSeed) {
+  return `The ${targetLangName} for '${knownLego}', as in '${knownSeed}', is: ... {target1}'${targetLego}' ... {target2}'${targetLego}'`
+}
+
+/**
+ * Pick a random example phrase from the longest practice phrases for a LEGO
+ * This makes introductions more varied and interesting
+ *
+ * @param {Array} phrases - Array of practice phrases for this LEGO
+ * @param {number} topN - How many of the longest phrases to choose from (default 5)
+ * @returns {string} A randomly selected phrase from the longest ones
+ */
+function pickVariedExamplePhrase(phrases, topN = 5) {
+  if (!phrases || phrases.length === 0) return null
+
+  // Sort by length (longest first)
+  const sorted = [...phrases].sort((a, b) => {
+    const lenA = (a.known_text || '').length
+    const lenB = (b.known_text || '').length
+    return lenB - lenA
+  })
+
+  // Take top N (or all if fewer than N)
+  const candidates = sorted.slice(0, Math.min(topN, sorted.length))
+
+  // Pick randomly from candidates
+  const randomIndex = Math.floor(Math.random() * candidates.length)
+  return candidates[randomIndex].known_text
+}
+
+/**
+ * Load introduction data from Supabase and extract audio needs
+ * Generates CONSOLIDATED introduction audio (single file per LEGO)
+ * Uses varied "as in" phrases from the LEGO's practice basket
+ *
+ * @param {string} courseCode - Course code
+ * @param {string} targetLang - Target language code
+ * @param {string} knownLang - Known language code
+ * @returns {Promise<Array>} Array of audio needs for consolidated introductions
+ */
+async function extractIntroductionAudioNeedsFromSupabase(courseCode, targetLang, knownLang) {
+  if (!db.isInitialized()) {
+    logger.warn('Supabase not initialized, cannot load introductions')
+    return []
+  }
+
+  const needs = []
+  const seen = new Set()
+
+  try {
+    const supabase = db.getClient()
+    const targetLangName = getLanguageName(targetLang)
+
+    // Get all LEGOs that need introductions (is_new=true)
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, target_text, known_text, is_new')
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+      .order('seed_number')
+      .order('lego_index')
+
+    if (legosError) {
+      logger.warn(`Error loading LEGOs for introductions: ${legosError.message}`)
+      return []
+    }
+
+    if (!legos || legos.length === 0) {
+      logger.log(`No LEGOs with is_new=true found for ${courseCode}`)
+      return []
+    }
+
+    // Get ALL practice phrases for varied "as in" examples
+    const { data: allPhrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) {
+      logger.warn(`Error loading phrases for introductions: ${phrasesError.message}`)
+    }
+
+    // Group phrases by LEGO
+    const phrasesByLego = {}
+    for (const phrase of allPhrases || []) {
+      const key = `${phrase.seed_number}-${phrase.lego_index}`
+      if (!phrasesByLego[key]) {
+        phrasesByLego[key] = []
+      }
+      phrasesByLego[key].push(phrase)
+    }
+
+    // Get seed sentences as fallback
+    const { data: seeds, error: seedsError } = await supabase
+      .from('course_seeds')
+      .select('seed_number, target_text, known_text')
+      .eq('course_code', courseCode)
+
+    if (seedsError) {
+      logger.warn(`Error loading seeds for introductions: ${seedsError.message}`)
+    }
+
+    const seedLookup = {}
+    for (const seed of seeds || []) {
+      seedLookup[seed.seed_number] = seed
+    }
+
+    // Generate consolidated introduction for each LEGO
+    for (const lego of legos) {
+      const seedId = 'S' + String(lego.seed_number).padStart(4, '0')
+      const legoId = `${seedId}L${String(lego.lego_index).padStart(2, '0')}`
+      const phraseKey = `${lego.seed_number}-${lego.lego_index}`
+
+      // Pick a varied "as in" example from longest practice phrases
+      const legoPhrases = phrasesByLego[phraseKey] || []
+      const variedExample = pickVariedExamplePhrase(legoPhrases, 5)
+
+      // Fallback to seed if no practice phrases
+      const seed = seedLookup[lego.seed_number]
+      const asInPhrase = variedExample || seed?.known_text || lego.known_text
+
+      // Generate the full introduction text with voice tags
+      // Format: "The Spanish for 'I want', as in 'I want to go', is: ... {target1}'quiero' ... {target2}'quiero'"
+      const introductionText = generateIntroductionText(
+        targetLangName,
+        lego.known_text,
+        lego.target_text,
+        asInPhrase
+      )
+
+      // Add as consolidated introduction need
+      // This will be processed specially to concatenate narration + target clips
+      const introKey = `introduction|${legoId}`
+      if (!seen.has(introKey)) {
+        seen.add(introKey)
+        needs.push({
+          text: introductionText,
+          lang: knownLang,
+          targetLang: targetLang,
+          role: 'introduction',
+          seedId,
+          legoId,
+          type: 'consolidated_introduction',
+          targetText: lego.target_text,  // The LEGO word for target clips
+          knownText: lego.known_text,
+          asInPhrase: asInPhrase
+        })
+      }
+    }
+
+    logger.log(`Extracted ${needs.length} consolidated introduction needs from ${legos.length} LEGOs (database)`)
+    return needs
+
+  } catch (error) {
+    logger.warn(`Failed to extract introduction audio needs: ${error.message}`)
+    return []
+  }
+}
+
+/**
+ * Extract phrase audio needs from Supabase (database-first)
+ * Queries course_practice_phrases table for all practice phrases
+ *
+ * @param {string} courseCode
+ * @param {string} targetLang
+ * @param {string} knownLang
+ * @returns {Promise<Array>}
+ */
+async function extractPhraseAudioNeedsFromSupabase(courseCode, targetLang, knownLang) {
+  if (!db.isInitialized()) {
+    logger.warn('Supabase not initialized, cannot load practice phrases')
+    return []
+  }
+
+  const needs = []
+  const seen = new Set()
+
+  try {
+    const supabase = db.getClient()
+
+    // Get all practice phrases for this course
+    const { data: phrases, error } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, position, known_text, target_text')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index')
+      .order('position')
+
+    if (error) {
+      logger.warn(`Error loading practice phrases: ${error.message}`)
+      return []
+    }
+
+    if (!phrases || phrases.length === 0) {
+      logger.log(`No practice phrases found for ${courseCode}`)
+      return []
+    }
+
+    // Extract audio needs from each phrase
+    for (const phrase of phrases) {
+      const seedId = 'S' + String(phrase.seed_number).padStart(4, '0')
+      const legoId = `${seedId}L${String(phrase.lego_index).padStart(2, '0')}`
+
+      // Target language samples (target1, target2)
+      if (phrase.target_text) {
+        const key1 = `${phrase.target_text}|${targetLang}|target1`
+        if (!seen.has(key1)) {
+          seen.add(key1)
+          needs.push({
+            text: phrase.target_text,
+            lang: targetLang,
+            role: 'target1',
+            seedId,
+            legoId
+          })
+        }
+
+        const key2 = `${phrase.target_text}|${targetLang}|target2`
+        if (!seen.has(key2)) {
+          seen.add(key2)
+          needs.push({
+            text: phrase.target_text,
+            lang: targetLang,
+            role: 'target2',
+            seedId,
+            legoId
+          })
+        }
+      }
+
+      // Known language text
+      if (phrase.known_text) {
+        const key = `${phrase.known_text}|${knownLang}|known`
+        if (!seen.has(key)) {
+          seen.add(key)
+          needs.push({
+            text: phrase.known_text,
+            lang: knownLang,
+            role: 'known',
+            seedId,
+            legoId
+          })
+        }
+      }
+    }
+
+    logger.log(`Extracted ${needs.length} phrase audio needs from ${phrases.length} practice phrases (database)`)
+    return needs
+
+  } catch (error) {
+    logger.warn(`Failed to extract phrase audio needs: ${error.message}`)
+    return []
+  }
+}
+
+/**
+ * Generate consolidated introduction audio
+ * Creates a single audio file: narration + pause + target1 + pause + target2
+ *
+ * @param {Object} need - The introduction need object
+ * @param {Object} voiceConfig - Voice configuration { known, target1, target2 }
+ * @param {string} courseCode - Course code for tracking
+ * @returns {Promise<{audioBuffer: Buffer, uuid: string}>}
+ */
+async function generateConsolidatedIntroduction(need, voiceConfig, courseCode) {
+  const os = require('os')
+  const tempDir = path.join(os.tmpdir(), `intro-${need.legoId}-${Date.now()}`)
+  await fs.ensureDir(tempDir)
+
+  try {
+    // Parse the introduction text to extract parts
+    // Format: "The Spanish for 'I want', as in 'I want to go', is: ... {target1}'quiero' ... {target2}'quiero'"
+    const text = need.text
+
+    // Extract target text from voice tags
+    const target1Match = text.match(/\{target1\}'([^']+)'/)
+    const target2Match = text.match(/\{target2\}'([^']+)'/)
+
+    if (!target1Match || !target2Match) {
+      throw new Error(`Could not parse target clips from introduction: ${text.substring(0, 100)}`)
+    }
+
+    const targetWord = target1Match[1]
+
+    // Extract narration parts (before first target, between targets, after second target)
+    // Split on the voice tags
+    const parts = text.split(/\{target[12]\}'[^']+'/g)
+    const narrationPart1 = parts[0]?.trim() || ''  // "The Spanish for 'I want', as in 'X', is: ..."
+    const narrationPart2 = parts[1]?.trim() || '...'  // "..."
+    // parts[2] would be empty or trailing text
+
+    // Step 1: Generate narration TTS (known voice)
+    const knownVoiceId = voiceConfig.known
+    const narrationPath = path.join(tempDir, 'narration.mp3')
+
+    // Generate narration (the full text minus voice tags)
+    const narrationText = text
+      .replace(/\{target1\}/g, '')
+      .replace(/\{target2\}/g, '')
+      .trim()
+
+    const { audioBuffer: narrationBuffer } = await generateSingleAudio(
+      narrationText,
+      need.lang,
+      'known',
+      knownVoiceId,
+      'natural'
+    )
+    await fs.writeFile(narrationPath, narrationBuffer)
+    logger.log(`  Generated narration for ${need.legoId}`)
+
+    // Step 2: Generate or fetch target1 clip
+    const target1VoiceId = voiceConfig.target1
+    const target1Cadence = 'slow'
+    const target1Uuid = db.generateAudioUUID(target1VoiceId, targetWord, need.targetLang, 'target1', target1Cadence)
+
+    let target1Path = path.join(tempDir, 'target1.mp3')
+
+    // Check if target1 exists in database/S3 - if so, download via signed URL
+    const target1Exists = await db.audioExists(target1Uuid)
+    if (target1Exists && s3Service) {
+      try {
+        const signedUrl = await s3Service.getAudioSignedUrl(target1Uuid)
+        const fetch = require('node-fetch')
+        const response = await fetch(signedUrl)
+        const buffer = await response.buffer()
+        await fs.writeFile(target1Path, buffer)
+        logger.log(`  Downloaded existing target1 for ${need.legoId}`)
+      } catch (downloadErr) {
+        logger.warn(`  Failed to download target1, generating fresh: ${downloadErr.message}`)
+        const { audioBuffer: target1Buffer } = await generateSingleAudio(
+          targetWord, need.targetLang, 'target1', target1VoiceId, target1Cadence
+        )
+        await fs.writeFile(target1Path, target1Buffer)
+      }
+    } else {
+      // Generate fresh
+      const { audioBuffer: target1Buffer } = await generateSingleAudio(
+        targetWord,
+        need.targetLang,
+        'target1',
+        target1VoiceId,
+        target1Cadence
+      )
+      await fs.writeFile(target1Path, target1Buffer)
+      logger.log(`  Generated target1 for ${need.legoId}`)
+    }
+
+    // Step 3: Generate or fetch target2 clip
+    const target2VoiceId = voiceConfig.target2
+    const target2Cadence = 'slow'
+    const target2Uuid = db.generateAudioUUID(target2VoiceId, targetWord, need.targetLang, 'target2', target2Cadence)
+
+    let target2Path = path.join(tempDir, 'target2.mp3')
+
+    const target2Exists = await db.audioExists(target2Uuid)
+    if (target2Exists && s3Service) {
+      try {
+        const signedUrl = await s3Service.getAudioSignedUrl(target2Uuid)
+        const fetch = require('node-fetch')
+        const response = await fetch(signedUrl)
+        const buffer = await response.buffer()
+        await fs.writeFile(target2Path, buffer)
+        logger.log(`  Downloaded existing target2 for ${need.legoId}`)
+      } catch (downloadErr) {
+        logger.warn(`  Failed to download target2, generating fresh: ${downloadErr.message}`)
+        const { audioBuffer: target2Buffer } = await generateSingleAudio(
+          targetWord, need.targetLang, 'target2', target2VoiceId, target2Cadence
+        )
+        await fs.writeFile(target2Path, target2Buffer)
+      }
+    } else {
+      const { audioBuffer: target2Buffer } = await generateSingleAudio(
+        targetWord,
+        need.targetLang,
+        'target2',
+        target2VoiceId,
+        target2Cadence
+      )
+      await fs.writeFile(target2Path, target2Buffer)
+      logger.log(`  Generated target2 for ${need.legoId}`)
+    }
+
+    // Step 4: Concatenate all parts with pauses
+    // Order: narration (includes "... X ... X" spoken)
+    // Actually, for consolidated we want: narration_part1 + target1 + narration_part2 + target2
+    // But our narration already includes the pauses as "..."
+    // So we generate: narration (full) which naturally has pauses, then append targets?
+    //
+    // Actually let's keep it simple: the narration says everything including "... [word] ... [word]"
+    // But we want the ACTUAL target voices for the [word] parts
+    //
+    // Best approach: Generate narration for just the explanation part, then stitch
+    // "The Spanish for 'I want', as in 'I want to go', is:" + pause + target1 + pause + target2
+
+    // Let's regenerate narration as just the intro part (without the "... X ... X")
+    const introNarration = narrationPart1.replace(/\.\.\.\s*$/, '').trim()  // Remove trailing "..."
+    const introNarrationPath = path.join(tempDir, 'intro_narration.mp3')
+
+    const { audioBuffer: introBuffer } = await generateSingleAudio(
+      introNarration,
+      need.lang,
+      'known',
+      knownVoiceId,
+      'natural'
+    )
+    await fs.writeFile(introNarrationPath, introBuffer)
+
+    // Step 5: Concatenate: intro_narration + pause + target1 + pause + target2
+    const outputPath = path.join(tempDir, 'consolidated.mp3')
+
+    await audioProcessor.concatenateAudio(
+      [introNarrationPath, target1Path, target2Path],
+      outputPath,
+      {
+        pauseBetween: 600,  // 600ms pause between segments
+        normalize: true
+      }
+    )
+
+    // Read the final consolidated audio
+    const consolidatedBuffer = await fs.readFile(outputPath)
+
+    // Generate UUID for the consolidated introduction
+    // Use a deterministic hash based on the full introduction text
+    const introUuid = db.generateAudioUUID(
+      knownVoiceId,  // Primary voice
+      need.text,     // Full introduction text for uniqueness
+      need.lang,
+      'introduction',
+      'natural'
+    )
+
+    logger.log(`  Consolidated introduction for ${need.legoId}: ${introUuid}`)
+
+    return {
+      audioBuffer: consolidatedBuffer,
+      uuid: introUuid,
+      target1Uuid,
+      target2Uuid
+    }
+
+  } finally {
+    // Cleanup temp directory
+    await fs.remove(tempDir).catch(() => {})
+  }
+}
+
 /**
  * Extract unique audio needs from lego_baskets.json
  * Returns array of { text, lang, role, seedId, legoId }
@@ -208,15 +696,15 @@ function extractAudioNeeds(baskets, targetLang, knownLang) {
           }
         }
 
-        // Source language (known)
+        // Known language text
         if (cycle.source) {
-          const key = `${cycle.source}|${knownLang}|source`
+          const key = `${cycle.source}|${knownLang}|known`
           if (!seen.has(key)) {
             seen.add(key)
             needs.push({
               text: cycle.source,
               lang: knownLang,
-              role: 'source',
+              role: 'known',
               seedId,
               legoId: basket.lego_id
             })
@@ -232,13 +720,13 @@ function extractAudioNeeds(baskets, targetLang, knownLang) {
 /**
  * Get cadence for role
  * Target roles use slow cadence for learner clarity
- * Source uses natural cadence
+ * Known/presentation roles use natural cadence
  *
  * @param {string} role
  * @returns {string}
  */
 function getCadenceForRole(role) {
-  if (role === 'source') return 'natural'
+  if (role === 'known' || role === 'presentation') return 'natural'
   return 'slow'
 }
 
@@ -338,26 +826,7 @@ app.post('/generate', async (req, res) => {
 
   // Background processing
   try {
-    // Try Supabase first (database-first approach), fallback to local JSON
-    let baskets = await loadBasketsFromSupabase(courseCode)
-    let dataSource = 'supabase'
-
-    if (!baskets) {
-      // Fallback to local JSON file
-      const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
-      const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
-
-      if (!await fs.pathExists(basketsPath)) {
-        job.status = 'failed'
-        job.error = `No baskets found in Supabase or local file (${basketsPath})`
-        return
-      }
-
-      baskets = await fs.readJson(basketsPath)
-      dataSource = 'local_json'
-      logger.log(`Loaded baskets from local JSON for ${courseCode}`)
-    }
-
+    const dataSource = 'supabase'
     job.dataSource = dataSource
 
     // Parse course code for languages (e.g., spa_for_eng)
@@ -374,29 +843,143 @@ app.post('/generate', async (req, res) => {
       knownLang = parts[parts.length - 1] || 'eng'
     }
 
-    // Extract audio needs
-    const needs = extractAudioNeeds(baskets, targetLang, knownLang)
+    // DATABASE-FIRST: Extract all audio needs directly from Supabase
+    // 1. Practice phrase audio (target1, target2, known for each phrase)
+    const phraseNeeds = await extractPhraseAudioNeedsFromSupabase(courseCode, targetLang, knownLang)
+    logger.log(`${courseCode}: ${phraseNeeds.length} audio samples from practice phrases (database)`)
+
+    // 2. Introduction audio (consolidated intro for each new LEGO)
+    const introNeeds = await extractIntroductionAudioNeedsFromSupabase(courseCode, targetLang, knownLang)
+    logger.log(`${courseCode}: ${introNeeds.length} audio samples from introductions`)
+
+    // Combine all needs (deduplicate by key)
+    const allNeeds = [...phraseNeeds]
+    const seenKeys = new Set(phraseNeeds.map(n => `${n.text}|${n.lang}|${n.role}`))
+
+    for (const need of introNeeds) {
+      const key = `${need.text}|${need.lang}|${need.role}`
+      if (!seenKeys.has(key)) {
+        seenKeys.add(key)
+        allNeeds.push(need)
+      }
+    }
+
+    const needs = allNeeds
     job.progress.total = needs.length
 
-    logger.log(`${courseCode}: ${needs.length} audio samples needed`)
+    logger.log(`${courseCode}: ${needs.length} total unique audio samples needed`)
 
     // Get voice config
     const voiceConfig = voices || await db.getCourseVoices(courseCode) || {}
 
     // Validate voices
-    if (!voiceConfig.source || !voiceConfig.target1 || !voiceConfig.target2) {
+    if (!voiceConfig.known || !voiceConfig.target1 || !voiceConfig.target2) {
       job.status = 'failed'
-      job.error = 'Missing voice configuration. Required: source, target1, target2'
+      job.error = 'Missing voice configuration. Required: known, target1, target2'
       return
     }
 
     // Process each need
     for (let i = 0; i < needs.length; i++) {
       const need = needs[i]
-      const voiceId = voiceConfig[need.role]
+
+      // Special handling for consolidated introductions
+      if (need.type === 'consolidated_introduction') {
+        // Generate UUID for the consolidated introduction
+        const introUuid = db.generateAudioUUID(
+          voiceConfig.known,
+          need.text,
+          need.lang,
+          'introduction',
+          'natural'
+        )
+
+        // Check if exists
+        const exists = await db.audioExists(introUuid)
+        if (exists) {
+          job.progress.skipped++
+          job.progress.current = i + 1
+          await db.recordCourseUsage(courseCode, introUuid, 'introduction', need.seedId, need.legoId)
+          continue
+        }
+
+        // Dry run mode
+        if (dryRun) {
+          job.progress.generated++
+          job.progress.current = i + 1
+          continue
+        }
+
+        // Generate consolidated introduction audio
+        try {
+          logger.log(`Generating consolidated introduction for ${need.legoId}...`)
+          const result = await generateConsolidatedIntroduction(need, voiceConfig, courseCode)
+
+          // Upload to S3
+          let s3Key = `mastered/${result.uuid}.mp3`
+          let s3Bucket = 'ssi-audio-stage'
+
+          if (s3Service) {
+            const s3Result = await s3Service.uploadAudio(result.uuid, result.audioBuffer)
+            s3Key = s3Result.key
+            s3Bucket = s3Result.bucket
+          }
+
+          // Extract duration
+          let durationMs = null
+          try {
+            const tempFile = path.join(os.tmpdir(), `${result.uuid}-temp.mp3`)
+            await fs.writeFile(tempFile, result.audioBuffer)
+            const durationSec = await audioProcessor.getAudioDuration(tempFile)
+            durationMs = Math.round(durationSec * 1000)
+            await fs.remove(tempFile)
+          } catch (e) {
+            logger.warn(`Failed to extract duration for introduction ${result.uuid}`)
+          }
+
+          // Insert into Supabase
+          const checksum = crypto.createHash('md5').update(result.audioBuffer).digest('hex')
+          await db.insertAudioSample({
+            uuid: result.uuid,
+            voiceId: voiceConfig.known,
+            text: need.text,
+            lang: need.lang,
+            role: 'introduction',
+            cadence: 'natural',
+            s3Bucket,
+            s3Key,
+            durationMs,
+            fileSizeBytes: result.audioBuffer.length,
+            checksumMd5: checksum,
+            source: 'consolidated_tts',
+            ttsEngine: 'consolidated',
+            ttsVoiceVariant: `${voiceConfig.known}+${voiceConfig.target1}+${voiceConfig.target2}`,
+            hashInput: `introduction:${need.legoId}`
+          })
+
+          // Record course usage
+          await db.recordCourseUsage(courseCode, result.uuid, 'introduction', need.seedId, need.legoId)
+
+          job.progress.generated++
+          logger.log(`Generated consolidated introduction ${i + 1}/${needs.length}: ${result.uuid}`)
+
+        } catch (err) {
+          logger.error(`Failed to generate introduction for ${need.legoId}:`, err.message)
+          job.progress.failed++
+        }
+
+        job.progress.current = i + 1
+        emitProgress(courseCode, job.progress)
+        continue
+      }
+
+      // Standard audio generation for non-introduction needs
+      // 'presentation' role uses the 'known' voice (for introduction narration)
+      const voiceRole = need.role === 'presentation' ? 'known' : need.role
+      const voiceId = voiceConfig[voiceRole]
 
       if (!voiceId) {
-        logger.warn(`No voice configured for role: ${need.role}`)
+        logger.warn(`No voice configured for role: ${need.role} (looked up as ${voiceRole})`)
         job.progress.failed++
         continue
       }
@@ -528,29 +1111,32 @@ app.post('/plan', async (req, res) => {
   }
 
   try {
-    // Try Supabase first (database-first approach), fallback to local JSON
-    let baskets = await loadBasketsFromSupabase(courseCode)
-    let dataSource = 'supabase'
-
-    if (!baskets) {
-      const vfsRoot = process.env.VFS_ROOT || './public/vfs/courses'
-      const basketsPath = path.join(vfsRoot, courseCode, 'lego_baskets.json')
-
-      if (!await fs.pathExists(basketsPath)) {
-        return res.status(404).json({ error: 'No baskets found in Supabase or local file' })
-      }
-
-      baskets = await fs.readJson(basketsPath)
-      dataSource = 'local_json'
-    }
-
     // Parse course code
     const parts = courseCode.split('_')
     const targetLang = parts[0]
     const knownLang = parts[parts.length - 1]
 
-    // Extract needs
-    const needs = extractAudioNeeds(baskets, targetLang, knownLang)
+    // DATABASE-FIRST: Extract all audio needs directly from Supabase
+    // 1. Practice phrase audio (target1, target2, known for each phrase)
+    const phraseNeeds = await extractPhraseAudioNeedsFromSupabase(courseCode, targetLang, knownLang)
+
+    // 2. Introduction audio (consolidated intro for each new LEGO)
+    const introNeeds = await extractIntroductionAudioNeedsFromSupabase(courseCode, targetLang, knownLang)
+
+    // Combine all needs (deduplicate)
+    const allNeeds = [...phraseNeeds]
+    const seenKeys = new Set(phraseNeeds.map(n => `${n.text}|${n.lang}|${n.role}`))
+
+    for (const need of introNeeds) {
+      const key = `${need.text}|${need.lang}|${need.role}`
+      if (!seenKeys.has(key)) {
+        seenKeys.add(key)
+        allNeeds.push(need)
+      }
+    }
+
+    const needs = allNeeds
+    const dataSource = 'supabase'
 
     // Get voice config
     const voiceConfig = voices || await db.getCourseVoices(courseCode) || {}
@@ -558,6 +1144,8 @@ app.post('/plan', async (req, res) => {
     // Check which exist
     const results = {
       total: needs.length,
+      phraseNeeds: phraseNeeds.length,
+      introNeeds: introNeeds.length,
       existing: 0,
       toGenerate: 0,
       missingVoice: 0,
@@ -565,7 +1153,9 @@ app.post('/plan', async (req, res) => {
     }
 
     for (const need of needs.slice(0, 100)) { // Check first 100 for plan
-      const voiceId = voiceConfig[need.role]
+      // 'presentation' role uses the 'known' voice
+      const voiceRole = need.role === 'presentation' ? 'known' : need.role
+      const voiceId = voiceConfig[voiceRole]
 
       if (!voiceId) {
         results.missingVoice++

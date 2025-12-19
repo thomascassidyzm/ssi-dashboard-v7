@@ -32,7 +32,7 @@
                 APML Specification
               </h3>
               <p class="text-sm text-slate-400 leading-relaxed">
-                Adaptive Pedagogy Markup Language v2.1
+                Adaptive Pedagogy Markup Language v12.0
               </p>
             </div>
           </div>

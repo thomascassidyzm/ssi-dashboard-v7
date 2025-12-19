@@ -208,10 +208,10 @@ app.post('/compile', async (req, res) => {
     // Get voice config
     const voices = voiceOverrides || await db.getCourseVoices(courseCode) || {}
 
-    if (!voices.source || !voices.target1 || !voices.target2) {
+    if (!voices.known || !voices.target1 || !voices.target2) {
       return res.status(400).json({
         error: 'Missing voice configuration',
-        required: ['source', 'target1', 'target2'],
+        required: ['known', 'target1', 'target2'],
         provided: voices
       })
     }
@@ -280,7 +280,7 @@ app.post('/compile', async (req, res) => {
 
           // Source sample
           if (cycle.source) {
-            const voiceId = voices.source
+            const voiceId = voices.known
             const cadence = getCadenceForRole('source')
             const uuid = db.generateAudioUUID(voiceId, cycle.source, knownLang, 'source', cadence)
 
@@ -428,7 +428,7 @@ app.get('/validate/:courseCode', async (req, res) => {
           // Source
           if (cycle.source) {
             total++
-            const voiceId = voices.source
+            const voiceId = voices.known
             if (voiceId) {
               const cadence = getCadenceForRole('source')
               const uuid = db.generateAudioUUID(voiceId, cycle.source, knownLang, 'source', cadence)
