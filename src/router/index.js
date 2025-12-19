@@ -43,7 +43,7 @@ const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
 
 // Production Suite v1 Components (Legacy fallback at /v1/...)
-const MissionControlV1 = () => import('../components/production/dashboard/MissionControl.vue')
+// MissionControlV1 removed - deprecated
 import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
 const AudioPipelineV1 = () => import('../components/production/audio/AudioPipeline.vue')
 
@@ -347,24 +347,6 @@ const routes = [
     component: RecordingStudioV2,
     props: true,
     meta: { title: 'Recording Studio - Production Suite' }
-  },
-
-  // ===========================================
-  // Production Suite v1 Routes (Legacy Fallback)
-  // ===========================================
-  {
-    path: '/v1/production/:courseCode',
-    name: 'MissionControlV1',
-    component: MissionControlV1,
-    props: true,
-    meta: { title: 'Mission Control v1 (Legacy)' }
-  },
-  {
-    path: '/v1/production/:courseCode/pipeline',
-    name: 'AudioPipelineV1',
-    component: AudioPipelineV1,
-    props: true,
-    meta: { title: 'Audio Pipeline v1 (Legacy)' }
   },
 
   // Catch-all route
