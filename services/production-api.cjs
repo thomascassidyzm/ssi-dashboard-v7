@@ -49,13 +49,100 @@ app.get('/api/production/health', (req, res) => {
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
+// Priority: 1) Supabase database, 2) JSON files in VFS
 app.get('/api/production/course-stats', async (req, res) => {
   try {
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
+    let stats = {}
+
+    // Try database first
+    if (supabaseClient.isInitialized()) {
+      try {
+        stats = await supabaseClient.getAllCourseContentStats()
+        logger.info(`Loaded stats for ${Object.keys(stats).length} courses from database`)
+      } catch (dbErr) {
+        logger.warn('Could not load stats from database:', dbErr.message)
+      }
     }
 
-    const stats = await supabaseClient.getAllCourseContentStats()
+    // Also check VFS for courses with JSON files (fallback for non-migrated courses)
+    try {
+      const courseDirs = await fs.readdir(VFS_ROOT)
+      for (const courseCode of courseDirs) {
+        // Skip if already have database stats for this course
+        if (stats[courseCode]) continue
+
+        const coursePath = path.join(VFS_ROOT, courseCode)
+        const stat = await fs.stat(coursePath)
+        if (!stat.isDirectory()) continue
+
+        // Try to count from JSON files
+        const courseStats = { seeds: 0, legos: 0, baskets: 0 }
+
+        // Count seeds from seed_pairs.json
+        const seedPairsPath = path.join(coursePath, 'seed_pairs.json')
+        if (await fs.pathExists(seedPairsPath)) {
+          try {
+            const seedPairs = await fs.readJson(seedPairsPath)
+            // Handle both formats: { translations: { S0001: ... } } and { S0001: ... }
+            const seeds = seedPairs.translations || seedPairs
+            courseStats.seeds = Array.isArray(seeds) ? seeds.length : Object.keys(seeds).length
+          } catch (e) { /* ignore parse errors */ }
+        }
+
+        // Count legos from lego_pairs.json
+        const legoPairsPath = path.join(coursePath, 'lego_pairs.json')
+        if (await fs.pathExists(legoPairsPath)) {
+          try {
+            const legoPairs = await fs.readJson(legoPairsPath)
+            let legoCount = 0
+
+            // Handle both formats:
+            // Format 1: { seeds: [{ seed_id, legos: [...] }, ...] }
+            // Format 2: { S0001: [...], S0002: [...] }
+            if (legoPairs.seeds && Array.isArray(legoPairs.seeds)) {
+              for (const seed of legoPairs.seeds) {
+                if (seed.legos && Array.isArray(seed.legos)) {
+                  legoCount += seed.legos.length
+                }
+              }
+            } else {
+              for (const seedId of Object.keys(legoPairs)) {
+                if (seedId === 'metadata') continue
+                if (Array.isArray(legoPairs[seedId])) {
+                  legoCount += legoPairs[seedId].length
+                }
+              }
+            }
+            courseStats.legos = legoCount
+          } catch (e) { /* ignore parse errors */ }
+        }
+
+        // Count baskets from lego_baskets.json
+        const legoBasketsPath = path.join(coursePath, 'lego_baskets.json')
+        if (await fs.pathExists(legoBasketsPath)) {
+          try {
+            const legoBaskets = await fs.readJson(legoBasketsPath)
+            // lego_baskets.json has { seedId: { baskets: [...] } }
+            let basketCount = 0
+            for (const seedId of Object.keys(legoBaskets)) {
+              if (legoBaskets[seedId]?.baskets) {
+                basketCount += legoBaskets[seedId].baskets.length
+              }
+            }
+            courseStats.baskets = basketCount
+          } catch (e) { /* ignore parse errors */ }
+        }
+
+        // Only add if we found some data
+        if (courseStats.seeds > 0 || courseStats.legos > 0 || courseStats.baskets > 0) {
+          stats[courseCode] = courseStats
+          logger.debug(`Loaded stats for ${courseCode} from JSON files`)
+        }
+      }
+    } catch (vfsErr) {
+      logger.warn('Could not scan VFS for course stats:', vfsErr.message)
+    }
+
     logger.info(`Returning content stats for ${Object.keys(stats).length} courses`)
 
     res.json({
