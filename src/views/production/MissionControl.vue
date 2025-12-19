@@ -61,24 +61,40 @@
         <div class="progress-header">
           <h2>Overall Progress</h2>
           <div class="progress-stats">
-            <div class="stat">
-              <span class="stat-value">{{ store.progressStats.approved }}</span>
-              <span class="stat-label">Approved</span>
+            <!-- Audio stats (primary for pre-audio courses) -->
+            <div class="stat" v-if="store.audioCourseStats.total > 0">
+              <span class="stat-value audio">{{ store.audioCourseStats.total }}</span>
+              <span class="stat-label">Audio Needed</span>
             </div>
-            <div class="stat">
-              <span class="stat-value">{{ store.progressStats.total }}</span>
-              <span class="stat-label">Total</span>
+            <div class="stat" v-if="store.audioCourseStats.total > 0">
+              <span class="stat-value generated">{{ store.audioCourseStats.existing }}</span>
+              <span class="stat-label">Generated</span>
             </div>
-            <div class="stat">
-              <span class="stat-value">{{ estimatedDays }}</span>
-              <span class="stat-label">Days Left</span>
+            <div class="stat" v-if="store.audioCourseStats.total > 0">
+              <span class="stat-value pending">{{ store.audioCourseStats.missing }}</span>
+              <span class="stat-label">Pending</span>
             </div>
+            <!-- QA stats (fallback when no audio stats) -->
+            <template v-else>
+              <div class="stat">
+                <span class="stat-value">{{ store.progressStats.approved }}</span>
+                <span class="stat-label">Approved</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">{{ store.progressStats.total }}</span>
+                <span class="stat-label">Total</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">{{ estimatedDays }}</span>
+                <span class="stat-label">Days Left</span>
+              </div>
+            </template>
           </div>
         </div>
         <div class="progress-visual">
           <ProgressRing
-            :value="store.progressStats.percentComplete"
-            label="Complete"
+            :value="audioProgressPercent"
+            label="Audio"
             :size="240"
             :stroke-width="16"
           />
@@ -188,6 +204,13 @@ const estimatedDays = computed(() => {
 
   // Estimate: ~100 samples per day
   return Math.ceil(remaining / 100)
+})
+
+// Audio progress percentage for the ring
+const audioProgressPercent = computed(() => {
+  const audio = store.audioCourseStats
+  if (!audio || audio.total === 0) return store.progressStats.percentComplete
+  return Math.round((audio.existing / audio.total) * 100)
 })
 
 const quickActions = computed(() => {
@@ -710,6 +733,18 @@ onUnmounted(() => {
   font-size: 2rem;
   font-weight: 700;
   color: #10b981;
+}
+
+.stat-value.audio {
+  color: #f1f5f9;
+}
+
+.stat-value.generated {
+  color: #10b981;
+}
+
+.stat-value.pending {
+  color: #f59e0b;
 }
 
 .stat-label {
