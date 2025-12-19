@@ -81,21 +81,24 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useProductionStore } from '@/stores/production'
 import PipelineItem from './PipelineItem.vue'
 
 const store = useProductionStore()
 
-// Queue state
-const queueItems = ref([])
+// Local UI state
 const activeFilter = ref('all')
+const isProcessing = ref(false)
+
+// Use store's generation queue as the source of truth
+const queueItems = computed(() => store.generationQueue)
 
 // Computed
 const flaggedForTTS = computed(() => store.samplesByStatus.flagged_regen_tts)
 
 const stats = computed(() => ({
-  pending: queueItems.value.filter(i => i.status === 'pending').length,
+  pending: queueItems.value.filter(i => i.status === 'pending' || i.status === 'queued').length,
   processing: queueItems.value.filter(i => i.status === 'processing').length,
   complete: queueItems.value.filter(i => i.status === 'complete').length,
   failed: queueItems.value.filter(i => i.status === 'failed').length
@@ -111,39 +114,39 @@ const filters = computed(() => [
 
 const filteredItems = computed(() => {
   if (activeFilter.value === 'all') return queueItems.value
+  if (activeFilter.value === 'pending') {
+    return queueItems.value.filter(i => i.status === 'pending' || i.status === 'queued')
+  }
   return queueItems.value.filter(i => i.status === activeFilter.value)
 })
 
-const hasItemsToProcess = computed(() => stats.value.pending > 0)
+const hasItemsToProcess = computed(() => stats.value.pending > 0 && store.jobStatus !== 'running')
 
 // Actions
 async function refreshQueue() {
-  // TODO: Fetch queue from API
-  console.log('Refreshing queue...')
+  if (!store.currentCourseCode) return
+
+  try {
+    await store.loadCourse(store.currentCourseCode)
+    console.log('[AudioPipeline] Queue refreshed')
+  } catch (err) {
+    console.error('[AudioPipeline] Failed to refresh queue:', err)
+  }
 }
 
 async function processQueue() {
-  // TODO: Start processing all pending items
-  console.log('Processing queue...')
+  if (!store.currentCourseCode || isProcessing.value) return
 
-  // Simulate processing for demo
-  const pendingItems = queueItems.value.filter(i => i.status === 'pending')
-  for (const item of pendingItems) {
-    item.status = 'processing'
-    item.progress = 0
+  isProcessing.value = true
+  console.log('[AudioPipeline] Starting audio generation...')
 
-    // Simulate progress
-    const progressInterval = setInterval(() => {
-      item.progress += 10
-      if (item.progress >= 100) {
-        clearInterval(progressInterval)
-        item.status = Math.random() > 0.1 ? 'complete' : 'failed'
-        item.duration = (Math.random() * 2 + 1).toFixed(1)
-        if (item.status === 'failed') {
-          item.error = 'TTS API timeout - please retry'
-        }
-      }
-    }, 500)
+  try {
+    await store.startGeneration(store.currentCourseCode)
+    console.log('[AudioPipeline] Generation started')
+  } catch (err) {
+    console.error('[AudioPipeline] Failed to start generation:', err)
+  } finally {
+    isProcessing.value = false
   }
 }
 
@@ -158,101 +161,61 @@ async function addFlaggedToQueue() {
     queuedAt: new Date().toISOString()
   }))
 
-  queueItems.value.push(...newItems)
+  store.generationQueue.push(...newItems)
 
-  // Update flags to in_pipeline
   await store.bulkUpdateFlags(
     flaggedForTTS.value.map(s => ({ uuid: s.uuid, status: 'in_pipeline' }))
   )
 }
 
-function retryItem(item) {
-  const index = queueItems.value.findIndex(i => i.uuid === item.uuid)
-  if (index > -1) {
-    queueItems.value[index].status = 'pending'
-    queueItems.value[index].progress = 0
-    queueItems.value[index].error = null
+async function retryItem(item) {
+  if (!store.currentCourseCode) return
+
+  try {
+    await store.retryFailed(store.currentCourseCode)
+  } catch (err) {
+    console.error('[AudioPipeline] Retry failed:', err)
   }
 }
 
-function playItem(item) {
-  // TODO: Play audio preview
-  console.log('Playing:', item.uuid)
+async function playItem(item) {
+  if (!item.uuid) return
+
+  const baseUrl = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  const audioUrl = `${baseUrl}/api/audio/stream/${item.uuid}`
+
+  try {
+    const audio = new Audio(audioUrl)
+    await audio.play()
+    console.log('[AudioPipeline] Playing:', item.uuid)
+  } catch (err) {
+    console.error('[AudioPipeline] Failed to play audio:', err)
+  }
 }
 
 function removeItem(item) {
-  const index = queueItems.value.findIndex(i => i.uuid === item.uuid)
+  const index = store.generationQueue.findIndex(i => i.uuid === item.uuid)
   if (index > -1) {
-    queueItems.value.splice(index, 1)
+    store.generationQueue.splice(index, 1)
   }
 }
 
-// WebSocket listener for pipeline progress
-function handlePipelineProgress(event) {
-  const data = event.detail
-  const index = queueItems.value.findIndex(i => i.uuid === data.uuid)
-  if (index > -1) {
-    queueItems.value[index].status = data.status
-    queueItems.value[index].progress = data.progress || 0
-    if (data.error) {
-      queueItems.value[index].error = data.error
-    }
-    if (data.duration) {
-      queueItems.value[index].duration = data.duration
-    }
+// Watch for job status changes
+watch(() => store.jobStatus, (newStatus) => {
+  console.log('[AudioPipeline] Job status changed:', newStatus)
+  if (newStatus === 'complete') {
+    refreshQueue()
   }
-}
+})
 
 onMounted(() => {
-  window.addEventListener('pipeline_progress', handlePipelineProgress)
-
-  // Add some demo items if queue is empty
-  if (queueItems.value.length === 0) {
-    queueItems.value = [
-      {
-        uuid: 'demo-001-uuid-12345',
-        seedId: 'S0001',
-        targetText: 'Hola, buenos dias',
-        knownText: 'Hello, good morning',
-        status: 'complete',
-        progress: 100,
-        duration: 1.8,
-        queuedAt: new Date(Date.now() - 300000).toISOString()
-      },
-      {
-        uuid: 'demo-002-uuid-67890',
-        seedId: 'S0002',
-        targetText: 'Como estas hoy',
-        knownText: 'How are you today',
-        status: 'processing',
-        progress: 65,
-        queuedAt: new Date(Date.now() - 120000).toISOString()
-      },
-      {
-        uuid: 'demo-003-uuid-11111',
-        seedId: 'S0003',
-        targetText: 'Muy bien, gracias',
-        knownText: 'Very well, thank you',
-        status: 'pending',
-        progress: 0,
-        queuedAt: new Date(Date.now() - 60000).toISOString()
-      },
-      {
-        uuid: 'demo-004-uuid-22222',
-        seedId: 'S0004',
-        targetText: 'Hasta luego',
-        knownText: 'See you later',
-        status: 'failed',
-        progress: 0,
-        error: 'TTS API timeout',
-        queuedAt: new Date(Date.now() - 180000).toISOString()
-      }
-    ]
+  if (store.currentCourseCode) {
+    store.connectWebSocket(store.currentCourseCode)
   }
 })
 
 onUnmounted(() => {
-  window.removeEventListener('pipeline_progress', handlePipelineProgress)
+  // WebSocket managed by store
 })
 </script>
 
