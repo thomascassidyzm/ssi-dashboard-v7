@@ -1005,6 +1005,71 @@ async function updateRecordingStatus(audioUuid, courseCode, newStatus, notes = n
   return data
 }
 
+/**
+ * Get content stats for all courses (seeds, legos, baskets counts)
+ * Used by dashboard course listings to show real counts
+ *
+ * @returns {Promise<Object>} Map of course_code -> { seeds, legos, baskets }
+ */
+async function getAllCourseContentStats() {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get seed counts per course
+  const { data: seedCounts, error: seedError } = await supabase
+    .from('course_seeds')
+    .select('course_code')
+
+  if (seedError) throw seedError
+
+  // Get lego counts per course
+  const { data: legoCounts, error: legoError } = await supabase
+    .from('course_legos')
+    .select('course_code')
+
+  if (legoError) throw legoError
+
+  // Get basket phrase counts per course (grouped by seed for basket count)
+  const { data: basketCounts, error: basketError } = await supabase
+    .from('course_practice_phrases')
+    .select('course_code, seed_number, lego_index')
+
+  if (basketError) throw basketError
+
+  // Aggregate counts
+  const stats = {}
+
+  // Count seeds
+  for (const row of seedCounts || []) {
+    if (!stats[row.course_code]) {
+      stats[row.course_code] = { seeds: 0, legos: 0, baskets: 0 }
+    }
+    stats[row.course_code].seeds++
+  }
+
+  // Count legos
+  for (const row of legoCounts || []) {
+    if (!stats[row.course_code]) {
+      stats[row.course_code] = { seeds: 0, legos: 0, baskets: 0 }
+    }
+    stats[row.course_code].legos++
+  }
+
+  // Count unique baskets (seed_number + lego_index combinations)
+  const basketKeys = new Set()
+  for (const row of basketCounts || []) {
+    if (!stats[row.course_code]) {
+      stats[row.course_code] = { seeds: 0, legos: 0, baskets: 0 }
+    }
+    const key = `${row.course_code}:${row.seed_number}:${row.lego_index}`
+    if (!basketKeys.has(key)) {
+      basketKeys.add(key)
+      stats[row.course_code].baskets++
+    }
+  }
+
+  return stats
+}
+
 module.exports = {
   supabase,
   generateAudioUUID,
@@ -1032,6 +1097,7 @@ module.exports = {
   updateRecordingStatus,
   isInitialized,
   getCourseStats,
+  getAllCourseContentStats,
   insertRecordingProvenance,
   registerHumanVoice,
   listVoices,

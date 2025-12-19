@@ -47,6 +47,27 @@ app.get('/api/production/health', (req, res) => {
   })
 })
 
+// Get content stats for all courses (seeds, legos, baskets counts)
+// Used by dashboard course listings to show real counts
+app.get('/api/production/course-stats', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const stats = await supabaseClient.getAllCourseContentStats()
+    logger.info(`Returning content stats for ${Object.keys(stats).length} courses`)
+
+    res.json({
+      success: true,
+      stats
+    })
+  } catch (err) {
+    logger.error('Failed to get course content stats:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get course manifest
 // Priority: 1) Database (if course structure exists), 2) S3 static file, 3) Stub
 app.get('/api/production/:courseCode/manifest', async (req, res) => {

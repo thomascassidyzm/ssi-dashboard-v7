@@ -361,29 +361,49 @@ export default {
 
         console.log(`[API] ✓ Loaded ${data.courses?.length || 0} courses from API`);
 
+        // Fetch real content stats from database
+        let contentStats = {}
+        try {
+          const productionApiUrl = getProductionApiUrl()
+          const statsRes = await fetch(`${productionApiUrl}/api/production/course-stats`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+          })
+          if (statsRes.ok) {
+            const statsData = await statsRes.json()
+            contentStats = statsData.stats || {}
+            console.log(`[API] ✓ Loaded content stats for ${Object.keys(contentStats).length} courses from database`)
+          }
+        } catch (statsErr) {
+          console.warn('[API] Could not load course stats from database:', statsErr.message)
+        }
+
         // Transform API response to expected format
-        const courses = (data.courses || []).map(course => ({
-          course_code: course.code,
-          source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
-          target_language: course.code?.split('_for_')[0]?.toUpperCase() || 'UNK',
-          total_seeds: 668, // Default, will be updated when course is loaded
-          version: '1.0',
-          created_at: new Date().toISOString(),
-          status: course.complete ? 'complete' : 'in_progress',
-          seed_pairs: 0,
-          lego_pairs: course.files?.lego_pairs ? 1 : 0,
-          lego_baskets: course.files?.lego_baskets ? 1 : 0,
-          amino_acids: {
-            introductions: course.files?.introductions ? 1 : 0
-          },
-          phases_completed: [
-            ...(course.files?.lego_pairs ? ['1', '3'] : []),
-            ...(course.files?.lego_baskets ? ['5'] : []),
-            ...(course.files?.introductions ? ['6'] : []),
-            ...(course.files?.course_manifest ? ['7'] : [])
-          ],
-          files: course.files
-        }));
+        const courses = (data.courses || []).map(course => {
+          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0 }
+          return {
+            course_code: course.code,
+            source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
+            target_language: course.code?.split('_for_')[0]?.toUpperCase() || 'UNK',
+            total_seeds: stats.seeds || 668,
+            version: '1.0',
+            created_at: new Date().toISOString(),
+            status: course.complete ? 'complete' : 'in_progress',
+            seed_pairs: stats.seeds,
+            lego_pairs: stats.legos,
+            lego_baskets: stats.baskets,
+            amino_acids: {
+              introductions: stats.baskets // Introductions = 1 per basket
+            },
+            phases_completed: [
+              ...(stats.seeds > 0 ? ['1'] : []),
+              ...(stats.legos > 0 ? ['3'] : []),
+              ...(stats.baskets > 0 ? ['5'] : []),
+              ...(course.files?.introductions ? ['6'] : []),
+              ...(course.files?.course_manifest ? ['7'] : [])
+            ],
+            files: course.files
+          }
+        });
 
         return { courses };
       } catch (err) {
