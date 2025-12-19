@@ -854,6 +854,240 @@ app.delete('/cancel/:courseCode', (req, res) => {
   res.json({ status: 'cancelling', courseCode })
 })
 
+// =============================================================================
+// INTRODUCTION ASSEMBLY
+// =============================================================================
+
+/**
+ * Assemble complete introduction audio files
+ * Combines: narration + pause + target1 + pause + target2
+ */
+async function assembleIntroduction(introData, courseCode, voiceConfig, knownLang, targetLang) {
+  const { legoId, narrationText, targetText } = introData
+  const tempDir = path.join(os.tmpdir(), `intro-assembly-${Date.now()}`)
+
+  try {
+    fs.mkdirSync(tempDir, { recursive: true })
+
+    // 1. Find narration audio (the intro script we generated)
+    const cleanNarration = narrationText
+      .replace(/\s*\.\.\.\s*\{target[12]\}[^.]*$/g, '')
+      .replace(/\{target[12]\}[^{]*/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+
+    const { data: narrationAudio } = await supabase
+      .from('audio_files')
+      .select('id, s3_key, texts!inner(content)')
+      .eq('texts.content', cleanNarration)
+      .eq('voice_id', voiceConfig.presentation?.voiceId || voiceConfig.known?.voiceId)
+      .not('s3_key', 'is', null)
+      .limit(1)
+      .single()
+
+    if (!narrationAudio) {
+      throw new Error(`Narration audio not found for: ${cleanNarration.substring(0, 50)}...`)
+    }
+
+    // 2. Find target1 audio (slow)
+    const { data: target1Audio } = await supabase
+      .from('audio_files')
+      .select('id, s3_key, texts!inner(content)')
+      .eq('texts.content', targetText)
+      .eq('voice_id', voiceConfig.target1?.voiceId)
+      .eq('cadence', 'slow')
+      .not('s3_key', 'is', null)
+      .limit(1)
+      .single()
+
+    if (!target1Audio) {
+      throw new Error(`Target1 audio not found for: ${targetText}`)
+    }
+
+    // 3. Find target2 audio (natural)
+    const { data: target2Audio } = await supabase
+      .from('audio_files')
+      .select('id, s3_key, texts!inner(content)')
+      .eq('texts.content', targetText)
+      .eq('voice_id', voiceConfig.target2?.voiceId)
+      .eq('cadence', 'natural')
+      .not('s3_key', 'is', null)
+      .limit(1)
+      .single()
+
+    if (!target2Audio) {
+      throw new Error(`Target2 audio not found for: ${targetText}`)
+    }
+
+    // 4. Download all audio files from S3
+    const narrationPath = path.join(tempDir, 'narration.mp3')
+    const target1Path = path.join(tempDir, 'target1.mp3')
+    const target2Path = path.join(tempDir, 'target2.mp3')
+    const silencePath = path.join(tempDir, 'silence.mp3')
+    const outputPath = path.join(tempDir, 'combined.mp3')
+
+    await s3Service.downloadAudioFile(narrationAudio.id, narrationPath)
+    await s3Service.downloadAudioFile(target1Audio.id, target1Path)
+    await s3Service.downloadAudioFile(target2Audio.id, target2Path)
+
+    // 5. Generate 500ms silence
+    const { execSync } = require('child_process')
+    execSync(`ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 0.5 -q:a 9 "${silencePath}" -y 2>/dev/null`)
+
+    // 6. Concatenate: narration + silence + target1 + silence + target2
+    const listPath = path.join(tempDir, 'files.txt')
+    fs.writeFileSync(listPath, [
+      `file '${narrationPath}'`,
+      `file '${silencePath}'`,
+      `file '${target1Path}'`,
+      `file '${silencePath}'`,
+      `file '${target2Path}'`
+    ].join('\n'))
+
+    execSync(`ffmpeg -f concat -safe 0 -i "${listPath}" -c:a libmp3lame -q:a 2 "${outputPath}" -y 2>/dev/null`)
+
+    // 7. Read the combined file
+    const combinedBuffer = fs.readFileSync(outputPath)
+
+    // 8. Create a new audio_files record for the combined intro
+    const { data: introRecord, error: rpcErr } = await supabase.rpc('find_or_create_audio', {
+      p_content: `[INTRO] ${cleanNarration} ${targetText}`,
+      p_language: knownLang,
+      p_voice_id: 'combined-introduction',
+      p_cadence: 'natural'
+    })
+
+    if (rpcErr) throw new Error(`Failed to create intro record: ${rpcErr.message}`)
+
+    const introId = introRecord[0].audio_id
+
+    // 9. Upload combined file to S3
+    const s3Key = `mastered/${introId}.mp3`
+    await s3Service.uploadAudio(introId, combinedBuffer)
+
+    // 10. Update the record with S3 info
+    const { error: updateErr } = await supabase
+      .from('audio_files')
+      .update({
+        s3_bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
+        s3_key: s3Key,
+        file_size_bytes: combinedBuffer.length
+        // Note: source left as null since 'assembled' not in check constraint
+      })
+      .eq('id', introId)
+
+    if (updateErr) {
+      logger.error(`Failed to update audio_files for ${introId}:`, updateErr.message)
+    }
+
+    // 11. Link to course with context
+    await supabase
+      .from('course_audio')
+      .upsert({
+        course_code: courseCode,
+        audio_id: introId,
+        role: 'introduction_combined',
+        context: legoId
+      }, {
+        onConflict: 'course_code,audio_id,role,context'
+      })
+
+    return { legoId, introId, s3Key, size: combinedBuffer.length }
+
+  } finally {
+    // Cleanup temp files
+    try {
+      fs.rmSync(tempDir, { recursive: true, force: true })
+    } catch (e) {
+      // Ignore cleanup errors
+    }
+  }
+}
+
+/**
+ * POST /assemble-introductions - Assemble complete introduction audio
+ * Combines narration + target1 + target2 into single files
+ */
+app.post('/assemble-introductions', async (req, res) => {
+  try {
+    const { courseCode } = req.body
+
+    if (!courseCode) {
+      return res.status(400).json({ error: 'courseCode is required' })
+    }
+
+    logger.log(`Assembling introductions for ${courseCode}`)
+
+    // Get course voice config
+    const { voiceConfig } = await extractAudioNeeds(courseCode)
+
+    // Get course languages
+    const [targetLang, , knownLang] = courseCode.split('_')
+
+    // Load introductions.json
+    const introPath = path.join(__dirname, '../../public/vfs/courses', courseCode, 'introductions.json')
+    if (!fs.existsSync(introPath)) {
+      return res.status(404).json({ error: 'introductions.json not found' })
+    }
+
+    const introData = JSON.parse(fs.readFileSync(introPath, 'utf8'))
+    const presentations = introData.presentations || {}
+
+    // Start assembly in background
+    res.json({
+      status: 'started',
+      courseCode,
+      total: Object.keys(presentations).length
+    })
+
+    // Process asynchronously
+    ;(async () => {
+      const results = []
+      const errors = []
+      let processed = 0
+
+      for (const [legoId, presentation] of Object.entries(presentations)) {
+        try {
+          // Parse the presentation to get target text
+          const text = typeof presentation === 'string' ? presentation : presentation.text
+
+          // Extract target text from presentation
+          // Format: "The Chinese for 'I want'... is: ... {target1}'我想' ... {target2}'我想'"
+          const targetMatch = text.match(/\{target1\}[''""]([^''"]+)[''""]/)
+          if (!targetMatch) {
+            logger.warn(`Could not extract target from ${legoId}: ${text.substring(0, 50)}...`)
+            continue
+          }
+
+          const targetText = targetMatch[1]
+
+          const result = await assembleIntroduction(
+            { legoId, narrationText: text, targetText },
+            courseCode,
+            voiceConfig,
+            knownLang,
+            targetLang
+          )
+
+          results.push(result)
+          processed++
+          logger.log(`Assembled ${processed}/${Object.keys(presentations).length}: ${legoId}`)
+
+        } catch (err) {
+          logger.error(`Failed to assemble ${legoId}:`, err.message)
+          errors.push({ legoId, error: err.message })
+        }
+      }
+
+      logger.log(`Assembly complete: ${results.length} assembled, ${errors.length} failed`)
+    })()
+
+  } catch (err) {
+    logger.error('Assembly failed:', err.message)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 /**
  * GET /health - Health check
  */
@@ -861,7 +1095,7 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
     service: 'phase8-audio-v12',
-    version: '12.0.0',
+    version: '12.1.0',
     ttsAvailable: !!ttsService,
     s3Available: !!s3Service,
     supabaseConnected: !!supabase,
