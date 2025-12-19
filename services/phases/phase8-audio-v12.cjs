@@ -169,6 +169,15 @@ async function extractAudioNeeds(courseCode) {
     }
   }
 
+  // Presentation voice defaults to known voice
+  const presentationVoice = course.voice_config?.voices?.presentation?.voiceId || course.known_voice
+  if (presentationVoice) {
+    voiceConfig.presentation = {
+      voiceId: await resolveVoiceId(presentationVoice),
+      cadence: 'natural'
+    }
+  }
+
   if (!voiceConfig.target1 && !voiceConfig.known) {
     throw new Error(`No voices configured for ${courseCode}`)
   }
@@ -249,10 +258,71 @@ async function extractAudioNeeds(courseCode) {
     }
   }
 
-  const needs = Array.from(needsMap.values())
-  logger.log(`Extracted ${needs.length} unique audio needs`)
+  // Extract introduction needs if presentation voice is available
+  let introCount = 0
+  if (voiceConfig.presentation) {
+    const introNeeds = await extractIntroductionNeeds(courseCode, voiceConfig.presentation, knownLang)
+    for (const intro of introNeeds) {
+      const key = `${intro.text}|${knownLang}|introduction`
+      if (!needsMap.has(key)) {
+        needsMap.set(key, intro)
+        introCount++
+      }
+    }
+    logger.log(`Added ${introCount} introduction audio needs`)
+  }
 
-  return { needs, voiceConfig, phraseCount: phrases.length }
+  const needs = Array.from(needsMap.values())
+  logger.log(`Extracted ${needs.length} unique audio needs (${needs.length - introCount} phrases + ${introCount} introductions)`)
+
+  return { needs, voiceConfig, phraseCount: phrases.length, introCount }
+}
+
+/**
+ * Extract introduction audio needs from introductions.json or database
+ */
+async function extractIntroductionNeeds(courseCode, presentationVoice, knownLang) {
+  const introNeeds = []
+
+  // Try to load from VFS first (legacy JSON file)
+  try {
+    const introPath = path.join(__dirname, '../../public/vfs/courses', courseCode, 'introductions.json')
+    if (fs.existsSync(introPath)) {
+      const introData = JSON.parse(fs.readFileSync(introPath, 'utf8'))
+      const presentations = introData.presentations || {}
+
+      for (const [legoId, presentation] of Object.entries(presentations)) {
+        // Handle both old format (string with {target1}) and new format (object with text field)
+        let introText = typeof presentation === 'string' ? presentation : presentation.text
+
+        // Strip out {target1} and {target2} tags - we just want the spoken script
+        // Old format: "The Chinese for 'I want', as in 'I want to speak', is: ... {target1}'我想' ... {target2}'我想'"
+        // We extract just: "The Chinese for 'I want', as in 'I want to speak', is:"
+        introText = introText
+          .replace(/\s*\.\.\.\s*\{target[12]\}[^.]*$/g, '')  // Remove trailing target refs
+          .replace(/\{target[12]\}[^{]*/g, '')  // Remove inline target refs
+          .replace(/\s+/g, ' ')  // Normalize whitespace
+          .trim()
+
+        if (introText && introText.length > 5) {
+          introNeeds.push({
+            text: introText,
+            language: knownLang,
+            role: 'introduction',
+            voiceId: presentationVoice.voiceId,
+            cadence: presentationVoice.cadence || 'natural',
+            contexts: [legoId]
+          })
+        }
+      }
+
+      logger.log(`Loaded ${introNeeds.length} introductions from JSON file`)
+    }
+  } catch (err) {
+    logger.warn(`Could not load introductions.json: ${err.message}`)
+  }
+
+  return introNeeds
 }
 
 // =============================================================================
@@ -533,7 +603,7 @@ app.post('/plan', async (req, res) => {
     logger.log(`Planning audio generation for ${courseCode}`)
 
     // Extract needs
-    const { needs, voiceConfig, phraseCount } = await extractAudioNeeds(courseCode)
+    const { needs, voiceConfig, phraseCount, introCount } = await extractAudioNeeds(courseCode)
 
     // Check what already exists (fast batch query for planning)
     const { results, needsGeneration } = await checkAudioStatusFast(needs)
@@ -541,6 +611,7 @@ app.post('/plan', async (req, res) => {
     const plan = {
       courseCode,
       phraseCount,
+      introCount: introCount || 0,
       uniqueAudioNeeds: needs.length,
       alreadyExists: results.length - needsGeneration.length,
       needsGeneration: needsGeneration.length,
@@ -548,7 +619,8 @@ app.post('/plan', async (req, res) => {
       breakdown: {
         target1: needsGeneration.filter(n => n.role === 'target1').length,
         target2: needsGeneration.filter(n => n.role === 'target2').length,
-        known: needsGeneration.filter(n => n.role === 'known').length
+        known: needsGeneration.filter(n => n.role === 'known').length,
+        introduction: needsGeneration.filter(n => n.role === 'introduction').length
       },
       estimatedCost: `~$${(needsGeneration.length * 0.002).toFixed(2)} (Azure TTS)`,
       samples: needsGeneration.slice(0, 5).map(n => ({
@@ -565,7 +637,7 @@ app.post('/plan', async (req, res) => {
       plan: {
         total: plan.uniqueAudioNeeds,
         phraseNeeds: plan.phraseCount * 3,  // 3 audio files per phrase (target1, target2, known)
-        introNeeds: 0,  // v12 doesn't separate intro audio
+        introNeeds: plan.introCount,
         existing: plan.alreadyExists,
         toGenerate: plan.needsGeneration,
         samples: needsGeneration.slice(0, 10).map(n => ({
