@@ -632,6 +632,19 @@ app.post('/plan', async (req, res) => {
 
     logger.log(`Plan: ${plan.needsGeneration} to generate, ${plan.alreadyExists} exist`)
 
+    // Check assembly status (how many combined intros exist)
+    const { data: assembledIntros } = await supabase
+      .from('audio_files')
+      .select('id')
+      .eq('voice_id', 'combined-introduction')
+      .not('s3_key', 'is', null)
+
+    const assemblyStats = {
+      total: plan.introCount,
+      assembled: (assembledIntros || []).length,
+      pending: Math.max(0, plan.introCount - (assembledIntros || []).length)
+    }
+
     // Return in format expected by production-api
     res.json({
       plan: {
@@ -646,6 +659,7 @@ app.post('/plan', async (req, res) => {
           voice: n.voiceId
         }))
       },
+      assembly: assemblyStats,
       voices: plan.voiceConfig,
       dataSource: 'supabase-v12'
     })
@@ -739,17 +753,29 @@ app.post('/generate', async (req, res) => {
         // Link all results to course
         await linkToCourse(courseCode, results)
 
+        logger.log(`TTS generation complete: ${jobState.progress.generated} generated, ${jobState.progress.failed} failed`)
+
+        // Auto-trigger introduction assembly
+        await emitProgress(courseCode, {
+          phase: 'assembling',
+          message: 'Assembling introduction audio...'
+        })
+
+        const assemblyResult = await runIntroductionAssembly(courseCode)
+
         // Update job state
         jobState.status = jobState.cancelled ? 'cancelled' : 'completed'
         jobState.endTime = Date.now()
+        jobState.assembly = assemblyResult
 
-        logger.log(`Generation complete: ${jobState.progress.generated} generated, ${jobState.progress.failed} failed`)
+        logger.log(`Assembly complete: ${assemblyResult.assembled} assembled, ${assemblyResult.failed} failed`)
 
         await emitProgress(courseCode, {
           phase: 'complete',
           total: needsGeneration.length,
           generated: jobState.progress.generated,
           failed: jobState.progress.failed,
+          assembly: assemblyResult,
           durationMs: jobState.endTime - jobState.startTime
         })
 
@@ -798,11 +824,26 @@ app.get('/status/:courseCode', async (req, res) => {
       percent: total > 0 ? Math.round((generatedForCourse / total) * 100) : 0
     }
 
+    // Get assembly stats
+    const introCount = needs.filter(n => n.role === 'introduction').length
+    const { data: assembledIntros } = await supabase
+      .from('audio_files')
+      .select('id')
+      .eq('voice_id', 'combined-introduction')
+      .not('s3_key', 'is', null)
+
+    const assembly = {
+      total: introCount,
+      assembled: (assembledIntros || []).length,
+      pending: Math.max(0, introCount - (assembledIntros || []).length)
+    }
+
     if (!job) {
       return res.json({
         status: 'idle',
         courseCode,
-        progress: dbProgress
+        progress: dbProgress,
+        assembly
       })
     }
 
@@ -816,6 +857,7 @@ app.get('/status/:courseCode', async (req, res) => {
         total: dbProgress.total,
         percent: dbProgress.percent
       },
+      assembly: job.assembly || assembly,
       startTime: job.startTime,
       endTime: job.endTime,
       error: job.error
@@ -1002,6 +1044,69 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
       // Ignore cleanup errors
     }
   }
+}
+
+/**
+ * Run introduction assembly for a course (sync, returns result)
+ * Used by auto-assembly after TTS generation
+ */
+async function runIntroductionAssembly(courseCode) {
+  logger.log(`Running introduction assembly for ${courseCode}`)
+
+  const result = { assembled: 0, failed: 0, errors: [] }
+
+  try {
+    // Get course voice config
+    const { voiceConfig } = await extractAudioNeeds(courseCode)
+
+    // Get course languages
+    const [targetLang, , knownLang] = courseCode.split('_')
+
+    // Load introductions.json
+    const introPath = path.join(__dirname, '../../public/vfs/courses', courseCode, 'introductions.json')
+    if (!fs.existsSync(introPath)) {
+      logger.warn(`No introductions.json found for ${courseCode}`)
+      return result
+    }
+
+    const introData = JSON.parse(fs.readFileSync(introPath, 'utf8'))
+    const presentations = introData.presentations || {}
+
+    for (const [legoId, presentation] of Object.entries(presentations)) {
+      try {
+        const text = typeof presentation === 'string' ? presentation : presentation.text
+
+        // Extract target text
+        const targetMatch = text.match(/\{target1\}[''""]([^''"]+)[''""]/)
+        if (!targetMatch) {
+          continue
+        }
+
+        const targetText = targetMatch[1]
+
+        await assembleIntroduction(
+          { legoId, narrationText: text, targetText },
+          courseCode,
+          voiceConfig,
+          knownLang,
+          targetLang
+        )
+
+        result.assembled++
+        logger.log(`Assembled intro ${result.assembled}: ${legoId}`)
+
+      } catch (err) {
+        result.failed++
+        result.errors.push({ legoId, error: err.message })
+      }
+    }
+
+  } catch (err) {
+    logger.error(`Assembly failed for ${courseCode}:`, err.message)
+    result.errors.push({ error: err.message })
+  }
+
+  return result
 }
 
 /**
