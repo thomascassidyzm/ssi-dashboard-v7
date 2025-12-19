@@ -364,6 +364,7 @@ async function checkAudioStatus(needs) {
 
 /**
  * Generate TTS audio and upload to S3
+ * Creates database record on-the-fly if needed (no pre-registration required)
  */
 async function generateAndUpload(need, jobState) {
   if (!ttsService) throw new Error('TTS service not available')
@@ -371,6 +372,20 @@ async function generateAndUpload(need, jobState) {
   // Check for cancellation
   if (jobState?.cancelled) {
     throw new Error('Job cancelled')
+  }
+
+  // Create/get audio record on-the-fly using the registry
+  let audioId = need.audioId
+  if (!audioId) {
+    const { data, error: rpcErr } = await supabase.rpc('find_or_create_audio', {
+      p_content: need.text,
+      p_language: need.language,
+      p_voice_id: need.voiceId,
+      p_cadence: need.cadence
+    })
+    if (rpcErr) throw new Error(`Failed to create audio record: ${rpcErr.message}`)
+    audioId = data[0].audio_id
+    need.audioId = audioId
   }
 
   // Get voice details for TTS
@@ -389,10 +404,16 @@ async function generateAndUpload(need, jobState) {
 
   // Generate TTS using the correct API
   const provider = voice.tts_engine || 'azure'
+
+  // Azure voices need full name format: locale-voiceName (e.g., "en-US-JennyNeural")
+  const azureVoiceName = voice.tts_locale
+    ? `${voice.tts_locale}-${voice.tts_voice_name}`
+    : voice.tts_voice_name
+
   const config = provider === 'azure' ? {
     subscriptionKey: process.env.AZURE_SPEECH_KEY,
     region: process.env.AZURE_SPEECH_REGION,
-    voiceName: voice.tts_voice_name,
+    voiceName: azureVoiceName,
     rate
   } : {
     apiKey: process.env.ELEVENLABS_API_KEY,
@@ -599,8 +620,8 @@ app.post('/generate', async (req, res) => {
         // Extract needs
         const { needs, phraseCount } = await extractAudioNeeds(courseCode)
 
-        // Check what needs generation
-        const { results, needsGeneration } = await checkAudioStatus(needs)
+        // Fast check what needs generation (no record creation - that happens on-the-fly)
+        const { results, needsGeneration } = await checkAudioStatusFast(needs)
 
         jobState.progress.total = needsGeneration.length
         logger.log(`Generating ${needsGeneration.length} audio files`)
