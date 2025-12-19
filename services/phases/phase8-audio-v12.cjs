@@ -387,14 +387,20 @@ async function generateAndUpload(need, jobState) {
   // Map cadence to SSML rate
   const rate = need.cadence === 'slow' ? 'slow' : 'medium'
 
-  // Generate TTS
-  const audioBuffer = await ttsService.generateSpeech({
-    text: need.text,
+  // Generate TTS using the correct API
+  const provider = voice.tts_engine || 'azure'
+  const config = provider === 'azure' ? {
+    subscriptionKey: process.env.AZURE_SPEECH_KEY,
+    region: process.env.AZURE_SPEECH_REGION,
     voiceName: voice.tts_voice_name,
-    locale: voice.tts_locale,
-    rate,
-    engine: voice.tts_engine
-  })
+    rate
+  } : {
+    apiKey: process.env.ELEVENLABS_API_KEY,
+    voiceId: voice.tts_voice_name,
+    speed: rate === 'slow' ? 0.85 : 1.0
+  }
+
+  const audioBuffer = await ttsService.generateWithRetry(need.text, provider, config)
 
   // Upload to S3
   const s3Key = `mastered/${need.audioId}.mp3`
@@ -669,23 +675,72 @@ app.post('/generate', async (req, res) => {
 
 /**
  * GET /status/:courseCode - Check generation status
+ * Uses DATABASE as source of truth for progress
  */
-app.get('/status/:courseCode', (req, res) => {
+app.get('/status/:courseCode', async (req, res) => {
   const { courseCode } = req.params
   const job = activeJobs.get(courseCode)
 
-  if (!job) {
-    return res.json({ status: 'idle', courseCode })
-  }
+  // Query database for real progress (source of truth)
+  try {
+    // Get total audio needs for this course
+    const { needs } = await extractAudioNeeds(courseCode)
+    const total = needs.length
 
-  res.json({
-    status: job.status,
-    courseCode,
-    progress: job.progress,
-    startTime: job.startTime,
-    endTime: job.endTime,
-    error: job.error
-  })
+    // Query how many have been generated (have s3_key)
+    const { data: generated, error } = await supabase
+      .from('audio_files')
+      .select('id, s3_key, texts!inner(content, language)')
+      .not('s3_key', 'is', null)
+
+    // Filter to just this course's languages
+    const courseLanguages = [...new Set(needs.map(n => n.language))]
+    const generatedForCourse = (generated || []).filter(a =>
+      courseLanguages.includes(a.texts.language)
+    ).length
+
+    const dbProgress = {
+      generated: generatedForCourse,
+      total,
+      percent: total > 0 ? Math.round((generatedForCourse / total) * 100) : 0
+    }
+
+    if (!job) {
+      return res.json({
+        status: 'idle',
+        courseCode,
+        progress: dbProgress
+      })
+    }
+
+    res.json({
+      status: job.status,
+      courseCode,
+      progress: {
+        ...job.progress,
+        // Override with database truth
+        generated: dbProgress.generated,
+        total: dbProgress.total,
+        percent: dbProgress.percent
+      },
+      startTime: job.startTime,
+      endTime: job.endTime,
+      error: job.error
+    })
+  } catch (err) {
+    // Fallback to in-memory if DB query fails
+    if (!job) {
+      return res.json({ status: 'idle', courseCode })
+    }
+    res.json({
+      status: job.status,
+      courseCode,
+      progress: job.progress,
+      startTime: job.startTime,
+      endTime: job.endTime,
+      error: job.error
+    })
+  }
 })
 
 /**
