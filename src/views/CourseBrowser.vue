@@ -243,10 +243,15 @@ function formatCourseCode(code) {
 }
 
 function getFullCourseName(courseCode) {
-  const [target, , known] = courseCode.split('_')
-  const targetName = languageNames[target] || target.toUpperCase()
-  const knownName = languageNames[known] || known.toUpperCase()
-  return `${targetName} for ${knownName} speakers`
+  // Handle xxx_for_yyy format (e.g., spa_for_eng)
+  if (courseCode.includes('_for_')) {
+    const [target, , known] = courseCode.split('_')
+    const targetName = languageNames[target] || target?.toUpperCase() || 'Unknown'
+    const knownName = languageNames[known] || known?.toUpperCase() || 'Unknown'
+    return `${targetName} for ${knownName} speakers`
+  }
+  // Handle other formats (e.g., en-es, en-cy-north) - just return the code
+  return courseCode
 }
 
 function formatStatus(status) {
