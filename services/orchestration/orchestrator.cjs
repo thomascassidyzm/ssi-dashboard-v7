@@ -1719,14 +1719,16 @@ app.get('/api/courses', async (req, res) => {
 /**
  * GET /api/courses/:courseCode
  * Get detailed course information
+ * Supports both legacy (seed_pairs.json) and new (lego_pairs.json) formats
+ * Falls back to Supabase for database-first courses
  */
 app.get('/api/courses/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
 
   try {
-    // Load course files from VFS
     const coursePath = path.join(VFS_ROOT, courseCode);
 
+    // Try loading files from both legacy and new formats
     const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
     const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
     const basketsPath = path.join(coursePath, 'lego_baskets.json');
@@ -1737,25 +1739,113 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       fs.readJson(basketsPath).catch(() => null)
     ]);
 
-    if (!seedPairs) {
+    // Legacy format: seed_pairs.json exists
+    if (seedPairs) {
+      // seed_pairs can be array or object with translations
+      let seedCount = 0;
+      if (Array.isArray(seedPairs)) {
+        seedCount = seedPairs.length;
+      } else if (seedPairs.translations) {
+        seedCount = Object.keys(seedPairs.translations).length;
+      }
+
+      // lego_pairs can be different formats
+      let legoCount = 0;
+      if (legoPairs) {
+        if (legoPairs.metadata?.totalLegos) {
+          legoCount = legoPairs.metadata.totalLegos;
+        } else if (legoPairs.seeds && Array.isArray(legoPairs.seeds)) {
+          legoCount = legoPairs.seeds.reduce((sum, seed) => sum + (seed.legos?.length || 0), 0);
+        } else if (Array.isArray(legoPairs)) {
+          legoCount = legoPairs.reduce((sum, seed) => sum + (seed.legos?.length || (Array.isArray(seed[2]) ? seed[2].length : 0)), 0);
+        }
+      }
+
+      const basketCount = baskets ? Object.keys(baskets.baskets || baskets || {}).length : 0;
+
+      return res.json({
+        course_code: courseCode,
+        seed_count: seedCount,
+        lego_count: legoCount,
+        basket_count: basketCount,
+        has_phase1: !!seedPairs,
+        has_phase3: !!legoPairs,
+        has_baskets: !!baskets,
+        data_source: 'vfs'
+      });
+    }
+
+    // New format: lego_pairs.json or lego_baskets.json without seed_pairs.json
+    if (legoPairs || baskets) {
+      // Count from lego_pairs.json (v11+ format)
+      let seedCount = 0;
+      let legoCount = 0;
+
+      if (legoPairs) {
+        if (legoPairs.metadata) {
+          // v11 format with metadata: {metadata: {...}, seeds: [{legos: [...]}]}
+          seedCount = legoPairs.metadata.totalSeeds || (legoPairs.seeds?.length || 0);
+          legoCount = legoPairs.metadata.totalLegos || 0;
+        } else if (legoPairs.seeds && Array.isArray(legoPairs.seeds)) {
+          // v11 format: {seeds: [{seed_id, legos: [...]}]}
+          seedCount = legoPairs.seeds.length;
+          legoCount = legoPairs.seeds.reduce((sum, seed) => sum + (seed.legos?.length || 0), 0);
+        } else if (Array.isArray(legoPairs)) {
+          // Flat array format: [{seed_number, legos: [...]}]
+          seedCount = legoPairs.length;
+          legoCount = legoPairs.reduce((sum, seed) => sum + (seed.legos?.length || 0), 0);
+        }
+      }
+
+      // Count baskets - new format is object keyed by lego ID
+      const basketCount = baskets ? Object.keys(baskets).length : 0;
+
+      return res.json({
+        course_code: courseCode,
+        seed_count: seedCount,
+        lego_count: legoCount,
+        basket_count: basketCount,
+        has_phase1: seedCount > 0,
+        has_phase3: legoCount > 0,
+        has_baskets: basketCount > 0,
+        data_source: 'vfs-v11'
+      });
+    }
+
+    // Fall back to Supabase (database-first courses)
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
+    if (!isInitialized()) {
+      return res.status(404).json({ error: `Course ${courseCode} not found (no local files and Supabase not initialized)` });
+    }
+
+    // Get course from database
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('*')
+      .eq('course_code', courseCode)
+      .single();
+
+    if (courseError || !course) {
       return res.status(404).json({ error: `Course ${courseCode} not found` });
     }
 
-    // Count elements
-    const seedCount = Object.keys(seedPairs.translations || {}).length;
-    const legoCount = legoPairs ? (legoPairs.seeds || []).reduce((sum, seed) => {
-      return sum + (Array.isArray(seed[2]) ? seed[2].length : 0);
-    }, 0) : 0;
-    const basketCount = baskets ? Object.keys(baskets.baskets || {}).length : 0;
+    // Get content counts from database
+    const { getAllCourseContentStats } = require('../supabase-client.cjs');
+    const allStats = await getAllCourseContentStats();
+    const stats = allStats[courseCode] || { seeds: 0, legos: 0, baskets: 0 };
 
     res.json({
       course_code: courseCode,
-      seed_count: seedCount,
-      lego_count: legoCount,
-      basket_count: basketCount,
-      has_phase1: !!seedPairs,
-      has_phase3: !!legoPairs,
-      has_baskets: !!baskets
+      seed_count: stats.seeds,
+      lego_count: stats.legos,
+      basket_count: stats.baskets,
+      has_phase1: stats.seeds > 0,
+      has_phase3: stats.legos > 0,
+      has_baskets: stats.baskets > 0,
+      data_source: 'database',
+      course_name: course.name,
+      known_lang: course.known_lang,
+      target_lang: course.target_lang
     });
   } catch (error) {
     console.error(`Failed to load course ${courseCode}:`, error);

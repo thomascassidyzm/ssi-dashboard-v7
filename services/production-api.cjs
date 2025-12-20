@@ -1024,6 +1024,7 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
         { role: 'target2', count: breakdown.target2 || Math.floor((plan.phraseNeeds || 0) / 3) },
         { role: 'introduction', count: breakdown.introduction }
       ],
+      assembly: response.data.assembly || null,
       voices: voices,
       dataSource: response.data.dataSource || 'unknown'
     })
