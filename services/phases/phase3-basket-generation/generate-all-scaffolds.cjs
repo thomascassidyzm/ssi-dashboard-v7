@@ -174,16 +174,47 @@ function getRecentLegos(legoPairs, seedId, legoIndex, count = 20) {
 }
 
 /**
+ * Count syllables in text (language-agnostic)
+ * - CJK languages: each character ≈ 1 syllable
+ * - Alphabetic languages: estimate via vowel clusters
+ */
+function countSyllables(text) {
+  if (!text || typeof text !== 'string') return 0;
+  text = text.trim();
+  if (!text) return 0;
+
+  // CJK: count characters
+  const cjkRegex = /[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/;
+  if (cjkRegex.test(text)) {
+    const cjkChars = text.match(/[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/g);
+    return cjkChars ? cjkChars.length : 0;
+  }
+
+  // Alphabetic: estimate via vowel clusters
+  const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+  let syllables = 0;
+  for (const word of words) {
+    const clean = word.replace(/[^a-záéíóúàèìòùâêîôûäëïöüñç]/gi, '');
+    if (!clean) continue;
+    const vowelGroups = clean.match(/[aeiouyáéíóúàèìòùâêîôûäëïöü]+/gi);
+    let count = vowelGroups ? vowelGroups.length : 1;
+    if (clean.endsWith('e') && count > 1) count--;
+    syllables += Math.max(1, count);
+  }
+  return syllables || 1;
+}
+
+/**
  * Assign recommended model tier based on difficulty factors
  * @returns 'haiku' | 'sonnet' | 'opus'
  *
  * Difficulty factors (hardest first):
  * 1. Very limited vocab (<15 words) - OPUS only
- * 2. Limited vocab (<30) OR complex M-type (3+ words) - SONNET
+ * 2. Limited vocab (<30) OR complex M-type (3+ syllables) - SONNET
  * 3. Moderate vocab (30-60) - SONNET (safe default)
  * 4. Rich vocab (>60) with simple LEGO - HAIKU
  */
-function assignModelTier(seedNum, vocabSize, legoWordCount, legoType) {
+function assignModelTier(seedNum, vocabSize, legoSyllableCount, legoType) {
   // Tier 1: OPUS - Very constrained (hardest cases)
   // Very limited vocabulary makes GATE compliance extremely difficult
   if (vocabSize < 15) return 'opus';
@@ -191,7 +222,7 @@ function assignModelTier(seedNum, vocabSize, legoWordCount, legoType) {
   // Tier 2: SONNET - Moderate difficulty (default safe choice)
   // Limited vocab OR complex multi-word LEGOs
   if (vocabSize < 30) return 'sonnet';
-  if (legoType === 'M' && legoWordCount >= 3) return 'sonnet';
+  if (legoType === 'M' && legoSyllableCount >= 3) return 'sonnet';
 
   // Tier 3: Still SONNET for moderate vocab (30-60)
   // This is the "safe zone" - Sonnet handles these well
@@ -220,8 +251,8 @@ function generateLegoScaffold(legoPairs, seed, legoIndex) {
 
   // Calculate difficulty metrics
   const vocabSize = vocab.target.size;
-  const legoWordCount = lego.lego.target.split(/\s+/).length;
-  const recommendedModel = assignModelTier(seedNum, vocabSize, legoWordCount, lego.type);
+  const legoSyllableCount = countSyllables(lego.lego.target);
+  const recommendedModel = assignModelTier(seedNum, vocabSize, legoSyllableCount, lego.type);
 
   // Build compact scaffold
   return {
@@ -238,7 +269,7 @@ function generateLegoScaffold(legoPairs, seed, legoIndex) {
     // Difficulty metrics for model selection
     difficulty: {
       vocab_size: vocabSize,
-      lego_word_count: legoWordCount,
+      lego_syllable_count: legoSyllableCount,
       seed_position: seedNum,
       recommended_model: recommendedModel
     },

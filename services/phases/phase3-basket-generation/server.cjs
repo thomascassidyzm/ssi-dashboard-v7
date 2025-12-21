@@ -225,12 +225,57 @@ function phraseContainsLego(phraseTarget, legoTarget) {
 }
 
 /**
- * Count words in text (target language)
- * @param {string} text - The text to count words in
- * @returns {number} Word count
+ * Count syllables in text (language-agnostic)
+ * - CJK languages: each character ≈ 1 syllable
+ * - Alphabetic languages: estimate via vowel clusters
+ * @param {string} text - The text to count syllables in
+ * @returns {number} Syllable count
  */
+function countSyllables(text) {
+  if (!text || typeof text !== 'string') return 0;
+  text = text.trim();
+  if (!text) return 0;
+
+  // Check if text contains CJK characters (Chinese, Japanese, Korean)
+  // CJK Unified Ideographs: \u4E00-\u9FFF
+  // Hiragana: \u3040-\u309F, Katakana: \u30A0-\u30FF
+  // Korean Hangul: \uAC00-\uD7AF
+  const cjkRegex = /[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/;
+
+  if (cjkRegex.test(text)) {
+    // For CJK: count characters (excluding punctuation and spaces)
+    const cjkChars = text.match(/[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/g);
+    return cjkChars ? cjkChars.length : 0;
+  }
+
+  // For alphabetic languages: estimate syllables via vowel clusters
+  // This is a rough approximation that works for most European languages
+  const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+  let syllables = 0;
+
+  for (const word of words) {
+    // Remove punctuation
+    const clean = word.replace(/[^a-záéíóúàèìòùâêîôûäëïöüñç]/gi, '');
+    if (!clean) continue;
+
+    // Count vowel groups (including accented vowels)
+    const vowelGroups = clean.match(/[aeiouyáéíóúàèìòùâêîôûäëïöü]+/gi);
+    let count = vowelGroups ? vowelGroups.length : 1;
+
+    // Adjustments for common patterns
+    if (clean.endsWith('e') && count > 1) count--; // Silent e
+    if (clean.endsWith('le') && clean.length > 2) count++; // -le ending
+    if (clean.endsWith('es') && count > 1) count--; // -es ending often silent
+
+    syllables += Math.max(1, count);
+  }
+
+  return syllables || 1;
+}
+
+// Legacy alias for backwards compatibility
 function countWords(text) {
-  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+  return countSyllables(text);
 }
 
 /**
@@ -2947,7 +2992,8 @@ app.post('/upload-basket', async (req, res) => {
           }
         }
 
-        // 2.5 NEW: Enrich practice phrases with word_count, lego_count, and position
+        // 2.5 NEW: Enrich practice phrases with syllable_count, lego_count, and position
+        // syllable_count is language-agnostic (CJK: characters, alphabetic: vowel clusters)
         if (basket.practice_phrases && Array.isArray(basket.practice_phrases)) {
           // Collect all LEGO target texts from this seed (for lego_count calculation)
           // Handle both nested format { lego: { target: "..." } } and flat format { target: "..." }
@@ -2958,7 +3004,8 @@ app.post('/upload-basket', async (req, res) => {
           // Enrich each phrase
           basket.practice_phrases = basket.practice_phrases.map((phrase, index) => ({
             ...phrase,
-            word_count: countWords(phrase.target),
+            syllable_count: countSyllables(phrase.target),
+            word_count: countSyllables(phrase.target),  // Legacy alias for backwards compatibility
             lego_count: countLegosInPhrase(phrase.target, legoTargetsInSeed),
             position: index + 1  // 1-based position
           }));
