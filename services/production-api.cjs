@@ -14,6 +14,7 @@ const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
+const { SchemaValidator } = require('./schema-validator.cjs')
 
 // VFS root for local file checks
 const VFS_ROOT = process.env.VFS_ROOT?.endsWith('/courses')
@@ -45,6 +46,25 @@ app.get('/api/production/health', (req, res) => {
     timestamp: new Date().toISOString(),
     supabase: supabaseInitialized ? 'connected' : 'not initialized'
   })
+})
+
+// Schema validation - compare APML spec against live database
+app.get('/api/production/schema/validate', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const validator = new SchemaValidator(supabaseClient.getClient())
+    const results = await validator.validate()
+
+    logger.info(`Schema validation: ${results.valid ? 'VALID' : 'DRIFT DETECTED'}`)
+
+    res.json(results)
+  } catch (err) {
+    logger.error('Schema validation failed:', err)
+    res.status(500).json({ error: err.message })
+  }
 })
 
 // Get content stats for all courses (seeds, legos, baskets counts)

@@ -16,6 +16,7 @@
             </p>
           </div>
           <div class="flex items-center gap-6">
+            <SchemaHealth />
             <EnvironmentSwitcher />
             <div class="flex items-center gap-4">
               <span class="text-slate-400 text-sm">{{ user?.name || user?.email }}</span>
@@ -282,6 +283,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
+import SchemaHealth from '../components/SchemaHealth.vue'
 import { useAuth } from '../composables/useAuth'
 
 const router = useRouter()

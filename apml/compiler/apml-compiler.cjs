@@ -22,6 +22,13 @@
 const fs = require('fs')
 const path = require('path')
 
+// Load environment for Supabase connection (optional, only needed for --validate-db)
+try {
+  require('dotenv').config({ path: path.join(__dirname, '../../.env') })
+} catch (e) {
+  // dotenv not required for basic compilation
+}
+
 // ============================================================================
 // APML PARSER
 // ============================================================================
@@ -681,6 +688,139 @@ class ZodGenerator {
 }
 
 // ============================================================================
+// SCHEMA VALIDATOR (for --validate-db)
+// ============================================================================
+
+class SchemaValidator {
+  constructor(schema, options = {}) {
+    this.schema = schema
+    this.verbose = options.verbose || false
+    this.supabase = null
+  }
+
+  log(msg) {
+    if (this.verbose) console.log(`[VALIDATOR] ${msg}`)
+  }
+
+  async initSupabase() {
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+      throw new Error('SUPABASE_URL and SUPABASE_SERVICE_KEY required for --validate-db')
+    }
+
+    const { createClient } = require('@supabase/supabase-js')
+    this.supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_KEY
+    )
+    this.log('Connected to Supabase')
+  }
+
+  async validate() {
+    await this.initSupabase()
+
+    const results = {
+      valid: true,
+      tables: {},
+      summary: { matched: 0, missing: 0, extra: 0, columnIssues: 0 }
+    }
+
+    console.log('\n=== APML Schema Validation ===\n')
+
+    // Check each table defined in APML
+    for (const [tableName, table] of Object.entries(this.schema.tables)) {
+      const tableResult = await this.validateTable(tableName, table)
+      results.tables[tableName] = tableResult
+
+      if (tableResult.status === 'OK') {
+        results.summary.matched++
+      } else if (tableResult.status === 'MISSING') {
+        results.summary.missing++
+        results.valid = false
+      } else {
+        results.summary.columnIssues++
+        results.valid = false
+      }
+    }
+
+    // Print summary
+    console.log('\n=== Summary ===')
+    console.log(`Tables matched: ${results.summary.matched}`)
+    console.log(`Tables missing: ${results.summary.missing}`)
+    console.log(`Tables with column issues: ${results.summary.columnIssues}`)
+    console.log(`\nOverall: ${results.valid ? '✓ VALID' : '✗ DRIFT DETECTED'}`)
+
+    return results
+  }
+
+  async validateTable(tableName, apmlTable) {
+    this.log(`Checking table: ${tableName}`)
+
+    // Try to query the table to see if it exists
+    const { data, error } = await this.supabase
+      .from(tableName)
+      .select('*')
+      .limit(1)
+
+    if (error && error.code === '42P01') {
+      console.log(`✗ ${tableName}: MISSING (table does not exist)`)
+      return { status: 'MISSING', columns: {} }
+    }
+
+    if (error && error.message.includes('does not exist')) {
+      console.log(`✗ ${tableName}: MISSING (table does not exist)`)
+      return { status: 'MISSING', columns: {} }
+    }
+
+    // Table exists - check columns by querying with each column
+    const columnResults = {}
+    const apmlColumns = Object.keys(apmlTable.columns)
+    let allColumnsOk = true
+
+    for (const colName of apmlColumns) {
+      try {
+        const { data: colData, error: colError } = await this.supabase
+          .from(tableName)
+          .select(colName)
+          .limit(1)
+
+        if (colError && colError.message.includes(colName)) {
+          columnResults[colName] = 'MISSING'
+          allColumnsOk = false
+        } else {
+          columnResults[colName] = 'OK'
+        }
+      } catch (e) {
+        columnResults[colName] = 'ERROR'
+        allColumnsOk = false
+      }
+    }
+
+    // Get actual column count from a sample row
+    const actualColumns = data && data[0] ? Object.keys(data[0]) : []
+    const extraColumns = actualColumns.filter(c => !apmlColumns.includes(c))
+
+    if (allColumnsOk && extraColumns.length === 0) {
+      console.log(`✓ ${tableName}: OK (${apmlColumns.length} columns)`)
+      return { status: 'OK', columns: columnResults }
+    } else {
+      const missingCols = Object.entries(columnResults)
+        .filter(([_, status]) => status !== 'OK')
+        .map(([name, _]) => name)
+
+      if (missingCols.length > 0) {
+        console.log(`✗ ${tableName}: COLUMN MISMATCH`)
+        console.log(`    Missing in DB: ${missingCols.join(', ')}`)
+      }
+      if (extraColumns.length > 0) {
+        console.log(`    Extra in DB: ${extraColumns.join(', ')}`)
+      }
+
+      return { status: 'MISMATCH', columns: columnResults, extraColumns }
+    }
+  }
+}
+
+// ============================================================================
 // CLI
 // ============================================================================
 
@@ -689,20 +829,23 @@ function main() {
 
   if (args.length < 1 || args.includes('--help')) {
     console.log(`
-APML Schema Compiler v2.0
+APML Schema Compiler v2.1
 
 Usage:
   node apml-compiler.cjs <input.apml> --target <postgresql|typescript|zod> [options]
+  node apml-compiler.cjs <input.apml> --validate-db [--verbose]
 
 Options:
   --target <type>    Output format: postgresql, typescript, or zod
   --output <file>    Output file path (defaults to input with new extension)
+  --validate-db      Compare APML schema against live Supabase database
   --verbose          Show parsing progress
 
 Examples:
   node apml-compiler.cjs audio-registry-v12.apml --target postgresql
   node apml-compiler.cjs audio-registry-v12.apml --target typescript --output types.ts
-  node apml-compiler.cjs audio-registry-v12.apml --target zod --verbose
+  node apml-compiler.cjs audio-registry-v12.apml --validate-db
+  node apml-compiler.cjs audio-registry-v12.apml --validate-db --verbose
 `)
     process.exit(0)
   }
@@ -710,18 +853,14 @@ Examples:
   // Parse arguments
   const inputFile = path.resolve(process.cwd(), args[0])
   const targetIndex = args.indexOf('--target')
-  const target = targetIndex >= 0 ? args[targetIndex + 1] : 'postgresql'
+  const target = targetIndex >= 0 ? args[targetIndex + 1] : null
   const outputIndex = args.indexOf('--output')
   const verbose = args.includes('--verbose')
+  const validateDb = args.includes('--validate-db')
 
   // Validate input
   if (!fs.existsSync(inputFile)) {
     console.error(`Error: File not found: ${inputFile}`)
-    process.exit(1)
-  }
-
-  if (!['postgresql', 'typescript', 'zod'].includes(target)) {
-    console.error(`Error: Unknown target: ${target}. Use postgresql, typescript, or zod.`)
     process.exit(1)
   }
 
@@ -733,6 +872,31 @@ Examples:
   const schema = parser.parse()
 
   console.log(`Found ${Object.keys(schema.tables).length} tables`)
+
+  // Handle --validate-db mode
+  if (validateDb) {
+    const validator = new SchemaValidator(schema, { verbose })
+    validator.validate()
+      .then(results => {
+        process.exit(results.valid ? 0 : 1)
+      })
+      .catch(err => {
+        console.error(`Validation error: ${err.message}`)
+        process.exit(1)
+      })
+    return  // Exit main(), async validation will handle process.exit
+  }
+
+  // Require --target for code generation
+  if (!target) {
+    console.error(`Error: --target required for code generation. Use --validate-db for validation.`)
+    process.exit(1)
+  }
+
+  if (!['postgresql', 'typescript', 'zod'].includes(target)) {
+    console.error(`Error: Unknown target: ${target}. Use postgresql, typescript, or zod.`)
+    process.exit(1)
+  }
 
   // Generate output
   let generator
