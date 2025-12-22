@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * Phase 8: Audio Generator (v12 - Registry-Based)
+ * Phase 8: Audio Generator (v12.1 - APML Registry Schema)
  *
- * APML v12 Architecture:
- * - Uses database-assigned UUIDs (NOT hash-computed)
- * - Leverages find_or_create_audio() for idempotent operations
- * - Writes to texts, audio_files, course_audio tables
+ * APML Registry Architecture:
+ * - Writes to audio_samples table (canonical audio registry)
+ * - Writes to lego_introductions for combined intro audio
+ * - Uses UUID v4 for new records, dedupes on text+voice+role+cadence
  * - Clean separation: extract → check → generate → upload → link
  *
  * Endpoints:
@@ -13,6 +13,7 @@
  *   POST /plan         - Preview what would be generated (dry run)
  *   GET  /status/:code - Check generation status
  *   DELETE /cancel/:code - Cancel active generation
+ *   POST /assemble-introductions - Assemble intro audio
  *   GET  /health       - Health check
  *
  * Port: 3465
@@ -24,6 +25,7 @@ const path = require('path')
 const os = require('os')
 const fs = require('fs')
 const { createClient } = require('@supabase/supabase-js')
+const { v4: uuidv4 } = require('uuid')
 
 // Environment
 require('dotenv').config({ path: path.join(__dirname, '../../.env') })
@@ -81,6 +83,122 @@ const logger = {
   log: (...args) => console.log(`[Phase8-v12]`, ...args),
   warn: (...args) => console.warn(`[Phase8-v12]`, ...args),
   error: (...args) => console.error(`[Phase8-v12]`, ...args),
+}
+
+// =============================================================================
+// AUDIO_SAMPLES REGISTRY HELPERS
+// =============================================================================
+
+/**
+ * Normalize text for deduplication
+ */
+function normalizeText(text) {
+  return text.toLowerCase().trim().replace(/\s+/g, ' ')
+}
+
+/**
+ * Find or create audio sample in audio_samples table
+ * This is the APML-compliant replacement for find_or_create_audio RPC
+ */
+async function findOrCreateAudioSample({ text, lang, role, voiceId, cadence }) {
+  const textNormalized = normalizeText(text)
+
+  // Try to find existing
+  const { data: existing } = await supabase
+    .from('audio_samples')
+    .select('uuid, s3_key')
+    .eq('text_normalized', textNormalized)
+    .eq('lang', lang)
+    .eq('role', role)
+    .eq('voice_id', voiceId)
+    .eq('cadence', cadence)
+    .limit(1)
+    .single()
+
+  if (existing) {
+    return { uuid: existing.uuid, s3_key: existing.s3_key, created: false }
+  }
+
+  // Create new record
+  const uuid = uuidv4().toUpperCase()
+  const { error } = await supabase
+    .from('audio_samples')
+    .insert({
+      uuid,
+      text,
+      text_normalized: textNormalized,
+      lang,
+      role,
+      voice_id: voiceId,
+      cadence,
+      source: 'pending',
+      status: 'pending'
+    })
+
+  if (error) {
+    // Handle race condition - another process may have created it
+    if (error.code === '23505') { // unique violation
+      const { data: retry } = await supabase
+        .from('audio_samples')
+        .select('uuid, s3_key')
+        .eq('text_normalized', textNormalized)
+        .eq('lang', lang)
+        .eq('role', role)
+        .eq('voice_id', voiceId)
+        .eq('cadence', cadence)
+        .limit(1)
+        .single()
+
+      if (retry) {
+        return { uuid: retry.uuid, s3_key: retry.s3_key, created: false }
+      }
+    }
+    throw new Error(`Failed to create audio sample: ${error.message}`)
+  }
+
+  return { uuid, s3_key: null, created: true }
+}
+
+/**
+ * Update audio sample with S3 info after upload
+ */
+async function updateAudioSampleS3({ uuid, s3Bucket, s3Key, durationMs, fileSizeBytes, source }) {
+  const { error } = await supabase
+    .from('audio_samples')
+    .update({
+      s3_bucket: s3Bucket,
+      s3_key: s3Key,
+      duration_ms: durationMs,
+      file_size_bytes: fileSizeBytes,
+      source: source || 'azure',
+      status: 'ready'
+    })
+    .eq('uuid', uuid)
+
+  if (error) {
+    logger.error(`Failed to update audio_samples for ${uuid}:`, error.message)
+  }
+}
+
+/**
+ * Create or update lego_introductions record
+ */
+async function upsertLegoIntroduction({ courseCode, legoId, audioUuid, durationMs }) {
+  const { error } = await supabase
+    .from('lego_introductions')
+    .upsert({
+      course_code: courseCode,
+      lego_id: legoId,
+      audio_uuid: audioUuid,
+      duration_ms: durationMs || 0,
+      version: 1
+    }, {
+      onConflict: 'course_code,lego_id'
+    })
+
+  if (error) {
+    logger.error(`Failed to upsert lego_introductions for ${legoId}:`, error.message)
+  }
 }
 
 // =============================================================================
@@ -331,15 +449,15 @@ async function extractIntroductionNeeds(courseCode, presentationVoice, knownLang
 
 /**
  * FAST check for planning - batch query to see what audio already exists
- * Does NOT create records, just checks existence
+ * Does NOT create records, just checks existence in audio_samples
  */
 async function checkAudioStatusFast(needs) {
   logger.log(`Fast-checking audio status for ${needs.length} needs`)
 
-  // Query existing audio_files that have s3_key set (already generated)
+  // Query existing audio_samples that have s3_key set (already generated)
   const { data: existingAudio, error } = await supabase
-    .from('audio_files')
-    .select('id, text_id, voice_id, cadence, s3_key, texts!inner(content, language)')
+    .from('audio_samples')
+    .select('uuid, text_normalized, lang, voice_id, cadence, s3_key')
     .not('s3_key', 'is', null)
 
   if (error) {
@@ -351,21 +469,21 @@ async function checkAudioStatusFast(needs) {
     }
   }
 
-  // Build lookup set of existing audio (normalized text + voice + cadence)
+  // Build lookup set of existing audio (normalized text + lang + voice + cadence)
   const existingSet = new Set()
   for (const audio of existingAudio || []) {
-    const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}|${audio.cadence}`
+    const key = `${audio.text_normalized}|${audio.lang}|${audio.voice_id}|${audio.cadence}`
     existingSet.add(key)
   }
 
-  logger.log(`Found ${existingSet.size} existing audio files in database`)
+  logger.log(`Found ${existingSet.size} existing audio samples in database`)
 
   // Check each need against existing
   const results = []
   const needsGeneration = []
 
   for (const need of needs) {
-    const key = `${need.text.toLowerCase().trim()}|${need.language}|${need.voiceId}|${need.cadence}`
+    const key = `${normalizeText(need.text)}|${need.language}|${need.voiceId}|${need.cadence}`
     const exists = existingSet.has(key)
 
     results.push({ ...need, needsGeneration: !exists })
@@ -434,7 +552,7 @@ async function checkAudioStatus(needs) {
 
 /**
  * Generate TTS audio and upload to S3
- * Creates database record on-the-fly if needed (no pre-registration required)
+ * Writes to audio_samples table (APML-compliant)
  */
 async function generateAndUpload(need, jobState) {
   if (!ttsService) throw new Error('TTS service not available')
@@ -444,18 +562,23 @@ async function generateAndUpload(need, jobState) {
     throw new Error('Job cancelled')
   }
 
-  // Create/get audio record on-the-fly using the registry
-  let audioId = need.audioId
-  if (!audioId) {
-    const { data, error: rpcErr } = await supabase.rpc('find_or_create_audio', {
-      p_content: need.text,
-      p_language: need.language,
-      p_voice_id: need.voiceId,
-      p_cadence: need.cadence
+  // Create/get audio record in audio_samples
+  let audioUuid = need.audioUuid
+  if (!audioUuid) {
+    const result = await findOrCreateAudioSample({
+      text: need.text,
+      lang: need.language,
+      role: need.role,
+      voiceId: need.voiceId,
+      cadence: need.cadence
     })
-    if (rpcErr) throw new Error(`Failed to create audio record: ${rpcErr.message}`)
-    audioId = data[0].audio_id
-    need.audioId = audioId
+    audioUuid = result.uuid
+    need.audioUuid = audioUuid
+
+    // Skip if already has S3 key (already generated)
+    if (result.s3_key) {
+      return { audioUuid, s3Key: result.s3_key, skipped: true }
+    }
   }
 
   // Get voice details for TTS
@@ -494,19 +617,19 @@ async function generateAndUpload(need, jobState) {
   const audioBuffer = await ttsService.generateWithRetry(need.text, provider, config)
 
   // Upload to S3
-  const s3Key = `mastered/${need.audioId}.mp3`
+  const s3Key = `mastered/${audioUuid}.mp3`
   const s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage'
 
   if (s3Service) {
-    await s3Service.uploadAudio(need.audioId, audioBuffer)
+    await s3Service.uploadAudio(audioUuid, audioBuffer)
   } else {
-    logger.warn(`S3 service not available, skipping upload for ${need.audioId}`)
+    logger.warn(`S3 service not available, skipping upload for ${audioUuid}`)
   }
 
   // Extract duration (optional)
   let durationMs = null
   try {
-    const tempFile = path.join(os.tmpdir(), `${need.audioId}-temp.mp3`)
+    const tempFile = path.join(os.tmpdir(), `${audioUuid}-temp.mp3`)
     fs.writeFileSync(tempFile, audioBuffer)
     const { execSync } = require('child_process')
     const output = execSync(`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${tempFile}"`, { encoding: 'utf8' })
@@ -516,54 +639,23 @@ async function generateAndUpload(need, jobState) {
     logger.warn(`Could not extract duration: ${err.message}`)
   }
 
-  // Update audio_files with S3 info
-  const { error: updateErr } = await supabase
-    .from('audio_files')
-    .update({
-      s3_bucket: s3Bucket,
-      s3_key: s3Key,
-      duration_ms: durationMs,
-      file_size_bytes: audioBuffer.length,
-      source: voice.tts_engine === 'azure' ? 'tts_azure' : 'tts_elevenlabs'
-    })
-    .eq('id', need.audioId)
+  // Update audio_samples with S3 info
+  await updateAudioSampleS3({
+    uuid: audioUuid,
+    s3Bucket,
+    s3Key,
+    durationMs,
+    fileSizeBytes: audioBuffer.length,
+    source: voice.tts_engine === 'azure' ? 'tts_azure' : 'tts_elevenlabs'
+  })
 
-  if (updateErr) {
-    logger.error(`Failed to update audio_files for ${need.audioId}:`, updateErr.message)
-  }
-
-  return { audioId: need.audioId, s3Key, durationMs, size: audioBuffer.length }
+  return { audioUuid, s3Key, durationMs, size: audioBuffer.length }
 }
 
 // =============================================================================
-// CORE: LINK TO COURSE
+// NOTE: course_audio linking removed - APML uses lego_introductions for intro links
+// and audio_samples is course-agnostic (same phrase can be reused across courses)
 // =============================================================================
-
-/**
- * Create course_audio entries linking audio to course with role context
- */
-async function linkToCourse(courseCode, audioResults) {
-  logger.log(`Linking ${audioResults.length} audio files to ${courseCode}`)
-
-  for (const result of audioResults) {
-    for (const context of result.contexts || []) {
-      const { error } = await supabase
-        .from('course_audio')
-        .upsert({
-          course_code: courseCode,
-          audio_id: result.audioId,
-          role: result.role,
-          context: context
-        }, {
-          onConflict: 'course_code,audio_id,role,context'
-        })
-
-      if (error) {
-        logger.warn(`Failed to link ${result.audioId} to ${courseCode}:`, error.message)
-      }
-    }
-  }
-}
 
 // =============================================================================
 // PROGRESS EMISSION
@@ -634,8 +726,8 @@ app.post('/plan', async (req, res) => {
 
     // Check assembly status (how many combined intros exist)
     const { data: assembledIntros } = await supabase
-      .from('audio_files')
-      .select('id')
+      .from('audio_samples')
+      .select('uuid')
       .eq('voice_id', 'combined-introduction')
       .not('s3_key', 'is', null)
 
@@ -750,8 +842,8 @@ app.post('/generate', async (req, res) => {
           }
         }
 
-        // Link all results to course
-        await linkToCourse(courseCode, results)
+        // NOTE: course_audio linking removed - APML uses lego_introductions instead
+        // (audio_samples is course-agnostic, intro links handled by assembleIntroduction)
 
         logger.log(`TTS generation complete: ${jobState.progress.generated} generated, ${jobState.progress.failed} failed`)
 
@@ -807,15 +899,16 @@ app.get('/status/:courseCode', async (req, res) => {
     const total = needs.length
 
     // Query how many have been generated (have s3_key)
+    // audio_samples has text inline (no join needed)
     const { data: generated, error } = await supabase
-      .from('audio_files')
-      .select('id, s3_key, texts!inner(content, language)')
+      .from('audio_samples')
+      .select('uuid, s3_key, lang')
       .not('s3_key', 'is', null)
 
     // Filter to just this course's languages
     const courseLanguages = [...new Set(needs.map(n => n.language))]
     const generatedForCourse = (generated || []).filter(a =>
-      courseLanguages.includes(a.texts.language)
+      courseLanguages.includes(a.lang)
     ).length
 
     const dbProgress = {
@@ -827,8 +920,8 @@ app.get('/status/:courseCode', async (req, res) => {
     // Get assembly stats
     const introCount = needs.filter(n => n.role === 'introduction').length
     const { data: assembledIntros } = await supabase
-      .from('audio_files')
-      .select('id')
+      .from('audio_samples')
+      .select('uuid')
       .eq('voice_id', 'combined-introduction')
       .not('s3_key', 'is', null)
 
@@ -911,18 +1004,19 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
   try {
     fs.mkdirSync(tempDir, { recursive: true })
 
-    // 1. Find narration audio (the intro script we generated)
+    // 1. Find narration audio in audio_samples
     const cleanNarration = narrationText
       .replace(/\s*\.\.\.\s*\{target[12]\}[^.]*$/g, '')
       .replace(/\{target[12]\}[^{]*/g, '')
       .replace(/\s+/g, ' ')
       .trim()
 
+    const presentationVoice = voiceConfig.presentation?.voiceId || voiceConfig.known?.voiceId
     const { data: narrationAudio } = await supabase
-      .from('audio_files')
-      .select('id, s3_key, texts!inner(content)')
-      .eq('texts.content', cleanNarration)
-      .eq('voice_id', voiceConfig.presentation?.voiceId || voiceConfig.known?.voiceId)
+      .from('audio_samples')
+      .select('uuid, s3_key')
+      .eq('text_normalized', normalizeText(cleanNarration))
+      .eq('voice_id', presentationVoice)
       .not('s3_key', 'is', null)
       .limit(1)
       .single()
@@ -931,11 +1025,11 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
       throw new Error(`Narration audio not found for: ${cleanNarration.substring(0, 50)}...`)
     }
 
-    // 2. Find target1 audio (slow)
+    // 2. Find target1 audio (slow) in audio_samples
     const { data: target1Audio } = await supabase
-      .from('audio_files')
-      .select('id, s3_key, texts!inner(content)')
-      .eq('texts.content', targetText)
+      .from('audio_samples')
+      .select('uuid, s3_key')
+      .eq('text_normalized', normalizeText(targetText))
       .eq('voice_id', voiceConfig.target1?.voiceId)
       .eq('cadence', 'slow')
       .not('s3_key', 'is', null)
@@ -946,11 +1040,11 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
       throw new Error(`Target1 audio not found for: ${targetText}`)
     }
 
-    // 3. Find target2 audio (natural)
+    // 3. Find target2 audio (natural) in audio_samples
     const { data: target2Audio } = await supabase
-      .from('audio_files')
-      .select('id, s3_key, texts!inner(content)')
-      .eq('texts.content', targetText)
+      .from('audio_samples')
+      .select('uuid, s3_key')
+      .eq('text_normalized', normalizeText(targetText))
       .eq('voice_id', voiceConfig.target2?.voiceId)
       .eq('cadence', 'natural')
       .not('s3_key', 'is', null)
@@ -968,9 +1062,9 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
     const silencePath = path.join(tempDir, 'silence.mp3')
     const outputPath = path.join(tempDir, 'combined.mp3')
 
-    await s3Service.downloadAudioFile(narrationAudio.id, narrationPath)
-    await s3Service.downloadAudioFile(target1Audio.id, target1Path)
-    await s3Service.downloadAudioFile(target2Audio.id, target2Path)
+    await s3Service.downloadAudioFile(narrationAudio.uuid, narrationPath)
+    await s3Service.downloadAudioFile(target1Audio.uuid, target1Path)
+    await s3Service.downloadAudioFile(target2Audio.uuid, target2Path)
 
     // 5. Generate 500ms silence
     const { execSync } = require('child_process')
@@ -991,50 +1085,54 @@ async function assembleIntroduction(introData, courseCode, voiceConfig, knownLan
     // 7. Read the combined file
     const combinedBuffer = fs.readFileSync(outputPath)
 
-    // 8. Create a new audio_files record for the combined intro
-    const { data: introRecord, error: rpcErr } = await supabase.rpc('find_or_create_audio', {
-      p_content: `[INTRO] ${cleanNarration} ${targetText}`,
-      p_language: knownLang,
-      p_voice_id: 'combined-introduction',
-      p_cadence: 'natural'
-    })
-
-    if (rpcErr) throw new Error(`Failed to create intro record: ${rpcErr.message}`)
-
-    const introId = introRecord[0].audio_id
-
-    // 9. Upload combined file to S3
-    const s3Key = `mastered/${introId}.mp3`
-    await s3Service.uploadAudio(introId, combinedBuffer)
-
-    // 10. Update the record with S3 info
-    const { error: updateErr } = await supabase
-      .from('audio_files')
-      .update({
-        s3_bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
-        s3_key: s3Key,
-        file_size_bytes: combinedBuffer.length
-        // Note: source left as null since 'assembled' not in check constraint
-      })
-      .eq('id', introId)
-
-    if (updateErr) {
-      logger.error(`Failed to update audio_files for ${introId}:`, updateErr.message)
+    // 8. Extract duration
+    let durationMs = null
+    try {
+      const output = execSync(`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${outputPath}"`, { encoding: 'utf8' })
+      durationMs = Math.round(parseFloat(output.trim()) * 1000)
+    } catch (err) {
+      logger.warn(`Could not extract duration: ${err.message}`)
     }
 
-    // 11. Link to course with context
-    await supabase
-      .from('course_audio')
-      .upsert({
-        course_code: courseCode,
-        audio_id: introId,
-        role: 'introduction_combined',
-        context: legoId
-      }, {
-        onConflict: 'course_code,audio_id,role,context'
+    // 9. Create audio_samples record for combined intro
+    const introUuid = uuidv4().toUpperCase()
+    const s3Key = `mastered/${introUuid}.mp3`
+    const s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage'
+
+    const { error: insertErr } = await supabase
+      .from('audio_samples')
+      .insert({
+        uuid: introUuid,
+        text: `[INTRO] ${legoId}: ${targetText}`,
+        text_normalized: normalizeText(`intro ${legoId} ${targetText}`),
+        lang: knownLang,
+        role: 'introduction',
+        voice_id: 'combined-introduction',
+        cadence: 'natural',
+        s3_bucket: s3Bucket,
+        s3_key: s3Key,
+        duration_ms: durationMs,
+        file_size_bytes: combinedBuffer.length,
+        source: 'assembled',
+        status: 'ready'
       })
 
-    return { legoId, introId, s3Key, size: combinedBuffer.length }
+    if (insertErr) {
+      throw new Error(`Failed to create intro audio_samples record: ${insertErr.message}`)
+    }
+
+    // 10. Upload combined file to S3
+    await s3Service.uploadAudio(introUuid, combinedBuffer)
+
+    // 11. Create lego_introductions record
+    await upsertLegoIntroduction({
+      courseCode,
+      legoId,
+      audioUuid: introUuid,
+      durationMs
+    })
+
+    return { legoId, introUuid, s3Key, durationMs, size: combinedBuffer.length }
 
   } finally {
     // Cleanup temp files
