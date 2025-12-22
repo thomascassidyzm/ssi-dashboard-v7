@@ -917,7 +917,7 @@ app.post('/generate', async (req, res) => {
 
           // Upload to S3
           let s3Key = `mastered/${result.uuid}.mp3`
-          let s3Bucket = 'ssi-audio-stage'
+          let s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage'
 
           if (s3Service) {
             const s3Result = await s3Service.uploadAudio(result.uuid, result.audioBuffer)
@@ -1015,7 +1015,7 @@ app.post('/generate', async (req, res) => {
         // Calculate metadata
         const checksum = crypto.createHash('md5').update(audioBuffer).digest('hex')
         let s3Key = `mastered/${uuid}.mp3`
-        let s3Bucket = 'ssi-audio-stage' // default
+        let s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage' // default
 
         // Upload to S3
         if (s3Service) {

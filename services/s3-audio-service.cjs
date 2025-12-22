@@ -7,7 +7,7 @@
 const AWS = require('aws-sdk');
 const path = require('path');
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 
 // Initialize S3 client

@@ -615,7 +615,7 @@ async function checkAndFixS3Access(options = {}) {
  */
 async function checkMARSyncStatus(voiceIds = null) {
   const localMARPath = path.join(__dirname, '..', 'samples_database', 'voices');
-  const s3Bucket = 'popty-bach-lfs';
+  const s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage';
 
   try {
     // Ensure local MAR directory exists
@@ -729,7 +729,7 @@ async function syncMARVoicesFromS3(voiceIds, localMARPath, s3Bucket) {
  */
 async function checkSegmentCacheSyncStatus() {
   const localCachePath = path.join(__dirname, '..', 'temp', 'audio', 'segment_cache');
-  const s3Bucket = 'popty-bach-lfs';
+  const s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage';
   const s3Prefix = 'segment_cache/';
 
   try {

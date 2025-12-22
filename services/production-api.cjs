@@ -1187,7 +1187,7 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
 
     // Step 2: Batch check which UUIDs exist in S3
     const uuids = samples.map(s => s.uuid)
-    const existsResults = await s3Service.batchCheckAudio(uuids, 'ssi-audio-stage')
+    const existsResults = await s3Service.batchCheckAudio(uuids, process.env.S3_BUCKET || 'ssi-audio-stage')
 
     const existingInS3 = samples.filter(s => existsResults[s.uuid])
     logger.info(`Found ${existingInS3.length}/${samples.length} samples in S3`)
@@ -1225,7 +1225,7 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
             role: sample.role,
             voice_id: voices[sample.role] || null,
             cadence: sample.role === 'known' ? 'natural' : 'slow',
-            s3_bucket: 'ssi-audio-stage',
+            s3_bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
             s3_key: `mastered/${sample.uuid}.mp3`,
             course_code: courseCode,
             source: 's3-sync',

@@ -2,7 +2,7 @@
 const { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner')
 
-const BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs'
+const BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 const REGION = process.env.S3_REGION || 'eu-west-1'
 
 const s3Client = new S3Client({ region: REGION })
@@ -165,7 +165,7 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}) {
 }
 
 // Batch check if audio files exist in ssi-audio-stage bucket
-async function batchCheckAudio(uuids, bucket = 'ssi-audio-stage') {
+async function batchCheckAudio(uuids, bucket = process.env.S3_BUCKET || 'ssi-audio-stage') {
   const results = {}
 
   // Process in parallel batches of 50

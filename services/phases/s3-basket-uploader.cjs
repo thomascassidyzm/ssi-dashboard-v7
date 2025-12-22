@@ -19,7 +19,7 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION || 'eu-west-1'
 });
 
-const BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 
 /**
  * Upload a basket file to S3

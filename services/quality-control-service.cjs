@@ -171,7 +171,7 @@ function getHighestSeverity(flags) {
  * @param {string} s3Bucket - S3 bucket name for generating URLs
  * @returns {Object} Object with jsonPath and mdPath
  */
-function generateQCReport(flaggedSamples, outputPath, s3Bucket = 'ssi-audio-stage') {
+function generateQCReport(flaggedSamples, outputPath, s3Bucket = process.env.S3_BUCKET || 'ssi-audio-stage') {
   // Ensure output directory exists
   fs.ensureDirSync(path.dirname(outputPath));
 

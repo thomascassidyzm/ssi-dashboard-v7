@@ -432,7 +432,7 @@ async function registerSample({
   voice_id,
   cadence,
   s3_key,
-  s3_bucket = 'ssi-audio-stage',
+  s3_bucket = process.env.S3_BUCKET || 'ssi-audio-stage',
   course_code
 }) {
   if (!supabase) throw new Error('Supabase not initialized')

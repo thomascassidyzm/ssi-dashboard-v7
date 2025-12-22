@@ -22,7 +22,7 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION || 'eu-west-1'
 });
 
-const LFS_BUCKET = 'popty-bach-lfs';
+const LFS_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 
 /**
  * Generate a unique preview ID
