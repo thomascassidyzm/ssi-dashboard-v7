@@ -378,8 +378,9 @@ export default {
         }
 
         // Transform API response to expected format
+        // Stats: { seeds, legos, baskets, introductions, audio }
         const courses = (data.courses || []).map(course => {
-          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0 }
+          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0, introductions: 0, audio: 0 }
           return {
             course_code: course.code,
             source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
@@ -391,16 +392,17 @@ export default {
             seed_pairs: stats.seeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
+            audio_files: stats.audio,
             amino_acids: {
-              introductions: stats.baskets // Introductions = 1 per basket
+              introductions: stats.introductions
             },
             phases_completed: [
               ...(stats.seeds > 0 ? ['1'] : []),
               ...(stats.legos > 0 ? ['3'] : []),
               ...(stats.baskets > 0 ? ['5'] : []),
-              ...(course.files?.introductions ? ['6'] : []),
-              // For database-first: baskets in DB means ready for audio (no manifest file needed)
-              ...(course.files?.course_manifest || stats.baskets > 0 ? ['7', 'manifest'] : [])
+              ...(stats.introductions > 0 ? ['6'] : []),
+              ...(course.files?.course_manifest || stats.baskets > 0 ? ['7', 'manifest'] : []),
+              ...(stats.audio > 0 ? ['8', 'audio'] : [])
             ],
             files: course.files
           }
