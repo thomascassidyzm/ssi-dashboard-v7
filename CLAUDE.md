@@ -4,6 +4,16 @@
 
 ## ⚠️ CRITICAL RULES
 
+### **READ THE SCHEMA BEFORE MODIFYING DATABASE CODE**
+
+Before writing any code that touches the database, you MUST read:
+- `apml/core/audio-registry-v12.sql` - The canonical database schema
+- `apml/core/audio-registry-v12.apml` - The APML specification
+
+Key tables: `texts`, `audio_files`, `voices`, `course_audio`, `lego_introductions`
+
+⚠️ **DO NOT USE `audio_samples` table** - it's legacy with 145k records of duplicated text. The v12 schema separates text from audio.
+
 ### **Agent Autonomy Principle**
 
 Solve problems autonomously and proceed to the next workflow step without human input **when**:
