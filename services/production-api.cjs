@@ -89,6 +89,51 @@ app.get('/api/production/course-stats', async (req, res) => {
   }
 })
 
+// Get content stats for a single course
+// Used by Course Editor to show accurate counts matching Production Suite list
+app.get('/api/production/:courseCode/stats', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const stats = await supabaseClient.getCourseContentStats(courseCode)
+    logger.info(`Returning content stats for ${courseCode}: ${JSON.stringify(stats)}`)
+
+    res.json({
+      success: true,
+      courseCode,
+      stats
+    })
+  } catch (err) {
+    logger.error(`Failed to get stats for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Get introductions for a course
+// Used by Course Editor INTRODUCTIONS tab to display lego presentations
+app.get('/api/production/:courseCode/introductions', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const introductions = await supabaseClient.getIntroductionsByCourse(courseCode)
+    logger.info(`Returning ${introductions.count} introductions for ${courseCode}`)
+
+    res.json({
+      success: true,
+      ...introductions
+    })
+  } catch (err) {
+    logger.error(`Failed to get introductions for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get course manifest
 // Priority: 1) Database (if course structure exists), 2) S3 static file, 3) Stub
 app.get('/api/production/:courseCode/manifest', async (req, res) => {

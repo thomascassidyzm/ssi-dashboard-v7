@@ -249,11 +249,31 @@ export default {
         const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
         const match = matchStandard || matchBasic
 
+        // Fetch accurate stats from database (same source as Production Suite list)
+        let dbStats = null
+        try {
+          const statsRes = await fetch(`${productionApiUrl}/api/production/${courseCode}/stats`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+          })
+          if (statsRes.ok) {
+            const statsData = await statsRes.json()
+            dbStats = statsData.stats
+            console.log(`[API] ✓ Loaded stats for ${courseCode} from database:`, dbStats)
+          }
+        } catch (statsErr) {
+          console.warn(`[API] Could not load stats for ${courseCode}:`, statsErr.message)
+        }
+
+        // Note: Introductions text is loaded from S3 (introductions.json), not database
+        // The lego_introductions table only stores audio UUIDs for introduction audio files
+
         // Determine completed phases from data
         const phasesCompleted = []
         if (translations.length > 0) phasesCompleted.push('1')
         if (legos.length > 0) phasesCompleted.push('2', '3')
         if (Object.keys(baskets).length > 0) phasesCompleted.push('5')
+        if (dbStats?.introductions > 0) phasesCompleted.push('6')
+        if (dbStats?.audio > 0) phasesCompleted.push('8', 'audio')
 
         const course = {
           course_code: courseCode,
@@ -263,9 +283,14 @@ export default {
           version: '1.0-db',
           created_at: new Date().toISOString(),
           status: phasesCompleted.length > 0 ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
-          seed_pairs: translations.length,
-          lego_pairs: legos.length,
-          lego_baskets: Object.keys(baskets).length,
+          // Use database stats if available, otherwise fall back to calculated counts
+          seed_pairs: dbStats?.seeds ?? translations.length,
+          lego_pairs: dbStats?.legos ?? legos.length,
+          lego_baskets: dbStats?.baskets ?? Object.keys(baskets).length,
+          audio_files: dbStats?.audio ?? 0,
+          amino_acids: {
+            introductions: dbStats?.introductions ?? 0
+          },
           phases_completed: phasesCompleted,
           target_language_name: match ? match[1] : 'unknown',
           known_language_name: match ? match[2] : 'unknown',

@@ -1014,6 +1014,86 @@ async function updateRecordingStatus(audioUuid, courseCode, newStatus, notes = n
 }
 
 /**
+ * Get content stats for a single course
+ * Used by Course Editor to show accurate counts
+ *
+ * @param {string} courseCode - The course code
+ * @returns {Promise<Object>} { seeds, legos, baskets, introductions, audio }
+ */
+async function getCourseContentStats(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const stats = { seeds: 0, legos: 0, baskets: 0, introductions: 0, audio: 0 }
+
+  // Count seeds
+  const { count: seedCount } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+  stats.seeds = seedCount || 0
+
+  // Count legos
+  const { count: legoCount } = await supabase
+    .from('course_legos')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+  stats.legos = legoCount || 0
+
+  // Baskets = same as legos (1 basket per lego)
+  stats.baskets = legoCount || 0
+
+  // Count introductions
+  const { count: introCount } = await supabase
+    .from('lego_introductions')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+  stats.introductions = introCount || 0
+
+  // Count course audio
+  const { count: audioCount } = await supabase
+    .from('course_audio')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+  stats.audio = audioCount || 0
+
+  return stats
+}
+
+/**
+ * Get introductions for a course
+ * The lego_introductions table stores audio references (lego_id, audio_uuid).
+ * For presentation text, the dashboard loads from introductions.json in S3.
+ *
+ * This function returns the lego IDs that have introductions,
+ * which can be used to verify introduction coverage.
+ *
+ * @param {string} courseCode - The course code
+ * @returns {Promise<Object>} { legoIds: string[], count: number }
+ */
+async function getIntroductionsByCourse(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('lego_introductions')
+    .select('lego_id, audio_uuid')
+    .eq('course_code', courseCode)
+    .order('lego_id', { ascending: true })
+
+  if (error) throw error
+
+  // Return list of lego IDs that have introductions
+  const legoIds = (data || []).map(intro => intro.lego_id)
+
+  return {
+    legoIds,
+    course_code: courseCode,
+    count: legoIds.length,
+    // Note: presentation text comes from introductions.json, not database
+    hasAudioIntroductions: legoIds.length > 0
+  }
+}
+
+/**
  * Get content stats for all courses
  * Used by dashboard course listings to show real counts
  *
@@ -1102,7 +1182,9 @@ module.exports = {
   isInitialized,
   getClient,
   getCourseStats,
+  getCourseContentStats,
   getAllCourseContentStats,
+  getIntroductionsByCourse,
   insertRecordingProvenance,
   registerHumanVoice,
   listVoices,

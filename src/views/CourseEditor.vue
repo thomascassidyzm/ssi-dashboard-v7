@@ -114,27 +114,27 @@
 
       <!-- Course Content -->
       <div v-else-if="course" class="space-y-6">
-        <!-- Stats Overview -->
+        <!-- Stats Overview (from database counts) -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">SEED_PAIRS</div>
             <div class="text-3xl font-bold text-emerald-400">{{ course.seed_pairs || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Phase 1 translations</div>
+            <div class="text-xs text-slate-500 mt-1">Seeds in database</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_PAIRS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ actualLegoCount }}</div>
-            <div class="text-xs text-slate-500 mt-1">Phase 3 teaching units</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_pairs || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">LEGOs in database</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ actualBasketsCount }}</div>
-            <div class="text-xs text-slate-500 mt-1">Phase 3 lesson groupings</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_baskets || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">Baskets in database</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ actualLegoCount }}</div>
-            <div class="text-xs text-slate-500 mt-1">Known-only priming (1 per LEGO)</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.introductions || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">Presentations in database</div>
           </div>
         </div>
 
@@ -688,127 +688,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Audio Samples Tab -->
-            <div v-if="activeTab === 'audio'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">Audio Sample QA</h3>
-
-              <div v-if="!hasManifest" class="text-center py-8 text-slate-400">
-                No course manifest found. Complete manifest compilation first.
-              </div>
-
-              <div v-else class="space-y-6">
-                <!-- Learning Cycle Mini-Player -->
-                <div class="mb-8">
-                  <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Learning Cycle Player</h4>
-                  <LearningCyclePlayer
-                    :course-code="courseCode"
-                    @flag="handleCycleFlag"
-                  />
-                </div>
-
-                <div class="border-t border-slate-700 pt-6">
-                  <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Individual Sample Testing</h4>
-                </div>
-
-                <!-- Role Selection Cards -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div
-                    v-for="role in audioRoles"
-                    :key="role.id"
-                    class="bg-slate-900/50 border rounded-lg p-4 cursor-pointer transition-all"
-                    :class="selectedAudioRole === role.id
-                      ? 'border-emerald-500 shadow-emerald-500/20 shadow-lg'
-                      : 'border-slate-700 hover:border-slate-600'"
-                    @click="selectAudioRole(role.id)"
-                  >
-                    <div class="text-2xl mb-2">{{ role.icon }}</div>
-                    <div class="font-semibold text-slate-200">{{ role.label }}</div>
-                    <div class="text-xs text-slate-500 mt-1">{{ role.description }}</div>
-                  </div>
-                </div>
-
-                <!-- Current Sample Player -->
-                <div v-if="currentAudioSample" class="bg-slate-900/50 border border-slate-700 rounded-lg p-6">
-                  <div class="flex items-start justify-between mb-4">
-                    <div>
-                      <span class="text-xs font-mono text-cyan-400 bg-cyan-900/30 px-2 py-1 rounded">
-                        {{ currentAudioSample.role }}
-                      </span>
-                      <span class="text-xs text-slate-500 ml-2">{{ currentAudioSample.cadence }}</span>
-                    </div>
-                    <span class="text-xs font-mono text-slate-600">{{ currentAudioSample.id }}</span>
-                  </div>
-
-                  <p class="text-xl text-slate-200 mb-4">{{ currentAudioSample.text }}</p>
-
-                  <div class="flex items-center gap-4">
-                    <button
-                      @click="playCurrentSample"
-                      :disabled="audioLoading"
-                      class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                    >
-                      <span v-if="audioLoading">⏳</span>
-                      <span v-else-if="isPlaying">⏹️</span>
-                      <span v-else>▶️</span>
-                      {{ audioLoading ? 'Loading...' : (isPlaying ? 'Stop' : 'Play') }}
-                    </button>
-
-                    <button
-                      @click="getRandomSample"
-                      :disabled="audioLoading"
-                      class="px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
-                    >
-                      🎲 Random
-                    </button>
-
-                    <div class="flex-1"></div>
-
-                    <button
-                      @click="flagCurrentSample"
-                      class="px-4 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 text-amber-400 rounded-lg transition-colors"
-                    >
-                      🚩 Flag Issue
-                    </button>
-                  </div>
-                </div>
-
-                <!-- No Sample Selected -->
-                <div v-else class="bg-slate-900/50 border border-slate-700 rounded-lg p-8 text-center">
-                  <p class="text-slate-400 mb-4">Select a role above, then click to load a random sample</p>
-                  <button
-                    v-if="selectedAudioRole"
-                    @click="getRandomSample"
-                    :disabled="audioLoading"
-                    class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 rounded-lg font-semibold transition-colors"
-                  >
-                    {{ audioLoading ? 'Loading...' : '🎲 Get Random Sample' }}
-                  </button>
-                </div>
-
-                <!-- Sample History -->
-                <div v-if="audioSampleHistory.length > 0" class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-                  <h4 class="text-sm font-semibold text-slate-400 mb-3">Recent Samples</h4>
-                  <div class="space-y-2 max-h-48 overflow-y-auto">
-                    <div
-                      v-for="sample in audioSampleHistory"
-                      :key="sample.id"
-                      class="flex items-center gap-3 p-2 rounded hover:bg-slate-800/50 cursor-pointer"
-                      @click="loadSampleFromHistory(sample)"
-                    >
-                      <span class="text-xs px-2 py-0.5 rounded" :class="{
-                        'bg-purple-900/50 text-purple-400': sample.role === 'target1',
-                        'bg-blue-900/50 text-blue-400': sample.role === 'target2',
-                        'bg-green-900/50 text-green-400': sample.role === 'source',
-                        'bg-amber-900/50 text-amber-400': sample.role === 'presentation'
-                      }">{{ sample.role }}</span>
-                      <span class="text-sm text-slate-300 truncate flex-1">{{ sample.text }}</span>
-                      <span v-if="sample.flagged" class="text-amber-400">🚩</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1278,8 +1157,7 @@ const showFlagsExpanded = ref(true)
 const tabs = [
   { id: 'legos', label: 'LEGO_PAIRS' },
   { id: 'baskets', label: 'LEGO_BASKETS' },
-  { id: 'introductions', label: 'INTRODUCTIONS' },
-  { id: 'audio', label: 'AUDIO_SAMPLES' }
+  { id: 'introductions', label: 'INTRODUCTIONS' }
 ]
 
 // Count baskets from database data or basketsData from S3
@@ -1440,7 +1318,7 @@ async function loadCourse() {
       basketsData.value = null
     }
 
-    // Load introductions.json from S3 (via API proxy)
+    // Load introductions from S3 (introductions.json stores the text, not database)
     try {
       // Add cache-busting timestamp
       const timestamp = Date.now()
