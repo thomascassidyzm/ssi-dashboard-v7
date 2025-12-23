@@ -109,6 +109,7 @@
               :key="lego.lego_id"
               :lego="lego"
               @toggle="onLegoToggle"
+              @play-cycle="onLegoPlayCycle"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-play="onPhrasePlay"
@@ -133,7 +134,7 @@
 import { computed } from 'vue';
 import LegoRow from './LegoRow.vue';
 import PhraseRow from './PhraseRow.vue';
-import type { SeedRowData, PhraseRowData, AudioSample } from '@/types/production';
+import type { SeedRowData, LegoRowData, PhraseRowData, AudioSample } from '@/types/production';
 
 // Props
 const props = defineProps<{
@@ -144,6 +145,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   toggle: [seedId: string];
   legoToggle: [legoId: string];
+  legoPlayCycle: [lego: LegoRowData, seedId: string];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   phrasePlay: [sample: AudioSample];
@@ -177,6 +179,10 @@ const toggleExpand = () => {
 
 const onLegoToggle = (legoId: string) => {
   emit('legoToggle', legoId);
+};
+
+const onLegoPlayCycle = (lego: LegoRowData) => {
+  emit('legoPlayCycle', lego, props.seed.seed_id);
 };
 
 const onPhraseFlag = (phrase: PhraseRowData) => {

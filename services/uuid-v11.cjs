@@ -167,8 +167,8 @@ function uuidv5(input, namespace) {
   digest[6] = (digest[6] & 0x0f) | 0x50;
   digest[8] = (digest[8] & 0x3f) | 0x80;
 
-  // Format as UUID string (uppercase)
-  const hex = digest.slice(0, 16).toString('hex').toUpperCase();
+  // Format as UUID string (lowercase for S3 compatibility)
+  const hex = digest.slice(0, 16).toString('hex').toLowerCase();
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20, 32)}`;
 }
 
