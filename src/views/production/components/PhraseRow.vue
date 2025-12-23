@@ -69,10 +69,10 @@
       </div>
     </div>
 
-    <!-- Audio Controls -->
-    <div class="audio-controls space-y-2">
+    <!-- Audio Controls (only show if audio data exists) -->
+    <div v-if="phrase.known_audio || phrase.target_audio_1 || phrase.target_audio_2" class="audio-controls space-y-2">
       <!-- Known Audio (Source Language) -->
-      <div class="audio-row flex items-center gap-3">
+      <div v-if="phrase.known_audio" class="audio-row flex items-center gap-3">
         <span class="audio-label text-xs text-slate-400 w-20">Known</span>
         <AudioPlayer
           :audio-url="phrase.known_audio.url"
