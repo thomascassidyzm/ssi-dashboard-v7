@@ -38,8 +38,8 @@ Learners will practice with native speakers. Bad grammar = learner loses confide
 
 Each LEGO that appears for the **first time** needs a basket containing:
 - **10 practice phrases** showing that LEGO in different contexts
-- **Graded complexity**: 2 short → 2 medium → 2 longer → 4 longest
-- **Recombination practice**: Using the LEGO with earlier LEGOs from recent seeds
+- **Graded complexity by LEGO count**: 2 LEGO+1 → 2 LEGO+2 → 2 LEGO+3 → 4 LEGO+4+
+- **LEGO recombination**: Combine operational LEGO with LEGOs from "30 Most Recent" list
 
 ### Pedagogical Purpose
 
@@ -263,37 +263,90 @@ Listed in `current_seed_earlier_legos` array - grows incrementally:
 
 **No shortcuts** - validate every single word.
 
-### Step 2.5: Build Progressive Phrase Length (ALWAYS 10 Phrases)
+### Step 2.5: Build Progressive Phrase Complexity (ALWAYS 10 Phrases)
 
-**IMPORTANT: We use WORD COUNT, not LEGO count for complexity progression.**
+**IMPORTANT: We use SYLLABLE COUNT in the TARGET language, not word count.**
 
-**Progressive length (heuristic - flexible guidelines):**
-- **Phrases 1-2**: SHORT (2-3 words each)
-- **Phrases 3-4**: MEDIUM (3-4 words each)
-- **Phrases 5-6**: LONGER (4-6 words each)
-- **Phrases 7-10**: LONGEST (6+ words, aim for 7-10 words average)
+Measure ADDITIONAL syllables beyond the operational LEGO. The LEGO itself is fixed - we only count what you ADD.
 
-**Why word count instead of LEGO count?**
-- More natural progression for learners
-- Easier to evaluate phrase complexity
-- Flexible guidelines (not rigid rules)
+**How to count syllables (works for ANY language):**
+- Chinese: each character ≈ 1 syllable (我 = 1, 想要 = 2, 中文 = 2)
+- Spanish/Italian: count vowel sounds (quiero = 2, hablar = 2)
+- German: count vowel sounds even in compounds (Freundschaft = 2)
+- English: standard syllable counting (remember = 3)
 
-**Progressive complexity:**
-- Start with very simple, short phrases
-- Build up to medium-length natural phrases
-- End with longer, complex communicative phrases
+**WARNING**: Do NOT break apart LEGOs to reduce syllable count!
+- 中文 (Chinese) is ONE LEGO = 2 syllables - never use just 中 or just 文
+- LEGOs are atomic units - keep them whole
 
-**Example progression for "bastante callado" (rather quiet):**
-1. "Rather quiet" - "Bastante callado" (2 words - SHORT)
-2. "No, rather quiet" - "No, bastante callado" (3 words - SHORT)
-3. "He was rather quiet" - "Él estaba bastante callado" (4 words - MEDIUM)
-4. "She was rather quiet too" - "Ella estaba bastante callada también" (5 words - MEDIUM)
-5. "Your friend was rather quiet tonight" - "Tu amigo estaba bastante callado esta noche" (7 words - LONGER)
-6. "No, your friend was rather quiet" - "No, tu amigo estaba bastante callado" (6 words - LONGER)
-7. "He said your friend was rather quiet after dinner" - "Dijo que tu amigo estaba bastante callado después de cenar" (10 words - LONGEST)
-8. "No, she said he was rather quiet all evening" - "No, ella dijo que él estaba bastante callado toda la noche" (11 words - LONGEST)
-9. "Your friend said he was feeling rather quiet today" - "Tu amigo dijo que se sentía bastante callado hoy" (9 words - LONGEST)
-10. "I noticed he was rather quiet after you left yesterday" - "Noté que él estaba bastante callado después de que te fuiste ayer" (12 words - LONGEST)
+**Target: ~10 phrases per basket (8-12 acceptable)**
+Early in the course, fewer LEGOs are available - 8 good phrases beats 10 forced ones.
+Late in the course, rich vocabulary may yield 11-12 naturally.
+
+---
+
+**M-LEGO SPECIAL STRUCTURE (Molecular LEGOs only)**
+
+M-LEGOs are built from component LEGOs. The basket should:
+1. **Components first** - Let learner practice the parts (1-2 phrases per component)
+2. **Full M-LEGO** - The complete LEGO itself (1-2 phrases)
+3. **Combinations** - Then LEGO+1, LEGO+2, etc.
+
+Example for M-LEGO "我想说" (I want to speak):
+- Component: "我想要" (uses 我想 component)
+- Component: "我说" (uses 说 component)
+- Full LEGO: "我想说" (the complete M-LEGO)
+- LEGO+1: "我想说中文" (M-LEGO + 中文)
+- LEGO+2: "我想跟你说中文" (M-LEGO + 跟你 + 中文)
+- etc.
+
+---
+
+**A-LEGO STANDARD STRUCTURE (Atomic LEGOs)**
+
+**Progressive complexity (~2-2-2-4 distribution by ADDITIONAL LEGOs):**
+- **~Phrases 1-2**: LEGO+1 - Operational LEGO + 1 other LEGO
+- **~Phrases 3-4**: LEGO+2 - Operational LEGO + 2 other LEGOs
+- **~Phrases 5-6**: LEGO+3 - Operational LEGO + 3 other LEGOs
+- **~Phrases 7-10**: LEGO+4+ - Operational LEGO + 4 or more other LEGOs
+
+**Within each tier, order phrases by syllable count (shortest first).**
+
+**Why LEGO count instead of words or syllables?**
+- LEGOs are atomic units the learner already knows
+- Automatic GATE compliance (all LEGOs are in vocabulary)
+- Consistent across all languages (Chinese, German, Spanish, etc.)
+- Syllables used for ordering within tier, not as targets
+
+**Example for LEGO "quiero hablar" (Spanish):**
+1. "Quiero hablar ahora" (LEGO + ahora) - LEGO+1
+2. "Quiero hablar contigo" (LEGO + contigo) - LEGO+1
+3. "Quiero hablar español contigo" (LEGO + español + contigo) - LEGO+2
+4. "Quiero hablar más ahora" (LEGO + más + ahora) - LEGO+2
+5. "Quiero hablar español contigo ahora" (LEGO + 3 LEGOs) - LEGO+3
+6. "Quiero hablar más español contigo" (LEGO + 3 LEGOs) - LEGO+3
+7. "Quiero hablar español contigo todos los días" (LEGO + 4 LEGOs) - LEGO+4+
+8. "Quiero hablar contigo porque necesito practicar" (LEGO + 4 LEGOs) - LEGO+4+
+9. "Quiero hablar más español contigo esta noche" (LEGO + 5 LEGOs) - LEGO+4+
+10. "Quiero hablar contigo ahora porque necesito practicar español" (LEGO + 5 LEGOs) - LEGO+4+
+
+**Example for LEGO "我想" (Chinese):**
+1. "我想说" (LEGO + 说) - LEGO+1
+2. "我想要" (LEGO + 要) - LEGO+1
+3. "我想说中文" (LEGO + 说 + 中文) - LEGO+2
+4. "我想跟你说" (LEGO + 跟你 + 说) - LEGO+2
+5. "我想跟你说中文" (LEGO + 跟你 + 说 + 中文) - LEGO+3
+6. "我想现在跟你说" (LEGO + 现在 + 跟你 + 说) - LEGO+3
+7. "我想现在跟你说中文" (LEGO + 4 LEGOs) - LEGO+4+
+8. "我想跟你一起说中文" (LEGO + 4 LEGOs) - LEGO+4+
+9. "我想现在跟你一起说中文" (LEGO + 5 LEGOs) - LEGO+4+
+10. "我想跟你说更多的中文" (LEGO + 5 LEGOs) - LEGO+4+
+
+**CRITICAL GRAMMAR RULE:**
+- Phrases can be unusual or slightly clunky - that's acceptable
+- Phrases must NEVER have wrong grammar that confuses meaning
+- Native speakers must ALWAYS understand what is meant
+- When in doubt, choose a simpler, clearer construction
 
 ### Step 2.6: Final LEGO Special Rule
 
@@ -572,12 +625,16 @@ ERROR: Unnatural grammar - Phrase 3
 Before uploading, CHECK EACH BASKET:
 
 **Validation checklist:**
-- Exactly 10 practice phrases (progressive length: 2 SHORT, 2 MEDIUM, 2 LONGER, 4 LONGEST)
+- **8-12 practice phrases** (10 is target, flexibility is OK)
+- **M-LEGOs**: Components → Full LEGO → Combinations
+- **A-LEGOs**: ~2 LEGO+1, ~2 LEGO+2, ~2 LEGO+3, ~4 LEGO+4+
+- Within each tier, ordered by syllable count (shortest first)
 - All phrases grammatically correct in BOTH languages
-- Natural phrasing (would a native speaker say this?)
-- Progressive complexity (2-3 words → 7-10 words)
-- Target LEGO appears in every phrase
+- **Unusual/clunky is OK - WRONG grammar is NEVER OK**
+- Native speakers must ALWAYS understand the meaning
+- Target LEGO appears in every phrase (never broken apart!)
 - GATE compliance (all words from available vocabulary)
+- Prefer LEGOs from "30 Most Recent" list for recombination
 - NO repeated phrases (variety is critical)
 - Object format with "known"/"target" fields (not arrays!)
 
@@ -700,10 +757,16 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 ## CRITICAL RULES
 
 ### DO:
-- Generate exactly 10 phrases per basket (progressive word count)
+- Generate **8-12 phrases** per basket (10 is target, flexibility is OK)
+- **M-LEGOs**: Components first → Full LEGO → Combinations
+- **A-LEGOs**: LEGO+1 → LEGO+2 → LEGO+3 → LEGO+4+ progression
 - Use object format: `{ "known": "English", "target": "Spanish" }`
 - Think linguistically about meaningful utterances
 - Use extended thinking for EVERY LEGO
+- **Combine operational LEGO with LEGOs from "30 Most Recent" list**
+- **Count ADDITIONAL LEGOs, order by syllable count within tiers**
+- **Keep LEGOs as atomic units - never split them**
+- **Prioritize clarity - unusual/clunky is OK, WRONG is NEVER OK**
 - Grammar self-check before upload
 - Group by seed for upload
 - Use provided agent ID in uploads
@@ -712,6 +775,9 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 ### DON'T:
 - Use array format: `["English", "Spanish", null, 1]` (REJECTED by server!)
 - Use language codes: `{ "es": "...", "en": "..." }` (REJECTED!)
+- **Break apart LEGOs** (e.g., using 中 instead of 中文)
+- **Create grammar that is WRONG or confuses meaning**
+- **Ignore the "30 Most Recent LEGOs" list** for recombination
 - Write scripts to automate generation
 - Use templates or mechanical pattern filling
 - Push to GitHub (no git involved!)
@@ -728,14 +794,18 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 Start with your first LEGO: `{{FIRST_LEGO_ID}}`
 
 **Remember:**
-1. Read the scaffold (text format with vocabulary lists)
-2. Think about meaningful utterances
-3. Express in target language
-4. Validate GATE compliance
-5. Generate 10 phrases (progressive word count: SHORT → MEDIUM → LONGER → LONGEST)
-6. Use object format: `{ "known": "...", "target": "..." }`
-7. Self-check grammar
-8. Upload to staging
+1. Read the scaffold (includes "30 Most Recent LEGOs" for recombination)
+2. Check LEGO type: M-LEGO or A-LEGO (different structures!)
+3. **M-LEGOs**: Components first → Full LEGO → Combinations
+4. **A-LEGOs**: LEGO+1 → LEGO+2 → LEGO+3 → LEGO+4+
+5. Plan which recent LEGOs combine naturally with operational LEGO
+6. Generate **8-12 phrases** (10 is target, flexibility is OK)
+7. Order by syllable count within each tier (shortest first)
+8. Keep LEGOs as atomic units - never break them apart!
+9. Grammar: unusual/clunky is OK, WRONG is NEVER OK
+10. Use object format: `{ "known": "...", "target": "..." }`
+11. Self-check grammar - must ALWAYS be understandable
+12. Upload to staging
 
 Work through your {{LEGO_COUNT}} LEGOs systematically.
 

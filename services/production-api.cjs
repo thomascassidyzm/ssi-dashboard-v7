@@ -411,6 +411,7 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
 
 // Get audio URL by text lookup
 // Used by CyclePlayer to find audio for phrases
+// Schema: texts (content) -> audio_files (text_id) -> s3_key
 app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -420,57 +421,72 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
       return res.status(400).json({ error: 'text parameter required' })
     }
 
-    // Normalize text for lookup
-    const normalizedText = text.toString().toLowerCase().trim().replace(/\s+/g, ' ')
-
-    // Look up in course_audio table
     const supabase = supabaseClient.getClient()
     if (!supabase) {
       return res.status(500).json({ error: 'Database not initialized' })
     }
 
-    // Query course_audio joined with audio_files
-    let query = supabase
-      .from('course_audio')
-      .select(`
-        audio_uuid,
-        role,
-        audio_files!inner (
-          id,
-          s3_key,
-          s3_bucket
-        )
-      `)
-      .eq('course_code', courseCode)
-      .ilike('target_text', normalizedText)
+    // Step 1: Find the text in texts table
+    const { data: textData, error: textError } = await supabase
+      .from('texts')
+      .select('id, content, language')
+      .eq('content', text.toString())
+      .limit(1)
+      .single()
 
-    if (role) {
-      query = query.eq('role', role)
-    }
-
-    const { data, error } = await query.limit(1).single()
-
-    if (error || !data) {
-      // Try fallback: look up by audio_files text directly
-      const fallbackQuery = await supabase
-        .from('audio_files')
-        .select('id, s3_key, s3_bucket')
-        .ilike('text_normalized', normalizedText)
+    if (textError || !textData) {
+      // Try normalized lookup
+      const { data: textData2, error: textError2 } = await supabase
+        .from('texts')
+        .select('id, content, language')
+        .eq('content_normalized', text.toString().toLowerCase().trim())
         .limit(1)
         .single()
 
-      if (fallbackQuery.error || !fallbackQuery.data) {
-        return res.status(404).json({ error: 'Audio not found for text' })
+      if (textError2 || !textData2) {
+        return res.status(404).json({ error: 'Text not found in database' })
       }
 
-      // Get signed URL for the fallback result
-      const url = await s3Service.getAudioSignedUrl(fallbackQuery.data.id)
-      return res.json({ url, uuid: fallbackQuery.data.id })
+      // Found via normalized
+      const textId = textData2.id
+
+      // Step 2: Find audio_files with this text_id
+      const { data: audioData, error: audioError } = await supabase
+        .from('audio_files')
+        .select('id, s3_key, s3_bucket, cadence')
+        .eq('text_id', textId)
+        .not('s3_key', 'is', null)
+        .limit(1)
+        .single()
+
+      if (audioError || !audioData) {
+        return res.status(404).json({ error: 'Audio file not found for text' })
+      }
+
+      // Step 3: Get signed URL
+      const url = await s3Service.getAudioSignedUrl(audioData.id)
+      return res.json({ url, uuid: audioData.id })
     }
 
-    // Get signed URL
-    const url = await s3Service.getAudioSignedUrl(data.audio_uuid)
-    res.json({ url, uuid: data.audio_uuid })
+    // Found text directly
+    const textId = textData.id
+
+    // Step 2: Find audio_files with this text_id
+    const { data: audioData, error: audioError } = await supabase
+      .from('audio_files')
+      .select('id, s3_key, s3_bucket, cadence')
+      .eq('text_id', textId)
+      .not('s3_key', 'is', null)
+      .limit(1)
+      .single()
+
+    if (audioError || !audioData) {
+      return res.status(404).json({ error: 'Audio file not found for text' })
+    }
+
+    // Step 3: Get signed URL
+    const url = await s3Service.getAudioSignedUrl(audioData.id)
+    res.json({ url, uuid: audioData.id })
   } catch (error) {
     logger.error('Error fetching audio by text:', error)
     res.status(500).json({ error: error.message })

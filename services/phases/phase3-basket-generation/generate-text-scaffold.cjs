@@ -16,8 +16,11 @@
 function getLanguageNames(courseCode) {
   const courseMap = {
     'spa_for_eng': { known: 'English', target: 'Spanish' },
+    'zho_for_eng': { known: 'English', target: 'Chinese' },
     'cmn_for_eng': { known: 'English', target: 'Chinese' },
     'cym_for_eng': { known: 'English', target: 'Welsh' },
+    'cym_n_for_eng': { known: 'English', target: 'Welsh (North)' },
+    'cym_s_for_eng': { known: 'English', target: 'Welsh (South)' },
     'eng_for_spa': { known: 'Spanish', target: 'English' }
   };
 
@@ -89,35 +92,52 @@ ${recentSeeds.join('\n')}
 ${recentLegos.join('\n')}
 
 GENERATION REQUIREMENTS:
-- Generate 10 practice phrases with progressive complexity
-- Complexity is measured by ADDITIONAL SYLLABLES in the TARGET language
-  (beyond the LEGO itself - the LEGO's syllables are fixed)
+- Generate **8-12 practice phrases** (10 is target, flexibility is OK)
+- Early in the course, fewer LEGOs are available - 8 good phrases beats 10 forced ones
+- Complexity is measured by ADDITIONAL LEGOs combined with the operational LEGO
+- Within each tier, order phrases by syllable count (shortest first)
 
-SYLLABLE COUNTING (Language-Agnostic):
-- Count syllables in the TARGET language output
-- This works for ANY language:
-  * Chinese: each character ≈ 1 syllable (我 = 1, 想要 = 2)
-  * Spanish/Italian: count vowel sounds (quiero = 2, recordar = 3)
-  * German: count vowel sounds even in compounds (Freundschaft = 2)
-  * English: standard syllable counting (remember = 3)
-- Word count is NOT a good proxy (German compounds, Chinese, etc.)
+---
 
-PHRASE PROGRESSION (by ADDITIONAL target syllables beyond the LEGO):
-  * Phrases 1-2: DEBUT (+1-2 syllables) - Minimal context around LEGO
-  * Phrases 3-4: EARLY (+3-4 syllables) - Short additional context
-  * Phrases 5-6: MIDDLE (+5-7 syllables) - Medium context with 1-2 PREV LEGOs
-  * Phrases 7-10: ETERNAL (+8+ syllables) - Full sentences with multiple PREV LEGOs
+**M-LEGO SPECIAL STRUCTURE (Type: M = Molecular)**
 
-Example for LEGO "quiero" (2 syllables in Spanish):
-  - DEBUT: "Quiero agua" → +2 syllables (a-gua) = 4 total ✓
-  - EARLY: "Quiero ir contigo" → +5 syllables = 7 total ✓
-  - MIDDLE: "Quiero aprender a cocinar" → +8 syllables = 10 total ✓
-  - ETERNAL: "Quiero que me ayudes con esto" → +9 syllables = 11 total ✓
+M-LEGOs are built from component LEGOs. The basket should:
+1. **Components first** - Let learner practice the parts (1-2 phrases per component)
+2. **Full M-LEGO** - The complete LEGO itself (1-2 phrases)
+3. **Combinations** - Then LEGO+1, LEGO+2, etc.
 
-- Use ONLY vocabulary from "Available Vocabulary" above (GATE compliance!)
-- Each phrase must be natural and meaningful in both languages
-- Use extended thinking to count syllables accurately for the target language
-- Progressive syllable count creates a natural cognitive load curve
+Example for M-LEGO "我想说" (I want to speak):
+  - Component: "我想要" (uses 我想 component)
+  - Component: "我说" (uses 说 component)
+  - Full LEGO: "我想说" (the complete M-LEGO)
+  - LEGO+1: "我想说中文" (M-LEGO + 中文)
+  - LEGO+2: "我想跟你说中文" (M-LEGO + 跟你 + 中文)
+
+---
+
+**A-LEGO STANDARD STRUCTURE (Type: A = Atomic)**
+
+PHRASE PROGRESSION (by ADDITIONAL LEGOs combined):
+  * ~Phrases 1-2: LEGO+1 - Operational LEGO + 1 other LEGO
+  * ~Phrases 3-4: LEGO+2 - Operational LEGO + 2 other LEGOs
+  * ~Phrases 5-6: LEGO+3 - Operational LEGO + 3 other LEGOs
+  * ~Phrases 7-10: LEGO+4+ - Operational LEGO + 4+ other LEGOs
+
+Example for LEGO "quiero" (Spanish):
+  - LEGO+1: "Quiero eso" (LEGO + eso)
+  - LEGO+1: "Quiero hablar" (LEGO + hablar)
+  - LEGO+2: "Quiero hablar contigo" (LEGO + hablar + contigo)
+  - LEGO+3: "Quiero hablar contigo ahora" (LEGO + 3 LEGOs)
+  - LEGO+4+: "Quiero hablar español contigo todos los días" (LEGO + 5 LEGOs)
+
+---
+
+CRITICAL RULES:
+- Use ONLY vocabulary from "30 Most Recent LEGOs" above (GATE compliance!)
+- Grammar: unusual/clunky is OK, WRONG is NEVER OK
+- Native speakers must ALWAYS understand the meaning
+- Within each tier, order phrases by syllable count (shortest first)
+- Keep LEGOs as atomic units - never break them apart!
 
 FINAL LEGO RULE (Server handles automatically):
 - If this is the last LEGO in the seed, server adds the complete seed sentence as phrase #10
@@ -132,35 +152,42 @@ OUTPUT FORMAT (EXACT - Copy this structure and fill in your phrases):
       "target": "${target}"
     },
     "practice_phrases": [
-      { "known": "<${knownLang}>", "target": "<${targetLang} DEBUT +1-2 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} DEBUT +1-2 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} EARLY +3-4 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} EARLY +3-4 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} MIDDLE +5-7 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} MIDDLE +5-7 syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" },
-      { "known": "<${knownLang}>", "target": "<${targetLang} ETERNAL +8+ syl>" }
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+1>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+1>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+2>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+2>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+3>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+3>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+4+>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+4+>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+4+>" },
+      { "known": "<${knownLang}>", "target": "<${targetLang} LEGO+4+>" }
     ]
   }
 }
+
+NOTE: For M-LEGOs, include component phrases before the progression above.
 
 NOTE: Server will automatically add these fields - you don't need to include them:
 - "is_final_lego": Derived from LEGO ID (checks if this is the last LEGO in the seed)
   → If TRUE: Server adds the complete seed sentence as your highest practice phrase
 - "phrase_count": Actual count of phrases you provided
 
-SYLLABLE PROGRESSION GUIDELINES (Language-Agnostic):
-- DEBUT (1-2): +1-2 target syllables beyond LEGO - Minimal context, easiest recall
-- EARLY (3-4): +3-4 target syllables beyond LEGO - Short additional context
-- MIDDLE (5-6): +5-7 target syllables beyond LEGO - Building complexity with PREV LEGOs
-- ETERNAL (7-10): +8+ target syllables beyond LEGO - Full sentences, highest cognitive load
+LEGO COUNT PROGRESSION:
+- LEGO+1 (phrases 1-2): Operational LEGO + 1 other LEGO
+- LEGO+2 (phrases 3-4): Operational LEGO + 2 other LEGOs
+- LEGO+3 (phrases 5-6): Operational LEGO + 3 other LEGOs
+- LEGO+4+ (phrases 7-10): Operational LEGO + 4+ other LEGOs
 
-WHY SYLLABLES (not words)?
-- Language-agnostic: works for Chinese (1 char = 1 syl), German compounds, etc.
-- Correlates with cognitive load: more syllables = more to process and produce
-- The LEGO syllable count is FIXED - we measure ADDITIONAL syllables only
+WHY LEGO COUNT (not words or syllables)?
+- LEGOs are atomic units the learner already knows
+- Automatic GATE compliance (all LEGOs are in vocabulary)
+- Consistent across all languages (Chinese, German, Spanish, etc.)
+- Syllables used for ORDERING within tier (shortest first), not as targets
+
+STRUCTURE SUMMARY:
+- **M-LEGOs**: Components (1-2 each) → Full LEGO (1-2) → Combinations (~2-2-2-4)
+- **A-LEGOs**: ~2 LEGO+1, ~2 LEGO+2, ~2 LEGO+3, ~4 LEGO+4+
 
 CRITICAL FORMAT RULES:
 ✅ "lego": { "known": "English", "target": "Spanish" } - Object with labels
@@ -278,12 +305,12 @@ function getRecentLegos(legoPairs, currentSeed, currentLegoId, count) {
  */
 function getTypeDescription(type) {
   const types = {
-    'A': 'Atomic - Simple building block',
-    'M': 'Molecular - Combined LEGOs',
-    'F': 'Functional - Complex phrase',
-    'X': 'Extra - Advanced pattern'
+    'A': 'Atomic - Use LEGO+1/+2/+3/+4+ progression',
+    'M': 'Molecular - Components first, then full LEGO, then combinations',
+    'F': 'Functional - Complex phrase (use A-LEGO structure)',
+    'X': 'Extra - Advanced pattern (use A-LEGO structure)'
   };
-  return types[type] || 'Medium difficulty';
+  return types[type] || 'Use A-LEGO structure';
 }
 
 module.exports = { generateTextScaffold };
