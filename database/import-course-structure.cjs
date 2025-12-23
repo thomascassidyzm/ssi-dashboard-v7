@@ -1,40 +1,45 @@
 #!/usr/bin/env node
 /**
- * Import Welsh Course Structure from JSON
+ * Import Course Structure from JSON
  *
- * Re-imports seeds, LEGOs, and practice phrases after cascade deletion.
- * Uses cym_n_for_eng as course_code to match existing courses table.
+ * Imports seeds, LEGOs, and practice phrases from a course JSON manifest.
+ * Reads course_code from the JSON file's id field.
  *
  * Usage:
- *   node database/import-welsh-structure.cjs --dry-run
- *   node database/import-welsh-structure.cjs
+ *   node database/import-course-structure.cjs <json-path> [--dry-run]
+ *   node database/import-course-structure.cjs ~/Downloads/course.json --dry-run
+ *   node database/import-course-structure.cjs ~/Downloads/course.json
  */
 
 const fs = require('fs');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
-// Configuration
-const JSON_PATH = '/Users/tomcassidy/Downloads/Welsh-north_for_English_speakers_20250604_162031 (5).json';
-const COURSE_CODE = 'cym_n_for_eng';  // Must match courses table
-
 // Parse args
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
+const JSON_PATH = args.find(a => !a.startsWith('--'));
+
+if (!JSON_PATH) {
+  console.error('Usage: node import-course-structure.cjs <json-path> [--dry-run]');
+  console.error('Example: node import-course-structure.cjs ~/Downloads/course.json');
+  process.exit(1);
+}
 
 async function main() {
+  // Load JSON first to get course info
+  console.log('Loading JSON...');
+  const jsonData = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
+  const COURSE_CODE = jsonData.id;
+  const slice = jsonData.slices[0];
+
   console.log('='.repeat(60));
-  console.log('Welsh Course Structure Import');
+  console.log('Course Structure Import');
   console.log('='.repeat(60));
   console.log(`Mode: ${DRY_RUN ? 'DRY RUN' : 'LIVE IMPORT'}`);
   console.log(`JSON: ${JSON_PATH}`);
   console.log(`Course: ${COURSE_CODE}`);
   console.log('');
-
-  // Load JSON
-  console.log('Loading JSON...');
-  const jsonData = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
-  const slice = jsonData.slices[0];
 
   // Extract seeds from the slice
   const seeds = slice.seeds || [];

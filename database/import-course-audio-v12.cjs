@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 /**
- * Import Welsh Course Audio to v12 Schema
+ * Import Course Audio to v12 Schema
  *
- * Parses the Welsh JSON manifest and imports audio data into:
+ * Parses a course JSON manifest and imports audio data into:
  * - texts (unique text strings per language)
  * - audio_files (renderings with UUID from JSON for S3 match)
  * - course_audio (links course to audio with role)
+ * - courses.welcome (course welcome audio UUID)
  *
  * Prerequisites:
- * - voices table must have entries for Welsh course voices
+ * - voices table must have entries for course voices
  * - Course structure already imported (seeds, legos, phrases)
  *
  * Usage:
- *   node database/import-welsh-audio-v12.cjs --dry-run
- *   node database/import-welsh-audio-v12.cjs
+ *   node database/import-welsh-audio-v12.cjs <json-path> [--dry-run]
+ *   node database/import-welsh-audio-v12.cjs ~/Downloads/course.json --dry-run
+ *   node database/import-welsh-audio-v12.cjs ~/Downloads/course.json
  */
 
 const fs = require('fs');
@@ -21,41 +23,54 @@ const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
-// Configuration
-const JSON_PATH = '/Users/tomcassidy/Downloads/Welsh-north_for_English_speakers_20250604_162031 (5).json';
-const COURSE_CODE = 'en-cy-north';  // Welsh (North) for English - matches JSON course ID
-const S3_BUCKET = 'ssi-audio-stage';
-
-// Language codes
-const LANG_KNOWN = 'eng';   // English (ISO 639-3)
-const LANG_TARGET = 'cym';  // Welsh (ISO 639-3)
-
-// Voice IDs (must exist in voices table)
-// These will be looked up by voice_id field
-const VOICE_CONFIG = {
-  source: 'human_welsh_source',        // English speaker (human recording)
-  target1: 'human_welsh_target1',      // Welsh speaker 1 (human recording)
-  target2: 'human_welsh_target2',      // Welsh speaker 2 (human recording)
-  presentation: 'human_welsh_presentation'  // Intro narrator (human recording)
+// 2-letter to 3-letter ISO language code mapping
+const LANG_MAP = {
+  en: 'eng', es: 'spa', cy: 'cym', it: 'ita', fr: 'fra',
+  de: 'deu', pt: 'por', zh: 'zho', ja: 'jpn', ko: 'kor',
+  ar: 'ara', nl: 'nld', ru: 'rus', pl: 'pol'
 };
+
+const S3_BUCKET = 'ssi-audio-stage';
 
 // Parse args
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
 const VERBOSE = args.includes('--verbose');
+const JSON_PATH = args.find(a => !a.startsWith('--'));
+
+if (!JSON_PATH) {
+  console.error('Usage: node import-welsh-audio-v12.cjs <json-path> [--dry-run]');
+  console.error('Example: node import-welsh-audio-v12.cjs ~/Downloads/course.json');
+  process.exit(1);
+}
 
 async function main() {
+  // Load JSON first to get course info
+  console.log('Loading JSON...');
+  const jsonData = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
+
+  // Extract course info from JSON
+  const COURSE_CODE = jsonData.id;
+  const LANG_KNOWN = LANG_MAP[jsonData.known] || jsonData.known;
+  const LANG_TARGET = LANG_MAP[jsonData.target] || jsonData.target;
+
+  // Build voice config from course code
+  const VOICE_CONFIG = {
+    source: `human_${COURSE_CODE}_source`,
+    target1: `human_${COURSE_CODE}_target1`,
+    target2: `human_${COURSE_CODE}_target2`,
+    presentation: `human_${COURSE_CODE}_presentation`
+  };
+
   console.log('='.repeat(60));
-  console.log('Welsh Course Audio Import (v12 Schema)');
+  console.log('Course Audio Import (v12 Schema)');
   console.log('='.repeat(60));
   console.log(`Mode: ${DRY_RUN ? 'DRY RUN' : 'LIVE IMPORT'}`);
   console.log(`JSON: ${JSON_PATH}`);
   console.log(`Course: ${COURSE_CODE}`);
+  console.log(`Languages: ${LANG_KNOWN} → ${LANG_TARGET}`);
   console.log('');
 
-  // Load JSON
-  console.log('Loading JSON...');
-  const jsonData = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
   const slice = jsonData.slices[0];
   const samples = slice.samples;
 
@@ -304,6 +319,21 @@ async function main() {
     process.stdout.write(`\r  Inserted: ${linksInserted}`);
   }
   console.log('\n  Done.');
+
+  // Step 5: Update course with welcome audio UUID
+  if (welcomeAudio?.id) {
+    console.log('\nStep 5: Setting course welcome audio...');
+    const { error } = await supabase
+      .from('courses')
+      .update({ welcome: welcomeAudio.id })
+      .eq('course_code', COURSE_CODE);
+
+    if (error) {
+      console.error('Error setting welcome audio:', error);
+    } else {
+      console.log(`  Set welcome = ${welcomeAudio.id}`);
+    }
+  }
 
   // Summary
   console.log('\n' + '='.repeat(60));
