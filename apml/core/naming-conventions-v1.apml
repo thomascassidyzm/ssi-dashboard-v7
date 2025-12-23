@@ -1,0 +1,268 @@
+# APML Naming Conventions Specification
+# Version: 1.0.0
+# Created: 2025-12-23
+# Purpose: Standardize naming across courses, voices, languages, and dialects
+
+# =============================================================================
+# LANGUAGE CODES
+# =============================================================================
+# Use ISO 639-3 (3-letter codes) as the base standard
+# These appear in: texts.language, voices.languages[], course configs
+
+languages:
+  # Primary supported languages
+  eng: { name: "English", family: "Germanic" }
+  zho: { name: "Chinese (Zhongwen)", family: "Sinitic", note: "Use zho not cmn for course-level" }
+  spa: { name: "Spanish", family: "Romance" }
+  cym: { name: "Welsh (Cymraeg)", family: "Celtic" }
+
+  # Future languages (examples)
+  fra: { name: "French", family: "Romance" }
+  deu: { name: "German", family: "Germanic" }
+  ita: { name: "Italian", family: "Romance" }
+  jpn: { name: "Japanese", family: "Japonic" }
+  kor: { name: "Korean", family: "Koreanic" }
+
+# =============================================================================
+# DIALECT CODES
+# =============================================================================
+# Suffix codes for regional/dialect variants
+# Format: _{dialect_code} appended to language code where needed
+
+dialects:
+  # Welsh dialects
+  _n: { applies_to: "cym", name: "North Welsh (Gogledd)" }
+  _s: { applies_to: "cym", name: "South Welsh (De)" }
+
+  # Spanish dialects (future)
+  _mx: { applies_to: "spa", name: "Mexican Spanish" }
+  _es: { applies_to: "spa", name: "Castilian Spanish" }
+  _ar: { applies_to: "spa", name: "Argentine Spanish" }
+
+  # Chinese dialects (if needed - currently using zho for Mandarin)
+  # Note: zho covers standard Mandarin; other varieties would need separate codes
+
+# =============================================================================
+# COURSE CODE FORMAT
+# =============================================================================
+# Pattern: {target_lang}[_{dialect}]_for_{source_lang}
+#
+# Components:
+#   target_lang: ISO 639-3 code of language being learned
+#   dialect:     Optional dialect suffix (e.g., _n, _s)
+#   source_lang: ISO 639-3 code of learner's known language
+
+course_code:
+  pattern: "{target}[_{dialect}]_for_{source}"
+
+  examples:
+    - code: "zho_for_eng"
+      meaning: "Chinese for English speakers"
+      target: "zho"
+      source: "eng"
+
+    - code: "spa_for_eng"
+      meaning: "Spanish for English speakers"
+      target: "spa"
+      source: "eng"
+
+    - code: "cym_n_for_eng"
+      meaning: "Welsh (North) for English speakers"
+      target: "cym"
+      dialect: "_n"
+      source: "eng"
+
+    - code: "cym_s_for_eng"
+      meaning: "Welsh (South) for English speakers"
+      target: "cym"
+      dialect: "_s"
+      source: "eng"
+
+    - code: "eng_for_spa"
+      meaning: "English for Spanish speakers"
+      target: "eng"
+      source: "spa"
+
+  validation:
+    - target must be valid language code
+    - source must be valid language code
+    - dialect must match applies_to language
+    - target != source
+
+# =============================================================================
+# VOICE ID FORMAT
+# =============================================================================
+# Pattern: {provider}_{lang}[_{dialect}]_{role}[_{variant}]
+#
+# Components:
+#   provider: Source of the voice (azure, elevenlabs, human, etc.)
+#   lang:     ISO 639-3 language code
+#   dialect:  Optional dialect suffix
+#   role:     Voice role (known, target1, target2, presentation)
+#   variant:  Optional variant identifier (male, female, speaker name)
+
+voice_id:
+  pattern: "{provider}_{lang}[_{dialect}]_{role}[_{variant}]"
+
+  providers:
+    - azure       # Microsoft Azure TTS
+    - elevenlabs  # ElevenLabs TTS
+    - human       # Human recorded voice
+    - google      # Google Cloud TTS
+    - amazon      # Amazon Polly
+
+  roles:
+    - known         # The learner's language (prompts)
+    - target1       # Primary target language voice
+    - target2       # Secondary target language voice (variety)
+    - presentation  # Narrator/explainer voice
+
+  examples:
+    # TTS voices
+    - voice_id: "azure_zho_target1"
+      meaning: "Azure Chinese voice, primary target"
+      provider: "azure"
+      lang: "zho"
+      role: "target1"
+
+    - voice_id: "azure_eng_known"
+      meaning: "Azure English voice for prompts"
+      provider: "azure"
+      lang: "eng"
+      role: "known"
+
+    - voice_id: "elevenlabs_spa_target1_male"
+      meaning: "ElevenLabs Spanish, primary target, male variant"
+      provider: "elevenlabs"
+      lang: "spa"
+      role: "target1"
+      variant: "male"
+
+    # Human voices (Welsh example)
+    - voice_id: "human_cym_n_target1"
+      meaning: "Human Welsh North speaker, primary target"
+      provider: "human"
+      lang: "cym"
+      dialect: "_n"
+      role: "target1"
+
+    - voice_id: "human_cym_n_target2"
+      meaning: "Human Welsh North speaker, secondary target"
+      provider: "human"
+      lang: "cym"
+      dialect: "_n"
+      role: "target2"
+
+    - voice_id: "human_cym_s_target1"
+      meaning: "Human Welsh South speaker, primary target"
+      provider: "human"
+      lang: "cym"
+      dialect: "_s"
+      role: "target1"
+
+    - voice_id: "human_eng_known"
+      meaning: "Human English speaker for prompts (shared across courses)"
+      provider: "human"
+      lang: "eng"
+      role: "known"
+
+# =============================================================================
+# AUDIO ROLE MAPPING
+# =============================================================================
+# How voice roles map to course_audio.role
+
+audio_roles:
+  # In course_audio table
+  known:    "The learner's language - what they hear as prompt"
+  target1:  "Primary target voice - main practice voice"
+  target2:  "Secondary target voice - variety/confirmation"
+
+  # Legacy mapping (for imports)
+  source: "maps_to: known"
+
+# =============================================================================
+# DEDUPLICATION RULES
+# =============================================================================
+# How audio files are shared across courses
+
+deduplication:
+  # Audio files are uniquely identified by: text_id + voice_id + cadence
+  # This means:
+
+  shared_known_audio:
+    description: "Same English prompt text + same known voice = same audio file"
+    example: |
+      Course cym_n_for_eng and cym_s_for_eng both use:
+      - text: "I want to speak"
+      - voice: human_eng_known
+      - cadence: natural
+      → Same audio_files entry, different course_audio links
+
+  dialect_specific_target:
+    description: "Same target text but different dialect voice = different audio file"
+    example: |
+      Text: "Dw i eisiau siarad" (Welsh)
+      - voice: human_cym_n_target1 → audio_file A
+      - voice: human_cym_s_target1 → audio_file B
+      → Different audio files for different dialects
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+
+validation:
+  course_code:
+    - must match pattern: ^[a-z]{3}(_[a-z]+)?_for_[a-z]{3}$
+    - target language must exist in languages registry
+    - source language must exist in languages registry
+    - dialect must be valid for target language
+
+  voice_id:
+    - must match pattern: ^[a-z]+_[a-z]{3}(_[a-z]+)?_(known|target1|target2|presentation)(_[a-z]+)?$
+    - provider must be in allowed list
+    - language must exist in languages registry
+    - dialect must be valid for language
+
+  texts.language:
+    - must be valid ISO 639-3 code
+    - must exist in languages registry
+
+  audio_files:
+    - voice.languages must include texts.language (via voice_id FK)
+
+  course_audio:
+    - course_code must follow naming pattern
+    - role must be: known, target1, target2, or presentation
+
+# =============================================================================
+# COURSE CODE IMMUTABILITY
+# =============================================================================
+# The course_code is an IMMUTABLE identifier. Never rename it in the database.
+#
+# Principle:
+#   - Different content → different course_code
+#   - Same content, different name → alias to canonical code
+#
+# The canonical code is stored in courses.course_code
+# Aliases are stored in courses.aliases[] array
+#
+# Example:
+#   course_code: "zho_for_eng"
+#   aliases: ["cmn_for_eng", "chinese-for-english"]
+#
+# Import scripts resolve aliases to canonical codes before database writes.
+
+course_aliases:
+  # Legacy/alternate names → Canonical course_code
+  "en-cy-north": "cym_n_for_eng"
+  "en-cy-south": "cym_s_for_eng"
+  "en-es": "spa_for_eng"
+  "cmn_for_eng": "zho_for_eng"  # cmn (Mandarin) aliases to zho (Chinese macrolanguage)
+
+# =============================================================================
+# MIGRATION NOTES
+# =============================================================================
+
+migration:
+  legacy_roles:
+    "source": "known"  # Old role name → new role name

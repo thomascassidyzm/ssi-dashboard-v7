@@ -30,6 +30,14 @@ const LANG_MAP = {
   ar: 'ara', nl: 'nld', ru: 'rus', pl: 'pol'
 };
 
+// Course code aliases → canonical codes (from naming-conventions-v1.apml)
+const COURSE_ALIASES = {
+  'en-cy-north': 'cym_n_for_eng',
+  'en-cy-south': 'cym_s_for_eng',
+  'en-es': 'spa_for_eng',
+  'cmn_for_eng': 'zho_for_eng'
+};
+
 const S3_BUCKET = 'ssi-audio-stage';
 
 // Parse args
@@ -50,7 +58,9 @@ async function main() {
   const jsonData = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
 
   // Extract course info from JSON
-  const COURSE_CODE = jsonData.id;
+  // Resolve alias to canonical code (e.g., 'en-cy-north' → 'cym_n_for_eng')
+  const JSON_COURSE_ID = jsonData.id;
+  const COURSE_CODE = COURSE_ALIASES[JSON_COURSE_ID] || JSON_COURSE_ID;
   const LANG_KNOWN = LANG_MAP[jsonData.known] || jsonData.known;
   const LANG_TARGET = LANG_MAP[jsonData.target] || jsonData.target;
 
@@ -67,7 +77,8 @@ async function main() {
   console.log('='.repeat(60));
   console.log(`Mode: ${DRY_RUN ? 'DRY RUN' : 'LIVE IMPORT'}`);
   console.log(`JSON: ${JSON_PATH}`);
-  console.log(`Course: ${COURSE_CODE}`);
+  console.log(`Course JSON ID: ${JSON_COURSE_ID}`);
+  console.log(`Course code (canonical): ${COURSE_CODE}`);
   console.log(`Languages: ${LANG_KNOWN} → ${LANG_TARGET}`);
   console.log('');
 
