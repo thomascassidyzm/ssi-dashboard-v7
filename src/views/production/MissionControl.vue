@@ -149,6 +149,13 @@ import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 
+// Get API base URL (same as other components)
+function getApiBaseUrl(): string {
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) return storedUrl
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+}
+
 // Accept courseCode from router props
 const props = defineProps<{
   courseCode?: string
@@ -162,10 +169,13 @@ const selectedCourse = ref('')
 const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
 let ws: WebSocket | null = null
 
-// Fetch available courses from API
+// Fetch available courses from API (database-first via orchestrator)
 async function loadCourses() {
   try {
-    const response = await fetch('/api/courses')
+    const apiBase = getApiBaseUrl()
+    const response = await fetch(`${apiBase}/api/courses`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
     if (response.ok) {
       const data = await response.json()
       // API returns { courses: [...] } or just [...]
@@ -175,6 +185,7 @@ async function loadCourses() {
         name: c.name || c.code || c.id,
         status: c.status
       }))
+      console.log(`[MissionControl] Loaded ${courses.value.length} courses from ${data.source || 'API'}`)
     }
   } catch (err) {
     console.error('Failed to load courses:', err)
