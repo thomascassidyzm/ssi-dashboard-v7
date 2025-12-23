@@ -78,12 +78,13 @@ async function main() {
     const targetText = seed.node?.target?.text || seed.seedSentence?.target?.text || '';
 
     // Add seed (seed_id is auto-generated from course_code + seed_number)
-    // Omit status to use database default
+    // Set status to 'released' so content is available for manifest generation
     seedsToInsert.push({
       course_code: COURSE_CODE,
       seed_number: seedNumber,
       known_text: knownText,
-      target_text: targetText
+      target_text: targetText,
+      status: 'released'
     });
 
     // Process LEGOs for this seed (called introductionItems in Welsh JSON)
@@ -106,6 +107,7 @@ async function main() {
         known_text: legoKnown,
         target_text: legoTarget,
         components: null,
+        status: 'released',
         _expected_lego_id: legoId  // For phrase mapping, not inserted
       });
 
@@ -123,7 +125,8 @@ async function main() {
           _lego_index: legoIdx + 1,       // For mapping
           phrase_index: phraseIdx + 1,
           known_text: phraseKnown,
-          target_text: phraseTarget
+          target_text: phraseTarget,
+          status: 'released'
         });
       }
     }
