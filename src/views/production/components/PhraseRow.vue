@@ -45,6 +45,17 @@
           </span>
         </div>
 
+        <!-- Edit Button -->
+        <button
+          @click="onEdit"
+          class="edit-button p-2 rounded-lg transition-all bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white"
+          title="Edit phrase text"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        </button>
+
         <button
           @click="toggleFlag"
           class="flag-button p-2 rounded-lg transition-all"
@@ -121,6 +132,7 @@ const props = defineProps<{
 // Emits
 const emit = defineEmits<{
   phraseFlag: [phrase: PhraseRowData];
+  phraseEdit: [phrase: PhraseRowData];
   play: [sample: AudioSample];
   pause: [];
 }>();
@@ -186,6 +198,10 @@ const flagButtonClass = computed(() => {
 // Methods
 const toggleFlag = () => {
   emit('phraseFlag', props.phrase);
+};
+
+const onEdit = () => {
+  emit('phraseEdit', props.phrase);
 };
 
 const onPlay = (sample: AudioSample) => {

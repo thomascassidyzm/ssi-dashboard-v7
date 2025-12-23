@@ -44,24 +44,29 @@ const state = reactive({
 
   // Review state
   approvedSegments: new Set(),
-  rejectedSegments: new Set()
+  rejectedSegments: new Set(),
+
+  // Loading state (for API calls)
+  isLoading: false,
+  error: null
 })
 
-// Sample phrases (Welsh)
-const samplePhrases = [
-  { id: 1, text: 'Sut mae! Sut dych chi heddiw?', translation: 'Hello! How are you today?' },
-  { id: 2, text: 'Hoffwn i goffi os gwelwch yn dda', translation: 'I would like coffee please' },
-  { id: 3, text: "Ble mae'r ty bach?", translation: 'Where is the bathroom?' },
-  { id: 4, text: 'Diolch yn fawr iawn', translation: 'Thank you very much' },
-  { id: 5, text: "Mae'n braf cwrdd a chi", translation: 'Nice to meet you' },
-  { id: 6, text: "Beth yw'r amser?", translation: 'What time is it?' },
-  { id: 7, text: 'Dw i ddim yn deall', translation: "I don't understand" },
-  { id: 8, text: 'Allwch chi fy helpu i?', translation: 'Can you help me?' },
-  { id: 9, text: "Faint mae hwn yn costio?", translation: 'How much does this cost?' },
-  { id: 10, text: "Ble mae'r orsaf tren?", translation: 'Where is the train station?' },
-  { id: 11, text: "Dw i'n dysgu Cymraeg", translation: "I'm learning Welsh" },
-  { id: 12, text: 'Bore da!', translation: 'Good morning!' }
-]
+// Sample phrases - now loaded from API via loadCourse()
+// Legacy mock data kept for reference/fallback:
+// const samplePhrases = [
+//   { id: 1, text: 'Sut mae! Sut dych chi heddiw?', translation: 'Hello! How are you today?' },
+//   { id: 2, text: 'Hoffwn i goffi os gwelwch yn dda', translation: 'I would like coffee please' },
+//   { id: 3, text: "Ble mae'r ty bach?", translation: 'Where is the bathroom?' },
+//   { id: 4, text: 'Diolch yn fawr iawn', translation: 'Thank you very much' },
+//   { id: 5, text: "Mae'n braf cwrdd a chi", translation: 'Nice to meet you' },
+//   { id: 6, text: "Beth yw'r amser?", translation: 'What time is it?' },
+//   { id: 7, text: 'Dw i ddim yn deall', translation: "I don't understand" },
+//   { id: 8, text: 'Allwch chi fy helpu i?', translation: 'Can you help me?' },
+//   { id: 9, text: "Faint mae hwn yn costio?", translation: 'How much does this cost?' },
+//   { id: 10, text: "Ble mae'r orsaf tren?", translation: 'Where is the train station?' },
+//   { id: 11, text: "Dw i'n dysgu Cymraeg", translation: "I'm learning Welsh" },
+//   { id: 12, text: 'Bore da!', translation: 'Good morning!' }
+// ]
 
 export function useAutocueState() {
   // Timer interval ref
@@ -115,8 +120,8 @@ export function useAutocueState() {
   function beginSession(role, language) {
     state.selectedRole = role
     state.currentPhase = 'recording'
-    // Load phrases
-    state.phrases = [...samplePhrases]
+    // Phrases are now loaded via loadCourse() - no need to set them here
+    // state.phrases should already be populated from API call
     state.currentPhraseIndex = 0
     state.currentPass = 1
     state.recordedSegments = []
@@ -258,10 +263,61 @@ export function useAutocueState() {
     }
   }
 
-  function loadCourse(courseCode) {
+  async function loadCourse(courseCode) {
     state.courseCode = courseCode
-    // In production, this would load course data from the API
-    console.log('Loading course:', courseCode)
+    state.isLoading = true
+
+    try {
+      // Get API base URL
+      const baseUrl = localStorage.getItem('api_base_url') ||
+                      import.meta.env.VITE_API_BASE_URL ||
+                      'http://localhost:3456'
+
+      // Fetch recording queue (phrases needing human recording)
+      const queueRes = await fetch(
+        `${baseUrl}/api/production/${courseCode}/recording/queue`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      )
+
+      if (queueRes.ok) {
+        const queueData = await queueRes.json()
+
+        // Transform to autocue format
+        state.phrases = (queueData.items || []).map((item, idx) => ({
+          id: item.uuid || item.id || `phrase-${idx}`,
+          text: item.target_text || item.text,
+          translation: item.known_text || '',
+          seedId: item.seed_id || '',
+          legoId: item.lego_id || '',
+          role: item.role || 'target1',
+          cadence: item.cadence || 'slow'
+        }))
+
+        console.log(`[Autocue] Loaded ${state.phrases.length} phrases for recording`)
+      } else {
+        console.warn('[Autocue] No recording queue available')
+        state.phrases = []
+      }
+
+      // Get course info
+      const courseRes = await fetch(
+        `${baseUrl}/api/production/${courseCode}/manifest`,
+        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      )
+
+      if (courseRes.ok) {
+        const courseData = await courseRes.json()
+        state.courseName = courseData.course_name || courseCode
+        state.knownLanguage = courseData.known_language || 'English'
+        state.targetLanguage = courseData.target_language || 'Unknown'
+      }
+
+    } catch (err) {
+      console.error('[Autocue] Failed to load course:', err)
+      state.error = err.message
+    } finally {
+      state.isLoading = false
+    }
   }
 
   // Cleanup timer on composable disposal

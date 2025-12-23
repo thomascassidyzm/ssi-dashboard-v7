@@ -87,6 +87,7 @@
               :phrase="phrase"
               :flag-notes="getFlagNotes(phrase)"
               @phrase-flag="onPhraseFlag"
+              @phrase-edit="onPhraseEdit"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
             />
@@ -109,6 +110,7 @@
               :lego="lego"
               @toggle="onLegoToggle"
               @phrase-flag="onPhraseFlag"
+              @phrase-edit="onPhraseEdit"
               @phrase-play="onPhrasePlay"
               @phrase-pause="onPhrasePause"
             />
@@ -143,6 +145,7 @@ const emit = defineEmits<{
   toggle: [seedId: string];
   legoToggle: [legoId: string];
   phraseFlag: [phrase: PhraseRowData];
+  phraseEdit: [phrase: PhraseRowData];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
 }>();
@@ -178,6 +181,10 @@ const onLegoToggle = (legoId: string) => {
 
 const onPhraseFlag = (phrase: PhraseRowData) => {
   emit('phraseFlag', phrase);
+};
+
+const onPhraseEdit = (phrase: PhraseRowData) => {
+  emit('phraseEdit', phrase);
 };
 
 const onPhrasePlay = (sample: AudioSample) => {

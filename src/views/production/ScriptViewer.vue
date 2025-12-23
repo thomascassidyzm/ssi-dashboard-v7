@@ -131,6 +131,7 @@
           @toggle="toggleSeed"
           @lego-toggle="toggleLego"
           @phrase-flag="openFlagModal"
+          @phrase-edit="openPhraseEditModal"
           @phrase-play="playAudioSample"
           @phrase-pause="pauseAudio"
         />
@@ -188,6 +189,14 @@
       @submit="submitFlag"
     />
 
+    <!-- Phrase Edit Modal -->
+    <PhraseEditModal
+      :visible="phraseEditModalVisible"
+      :phrase="phraseToEdit"
+      @close="closePhraseEditModal"
+      @save="savePhraseEdit"
+    />
+
     <!-- Keyboard Shortcuts Help Modal -->
     <Teleport to="body">
       <Transition name="modal">
@@ -226,6 +235,7 @@ import FilterBar from './components/FilterBar.vue';
 import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
 import FlagModal from './components/FlagModal.vue';
+import PhraseEditModal from './components/PhraseEditModal.vue';
 import type {
   SeedRowData,
   PhraseRowData,
@@ -263,8 +273,17 @@ const flagModalVisible = ref(false);
 const selectedSample = ref<AudioSample | null>(null);
 const selectedPhrase = ref<PhraseRowData | null>(null);
 
+// Phrase Edit Modal State
+const phraseEditModalVisible = ref(false);
+const phraseToEdit = ref<{ id: string; known_text: string; target_text: string } | null>(null);
+
 // Shortcuts Help
 const showShortcutsHelp = ref(false);
+
+// API Base URL
+const getApiBaseUrl = (): string => {
+  return localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470';
+};
 
 // Computed
 const totalSeeds = computed(() => seeds.value.length);
@@ -351,7 +370,7 @@ const visibleSeeds = computed(() => {
 const keyboardShortcuts: KeyboardShortcut[] = [
   { key: 'Space', description: 'Play/Pause audio', action: () => {/* handled by audio player */} },
   { key: 'F', description: 'Flag selected sample', action: () => {/* TODO: implement */} },
-  { key: 'Esc', description: 'Close modals', action: () => { closeFlagModal(); showShortcutsHelp.value = false; } },
+  { key: 'Esc', description: 'Close modals', action: () => { closeFlagModal(); closePhraseEditModal(); showShortcutsHelp.value = false; } },
   { key: '?', description: 'Show keyboard shortcuts', action: () => { showShortcutsHelp.value = !showShortcutsHelp.value; } },
 ];
 
@@ -361,14 +380,18 @@ const loadCourseData = async () => {
   error.value = null;
 
   try {
-    // TODO: Replace with actual API call
-    const response = await fetch(`/api/production/${courseCode.value}/manifest`);
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/script-view`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    });
     if (!response.ok) throw new Error('Failed to load course data');
 
-    const manifest = await response.json();
+    const data = await response.json();
 
-    // Transform manifest data into SeedRowData format
-    seeds.value = transformManifestToSeeds(manifest);
+    // Transform script-view data into SeedRowData format
+    seeds.value = transformScriptViewToSeeds(data);
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading course data:', err);
@@ -377,6 +400,60 @@ const loadCourseData = async () => {
   }
 };
 
+// Transform new /script-view endpoint data into SeedRowData format
+const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
+  if (!data || !data.seeds) return [];
+
+  return data.seeds.map((seed: any) => {
+    // Transform LEGOs
+    const legos = (seed.legos || []).map((lego: any) => {
+      // Transform phrases
+      const phrases: PhraseRowData[] = (lego.phrases || []).map((phrase: any) => {
+        // Map API type to display type
+        let displayType = 'PRAC';
+        if (phrase.type === 'intro') displayType = 'INTR';
+        else if (phrase.type === 'lego') displayType = 'LEGO';
+        else if (phrase.type === 'debut') displayType = 'DEBU';
+        else if (phrase.type === 'practice') displayType = 'PRAC';
+
+        return {
+          phrase_id: phrase.id,
+          type: displayType as any,
+          known_text: phrase.known_text,
+          target_text: phrase.target_text,
+          known_audio: null,
+          target_audio_1: null,
+          is_flagged: false,
+          seed_id: seed.seed_id,
+          cycle_index: phrase.position,
+          word_count: phrase.word_count,
+          lego_count: phrase.lego_count,
+        };
+      });
+
+      return {
+        lego_id: lego.lego_id,
+        type: lego.type,
+        target: lego.target_text,
+        known: lego.known_text,
+        is_new: lego.is_new ?? false,
+        phrases,
+        expanded: false,
+      };
+    });
+
+    return {
+      seed_id: seed.seed_id,
+      known_text: seed.known_text,
+      target_text: seed.target_text,
+      legos,
+      introduction_phrases: [], // Introduction phrases are now part of LEGOs
+      expanded: false,
+    };
+  });
+};
+
+// Legacy transform function for manifest format (kept for backwards compatibility)
 const transformManifestToSeeds = (manifest: any): SeedRowData[] => {
   if (!manifest || !manifest.seeds) return [];
 
@@ -385,21 +462,21 @@ const transformManifestToSeeds = (manifest: any): SeedRowData[] => {
     const introductionCycles = seed.cycles?.filter((c: any) => c.type === 'introduction') || [];
     const introduction_phrases: PhraseRowData[] = introductionCycles.map((cycle: any, idx: number) => ({
       phrase_id: cycle.uuid,
-      type: 'ETER' as PhraseType, // introduction phrases
+      type: 'ETER' as any,
       known_text: cycle.known,
       target_text: cycle.target,
       known_audio: {
         uuid: cycle.known_audio_uuid,
         text: cycle.known,
-        role: 'source' as Role,
-        cadence: 'natural' as Cadence,
+        role: 'source' as any,
+        cadence: 'natural' as any,
         voice_id: '',
       },
       target_audio_1: {
         uuid: cycle.target_audio_uuid,
         text: cycle.target,
-        role: 'target' as Role,
-        cadence: 'natural' as Cadence,
+        role: 'target' as any,
+        cadence: 'natural' as any,
         voice_id: '',
       },
       is_flagged: false,
@@ -408,33 +485,33 @@ const transformManifestToSeeds = (manifest: any): SeedRowData[] => {
     }));
 
     // Build legos with their phrases
-    const legos: LegoRowData[] = (seed.legos || []).map((lego: any) => {
+    const legos = (seed.legos || []).map((lego: any) => {
       // Get all cycles for this lego
       const legoCycles = seed.cycles?.filter((c: any) => c.lego_id === lego.id) || [];
 
       const phrases: PhraseRowData[] = legoCycles.map((cycle: any, idx: number) => {
         // Determine phrase type based on cycle type
-        let phraseType: PhraseType = 'PRAC'; // default to practice
+        let phraseType = 'PRAC';
         if (cycle.type === 'lego_component') phraseType = 'COMP';
         else if (cycle.type === 'lego_debut') phraseType = 'DEBU';
 
         return {
           phrase_id: cycle.uuid,
-          type: phraseType,
+          type: phraseType as any,
           known_text: cycle.known,
           target_text: cycle.target,
           known_audio: {
             uuid: cycle.known_audio_uuid,
             text: cycle.known,
-            role: 'source' as Role,
-            cadence: 'natural' as Cadence,
+            role: 'source' as any,
+            cadence: 'natural' as any,
             voice_id: '',
           },
           target_audio_1: {
             uuid: cycle.target_audio_uuid,
             text: cycle.target,
-            role: 'target' as Role,
-            cadence: 'natural' as Cadence,
+            role: 'target' as any,
+            cadence: 'natural' as any,
             voice_id: '',
           },
           is_flagged: false,
@@ -554,6 +631,61 @@ const closeFlagModal = () => {
   selectedPhrase.value = null;
 };
 
+// Phrase Edit Modal Methods
+const openPhraseEditModal = (phrase: PhraseRowData) => {
+  phraseToEdit.value = {
+    id: phrase.phrase_id,
+    known_text: phrase.known_text,
+    target_text: phrase.target_text
+  };
+  phraseEditModalVisible.value = true;
+};
+
+const closePhraseEditModal = () => {
+  phraseEditModalVisible.value = false;
+  phraseToEdit.value = null;
+};
+
+const savePhraseEdit = async (data: { known_text: string; target_text: string; flag_for_regeneration: boolean }) => {
+  if (!phraseToEdit.value) return;
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        known_text: data.known_text,
+        target_text: data.target_text,
+        flag_for_regeneration: data.flag_for_regeneration
+      })
+    });
+
+    if (!response.ok) throw new Error('Failed to save phrase');
+
+    // Update local state
+    const phraseId = phraseToEdit.value.id;
+    seeds.value.forEach(seed => {
+      seed.legos.forEach(lego => {
+        const phrase = lego.phrases.find(p => p.phrase_id === phraseId);
+        if (phrase) {
+          phrase.known_text = data.known_text;
+          phrase.target_text = data.target_text;
+        }
+      });
+    });
+
+    closePhraseEditModal();
+    // TODO: Show success toast
+  } catch (err) {
+    console.error('Error saving phrase:', err);
+    // TODO: Show error toast
+  }
+};
+
 const submitFlag = async (data: { flagType: FlagType; notes: string }) => {
   if (!selectedSample.value || !selectedPhrase.value) return;
 
@@ -601,6 +733,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     case 'Escape':
       event.preventDefault();
       closeFlagModal();
+      closePhraseEditModal();
       showShortcutsHelp.value = false;
       break;
   }

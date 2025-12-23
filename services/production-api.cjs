@@ -1520,6 +1520,127 @@ app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => 
   }
 })
 
+// =============================================================================
+// SCRIPT VIEW ENDPOINT
+// Returns hierarchical structure: seeds -> legos -> phrases for script editing
+// =============================================================================
+
+// Get script view data - all phrases grouped by seed and LEGO
+app.get('/api/production/:courseCode/script-view', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Query all seeds with their LEGOs and phrases in a single nested query
+    const { data: seeds, error } = await supabase
+      .from('course_seeds')
+      .select(`
+        id,
+        seed_number,
+        known_text,
+        target_text,
+        status,
+        course_legos (
+          id,
+          lego_index,
+          known_text,
+          target_text,
+          type,
+          is_new,
+          course_practice_phrases (
+            id,
+            position,
+            known_text,
+            target_text,
+            word_count,
+            lego_count
+          )
+        )
+      `)
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true })
+
+    if (error) {
+      logger.error(`Script view query error for ${courseCode}:`, error)
+      throw error
+    }
+
+    // Transform to the expected hierarchical structure
+    const transformedSeeds = (seeds || []).map(seed => {
+      // Format seed_id as S0001, S0002, etc.
+      const seedId = 'S' + String(seed.seed_number).padStart(4, '0')
+
+      // Transform LEGOs, sorted by lego_index
+      const legos = (seed.course_legos || [])
+        .sort((a, b) => a.lego_index - b.lego_index)
+        .map(lego => {
+          // Format lego_id as S0001L01, S0001L02, etc.
+          const legoId = seedId + 'L' + String(lego.lego_index).padStart(2, '0')
+
+          // Transform phrases, sorted by position
+          // Derive phrase type from position and metadata
+          const phrases = (lego.course_practice_phrases || [])
+            .sort((a, b) => a.position - b.position)
+            .map(phrase => {
+              // Derive phrase type based on position and characteristics
+              // Position 1 is typically 'intro', position 2 is 'lego' (debut), rest are practice
+              let phraseType = 'practice'
+              if (phrase.position === 1) {
+                phraseType = 'intro'
+              } else if (phrase.position === 2) {
+                phraseType = 'lego'
+              } else if (phrase.position === 3) {
+                phraseType = 'debut'
+              }
+
+              return {
+                id: phrase.id,
+                position: phrase.position,
+                known_text: phrase.known_text,
+                target_text: phrase.target_text,
+                type: phraseType,
+                word_count: phrase.word_count,
+                lego_count: phrase.lego_count
+              }
+            })
+
+          return {
+            lego_id: legoId,
+            lego_index: lego.lego_index,
+            type: lego.type,
+            known_text: lego.known_text,
+            target_text: lego.target_text,
+            is_new: lego.is_new,
+            phrases
+          }
+        })
+
+      return {
+        seed_id: seedId,
+        seed_number: seed.seed_number,
+        known_text: seed.known_text,
+        target_text: seed.target_text,
+        status: seed.status,
+        legos
+      }
+    })
+
+    logger.info(`Returning script view for ${courseCode}: ${transformedSeeds.length} seeds`)
+
+    res.json({
+      courseCode,
+      seeds: transformedSeeds
+    })
+  } catch (err) {
+    logger.error(`Failed to get script view for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Mark LEGO as new/not-new
 app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) => {
   const { courseCode, legoId } = req.params
@@ -1540,6 +1661,97 @@ app.post('/api/production/:courseCode/lego/:legoId/mark-new', async (req, res) =
     })
   } catch (error) {
     logger.error(`Error marking lego ${legoId} as new:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// PHRASE EDITING ENDPOINT
+// =============================================================================
+
+// Update a practice phrase (text editing with regeneration flagging)
+// PATCH /api/production/:courseCode/phrase/:phraseId
+// Body: { known_text?, target_text?, flag_for_regeneration? }
+app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
+  const { courseCode, phraseId } = req.params
+  const { known_text, target_text, flag_for_regeneration } = req.body
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // First, get the existing phrase to merge metadata
+    const { data: existingPhrase, error: fetchError } = await supabase
+      .from('course_practice_phrases')
+      .select('*')
+      .eq('id', phraseId)
+      .eq('course_code', courseCode)
+      .single()
+
+    if (fetchError) {
+      if (fetchError.code === 'PGRST116') {
+        return res.status(404).json({ error: `Phrase ${phraseId} not found in course ${courseCode}` })
+      }
+      throw fetchError
+    }
+
+    // Build the update object
+    const updateData = {}
+
+    if (known_text !== undefined) {
+      updateData.known_text = known_text
+    }
+
+    if (target_text !== undefined) {
+      updateData.target_text = target_text
+    }
+
+    // Handle regeneration flagging in metadata
+    if (flag_for_regeneration !== undefined) {
+      const existingMetadata = existingPhrase.metadata || {}
+      updateData.metadata = {
+        ...existingMetadata,
+        needs_regeneration: flag_for_regeneration,
+        regeneration_flagged_at: flag_for_regeneration ? new Date().toISOString() : null
+      }
+    }
+
+    // If no updates provided, return error
+    if (Object.keys(updateData).length === 0) {
+      return res.status(400).json({ error: 'No valid update fields provided' })
+    }
+
+    // Perform the update
+    const { data: updatedPhrase, error: updateError } = await supabase
+      .from('course_practice_phrases')
+      .update(updateData)
+      .eq('id', phraseId)
+      .eq('course_code', courseCode)
+      .select()
+      .single()
+
+    if (updateError) {
+      throw updateError
+    }
+
+    logger.info(`Updated phrase ${phraseId} in ${courseCode}: ${JSON.stringify(updateData)}`)
+
+    // Emit WebSocket event for real-time updates
+    io.to(`course:${courseCode}`).emit('phrase_updated', {
+      courseCode,
+      phraseId,
+      phrase: updatedPhrase
+    })
+
+    res.json({
+      success: true,
+      phrase: updatedPhrase
+    })
+  } catch (error) {
+    logger.error(`Error updating phrase ${phraseId}:`, error.message)
     res.status(500).json({ error: error.message })
   }
 })

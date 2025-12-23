@@ -64,15 +64,15 @@
             <!-- Audio stats (primary for pre-audio courses) -->
             <div class="stat" v-if="store.audioCourseStats.total > 0">
               <span class="stat-value audio">{{ store.audioCourseStats.total }}</span>
-              <span class="stat-label">Audio Needed</span>
+              <span class="stat-label">NEEDED</span>
             </div>
             <div class="stat" v-if="store.audioCourseStats.total > 0">
               <span class="stat-value generated">{{ store.audioCourseStats.existing }}</span>
-              <span class="stat-label">Generated</span>
+              <span class="stat-label">GENERATED</span>
             </div>
             <div class="stat" v-if="store.audioCourseStats.total > 0">
               <span class="stat-value pending">{{ store.audioCourseStats.missing }}</span>
-              <span class="stat-label">Pending</span>
+              <span class="stat-label">PENDING</span>
             </div>
             <!-- QA stats (fallback when no audio stats) -->
             <template v-else>
