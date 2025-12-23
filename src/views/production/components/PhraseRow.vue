@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <!-- Status & Flag Button -->
+      <!-- Status & Actions -->
       <div class="phrase-actions flex items-start gap-2">
         <div v-if="phrase.flag_status" class="status-indicator">
           <span
@@ -44,6 +44,26 @@
             {{ formatStatus(phrase.flag_status) }}
           </span>
         </div>
+
+        <!-- Play Audio Button -->
+        <button
+          @click="playTargetAudio"
+          class="play-button p-2 rounded-lg transition-all"
+          :class="isPlaying ? 'bg-red-500 text-white' : 'bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white'"
+          :disabled="isLoading"
+          title="Play target audio"
+        >
+          <svg v-if="isLoading" class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <svg v-else-if="isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+          </svg>
+          <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
 
         <!-- Edit Button -->
         <button
@@ -56,6 +76,7 @@
           </svg>
         </button>
 
+        <!-- Flag Button -->
         <button
           @click="toggleFlag"
           class="flag-button p-2 rounded-lg transition-all"
@@ -119,7 +140,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import AudioPlayer from './AudioPlayer.vue';
 import type { PhraseRowData, AudioSample, PhraseType, SampleStatus } from '@/types/production';
 
@@ -127,6 +148,7 @@ import type { PhraseRowData, AudioSample, PhraseType, SampleStatus } from '@/typ
 const props = defineProps<{
   phrase: PhraseRowData;
   flagNotes?: string;
+  courseCode?: string;
 }>();
 
 // Emits
@@ -136,6 +158,16 @@ const emit = defineEmits<{
   play: [sample: AudioSample];
   pause: [];
 }>();
+
+// Inline audio playback state
+const isPlaying = ref(false);
+const isLoading = ref(false);
+const audioElement = ref<HTMLAudioElement | null>(null);
+
+// API Base URL
+const getApiBaseUrl = (): string => {
+  return localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470';
+};
 
 // Computed Classes
 const borderClass = computed(() => {
@@ -216,6 +248,59 @@ const formatStatus = (status: SampleStatus): string => {
   return status.split('_').map(word =>
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(' ');
+};
+
+// Play target audio on demand
+const playTargetAudio = async () => {
+  if (isPlaying.value) {
+    // Stop playing
+    audioElement.value?.pause();
+    isPlaying.value = false;
+    return;
+  }
+
+  isLoading.value = true;
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const courseCode = props.courseCode || 'zho_for_eng';
+
+    // Fetch audio URL by text
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode}/audio/by-text?text=${encodeURIComponent(props.phrase.target_text)}`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+
+    if (!response.ok) {
+      console.warn('Audio not found for:', props.phrase.target_text);
+      isLoading.value = false;
+      return;
+    }
+
+    const data = await response.json();
+
+    if (data.url) {
+      // Create or reuse audio element
+      if (!audioElement.value) {
+        audioElement.value = new Audio();
+        audioElement.value.addEventListener('ended', () => {
+          isPlaying.value = false;
+        });
+        audioElement.value.addEventListener('error', () => {
+          isPlaying.value = false;
+          console.error('Audio playback error');
+        });
+      }
+
+      audioElement.value.src = data.url;
+      await audioElement.value.play();
+      isPlaying.value = true;
+    }
+  } catch (err) {
+    console.error('Error fetching audio:', err);
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
 

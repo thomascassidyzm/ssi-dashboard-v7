@@ -77,6 +77,7 @@
           v-for="phrase in lego.phrases"
           :key="phrase.phrase_id"
           :phrase="phrase"
+          :course-code="courseCode"
           :flag-notes="getFlagNotes(phrase)"
           @phrase-flag="onPhraseFlag"
           @phrase-edit="onPhraseEdit"
@@ -100,6 +101,7 @@ import type { LegoRowData, PhraseRowData, AudioSample, LegoType } from '@/types/
 // Props
 const props = defineProps<{
   lego: LegoRowData;
+  courseCode?: string;
 }>();
 
 // Emits

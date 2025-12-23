@@ -128,6 +128,7 @@
           v-for="seed in visibleSeeds"
           :key="seed.seed_id"
           :seed="seed"
+          :course-code="courseCode"
           @toggle="toggleSeed"
           @lego-toggle="toggleLego"
           @lego-play-cycle="openCyclePlayer"

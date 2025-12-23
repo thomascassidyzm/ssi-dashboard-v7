@@ -108,6 +108,7 @@
               v-for="lego in seed.legos"
               :key="lego.lego_id"
               :lego="lego"
+              :course-code="courseCode"
               @toggle="onLegoToggle"
               @play-cycle="onLegoPlayCycle"
               @phrase-flag="onPhraseFlag"
@@ -139,6 +140,7 @@ import type { SeedRowData, LegoRowData, PhraseRowData, AudioSample } from '@/typ
 // Props
 const props = defineProps<{
   seed: SeedRowData;
+  courseCode?: string;
 }>();
 
 // Emits
