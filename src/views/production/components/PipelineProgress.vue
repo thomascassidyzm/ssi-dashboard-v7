@@ -48,8 +48,19 @@
       </div>
     </div>
 
-    <!-- Cost & Time Estimates -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Complete Banner (when 100% done) -->
+    <div v-if="isComplete" class="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30 text-center">
+      <div class="flex items-center justify-center gap-3 mb-2">
+        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span class="text-2xl font-bold text-emerald-400">All Audio Generated</span>
+      </div>
+      <p class="text-slate-400">{{ generated }} files ready for use</p>
+    </div>
+
+    <!-- Cost & Time Estimates (only show when there's work pending) -->
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <!-- Cost Estimate -->
       <CostEstimate
         :estimated="estimatedCost"
@@ -89,6 +100,10 @@ const props = defineProps<Props>()
 const progressPercent = computed(() => {
   if (props.total === 0) return 0
   return Math.round((props.generated / props.total) * 100)
+})
+
+const isComplete = computed(() => {
+  return props.total > 0 && props.pending === 0 && props.failed === 0
 })
 
 const actualCost = computed(() => {
