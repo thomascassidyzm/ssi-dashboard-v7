@@ -250,6 +250,9 @@ const formatStatus = (status: SampleStatus): string => {
   ).join(' ');
 };
 
+// S3 audio base URL (same as learning app)
+const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered';
+
 // Play target audio on demand
 const playTargetAudio = async () => {
   if (isPlaying.value) {
@@ -271,7 +274,7 @@ const playTargetAudio = async () => {
       return;
     }
 
-    // Fetch audio URL by text
+    // Fetch audio UUID by text
     const response = await fetch(
       `${apiBaseUrl}/api/production/${courseCode}/audio/by-text?text=${encodeURIComponent(props.phrase.target_text)}`,
       { headers: { 'ngrok-skip-browser-warning': 'true' } }
@@ -285,7 +288,10 @@ const playTargetAudio = async () => {
 
     const data = await response.json();
 
-    if (data.url) {
+    if (data.uuid) {
+      // Construct direct S3 URL (same pattern as learning app)
+      const audioUrl = `${S3_AUDIO_BASE}/${data.uuid.toUpperCase()}.mp3`;
+
       // Create or reuse audio element
       if (!audioElement.value) {
         audioElement.value = new Audio();
@@ -294,11 +300,11 @@ const playTargetAudio = async () => {
         });
         audioElement.value.addEventListener('error', () => {
           isPlaying.value = false;
-          console.error('Audio playback error');
+          console.error('Audio playback error for:', audioUrl);
         });
       }
 
-      audioElement.value.src = data.url;
+      audioElement.value.src = audioUrl;
       await audioElement.value.play();
       isPlaying.value = true;
     }
