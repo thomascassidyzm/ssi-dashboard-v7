@@ -423,16 +423,9 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
     const legos = (seed.legos || []).map((lego: any) => {
       // Transform phrases
       const phrases: PhraseRowData[] = (lego.phrases || []).map((phrase: any) => {
-        // Map API type to display type
-        let displayType = 'PRAC';
-        if (phrase.type === 'intro') displayType = 'INTR';
-        else if (phrase.type === 'lego') displayType = 'LEGO';
-        else if (phrase.type === 'debut') displayType = 'DEBU';
-        else if (phrase.type === 'practice') displayType = 'PRAC';
-
         return {
           phrase_id: phrase.id,
-          type: displayType as any,
+          type: 'PRAC' as any, // All practice phrases for QA
           known_text: phrase.known_text,
           target_text: phrase.target_text,
           known_audio: null,
@@ -444,6 +437,9 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
           lego_count: phrase.lego_count,
         };
       });
+
+      // Sort by target text character length (shortest first = DEBUT-like, longest = ETERNAL-like)
+      phrases.sort((a, b) => a.target_text.length - b.target_text.length);
 
       return {
         lego_id: lego.lego_id,
