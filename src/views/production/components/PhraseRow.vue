@@ -253,16 +253,69 @@ const formatStatus = (status: SampleStatus): string => {
 // S3 audio base URL (same as learning app)
 const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered';
 
-// Play target audio on demand
+// Playback state for QA sequence
+let playbackAborted = false;
+
+// Helper to fetch audio UUID by text and role
+const fetchAudioUuid = async (apiBaseUrl: string, courseCode: string, text: string, role: string): Promise<string | null> => {
+  try {
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode}/audio/by-text?text=${encodeURIComponent(text)}&role=${role}`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+    if (!response.ok) return null;
+    const data = await response.json();
+    return data.uuid || null;
+  } catch {
+    return null;
+  }
+};
+
+// Helper to play audio and wait for it to finish
+const playAudioAndWait = (url: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    if (!audioElement.value) {
+      audioElement.value = new Audio();
+    }
+
+    const onEnded = () => {
+      audioElement.value?.removeEventListener('ended', onEnded);
+      audioElement.value?.removeEventListener('error', onError);
+      resolve();
+    };
+
+    const onError = () => {
+      audioElement.value?.removeEventListener('ended', onEnded);
+      audioElement.value?.removeEventListener('error', onError);
+      console.warn('Audio playback error for:', url);
+      resolve(); // Continue sequence even if one audio fails
+    };
+
+    audioElement.value.addEventListener('ended', onEnded);
+    audioElement.value.addEventListener('error', onError);
+    audioElement.value.src = url;
+    audioElement.value.play().catch(() => {
+      onError();
+    });
+  });
+};
+
+// Helper to wait for a duration
+const wait = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+// Play full QA sequence: Known → 1s pause → Target1 → 0.5s pause → Target2
 const playTargetAudio = async () => {
   if (isPlaying.value) {
     // Stop playing
+    playbackAborted = true;
     audioElement.value?.pause();
     isPlaying.value = false;
     return;
   }
 
+  playbackAborted = false;
   isLoading.value = true;
+  isPlaying.value = true;
 
   try {
     const apiBaseUrl = getApiBaseUrl();
@@ -271,47 +324,45 @@ const playTargetAudio = async () => {
     if (!courseCode) {
       console.warn('[PhraseRow] No courseCode provided for audio lookup');
       isLoading.value = false;
+      isPlaying.value = false;
       return;
     }
 
-    // Fetch audio UUID by text
-    const response = await fetch(
-      `${apiBaseUrl}/api/production/${courseCode}/audio/by-text?text=${encodeURIComponent(props.phrase.target_text)}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
-    );
+    // Fetch all audio UUIDs in parallel
+    const [knownUuid, target1Uuid, target2Uuid] = await Promise.all([
+      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.known_text, 'known'),
+      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target1'),
+      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target2'),
+    ]);
 
-    if (!response.ok) {
-      console.warn('Audio not found for:', props.phrase.target_text);
-      isLoading.value = false;
-      return;
+    isLoading.value = false;
+
+    // Play Known audio
+    if (knownUuid && !playbackAborted) {
+      await playAudioAndWait(`${S3_AUDIO_BASE}/${knownUuid.toUpperCase()}.mp3`);
     }
 
-    const data = await response.json();
+    // 1 second pause
+    if (!playbackAborted) await wait(1000);
 
-    if (data.uuid) {
-      // Construct direct S3 URL (same pattern as learning app)
-      const audioUrl = `${S3_AUDIO_BASE}/${data.uuid.toUpperCase()}.mp3`;
-
-      // Create or reuse audio element
-      if (!audioElement.value) {
-        audioElement.value = new Audio();
-        audioElement.value.addEventListener('ended', () => {
-          isPlaying.value = false;
-        });
-        audioElement.value.addEventListener('error', () => {
-          isPlaying.value = false;
-          console.error('Audio playback error for:', audioUrl);
-        });
-      }
-
-      audioElement.value.src = audioUrl;
-      await audioElement.value.play();
-      isPlaying.value = true;
+    // Play Target1 (female voice)
+    if (target1Uuid && !playbackAborted) {
+      await playAudioAndWait(`${S3_AUDIO_BASE}/${target1Uuid.toUpperCase()}.mp3`);
     }
+
+    // 0.5 second pause
+    if (!playbackAborted) await wait(500);
+
+    // Play Target2 (male voice)
+    if (target2Uuid && !playbackAborted) {
+      await playAudioAndWait(`${S3_AUDIO_BASE}/${target2Uuid.toUpperCase()}.mp3`);
+    }
+
   } catch (err) {
-    console.error('Error fetching audio:', err);
+    console.error('Error in QA playback:', err);
   } finally {
     isLoading.value = false;
+    isPlaying.value = false;
   }
 };
 </script>
