@@ -18,7 +18,12 @@
             {{ courseCode }}
           </div>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
-            {{ totalSeeds }} seeds, {{ totalPhrases }} phrases
+            <span v-if="filteredSeeds.length < totalSeeds">
+              {{ filteredSeeds.length }} of {{ totalSeeds }} seeds
+            </span>
+            <span v-else>
+              {{ totalSeeds }} seeds, {{ totalPhrases }} phrases
+            </span>
           </div>
         </div>
 
@@ -267,10 +272,10 @@ const isLoading = ref(false);
 const error = ref<string | null>(null);
 const seeds = ref<SeedRowData[]>([]);
 
-// Filter State
+// Filter State - default to first 30 seeds for performance
 const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
-const filterSeedStart = ref('');
-const filterSeedEnd = ref('');
+const filterSeedStart = ref('S0001');
+const filterSeedEnd = ref('S0030');
 const filterSearchText = ref('');
 const filterFlaggedOnly = ref(false);
 
