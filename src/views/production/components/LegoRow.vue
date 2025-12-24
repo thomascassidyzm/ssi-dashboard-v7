@@ -49,19 +49,6 @@
 
         <!-- Actions -->
         <div class="lego-actions flex items-center gap-3">
-          <!-- Play Cycle Button -->
-          <button
-            v-if="lego.phrases.length > 0"
-            @click.stop="onPlayCycle"
-            class="play-cycle-btn flex items-center gap-2 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg transition-colors"
-            title="Play learning cycle"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <span>Play</span>
-          </button>
-
           <!-- Phrase Count Badge -->
           <div class="phrase-count text-sm text-slate-400">
             {{ lego.phrases.length }} phrase{{ lego.phrases.length !== 1 ? 's' : '' }}
@@ -107,7 +94,6 @@ const props = defineProps<{
 // Emits
 const emit = defineEmits<{
   toggle: [legoId: string];
-  playCycle: [lego: LegoRowData];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   phrasePlay: [sample: AudioSample];
@@ -126,10 +112,6 @@ const typeBadgeClass = computed(() => {
 // Methods
 const toggleExpand = () => {
   emit('toggle', props.lego.lego_id);
-};
-
-const onPlayCycle = () => {
-  emit('playCycle', props.lego);
 };
 
 const onPhraseFlag = (phrase: PhraseRowData) => {

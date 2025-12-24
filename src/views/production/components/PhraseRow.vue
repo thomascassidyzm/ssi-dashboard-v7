@@ -263,7 +263,13 @@ const playTargetAudio = async () => {
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const courseCode = props.courseCode || 'zho_for_eng';
+    const courseCode = props.courseCode;
+
+    if (!courseCode) {
+      console.warn('[PhraseRow] No courseCode provided for audio lookup');
+      isLoading.value = false;
+      return;
+    }
 
     // Fetch audio URL by text
     const response = await fetch(

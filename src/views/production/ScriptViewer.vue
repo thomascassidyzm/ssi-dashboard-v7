@@ -140,7 +140,6 @@
           :course-code="courseCode"
           @toggle="toggleSeed"
           @lego-toggle="toggleLego"
-          @lego-play-cycle="openCyclePlayer"
           @phrase-flag="openFlagModal"
           @phrase-edit="openPhraseEditModal"
           @phrase-play="playAudioSample"
@@ -208,15 +207,6 @@
       @save="savePhraseEdit"
     />
 
-    <!-- Cycle Player -->
-    <CyclePlayer
-      v-if="selectedLegoForCycle"
-      :visible="cyclePlayerVisible"
-      :lego="selectedLegoForCycle"
-      :seed-id="selectedSeedIdForCycle"
-      :course-code="courseCode"
-      @close="closeCyclePlayer"
-    />
 
     <!-- Keyboard Shortcuts Help Modal -->
     <Teleport to="body">
@@ -257,7 +247,7 @@ import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
 import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
-import CyclePlayer from './components/CyclePlayer.vue';
+// CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
   LegoRowData,
@@ -300,10 +290,6 @@ const selectedPhrase = ref<PhraseRowData | null>(null);
 const phraseEditModalVisible = ref(false);
 const phraseToEdit = ref<{ id: string; known_text: string; target_text: string } | null>(null);
 
-// Cycle Player State
-const cyclePlayerVisible = ref(false);
-const selectedLegoForCycle = ref<LegoRowData | null>(null);
-const selectedSeedIdForCycle = ref<string>('');
 
 // Shortcuts Help
 const showShortcutsHelp = ref(false);
@@ -712,19 +698,6 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; f
     console.error('Error saving phrase:', err);
     // TODO: Show error toast
   }
-};
-
-// Cycle Player Methods
-const openCyclePlayer = (lego: LegoRowData, seedId: string) => {
-  selectedLegoForCycle.value = lego;
-  selectedSeedIdForCycle.value = seedId;
-  cyclePlayerVisible.value = true;
-};
-
-const closeCyclePlayer = () => {
-  cyclePlayerVisible.value = false;
-  selectedLegoForCycle.value = null;
-  selectedSeedIdForCycle.value = '';
 };
 
 const submitFlag = async (data: { flagType: FlagType; notes: string }) => {

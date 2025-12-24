@@ -85,6 +85,7 @@
               v-for="phrase in seed.introduction_phrases"
               :key="phrase.phrase_id"
               :phrase="phrase"
+              :course-code="courseCode"
               :flag-notes="getFlagNotes(phrase)"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
@@ -110,7 +111,6 @@
               :lego="lego"
               :course-code="courseCode"
               @toggle="onLegoToggle"
-              @play-cycle="onLegoPlayCycle"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-play="onPhrasePlay"
@@ -147,7 +147,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   toggle: [seedId: string];
   legoToggle: [legoId: string];
-  legoPlayCycle: [lego: LegoRowData, seedId: string];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   phrasePlay: [sample: AudioSample];
@@ -181,10 +180,6 @@ const toggleExpand = () => {
 
 const onLegoToggle = (legoId: string) => {
   emit('legoToggle', legoId);
-};
-
-const onLegoPlayCycle = (lego: LegoRowData) => {
-  emit('legoPlayCycle', lego, props.seed.seed_id);
 };
 
 const onPhraseFlag = (phrase: PhraseRowData) => {
