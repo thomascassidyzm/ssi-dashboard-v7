@@ -410,12 +410,12 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
 })
 
 // Get audio URL by text lookup
-// Used by CyclePlayer to find audio for phrases
-// Schema: texts (content) -> audio_files (text_id) -> s3_key
+// Used by CyclePlayer and ScriptViewer to find audio for phrases
+// Schema: texts (content) -> audio_files (text_id) -> course_audio (course_code, role) -> s3_key
 app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { text, lang, role } = req.query
+    const { text, role = 'target1' } = req.query
 
     if (!text) {
       return res.status(400).json({ error: 'text parameter required' })
@@ -427,66 +427,75 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     }
 
     // Step 1: Find the text in texts table
+    let textId = null
     const { data: textData, error: textError } = await supabase
       .from('texts')
-      .select('id, content, language')
+      .select('id')
       .eq('content', text.toString())
       .limit(1)
       .single()
 
     if (textError || !textData) {
       // Try normalized lookup
-      const { data: textData2, error: textError2 } = await supabase
+      const { data: textData2 } = await supabase
         .from('texts')
-        .select('id, content, language')
+        .select('id')
         .eq('content_normalized', text.toString().toLowerCase().trim())
         .limit(1)
         .single()
 
-      if (textError2 || !textData2) {
+      if (!textData2) {
         return res.status(404).json({ error: 'Text not found in database' })
       }
-
-      // Found via normalized
-      const textId = textData2.id
-
-      // Step 2: Find audio_files with this text_id
-      const { data: audioData, error: audioError } = await supabase
-        .from('audio_files')
-        .select('id, s3_key, s3_bucket, cadence')
-        .eq('text_id', textId)
-        .not('s3_key', 'is', null)
-        .limit(1)
-        .single()
-
-      if (audioError || !audioData) {
-        return res.status(404).json({ error: 'Audio file not found for text' })
-      }
-
-      // Step 3: Get signed URL
-      const url = await s3Service.getAudioSignedUrl(audioData.id)
-      return res.json({ url, uuid: audioData.id })
+      textId = textData2.id
+    } else {
+      textId = textData.id
     }
 
-    // Found text directly
-    const textId = textData.id
-
     // Step 2: Find audio_files with this text_id
-    const { data: audioData, error: audioError } = await supabase
+    const { data: audioFiles } = await supabase
       .from('audio_files')
-      .select('id, s3_key, s3_bucket, cadence')
+      .select('id')
       .eq('text_id', textId)
-      .not('s3_key', 'is', null)
-      .limit(1)
-      .single()
 
-    if (audioError || !audioData) {
+    if (!audioFiles || audioFiles.length === 0) {
       return res.status(404).json({ error: 'Audio file not found for text' })
     }
 
-    // Step 3: Get signed URL
-    const url = await s3Service.getAudioSignedUrl(audioData.id)
-    res.json({ url, uuid: audioData.id })
+    const audioIds = audioFiles.map(a => a.id)
+
+    // Step 3: Find in course_audio for this course and role
+    const { data: courseAudio } = await supabase
+      .from('course_audio')
+      .select('audio_id, role')
+      .eq('course_code', courseCode)
+      .in('audio_id', audioIds)
+
+    if (!courseAudio || courseAudio.length === 0) {
+      return res.status(404).json({ error: `Audio not linked to course ${courseCode}` })
+    }
+
+    // Find matching role (target1, target2, known, etc.)
+    let audioId = null
+    for (const ca of courseAudio) {
+      if (ca.role === role) {
+        audioId = ca.audio_id
+        break
+      }
+    }
+
+    // Fallback: if exact role not found, use first available
+    if (!audioId && courseAudio.length > 0) {
+      audioId = courseAudio[0].audio_id
+    }
+
+    if (!audioId) {
+      return res.status(404).json({ error: `No audio with role ${role} for this text` })
+    }
+
+    // Step 4: Get signed URL
+    const url = await s3Service.getAudioSignedUrl(audioId)
+    res.json({ url, uuid: audioId })
   } catch (error) {
     logger.error('Error fetching audio by text:', error)
     res.status(500).json({ error: error.message })

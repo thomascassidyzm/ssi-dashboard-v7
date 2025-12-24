@@ -4,6 +4,15 @@
     <div class="script-header bg-slate-800 border-b border-slate-700 px-6 py-4">
       <div class="flex items-center justify-between">
         <div class="header-left flex items-center gap-4">
+          <router-link
+            :to="`/production/${courseCode}`"
+            class="text-slate-400 hover:text-white transition-colors"
+            title="Back to Mission Control"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </router-link>
           <h1 class="text-2xl font-bold text-white">Script Viewer</h1>
           <div class="course-badge px-3 py-1 bg-emerald-500 bg-opacity-20 text-emerald-300 rounded-lg text-sm font-medium">
             {{ courseCode }}
