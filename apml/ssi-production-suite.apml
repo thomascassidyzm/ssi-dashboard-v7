@@ -1312,9 +1312,9 @@ audio:
   samples:
     storage:
       provider: S3
-      bucket: popty-bach-lfs
+      bucket: ssi-audio-stage
       region: eu-west-1
-      path_template: ssiborg-assets/mastered/{uuid}.mp3
+      path_template: mastered/{UUID}.mp3
 
     registry:
       provider: Supabase

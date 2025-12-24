@@ -65,8 +65,9 @@ async function main() {
   const LANG_TARGET = LANG_MAP[jsonData.target] || jsonData.target;
 
   // Build voice config from course code
+  // Note: Legacy JSON uses 'source' but we use 'known' as the canonical term
   const VOICE_CONFIG = {
-    source: `human_${COURSE_CODE}_source`,
+    source: `human_${COURSE_CODE}_known`,  // 'source' in JSON maps to 'known' voice
     target1: `human_${COURSE_CODE}_target1`,
     target2: `human_${COURSE_CODE}_target2`,
     presentation: `human_${COURSE_CODE}_presentation`
@@ -251,13 +252,24 @@ async function main() {
   }
   console.log(`\n  Done. Total: ${textIdMap.size} texts mapped.`);
 
-  // Step 3: Insert audio_files
+  // Step 3: Insert audio_files (deduplicate by UUID first)
   console.log('\nStep 3: Inserting audio_files...');
+
+  // Deduplicate audioToInsert by UUID (same audio can appear for text variants)
+  const seenUuids = new Set();
+  const dedupedAudio = audioToInsert.filter(a => {
+    const key = a.uuid.toLowerCase();
+    if (seenUuids.has(key)) return false;
+    seenUuids.add(key);
+    return true;
+  });
+  console.log(`  Deduplicated: ${audioToInsert.length} → ${dedupedAudio.length} unique UUIDs`);
+
   let audioInserted = 0;
   let audioSkipped = 0;
 
-  for (let i = 0; i < audioToInsert.length; i += BATCH_SIZE) {
-    const batch = audioToInsert.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < dedupedAudio.length; i += BATCH_SIZE) {
+    const batch = dedupedAudio.slice(i, i + BATCH_SIZE);
 
     const rows = batch.map(a => {
       const textKey = `${a.text.toLowerCase().trim()}|${a.language}`;
@@ -283,7 +295,7 @@ async function main() {
     const { error } = await supabase
       .from('audio_files')
       .upsert(rows, {
-        onConflict: 'text_id,voice_id,cadence',
+        onConflict: 'id',
         ignoreDuplicates: true
       });
 
@@ -295,7 +307,7 @@ async function main() {
       audioInserted += rows.length;
     }
 
-    process.stdout.write(`\r  Inserted: ${audioInserted}, Skipped: ${audioSkipped}`);
+    process.stdout.write(`\r  Inserted: ${audioInserted}/${dedupedAudio.length}, Skipped: ${audioSkipped}`);
   }
   console.log('\n  Done.');
 

@@ -20,17 +20,20 @@ const COURSE_ALIASES = {
   'en-cy-north': 'cym_n_for_eng',
   'en-cy-south': 'cym_s_for_eng',
   'en-es': 'spa_for_eng',
-  'cmn_for_eng': 'zho_for_eng'
+  'cmn_for_eng': 'zho_for_eng',
+  'En-Ch': 'zho_for_eng'
 };
 
 // Parse args
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
+const MAX_SEEDS_ARG = args.find(a => a.startsWith('--max-seeds='));
+const MAX_SEEDS = MAX_SEEDS_ARG ? parseInt(MAX_SEEDS_ARG.split('=')[1], 10) : null;
 const JSON_PATH = args.find(a => !a.startsWith('--'));
 
 if (!JSON_PATH) {
-  console.error('Usage: node import-course-structure.cjs <json-path> [--dry-run]');
-  console.error('Example: node import-course-structure.cjs ~/Downloads/course.json');
+  console.error('Usage: node import-course-structure.cjs <json-path> [--dry-run] [--max-seeds=N]');
+  console.error('Example: node import-course-structure.cjs ~/Downloads/course.json --max-seeds=250');
   process.exit(1);
 }
 
@@ -51,10 +54,17 @@ async function main() {
   console.log(`JSON: ${JSON_PATH}`);
   console.log(`Course JSON ID: ${JSON_COURSE_ID}`);
   console.log(`Course code (canonical): ${COURSE_CODE}`);
+  if (MAX_SEEDS) {
+    console.log(`Seed limit: ${MAX_SEEDS}`);
+  }
   console.log('');
 
-  // Extract seeds from the slice
-  const seeds = slice.seeds || [];
+  // Extract seeds from the slice (with optional limit)
+  let seeds = slice.seeds || [];
+  if (MAX_SEEDS && seeds.length > MAX_SEEDS) {
+    console.log(`Limiting from ${seeds.length} seeds to first ${MAX_SEEDS} seeds`);
+    seeds = seeds.slice(0, MAX_SEEDS);
+  }
   console.log(`Found ${seeds.length} seeds in JSON`);
 
   // Build data structures
@@ -87,8 +97,8 @@ async function main() {
       status: 'released'
     });
 
-    // Process LEGOs for this seed (called introductionItems in Welsh JSON)
-    const legos = seed.introductionItems || [];
+    // Process LEGOs for this seed (introductionItems or introduction_items depending on JSON format)
+    const legos = seed.introductionItems || seed.introduction_items || [];
     for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
       const lego = legos[legoIdx];
       const legoId = `${seedId}L${String(legoIdx + 1).padStart(2, '0')}`;
@@ -119,6 +129,9 @@ async function main() {
         const phraseKnown = phrase.known?.text || '';
         const phraseTarget = phrase.target?.text || '';
 
+        // Compute word_count from target text (split on whitespace)
+        const wordCount = phraseTarget.trim() ? phraseTarget.trim().split(/\s+/).length : 0;
+
         phrasesToInsert.push({
           course_code: COURSE_CODE,
           _seed_number: seedNumber,       // For mapping
@@ -126,6 +139,8 @@ async function main() {
           phrase_index: phraseIdx + 1,
           known_text: phraseKnown,
           target_text: phraseTarget,
+          word_count: wordCount,
+          lego_count: 1,  // Default to 1 for atomic phrases
           status: 'released'
         });
       }
@@ -190,7 +205,7 @@ async function main() {
 
     const { error } = await supabase
       .from('course_legos')
-      .insert(cleanBatch);
+      .upsert(cleanBatch, { onConflict: 'course_code,seed_number,lego_index' });
 
     if (error) {
       console.error('Error inserting LEGOs:', error);
@@ -229,16 +244,15 @@ async function main() {
   for (let i = 0; i < phrasesToInsert.length; i += BATCH_SIZE) {
     const batch = phrasesToInsert.slice(i, i + BATCH_SIZE);
 
-    // Map _seed_number and _lego_index to actual lego_id
-    const cleanBatch = batch.map(({ _seed_number, _lego_index, ...rest }) => {
-      const key = `${_seed_number}:${_lego_index}`;
-      const lego_id = legoIdMap.get(key);
-      if (!lego_id) {
-        phrasesSkipped++;
-        return null;
-      }
-      return { ...rest, lego_id };
-    }).filter(p => p !== null);
+    // Map _seed_number and _lego_index to seed_number and lego_index columns
+    const cleanBatch = batch.map(({ _seed_number, _lego_index, phrase_index, ...rest }) => {
+      return {
+        ...rest,
+        seed_number: _seed_number,
+        lego_index: _lego_index,
+        position: phrase_index  // phrase_index maps to position column
+      };
+    });
 
     if (cleanBatch.length === 0) continue;
 

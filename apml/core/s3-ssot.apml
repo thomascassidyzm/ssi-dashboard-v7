@@ -35,10 +35,11 @@ architecture S3SSoT:
   ## ==========================================================================
 
   bucket:
-    name: "popty-bach-lfs"
-    region: "eu-west-2"
+    name: "ssi-audio-stage"
+    region: "eu-west-1"
     versioning: "enabled"
     access: "private (accessed via API)"
+    note: "Primary audio bucket. Legacy bucket 'popty-bach-lfs' is deprecated."
 
     cors:
       allowed_origins:

@@ -94,10 +94,10 @@ DATA_LAYER:
         - "audio_samples: New audio generated"
 
   s3:
-    bucket: "popty-bach-lfs"
+    bucket: "ssi-audio-stage"
     region: "eu-west-1"
     structure:
-      audio_files: "mastered/{uuid}.mp3"
+      audio_files: "mastered/{UUID}.mp3"
       course_data: "courses/{course_code}/*.json"
 
 ## ============================================================================
@@ -1047,7 +1047,7 @@ STACK:
     - "Tables: voices, audio_samples, course_audio_usage, sample_flags, recording_provenance"
 
   storage:
-    - "S3 (popty-bach-lfs) for audio files and course JSON"
+    - "S3 (ssi-audio-stage) for audio files and course JSON"
 
   audio:
     - "Azure Cognitive Services (target language TTS)"
