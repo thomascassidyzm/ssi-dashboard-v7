@@ -1,8 +1,11 @@
 -- ============================================================================
 -- APML Compiled Schema
--- Version: 12.0.0
--- Generated: 2025-12-19T15:03:38.905Z
--- Compiler: apml-compiler.cjs v2.0
+-- Version: 12.0.1
+-- Updated: 2025-12-24
+--
+-- KEY PRINCIPLE: Separate WHAT from HOW
+--   WHAT (identity): text_id + voice_id + cadence
+--   HOW (access):    id, s3_key (just file pointers)
 -- ============================================================================
 
 -- Enable UUID extension
@@ -27,35 +30,38 @@ CREATE INDEX IF NOT EXISTS idx_texts_language ON texts (language);
 COMMENT ON TABLE texts IS 'All unique text units across all courses';
 
 -- ----------------------------------------------------------------------------
--- Table: voices
+-- Table: voices (EXISTING - not created by this migration)
 -- Registry of available voices (TTS and human)
+-- Primary key is voice_id (TEXT), not UUID
 -- ----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS voices (
-  id UUID DEFAULT gen_random_uuid(),
-  voice_id TEXT NOT NULL UNIQUE,
-  provider TEXT NOT NULL,
-  display_name TEXT,
-  locale TEXT,
-  languages TEXT[],
-  gender TEXT,
-  is_multilingual BOOLEAN,
-  is_active BOOLEAN,
-  metadata JSONB,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  PRIMARY KEY (id)
-);
-COMMENT ON TABLE voices IS 'Registry of available voices (TTS and human)';
+-- NOTE: voices table already exists with voice_id as TEXT primary key
+-- This migration does NOT recreate it - just documents the structure:
+--
+-- CREATE TABLE IF NOT EXISTS voices (
+--   voice_id TEXT PRIMARY KEY,  -- e.g., "azure_zh-CN-XiaoxiaoNeural"
+--   type TEXT,                  -- "tts" or "human"
+--   tts_engine TEXT,            -- "azure", "elevenlabs"
+--   tts_voice_name TEXT,
+--   tts_locale TEXT,
+--   languages TEXT[],
+--   is_active BOOLEAN,
+--   ...
+-- );
+
+COMMENT ON TABLE voices IS 'Registry of available voices (TTS and human) - voice_id TEXT is PK';
 
 -- ----------------------------------------------------------------------------
 -- Table: audio_files
 -- Audio renderings - each is a specific voice speaking specific text
+-- Identity: (text_id, voice_id, cadence) - the WHAT
+-- Access: id, s3_key - the HOW (just file pointers)
 -- ----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS audio_files (
   id UUID DEFAULT gen_random_uuid(),
   text_id UUID NOT NULL,
-  voice_id UUID NOT NULL,
+  voice_id TEXT NOT NULL,  -- TEXT, references voices(voice_id)
   cadence TEXT NOT NULL,
   s3_bucket TEXT,
   s3_key TEXT,
@@ -65,12 +71,12 @@ CREATE TABLE IF NOT EXISTS audio_files (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   PRIMARY KEY (id),
   FOREIGN KEY (text_id) REFERENCES texts(id) ON DELETE RESTRICT,
-  FOREIGN KEY (voice_id) REFERENCES voices(id) ON DELETE RESTRICT,
+  FOREIGN KEY (voice_id) REFERENCES voices(voice_id) ON DELETE RESTRICT,
   CONSTRAINT unique_rendering UNIQUE (text_id, voice_id, cadence)
 );
 CREATE INDEX IF NOT EXISTS idx_audio_text ON audio_files (text_id);
 CREATE INDEX IF NOT EXISTS idx_audio_voice ON audio_files (voice_id);
-COMMENT ON TABLE audio_files IS 'Audio renderings - each is a specific voice speaking specific text';
+COMMENT ON TABLE audio_files IS 'Audio renderings - identity is (text_id, voice_id, cadence), id/s3_key are just file pointers';
 
 -- ----------------------------------------------------------------------------
 -- Table: course_audio
