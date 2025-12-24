@@ -212,7 +212,7 @@ The generated Vue applications integrate with:
    - Learner progress
 
 5. **S3 Storage**
-   - Audio files (popty-bach-lfs bucket)
+   - Audio files (ssi-audio-stage bucket)
    - Path: `mastered/{uuid}.mp3`
 
 ## Focus: Production Suite First

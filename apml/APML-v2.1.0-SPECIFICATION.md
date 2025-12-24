@@ -763,7 +763,7 @@ audio:
   samples:
     storage:
       provider: S3
-      bucket: popty-bach-lfs
+      bucket: ssi-audio-stage
       region: eu-west-1
       path_template: mastered/{uuid}.mp3
 

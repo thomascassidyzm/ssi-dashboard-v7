@@ -232,7 +232,7 @@ The generated code integrates with:
    - Learner progress
 
 5. **S3 Storage**
-   - Audio files (`popty-bach-lfs` bucket, `eu-west-1`)
+   - Audio files (`ssi-audio-stage` bucket, `eu-west-1`)
    - Path: `mastered/{uuid}.mp3`
 
 ## Testing

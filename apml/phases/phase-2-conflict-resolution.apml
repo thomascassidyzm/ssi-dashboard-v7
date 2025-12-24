@@ -23,12 +23,12 @@ phase Phase2ConflictResolution:
 
   input:
     file: "draft_lego_pairs.json"
-    location: "S3: s3://popty-bach-lfs/courses/{course_code}/draft_lego_pairs.json"
+    location: "S3: s3://ssi-audio-stage/courses/{course_code}/draft_lego_pairs.json"
     description: "LEGOs from Phase 1 that may have conflicts"
 
   output:
     file: "lego_pairs.json"
-    location: "S3: s3://popty-bach-lfs/courses/{course_code}/lego_pairs.json"
+    location: "S3: s3://ssi-audio-stage/courses/{course_code}/lego_pairs.json"
     description: "Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)"
 
   ## ==========================================================================

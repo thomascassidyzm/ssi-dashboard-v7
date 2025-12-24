@@ -757,7 +757,7 @@ interface voice_config:
     course: current_course.course_code
 
   show voice_assignments:
-    for each role in ["source", "target1", "target2", "presentation", "encouragement"]:
+    for each role in ["known", "target1", "target2", "presentation", "encouragement"]:
       show voice_assignment_row:
         role: role
         current_voice: get_voice_for_role(role)

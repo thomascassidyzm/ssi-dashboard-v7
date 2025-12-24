@@ -286,7 +286,7 @@ async function main() {
         voice_id: VOICE_CONFIG[a.role],  // Use voice_id string directly
         cadence: a.cadence,
         s3_bucket: S3_BUCKET,
-        s3_key: `mastered/${a.uuid.toLowerCase()}.mp3`,
+        s3_key: `mastered/${a.uuid.toUpperCase()}.mp3`,  // S3 uses uppercase UUIDs
         duration_ms: a.duration_ms
         // Note: source field has check constraint, leaving null
       };
