@@ -82,9 +82,10 @@
 
           <div class="phrases-list space-y-3 ml-8">
             <PhraseRow
-              v-for="phrase in seed.introduction_phrases"
+              v-for="(phrase, index) in seed.introduction_phrases"
               :key="phrase.phrase_id"
               :phrase="phrase"
+              :position="index + 1"
               :course-code="courseCode"
               :flag-notes="getFlagNotes(phrase)"
               @phrase-flag="onPhraseFlag"

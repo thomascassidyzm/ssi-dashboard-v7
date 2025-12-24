@@ -1587,8 +1587,11 @@ export default {
   },
 
   // Get audio stream URL for a sample UUID
+  // Direct S3 access - no API proxy needed (like learning app)
   getAudioStreamUrl(uuid) {
-    return `${API_BASE_URL}/api/audio/stream/${uuid}`
+    if (!uuid) return ''
+    // S3 bucket: ssi-audio-stage, prefix: mastered/, UUID must be uppercase
+    return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
   },
 
   // Flag a sample for review

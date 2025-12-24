@@ -56,11 +56,12 @@ export function useScriptPlayer() {
   // ============================================================================
 
   /**
-   * Get audio URL from UUID
+   * Get audio URL from UUID - direct S3 access (like learning app)
    */
   function getAudioUrl(uuid) {
     if (!uuid) return null
-    return `${API_BASE_URL}/api/audio/stream/${uuid}`
+    // S3 bucket: ssi-audio-stage, prefix: mastered/, UUID must be uppercase
+    return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
   }
 
   /**

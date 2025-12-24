@@ -370,7 +370,7 @@ export default {
         if (!this.audioCache.has(uuid)) {
           const audio = new Audio()
           audio.preload = 'auto'
-          audio.src = `${baseURL}/api/audio/stream/${uuid}`
+          audio.src = `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
           this.audioCache.set(uuid, audio)
         }
       }
@@ -454,7 +454,7 @@ export default {
             resolve()
             return
           }
-          audioElement.src = `${baseURL}/api/audio/stream/${uuid}`
+          audioElement.src = `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
         }
 
         const onEnded = () => {

@@ -61,9 +61,10 @@
     <Transition name="expand">
       <div v-if="lego.expanded" class="phrases-section mt-3 ml-8 space-y-3">
         <PhraseRow
-          v-for="phrase in lego.phrases"
+          v-for="(phrase, index) in lego.phrases"
           :key="phrase.phrase_id"
           :phrase="phrase"
+          :position="index + 1"
           :course-code="courseCode"
           :flag-notes="getFlagNotes(phrase)"
           @phrase-flag="onPhraseFlag"

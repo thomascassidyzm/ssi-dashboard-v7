@@ -7,19 +7,10 @@
     <div class="phrase-header flex items-start justify-between gap-4 mb-3">
       <div class="phrase-info flex-1">
         <div class="flex items-center gap-2 mb-1">
-          <span class="phrase-id text-xs font-mono text-slate-400">{{ phrase.phrase_id }}</span>
-          <span
-            class="phrase-type-badge px-2 py-0.5 text-xs font-medium rounded"
-            :class="typeBadgeClass"
-          >
-            {{ phrase.type }}
+          <span class="position-badge px-2 py-0.5 text-xs font-medium bg-slate-600 text-slate-200 rounded">
+            {{ position }}
           </span>
-          <span v-if="phrase.is_debut" class="debut-badge px-2 py-0.5 text-xs font-medium bg-purple-500 bg-opacity-20 text-purple-300 rounded">
-            DEBUT
-          </span>
-          <span v-if="phrase.is_component" class="component-badge px-2 py-0.5 text-xs font-medium bg-blue-500 bg-opacity-20 text-blue-300 rounded">
-            COMPONENT
-          </span>
+          <span class="phrase-id text-xs font-mono text-slate-500">{{ phrase.phrase_id }}</span>
         </div>
 
         <div class="phrase-texts space-y-1">
@@ -144,9 +135,14 @@ import { ref, computed } from 'vue';
 import AudioPlayer from './AudioPlayer.vue';
 import type { PhraseRowData, AudioSample, PhraseType, SampleStatus } from '@/types/production';
 
+// QA playback timing constants (for easy adjustment)
+const QA_PAUSE_AFTER_KNOWN_MS = 1000;
+const QA_PAUSE_BETWEEN_TARGETS_MS = 500;
+
 // Props
 const props = defineProps<{
   phrase: PhraseRowData;
+  position: number;
   flagNotes?: string;
   courseCode?: string;
 }>();
@@ -174,31 +170,7 @@ const borderClass = computed(() => {
   if (props.phrase.is_flagged) {
     return 'border-l-amber-500';
   }
-  if (props.phrase.is_debut) {
-    return 'border-l-purple-500';
-  }
-  if (props.phrase.is_component) {
-    return 'border-l-blue-500';
-  }
   return 'border-l-slate-700';
-});
-
-const typeBadgeClass = computed(() => {
-  const baseClass = 'transition-colors';
-  switch (props.phrase.type) {
-    case 'COMP':
-      return `${baseClass} bg-blue-500 bg-opacity-20 text-blue-300`;
-    case 'LEGO':
-      return `${baseClass} bg-purple-500 bg-opacity-20 text-purple-300`;
-    case 'DEBU':
-      return `${baseClass} bg-pink-500 bg-opacity-20 text-pink-300`;
-    case 'ETER':
-      return `${baseClass} bg-indigo-500 bg-opacity-20 text-indigo-300`;
-    case 'PRAC':
-      return `${baseClass} bg-emerald-500 bg-opacity-20 text-emerald-300`;
-    default:
-      return `${baseClass} bg-slate-500 bg-opacity-20 text-slate-300`;
-  }
 });
 
 const statusBadgeClass = computed(() => {
@@ -342,16 +314,16 @@ const playTargetAudio = async () => {
       await playAudioAndWait(`${S3_AUDIO_BASE}/${knownUuid.toUpperCase()}.mp3`);
     }
 
-    // 1 second pause
-    if (!playbackAborted) await wait(1000);
+    // Pause after known
+    if (!playbackAborted) await wait(QA_PAUSE_AFTER_KNOWN_MS);
 
     // Play Target1 (female voice)
     if (target1Uuid && !playbackAborted) {
       await playAudioAndWait(`${S3_AUDIO_BASE}/${target1Uuid.toUpperCase()}.mp3`);
     }
 
-    // 0.5 second pause
-    if (!playbackAborted) await wait(500);
+    // Pause between targets
+    if (!playbackAborted) await wait(QA_PAUSE_BETWEEN_TARGETS_MS);
 
     // Play Target2 (male voice)
     if (target2Uuid && !playbackAborted) {

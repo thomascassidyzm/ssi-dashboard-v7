@@ -181,8 +181,8 @@ async function retryItem(item) {
 async function playItem(item) {
   if (!item.uuid) return
 
-  const baseUrl = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-  const audioUrl = `${baseUrl}/api/audio/stream/${item.uuid}`
+  // Direct S3 access (same pattern as learning app)
+  const audioUrl = `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${item.uuid.toUpperCase()}.mp3`
 
   try {
     const audio = new Audio(audioUrl)
