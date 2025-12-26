@@ -51,48 +51,123 @@
               />
             </div>
 
-            <!-- Regeneration Checkbox -->
-            <div class="regeneration-checkbox">
+            <!-- Audio Regeneration Section -->
+            <div class="regeneration-section space-y-3">
+              <div class="section-header flex items-center justify-between">
+                <label class="block text-sm font-medium text-slate-300">
+                  Flag audio for regeneration
+                </label>
+                <button
+                  @click="toggleAllFlags"
+                  class="text-xs text-slate-400 hover:text-white transition-colors"
+                >
+                  {{ allFlagsSelected ? 'Deselect All' : 'Select All' }}
+                </button>
+              </div>
+
+              <!-- Known Audio Checkbox -->
               <label
-                class="flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
-                :class="localFlagForRegeneration
-                  ? 'border-amber-500 bg-amber-500 bg-opacity-10'
+                v-if="phrase?.known_audio_uuid"
+                class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
+                :class="regenFlags.known
+                  ? 'border-slate-500 bg-slate-500 bg-opacity-10'
                   : 'border-slate-600 hover:border-slate-500'"
               >
                 <input
-                  v-model="localFlagForRegeneration"
+                  v-model="regenFlags.known"
                   type="checkbox"
-                  class="w-4 h-4 text-amber-500 bg-slate-700 border-slate-600 rounded focus:ring-amber-500 focus:ring-offset-slate-800"
+                  class="w-4 h-4 text-slate-400 bg-slate-700 border-slate-600 rounded focus:ring-slate-500 focus:ring-offset-slate-800"
                 />
-                <div class="flex-1">
-                  <div class="font-medium text-white">Flag for audio regeneration</div>
-                  <div class="text-sm text-slate-400">
-                    Mark this phrase to have its audio regenerated after text changes
-                  </div>
+                <div class="flex-1 flex items-center gap-2">
+                  <span class="text-sm font-medium text-slate-300">Known</span>
+                  <span class="text-xs text-slate-500 truncate">{{ localKnownText }}</span>
                 </div>
               </label>
+
+              <!-- Target 1 Audio Checkbox (Female) -->
+              <label
+                v-if="phrase?.target1_audio_uuid"
+                class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
+                :class="regenFlags.target1
+                  ? 'border-pink-500 bg-pink-500 bg-opacity-10'
+                  : 'border-slate-600 hover:border-slate-500'"
+              >
+                <input
+                  v-model="regenFlags.target1"
+                  type="checkbox"
+                  class="w-4 h-4 text-pink-500 bg-slate-700 border-slate-600 rounded focus:ring-pink-500 focus:ring-offset-slate-800"
+                />
+                <div class="flex-1 flex items-center gap-2">
+                  <span class="text-sm font-medium text-pink-400">Target 1</span>
+                  <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
+                  <span class="text-xs text-slate-500 truncate">{{ localTargetText }}</span>
+                </div>
+              </label>
+
+              <!-- Target 2 Audio Checkbox (Male) -->
+              <label
+                v-if="phrase?.target2_audio_uuid"
+                class="audio-flag-row flex items-center gap-3 p-3 rounded-lg border-2 transition-all cursor-pointer"
+                :class="regenFlags.target2
+                  ? 'border-blue-500 bg-blue-500 bg-opacity-10'
+                  : 'border-slate-600 hover:border-slate-500'"
+              >
+                <input
+                  v-model="regenFlags.target2"
+                  type="checkbox"
+                  class="w-4 h-4 text-blue-500 bg-slate-700 border-slate-600 rounded focus:ring-blue-500 focus:ring-offset-slate-800"
+                />
+                <div class="flex-1 flex items-center gap-2">
+                  <span class="text-sm font-medium text-blue-400">Target 2</span>
+                  <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
+                  <span class="text-xs text-slate-500 truncate">{{ localTargetText }}</span>
+                </div>
+              </label>
+
+              <!-- No audio warning -->
+              <div
+                v-if="!phrase?.known_audio_uuid && !phrase?.target1_audio_uuid && !phrase?.target2_audio_uuid"
+                class="text-sm text-slate-500 italic p-3 bg-slate-700 bg-opacity-50 rounded-lg"
+              >
+                No audio files available for this phrase yet.
+              </div>
+
+              <!-- Hint text -->
+              <p class="text-xs text-slate-500">
+                Only checked audio files will be flagged for regeneration after saving.
+              </p>
             </div>
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
-            <button
-              @click="close"
-              class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              @click="save"
-              :disabled="!hasChanges || isSaving"
-              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-            >
-              <svg v-if="isSaving" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>{{ isSaving ? 'Saving...' : 'Save' }}</span>
-            </button>
+          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700">
+            <div class="regen-summary text-xs text-slate-400">
+              <span v-if="selectedRegenCount > 0">
+                {{ selectedRegenCount }} audio file{{ selectedRegenCount !== 1 ? 's' : '' }} will be regenerated
+              </span>
+              <span v-else>
+                No audio files selected for regeneration
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <button
+                @click="close"
+                class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                @click="save"
+                :disabled="!hasChanges || isSaving"
+                class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              >
+                <svg v-if="isSaving" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>{{ isSaving ? 'Saving...' : 'Save' }}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -101,13 +176,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed, onMounted, onUnmounted } from 'vue';
+import { ref, reactive, watch, computed, onMounted, onUnmounted } from 'vue';
 
 // Types
 interface PhraseData {
   id: string;
   known_text: string;
   target_text: string;
+  known_audio_uuid?: string;
+  target1_audio_uuid?: string;
+  target2_audio_uuid?: string;
+}
+
+interface RegenFlags {
+  known: boolean;
+  target1: boolean;
+  target2: boolean;
 }
 
 // Props
@@ -119,13 +203,21 @@ const props = defineProps<{
 // Emits
 const emit = defineEmits<{
   close: [];
-  save: [data: { known_text: string; target_text: string; flag_for_regeneration: boolean }];
+  save: [data: {
+    known_text: string;
+    target_text: string;
+    regen_flags: RegenFlags;
+  }];
 }>();
 
 // State
 const localKnownText = ref('');
 const localTargetText = ref('');
-const localFlagForRegeneration = ref(true);
+const regenFlags = reactive<RegenFlags>({
+  known: false,
+  target1: false,
+  target2: false,
+});
 const isSaving = ref(false);
 
 // Computed
@@ -137,11 +229,34 @@ const hasChanges = computed(() => {
   );
 });
 
+const selectedRegenCount = computed(() => {
+  let count = 0;
+  if (regenFlags.known && props.phrase?.known_audio_uuid) count++;
+  if (regenFlags.target1 && props.phrase?.target1_audio_uuid) count++;
+  if (regenFlags.target2 && props.phrase?.target2_audio_uuid) count++;
+  return count;
+});
+
+const allFlagsSelected = computed(() => {
+  const availableFlags = [];
+  if (props.phrase?.known_audio_uuid) availableFlags.push(regenFlags.known);
+  if (props.phrase?.target1_audio_uuid) availableFlags.push(regenFlags.target1);
+  if (props.phrase?.target2_audio_uuid) availableFlags.push(regenFlags.target2);
+  return availableFlags.length > 0 && availableFlags.every(f => f);
+});
+
 // Methods
 const close = () => {
   if (!isSaving.value) {
     emit('close');
   }
+};
+
+const toggleAllFlags = () => {
+  const newValue = !allFlagsSelected.value;
+  if (props.phrase?.known_audio_uuid) regenFlags.known = newValue;
+  if (props.phrase?.target1_audio_uuid) regenFlags.target1 = newValue;
+  if (props.phrase?.target2_audio_uuid) regenFlags.target2 = newValue;
 };
 
 const save = () => {
@@ -152,7 +267,7 @@ const save = () => {
   emit('save', {
     known_text: localKnownText.value,
     target_text: localTargetText.value,
-    flag_for_regeneration: localFlagForRegeneration.value
+    regen_flags: { ...regenFlags }
   });
 
   // Reset saving state after a short delay (parent will close the modal)
@@ -167,7 +282,10 @@ watch(() => props.visible, (newVisible) => {
     // Reset form when modal opens
     localKnownText.value = props.phrase.known_text || '';
     localTargetText.value = props.phrase.target_text || '';
-    localFlagForRegeneration.value = true; // Default to checked
+    // Default: select all available audio for regeneration when text changes
+    regenFlags.known = !!props.phrase.known_audio_uuid;
+    regenFlags.target1 = !!props.phrase.target1_audio_uuid;
+    regenFlags.target2 = !!props.phrase.target2_audio_uuid;
   }
 });
 
@@ -176,7 +294,9 @@ watch(() => props.phrase, (newPhrase) => {
   if (newPhrase && props.visible) {
     localKnownText.value = newPhrase.known_text || '';
     localTargetText.value = newPhrase.target_text || '';
-    localFlagForRegeneration.value = true;
+    regenFlags.known = !!newPhrase.known_audio_uuid;
+    regenFlags.target1 = !!newPhrase.target1_audio_uuid;
+    regenFlags.target2 = !!newPhrase.target2_audio_uuid;
   }
 });
 

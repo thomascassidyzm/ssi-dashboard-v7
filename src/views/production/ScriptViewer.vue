@@ -147,6 +147,7 @@
           @lego-toggle="toggleLego"
           @phrase-flag="openFlagModal"
           @phrase-edit="openPhraseEditModal"
+          @audio-flag="handleAudioFlag"
           @phrase-play="playAudioSample"
           @phrase-pause="pauseAudio"
         />
@@ -293,7 +294,14 @@ const selectedPhrase = ref<PhraseRowData | null>(null);
 
 // Phrase Edit Modal State
 const phraseEditModalVisible = ref(false);
-const phraseToEdit = ref<{ id: string; known_text: string; target_text: string } | null>(null);
+const phraseToEdit = ref<{
+  id: string;
+  known_text: string;
+  target_text: string;
+  known_audio_uuid?: string;
+  target1_audio_uuid?: string;
+  target2_audio_uuid?: string;
+} | null>(null);
 
 
 // Shortcuts Help
@@ -655,12 +663,60 @@ const closeFlagModal = () => {
   selectedPhrase.value = null;
 };
 
+// Audio track type
+type AudioTrack = 'known' | 'target1' | 'target2';
+
+// Handle per-audio flagging from PhraseRow
+const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
+  console.log(`Flagging audio: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+
+    // Map track to status for API
+    const statusMap: Record<AudioTrack, string> = {
+      known: 'flagged_regen_tts',
+      target1: 'flagged_regen_tts',
+      target2: 'flagged_regen_tts',
+    };
+
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        uuid,
+        status: statusMap[track],
+        note: `Flagged ${track} audio for regeneration`,
+        flagged_by: 'dashboard_user'
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to flag audio: ${response.statusText}`);
+    }
+
+    // TODO: Update local state to show flag
+    // TODO: Show success toast
+    console.log(`Successfully flagged ${track} audio for phrase ${phrase.phrase_id}`);
+
+  } catch (err) {
+    console.error('Error flagging audio:', err);
+    // TODO: Show error toast
+  }
+};
+
 // Phrase Edit Modal Methods
 const openPhraseEditModal = (phrase: PhraseRowData) => {
   phraseToEdit.value = {
     id: phrase.phrase_id,
     known_text: phrase.known_text,
-    target_text: phrase.target_text
+    target_text: phrase.target_text,
+    known_audio_uuid: phrase.known_audio_uuid,
+    target1_audio_uuid: phrase.target1_audio_uuid,
+    target2_audio_uuid: phrase.target2_audio_uuid,
   };
   phraseEditModalVisible.value = true;
 };
@@ -670,11 +726,20 @@ const closePhraseEditModal = () => {
   phraseToEdit.value = null;
 };
 
-const savePhraseEdit = async (data: { known_text: string; target_text: string; flag_for_regeneration: boolean }) => {
+// RegenFlags type for per-audio regeneration
+interface RegenFlags {
+  known: boolean;
+  target1: boolean;
+  target2: boolean;
+}
+
+const savePhraseEdit = async (data: { known_text: string; target_text: string; regen_flags: RegenFlags }) => {
   if (!phraseToEdit.value) return;
 
   try {
     const apiBaseUrl = getApiBaseUrl();
+
+    // Save text changes
     const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrase/${phraseToEdit.value.id}`, {
       method: 'PATCH',
       headers: {
@@ -684,11 +749,64 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; f
       body: JSON.stringify({
         known_text: data.known_text,
         target_text: data.target_text,
-        flag_for_regeneration: data.flag_for_regeneration
       })
     });
 
     if (!response.ok) throw new Error('Failed to save phrase');
+
+    // Flag individual audio files for regeneration
+    const flagPromises: Promise<Response>[] = [];
+
+    if (data.regen_flags.known && phraseToEdit.value.known_audio_uuid) {
+      flagPromises.push(
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({
+            uuid: phraseToEdit.value.known_audio_uuid,
+            status: 'flagged_regen_tts',
+            note: 'Text edited - flagged for regeneration',
+            flagged_by: 'dashboard_user'
+          })
+        })
+      );
+    }
+
+    if (data.regen_flags.target1 && phraseToEdit.value.target1_audio_uuid) {
+      flagPromises.push(
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({
+            uuid: phraseToEdit.value.target1_audio_uuid,
+            status: 'flagged_regen_tts',
+            note: 'Text edited - flagged for regeneration',
+            flagged_by: 'dashboard_user'
+          })
+        })
+      );
+    }
+
+    if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) {
+      flagPromises.push(
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          body: JSON.stringify({
+            uuid: phraseToEdit.value.target2_audio_uuid,
+            status: 'flagged_regen_tts',
+            note: 'Text edited - flagged for regeneration',
+            flagged_by: 'dashboard_user'
+          })
+        })
+      );
+    }
+
+    // Wait for all flag updates
+    if (flagPromises.length > 0) {
+      await Promise.all(flagPromises);
+      console.log(`Flagged ${flagPromises.length} audio file(s) for regeneration`);
+    }
 
     // Update local state
     const phraseId = phraseToEdit.value.id;

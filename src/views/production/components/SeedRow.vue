@@ -90,6 +90,7 @@
               :flag-notes="getFlagNotes(phrase)"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
+              @audio-flag="onAudioFlag"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
             />
@@ -114,6 +115,7 @@
               @toggle="onLegoToggle"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
+              @audio-flag="onAudioFlag"
               @phrase-play="onPhrasePlay"
               @phrase-pause="onPhrasePause"
             />
@@ -144,12 +146,16 @@ const props = defineProps<{
   courseCode?: string;
 }>();
 
+// Audio track type (matches PhraseRow)
+type AudioTrack = 'known' | 'target1' | 'target2';
+
 // Emits
 const emit = defineEmits<{
   toggle: [seedId: string];
   legoToggle: [legoId: string];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
+  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
 }>();
@@ -189,6 +195,10 @@ const onPhraseFlag = (phrase: PhraseRowData) => {
 
 const onPhraseEdit = (phrase: PhraseRowData) => {
   emit('phraseEdit', phrase);
+};
+
+const onAudioFlag = (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
+  emit('audioFlag', phrase, track, uuid);
 };
 
 const onPhrasePlay = (sample: AudioSample) => {

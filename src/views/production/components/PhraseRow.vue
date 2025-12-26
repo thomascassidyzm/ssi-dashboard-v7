@@ -81,44 +81,98 @@
       </div>
     </div>
 
-    <!-- Audio Controls (only show if audio data exists) -->
-    <div v-if="phrase.known_audio || phrase.target_audio_1 || phrase.target_audio_2" class="audio-controls space-y-2">
+    <!-- Individual Audio Controls (always show if UUIDs available) -->
+    <div v-if="phrase.known_audio_uuid || phrase.target1_audio_uuid || phrase.target2_audio_uuid" class="audio-controls mt-3 space-y-2">
       <!-- Known Audio (Source Language) -->
-      <div v-if="phrase.known_audio" class="audio-row flex items-center gap-3">
-        <span class="audio-label text-xs text-slate-400 w-20">Known</span>
-        <AudioPlayer
-          :audio-url="phrase.known_audio.url"
-          :waveform-peaks="phrase.known_audio.waveform_peaks"
-          :show-waveform="true"
-          @play="onPlay(phrase.known_audio)"
-          @pause="onPause"
-        />
+      <div v-if="phrase.known_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+        <button
+          @click="playSingleAudio('known')"
+          class="play-single p-1.5 rounded transition-all"
+          :class="currentlyPlayingTrack === 'known' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          title="Play known audio"
+        >
+          <svg v-if="currentlyPlayingTrack === 'known'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+          </svg>
+          <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+        <span class="audio-label text-xs text-slate-400 w-16">Known</span>
+        <span class="audio-text flex-1 text-sm text-slate-300 truncate">{{ phrase.known_text }}</span>
+        <AudioStatusBadge :status="getAudioStatus('known')" />
+        <button
+          @click="flagSingleAudio('known')"
+          class="flag-single p-1.5 rounded transition-all"
+          :class="isAudioFlagged('known') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          title="Flag known audio"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Target Audio 1 (Natural Cadence) -->
-      <div v-if="phrase.target_audio_1" class="audio-row flex items-center gap-3">
-        <span class="audio-label text-xs text-slate-400 w-20">Target</span>
-        <AudioPlayer
-          :audio-url="phrase.target_audio_1.url"
-          :waveform-peaks="phrase.target_audio_1.waveform_peaks"
-          :show-waveform="true"
-          @play="onPlay(phrase.target_audio_1)"
-          @pause="onPause"
-        />
-        <span class="cadence-badge text-xs text-slate-500">natural</span>
+      <!-- Target Audio 1 (Female Voice) -->
+      <div v-if="phrase.target1_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+        <button
+          @click="playSingleAudio('target1')"
+          class="play-single p-1.5 rounded transition-all"
+          :class="currentlyPlayingTrack === 'target1' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          title="Play target audio (female)"
+        >
+          <svg v-if="currentlyPlayingTrack === 'target1'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+          </svg>
+          <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+        <span class="audio-label text-xs text-pink-400 w-16">Target 1</span>
+        <span class="audio-text flex-1 text-sm text-white truncate">{{ phrase.target_text }}</span>
+        <span class="voice-badge text-xs text-pink-400 px-1.5 py-0.5 bg-pink-500 bg-opacity-20 rounded">F</span>
+        <AudioStatusBadge :status="getAudioStatus('target1')" />
+        <button
+          @click="flagSingleAudio('target1')"
+          class="flag-single p-1.5 rounded transition-all"
+          :class="isAudioFlagged('target1') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          title="Flag target1 audio"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Target Audio 2 (Slow Cadence) -->
-      <div v-if="phrase.target_audio_2" class="audio-row flex items-center gap-3">
-        <span class="audio-label text-xs text-slate-400 w-20">Target Slow</span>
-        <AudioPlayer
-          :audio-url="phrase.target_audio_2.url"
-          :waveform-peaks="phrase.target_audio_2.waveform_peaks"
-          :show-waveform="true"
-          @play="onPlay(phrase.target_audio_2)"
-          @pause="onPause"
-        />
-        <span class="cadence-badge text-xs text-slate-500">slow</span>
+      <!-- Target Audio 2 (Male Voice) -->
+      <div v-if="phrase.target2_audio_uuid" class="audio-row flex items-center gap-2 p-2 bg-slate-700 bg-opacity-50 rounded-lg">
+        <button
+          @click="playSingleAudio('target2')"
+          class="play-single p-1.5 rounded transition-all"
+          :class="currentlyPlayingTrack === 'target2' ? 'bg-red-500 text-white' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-white'"
+          title="Play target audio (male)"
+        >
+          <svg v-if="currentlyPlayingTrack === 'target2'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+          </svg>
+          <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+        <span class="audio-label text-xs text-blue-400 w-16">Target 2</span>
+        <span class="audio-text flex-1 text-sm text-white truncate">{{ phrase.target_text }}</span>
+        <span class="voice-badge text-xs text-blue-400 px-1.5 py-0.5 bg-blue-500 bg-opacity-20 rounded">M</span>
+        <AudioStatusBadge :status="getAudioStatus('target2')" />
+        <button
+          @click="flagSingleAudio('target2')"
+          class="flag-single p-1.5 rounded transition-all"
+          :class="isAudioFlagged('target2') ? 'bg-amber-500 text-white' : 'bg-slate-600 text-slate-400 hover:bg-slate-500 hover:text-amber-400'"
+          title="Flag target2 audio"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
+          </svg>
+        </button>
       </div>
     </div>
 
@@ -131,9 +185,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import AudioPlayer from './AudioPlayer.vue';
-import type { PhraseRowData, AudioSample, PhraseType, SampleStatus } from '@/types/production';
+import { ref, computed, defineComponent, h } from 'vue';
+import type { PhraseRowData, AudioSample, SampleStatus } from '@/types/production';
+
+// Audio track type
+type AudioTrack = 'known' | 'target1' | 'target2';
+
+// Simple inline AudioStatusBadge component
+const AudioStatusBadge = defineComponent({
+  props: {
+    status: { type: String as () => SampleStatus | null, default: null }
+  },
+  setup(props) {
+    return () => {
+      if (!props.status) return null;
+
+      const statusColors: Record<string, string> = {
+        approved: 'bg-emerald-500 bg-opacity-20 text-emerald-400',
+        complete: 'bg-emerald-500 bg-opacity-20 text-emerald-400',
+        flagged_regen_tts: 'bg-amber-500 bg-opacity-20 text-amber-400',
+        flagged_human_needed: 'bg-orange-500 bg-opacity-20 text-orange-400',
+        flagged_text_edit: 'bg-yellow-500 bg-opacity-20 text-yellow-400',
+        needs_review: 'bg-blue-500 bg-opacity-20 text-blue-400',
+        rejected: 'bg-red-500 bg-opacity-20 text-red-400',
+        tts_failed: 'bg-red-500 bg-opacity-20 text-red-400',
+        pending: 'bg-slate-500 bg-opacity-20 text-slate-400',
+      };
+
+      const colorClass = statusColors[props.status] || 'bg-slate-500 bg-opacity-20 text-slate-400';
+      const label = props.status.split('_').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+      return h('span', {
+        class: `status-badge text-xs px-1.5 py-0.5 rounded ${colorClass}`
+      }, label);
+    };
+  }
+});
 
 // QA playback timing constants (for easy adjustment)
 const QA_PAUSE_AFTER_KNOWN_MS = 1000;
@@ -151,6 +238,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
+  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   play: [sample: AudioSample];
   pause: [];
 }>();
@@ -159,6 +247,7 @@ const emit = defineEmits<{
 const isPlaying = ref(false);
 const isLoading = ref(false);
 const audioElement = ref<HTMLAudioElement | null>(null);
+const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 
 // API Base URL
 const getApiBaseUrl = (): string => {
@@ -220,6 +309,79 @@ const formatStatus = (status: SampleStatus): string => {
   return status.split('_').map(word =>
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(' ');
+};
+
+// Per-audio status tracking (placeholder - would come from API in real impl)
+const audioStatuses = ref<Record<AudioTrack, SampleStatus | null>>({
+  known: null,
+  target1: null,
+  target2: null,
+});
+
+const audioFlags = ref<Record<AudioTrack, boolean>>({
+  known: false,
+  target1: false,
+  target2: false,
+});
+
+// Get UUID for a track
+const getUuidForTrack = (track: AudioTrack): string | null => {
+  switch (track) {
+    case 'known': return props.phrase.known_audio_uuid || null;
+    case 'target1': return props.phrase.target1_audio_uuid || null;
+    case 'target2': return props.phrase.target2_audio_uuid || null;
+    default: return null;
+  }
+};
+
+// Get status for a specific audio track
+const getAudioStatus = (track: AudioTrack): SampleStatus | null => {
+  return audioStatuses.value[track];
+};
+
+// Check if specific audio is flagged
+const isAudioFlagged = (track: AudioTrack): boolean => {
+  return audioFlags.value[track];
+};
+
+// Flag a single audio track
+const flagSingleAudio = (track: AudioTrack) => {
+  const uuid = getUuidForTrack(track);
+  if (!uuid) return;
+
+  // Toggle local flag state
+  audioFlags.value[track] = !audioFlags.value[track];
+
+  // Emit event for parent to handle API call
+  emit('audioFlag', props.phrase, track, uuid);
+};
+
+// Play a single audio track
+const playSingleAudio = async (track: AudioTrack) => {
+  const uuid = getUuidForTrack(track);
+  if (!uuid) return;
+
+  // If same track is playing, stop it
+  if (currentlyPlayingTrack.value === track) {
+    audioElement.value?.pause();
+    currentlyPlayingTrack.value = null;
+    return;
+  }
+
+  // Stop any currently playing audio
+  if (audioElement.value) {
+    audioElement.value.pause();
+  }
+
+  currentlyPlayingTrack.value = track;
+
+  try {
+    await playAudioAndWait(`${S3_AUDIO_BASE}/${uuid.toUpperCase()}.mp3`);
+  } catch (err) {
+    console.error('Error playing audio:', err);
+  } finally {
+    currentlyPlayingTrack.value = null;
+  }
 };
 
 // S3 audio base URL (same as learning app)

@@ -69,6 +69,7 @@
           :flag-notes="getFlagNotes(phrase)"
           @phrase-flag="onPhraseFlag"
           @phrase-edit="onPhraseEdit"
+          @audio-flag="onAudioFlag"
           @play="onPhrasePlay"
           @pause="onPhrasePause"
         />
@@ -86,6 +87,9 @@ import { computed } from 'vue';
 import PhraseRow from './PhraseRow.vue';
 import type { LegoRowData, PhraseRowData, AudioSample, LegoType } from '@/types/production';
 
+// Audio track type (matches PhraseRow)
+type AudioTrack = 'known' | 'target1' | 'target2';
+
 // Props
 const props = defineProps<{
   lego: LegoRowData;
@@ -97,6 +101,7 @@ const emit = defineEmits<{
   toggle: [legoId: string];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
+  audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
 }>();
@@ -121,6 +126,10 @@ const onPhraseFlag = (phrase: PhraseRowData) => {
 
 const onPhraseEdit = (phrase: PhraseRowData) => {
   emit('phraseEdit', phrase);
+};
+
+const onAudioFlag = (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
+  emit('audioFlag', phrase, track, uuid);
 };
 
 const onPhrasePlay = (sample: AudioSample) => {
