@@ -74,6 +74,10 @@
               <span class="stat-value pending">{{ store.audioCourseStats.missing }}</span>
               <span class="stat-label">PENDING</span>
             </div>
+            <div class="stat" v-if="store.progressStats.flagged > 0">
+              <span class="stat-value flagged">{{ store.progressStats.flagged }}</span>
+              <span class="stat-label">FLAGGED</span>
+            </div>
             <!-- QA stats (fallback when no audio stats) -->
             <template v-else>
               <div class="stat">

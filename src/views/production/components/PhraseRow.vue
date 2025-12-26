@@ -293,19 +293,22 @@ const playTargetAudio = async () => {
     const apiBaseUrl = getApiBaseUrl();
     const courseCode = props.courseCode;
 
-    if (!courseCode) {
-      console.warn('[PhraseRow] No courseCode provided for audio lookup');
-      isLoading.value = false;
-      isPlaying.value = false;
-      return;
-    }
+    // Use pre-loaded UUIDs from script-view if available, otherwise fetch from API
+    let knownUuid = props.phrase.known_audio_uuid || null;
+    let target1Uuid = props.phrase.target1_audio_uuid || null;
+    let target2Uuid = props.phrase.target2_audio_uuid || null;
 
-    // Fetch all audio UUIDs in parallel
-    const [knownUuid, target1Uuid, target2Uuid] = await Promise.all([
-      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.known_text, 'known'),
-      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target1'),
-      fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target2'),
-    ]);
+    // If UUIDs not pre-loaded, fetch them (fallback for backward compatibility)
+    if (!knownUuid && !target1Uuid && !target2Uuid && courseCode) {
+      const [fetchedKnown, fetchedTarget1, fetchedTarget2] = await Promise.all([
+        fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.known_text, 'known'),
+        fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target1'),
+        fetchAudioUuid(apiBaseUrl, courseCode, props.phrase.target_text, 'target2'),
+      ]);
+      knownUuid = fetchedKnown;
+      target1Uuid = fetchedTarget1;
+      target2Uuid = fetchedTarget2;
+    }
 
     isLoading.value = false;
 

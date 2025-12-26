@@ -1618,6 +1618,92 @@ app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => 
 // Returns hierarchical structure: seeds -> legos -> phrases for script editing
 // =============================================================================
 
+/**
+ * Batch lookup audio UUIDs for a set of texts
+ * Returns a map: normalized_text -> { known, target1, target2 }
+ */
+async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTexts) {
+  const audioMap = new Map()  // normalized_text -> { known?, target1?, target2? }
+
+  // Combine and deduplicate all texts
+  const allTextsSet = new Set([...knownTexts, ...targetTexts].filter(t => t))
+  const allTexts = Array.from(allTextsSet)
+
+  if (allTexts.length === 0) return audioMap
+
+  // Normalize texts for lookup
+  const normalizedTexts = allTexts.map(t => t.toLowerCase().trim())
+
+  // Step 1: Get text_ids for all texts
+  const { data: textsData } = await supabase
+    .from('texts')
+    .select('id, content_normalized')
+    .in('content_normalized', normalizedTexts)
+
+  if (!textsData || textsData.length === 0) return audioMap
+
+  const textIdMap = new Map()  // content_normalized -> text_id
+  for (const t of textsData) {
+    textIdMap.set(t.content_normalized, t.id)
+  }
+
+  // Step 2: Get audio_files for these text_ids
+  const textIds = Array.from(textIdMap.values())
+  const { data: audioFiles } = await supabase
+    .from('audio_files')
+    .select('id, text_id, voice_id')
+    .in('text_id', textIds)
+
+  if (!audioFiles || audioFiles.length === 0) return audioMap
+
+  // Step 3: Get course_audio to filter by course and role
+  const audioIds = audioFiles.map(a => a.id)
+  const { data: courseAudio } = await supabase
+    .from('course_audio')
+    .select('audio_id, role')
+    .eq('course_code', courseCode)
+    .in('audio_id', audioIds)
+
+  if (!courseAudio || courseAudio.length === 0) return audioMap
+
+  // Build audio_id -> role mapping
+  const audioRoleMap = new Map()  // audio_id -> role
+  for (const ca of courseAudio) {
+    audioRoleMap.set(ca.audio_id, ca.role)
+  }
+
+  // Build text_id -> text_normalized reverse lookup
+  const textIdToNormalized = new Map()
+  for (const [normalized, id] of textIdMap) {
+    textIdToNormalized.set(id, normalized)
+  }
+
+  // Build final map: normalized_text -> { known?, target1?, target2? }
+  for (const af of audioFiles) {
+    const role = audioRoleMap.get(af.id)
+    if (!role) continue
+
+    const normalizedText = textIdToNormalized.get(af.text_id)
+    if (!normalizedText) continue
+
+    if (!audioMap.has(normalizedText)) {
+      audioMap.set(normalizedText, {})
+    }
+
+    const entry = audioMap.get(normalizedText)
+    // Map role to entry field (known, target1, target2)
+    if (role === 'known' || role === 'source') {
+      entry.known = af.id
+    } else if (role === 'target1') {
+      entry.target1 = af.id
+    } else if (role === 'target2') {
+      entry.target2 = af.id
+    }
+  }
+
+  return audioMap
+}
+
 // Get script view data - all phrases grouped by seed and LEGO
 app.get('/api/production/:courseCode/script-view', async (req, res) => {
   const { courseCode } = req.params
@@ -1662,6 +1748,22 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       throw error
     }
 
+    // Collect all unique texts for audio lookup
+    const knownTexts = []
+    const targetTexts = []
+    for (const seed of (seeds || [])) {
+      for (const lego of (seed.course_legos || [])) {
+        for (const phrase of (lego.course_practice_phrases || [])) {
+          if (phrase.known_text) knownTexts.push(phrase.known_text)
+          if (phrase.target_text) targetTexts.push(phrase.target_text)
+        }
+      }
+    }
+
+    // Batch lookup audio UUIDs
+    const audioMap = await batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTexts)
+    logger.info(`Audio lookup for ${courseCode}: found ${audioMap.size} text->audio mappings`)
+
     // Transform to the expected hierarchical structure
     const transformedSeeds = (seeds || []).map(seed => {
       // Format seed_id as S0001, S0002, etc.
@@ -1690,6 +1792,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                 phraseType = 'debut'
               }
 
+              // Look up audio UUIDs for this phrase
+              const knownNorm = phrase.known_text?.toLowerCase().trim()
+              const targetNorm = phrase.target_text?.toLowerCase().trim()
+              const knownAudio = knownNorm ? audioMap.get(knownNorm) : null
+              const targetAudio = targetNorm ? audioMap.get(targetNorm) : null
+
               return {
                 id: phrase.id,
                 position: phrase.position,
@@ -1697,7 +1805,11 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                 target_text: phrase.target_text,
                 type: phraseType,
                 word_count: phrase.word_count,
-                lego_count: phrase.lego_count
+                lego_count: phrase.lego_count,
+                // Audio UUIDs (null if not found)
+                known_audio_uuid: knownAudio?.known || null,
+                target1_audio_uuid: targetAudio?.target1 || null,
+                target2_audio_uuid: targetAudio?.target2 || null
               }
             })
 

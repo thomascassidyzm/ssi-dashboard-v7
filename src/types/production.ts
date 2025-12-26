@@ -158,10 +158,15 @@ export interface PhraseRowData {
   known_text: string;
   target_text: string;
 
-  // Audio samples
-  known_audio: AudioSample;
+  // Audio samples (legacy - full AudioSample objects)
+  known_audio?: AudioSample;
   target_audio_1?: AudioSample; // natural cadence
   target_audio_2?: AudioSample; // slow cadence
+
+  // Audio UUIDs (from script-view endpoint - for direct S3 playback)
+  known_audio_uuid?: string;
+  target1_audio_uuid?: string;
+  target2_audio_uuid?: string;
 
   // Flag data
   flag_status?: SampleStatus;

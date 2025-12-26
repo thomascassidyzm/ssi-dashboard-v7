@@ -42,14 +42,25 @@ const state = reactive({
   // Recorded segments for review
   recordedSegments: [],
 
+  // Audio recordings (map of phrase id -> { blob, url })
+  audioRecordings: new Map(),
+
   // Review state
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
 
   // Loading state (for API calls)
   isLoading: false,
+  isUploading: false,
+  uploadProgress: 0,
   error: null
 })
+
+// MediaRecorder instance
+let mediaRecorder = null
+let audioStream = null
+let currentRecordingChunks = []
+let currentRecordingPhraseId = null
 
 // Sample phrases - now loaded from API via loadCourse()
 // Legacy mock data kept for reference/fallback:
@@ -129,6 +140,74 @@ export function useAutocueState() {
     state.rejectedSegments.clear()
   }
 
+  // Initialize microphone access
+  async function initializeMicrophone() {
+    try {
+      audioStream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 44100
+        }
+      })
+      console.log('[Autocue] Microphone initialized')
+      return true
+    } catch (err) {
+      console.error('[Autocue] Failed to get microphone access:', err)
+      state.error = 'Microphone access denied. Please allow microphone access.'
+      return false
+    }
+  }
+
+  // Start recording for current phrase
+  function startPhraseRecording() {
+    if (!audioStream) {
+      console.warn('[Autocue] No audio stream available')
+      return false
+    }
+
+    const phrase = state.phrases[state.currentPhraseIndex]
+    if (!phrase) return false
+
+    currentRecordingChunks = []
+    currentRecordingPhraseId = phrase.id
+
+    // Prefer webm for compatibility, fallback to other formats
+    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+      ? 'audio/webm;codecs=opus'
+      : MediaRecorder.isTypeSupported('audio/webm')
+        ? 'audio/webm'
+        : 'audio/mp4'
+
+    mediaRecorder = new MediaRecorder(audioStream, { mimeType })
+
+    mediaRecorder.ondataavailable = (event) => {
+      if (event.data.size > 0) {
+        currentRecordingChunks.push(event.data)
+      }
+    }
+
+    mediaRecorder.onstop = () => {
+      // Create blob from chunks
+      const blob = new Blob(currentRecordingChunks, { type: mimeType })
+      const url = URL.createObjectURL(blob)
+
+      // Store the recording
+      state.audioRecordings.set(currentRecordingPhraseId, { blob, url, mimeType })
+      console.log(`[Autocue] Recorded phrase ${currentRecordingPhraseId}: ${blob.size} bytes`)
+    }
+
+    mediaRecorder.start()
+    return true
+  }
+
+  // Stop recording for current phrase
+  function stopPhraseRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+      mediaRecorder.stop()
+    }
+  }
+
   function startRecording() {
     state.isRecording = true
     state.recordingStartTime = Date.now()
@@ -138,10 +217,16 @@ export function useAutocueState() {
     timerInterval = setInterval(() => {
       state.elapsedSeconds++
     }, 1000)
+
+    // Start recording the first phrase
+    startPhraseRecording()
   }
 
   function stopRecording() {
     state.isRecording = false
+
+    // Stop current phrase recording
+    stopPhraseRecording()
 
     // Stop timer
     if (timerInterval) {
@@ -149,8 +234,8 @@ export function useAutocueState() {
       timerInterval = null
     }
 
-    // Generate mock recorded segments for review
-    generateMockSegments()
+    // Generate segments from actual recordings
+    generateRecordedSegments()
 
     // Move to review phase
     state.currentPhase = 'review'
@@ -171,7 +256,15 @@ export function useAutocueState() {
   function navigatePhrase(direction) {
     const newIndex = state.currentPhraseIndex + direction
     if (newIndex >= 0 && newIndex < totalPhrases.value) {
-      state.currentPhraseIndex = newIndex
+      // If recording, stop current phrase and start new one
+      if (state.isRecording) {
+        stopPhraseRecording()
+        state.currentPhraseIndex = newIndex
+        // Small delay to allow previous recording to save
+        setTimeout(() => startPhraseRecording(), 100)
+      } else {
+        state.currentPhraseIndex = newIndex
+      }
     }
   }
 
@@ -179,10 +272,46 @@ export function useAutocueState() {
     state.scrollSpeed = Math.max(1, Math.min(10, state.scrollSpeed + delta))
   }
 
-  function generateMockSegments() {
-    // Generate mock segments with confidence levels
+  function generateRecordedSegments() {
+    // Generate segments from actual recordings
     state.recordedSegments = state.phrases.map((phrase, index) => {
-      // Simulate varying confidence
+      const recording = state.audioRecordings.get(phrase.id)
+      const hasRecording = !!recording
+
+      // Estimate confidence based on whether we have a recording
+      // In a real implementation, this could use audio analysis
+      let confidence, level
+      if (hasRecording && recording.blob.size > 1000) {
+        confidence = 85 + Math.floor(Math.random() * 15)
+        level = 'high'
+      } else if (hasRecording) {
+        confidence = 70 + Math.floor(Math.random() * 15)
+        level = 'medium'
+      } else {
+        confidence = 0
+        level = 'low'
+      }
+
+      return {
+        id: `seg_${phrase.id}`,
+        phraseId: phrase.id,
+        label: `Phrase #${String(index + 1).padStart(3, '0')}`,
+        text: phrase.text,
+        translation: phrase.translation,
+        duration: hasRecording ? (recording.blob.size / 10000).toFixed(1) : '0.0',
+        confidence,
+        confidenceLevel: level,
+        quality: hasRecording ? (confidence > 85 ? 'Excellent' : 'Good') : 'Not Recorded',
+        issues: hasRecording ? [] : ['No recording'],
+        hasRecording,
+        audioUrl: recording?.url || null
+      }
+    })
+  }
+
+  // Legacy mock function - kept for testing without microphone
+  function generateMockSegments() {
+    state.recordedSegments = state.phrases.map((phrase, index) => {
       const rand = Math.random()
       let confidence, level
       if (rand > 0.7) {
@@ -206,7 +335,9 @@ export function useAutocueState() {
         confidence,
         confidenceLevel: level,
         quality: confidence > 85 ? 'Excellent' : confidence > 70 ? 'Good' : 'Needs Review',
-        issues: confidence < 70 ? ['Slight noise'] : []
+        issues: confidence < 70 ? ['Slight noise'] : [],
+        hasRecording: false,
+        audioUrl: null
       }
     })
   }
@@ -233,13 +364,100 @@ export function useAutocueState() {
     state.currentPhase = 'recording'
   }
 
-  function finalizeSession() {
-    console.log('Finalizing session...')
-    console.log('Approved:', [...state.approvedSegments])
-    console.log('Rejected:', [...state.rejectedSegments])
+  async function finalizeSession() {
+    console.log('[Autocue] Finalizing session...')
+    console.log('[Autocue] Approved:', [...state.approvedSegments])
+    console.log('[Autocue] Rejected:', [...state.rejectedSegments])
+
+    // Upload approved recordings
+    const approvedSegments = state.recordedSegments.filter(seg =>
+      state.approvedSegments.has(seg.id) && seg.hasRecording
+    )
+
+    if (approvedSegments.length === 0) {
+      console.log('[Autocue] No approved recordings to upload')
+      resetSession()
+      return
+    }
+
+    state.isUploading = true
+    state.uploadProgress = 0
+
+    const baseUrl = localStorage.getItem('api_base_url') ||
+                    import.meta.env.VITE_API_BASE_URL ||
+                    'http://localhost:3456'
+
+    let uploaded = 0
+    const total = approvedSegments.length
+
+    for (const segment of approvedSegments) {
+      try {
+        const phrase = state.phrases.find(p => p.id === segment.phraseId)
+        const recording = state.audioRecordings.get(segment.phraseId)
+
+        if (!recording || !phrase) continue
+
+        // Convert blob to base64
+        const base64 = await blobToBase64(recording.blob)
+
+        // Upload to server
+        const response = await fetch(
+          `${baseUrl}/api/production/${state.courseCode}/recording/upload`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'ngrok-skip-browser-warning': 'true'
+            },
+            body: JSON.stringify({
+              uuid: phrase.id,
+              audioData: base64,
+              format: recording.mimeType.includes('webm') ? 'webm' : 'mp4',
+              metadata: {
+                role: phrase.role || state.selectedRole,
+                cadence: phrase.cadence || 'slow',
+                text: phrase.text
+              },
+              provenance: {
+                recorded_by: 'autocue-studio',
+                recorded_at: new Date().toISOString(),
+                session_id: state.recordingStartTime
+              }
+            })
+          }
+        )
+
+        if (response.ok) {
+          console.log(`[Autocue] Uploaded: ${phrase.id}`)
+          uploaded++
+        } else {
+          console.error(`[Autocue] Failed to upload ${phrase.id}:`, await response.text())
+        }
+      } catch (err) {
+        console.error(`[Autocue] Error uploading ${segment.phraseId}:`, err)
+      }
+
+      state.uploadProgress = Math.round((uploaded / total) * 100)
+    }
+
+    console.log(`[Autocue] Upload complete: ${uploaded}/${total}`)
+    state.isUploading = false
 
     // Reset state
     resetSession()
+  }
+
+  // Helper to convert blob to base64
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64 = reader.result.split(',')[1]
+        resolve(base64)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
   }
 
   function resetSession() {
@@ -254,12 +472,21 @@ export function useAutocueState() {
     state.elapsedSeconds = 0
     state.phrases = []
     state.recordedSegments = []
+    state.audioRecordings.clear()
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
+    state.isUploading = false
+    state.uploadProgress = 0
 
     if (timerInterval) {
       clearInterval(timerInterval)
       timerInterval = null
+    }
+
+    // Clean up audio stream
+    if (audioStream) {
+      audioStream.getTracks().forEach(track => track.stop())
+      audioStream = null
     }
   }
 
@@ -358,6 +585,7 @@ export function useAutocueState() {
     selectMode,
     selectRole,
     beginSession,
+    initializeMicrophone,
     startRecording,
     stopRecording,
     toggleRecording,

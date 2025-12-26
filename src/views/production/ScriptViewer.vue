@@ -433,8 +433,10 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
           type: 'PRAC' as any, // All practice phrases for QA
           known_text: phrase.known_text,
           target_text: phrase.target_text,
-          known_audio: null,
-          target_audio_1: null,
+          // Audio UUIDs from script-view (for direct S3 playback)
+          known_audio_uuid: phrase.known_audio_uuid || null,
+          target1_audio_uuid: phrase.target1_audio_uuid || null,
+          target2_audio_uuid: phrase.target2_audio_uuid || null,
           is_flagged: false,
           seed_id: seed.seed_id,
           cycle_index: phrase.position,
@@ -634,9 +636,16 @@ const onPlaybackError = (error: Error) => {
 
 const openFlagModal = (phrase: PhraseRowData) => {
   selectedPhrase.value = phrase;
-  // TODO: Get the actual audio sample to flag
-  // For now, use the target audio
-  selectedSample.value = phrase.target_audio_1 || phrase.known_audio;
+  // Create a synthetic AudioSample from the phrase's audio UUID
+  // Use target1 audio as the primary sample to flag
+  const uuid = phrase.target1_audio_uuid || phrase.known_audio_uuid || phrase.phrase_id;
+  selectedSample.value = {
+    uuid,
+    text: phrase.target_text,
+    role: 'target1' as any,
+    cadence: 'natural' as any,
+    voice_id: '',
+  };
   flagModalVisible.value = true;
 };
 
@@ -705,15 +714,18 @@ const submitFlag = async (data: { flagType: FlagType; notes: string }) => {
   if (!selectedSample.value || !selectedPhrase.value) return;
 
   try {
-    // TODO: Implement API call to submit flag
-    const response = await fetch(`/api/production/${courseCode.value}/flags/update`, {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
       body: JSON.stringify({
         uuid: selectedSample.value.uuid,
         status: `flagged_${data.flagType}`,
         note: data.notes,
-        flagged_by: 'current_user@example.com', // TODO: Get from auth
+        flagged_by: 'reviewer',
       })
     });
 
@@ -726,10 +738,9 @@ const submitFlag = async (data: { flagType: FlagType; notes: string }) => {
     // Close modal
     closeFlagModal();
 
-    // TODO: Show success toast
+    console.log(`[ScriptViewer] Flag submitted: ${selectedSample.value.uuid} -> flagged_${data.flagType}`);
   } catch (err) {
     console.error('Error submitting flag:', err);
-    // TODO: Show error toast
   }
 };
 
