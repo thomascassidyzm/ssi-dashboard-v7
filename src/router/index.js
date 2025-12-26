@@ -41,6 +41,7 @@ const MissionControl = () => import('../views/production/MissionControl.vue')
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
 const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
+const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
 // Production Suite v1 Components (Legacy fallback at /v1/...)
 // MissionControlV1 removed - deprecated
@@ -347,6 +348,13 @@ const routes = [
     component: RecordingStudioV2,
     props: true,
     meta: { title: 'Recording Studio - Production Suite' }
+  },
+  {
+    path: '/production/:courseCode/feedback',
+    name: 'UserFeedback',
+    component: UserFeedback,
+    props: true,
+    meta: { title: 'User Feedback - Production Suite' }
   },
 
   // Catch-all route

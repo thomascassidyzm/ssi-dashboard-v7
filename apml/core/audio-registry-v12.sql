@@ -97,3 +97,35 @@ CREATE TABLE IF NOT EXISTS course_audio (
 );
 CREATE INDEX IF NOT EXISTS idx_course_audio_course ON course_audio (course_code);
 COMMENT ON TABLE course_audio IS 'Which courses use which audio files';
+
+-- ----------------------------------------------------------------------------
+-- Table: content_feedback
+-- User-submitted feedback on audio/content quality
+-- Aggregated by threshold to surface issues needing attention
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS content_feedback (
+  id UUID DEFAULT gen_random_uuid(),
+  audio_id UUID,                          -- References audio_files(id), nullable for general feedback
+  course_code TEXT NOT NULL,
+  feedback_type TEXT NOT NULL,            -- 'translation', 'audio_quality', 'pronunciation', 'too_fast', 'confusing', 'other'
+  user_id TEXT,                           -- User identifier (anonymous or authenticated)
+  comment TEXT,                           -- Optional free-text description
+  session_context JSONB,                  -- { seed_id, cycle_index, lego_id, device, app_version, etc }
+  resolved_at TIMESTAMPTZ,                -- When the issue was addressed
+  resolved_by TEXT,                       -- Who resolved it
+  resolution_note TEXT,                   -- How it was resolved
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  PRIMARY KEY (id),
+  FOREIGN KEY (audio_id) REFERENCES audio_files(id) ON DELETE SET NULL
+);
+
+-- Indexes for efficient aggregation queries
+CREATE INDEX IF NOT EXISTS idx_feedback_audio ON content_feedback (audio_id, feedback_type) WHERE resolved_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_feedback_course ON content_feedback (course_code) WHERE resolved_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_feedback_type ON content_feedback (feedback_type) WHERE resolved_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_feedback_created ON content_feedback (created_at DESC);
+
+COMMENT ON TABLE content_feedback IS 'User-submitted feedback on audio/content - aggregated by threshold to surface issues';
+COMMENT ON COLUMN content_feedback.feedback_type IS 'translation, audio_quality, pronunciation, too_fast, confusing, other';
+COMMENT ON COLUMN content_feedback.session_context IS 'JSON context: seed_id, cycle_index, lego_id, device, app_version';

@@ -373,6 +373,270 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
   }
 })
 
+// ============================================================================
+// USER FEEDBACK ENDPOINTS
+// Crowdsourced QA - users flag issues, aggregated by threshold
+// ============================================================================
+
+// Submit user feedback on audio/content
+app.post('/api/production/:courseCode/feedback', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { audioId, feedbackType, userId, comment, sessionContext } = req.body
+
+    // Validate required fields
+    if (!feedbackType) {
+      return res.status(400).json({ error: 'feedbackType required' })
+    }
+
+    const validTypes = ['translation', 'audio_quality', 'pronunciation', 'too_fast', 'confusing', 'other']
+    if (!validTypes.includes(feedbackType)) {
+      return res.status(400).json({
+        error: `Invalid feedbackType. Must be one of: ${validTypes.join(', ')}`
+      })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Insert feedback
+    const { data, error } = await supabase
+      .from('content_feedback')
+      .insert({
+        audio_id: audioId || null,
+        course_code: courseCode,
+        feedback_type: feedbackType,
+        user_id: userId || 'anonymous',
+        comment: comment || null,
+        session_context: sessionContext || null
+      })
+      .select()
+      .single()
+
+    if (error) throw error
+
+    logger.info(`Feedback submitted: ${feedbackType} for ${courseCode}${audioId ? ` (audio: ${audioId})` : ''}`)
+
+    // Broadcast feedback event
+    io.to(`course:${courseCode}`).emit('feedback_submitted', {
+      courseCode,
+      feedbackType,
+      audioId
+    })
+
+    res.json({ success: true, feedback: data })
+  } catch (error) {
+    logger.error('Error submitting feedback:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Get aggregated feedback above threshold
+app.get('/api/production/:courseCode/feedback/aggregated', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const threshold = parseInt(req.query.threshold) || 3  // Default: 3 flags to surface
+    const feedbackType = req.query.type || null           // Optional filter by type
+    const limit = parseInt(req.query.limit) || 50
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Query aggregated feedback
+    // Note: Using raw SQL via RPC would be more efficient, but this works for now
+    let query = supabase
+      .from('content_feedback')
+      .select('audio_id, feedback_type, comment, created_at, session_context')
+      .eq('course_code', courseCode)
+      .is('resolved_at', null)
+      .order('created_at', { ascending: false })
+
+    if (feedbackType) {
+      query = query.eq('feedback_type', feedbackType)
+    }
+
+    const { data: allFeedback, error } = await query
+
+    if (error) throw error
+
+    // Aggregate in JS (could be optimized with a DB view/function)
+    const aggregated = {}
+    for (const fb of allFeedback || []) {
+      const key = `${fb.audio_id || 'general'}:${fb.feedback_type}`
+      if (!aggregated[key]) {
+        aggregated[key] = {
+          audio_id: fb.audio_id,
+          feedback_type: fb.feedback_type,
+          flag_count: 0,
+          comments: [],
+          first_flagged: fb.created_at,
+          last_flagged: fb.created_at,
+          session_contexts: []
+        }
+      }
+      aggregated[key].flag_count++
+      aggregated[key].last_flagged = fb.created_at
+      if (fb.comment) {
+        aggregated[key].comments.push(fb.comment)
+      }
+      if (fb.session_context) {
+        aggregated[key].session_contexts.push(fb.session_context)
+      }
+    }
+
+    // Filter by threshold and sort by flag count
+    const issues = Object.values(aggregated)
+      .filter(item => item.flag_count >= threshold)
+      .sort((a, b) => b.flag_count - a.flag_count)
+      .slice(0, limit)
+
+    // Get text info for audio IDs
+    const audioIds = issues.map(i => i.audio_id).filter(Boolean)
+    let audioInfo = {}
+
+    if (audioIds.length > 0) {
+      const { data: audioData } = await supabase
+        .from('audio_files')
+        .select('id, text_id, voice_id, texts(content, language)')
+        .in('id', audioIds)
+
+      if (audioData) {
+        for (const audio of audioData) {
+          audioInfo[audio.id] = {
+            text: audio.texts?.content,
+            language: audio.texts?.language,
+            voice_id: audio.voice_id
+          }
+        }
+      }
+    }
+
+    // Enrich issues with text info
+    const enrichedIssues = issues.map(issue => ({
+      ...issue,
+      text: audioInfo[issue.audio_id]?.text || null,
+      language: audioInfo[issue.audio_id]?.language || null,
+      voice_id: audioInfo[issue.audio_id]?.voice_id || null
+    }))
+
+    res.json({
+      success: true,
+      threshold,
+      total_issues: enrichedIssues.length,
+      issues: enrichedIssues
+    })
+  } catch (error) {
+    logger.error('Error getting aggregated feedback:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Resolve feedback (mark as addressed)
+app.post('/api/production/:courseCode/feedback/resolve', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { audioId, feedbackType, resolvedBy, resolutionNote } = req.body
+
+    if (!resolvedBy) {
+      return res.status(400).json({ error: 'resolvedBy required' })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Build update query
+    let query = supabase
+      .from('content_feedback')
+      .update({
+        resolved_at: new Date().toISOString(),
+        resolved_by: resolvedBy,
+        resolution_note: resolutionNote || null
+      })
+      .eq('course_code', courseCode)
+      .is('resolved_at', null)
+
+    if (audioId) {
+      query = query.eq('audio_id', audioId)
+    }
+    if (feedbackType) {
+      query = query.eq('feedback_type', feedbackType)
+    }
+
+    const { data, error, count } = await query.select()
+
+    if (error) throw error
+
+    logger.info(`Resolved ${data?.length || 0} feedback items for ${courseCode}`)
+
+    // Broadcast resolution
+    io.to(`course:${courseCode}`).emit('feedback_resolved', {
+      courseCode,
+      audioId,
+      feedbackType,
+      resolvedCount: data?.length || 0
+    })
+
+    res.json({
+      success: true,
+      resolved: data?.length || 0
+    })
+  } catch (error) {
+    logger.error('Error resolving feedback:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Get feedback stats for course
+app.get('/api/production/:courseCode/feedback/stats', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Get counts by type
+    const { data: allFeedback, error } = await supabase
+      .from('content_feedback')
+      .select('feedback_type, resolved_at')
+      .eq('course_code', courseCode)
+
+    if (error) throw error
+
+    const stats = {
+      total: allFeedback?.length || 0,
+      unresolved: 0,
+      resolved: 0,
+      by_type: {}
+    }
+
+    for (const fb of allFeedback || []) {
+      if (fb.resolved_at) {
+        stats.resolved++
+      } else {
+        stats.unresolved++
+      }
+      stats.by_type[fb.feedback_type] = (stats.by_type[fb.feedback_type] || 0) + 1
+    }
+
+    res.json({ success: true, stats })
+  } catch (error) {
+    logger.error('Error getting feedback stats:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Get audio metadata
 app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
   try {

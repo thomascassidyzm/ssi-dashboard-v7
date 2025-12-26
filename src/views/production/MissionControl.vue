@@ -260,6 +260,14 @@ const quickActions = computed(() => {
       label: 'Compile Manifest',
       description: 'Generate final course manifest',
       disabled: store.progressStats.percentComplete < 100
+    },
+    {
+      id: 'user_feedback',
+      icon: '💬',
+      label: 'User Feedback',
+      description: 'View and resolve user-reported issues',
+      badge: null,  // Could show unresolved count from API
+      disabled: false
     }
   ]
 
@@ -341,6 +349,12 @@ function handleQuickAction(actionId: string) {
     case 'compile_manifest':
       router.push({
         name: 'CourseCompilation',
+        params: { courseCode: selectedCourse.value }
+      })
+      break
+    case 'user_feedback':
+      router.push({
+        name: 'UserFeedback',
         params: { courseCode: selectedCourse.value }
       })
       break
