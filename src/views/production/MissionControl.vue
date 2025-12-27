@@ -268,6 +268,14 @@ const quickActions = computed(() => {
       description: 'View and resolve user-reported issues',
       badge: null,  // Could show unresolved count from API
       disabled: false
+    },
+    {
+      id: 'launch_learning_app',
+      icon: '🚀',
+      label: 'Launch Learning App',
+      description: 'Open course in learning app with QA access',
+      badge: null,
+      disabled: false
     }
   ]
 
@@ -358,7 +366,29 @@ function handleQuickAction(actionId: string) {
         params: { courseCode: selectedCourse.value }
       })
       break
+    case 'launch_learning_app':
+      launchLearningApp()
+      break
   }
+}
+
+// Launch learning app with QA access token
+function launchLearningApp() {
+  if (!selectedCourse.value) return
+
+  // Generate a short-lived QA access token (base64 encoded metadata)
+  const qaToken = btoa(JSON.stringify({
+    course: selectedCourse.value,
+    role: 'qa_reviewer',
+    issued: Date.now(),
+    expires: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+  }))
+
+  // Open learning app with course and QA mode enabled
+  const learningAppUrl = 'https://saysomethingin.app'
+  const url = `${learningAppUrl}?course=${selectedCourse.value}&qa_mode=true&token=${qaToken}`
+
+  window.open(url, '_blank', 'noopener,noreferrer')
 }
 
 function getBlockerCountForStage(stageId: string): number {
