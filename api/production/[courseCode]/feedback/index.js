@@ -4,24 +4,7 @@
  * GET - Get aggregated feedback
  */
 
-import { createClient } from '@supabase/supabase-js';
-import { isSupabaseConfigured } from '../../../lib/supabase.js';
-
-// Supabase client - uses same env var pattern as api/lib/supabase.js
-let supabase = null;
-function getSupabase() {
-  if (!supabase) {
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
-
-    if (url && key) {
-      supabase = createClient(url, key, {
-        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-      });
-    }
-  }
-  return supabase;
-}
+import { isSupabaseConfigured, getSupabase } from '../../../lib/supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

@@ -272,8 +272,12 @@ export async function getCourseStats(courseCode) {
   };
 }
 
+// Export the getSupabase function for use by other API routes
+export { getSupabase };
+
 export default {
   isSupabaseConfigured,
+  getSupabase,
   generateAudioUUID,
   normalizeText,
   getCourseAudioSamples,
