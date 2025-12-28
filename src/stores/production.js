@@ -283,25 +283,43 @@ export const useProductionStore = defineStore('production', () => {
       const baseUrl = getApiBaseUrl()
       const headers = getApiHeaders()
 
+      // Fetch course data - all requests are optional, we'll use what we get
       const [manifestRes, flagsRes, metadataRes] = await Promise.all([
-        fetch(`${baseUrl}/api/production/${courseCode}/manifest`, { headers }),
-        fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }),
-        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers })
+        fetch(`${baseUrl}/api/production/${courseCode}/manifest`, { headers }).catch(() => null),
+        fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }).catch(() => null),
+        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null)
       ])
 
-      // Check if Production API is available (404 means endpoint exists but no data, network error means API not running)
-      if (manifestRes.status === 404 && flagsRes.status === 404) {
-        // Production API endpoints exist but course has no production data yet
-        error.value = 'Production API not available. Make sure the production-api service is running on port 3470.'
-        return
+      // Parse responses, using defaults for failures
+      let manifestData = null
+      if (manifestRes?.ok) {
+        manifestData = await manifestRes.json()
+      } else if (manifestRes) {
+        // Try to get error message
+        try {
+          const errData = await manifestRes.json()
+          console.warn('[Production] Manifest warning:', errData.error || errData.message)
+        } catch (e) {
+          console.warn('[Production] Manifest returned:', manifestRes.status)
+        }
       }
 
-      if (!manifestRes.ok) throw new Error('Failed to load manifest')
+      // Even without manifest, we can show basic info from the course list
+      // Create a minimal stub if no manifest
+      if (!manifestData) {
+        manifestData = {
+          _stub: true,
+          _source: 'none',
+          courseCode,
+          title: courseCode.replace(/_/g, ' '),
+          stats: { seeds: 0, legos: 0, phrases: 0 },
+          slices: [{ seeds: [], samples: {} }]
+        }
+      }
 
-      const manifestData = await manifestRes.json()
       courseManifest.value = manifestData
-      sampleFlags.value = flagsRes.ok ? await flagsRes.json() : { samples: {} }
-      audioMetadata.value = metadataRes.ok ? await metadataRes.json() : { audio: {} }
+      sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} }
+      audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
       // If stub manifest (pre-audio state), auto-load pipeline plan
       if (manifestData._stub) {

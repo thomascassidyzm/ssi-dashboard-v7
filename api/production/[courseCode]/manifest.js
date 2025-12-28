@@ -10,12 +10,18 @@ import { isSupabaseConfigured } from '../../lib/supabase.js';
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase client for manifest generation
+// Uses same env var pattern as api/lib/supabase.js
 let supabase = null;
 function getSupabase() {
-  if (!supabase && process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_KEY) {
-    supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-    });
+  if (!supabase) {
+    const url = process.env.SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+
+    if (url && key) {
+      supabase = createClient(url, key, {
+        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+      });
+    }
   }
   return supabase;
 }
