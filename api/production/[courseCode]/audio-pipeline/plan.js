@@ -29,18 +29,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Get course voice assignments
-    const { data: course, error: courseError } = await db
-      .from('courses')
-      .select('known_voice, target1_voice, target2_voice')
-      .eq('course_code', courseCode)
-      .single();
-
-    if (courseError) {
-      console.error(`[audio-pipeline/plan] Course lookup error:`, courseError);
-      return res.status(404).json({ error: 'Course not found' });
-    }
-
     // Count unique texts needed for audio (from practice phrases)
     const { data: phrases, error: phrasesError } = await db
       .from('course_practice_phrases')
@@ -51,42 +39,53 @@ export default async function handler(req, res) {
     if (phrasesError) throw phrasesError;
 
     // Collect unique texts (known + target, normalized)
-    const uniqueTexts = new Set();
+    const uniqueKnownTexts = new Set();
+    const uniqueTargetTexts = new Set();
     for (const phrase of (phrases || [])) {
-      if (phrase.known_text) uniqueTexts.add(phrase.known_text.toLowerCase().trim());
-      if (phrase.target_text) uniqueTexts.add(phrase.target_text.toLowerCase().trim());
+      if (phrase.known_text) uniqueKnownTexts.add(phrase.known_text.toLowerCase().trim());
+      if (phrase.target_text) uniqueTargetTexts.add(phrase.target_text.toLowerCase().trim());
     }
 
-    // Each unique text needs multiple audio files (known voice + target voices)
-    // For now, estimate 3 audio files per phrase (known + target1 + target2)
-    const uniquePhraseCount = phrases?.length || 0;
-    const totalAudioNeeded = uniquePhraseCount * 3; // known + target1 + target2 for each phrase
+    // Each unique text needs audio files:
+    // - Known texts need 1 audio (source role)
+    // - Target texts need 2 audio (target1 + target2 roles)
+    const totalAudioNeeded = uniqueKnownTexts.size + (uniqueTargetTexts.size * 2);
 
-    // Count existing audio files for this course's voices
-    const voiceIds = [course.known_voice, course.target1_voice, course.target2_voice].filter(Boolean);
+    // Count existing audio in audio_samples table (legacy table the learning app uses)
+    // This joins on text_normalized + role
+    let existingSource = 0;
+    let existingTarget1 = 0;
+    let existingTarget2 = 0;
 
-    let existingCount = 0;
-    if (voiceIds.length > 0 && uniqueTexts.size > 0) {
-      // Get text IDs for our unique texts
-      const { data: texts } = await db
-        .from('texts')
-        .select('id')
-        .in('content_normalized', Array.from(uniqueTexts).slice(0, 1000)); // Limit for performance
-
-      if (texts && texts.length > 0) {
-        const textIds = texts.map(t => t.id);
-
-        // Count audio files that exist for these texts + voices
-        const { count } = await db
-          .from('audio_files')
-          .select('*', { count: 'exact', head: true })
-          .in('text_id', textIds)
-          .in('voice_id', voiceIds);
-
-        existingCount = count || 0;
-      }
+    if (uniqueKnownTexts.size > 0) {
+      const knownTextsArray = Array.from(uniqueKnownTexts).slice(0, 1000);
+      const { count } = await db
+        .from('audio_samples')
+        .select('*', { count: 'exact', head: true })
+        .in('text_normalized', knownTextsArray)
+        .eq('role', 'source');
+      existingSource = count || 0;
     }
 
+    if (uniqueTargetTexts.size > 0) {
+      const targetTextsArray = Array.from(uniqueTargetTexts).slice(0, 1000);
+
+      const { count: t1Count } = await db
+        .from('audio_samples')
+        .select('*', { count: 'exact', head: true })
+        .in('text_normalized', targetTextsArray)
+        .eq('role', 'target1');
+      existingTarget1 = t1Count || 0;
+
+      const { count: t2Count } = await db
+        .from('audio_samples')
+        .select('*', { count: 'exact', head: true })
+        .in('text_normalized', targetTextsArray)
+        .eq('role', 'target2');
+      existingTarget2 = t2Count || 0;
+    }
+
+    const existingCount = existingSource + existingTarget1 + existingTarget2;
     const missing = Math.max(0, totalAudioNeeded - existingCount);
     const percentComplete = totalAudioNeeded > 0
       ? Math.round((existingCount / totalAudioNeeded) * 100)
@@ -97,15 +96,17 @@ export default async function handler(req, res) {
       total: totalAudioNeeded,
       existing: existingCount,
       missing: missing,
-      phraseNeeds: uniquePhraseCount,
+      phraseNeeds: phrases?.length || 0,
+      uniqueKnownTexts: uniqueKnownTexts.size,
+      uniqueTargetTexts: uniqueTargetTexts.size,
       percentComplete,
-      voices: {
-        known: course.known_voice,
-        target1: course.target1_voice,
-        target2: course.target2_voice
+      breakdown: {
+        source: { needed: uniqueKnownTexts.size, existing: existingSource },
+        target1: { needed: uniqueTargetTexts.size, existing: existingTarget1 },
+        target2: { needed: uniqueTargetTexts.size, existing: existingTarget2 }
       },
-      estimatedCost: `$${(missing * 0.002).toFixed(2)}`, // Rough estimate: $0.002 per audio
-      estimatedTime: `${Math.ceil(missing / 60)} min` // Rough estimate: 60 per minute
+      estimatedCost: `$${(missing * 0.002).toFixed(2)}`,
+      estimatedTime: `${Math.ceil(missing / 60)} min`
     });
 
   } catch (err) {
