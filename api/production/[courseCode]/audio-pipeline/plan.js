@@ -29,82 +29,59 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Count unique texts needed for audio (from practice phrases)
-    const { data: phrases, error: phrasesError } = await db
-      .from('course_practice_phrases')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
-      .eq('status', 'released');
+    // Use lego_cycles view directly - same as learning app
+    // This view already JOINs with audio_samples and has audio UUIDs populated
+    const { data: legoCycles, error: legoError } = await db
+      .from('lego_cycles')
+      .select('lego_id, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .eq('course_code', courseCode);
 
-    if (phrasesError) throw phrasesError;
-
-    // Collect unique texts (known + target, normalized)
-    const uniqueKnownTexts = new Set();
-    const uniqueTargetTexts = new Set();
-    for (const phrase of (phrases || [])) {
-      if (phrase.known_text) uniqueKnownTexts.add(phrase.known_text.toLowerCase().trim());
-      if (phrase.target_text) uniqueTargetTexts.add(phrase.target_text.toLowerCase().trim());
+    if (legoError) {
+      console.error(`[audio-pipeline/plan] lego_cycles query error:`, legoError);
+      throw legoError;
     }
 
-    // Each unique text needs audio files:
-    // - Known texts need 1 audio (source role)
-    // - Target texts need 2 audio (target1 + target2 roles)
-    const totalAudioNeeded = uniqueKnownTexts.size + (uniqueTargetTexts.size * 2);
+    // Count how many LEGOs have each type of audio
+    let withKnownAudio = 0;
+    let withTarget1Audio = 0;
+    let withTarget2Audio = 0;
+    const totalLegos = legoCycles?.length || 0;
 
-    // Count existing audio in audio_samples table (legacy table the learning app uses)
-    // This joins on text_normalized + role
-    let existingSource = 0;
-    let existingTarget1 = 0;
-    let existingTarget2 = 0;
-
-    if (uniqueKnownTexts.size > 0) {
-      const knownTextsArray = Array.from(uniqueKnownTexts).slice(0, 1000);
-      const { count } = await db
-        .from('audio_samples')
-        .select('*', { count: 'exact', head: true })
-        .in('text_normalized', knownTextsArray)
-        .eq('role', 'source');
-      existingSource = count || 0;
+    for (const lego of (legoCycles || [])) {
+      if (lego.known_audio_uuid) withKnownAudio++;
+      if (lego.target1_audio_uuid) withTarget1Audio++;
+      if (lego.target2_audio_uuid) withTarget2Audio++;
     }
 
-    if (uniqueTargetTexts.size > 0) {
-      const targetTextsArray = Array.from(uniqueTargetTexts).slice(0, 1000);
-
-      const { count: t1Count } = await db
-        .from('audio_samples')
-        .select('*', { count: 'exact', head: true })
-        .in('text_normalized', targetTextsArray)
-        .eq('role', 'target1');
-      existingTarget1 = t1Count || 0;
-
-      const { count: t2Count } = await db
-        .from('audio_samples')
-        .select('*', { count: 'exact', head: true })
-        .in('text_normalized', targetTextsArray)
-        .eq('role', 'target2');
-      existingTarget2 = t2Count || 0;
-    }
-
-    const existingCount = existingSource + existingTarget1 + existingTarget2;
+    // Total audio needed = 3 per LEGO (known + target1 + target2)
+    const totalAudioNeeded = totalLegos * 3;
+    const existingCount = withKnownAudio + withTarget1Audio + withTarget2Audio;
     const missing = Math.max(0, totalAudioNeeded - existingCount);
     const percentComplete = totalAudioNeeded > 0
       ? Math.round((existingCount / totalAudioNeeded) * 100)
       : 0;
+
+    // Debug: sample first few LEGOs to show audio status
+    const sampleLegos = (legoCycles || []).slice(0, 3).map(l => ({
+      lego_id: l.lego_id,
+      hasKnown: !!l.known_audio_uuid,
+      hasTarget1: !!l.target1_audio_uuid,
+      hasTarget2: !!l.target2_audio_uuid
+    }));
 
     return res.json({
       courseCode,
       total: totalAudioNeeded,
       existing: existingCount,
       missing: missing,
-      phraseNeeds: phrases?.length || 0,
-      uniqueKnownTexts: uniqueKnownTexts.size,
-      uniqueTargetTexts: uniqueTargetTexts.size,
+      totalLegos,
       percentComplete,
       breakdown: {
-        source: { needed: uniqueKnownTexts.size, existing: existingSource },
-        target1: { needed: uniqueTargetTexts.size, existing: existingTarget1 },
-        target2: { needed: uniqueTargetTexts.size, existing: existingTarget2 }
+        known: { needed: totalLegos, existing: withKnownAudio },
+        target1: { needed: totalLegos, existing: withTarget1Audio },
+        target2: { needed: totalLegos, existing: withTarget2Audio }
       },
+      sampleLegos,
       estimatedCost: `$${(missing * 0.002).toFixed(2)}`,
       estimatedTime: `${Math.ceil(missing / 60)} min`
     });
