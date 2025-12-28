@@ -29,59 +29,113 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Use lego_cycles view directly - same as learning app
-    // This view already JOINs with audio_samples and has audio UUIDs populated
-    const { data: legoCycles, error: legoError } = await db
-      .from('lego_cycles')
-      .select('lego_id, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
-      .eq('course_code', courseCode);
+    // Get course config for voice assignments and languages
+    const { data: course, error: courseError } = await db
+      .from('courses')
+      .select('known_lang, target_lang, known_voice, target1_voice, target2_voice')
+      .eq('course_code', courseCode)
+      .single();
 
-    if (legoError) {
-      console.error(`[audio-pipeline/plan] lego_cycles query error:`, legoError);
-      throw legoError;
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Count how many LEGOs have each type of audio
-    let withKnownAudio = 0;
-    let withTarget1Audio = 0;
-    let withTarget2Audio = 0;
-    const totalLegos = legoCycles?.length || 0;
+    // Get unique texts from practice phrases
+    const { data: phrases, error: phrasesError } = await db
+      .from('course_practice_phrases')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('status', 'released');
 
-    for (const lego of (legoCycles || [])) {
-      if (lego.known_audio_uuid) withKnownAudio++;
-      if (lego.target1_audio_uuid) withTarget1Audio++;
-      if (lego.target2_audio_uuid) withTarget2Audio++;
+    if (phrasesError) throw phrasesError;
+
+    // Collect unique normalized texts
+    const knownTexts = new Set();
+    const targetTexts = new Set();
+    for (const p of (phrases || [])) {
+      if (p.known_text) knownTexts.add(p.known_text.toLowerCase().trim());
+      if (p.target_text) targetTexts.add(p.target_text.toLowerCase().trim());
     }
 
-    // Total audio needed = 3 per LEGO (known + target1 + target2)
-    const totalAudioNeeded = totalLegos * 3;
-    const existingCount = withKnownAudio + withTarget1Audio + withTarget2Audio;
+    // Total needed: known texts need 1 audio, target texts need 2 (target1 + target2)
+    const totalAudioNeeded = knownTexts.size + (targetTexts.size * 2);
+
+    // Query audio_files via texts table (v12 schema)
+    // Known audio: texts(content_normalized, lang=known_lang) → audio_files(text_id, voice_id=known_voice, cadence=natural)
+    let existingKnown = 0;
+    let existingTarget1 = 0;
+    let existingTarget2 = 0;
+
+    if (knownTexts.size > 0 && course.known_voice) {
+      const knownArray = Array.from(knownTexts).slice(0, 500);
+      const { count } = await db
+        .from('audio_files')
+        .select('id', { count: 'exact', head: true })
+        .eq('voice_id', course.known_voice)
+        .eq('cadence', 'natural')
+        .in('text_id', db
+          .from('texts')
+          .select('id')
+          .eq('language', course.known_lang)
+          .in('content_normalized', knownArray)
+        );
+      existingKnown = count || 0;
+    }
+
+    if (targetTexts.size > 0) {
+      const targetArray = Array.from(targetTexts).slice(0, 500);
+
+      if (course.target1_voice) {
+        const { count: t1 } = await db
+          .from('audio_files')
+          .select('id', { count: 'exact', head: true })
+          .eq('voice_id', course.target1_voice)
+          .eq('cadence', 'slow')
+          .in('text_id', db
+            .from('texts')
+            .select('id')
+            .eq('language', course.target_lang)
+            .in('content_normalized', targetArray)
+          );
+        existingTarget1 = t1 || 0;
+      }
+
+      if (course.target2_voice) {
+        const { count: t2 } = await db
+          .from('audio_files')
+          .select('id', { count: 'exact', head: true })
+          .eq('voice_id', course.target2_voice)
+          .eq('cadence', 'slow')
+          .in('text_id', db
+            .from('texts')
+            .select('id')
+            .eq('language', course.target_lang)
+            .in('content_normalized', targetArray)
+          );
+        existingTarget2 = t2 || 0;
+      }
+    }
+
+    const existingCount = existingKnown + existingTarget1 + existingTarget2;
     const missing = Math.max(0, totalAudioNeeded - existingCount);
     const percentComplete = totalAudioNeeded > 0
       ? Math.round((existingCount / totalAudioNeeded) * 100)
       : 0;
 
-    // Debug: sample first few LEGOs to show audio status
-    const sampleLegos = (legoCycles || []).slice(0, 3).map(l => ({
-      lego_id: l.lego_id,
-      hasKnown: !!l.known_audio_uuid,
-      hasTarget1: !!l.target1_audio_uuid,
-      hasTarget2: !!l.target2_audio_uuid
-    }));
-
     return res.json({
       courseCode,
       total: totalAudioNeeded,
       existing: existingCount,
-      missing: missing,
-      totalLegos,
+      missing,
       percentComplete,
+      uniqueKnownTexts: knownTexts.size,
+      uniqueTargetTexts: targetTexts.size,
       breakdown: {
-        known: { needed: totalLegos, existing: withKnownAudio },
-        target1: { needed: totalLegos, existing: withTarget1Audio },
-        target2: { needed: totalLegos, existing: withTarget2Audio }
+        known: { needed: knownTexts.size, existing: existingKnown, voice: course.known_voice },
+        target1: { needed: targetTexts.size, existing: existingTarget1, voice: course.target1_voice },
+        target2: { needed: targetTexts.size, existing: existingTarget2, voice: course.target2_voice }
       },
-      sampleLegos,
+      languages: { known: course.known_lang, target: course.target_lang },
       estimatedCost: `$${(missing * 0.002).toFixed(2)}`,
       estimatedTime: `${Math.ceil(missing / 60)} min`
     });
