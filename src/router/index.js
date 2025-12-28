@@ -5,22 +5,25 @@ import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
-import CourseBrowser from '../views/CourseBrowser.vue'
+// DEPRECATED: CourseBrowser - use /production/courses (CourseSelector) instead
+// import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
-import AudioGeneration from '../views/AudioGeneration.vue'
-import AudioPipelineView from '../views/AudioPipelineView.vue'
+// DEPRECATED: AudioGeneration - use /production/:courseCode/pipeline (AudioPipeline) instead
+// import AudioGeneration from '../views/AudioGeneration.vue'
+// DEPRECATED: AudioPipelineView - use /production/:courseCode/pipeline instead
+// import AudioPipelineView from '../views/AudioPipelineView.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
-import RecordingStudio from '../views/RecordingStudio.vue'
+// DEPRECATED: RecordingStudio - use /autocue (AutocueStudio) instead
+// import RecordingStudio from '../views/RecordingStudio.vue'
 import UserManagement from '../views/UserManagement.vue'
-import CourseScriptView from '../views/CourseScriptView.vue'
-// DEPRECATED: Skills.vue - unused feature
-// import Skills from '../views/Skills.vue'
+// DEPRECATED: CourseScriptView - use /production/:courseCode/script (ScriptViewer) instead
+// import CourseScriptView from '../views/CourseScriptView.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -43,10 +46,9 @@ const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
 const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
-// Production Suite v1 Components (Legacy fallback at /v1/...)
-// MissionControlV1 removed - deprecated
+// Production Suite components
 import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
-const AudioPipelineV1 = () => import('../components/production/audio/AudioPipeline.vue')
+// Note: Legacy v1 components have been deprecated and removed
 
 
 const routes = [
@@ -70,10 +72,10 @@ const routes = [
   // Course Management
   // ============================================
   {
+    // DEPRECATED: Redirect to Production Suite course selector
     path: '/courses',
     name: 'CourseBrowser',
-    component: CourseBrowser,
-    meta: { title: 'Course Library' }
+    redirect: '/production/courses'
   },
   {
     path: '/courses/new',
@@ -113,11 +115,10 @@ const routes = [
     props: true
   },
   {
+    // DEPRECATED: Redirect to Production Suite script viewer
     path: '/courses/:courseCode/script',
     name: 'CourseScriptView',
-    component: CourseScriptView,
-    props: true,
-    meta: { title: 'Course Script Viewer' }
+    redirect: to => `/production/${to.params.courseCode}/script`
   },
   {
     path: '/courses/:code/progress',
@@ -140,23 +141,22 @@ const routes = [
     meta: { title: 'Course Compilation' }
   },
   {
+    // DEPRECATED: Redirect to Production Suite (need to select course first)
     path: '/audio',
     name: 'AudioGeneration',
-    component: AudioGeneration,
-    meta: { title: 'Audio Generation' }
+    redirect: '/production/courses'
   },
   {
+    // DEPRECATED: Redirect to Production Suite audio pipeline
     path: '/courses/:courseCode/audio-pipeline',
     name: 'AudioPipelineView',
-    component: AudioPipelineView,
-    props: true,
-    meta: { title: 'Audio Pipeline' }
+    redirect: to => `/production/${to.params.courseCode}/pipeline`
   },
   {
+    // DEPRECATED: Redirect to Autocue Studio
     path: '/record',
     name: 'RecordingStudio',
-    component: RecordingStudio,
-    meta: { title: 'Recording Studio', requiresAuth: true }
+    redirect: '/autocue'
   },
 
   // Autocue Recording System (Two-Mode Teleprompter)
@@ -273,18 +273,18 @@ const routes = [
 
   // Production QA Tools
   {
-    path: '/production/:courseCode/qa',
-    name: 'ProductionQA',
-    component: SamplesBrowser,
-    props: true,
-    meta: { title: 'QA Browser' }
-  },
-  {
+    // QA Browser - primary samples review interface
     path: '/production/:courseCode/samples',
     name: 'SamplesBrowser',
     component: SamplesBrowser,
     props: true,
     meta: { title: 'Samples Browser' }
+  },
+  {
+    // DEPRECATED: Redirect /qa to /samples
+    path: '/production/:courseCode/qa',
+    name: 'ProductionQA',
+    redirect: to => `/production/${to.params.courseCode}/samples`
   },
 
   {
