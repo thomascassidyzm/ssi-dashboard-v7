@@ -154,9 +154,21 @@ import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 
 // Get API base URL (same as other components)
+// On Vercel deployment, uses relative URLs (/api/...) which Vercel handles
 function getApiBaseUrl(): string {
+  // 1. Check localStorage override
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) return storedUrl
+
+  // 2. Check if on Vercel deployment (use relative URLs)
+  const isVercel = typeof window !== 'undefined' && (
+    window.location.hostname.includes('vercel.app') ||
+    window.location.hostname === 'popty.app' ||
+    window.location.hostname.endsWith('.popty.app')
+  )
+  if (isVercel) return ''
+
+  // 3. Use env var or localhost for local development
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
 

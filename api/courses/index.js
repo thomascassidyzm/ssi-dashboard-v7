@@ -1,11 +1,12 @@
 /**
  * GET /api/courses
- * List all courses from S3
+ * List all courses - DATABASE FIRST, S3 fallback
  *
  * Returns course list with status info for each course
  */
 
-import { listCourses, readCourseFile, courseFileExists } from '../lib/s3-course.js';
+import { listCourses, courseFileExists } from '../lib/s3-course.js';
+import { listCoursesFromDatabase, getCourseContentCounts, isSupabaseConfigured } from '../lib/supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,41 +17,74 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    // Get list of all courses
-    const courses = await listCourses();
+    let courses = [];
+    let source = 'unknown';
 
-    // Optionally include file status for each course
+    // Try database first (preferred)
+    if (isSupabaseConfigured()) {
+      const dbCourses = await listCoursesFromDatabase();
+      if (dbCourses && dbCourses.length > 0) {
+        courses = dbCourses;
+        source = 'database';
+        console.log(`[Courses] Loaded ${courses.length} courses from database`);
+      }
+    }
+
+    // Fallback to S3 if database empty or not configured
+    if (courses.length === 0) {
+      const s3Courses = await listCourses();
+      courses = s3Courses.map(c => ({ ...c, source: 's3' }));
+      source = 's3';
+      console.log(`[Courses] Loaded ${courses.length} courses from S3 (fallback)`);
+    }
+
+    // Optionally include detailed status
     const includeStatus = req.query.status === 'true';
+    const includeCounts = req.query.counts === 'true';
 
-    if (includeStatus) {
-      // Check key files for each course
+    if (includeStatus || includeCounts) {
       const keyFiles = ['lego_pairs.json', 'lego_baskets.json', 'introductions.json', 'course_manifest.json'];
 
-      const coursesWithStatus = await Promise.all(
+      const coursesWithDetails = await Promise.all(
         courses.map(async (course) => {
-          const fileStatus = {};
-          for (const file of keyFiles) {
-            fileStatus[file.replace('.json', '')] = await courseFileExists(course.code, file);
+          const result = { ...course };
+
+          // Check S3 file status if requested
+          if (includeStatus) {
+            const fileStatus = {};
+            for (const file of keyFiles) {
+              fileStatus[file.replace('.json', '')] = await courseFileExists(course.code, file);
+            }
+            result.files = fileStatus;
+            result.complete = Object.values(fileStatus).every(Boolean);
           }
-          return {
-            ...course,
-            files: fileStatus,
-            complete: Object.values(fileStatus).every(Boolean)
-          };
+
+          // Get database content counts if requested
+          if (includeCounts && isSupabaseConfigured()) {
+            const counts = await getCourseContentCounts(course.code);
+            if (counts) {
+              result.counts = counts;
+              result.hasContent = counts.seeds > 0 || counts.legos > 0;
+            }
+          }
+
+          return result;
         })
       );
 
       return res.json({
-        courses: coursesWithStatus,
-        total: coursesWithStatus.length,
-        complete: coursesWithStatus.filter(c => c.complete).length
+        courses: coursesWithDetails,
+        total: coursesWithDetails.length,
+        complete: coursesWithDetails.filter(c => c.complete).length,
+        source
       });
     }
 
-    // Simple list without status
+    // Simple list
     res.json({
       courses,
-      total: courses.length
+      total: courses.length,
+      source
     });
 
   } catch (err) {

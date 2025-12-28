@@ -1,29 +1,39 @@
-const { createClient } = require("@supabase/supabase-js");
-require("dotenv").config();
+#!/usr/bin/env node
+require('dotenv').config()
+const { Client } = require('pg')
+const fs = require('fs')
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+async function run() {
+  const sqlFile = process.argv[2] || 'supabase/migrations/20251228_cycle_views_v12.sql'
 
-async function runMigration() {
-  console.log("Adding target_syllable_count column to course_practice_phrases...");
+  // Extract project ref from Supabase URL
+  const projectRef = process.env.SUPABASE_URL.replace('https://', '').replace('.supabase.co', '')
+  const password = process.env.SUPABASE_SERVICE_KEY
 
-  // We can't run raw SQL via supabase-js, so let's check if column exists
-  // and provide instructions
+  // Supabase direct connection
+  const connectionString = `postgresql://postgres.${projectRef}:${password}@aws-0-eu-west-1.pooler.supabase.com:6543/postgres`
 
-  const { data, error } = await supabase
-    .from("course_practice_phrases")
-    .select("target_syllable_count")
-    .limit(1);
+  console.log('Connecting to Supabase...')
 
-  if (error && error.message.includes("does not exist")) {
-    console.log("\nColumn does not exist yet. Run this SQL in Supabase dashboard:\n");
-    console.log("ALTER TABLE course_practice_phrases");
-    console.log("ADD COLUMN IF NOT EXISTS target_syllable_count INTEGER;");
-    console.log("\nOr run: database/migrations/add_syllable_count.sql");
-  } else if (error) {
-    console.log("Error:", error.message);
-  } else {
-    console.log("Column already exists! Ready for backfill.");
+  const client = new Client({ connectionString })
+
+  try {
+    await client.connect()
+    console.log('Connected!')
+
+    const sql = fs.readFileSync(sqlFile, 'utf8')
+    console.log('Running ' + sqlFile + '...')
+
+    await client.query(sql)
+    console.log('Migration complete!')
+  } catch (error) {
+    console.error('Error:', error.message)
+    if (error.detail) console.error('Detail:', error.detail)
+    if (error.hint) console.error('Hint:', error.hint)
+    process.exit(1)
+  } finally {
+    await client.end()
   }
 }
 
-runMigration().catch(console.error);
+run()

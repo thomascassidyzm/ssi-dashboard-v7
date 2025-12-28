@@ -186,6 +186,54 @@ export async function getAudioSample(uuid) {
 }
 
 /**
+ * List all courses from database
+ */
+export async function listCoursesFromDatabase() {
+  const supabase = getSupabase();
+  if (!supabase) return null; // Return null if not configured (allow fallback)
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('course_code, known_lang, target_lang, display_name, status')
+    .order('course_code');
+
+  if (error) {
+    console.error('[Supabase] Failed to list courses:', error.message);
+    return null; // Allow fallback to S3
+  }
+
+  // Transform to match expected format
+  return data?.map(c => ({
+    code: c.course_code,
+    name: c.display_name || `${c.known_lang.toUpperCase()} → ${c.target_lang.toUpperCase()}`,
+    known_lang: c.known_lang,
+    target_lang: c.target_lang,
+    status: c.status,
+    source: 'database'
+  })) || [];
+}
+
+/**
+ * Get course content counts from database
+ */
+export async function getCourseContentCounts(courseCode) {
+  const supabase = getSupabase();
+  if (!supabase) return null;
+
+  const [seedsResult, legosResult, phrasesResult] = await Promise.all([
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+  ]);
+
+  return {
+    seeds: seedsResult.count || 0,
+    legos: legosResult.count || 0,
+    phrases: phrasesResult.count || 0
+  };
+}
+
+/**
  * Get course statistics
  */
 export async function getCourseStats(courseCode) {
@@ -233,5 +281,7 @@ export default {
   updateSampleFlag,
   bulkUpdateFlags,
   getAudioSample,
-  getCourseStats
+  getCourseStats,
+  listCoursesFromDatabase,
+  getCourseContentCounts
 };

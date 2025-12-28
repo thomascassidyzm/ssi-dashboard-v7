@@ -291,9 +291,20 @@ const issueToResolve = ref<any>(null);
 const resolutionNote = ref('');
 const isResolving = ref(false);
 
-// API Base URL
+// API Base URL - Vercel-aware
 const getApiBaseUrl = (): string => {
-  return localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470';
+  const storedUrl = localStorage.getItem('api_base_url');
+  if (storedUrl) return storedUrl;
+
+  // Use relative URLs on Vercel deployment
+  const isVercel = typeof window !== 'undefined' && (
+    window.location.hostname.includes('vercel.app') ||
+    window.location.hostname === 'popty.app' ||
+    window.location.hostname.endsWith('.popty.app')
+  );
+  if (isVercel) return '';
+
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470';
 };
 
 // S3 Audio Base
