@@ -32,13 +32,17 @@ export default async function handler(req, res) {
     // Get course config for voice assignments and languages
     const { data: course, error: courseError } = await db
       .from('courses')
-      .select('known_lang, target_lang, known_voice, target1_voice, target2_voice')
+      .select('known_lang, target_lang, known_voice, target1_voice, target2_voice, known_cadence, target_cadence')
       .eq('course_code', courseCode)
       .single();
 
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' });
     }
+
+    // Use course-specific cadences (default to natural/slow if not set)
+    const knownCadence = course.known_cadence || 'natural';
+    const targetCadence = course.target_cadence || 'natural';
 
     // Get unique texts from practice phrases
     const { data: phrases, error: phrasesError } = await db
@@ -61,60 +65,55 @@ export default async function handler(req, res) {
     const totalAudioNeeded = knownTexts.size + (targetTexts.size * 2);
 
     // Query audio_files via texts table (v12 schema)
-    // Known audio: texts(content_normalized, lang=known_lang) → audio_files(text_id, voice_id=known_voice, cadence=natural)
+    // Step 1: Get text IDs for known texts
+    // Step 2: Count audio files matching those text IDs + voice + cadence
     let existingKnown = 0;
     let existingTarget1 = 0;
     let existingTarget2 = 0;
 
-    if (knownTexts.size > 0 && course.known_voice) {
-      const knownArray = Array.from(knownTexts).slice(0, 500);
-      const { count } = await db
-        .from('audio_files')
-        .select('id', { count: 'exact', head: true })
-        .eq('voice_id', course.known_voice)
-        .eq('cadence', 'natural')
-        .in('text_id', db
+    // Helper to count audio files for a set of texts
+    async function countAudioForTexts(textArray, language, voiceId, cadence) {
+      if (!textArray.length || !voiceId) return 0;
+
+      // Step 1: Get text IDs (batch to avoid URL length issues)
+      const batchSize = 100;
+      let totalCount = 0;
+
+      for (let i = 0; i < textArray.length; i += batchSize) {
+        const batch = textArray.slice(i, i + batchSize);
+
+        // Get text IDs for this batch
+        const { data: texts } = await db
           .from('texts')
           .select('id')
-          .eq('language', course.known_lang)
-          .in('content_normalized', knownArray)
-        );
-      existingKnown = count || 0;
-    }
+          .eq('language', language)
+          .in('content_normalized', batch);
 
-    if (targetTexts.size > 0) {
-      const targetArray = Array.from(targetTexts).slice(0, 500);
+        if (!texts || texts.length === 0) continue;
 
-      if (course.target1_voice) {
-        const { count: t1 } = await db
+        const textIds = texts.map(t => t.id);
+
+        // Count audio files matching these text IDs
+        const { count } = await db
           .from('audio_files')
           .select('id', { count: 'exact', head: true })
-          .eq('voice_id', course.target1_voice)
-          .eq('cadence', 'slow')
-          .in('text_id', db
-            .from('texts')
-            .select('id')
-            .eq('language', course.target_lang)
-            .in('content_normalized', targetArray)
-          );
-        existingTarget1 = t1 || 0;
+          .eq('voice_id', voiceId)
+          .eq('cadence', cadence)
+          .in('text_id', textIds);
+
+        totalCount += count || 0;
       }
 
-      if (course.target2_voice) {
-        const { count: t2 } = await db
-          .from('audio_files')
-          .select('id', { count: 'exact', head: true })
-          .eq('voice_id', course.target2_voice)
-          .eq('cadence', 'slow')
-          .in('text_id', db
-            .from('texts')
-            .select('id')
-            .eq('language', course.target_lang)
-            .in('content_normalized', targetArray)
-          );
-        existingTarget2 = t2 || 0;
-      }
+      return totalCount;
     }
+
+    // Count existing audio
+    const knownArray = Array.from(knownTexts);
+    const targetArray = Array.from(targetTexts);
+
+    existingKnown = await countAudioForTexts(knownArray, course.known_lang, course.known_voice, knownCadence);
+    existingTarget1 = await countAudioForTexts(targetArray, course.target_lang, course.target1_voice, targetCadence);
+    existingTarget2 = await countAudioForTexts(targetArray, course.target_lang, course.target2_voice, targetCadence);
 
     const existingCount = existingKnown + existingTarget1 + existingTarget2;
     const missing = Math.max(0, totalAudioNeeded - existingCount);
