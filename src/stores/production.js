@@ -336,9 +336,15 @@ export const useProductionStore = defineStore('production', () => {
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
       // Load fast stats for dashboard (uses database COUNTs, much faster than /plan)
+      // Falls back to /plan if /stats endpoint doesn't exist (e.g., on Vercel static hosting)
       console.log('[Production] Loading pipeline stats...')
       try {
-        const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/stats`, { headers })
+        let planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/stats`, { headers })
+        // Fallback to /plan if /stats returns 404
+        if (!planRes.ok && planRes.status === 404) {
+          console.log('[Production] /stats not available, falling back to /plan...')
+          planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
+        }
         if (planRes.ok) {
           const planData = await planRes.json()
           // Populate full course stats
