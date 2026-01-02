@@ -267,11 +267,25 @@ export const useProductionStore = defineStore('production', () => {
     return stages
   })
 
+  // Cache tracking for frontend data
+  const lastLoadTime = ref({}) // courseCode -> timestamp
+  const CACHE_TTL_MS = 2 * 60 * 1000 // 2 minutes - match backend cache
+
   // Actions
-  async function loadCourse(courseCode) {
+  async function loadCourse(courseCode, forceRefresh = false) {
     // Guard against undefined courseCode
     if (!courseCode) {
       error.value = 'No course code provided'
+      return
+    }
+
+    // Check if we already have fresh data for this course
+    const lastLoad = lastLoadTime.value[courseCode]
+    const isSameCourse = currentCourseCode.value === courseCode
+    const isFresh = lastLoad && (Date.now() - lastLoad) < CACHE_TTL_MS
+
+    if (!forceRefresh && isSameCourse && isFresh && courseManifest.value) {
+      console.log(`[Production] Using cached data for ${courseCode} (age: ${Math.round((Date.now() - lastLoad) / 1000)}s)`)
       return
     }
 
@@ -354,6 +368,9 @@ export const useProductionStore = defineStore('production', () => {
           console.warn('[Production] Could not load pipeline plan:', planErr.message)
         }
       }
+
+      // Mark this course data as fresh
+      lastLoadTime.value[courseCode] = Date.now()
 
     } catch (err) {
       // Network errors indicate Production API is not running
