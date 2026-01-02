@@ -323,68 +323,25 @@ async function generateManifest(courseCode, options = {}) {
     presentation: 0
   };
 
-  /**
-   * Add a sample entry to the dictionary
-   * Supports both voice-based UUID generation (TTS) and v12 lookup (human-recorded)
-   */
-  async function addSample(text, lang3, role, voiceId) {
+  // ==========================================================================
+  // PHASE 1: Collect all texts that need samples
+  // ==========================================================================
+  // We collect all texts first, then batch-lookup legacy audio to avoid N+1 queries
+  const textsToProcess = new Map(); // key = text, value = { roles: Set, lang3, voiceId }
+
+  function collectText(text, lang3, role, voiceId) {
     if (!text || text.trim() === '') return;
 
-    const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
-
-    if (!samples[text]) {
-      samples[text] = [];
+    if (!textsToProcess.has(text)) {
+      textsToProcess.set(text, { roles: new Set(), lang3, voiceId });
     }
-
-    // Check for duplicate role
-    const existing = samples[text].find(s => s.role === role);
-    if (existing) return;
-
-    let sampleId = null;
-    let duration = 0;
-
-    // Try v12 lookup first (for human-recorded audio)
-    if (v12AudioMap && v12AudioMap.has(text)) {
-      const audioInfo = v12AudioMap.get(text)[role];
-      if (audioInfo) {
-        sampleId = audioInfo.id;
-        duration = audioInfo.duration_ms || 0;
-      }
-    }
-
-    // Fall back to voice-based UUID generation (for TTS audio)
-    if (!sampleId && voiceId) {
-      sampleId = generateSampleId(voiceId, text, lang3, role, cadence);
-
-      // Look up duration from audio_samples table (legacy)
-      const { data: audioData } = await supabase
-        .from('audio_samples')
-        .select('duration_ms')
-        .eq('uuid', sampleId)
-        .single();
-
-      duration = audioData?.duration_ms || 0;
-    }
-
-    // Only add if we found audio
-    if (sampleId) {
-      samples[text].push({
-        id: sampleId,
-        cadence: cadence,
-        role: role,
-        duration: duration
-      });
-      sampleStats[role] = (sampleStats[role] || 0) + 1;
-    }
+    textsToProcess.get(text).roles.add(role);
   }
 
-  /**
-   * Add samples for a known/target pair
-   */
-  async function addPairSamples(knownText, targetText) {
-    await addSample(knownText, knownLang3, 'source', voiceAssignments.source);
-    await addSample(targetText, targetLang3, 'target1', voiceAssignments.target1);
-    await addSample(targetText, targetLang3, 'target2', voiceAssignments.target2);
+  function collectPairTexts(knownText, targetText) {
+    collectText(knownText, knownLang3, 'source', voiceAssignments.source);
+    collectText(targetText, targetLang3, 'target1', voiceAssignments.target1);
+    collectText(targetText, targetLang3, 'target2', voiceAssignments.target2);
   }
 
   // Build manifest seeds
@@ -430,7 +387,7 @@ async function generateManifest(courseCode, options = {}) {
             comp.target
           );
           nodes.push(createNode(compNodeId, comp.known, comp.target));
-          await addPairSamples(comp.known, comp.target);
+          collectPairTexts(comp.known, comp.target);
           totalNodes++;
         }
       }
@@ -447,7 +404,7 @@ async function generateManifest(courseCode, options = {}) {
           phrase.target_text
         );
         nodes.push(createNode(phraseNodeId, phrase.known_text, phrase.target_text));
-        await addPairSamples(phrase.known_text, phrase.target_text);
+        collectPairTexts(phrase.known_text, phrase.target_text);
         totalNodes++;
       }
 
@@ -458,9 +415,9 @@ async function generateManifest(courseCode, options = {}) {
         targetName
       );
 
-      // Add samples for this LEGO
-      await addPairSamples(lego.known_text, lego.target_text);
-      await addSample(presentationText, knownLang3, 'presentation', voiceAssignments.presentation);
+      // Collect samples for this LEGO
+      collectPairTexts(lego.known_text, lego.target_text);
+      collectText(presentationText, knownLang3, 'presentation', voiceAssignments.presentation);
 
       // Create introduction_item
       introductionItems.push({
@@ -480,7 +437,7 @@ async function generateManifest(courseCode, options = {}) {
       seed.known_text,
       seed.target_text
     );
-    await addPairSamples(seed.known_text, seed.target_text);
+    collectPairTexts(seed.known_text, seed.target_text);
 
     manifestSeeds.push({
       id: seedNodeId,
@@ -506,8 +463,116 @@ async function generateManifest(courseCode, options = {}) {
         orderedEncouragements.push(encEntry);
       }
 
-      // Add encouragement sample
-      await addSample(enc.text, knownLang3, 'presentation', voiceAssignments.presentation);
+      // Collect encouragement sample
+      collectText(enc.text, knownLang3, 'presentation', voiceAssignments.presentation);
+    }
+  }
+
+  // ==========================================================================
+  // PHASE 2: Batch lookup legacy audio (for texts not in v12)
+  // ==========================================================================
+  // Generate UUIDs for texts that need legacy lookup, then batch query
+  const legacyUuidsToLookup = new Map(); // uuid -> { text, role, lang3, cadence }
+
+  for (const [text, info] of textsToProcess) {
+    for (const role of info.roles) {
+      // Check if already in v12
+      if (v12AudioMap && v12AudioMap.has(text)) {
+        const audioInfo = v12AudioMap.get(text)[role];
+        if (audioInfo) continue; // Already have v12 audio
+      }
+
+      // Need legacy lookup - get the voice ID for this role
+      let voiceId;
+      if (role === 'source') voiceId = voiceAssignments.source;
+      else if (role === 'target1') voiceId = voiceAssignments.target1;
+      else if (role === 'target2') voiceId = voiceAssignments.target2;
+      else voiceId = voiceAssignments.presentation;
+
+      if (!voiceId) continue; // No voice assigned, can't generate UUID
+
+      const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
+      const uuid = generateSampleId(voiceId, text, info.lang3, role, cadence);
+
+      legacyUuidsToLookup.set(uuid, { text, role, lang3: info.lang3, cadence });
+    }
+  }
+
+  // Batch query audio_samples for all legacy UUIDs
+  const legacyAudioMap = new Map(); // uuid -> duration_ms
+  if (legacyUuidsToLookup.size > 0) {
+    console.log(`  Batch looking up ${legacyUuidsToLookup.size} legacy audio samples...`);
+    const uuids = Array.from(legacyUuidsToLookup.keys());
+
+    // Query in batches of 500 (Supabase has limits)
+    const BATCH_SIZE = 500;
+    for (let i = 0; i < uuids.length; i += BATCH_SIZE) {
+      const batch = uuids.slice(i, i + BATCH_SIZE);
+      const { data: audioData, error } = await supabase
+        .from('audio_samples')
+        .select('uuid, duration_ms')
+        .in('uuid', batch);
+
+      if (error) {
+        console.warn(`  Warning: Legacy audio batch lookup failed: ${error.message}`);
+      } else if (audioData) {
+        for (const row of audioData) {
+          legacyAudioMap.set(row.uuid, row.duration_ms || 0);
+        }
+      }
+    }
+    console.log(`  Found ${legacyAudioMap.size}/${legacyUuidsToLookup.size} legacy audio samples`);
+  }
+
+  // ==========================================================================
+  // PHASE 3: Build samples dictionary from collected texts
+  // ==========================================================================
+  for (const [text, info] of textsToProcess) {
+    if (!samples[text]) {
+      samples[text] = [];
+    }
+
+    for (const role of info.roles) {
+      // Check for duplicate
+      if (samples[text].find(s => s.role === role)) continue;
+
+      let sampleId = null;
+      let duration = 0;
+      const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
+
+      // Try v12 first
+      if (v12AudioMap && v12AudioMap.has(text)) {
+        const audioInfo = v12AudioMap.get(text)[role];
+        if (audioInfo) {
+          sampleId = audioInfo.id;
+          duration = audioInfo.duration_ms || 0;
+        }
+      }
+
+      // Try legacy lookup
+      if (!sampleId) {
+        let voiceId;
+        if (role === 'source') voiceId = voiceAssignments.source;
+        else if (role === 'target1') voiceId = voiceAssignments.target1;
+        else if (role === 'target2') voiceId = voiceAssignments.target2;
+        else voiceId = voiceAssignments.presentation;
+
+        if (voiceId) {
+          sampleId = generateSampleId(voiceId, text, info.lang3, role, cadence);
+          duration = legacyAudioMap.get(sampleId) || 0;
+        }
+      }
+
+      // Add sample if found
+      if (sampleId) {
+        samples[text].push({
+          id: sampleId,
+          cadence: cadence,
+          role: role,
+          duration: duration
+        });
+        sampleStats[role] = (sampleStats[role] || 0) + 1;
+      }
     }
   }
 

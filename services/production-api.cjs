@@ -16,6 +16,42 @@ const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 
+// =============================================================================
+// MANIFEST CACHING
+// =============================================================================
+// Cache generated manifests to avoid regenerating on every request
+// TTL: 2 minutes - long enough for page navigation, short enough for data updates
+const manifestCache = new Map()
+const MANIFEST_CACHE_TTL_MS = 2 * 60 * 1000
+
+async function getCachedManifest(courseCode) {
+  const cached = manifestCache.get(courseCode)
+  if (cached && (Date.now() - cached.timestamp) < MANIFEST_CACHE_TTL_MS) {
+    logger.info(`[Cache HIT] Manifest for ${courseCode} (age: ${Math.round((Date.now() - cached.timestamp) / 1000)}s)`)
+    return cached.manifest
+  }
+
+  // Generate fresh manifest
+  const startTime = Date.now()
+  const manifest = await manifestGenerator.generateManifest(courseCode)
+  const elapsed = Date.now() - startTime
+
+  logger.info(`[Cache MISS] Generated manifest for ${courseCode} in ${elapsed}ms`)
+
+  // Cache it
+  manifestCache.set(courseCode, { manifest, timestamp: Date.now() })
+
+  return manifest
+}
+
+// Clear cache for a specific course (call after data updates)
+function invalidateManifestCache(courseCode) {
+  if (manifestCache.has(courseCode)) {
+    manifestCache.delete(courseCode)
+    logger.info(`[Cache] Invalidated manifest cache for ${courseCode}`)
+  }
+}
+
 // VFS root for local file checks
 const VFS_ROOT = process.env.VFS_ROOT?.endsWith('/courses')
   ? process.env.VFS_ROOT
@@ -141,12 +177,11 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
     const { courseCode } = req.params
     const source = req.query.source // 'db', 's3', or auto (default)
 
-    // Option 1: Try database-first generation (new architecture)
+    // Option 1: Try database-first generation (new architecture) with caching
     if (source !== 's3' && supabaseClient.isInitialized()) {
       try {
-        const manifest = await manifestGenerator.generateManifest(courseCode)
+        const manifest = await getCachedManifest(courseCode)
         if (manifest && manifest.slices?.[0]?.seeds?.length > 0) {
-          logger.info(`Manifest for ${courseCode} generated from database`)
           return res.json({
             ...manifest,
             _source: 'database'
@@ -195,7 +230,7 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
   }
 })
 
-// Generate manifest from database (explicit trigger)
+// Generate manifest from database (explicit trigger - bypasses and refreshes cache)
 app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -204,8 +239,17 @@ app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    logger.info(`Generating manifest for ${courseCode} from database...`)
+    // Invalidate cache to force fresh generation
+    invalidateManifestCache(courseCode)
+
+    logger.info(`Generating fresh manifest for ${courseCode} from database...`)
+    const startTime = Date.now()
     const manifest = await manifestGenerator.generateManifest(courseCode)
+    const elapsed = Date.now() - startTime
+
+    // Cache the fresh manifest
+    manifestCache.set(courseCode, { manifest, timestamp: Date.now() })
+    logger.info(`Manifest generated in ${elapsed}ms, cached for future requests`)
 
     // Validate it
     const validation = await manifestGenerator.validateManifest(manifest)
@@ -214,6 +258,7 @@ app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
       success: true,
       manifest,
       validation,
+      generationTimeMs: elapsed,
       stats: {
         seeds: manifest.slices?.[0]?.seeds?.length || 0,
         samples: Object.keys(manifest.slices?.[0]?.samples || {}).length
@@ -234,7 +279,7 @@ app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    const manifest = await manifestGenerator.generateManifest(courseCode)
+    const manifest = await getCachedManifest(courseCode)
     const validation = await manifestGenerator.validateManifest(manifest)
 
     res.json(validation)
