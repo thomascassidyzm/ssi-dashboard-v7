@@ -707,6 +707,54 @@ app.post('/plan', async (req, res) => {
 })
 
 /**
+ * GET /stats/:courseCode - Fast stats using database COUNTs (no JS processing)
+ * This is much faster than /plan for dashboard stats display
+ */
+app.get('/stats/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    logger.log(`Fast stats for ${courseCode}`)
+
+    // Count total phrases (this tells us total audio needs = phrases * 3 roles)
+    const { count: phraseCount, error: phraseErr } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    if (phraseErr) throw new Error(`Phrase count failed: ${phraseErr.message}`)
+
+    // Count existing audio files for this course (with s3_key = actually generated)
+    const { count: existingCount, error: audioErr } = await supabase
+      .from('course_audio')
+      .select('*, audio_files!inner(*)', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .not('audio_files.s3_key', 'is', null)
+
+    if (audioErr) throw new Error(`Audio count failed: ${audioErr.message}`)
+
+    // Total needs = phrases * 3 (target1, target2, known for each phrase)
+    const totalNeeds = (phraseCount || 0) * 3
+    const existing = existingCount || 0
+    const pending = Math.max(0, totalNeeds - existing)
+
+    logger.log(`Stats: ${totalNeeds} total, ${existing} existing, ${pending} pending`)
+
+    res.json({
+      plan: {
+        total: totalNeeds,
+        existing: existing,
+        toGenerate: pending
+      },
+      dataSource: 'supabase-v12-fast'
+    })
+
+  } catch (err) {
+    logger.error('Stats failed:', err.message)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+/**
  * POST /generate - Generate audio for a course
  */
 app.post('/generate', async (req, res) => {

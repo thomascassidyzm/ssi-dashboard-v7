@@ -335,10 +335,10 @@ export const useProductionStore = defineStore('production', () => {
       sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
-      // Always load pipeline plan for stats (not just for stub manifests)
-      console.log('[Production] Loading pipeline plan for stats...')
+      // Load fast stats for dashboard (uses database COUNTs, much faster than /plan)
+      console.log('[Production] Loading pipeline stats...')
       try {
-        const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
+        const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/stats`, { headers })
         if (planRes.ok) {
           const planData = await planRes.json()
           // Populate full course stats

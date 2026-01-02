@@ -1466,6 +1466,36 @@ app.post('/api/production/internal/emit', (req, res) => {
 const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
 const axios = require('axios')
 
+// GET /api/production/:courseCode/audio-pipeline/stats
+// Fast stats using database COUNTs - use this for dashboard loading
+app.get('/api/production/:courseCode/audio-pipeline/stats', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const response = await axios.get(`${PHASE8_URL}/stats/${courseCode}`)
+    const plan = response.data.plan || {}
+
+    // Calculate estimates
+    const toGenerate = plan.toGenerate || 0
+    const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
+
+    res.json({
+      success: true,
+      estimatedCost: `$${estimatedCostUSD}`,
+      estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
+      total: plan.total || 0,
+      existing: plan.existing || 0,
+      missing: toGenerate,
+      dataSource: response.data.dataSource || 'fast'
+    })
+  } catch (error) {
+    logger.error(`Audio stats error for ${courseCode}:`, error.message)
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'Phase 8 audio service not running' })
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
 // GET /api/production/:courseCode/audio-pipeline/plan
 // Get generation plan with cost estimates
 app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
