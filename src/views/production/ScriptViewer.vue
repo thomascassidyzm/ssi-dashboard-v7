@@ -274,10 +274,10 @@ const error = ref<string | null>(null);
 const seeds = ref<SeedRowData[]>([]);
 const totalSeedsInCourse = ref(0);  // Total seeds in course (from API)
 
-// Filter State - default to first 30 seeds for performance
+// Filter State - default to first 50 seeds for performance
 const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
 const filterSeedStart = ref('S0001');
-const filterSeedEnd = ref('S0030');
+const filterSeedEnd = ref('S0050');
 const filterSearchText = ref('');
 const filterFlaggedOnly = ref(false);
 
