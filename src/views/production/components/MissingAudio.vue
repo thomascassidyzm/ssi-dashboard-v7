@@ -144,7 +144,15 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
-import { getApiBaseUrl } from '@/api'
+
+function getApiBaseUrl() {
+  // Use ngrok URL in development if available, otherwise use relative path for production
+  if (import.meta.env.DEV) {
+    return import.meta.env.VITE_API_URL || 'http://localhost:3470'
+  }
+  // In production, use the same origin (Vercel serverless functions)
+  return ''
+}
 
 const props = defineProps({
   courseCode: {

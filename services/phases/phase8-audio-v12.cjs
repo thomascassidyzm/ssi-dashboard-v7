@@ -383,12 +383,13 @@ async function checkAudioStatusFast(needs, courseCode) {
     offset += pageSize
   }
 
-  // Build lookup set of existing audio (normalized text + language + voiceId + cadence)
+  // Build lookup set of existing audio (normalized text + language + voiceId)
+  // Note: We intentionally exclude cadence - any cadence is acceptable
   const existingSet = new Set()
   for (const ca of existingAudio || []) {
     const audio = ca.audio_files
     if (audio?.texts?.content) {
-      const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}|${audio.cadence}`
+      const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}`
       existingSet.add(key)
     }
   }
@@ -400,7 +401,7 @@ async function checkAudioStatusFast(needs, courseCode) {
   const needsGeneration = []
 
   for (const need of needs) {
-    const key = `${need.text.toLowerCase().trim()}|${need.language}|${need.voiceId}|${need.cadence}`
+    const key = `${need.text.toLowerCase().trim()}|${need.language}|${need.voiceId}`
     const exists = existingSet.has(key)
 
     results.push({ ...need, needsGeneration: !exists })
