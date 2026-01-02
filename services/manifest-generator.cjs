@@ -97,14 +97,26 @@ function generateNodeId(seedNumber, legoIndex, knownText, targetText) {
 // V12 AUDIO LOOKUP (for human-recorded courses)
 // =============================================================================
 
+// Cache for v12 audio maps (courseCode -> { map, timestamp })
+// TTL: 5 minutes - audio rarely changes during a session
+const v12AudioCache = new Map();
+const V12_CACHE_TTL_MS = 5 * 60 * 1000;
+
 /**
  * Build a map of text -> audio info from v12 schema
- * Used for courses with human-recorded audio (no TTS voices set)
+ * Uses in-memory cache to avoid repeated queries
  *
  * @param {string} courseCode - Course code
  * @returns {Promise<Map>} Map of normalized_text -> { source?, target1?, target2?, presentation? }
  */
 async function buildV12AudioMap(courseCode) {
+  // Check cache first
+  const cached = v12AudioCache.get(courseCode);
+  if (cached && (Date.now() - cached.timestamp) < V12_CACHE_TTL_MS) {
+    console.log(`  Using cached v12 audio for ${courseCode} (${cached.map.size} texts)`);
+    return cached.map;
+  }
+
   const audioMap = new Map();  // text_content -> { role: { id, duration_ms } }
 
   console.log(`  Loading v12 audio for ${courseCode}...`);
@@ -166,6 +178,10 @@ async function buildV12AudioMap(courseCode) {
   }
 
   console.log(`  Loaded ${totalLoaded} audio records, ${audioMap.size} unique texts from v12 schema`);
+
+  // Cache for future requests
+  v12AudioCache.set(courseCode, { map: audioMap, timestamp: Date.now() });
+
   return audioMap;
 }
 
