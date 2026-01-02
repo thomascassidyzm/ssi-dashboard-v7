@@ -92,6 +92,7 @@ function normalizeText(text) {
 
 /**
  * Check if audio sample exists by UUID
+ * Checks both v12 schema (audio_files) and legacy schema (audio_samples)
  *
  * @param {string} uuid
  * @returns {Promise<boolean>}
@@ -99,6 +100,18 @@ function normalizeText(text) {
 async function audioExists(uuid) {
   if (!supabase) throw new Error('Supabase not initialized')
 
+  // First check v12 schema: audio_files table
+  const { data: v12Data, error: v12Error } = await supabase
+    .from('audio_files')
+    .select('id')
+    .eq('id', uuid)
+    .single()
+
+  if (v12Data) {
+    return true
+  }
+
+  // Fall back to legacy schema: audio_samples table
   const { data, error } = await supabase
     .from('audio_samples')
     .select('uuid')
@@ -374,20 +387,34 @@ async function getVoicesForLanguage(lang) {
  */
 async function batchCheckExists(uuids) {
   if (!supabase) throw new Error('Supabase not initialized')
+  if (!uuids || uuids.length === 0) return []
 
-  const { data, error } = await supabase
+  // Check v12 schema: audio_files table
+  const { data: v12Data, error: v12Error } = await supabase
+    .from('audio_files')
+    .select('id')
+    .in('id', uuids)
+
+  // Check legacy schema: audio_samples table
+  const { data: legacyData, error: legacyError } = await supabase
     .from('audio_samples')
     .select('uuid')
     .in('uuid', uuids)
 
-  if (error) throw error
+  if (legacyError) throw legacyError
 
-  const existingSet = new Set((data || []).map(d => d.uuid))
+  // Combine results from both tables
+  const existingSet = new Set([
+    ...(v12Data || []).map(d => d.id),
+    ...(legacyData || []).map(d => d.uuid)
+  ])
+
   return uuids.map(uuid => ({ uuid, exists: existingSet.has(uuid) }))
 }
 
 /**
  * Check which sample UUIDs already exist in Supabase
+ * Checks both v12 schema (audio_files) and legacy schema (audio_samples)
  * Returns array of UUIDs that exist
  *
  * @param {Array<string>} uuids - UUIDs to check
@@ -397,13 +424,27 @@ async function checkSamplesExist(uuids) {
   if (!supabase) throw new Error('Supabase not initialized')
   if (!uuids || uuids.length === 0) return []
 
-  const { data, error } = await supabase
+  // Check v12 schema: audio_files table
+  const { data: v12Data, error: v12Error } = await supabase
+    .from('audio_files')
+    .select('id')
+    .in('id', uuids)
+
+  // Check legacy schema: audio_samples table
+  const { data: legacyData, error: legacyError } = await supabase
     .from('audio_samples')
     .select('uuid')
     .in('uuid', uuids)
 
-  if (error) throw error
-  return (data || []).map(d => d.uuid)
+  if (legacyError) throw legacyError
+
+  // Combine results from both tables (deduplicated)
+  const existingSet = new Set([
+    ...(v12Data || []).map(d => d.id),
+    ...(legacyData || []).map(d => d.uuid)
+  ])
+
+  return Array.from(existingSet)
 }
 
 /**

@@ -1141,44 +1141,48 @@ app.post('/plan', async (req, res) => {
     // Get voice config
     const voiceConfig = voices || await db.getCourseVoices(courseCode) || {}
 
-    // Check which exist
+    // Generate all UUIDs first
+    const needsWithUuids = needs.map(need => {
+      const voiceRole = need.role === 'presentation' ? 'known' : need.role
+      const voiceId = voiceConfig[voiceRole]
+      if (!voiceId) return { ...need, uuid: null, missingVoice: true }
+      const cadence = getCadenceForRole(need.role)
+      const uuid = db.generateAudioUUID(voiceId, need.text, need.lang, need.role, cadence)
+      return { ...need, uuid, voiceId }
+    })
+
+    // Count missing voices
+    const missingVoice = needsWithUuids.filter(n => n.missingVoice).length
+    const validNeeds = needsWithUuids.filter(n => n.uuid)
+    const allUuids = validNeeds.map(n => n.uuid)
+
+    // Batch check ALL UUIDs for existence (efficient single query)
+    logger.log(`Batch checking ${allUuids.length} UUIDs for existence...`)
+    const existingUuids = db.isInitialized()
+      ? new Set(await db.checkSamplesExist(allUuids))
+      : new Set()
+    logger.log(`Found ${existingUuids.size} existing audio files`)
+
+    // Calculate counts
     const results = {
       total: needs.length,
       phraseNeeds: phraseNeeds.length,
       introNeeds: introNeeds.length,
-      existing: 0,
-      toGenerate: 0,
-      missingVoice: 0,
+      existing: existingUuids.size,
+      toGenerate: validNeeds.length - existingUuids.size,
+      missingVoice,
       samples: []
     }
 
-    for (const need of needs.slice(0, 100)) { // Check first 100 for plan
-      // 'presentation' role uses the 'known' voice
-      const voiceRole = need.role === 'presentation' ? 'known' : need.role
-      const voiceId = voiceConfig[voiceRole]
-
-      if (!voiceId) {
-        results.missingVoice++
-        continue
-      }
-
-      const cadence = getCadenceForRole(need.role)
-      const uuid = db.generateAudioUUID(voiceId, need.text, need.lang, need.role, cadence)
-
-      const exists = db.isInitialized() ? await db.audioExists(uuid) : false
-
-      if (exists) {
-        results.existing++
-      } else {
-        results.toGenerate++
-        if (results.samples.length < 10) {
-          results.samples.push({
-            text: need.text,
-            lang: need.lang,
-            role: need.role,
-            uuid
-          })
-        }
+    // Collect sample of what needs generation (first 10)
+    for (const need of validNeeds) {
+      if (!existingUuids.has(need.uuid) && results.samples.length < 10) {
+        results.samples.push({
+          text: need.text,
+          lang: need.lang,
+          role: need.role,
+          uuid: need.uuid
+        })
       }
     }
 
