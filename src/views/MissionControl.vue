@@ -26,10 +26,7 @@
           </div>
         </div>
         <div class="header-right">
-          <div class="system-status">
-            <span class="status-dot"></span>
-            <span class="status-text">Systems Online</span>
-          </div>
+          <EnvironmentSwitcher />
         </div>
       </div>
     </header>
@@ -250,6 +247,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../services/api'
+import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 
 // Course count
 const courseCount = ref(0)
