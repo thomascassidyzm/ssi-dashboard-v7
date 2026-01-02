@@ -1591,6 +1591,169 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
   }
 })
 
+// GET /api/production/:courseCode/audio-pipeline/missing
+// Get detailed list of missing audio with sample playback URLs for voice matching
+app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) => {
+  const { courseCode } = req.params
+  logger.info(`Getting missing audio details for ${courseCode}`)
+
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Paginate practice phrases (avoid 1000 row limit)
+    let phrases = []
+    let offset = 0
+    const pageSize = 1000
+
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('course_practice_phrases')
+        .select('seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .range(offset, offset + pageSize - 1)
+
+      if (error) throw error
+      if (!page || page.length === 0) break
+      phrases = phrases.concat(page)
+      if (page.length < pageSize) break
+      offset += pageSize
+    }
+
+    // Paginate existing audio
+    let existingAudio = []
+    offset = 0
+
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('course_audio')
+        .select(`
+          role,
+          audio_file_id,
+          audio_files!inner (
+            id,
+            voice_id,
+            s3_bucket,
+            s3_key,
+            texts!inner (content)
+          )
+        `)
+        .eq('course_code', courseCode)
+        .range(offset, offset + pageSize - 1)
+
+      if (error) throw error
+      if (!page || page.length === 0) break
+      existingAudio = existingAudio.concat(page)
+      if (page.length < pageSize) break
+      offset += pageSize
+    }
+
+    // Build lookup of existing texts by role
+    const existingByRole = {
+      known: new Map(),  // text -> { audioId, voiceId, s3Bucket, s3Key }
+      target1: new Map(),
+      target2: new Map()
+    }
+
+    // Also collect sample audio for each role (for voice matching)
+    const samplesByRole = {
+      known: null,
+      target1: null,
+      target2: null
+    }
+
+    for (const ca of existingAudio) {
+      const text = ca.audio_files?.texts?.content
+      const role = ca.role
+      if (text && existingByRole[role]) {
+        existingByRole[role].set(text, {
+          audioId: ca.audio_files.id,
+          voiceId: ca.audio_files.voice_id,
+          s3Bucket: ca.audio_files.s3_bucket,
+          s3Key: ca.audio_files.s3_key
+        })
+        // Keep first audio as sample for voice matching
+        if (!samplesByRole[role]) {
+          samplesByRole[role] = {
+            text,
+            audioId: ca.audio_files.id,
+            voiceId: ca.audio_files.voice_id,
+            s3Bucket: ca.audio_files.s3_bucket,
+            s3Key: ca.audio_files.s3_key
+          }
+        }
+      }
+    }
+
+    // Find missing by role
+    const missingByRole = {
+      known: [],
+      target1: [],
+      target2: []
+    }
+    const seen = {
+      known: new Set(),
+      target1: new Set(),
+      target2: new Set()
+    }
+
+    for (const p of phrases) {
+      const seedId = `S${String(p.seed_number).padStart(4, '0')}`
+      const legoId = `${seedId}L${String(p.lego_index).padStart(2, '0')}`
+
+      // Check known
+      if (p.known_text && !existingByRole.known.has(p.known_text) && !seen.known.has(p.known_text)) {
+        seen.known.add(p.known_text)
+        missingByRole.known.push({ text: p.known_text, seedId, legoId })
+      }
+      // Check target1
+      if (p.target_text && !existingByRole.target1.has(p.target_text) && !seen.target1.has(p.target_text)) {
+        seen.target1.add(p.target_text)
+        missingByRole.target1.push({ text: p.target_text, seedId, legoId })
+      }
+      // Check target2
+      if (p.target_text && !existingByRole.target2.has(p.target_text) && !seen.target2.has(p.target_text)) {
+        seen.target2.add(p.target_text)
+        missingByRole.target2.push({ text: p.target_text, seedId, legoId })
+      }
+    }
+
+    // Generate signed URLs for sample audio
+    for (const role of ['known', 'target1', 'target2']) {
+      if (samplesByRole[role]) {
+        try {
+          const url = await s3Service.getAudioSignedUrl(samplesByRole[role].audioId, 3600, {
+            bucket: samplesByRole[role].s3Bucket,
+            s3Key: samplesByRole[role].s3Key
+          })
+          samplesByRole[role].url = url
+        } catch (e) {
+          logger.warn(`Could not get signed URL for ${role} sample: ${e.message}`)
+        }
+      }
+    }
+
+    const totalMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length
+
+    res.json({
+      success: true,
+      courseCode,
+      totalMissing,
+      totalPhrases: phrases.length,
+      existingCounts: {
+        known: existingByRole.known.size,
+        target1: existingByRole.target1.size,
+        target2: existingByRole.target2.size
+      },
+      missing: missingByRole,
+      samples: samplesByRole  // Sample audio for each role for voice matching
+    })
+
+  } catch (error) {
+    logger.error(`Missing audio error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // POST /api/production/:courseCode/audio-pipeline/sync-s3
 // Sync existing S3 audio files to Supabase (import existing audio)
 app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) => {

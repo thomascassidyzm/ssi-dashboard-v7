@@ -80,6 +80,9 @@
           :estimated-time="estimatedTime"
         />
 
+        <!-- Missing Audio Details -->
+        <MissingAudio :course-code="courseCode" />
+
         <!-- Queue Controls -->
         <QueueControls
           :can-start="canStartGeneration"
@@ -109,6 +112,7 @@ import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import QueueControls from './components/QueueControls.vue'
 import QueueList from './components/QueueList.vue'
+import MissingAudio from './components/MissingAudio.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
 const route = useRoute()
