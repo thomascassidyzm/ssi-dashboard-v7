@@ -332,7 +332,8 @@ export const useProductionStore = defineStore('production', () => {
             audioCourseStats.value = {
               total: planData.total || 0,
               existing: planData.existing || 0,
-              missing: planData.missing || planData.total || 0,
+              // Use ?? to handle 0 correctly (|| treats 0 as falsy)
+              missing: planData.missing ?? (planData.total - planData.existing) ?? 0,
               phraseNeeds: planData.phraseNeeds || 0,
               introNeeds: planData.introNeeds || 0
             }
