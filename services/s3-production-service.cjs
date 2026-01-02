@@ -120,10 +120,15 @@ async function saveAudioMetadata(courseCode, metadataData) {
 }
 
 // Get signed URL for audio file
-async function getAudioSignedUrl(uuid, expiresIn = 3600) {
+// Accepts optional bucket and s3Key for v12 audio (where path is stored in DB)
+async function getAudioSignedUrl(uuid, expiresIn = 3600, options = {}) {
+  const bucket = options.bucket || BUCKET
+  // Use provided s3Key if available, otherwise construct legacy path
+  const key = options.s3Key || `ssiborg-assets/mastered/${uuid}.mp3`
+
   const command = new GetObjectCommand({
-    Bucket: BUCKET,
-    Key: `ssiborg-assets/mastered/${uuid}.mp3`
+    Bucket: bucket,
+    Key: key
   })
 
   return getSignedUrl(s3Client, command, { expiresIn })

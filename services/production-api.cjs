@@ -761,10 +761,10 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
       textId = textData.id
     }
 
-    // Step 2: Find audio_files with this text_id
+    // Step 2: Find audio_files with this text_id (include s3 path info)
     const { data: audioFiles } = await supabase
       .from('audio_files')
-      .select('id')
+      .select('id, s3_bucket, s3_key')
       .eq('text_id', textId)
 
     if (!audioFiles || audioFiles.length === 0) {
@@ -772,6 +772,7 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     }
 
     const audioIds = audioFiles.map(a => a.id)
+    const audioFileMap = new Map(audioFiles.map(a => [a.id, a]))
 
     // Step 3: Find in course_audio for this course and role
     const { data: courseAudio } = await supabase
@@ -802,8 +803,12 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
       return res.status(404).json({ error: `No audio with role ${role} for this text` })
     }
 
-    // Step 4: Get signed URL
-    const url = await s3Service.getAudioSignedUrl(audioId)
+    // Step 4: Get signed URL using actual s3_key from database
+    const audioFile = audioFileMap.get(audioId)
+    const url = await s3Service.getAudioSignedUrl(audioId, 3600, {
+      bucket: audioFile?.s3_bucket,
+      s3Key: audioFile?.s3_key
+    })
     res.json({ url, uuid: audioId })
   } catch (error) {
     logger.error('Error fetching audio by text:', error)
