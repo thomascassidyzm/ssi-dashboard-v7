@@ -183,10 +183,12 @@ app.use('/phase8', createProxyMiddleware({
 }));
 
 // Production API proxy (QA workflow, flags, WebSocket) - BEFORE general API proxy
-app.use('/api/production', createProxyMiddleware({
+// Use filter function to preserve full path (don't strip /api/production)
+app.use(createProxyMiddleware({
   target: 'http://localhost:3470',
   changeOrigin: true,
   ws: true, // Enable WebSocket proxying
+  filter: (pathname) => pathname.startsWith('/api/production'),
   logLevel: 'info',
   onProxyReq: (proxyReq, req, res) => {
     console.log(`[Production API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3470${req.originalUrl}`);
@@ -202,12 +204,12 @@ app.use('/api/production', createProxyMiddleware({
 }));
 
 // API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
-// Use a filter function to match /api/* without stripping the prefix
+// Use a filter function to match /api/* but EXCLUDE /api/production/* (handled above)
 app.use(createProxyMiddleware({
   target: 'http://localhost:3456',
   changeOrigin: true,
-  // Only proxy requests starting with /api/
-  filter: (pathname, req) => pathname.startsWith('/api/'),
+  // Only proxy /api/* requests that are NOT /api/production/*
+  filter: (pathname, req) => pathname.startsWith('/api/') && !pathname.startsWith('/api/production'),
   logLevel: 'info',
   onProxyReq: (proxyReq, req, res) => {
     console.log(`[API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3456${req.originalUrl}`);

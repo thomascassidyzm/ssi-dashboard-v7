@@ -52,7 +52,20 @@ const ENVIRONMENTS = {
   }
 }
 
-const selectedEnv = ref('tom')
+// SYNCHRONOUS: Ensure localStorage is set BEFORE any async code runs
+// This prevents race conditions with production store loading
+const savedEnv = localStorage.getItem('ssi_environment')
+const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : 'tom'
+if (!savedEnv) {
+  localStorage.setItem('ssi_environment', 'tom')
+}
+const expectedUrl = ENVIRONMENTS[initialEnv].url
+if (localStorage.getItem('api_base_url') !== expectedUrl) {
+  localStorage.setItem('api_base_url', expectedUrl)
+  console.log(`[EnvironmentSwitcher] Initialized api_base_url to: ${expectedUrl}`)
+}
+
+const selectedEnv = ref(initialEnv)
 const connectionStatus = ref({ connected: false, message: 'Checking...' })
 const showDebug = ref(false)
 
@@ -61,17 +74,22 @@ const currentApiUrl = computed(() => {
 })
 
 onMounted(() => {
-  // Load saved environment from localStorage
+  // Load saved environment from localStorage, or default to 'tom'
   const saved = localStorage.getItem('ssi_environment')
   if (saved && ENVIRONMENTS[saved]) {
     selectedEnv.value = saved
-    // Ensure api_base_url is synced with environment (in case it got out of sync)
-    const savedUrl = ENVIRONMENTS[saved].url
-    const currentApiUrl = localStorage.getItem('api_base_url')
-    if (currentApiUrl !== savedUrl) {
-      localStorage.setItem('api_base_url', savedUrl)
-      console.log(`[EnvironmentSwitcher] Synced api_base_url to ${saved}: ${savedUrl}`)
-    }
+  } else {
+    // No saved environment - default to Tom's Machine and save it
+    selectedEnv.value = 'tom'
+    localStorage.setItem('ssi_environment', 'tom')
+  }
+
+  // Always ensure api_base_url is synced with current environment
+  const targetUrl = ENVIRONMENTS[selectedEnv.value].url
+  const currentApiUrl = localStorage.getItem('api_base_url')
+  if (currentApiUrl !== targetUrl) {
+    localStorage.setItem('api_base_url', targetUrl)
+    console.log(`[EnvironmentSwitcher] Set api_base_url to ${selectedEnv.value}: ${targetUrl}`)
   }
 
   // Check connection
