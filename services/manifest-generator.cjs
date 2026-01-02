@@ -94,6 +94,82 @@ function generateNodeId(seedNumber, legoIndex, knownText, targetText) {
 }
 
 // =============================================================================
+// V12 AUDIO LOOKUP (for human-recorded courses)
+// =============================================================================
+
+/**
+ * Build a map of text -> audio info from v12 schema
+ * Used for courses with human-recorded audio (no TTS voices set)
+ *
+ * @param {string} courseCode - Course code
+ * @returns {Promise<Map>} Map of normalized_text -> { source?, target1?, target2?, presentation? }
+ */
+async function buildV12AudioMap(courseCode) {
+  const audioMap = new Map();  // text_content -> { role: { id, duration_ms } }
+
+  console.log(`  Loading v12 audio for ${courseCode}...`);
+
+  // Query course_audio joined with audio_files and texts
+  // Paginate to get all records (Supabase default limit is 1000)
+  const PAGE_SIZE = 1000;
+  let offset = 0;
+  let totalLoaded = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    const { data: courseAudio, error } = await supabase
+      .from('course_audio')
+      .select(`
+        role,
+        audio_id,
+        audio_files!inner (
+          id,
+          duration_ms,
+          text_id,
+          texts!inner (
+            content,
+            content_normalized
+          )
+        )
+      `)
+      .eq('course_code', courseCode)
+      .range(offset, offset + PAGE_SIZE - 1);
+
+    if (error) {
+      console.warn(`  Warning: Could not load v12 audio: ${error.message}`);
+      return audioMap;
+    }
+
+    // Build the map from this batch
+    for (const ca of courseAudio || []) {
+      const textContent = ca.audio_files?.texts?.content;
+      if (!textContent) continue;
+
+      // Map role names (v12 uses 'known' instead of 'source')
+      let role = ca.role;
+      if (role === 'known') role = 'source';
+
+      if (!audioMap.has(textContent)) {
+        audioMap.set(textContent, {});
+      }
+
+      const entry = audioMap.get(textContent);
+      entry[role] = {
+        id: ca.audio_id,
+        duration_ms: ca.audio_files?.duration_ms || 0
+      };
+    }
+
+    totalLoaded += courseAudio.length;
+    hasMore = courseAudio.length === PAGE_SIZE;
+    offset += PAGE_SIZE;
+  }
+
+  console.log(`  Loaded ${totalLoaded} audio records, ${audioMap.size} unique texts from v12 schema`);
+  return audioMap;
+}
+
+// =============================================================================
 // MAIN GENERATOR
 // =============================================================================
 
@@ -128,13 +204,22 @@ async function generateManifest(courseCode, options = {}) {
   const targetLang = LANG_CODES[targetLang3]?.short || targetLang3;
   const targetName = LANG_CODES[targetLang3]?.name || targetLang3;
 
-  // Get voice assignments
+  // Get voice assignments (may be null for human-recorded courses)
   const voiceAssignments = {
     source: course.known_voice,
     target1: course.target_voice_1,
     target2: course.target_voice_2,
     presentation: course.presentation_voice || course.known_voice  // Default to known_voice if not set
   };
+
+  // Check if we need v12 fallback (when target voices are not set)
+  const needsV12Fallback = !voiceAssignments.target1 || !voiceAssignments.target2;
+  let v12AudioMap = null;
+
+  if (needsV12Fallback) {
+    console.log(`  Voice assignments incomplete, using v12 schema fallback`);
+    v12AudioMap = await buildV12AudioMap(courseCode);
+  }
 
   // Get all seeds with LEGOs
   const { data: seeds, error: seedsError } = await supabase
@@ -224,12 +309,12 @@ async function generateManifest(courseCode, options = {}) {
 
   /**
    * Add a sample entry to the dictionary
+   * Supports both voice-based UUID generation (TTS) and v12 lookup (human-recorded)
    */
   async function addSample(text, lang3, role, voiceId) {
-    if (!text || text.trim() === '' || !voiceId) return;
+    if (!text || text.trim() === '') return;
 
     const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
-    const sampleId = generateSampleId(voiceId, text, lang3, role, cadence);
 
     if (!samples[text]) {
       samples[text] = [];
@@ -237,19 +322,41 @@ async function generateManifest(courseCode, options = {}) {
 
     // Check for duplicate role
     const existing = samples[text].find(s => s.role === role);
-    if (!existing) {
-      // Look up duration from audio_samples table
+    if (existing) return;
+
+    let sampleId = null;
+    let duration = 0;
+
+    // Try v12 lookup first (for human-recorded audio)
+    if (v12AudioMap && v12AudioMap.has(text)) {
+      const audioInfo = v12AudioMap.get(text)[role];
+      if (audioInfo) {
+        sampleId = audioInfo.id;
+        duration = audioInfo.duration_ms || 0;
+      }
+    }
+
+    // Fall back to voice-based UUID generation (for TTS audio)
+    if (!sampleId && voiceId) {
+      sampleId = generateSampleId(voiceId, text, lang3, role, cadence);
+
+      // Look up duration from audio_samples table (legacy)
       const { data: audioData } = await supabase
         .from('audio_samples')
         .select('duration_ms')
         .eq('uuid', sampleId)
         .single();
 
+      duration = audioData?.duration_ms || 0;
+    }
+
+    // Only add if we found audio
+    if (sampleId) {
       samples[text].push({
         id: sampleId,
         cadence: cadence,
         role: role,
-        duration: audioData?.duration_ms || 0
+        duration: duration
       });
       sampleStats[role] = (sampleStats[role] || 0) + 1;
     }
