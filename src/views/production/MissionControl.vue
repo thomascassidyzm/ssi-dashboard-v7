@@ -23,6 +23,7 @@
             </option>
           </select>
         </div>
+        <EnvironmentSwitcher />
         <div class="ws-status" :class="{ connected: store.wsConnected }">
           <div class="ws-indicator" />
           <span>{{ store.wsConnected ? 'Live' : 'Offline' }}</span>
@@ -152,6 +153,7 @@ import ProgressRing from './components/ProgressRing.vue'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
+import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
 
 // Get API base URL (same as other components)
 // On Vercel deployment, uses relative URLs (/api/...) which Vercel handles
