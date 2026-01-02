@@ -65,6 +65,13 @@ onMounted(() => {
   const saved = localStorage.getItem('ssi_environment')
   if (saved && ENVIRONMENTS[saved]) {
     selectedEnv.value = saved
+    // Ensure api_base_url is synced with environment (in case it got out of sync)
+    const savedUrl = ENVIRONMENTS[saved].url
+    const currentApiUrl = localStorage.getItem('api_base_url')
+    if (currentApiUrl !== savedUrl) {
+      localStorage.setItem('api_base_url', savedUrl)
+      console.log(`[EnvironmentSwitcher] Synced api_base_url to ${saved}: ${savedUrl}`)
+    }
   }
 
   // Check connection
