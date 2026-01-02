@@ -19,10 +19,10 @@ const { SchemaValidator } = require('./schema-validator.cjs')
 // =============================================================================
 // MANIFEST CACHING
 // =============================================================================
-// Cache generated manifests to avoid regenerating on every request
-// TTL: 2 minutes - long enough for page navigation, short enough for data updates
+// Cache generated manifests - DISABLED during development
+// Re-enable once testing is complete
 const manifestCache = new Map()
-const MANIFEST_CACHE_TTL_MS = 2 * 60 * 1000
+const MANIFEST_CACHE_TTL_MS = 0 // DISABLED - caching causes issues during testing
 
 async function getCachedManifest(courseCode) {
   const cached = manifestCache.get(courseCode)

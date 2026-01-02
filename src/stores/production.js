@@ -267,9 +267,9 @@ export const useProductionStore = defineStore('production', () => {
     return stages
   })
 
-  // Cache tracking for frontend data
+  // Cache tracking for frontend data - DISABLED during development
   const lastLoadTime = ref({}) // courseCode -> timestamp
-  const CACHE_TTL_MS = 2 * 60 * 1000 // 2 minutes - match backend cache
+  const CACHE_TTL_MS = 0 // DISABLED - caching causes too many issues during testing
 
   // Actions
   async function loadCourse(courseCode, forceRefresh = false) {
