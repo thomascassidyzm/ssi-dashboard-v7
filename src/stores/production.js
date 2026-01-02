@@ -335,38 +335,36 @@ export const useProductionStore = defineStore('production', () => {
       sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
-      // If stub manifest (pre-audio state), auto-load pipeline plan
-      if (manifestData._stub) {
-        console.log('[Production] Course in pre-audio state, loading pipeline plan...')
-        try {
-          const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
-          if (planRes.ok) {
-            const planData = await planRes.json()
-            // Populate full course stats
-            audioCourseStats.value = {
-              total: planData.total || 0,
-              existing: planData.existing || 0,
-              // Use ?? to handle 0 correctly (|| treats 0 as falsy)
-              missing: planData.missing ?? (planData.total - planData.existing) ?? 0,
-              phraseNeeds: planData.phraseNeeds || 0,
-              introNeeds: planData.introNeeds || 0
-            }
-            // Populate pipeline stats from plan
-            costEstimate.value = {
-              estimated: planData.estimatedCost || '$0.00',
-              estimatedTime: planData.estimatedTime || '0 min',
-              breakdown: planData.breakdown || []
-            }
-            // Create generation queue items from plan counts (use total for full visibility)
-            generationQueue.value = Array.from({ length: planData.total || 0 }, (_, i) => ({
-              id: `pending-${i}`,
-              status: i < (planData.existing || 0) ? 'complete' : 'queued'
-            }))
-            console.log(`[Production] Loaded plan: ${planData.total} total, ${planData.existing} existing, ${planData.missing} to generate`)
+      // Always load pipeline plan for stats (not just for stub manifests)
+      console.log('[Production] Loading pipeline plan for stats...')
+      try {
+        const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
+        if (planRes.ok) {
+          const planData = await planRes.json()
+          // Populate full course stats
+          audioCourseStats.value = {
+            total: planData.total || 0,
+            existing: planData.existing || 0,
+            // Use ?? to handle 0 correctly (|| treats 0 as falsy)
+            missing: planData.missing ?? (planData.total - planData.existing) ?? 0,
+            phraseNeeds: planData.phraseNeeds || 0,
+            introNeeds: planData.introNeeds || 0
           }
-        } catch (planErr) {
-          console.warn('[Production] Could not load pipeline plan:', planErr.message)
+          // Populate pipeline stats from plan
+          costEstimate.value = {
+            estimated: planData.estimatedCost || '$0.00',
+            estimatedTime: planData.estimatedTime || '0 min',
+            breakdown: planData.breakdown || []
+          }
+          // Create generation queue items from plan counts (use total for full visibility)
+          generationQueue.value = Array.from({ length: planData.total || 0 }, (_, i) => ({
+            id: `pending-${i}`,
+            status: i < (planData.existing || 0) ? 'complete' : 'queued'
+          }))
+          console.log(`[Production] Loaded plan: ${planData.total} total, ${planData.existing} existing, ${planData.missing} to generate`)
         }
+      } catch (planErr) {
+        console.warn('[Production] Could not load pipeline plan:', planErr.message)
       }
 
       // Mark this course data as fresh

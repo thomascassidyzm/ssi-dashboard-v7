@@ -131,6 +131,7 @@ SELECT
 
   -- Practice metadata
   p.word_count,
+  p.target_syllable_count,
   p.lego_count,
   p.difficulty,
   p.register,
