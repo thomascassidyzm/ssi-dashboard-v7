@@ -184,17 +184,29 @@ async function extractAudioNeeds(courseCode) {
 
   logger.log(`Voice config:`, voiceConfig)
 
-  // Get practice phrases
-  const { data: phrases, error: phraseErr } = await supabase
-    .from('course_practice_phrases')
-    .select('known_text, target_text, seed_number, lego_index, position')
-    .eq('course_code', courseCode)
-    .order('seed_number')
-    .order('lego_index')
-    .order('position')
+  // Get practice phrases (paginate to avoid 1000 row limit)
+  let phrases = []
+  let offset = 0
+  const pageSize = 1000
 
-  if (phraseErr) throw new Error(`Failed to get phrases: ${phraseErr.message}`)
-  if (!phrases?.length) throw new Error(`No phrases found for ${courseCode}`)
+  while (true) {
+    const { data: page, error: phraseErr } = await supabase
+      .from('course_practice_phrases')
+      .select('known_text, target_text, seed_number, lego_index, position')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index')
+      .order('position')
+      .range(offset, offset + pageSize - 1)
+
+    if (phraseErr) throw new Error(`Failed to get phrases: ${phraseErr.message}`)
+    if (!page || page.length === 0) break
+    phrases = phrases.concat(page)
+    if (page.length < pageSize) break
+    offset += pageSize
+  }
+
+  if (!phrases.length) throw new Error(`No phrases found for ${courseCode}`)
 
   logger.log(`Found ${phrases.length} practice phrases`)
 
@@ -332,33 +344,56 @@ async function extractIntroductionNeeds(courseCode, presentationVoice, knownLang
 /**
  * FAST check for planning - batch query to see what audio already exists
  * Does NOT create records, just checks existence
+ * @param {Array} needs - Audio needs array
+ * @param {string} courseCode - Course code to check audio for
  */
-async function checkAudioStatusFast(needs) {
+async function checkAudioStatusFast(needs, courseCode) {
   logger.log(`Fast-checking audio status for ${needs.length} needs`)
 
-  // Query existing audio_files that have s3_key set (already generated)
-  const { data: existingAudio, error } = await supabase
-    .from('audio_files')
-    .select('id, text_id, voice_id, cadence, s3_key, texts!inner(content, language)')
-    .not('s3_key', 'is', null)
+  // Query existing audio for THIS COURSE from course_audio (paginated)
+  let existingAudio = []
+  let offset = 0
+  const pageSize = 1000
 
-  if (error) {
-    logger.warn(`Could not query existing audio: ${error.message}`)
-    // Fall back to assuming all need generation
-    return {
-      results: needs.map(n => ({ ...n, needsGeneration: true })),
-      needsGeneration: needs
+  while (true) {
+    const { data: page, error } = await supabase
+      .from('course_audio')
+      .select(`
+        role,
+        audio_files!inner (
+          id,
+          voice_id,
+          cadence,
+          s3_key,
+          texts!inner (content, language)
+        )
+      `)
+      .eq('course_code', courseCode)
+      .not('audio_files.s3_key', 'is', null)
+      .range(offset, offset + pageSize - 1)
+
+    if (error) {
+      logger.warn(`Could not query existing audio: ${error.message}`)
+      break
+    }
+
+    if (!page || page.length === 0) break
+    existingAudio = existingAudio.concat(page)
+    if (page.length < pageSize) break
+    offset += pageSize
+  }
+
+  // Build lookup set of existing audio (normalized text + language + voiceId + cadence)
+  const existingSet = new Set()
+  for (const ca of existingAudio || []) {
+    const audio = ca.audio_files
+    if (audio?.texts?.content) {
+      const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}|${audio.cadence}`
+      existingSet.add(key)
     }
   }
 
-  // Build lookup set of existing audio (normalized text + voice + cadence)
-  const existingSet = new Set()
-  for (const audio of existingAudio || []) {
-    const key = `${audio.texts.content.toLowerCase().trim()}|${audio.texts.language}|${audio.voice_id}|${audio.cadence}`
-    existingSet.add(key)
-  }
-
-  logger.log(`Found ${existingSet.size} existing audio files in database`)
+  logger.log(`Found ${existingSet.size} existing audio entries for ${courseCode}`)
 
   // Check each need against existing
   const results = []
@@ -606,7 +641,7 @@ app.post('/plan', async (req, res) => {
     const { needs, voiceConfig, phraseCount, introCount } = await extractAudioNeeds(courseCode)
 
     // Check what already exists (fast batch query for planning)
-    const { results, needsGeneration } = await checkAudioStatusFast(needs)
+    const { results, needsGeneration } = await checkAudioStatusFast(needs, courseCode)
 
     const plan = {
       courseCode,
@@ -707,7 +742,7 @@ app.post('/generate', async (req, res) => {
         const { needs, phraseCount } = await extractAudioNeeds(courseCode)
 
         // Fast check what needs generation (no record creation - that happens on-the-fly)
-        const { results, needsGeneration } = await checkAudioStatusFast(needs)
+        const { results, needsGeneration } = await checkAudioStatusFast(needs, courseCode)
 
         jobState.progress.total = needsGeneration.length
         logger.log(`Generating ${needsGeneration.length} audio files`)
