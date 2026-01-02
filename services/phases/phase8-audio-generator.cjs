@@ -383,21 +383,33 @@ async function extractPhraseAudioNeedsFromSupabase(courseCode, targetLang, known
   try {
     const supabase = db.getClient()
 
-    // Get all practice phrases for this course
-    const { data: phrases, error } = await supabase
-      .from('course_practice_phrases')
-      .select('seed_number, lego_index, position, known_text, target_text')
-      .eq('course_code', courseCode)
-      .order('seed_number')
-      .order('lego_index')
-      .order('position')
+    // Paginate to avoid 1000 row limit
+    let phrases = []
+    let offset = 0
+    const pageSize = 1000
 
-    if (error) {
-      logger.warn(`Error loading practice phrases: ${error.message}`)
-      return []
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('course_practice_phrases')
+        .select('seed_number, lego_index, position, known_text, target_text')
+        .eq('course_code', courseCode)
+        .order('seed_number')
+        .order('lego_index')
+        .order('position')
+        .range(offset, offset + pageSize - 1)
+
+      if (error) {
+        logger.warn(`Error loading practice phrases: ${error.message}`)
+        return []
+      }
+
+      if (!page || page.length === 0) break
+      phrases = phrases.concat(page)
+      if (page.length < pageSize) break
+      offset += pageSize
     }
 
-    if (!phrases || phrases.length === 0) {
+    if (phrases.length === 0) {
       logger.log(`No practice phrases found for ${courseCode}`)
       return []
     }
@@ -1160,24 +1172,40 @@ app.post('/plan', async (req, res) => {
     }
 
     // Query existing audio for this course from course_audio joined with texts
+    // Paginate to avoid 1000 row limit
     logger.log(`Checking existing audio for ${courseCode} by text lookup...`)
 
-    const { data: existingAudio, error: audioError } = await supabase
-      .from('course_audio')
-      .select(`
-        role,
-        audio_files!inner (
-          id,
-          texts!inner (
-            content
-          )
-        )
-      `)
-      .eq('course_code', courseCode)
+    let existingAudio = []
+    let audioOffset = 0
+    const audioPageSize = 1000
 
-    if (audioError) {
-      logger.warn(`Error checking existing audio: ${audioError.message}`)
+    while (true) {
+      const { data: page, error: audioError } = await supabase
+        .from('course_audio')
+        .select(`
+          role,
+          audio_files!inner (
+            id,
+            texts!inner (
+              content
+            )
+          )
+        `)
+        .eq('course_code', courseCode)
+        .range(audioOffset, audioOffset + audioPageSize - 1)
+
+      if (audioError) {
+        logger.warn(`Error checking existing audio: ${audioError.message}`)
+        break
+      }
+
+      if (!page || page.length === 0) break
+      existingAudio = existingAudio.concat(page)
+      if (page.length < audioPageSize) break
+      audioOffset += audioPageSize
     }
+
+    logger.log(`Found ${existingAudio.length} existing course_audio entries`)
 
     // Build lookup: role -> Set of texts that have audio
     const existingByRole = {
