@@ -1969,8 +1969,20 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
 }
 
 // Get script view data - all phrases grouped by seed and LEGO
+// Supports pagination via query params: seedStart, seedEnd (e.g., S0001, S0030)
 app.get('/api/production/:courseCode/script-view', async (req, res) => {
   const { courseCode } = req.params
+  const { seedStart, seedEnd } = req.query
+
+  // Parse seed range from query params (S0001 -> 1, S0030 -> 30)
+  const parseSeedNumber = (s) => {
+    if (!s) return null
+    const match = String(s).match(/(\d+)/)
+    return match ? parseInt(match[1], 10) : null
+  }
+  const startNum = parseSeedNumber(seedStart)
+  const endNum = parseSeedNumber(seedEnd)
+
   try {
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
@@ -1978,8 +1990,8 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    // Query all seeds with their LEGOs and phrases in a single nested query
-    const { data: seeds, error } = await supabase
+    // Build query with optional seed range filter
+    let query = supabase
       .from('course_seeds')
       .select(`
         id,
@@ -2005,7 +2017,18 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
         )
       `)
       .eq('course_code', courseCode)
-      .order('seed_number', { ascending: true })
+
+    // Apply seed range filter if provided
+    if (startNum !== null) {
+      query = query.gte('seed_number', startNum)
+    }
+    if (endNum !== null) {
+      query = query.lte('seed_number', endNum)
+    }
+
+    query = query.order('seed_number', { ascending: true })
+
+    const { data: seeds, error } = await query
 
     if (error) {
       logger.error(`Script view query error for ${courseCode}:`, error)
@@ -2098,11 +2121,26 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       }
     })
 
-    logger.info(`Returning script view for ${courseCode}: ${transformedSeeds.length} seeds`)
+    // Get total seed count for pagination info (without range filter)
+    const { count: totalSeedCount } = await supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    const rangeInfo = startNum || endNum
+      ? ` (range: ${startNum || 1}-${endNum || totalSeedCount})`
+      : ' (all)'
+    logger.info(`Returning script view for ${courseCode}: ${transformedSeeds.length} seeds${rangeInfo}`)
 
     res.json({
       courseCode,
-      seeds: transformedSeeds
+      seeds: transformedSeeds,
+      pagination: {
+        returned: transformedSeeds.length,
+        total: totalSeedCount || transformedSeeds.length,
+        seedStart: startNum,
+        seedEnd: endNum
+      }
     })
   } catch (err) {
     logger.error(`Failed to get script view for ${courseCode}:`, err)

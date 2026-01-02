@@ -18,8 +18,8 @@
             {{ courseCode }}
           </div>
           <div v-if="totalSeeds > 0" class="stats text-sm text-slate-400">
-            <span v-if="filteredSeeds.length < totalSeeds">
-              {{ filteredSeeds.length }} of {{ totalSeeds }} seeds
+            <span v-if="loadedSeeds < totalSeeds">
+              {{ loadedSeeds }} of {{ totalSeeds }} seeds loaded, {{ totalPhrases }} phrases
             </span>
             <span v-else>
               {{ totalSeeds }} seeds, {{ totalPhrases }} phrases
@@ -272,6 +272,7 @@ const courseCode = computed(() => route.params.courseCode as string || 'spa_for_
 const isLoading = ref(false);
 const error = ref<string | null>(null);
 const seeds = ref<SeedRowData[]>([]);
+const totalSeedsInCourse = ref(0);  // Total seeds in course (from API)
 
 // Filter State - default to first 30 seeds for performance
 const filterStatus = ref<SampleStatus | 'all' | 'flagged'>('all');
@@ -280,7 +281,10 @@ const filterSeedEnd = ref('S0030');
 const filterSearchText = ref('');
 const filterFlaggedOnly = ref(false);
 
-// Pagination
+// Track when seed range changes to trigger reload
+const lastLoadedRange = ref({ start: '', end: '' });
+
+// Pagination (for rendering within loaded seeds)
 const visibleSeedCount = ref(50);
 const hasMoreSeeds = computed(() => visibleSeedCount.value < filteredSeeds.value.length);
 
@@ -324,7 +328,8 @@ const getApiBaseUrl = (): string => {
 };
 
 // Computed
-const totalSeeds = computed(() => seeds.value.length);
+const totalSeeds = computed(() => totalSeedsInCourse.value || seeds.value.length);
+const loadedSeeds = computed(() => seeds.value.length);
 
 const totalPhrases = computed(() => {
   return seeds.value.reduce((total, seed) => {
@@ -355,16 +360,8 @@ const filteredSeeds = computed(() => {
     });
   }
 
-  // Filter by seed range
-  if (filterSeedStart.value || filterSeedEnd.value) {
-    result = result.filter(seed => {
-      const seedNum = parseInt(seed.seed_id.replace(/\D/g, ''));
-      const startNum = filterSeedStart.value ? parseInt(filterSeedStart.value.replace(/\D/g, '')) : 0;
-      const endNum = filterSeedEnd.value ? parseInt(filterSeedEnd.value.replace(/\D/g, '')) : Infinity;
-
-      return seedNum >= startNum && seedNum <= endNum;
-    });
-  }
+  // Note: Seed range filtering is now done server-side via API params
+  // No need to filter by range here since seeds are already pre-filtered
 
   // Filter by search text
   if (filterSearchText.value) {
@@ -413,13 +410,25 @@ const keyboardShortcuts: KeyboardShortcut[] = [
 ];
 
 // Methods
-const loadCourseData = async () => {
+const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   isLoading.value = true;
   error.value = null;
 
+  // Use provided values or current filter values
+  const start = seedStart ?? filterSeedStart.value;
+  const end = seedEnd ?? filterSeedEnd.value;
+
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/script-view`, {
+
+    // Build URL with seed range params for server-side filtering
+    const params = new URLSearchParams();
+    if (start) params.set('seedStart', start);
+    if (end) params.set('seedEnd', end);
+    const queryString = params.toString();
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view${queryString ? '?' + queryString : ''}`;
+
+    const response = await fetch(url, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
       }
@@ -430,6 +439,14 @@ const loadCourseData = async () => {
 
     // Transform script-view data into SeedRowData format
     seeds.value = transformScriptViewToSeeds(data);
+
+    // Store pagination info
+    if (data.pagination) {
+      totalSeedsInCourse.value = data.pagination.total;
+    }
+
+    // Track what range we loaded
+    lastLoadedRange.value = { start, end };
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occurred';
     console.error('Error loading course data:', err);
@@ -621,6 +638,14 @@ const loadMoreSeeds = () => {
 const onFilterChange = () => {
   // Reset pagination when filters change
   visibleSeedCount.value = 50;
+
+  // Check if seed range changed - if so, reload from server
+  const rangeChanged = lastLoadedRange.value.start !== filterSeedStart.value
+    || lastLoadedRange.value.end !== filterSeedEnd.value;
+
+  if (rangeChanged) {
+    loadCourseData(filterSeedStart.value, filterSeedEnd.value);
+  }
 };
 
 const clearFilters = () => {
