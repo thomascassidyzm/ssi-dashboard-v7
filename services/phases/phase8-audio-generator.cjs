@@ -1141,49 +1141,92 @@ app.post('/plan', async (req, res) => {
     // Get voice config
     const voiceConfig = voices || await db.getCourseVoices(courseCode) || {}
 
-    // Generate all UUIDs first
-    const needsWithUuids = needs.map(need => {
-      const voiceRole = need.role === 'presentation' ? 'known' : need.role
-      const voiceId = voiceConfig[voiceRole]
-      if (!voiceId) return { ...need, uuid: null, missingVoice: true }
-      const cadence = getCadenceForRole(need.role)
-      const uuid = db.generateAudioUUID(voiceId, need.text, need.lang, need.role, cadence)
-      return { ...need, uuid, voiceId }
-    })
+    // TEXT-FIRST LOOKUP: Check which texts already have audio in the database
+    // This is the v12 approach - look up by text content, not deterministic UUIDs
+    const supabase = db.getClient()
 
-    // Count missing voices
-    const missingVoice = needsWithUuids.filter(n => n.missingVoice).length
-    const validNeeds = needsWithUuids.filter(n => n.uuid)
-    const allUuids = validNeeds.map(n => n.uuid)
+    // Collect unique texts by role
+    const textsByRole = {
+      known: new Set(),
+      target1: new Set(),
+      target2: new Set(),
+      introduction: new Set()
+    }
 
-    // Batch check ALL UUIDs for existence (efficient single query)
-    logger.log(`Batch checking ${allUuids.length} UUIDs for existence...`)
-    const existingUuids = db.isInitialized()
-      ? new Set(await db.checkSamplesExist(allUuids))
-      : new Set()
-    logger.log(`Found ${existingUuids.size} existing audio files`)
+    for (const need of needs) {
+      if (need.text && textsByRole[need.role]) {
+        textsByRole[need.role].add(need.text)
+      }
+    }
+
+    // Query existing audio for this course from course_audio joined with texts
+    logger.log(`Checking existing audio for ${courseCode} by text lookup...`)
+
+    const { data: existingAudio, error: audioError } = await supabase
+      .from('course_audio')
+      .select(`
+        role,
+        audio_files!inner (
+          id,
+          texts!inner (
+            content
+          )
+        )
+      `)
+      .eq('course_code', courseCode)
+
+    if (audioError) {
+      logger.warn(`Error checking existing audio: ${audioError.message}`)
+    }
+
+    // Build lookup: role -> Set of texts that have audio
+    const existingByRole = {
+      known: new Set(),
+      target1: new Set(),
+      target2: new Set(),
+      introduction: new Set()
+    }
+
+    for (const ca of existingAudio || []) {
+      const text = ca.audio_files?.texts?.content
+      const role = ca.role
+      if (text && existingByRole[role]) {
+        existingByRole[role].add(text)
+      }
+    }
+
+    // Count existing vs needed
+    let existing = 0
+    let toGenerate = 0
+    const samples = []
+
+    for (const need of needs) {
+      const hasAudio = existingByRole[need.role]?.has(need.text)
+      if (hasAudio) {
+        existing++
+      } else {
+        toGenerate++
+        if (samples.length < 10) {
+          samples.push({
+            text: need.text,
+            lang: need.lang,
+            role: need.role
+          })
+        }
+      }
+    }
+
+    logger.log(`Found ${existing} existing, ${toGenerate} to generate`)
 
     // Calculate counts
     const results = {
       total: needs.length,
       phraseNeeds: phraseNeeds.length,
       introNeeds: introNeeds.length,
-      existing: existingUuids.size,
-      toGenerate: validNeeds.length - existingUuids.size,
-      missingVoice,
-      samples: []
-    }
-
-    // Collect sample of what needs generation (first 10)
-    for (const need of validNeeds) {
-      if (!existingUuids.has(need.uuid) && results.samples.length < 10) {
-        results.samples.push({
-          text: need.text,
-          lang: need.lang,
-          role: need.role,
-          uuid: need.uuid
-        })
-      }
+      existing,
+      toGenerate,
+      missingVoice: 0,
+      samples
     }
 
     res.json({
