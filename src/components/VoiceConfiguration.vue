@@ -117,6 +117,30 @@
             </div>
 
             <div v-else-if="discoveredVoices.length > 0" class="voice-list">
+              <!-- Search -->
+              <div class="voice-search">
+                <input
+                  type="text"
+                  v-model="searchQuery"
+                  placeholder="Search voices..."
+                  class="search-input"
+                />
+              </div>
+
+              <!-- Locale Filter -->
+              <div class="locale-filter">
+                <select v-model="localeFilter" class="locale-select">
+                  <option value="all">All Regions ({{ discoveredVoices.length }})</option>
+                  <option
+                    v-for="locale in availableLocales"
+                    :key="locale.code"
+                    :value="locale.code"
+                  >
+                    {{ locale.name }}
+                  </option>
+                </select>
+              </div>
+
               <!-- Gender Filter -->
               <div class="voice-filter">
                 <button
@@ -132,7 +156,7 @@
               <!-- Voice Options -->
               <div class="voice-options">
                 <button
-                  v-for="voice in filteredVoices.slice(0, 12)"
+                  v-for="voice in filteredVoices.slice(0, 20)"
                   :key="voice.id"
                   :class="['voice-option', { previewing: previewingVoiceId === voice.id }]"
                   @click="selectVoiceForRole(role.id, voice)"
@@ -140,6 +164,7 @@
                   <div class="voice-info">
                     <span class="voice-name">{{ voice.displayName || voice.name }}</span>
                     <span :class="['voice-gender', voice.gender.toLowerCase()]">{{ voice.gender }}</span>
+                    <span v-if="localeFilter === 'all'" class="voice-locale">{{ voice.locale }}</span>
                   </div>
                   <button
                     @click.stop="previewVoice(voice, role.id)"
@@ -151,8 +176,8 @@
                 </button>
               </div>
 
-              <div v-if="filteredVoices.length > 12" class="more-voices">
-                + {{ filteredVoices.length - 12 }} more voices
+              <div v-if="filteredVoices.length > 20" class="more-voices">
+                + {{ filteredVoices.length - 20 }} more voices
               </div>
             </div>
 
@@ -229,6 +254,8 @@ const selectedProvider = ref('azure')
 const discovering = ref(false)
 const discoveredVoices = ref([])
 const genderFilter = ref('all')
+const localeFilter = ref('all')
+const searchQuery = ref('')
 const previewingVoiceId = ref(null)
 const testingRole = ref(null)
 
@@ -264,9 +291,50 @@ const sampleSentences = {
 }
 
 // Computed
+const availableLocales = computed(() => {
+  const locales = new Map()
+  for (const v of discoveredVoices.value) {
+    if (v.locale && !locales.has(v.locale)) {
+      locales.set(v.locale, v.localeName || v.locale)
+    }
+  }
+  // Sort by locale name, but put preferred locales first
+  const preferred = ['en-GB', 'es-ES', 'pt-PT', 'fr-FR', 'de-DE', 'it-IT']
+  return Array.from(locales.entries())
+    .sort((a, b) => {
+      const aPreferred = preferred.indexOf(a[0])
+      const bPreferred = preferred.indexOf(b[0])
+      if (aPreferred !== -1 && bPreferred === -1) return -1
+      if (bPreferred !== -1 && aPreferred === -1) return 1
+      if (aPreferred !== -1 && bPreferred !== -1) return aPreferred - bPreferred
+      return a[1].localeCompare(b[1])
+    })
+    .map(([code, name]) => ({ code, name }))
+})
+
 const filteredVoices = computed(() => {
-  if (genderFilter.value === 'all') return discoveredVoices.value
-  return discoveredVoices.value.filter(v => v.gender === genderFilter.value)
+  let voices = discoveredVoices.value
+
+  // Filter by gender
+  if (genderFilter.value !== 'all') {
+    voices = voices.filter(v => v.gender === genderFilter.value)
+  }
+
+  // Filter by locale
+  if (localeFilter.value !== 'all') {
+    voices = voices.filter(v => v.locale === localeFilter.value)
+  }
+
+  // Filter by search query
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase().trim()
+    voices = voices.filter(v =>
+      (v.displayName || v.name || '').toLowerCase().includes(query) ||
+      (v.localeName || '').toLowerCase().includes(query)
+    )
+  }
+
+  return voices
 })
 
 // Methods
@@ -310,6 +378,8 @@ async function setSpeed(roleId, speed) {
 function expandRole(roleId) {
   expandedRole.value = roleId
   genderFilter.value = 'all'
+  localeFilter.value = 'all'
+  searchQuery.value = ''
   discoveredVoices.value = []
   if (selectedProvider.value === 'azure') {
     discoverVoices(roleId)
@@ -874,6 +944,57 @@ onMounted(() => {
   font-size: 0.85rem;
 }
 
+/* Search */
+.voice-search {
+  margin-bottom: 12px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+}
+
+/* Locale Filter */
+.locale-filter {
+  margin-bottom: 12px;
+}
+
+.locale-select {
+  width: 100%;
+  padding: 8px 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+.locale-select:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
 .voice-filter {
   display: flex;
   gap: 4px;
@@ -948,6 +1069,15 @@ onMounted(() => {
 .voice-gender.male {
   background: #3b82f6;
   color: white;
+}
+
+.voice-locale {
+  padding: 2px 6px;
+  background: #334155;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  color: #94a3b8;
+  font-family: monospace;
 }
 
 .preview-btn {
