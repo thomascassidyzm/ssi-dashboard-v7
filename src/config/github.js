@@ -1,7 +1,7 @@
 /**
  * Course Data Configuration
  *
- * Course data is stored in S3 (popty-bach-lfs bucket).
+ * Course data is stored in S3 (ssi-audio-stage bucket).
  * Frontend fetches via API endpoints to avoid CORS issues.
  *
  * Architecture:

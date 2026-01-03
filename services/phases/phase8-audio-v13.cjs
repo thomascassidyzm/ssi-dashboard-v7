@@ -12,7 +12,9 @@ const express = require('express')
 const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { v4: uuidv4 } = require('uuid')
 const createLogger = require('../shared/logger.cjs')
+const ttsService = require('../tts-service.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 
@@ -241,14 +243,87 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // TODO: Actual TTS generation
-    // For now, return what would be generated
+    // Generate TTS audio for each item
+    const results = { success: 0, failed: 0, errors: [] }
+
+    for (const item of uniqueNeeded) {
+      try {
+        // Determine TTS provider from voice config
+        // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
+        const [provider, voiceName] = item.voiceId.split('_', 2)
+
+        // Determine cadence (known = natural, target = slow)
+        const speed = item.role === 'known' ? 1.0 : 0.7
+
+        // Generate TTS audio
+        let audioBuffer
+        if (provider === 'azure') {
+          audioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+            subscriptionKey: process.env.AZURE_SPEECH_KEY,
+            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+            voiceName: voiceName,
+            speed
+          })
+        } else if (provider === 'elevenlabs') {
+          audioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+            apiKey: process.env.ELEVENLABS_API_KEY,
+            voiceId: voiceName,
+            speed
+          })
+        } else {
+          throw new Error(`Unknown TTS provider: ${provider}`)
+        }
+
+        // Generate UUID for S3 key
+        const audioId = uuidv4()
+        const s3Key = `${audioId}.mp3`
+
+        // Upload to S3
+        await s3.send(new PutObjectCommand({
+          Bucket: S3_BUCKET,
+          Key: s3Key,
+          Body: audioBuffer,
+          ContentType: 'audio/mpeg'
+        }))
+
+        // Insert into course_audio
+        const { error: insertError } = await supabase
+          .from('course_audio')
+          .upsert({
+            course_code: courseCode,
+            text: item.text,
+            text_normalized: item.text.toLowerCase().trim(),
+            language: item.language,
+            role: item.role,
+            voice_id: item.voiceId,
+            origin: 'tts',
+            s3_key: s3Key
+          }, {
+            onConflict: 'course_code,text_normalized,language,role'
+          })
+
+        if (insertError) throw insertError
+
+        results.success++
+        logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
+      } catch (err) {
+        results.failed++
+        results.errors.push({
+          text: item.text.substring(0, 50),
+          role: item.role,
+          error: err.message
+        })
+        logger.error(`Failed to generate: ${item.role} - "${item.text.substring(0, 30)}...": ${err.message}`)
+      }
+    }
+
     res.json({
-      status: 'queued',
+      status: 'completed',
       courseCode,
-      toGenerate: uniqueNeeded.length,
-      message: 'TTS generation not yet implemented in v13 - use this as reference',
-      samples: uniqueNeeded.slice(0, 5)
+      total: uniqueNeeded.length,
+      success: results.success,
+      failed: results.failed,
+      errors: results.errors.slice(0, 10)
     })
 
   } catch (error) {

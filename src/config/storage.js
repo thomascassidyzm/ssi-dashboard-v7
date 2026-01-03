@@ -1,13 +1,15 @@
 /**
  * Storage Configuration
  *
- * All course data is stored in S3 (popty-bach-lfs bucket).
+ * All course data is stored in S3 (ssi-audio-stage bucket, eu-west-1).
  * Frontend fetches via API proxy to avoid CORS issues.
  *
  * Architecture:
  * - S3 is the Single Source of Truth for course data
  * - API endpoints proxy to S3 (/api/courses/:code/files/:filename)
  * - Frontend NEVER fetches directly from S3
+ *
+ * NOTE: popty-bach-lfs is DEPRECATED - do NOT use it.
  */
 
 import { baseURL } from '../services/api.js'
@@ -15,7 +17,7 @@ import { baseURL } from '../services/api.js'
 export const STORAGE_CONFIG = {
   // API proxy configuration (routes to S3 via backend)
   s3: {
-    bucket: 'popty-bach-lfs',
+    bucket: 'ssi-audio-stage',
     region: 'eu-west-1',
     getCourseFileUrl(courseCode, filename) {
       // Use API endpoint that proxies to S3

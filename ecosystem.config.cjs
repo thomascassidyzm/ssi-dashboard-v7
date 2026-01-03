@@ -65,7 +65,7 @@ module.exports = {
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
         AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
-        S3_BUCKET: process.env.S3_BUCKET || 'popty-bach-lfs',
+        S3_BUCKET: process.env.S3_BUCKET || 'ssi-audio-stage',
         S3_AUDIO_BUCKET: process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage',
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
         SUPABASE_URL: process.env.SUPABASE_URL,

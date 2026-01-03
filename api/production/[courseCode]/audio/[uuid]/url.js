@@ -7,7 +7,7 @@ import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { getAudioSample, isSupabaseConfigured } from '../../../../lib/supabase.js';
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 
 // Initialize S3 client

@@ -87,7 +87,7 @@ Supabase audio_samples
 ### S3 Storage
 
 ```
-S3 (popty-bach-lfs)
+S3 (ssi-audio-stage)
     └── courses/{course_code}/
          ├── lego_pairs.json      (Phase 2 output - SSoT)
          ├── lego_baskets.json    (Phase 3 output - SSoT)
@@ -197,5 +197,5 @@ vercel --prod
 **Version:** 10.2.0
 **APML:** v10.2
 **Pipeline:** v2.0 (Supabase-backed)
-**S3 Bucket:** popty-bach-lfs (eu-west-1)
+**S3 Bucket:** ssi-audio-stage (eu-west-1)
 **Date:** 2025-12-04

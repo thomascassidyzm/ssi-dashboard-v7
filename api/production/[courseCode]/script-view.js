@@ -9,67 +9,41 @@ import { isSupabaseConfigured, getSupabase } from '../../lib/supabase.js';
 
 /**
  * Batch lookup audio UUIDs for given texts
+ * v13: Query course_audio directly (flat table, no joins needed)
  */
 async function batchLookupAudioUuids(db, courseCode, knownTexts, targetTexts) {
   const audioMap = new Map();
-
-  // Get course voice assignments
-  const { data: course } = await db
-    .from('courses')
-    .select('known_voice, target1_voice, target2_voice')
-    .eq('course_code', courseCode)
-    .single();
-
-  if (!course) return audioMap;
 
   // Normalize all texts
   const allTexts = [...new Set([...knownTexts, ...targetTexts].map(t => t?.toLowerCase().trim()).filter(Boolean))];
 
   if (allTexts.length === 0) return audioMap;
 
-  // Query texts table for all unique texts
-  const { data: texts } = await db
-    .from('texts')
-    .select('id, content_normalized')
-    .in('content_normalized', allTexts);
+  // v13: Query course_audio directly (flat table with text_normalized)
+  const { data: courseAudio } = await db
+    .from('course_audio')
+    .select('id, text_normalized, role')
+    .eq('course_code', courseCode)
+    .in('text_normalized', allTexts);
 
-  if (!texts || texts.length === 0) return audioMap;
+  if (!courseAudio || courseAudio.length === 0) return audioMap;
 
-  const textIdMap = new Map(texts.map(t => [t.content_normalized, t.id]));
-  const textIds = texts.map(t => t.id);
+  // Build map: normalized_text -> { known, target1, target2 }
+  for (const audio of courseAudio) {
+    const normalized = audio.text_normalized;
+    if (!normalized) continue;
 
-  // Query audio_files for these text IDs with the course's voices
-  const voiceIds = [course.known_voice, course.target1_voice, course.target2_voice].filter(Boolean);
-
-  const { data: audioFiles } = await db
-    .from('audio_files')
-    .select('text_id, voice_id, id')
-    .in('text_id', textIds)
-    .in('voice_id', voiceIds);
-
-  if (!audioFiles) return audioMap;
-
-  // Build reverse lookup: text_id -> { known, target1, target2 }
-  const textIdToAudio = new Map();
-  for (const audio of audioFiles) {
-    if (!textIdToAudio.has(audio.text_id)) {
-      textIdToAudio.set(audio.text_id, {});
+    if (!audioMap.has(normalized)) {
+      audioMap.set(normalized, {});
     }
-    const entry = textIdToAudio.get(audio.text_id);
+    const entry = audioMap.get(normalized);
 
-    if (audio.voice_id === course.known_voice) {
+    if (audio.role === 'known') {
       entry.known = audio.id;
-    } else if (audio.voice_id === course.target1_voice) {
+    } else if (audio.role === 'target1') {
       entry.target1 = audio.id;
-    } else if (audio.voice_id === course.target2_voice) {
+    } else if (audio.role === 'target2') {
       entry.target2 = audio.id;
-    }
-  }
-
-  // Build final map: normalized_text -> { known, target1, target2 }
-  for (const [normalized, textId] of textIdMap) {
-    if (textIdToAudio.has(textId)) {
-      audioMap.set(normalized, textIdToAudio.get(textId));
     }
   }
 

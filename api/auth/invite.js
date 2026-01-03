@@ -13,7 +13,7 @@
 import AWS from 'aws-sdk';
 import { validateSession } from '../lib/auth.js';
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AUTH_PREFIX = 'auth/';
 
 const s3 = new AWS.S3({

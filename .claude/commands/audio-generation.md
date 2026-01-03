@@ -42,7 +42,7 @@ node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course_code>/cours
 
 ```bash
 # Always sync canonicals first - this is the source of truth
-aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
+aws s3 sync s3://ssi-audio-stage/canonical/ public/vfs/canonical/
 ```
 
 **This syncs:**
@@ -434,7 +434,7 @@ Add to `language_pair_assignments`:
 
 After updating locally:
 ```bash
-aws s3 cp public/vfs/canonical/voices.json s3://popty-bach-lfs/canonical/voices.json
+aws s3 cp public/vfs/canonical/voices.json s3://ssi-audio-stage/canonical/voices.json
 ```
 
 ---

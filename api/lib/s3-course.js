@@ -2,13 +2,15 @@
  * S3 Course Data Service
  * Handles reading/writing course JSON files to S3
  *
- * This service replaces GitHub-based course data storage with S3.
- * Course files are stored in: s3://popty-bach-lfs/courses/{courseCode}/{filename}
+ * Bucket: ssi-audio-stage (eu-west-1) - THE ONLY BUCKET WE USE
+ * Course files are stored in: s3://ssi-audio-stage/courses/{courseCode}/{filename}
+ *
+ * NOTE: popty-bach-lfs is DEPRECATED - do NOT use it.
  */
 
 import { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 const COURSES_PREFIX = 'courses/';
 

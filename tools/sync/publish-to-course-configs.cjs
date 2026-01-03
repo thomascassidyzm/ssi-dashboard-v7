@@ -34,7 +34,7 @@ const COURSE_CONFIGS_REPO = path.join(process.env.HOME, 'Documents', 'GitHub', '
 const COURSE_CONFIGS_COURSES_DIR = path.join(COURSE_CONFIGS_REPO, 'Courses');
 
 // S3 config
-const S3_BUCKET = 'popty-bach-lfs';
+const S3_BUCKET = 'ssi-audio-stage';
 const S3_COURSES_PREFIX = 'courses';
 
 // Legacy mapping is now handled by language-code-service

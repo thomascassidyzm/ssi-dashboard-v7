@@ -64,7 +64,7 @@ app ssi_course_production:
     - Frontend: Vue 3, Vite, Tailwind CSS 4, Pinia
     - Backend: Vercel Serverless, AWS SDK v3
     - Database: Supabase (Postgres + Realtime)
-    - Storage: S3 (popty-bach-lfs)
+    - Storage: S3 (ssi-audio-stage)
 
     NEW FILES:
     - apml/phases/phase-index-v11.apml (phase index)

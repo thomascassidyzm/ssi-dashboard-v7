@@ -1,13 +1,13 @@
 /**
  * Auth Service
  * Handles magic link authentication and session management
- * Storage: S3 bucket popty-bach-lfs/auth/
+ * Storage: S3 bucket ssi-audio-stage/auth/
  */
 
 import { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
 const AUTH_PREFIX = 'auth/';
 const MAGIC_LINK_TTL = 15 * 60 * 1000; // 15 minutes

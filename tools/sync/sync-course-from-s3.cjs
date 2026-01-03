@@ -40,7 +40,7 @@ const s3Client = new S3Client({
   }
 });
 
-const bucket = process.env.S3_BUCKET || 'popty-bach-lfs';
+const bucket = process.env.S3_BUCKET || 'ssi-audio-stage';
 const coursesDir = path.join(__dirname, '..', 'vfs', 'courses');
 const courseDir = path.join(coursesDir, courseCode);
 
@@ -402,7 +402,7 @@ syncCourseFromS3().catch(error => {
     console.error('   - AWS_ACCESS_KEY_ID');
     console.error('   - AWS_SECRET_ACCESS_KEY');
     console.error('   - AWS_REGION (optional, defaults to eu-west-1)');
-    console.error('   - S3_BUCKET (optional, defaults to popty-bach-lfs)');
+    console.error('   - S3_BUCKET (optional, defaults to ssi-audio-stage)');
   }
 
   process.exit(1);

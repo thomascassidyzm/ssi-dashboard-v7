@@ -550,21 +550,21 @@ app.get('/api/production/:courseCode/feedback/aggregated', async (req, res) => {
       .sort((a, b) => b.flag_count - a.flag_count)
       .slice(0, limit)
 
-    // Get text info for audio IDs
+    // Get text info for audio IDs (v13: course_audio has text directly)
     const audioIds = issues.map(i => i.audio_id).filter(Boolean)
     let audioInfo = {}
 
     if (audioIds.length > 0) {
       const { data: audioData } = await supabase
-        .from('audio_files')
-        .select('id, text_id, voice_id, texts(content, language)')
+        .from('course_audio')
+        .select('id, text, language, voice_id')
         .in('id', audioIds)
 
       if (audioData) {
         for (const audio of audioData) {
           audioInfo[audio.id] = {
-            text: audio.texts?.content,
-            language: audio.texts?.language,
+            text: audio.text,
+            language: audio.language,
             voice_id: audio.voice_id
           }
         }
@@ -729,7 +729,7 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
 
 // Get audio URL by text lookup
 // Used by CyclePlayer and ScriptViewer to find audio for phrases
-// Schema: texts (content) -> audio_files (text_id) -> course_audio (course_code, role) -> s3_key
+// v13 Schema: course_audio (flat table with text, course_code, role, s3_key)
 app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -744,81 +744,39 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
       return res.status(500).json({ error: 'Database not initialized' })
     }
 
-    // Step 1: Find the text in texts table
-    let textId = null
-    const { data: textData, error: textError } = await supabase
-      .from('texts')
-      .select('id')
-      .eq('content', text.toString())
-      .limit(1)
+    // v13: Query course_audio directly (flat table, no joins needed)
+    const normalizedText = text.toString().toLowerCase().trim()
+
+    const { data: audioData, error: audioError } = await supabase
+      .from('course_audio')
+      .select('id, s3_key, voice_id, role')
+      .eq('course_code', courseCode)
+      .eq('text_normalized', normalizedText)
+      .eq('role', role)
       .single()
 
-    if (textError || !textData) {
-      // Try normalized lookup
-      const { data: textData2 } = await supabase
-        .from('texts')
-        .select('id')
-        .eq('content_normalized', text.toString().toLowerCase().trim())
+    if (audioError || !audioData) {
+      // Try without role filter and find best match
+      const { data: anyAudio } = await supabase
+        .from('course_audio')
+        .select('id, s3_key, voice_id, role')
+        .eq('course_code', courseCode)
+        .eq('text_normalized', normalizedText)
         .limit(1)
         .single()
 
-      if (!textData2) {
-        return res.status(404).json({ error: 'Text not found in database' })
+      if (!anyAudio) {
+        return res.status(404).json({ error: `Audio not found for text in course ${courseCode}` })
       }
-      textId = textData2.id
-    } else {
-      textId = textData.id
+
+      // Use the fallback audio
+      const url = await s3Service.getAudioSignedUrl(anyAudio.id, 3600, { s3Key: anyAudio.s3_key })
+      return res.json({ url, uuid: anyAudio.id, role: anyAudio.role })
     }
 
-    // Step 2: Find audio_files with this text_id (include s3 path info)
-    const { data: audioFiles } = await supabase
-      .from('audio_files')
-      .select('id, s3_bucket, s3_key')
-      .eq('text_id', textId)
-
-    if (!audioFiles || audioFiles.length === 0) {
-      return res.status(404).json({ error: 'Audio file not found for text' })
-    }
-
-    const audioIds = audioFiles.map(a => a.id)
-    const audioFileMap = new Map(audioFiles.map(a => [a.id, a]))
-
-    // Step 3: Find in course_audio for this course and role
-    const { data: courseAudio } = await supabase
-      .from('course_audio')
-      .select('audio_id, role')
-      .eq('course_code', courseCode)
-      .in('audio_id', audioIds)
-
-    if (!courseAudio || courseAudio.length === 0) {
-      return res.status(404).json({ error: `Audio not linked to course ${courseCode}` })
-    }
-
-    // Find matching role (target1, target2, known, etc.)
-    let audioId = null
-    for (const ca of courseAudio) {
-      if (ca.role === role) {
-        audioId = ca.audio_id
-        break
-      }
-    }
-
-    // Fallback: if exact role not found, use first available
-    if (!audioId && courseAudio.length > 0) {
-      audioId = courseAudio[0].audio_id
-    }
-
-    if (!audioId) {
-      return res.status(404).json({ error: `No audio with role ${role} for this text` })
-    }
-
-    // Step 4: Get signed URL using actual s3_key from database
-    const audioFile = audioFileMap.get(audioId)
-    const url = await s3Service.getAudioSignedUrl(audioId, 3600, {
-      bucket: audioFile?.s3_bucket,
-      s3Key: audioFile?.s3_key
-    })
-    res.json({ url, uuid: audioId })
+    // Get signed URL using s3_key from database
+    const url = await s3Service.getAudioSignedUrl(audioData.id, 3600, { s3Key: audioData.s3_key })
+    res.json({ url, uuid: audioData.id })
   } catch (error) {
     logger.error('Error fetching audio by text:', error)
     res.status(500).json({ error: error.message })
@@ -1104,7 +1062,7 @@ app.get('/api/production/:courseCode/regeneration/queue', async (req, res) => {
     // Get flagged samples from Supabase
     const flaggedSamples = await supabaseClient.getFlaggedForRegeneration(courseCode)
 
-    // Transform to include audio details
+    // Transform to include audio details (v13: audio info from course_audio)
     const items = flaggedSamples.map(flag => ({
       uuid: flag.audio_uuid,
       status: flag.status,
@@ -1112,7 +1070,7 @@ app.get('/api/production/:courseCode/regeneration/queue', async (req, res) => {
       flaggedBy: flag.flagged_by,
       flaggedAt: flag.flagged_at,
       history: flag.history,
-      audio: flag.audio_samples
+      audio: flag.course_audio || flag.audio_samples  // v13: course_audio, fallback for compat
     }))
 
     res.json({
@@ -1649,24 +1607,14 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       offset += pageSize
     }
 
-    // Paginate existing audio
+    // Paginate existing audio (v13: course_audio is flat, no joins needed)
     let existingAudio = []
     offset = 0
 
     while (true) {
       const { data: page, error } = await supabase
         .from('course_audio')
-        .select(`
-          role,
-          audio_id,
-          audio_files!inner (
-            id,
-            voice_id,
-            s3_bucket,
-            s3_key,
-            texts!inner (content)
-          )
-        `)
+        .select('id, text, role, voice_id, s3_key')
         .eq('course_code', courseCode)
         .range(offset, offset + pageSize - 1)
 
@@ -1679,7 +1627,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
     // Build lookup of existing texts by role
     const existingByRole = {
-      known: new Map(),  // text -> { audioId, voiceId, s3Bucket, s3Key }
+      known: new Map(),  // text -> { audioId, voiceId, s3Key }
       target1: new Map(),
       target2: new Map()
     }
@@ -1692,23 +1640,21 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     for (const ca of existingAudio) {
-      const text = ca.audio_files?.texts?.content
+      const text = ca.text
       const role = ca.role
       if (text && existingByRole[role]) {
         existingByRole[role].set(text, {
-          audioId: ca.audio_files.id,
-          voiceId: ca.audio_files.voice_id,
-          s3Bucket: ca.audio_files.s3_bucket,
-          s3Key: ca.audio_files.s3_key
+          audioId: ca.id,
+          voiceId: ca.voice_id,
+          s3Key: ca.s3_key
         })
         // Keep first audio as sample for voice matching
         if (!samplesByRole[role]) {
           samplesByRole[role] = {
             text,
-            audioId: ca.audio_files.id,
-            voiceId: ca.audio_files.voice_id,
-            s3Bucket: ca.audio_files.s3_bucket,
-            s3Key: ca.audio_files.s3_key
+            audioId: ca.id,
+            voiceId: ca.voice_id,
+            s3Key: ca.s3_key
           }
         }
       }
@@ -1747,12 +1693,11 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
-    // Generate signed URLs for sample audio
+    // Generate signed URLs for sample audio (v13: flat S3 storage)
     for (const role of ['known', 'target1', 'target2']) {
       if (samplesByRole[role]) {
         try {
           const url = await s3Service.getAudioSignedUrl(samplesByRole[role].audioId, 3600, {
-            bucket: samplesByRole[role].s3Bucket,
             s3Key: samplesByRole[role].s3Key
           })
           samplesByRole[role].url = url
@@ -1870,18 +1815,21 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
       return res.json({ success: true, message: 'No matching audio in S3', synced: 0 })
     }
 
-    // Step 3: Register in Supabase (supabase client already declared above)
+    // Step 3: Register in Supabase (v13: use course_audio table)
     let synced = 0
     let skipped = 0
     let errors = 0
 
     for (const sample of existingInS3) {
       try {
-        // Check if already registered
+        // Check if already registered (v13: course_audio with text_normalized)
+        const normalizedText = sample.text.toLowerCase().trim()
         const { data: existing } = await supabase
-          .from('audio_samples')
-          .select('uuid')
-          .eq('uuid', sample.uuid)
+          .from('course_audio')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', normalizedText)
+          .eq('role', sample.role)
           .single()
 
         if (existing) {
@@ -1889,21 +1837,18 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
           continue
         }
 
-        // Register the sample
+        // Register the audio (v13: course_audio is flat)
         const { error } = await supabase
-          .from('audio_samples')
+          .from('course_audio')
           .insert({
-            uuid: sample.uuid,
+            course_code: courseCode,
             text: sample.text,
-            lang: sample.lang,
+            text_normalized: normalizedText,
+            language: sample.lang,
             role: sample.role,
             voice_id: voices[sample.role] || null,
-            cadence: sample.role === 'known' ? 'natural' : 'slow',
-            s3_bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
-            s3_key: `mastered/${sample.uuid}.mp3`,
-            course_code: courseCode,
-            source: 's3-sync',
-            created_at: new Date().toISOString()
+            origin: 'tts',
+            s3_key: `${sample.uuid}.mp3`
           })
 
         if (error && error.code !== '23505') {
@@ -2137,6 +2082,8 @@ app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => 
 /**
  * Batch lookup audio UUIDs for a set of texts
  * Returns a map: normalized_text -> { known, target1, target2 }
+ *
+ * v13: Query course_audio directly (flat table, no joins)
  */
 async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTexts) {
   const audioMap = new Map()  // normalized_text -> { known?, target1?, target2? }
@@ -2150,56 +2097,18 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
   // Normalize texts for lookup
   const normalizedTexts = allTexts.map(t => t.toLowerCase().trim())
 
-  // Step 1: Get text_ids for all texts
-  const { data: textsData } = await supabase
-    .from('texts')
-    .select('id, content_normalized')
-    .in('content_normalized', normalizedTexts)
-
-  if (!textsData || textsData.length === 0) return audioMap
-
-  const textIdMap = new Map()  // content_normalized -> text_id
-  for (const t of textsData) {
-    textIdMap.set(t.content_normalized, t.id)
-  }
-
-  // Step 2: Get audio_files for these text_ids
-  const textIds = Array.from(textIdMap.values())
-  const { data: audioFiles } = await supabase
-    .from('audio_files')
-    .select('id, text_id, voice_id')
-    .in('text_id', textIds)
-
-  if (!audioFiles || audioFiles.length === 0) return audioMap
-
-  // Step 3: Get course_audio to filter by course and role
-  const audioIds = audioFiles.map(a => a.id)
+  // v13: Query course_audio directly (flat table with text_normalized)
   const { data: courseAudio } = await supabase
     .from('course_audio')
-    .select('audio_id, role')
+    .select('id, text_normalized, role')
     .eq('course_code', courseCode)
-    .in('audio_id', audioIds)
+    .in('text_normalized', normalizedTexts)
 
   if (!courseAudio || courseAudio.length === 0) return audioMap
 
-  // Build audio_id -> role mapping
-  const audioRoleMap = new Map()  // audio_id -> role
-  for (const ca of courseAudio) {
-    audioRoleMap.set(ca.audio_id, ca.role)
-  }
-
-  // Build text_id -> text_normalized reverse lookup
-  const textIdToNormalized = new Map()
-  for (const [normalized, id] of textIdMap) {
-    textIdToNormalized.set(id, normalized)
-  }
-
   // Build final map: normalized_text -> { known?, target1?, target2? }
-  for (const af of audioFiles) {
-    const role = audioRoleMap.get(af.id)
-    if (!role) continue
-
-    const normalizedText = textIdToNormalized.get(af.text_id)
+  for (const ca of courseAudio) {
+    const normalizedText = ca.text_normalized
     if (!normalizedText) continue
 
     if (!audioMap.has(normalizedText)) {
@@ -2208,12 +2117,12 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
 
     const entry = audioMap.get(normalizedText)
     // Map role to entry field (known, target1, target2)
-    if (role === 'known' || role === 'source') {
-      entry.known = af.id
-    } else if (role === 'target1') {
-      entry.target1 = af.id
-    } else if (role === 'target2') {
-      entry.target2 = af.id
+    if (ca.role === 'known') {
+      entry.known = ca.id
+    } else if (ca.role === 'target1') {
+      entry.target1 = ca.id
+    } else if (ca.role === 'target2') {
+      entry.target2 = ca.id
     }
   }
 

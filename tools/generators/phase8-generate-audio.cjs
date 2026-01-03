@@ -124,7 +124,7 @@ async function uploadToS3(key, buffer) {
     region: process.env.AWS_REGION || 'eu-west-1'
   });
 
-  const bucket = process.env.S3_BUCKET || 'popty-bach-lfs';
+  const bucket = process.env.S3_BUCKET || 'ssi-audio-stage';
 
   await s3.putObject({
     Bucket: bucket,

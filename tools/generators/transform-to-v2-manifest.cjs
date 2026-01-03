@@ -48,7 +48,7 @@ const LANGUAGE_CODE_MAP = {
   'eng': 'en'
 };
 
-const S3_BASE_URL = 'https://popty-bach-lfs.s3.eu-west-1.amazonaws.com/courses';
+const S3_BASE_URL = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/courses';
 
 // ============================================================================
 // HELPER FUNCTIONS

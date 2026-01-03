@@ -107,7 +107,7 @@ Look for whitespace differences, punctuation differences, Unicode issues.
 ls -la temp/audio/processed/<uuid>.mp3
 
 # Try manual upload
-aws s3 cp temp/audio/processed/<uuid>.mp3 s3://popty-bach-lfs/samples/<uuid>.mp3
+aws s3 cp temp/audio/processed/<uuid>.mp3 s3://ssi-audio-stage/samples/<uuid>.mp3
 ```
 
 ### "Duration extraction fails"
@@ -229,7 +229,7 @@ If MAR data is lost or corrupted:
 3. **Verify S3 has the audio:**
    ```bash
    # Spot check a few UUIDs
-   aws s3 ls s3://popty-bach-lfs/samples/<uuid>.mp3
+   aws s3 ls s3://ssi-audio-stage/samples/<uuid>.mp3
    ```
 
 ### Manifest Corruption Recovery
@@ -249,7 +249,7 @@ If manifest is corrupted:
 
 3. **Or restore from S3:**
    ```bash
-   aws s3 cp s3://popty-bach-lfs/courses/<course>/course_manifest.json \
+   aws s3 cp s3://ssi-audio-stage/courses/<course>/course_manifest.json \
       public/vfs/courses/<course>/course_manifest.json
    ```
 
