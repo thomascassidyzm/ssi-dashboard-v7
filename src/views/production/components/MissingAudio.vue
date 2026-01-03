@@ -146,12 +146,11 @@
 import { ref, computed, watch, onMounted } from 'vue'
 
 function getApiBaseUrl() {
-  // Use ngrok URL in development if available, otherwise use relative path for production
-  if (import.meta.env.DEV) {
-    return import.meta.env.VITE_API_URL || 'http://localhost:3470'
-  }
-  // In production, use the same origin (Vercel serverless functions)
-  return ''
+  // Use localStorage api_base_url (set by EnvironmentSwitcher) for ngrok access
+  const savedUrl = localStorage.getItem('api_base_url')
+  if (savedUrl) return savedUrl
+  // Fallback for local development
+  return import.meta.env.VITE_API_URL || 'http://localhost:3456'
 }
 
 const props = defineProps({
