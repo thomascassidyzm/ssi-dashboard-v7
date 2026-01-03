@@ -1,0 +1,489 @@
+# APML: Dashboard UI Components
+# Version: 1.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: INTERFACE SPECIFICATION
+
+interface DashboardUI:
+  name: "SSi Dashboard Vue Components"
+  purpose: "Catalog of all Vue components - PRESERVE THESE"
+  version: "1.0.0"
+  framework: "Vue 3 Composition API"
+  styling: "Tailwind CSS"
+  component_count: 102
+
+  ## ==========================================================================
+  ## QUALITY STATEMENT
+  ## ==========================================================================
+
+  quality:
+    status: "EXCELLENT"
+    notes: |
+      These Vue components represent significant design and development work.
+      They are visually polished, functionally complete, and should be
+      preserved when creating new repos.
+
+      The "Mission Control" aesthetic is particularly noteworthy -
+      professional, clean, and appropriate for a content production tool.
+
+  ## ==========================================================================
+  ## MAIN VIEWS (src/views/)
+  ## ==========================================================================
+
+  views:
+    description: "Top-level page components - routes to these"
+
+    core:
+      Dashboard.vue:
+        route: "/"
+        description: "Main landing page"
+
+      MissionControl.vue:
+        route: "/mission-control"
+        description: "Central operations dashboard"
+        quality: "FLAGSHIP - excellent design"
+
+      CourseEditor.vue:
+        route: "/course/:courseCode/edit"
+        description: "Edit seeds, LEGOs, baskets for a course"
+
+      CourseGeneration.vue:
+        route: "/generate"
+        description: "Launch multi-agent course generation"
+
+      CourseBrowser.vue:
+        route: "/courses"
+        description: "Browse all courses"
+
+      NewCourse.vue:
+        route: "/courses/new"
+        description: "Create new course form"
+
+    content:
+      CanonicalSeeds.vue:
+        route: "/seeds"
+        description: "View canonical seed phrases"
+
+      CanonicalContent.vue:
+        route: "/content"
+        description: "Browse canonical content library"
+
+      CourseScriptView.vue:
+        route: "/course/:courseCode/script"
+        description: "Full script view with audio playback"
+
+    production:
+      description: "Production suite views - QA and audio workflow"
+      location: "src/views/production/"
+
+      MissionControl.vue:
+        route: "/production/:courseCode"
+        description: "Production dashboard for a course"
+
+      AudioPipeline.vue:
+        route: "/production/:courseCode/audio"
+        description: "Audio generation pipeline view"
+
+      ScriptViewer.vue:
+        route: "/production/:courseCode/script"
+        description: "Script with audio playback and editing"
+
+      RecordingStudio.vue:
+        route: "/production/:courseCode/recording"
+        description: "Human recording interface"
+
+      UserFeedback.vue:
+        route: "/production/:courseCode/feedback"
+        description: "Crowdsourced feedback aggregation"
+
+    audio:
+      AudioGeneration.vue:
+        route: "/audio"
+        description: "Audio generation controls"
+
+      AudioPipelineView.vue:
+        route: "/audio/pipeline"
+        description: "Audio pipeline status"
+
+    pedagogy:
+      Pedagogy.vue:
+        route: "/pedagogy"
+        description: "SSi methodology documentation"
+
+      PhaseIntelligence.vue:
+        route: "/phases"
+        description: "Phase intelligence reference"
+
+      APMLSpec.vue:
+        route: "/apml"
+        description: "APML specification viewer"
+
+    admin:
+      Login.vue:
+        route: "/login"
+        description: "Authentication login"
+
+      AuthVerify.vue:
+        route: "/auth/verify"
+        description: "Magic link verification"
+
+      UserManagement.vue:
+        route: "/admin/users"
+        description: "User management (admin only)"
+
+    other:
+      CourseProgress.vue:
+        route: "/course/:courseCode/progress"
+        description: "Course completion progress"
+
+      CourseCompilation.vue:
+        route: "/course/:courseCode/compile"
+        description: "Manifest compilation view"
+
+      CourseValidator.vue:
+        route: "/course/:courseCode/validate"
+        description: "Course validation results"
+
+      ProcessOverview.vue:
+        route: "/process"
+        description: "Pipeline process overview"
+
+      RecursiveUpregulation.vue:
+        route: "/upregulation"
+        description: "Learning optimization view"
+
+      DocsIndex.vue:
+        route: "/docs"
+        description: "Documentation index"
+
+      TerminologyGlossary.vue:
+        route: "/glossary"
+        description: "SSi terminology reference"
+
+  ## ==========================================================================
+  ## PRODUCTION COMPONENTS (src/views/production/components/)
+  ## ==========================================================================
+
+  production_components:
+    description: "Components for QA and production workflow"
+    location: "src/views/production/components/"
+    quality: "EXCELLENT"
+
+    audio_playback:
+      AudioPlayer.vue:
+        description: "Audio file player with controls"
+
+      CyclePlayer.vue:
+        description: "4-phase learning cycle player"
+
+      WaveformVisualizer.vue:
+        description: "Audio waveform display"
+
+    pipeline:
+      PipelineProgress.vue:
+        description: "Audio generation progress indicator"
+
+      StageCard.vue:
+        description: "Pipeline stage status card"
+
+      CostEstimate.vue:
+        description: "TTS cost estimation display"
+
+      MissingAudio.vue:
+        description: "Missing audio inventory"
+
+    script_editing:
+      SeedRow.vue:
+        description: "Seed display row"
+
+      LegoRow.vue:
+        description: "LEGO display row"
+
+      PhraseRow.vue:
+        description: "Practice phrase row with audio"
+
+      PhraseEditModal.vue:
+        description: "Modal for editing phrase text"
+
+    qa_workflow:
+      FlagModal.vue:
+        description: "Flag audio sample modal"
+
+      FilterBar.vue:
+        description: "Filter samples by status"
+
+      BlockerList.vue:
+        description: "Issues blocking release"
+
+      QuickActions.vue:
+        description: "Quick action buttons"
+
+    recording:
+      RecordingQueue.vue:
+        description: "Queue of samples needing recording"
+
+      RecordingControls.vue:
+        description: "Record/stop/playback controls"
+
+      QueueItem.vue:
+        description: "Single recording queue item"
+
+      QueueList.vue:
+        description: "List of queued recordings"
+
+      QueueControls.vue:
+        description: "Queue management controls"
+
+      AutocueDisplay.vue:
+        description: "Teleprompter-style autocue"
+
+    progress:
+      ProgressRing.vue:
+        description: "Circular progress indicator"
+
+  ## ==========================================================================
+  ## SHARED COMPONENTS (src/components/)
+  ## ==========================================================================
+
+  shared_components:
+    description: "Reusable components across views"
+    location: "src/components/"
+
+    core:
+      App.vue:
+        description: "Root application component"
+        location: "src/App.vue"
+
+      LoginForm.vue:
+        description: "Login form component"
+
+      ProgressMonitor.vue:
+        description: "Progress monitoring display"
+
+      EnvironmentSwitcher.vue:
+        description: "Dev/staging/prod environment selector"
+
+      SchemaHealth.vue:
+        description: "Database schema health check"
+
+    visualization:
+      LegoVisualizer.vue:
+        description: "LEGO structure visualization"
+        quality: "EXCELLENT"
+
+      LegoBasketViewer.vue:
+        description: "Practice basket viewer"
+
+      SkillsArchitectureVisualizer.vue:
+        description: "Skills tree visualization"
+
+      IntroductionsViewer.vue:
+        description: "LEGO introductions viewer"
+
+      CourseScriptViewer.vue:
+        description: "Full course script display"
+
+    audio:
+      LearningCyclePlayer.vue:
+        description: "4-phase cycle player"
+
+      AudioPreviewPlayer.vue:
+        description: "Simple audio preview"
+
+      AudioRecorder.vue:
+        description: "Audio recording component"
+
+      ScriptPlaybackControls.vue:
+        description: "Script audio playback controls"
+
+    configuration:
+      VoiceConfiguration.vue:
+        description: "Voice assignment per role"
+        important: true
+        notes: "Key for v13 - configures voice_config JSONB"
+
+      ExecutionModeSelector.vue:
+        description: "Web/API/Local mode selector"
+
+    pipeline:
+      PipelineProgress.vue:
+        description: "Pipeline progress display"
+
+    quality:
+      location: "src/components/quality/"
+      description: "Quality assurance components"
+
+      QualityDashboard.vue:
+        description: "Quality metrics dashboard"
+
+      QualityDashboardExample.vue:
+        description: "Example quality dashboard"
+
+      CourseHealthReport.vue:
+        description: "Course health metrics"
+
+      SeedQualityReview.vue:
+        description: "Seed-level quality review"
+
+      LearnedRulesView.vue:
+        description: "ML-learned rules display"
+
+      PromptEvolutionView.vue:
+        description: "Prompt evolution tracking"
+
+    lego_editor:
+      location: "src/components/lego-editor/"
+      description: "LEGO editing components"
+
+      WordDividerEditor.vue:
+        description: "Word boundary editor"
+
+      MappingVisualizer.vue:
+        description: "Known-target mapping display"
+
+      DividerToggle.vue:
+        description: "Toggle word dividers"
+
+    generation:
+      location: "src/components/generation/"
+      description: "Course generation monitoring"
+
+      GenerationMonitor.vue:
+        description: "Multi-agent generation monitor"
+        quality: "EXCELLENT"
+
+      PhaseDetail.vue:
+        description: "Phase execution details"
+
+      EventLog.vue:
+        description: "Real-time event log"
+
+      PipelineProgress.vue:
+        description: "Generation pipeline progress"
+
+      SeedGrid.vue:
+        description: "Grid of seeds being processed"
+
+      BrowserLane.vue:
+        description: "Browser automation lane"
+
+    production_shared:
+      location: "src/components/production/"
+      description: "Shared production components"
+
+      ProductionLayout.vue:
+        description: "Production suite layout wrapper"
+
+      ProductionNav.vue:
+        description: "Production navigation sidebar"
+
+      CourseSelector.vue:
+        description: "Course selection dropdown"
+
+    production_qa:
+      location: "src/components/production/qa/"
+      description: "QA workflow components"
+
+      SamplesBrowser.vue:
+        description: "Browse audio samples"
+
+      SampleCard.vue:
+        description: "Individual sample card"
+
+      FlagMenu.vue:
+        description: "Flag status menu"
+
+      StatusBadge.vue:
+        description: "Sample status badge"
+
+    production_audio:
+      location: "src/components/production/audio/"
+      description: "Audio pipeline components"
+
+      AudioPipeline.vue:
+        description: "Audio pipeline controls"
+
+      PipelineItem.vue:
+        description: "Single pipeline item"
+
+    autocue:
+      location: "src/components/production/autocue/"
+      description: "Autocue/teleprompter system"
+      quality: "EXCELLENT"
+
+      AutocueStudio.vue:
+        description: "Full autocue recording studio"
+
+      RoleSelector.vue:
+        description: "Select role to record"
+
+      ModeSelector.vue:
+        description: "Recording mode selection"
+
+      teleprompter:
+        TeleprompterDisplay.vue:
+          description: "Teleprompter text display"
+
+        PhraseCard.vue:
+          description: "Current phrase card"
+
+      recording:
+        RecordingStatus.vue:
+          description: "Recording status indicator"
+
+        RecordingControls.vue:
+          description: "Recording control buttons"
+
+      review:
+        SessionReview.vue:
+          description: "Review recorded session"
+
+        SegmentCard.vue:
+          description: "Individual recorded segment"
+
+  ## ==========================================================================
+  ## STYLING NOTES
+  ## ==========================================================================
+
+  styling:
+    framework: "Tailwind CSS"
+    theme: "Dark mode with accent colors"
+    aesthetic: "Mission Control / Professional Dashboard"
+
+    colors:
+      primary: "Blue/Indigo accents"
+      background: "Dark gray tones"
+      success: "Green"
+      warning: "Amber"
+      error: "Red"
+
+    patterns:
+      - "Card-based layouts"
+      - "Sidebar navigation"
+      - "Progress indicators"
+      - "Status badges"
+      - "Modal dialogs"
+
+  ## ==========================================================================
+  ## COMPONENTS TO PRIORITIZE FOR NEW REPO
+  ## ==========================================================================
+
+  priority_components:
+    must_keep:
+      - "MissionControl.vue - Flagship view"
+      - "CourseEditor.vue - Core editing"
+      - "VoiceConfiguration.vue - v13 voice_config"
+      - "GenerationMonitor.vue - Agent monitoring"
+      - "LegoVisualizer.vue - Visualization"
+      - "AutocueStudio.vue - Recording workflow"
+      - "CyclePlayer.vue - Audio playback"
+
+    quality_flagships:
+      - "Production suite (entire production/ directory)"
+      - "Quality dashboard components"
+      - "Generation monitor"
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML Dashboard UI v1.0.0
+## 102 Vue components cataloged
+## ============================================================================

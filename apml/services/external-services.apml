@@ -1,0 +1,334 @@
+# APML: External Services Integration
+# Version: 1.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: SERVICE SPECIFICATION
+
+services ExternalServices:
+  name: "External Service Integrations"
+  purpose: "Document all external services the dashboard depends on"
+  version: "1.0.0"
+
+  ## ==========================================================================
+  ## SUPABASE (PostgreSQL Database)
+  ## ==========================================================================
+
+  supabase:
+    description: "Managed PostgreSQL database - Master Audio Registry"
+    url_pattern: "https://{project-id}.supabase.co"
+    region: "eu-west-2"  # London
+    tier: "Pro"
+
+    authentication:
+      method: "Service Role Key"
+      key_format: "sb_secret_{key}"
+      notes: "Service role bypasses RLS for server-side operations"
+
+    tables_v13:
+      courses:
+        description: "All courses with voice configuration"
+        primary_key: "code"
+        key_columns: ["code", "known_lang", "target_lang", "voice_config"]
+
+      course_audio:
+        description: "Audio files owned by courses"
+        primary_key: "id (UUID)"
+        key_columns: ["course_code", "text", "language", "role", "voice_id", "origin", "s3_key"]
+        unique_constraint: ["course_code", "text_normalized", "language", "role"]
+
+      shared_audio:
+        description: "Shared audio (encouragements, instructions)"
+        primary_key: "id (UUID)"
+        key_columns: ["text", "language", "audio_type", "voice_id", "origin", "s3_key"]
+        unique_constraint: ["text_normalized", "language", "audio_type"]
+
+      course_seeds:
+        description: "Canonical seed phrases per course"
+        primary_key: "id"
+        key_columns: ["course_code", "seed_id", "known_phrase", "target_phrase"]
+
+      course_legos:
+        description: "LEGO units per course"
+        primary_key: "id"
+        key_columns: ["course_code", "lego_id", "known", "target", "lego_type"]
+
+      course_practice_phrases:
+        description: "Practice phrases per LEGO"
+        primary_key: "id"
+        key_columns: ["course_code", "lego_id", "known", "target"]
+
+    rpc_functions:
+      get_missing_audio:
+        params: ["p_course_code TEXT", "p_needed JSONB"]
+        returns: "TABLE (text, language, role)"
+
+      get_course_audio_summary:
+        params: ["p_course_code TEXT"]
+        returns: "TABLE (role, origin, count, voice_count)"
+
+    views:
+      course_audio_inventory:
+        description: "Summary of audio per course/role"
+
+      course_voice_breakdown:
+        description: "Voice usage per course/role"
+
+    client_libraries:
+      node: "@supabase/supabase-js"
+      usage: |
+        const { createClient } = require('@supabase/supabase-js')
+        const supabase = createClient(url, serviceKey, {
+          auth: { persistSession: false }
+        })
+
+  ## ==========================================================================
+  ## AWS S3 (Audio File Storage)
+  ## ==========================================================================
+
+  s3:
+    description: "Object storage for audio files"
+    provider: "AWS S3"
+
+    bucket:
+      name: "ssi-audio-stage"
+      region: "eu-west-1"  # Ireland
+      access: "Private (pre-signed URLs for access)"
+
+    deprecated_buckets:
+      - name: "popty-bach-lfs"
+        status: "DELETED - DO NOT USE"
+        notes: "Was Git LFS storage, now deleted"
+
+    key_pattern: "{uuid}.mp3"
+    storage_model: |
+      S3 is FLAT - just UUIDs, no folders.
+      All metadata (course, role, language) lives in Supabase.
+      S3 is a dumb blob store keyed by UUID.
+
+    operations:
+      upload:
+        method: "putObject"
+        content_type: "audio/mpeg"
+
+      download:
+        method: "getObject"
+        pre_signed: true
+        expiry: "1 hour"
+
+      exists:
+        method: "headObject"
+
+    client_libraries:
+      node: "@aws-sdk/client-s3"
+      usage: |
+        const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
+        const s3 = new S3Client({ region: 'eu-west-1' })
+
+    cdn:
+      status: "Not configured"
+      future: "CloudFront for learning app audio delivery"
+
+  ## ==========================================================================
+  ## AZURE SPEECH SERVICES (TTS)
+  ## ==========================================================================
+
+  azure_tts:
+    description: "Primary TTS provider for target language audio"
+    service: "Azure Cognitive Services Speech"
+    endpoint: "https://{region}.tts.speech.microsoft.com"
+
+    authentication:
+      method: "API Key"
+      header: "Ocp-Apim-Subscription-Key"
+
+    used_for:
+      - role: "target1"
+        description: "First target language voice"
+      - role: "target2"
+        description: "Second target language voice"
+      - role: "known"
+        description: "Known language voice (TTS courses only)"
+
+    voice_naming:
+      format: "azure_{locale}-{voiceName}"
+      examples:
+        - "azure_es-ES-ElviraNeural"
+        - "azure_es-ES-AlvaroNeural"
+        - "azure_en-GB-SoniaNeural"
+        - "azure_zh-CN-XiaoxiaoNeural"
+
+    ssml_support: true
+    output_format: "audio-16khz-128kbitrate-mono-mp3"
+
+    rate_limits:
+      requests_per_second: 20
+      characters_per_request: 10000
+
+    pricing:
+      model: "Per character"
+      tier: "Neural voices"
+      approximate: "$16 per 1M characters"
+
+    client_libraries:
+      node: "microsoft-cognitiveservices-speech-sdk"
+
+  ## ==========================================================================
+  ## ELEVENLABS (Alternative TTS)
+  ## ==========================================================================
+
+  elevenlabs:
+    description: "Alternative TTS for presentation/narration audio"
+    endpoint: "https://api.elevenlabs.io/v1"
+
+    authentication:
+      method: "API Key"
+      header: "xi-api-key"
+
+    used_for:
+      - role: "presentation"
+        description: "LEGO introduction narration (optional)"
+
+    voice_naming:
+      format: "elevenlabs_{voiceId}"
+      examples:
+        - "elevenlabs_rachel"
+        - "elevenlabs_adam"
+
+    features:
+      - "High quality neural voices"
+      - "Voice cloning (not used)"
+      - "Streaming support"
+
+    pricing:
+      model: "Per character"
+      tier: "Creator"
+      approximate: "$22 per 100K characters"
+
+    status: "Optional - Azure is primary"
+
+  ## ==========================================================================
+  ## NGROK (Tunneling)
+  ## ==========================================================================
+
+  ngrok:
+    description: "Secure tunnel for external agent access"
+    purpose: "Allow remote Claude agents to access local orchestrator"
+
+    usage:
+      command: "ngrok http 3456"
+      url_format: "https://{subdomain}.ngrok.io"
+
+    when_needed:
+      - "Remote agent orchestration"
+      - "Webhook testing"
+      - "External service callbacks"
+
+    configuration:
+      env_var: "NGROK_URL"
+      default: "http://localhost:3456"
+
+    notes: |
+      When using ngrok, update ORCHESTRATOR_URL to the ngrok URL
+      so remote agents can reach the local orchestrator.
+
+  ## ==========================================================================
+  ## ANTHROPIC API (Claude)
+  ## ==========================================================================
+
+  anthropic:
+    description: "Claude API for AI-powered agents"
+    endpoint: "https://api.anthropic.com"
+
+    authentication:
+      method: "API Key"
+      header: "x-api-key"
+      env_var: "ANTHROPIC_API_KEY"
+
+    used_for:
+      - "Multi-agent course generation"
+      - "Translation (Phase 1)"
+      - "LEGO extraction (Phase 1)"
+      - "Basket generation (Phase 3)"
+
+    models:
+      primary: "claude-sonnet-4-20250514"
+      backup: "claude-3-5-sonnet-20241022"
+
+    rate_limits:
+      tier: "Tier 4"
+      requests_per_minute: 4000
+
+    client_libraries:
+      node: "@anthropic-ai/sdk"
+
+  ## ==========================================================================
+  ## GITHUB API (Code Editing)
+  ## ==========================================================================
+
+  github:
+    description: "GitHub API for dashboard code editing"
+    endpoint: "https://api.github.com"
+
+    authentication:
+      method: "Personal Access Token"
+      format: "ghp_{token}"
+      scopes: ["repo"]
+
+    used_for:
+      - "Committing course file changes"
+      - "Creating branches"
+      - "Pull request creation"
+
+    configuration:
+      GITHUB_TOKEN: "Personal access token"
+      GITHUB_OWNER: "thomascassidyzm"
+      GITHUB_REPO: "ssi-dashboard-v7"
+      GITHUB_BRANCH: "main"
+
+    status: "Optional - for GitHub-based workflows"
+
+  ## ==========================================================================
+  ## SERVICE HEALTH CHECKS
+  ## ==========================================================================
+
+  health_checks:
+    supabase:
+      method: "SELECT 1 FROM courses LIMIT 1"
+      timeout: 5000
+
+    s3:
+      method: "headBucket"
+      timeout: 5000
+
+    azure_tts:
+      method: "Token refresh"
+      timeout: 10000
+
+    orchestrator:
+      endpoint: "GET /health"
+      expected: '{"status": "healthy"}'
+
+  ## ==========================================================================
+  ## COST TRACKING
+  ## ==========================================================================
+
+  costs:
+    supabase:
+      tier: "Pro"
+      monthly: "$25 base + usage"
+
+    s3:
+      model: "Pay per GB stored + transfer"
+      current_size: "~50GB audio"
+
+    azure_tts:
+      model: "Per character"
+      monthly_estimate: "$50-200 during generation"
+
+    anthropic:
+      model: "Per token"
+      monthly_estimate: "$100-500 during generation"
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML External Services v1.0.0
+## ============================================================================

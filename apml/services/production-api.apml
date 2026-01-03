@@ -1,0 +1,297 @@
+# APML: Production API Service
+# Version: 1.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: SERVICE SPECIFICATION
+
+service ProductionAPI:
+  name: "SSi Production API"
+  purpose: "QA workflow, audio playback, recording, and real-time updates"
+  version: "1.0.0"
+  port: 3470
+  script: "services/production-api.cjs"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  overview: |
+    The Production API serves the Production Suite UI components.
+    It handles:
+
+    1. Script viewing with audio playback
+    2. QA workflow (flagging, review, approval)
+    3. Human recording workflow (autocue, upload)
+    4. Real-time updates via WebSocket
+    5. Audio pipeline status and control
+
+    This is the backend for the excellent Vue production components.
+
+  ## ==========================================================================
+  ## ENDPOINTS - COURSE DATA
+  ## ==========================================================================
+
+  course_endpoints:
+    get_manifest:
+      path: "GET /api/production/:courseCode/manifest"
+      description: "Get compiled course manifest"
+      notes: "May query Supabase or fall back to JSON file"
+
+    get_script:
+      path: "GET /api/production/:courseCode/script"
+      description: "Get course script (seeds, LEGOs, phrases)"
+      response: |
+        {
+          "seeds": [...],
+          "legos": [...],
+          "phrases": [...]
+        }
+
+    get_script_view:
+      path: "GET /api/production/:courseCode/script-view"
+      description: "Hierarchical script with audio UUIDs"
+      notes: "Used by ScriptViewer.vue"
+
+  ## ==========================================================================
+  ## ENDPOINTS - AUDIO
+  ## ==========================================================================
+
+  audio_endpoints:
+    get_audio_url:
+      path: "GET /api/production/:courseCode/audio/:uuid/url"
+      description: "Get pre-signed S3 URL for audio playback"
+      response: '{"url": "https://...", "expires": 3600}'
+
+    check_audio_exists:
+      path: "GET /api/production/:courseCode/audio/:uuid/exists"
+      description: "Check if audio file exists in S3"
+      response: '{"exists": true}'
+
+    get_audio_metadata:
+      path: "GET /api/production/:courseCode/audio-metadata"
+      description: "Get metadata for all course audio"
+
+  ## ==========================================================================
+  ## ENDPOINTS - AUDIO PIPELINE (v13)
+  ## ==========================================================================
+
+  pipeline_endpoints:
+    get_plan:
+      path: "GET /api/production/:courseCode/audio-pipeline/plan"
+      description: "Get audio generation plan (what's missing)"
+      v13_query: |
+        SELECT * FROM get_missing_audio($course_code, $needed)
+
+    get_inventory:
+      path: "GET /api/production/:courseCode/audio-pipeline/inventory"
+      description: "Get audio inventory summary"
+      v13_query: |
+        SELECT * FROM get_course_audio_summary($course_code)
+
+    start_generation:
+      path: "POST /api/production/:courseCode/audio-pipeline/generate"
+      description: "Start audio generation"
+      notes: "Requires user approval (costs money)"
+
+    get_status:
+      path: "GET /api/production/:courseCode/audio-pipeline/status"
+      description: "Get generation job status"
+
+  ## ==========================================================================
+  ## ENDPOINTS - QA WORKFLOW
+  ## ==========================================================================
+
+  qa_endpoints:
+    description: |
+      QA workflow for reviewing and flagging audio samples.
+      Note: May need separate sample_flags table (not part of v13 audio schema).
+
+    get_flags:
+      path: "GET /api/production/:courseCode/flags"
+      description: "Get all sample flags for a course"
+      notes: "sample_flags table (QA-specific, not audio registry)"
+
+    update_flag:
+      path: "POST /api/production/:courseCode/flags/update"
+      description: "Update flag for a single sample"
+      body:
+        audioId: "uuid"
+        status: "approved | flagged | needs_review"
+        reason: "string"
+
+    bulk_update_flags:
+      path: "POST /api/production/:courseCode/flags/bulk-update"
+      description: "Bulk update multiple flags"
+      body:
+        audioIds: ["uuid1", "uuid2"]
+        status: "approved"
+
+    get_flagged_for_regeneration:
+      path: "GET /api/production/:courseCode/regeneration-queue"
+      description: "Get samples flagged for TTS regeneration"
+
+  ## ==========================================================================
+  ## ENDPOINTS - RECORDING WORKFLOW
+  ## ==========================================================================
+
+  recording_endpoints:
+    description: |
+      Human recording workflow for Welsh courses and community courses.
+      Supports the AutocueStudio.vue component.
+
+    get_recording_queue:
+      path: "GET /api/production/:courseCode/recording/queue"
+      description: "Get phrases needing human recording"
+      filters:
+        role: "known | presentation"
+        status: "pending | recorded | approved"
+
+    upload_recording:
+      path: "POST /api/production/:courseCode/recording/upload"
+      description: "Upload human recording"
+      body:
+        audioId: "uuid"
+        audio: "base64 or multipart"
+        metadata:
+          duration_ms: 2500
+          sample_rate: 44100
+
+    update_recording_status:
+      path: "POST /api/production/:courseCode/recording/:audioId/status"
+      description: "Update recording status (review → approved)"
+
+  ## ==========================================================================
+  ## WEBSOCKET - REAL-TIME UPDATES
+  ## ==========================================================================
+
+  websocket:
+    path: "/api/production/websocket"
+    library: "socket.io"
+
+    events_emitted:
+      audio_generated:
+        description: "New audio file generated"
+        payload: '{"courseCode": "...", "audioId": "uuid", "text": "..."}'
+
+      flag_updated:
+        description: "Sample flag changed"
+        payload: '{"courseCode": "...", "audioId": "uuid", "status": "..."}'
+
+      recording_uploaded:
+        description: "Human recording uploaded"
+        payload: '{"courseCode": "...", "audioId": "uuid"}'
+
+      pipeline_progress:
+        description: "Audio generation progress"
+        payload: '{"courseCode": "...", "completed": 50, "total": 100}'
+
+    events_received:
+      subscribe_course:
+        description: "Subscribe to updates for a course"
+        payload: '{"courseCode": "spa_for_eng"}'
+
+      unsubscribe_course:
+        description: "Unsubscribe from course updates"
+
+  ## ==========================================================================
+  ## INTERNAL ENDPOINTS
+  ## ==========================================================================
+
+  internal_endpoints:
+    emit:
+      path: "POST /api/production/internal/emit"
+      description: "Internal endpoint for other services to emit WebSocket events"
+      auth: "Internal only (no external access)"
+
+  ## ==========================================================================
+  ## DEPENDENCIES
+  ## ==========================================================================
+
+  dependencies:
+    node_packages:
+      - "express"
+      - "cors"
+      - "socket.io"
+      - "@supabase/supabase-js"
+      - "@aws-sdk/client-s3"
+      - "@aws-sdk/s3-request-presigner"
+      - "multer"  # for file uploads
+
+    supabase_tables:
+      - "courses"
+      - "course_audio"
+      - "shared_audio"
+      - "course_seeds"
+      - "course_legos"
+      - "course_practice_phrases"
+      # QA-specific (may be separate):
+      - "sample_flags (optional)"
+      - "recording_provenance (optional)"
+
+    s3:
+      bucket: "ssi-audio-stage"
+      operations:
+        - "getObject (signed URLs)"
+        - "putObject (recording uploads)"
+        - "headObject (existence checks)"
+
+  ## ==========================================================================
+  ## V13 SCHEMA QUERIES
+  ## ==========================================================================
+
+  v13_queries:
+    find_course_audio:
+      description: "Find audio for a phrase"
+      sql: |
+        SELECT id, s3_key, voice_id, origin, duration_ms
+        FROM course_audio
+        WHERE course_code = $1
+          AND text_normalized = LOWER(TRIM($2))
+          AND language = $3
+          AND role = $4
+
+    insert_course_audio:
+      description: "Insert new audio (after generation/recording)"
+      sql: |
+        INSERT INTO course_audio (
+          course_code, text, language, role,
+          voice_id, origin, s3_key, duration_ms
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        ON CONFLICT (course_code, text_normalized, language, role)
+        DO UPDATE SET
+          voice_id = EXCLUDED.voice_id,
+          origin = EXCLUDED.origin,
+          s3_key = EXCLUDED.s3_key,
+          duration_ms = EXCLUDED.duration_ms
+        RETURNING id
+
+    get_inventory:
+      description: "Get audio inventory"
+      sql: |
+        SELECT * FROM get_course_audio_summary($1)
+
+  ## ==========================================================================
+  ## VUE COMPONENTS SERVED
+  ## ==========================================================================
+
+  vue_components:
+    description: "Vue components that consume this API"
+
+    views:
+      - "src/views/production/MissionControl.vue"
+      - "src/views/production/AudioPipeline.vue"
+      - "src/views/production/ScriptViewer.vue"
+      - "src/views/production/RecordingStudio.vue"
+      - "src/views/production/UserFeedback.vue"
+
+    components:
+      - "src/views/production/components/AudioPlayer.vue"
+      - "src/views/production/components/CyclePlayer.vue"
+      - "src/views/production/components/FlagModal.vue"
+      - "src/views/production/components/PipelineProgress.vue"
+      - "src/views/production/components/RecordingQueue.vue"
+      - "src/views/production/components/AutocueDisplay.vue"
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML Production API v1.0.0
+## ============================================================================

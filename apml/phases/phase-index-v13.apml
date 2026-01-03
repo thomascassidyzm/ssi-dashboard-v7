@@ -1,0 +1,386 @@
+# APML Phase Index v13.0.0
+# SSI Course Production Pipeline
+# Version: 13.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+#
+# BREAKING CHANGES from v12:
+# - Removed texts → audio_files → course_audio indirection
+# - course_audio is now flat (course owns audio directly)
+# - shared_audio for encouragements/instructions only
+# - No joins needed for basic audio operations
+
+## ============================================================================
+## VERSION 13 BREAKING CHANGES
+## ============================================================================
+
+BREAKING_CHANGES:
+  summary: |
+    Version 13 SIMPLIFIES the data model by removing the indirection layer.
+    Audio is now directly owned by courses, not shared via a texts table.
+
+  from_v12:
+    removed:
+      - "texts table (text as first-class entity)"
+      - "audio_files table (rendering indirection)"
+      - "voices table (replaced by course.voice_config)"
+      - "Join-based audio lookup"
+
+    added:
+      - "course_audio: flat table, course owns audio directly"
+      - "shared_audio: only for encouragements/instructions"
+      - "voice_config JSONB on courses table"
+      - "origin column (tts/human) instead of source"
+
+    changed:
+      - "Audio lookup: JOIN query → single table query"
+      - "Voice config: voices table → course.voice_config JSONB"
+      - "Roles: removed 'source', kept known/target1/target2/presentation"
+
+  rationale: |
+    v12 was over-engineered:
+    - Most audio is course-specific, not shared across courses
+    - The join complexity made queries slow and error-prone
+    - Deduplication across courses was rarely needed in practice
+    - Human audio (Welsh courses) doesn't fit the TTS model well
+
+    v13 embraces simplicity:
+    - Course owns its audio (course_audio)
+    - Only genuinely shared content in shared_audio
+    - No joins for basic operations
+    - origin (tts/human) is explicit, not inferred
+
+## ============================================================================
+## DATA LAYER ARCHITECTURE (v13)
+## ============================================================================
+
+DATA_LAYER:
+  core_spec: "apml/core/audio-registry-v13.apml"
+
+  principle: |
+    Courses own their audio. Sharing is explicit, not automatic.
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │  courses              course_audio                              │
+    │  ──────               ────────────                              │
+    │  code (PK)    ←──     course_code (FK)                         │
+    │  voice_config         text, text_normalized                    │
+    │  status               language, role                            │
+    │                       voice_id, origin                          │
+    │                       s3_key                                    │
+    │                                                                 │
+    │  shared_audio (separate - encouragements only)                  │
+    │  ────────────                                                   │
+    │  text, language, audio_type                                     │
+    │  voice_id, origin, s3_key                                       │
+    └─────────────────────────────────────────────────────────────────┘
+
+    - course_audio: UNIQUE (course_code, text_normalized, language, role)
+    - shared_audio: UNIQUE (text_normalized, language, audio_type)
+    - No joins needed for lookup!
+
+  supabase:
+    tables:
+      courses:
+        description: "All courses with voice configuration"
+        primary_key: "code"
+        key_columns:
+          - "code (TEXT)"
+          - "display_name (TEXT)"
+          - "known_lang (TEXT)"
+          - "target_lang (TEXT)"
+          - "voice_config (JSONB)"
+          - "status (draft/beta/released)"
+          - "course_type (official/community)"
+
+      course_audio:
+        description: "Audio owned by courses"
+        primary_key: "id (UUID)"
+        key_columns:
+          - "course_code (FK → courses.code)"
+          - "text (original)"
+          - "text_normalized (auto-populated trigger)"
+          - "language (ISO 639-3)"
+          - "role (known/target1/target2/presentation)"
+          - "voice_id (e.g., azure_es-ES-ElviraNeural)"
+          - "origin (tts/human)"
+          - "s3_key"
+        unique_constraint: "(course_code, text_normalized, language, role)"
+
+      shared_audio:
+        description: "Audio shared across courses (encouragements, instructions)"
+        primary_key: "id (UUID)"
+        key_columns:
+          - "text"
+          - "text_normalized"
+          - "language"
+          - "audio_type (encouragement/instruction)"
+          - "voice_id"
+          - "origin"
+          - "s3_key"
+        unique_constraint: "(text_normalized, language, audio_type)"
+
+  s3:
+    bucket: "ssi-audio-stage"
+    region: "eu-west-1"
+    key_pattern: "{uuid}.mp3"
+    storage_model: "FLAT - just UUIDs, all metadata in Supabase"
+
+## ============================================================================
+## AUDIO LOOKUP FLOW (v13 - Simplified)
+## ============================================================================
+
+AUDIO_LOOKUP:
+  description: |
+    Finding audio is now a simple single-table query.
+    No joins. No hash computation. Just query course_audio.
+
+  find_course_audio:
+    sql: |
+      SELECT id, s3_key, voice_id, origin
+      FROM course_audio
+      WHERE course_code = $course_code
+        AND text_normalized = LOWER(TRIM($text))
+        AND language = $language
+        AND role = $role
+
+  find_shared_audio:
+    sql: |
+      SELECT id, s3_key, voice_id, origin
+      FROM shared_audio
+      WHERE text_normalized = LOWER(TRIM($text))
+        AND language = $language
+        AND audio_type = $type
+
+  insert_course_audio:
+    sql: |
+      INSERT INTO course_audio (
+        course_code, text, text_normalized, language,
+        role, voice_id, origin, s3_key
+      ) VALUES (
+        $course_code, $text, LOWER(TRIM($text)), $language,
+        $role, $voice_id, $origin, $s3_key
+      )
+      ON CONFLICT (course_code, text_normalized, language, role)
+      DO UPDATE SET
+        voice_id = EXCLUDED.voice_id,
+        origin = EXCLUDED.origin,
+        s3_key = EXCLUDED.s3_key
+      RETURNING id
+
+## ============================================================================
+## AUDIO GENERATION FLOW (v13)
+## ============================================================================
+
+AUDIO_GENERATION_FLOW:
+  description: |
+    Generate audio for a course. Simple direct inserts.
+    No texts table, no audio_files table, no joins.
+
+  steps:
+    1:
+      name: "Get course voice configuration"
+      sql: |
+        SELECT voice_config FROM courses WHERE code = $course_code
+
+    2:
+      name: "Get required phrases from baskets"
+      source: "lego_baskets.json OR course_practice_phrases"
+      extract:
+        - "known_text, known_lang"
+        - "target_text, target_lang"
+
+    3:
+      name: "Check what's missing"
+      sql: |
+        -- Use get_missing_audio() RPC function
+        SELECT * FROM get_missing_audio($course_code, $needed_array)
+
+    4:
+      name: "Generate missing audio"
+      for_each: "missing phrase"
+      process:
+        - "Call TTS API (Azure)"
+        - "Upload to S3"
+        - "Insert into course_audio"
+
+    5:
+      name: "Verify completeness"
+      sql: |
+        SELECT * FROM get_course_audio_summary($course_code)
+
+## ============================================================================
+## PIPELINE PHASES (v13)
+## ============================================================================
+
+CONTENT_PHASES:
+  note: |
+    Phases 1-3 are PERFECT and UNCHANGED from v11/v12.
+    Only audio-related phases (8, 9) are updated for v13 schema.
+
+  PHASE_1:
+    name: "Translation + LEGO Extraction"
+    version: "13.0.0"
+    changes: "NONE - Perfect, don't touch"
+    status: "STABLE"
+    port: 3457
+
+  PHASE_2:
+    name: "Conflict Resolution"
+    version: "13.0.0"
+    changes: "NONE - Perfect, don't touch"
+    status: "STABLE"
+    port: 3458
+
+  PHASE_3:
+    name: "Basket Generation"
+    version: "13.0.0"
+    changes: "NONE - Perfect, don't touch"
+    status: "STABLE"
+    port: 3459
+
+  PHASE_8:
+    name: "Audio Generation"
+    version: "13.0.0 - SIMPLIFIED"
+    port: 3465
+    changes:
+      - "Uses course_audio directly (no joins)"
+      - "voice_config from courses.voice_config JSONB"
+      - "origin column (tts/human) explicit"
+      - "Simpler missing audio detection"
+
+    endpoints:
+      plan:
+        method: "POST /plan"
+        description: "Count missing audio"
+        query: "get_missing_audio() RPC"
+
+      generate:
+        method: "POST /generate"
+        description: "Generate TTS, insert to course_audio"
+
+      inventory:
+        method: "GET /inventory/:courseCode"
+        description: "Get audio inventory summary"
+        query: "get_course_audio_summary() RPC"
+
+  PHASE_9:
+    name: "Manifest Compilation"
+    version: "13.0.0"
+    port: 3466
+    changes:
+      - "Query course_audio directly (no joins)"
+      - "Validation is simpler"
+
+    endpoints:
+      compile:
+        method: "POST /compile"
+        description: "Compile manifest from Supabase"
+
+      validate:
+        method: "GET /validate/:courseCode"
+        description: "Check 100% audio coverage"
+
+## ============================================================================
+## ROLES EXPLAINED
+## ============================================================================
+
+ROLES:
+  known:
+    description: "Prompt in learner's known language"
+    language: "course.known_lang"
+    voice_config_key: "known"
+    learning_cycle_phase: "PROMPT"
+
+  target1:
+    description: "First target language voice"
+    language: "course.target_lang"
+    voice_config_key: "target1"
+    learning_cycle_phase: "VOICE_1"
+
+  target2:
+    description: "Second target language voice"
+    language: "course.target_lang"
+    voice_config_key: "target2"
+    learning_cycle_phase: "VOICE_2"
+
+  presentation:
+    description: "LEGO introduction narration"
+    language: "course.known_lang"
+    voice_config_key: "presentation"
+    used_for: "Introducing new LEGOs"
+    notes: "Often human-recorded for Welsh courses"
+
+  deprecated:
+    source:
+      status: "REMOVED in v13"
+      reason: "Replaced by 'known' role"
+
+## ============================================================================
+## ORIGIN (TTS vs HUMAN)
+## ============================================================================
+
+ORIGIN:
+  tts:
+    description: "Generated via TTS API"
+    regenerable: true
+    voice_format: "azure_{locale}-{name}"
+
+  human:
+    description: "Recorded by human speaker"
+    regenerable: false
+    precious: true
+    voice_format: "human_{name}"
+    notes: "Welsh courses have irreplaceable human recordings"
+
+## ============================================================================
+## MIGRATION FROM v12
+## ============================================================================
+
+MIGRATION:
+  from_v12:
+    description: |
+      v12 had: texts → audio_files → course_audio (3 tables, joins)
+      v13 has: course_audio (flat) + shared_audio (2 tables, no joins)
+
+    strategy:
+      1: "Export existing audio metadata"
+      2: "Create v13 schema (already done)"
+      3: "Import audio directly to course_audio"
+      4: "Move encouragements to shared_audio"
+      5: "Drop old tables (texts, audio_files)"
+
+    notes: |
+      Welsh courses have precious human audio.
+      Import must preserve voice_id and set origin='human'.
+
+## ============================================================================
+## SUMMARY
+## ============================================================================
+
+SUMMARY:
+  version: "13.0.0"
+  date: "2026-01-03"
+
+  key_changes:
+    - "Removed texts table (indirection layer)"
+    - "Removed audio_files table (indirection layer)"
+    - "course_audio is flat - course owns audio directly"
+    - "shared_audio for encouragements only"
+    - "voice_config JSONB on courses table"
+    - "origin column (tts/human) explicit"
+
+  benefits:
+    - "No joins for basic operations"
+    - "Simpler queries"
+    - "Clearer ownership model"
+    - "Easier to understand and maintain"
+    - "Human audio handled explicitly"
+
+  principle: |
+    Courses own their audio. Simple is better.
+    Only share what's genuinely shared.
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML v13.0.0 - Course-Owned Audio Architecture
+## ============================================================================

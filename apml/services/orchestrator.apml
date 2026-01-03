@@ -1,0 +1,263 @@
+# APML: Orchestrator Service
+# Version: 1.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: SERVICE SPECIFICATION
+
+service Orchestrator:
+  name: "SSi Automation Orchestrator"
+  purpose: "Coordinate multi-agent course generation and phase execution"
+  version: "1.0.0"
+  port: 3456
+  script: "services/orchestration/automation_server.cjs"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  overview: |
+    The Orchestrator is the central coordination service for the SSi
+    course production pipeline. It manages:
+
+    1. Multi-agent coordination for parallel course generation
+    2. Phase execution (Translation, LEGO extraction, Basket generation)
+    3. VFS (Virtual File System) management for course files
+    4. Git workflow for agent branches
+    5. Health monitoring for all services
+
+    The orchestrator does NOT handle audio generation directly -
+    that's delegated to Phase 8 (Audio Generator) and Phase 9 (Manifest).
+
+  ## ==========================================================================
+  ## ENDPOINTS
+  ## ==========================================================================
+
+  endpoints:
+    health:
+      path: "GET /health"
+      description: "Health check"
+      response: '{"status": "healthy", "uptime": 12345}'
+
+    status:
+      path: "GET /status"
+      description: "Full service mesh status"
+      response: |
+        {
+          "orchestrator": "healthy",
+          "phase1_translation": "healthy",
+          "phase1_lego": "healthy",
+          "phase3_basket": "healthy",
+          "phase8_audio": "healthy",
+          "production_api": "healthy"
+        }
+
+    ## Course Management
+    courses:
+      path: "GET /courses"
+      description: "List all courses"
+
+    course_status:
+      path: "GET /courses/:courseCode/status"
+      description: "Get course pipeline status"
+
+    ## Phase Execution
+    run_phase:
+      path: "POST /run-phase"
+      description: "Execute a specific phase"
+      body:
+        courseCode: "spa_for_eng"
+        phase: "translation | lego | basket"
+        seedRange: "S0001-S0100"
+        options:
+          dryRun: false
+          force: false
+
+    ## Multi-Agent Orchestration
+    spawn_agents:
+      path: "POST /spawn-agents"
+      description: "Launch multiple Claude agents for parallel work"
+      body:
+        courseCode: "spa_for_eng"
+        seedRange: "S0001-S0100"
+        agentCount: 5
+        phase: "translation"
+
+    agent_status:
+      path: "GET /agents/status"
+      description: "Status of all active agents"
+
+    ## VFS Management
+    vfs_list:
+      path: "GET /vfs/:courseCode"
+      description: "List VFS contents for a course"
+
+    vfs_read:
+      path: "GET /vfs/:courseCode/:filename"
+      description: "Read a VFS file"
+
+    vfs_write:
+      path: "POST /vfs/:courseCode/:filename"
+      description: "Write a VFS file"
+
+    ## Git Operations
+    git_status:
+      path: "GET /git/status"
+      description: "Git repository status"
+
+    git_merge:
+      path: "POST /git/merge"
+      description: "Merge agent branch to main"
+
+  ## ==========================================================================
+  ## MULTI-AGENT COORDINATION
+  ## ==========================================================================
+
+  multi_agent:
+    description: |
+      The orchestrator coordinates multiple Claude agents working in parallel
+      on different seed ranges. Each agent works in its own git branch.
+
+    workflow:
+      1: "User requests seed range (e.g., S0001-S0100)"
+      2: "Orchestrator divides into segments (e.g., 5 agents × 20 seeds)"
+      3: "Orchestrator creates agent branches (agent-01, agent-02, etc.)"
+      4: "Orchestrator spawns agents via browser automation"
+      5: "Agents work independently, committing to their branches"
+      6: "Orchestrator monitors completion via VFS polling"
+      7: "Orchestrator merges completed branches to main"
+
+    configuration:
+      AGENT_SPAWN_DELAY: 5000  # ms between spawns
+      SEGMENT_SIZE: 50         # seeds per segment
+      AGENTS_PER_SEGMENT: 5    # agents per segment
+      SEEDS_PER_AGENT: 10      # seeds per agent
+      GIT_AUTO_MERGE: true     # auto-merge completed branches
+
+    browser_automation:
+      method: "AppleScript (macOS)"
+      target: "https://claude.ai/code"
+      clipboard: "pbcopy for prompts"
+
+  ## ==========================================================================
+  ## CHECKPOINT MODES
+  ## ==========================================================================
+
+  checkpoint_modes:
+    manual:
+      description: "Pause between phases, require user approval"
+      use_case: "Testing and debugging"
+      behavior: "Pause after each phase, wait for user input"
+
+    gated:
+      description: "Auto-run but pause if validators fail"
+      use_case: "Normal development (recommended)"
+      behavior: "Continue if validation passes, pause on failure"
+
+    full:
+      description: "Full automation, no stops"
+      use_case: "Production after validation"
+      behavior: "Run all phases without pausing"
+
+  ## ==========================================================================
+  ## VFS MANAGEMENT
+  ## ==========================================================================
+
+  vfs:
+    description: |
+      Virtual File System for course data files.
+      Maps logical paths to physical locations.
+
+    root: "VFS_ROOT environment variable"
+    structure:
+      courses:
+        pattern: "{VFS_ROOT}/courses/{courseCode}/"
+        contents:
+          - "canonical_seeds.json"
+          - "draft_lego_pairs.json"
+          - "lego_pairs.json"
+          - "lego_baskets.json"
+          - "course_manifest.json"
+
+    polling:
+      interval: 2000  # ms
+      purpose: "Monitor for agent completion"
+      triggers:
+        - "New file written"
+        - "File modified"
+        - "Git commit detected"
+
+  ## ==========================================================================
+  ## SERVICE MESH
+  ## ==========================================================================
+
+  service_mesh:
+    description: "Inter-service communication"
+
+    proxied_services:
+      phase1_translation:
+        port: 3457
+        routes:
+          - "POST /translate"
+          - "GET /status"
+
+      phase1_lego:
+        port: 3458
+        routes:
+          - "POST /extract"
+          - "GET /status"
+
+      phase3_basket:
+        port: 3459
+        routes:
+          - "POST /generate"
+          - "GET /status"
+
+      phase8_audio:
+        port: 3465
+        routes:
+          - "POST /plan"
+          - "POST /generate"
+          - "GET /status/:courseCode"
+          - "GET /inventory/:courseCode"
+
+      production_api:
+        port: 3470
+        routes:
+          - "All /api/production/* routes"
+
+  ## ==========================================================================
+  ## DEPENDENCIES
+  ## ==========================================================================
+
+  dependencies:
+    node_packages:
+      - "express"
+      - "cors"
+      - "socket.io"
+      - "fs-extra"
+      - "@supabase/supabase-js"
+
+    external:
+      - "Git (for branch management)"
+      - "PM2 (process management)"
+      - "AppleScript (browser automation on macOS)"
+
+  ## ==========================================================================
+  ## STARTUP
+  ## ==========================================================================
+
+  startup:
+    script: "start-automation.cjs"
+    process_name: "ssi-orchestrator"
+
+    steps:
+      1: "Load environment variables"
+      2: "Calculate service ports from BASE_PORT"
+      3: "Start all phase services via PM2"
+      4: "Verify health of all services"
+      5: "Begin VFS polling"
+      6: "Open WebSocket for real-time updates"
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML Orchestrator Service v1.0.0
+## ============================================================================

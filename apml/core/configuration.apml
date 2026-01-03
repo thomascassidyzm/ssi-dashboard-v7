@@ -1,0 +1,357 @@
+# APML: System Configuration
+# Version: 1.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: CORE CONFIGURATION SPECIFICATION
+
+configuration SSiDashboard:
+  name: "SSi Dashboard Configuration"
+  purpose: "All environment variables, ports, and service configuration"
+  version: "1.0.0"
+
+  ## ==========================================================================
+  ## CRITICAL PATH CONFIGURATION
+  ## ==========================================================================
+
+  paths:
+    VFS_ROOT:
+      description: "Root path to SSi Course Production folder"
+      required: true
+      examples:
+        tom: "/Users/tomcassidy/SSi/SSi_Course_Production"
+        kai: "/Users/kai/Projects/SSi_Course_Production"
+      notes: "This is the ONLY path you must configure"
+
+  ## ==========================================================================
+  ## PORT ASSIGNMENTS
+  ## ==========================================================================
+
+  ports:
+    description: "All services auto-calculate from BASE_PORT"
+    base_port: 3456
+
+    assignments:
+      orchestrator:
+        port: 3456
+        offset: 0
+        description: "Main automation orchestrator"
+
+      phase1_translation:
+        port: 3457
+        offset: 1
+        description: "Phase 1: Translation service"
+
+      phase1_lego:
+        port: 3458
+        offset: 2
+        description: "Phase 1: LEGO extraction service"
+
+      phase3_basket:
+        port: 3459
+        offset: 3
+        description: "Phase 3: Basket generation service"
+
+      manifest_compilation:
+        port: 3464
+        offset: 8
+        description: "Legacy manifest compilation (deprecated)"
+
+      phase8_audio:
+        port: 3465
+        offset: 9
+        description: "Phase 8: Audio generation service"
+
+      phase9_manifest:
+        port: 3466
+        offset: 10
+        description: "Phase 9: Manifest compilation from Supabase"
+
+      production_api:
+        port: 3470
+        offset: 14
+        description: "Production API: QA, recording, WebSocket"
+
+      frontend_dev:
+        port: 5173
+        description: "Vite dev server (frontend)"
+
+  ## ==========================================================================
+  ## SUPABASE CONFIGURATION
+  ## ==========================================================================
+
+  supabase:
+    description: "PostgreSQL database via Supabase"
+    required: true
+
+    variables:
+      SUPABASE_URL:
+        format: "https://{project-id}.supabase.co"
+        required: true
+        used_by: ["Phase 8", "Phase 9", "Production API"]
+
+      SUPABASE_SERVICE_KEY:
+        format: "sb_secret_{key}"
+        required: true
+        notes: "Service role key - bypasses RLS for server operations"
+
+    tables_v13:
+      - courses
+      - course_audio
+      - shared_audio
+      - course_seeds
+      - course_legos
+      - course_practice_phrases
+
+  ## ==========================================================================
+  ## AWS/S3 CONFIGURATION
+  ## ==========================================================================
+
+  s3:
+    description: "Audio file storage"
+    required: true
+
+    bucket:
+      name: "ssi-audio-stage"
+      region: "eu-west-1"
+      deprecated:
+        - name: "popty-bach-lfs"
+          status: "DO NOT USE - deleted"
+
+    variables:
+      AWS_ACCESS_KEY_ID:
+        required: true
+
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+
+      AWS_REGION:
+        default: "eu-west-1"
+        required: true
+
+      S3_BUCKET:
+        default: "ssi-audio-stage"
+        aliases: ["S3_AUDIO_BUCKET", "AWS_S3_BUCKET"]
+
+  ## ==========================================================================
+  ## TTS SERVICES
+  ## ==========================================================================
+
+  tts:
+    description: "Text-to-Speech providers for audio generation"
+
+    azure:
+      description: "Primary TTS for target language audio"
+      used_for: ["target1", "target2", "known (TTS courses)"]
+      variables:
+        AZURE_SPEECH_KEY:
+          required: true
+          get_from: "https://portal.azure.com"
+
+        AZURE_SPEECH_REGION:
+          default: "westeurope"
+          required: true
+
+    elevenlabs:
+      description: "Alternative TTS for presentation/narration"
+      used_for: ["presentation (optional)"]
+      variables:
+        ELEVENLABS_API_KEY:
+          required: false
+          get_from: "https://elevenlabs.io/app/settings"
+
+    google:
+      description: "Optional alternative TTS"
+      status: "optional"
+      variables:
+        GOOGLE_PROJECT_ID:
+          required: false
+        GOOGLE_TTS_API_KEY:
+          required: false
+
+  ## ==========================================================================
+  ## SERVICE MESH URLS
+  ## ==========================================================================
+
+  service_mesh:
+    description: "Inter-service communication URLs (auto-configured by start-automation.cjs)"
+
+    variables:
+      ORCHESTRATOR_URL:
+        default: "http://localhost:3456"
+
+      PHASE1_TRANSLATION_URL:
+        default: "http://localhost:3457"
+
+      PHASE1_LEGO_URL:
+        default: "http://localhost:3458"
+
+      PHASE3_URL:
+        default: "http://localhost:3459"
+
+      MANIFEST_URL:
+        default: "http://localhost:3464"
+
+      PHASE8_URL:
+        default: "http://localhost:3465"
+
+      PHASE9_URL:
+        default: "http://localhost:3466"
+
+      AUDIO_URL:
+        default: "http://localhost:3465"
+        alias_of: "PHASE8_URL"
+
+      PRODUCTION_API_URL:
+        default: "http://localhost:3470"
+
+  ## ==========================================================================
+  ## ORCHESTRATION CONFIGURATION
+  ## ==========================================================================
+
+  orchestration:
+    checkpoint_mode:
+      variable: "CHECKPOINT_MODE"
+      values:
+        manual: "Pause between phases, require user approval (safest)"
+        gated: "Auto-run but pause if validators fail (recommended)"
+        full: "Full automation, no stops (production)"
+      default: "gated"
+
+    multi_agent:
+      AGENT_SPAWN_DELAY:
+        default: 5000
+        unit: "milliseconds"
+        description: "Delay between spawning agents to avoid clipboard race"
+
+      SEGMENT_SIZE:
+        default: 50
+        description: "Seeds per segment"
+
+      AGENTS_PER_SEGMENT:
+        default: 5
+        description: "Agents per segment"
+
+      SEEDS_PER_AGENT:
+        default: 10
+        description: "Seeds per agent"
+
+      VFS_MONITOR_INTERVAL:
+        default: 2000
+        unit: "milliseconds"
+        description: "File system watcher polling interval"
+
+      GIT_AUTO_MERGE:
+        default: true
+        description: "Automatically merge agent branches"
+
+  ## ==========================================================================
+  ## VALIDATION THRESHOLDS
+  ## ==========================================================================
+
+  validation:
+    phase3:
+      error_rate:
+        variable: "VALIDATION_THRESHOLD_PHASE3_ERROR_RATE"
+        default: 0.05
+        description: "Maximum acceptable error rate (5%)"
+
+    phase5:
+      gate_violations:
+        variable: "VALIDATION_THRESHOLD_PHASE5_GATE_VIOLATIONS"
+        default: 0.02
+        description: "Maximum gate violation rate (2%)"
+
+      quality_score:
+        variable: "VALIDATION_THRESHOLD_PHASE5_QUALITY_SCORE"
+        default: 0.95
+        description: "Minimum quality score (95%)"
+
+  ## ==========================================================================
+  ## OPTIONAL SERVICES
+  ## ==========================================================================
+
+  optional:
+    ngrok:
+      description: "Tunnel for external agent access"
+      variable: "NGROK_URL"
+      format: "https://{subdomain}.ngrok.io"
+      used_for: "Remote agent orchestration"
+
+    anthropic:
+      description: "Claude API for AI-powered agents"
+      variable: "ANTHROPIC_API_KEY"
+      get_from: "https://console.anthropic.com"
+
+    github:
+      description: "GitHub API for dashboard editing"
+      variables:
+        GITHUB_TOKEN:
+          format: "ghp_{token}"
+          scopes: ["repo"]
+          get_from: "https://github.com/settings/tokens"
+        GITHUB_OWNER:
+          default: "thomascassidyzm"
+        GITHUB_REPO:
+          default: "ssi-dashboard-v7"
+        GITHUB_BRANCH:
+          default: "main"
+
+  ## ==========================================================================
+  ## SERVER CONFIGURATION
+  ## ==========================================================================
+
+  server:
+    CORS_ORIGIN:
+      default: "*"
+      description: "CORS origin for API requests"
+
+    BASE_URL:
+      default: "http://localhost:5173"
+      description: "Base URL for auth magic links"
+
+    DEBUG:
+      default: false
+      description: "Verbose logging mode"
+
+  ## ==========================================================================
+  ## STARTUP SCRIPTS
+  ## ==========================================================================
+
+  startup:
+    primary: "start-automation.cjs"
+    description: |
+      The start-automation.cjs script:
+      1. Reads BASE_PORT
+      2. Calculates all service ports
+      3. Sets service mesh URLs
+      4. Starts all services via PM2
+      5. Monitors health endpoints
+
+    pm2_processes:
+      - name: "ssi-orchestrator"
+        script: "services/orchestration/automation_server.cjs"
+        port: 3456
+
+      - name: "ssi-phase1-translation"
+        script: "services/phases/phase1-translation.cjs"
+        port: 3457
+
+      - name: "ssi-phase1-lego"
+        script: "services/phases/phase1-lego-extraction.cjs"
+        port: 3458
+
+      - name: "ssi-phase3"
+        script: "services/phases/phase3-basket-generation.cjs"
+        port: 3459
+
+      - name: "ssi-phase8-audio"
+        script: "services/phases/phase8-audio-generator.cjs"
+        port: 3465
+
+      - name: "ssi-production-api"
+        script: "services/production-api.cjs"
+        port: 3470
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML Configuration v1.0.0
+## ============================================================================

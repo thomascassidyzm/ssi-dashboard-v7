@@ -1,0 +1,464 @@
+# APML: Audio Registry Architecture
+# Version: 13.0.0 (2026-01-03)
+# Status: CANONICAL - This is the source of truth
+# Type: CORE ARCHITECTURE SPECIFICATION
+
+architecture AudioRegistry:
+  name: "Course-Owned Audio Architecture"
+  purpose: "Simple, course-centric audio ownership with shared audio for reusables"
+  version: "13.0.0"
+
+  ## ==========================================================================
+  ## BREAKING CHANGE FROM v12
+  ## ==========================================================================
+
+  breaking_change:
+    summary: |
+      v13 REMOVES the texts/audio_files indirection layer.
+      Audio is now directly owned by courses (course_audio) or shared globally (shared_audio).
+
+    problem_with_v12: |
+      v12 separated text from audio with a join table:
+        texts → audio_files → course_audio
+
+      This was over-engineered:
+      1. Most audio is course-specific, not shared
+      2. The join complexity made queries slow and error-prone
+      3. Deduplication across courses was rarely needed
+      4. Human audio (Welsh courses) doesn't fit the TTS model
+
+    solution: |
+      Two simple tables:
+      - course_audio: Course owns its audio directly
+      - shared_audio: Only for genuinely shared content (encouragements)
+
+      No joins. No indirection. Course-centric ownership.
+
+  ## ==========================================================================
+  ## CORE PRINCIPLE: Courses Own Their Audio
+  ## ==========================================================================
+
+  principle: |
+    A course is the unit of ownership. Each course has its own audio.
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                     SIMPLE OWNERSHIP                            │
+    │                                                                 │
+    │  courses ──────────── course_audio ──────────── S3             │
+    │  (voice_config)       (text, role, s3_key)      (bytes)        │
+    │                                                                 │
+    │  shared_audio ─────────────────────────────────── S3           │
+    │  (encouragements, instructions)                  (bytes)        │
+    │                                                                 │
+    └─────────────────────────────────────────────────────────────────┘
+
+    - Course audio: Unique per course+text+language+role
+    - Shared audio: Unique per text+language+audio_type (encouragements/instructions)
+    - No joins needed for basic operations
+
+  ## ==========================================================================
+  ## S3 STORAGE
+  ## ==========================================================================
+
+  s3:
+    bucket: "ssi-audio-stage"
+    region: "eu-west-1"
+
+    storage_model: |
+      S3 is FLAT storage - just UUIDs, no folder hierarchy.
+      All metadata (course, role, language, text) lives in Supabase.
+      S3 is a dumb blob store keyed by UUID.
+
+    key_pattern: "{uuid}.mp3"
+
+    example:
+      s3_key: "7372f60b-5312-4985-b0a0-a97f92323f83.mp3"
+      full_url: "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/7372f60b-5312-4985-b0a0-a97f92323f83.mp3"
+
+    rationale: |
+      - Simpler: No path parsing, no folder management
+      - Flexible: Same audio can be referenced by multiple tables
+      - Fast: Direct UUID lookup, no path traversal
+      - Database is the source of truth for all metadata
+
+    deprecated:
+      - bucket: "popty-bach-lfs"
+        note: "DO NOT USE - legacy bucket, deleted"
+
+  ## ==========================================================================
+  ## SCHEMA DEFINITION
+  ## ==========================================================================
+
+  schema:
+    version: "13.0.0"
+    database: "supabase"
+    compiler_target: "postgresql"
+
+    ## ------------------------------------------------------------------------
+    ## COURSES TABLE - Course metadata with voice configuration
+    ## ------------------------------------------------------------------------
+
+    table courses:
+      description: "All courses with their voice assignments"
+
+      columns:
+        code:
+          type: "TEXT"
+          primary_key: true
+          description: "Course identifier (e.g., 'spa_for_eng', 'cym_north_for_eng')"
+
+        display_name:
+          type: "TEXT"
+          nullable: false
+          description: "Human-readable name"
+
+        known_lang:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 code for known language (e.g., 'eng')"
+
+        target_lang:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 code for target language (e.g., 'spa')"
+
+        voice_config:
+          type: "JSONB"
+          nullable: false
+          default: "{}"
+          description: |
+            Voice assignments per role. Structure:
+            {
+              "known": "azure_en-GB-SoniaNeural",
+              "target1": "azure_es-ES-ElviraNeural",
+              "target2": "azure_es-ES-AlvaroNeural",
+              "presentation": "human_aran"
+            }
+
+        course_type:
+          type: "TEXT"
+          nullable: false
+          default: "'official'"
+          check: "course_type IN ('official', 'community')"
+
+        status:
+          type: "TEXT"
+          nullable: false
+          default: "'draft'"
+          check: "status IN ('draft', 'beta', 'released')"
+
+        creator_email:
+          type: "TEXT"
+          nullable: true
+          description: "For community courses - attribution"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_AUDIO TABLE - Audio owned by a specific course
+    ## ------------------------------------------------------------------------
+
+    table course_audio:
+      description: "All audio files belonging to a course"
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(code)"
+          on_delete: "CASCADE"
+
+        text:
+          type: "TEXT"
+          nullable: false
+          description: "The spoken text (original case)"
+
+        text_normalized:
+          type: "TEXT"
+          nullable: false
+          description: "Lowercased, trimmed for matching (auto-populated by trigger)"
+
+        language:
+          type: "TEXT"
+          nullable: false
+          description: "ISO 639-3 language code"
+
+        role:
+          type: "TEXT"
+          nullable: false
+          check: "role IN ('known', 'target1', 'target2', 'presentation')"
+          description: |
+            Audio role in the learning cycle:
+            - known: Prompt in learner's known language
+            - target1: First target language voice
+            - target2: Second target language voice
+            - presentation: LEGO introduction narration
+
+        voice_id:
+          type: "TEXT"
+          nullable: false
+          description: "Voice identifier (e.g., 'azure_es-ES-ElviraNeural', 'human_aran')"
+
+        origin:
+          type: "TEXT"
+          nullable: false
+          check: "origin IN ('tts', 'human')"
+          description: |
+            How the audio was created:
+            - tts: Generated via TTS API (regenerable)
+            - human: Recorded by human (precious, not regenerable)
+
+        s3_key:
+          type: "TEXT"
+          nullable: false
+          description: "S3 object key - just the UUID (e.g., '7372f60b-5312-4985-b0a0-a97f92323f83.mp3')"
+
+        duration_ms:
+          type: "INTEGER"
+          nullable: true
+          description: "Audio duration in milliseconds"
+
+        file_size_bytes:
+          type: "INTEGER"
+          nullable: true
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_course_audio:
+          type: "UNIQUE"
+          columns: ["course_code", "text_normalized", "language", "role"]
+          description: "One audio per course+text+language+role combination"
+
+      indexes:
+        idx_course_audio_course:
+          columns: ["course_code"]
+        idx_course_audio_lookup:
+          columns: ["course_code", "text_normalized", "language", "role"]
+
+      triggers:
+        normalize_text:
+          timing: "BEFORE INSERT OR UPDATE"
+          action: "SET text_normalized = LOWER(TRIM(text))"
+
+    ## ------------------------------------------------------------------------
+    ## SHARED_AUDIO TABLE - Audio shared across courses
+    ## ------------------------------------------------------------------------
+
+    table shared_audio:
+      description: "Audio reused across courses (encouragements, instructions)"
+      purpose: |
+        Only for genuinely shared content:
+        - Encouragements ("Da iawn!", "Excellent!")
+        - Instructions ("Listen and repeat", "Now try saying...")
+
+        NOT for course content (phrases, LEGOs) - those go in course_audio.
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        text:
+          type: "TEXT"
+          nullable: false
+
+        text_normalized:
+          type: "TEXT"
+          nullable: false
+
+        language:
+          type: "TEXT"
+          nullable: false
+          description: "The known language this is spoken in"
+
+        audio_type:
+          type: "TEXT"
+          nullable: false
+          check: "audio_type IN ('encouragement', 'instruction')"
+
+        voice_id:
+          type: "TEXT"
+          nullable: false
+
+        origin:
+          type: "TEXT"
+          nullable: false
+          check: "origin IN ('tts', 'human')"
+
+        s3_key:
+          type: "TEXT"
+          nullable: false
+          description: "S3 object key - just the UUID (e.g., 'a1b2c3d4-...mp3')"
+
+        duration_ms:
+          type: "INTEGER"
+          nullable: true
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_shared_audio:
+          type: "UNIQUE"
+          columns: ["text_normalized", "language", "audio_type"]
+
+      indexes:
+        idx_shared_audio_lookup:
+          columns: ["text_normalized", "language", "audio_type"]
+
+      triggers:
+        normalize_text:
+          timing: "BEFORE INSERT OR UPDATE"
+          action: "SET text_normalized = LOWER(TRIM(text))"
+
+  ## ==========================================================================
+  ## ROLES EXPLAINED
+  ## ==========================================================================
+
+  roles:
+    known:
+      description: "Prompt audio in the learner's known language"
+      language: "Same as course.known_lang"
+      used_in: "PROMPT phase of learning cycle"
+      example: "I want to learn" (for English speaker learning Spanish)
+
+    target1:
+      description: "First target language voice"
+      language: "Same as course.target_lang"
+      used_in: "VOICE_1 phase of learning cycle"
+      example: "Quiero aprender" (female Spanish voice)
+
+    target2:
+      description: "Second target language voice"
+      language: "Same as course.target_lang"
+      used_in: "VOICE_2 phase of learning cycle"
+      example: "Quiero aprender" (male Spanish voice)
+
+    presentation:
+      description: "LEGO introduction narration"
+      language: "Same as course.known_lang"
+      used_in: "When introducing a new LEGO"
+      example: "In this lesson you'll learn to say 'I want'"
+      notes: |
+        For Welsh courses: Often human-recorded, precious
+        For TTS courses: Can be generated
+
+  ## ==========================================================================
+  ## ORIGIN (TTS vs HUMAN)
+  ## ==========================================================================
+
+  origin:
+    tts:
+      description: "Generated via TTS API"
+      regenerable: true
+      examples:
+        - "azure_en-GB-SoniaNeural"
+        - "elevenlabs_rachel"
+      workflow: "Can be regenerated if quality issues"
+
+    human:
+      description: "Recorded by a human speaker"
+      regenerable: false
+      precious: true
+      examples:
+        - "human_aran" (Aran from Welsh courses)
+        - "human_catrin" (Catrin from Welsh courses)
+      workflow: "Preserve at all costs, never overwrite"
+
+  ## ==========================================================================
+  ## VIEWS (for convenience)
+  ## ==========================================================================
+
+  views:
+    course_audio_inventory:
+      description: "Summary of audio per course/role"
+      sql: |
+        SELECT course_code, role, origin,
+               COUNT(*) as count,
+               COUNT(DISTINCT voice_id) as voice_count
+        FROM course_audio
+        GROUP BY course_code, role, origin
+
+    course_voice_breakdown:
+      description: "Voice usage per course/role"
+      sql: |
+        SELECT course_code, role, voice_id, origin, COUNT(*) as count
+        FROM course_audio
+        GROUP BY course_code, role, voice_id, origin
+
+  ## ==========================================================================
+  ## HELPER FUNCTIONS
+  ## ==========================================================================
+
+  functions:
+    get_missing_audio:
+      description: "Find phrases that need audio generation"
+      params:
+        - "p_course_code TEXT"
+        - "p_needed JSONB"  # Array of {text, language, role}
+      returns: "TABLE (text, language, role)"
+      logic: |
+        Compare needed list against course_audio.
+        Return items where no matching audio exists.
+
+    get_course_audio_summary:
+      description: "Get audio inventory for a course"
+      params:
+        - "p_course_code TEXT"
+      returns: "TABLE (role, origin, count, voice_count)"
+
+  ## ==========================================================================
+  ## MIGRATION FROM v12
+  ## ==========================================================================
+
+  migration:
+    from_v12:
+      strategy: |
+        v12 had: texts → audio_files → course_audio
+        v13 has: course_audio (flat), shared_audio
+
+        Migration:
+        1. For each course_audio row in v12:
+           - Join to get text content from texts table
+           - Insert directly into v13 course_audio
+        2. Identify genuinely shared audio (encouragements)
+           - Insert into shared_audio
+        3. Drop old tables: texts, audio_files, old course_audio
+
+      notes: |
+        The Welsh courses have human audio that must be preserved.
+        Run import scripts before dropping old tables.
+
+  ## ==========================================================================
+  ## WHAT'S NOT IN THIS SPEC (YAGNI)
+  ## ==========================================================================
+
+  excluded:
+    voices_table: "Course voice_config JSONB is sufficient"
+    texts_table: "No need for separate text identity"
+    audio_files_table: "No indirection layer needed"
+    sample_flags: "QA workflow is separate concern"
+    recording_provenance: "Nice-to-have, add later if needed"
+    build_numbers: "Use updated_at timestamp"
+
+## ============================================================================
+## GENERATED: 2026-01-03
+## APML v13.0.0 - Course-Owned Audio Architecture
+## Supersedes: v12.0.0 (texts → audio_files → course_audio)
+## ============================================================================
