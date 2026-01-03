@@ -14,6 +14,24 @@ Key tables: `texts`, `audio_files`, `voices`, `course_audio`, `lego_introduction
 
 ⚠️ **DO NOT USE `audio_samples` table** - it's legacy with 145k records of duplicated text. The v12 schema separates text from audio.
 
+### **CHECK EXISTING ARCHITECTURE BEFORE CODING**
+
+Before writing new code or adding new services, ALWAYS check what already exists:
+
+1. **Read the APML specs** in `apml/` directory - they define how services work
+2. **Check existing services** - the orchestrator (port 3456) already proxies many routes
+3. **Read CLAUDE.md and SYSTEM.md** - architecture is documented
+4. **Test existing endpoints** before assuming they don't exist
+
+**Why:** Avoid adding unnecessary complexity. Example: The orchestrator already proxies `/api/production/*` to the production API - no need for a separate proxy layer.
+
+**Pattern:**
+```
+1. Understand existing architecture (read docs, test endpoints)
+2. Only then decide if new code is needed
+3. Simplest solution wins
+```
+
 ### **Agent Autonomy Principle**
 
 Solve problems autonomously and proceed to the next workflow step without human input **when**:
