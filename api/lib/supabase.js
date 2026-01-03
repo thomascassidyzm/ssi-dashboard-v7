@@ -3,10 +3,12 @@
  *
  * Provides database access for production API endpoints.
  * Uses service role key for server-side operations.
+ *
+ * Updated for new schema: course_audio + shared_audio tables.
+ * @version 2.0.0 - New schema (Jan 2026)
  */
 
 import { createClient } from '@supabase/supabase-js';
-import crypto from 'crypto';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
@@ -35,155 +37,15 @@ export function isSupabaseConfigured() {
 }
 
 /**
- * Generate deterministic UUID from audio parameters
- * UUID = SHA256(voice_id|text|lang|role|cadence) truncated to 32 chars
- */
-export function generateAudioUUID(voiceId, text, lang, role, cadence) {
-  const hashInput = `${voiceId}|${text}|${lang}|${role}|${cadence}`;
-  const hash = crypto.createHash('sha256').update(hashInput).digest('hex');
-  return hash.substring(0, 32);
-}
-
-/**
  * Normalize text for consistent matching
  */
 export function normalizeText(text) {
   return text.toLowerCase().trim().replace(/\s+/g, ' ');
 }
 
-/**
- * Get all audio samples for a course
- */
-export async function getCourseAudioSamples(courseCode) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  // Get audio UUIDs used by this course
-  const { data: usage, error: usageError } = await supabase
-    .from('course_audio_usage')
-    .select('audio_uuid, used_in, seed_id, lego_id')
-    .eq('course_code', courseCode);
-
-  if (usageError) throw usageError;
-  if (!usage || usage.length === 0) return [];
-
-  // Get audio sample details for these UUIDs
-  const uuids = usage.map(u => u.audio_uuid);
-  const { data: samples, error: samplesError } = await supabase
-    .from('audio_samples')
-    .select('*')
-    .in('uuid', uuids);
-
-  if (samplesError) throw samplesError;
-
-  // Merge usage info with sample data
-  const sampleMap = new Map(samples?.map(s => [s.uuid, s]) || []);
-  return usage.map(u => ({
-    ...sampleMap.get(u.audio_uuid),
-    usedIn: u.used_in,
-    seedId: u.seed_id,
-    legoId: u.lego_id
-  })).filter(s => s.uuid);
-}
-
-/**
- * Get sample flags for a course
- */
-export async function getCourseFlags(courseCode) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  const { data, error } = await supabase
-    .from('sample_flags')
-    .select('*')
-    .eq('course_code', courseCode);
-
-  if (error) throw error;
-  return data || [];
-}
-
-/**
- * Update a sample flag
- */
-export async function updateSampleFlag(audioUuid, courseCode, status, notes = null, flaggedBy = null) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  // Get existing flag to preserve history
-  const { data: existing } = await supabase
-    .from('sample_flags')
-    .select('id, history')
-    .eq('audio_uuid', audioUuid)
-    .eq('course_code', courseCode)
-    .single();
-
-  const historyEntry = {
-    status,
-    timestamp: new Date().toISOString(),
-    by: flaggedBy
-  };
-
-  const history = existing?.history || [];
-  history.push(historyEntry);
-
-  const { data, error } = await supabase
-    .from('sample_flags')
-    .upsert({
-      id: existing?.id,
-      audio_uuid: audioUuid,
-      course_code: courseCode,
-      status,
-      notes,
-      flagged_by: flaggedBy,
-      flagged_at: new Date().toISOString(),
-      history
-    }, {
-      onConflict: 'audio_uuid,course_code'
-    })
-    .select()
-    .single();
-
-  if (error) throw error;
-  return data;
-}
-
-/**
- * Bulk update sample flags
- */
-export async function bulkUpdateFlags(courseCode, updates, flaggedBy = null) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  const results = [];
-  for (const update of updates) {
-    const result = await updateSampleFlag(
-      update.uuid,
-      courseCode,
-      update.status,
-      update.notes,
-      flaggedBy
-    );
-    results.push(result);
-  }
-  return results;
-}
-
-/**
- * Get audio sample by UUID
- */
-export async function getAudioSample(uuid) {
-  const supabase = getSupabase();
-  if (!supabase) throw new Error('Supabase not configured');
-
-  const { data, error } = await supabase
-    .from('audio_samples')
-    .select('*')
-    .eq('uuid', uuid)
-    .single();
-
-  if (error && error.code !== 'PGRST116') throw error;
-  return data;
-}
+// =============================================================================
+// COURSE MANAGEMENT
+// =============================================================================
 
 /**
  * List all courses from database
@@ -194,8 +56,8 @@ export async function listCoursesFromDatabase() {
 
   const { data, error } = await supabase
     .from('courses')
-    .select('course_code, known_lang, target_lang, display_name, status')
-    .order('course_code');
+    .select('code, known_lang, target_lang, display_name, status, course_type, voice_config')
+    .order('display_name');
 
   if (error) {
     console.error('[Supabase] Failed to list courses:', error.message);
@@ -204,14 +66,182 @@ export async function listCoursesFromDatabase() {
 
   // Transform to match expected format
   return data?.map(c => ({
-    code: c.course_code,
+    code: c.code,
     name: c.display_name || `${c.known_lang.toUpperCase()} → ${c.target_lang.toUpperCase()}`,
     known_lang: c.known_lang,
     target_lang: c.target_lang,
     status: c.status,
-    source: 'database'
+    course_type: c.course_type,
+    voice_config: c.voice_config
   })) || [];
 }
+
+/**
+ * Get course by code
+ */
+export async function getCourse(courseCode) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('*')
+    .eq('code', courseCode)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return data;
+}
+
+/**
+ * Get course voice configuration
+ */
+export async function getCourseVoices(courseCode) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const { data, error } = await supabase
+    .from('courses')
+    .select('voice_config')
+    .eq('code', courseCode)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return data?.voice_config || null;
+}
+
+// =============================================================================
+// COURSE AUDIO
+// =============================================================================
+
+/**
+ * Get all course audio for a course
+ */
+export async function getCourseAudioList(courseCode, filters = {}) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  let query = supabase
+    .from('course_audio')
+    .select('*')
+    .eq('course_code', courseCode);
+
+  if (filters.role) {
+    query = query.eq('role', filters.role);
+  }
+  if (filters.language) {
+    query = query.eq('language', filters.language);
+  }
+
+  const { data, error } = await query.order('created_at');
+
+  if (error) throw error;
+  return data || [];
+}
+
+/**
+ * Get course audio by ID
+ */
+export async function getCourseAudio(id) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return data;
+}
+
+/**
+ * Find course audio by text, language, and role
+ */
+export async function findCourseAudio(courseCode, text, language, role) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const textNormalized = normalizeText(text);
+
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('*')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('role', role)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return data;
+}
+
+/**
+ * Get course audio inventory summary
+ */
+export async function getCourseAudioSummary(courseCode) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const { data, error } = await supabase
+    .rpc('get_course_audio_summary', { p_course_code: courseCode });
+
+  if (error) throw error;
+  return data || [];
+}
+
+// =============================================================================
+// SHARED AUDIO
+// =============================================================================
+
+/**
+ * Get shared audio by language
+ */
+export async function getSharedAudioList(language, audioType = null) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  let query = supabase
+    .from('shared_audio')
+    .select('*')
+    .eq('language', language);
+
+  if (audioType) {
+    query = query.eq('audio_type', audioType);
+  }
+
+  const { data, error } = await query.order('created_at');
+
+  if (error) throw error;
+  return data || [];
+}
+
+/**
+ * Find shared audio by text, language, and type
+ */
+export async function findSharedAudio(text, language, audioType) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  const textNormalized = normalizeText(text);
+
+  const { data, error } = await supabase
+    .from('shared_audio')
+    .select('*')
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('audio_type', audioType)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return data;
+}
+
+// =============================================================================
+// CONTENT STATS
+// =============================================================================
 
 /**
  * Get course content counts from database
@@ -220,16 +250,16 @@ export async function getCourseContentCounts(courseCode) {
   const supabase = getSupabase();
   if (!supabase) return null;
 
-  const [seedsResult, legosResult, phrasesResult] = await Promise.all([
+  const [seedsResult, legosResult, audioResult] = await Promise.all([
     supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
     supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
-    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
   ]);
 
   return {
     seeds: seedsResult.count || 0,
     legos: legosResult.count || 0,
-    phrases: phrasesResult.count || 0
+    audio: audioResult.count || 0
   };
 }
 
@@ -240,35 +270,27 @@ export async function getCourseStats(courseCode) {
   const supabase = getSupabase();
   if (!supabase) throw new Error('Supabase not configured');
 
-  // Get total audio usage count
-  const { count: totalSamples, error: usageError } = await supabase
-    .from('course_audio_usage')
-    .select('*', { count: 'exact', head: true })
+  // Count audio by role
+  const { data: audioData, error: audioError } = await supabase
+    .from('course_audio')
+    .select('role, origin')
     .eq('course_code', courseCode);
 
-  if (usageError) throw usageError;
+  if (audioError) throw audioError;
 
-  // Get flag status counts
-  const { data: flagData, error: flagError } = await supabase
-    .from('sample_flags')
-    .select('status')
-    .eq('course_code', courseCode);
+  const roleCounts = {};
+  const originCounts = { tts: 0, human: 0 };
 
-  if (flagError) throw flagError;
-
-  const statusCounts = {};
-  for (const flag of flagData || []) {
-    statusCounts[flag.status] = (statusCounts[flag.status] || 0) + 1;
+  for (const audio of audioData || []) {
+    roleCounts[audio.role] = (roleCounts[audio.role] || 0) + 1;
+    originCounts[audio.origin] = (originCounts[audio.origin] || 0) + 1;
   }
 
   return {
     courseCode,
-    totalSamples: totalSamples || 0,
-    flagged: flagData?.length || 0,
-    statusCounts,
-    approved: statusCounts['approved'] || 0,
-    pending: statusCounts['pending'] || 0,
-    complete: statusCounts['complete'] || 0
+    totalAudio: audioData?.length || 0,
+    byRole: roleCounts,
+    byOrigin: originCounts
   };
 }
 
@@ -278,14 +300,16 @@ export { getSupabase };
 export default {
   isSupabaseConfigured,
   getSupabase,
-  generateAudioUUID,
   normalizeText,
-  getCourseAudioSamples,
-  getCourseFlags,
-  updateSampleFlag,
-  bulkUpdateFlags,
-  getAudioSample,
-  getCourseStats,
   listCoursesFromDatabase,
-  getCourseContentCounts
+  getCourse,
+  getCourseVoices,
+  getCourseAudioList,
+  getCourseAudio,
+  findCourseAudio,
+  getCourseAudioSummary,
+  getSharedAudioList,
+  findSharedAudio,
+  getCourseContentCounts,
+  getCourseStats
 };

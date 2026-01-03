@@ -2,16 +2,15 @@
  * Supabase Client Service
  *
  * Centralized database client for audio pipeline operations.
- * This is the interface between the audio generation system and Supabase.
+ * Updated for new schema: course_audio + shared_audio tables.
  *
  * Features:
- * - Deterministic UUID generation from audio parameters
- * - Audio sample CRUD operations
- * - Course audio usage tracking
- * - Voice management
- * - Sample flagging for QA workflow
+ * - Course-specific audio management (course_audio table)
+ * - Shared audio for encouragements/instructions (shared_audio table)
+ * - Course management with voice configuration
+ * - Text normalization for matching
  *
- * @version 1.0.0
+ * @version 2.0.0 - New schema (Jan 2026)
  */
 
 const { createClient } = require('@supabase/supabase-js')
@@ -28,8 +27,6 @@ if (!supabaseUrl || !supabaseKey) {
 }
 
 // Service role client - bypasses RLS for server-side admin operations
-// Must disable session handling for server-side usage
-// See: https://supabase.com/docs/guides/troubleshooting/performing-administration-tasks-on-the-server-side-with-the-servicerole-secret-BYM4Fa
 const supabase = supabaseUrl && supabaseKey
   ? createClient(supabaseUrl, supabaseKey, {
       auth: {
@@ -40,39 +37,27 @@ const supabase = supabaseUrl && supabaseKey
     })
   : null
 
+// =============================================================================
+// UTILITY FUNCTIONS
+// =============================================================================
+
 /**
  * Generate deterministic UUID from audio parameters
- *
  * Delegates to uuid-v11.cjs generateSampleId() - the single source of truth.
  *
- * Hash input order: voiceId:lang:role:cadence:text
- * (Ordered from least to most variable - gives most "space" to text)
- *
- * Output format: 8-4-4-4-12 (RFC 4122 UUID v5 format)
- * Example: A7B3C9D2-E4F6-5890-9234-567890123456
- *
- * @param {string} voiceId - Voice identifier (e.g., 'azure_es-ES-ElviraNeural')
+ * @param {string} voiceId - Voice identifier
  * @param {string} text - The phrase text
- * @param {string} lang - ISO 639-3 language code (e.g., 'spa', 'eng')
- * @param {string} role - Audio role (source, target1, target2, presentation)
+ * @param {string} lang - ISO 639-3 language code
+ * @param {string} role - Audio role (known, target1, target2, presentation)
  * @param {string} cadence - Speaking cadence (natural, slow)
  * @returns {string} UUID v5 in 8-4-4-4-12 format
  */
 function generateAudioUUID(voiceId, text, lang, role, cadence) {
-  // Delegate to uuid-v11.cjs - the single source of truth
   return generateSampleId(voiceId, text, lang, role, cadence)
 }
 
 /**
  * Get the hash input string (for debugging/verification)
- * Order: voiceId:lang:role:cadence:text
- *
- * @param {string} voiceId
- * @param {string} text
- * @param {string} lang
- * @param {string} role
- * @param {string} cadence
- * @returns {string} The raw input string used for hashing
  */
 function getHashInput(voiceId, text, lang, role, cadence) {
   return `${voiceId}:${lang}:${role}:${cadence}:${text}`
@@ -80,63 +65,43 @@ function getHashInput(voiceId, text, lang, role, cadence) {
 
 /**
  * Normalize text for consistent matching
- * Delegates to uuid-v11.cjs normalizeText() for consistency.
  * Lowercases, trims, and collapses whitespace.
- *
- * @param {string} text
- * @returns {string}
  */
 function normalizeText(text) {
   return uuidNormalizeText(text)
 }
 
 /**
- * Check if audio sample exists by UUID
- * Checks both v12 schema (audio_files) and legacy schema (audio_samples)
- *
- * @param {string} uuid
- * @returns {Promise<boolean>}
+ * Check if Supabase is properly initialized
  */
-async function audioExists(uuid) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  // First check v12 schema: audio_files table
-  const { data: v12Data, error: v12Error } = await supabase
-    .from('audio_files')
-    .select('id')
-    .eq('id', uuid)
-    .single()
-
-  if (v12Data) {
-    return true
-  }
-
-  // Fall back to legacy schema: audio_samples table
-  const { data, error } = await supabase
-    .from('audio_samples')
-    .select('uuid')
-    .eq('uuid', uuid)
-    .single()
-
-  if (error && error.code !== 'PGRST116') { // PGRST116 = not found
-    throw error
-  }
-  return !!data
+function isInitialized() {
+  return !!supabase
 }
 
 /**
- * Get audio sample by UUID
+ * Get the Supabase client instance
+ */
+function getClient() {
+  return supabase
+}
+
+// =============================================================================
+// COURSE MANAGEMENT
+// =============================================================================
+
+/**
+ * Get course by code
  *
- * @param {string} uuid
+ * @param {string} courseCode
  * @returns {Promise<Object|null>}
  */
-async function getAudioSample(uuid) {
+async function getCourse(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   const { data, error } = await supabase
-    .from('audio_samples')
+    .from('courses')
     .select('*')
-    .eq('uuid', uuid)
+    .eq('code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -146,132 +111,26 @@ async function getAudioSample(uuid) {
 }
 
 /**
- * Find audio by text and parameters
+ * Get all courses
  *
- * @param {string} text
- * @param {string} lang
- * @param {string} role
- * @param {string} voiceId
- * @param {string} cadence
- * @returns {Promise<Object|null>}
- */
-async function findAudio(text, lang, role, voiceId, cadence) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const textNormalized = normalizeText(text)
-
-  const { data, error } = await supabase
-    .from('audio_samples')
-    .select('*')
-    .eq('text_normalized', textNormalized)
-    .eq('lang', lang)
-    .eq('role', role)
-    .eq('voice_id', voiceId)
-    .eq('cadence', cadence)
-    .single()
-
-  if (error && error.code !== 'PGRST116') {
-    throw error
-  }
-  return data
-}
-
-/**
- * Insert new audio sample
- *
- * @param {Object} params
- * @returns {Promise<Object>}
- */
-async function insertAudioSample({
-  uuid,
-  voiceId,
-  text,
-  lang,
-  role,
-  cadence,
-  s3Bucket,
-  s3Key,
-  durationMs,
-  fileSizeBytes,
-  checksumMd5,
-  source,
-  ttsEngine,
-  ttsVoiceVariant,
-  hashInput
-}) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data, error } = await supabase
-    .from('audio_samples')
-    .insert({
-      uuid,
-      voice_id: voiceId,
-      text,
-      text_normalized: normalizeText(text),
-      lang,
-      role,
-      cadence,
-      s3_bucket: s3Bucket,
-      s3_key: s3Key,
-      duration_ms: durationMs,
-      file_size_bytes: fileSizeBytes,
-      checksum_md5: checksumMd5,
-      source,
-      tts_engine: ttsEngine,
-      tts_voice_variant: ttsVoiceVariant,
-      hash_input: hashInput
-    })
-    .select()
-    .single()
-
-  if (error) throw error
-  return data
-}
-
-/**
- * Record course audio usage (for tracking which courses use which audio)
- *
- * @param {string} courseCode
- * @param {string} audioUuid
- * @param {string} usedIn - basket, encouragement, welcome, introduction
- * @param {string|null} seedId
- * @param {string|null} legoId
- * @returns {Promise<Object>}
- */
-async function recordCourseUsage(courseCode, audioUuid, usedIn, seedId = null, legoId = null) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data, error } = await supabase
-    .from('course_audio_usage')
-    .upsert({
-      course_code: courseCode,
-      audio_uuid: audioUuid,
-      used_in: usedIn,
-      seed_id: seedId,
-      lego_id: legoId
-    }, {
-      onConflict: 'course_code,audio_uuid'
-    })
-    .select()
-    .single()
-
-  if (error) throw error
-  return data
-}
-
-/**
- * Get all audio UUIDs for a course
- *
- * @param {string} courseCode
+ * @param {Object} filters - Optional filters
+ * @param {string} filters.status - Filter by status (draft, beta, released)
+ * @param {string} filters.courseType - Filter by course_type (official, community)
  * @returns {Promise<Array>}
  */
-async function getCourseAudioUuids(courseCode) {
+async function getCourses(filters = {}) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const { data, error } = await supabase
-    .from('course_audio_usage')
-    .select('audio_uuid, used_in, seed_id, lego_id')
-    .eq('course_code', courseCode)
+  let query = supabase.from('courses').select('*')
+
+  if (filters.status) {
+    query = query.eq('status', filters.status)
+  }
+  if (filters.courseType) {
+    query = query.eq('course_type', filters.courseType)
+  }
+
+  const { data, error } = await query.order('display_name')
 
   if (error) throw error
   return data || []
@@ -281,56 +140,63 @@ async function getCourseAudioUuids(courseCode) {
  * Get course voice configuration
  *
  * @param {string} courseCode
- * @returns {Promise<Object|null>}
+ * @returns {Promise<Object|null>} Voice config object or null
  */
 async function getCourseVoices(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   const { data, error } = await supabase
     .from('courses')
-    .select('known_voice, target1_voice, target2_voice, presentation_voice')
-    .eq('course_code', courseCode)
+    .select('voice_config')
+    .eq('code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
     throw error
   }
 
-  if (!data) return null
-
-  // Map to simpler keys
-  return {
-    known: data.known_voice,
-    target1: data.target1_voice,
-    target2: data.target2_voice,
-    presentation: data.presentation_voice
-  }
+  return data?.voice_config || null
 }
 
 /**
  * Create or update course record
  *
- * @param {string} courseCode
- * @param {string} knownLang
- * @param {string} targetLang
- * @param {Object} voices
+ * @param {Object} course
+ * @param {string} course.code - Course code (e.g., 'spa_for_eng')
+ * @param {string} course.displayName - Display name
+ * @param {string} course.knownLang - Known language code
+ * @param {string} course.targetLang - Target language code
+ * @param {Object} course.voiceConfig - Voice configuration per role
+ * @param {string} course.status - draft, beta, released
+ * @param {string} course.courseType - official, community
+ * @param {string} course.creatorEmail - Creator email (optional)
  * @returns {Promise<Object>}
  */
-async function upsertCourse(courseCode, knownLang, targetLang, voices = {}) {
+async function upsertCourse({
+  code,
+  displayName,
+  knownLang,
+  targetLang,
+  voiceConfig = {},
+  status = 'draft',
+  courseType = 'official',
+  creatorEmail = null
+}) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   const { data, error } = await supabase
     .from('courses')
     .upsert({
-      course_code: courseCode,
+      code,
+      display_name: displayName,
       known_lang: knownLang,
       target_lang: targetLang,
-      known_voice: voices.known,
-      target1_voice: voices.target1,
-      target2_voice: voices.target2,
-      presentation_voice: voices.presentation
+      voice_config: voiceConfig,
+      status,
+      course_type: courseType,
+      creator_email: creatorEmail
     }, {
-      onConflict: 'course_code'
+      onConflict: 'code'
     })
     .select()
     .single()
@@ -340,18 +206,72 @@ async function upsertCourse(courseCode, knownLang, targetLang, voices = {}) {
 }
 
 /**
- * Get voice by ID
+ * Update course voice configuration
  *
- * @param {string} voiceId
- * @returns {Promise<Object|null>}
+ * @param {string} courseCode
+ * @param {Object} voiceConfig - { known: voiceId, target1: voiceId, target2: voiceId, presentation: voiceId }
+ * @returns {Promise<Object>}
  */
-async function getVoice(voiceId) {
+async function updateCourseVoices(courseCode, voiceConfig) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   const { data, error } = await supabase
-    .from('voices')
+    .from('courses')
+    .update({ voice_config: voiceConfig })
+    .eq('code', courseCode)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+// =============================================================================
+// COURSE AUDIO (course-specific audio)
+// =============================================================================
+
+/**
+ * Check if course audio exists by course, text, language, and role
+ *
+ * @param {string} courseCode
+ * @param {string} text
+ * @param {string} language
+ * @param {string} role
+ * @returns {Promise<boolean>}
+ */
+async function courseAudioExists(courseCode, text, language, role) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const textNormalized = normalizeText(text)
+
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('role', role)
+    .single()
+
+  if (error && error.code !== 'PGRST116') {
+    throw error
+  }
+  return !!data
+}
+
+/**
+ * Get course audio by ID
+ *
+ * @param {string} id - UUID
+ * @returns {Promise<Object|null>}
+ */
+async function getCourseAudio(id) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('course_audio')
     .select('*')
-    .eq('voice_id', voiceId)
+    .eq('id', id)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -361,194 +281,68 @@ async function getVoice(voiceId) {
 }
 
 /**
- * Get all voices for a language
+ * Find course audio by text, language, and role
  *
- * @param {string} lang
- * @returns {Promise<Array>}
+ * @param {string} courseCode
+ * @param {string} text
+ * @param {string} language
+ * @param {string} role
+ * @returns {Promise<Object|null>}
  */
-async function getVoicesForLanguage(lang) {
+async function findCourseAudio(courseCode, text, language, role) {
   if (!supabase) throw new Error('Supabase not initialized')
+
+  const textNormalized = normalizeText(text)
 
   const { data, error } = await supabase
-    .from('voices')
+    .from('course_audio')
     .select('*')
-    .contains('languages', [lang])
-    .eq('is_active', true)
+    .eq('course_code', courseCode)
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('role', role)
+    .single()
 
-  if (error) throw error
-  return data || []
+  if (error && error.code !== 'PGRST116') {
+    throw error
+  }
+  return data
 }
 
 /**
- * Batch check which UUIDs exist
- *
- * @param {Array<string>} uuids
- * @returns {Promise<Array<{uuid: string, exists: boolean}>>}
- */
-async function batchCheckExists(uuids) {
-  if (!supabase) throw new Error('Supabase not initialized')
-  if (!uuids || uuids.length === 0) return []
-
-  // Check v12 schema: audio_files table
-  const { data: v12Data, error: v12Error } = await supabase
-    .from('audio_files')
-    .select('id')
-    .in('id', uuids)
-
-  // Check legacy schema: audio_samples table
-  const { data: legacyData, error: legacyError } = await supabase
-    .from('audio_samples')
-    .select('uuid')
-    .in('uuid', uuids)
-
-  if (legacyError) throw legacyError
-
-  // Combine results from both tables
-  const existingSet = new Set([
-    ...(v12Data || []).map(d => d.id),
-    ...(legacyData || []).map(d => d.uuid)
-  ])
-
-  return uuids.map(uuid => ({ uuid, exists: existingSet.has(uuid) }))
-}
-
-/**
- * Check which sample UUIDs already exist in Supabase
- * Checks both v12 schema (audio_files) and legacy schema (audio_samples)
- * Returns array of UUIDs that exist
- *
- * @param {Array<string>} uuids - UUIDs to check
- * @returns {Promise<Array<string>>} UUIDs that exist
- */
-async function checkSamplesExist(uuids) {
-  if (!supabase) throw new Error('Supabase not initialized')
-  if (!uuids || uuids.length === 0) return []
-
-  // Check v12 schema: audio_files table
-  const { data: v12Data, error: v12Error } = await supabase
-    .from('audio_files')
-    .select('id')
-    .in('id', uuids)
-
-  // Check legacy schema: audio_samples table
-  const { data: legacyData, error: legacyError } = await supabase
-    .from('audio_samples')
-    .select('uuid')
-    .in('uuid', uuids)
-
-  if (legacyError) throw legacyError
-
-  // Combine results from both tables (deduplicated)
-  const existingSet = new Set([
-    ...(v12Data || []).map(d => d.id),
-    ...(legacyData || []).map(d => d.uuid)
-  ])
-
-  return Array.from(existingSet)
-}
-
-/**
- * Register a new audio sample in Supabase
- * Used by Phase 8 after generating TTS audio
+ * Insert course audio
  *
  * @param {Object} params
- * @param {string} params.uuid - Deterministic UUID
- * @param {string} params.text - Original text
- * @param {string} params.tts_text - Text sent to TTS (after gender expansion)
- * @param {string} params.lang - Language code
- * @param {string} params.role - source, target1, target2
- * @param {string} params.voice_id - Voice identifier
- * @param {string} params.cadence - natural or slow
- * @param {string} params.s3_key - S3 key where audio is stored
- * @param {string} params.s3_bucket - S3 bucket name (default: ssi-audio-stage)
- * @param {string} params.course_code - Course that generated this
  * @returns {Promise<Object>}
  */
-async function registerSample({
-  uuid,
+async function insertCourseAudio({
+  courseCode,
   text,
-  tts_text,
-  lang,
+  language,
   role,
-  voice_id,
-  cadence,
-  s3_key,
-  s3_bucket = process.env.S3_BUCKET || 'ssi-audio-stage',
-  course_code
+  voiceId,
+  origin,
+  s3Key,
+  durationMs = null,
+  fileSizeBytes = null
 }) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const { data, error } = await supabase
-    .from('audio_samples')
-    .upsert({
-      uuid,
-      text,
-      text_normalized: normalizeText(text),
-      tts_text,
-      lang,
-      role,
-      voice_id,
-      cadence,
-      s3_key,
-      s3_bucket,
-      source: 'tts',
-      created_at: new Date().toISOString()
-    }, {
-      onConflict: 'uuid'
-    })
-    .select()
-    .single()
-
-  if (error) throw error
-
-  // Also record usage for this course
-  await recordCourseUsage(course_code, uuid, 'basket')
-
-  return data
-}
-
-/**
- * Update sample flag (QA workflow)
- *
- * @param {string} audioUuid
- * @param {string} courseCode
- * @param {string} status
- * @param {string|null} notes
- * @param {string|null} flaggedBy
- * @returns {Promise<Object>}
- */
-async function updateSampleFlag(audioUuid, courseCode, status, notes = null, flaggedBy = null) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data: existing } = await supabase
-    .from('sample_flags')
-    .select('id, history')
-    .eq('audio_uuid', audioUuid)
-    .eq('course_code', courseCode)
-    .single()
-
-  const historyEntry = {
-    status,
-    timestamp: new Date().toISOString(),
-    by: flaggedBy
-  }
-
-  const history = existing?.history || []
-  history.push(historyEntry)
+  const textNormalized = normalizeText(text)
 
   const { data, error } = await supabase
-    .from('sample_flags')
-    .upsert({
-      id: existing?.id,
-      audio_uuid: audioUuid,
+    .from('course_audio')
+    .insert({
       course_code: courseCode,
-      status,
-      notes,
-      flagged_by: flaggedBy,
-      flagged_at: new Date().toISOString(),
-      history
-    }, {
-      onConflict: 'audio_uuid,course_code'
+      text,
+      text_normalized: textNormalized,
+      language,
+      role,
+      voice_id: voiceId,
+      origin,
+      s3_key: s3Key,
+      duration_ms: durationMs,
+      file_size_bytes: fileSizeBytes
     })
     .select()
     .single()
@@ -558,495 +352,269 @@ async function updateSampleFlag(audioUuid, courseCode, status, notes = null, fla
 }
 
 /**
- * Get flags for a course
- *
- * @param {string} courseCode
- * @returns {Promise<Array>}
- */
-async function getCourseFlags(courseCode) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data, error } = await supabase
-    .from('sample_flags')
-    .select('*')
-    .eq('course_code', courseCode)
-
-  if (error) throw error
-  return data || []
-}
-
-/**
- * Get flags by status for a course
- *
- * @param {string} courseCode
- * @param {string} status
- * @returns {Promise<Array>}
- */
-async function getFlagsByStatus(courseCode, status) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data, error } = await supabase
-    .from('sample_flags')
-    .select('*')
-    .eq('course_code', courseCode)
-    .eq('status', status)
-
-  if (error) throw error
-  return data || []
-}
-
-/**
- * Check if Supabase is properly initialized
- *
- * @returns {boolean}
- */
-function isInitialized() {
-  return !!supabase
-}
-
-/**
- * Get the Supabase client instance
- * @returns {Object|null} The Supabase client
- */
-function getClient() {
-  return supabase
-}
-
-/**
- * Get course statistics
- *
- * @param {string} courseCode
- * @returns {Promise<Object>}
- */
-async function getCourseStats(courseCode) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  // Get total audio usage count
-  const { count: totalSamples, error: usageError } = await supabase
-    .from('course_audio_usage')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-
-  if (usageError) throw usageError
-
-  // Get flag status counts
-  const { data: flagData, error: flagError } = await supabase
-    .from('sample_flags')
-    .select('status')
-    .eq('course_code', courseCode)
-
-  if (flagError) throw flagError
-
-  const statusCounts = {}
-  for (const flag of flagData || []) {
-    statusCounts[flag.status] = (statusCounts[flag.status] || 0) + 1
-  }
-
-  return {
-    courseCode,
-    totalSamples: totalSamples || 0,
-    flagged: flagData?.length || 0,
-    statusCounts,
-    approved: statusCounts['approved'] || 0,
-    pending: statusCounts['pending'] || 0,
-    complete: statusCounts['complete'] || 0
-  }
-}
-
-/**
- * Insert recording provenance metadata for human recordings
+ * Upsert course audio (insert or update on conflict)
  *
  * @param {Object} params
- * @param {string} params.audioUuid - Audio sample UUID
- * @param {string} params.recordedBy - Speaker name/identifier
- * @param {string|null} params.speakerNativeLanguage - Speaker's L1
- * @param {string|null} params.speakerProficiency - native, fluent_l2, heritage_speaker
- * @param {string|null} params.speakerAgeRange - 18-25, 26-35, 36-45, 46-55, 56-65, 65+
- * @param {string|null} params.speakerDialect - North Welsh, Castilian Spanish, etc.
- * @param {string|null} params.speakerRegion - Geographic region
- * @param {Date|string} params.recordedAt - Recording timestamp
- * @param {string|null} params.recordingLocation - Where recorded
- * @param {string|null} params.recordingDevice - Microphone/setup used
- * @param {string|null} params.recordingEnvironment - studio, home, outdoor
- * @param {boolean} params.speakerConsent - Consent given
- * @param {string|null} params.consentFormRef - Reference to consent documentation
- * @param {string|null} params.usageRights - CC-BY, internal-only, etc.
- * @param {string|null} params.qualityNotes - Quality observations
- * @param {number} params.retakeCount - Number of retakes
  * @returns {Promise<Object>}
  */
-async function insertRecordingProvenance({
-  audioUuid,
-  recordedBy,
-  speakerNativeLanguage = null,
-  speakerProficiency = null,
-  speakerAgeRange = null,
-  speakerDialect = null,
-  speakerRegion = null,
-  recordedAt,
-  recordingLocation = null,
-  recordingDevice = null,
-  recordingEnvironment = null,
-  speakerConsent = true,
-  consentFormRef = null,
-  usageRights = null,
-  qualityNotes = null,
-  retakeCount = 0
+async function upsertCourseAudio({
+  courseCode,
+  text,
+  language,
+  role,
+  voiceId,
+  origin,
+  s3Key,
+  durationMs = null,
+  fileSizeBytes = null
 }) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const { data, error } = await supabase
-    .from('recording_provenance')
-    .insert({
-      audio_uuid: audioUuid,
-      recorded_by: recordedBy,
-      speaker_native_language: speakerNativeLanguage,
-      speaker_proficiency: speakerProficiency,
-      speaker_age_range: speakerAgeRange,
-      speaker_dialect: speakerDialect,
-      speaker_region: speakerRegion,
-      recorded_at: recordedAt,
-      recording_location: recordingLocation,
-      recording_device: recordingDevice,
-      recording_environment: recordingEnvironment,
-      speaker_consent: speakerConsent,
-      consent_form_ref: consentFormRef,
-      usage_rights: usageRights,
-      quality_notes: qualityNotes,
-      retake_count: retakeCount
-    })
-    .select()
-    .single()
+  const textNormalized = normalizeText(text)
 
-  if (error) throw error
-  return data
-}
+  // First try to find existing
+  const existing = await findCourseAudio(courseCode, text, language, role)
 
-/**
- * Register a new human voice
- *
- * @param {Object} params
- * @param {string} params.voiceId - Voice identifier (e.g., 'human_maria_spa')
- * @param {string} params.humanName - Human name (e.g., 'Maria Garcia')
- * @param {string|null} params.humanEmail - Human email (optional)
- * @param {Array<string>} params.languages - Array of ISO 639-3 language codes
- * @param {Object|null} params.metadata - Additional metadata (optional)
- * @returns {Promise<Object>}
- */
-async function registerHumanVoice({ voiceId, humanName, humanEmail = null, languages, metadata = {} }) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  // Validation
-  if (!voiceId || !voiceId.startsWith('human_')) {
-    throw new Error('voiceId must start with "human_"')
-  }
-  if (!humanName) {
-    throw new Error('humanName is required')
-  }
-  if (!languages || !Array.isArray(languages) || languages.length === 0) {
-    throw new Error('languages array must have at least one entry')
-  }
-
-  // Check for duplicate
-  const existing = await getVoice(voiceId)
   if (existing) {
-    throw new Error(`Voice with ID '${voiceId}' already exists`)
-  }
-
-  // Insert new human voice
-  const { data, error } = await supabase
-    .from('voices')
-    .insert({
-      voice_id: voiceId,
-      type: 'human',
-      human_name: humanName,
-      human_email: humanEmail,
-      languages,
-      is_active: true,
-      ...metadata
-    })
-    .select()
-    .single()
-
-  if (error) throw error
-  return data
-}
-
-/**
- * List all voices with optional filters
- *
- * @param {Object} filters
- * @param {string|null} filters.type - Filter by type ('tts' or 'human')
- * @param {string|null} filters.language - Filter by language code
- * @param {boolean|null} filters.isActive - Filter by active status
- * @returns {Promise<Array>}
- */
-async function listVoices({ type = null, language = null, isActive = null } = {}) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  let query = supabase.from('voices').select('*')
-
-  if (type) {
-    query = query.eq('type', type)
-  }
-
-  if (language) {
-    query = query.contains('languages', [language])
-  }
-
-  if (isActive !== null) {
-    query = query.eq('is_active', isActive)
-  }
-
-  const { data, error } = await query.order('voice_id')
-
-  if (error) throw error
-  return data || []
-}
-
-/**
- * Update voice status (activate/deactivate)
- *
- * @param {string} voiceId
- * @param {boolean} isActive
- * @returns {Promise<Object>}
- */
-async function updateVoiceStatus(voiceId, isActive) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  if (typeof isActive !== 'boolean') {
-    throw new Error('isActive must be a boolean')
-  }
-
-  const { data, error } = await supabase
-    .from('voices')
-    .update({ is_active: isActive })
-    .eq('voice_id', voiceId)
-    .select()
-    .single()
-
-  if (error) throw error
-  return data
-}
-
-/**
- * Get samples flagged for regeneration
- * Returns samples with status 'flagged_regen_tts' or 'flagged_text_edit'
- * Includes the audio_sample details (text, lang, role, voice_id, cadence)
- *
- * @param {string} courseCode
- * @returns {Promise<Array>}
- */
-async function getFlaggedForRegeneration(courseCode) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const { data, error } = await supabase
-    .from('sample_flags')
-    .select(`
-      *,
-      audio_samples (
-        uuid,
-        text,
-        lang,
-        role,
-        voice_id,
-        cadence
-      )
-    `)
-    .eq('course_code', courseCode)
-    .in('status', ['flagged_regen_tts', 'flagged_text_edit'])
-
-  if (error) throw error
-  return data || []
-}
-
-/**
- * Bulk update flag status for multiple samples
- * Updates status and appends to history
- *
- * @param {Array<string>} uuids - Array of audio UUIDs
- * @param {string} courseCode
- * @param {string} newStatus
- * @param {string|null} note
- * @returns {Promise<Array>}
- */
-async function bulkUpdateFlagStatus(uuids, courseCode, newStatus, note = null) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  const results = []
-
-  for (const uuid of uuids) {
-    // Get existing flag to append to history
-    const { data: existing } = await supabase
-      .from('sample_flags')
-      .select('id, history')
-      .eq('audio_uuid', uuid)
-      .eq('course_code', courseCode)
-      .single()
-
-    const historyEntry = {
-      status: newStatus,
-      timestamp: new Date().toISOString(),
-      note
-    }
-
-    const history = existing?.history || []
-    history.push(historyEntry)
-
+    // Update existing
     const { data, error } = await supabase
-      .from('sample_flags')
-      .upsert({
-        id: existing?.id,
-        audio_uuid: uuid,
-        course_code: courseCode,
-        status: newStatus,
-        notes: note,
-        flagged_at: new Date().toISOString(),
-        history
-      }, {
-        onConflict: 'audio_uuid,course_code'
+      .from('course_audio')
+      .update({
+        voice_id: voiceId,
+        origin,
+        s3_key: s3Key,
+        duration_ms: durationMs,
+        file_size_bytes: fileSizeBytes
       })
+      .eq('id', existing.id)
       .select()
       .single()
 
     if (error) throw error
-    results.push(data)
+    return data
+  } else {
+    // Insert new
+    return insertCourseAudio({
+      courseCode,
+      text,
+      language,
+      role,
+      voiceId,
+      origin,
+      s3Key,
+      durationMs,
+      fileSizeBytes
+    })
   }
-
-  return results
 }
 
 /**
- * Get recording queue - samples that need human recording
- * Returns paginated list of samples with status 'flagged_human_needed' or 'in_recording'
+ * Get all audio for a course
  *
  * @param {string} courseCode
- * @param {number} page - Page number (1-indexed)
- * @param {number} pageSize - Items per page
- * @returns {Promise<Object>} { items, total, page, pageSize }
+ * @param {Object} filters - Optional filters
+ * @param {string} filters.role - Filter by role
+ * @param {string} filters.language - Filter by language
+ * @returns {Promise<Array>}
  */
-async function getRecordingQueue(courseCode, page = 1, pageSize = 20) {
+async function getCourseAudioList(courseCode, filters = {}) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  // Calculate offset for pagination
-  const offset = (page - 1) * pageSize
-
-  // Query sample_flags with status 'flagged_human_needed' or 'in_recording'
-  // Join with audio_samples to get the text, lang, role info
-  const { data, error, count } = await supabase
-    .from('sample_flags')
-    .select(`
-      *,
-      audio_samples!inner(
-        uuid,
-        text,
-        lang,
-        role,
-        cadence,
-        voice_id,
-        s3_key
-      )
-    `, { count: 'exact' })
+  let query = supabase
+    .from('course_audio')
+    .select('*')
     .eq('course_code', courseCode)
-    .in('status', ['flagged_human_needed', 'in_recording'])
-    .order('status', { ascending: false }) // 'in_recording' comes before 'flagged_human_needed'
-    .order('flagged_at', { ascending: true }) // Oldest first within each status
-    .range(offset, offset + pageSize - 1)
+
+  if (filters.role) {
+    query = query.eq('role', filters.role)
+  }
+  if (filters.language) {
+    query = query.eq('language', filters.language)
+  }
+
+  const { data, error } = await query.order('created_at')
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Get audio inventory summary for a course
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Array>} Array of { role, origin, count, voice_count }
+ */
+async function getCourseAudioSummary(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .rpc('get_course_audio_summary', { p_course_code: courseCode })
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Get missing audio for a course
+ *
+ * @param {string} courseCode
+ * @param {Array} needed - Array of { text, language, role }
+ * @returns {Promise<Array>} Array of missing { text, language, role }
+ */
+async function getMissingAudio(courseCode, needed) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .rpc('get_missing_audio', {
+      p_course_code: courseCode,
+      p_needed: JSON.stringify(needed)
+    })
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Batch check which texts have audio for a course
+ *
+ * @param {string} courseCode
+ * @param {Array} items - Array of { text, language, role }
+ * @returns {Promise<Array>} Array of { text, language, role, exists }
+ */
+async function batchCheckCourseAudio(courseCode, items) {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!items || items.length === 0) return []
+
+  // Get all existing audio for this course
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('text_normalized, language, role')
+    .eq('course_code', courseCode)
 
   if (error) throw error
 
-  // Transform the data to flatten the audio_samples join
-  const items = (data || []).map(flag => ({
-    uuid: flag.audio_samples.uuid,
-    text: flag.audio_samples.text,
-    lang: flag.audio_samples.lang,
-    role: flag.audio_samples.role,
-    cadence: flag.audio_samples.cadence,
-    voice_id: flag.audio_samples.voice_id,
-    status: flag.status,
-    notes: flag.notes,
-    flagged_by: flag.flagged_by,
-    flagged_at: flag.flagged_at,
-    context: flag.context,
-    history: flag.history
-  }))
+  // Create a lookup set
+  const existingSet = new Set(
+    (data || []).map(a => `${a.text_normalized}|${a.language}|${a.role}`)
+  )
 
-  return {
-    items,
-    total: count || 0,
-    page,
-    pageSize
+  // Check each item
+  return items.map(item => ({
+    ...item,
+    exists: existingSet.has(`${normalizeText(item.text)}|${item.language}|${item.role}`)
+  }))
+}
+
+// =============================================================================
+// SHARED AUDIO (encouragements, instructions)
+// =============================================================================
+
+/**
+ * Check if shared audio exists
+ *
+ * @param {string} text
+ * @param {string} language
+ * @param {string} audioType - encouragement, instruction
+ * @returns {Promise<boolean>}
+ */
+async function sharedAudioExists(text, language, audioType) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const textNormalized = normalizeText(text)
+
+  const { data, error } = await supabase
+    .from('shared_audio')
+    .select('id')
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('audio_type', audioType)
+    .single()
+
+  if (error && error.code !== 'PGRST116') {
+    throw error
   }
+  return !!data
 }
 
 /**
- * Update recording status - transitions sample between recording workflow states
- * Valid transitions:
- * - flagged_human_needed -> in_recording (someone started recording)
- * - in_recording -> recorded (recording uploaded)
- * - recorded -> needs_review (automatic after upload)
+ * Get shared audio by ID
  *
- * @param {string} audioUuid
- * @param {string} courseCode
- * @param {string} newStatus
- * @param {string|null} notes - Optional notes about the status change
- * @param {string|null} updatedBy - User who made the change
- * @returns {Promise<Object>}
+ * @param {string} id - UUID
+ * @returns {Promise<Object|null>}
  */
-async function updateRecordingStatus(audioUuid, courseCode, newStatus, notes = null, updatedBy = null) {
+async function getSharedAudio(id) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  // Get existing flag to validate transition and preserve history
-  const { data: existing, error: fetchError } = await supabase
-    .from('sample_flags')
-    .select('id, status, history, flagged_by')
-    .eq('audio_uuid', audioUuid)
-    .eq('course_code', courseCode)
+  const { data, error } = await supabase
+    .from('shared_audio')
+    .select('*')
+    .eq('id', id)
     .single()
 
-  if (fetchError) throw fetchError
-
-  if (!existing) {
-    throw new Error(`No flag found for audio ${audioUuid} in course ${courseCode}`)
+  if (error && error.code !== 'PGRST116') {
+    throw error
   }
+  return data
+}
 
-  // Validate state transitions
-  const validTransitions = {
-    'flagged_human_needed': ['in_recording'],
-    'in_recording': ['recorded', 'flagged_human_needed'], // Can unclaim
-    'recorded': ['needs_review', 'in_recording'] // Can re-record
-  }
+/**
+ * Find shared audio by text, language, and type
+ *
+ * @param {string} text
+ * @param {string} language
+ * @param {string} audioType
+ * @returns {Promise<Object|null>}
+ */
+async function findSharedAudio(text, language, audioType) {
+  if (!supabase) throw new Error('Supabase not initialized')
 
-  const allowedNextStates = validTransitions[existing.status] || []
-  if (!allowedNextStates.includes(newStatus)) {
-    throw new Error(
-      `Invalid transition from ${existing.status} to ${newStatus}. ` +
-      `Allowed: ${allowedNextStates.join(', ')}`
-    )
-  }
+  const textNormalized = normalizeText(text)
 
-  // Add to history
-  const historyEntry = {
-    status: newStatus,
-    timestamp: new Date().toISOString(),
-    by: updatedBy,
-    notes
-  }
-
-  const history = existing.history || []
-  history.push(historyEntry)
-
-  // Update the flag
   const { data, error } = await supabase
-    .from('sample_flags')
-    .update({
-      status: newStatus,
-      notes,
-      flagged_by: updatedBy || existing.flagged_by,
-      flagged_at: new Date().toISOString(),
-      history
+    .from('shared_audio')
+    .select('*')
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('audio_type', audioType)
+    .single()
+
+  if (error && error.code !== 'PGRST116') {
+    throw error
+  }
+  return data
+}
+
+/**
+ * Insert shared audio
+ *
+ * @param {Object} params
+ * @returns {Promise<Object>}
+ */
+async function insertSharedAudio({
+  text,
+  language,
+  audioType,
+  voiceId,
+  origin,
+  s3Key,
+  durationMs = null
+}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const textNormalized = normalizeText(text)
+
+  const { data, error } = await supabase
+    .from('shared_audio')
+    .insert({
+      text,
+      text_normalized: textNormalized,
+      language,
+      audio_type: audioType,
+      voice_id: voiceId,
+      origin,
+      s3_key: s3Key,
+      duration_ms: durationMs
     })
-    .eq('id', existing.id)
     .select()
     .single()
 
@@ -1055,11 +623,86 @@ async function updateRecordingStatus(audioUuid, courseCode, newStatus, notes = n
 }
 
 /**
- * Get content stats for a single course
- * Used by Course Editor to show accurate counts
+ * Upsert shared audio
  *
- * @param {string} courseCode - The course code
- * @returns {Promise<Object>} { seeds, legos, baskets, introductions, audio }
+ * @param {Object} params
+ * @returns {Promise<Object>}
+ */
+async function upsertSharedAudio({
+  text,
+  language,
+  audioType,
+  voiceId,
+  origin,
+  s3Key,
+  durationMs = null
+}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const existing = await findSharedAudio(text, language, audioType)
+
+  if (existing) {
+    const { data, error } = await supabase
+      .from('shared_audio')
+      .update({
+        voice_id: voiceId,
+        origin,
+        s3_key: s3Key,
+        duration_ms: durationMs
+      })
+      .eq('id', existing.id)
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  } else {
+    return insertSharedAudio({
+      text,
+      language,
+      audioType,
+      voiceId,
+      origin,
+      s3Key,
+      durationMs
+    })
+  }
+}
+
+/**
+ * Get all shared audio for a language
+ *
+ * @param {string} language
+ * @param {string} audioType - Optional filter by type
+ * @returns {Promise<Array>}
+ */
+async function getSharedAudioList(language, audioType = null) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  let query = supabase
+    .from('shared_audio')
+    .select('*')
+    .eq('language', language)
+
+  if (audioType) {
+    query = query.eq('audio_type', audioType)
+  }
+
+  const { data, error } = await query.order('created_at')
+
+  if (error) throw error
+  return data || []
+}
+
+// =============================================================================
+// CONTENT STATS
+// =============================================================================
+
+/**
+ * Get content stats for a course
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Object>}
  */
 async function getCourseContentStats(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
@@ -1102,14 +745,9 @@ async function getCourseContentStats(courseCode) {
 
 /**
  * Get introductions for a course
- * The lego_introductions table stores audio references (lego_id, audio_uuid).
- * For presentation text, the dashboard loads from introductions.json in S3.
  *
- * This function returns the lego IDs that have introductions,
- * which can be used to verify introduction coverage.
- *
- * @param {string} courseCode - The course code
- * @returns {Promise<Object>} { legoIds: string[], count: number }
+ * @param {string} courseCode
+ * @returns {Promise<Object>}
  */
 async function getIntroductionsByCourse(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
@@ -1122,112 +760,58 @@ async function getIntroductionsByCourse(courseCode) {
 
   if (error) throw error
 
-  // Return list of lego IDs that have introductions
   const legoIds = (data || []).map(intro => intro.lego_id)
 
   return {
     legoIds,
     course_code: courseCode,
     count: legoIds.length,
-    // Note: presentation text comes from introductions.json, not database
     hasAudioIntroductions: legoIds.length > 0
   }
 }
 
-/**
- * Get content stats for all courses
- * Used by dashboard course listings to show real counts
- *
- * Uses count queries per course to avoid Supabase's 1000 row limit
- *
- * @returns {Promise<Object>} Map of course_code -> { seeds, legos, baskets, introductions, audio }
- */
-async function getAllCourseContentStats() {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  // Get list of all courses first
-  const { data: courses, error: coursesError } = await supabase
-    .from('courses')
-    .select('course_code')
-
-  if (coursesError) throw coursesError
-
-  const stats = {}
-
-  // For each course, get counts from each table
-  for (const { course_code } of courses || []) {
-    // Initialize stats for this course
-    stats[course_code] = { seeds: 0, legos: 0, baskets: 0, introductions: 0, audio: 0 }
-
-    // Count seeds
-    const { count: seedCount } = await supabase
-      .from('course_seeds')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', course_code)
-    stats[course_code].seeds = seedCount || 0
-
-    // Count legos
-    const { count: legoCount } = await supabase
-      .from('course_legos')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', course_code)
-    stats[course_code].legos = legoCount || 0
-
-    // Count unique baskets (need to query and dedupe seed_number+lego_index)
-    // For efficiency, just count legos as proxy for baskets (1 basket per lego)
-    stats[course_code].baskets = legoCount || 0
-
-    // Count introductions
-    const { count: introCount } = await supabase
-      .from('lego_introductions')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', course_code)
-    stats[course_code].introductions = introCount || 0
-
-    // Count course audio
-    const { count: audioCount } = await supabase
-      .from('course_audio')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', course_code)
-    stats[course_code].audio = audioCount || 0
-  }
-
-  return stats
-}
+// =============================================================================
+// EXPORTS
+// =============================================================================
 
 module.exports = {
+  // Client
   supabase,
+  isInitialized,
+  getClient,
+
+  // Utilities
   generateAudioUUID,
   getHashInput,
   normalizeText,
-  audioExists,
-  getAudioSample,
-  findAudio,
-  insertAudioSample,
-  recordCourseUsage,
-  getCourseAudioUuids,
+
+  // Course management
+  getCourse,
+  getCourses,
   getCourseVoices,
   upsertCourse,
-  getVoice,
-  getVoicesForLanguage,
-  batchCheckExists,
-  checkSamplesExist,
-  registerSample,
-  updateSampleFlag,
-  getCourseFlags,
-  getFlagsByStatus,
-  getFlaggedForRegeneration,
-  bulkUpdateFlagStatus,
-  getRecordingQueue,
-  updateRecordingStatus,
-  isInitialized,
-  getClient,
-  getCourseStats,
+  updateCourseVoices,
+
+  // Course audio
+  courseAudioExists,
+  getCourseAudio,
+  findCourseAudio,
+  insertCourseAudio,
+  upsertCourseAudio,
+  getCourseAudioList,
+  getCourseAudioSummary,
+  getMissingAudio,
+  batchCheckCourseAudio,
+
+  // Shared audio
+  sharedAudioExists,
+  getSharedAudio,
+  findSharedAudio,
+  insertSharedAudio,
+  upsertSharedAudio,
+  getSharedAudioList,
+
+  // Content stats
   getCourseContentStats,
-  getAllCourseContentStats,
-  getIntroductionsByCourse,
-  insertRecordingProvenance,
-  registerHumanVoice,
-  listVoices,
-  updateVoiceStatus
+  getIntroductionsByCourse
 }

@@ -64,6 +64,19 @@ architecture AudioRegistry:
     - Course: References audio it needs (role is course-specific context)
 
   ## ==========================================================================
+  ## S3 STORAGE CONFIGURATION
+  ## ==========================================================================
+
+  s3:
+    bucket: "ssi-audio-stage"
+    region: "eu-west-1"
+    structure: "audio/{uuid}.mp3"
+
+    deprecated:
+      - bucket: "popty-bach-lfs"
+        note: "DO NOT USE - legacy bucket, no longer active"
+
+  ## ==========================================================================
   ## SCHEMA DEFINITION (APML Compilable)
   ## ==========================================================================
 
