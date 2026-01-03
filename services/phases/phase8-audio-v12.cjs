@@ -715,6 +715,20 @@ app.get('/stats/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     logger.log(`Fast stats for ${courseCode}`)
 
+    // Get voice configuration for this course
+    const { data: voiceConfigData } = await supabase
+      .from('course_voice_configs')
+      .select('voice_config')
+      .eq('course_code', courseCode)
+      .single()
+
+    const voiceConfig = voiceConfigData?.voice_config?.voices || {}
+    const configuredVoiceIds = [
+      voiceConfig.target1?.voiceId,
+      voiceConfig.target2?.voiceId,
+      voiceConfig.known?.voiceId
+    ].filter(Boolean)
+
     // Count total phrases (this tells us total audio needs = phrases * 3 roles)
     const { count: phraseCount, error: phraseErr } = await supabase
       .from('course_practice_phrases')
@@ -723,26 +737,30 @@ app.get('/stats/:courseCode', async (req, res) => {
 
     if (phraseErr) throw new Error(`Phrase count failed: ${phraseErr.message}`)
 
-    // Count existing audio files for this course (with s3_key = actually generated)
-    const { count: existingCount, error: audioErr } = await supabase
-      .from('course_audio')
-      .select('*, audio_files!inner(*)', { count: 'exact', head: true })
-      .eq('course_code', courseCode)
-      .not('audio_files.s3_key', 'is', null)
+    // Count existing audio files for this course that match configured voices
+    let existingCount = 0
+    if (configuredVoiceIds.length > 0) {
+      const { count, error: audioErr } = await supabase
+        .from('course_audio')
+        .select('*, audio_files!inner(*)', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .in('audio_files.voice_id', configuredVoiceIds)
+        .not('audio_files.s3_key', 'is', null)
 
-    if (audioErr) throw new Error(`Audio count failed: ${audioErr.message}`)
+      if (audioErr) throw new Error(`Audio count failed: ${audioErr.message}`)
+      existingCount = count || 0
+    }
 
     // Total needs = phrases * 3 (target1, target2, known for each phrase)
     const totalNeeds = (phraseCount || 0) * 3
-    const existing = existingCount || 0
-    const pending = Math.max(0, totalNeeds - existing)
+    const pending = Math.max(0, totalNeeds - existingCount)
 
-    logger.log(`Stats: ${totalNeeds} total, ${existing} existing, ${pending} pending`)
+    logger.log(`Stats: ${totalNeeds} total, ${existingCount} existing, ${pending} pending (voices: ${configuredVoiceIds.join(', ')})`)
 
     res.json({
       plan: {
         total: totalNeeds,
-        existing: existing,
+        existing: existingCount,
         toGenerate: pending
       },
       dataSource: 'supabase-v12-fast'
