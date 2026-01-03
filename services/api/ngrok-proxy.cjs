@@ -183,15 +183,16 @@ app.use('/phase8', createProxyMiddleware({
 }));
 
 // Production API proxy (QA workflow, flags, WebSocket) - BEFORE general API proxy
-// Use filter function to preserve full path (don't strip /api/production)
-app.use(createProxyMiddleware({
+// Mount at /api/production and let proxy forward the full path
+app.use('/api/production', createProxyMiddleware({
   target: 'http://localhost:3470',
   changeOrigin: true,
   ws: true, // Enable WebSocket proxying
-  filter: (pathname) => pathname.startsWith('/api/production'),
+  // Don't rewrite path - keep /api/production prefix
+  pathRewrite: (path) => `/api/production${path}`,
   logLevel: 'info',
   onProxyReq: (proxyReq, req, res) => {
-    console.log(`[Production API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3470${req.originalUrl}`);
+    console.log(`[Production API Proxy] ${req.method} /api/production${req.path} → http://localhost:3470/api/production${req.path}`);
   },
   onError: (err, req, res) => {
     console.error(`[Production API Proxy Error] ${err.message}`);
@@ -204,15 +205,15 @@ app.use(createProxyMiddleware({
 }));
 
 // API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
-// Use a filter function to match /api/* but EXCLUDE /api/production/* (handled above)
-app.use(createProxyMiddleware({
+// Mount at /api and rewrite path to include /api prefix
+app.use('/api', createProxyMiddleware({
   target: 'http://localhost:3456',
   changeOrigin: true,
-  // Only proxy /api/* requests that are NOT /api/production/*
-  filter: (pathname, req) => pathname.startsWith('/api/') && !pathname.startsWith('/api/production'),
+  // Rewrite path to include /api prefix (which Express strips on mount)
+  pathRewrite: (path) => `/api${path}`,
   logLevel: 'info',
   onProxyReq: (proxyReq, req, res) => {
-    console.log(`[API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3456${req.originalUrl}`);
+    console.log(`[API Proxy] ${req.method} /api${req.path} → http://localhost:3456/api${req.path}`);
   },
   onError: (err, req, res) => {
     console.error(`[API Proxy Error] ${err.message}`);
