@@ -5,7 +5,7 @@
  * before committing to full audio generation.
  *
  * Preview files go to staging bucket, not production.
- * Staging: s3://popty-bach-lfs/staging/{courseCode}/preview/{uuid}.mp3
+ * Staging: s3://ssi-audio-stage/staging/{courseCode}/preview/{uuid}.mp3
  * Production: s3://ssi-audio-stage/mastered/{uuid}.mp3
  */
 

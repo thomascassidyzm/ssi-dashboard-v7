@@ -742,7 +742,7 @@ async function checkSegmentCacheSyncStatus() {
         details: {
           localPath: localCachePath,
           s3Location: `s3://${s3Bucket}/${s3Prefix}`,
-          pullCommand: 'aws s3 sync s3://popty-bach-lfs/segment_cache/ temp/audio/segment_cache/ --profile default'
+          pullCommand: 'aws s3 sync s3://ssi-audio-stage/segment_cache/ temp/audio/segment_cache/ --profile default'
         }
       };
     }
@@ -759,8 +759,8 @@ async function checkSegmentCacheSyncStatus() {
         localPath: localCachePath,
         s3Location: `s3://${s3Bucket}/${s3Prefix}`,
         segmentCount,
-        syncToS3: 'aws s3 sync temp/audio/segment_cache/ s3://popty-bach-lfs/segment_cache/ --profile default',
-        syncFromS3: 'aws s3 sync s3://popty-bach-lfs/segment_cache/ temp/audio/segment_cache/ --profile default'
+        syncToS3: 'aws s3 sync temp/audio/segment_cache/ s3://ssi-audio-stage/segment_cache/ --profile default',
+        syncFromS3: 'aws s3 sync s3://ssi-audio-stage/segment_cache/ temp/audio/segment_cache/ --profile default'
       }
     };
   } catch (error) {
@@ -794,7 +794,7 @@ async function checkAndFixVoiceAssignments(courseCode) {
       service: 'Voice Assignments',
       error: 'voices.json not found',
       autoFixable: false,
-      agentAction: 'Run: aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/'
+      agentAction: 'Run: aws s3 sync s3://ssi-audio-stage/canonical/ public/vfs/canonical/'
     };
   }
 

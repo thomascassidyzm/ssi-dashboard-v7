@@ -1938,7 +1938,7 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
  * POST /api/courses/:courseCode/sync
  * Sync local course files to S3
  *
- * Uploads course files from local VFS to S3 (popty-bach-lfs bucket).
+ * Uploads course files from local VFS to S3 (ssi-audio-stage bucket).
  * This allows syncing courses at any stage of progress.
  *
  * Request body (optional):
@@ -7533,7 +7533,7 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
   const { uuid } = req.params;
 
   try {
-    // Audio files are in ssi-audio-stage bucket (separate from course data in popty-bach-lfs)
+    // Audio files are in ssi-audio-stage bucket (separate from course data in ssi-audio-stage)
     const s3Bucket = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage';
     const s3Key = `mastered/${uuid}.mp3`;
 
@@ -8001,7 +8001,7 @@ app.get('/api/audio/stream/:uuid', async (req, res) => {
   const { uuid } = req.params;
 
   try {
-    // Audio files are in ssi-audio-stage bucket (separate from course data in popty-bach-lfs)
+    // Audio files are in ssi-audio-stage bucket (separate from course data in ssi-audio-stage)
     const s3Bucket = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage';
     const s3Key = `mastered/${uuid}.mp3`;
 

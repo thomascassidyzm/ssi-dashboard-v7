@@ -1319,7 +1319,7 @@ async function syncCanonicalFromS3() {
   console.log('\n=== Syncing Canonical Resources from S3 ===\n');
 
   const canonicalDir = path.join(__dirname, '../public/vfs/canonical');
-  const s3Path = 's3://popty-bach-lfs/canonical/';
+  const s3Path = 's3://ssi-audio-stage/canonical/';
 
   try {
     const { execSync } = require('child_process');

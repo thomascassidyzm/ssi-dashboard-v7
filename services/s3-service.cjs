@@ -3,22 +3,11 @@
  *
  * Handles audio file uploads/downloads to AWS S3.
  *
- * BUCKET USAGE:
+ * BUCKET: ssi-audio-stage (eu-west-1) - THE ONLY BUCKET WE USE
  *
- * 1. COURSE AUDIO (lesson samples with UUIDs referenced in course manifests):
- *    - STAGE_BUCKET (ssi-audio-stage) - Development/testing
- *    - PROD_BUCKET (ssiborg-assets) - Live production
- *    - Structure: s3://bucket/mastered/{uuid}.mp3
- *    - These are generated per-course audio files
+ * Structure: s3://ssi-audio-stage/audio/{uuid}.mp3
  *
- * 2. CANONICAL/STRUCTURAL FILES (shared resources, registries, templates):
- *    - LFS_BUCKET (popty-bach-lfs) - Canonical welcomes, registries, etc.
- *    - Structure: s3://popty-bach-lfs/canonical/welcomes/{language_code}.wav
- *                 s3://popty-bach-lfs/canonical/welcomes.json
- *    - These are shared across all courses and should not be mixed with course audio
- *
- * IMPORTANT: Only upload files with UUID filenames referenced in courses to
- * STAGE_BUCKET/PROD_BUCKET. All structural/canonical files go to LFS_BUCKET.
+ * NOTE: popty-bach-lfs is DEPRECATED - do NOT use it.
  */
 
 const AWS = require('aws-sdk');
@@ -32,9 +21,12 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION || 'eu-west-1'
 });
 
-const STAGE_BUCKET = 'ssi-audio-stage';       // Course audio - development
-const PROD_BUCKET = 'ssiborg-assets';         // Course audio - production
-const LFS_BUCKET = 'popty-bach-lfs';          // Canonical/structural files
+// THE ONLY BUCKET WE USE - popty-bach-lfs is DEPRECATED
+const AUDIO_BUCKET = 'ssi-audio-stage';
+
+// Legacy aliases (for backwards compatibility, will be removed)
+const STAGE_BUCKET = AUDIO_BUCKET;
+const PROD_BUCKET = AUDIO_BUCKET;  // We no longer use separate prod bucket
 
 /**
  * Upload audio file to S3 (flat structure in mastered/)

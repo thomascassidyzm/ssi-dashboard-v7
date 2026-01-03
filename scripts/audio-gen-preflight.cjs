@@ -46,7 +46,7 @@ async function runS3Sync(options = {}) {
     // Check if AWS CLI is available
     execSync('which aws', { stdio: 'ignore' });
 
-    const cmd = 'aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/ --exclude ".DS_Store"';
+    const cmd = 'aws s3 sync s3://ssi-audio-stage/canonical/ public/vfs/canonical/ --exclude ".DS_Store"';
 
     if (verbose) {
       console.log(`\nRunning: ${cmd}\n`);

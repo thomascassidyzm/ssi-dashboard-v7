@@ -5,7 +5,7 @@
  * Usage:
  *   node scripts/init-auth-users.js
  *
- * This will upload the users.json to S3 at: popty-bach-lfs/auth/users.json
+ * This will upload the users.json to S3 at: ssi-audio-stage/auth/users.json
  */
 
 import AWS from 'aws-sdk';
@@ -13,7 +13,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AUTH_PREFIX = 'auth/';
 
 const s3 = new AWS.S3({

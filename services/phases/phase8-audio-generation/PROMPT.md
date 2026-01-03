@@ -87,7 +87,7 @@ audio_samples (
 
 ### S3 Structure
 ```
-s3://popty-bach-lfs/
+s3://ssi-audio-stage/
 └── mastered/
     └── {uuid}.mp3
 ```
@@ -282,7 +282,7 @@ SUPABASE_SERVICE_KEY=sb_secret_xxxxx
 AWS_ACCESS_KEY_ID=xxxxx
 AWS_SECRET_ACCESS_KEY=xxxxx
 AWS_REGION=eu-west-1
-S3_BUCKET=popty-bach-lfs
+S3_BUCKET=ssi-audio-stage
 ```
 
 ---

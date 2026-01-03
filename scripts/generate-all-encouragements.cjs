@@ -19,7 +19,7 @@ const CANONICAL_PATH = path.join(__dirname, '../public/vfs/canonical/eng_encoura
 const SAMPLES_PATH = path.join(__dirname, '../samples_database/encouragement_samples/eng_samples.json');
 const VOICES_PATH = path.join(__dirname, '../public/vfs/canonical/voices.json');
 const TEMP_DIR = path.join(__dirname, '../temp/encouragements');
-const S3_BUCKET = 'popty-bach-lfs';
+const S3_BUCKET = 'ssi-audio-stage';
 
 async function main() {
   console.log('\n' + '='.repeat(60));
