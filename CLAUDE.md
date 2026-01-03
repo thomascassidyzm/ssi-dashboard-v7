@@ -7,12 +7,23 @@
 ### **READ THE SCHEMA BEFORE MODIFYING DATABASE CODE**
 
 Before writing any code that touches the database, you MUST read:
-- `apml/core/audio-registry-v12.sql` - The canonical database schema
-- `apml/core/audio-registry-v12.apml` - The APML specification
+- `apml/core/audio-registry-v13.apml` - The canonical database schema (v13)
 
-Key tables: `texts`, `audio_files`, `voices`, `course_audio`, `lego_introductions`
+**v13 Key Tables (January 2026):**
+- `courses` - Course metadata with `voice_config` JSONB
+- `course_audio` - Audio owned by courses (flat, no joins)
+- `shared_audio` - Encouragements/instructions only
 
-⚠️ **DO NOT USE `audio_samples` table** - it's legacy with 145k records of duplicated text. The v12 schema separates text from audio.
+**v13 Principles:**
+- Course owns its audio directly (no texts/audio_files indirection)
+- S3 is flat: `{uuid}.mp3` - all metadata in Supabase
+- Roles: `known`, `target1`, `target2`, `presentation`
+- Origin: `tts` (regenerable) or `human` (precious)
+
+⚠️ **DEPRECATED TABLES - DO NOT USE:**
+- `audio_samples` - Legacy, 145k duplicated records
+- `texts` - v12, removed in v13
+- `audio_files` - v12, removed in v13
 
 ### **CHECK EXISTING ARCHITECTURE BEFORE CODING**
 
@@ -134,7 +145,7 @@ We are migrating from **manifest-first** to **database-first** architecture:
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
-- **Storage**: S3 for files (popty-bach-lfs, eu-west-1), **Supabase for audio registry**
+- **Storage**: S3 for files (ssi-audio-stage, eu-west-1), **Supabase for audio registry**
 - **Audio Key**: `voiceId:lang:role:cadence:text` → UUID v5 (RFC 4122) - see `services/uuid-v11.cjs`
 - **Flow**: Audio-first (generate audio BEFORE manifest compilation)
 - **Orchestrator**: Port 3456
