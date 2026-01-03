@@ -1658,7 +1658,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
         .from('course_audio')
         .select(`
           role,
-          audio_file_id,
+          audio_id,
           audio_files!inner (
             id,
             voice_id,
