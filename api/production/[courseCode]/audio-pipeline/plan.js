@@ -1,6 +1,8 @@
 /**
  * GET /api/production/:courseCode/audio-pipeline/plan
  * Returns audio generation plan with counts of needed vs existing audio
+ *
+ * v13 Schema: Uses course_audio table directly (no texts/audio_files join)
  */
 
 import { isSupabaseConfigured, getSupabase } from '../../../lib/supabase.js';
@@ -29,27 +31,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Get course config for voice assignments and languages
+    // Get course config (v13: voice_config is JSONB)
     const { data: course, error: courseError } = await db
       .from('courses')
-      .select('known_lang, target_lang, known_voice, target1_voice, target2_voice, known_cadence, target_cadence')
-      .eq('course_code', courseCode)
+      .select('code, display_name, known_lang, target_lang, voice_config, status')
+      .eq('code', courseCode)
       .single();
 
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Use course-specific cadences (default to natural/slow if not set)
-    const knownCadence = course.known_cadence || 'natural';
-    const targetCadence = course.target_cadence || 'natural';
+    const voiceConfig = course.voice_config || {};
 
     // Get unique texts from practice phrases
     const { data: phrases, error: phrasesError } = await db
       .from('course_practice_phrases')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
-      .eq('status', 'released');
+      .select('known, target')
+      .eq('course_code', courseCode);
 
     if (phrasesError) throw phrasesError;
 
@@ -57,72 +56,61 @@ export default async function handler(req, res) {
     const knownTexts = new Set();
     const targetTexts = new Set();
     for (const p of (phrases || [])) {
-      if (p.known_text) knownTexts.add(p.known_text.toLowerCase().trim());
-      if (p.target_text) targetTexts.add(p.target_text.toLowerCase().trim());
+      if (p.known) knownTexts.add(p.known.toLowerCase().trim());
+      if (p.target) targetTexts.add(p.target.toLowerCase().trim());
     }
 
     // Total needed: known texts need 1 audio, target texts need 2 (target1 + target2)
     const totalAudioNeeded = knownTexts.size + (targetTexts.size * 2);
 
-    // Query audio_files via texts table (v12 schema)
-    // Step 1: Get text IDs for known texts
-    // Step 2: Count audio files matching those text IDs + voice + cadence
-    let existingKnown = 0;
-    let existingTarget1 = 0;
-    let existingTarget2 = 0;
+    // Get existing audio from course_audio (v13: flat table)
+    const { data: existingAudio, error: audioError } = await db
+      .from('course_audio')
+      .select('text_normalized, role')
+      .eq('course_code', courseCode);
 
-    // Helper to count audio files for a set of texts
-    async function countAudioForTexts(textArray, language, voiceId, cadence) {
-      if (!textArray.length || !voiceId) return 0;
+    if (audioError) throw audioError;
 
-      // Step 1: Get text IDs (batch to avoid URL length issues)
-      const batchSize = 100;
-      let totalCount = 0;
+    // Count by role
+    const existingByRole = {
+      known: new Set(),
+      target1: new Set(),
+      target2: new Set()
+    };
 
-      for (let i = 0; i < textArray.length; i += batchSize) {
-        const batch = textArray.slice(i, i + batchSize);
-
-        // Get text IDs for this batch
-        const { data: texts } = await db
-          .from('texts')
-          .select('id')
-          .eq('language', language)
-          .in('content_normalized', batch);
-
-        if (!texts || texts.length === 0) continue;
-
-        const textIds = texts.map(t => t.id);
-
-        // Count audio files matching these text IDs
-        const { count } = await db
-          .from('audio_files')
-          .select('id', { count: 'exact', head: true })
-          .eq('voice_id', voiceId)
-          .eq('cadence', cadence)
-          .in('text_id', textIds);
-
-        totalCount += count || 0;
+    for (const audio of (existingAudio || [])) {
+      if (existingByRole[audio.role]) {
+        existingByRole[audio.role].add(audio.text_normalized);
       }
-
-      return totalCount;
     }
 
-    // Count existing audio
-    const knownArray = Array.from(knownTexts);
-    const targetArray = Array.from(targetTexts);
+    // Calculate missing
+    let missingKnown = 0;
+    let missingTarget1 = 0;
+    let missingTarget2 = 0;
 
-    existingKnown = await countAudioForTexts(knownArray, course.known_lang, course.known_voice, knownCadence);
-    existingTarget1 = await countAudioForTexts(targetArray, course.target_lang, course.target1_voice, targetCadence);
-    existingTarget2 = await countAudioForTexts(targetArray, course.target_lang, course.target2_voice, targetCadence);
+    for (const text of knownTexts) {
+      if (!existingByRole.known.has(text)) missingKnown++;
+    }
+    for (const text of targetTexts) {
+      if (!existingByRole.target1.has(text)) missingTarget1++;
+      if (!existingByRole.target2.has(text)) missingTarget2++;
+    }
 
-    const existingCount = existingKnown + existingTarget1 + existingTarget2;
-    const missing = Math.max(0, totalAudioNeeded - existingCount);
+    const existingCount = existingByRole.known.size + existingByRole.target1.size + existingByRole.target2.size;
+    const missing = missingKnown + missingTarget1 + missingTarget2;
     const percentComplete = totalAudioNeeded > 0
       ? Math.round((existingCount / totalAudioNeeded) * 100)
       : 0;
 
+    // Estimate cost (rough: ~100 chars avg per phrase, $0.016 per 1000 chars)
+    const estimatedChars = missing * 100;
+    const estimatedCost = (estimatedChars / 1000) * 0.016;
+
     return res.json({
       courseCode,
+      displayName: course.display_name,
+      status: course.status,
       total: totalAudioNeeded,
       existing: existingCount,
       missing,
@@ -130,12 +118,31 @@ export default async function handler(req, res) {
       uniqueKnownTexts: knownTexts.size,
       uniqueTargetTexts: targetTexts.size,
       breakdown: {
-        known: { needed: knownTexts.size, existing: existingKnown, voice: course.known_voice },
-        target1: { needed: targetTexts.size, existing: existingTarget1, voice: course.target1_voice },
-        target2: { needed: targetTexts.size, existing: existingTarget2, voice: course.target2_voice }
+        known: {
+          needed: knownTexts.size,
+          existing: existingByRole.known.size,
+          missing: missingKnown,
+          voice: voiceConfig.known || 'not configured'
+        },
+        target1: {
+          needed: targetTexts.size,
+          existing: existingByRole.target1.size,
+          missing: missingTarget1,
+          voice: voiceConfig.target1 || 'not configured'
+        },
+        target2: {
+          needed: targetTexts.size,
+          existing: existingByRole.target2.size,
+          missing: missingTarget2,
+          voice: voiceConfig.target2 || 'not configured'
+        }
       },
-      languages: { known: course.known_lang, target: course.target_lang },
-      estimatedCost: `$${(missing * 0.002).toFixed(2)}`,
+      languages: {
+        known: course.known_lang,
+        target: course.target_lang
+      },
+      voiceConfig,
+      estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedTime: `${Math.ceil(missing / 60)} min`
     });
 
