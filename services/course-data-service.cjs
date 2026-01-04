@@ -652,20 +652,20 @@ async function ensureCourse(courseCode, knownLang, targetLang) {
     }
   }
 
-  // Check if exists
+  // Check if exists (v13: courses.code is the primary key)
   const { data: existing } = await supabase
     .from('courses')
     .select('*')
-    .eq('course_code', courseCode)
+    .eq('code', courseCode)
     .single();
 
   if (existing) return existing;
 
-  // Create new course
+  // Create new course (v13: use 'code' column)
   const { data, error } = await supabase
     .from('courses')
     .insert({
-      course_code: courseCode,
+      code: courseCode,
       known_lang: knownLang,
       target_lang: targetLang,
       known_voice: 'tbd',

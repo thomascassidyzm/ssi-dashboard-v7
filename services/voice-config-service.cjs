@@ -136,10 +136,11 @@ async function loadVoiceConfig(courseCode) {
   }
 
   try {
+    // v13: courses.code is the primary key
     const { data, error } = await supabase
       .from('courses')
       .select('voice_config')
-      .eq('course_code', courseCode)
+      .eq('code', courseCode)
       .single();
 
     if (error && error.code !== 'PGRST116') { // PGRST116 = not found

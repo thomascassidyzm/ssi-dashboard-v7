@@ -203,11 +203,11 @@ async function generateManifest(courseCode, options = {}) {
 
   console.log(`Generating manifest for ${courseCode}...`);
 
-  // Get course metadata
+  // Get course metadata (v13: courses.code is the primary key)
   const { data: course, error: courseError } = await supabase
     .from('courses')
     .select('*')
-    .eq('course_code', courseCode)
+    .eq('code', courseCode)
     .single();
 
   if (courseError) {

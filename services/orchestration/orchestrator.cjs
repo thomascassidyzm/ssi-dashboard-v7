@@ -1818,11 +1818,11 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       return res.status(404).json({ error: `Course ${courseCode} not found (no local files and Supabase not initialized)` });
     }
 
-    // Get course from database
+    // Get course from database (v13: courses.code is primary key)
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('course_code', courseCode)
+      .eq('code', courseCode)
       .single();
 
     if (courseError || !course) {

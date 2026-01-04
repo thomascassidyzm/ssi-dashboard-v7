@@ -1739,17 +1739,18 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
     // Step 1: Get ALL audio needs directly from database (not limited like Phase 8 plan)
     const supabase = supabaseClient.getClient()
 
-    // Get course voices
+    // Get course voices (v13: voice_config JSONB column, courses.code is PK)
     const { data: courseData } = await supabase
       .from('courses')
-      .select('known_voice, target1_voice, target2_voice')
-      .eq('course_code', courseCode)
+      .select('voice_config')
+      .eq('code', courseCode)
       .single()
 
+    const voiceConfig = courseData?.voice_config || {}
     const voices = {
-      known: courseData?.known_voice,
-      target1: courseData?.target1_voice,
-      target2: courseData?.target2_voice
+      known: voiceConfig.known,
+      target1: voiceConfig.target1,
+      target2: voiceConfig.target2
     }
 
     // Get all practice phrases for this course

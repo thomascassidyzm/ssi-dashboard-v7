@@ -15,11 +15,11 @@ async function generateManifestFromDB(courseCode) {
   const db = getSupabase();
   if (!db) return null;
 
-  // Get course metadata
+  // Get course metadata (v13: courses.code is primary key)
   const { data: course, error: courseError } = await db
     .from('courses')
     .select('*')
-    .eq('course_code', courseCode)
+    .eq('code', courseCode)
     .single();
 
   if (courseError || !course) return null;
