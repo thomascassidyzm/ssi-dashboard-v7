@@ -72,68 +72,64 @@
 
         <!-- Regenerate by Role -->
         <div class="bg-slate-800/50 border border-amber-500/30 rounded-lg p-6">
-          <h2 class="text-lg font-semibold text-amber-400 mb-3">Regenerate Audio by Role</h2>
+          <h2 class="text-lg font-semibold text-amber-400 mb-2">Regenerate Audio by Role</h2>
           <p class="text-sm text-slate-400 mb-4">
-            Regenerate all audio for a specific role using the configured voice. Existing audio will be replaced.
+            Replace all audio for a role with new TTS generation using the configured voice.
           </p>
 
-          <div class="flex flex-wrap gap-4 items-end">
-            <div class="flex-1 min-w-48">
-              <label class="block text-sm text-slate-400 mb-2">Select Role</label>
-              <select
-                v-model="regenerateRole"
-                class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
-              >
-                <option value="">Select a role...</option>
-                <option value="presentation">Presentation (LEGO introductions)</option>
-                <option value="known">Known Language</option>
-                <option value="target1">Target Voice 1</option>
-                <option value="target2">Target Voice 2</option>
-                <option value="encouragement">Encouragement</option>
-                <option value="instruction">Instruction</option>
-              </select>
-            </div>
+          <div class="flex items-center gap-4">
+            <!-- Role Selector -->
+            <select
+              v-model="regenerateRole"
+              class="flex-1 bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
+            >
+              <option value="">Select role...</option>
+              <option value="target1">Target 1</option>
+              <option value="target2">Target 2</option>
+              <option value="known">Known</option>
+              <option value="presentation">Presentation</option>
+            </select>
 
+            <!-- Preview -->
             <button
               @click="previewRegenerate"
               :disabled="!regenerateRole || regenerating"
-              class="px-5 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+              class="px-4 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
             >
               Preview
             </button>
 
+            <!-- Regenerate -->
             <button
               @click="executeRegenerate"
               :disabled="!regenerateRole || regenerating || !voicesConfigured"
-              class="px-5 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+              class="px-4 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
             >
-              {{ regenerating ? 'Regenerating...' : 'Regenerate' }}
+              {{ regenerating ? 'Working...' : 'Regenerate' }}
             </button>
           </div>
 
-          <!-- Preview/Result -->
-          <div v-if="regenerateResult" class="mt-4 bg-slate-900/50 rounded p-4">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-amber-400 font-semibold">
-                {{ regenerateResult.dryRun ? 'Preview' : 'Result' }}
-              </span>
-              <span class="text-slate-400">{{ regenerateResult.count || regenerateResult.total || 0 }} items</span>
-            </div>
-            <div class="text-sm text-slate-300 space-y-1">
-              <div v-if="regenerateResult.voiceId">Voice: <span class="font-mono text-amber-300">{{ regenerateResult.voiceId }}</span></div>
-              <div v-if="regenerateResult.language">Language: <span class="font-mono">{{ regenerateResult.language }}</span></div>
-            </div>
-            <div v-if="regenerateResult.sample?.length" class="mt-2">
-              <div class="text-xs text-slate-500 mb-1">Sample texts:</div>
-              <div v-for="(s, idx) in regenerateResult.sample.slice(0, 3)" :key="idx" class="text-xs text-slate-400 truncate">
-                {{ s.text }}
+          <!-- Preview Result -->
+          <div v-if="regenerateResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="text-amber-400 font-medium mb-1">
+                  {{ regenerateResult.dryRun ? 'Preview' : 'Complete' }}
+                </div>
+                <div v-if="regenerateResult.voiceId" class="text-sm text-slate-300">
+                  Voice: <span class="text-emerald-400 font-mono">{{ regenerateResult.voiceId }}</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-2xl font-bold text-slate-100">{{ regenerateResult.count || regenerateResult.total || 0 }}</div>
+                <div class="text-xs text-slate-400">items</div>
               </div>
             </div>
-            <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-emerald-400">
-              ✓ Completed: {{ regenerateResult.success }} success, {{ regenerateResult.failed }} failed
+            <div v-if="regenerateResult.error" class="mt-2 text-red-400 text-sm">
+              {{ regenerateResult.error }}
             </div>
-            <div v-if="regenerateResult.error" class="mt-2 text-red-400">
-              ✗ Error: {{ regenerateResult.error }}
+            <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-emerald-400 text-sm">
+              ✓ {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
             </div>
           </div>
         </div>
