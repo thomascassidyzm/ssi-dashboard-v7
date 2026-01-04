@@ -27,6 +27,7 @@ const AUDIO_BUCKET = 'ssi-audio-stage';
 // Legacy aliases (for backwards compatibility, will be removed)
 const STAGE_BUCKET = AUDIO_BUCKET;
 const PROD_BUCKET = AUDIO_BUCKET;  // We no longer use separate prod bucket
+const LFS_BUCKET = AUDIO_BUCKET;   // LFS bucket deprecated, use AUDIO_BUCKET
 
 /**
  * Upload audio file to S3 (flat structure in mastered/)
