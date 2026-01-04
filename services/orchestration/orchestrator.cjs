@@ -5076,6 +5076,27 @@ async function handleAudioRegenerateRole(req, res) {
 app.post('/api/audio/regenerate-role/:courseCode', handleAudioRegenerateRole);
 
 /**
+ * POST /api/audio/regenerate-presentations/:courseCode - Regenerate presentation text for a course
+ * Body: { dryRun, regenerateAudio }
+ */
+async function handleAudioRegeneratePresentations(req, res) {
+  try {
+    const { courseCode } = req.params;
+    const { dryRun, regenerateAudio } = req.body;
+    const audioUrl = PHASE_SERVERS['audio'];
+
+    const response = await axios.post(`${audioUrl}/regenerate-presentations/${courseCode}`, { dryRun, regenerateAudio });
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ success: false, error: 'Audio server not running (port 3465)' });
+    }
+    res.status(error.response?.status || 500).json({ success: false, error: error.message });
+  }
+}
+app.post('/api/audio/regenerate-presentations/:courseCode', handleAudioRegeneratePresentations);
+
+/**
  * GET /api/audio/qc-report/:courseCode (APML v9.0) and /api/phase8/qc-report/:courseCode (legacy)
  */
 async function handleAudioQCReport(req, res) {

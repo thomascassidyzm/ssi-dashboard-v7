@@ -206,7 +206,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Get missing audio using RPC
     const { data: phrases, error: phrasesError } = await supabase
       .from('course_practice_phrases')
-      .select('known, target')
+      .select('known_text, target_text')
       .eq('course_code', courseCode)
 
     if (phrasesError) throw phrasesError
@@ -223,10 +223,10 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     const needed = []
     for (const phrase of phrases || []) {
-      const knownKey = `${phrase.known.toLowerCase().trim()}|${course.known_lang}|known`
+      const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
       if (!existingSet.has(knownKey)) {
         needed.push({
-          text: phrase.known,
+          text: phrase.known_text,
           language: course.known_lang,
           role: 'known',
           voiceId: voiceConfig.known
@@ -234,10 +234,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
 
       for (const role of ['target1', 'target2']) {
-        const targetKey = `${phrase.target.toLowerCase().trim()}|${course.target_lang}|${role}`
+        const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
         if (!existingSet.has(targetKey)) {
           needed.push({
-            text: phrase.target,
+            text: phrase.target_text,
             language: course.target_lang,
             role,
             voiceId: voiceConfig[role]
@@ -391,7 +391,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       const { data: feedback, error: feedbackError } = await supabase
         .from('user_feedback')
         .select('audio_id')
-        .eq('course_code', courseCode)
+        .eq('code', courseCode)
 
       if (feedbackError) throw feedbackError
 
@@ -599,6 +599,234 @@ app.post('/insert', async (req, res) => {
     res.json({ success: true, audio: data })
   } catch (error) {
     logger.error('Insert error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// LANGUAGE NAMES MAPPING
+// =============================================================================
+
+const LANG_NAMES = {
+  'eng': 'English',
+  'spa': 'Spanish',
+  'fra': 'French',
+  'deu': 'German',
+  'ita': 'Italian',
+  'por': 'Portuguese',
+  'cmn': 'Chinese',
+  'zho': 'Chinese',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'ara': 'Arabic',
+  'cym': 'Welsh',
+  'gle': 'Irish',
+  'gla': 'Scottish Gaelic',
+  'nld': 'Dutch',
+  'rus': 'Russian'
+}
+
+// =============================================================================
+// POST REGENERATE-PRESENTATIONS - Regenerate presentation text for a course
+// =============================================================================
+
+app.post('/regenerate-presentations/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { dryRun = true, regenerateAudio = false } = req.body
+
+    logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun})`)
+
+    // Get course info
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('*')
+      .eq('code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const knownLang = course.known_lang
+    const targetLang = course.target_lang
+    const targetLangName = LANG_NAMES[targetLang] || targetLang
+
+    // Get template for this known language
+    const { data: templates, error: templateError } = await supabase
+      .from('presentation_templates')
+      .select('*')
+      .eq('known_lang', knownLang)
+      .eq('is_active', true)
+      .order('priority', { ascending: false })
+      .limit(1)
+
+    if (templateError) throw templateError
+
+    // Fall back to default English template if no specific one found
+    let template = templates?.[0]?.template
+    if (!template) {
+      template = "The {target_lang_name} for '{known}', as in '{seed}', is:"
+      logger.warn(`No template found for ${knownLang}, using default English`)
+    }
+
+    logger.info(`Using template: ${template}`)
+
+    // Get all LEGOs for this course
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, known_text, target_text, seed_number')
+      .eq('course_code', courseCode)
+
+    if (legosError) throw legosError
+
+    if (!legos || legos.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No LEGOs found for this course',
+        count: 0
+      })
+    }
+
+    // Get all seed sentences for context
+    const seedNumbers = [...new Set(legos.map(l => l.seed_number).filter(Boolean))]
+
+    let seedMap = {}
+    if (seedNumbers.length > 0) {
+      const { data: seeds, error: seedsError } = await supabase
+        .from('course_seeds')
+        .select('seed_number, known_text')
+        .eq('course_code', courseCode)
+        .in('seed_number', seedNumbers)
+
+      if (!seedsError && seeds) {
+        seedMap = Object.fromEntries(seeds.map(s => [s.seed_number, s.known_text]))
+      }
+    }
+
+    // Generate presentation text for each LEGO
+    const presentations = []
+    for (const lego of legos) {
+      const seedText = seedMap[lego.seed_number] || lego.known_text // Fallback to known if no seed
+
+      // Fill in template
+      let presText = template
+        .replace('{target_lang_name}', targetLangName)
+        .replace('{known}', lego.known_text)
+        .replace('{seed}', seedText)
+
+      presentations.push({
+        lego_id: lego.lego_id,
+        known: lego.known_text,
+        target: lego.target_text,
+        seed: seedText,
+        presentation_text: presText
+      })
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        template,
+        targetLangName,
+        count: presentations.length,
+        sample: presentations.slice(0, 5)
+      })
+    }
+
+    // Actually update/insert presentation audio records AND lego_introductions
+    const voiceConfig = course.voice_config || {}
+    const presentationVoiceId = voiceConfig.presentation || `azure_${knownLang === 'eng' ? 'en-GB-SoniaNeural' : 'en-GB-SoniaNeural'}`
+
+    let updated = 0
+    let introductions = 0
+    let errors = []
+
+    for (const pres of presentations) {
+      try {
+        // Upsert into course_audio and get the ID back
+        const { data: audioData, error: upsertError } = await supabase
+          .from('course_audio')
+          .upsert({
+            course_code: courseCode,
+            text: pres.presentation_text,
+            text_normalized: pres.presentation_text.toLowerCase().trim(),
+            language: knownLang,
+            role: 'presentation',
+            voice_id: presentationVoiceId,
+            origin: 'tts'
+          }, {
+            onConflict: 'course_code,text_normalized,language,role'
+          })
+          .select('id')
+          .single()
+
+        if (upsertError) {
+          errors.push({ lego_id: pres.lego_id, error: upsertError.message })
+          continue
+        }
+
+        updated++
+        const presentationAudioId = audioData?.id
+
+        // Look up target1 and target2 audio for this LEGO's target text
+        const targetTextNorm = pres.target.toLowerCase().trim()
+
+        const { data: target1Audio } = await supabase
+          .from('course_audio')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', targetTextNorm)
+          .eq('role', 'target1')
+          .single()
+
+        const { data: target2Audio } = await supabase
+          .from('course_audio')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', targetTextNorm)
+          .eq('role', 'target2')
+          .single()
+
+        // Upsert into lego_introductions
+        const { error: introError } = await supabase
+          .from('lego_introductions')
+          .upsert({
+            lego_id: pres.lego_id,
+            course_code: courseCode,
+            presentation_audio_id: presentationAudioId,
+            target1_audio_id: target1Audio?.id || null,
+            target2_audio_id: target2Audio?.id || null,
+            updated_at: new Date().toISOString()
+          }, {
+            onConflict: 'lego_id'
+          })
+
+        if (!introError) {
+          introductions++
+        }
+      } catch (err) {
+        errors.push({ lego_id: pres.lego_id, error: err.message })
+      }
+    }
+
+    res.json({
+      success: true,
+      dryRun: false,
+      courseCode,
+      template,
+      targetLangName,
+      total: presentations.length,
+      updated,
+      introductions,
+      errors: errors.slice(0, 10),
+      message: `Presentation text updated. ${introductions} lego_introductions created. Run regenerate-role with role=presentation to generate audio.`
+    })
+
+  } catch (error) {
+    logger.error('Regenerate presentations error:', error)
     res.status(500).json({ error: error.message })
   }
 })

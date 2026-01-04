@@ -147,6 +147,61 @@
           </div>
         </div>
 
+        <!-- Regenerate Presentation Text -->
+        <div class="bg-slate-800/50 border border-purple-500/30 rounded-lg p-6">
+          <h2 class="text-lg font-semibold text-purple-400 mb-2">Regenerate Presentation Text</h2>
+          <p class="text-sm text-slate-400 mb-4">
+            Update presentation text using new simplified format (ends with "is:" - target words played separately).
+          </p>
+
+          <div class="flex items-center gap-4">
+            <button
+              @click="previewPresentations"
+              :disabled="regeneratingPresentations"
+              class="px-4 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+            >
+              Preview
+            </button>
+
+            <button
+              @click="executePresentations"
+              :disabled="regeneratingPresentations"
+              class="px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
+            >
+              {{ regeneratingPresentations ? 'Working...' : 'Update Presentation Text' }}
+            </button>
+          </div>
+
+          <div v-if="presentationsResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="text-purple-400 font-medium mb-1">
+                  {{ presentationsResult.dryRun ? 'Preview' : 'Complete' }}
+                </div>
+                <div v-if="presentationsResult.template" class="text-sm text-slate-300">
+                  Template: <span class="text-emerald-400 font-mono text-xs">{{ presentationsResult.template }}</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-2xl font-bold text-slate-100">{{ presentationsResult.count || presentationsResult.total || 0 }}</div>
+                <div class="text-xs text-slate-400">LEGOs</div>
+              </div>
+            </div>
+            <div v-if="presentationsResult.sample" class="mt-3 space-y-2">
+              <div class="text-xs text-slate-400">Sample:</div>
+              <div v-for="(s, i) in presentationsResult.sample.slice(0, 3)" :key="i" class="text-xs bg-slate-800 p-2 rounded">
+                <span class="text-amber-400">{{ s.known }}</span> → {{ s.presentation_text }}
+              </div>
+            </div>
+            <div v-if="presentationsResult.error" class="mt-2 text-red-400 text-sm">
+              {{ presentationsResult.error }}
+            </div>
+            <div v-if="presentationsResult.updated" class="mt-2 text-emerald-400 text-sm">
+              ✓ {{ presentationsResult.updated }} updated. Run "Regenerate All" with role=presentation to generate audio.
+            </div>
+          </div>
+        </div>
+
         <!-- Progress Dashboard -->
         <PipelineProgress
           :total="progressStats.total"
@@ -210,6 +265,10 @@ const regenerateRole = ref('')
 const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
 const flaggedOnly = ref(false)
+
+// Regenerate presentations state
+const regeneratingPresentations = ref(false)
+const presentationsResult = ref<any>(null)
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
@@ -383,6 +442,72 @@ const executeRegenerate = async () => {
     regenerateResult.value = { error: err.message }
   } finally {
     regenerating.value = false
+  }
+}
+
+// Presentation text regeneration functions
+const previewPresentations = async () => {
+  regeneratingPresentations.value = true
+  presentationsResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-presentations/${courseCode.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        dryRun: true
+      })
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      presentationsResult.value = { error: data.error || 'Preview failed' }
+    } else {
+      presentationsResult.value = data
+    }
+  } catch (err: any) {
+    presentationsResult.value = { error: err.message }
+  } finally {
+    regeneratingPresentations.value = false
+  }
+}
+
+const executePresentations = async () => {
+  const confirmed = confirm(
+    `This will update presentation text for all LEGOs in ${courseCode.value}.\n\n` +
+    `Existing presentation audio will need to be regenerated.\n\n` +
+    `Continue?`
+  )
+  if (!confirmed) return
+
+  regeneratingPresentations.value = true
+  presentationsResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-presentations/${courseCode.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        dryRun: false
+      })
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      presentationsResult.value = { error: data.error || 'Update failed' }
+    } else {
+      presentationsResult.value = data
+    }
+  } catch (err: any) {
+    presentationsResult.value = { error: err.message }
+  } finally {
+    regeneratingPresentations.value = false
   }
 }
 </script>
