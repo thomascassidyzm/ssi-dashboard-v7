@@ -695,6 +695,133 @@ async function getSharedAudioList(language, audioType = null) {
 }
 
 // =============================================================================
+// SAMPLE FLAGS (QA workflow)
+// =============================================================================
+
+/**
+ * Get all flags for audio in a course
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Array>} Array of flag objects with audio_uuid, status, notes, etc.
+ */
+async function getCourseFlags(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // First get all audio IDs for this course
+  const { data: audioData, error: audioError } = await supabase
+    .from('course_audio')
+    .select('id')
+    .eq('course_code', courseCode)
+
+  if (audioError) throw audioError
+
+  if (!audioData || audioData.length === 0) {
+    return []
+  }
+
+  const audioIds = audioData.map(a => a.id)
+
+  // Get flags for those audio IDs
+  const { data: flagsData, error: flagsError } = await supabase
+    .from('sample_flags')
+    .select('*')
+    .in('audio_uuid', audioIds)
+
+  if (flagsError) throw flagsError
+
+  return flagsData || []
+}
+
+/**
+ * Update a sample flag
+ *
+ * @param {string} audioUuid - The audio UUID
+ * @param {Object} updates - { status, notes, flaggedBy }
+ * @returns {Promise<Object>}
+ */
+async function updateSampleFlag(audioUuid, { status, notes, flaggedBy }) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Check if flag exists
+  const { data: existing, error: checkError } = await supabase
+    .from('sample_flags')
+    .select('*')
+    .eq('audio_uuid', audioUuid)
+    .single()
+
+  if (checkError && checkError.code !== 'PGRST116') {
+    throw checkError
+  }
+
+  const now = new Date().toISOString()
+  const historyEntry = {
+    status,
+    notes,
+    flaggedBy,
+    timestamp: now
+  }
+
+  if (existing) {
+    // Update existing flag
+    const newHistory = [...(existing.history || []), historyEntry]
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .update({
+        status,
+        notes,
+        flagged_by: flaggedBy,
+        flagged_at: now,
+        history: newHistory
+      })
+      .eq('audio_uuid', audioUuid)
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  } else {
+    // Insert new flag
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .insert({
+        audio_uuid: audioUuid,
+        status,
+        notes,
+        flagged_by: flaggedBy,
+        flagged_at: now,
+        history: [historyEntry]
+      })
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  }
+}
+
+/**
+ * Bulk update sample flags
+ *
+ * @param {Array} updates - Array of { audioUuid, status, notes, flaggedBy }
+ * @returns {Promise<Array>}
+ */
+async function bulkUpdateSampleFlags(updates) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const results = []
+  for (const update of updates) {
+    const result = await updateSampleFlag(update.audioUuid, {
+      status: update.status,
+      notes: update.notes,
+      flaggedBy: update.flaggedBy
+    })
+    results.push(result)
+  }
+
+  return results
+}
+
+// =============================================================================
 // CONTENT STATS
 // =============================================================================
 
@@ -849,6 +976,11 @@ module.exports = {
   insertSharedAudio,
   upsertSharedAudio,
   getSharedAudioList,
+
+  // Sample flags (QA workflow)
+  getCourseFlags,
+  updateSampleFlag,
+  bulkUpdateSampleFlags,
 
   // Content stats
   getCourseContentStats,

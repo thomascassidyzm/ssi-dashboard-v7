@@ -240,6 +240,42 @@ export async function findSharedAudio(text, language, audioType) {
 }
 
 // =============================================================================
+// SAMPLE FLAGS (QA workflow)
+// =============================================================================
+
+/**
+ * Get all flags for audio in a course
+ */
+export async function getCourseFlags(courseCode) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  // First get all audio IDs for this course
+  const { data: audioData, error: audioError } = await supabase
+    .from('course_audio')
+    .select('id')
+    .eq('course_code', courseCode);
+
+  if (audioError) throw audioError;
+
+  if (!audioData || audioData.length === 0) {
+    return [];
+  }
+
+  const audioIds = audioData.map(a => a.id);
+
+  // Get flags for those audio IDs
+  const { data: flagsData, error: flagsError } = await supabase
+    .from('sample_flags')
+    .select('*')
+    .in('audio_uuid', audioIds);
+
+  if (flagsError) throw flagsError;
+
+  return flagsData || [];
+}
+
+// =============================================================================
 // CONTENT STATS
 // =============================================================================
 
@@ -310,6 +346,7 @@ export default {
   getCourseAudioSummary,
   getSharedAudioList,
   findSharedAudio,
+  getCourseFlags,
   getCourseContentCounts,
   getCourseStats
 };

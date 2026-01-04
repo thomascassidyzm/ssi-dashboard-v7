@@ -1,9 +1,9 @@
 # SSi Dashboard v7 - System Documentation
 
-**Last Updated:** 2025-12-04
-**Status:** Working ✅
+**Last Updated:** 2026-01-04
+**Status:** Working
 **Architecture:** Microservices + Supabase Audio Pipeline + S3 Storage
-**APML Version:** v11.0
+**APML Version:** v13
 **Pipeline Version:** v2.0 (Supabase-backed)
 
 ---
@@ -271,59 +271,82 @@ SUPABASE_URL=https://xxxxx.supabase.co
 SUPABASE_SERVICE_KEY=sb_secret_xxxxx
 ```
 
-### Database Schema
+### Database Schema (v13)
 
 ```
 Tables:
-├── voices              # TTS and human voice registry
-│   ├── id              # e.g., "azure_es_ES_female"
-│   ├── provider        # azure, elevenlabs, human
-│   ├── language        # ISO 639-3 code
-│   └── config          # Provider-specific settings
+├── courses                # Course metadata with voice configuration
+│   ├── code               # PRIMARY KEY - e.g., "spa_for_eng"
+│   ├── display_name       # Human-readable name
+│   ├── known_lang         # ISO 639-3 code (e.g., "eng")
+│   ├── target_lang        # ISO 639-3 code (e.g., "spa")
+│   ├── voice_config       # JSONB - voice assignments per role
+│   ├── course_type        # "official" or "community"
+│   ├── status             # "draft", "beta", "released"
+│   └── created_at         # Timestamp
 │
-├── audio_samples       # Master Audio Registry (MAR)
-│   ├── uuid            # Deterministic: hash(voice|text|lang|role|cadence)
-│   ├── text            # Normalized text
-│   ├── language        # ISO 639-3 code
-│   ├── role            # target1, target2, source, presentation
-│   ├── voice_id        # FK to voices
-│   ├── s3_key          # Path in S3 bucket
-│   ├── duration_ms     # Audio duration
-│   └── created_at      # Timestamp
+├── course_audio           # Audio owned by courses (flat, no joins)
+│   ├── id                 # UUID
+│   ├── course_code        # FK to courses.code
+│   ├── text               # Original spoken text
+│   ├── text_normalized    # Lowercased/trimmed for matching
+│   ├── language           # ISO 639-3 code
+│   ├── role               # "known", "target1", "target2", "presentation"
+│   ├── voice_id           # e.g., "azure_es-ES-ElviraNeural"
+│   ├── origin             # "tts" (regenerable) or "human" (precious)
+│   ├── s3_key             # Path in S3 bucket ({uuid}.mp3)
+│   ├── duration_ms        # Audio duration
+│   └── created_at         # Timestamp
+│   UNIQUE(course_code, text_normalized, language, role)
 │
-├── course_audio_usage  # Which courses use which audio
-│   ├── course_code     # e.g., spa_for_eng
-│   ├── sample_uuid     # FK to audio_samples
-│   └── usage_count     # How many times in course
+├── shared_audio           # Audio shared across courses
+│   ├── id                 # UUID
+│   ├── text               # Spoken text
+│   ├── text_normalized    # Lowercased/trimmed
+│   ├── language           # ISO 639-3 code
+│   ├── audio_type         # "encouragement" or "instruction"
+│   ├── voice_id           # Voice identifier
+│   ├── origin             # "tts" or "human"
+│   ├── s3_key             # Path in S3 ({uuid}.mp3)
+│   └── created_at         # Timestamp
+│   UNIQUE(text_normalized, language, audio_type)
 │
-├── sample_flags        # QA workflow state
-│   ├── uuid            # FK to audio_samples
-│   ├── status          # pending, flagged, approved, etc.
-│   ├── notes           # Reviewer notes
-│   ├── flagged_by      # User email
-│   └── history         # Status change log
-│
-└── courses             # Course configuration
-    ├── code            # e.g., spa_for_eng
-    ├── target_lang     # ISO 639-3
-    ├── known_lang      # ISO 639-3
-    └── status          # draft, production, published
+└── sample_flags           # QA workflow state
+    ├── uuid               # FK to course_audio or shared_audio
+    ├── status             # pending, flagged, approved, etc.
+    ├── notes              # Reviewer notes
+    ├── flagged_by         # User email
+    └── history            # Status change log
+
+DEPRECATED (v12, removed in v13):
+├── texts                  # REMOVED - over-engineered indirection
+├── audio_files            # REMOVED - merged into course_audio
+├── audio_samples          # LEGACY - don't use, 145k duplicated records
+└── voices                 # REMOVED - replaced by course.voice_config JSONB
 ```
 
-### Key Queries
+### Key Queries (v13)
 
 **Check if audio exists:**
 ```sql
-SELECT uuid, s3_key FROM audio_samples
-WHERE text = $1 AND language = $2 AND role = $3 AND voice_id = $4;
+SELECT id, s3_key, voice_id, origin FROM course_audio
+WHERE course_code = $1
+  AND text_normalized = LOWER(TRIM($2))
+  AND language = $3
+  AND role = $4;
 ```
 
 **Get all audio for course manifest:**
 ```sql
-SELECT s.uuid, s.text, s.role, s.duration_ms
-FROM audio_samples s
-JOIN course_audio_usage u ON s.uuid = u.sample_uuid
-WHERE u.course_code = $1;
+SELECT id, text, role, duration_ms, s3_key, origin
+FROM course_audio
+WHERE course_code = $1;
+```
+
+**Get course voice configuration:**
+```sql
+SELECT voice_config FROM courses WHERE code = $1;
+-- Returns: {"known": "azure_en-GB-SoniaNeural", "target1": "azure_es-ES-ElviraNeural", ...}
 ```
 
 **Flag sample for regeneration:**

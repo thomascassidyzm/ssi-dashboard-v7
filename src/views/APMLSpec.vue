@@ -8,13 +8,13 @@
           <span>Back to Documentation</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v12.0.0 Specification
+          APML v13 Specification
         </h1>
         <p class="mt-2 text-slate-400">
-          Registry-based audio architecture with database-assigned UUIDs
+          Course-owned audio architecture with flat storage
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: v12.0.0 | Dec 19, 2025
+          Build: v13.0.0 | Jan 3, 2026
         </p>
       </div>
     </header>
@@ -26,18 +26,18 @@
         <!-- Breaking Change Banner -->
         <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-8">
           <h3 class="text-amber-400 font-semibold flex items-center gap-2">
-            <span>&#9888;</span> v12 Breaking Change: Hash-Based UUIDs Removed
+            <span>&#9888;</span> v13 Breaking Change: Simplified Audio Ownership
           </h3>
           <p class="text-sm text-slate-300 mt-2">
-            Audio identity is now <strong>database-assigned</strong>, not hash-computed.
-            This eliminates the fragility of hash mismatches from parameter variations
-            (voice ID formats, language codes, text normalization).
+            Audio is now <strong>directly owned by courses</strong> (no texts/audio_files indirection).
+            The <code class="text-emerald-300">course_audio</code> table is flat - courses own their audio directly.
+            <code class="text-emerald-300">shared_audio</code> is only for encouragements/instructions.
           </p>
         </div>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">The 12 Directions</h2>
-          <p class="text-slate-300 mb-4">APML v12 is guided by these architectural principles:</p>
+          <p class="text-slate-300 mb-4">APML v13 is guided by these architectural principles:</p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
@@ -94,87 +94,101 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Audio Registry Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>Core Principle:</strong> Text exists. Audio is a rendering of text with a specific voice.</p>
+            <p><strong>Core Principle:</strong> Courses own their audio. Simple is better.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4 font-mono text-xs">
               <pre class="text-slate-300">
 ┌─────────────────────────────────────────────────────────────────┐
-│                     CONTENT LIBRARY                              │
-│                                                                  │
-│  texts ─────────────── audio_files ─────────────── S3           │
-│  (what to say)         (renderings)                (bytes)       │
-│                                                                  │
-│         ↑                    ↑                                   │
-│         └────── courses reference what they need ────────┘       │
+│                     SIMPLE OWNERSHIP                            │
+│                                                                 │
+│  courses ──────────── course_audio ──────────── S3             │
+│  (voice_config)       (text, role, s3_key)      (bytes)        │
+│                                                                 │
+│  shared_audio ─────────────────────────────────── S3           │
+│  (encouragements, instructions)                  (bytes)        │
 └─────────────────────────────────────────────────────────────────┘</pre>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Database Schema (v12)</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Database Schema (v13)</h3>
             <div class="space-y-3 mt-4">
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">texts</h4>
+                <h4 class="font-semibold text-emerald-300">courses</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  All unique text units across all courses<br/>
-                  <code class="text-xs">id (UUID) | content | language | content_normalized</code><br/>
-                  <span class="text-xs text-amber-400">UNIQUE(content_normalized, language)</span>
-                </p>
-              </div>
-              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">audio_files</h4>
-                <p class="text-sm text-slate-400 mt-1">
-                  Audio renderings - each is a specific voice speaking specific text<br/>
-                  <code class="text-xs">id (UUID) | text_id → texts | voice_id → voices | cadence | s3_key</code><br/>
-                  <span class="text-xs text-amber-400">UNIQUE(text_id, voice_id, cadence)</span>
+                  Course metadata with voice configuration<br/>
+                  <code class="text-xs">code (PK) | display_name | known_lang | target_lang | voice_config (JSONB)</code><br/>
+                  <span class="text-xs text-amber-400">PRIMARY KEY(code)</span>
                 </p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
                 <h4 class="font-semibold text-emerald-300">course_audio</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  Course-specific usage of audio (role is context, not identity)<br/>
-                  <code class="text-xs">id | course_code | audio_id → audio_files | role | context</code><br/>
-                  <span class="text-xs text-amber-400">UNIQUE(course_code, audio_id, role, context)</span>
+                  Audio owned by courses (flat, no joins)<br/>
+                  <code class="text-xs">id (UUID) | course_code | text | language | role | voice_id | origin | s3_key</code><br/>
+                  <span class="text-xs text-amber-400">UNIQUE(course_code, text_normalized, language, role)</span>
+                </p>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">shared_audio</h4>
+                <p class="text-sm text-slate-400 mt-1">
+                  Shared content (encouragements, instructions only)<br/>
+                  <code class="text-xs">id (UUID) | text | language | audio_type | voice_id | origin | s3_key</code><br/>
+                  <span class="text-xs text-amber-400">UNIQUE(text_normalized, language, audio_type)</span>
                 </p>
               </div>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">v11 vs v12 Comparison</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">v12 vs v13 Comparison</h3>
             <div class="overflow-x-auto">
               <table class="w-full text-sm border border-slate-600">
                 <thead class="bg-slate-800">
                   <tr>
                     <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Aspect</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-red-300">v11 (Hash-based)</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">v12 (Registry-based)</th>
+                    <th class="border border-slate-600 px-3 py-2 text-left text-red-300">v12 (Join-based)</th>
+                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">v13 (Flat)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">UUID Generation</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">hash(voice:text:lang:role:cadence)</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">gen_random_uuid()</td>
+                    <td class="border border-slate-600 px-3 py-2">Tables</td>
+                    <td class="border border-slate-600 px-3 py-2 text-red-300">texts + audio_files + course_audio</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">course_audio + shared_audio</td>
                   </tr>
                   <tr>
                     <td class="border border-slate-600 px-3 py-2">Lookup</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">Compute hash, check S3</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Query database</td>
+                    <td class="border border-slate-600 px-3 py-2 text-red-300">JOIN across 3 tables</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Single table query</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Deduplication</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">Hash collision</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">UNIQUE constraints</td>
+                    <td class="border border-slate-600 px-3 py-2">Voice Config</td>
+                    <td class="border border-slate-600 px-3 py-2 text-red-300">voices table</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">courses.voice_config JSONB</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Debugging</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">Hash is opaque</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">SELECT * FROM texts WHERE...</td>
+                    <td class="border border-slate-600 px-3 py-2">S3 Storage</td>
+                    <td class="border border-slate-600 px-3 py-2 text-red-300">mastered/{uuid}.mp3</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">{uuid}.mp3 (flat)</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Cross-course sharing</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">Same hash (fragile)</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Same text_id (robust)</td>
+                    <td class="border border-slate-600 px-3 py-2">Origin Tracking</td>
+                    <td class="border border-slate-600 px-3 py-2 text-red-300">Inferred from voice</td>
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Explicit: tts/human</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Roles</h3>
+            <div class="space-y-2 mt-4">
+              <p class="text-sm"><strong class="text-emerald-300">known</strong> - Prompt in learner's known language</p>
+              <p class="text-sm"><strong class="text-emerald-300">target1</strong> - First target language voice</p>
+              <p class="text-sm"><strong class="text-emerald-300">target2</strong> - Second target language voice</p>
+              <p class="text-sm"><strong class="text-emerald-300">presentation</strong> - LEGO introduction narration</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Origin Values</h3>
+            <div class="space-y-2 mt-4">
+              <p class="text-sm"><strong class="text-emerald-300">tts</strong> - Generated via TTS API (regenerable)</p>
+              <p class="text-sm"><strong class="text-emerald-300">human</strong> - Recorded by human (precious, not regenerable)</p>
             </div>
           </div>
         </section>
@@ -219,31 +233,30 @@
                   </tr>
                   <tr class="bg-purple-900/20">
                     <td class="border border-slate-600 px-3 py-2 text-purple-400">8</td>
-                    <td class="border border-slate-600 px-3 py-2 text-purple-400">Audio Generation (v12)</td>
+                    <td class="border border-slate-600 px-3 py-2 text-purple-400">Audio Generation (v13)</td>
                     <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_practice_phrases</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">texts + audio_files + S3</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_audio + S3</td>
                   </tr>
                   <tr class="bg-amber-900/20">
                     <td class="border border-slate-600 px-3 py-2 text-amber-400">9</td>
                     <td class="border border-slate-600 px-3 py-2 text-amber-400">Manifest Compilation</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">audio_files (query)</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_audio (query)</td>
                     <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_manifest.json</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v12)</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v13)</h3>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4 font-mono text-xs">
               <pre class="text-slate-300">
-1. Extract audio needs from course_practice_phrases
-2. For each need: call find_or_create_audio()
-   → Returns audio_id + needs_generation flag
-3. Batch all needing generation (s3_key IS NULL)
-4. Generate TTS (Azure/ElevenLabs)
-5. Upload to S3: mastered/{audio_id}.mp3
-6. UPDATE audio_files SET s3_key = ... WHERE id = ...
-7. Link to course via course_audio table</pre>
+1. Get course voice_config from courses table
+2. Extract audio needs from course_practice_phrases
+3. Check what's missing: get_missing_audio() RPC
+4. Generate TTS for missing audio (Azure)
+5. Upload to S3: {uuid}.mp3 (flat storage)
+6. INSERT INTO course_audio (course_code, text, language, role, voice_id, origin, s3_key)
+7. Verify completeness: get_course_audio_summary() RPC</pre>
             </div>
           </div>
         </section>
@@ -273,9 +286,9 @@
               </p>
             </div>
             <div class="bg-slate-900/80 border border-purple-400/20 rounded p-4">
-              <h4 class="font-semibold text-purple-300">Supabase Tables (v12)</h4>
+              <h4 class="font-semibold text-purple-300">Supabase Tables (v13)</h4>
               <p class="text-sm text-slate-400 mt-1">
-                Audio registry: <code class="text-xs">texts</code>, <code class="text-xs">audio_files</code>, <code class="text-xs">course_audio</code><br/>
+                Audio registry: <code class="text-xs">courses</code>, <code class="text-xs">course_audio</code>, <code class="text-xs">shared_audio</code><br/>
                 Practice data: <code class="text-xs">course_practice_phrases</code>, <code class="text-xs">practice_cycles</code>
               </p>
             </div>

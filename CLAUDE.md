@@ -141,7 +141,7 @@ We are migrating from **manifest-first** to **database-first** architecture:
 
 ### Quick Facts
 - **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Audio Generation → Manifest Compilation (APML v11.0)
+- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Audio Generation → Manifest Compilation (APML v13)
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
@@ -215,7 +215,7 @@ Orchestration, automation, and processing services.
 ```
 services/
 ├── orchestration/       # Multi-agent coordination (Port 3456)
-├── phases/             # Phase servers (APML v11.0)
+├── phases/             # Phase servers (APML v13)
 │   ├── phase1-translation/       # Port 3457: Translation + LEGO Extraction
 │   ├── phase1-lego-extraction/   # Port 3458: Conflict Resolution (Phase 2)
 │   ├── phase3-basket-generation/ # Port 3459: Basket Generation (Phase 3)
@@ -274,14 +274,14 @@ If you're generating files, verify they're in gitignored directories.
 
 APML is our custom format for language learning content. Key concepts:
 
-### **Phase Outputs (APML v11.0)**
+### **Phase Outputs (APML v13)**
 - **Phase 1 (Translation + LEGO Extraction)**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
 - **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs with `new: true/false` flags (SSoT)
 - **Phase 3 (Basket Generation)**: `lego_baskets.json` - Practice baskets with LEGO Debut cycle
 - **Audio Generation (Script)**: Supabase `audio_samples` table + S3 `mastered/{uuid}.mp3` (Audio-first!)
 - **Manifest Compilation (Script)**: `course_manifest.json` - Compiled LAST, referencing existing audio UUIDs
 
-### **v11 Key Changes**
+### **v13 Key Changes**
 - **Audio-first**: Generate audio BEFORE manifest (not after)
 - **Manifest Pruning**: LEGOs with `new: false` don't get introduction_items (already introduced earlier)
 - **Deterministic UUID**: `hash(voice_id|text|lang|role|cadence)` ensures same phrase = same UUID
@@ -291,7 +291,7 @@ APML is our custom format for language learning content. Key concepts:
 - **A-type (Atomic)**: Single words (e.g., "want" / "quiero")
 - **M-type (Molecular)**: Multi-word phrases (e.g., "I want to" / "quiero")
 
-### **Basket Cycle Sequence (v11.0)**
+### **Basket Cycle Sequence (v13)**
 For M-type LEGOs, baskets follow this order:
 1. **Components** (is_component: true) - Building blocks
 2. **LEGO Debut** (is_debut: true) - The complete LEGO
@@ -692,7 +692,7 @@ Before starting work, verify:
 - [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `README.md`
 - [ ] **I've checked recent commits** (`git log --oneline -10`)
 - [ ] **I understand what changed recently** (cleanup? new tools?)
-- [ ] I understand the APML v11.0 pipeline (Phase 1 → Phase 2 → Phase 3 → Audio → Manifest)
+- [ ] I understand the APML v13 pipeline (Phase 1 → Phase 2 → Phase 3 → Audio → Manifest)
 - [ ] I know where to create files (NOT in root!)
 - [ ] I've checked `.gitignore` for file placement
 - [ ] I have access to `tools/` for shared utilities
@@ -742,5 +742,5 @@ You're doing well if:
 ---
 
 *Last updated: 2025-12-13*
-*APML: v11.0 | Pipeline: v2.0 (Supabase + Audio-first)*
+*APML: v13 | Pipeline: v2.0 (Supabase + Audio-first)*
 *Status: TRANSITION - Manifest-first → Database-first*

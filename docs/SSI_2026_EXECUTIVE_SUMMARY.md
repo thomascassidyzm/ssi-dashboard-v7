@@ -8,7 +8,7 @@
 
 ## The Opportunity
 
-SSi has proven its methodology with Welsh (largest online Welsh learning community, £30k/month revenue). With our automated APML v11.0 pipeline, we can now scale to 100 language pairs by Q4 2026 at sustainable costs.
+SSi has proven its methodology with Welsh (largest online Welsh learning community, £30k/month revenue). With our automated APML v13 pipeline, we can now scale to 100 language pairs by Q4 2026 at sustainable costs.
 
 ---
 
@@ -259,7 +259,7 @@ SSi becomes the platform of choice for language preservation and revitalization.
 ## Why This Will Work
 
 1. **Proven methodology:** Welsh success (largest online community) validates LEGO approach
-2. **Automated production:** APML v11.0 pipeline enables 25-30 courses/month at £1k budget
+2. **Automated production:** APML v13 pipeline enables 25-30 courses/month at £1k budget
 3. **Audio reuse economics:** 40% cost savings on language family variants
 4. **Unique positioning:** Only app offering any-to-any language learning (Spanish from French, etc.)
 5. **Mission-driven brand:** Language preservation resonates with users and media

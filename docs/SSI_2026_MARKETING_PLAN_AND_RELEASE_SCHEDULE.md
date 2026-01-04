@@ -48,10 +48,10 @@ Example: "Spanish for X speakers" family
 - **Complete language family (10 courses):** ~$23 TTS + 18% monthly Claude capacity
 
 **Technical Infrastructure:**
-- APML v11.0 pipeline (Translation → LEGO Extraction → Basket Generation → Audio → Manifest)
-- Supabase Master Audio Registry (MAR) for deduplication
-- Deterministic UUID system ensures cross-course audio reuse
-- S3 storage + CDN delivery
+- APML v13 pipeline (Translation → LEGO Extraction → Basket Generation → Audio → Manifest)
+- Supabase audio registry with flat course_audio table
+- Course-owned audio architecture for simplicity
+- S3 flat storage ({uuid}.mp3) + CDN delivery
 
 ### Course Size Strategy
 
