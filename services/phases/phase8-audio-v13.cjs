@@ -8,6 +8,8 @@
  * @port 3465
  */
 
+require('dotenv').config()
+
 const express = require('express')
 const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
@@ -22,7 +24,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const PORT = process.env.PORT || process.env.PHASE8_PORT || 3465
+const PORT = process.env.PHASE8_PORT || 3465  // Always use PHASE8_PORT, not generic PORT
 
 // =============================================================================
 // CLIENTS
@@ -49,7 +51,21 @@ app.get('/health', (req, res) => {
 // GET PLAN - What audio is missing?
 // =============================================================================
 
-app.get('/plan/:courseCode', async (req, res) => {
+// POST /plan - for production-api compatibility (takes courseCode in body)
+app.post('/plan', async (req, res) => {
+  const { courseCode } = req.body
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' })
+  }
+  // Redirect to GET handler
+  req.params = { courseCode }
+  return planHandler(req, res)
+})
+
+// GET /plan/:courseCode - direct access
+app.get('/plan/:courseCode', planHandler)
+
+async function planHandler(req, res) {
   try {
     const { courseCode } = req.params
 
@@ -75,7 +91,7 @@ app.get('/plan/:courseCode', async (req, res) => {
     // Get what phrases we need (from practice phrases)
     const { data: phrases, error: phrasesError } = await supabase
       .from('course_practice_phrases')
-      .select('known, target')
+      .select('known_text, target_text')
       .eq('course_code', courseCode)
 
     if (phrasesError) throw phrasesError
@@ -88,16 +104,16 @@ app.get('/plan/:courseCode', async (req, res) => {
 
     for (const phrase of phrases || []) {
       // Known language audio
-      const knownKey = `${phrase.known.toLowerCase().trim()}|${course.known_lang}|known`
+      const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
       if (!existingSet.has(knownKey)) {
-        needed.push({ text: phrase.known, language: course.known_lang, role: 'known' })
+        needed.push({ text: phrase.known_text, language: course.known_lang, role: 'known' })
       }
 
       // Target language audio (target1 and target2)
       for (const role of ['target1', 'target2']) {
-        const targetKey = `${phrase.target.toLowerCase().trim()}|${course.target_lang}|${role}`
+        const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
         if (!existingSet.has(targetKey)) {
-          needed.push({ text: phrase.target, language: course.target_lang, role })
+          needed.push({ text: phrase.target_text, language: course.target_lang, role })
         }
       }
     }
@@ -134,7 +150,7 @@ app.get('/plan/:courseCode', async (req, res) => {
     logger.error('Plan error:', error)
     res.status(500).json({ error: error.message })
   }
-})
+}
 
 // =============================================================================
 // GET INVENTORY - Audio summary for a course
@@ -328,6 +344,171 @@ app.post('/generate/:courseCode', async (req, res) => {
 
   } catch (error) {
     logger.error('Generate error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST REGENERATE-ROLE - Regenerate all audio for a specific role
+// =============================================================================
+
+app.post('/regenerate-role/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { role, dryRun = false, limit = 1000 } = req.body
+
+    if (!role) {
+      return res.status(400).json({ error: 'Role is required' })
+    }
+
+    // Validate role
+    const validRoles = ['known', 'target1', 'target2', 'presentation', 'encouragement', 'instruction']
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ error: `Invalid role: ${role}. Must be one of: ${validRoles.join(', ')}` })
+    }
+
+    // Get course with voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('*')
+      .eq('code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const voiceConfig = course.voice_config || {}
+
+    // Get the voice for this role
+    const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role]
+
+    // Get all audio for this role (do this before checking voice config for preview)
+    const { data: existingAudio, error: audioError } = await supabase
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, voice_id, s3_key')
+      .eq('course_code', courseCode)
+      .eq('role', role)
+      .limit(limit)
+
+    if (audioError) throw audioError
+
+    if (!existingAudio || existingAudio.length === 0) {
+      return res.json({
+        status: 'no_audio',
+        courseCode,
+        role,
+        message: `No audio found for role: ${role}`
+      })
+    }
+
+    // Determine language for this role
+    const language = role === 'known' || role === 'presentation' || role === 'encouragement' || role === 'instruction'
+      ? course.known_lang
+      : course.target_lang
+
+    if (dryRun) {
+      return res.json({
+        dryRun: true,
+        courseCode,
+        role,
+        voiceId: voiceId || null,
+        voiceConfigured: !!voiceId,
+        language,
+        count: existingAudio.length,
+        sample: existingAudio.slice(0, 5).map(a => ({
+          text: a.text.substring(0, 50),
+          currentVoice: a.voice_id
+        })),
+        message: voiceId ? null : `Configure voice for "${role}" role before regenerating`
+      })
+    }
+
+    // Check voice config for actual regeneration
+    if (!voiceId) {
+      return res.status(400).json({
+        error: `No voice configured for role: ${role}`,
+        voiceConfig,
+        audioCount: existingAudio.length
+      })
+    }
+
+    // Generate TTS audio for each item
+    const results = { success: 0, failed: 0, errors: [] }
+    const [provider, voiceName] = voiceId.split('_', 2)
+    const speed = role === 'known' ? 1.0 : 0.7
+
+    for (const item of existingAudio) {
+      try {
+        // Generate TTS audio
+        let audioBuffer
+        if (provider === 'azure') {
+          audioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+            subscriptionKey: process.env.AZURE_SPEECH_KEY,
+            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+            voiceName: voiceName,
+            speed
+          })
+        } else if (provider === 'elevenlabs') {
+          audioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+            apiKey: process.env.ELEVENLABS_API_KEY,
+            voiceId: voiceName,
+            speed
+          })
+        } else {
+          throw new Error(`Unknown TTS provider: ${provider}`)
+        }
+
+        // Generate new UUID for S3 key
+        const audioId = uuidv4()
+        const s3Key = `${audioId}.mp3`
+
+        // Upload to S3
+        await s3.send(new PutObjectCommand({
+          Bucket: S3_BUCKET,
+          Key: s3Key,
+          Body: audioBuffer,
+          ContentType: 'audio/mpeg'
+        }))
+
+        // Update course_audio record
+        const { error: updateError } = await supabase
+          .from('course_audio')
+          .update({
+            voice_id: voiceId,
+            origin: 'tts',
+            s3_key: s3Key,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', item.id)
+
+        if (updateError) throw updateError
+
+        results.success++
+        logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..."`)
+      } catch (err) {
+        results.failed++
+        results.errors.push({
+          text: item.text.substring(0, 50),
+          error: err.message
+        })
+        logger.error(`Failed to regenerate: ${role} - "${item.text.substring(0, 30)}...": ${err.message}`)
+      }
+    }
+
+    res.json({
+      status: 'completed',
+      courseCode,
+      role,
+      voiceId,
+      total: existingAudio.length,
+      success: results.success,
+      failed: results.failed,
+      errors: results.errors.slice(0, 10)
+    })
+
+  } catch (error) {
+    logger.error('Regenerate role error:', error)
     res.status(500).json({ error: error.message })
   }
 })

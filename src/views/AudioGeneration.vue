@@ -310,6 +310,67 @@
         </div>
       </div>
 
+      <!-- Regenerate by Role (v13) -->
+      <div v-if="selectedCourse" class="mb-6 bg-slate-800 border border-amber-500/30 rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-amber-400 mb-4">Regenerate Audio by Role</h2>
+        <p class="text-slate-400 mb-4">Regenerate all audio for a specific role using the configured voice. This will replace existing audio files.</p>
+
+        <div class="flex gap-4 items-end">
+          <div class="flex-1">
+            <label class="block text-sm text-slate-400 mb-2">Select Role</label>
+            <select
+              v-model="regenerateRole"
+              class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
+            >
+              <option value="">Select a role...</option>
+              <option value="presentation">Presentation (LEGO introductions)</option>
+              <option value="known">Known Language</option>
+              <option value="target1">Target Voice 1</option>
+              <option value="target2">Target Voice 2</option>
+              <option value="encouragement">Encouragement</option>
+              <option value="instruction">Instruction</option>
+            </select>
+          </div>
+
+          <button
+            @click="previewRegenerateRole"
+            :disabled="!regenerateRole || regeneratingRole"
+            class="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+          >
+            Preview
+          </button>
+
+          <button
+            @click="executeRegenerateRole"
+            :disabled="!regenerateRole || regeneratingRole"
+            class="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 text-white px-6 py-3 rounded transition-colors"
+          >
+            {{ regeneratingRole ? 'Regenerating...' : 'Regenerate' }}
+          </button>
+        </div>
+
+        <!-- Preview/Result -->
+        <div v-if="regeneratePreview" class="mt-4 bg-slate-900/50 rounded p-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-amber-400 font-semibold">{{ regeneratePreview.dryRun ? 'Preview' : 'Result' }}</span>
+            <span class="text-slate-400">{{ regeneratePreview.count || regeneratePreview.total }} items</span>
+          </div>
+          <div class="text-sm text-slate-300">
+            <div>Voice: <span class="font-mono text-amber-300">{{ regeneratePreview.voiceId }}</span></div>
+            <div>Language: <span class="font-mono">{{ regeneratePreview.language }}</span></div>
+          </div>
+          <div v-if="regeneratePreview.sample" class="mt-2">
+            <div class="text-xs text-slate-500 mb-1">Sample texts:</div>
+            <div v-for="(s, idx) in regeneratePreview.sample" :key="idx" class="text-xs text-slate-400 truncate">
+              {{ s.text }}...
+            </div>
+          </div>
+          <div v-if="regeneratePreview.status === 'completed'" class="mt-2 text-emerald-400">
+            ✓ Completed: {{ regeneratePreview.success }} success, {{ regeneratePreview.failed }} failed
+          </div>
+        </div>
+      </div>
+
       <!-- Generation Controls -->
       <div v-if="manifest" class="mb-6">
         <div class="flex gap-4">
@@ -482,6 +543,11 @@ const s3Status = ref(null)
 
 const generating = ref(false)
 const generationComplete = ref(false)
+
+// Regenerate by Role state
+const regenerateRole = ref('')
+const regeneratingRole = ref(false)
+const regeneratePreview = ref(null)
 
 const config = ref({
   ttsProvider: 'elevenlabs',
@@ -815,5 +881,100 @@ function resetGeneration() {
   selectedCourse.value = ''
   manifest.value = null
   s3Status.value = null
+}
+
+// Regenerate by Role functions
+async function previewRegenerateRole() {
+  if (!selectedCourse.value || !regenerateRole.value) return
+
+  regeneratingRole.value = true
+  regeneratePreview.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${selectedCourse.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        role: regenerateRole.value,
+        dryRun: true,
+        limit: 1000
+      })
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      throw new Error(errorData.error || 'Failed to preview regeneration')
+    }
+
+    const data = await response.json()
+    regeneratePreview.value = {
+      dryRun: true,
+      count: data.count,
+      voiceId: data.voiceId,
+      language: data.language,
+      sample: data.sample
+    }
+  } catch (error) {
+    console.error('Failed to preview regeneration:', error)
+    alert('Failed to preview: ' + error.message)
+  } finally {
+    regeneratingRole.value = false
+  }
+}
+
+async function executeRegenerateRole() {
+  if (!selectedCourse.value || !regenerateRole.value) return
+
+  const confirmed = confirm(
+    `This will regenerate all ${regenerateRole.value} audio for ${selectedCourse.value}.\n\n` +
+    `Existing audio files will be replaced.\n\n` +
+    `Continue?`
+  )
+  if (!confirmed) return
+
+  regeneratingRole.value = true
+  regeneratePreview.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${selectedCourse.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        role: regenerateRole.value,
+        dryRun: false,
+        limit: 1000
+      })
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      throw new Error(errorData.error || 'Failed to regenerate audio')
+    }
+
+    const data = await response.json()
+    regeneratePreview.value = {
+      dryRun: false,
+      status: 'completed',
+      total: data.total,
+      success: data.success,
+      failed: data.failed,
+      voiceId: data.voiceId,
+      language: data.language
+    }
+
+    // Refresh S3 status after regeneration
+    await checkS3Status()
+  } catch (error) {
+    console.error('Failed to regenerate audio:', error)
+    alert('Failed to regenerate: ' + error.message)
+  } finally {
+    regeneratingRole.value = false
+  }
 }
 </script>

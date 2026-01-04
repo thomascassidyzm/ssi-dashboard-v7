@@ -707,7 +707,19 @@ async function getSharedAudioList(language, audioType = null) {
 async function getCourseFlags(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  // First get all audio IDs for this course
+  // First check if there are ANY flags at all (fast check)
+  const { count: totalFlags, error: countError } = await supabase
+    .from('sample_flags')
+    .select('*', { count: 'exact', head: true })
+
+  if (countError) throw countError
+
+  // If no flags exist globally, return empty early
+  if (!totalFlags || totalFlags === 0) {
+    return []
+  }
+
+  // Get all audio IDs for this course (only if flags exist)
   const { data: audioData, error: audioError } = await supabase
     .from('course_audio')
     .select('id')
@@ -719,17 +731,23 @@ async function getCourseFlags(courseCode) {
     return []
   }
 
+  // Batch the audio IDs to avoid 414 errors (max ~500 per batch)
+  const BATCH_SIZE = 500
   const audioIds = audioData.map(a => a.id)
+  const allFlags = []
 
-  // Get flags for those audio IDs
-  const { data: flagsData, error: flagsError } = await supabase
-    .from('sample_flags')
-    .select('*')
-    .in('audio_uuid', audioIds)
+  for (let i = 0; i < audioIds.length; i += BATCH_SIZE) {
+    const batchIds = audioIds.slice(i, i + BATCH_SIZE)
+    const { data: flagsData, error: flagsError } = await supabase
+      .from('sample_flags')
+      .select('*')
+      .in('audio_uuid', batchIds)
 
-  if (flagsError) throw flagsError
+    if (flagsError) throw flagsError
+    if (flagsData) allFlags.push(...flagsData)
+  }
 
-  return flagsData || []
+  return allFlags
 }
 
 /**

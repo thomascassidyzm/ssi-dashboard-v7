@@ -1,12 +1,12 @@
 # APML: Audio Registry Architecture
-# Version: 13.0.0 (2026-01-03)
+# Version: 13.1.0 (2026-01-04)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
   purpose: "Simple, course-centric audio ownership with shared audio for reusables"
-  version: "13.0.0"
+  version: "13.1.0"
 
   ## ==========================================================================
   ## BREAKING CHANGE FROM v12
@@ -90,7 +90,7 @@ architecture AudioRegistry:
   ## ==========================================================================
 
   schema:
-    version: "13.0.0"
+    version: "13.1.0"
     database: "supabase"
     compiler_target: "postgresql"
 
@@ -197,13 +197,15 @@ architecture AudioRegistry:
         role:
           type: "TEXT"
           nullable: false
-          check: "role IN ('known', 'target1', 'target2', 'presentation')"
+          check: "role IN ('known', 'target1', 'target2', 'presentation', 'encouragement', 'instruction')"
           description: |
             Audio role in the learning cycle:
             - known: Prompt in learner's known language
             - target1: First target language voice
             - target2: Second target language voice
-            - presentation: LEGO introduction narration
+            - presentation: LEGO introduction narration (course-specific)
+            - encouragement: Motivational messages (from shared_audio)
+            - instruction: Meta-learning content (from shared_audio)
 
         voice_id:
           type: "TEXT"
@@ -359,6 +361,24 @@ architecture AudioRegistry:
         For Welsh courses: Often human-recorded, precious
         For TTS courses: Can be generated
 
+    encouragement:
+      description: "Motivational messages"
+      language: "Same as course.known_lang"
+      used_in: "Randomly during learning sessions"
+      example: "Your brain is the most complex object in the universe"
+      notes: |
+        Copied from shared_audio at course import time.
+        Shared across all courses with same known language.
+
+    instruction:
+      description: "Meta-learning content"
+      language: "Same as course.known_lang"
+      used_in: "Played in sequence during course"
+      example: "Your brain has 100 billion neurons..."
+      notes: |
+        Copied from shared_audio at course import time.
+        Longer instructional content about learning strategies.
+
   ## ==========================================================================
   ## ORIGIN (TTS vs HUMAN)
   ## ==========================================================================
@@ -380,6 +400,74 @@ architecture AudioRegistry:
         - "human_aran" (Aran from Welsh courses)
         - "human_catrin" (Catrin from Welsh courses)
       workflow: "Preserve at all costs, never overwrite"
+
+  ## ==========================================================================
+  ## SHARED AUDIO WORKFLOW
+  ## ==========================================================================
+
+  shared_audio_workflow:
+    purpose: |
+      shared_audio is a TEMPLATE table. Its records get COPIED to course_audio
+      when a course is imported. This keeps the learning app simple - it only
+      queries course_audio, never shared_audio.
+
+    terminology_mapping:
+      legacy_orderedEncouragements: "instruction"   # Played in sequence
+      legacy_pooledEncouragements: "encouragement"  # Randomly selected
+
+    how_it_works: |
+      ┌─────────────────────────────────────────────────────────────────────┐
+      │                    SHARED AUDIO WORKFLOW                            │
+      │                                                                     │
+      │  1. IMPORT SHARED AUDIO (once per known language)                   │
+      │     └─► shared_audio table (template)                               │
+      │         • 48 instructions (orderedEncouragements)                   │
+      │         • 26 encouragements (pooledEncouragements)                  │
+      │         • Each row has s3_key pointing to audio file                │
+      │                                                                     │
+      │  2. COPY TO COURSE (on course import)                               │
+      │     └─► course_audio table (per-course)                             │
+      │         • Same s3_key copied (not the file!)                        │
+      │         • Course now "owns" its copy of the reference               │
+      │                                                                     │
+      │  3. LEARNING APP QUERIES                                            │
+      │     └─► Only queries course_audio                                   │
+      │         • Simple: one table, no joins                               │
+      │         • All audio for a course in one place                       │
+      │                                                                     │
+      └─────────────────────────────────────────────────────────────────────┘
+
+    s3_sharing: |
+      Multiple course_audio rows can point to the SAME S3 file.
+      The s3_key is duplicated in the database, but there's only one MP3 in S3.
+
+      Example:
+        shared_audio (eng, instruction)     →  s3_key: "mastered/ABC123.mp3"
+        course_audio (cym_s_for_eng)        →  s3_key: "mastered/ABC123.mp3"  (copied)
+        course_audio (spa_for_eng)          →  s3_key: "mastered/ABC123.mp3"  (copied)
+        course_audio (ita_for_eng)          →  s3_key: "mastered/ABC123.mp3"  (copied)
+                                                        ↓
+                                               S3: ONE FILE (ABC123.mp3)
+
+    import_scripts:
+      import_shared_audio: |
+        node database/import-shared-audio.cjs <manifest.json>
+        - Reads orderedEncouragements → shared_audio (audio_type: instruction)
+        - Reads pooledEncouragements → shared_audio (audio_type: encouragement)
+        - One-time per known language (e.g., run once for 'eng')
+
+      copy_shared_to_course: |
+        node database/copy-shared-to-course.cjs <course_code>
+        - Copies shared_audio rows to course_audio for a specific course
+        - Maps audio_type → role (encouragement → encouragement, instruction → instruction)
+        - Skips if already exists (idempotent)
+
+    why_copy_not_join: |
+      We copy references instead of joining at query time because:
+      1. Learning app stays simple (one table)
+      2. Course can override shared audio if needed (course-specific version)
+      3. No runtime dependency on shared_audio table
+      4. Easier to reason about what audio a course has
 
   ## ==========================================================================
   ## VIEWS (for convenience)
@@ -458,7 +546,11 @@ architecture AudioRegistry:
     build_numbers: "Use updated_at timestamp"
 
 ## ============================================================================
-## GENERATED: 2026-01-03
-## APML v13.0.0 - Course-Owned Audio Architecture
+## GENERATED: 2026-01-04
+## APML v13.1.0 - Course-Owned Audio Architecture
 ## Supersedes: v12.0.0 (texts → audio_files → course_audio)
+## Changes in v13.1:
+##   - Added encouragement and instruction roles to course_audio
+##   - Documented shared_audio workflow (template → copy to course)
+##   - Mapped legacy terminology (orderedEncouragements, pooledEncouragements)
 ## ============================================================================

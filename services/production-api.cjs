@@ -1461,41 +1461,45 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
   try {
     const response = await axios.post(`${PHASE8_URL}/plan`, { courseCode })
     // Transform Phase 8 response for frontend
-    // Phase 8 returns: { plan: { total, phraseNeeds, introNeeds, existing, toGenerate, ... } }
-    const plan = response.data.plan || {}
-    const voices = response.data.voices || {}
+    // Phase 8 v13 returns data at root level (not nested under .plan)
+    const plan = response.data.plan || response.data || {}
+    const voices = response.data.voices || plan.course?.voiceConfig || {}
 
     // Calculate breakdown by role from samples if available
     const samples = plan.samples || []
+    const breakdownFromPlan = plan.breakdown || {}
     const breakdown = {
-      known: samples.filter(s => s.role === 'known').length,
-      target1: samples.filter(s => s.role === 'target1').length,
-      target2: samples.filter(s => s.role === 'target2').length,
+      known: breakdownFromPlan.known || samples.filter(s => s.role === 'known').length,
+      target1: breakdownFromPlan.target1 || samples.filter(s => s.role === 'target1').length,
+      target2: breakdownFromPlan.target2 || samples.filter(s => s.role === 'target2').length,
       introduction: plan.introNeeds || 0
     }
 
     // Estimate cost: ~$0.004 per TTS request (Azure average)
-    const toGenerate = plan.toGenerate || plan.total || 0
+    const toGenerate = plan.missing || plan.toGenerate || 0
     const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
+
+    // Total should be existing + missing, or totalPhrases * 3 (for known, target1, target2)
+    const total = (plan.existing || 0) + toGenerate
 
     res.json({
       success: true,
-      estimatedCost: `$${estimatedCostUSD}`,
+      estimatedCost: plan.estimatedCost || `$${estimatedCostUSD}`,
       estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
-      total: plan.total || 0,
+      total: total,
       existing: plan.existing || 0,
       missing: toGenerate,
-      phraseNeeds: plan.phraseNeeds || 0,
+      phraseNeeds: plan.totalPhrases || plan.phraseNeeds || 0,
       introNeeds: plan.introNeeds || 0,
       breakdown: [
-        { role: 'known', count: breakdown.known || Math.floor((plan.phraseNeeds || 0) / 3) },
-        { role: 'target1', count: breakdown.target1 || Math.floor((plan.phraseNeeds || 0) / 3) },
-        { role: 'target2', count: breakdown.target2 || Math.floor((plan.phraseNeeds || 0) / 3) },
+        { role: 'known', count: breakdown.known },
+        { role: 'target1', count: breakdown.target1 },
+        { role: 'target2', count: breakdown.target2 },
         { role: 'introduction', count: breakdown.introduction }
       ],
       assembly: response.data.assembly || null,
       voices: voices,
-      dataSource: response.data.dataSource || 'unknown'
+      dataSource: plan.course ? 'database' : 'unknown'
     })
   } catch (error) {
     logger.error(`Audio plan error for ${courseCode}:`, error.message)
@@ -1607,6 +1611,25 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       offset += pageSize
     }
 
+    // Also fetch LEGOs for presentation tracking (only new LEGOs need intros)
+    let legos = []
+    offset = 0
+
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('course_legos')
+        .select('lego_id, seed_number, lego_index, known_text, target_text, is_new')
+        .eq('course_code', courseCode)
+        .eq('is_new', true)
+        .range(offset, offset + pageSize - 1)
+
+      if (error) throw error
+      if (!page || page.length === 0) break
+      legos = legos.concat(page)
+      if (page.length < pageSize) break
+      offset += pageSize
+    }
+
     // Paginate existing audio (v13: course_audio is flat, no joins needed)
     let existingAudio = []
     offset = 0
@@ -1614,7 +1637,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     while (true) {
       const { data: page, error } = await supabase
         .from('course_audio')
-        .select('id, text, role, voice_id, s3_key')
+        .select('id, text, text_normalized, role, voice_id, s3_key')
         .eq('course_code', courseCode)
         .range(offset, offset + pageSize - 1)
 
@@ -1629,21 +1652,48 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     const existingByRole = {
       known: new Map(),  // text -> { audioId, voiceId, s3Key }
       target1: new Map(),
-      target2: new Map()
+      target2: new Map(),
+      presentation: new Map()  // For presentation, we match on embedded target text
     }
 
     // Also collect sample audio for each role (for voice matching)
     const samplesByRole = {
       known: null,
       target1: null,
-      target2: null
+      target2: null,
+      presentation: null
     }
 
     for (const ca of existingAudio) {
-      const text = ca.text
+      // Use text_normalized for matching (case-insensitive)
+      const normalizedText = ca.text_normalized || ca.text?.toLowerCase().trim()
       const role = ca.role
-      if (text && existingByRole[role]) {
-        existingByRole[role].set(text, {
+
+      // For presentation audio, extract the target word for matching
+      // Presentation text format: "The Spanish for 'X', is: ... 'target' ... 'target'"
+      if (role === 'presentation' && normalizedText) {
+        const matches = normalizedText.match(/'([^']+)'/g)
+        if (matches && matches.length >= 2) {
+          const targetWord = matches[matches.length - 1].replace(/'/g, '').toLowerCase().trim()
+          existingByRole.presentation.set(targetWord, {
+            audioId: ca.id,
+            voiceId: ca.voice_id,
+            s3Key: ca.s3_key,
+            fullText: ca.text
+          })
+          // Keep first audio as sample for voice matching
+          if (!samplesByRole.presentation) {
+            samplesByRole.presentation = {
+              text: ca.text,
+              audioId: ca.id,
+              voiceId: ca.voice_id,
+              s3Key: ca.s3_key
+            }
+          }
+        }
+      } else if (normalizedText && existingByRole[role]) {
+        // Standard roles: known, target1, target2
+        existingByRole[role].set(normalizedText, {
           audioId: ca.id,
           voiceId: ca.voice_id,
           s3Key: ca.s3_key
@@ -1651,7 +1701,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
         // Keep first audio as sample for voice matching
         if (!samplesByRole[role]) {
           samplesByRole[role] = {
-            text,
+            text: ca.text,
             audioId: ca.id,
             voiceId: ca.voice_id,
             s3Key: ca.s3_key
@@ -1664,37 +1714,57 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     const missingByRole = {
       known: [],
       target1: [],
-      target2: []
+      target2: [],
+      presentation: []
     }
     const seen = {
       known: new Set(),
       target1: new Set(),
-      target2: new Set()
+      target2: new Set(),
+      presentation: new Set()
     }
 
     for (const p of phrases) {
       const seedId = `S${String(p.seed_number).padStart(4, '0')}`
       const legoId = `${seedId}L${String(p.lego_index).padStart(2, '0')}`
 
-      // Check known
-      if (p.known_text && !existingByRole.known.has(p.known_text) && !seen.known.has(p.known_text)) {
-        seen.known.add(p.known_text)
+      // Normalize texts for comparison
+      const knownNorm = p.known_text?.toLowerCase().trim()
+      const targetNorm = p.target_text?.toLowerCase().trim()
+
+      // Check known (use normalized for matching)
+      if (knownNorm && !existingByRole.known.has(knownNorm) && !seen.known.has(knownNorm)) {
+        seen.known.add(knownNorm)
         missingByRole.known.push({ text: p.known_text, seedId, legoId })
       }
       // Check target1
-      if (p.target_text && !existingByRole.target1.has(p.target_text) && !seen.target1.has(p.target_text)) {
-        seen.target1.add(p.target_text)
+      if (targetNorm && !existingByRole.target1.has(targetNorm) && !seen.target1.has(targetNorm)) {
+        seen.target1.add(targetNorm)
         missingByRole.target1.push({ text: p.target_text, seedId, legoId })
       }
       // Check target2
-      if (p.target_text && !existingByRole.target2.has(p.target_text) && !seen.target2.has(p.target_text)) {
-        seen.target2.add(p.target_text)
+      if (targetNorm && !existingByRole.target2.has(targetNorm) && !seen.target2.has(targetNorm)) {
+        seen.target2.add(targetNorm)
         missingByRole.target2.push({ text: p.target_text, seedId, legoId })
       }
     }
 
+    // Check LEGOs for missing presentation audio (only new LEGOs need intros)
+    for (const lego of legos) {
+      const targetNorm = lego.target_text?.toLowerCase().trim()
+      if (targetNorm && !existingByRole.presentation.has(targetNorm) && !seen.presentation.has(targetNorm)) {
+        seen.presentation.add(targetNorm)
+        missingByRole.presentation.push({
+          text: lego.target_text,
+          knownText: lego.known_text,
+          seedId: `S${String(lego.seed_number).padStart(4, '0')}`,
+          legoId: lego.lego_id
+        })
+      }
+    }
+
     // Generate signed URLs for sample audio (v13: flat S3 storage)
-    for (const role of ['known', 'target1', 'target2']) {
+    for (const role of ['known', 'target1', 'target2', 'presentation']) {
       if (samplesByRole[role]) {
         try {
           const url = await s3Service.getAudioSignedUrl(samplesByRole[role].audioId, 3600, {
@@ -1707,17 +1777,19 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
-    const totalMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length
+    const totalMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length + missingByRole.presentation.length
 
     res.json({
       success: true,
       courseCode,
       totalMissing,
       totalPhrases: phrases.length,
+      totalLegos: legos.length,
       existingCounts: {
         known: existingByRole.known.size,
         target1: existingByRole.target1.size,
-        target2: existingByRole.target2.size
+        target2: existingByRole.target2.size,
+        presentation: existingByRole.presentation.size
       },
       missing: missingByRole,
       samples: samplesByRole  // Sample audio for each role for voice matching
