@@ -355,7 +355,7 @@ app.post('/generate/:courseCode', async (req, res) => {
 app.post('/regenerate-role/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { role, dryRun = false, limit = 1000 } = req.body
+    const { role, dryRun = false, limit = 1000, flaggedOnly = false } = req.body
 
     if (!role) {
       return res.status(400).json({ error: 'Role is required' })
@@ -383,22 +383,63 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Get the voice for this role
     const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role]
 
-    // Get all audio for this role (do this before checking voice config for preview)
-    const { data: existingAudio, error: audioError } = await supabase
-      .from('course_audio')
-      .select('id, text, text_normalized, language, role, voice_id, s3_key')
-      .eq('course_code', courseCode)
-      .eq('role', role)
-      .limit(limit)
+    // Get audio for this role - optionally filter by flagged status
+    let audioToRegenerate = []
 
-    if (audioError) throw audioError
+    if (flaggedOnly) {
+      // Get flagged audio IDs from user_feedback table
+      const { data: feedback, error: feedbackError } = await supabase
+        .from('user_feedback')
+        .select('audio_id')
+        .eq('course_code', courseCode)
 
-    if (!existingAudio || existingAudio.length === 0) {
+      if (feedbackError) throw feedbackError
+
+      const flaggedIds = [...new Set(feedback?.map(f => f.audio_id).filter(Boolean) || [])]
+
+      if (flaggedIds.length === 0) {
+        return res.json({
+          status: 'no_flagged',
+          courseCode,
+          role,
+          flaggedOnly: true,
+          message: `No flagged audio found for course`
+        })
+      }
+
+      // Get audio that matches both role AND is flagged
+      const { data: existingAudio, error: audioError } = await supabase
+        .from('course_audio')
+        .select('id, text, text_normalized, language, role, voice_id, s3_key')
+        .eq('course_code', courseCode)
+        .eq('role', role)
+        .in('id', flaggedIds)
+        .limit(limit)
+
+      if (audioError) throw audioError
+      audioToRegenerate = existingAudio || []
+    } else {
+      // Get all audio for this role
+      const { data: existingAudio, error: audioError } = await supabase
+        .from('course_audio')
+        .select('id, text, text_normalized, language, role, voice_id, s3_key')
+        .eq('course_code', courseCode)
+        .eq('role', role)
+        .limit(limit)
+
+      if (audioError) throw audioError
+      audioToRegenerate = existingAudio || []
+    }
+
+    if (audioToRegenerate.length === 0) {
       return res.json({
         status: 'no_audio',
         courseCode,
         role,
-        message: `No audio found for role: ${role}`
+        flaggedOnly,
+        message: flaggedOnly
+          ? `No flagged audio found for role: ${role}`
+          : `No audio found for role: ${role}`
       })
     }
 
@@ -412,11 +453,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         dryRun: true,
         courseCode,
         role,
+        flaggedOnly,
         voiceId: voiceId || null,
         voiceConfigured: !!voiceId,
         language,
-        count: existingAudio.length,
-        sample: existingAudio.slice(0, 5).map(a => ({
+        count: audioToRegenerate.length,
+        sample: audioToRegenerate.slice(0, 5).map(a => ({
           text: a.text.substring(0, 50),
           currentVoice: a.voice_id
         })),
@@ -429,7 +471,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       return res.status(400).json({
         error: `No voice configured for role: ${role}`,
         voiceConfig,
-        audioCount: existingAudio.length
+        audioCount: audioToRegenerate.length
       })
     }
 
@@ -438,7 +480,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const [provider, voiceName] = voiceId.split('_', 2)
     const speed = role === 'known' ? 1.0 : 0.7
 
-    for (const item of existingAudio) {
+    for (const item of audioToRegenerate) {
       try {
         // Generate TTS audio
         let audioBuffer

@@ -5056,15 +5056,15 @@ app.post('/api/phase8/regenerate', handleAudioRegenerate);  // Legacy
 
 /**
  * POST /api/audio/regenerate-role/:courseCode - Regenerate all audio for a specific role
- * Body: { role: 'presentation' | 'known' | 'target1' | 'target2', dryRun: boolean, limit: number }
+ * Body: { role, dryRun, limit, flaggedOnly }
  */
 async function handleAudioRegenerateRole(req, res) {
   try {
     const { courseCode } = req.params;
-    const { role, dryRun, limit } = req.body;
+    const { role, dryRun, limit, flaggedOnly } = req.body;
     const audioUrl = PHASE_SERVERS['audio'];
 
-    const response = await axios.post(`${audioUrl}/regenerate-role/${courseCode}`, { role, dryRun, limit });
+    const response = await axios.post(`${audioUrl}/regenerate-role/${courseCode}`, { role, dryRun, limit, flaggedOnly });
     res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {

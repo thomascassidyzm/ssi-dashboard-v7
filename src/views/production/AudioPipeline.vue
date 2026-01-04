@@ -74,10 +74,10 @@
         <div class="bg-slate-800/50 border border-amber-500/30 rounded-lg p-6">
           <h2 class="text-lg font-semibold text-amber-400 mb-2">Regenerate Audio by Role</h2>
           <p class="text-sm text-slate-400 mb-4">
-            Replace all audio for a role with new TTS generation using the configured voice.
+            Replace audio for a role using the configured voice.
           </p>
 
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-4 mb-4">
             <!-- Role Selector -->
             <select
               v-model="regenerateRole"
@@ -90,6 +90,18 @@
               <option value="presentation">Presentation</option>
             </select>
 
+            <!-- Flagged Only Toggle -->
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                v-model="flaggedOnly"
+                class="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500"
+              />
+              <span class="text-sm text-slate-300">Flagged only</span>
+            </label>
+          </div>
+
+          <div class="flex items-center gap-4">
             <!-- Preview -->
             <button
               @click="previewRegenerate"
@@ -105,7 +117,7 @@
               :disabled="!regenerateRole || regenerating || !voicesConfigured"
               class="px-4 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
             >
-              {{ regenerating ? 'Working...' : 'Regenerate' }}
+              {{ regenerating ? 'Working...' : flaggedOnly ? 'Regenerate Flagged' : 'Regenerate All' }}
             </button>
           </div>
 
@@ -115,6 +127,7 @@
               <div>
                 <div class="text-amber-400 font-medium mb-1">
                   {{ regenerateResult.dryRun ? 'Preview' : 'Complete' }}
+                  <span v-if="regenerateResult.flaggedOnly" class="text-xs ml-2 text-red-400">(flagged only)</span>
                 </div>
                 <div v-if="regenerateResult.voiceId" class="text-sm text-slate-300">
                   Voice: <span class="text-emerald-400 font-mono">{{ regenerateResult.voiceId }}</span>
@@ -196,6 +209,7 @@ const voiceConfig = ref<any>(null)
 const regenerateRole = ref('')
 const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
+const flaggedOnly = ref(false)
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
@@ -294,6 +308,7 @@ const previewRegenerate = async () => {
       body: JSON.stringify({
         role: regenerateRole.value,
         dryRun: true,
+        flaggedOnly: flaggedOnly.value,
         limit: 1000
       })
     })
@@ -304,6 +319,7 @@ const previewRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: true,
+        flaggedOnly: flaggedOnly.value,
         count: data.count,
         voiceId: data.voiceId,
         language: data.language,
@@ -320,8 +336,9 @@ const previewRegenerate = async () => {
 const executeRegenerate = async () => {
   if (!regenerateRole.value || !voicesConfigured.value) return
 
+  const scope = flaggedOnly.value ? 'flagged' : 'all'
   const confirmed = confirm(
-    `This will regenerate all ${regenerateRole.value} audio for ${courseCode.value}.\n\n` +
+    `This will regenerate ${scope} ${regenerateRole.value} audio for ${courseCode.value}.\n\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -340,6 +357,7 @@ const executeRegenerate = async () => {
       body: JSON.stringify({
         role: regenerateRole.value,
         dryRun: false,
+        flaggedOnly: flaggedOnly.value,
         limit: 1000
       })
     })
@@ -350,6 +368,7 @@ const executeRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: false,
+        flaggedOnly: flaggedOnly.value,
         status: 'completed',
         total: data.total,
         success: data.success,
