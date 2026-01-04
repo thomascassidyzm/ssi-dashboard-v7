@@ -289,11 +289,11 @@ async function saveVoiceConfig(courseCode, config) {
     const targetLang = parts[0] || 'unknown';
     const knownLang = parts[1] || 'unknown';
 
-    // Upsert to courses table with voice_config JSONB
+    // Upsert to courses table with voice_config JSONB (v13: courses.code is PK)
     const { data, error } = await supabase
       .from('courses')
       .upsert({
-        course_code: courseCode,
+        code: courseCode,
         known_lang: knownLang,
         target_lang: targetLang,
         voice_config: fullConfig,
@@ -303,7 +303,7 @@ async function saveVoiceConfig(courseCode, config) {
         target2_voice: fullConfig.voices?.target2?.voiceId || null,
         presentation_voice: fullConfig.voices?.presentation?.voiceId || null
       }, {
-        onConflict: 'course_code'
+        onConflict: 'code'
       })
       .select()
       .single();

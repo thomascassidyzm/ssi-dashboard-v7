@@ -1620,10 +1620,11 @@ app.get('/api/courses', async (req, res) => {
         console.warn('[Orchestrator] Supabase not initialized, falling back to S3');
         // Fall through to S3 logic below
       } else {
+        // v13: courses.code is PK
         const { data: dbCourses, error } = await supabase
           .from('courses')
-          .select('course_code, known_lang, target_lang, display_name, status')
-          .order('course_code');
+          .select('code, known_lang, target_lang, display_name, status')
+          .order('code');
 
         if (error) {
           console.error('[Orchestrator] Supabase query error:', error);
@@ -1635,7 +1636,8 @@ app.get('/api/courses', async (req, res) => {
         const contentStats = await getAllCourseContentStats();
 
         const courses = dbCourses.map(c => {
-          const stats = contentStats[c.course_code] || { seeds: 0, legos: 0, baskets: 0 };
+          // v13: courses.code is PK
+          const stats = contentStats[c.code] || { seeds: 0, legos: 0, baskets: 0 };
 
           // Compute phases_completed based on database content
           const phases = [];
@@ -1648,9 +1650,9 @@ app.get('/api/courses', async (req, res) => {
           }
 
           return {
-            code: c.course_code,
-            course_code: c.course_code,  // Include both for compatibility
-            name: c.display_name || c.course_code.replace(/_/g, ' ').replace(/for/g, '→'),
+            code: c.code,
+            course_code: c.code,  // Include both for compatibility
+            name: c.display_name || c.code.replace(/_/g, ' ').replace(/for/g, '→'),
             knownLang: c.known_lang,
             targetLang: c.target_lang,
             status: c.status,
@@ -2108,7 +2110,7 @@ app.post('/api/courses/create', async (req, res) => {
       JSON.stringify(metadata, null, 2)
     );
 
-    // Insert into Supabase courses table
+    // Insert into Supabase courses table (v13: courses.code is PK)
     const { supabase, isInitialized } = require('../supabase-client.cjs');
     let dbInserted = false;
 
@@ -2116,7 +2118,7 @@ app.post('/api/courses/create', async (req, res) => {
       const { error: dbError } = await supabase
         .from('courses')
         .insert({
-          course_code: courseCode,
+          code: courseCode,
           known_lang: sourceLanguage,
           target_lang: targetLanguage,
           display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
@@ -3751,20 +3753,21 @@ app.post('/api/courses/generate', async (req, res) => {
   }
 
   // Ensure course exists in Supabase database (upsert - create if not exists)
+  // v13: courses.code is PK
   try {
     const { supabase, isInitialized } = require('../supabase-client.cjs');
     if (isInitialized()) {
       const { error: dbError } = await supabase
         .from('courses')
         .upsert({
-          course_code: courseCode,
+          code: courseCode,
           known_lang: resolvedKnown,
           target_lang: resolvedTarget,
           display_name: `${resolvedTarget} for ${resolvedKnown} speakers`,
           status: 'draft',  // Valid enum: draft, published, archived
           updated_at: new Date().toISOString()
         }, {
-          onConflict: 'course_code'
+          onConflict: 'code'
         });
 
       if (dbError) {
