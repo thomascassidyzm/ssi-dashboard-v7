@@ -70,6 +70,74 @@
           </div>
         </div>
 
+        <!-- Regenerate by Role -->
+        <div class="bg-slate-800/50 border border-amber-500/30 rounded-lg p-6">
+          <h2 class="text-lg font-semibold text-amber-400 mb-3">Regenerate Audio by Role</h2>
+          <p class="text-sm text-slate-400 mb-4">
+            Regenerate all audio for a specific role using the configured voice. Existing audio will be replaced.
+          </p>
+
+          <div class="flex flex-wrap gap-4 items-end">
+            <div class="flex-1 min-w-48">
+              <label class="block text-sm text-slate-400 mb-2">Select Role</label>
+              <select
+                v-model="regenerateRole"
+                class="w-full bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
+              >
+                <option value="">Select a role...</option>
+                <option value="presentation">Presentation (LEGO introductions)</option>
+                <option value="known">Known Language</option>
+                <option value="target1">Target Voice 1</option>
+                <option value="target2">Target Voice 2</option>
+                <option value="encouragement">Encouragement</option>
+                <option value="instruction">Instruction</option>
+              </select>
+            </div>
+
+            <button
+              @click="previewRegenerate"
+              :disabled="!regenerateRole || regenerating"
+              class="px-5 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+            >
+              Preview
+            </button>
+
+            <button
+              @click="executeRegenerate"
+              :disabled="!regenerateRole || regenerating || !voicesConfigured"
+              class="px-5 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+            >
+              {{ regenerating ? 'Regenerating...' : 'Regenerate' }}
+            </button>
+          </div>
+
+          <!-- Preview/Result -->
+          <div v-if="regenerateResult" class="mt-4 bg-slate-900/50 rounded p-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-amber-400 font-semibold">
+                {{ regenerateResult.dryRun ? 'Preview' : 'Result' }}
+              </span>
+              <span class="text-slate-400">{{ regenerateResult.count || regenerateResult.total || 0 }} items</span>
+            </div>
+            <div class="text-sm text-slate-300 space-y-1">
+              <div v-if="regenerateResult.voiceId">Voice: <span class="font-mono text-amber-300">{{ regenerateResult.voiceId }}</span></div>
+              <div v-if="regenerateResult.language">Language: <span class="font-mono">{{ regenerateResult.language }}</span></div>
+            </div>
+            <div v-if="regenerateResult.sample?.length" class="mt-2">
+              <div class="text-xs text-slate-500 mb-1">Sample texts:</div>
+              <div v-for="(s, idx) in regenerateResult.sample.slice(0, 3)" :key="idx" class="text-xs text-slate-400 truncate">
+                {{ s.text }}
+              </div>
+            </div>
+            <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-emerald-400">
+              ✓ Completed: {{ regenerateResult.success }} success, {{ regenerateResult.failed }} failed
+            </div>
+            <div v-if="regenerateResult.error" class="mt-2 text-red-400">
+              ✗ Error: {{ regenerateResult.error }}
+            </div>
+          </div>
+        </div>
+
         <!-- Progress Dashboard -->
         <PipelineProgress
           :total="progressStats.total"
@@ -127,6 +195,13 @@ const statusFilter = ref<string>('all')
 const showVoiceConfig = ref(false)
 const voicesConfigured = ref(false)
 const voiceConfig = ref<any>(null)
+
+// Regenerate by role state
+const regenerateRole = ref('')
+const regenerating = ref(false)
+const regenerateResult = ref<any>(null)
+
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
 // Load data on mount
 onMounted(async () => {
@@ -204,5 +279,95 @@ const onVoiceConfigSaved = (config: any) => {
 
 const updateFilter = (filter: string) => {
   statusFilter.value = filter
+}
+
+// Regenerate by role functions
+const previewRegenerate = async () => {
+  if (!regenerateRole.value) return
+
+  regenerating.value = true
+  regenerateResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${courseCode.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        role: regenerateRole.value,
+        dryRun: true,
+        limit: 1000
+      })
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      regenerateResult.value = { error: data.error || 'Preview failed' }
+    } else {
+      regenerateResult.value = {
+        dryRun: true,
+        count: data.count,
+        voiceId: data.voiceId,
+        language: data.language,
+        sample: data.sample
+      }
+    }
+  } catch (err: any) {
+    regenerateResult.value = { error: err.message }
+  } finally {
+    regenerating.value = false
+  }
+}
+
+const executeRegenerate = async () => {
+  if (!regenerateRole.value || !voicesConfigured.value) return
+
+  const confirmed = confirm(
+    `This will regenerate all ${regenerateRole.value} audio for ${courseCode.value}.\n\n` +
+    `Existing audio files will be replaced.\n\n` +
+    `Continue?`
+  )
+  if (!confirmed) return
+
+  regenerating.value = true
+  regenerateResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${courseCode.value}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        role: regenerateRole.value,
+        dryRun: false,
+        limit: 1000
+      })
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      regenerateResult.value = { error: data.error || 'Regeneration failed' }
+    } else {
+      regenerateResult.value = {
+        dryRun: false,
+        status: 'completed',
+        total: data.total,
+        success: data.success,
+        failed: data.failed,
+        voiceId: data.voiceId,
+        language: data.language
+      }
+      // Reload pipeline stats
+      await productionStore.loadCourse(courseCode.value)
+    }
+  } catch (err: any) {
+    regenerateResult.value = { error: err.message }
+  } finally {
+    regenerating.value = false
+  }
 }
 </script>

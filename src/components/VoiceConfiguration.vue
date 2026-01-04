@@ -273,7 +273,8 @@ const speedOptions = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
 const roles = [
   { id: 'target1', name: 'Target 1', icon: '🎯', description: 'Primary target voice', lang: 'target' },
   { id: 'target2', name: 'Target 2', icon: '🎯', description: 'Secondary target voice', lang: 'target' },
-  { id: 'known', name: 'Known', icon: '🏠', description: 'Known language voice', lang: 'known' }
+  { id: 'known', name: 'Known', icon: '🏠', description: 'Known language voice', lang: 'known' },
+  { id: 'presentation', name: 'Presentation', icon: '🎬', description: 'LEGO introductions', lang: 'known' }
 ]
 
 // Sample sentences per language
@@ -652,11 +653,17 @@ onMounted(() => {
 /* Swim Lanes */
 .swim-lanes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .swim-lanes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
   .swim-lanes {
     grid-template-columns: 1fr;
   }

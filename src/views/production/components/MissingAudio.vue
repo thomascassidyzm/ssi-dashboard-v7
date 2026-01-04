@@ -44,7 +44,7 @@
       <!-- Content -->
       <div v-else class="space-y-6">
         <!-- Summary -->
-        <div class="grid grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-5 gap-4 text-center">
           <div class="bg-slate-700/50 rounded-lg p-3">
             <p class="text-2xl font-bold text-slate-100">{{ totalMissing }}</p>
             <p class="text-xs text-slate-400">Total Missing</p>
@@ -60,6 +60,10 @@
           <div class="bg-slate-700/50 rounded-lg p-3">
             <p class="text-2xl font-bold text-purple-400">{{ missingCounts.target2 }}</p>
             <p class="text-xs text-slate-400">Target 2</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-amber-400">{{ missingCounts.presentation }}</p>
+            <p class="text-xs text-slate-400">Presentation</p>
           </div>
         </div>
 
@@ -169,21 +173,24 @@ const selectedRole = ref('target1')
 const roles = [
   { id: 'known', label: 'Known' },
   { id: 'target1', label: 'Target 1' },
-  { id: 'target2', label: 'Target 2' }
+  { id: 'target2', label: 'Target 2' },
+  { id: 'presentation', label: 'Presentation' }
 ]
 
 const audioRefs = ref({})
 const isPlaying = ref({
   known: false,
   target1: false,
-  target2: false
+  target2: false,
+  presentation: false
 })
 
 const totalMissing = computed(() => data.value?.totalMissing || 0)
 const missingCounts = computed(() => ({
   known: data.value?.missing?.known?.length || 0,
   target1: data.value?.missing?.target1?.length || 0,
-  target2: data.value?.missing?.target2?.length || 0
+  target2: data.value?.missing?.target2?.length || 0,
+  presentation: data.value?.missing?.presentation?.length || 0
 }))
 const samples = computed(() => data.value?.samples || {})
 const missingItems = computed(() => data.value?.missing?.[selectedRole.value] || [])
