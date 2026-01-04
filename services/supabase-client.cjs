@@ -744,6 +744,45 @@ async function getCourseContentStats(courseCode) {
 }
 
 /**
+ * Get content stats for all courses
+ * Returns an object keyed by course code
+ *
+ * @returns {Promise<Object>} { courseCode: { seeds, legos, baskets }, ... }
+ */
+async function getAllCourseContentStats() {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get all courses first
+  const { data: courses, error: courseError } = await supabase
+    .from('courses')
+    .select('code')
+
+  if (courseError) throw courseError
+
+  const result = {}
+
+  // Get counts per course in parallel
+  await Promise.all((courses || []).map(async (course) => {
+    const courseCode = course.code
+
+    const [seedsResult, legosResult, audioResult] = await Promise.all([
+      supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+      supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+      supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
+    ])
+
+    result[courseCode] = {
+      seeds: seedsResult.count || 0,
+      legos: legosResult.count || 0,
+      baskets: legosResult.count || 0,  // 1 basket per lego
+      audio: audioResult.count || 0
+    }
+  }))
+
+  return result
+}
+
+/**
  * Get introductions for a course
  *
  * @param {string} courseCode
@@ -813,5 +852,6 @@ module.exports = {
 
   // Content stats
   getCourseContentStats,
+  getAllCourseContentStats,
   getIntroductionsByCourse
 }
