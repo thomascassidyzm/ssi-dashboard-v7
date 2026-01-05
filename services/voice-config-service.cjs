@@ -289,18 +289,14 @@ async function saveVoiceConfig(courseCode, config) {
     const targetLang = parts[0] || 'unknown';
     const knownLang = parts[1] || 'unknown';
 
-    // Upsert to courses table with voice_config JSONB (v13: courses.code is PK)
-    // All voice data stored in voice_config JSONB - no separate columns needed
+    // Update voice_config in courses table (course must already exist)
+    // Use UPDATE instead of UPSERT to avoid NOT NULL constraint issues
     const { data, error } = await supabase
       .from('courses')
-      .upsert({
-        code: courseCode,
-        known_lang: knownLang,
-        target_lang: targetLang,
+      .update({
         voice_config: fullConfig
-      }, {
-        onConflict: 'code'
       })
+      .eq('code', courseCode)
       .select()
       .single();
 
