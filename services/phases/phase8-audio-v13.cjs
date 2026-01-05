@@ -380,8 +380,10 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     const voiceConfig = course.voice_config || {}
 
-    // Get the voice for this role
-    const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role]
+    // Get the voice settings for this role
+    const voiceSettings = voiceConfig.voices?.[role] || {}
+    const voiceId = voiceSettings.voiceId || voiceConfig[role]
+    const voiceProvider = voiceSettings.provider || 'azure'  // Default to azure
 
     // Get audio for this role - optionally filter by flagged status
     let audioToRegenerate = []
@@ -477,28 +479,27 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     // Generate TTS audio for each item
     const results = { success: 0, failed: 0, errors: [] }
-    const [provider, voiceName] = voiceId.split('_', 2)
     const speed = role === 'known' ? 1.0 : 0.7
 
     for (const item of audioToRegenerate) {
       try {
-        // Generate TTS audio
+        // Generate TTS audio using provider from voice config
         let audioBuffer
-        if (provider === 'azure') {
+        if (voiceProvider === 'azure') {
           audioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-            voiceName: voiceName,
+            voiceName: voiceId,
             speed
           })
-        } else if (provider === 'elevenlabs') {
+        } else if (voiceProvider === 'elevenlabs') {
           audioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
             apiKey: process.env.ELEVENLABS_API_KEY,
-            voiceId: voiceName,
+            voiceId: voiceId,
             speed
           })
         } else {
-          throw new Error(`Unknown TTS provider: ${provider}`)
+          throw new Error(`Unknown TTS provider: ${voiceProvider}`)
         }
 
         // Generate new UUID for S3 key
@@ -543,7 +544,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       courseCode,
       role,
       voiceId,
-      total: existingAudio.length,
+      total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
       errors: results.errors.slice(0, 10)
