@@ -114,7 +114,7 @@
             <!-- Regenerate -->
             <button
               @click="executeRegenerate"
-              :disabled="!regenerateRole || regenerating || !voicesConfigured"
+              :disabled="!regenerateRole || regenerating"
               class="px-4 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
             >
               {{ regenerating ? 'Working...' : flaggedOnly ? 'Regenerate Flagged' : 'Regenerate All' }}
@@ -394,7 +394,7 @@ const previewRegenerate = async () => {
 }
 
 const executeRegenerate = async () => {
-  if (!regenerateRole.value || !voicesConfigured.value) return
+  if (!regenerateRole.value) return
 
   const scope = flaggedOnly.value ? 'flagged' : 'all'
   const confirmed = confirm(
