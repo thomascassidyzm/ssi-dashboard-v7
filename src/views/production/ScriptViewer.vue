@@ -473,6 +473,10 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
           known_audio_uuid: phrase.known_audio_uuid || null,
           target1_audio_uuid: phrase.target1_audio_uuid || null,
           target2_audio_uuid: phrase.target2_audio_uuid || null,
+          // S3 keys for v13 audio URLs
+          known_s3_key: phrase.known_s3_key || null,
+          target1_s3_key: phrase.target1_s3_key || null,
+          target2_s3_key: phrase.target2_s3_key || null,
           is_flagged: false,
           seed_id: seed.seed_id,
           cycle_index: phrase.position,

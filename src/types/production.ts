@@ -168,6 +168,11 @@ export interface PhraseRowData {
   target1_audio_uuid?: string;
   target2_audio_uuid?: string;
 
+  // S3 keys (v13 format - for direct URL construction)
+  known_s3_key?: string;
+  target1_s3_key?: string;
+  target2_s3_key?: string;
+
   // Flag data
   flag_status?: SampleStatus;
   is_flagged: boolean;
