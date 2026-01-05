@@ -520,8 +520,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           .update({
             voice_id: voiceId,
             origin: 'tts',
-            s3_key: s3Key,
-            updated_at: new Date().toISOString()
+            s3_key: s3Key
           })
           .eq('id', item.id)
 
