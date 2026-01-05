@@ -15,8 +15,12 @@ const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
+const fs = require('fs-extra')
+const path = require('path')
+const os = require('os')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
+const audioProcessor = require('../audio-processor.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 
@@ -40,11 +44,114 @@ const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 // =============================================================================
+// AUDIO MASTERING
+// =============================================================================
+
+/**
+ * Master audio: normalize loudness and extract duration
+ *
+ * @param {Buffer} audioBuffer - Raw audio from TTS
+ * @returns {Promise<{buffer: Buffer, durationMs: number}>} Mastered audio and duration
+ */
+async function masterAudio(audioBuffer) {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'audio-master-'))
+  const rawPath = path.join(tempDir, 'raw.mp3')
+  const masteredPath = path.join(tempDir, 'mastered.mp3')
+
+  try {
+    // Write raw audio to temp file
+    await fs.writeFile(rawPath, audioBuffer)
+
+    // Normalize to -16 LUFS (broadcast standard)
+    await audioProcessor.normalizeAudio(rawPath, masteredPath, -16.0)
+
+    // Extract duration
+    const metadata = await audioProcessor.getAudioMetadata(masteredPath)
+    const durationMs = Math.round(metadata.duration * 1000)
+
+    // Read mastered audio back
+    const masteredBuffer = await fs.readFile(masteredPath)
+
+    logger.debug(`Mastered audio: ${durationMs}ms, ${masteredBuffer.length} bytes`)
+
+    return { buffer: masteredBuffer, durationMs }
+  } finally {
+    // Cleanup temp directory
+    await fs.remove(tempDir)
+  }
+}
+
+// =============================================================================
+// GLOBAL PROGRESS STATE (for any audio generation)
+// =============================================================================
+
+const currentWork = {
+  active: false,
+  operation: null,      // 'generate' | 'regenerate-role' | 'regenerate-presentations'
+  courseCode: null,
+  role: null,
+  current: 0,
+  total: 0,
+  success: 0,
+  failed: 0,
+  startedAt: null,
+  lastItem: null,       // Last processed item (for display)
+  errors: []            // Recent errors
+}
+
+function startWork(operation, courseCode, total, role = null) {
+  currentWork.active = true
+  currentWork.operation = operation
+  currentWork.courseCode = courseCode
+  currentWork.role = role
+  currentWork.current = 0
+  currentWork.total = total
+  currentWork.success = 0
+  currentWork.failed = 0
+  currentWork.startedAt = new Date().toISOString()
+  currentWork.lastItem = null
+  currentWork.errors = []
+  logger.info(`[PROGRESS] Started ${operation} for ${courseCode}${role ? ` (${role})` : ''}: ${total} items`)
+}
+
+function updateWork(itemText, success = true, errorMsg = null) {
+  currentWork.current++
+  if (success) {
+    currentWork.success++
+  } else {
+    currentWork.failed++
+    if (errorMsg) {
+      currentWork.errors.push({ text: itemText?.substring(0, 50), error: errorMsg })
+      if (currentWork.errors.length > 10) currentWork.errors.shift() // Keep last 10
+    }
+  }
+  currentWork.lastItem = itemText?.substring(0, 40)
+
+  // Log progress every 10 items or on completion
+  if (currentWork.current % 10 === 0 || currentWork.current === currentWork.total) {
+    logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed)`)
+  }
+}
+
+function endWork() {
+  logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed`)
+  currentWork.active = false
+}
+
+// =============================================================================
 // HEALTH CHECK
 // =============================================================================
 
 app.get('/health', (req, res) => {
   res.json({ status: 'healthy', service: 'phase8-audio-v13', port: PORT })
+})
+
+// =============================================================================
+// STATUS ENDPOINT - Current work progress
+// =============================================================================
+
+app.get('/status', (req, res) => {
+  res.json({ ...currentWork })
 })
 
 // =============================================================================
@@ -262,6 +369,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Generate TTS audio for each item
     const results = { success: 0, failed: 0, errors: [] }
 
+    // Start progress tracking
+    startWork('generate', courseCode, uniqueNeeded.length)
+
     for (const item of uniqueNeeded) {
       try {
         // Determine TTS provider from voice config
@@ -272,16 +382,16 @@ app.post('/generate/:courseCode', async (req, res) => {
         const speed = item.role === 'known' ? 1.0 : 0.7
 
         // Generate TTS audio
-        let audioBuffer
+        let rawAudioBuffer
         if (provider === 'azure') {
-          audioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
             speed
           })
         } else if (provider === 'elevenlabs') {
-          audioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
@@ -290,19 +400,22 @@ app.post('/generate/:courseCode', async (req, res) => {
           throw new Error(`Unknown TTS provider: ${provider}`)
         }
 
-        // Generate UUID for S3 key
-        const audioId = uuidv4()
-        const s3Key = `${audioId}.mp3`
+        // Master audio: normalize loudness and extract duration
+        const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
 
-        // Upload to S3
+        // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
+        const audioId = uuidv4().toUpperCase()
+        const s3Key = `mastered/${audioId}.mp3`
+
+        // Upload mastered audio to S3
         await s3.send(new PutObjectCommand({
           Bucket: S3_BUCKET,
           Key: s3Key,
-          Body: audioBuffer,
+          Body: masteredBuffer,
           ContentType: 'audio/mpeg'
         }))
 
-        // Insert into course_audio
+        // Insert into course_audio with duration
         const { error: insertError } = await supabase
           .from('course_audio')
           .upsert({
@@ -313,7 +426,8 @@ app.post('/generate/:courseCode', async (req, res) => {
             role: item.role,
             voice_id: item.voiceId,
             origin: 'tts',
-            s3_key: s3Key
+            s3_key: s3Key,
+            duration_ms: durationMs
           }, {
             onConflict: 'course_code,text_normalized,language,role'
           })
@@ -321,6 +435,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         if (insertError) throw insertError
 
         results.success++
+        updateWork(item.text, true)
         logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       } catch (err) {
         results.failed++
@@ -329,9 +444,12 @@ app.post('/generate/:courseCode', async (req, res) => {
           role: item.role,
           error: err.message
         })
+        updateWork(item.text, false, err.message)
         logger.error(`Failed to generate: ${item.role} - "${item.text.substring(0, 30)}...": ${err.message}`)
       }
     }
+
+    endWork()
 
     res.json({
       status: 'completed',
@@ -481,19 +599,22 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const results = { success: 0, failed: 0, errors: [] }
     const speed = role === 'known' ? 1.0 : 0.7
 
+    // Start progress tracking
+    startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
+
     for (const item of audioToRegenerate) {
       try {
         // Generate TTS audio using provider from voice config
-        let audioBuffer
+        let rawAudioBuffer
         if (voiceProvider === 'azure') {
-          audioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceId,
             speed
           })
         } else if (voiceProvider === 'elevenlabs') {
-          audioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceId,
             speed
@@ -502,41 +623,49 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
         }
 
-        // Generate new UUID for S3 key
-        const audioId = uuidv4()
-        const s3Key = `${audioId}.mp3`
+        // Master audio: normalize loudness and extract duration
+        const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
 
-        // Upload to S3
+        // Generate new UUID for S3 key (UPPERCASE to match existing S3 convention)
+        const audioId = uuidv4().toUpperCase()
+        const s3Key = `mastered/${audioId}.mp3`
+
+        // Upload mastered audio to S3
         await s3.send(new PutObjectCommand({
           Bucket: S3_BUCKET,
           Key: s3Key,
-          Body: audioBuffer,
+          Body: masteredBuffer,
           ContentType: 'audio/mpeg'
         }))
 
-        // Update course_audio record
+        // Update course_audio record with duration
         const { error: updateError } = await supabase
           .from('course_audio')
           .update({
             voice_id: voiceId,
             origin: 'tts',
-            s3_key: s3Key
+            s3_key: s3Key,
+            duration_ms: durationMs
           })
           .eq('id', item.id)
 
         if (updateError) throw updateError
 
         results.success++
-        logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..."`)
+        updateWork(item.text, true)
+        logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
       } catch (err) {
         results.failed++
         results.errors.push({
           text: item.text.substring(0, 50),
           error: err.message
         })
+        updateWork(item.text, false, err.message)
         logger.error(`Failed to regenerate: ${role} - "${item.text.substring(0, 30)}...": ${err.message}`)
       }
     }
+
+    endWork()
 
     res.json({
       status: 'completed',
@@ -761,8 +890,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     for (const pres of presentations) {
       try {
-        // Generate placeholder s3_key (will be updated when audio is generated)
-        const placeholderUuid = uuidv4()
+        // Generate placeholder s3_key (UPPERCASE to match existing S3 convention)
+        const placeholderUuid = uuidv4().toUpperCase()
         const placeholderS3Key = `pending/${placeholderUuid}.mp3`
 
         // Upsert into course_audio and get the ID back
@@ -791,34 +920,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         updated++
         const presentationAudioId = audioData?.id
 
-        // Look up target1 and target2 audio for this LEGO's target text
-        const targetTextNorm = pres.target.toLowerCase().trim()
-
-        const { data: target1Audio } = await supabase
-          .from('course_audio')
-          .select('id')
-          .eq('course_code', courseCode)
-          .eq('text_normalized', targetTextNorm)
-          .eq('role', 'target1')
-          .single()
-
-        const { data: target2Audio } = await supabase
-          .from('course_audio')
-          .select('id')
-          .eq('course_code', courseCode)
-          .eq('text_normalized', targetTextNorm)
-          .eq('role', 'target2')
-          .single()
-
-        // Upsert into lego_introductions
+        // Upsert into lego_introductions (only presentation_audio_id needed)
+        // Target1/target2 audio derived from course_audio by LEGO's target_text at playback
         const { error: introError } = await supabase
           .from('lego_introductions')
           .upsert({
             lego_id: pres.lego_id,
             course_code: courseCode,
             presentation_audio_id: presentationAudioId,
-            target1_audio_id: target1Audio?.id || null,
-            target2_audio_id: target2Audio?.id || null,
             updated_at: new Date().toISOString()
           }, {
             onConflict: 'lego_id'

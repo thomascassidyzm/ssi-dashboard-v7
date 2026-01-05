@@ -33,6 +33,41 @@
 
       <!-- Pipeline View -->
       <div v-else class="space-y-6">
+        <!-- Active Audio Generation Progress -->
+        <div v-if="audioProgress.active" class="bg-slate-800/50 border border-emerald-500/50 rounded-lg p-6">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <div class="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent"></div>
+              <h2 class="text-lg font-semibold text-emerald-400">
+                {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Audio' }}
+              </h2>
+            </div>
+            <span class="text-sm text-slate-400">{{ audioProgress.courseCode }}</span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-700 rounded-full h-3 mb-3">
+            <div
+              class="bg-emerald-500 h-3 rounded-full transition-all duration-300"
+              :style="{ width: `${audioProgress.total > 0 ? (audioProgress.current / audioProgress.total * 100) : 0}%` }"
+            ></div>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex gap-4">
+              <span class="text-slate-300">
+                <span class="text-emerald-400 font-medium">{{ audioProgress.current }}</span> / {{ audioProgress.total }}
+              </span>
+              <span class="text-emerald-400">{{ audioProgress.success }} success</span>
+              <span v-if="audioProgress.failed > 0" class="text-red-400">{{ audioProgress.failed }} failed</span>
+            </div>
+            <span v-if="audioProgress.lastItem" class="text-slate-500 truncate max-w-xs">
+              {{ audioProgress.lastItem }}...
+            </span>
+          </div>
+        </div>
+
         <!-- Voice Configuration (Collapsible) -->
         <div class="bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden">
           <button
@@ -270,8 +305,39 @@ const flaggedOnly = ref(false)
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
 
+// Global audio progress state (from phase 8)
+const audioProgress = ref<any>({ active: false })
+let progressPollInterval: ReturnType<typeof setInterval> | null = null
+
 // API Base URL - use localStorage (set by EnvironmentSwitcher)
 const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3456'
+
+// Poll for audio generation progress
+const pollAudioProgress = async () => {
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/audio/status`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      audioProgress.value = await response.json()
+    }
+  } catch (err) {
+    // Silently fail - server might not be running
+  }
+}
+
+const startProgressPolling = () => {
+  if (progressPollInterval) return
+  pollAudioProgress() // Poll immediately
+  progressPollInterval = setInterval(pollAudioProgress, 1000) // Then every second
+}
+
+const stopProgressPolling = () => {
+  if (progressPollInterval) {
+    clearInterval(progressPollInterval)
+    progressPollInterval = null
+  }
+}
 
 // Load data on mount
 onMounted(async () => {
@@ -280,6 +346,8 @@ onMounted(async () => {
     error.value = null
     await productionStore.loadCourse(courseCode.value)
     await productionStore.connectWebSocket(courseCode.value)
+    // Start polling for audio progress
+    startProgressPolling()
   } catch (err) {
     console.error('Failed to load pipeline:', err)
     error.value = 'Failed to load pipeline data. Please try again.'
@@ -291,6 +359,7 @@ onMounted(async () => {
 // Cleanup on unmount
 onUnmounted(() => {
   productionStore.disconnectWebSocket()
+  stopProgressPolling()
 })
 
 // Computed properties

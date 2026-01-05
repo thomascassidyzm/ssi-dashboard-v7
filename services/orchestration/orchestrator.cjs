@@ -5076,6 +5076,23 @@ async function handleAudioRegenerateRole(req, res) {
 app.post('/api/audio/regenerate-role/:courseCode', handleAudioRegenerateRole);
 
 /**
+ * GET /api/audio/status - Get current audio generation progress
+ * Proxies to phase 8 audio server /status endpoint
+ */
+app.get('/api/audio/status', async (req, res) => {
+  try {
+    const audioUrl = PHASE_SERVERS['audio'];
+    const response = await axios.get(`${audioUrl}/status`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.json({ active: false, error: 'Audio server not running' });
+    }
+    res.json({ active: false, error: error.message });
+  }
+});
+
+/**
  * POST /api/audio/regenerate-presentations/:courseCode - Regenerate presentation text for a course
  * Body: { dryRun, regenerateAudio }
  */
