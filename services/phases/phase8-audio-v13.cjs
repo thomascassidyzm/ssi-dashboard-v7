@@ -761,6 +761,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     for (const pres of presentations) {
       try {
+        // Generate placeholder s3_key (will be updated when audio is generated)
+        const placeholderUuid = uuidv4()
+        const placeholderS3Key = `pending/${placeholderUuid}.mp3`
+
         // Upsert into course_audio and get the ID back
         const { data: audioData, error: upsertError } = await supabase
           .from('course_audio')
@@ -771,7 +775,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
             language: knownLang,
             role: 'presentation',
             voice_id: presentationVoiceId,
-            origin: 'tts'
+            origin: 'tts',
+            s3_key: placeholderS3Key
           }, {
             onConflict: 'course_code,text_normalized,language,role'
           })
