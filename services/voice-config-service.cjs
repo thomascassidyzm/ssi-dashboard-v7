@@ -420,6 +420,7 @@ async function getSamplePhrases(courseCode, count = 5) {
 
 /**
  * Validate voice configuration
+ * Only validates roles that have been configured (allows partial saves)
  *
  * @param {object} config - Voice configuration to validate
  * @returns {object} { valid: boolean, errors: string[] }
@@ -432,24 +433,23 @@ function validateVoiceConfig(config) {
     errors.push('Course code is required');
   }
 
-  // Check voice configurations (known = known language, target = target language)
-  const roles = ['target1', 'target2', 'known'];
+  // Check voice configurations - only validate roles that are being set
+  // (allows saving individual voices without requiring ALL voices)
+  const roles = ['target1', 'target2', 'known', 'presentation'];
   for (const role of roles) {
     const voice = config.voices?.[role];
-    if (!voice) {
-      errors.push(`Voice configuration for ${role} is missing`);
+
+    // Skip roles that aren't configured yet (allows partial saves)
+    if (!voice || !voice.voiceId) {
       continue;
     }
 
-    if (!voice.voiceId) {
-      errors.push(`Voice ID for ${role} is required`);
-    }
-
+    // If voiceId is set, provider should be set too
     if (!voice.provider) {
-      errors.push(`Provider for ${role} is required`);
+      errors.push(`Provider for ${role} is required when voice ID is set`);
     }
 
-    // Validate speed range
+    // Validate speed range if specified
     const speed = voice.settings?.speed;
     if (speed !== undefined && (speed < 0.25 || speed > 4.0)) {
       errors.push(`Speed for ${role} must be between 0.25 and 4.0`);
