@@ -249,19 +249,11 @@ const isLoading = ref(false);
 const audioElement = ref<HTMLAudioElement | null>(null);
 const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 
-// API Base URL - Vercel-aware
+// API Base URL - use localStorage (set by EnvironmentSwitcher)
 const getApiBaseUrl = (): string => {
   const storedUrl = localStorage.getItem('api_base_url');
   if (storedUrl) return storedUrl;
-
-  const isVercel = typeof window !== 'undefined' && (
-    window.location.hostname.includes('vercel.app') ||
-    window.location.hostname === 'popty.app' ||
-    window.location.hostname.endsWith('.popty.app')
-  );
-  if (isVercel) return '';
-
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470';
+  return 'http://localhost:3470';
 };
 
 // Computed Classes
