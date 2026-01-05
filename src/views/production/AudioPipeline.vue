@@ -147,11 +147,11 @@
           </div>
         </div>
 
-        <!-- Regenerate Presentation Text -->
+        <!-- Generate Presentation Text -->
         <div class="bg-slate-800/50 border border-purple-500/30 rounded-lg p-6">
-          <h2 class="text-lg font-semibold text-purple-400 mb-2">Regenerate Presentation Text</h2>
+          <h2 class="text-lg font-semibold text-purple-400 mb-2">Generate Presentation Text</h2>
           <p class="text-sm text-slate-400 mb-4">
-            Update presentation text using new simplified format (ends with "is:" - target words played separately).
+            Generate presentation text for all LEGOs (ends with "is:" - target words played separately by the app).
           </p>
 
           <div class="flex items-center gap-4">
@@ -270,7 +270,8 @@ const flaggedOnly = ref(false)
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+// API Base URL - use localStorage (set by EnvironmentSwitcher)
+const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3456'
 
 // Load data on mount
 onMounted(async () => {
