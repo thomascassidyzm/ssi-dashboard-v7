@@ -344,6 +344,16 @@ const getUuidForTrack = (track: AudioTrack): string | null => {
   }
 };
 
+// Get S3 key for a track (v13 format)
+const getS3KeyForTrack = (track: AudioTrack): string | null => {
+  switch (track) {
+    case 'known': return props.phrase.known_s3_key || null;
+    case 'target1': return props.phrase.target1_s3_key || null;
+    case 'target2': return props.phrase.target2_s3_key || null;
+    default: return null;
+  }
+};
+
 // Get status for a specific audio track
 const getAudioStatus = (track: AudioTrack): SampleStatus | null => {
   return audioStatuses.value[track];
@@ -369,7 +379,8 @@ const flagSingleAudio = (track: AudioTrack) => {
 // Play a single audio track
 const playSingleAudio = async (track: AudioTrack) => {
   const uuid = getUuidForTrack(track);
-  if (!uuid) return;
+  const s3Key = getS3KeyForTrack(track);
+  if (!uuid && !s3Key) return;
 
   // If same track is playing, stop it
   if (currentlyPlayingTrack.value === track) {
@@ -386,7 +397,11 @@ const playSingleAudio = async (track: AudioTrack) => {
   currentlyPlayingTrack.value = track;
 
   try {
-    await playAudioAndWait(`${S3_AUDIO_BASE}/${uuid.toUpperCase()}.mp3`);
+    // Use s3_key if available (v13), otherwise fall back to legacy UUID format
+    const audioUrl = s3Key
+      ? `${S3_AUDIO_BASE}/${s3Key}`
+      : `${S3_AUDIO_BASE}/mastered/${uuid!.toUpperCase()}.mp3`;
+    await playAudioAndWait(audioUrl);
   } catch (err) {
     console.error('Error playing audio:', err);
   } finally {
@@ -394,8 +409,8 @@ const playSingleAudio = async (track: AudioTrack) => {
   }
 };
 
-// S3 audio base URL (same as learning app)
-const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered';
+// S3 audio base URL
+const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com';
 
 // Playback state for QA sequence
 let playbackAborted = false;
@@ -465,10 +480,13 @@ const playTargetAudio = async () => {
     const apiBaseUrl = getApiBaseUrl();
     const courseCode = props.courseCode;
 
-    // Use pre-loaded UUIDs from script-view if available, otherwise fetch from API
+    // Use pre-loaded UUIDs and S3 keys from script-view if available
     let knownUuid = props.phrase.known_audio_uuid || null;
     let target1Uuid = props.phrase.target1_audio_uuid || null;
     let target2Uuid = props.phrase.target2_audio_uuid || null;
+    let knownS3Key = props.phrase.known_s3_key || null;
+    let target1S3Key = props.phrase.target1_s3_key || null;
+    let target2S3Key = props.phrase.target2_s3_key || null;
 
     // If UUIDs not pre-loaded, fetch them (fallback for backward compatibility)
     if (!knownUuid && !target1Uuid && !target2Uuid && courseCode) {
@@ -484,25 +502,35 @@ const playTargetAudio = async () => {
 
     isLoading.value = false;
 
+    // Helper to build audio URL (v13 s3_key or legacy format)
+    const buildAudioUrl = (s3Key: string | null, uuid: string | null): string | null => {
+      if (s3Key) return `${S3_AUDIO_BASE}/${s3Key}`;
+      if (uuid) return `${S3_AUDIO_BASE}/mastered/${uuid.toUpperCase()}.mp3`;
+      return null;
+    };
+
     // Play Known audio
-    if (knownUuid && !playbackAborted) {
-      await playAudioAndWait(`${S3_AUDIO_BASE}/${knownUuid.toUpperCase()}.mp3`);
+    const knownUrl = buildAudioUrl(knownS3Key, knownUuid);
+    if (knownUrl && !playbackAborted) {
+      await playAudioAndWait(knownUrl);
     }
 
     // Pause after known
     if (!playbackAborted) await wait(QA_PAUSE_AFTER_KNOWN_MS);
 
     // Play Target1 (female voice)
-    if (target1Uuid && !playbackAborted) {
-      await playAudioAndWait(`${S3_AUDIO_BASE}/${target1Uuid.toUpperCase()}.mp3`);
+    const target1Url = buildAudioUrl(target1S3Key, target1Uuid);
+    if (target1Url && !playbackAborted) {
+      await playAudioAndWait(target1Url);
     }
 
     // Pause between targets
     if (!playbackAborted) await wait(QA_PAUSE_BETWEEN_TARGETS_MS);
 
     // Play Target2 (male voice)
-    if (target2Uuid && !playbackAborted) {
-      await playAudioAndWait(`${S3_AUDIO_BASE}/${target2Uuid.toUpperCase()}.mp3`);
+    const target2Url = buildAudioUrl(target2S3Key, target2Uuid);
+    if (target2Url && !playbackAborted) {
+      await playAudioAndWait(target2Url);
     }
 
   } catch (err) {

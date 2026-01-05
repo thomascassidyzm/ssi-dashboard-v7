@@ -705,12 +705,23 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     // Generate presentation text for each LEGO
+    // Short template (no "as in" context) for alternating in early seeds
+    const shortTemplate = template.replace(/, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+
     const presentations = []
     for (const lego of legos) {
-      const seedText = seedMap[lego.seed_number] || lego.known_text // Fallback to known if no seed
+      const seedText = seedMap[lego.seed_number] || lego.known_text
+
+      // Parse lego_id to get lego_index (e.g., "S0001L03" → 3)
+      const legoIndexMatch = lego.lego_id.match(/L(\d+)$/)
+      const legoIndex = legoIndexMatch ? parseInt(legoIndexMatch[1], 10) : 1
+
+      // For first 2 seeds, alternate: odd LEGOs get full template, even get short
+      const useShortTemplate = lego.seed_number <= 2 && legoIndex % 2 === 0
+      const activeTemplate = useShortTemplate ? shortTemplate : template
 
       // Fill in template
-      let presText = template
+      let presText = activeTemplate
         .replace('{target_lang_name}', targetLangName)
         .replace('{known}', lego.known_text)
         .replace('{seed}', seedText)
@@ -720,6 +731,9 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         known: lego.known_text,
         target: lego.target_text,
         seed: seedText,
+        seed_number: lego.seed_number,
+        lego_index: legoIndex,
+        uses_short_template: useShortTemplate,
         presentation_text: presText
       })
     }
@@ -730,9 +744,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         dryRun: true,
         courseCode,
         template,
+        shortTemplate,
         targetLangName,
         count: presentations.length,
-        sample: presentations.slice(0, 5)
+        sample: presentations.slice(0, 10)  // Show first 10 to see alternation
       })
     }
 

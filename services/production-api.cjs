@@ -2173,13 +2173,13 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
   // v13: Query course_audio directly (flat table with text_normalized)
   const { data: courseAudio } = await supabase
     .from('course_audio')
-    .select('id, text_normalized, role')
+    .select('id, text_normalized, role, s3_key')
     .eq('course_code', courseCode)
     .in('text_normalized', normalizedTexts)
 
   if (!courseAudio || courseAudio.length === 0) return audioMap
 
-  // Build final map: normalized_text -> { known?, target1?, target2? }
+  // Build final map: normalized_text -> { known?, target1?, target2?, known_s3_key?, etc }
   for (const ca of courseAudio) {
     const normalizedText = ca.text_normalized
     if (!normalizedText) continue
@@ -2189,13 +2189,16 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
     }
 
     const entry = audioMap.get(normalizedText)
-    // Map role to entry field (known, target1, target2)
+    // Map role to entry field (known, target1, target2) with both id and s3_key
     if (ca.role === 'known') {
       entry.known = ca.id
+      entry.known_s3_key = ca.s3_key
     } else if (ca.role === 'target1') {
       entry.target1 = ca.id
+      entry.target1_s3_key = ca.s3_key
     } else if (ca.role === 'target2') {
       entry.target2 = ca.id
+      entry.target2_s3_key = ca.s3_key
     }
   }
 
@@ -2330,7 +2333,11 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                 // Audio UUIDs (null if not found)
                 known_audio_uuid: knownAudio?.known || null,
                 target1_audio_uuid: targetAudio?.target1 || null,
-                target2_audio_uuid: targetAudio?.target2 || null
+                target2_audio_uuid: targetAudio?.target2 || null,
+                // S3 keys for direct URL construction
+                known_s3_key: knownAudio?.known_s3_key || null,
+                target1_s3_key: targetAudio?.target1_s3_key || null,
+                target2_s3_key: targetAudio?.target2_s3_key || null
               }
             })
 
