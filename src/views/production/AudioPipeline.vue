@@ -1,272 +1,400 @@
 <template>
   <div class="min-h-screen bg-slate-900 text-slate-100">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <button
-          @click="$router.back()"
-          class="mb-4 text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Back to Dashboard
-        </button>
-        <h1 class="text-3xl font-bold text-emerald-400">Audio Pipeline</h1>
-        <p class="mt-2 text-slate-400">{{ courseCode }}</p>
+    <header class="border-b border-slate-700/50">
+      <div class="max-w-7xl mx-auto px-6 py-5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-6">
+            <button
+              @click="$router.back()"
+              class="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 text-sm font-medium"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Back to Dashboard
+            </button>
+            <h1 class="text-2xl font-bold tracking-wider text-emerald-400">AUDIO PIPELINE</h1>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-slate-400 text-sm">Course:</span>
+            <span class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-md text-slate-200 font-medium">
+              {{ courseCode }}
+            </span>
+          </div>
+        </div>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-6 py-8">
       <!-- Loading State -->
-      <div v-if="loading" class="text-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto"></div>
-        <p class="mt-4 text-slate-400">Loading pipeline data...</p>
+      <div v-if="loading" class="flex flex-col items-center justify-center py-20">
+        <div class="relative">
+          <div class="w-16 h-16 border-4 border-slate-700 rounded-full"></div>
+          <div class="absolute top-0 left-0 w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <p class="mt-6 text-slate-400">Loading pipeline data...</p>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h2 class="text-xl font-bold text-red-400 mb-2">Error</h2>
-        <p class="text-slate-300">{{ error }}</p>
+      <div v-else-if="error" class="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-semibold text-red-400">Error</h2>
+        </div>
+        <p class="text-slate-300 ml-13">{{ error }}</p>
       </div>
 
       <!-- Pipeline View -->
-      <div v-else class="space-y-6">
-        <!-- Active Audio Generation Progress -->
-        <div v-if="audioProgress.active" class="bg-slate-800/50 border border-emerald-500/50 rounded-lg p-6">
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <div class="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent"></div>
-              <h2 class="text-lg font-semibold text-emerald-400">
-                {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Audio' }}
-              </h2>
-            </div>
-            <span class="text-sm text-slate-400">{{ audioProgress.courseCode }}</span>
-          </div>
+      <div v-else class="space-y-8">
 
-          <!-- Progress Bar -->
-          <div class="w-full bg-slate-700 rounded-full h-3 mb-3">
-            <div
-              class="bg-emerald-500 h-3 rounded-full transition-all duration-300"
-              :style="{ width: `${audioProgress.total > 0 ? (audioProgress.current / audioProgress.total * 100) : 0}%` }"
-            ></div>
-          </div>
-
-          <!-- Stats -->
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex gap-4">
-              <span class="text-slate-300">
-                <span class="text-emerald-400 font-medium">{{ audioProgress.current }}</span> / {{ audioProgress.total }}
-              </span>
-              <span class="text-emerald-400">{{ audioProgress.success }} success</span>
-              <span v-if="audioProgress.failed > 0" class="text-red-400">{{ audioProgress.failed }} failed</span>
+        <!-- LIVE PROGRESS (when active) -->
+        <div v-if="audioProgress.active" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
+          <div class="flex items-center gap-6">
+            <!-- Circular Progress -->
+            <div class="relative w-28 h-28 flex-shrink-0">
+              <svg class="w-28 h-28 transform -rotate-90">
+                <circle cx="56" cy="56" r="48" stroke="currentColor" stroke-width="8" fill="none" class="text-slate-700"/>
+                <circle
+                  cx="56" cy="56" r="48"
+                  stroke="currentColor"
+                  stroke-width="8"
+                  fill="none"
+                  class="text-emerald-500 transition-all duration-300"
+                  :stroke-dasharray="301.59"
+                  :stroke-dashoffset="301.59 - (audioProgress.total > 0 ? (audioProgress.current / audioProgress.total) * 301.59 : 0)"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-2xl font-bold text-emerald-400">
+                  {{ audioProgress.total > 0 ? Math.round((audioProgress.current / audioProgress.total) * 100) : 0 }}%
+                </span>
+              </div>
             </div>
-            <span v-if="audioProgress.lastItem" class="text-slate-500 truncate max-w-xs">
-              {{ audioProgress.lastItem }}...
+
+            <!-- Progress Details -->
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <h2 class="text-lg font-semibold text-slate-100">
+                  {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Audio' }}
+                </h2>
+                <span class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full font-medium">
+                  LIVE
+                </span>
+              </div>
+
+              <!-- Stats Row -->
+              <div class="grid grid-cols-4 gap-4">
+                <div>
+                  <div class="text-2xl font-bold text-slate-100">{{ audioProgress.current }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wide">Processed</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-slate-400">{{ audioProgress.total }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wide">Total</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-emerald-400">{{ audioProgress.success }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wide">Success</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold" :class="audioProgress.failed > 0 ? 'text-red-400' : 'text-slate-600'">{{ audioProgress.failed }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wide">Failed</div>
+                </div>
+              </div>
+
+              <!-- Current Item -->
+              <div v-if="audioProgress.lastItem" class="mt-4 text-sm text-slate-500 truncate">
+                Processing: <span class="text-slate-400">{{ audioProgress.lastItem }}...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOICE CONFIGURATION Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Voice Configuration</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <span v-if="voicesConfigured" class="px-2.5 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+              ● Configured
+            </span>
+            <span v-else class="px-2.5 py-1 text-xs bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
+              ● Setup Required
             </span>
           </div>
-        </div>
 
-        <!-- Voice Configuration (Collapsible) -->
-        <div class="bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden">
-          <button
-            @click="showVoiceConfig = !showVoiceConfig"
-            class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
-          >
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-              </svg>
-              <span class="text-lg font-semibold text-slate-100">Voice Configuration</span>
-              <span v-if="voicesConfigured" class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded">
-                Configured
-              </span>
-              <span v-else class="px-2 py-0.5 text-xs bg-amber-500/20 text-amber-400 rounded">
-                Setup Required
-              </span>
-            </div>
-            <svg
-              class="w-5 h-5 text-slate-400 transition-transform"
-              :class="{ 'rotate-180': showVoiceConfig }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl overflow-hidden">
+            <button
+              @click="showVoiceConfig = !showVoiceConfig"
+              class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/20 transition-colors"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div v-show="showVoiceConfig" class="border-t border-slate-700">
-            <VoiceConfiguration
-              :course-code="courseCode"
-              @config-saved="onVoiceConfigSaved"
-              @config-loaded="onVoiceConfigLoaded"
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <div class="font-medium text-slate-100">Configure Voices</div>
+                  <div class="text-sm text-slate-400">Select TTS voices for each audio role</div>
+                </div>
+              </div>
+              <svg
+                class="w-5 h-5 text-slate-400 transition-transform duration-200"
+                :class="{ 'rotate-180': showVoiceConfig }"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div v-show="showVoiceConfig" class="border-t border-slate-700/50">
+              <VoiceConfiguration
+                :course-code="courseCode"
+                @config-saved="onVoiceConfigSaved"
+                @config-loaded="onVoiceConfigLoaded"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- AUDIO GENERATION Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Audio Generation</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Regenerate by Role Card -->
+            <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-slate-100">Regenerate by Role</h3>
+                    <p class="text-sm text-slate-400">Replace audio for a specific role</p>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 text-xs bg-amber-500/10 text-amber-400 rounded border border-amber-500/20">
+                  TTS
+                </span>
+              </div>
+
+              <!-- Role Selector -->
+              <div class="space-y-3 mb-4">
+                <select
+                  v-model="regenerateRole"
+                  class="w-full bg-slate-900/50 text-slate-100 px-4 py-3 rounded-lg border border-slate-600/50 focus:border-amber-500/50 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-colors"
+                >
+                  <option value="">Select role...</option>
+                  <option value="target1">Target 1 (Primary voice)</option>
+                  <option value="target2">Target 2 (Secondary voice)</option>
+                  <option value="known">Known (Source language)</option>
+                  <option value="presentation">Presentation (Introductions)</option>
+                </select>
+
+                <label class="flex items-center gap-3 cursor-pointer group">
+                  <div class="relative">
+                    <input
+                      type="checkbox"
+                      v-model="flaggedOnly"
+                      class="peer sr-only"
+                    />
+                    <div class="w-5 h-5 rounded border-2 border-slate-600 peer-checked:border-amber-500 peer-checked:bg-amber-500 transition-colors flex items-center justify-center">
+                      <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <span class="text-sm text-slate-300 group-hover:text-slate-100 transition-colors">Flagged items only</span>
+                </label>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex gap-3">
+                <button
+                  @click="previewRegenerate"
+                  :disabled="!regenerateRole || regenerating"
+                  class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
+                >
+                  Preview
+                </button>
+                <button
+                  @click="executeRegenerate"
+                  :disabled="!regenerateRole || regenerating"
+                  class="flex-1 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+                >
+                  {{ regenerating ? 'Working...' : 'Regenerate' }}
+                </button>
+              </div>
+
+              <!-- Result -->
+              <div v-if="regenerateResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full" :class="regenerateResult.error ? 'bg-red-500' : regenerateResult.dryRun ? 'bg-amber-500' : 'bg-emerald-500'"></div>
+                    <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : 'text-emerald-400'">
+                      {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : 'Complete' }}
+                    </span>
+                    <span v-if="regenerateResult.flaggedOnly" class="text-xs text-red-400">(flagged)</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xl font-bold text-slate-100">{{ regenerateResult.count || regenerateResult.total || 0 }}</span>
+                    <span class="text-xs text-slate-500 ml-1">items</span>
+                  </div>
+                </div>
+                <div v-if="regenerateResult.voiceId" class="mt-2 text-xs text-slate-400">
+                  Voice: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ regenerateResult.voiceId }}</code>
+                </div>
+                <div v-if="regenerateResult.error" class="mt-2 text-sm text-red-400">{{ regenerateResult.error }}</div>
+                <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-sm text-emerald-400">
+                  ✓ {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
+                </div>
+              </div>
+            </div>
+
+            <!-- Generate Presentation Text Card -->
+            <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-slate-100">Presentation Text</h3>
+                    <p class="text-sm text-slate-400">Generate LEGO introduction scripts</p>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">
+                  TEXT
+                </span>
+              </div>
+
+              <p class="text-sm text-slate-400 mb-4">
+                Creates "The [language] for '[known]' is:" pattern for all LEGOs. Target words are played separately.
+              </p>
+
+              <!-- Action Buttons -->
+              <div class="flex gap-3">
+                <button
+                  @click="previewPresentations"
+                  :disabled="regeneratingPresentations"
+                  class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
+                >
+                  Preview
+                </button>
+                <button
+                  @click="executePresentations"
+                  :disabled="regeneratingPresentations"
+                  class="flex-1 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+                >
+                  {{ regeneratingPresentations ? 'Working...' : 'Generate' }}
+                </button>
+              </div>
+
+              <!-- Result -->
+              <div v-if="presentationsResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full" :class="presentationsResult.error ? 'bg-red-500' : presentationsResult.dryRun ? 'bg-purple-500' : 'bg-emerald-500'"></div>
+                    <span class="text-sm font-medium" :class="presentationsResult.error ? 'text-red-400' : presentationsResult.dryRun ? 'text-purple-400' : 'text-emerald-400'">
+                      {{ presentationsResult.error ? 'Error' : presentationsResult.dryRun ? 'Preview' : 'Complete' }}
+                    </span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xl font-bold text-slate-100">{{ presentationsResult.count || presentationsResult.total || 0 }}</span>
+                    <span class="text-xs text-slate-500 ml-1">LEGOs</span>
+                  </div>
+                </div>
+                <div v-if="presentationsResult.template" class="mt-2 text-xs text-slate-400">
+                  Template: <code class="text-purple-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ presentationsResult.template }}</code>
+                </div>
+                <div v-if="presentationsResult.sample" class="mt-3 space-y-1.5">
+                  <div v-for="(s, i) in presentationsResult.sample.slice(0, 2)" :key="i" class="text-xs bg-slate-800/50 p-2 rounded">
+                    <span class="text-amber-400">{{ s.known }}</span>
+                    <span class="text-slate-500 mx-1">→</span>
+                    <span class="text-slate-300">{{ s.presentation_text }}</span>
+                  </div>
+                </div>
+                <div v-if="presentationsResult.error" class="mt-2 text-sm text-red-400">{{ presentationsResult.error }}</div>
+                <div v-if="presentationsResult.updated" class="mt-2 text-sm text-emerald-400">
+                  ✓ {{ presentationsResult.updated }} updated
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PIPELINE STATUS Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pipeline Status</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+          </div>
+
+          <!-- Progress Dashboard -->
+          <PipelineProgress
+            :total="progressStats.total"
+            :generated="progressStats.generated"
+            :pending="progressStats.pending"
+            :failed="progressStats.failed"
+            :estimated-cost="estimatedCost"
+            :estimated-time="estimatedTime"
+          />
+        </section>
+
+        <!-- MISSING AUDIO Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Missing Audio</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+          </div>
+
+          <MissingAudio :course-code="courseCode" />
+        </section>
+
+        <!-- QUEUE Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Generation Queue</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
+          </div>
+
+          <QueueControls
+            :can-start="canStartGeneration"
+            :is-running="isGenerating"
+            :has-failed="hasFailed"
+            @start="startGeneration"
+            @cancel="cancelGeneration"
+            @retry="retryFailed"
+            @plan="showPlan"
+          />
+
+          <div class="mt-4">
+            <QueueList
+              :items="generationQueue"
+              :status-filter="statusFilter"
+              @update-filter="updateFilter"
             />
           </div>
-        </div>
+        </section>
 
-        <!-- Regenerate by Role -->
-        <div class="bg-slate-800/50 border border-amber-500/30 rounded-lg p-6">
-          <h2 class="text-lg font-semibold text-amber-400 mb-2">Regenerate Audio by Role</h2>
-          <p class="text-sm text-slate-400 mb-4">
-            Replace audio for a role using the configured voice.
-          </p>
-
-          <div class="flex items-center gap-4 mb-4">
-            <!-- Role Selector -->
-            <select
-              v-model="regenerateRole"
-              class="flex-1 bg-slate-700 text-slate-100 p-3 rounded border border-slate-600 focus:border-amber-500 focus:outline-none"
-            >
-              <option value="">Select role...</option>
-              <option value="target1">Target 1</option>
-              <option value="target2">Target 2</option>
-              <option value="known">Known</option>
-              <option value="presentation">Presentation</option>
-            </select>
-
-            <!-- Flagged Only Toggle -->
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                v-model="flaggedOnly"
-                class="w-4 h-4 rounded bg-slate-700 border-slate-600 text-amber-500 focus:ring-amber-500"
-              />
-              <span class="text-sm text-slate-300">Flagged only</span>
-            </label>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <!-- Preview -->
-            <button
-              @click="previewRegenerate"
-              :disabled="!regenerateRole || regenerating"
-              class="px-4 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
-            >
-              Preview
-            </button>
-
-            <!-- Regenerate -->
-            <button
-              @click="executeRegenerate"
-              :disabled="!regenerateRole || regenerating"
-              class="px-4 py-3 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
-            >
-              {{ regenerating ? 'Working...' : flaggedOnly ? 'Regenerate Flagged' : 'Regenerate All' }}
-            </button>
-          </div>
-
-          <!-- Preview Result -->
-          <div v-if="regenerateResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg">
-            <div class="flex justify-between items-start">
-              <div>
-                <div class="text-amber-400 font-medium mb-1">
-                  {{ regenerateResult.dryRun ? 'Preview' : 'Complete' }}
-                  <span v-if="regenerateResult.flaggedOnly" class="text-xs ml-2 text-red-400">(flagged only)</span>
-                </div>
-                <div v-if="regenerateResult.voiceId" class="text-sm text-slate-300">
-                  Voice: <span class="text-emerald-400 font-mono">{{ regenerateResult.voiceId }}</span>
-                </div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-slate-100">{{ regenerateResult.count || regenerateResult.total || 0 }}</div>
-                <div class="text-xs text-slate-400">items</div>
-              </div>
-            </div>
-            <div v-if="regenerateResult.error" class="mt-2 text-red-400 text-sm">
-              {{ regenerateResult.error }}
-            </div>
-            <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-emerald-400 text-sm">
-              ✓ {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
-            </div>
-          </div>
-        </div>
-
-        <!-- Generate Presentation Text -->
-        <div class="bg-slate-800/50 border border-purple-500/30 rounded-lg p-6">
-          <h2 class="text-lg font-semibold text-purple-400 mb-2">Generate Presentation Text</h2>
-          <p class="text-sm text-slate-400 mb-4">
-            Generate presentation text for all LEGOs (ends with "is:" - target words played separately by the app).
-          </p>
-
-          <div class="flex items-center gap-4">
-            <button
-              @click="previewPresentations"
-              :disabled="regeneratingPresentations"
-              class="px-4 py-3 bg-slate-600 hover:bg-slate-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
-            >
-              Preview
-            </button>
-
-            <button
-              @click="executePresentations"
-              :disabled="regeneratingPresentations"
-              class="px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors font-medium"
-            >
-              {{ regeneratingPresentations ? 'Working...' : 'Update Presentation Text' }}
-            </button>
-          </div>
-
-          <div v-if="presentationsResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg">
-            <div class="flex justify-between items-start">
-              <div>
-                <div class="text-purple-400 font-medium mb-1">
-                  {{ presentationsResult.dryRun ? 'Preview' : 'Complete' }}
-                </div>
-                <div v-if="presentationsResult.template" class="text-sm text-slate-300">
-                  Template: <span class="text-emerald-400 font-mono text-xs">{{ presentationsResult.template }}</span>
-                </div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-slate-100">{{ presentationsResult.count || presentationsResult.total || 0 }}</div>
-                <div class="text-xs text-slate-400">LEGOs</div>
-              </div>
-            </div>
-            <div v-if="presentationsResult.sample" class="mt-3 space-y-2">
-              <div class="text-xs text-slate-400">Sample:</div>
-              <div v-for="(s, i) in presentationsResult.sample.slice(0, 3)" :key="i" class="text-xs bg-slate-800 p-2 rounded">
-                <span class="text-amber-400">{{ s.known }}</span> → {{ s.presentation_text }}
-              </div>
-            </div>
-            <div v-if="presentationsResult.error" class="mt-2 text-red-400 text-sm">
-              {{ presentationsResult.error }}
-            </div>
-            <div v-if="presentationsResult.updated" class="mt-2 text-emerald-400 text-sm">
-              ✓ {{ presentationsResult.updated }} updated. Run "Regenerate All" with role=presentation to generate audio.
-            </div>
-          </div>
-        </div>
-
-        <!-- Progress Dashboard -->
-        <PipelineProgress
-          :total="progressStats.total"
-          :generated="progressStats.generated"
-          :pending="progressStats.pending"
-          :failed="progressStats.failed"
-          :estimated-cost="estimatedCost"
-          :estimated-time="estimatedTime"
-        />
-
-        <!-- Missing Audio Details -->
-        <MissingAudio :course-code="courseCode" />
-
-        <!-- Queue Controls -->
-        <QueueControls
-          :can-start="canStartGeneration"
-          :is-running="isGenerating"
-          :has-failed="hasFailed"
-          @start="startGeneration"
-          @cancel="cancelGeneration"
-          @retry="retryFailed"
-          @plan="showPlan"
-        />
-
-        <!-- Queue List -->
-        <QueueList
-          :items="generationQueue"
-          :status-filter="statusFilter"
-          @update-filter="updateFilter"
-        />
       </div>
     </main>
   </div>
