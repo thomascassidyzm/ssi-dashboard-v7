@@ -372,6 +372,11 @@ app.post('/generate/:courseCode', async (req, res) => {
     )
 
     const needed = []
+    // Helper to get speed from voice config (everything is a parameter!)
+    const getSpeedForRole = (role) => {
+      return voiceConfig.voices?.[role]?.settings?.speed || 1.0
+    }
+
     for (const phrase of phrases || []) {
       const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
       if (!existingSet.has(knownKey)) {
@@ -379,7 +384,8 @@ app.post('/generate/:courseCode', async (req, res) => {
           text: phrase.known_text,
           language: course.known_lang,
           role: 'known',
-          voiceId: voiceConfig.known
+          voiceId: voiceConfig.known,
+          speed: getSpeedForRole('known')
         })
       }
 
@@ -390,7 +396,8 @@ app.post('/generate/:courseCode', async (req, res) => {
             text: phrase.target_text,
             language: course.target_lang,
             role,
-            voiceId: voiceConfig[role]
+            voiceId: voiceConfig[role],
+            speed: getSpeedForRole(role)
           })
         }
       }
@@ -423,8 +430,8 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
       const [provider, voiceName] = item.voiceId.split('_', 2)
 
-      // Determine cadence (known = natural, target = slow)
-      const speed = item.role === 'known' ? 1.0 : 0.7
+      // Use speed from voice config (everything is a parameter!)
+      const speed = item.speed || 1.0
 
       // Generate TTS audio
       let rawAudioBuffer
@@ -665,7 +672,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     logger.info(`Regenerating ${audioToRegenerate.length} ${role} audio files with concurrency=${CONCURRENCY}`)
 
     const results = { success: 0, failed: 0, errors: [] }
-    const speed = role === 'known' ? 1.0 : 0.7
+    // Use speed from voice config (everything is a parameter!)
+    const speed = voiceSettings.settings?.speed || 1.0
 
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
