@@ -63,15 +63,21 @@
             </div>
           </div>
 
-          <!-- Test Button -->
-          <button
-            @click="testVoice(role.id)"
-            :disabled="testingRole === role.id"
-            class="test-btn"
-          >
-            <span v-if="testingRole === role.id" class="btn-spinner"></span>
-            {{ testingRole === role.id ? 'Playing...' : 'Test' }}
-          </button>
+          <!-- Preview Phrase & Test -->
+          <div class="preview-section">
+            <div class="phrase-display">
+              <span class="phrase-text">{{ getCurrentPhrase(role.id) }}</span>
+              <button @click="cyclePhrase(role.id)" class="cycle-btn" title="Try another phrase">↻</button>
+            </div>
+            <button
+              @click="testVoice(role.id)"
+              :disabled="testingRole === role.id"
+              class="test-btn"
+            >
+              <span v-if="testingRole === role.id" class="btn-spinner"></span>
+              {{ testingRole === role.id ? 'Playing...' : '▶ Test Voice' }}
+            </button>
+          </div>
 
           <!-- Change Voice -->
           <button @click="expandRole(role.id)" class="change-btn">
@@ -277,19 +283,76 @@ const roles = [
   { id: 'presentation', name: 'Presentation', icon: '🎬', description: 'LEGO introductions', lang: 'known' }
 ]
 
-// Sample sentences per language
-const sampleSentences = {
-  'zh': '你好，你好吗？',
-  'zho': '你好，你好吗？',
-  'cmn': '你好，你好吗？',
-  'en': 'Hello, how are you today?',
-  'eng': 'Hello, how are you today?',
-  'es': 'Hola, ¿cómo estás?',
-  'spa': 'Hola, ¿cómo estás?',
-  'it': 'Ciao, come stai?',
-  'ita': 'Ciao, come stai?',
-  'default': 'Hello, this is a voice test.'
+// SSi-style preview phrases per language (multiple options)
+const previewPhrases = {
+  eng: [
+    "I'm trying to practice speaking every day",
+    "I want to learn as much as I can",
+    "This is working really well for me"
+  ],
+  spa: [
+    "Estoy tratando de practicar cada día",
+    "Quiero aprender todo lo que pueda",
+    "Esto está funcionando muy bien"
+  ],
+  cym: [
+    "Dw i'n trio ymarfer bob dydd",
+    "Dw i isio dysgu cymaint â phosib",
+    "Mae hyn yn gweithio'n dda iawn"
+  ],
+  zho: [
+    "我每天都在练习",
+    "我想尽可能多学一点",
+    "这个方法对我很有效"
+  ],
+  cmn: [
+    "我每天都在练习",
+    "我想尽可能多学一点",
+    "这个方法对我很有效"
+  ],
+  fra: [
+    "J'essaie de pratiquer chaque jour",
+    "Je veux apprendre autant que possible",
+    "Ça marche très bien pour moi"
+  ],
+  deu: [
+    "Ich versuche jeden Tag zu üben",
+    "Ich möchte so viel wie möglich lernen",
+    "Das funktioniert wirklich gut für mich"
+  ],
+  ita: [
+    "Cerco di praticare ogni giorno",
+    "Voglio imparare il più possibile",
+    "Questo sta funzionando molto bene"
+  ],
+  por: [
+    "Estou tentando praticar todos os dias",
+    "Quero aprender o máximo possível",
+    "Isso está funcionando muito bem"
+  ],
+  jpn: [
+    "毎日練習するようにしています",
+    "できるだけたくさん学びたいです",
+    "これはとてもうまくいっています"
+  ],
+  kor: [
+    "매일 연습하려고 노력하고 있어요",
+    "최대한 많이 배우고 싶어요",
+    "이게 정말 잘 되고 있어요"
+  ],
+  ara: [
+    "أحاول التدرب كل يوم",
+    "أريد أن أتعلم قدر الإمكان",
+    "هذا يعمل بشكل جيد جداً"
+  ],
+  default: [
+    "I'm trying to practice every day",
+    "I want to learn as much as I can"
+  ]
 }
+
+// Current phrase index per role (for cycling through phrases)
+const phraseIndex = ref({})
 
 // Computed
 const availableLocales = computed(() => {
@@ -351,9 +414,21 @@ function getLanguageForRole(roleId) {
   return role.lang === 'target' ? parts[0] : parts[1]
 }
 
-function getSampleText(roleId) {
+function getPhrasesForRole(roleId) {
   const lang = getLanguageForRole(roleId)
-  return sampleSentences[lang] || sampleSentences['default']
+  return previewPhrases[lang] || previewPhrases['default']
+}
+
+function getCurrentPhrase(roleId) {
+  const phrases = getPhrasesForRole(roleId)
+  const idx = phraseIndex.value[roleId] || 0
+  return phrases[idx % phrases.length]
+}
+
+function cyclePhrase(roleId) {
+  const phrases = getPhrasesForRole(roleId)
+  const current = phraseIndex.value[roleId] || 0
+  phraseIndex.value[roleId] = (current + 1) % phrases.length
 }
 
 function formatSpeed(speed) {
@@ -467,7 +542,7 @@ async function previewVoice(voice, roleId) {
   previewingVoiceId.value = voice.id
 
   try {
-    const text = getSampleText(roleId)
+    const text = getCurrentPhrase(roleId)
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
@@ -497,7 +572,7 @@ async function testVoice(roleId) {
   testingRole.value = roleId
 
   try {
-    const text = getSampleText(roleId)
+    const text = getCurrentPhrase(roleId)
     const response = await fetch(`${props.apiBaseUrl}/api/voices/preview`, {
       method: 'POST',
       headers: {
@@ -519,6 +594,9 @@ async function testVoice(roleId) {
       audioPlayer.value.src = data.audio
       audioPlayer.value.play()
     }
+
+    // Cycle to next phrase after playing
+    cyclePhrase(roleId)
   } catch (err) {
     console.error('[VoiceConfig] Test error:', err)
   } finally {
@@ -827,6 +905,48 @@ onMounted(() => {
   color: #10b981;
 }
 
+/* Preview Section */
+.preview-section {
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.phrase-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.phrase-text {
+  flex: 1;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.cycle-btn {
+  width: 24px;
+  height: 24px;
+  background: #334155;
+  border: none;
+  border-radius: 4px;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.cycle-btn:hover {
+  background: #475569;
+  color: #10b981;
+}
+
 /* Buttons */
 .test-btn, .change-btn {
   padding: 8px 12px;
@@ -843,12 +963,13 @@ onMounted(() => {
 }
 
 .test-btn {
-  background: #334155;
-  color: #e2e8f0;
+  width: 100%;
+  background: #10b981;
+  color: #0f172a;
 }
 
 .test-btn:hover:not(:disabled) {
-  background: #475569;
+  background: #059669;
 }
 
 .change-btn {
