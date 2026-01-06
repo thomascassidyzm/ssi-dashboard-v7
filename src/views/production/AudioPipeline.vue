@@ -357,48 +357,66 @@
             :estimated-cost="estimatedCost"
             :estimated-time="estimatedTime"
           />
-        </section>
 
-        <!-- MISSING AUDIO Section -->
-        <section>
-          <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Missing Audio</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+          <!-- Action Buttons -->
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button
+              @click="showPlan"
+              :disabled="isGenerating || loadingPlan"
+              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+              </svg>
+              {{ loadingPlan ? 'Loading...' : 'Plan (Dry Run)' }}
+            </button>
+            <button
+              @click="startGeneration"
+              :disabled="!canStartGeneration || isGenerating"
+              class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:text-slate-500 rounded-lg font-medium transition-all text-sm flex items-center gap-2"
+            >
+              <svg v-if="isGenerating" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              {{ isGenerating ? 'Generating...' : 'Start Generation' }}
+            </button>
+            <button
+              v-if="isGenerating"
+              @click="cancelGeneration"
+              class="px-5 py-2.5 bg-red-600/80 hover:bg-red-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              Cancel
+            </button>
+            <button
+              v-if="hasFailed && !isGenerating"
+              @click="retryFailed"
+              class="px-5 py-2.5 bg-amber-600/80 hover:bg-amber-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              Retry Failed
+            </button>
           </div>
-
-          <MissingAudio :course-code="courseCode" :refresh-trigger="missingAudioKey" />
-        </section>
-
-        <!-- QUEUE Section -->
-        <section>
-          <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Generation Queue</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
-          </div>
-
-          <QueueControls
-            :can-start="canStartGeneration"
-            :is-running="isGenerating || loadingPlan"
-            :has-failed="hasFailed"
-            @start="startGeneration"
-            @cancel="cancelGeneration"
-            @retry="retryFailed"
-            @plan="showPlan"
-          />
 
           <!-- Plan Results Display -->
           <div v-if="showingPlan && planResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-purple-500/30 rounded-xl p-6">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                   </svg>
                 </div>
-                <div>
-                  <h3 class="font-semibold text-slate-100">Generation Plan</h3>
-                  <p class="text-sm text-slate-400">Cost estimate for audio generation</p>
-                </div>
+                <span class="font-medium text-slate-100">Generation Plan</span>
               </div>
               <button
                 @click="showingPlan = false"
@@ -415,32 +433,29 @@
             </div>
 
             <div v-else class="space-y-4">
-              <!-- Stats Grid -->
               <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                  <div class="text-2xl font-bold text-slate-100">{{ planResult.total || 0 }}</div>
+                  <div class="text-xl font-bold text-slate-100">{{ (planResult.total || 0).toLocaleString() }}</div>
                   <div class="text-xs text-slate-500 uppercase">Total Needed</div>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                  <div class="text-2xl font-bold text-emerald-400">{{ planResult.existing || 0 }}</div>
-                  <div class="text-xs text-slate-500 uppercase">Already Generated</div>
+                  <div class="text-xl font-bold text-emerald-400">{{ (planResult.existing || 0).toLocaleString() }}</div>
+                  <div class="text-xs text-slate-500 uppercase">Already Done</div>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                  <div class="text-2xl font-bold text-amber-400">{{ planResult.missing || 0 }}</div>
+                  <div class="text-xl font-bold text-amber-400">{{ (planResult.missing || 0).toLocaleString() }}</div>
                   <div class="text-xs text-slate-500 uppercase">To Generate</div>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                  <div class="text-2xl font-bold text-purple-400">{{ planResult.estimatedCost || '$0.00' }}</div>
+                  <div class="text-xl font-bold text-purple-400">{{ planResult.estimatedCost || '$0.00' }}</div>
                   <div class="text-xs text-slate-500 uppercase">Est. Cost</div>
                 </div>
               </div>
 
-              <!-- Time Estimate -->
               <div v-if="planResult.estimatedTime" class="text-sm text-slate-400 text-center">
                 Estimated time: <span class="text-slate-200 font-medium">{{ planResult.estimatedTime }}</span>
               </div>
 
-              <!-- Start Button -->
               <div v-if="planResult.missing > 0" class="pt-2">
                 <button
                   @click="startGeneration(); showingPlan = false;"
@@ -451,7 +466,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  Start Generation ({{ planResult.missing }} files)
+                  Start Generation ({{ planResult.missing.toLocaleString() }} files)
                 </button>
               </div>
               <div v-else class="text-center py-2">
@@ -459,33 +474,16 @@
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Queue Summary (replaces detailed QueueList for performance with large queues) -->
-          <div v-if="progressStats.total > 0" class="mt-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-              </svg>
-              <h3 class="font-semibold text-slate-100">Generation Queue</h3>
-              <span class="text-sm text-slate-400">({{ progressStats.total.toLocaleString() }} items)</span>
-            </div>
-
-            <!-- Status Breakdown -->
-            <div class="grid grid-cols-3 gap-3">
-              <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-emerald-400">{{ progressStats.generated.toLocaleString() }}</div>
-                <div class="text-xs text-slate-400">Complete</div>
-              </div>
-              <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-amber-400">{{ progressStats.pending.toLocaleString() }}</div>
-                <div class="text-xs text-slate-400">Pending</div>
-              </div>
-              <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold" :class="progressStats.failed > 0 ? 'text-red-400' : 'text-slate-600'">{{ progressStats.failed.toLocaleString() }}</div>
-                <div class="text-xs text-slate-400">Failed</div>
-              </div>
-            </div>
+        <!-- MISSING AUDIO Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Missing Audio</h2>
+            <div class="flex-1 h-px bg-slate-700/50"></div>
           </div>
+
+          <MissingAudio :course-code="courseCode" :refresh-trigger="missingAudioKey" />
         </section>
 
       </div>
@@ -498,7 +496,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
-import QueueControls from './components/QueueControls.vue'
 import MissingAudio from './components/MissingAudio.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
