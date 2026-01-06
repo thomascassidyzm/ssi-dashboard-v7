@@ -15,24 +15,14 @@ function getApiBaseUrl() {
 }
 
 // Production API URL for database-backed endpoints (APML v11.2.0)
+// NOTE: Production API runs on port 3470, but orchestrator (3456) proxies /api/production/* to it
+// Always use orchestrator URL so everything works through ngrok tunnel
 function getProductionApiUrl() {
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
-    try {
-      const url = new URL(storedUrl)
-      // ngrok URLs don't support port modification - they route internally
-      // Only modify localhost URLs where port changes make sense
-      if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
-        url.port = '3470'
-        return url.origin
-      }
-      // For ngrok/remote URLs, use as-is (production API should be proxied through same tunnel)
-      return storedUrl
-    } catch {
-      return 'http://localhost:3470'
-    }
+    return storedUrl
   }
-  return import.meta.env.VITE_PRODUCTION_API_URL || 'http://localhost:3470'
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
 
 // Export production API URL for direct access
@@ -122,8 +112,8 @@ export default {
               const courseRecord = coursesData.courses?.find(c => c.code === courseCode)
 
               if (courseRecord) {
-                // Course exists but has no content - return empty course structure
-                console.log(`[API] Course ${courseCode} exists but is empty - showing generator UI`)
+                // Course exists but no seeds in database - let CourseEditor try JSON files
+                console.log(`[API] Course ${courseCode} exists, no DB seeds - will try JSON files`)
                 const match = courseCode.match(/^(\w+)_for_(\w+)$/)
                 return {
                   course: {
@@ -141,8 +131,8 @@ export default {
                     phases_completed: [],
                     target_language_name: match ? match[1] : 'unknown',
                     known_language_name: match ? match[2] : 'unknown',
-                    data_source: 'database',
-                    isEmpty: true  // Flag for CourseEditor to show generator
+                    data_source: 'json_fallback'
+                    // Note: NOT setting isEmpty - let CourseEditor try S3/JSON files
                   },
                   translations: [],
                   legos: [],
