@@ -48,8 +48,8 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // =============================================================================
 
 // Azure TTS limits: Free=20/min, Standard=200/min
-// We use a conservative default that works well with rate limits
-const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 5
+// Default 10 works well with standard tier (200 req/min)
+const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 10
 
 /**
  * Process items in parallel with concurrency limit
