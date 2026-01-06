@@ -1036,7 +1036,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
             presentation_audio_id: presentationAudioId,
             updated_at: new Date().toISOString()
           }, {
-            onConflict: 'lego_id'
+            onConflict: 'lego_id,course_code'
           })
 
         if (!introError) {
