@@ -1425,25 +1425,26 @@ const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
 const axios = require('axios')
 
 // GET /api/production/:courseCode/audio-pipeline/stats
-// Fast stats using database COUNTs - use this for dashboard loading
+// Fast stats using plan endpoint - use this for dashboard loading
 app.get('/api/production/:courseCode/audio-pipeline/stats', async (req, res) => {
   const { courseCode } = req.params
   try {
-    const response = await axios.get(`${PHASE8_URL}/stats/${courseCode}`)
-    const plan = response.data.plan || {}
+    // Use the plan endpoint which exists
+    const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
+    const data = response.data || {}
 
     // Calculate estimates
-    const toGenerate = plan.toGenerate || 0
+    const toGenerate = data.missing || 0
     const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
 
     res.json({
       success: true,
       estimatedCost: `$${estimatedCostUSD}`,
       estimatedTime: `${Math.ceil(toGenerate / 60)} min`,
-      total: plan.total || 0,
-      existing: plan.existing || 0,
+      total: data.existing + toGenerate,
+      existing: data.existing || 0,
       missing: toGenerate,
-      dataSource: response.data.dataSource || 'fast'
+      dataSource: 'database'
     })
   } catch (error) {
     logger.error(`Audio stats error for ${courseCode}:`, error.message)
