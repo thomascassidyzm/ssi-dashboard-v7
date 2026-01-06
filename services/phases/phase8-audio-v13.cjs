@@ -984,32 +984,47 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         // Generate placeholder s3_key (UPPERCASE to match existing S3 convention)
         const placeholderUuid = uuidv4().toUpperCase()
         const placeholderS3Key = `pending/${placeholderUuid}.mp3`
+        const textNormalized = pres.presentation_text.toLowerCase().trim()
 
-        // Upsert into course_audio and get the ID back
-        const { data: audioData, error: upsertError } = await supabase
+        // Upsert into course_audio
+        const { error: upsertError } = await supabase
           .from('course_audio')
           .upsert({
             course_code: courseCode,
             text: pres.presentation_text,
-            text_normalized: pres.presentation_text.toLowerCase().trim(),
+            text_normalized: textNormalized,
             language: knownLang,
             role: 'presentation',
             voice_id: presentationVoiceId,
             origin: 'tts',
             s3_key: placeholderS3Key
           }, {
-            onConflict: 'course_code,text_normalized,language,role'
+            onConflict: 'course_code,text_normalized,language,role',
+            ignoreDuplicates: false
           })
-          .select('id')
-          .single()
 
         if (upsertError) {
           errors.push({ lego_id: pres.lego_id, error: upsertError.message })
           continue
         }
 
+        // Query for the ID explicitly (upsert doesn't reliably return ID on conflict)
+        const { data: audioRecord, error: selectError } = await supabase
+          .from('course_audio')
+          .select('id')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', textNormalized)
+          .eq('language', knownLang)
+          .eq('role', 'presentation')
+          .single()
+
+        if (selectError || !audioRecord?.id) {
+          errors.push({ lego_id: pres.lego_id, error: 'Could not find audio record after upsert' })
+          continue
+        }
+
         updated++
-        const presentationAudioId = audioData?.id
+        const presentationAudioId = audioRecord.id
 
         // Upsert into lego_introductions (only presentation_audio_id needed)
         // Target1/target2 audio derived from course_audio by LEGO's target_text at playback
