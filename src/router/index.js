@@ -5,8 +5,7 @@ import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
-// DEPRECATED: CourseBrowser - use /production/courses (CourseSelector) instead
-// import CourseBrowser from '../views/CourseBrowser.vue'
+import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
 // DEPRECATED: AudioGeneration - use /production/:courseCode/pipeline (AudioPipeline) instead
@@ -72,10 +71,10 @@ const routes = [
   // Course Management
   // ============================================
   {
-    // DEPRECATED: Redirect to Production Suite course selector
     path: '/courses',
     name: 'CourseBrowser',
-    redirect: '/production/courses'
+    component: CourseBrowser,
+    meta: { title: 'Course Library' }
   },
   {
     path: '/courses/new',
