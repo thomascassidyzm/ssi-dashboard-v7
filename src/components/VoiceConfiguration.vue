@@ -439,7 +439,8 @@ function formatSpeed(speed) {
 
 function isSpeedActive(roleId, speed) {
   const currentSpeed = getVoiceForRole(roleId).settings?.speed || 1.0
-  return Math.abs(currentSpeed - speed) < 0.05
+  // Use tight tolerance for discrete speed values
+  return Math.abs(currentSpeed - speed) < 0.01
 }
 
 async function setSpeed(roleId, speed) {
