@@ -366,7 +366,7 @@
             <div class="flex-1 h-px bg-slate-700/50"></div>
           </div>
 
-          <MissingAudio :course-code="courseCode" />
+          <MissingAudio :course-code="courseCode" :refresh-trigger="missingAudioKey" />
         </section>
 
         <!-- QUEUE Section -->
@@ -378,7 +378,7 @@
 
           <QueueControls
             :can-start="canStartGeneration"
-            :is-running="isGenerating"
+            :is-running="isGenerating || loadingPlan"
             :has-failed="hasFailed"
             @start="startGeneration"
             @cancel="cancelGeneration"
@@ -386,12 +386,105 @@
             @plan="showPlan"
           />
 
-          <div class="mt-4">
-            <QueueList
-              :items="generationQueue"
-              :status-filter="statusFilter"
-              @update-filter="updateFilter"
-            />
+          <!-- Plan Results Display -->
+          <div v-if="showingPlan && planResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-purple-500/30 rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-100">Generation Plan</h3>
+                  <p class="text-sm text-slate-400">Cost estimate for audio generation</p>
+                </div>
+              </div>
+              <button
+                @click="showingPlan = false"
+                class="text-slate-400 hover:text-slate-200 transition-colors"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div v-if="planResult.error" class="text-red-400 text-sm">
+              {{ planResult.error }}
+            </div>
+
+            <div v-else class="space-y-4">
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-slate-100">{{ planResult.total || 0 }}</div>
+                  <div class="text-xs text-slate-500 uppercase">Total Needed</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-emerald-400">{{ planResult.existing || 0 }}</div>
+                  <div class="text-xs text-slate-500 uppercase">Already Generated</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-amber-400">{{ planResult.missing || 0 }}</div>
+                  <div class="text-xs text-slate-500 uppercase">To Generate</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-purple-400">{{ planResult.estimatedCost || '$0.00' }}</div>
+                  <div class="text-xs text-slate-500 uppercase">Est. Cost</div>
+                </div>
+              </div>
+
+              <!-- Time Estimate -->
+              <div v-if="planResult.estimatedTime" class="text-sm text-slate-400 text-center">
+                Estimated time: <span class="text-slate-200 font-medium">{{ planResult.estimatedTime }}</span>
+              </div>
+
+              <!-- Start Button -->
+              <div v-if="planResult.missing > 0" class="pt-2">
+                <button
+                  @click="startGeneration(); showingPlan = false;"
+                  :disabled="isGenerating"
+                  class="w-full px-4 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 rounded-lg font-semibold transition-all text-sm flex items-center justify-center gap-2"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Start Generation ({{ planResult.missing }} files)
+                </button>
+              </div>
+              <div v-else class="text-center py-2">
+                <span class="text-emerald-400 font-medium">All audio already generated</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Queue Summary (replaces detailed QueueList for performance with large queues) -->
+          <div v-if="progressStats.total > 0" class="mt-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+              <h3 class="font-semibold text-slate-100">Generation Queue</h3>
+              <span class="text-sm text-slate-400">({{ progressStats.total.toLocaleString() }} items)</span>
+            </div>
+
+            <!-- Status Breakdown -->
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-emerald-400">{{ progressStats.generated.toLocaleString() }}</div>
+                <div class="text-xs text-slate-400">Complete</div>
+              </div>
+              <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-amber-400">{{ progressStats.pending.toLocaleString() }}</div>
+                <div class="text-xs text-slate-400">Pending</div>
+              </div>
+              <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold" :class="progressStats.failed > 0 ? 'text-red-400' : 'text-slate-600'">{{ progressStats.failed.toLocaleString() }}</div>
+                <div class="text-xs text-slate-400">Failed</div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -406,7 +499,6 @@ import { useRoute } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import QueueControls from './components/QueueControls.vue'
-import QueueList from './components/QueueList.vue'
 import MissingAudio from './components/MissingAudio.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
@@ -416,7 +508,6 @@ const productionStore = useProductionStore()
 const courseCode = computed(() => route.params.courseCode as string)
 const loading = ref(true)
 const error = ref<string | null>(null)
-const statusFilter = ref<string>('all')
 
 // Voice configuration state
 const showVoiceConfig = ref(false)
@@ -432,6 +523,14 @@ const flaggedOnly = ref(false)
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
+
+// Plan/dry run state
+const planResult = ref<any>(null)
+const showingPlan = ref(false)
+const loadingPlan = ref(false)
+
+// Voice config update key to trigger MissingAudio refresh
+const missingAudioKey = ref(0)
 
 // Global audio progress state (from phase 8)
 const audioProgress = ref<any>({ active: false })
@@ -492,7 +591,6 @@ onUnmounted(() => {
 
 // Computed properties
 const progressStats = computed(() => productionStore.pipelineStats)
-const generationQueue = computed(() => productionStore.generationQueue)
 const isGenerating = computed(() => productionStore.jobStatus === 'running')
 const hasFailed = computed(() => progressStats.value.failed > 0)
 const canStartGeneration = computed(() =>
@@ -515,7 +613,18 @@ const retryFailed = async () => {
 }
 
 const showPlan = async () => {
-  await productionStore.generatePlan(courseCode.value)
+  loadingPlan.value = true
+  planResult.value = null
+  try {
+    const data = await productionStore.generatePlan(courseCode.value)
+    planResult.value = data
+    showingPlan.value = true
+  } catch (err: any) {
+    planResult.value = { error: err.message }
+    showingPlan.value = true
+  } finally {
+    loadingPlan.value = false
+  }
 }
 
 // Voice configuration handlers
@@ -542,10 +651,8 @@ const onVoiceConfigSaved = (config: any) => {
     voices.target2?.voiceId &&
     voices.known?.voiceId
   )
-}
-
-const updateFilter = (filter: string) => {
-  statusFilter.value = filter
+  // Trigger MissingAudio component to refresh so Play Sample uses new voices
+  missingAudioKey.value++
 }
 
 // Regenerate by role functions

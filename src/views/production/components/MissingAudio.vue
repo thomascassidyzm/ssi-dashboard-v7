@@ -161,6 +161,10 @@ const props = defineProps({
   courseCode: {
     type: String,
     required: true
+  },
+  refreshTrigger: {
+    type: Number,
+    default: 0
   }
 })
 
@@ -248,6 +252,15 @@ function playSample(role) {
 // Fetch when expanded
 watch(expanded, (isExpanded) => {
   if (isExpanded && !data.value) {
+    fetchMissingAudio()
+  }
+})
+
+// Refetch when refreshTrigger changes (e.g., voice config saved)
+watch(() => props.refreshTrigger, () => {
+  if (expanded.value) {
+    // Clear existing data and refetch with new voice config
+    data.value = null
     fetchMissingAudio()
   }
 })
