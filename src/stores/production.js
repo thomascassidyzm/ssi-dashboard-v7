@@ -1,7 +1,6 @@
 // src/stores/production.js
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import io from 'socket.io-client'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server
@@ -46,10 +45,6 @@ export const useProductionStore = defineStore('production', () => {
   // Loading states
   const isLoading = ref(false)
   const error = ref(null)
-
-  // WebSocket connection state
-  const wsConnected = ref(false)
-  let socket = null
 
   // Pipeline state
   const pipelineStages = ref([])
@@ -441,44 +436,12 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
-  function handleWebSocketUpdate(data) {
-    // Handle real-time updates from WebSocket
-    if (data.type === 'sample_updated' && data.courseCode === currentCourseCode.value) {
-      if (!sampleFlags.value.samples) {
-        sampleFlags.value.samples = {}
-      }
-      sampleFlags.value.samples[data.uuid] = {
-        ...sampleFlags.value.samples[data.uuid],
-        ...data.update
-      }
-    }
-
-    if (data.type === 'audio_metadata_updated' && data.courseCode === currentCourseCode.value) {
-      if (!audioMetadata.value.audio) {
-        audioMetadata.value.audio = {}
-      }
-      audioMetadata.value.audio[data.uuid] = data.metadata
-    }
-
-    if (data.type === 'generation_progress' && data.courseCode === currentCourseCode.value) {
-      generationProgress.value = {
-        current: data.current || 0,
-        total: data.total || 0,
-        status: data.status || 'idle'
-      }
-    }
-  }
-
   function updateGenerationProgress(current, total, status) {
     generationProgress.value = {
       current,
       total,
       status
     }
-  }
-
-  function setWsConnected(connected) {
-    wsConnected.value = connected
   }
 
   function reset() {
@@ -580,83 +543,7 @@ export const useProductionStore = defineStore('production', () => {
     })
   }
 
-  // WebSocket connection
-  async function connectWebSocket(courseCode) {
-    if (socket) {
-      socket.disconnect()
-    }
-
-    // Use the same API base URL for WebSocket (works through ngrok tunnel)
-    const baseUrl = getApiBaseUrl()
-
-    // Skip WebSocket in ngrok/production environments - use polling instead
-    if (baseUrl.includes('ngrok') || baseUrl.includes('vercel') || baseUrl.includes('popty.app')) {
-      console.log('[Production] WebSocket disabled for remote environment, using polling')
-      wsConnected.value = false
-      return
-    }
-
-    socket = io(baseUrl, {
-      path: '/api/production/websocket',
-      transports: ['websocket', 'polling'],
-      reconnectionAttempts: 3,
-      timeout: 5000,
-      extraHeaders: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-
-    socket.on('connect', () => {
-      console.log('WebSocket connected')
-      wsConnected.value = true
-      socket.emit('join_course', { courseCode })
-    })
-
-    socket.on('disconnect', () => {
-      console.log('WebSocket disconnected')
-      wsConnected.value = false
-    })
-
-    socket.on('sample_updated', (data) => {
-      handleWebSocketUpdate({ type: 'sample_updated', ...data })
-    })
-
-    socket.on('pipeline_progress', (data) => {
-      if (data.courseCode === courseCode) {
-        updatePipelineProgress(data)
-      }
-    })
-
-    socket.on('pipeline_complete', (data) => {
-      if (data.courseCode === courseCode) {
-        jobStatus.value = 'complete'
-      }
-    })
-
-    socket.on('error', (err) => {
-      console.error('WebSocket error:', err)
-    })
-  }
-
-  function disconnectWebSocket() {
-    if (socket) {
-      socket.disconnect()
-      socket = null
-    }
-    wsConnected.value = false
-  }
-
-  function updatePipelineProgress(data) {
-    // Update generation queue items
-    if (data.items) {
-      generationQueue.value = data.items
-    }
-    if (data.status) {
-      jobStatus.value = data.status
-    }
-  }
-
-  // Status polling for remote environments (no WebSocket)
+  // Status polling for progress updates
   async function pollStatus(courseCode) {
     try {
       const baseUrl = getApiBaseUrl()
@@ -824,7 +711,6 @@ export const useProductionStore = defineStore('production', () => {
     audioCourseStats,
     isLoading,
     error,
-    wsConnected,
     pipelineStages,
     generationProgress,
     recordingState,
@@ -843,15 +729,11 @@ export const useProductionStore = defineStore('production', () => {
     loadCourse,
     updateSampleFlag,
     bulkUpdateFlags,
-    handleWebSocketUpdate,
     updateGenerationProgress,
-    connectWebSocket,
-    disconnectWebSocket,
     startGeneration,
     cancelGeneration,
     retryFailed,
     generatePlan,
-    setWsConnected,
     reset,
     // Recording actions
     loadRecordingQueue,

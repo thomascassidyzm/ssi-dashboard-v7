@@ -24,10 +24,6 @@
           </select>
         </div>
         <EnvironmentSwitcher />
-        <div class="ws-status" :class="{ connected: store.wsConnected }">
-          <div class="ws-indicator" />
-          <span>{{ store.wsConnected ? 'Live' : 'Offline' }}</span>
-        </div>
       </div>
     </header>
 
@@ -185,7 +181,6 @@ const store = useProductionStore()
 
 const selectedCourse = ref('')
 const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
-let ws: WebSocket | null = null
 
 // Fetch available courses from API (database-first via orchestrator)
 async function loadCourses() {
@@ -301,11 +296,6 @@ async function handleCourseChange() {
   if (!selectedCourse.value) return
 
   await store.loadCourse(selectedCourse.value)
-
-  // Only connect WebSocket if course loaded successfully
-  if (!store.error) {
-    connectWebSocket()
-  }
 }
 
 function retryLoad() {
@@ -420,74 +410,6 @@ function getBlockerCountForStage(stageId: string): number {
   }
 }
 
-function connectWebSocket() {
-  if (!selectedCourse.value) return
-
-  // Skip WebSocket on production (Vercel serverless doesn't support WebSockets)
-  // WebSocket is only available when running the local production-api service
-  const isProduction = window.location.hostname !== 'localhost' && !window.location.hostname.includes('127.0.0.1')
-  const wsUrl = import.meta.env.VITE_WS_URL
-
-  if (isProduction && !wsUrl) {
-    console.log('WebSocket disabled in production (serverless environment)')
-    // Don't show as error - just operate without real-time updates
-    return
-  }
-
-  try {
-    // Use production API WebSocket endpoint (local dev only unless VITE_WS_URL is set)
-    const url = wsUrl || 'ws://localhost:3470'
-    ws = new WebSocket(`${url}/api/production/websocket?courseCode=${selectedCourse.value}`)
-
-    ws.onopen = () => {
-      console.log('WebSocket connected')
-      store.setWsConnected(true)
-    }
-
-    ws.onclose = () => {
-      console.log('WebSocket disconnected')
-      store.setWsConnected(false)
-      // Attempt reconnect after 5 seconds (only on localhost)
-      if (!isProduction) {
-        setTimeout(() => {
-          if (selectedCourse.value) {
-            connectWebSocket()
-          }
-        }, 5000)
-      }
-    }
-
-    ws.onerror = (error) => {
-      // Don't spam console on production where WebSocket isn't available
-      if (!isProduction) {
-        console.error('WebSocket error:', error)
-      }
-      store.setWsConnected(false)
-    }
-
-    ws.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data)
-        store.handleWebSocketUpdate(data)
-      } catch (err) {
-        console.error('Failed to parse WebSocket message:', err)
-      }
-    }
-  } catch (err) {
-    if (!isProduction) {
-      console.error('Failed to connect WebSocket:', err)
-    }
-  }
-}
-
-function disconnectWebSocket() {
-  if (ws) {
-    ws.close()
-    ws = null
-  }
-  store.setWsConnected(false)
-}
-
 // Lifecycle
 onMounted(async () => {
   // Load available courses for the dropdown
@@ -510,7 +432,7 @@ watch(() => props.courseCode, (newCode) => {
 })
 
 onUnmounted(() => {
-  disconnectWebSocket()
+  // Cleanup if needed
 })
 </script>
 

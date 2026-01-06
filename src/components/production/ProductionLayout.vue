@@ -5,9 +5,6 @@
         &larr; Courses
       </router-link>
       <h1 class="course-title">{{ courseCode }}</h1>
-      <div class="connection-status" :class="{ connected: wsConnected }">
-        {{ wsConnected ? 'Connected' : 'Disconnected' }}
-      </div>
     </header>
 
     <ProductionNav :course-code="courseCode" />
@@ -19,8 +16,6 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useProductionStore } from '@/stores/production'
 import ProductionNav from './ProductionNav.vue'
 
 defineProps({
@@ -29,9 +24,6 @@ defineProps({
     required: true
   }
 })
-
-const store = useProductionStore()
-const wsConnected = computed(() => store.wsConnected)
 </script>
 
 <style scoped>

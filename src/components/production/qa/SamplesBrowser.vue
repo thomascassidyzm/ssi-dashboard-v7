@@ -160,7 +160,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useProductionStore } from '@/stores/production'
-import { initWebSocket, joinCourseRoom } from '@/services/websocket'
 import SampleCard from './SampleCard.vue'
 import StatusBadge from './StatusBadge.vue'
 import FlagMenu from './FlagMenu.vue'
@@ -177,9 +176,7 @@ const store = useProductionStore()
 // Load course data if not already loaded
 onMounted(async () => {
   if (store.currentCourseCode !== props.courseCode) {
-    initWebSocket()
     await store.loadCourse(props.courseCode)
-    joinCourseRoom(props.courseCode)
   }
 })
 

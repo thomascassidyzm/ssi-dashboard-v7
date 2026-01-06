@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useProductionStore } from '@/stores/production'
 import PipelineItem from './PipelineItem.vue'
 
@@ -208,15 +208,7 @@ watch(() => store.jobStatus, (newStatus) => {
   }
 })
 
-onMounted(() => {
-  if (store.currentCourseCode) {
-    store.connectWebSocket(store.currentCourseCode)
-  }
-})
-
-onUnmounted(() => {
-  // WebSocket managed by store
-})
+// Component uses polling for progress updates (managed by parent view)
 </script>
 
 <style scoped>

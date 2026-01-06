@@ -569,7 +569,6 @@ onMounted(async () => {
     loading.value = true
     error.value = null
     await productionStore.loadCourse(courseCode.value)
-    await productionStore.connectWebSocket(courseCode.value)
     // Start polling for audio progress
     startProgressPolling()
   } catch (err) {
@@ -582,7 +581,6 @@ onMounted(async () => {
 
 // Cleanup on unmount
 onUnmounted(() => {
-  productionStore.disconnectWebSocket()
   stopProgressPolling()
 })
 
