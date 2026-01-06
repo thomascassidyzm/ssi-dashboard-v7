@@ -44,6 +44,49 @@ const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 // =============================================================================
+// CONCURRENCY SETTINGS
+// =============================================================================
+
+// Azure TTS limits: Free=20/min, Standard=200/min
+// We use a conservative default that works well with rate limits
+const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 5
+
+/**
+ * Process items in parallel with concurrency limit
+ * @param {Array} items - Items to process
+ * @param {Function} processor - Async function to process each item
+ * @param {number} concurrency - Max concurrent operations
+ * @returns {Promise<{success: number, failed: number, errors: Array}>}
+ */
+async function processInParallel(items, processor, concurrency = CONCURRENCY) {
+  const results = { success: 0, failed: 0, errors: [] }
+
+  // Process in batches
+  for (let i = 0; i < items.length; i += concurrency) {
+    const batch = items.slice(i, i + concurrency)
+
+    const batchResults = await Promise.allSettled(
+      batch.map(item => processor(item))
+    )
+
+    for (let j = 0; j < batchResults.length; j++) {
+      const result = batchResults[j]
+      if (result.status === 'fulfilled') {
+        results.success++
+      } else {
+        results.failed++
+        results.errors.push({
+          item: batch[j],
+          error: result.reason?.message || 'Unknown error'
+        })
+      }
+    }
+  }
+
+  return results
+}
+
+// =============================================================================
 // AUDIO MASTERING
 // =============================================================================
 
@@ -366,86 +409,106 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // Generate TTS audio for each item
-    const results = { success: 0, failed: 0, errors: [] }
-
     // Start progress tracking
     startWork('generate', courseCode, uniqueNeeded.length)
 
-    for (const item of uniqueNeeded) {
-      try {
-        // Determine TTS provider from voice config
-        // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
-        const [provider, voiceName] = item.voiceId.split('_', 2)
+    // Process items in parallel with concurrency limit
+    logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${CONCURRENCY}`)
 
-        // Determine cadence (known = natural, target = slow)
-        const speed = item.role === 'known' ? 1.0 : 0.7
+    const results = { success: 0, failed: 0, errors: [] }
 
-        // Generate TTS audio
-        let rawAudioBuffer
-        if (provider === 'azure') {
-          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
-            subscriptionKey: process.env.AZURE_SPEECH_KEY,
-            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-            voiceName: voiceName,
-            speed
-          })
-        } else if (provider === 'elevenlabs') {
-          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
-            apiKey: process.env.ELEVENLABS_API_KEY,
-            voiceId: voiceName,
-            speed
-          })
-        } else {
-          throw new Error(`Unknown TTS provider: ${provider}`)
-        }
+    // Helper to generate a single audio item
+    const generateItem = async (item) => {
+      // Determine TTS provider from voice config
+      // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
+      const [provider, voiceName] = item.voiceId.split('_', 2)
 
-        // Master audio: normalize loudness and extract duration
-        const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+      // Determine cadence (known = natural, target = slow)
+      const speed = item.role === 'known' ? 1.0 : 0.7
 
-        // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
-        const audioId = uuidv4().toUpperCase()
-        const s3Key = `mastered/${audioId}.mp3`
-
-        // Upload mastered audio to S3
-        await s3.send(new PutObjectCommand({
-          Bucket: S3_BUCKET,
-          Key: s3Key,
-          Body: masteredBuffer,
-          ContentType: 'audio/mpeg'
-        }))
-
-        // Insert into course_audio with duration
-        const { error: insertError } = await supabase
-          .from('course_audio')
-          .upsert({
-            course_code: courseCode,
-            text: item.text,
-            text_normalized: item.text.toLowerCase().trim(),
-            language: item.language,
-            role: item.role,
-            voice_id: item.voiceId,
-            origin: 'tts',
-            s3_key: s3Key,
-            duration_ms: durationMs
-          }, {
-            onConflict: 'course_code,text_normalized,language,role'
-          })
-
-        if (insertError) throw insertError
-
-        results.success++
-        updateWork(item.text, true)
-        logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
-      } catch (err) {
-        results.failed++
-        results.errors.push({
-          text: item.text.substring(0, 50),
-          role: item.role,
-          error: err.message
+      // Generate TTS audio
+      let rawAudioBuffer
+      if (provider === 'azure') {
+        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceName,
+          speed
         })
-        updateWork(item.text, false, err.message)
-        logger.error(`Failed to generate: ${item.role} - "${item.text.substring(0, 30)}...": ${err.message}`)
+      } else if (provider === 'elevenlabs') {
+        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceName,
+          speed
+        })
+      } else {
+        throw new Error(`Unknown TTS provider: ${provider}`)
+      }
+
+      // Master audio: normalize loudness and extract duration
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+      // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
+      const audioId = uuidv4().toUpperCase()
+      const s3Key = `mastered/${audioId}.mp3`
+
+      // Upload mastered audio to S3
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: s3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg'
+      }))
+
+      // Insert into course_audio with duration
+      const { error: insertError } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text: item.text,
+          text_normalized: item.text.toLowerCase().trim(),
+          language: item.language,
+          role: item.role,
+          voice_id: item.voiceId,
+          origin: 'tts',
+          s3_key: s3Key,
+          duration_ms: durationMs
+        }, {
+          onConflict: 'course_code,text_normalized,language,role'
+        })
+
+      if (insertError) throw insertError
+
+      updateWork(item.text, true)
+      logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
+      return { success: true, item }
+    }
+
+    // Process in parallel batches
+    for (let i = 0; i < uniqueNeeded.length; i += CONCURRENCY) {
+      const batch = uniqueNeeded.slice(i, i + CONCURRENCY)
+      const batchNum = Math.floor(i / CONCURRENCY) + 1
+      const totalBatches = Math.ceil(uniqueNeeded.length / CONCURRENCY)
+
+      logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
+
+      const batchResults = await Promise.allSettled(batch.map(generateItem))
+
+      for (let j = 0; j < batchResults.length; j++) {
+        const result = batchResults[j]
+        if (result.status === 'fulfilled') {
+          results.success++
+        } else {
+          results.failed++
+          const item = batch[j]
+          results.errors.push({
+            text: item.text.substring(0, 50),
+            role: item.role,
+            error: result.reason?.message || 'Unknown error'
+          })
+          updateWork(item.text, false, result.reason?.message)
+          logger.error(`Failed: ${item.role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
+        }
       }
     }
 
@@ -595,73 +658,93 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       })
     }
 
-    // Generate TTS audio for each item
-    const results = { success: 0, failed: 0, errors: [] }
-    const speed = role === 'known' ? 1.0 : 0.7
-
     // Start progress tracking
     startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
 
-    for (const item of audioToRegenerate) {
-      try {
-        // Generate TTS audio using provider from voice config
-        let rawAudioBuffer
-        if (voiceProvider === 'azure') {
-          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
-            subscriptionKey: process.env.AZURE_SPEECH_KEY,
-            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-            voiceName: voiceId,
-            speed
-          })
-        } else if (voiceProvider === 'elevenlabs') {
-          rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
-            apiKey: process.env.ELEVENLABS_API_KEY,
-            voiceId: voiceId,
-            speed
-          })
-        } else {
-          throw new Error(`Unknown TTS provider: ${voiceProvider}`)
-        }
+    // Process items in parallel with concurrency limit
+    logger.info(`Regenerating ${audioToRegenerate.length} ${role} audio files with concurrency=${CONCURRENCY}`)
 
-        // Master audio: normalize loudness and extract duration
-        const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+    const results = { success: 0, failed: 0, errors: [] }
+    const speed = role === 'known' ? 1.0 : 0.7
 
-        // Generate new UUID for S3 key (UPPERCASE to match existing S3 convention)
-        const audioId = uuidv4().toUpperCase()
-        const s3Key = `mastered/${audioId}.mp3`
-
-        // Upload mastered audio to S3
-        await s3.send(new PutObjectCommand({
-          Bucket: S3_BUCKET,
-          Key: s3Key,
-          Body: masteredBuffer,
-          ContentType: 'audio/mpeg'
-        }))
-
-        // Update course_audio record with duration
-        const { error: updateError } = await supabase
-          .from('course_audio')
-          .update({
-            voice_id: voiceId,
-            origin: 'tts',
-            s3_key: s3Key,
-            duration_ms: durationMs
-          })
-          .eq('id', item.id)
-
-        if (updateError) throw updateError
-
-        results.success++
-        updateWork(item.text, true)
-        logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
-      } catch (err) {
-        results.failed++
-        results.errors.push({
-          text: item.text.substring(0, 50),
-          error: err.message
+    // Helper to regenerate a single audio item
+    const regenerateItem = async (item) => {
+      // Generate TTS audio using provider from voice config
+      let rawAudioBuffer
+      if (voiceProvider === 'azure') {
+        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceId,
+          speed
         })
-        updateWork(item.text, false, err.message)
-        logger.error(`Failed to regenerate: ${role} - "${item.text.substring(0, 30)}...": ${err.message}`)
+      } else if (voiceProvider === 'elevenlabs') {
+        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceId,
+          speed
+        })
+      } else {
+        throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+      }
+
+      // Master audio: normalize loudness and extract duration
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+      // Generate new UUID for S3 key (UPPERCASE to match existing S3 convention)
+      const audioId = uuidv4().toUpperCase()
+      const s3Key = `mastered/${audioId}.mp3`
+
+      // Upload mastered audio to S3
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: s3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg'
+      }))
+
+      // Update course_audio record with duration
+      const { error: updateError } = await supabase
+        .from('course_audio')
+        .update({
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: s3Key,
+          duration_ms: durationMs
+        })
+        .eq('id', item.id)
+
+      if (updateError) throw updateError
+
+      updateWork(item.text, true)
+      logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
+      return { success: true, item }
+    }
+
+    // Process in parallel batches
+    for (let i = 0; i < audioToRegenerate.length; i += CONCURRENCY) {
+      const batch = audioToRegenerate.slice(i, i + CONCURRENCY)
+      const batchNum = Math.floor(i / CONCURRENCY) + 1
+      const totalBatches = Math.ceil(audioToRegenerate.length / CONCURRENCY)
+
+      logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
+
+      const batchResults = await Promise.allSettled(batch.map(regenerateItem))
+
+      for (let j = 0; j < batchResults.length; j++) {
+        const result = batchResults[j]
+        if (result.status === 'fulfilled') {
+          results.success++
+        } else {
+          results.failed++
+          const item = batch[j]
+          results.errors.push({
+            text: item.text.substring(0, 50),
+            error: result.reason?.message || 'Unknown error'
+          })
+          updateWork(item.text, false, result.reason?.message)
+          logger.error(`Failed: ${role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
+        }
       }
     }
 
