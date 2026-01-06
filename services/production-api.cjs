@@ -1669,13 +1669,14 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       const normalizedText = ca.text_normalized || ca.text?.toLowerCase().trim()
       const role = ca.role
 
-      // For presentation audio, extract the target word for matching
-      // Presentation text format: "The Spanish for 'X', is: ... 'target' ... 'target'"
+      // For presentation audio, extract the KNOWN word for matching
+      // Presentation text format: "The Spanish for 'known_text', is:" or "The Spanish for 'known_text', as in '...', is:"
       if (role === 'presentation' && normalizedText) {
         const matches = normalizedText.match(/'([^']+)'/g)
-        if (matches && matches.length >= 2) {
-          const targetWord = matches[matches.length - 1].replace(/'/g, '').toLowerCase().trim()
-          existingByRole.presentation.set(targetWord, {
+        if (matches && matches.length >= 1) {
+          // First quoted word is the known text being introduced
+          const knownWord = matches[0].replace(/'/g, '').toLowerCase().trim()
+          existingByRole.presentation.set(knownWord, {
             audioId: ca.id,
             voiceId: ca.voice_id,
             s3Key: ca.s3_key,
@@ -1750,13 +1751,14 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     // Check LEGOs for missing presentation audio (only new LEGOs need intros)
+    // Match on known_text since presentation audio is "The [lang] for '[known_text]', is:"
     for (const lego of legos) {
-      const targetNorm = lego.target_text?.toLowerCase().trim()
-      if (targetNorm && !existingByRole.presentation.has(targetNorm) && !seen.presentation.has(targetNorm)) {
-        seen.presentation.add(targetNorm)
+      const knownNorm = lego.known_text?.toLowerCase().trim()
+      if (knownNorm && !existingByRole.presentation.has(knownNorm) && !seen.presentation.has(knownNorm)) {
+        seen.presentation.add(knownNorm)
         missingByRole.presentation.push({
-          text: lego.target_text,
-          knownText: lego.known_text,
+          text: lego.known_text,  // Show the known text (what's in the presentation)
+          targetText: lego.target_text,
           seedId: `S${String(lego.seed_number).padStart(4, '0')}`,
           legoId: lego.lego_id
         })
