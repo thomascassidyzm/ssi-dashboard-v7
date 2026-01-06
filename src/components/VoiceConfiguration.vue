@@ -266,8 +266,8 @@ const manualVoiceName = ref('')
 // Audio
 const audioPlayer = ref(null)
 
-// Speed options (discrete notches)
-const speedOptions = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
+// Speed options (discrete notches) - biased toward slower for learning
+const speedOptions = [0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0, 1.2, 1.5]
 
 // Role definitions
 const roles = [
@@ -357,7 +357,9 @@ function getSampleText(roleId) {
 }
 
 function formatSpeed(speed) {
-  return speed.toFixed(1) + 'x'
+  // Show 2 decimals for values like 0.75, 0.85, 0.95; otherwise 1 decimal
+  const formatted = speed % 0.1 === 0 ? speed.toFixed(1) : speed.toFixed(2)
+  return formatted + 'x'
 }
 
 function isSpeedActive(roleId, speed) {
