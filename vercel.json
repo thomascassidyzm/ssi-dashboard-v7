@@ -16,6 +16,14 @@
   ],
   "rewrites": [
     {
+      "source": "/api/production/:path*",
+      "destination": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/production/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/:path*"
+    },
+    {
       "source": "/((?!vfs|api).*)",
       "destination": "/index.html"
     }
