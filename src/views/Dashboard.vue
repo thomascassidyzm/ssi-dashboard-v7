@@ -103,6 +103,23 @@
               </div>
             </div>
           </router-link>
+
+          <!-- Agent Monitor -->
+          <router-link to="/monitor" class="block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-lg border border-cyan-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/20">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">📡 Agent Monitor</h3>
+                <p class="text-cyan-100 text-sm">
+                  Real-time pipeline agent swimlane - track Masters & Workers
+                </p>
+              </div>
+              <div class="text-white">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-6v6m18-6v6"></path>
+                </svg>
+              </div>
+            </div>
+          </router-link>
         </div>
       </section>
 

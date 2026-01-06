@@ -3096,6 +3096,186 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
   res.json(progress);
 });
 
+/**
+ * GET /api/courses/:courseCode/agents
+ * Agent swimlane data for real-time monitoring dashboard
+ * Returns master/worker status with detailed tracking
+ */
+app.get('/api/courses/:courseCode/agents', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    // Get base progress data
+    const progress = courseProgress.get(courseCode) || {};
+    const courseDir = path.join(VFS_ROOT, courseCode);
+
+    // Check course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found', courseCode });
+    }
+
+    // Build phases object with status
+    const phases = {
+      phase1: { status: 'pending', seedsProcessed: 0 },
+      phase2: { status: 'pending', legosResolved: 0 },
+      phase3: { status: 'pending', masters: [] },
+      audio: { status: 'pending', samplesGenerated: 0 },
+      manifest: { status: 'pending' }
+    };
+
+    // Check Phase 1 status (seed_pairs.json exists means complete)
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    if (await fs.pathExists(seedPairsPath)) {
+      const seedPairs = await fs.readJson(seedPairsPath);
+      phases.phase1.status = 'complete';
+      phases.phase1.seedsProcessed = seedPairs.seeds?.length || seedPairs.length || 0;
+    }
+
+    // Check Phase 1 batches (partial completion)
+    const phase1BatchesDir = path.join(courseDir, 'phase1_batches');
+    if (await fs.pathExists(phase1BatchesDir)) {
+      const batches = await fs.readdir(phase1BatchesDir);
+      const jsonBatches = batches.filter(f => f.endsWith('.json'));
+      if (jsonBatches.length > 0 && phases.phase1.status === 'pending') {
+        phases.phase1.status = 'running';
+        phases.phase1.batchCount = jsonBatches.length;
+      }
+    }
+
+    // Check Phase 2 status (lego_pairs.json exists means complete)
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    if (await fs.pathExists(legoPairsPath)) {
+      const legoPairs = await fs.readJson(legoPairsPath);
+      phases.phase2.status = 'complete';
+      let legoCount = 0;
+      if (legoPairs.seeds) {
+        legoPairs.seeds.forEach(seed => {
+          legoCount += seed.legos?.length || 0;
+        });
+      }
+      phases.phase2.legosResolved = legoCount;
+    }
+
+    // Check Phase 3 status
+    const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+    let legoBasketsData = null;
+
+    if (await fs.pathExists(legoBasketsPath)) {
+      legoBasketsData = await fs.readJson(legoBasketsPath);
+    }
+
+    // Try to get Phase 3 job status from the phase3 server
+    try {
+      const phase3Url = process.env.PHASE3_URL || 'http://localhost:3459';
+      const phase3Response = await fetch(`${phase3Url}/status/${courseCode}`, {
+        signal: AbortSignal.timeout(3000)
+      });
+
+      if (phase3Response.ok) {
+        const phase3Status = await phase3Response.json();
+
+        if (phase3Status.status === 'running' || phase3Status.status === 'workers_generating') {
+          phases.phase3.status = 'running';
+        } else if (phase3Status.status === 'complete' || phase3Status.status === 'phase3_complete') {
+          phases.phase3.status = 'complete';
+        } else if (phase3Status.status === 'failed') {
+          phases.phase3.status = 'failed';
+        }
+
+        // Build masters array from Phase 3 job data
+        if (phase3Status.masters) {
+          phases.phase3.masters = phase3Status.masters.map(m => ({
+            masterNum: m.masterNum,
+            seedRange: m.seedRange || `Seeds ${m.startSeed}-${m.endSeed}`,
+            status: m.status || (m.complete ? 'complete' : 'running'),
+            spawnedAt: m.spawnedAt || phase3Status.startedAt,
+            lastActivityAt: m.lastActivityAt || null,
+            legosExpected: m.legosExpected || m.legoCount || 0,
+            legosReceived: m.legosReceived || 0,
+            workers: (m.workers || []).map(w => ({
+              workerNum: w.workerNum,
+              legoCount: w.legoCount || w.legoIds?.length || 0,
+              status: w.status || 'pending',
+              lastUpload: w.lastUpload || null
+            }))
+          }));
+        }
+
+        // Add upload tracking if available
+        if (phase3Status.uploads) {
+          phases.phase3.totalReceived = phase3Status.uploads.legosReceived || 0;
+          phases.phase3.totalExpected = phase3Status.uploads.expectedLegos || 0;
+        }
+      }
+    } catch (err) {
+      // Phase 3 server not responding - check file-based status
+      if (legoBasketsData) {
+        const basketCount = Object.keys(legoBasketsData.baskets || legoBasketsData).length;
+        if (basketCount > 0) {
+          phases.phase3.status = 'complete';
+        }
+      }
+    }
+
+    // Check manifest status
+    const manifestPath = path.join(courseDir, 'course_manifest.json');
+    if (await fs.pathExists(manifestPath)) {
+      phases.manifest.status = 'complete';
+    }
+
+    // Build activity feed from various sources
+    const recentActivity = [];
+
+    // Add Phase 3 upload activity from lego_baskets metadata
+    if (legoBasketsData?.metadata?.uploads) {
+      legoBasketsData.metadata.uploads.slice(-20).forEach(upload => {
+        recentActivity.push({
+          time: upload.timestamp,
+          event: `${upload.seed}: ${upload.legoCount} LEGOs uploaded${upload.agentId ? ` by ${upload.agentId}` : ''}`,
+          type: 'success'
+        });
+      });
+    }
+
+    // Add from progress logs
+    if (progress.recentLogs) {
+      progress.recentLogs.forEach(log => {
+        recentActivity.push({
+          time: log.time,
+          event: log.message,
+          type: log.level === 'error' ? 'error' : log.level === 'warning' ? 'warning' : 'info'
+        });
+      });
+    }
+
+    // Sort by time descending
+    recentActivity.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+    // Determine overall status
+    let overallStatus = 'idle';
+    if (phases.manifest.status === 'complete') {
+      overallStatus = 'complete';
+    } else if (phases.phase3.status === 'failed' || phases.phase1.status === 'failed') {
+      overallStatus = 'failed';
+    } else if (phases.phase1.status === 'running' || phases.phase3.status === 'running') {
+      overallStatus = 'running';
+    } else if (progress.overallStatus) {
+      overallStatus = progress.overallStatus;
+    }
+
+    res.json({
+      courseCode,
+      overallStatus,
+      phases,
+      recentActivity: recentActivity.slice(0, 50)
+    });
+
+  } catch (error) {
+    console.error(`[Orchestrator] Error fetching agent swimlane data:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // =======================================
 // PIPELINE STATE API ENDPOINTS
 // =======================================

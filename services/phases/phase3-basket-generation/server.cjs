@@ -762,6 +762,9 @@ app.post('/start', async (req, res) => {
     // Branch tracking (detailed)
     branches: [],
 
+    // Master/Worker tracking (for swimlane monitoring)
+    masters: [],
+
     // Configuration (set after prep)
     config: null,
 
@@ -1007,6 +1010,34 @@ app.get('/status/:courseCode', (req, res) => {
 
     error: job.error,
     warnings: job.warnings || [],
+
+    // Master/Worker swimlane data (for agent monitoring dashboard)
+    masters: (job.masters || []).map(m => ({
+      masterNum: m.masterNum,
+      seedRange: m.seedRange,
+      status: m.status,
+      spawnedAt: m.spawnedAt,
+      lastActivityAt: m.lastActivityAt,
+      legosExpected: m.legosExpected,
+      legosReceived: m.legosReceived,
+      error: m.error,
+      workers: (m.workers || []).map(w => ({
+        workerNum: w.workerNum,
+        legoCount: w.legoCount,
+        status: w.status,
+        lastUpload: w.lastUpload
+      }))
+    })),
+
+    // Upload tracking
+    uploads: job.uploads ? {
+      legosReceived: job.uploads.legosReceived,
+      expectedLegos: job.uploads.expectedLegos,
+      seedsUploaded: job.uploads.seedsUploaded ? job.uploads.seedsUploaded.size : 0,
+      expectedSeeds: job.uploads.expectedSeeds,
+      lastUploadAt: job.uploads.lastUploadAt,
+      complete: job.uploads.complete
+    } : null,
 
     // Legacy fields for backward compatibility
     windowsSpawned: job.windowsSpawned,
@@ -1459,8 +1490,8 @@ tell application "${browser}"
         set current tab to newTab
     end tell
 
-    -- Wait for page to load (3 seconds)
-    delay 3
+    -- Wait for page to fully load (5 seconds - critical for claude.ai/code)
+    delay 5
 
     -- Simulate Cmd+V to paste prompt into input field
     tell application "System Events"
@@ -2495,9 +2526,9 @@ Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned
         console.error(`[Phase 3]   ⚠️  Failed to launch ${browser.name}:`, error.message);
       }
 
-      // 8 second delay between launches (critical for reliability - 5s caused tab failures)
+      // 5 second delay between launches (allows page to fully load)
       if (i < actualBrowsers - 1) {
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
       }
     }
 
@@ -2692,7 +2723,55 @@ app.post('/launch-15-masters', async (req, res) => {
       );
     }
 
-    // STEP 5: Launch masters with 8s delay
+    // STEP 5: Create/update job for tracking
+    const jobKey = courseCode;
+    let job = activeJobs.get(jobKey);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'spawning_masters',
+        startedAt: new Date().toISOString(),
+        uploads: {
+          seedsUploaded: new Set(),
+          legosReceived: 0,
+          expectedLegos: totalMissing,
+          expectedSeeds: [...new Set(missingLegos.map(l => l.seedId))].length,
+          lastUploadAt: null,
+          complete: false
+        },
+        milestones: {
+          scaffoldsReady: true,
+          scaffoldsReadyAt: new Date().toISOString()
+        },
+        masters: [],
+        branches: [],
+        config: { mastersCount, workersPerMaster, legosPerWorker },
+        warnings: [],
+        error: null
+      };
+    }
+
+    // Store masters with tracking metadata
+    job.masters = masters.map(m => ({
+      masterNum: m.masterNum,
+      seedRange: m.seedRange,
+      legosExpected: m.legoCount,
+      legosReceived: 0,
+      status: 'pending',
+      spawnedAt: null,
+      lastActivityAt: null,
+      workers: m.workers.map(w => ({
+        workerNum: w.workerNum,
+        legoIds: w.legoIds,
+        legoCount: w.legoCount,
+        status: 'pending',
+        lastUpload: null
+      }))
+    }));
+    job.status = 'spawning_masters';
+    activeJobs.set(jobKey, job);
+
+    // STEP 6: Launch masters with 5s delay (allows page to fully load before next spawn)
     console.log(`\n[Phase 3] Step 4: Launching ${actualMasters} Safari tabs...`);
 
     for (const master of masters) {
@@ -2701,17 +2780,36 @@ app.post('/launch-15-masters', async (req, res) => {
 
       console.log(`[Phase 3] Launching Master ${master.masterNum}: ${master.seedRange} (${master.legoCount} LEGOs, ${master.workers.length} workers)`);
 
-      try {
-        await spawnClaudeCodeSession(promptContent, `phase3-master-${master.masterNum}`);
-      } catch (error) {
-        console.error(`[Phase 3] ❌ Master ${master.masterNum} launch failed:`, error.message);
+      // Update master status to spawning
+      const jobMaster = job.masters.find(m => m.masterNum === master.masterNum);
+      if (jobMaster) {
+        jobMaster.status = 'spawning';
+        jobMaster.spawnedAt = new Date().toISOString();
       }
 
-      // 8s delay between spawns (critical for reliability)
+      try {
+        await spawnClaudeCodeSession(promptContent, `phase3-master-${master.masterNum}`);
+        // Update master status to running after successful spawn
+        if (jobMaster) {
+          jobMaster.status = 'running';
+        }
+      } catch (error) {
+        console.error(`[Phase 3] ❌ Master ${master.masterNum} launch failed:`, error.message);
+        // Update master status to failed on error
+        if (jobMaster) {
+          jobMaster.status = 'failed';
+          jobMaster.error = error.message;
+        }
+      }
+
+      // 5s delay between spawns (allows page to fully load)
       if (master.masterNum < actualMasters) {
-        await new Promise(r => setTimeout(r, 8000));
+        await new Promise(r => setTimeout(r, 5000));
       }
     }
+
+    // Update job status after all masters launched
+    job.status = 'workers_generating';
 
     console.log(`\n[Phase 3] ✅ Launched ${actualMasters} masters`);
     console.log(`[Phase 3] Total workers: ${masters.reduce((sum, m) => sum + m.workers.length, 0)}`);
@@ -3213,6 +3311,37 @@ app.post('/upload-basket', async (req, res) => {
 
       const progress = `${job.uploads.legosReceived}/${job.uploads.expectedLegos} LEGOs`;
       console.log(`   📊 Progress: ${progress} (${job.uploads.seedsUploaded.size}/${job.uploads.expectedSeeds} seeds)`);
+
+      // Update master/worker tracking based on LEGOs uploaded
+      const uploadedLegoIds = Object.keys(baskets);
+      if (job.masters && job.masters.length > 0) {
+        for (const master of job.masters) {
+          let masterLegosReceived = 0;
+          for (const worker of master.workers) {
+            // Check if any of this worker's LEGOs were in this upload
+            const workerUploadedLegos = uploadedLegoIds.filter(id => worker.legoIds?.includes(id));
+            if (workerUploadedLegos.length > 0) {
+              worker.status = 'complete';
+              worker.lastUpload = new Date().toISOString();
+              masterLegosReceived += workerUploadedLegos.length;
+            }
+            // Count total received for this master
+            if (worker.status === 'complete') {
+              // Worker already marked complete - add its full count
+            }
+          }
+          // Update master's total received (recalculate from all workers)
+          master.legosReceived = master.workers.filter(w => w.status === 'complete').reduce((sum, w) => sum + w.legoCount, 0);
+          master.lastActivityAt = new Date().toISOString();
+
+          // Check if master is complete (all workers done)
+          const allWorkersComplete = master.workers.every(w => w.status === 'complete');
+          if (allWorkersComplete && master.status !== 'complete') {
+            master.status = 'complete';
+            console.log(`   🎉 Master ${master.masterNum} complete: all ${master.workers.length} workers done`);
+          }
+        }
+      }
 
       // Report progress to orchestrator
       reportProgressToOrchestrator(course, {

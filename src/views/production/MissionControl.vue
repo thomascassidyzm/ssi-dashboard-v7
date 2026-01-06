@@ -285,6 +285,14 @@ const quickActions = computed(() => {
       description: 'Open course in learning app with QA access',
       badge: null,
       disabled: false
+    },
+    {
+      id: 'agent_monitor',
+      icon: '📡',
+      label: 'Agent Monitor',
+      description: 'View real-time pipeline agent activity',
+      badge: null,
+      disabled: false
     }
   ]
 
@@ -372,6 +380,11 @@ function handleQuickAction(actionId: string) {
       break
     case 'launch_learning_app':
       launchLearningApp()
+      break
+    case 'agent_monitor':
+      router.push({
+        path: `/monitor/${selectedCourse.value}`
+      })
       break
   }
 }

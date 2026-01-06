@@ -95,6 +95,20 @@ const routes = [
     props: true,
     meta: { title: 'Generation Monitor' }
   },
+  // Agent Swimlane Monitor - Mission Control style real-time agent tracking
+  {
+    path: '/monitor',
+    name: 'AgentMonitor',
+    component: () => import('../views/AgentMonitor.vue'),
+    meta: { title: 'Agent Monitor' }
+  },
+  {
+    path: '/monitor/:courseCode',
+    name: 'AgentMonitorCourse',
+    component: () => import('../views/AgentMonitor.vue'),
+    props: true,
+    meta: { title: 'Agent Monitor' }
+  },
   {
     path: '/validate',
     name: 'CourseValidator',

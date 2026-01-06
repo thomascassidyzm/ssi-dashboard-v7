@@ -1,6 +1,6 @@
 app SSiProductionSuite:
   title: "SSI Course Production Suite"
-  version: "2.0.0"
+  version: "2.1.0"
   apml_version: "2.1.0"
   extensions: [APML-EDU]
   description: "Integrated QA, recording, and audio pipeline system for language course production"
@@ -344,6 +344,133 @@ interface mission_control:
         badge: needs_review_count when needs_review_count > 0
         on click:
           navigate to /production/{course_code}/samples
+
+      show tool_card agent_monitor:
+        icon: "cpu-chip"
+        title: "Agent Monitor"
+        description: "Real-time pipeline agent swimlane"
+        badge: active_masters_count when pipeline_running
+        on click:
+          navigate to /monitor/{course_code}
+
+# ============================================
+# INTERFACE - AGENT SWIMLANE MONITOR
+# Version: 2.1.0 (2026-01-06)
+# ============================================
+
+interface agent_swimlane_monitor:
+  description: |
+    Mission Control-style real-time monitoring dashboard for pipeline agents.
+    Shows master/worker status in swimlane visualization with live activity feed.
+
+  route: /monitor/{courseCode}
+  component: AgentSwimlane.vue
+  poll_interval: 3000ms
+
+  aesthetic:
+    theme: "NASA Mission Control / Tactical Operations"
+    background: slate-900 with scan-line animation
+    accents: emerald for active, amber for spawning, red for failed
+    typography: "SF Pro Display with SF Mono for data"
+
+  show header:
+    title: "AGENT SWIMLANE"
+    subtitle: "Pipeline Orchestration Monitor"
+    course_badge: course_code
+    status_indicator:
+      states: [idle, running, complete, failed]
+      pulse_animation: when status == running
+    refresh_indicator: animated when polling
+
+  show swimlanes_container:
+    description: "Horizontal phase swimlanes showing pipeline progress"
+
+    for each phase in [phase1, phase2, phase3, audio, manifest]:
+      show phase_lane:
+        lane_number: phase.index (01-05)
+        lane_title: phase.name
+        lane_subtitle: phase.description
+        status_badge: phase.status
+        track_line: horizontal connector
+
+        when phase.status == "complete":
+          show track_complete_marker:
+            icon: checkmark
+            count: phase.items_completed
+
+        when phase.status == "running":
+          show track_running_indicator:
+            pulse_ring: animated
+            text: "Processing..."
+
+  show masters_grid:
+    description: "Phase 3 master agent cards (expandable)"
+    visibility: when phase3.masters.length > 0
+    layout: grid auto-fill minmax(280px, 1fr)
+
+    for each master in phase3.masters:
+      show master_card:
+        class: [master.status, expanded when in expanded_masters]
+        cursor: pointer
+        on_click: toggle_expansion(master.masterNum)
+
+        show master_header:
+          show master_identity:
+            show master_icon:
+              states: [pending, spawning, running, complete, failed, stalled]
+              radar_ping: when status in [running, spawning]
+            master_title: "MASTER {masterNum}"
+            master_range: master.seedRange
+
+          show progress_ring:
+            value: master.legosReceived / master.legosExpected
+            size: 48px
+            progress_text: percentage
+
+        show master_stats:
+          stat received: master.legosReceived
+          stat expected: master.legosExpected
+          stat workers: master.workers.length
+
+        show master_times:
+          spawn_time: relative_time(master.spawnedAt)
+          last_activity: relative_time(master.lastActivityAt)
+
+        show expand_indicator:
+          icon: chevron-down
+          rotate: 180 when expanded
+
+        show workers_panel:
+          visibility: when expanded
+          header: "WORKERS"
+          count_badge: master.workers.length
+
+          for each worker in master.workers:
+            show worker_item:
+              status_dot: colored by worker.status
+              name: "Worker {workerNum}"
+              lego_count: "{legoCount} LEGOs"
+              last_upload: relative_time(worker.lastUpload) or "waiting..."
+
+  show activity_feed:
+    position: sidebar (desktop) or bottom (mobile)
+    max_height: calc(100vh - 120px)
+    sticky: true
+
+    show feed_header:
+      icon: activity
+      title: "LIVE FEED"
+      count_badge: recentActivity.length
+
+    show feed_list:
+      scrollable: true
+      transition: slide-in from left
+
+      for each event in recentActivity:
+        show feed_event:
+          indicator_color: based on event.type
+          message: event.event
+          timestamp: relative_time(event.time)
 
 # ============================================
 # INTERFACE - SCRIPT VIEWER
@@ -1267,6 +1394,69 @@ navigation:
     guards:
       - authenticated
       - role in [admin, audio_engineer]
+
+  route /monitor:
+    component: AgentMonitor
+    description: "Agent Swimlane Monitor landing page with course selector"
+    guards:
+      - authenticated
+
+  route /monitor/{courseCode}:
+    component: AgentSwimlane
+    description: "Real-time pipeline agent swimlane visualization"
+    guards:
+      - authenticated
+      - has_course_access
+    props:
+      courseCode: from_route
+
+# ============================================
+# API ENDPOINTS - AGENT MONITORING
+# ============================================
+
+api_endpoint agents_status:
+  path: "/api/courses/{courseCode}/agents"
+  method: GET
+  description: "Get real-time status of all pipeline agents for a course"
+
+  response:
+    courseCode: string
+    overallStatus: enum [idle, running, complete, failed]
+    phases:
+      phase1:
+        status: enum [pending, running, complete, failed]
+        seedsProcessed: number
+      phase2:
+        status: enum [pending, running, complete, failed]
+      phase3:
+        status: enum [pending, running, complete, failed]
+        masters: array of MasterAgent
+      audio:
+        status: enum [pending, running, complete, failed]
+      manifest:
+        status: enum [pending, running, complete, failed]
+    recentActivity: array of ActivityEvent
+
+  data MasterAgent:
+    masterNum: number
+    seedRange: string              # "S0001-S0005"
+    status: enum [pending, spawning, running, complete, failed, stalled]
+    spawnedAt: timestamp optional
+    lastActivityAt: timestamp optional
+    legosExpected: number
+    legosReceived: number
+    workers: array of WorkerAgent
+
+  data WorkerAgent:
+    workerNum: number
+    legoCount: number
+    status: enum [pending, running, complete]
+    lastUpload: timestamp optional
+
+  data ActivityEvent:
+    time: timestamp
+    event: string
+    type: enum [info, success, warning, error]
 
 # ============================================
 # AUDIO CONFIGURATION

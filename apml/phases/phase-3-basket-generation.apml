@@ -1,12 +1,12 @@
 # APML Phase 3: Practice Basket Generation
-# Version: 10.1.0 (2025-12-03)
+# Version: 10.2.0 (2026-01-06)
 # Status: Production-ready
 # Server Port: 3459
 
 phase Phase3BasketGeneration:
   name: "Phase 3: Practice Basket Generation"
   purpose: "Generate high-quality practice phrase baskets using linguistic reasoning"
-  version: "10.1.0"
+  version: "10.2.0"
   server_port: 3459
 
   ## ==========================================================================
@@ -422,10 +422,157 @@ phase Phase3BasketGeneration:
       - "Extended thinking used for challenging LEGOs"
 
   ## ==========================================================================
+  ## MULTI-MASTER ORCHESTRATION (v10.2)
+  ## ==========================================================================
+
+  multi_master_orchestration:
+    description: |
+      Phase 3 uses a multi-master architecture for parallel basket generation.
+      Seeds are divided into groups (e.g., 5 seeds per master) and each master
+      spawns workers to process individual LEGOs.
+
+    spawn_endpoint: "POST /launch-15-masters"
+    status_endpoint: "GET /status/{courseCode}"
+
+    master_lifecycle:
+      states: [pending, spawning, running, complete, failed, stalled]
+
+      pending:
+        description: "Master defined but not yet spawned"
+        duration: "Until spawn loop reaches this master"
+
+      spawning:
+        description: "Browser launch in progress"
+        duration: "5 seconds (inter-spawn delay)"
+
+      running:
+        description: "Workers active, processing LEGOs"
+        transition_to_complete: "When legosReceived == legosExpected"
+        transition_to_failed: "If spawn fails or no activity for extended period"
+
+      complete:
+        description: "All expected LEGOs received from workers"
+        indicator: "Green checkmark in Agent Swimlane"
+
+      failed:
+        description: "Spawn error or critical failure"
+        requires: "Manual retry via intelligent resume"
+
+      stalled:
+        description: "Running but no activity for >10 minutes"
+        action: "Flag for attention, may need intervention"
+
+    worker_tracking:
+      description: "Workers tracked by LEGO uploads, not browser sessions"
+
+      worker_status:
+        pending: "No uploads received yet"
+        running: "At least one upload received"
+        complete: "All assigned LEGOs uploaded"
+
+      completion_detection: |
+        When a LEGO basket is uploaded via POST /upload-lego,
+        the server checks the uploader_hint to identify the worker
+        and updates worker.legosUploaded count.
+
+    data_model:
+      job:
+        courseCode: string
+        status: enum [pending, running, complete, failed]
+        masters: array of Master
+        startedAt: timestamp
+        completedAt: timestamp optional
+
+      master:
+        masterNum: integer
+        seedRange: string              # "S0001-S0005"
+        seeds: array of string         # ["S0001", "S0002", ...]
+        legosExpected: integer
+        legosReceived: integer
+        status: enum [pending, spawning, running, complete, failed, stalled]
+        spawnedAt: timestamp optional
+        lastActivityAt: timestamp optional
+        workers: array of Worker
+
+      worker:
+        workerNum: integer
+        legoCount: integer
+        legoIds: array of string       # ["S0001L01", "S0001L02", ...]
+        status: enum [pending, running, complete]
+        legosUploaded: integer default 0
+        lastUpload: timestamp optional
+
+    api_integration:
+      get_status:
+        endpoint: "GET /status/{courseCode}"
+        returns:
+          courseCode: string
+          status: string
+          masters: array of master objects (when available)
+
+      upload_tracking:
+        endpoint: "POST /upload-lego"
+        side_effect: "Updates worker.legosUploaded and master.legosReceived"
+
+    monitoring:
+      component: "AgentSwimlane.vue"
+      route: "/monitor/{courseCode}"
+      poll_interval: "3 seconds"
+      features:
+        - "Master cards with status badges"
+        - "Expandable workers panel"
+        - "Progress rings showing LEGOs received/expected"
+        - "Time since spawn, time since last activity"
+        - "Live activity feed"
+
+  ## ==========================================================================
+  ## INTELLIGENT RESUME (Recovery)
+  ## ==========================================================================
+
+  intelligent_resume:
+    description: |
+      When Phase 3 fails partially (some masters complete, some fail),
+      the system supports intelligent resume to continue from where it left off.
+
+    mechanism:
+      - "Query lego_baskets.json for existing baskets"
+      - "Compare against expected LEGOs from lego_pairs.json"
+      - "Calculate missing LEGOs"
+      - "Launch new job targeting only missing LEGOs"
+
+    trigger: "Re-launch /launch-15-masters with same courseCode"
+    behavior: "System detects existing progress and resumes"
+
+    no_automatic_retry:
+      description: |
+        Phase 3 does NOT automatically retry failed masters.
+        Recovery requires manual triggering of a new launch.
+        This is intentional to allow investigation of failures.
+
+  ## ==========================================================================
   ## VERSION HISTORY
   ## ==========================================================================
 
   version_history:
+    v10_2:
+      date: "2026-01-06"
+      status: "Production Ready"
+      title: "Multi-Master Orchestration Tracking"
+      changes:
+        - "Added master/worker job tracking data model"
+        - "Document spawn status states (pending → spawning → running → complete/failed)"
+        - "Upload-based worker completion tracking"
+        - "Integration with Agent Swimlane Monitor"
+        - "Intelligent resume mechanism for partial failures"
+
+    v10_1:
+      date: "2025-12-03"
+      status: "Production Ready"
+      title: "Basket Cycle Sequence"
+      changes:
+        - "Added LEGO Debut cycle for M-type LEGOs"
+        - "Documented component → debut → practice sequence"
+
     v5_0:
       date: "2025-11-09"
       status: "Production Ready"
