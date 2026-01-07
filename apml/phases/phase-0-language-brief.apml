@@ -1,0 +1,299 @@
+# APML Phase 0: Language Pair Intelligence Brief
+# Version: 1.1.0 (2026-01-07)
+# Status: Production-ready
+# Server Port: 3455 (pre-Phase 1)
+#
+# Phase 0 runs ONCE per language pair (not per course).
+# Generated brief is cached in Supabase and reused for all courses with that pair.
+# v1.1: Added conflict_patterns and upchunking_notes for Phase 2
+
+phase Phase0LanguageBrief:
+  name: "Phase 0: Language Pair Intelligence Brief"
+  purpose: "Generate linguistic intelligence to guide Phase 1-3 agents"
+  version: "1.0.0"
+  server_port: 3455
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    Phase 0 is a lightweight, one-time analysis that produces a "brief" for
+    a language pair. This brief contains:
+
+    1. Target language profile (grammar features, word order, etc.)
+    2. ZUT failures/passes specific to this pair
+    3. Chunking guidance for Phase 1
+    4. Phrase generation notes for Phase 3
+    5. Common pitfalls to avoid
+
+    The agent uses its general linguistic knowledge to reason about the
+    specific challenges of the language pair. No pre-programming needed.
+
+  execution_model: "On-demand, cached"
+    trigger: "First course creation for a language pair"
+    cache: "Supabase language_pair_briefs table"
+    reuse: "All subsequent courses with same pair"
+
+  ## ==========================================================================
+  ## INPUT SPECIFICATION
+  ## ==========================================================================
+
+  input:
+    required:
+      known_code: string         # ISO 639-3 code (e.g., "eng", "deu")
+      target_code: string        # ISO 639-3 code (e.g., "spa", "cym")
+      known_name: string         # Full name (e.g., "English", "German")
+      target_name: string        # Full name (e.g., "Spanish", "Welsh")
+
+    optional:
+      sample_seeds: array        # First 5-10 canonical seeds for context
+      target_region: string      # e.g., "Latin America", "Castilian"
+
+  ## ==========================================================================
+  ## OUTPUT SPECIFICATION
+  ## ==========================================================================
+
+  output:
+    format: "JSON"
+    destination: "Supabase language_pair_briefs table"
+
+    schema:
+      target_language_profile:
+        word_order: string           # "SVO", "VSO", "SOV", "flexible"
+        has_gender: boolean
+        gender_system: string        # "m/f", "m/f/n", "none", "classifier"
+        has_cases: boolean
+        case_system: string          # "nominative/accusative", "ergative", etc.
+        has_tones: boolean
+        tone_system: string          # "4 tones", "6 tones", "pitch accent"
+        has_articles: boolean
+        article_system: string       # "definite/indefinite", "none"
+        writing_system: string       # "latin", "cyrillic", "hanzi", "arabic"
+        verb_conjugation: string     # "rich", "minimal", "none"
+        notable_features: array      # ["mutations", "vowel harmony", etc.]
+
+      zut_failures: array
+        schema:
+          known: string              # Word/phrase in known language
+          why: string                # Why it fails ZUT
+
+      zut_passes: array
+        schema:
+          known: string              # Word/phrase in known language
+          target: string             # Correct target translation
+          why: string                # Why it passes ZUT
+
+      chunking_guidance: array       # Strings - guidance for Phase 1 LEGO extraction
+
+      conflict_patterns: array       # Phase 2 - common KNOWN→TARGET conflicts
+        schema:
+          known: string              # Word in known language with multiple meanings
+          targets: array             # Different target translations
+          resolution: string         # How to upchunk to disambiguate
+
+      upchunking_notes: array        # Strings - guidance for Phase 2 conflict resolution
+
+      phrase_generation_notes: array # Strings - guidance for Phase 3 baskets
+
+      common_pitfalls: array         # Strings - mistakes agents make
+
+      cognate_notes: string          # Notes about cognates (if applicable)
+
+      formality_notes: string        # Notes about register/politeness
+
+  ## ==========================================================================
+  ## WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    STEP_1_CHECK_CACHE:
+      description: "Check if brief already exists for this language pair"
+      query: |
+        SELECT brief FROM language_pair_briefs
+        WHERE known_code = $1 AND target_code = $2
+      on_found: "Return cached brief, skip generation"
+      on_not_found: "Continue to STEP_2"
+
+    STEP_2_ANALYZE_PAIR:
+      description: "Agent analyzes the language pair"
+      approach: |
+        Use linguistic knowledge to reason about:
+        - What are the key grammatical features of the target language?
+        - What aspects will cause ZUT failures for speakers of the known language?
+        - What chunking strategies work best for this pair?
+        - What are common mistakes when translating between these languages?
+
+    STEP_3_GENERATE_BRIEF:
+      description: "Produce structured brief following output schema"
+      requirements:
+        - "5-10 ZUT failure examples"
+        - "5-10 ZUT pass examples with translations"
+        - "3-5 chunking guidance points"
+        - "3-5 phrase generation notes"
+        - "3-5 common pitfalls"
+
+    STEP_4_STORE:
+      description: "Insert brief into Supabase"
+      table: "language_pair_briefs"
+      on_conflict: "Do nothing (another process may have created it)"
+
+    STEP_5_RETURN:
+      description: "Return brief for immediate use by Phase 1"
+
+  ## ==========================================================================
+  ## INJECTION INTO LATER PHASES
+  ## ==========================================================================
+
+  injection:
+    phase1:
+      fields_injected:
+        - "zut_failures"
+        - "zut_passes"
+        - "chunking_guidance"
+        - "common_pitfalls"
+      injection_point: "After core prompt, before seed data"
+
+    phase2:
+      fields_injected:
+        - "conflict_patterns"
+        - "upchunking_notes"
+        - "common_pitfalls"
+      injection_point: "After core prompt, before draft_lego_pairs data"
+
+    phase3:
+      fields_injected:
+        - "phrase_generation_notes"
+        - "target_language_profile.word_order"
+        - "common_pitfalls"
+      injection_point: "After core prompt, before scaffold data"
+
+  ## ==========================================================================
+  ## EXAMPLE OUTPUT
+  ## ==========================================================================
+
+  example_output:
+    language_pair: "cym_for_eng"
+    brief:
+      target_language_profile:
+        word_order: "VSO"
+        has_gender: true
+        gender_system: "m/f"
+        has_cases: false
+        has_tones: false
+        has_articles: true
+        article_system: "definite only (y/yr/'r)"
+        writing_system: "latin"
+        verb_conjugation: "rich"
+        notable_features:
+          - "Initial consonant mutations (soft, nasal, aspirate)"
+          - "Definite article varies by following sound"
+          - "Verb-subject-object word order"
+          - "Inflected prepositions (e.g., gyda fi, gyda ti)"
+
+      zut_failures:
+        - known: "the"
+          why: "y/yr/'r depends on following sound AND triggers mutation"
+        - known: "a"
+          why: "Triggers soft mutation - can't separate from noun"
+        - known: "in"
+          why: "yn (state) vs mewn (location) - context dependent"
+        - known: "with"
+          why: "gyda/efo AND inflects for person (gyda fi, gyda ti)"
+        - known: "my"
+          why: "fy + nasal mutation vs 'n (informal) - triggers changes"
+
+      zut_passes:
+        - known: "I want"
+          target: "Dw i eisiau"
+          why: "Fixed form, unambiguous"
+        - known: "Welsh"
+          target: "Cymraeg"
+          why: "No ambiguity"
+        - known: "to speak"
+          target: "siarad"
+          why: "Infinitive form, unambiguous"
+        - known: "now"
+          target: "nawr"
+          why: "No ambiguity"
+        - known: "with you"
+          target: "gyda ti"
+          why: "Informal singular, inflected form absorbed"
+
+      chunking_guidance:
+        - "Article + noun should be M-type: article triggers mutation on noun"
+        - "Possessive + noun should be M-type: possessive triggers mutation"
+        - "Inflected prepositions (gyda fi, arno fe) are A-type"
+        - "Verb forms are generally A-type safe"
+        - "Don't try to teach mutations explicitly - absorb in context (CIK)"
+
+      conflict_patterns:
+        - known: "in"
+          targets: ["yn (state/predicative)", "mewn (location)", "i mewn i (into)"]
+          resolution: "Upchunk: 'in Wales' → 'yng Nghymru', 'in a house' → 'mewn tŷ'"
+        - known: "with"
+          targets: ["gyda (accompaniment)", "â (instrument)"]
+          resolution: "Upchunk: 'with you' → 'gyda ti', 'with a knife' → 'â chyllell'"
+        - known: "on"
+          targets: ["ar (surface)", "ymlaen (continuing)"]
+          resolution: "Upchunk: 'on the table' → 'ar y bwrdd', 'carry on' → 'dal ymlaen'"
+
+      upchunking_notes:
+        - "Welsh prepositions often have multiple meanings - always upchunk with context"
+        - "Mutation-triggering words must be upchunked with their targets"
+        - "Inflected prepositions resolve person ambiguity - use as single A-type LEGOs"
+
+      phrase_generation_notes:
+        - "Welsh word order is VSO - English side may need reordering to sound natural"
+        - "Mutations happen automatically in context - don't highlight them"
+        - "Informal register: use ti forms unless otherwise specified"
+
+      common_pitfalls:
+        - "Trying to create standalone articles as LEGOs"
+        - "Separating possessive from noun (mutation breaks)"
+        - "Using formal forms inconsistently"
+        - "Forgetting that 'yn' has multiple meanings"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api:
+    get_or_generate:
+      endpoint: "POST /api/language-brief"
+      body:
+        known_code: string
+        target_code: string
+        known_name: string (optional, will lookup)
+        target_name: string (optional, will lookup)
+      response:
+        brief: object
+        cached: boolean
+        generated_at: timestamp
+
+    get_cached:
+      endpoint: "GET /api/language-brief/:known/:target"
+      response:
+        brief: object or null
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v1_1_0:
+      date: "2026-01-07"
+      status: "Added Phase 2 support"
+      changes:
+        - "Added conflict_patterns field for Phase 2"
+        - "Added upchunking_notes field for Phase 2"
+        - "Added Phase 2 injection specification"
+        - "Updated Welsh example with conflict patterns"
+
+    v1_0_0:
+      date: "2026-01-07"
+      status: "Initial Release"
+      changes:
+        - "Initial Phase 0 specification"
+        - "Supabase caching model"
+        - "Injection points for Phase 1 and Phase 3"

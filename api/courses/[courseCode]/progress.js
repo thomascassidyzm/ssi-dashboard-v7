@@ -42,8 +42,17 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Database not configured' });
     }
 
+    // Get course info including target seed_count
+    const { data: course } = await supabase
+      .from('courses')
+      .select('seed_count')
+      .eq('code', courseCode)
+      .single();
+
+    const targetSeedCount = course?.seed_count || 668;
+
     // Get counts from all relevant tables in parallel
-    const [seedsResult, legosResult, newLegosResult, phrasesResult, audioResult] = await Promise.all([
+    const [seedsResult, legosResult, newLegosResult, phrasesResult, audioResult, phase1SeedsResult, phase3SeedsResult] = await Promise.all([
       supabase
         .from('course_seeds')
         .select('*', { count: 'exact', head: true })
@@ -68,8 +77,37 @@ export default async function handler(req, res) {
       supabase
         .from('course_audio')
         .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode),
+
+      // Get distinct seeds with LEGOs (Phase 1 complete)
+      supabase
+        .from('course_legos')
+        .select('seed_number')
+        .eq('course_code', courseCode),
+
+      // Get distinct seeds with practice phrases (Phase 3 complete)
+      supabase
+        .from('course_practice_phrases')
+        .select('seed_number')
         .eq('course_code', courseCode)
     ]);
+
+    // Calculate per-seed completion
+    const phase1SeedNumbers = new Set(phase1SeedsResult.data?.map(l => l.seed_number) || []);
+    const phase3SeedNumbers = new Set(phase3SeedsResult.data?.map(p => p.seed_number) || []);
+
+    // Build swim-lane data: per-seed status across all phases
+    const seedProgress = [];
+    for (let i = 1; i <= targetSeedCount; i++) {
+      const seedId = `S${String(i).padStart(4, '0')}`;
+      seedProgress.push({
+        seed: i,
+        seedId,
+        phase1: phase1SeedNumbers.has(i),  // Has LEGOs
+        phase2: phase1SeedNumbers.has(i),  // Phase 2 processes Phase 1 output
+        phase3: phase3SeedNumbers.has(i)   // Has practice phrases
+      });
+    }
 
     const seeds = seedsResult.count || 0;
     const legos = legosResult.count || 0;
@@ -100,6 +138,9 @@ export default async function handler(req, res) {
       overallStatus,
       source: 'supabase',
 
+      // Target seed count for this course
+      targetSeedCount,
+
       // Stats in format expected by GenerationMonitor
       stats: {
         seedsComplete: seeds,
@@ -107,6 +148,13 @@ export default async function handler(req, res) {
         newLegosGenerated: newLegos,
         basketsGenerated: practicePhrases,  // Named for backwards compat with UI
         audioGenerated: audio
+      },
+
+      // Phase completion counts
+      phaseCompletion: {
+        phase1: phase1SeedNumbers.size,
+        phase2: phase1SeedNumbers.size,  // Same as phase1 (processes output)
+        phase3: phase3SeedNumbers.size
       },
 
       // Phase details
@@ -129,6 +177,9 @@ export default async function handler(req, res) {
           audioGenerated: audio
         }
       },
+
+      // Swim-lane data: per-seed status across phases
+      seedProgress,
 
       // Raw counts for debugging
       counts: {

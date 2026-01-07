@@ -66,18 +66,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
         </button>
-
-        <!-- Flag Button -->
-        <button
-          @click="toggleFlag"
-          class="flag-button p-2 rounded-lg transition-all"
-          :class="flagButtonClass"
-          :title="phrase.is_flagged ? 'Update flag' : 'Flag sample (F)'"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
-          </svg>
-        </button>
+        <!-- Per-audio flag buttons are below in audio-controls section -->
       </div>
     </div>
 
@@ -236,7 +225,6 @@ const props = defineProps<{
 
 // Emits
 const emit = defineEmits<{
-  phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
   audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   play: [sample: AudioSample];
@@ -283,18 +271,7 @@ const statusBadgeClass = computed(() => {
   return 'bg-slate-500 bg-opacity-20 text-slate-300';
 });
 
-const flagButtonClass = computed(() => {
-  if (props.phrase.is_flagged) {
-    return 'bg-amber-500 text-white hover:bg-amber-600';
-  }
-  return 'bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white';
-});
-
 // Methods
-const toggleFlag = () => {
-  emit('phraseFlag', props.phrase);
-};
-
 const onEdit = () => {
   emit('phraseEdit', props.phrase);
 };
@@ -318,12 +295,6 @@ const audioStatuses = ref<Record<AudioTrack, SampleStatus | null>>({
   known: null,
   target1: null,
   target2: null,
-});
-
-const audioFlags = ref<Record<AudioTrack, boolean>>({
-  known: false,
-  target1: false,
-  target2: false,
 });
 
 // Get UUID for a track
@@ -351,20 +322,22 @@ const getAudioStatus = (track: AudioTrack): SampleStatus | null => {
   return audioStatuses.value[track];
 };
 
-// Check if specific audio is flagged
+// Check if specific audio is flagged (from phrase data, not local state)
 const isAudioFlagged = (track: AudioTrack): boolean => {
-  return audioFlags.value[track];
+  switch (track) {
+    case 'known': return !!props.phrase.known_flag;
+    case 'target1': return !!props.phrase.target1_flag;
+    case 'target2': return !!props.phrase.target2_flag;
+    default: return false;
+  }
 };
 
-// Flag a single audio track
+// Flag a single audio track (parent handles the toggle and API call)
 const flagSingleAudio = (track: AudioTrack) => {
   const uuid = getUuidForTrack(track);
   if (!uuid) return;
 
-  // Toggle local flag state
-  audioFlags.value[track] = !audioFlags.value[track];
-
-  // Emit event for parent to handle API call
+  // Emit event for parent to handle API call and state update
   emit('audioFlag', props.phrase, track, uuid);
 };
 

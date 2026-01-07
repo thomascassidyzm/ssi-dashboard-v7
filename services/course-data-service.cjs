@@ -592,40 +592,153 @@ async function getCourseProgress(courseCode) {
   if (!USE_DATABASE_READS) return null;
   if (!supabase) throw new Error('Supabase not initialized');
 
-  // Get seed count
+  // Get course info including target seed_count
+  const { data: course } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('code', courseCode)
+    .single();
+
+  const targetSeedCount = course?.seed_count || 668;
+
+  // Get seed count (all statuses - for monitoring we want to see everything)
   const { count: seedCount } = await supabase
     .from('course_seeds')
     .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('status', 'released');
+    .eq('course_code', courseCode);
 
-  // Get LEGO counts
+  // Get LEGO counts (all statuses)
   const { data: legoData } = await supabase
     .from('course_legos')
     .select('id, is_new')
-    .eq('course_code', courseCode)
-    .eq('status', 'released');
+    .eq('course_code', courseCode);
 
   const legoCount = legoData?.length || 0;
   const newLegoCount = legoData?.filter(l => l.is_new).length || 0;
 
-  // Get practice phrase count
+  // Get practice phrase count (all statuses)
   const { count: phraseCount } = await supabase
     .from('course_practice_phrases')
     .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('status', 'released');
+    .eq('course_code', courseCode);
+
+  // Get distinct seeds with LEGOs (Phase 1 complete)
+  const { data: phase1Seeds } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+  const phase1SeedNumbers = [...new Set(phase1Seeds?.map(l => l.seed_number) || [])];
+
+  // Get distinct seeds with practice phrases (Phase 3 complete)
+  const { data: phase3Seeds } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+  const phase3SeedNumbers = [...new Set(phase3Seeds?.map(p => p.seed_number) || [])];
 
   return {
     courseCode,
+    targetSeedCount,
     seeds: seedCount || 0,
     legos: legoCount,
     newLegos: newLegoCount,
     practicePhrases: phraseCount || 0,
-    completedPhases: {
-      phase1: seedCount > 0 && legoCount > 0,
-      phase2: newLegoCount !== legoCount, // Some LEGOs marked as not new
-      phase3: phraseCount > 0
+    phase1: {
+      complete: phase1SeedNumbers.length,
+      target: targetSeedCount,
+      percent: Math.round((phase1SeedNumbers.length / targetSeedCount) * 100),
+      seeds: phase1SeedNumbers.sort((a, b) => a - b)
+    },
+    phase2: {
+      complete: newLegoCount !== legoCount, // Simplified: has conflict resolution run?
+      note: 'Phase 2 runs after all Phase 1 complete'
+    },
+    phase3: {
+      complete: phase3SeedNumbers.length,
+      target: targetSeedCount,
+      percent: Math.round((phase3SeedNumbers.length / targetSeedCount) * 100),
+      seeds: phase3SeedNumbers.sort((a, b) => a - b)
+    }
+  };
+}
+
+/**
+ * Get detailed seed-level progress for swim-lane display
+ * Returns status of each seed across all phases
+ */
+async function getSeedProgress(courseCode) {
+  if (!USE_DATABASE_READS) return null;
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  // Get course target
+  const { data: course } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('code', courseCode)
+    .single();
+
+  const targetSeedCount = course?.seed_count || 668;
+
+  // Get all seeds with LEGOs (Phase 1)
+  const { data: phase1Data } = await supabase
+    .from('course_legos')
+    .select('seed_number, is_new')
+    .eq('course_code', courseCode);
+
+  // Get all seeds with practice phrases (Phase 3)
+  const { data: phase3Data } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+
+  // Build per-seed status
+  const seedStatus = {};
+  for (let i = 1; i <= targetSeedCount; i++) {
+    seedStatus[i] = {
+      seed: i,
+      seedId: `S${String(i).padStart(4, '0')}`,
+      phase1: false,
+      phase2: false,
+      phase3: false
+    };
+  }
+
+  // Mark Phase 1 complete
+  const phase1Seeds = new Set(phase1Data?.map(l => l.seed_number) || []);
+  for (const seedNum of phase1Seeds) {
+    if (seedStatus[seedNum]) {
+      seedStatus[seedNum].phase1 = true;
+    }
+  }
+
+  // Mark Phase 2 complete (if any LEGOs have is_new set properly - meaning conflict resolution ran)
+  // For simplicity, we'll mark Phase 2 complete if Phase 1 is complete
+  // A more accurate check would verify is_new flags are set correctly
+  const hasConflictResolution = phase1Data?.some(l => l.is_new === false);
+  if (hasConflictResolution) {
+    for (const seedNum of phase1Seeds) {
+      if (seedStatus[seedNum]) {
+        seedStatus[seedNum].phase2 = true;
+      }
+    }
+  }
+
+  // Mark Phase 3 complete
+  const phase3Seeds = new Set(phase3Data?.map(p => p.seed_number) || []);
+  for (const seedNum of phase3Seeds) {
+    if (seedStatus[seedNum]) {
+      seedStatus[seedNum].phase3 = true;
+    }
+  }
+
+  return {
+    courseCode,
+    targetSeedCount,
+    seeds: Object.values(seedStatus),
+    summary: {
+      phase1: phase1Seeds.size,
+      phase2: hasConflictResolution ? phase1Seeds.size : 0,
+      phase3: phase3Seeds.size
     }
   };
 }
@@ -638,7 +751,7 @@ async function getCourseProgress(courseCode) {
  * @param {string} [targetLang] - Auto-detected from course code if not provided
  * @returns {Promise<Object>}
  */
-async function ensureCourse(courseCode, knownLang, targetLang) {
+async function ensureCourse(courseCode, knownLang, targetLang, seedCount = null) {
   if (!USE_DATABASE_WRITES) return null;
   if (!supabase) throw new Error('Supabase not initialized');
 
@@ -668,6 +781,7 @@ async function ensureCourse(courseCode, knownLang, targetLang) {
       code: courseCode,
       known_lang: knownLang,
       target_lang: targetLang,
+      seed_count: seedCount,
       known_voice: 'tbd',
       target_voice_1: 'tbd',
       target_voice_2: 'tbd'
@@ -676,7 +790,28 @@ async function ensureCourse(courseCode, knownLang, targetLang) {
     .single();
 
   if (error) throw error;
-  logger.info(`Created course: ${courseCode}`);
+  logger.info(`Created course: ${courseCode} (seed_count: ${seedCount || 'not set'})`);
+  return data;
+}
+
+/**
+ * Update course seed count
+ * @param {string} courseCode
+ * @param {number} seedCount - Target seed count (10, 250, 668)
+ */
+async function updateCourseSeedCount(courseCode, seedCount) {
+  if (!USE_DATABASE_WRITES) return null;
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  const { data, error } = await supabase
+    .from('courses')
+    .update({ seed_count: seedCount })
+    .eq('code', courseCode)
+    .select()
+    .single();
+
+  if (error) throw error;
+  logger.info(`Updated ${courseCode} seed_count to ${seedCount}`);
   return data;
 }
 
@@ -823,7 +958,9 @@ module.exports = {
 
   // Course operations
   getCourseProgress,
+  getSeedProgress,
   ensureCourse,
+  updateCourseSeedCount,
 
   // Batch operations
   importSeedWithLegos,

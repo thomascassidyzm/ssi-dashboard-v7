@@ -28,6 +28,9 @@ const { Server } = require('socket.io');
 // Load centralized course mode configuration
 const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes } = require('../config/course-mode-loader.cjs');
 
+// Database-first course data service
+const courseDataService = require('../course-data-service.cjs');
+
 // Load .env file for AWS credentials etc.
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
@@ -3067,33 +3070,90 @@ app.get('/api/courses/:courseCode/phase2-stats', async (req, res) => {
 
 /**
  * GET /api/courses/:courseCode/progress
- * Real-time progress tracking for dashboard polling
+ * Database-first progress tracking - polls Supabase for current state
  */
 app.get('/api/courses/:courseCode/progress', async (req, res) => {
   const { courseCode } = req.params;
-  const progress = courseProgress.get(courseCode);
 
-  if (!progress) {
-    // Check if course exists but has no active progress
+  try {
+    // Get progress from database (single source of truth)
+    const dbProgress = await courseDataService.getCourseProgress(courseCode);
+
+    if (dbProgress) {
+      // Database has data - return it
+      const phases = {
+        phase1: {
+          status: dbProgress.seeds > 0 ? 'complete' : 'pending',
+          seedsProcessed: dbProgress.seeds,
+          legosExtracted: dbProgress.legos
+        },
+        phase2: {
+          status: dbProgress.legos > 0 ? 'complete' : 'pending',
+          legosResolved: dbProgress.legos,
+          newLegos: dbProgress.newLegos
+        },
+        phase3: {
+          status: dbProgress.practicePhrases > 0 ? 'complete' : 'pending',
+          basketsGenerated: dbProgress.practicePhrases
+        },
+        audio: {
+          status: 'pending', // TODO: query course_audio count
+          samplesGenerated: 0
+        },
+        manifest: {
+          status: 'pending'
+        }
+      };
+
+      // Determine overall status
+      let overallStatus = 'idle';
+      if (dbProgress.seeds === 0) {
+        overallStatus = 'idle';
+      } else if (dbProgress.practicePhrases > 0) {
+        overallStatus = 'phase3_complete';
+      } else if (dbProgress.legos > 0) {
+        overallStatus = 'phase2_complete';
+      } else if (dbProgress.seeds > 0) {
+        overallStatus = 'phase1_complete';
+      }
+
+      return res.json({
+        courseCode,
+        overallStatus,
+        stats: {
+          seedsTotal: dbProgress.seeds,
+          seedsComplete: dbProgress.seeds,
+          legosGenerated: dbProgress.legos,
+          newLegos: dbProgress.newLegos,
+          basketsGenerated: dbProgress.practicePhrases
+        },
+        phases,
+        source: 'database'
+      });
+    }
+
+    // Fall back to checking local files
     const courseDir = path.join(VFS_ROOT, courseCode);
     const courseExists = await fs.pathExists(courseDir);
 
     if (courseExists) {
-      // Course exists but not currently running
       return res.json({
         courseCode,
         overallStatus: 'idle',
-        message: 'Course exists but no active pipeline running'
-      });
-    } else {
-      return res.status(404).json({
-        error: 'Course not found',
-        courseCode
+        message: 'Course exists but no data in database yet',
+        source: 'filesystem'
       });
     }
-  }
 
-  res.json(progress);
+    return res.status(404).json({
+      error: 'Course not found',
+      courseCode
+    });
+
+  } catch (error) {
+    console.error(`[Progress] Error getting progress for ${courseCode}:`, error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 /**
@@ -8572,6 +8632,70 @@ app.post('/api/courses/:courseCode/preview/cleanup', async (req, res) => {
 // ============================================================
 // END VOICE CONFIGURATION & PREVIEW ENDPOINTS
 // ============================================================
+
+// ============================================================
+// LANGUAGE BRIEF API (Proxy to Phase 0 Service)
+// ============================================================
+
+const PHASE0_URL = process.env.PHASE0_URL || 'http://localhost:3455';
+
+app.get('/api/language-brief/:known/:target', async (req, res) => {
+  const { known, target } = req.params;
+  try {
+    const response = await fetch(`${PHASE0_URL}/api/language-brief/${known}/${target}`);
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('[Orchestrator] Phase 0 proxy error:', error.message);
+    res.status(503).json({ error: 'Phase 0 service unavailable', details: error.message });
+  }
+});
+
+app.post('/api/language-brief', async (req, res) => {
+  try {
+    const response = await fetch(`${PHASE0_URL}/api/language-brief`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('[Orchestrator] Phase 0 proxy error:', error.message);
+    res.status(503).json({ error: 'Phase 0 service unavailable', details: error.message });
+  }
+});
+
+app.put('/api/language-brief/:known/:target', async (req, res) => {
+  const { known, target } = req.params;
+  try {
+    const response = await fetch(`${PHASE0_URL}/api/language-brief/${known}/${target}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('[Orchestrator] Phase 0 proxy error:', error.message);
+    res.status(503).json({ error: 'Phase 0 service unavailable', details: error.message });
+  }
+});
+
+app.post('/api/language-brief/generate', async (req, res) => {
+  try {
+    const response = await fetch(`${PHASE0_URL}/api/language-brief/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('[Orchestrator] Phase 0 proxy error:', error.message);
+    res.status(503).json({ error: 'Phase 0 service unavailable', details: error.message });
+  }
+});
 
 // ============================================================
 // PRODUCTION API PROXY

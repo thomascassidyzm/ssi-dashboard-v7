@@ -1,11 +1,23 @@
-# Phase 3: Basket Generation (v7.0)
+# Phase 3: Basket Generation (v8.0)
 
-**APML**: v11.2.0
+**APML**: v13.0.0
 **Port**: 3459
-**Version**: 7.0 - Simplified Vocabulary Context, Always 2-2-2-4
+**Version**: 8.0 - Language-agnostic with Phase 0 Brief injection
 **Status**: Production Ready
 **Input**: lego_pairs.json (from Phase 2)
 **Output**: lego_baskets.json
+
+---
+
+## LANGUAGE-SPECIFIC GUIDANCE
+
+> **IMPORTANT**: Before processing, you will receive a **Language Pair Brief**
+> containing language-specific guidance. This brief includes:
+> - Phrase generation notes for this target language
+> - Word order patterns to follow
+> - Common pitfalls to avoid
+>
+> **Use this brief** to ensure your practice phrases sound natural in BOTH languages.
 
 ---
 
@@ -169,22 +181,22 @@ When server detects `is_final_lego: true`:
 
 ```json
 {
-  "courseCode": "spa_for_eng",
+  "courseCode": "[course_code]",
   "seed": "S0362",
   "baskets": {
     "S0362L01": {
-      "lego": {"known": "No", "target": "No"},
+      "lego": {"known": "[known phrase]", "target": "[target phrase]"},
       "practice_phrases": [
-        {"known": "No", "target": "No"},
-        {"known": "No, now", "target": "No, ahora"}
+        {"known": "[simple phrase]", "target": "[simple phrase]"},
+        {"known": "[simple phrase with context]", "target": "[simple phrase with context]"}
       ]
     },
     "S0362L02": {
-      "lego": {"known": "rather quiet", "target": "bastante callado"},
+      "lego": {"known": "[known phrase]", "target": "[target phrase]"},
       "practice_phrases": [
-        {"known": "Rather quiet", "target": "Bastante callado"},
-        {"known": "No, rather quiet", "target": "No, bastante callado"},
-        {"known": "He was rather quiet", "target": "Él estaba bastante callado"},
+        {"known": "[phrase 1]", "target": "[phrase 1]"},
+        {"known": "[phrase 2]", "target": "[phrase 2]"},
+        {"known": "[phrase 3]", "target": "[phrase 3]"},
         // ... up to 10 phrases
       ]
     }
@@ -193,7 +205,7 @@ When server detects `is_final_lego: true`:
 ```
 
 **Format:** Labeled objects (consistent with seed_pairs.json and lego_pairs.json)
-- Each phrase: `{"known": "English phrase", "target": "Spanish phrase"}`
+- Each phrase: `{"known": "[known language phrase]", "target": "[target language phrase]"}`
 
 ---
 
@@ -275,6 +287,7 @@ Your basket generation is successful when:
 ✅ **Final LEGO rule** (highest phrase # = complete seed sentence)
 ✅ **Evidence of thinking** (not mechanical/template output)
 ✅ **Grammar review completed** (every phrase checked for naturalness)
+✅ **Language-specific guidance from brief has been applied**
 
 ---
 
@@ -297,5 +310,6 @@ Your job is to use your natural language intelligence to create meaningful, natu
 - v5.0: Initial basket generation
 - v6.0: Added GATE compliance, vocabulary constraints
 - v7.0: Simplified vocabulary context (10 recent seeds), always 2-2-2-4, early seed flexibility
+- v8.0: Language-agnostic with Phase 0 Brief injection, removed hardcoded examples
 
-**Last Updated**: Dec 8, 2025
+**Last Updated**: Jan 7, 2026

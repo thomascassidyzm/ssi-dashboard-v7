@@ -137,6 +137,7 @@
           :key="item.uuid"
           :item="item"
           @play="playFlaggedItem"
+          @edit="editFlaggedItem"
           @unflag="unflagItem"
         />
       </div>
@@ -789,6 +790,21 @@ const playFlaggedItem = async (item: FlaggedItem) => {
   }
 };
 
+// Edit flagged item - find the phrase and open edit modal
+const editFlaggedItem = (item: FlaggedItem) => {
+  // Find the phrase in the seeds data
+  for (const seed of seeds.value) {
+    for (const lego of seed.legos) {
+      const phrase = lego.phrases.find(p => p.phrase_id === item.phraseId);
+      if (phrase) {
+        openPhraseEditModal(phrase);
+        return;
+      }
+    }
+  }
+  console.warn(`Could not find phrase ${item.phraseId} for editing`);
+};
+
 // Unflag/clear flag from item
 const unflagItem = async (item: FlaggedItem) => {
   try {
@@ -859,19 +875,19 @@ const closeFlagModal = () => {
 // Audio track type
 type AudioTrack = 'known' | 'target1' | 'target2';
 
-// Handle per-audio flagging from PhraseRow
+// Handle per-audio flagging from PhraseRow (toggle: flag if not flagged, unflag if flagged)
 const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  console.log(`Flagging audio: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
+  // Check if this track is currently flagged
+  const flagKey = `${track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
+  const currentFlag = phrase[flagKey];
+  const isCurrentlyFlagged = !!currentFlag;
+
+  const newStatus = isCurrentlyFlagged ? 'approved' : 'flagged_regen_tts';
+  const action = isCurrentlyFlagged ? 'Clearing flag' : 'Flagging';
+  console.log(`${action} audio: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-
-    // Map track to status for API
-    const statusMap: Record<AudioTrack, string> = {
-      known: 'flagged_regen_tts',
-      target1: 'flagged_regen_tts',
-      target2: 'flagged_regen_tts',
-    };
 
     const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
       method: 'POST',
@@ -881,23 +897,31 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
       },
       body: JSON.stringify({
         uuid,
-        status: statusMap[track],
-        note: `Flagged ${track} audio for regeneration`,
+        status: newStatus,
+        note: isCurrentlyFlagged ? 'Flag cleared' : `Flagged ${track} audio for regeneration`,
         flagged_by: 'dashboard_user'
       })
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to flag audio: ${response.statusText}`);
+      throw new Error(`Failed to update flag: ${response.statusText}`);
     }
 
-    // TODO: Update local state to show flag
-    // TODO: Show success toast
-    console.log(`Successfully flagged ${track} audio for phrase ${phrase.phrase_id}`);
+    // Update local state to reflect the change
+    if (isCurrentlyFlagged) {
+      // Clear the flag
+      (phrase as any)[flagKey] = null;
+    } else {
+      // Set the flag
+      (phrase as any)[flagKey] = { status: newStatus, notes: `Flagged ${track} audio for regeneration` };
+    }
+    // Update is_flagged based on any remaining flags
+    phrase.is_flagged = !!(phrase.known_flag || phrase.target1_flag || phrase.target2_flag);
+
+    console.log(`Successfully ${isCurrentlyFlagged ? 'cleared flag for' : 'flagged'} ${track} audio for phrase ${phrase.phrase_id}`);
 
   } catch (err) {
-    console.error('Error flagging audio:', err);
-    // TODO: Show error toast
+    console.error('Error updating flag:', err);
   }
 };
 

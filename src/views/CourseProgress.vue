@@ -44,6 +44,15 @@
       <!-- Progress Content -->
       <div v-else-if="progress" class="space-y-6">
 
+        <!-- Seed Progress Grid (swim-lane view) -->
+        <SeedProgressGrid
+          v-if="progress.seedProgress"
+          :course-code="courseCode"
+          :target-seed-count="progress.targetSeedCount || 668"
+          :seed-progress="progress.seedProgress"
+          @refresh="fetchProgress"
+        />
+
         <!-- Friendly Pipeline Progress (shown while running) -->
         <PipelineProgress
           v-if="progress.overallStatus === 'running'"
@@ -150,6 +159,7 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import PipelineProgress from '../components/PipelineProgress.vue'
+import { SeedProgressGrid } from '../components/generation'
 
 const route = useRoute()
 const courseCode = ref(route.params.code)

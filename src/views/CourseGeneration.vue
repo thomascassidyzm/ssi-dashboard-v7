@@ -194,6 +194,22 @@
           </div>
         </section>
 
+        <!-- Language Brief Editor -->
+        <section v-if="knownLanguage && targetLanguage" class="flow-section">
+          <div class="section-label">
+            <span class="label-text">LANGUAGE BRIEF</span>
+            <div class="label-line"></div>
+          </div>
+
+          <LanguageBriefEditor
+            :known-code="knownLanguage"
+            :target-code="targetLanguage"
+            :known-name="languageNames[knownLanguage] || knownLanguage"
+            :target-name="languageNames[targetLanguage] || targetLanguage"
+            @brief-ready="onBriefReady"
+          />
+        </section>
+
         <!-- Generation Mode Selection -->
         <section v-if="knownLanguage && targetLanguage" class="flow-section">
           <div class="section-label">
@@ -302,6 +318,7 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { io } from 'socket.io-client'
+import { LanguageBriefEditor } from '../components/generation'
 
 const router = useRouter()
 const route = useRoute()
@@ -368,6 +385,14 @@ const phases = ref([
 const courseState = ref(null)
 const isAnalyzing = ref(false)
 const hasExistingProgress = computed(() => courseState.value?.exists === true)
+
+// Language brief
+const languageBrief = ref(null)
+
+function onBriefReady(brief) {
+  languageBrief.value = brief
+  console.log('[CourseGen] Language brief ready:', brief?.target_language_profile?.word_order)
+}
 
 // Computed
 const courseCode = computed(() => {

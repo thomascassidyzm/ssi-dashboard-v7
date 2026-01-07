@@ -214,8 +214,27 @@ AUDIO_GENERATION_FLOW:
 
 CONTENT_PHASES:
   note: |
+    Phase 0 generates language-pair intelligence briefs.
     Phases 1-3 are PERFECT and UNCHANGED from v11/v12.
     Only audio-related phases (8, 9) are updated for v13 schema.
+
+  PHASE_0:
+    name: "Language Pair Intelligence Brief"
+    version: "1.0.0"
+    status: "NEW - 2026-01-07"
+    port: 3455
+    spec: "apml/phases/phase-0-language-brief.apml"
+    description: |
+      Runs ONCE per language pair (not per course).
+      Agent analyzes the pair and produces a brief with:
+      - Target language profile (grammar features)
+      - ZUT failure/pass examples
+      - Chunking guidance for Phase 1
+      - Phrase generation notes for Phase 3
+      - Common pitfalls to avoid
+    storage: "Supabase language_pair_briefs table"
+    trigger: "First course creation for a language pair"
+    reuse: "All subsequent courses with same pair"
 
   PHASE_1:
     name: "Translation + LEGO Extraction"

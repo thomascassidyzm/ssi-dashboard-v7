@@ -3305,6 +3305,22 @@ app.post('/upload-basket', async (req, res) => {
     await fs.writeJson(legoBasketsPath, legoBaskets, { spaces: 2 });
     console.log(`   ✅ Auto-merged ${mergedCount} new LEGOs into lego_baskets.json (total: ${Object.keys(legoBaskets).length})`);
 
+    // DATABASE-FIRST: Write directly to course_practice_phrases
+    let dbPhrases = 0;
+    if (courseDataService.USE_DATABASE_WRITES) {
+      try {
+        for (const [legoId, basket] of Object.entries(baskets)) {
+          const result = await courseDataService.importBasket(course, legoId, basket);
+          if (result) {
+            dbPhrases += result.phraseCount || 0;
+          }
+        }
+        console.log(`   💾 Database: Saved ${dbPhrases} phrases to course_practice_phrases`);
+      } catch (dbError) {
+        console.error(`   ⚠️  Database write failed (JSON saved as fallback):`, dbError.message);
+      }
+    }
+
     // Track upload in job state (if job exists)
     const job = activeJobs.get(course);
     if (job && job.uploads) {

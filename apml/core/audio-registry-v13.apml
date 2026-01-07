@@ -225,6 +225,11 @@ architecture AudioRegistry:
           default: "'draft'"
           check: "status IN ('draft', 'beta', 'released')"
 
+        seed_count:
+          type: "INTEGER"
+          nullable: true
+          description: "Target number of seeds (10=test, 250=beta, 668=full)"
+
         creator_email:
           type: "TEXT"
           nullable: true

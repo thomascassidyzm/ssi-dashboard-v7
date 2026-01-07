@@ -47,14 +47,25 @@
           </svg>
         </button>
 
+        <!-- Edit Button -->
+        <button
+          @click="$emit('edit', item)"
+          class="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white transition-colors"
+          title="Edit phrase"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        </button>
+
         <!-- Clear Flag Button -->
         <button
           @click="$emit('unflag', item)"
-          class="p-2 rounded-lg bg-red-500 bg-opacity-20 hover:bg-opacity-40 text-red-400 hover:text-red-300 transition-colors"
-          title="Clear flag"
+          class="p-2 rounded-lg bg-emerald-500 bg-opacity-20 hover:bg-opacity-40 text-emerald-400 hover:text-emerald-300 transition-colors"
+          title="Clear flag (mark as approved)"
         >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd" />
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
         </button>
       </div>
@@ -92,6 +103,7 @@ const props = defineProps<{
 // Emits
 defineEmits<{
   play: [item: FlaggedItem];
+  edit: [item: FlaggedItem];
   unflag: [item: FlaggedItem];
 }>();
 
