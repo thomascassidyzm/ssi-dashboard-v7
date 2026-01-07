@@ -5,19 +5,23 @@
 
 ---
 
-## IMPORTANT: Dashboard User, Not Code Contributor
+## Current Focus: Master the Dashboard First
 
-**Kai's role is to USE the dashboard to create courses, NOT to modify code.**
+**Phase 1 of your onboarding: Learn to create courses entirely through the dashboard.**
 
-- Work in your own branch: `kai-workspace` (not `main`)
-- All course creation happens through the dashboard UI
-- No code changes should be needed - if something doesn't work, report to Tom
-- Focus on: content creation, brief review, pipeline monitoring
+The dashboard is now mature enough that course creation should be code-free. Your job right now:
+
+1. **Learn the full dashboard workflow** - Phase 0 → Phase 3 → Audio → QA
+2. **Create Italian** - First real course using the new pipeline
+3. **Train Deborah** - She'll create French-250 next week using what you've learned
+4. **Document any gaps** - If something can't be done from dashboard, tell Tom
+
+Once you've mastered the dashboard workflow and trained others, you'll take more ownership of the system. But right now, focus on being a power user, not a developer.
 
 ```bash
-# Always work in your branch
+# Work in your own branch for any local experimentation
 git checkout -b kai-workspace
-git pull origin main  # Get latest, but don't push to main
+git pull origin main  # Get latest updates from Tom
 ```
 
 ---
@@ -335,27 +339,45 @@ git pull && pm2 restart all
 
 ---
 
-## What You DON'T Need to Know
+## What to Focus On (For Now)
 
-You don't need to understand:
-- The codebase structure
-- How the phases work internally
+**Your priority:** Master the dashboard workflow so you can train Deborah.
+
+You don't need to dig into:
+- The codebase internals
+- How the phases work under the hood
 - Database schemas
 - API implementations
 
-Just use the dashboard. If it doesn't work, Tom will fix it.
+That understanding will come later. Right now, focus on the user experience.
 
 ---
 
-## Contact
+## Feedback & Issues
 
-**Tom is your point of contact for ALL issues.**
+**Document everything that doesn't work smoothly:**
 
-- Something broken? → Tell Tom
-- Feature request? → Tell Tom
-- Confused about UI? → Ask Tom
-- Want to change code? → DON'T. Tell Tom.
+- Dashboard confusing somewhere? → Note it
+- Missing feature? → Note it
+- Something broken? → Tell Tom, he'll fix it
+- Idea for improvement? → Write it down
+
+You're essentially doing UAT (user acceptance testing) on the new workflow. Your feedback will shape what Deborah and future course creators experience.
 
 ---
 
-**Focus on creating great Italian content through the dashboard. Tom handles the code.**
+## The Bigger Picture
+
+```
+Kai (this week)     → Italian course + learn dashboard
+     ↓
+Deborah (next week) → French-250 (trained by Kai)
+     ↓
+Future creators     → Self-service course creation
+```
+
+**You're building the training path for everyone who comes after.**
+
+---
+
+**Good luck with Italian! The pipeline is ready.**
