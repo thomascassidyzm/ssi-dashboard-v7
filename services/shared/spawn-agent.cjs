@@ -72,13 +72,15 @@ tell application "${getBrowserAppName(browser)}"
     -- Wait for page to load (3 seconds)
     delay 3
 
-    -- Simulate Cmd+V to paste prompt into input field
+    -- Cmd+A clears any synced draft, then paste and submit IMMEDIATELY
     tell application "System Events"
+        keystroke "a" using command down
         keystroke "v" using command down
-        delay 0.5
-        -- Auto-submit with Enter for fully automated execution
         keystroke return
     end tell
+
+    -- Wait for session to start and draft sync to clear before next spawn
+    delay 8
 end tell
 
 -- Return success

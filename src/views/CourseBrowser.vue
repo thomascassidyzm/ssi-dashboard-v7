@@ -131,10 +131,10 @@
           <!-- Actions -->
           <div class="flex gap-2">
             <router-link
-              :to="`/courses/${course.course_code}`"
+              :to="getGeneratorLink(course.course_code)"
               class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center px-4 py-2 rounded transition-colors text-sm font-medium"
             >
-              View & Edit
+              Generate
             </router-link>
             <router-link
               :to="`/production/${course.course_code}`"
@@ -295,5 +295,14 @@ function isPhaseComplete(course, phase) {
 
 function showDetails(course) {
   router.push(`/courses/${course.course_code}`)
+}
+
+// Parse course code and return generator link (e.g., spa_for_eng → /generate?target=spa&known=eng)
+function getGeneratorLink(courseCode) {
+  const parts = courseCode.split('_for_')
+  if (parts.length === 2) {
+    return { path: '/generate', query: { target: parts[0], known: parts[1] } }
+  }
+  return `/generate`
 }
 </script>
