@@ -91,9 +91,14 @@ pm2 save
 ### 4. Start ngrok Tunnel
 
 ```bash
-# Your personal ngrok domain
+# First time only: authenticate with Tom's ngrok account
+ngrok config add-authtoken <get authtoken from Tom>
+
+# Then start the tunnel with your assigned domain
 ngrok http 3463 --domain=kai-lizard-function.ngrok-free.dev
 ```
+
+Note: Both domains (`kai-lizard-function` and `mirthlessly-nonanesthetized-marilyn`) are on Tom's ngrok account. You use the one assigned to your machine.
 
 ### 5. Update Vercel Config (if using Vercel)
 
