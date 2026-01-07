@@ -5,15 +5,32 @@
 
 ---
 
+## IMPORTANT: Dashboard User, Not Code Contributor
+
+**Kai's role is to USE the dashboard to create courses, NOT to modify code.**
+
+- Work in your own branch: `kai-workspace` (not `main`)
+- All course creation happens through the dashboard UI
+- No code changes should be needed - if something doesn't work, report to Tom
+- Focus on: content creation, brief review, pipeline monitoring
+
+```bash
+# Always work in your branch
+git checkout -b kai-workspace
+git pull origin main  # Get latest, but don't push to main
+```
+
+---
+
 ## Quick Start Checklist
 
-- [ ] Clone/pull latest from `main` branch
-- [ ] Copy `.env.example` to `.env` and configure
+- [ ] Clone repo and checkout `kai-workspace` branch
+- [ ] Copy `.env.example` to `.env` and configure (get keys from Tom)
 - [ ] Set up your ngrok tunnel with your domain
 - [ ] Run `npm install`
 - [ ] Start services with `pm2 start ecosystem.config.cjs`
-- [ ] Open dashboard at `http://localhost:5173` (or your ngrok URL)
-- [ ] Test: Create course → Generate Brief → Run Phase 1
+- [ ] Open dashboard at `http://localhost:5173`
+- [ ] **USE THE DASHBOARD** for all course creation
 
 ---
 
@@ -298,46 +315,47 @@ git pull && pm2 restart all
 
 ## Troubleshooting
 
-### "Brief generation failed"
-- Check Phase 0 logs: `pm2 logs phase0-brief`
-- Verify ANTHROPIC_API_KEY in .env
-- Check model name is correct
+**If something doesn't work, contact Tom.** Don't try to fix code.
 
-### "Agents not connecting"
-- Verify ngrok is running on your domain
-- Check vercel.json rewrites point to your ngrok
-- Verify orchestrator is running: `pm2 status ssi-orchestrator`
+### Quick Checks Before Contacting Tom
 
-### "Database table not found"
-- Check Supabase dashboard for table existence
-- Run migration from `supabase/migrations/`
+1. **Services running?** `pm2 list` - all should be "online"
+2. **ngrok running?** Check your terminal for the ngrok process
+3. **Browser console errors?** Open DevTools (F12) → Console tab
+4. **Correct .env?** Double-check credentials from Tom
 
-### "Audio generation fails"
-- Check AZURE_SPEECH_KEY and AZURE_SPEECH_REGION
-- Verify Phase 8 is running: `pm2 status phase8-audio`
+### Common Issues
+
+| Problem | Quick Check | If Still Broken |
+|---------|-------------|-----------------|
+| Brief won't generate | Wait 60 seconds, check pm2 logs | Contact Tom |
+| Agents not connecting | Is ngrok running? | Contact Tom |
+| Dashboard won't load | `npm run dev` running? | Contact Tom |
+| Audio fails | Check pm2 logs phase8-audio | Contact Tom |
 
 ---
 
-## Files to Know
+## What You DON'T Need to Know
 
-| File | Purpose |
-|------|---------|
-| `CLAUDE.md` | Main agent onboarding guide |
-| `services/phases/phase0-language-brief/PROMPT.md` | Phase 0 prompt |
-| `services/phases/phase1-translation/PROMPT.md` | Phase 1 prompt |
-| `src/views/CourseGeneration.vue` | Main generation UI |
-| `src/components/generation/LanguageBriefEditor.vue` | Brief editor |
-| `services/orchestration/orchestrator.cjs` | Main orchestrator |
-| `.env` | Environment configuration |
+You don't need to understand:
+- The codebase structure
+- How the phases work internally
+- Database schemas
+- API implementations
+
+Just use the dashboard. If it doesn't work, Tom will fix it.
 
 ---
 
 ## Contact
 
-- **Tom**: Primary developer, has context on all recent changes
-- **Dashboard Issues**: Check browser console + PM2 logs
-- **Supabase Issues**: Check Supabase dashboard directly
+**Tom is your point of contact for ALL issues.**
+
+- Something broken? → Tell Tom
+- Feature request? → Tell Tom
+- Confused about UI? → Ask Tom
+- Want to change code? → DON'T. Tell Tom.
 
 ---
 
-**Good luck with Italian! The pipeline is ready - just work through the dashboard.**
+**Focus on creating great Italian content through the dashboard. Tom handles the code.**
