@@ -53,8 +53,8 @@
       <div class="spinner"></div>
       <div class="gen-text">
         <span class="gen-title">Generating Language Brief</span>
-        <span class="gen-desc">Browser agent spawned - generating brief for {{ targetName }}/{{ knownName }}...</span>
-        <span class="gen-hint">Check the Safari window. The brief will appear here when complete.</span>
+        <span class="gen-desc">Claude Opus 4.5 is analyzing {{ targetName }} for {{ knownName }} speakers...</span>
+        <span class="gen-hint">This typically takes 30-60 seconds.</span>
       </div>
     </div>
 
@@ -455,71 +455,23 @@ async function generateBrief() {
     const data = await res.json()
 
     if (res.ok && data.brief) {
-      // Direct brief returned (cached)
+      // Brief generated via Claude Opus 4.5 API
       brief.value = data.brief
       editableBrief.value = JSON.parse(JSON.stringify(data.brief))
       originalBriefJson.value = JSON.stringify(data.brief)
       isExpanded.value = true
-      isGenerating.value = false
       emit('brief-ready', data.brief)
-    } else if (data.status === 'spawned') {
-      // Browser agent spawned - poll for result
-      console.log('[BriefEditor] Agent spawned, polling for brief...')
-      pollForBrief(apiBase)
-    } else if (data.status === 'already_exists') {
-      brief.value = data.brief
-      editableBrief.value = JSON.parse(JSON.stringify(data.brief))
-      originalBriefJson.value = JSON.stringify(data.brief)
-      isExpanded.value = true
-      isGenerating.value = false
-      emit('brief-ready', data.brief)
+      console.log('[BriefEditor] Brief generated successfully')
     } else {
       console.error('[BriefEditor] Generation failed:', data)
       alert(`Generation failed: ${data.error || data.message || 'Unknown error'}`)
-      isGenerating.value = false
     }
   } catch (err) {
     console.error('[BriefEditor] Failed to generate brief:', err)
     alert(`Failed to generate brief: ${err.message}`)
+  } finally {
     isGenerating.value = false
   }
-}
-
-// Poll for brief until it's available
-let pollInterval = null
-async function pollForBrief(apiBase) {
-  const pollUrl = `${apiBase}/api/language-brief/${props.knownCode}/${props.targetCode}`
-  let attempts = 0
-  const maxAttempts = 60 // 5 minutes at 5s intervals
-
-  pollInterval = setInterval(async () => {
-    attempts++
-    try {
-      const res = await fetch(pollUrl, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
-      const data = await res.json()
-
-      if (res.ok && data.brief) {
-        clearInterval(pollInterval)
-        pollInterval = null
-        brief.value = data.brief
-        editableBrief.value = JSON.parse(JSON.stringify(data.brief))
-        originalBriefJson.value = JSON.stringify(data.brief)
-        isExpanded.value = true
-        isGenerating.value = false
-        emit('brief-ready', data.brief)
-        console.log('[BriefEditor] Brief received after polling')
-      } else if (attempts >= maxAttempts) {
-        clearInterval(pollInterval)
-        pollInterval = null
-        isGenerating.value = false
-        alert('Timed out waiting for brief. Check the browser agent.')
-      }
-    } catch (err) {
-      console.warn('[BriefEditor] Poll error:', err.message)
-    }
-  }, 5000) // Poll every 5 seconds
 }
 
 // Paste JSON from clipboard and save
