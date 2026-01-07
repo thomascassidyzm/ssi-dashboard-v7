@@ -249,11 +249,11 @@ const isLoading = ref(false);
 const audioElement = ref<HTMLAudioElement | null>(null);
 const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 
-// API Base URL - use localStorage (set by EnvironmentSwitcher)
+// API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
 const getApiBaseUrl = (): string => {
   const storedUrl = localStorage.getItem('api_base_url');
   if (storedUrl) return storedUrl;
-  return 'http://localhost:3470';
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456';
 };
 
 // Computed Classes
@@ -389,11 +389,13 @@ const playSingleAudio = async (track: AudioTrack) => {
   currentlyPlayingTrack.value = track;
 
   try {
-    // Use s3_key if available (v13), otherwise fall back to legacy UUID format
-    const audioUrl = s3Key
-      ? `${S3_AUDIO_BASE}/${s3Key}`
-      : `${S3_AUDIO_BASE}/mastered/${uuid!.toUpperCase()}.mp3`;
-    await playAudioAndWait(audioUrl);
+    // Get signed URL from API
+    const audioUrl = await getSignedAudioUrl(uuid || s3Key!, s3Key);
+    if (audioUrl) {
+      await playAudioAndWait(audioUrl);
+    } else {
+      console.warn(`No audio URL available for track ${track}`);
+    }
   } catch (err) {
     console.error('Error playing audio:', err);
   } finally {
@@ -401,8 +403,30 @@ const playSingleAudio = async (track: AudioTrack) => {
   }
 };
 
-// S3 audio base URL
-const S3_AUDIO_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com';
+// Get signed URL from API for audio playback
+const getSignedAudioUrl = async (uuid: string, s3Key?: string | null): Promise<string | null> => {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const courseCode = props.courseCode || 'spa_for_eng';
+
+    // Use the signed URL endpoint
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode}/audio/${uuid}/url`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+
+    if (!response.ok) {
+      console.warn(`Failed to get signed URL for ${uuid}: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    return data.url || null;
+  } catch (err) {
+    console.warn(`Error getting signed URL for ${uuid}:`, err);
+    return null;
+  }
+};
 
 // Playback state for QA sequence
 let playbackAborted = false;
@@ -494,15 +518,14 @@ const playTargetAudio = async () => {
 
     isLoading.value = false;
 
-    // Helper to build audio URL (v13 s3_key or legacy format)
-    const buildAudioUrl = (s3Key: string | null, uuid: string | null): string | null => {
-      if (s3Key) return `${S3_AUDIO_BASE}/${s3Key}`;
-      if (uuid) return `${S3_AUDIO_BASE}/mastered/${uuid.toUpperCase()}.mp3`;
-      return null;
-    };
+    // Get signed URLs for all audio files
+    const [knownUrl, target1Url, target2Url] = await Promise.all([
+      knownUuid ? getSignedAudioUrl(knownUuid, knownS3Key) : Promise.resolve(null),
+      target1Uuid ? getSignedAudioUrl(target1Uuid, target1S3Key) : Promise.resolve(null),
+      target2Uuid ? getSignedAudioUrl(target2Uuid, target2S3Key) : Promise.resolve(null),
+    ]);
 
     // Play Known audio
-    const knownUrl = buildAudioUrl(knownS3Key, knownUuid);
     if (knownUrl && !playbackAborted) {
       await playAudioAndWait(knownUrl);
     }
@@ -511,7 +534,6 @@ const playTargetAudio = async () => {
     if (!playbackAborted) await wait(QA_PAUSE_AFTER_KNOWN_MS);
 
     // Play Target1 (female voice)
-    const target1Url = buildAudioUrl(target1S3Key, target1Uuid);
     if (target1Url && !playbackAborted) {
       await playAudioAndWait(target1Url);
     }
@@ -520,7 +542,6 @@ const playTargetAudio = async () => {
     if (!playbackAborted) await wait(QA_PAUSE_BETWEEN_TARGETS_MS);
 
     // Play Target2 (male voice)
-    const target2Url = buildAudioUrl(target2S3Key, target2Uuid);
     if (target2Url && !playbackAborted) {
       await playAudioAndWait(target2Url);
     }

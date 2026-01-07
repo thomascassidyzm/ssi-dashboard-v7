@@ -275,6 +275,96 @@ export async function getCourseFlags(courseCode) {
   return flagsData || [];
 }
 
+/**
+ * Update a sample flag
+ * @param {string} audioUuid - Audio UUID
+ * @param {string} courseCode - Course code (unused, for compatibility)
+ * @param {string} status - New status
+ * @param {string} notes - Optional notes
+ * @param {string} flaggedBy - Who flagged it
+ */
+export async function updateSampleFlag(audioUuid, courseCode, status, notes, flaggedBy) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not configured');
+
+  // Check if flag exists
+  const { data: existing, error: checkError } = await supabase
+    .from('sample_flags')
+    .select('*')
+    .eq('audio_uuid', audioUuid)
+    .single();
+
+  if (checkError && checkError.code !== 'PGRST116') {
+    throw checkError;
+  }
+
+  const now = new Date().toISOString();
+  const historyEntry = {
+    status,
+    notes,
+    flaggedBy,
+    timestamp: now
+  };
+
+  if (existing) {
+    // Update existing flag
+    const newHistory = [...(existing.history || []), historyEntry];
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .update({
+        status,
+        notes,
+        flagged_by: flaggedBy,
+        flagged_at: now,
+        history: newHistory
+      })
+      .eq('audio_uuid', audioUuid)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data;
+  } else {
+    // Insert new flag
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .insert({
+        audio_uuid: audioUuid,
+        status,
+        notes,
+        flagged_by: flaggedBy,
+        flagged_at: now,
+        history: [historyEntry]
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data;
+  }
+}
+
+/**
+ * Bulk update flags
+ * @param {string} courseCode - Course code (unused, for compatibility)
+ * @param {Array} updates - Array of { uuid, status, notes }
+ * @param {string} flaggedBy - Who flagged them
+ */
+export async function bulkUpdateFlags(courseCode, updates, flaggedBy) {
+  const results = [];
+  for (const update of updates) {
+    const result = await updateSampleFlag(
+      update.uuid,
+      courseCode,
+      update.status,
+      update.notes,
+      flaggedBy
+    );
+    results.push(result);
+  }
+  return results;
+}
+
 // =============================================================================
 // CONTENT STATS
 // =============================================================================
@@ -351,6 +441,8 @@ export default {
   getSharedAudioList,
   findSharedAudio,
   getCourseFlags,
+  updateSampleFlag,
+  bulkUpdateFlags,
   getCourseContentCounts,
   getCourseStats
 };

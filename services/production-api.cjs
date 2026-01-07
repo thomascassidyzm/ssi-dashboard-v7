@@ -349,13 +349,11 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
 
     // Update flag in Supabase (includes automatic history tracking)
     const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
-    const updated = await supabaseClient.updateSampleFlag(
-      uuid,
-      courseCode,
+    const updated = await supabaseClient.updateSampleFlag(uuid, {
       status,
-      combinedNotes,
+      notes: combinedNotes,
       flaggedBy
-    )
+    })
 
     // Broadcast update via WebSocket
     io.to(`course:${courseCode}`).emit('sample_updated', {
@@ -404,13 +402,11 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
     const results = []
     for (const { uuid, status, reason, notes, flaggedBy } of updates) {
       const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
-      const updated = await supabaseClient.updateSampleFlag(
-        uuid,
-        courseCode,
+      const updated = await supabaseClient.updateSampleFlag(uuid, {
         status,
-        combinedNotes,
+        notes: combinedNotes,
         flaggedBy
-      )
+      })
       results.push(updated)
     }
 
@@ -704,10 +700,28 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
 })
 
 // Get signed URL for audio playback
+// Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
-    const { uuid } = req.params
-    const url = await s3Service.getAudioSignedUrl(uuid)
+    const { courseCode, uuid } = req.params
+
+    // Try to get audio record from database for s3_key
+    let s3Key = null
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      const { data: audioData } = await supabase
+        .from('course_audio')
+        .select('s3_key')
+        .eq('id', uuid)
+        .single()
+
+      if (audioData?.s3_key) {
+        s3Key = audioData.s3_key
+      }
+    }
+
+    // Generate signed URL (uses s3_key if available, otherwise legacy path)
+    const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
     res.json({ url })
   } catch (error) {
     logger.error('Error generating signed URL:', error)
@@ -2159,49 +2173,87 @@ app.get('/api/production/:courseCode/seed/:seedId/baskets', async (req, res) => 
  * Batch lookup audio UUIDs for a set of texts
  * Returns a map: normalized_text -> { known, target1, target2 }
  *
- * v13: Query course_audio directly (flat table, no joins)
+ * Uses audio_registry table (v12 schema) with voice/cadence matching
+ * This matches the practice_cycles view join logic
  */
 async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTexts) {
   const audioMap = new Map()  // normalized_text -> { known?, target1?, target2? }
 
-  // Combine and deduplicate all texts
-  const allTextsSet = new Set([...knownTexts, ...targetTexts].filter(t => t))
-  const allTexts = Array.from(allTextsSet)
-
-  if (allTexts.length === 0) return audioMap
-
-  // Normalize texts for lookup
-  const normalizedTexts = allTexts.map(t => t.toLowerCase().trim())
-
-  // v13: Query course_audio directly (flat table with text_normalized)
-  const { data: courseAudio } = await supabase
-    .from('course_audio')
-    .select('id, text_normalized, role, s3_key')
+  // Get course config for voice/cadence matching
+  const { data: course, error: courseError } = await supabase
+    .from('courses')
+    .select('known_lang, target_lang, known_voice, target1_voice, target2_voice, known_cadence, target_cadence')
     .eq('course_code', courseCode)
-    .in('text_normalized', normalizedTexts)
+    .single()
 
-  if (!courseAudio || courseAudio.length === 0) return audioMap
+  if (courseError || !course) {
+    logger.warn(`Could not find course ${courseCode} for audio lookup`)
+    return audioMap
+  }
 
-  // Build final map: normalized_text -> { known?, target1?, target2?, known_s3_key?, etc }
-  for (const ca of courseAudio) {
-    const normalizedText = ca.text_normalized
-    if (!normalizedText) continue
+  // Normalize and deduplicate texts
+  const normalizedKnown = [...new Set(knownTexts.filter(t => t).map(t => t.toLowerCase().trim()))]
+  const normalizedTarget = [...new Set(targetTexts.filter(t => t).map(t => t.toLowerCase().trim()))]
 
-    if (!audioMap.has(normalizedText)) {
-      audioMap.set(normalizedText, {})
+  if (normalizedKnown.length === 0 && normalizedTarget.length === 0) return audioMap
+
+  // Query known audio (source language)
+  if (normalizedKnown.length > 0 && course.known_voice) {
+    const { data: knownAudio } = await supabase
+      .from('audio_registry')
+      .select('audio_id, content_normalized, duration_ms')
+      .in('content_normalized', normalizedKnown)
+      .eq('language', course.known_lang)
+      .eq('voice_id', course.known_voice)
+      .eq('cadence', course.known_cadence || 'natural')
+
+    for (const audio of (knownAudio || [])) {
+      if (!audioMap.has(audio.content_normalized)) {
+        audioMap.set(audio.content_normalized, {})
+      }
+      const entry = audioMap.get(audio.content_normalized)
+      entry.known = audio.audio_id
+      entry.known_duration_ms = audio.duration_ms
     }
+  }
 
-    const entry = audioMap.get(normalizedText)
-    // Map role to entry field (known, target1, target2) with both id and s3_key
-    if (ca.role === 'known') {
-      entry.known = ca.id
-      entry.known_s3_key = ca.s3_key
-    } else if (ca.role === 'target1') {
-      entry.target1 = ca.id
-      entry.target1_s3_key = ca.s3_key
-    } else if (ca.role === 'target2') {
-      entry.target2 = ca.id
-      entry.target2_s3_key = ca.s3_key
+  // Query target1 audio
+  if (normalizedTarget.length > 0 && course.target1_voice) {
+    const { data: target1Audio } = await supabase
+      .from('audio_registry')
+      .select('audio_id, content_normalized, duration_ms')
+      .in('content_normalized', normalizedTarget)
+      .eq('language', course.target_lang)
+      .eq('voice_id', course.target1_voice)
+      .eq('cadence', course.target_cadence || 'slow')
+
+    for (const audio of (target1Audio || [])) {
+      if (!audioMap.has(audio.content_normalized)) {
+        audioMap.set(audio.content_normalized, {})
+      }
+      const entry = audioMap.get(audio.content_normalized)
+      entry.target1 = audio.audio_id
+      entry.target1_duration_ms = audio.duration_ms
+    }
+  }
+
+  // Query target2 audio
+  if (normalizedTarget.length > 0 && course.target2_voice) {
+    const { data: target2Audio } = await supabase
+      .from('audio_registry')
+      .select('audio_id, content_normalized, duration_ms')
+      .in('content_normalized', normalizedTarget)
+      .eq('language', course.target_lang)
+      .eq('voice_id', course.target2_voice)
+      .eq('cadence', course.target_cadence || 'slow')
+
+    for (const audio of (target2Audio || [])) {
+      if (!audioMap.has(audio.content_normalized)) {
+        audioMap.set(audio.content_normalized, {})
+      }
+      const entry = audioMap.get(audio.content_normalized)
+      entry.target2 = audio.audio_id
+      entry.target2_duration_ms = audio.duration_ms
     }
   }
 
@@ -2209,6 +2261,7 @@ async function batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTex
 }
 
 // Get script view data - all phrases grouped by seed and LEGO
+// Uses practice_cycles view which already has audio UUIDs joined (same as learning app)
 // Supports pagination via query params: seedStart, seedEnd (e.g., S0001, S0030)
 app.get('/api/production/:courseCode/script-view', async (req, res) => {
   const { courseCode } = req.params
@@ -2230,140 +2283,182 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    // Build query with optional seed range filter
-    let query = supabase
-      .from('course_seeds')
-      .select(`
-        id,
-        seed_number,
-        known_text,
-        target_text,
-        status,
-        course_legos (
-          id,
-          lego_index,
-          known_text,
-          target_text,
-          type,
-          is_new,
-          course_practice_phrases (
-            id,
-            position,
-            known_text,
-            target_text,
-            word_count,
-            lego_count
-          )
-        )
-      `)
+    // Query practice_cycles view - already has audio UUIDs joined via audio_registry
+    // This is the same view the learning app uses
+    let cyclesQuery = supabase
+      .from('practice_cycles')
+      .select('*')
       .eq('course_code', courseCode)
 
     // Apply seed range filter if provided
     if (startNum !== null) {
-      query = query.gte('seed_number', startNum)
+      cyclesQuery = cyclesQuery.gte('seed_number', startNum)
     }
     if (endNum !== null) {
-      query = query.lte('seed_number', endNum)
+      cyclesQuery = cyclesQuery.lte('seed_number', endNum)
     }
 
-    query = query.order('seed_number', { ascending: true })
+    cyclesQuery = cyclesQuery.order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true })
+      .order('position', { ascending: true })
 
-    const { data: seeds, error } = await query
+    // Also query course_seeds and course_legos for their text values
+    let seedsQuery = supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text, status')
+      .eq('course_code', courseCode)
 
-    if (error) {
-      logger.error(`Script view query error for ${courseCode}:`, error)
-      throw error
+    if (startNum !== null) {
+      seedsQuery = seedsQuery.gte('seed_number', startNum)
+    }
+    if (endNum !== null) {
+      seedsQuery = seedsQuery.lte('seed_number', endNum)
     }
 
-    // Collect all unique texts for audio lookup
-    const knownTexts = []
-    const targetTexts = []
-    for (const seed of (seeds || [])) {
-      for (const lego of (seed.course_legos || [])) {
-        for (const phrase of (lego.course_practice_phrases || [])) {
-          if (phrase.known_text) knownTexts.push(phrase.known_text)
-          if (phrase.target_text) targetTexts.push(phrase.target_text)
-        }
-      }
+    let legosQuery = supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text, type, is_new')
+      .eq('course_code', courseCode)
+
+    if (startNum !== null) {
+      legosQuery = legosQuery.gte('seed_number', startNum)
+    }
+    if (endNum !== null) {
+      legosQuery = legosQuery.lte('seed_number', endNum)
     }
 
-    // Batch lookup audio UUIDs
-    const audioMap = await batchLookupAudioUuids(supabase, courseCode, knownTexts, targetTexts)
-    logger.info(`Audio lookup for ${courseCode}: found ${audioMap.size} text->audio mappings`)
+    // Run all queries in parallel
+    const [cyclesResult, seedsResult, legosResult] = await Promise.all([
+      cyclesQuery,
+      seedsQuery,
+      legosQuery
+    ])
 
-    // Transform to the expected hierarchical structure
-    const transformedSeeds = (seeds || []).map(seed => {
-      // Format seed_id as S0001, S0002, etc.
-      const seedId = 'S' + String(seed.seed_number).padStart(4, '0')
+    if (cyclesResult.error) {
+      logger.error(`Script view cycles query error for ${courseCode}:`, cyclesResult.error)
+      throw cyclesResult.error
+    }
 
-      // Transform LEGOs, sorted by lego_index
-      const legos = (seed.course_legos || [])
-        .sort((a, b) => a.lego_index - b.lego_index)
-        .map(lego => {
-          // Format lego_id as S0001L01, S0001L02, etc.
-          const legoId = seedId + 'L' + String(lego.lego_index).padStart(2, '0')
+    const cycles = cyclesResult.data
+    const seedsData = seedsResult.data || []
+    const legosData = legosResult.data || []
 
-          // Transform phrases, sorted by position
-          // Derive phrase type from position and metadata
-          const phrases = (lego.course_practice_phrases || [])
-            .sort((a, b) => a.position - b.position)
-            .map(phrase => {
-              // Derive phrase type based on position and characteristics
-              // Position 1 is typically 'intro', position 2 is 'lego' (debut), rest are practice
-              let phraseType = 'practice'
-              if (phrase.position === 1) {
-                phraseType = 'intro'
-              } else if (phrase.position === 2) {
-                phraseType = 'lego'
-              } else if (phrase.position === 3) {
-                phraseType = 'debut'
-              }
-
-              // Look up audio UUIDs for this phrase
-              const knownNorm = phrase.known_text?.toLowerCase().trim()
-              const targetNorm = phrase.target_text?.toLowerCase().trim()
-              const knownAudio = knownNorm ? audioMap.get(knownNorm) : null
-              const targetAudio = targetNorm ? audioMap.get(targetNorm) : null
-
-              return {
-                id: phrase.id,
-                position: phrase.position,
-                known_text: phrase.known_text,
-                target_text: phrase.target_text,
-                type: phraseType,
-                word_count: phrase.word_count,
-                lego_count: phrase.lego_count,
-                // Audio UUIDs (null if not found)
-                known_audio_uuid: knownAudio?.known || null,
-                target1_audio_uuid: targetAudio?.target1 || null,
-                target2_audio_uuid: targetAudio?.target2 || null,
-                // S3 keys for direct URL construction
-                known_s3_key: knownAudio?.known_s3_key || null,
-                target1_s3_key: targetAudio?.target1_s3_key || null,
-                target2_s3_key: targetAudio?.target2_s3_key || null
-              }
-            })
-
-          return {
-            lego_id: legoId,
-            lego_index: lego.lego_index,
-            type: lego.type,
-            known_text: lego.known_text,
-            target_text: lego.target_text,
-            is_new: lego.is_new,
-            phrases
-          }
-        })
-
-      return {
-        seed_id: seedId,
-        seed_number: seed.seed_number,
+    // Build lookup maps for seeds and legos
+    const seedTextMap = new Map()  // seed_number -> { known_text, target_text, status }
+    for (const seed of seedsData) {
+      seedTextMap.set(seed.seed_number, {
         known_text: seed.known_text,
         target_text: seed.target_text,
-        status: seed.status,
-        legos
+        status: seed.status
+      })
+    }
+
+    const legoTextMap = new Map()  // "seed_number:lego_index" -> { known_text, target_text, type, is_new }
+    for (const lego of legosData) {
+      const key = `${lego.seed_number}:${lego.lego_index}`
+      legoTextMap.set(key, {
+        known_text: lego.known_text,
+        target_text: lego.target_text,
+        type: lego.type,
+        is_new: lego.is_new
+      })
+    }
+
+    logger.info(`Loaded ${cycles?.length || 0} practice cycles, ${seedsData.length} seeds, ${legosData.length} legos for ${courseCode}`)
+
+    // Group flat cycles into hierarchical structure: seeds -> legos -> phrases
+    // practice_cycles view already has audio UUIDs joined via audio_registry
+    const seedsMap = new Map()  // seed_number -> { legos: Map<lego_id, { phrases: [] }> }
+
+    for (const cycle of (cycles || [])) {
+      const seedNum = cycle.seed_number
+      const legoId = cycle.lego_id  // Already formatted as S0001L01 in the view
+
+      // Get or create seed entry
+      if (!seedsMap.has(seedNum)) {
+        seedsMap.set(seedNum, {
+          seed_number: seedNum,
+          seed_id: 'S' + String(seedNum).padStart(4, '0'),
+          known_text: null,  // Will get from first phrase
+          target_text: null,
+          legos: new Map()
+        })
       }
-    })
+      const seedEntry = seedsMap.get(seedNum)
+
+      // Get or create lego entry
+      if (!seedEntry.legos.has(legoId)) {
+        seedEntry.legos.set(legoId, {
+          lego_id: legoId,
+          lego_index: cycle.lego_index,
+          type: null,  // Not in practice_cycles view
+          known_text: null,
+          target_text: null,
+          is_new: null,
+          phrases: []
+        })
+      }
+      const legoEntry = seedEntry.legos.get(legoId)
+
+      // S3 path is mastered/{UUID-UPPERCASE}.mp3 (same as learning app)
+      const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
+
+      // Add phrase
+      legoEntry.phrases.push({
+        id: cycle.id,
+        position: cycle.position,
+        known_text: cycle.known_text,
+        target_text: cycle.target_text,
+        type: cycle.phrase_type || 'practice',  // From view
+        word_count: cycle.word_count,
+        lego_count: cycle.lego_count,
+        // Audio UUIDs directly from practice_cycles view (already joined via audio_registry)
+        known_audio_uuid: cycle.known_audio_uuid || null,
+        target1_audio_uuid: cycle.target1_audio_uuid || null,
+        target2_audio_uuid: cycle.target2_audio_uuid || null,
+        // S3 keys for direct URL construction
+        known_s3_key: buildS3Key(cycle.known_audio_uuid),
+        target1_s3_key: buildS3Key(cycle.target1_audio_uuid),
+        target2_s3_key: buildS3Key(cycle.target2_audio_uuid),
+        // Durations from view
+        known_duration_ms: cycle.known_duration_ms || null,
+        target1_duration_ms: cycle.target1_duration_ms || null,
+        target2_duration_ms: cycle.target2_duration_ms || null
+      })
+    }
+
+    // Convert maps to arrays and sort, enriching with seed/lego text from lookup maps
+    const transformedSeeds = Array.from(seedsMap.values())
+      .sort((a, b) => a.seed_number - b.seed_number)
+      .map(seed => {
+        // Get seed text from lookup map
+        const seedData = seedTextMap.get(seed.seed_number) || {}
+
+        return {
+          seed_id: seed.seed_id,
+          seed_number: seed.seed_number,
+          known_text: seedData.known_text || null,
+          target_text: seedData.target_text || null,
+          status: seedData.status || null,
+          legos: Array.from(seed.legos.values())
+            .sort((a, b) => a.lego_index - b.lego_index)
+            .map(lego => {
+              // Get lego text from lookup map
+              const legoKey = `${seed.seed_number}:${lego.lego_index}`
+              const legoData = legoTextMap.get(legoKey) || {}
+
+              return {
+                lego_id: lego.lego_id,
+                lego_index: lego.lego_index,
+                type: legoData.type || null,
+                known_text: legoData.known_text || null,
+                target_text: legoData.target_text || null,
+                is_new: legoData.is_new ?? null,
+                phrases: lego.phrases.sort((a, b) => a.position - b.position)
+              }
+            })
+        }
+      })
 
     // Get total seed count for pagination info (without range filter)
     const { count: totalSeedCount } = await supabase
