@@ -1,13 +1,13 @@
 app SSiProductionSuite:
   title: "SSI Course Production Suite"
-  version: "2.2.0"
+  version: "2.3.0"
   apml_version: "2.1.0"
   extensions: [APML-EDU]
   description: "Integrated QA, recording, and audio pipeline system for language course production"
 
 # ============================================
 # DEPLOYMENT ARCHITECTURE
-# Version: 2.2.0 (2026-01-07)
+# Version: 2.3.0 (2026-01-07)
 # ============================================
 
 architecture:
@@ -61,7 +61,7 @@ architecture:
         - sample_flags
       access:
         reads: "Direct from any dashboard instance"
-        writes: "Via local orchestrator after agent completion"
+        writes: "Direct to Supabase via Vercel API endpoints (no local files)"
 
     storage:
       name: "AWS S3"
@@ -72,15 +72,24 @@ architecture:
 
   data_flow:
     content_creation:
-      description: "Creating new course content"
+      description: "Creating new course content (NO LOCAL FILES)"
       flow:
         1: "User connects dashboard to local machine via env switcher"
         2: "Dashboard sends generation request through ngrok tunnel"
         3: "Local orchestrator spawns Claude Code web agents"
         4: "Agents run on local machine using Pro Max subscription"
-        5: "Agents POST results to orchestrator or direct to Supabase"
-        6: "Orchestrator writes to Supabase database"
+        5: "Agents POST results DIRECTLY to Vercel API (popty.app/api/*)"
+        6: "Vercel API writes DIRECTLY to Supabase (no JSON files)"
         7: "Dashboard polls database for progress updates"
+
+      upload_endpoints:
+        phase1_seeds: "POST /api/seeds/upload → course_seeds table"
+        phase2_legos: "POST /api/legos/upload → course_legos table"
+        phase3_baskets: "POST /api/baskets/upload → course_practice_phrases table"
+
+      key_principle: |
+        Agents write DIRECTLY to the production database via Vercel API.
+        No intermediate JSON files. No local storage. Database is SSoT.
 
     content_viewing:
       description: "Viewing existing content"
@@ -132,6 +141,56 @@ architecture:
          - Write operations require active local connection
          - Read operations work directly with database
          - Content creation is intentional, not accidental
+
+  # ==========================================
+  # NO LOCAL FILES POLICY (v2.3.0)
+  # ==========================================
+
+  no_local_files:
+    status: "ENFORCED - All phases write directly to database"
+    effective: "2026-01-07"
+
+    principle: |
+      ALL phase outputs go DIRECTLY to Supabase.
+      No JSON files. No local storage. Database is the Single Source of Truth.
+
+    why:
+      - "Dashboard can show progress from anywhere (no file access needed)"
+      - "Multiple agents can write in parallel without file conflicts"
+      - "No sync issues between local files and database"
+      - "Content is immediately visible in dashboard after agent completion"
+      - "Eliminates migration scripts (data is already in database)"
+
+    implementation:
+      agents_post_to: "popty.app/api/* (Vercel serverless functions)"
+      vercel_writes_to: "Supabase tables directly"
+      local_orchestrator: "Only spawns agents, does NOT store content"
+
+    endpoints:
+      phase1:
+        url: "POST https://popty.app/api/seeds/upload"
+        writes_to: "course_seeds, course_legos"
+        payload: "{ course, seeds: [{ seed_id, known, target, legos }] }"
+
+      phase2:
+        url: "POST https://popty.app/api/legos/upload"
+        writes_to: "course_legos"
+        payload: "{ course, seed, legos: [{ lego_id, known, target, is_new }] }"
+
+      phase3:
+        url: "POST https://popty.app/api/baskets/upload"
+        writes_to: "course_practice_phrases"
+        payload: "{ course, seed, baskets: { legoId: { practice_phrases } } }"
+
+    deprecated:
+      - "lego_pairs.json - replaced by course_legos table"
+      - "lego_baskets.json - replaced by course_practice_phrases table"
+      - "canonical_seeds.json - replaced by course_seeds table"
+      - "draft_lego_pairs.json - no longer generated"
+
+    migration_note: |
+      Existing JSON files may still exist for backwards compatibility
+      but are NOT updated. Database is the only source of truth.
 
 # ============================================
 # DATA MODELS
