@@ -214,16 +214,18 @@ Apply ZUT to every potential LEGO:
 
 ## STEP 5: UPLOAD (COMPACT FORMAT)
 
-curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_COMPACT_JSON]'
+  -d '{"course":"${courseCode}","seeds":[YOUR_COMPACT_JSON]}'
 
 **COMPACT FORMAT** (saves tokens):
 \`\`\`json
-[{"s":"S0001","k":"known text","t":"target text","l":[
-  {"y":"A","n":1,"k":"I want","t":"quiero"},
-  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
-]}]
+{"course":"${courseCode}","seeds":[
+  {"s":"S0001","k":"known text","t":"target text","l":[
+    {"y":"A","n":1,"k":"I want","t":"quiero"},
+    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+  ]}
+]}
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
@@ -377,16 +379,18 @@ Apply ZUT to every potential LEGO:
 
 ## STEP 5: UPLOAD (COMPACT FORMAT)
 
-curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_COMPACT_JSON]'
+  -d '{"course":"${courseCode}","seeds":[YOUR_COMPACT_JSON]}'
 
 **COMPACT FORMAT** (saves tokens):
 \`\`\`json
-[{"s":"S0001","k":"known text","t":"target text","l":[
-  {"y":"A","n":1,"k":"I want","t":"quiero"},
-  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
-]}]
+{"course":"${courseCode}","seeds":[
+  {"s":"S0001","k":"known text","t":"target text","l":[
+    {"y":"A","n":1,"k":"I want","t":"quiero"},
+    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+  ]}
+]}
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
@@ -1365,16 +1369,18 @@ Apply ZUT to every potential LEGO:
 
 ## STEP 5: UPLOAD (COMPACT FORMAT)
 
-curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_COMPACT_JSON]'
+  -d '{"course":"${courseCode}","seeds":[YOUR_COMPACT_JSON]}'
 
 **COMPACT FORMAT** (saves tokens):
 \`\`\`json
-[{"s":"S0001","k":"known text","t":"target text","l":[
-  {"y":"A","n":1,"k":"I want","t":"quiero"},
-  {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
-]}]
+{"course":"${courseCode}","seeds":[
+  {"s":"S0001","k":"known text","t":"target text","l":[
+    {"y":"A","n":1,"k":"I want","t":"quiero"},
+    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
+  ]}
+]}
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 \`\`\`
@@ -1934,11 +1940,11 @@ For each seed in your list:
 3. Mark embedded LEGOs as new: false (same-seed only)
 
 ## STEP 4: UPLOAD RESULTS
-Use curl (NOT WebFetch) to POST your JSON array:
+Use curl (NOT WebFetch) to POST to database:
 
-curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_JSON_ARRAY]'
+  -d '{"course":"${courseCode}","seeds":[YOUR_JSON_ARRAY]}'
 
 Output format: JSON array of seed objects (see methodology above)
 \`\`\`
@@ -2135,15 +2141,15 @@ Apply methodology from Step 2. Extract LEGOs.
 
 ## STEP 5: UPLOAD YOUR RESULT
 
-POST your completed seed to:
+POST your completed seed to database:
 
-curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
+curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_SEED_JSON]'
+  -d '{"course":"${courseCode}","seeds":[YOUR_SEED_JSON]}'
 
 **OUTPUT FORMAT (v6 Compact):**
 \`\`\`json
-[{
+{"course":"${courseCode}","seeds":[{
   "s": "${seedId}",
   "k": "known text",
   "t": "target text",
@@ -2151,7 +2157,7 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/upload-batch" \\
     {"y": "A", "n": 1, "k": "word", "t": "palabra"},
     {"y": "M", "n": 1, "k": "phrase", "t": "frase", "c": [{"k": "sub", "t": "sub"}]}
   ]
-}]
+}]}
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type(A/M), n=new(1/0), c=components
 
