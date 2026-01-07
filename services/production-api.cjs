@@ -2329,11 +2329,18 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       legosQuery = legosQuery.lte('seed_number', endNum)
     }
 
+    // Also query sample_flags for this course
+    const flagsQuery = supabase
+      .from('sample_flags')
+      .select('audio_uuid, status, notes, flagged_by, flagged_at')
+      .eq('course_code', courseCode)
+
     // Run all queries in parallel
-    const [cyclesResult, seedsResult, legosResult] = await Promise.all([
+    const [cyclesResult, seedsResult, legosResult, flagsResult] = await Promise.all([
       cyclesQuery,
       seedsQuery,
-      legosQuery
+      legosQuery,
+      flagsQuery
     ])
 
     if (cyclesResult.error) {
@@ -2344,6 +2351,18 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     const cycles = cyclesResult.data
     const seedsData = seedsResult.data || []
     const legosData = legosResult.data || []
+    const flagsData = flagsResult.data || []
+
+    // Build flags lookup map: audio_uuid -> { status, notes, flagged_by, flagged_at }
+    const flagsMap = new Map()
+    for (const flag of flagsData) {
+      flagsMap.set(flag.audio_uuid, {
+        status: flag.status,
+        notes: flag.notes,
+        flagged_by: flag.flagged_by,
+        flagged_at: flag.flagged_at
+      })
+    }
 
     // Build lookup maps for seeds and legos
     const seedTextMap = new Map()  // seed_number -> { known_text, target_text, status }
@@ -2405,6 +2424,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       // S3 path is mastered/{UUID-UPPERCASE}.mp3 (same as learning app)
       const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
 
+      // Check flags for any audio in this phrase
+      const knownFlag = cycle.known_audio_uuid ? flagsMap.get(cycle.known_audio_uuid) : null
+      const target1Flag = cycle.target1_audio_uuid ? flagsMap.get(cycle.target1_audio_uuid) : null
+      const target2Flag = cycle.target2_audio_uuid ? flagsMap.get(cycle.target2_audio_uuid) : null
+      const anyFlagged = !!(knownFlag || target1Flag || target2Flag)
+
       // Add phrase
       legoEntry.phrases.push({
         id: cycle.id,
@@ -2425,7 +2450,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
         // Durations from view
         known_duration_ms: cycle.known_duration_ms || null,
         target1_duration_ms: cycle.target1_duration_ms || null,
-        target2_duration_ms: cycle.target2_duration_ms || null
+        target2_duration_ms: cycle.target2_duration_ms || null,
+        // Flag status from database
+        is_flagged: anyFlagged,
+        known_flag: knownFlag || null,
+        target1_flag: target1Flag || null,
+        target2_flag: target2Flag || null
       })
     }
 

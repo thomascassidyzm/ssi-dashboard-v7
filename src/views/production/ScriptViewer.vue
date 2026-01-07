@@ -311,11 +311,11 @@ const phraseToEdit = ref<{
 // Shortcuts Help
 const showShortcutsHelp = ref(false);
 
-// API Base URL - use localStorage (set by EnvironmentSwitcher)
+// API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
 const getApiBaseUrl = (): string => {
   const storedUrl = localStorage.getItem('api_base_url');
   if (storedUrl) return storedUrl;
-  return 'http://localhost:3470';
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456';
 };
 
 // Computed
@@ -358,13 +358,13 @@ const filteredSeeds = computed(() => {
   if (filterSearchText.value) {
     const searchLower = filterSearchText.value.toLowerCase();
     result = result.filter(seed => {
-      const seedMatches = seed.target_text.toLowerCase().includes(searchLower)
-        || seed.known_text.toLowerCase().includes(searchLower);
+      const seedMatches = (seed.target_text?.toLowerCase() || '').includes(searchLower)
+        || (seed.known_text?.toLowerCase() || '').includes(searchLower);
 
       const phraseMatches = (phrases: PhraseRowData[]) => {
         return phrases.some(p =>
-          p.target_text.toLowerCase().includes(searchLower)
-          || p.known_text.toLowerCase().includes(searchLower)
+          (p.target_text?.toLowerCase() || '').includes(searchLower)
+          || (p.known_text?.toLowerCase() || '').includes(searchLower)
         );
       };
 
@@ -468,7 +468,11 @@ const transformScriptViewToSeeds = (data: any): SeedRowData[] => {
           known_s3_key: phrase.known_s3_key || null,
           target1_s3_key: phrase.target1_s3_key || null,
           target2_s3_key: phrase.target2_s3_key || null,
-          is_flagged: false,
+          // Flag status from database
+          is_flagged: phrase.is_flagged || false,
+          known_flag: phrase.known_flag || null,
+          target1_flag: phrase.target1_flag || null,
+          target2_flag: phrase.target2_flag || null,
           seed_id: seed.seed_id,
           cycle_index: phrase.position,
           word_count: phrase.word_count,
