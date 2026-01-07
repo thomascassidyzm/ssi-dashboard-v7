@@ -53,8 +53,8 @@ npm install
 Copy `.env.example` to `.env` and update these critical values:
 
 ```bash
-# Your ngrok domain (you have a paid ngrok account)
-NGROK_DOMAIN=your-kai-ngrok-domain.ngrok-free.dev
+# Your ngrok domain
+NGROK_DOMAIN=kai-lizard-function.ngrok-free.dev
 
 # Shared credentials - GET THESE FROM TOM (not stored in git)
 # Tom will share via secure channel (Signal/encrypted)
@@ -92,7 +92,7 @@ pm2 save
 
 ```bash
 # Your personal ngrok domain
-ngrok http 3463 --domain=your-kai-ngrok-domain.ngrok-free.dev
+ngrok http 3463 --domain=kai-lizard-function.ngrok-free.dev
 ```
 
 ### 5. Update Vercel Config (if using Vercel)
