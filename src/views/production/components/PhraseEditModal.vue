@@ -221,12 +221,17 @@ const regenFlags = reactive<RegenFlags>({
 const isSaving = ref(false);
 
 // Computed
-const hasChanges = computed(() => {
+const textChanged = computed(() => {
   if (!props.phrase) return false;
   return (
     localKnownText.value !== props.phrase.known_text ||
     localTargetText.value !== props.phrase.target_text
   );
+});
+
+const hasChanges = computed(() => {
+  // Allow save if text changed OR any audio is selected for regeneration
+  return textChanged.value || selectedRegenCount.value > 0;
 });
 
 const selectedRegenCount = computed(() => {
@@ -282,10 +287,10 @@ watch(() => props.visible, (newVisible) => {
     // Reset form when modal opens
     localKnownText.value = props.phrase.known_text || '';
     localTargetText.value = props.phrase.target_text || '';
-    // Default: select all available audio for regeneration when text changes
-    regenFlags.known = !!props.phrase.known_audio_uuid;
-    regenFlags.target1 = !!props.phrase.target1_audio_uuid;
-    regenFlags.target2 = !!props.phrase.target2_audio_uuid;
+    // Default: all unchecked - user selects which to regenerate
+    regenFlags.known = false;
+    regenFlags.target1 = false;
+    regenFlags.target2 = false;
   }
 });
 
@@ -294,9 +299,10 @@ watch(() => props.phrase, (newPhrase) => {
   if (newPhrase && props.visible) {
     localKnownText.value = newPhrase.known_text || '';
     localTargetText.value = newPhrase.target_text || '';
-    regenFlags.known = !!newPhrase.known_audio_uuid;
-    regenFlags.target1 = !!newPhrase.target1_audio_uuid;
-    regenFlags.target2 = !!newPhrase.target2_audio_uuid;
+    // Keep unchecked by default
+    regenFlags.known = false;
+    regenFlags.target1 = false;
+    regenFlags.target2 = false;
   }
 });
 
