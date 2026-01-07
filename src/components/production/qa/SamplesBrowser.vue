@@ -29,11 +29,11 @@
         <!-- Filter Dropdown -->
         <select v-model="statusFilter" class="filter-select">
           <option value="all">All Statuses</option>
-          <option value="pending">Pending</option>
+          <option value="needs_review">🔄 Regenerated (Review)</option>
           <option value="flagged_regen_tts">Flagged: TTS</option>
           <option value="flagged_human_needed">Flagged: Human</option>
           <option value="in_pipeline">In Pipeline</option>
-          <option value="needs_review">Needs Review</option>
+          <option value="pending">Pending</option>
           <option value="approved">Approved</option>
           <option value="rejected">Rejected</option>
         </select>
@@ -72,17 +72,17 @@
 
     <!-- Quick Stats -->
     <div class="quick-stats">
-      <div class="stat-card">
+      <div class="stat-card clickable" @click="statusFilter = 'needs_review'">
+        <span class="stat-value regenerated">{{ regeneratedCount }}</span>
+        <span class="stat-label">Regenerated</span>
+      </div>
+      <div class="stat-card clickable" @click="statusFilter = 'approved'">
         <span class="stat-value approved">{{ stats.approved }}</span>
         <span class="stat-label">Approved</span>
       </div>
-      <div class="stat-card">
+      <div class="stat-card clickable" @click="statusFilter = 'flagged_regen_tts'">
         <span class="stat-value flagged">{{ stats.flagged }}</span>
         <span class="stat-label">Flagged</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value pending">{{ stats.pending }}</span>
-        <span class="stat-label">Pending</span>
       </div>
       <div class="stat-card">
         <span class="stat-value progress">{{ stats.percentComplete }}%</span>
@@ -139,8 +139,31 @@
           {{ Math.round((sample.confidence || 0.8) * 100) }}%
         </span>
         <span class="col-actions">
-          <button class="mini-btn" @click="playSample(sample)">▶</button>
+          <button
+            class="mini-btn play-btn"
+            :class="{ playing: currentlyPlaying === sample.uuid }"
+            @click="currentlyPlaying === sample.uuid ? stopPlayback() : playSample(sample)"
+          >
+            {{ currentlyPlaying === sample.uuid ? '⏹' : '▶' }}
+          </button>
+          <button
+            v-if="sample.status === 'needs_review'"
+            class="mini-btn approve-btn"
+            @click="quickApprove(sample)"
+            title="Approve"
+          >
+            ✓
+          </button>
+          <button
+            v-if="sample.status === 'needs_review' || sample.status === 'approved'"
+            class="mini-btn reflag-btn"
+            @click="quickReflag(sample)"
+            title="Re-flag for regeneration"
+          >
+            ↻
+          </button>
           <FlagMenu
+            v-if="sample.status !== 'needs_review'"
             :uuid="sample.uuid"
             :current-status="sample.status"
             @flagged="onSampleFlagged"
@@ -186,6 +209,10 @@ const statusFilter = ref('all')
 const confidenceFilter = ref('all')
 const searchQuery = ref('')
 const selectedSamples = ref([])
+
+// Audio playback
+const currentlyPlaying = ref(null)
+const audioElement = ref(null)
 
 // Get samples from store
 const allSamples = computed(() => {
@@ -236,6 +263,11 @@ const filteredSamples = computed(() => {
 
 // Stats
 const stats = computed(() => store.progressStats)
+
+// Count of regenerated items awaiting review
+const regeneratedCount = computed(() => {
+  return allSamples.value.filter(s => s.status === 'needs_review').length
+})
 
 // Selection helpers
 function isSelected(uuid) {
@@ -297,13 +329,76 @@ function resetFilters() {
   searchQuery.value = ''
 }
 
-function playSample(sample) {
-  // TODO: Implement audio playback
-  console.log('Play sample:', sample.uuid)
+async function playSample(sample) {
+  try {
+    // Stop any currently playing audio
+    if (audioElement.value) {
+      audioElement.value.pause()
+      audioElement.value = null
+    }
+
+    currentlyPlaying.value = sample.uuid
+
+    // Get signed URL from API
+    const baseUrl = store.apiBaseUrl || ''
+    const response = await fetch(`${baseUrl}/api/production/${props.courseCode}/audio/${sample.uuid}/url`)
+
+    if (!response.ok) {
+      throw new Error('Failed to get audio URL')
+    }
+
+    const { url } = await response.json()
+
+    // Play audio
+    audioElement.value = new Audio(url)
+    audioElement.value.onended = () => {
+      currentlyPlaying.value = null
+    }
+    audioElement.value.onerror = () => {
+      console.error('Audio playback error')
+      currentlyPlaying.value = null
+    }
+    await audioElement.value.play()
+
+  } catch (error) {
+    console.error('Error playing sample:', error)
+    currentlyPlaying.value = null
+  }
+}
+
+function stopPlayback() {
+  if (audioElement.value) {
+    audioElement.value.pause()
+    audioElement.value = null
+  }
+  currentlyPlaying.value = null
 }
 
 function onSampleFlagged(data) {
   console.log('Sample flagged:', data)
+}
+
+// Quick actions for regenerated items
+async function quickApprove(sample) {
+  try {
+    await store.updateFlag(sample.uuid, {
+      status: 'approved',
+      notes: 'Approved after regeneration review'
+    })
+  } catch (error) {
+    console.error('Error approving sample:', error)
+  }
+}
+
+async function quickReflag(sample) {
+  try {
+    await store.updateFlag(sample.uuid, {
+      status: 'flagged_regen_tts',
+      notes: 'Re-flagged for another regeneration attempt'
+    })
+  } catch (error) {
+    console.error('Error re-flagging sample:', error)
+  }
 }
 </script>
 
@@ -472,6 +567,17 @@ function onSampleFlagged(data) {
 .stat-value.flagged { color: var(--color-tungsten, #ffa630); }
 .stat-value.pending { color: var(--color-paper-dim, #c1c1bb); }
 .stat-value.progress { color: var(--color-emerald, #06ffa5); }
+.stat-value.regenerated { color: #60a5fa; } /* Blue for regenerated */
+
+.stat-card.clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stat-card.clickable:hover {
+  border-color: var(--color-tungsten, #ffa630);
+  transform: translateY(-2px);
+}
 
 .stat-label {
   font-family: 'Josefin Sans', sans-serif;
@@ -573,6 +679,37 @@ function onSampleFlagged(data) {
 .mini-btn:hover {
   background: var(--color-tungsten, #ffa630);
   color: var(--color-void, #0f172a);
+}
+
+.mini-btn.playing {
+  background: var(--color-emerald, #06ffa5);
+  color: var(--color-void, #0f172a);
+  animation: pulse 1s infinite;
+}
+
+.mini-btn.approve-btn {
+  border-color: var(--color-emerald, #06ffa5);
+  color: var(--color-emerald, #06ffa5);
+}
+
+.mini-btn.approve-btn:hover {
+  background: var(--color-emerald, #06ffa5);
+  color: var(--color-void, #0f172a);
+}
+
+.mini-btn.reflag-btn {
+  border-color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, #ffa630);
+}
+
+.mini-btn.reflag-btn:hover {
+  background: var(--color-tungsten, #ffa630);
+  color: var(--color-void, #0f172a);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 /* Empty State */
