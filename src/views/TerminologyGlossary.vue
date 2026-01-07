@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-12-04 | APML v11.0 | Status: Current definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2026-01-07 | APML v13 | Status: Current definitions (A-type/M-type terminology)</p>
       </div>
 
       <!-- Quick Reference -->
@@ -26,8 +26,8 @@
           <div>
             <p class="text-amber-400 font-semibold mb-2">LEGO Types</p>
             <ul class="text-slate-300 space-y-1">
-              <li>• <strong>A-type:</strong> ATOMIC (simple chunks)</li>
-              <li>• <strong>M-type:</strong> MOLECULAR (with components)</li>
+              <li>• <strong>A-type:</strong> ATOMIC (smallest teachable unit)</li>
+              <li>• <strong>M-type:</strong> MOLECULAR (non-inferable combination)</li>
             </ul>
           </div>
           <div>
@@ -240,56 +240,67 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- ATOMIC -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-blue-300 mb-3">A-type: ATOMIC</h3>
+            <h3 class="text-lg font-semibold text-blue-300 mb-3">A-type: ATOMIC (Atomic LEGO)</h3>
+            <div class="bg-blue-900/20 border border-blue-500/50 rounded p-3 mb-4">
+              <p class="text-blue-300 text-sm font-semibold">Definition:</p>
+              <p class="text-slate-200 text-sm">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word.</p>
+            </div>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li><strong>Single word on either side</strong> (or both)</li>
-              <li>Indivisible teaching unit</li>
-              <li>The simplest form of LEGO</li>
+              <li><strong>Passes ZUT:</strong> Learner hears known text, produces target with zero ambiguity</li>
+              <li>Indivisible teaching unit - cannot be broken down further</li>
+              <li>Can be single-word OR multi-word (size doesn't matter, ZUT does)</li>
               <li>No component breakdown needed</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded">
-              <p class="text-sm text-slate-400 mb-1">Examples:</p>
-              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(single Spanish word)</span></p>
-              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(single Spanish word)</span></p>
-              <p class="text-slate-200 text-sm">"now" = "ahora" <span class="text-xs text-slate-500">(single words both sides)</span></p>
+              <p class="text-sm text-slate-400 mb-2">Examples:</p>
+              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(single target word)</span></p>
+              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(single target word)</span></p>
+              <p class="text-slate-200 text-sm">"speak Chinese" = "shuo zhongwen" <span class="text-xs text-slate-500">(A-types tile perfectly)</span></p>
             </div>
           </div>
 
           <!-- MOLECULAR -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR</h3>
-            <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li><strong>2+ words on BOTH sides</strong></li>
-              <li>Teaches a PATTERN, not just vocabulary</li>
-              <li>Components show literal translations</li>
-              <li>Created via upchunking to resolve conflicts</li>
+            <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR (Molecular LEGO)</h3>
+            <div class="bg-emerald-900/20 border border-emerald-500/50 rounded p-3 mb-4">
+              <p class="text-emerald-300 text-sm font-semibold">Definition:</p>
+              <p class="text-slate-200 text-sm">An introducible unit that CANNOT be inferred by the learner from what they already know.</p>
+            </div>
+            <p class="text-amber-400 text-sm font-semibold mb-2">An M-type is needed when:</p>
+            <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm mb-4">
+              <li><strong>Missing components:</strong> Some pieces aren't learned yet as standalone LEGOs</li>
+              <li><strong>Glue/filler words:</strong> Only some parts are A-types, others are idiomatic/grammatical glue that can't exist alone</li>
+              <li><strong>Order mismatch:</strong> All A-types known but order differs between languages</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded space-y-3">
+              <p class="text-sm text-slate-400 mb-2">Examples requiring M-type:</p>
               <div>
-                <p class="text-sm text-slate-400 mb-1">Example: "you to speak"</p>
-                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "que hables"</p>
-                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
-                <p class="text-slate-300 text-xs ml-2">• "que" = "that"</p>
-                <p class="text-slate-300 text-xs ml-2">• "hables" = "speak" (subjunctive)</p>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "that you speak" pattern!</p>
+                <p class="text-slate-200 text-sm">"blue thing" = "cosa azul" <span class="text-xs text-amber-400">(order reversed)</span></p>
               </div>
               <div>
-                <p class="text-sm text-slate-400 mb-1">Example: "ready to go"</p>
-                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "preparado para ir"</p>
-                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
-                <p class="text-slate-300 text-xs ml-2">• "preparado" = "ready/prepared"</p>
-                <p class="text-slate-300 text-xs ml-2">• "para" = "for"</p>
-                <p class="text-slate-300 text-xs ml-2">• "ir" = "to go"</p>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner sees: Spanish says "ready for to go"!</p>
+                <p class="text-slate-200 text-sm">"tengo ganas de" = "I feel like" <span class="text-xs text-amber-400">(idiomatic glue)</span></p>
               </div>
               <div>
-                <p class="text-sm text-slate-400 mb-1">Example: "I've been learning"</p>
-                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "llevo aprendiendo"</p>
-                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
-                <p class="text-slate-300 text-xs ml-2">• "llevo" = "I carry"</p>
-                <p class="text-slate-300 text-xs ml-2">• "aprendiendo" = "learning"</p>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "I carry learning" for ongoing action!</p>
+                <p class="text-slate-200 text-sm">"the cat" = "y gath" (Welsh) <span class="text-xs text-amber-400">(mutation triggered)</span></p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Inferability Test -->
+        <div class="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500/50 rounded-lg p-6 mt-6">
+          <h3 class="text-xl font-semibold text-amber-300 mb-4">The Inferability Test</h3>
+          <p class="text-slate-200 mb-4 text-lg"><strong>Given what the learner already knows, can they figure this out themselves?</strong></p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/30 border border-emerald-600 p-4 rounded">
+              <p class="text-emerald-300 font-semibold mb-2">Yes = No new LEGO needed</p>
+              <p class="text-slate-300 text-sm">Just tile existing A-types</p>
+              <p class="text-slate-400 text-xs mt-2">Example: "speak Chinese" = "shuo zhongwen" - learner already knows both A-types and order matches</p>
+            </div>
+            <div class="bg-amber-900/30 border border-amber-600 p-4 rounded">
+              <p class="text-amber-300 font-semibold mb-2">No = M-type needed</p>
+              <p class="text-slate-300 text-sm">Requires explicit introduction</p>
+              <p class="text-slate-400 text-xs mt-2">Example: "blue thing" = "cosa azul" - order reversed, learner can't infer the combination</p>
             </div>
           </div>
         </div>
@@ -444,7 +455,9 @@
           <p class="text-sm text-red-300 mb-4 font-semibold">Terminology</p>
           <ul class="space-y-2 text-slate-200 mb-6">
             <li>❌ <strong>"BASE" and "COMPOSITE"</strong> → Use <span class="text-emerald-400">ATOMIC (A-type)</span> and <span class="text-emerald-400">MOLECULAR (M-type)</span></li>
+            <li>❌ <strong>"B", "C", "F" type codes</strong> → Use <span class="text-emerald-400">"A" (A-type)</span> and <span class="text-emerald-400">"M" (M-type)</span></li>
             <li>❌ <strong>"FEEDER"</strong> → No longer exists (componentization replaced this)</li>
+            <li>❌ <strong>"LUT" (Learner Uncertainty Test)</strong> → Use <span class="text-emerald-400">ZUT (Zero Uncertainty Test)</span></li>
             <li>❌ <strong>"D-phrases" and "E-phrases"</strong> → Use <span class="text-emerald-400">scaffolding phrases (1-8)</span> and <span class="text-emerald-400">eternal phrases (9-10)</span></li>
             <li>❌ <strong>"Amino acids"</strong> → Never use (old metaphor)</li>
             <li>❌ <strong>"Translations"</strong> → Use <span class="text-emerald-400">SEED_PAIRS</span></li>

@@ -578,15 +578,16 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     let audioToRegenerate = []
 
     if (flaggedOnly) {
-      // Get flagged audio IDs from user_feedback table
-      const { data: feedback, error: feedbackError } = await supabase
-        .from('user_feedback')
-        .select('audio_id')
-        .eq('code', courseCode)
+      // Get flagged audio IDs from sample_flags table
+      const { data: flags, error: flagsError } = await supabase
+        .from('sample_flags')
+        .select('audio_uuid')
+        .eq('course_code', courseCode)
+        .like('status', 'flagged%')  // Match any flagged status
 
-      if (feedbackError) throw feedbackError
+      if (flagsError) throw flagsError
 
-      const flaggedIds = [...new Set(feedback?.map(f => f.audio_id).filter(Boolean) || [])]
+      const flaggedIds = [...new Set(flags?.map(f => f.audio_uuid).filter(Boolean) || [])]
 
       if (flaggedIds.length === 0) {
         return res.json({

@@ -125,23 +125,53 @@ The Language Pair Brief contains vocabulary guidance specific to the target lang
 
 ## LEGO Types: The Key Distinction
 
-**A-type (Atomic):** No components. Taught as a single unit.
+### The Core Insight: Inferability
+
+The key question is: **Given what the learner already knows, can they figure this out themselves?**
+
+**A-type (Atomic):** The smallest teachable unit that passes ZUT (Zero Uncertainty Test).
 - Can be single-word OR multi-word
-- No pedagogical breakdown possible/useful
+- No components - taught as a single unit
+- The learner hears KNOWN and produces TARGET with zero ambiguity
 - Examples:
-  - Single words in both languages
-  - Multi-word known → single target (verb conjugations)
-  - Idiomatic phrases with no useful breakdown
+  - Single words: "want" → "quiero"
+  - Multi-word: "I want" → "quiero" (conjugation absorbed)
+  - Idiomatic: "once upon a time" → "[fixed phrase]" (no useful breakdown)
 
-**M-type (Molecular):** HAS components. Built up from smaller pieces.
+**M-type (Molecular):** An introducible unit that the learner CANNOT infer from what they already know.
+- HAS components that are practiced BEFORE the full LEGO
 - MUST be multi-word on both sides
-- MUST have at least one component for the build-up
-- Components are practiced BEFORE the full LEGO
-- **Components don't need to TILE** - they're pedagogically useful pieces
+- **Components don't need to TILE exactly** - they're pedagogically useful pieces
 
-**The distinction is pedagogical, not grammatical:**
+### Why an M-type is Needed
+
+An M-type is required when the learner cannot figure out the combination themselves:
+
+1. **Missing components** - Some pieces haven't been learned yet
+2. **Contains glue/filler** - Parts are idiomatic or grammatical glue that can't exist as standalone LEGOs
+3. **Order mismatch** - Learner knows all pieces but can't work out the combination because word order differs between languages
+
+### The Inferability Test
+
+| Learner's Situation | Result |
+|---------------------|--------|
+| Can tile known A-types in the **same order** | NOT a new LEGO - just combine existing A-types |
+| **Missing knowledge** (component not yet learned) | M-type needed |
+| **Glue words** present (idiom, grammatical filler) | M-type needed |
+| **Reordering required** (word order differs) | M-type needed |
+
+### Examples
+
+| Phrase | Situation | Type |
+|--------|-----------|------|
+| "speak Chinese" = "说中文" | Both A-types exist, same order | Just tile - no M-type |
+| "blue thing" = "cosa azul" | Both A-types exist but order reversed | M-type needed |
+| "I feel like" = "tengo ganas de" | "ganas de" is idiomatic glue | M-type needed |
+| "the cat" = "y gath" (Welsh) | "the" triggers mutation | M-type needed |
+
+**The distinction is pedagogical:**
 - A-type = taught as atomic unit (no build-up)
-- M-type = built up from components
+- M-type = learner can't infer it, needs explicit teaching with components
 
 ---
 
@@ -151,17 +181,29 @@ The Language Pair Brief contains vocabulary guidance specific to the target lang
 
 If EITHER side is a single word and meaning is unambiguous → **A-type**
 
-### Step 2: If multi-word, can you break it down usefully?
+### Step 2: If multi-word, apply the Inferability Test
 
-**YES - useful components exist → M-type with components**
+**Can the learner figure this out from what they already know?**
 
-**NO - idiomatic, no useful breakdown → A-type (atomic even though multi-word)**
+Ask: If the learner knows all the component A-types, can they just tile them in the same order?
 
-### Step 3: For M-types, choose useful components
+| Answer | Decision |
+|--------|----------|
+| **YES** - same order, no glue | Not a new LEGO - components tile naturally |
+| **NO** - order mismatch | **M-type needed** - teach the reordering pattern |
+| **NO** - glue words needed | **M-type needed** - glue can't be standalone A-types |
+| **NO** - missing components | **M-type needed** - some pieces not yet learned |
+
+### Step 3: If idiomatic with no useful breakdown → A-type
+
+Some multi-word phrases have no pedagogically useful components (opaque idioms).
+These become A-types even though they're multi-word.
+
+### Step 4: For M-types, choose useful components
 
 Components are **pedagogical scaffolding** - practice items before the LEGO debut.
 
-**Partial breakdown is fine.** Components don't need to tile exactly.
+**Partial breakdown is fine.** Components don't need to tile exactly - they're the pieces the learner needs to know before combining.
 
 ---
 
@@ -288,7 +330,8 @@ If the target language requires gender or inflection marking, **follow the guida
 - [ ] **Language Pair Brief guidance applied**
 
 **Key rules:**
-- A-type = atomic (no build-up possible/useful)
-- M-type = molecular (has components for build-up)
+- A-type = smallest teachable unit passing ZUT (no build-up possible/useful)
+- M-type = learner can't infer it (missing pieces, glue words, or reordering needed)
+- The Inferability Test: Can learner tile existing A-types in same order? YES → not an M-type
 - When in doubt: try smaller first, chunk UP only if ZUT fails
 - Cross-batch conflicts? Phase 2 handles it

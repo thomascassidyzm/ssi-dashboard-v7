@@ -241,15 +241,45 @@ Mistakes you anticipate agents making:
 
 Clear guidelines for when to create A-type vs M-type LEGOs:
 
-- **A-type**: Single semantic units that can stand alone with unambiguous meaning
-- **M-type**: Combinations where components interact (grammar, meaning, idiom)
+#### The Core Distinction: Inferability
+
+**A-type (Atomic):** The smallest teachable unit that passes ZUT (Zero Uncertainty Test).
+- Can be single-word OR multi-word
+- The learner hears the KNOWN and produces the TARGET with zero ambiguity
+
+**M-type (Molecular):** An introducible unit that the learner CANNOT infer from what they already know.
+
+#### Why an M-type is Needed
+
+An M-type is required when the learner cannot figure out the combination themselves:
+
+1. **Missing components** - Some pieces haven't been learned yet
+2. **Contains glue/filler** - Parts are idiomatic or grammatical glue that can't exist as standalone LEGOs
+3. **Order mismatch** - Learner knows all pieces but can't work out the combination because word order differs between languages
+
+#### The Inferability Test
+
+**Given what the learner already knows, can they figure this out themselves?**
+
+- **YES** (tile known pieces in same order) → Not a new LEGO, just combine existing A-types
+- **NO** (missing knowledge, glue words, or reordering needed) → M-type needed
+
+#### Examples
+
+| Phrase | Situation | Type Needed |
+|--------|-----------|-------------|
+| "speak Chinese" = "说中文" | Both A-types exist, same order | Just tile - no M-type |
+| "blue thing" = "cosa azul" | Both A-types exist but order reversed | M-type needed (order mismatch) |
+| "I feel like" = "tengo ganas de" | "ganas de" is idiomatic glue, not standalone | M-type needed (glue words) |
+| "the cat" = "y gath" (Welsh) | "the" triggers mutation on noun | M-type needed (grammatical interaction) |
 
 **Format:**
 ```json
 "atomicity_rules": [
-  "Single words with unambiguous translations are A-type",
-  "Phrases where particles affect meaning are M-type",
-  "Idioms that don't translate literally are M-type"
+  "A-type: Smallest teachable unit passing ZUT (can be single or multi-word)",
+  "M-type needed when: (1) components not yet learned, (2) contains glue/filler that can't standalone, (3) word order differs between languages",
+  "If learner can tile existing A-types in same order → NOT an M-type, just combination",
+  "If reordering or glue words required → M-type to teach the pattern"
 ]
 ```
 
@@ -418,11 +448,11 @@ Ensure consistent word choices across the course:
   ],
 
   "atomicity_rules": [
-    "Mutation-triggering words + their targets = M-type (the+noun, my+noun)",
-    "Inflected prepositions are A-type - 'with me' = 'gyda fi' (single unit)",
-    "Verb-nouns (infinitives) are A-type - 'to speak' = 'siarad'",
-    "Adjectives after nouns with soft mutation = M-type",
-    "Adverbs without mutation effects are A-type"
+    "A-type: Smallest teachable unit passing ZUT - 'to speak' = 'siarad', 'with me' = 'gyda fi'",
+    "M-type needed for ORDER MISMATCH: 'red car' = 'car coch' (adjective follows noun in Welsh)",
+    "M-type needed for GRAMMATICAL GLUE: 'the cat' = 'y gath' (article triggers mutation - can't be inferred)",
+    "M-type needed for MUTATION: 'my book' = 'fy llyfr' (possessive + mutation pattern)",
+    "Test: Can learner tile existing A-types in same order? YES → just combine. NO → M-type needed"
   ],
 
   "grammatical_patterns": {
@@ -573,11 +603,11 @@ Ensure consistent word choices across the course:
   ],
 
   "atomicity_rules": [
-    "Bare verbs without conjugation are A-type - '说' (speak), '想' (want), '学' (learn)",
-    "Particles (了/着/过/得/地) must NEVER be standalone - always absorbed into context",
-    "Verb + aspect marker is A-type - '吃了' (ate), '在试着' (trying)",
-    "Measure word phrases are M-type - '一本书' (a book), '一个词' (a word)",
-    "Modal + verb combinations are M-type when disambiguation needed - '会说中文' (can speak Chinese)"
+    "A-type: Smallest teachable unit passing ZUT - '说' (speak), '想' (want), '吃了' (ate)",
+    "M-type NOT needed for SAME ORDER: 'speak Chinese' = '说中文' - learner can tile existing A-types",
+    "M-type needed for GLUE WORDS: Particles (了/着/过/得/地) can't standalone - must be absorbed into A-types",
+    "M-type needed for PATTERN TEACHING: '一本书' (a book) - measure word pattern can't be inferred",
+    "Test: Can learner tile existing A-types in same order? YES → just combine. NO → M-type needed"
   ],
 
   "grammatical_patterns": {

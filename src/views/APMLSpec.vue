@@ -327,11 +327,27 @@
         </section>
 
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Type Codes</h2>
-          <div class="space-y-2 bg-slate-900/80 border border-slate-400/20 rounded p-4">
-            <p class="text-sm"><strong class="text-emerald-300">"B"</strong> = BASE LEGO (atomic, indivisible teaching chunk)</p>
-            <p class="text-sm"><strong class="text-emerald-300">"C"</strong> = COMPOSITE LEGO (multi-word phrase with feeder components)</p>
-            <p class="text-sm"><strong class="text-emerald-300">"F"</strong> = FEEDER (component of a composite, taught before the whole)</p>
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">LEGO Types</h2>
+          <div class="space-y-4 bg-slate-900/80 border border-slate-400/20 rounded p-4">
+            <div>
+              <p class="text-sm"><strong class="text-blue-300">"A" (A-type)</strong> = ATOMIC LEGO</p>
+              <p class="text-xs text-slate-400 mt-1 ml-4">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
+            </div>
+            <div>
+              <p class="text-sm"><strong class="text-emerald-300">"M" (M-type)</strong> = MOLECULAR LEGO</p>
+              <p class="text-xs text-slate-400 mt-1 ml-4">An introducible unit that CANNOT be inferred by the learner from what they already know. Required when: (1) missing components, (2) glue/filler words, or (3) order mismatch between languages.</p>
+            </div>
+            <div class="mt-4 bg-amber-900/20 border border-amber-500/30 rounded p-3">
+              <p class="text-amber-400 text-xs font-semibold mb-2">The Inferability Test:</p>
+              <p class="text-slate-300 text-xs">Given what the learner already knows, can they figure this out themselves?</p>
+              <ul class="text-slate-300 text-xs mt-2 space-y-1">
+                <li>• <strong class="text-emerald-300">Yes</strong> = Not a new LEGO, just tile existing A-types</li>
+                <li>• <strong class="text-amber-300">No</strong> = M-type needed (requires explicit introduction)</li>
+              </ul>
+            </div>
+            <div class="mt-3 border-t border-slate-600 pt-3">
+              <p class="text-xs text-slate-500 italic">Deprecated: B/C/F type codes are no longer used. Use A-type and M-type instead.</p>
+            </div>
           </div>
         </section>
 

@@ -49,14 +49,12 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="flex items-center gap-2 mb-4">
               <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <h3 class="text-lg font-semibold text-blue-300">ATOMIC (A-type)</h3>
+              <h3 class="text-lg font-semibold text-blue-300">A-type: ATOMIC LEGO</h3>
             </div>
 
-            <p class="text-slate-300 text-sm mb-4">Cannot be split, even in principle. Like an atom - indivisible for pedagogical purposes.</p>
-
             <div class="bg-blue-900/20 border border-blue-500/50 rounded p-3 mb-4">
-              <p class="text-blue-300 text-xs font-semibold mb-1">Key Rule:</p>
-              <p class="text-slate-300 text-xs">Must be 2+ words in at least one language (known or target). Cannot be broken down without losing consistent meaning.</p>
+              <p class="text-blue-300 text-xs font-semibold mb-1">Definition:</p>
+              <p class="text-slate-300 text-xs">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
             </div>
 
             <div class="bg-slate-900 p-4 rounded space-y-2">
@@ -64,73 +62,78 @@
               <div class="space-y-2 text-sm">
                 <div>
                   <p class="text-slate-200">"quiero" = "I want"</p>
-                  <p class="text-xs text-slate-500">Can't split "I want" → learner uncertainty</p>
+                  <p class="text-xs text-slate-500">Single target word, passes ZUT</p>
                 </div>
                 <div>
                   <p class="text-slate-200">"hablar" = "to speak"</p>
-                  <p class="text-xs text-slate-500">Can't split "to speak" → learner uncertainty</p>
+                  <p class="text-xs text-slate-500">Single target word, passes ZUT</p>
                 </div>
                 <div>
-                  <p class="text-slate-200">"que hables" = "you to speak"</p>
-                  <p class="text-xs text-slate-500">Indivisible unit - breaking fails LUT</p>
+                  <p class="text-slate-200">"speak Chinese" = "shuo zhongwen"</p>
+                  <p class="text-xs text-emerald-500">A-types tile perfectly - no M-type needed!</p>
                 </div>
               </div>
             </div>
 
-            <p class="text-xs text-slate-400 mt-3 italic">No component breakdown - the LEGO is the minimum viable unit.</p>
+            <p class="text-xs text-slate-400 mt-3 italic">No component breakdown - the LEGO is the minimum viable unit that passes ZUT.</p>
           </div>
 
           <!-- MOLECULAR -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="flex items-center gap-2 mb-4">
               <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
-              <h3 class="text-lg font-semibold text-emerald-300">MOLECULAR (M-type)</h3>
+              <h3 class="text-lg font-semibold text-emerald-300">M-type: MOLECULAR LEGO</h3>
             </div>
 
-            <p class="text-slate-300 text-sm mb-4">The MOLECULE is the UNIT that passes LUT. Components show LITERAL translations so learner can see how Spanish patterns work.</p>
-
             <div class="bg-emerald-900/20 border border-emerald-500/50 rounded p-3 mb-4">
-              <p class="text-emerald-300 text-xs font-semibold mb-1">Key Principle:</p>
-              <p class="text-slate-300 text-xs">You chunk UP from atomic LEGOs to get consistent meaning. Components use LITERAL translations to reveal patterns, but the molecule AS A WHOLE passes LUT.</p>
+              <p class="text-emerald-300 text-xs font-semibold mb-1">Definition:</p>
+              <p class="text-slate-300 text-xs">An introducible unit that CANNOT be inferred by the learner from what they already know. Requires explicit introduction.</p>
+            </div>
+
+            <div class="bg-amber-900/20 border border-amber-500/50 rounded p-3 mb-4">
+              <p class="text-amber-300 text-xs font-semibold mb-2">An M-type is needed when:</p>
+              <ul class="text-slate-300 text-xs space-y-1">
+                <li>1. <strong>Missing components</strong> - some pieces aren't learned yet as standalone LEGOs</li>
+                <li>2. <strong>Glue/filler words</strong> - only some parts are A-types, others are idiomatic/grammatical glue</li>
+                <li>3. <strong>Order mismatch</strong> - all A-types known but order differs between languages</li>
+              </ul>
             </div>
 
             <div class="bg-slate-900 p-4 rounded space-y-3">
+              <p class="text-sm text-slate-400 mb-2"><strong>Examples requiring M-type:</strong></p>
               <div>
-                <p class="text-sm text-slate-400 mb-2"><strong>Example: "you to speak"</strong></p>
-                <p class="text-slate-200 text-sm mb-2">Target: "que hables"</p>
-                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
-                  <p class="text-amber-400">Literal translations:</p>
-                  <p>• "que" = "that"</p>
-                  <p>• "hables" = "speak" (subjunctive)</p>
-                </div>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "that you speak" pattern!</p>
+                <p class="text-slate-200 text-sm">"blue thing" = "cosa azul"</p>
+                <p class="text-xs text-amber-400">Order reversed - learner can't infer</p>
               </div>
 
               <div>
-                <p class="text-sm text-slate-400 mb-2"><strong>Example: "ready to go"</strong></p>
-                <p class="text-slate-200 text-sm mb-2">Target: "preparado para ir"</p>
-                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
-                  <p class="text-amber-400">Literal translations:</p>
-                  <p>• "preparado" = "ready/prepared"</p>
-                  <p>• "para" = "for"</p>
-                  <p>• "ir" = "to go"</p>
-                </div>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner sees: Spanish says "ready for to go"!</p>
+                <p class="text-slate-200 text-sm">"tengo ganas de" = "I feel like"</p>
+                <p class="text-xs text-amber-400">Contains idiomatic glue - can't tile from A-types</p>
               </div>
 
               <div>
-                <p class="text-sm text-slate-400 mb-2"><strong>Example: "I've been learning"</strong></p>
-                <p class="text-slate-200 text-sm mb-2">Target: "llevo aprendiendo"</p>
-                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
-                  <p class="text-amber-400">Literal translations:</p>
-                  <p>• "llevo" = "I carry"</p>
-                  <p>• "aprendiendo" = "learning"</p>
-                </div>
-                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "I carry learning" for ongoing action!</p>
+                <p class="text-slate-200 text-sm">"the cat" = "y gath" (Welsh)</p>
+                <p class="text-xs text-amber-400">Mutation triggered - learner can't infer</p>
               </div>
             </div>
 
-            <p class="text-xs text-slate-400 mt-3 italic">Literal translations in components reveal HOW Spanish patterns work - the molecule is the unit that passes LUT.</p>
+            <p class="text-xs text-slate-400 mt-3 italic">The Inferability Test: Can the learner figure this out from what they already know? No = M-type needed.</p>
+          </div>
+        </div>
+
+        <!-- The Inferability Test Box -->
+        <div class="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500/50 rounded-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold text-amber-300 mb-4">The Inferability Test</h3>
+          <p class="text-slate-200 mb-4"><strong>Given what the learner already knows, can they figure this out themselves?</strong></p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-emerald-900/30 border border-emerald-600 p-4 rounded">
+              <p class="text-emerald-300 font-semibold mb-2">Yes = Not a new LEGO</p>
+              <p class="text-slate-300 text-sm">Just tile existing A-types</p>
+            </div>
+            <div class="bg-amber-900/30 border border-amber-600 p-4 rounded">
+              <p class="text-amber-300 font-semibold mb-2">No = M-type needed</p>
+              <p class="text-slate-300 text-sm">Requires explicit introduction</p>
+            </div>
           </div>
         </div>
 
@@ -323,9 +326,9 @@
         </div>
 
         <div class="bg-blue-900/20 border border-blue-600 rounded-lg p-6 mb-6">
-          <h3 class="text-blue-300 font-semibold mb-3 text-lg">🔬 The LUT (Learner Uncertainty Test)</h3>
+          <h3 class="text-blue-300 font-semibold mb-3 text-lg">The ZUT (Zero Uncertainty Test)</h3>
           <p class="text-slate-200 mb-4">
-            Also called "Functional Determinism" - the LUT is the guiding principle for LEGO extraction in Phase 1 and basket generation in Phase 3.
+            Also called "Functional Determinism" - the ZUT is the guiding principle for LEGO extraction in Phase 1 and basket generation in Phase 3.
           </p>
           <div class="bg-slate-900 p-4 rounded">
             <p class="text-emerald-400 font-semibold mb-2">The Test:</p>
@@ -335,11 +338,11 @@
             <div class="space-y-2 text-xs">
               <div class="flex items-start gap-2">
                 <span class="text-emerald-400">✓</span>
-                <p class="text-slate-300"><strong>Passes LUT:</strong> "to say something" → "decir algo" (no ambiguity)</p>
+                <p class="text-slate-300"><strong>Passes ZUT:</strong> "to say something" → "decir algo" (no ambiguity)</p>
               </div>
               <div class="flex items-start gap-2">
                 <span class="text-red-400">✗</span>
-                <p class="text-slate-300"><strong>Fails LUT:</strong> "say" → ¿"decir"? ¿"digo"? ¿"dice"? (learner uncertain which form)</p>
+                <p class="text-slate-300"><strong>Fails ZUT:</strong> "say" → decir? digo? dice? (learner uncertain which form)</p>
               </div>
             </div>
           </div>
@@ -349,7 +352,7 @@
           <h3 class="text-xl font-semibold text-purple-300 mb-4">💎 Minimum Viable Unit of Consistent Meaning</h3>
 
           <p class="text-slate-200 mb-4">
-            <strong>We do NOT break seed pairs down to individual words</strong> - that would fail the LUT.
+            <strong>We do NOT break seed pairs down to individual words</strong> - that would fail the ZUT.
           </p>
 
           <p class="text-slate-300 text-sm mb-4">
@@ -366,7 +369,7 @@
               </div>
 
               <div>
-                <p class="text-amber-400 text-sm mb-2">LEGO Breakdown (passing LUT):</p>
+                <p class="text-amber-400 text-sm mb-2">LEGO Breakdown (passing ZUT):</p>
                 <div class="font-mono text-sm text-slate-200 space-y-1">
                   <p><span class="text-blue-400">I want</span> | <span class="text-emerald-400">you to speak</span> | <span class="text-purple-400">Spanish</span> | <span class="text-pink-400">with me</span> | <span class="text-amber-400">tomorrow</span></p>
                 </div>
@@ -382,7 +385,7 @@
               <div class="bg-emerald-900/30 border border-emerald-700 p-3 rounded mt-3">
                 <p class="text-emerald-300 text-sm font-semibold mb-2">Why This Works:</p>
                 <ul class="text-slate-200 text-xs space-y-1">
-                  <li>• <strong>"you to speak"</strong> is ATOMIC - breaking it down would fail LUT</li>
+                  <li>• <strong>"you to speak"</strong> is ATOMIC - breaking it down would fail ZUT</li>
                   <li>• Learner hears "you to speak" → knows instantly: "que hables"</li>
                   <li>• Breaking to "you" | "to" | "speak" would create uncertainty (¿"tú hablas"? ¿"tú hablar"? ¿"que hables"?)</li>
                   <li>• <strong>"with me"</strong> = one LEGO "conmigo" (not "con" + "mí")</li>
@@ -390,7 +393,7 @@
               </div>
 
               <div class="bg-red-900/30 border border-red-700 p-3 rounded mt-3">
-                <p class="text-red-300 text-sm font-semibold mb-2">What Would Fail LUT:</p>
+                <p class="text-red-300 text-sm font-semibold mb-2">What Would Fail ZUT:</p>
                 <ul class="text-slate-300 text-xs space-y-1">
                   <li>❌ Breaking "you to speak" → "you" | "to" | "speak" (too much uncertainty)</li>
                   <li>❌ Breaking "with me" → "with" | "me" (doesn't map to "con" + "mí", it's "conmigo")</li>
