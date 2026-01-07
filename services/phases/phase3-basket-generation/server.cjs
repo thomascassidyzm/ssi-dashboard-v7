@@ -31,8 +31,10 @@ const PORT = process.env.PORT || 3459;
 const VFS_ROOT = process.env.VFS_ROOT;
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
-// ngrok URL for prompts sent to remote Claude browsers (they can't reach localhost)
+// External URLs for prompts sent to remote Claude browsers
 const ngrokUrl = process.env.EXTERNAL_URL || process.env.ORCHESTRATOR_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
+// Direct Supabase upload endpoint (bypasses orchestrator)
+const BASKET_UPLOAD_URL = 'https://popty.app/api/baskets/upload';
 
 // Database service for database-first writes
 const courseDataService = require('../../course-data-service.cjs');
@@ -1360,9 +1362,9 @@ ${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.le
 1. Fetch LEGO details: \`GET ${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
 2. Fetch phase intelligence: \`GET ${ngrokUrl}/api/phase-intelligence/3\`
 3. Generate practice baskets using Phase 3 intelligence guidelines
-4. Submit baskets: \`POST ${ngrokUrl}/upload-basket\`
-   - Body: \`{ course: "${courseCode}", seed: "S0XXX", baskets: {...} }\`
-   - Expected: \`{ success: true, message: "Baskets saved", basketCount: N }\`
+4. Submit baskets: \`POST ${BASKET_UPLOAD_URL}\`
+   - Body: \`{ course: "${courseCode}", seed: "S0XXX", baskets: { "S0XXXL01": { "lego": {...}, "practice_phrases": [...] } } }\`
+   - Expected: \`{ success: true, basketCount: N }\`
 5. No manual file operations - all submission via REST API
 
 ---
@@ -2415,8 +2417,8 @@ Build FROM the LEGO, not TO it:
 
 ### Step 6: Submit Your Work
 
-**POST submission to orchestrator:**
-- Endpoint: \`${ngrokUrl}/upload-basket\`
+**POST submission to Supabase (direct database endpoint):**
+- Endpoint: \`${BASKET_UPLOAD_URL}\`
 - Method: POST
 - Content-Type: application/json
 
@@ -2441,19 +2443,18 @@ Build FROM the LEGO, not TO it:
 \`\`\`json
 {
   "success": true,
-  "message": "Baskets saved",
   "basketCount": 5
 }
 \`\`\`
 
 **Example API call:**
 \`\`\`bash
-curl -X POST ${ngrokUrl}/upload-basket \\
+curl -X POST ${BASKET_UPLOAD_URL} \\
   -H "Content-Type: application/json" \\
   -d '{
     "course": "${courseCode}",
     "seed": "S0047",
-    "baskets": { "S0047L01": { ... }, "S0047L02": { ... } }
+    "baskets": { "S0047L01": { "lego": {...}, "practice_phrases": [...] }, "S0047L02": { ... } }
   }'
 \`\`\`
 
@@ -2501,7 +2502,7 @@ Each worker:
 2. Fetches LEGO data via REST API: \`GET ${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
 3. Fetches phase intelligence: \`GET ${ngrokUrl}/api/phase-intelligence/3\`
 4. Generates baskets for each LEGO
-5. Submits via REST API: \`POST ${ngrokUrl}/upload-basket\`
+5. Submits directly to Supabase: \`POST ${BASKET_UPLOAD_URL}\`
 
 Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 `;
@@ -2924,9 +2925,9 @@ cat > /tmp/basket.json << 'JSONEOF'
 }
 JSONEOF
 
-# Upload with retry
+# Upload with retry (direct to Supabase)
 for i in 1 2 3; do
-  response=$(curl -s -w "\\n%{http_code}" -X POST "${ngrokUrl}/upload-basket" \\
+  response=$(curl -s -w "\\n%{http_code}" -X POST "${BASKET_UPLOAD_URL}" \\
     -H "Content-Type: application/json" \\
     -d @/tmp/basket.json)
 
@@ -3676,12 +3677,10 @@ async function waitForGrammarValidation(courseCode) {
  */
 app.listen(PORT, () => {
   console.log('');
-  console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
+  console.log(`${SERVICE_NAME} listening on port ${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
-  console.log(`   Orchestrator: ${ngrokUrl}`);
-  console.log('');
-  console.log(`📡 Upload endpoint: http://localhost:${PORT}/upload-basket`);
-  console.log(`   Use ngrok to expose this endpoint for remote agents`);
+  console.log(`   Data fetch URL: ${ngrokUrl}`);
+  console.log(`   Basket upload URL: ${BASKET_UPLOAD_URL}`);
   console.log('');
 });
 
