@@ -369,7 +369,7 @@ You're essentially doing UAT (user acceptance testing) on the new workflow. Your
 ## The Bigger Picture
 
 ```
-Kai (this week)     → Italian course + learn dashboard
+Kai (this week)     → Italian-250 + learn dashboard
      ↓
 Deborah (next week) → French-250 (trained by Kai)
      ↓
