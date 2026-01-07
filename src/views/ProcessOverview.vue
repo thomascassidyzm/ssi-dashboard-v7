@@ -53,11 +53,11 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v11.2.0 specification to generate complete language courses from canonical seed pairs through an audio-first pipeline. A phase triggers agents. Scripts run instantly.</p>
+            <p>The SSi Course Production system uses APML v13 specification to generate complete language courses from canonical seed pairs through an audio-first pipeline. A phase triggers agents. Scripts run instantly.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">v11.2.0</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v11.2.0</span> | Pipeline: <span class="text-emerald-400">Phase 1 → Phase 2 → Phase 3 → Audio → Manifest</span></p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">v13.0.0</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v13.0.0</span> | Pipeline: <span class="text-emerald-400">Phase 1 → Phase 2 → Phase 3 → Audio → Manifest</span></p>
               <p class="text-xs text-emerald-400 mt-1">Audio-first with Supabase | lego_pairs.json embeds seed_pairs</p>
             </div>
 
@@ -162,7 +162,7 @@
               </router-link>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v10.0.0</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v13</h3>
             <ul class="space-y-2">
               <li><strong>Simplified Pipeline:</strong> Phase 1 → Phase 2 → Phase 3 → Manifest → Audio. A phase triggers agents. Scripts run instantly.</li>
               <li><strong>Embedded Seed Pairs:</strong> lego_pairs.json embeds seed_pairs (no separate file needed)</li>
