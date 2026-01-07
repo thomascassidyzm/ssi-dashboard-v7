@@ -754,10 +754,10 @@ async function getCourseFlags(courseCode) {
  * Update a sample flag
  *
  * @param {string} audioUuid - The audio UUID
- * @param {Object} updates - { status, notes, flaggedBy }
+ * @param {Object} updates - { courseCode, status, notes, flaggedBy }
  * @returns {Promise<Object>}
  */
-async function updateSampleFlag(audioUuid, { status, notes, flaggedBy }) {
+async function updateSampleFlag(audioUuid, { courseCode, status, notes, flaggedBy }) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   // Check if flag exists
@@ -798,11 +798,12 @@ async function updateSampleFlag(audioUuid, { status, notes, flaggedBy }) {
     if (error) throw error
     return data
   } else {
-    // Insert new flag
+    // Insert new flag - course_code is required
     const { data, error } = await supabase
       .from('sample_flags')
       .insert({
         audio_uuid: audioUuid,
+        course_code: courseCode,
         status,
         notes,
         flagged_by: flaggedBy,

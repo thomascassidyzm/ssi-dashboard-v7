@@ -278,7 +278,7 @@ export async function getCourseFlags(courseCode) {
 /**
  * Update a sample flag
  * @param {string} audioUuid - Audio UUID
- * @param {string} courseCode - Course code (unused, for compatibility)
+ * @param {string} courseCode - Course code (required for new flags)
  * @param {string} status - New status
  * @param {string} notes - Optional notes
  * @param {string} flaggedBy - Who flagged it
@@ -325,11 +325,12 @@ export async function updateSampleFlag(audioUuid, courseCode, status, notes, fla
     if (error) throw error;
     return data;
   } else {
-    // Insert new flag
+    // Insert new flag - course_code is required
     const { data, error } = await supabase
       .from('sample_flags')
       .insert({
         audio_uuid: audioUuid,
+        course_code: courseCode,
         status,
         notes,
         flagged_by: flaggedBy,

@@ -350,6 +350,7 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
     // Update flag in Supabase (includes automatic history tracking)
     const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
     const updated = await supabaseClient.updateSampleFlag(uuid, {
+      courseCode,
       status,
       notes: combinedNotes,
       flaggedBy
@@ -403,6 +404,7 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
     for (const { uuid, status, reason, notes, flaggedBy } of updates) {
       const combinedNotes = reason ? `${reason}${notes ? '\n' + notes : ''}` : notes
       const updated = await supabaseClient.updateSampleFlag(uuid, {
+        courseCode,
         status,
         notes: combinedNotes,
         flaggedBy
