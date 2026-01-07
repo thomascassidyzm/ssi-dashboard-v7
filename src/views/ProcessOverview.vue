@@ -18,36 +18,6 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-      <!-- Active Generations Section -->
-      <div v-if="activeCourses.length > 0" class="mb-8 bg-slate-800/50 rounded-lg border border-emerald-500/30 p-6">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Active Course Generations</h2>
-        <div class="space-y-4">
-          <div v-for="course in activeCourses" :key="course.courseCode"
-               class="bg-slate-900/80 border border-slate-400/20 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-3">
-              <div>
-                <h3 class="text-lg font-semibold text-slate-100">{{ course.courseCode }}</h3>
-                <p class="text-sm text-slate-400">{{ course.target }} for {{ course.known }} speakers</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded text-sm font-medium">
-                  {{ course.phase || 'Initializing' }}
-                </span>
-                <router-link :to="`/generate`"
-                             class="text-sm text-emerald-400 hover:text-emerald-300">
-                  View Details →
-                </router-link>
-              </div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-full h-2">
-              <div class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
-                   :style="{ width: `${course.progress || 0}%` }"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
 
         <section class="mb-8">
@@ -185,46 +155,5 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import api from '../services/api'
-
-const activeCourses = ref([])
-const loading = ref(false)
-let pollInterval = null
-
-// Fetch active course generations
-const fetchActiveCourses = async () => {
-  try {
-    const response = await api.course.list()
-    // Filter for courses that are currently in progress
-    activeCourses.value = response.courses?.filter(c =>
-      c.status === 'in_progress' || c.status === 'generating'
-    ) || []
-  } catch (error) {
-    console.error('Failed to load active courses:', error)
-  }
-}
-
-// Poll for active courses every 3 seconds
-const startPolling = () => {
-  fetchActiveCourses()
-  pollInterval = setInterval(fetchActiveCourses, 3000)
-}
-
-const stopPolling = () => {
-  if (pollInterval) {
-    clearInterval(pollInterval)
-    pollInterval = null
-  }
-}
-
-onMounted(() => {
-  startPolling()
-})
-
-onUnmounted(() => {
-  stopPolling()
-})
-
-console.log('📚 Process Overview Loaded')
+// Static documentation page - no reactive data needed
 </script>
