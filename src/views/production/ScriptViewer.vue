@@ -106,7 +106,42 @@
         </div>
       </div>
 
-      <!-- Empty State -->
+      <!-- Empty State for Flagged Only -->
+      <div v-else-if="filterFlaggedOnly && flatFlaggedItems.length === 0" class="empty-state flex items-center justify-center h-64">
+        <div class="text-center">
+          <svg class="w-12 h-12 mx-auto mb-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-white mb-2">No Flagged Items</h3>
+          <p class="text-slate-400 mb-4">All audio in this range has been reviewed</p>
+          <button
+            @click="clearFilters"
+            class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+          >
+            Clear Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Flat Flagged Items View -->
+      <div v-else-if="filterFlaggedOnly" class="flagged-items-list space-y-3">
+        <div class="flagged-header flex items-center justify-between mb-4">
+          <div class="text-sm text-slate-400">
+            <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
+            flagged audio item{{ flatFlaggedItems.length !== 1 ? 's' : '' }}
+          </div>
+        </div>
+
+        <FlaggedItemRow
+          v-for="item in flatFlaggedItems"
+          :key="item.uuid"
+          :item="item"
+          @play="playFlaggedItem"
+          @unflag="unflagItem"
+        />
+      </div>
+
+      <!-- Empty State (standard) -->
       <div v-else-if="filteredSeeds.length === 0" class="empty-state flex items-center justify-center h-64">
         <div class="text-center">
           <svg class="w-12 h-12 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,6 +288,7 @@ import SeedRow from './components/SeedRow.vue';
 import AudioPlayer from './components/AudioPlayer.vue';
 import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
+import FlaggedItemRow from './components/FlaggedItemRow.vue';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
@@ -390,6 +426,76 @@ const filteredSeeds = computed(() => {
 
 const visibleSeeds = computed(() => {
   return filteredSeeds.value.slice(0, visibleSeedCount.value);
+});
+
+// Flat list of flagged audio items for "Flagged Only" view
+interface FlaggedItem {
+  uuid: string;
+  seedId: string;
+  legoId: string;
+  phraseId: string;
+  track: 'known' | 'target1' | 'target2';
+  text: string;
+  status: string;
+  notes?: string;
+  flaggedAt?: string;
+  flaggedBy?: string;
+}
+
+const flatFlaggedItems = computed((): FlaggedItem[] => {
+  const items: FlaggedItem[] = [];
+
+  seeds.value.forEach(seed => {
+    seed.legos.forEach(lego => {
+      lego.phrases.forEach(phrase => {
+        // Check each audio track for flags
+        if (phrase.known_flag && phrase.known_audio_uuid) {
+          items.push({
+            uuid: phrase.known_audio_uuid,
+            seedId: seed.seed_id,
+            legoId: lego.lego_id,
+            phraseId: phrase.phrase_id,
+            track: 'known',
+            text: phrase.known_text,
+            status: phrase.known_flag.status || 'flagged',
+            notes: phrase.known_flag.notes,
+            flaggedAt: phrase.known_flag.flagged_at,
+            flaggedBy: phrase.known_flag.flagged_by,
+          });
+        }
+        if (phrase.target1_flag && phrase.target1_audio_uuid) {
+          items.push({
+            uuid: phrase.target1_audio_uuid,
+            seedId: seed.seed_id,
+            legoId: lego.lego_id,
+            phraseId: phrase.phrase_id,
+            track: 'target1',
+            text: phrase.target_text,
+            status: phrase.target1_flag.status || 'flagged',
+            notes: phrase.target1_flag.notes,
+            flaggedAt: phrase.target1_flag.flagged_at,
+            flaggedBy: phrase.target1_flag.flagged_by,
+          });
+        }
+        if (phrase.target2_flag && phrase.target2_audio_uuid) {
+          items.push({
+            uuid: phrase.target2_audio_uuid,
+            seedId: seed.seed_id,
+            legoId: lego.lego_id,
+            phraseId: phrase.phrase_id,
+            track: 'target2',
+            text: phrase.target_text,
+            status: phrase.target2_flag.status || 'flagged',
+            notes: phrase.target2_flag.notes,
+            flaggedAt: phrase.target2_flag.flagged_at,
+            flaggedBy: phrase.target2_flag.flagged_by,
+          });
+        }
+      });
+    });
+  });
+
+  return items;
 });
 
 // Keyboard Shortcuts
@@ -657,6 +763,58 @@ const clearFilters = () => {
 
 const playAudioSample = (sample: AudioSample) => {
   currentPlayingSample.value = sample;
+};
+
+// Play flagged item audio
+const playFlaggedItem = async (item: FlaggedItem) => {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(
+      `${apiBaseUrl}/api/production/${courseCode.value}/audio/${item.uuid}/url`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    );
+    if (!response.ok) throw new Error('Failed to get audio URL');
+    const data = await response.json();
+
+    currentPlayingSample.value = {
+      uuid: item.uuid,
+      text: item.text,
+      role: item.track as any,
+      cadence: 'natural' as any,
+      voice_id: '',
+      url: data.url,
+    };
+  } catch (err) {
+    console.error('Error playing flagged item:', err);
+  }
+};
+
+// Unflag/clear flag from item
+const unflagItem = async (item: FlaggedItem) => {
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        uuid: item.uuid,
+        status: 'approved', // Clear the flag by setting to approved
+        note: 'Flag cleared',
+        flagged_by: 'dashboard_user'
+      })
+    });
+
+    if (!response.ok) throw new Error('Failed to clear flag');
+
+    // Reload data to update the list
+    await loadCourseData();
+    console.log(`Cleared flag for ${item.uuid}`);
+  } catch (err) {
+    console.error('Error clearing flag:', err);
+  }
 };
 
 const pauseAudio = () => {
