@@ -273,10 +273,10 @@ You are the **Master Orchestrator** for browser ${browserNumber}. Your job is to
 
 **CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
 
-**OUTPUT METHOD**: Each sub-agent POSTs directly to orchestrator API:
-- Endpoint: \`POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
-- Body format: \`{ lego_pairs: {...}, introductions: {...} }\`
-- Server merges submissions automatically (no git workflow needed)
+**OUTPUT METHOD**: Each sub-agent POSTs directly to Supabase via Vercel API:
+- Endpoint: \`POST https://popty.app/api/legos/upload\`
+- Body format: \`{ course: "${courseCode}", seeds: [...] }\`
+- Database merges submissions automatically (no git workflow needed)
 
 ---
 
@@ -439,99 +439,76 @@ fetch('${ORCHESTRATOR_URL}/api/courses/${courseCode}/progress', {
 
 ---
 
-## 📤 STEP 6: OUTPUT - POST TO REST API
+## 📤 STEP 6: OUTPUT - POST DIRECTLY TO DATABASE
 
-**Submit your extraction via REST API**:
+**Submit your extraction directly to Supabase via Vercel API**:
 
 \`\`\`bash
-curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
+curl -X POST "https://popty.app/api/legos/upload" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "lego_pairs": {
-      "course": "${courseCode}",
-      "generated_at": "2025-11-20T12:00:00.000Z",
-      "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
-      "phase": "3",
-      "seeds": [
-        {
-          "seed_id": "S00XX",
-          "seed_pair": {"known": "known sentence", "target": "target sentence"},
-          "legos": [
-            {
-              "id": "S00XXL01",
-              "type": "A",
-              "new": true,
-              "lego": {"known": "word", "target": "palabra"}
-            }
-          ]
-        }
-      ]
-    },
-    "introductions": {
-      "version": "7.8.0",
-      "course": "${courseCode}",
-      "target": "${target}",
-      "known": "${known}",
-      "generated": "2025-11-20T12:00:00.000Z",
-      "presentations": {
-        "S00XXL01": "The ${getLanguageName(target)} for 'word', is: ... 'palabra' ... 'palabra'"
+    "course": "${courseCode}",
+    "seeds": [
+      {
+        "seed_id": "S00XX",
+        "seed_pair": {"known": "known sentence", "target": "target sentence"},
+        "legos": [
+          {
+            "id": "S00XXL01",
+            "type": "A",
+            "new": true,
+            "known": "word",
+            "target": "palabra"
+          },
+          {
+            "id": "S00XXL02",
+            "type": "M",
+            "new": true,
+            "known": "multi word",
+            "target": "multi palabra",
+            "components": [{"known": "multi", "target": "multi"}, {"known": "word", "target": "palabra"}]
+          }
+        ]
       }
-    }
+    ]
   }'
 \`\`\`
 
 Or using fetch:
 \`\`\`javascript
 const submission = {
-  lego_pairs: {
-    course: "${courseCode}",
-    generated_at: new Date().toISOString(),
-    methodology: "Phase 3 v7.0 - Two Heuristics Edition",
-    phase: "3",
-    seeds: [
-      {
-        seed_id: "S00XX",
-        seed_pair: {known: "known sentence", target: "target sentence"},
-        legos: [
-          { id: "S00XXL01", type: "A", new: true, lego: {known: "word", target: "palabra"} },
-          { id: "S00XXL02", type: "M", new: true, lego: {known: "multi word", target: "multi palabra"},
-            components: [["multi", "multi"], ["word", "palabra"]] }
-        ]
-      }
-    ]
-  },
-  introductions: {
-    version: "7.8.0",
-    course: "${courseCode}",
-    target: "${target}",
-    known: "${known}",
-    generated: new Date().toISOString(),
-    presentations: {
-      "S00XXL01": "The ${getLanguageName(target)} for 'word', is: ... 'palabra' ... 'palabra'"
+  course: "${courseCode}",
+  seeds: [
+    {
+      seed_id: "S00XX",
+      seed_pair: {known: "known sentence", target: "target sentence"},
+      legos: [
+        { id: "S00XXL01", type: "A", new: true, known: "word", target: "palabra" },
+        { id: "S00XXL02", type: "M", new: true, known: "multi word", target: "multi palabra",
+          components: [{known: "multi", target: "multi"}, {known: "word", target: "palabra"}] }
+      ]
     }
-  }
+  ]
 };
 
-fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
+fetch('https://popty.app/api/legos/upload', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(submission)
 })
 .then(res => res.json())
 .then(result => console.log(result));
-// Expected response: { success: true, legoCount: N, introCount: M, savedTo: {...} }
+// Expected response: { success: true, seedCount: N, legoCount: M }
 \`\`\`
 
 **Response format**:
 \`\`\`json
 {
   "success": true,
-  "legoCount": 15,
-  "introCount": 0,
-  "savedTo": {
-    "lego_pairs": "public/vfs/courses/${courseCode}/lego_pairs.json",
-    "introductions": "public/vfs/courses/${courseCode}/introductions.json"
-  }
+  "message": "LEGOs saved to database",
+  "course": "${courseCode}",
+  "seedCount": 1,
+  "legoCount": 2
 }
 \`\`\`
 \`\`\`
@@ -1823,56 +1800,58 @@ ${collisionContext}
 1. Extract LEGOs from this seed following Phase 3 v7.0 methodology
 2. Apply the TWO CORE HEURISTICS (from intelligence doc)
 3. **CRITICAL**: Apply collision-fixing chunking instructions above
-4. POST your results to the orchestrator API
+4. POST your results directly to Supabase via Vercel API
 
 ## 🎬 EXECUTE NOW
 
 1. Read the Phase Intelligence doc via API
 2. Extract LEGOs with collision-aware chunking
-3. POST to API:
+3. POST directly to database:
 
 \`\`\`bash
-curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
+curl -X POST "https://popty.app/api/legos/upload" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "lego_pairs": {
-      "${seedId}": {
-        "seed_pair": ["${knownSentence}", "${targetSentence}"],
+    "course": "${courseCode}",
+    "seeds": [
+      {
+        "seed_id": "${seedId}",
+        "seed_pair": {"known": "${knownSentence}", "target": "${targetSentence}"},
         "legos": [
           {
             "id": "${seedId}L01",
             "type": "A",
-            "target": "word",
             "known": "word",
+            "target": "word",
             "new": true
           }
         ]
       }
-    },
-    "introductions": {}
+    ]
   }'
 \`\`\`
 
 Or using fetch:
 \`\`\`javascript
-fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
+fetch('https://popty.app/api/legos/upload', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    lego_pairs: {
-      "${seedId}": {
-        seed_pair: ["${knownSentence}", "${targetSentence}"],
+    course: "${courseCode}",
+    seeds: [
+      {
+        seed_id: "${seedId}",
+        seed_pair: {known: "${knownSentence}", target: "${targetSentence}"},
         legos: [
-          { id: "${seedId}L01", type: "A", target: "word", known: "word", new: true }
+          { id: "${seedId}L01", type: "A", known: "word", target: "word", new: true }
         ]
       }
-    },
-    introductions: {}
+    ]
   })
 })
 .then(res => res.json())
 .then(result => console.log(result));
-// Expected: { success: true, legoCount: N, savedTo: {...} }
+// Expected: { success: true, seedCount: 1, legoCount: N }
 \`\`\`
 `;
 }
@@ -2686,11 +2665,20 @@ Following the methodology you fetched in Step 1:
 3. Mark component A-types as new: false when covered by M-types
 4. Ensure every LEGO passes ZUT
 
-## STEP 4: UPLOAD WITH RETRY
+## STEP 4: UPLOAD DIRECTLY TO DATABASE
 
-curl -X POST "${orchestratorUrl}/api/phase2/${courseCode}/upload-batch" \\
+**POST your resolved LEGOs directly to Supabase via Vercel API:**
+
+curl -X POST "https://popty.app/api/legos/upload" \\
   -H "Content-Type: application/json" \\
-  -d '[YOUR_JSON_ARRAY]'
+  -d '{
+    "course": "${courseCode}",
+    "seeds": [YOUR_SEEDS_ARRAY]
+  }'
+
+**Body format:**
+- course: "${courseCode}"
+- seeds: Array of seed objects, each with seed_id, seed_pair, and legos
 
 If upload fails, retry up to 3 times with exponential backoff.
 \`\`\`
