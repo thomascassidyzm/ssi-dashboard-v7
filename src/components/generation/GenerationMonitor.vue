@@ -4,7 +4,7 @@
     <div class="monitor-header">
       <div class="header-left">
         <h2 class="monitor-title">Course Pipeline</h2>
-        <span class="course-badge">{{ courseCode }}</span>
+        <span class="course-badge">{{ courseCode || 'No Course' }}</span>
       </div>
       <div class="header-right">
         <span class="status-indicator" :class="overallStatus">
