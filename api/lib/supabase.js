@@ -286,15 +286,19 @@ export async function getCourseContentCounts(courseCode) {
   const supabase = getSupabase();
   if (!supabase) return null;
 
-  const [seedsResult, legosResult, audioResult] = await Promise.all([
+  const [seedsResult, legosResult, newLegosResult, phrasesResult, audioResult] = await Promise.all([
     supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
     supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+    supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).eq('is_new', true),
+    supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
     supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
   ]);
 
   return {
     seeds: seedsResult.count || 0,
     legos: legosResult.count || 0,
+    newLegos: newLegosResult.count || 0,
+    practicePhrases: phrasesResult.count || 0,
     audio: audioResult.count || 0
   };
 }
