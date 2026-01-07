@@ -1,9 +1,137 @@
 app SSiProductionSuite:
   title: "SSI Course Production Suite"
-  version: "2.1.0"
+  version: "2.2.0"
   apml_version: "2.1.0"
   extensions: [APML-EDU]
   description: "Integrated QA, recording, and audio pipeline system for language course production"
+
+# ============================================
+# DEPLOYMENT ARCHITECTURE
+# Version: 2.2.0 (2026-01-07)
+# ============================================
+
+architecture:
+  description: |
+    The SSi Production Suite uses a hybrid architecture:
+    - Dashboard (popty.app) is deployed on Vercel for global access
+    - Content creation requires local machines for Claude Code agents
+    - Database (Supabase) is the single source of truth for all content
+    - ngrok tunneling connects dashboard to local orchestrators
+
+  components:
+    dashboard:
+      name: "Popty Dashboard"
+      deployment: Vercel (popty.app)
+      purpose: "Content viewing, QA, monitoring"
+      can_do_without_local:
+        - View course stats from database
+        - Browse content in Supabase
+        - Review and flag audio samples
+      requires_local_for:
+        - Spawning Claude Code agents
+        - Running generation phases (1, 2, 3)
+        - Audio generation (TTS)
+        - Any content creation
+
+    local_orchestrator:
+      name: "Local Machine Orchestrator"
+      deployment: Local machine via ngrok tunnel
+      port: 3456
+      purpose: "Agent orchestration, content creation"
+      requirements:
+        - Claude Code Pro Max subscription ($200/month)
+        - Node.js runtime
+        - ngrok tunnel for remote access
+      provides:
+        - Phase 1-3 orchestration
+        - Claude Code agent spawning
+        - Browser automation for web agents
+        - Real-time progress via WebSocket
+
+    database:
+      name: "Supabase"
+      purpose: "Single source of truth for all content"
+      tables:
+        - courses
+        - course_seeds
+        - course_legos
+        - course_practice_phrases
+        - course_audio
+        - shared_audio
+        - sample_flags
+      access:
+        reads: "Direct from any dashboard instance"
+        writes: "Via local orchestrator after agent completion"
+
+    storage:
+      name: "AWS S3"
+      bucket: ssi-audio-stage
+      region: eu-west-1
+      purpose: "Audio file storage"
+      path_template: "mastered/{uuid}.mp3"
+
+  data_flow:
+    content_creation:
+      description: "Creating new course content"
+      flow:
+        1: "User connects dashboard to local machine via env switcher"
+        2: "Dashboard sends generation request through ngrok tunnel"
+        3: "Local orchestrator spawns Claude Code web agents"
+        4: "Agents run on local machine using Pro Max subscription"
+        5: "Agents POST results to orchestrator or direct to Supabase"
+        6: "Orchestrator writes to Supabase database"
+        7: "Dashboard polls database for progress updates"
+
+    content_viewing:
+      description: "Viewing existing content"
+      flow:
+        1: "Dashboard queries Supabase directly (or via local proxy)"
+        2: "Stats displayed from database counts"
+        3: "Audio streamed from S3 via signed URLs"
+
+  environment_switcher:
+    description: |
+      The dashboard includes an environment switcher that allows users to:
+      - Connect to their own local machine's ngrok tunnel
+      - Connect to a teammate's machine (e.g., Kai's)
+      - Switch between development and production environments
+
+    configuration:
+      - name: "Local Development"
+        url: "http://localhost:3456"
+        description: "Direct local connection"
+
+      - name: "Tom's Machine"
+        url: "https://xxx.ngrok-free.dev"
+        description: "Tom's ngrok tunnel"
+
+      - name: "Kai's Machine"
+        url: "https://yyy.ngrok-free.dev"
+        description: "Kai's ngrok tunnel"
+
+  why_ngrok:
+    description: |
+      ngrok tunneling is essential because:
+
+      1. CLAUDE CODE AGENTS RUN LOCALLY
+         - Claude Code on the Web requires browser automation
+         - Pro Max subscriptions ($200/month) are tied to user accounts
+         - Agents cannot run on Vercel serverless functions
+
+      2. COST EFFICIENCY
+         - Pro Max gives unlimited Claude usage for $200/month
+         - API calls would cost thousands for course generation
+         - Multiple team members can share their Pro Max accounts
+
+      3. FLEXIBILITY
+         - Any team member can run the orchestrator
+         - Dashboard works from anywhere with env switcher
+         - No single point of failure
+
+      4. SECURITY
+         - Write operations require active local connection
+         - Read operations work directly with database
+         - Content creation is intentional, not accidental
 
 # ============================================
 # DATA MODELS
