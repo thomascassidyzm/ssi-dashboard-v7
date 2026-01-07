@@ -178,6 +178,71 @@ function escapeXML(text) {
 }
 
 /**
+ * REGENERATION VARIATIONS
+ *
+ * Azure TTS is deterministic - same text = same audio.
+ * For regeneration of flagged items, we apply subtle punctuation
+ * variations to force different output without changing meaning.
+ *
+ * These variations are applied ONLY to the TTS input, NOT stored in database.
+ */
+const REGENERATION_VARIATIONS = [
+  // Attempt 0: Original text (no variation)
+  (text) => text,
+  // Attempt 1: Add period if missing
+  (text) => text.endsWith('.') ? text : text + '.',
+  // Attempt 2: Add ellipsis
+  (text) => text.replace(/[.!?]?$/, '...'),
+  // Attempt 3: Add comma before last word
+  (text) => {
+    const words = text.split(' ');
+    if (words.length > 1) {
+      words.splice(-1, 0, ',');
+      return words.join(' ').replace(' ,', ',');
+    }
+    return text + ',';
+  },
+  // Attempt 4: Use SSML break tag (subtle pause at end)
+  (text) => text + ' ', // Trailing space
+  // Attempt 5: Add soft hyphen (invisible but changes input)
+  (text) => text + '\u00AD',
+  // Attempt 6: Add zero-width space
+  (text) => text + '\u200B',
+  // Attempt 7: Exclamation variation
+  (text) => text.replace(/[.!?]?$/, '!'),
+  // Attempt 8: Question variation (if appropriate)
+  (text) => text.replace(/[.!?]?$/, '?'),
+  // Attempt 9+: Combine variations
+  (text) => text + '...',
+];
+
+/**
+ * Apply regeneration variation to text for TTS
+ *
+ * This is used when regenerating flagged audio to force Azure
+ * to generate different output (since it's deterministic).
+ *
+ * @param {string} text - Original text
+ * @param {number} attemptNumber - Regeneration attempt (0 = original)
+ * @returns {string} Text with variation applied
+ */
+function applyRegenerationVariation(text, attemptNumber = 0) {
+  if (attemptNumber === 0) {
+    return text; // First attempt uses original
+  }
+
+  // Cycle through variations
+  const variationIndex = attemptNumber % REGENERATION_VARIATIONS.length;
+  const variation = REGENERATION_VARIATIONS[variationIndex];
+
+  const variedText = variation(text);
+
+  console.log(`[Azure TTS] Regen attempt ${attemptNumber}: "${text}" → "${variedText}"`);
+
+  return variedText;
+}
+
+/**
  * Generate audio using Azure Speech Services (writes to file)
  *
  * Note: This function does NOT use the connection pool because Azure SDK
@@ -238,10 +303,15 @@ async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
  * @param {string} language - Language code (unused, for API compatibility)
  * @param {object} options - Generation options
  * @param {number} options.rate - Speed multiplier (default: 1.0)
+ * @param {number} options.regenerationAttempt - For flagged regeneration (0 = original, 1+ = varied)
  * @returns {Promise<Buffer>} Audio buffer
  */
 async function generateSpeech(text, voiceName, language, options = {}) {
   const speed = options.rate || 1.0;
+  const regenerationAttempt = options.regenerationAttempt || 0;
+
+  // Apply variation for regeneration (doesn't affect database, only TTS input)
+  const ttsText = applyRegenerationVariation(text, regenerationAttempt);
 
   await rateLimitRequest();
 
@@ -264,7 +334,7 @@ async function generateSpeech(text, voiceName, language, options = {}) {
 
     // Got a synthesizer from pool
     try {
-      const ssml = buildSSML(text, voiceName, speed);
+      const ssml = buildSSML(ttsText, voiceName, speed);
 
       const audioBuffer = await new Promise((resolve, reject) => {
         synthesizer.speakSsmlAsync(
@@ -426,5 +496,7 @@ module.exports = {
   buildSSML,
   getPoolStats,
   closePool,
-  prewarmPool
+  prewarmPool,
+  applyRegenerationVariation,
+  REGENERATION_VARIATIONS
 };

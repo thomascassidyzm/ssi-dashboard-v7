@@ -12,6 +12,7 @@
 
 const fetch = require('node-fetch');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
+const { applyRegenerationVariation } = require('./azure-tts-service.cjs');
 
 /**
  * Generate speech using ElevenLabs API
@@ -79,6 +80,7 @@ async function generateElevenLabs(text, config) {
  * @param {string} config.region - Azure region (e.g., 'eastus')
  * @param {string} config.voiceName - Voice name (e.g., 'it-IT-IsabellaNeural')
  * @param {number} config.speed - Speech speed multiplier (0.5-2.0)
+ * @param {number} config.regenerationAttempt - For flagged regeneration (0 = original)
  * @returns {Promise<Buffer>} Audio data as MP3
  */
 async function generateAzure(text, config) {
@@ -86,8 +88,12 @@ async function generateAzure(text, config) {
     subscriptionKey,
     region,
     voiceName,
-    speed = 1.0
+    speed = 1.0,
+    regenerationAttempt = 0
   } = config;
+
+  // Apply variation for regeneration (Azure is deterministic)
+  const ttsText = applyRegenerationVariation(text, regenerationAttempt);
 
   if (!subscriptionKey) {
     throw new Error('Azure subscription key is required');
@@ -115,7 +121,7 @@ async function generateAzure(text, config) {
       <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
         <voice name="${voiceName}">
           <prosody rate="${rateString}">
-            ${escapeXml(text)}
+            ${escapeXml(ttsText)}
           </prosody>
         </voice>
       </speak>

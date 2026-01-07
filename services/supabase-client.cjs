@@ -818,6 +818,63 @@ async function updateSampleFlag(audioUuid, { status, notes, flaggedBy }) {
 }
 
 /**
+ * Get regeneration attempt count for a sample from its flag history
+ *
+ * Counts how many times the sample has been through regeneration
+ * (status went to 'in_pipeline' or 'regenerating').
+ *
+ * Used to vary TTS input for Azure determinism workaround.
+ *
+ * @param {string} audioUuid - Audio UUID
+ * @returns {Promise<number>} Regeneration attempt count (0 if never regenerated)
+ */
+async function getRegenerationCount(audioUuid) {
+  if (!supabase) return 0
+
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .select('history')
+    .eq('audio_uuid', audioUuid)
+    .single()
+
+  if (error || !data?.history) return 0
+
+  // Count times status was set to 'in_pipeline' (start of regeneration)
+  const regenCount = data.history.filter(h =>
+    h.status === 'in_pipeline' || h.status === 'regenerating'
+  ).length
+
+  return regenCount
+}
+
+/**
+ * Bulk get regeneration counts for multiple samples
+ *
+ * @param {Array<string>} audioUuids - Array of audio UUIDs
+ * @returns {Promise<Object>} Map of uuid → regeneration count
+ */
+async function bulkGetRegenerationCounts(audioUuids) {
+  if (!supabase) return {}
+
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .select('audio_uuid, history')
+    .in('audio_uuid', audioUuids)
+
+  if (error || !data) return {}
+
+  const counts = {}
+  for (const row of data) {
+    const regenCount = (row.history || []).filter(h =>
+      h.status === 'in_pipeline' || h.status === 'regenerating'
+    ).length
+    counts[row.audio_uuid] = regenCount
+  }
+
+  return counts
+}
+
+/**
  * Bulk update sample flags
  *
  * @param {Array} updates - Array of { audioUuid, status, notes, flaggedBy }
@@ -999,6 +1056,8 @@ module.exports = {
   getCourseFlags,
   updateSampleFlag,
   bulkUpdateSampleFlags,
+  getRegenerationCount,
+  bulkGetRegenerationCounts,
 
   // Content stats
   getCourseContentStats,

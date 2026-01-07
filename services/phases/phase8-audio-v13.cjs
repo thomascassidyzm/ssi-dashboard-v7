@@ -23,6 +23,7 @@ const ttsService = require('../tts-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
+const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 
 const app = express()
 app.use(cors())
@@ -668,6 +669,15 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Start progress tracking
     startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
 
+    // Get regeneration counts for flagged items (for Azure determinism workaround)
+    // This helps vary TTS input when re-regenerating flagged audio
+    let regenerationCounts = {}
+    if (flaggedOnly) {
+      const audioIds = audioToRegenerate.map(a => a.id)
+      regenerationCounts = await bulkGetRegenerationCounts(audioIds)
+      logger.info(`Got regeneration counts for ${Object.keys(regenerationCounts).length} flagged items`)
+    }
+
     // Process items in parallel with concurrency limit
     logger.info(`Regenerating ${audioToRegenerate.length} ${role} audio files with concurrency=${CONCURRENCY}`)
 
@@ -677,6 +687,9 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
+      // Get regeneration attempt count for this item (Azure determinism workaround)
+      const regenerationAttempt = regenerationCounts[item.id] || 0
+
       // Generate TTS audio using provider from voice config
       let rawAudioBuffer
       if (voiceProvider === 'azure') {
@@ -684,7 +697,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
-          speed
+          speed,
+          regenerationAttempt  // Pass to TTS for variation
         })
       } else if (voiceProvider === 'elevenlabs') {
         rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
@@ -981,34 +995,44 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     for (const pres of presentations) {
       try {
-        // Generate placeholder s3_key (UPPERCASE to match existing S3 convention)
-        const placeholderUuid = uuidv4().toUpperCase()
-        const placeholderS3Key = `pending/${placeholderUuid}.mp3`
         const textNormalized = pres.presentation_text.toLowerCase().trim()
 
-        // Upsert into course_audio
-        const { error: upsertError } = await supabase
+        // Check if record already exists (don't overwrite existing mastered audio)
+        const { data: existing } = await supabase
           .from('course_audio')
-          .upsert({
-            course_code: courseCode,
-            text: pres.presentation_text,
-            text_normalized: textNormalized,
-            language: knownLang,
-            role: 'presentation',
-            voice_id: presentationVoiceId,
-            origin: 'tts',
-            s3_key: placeholderS3Key
-          }, {
-            onConflict: 'course_code,text_normalized,language,role',
-            ignoreDuplicates: false
-          })
+          .select('id, s3_key')
+          .eq('course_code', courseCode)
+          .eq('text_normalized', textNormalized)
+          .eq('language', knownLang)
+          .eq('role', 'presentation')
+          .single()
 
-        if (upsertError) {
-          errors.push({ lego_id: pres.lego_id, error: upsertError.message })
-          continue
+        if (!existing) {
+          // Insert new record with placeholder s3_key
+          const placeholderUuid = uuidv4().toUpperCase()
+          const placeholderS3Key = `pending/${placeholderUuid}.mp3`
+
+          const { error: insertError } = await supabase
+            .from('course_audio')
+            .insert({
+              course_code: courseCode,
+              text: pres.presentation_text,
+              text_normalized: textNormalized,
+              language: knownLang,
+              role: 'presentation',
+              voice_id: presentationVoiceId,
+              origin: 'tts',
+              s3_key: placeholderS3Key
+            })
+
+          if (insertError) {
+            errors.push({ lego_id: pres.lego_id, error: insertError.message })
+            continue
+          }
         }
+        // If record exists, don't overwrite - just use it for linking
 
-        // Query for the ID explicitly (upsert doesn't reliably return ID on conflict)
+        // Query for the ID explicitly
         const { data: audioRecord, error: selectError } = await supabase
           .from('course_audio')
           .select('id')
@@ -1019,7 +1043,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
           .single()
 
         if (selectError || !audioRecord?.id) {
-          errors.push({ lego_id: pres.lego_id, error: 'Could not find audio record after upsert' })
+          errors.push({ lego_id: pres.lego_id, error: 'Could not find audio record' })
           continue
         }
 
