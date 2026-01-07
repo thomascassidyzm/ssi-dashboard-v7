@@ -571,6 +571,11 @@ onMounted(async () => {
     await productionStore.loadCourse(courseCode.value)
     // Start polling for audio progress
     startProgressPolling()
+
+    // Check for mode=flagged query param (from Script Viewer link)
+    if (route.query.mode === 'flagged') {
+      flaggedOnly.value = true
+    }
   } catch (err) {
     console.error('Failed to load pipeline:', err)
     error.value = 'Failed to load pipeline data. Please try again.'

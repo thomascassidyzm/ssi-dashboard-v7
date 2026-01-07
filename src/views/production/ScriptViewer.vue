@@ -130,6 +130,16 @@
             <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
             flagged audio item{{ flatFlaggedItems.length !== 1 ? 's' : '' }}
           </div>
+          <router-link
+            v-if="flatFlaggedItems.length > 0"
+            :to="`/production/${courseCode}/pipeline?mode=flagged`"
+            class="flex items-center gap-2 px-4 py-2 bg-emerald-500 bg-opacity-20 text-emerald-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
+          >
+            Regenerate Flagged Audio
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </router-link>
         </div>
 
         <FlaggedItemRow
