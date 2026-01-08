@@ -298,6 +298,41 @@ app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
   }
 })
 
+// Export legacy manifest (for old learning app)
+app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Import the legacy manifest generator
+    const { generateLegacyManifest } = require('./phases/generate-legacy-manifest.cjs')
+
+    logger.info(`Generating legacy manifest for ${courseCode}`)
+    const manifest = await generateLegacyManifest(courseCode)
+
+    // Generate filename with date
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+    const filename = `${manifest.id}_legacy_${date}.json`
+
+    res.json({
+      success: true,
+      manifest,
+      filename,
+      stats: {
+        seeds: manifest.slices[0].seeds.length,
+        orderedEncouragements: manifest.slices[0].orderedEncouragements.length,
+        pooledEncouragements: manifest.slices[0].pooledEncouragements.length
+      }
+    })
+  } catch (error) {
+    logger.error('Error generating legacy manifest:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Get sample flags
 app.get('/api/production/:courseCode/flags', async (req, res) => {
   try {

@@ -167,6 +167,20 @@ function getDefaults() {
 }
 
 /**
+ * Get resume mode configuration
+ * Resume uses 1 seed per agent for maximum granularity
+ * @returns {Object} Resume config with seeds_per_agent and agents_per_browser
+ */
+function getResumeConfig() {
+  const config = loadConfig();
+  return config.resume || {
+    seeds_per_agent: 1,
+    agents_per_browser: 25,
+    comment: "Default resume config"
+  };
+}
+
+/**
  * Validate that a mode name is valid
  * @param {string} modeName - Mode name to validate
  * @returns {boolean} True if valid
@@ -190,6 +204,7 @@ module.exports = {
   calculateWorkDistribution,
   getAllModes,
   getDefaults,
+  getResumeConfig,
   isValidMode,
 
   // Deprecated - for backwards compatibility during migration

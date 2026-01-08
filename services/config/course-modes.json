@@ -24,32 +24,32 @@
 
     "mvp_course": {
       "name": "MVP Course",
-      "description": "Big 10 language pairs - high agent parallelization",
+      "description": "Big 10 language pairs - 2 seeds per agent for granular tracking",
       "seeds": 250,
       "pattern": {
         "browsers": 5,
-        "agents_per_browser": 10,
-        "seeds_per_agent": 5
+        "agents_per_browser": 25,
+        "seeds_per_agent": 2
       },
       "capacity": 250,
       "estimated_time_minutes": 15,
       "use_case": "Production courses for Big 10 language pairs",
-      "rationale": "10 agents per browser maximizes agent parallelization while keeping browser count low"
+      "rationale": "2 seeds per agent = granular failures. 25 agents per browser keeps tab count low."
     },
 
     "full_course": {
       "name": "Full Course",
-      "description": "Complete legacy-scale course - maximum agent parallelization",
+      "description": "Complete legacy-scale course - 2 seeds per agent for granular tracking",
       "seeds": 668,
       "pattern": {
-        "browsers": 9,
-        "agents_per_browser": 15,
-        "seeds_per_agent": 5
+        "browsers": 14,
+        "agents_per_browser": 25,
+        "seeds_per_agent": 2
       },
-      "capacity": 675,
-      "estimated_time_minutes": 20,
+      "capacity": 700,
+      "estimated_time_minutes": 25,
       "use_case": "Complete courses (legacy Spanish for English scale)",
-      "rationale": "5 seeds per agent (same as MVP) keeps agent workload consistent; 15 agents per browser maximizes parallelization"
+      "rationale": "2 seeds per agent = granular failures. 25 agents per browser keeps tab count low."
     }
   },
 
@@ -58,6 +58,13 @@
     "agent_timeout_ms": 300000,
     "max_retries": 3,
     "retry_backoff_ms": 5000
+  },
+
+  "resume": {
+    "comment": "Resume mode uses 1 seed per agent for maximum granularity",
+    "seeds_per_agent": 1,
+    "agents_per_browser": 25,
+    "rationale": "1 seed per agent = if worker fails, only 1 seed lost. Easy retry."
   },
 
   "phase_overrides": {

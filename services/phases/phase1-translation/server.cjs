@@ -28,7 +28,7 @@ const { promisify } = require('util');
 const execAsync = promisify(require('child_process').exec);
 
 // Import centralized config - SINGLE SOURCE OF TRUTH
-const { getModeConfig, getPatternForSeeds, getParallelizationPattern, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
+const { getModeConfig, getPatternForSeeds, getParallelizationPattern, getResumeConfig, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3457;
@@ -1828,8 +1828,10 @@ app.post('/resume', async (req, res) => {
     modeName = modeConfig.name;
   }
 
-  const pattern = modeConfig.pattern;
-  const { agents_per_browser: workersPerMaster, seeds_per_agent: seedsPerWorker } = pattern;
+  // Resume mode uses special config for maximum granularity (1 seed per agent)
+  const resumeConfig = getResumeConfig();
+  const workersPerMaster = resumeConfig.agents_per_browser;
+  const seedsPerWorker = resumeConfig.seeds_per_agent;
 
   console.log(`\n[Phase 1] ====================================`);
   console.log(`[Phase 1] RESUME / GAP-FILL MODE`);
@@ -1837,7 +1839,7 @@ app.post('/resume', async (req, res) => {
   console.log(`[Phase 1] Course: ${courseCode}`);
   console.log(`[Phase 1] Mode: ${modeName}`);
   console.log(`[Phase 1] Total Seeds Expected: ${totalSeeds}`);
-  console.log(`[Phase 1] Pattern: ${workersPerMaster} workers × ${seedsPerWorker} seeds (from config)`);
+  console.log(`[Phase 1] Pattern: ${workersPerMaster} workers × ${seedsPerWorker} seed (RESUME CONFIG - max granularity)`);
 
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
   const courseDir = path.join(VFS_ROOT, courseCode);
