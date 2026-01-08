@@ -234,9 +234,11 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 6: UPLOAD TO SUPABASE (RELIABLE!)
+## STEP 6: UPLOAD TO SUPABASE - MANDATORY FINAL STEP
 
-Upload directly to Supabase (always available, no network issues):
+YOUR WORK IS NOT COMPLETE UNTIL YOU RUN THIS CURL COMMAND!
+
+You MUST execute this curl command using the Bash tool - do NOT just display it:
 
 curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
   -H "apikey: ${SUPABASE_ANON_KEY}" \\
@@ -255,10 +257,12 @@ curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
-**IMPORTANT:**
+**CRITICAL REQUIREMENTS:**
+- RUN the curl command using Bash tool - this is NOT optional!
 - Use curl for uploads, NOT WebFetch!
 - One POST per worker with ALL your seeds in the payload array
-- The local server polls this table and processes your uploads automatically
+- If curl fails, RETRY once before giving up
+- Confirm "201 Created" or empty response = success
 \`\`\`
 
 ---
@@ -412,9 +416,11 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 6: UPLOAD TO SUPABASE (RELIABLE!)
+## STEP 6: UPLOAD TO SUPABASE - MANDATORY FINAL STEP
 
-Upload directly to Supabase (always available, no network issues):
+YOUR WORK IS NOT COMPLETE UNTIL YOU RUN THIS CURL COMMAND!
+
+You MUST execute this curl command using the Bash tool - do NOT just display it:
 
 curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
   -H "apikey: ${SUPABASE_ANON_KEY}" \\
@@ -433,10 +439,12 @@ curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
-**IMPORTANT:**
+**CRITICAL REQUIREMENTS:**
+- RUN the curl command using Bash tool - this is NOT optional!
 - Use curl for uploads, NOT WebFetch!
 - One POST per worker with ALL your seeds in the payload array
-- The local server polls this table and processes your uploads automatically
+- If curl fails, RETRY once before giving up
+- Confirm "201 Created" or empty response = success
 \`\`\`
 
 ---
