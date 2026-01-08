@@ -2291,6 +2291,57 @@ app.get('/health', (req, res) => {
 });
 
 // =============================================================================
+// CANCEL ENDPOINTS - Clear stale jobs
+// =============================================================================
+
+/**
+ * POST /api/phase1/:courseCode/cancel
+ * Cancel active job for a specific course
+ */
+app.post('/api/phase1/:courseCode/cancel', (req, res) => {
+  const { courseCode } = req.params;
+
+  if (activeJobs.has(courseCode)) {
+    activeJobs.delete(courseCode);
+    console.log(`[Phase 1] ❌ Cancelled job for ${courseCode}`);
+    res.json({ success: true, message: `Cancelled job for ${courseCode}` });
+  } else if (activeJobs.has(courseCode + '_gapfill')) {
+    activeJobs.delete(courseCode + '_gapfill');
+    console.log(`[Phase 1] ❌ Cancelled gap-fill job for ${courseCode}`);
+    res.json({ success: true, message: `Cancelled gap-fill job for ${courseCode}` });
+  } else {
+    res.json({ success: false, message: `No active job for ${courseCode}` });
+  }
+});
+
+/**
+ * POST /api/phase1/cancel-all
+ * Cancel ALL active jobs (nuclear option)
+ */
+app.post('/api/phase1/cancel-all', (req, res) => {
+  const count = activeJobs.size;
+  const jobs = [...activeJobs.keys()];
+  activeJobs.clear();
+  console.log(`[Phase 1] ❌ Cancelled ALL ${count} jobs: ${jobs.join(', ')}`);
+  res.json({ success: true, cancelled: count, jobs });
+});
+
+/**
+ * GET /api/phase1/jobs
+ * List all active jobs
+ */
+app.get('/api/phase1/jobs', (req, res) => {
+  const jobs = [...activeJobs.entries()].map(([key, job]) => ({
+    courseCode: key,
+    status: job.status,
+    startTime: job.startTime,
+    masters: job.masters,
+    mastersComplete: job.mastersComplete
+  }));
+  res.json({ activeJobs: jobs.length, jobs });
+});
+
+// =============================================================================
 // QUEUE POLLER - Process uploads from raw_seed_uploads table
 // =============================================================================
 

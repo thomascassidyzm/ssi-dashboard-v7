@@ -4337,6 +4337,94 @@ app.get('/health/all', async (req, res) => {
   res.status(allHealthy ? 200 : 503).json(health);
 });
 
+// =============================================================================
+// CANCEL ENDPOINTS - Clear stale jobs across all services
+// =============================================================================
+
+/**
+ * POST /api/cancel/:courseCode
+ * Cancel all jobs for a specific course across all phase servers
+ */
+app.post('/api/cancel/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const results = { courseCode, cancelled: [] };
+
+  // Cancel on each phase server
+  for (const [phase, url] of Object.entries(PHASE_SERVERS)) {
+    try {
+      const endpoint = phase === 'phase1' ? 'phase1' :
+                       phase === 'phase2' ? 'phase2' :
+                       phase === 'phase3' ? 'phase3' : phase;
+      const response = await axios.post(`${url}/api/${endpoint}/${courseCode}/cancel`, {}, { timeout: 5000 });
+      if (response.data.success) {
+        results.cancelled.push(phase);
+      }
+    } catch (error) {
+      // Ignore errors - endpoint may not exist on all services
+    }
+  }
+
+  // Clear local course progress state
+  courseProgress.delete(`${courseCode}_phase1`);
+  courseProgress.delete(`${courseCode}_phase3`);
+  courseStates.delete(courseCode);
+
+  console.log(`[Orchestrator] ❌ Cancelled jobs for ${courseCode} on: ${results.cancelled.join(', ') || 'none'}`);
+  res.json({ success: true, ...results });
+});
+
+/**
+ * POST /api/cancel-all
+ * Nuclear option - cancel ALL jobs on ALL services
+ */
+app.post('/api/cancel-all', async (req, res) => {
+  const results = { cancelled: [] };
+
+  // Cancel all on each phase server
+  for (const [phase, url] of Object.entries(PHASE_SERVERS)) {
+    try {
+      const endpoint = phase === 'phase1' ? 'phase1' :
+                       phase === 'phase2' ? 'phase2' :
+                       phase === 'phase3' ? 'phase3' : phase;
+      const response = await axios.post(`${url}/api/${endpoint}/cancel-all`, {}, { timeout: 5000 });
+      if (response.data.success) {
+        results.cancelled.push({ phase, count: response.data.cancelled });
+      }
+    } catch (error) {
+      // Ignore errors
+    }
+  }
+
+  // Clear all local state
+  courseProgress.clear();
+  courseStates.clear();
+
+  console.log(`[Orchestrator] ❌ CANCELLED ALL JOBS`);
+  res.json({ success: true, ...results });
+});
+
+/**
+ * GET /api/jobs
+ * List all active jobs across all services
+ */
+app.get('/api/jobs', async (req, res) => {
+  const allJobs = {};
+
+  for (const [phase, url] of Object.entries(PHASE_SERVERS)) {
+    try {
+      const endpoint = phase === 'phase1' ? 'phase1' :
+                       phase === 'phase2' ? 'phase2' :
+                       phase === 'phase3' ? 'phase3' : phase;
+      const response = await axios.get(`${url}/api/${endpoint}/jobs`, { timeout: 3000 });
+      allJobs[phase] = response.data;
+    } catch (error) {
+      allJobs[phase] = { error: 'unavailable' };
+    }
+  }
+
+  res.json(allJobs);
+});
+
 /**
  * GET /api/health
  * Dashboard-compatible health check
