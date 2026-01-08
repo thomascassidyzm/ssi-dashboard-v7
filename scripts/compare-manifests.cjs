@@ -1,398 +1,336 @@
-const fs = require('fs');
-const path = require('path');
+#!/usr/bin/env node
+/**
+ * Manifest Comparison Script
+ *
+ * Compares two legacy manifests and reports differences in:
+ * - Top-level structure
+ * - Seed counts and content
+ * - Samples dictionary
+ * - Encouragements
+ *
+ * Usage:
+ *   node scripts/compare-manifests.cjs <old-manifest> <new-manifest>
+ */
 
-// ============================================================================
-// MANIFEST COMPARISON SCRIPT
-// ============================================================================
-// Compares a new manifest against the Italian reference manifest section by section
-// ============================================================================
+const fs = require('fs')
+const path = require('path')
 
-const args = process.argv.slice(2);
-if (args.length < 1) {
-  console.error('Usage: node compare-manifests.cjs <new_manifest_path> [reference_manifest_path]');
-  console.error('Example: node compare-manifests.cjs public/vfs/courses/spa_for_eng/course_manifest.json');
-  process.exit(1);
+// ANSI colors
+const RED = '\x1b[31m'
+const GREEN = '\x1b[32m'
+const YELLOW = '\x1b[33m'
+const BLUE = '\x1b[34m'
+const CYAN = '\x1b[36m'
+const RESET = '\x1b[0m'
+const BOLD = '\x1b[1m'
+
+function log(color, ...args) {
+  console.log(color + args.join(' ') + RESET)
 }
 
-const newManifestPath = args[0];
-const refManifestPath = args[1] || path.join(__dirname, '../public/vfs/canonical/Example Course Manifest Italian_for_English_speakers_COURSE_20250827_144821 (1).json');
-
-console.log('MANIFEST COMPARISON\n');
-console.log(`Reference: ${path.basename(refManifestPath)}`);
-console.log(`New:       ${path.basename(newManifestPath)}\n`);
-
-const ref = JSON.parse(fs.readFileSync(refManifestPath, 'utf8'));
-const newM = JSON.parse(fs.readFileSync(newManifestPath, 'utf8'));
-
-let issues = [];
-let matches = [];
-
-// ============================================================================
-// SECTION 1: TOP-LEVEL STRUCTURE
-// ============================================================================
-console.log('=' .repeat(60));
-console.log('SECTION 1: TOP-LEVEL STRUCTURE');
-console.log('=' .repeat(60));
-
-const refKeys = Object.keys(ref).sort();
-const newKeys = Object.keys(newM).sort();
-
-console.log(`\nReference keys: ${refKeys.join(', ')}`);
-console.log(`New keys:       ${newKeys.join(', ')}`);
-
-if (JSON.stringify(refKeys) === JSON.stringify(newKeys)) {
-  console.log('✓ Top-level keys match');
-  matches.push('Top-level keys');
-} else {
-  console.log('✗ Top-level keys DIFFER');
-  issues.push('Top-level keys differ');
+function loadManifest(filePath) {
+  const absPath = path.isAbsolute(filePath) ? filePath : path.join(process.cwd(), filePath)
+  return JSON.parse(fs.readFileSync(absPath, 'utf8'))
 }
 
-// ============================================================================
-// SECTION 2: HEADER FIELDS
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 2: HEADER FIELDS');
-console.log('=' .repeat(60));
+function compareTopLevel(old, neu) {
+  log(BOLD + CYAN, '\n═══════════════════════════════════════════════════════════════')
+  log(BOLD + CYAN, '  TOP-LEVEL STRUCTURE')
+  log(BOLD + CYAN, '═══════════════════════════════════════════════════════════════\n')
 
-const headerFields = ['id', 'known', 'target', 'version', 'status'];
-headerFields.forEach(field => {
-  const refVal = ref[field];
-  const newVal = newM[field];
-  const typeMatch = typeof refVal === typeof newVal;
-  console.log(`\n${field}:`);
-  console.log(`  Reference: ${JSON.stringify(refVal)} (${typeof refVal})`);
-  console.log(`  New:       ${JSON.stringify(newVal)} (${typeof newVal})`);
-  if (typeMatch) {
-    console.log(`  ✓ Type matches`);
-  } else {
-    console.log(`  ✗ Type DIFFERS`);
-    issues.push(`Header field '${field}' type mismatch`);
-  }
-});
+  const fields = ['id', 'known', 'target', 'version', 'status']
 
-// ============================================================================
-// SECTION 3: INTRODUCTION
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 3: INTRODUCTION');
-console.log('=' .repeat(60));
+  console.log('Field'.padEnd(15) + 'OLD'.padEnd(25) + 'NEW'.padEnd(25) + 'Match')
+  console.log('─'.repeat(75))
 
-const refIntro = ref.introduction || {};
-const newIntro = newM.introduction || {};
-
-console.log('\nReference introduction:');
-Object.entries(refIntro).forEach(([k, v]) => {
-  console.log(`  ${k}: ${JSON.stringify(v)} (${typeof v})`);
-});
-
-console.log('\nNew introduction:');
-Object.entries(newIntro).forEach(([k, v]) => {
-  console.log(`  ${k}: ${JSON.stringify(v)} (${typeof v})`);
-});
-
-const refIntroKeys = Object.keys(refIntro).sort();
-const newIntroKeys = Object.keys(newIntro).sort();
-
-if (JSON.stringify(refIntroKeys) === JSON.stringify(newIntroKeys)) {
-  console.log('\n✓ Introduction keys match');
-  matches.push('Introduction keys');
-} else {
-  console.log('\n✗ Introduction keys DIFFER');
-  console.log(`  Reference: ${refIntroKeys.join(', ')}`);
-  console.log(`  New:       ${newIntroKeys.join(', ')}`);
-  issues.push('Introduction keys differ');
-}
-
-// ============================================================================
-// SECTION 4: SLICE STRUCTURE
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 4: SLICE STRUCTURE');
-console.log('=' .repeat(60));
-
-const refSlice = ref.slices[0] || {};
-const newSlice = newM.slices[0] || {};
-
-console.log(`\nReference slices: ${ref.slices.length}`);
-console.log(`New slices:       ${newM.slices.length}`);
-
-const refSliceKeys = Object.keys(refSlice).sort();
-const newSliceKeys = Object.keys(newSlice).sort();
-
-console.log(`\nReference slice keys: ${refSliceKeys.join(', ')}`);
-console.log(`New slice keys:       ${newSliceKeys.join(', ')}`);
-
-if (JSON.stringify(refSliceKeys) === JSON.stringify(newSliceKeys)) {
-  console.log('✓ Slice keys match');
-  matches.push('Slice keys');
-} else {
-  console.log('✗ Slice keys DIFFER');
-  issues.push('Slice keys differ');
-}
-
-// ============================================================================
-// SECTION 5: ENCOURAGEMENTS
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 5: ENCOURAGEMENTS');
-console.log('=' .repeat(60));
-
-const refPooled = refSlice.pooledEncouragements || [];
-const newPooled = newSlice.pooledEncouragements || [];
-const refOrdered = refSlice.orderedEncouragements || [];
-const newOrdered = newSlice.orderedEncouragements || [];
-
-console.log(`\npooledEncouragements:`);
-console.log(`  Reference: ${refPooled.length} items`);
-console.log(`  New:       ${newPooled.length} items`);
-
-console.log(`\norderedEncouragements:`);
-console.log(`  Reference: ${refOrdered.length} items`);
-console.log(`  New:       ${newOrdered.length} items`);
-
-if (refPooled.length > 0 && newPooled.length > 0) {
-  const refPooledKeys = Object.keys(refPooled[0]).sort();
-  const newPooledKeys = Object.keys(newPooled[0]).sort();
-  console.log(`\nPooled item structure:`);
-  console.log(`  Reference: ${refPooledKeys.join(', ')}`);
-  console.log(`  New:       ${newPooledKeys.join(', ')}`);
-
-  if (JSON.stringify(refPooledKeys) === JSON.stringify(newPooledKeys)) {
-    console.log('  ✓ Structure matches');
-    matches.push('Encouragement structure');
-  } else {
-    console.log('  ✗ Structure DIFFERS');
-    issues.push('Encouragement structure differs');
-  }
-}
-
-// ============================================================================
-// SECTION 6: SEED STRUCTURE
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 6: SEED STRUCTURE');
-console.log('=' .repeat(60));
-
-const refSeeds = refSlice.seeds || [];
-const newSeeds = newSlice.seeds || [];
-
-console.log(`\nSeeds count:`);
-console.log(`  Reference: ${refSeeds.length}`);
-console.log(`  New:       ${newSeeds.length}`);
-
-if (refSeeds.length > 0 && newSeeds.length > 0) {
-  const refSeed = refSeeds[0];
-  const newSeed = newSeeds[0];
-
-  const refSeedKeys = Object.keys(refSeed).sort();
-  const newSeedKeys = Object.keys(newSeed).sort();
-
-  console.log(`\nSeed keys:`);
-  console.log(`  Reference: ${refSeedKeys.join(', ')}`);
-  console.log(`  New:       ${newSeedKeys.join(', ')}`);
-
-  if (JSON.stringify(refSeedKeys) === JSON.stringify(newSeedKeys)) {
-    console.log('  ✓ Seed keys match');
-    matches.push('Seed keys');
-  } else {
-    console.log('  ✗ Seed keys DIFFER');
-    issues.push('Seed keys differ');
+  for (const field of fields) {
+    const oldVal = JSON.stringify(old[field])
+    const newVal = JSON.stringify(neu[field])
+    const match = oldVal === newVal ? '✓' : '✗'
+    const color = oldVal === newVal ? GREEN : RED
+    console.log(
+      field.padEnd(15) +
+      (oldVal || 'undefined').substring(0, 23).padEnd(25) +
+      (newVal || 'undefined').substring(0, 23).padEnd(25) +
+      color + match + RESET
+    )
   }
 
-  // Check seed_sentence structure
-  console.log(`\nseed_sentence structure:`);
-  console.log(`  Reference: ${JSON.stringify(refSeed.seed_sentence)}`);
-  console.log(`  New:       ${JSON.stringify(newSeed.seed_sentence)}`);
+  // Introduction
+  log(YELLOW, '\nIntroduction:')
+  console.log('  OLD:', JSON.stringify(old.introduction, null, 2).split('\n').join('\n       '))
+  console.log('  NEW:', JSON.stringify(neu.introduction, null, 2).split('\n').join('\n       '))
+}
 
-  // Check node structure
-  const refNode = refSeed.node || {};
-  const newNode = newSeed.node || {};
-  const refNodeKeys = Object.keys(refNode).sort();
-  const newNodeKeys = Object.keys(newNode).sort();
+function compareSeeds(old, neu) {
+  log(BOLD + CYAN, '\n═══════════════════════════════════════════════════════════════')
+  log(BOLD + CYAN, '  SEEDS COMPARISON')
+  log(BOLD + CYAN, '═══════════════════════════════════════════════════════════════\n')
 
-  console.log(`\nSeed node keys:`);
-  console.log(`  Reference: ${refNodeKeys.join(', ')}`);
-  console.log(`  New:       ${newNodeKeys.join(', ')}`);
+  const oldSeeds = old.slices?.[0]?.seeds || []
+  const newSeeds = neu.slices?.[0]?.seeds || []
 
-  if (JSON.stringify(refNodeKeys) === JSON.stringify(newNodeKeys)) {
-    console.log('  ✓ Node keys match');
-    matches.push('Seed node keys');
-  } else {
-    console.log('  ✗ Node keys DIFFER');
-    issues.push('Seed node keys differ');
+  console.log('OLD seeds: ' + oldSeeds.length)
+  console.log('NEW seeds: ' + newSeeds.length)
+
+  // Build lookup by seed sentence
+  const oldBySentence = new Map()
+  for (const seed of oldSeeds) {
+    const canonical = seed.seed_sentence?.canonical
+    if (canonical) oldBySentence.set(canonical, seed)
   }
 
-  // Check known/target structure within node
-  if (refNode.known && newNode.known) {
-    const refKnownKeys = Object.keys(refNode.known).sort();
-    const newKnownKeys = Object.keys(newNode.known).sort();
-    console.log(`\nNode known keys:`);
-    console.log(`  Reference: ${refKnownKeys.join(', ')}`);
-    console.log(`  New:       ${newKnownKeys.join(', ')}`);
+  const newBySentence = new Map()
+  for (const seed of newSeeds) {
+    const canonical = seed.seed_sentence?.canonical
+    if (canonical) newBySentence.set(canonical, seed)
+  }
 
-    if (JSON.stringify(refKnownKeys) === JSON.stringify(newKnownKeys)) {
-      console.log('  ✓ Known keys match');
-      matches.push('Node known keys');
+  // Find matches and differences
+  let matched = 0
+  let onlyInOld = 0
+  let onlyInNew = 0
+  let structureDiffs = []
+
+  for (const [sentence, oldSeed] of oldBySentence) {
+    const newSeed = newBySentence.get(sentence)
+    if (newSeed) {
+      matched++
+      const oldIntroCount = oldSeed.introduction_items?.length || 0
+      const newIntroCount = newSeed.introduction_items?.length || 0
+      if (oldIntroCount !== newIntroCount) {
+        structureDiffs.push({
+          sentence: sentence.substring(0, 50),
+          oldIntro: oldIntroCount,
+          newIntro: newIntroCount
+        })
+      }
     } else {
-      console.log('  ✗ Known keys DIFFER');
-      issues.push('Node known keys differ');
+      onlyInOld++
+    }
+  }
+
+  for (const sentence of newBySentence.keys()) {
+    if (!oldBySentence.has(sentence)) {
+      onlyInNew++
+    }
+  }
+
+  log(GREEN, '\nMatched by sentence: ' + matched)
+  log(YELLOW, 'Only in OLD: ' + onlyInOld)
+  log(YELLOW, 'Only in NEW: ' + onlyInNew)
+
+  if (structureDiffs.length > 0) {
+    log(YELLOW, '\nIntroduction item count differences (first 10):')
+    for (const diff of structureDiffs.slice(0, 10)) {
+      console.log('  "' + diff.sentence + '..." OLD: ' + diff.oldIntro + ', NEW: ' + diff.newIntro)
+    }
+    if (structureDiffs.length > 10) {
+      console.log('  ... and ' + (structureDiffs.length - 10) + ' more')
+    }
+  }
+
+  // Compare first seed structure in detail
+  log(BLUE, '\n--- First Seed Structure Comparison ---')
+  if (oldSeeds[0] && newSeeds[0]) {
+    console.log('\nOLD seed[0] keys:', Object.keys(oldSeeds[0]).join(', '))
+    console.log('NEW seed[0] keys:', Object.keys(newSeeds[0]).join(', '))
+
+    console.log('\nOLD seed[0].node keys:', Object.keys(oldSeeds[0].node || {}).join(', '))
+    console.log('NEW seed[0].node keys:', Object.keys(newSeeds[0].node || {}).join(', '))
+
+    if (oldSeeds[0].introduction_items?.[0] && newSeeds[0].introduction_items?.[0]) {
+      console.log('\nOLD introduction_items[0] keys:', Object.keys(oldSeeds[0].introduction_items[0]).join(', '))
+      console.log('NEW introduction_items[0] keys:', Object.keys(newSeeds[0].introduction_items[0]).join(', '))
     }
   }
 }
 
-// ============================================================================
-// SECTION 7: INTRODUCTION_ITEMS STRUCTURE
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 7: INTRODUCTION_ITEMS STRUCTURE');
-console.log('=' .repeat(60));
+function compareSamples(old, neu) {
+  log(BOLD + CYAN, '\n═══════════════════════════════════════════════════════════════')
+  log(BOLD + CYAN, '  SAMPLES DICTIONARY COMPARISON')
+  log(BOLD + CYAN, '═══════════════════════════════════════════════════════════════\n')
 
-if (refSeeds.length > 0 && newSeeds.length > 0) {
-  const refIntroItems = refSeeds[0].introduction_items || [];
-  const newIntroItems = newSeeds[0].introduction_items || [];
+  const oldSamples = old.slices?.[0]?.samples || {}
+  const newSamples = neu.slices?.[0]?.samples || {}
 
-  console.log(`\nintroduction_items count (first seed):`);
-  console.log(`  Reference: ${refIntroItems.length}`);
-  console.log(`  New:       ${newIntroItems.length}`);
+  const oldKeys = Object.keys(oldSamples)
+  const newKeys = Object.keys(newSamples)
 
-  if (refIntroItems.length > 0 && newIntroItems.length > 0) {
-    const refItem = refIntroItems[0];
-    const newItem = newIntroItems[0];
+  console.log('OLD samples: ' + oldKeys.length)
+  console.log('NEW samples: ' + newKeys.length)
 
-    const refItemKeys = Object.keys(refItem).sort();
-    const newItemKeys = Object.keys(newItem).sort();
+  // Find overlaps
+  const oldSet = new Set(oldKeys)
+  const newSet = new Set(newKeys)
 
-    console.log(`\nintroduction_item keys:`);
-    console.log(`  Reference: ${refItemKeys.join(', ')}`);
-    console.log(`  New:       ${newItemKeys.join(', ')}`);
+  let both = 0
+  let onlyOld = 0
+  let onlyNew = 0
 
-    if (JSON.stringify(refItemKeys) === JSON.stringify(newItemKeys)) {
-      console.log('  ✓ Introduction item keys match');
-      matches.push('Introduction item keys');
-    } else {
-      console.log('  ✗ Introduction item keys DIFFER');
-      issues.push('Introduction item keys differ');
+  for (const key of oldKeys) {
+    if (newSet.has(key)) both++
+    else onlyOld++
+  }
+  for (const key of newKeys) {
+    if (!oldSet.has(key)) onlyNew++
+  }
+
+  log(GREEN, '\nIn both: ' + both)
+  log(YELLOW, 'Only in OLD: ' + onlyOld)
+  log(YELLOW, 'Only in NEW: ' + onlyNew)
+
+  // Compare sample entry structure
+  log(BLUE, '\n--- Sample Entry Structure ---')
+  const oldFirstKey = oldKeys[0]
+  const newFirstKey = newKeys[0]
+
+  if (oldFirstKey) {
+    console.log('\nOLD sample["' + oldFirstKey.substring(0, 30) + '..."]:')
+    console.log(JSON.stringify(oldSamples[oldFirstKey], null, 2))
+  }
+  if (newFirstKey) {
+    console.log('\nNEW sample["' + newFirstKey.substring(0, 30) + '..."]:')
+    console.log(JSON.stringify(newSamples[newFirstKey], null, 2))
+  }
+
+  // Check role/cadence values
+  log(BLUE, '\n--- Role/Cadence Analysis ---')
+
+  const oldRoles = new Set()
+  const oldCadences = new Set()
+  const newRoles = new Set()
+  const newCadences = new Set()
+
+  for (const entries of Object.values(oldSamples)) {
+    for (const entry of entries) {
+      if (entry.role) oldRoles.add(entry.role)
+      if (entry.cadence) oldCadences.add(entry.cadence)
     }
+  }
+  for (const entries of Object.values(newSamples)) {
+    for (const entry of entries) {
+      if (entry.role) newRoles.add(entry.role)
+      if (entry.cadence) newCadences.add(entry.cadence)
+    }
+  }
 
-    console.log(`\nSample introduction_item:`);
-    console.log(`  Reference presentation: "${refItem.presentation?.substring(0, 60)}..."`);
-    console.log(`  New presentation:       "${newItem.presentation?.substring(0, 60)}..."`);
+  console.log('OLD roles: ' + [...oldRoles].join(', '))
+  console.log('NEW roles: ' + [...newRoles].join(', '))
+  console.log('OLD cadences: ' + [...oldCadences].join(', '))
+  console.log('NEW cadences: ' + [...newCadences].join(', '))
 
-    // Check nodes array
-    const refNodes = refItem.nodes || [];
-    const newNodes = newItem.nodes || [];
-    console.log(`\nNodes in first intro_item:`);
-    console.log(`  Reference: ${refNodes.length}`);
-    console.log(`  New:       ${newNodes.length}`);
+  // Find common texts and compare their audio entries
+  log(BLUE, '\n--- Sample Match Analysis (first 5 common texts) ---')
+  let matchCount = 0
+  for (const text of oldKeys) {
+    if (newSet.has(text) && matchCount < 5) {
+      console.log('\nText: "' + text.substring(0, 50) + '..."')
+      console.log('  OLD:', JSON.stringify(oldSamples[text]))
+      console.log('  NEW:', JSON.stringify(newSamples[text]))
+      matchCount++
+    }
   }
 }
 
-// ============================================================================
-// SECTION 8: SAMPLES STRUCTURE
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SECTION 8: SAMPLES STRUCTURE');
-console.log('=' .repeat(60));
+function compareEncouragements(old, neu) {
+  log(BOLD + CYAN, '\n═══════════════════════════════════════════════════════════════')
+  log(BOLD + CYAN, '  ENCOURAGEMENTS COMPARISON')
+  log(BOLD + CYAN, '═══════════════════════════════════════════════════════════════\n')
 
-const refSamples = refSlice.samples || {};
-const newSamples = newSlice.samples || {};
+  const oldOrdered = old.slices?.[0]?.orderedEncouragements || []
+  const newOrdered = neu.slices?.[0]?.orderedEncouragements || []
+  const oldPooled = old.slices?.[0]?.pooledEncouragements || []
+  const newPooled = neu.slices?.[0]?.pooledEncouragements || []
 
-console.log(`\nUnique sample texts:`);
-console.log(`  Reference: ${Object.keys(refSamples).length}`);
-console.log(`  New:       ${Object.keys(newSamples).length}`);
+  console.log('OLD ordered: ' + oldOrdered.length + ', pooled: ' + oldPooled.length)
+  console.log('NEW ordered: ' + newOrdered.length + ', pooled: ' + newPooled.length)
 
-// Count by role
-function countRoles(samples) {
-  const counts = {};
-  Object.values(samples).forEach(entries => {
-    entries.forEach(e => {
-      counts[e.role] = (counts[e.role] || 0) + 1;
-    });
-  });
-  return counts;
+  if (oldOrdered[0]) {
+    console.log('\nOLD ordered[0]:', JSON.stringify(oldOrdered[0]))
+  }
+  if (newOrdered[0]) {
+    console.log('NEW ordered[0]:', JSON.stringify(newOrdered[0]))
+  }
 }
 
-const refRoles = countRoles(refSamples);
-const newRoles = countRoles(newSamples);
+function generateSummary(old, neu) {
+  log(BOLD + CYAN, '\n═══════════════════════════════════════════════════════════════')
+  log(BOLD + CYAN, '  SUMMARY')
+  log(BOLD + CYAN, '═══════════════════════════════════════════════════════════════\n')
 
-console.log(`\nSample counts by role:`);
-console.log(`  Reference:`);
-Object.entries(refRoles).sort().forEach(([role, count]) => {
-  console.log(`    ${role}: ${count}`);
-});
-console.log(`  New:`);
-Object.entries(newRoles).sort().forEach(([role, count]) => {
-  console.log(`    ${role}: ${count}`);
-});
+  const issues = []
+  const matches = []
 
-// Check role types match
-const refRoleTypes = Object.keys(refRoles).sort();
-const newRoleTypes = Object.keys(newRoles).sort();
+  if (old.id === neu.id) matches.push('✓ id matches')
+  else issues.push('✗ id differs: "' + old.id + '" vs "' + neu.id + '"')
 
-if (JSON.stringify(refRoleTypes) === JSON.stringify(newRoleTypes)) {
-  console.log('\n✓ Sample role types match');
-  matches.push('Sample role types');
-} else {
-  console.log('\n✗ Sample role types DIFFER');
-  console.log(`  Reference: ${refRoleTypes.join(', ')}`);
-  console.log(`  New:       ${newRoleTypes.join(', ')}`);
-  issues.push('Sample role types differ');
-}
+  if (old.known === neu.known) matches.push('✓ known language matches')
+  else issues.push('✗ known differs: "' + old.known + '" vs "' + neu.known + '"')
 
-// Check sample entry structure
-const refSampleEntry = Object.values(refSamples)[0]?.[0];
-const newSampleEntry = Object.values(newSamples)[0]?.[0];
+  if (old.target === neu.target) matches.push('✓ target language matches')
+  else issues.push('✗ target differs: "' + old.target + '" vs "' + neu.target + '"')
 
-if (refSampleEntry && newSampleEntry) {
-  const refEntryKeys = Object.keys(refSampleEntry).sort();
-  const newEntryKeys = Object.keys(newSampleEntry).sort();
+  const oldSeedCount = old.slices?.[0]?.seeds?.length || 0
+  const newSeedCount = neu.slices?.[0]?.seeds?.length || 0
+  if (oldSeedCount === newSeedCount) matches.push('✓ seed count matches (' + oldSeedCount + ')')
+  else issues.push('✗ seed count differs: ' + oldSeedCount + ' vs ' + newSeedCount)
 
-  console.log(`\nSample entry keys:`);
-  console.log(`  Reference: ${refEntryKeys.join(', ')}`);
-  console.log(`  New:       ${newEntryKeys.join(', ')}`);
-
-  if (JSON.stringify(refEntryKeys) === JSON.stringify(newEntryKeys)) {
-    console.log('  ✓ Sample entry keys match');
-    matches.push('Sample entry keys');
+  const oldSampleCount = Object.keys(old.slices?.[0]?.samples || {}).length
+  const newSampleCount = Object.keys(neu.slices?.[0]?.samples || {}).length
+  if (Math.abs(oldSampleCount - newSampleCount) < 100) {
+    matches.push('✓ sample counts similar (' + oldSampleCount + ' vs ' + newSampleCount + ')')
   } else {
-    console.log('  ✗ Sample entry keys DIFFER');
-    issues.push('Sample entry keys differ');
+    issues.push('⚠ sample counts differ significantly: ' + oldSampleCount + ' vs ' + newSampleCount)
+  }
+
+  const oldEncCount = (old.slices?.[0]?.orderedEncouragements?.length || 0) +
+                      (old.slices?.[0]?.pooledEncouragements?.length || 0)
+  const newEncCount = (neu.slices?.[0]?.orderedEncouragements?.length || 0) +
+                      (neu.slices?.[0]?.pooledEncouragements?.length || 0)
+  if (oldEncCount === newEncCount) matches.push('✓ encouragement count matches (' + oldEncCount + ')')
+  else issues.push('✗ encouragement count differs: ' + oldEncCount + ' vs ' + newEncCount)
+
+  log(GREEN, 'MATCHES:')
+  for (const m of matches) console.log('  ' + m)
+
+  if (issues.length > 0) {
+    log(YELLOW, '\nISSUES/DIFFERENCES:')
+    for (const i of issues) console.log('  ' + i)
   }
 }
 
-// Check target samples have both target1 and target2
-console.log(`\nTarget sample structure check:`);
-let hasTarget1And2 = false;
-for (const [text, entries] of Object.entries(newSamples)) {
-  const roles = entries.map(e => e.role);
-  if (roles.includes('target1') && roles.includes('target2')) {
-    hasTarget1And2 = true;
-    console.log(`  ✓ Found target text with both target1 and target2`);
-    console.log(`    Text: "${text.substring(0, 50)}..."`);
-    break;
+// Main
+async function main() {
+  const args = process.argv.slice(2)
+
+  if (args.length < 2) {
+    console.log('Usage: node compare-manifests.cjs <old-manifest> <new-manifest>')
+    process.exit(1)
   }
+
+  const [oldPath, newPath] = args
+
+  log(BOLD, '\n╔═══════════════════════════════════════════════════════════════╗')
+  log(BOLD, '║           MANIFEST COMPARISON REPORT                          ║')
+  log(BOLD, '╚═══════════════════════════════════════════════════════════════╝')
+
+  console.log('\nOLD: ' + oldPath)
+  console.log('NEW: ' + newPath)
+
+  const old = loadManifest(oldPath)
+  const neu = loadManifest(newPath)
+
+  compareTopLevel(old, neu)
+  compareSeeds(old, neu)
+  compareSamples(old, neu)
+  compareEncouragements(old, neu)
+  generateSummary(old, neu)
+
+  console.log('')
 }
-if (!hasTarget1And2) {
-  console.log(`  ✗ No target text found with both target1 and target2`);
-  issues.push('Target samples missing dual roles');
-}
 
-// ============================================================================
-// SUMMARY
-// ============================================================================
-console.log('\n' + '=' .repeat(60));
-console.log('SUMMARY');
-console.log('=' .repeat(60));
-
-console.log(`\n✓ Matches: ${matches.length}`);
-matches.forEach(m => console.log(`  - ${m}`));
-
-console.log(`\n✗ Issues: ${issues.length}`);
-if (issues.length === 0) {
-  console.log('  None - manifests are structurally compatible!');
-} else {
-  issues.forEach(i => console.log(`  - ${i}`));
-}
-
-console.log('\n');
+main().catch(err => {
+  console.error('Error:', err.message)
+  process.exit(1)
+})
