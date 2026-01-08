@@ -132,7 +132,10 @@
                 <div class="state-icon">{{ courseState.partial ? '🔄' : '📊' }}</div>
                 <div class="state-summary">
                   <strong>{{ courseState.partial ? 'Generation In Progress' : 'Existing Progress Found' }}</strong>
-                  <p v-if="courseState.partial && courseState.phase1?.batchCount">
+                  <p v-if="courseState.partial && courseState.seeds?.fromDatabase > 0">
+                    {{ courseState.seeds.fromDatabase }} seeds in database ({{ courseState.seeds?.targetTotal || 250 }} target)
+                  </p>
+                  <p v-else-if="courseState.partial && courseState.phase1?.batchCount">
                     {{ courseState.seeds?.fromBatches || 0 }} seeds in {{ courseState.phase1.batchCount }} batches
                   </p>
                   <p v-else>{{ courseState.seeds?.total || 0 }} seeds processed</p>
