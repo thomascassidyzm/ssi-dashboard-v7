@@ -69,37 +69,20 @@ tell application "${getBrowserAppName(browser)}"
         set current tab to newTab
     end tell
 
-    -- Wait for page to load fully (6 seconds - claude.ai/code can be slow)
-    delay 6
+    -- Wait for page to load
+    delay 3
 
-    -- Focus the text area and clear any synced draft
+    -- Clear any draft, paste, submit
     tell application "System Events"
-        -- Tab to ensure focus on text area
-        keystroke tab
-        delay 0.3
-
-        -- Select all and delete any existing draft
         keystroke "a" using command down
-        delay 0.3
-        key code 51 -- Delete key
+        key code 51 -- Delete
         delay 1
-
-        -- Wait for draft sync to settle, then select all again and delete
-        keystroke "a" using command down
-        delay 0.3
-        key code 51 -- Delete key
-        delay 1
-
-        -- NOW paste the new prompt from clipboard
         keystroke "v" using command down
-        delay 1.5
-
-        -- ONLY submit after paste has fully rendered
         keystroke return
     end tell
 
-    -- Wait for session to start before next spawn
-    delay 10
+    -- Wait before next spawn
+    delay 8
 end tell
 
 -- Return success

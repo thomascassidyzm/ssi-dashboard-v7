@@ -30,11 +30,11 @@ curl http://localhost:3470/api/production/spa_for_eng/export-legacy
 
 ## How It Works
 
-### Data Flow (Database-First)
+### Data Flow (Database-Only)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         SUPABASE DATABASE (Primary)                         │
+│                         SUPABASE DATABASE                                    │
 ├─────────────────┬─────────────────┬─────────────────┬─────────────────────┤
 │  course_seeds   │  course_legos   │ course_practice │    course_audio     │
 │   (250 rows)    │   (808 rows)    │    _phrases     │   (17137 rows)      │
@@ -49,26 +49,25 @@ curl http://localhost:3470/api/production/spa_for_eng/export-legacy
                           │  Generator Script   │
                           └─────────┬───────────┘
                                     │
-         ┌──────────────────────────┼──────────────────────────┐
-         │                          │                          │
-         ▼                          ▼                          ▼
-┌─────────────────┐      ┌─────────────────────┐     ┌─────────────────────┐
-│ lego_pairs.json │      │eng_encouragements   │     │   en-es.json        │
-│   (fallback)    │      │      .json          │     │ (output manifest)   │
-└─────────────────┘      └─────────────────────┘     └─────────────────────┘
+                   ┌────────────────┴────────────────┐
+                   │                                 │
+                   ▼                                 ▼
+        ┌─────────────────────┐           ┌─────────────────────┐
+        │eng_encouragements   │           │   en-es.json        │
+        │      .json          │           │ (output manifest)   │
+        └─────────────────────┘           └─────────────────────┘
 ```
 
-### Data Sources (Priority Order)
+### Data Sources
 
-1. **Primary: Supabase Database**
+1. **Supabase Database (required)**
    - `course_seeds` - Seed sentences (known + target text)
    - `course_legos` - LEGO pairs with `is_new` flag
    - `course_practice_phrases` - Practice phrases by word count
    - `course_audio` - Audio metadata (UUID, duration, role)
 
-2. **Fallback: Local JSON Files**
-   - `lego_pairs.json` - Used when DB seeds are incomplete (250 vs 668)
-   - `eng_encouragements.json` - Encouragement texts (always from file)
+2. **Local Files**
+   - `eng_encouragements.json` - Encouragement texts (canonical file)
 
 ### Key Transformations
 
@@ -180,13 +179,13 @@ Result: ~1.5MB vs ~15MB (90% smaller)
 
 ## What's Included
 
-| Content | Primary Source | Fallback | Notes |
-|---------|---------------|----------|-------|
-| Seeds | `course_seeds` table | `lego_pairs.json` | Combined: 668 seeds |
-| LEGOs | `course_legos` table | - | Only `is_new: true` LEGOs |
-| Practice phrases | `course_practice_phrases` table | - | By word count (2, 3, 4, 5+) |
-| Audio mappings | `course_audio` table | - | 17137 records, ~96% coverage |
-| Encouragements | `eng_encouragements.json` | - | 48 ordered, 26 pooled |
+| Content | Source | Notes |
+|---------|--------|-------|
+| Seeds | `course_seeds` table | Database only (250 for spa_for_eng) |
+| LEGOs | `course_legos` table | Only `is_new: true` LEGOs |
+| Practice phrases | `course_practice_phrases` table | By word count (2, 3, 4, 5+) |
+| Audio mappings | `course_audio` table | 17137 records |
+| Encouragements | `eng_encouragements.json` | 48 ordered, 26 pooled |
 
 ---
 
@@ -209,10 +208,8 @@ Result: ~1.5MB vs ~15MB (90% smaller)
   SUPABASE_URL=https://xxx.supabase.co
   SUPABASE_SERVICE_KEY=xxx
   ```
-- Database tables populated (primary):
+- Database tables populated:
   - `course_seeds`, `course_legos`, `course_practice_phrases`, `course_audio`
-- Fallback files (optional, for incomplete DB data):
-  - `lego_pairs.json` in `tools/vfs/courses/{courseCode}/` or `public/vfs/courses/{courseCode}/`
 
 ### For API Usage
 - Production API running (port 3470)
@@ -230,14 +227,13 @@ Database records:
   - course_audio: 17137 rows
 
 Generator output:
-  - Seeds: 668 (250 from DB + 418 from lego_pairs.json fallback)
-  - Unique texts collected: 12066
-  - Samples with audio matches: 11642 (~96%)
+  - Seeds: 250 (database only - no fallback)
+  - Unique texts collected: 11232
+  - Samples with audio matches: 11642
 ```
 
-High coverage achieved by combining:
-1. Database tables (primary source)
-2. lego_pairs.json fallback for remaining seeds
+The generator only includes seeds that exist in the database.
+No fallback to JSON files - ensures data consistency.
 
 ---
 

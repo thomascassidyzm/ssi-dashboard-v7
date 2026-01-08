@@ -302,13 +302,7 @@ async function generateLegacyManifest(courseCode) {
 
   console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
 
-  // 3. Load fallback from files if needed
-  const legoPairs = loadLegoPairsFromFile(courseCode)
-  if (legoPairs) {
-    console.error(`  Fallback: ${legoPairs.seeds.length} seeds from lego_pairs.json`)
-  }
-
-  // 4. Load encouragements
+  // 3. Load encouragements (from canonical file)
   const encouragements = loadEncouragements()
 
   // 5. Build lookup maps from database
