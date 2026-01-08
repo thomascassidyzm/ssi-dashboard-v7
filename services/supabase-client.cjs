@@ -707,47 +707,15 @@ async function getSharedAudioList(language, audioType = null) {
 async function getCourseFlags(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  // First check if there are ANY flags at all (fast check)
-  const { count: totalFlags, error: countError } = await supabase
+  // Query sample_flags directly by course_code (much simpler and faster)
+  const { data: flagsData, error: flagsError } = await supabase
     .from('sample_flags')
-    .select('*', { count: 'exact', head: true })
-
-  if (countError) throw countError
-
-  // If no flags exist globally, return empty early
-  if (!totalFlags || totalFlags === 0) {
-    return []
-  }
-
-  // Get all audio IDs for this course (only if flags exist)
-  const { data: audioData, error: audioError } = await supabase
-    .from('course_audio')
-    .select('id')
+    .select('*')
     .eq('course_code', courseCode)
 
-  if (audioError) throw audioError
+  if (flagsError) throw flagsError
 
-  if (!audioData || audioData.length === 0) {
-    return []
-  }
-
-  // Batch the audio IDs to avoid 414 errors (max ~500 per batch)
-  const BATCH_SIZE = 500
-  const audioIds = audioData.map(a => a.id)
-  const allFlags = []
-
-  for (let i = 0; i < audioIds.length; i += BATCH_SIZE) {
-    const batchIds = audioIds.slice(i, i + BATCH_SIZE)
-    const { data: flagsData, error: flagsError } = await supabase
-      .from('sample_flags')
-      .select('*')
-      .in('audio_uuid', batchIds)
-
-    if (flagsError) throw flagsError
-    if (flagsData) allFlags.push(...flagsData)
-  }
-
-  return allFlags
+  return flagsData || []
 }
 
 /**
@@ -816,6 +784,23 @@ async function updateSampleFlag(audioUuid, { courseCode, status, notes, flaggedB
     if (error) throw error
     return data
   }
+}
+
+/**
+ * Delete a sample flag (when item is done, no longer needs regen)
+ *
+ * @param {string} audioUuid - The audio UUID
+ * @returns {Promise<void>}
+ */
+async function deleteSampleFlag(audioUuid) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { error } = await supabase
+    .from('sample_flags')
+    .delete()
+    .eq('audio_uuid', audioUuid)
+
+  if (error) throw error
 }
 
 /**
@@ -1056,6 +1041,7 @@ module.exports = {
   // Sample flags (QA workflow)
   getCourseFlags,
   updateSampleFlag,
+  deleteSampleFlag,
   bulkUpdateSampleFlags,
   getRegenerationCount,
   bulkGetRegenerationCounts,

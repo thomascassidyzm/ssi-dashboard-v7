@@ -37,6 +37,9 @@ const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 1 (Translation)';
 const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 6000; // 6s to avoid clipboard race
 
+// Supabase config for direct browser agent uploads
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+
 // Axios for HTTP requests (fire-and-forget event reporting)
 const axios = require('axios');
 
@@ -61,6 +64,18 @@ function reportEvent(courseCode, eventData) {
 
 // Database service for database-first writes
 const courseDataService = require('../../course-data-service.cjs');
+
+// Supabase client for queue polling
+const { createClient } = require('@supabase/supabase-js');
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+const supabase = supabaseUrl && supabaseKey
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
+
+// Queue polling configuration
+const QUEUE_POLL_INTERVAL = parseInt(process.env.QUEUE_POLL_INTERVAL) || 3000; // 3 seconds
+let queuePollerActive = false;
 
 // Validate config
 if (!VFS_ROOT) {
@@ -189,13 +204,20 @@ This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLang
 
 curl -s "${orchestratorUrl}/api/phase-intelligence/1"
 
-Read BOTH responses before proceeding.
+## STEP 3: FETCH LANGUAGE BRIEF (critical for ${getLanguageName(target)}!)
 
-## STEP 3: FETCH YOUR SEEDS
+curl -s "${orchestratorUrl}/api/language-brief/${known}/${target}"
+
+This contains language-specific intelligence: tonal systems, script considerations,
+common translation pitfalls, and chunking guidance for ${getLanguageName(target)}.
+
+Read ALL THREE responses before proceeding.
+
+## STEP 4: FETCH YOUR SEEDS
 
 curl -s "${orchestratorUrl}/api/canonical-seeds?start=[START]&end=[END]"
 
-## STEP 4: PROCESS EACH SEED
+## STEP 5: PROCESS EACH SEED
 
 ${known === 'eng'
   ? `Since Known = English: The English canonical text IS your "known" text.
@@ -212,25 +234,31 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 5: UPLOAD (COMPACT FORMAT)
+## STEP 6: UPLOAD TO SUPABASE (RELIABLE!)
 
-curl -X POST "https://popty.app/api/seeds/upload" \\
+Upload directly to Supabase (always available, no network issues):
+
+curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
+  -H "apikey: ${SUPABASE_ANON_KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"course":"${courseCode}","seeds":[YOUR_COMPACT_JSON]}'
+  -H "Prefer: return=minimal" \\
+  -d '{"course_code":"${courseCode}","agent_id":"worker-[YOUR_NUM]","payload":[YOUR_SEEDS_ARRAY]}'
 
-**COMPACT FORMAT** (saves tokens):
+**COMPACT FORMAT** for the payload array:
 \`\`\`json
-{"course":"${courseCode}","seeds":[
+[
   {"s":"S0001","k":"known text","t":"target text","l":[
     {"y":"A","n":1,"k":"I want","t":"quiero"},
     {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
   ]}
-]}
+]
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
-**IMPORTANT: Use curl for uploads, NOT WebFetch!**
-**DO NOT write files - only POST to the endpoint!**
+**IMPORTANT:**
+- Use curl for uploads, NOT WebFetch!
+- One POST per worker with ALL your seeds in the payload array
+- The local server polls this table and processes your uploads automatically
 \`\`\`
 
 ---
@@ -351,16 +379,23 @@ This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLang
 
 curl -s "${orchestratorUrl}/api/phase-intelligence/1"
 
-Read BOTH responses before proceeding.
+## STEP 3: FETCH LANGUAGE BRIEF (critical for ${getLanguageName(target)}!)
 
-## STEP 3: FETCH YOUR SPECIFIC SEEDS
+curl -s "${orchestratorUrl}/api/language-brief/${known}/${target}"
+
+This contains language-specific intelligence: tonal systems, script considerations,
+common translation pitfalls, and chunking guidance for ${getLanguageName(target)}.
+
+Read ALL THREE responses before proceeding.
+
+## STEP 4: FETCH YOUR SPECIFIC SEEDS
 
 For each seed ID in your list, fetch it individually:
 curl -s "${orchestratorUrl}/api/canonical-seeds?seeds=[COMMA_SEPARATED_IDS]"
 
 Or use the seeds parameter: ?seeds=S0005,S0007,S0009
 
-## STEP 4: PROCESS EACH SEED
+## STEP 5: PROCESS EACH SEED
 
 ${known === 'eng'
   ? `Since Known = English: The English canonical text IS your "known" text.
@@ -377,25 +412,31 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 5: UPLOAD (COMPACT FORMAT)
+## STEP 6: UPLOAD TO SUPABASE (RELIABLE!)
 
-curl -X POST "https://popty.app/api/seeds/upload" \\
+Upload directly to Supabase (always available, no network issues):
+
+curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
+  -H "apikey: ${SUPABASE_ANON_KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"course":"${courseCode}","seeds":[YOUR_COMPACT_JSON]}'
+  -H "Prefer: return=minimal" \\
+  -d '{"course_code":"${courseCode}","agent_id":"worker-[YOUR_NUM]","payload":[YOUR_SEEDS_ARRAY]}'
 
-**COMPACT FORMAT** (saves tokens):
+**COMPACT FORMAT** for the payload array:
 \`\`\`json
-{"course":"${courseCode}","seeds":[
+[
   {"s":"S0001","k":"known text","t":"target text","l":[
     {"y":"A","n":1,"k":"I want","t":"quiero"},
     {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
   ]}
-]}
+]
 \`\`\`
 Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
-**IMPORTANT: Use curl for uploads, NOT WebFetch!**
-**DO NOT write files - only POST to the endpoint!**
+**IMPORTANT:**
+- Use curl for uploads, NOT WebFetch!
+- One POST per worker with ALL your seeds in the payload array
+- The local server polls this table and processes your uploads automatically
 \`\`\`
 
 ---
@@ -1353,13 +1394,20 @@ This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLang
 
 curl -s "${orchestratorUrl}/api/phase-intelligence/1"
 
-Read BOTH responses before proceeding.
+## STEP 3: FETCH LANGUAGE BRIEF (critical for ${getLanguageName(target)}!)
 
-## STEP 3: FETCH YOUR SEEDS
+curl -s "${orchestratorUrl}/api/language-brief/${known}/${target}"
+
+This contains language-specific intelligence: tonal systems, script considerations,
+common translation pitfalls, and chunking guidance for ${getLanguageName(target)}.
+
+Read ALL THREE responses before proceeding.
+
+## STEP 4: FETCH YOUR SEEDS
 
 curl -s "${orchestratorUrl}/api/canonical-seeds?start=[START]&end=[END]"
 
-## STEP 4: PROCESS EACH SEED
+## STEP 5: PROCESS EACH SEED
 
 Apply ZUT to every potential LEGO:
 1. Translate seed to ${getLanguageName(target)}
@@ -1367,7 +1415,7 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: 0
 
-## STEP 5: UPLOAD (COMPACT FORMAT)
+## STEP 6: UPLOAD (COMPACT FORMAT)
 
 curl -X POST "https://popty.app/api/seeds/upload" \\
   -H "Content-Type: application/json" \\
@@ -2123,13 +2171,20 @@ This shows what FAILS and PASSES ZUT for ${getLanguageName(known)} → ${getLang
 
 curl -s "${orchestratorUrl}/api/phase-intelligence/1"
 
-Read BOTH responses before proceeding.
+## STEP 3: FETCH LANGUAGE BRIEF (critical for ${getLanguageName(target)}!)
 
-## STEP 3: FETCH YOUR SEED
+curl -s "${orchestratorUrl}/api/language-brief/${known}/${target}"
+
+This contains language-specific intelligence: tonal systems, script considerations,
+common translation pitfalls, and chunking guidance for ${getLanguageName(target)}.
+
+Read ALL THREE responses before proceeding.
+
+## STEP 4: FETCH YOUR SEED
 
 curl -s "${orchestratorUrl}/api/canonical-seeds?start=${seedNum}&end=${seedNum}"
 
-## STEP 4: PROCESS THE SEED
+## STEP 5: PROCESS THE SEED
 
 ${known === 'eng'
   ? `Since Known = English: The English canonical text IS your "known" text.
@@ -2139,7 +2194,7 @@ Then translate that ${getLanguageName(known)} text to ${getLanguageName(target)}
 
 Apply methodology from Step 2. Extract LEGOs.
 
-## STEP 5: UPLOAD YOUR RESULT
+## STEP 6: UPLOAD YOUR RESULT
 
 POST your completed seed to database:
 
@@ -2235,6 +2290,176 @@ app.get('/health', (req, res) => {
   });
 });
 
+// =============================================================================
+// QUEUE POLLER - Process uploads from raw_seed_uploads table
+// =============================================================================
+
+/**
+ * Process a single pending upload from the queue
+ * Uses the same logic as upload-batch endpoint
+ */
+async function processQueueItem(item) {
+  const { id, course_code: courseCode, payload, agent_id: agentId } = item;
+
+  // Mark as processing
+  await supabase
+    .from('raw_seed_uploads')
+    .update({ status: 'processing', processed_by: `phase1-${PORT}` })
+    .eq('id', id);
+
+  try {
+    // Payload can be a single seed or array of seeds
+    let batchData = Array.isArray(payload) ? payload : [payload];
+
+    // Detect and expand compact formats
+    const isV7Hybrid = batchData.length > 0 && Array.isArray(batchData[0]);
+    const isV6Compact = batchData.length > 0 && batchData[0].s && !batchData[0].seed_id;
+
+    if (isV7Hybrid || isV6Compact) {
+      console.log(`[Queue] 📦 Expanding compact format (${batchData.length} seeds)`);
+      batchData = expandCompactFormat(batchData);
+    }
+
+    // Save to local JSON (dual-write for backwards compatibility)
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const batchesDir = path.join(courseDir, 'phase1_batches');
+    await fs.ensureDir(batchesDir);
+
+    const randomSuffix = Math.random().toString(36).substring(2, 8);
+    const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
+    await fs.writeJson(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
+
+    console.log(`[Queue] ✅ Saved batch: ${batchData.length} seeds → ${batchFile}`);
+
+    // Extract seed IDs
+    const seedIds = batchData.map(seed => seed.seed_id).filter(Boolean);
+
+    // Report batch:received event
+    reportEvent(courseCode, {
+      event: 'batch:received',
+      seedIds,
+      agentId: agentId || 'queue',
+      batchFile,
+      seedCount: batchData.length,
+      source: 'queue'
+    });
+
+    // Report seed:complete events
+    for (const seedId of seedIds) {
+      reportEvent(courseCode, {
+        event: 'seed:complete',
+        seedId,
+        agentId: agentId || 'queue',
+        source: 'queue'
+      });
+    }
+
+    // DATABASE-FIRST: Write to Supabase
+    let dbStats = { seeds: 0, legos: 0, components: 0 };
+    if (courseDataService.USE_DATABASE_WRITES) {
+      await courseDataService.ensureCourse(courseCode);
+
+      for (const seedData of batchData) {
+        const result = await courseDataService.importSeedWithLegos(courseCode, seedData);
+        if (result) {
+          dbStats.seeds++;
+          dbStats.legos += result.legoCount || 0;
+          dbStats.components += result.componentCount || 0;
+        }
+      }
+      console.log(`[Queue] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos`);
+    }
+
+    // Mark as completed
+    await supabase
+      .from('raw_seed_uploads')
+      .update({
+        status: 'completed',
+        processed_at: new Date().toISOString()
+      })
+      .eq('id', id);
+
+    return { success: true, seedIds, dbStats };
+
+  } catch (error) {
+    console.error(`[Queue] ❌ Error processing item ${id}:`, error.message);
+
+    // Mark as failed
+    await supabase
+      .from('raw_seed_uploads')
+      .update({
+        status: 'failed',
+        error: error.message,
+        processed_at: new Date().toISOString()
+      })
+      .eq('id', id);
+
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Poll the queue for pending uploads
+ */
+async function pollQueue() {
+  if (!supabase) {
+    console.warn('[Queue] ⚠️  Supabase not configured, queue polling disabled');
+    return;
+  }
+
+  if (queuePollerActive) return; // Prevent concurrent polling
+  queuePollerActive = true;
+
+  try {
+    // Fetch pending items (oldest first)
+    const { data: pending, error } = await supabase
+      .from('raw_seed_uploads')
+      .select('*')
+      .eq('status', 'pending')
+      .order('created_at', { ascending: true })
+      .limit(10); // Process up to 10 at a time
+
+    if (error) {
+      console.error('[Queue] ❌ Error fetching pending items:', error.message);
+      return;
+    }
+
+    if (pending && pending.length > 0) {
+      console.log(`[Queue] 📬 Found ${pending.length} pending uploads`);
+
+      for (const item of pending) {
+        await processQueueItem(item);
+      }
+    }
+
+  } catch (error) {
+    console.error('[Queue] ❌ Poll error:', error.message);
+  } finally {
+    queuePollerActive = false;
+  }
+}
+
+/**
+ * Start the queue poller
+ */
+function startQueuePoller() {
+  if (!supabase) {
+    console.log('[Queue] ⚠️  Supabase not configured, queue polling disabled');
+    return null;
+  }
+
+  console.log(`[Queue] 🔄 Starting queue poller (interval: ${QUEUE_POLL_INTERVAL}ms)`);
+
+  // Initial poll
+  pollQueue();
+
+  // Set up interval
+  return setInterval(pollQueue, QUEUE_POLL_INTERVAL);
+}
+
+// Queue poller interval reference
+let queuePollerInterval = null;
+
 /**
  * Start server
  */
@@ -2243,6 +2468,10 @@ app.listen(PORT, () => {
   console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log(`   Orchestrator: ${ORCHESTRATOR_URL}`);
+
+  // Start queue poller
+  queuePollerInterval = startQueuePoller();
+
   console.log('');
 });
 
@@ -2251,6 +2480,12 @@ app.listen(PORT, () => {
  */
 process.on('SIGTERM', () => {
   console.log('\n🛑 Shutting down Phase 1 server...');
+
+  // Stop queue poller
+  if (queuePollerInterval) {
+    console.log('  Stopping queue poller...');
+    clearInterval(queuePollerInterval);
+  }
 
   // Stop all watchers
   for (const [courseCode, watcher] of watchers.entries()) {

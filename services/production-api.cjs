@@ -385,6 +385,37 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
   }
 })
 
+// Delete a sample flag (item is done, no longer needs regen)
+app.post('/api/production/:courseCode/flags/delete', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { uuid } = req.body
+
+    if (!uuid) {
+      return res.status(400).json({ error: 'uuid required' })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Delete flag from Supabase
+    await supabaseClient.deleteSampleFlag(uuid)
+
+    // Broadcast deletion via WebSocket
+    io.to(`course:${courseCode}`).emit('sample_updated', {
+      courseCode,
+      uuid,
+      update: { deleted: true }
+    })
+
+    res.json({ success: true })
+  } catch (error) {
+    logger.error('Error deleting flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Bulk update sample flags
 app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
   try {
@@ -2428,7 +2459,9 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       const knownFlag = cycle.known_audio_uuid ? flagsMap.get(cycle.known_audio_uuid) : null
       const target1Flag = cycle.target1_audio_uuid ? flagsMap.get(cycle.target1_audio_uuid) : null
       const target2Flag = cycle.target2_audio_uuid ? flagsMap.get(cycle.target2_audio_uuid) : null
-      const anyFlagged = !!(knownFlag || target1Flag || target2Flag)
+      // Only count as flagged if status is 'pending_regen'
+      const isPendingRegen = (flag) => flag?.status === 'pending_regen'
+      const anyFlagged = isPendingRegen(knownFlag) || isPendingRegen(target1Flag) || isPendingRegen(target2Flag)
 
       // Add phrase
       legoEntry.phrases.push({

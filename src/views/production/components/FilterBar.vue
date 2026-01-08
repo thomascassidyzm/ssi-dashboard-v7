@@ -36,15 +36,7 @@
           @change="onFilterChange"
         >
           <option value="all">All Samples</option>
-          <option value="pending">Pending</option>
-          <option value="flagged">Flagged (All)</option>
-          <option value="flagged_text_edit">Flagged: Text Edit</option>
-          <option value="flagged_regen_tts">Flagged: Regen TTS</option>
-          <option value="flagged_human_needed">Flagged: Human Needed</option>
-          <option value="approved">Approved</option>
-          <option value="needs_review">Needs Review</option>
-          <option value="in_pipeline">In Pipeline</option>
-          <option value="complete">Complete</option>
+          <option value="pending_regen">Pending Regen</option>
         </select>
       </div>
 
@@ -80,12 +72,12 @@
           :class="showFlaggedOnly
             ? 'bg-amber-500 text-white hover:bg-amber-600'
             : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
-          title="Show only flagged items"
+          title="Show only items pending regeneration"
         >
           <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
-          Flagged Only
+          Regen Queue
         </button>
       </div>
 
@@ -121,7 +113,7 @@
       </span>
 
       <span v-if="showFlaggedOnly" class="filter-tag">
-        Flagged Only
+        Regen Queue
         <button @click="toggleFlaggedOnly" class="ml-1 hover:text-white">×</button>
       </span>
     </div>

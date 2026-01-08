@@ -106,14 +106,14 @@
         </div>
       </div>
 
-      <!-- Empty State for Flagged Only -->
+      <!-- Empty State for Regen Queue -->
       <div v-else-if="filterFlaggedOnly && flatFlaggedItems.length === 0" class="empty-state flex items-center justify-center h-64">
         <div class="text-center">
           <svg class="w-12 h-12 mx-auto mb-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <h3 class="text-lg font-semibold text-white mb-2">No Flagged Items</h3>
-          <p class="text-slate-400 mb-4">All audio in this range has been reviewed</p>
+          <h3 class="text-lg font-semibold text-white mb-2">Regen Queue Empty</h3>
+          <p class="text-slate-400 mb-4">No audio marked for regeneration</p>
           <button
             @click="clearFilters"
             class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
@@ -123,19 +123,19 @@
         </div>
       </div>
 
-      <!-- Flat Flagged Items View -->
+      <!-- Regen Queue Items View -->
       <div v-else-if="filterFlaggedOnly" class="flagged-items-list space-y-3">
         <div class="flagged-header flex items-center justify-between mb-4">
           <div class="text-sm text-slate-400">
             <span class="text-amber-400 font-semibold">{{ flatFlaggedItems.length }}</span>
-            flagged audio item{{ flatFlaggedItems.length !== 1 ? 's' : '' }}
+            item{{ flatFlaggedItems.length !== 1 ? 's' : '' }} in regen queue
           </div>
           <router-link
             v-if="flatFlaggedItems.length > 0"
             :to="`/production/${courseCode}/pipeline?mode=flagged`"
             class="flex items-center gap-2 px-4 py-2 bg-emerald-500 bg-opacity-20 text-emerald-400 hover:bg-opacity-30 rounded-lg text-sm font-medium transition-colors"
           >
-            Regenerate Flagged Audio
+            Regenerate Queue
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -459,8 +459,8 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
   seeds.value.forEach(seed => {
     seed.legos.forEach(lego => {
       lego.phrases.forEach(phrase => {
-        // Check each audio track for flags
-        if (phrase.known_flag && phrase.known_audio_uuid) {
+        // Check each audio track for pending_regen status
+        if (phrase.known_flag?.status === 'pending_regen' && phrase.known_audio_uuid) {
           items.push({
             uuid: phrase.known_audio_uuid,
             seedId: seed.seed_id,
@@ -468,13 +468,13 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
             phraseId: phrase.phrase_id,
             track: 'known',
             text: phrase.known_text,
-            status: phrase.known_flag.status || 'flagged',
+            status: phrase.known_flag.status,
             notes: phrase.known_flag.notes,
             flaggedAt: phrase.known_flag.flagged_at,
             flaggedBy: phrase.known_flag.flagged_by,
           });
         }
-        if (phrase.target1_flag && phrase.target1_audio_uuid) {
+        if (phrase.target1_flag?.status === 'pending_regen' && phrase.target1_audio_uuid) {
           items.push({
             uuid: phrase.target1_audio_uuid,
             seedId: seed.seed_id,
@@ -482,13 +482,13 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
             phraseId: phrase.phrase_id,
             track: 'target1',
             text: phrase.target_text,
-            status: phrase.target1_flag.status || 'flagged',
+            status: phrase.target1_flag.status,
             notes: phrase.target1_flag.notes,
             flaggedAt: phrase.target1_flag.flagged_at,
             flaggedBy: phrase.target1_flag.flagged_by,
           });
         }
-        if (phrase.target2_flag && phrase.target2_audio_uuid) {
+        if (phrase.target2_flag?.status === 'pending_regen' && phrase.target2_audio_uuid) {
           items.push({
             uuid: phrase.target2_audio_uuid,
             seedId: seed.seed_id,
@@ -496,7 +496,7 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
             phraseId: phrase.phrase_id,
             track: 'target2',
             text: phrase.target_text,
-            status: phrase.target2_flag.status || 'flagged',
+            status: phrase.target2_flag.status,
             notes: phrase.target2_flag.notes,
             flaggedAt: phrase.target2_flag.flagged_at,
             flaggedBy: phrase.target2_flag.flagged_by,
@@ -887,48 +887,63 @@ type AudioTrack = 'known' | 'target1' | 'target2';
 
 // Handle per-audio flagging from PhraseRow (toggle: flag if not flagged, unflag if flagged)
 const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  // Check if this track is currently flagged
+  // Check if this track is currently marked for regen
   const flagKey = `${track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
   const currentFlag = phrase[flagKey];
-  const isCurrentlyFlagged = !!currentFlag;
+  const isCurrentlyMarked = currentFlag?.status === 'pending_regen';
 
-  const newStatus = isCurrentlyFlagged ? 'approved' : 'flagged_regen_tts';
-  const action = isCurrentlyFlagged ? 'Clearing flag' : 'Flagging';
-  console.log(`${action} audio: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
+  const action = isCurrentlyMarked ? 'Clearing' : 'Marking for regen';
+  console.log(`${action}: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
 
   try {
     const apiBaseUrl = getApiBaseUrl();
 
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        uuid,
-        status: newStatus,
-        note: isCurrentlyFlagged ? 'Flag cleared' : `Flagged ${track} audio for regeneration`,
-        flagged_by: 'dashboard_user'
-      })
-    });
+    if (isCurrentlyMarked) {
+      // Delete the flag (user is happy with audio)
+      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
+        body: JSON.stringify({ uuid })
+      });
 
-    if (!response.ok) {
-      throw new Error(`Failed to update flag: ${response.statusText}`);
-    }
+      if (!response.ok) {
+        throw new Error(`Failed to delete flag: ${response.statusText}`);
+      }
 
-    // Update local state to reflect the change
-    if (isCurrentlyFlagged) {
-      // Clear the flag
+      // Clear local state
       (phrase as any)[flagKey] = null;
     } else {
-      // Set the flag
-      (phrase as any)[flagKey] = { status: newStatus, notes: `Flagged ${track} audio for regeneration` };
-    }
-    // Update is_flagged based on any remaining flags
-    phrase.is_flagged = !!(phrase.known_flag || phrase.target1_flag || phrase.target2_flag);
+      // Create/update flag to pending_regen
+      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
+        body: JSON.stringify({
+          uuid,
+          status: 'pending_regen',
+          note: `Marked ${track} audio for regeneration`,
+          flagged_by: 'dashboard_user'
+        })
+      });
 
-    console.log(`Successfully ${isCurrentlyFlagged ? 'cleared flag for' : 'flagged'} ${track} audio for phrase ${phrase.phrase_id}`);
+      if (!response.ok) {
+        throw new Error(`Failed to update flag: ${response.statusText}`);
+      }
+
+      // Set local state
+      (phrase as any)[flagKey] = { status: 'pending_regen', notes: `Marked ${track} audio for regeneration` };
+    }
+
+    // Update is_flagged based on any remaining pending_regen flags
+    const hasPendingRegen = (flag: any) => flag?.status === 'pending_regen';
+    phrase.is_flagged = hasPendingRegen(phrase.known_flag) || hasPendingRegen(phrase.target1_flag) || hasPendingRegen(phrase.target2_flag);
+
+    console.log(`Successfully ${isCurrentlyMarked ? 'cleared' : 'marked for regen'} ${track} audio for phrase ${phrase.phrase_id}`);
 
   } catch (err) {
     console.error('Error updating flag:', err);

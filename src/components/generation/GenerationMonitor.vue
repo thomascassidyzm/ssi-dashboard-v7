@@ -1,5 +1,13 @@
 <template>
   <div class="generation-monitor">
+    <!-- Back Link -->
+    <a :href="`/generate?target=${targetLang}&known=${knownLang}`" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Course
+    </a>
+
     <!-- Header -->
     <div class="monitor-header">
       <div class="header-left">
@@ -85,6 +93,28 @@
       </div>
     </div>
 
+    <!-- Queue Status (if queue is active) -->
+    <div v-if="queue && queue.total > 0" class="queue-status">
+      <div class="queue-header">
+        <span class="queue-icon">📥</span>
+        <span>Upload Queue</span>
+      </div>
+      <div class="queue-stats">
+        <span class="queue-stat pending" v-if="queue.pending > 0">
+          <span class="stat-num">{{ queue.pending }}</span> pending
+        </span>
+        <span class="queue-stat processing" v-if="queue.processing > 0">
+          <span class="stat-num">{{ queue.processing }}</span> processing
+        </span>
+        <span class="queue-stat completed">
+          <span class="stat-num">{{ queue.completed }}</span> completed
+        </span>
+        <span class="queue-stat failed" v-if="queue.failed > 0">
+          <span class="stat-num">{{ queue.failed }}</span> failed
+        </span>
+      </div>
+    </div>
+
     <!-- Event Log -->
     <div class="event-log">
       <div class="log-header">
@@ -136,10 +166,13 @@ const overallStatus = ref('idle')
 const dataSource = ref('')
 const stats = ref({})
 const phases = ref({})
+const queue = ref(null)
 const events = ref([])
 const isPolling = ref(false)
 let pollTimer = null
 let lastStats = null
+let consecutiveErrors = 0
+let lastQueue = null
 
 // Constants
 const phaseOrder = ['phase1', 'phase2', 'phase3', 'audio', 'manifest']
@@ -159,6 +192,18 @@ const phaseIcons = {
 }
 
 // Computed
+const targetLang = computed(() => {
+  // Extract from courseCode like "zho_for_eng" -> "zho"
+  const match = props.courseCode?.match(/^(\w+)_for_/)
+  return match ? match[1] : ''
+})
+
+const knownLang = computed(() => {
+  // Extract from courseCode like "zho_for_eng" -> "eng"
+  const match = props.courseCode?.match(/_for_(\w+)$/)
+  return match ? match[1] : ''
+})
+
 const statusLabel = computed(() => {
   const labels = {
     idle: 'Idle',
@@ -219,6 +264,19 @@ async function pollProgress() {
     dataSource.value = data.source || ''
     stats.value = data.stats || {}
     phases.value = data.phases || {}
+    queue.value = data.queue || null
+    consecutiveErrors = 0 // Reset error count on success
+
+    // Check for queue changes and log them
+    if (data.queue && lastQueue) {
+      if (data.queue.pending !== lastQueue.pending && data.queue.pending > 0) {
+        addEvent('info', `Queue: ${data.queue.pending} pending uploads`)
+      }
+      if (data.queue.completed > lastQueue.completed) {
+        addEvent('success', `Queue: ${data.queue.completed - lastQueue.completed} uploads processed`)
+      }
+    }
+    lastQueue = data.queue ? { ...data.queue } : null
 
     // Check for changes and log them
     if (lastStats) {
@@ -243,8 +301,11 @@ async function pollProgress() {
     }
 
   } catch (error) {
-    console.error('[GenerationMonitor] Poll error:', error)
-    addEvent('error', `Poll failed: ${error.message}`)
+    // Silently handle poll errors - only log occasionally to avoid console spam
+    consecutiveErrors = (consecutiveErrors || 0) + 1
+    if (consecutiveErrors === 1 || consecutiveErrors % 10 === 0) {
+      console.warn('[GenerationMonitor] Poll error (x' + consecutiveErrors + '):', error.message)
+    }
   } finally {
     isPolling.value = false
   }
@@ -314,6 +375,24 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+/* Back Link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: -0.5rem;
+  transition: color 0.15s;
+}
+.back-link:hover {
+  color: var(--text);
+}
+.back-link svg {
+  flex-shrink: 0;
 }
 
 /* Header */
@@ -522,6 +601,66 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   font-size: 0.875rem;
   color: var(--text-dim);
   font-family: 'SF Mono', Monaco, monospace;
+}
+
+/* Queue Status */
+.queue-status {
+  background: var(--elevated);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.queue-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.queue-icon {
+  font-size: 1rem;
+}
+
+.queue-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.queue-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.queue-stat .stat-num {
+  font-weight: 700;
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
+.queue-stat.pending .stat-num {
+  color: #f59e0b;
+}
+
+.queue-stat.processing .stat-num {
+  color: #3b82f6;
+}
+
+.queue-stat.completed .stat-num {
+  color: #10b981;
+}
+
+.queue-stat.failed .stat-num {
+  color: #ef4444;
 }
 
 /* Event Log */

@@ -72,10 +72,12 @@ tell application "${getBrowserAppName(browser)}"
     -- Wait for page to load (3 seconds)
     delay 3
 
-    -- Cmd+A clears any synced draft, then paste and submit IMMEDIATELY
+    -- Cmd+A clears any synced draft, then paste and submit
     tell application "System Events"
         keystroke "a" using command down
+        delay 0.2
         keystroke "v" using command down
+        delay 0.5
         keystroke return
     end tell
 

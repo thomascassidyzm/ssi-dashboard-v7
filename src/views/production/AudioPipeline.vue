@@ -220,7 +220,7 @@
                       </svg>
                     </div>
                   </div>
-                  <span class="text-sm text-slate-300 group-hover:text-slate-100 transition-colors">Flagged items only</span>
+                  <span class="text-sm text-slate-300 group-hover:text-slate-100 transition-colors">Regen queue only</span>
                 </label>
               </div>
 
@@ -250,7 +250,7 @@
                     <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : 'text-emerald-400'">
                       {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : 'Complete' }}
                     </span>
-                    <span v-if="regenerateResult.flaggedOnly" class="text-xs text-red-400">(flagged)</span>
+                    <span v-if="regenerateResult.flaggedOnly" class="text-xs text-amber-400">(queue)</span>
                   </div>
                   <div class="text-right">
                     <span class="text-xl font-bold text-slate-100">{{ regenerateResult.count || regenerateResult.total || 0 }}</span>
@@ -263,6 +263,65 @@
                 <div v-if="regenerateResult.error" class="mt-2 text-sm text-red-400">{{ regenerateResult.error }}</div>
                 <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-sm text-emerald-400">
                   ✓ {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
+                </div>
+
+                <!-- Review Panel for Regenerated Items -->
+                <div v-if="regenerateResult.regeneratedItems?.length > 0" class="mt-4 pt-4 border-t border-slate-700/50">
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-sm font-medium text-slate-300">Review Regenerated Audio</h4>
+                    <span class="text-xs text-slate-500">{{ regenerateResult.regeneratedItems.length }} items</span>
+                  </div>
+                  <div class="space-y-2 max-h-64 overflow-y-auto">
+                    <div
+                      v-for="item in regenerateResult.regeneratedItems"
+                      :key="item.audioId"
+                      class="flex items-center gap-3 p-2 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                    >
+                      <!-- Play button -->
+                      <button
+                        @click="playReviewAudio(item.audioId)"
+                        class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center hover:bg-emerald-500/20 transition-colors"
+                        :class="{ 'bg-emerald-500/30': playingAudioId === item.audioId }"
+                      >
+                        <svg v-if="playingAudioId !== item.audioId" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg v-else class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                      </button>
+                      <!-- Text -->
+                      <div class="flex-1 min-w-0">
+                        <p class="text-sm text-slate-200 truncate">{{ item.text }}</p>
+                        <p class="text-xs text-slate-500">{{ item.role }}</p>
+                      </div>
+                      <!-- Done button (happy with this audio, delete flag) -->
+                      <button
+                        @click="markItemDone(item)"
+                        class="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+                        title="Happy with audio - remove from regen queue"
+                      >
+                        ✓ Done
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Bulk actions -->
+                  <div class="flex gap-2 mt-3 pt-3 border-t border-slate-700/30">
+                    <button
+                      @click="markAllDone"
+                      class="flex-1 px-3 py-2 text-sm bg-emerald-500/10 text-emerald-400 rounded-lg border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+                    >
+                      ✓ All Done
+                    </button>
+                    <button
+                      @click="clearReviewPanel"
+                      class="px-3 py-2 text-sm bg-slate-700/50 text-slate-400 rounded-lg border border-slate-600/30 hover:bg-slate-700 transition-colors"
+                      title="Close panel - items stay in regen queue"
+                    >
+                      Close
+                    </button>
+                  </div>
+                  <p class="text-xs text-slate-500 mt-2 text-center">Not happy? Close and click Regenerate again</p>
                 </div>
               </div>
             </div>
@@ -517,6 +576,10 @@ const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
 const flaggedOnly = ref(false)
 
+// Review panel state
+const playingAudioId = ref<string | null>(null)
+const reviewAudioElement = ref<HTMLAudioElement | null>(null)
+
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
@@ -738,7 +801,8 @@ const executeRegenerate = async () => {
         success: data.success,
         failed: data.failed,
         voiceId: data.voiceId,
-        language: data.language
+        language: data.language,
+        regeneratedItems: data.regeneratedItems || []
       }
       // Reload pipeline stats
       await productionStore.loadCourse(courseCode.value)
@@ -748,6 +812,100 @@ const executeRegenerate = async () => {
   } finally {
     regenerating.value = false
   }
+}
+
+// Review panel functions
+const playReviewAudio = async (audioId: string) => {
+  // Toggle if already playing
+  if (playingAudioId.value === audioId) {
+    reviewAudioElement.value?.pause()
+    playingAudioId.value = null
+    return
+  }
+
+  // Stop any currently playing audio
+  if (reviewAudioElement.value) {
+    reviewAudioElement.value.pause()
+  }
+
+  try {
+    // Get signed URL for the audio
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!response.ok) throw new Error('Failed to get audio URL')
+
+    const { url } = await response.json()
+
+    // Create and play audio
+    reviewAudioElement.value = new Audio(url)
+    reviewAudioElement.value.onended = () => {
+      playingAudioId.value = null
+    }
+    reviewAudioElement.value.onerror = () => {
+      playingAudioId.value = null
+    }
+
+    playingAudioId.value = audioId
+    await reviewAudioElement.value.play()
+  } catch (err) {
+    console.error('Error playing review audio:', err)
+    playingAudioId.value = null
+  }
+}
+
+const markItemDone = async (item: any) => {
+  try {
+    // Delete the flag - user is happy with this audio
+    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ uuid: item.id })
+    })
+    // Remove from review list
+    if (regenerateResult.value?.regeneratedItems) {
+      regenerateResult.value.regeneratedItems = regenerateResult.value.regeneratedItems.filter(
+        (i: any) => i.id !== item.id
+      )
+    }
+  } catch (err) {
+    console.error('Error marking item done:', err)
+  }
+}
+
+const markAllDone = async () => {
+  if (!regenerateResult.value?.regeneratedItems?.length) return
+
+  try {
+    // Delete all flags - user is happy with all audio
+    for (const item of regenerateResult.value.regeneratedItems) {
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
+        body: JSON.stringify({ uuid: item.id })
+      })
+    }
+    // Clear review list
+    regenerateResult.value.regeneratedItems = []
+  } catch (err) {
+    console.error('Error marking all done:', err)
+  }
+}
+
+const clearReviewPanel = () => {
+  if (regenerateResult.value) {
+    regenerateResult.value.regeneratedItems = []
+  }
+  if (reviewAudioElement.value) {
+    reviewAudioElement.value.pause()
+  }
+  playingAudioId.value = null
 }
 
 // Presentation text regeneration functions

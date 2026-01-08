@@ -137,10 +137,11 @@
                   </p>
                   <p v-else>{{ courseState.seeds?.total || 0 }} seeds processed</p>
                 </div>
-                <!-- Monitor link for partial state -->
-                <router-link
+                <!-- Monitor link for partial state (opens in new tab) -->
+                <a
                   v-if="courseState.partial"
-                  :to="`/generate/${courseCode}/monitor`"
+                  :href="`/generate/${courseCode}/monitor`"
+                  target="_blank"
                   class="monitor-link"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -149,7 +150,7 @@
                     <line x1="12" y1="17" x2="12" y2="21"/>
                   </svg>
                   Open Monitor
-                </router-link>
+                </a>
               </div>
 
               <!-- Phase status grid -->

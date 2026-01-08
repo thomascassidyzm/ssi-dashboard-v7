@@ -60,9 +60,9 @@
 
           <div v-if="flaggedCount > 0" class="flagged-count flex items-center gap-1 text-amber-400">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" />
+              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            <span>{{ flaggedCount }} flagged</span>
+            <span>{{ flaggedCount }} pending</span>
           </div>
         </div>
       </div>

@@ -578,12 +578,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     let audioToRegenerate = []
 
     if (flaggedOnly) {
-      // Get flagged audio IDs from sample_flags table
+      // Get audio marked for regeneration from sample_flags table
       const { data: flags, error: flagsError } = await supabase
         .from('sample_flags')
         .select('audio_uuid')
         .eq('course_code', courseCode)
-        .like('status', 'flagged%')  // Match any flagged status
+        .eq('status', 'pending_regen')
 
       if (flagsError) throw flagsError
 
@@ -591,11 +591,11 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
       if (flaggedIds.length === 0) {
         return res.json({
-          status: 'no_flagged',
+          status: 'no_pending',
           courseCode,
           role,
           flaggedOnly: true,
-          message: `No flagged audio found for course`
+          message: `No audio pending regeneration for course`
         })
       }
 
@@ -741,8 +741,11 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
       updateWork(item.text, true)
       logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
-      return { success: true, item }
+      return { success: true, item, audioId }
     }
+
+    // Track successfully regenerated items for review
+    const regeneratedItems = []
 
     // Process in parallel batches
     for (let i = 0; i < audioToRegenerate.length; i += CONCURRENCY) {
@@ -758,6 +761,13 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         const result = batchResults[j]
         if (result.status === 'fulfilled') {
           results.success++
+          // Track for review
+          regeneratedItems.push({
+            id: result.value.item.id,
+            audioId: result.value.audioId,
+            text: result.value.item.text,
+            role: result.value.item.role
+          })
         } else {
           results.failed++
           const item = batch[j]
@@ -771,6 +781,9 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
     }
 
+    // Note: Flag stays at pending_regen - user will delete it when satisfied with the audio
+    // This allows the regenerate-review-regenerate cycle until happy
+
     endWork()
 
     res.json({
@@ -781,7 +794,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
-      errors: results.errors.slice(0, 10)
+      errors: results.errors.slice(0, 10),
+      regeneratedItems: regeneratedItems.slice(0, 50) // Return up to 50 for review
     })
 
   } catch (error) {

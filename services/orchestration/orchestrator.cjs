@@ -1184,12 +1184,37 @@ async function scanPhase1Batches(courseCode) {
 /**
  * Check if all expected seeds have been received for Phase 1
  * Returns { complete: boolean, received: Set, missing: string[], stats: object }
+ *
+ * @param {string} courseCode - Course code
+ * @param {number|null} expectedStart - Start seed number (null for resume mode)
+ * @param {number|null} expectedEnd - End seed number (null for resume mode)
+ * @param {string[]|null} specificSeeds - Optional array of specific seed IDs (for resume mode)
  */
-async function checkPhase1SeedCoverage(courseCode, expectedStart, expectedEnd) {
-  // Generate expected seed IDs (S0001, S0002, ..., S0010, etc.)
+async function checkPhase1SeedCoverage(courseCode, expectedStart, expectedEnd, specificSeeds = null) {
+  // Generate expected seed IDs
   const expectedSeeds = new Set();
-  for (let i = expectedStart; i <= expectedEnd; i++) {
-    expectedSeeds.add(`S${String(i).padStart(4, '0')}`);
+
+  if (specificSeeds && Array.isArray(specificSeeds) && specificSeeds.length > 0) {
+    // Resume mode: use specific seed IDs provided
+    for (const seedId of specificSeeds) {
+      if (seedId && typeof seedId === 'string') {
+        expectedSeeds.add(seedId);
+      }
+    }
+  } else if (expectedStart != null && expectedEnd != null) {
+    // Normal mode: generate range (S0001, S0002, ..., S0010, etc.)
+    for (let i = expectedStart; i <= expectedEnd; i++) {
+      expectedSeeds.add(`S${String(i).padStart(4, '0')}`);
+    }
+  } else {
+    // No valid expected seeds - return empty result
+    console.warn('[Orchestrator] checkPhase1SeedCoverage: No valid expected seeds provided');
+    return {
+      complete: false,
+      received: new Set(),
+      missing: [],
+      stats: { expected: 0, received: 0, missing: 0, batchFiles: 0, coverage: '0%' }
+    };
   }
 
   // Scan actual received seeds from batch files
@@ -2648,6 +2673,30 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
   const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
+    // DATABASE-FIRST: Check database for seed data
+    const dbProgress = await courseDataService.getCourseProgress(courseCode);
+    let dbSeeds = [];
+
+    if (dbProgress && dbProgress.seeds > 0) {
+      // Get actual seed IDs from database
+      try {
+        const { supabase, isInitialized } = require('../supabase-client.cjs');
+        if (supabase && isInitialized) {
+          const { data: seedData } = await supabase
+            .from('course_seeds')
+            .select('seed_id')
+            .eq('course_code', courseCode)
+            .order('seed_id');
+
+          if (seedData) {
+            dbSeeds = seedData.map(s => s.seed_id);
+          }
+        }
+      } catch (dbErr) {
+        console.warn('[Analyze] Database query failed:', dbErr.message);
+      }
+    }
+
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
     const basketsPath = path.join(courseDir, 'lego_baskets.json');
     const flagsPath = path.join(courseDir, 'flags.json');
@@ -2656,7 +2705,7 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     const basketsExists = await fs.pathExists(basketsPath);
     const flagsExists = await fs.pathExists(flagsPath);
 
-    // No merged lego_pairs.json - check for raw phase1_batches
+    // No merged lego_pairs.json - check for raw phase1_batches OR database
     if (!legoPairsExists) {
       const phase1BatchesDir = path.join(courseDir, 'phase1_batches');
       const phase1BatchesExists = await fs.pathExists(phase1BatchesDir);
@@ -2719,22 +2768,26 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         }
       }
 
-      // If we have raw batches or draft, show partial progress
-      if (rawBatchSeeds.length > 0 || draftSeeds.length > 0) {
-        const totalRawSeeds = rawBatchSeeds.length || draftSeeds.length;
+      // If we have database seeds, raw batches, or draft, show partial progress
+      // PREFER DATABASE as source of truth
+      const effectiveSeeds = dbSeeds.length > 0 ? dbSeeds : rawBatchSeeds;
+      const dataSource = dbSeeds.length > 0 ? 'database' : 'batches';
+
+      if (effectiveSeeds.length > 0 || draftSeeds.length > 0) {
+        const totalSeeds = effectiveSeeds.length || draftSeeds.length;
         const phase1Status = draftExists ? 'complete' : 'in_progress';
         const phase2Status = draftExists ? 'pending' : 'pending';
 
         // Calculate missing seeds based on most likely target mode
         let targetSeedCount = SEED_COUNTS.QUICK_TEST;
-        if (totalRawSeeds > SEED_COUNTS.QUICK_TEST) {
-          targetSeedCount = totalRawSeeds <= SEED_COUNTS.MVP_COURSE
+        if (totalSeeds > SEED_COUNTS.QUICK_TEST) {
+          targetSeedCount = totalSeeds <= SEED_COUNTS.MVP_COURSE
             ? SEED_COUNTS.MVP_COURSE
             : SEED_COUNTS.FULL_COURSE;
         }
 
         // Build list of missing seed IDs
-        const completedSeedNums = new Set(rawBatchSeeds.map(s => parseInt(s.replace('S', ''))));
+        const completedSeedNums = new Set(effectiveSeeds.map(s => parseInt(s.replace('S', ''))));
         const missingSeeds = [];
         for (let i = 1; i <= targetSeedCount; i++) {
           if (!completedSeedNums.has(i)) {
@@ -2746,19 +2799,21 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
           courseCode,
           exists: true,
           partial: true,
+          dataSource,
           seeds: {
-            total: totalRawSeeds,
+            total: totalSeeds,
+            fromDatabase: dbSeeds.length,
             fromBatches: rawBatchSeeds.length,
             fromDraft: draftSeeds.length,
             targetTotal: targetSeedCount,
             missing: missingSeeds.length,
             missingSeeds: missingSeeds.slice(0, 20), // First 20 for display
-            completedSeeds: rawBatchSeeds.sort()
+            completedSeeds: effectiveSeeds.sort()
           },
           phase1: {
             status: phase1Status,
             batchCount: rawBatchCount,
-            seedsCompleted: rawBatchSeeds,
+            seedsCompleted: effectiveSeeds,
             flaggedSeeds: []
           },
           phase2: { status: phase2Status },
@@ -3076,6 +3131,31 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
   const { courseCode } = req.params;
 
   try {
+    // Get queue stats from raw_seed_uploads (if table exists)
+    let queueStats = null;
+    try {
+      const { supabase, isInitialized } = require('../supabase-client.cjs');
+      if (supabase && isInitialized) {
+        const { data: queueData } = await supabase
+          .from('raw_seed_uploads')
+          .select('status')
+          .eq('course_code', courseCode);
+
+        if (queueData) {
+          queueStats = {
+            pending: queueData.filter(r => r.status === 'pending').length,
+            processing: queueData.filter(r => r.status === 'processing').length,
+            completed: queueData.filter(r => r.status === 'completed').length,
+            failed: queueData.filter(r => r.status === 'failed').length,
+            total: queueData.length
+          };
+        }
+      }
+    } catch (queueError) {
+      // Table might not exist yet or Supabase not configured - that's OK
+      console.log('[Progress] Queue stats unavailable:', queueError.message);
+    }
+
     // Get progress from database (single source of truth)
     const dbProgress = await courseDataService.getCourseProgress(courseCode);
 
@@ -3128,6 +3208,7 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
           basketsGenerated: dbProgress.practicePhrases
         },
         phases,
+        queue: queueStats,
         source: 'database'
       });
     }
@@ -5747,14 +5828,20 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
 
   // ========== SEED-BASED COMPLETION CHECK ==========
   // The key insight: check actual seed coverage, not master count
+  // For resume mode, use expectedSeeds array; for normal mode, use start/end range
   const coverage = await checkPhase1SeedCoverage(
     courseCode,
     phase1State.expectedStartSeed,
-    phase1State.expectedEndSeed
+    phase1State.expectedEndSeed,
+    phase1State.expectedSeeds  // Pass specific seeds for resume mode
   );
 
   console.log(`[Orchestrator] Seed coverage check for ${courseCode}:`);
-  console.log(`   → Expected: ${coverage.stats.expected} seeds (S${String(phase1State.expectedStartSeed).padStart(4, '0')} to S${String(phase1State.expectedEndSeed).padStart(4, '0')})`);
+  if (phase1State.isResume && phase1State.expectedSeeds) {
+    console.log(`   → Expected: ${coverage.stats.expected} specific seeds (resume mode)`);
+  } else {
+    console.log(`   → Expected: ${coverage.stats.expected} seeds (S${String(phase1State.expectedStartSeed).padStart(4, '0')} to S${String(phase1State.expectedEndSeed).padStart(4, '0')})`)
+  }
   console.log(`   → Received: ${coverage.stats.received} seeds (${coverage.stats.coverage})`);
   console.log(`   → Missing: ${coverage.stats.missing} seeds`);
   if (coverage.missing.length > 0 && coverage.missing.length <= 10) {
