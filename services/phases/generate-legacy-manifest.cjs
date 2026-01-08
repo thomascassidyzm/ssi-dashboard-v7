@@ -331,7 +331,7 @@ async function generateLegacyManifest(courseCode) {
     }
   }
 
-  // 6. Build seed map from DB or file
+  // 6. Build seed map from DB ONLY (no file fallback)
   const seedMap = new Map() // seed_number -> { known_text, target_text }
 
   if (dbSeeds && dbSeeds.length > 0) {
@@ -340,23 +340,10 @@ async function generateLegacyManifest(courseCode) {
     }
   }
 
-  // Fill gaps from lego_pairs.json if available
-  if (legoPairs) {
-    for (const seedData of legoPairs.seeds) {
-      const seedId = seedData[0]
-      const seedNum = parseInt(seedId.replace('S', ''))
-      if (!seedMap.has(seedNum)) {
-        seedMap.set(seedNum, {
-          seed_number: seedNum,
-          seed_id: seedId,
-          known_text: seedData[1][1],
-          target_text: seedData[1][0]
-        })
-      }
-    }
-  }
+  // NOTE: We no longer fill gaps from lego_pairs.json
+  // Only database seeds are included to ensure data consistency
 
-  console.error(`  Combined: ${seedMap.size} seeds`)
+  console.error(`  Database seeds: ${seedMap.size}`)
 
   // 7. Collect all texts and build seeds
   const allTexts = new Set()
