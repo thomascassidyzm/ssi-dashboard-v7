@@ -1,0 +1,328 @@
+[
+  {
+    "seed_id": "S0141",
+    "seed_pair": {
+      "known": "No problem. Everything is okay.",
+      "target": "No problem. Everything is okay."
+    },
+    "legos": [
+      {
+        "id": "S0141L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "No problem",
+          "target": "没问题"
+        }
+      },
+      {
+        "id": "S0141L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Everything",
+          "target": "一切"
+        }
+      },
+      {
+        "id": "S0141L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "is okay",
+          "target": "没关系"
+        }
+      },
+      {
+        "id": "S0141L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Everything is okay",
+          "target": "一切都没关系"
+        },
+        "components": [
+          {
+            "known": "Everything",
+            "target": "一切"
+          },
+          {
+            "known": "is okay",
+            "target": "没关系"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0142",
+    "seed_pair": {
+      "known": "That's very kind of you and I'm grateful to you for helping.",
+      "target": "That's very kind of you and I'm grateful to you for helping."
+    },
+    "legos": [
+      {
+        "id": "S0142L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "kind",
+          "target": "好心"
+        }
+      },
+      {
+        "id": "S0142L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "grateful",
+          "target": "感谢"
+        }
+      },
+      {
+        "id": "S0142L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "helping",
+          "target": "帮忙"
+        }
+      },
+      {
+        "id": "S0142L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "That's very kind of you",
+          "target": "你很好心"
+        },
+        "components": [
+          {
+            "known": "very kind",
+            "target": "很好心"
+          }
+        ]
+      },
+      {
+        "id": "S0142L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I'm grateful to you for helping",
+          "target": "我很感谢你帮忙"
+        },
+        "components": [
+          {
+            "known": "grateful",
+            "target": "感谢"
+          },
+          {
+            "known": "helping",
+            "target": "帮忙"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0143",
+    "seed_pair": {
+      "known": "It's the same thing as we were talking about earlier.",
+      "target": "It's the same thing as we were talking about earlier."
+    },
+    "legos": [
+      {
+        "id": "S0143L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "the same thing",
+          "target": "同样的事"
+        }
+      },
+      {
+        "id": "S0143L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "talking about",
+          "target": "谈论"
+        }
+      },
+      {
+        "id": "S0143L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "earlier",
+          "target": "之前"
+        }
+      },
+      {
+        "id": "S0143L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "It's the same thing as we were talking about earlier",
+          "target": "就是我们之前谈论的同样的事"
+        },
+        "components": [
+          {
+            "known": "the same thing",
+            "target": "同样的事"
+          },
+          {
+            "known": "talking about",
+            "target": "谈论"
+          },
+          {
+            "known": "earlier",
+            "target": "之前"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0144",
+    "seed_pair": {
+      "known": "I woke earlier than I wanted to this morning.",
+      "target": "I woke earlier than I wanted to this morning."
+    },
+    "legos": [
+      {
+        "id": "S0144L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I woke",
+          "target": "我醒了"
+        }
+      },
+      {
+        "id": "S0144L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "earlier",
+          "target": "更早"
+        }
+      },
+      {
+        "id": "S0144L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "wanted to",
+          "target": "想要"
+        }
+      },
+      {
+        "id": "S0144L04",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "this morning",
+          "target": "今天早上"
+        }
+      },
+      {
+        "id": "S0144L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "I woke earlier than I wanted to this morning",
+          "target": "今天早上我醒得比我想要的更早"
+        },
+        "components": [
+          {
+            "known": "I woke",
+            "target": "我醒了"
+          },
+          {
+            "known": "earlier",
+            "target": "更早"
+          },
+          {
+            "known": "this morning",
+            "target": "今天早上"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "seed_id": "S0145",
+    "seed_pair": {
+      "known": "Why are you not happy any more?",
+      "target": "Why are you not happy any more?"
+    },
+    "legos": [
+      {
+        "id": "S0145L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "Why",
+          "target": "为什么"
+        }
+      },
+      {
+        "id": "S0145L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "happy",
+          "target": "开心"
+        }
+      },
+      {
+        "id": "S0145L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "any more",
+          "target": "不再"
+        }
+      },
+      {
+        "id": "S0145L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "are you not happy any more",
+          "target": "你不再开心了吗"
+        },
+        "components": [
+          {
+            "known": "happy",
+            "target": "开心"
+          },
+          {
+            "known": "any more",
+            "target": "不再"
+          }
+        ]
+      },
+      {
+        "id": "S0145L05",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "Why are you not happy any more",
+          "target": "你为什么不再开心了"
+        },
+        "components": [
+          {
+            "known": "Why",
+            "target": "为什么"
+          },
+          {
+            "known": "are you not happy any more",
+            "target": "你不再开心了吗"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,265 @@
+[
+  {
+    "s": "S0141",
+    "k": "No problem. Everything is okay.",
+    "t": "No problem. Everything is okay.",
+    "l": [
+      {
+        "y": "A",
+        "n": 1,
+        "k": "No problem",
+        "t": "没问题",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "Everything",
+        "t": "一切",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "is okay",
+        "t": "没关系",
+        "c": []
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "Everything is okay",
+        "t": "一切都没关系",
+        "c": [
+          {
+            "known": "Everything",
+            "target": "一切"
+          },
+          {
+            "known": "is okay",
+            "target": "没关系"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "s": "S0142",
+    "k": "That's very kind of you and I'm grateful to you for helping.",
+    "t": "That's very kind of you and I'm grateful to you for helping.",
+    "l": [
+      {
+        "y": "A",
+        "n": 1,
+        "k": "kind",
+        "t": "好心",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "grateful",
+        "t": "感谢",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "helping",
+        "t": "帮忙",
+        "c": []
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "That's very kind of you",
+        "t": "你很好心",
+        "c": [
+          {
+            "known": "very kind",
+            "target": "很好心"
+          }
+        ]
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "I'm grateful to you for helping",
+        "t": "我很感谢你帮忙",
+        "c": [
+          {
+            "known": "grateful",
+            "target": "感谢"
+          },
+          {
+            "known": "helping",
+            "target": "帮忙"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "s": "S0143",
+    "k": "It's the same thing as we were talking about earlier.",
+    "t": "It's the same thing as we were talking about earlier.",
+    "l": [
+      {
+        "y": "A",
+        "n": 1,
+        "k": "the same thing",
+        "t": "同样的事",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "talking about",
+        "t": "谈论",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "earlier",
+        "t": "之前",
+        "c": []
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "It's the same thing as we were talking about earlier",
+        "t": "就是我们之前谈论的同样的事",
+        "c": [
+          {
+            "known": "the same thing",
+            "target": "同样的事"
+          },
+          {
+            "known": "talking about",
+            "target": "谈论"
+          },
+          {
+            "known": "earlier",
+            "target": "之前"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "s": "S0144",
+    "k": "I woke earlier than I wanted to this morning.",
+    "t": "I woke earlier than I wanted to this morning.",
+    "l": [
+      {
+        "y": "A",
+        "n": 1,
+        "k": "I woke",
+        "t": "我醒了",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "earlier",
+        "t": "更早",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "wanted to",
+        "t": "想要",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "this morning",
+        "t": "今天早上",
+        "c": []
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "I woke earlier than I wanted to this morning",
+        "t": "今天早上我醒得比我想要的更早",
+        "c": [
+          {
+            "known": "I woke",
+            "target": "我醒了"
+          },
+          {
+            "known": "earlier",
+            "target": "更早"
+          },
+          {
+            "known": "this morning",
+            "target": "今天早上"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "s": "S0145",
+    "k": "Why are you not happy any more?",
+    "t": "Why are you not happy any more?",
+    "l": [
+      {
+        "y": "A",
+        "n": 1,
+        "k": "Why",
+        "t": "为什么",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "happy",
+        "t": "开心",
+        "c": []
+      },
+      {
+        "y": "A",
+        "n": 1,
+        "k": "any more",
+        "t": "不再",
+        "c": []
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "are you not happy any more",
+        "t": "你不再开心了吗",
+        "c": [
+          {
+            "known": "happy",
+            "target": "开心"
+          },
+          {
+            "known": "any more",
+            "target": "不再"
+          }
+        ]
+      },
+      {
+        "y": "M",
+        "n": 1,
+        "k": "Why are you not happy any more",
+        "t": "你为什么不再开心了",
+        "c": [
+          {
+            "known": "Why",
+            "target": "为什么"
+          },
+          {
+            "known": "are you not happy any more",
+            "target": "你不再开心了吗"
+          }
+        ]
+      }
+    ]
+  }
+]
