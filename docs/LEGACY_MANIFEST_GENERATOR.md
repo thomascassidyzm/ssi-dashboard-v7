@@ -12,6 +12,11 @@ This bridges the gap between:
 
 ## Quick Start
 
+### Dashboard (Recommended)
+1. Go to **Mission Control** for your course
+2. Click **"Export Legacy"** in Quick Actions
+3. The manifest will download automatically
+
 ### CLI Usage
 ```bash
 # Generate manifest to stdout
@@ -23,8 +28,24 @@ node services/phases/generate-legacy-manifest.cjs spa_for_eng output.json
 
 ### API Usage
 ```bash
+# Local
 curl http://localhost:3470/api/production/spa_for_eng/export-legacy
+
+# Via ngrok (if tunnel is active)
+curl https://<ngrok-url>/api/production/spa_for_eng/export-legacy
 ```
+
+---
+
+## For Kai
+
+If you're on your own machine and need to access the export:
+
+1. **Dashboard**: Go to `http://localhost:5173/production/spa_for_eng` → "Export Legacy"
+2. **Direct API**: `http://localhost:3470/api/production/spa_for_eng/export-legacy`
+3. **CLI**: `node services/phases/generate-legacy-manifest.cjs spa_for_eng output.json`
+
+All methods require the Production API (`node services/production-api.cjs`) to be running.
 
 ---
 

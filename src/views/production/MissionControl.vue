@@ -293,6 +293,14 @@ const quickActions = computed(() => {
       description: 'View real-time pipeline agent activity',
       badge: null,
       disabled: false
+    },
+    {
+      id: 'export_legacy',
+      icon: '📜',
+      label: 'Export Legacy',
+      description: 'Download manifest for old learning app',
+      badge: null,
+      disabled: false
     }
   ]
 
@@ -386,6 +394,9 @@ function handleQuickAction(actionId: string) {
         path: `/monitor/${selectedCourse.value}`
       })
       break
+    case 'export_legacy':
+      exportLegacyManifest()
+      break
   }
 }
 
@@ -406,6 +417,49 @@ function launchLearningApp() {
   const url = `${learningAppUrl}?course=${selectedCourse.value}&qa_mode=true&token=${qaToken}`
 
   window.open(url, '_blank', 'noopener,noreferrer')
+}
+
+// Export legacy manifest for old learning app
+async function exportLegacyManifest() {
+  if (!selectedCourse.value) return
+
+  try {
+    const apiBase = getApiBaseUrl()
+    const response = await fetch(`${apiBase}/api/production/${selectedCourse.value}/export-legacy`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      alert(`Export failed: ${error.error || 'Unknown error'}`)
+      return
+    }
+
+    const data = await response.json()
+
+    if (!data.success || !data.manifest) {
+      alert(`Export failed: ${data.error || 'No manifest data'}`)
+      return
+    }
+
+    // Create blob and trigger download
+    const blob = new Blob([JSON.stringify(data.manifest, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = data.filename || `${selectedCourse.value}_legacy.json`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+
+    // Show success with stats
+    const stats = data.stats || {}
+    alert(`Legacy manifest exported!\n\nSeeds: ${stats.seeds || 'N/A'}\nEncouragements: ${stats.orderedEncouragements + stats.pooledEncouragements || 'N/A'}`)
+  } catch (err) {
+    console.error('Export failed:', err)
+    alert(`Export failed: ${err instanceof Error ? err.message : 'Network error'}`)
+  }
 }
 
 function getBlockerCountForStage(stageId: string): number {
