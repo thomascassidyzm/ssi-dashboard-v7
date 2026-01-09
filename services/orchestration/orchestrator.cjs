@@ -3242,12 +3242,21 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
         }
       };
 
+      // Check for stall status
+      const phase3State = courseProgress.get(`${courseCode}_phase3`);
+      const isStalled = phase3State?.gapFillTriggered === true;
+      const lastActivity = phase3State?.lastBatchTime || null;
+      const timeSinceActivity = lastActivity ? Date.now() - lastActivity : null;
+
       // Determine overall status based on SEED completion
       let overallStatus = 'idle';
       if (phase1SeedsComplete === 0) {
         overallStatus = 'idle';
       } else if (phases.phase3.status === 'complete') {
         overallStatus = 'phase3_complete';
+      } else if (isStalled) {
+        overallStatus = 'phase3_stalled';
+        phases.phase3.status = 'stalled';
       } else if (phases.phase3.status === 'partial') {
         overallStatus = 'phase3_running';
       } else if (phases.phase2.status === 'complete') {
@@ -3275,6 +3284,11 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
         },
         phases,
         queue: queueStats,
+        stall: isStalled ? {
+          detected: true,
+          lastActivity: lastActivity ? new Date(lastActivity).toISOString() : null,
+          idleSeconds: timeSinceActivity ? Math.round(timeSinceActivity / 1000) : null
+        } : null,
         source: 'database'
       });
     }
@@ -7783,7 +7797,7 @@ app.post('/phase3/stop/:courseCode', async (req, res) => {
  * Proxy to Phase 3 basket server - used by dashboard for basket regeneration
  */
 app.post('/phase3/start', async (req, res) => {
-  const { courseCode, startSeed, endSeed, target, known, stagingOnly } = req.body;
+  const { courseCode, startSeed, endSeed, target, known, stagingOnly, skipGateCheck } = req.body;
 
   if (!courseCode) {
     return res.status(400).json({ error: 'courseCode required' });
@@ -7795,6 +7809,46 @@ app.post('/phase3/start', async (req, res) => {
   const resolvedKnown = known || courseCode.split('_for_')[1];
 
   console.log(`[Orchestrator] Phase 3 start request for ${courseCode} (seeds ${resolvedStartSeed}-${resolvedEndSeed})`);
+
+  // PHASE GATING: Check Phase 1 and 2 completion before allowing Phase 3
+  if (!skipGateCheck) {
+    try {
+      const dbProgress = await courseDataService.getCourseProgress(courseCode);
+      if (dbProgress) {
+        const phase1Seeds = dbProgress.phase1?.complete || 0;
+        const targetSeeds = resolvedEndSeed - resolvedStartSeed + 1;
+
+        // Check Phase 1 completion
+        if (phase1Seeds < targetSeeds) {
+          console.log(`[Orchestrator] ⛔ Phase 3 BLOCKED: Phase 1 incomplete (${phase1Seeds}/${targetSeeds} seeds)`);
+          return res.status(400).json({
+            error: 'Phase 1 incomplete',
+            message: `Phase 1 has ${phase1Seeds}/${targetSeeds} seeds. Complete Phase 1 first.`,
+            phase1Seeds,
+            targetSeeds,
+            gateBlocked: true
+          });
+        }
+
+        // Check Phase 2 completion (lego_pairs.json must exist)
+        const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+        if (!await fs.pathExists(legoPairsPath)) {
+          console.log(`[Orchestrator] ⛔ Phase 3 BLOCKED: Phase 2 not run (no lego_pairs.json)`);
+          return res.status(400).json({
+            error: 'Phase 2 not complete',
+            message: 'Run Phase 2 (Conflict Resolution) before Phase 3.',
+            gateBlocked: true
+          });
+        }
+
+        console.log(`[Orchestrator] ✅ Phase gates passed: ${phase1Seeds} seeds, lego_pairs.json exists`);
+      }
+    } catch (gateError) {
+      console.warn(`[Orchestrator] ⚠️ Phase gate check failed (proceeding anyway): ${gateError.message}`);
+    }
+  } else {
+    console.log(`[Orchestrator] ⚠️ Phase gate check skipped (skipGateCheck=true)`);
+  }
 
   try {
     const response = await axios.post(`${PHASE_SERVERS[3]}/start`, {

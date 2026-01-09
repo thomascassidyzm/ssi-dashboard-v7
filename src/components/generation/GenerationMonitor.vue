@@ -250,8 +250,10 @@ const statusLabel = computed(() => {
     phase2_complete: 'Phase 2 Complete',
     phase3_running: 'Phase 3 Running',
     phase3_complete: 'Phase 3 Complete',
+    phase3_stalled: 'Phase 3 STALLED',
     running: 'Running',
     complete: 'Complete',
+    stalled: 'STALLED',
     failed: 'Failed'
   }
   return labels[overallStatus.value] || overallStatus.value
@@ -265,6 +267,7 @@ function getPhaseClass(phase) {
     running: status === 'running',
     partial: status === 'partial',
     complete: status === 'complete',
+    stalled: status === 'stalled',
     failed: status === 'failed'
   }
 }
@@ -502,6 +505,8 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .status-indicator.phase2_complete .status-dot,
 .status-indicator.phase3_complete .status-dot,
 .status-indicator.complete .status-dot { background: var(--success); }
+.status-indicator.phase3_stalled .status-dot,
+.status-indicator.stalled .status-dot { background: var(--error); animation: blink 1s ease-in-out infinite; }
 .status-indicator.failed .status-dot { background: var(--error); }
 
 .source-badge {
@@ -685,6 +690,7 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .phase-card.complete { border-left-color: var(--success); }
 .phase-card.partial { border-left-color: var(--warning); }
 .phase-card.running { border-left-color: var(--info); }
+.phase-card.stalled { border-left-color: var(--error); background: rgba(239, 68, 68, 0.1); }
 .phase-card.failed { border-left-color: var(--error); }
 
 .phase-header {
@@ -717,6 +723,17 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .phase-card.partial .phase-status-badge {
   background: rgba(234, 179, 8, 0.15);
   color: var(--warning);
+}
+
+.phase-card.stalled .phase-status-badge {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--error);
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .phase-detail {
