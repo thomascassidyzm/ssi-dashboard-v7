@@ -1309,6 +1309,235 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
 })
 
 // =============================================================================
+// ROLE-BASED REGENERATION ENDPOINTS
+// =============================================================================
+
+// Regenerate audio by role (known, target1, target2)
+// POST /api/audio/regenerate-role/:courseCode
+// Body: { role, dryRun, flaggedOnly, limit }
+app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { role, dryRun = true, flaggedOnly = false, limit = 1000 } = req.body
+
+    if (!role || !['known', 'target1', 'target2'].includes(role)) {
+      return res.status(400).json({ error: 'Invalid role. Must be known, target1, or target2' })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    logger.log(`[Regenerate Role] ${dryRun ? 'Preview' : 'Execute'} ${role} for ${courseCode}, flaggedOnly=${flaggedOnly}`)
+
+    // Get course voice config
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+
+    const voiceConfig = course.voice_config || {}
+    const voiceId = voiceConfig[role] || voiceConfig.default || 'unknown'
+    const language = role === 'known' ? course.known_lang : course.target_lang
+
+    // Query audio samples by role
+    let audioQuery = supabaseClient.getClient()
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, voice_id, duration_ms')
+      .eq('course_code', courseCode)
+      .eq('role', role)
+      .limit(limit)
+
+    const { data: audioSamples, error: audioError } = await audioQuery
+
+    if (audioError) {
+      logger.error('Error fetching audio samples:', audioError)
+      return res.status(500).json({ error: audioError.message })
+    }
+
+    let samplesToRegenerate = audioSamples || []
+
+    // If flaggedOnly, filter to only flagged samples
+    if (flaggedOnly && samplesToRegenerate.length > 0) {
+      const uuids = samplesToRegenerate.map(s => s.id)
+      const { data: flags } = await supabaseClient.getClient()
+        .from('sample_flags')
+        .select('audio_uuid')
+        .eq('course_code', courseCode)
+        .in('audio_uuid', uuids)
+        .in('status', ['flagged_regen_tts', 'pending_regen'])
+
+      const flaggedUuids = new Set((flags || []).map(f => f.audio_uuid))
+      samplesToRegenerate = samplesToRegenerate.filter(s => flaggedUuids.has(s.id))
+    }
+
+    // For dry run, just return preview
+    if (dryRun) {
+      return res.json({
+        dryRun: true,
+        count: samplesToRegenerate.length,
+        voiceId,
+        language,
+        sample: samplesToRegenerate[0] || null
+      })
+    }
+
+    // Execute regeneration
+    if (samplesToRegenerate.length === 0) {
+      return res.json({
+        dryRun: false,
+        total: 0,
+        success: 0,
+        failed: 0,
+        voiceId,
+        language,
+        regeneratedItems: [],
+        message: 'No samples to regenerate'
+      })
+    }
+
+    const uuids = samplesToRegenerate.map(s => s.id)
+
+    // Call Phase 8 to regenerate audio
+    const response = await proxyToPhase8('POST', '/generate', {
+      courseCode,
+      regenerate: true,
+      uuids,
+      role  // Pass role for logging/filtering
+    })
+
+    // Emit WebSocket event
+    io.to(`course:${courseCode}`).emit('regeneration_started', {
+      courseCode,
+      uuids,
+      role,
+      count: uuids.length,
+      timestamp: new Date().toISOString()
+    })
+
+    if (response.status === 200) {
+      res.json({
+        dryRun: false,
+        total: uuids.length,
+        success: response.data.success || uuids.length,
+        failed: response.data.failed || 0,
+        voiceId,
+        language,
+        regeneratedItems: samplesToRegenerate.map(s => ({
+          id: s.id,
+          text: s.text,
+          role: s.role
+        })),
+        jobId: response.data.jobId
+      })
+    } else {
+      res.status(response.status).json({
+        error: response.data.error || 'Regeneration failed',
+        ...response.data
+      })
+    }
+  } catch (error) {
+    logger.error('Error in regenerate-role:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Regenerate presentation audio
+// POST /api/audio/regenerate-presentations/:courseCode
+// Body: { dryRun, limit }
+app.post('/api/audio/regenerate-presentations/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { dryRun = true, limit = 1000 } = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    logger.log(`[Regenerate Presentations] ${dryRun ? 'Preview' : 'Execute'} for ${courseCode}`)
+
+    // Get course info
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+
+    // Query presentation audio
+    const { data: presentations, error } = await supabaseClient.getClient()
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, voice_id, duration_ms')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .limit(limit)
+
+    if (error) {
+      return res.status(500).json({ error: error.message })
+    }
+
+    const samplesToRegenerate = presentations || []
+
+    if (dryRun) {
+      return res.json({
+        dryRun: true,
+        count: samplesToRegenerate.length,
+        sample: samplesToRegenerate[0] || null
+      })
+    }
+
+    if (samplesToRegenerate.length === 0) {
+      return res.json({
+        dryRun: false,
+        total: 0,
+        success: 0,
+        failed: 0,
+        regeneratedItems: [],
+        message: 'No presentation audio to regenerate'
+      })
+    }
+
+    const uuids = samplesToRegenerate.map(s => s.id)
+
+    // Call Phase 8 to regenerate
+    const response = await proxyToPhase8('POST', '/generate', {
+      courseCode,
+      regenerate: true,
+      uuids,
+      role: 'presentation'
+    })
+
+    io.to(`course:${courseCode}`).emit('regeneration_started', {
+      courseCode,
+      uuids,
+      role: 'presentation',
+      count: uuids.length,
+      timestamp: new Date().toISOString()
+    })
+
+    if (response.status === 200) {
+      res.json({
+        dryRun: false,
+        total: uuids.length,
+        success: response.data.success || uuids.length,
+        failed: response.data.failed || 0,
+        regeneratedItems: samplesToRegenerate.map(s => ({
+          id: s.id,
+          text: s.text.substring(0, 50) + '...'
+        })),
+        jobId: response.data.jobId
+      })
+    } else {
+      res.status(response.status).json({
+        error: response.data.error || 'Regeneration failed',
+        ...response.data
+      })
+    }
+  } catch (error) {
+    logger.error('Error in regenerate-presentations:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // VOICE MANAGEMENT ENDPOINTS
 // =============================================================================
 

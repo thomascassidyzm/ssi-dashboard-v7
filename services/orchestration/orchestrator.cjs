@@ -2820,14 +2820,14 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
           phase3: { status: 'pending', seedsMissingBaskets: [] },
           flags: { total: 0, unresolved: 0, items: [] },
           recommendations: [
-            // Smart resume recommendation - detect the mode from existing seed count
-            rawBatchSeeds.length > 0 ? (() => {
+            // Smart resume recommendation - use DATABASE as source of truth
+            effectiveSeeds.length > 0 ? (() => {
               // Determine the likely target mode based on completed seeds
               let targetMode = 'quick_test';
               let targetSeedCount = SEED_COUNTS.QUICK_TEST;
 
-              if (rawBatchSeeds.length > SEED_COUNTS.QUICK_TEST) {
-                if (rawBatchSeeds.length <= SEED_COUNTS.MVP_COURSE) {
+              if (effectiveSeeds.length > SEED_COUNTS.QUICK_TEST) {
+                if (effectiveSeeds.length <= SEED_COUNTS.MVP_COURSE) {
                   targetMode = 'mvp_course';
                   targetSeedCount = SEED_COUNTS.MVP_COURSE;
                 } else {
@@ -2836,14 +2836,14 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
                 }
               }
 
-              const missingCount = targetSeedCount - rawBatchSeeds.length;
+              const missingCount = targetSeedCount - effectiveSeeds.length;
 
               // Only show continue if there are missing seeds
               if (missingCount > 0) {
                 return {
                   type: 'continue',
                   title: `▶️ Resume (${missingCount} seeds remaining)`,
-                  description: `${rawBatchSeeds.length}/${targetSeedCount} seeds complete. Resume to finish ${targetMode.replace('_', ' ')}.`,
+                  description: `${effectiveSeeds.length}/${targetSeedCount} seeds complete. Resume to finish ${targetMode.replace('_', ' ')}.`,
                   action: { mode: 'resume', targetMode, missingSeeds: missingCount }
                 };
               }
