@@ -138,14 +138,14 @@
             </router-link>
             <router-link
               :to="`/generate/${course.course_code}/monitor`"
-              class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium"
+              class="bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 px-4 py-2 rounded transition-colors text-sm font-medium"
               title="Pipeline Monitor"
             >
               Monitor
             </router-link>
             <router-link
               :to="`/production/${course.course_code}`"
-              class="bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium"
+              class="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 px-4 py-2 rounded transition-colors text-sm font-medium"
               title="Audio Production & QA"
             >
               Production
