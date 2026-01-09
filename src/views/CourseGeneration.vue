@@ -377,7 +377,6 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { io } from 'socket.io-client'
 import { LanguageBriefEditor } from '../components/generation'
-import { getCourseProgress, getMissingSeedsForPhase3, isSupabaseConfigured } from '../services/supabase'
 
 const router = useRouter()
 const route = useRoute()
@@ -587,7 +586,7 @@ watch(courseCode, async (newCode) => {
 
 /**
  * Analyze existing course state for intelligent resume
- * Uses direct Supabase queries for accurate Phase 3 status
+ * Calls orchestrator API which queries Supabase for Phase 3 status
  */
 async function analyzeCourseState(code) {
   isAnalyzing.value = true
@@ -601,50 +600,7 @@ async function analyzeCourseState(code) {
 
     if (res.ok) {
       courseState.value = await res.json()
-      console.log('[CourseGen] Course state from API:', courseState.value)
-
-      // OVERRIDE Phase 3 status with direct Supabase query (more accurate)
-      if (isSupabaseConfigured && courseState.value) {
-        try {
-          const dbProgress = await getCourseProgress(code)
-          if (dbProgress) {
-            const totalSeeds = dbProgress.seeds || courseState.value.seeds?.total || 260
-            const missingSeeds = await getMissingSeedsForPhase3(code, 1, totalSeeds)
-
-            if (missingSeeds !== null) {
-              // Update Phase 3 status with accurate database data
-              const seedsMissingBaskets = missingSeeds.map(n => `S${String(n).padStart(4, '0')}`)
-              const phase3Status = missingSeeds.length > 0 ? 'incomplete' : 'complete'
-
-              courseState.value.phase3 = {
-                ...courseState.value.phase3,
-                status: phase3Status,
-                seedsMissingBaskets,
-                message: phase3Status === 'incomplete'
-                  ? `${missingSeeds.length} seeds missing baskets`
-                  : 'Complete',
-                source: 'database'
-              }
-
-              // Update recommendations for Phase 3
-              if (courseState.value.recommendations) {
-                const basketRec = courseState.value.recommendations.find(r => r.type === 'generate-baskets')
-                if (basketRec && missingSeeds.length > 0) {
-                  basketRec.title = `📦 Generate Missing Baskets (${missingSeeds.length} seeds)`
-                  basketRec.action.seeds = seedsMissingBaskets
-                } else if (basketRec && missingSeeds.length === 0) {
-                  // Remove the recommendation if no missing seeds
-                  courseState.value.recommendations = courseState.value.recommendations.filter(r => r.type !== 'generate-baskets')
-                }
-              }
-
-              console.log(`[CourseGen] Phase 3 override from Supabase: ${missingSeeds.length} missing seeds`)
-            }
-          }
-        } catch (dbErr) {
-          console.warn('[CourseGen] Supabase query failed, using API data:', dbErr.message)
-        }
-      }
+      console.log('[CourseGen] Course state:', courseState.value)
     }
   } catch (err) {
     console.error('[CourseGen] Failed to analyze course:', err)
