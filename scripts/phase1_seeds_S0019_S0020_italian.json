@@ -1,0 +1,135 @@
+[
+  {
+    "seed_id": "S0019",
+    "seed_pair": {
+      "known": "But I don't want to stop talking.",
+      "target": "Ma non voglio smettere di parlare."
+    },
+    "legos": [
+      {
+        "id": "S0019L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "but",
+          "target": "ma"
+        }
+      },
+      {
+        "id": "S0019L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "I want",
+          "target": "voglio"
+        }
+      },
+      {
+        "id": "S0019L03",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "don't",
+          "target": "non"
+        }
+      },
+      {
+        "id": "S0019L04",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "to stop talking",
+          "target": "smettere di parlare"
+        },
+        "components": [
+          {
+            "known": "to stop",
+            "target": "smettere"
+          },
+          {
+            "known": "talking",
+            "target": "parlare"
+          }
+        ]
+      },
+      {
+        "id": "S0019L05",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "to stop",
+          "target": "smettere"
+        }
+      },
+      {
+        "id": "S0019L06",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "talking",
+          "target": "parlare"
+        }
+      }
+    ]
+  },
+  {
+    "seed_id": "S0020",
+    "seed_pair": {
+      "known": "You want to learn his name quickly.",
+      "target": "Vuoi imparare il suo nome rapidamente."
+    },
+    "legos": [
+      {
+        "id": "S0020L01",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "you want",
+          "target": "vuoi"
+        }
+      },
+      {
+        "id": "S0020L02",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "to learn",
+          "target": "imparare"
+        }
+      },
+      {
+        "id": "S0020L03",
+        "type": "M",
+        "new": true,
+        "lego": {
+          "known": "his name",
+          "target": "il suo nome"
+        },
+        "components": [
+          {
+            "known": "name",
+            "target": "nome"
+          }
+        ]
+      },
+      {
+        "id": "S0020L04",
+        "type": "A",
+        "new": false,
+        "lego": {
+          "known": "name",
+          "target": "nome"
+        }
+      },
+      {
+        "id": "S0020L05",
+        "type": "A",
+        "new": true,
+        "lego": {
+          "known": "quickly",
+          "target": "rapidamente"
+        }
+      }
+    ]
+  }
+]
