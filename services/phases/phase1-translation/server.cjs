@@ -514,41 +514,54 @@ app.post('/start', async (req, res) => {
   let modeName;
 
   // INTELLIGENT RESUME: If specificSeeds provided, use that count
-  // But keep seeds_per_agent FIXED from the original pattern
+  // For resume mode, use resume config (1 seed per agent for max granularity)
   if (specificSeeds && Array.isArray(specificSeeds) && specificSeeds.length > 0) {
     totalSeeds = specificSeeds.length;
 
-    // Use provided pattern (from orchestrator) to keep seeds_per_agent fixed
-    // Then calculate optimal agents/browsers for the missing seeds
-    if (providedPattern) {
-      const { seeds_per_agent, agents_per_browser } = providedPattern;
+    // For RESUME mode, always use resume config (1 seed per agent)
+    // For non-resume specific seeds, use provided pattern or default
+    if (isResume) {
+      const resumeConfig = getResumeConfig();
+      const { seeds_per_agent, agents_per_browser } = resumeConfig;
 
-      // Calculate how many agents we need (keeping seeds_per_agent fixed)
+      // Calculate how many agents/browsers we need
       const agentsNeeded = Math.ceil(totalSeeds / seeds_per_agent);
-
-      // Calculate how many browsers we need
       const browsersNeeded = Math.ceil(agentsNeeded / agents_per_browser);
 
-      // Build a scaled-down pattern
       modeConfig = {
         name: `Resume`,
         pattern: {
           browsers: browsersNeeded,
           agents_per_browser: Math.min(agentsNeeded, agents_per_browser),
-          seeds_per_agent: seeds_per_agent  // FIXED from original
+          seeds_per_agent: seeds_per_agent  // From resume config = 1
         }
       };
 
-      console.log(`[Phase 1] 🔄 RESUME MODE: Keeping seeds_per_agent=${seeds_per_agent} fixed`);
+      console.log(`[Phase 1] 🔄 RESUME MODE: Using resume config (seeds_per_agent=${seeds_per_agent})`);
       console.log(`[Phase 1]    Agents needed: ${agentsNeeded}, Browsers: ${browsersNeeded}`);
+    } else if (providedPattern) {
+      const { seeds_per_agent, agents_per_browser } = providedPattern;
+      const agentsNeeded = Math.ceil(totalSeeds / seeds_per_agent);
+      const browsersNeeded = Math.ceil(agentsNeeded / agents_per_browser);
+
+      modeConfig = {
+        name: `Specific`,
+        pattern: {
+          browsers: browsersNeeded,
+          agents_per_browser: Math.min(agentsNeeded, agents_per_browser),
+          seeds_per_agent: seeds_per_agent
+        }
+      };
+
+      console.log(`[Phase 1] Specific seeds: Using provided pattern (seeds_per_agent=${seeds_per_agent})`);
     } else {
-      // Fallback: use default pattern but with fixed seeds_per_agent
+      // Fallback: use default pattern
       modeConfig = getPatternForSeeds(totalSeeds);
-      console.log(`[Phase 1] ⚠️  No pattern provided for resume, using default`);
+      console.log(`[Phase 1] ⚠️  No pattern provided, using default`);
     }
 
     modeName = isResume ? `Resume (${totalSeeds} missing seeds)` : `Specific (${totalSeeds} seeds)`;
-    console.log(`[Phase 1] 🔄 RESUME MODE: Processing ${totalSeeds} specific seeds`);
+    console.log(`[Phase 1] Processing ${totalSeeds} specific seeds`);
     console.log(`[Phase 1]    Seeds: ${specificSeeds.slice(0, 5).join(', ')}${specificSeeds.length > 5 ? '...' : ''}`);
   } else if (mode) {
     // Mode explicitly provided (quick_test, mvp_course, full_course)

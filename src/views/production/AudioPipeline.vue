@@ -398,6 +398,92 @@
               </div>
             </div>
           </div>
+
+          <!-- Regenerate All Flagged Card -->
+          <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6 lg:col-span-2">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-100">Regenerate All Flagged</h3>
+                  <p class="text-sm text-slate-400">Process entire regen queue across all roles</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">
+                BATCH
+              </span>
+            </div>
+
+            <p class="text-sm text-slate-400 mb-4">
+              Regenerate all samples in the queue in a single batch. Azure TTS handles concurrency internally,
+              so this processes known, target1, and target2 roles simultaneously.
+            </p>
+
+            <!-- Queue Summary -->
+            <div v-if="allFlaggedQueue" class="mb-4 grid grid-cols-4 gap-3">
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-slate-100">{{ allFlaggedQueue.total }}</div>
+                <div class="text-xs text-slate-500 uppercase">Total</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-amber-400">{{ allFlaggedQueue.byRole?.known || 0 }}</div>
+                <div class="text-xs text-slate-500 uppercase">Known</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-emerald-400">{{ allFlaggedQueue.byRole?.target1 || 0 }}</div>
+                <div class="text-xs text-slate-500 uppercase">Target1</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="text-xl font-bold text-teal-400">{{ allFlaggedQueue.byRole?.target2 || 0 }}</div>
+                <div class="text-xs text-slate-500 uppercase">Target2</div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-3">
+              <button
+                @click="previewAllFlagged"
+                :disabled="regeneratingAll"
+                class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
+              >
+                {{ loadingAllFlaggedQueue ? 'Loading...' : 'Preview Queue' }}
+              </button>
+              <button
+                @click="executeAllFlagged"
+                :disabled="regeneratingAll || !allFlaggedQueue?.total"
+                class="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+              >
+                {{ regeneratingAll ? 'Working...' : 'Regenerate All' }}
+              </button>
+            </div>
+
+            <!-- Result -->
+            <div v-if="allFlaggedResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 rounded-full" :class="allFlaggedResult.error ? 'bg-red-500' : 'bg-emerald-500'"></div>
+                  <span class="text-sm font-medium" :class="allFlaggedResult.error ? 'text-red-400' : 'text-emerald-400'">
+                    {{ allFlaggedResult.error ? 'Error' : 'Triggered' }}
+                  </span>
+                </div>
+                <div v-if="!allFlaggedResult.error" class="text-right">
+                  <span class="text-xl font-bold text-slate-100">{{ allFlaggedResult.count }}</span>
+                  <span class="text-xs text-slate-500 ml-1">samples</span>
+                </div>
+              </div>
+              <div v-if="allFlaggedResult.error" class="mt-2 text-sm text-red-400">{{ allFlaggedResult.error }}</div>
+              <div v-else-if="allFlaggedResult.jobId" class="mt-2 text-xs text-slate-400">
+                Job ID: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ allFlaggedResult.jobId }}</code>
+              </div>
+              <p v-if="!allFlaggedResult.error" class="mt-2 text-xs text-slate-500">
+                Watch the live progress panel above for real-time updates.
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- PIPELINE STATUS Section -->
@@ -583,6 +669,12 @@ const reviewAudioElement = ref<HTMLAudioElement | null>(null)
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
+
+// Regenerate all flagged state
+const allFlaggedQueue = ref<any>(null)
+const loadingAllFlaggedQueue = ref(false)
+const regeneratingAll = ref(false)
+const allFlaggedResult = ref<any>(null)
 
 // Plan/dry run state
 const planResult = ref<any>(null)
@@ -971,6 +1063,92 @@ const executePresentations = async () => {
     presentationsResult.value = { error: err.message }
   } finally {
     regeneratingPresentations.value = false
+  }
+}
+
+// Regenerate All Flagged functions
+const previewAllFlagged = async () => {
+  loadingAllFlaggedQueue.value = true
+  allFlaggedResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/queue`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      allFlaggedQueue.value = null
+      allFlaggedResult.value = { error: data.error || 'Failed to load queue' }
+    } else {
+      // Count by role
+      const byRole: Record<string, number> = { known: 0, target1: 0, target2: 0, presentation: 0 }
+      for (const item of data.items || []) {
+        const role = item.audio?.role || 'unknown'
+        if (byRole[role] !== undefined) {
+          byRole[role]++
+        }
+      }
+
+      allFlaggedQueue.value = {
+        total: data.total || 0,
+        items: data.items || [],
+        byRole
+      }
+    }
+  } catch (err: any) {
+    allFlaggedQueue.value = null
+    allFlaggedResult.value = { error: err.message }
+  } finally {
+    loadingAllFlaggedQueue.value = false
+  }
+}
+
+const executeAllFlagged = async () => {
+  if (!allFlaggedQueue.value?.total) return
+
+  const confirmed = confirm(
+    `This will regenerate ${allFlaggedQueue.value.total} flagged samples across all roles.\n\n` +
+    `Breakdown:\n` +
+    `• Known: ${allFlaggedQueue.value.byRole?.known || 0}\n` +
+    `• Target1: ${allFlaggedQueue.value.byRole?.target1 || 0}\n` +
+    `• Target2: ${allFlaggedQueue.value.byRole?.target2 || 0}\n` +
+    `• Presentation: ${allFlaggedQueue.value.byRole?.presentation || 0}\n\n` +
+    `Existing audio files will be replaced.\n\n` +
+    `Continue?`
+  )
+  if (!confirmed) return
+
+  regeneratingAll.value = true
+  allFlaggedResult.value = null
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/trigger-all`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      allFlaggedResult.value = { error: data.error || 'Regeneration failed' }
+    } else {
+      allFlaggedResult.value = {
+        success: true,
+        count: data.count,
+        jobId: data.jobId
+      }
+      // Clear the queue preview since items are now in progress
+      allFlaggedQueue.value = null
+      // Reload pipeline stats
+      await productionStore.loadCourse(courseCode.value)
+    }
+  } catch (err: any) {
+    allFlaggedResult.value = { error: err.message }
+  } finally {
+    regeneratingAll.value = false
   }
 }
 </script>
