@@ -194,6 +194,13 @@
                   <span class="rec-desc">{{ rec.description }}</span>
                 </button>
               </div>
+
+              <!-- Stop Job button (when running) -->
+              <div v-if="courseState.phase1?.status === 'in_progress' || courseState.phase1?.status === 'running'" class="stop-job-section">
+                <button class="stop-job-btn" @click="stopCurrentJob" :disabled="isStopping">
+                  {{ isStopping ? 'Stopping...' : 'Stop Current Job' }}
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -388,6 +395,7 @@ const phases = ref([
 // Course state analysis (intelligent resume)
 const courseState = ref(null)
 const isAnalyzing = ref(false)
+const isStopping = ref(false)
 const hasExistingProgress = computed(() => courseState.value?.exists === true)
 
 // Language brief
@@ -550,6 +558,39 @@ async function analyzeCourseState(code) {
     courseState.value = null
   } finally {
     isAnalyzing.value = false
+  }
+}
+
+/**
+ * Stop the current running job
+ */
+async function stopCurrentJob() {
+  if (!courseCode.value) return
+
+  isStopping.value = true
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+    // Cancel on Phase 1 server
+    await fetch(`${apiBase}/api/phase1/${courseCode.value}/cancel`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    // Also cancel on orchestrator
+    await fetch(`${apiBase}/api/cancel/${courseCode.value}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    console.log('[CourseGen] Job cancelled')
+
+    // Refresh course state
+    await analyzeCourseState(courseCode.value)
+  } catch (err) {
+    console.error('[CourseGen] Failed to stop job:', err)
+  } finally {
+    isStopping.value = false
   }
 }
 
@@ -1300,6 +1341,32 @@ function handleRecommendation(rec) {
   margin-top: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
+}
+
+.stop-job-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.stop-job-btn {
+  padding: 0.5rem 1rem;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.stop-job-btn:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.stop-job-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .rec-header {

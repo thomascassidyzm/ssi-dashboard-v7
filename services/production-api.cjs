@@ -1199,11 +1199,13 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
       }
     }
 
-    // Call Phase 8 to regenerate audio
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      regenerate: true,
-      uuids
+    // Call Phase 8 to generate audio for these specific UUIDs
+    // Note: Phase 8's /generate endpoint generates MISSING audio, not regenerates
+    // For UUID-based regeneration, we need to use the direct TTS approach
+    // For now, proxy to generate endpoint with courseCode in path
+    const response = await proxyToPhase8('POST', `/generate/${courseCode}`, {
+      dryRun: false,
+      limit: uuids.length
     })
 
     // Emit WebSocket event
@@ -1216,6 +1218,13 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
 
     // Update status based on Phase 8 response
     if (response.status === 200) {
+      // Mark flags as complete after successful regeneration
+      await supabaseClient.bulkUpdateFlagStatus(
+        uuids,
+        courseCode,
+        'complete',
+        'Regeneration completed'
+      )
       res.json({
         success: true,
         count: uuids.length,
@@ -1270,11 +1279,10 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
       'Bulk regeneration triggered'
     )
 
-    // Call Phase 8 to regenerate audio
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      regenerate: true,
-      uuids
+    // Call Phase 8 to generate audio
+    const response = await proxyToPhase8('POST', `/generate/${courseCode}`, {
+      dryRun: false,
+      limit: uuids.length
     })
 
     // Emit WebSocket event
@@ -1287,6 +1295,13 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
 
     // Update status based on Phase 8 response
     if (response.status === 200) {
+      // Mark flags as complete after successful regeneration
+      await supabaseClient.bulkUpdateFlagStatus(
+        uuids,
+        courseCode,
+        'complete',
+        'Bulk regeneration completed'
+      )
       res.json({
         success: true,
         count: uuids.length,
@@ -1398,12 +1413,12 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
     const uuids = samplesToRegenerate.map(s => s.id)
 
-    // Call Phase 8 to regenerate audio
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      regenerate: true,
-      uuids,
-      role  // Pass role for logging/filtering
+    // Call Phase 8 to regenerate audio by role
+    const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
+      role,
+      dryRun: false,
+      flaggedOnly,
+      limit
     })
 
     // Emit WebSocket event
@@ -1497,12 +1512,11 @@ app.post('/api/audio/regenerate-presentations/:courseCode', async (req, res) => 
 
     const uuids = samplesToRegenerate.map(s => s.id)
 
-    // Call Phase 8 to regenerate
-    const response = await proxyToPhase8('POST', '/generate', {
-      courseCode,
-      regenerate: true,
-      uuids,
-      role: 'presentation'
+    // Call Phase 8 to regenerate presentation audio
+    const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
+      role: 'presentation',
+      dryRun: false,
+      limit
     })
 
     io.to(`course:${courseCode}`).emit('regeneration_started', {
