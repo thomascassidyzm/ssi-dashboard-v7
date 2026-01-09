@@ -1,11 +1,11 @@
 <template>
   <div class="generation-monitor">
     <!-- Back Link -->
-    <router-link to="/" class="back-link">
+    <router-link to="/courses" class="back-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
-      Dashboard
+      Course Library
     </router-link>
 
     <!-- Header -->
@@ -13,101 +13,15 @@
       <div class="header-left">
         <h2 class="monitor-title">Course Pipeline</h2>
         <span class="course-badge">{{ courseCode || 'No Course' }}</span>
+      </div>
+      <div class="header-right">
         <span class="status-indicator" :class="overallStatus">
           <span class="status-dot"></span>
           {{ statusLabel }}
         </span>
-      </div>
-      <div class="header-right">
-        <!-- Control Bar -->
-        <div class="control-bar">
-          <!-- Mode Selector -->
-          <div class="control-group">
-            <label class="control-label">Mode</label>
-            <select v-model="selectedMode" class="control-select" :disabled="isRunning">
-              <option value="quick_test">Quick Test (10)</option>
-              <option value="mvp_course">MVP (260)</option>
-              <option value="full_course">Full (668)</option>
-            </select>
-          </div>
-
-          <!-- Spawner Toggle -->
-          <div class="control-group">
-            <label class="control-label">Spawner</label>
-            <div class="spawner-toggle">
-              <button
-                :class="['toggle-btn', { active: spawnerMode === 'cli' }]"
-                @click="spawnerMode = 'cli'"
-                :disabled="isRunning"
-                title="iTerm2 + Claude CLI"
-              >CLI</button>
-              <button
-                :class="['toggle-btn', { active: spawnerMode === 'browser' }]"
-                @click="spawnerMode = 'browser'"
-                :disabled="isRunning"
-                title="Chrome + Claude Web"
-              >Web</button>
-            </div>
-          </div>
-
-          <!-- Divider -->
-          <div class="control-divider"></div>
-
-          <!-- Contextual Action Buttons -->
-          <div class="action-buttons">
-            <!-- Phase 1 Actions -->
-            <button
-              v-if="canResumePhase1"
-              class="action-btn phase1"
-              @click="resumePhase1"
-              :disabled="isRunning"
-            >
-              <span class="btn-icon">1</span>
-              Resume P1 ({{ missingPhase1Count }})
-            </button>
-
-            <button
-              v-else-if="canStartPhase1"
-              class="action-btn phase1"
-              @click="startPhase1"
-              :disabled="isRunning"
-            >
-              <span class="btn-icon">1</span>
-              Start Phase 1
-            </button>
-
-            <!-- Phase 2 Actions -->
-            <button
-              v-if="canRunPhase2"
-              class="action-btn phase2"
-              @click="runPhase2"
-              :disabled="isRunning"
-            >
-              <span class="btn-icon">2</span>
-              Run Phase 2
-            </button>
-
-            <!-- Phase 3 Actions -->
-            <button
-              v-if="canRunPhase3"
-              class="action-btn phase3"
-              @click="runPhase3"
-              :disabled="isRunning"
-            >
-              <span class="btn-icon">3</span>
-              Run Phase 3
-            </button>
-
-            <!-- Stop Button (when running) -->
-            <button
-              v-if="isRunning"
-              class="action-btn stop"
-              @click="stopGeneration"
-            >
-              Stop
-            </button>
-          </div>
-        </div>
+        <span class="source-badge" v-if="dataSource">
+          {{ dataSource }}
+        </span>
       </div>
     </div>
 
@@ -282,12 +196,6 @@ let lastStats = null
 let consecutiveErrors = 0
 let lastQueue = null
 
-// Control bar state
-const selectedMode = ref('mvp_course')
-const spawnerMode = ref('cli')
-const isRunning = ref(false)
-const missingPhase1Count = ref(0)
-
 // Computed for course size display
 const courseModeName = computed(() => {
   const modeNames = {
@@ -301,43 +209,6 @@ const courseModeName = computed(() => {
 const seedProgressPercent = computed(() => {
   if (!targetSeeds.value || !stats.value.seedsComplete) return 0
   return Math.round((stats.value.seedsComplete / targetSeeds.value) * 100)
-})
-
-// Action button visibility
-const canStartPhase1 = computed(() => {
-  const p1 = phases.value.phase1
-  return !p1 || p1.status === 'pending' || (!p1.seedsComplete && p1.status !== 'running')
-})
-
-const canResumePhase1 = computed(() => {
-  const p1 = phases.value.phase1
-  if (!p1) return false
-  // Can resume if partial progress and not currently running
-  const isPartial = p1.status === 'partial' || (p1.seedsComplete > 0 && p1.seedsComplete < (targetSeeds.value || 260))
-  const isNotRunning = p1.status !== 'running' && overallStatus.value !== 'phase1_running'
-  return isPartial && isNotRunning
-})
-
-const canRunPhase2 = computed(() => {
-  const p1 = phases.value.phase1
-  const p2 = phases.value.phase2
-  if (!p1) return false
-  // Phase 1 must be complete or have enough seeds
-  const p1Ready = p1.status === 'complete' || (p1.seedsComplete >= (targetSeeds.value || 10))
-  const p2NotComplete = !p2 || p2.status !== 'complete'
-  const notRunning = overallStatus.value !== 'phase2_running'
-  return p1Ready && p2NotComplete && notRunning
-})
-
-const canRunPhase3 = computed(() => {
-  const p2 = phases.value.phase2
-  const p3 = phases.value.phase3
-  if (!p2) return false
-  // Phase 2 must be complete
-  const p2Complete = p2.status === 'complete'
-  const p3NotComplete = !p3 || p3.status !== 'complete'
-  const notRunning = overallStatus.value !== 'phase3_running'
-  return p2Complete && p3NotComplete && notRunning
 })
 
 // Constants
@@ -443,22 +314,6 @@ async function pollProgress() {
     pattern.value = data.pattern || null
     consecutiveErrors = 0 // Reset error count on success
 
-    // Update running state from status
-    const runningStates = ['phase1_running', 'phase2_running', 'phase3_running', 'running']
-    isRunning.value = runningStates.includes(data.overallStatus)
-
-    // Calculate missing phase 1 seeds
-    const p1 = data.phases?.phase1
-    if (p1 && targetSeeds.value) {
-      const completed = p1.seedsComplete || 0
-      missingPhase1Count.value = Math.max(0, targetSeeds.value - completed)
-    }
-
-    // Update selected mode from server if available
-    if (data.courseMode && !selectedMode.value) {
-      selectedMode.value = data.courseMode
-    }
-
     // Check for queue changes and log them
     if (data.queue && lastQueue) {
       if (data.queue.pending !== lastQueue.pending && data.queue.pending > 0) {
@@ -516,163 +371,6 @@ function stopPolling() {
   if (pollTimer) {
     clearInterval(pollTimer)
     pollTimer = null
-  }
-}
-
-// Generation action methods
-async function startPhase1() {
-  isRunning.value = true
-  addEvent('info', 'Starting Phase 1 generation...')
-
-  try {
-    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        courseCode: props.courseCode,
-        target: targetLang.value,
-        known: knownLang.value,
-        mode: selectedMode.value,
-        phaseSelection: 'phase1',
-        spawnerMode: spawnerMode.value
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      throw new Error(data.error || 'Failed to start Phase 1')
-    }
-
-    addEvent('success', 'Phase 1 generation started')
-  } catch (error) {
-    addEvent('error', `Failed: ${error.message}`)
-    isRunning.value = false
-  }
-}
-
-async function resumePhase1() {
-  isRunning.value = true
-  addEvent('info', `Resuming Phase 1 (${missingPhase1Count.value} seeds)...`)
-
-  try {
-    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        courseCode: props.courseCode,
-        target: targetLang.value,
-        known: knownLang.value,
-        mode: selectedMode.value,
-        phaseSelection: 'phase1',
-        spawnerMode: spawnerMode.value,
-        resume: true
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      throw new Error(data.error || 'Failed to resume Phase 1')
-    }
-
-    addEvent('success', 'Phase 1 resume started')
-  } catch (error) {
-    addEvent('error', `Failed: ${error.message}`)
-    isRunning.value = false
-  }
-}
-
-async function runPhase2() {
-  isRunning.value = true
-  addEvent('info', 'Running Phase 2 (Conflict Resolution)...')
-
-  try {
-    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        courseCode: props.courseCode,
-        target: targetLang.value,
-        known: knownLang.value,
-        mode: selectedMode.value,
-        phaseSelection: 'phase2',
-        spawnerMode: spawnerMode.value
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      throw new Error(data.error || 'Failed to run Phase 2')
-    }
-
-    addEvent('success', 'Phase 2 started')
-  } catch (error) {
-    addEvent('error', `Failed: ${error.message}`)
-    isRunning.value = false
-  }
-}
-
-async function runPhase3() {
-  isRunning.value = true
-  addEvent('info', 'Running Phase 3 (Basket Generation)...')
-
-  try {
-    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        courseCode: props.courseCode,
-        target: targetLang.value,
-        known: knownLang.value,
-        mode: selectedMode.value,
-        phaseSelection: 'phase3',
-        spawnerMode: spawnerMode.value
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      throw new Error(data.error || 'Failed to run Phase 3')
-    }
-
-    addEvent('success', 'Phase 3 started')
-  } catch (error) {
-    addEvent('error', `Failed: ${error.message}`)
-    isRunning.value = false
-  }
-}
-
-async function stopGeneration() {
-  addEvent('warning', 'Stopping generation...')
-
-  try {
-    // Cancel on orchestrator
-    await fetch(`${props.apiBaseUrl}/api/cancel/${props.courseCode}`, {
-      method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    // Cancel on Phase 1 server
-    await fetch(`${props.apiBaseUrl}/api/phase1/${props.courseCode}/cancel`, {
-      method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    addEvent('warning', 'Generation stopped')
-    isRunning.value = false
-  } catch (error) {
-    addEvent('error', `Stop failed: ${error.message}`)
   }
 }
 
@@ -818,145 +516,6 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
-}
-
-/* Control Bar */
-.control-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--void);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-
-.control-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.control-label {
-  font-size: 0.625rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
-.control-select {
-  padding: 0.375rem 0.5rem;
-  background: var(--elevated);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  min-width: 100px;
-}
-
-.control-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.spawner-toggle {
-  display: flex;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.toggle-btn {
-  padding: 0.375rem 0.625rem;
-  background: var(--elevated);
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.toggle-btn:first-child {
-  border-right: 1px solid var(--border);
-}
-
-.toggle-btn.active {
-  background: var(--accent);
-  color: white;
-}
-
-.toggle-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.control-divider {
-  width: 1px;
-  height: 32px;
-  background: var(--border);
-}
-
-.action-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 0.75rem;
-  background: var(--elevated);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-  white-space: nowrap;
-}
-
-.action-btn:hover:not(:disabled) {
-  background: var(--border);
-  border-color: var(--accent);
-}
-
-.action-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.action-btn .btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background: var(--void);
-  border-radius: 50%;
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.action-btn.phase1 .btn-icon { color: #3b82f6; }
-.action-btn.phase2 .btn-icon { color: #8b5cf6; }
-.action-btn.phase3 .btn-icon { color: #10b981; }
-
-.action-btn.stop {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.3);
-  color: #f87171;
-}
-
-.action-btn.stop:hover {
-  background: rgba(239, 68, 68, 0.25);
-  border-color: #ef4444;
 }
 
 @keyframes pulse {
@@ -1312,22 +871,6 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .monitor-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .control-bar {
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .action-buttons {
-    flex-wrap: wrap;
-  }
-}
-
 @media (max-width: 640px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1341,20 +884,6 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 
   .phase-detail {
     font-size: 0.75rem;
-  }
-
-  .control-bar {
-    gap: 0.5rem;
-    padding: 0.5rem;
-  }
-
-  .control-divider {
-    display: none;
-  }
-
-  .action-btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.6875rem;
   }
 }
 </style>
