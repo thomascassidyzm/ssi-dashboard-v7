@@ -497,7 +497,8 @@ app.post('/start', async (req, res) => {
     endSeed,
     specificSeeds,  // NEW: Array of specific seed IDs for intelligent resume
     isResume = false,  // NEW: Flag indicating this is a resume operation
-    pattern: providedPattern  // NEW: Original pattern from orchestrator (for resume)
+    pattern: providedPattern,  // NEW: Original pattern from orchestrator (for resume)
+    spawnerMode = 'browser'  // 'cli' for iTerm2+Claude CLI, 'browser' for Safari/Chrome
   } = req.body;
 
   if (!courseCode || !target || !known) {
@@ -657,7 +658,7 @@ app.post('/start', async (req, res) => {
     await fs.ensureDir(courseDir);
     await fs.ensureDir(path.join(courseDir, 'phase1_batches'));
 
-    // Spawn MASTERS (browser tabs) - each master spawns workers via Task tool
+    // Spawn MASTERS (browser tabs or iTerm2 windows) - each master spawns workers via Task tool
     await spawnMasters(courseCode, {
       target,
       known,
@@ -666,7 +667,8 @@ app.post('/start', async (req, res) => {
       workersPerMaster,
       seedsPerWorker,
       specificSeeds: specificSeeds || null,  // NEW: Pass specific seeds for resume
-      isResume: isResume
+      isResume: isResume,
+      spawnerMode  // 'cli' for iTerm2+Claude CLI, 'browser' for Safari/Chrome
     }, courseDir, masterCount, seedsPerMaster);
 
     res.json({
@@ -789,17 +791,21 @@ async function startBranchWatcher(courseCode, expectedAgents) {
  * - browser:failed when spawn fails
  */
 async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPerMaster) {
-  console.log(`\n🌐 Spawning ${masterCount} Phase 1 MASTERS...`);
+  const { spawnerMode = 'browser' } = params;
+  const modeLabel = spawnerMode === 'cli' ? 'iTerm2 CLI' : 'Browser';
+
+  console.log(`\n🌐 Spawning ${masterCount} Phase 1 MASTERS via ${modeLabel}...`);
+  console.log(`   Spawner mode: ${spawnerMode}`);
   console.log(`   Seeds per master: ${seedsPerMaster}`);
   console.log(`   Workers per master: ${params.workersPerMaster}`);
   console.log(`   Seeds per worker: ${params.seedsPerWorker}`);
 
   const { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, specificSeeds, isResume } = params;
 
-  // Import browser spawning utility
-  const spawner = await loadWebAgentSpawner();
+  // Load the appropriate spawner based on mode
+  const spawner = await loadAgentSpawner(spawnerMode);
   if (!spawner) {
-    console.error(`⚠️  Web agent spawner not available - cannot spawn masters`);
+    console.error(`⚠️  Agent spawner not available (mode: ${spawnerMode}) - cannot spawn masters`);
     const job = activeJobs.get(courseCode);
     if (job) {
       job.status = 'spawner_unavailable';
@@ -807,7 +813,8 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
     return;
   }
 
-  const { spawnClaudeWebAgent } = spawner;
+  const { spawnAgent, mode: actualMode } = spawner;
+  console.log(`   Using spawner: ${actualMode}`);
 
   // Build master assignments with their seed ranges
   const masterAssignments = [];
@@ -896,25 +903,32 @@ async function spawnMasters(courseCode, params, courseDir, masterCount, seedsPer
   for (let i = 0; i < masterAssignments.length; i++) {
     const { browserId, masterNum, assignedSeeds, prompt } = masterAssignments[i];
 
-    // Report browser:spawning event
+    // Report browser:spawning event (works for both browser and CLI modes)
     reportEvent(courseCode, {
       event: 'browser:spawning',
       browserId,
       assignedSeeds,
       masterNum,
       workersPerMaster,
-      seedsPerWorker
+      seedsPerWorker,
+      spawnerMode: actualMode
     });
 
     try {
-      const result = await spawnClaudeWebAgent(prompt, masterNum, 'safari');
+      // spawnAgent interface differs by mode:
+      // - browser: spawnClaudeWebAgent(prompt, agentId, browser)
+      // - cli: spawnClaudeCliAgent(prompt, agentId, options)
+      const result = actualMode === 'cli'
+        ? await spawnAgent(prompt, masterNum, { model: 'sonnet', workingDir: courseDir })
+        : await spawnAgent(prompt, masterNum, 'safari');
       results.push({ ...result, browserId, masterNum });
 
-      // Report browser:ready event
+      // Report browser:ready event (works for both modes)
       reportEvent(courseCode, {
         event: 'browser:ready',
         browserId,
-        masterNum
+        masterNum,
+        spawnerMode: actualMode
       });
 
     } catch (err) {
@@ -965,6 +979,55 @@ async function loadWebAgentSpawner() {
   } catch (error) {
     console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
   }
+  return null;
+}
+
+/**
+ * Load CLI agent spawner (iTerm2 + Claude CLI)
+ */
+async function loadCliAgentSpawner() {
+  try {
+    const spawnerPath = path.join(__dirname, '../../shared/spawn-agent-cli.cjs');
+    if (await fs.pathExists(spawnerPath)) {
+      const module = require(spawnerPath);
+      return module;
+    }
+  } catch (error) {
+    console.warn(`⚠️  CLI agent spawner not available: ${error.message}`);
+  }
+  return null;
+}
+
+/**
+ * Load unified agent spawner based on mode
+ * @param {string} spawnerMode - 'cli' for iTerm2+Claude CLI, 'browser' for Safari/Chrome web
+ */
+async function loadAgentSpawner(spawnerMode = 'browser') {
+  if (spawnerMode === 'cli') {
+    const cliSpawner = await loadCliAgentSpawner();
+    if (cliSpawner) {
+      console.log(`[Phase 1] Using CLI spawner (iTerm2 + Claude CLI with Sonnet)`);
+      return {
+        mode: 'cli',
+        spawnAgent: cliSpawner.spawnClaudeCliAgent,
+        spawnParallel: cliSpawner.spawnParallelCliAgents,
+        module: cliSpawner
+      };
+    }
+    console.warn(`[Phase 1] CLI spawner requested but not available, falling back to browser`);
+  }
+
+  const webSpawner = await loadWebAgentSpawner();
+  if (webSpawner) {
+    console.log(`[Phase 1] Using browser spawner (Safari/Chrome)`);
+    return {
+      mode: 'browser',
+      spawnAgent: webSpawner.spawnClaudeWebAgent,
+      spawnParallel: webSpawner.spawnParallelAgents,
+      module: webSpawner
+    };
+  }
+
   return null;
 }
 

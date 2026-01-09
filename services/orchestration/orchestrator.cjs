@@ -4009,7 +4009,8 @@ app.post('/api/courses/generate', async (req, res) => {
     strategy = 'balanced',
     courseCode: providedCourseCode,
     modelSuffix,  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
-    mode  // NEW: Course mode (quick_test, mvp_course, full_course)
+    mode,  // Course mode (quick_test, mvp_course, full_course)
+    spawnerMode = 'cli'  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
   } = req.body;
 
   // Generate or use provided course code
@@ -4079,6 +4080,7 @@ app.post('/api/courses/generate', async (req, res) => {
   console.log(`   Course: ${courseCode}`);
   console.log(`   Seeds: ${startSeed}-${endSeed} (${totalSeeds} seeds)`);
   console.log(`   Mode: ${mode || 'custom'} (Pattern: ${pattern.browsers}b/${pattern.agents_per_browser}a/${pattern.seeds_per_agent}s)`);
+  console.log(`   Spawner: ${spawnerMode} (${spawnerMode === 'cli' ? 'iTerm2 + Claude CLI' : 'Browser + Claude Web'})`);
   console.log(`   Phase: ${phaseSelection}`);
   console.log(`   Strategy: ${strategy}`);
 
@@ -4285,7 +4287,8 @@ app.post('/api/courses/generate', async (req, res) => {
         endSeed
       }),
       pattern,  // Pass parallelization pattern to phase server
-      mode: mode || 'custom'  // Pass mode for logging/tracking
+      mode: mode || 'custom',  // Pass mode for logging/tracking
+      spawnerMode  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
     };
 
     if (isResume) {

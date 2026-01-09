@@ -265,6 +265,53 @@
           </div>
         </section>
 
+        <!-- Spawner Mode Selection -->
+        <section v-if="knownLanguage && targetLanguage" class="flow-section">
+          <div class="section-label">
+            <span class="label-text">SPAWNER MODE</span>
+            <div class="label-line"></div>
+          </div>
+
+          <div class="spawner-selection-card">
+            <div class="spawner-options">
+              <button
+                @click="spawnerMode = 'cli'"
+                :class="['spawner-option', { active: spawnerMode === 'cli' }]"
+              >
+                <div class="spawner-header">
+                  <span class="spawner-icon">⌨️</span>
+                  <span class="spawner-name">CLI (iTerm2)</span>
+                </div>
+                <div class="spawner-details">
+                  <p class="spawner-description">Claude Code CLI in iTerm2 tabs</p>
+                  <div class="spawner-specs">
+                    <span class="spec-tag good">True parallelism</span>
+                    <span class="spec-tag good">--model sonnet</span>
+                    <span class="spec-tag warn">24GB+ RAM</span>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                @click="spawnerMode = 'browser'"
+                :class="['spawner-option', { active: spawnerMode === 'browser' }]"
+              >
+                <div class="spawner-header">
+                  <span class="spawner-icon">🌐</span>
+                  <span class="spawner-name">Browser (Web)</span>
+                </div>
+                <div class="spawner-details">
+                  <p class="spawner-description">Claude Code on Web in Chrome tabs</p>
+                  <div class="spawner-specs">
+                    <span class="spec-tag">Sequential (clipboard)</span>
+                    <span class="spec-tag good">Low RAM (8GB+)</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
         <!-- Action Buttons -->
         <section class="flow-section actions">
           <button
@@ -380,6 +427,7 @@ const modeIcons = {
 
 const selectedMode = ref(null)
 const selectedPhase = ref('all')  // 'all', 'phase1', 'phase2', 'phase3'
+const spawnerMode = ref('cli')    // 'cli' (iTerm2) or 'browser' (Chrome/Safari)
 
 // Generation state
 const isGenerating = ref(false)
@@ -617,7 +665,8 @@ async function startGeneration() {
         target: targetLanguage.value,
         known: knownLanguage.value,
         mode: selectedMode.value.id,
-        phaseSelection: selectedPhase.value  // 'all', 'phase1', 'phase3', etc.
+        phaseSelection: selectedPhase.value,  // 'all', 'phase1', 'phase3', etc.
+        spawnerMode: spawnerMode.value        // 'cli' (iTerm2) or 'browser' (Chrome)
       })
     })
 
@@ -1553,6 +1602,99 @@ function handleRecommendation(rec) {
 .key-sep {
   color: var(--text-muted);
   opacity: 0.6;
+}
+
+/* Spawner Mode Selection */
+.spawner-selection-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.spawner-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.spawner-option {
+  background: var(--elevated);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.spawner-option:hover {
+  border-color: var(--border-light);
+  background: var(--surface);
+}
+
+.spawner-option.active {
+  border-color: var(--accent);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.spawner-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spawner-icon {
+  font-size: 1.25rem;
+}
+
+.spawner-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.spawner-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spawner-description {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.spawner-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.spec-tag {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.spec-tag.good {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--accent);
+}
+
+.spec-tag.warn {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
 }
 
 /* Action Buttons */
