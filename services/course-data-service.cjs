@@ -629,12 +629,45 @@ async function getCourseProgress(courseCode) {
     .eq('course_code', courseCode);
   const phase1SeedNumbers = [...new Set(phase1Seeds?.map(l => l.seed_number) || [])];
 
-  // Get distinct seeds with practice phrases (Phase 3 complete)
-  const { data: phase3Seeds } = await supabase
+  // Phase 3: A seed is complete ONLY if ALL its new LEGOs have practice phrases
+  // Get all new LEGOs grouped by seed
+  const { data: newLegos } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index')
+    .eq('course_code', courseCode)
+    .eq('is_new', true);
+
+  // Get all practice phrases by seed/lego
+  const { data: practicePhraseData } = await supabase
     .from('course_practice_phrases')
-    .select('seed_number')
+    .select('seed_number, lego_index')
     .eq('course_code', courseCode);
-  const phase3SeedNumbers = [...new Set(phase3Seeds?.map(p => p.seed_number) || [])];
+
+  // Build set of LEGOs that have practice phrases
+  const legosWithPhrases = new Set(
+    (practicePhraseData || []).map(p => `${p.seed_number}:${p.lego_index}`)
+  );
+
+  // Group new LEGOs by seed and check if ALL have practice phrases
+  const seedNewLegoCount = {};  // seed_number -> count of new LEGOs
+  const seedCompleteLegos = {}; // seed_number -> count of new LEGOs with phrases
+
+  for (const lego of (newLegos || [])) {
+    const seedNum = lego.seed_number;
+    seedNewLegoCount[seedNum] = (seedNewLegoCount[seedNum] || 0) + 1;
+    if (legosWithPhrases.has(`${seedNum}:${lego.lego_index}`)) {
+      seedCompleteLegos[seedNum] = (seedCompleteLegos[seedNum] || 0) + 1;
+    }
+  }
+
+  // A seed is complete when all its new LEGOs have practice phrases
+  const phase3SeedNumbers = Object.keys(seedNewLegoCount)
+    .filter(seedNum => seedNewLegoCount[seedNum] === (seedCompleteLegos[seedNum] || 0))
+    .map(Number)
+    .sort((a, b) => a - b);
+
+  // Also track seeds with any practice phrases (for backward compat / debugging)
+  const seedsWithAnyPhrases = [...new Set((practicePhraseData || []).map(p => p.seed_number))];
 
   return {
     courseCode,
@@ -657,7 +690,9 @@ async function getCourseProgress(courseCode) {
       complete: phase3SeedNumbers.length,
       target: targetSeedCount,
       percent: Math.round((phase3SeedNumbers.length / targetSeedCount) * 100),
-      seeds: phase3SeedNumbers.sort((a, b) => a - b)
+      seeds: phase3SeedNumbers.sort((a, b) => a - b),
+      // Additional info: seeds with any phrases (may not be fully complete)
+      seedsStarted: seedsWithAnyPhrases.length
     }
   };
 }
@@ -947,7 +982,7 @@ async function getMissingLegosFromDatabase(courseCode, startSeed, endSeed) {
   // Get all new LEGOs in the seed range
   const { data: legos, error: legoError } = await supabase
     .from('course_legos')
-    .select('seed_number, lego_index, known_text, target_text, lego_type, is_new')
+    .select('seed_number, lego_index, known_text, target_text, type, is_new')
     .eq('course_code', courseCode)
     .eq('is_new', true)
     .gte('seed_number', startSeed)
@@ -989,7 +1024,7 @@ async function getMissingLegosFromDatabase(courseCode, startSeed, endSeed) {
       seed: formatSeedId(l.seed_number),
       target: l.target_text,
       known: l.known_text,
-      type: l.lego_type || 'M'
+      type: l.type || 'M'
     }));
 
   logger.info(`[Phase 3 Resume] ${missingLegos.length} LEGOs need practice phrases`);
