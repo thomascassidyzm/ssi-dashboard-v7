@@ -4010,23 +4010,41 @@ app.post('/api/courses/generate', async (req, res) => {
   let existingSeeds = [];
   let missingSeeds = [];
 
-  // Check what seeds already exist in phase1_batches
-  if (await fs.pathExists(phase1BatchesDir)) {
+  // Check what seeds already exist - DATABASE IS SOURCE OF TRUTH
+  try {
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
+    if (isInitialized()) {
+      const { data: dbSeeds, error } = await supabase
+        .from('course_seeds')
+        .select('seed_id')
+        .eq('course_code', courseCode);
+
+      if (!error && dbSeeds) {
+        existingSeeds = dbSeeds.map(s => s.seed_id);
+        console.log(`   → Database: Found ${existingSeeds.length} seeds in course_seeds`);
+      } else {
+        console.warn(`   → Database: Error fetching seeds:`, error?.message);
+      }
+    }
+  } catch (dbErr) {
+    console.warn(`   → Database: Error:`, dbErr.message);
+  }
+
+  // Fallback to batch files if database returned nothing
+  if (existingSeeds.length === 0 && await fs.pathExists(phase1BatchesDir)) {
+    console.log(`   → Fallback: Checking batch files...`);
     const batchFiles = await fs.readdir(phase1BatchesDir);
     const jsonFiles = batchFiles.filter(f => f.endsWith('.json'));
 
     for (const file of jsonFiles) {
       try {
         const batchData = await fs.readJSON(path.join(phase1BatchesDir, file));
-        // Handle array format (compact batch files)
         if (Array.isArray(batchData)) {
           for (const seed of batchData) {
             if (seed.s) existingSeeds.push(seed.s);
             else if (seed.seed_id) existingSeeds.push(seed.seed_id);
           }
-        }
-        // Handle object format with seeds array
-        else if (batchData.seeds && Array.isArray(batchData.seeds)) {
+        } else if (batchData.seeds && Array.isArray(batchData.seeds)) {
           for (const seed of batchData.seeds) {
             if (seed.s) existingSeeds.push(seed.s);
             else if (seed.seed_id) existingSeeds.push(seed.seed_id);
