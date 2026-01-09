@@ -40,10 +40,25 @@
       </div>
     </div>
 
+    <!-- Course Size Indicator -->
+    <div v-if="targetSeeds" class="course-size-bar">
+      <div class="size-info">
+        <span class="size-label">{{ courseModeName }}</span>
+        <span class="size-pattern" v-if="pattern">{{ pattern.browsers }}x{{ pattern.agents_per_browser }}x{{ pattern.seeds_per_agent }}</span>
+      </div>
+      <div class="size-progress">
+        <div class="size-progress-bar" :style="{ width: seedProgressPercent + '%' }"></div>
+      </div>
+      <div class="size-stats">
+        <span>{{ stats.seedsComplete || 0 }} / {{ targetSeeds }} seeds</span>
+        <span class="size-percent">{{ seedProgressPercent }}%</span>
+      </div>
+    </div>
+
     <!-- Stats Cards -->
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-value">{{ stats.seedsComplete || 0 }}</div>
+        <div class="stat-value">{{ stats.seedsComplete || 0 }}<span class="stat-target" v-if="targetSeeds">/{{ targetSeeds }}</span></div>
         <div class="stat-label">Seeds</div>
       </div>
       <div class="stat-card">
@@ -74,14 +89,18 @@
           <span class="phase-status-badge">{{ phases[phase]?.status || 'pending' }}</span>
         </div>
         <div class="phase-detail" v-if="phases[phase]">
-          <template v-if="phase === 'phase1'">
-            {{ phases[phase].seedsProcessed || 0 }} seeds, {{ phases[phase].legosExtracted || 0 }} LEGOs
+          <!-- Use detail string from API if available, otherwise fallback -->
+          <template v-if="phases[phase].detail">
+            {{ phases[phase].detail }}
+          </template>
+          <template v-else-if="phase === 'phase1'">
+            {{ phases[phase].seedsComplete || 0 }}/{{ phases[phase].seedsTarget || targetSeeds }} seeds, {{ phases[phase].legosExtracted || 0 }} LEGOs
           </template>
           <template v-else-if="phase === 'phase2'">
             {{ phases[phase].legosResolved || 0 }} LEGOs resolved
           </template>
           <template v-else-if="phase === 'phase3'">
-            {{ phases[phase].basketsGenerated || 0 }} practice phrases
+            {{ phases[phase].seedsComplete || 0 }}/{{ phases[phase].seedsTarget || targetSeeds }} seeds, {{ phases[phase].basketsGenerated || 0 }} phrases
           </template>
           <template v-else-if="phase === 'audio'">
             {{ phases[phase].samplesGenerated || 0 }} audio samples
@@ -169,17 +188,35 @@ const phases = ref({})
 const queue = ref(null)
 const events = ref([])
 const isPolling = ref(false)
+const targetSeeds = ref(null)
+const courseMode = ref('')
+const pattern = ref(null)
 let pollTimer = null
 let lastStats = null
 let consecutiveErrors = 0
 let lastQueue = null
 
+// Computed for course size display
+const courseModeName = computed(() => {
+  const modeNames = {
+    'quick_test': 'Quick Test (10 seeds)',
+    'mvp_course': 'MVP Course (260 seeds)',
+    'full_course': 'Full Course (668 seeds)'
+  }
+  return modeNames[courseMode.value] || courseMode.value
+})
+
+const seedProgressPercent = computed(() => {
+  if (!targetSeeds.value || !stats.value.seedsComplete) return 0
+  return Math.round((stats.value.seedsComplete / targetSeeds.value) * 100)
+})
+
 // Constants
 const phaseOrder = ['phase1', 'phase2', 'phase3', 'audio', 'manifest']
 const phaseLabels = {
-  phase1: 'Phase 1: Translation',
-  phase2: 'Phase 2: Conflicts',
-  phase3: 'Phase 3: Practice',
+  phase1: 'Phase 1: Translation & LEGO Extraction',
+  phase2: 'Phase 2: Conflict Resolution',
+  phase3: 'Phase 3: Basket Generation',
   audio: 'Audio',
   manifest: 'Manifest'
 }
@@ -207,8 +244,11 @@ const knownLang = computed(() => {
 const statusLabel = computed(() => {
   const labels = {
     idle: 'Idle',
+    phase1_running: 'Phase 1 Running',
     phase1_complete: 'Phase 1 Complete',
+    phase2_running: 'Phase 2 Running',
     phase2_complete: 'Phase 2 Complete',
+    phase3_running: 'Phase 3 Running',
     phase3_complete: 'Phase 3 Complete',
     running: 'Running',
     complete: 'Complete',
@@ -223,6 +263,7 @@ function getPhaseClass(phase) {
   return {
     pending: status === 'pending',
     running: status === 'running',
+    partial: status === 'partial',
     complete: status === 'complete',
     failed: status === 'failed'
   }
@@ -265,6 +306,9 @@ async function pollProgress() {
     stats.value = data.stats || {}
     phases.value = data.phases || {}
     queue.value = data.queue || null
+    targetSeeds.value = data.targetSeeds || null
+    courseMode.value = data.courseMode || ''
+    pattern.value = data.pattern || null
     consecutiveErrors = 0 // Reset error count on success
 
     // Check for queue changes and log them
@@ -450,7 +494,10 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 .status-indicator.idle .status-dot { background: var(--text-muted); }
-.status-indicator.running .status-dot { background: var(--accent); animation: pulse 1.5s ease-in-out infinite; }
+.status-indicator.running .status-dot,
+.status-indicator.phase1_running .status-dot,
+.status-indicator.phase2_running .status-dot,
+.status-indicator.phase3_running .status-dot { background: var(--accent); animation: pulse 1.5s ease-in-out infinite; }
 .status-indicator.phase1_complete .status-dot,
 .status-indicator.phase2_complete .status-dot,
 .status-indicator.phase3_complete .status-dot,
@@ -469,6 +516,69 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Course Size Indicator */
+.course-size-bar {
+  background: var(--elevated);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+}
+
+.size-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.size-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.size-pattern {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--void);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.size-progress {
+  height: 6px;
+  background: var(--void);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.size-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.size-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.size-percent {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.stat-target {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* Pipeline Bar */
@@ -496,6 +606,11 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
+.phase-segment.partial {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(234, 179, 8, 0.1));
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
 .phase-segment.running {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
   border: 1px solid rgba(59, 130, 246, 0.3);
@@ -510,6 +625,7 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 .phase-segment.complete .phase-label { color: var(--accent); }
+.phase-segment.partial .phase-label { color: var(--warning); }
 .phase-segment.running .phase-label { color: var(--info); }
 
 .phase-count {
@@ -567,6 +683,7 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 }
 
 .phase-card.complete { border-left-color: var(--success); }
+.phase-card.partial { border-left-color: var(--warning); }
 .phase-card.running { border-left-color: var(--info); }
 .phase-card.failed { border-left-color: var(--error); }
 
@@ -595,6 +712,11 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .phase-card.complete .phase-status-badge {
   background: rgba(34, 197, 94, 0.15);
   color: var(--success);
+}
+
+.phase-card.partial .phase-status-badge {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--warning);
 }
 
 .phase-detail {

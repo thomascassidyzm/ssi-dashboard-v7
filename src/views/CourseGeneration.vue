@@ -464,11 +464,11 @@ async function loadModes() {
     }
   } catch (err) {
     console.error('Failed to load modes:', err)
-    // Fallback modes if API fails
+    // Fallback modes if API fails (must match course-modes.json)
     generationModes.value = [
-      { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Fast validation with maximum parallelization', seedCount: 10, patternNums: '5 × 2 × 1' },
-      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Big 10 language pairs - production MVP', seedCount: 250, patternNums: '5 × 5 × 10' },
-      { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete legacy-scale course', seedCount: 668, patternNums: '9 × 5 × 15' }
+      { id: 'quick_test', name: 'Quick Test', icon: '⚡', description: 'Fast validation - fewer browsers, more agents', seedCount: 10, patternNums: '2 × 5 × 1' },
+      { id: 'mvp_course', name: 'MVP Course', icon: '🎯', description: 'Big 10 language pairs - 10x13x2 pattern', seedCount: 260, patternNums: '10 × 13 × 2' },
+      { id: 'full_course', name: 'Full Course', icon: '🚀', description: 'Complete legacy-scale course - extends MVP', seedCount: 668, patternNums: '17 × 13 × 2' }
     ]
   } finally {
     modesLoading.value = false

@@ -3160,49 +3160,115 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
     const dbProgress = await courseDataService.getCourseProgress(courseCode);
 
     if (dbProgress) {
-      // Database has data - return it
+      // Load course modes to get target seed counts
+      const courseModes = require('../config/course-modes.json');
+
+      // Use target from database if explicitly set (not the default 668)
+      // Otherwise infer from current seed count
+      const currentSeeds = dbProgress.seeds || 0;
+      // Only trust explicit target if it differs from default (668)
+      let targetSeeds = dbProgress.targetSeedCount !== 668 ? dbProgress.targetSeedCount : null;
+      let courseMode = 'full_course';
+
+      // If no explicit target, infer from current seeds
+      if (!targetSeeds || targetSeeds === 668) {
+        if (currentSeeds <= 10) {
+          targetSeeds = 10;
+          courseMode = 'quick_test';
+        } else if (currentSeeds <= 260) {
+          targetSeeds = 260;
+          courseMode = 'mvp_course';
+        } else {
+          targetSeeds = 668;
+          courseMode = 'full_course';
+        }
+      } else {
+        // Explicit target - infer mode from it
+        if (targetSeeds <= 10) {
+          courseMode = 'quick_test';
+        } else if (targetSeeds <= 260) {
+          courseMode = 'mvp_course';
+        }
+      }
+
+      // SEED-BASED completion for all phases
+      // Phase 1: seeds with LEGOs extracted
+      const phase1SeedsComplete = dbProgress.phase1?.complete || 0;
+      // Phase 2: runs once after Phase 1, affects all LEGOs
+      const phase2Complete = dbProgress.newLegos !== dbProgress.legos;
+      // Phase 3: seeds with practice phrases generated
+      const phase3SeedsComplete = dbProgress.phase3?.complete || 0;
+
+      // Determine phase statuses based on SEED completion
+      const getPhaseStatus = (seedsComplete, target) => {
+        if (seedsComplete >= target) return 'complete';
+        if (seedsComplete > 0) return 'partial';
+        return 'pending';
+      };
+
       const phases = {
         phase1: {
-          status: dbProgress.seeds > 0 ? 'complete' : 'pending',
-          seedsProcessed: dbProgress.seeds,
-          legosExtracted: dbProgress.legos
+          status: getPhaseStatus(phase1SeedsComplete, targetSeeds),
+          seedsComplete: phase1SeedsComplete,
+          seedsTarget: targetSeeds,
+          legosExtracted: dbProgress.legos,
+          detail: `${phase1SeedsComplete}/${targetSeeds} seeds, ${dbProgress.legos} LEGOs`
         },
         phase2: {
-          status: dbProgress.legos > 0 ? 'complete' : 'pending',
+          // Phase 2 is batch - runs once on all LEGOs after Phase 1 complete
+          status: phase1SeedsComplete >= targetSeeds ?
+                  (phase2Complete ? 'complete' : 'pending') : 'pending',
+          seedsComplete: phase2Complete ? phase1SeedsComplete : 0,
+          seedsTarget: targetSeeds,
           legosResolved: dbProgress.legos,
-          newLegos: dbProgress.newLegos
+          newLegos: dbProgress.newLegos,
+          detail: `${dbProgress.legos} LEGOs resolved`
         },
         phase3: {
-          status: dbProgress.practicePhrases > 0 ? 'complete' : 'pending',
-          basketsGenerated: dbProgress.practicePhrases
+          status: getPhaseStatus(phase3SeedsComplete, targetSeeds),
+          seedsComplete: phase3SeedsComplete,
+          seedsTarget: targetSeeds,
+          basketsGenerated: dbProgress.practicePhrases,
+          detail: `${phase3SeedsComplete}/${targetSeeds} seeds, ${dbProgress.practicePhrases} phrases`
         },
         audio: {
-          status: 'pending', // TODO: query course_audio count
-          samplesGenerated: 0
+          status: 'pending',
+          samplesGenerated: 0,
+          detail: '0 audio samples'
         },
         manifest: {
-          status: 'pending'
+          status: 'pending',
+          detail: 'pending'
         }
       };
 
-      // Determine overall status
+      // Determine overall status based on SEED completion
       let overallStatus = 'idle';
-      if (dbProgress.seeds === 0) {
+      if (phase1SeedsComplete === 0) {
         overallStatus = 'idle';
-      } else if (dbProgress.practicePhrases > 0) {
+      } else if (phases.phase3.status === 'complete') {
         overallStatus = 'phase3_complete';
-      } else if (dbProgress.legos > 0) {
+      } else if (phases.phase3.status === 'partial') {
+        overallStatus = 'phase3_running';
+      } else if (phases.phase2.status === 'complete') {
         overallStatus = 'phase2_complete';
-      } else if (dbProgress.seeds > 0) {
+      } else if (phases.phase1.status === 'complete') {
         overallStatus = 'phase1_complete';
+      } else if (phases.phase1.status === 'partial') {
+        overallStatus = 'phase1_running';
       }
 
       return res.json({
         courseCode,
         overallStatus,
+        targetSeeds,
+        courseMode,
+        pattern: courseModes.modes[courseMode]?.pattern || null,
         stats: {
-          seedsTotal: dbProgress.seeds,
-          seedsComplete: dbProgress.seeds,
+          seedsTotal: targetSeeds,
+          seedsComplete: phase1SeedsComplete,
+          phase1Seeds: phase1SeedsComplete,
+          phase3Seeds: phase3SeedsComplete,
           legosGenerated: dbProgress.legos,
           newLegos: dbProgress.newLegos,
           basketsGenerated: dbProgress.practicePhrases
