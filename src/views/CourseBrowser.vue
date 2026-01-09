@@ -95,7 +95,7 @@
             <span class="text-slate-600 mx-2">·</span>
             <span class="text-emerald-400">{{ course.lego_pairs || 0 }}</span> LEGOs
             <span class="text-slate-600 mx-2">·</span>
-            <span class="text-emerald-400">{{ course.lego_baskets || 0 }}</span> phrases
+            <span class="text-emerald-400">{{ course.phrases || 0 }}</span> phrases
           </div>
         </router-link>
       </div>

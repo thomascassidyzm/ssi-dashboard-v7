@@ -393,9 +393,9 @@ export default {
         }
 
         // Transform API response to expected format
-        // Stats: { seeds, legos, baskets, introductions, audio }
+        // Stats: { seeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
-          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0, introductions: 0, audio: 0 }
+          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
           return {
             course_code: course.code,
             source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
@@ -407,6 +407,7 @@ export default {
             seed_pairs: stats.seeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
+            phrases: stats.phrases,
             audio_files: stats.audio,
             amino_acids: {
               introductions: stats.introductions
