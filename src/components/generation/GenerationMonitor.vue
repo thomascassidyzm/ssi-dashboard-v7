@@ -11,7 +11,7 @@
     <!-- Header -->
     <div class="monitor-header">
       <div class="header-left">
-        <h2 class="monitor-title">Course Pipeline</h2>
+        <h2 class="monitor-title">Course Builder</h2>
         <span class="course-badge">{{ courseCode || 'No Course' }}</span>
       </div>
       <div class="header-right">
@@ -101,9 +101,6 @@
           </template>
           <template v-else-if="phase === 'phase3'">
             {{ phases[phase].seedsComplete || 0 }}/{{ phases[phase].seedsTarget || targetSeeds }} seeds, {{ phases[phase].basketsGenerated || 0 }} phrases
-          </template>
-          <template v-else-if="phase === 'audio'">
-            {{ phases[phase].samplesGenerated || 0 }} audio samples
           </template>
           <template v-else>
             {{ phases[phase].status }}
@@ -212,20 +209,16 @@ const seedProgressPercent = computed(() => {
 })
 
 // Constants
-const phaseOrder = ['phase1', 'phase2', 'phase3', 'audio', 'manifest']
+const phaseOrder = ['phase1', 'phase2', 'phase3']
 const phaseLabels = {
   phase1: 'Phase 1: Translation & LEGO Extraction',
   phase2: 'Phase 2: Conflict Resolution',
-  phase3: 'Phase 3: Basket Generation',
-  audio: 'Audio',
-  manifest: 'Manifest'
+  phase3: 'Phase 3: Basket Generation'
 }
 const phaseIcons = {
   phase1: '🌱',
   phase2: '🔀',
-  phase3: '📦',
-  audio: '🔊',
-  manifest: '📋'
+  phase3: '📦'
 }
 
 // Computed

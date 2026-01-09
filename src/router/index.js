@@ -89,10 +89,10 @@ const routes = [
   },
   {
     path: '/course/:courseCode',
-    name: 'CourseStatus',
+    name: 'CourseBuilder',
     component: () => import('../components/generation/GenerationMonitor.vue'),
     props: true,
-    meta: { title: 'Course Status' }
+    meta: { title: 'Course Builder' }
   },
   {
     // Legacy route - redirect to new unified course page
@@ -344,7 +344,7 @@ const routes = [
     name: 'ProductionDashboard',
     component: MissionControl,
     props: true,
-    meta: { title: 'Mission Control - Production Suite' }
+    meta: { title: 'Production Suite' }
   },
   {
     path: '/production/:courseCode/script',

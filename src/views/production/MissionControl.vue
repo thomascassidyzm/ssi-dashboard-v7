@@ -4,7 +4,7 @@
     <header class="mission-control-header">
       <div class="header-content">
         <router-link to="/" class="back-link">← Back to Dashboard</router-link>
-        <h1 class="page-title">Mission Control</h1>
+        <h1 class="page-title">Production Suite</h1>
         <div class="course-selector">
           <label for="course-select">Course:</label>
           <select
