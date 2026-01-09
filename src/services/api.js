@@ -2,6 +2,9 @@ import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 
+// Build version for cache busting (set by Vite at build time)
+export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
+
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 function getApiBaseUrl() {
   // Check localStorage for user-selected environment
@@ -46,6 +49,14 @@ export const apiClient = api
 
 // Export cache utilities for direct use
 export { clearCourseCache, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
+
+// Add request interceptor for cache busting
+api.interceptors.request.use(config => {
+  // Add build version to all requests for cache busting
+  config.params = config.params || {}
+  config.params._v = BUILD_VERSION
+  return config
+})
 
 // Add interceptor to suppress 404 errors for non-critical endpoints
 api.interceptors.response.use(

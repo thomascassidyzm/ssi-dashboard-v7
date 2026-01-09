@@ -52,15 +52,14 @@
 
       <!-- Courses Grid -->
       <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <router-link
+        <div
           v-for="course in filteredCourses"
           :key="course.course_code"
-          :to="`/course/${course.course_code}`"
           :class="[
-            'block bg-slate-800 rounded-lg p-5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer',
+            'bg-slate-800 rounded-lg p-5 transition-all',
             highlightedCourses.has(course.course_code)
               ? 'border-2 border-emerald-500 shadow-lg shadow-emerald-500/20'
-              : 'border border-slate-700 hover:border-emerald-500/50'
+              : 'border border-slate-700'
           ]"
         >
           <!-- Header -->
@@ -90,14 +89,49 @@
           </div>
 
           <!-- Compact Stats -->
-          <div class="text-sm text-slate-300 font-mono">
+          <div class="text-sm text-slate-300 font-mono mb-4">
             <span class="text-emerald-400">{{ course.seed_pairs || 0 }}</span> seeds
             <span class="text-slate-600 mx-2">·</span>
             <span class="text-emerald-400">{{ course.lego_pairs || 0 }}</span> LEGOs
             <span class="text-slate-600 mx-2">·</span>
             <span class="text-emerald-400">{{ course.phrases || 0 }}</span> phrases
           </div>
-        </router-link>
+
+          <!-- Phase Navigation -->
+          <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
+            <!-- Content Generation Phases (0-3) -->
+            <div class="flex items-center gap-1">
+              <span class="text-xs text-slate-500 mr-1">Build</span>
+              <router-link
+                v-for="phase in [0, 1, 2, 3]"
+                :key="`build-${phase}`"
+                :to="`/course/${course.course_code}`"
+                class="w-7 h-7 flex items-center justify-center rounded text-xs font-mono font-medium transition-all
+                       bg-slate-700 text-slate-400 hover:bg-emerald-600 hover:text-white hover:scale-110"
+                :title="`Phase ${phase}: ${getPhaseLabel(phase)}`"
+              >
+                {{ phase }}
+              </router-link>
+            </div>
+
+            <div class="w-px h-5 bg-slate-600 mx-1"></div>
+
+            <!-- Production Phases (8-9) -->
+            <div class="flex items-center gap-1">
+              <span class="text-xs text-slate-500 mr-1">Prod</span>
+              <router-link
+                v-for="phase in [8, 9]"
+                :key="`prod-${phase}`"
+                :to="`/production/${course.course_code}`"
+                class="w-7 h-7 flex items-center justify-center rounded text-xs font-mono font-medium transition-all
+                       bg-slate-700 text-slate-400 hover:bg-amber-600 hover:text-white hover:scale-110"
+                :title="`Phase ${phase}: ${getPhaseLabel(phase)}`"
+              >
+                {{ phase }}
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -211,6 +245,18 @@ function getStatusClass(status) {
   } else {
     return 'bg-slate-600 text-slate-300'
   }
+}
+
+function getPhaseLabel(phase) {
+  const labels = {
+    0: 'Course Setup',
+    1: 'Translation + LEGO Extraction',
+    2: 'Conflict Resolution',
+    3: 'Basket Generation',
+    8: 'Audio Generation',
+    9: 'Manifest Compilation'
+  }
+  return labels[phase] || `Phase ${phase}`
 }
 
 </script>

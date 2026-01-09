@@ -103,33 +103,6 @@
             </div>
           </router-link>
 
-          <!-- Production Suite Card -->
-          <router-link to="/production/courses" class="action-card card-production">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
-                  </svg>
-                </div>
-                <div class="card-badge production">
-                  <span class="badge-label">audio & QA</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Production Suite</h2>
-                <p class="card-description">Audio generation, quality review, and manifest compilation</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">Open Suite</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
             <div class="card-glow"></div>
