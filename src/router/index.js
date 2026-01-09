@@ -88,11 +88,16 @@ const routes = [
     component: CourseGeneration
   },
   {
-    path: '/generate/:courseCode/monitor',
-    name: 'GenerationMonitor',
+    path: '/course/:courseCode',
+    name: 'CourseStatus',
     component: () => import('../components/generation/GenerationMonitor.vue'),
     props: true,
-    meta: { title: 'Generation Monitor' }
+    meta: { title: 'Course Status' }
+  },
+  {
+    // Legacy route - redirect to new unified course page
+    path: '/generate/:courseCode/monitor',
+    redirect: to => `/course/${to.params.courseCode}`
   },
   // Agent Swimlane Monitor - Mission Control style real-time agent tracking
   {
