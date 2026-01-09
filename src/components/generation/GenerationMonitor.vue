@@ -25,6 +25,95 @@
       </div>
     </div>
 
+    <!-- Action Controls -->
+    <div class="action-bar">
+      <!-- Refresh Button -->
+      <button class="action-btn secondary" @click="pollProgress" :disabled="isPolling">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" :class="{ spinning: isPolling }">
+          <path d="M23 4v6h-6M1 20v-6h6"/>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+        </svg>
+        Refresh
+      </button>
+
+      <!-- Stop Job (when running) -->
+      <button
+        v-if="isAnyPhaseRunning"
+        class="action-btn danger"
+        @click="stopJob"
+        :disabled="isStopping"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <rect x="6" y="6" width="12" height="12" rx="2"/>
+        </svg>
+        {{ isStopping ? 'Stopping...' : 'Stop Job' }}
+      </button>
+
+      <!-- Resume Phase 1 (when partial) -->
+      <button
+        v-if="phases.phase1?.status === 'partial' && !isAnyPhaseRunning"
+        class="action-btn primary"
+        @click="resumePhase('phase1')"
+        :disabled="isStarting"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+        Resume Phase 1 ({{ phases.phase1?.seedsTarget - phases.phase1?.seedsComplete }} seeds)
+      </button>
+
+      <!-- Start Phase 2 (when Phase 1 complete and Phase 2 pending) -->
+      <button
+        v-if="phases.phase1?.status === 'complete' && phases.phase2?.status === 'pending' && !isAnyPhaseRunning"
+        class="action-btn primary"
+        @click="startPhase('phase2')"
+        :disabled="isStarting"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+        Start Phase 2
+      </button>
+
+      <!-- Resume Phase 3 (when partial) -->
+      <button
+        v-if="phases.phase3?.status === 'partial' && !isAnyPhaseRunning"
+        class="action-btn primary"
+        @click="resumePhase('phase3')"
+        :disabled="isStarting"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+        Resume Phase 3 ({{ phases.phase3?.seedsTarget - phases.phase3?.seedsComplete }} seeds)
+      </button>
+
+      <!-- Start Phase 3 (when Phase 2 complete and Phase 3 pending) -->
+      <button
+        v-if="phases.phase2?.status === 'complete' && phases.phase3?.status === 'pending' && !isAnyPhaseRunning"
+        class="action-btn primary"
+        @click="startPhase('phase3')"
+        :disabled="isStarting"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+        Start Phase 3
+      </button>
+
+      <!-- Configure Course (link to generation wizard) -->
+      <router-link
+        :to="`/generate?target=${targetLang}&known=${knownLang}`"
+        class="action-btn secondary"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Configure
+      </router-link>
+    </div>
+
     <!-- Pipeline Progress Bar -->
     <div class="pipeline-bar">
       <div
@@ -188,10 +277,20 @@ const isPolling = ref(false)
 const targetSeeds = ref(null)
 const courseMode = ref('')
 const pattern = ref(null)
+const isStopping = ref(false)
+const isStarting = ref(false)
 let pollTimer = null
 let lastStats = null
 let consecutiveErrors = 0
 let lastQueue = null
+
+// Computed - is any phase running
+const isAnyPhaseRunning = computed(() => {
+  return phases.value.phase1?.status === 'running' ||
+         phases.value.phase2?.status === 'running' ||
+         phases.value.phase3?.status === 'running' ||
+         overallStatus.value.includes('running')
+})
 
 // Computed for course size display
 const courseModeName = computed(() => {
@@ -367,6 +466,126 @@ function stopPolling() {
   }
 }
 
+/**
+ * Stop a running job
+ */
+async function stopJob() {
+  if (isStopping.value) return
+
+  isStopping.value = true
+  addEvent('warning', 'Stopping job...')
+
+  try {
+    // Try to cancel on Phase 1 server
+    await fetch(`${props.apiBaseUrl}/api/phase1/${props.courseCode}/cancel`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    // Also cancel on orchestrator
+    await fetch(`${props.apiBaseUrl}/api/cancel/${props.courseCode}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    addEvent('success', 'Job cancelled')
+
+    // Refresh status
+    await pollProgress()
+  } catch (error) {
+    addEvent('error', `Failed to stop job: ${error.message}`)
+  } finally {
+    isStopping.value = false
+  }
+}
+
+/**
+ * Start a specific phase
+ */
+async function startPhase(phase) {
+  if (isStarting.value) return
+
+  isStarting.value = true
+  const phaseNum = phase.replace('phase', '')
+  addEvent('info', `Starting Phase ${phaseNum}...`)
+
+  try {
+    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        courseCode: props.courseCode,
+        target: targetLang.value,
+        known: knownLang.value,
+        mode: courseMode.value || 'mvp_course',
+        phaseSelection: phase,
+        spawnerMode: 'cli'
+      })
+    })
+
+    if (!response.ok) {
+      const data = await response.json()
+      throw new Error(data.error || `HTTP ${response.status}`)
+    }
+
+    addEvent('success', `Phase ${phaseNum} started`)
+
+    // Refresh status
+    await pollProgress()
+  } catch (error) {
+    addEvent('error', `Failed to start Phase ${phaseNum}: ${error.message}`)
+  } finally {
+    isStarting.value = false
+  }
+}
+
+/**
+ * Resume a partial phase (complete missing seeds)
+ */
+async function resumePhase(phase) {
+  if (isStarting.value) return
+
+  isStarting.value = true
+  const phaseNum = phase.replace('phase', '')
+  addEvent('info', `Resuming Phase ${phaseNum} (completing missing seeds)...`)
+
+  try {
+    const response = await fetch(`${props.apiBaseUrl}/api/courses/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        courseCode: props.courseCode,
+        target: targetLang.value,
+        known: knownLang.value,
+        mode: courseMode.value || 'mvp_course',
+        phaseSelection: phase,
+        spawnerMode: 'cli',
+        resumeMode: true  // Signal to only process missing seeds
+      })
+    })
+
+    if (!response.ok) {
+      const data = await response.json()
+      throw new Error(data.error || `HTTP ${response.status}`)
+    }
+
+    addEvent('success', `Phase ${phaseNum} resumed`)
+
+    // Refresh status
+    await pollProgress()
+  } catch (error) {
+    addEvent('error', `Failed to resume Phase ${phaseNum}: ${error.message}`)
+  } finally {
+    isStarting.value = false
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   startPolling()
@@ -509,6 +728,80 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
+}
+
+/* Action Bar */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--void);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn.primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.action-btn.primary:hover:not(:disabled) {
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+  background: var(--elevated);
+  color: var(--text-dim);
+  border-color: var(--border-light);
+}
+
+.action-btn.secondary:hover:not(:disabled) {
+  background: var(--border);
+  color: var(--text);
+}
+
+.action-btn.danger {
+  background: #dc2626;
+  color: white;
+  border-color: #dc2626;
+}
+
+.action-btn.danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+.action-btn svg.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 @keyframes pulse {
