@@ -366,11 +366,31 @@ export default {
       return response.data
     },
 
+    // Cache for course list to prevent redundant API calls
+    _listCache: null,
+    _listCacheTime: 0,
+    _listCacheTTL: 5000, // 5 seconds
+    _listPendingPromise: null,
+
     async list() {
+      // Return cached data if fresh (prevents redundant calls from multiple components)
+      const now = Date.now()
+      if (this._listCache && (now - this._listCacheTime) < this._listCacheTTL) {
+        console.log('[API] Using cached course list')
+        return this._listCache
+      }
+
+      // Dedupe concurrent requests
+      if (this._listPendingPromise) {
+        console.log('[API] Waiting for pending course list request')
+        return this._listPendingPromise
+      }
+
       // Use API endpoint (proxies to S3, avoids CORS issues)
       console.log('[API] Loading courses from /api/courses');
 
-      try {
+      this._listPendingPromise = (async () => {
+        try {
         const response = await api.get('/api/courses', { params: { status: 'true' } });
         const data = response.data;
 
@@ -424,11 +444,19 @@ export default {
           }
         });
 
-        return { courses };
+        const result = { courses };
+        this._listCache = result
+        this._listCacheTime = Date.now()
+        return result
       } catch (err) {
         console.error('[API] Failed to load courses from API:', err);
         throw err;
+      } finally {
+        this._listPendingPromise = null
       }
+      })()
+
+      return this._listPendingPromise
     },
 
     async get(courseCode) {
