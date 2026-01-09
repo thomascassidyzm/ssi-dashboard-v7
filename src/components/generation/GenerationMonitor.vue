@@ -27,6 +27,40 @@
 
     <!-- Action Controls -->
     <div class="action-bar">
+      <!-- Spawner Mode Selector -->
+      <div class="spawner-mode-selector">
+        <label class="mode-label">Agent Mode:</label>
+        <div class="mode-toggle">
+          <button
+            class="mode-btn"
+            :class="{ active: spawnerMode === 'cli' }"
+            @click="spawnerMode = 'cli'"
+            title="iTerm2 + Claude CLI (recommended for parallel work)"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <polyline points="4 17 10 11 4 5"/>
+              <line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+            CLI
+          </button>
+          <button
+            class="mode-btn"
+            :class="{ active: spawnerMode === 'browser' }"
+            @click="spawnerMode = 'browser'"
+            title="Safari + Claude Code on Web"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            Safari
+          </button>
+        </div>
+      </div>
+
+      <div class="action-divider"></div>
+
       <!-- Refresh Button -->
       <button class="action-btn secondary" @click="pollProgress" :disabled="isPolling">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" :class="{ spinning: isPolling }">
@@ -279,6 +313,7 @@ const courseMode = ref('')
 const pattern = ref(null)
 const isStopping = ref(false)
 const isStarting = ref(false)
+const spawnerMode = ref('cli')  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Safari)
 let pollTimer = null
 let lastStats = null
 let consecutiveErrors = 0
@@ -522,7 +557,7 @@ async function startPhase(phase) {
         known: knownLang.value,
         mode: courseMode.value || 'mvp_course',
         phaseSelection: phase,
-        spawnerMode: 'cli'
+        spawnerMode: spawnerMode.value
       })
     })
 
@@ -565,7 +600,7 @@ async function resumePhase(phase) {
         known: knownLang.value,
         mode: courseMode.value || 'mvp_course',
         phaseSelection: phase,
-        spawnerMode: 'cli',
+        spawnerMode: spawnerMode.value,
         resumeMode: true  // Signal to only process missing seeds
       })
     })
@@ -739,6 +774,60 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   background: var(--void);
   border-radius: 8px;
   border: 1px solid var(--border);
+}
+
+/* Spawner Mode Selector */
+.spawner-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mode-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.mode-toggle {
+  display: flex;
+  background: var(--void);
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid var(--border);
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.mode-btn:hover {
+  color: var(--text-dim);
+}
+
+.mode-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
+.action-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+  margin: 0 0.25rem;
 }
 
 .action-btn {

@@ -922,6 +922,102 @@ async function importBasket(courseCode, legoId, basketData) {
 }
 
 // =============================================================================
+// PHASE 3 RESUME OPERATIONS
+// =============================================================================
+
+/**
+ * Get LEGOs that are missing practice phrases (for Phase 3 intelligent resume)
+ * Queries database instead of local JSON files
+ *
+ * @param {string} courseCode - Course code (e.g., 'zho_for_eng')
+ * @param {number} startSeed - Start seed number (1-based)
+ * @param {number} endSeed - End seed number (1-based)
+ * @returns {Promise<Array>} Array of missing LEGOs in format:
+ *   { legoId: 'S0001L01', seed: 'S0001', target: '...', known: '...', type: 'M' }
+ */
+async function getMissingLegosFromDatabase(courseCode, startSeed, endSeed) {
+  if (!USE_DATABASE_READS) {
+    logger.warn('Database reads disabled - cannot query missing LEGOs');
+    return null; // Caller should fall back to JSON-based detection
+  }
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  logger.info(`[Phase 3 Resume] Querying database for missing LEGOs: ${courseCode} seeds ${startSeed}-${endSeed}`);
+
+  // Get all new LEGOs in the seed range
+  const { data: legos, error: legoError } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text, lego_type, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .gte('seed_number', startSeed)
+    .lte('seed_number', endSeed)
+    .order('seed_number')
+    .order('lego_index');
+
+  if (legoError) throw legoError;
+
+  if (!legos || legos.length === 0) {
+    logger.info(`[Phase 3 Resume] No new LEGOs found in range ${startSeed}-${endSeed}`);
+    return [];
+  }
+
+  logger.info(`[Phase 3 Resume] Found ${legos.length} new LEGOs in range`);
+
+  // Get all LEGOs that already have practice phrases
+  const { data: phrasedLegos, error: phraseError } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number, lego_index')
+    .eq('course_code', courseCode)
+    .gte('seed_number', startSeed)
+    .lte('seed_number', endSeed);
+
+  if (phraseError) throw phraseError;
+
+  // Build set of LEGOs that have phrases (using seed_number:lego_index as key)
+  const legoWithPhrases = new Set(
+    (phrasedLegos || []).map(p => `${p.seed_number}:${p.lego_index}`)
+  );
+
+  logger.info(`[Phase 3 Resume] ${legoWithPhrases.size} LEGOs already have practice phrases`);
+
+  // Filter to only LEGOs missing phrases
+  const missingLegos = legos
+    .filter(l => !legoWithPhrases.has(`${l.seed_number}:${l.lego_index}`))
+    .map(l => ({
+      legoId: formatLegoId(l.seed_number, l.lego_index),
+      seed: formatSeedId(l.seed_number),
+      target: l.target_text,
+      known: l.known_text,
+      type: l.lego_type || 'M'
+    }));
+
+  logger.info(`[Phase 3 Resume] ${missingLegos.length} LEGOs need practice phrases`);
+
+  return missingLegos;
+}
+
+/**
+ * Get seeds that have incomplete Phase 3 (some LEGOs missing practice phrases)
+ *
+ * @param {string} courseCode
+ * @param {number} startSeed
+ * @param {number} endSeed
+ * @returns {Promise<Array<number>>} Array of seed numbers with incomplete phrases
+ */
+async function getIncompleteSeedsFromDatabase(courseCode, startSeed, endSeed) {
+  if (!USE_DATABASE_READS) return null;
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  // Get missing LEGOs and extract unique seed numbers
+  const missingLegos = await getMissingLegosFromDatabase(courseCode, startSeed, endSeed);
+  if (missingLegos === null) return null;
+
+  const incompleteSeeds = [...new Set(missingLegos.map(l => parseSeedNumber(l.seed)))];
+  return incompleteSeeds.sort((a, b) => a - b);
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -965,6 +1061,10 @@ module.exports = {
   // Batch operations
   importSeedWithLegos,
   importBasket,
+
+  // Phase 3 resume operations
+  getMissingLegosFromDatabase,
+  getIncompleteSeedsFromDatabase,
 
   // Raw client (for advanced queries)
   supabase

@@ -2921,22 +2921,40 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     }
 
     // Check Phase 3: which seeds are missing baskets
+    // DATABASE-FIRST: Use Supabase to check for missing practice_phrases
     let seedsMissingBaskets = [];
-    if (basketsExists) {
-      const basketData = await fs.readJSON(basketsPath);
-      const basketKeys = Object.keys(basketData.baskets || {});
+    const startSeed = 1;
+    const endSeed = totalSeeds;
 
-      // Find seeds that have LEGOs but no baskets for those LEGOs
-      for (const seed of seeds) {
-        const seedLegos = (seed.legos || []).filter(l => l.new === true);
-        const hasAllBaskets = seedLegos.every(lego => basketKeys.includes(lego.id));
-        if (!hasAllBaskets && seedLegos.length > 0) {
-          seedsMissingBaskets.push(seed.seed_id);
-        }
+    try {
+      const dbIncompleteSeeds = await courseDataService.getIncompleteSeedsFromDatabase(courseCode, startSeed, endSeed);
+      if (dbIncompleteSeeds !== null) {
+        // Convert seed numbers to seed IDs (e.g., 1 → 'S0001')
+        seedsMissingBaskets = dbIncompleteSeeds.map(num => `S${String(num).padStart(4, '0')}`);
+        console.log(`[Orchestrator] Phase 3 check: ${seedsMissingBaskets.length} seeds missing baskets (from DATABASE)`);
+      } else {
+        throw new Error('Database reads disabled');
       }
-    } else {
-      // No baskets file - all seeds missing baskets
-      seedsMissingBaskets = [...seedIds];
+    } catch (dbError) {
+      console.log(`[Orchestrator] Phase 3 database check failed (${dbError.message}), falling back to JSON files`);
+
+      // FALLBACK: JSON-based detection
+      if (basketsExists) {
+        const basketData = await fs.readJSON(basketsPath);
+        const basketKeys = Object.keys(basketData.baskets || {});
+
+        // Find seeds that have LEGOs but no baskets for those LEGOs
+        for (const seed of seeds) {
+          const seedLegos = (seed.legos || []).filter(l => l.new === true);
+          const hasAllBaskets = seedLegos.every(lego => basketKeys.includes(lego.id));
+          if (!hasAllBaskets && seedLegos.length > 0) {
+            seedsMissingBaskets.push(seed.seed_id);
+          }
+        }
+      } else {
+        // No baskets file - all seeds missing baskets
+        seedsMissingBaskets = [...seedIds];
+      }
     }
 
     // Determine phase statuses

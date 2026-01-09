@@ -43,6 +43,9 @@ const courseDataService = require('../../course-data-service.cjs');
 const { loadConfig } = require('../../shared/config-loader.cjs');
 const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES } = require('../../config/course-mode-loader.cjs');
 
+// Unified agent spawner (CLI or browser)
+const unifiedSpawner = require('../../shared/spawn-agent-unified.cjs');
+
 /**
  * Load a prompt template and substitute placeholders
  * @param {string} templateName - Template filename (e.g., 'phase3_master.md')
@@ -409,9 +412,27 @@ async function getAllLegosInRange(baseCourseDir, startSeed, endSeed) {
 
 /**
  * Identify LEGOs that are missing baskets (for intelligent resume)
- * Checks existing lego_baskets.json and only returns LEGOs without baskets
+ * Tries database first (if enabled), falls back to local JSON files
  */
 async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
+  // Extract courseCode from baseCourseDir (e.g., /path/to/vfs/zho_for_eng -> zho_for_eng)
+  const courseCode = path.basename(baseCourseDir);
+
+  // Try database-first approach
+  try {
+    const dbMissingLegos = await courseDataService.getMissingLegosFromDatabase(courseCode, startSeed, endSeed);
+    if (dbMissingLegos !== null) {
+      console.log(`[Phase 3] Using DATABASE for missing LEGO detection: ${dbMissingLegos.length} LEGOs need practice phrases`);
+      return dbMissingLegos;
+    }
+    console.log(`[Phase 3] Database reads disabled, falling back to JSON files`);
+  } catch (dbError) {
+    console.warn(`[Phase 3] Database query failed, falling back to JSON: ${dbError.message}`);
+  }
+
+  // Fallback: JSON-based detection
+  console.log(`[Phase 3] Using JSON FILES for missing LEGO detection`);
+
   const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
   const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
 
@@ -599,7 +620,8 @@ app.post('/start', async (req, res) => {
     browserWindows,
     agentsPerWindow,
     seedsPerAgent,
-    stagingOnly = false
+    stagingOnly = false,
+    spawnerMode = 'cli'  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Safari)
   } = req.body;
 
   if (!courseCode || !startSeed || !endSeed || !target || !known) {
@@ -891,8 +913,9 @@ app.post('/start', async (req, res) => {
     job.milestones.branchesExpected = 0; // No git branches in ngrok architecture
     job.status = 'spawning_masters';
 
-    // STEP 3: Spawn Master browser tabs
+    // STEP 3: Spawn Master agents (CLI or Safari based on spawnerMode)
     // Each Master spawns workers via Task tool, workers upload via ngrok
+    console.log(`[Phase 3] Using spawner mode: ${spawnerMode} (${spawnerMode === 'cli' ? 'iTerm2 + Claude CLI' : 'Safari + Claude Web'})`);
     await spawnBrowserWindows(courseCode, {
       target,
       known,
@@ -900,7 +923,8 @@ app.post('/start', async (req, res) => {
       endSeed,
       legoData,        // ← Scaffold data for Masters to pass to workers
       targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
-      stagingOnly      // ← Pass through staging flag
+      stagingOnly,     // ← Pass through staging flag
+      spawnerMode      // ← 'cli' or 'browser'
     }, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job);
 
     res.json({
@@ -1215,9 +1239,11 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
  * @param {object} job - Job tracking object
  */
 async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job = null) {
-  const { target, known, startSeed, endSeed, legoData, targetLegos } = params;
+  const { target, known, startSeed, endSeed, legoData, targetLegos, spawnerMode = 'cli' } = params;
+  const modeLabel = spawnerMode === 'cli' ? 'CLI agents (iTerm2)' : 'Safari tabs';
 
-  console.log(`\n[Phase 3] 🌐 Spawning ${masterCount} Master browser tabs...`);
+  console.log(`\n[Phase 3] 🌐 Spawning ${masterCount} Master ${modeLabel}...`);
+  console.log(`[Phase 3]    Spawner mode: ${spawnerMode}`);
   console.log(`[Phase 3]    Each Master spawns ${workersPerMaster} workers via Task tool`);
   console.log(`[Phase 3]    Each worker processes ~${seedsPerWorker} seeds`);
   console.log(`[Phase 3]    Total LEGOs: ${targetLegos.length}`);
@@ -1286,7 +1312,18 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
     );
 
     try {
-      await spawnClaudeCodeSession(masterPrompt, `phase3-master-${masterNum}`);
+      // Use unified spawner based on spawnerMode
+      if (spawnerMode === 'cli') {
+        // CLI mode: use iTerm2 + Claude CLI
+        await unifiedSpawner.spawnSingleAgent(masterPrompt, {
+          mode: 'cli',
+          model: 'sonnet',
+          workingDir: baseCourseDir
+        });
+      } else {
+        // Browser mode: use Safari + Claude Web (legacy)
+        await spawnClaudeCodeSession(masterPrompt, `phase3-master-${masterNum}`);
+      }
 
       // Update milestones
       if (job) {
@@ -1295,10 +1332,11 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
         job.milestones.lastWindowSpawnedAt = new Date().toISOString();
       }
 
-      // Stagger Master spawns (default 5000ms)
+      // Stagger Master spawns (default 5000ms for browser, 2000ms for CLI)
+      const actualDelay = spawnerMode === 'cli' ? Math.min(spawnDelay, 2000) : spawnDelay;
       if (masterNum < masterCount) {
-        console.log(`[Phase 3]Waiting ${spawnDelay}ms before next Master...`);
-        await new Promise(resolve => setTimeout(resolve, spawnDelay));
+        console.log(`[Phase 3]    Waiting ${actualDelay}ms before next Master...`);
+        await new Promise(resolve => setTimeout(resolve, actualDelay));
       }
     } catch (error) {
       console.error(`[Phase 3]     ❌ Failed to spawn Master ${masterNum}:`, error.message);
@@ -1307,7 +1345,7 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
     }
   }
 
-  console.log(`\n[Phase 3] ✅ Spawned ${masterCount} Master browser tabs`);
+  console.log(`\n[Phase 3] ✅ Spawned ${masterCount} Master ${modeLabel}`);
   console.log(`[Phase 3]    Masters will spawn ${masterCount * workersPerMaster} workers total`);
   console.log(`[Phase 3]    Workers upload baskets via ngrok`);
 
@@ -2579,7 +2617,8 @@ app.post('/launch-15-masters', async (req, res) => {
     known = 'eng',
     mastersCount = defaultPattern.browsers,
     workersPerMaster = defaultPattern.agents_per_browser,
-    legosPerWorker = defaultPattern.seeds_per_agent
+    legosPerWorker = defaultPattern.seeds_per_agent,
+    spawnerMode = 'cli'  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Safari)
   } = req.body;
 
   if (!courseCode) {
@@ -2774,8 +2813,10 @@ app.post('/launch-15-masters', async (req, res) => {
     job.status = 'spawning_masters';
     activeJobs.set(jobKey, job);
 
-    // STEP 6: Launch masters with 5s delay (allows page to fully load before next spawn)
-    console.log(`\n[Phase 3] Step 4: Launching ${actualMasters} Safari tabs...`);
+    // STEP 6: Launch masters with delay between spawns
+    const modeLabel = spawnerMode === 'cli' ? 'CLI agents' : 'Safari tabs';
+    console.log(`\n[Phase 3] Step 4: Launching ${actualMasters} ${modeLabel}...`);
+    console.log(`[Phase 3]    Spawner mode: ${spawnerMode}`);
 
     for (const master of masters) {
       const promptPath = path.join(promptsDir, `phase3_master_${master.masterNum}.md`);
@@ -2791,7 +2832,16 @@ app.post('/launch-15-masters', async (req, res) => {
       }
 
       try {
-        await spawnClaudeCodeSession(promptContent, `phase3-master-${master.masterNum}`);
+        // Use unified spawner based on spawnerMode
+        if (spawnerMode === 'cli') {
+          await unifiedSpawner.spawnSingleAgent(promptContent, {
+            mode: 'cli',
+            model: 'sonnet',
+            workingDir: baseCourseDir
+          });
+        } else {
+          await spawnClaudeCodeSession(promptContent, `phase3-master-${master.masterNum}`);
+        }
         // Update master status to running after successful spawn
         if (jobMaster) {
           jobMaster.status = 'running';
@@ -2805,9 +2855,10 @@ app.post('/launch-15-masters', async (req, res) => {
         }
       }
 
-      // 5s delay between spawns (allows page to fully load)
+      // Delay between spawns (5s for browser, 2s for CLI)
+      const spawnDelay = spawnerMode === 'cli' ? 2000 : 5000;
       if (master.masterNum < actualMasters) {
-        await new Promise(r => setTimeout(r, 5000));
+        await new Promise(r => setTimeout(r, spawnDelay));
       }
     }
 
