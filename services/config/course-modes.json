@@ -27,29 +27,29 @@
       "description": "Big 10 language pairs - 2 seeds per agent for granular tracking",
       "seeds": 250,
       "pattern": {
-        "browsers": 5,
-        "agents_per_browser": 25,
+        "browsers": 10,
+        "agents_per_browser": 13,
         "seeds_per_agent": 2
       },
-      "capacity": 250,
+      "capacity": 260,
       "estimated_time_minutes": 15,
       "use_case": "Production courses for Big 10 language pairs",
-      "rationale": "2 seeds per agent = granular failures. 25 agents per browser keeps tab count low."
+      "rationale": "13 agents per master avoids token limits. 2 seeds per agent = granular failures."
     },
 
     "full_course": {
       "name": "Full Course",
-      "description": "Complete legacy-scale course - 2 seeds per agent for granular tracking",
+      "description": "Complete legacy-scale course - extends MVP to 668 seeds",
       "seeds": 668,
       "pattern": {
-        "browsers": 14,
-        "agents_per_browser": 25,
+        "browsers": 17,
+        "agents_per_browser": 13,
         "seeds_per_agent": 2
       },
-      "capacity": 700,
+      "capacity": 442,
       "estimated_time_minutes": 25,
-      "use_case": "Complete courses (legacy Spanish for English scale)",
-      "rationale": "2 seeds per agent = granular failures. 25 agents per browser keeps tab count low."
+      "use_case": "Extending MVP (260) to full course (668)",
+      "rationale": "13 agents per master avoids token limits. Run after MVP to add remaining ~408 seeds."
     }
   },
 
@@ -63,8 +63,8 @@
   "resume": {
     "comment": "Resume mode uses 1 seed per agent for maximum granularity",
     "seeds_per_agent": 1,
-    "agents_per_browser": 25,
-    "rationale": "1 seed per agent = if worker fails, only 1 seed lost. Easy retry."
+    "agents_per_browser": 13,
+    "rationale": "1 seed per agent = if worker fails, only 1 seed lost. 13 agents avoids token limits."
   },
 
   "phase_overrides": {
