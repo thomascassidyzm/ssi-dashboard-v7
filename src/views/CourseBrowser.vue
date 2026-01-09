@@ -150,12 +150,6 @@
             >
               Production
             </router-link>
-            <button
-              @click="showDetails(course)"
-              class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-4 py-2 rounded transition-colors text-sm"
-            >
-              Details
-            </button>
           </div>
         </div>
       </div>
@@ -165,11 +159,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api from '../services/api'
 
-const router = useRouter()
 const toast = useToast()
 
 // Language name mapping for search
@@ -298,10 +290,6 @@ function isPhaseComplete(course, phase) {
   if (phase === 'M') return phases.includes('manifest') || phases.includes('7')  // Manifest or legacy Phase 7
   if (phase === 'A') return phases.includes('audio') || phases.includes('8')  // Audio or legacy Phase 8
   return phases.includes(phase)
-}
-
-function showDetails(course) {
-  router.push(`/courses/${course.course_code}`)
 }
 
 // Parse course code and return generator link (e.g., spa_for_eng → /generate?target=spa&known=eng)
