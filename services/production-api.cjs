@@ -1193,7 +1193,7 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
     // Get sample details for regeneration
     const samples = []
     for (const uuid of uuids) {
-      const sample = await supabaseClient.getAudioSample(uuid)
+      const sample = await supabaseClient.getCourseAudio(uuid)
       if (sample) {
         samples.push(sample)
       }
@@ -1269,6 +1269,14 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
       })
     }
 
+    // Group by role for regeneration
+    const byRole = {}
+    for (const flag of flaggedSamples) {
+      const role = flag.course_audio?.role || 'unknown'
+      if (!byRole[role]) byRole[role] = []
+      byRole[role].push(flag.audio_uuid)
+    }
+
     const uuids = flaggedSamples.map(flag => flag.audio_uuid)
 
     // Update status to 'in_pipeline'
@@ -1279,22 +1287,41 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
       'Bulk regeneration triggered'
     )
 
-    // Call Phase 8 to generate audio
-    const response = await proxyToPhase8('POST', `/generate/${courseCode}`, {
-      dryRun: false,
-      limit: uuids.length
-    })
-
     // Emit WebSocket event
     io.to(`course:${courseCode}`).emit('regeneration_started', {
       courseCode,
       uuids,
       count: uuids.length,
+      byRole: Object.fromEntries(Object.entries(byRole).map(([k, v]) => [k, v.length])),
       timestamp: new Date().toISOString()
     })
 
-    // Update status based on Phase 8 response
-    if (response.status === 200) {
+    // Call Phase 8 to regenerate each role with flaggedOnly=true
+    // Process roles in parallel for efficiency
+    const roleResults = await Promise.all(
+      Object.keys(byRole)
+        .filter(role => ['known', 'target1', 'target2', 'presentation'].includes(role))
+        .map(async (role) => {
+          try {
+            const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
+              role,
+              dryRun: false,
+              flaggedOnly: true,
+              limit: byRole[role].length
+            })
+            return { role, success: response.status === 200, data: response.data }
+          } catch (err) {
+            return { role, success: false, error: err.message }
+          }
+        })
+    )
+
+    // Check results
+    const allSuccess = roleResults.every(r => r.success)
+    const totalProcessed = roleResults.reduce((sum, r) => sum + (r.data?.success || 0), 0)
+    const totalFailed = roleResults.reduce((sum, r) => sum + (r.data?.failed || 0), 0)
+
+    if (allSuccess) {
       // Mark flags as complete after successful regeneration
       await supabaseClient.bulkUpdateFlagStatus(
         uuids,
@@ -1305,17 +1332,42 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
       res.json({
         success: true,
         count: uuids.length,
-        jobId: response.data.jobId
+        processed: totalProcessed,
+        failed: totalFailed,
+        byRole: roleResults.map(r => ({ role: r.role, ...r.data }))
       })
     } else {
-      // If Phase 8 failed, update status back to flagged
-      await supabaseClient.bulkUpdateFlagStatus(
-        uuids,
-        courseCode,
-        'flagged_regen_tts',
-        `Bulk regeneration failed: ${response.data.error || 'Unknown error'}`
-      )
-      res.status(response.status).json(response.data)
+      // Some roles failed - mark those as failed, keep successful ones as complete
+      const failedRoles = roleResults.filter(r => !r.success)
+      const failedUuids = failedRoles.flatMap(r => byRole[r.role] || [])
+      const successUuids = uuids.filter(u => !failedUuids.includes(u))
+
+      if (successUuids.length > 0) {
+        await supabaseClient.bulkUpdateFlagStatus(
+          successUuids,
+          courseCode,
+          'complete',
+          'Bulk regeneration completed'
+        )
+      }
+
+      if (failedUuids.length > 0) {
+        await supabaseClient.bulkUpdateFlagStatus(
+          failedUuids,
+          courseCode,
+          'flagged_regen_tts',
+          `Regeneration failed for roles: ${failedRoles.map(r => r.role).join(', ')}`
+        )
+      }
+
+      res.json({
+        success: false,
+        partial: true,
+        count: uuids.length,
+        processed: totalProcessed,
+        failed: totalFailed,
+        byRole: roleResults.map(r => ({ role: r.role, success: r.success, ...r.data, error: r.error }))
+      })
     }
   } catch (error) {
     logger.error('Error triggering bulk regeneration:', error)

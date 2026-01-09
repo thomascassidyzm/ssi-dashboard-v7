@@ -882,6 +882,72 @@ async function bulkUpdateSampleFlags(updates) {
   return results
 }
 
+/**
+ * Get samples flagged for regeneration
+ * Returns flags with statuses like 'flagged_regen_tts', 'pending_regen'
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Array>} Array of flag objects with joined audio info
+ */
+async function getFlaggedForRegeneration(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get flags that need regeneration, with audio info
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .select(`
+      audio_uuid,
+      status,
+      notes,
+      flagged_by,
+      flagged_at,
+      history,
+      course_audio (
+        id,
+        text,
+        language,
+        role,
+        duration_ms
+      )
+    `)
+    .eq('course_code', courseCode)
+    .in('status', ['flagged_regen_tts', 'pending_regen', 'in_pipeline'])
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Bulk update flag status for multiple UUIDs
+ *
+ * @param {Array<string>} uuids - Array of audio UUIDs
+ * @param {string} courseCode - Course code
+ * @param {string} status - New status
+ * @param {string} notes - Optional notes
+ * @returns {Promise<number>} Number of updated records
+ */
+async function bulkUpdateFlagStatus(uuids, courseCode, status, notes = '') {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!uuids || uuids.length === 0) return 0
+
+  const now = new Date().toISOString()
+
+  // Update all matching flags
+  const { data, error } = await supabase
+    .from('sample_flags')
+    .update({
+      status,
+      notes,
+      flagged_at: now
+    })
+    .in('audio_uuid', uuids)
+    .eq('course_code', courseCode)
+    .select()
+
+  if (error) throw error
+  return data?.length || 0
+}
+
 // =============================================================================
 // CONTENT STATS
 // =============================================================================
@@ -1045,6 +1111,8 @@ module.exports = {
   bulkUpdateSampleFlags,
   getRegenerationCount,
   bulkGetRegenerationCounts,
+  getFlaggedForRegeneration,
+  bulkUpdateFlagStatus,
 
   // Content stats
   getCourseContentStats,
