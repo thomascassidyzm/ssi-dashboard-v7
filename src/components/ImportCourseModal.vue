@@ -659,6 +659,173 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* Import Modal Theme - Matching Mission Control aesthetic */
+.modal-overlay {
+  --mc-void: #0f172a;
+  --mc-deep: #1e293b;
+  --mc-surface: #1e293b;
+  --mc-elevated: #334155;
+  --mc-border: #334155;
+  --mc-border-light: #475569;
+  --mc-text: #f1f5f9;
+  --mc-text-dim: #94a3b8;
+  --mc-text-muted: #64748b;
+  --mc-import: #f97316;
+  --mc-import-dim: #ea580c;
+  --mc-import-glow: rgba(249, 115, 22, 0.15);
+  --mc-success: #10b981;
+  --mc-success-glow: rgba(16, 185, 129, 0.15);
+  --mc-error: #ef4444;
+  --mc-warning: #f59e0b;
+
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: var(--mc-deep);
+  border: 1px solid var(--mc-border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  background: linear-gradient(180deg, var(--mc-surface) 0%, transparent 100%);
+  border-bottom-color: var(--mc-border);
+}
+
+.modal-header h3 {
+  color: var(--mc-text);
+}
+
+/* Step Indicators */
+.step-indicators {
+  background: var(--mc-void);
+}
+
+.step-dot {
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--mc-import);
+  box-shadow: 0 0 20px var(--mc-import-glow);
+}
+
+/* Override Tailwind step colors with import theme */
+.step-indicators .bg-emerald-500,
+.step-indicators .bg-emerald-600 {
+  background-color: var(--mc-import) !important;
+}
+
+.step-indicators .text-emerald-400 {
+  color: var(--mc-import) !important;
+}
+
+/* Drop Zone */
+.drop-zone {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--mc-surface);
+  border-color: var(--mc-border);
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+  border-color: var(--mc-border-light);
+  background: var(--mc-elevated);
+}
+
+.drop-zone.border-emerald-500 {
+  border-color: var(--mc-import) !important;
+  background: var(--mc-import-glow) !important;
+}
+
+.drop-zone.border-emerald-600 {
+  border-color: var(--mc-import) !important;
+  background: var(--mc-import-glow) !important;
+}
+
+.upload-icon, .file-icon {
+  filter: grayscale(0);
+}
+
+/* Validation & Preview Sections */
+.course-info,
+.import-plan,
+.import-options {
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+}
+
+.course-info h4,
+.import-plan h4,
+.import-options h4 {
+  color: var(--mc-text-muted);
+}
+
+.stat-item {
+  background: var(--mc-elevated);
+  border: 1px solid var(--mc-border);
+}
+
+/* Status boxes with import theme */
+.validation-status {
+  background: var(--mc-import-glow);
+  border-color: var(--mc-import);
+}
+
+.validation-status .text-emerald-400 {
+  color: var(--mc-import) !important;
+}
+
+.validation-status .text-emerald-300 {
+  color: rgba(249, 115, 22, 0.8) !important;
+}
+
+/* Override success colors on results */
+.result-stats {
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+}
+
+.text-emerald-400 {
+  color: var(--mc-import) !important;
+}
+
+/* Buttons with import theme */
+.bg-emerald-500 {
+  background-color: var(--mc-import) !important;
+}
+
+.bg-emerald-500:hover,
+.hover\:bg-emerald-600:hover {
+  background-color: var(--mc-import-dim) !important;
+}
+
+/* Progress bar */
+.progress-bar-container {
+  background: var(--mc-elevated);
+}
+
+.progress-bar {
+  background: var(--mc-import);
+}
+
+/* Spinner with import theme */
+.spinner {
+  border-color: var(--mc-elevated);
+  border-top-color: var(--mc-import);
+}
+
+/* Footer */
+.modal-footer {
+  background: var(--mc-surface);
+  border-top-color: var(--mc-border);
+}
+
 /* Modal Transitions */
 .modal-enter-active,
 .modal-leave-active {
@@ -672,15 +839,16 @@ onUnmounted(() => {
 
 .modal-enter-active .modal-content,
 .modal-leave-active .modal-content {
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .modal-enter-from .modal-content,
 .modal-leave-to .modal-content {
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
 }
 
-/* Spinner */
+/* Spinner Animation */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -691,12 +859,17 @@ onUnmounted(() => {
   animation: spin 1s linear infinite;
 }
 
-/* Drop zone */
-.drop-zone {
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* Checkbox styling */
+input[type="checkbox"] {
+  accent-color: var(--mc-import);
+}
+
+/* Success state uses green */
+.success-icon {
+  filter: none;
+}
+
+.result-header .text-emerald-400 {
+  color: var(--mc-success) !important;
 }
 </style>

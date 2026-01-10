@@ -103,6 +103,35 @@
             </div>
           </router-link>
 
+          <!-- Import Course Card -->
+          <button @click="showImportModal = true" class="action-card card-import">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+                <div class="card-badge import">
+                  <span class="badge-label">legacy</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Import Course</h2>
+                <p class="card-description">Upload a legacy course manifest JSON to migrate existing content</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Start Import</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </button>
+
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
             <div class="card-glow"></div>
@@ -159,6 +188,14 @@
         </div>
       </section>
     </main>
+
+    <!-- Import Course Modal -->
+    <ImportCourseModal
+      v-if="showImportModal"
+      :visible="showImportModal"
+      @close="showImportModal = false"
+      @imported="handleImportComplete"
+    />
   </div>
 </template>
 
@@ -166,10 +203,19 @@
 import { ref, onMounted } from 'vue'
 import api from '../services/api'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
+import ImportCourseModal from '../components/ImportCourseModal.vue'
 
 // Course count
 const courseCount = ref(0)
 const loadingCourses = ref(true)
+
+// Import modal
+const showImportModal = ref(false)
+
+function handleImportComplete() {
+  showImportModal.value = false
+  loadCourseCount() // Refresh course count after import
+}
 
 // Load course count
 async function loadCourseCount() {
@@ -215,6 +261,8 @@ onMounted(() => {
   --mc-production-glow: rgba(245, 158, 11, 0.15);
   --mc-docs: #a855f7;
   --mc-docs-glow: rgba(168, 85, 247, 0.15);
+  --mc-import: #f97316;
+  --mc-import-glow: rgba(249, 115, 22, 0.15);
 
   min-height: 100vh;
   background: var(--mc-void);
@@ -441,6 +489,14 @@ onMounted(() => {
   overflow: hidden;
 }
 
+/* Button reset for action cards */
+button.action-card {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .action-card:hover {
   transform: translateY(-4px);
   border-color: var(--mc-border-light);
@@ -473,6 +529,10 @@ onMounted(() => {
   background: linear-gradient(180deg, var(--mc-docs-glow) 0%, transparent 100%);
 }
 
+.card-import .card-glow {
+  background: linear-gradient(180deg, var(--mc-import-glow) 0%, transparent 100%);
+}
+
 .action-card:hover .card-glow {
   opacity: 1;
 }
@@ -495,6 +555,11 @@ onMounted(() => {
 .card-docs:hover {
   border-color: var(--mc-docs);
   box-shadow: 0 20px 40px -20px var(--mc-docs-glow);
+}
+
+.card-import:hover {
+  border-color: var(--mc-import);
+  box-shadow: 0 20px 40px -20px var(--mc-import-glow);
 }
 
 .card-content {
@@ -546,6 +611,10 @@ onMounted(() => {
   color: var(--mc-docs);
 }
 
+.card-import .card-icon {
+  color: var(--mc-import);
+}
+
 .card-library:hover .card-icon {
   background: var(--mc-accent);
   border-color: var(--mc-accent);
@@ -567,6 +636,12 @@ onMounted(() => {
 .card-docs:hover .card-icon {
   background: var(--mc-docs);
   border-color: var(--mc-docs);
+  color: white;
+}
+
+.card-import:hover .card-icon {
+  background: var(--mc-import);
+  border-color: var(--mc-import);
   color: white;
 }
 
@@ -627,6 +702,15 @@ onMounted(() => {
   color: var(--mc-production);
 }
 
+.card-badge.import {
+  background: var(--mc-import-glow);
+  border-color: var(--mc-import);
+}
+
+.card-badge.import .badge-label {
+  color: var(--mc-import);
+}
+
 .card-badge.loading {
   min-width: 60px;
 }
@@ -685,6 +769,7 @@ onMounted(() => {
 .card-create:hover .card-action { color: var(--mc-create); }
 .card-production:hover .card-action { color: var(--mc-production); }
 .card-docs:hover .card-action { color: var(--mc-docs); }
+.card-import:hover .card-action { color: var(--mc-import); }
 
 .card-arrow {
   width: 20px;
@@ -701,6 +786,7 @@ onMounted(() => {
 .card-create:hover .card-arrow { color: var(--mc-create); }
 .card-production:hover .card-arrow { color: var(--mc-production); }
 .card-docs:hover .card-arrow { color: var(--mc-docs); }
+.card-import:hover .card-arrow { color: var(--mc-import); }
 
 /* Stats Bar */
 .stats-section {
