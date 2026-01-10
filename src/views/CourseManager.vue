@@ -905,7 +905,7 @@ async function startPhase() {
       },
       body: JSON.stringify({
         courseCode: code,
-        phaseSelection: [targetPhase.number],
+        phaseSelection: `phase${targetPhase.number}`,
         spawnerMode: agentEngine.value,
         mode: seedCount.value === 10 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
       })
