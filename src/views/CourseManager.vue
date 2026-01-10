@@ -762,11 +762,22 @@ async function fetchProgress() {
       { label: 'Phrases', value: data.stats?.basketsGenerated || 0 }
     ]
 
-    // Update job status
-    const isRunning = data.overallStatus?.includes('running') ||
-                      phases.value.some(p => p.status === 'running')
+    // Update active workers from queue data (do this before job status check)
+    if (data.queue) {
+      activeWorkers.value = data.queue.processing || 0
+    }
 
-    if (isRunning && jobStatus.value !== 'stopping') {
+    // Check for active job on phase servers
+    const hasActivePhase3Job = data.phases?.phase3?.masters?.some(m => m.status === 'running')
+    const processingWorkers = data.queue?.processing || 0
+
+    // Update job status - only consider "running" if there are actual workers
+    // This prevents phantom "running" state when no job is actually active
+    const statusSaysRunning = data.overallStatus?.includes('running') ||
+                              phases.value.some(p => p.status === 'running')
+    const isActuallyRunning = statusSaysRunning && (processingWorkers > 0 || hasActivePhase3Job)
+
+    if (isActuallyRunning && jobStatus.value !== 'stopping') {
       jobStatus.value = 'running'
       if (!jobStartTime.value) {
         jobStartTime.value = Date.now()
@@ -786,11 +797,6 @@ async function fetchProgress() {
         etaHistory.value.shift()
       }
       lastProgressAt.value = new Date().toISOString()
-    }
-
-    // Update active workers from queue data
-    if (data.queue) {
-      activeWorkers.value = data.queue.processing || 0
     }
 
   } catch (error) {
@@ -928,6 +934,8 @@ async function stopJob() {
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+    // Send cancel to orchestrator
     await fetch(`${apiBase}/api/cancel/${code}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -935,16 +943,25 @@ async function stopJob() {
 
     addEvent('Stop request sent')
 
-    // Poll for completion
-    setTimeout(() => {
-      if (jobStatus.value === 'stopping') {
-        fetchProgress()
-      }
-    }, 5000)
+    // Also call force-kill to clear any phantom state on phase servers
+    await fetch(`${apiBase}/api/force-kill/${code}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    // Reset to idle - the job is stopped (or was never running)
+    jobStatus.value = 'idle'
+    jobStartTime.value = null
+    stopRequestedAt.value = null
+
+    addEvent('Job stopped')
 
   } catch (error) {
     console.error('Failed to stop job:', error)
     addEvent(`Error stopping: ${error.message}`)
+    // Still reset to idle on error - don't leave stuck in "stopping"
+    jobStatus.value = 'idle'
+    stopRequestedAt.value = null
   }
 }
 
