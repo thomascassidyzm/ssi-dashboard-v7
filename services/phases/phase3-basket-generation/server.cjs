@@ -54,7 +54,8 @@ const unifiedSpawner = require('../../shared/spawn-agent-unified.cjs');
  */
 async function getTotalNewLegosForCourse(courseCode) {
   try {
-    const legos = await courseDataService.getLegosByCourse(courseCode, { onlyNew: true });
+    // Use status: 'all' since LEGOs may be in 'draft' status
+    const legos = await courseDataService.getLegosByCourse(courseCode, { onlyNew: true, status: 'all' });
     return legos?.length || 0;
   } catch (error) {
     console.warn(`[Phase 3] Could not get NEW LEGO count for ${courseCode}: ${error.message}`);
