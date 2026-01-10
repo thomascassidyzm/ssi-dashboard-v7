@@ -4463,23 +4463,42 @@ app.get('/health/all', async (req, res) => {
 /**
  * POST /api/cancel/:courseCode
  * Cancel all jobs for a specific course across all phase servers
+ *
+ * Each phase server has different cancel endpoints:
+ * - Phase 1: /api/phase1/:courseCode/cancel
+ * - Phase 2: /stop/:courseCode
+ * - Phase 3: /abort/:courseCode
  */
 app.post('/api/cancel/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const results = { courseCode, cancelled: [] };
+  const results = { courseCode, cancelled: [], errors: [] };
+
+  // Define the correct cancel endpoint for each phase server
+  const cancelEndpoints = {
+    1: `/api/phase1/${courseCode}/cancel`,      // Phase 1 uses /api/phase1/:courseCode/cancel
+    2: `/stop/${courseCode}`,                    // Phase 2 uses /stop/:courseCode
+    3: `/abort/${courseCode}`,                   // Phase 3 uses /abort/:courseCode
+    7: `/abort/${courseCode}`,                   // Manifest compilation uses /abort/:courseCode
+    8: `/cancel/${courseCode}`                   // Audio generation uses DELETE /cancel/:courseCode
+  };
 
   // Cancel on each phase server
   for (const [phase, url] of Object.entries(PHASE_SERVERS)) {
+    const endpoint = cancelEndpoints[phase];
+    if (!endpoint) continue;
+
     try {
-      const endpoint = phase === 'phase1' ? 'phase1' :
-                       phase === 'phase2' ? 'phase2' :
-                       phase === 'phase3' ? 'phase3' : phase;
-      const response = await axios.post(`${url}/api/${endpoint}/${courseCode}/cancel`, {}, { timeout: 5000 });
+      // Phase 8 uses DELETE, others use POST
+      const method = phase === '8' ? 'delete' : 'post';
+      const response = await axios[method](`${url}${endpoint}`, {}, { timeout: 5000 });
       if (response.data.success) {
-        results.cancelled.push(phase);
+        results.cancelled.push(`phase${phase}`);
       }
     } catch (error) {
-      // Ignore errors - endpoint may not exist on all services
+      // Log but don't fail - endpoint may not exist or no active job
+      if (error.response?.status !== 404) {
+        results.errors.push({ phase: `phase${phase}`, error: error.message });
+      }
     }
   }
 
