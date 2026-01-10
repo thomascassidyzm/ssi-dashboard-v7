@@ -3209,18 +3209,19 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
         }
       }
 
-      // SEED-BASED completion for all phases
-      // Phase 1: seeds with LEGOs extracted
+      // Phase completion tracking
+      // Phase 1: seeds with LEGOs extracted (seed-based)
       const phase1SeedsComplete = dbProgress.phase1?.complete || 0;
       // Phase 2: runs once after Phase 1, affects all LEGOs
       const phase2Complete = dbProgress.newLegos !== dbProgress.legos;
-      // Phase 3: seeds with practice phrases generated
-      const phase3SeedsComplete = dbProgress.phase3?.complete || 0;
+      // Phase 3: NEW LEGOs with baskets (LEGO-based, the actual unit of work)
+      const phase3LegosComplete = dbProgress.phase3?.complete || 0;
+      const phase3LegosTarget = dbProgress.phase3?.target || dbProgress.newLegos || 0;
 
-      // Determine phase statuses based on SEED completion
-      const getPhaseStatus = (seedsComplete, target) => {
-        if (seedsComplete >= target) return 'complete';
-        if (seedsComplete > 0) return 'partial';
+      // Determine phase statuses
+      const getPhaseStatus = (complete, target) => {
+        if (complete >= target) return 'complete';
+        if (complete > 0) return 'partial';
         return 'pending';
       };
 
@@ -3243,11 +3244,15 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
           detail: `${dbProgress.legos} LEGOs resolved`
         },
         phase3: {
-          status: getPhaseStatus(phase3SeedsComplete, targetSeeds),
-          seedsComplete: phase3SeedsComplete,
+          // Track by NEW LEGOs (each new LEGO needs a basket)
+          status: getPhaseStatus(phase3LegosComplete, phase3LegosTarget),
+          legosComplete: phase3LegosComplete,
+          legosTarget: phase3LegosTarget,
+          seedsWithPhrases: dbProgress.phase3?.seedsWithPhrases || 0,
           seedsTarget: targetSeeds,
           basketsGenerated: dbProgress.practicePhrases,
-          detail: `${phase3SeedsComplete}/${targetSeeds} seeds, ${dbProgress.practicePhrases} phrases`
+          missingLegos: dbProgress.phase3?.missingCount || 0,
+          detail: `${phase3LegosComplete}/${phase3LegosTarget} LEGOs, ${dbProgress.practicePhrases} phrases`
         },
         audio: {
           status: 'pending',
@@ -3295,7 +3300,10 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
           seedsTotal: targetSeeds,
           seedsComplete: phase1SeedsComplete,
           phase1Seeds: phase1SeedsComplete,
-          phase3Seeds: phase3SeedsComplete,
+          // Phase 3 tracked by LEGOs (the actual work unit)
+          phase3Legos: phase3LegosComplete,
+          phase3LegosTarget: phase3LegosTarget,
+          phase3SeedsWithPhrases: dbProgress.phase3?.seedsWithPhrases || 0,
           legosGenerated: dbProgress.legos,
           newLegos: dbProgress.newLegos,
           basketsGenerated: dbProgress.practicePhrases
