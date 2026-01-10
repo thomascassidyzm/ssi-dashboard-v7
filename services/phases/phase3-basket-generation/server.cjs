@@ -1052,10 +1052,13 @@ app.get('/preview/:courseCode', async (req, res) => {
     const totalWorkers = masterCount * AGENTS_PER_BROWSER;
     const legosPerWorker = Math.ceil(legosToProcess / totalWorkers);
 
-    // Estimate time based on historical rate (if available)
-    // Default assumption: ~5 LEGOs/minute (conservative estimate)
-    const estimatedRate = 5; // LEGOs per minute
-    const estimatedMinutes = Math.ceil(legosToProcess / estimatedRate);
+    // Estimate time based on parallel processing
+    // Each agent processes ~1 LEGO/minute, all agents work in parallel
+    // So total time ≈ LEGOs per agent (the work each agent does)
+    const legosPerMinutePerAgent = 1; // Conservative: 1 LEGO/min per agent
+    const estimatedMinutes = Math.ceil(legosPerWorker / legosPerMinutePerAgent);
+    // Total throughput for display (all agents combined)
+    const estimatedRate = totalWorkers * legosPerMinutePerAgent;
 
     // Get breakdown by LEGO type
     const typeBreakdown = {};
