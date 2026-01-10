@@ -9137,6 +9137,74 @@ app.use('/api/production', async (req, res) => {
   }
 });
 
+// =============================================================================
+// LEGACY COURSE IMPORT
+// =============================================================================
+
+/**
+ * POST /api/import-course
+ *
+ * Import a legacy course manifest into the database.
+ * Receives manifest JSON and imports all course data.
+ *
+ * Body: { manifest: {...}, clearFirst: boolean }
+ */
+app.post('/api/import-course', async (req, res) => {
+  try {
+    // Dynamic require to avoid loading at startup if not needed
+    const { importLegacyCourse, COURSE_ALIASES, clearCourseData } = require('../../database/lib/import-legacy-course-core.cjs');
+
+    const { manifest, clearFirst } = req.body;
+
+    if (!manifest || !manifest.id || !manifest.slices) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid manifest: missing id or slices'
+      });
+    }
+
+    const legacyId = manifest.id;
+    const courseCode = COURSE_ALIASES[legacyId] || legacyId;
+
+    console.log(`[Import] Starting import for ${legacyId} → ${courseCode}`);
+    console.log(`[Import] Clear first: ${clearFirst}`);
+
+    const result = await importLegacyCourse(manifest, {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY,
+      dryRun: false,
+      clearFirst: clearFirst === true || clearFirst === 'true',
+      onProgress: ({ step, message }) => {
+        console.log(`[Import] Step ${step}/8: ${message}`);
+      }
+    });
+
+    console.log(`[Import] Complete: ${courseCode}`);
+
+    return res.json({
+      success: true,
+      courseCode: result.analysis.courseCode,
+      displayName: result.analysis.displayName,
+      statistics: {
+        courses: result.steps.courseRecord?.count || 1,
+        course_audio: (result.steps.audioSamples?.count || 0) + (result.steps.copyShared?.count || 0),
+        shared_audio: result.steps.sharedAudio?.count || 0,
+        course_seeds: result.steps.seeds?.count || 0,
+        course_legos: result.steps.legos?.count || 0,
+        course_practice_phrases: result.steps.practicePhrases?.count || 0,
+        lego_introductions: result.steps.legoIntroductions?.count || 0
+      }
+    });
+
+  } catch (error) {
+    console.error('[Import] Error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
 /**
  * Start server
  */

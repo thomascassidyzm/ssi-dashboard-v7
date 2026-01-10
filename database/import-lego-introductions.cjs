@@ -18,6 +18,7 @@ const COURSE_ALIASES = {
   'en-cy-north': 'cym_n_for_eng',
   'en-cy-south': 'cym_s_for_eng',
   'en-es': 'spa_for_eng',
+  'en-ga': 'gle_for_eng',
   'En-Ch': 'zho_for_eng'
 };
 

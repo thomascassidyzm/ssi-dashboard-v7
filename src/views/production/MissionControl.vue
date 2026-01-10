@@ -138,6 +138,13 @@
         Browse All Courses
       </router-link>
     </div>
+
+    <!-- Import Course Modal -->
+    <ImportCourseModal
+      :visible="showImportModal"
+      @close="showImportModal = false"
+      @imported="handleCourseImported"
+    />
   </div>
 </template>
 
@@ -150,6 +157,7 @@ import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
+import ImportCourseModal from '@/components/ImportCourseModal.vue'
 
 // Get API base URL (same as other components)
 // On Vercel deployment, uses relative URLs (/api/...) which Vercel handles
@@ -181,6 +189,7 @@ const store = useProductionStore()
 
 const selectedCourse = ref('')
 const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
+const showImportModal = ref(false)
 
 // Fetch available courses from API (database-first via orchestrator)
 async function loadCourses() {
@@ -239,6 +248,14 @@ const audioProgressPercent = computed(() => {
 
 const quickActions = computed(() => {
   const actions = [
+    {
+      id: 'import_course',
+      icon: '📥',
+      label: 'Import Legacy Course',
+      description: 'Upload a legacy course manifest JSON',
+      badge: null,
+      disabled: false
+    },
     {
       id: 'generate_audio',
       icon: '🔊',
@@ -355,6 +372,9 @@ function handleResolveBlocker(blocker: any) {
 
 function handleQuickAction(actionId: string) {
   switch (actionId) {
+    case 'import_course':
+      showImportModal.value = true
+      break
     case 'generate_audio':
       router.push({
         name: 'AudioGeneration',
@@ -460,6 +480,15 @@ async function exportLegacyManifest() {
     console.error('Export failed:', err)
     alert(`Export failed: ${err instanceof Error ? err.message : 'Network error'}`)
   }
+}
+
+// Handle course import completion
+async function handleCourseImported(courseCode: string) {
+  // Reload course list to include newly imported course
+  await loadCourses()
+  // Select the imported course
+  selectedCourse.value = courseCode
+  handleCourseChange()
 }
 
 function getBlockerCountForStage(stageId: string): number {
