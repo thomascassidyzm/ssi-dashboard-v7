@@ -14,7 +14,7 @@
               @click="close"
               class="text-slate-400 hover:text-white transition-colors"
               title="Close (Esc)"
-              :disabled="isImporting"
+              :disabled="isImporting || isValidating"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -58,7 +58,7 @@
           <!-- Step 1: File Upload -->
           <div v-if="currentStep === 1" class="modal-body px-6 py-6">
             <div
-              class="drop-zone border-2 border-dashed rounded-xl p-8 text-center transition-all"
+              class="drop-zone border-2 border-dashed rounded-xl p-8 text-center transition-all cursor-pointer"
               :class="{
                 'border-emerald-500 bg-emerald-500 bg-opacity-10': isDragging,
                 'border-slate-600 hover:border-slate-500': !isDragging && !selectedFile,
@@ -68,15 +68,14 @@
               @dragover.prevent="isDragging = true"
               @dragleave.prevent="isDragging = false"
               @drop.prevent="handleDrop"
+              @click="triggerFileInput"
             >
               <div v-if="!selectedFile" class="upload-prompt">
-                <div class="upload-icon text-5xl mb-4">
-                  {{ isDragging ? '...' : '...' }}
-                </div>
+                <div class="upload-icon text-5xl mb-4">📁</div>
                 <p class="text-lg font-medium text-slate-200 mb-2">
                   {{ isDragging ? 'Drop your manifest here' : 'Drag & drop course manifest' }}
                 </p>
-                <p class="text-sm text-slate-400 mb-4">or click to browse</p>
+                <p class="text-sm text-slate-400 mb-4">or click to browse (JSON file, up to 50MB)</p>
                 <input
                   ref="fileInput"
                   type="file"
@@ -84,20 +83,14 @@
                   class="hidden"
                   @change="handleFileSelect"
                 />
-                <button
-                  @click="($refs.fileInput as HTMLInputElement)?.click()"
-                  class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition-colors"
-                >
-                  Browse Files
-                </button>
               </div>
 
-              <div v-else class="file-selected">
-                <div class="file-icon text-5xl mb-4">...</div>
+              <div v-else class="file-selected" @click.stop>
+                <div class="file-icon text-5xl mb-4">📄</div>
                 <p class="text-lg font-medium text-emerald-400 mb-1">{{ selectedFile.name }}</p>
                 <p class="text-sm text-slate-400 mb-4">{{ formatFileSize(selectedFile.size) }}</p>
                 <button
-                  @click="clearFile"
+                  @click.stop="clearFile"
                   class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors"
                 >
                   Choose different file
@@ -111,59 +104,95 @@
             </div>
           </div>
 
-          <!-- Step 2: Preview -->
+          <!-- Step 2: Validate (Dry Run) -->
           <div v-if="currentStep === 2" class="modal-body px-6 py-6">
-            <div v-if="manifestPreview" class="preview-content space-y-4">
+            <!-- Validating State -->
+            <div v-if="isValidating" class="validating-state text-center py-8">
+              <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
+              <p class="text-lg font-medium text-white">Validating Manifest...</p>
+              <p class="text-sm text-slate-400 mt-1">Checking structure and analyzing content</p>
+            </div>
+
+            <!-- Validation Error -->
+            <div v-else-if="validationError" class="validation-error space-y-4">
+              <div class="error-header text-center">
+                <div class="error-icon text-5xl mb-4">❌</div>
+                <p class="text-xl font-semibold text-red-400">Validation Failed</p>
+                <p class="text-sm text-slate-400 mt-1">{{ validationError }}</p>
+              </div>
+              <div class="p-4 bg-red-900 bg-opacity-30 border border-red-700 rounded-lg">
+                <p class="text-red-300 text-sm">The manifest could not be validated. Please check the file format and try again.</p>
+              </div>
+            </div>
+
+            <!-- Validation Success - Show Preview -->
+            <div v-else-if="validationResult" class="preview-content space-y-4">
+              <!-- Validation Status -->
+              <div class="validation-status p-4 bg-emerald-900 bg-opacity-30 border border-emerald-700 rounded-lg">
+                <div class="flex items-center gap-3">
+                  <div class="status-icon text-2xl">✅</div>
+                  <div>
+                    <p class="text-emerald-400 font-medium">Manifest Validated Successfully</p>
+                    <p class="text-emerald-300 text-sm">Ready to import - no changes have been made yet</p>
+                  </div>
+                </div>
+              </div>
+
               <!-- Course Info -->
               <div class="course-info bg-slate-700 rounded-lg p-4">
                 <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Course Details</h4>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <span class="text-slate-400">Legacy ID:</span>
-                    <span class="text-white ml-2">{{ manifestPreview.legacyId }}</span>
+                    <span class="text-white ml-2">{{ validationResult.legacyId }}</span>
                   </div>
                   <div>
                     <span class="text-slate-400">Course Code:</span>
-                    <span class="text-emerald-400 ml-2 font-mono">{{ manifestPreview.courseCode }}</span>
+                    <span class="text-emerald-400 ml-2 font-mono">{{ validationResult.courseCode }}</span>
                   </div>
                   <div>
                     <span class="text-slate-400">Known Language:</span>
-                    <span class="text-white ml-2">{{ manifestPreview.knownLang }}</span>
+                    <span class="text-white ml-2">{{ validationResult.knownLang }}</span>
                   </div>
                   <div>
                     <span class="text-slate-400">Target Language:</span>
-                    <span class="text-white ml-2">{{ manifestPreview.targetLang }}</span>
+                    <span class="text-white ml-2">{{ validationResult.targetLang }}</span>
+                  </div>
+                  <div class="col-span-2">
+                    <span class="text-slate-400">Display Name:</span>
+                    <span class="text-white ml-2">{{ validationResult.displayName }}</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Import Statistics -->
-              <div class="import-stats bg-slate-700 rounded-lg p-4">
-                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">What Will Be Imported</h4>
+              <!-- Import Plan -->
+              <div class="import-plan bg-slate-700 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-3">Import Plan</h4>
+                <p class="text-slate-300 text-sm mb-3">The following records will be created or updated:</p>
                 <div class="stats-grid grid grid-cols-2 gap-3">
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">Courses</span>
-                    <span class="text-white font-medium">1</span>
+                    <span class="text-slate-400">Course Record</span>
+                    <span class="text-emerald-400 font-medium">1</span>
                   </div>
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
                     <span class="text-slate-400">Audio Samples</span>
-                    <span class="text-white font-medium">{{ manifestPreview.sampleCount?.toLocaleString() }}</span>
+                    <span class="text-emerald-400 font-medium">{{ validationResult.sampleCount?.toLocaleString() }}</span>
                   </div>
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
                     <span class="text-slate-400">Seeds</span>
-                    <span class="text-white font-medium">{{ manifestPreview.seedCount?.toLocaleString() }}</span>
+                    <span class="text-emerald-400 font-medium">{{ validationResult.seedCount?.toLocaleString() }}</span>
                   </div>
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
                     <span class="text-slate-400">LEGOs</span>
-                    <span class="text-white font-medium">{{ manifestPreview.legoCount?.toLocaleString() }}</span>
+                    <span class="text-emerald-400 font-medium">{{ validationResult.legoCount?.toLocaleString() }}</span>
                   </div>
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
                     <span class="text-slate-400">Practice Phrases</span>
-                    <span class="text-white font-medium">{{ manifestPreview.phraseCount?.toLocaleString() }}</span>
+                    <span class="text-emerald-400 font-medium">{{ validationResult.phraseCount?.toLocaleString() }}</span>
                   </div>
                   <div class="stat-item flex justify-between p-2 bg-slate-800 rounded">
-                    <span class="text-slate-400">LEGO Introductions</span>
-                    <span class="text-white font-medium">{{ manifestPreview.legoCount?.toLocaleString() }}</span>
+                    <span class="text-slate-400">Shared Audio</span>
+                    <span class="text-emerald-400 font-medium">{{ (validationResult.orderedEncouragements || 0) + (validationResult.pooledEncouragements || 0) }}</span>
                   </div>
                 </div>
               </div>
@@ -179,18 +208,18 @@
                   />
                   <div>
                     <div class="text-white font-medium">Clear existing data first</div>
-                    <div class="text-sm text-slate-400">Delete all existing data for this course before importing. Use for re-imports.</div>
+                    <div class="text-sm text-slate-400">Delete all existing data for this course before importing. Recommended for re-imports.</div>
                   </div>
                 </label>
               </div>
 
-              <!-- Warning if course exists -->
-              <div v-if="manifestPreview.courseExists" class="warning-box p-4 bg-amber-900 bg-opacity-30 border border-amber-700 rounded-lg">
+              <!-- Course Exists Warning -->
+              <div v-if="validationResult.courseExists" class="warning-box p-4 bg-amber-900 bg-opacity-30 border border-amber-700 rounded-lg">
                 <div class="flex gap-3">
-                  <span class="text-amber-400 text-xl">...</span>
+                  <span class="text-amber-400 text-xl">⚠️</span>
                   <div>
-                    <p class="text-amber-400 font-medium">Course already exists</p>
-                    <p class="text-amber-300 text-sm">This course code is already in the database. The import will upsert records (update existing, insert new).</p>
+                    <p class="text-amber-400 font-medium">Course already exists in database</p>
+                    <p class="text-amber-300 text-sm">Records will be upserted (updated if exists, inserted if new). Consider enabling "Clear existing data first" for a clean re-import.</p>
                   </div>
                 </div>
               </div>
@@ -204,7 +233,7 @@
               <div class="progress-header text-center">
                 <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
                 <p class="text-lg font-medium text-white">Importing Course...</p>
-                <p class="text-sm text-slate-400 mt-1">{{ importStatus.message }}</p>
+                <p class="text-sm text-slate-400 mt-1">{{ importStatus.message || 'Starting import...' }}</p>
               </div>
 
               <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
@@ -214,21 +243,21 @@
                 ></div>
               </div>
 
-              <p class="text-center text-sm text-slate-500">Step {{ importStatus.step }} of 8</p>
+              <p class="text-center text-sm text-slate-500">Step {{ importStatus.step || 1 }} of 8</p>
             </div>
 
             <!-- Results -->
             <div v-else-if="importResult" class="import-results space-y-4">
               <!-- Success -->
               <div v-if="importResult.success" class="result-header text-center">
-                <div class="success-icon text-5xl mb-4">...</div>
+                <div class="success-icon text-5xl mb-4">🎉</div>
                 <p class="text-xl font-semibold text-emerald-400">Import Complete!</p>
                 <p class="text-sm text-slate-400 mt-1">{{ importResult.courseCode }} - {{ importResult.displayName }}</p>
               </div>
 
               <!-- Error -->
               <div v-else class="result-header text-center">
-                <div class="error-icon text-5xl mb-4">...</div>
+                <div class="error-icon text-5xl mb-4">❌</div>
                 <p class="text-xl font-semibold text-red-400">Import Failed</p>
                 <p class="text-sm text-slate-400 mt-1">{{ importResult.error }}</p>
               </div>
@@ -269,7 +298,7 @@
           <!-- Footer -->
           <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700">
             <button
-              v-if="currentStep > 1 && !isImporting && !importResult?.success"
+              v-if="currentStep > 1 && !isImporting && !isValidating && !importResult?.success"
               @click="prevStep"
               class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
             >
@@ -279,35 +308,50 @@
 
             <div class="flex gap-3">
               <button
-                v-if="!isImporting && !importResult?.success"
+                v-if="!isImporting && !isValidating && !importResult?.success"
                 @click="close"
                 class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
               >
                 Cancel
               </button>
 
-              <!-- Step 1: Continue -->
+              <!-- Step 1: Validate -->
               <button
                 v-if="currentStep === 1 && selectedFile"
-                @click="parseAndPreview"
-                :disabled="isParsingFile"
-                class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                @click="runValidation"
+                :disabled="isValidating"
+                class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
-                {{ isParsingFile ? 'Parsing...' : 'Continue' }}
+                <span>Validate Manifest</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
               </button>
 
-              <!-- Step 2: Start Import -->
-              <button
-                v-if="currentStep === 2"
-                @click="startImport"
-                class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
-              >
-                Start Import
-              </button>
+              <!-- Step 2: Re-validate or Start Import -->
+              <template v-if="currentStep === 2 && !isValidating">
+                <button
+                  v-if="validationError"
+                  @click="runValidation"
+                  class="px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
+                >
+                  Retry Validation
+                </button>
+                <button
+                  v-if="validationResult"
+                  @click="startImport"
+                  class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors flex items-center gap-2"
+                >
+                  <span>Start Import</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                  </svg>
+                </button>
+              </template>
 
               <!-- Step 3: Done -->
               <button
-                v-if="currentStep === 3 && importResult"
+                v-if="currentStep === 3 && importResult && !isImporting"
                 @click="handleDone"
                 class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
               >
@@ -352,14 +396,19 @@ function getApiBaseUrl(): string {
 
 // State
 const currentStep = ref(1);
-const stepLabels = ['Upload', 'Preview', 'Import'];
+const stepLabels = ['Upload', 'Validate', 'Import'];
 
+// Step 1 state
 const selectedFile = ref<File | null>(null);
 const isDragging = ref(false);
-const isParsingFile = ref(false);
 const parseError = ref('');
+const parsedManifest = ref<any>(null);
+const fileInput = ref<HTMLInputElement | null>(null);
 
-const manifestPreview = ref<{
+// Step 2 state
+const isValidating = ref(false);
+const validationError = ref('');
+const validationResult = ref<{
   legacyId: string;
   courseCode: string;
   knownLang: string;
@@ -369,11 +418,14 @@ const manifestPreview = ref<{
   seedCount: number;
   legoCount: number;
   phraseCount: number;
+  orderedEncouragements: number;
+  pooledEncouragements: number;
   courseExists: boolean;
 } | null>(null);
 
 const clearFirst = ref(false);
 
+// Step 3 state
 const isImporting = ref(false);
 const importStatus = ref({ step: 0, message: '' });
 const importResult = ref<{
@@ -391,21 +443,20 @@ const importResult = ref<{
   };
 } | null>(null);
 
-const parsedManifest = ref<any>(null);
-
 // Methods
 function close() {
-  if (!isImporting.value) {
+  if (!isImporting.value && !isValidating.value) {
     emit('close');
     // Reset state after close
     setTimeout(() => {
       currentStep.value = 1;
       selectedFile.value = null;
       parseError.value = '';
-      manifestPreview.value = null;
+      parsedManifest.value = null;
+      validationError.value = '';
+      validationResult.value = null;
       clearFirst.value = false;
       importResult.value = null;
-      parsedManifest.value = null;
     }, 200);
   }
 }
@@ -421,8 +472,15 @@ function prevStep() {
   if (currentStep.value > 1) {
     currentStep.value--;
     if (currentStep.value === 1) {
-      parseError.value = '';
+      validationError.value = '';
+      validationResult.value = null;
     }
+  }
+}
+
+function triggerFileInput() {
+  if (!selectedFile.value) {
+    fileInput.value?.click();
   }
 }
 
@@ -434,6 +492,7 @@ function handleDrop(event: DragEvent) {
     if (file.type === 'application/json' || file.name.endsWith('.json')) {
       selectedFile.value = file;
       parseError.value = '';
+      parseFileLocally();
     } else {
       parseError.value = 'Please select a JSON file';
     }
@@ -445,14 +504,16 @@ function handleFileSelect(event: Event) {
   if (input.files && input.files.length > 0) {
     selectedFile.value = input.files[0];
     parseError.value = '';
+    parseFileLocally();
   }
 }
 
 function clearFile() {
   selectedFile.value = null;
   parseError.value = '';
-  manifestPreview.value = null;
   parsedManifest.value = null;
+  validationResult.value = null;
+  validationError.value = '';
 }
 
 function formatFileSize(bytes: number): string {
@@ -461,92 +522,79 @@ function formatFileSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-// Course aliases (same as backend)
-const COURSE_ALIASES: Record<string, string> = {
-  'en-cy-north': 'cym_n_for_eng',
-  'en-cy-south': 'cym_s_for_eng',
-  'en-es': 'spa_for_eng',
-  'en-ga': 'gle_for_eng',
-  'cmn_for_eng': 'zho_for_eng',
-  'En-Ch': 'zho_for_eng'
-};
-
-const DISPLAY_NAMES: Record<string, string> = {
-  'cym_n_for_eng': 'Welsh (North) for English Speakers',
-  'cym_s_for_eng': 'Welsh (South) for English Speakers',
-  'spa_for_eng': 'Spanish for English Speakers',
-  'gle_for_eng': 'Irish for English Speakers',
-  'zho_for_eng': 'Mandarin for English Speakers'
-};
-
-async function parseAndPreview() {
+// Parse file locally (quick check before sending to server)
+async function parseFileLocally() {
   if (!selectedFile.value) return;
-
-  isParsingFile.value = true;
-  parseError.value = '';
 
   try {
     const text = await selectedFile.value.text();
     const manifest = JSON.parse(text);
 
-    // Validate manifest structure
+    // Basic validation
     if (!manifest.id || !manifest.slices || !Array.isArray(manifest.slices)) {
       throw new Error('Invalid manifest structure: missing id or slices');
     }
 
-    const slice = manifest.slices[0];
-    if (!slice) {
-      throw new Error('Invalid manifest: no slices found');
-    }
-
-    // Extract info
-    const legacyId = manifest.id;
-    const courseCode = COURSE_ALIASES[legacyId] || legacyId;
-    const knownLang = manifest.known || 'unknown';
-    const targetLang = manifest.target || 'unknown';
-
-    // Count items
-    const seeds = slice.seeds || [];
-    let legoCount = 0;
-    let phraseCount = 0;
-
-    for (const seed of seeds) {
-      const legos = seed.introductionItems || seed.introduction_items || [];
-      legoCount += legos.length;
-      for (const lego of legos) {
-        const phrases = lego.nodes || [];
-        phraseCount += phrases.length;
-      }
-    }
-
-    const sampleCount = manifest.samples ? Object.keys(manifest.samples).reduce((acc, key) => {
-      return acc + (manifest.samples[key]?.length || 0);
-    }, 0) : 0;
-
     parsedManifest.value = manifest;
-    manifestPreview.value = {
-      legacyId,
-      courseCode,
-      knownLang,
-      targetLang,
-      displayName: DISPLAY_NAMES[courseCode] || courseCode,
-      sampleCount,
-      seedCount: seeds.length,
-      legoCount,
-      phraseCount,
-      courseExists: false // Would need API call to check
-    };
-
-    currentStep.value = 2;
+    parseError.value = '';
   } catch (err) {
-    parseError.value = err instanceof Error ? err.message : 'Failed to parse manifest';
-  } finally {
-    isParsingFile.value = false;
+    parseError.value = err instanceof Error ? err.message : 'Failed to parse JSON file';
+    parsedManifest.value = null;
   }
 }
 
+// Run validation (dry run) via API
+async function runValidation() {
+  if (!parsedManifest.value) {
+    await parseFileLocally();
+    if (!parsedManifest.value) return;
+  }
+
+  currentStep.value = 2;
+  isValidating.value = true;
+  validationError.value = '';
+  validationResult.value = null;
+
+  try {
+    const apiBase = getApiBaseUrl();
+
+    const response = await fetch(`${apiBase}/api/import-course`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        manifest: parsedManifest.value,
+        dryRun: true
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Validation failed');
+    }
+
+    if (result.dryRun && result.analysis) {
+      validationResult.value = {
+        ...result.analysis,
+        courseExists: result.courseExists || false
+      };
+    } else {
+      throw new Error('Unexpected response format');
+    }
+
+  } catch (err) {
+    validationError.value = err instanceof Error ? err.message : 'Validation failed';
+  } finally {
+    isValidating.value = false;
+  }
+}
+
+// Start actual import
 async function startImport() {
-  if (!parsedManifest.value || !manifestPreview.value) return;
+  if (!parsedManifest.value || !validationResult.value) return;
 
   currentStep.value = 3;
   isImporting.value = true;
@@ -556,7 +604,6 @@ async function startImport() {
   try {
     const apiBase = getApiBaseUrl();
 
-    // Send as JSON (orchestrator expects JSON body, not FormData)
     const response = await fetch(`${apiBase}/api/import-course`, {
       method: 'POST',
       headers: {
@@ -565,7 +612,8 @@ async function startImport() {
       },
       body: JSON.stringify({
         manifest: parsedManifest.value,
-        clearFirst: clearFirst.value
+        clearFirst: clearFirst.value,
+        dryRun: false
       })
     });
 
@@ -578,7 +626,7 @@ async function startImport() {
     importResult.value = {
       success: true,
       courseCode: result.courseCode,
-      displayName: result.displayName || manifestPreview.value.displayName,
+      displayName: result.displayName || validationResult.value.displayName,
       statistics: result.statistics
     };
   } catch (err) {
@@ -595,7 +643,7 @@ async function startImport() {
 function handleKeydown(event: KeyboardEvent) {
   if (!props.visible) return;
 
-  if (event.key === 'Escape' && !isImporting.value) {
+  if (event.key === 'Escape' && !isImporting.value && !isValidating.value) {
     event.preventDefault();
     close();
   }

@@ -9237,9 +9237,9 @@ app.use('/api/production', async (req, res) => {
 app.post('/api/import-course', async (req, res) => {
   try {
     // Dynamic require to avoid loading at startup if not needed
-    const { importLegacyCourse, COURSE_ALIASES, clearCourseData } = require('../../database/lib/import-legacy-course-core.cjs');
+    const { importLegacyCourse, COURSE_ALIASES } = require('../../database/lib/import-legacy-course-core.cjs');
 
-    const { manifest, clearFirst } = req.body;
+    const { manifest, clearFirst, dryRun } = req.body;
 
     if (!manifest || !manifest.id || !manifest.slices) {
       return res.status(400).json({
@@ -9250,24 +9250,47 @@ app.post('/api/import-course', async (req, res) => {
 
     const legacyId = manifest.id;
     const courseCode = COURSE_ALIASES[legacyId] || legacyId;
+    const isDryRun = dryRun === true || dryRun === 'true';
 
-    console.log(`[Import] Starting import for ${legacyId} → ${courseCode}`);
-    console.log(`[Import] Clear first: ${clearFirst}`);
+    console.log(`[Import] ${isDryRun ? 'Validating' : 'Importing'} ${legacyId} → ${courseCode}`);
+    if (!isDryRun) console.log(`[Import] Clear first: ${clearFirst}`);
 
     const result = await importLegacyCourse(manifest, {
       supabaseUrl: process.env.SUPABASE_URL,
       supabaseKey: process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY,
-      dryRun: false,
-      clearFirst: clearFirst === true || clearFirst === 'true',
-      onProgress: ({ step, message }) => {
+      dryRun: isDryRun,
+      clearFirst: !isDryRun && (clearFirst === true || clearFirst === 'true'),
+      onProgress: isDryRun ? null : ({ step, message }) => {
         console.log(`[Import] Step ${step}/8: ${message}`);
       }
     });
 
+    // Dry run response - return analysis without making changes
+    if (result.dryRun) {
+      // Check if course exists in database
+      let courseExists = false;
+      try {
+        const { data } = await courseDataService.getCourse(courseCode);
+        courseExists = !!data;
+      } catch (e) {
+        // Ignore - courseExists stays false
+      }
+
+      console.log(`[Import] Validation complete: ${courseCode}`);
+      return res.json({
+        success: true,
+        dryRun: true,
+        analysis: result.analysis,
+        courseExists
+      });
+    }
+
+    // Live import response
     console.log(`[Import] Complete: ${courseCode}`);
 
     return res.json({
       success: true,
+      dryRun: false,
       courseCode: result.analysis.courseCode,
       displayName: result.analysis.displayName,
       statistics: {
