@@ -76,23 +76,30 @@ const routes = [
     component: CourseBrowser,
     meta: { title: 'Course Library' }
   },
+  // ============================================
+  // Course Manager (Unified - replaces NewCourse, CourseGeneration, GenerationMonitor)
+  // ============================================
+  {
+    path: '/course/:courseCode?',
+    name: 'CourseManager',
+    component: () => import('../views/CourseManager.vue'),
+    props: true,
+    meta: { title: 'Course Manager' }
+  },
+  // Redirects from deprecated routes
   {
     path: '/courses/new',
-    name: 'NewCourse',
-    component: () => import('../views/NewCourse.vue'),
-    meta: { title: 'Create New Course' }
+    redirect: '/course'
   },
   {
     path: '/generate',
-    name: 'CourseGeneration',
-    component: CourseGeneration
-  },
-  {
-    path: '/course/:courseCode',
-    name: 'CourseBuilder',
-    component: () => import('../components/generation/GenerationMonitor.vue'),
-    props: true,
-    meta: { title: 'Course Builder' }
+    redirect: to => {
+      const query = to.query
+      if (query.target && query.known) {
+        return `/course/${query.target}_for_${query.known}`
+      }
+      return '/course'
+    }
   },
   {
     // Legacy route - redirect to new unified course page

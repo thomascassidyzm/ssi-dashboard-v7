@@ -4550,6 +4550,47 @@ app.post('/api/cancel-all', async (req, res) => {
 });
 
 /**
+ * POST /api/force-kill/:courseCode
+ * Force kill a stuck job by sending abort to all phase servers
+ * Idempotent - returns success even if job wasn't found
+ */
+app.post('/api/force-kill/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  console.log(`[Orchestrator] 🔴 Force kill requested for ${courseCode}`);
+
+  const results = { courseCode, killed: [], errors: [] };
+
+  // Define abort endpoints for each phase server
+  const abortEndpoints = {
+    phase1: `/api/phase1/${courseCode}/cancel`,
+    phase2: `/stop/${courseCode}`,
+    phase3: `/abort/${courseCode}`
+  };
+
+  // Send abort to all phase servers (ignore errors - job may not be on that server)
+  for (const [phase, endpoint] of Object.entries(abortEndpoints)) {
+    const url = PHASE_SERVERS[phase];
+    if (!url) continue;
+
+    try {
+      await axios.post(`${url}${endpoint}`, {}, { timeout: 5000 });
+      results.killed.push(phase);
+      console.log(`[Orchestrator]    ✓ Force killed ${phase}`);
+    } catch (error) {
+      // Ignore errors - job may not exist on this server
+      console.log(`[Orchestrator]    - ${phase}: ${error.message || 'not running'}`);
+    }
+  }
+
+  // Clear local state for this course
+  courseProgress.delete(courseCode);
+  courseStates.delete(courseCode);
+
+  console.log(`[Orchestrator] 🔴 Force kill complete for ${courseCode}`);
+  res.json({ success: true, message: 'Force kill sent to all phase servers', ...results });
+});
+
+/**
  * GET /api/jobs
  * List all active jobs across all services
  */

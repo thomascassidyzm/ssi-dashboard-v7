@@ -36,13 +36,13 @@
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">User Workflow</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Generate New Course -->
-          <router-link to="/generate" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
+          <!-- Create/Manage Course -->
+          <router-link to="/course" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-2">🚀 Generate New Course</h3>
+                <h3 class="text-2xl font-bold text-white mb-2">Course Manager</h3>
                 <p class="text-emerald-100 text-sm">
-                  Start the linear pipeline to generate a new language course (Phase 1 → 2 → 3 → Manifest → Audio)
+                  Create new courses or manage existing ones through the content pipeline (Phase 1 → 2 → 3)
                 </p>
               </div>
               <div class="text-white">
