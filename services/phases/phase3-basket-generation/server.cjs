@@ -47,6 +47,22 @@ const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES } = require('../..
 const unifiedSpawner = require('../../shared/spawn-agent-unified.cjs');
 
 /**
+ * Get total count of NEW LEGOs (is_new=true) for a course
+ * Used to determine if this is a fresh run vs resume
+ * @param {string} courseCode - Course identifier
+ * @returns {Promise<number>} Count of NEW LEGOs in the course
+ */
+async function getTotalNewLegosForCourse(courseCode) {
+  try {
+    const legos = await courseDataService.getLegosByCourse(courseCode, { onlyNew: true });
+    return legos?.length || 0;
+  } catch (error) {
+    console.warn(`[Phase 3] Could not get NEW LEGO count for ${courseCode}: ${error.message}`);
+    return 0;
+  }
+}
+
+/**
  * Load a prompt template and substitute placeholders
  * @param {string} templateName - Template filename (e.g., 'phase3_master.md')
  * @param {Object} placeholders - Key-value pairs for {{PLACEHOLDER}} substitution
@@ -848,62 +864,70 @@ app.post('/start', async (req, res) => {
     // Set expected LEGOs for upload tracking
     job.uploads.expectedLegos = targetLegos.length;
 
-    // STEP 2: MASTER/WORKER CONFIGURATION - DYNAMIC SCALING
+    // STEP 2: MASTER/WORKER CONFIGURATION - LEGO-BASED SCALING
     // Use centralized config for parallelization patterns
     const config = loadConfig();
+    const phase3Config = config.phase_overrides?.phase3_basket_generation || {};
 
-    // Count unique seeds to process
-    const uniqueSeeds = new Set(targetLegos.map(l => l.seed));
-    const seedsToProcess = uniqueSeeds.size;
+    // LEGO-based assignment: LEGOs are the work unit, not seeds
+    const legosToProcess = targetLegos.length;
 
-    // Get the appropriate pattern based on seed count from centralized config
-    let masterCount, workersPerMaster, SEEDS_PER_WORKER;
+    // Get Phase 3 specific config (defaults from config file)
+    const AGENTS_PER_BROWSER = phase3Config.agents_per_browser || 13;
 
-    if (seedsToProcess === 0) {
+    // Determine LEGOs per agent: 10 for fresh runs, 5 for resume (smaller batches)
+    // "Resume" = some LEGOs already have baskets (partial completion)
+    // We detect this by checking if we're processing fewer LEGOs than the total NEW LEGOs
+    const totalNewLegosInCourse = await getTotalNewLegosForCourse(courseCode);
+    const isResumeMode = totalNewLegosInCourse > 0 && legosToProcess < totalNewLegosInCourse;
+    const LEGOS_PER_AGENT = isResumeMode
+      ? (phase3Config.legos_per_agent_resume || 5)
+      : (phase3Config.legos_per_agent || 10);
+
+    console.log(`[Phase 3]    Total NEW LEGOs in course: ${totalNewLegosInCourse}`);
+    console.log(`[Phase 3]    LEGOs to process: ${legosToProcess} (${isResumeMode ? 'RESUME' : 'FRESH'} mode)`);
+
+    let masterCount, workersPerMaster, legosPerWorker;
+
+    if (legosToProcess === 0) {
       masterCount = 0;
       workersPerMaster = 0;
-      SEEDS_PER_WORKER = 0;
+      legosPerWorker = 0;
     } else {
-      // Use centralized config to determine parallelization pattern
-      const modeConfig = getPatternForSeeds(seedsToProcess);
-      const pattern = modeConfig.pattern;
+      workersPerMaster = AGENTS_PER_BROWSER;
 
-      masterCount = pattern.browsers;
-      workersPerMaster = pattern.agents_per_browser;
-      SEEDS_PER_WORKER = pattern.seeds_per_agent;
+      // Calculate how many total workers needed
+      const totalWorkersNeeded = Math.ceil(legosToProcess / LEGOS_PER_AGENT);
 
-      console.log(`\n[Phase 3] 📊 Dynamic Scaling (from centralized config):`);
-      console.log(`[Phase 3]    Mode: ${modeConfig.name} (${modeConfig.description})`);
-      console.log(`[Phase 3]    Seeds to process: ${seedsToProcess}`);
-      console.log(`[Phase 3]    Pattern: ${masterCount} browsers × ${workersPerMaster} workers × ${SEEDS_PER_WORKER} seeds/worker`);
-      console.log(`[Phase 3]    Total capacity: ${modeConfig.capacity} seeds`);
+      // Calculate how many masters (browser tabs) needed
+      masterCount = Math.max(1, Math.ceil(totalWorkersNeeded / AGENTS_PER_BROWSER));
+
+      // Recalculate actual LEGOs per worker based on total workers
+      const totalWorkers = masterCount * workersPerMaster;
+      legosPerWorker = Math.ceil(legosToProcess / totalWorkers);
+
+      console.log(`\n[Phase 3] 📊 LEGO-Based Scaling:`);
+      console.log(`[Phase 3]    Mode: ${isResumeMode ? 'Resume (5 LEGOs/agent)' : 'Fresh (10 LEGOs/agent)'}`);
+      console.log(`[Phase 3]    LEGOs to process: ${legosToProcess}`);
+      console.log(`[Phase 3]    Pattern: ${masterCount} browsers × ${workersPerMaster} agents × ~${legosPerWorker} LEGOs/agent`);
     }
 
     const totalWorkers = masterCount * workersPerMaster;
-    // Calculate seeds per worker dynamically based on actual workload
-    const seedsPerWorker = totalWorkers > 0 ? Math.max(1, Math.ceil(seedsToProcess / totalWorkers)) : 0;
-    const capacity = seedsToProcess; // Actual capacity is the seeds we're processing
 
     console.log(`\n[Phase 3] Master/Worker Configuration:`);
     console.log(`[Phase 3]    Masters: ${masterCount} browser tabs`);
     console.log(`[Phase 3]    Workers per Master: ${workersPerMaster} (via Task tool)`);
-    console.log(`[Phase 3]    Seeds per worker: ${seedsPerWorker}`);
+    console.log(`[Phase 3]    LEGOs per worker: ~${legosPerWorker}`);
     console.log(`[Phase 3]    Total workers: ${totalWorkers}`);
-    console.log(`[Phase 3]    Total capacity: ${capacity} seeds`);
-    console.log(`[Phase 3]    Seeds to process: ${seedsToProcess} seeds`);
-    console.log(`[Phase 3]    Target LEGOs: ${targetLegos.length} LEGOs`);
-
-    if (capacity < totalSeeds) {
-      console.warn(`[Phase 3] ⚠️  Warning: Capacity (${capacity}) < Total Seeds (${totalSeeds})`);
-      console.warn(`[Phase 3]    Increase browsers or agents_per_browser in config!`);
-    }
+    console.log(`[Phase 3]    Target LEGOs: ${legosToProcess} LEGOs`);
 
     job.config = {
       masterCount,
       workersPerMaster,
-      seedsPerWorker,
+      legosPerWorker,
       totalWorkers,
-      capacity,
+      legosToProcess,
+      isResumeMode,
       // Legacy fields for backward compatibility
       browsers: masterCount,
       agents: workersPerMaster,
@@ -925,7 +949,7 @@ app.post('/start', async (req, res) => {
       targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
       stagingOnly,     // ← Pass through staging flag
       spawnerMode      // ← 'cli' or 'browser'
-    }, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job);
+    }, baseCourseDir, masterCount, workersPerMaster, legosPerWorker, job);
 
     res.json({
       success: true,
@@ -1227,59 +1251,53 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
 }
 
 /**
- * Spawn Master browser tabs (THREE-TIER ARCHITECTURE)
- * Each Master receives scaffold subset and spawns Worker agents via Task tool
+ * Spawn Master browser tabs (THREE-TIER ARCHITECTURE - LEGO-BASED)
+ * Each Master receives a chunk of LEGOs (sorted by ID) and spawns Worker agents via Task tool
  *
  * @param {string} courseCode - Course identifier
  * @param {object} params - Contains legoData, targetLegos, startSeed, endSeed, etc.
  * @param {string} baseCourseDir - Base course directory path
- * @param {number} masterCount - Number of Master tabs to spawn (15)
- * @param {number} workersPerMaster - Workers each Master spawns via Task tool (10)
- * @param {number} seedsPerWorker - Seeds per worker agent (5)
+ * @param {number} masterCount - Number of Master tabs to spawn
+ * @param {number} workersPerMaster - Workers each Master spawns via Task tool (13)
+ * @param {number} legosPerWorker - LEGOs per worker agent (10 fresh, 5 resume)
  * @param {object} job - Job tracking object
  */
-async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job = null) {
+async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, legosPerWorker, job = null) {
   const { target, known, startSeed, endSeed, legoData, targetLegos, spawnerMode = 'cli' } = params;
   const modeLabel = spawnerMode === 'cli' ? 'CLI agents (iTerm2)' : 'Safari tabs';
 
   console.log(`\n[Phase 3] 🌐 Spawning ${masterCount} Master ${modeLabel}...`);
   console.log(`[Phase 3]    Spawner mode: ${spawnerMode}`);
   console.log(`[Phase 3]    Each Master spawns ${workersPerMaster} workers via Task tool`);
-  console.log(`[Phase 3]    Each worker processes ~${seedsPerWorker} seeds`);
+  console.log(`[Phase 3]    Each worker processes ~${legosPerWorker} LEGOs`);
   console.log(`[Phase 3]    Total LEGOs: ${targetLegos.length}`);
 
   const config = loadConfig();
   const spawnDelay = config.phase3_basket_generation.browser_spawn_delay_ms || 5000;
 
-  // Group LEGOs by seed for clean division
-  const legosBySeed = {};
-  for (const lego of targetLegos) {
-    const seedId = lego.seed;
-    if (!legosBySeed[seedId]) {
-      legosBySeed[seedId] = [];
-    }
-    legosBySeed[seedId].push(lego);
-  }
+  // LEGO-BASED ASSIGNMENT: Sort LEGOs by ID (lowest to highest)
+  const sortedLegos = [...targetLegos].sort((a, b) => {
+    // Sort by legoId (e.g., S0001L01, S0001L02, S0002L01...)
+    return a.legoId.localeCompare(b.legoId);
+  });
 
-  // Get sorted list of seeds
-  const seeds = Object.keys(legosBySeed).sort();
-  console.log(`[Phase 3]    Total seeds with LEGOs: ${seeds.length}`);
+  console.log(`[Phase 3]    LEGOs sorted: ${sortedLegos[0]?.legoId} to ${sortedLegos[sortedLegos.length - 1]?.legoId}`);
 
-  // Divide SEEDS among Masters (each seed stays together - atomic unit)
-  const seedsPerMaster = Math.ceil(seeds.length / masterCount);
+  // Calculate LEGOs per Master (divide total LEGOs evenly among masters)
+  const legosPerMaster = Math.ceil(sortedLegos.length / masterCount);
 
   for (let masterNum = 1; masterNum <= masterCount; masterNum++) {
     console.log(`\n[Phase 3]   Master${masterNum}/${masterCount}:`);
 
-    // Calculate this Master's seed range
-    const masterStartIdx = (masterNum - 1) * seedsPerMaster;
-    const masterEndIdx = Math.min(masterNum * seedsPerMaster, seeds.length);
-    const masterSeeds = seeds.slice(masterStartIdx, masterEndIdx);
+    // Calculate this Master's LEGO chunk (direct slice, not grouped by seed)
+    const masterStartIdx = (masterNum - 1) * legosPerMaster;
+    const masterEndIdx = Math.min(masterNum * legosPerMaster, sortedLegos.length);
+    const masterTargetLegos = sortedLegos.slice(masterStartIdx, masterEndIdx);
 
-    // Collect all LEGOs from this Master's seeds
-    const masterTargetLegos = [];
-    for (const seedId of masterSeeds) {
-      masterTargetLegos.push(...legosBySeed[seedId]);
+    // Skip if no LEGOs for this master
+    if (masterTargetLegos.length === 0) {
+      console.log(`[Phase 3]    No LEGOs for this Master, skipping...`);
+      continue;
     }
 
     // Extract scaffold data for this Master's LEGOs
@@ -1291,21 +1309,22 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
     }
 
     const dataSize = Math.round(JSON.stringify(masterLegoData).length / 1024);
-    console.log(`[Phase 3]Seeds: ${masterSeeds.slice(0, 5).join(', ')}${masterSeeds.length > 5 ? '...' : ''} (${masterSeeds.length} seeds)`);
-    console.log(`[Phase 3]LEGOs: ${masterTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
-    console.log(`[Phase 3]Will spawn ${workersPerMaster} workers via Task tool`);
+    const firstLegoId = masterTargetLegos[0]?.legoId || 'N/A';
+    const lastLegoId = masterTargetLegos[masterTargetLegos.length - 1]?.legoId || 'N/A';
+    console.log(`[Phase 3]    LEGOs: ${firstLegoId} to ${lastLegoId} (${masterTargetLegos.length} LEGOs)`);
+    console.log(`[Phase 3]    Scaffold data: ${dataSize} KB`);
+    console.log(`[Phase 3]    Will spawn ${workersPerMaster} workers via Task tool`);
 
-    // Generate Master orchestrator prompt with text scaffolds
+    // Generate Master orchestrator prompt with LEGO-based assignments
     const masterPrompt = generatePhase3OrchestratorPrompt(
       courseCode,
       {
         target,
         known,
-        startSeed: parseInt(masterSeeds[0].replace('S', '')),
-        endSeed: parseInt(masterSeeds[masterSeeds.length - 1].replace('S', '')),
         legoData: masterLegoData,
         targetLegos: masterTargetLegos,
         agentsPerWindow: workersPerMaster,  // Workers this Master should spawn
+        legosPerWorker,                      // LEGOs each worker should process
         stagingOnly: params.stagingOnly
       },
       baseCourseDir
@@ -1356,10 +1375,10 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
 
 /**
  * Generate Phase 3 Master Prompt - Self-Managing Practice Basket Generation
- * Supports both regular mode (seed range) and regeneration mode (specific LEGO_IDs)
+ * Supports both regular mode (LEGO-based) and regeneration mode (specific LEGO_IDs)
  */
 function generatePhase3OrchestratorPrompt(courseCode, params, courseDir) {
-  const { target, known, startSeed, endSeed, legoIds, isRegeneration, agentsPerWindow, seedsPerAgent } = params;
+  const { target, known, legoIds, isRegeneration, agentsPerWindow, legosPerWorker } = params;
 
   const relativeDir = getRelativeCourseDir(courseDir);
 
@@ -1417,79 +1436,65 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 `;
   }
 
-  // MASTER MODE: Master spawns workers via Task tool
-  const totalSeeds = endSeed - startSeed + 1;
+  // MASTER MODE: Master spawns workers via Task tool (LEGO-BASED ASSIGNMENT)
   const legoData = params.legoData || {};
   const targetLegos = params.targetLegos || [];
   const legoCount = targetLegos.length;
-  const requestedWorkers = params.agentsPerWindow || 4;
+  const requestedWorkers = agentsPerWindow || 13;
+  const targetLegosPerWorker = legosPerWorker || 10;
 
+  // LEGO-BASED ASSIGNMENT: Sort LEGOs by ID and chunk directly
+  const sortedLegos = [...targetLegos].sort((a, b) => a.legoId.localeCompare(b.legoId));
 
-  // Group LEGOs by seed for clean division
-  const legosBySeed = {};
-  for (const lego of targetLegos) {
-    const seedId = lego.seed;
-    if (!legosBySeed[seedId]) {
-      legosBySeed[seedId] = [];
-    }
-    legosBySeed[seedId].push(lego);
-  }
-  const seeds = Object.keys(legosBySeed).sort();
+  // Calculate workers needed and actual LEGOs per worker
+  const MIN_WORKERS = 1;
+  const workersNeeded = Math.ceil(legoCount / targetLegosPerWorker);
+  const workersToSpawn = Math.max(MIN_WORKERS, Math.min(requestedWorkers, workersNeeded, legoCount));
+  const actualLegosPerWorker = Math.ceil(legoCount / workersToSpawn);
 
-  // ALWAYS spawn the requested number of workers (minimum 5)
-  // Seeds are distributed evenly - some workers may have fewer if seeds < workers
-  const MIN_WORKERS = 5;
-  const workersToSpawn = Math.max(MIN_WORKERS, Math.min(requestedWorkers, seeds.length));
-  const seedsPerWorker = workersToSpawn > 0 ? Math.ceil(seeds.length / workersToSpawn) : 0;
-
-  // Create LEGO assignments (distribute seeds evenly among workers)
-  // Only create assignments for workers that have actual work
+  // Create LEGO assignments (distribute LEGOs directly, not by seed)
   const workerAssignments = [];
   for (let workerNum = 1; workerNum <= workersToSpawn; workerNum++) {
-    const workerStartIdx = (workerNum - 1) * seedsPerWorker;
-    const workerEndIdx = Math.min(workerNum * seedsPerWorker, seeds.length);
-    const workerSeeds = seeds.slice(workerStartIdx, workerEndIdx);
+    const workerStartIdx = (workerNum - 1) * actualLegosPerWorker;
+    const workerEndIdx = Math.min(workerNum * actualLegosPerWorker, sortedLegos.length);
+    const workerLegos = sortedLegos.slice(workerStartIdx, workerEndIdx);
 
-    // Skip workers that have no seeds assigned
-    if (workerSeeds.length === 0) continue;
+    // Skip workers that have no LEGOs assigned
+    if (workerLegos.length === 0) continue;
 
-    // Collect all LEGOs from this worker's seeds
-    const workerLegoIds = [];
-    workerSeeds.forEach(seedId => {
-      const seedLegos = legosBySeed[seedId];
-      seedLegos.forEach(lego => workerLegoIds.push(lego.legoId));
-    });
+    const workerLegoIds = workerLegos.map(l => l.legoId);
 
     workerAssignments.push({
       workerNum,
-      seedIds: workerSeeds,
       legoIds: workerLegoIds,
-      legoCount: workerLegoIds.length
+      legoCount: workerLegoIds.length,
+      firstLego: workerLegoIds[0],
+      lastLego: workerLegoIds[workerLegoIds.length - 1]
     });
   }
 
   // Adjust actual workers to spawn based on assignments (don't spawn empty workers)
   const actualWorkersToSpawn = workerAssignments.length;
 
-  // Format worker assignments for template
+  // Format worker assignments for template (LEGO-centric display)
   const workerAssignmentsText = workerAssignments.map(w => {
-    const seedDisplay = w.seedIds.length === 1
-      ? `Seed ${w.seedIds[0]}`
-      : `Seeds ${w.seedIds[0]}-${w.seedIds[w.seedIds.length - 1]} (${w.seedIds.length} seeds)`;
-    const legoDisplay = w.legoIds.length <= 10
+    const legoRangeDisplay = w.legoCount === 1
+      ? `LEGO ${w.firstLego}`
+      : `LEGOs ${w.firstLego} to ${w.lastLego}`;
+    const legoListDisplay = w.legoIds.length <= 8
       ? w.legoIds.join(', ')
-      : `${w.legoIds.slice(0, 10).join(', ')}... and ${w.legoIds.length - 10} more`;
-    return `**Worker ${w.workerNum}:** ${seedDisplay} - LEGOs: ${legoDisplay} (${w.legoCount} LEGOs)`;
+      : `${w.legoIds.slice(0, 8).join(', ')}... +${w.legoIds.length - 8} more`;
+    return `**Worker ${w.workerNum}:** ${legoRangeDisplay} (${w.legoCount} LEGOs): ${legoListDisplay}`;
   }).join('\n');
 
   // Use template with placeholders
   return loadPromptTemplate('phase3_master.md', {
     COURSE_CODE: courseCode,
-    START_SEED: `S${String(startSeed).padStart(4, '0')}`,
-    END_SEED: `S${String(endSeed).padStart(4, '0')}`,
-    TOTAL_SEEDS: totalSeeds,
+    START_SEED: sortedLegos[0]?.seed || 'N/A',
+    END_SEED: sortedLegos[sortedLegos.length - 1]?.seed || 'N/A',
+    TOTAL_SEEDS: new Set(sortedLegos.map(l => l.seed)).size,
     LEGO_COUNT: legoCount,
-    SEEDS_COUNT: seeds.length,
+    SEEDS_COUNT: new Set(sortedLegos.map(l => l.seed)).size,
     WORKERS_TO_SPAWN: actualWorkersToSpawn,
     WORKER_ASSIGNMENTS: workerAssignmentsText,
     KNOWN_LANGUAGE: known,

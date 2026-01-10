@@ -75,8 +75,11 @@
       "comment": "Phase 2 uses same patterns - LEGO extraction is medium weight"
     },
     "phase3_basket_generation": {
-      "comment": "Phase 3 is token-heavy - may need reduced seeds_per_agent",
-      "seeds_per_agent_multiplier": 1.0
+      "comment": "Phase 3 uses LEGO-based assignment (not seed-based)",
+      "legos_per_agent": 10,
+      "legos_per_agent_resume": 5,
+      "agents_per_browser": 13,
+      "rationale": "LEGOs are the actual work unit. 10 LEGOs/agent fresh, 5 LEGOs/agent resume for granularity."
     }
   },
 
