@@ -660,15 +660,18 @@ async function getCourseProgress(courseCode) {
     }
   }
 
-  // A seed is complete when all its new LEGOs have practice phrases
-  const phase3SeedNumbers = Object.keys(seedNewLegoCount)
+  // Seeds with ALL new LEGOs having practice phrases (strict definition)
+  const seedsFullyComplete = Object.keys(seedNewLegoCount)
     .filter(seedNum => seedNewLegoCount[seedNum] === (seedCompleteLegos[seedNum] || 0))
     .map(Number)
     .sort((a, b) => a - b);
 
-  // Also track seeds with any practice phrases (for backward compat / debugging)
-  const seedsWithAnyPhrases = [...new Set((practicePhraseData || []).map(p => p.seed_number))];
+  // Seeds with ANY practice phrases (for progress tracking)
+  const seedsWithAnyPhrases = [...new Set((practicePhraseData || []).map(p => p.seed_number))]
+    .sort((a, b) => a - b);
 
+  // For progress display, use seeds with ANY phrases (more intuitive)
+  // The strict "fully complete" count is available separately if needed
   return {
     courseCode,
     targetSeedCount,
@@ -687,12 +690,14 @@ async function getCourseProgress(courseCode) {
       note: 'Phase 2 runs after all Phase 1 complete'
     },
     phase3: {
-      complete: phase3SeedNumbers.length,
+      // Use seeds with ANY phrases for progress (intuitive count)
+      complete: seedsWithAnyPhrases.length,
       target: targetSeedCount,
-      percent: Math.round((phase3SeedNumbers.length / targetSeedCount) * 100),
-      seeds: phase3SeedNumbers.sort((a, b) => a - b),
-      // Additional info: seeds with any phrases (may not be fully complete)
-      seedsStarted: seedsWithAnyPhrases.length
+      percent: Math.round((seedsWithAnyPhrases.length / targetSeedCount) * 100),
+      seeds: seedsWithAnyPhrases,
+      // Strict count: seeds where ALL new LEGOs have phrases
+      seedsFullyComplete: seedsFullyComplete.length,
+      seedsFullyCompleteList: seedsFullyComplete
     }
   };
 }
