@@ -1032,6 +1032,172 @@ async function loadAgentSpawner(spawnerMode = 'browser') {
 }
 
 /**
+ * GET /preview/:courseCode
+ * Preview what a Phase 1 job would look like without starting it (dry run)
+ */
+app.get('/preview/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { mode = 'full_course' } = req.query;
+
+  console.log(`\n[Phase 1] 🔍 Preview requested for: ${courseCode} (mode: ${mode})`);
+
+  try {
+    // Parse course code for language pair
+    const parts = courseCode.split('_for_');
+    if (parts.length !== 2) {
+      return res.status(400).json({ error: 'Invalid course code format. Expected: target_for_known' });
+    }
+
+    const [target, known] = parts;
+    const courseDir = path.join(VFS_ROOT, courseCode);
+
+    // Check for existing active job
+    const existingJob = activeJobs.get(courseCode);
+    if (existingJob) {
+      return res.json({
+        phase: 1,
+        courseCode,
+        hasActiveJob: true,
+        jobStatus: existingJob.status,
+        message: 'A Phase 1 job is already running for this course'
+      });
+    }
+
+    // Get mode config for seed count and pattern
+    let modeConfig;
+    let totalSeeds;
+    try {
+      modeConfig = getModeConfig(mode);
+      totalSeeds = modeConfig.seeds;
+    } catch (err) {
+      return res.status(400).json({
+        error: err.message,
+        validModes: Object.values(MODES)
+      });
+    }
+
+    // Scan for processed seeds
+    const processedSeeds = new Set();
+    const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+    const batchesDir = path.join(courseDir, 'phase1_batches');
+
+    if (await fs.pathExists(draftPath)) {
+      try {
+        const draft = await fs.readJson(draftPath);
+        for (const seed of draft) {
+          if (seed.seed_id) {
+            processedSeeds.add(seed.seed_id);
+          }
+        }
+      } catch (err) {
+        console.error(`[Phase 1] Error reading draft_lego_pairs.json: ${err.message}`);
+      }
+    } else if (await fs.pathExists(batchesDir)) {
+      const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
+      for (const file of batchFiles) {
+        try {
+          const batch = await fs.readJson(path.join(batchesDir, file));
+          for (const seed of batch) {
+            if (seed.seed_id) {
+              processedSeeds.add(seed.seed_id);
+            }
+          }
+        } catch (err) {
+          console.error(`[Phase 1] Error reading ${file}: ${err.message}`);
+        }
+      }
+    }
+
+    // Find missing seeds
+    const missingSeeds = [];
+    for (let i = 1; i <= totalSeeds; i++) {
+      const seedId = 'S' + String(i).padStart(4, '0');
+      if (!processedSeeds.has(seedId)) {
+        missingSeeds.push(seedId);
+      }
+    }
+
+    const seedsToProcess = missingSeeds.length;
+
+    if (seedsToProcess === 0) {
+      return res.json({
+        phase: 1,
+        courseCode,
+        alreadyComplete: true,
+        seedsToProcess: 0,
+        processedSeeds: processedSeeds.size,
+        totalSeeds,
+        message: 'Phase 1 is already complete - all seeds translated'
+      });
+    }
+
+    // Calculate job shape
+    const isResumeMode = processedSeeds.size > 0;
+    let pattern;
+
+    if (isResumeMode) {
+      // Use resume config (1 seed per agent for granularity)
+      const resumeConfig = getResumeConfig();
+      const { seeds_per_agent, agents_per_browser } = resumeConfig;
+      const agentsNeeded = Math.ceil(seedsToProcess / seeds_per_agent);
+      const browsersNeeded = Math.ceil(agentsNeeded / agents_per_browser);
+
+      pattern = {
+        browsers: browsersNeeded,
+        agents_per_browser: Math.min(agentsNeeded, agents_per_browser),
+        seeds_per_agent: seeds_per_agent
+      };
+    } else {
+      // Fresh run - use mode pattern
+      pattern = modeConfig.pattern;
+    }
+
+    const { browsers, agents_per_browser, seeds_per_agent } = pattern;
+    const totalAgents = browsers * agents_per_browser;
+
+    // Estimate time (conservative: ~3 seeds/minute)
+    const estimatedRate = 3; // seeds per minute
+    const estimatedMinutes = Math.ceil(seedsToProcess / estimatedRate);
+
+    console.log(`[Phase 1] Preview: ${seedsToProcess} seeds, ${browsers} browsers × ${agents_per_browser} agents`);
+
+    res.json({
+      phase: 1,
+      courseCode,
+      hasActiveJob: false,
+
+      // Progress info
+      seedsToProcess,
+      processedSeeds: processedSeeds.size,
+      totalSeeds,
+      isResumeMode,
+      mode: isResumeMode ? 'resume' : mode,
+
+      // Worker configuration
+      browserTabs: browsers,
+      agentsPerBrowser: agents_per_browser,
+      totalAgents,
+      seedsPerAgent: seeds_per_agent,
+
+      // Seed range
+      seedRange: { start: 1, end: totalSeeds },
+      missingSeedIds: missingSeeds.slice(0, 10), // First 10 for preview
+
+      // Time estimate
+      estimatedMinutes,
+      estimatedRate,
+
+      // Summary message
+      summary: `Will translate ${seedsToProcess} seeds using ${browsers} browser tab${browsers > 1 ? 's' : ''} × ${agents_per_browser} agents (${isResumeMode ? 'resume' : 'fresh'} mode, ~${seeds_per_agent} seeds/agent)`
+    });
+
+  } catch (error) {
+    console.error(`[Phase 1] Preview error:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /status/:courseCode
  * Get current Phase 1 status
  */

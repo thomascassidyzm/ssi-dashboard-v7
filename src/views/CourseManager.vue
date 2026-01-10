@@ -251,13 +251,36 @@
           </div>
 
           <div class="flex gap-3">
-            <!-- Start/Resume Button -->
+            <!-- Preview Button (when no preview shown) -->
             <button
-              v-if="jobStatus === 'idle' && hasIncompletePhases"
+              v-if="jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
+              @click="fetchPreview"
+              :disabled="previewLoading"
+              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-slate-200 font-medium rounded-lg transition-colors flex items-center gap-2"
+            >
+              <svg v-if="previewLoading" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>{{ previewLoading ? 'Loading...' : 'Preview' }}</span>
+            </button>
+
+            <!-- Execute Button (when preview shown) -->
+            <button
+              v-if="jobStatus === 'idle' && hasIncompletePhases && previewExpanded"
               @click="startPhase"
               class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg transition-colors"
             >
-              {{ nextPhaseAction }}
+              Execute {{ nextPhaseAction }}
+            </button>
+
+            <!-- Cancel Preview Button -->
+            <button
+              v-if="previewExpanded"
+              @click="closePreview"
+              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium rounded-lg transition-colors"
+            >
+              Cancel
             </button>
 
             <!-- Stop Button -->
@@ -278,6 +301,84 @@
             >
               Force Kill
             </button>
+          </div>
+        </div>
+
+        <!-- Inline Preview Panel -->
+        <div
+          v-if="previewExpanded && previewData"
+          class="border-t border-slate-700/50 px-6 py-5 bg-slate-800/20"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h4 class="text-sm font-medium text-slate-300 uppercase tracking-wide mb-1">Dry Run Preview</h4>
+              <p class="text-sm text-slate-400">{{ previewData.summary }}</p>
+            </div>
+            <span class="text-xs text-emerald-400 uppercase tracking-wide px-2 py-1 bg-emerald-500/10 rounded">
+              Phase {{ previewData.phase }}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Work to do -->
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Work</div>
+              <div class="text-2xl font-semibold text-slate-200">
+                {{ previewData.legosToProcess || previewData.seedsToProcess || 0 }}
+              </div>
+              <div class="text-xs text-slate-400">
+                {{ previewData.phase === 3 ? 'LEGOs' : 'seeds' }} to process
+              </div>
+            </div>
+
+            <!-- Mode -->
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Mode</div>
+              <div class="text-lg font-semibold" :class="previewData.isResumeMode ? 'text-amber-400' : 'text-emerald-400'">
+                {{ previewData.isResumeMode ? 'Resume' : 'Fresh' }}
+              </div>
+              <div class="text-xs text-slate-400">
+                {{ previewData.isResumeMode ? 'Continuing work' : 'Starting new' }}
+              </div>
+            </div>
+
+            <!-- Workers -->
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Workers</div>
+              <div class="text-lg font-semibold text-slate-200">
+                {{ previewData.browserTabs }} &times; {{ previewData.agentsPerBrowser }}
+              </div>
+              <div class="text-xs text-slate-400">
+                {{ previewData.totalAgents }} total agents
+              </div>
+            </div>
+
+            <!-- Estimate -->
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Estimate</div>
+              <div class="text-lg font-semibold text-slate-200">
+                ~{{ previewData.estimatedMinutes }} min
+              </div>
+              <div class="text-xs text-slate-400">
+                at {{ previewData.estimatedRate }} {{ previewData.phase === 3 ? 'LEGOs' : 'seeds' }}/min
+              </div>
+            </div>
+          </div>
+
+          <!-- LEGO type breakdown (Phase 3 only) -->
+          <div v-if="previewData.typeBreakdown && Object.keys(previewData.typeBreakdown).length > 0" class="mt-4 pt-4 border-t border-slate-700/30">
+            <div class="text-xs text-slate-500 uppercase tracking-wide mb-2">LEGO Types</div>
+            <div class="flex gap-4">
+              <div v-for="(count, type) in previewData.typeBreakdown" :key="type" class="text-sm">
+                <span class="text-slate-400">{{ type }}-type:</span>
+                <span class="text-slate-200 font-mono ml-1">{{ count }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview error -->
+          <div v-if="previewError" class="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <span class="text-red-400 text-sm">{{ previewError }}</span>
           </div>
         </div>
       </section>
@@ -377,6 +478,12 @@ const activeWorkers = ref(0)
 const jobStartTime = ref(null)
 const lastProgressAt = ref(null)
 const stopRequestedAt = ref(null)
+
+// Preview state (dry run)
+const previewExpanded = ref(false)
+const previewData = ref(null)
+const previewLoading = ref(false)
+const previewError = ref(null)
 
 // ETA tracking
 const etaHistory = ref([])
@@ -723,6 +830,51 @@ async function createCourse() {
   }
 }
 
+async function fetchPreview() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  // Find the next phase to preview
+  const incompletePhase = phases.value.find(p => p.status === 'partial')
+  const pendingPhase = phases.value.find(p => p.status === 'pending')
+  const targetPhase = incompletePhase || pendingPhase
+
+  if (!targetPhase) return
+
+  previewLoading.value = true
+  previewError.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const mode = seedCount.value === 10 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+    const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || 'Failed to fetch preview')
+    }
+
+    previewData.value = await response.json()
+    previewExpanded.value = true
+    addEvent(`Preview loaded for Phase ${targetPhase.number}`)
+
+  } catch (error) {
+    console.error('Failed to fetch preview:', error)
+    previewError.value = error.message
+    addEvent(`Preview error: ${error.message}`)
+  } finally {
+    previewLoading.value = false
+  }
+}
+
+function closePreview() {
+  previewExpanded.value = false
+  previewData.value = null
+  previewError.value = null
+}
+
 async function startPhase() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
@@ -733,6 +885,9 @@ async function startPhase() {
   const targetPhase = incompletePhase || pendingPhase
 
   if (!targetPhase) return
+
+  // Close preview if open
+  closePreview()
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'

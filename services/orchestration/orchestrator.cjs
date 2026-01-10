@@ -4591,6 +4591,91 @@ app.post('/api/force-kill/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/preview/:courseCode
+ * Get dry-run preview for all phases - what would happen if we ran each phase
+ */
+app.get('/api/preview/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { mode = 'full_course' } = req.query;
+
+  console.log(`[Orchestrator] 🔍 Preview requested for ${courseCode} (mode: ${mode})`);
+
+  const previews = { courseCode, mode, phases: {} };
+
+  // Fetch preview from each phase server in parallel
+  const phaseEndpoints = {
+    1: { url: PHASE_SERVERS['1_translation'], endpoint: `/preview/${courseCode}?mode=${mode}` },
+    2: { url: PHASE_SERVERS[2], endpoint: `/preview/${courseCode}?mode=${mode}` },
+    3: { url: PHASE_SERVERS[3], endpoint: `/preview/${courseCode}` }
+  };
+
+  const fetchPromises = Object.entries(phaseEndpoints).map(async ([phase, { url, endpoint }]) => {
+    try {
+      const response = await axios.get(`${url}${endpoint}`, { timeout: 5000 });
+      return { phase: parseInt(phase), data: response.data };
+    } catch (error) {
+      return {
+        phase: parseInt(phase),
+        data: {
+          phase: parseInt(phase),
+          error: error.response?.data?.error || error.message,
+          unavailable: error.code === 'ECONNREFUSED'
+        }
+      };
+    }
+  });
+
+  const results = await Promise.all(fetchPromises);
+  for (const { phase, data } of results) {
+    previews.phases[phase] = data;
+  }
+
+  res.json(previews);
+});
+
+/**
+ * GET /api/preview/:courseCode/:phase
+ * Get dry-run preview for a specific phase
+ */
+app.get('/api/preview/:courseCode/:phase', async (req, res) => {
+  const { courseCode, phase } = req.params;
+  const { mode = 'full_course' } = req.query;
+
+  console.log(`[Orchestrator] 🔍 Phase ${phase} preview requested for ${courseCode}`);
+
+  // Map phase number to server
+  const phaseNum = parseInt(phase);
+  let url, endpoint;
+
+  switch (phaseNum) {
+    case 1:
+      url = PHASE_SERVERS['1_translation'];
+      endpoint = `/preview/${courseCode}?mode=${mode}`;
+      break;
+    case 2:
+      url = PHASE_SERVERS[2];
+      endpoint = `/preview/${courseCode}?mode=${mode}`;
+      break;
+    case 3:
+      url = PHASE_SERVERS[3];
+      endpoint = `/preview/${courseCode}`;
+      break;
+    default:
+      return res.status(400).json({ error: `Invalid phase: ${phase}. Valid phases: 1, 2, 3` });
+  }
+
+  try {
+    const response = await axios.get(`${url}${endpoint}`, { timeout: 5000 });
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: `Phase ${phase} server unavailable` });
+    }
+    res.status(error.response?.status || 500).json(error.response?.data || { error: error.message });
+  }
+});
+
+/**
  * GET /api/jobs
  * List all active jobs across all services
  */

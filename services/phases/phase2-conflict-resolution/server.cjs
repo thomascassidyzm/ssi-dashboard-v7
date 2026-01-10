@@ -1273,6 +1273,122 @@ async function loadWebAgentSpawner() {
 }
 
 /**
+ * GET /preview/:courseCode
+ * Preview what a Phase 2 job would look like without starting it (dry run)
+ */
+app.get('/preview/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { mode = 'full_course' } = req.query;
+
+  console.log(`\n[Phase 2] 🔍 Preview requested for: ${courseCode} (mode: ${mode})`);
+
+  try {
+    // Parse course code for language pair
+    const parts = courseCode.split('_for_');
+    if (parts.length !== 2) {
+      return res.status(400).json({ error: 'Invalid course code format. Expected: target_for_known' });
+    }
+
+    const [target, known] = parts;
+    const courseDir = path.join(VFS_ROOT, courseCode);
+
+    // Check for existing active job
+    const existingJob = activeJobs.get(courseCode);
+    if (existingJob) {
+      return res.json({
+        phase: 2,
+        courseCode,
+        hasActiveJob: true,
+        jobStatus: existingJob.status,
+        message: 'A Phase 2 job is already running for this course'
+      });
+    }
+
+    // Check prerequisites
+    const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+
+    if (!await fs.pathExists(draftPath)) {
+      return res.status(400).json({
+        phase: 2,
+        error: 'draft_lego_pairs.json not found - Phase 1 must complete first',
+        prerequisiteMissing: true
+      });
+    }
+
+    // Check if already complete
+    if (await fs.pathExists(legoPairsPath)) {
+      try {
+        const legoPairs = await fs.readJson(legoPairsPath);
+        const seedCount = legoPairs.seeds ? legoPairs.seeds.length : 0;
+        const legoCount = legoPairs.seeds ? legoPairs.seeds.reduce((sum, s) => sum + (s.legos?.length || 0), 0) : 0;
+
+        return res.json({
+          phase: 2,
+          courseCode,
+          alreadyComplete: true,
+          seedCount,
+          legoCount,
+          message: 'Phase 2 is already complete - lego_pairs.json exists'
+        });
+      } catch (err) {
+        console.warn(`[Phase 2] Error reading lego_pairs.json: ${err.message}`);
+      }
+    }
+
+    // Load draft to count seeds
+    let totalSeeds = 0;
+    try {
+      const draft = await fs.readJson(draftPath);
+      totalSeeds = Array.isArray(draft) ? draft.length : (draft.seeds?.length || 0);
+    } catch (err) {
+      return res.status(500).json({ error: `Failed to read draft_lego_pairs.json: ${err.message}` });
+    }
+
+    // Calculate job shape
+    const segmentation = calculateSegmentation(totalSeeds);
+    const { browsers, agentsPerBrowser, seedsPerAgent, totalAgents } = segmentation;
+
+    // Estimate time (conservative: ~5 LEGOs/minute across all agents)
+    const estimatedRate = 5 * totalAgents; // LEGOs per minute (rough estimate)
+    const estimatedLegos = totalSeeds * 3; // Rough average of 3 LEGOs per seed
+    const estimatedMinutes = Math.ceil(estimatedLegos / estimatedRate);
+
+    console.log(`[Phase 2] Preview: ${totalSeeds} seeds, ${browsers} browsers × ${agentsPerBrowser} agents`);
+
+    res.json({
+      phase: 2,
+      courseCode,
+      hasActiveJob: false,
+
+      // Input info
+      totalSeeds,
+      estimatedLegos,
+
+      // Worker configuration
+      browserTabs: browsers,
+      agentsPerBrowser,
+      totalAgents,
+      seedsPerAgent,
+      strategy: segmentation.strategy,
+
+      // Seed range
+      seedRange: { start: 1, end: totalSeeds },
+
+      // Time estimate
+      estimatedMinutes,
+
+      // Summary message
+      summary: `Will extract LEGOs from ${totalSeeds} seeds using ${browsers} browser tab${browsers > 1 ? 's' : ''} × ${agentsPerBrowser} agents (~${seedsPerAgent} seeds/agent)`
+    });
+
+  } catch (error) {
+    console.error(`[Phase 2] Preview error:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /status/:courseCode
  * Get current Phase 3 status (Enhanced with realistic observables)
  */

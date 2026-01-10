@@ -972,6 +972,138 @@ app.post('/start', async (req, res) => {
 });
 
 /**
+ * GET /preview/:courseCode
+ * Preview what a Phase 3 job would look like without starting it (dry run)
+ */
+app.get('/preview/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n[Phase 3] 🔍 Preview requested for: ${courseCode}`);
+
+  try {
+    // Parse course code for language pair
+    const parts = courseCode.split('_for_');
+    if (parts.length !== 2) {
+      return res.status(400).json({ error: 'Invalid course code format. Expected: target_for_known' });
+    }
+
+    const [target, known] = parts;
+    const baseCourseDir = path.join(__dirname, '..', '..', '..', 'public', 'vfs', 'courses', courseCode);
+
+    // Check if course exists
+    if (!await fs.pathExists(baseCourseDir)) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` });
+    }
+
+    // Check for existing active job
+    const existingJob = activeJobs.get(courseCode);
+    if (existingJob) {
+      return res.json({
+        phase: 3,
+        courseCode,
+        hasActiveJob: true,
+        jobStatus: existingJob.status,
+        message: 'A Phase 3 job is already running for this course'
+      });
+    }
+
+    // Get seed range (full course)
+    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(400).json({ error: 'lego_pairs.json not found - Phase 2 must complete first' });
+    }
+
+    const legoPairs = await fs.readJson(legoPairsPath);
+    const allSeeds = legoPairs.seeds || [];
+    const seedNumbers = allSeeds.map(s => parseInt(s.seed_id.replace('S', '')));
+    const startSeed = Math.min(...seedNumbers);
+    const endSeed = Math.max(...seedNumbers);
+
+    // Identify missing LEGOs
+    const missingLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
+    const legosToProcess = missingLegos.length;
+
+    if (legosToProcess === 0) {
+      return res.json({
+        phase: 3,
+        courseCode,
+        alreadyComplete: true,
+        legosToProcess: 0,
+        message: 'Phase 3 is already complete - all baskets exist'
+      });
+    }
+
+    // Calculate job shape using same logic as generate endpoint
+    const config = loadConfig();
+    const phase3Config = config.phase_overrides?.phase3_basket_generation || {};
+    const AGENTS_PER_BROWSER = phase3Config.agents_per_browser || 13;
+
+    // Determine LEGOs per agent: 10 for fresh runs, 5 for resume
+    const totalNewLegosInCourse = await getTotalNewLegosForCourse(courseCode);
+    const isResumeMode = totalNewLegosInCourse > 0 && legosToProcess < totalNewLegosInCourse;
+    const LEGOS_PER_AGENT = isResumeMode
+      ? (phase3Config.legos_per_agent_resume || 5)
+      : (phase3Config.legos_per_agent || 10);
+
+    // Calculate workers and browsers needed
+    const totalWorkersNeeded = Math.ceil(legosToProcess / LEGOS_PER_AGENT);
+    const masterCount = Math.max(1, Math.ceil(totalWorkersNeeded / AGENTS_PER_BROWSER));
+    const totalWorkers = masterCount * AGENTS_PER_BROWSER;
+    const legosPerWorker = Math.ceil(legosToProcess / totalWorkers);
+
+    // Estimate time based on historical rate (if available)
+    // Default assumption: ~5 LEGOs/minute (conservative estimate)
+    const estimatedRate = 5; // LEGOs per minute
+    const estimatedMinutes = Math.ceil(legosToProcess / estimatedRate);
+
+    // Get breakdown by LEGO type
+    const typeBreakdown = {};
+    for (const lego of missingLegos) {
+      const type = lego.type || 'M';
+      typeBreakdown[type] = (typeBreakdown[type] || 0) + 1;
+    }
+
+    console.log(`[Phase 3] Preview: ${legosToProcess} LEGOs, ${masterCount} browsers × ${AGENTS_PER_BROWSER} agents`);
+
+    res.json({
+      phase: 3,
+      courseCode,
+      hasActiveJob: false,
+
+      // Job shape
+      legosToProcess,
+      totalNewLegosInCourse,
+      isResumeMode,
+      mode: isResumeMode ? 'resume' : 'fresh',
+
+      // Worker configuration
+      browserTabs: masterCount,
+      agentsPerBrowser: AGENTS_PER_BROWSER,
+      totalAgents: totalWorkers,
+      legosPerAgent: LEGOS_PER_AGENT,
+      legosPerWorker,
+
+      // LEGO breakdown
+      typeBreakdown,
+
+      // Seed range
+      seedRange: { start: startSeed, end: endSeed },
+
+      // Time estimate
+      estimatedMinutes,
+      estimatedRate,
+
+      // Summary message
+      summary: `Will process ${legosToProcess} LEGOs using ${masterCount} browser tab${masterCount > 1 ? 's' : ''} × ${AGENTS_PER_BROWSER} agents (${isResumeMode ? 'resume' : 'fresh'} mode, ~${LEGOS_PER_AGENT} LEGOs/agent)`
+    });
+
+  } catch (error) {
+    console.error(`[Phase 3] Preview error:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /status/:courseCode
  * Get Phase 3 progress for a course (Enhanced with realistic observables)
  */
