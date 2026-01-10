@@ -462,7 +462,7 @@ const agentEngine = ref('cli')
 const phases = ref([
   { number: 1, name: 'Translation', status: 'pending', completed: 0, total: 0, unit: 'seeds' },
   { number: 2, name: 'Conflicts', status: 'pending', completed: 0, total: 0, unit: 'LEGOs' },
-  { number: 3, name: 'Baskets', status: 'pending', completed: 0, total: 0, unit: 'LEGOs' }
+  { number: 3, name: 'Baskets', status: 'pending', completed: 0, total: 0, unit: 'NEW LEGOs' }
 ])
 
 const stats = ref([
