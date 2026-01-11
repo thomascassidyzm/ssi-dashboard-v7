@@ -88,7 +88,7 @@ For each LEGO in your assignment:
 **POST each LEGO individually** as you complete it:
 
 ```bash
-curl -X POST {{ORCHESTRATOR_URL}}/upload-lego \\
+curl -X POST {{ORCHESTRATOR_URL}}/upload-basket \\
   -H \"Content-Type: application/json\" \\
   -d '{
     \"course\": \"{{COURSE_CODE}}\",
@@ -121,6 +121,6 @@ Each worker:
 2. Fetches scaffolds: `GET {{ORCHESTRATOR_URL}}/scaffolds/{{COURSE_CODE}}/batch?seeds=...`
 3. Fetches methodology: `GET {{ORCHESTRATOR_URL}}/api/phase-intelligence/3`
 4. Generates baskets for assigned LEGOs
-5. Submits via REST API: `POST {{ORCHESTRATOR_URL}}/upload-lego`
+5. Submits via REST API: `POST {{ORCHESTRATOR_URL}}/upload-basket`
 
 Report: "Master complete: {{WORKERS_TO_SPAWN}} workers spawned for {{LEGO_COUNT}} LEGOs"
