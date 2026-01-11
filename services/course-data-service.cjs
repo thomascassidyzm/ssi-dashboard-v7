@@ -1058,6 +1058,63 @@ async function getIncompleteSeedsFromDatabase(courseCode, startSeed, endSeed) {
   return incompleteSeeds.sort((a, b) => a - b);
 }
 
+/**
+ * Get all missing NEW LEGOs for a course (no seed range filter)
+ * Convenience wrapper for getMissingLegosFromDatabase
+ *
+ * @param {string} courseCode
+ * @returns {Promise<Array>} Array of missing LEGOs with full details
+ */
+async function getMissingNewLegos(courseCode) {
+  if (!USE_DATABASE_READS) return null;
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  // Get max seed number for course
+  const { data: course } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('code', courseCode)
+    .single();
+
+  const maxSeed = course?.seed_count || 668;
+
+  // Query all missing LEGOs (seed range 1 to max)
+  return getMissingLegosFromDatabase(courseCode, 1, maxSeed);
+}
+
+/**
+ * Get count of completed NEW LEGOs (those with practice phrases)
+ *
+ * @param {string} courseCode
+ * @returns {Promise<number>} Count of completed NEW LEGOs
+ */
+async function getCompletedNewLegosCount(courseCode) {
+  if (!USE_DATABASE_READS) return 0;
+  if (!supabase) throw new Error('Supabase not initialized');
+
+  // Get all NEW LEGOs
+  const { data: newLegos } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index')
+    .eq('course_code', courseCode)
+    .eq('is_new', true);
+
+  // Get all LEGOs with practice phrases
+  const { data: phrasedLegos } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number, lego_index')
+    .eq('course_code', courseCode);
+
+  const legoWithPhrases = new Set(
+    (phrasedLegos || []).map(p => `${p.seed_number}:${p.lego_index}`)
+  );
+
+  // Count NEW LEGOs that have phrases
+  return (newLegos || []).filter(l =>
+    legoWithPhrases.has(`${l.seed_number}:${l.lego_index}`)
+  ).length;
+}
+
 // =============================================================================
 // EXPORTS
 // =============================================================================
@@ -1106,6 +1163,8 @@ module.exports = {
   // Phase 3 resume operations
   getMissingLegosFromDatabase,
   getIncompleteSeedsFromDatabase,
+  getMissingNewLegos,
+  getCompletedNewLegosCount,
 
   // Raw client (for advanced queries)
   supabase

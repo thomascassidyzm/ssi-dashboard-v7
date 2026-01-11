@@ -8279,6 +8279,93 @@ app.post('/upload-basket', async (req, res) => {
   }
 });
 
+/**
+ * GET /scaffolds/:courseCode/batch - Fetch scaffolds for multiple seeds
+ * Proxies to Phase 3 server for scaffold data needed by workers
+ */
+app.get('/scaffolds/:courseCode/batch', async (req, res) => {
+  const { courseCode } = req.params;
+  const queryString = new URLSearchParams(req.query).toString();
+  console.log(`[Orchestrator] scaffolds batch: ${courseCode}?${queryString}`);
+
+  try {
+    const response = await axios.get(
+      `${PHASE_SERVERS[3]}/scaffolds/${courseCode}/batch?${queryString}`,
+      { timeout: 30000 }
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] scaffolds batch failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
+ * GET /scaffolds/:courseCode/seed/:seedId - Fetch scaffold for single seed
+ * Proxies to Phase 3 server
+ */
+app.get('/scaffolds/:courseCode/seed/:seedId', async (req, res) => {
+  const { courseCode, seedId } = req.params;
+  console.log(`[Orchestrator] scaffold seed: ${courseCode}/${seedId}`);
+
+  try {
+    const response = await axios.get(
+      `${PHASE_SERVERS[3]}/scaffolds/${courseCode}/seed/${seedId}`,
+      { timeout: 30000 }
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] scaffold seed failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
+ * POST /upload-basket - Minimal payload upload (DB-only, token efficient)
+ * Proxies to Phase 3 server's /upload-basket endpoint
+ *
+ * A "basket" is the collection of practice phrases for a single LEGO.
+ * This is the preferred endpoint for workers using the minimal prompt.
+ */
+app.post('/upload-basket', async (req, res) => {
+  const { course, legoId } = req.body;
+  console.log(`[Orchestrator] upload-basket: ${course}/${legoId}`);
+
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[3]}/upload-basket`, req.body, {
+      timeout: 30000,
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    // Update tracking state
+    if (course) {
+      const phase3State = courseProgress.get(`${course}_phase3`);
+      if (phase3State) {
+        phase3State.lastBatchTime = Date.now();
+        phase3State.gapFillTriggered = false;
+        courseProgress.set(`${course}_phase3`, phase3State);
+      }
+    }
+
+    res.json(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] upload-basket failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
 app.post('/phase5/abort/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   try {

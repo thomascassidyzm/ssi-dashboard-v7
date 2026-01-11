@@ -2,13 +2,13 @@
 
 **Course:** `{{COURSE_CODE}}`
 **Your LEGOs:** {{LEGO_COUNT}} baskets to generate
-**Upload URL:** `{{NGROK_URL}}/phase3/upload-basket`
+**Upload URL:** `{{NGROK_URL}}/upload-basket`
 **Agent ID:** `{{AGENT_ID}}`
 
-**Three-Tier Architecture:**
-- **Tier 1:** Orchestrator (server) - Prepares scaffolds, spawns Masters
-- **Tier 2:** Master (your parent) - Divided work, spawned you via Task tool
-- **Tier 3:** Worker (you!) - Generate baskets, upload via ngrok
+**Architecture:**
+- Server enriches your minimal payloads (adds syllable_count, lego_count, position)
+- Upload each LEGO individually as you complete it
+- Work silently - no verbose logging
 
 ---
 
@@ -677,68 +677,45 @@ Learners need **confidence they're speaking understandable language**.
 
 ---
 
-## STEP 4: Upload via ngrok
+## STEP 4: Upload Each LEGO (Minimal Payload)
 
-Group baskets by seed and upload seed-by-seed.
+**Upload each LEGO individually** as you complete it. Server enriches with metadata.
 
-### HTTP POST Request
+### HTTP POST Request (Token-Efficient)
 
 ```bash
-POST {{NGROK_URL}}/phase3/upload-basket
-Content-Type: application/json
-
-{
-  "course": "{{COURSE_CODE}}",
-  "seed": "S0123",
-  "baskets": {
-    "S0123L01": {
-      "lego": {
-        "known": "known phrase",
-        "target": "target phrase"
-      },
-      "type": "M",
-      "practice_phrases": [
-        { "known": "Known phrase", "target": "target phrase" },
-        { "known": "I know this phrase", "target": "target version" },
-        ... (8 more)
-      ]
-    },
-    "S0123L02": {
-      ... (same format)
-    }
-  },
-  "agentId": "{{AGENT_ID}}",
-  "stagingOnly": {{STAGING_ONLY}}
-}
+curl -X POST {{NGROK_URL}}/upload-basket \
+  -H "Content-Type: application/json" \
+  -d '{
+    "course": "{{COURSE_CODE}}",
+    "legoId": "S0123L01",
+    "phrases": [
+      { "known": "I want", "target": "我想" },
+      { "known": "I want that", "target": "我想要那个" },
+      { "known": "I want to try", "target": "我想试试" },
+      ... (7 more phrases)
+    ]
+  }'
 ```
 
-**CRITICAL FORMAT RULES:**
-- CONSISTENT labeled objects: `{ "known": "English", "target": "Spanish" }`
-- "lego" field: object with labels (NEW - consistent format)
-- "practice_phrases": array of objects with labels
-- Known language FIRST, target language SECOND (everywhere)
-- NEVER use array format: `["English", "Spanish"]` or `["English", "Spanish", null, 1]`
-- NEVER use language codes: `{ "es": "...", "en": "..." }`
+**Minimal payload** - just course, legoId, and phrases array.
+**Server enriches** - adds syllable_count, lego_count, position automatically.
 
-**Note**: `stagingOnly` should be `true` for review-before-merge.
-
-### Upload Strategy
-
-**Group by seed:**
-```
-S0044L01, S0044L02, S0044L03 → Upload together as seed S0044
-S0045L01, S0045L02 → Upload together as seed S0045
+**Expected response:**
+```json
+{"success": true, "legoId": "S0123L01", "phraseCount": 10, "enriched": true}
 ```
 
-**Small delay between uploads:**
-- Wait ~100ms between each seed upload
-- Prevents overwhelming server
-- Allows progress tracking
+**FORMAT RULES:**
+- Each phrase: `{ "known": "English", "target": "Target language" }`
+- Known FIRST, target SECOND
+- ~10 phrases per LEGO (8-12 acceptable)
+- NEVER use array format or language codes
 
-**Check responses:**
-- Server returns `{ success: true, ... }`
-- Log failed uploads
-- Report failures to master
+**Upload Strategy:**
+- Upload each LEGO as soon as it's ready (don't wait to batch)
+- Check response for success
+- Report any failures at the end
 
 ---
 

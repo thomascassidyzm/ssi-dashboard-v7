@@ -33,8 +33,8 @@ const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
 // External URLs for prompts sent to remote Claude browsers
 const ngrokUrl = process.env.EXTERNAL_URL || process.env.ORCHESTRATOR_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
-// Direct Supabase upload endpoint (bypasses orchestrator)
-const BASKET_UPLOAD_URL = 'https://popty.app/api/baskets/upload';
+// Direct upload endpoint via ngrok - uses minimal /upload-basket (DB-only, token efficient)
+const BASKET_UPLOAD_URL = `${ngrokUrl}/upload-basket`;
 
 // Database service for database-first writes
 const courseDataService = require('../../course-data-service.cjs');
@@ -2779,64 +2779,40 @@ app.post('/launch-15-masters', async (req, res) => {
   const baseCourseDir = path.join(VFS_ROOT, courseCode);
 
   try {
-    // STEP 1: Find missing baskets
-    console.log(`\n[Phase 3] Step 1: Detecting missing baskets...`);
+    // STEP 1: Find missing baskets from DATABASE (not JSON files)
+    console.log(`\n[Phase 3] Step 1: Detecting missing baskets from database...`);
 
-    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
-    const legoBasketsPath = path.join(baseCourseDir, 'lego_baskets.json');
+    // Get missing LEGOs from database via courseDataService
+    const missingLegos = await courseDataService.getMissingNewLegos(courseCode);
 
-    if (!await fs.pathExists(legoPairsPath)) {
-      return res.status(400).json({
-        error: 'lego_pairs.json not found - run Phase 2 first',
-        hint: 'POST /phase2/launch-full to generate lego_pairs.json'
+    if (!missingLegos) {
+      // Fallback: courseDataService not available or DB reads disabled
+      console.log(`[Phase 3] ⚠️  Database query failed, falling back to lego_pairs.json`);
+      const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+      if (!await fs.pathExists(legoPairsPath)) {
+        return res.status(400).json({
+          error: 'lego_pairs.json not found and database unavailable',
+          hint: 'Ensure Phase 2 is complete and database is accessible'
+        });
+      }
+      // Original fallback logic would go here, but we want DB-first
+      return res.status(500).json({
+        error: 'Database reads not available - cannot determine missing LEGOs accurately',
+        hint: 'Check SUPABASE_URL and SUPABASE_SERVICE_KEY in .env'
       });
     }
 
-    const legoPairs = await fs.readJson(legoPairsPath);
-
-    // Load existing baskets
-    let existingBaskets = {};
-    if (await fs.pathExists(legoBasketsPath)) {
-      const basketsData = await fs.readJson(legoBasketsPath);
-      existingBaskets = basketsData.baskets || {};
-    }
-
-    // Find all LEGOs that need baskets (new:true and no existing basket)
-    const missingLegos = [];
-    for (const seed of legoPairs.seeds || []) {
-      for (const lego of seed.legos || []) {
-        if (lego.new === true && !existingBaskets[lego.id]) {
-          missingLegos.push({
-            legoId: lego.id,
-            seedId: seed.seed_id,
-            known: lego.lego?.known || '',
-            target: lego.lego?.target || '',
-            type: lego.type || 'M'
-          });
-        }
-      }
-    }
-
-    // Sort by seed ID for contiguous ranges
-    missingLegos.sort((a, b) => {
-      const seedA = parseInt(a.seedId.replace('S', ''));
-      const seedB = parseInt(b.seedId.replace('S', ''));
-      if (seedA !== seedB) return seedA - seedB;
-      const legoA = parseInt(a.legoId.replace(/S\d+L/, ''));
-      const legoB = parseInt(b.legoId.replace(/S\d+L/, ''));
-      return legoA - legoB;
-    });
-
     const totalMissing = missingLegos.length;
-    console.log(`[Phase 3] Found ${totalMissing} missing baskets`);
-    console.log(`[Phase 3] Existing baskets: ${Object.keys(existingBaskets).length}`);
+    const completeLegos = await courseDataService.getCompletedNewLegosCount(courseCode);
+    console.log(`[Phase 3] Found ${totalMissing} missing baskets (DB-first)`);
+    console.log(`[Phase 3] Complete baskets in DB: ${completeLegos}`);
 
     if (totalMissing === 0) {
       return res.json({
         success: true,
         message: 'No missing baskets - Phase 3 already complete!',
         totalMissing: 0,
-        existingBaskets: Object.keys(existingBaskets).length
+        completeLegos: completeLegos
       });
     }
 
@@ -2869,7 +2845,7 @@ app.post('/launch-15-masters', async (req, res) => {
       }
 
       // Calculate seed range for logging
-      const seedIds = [...new Set(masterLegos.map(l => l.seedId))].sort();
+      const seedIds = [...new Set(masterLegos.map(l => l.seed))].sort();
       const seedRange = seedIds.length > 0 ? `${seedIds[0]}-${seedIds[seedIds.length - 1]}` : 'N/A';
 
       masters.push({
@@ -3014,7 +2990,7 @@ app.post('/launch-15-masters', async (req, res) => {
       success: true,
       message: `Launched ${actualMasters} Phase 3 masters`,
       totalMissing,
-      existingBaskets: Object.keys(existingBaskets).length,
+      completeLegos,
       masters: masters.map(m => ({
         masterNum: m.masterNum,
         seedRange: m.seedRange,
@@ -3035,158 +3011,72 @@ app.post('/launch-15-masters', async (req, res) => {
 
 /**
  * Generate Phase 3 Master prompt with explicit worker assignments
+ * Uses minimal upload format (/upload-basket) for token efficiency
  */
 function generatePhase3MasterPrompt({ courseCode, target, known, masterNum, workers, totalLegos, seedRange }) {
   const workerPrompts = workers.map(w => {
     const legoList = w.legoIds.join(', ');
+    // Build LEGO data inline for each worker
+    const legoData = w.legos.map(l => `    "${l.legoId}": { "known": "${l.known}", "target": "${l.target}" }`).join(',\n');
+
     return `
-## WORKER ${w.workerNum} PROMPT (copy exactly):
+## WORKER ${w.workerNum} PROMPT:
 
 \`\`\`
-# Phase 3 Worker ${w.workerNum}: Basket Generation
+# Phase 3 Worker ${w.workerNum}
 
 Course: ${courseCode}
-**MY ASSIGNED LEGOs**: ${legoList}
-**LEGO COUNT**: ${w.legoCount}
+LEGOs: ${legoList}
+Upload: ${BASKET_UPLOAD_URL}
 
----
+## YOUR LEGO DATA (embedded - no fetch needed):
+{
+${legoData}
+}
 
-## STEP 1: FETCH MY LEGO DATA
+## TASK: For each LEGO, generate ~10 practice phrases
 
-**CRITICAL: Fetch data for EXACTLY these LEGO IDs - no others!**
+Rules:
+1. EVERY phrase contains the COMPLETE LEGO
+2. Progressive complexity: 2 short, 2 medium, 2 longer, 4 longest
+3. Natural grammar in BOTH languages
+4. Work silently - no verbose output
 
-\`\`\`bash
-curl -s "${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json"
-\`\`\`
+## UPLOAD FORMAT (minimal - server enriches):
 
-Look up LEGOs: ${legoList}
-Verify you found ${w.legoCount} LEGOs. If not, STOP and report an error.
-
----
-
-## STEP 2: GENERATE BASKETS
-
-For EACH LEGO, generate 10 practice phrases following these rules:
-
-**CRITICAL RULES:**
-1. EVERY phrase MUST contain the COMPLETE LEGO (not partial)
-2. Build FROM the LEGO, not TO it - phrase 1 already has the full LEGO
-3. Use ONLY vocabulary available up to this seed
-4. Natural grammar in BOTH languages
-
-**Progressive complexity (2-2-2-4):**
-- Phrases 1-2: SHORT (LEGO alone or +1 word)
-- Phrases 3-4: MEDIUM (LEGO +2-3 words)
-- Phrases 5-6: LONGER (LEGO +4-6 words)
-- Phrases 7-10: LONGEST (LEGO +6+ words)
-
----
-
-## STEP 3: OUTPUT FORMAT
-
-For each LEGO, output:
+For each LEGO, POST to ${BASKET_UPLOAD_URL}:
 \`\`\`json
 {
-  "lego_id": "S0001L01",
-  "practice_phrases": [
-    {"known": "I want", "target": "quiero"},
-    {"known": "I want that", "target": "quiero eso"},
-    ...
+  "course": "${courseCode}",
+  "legoId": "S0001L01",
+  "phrases": [
+    { "known": "I want", "target": "我想" },
+    { "known": "I want that", "target": "我想要那个" }
   ]
 }
 \`\`\`
 
----
-
-## STEP 4: UPLOAD WITH RETRY
-
-For each LEGO, upload via POST:
-
-\`\`\`bash
-# Save basket to temp file
-cat > /tmp/basket.json << 'JSONEOF'
-{
-  "course": "${courseCode}",
-  "seed": "[SEED_ID]",
-  "baskets": {
-    "[LEGO_ID]": {
-      "lego_id": "[LEGO_ID]",
-      "practice_phrases": [...]
-    }
-  }
-}
-JSONEOF
-
-# Upload with retry (direct to Supabase)
-for i in 1 2 3; do
-  response=$(curl -s -w "\\n%{http_code}" -X POST "${BASKET_UPLOAD_URL}" \\
-    -H "Content-Type: application/json" \\
-    -d @/tmp/basket.json)
-
-  http_code=$(echo "$response" | tail -n1)
-  if [ "$http_code" = "200" ]; then
-    echo "✅ Uploaded [LEGO_ID]"
-    break
-  else
-    echo "⚠️ Retry $i..."
-    sleep $((i * 2))
-  fi
-done
-\`\`\`
-
----
-
-**IMPORTANT:**
-- Use curl for ALL HTTP requests (NOT WebFetch)
-- Upload each LEGO as you complete it (don't batch)
-- Report completion: "✅ Worker ${w.workerNum} complete: ${w.legoCount} LEGOs uploaded"
+Upload each LEGO as you complete it. Report: "Worker ${w.workerNum}: ${w.legoCount} LEGOs done"
 \`\`\`
 `;
   }).join('\n');
 
-  return `# Phase 3 Master ${masterNum}: Basket Generation
+  return `# Phase 3 Master ${masterNum}
 
-**Course**: ${courseCode}
-**Target**: ${target}
-**Known**: ${known}
-**LEGOs**: ${totalLegos} (${seedRange})
-**Mode**: master-${masterNum}
+Course: ${courseCode} | LEGOs: ${totalLegos} (${seedRange})
 
----
+## SPAWN ${workers.length} WORKERS IN PARALLEL
 
-## YOUR ROLE: BASKET GENERATION MASTER
+Use Task tool ${workers.length} times in ONE message.
 
-You spawn ${workers.length} worker agents via Task tool. Each worker:
-1. Fetches their assigned LEGOs via curl
-2. Generates 10 practice phrases per LEGO
-3. Uploads baskets via REST API with retry logic
-
-**Worker assignments:**
-${workers.map(w => `  - Worker ${w.workerNum}: ${w.legoIds.join(', ')} (${w.legoCount} LEGOs)`).join('\n')}
-
----
-
-## STEP 1: SPAWN ALL WORKERS IN PARALLEL
-
-Use the Task tool ${workers.length} times in a SINGLE message to spawn all workers in parallel.
+Worker assignments:
+${workers.map(w => `- Worker ${w.workerNum}: ${w.legoIds.join(', ')} (${w.legoCount})`).join('\n')}
 
 ---
 ${workerPrompts}
 ---
 
-## STEP 2: WAIT FOR COMPLETION
-
-After spawning all workers, wait for their Task tool results.
-Collect success/failure status from each worker.
-
-## STEP 3: REPORT COMPLETION
-
-When all workers complete, report:
-"✅ Master ${masterNum} complete: ${workers.length} workers, ${totalLegos} LEGOs"
-
----
-
-**IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
+When all complete, report: "Master ${masterNum}: ${workers.length} workers, ${totalLegos} LEGOs done"
 `;
 }
 
@@ -3202,7 +3092,9 @@ app.post('/resume', async (req, res) => {
 });
 
 /**
- * POST /upload-basket - Receive baskets directly from Claude Code agents
+ * POST /upload-basket-legacy - DEPRECATED: Old quad-write endpoint
+ *
+ * Use POST /upload-basket for new DB-only uploads with minimal payload.
  *
  * Body: {
  *   course: 'cmn_for_eng',
@@ -3210,7 +3102,7 @@ app.post('/resume', async (req, res) => {
  *   baskets: { S0532L01: {...}, S0532L02: {...} }
  * }
  */
-app.post('/upload-basket', async (req, res) => {
+app.post('/upload-basket-legacy', async (req, res) => {
   try {
     const { course, seed, baskets, agentId, stagingOnly = false } = req.body;
 
@@ -3626,11 +3518,13 @@ app.post('/upload-basket', async (req, res) => {
 // ==============================================================================
 
 /**
- * POST /upload-lego - Minimal per-LEGO upload endpoint
+ * POST /upload-basket - Minimal per-basket upload endpoint
  *
  * TOKEN-EFFICIENT: Workers send only essential data, server enriches.
  * DATABASE-FIRST: Writes directly to Supabase, no JSON files.
- * PER-LEGO MONITORING: Emits events as each LEGO completes.
+ * PER-BASKET MONITORING: Emits events as each basket completes.
+ *
+ * A "basket" is the collection of practice phrases for a single LEGO.
  *
  * Payload (minimal):
  * {
@@ -3647,7 +3541,7 @@ app.post('/upload-basket', async (req, res) => {
  * - syllable_count (calculated from target)
  * - lego_count (calculated from target, requires lego_pairs context)
  */
-app.post('/upload-lego', async (req, res) => {
+app.post('/upload-basket', async (req, res) => {
   try {
     const { course, legoId, phrases, agentId } = req.body;
 
@@ -3678,7 +3572,7 @@ app.post('/upload-lego', async (req, res) => {
       }
     }
 
-    console.log(`📥 [upload-lego] ${course}/${legoId}: ${phrases.length} phrases${agentId ? ` from ${agentId}` : ''}`);
+    console.log(`📥 [upload-basket] ${course}/${legoId}: ${phrases.length} phrases${agentId ? ` from ${agentId}` : ''}`);
 
     // Parse legoId for database write
     const seedMatch = legoId.match(/S(\d+)L(\d+)/i);
@@ -3787,7 +3681,7 @@ app.post('/upload-lego', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('❌ upload-lego error:', error);
+    console.error('❌ upload-basket error:', error);
     return res.status(500).json({
       success: false,
       error: error.message
