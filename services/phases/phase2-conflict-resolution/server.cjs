@@ -2214,14 +2214,8 @@ app.post('/phase2/detect-db', async (req, res) => {
     // Import and run the detection script
     const { detect } = require('./detect.cjs');
 
-    // Temporarily override argv for the script
-    const originalArgv = process.argv;
-    process.argv = ['node', 'detect.cjs', courseCode];
-    if (dryRun) process.argv.push('--dry-run');
-
-    const result = await detect();
-
-    process.argv = originalArgv;
+    // Call detect with parameters directly
+    const result = await detect(courseCode, dryRun);
 
     console.log(`   ✅ Detection complete: ${result.summary.conflictCount} conflicts`);
 

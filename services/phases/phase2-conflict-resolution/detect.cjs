@@ -17,15 +17,20 @@ const { createClient } = require('@supabase/supabase-js')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-const courseCode = process.argv[2]
-const dryRun = process.argv.includes('--dry-run')
+/**
+ * Run Phase 2 detection
+ * @param {string} courseCodeParam - Course code to process
+ * @param {boolean} dryRunParam - If true, don't modify database
+ */
+async function detect(courseCodeParam, dryRunParam = false) {
+  // Support both direct params and CLI args
+  const courseCode = courseCodeParam || process.argv[2]
+  const dryRun = dryRunParam || process.argv.includes('--dry-run')
 
-if (!courseCode) {
-  console.error('Usage: node detect.cjs <courseCode> [--dry-run]')
-  process.exit(1)
-}
+  if (!courseCode) {
+    throw new Error('courseCode is required')
+  }
 
-async function detect() {
   console.log(`\n${'='.repeat(60)}`)
   console.log(`PHASE 2 DETECTION: ${courseCode}`)
   console.log(`Mode: ${dryRun ? 'DRY RUN' : 'LIVE'}`)
