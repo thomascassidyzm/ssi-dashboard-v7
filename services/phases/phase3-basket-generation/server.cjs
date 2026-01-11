@@ -3621,6 +3621,180 @@ app.post('/upload-basket', async (req, res) => {
   }
 });
 
+// ==============================================================================
+// MINIMAL UPLOAD ENDPOINT (TOKEN-EFFICIENT)
+// ==============================================================================
+
+/**
+ * POST /upload-lego - Minimal per-LEGO upload endpoint
+ *
+ * TOKEN-EFFICIENT: Workers send only essential data, server enriches.
+ * DATABASE-FIRST: Writes directly to Supabase, no JSON files.
+ * PER-LEGO MONITORING: Emits events as each LEGO completes.
+ *
+ * Payload (minimal):
+ * {
+ *   course: "zho_for_eng",
+ *   legoId: "S0007L07",
+ *   phrases: [
+ *     { known: "I want to try", target: "我想试试" },
+ *     { known: "I want to try now", target: "我现在想试试" }
+ *   ]
+ * }
+ *
+ * Server enriches:
+ * - position (1-based index)
+ * - syllable_count (calculated from target)
+ * - lego_count (calculated from target, requires lego_pairs context)
+ */
+app.post('/upload-lego', async (req, res) => {
+  try {
+    const { course, legoId, phrases, agentId } = req.body;
+
+    // Validate required fields
+    if (!course || !legoId || !Array.isArray(phrases)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: course, legoId, phrases[]'
+      });
+    }
+
+    if (phrases.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'phrases array cannot be empty'
+      });
+    }
+
+    // Validate phrase format
+    for (let i = 0; i < phrases.length; i++) {
+      const p = phrases[i];
+      if (!p.known || !p.target) {
+        return res.status(400).json({
+          success: false,
+          error: `Phrase ${i + 1} missing known or target field`,
+          received: p
+        });
+      }
+    }
+
+    console.log(`📥 [upload-lego] ${course}/${legoId}: ${phrases.length} phrases${agentId ? ` from ${agentId}` : ''}`);
+
+    // Parse legoId for database write
+    const seedMatch = legoId.match(/S(\d+)L(\d+)/i);
+    if (!seedMatch) {
+      return res.status(400).json({
+        success: false,
+        error: `Invalid legoId format: ${legoId} (expected S0001L01)`
+      });
+    }
+    const seedNumber = parseInt(seedMatch[1], 10);
+    const legoIndex = parseInt(seedMatch[2], 10);
+
+    // Load lego_pairs.json for enrichment (needed for lego_count calculation)
+    const legoPairsPath = path.join(VFS_ROOT, course, 'lego_pairs.json');
+    let legoTargets = [];
+    try {
+      if (await fs.pathExists(legoPairsPath)) {
+        const legoPairs = await fs.readJson(legoPairsPath);
+        const seedEntry = legoPairs.seeds?.find(s => s.seed_id === `S${String(seedNumber).padStart(4, '0')}`);
+        if (seedEntry?.legos) {
+          legoTargets = seedEntry.legos
+            .map(l => l.lego?.target || l.target)
+            .filter(Boolean);
+        }
+      }
+    } catch (lpErr) {
+      console.warn(`   ⚠️  Could not load lego_pairs for enrichment: ${lpErr.message}`);
+    }
+
+    // Enrich phrases with position, syllable_count, lego_count
+    const enrichedPhrases = phrases.map((p, idx) => ({
+      known: p.known,
+      target: p.target,
+      position: idx + 1,
+      syllable_count: countSyllables(p.target),
+      lego_count: legoTargets.length > 0 ? countLegosInPhrase(p.target, legoTargets) : 1
+    }));
+
+    // DATABASE-FIRST WRITE (no JSON files)
+    let dbWriteSuccess = false;
+    let phraseCount = 0;
+
+    if (courseDataService.USE_DATABASE_WRITES) {
+      try {
+        // Clear existing phrases for this LEGO
+        await courseDataService.clearPracticePhrases(course, seedNumber, legoIndex);
+
+        // Save enriched phrases
+        for (const phrase of enrichedPhrases) {
+          await courseDataService.savePracticePhrase(course, seedNumber, legoIndex, {
+            knownText: phrase.known,
+            targetText: phrase.target,
+            position: phrase.position,
+            wordCount: phrase.syllable_count,  // word_count column stores syllable count
+            legoCount: phrase.lego_count,
+            status: 'draft'
+          });
+          phraseCount++;
+        }
+
+        dbWriteSuccess = true;
+        console.log(`   ✅ Database: ${phraseCount} phrases saved to course_practice_phrases`);
+      } catch (dbErr) {
+        console.error(`   ❌ Database write failed: ${dbErr.message}`);
+        return res.status(500).json({
+          success: false,
+          error: `Database write failed: ${dbErr.message}`
+        });
+      }
+    } else {
+      return res.status(503).json({
+        success: false,
+        error: 'Database writes not enabled (USE_DATABASE_WRITES=false)'
+      });
+    }
+
+    // Track in job state (if job exists)
+    const job = activeJobs.get(course);
+    if (job) {
+      job.uploads = job.uploads || { legosReceived: 0, lastUploadAt: null };
+      job.uploads.legosReceived++;
+      job.uploads.lastUploadAt = new Date().toISOString();
+
+      // Report per-LEGO progress to orchestrator
+      reportProgressToOrchestrator(course, {
+        phase: 3,
+        updates: {
+          status: 'running',
+          legosCompleted: job.uploads.legosReceived,
+          legosTotal: job.uploads.expectedLegos || 0,
+          currentLego: legoId
+        },
+        logMessage: `LEGO complete: ${legoId} (${phraseCount} phrases)`
+      }).catch(err => {
+        // Non-fatal - log and continue
+        console.error(`   ⚠️  Progress report failed: ${err.message}`);
+      });
+    }
+
+    // Success response (minimal)
+    return res.json({
+      success: true,
+      legoId,
+      phraseCount,
+      enriched: true
+    });
+
+  } catch (error) {
+    console.error('❌ upload-lego error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
 /**
  * GET /basket-status/:course - Get current basket counts
  */

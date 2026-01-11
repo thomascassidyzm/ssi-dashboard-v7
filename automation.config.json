@@ -50,11 +50,13 @@
   },
 
   "phase3_basket_generation": {
-    "browsers": 9,
-    "agents_per_browser": 5,
-    "seeds_per_agent": 15,
-    "browser_spawn_delay_ms": 8000,
-    "comment": "9/5/15 = 675 capacity. For resume: tabs = ceil(seeds / 75)"
+    "legos_per_worker": 10,
+    "workers_per_master": 13,
+    "workers_per_spawn_batch": 5,
+    "spawn_method": "cli_preferred",
+    "spawn_delay_ms": 1000,
+    "batch_cooldown_ms": 30000,
+    "comment": "13 workers × 10 LEGOs = 130 per master. Spawn in batches of 5 to stay under 32k output limit."
   },
 
   "phase5_basket_generation": {
