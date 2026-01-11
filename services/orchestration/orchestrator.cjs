@@ -2543,20 +2543,63 @@ async function triggerPhase(courseCode, phase, totalSeeds = SEED_COUNTS.FULL_COU
       const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
       console.log(`   ✓ Found ${conflictCount} conflicts`);
 
-      // Step 2: Apply LEGO reuse tracking
-      console.log(`   Step 2: Applying LEGO reuse tracking...`);
+      // Step 2: Check if conflicts need agent resolution
       const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
-      let resolutions = [];
-      if (fs.existsSync(resolutionsPath)) {
-        const resData = JSON.parse(fs.readFileSync(resolutionsPath, 'utf8'));
-        resolutions = resData.resolutions || resData || [];
-        console.log(`   📄 Found ${resolutions.length} manual resolutions`);
+      const hasResolutions = fs.existsSync(resolutionsPath);
+
+      if (conflictCount > 0 && !hasResolutions) {
+        // Conflicts exist but no resolutions - need agent work!
+        console.log(`   ⚠️  ${conflictCount} conflicts require agent upchunking`);
+        console.log(`   🚀 Launching Phase 2 agents to resolve conflicts...`);
+
+        // Launch agents to resolve conflicts
+        try {
+          const launchResponse = await axios.post(`${phaseServer}/phase2/launch-full`, {
+            courseCode,
+            target: courseCode.split('_for_')[0] || 'zho',
+            known: courseCode.split('_for_')[1] || 'eng'
+          });
+          console.log(`   ✓ Phase 2 agents launched: ${launchResponse.data?.message || 'started'}`);
+          console.log(`   ⏳ Agents working on conflict resolution...`);
+          console.log(`   📝 Phase 2 will auto-complete when agents finish`);
+
+          // Update state to show agents are working
+          const state = courseStates.get(courseCode);
+          if (state) {
+            state.phases.phase2 = {
+              status: 'in_progress',
+              conflictCount,
+              agentsLaunched: true,
+              launchedAt: new Date().toISOString()
+            };
+          }
+
+          // Don't mark complete yet - agents need to finish first
+          // The /phase2/finalize endpoint will trigger completion
+          return;
+        } catch (launchError) {
+          console.error(`   ❌ Failed to launch Phase 2 agents:`, launchError.message);
+          throw new Error(`Phase 2 has ${conflictCount} conflicts but agent launch failed: ${launchError.message}`);
+        }
       }
 
-      await axios.post(`${phaseServer}/phase2/apply`, {
-        courseCode,
-        resolutions
-      });
+      // Step 3: Apply resolutions (either from agents or passthrough for 0-conflict)
+      if (conflictCount === 0) {
+        console.log(`   Step 2: No conflicts - using passthrough mode...`);
+        await axios.post(`${phaseServer}/phase2/passthrough`, { courseCode });
+      } else {
+        console.log(`   Step 2: Applying ${hasResolutions ? 'agent' : 'manual'} resolutions...`);
+        let resolutions = [];
+        if (hasResolutions) {
+          const resData = JSON.parse(fs.readFileSync(resolutionsPath, 'utf8'));
+          resolutions = resData.resolutions || resData || [];
+          console.log(`   📄 Found ${resolutions.length} resolutions`);
+        }
+        await axios.post(`${phaseServer}/phase2/apply`, {
+          courseCode,
+          resolutions
+        });
+      }
 
       // Phase 2 complete - notify orchestrator (triggers Phase 3 via handlePhaseProgression)
       await axios.post(`http://localhost:${PORT}/phase-complete`, {

@@ -498,7 +498,7 @@ const isPolling = ref(false)
 const knownLang = ref('')
 const targetLang = ref('')
 const seedCount = ref(260)
-const agentEngine = ref('cli')
+const agentEngine = ref('browser')
 
 // Progress state
 const phases = ref([

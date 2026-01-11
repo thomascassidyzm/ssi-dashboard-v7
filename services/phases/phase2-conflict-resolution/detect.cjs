@@ -1,0 +1,302 @@
+#!/usr/bin/env node
+/**
+ * Phase 2 Detection Script
+ *
+ * Scans all Phase 1 LEGOs and identifies:
+ * - DUPLICATES: same known → same target (mark is_new = false)
+ * - CONFLICTS: same known → different targets (need agent resolution)
+ *
+ * This runs automatically after Phase 1 completes.
+ *
+ * Usage:
+ *   node detect.cjs <courseCode> [--dry-run]
+ */
+
+require('dotenv').config({ path: require('path').join(__dirname, '../../../.env') })
+const { createClient } = require('@supabase/supabase-js')
+
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+
+const courseCode = process.argv[2]
+const dryRun = process.argv.includes('--dry-run')
+
+if (!courseCode) {
+  console.error('Usage: node detect.cjs <courseCode> [--dry-run]')
+  process.exit(1)
+}
+
+async function detect() {
+  console.log(`\n${'='.repeat(60)}`)
+  console.log(`PHASE 2 DETECTION: ${courseCode}`)
+  console.log(`Mode: ${dryRun ? 'DRY RUN' : 'LIVE'}`)
+  console.log(`${'='.repeat(60)}\n`)
+
+  // Step 1: Fetch all LEGOs from Phase 1
+  console.log('Step 1: Fetching LEGOs from database...')
+
+  const { data: legos, error } = await supabase
+    .from('course_legos')
+    .select('id, lego_id, seed_number, lego_index, known_text, target_text, is_new')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: true })
+    .order('lego_index', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching LEGOs:', error.message)
+    process.exit(1)
+  }
+
+  console.log(`   Found ${legos.length} LEGOs\n`)
+
+  // Step 2: Group by known_text (case-insensitive)
+  console.log('Step 2: Grouping by known_text...')
+
+  const knownGroups = new Map() // known_text (lowercase) → array of legos
+
+  for (const lego of legos) {
+    const key = (lego.known_text || '').toLowerCase().trim()
+    if (!key) continue
+
+    if (!knownGroups.has(key)) {
+      knownGroups.set(key, [])
+    }
+    knownGroups.get(key).push(lego)
+  }
+
+  console.log(`   Found ${knownGroups.size} unique known texts\n`)
+
+  // Step 3: Analyze each group for duplicates and conflicts
+  console.log('Step 3: Analyzing for duplicates and conflicts...')
+
+  const duplicates = []      // LEGOs to mark as is_new = false
+  const conflicts = []       // Conflicts needing agent resolution
+  let uniqueCount = 0        // First occurrences
+
+  for (const [known, group] of knownGroups) {
+    // Group by target within this known
+    const targetGroups = new Map() // target → array of legos
+
+    for (const lego of group) {
+      const target = (lego.target_text || '').trim()
+      if (!targetGroups.has(target)) {
+        targetGroups.set(target, [])
+      }
+      targetGroups.get(target).push(lego)
+    }
+
+    if (targetGroups.size === 1) {
+      // All same target - no conflict, just track duplicates
+      const allLegos = [...targetGroups.values()][0]
+
+      // First occurrence is canonical (new: true)
+      uniqueCount++
+
+      // Rest are duplicates (new: false)
+      for (let i = 1; i < allLegos.length; i++) {
+        duplicates.push({
+          id: allLegos[i].id,
+          lego_id: allLegos[i].lego_id,
+          known_text: allLegos[i].known_text,
+          target_text: allLegos[i].target_text,
+          ref: allLegos[0].lego_id  // Reference to canonical
+        })
+      }
+    } else {
+      // Multiple targets - CONFLICT!
+      const targets = []
+
+      for (const [target, targetLegos] of targetGroups) {
+        targets.push({
+          target,
+          occurrences: targetLegos.length,
+          seeds: targetLegos.map(l => `S${String(l.seed_number).padStart(4, '0')}`),
+          legos: targetLegos.map(l => ({
+            id: l.id,
+            lego_id: l.lego_id,
+            seed_number: l.seed_number
+          }))
+        })
+      }
+
+      // Sort by occurrence count (most common first = canonical)
+      targets.sort((a, b) => b.occurrences - a.occurrences)
+
+      conflicts.push({
+        known,
+        display_known: group[0].known_text,  // Preserve original case
+        target_count: targets.length,
+        total_occurrences: group.length,
+        targets
+      })
+
+      // First target is canonical - mark rest of its occurrences as duplicates
+      const canonicalTarget = targets[0]
+      uniqueCount++
+      for (let i = 1; i < canonicalTarget.legos.length; i++) {
+        duplicates.push({
+          id: canonicalTarget.legos[i].id,
+          lego_id: canonicalTarget.legos[i].lego_id,
+          known_text: known,
+          target_text: canonicalTarget.target,
+          ref: canonicalTarget.legos[0].lego_id
+        })
+      }
+
+      // Other targets need upchunking - but for now mark their duplicates too
+      for (let t = 1; t < targets.length; t++) {
+        const targetGroup = targets[t]
+        uniqueCount++ // Each different target is "new" until upchunked
+        for (let i = 1; i < targetGroup.legos.length; i++) {
+          duplicates.push({
+            id: targetGroup.legos[i].id,
+            lego_id: targetGroup.legos[i].lego_id,
+            known_text: known,
+            target_text: targetGroup.target,
+            ref: targetGroup.legos[0].lego_id
+          })
+        }
+      }
+    }
+  }
+
+  // Summary
+  console.log(`\n${'─'.repeat(60)}`)
+  console.log('DETECTION SUMMARY')
+  console.log(`${'─'.repeat(60)}`)
+  console.log(`   Total LEGOs:        ${legos.length}`)
+  console.log(`   Unique known texts: ${knownGroups.size}`)
+  console.log(`   Unique LEGOs:       ${uniqueCount}`)
+  console.log(`   Duplicates:         ${duplicates.length} (to mark is_new=false)`)
+  console.log(`   Conflicts:          ${conflicts.length} (need agent resolution)`)
+
+  if (conflicts.length > 0) {
+    console.log(`\n${'─'.repeat(60)}`)
+    console.log('TOP CONFLICTS (by occurrence count)')
+    console.log(`${'─'.repeat(60)}`)
+
+    for (const c of conflicts.slice(0, 15)) {
+      console.log(`\n   "${c.display_known}" → ${c.target_count} targets (${c.total_occurrences} total)`)
+      for (const t of c.targets) {
+        const marker = t === c.targets[0] ? '✓' : '⚠'
+        console.log(`      ${marker} "${t.target}" (${t.occurrences}x) - ${t.seeds.slice(0, 3).join(', ')}${t.seeds.length > 3 ? '...' : ''}`)
+      }
+    }
+
+    if (conflicts.length > 15) {
+      console.log(`\n   ... and ${conflicts.length - 15} more conflicts`)
+    }
+  }
+
+  // Step 4: Apply changes
+  console.log(`\n${'─'.repeat(60)}`)
+  console.log('APPLYING CHANGES')
+  console.log(`${'─'.repeat(60)}`)
+
+  if (dryRun) {
+    console.log('\n   DRY RUN - No changes made')
+    console.log(`   Would update ${duplicates.length} LEGOs to is_new=false`)
+    console.log(`   Would create ${conflicts.length} conflict records`)
+  } else {
+    // Update duplicates
+    if (duplicates.length > 0) {
+      console.log(`\n   Marking ${duplicates.length} duplicates as is_new=false...`)
+
+      let updated = 0
+      let failed = 0
+
+      // Batch update for efficiency
+      const batchSize = 100
+      for (let i = 0; i < duplicates.length; i += batchSize) {
+        const batch = duplicates.slice(i, i + batchSize)
+        const ids = batch.map(d => d.id)
+
+        const { error: updateError } = await supabase
+          .from('course_legos')
+          .update({ is_new: false })
+          .in('id', ids)
+
+        if (updateError) {
+          console.error(`      Batch ${Math.floor(i/batchSize) + 1} failed:`, updateError.message)
+          failed += batch.length
+        } else {
+          updated += batch.length
+        }
+      }
+
+      console.log(`      Updated: ${updated}, Failed: ${failed}`)
+    }
+
+    // Store conflicts (upsert to phase2_conflicts table or write to JSON)
+    if (conflicts.length > 0) {
+      console.log(`\n   Storing ${conflicts.length} conflicts...`)
+
+      // For now, store in a JSON file - can migrate to DB table later
+      const fs = require('fs')
+      const path = require('path')
+      const vfsRoot = process.env.VFS_ROOT || path.join(__dirname, '../../../public/vfs/courses')
+      const conflictPath = path.join(vfsRoot, courseCode, 'phase2_conflicts.json')
+
+      const conflictData = {
+        courseCode,
+        detectedAt: new Date().toISOString(),
+        summary: {
+          totalLegos: legos.length,
+          uniqueKnownTexts: knownGroups.size,
+          uniqueLegos: uniqueCount,
+          duplicatesMarked: duplicates.length,
+          conflictCount: conflicts.length,
+          affectedLegos: conflicts.reduce((sum, c) => sum + c.total_occurrences, 0)
+        },
+        conflicts: conflicts.map(c => ({
+          ...c,
+          status: 'detected',  // detected | assigned | resolved
+          assignedTo: null,
+          resolvedAt: null,
+          resolution: null
+        }))
+      }
+
+      fs.writeFileSync(conflictPath, JSON.stringify(conflictData, null, 2))
+      console.log(`      Wrote: ${conflictPath}`)
+    }
+  }
+
+  // Final status
+  console.log(`\n${'='.repeat(60)}`)
+  if (conflicts.length === 0) {
+    console.log('PHASE 2 DETECTION COMPLETE - No conflicts!')
+    console.log('Ready for Phase 3.')
+  } else {
+    console.log(`PHASE 2 DETECTION COMPLETE - ${conflicts.length} conflicts need resolution`)
+    console.log('Run conflict resolution agents to continue.')
+  }
+  console.log(`${'='.repeat(60)}\n`)
+
+  // Return summary for API use
+  return {
+    success: true,
+    courseCode,
+    summary: {
+      totalLegos: legos.length,
+      uniqueKnownTexts: knownGroups.size,
+      uniqueLegos: uniqueCount,
+      duplicatesMarked: duplicates.length,
+      conflictCount: conflicts.length
+    },
+    conflicts: conflicts.length > 0 ? conflicts : null
+  }
+}
+
+// Run if called directly
+if (require.main === module) {
+  detect()
+    .then(result => {
+      if (!result.success) process.exit(1)
+    })
+    .catch(err => {
+      console.error('Detection failed:', err)
+      process.exit(1)
+    })
+}
+
+module.exports = { detect }

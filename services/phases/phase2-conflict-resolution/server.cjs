@@ -3283,7 +3283,10 @@ app.post('/phase2/finalize', async (req, res) => {
       for (const seed of seeds) {
         if (!seed.legos) continue;
         for (const lego of seed.legos) {
-          const key = `${lego.lego?.known?.toLowerCase()}|${lego.lego?.target?.toLowerCase()}`;
+          // Handle both flat format (lego.known) and nested format (lego.lego.known)
+          const known = lego.known || lego.lego?.known;
+          const target = lego.target || lego.lego?.target;
+          const key = `${known?.toLowerCase()}|${target?.toLowerCase()}`;
           const dbLego = legoByKey.get(key);
           if (dbLego) {
             const isNew = !seenInJson.has(key);
