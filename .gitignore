@@ -112,3 +112,9 @@ tests/
 public/vfs/courses_backup_*
 **/backups/
 **/*backup*
+
+# --------------------------
+# Scripts (agent workspace)
+# --------------------------
+# Per CLAUDE.md: Agent-generated code, experiments, one-off fixes
+scripts/
