@@ -1687,6 +1687,7 @@ app.get('/api/courses', async (req, res) => {
             seed_pairs: stats.seeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
+            phrases: stats.phrases,
             phases_completed: phases
           };
         });
