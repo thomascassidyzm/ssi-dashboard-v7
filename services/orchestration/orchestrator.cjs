@@ -5446,7 +5446,7 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
     // SSoT: Each phase's prompt lives alongside its service code
     const phasePaths = {
       '1': 'phase1-translation/PROMPT.md',           // Phase 1: Translation + LEGO Extraction
-      '2': 'phase1-lego-extraction/PROMPT.md',       // Phase 2: Conflict Resolution
+      '2': 'phase2-conflict-resolution/PROMPT.md',   // Phase 2: Conflict Resolution
       '3': 'phase3-basket-generation/PROMPT.md',     // Phase 3: Basket Generation
       '5': 'phase3-basket-generation/PROMPT.md',     // Legacy: Phase 5 → Phase 3
       '8': 'phase8-audio-generation/PROMPT.md',      // Phase 8: Audio Generation
