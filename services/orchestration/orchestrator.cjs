@@ -26,7 +26,7 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 
 // Load centralized course mode configuration
-const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes } = require('../config/course-mode-loader.cjs');
+const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes, getMachinePattern, getAllMachineProfiles } = require('../config/course-mode-loader.cjs');
 
 // Database-first course data service
 const courseDataService = require('../course-data-service.cjs');
@@ -4036,7 +4036,8 @@ app.post('/api/courses/generate', async (req, res) => {
     courseCode: providedCourseCode,
     modelSuffix,  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
     mode,  // Course mode (quick_test, mvp_course, full_course)
-    spawnerMode = 'cli'  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
+    spawnerMode = 'cli',  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
+    machineProfile  // Machine profile ID (e.g., 'tom', 'kai') - affects parallelization
   } = req.body;
 
   // Generate or use provided course code
@@ -4081,7 +4082,14 @@ app.post('/api/courses/generate', async (req, res) => {
       startSeed = 1;
       endSeed = modeConfig.seeds;
       totalSeeds = modeConfig.seeds;
-      pattern = modeConfig.pattern;
+
+      // Use machine profile pattern if provided, otherwise default
+      if (machineProfile) {
+        pattern = getMachinePattern({ machineProfile, spawnerMode, mode });
+        console.log(`[Orchestrator] Using machine profile: ${machineProfile} (${pattern.source})`);
+      } else {
+        pattern = modeConfig.pattern;
+      }
       console.log(`[Orchestrator] Using mode: ${modeConfig.name} (${totalSeeds} seeds)`);
       console.log(`[Orchestrator] Pattern: ${pattern.browsers}b/${pattern.agents_per_browser}a/${pattern.seeds_per_agent}s`);
     } catch (error) {
@@ -4099,7 +4107,15 @@ app.post('/api/courses/generate', async (req, res) => {
 
     // Auto-select pattern based on seed count
     modeConfig = getPatternForSeeds(totalSeeds);
-    pattern = modeConfig.pattern;
+
+    // Use machine profile pattern if provided
+    if (machineProfile) {
+      const autoMode = totalSeeds <= 10 ? 'quick_test' : totalSeeds <= 260 ? 'mvp_course' : 'full_course';
+      pattern = getMachinePattern({ machineProfile, spawnerMode, mode: autoMode });
+      console.log(`[Orchestrator] Using machine profile: ${machineProfile} (${pattern.source})`);
+    } else {
+      pattern = modeConfig.pattern;
+    }
   }
 
   console.log(`\n📋 Course generation request from dashboard:`);
@@ -4107,6 +4123,7 @@ app.post('/api/courses/generate', async (req, res) => {
   console.log(`   Seeds: ${startSeed}-${endSeed} (${totalSeeds} seeds)`);
   console.log(`   Mode: ${mode || 'custom'} (Pattern: ${pattern.browsers}b/${pattern.agents_per_browser}a/${pattern.seeds_per_agent}s)`);
   console.log(`   Spawner: ${spawnerMode} (${spawnerMode === 'cli' ? 'iTerm2 + Claude CLI' : 'Browser + Claude Web'})`);
+  console.log(`   Machine: ${machineProfile || 'default'} ${pattern.source ? `(${pattern.source})` : ''}`);
   console.log(`   Phase: ${phaseSelection}`);
   console.log(`   Strategy: ${strategy}`);
 
@@ -4399,6 +4416,45 @@ app.get('/api/modes', (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to load modes', details: error.message });
+  }
+});
+
+/**
+ * GET /api/machine-profiles
+ * Get available machine profiles for parallelization configuration
+ * Returns profile summaries for UI display (name, description, RAM)
+ */
+app.get('/api/machine-profiles', (req, res) => {
+  try {
+    const profiles = getAllMachineProfiles();
+    res.json({
+      profiles,
+      note: 'Machine profiles allow different parallelization patterns based on hardware capacity'
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to load machine profiles', details: error.message });
+  }
+});
+
+/**
+ * GET /api/machine-profiles/:profileId/pattern
+ * Get the specific parallelization pattern for a profile/spawner/mode combination
+ * Query params: ?spawnerMode=cli&mode=quick_test
+ */
+app.get('/api/machine-profiles/:profileId/pattern', (req, res) => {
+  try {
+    const { profileId } = req.params;
+    const { spawnerMode = 'cli', mode = 'quick_test' } = req.query;
+
+    const pattern = getMachinePattern({ machineProfile: profileId, spawnerMode, mode });
+    res.json({
+      profileId,
+      spawnerMode,
+      mode,
+      pattern
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get pattern', details: error.message });
   }
 });
 

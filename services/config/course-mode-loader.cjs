@@ -17,9 +17,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// Load config once at module load
+// Load configs once at module load
 const CONFIG_PATH = path.join(__dirname, 'course-modes.json');
+const MACHINE_PROFILES_PATH = path.join(__dirname, 'machine-profiles.json');
 let cachedConfig = null;
+let cachedMachineProfiles = null;
 
 /**
  * Load the course modes configuration
@@ -36,6 +38,24 @@ function loadConfig() {
   } catch (err) {
     console.error(`[CourseMode] ❌ Failed to load config: ${err.message}`);
     throw new Error(`Course mode config not found at ${CONFIG_PATH}`);
+  }
+}
+
+/**
+ * Load machine profiles configuration
+ * @returns {Object} The machine profiles config
+ */
+function loadMachineProfiles() {
+  if (cachedMachineProfiles) return cachedMachineProfiles;
+
+  try {
+    const profileContent = fs.readFileSync(MACHINE_PROFILES_PATH, 'utf8');
+    cachedMachineProfiles = JSON.parse(profileContent);
+    console.log(`[CourseMode] ✓ Loaded machine profiles v${cachedMachineProfiles.version}`);
+    return cachedMachineProfiles;
+  } catch (err) {
+    console.warn(`[CourseMode] ⚠️ Machine profiles not found, using default patterns`);
+    return null;
   }
 }
 
@@ -190,6 +210,87 @@ function isValidMode(modeName) {
   return modeName in config.modes;
 }
 
+/**
+ * Get pattern for a specific machine profile, spawner mode, and course mode
+ * Falls back to default patterns if machine profile not found
+ *
+ * @param {Object} options
+ * @param {string} options.machineProfile - Machine profile ID (e.g., 'tom', 'kai')
+ * @param {string} options.spawnerMode - 'cli' or 'browser'
+ * @param {string} options.mode - Course mode (quick_test, mvp_course, full_course)
+ * @returns {Object} Pattern with { browsers, agents_per_browser, seeds_per_agent, source }
+ */
+function getMachinePattern({ machineProfile, spawnerMode = 'cli', mode }) {
+  const profiles = loadMachineProfiles();
+  const config = loadConfig();
+
+  // Default to course-modes.json patterns
+  const defaultPattern = config.modes[mode]?.pattern;
+  if (!defaultPattern) {
+    throw new Error(`Unknown mode: ${mode}`);
+  }
+
+  // If no machine profiles loaded, return default
+  if (!profiles) {
+    return {
+      ...defaultPattern,
+      source: 'course-modes.json (no machine profiles)'
+    };
+  }
+
+  // Resolve profile (use 'default' if not found)
+  const profileId = machineProfile && profiles.profiles[machineProfile]
+    ? machineProfile
+    : 'default';
+  const profile = profiles.profiles[profileId];
+
+  if (!profile) {
+    return {
+      ...defaultPattern,
+      source: 'course-modes.json (profile not found)'
+    };
+  }
+
+  // Get spawner-specific patterns
+  const spawnerPatterns = profile.patterns[spawnerMode];
+  if (!spawnerPatterns) {
+    return {
+      ...defaultPattern,
+      source: `course-modes.json (no ${spawnerMode} patterns in ${profileId})`
+    };
+  }
+
+  // Get mode-specific pattern
+  const modePattern = spawnerPatterns[mode];
+  if (!modePattern) {
+    return {
+      ...defaultPattern,
+      source: `course-modes.json (no ${mode} in ${profileId}/${spawnerMode})`
+    };
+  }
+
+  return {
+    ...modePattern,
+    source: `machine-profiles.json (${profileId}/${spawnerMode}/${mode})`
+  };
+}
+
+/**
+ * Get all available machine profiles for UI display
+ * @returns {Array} Array of profile summaries
+ */
+function getAllMachineProfiles() {
+  const profiles = loadMachineProfiles();
+  if (!profiles) return [];
+
+  return Object.entries(profiles.profiles).map(([id, profile]) => ({
+    id,
+    name: profile.name,
+    description: profile.description,
+    ram_gb: profile.ram_gb
+  }));
+}
+
 // Export everything
 module.exports = {
   // Constants
@@ -206,6 +307,11 @@ module.exports = {
   getDefaults,
   getResumeConfig,
   isValidMode,
+
+  // Machine profile functions
+  loadMachineProfiles,
+  getMachinePattern,
+  getAllMachineProfiles,
 
   // Deprecated - for backwards compatibility during migration
   // TODO: Remove these after all hardcoded values are replaced

@@ -52,7 +52,7 @@
           <div class="flex items-center gap-3">
             <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Configuration</span>
             <span v-if="!configExpanded && courseCode" class="text-sm text-slate-500">
-              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }}
+              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }}
             </span>
           </div>
           <svg
@@ -119,24 +119,48 @@
             </div>
           </div>
 
-          <!-- Agent Engine -->
-          <div>
-            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
-              Agent Engine
-            </label>
-            <div class="flex gap-2">
-              <button
-                v-for="engine in engines"
-                :key="engine.id"
-                @click="agentEngine = engine.id"
-                class="flex-1 px-4 py-3 rounded-lg border transition-all text-sm"
-                :class="agentEngine === engine.id
-                  ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
-              >
-                <div class="font-medium">{{ engine.label }}</div>
-                <div class="text-xs opacity-70 mt-0.5">{{ engine.description }}</div>
-              </button>
+          <!-- Agent Engine + Machine Profile Row -->
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Agent Engine -->
+            <div>
+              <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+                Agent Engine
+              </label>
+              <div class="flex gap-2">
+                <button
+                  v-for="engine in engines"
+                  :key="engine.id"
+                  @click="agentEngine = engine.id"
+                  class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
+                  :class="agentEngine === engine.id
+                    ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
+                    : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                >
+                  <div class="font-medium">{{ engine.label }}</div>
+                  <div class="text-xs opacity-70 mt-0.5">{{ engine.description }}</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Machine Profile -->
+            <div>
+              <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+                Machine Profile
+              </label>
+              <div class="flex gap-2">
+                <button
+                  v-for="profile in machineProfiles"
+                  :key="profile.id"
+                  @click="selectedMachineProfile = profile.id"
+                  class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
+                  :class="selectedMachineProfile === profile.id
+                    ? 'bg-purple-600/20 border-purple-500/50 text-purple-400'
+                    : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                >
+                  <div class="font-medium">{{ profile.name }}</div>
+                  <div class="text-xs opacity-70 mt-0.5">{{ profile.description }}</div>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -520,6 +544,14 @@ const engines = [
   { id: 'cli', label: 'CLI', description: 'iTerm2 + Claude Code' },
   { id: 'browser', label: 'Safari', description: 'Browser-based' }
 ]
+
+// Machine profiles for parallelization (loaded from API on mount)
+const machineProfiles = ref([
+  { id: 'tom', name: "Tom's MacBook", description: '24GB RAM' },
+  { id: 'kai', name: "Kai's Machine", description: '8GB RAM' },
+  { id: 'default', name: 'Default', description: '16GB assumed' }
+])
+const selectedMachineProfile = ref('tom')
 
 // Computed
 const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode)
@@ -911,6 +943,7 @@ async function startPhase() {
         courseCode: code,
         phaseSelection: `phase${targetPhase.number}`,
         spawnerMode: agentEngine.value,
+        machineProfile: selectedMachineProfile.value,
         mode: seedCount.value === 10 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
       })
     })

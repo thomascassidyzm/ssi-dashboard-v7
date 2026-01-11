@@ -1,0 +1,172 @@
+{
+  "$schema": "./machine-profiles.schema.json",
+  "version": "1.0.0",
+  "description": "Machine-specific parallelization profiles for different hardware configurations",
+  "lastUpdated": "2025-01-11",
+  "note": "Each machine has different RAM/CPU, so parallelization patterns differ. CLI and browser spawners have different overhead characteristics.",
+
+  "profiles": {
+    "tom": {
+      "name": "Tom's MacBook Pro",
+      "description": "24GB RAM - High parallelization capacity",
+      "ram_gb": 24,
+      "patterns": {
+        "cli": {
+          "comment": "CLI mode uses iTerm2 + Claude CLI - lower overhead per agent",
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 5,
+            "seeds_per_agent": 1
+          },
+          "mvp_course": {
+            "browsers": 10,
+            "agents_per_browser": 13,
+            "seeds_per_agent": 2
+          },
+          "full_course": {
+            "browsers": 17,
+            "agents_per_browser": 13,
+            "seeds_per_agent": 2
+          }
+        },
+        "browser": {
+          "comment": "Browser mode uses Safari/Chrome - higher memory per tab",
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 5,
+            "seeds_per_agent": 1
+          },
+          "mvp_course": {
+            "browsers": 8,
+            "agents_per_browser": 10,
+            "seeds_per_agent": 3
+          },
+          "full_course": {
+            "browsers": 12,
+            "agents_per_browser": 10,
+            "seeds_per_agent": 3
+          }
+        }
+      }
+    },
+
+    "kai": {
+      "name": "Kai's Machine",
+      "description": "8GB RAM - Conservative parallelization",
+      "ram_gb": 8,
+      "patterns": {
+        "cli": {
+          "comment": "CLI mode on limited RAM - moderate parallelization",
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 3,
+            "seeds_per_agent": 2
+          },
+          "mvp_course": {
+            "browsers": 5,
+            "agents_per_browser": 6,
+            "seeds_per_agent": 4
+          },
+          "full_course": {
+            "browsers": 6,
+            "agents_per_browser": 6,
+            "seeds_per_agent": 4
+          }
+        },
+        "browser": {
+          "comment": "Browser mode on 8GB - minimal parallelization",
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 2,
+            "seeds_per_agent": 3
+          },
+          "mvp_course": {
+            "browsers": 4,
+            "agents_per_browser": 5,
+            "seeds_per_agent": 6
+          },
+          "full_course": {
+            "browsers": 5,
+            "agents_per_browser": 5,
+            "seeds_per_agent": 6
+          }
+        }
+      }
+    },
+
+    "default": {
+      "name": "Default Profile",
+      "description": "Balanced settings for unknown machines - 16GB assumed",
+      "ram_gb": 16,
+      "patterns": {
+        "cli": {
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 5,
+            "seeds_per_agent": 1
+          },
+          "mvp_course": {
+            "browsers": 8,
+            "agents_per_browser": 10,
+            "seeds_per_agent": 3
+          },
+          "full_course": {
+            "browsers": 12,
+            "agents_per_browser": 10,
+            "seeds_per_agent": 3
+          }
+        },
+        "browser": {
+          "quick_test": {
+            "browsers": 2,
+            "agents_per_browser": 4,
+            "seeds_per_agent": 2
+          },
+          "mvp_course": {
+            "browsers": 6,
+            "agents_per_browser": 8,
+            "seeds_per_agent": 4
+          },
+          "full_course": {
+            "browsers": 8,
+            "agents_per_browser": 8,
+            "seeds_per_agent": 4
+          }
+        }
+      }
+    }
+  },
+
+  "spawner_notes": {
+    "cli": {
+      "description": "iTerm2 + Claude CLI",
+      "advantages": [
+        "Lower memory overhead per agent",
+        "Faster spawn times",
+        "Better for bulk operations"
+      ],
+      "model": "Sonnet (via Claude CLI)"
+    },
+    "browser": {
+      "description": "Safari/Chrome + Claude Web",
+      "advantages": [
+        "Visual debugging",
+        "Can use Opus model",
+        "Better for complex reasoning tasks"
+      ],
+      "model": "Configurable (Sonnet/Opus)"
+    }
+  },
+
+  "tuning_guidelines": {
+    "memory_rules": [
+      "CLI agent: ~200MB each",
+      "Browser tab: ~400-600MB each",
+      "Leave 4GB for OS and dashboard"
+    ],
+    "formula": {
+      "cli_max_agents": "(RAM_GB - 4) * 5",
+      "browser_max_agents": "(RAM_GB - 4) * 2.5"
+    }
+  }
+}
