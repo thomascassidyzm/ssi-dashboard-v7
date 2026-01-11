@@ -1674,10 +1674,11 @@ tell application "${browser}"
     -- Wait for page to load (3 seconds)
     delay 3
 
-    -- Cmd+A clears any synced draft, then paste and submit IMMEDIATELY
+    -- Cmd+A clears any synced draft, then paste and submit with delay
     tell application "System Events"
         keystroke "a" using command down
         keystroke "v" using command down
+        delay 1
         keystroke return
     end tell
 
