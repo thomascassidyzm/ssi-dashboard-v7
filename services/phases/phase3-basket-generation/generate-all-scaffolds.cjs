@@ -2,32 +2,40 @@
 /**
  * Pre-generate ALL Phase 3 scaffolds for a course
  *
- * This is a BATCH operation that runs ONCE per course (or when lego_pairs.json changes).
- * Agents then simply fetch pre-computed scaffolds via REST - no computation needed.
+ * READS FROM SUPABASE (database is SSoT)
  *
- * Usage: node generate-all-scaffolds.cjs <courseDir>
+ * Usage:
+ *   node generate-all-scaffolds.cjs <courseCode>
+ *   node generate-all-scaffolds.cjs zho_for_eng
  *
  * Output structure:
- *   <courseDir>/phase3_scaffolds/
+ *   <vfsRoot>/<courseCode>/phase3_scaffolds/
  *     ├── index.json           # Manifest: {seeds: [...], totalLegos: N, generatedAt: ...}
  *     ├── S0001.json           # All LEGOs for seed S0001
  *     ├── S0002.json           # All LEGOs for seed S0002
  *     └── ...
- *
- * Each seed file contains:
- *   {
- *     "seed_id": "S0001",
- *     "seed_pair": { "known": "...", "target": "..." },
- *     "legos": {
- *       "S0001L01": { scaffold text },
- *       "S0001L02": { scaffold text },
- *       ...
- *     }
- *   }
  */
 
 const fs = require('fs-extra');
 const path = require('path');
+
+// Get Supabase client from shared service
+const getSupabase = () => {
+  try {
+    const { createClient } = require('@supabase/supabase-js');
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error('SUPABASE_URL and SUPABASE_SERVICE_KEY must be set');
+    }
+
+    return createClient(supabaseUrl, supabaseKey);
+  } catch (error) {
+    console.error('Failed to initialize Supabase:', error.message);
+    process.exit(1);
+  }
+};
 
 // Spelling normalization for GATE validation
 const SPELLING_VARIANTS = {
@@ -49,7 +57,7 @@ const SPELLING_VARIANTS = {
   'metre': 'meter', 'metres': 'meters',
   'litre': 'liter', 'litres': 'liters',
   'defence': 'defense', 'offence': 'offense',
-  'licence': 'license', 'practise': 'practice',
+  'licence': 'license',
   'analyse': 'analyze', 'analysing': 'analyzing', 'analysed': 'analyzed',
   'catalogue': 'catalog', 'dialogue': 'dialog',
   'programme': 'program', 'programmes': 'programs',
@@ -67,116 +75,14 @@ function normalizeSpelling(word) {
 }
 
 function extractWords(text) {
-  const matches = text.toLowerCase().match(/[\wáéíóúüñàèìòùâêîôûäëïöüç]+/g);
+  if (!text) return [];
+  const matches = text.toLowerCase().match(/[\wáéíóúüñàèìòùâêîôûäëïöüç\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]+/g);
   if (!matches) return [];
   return matches.map(normalizeSpelling);
 }
 
 /**
- * Build cumulative vocabulary up to (but not including) a specific seed
- * Returns { known: Set, target: Set }
- */
-function buildVocabUpToSeed(legoPairs, targetSeedNum) {
-  const knownVocab = new Set();
-  const targetVocab = new Set();
-
-  for (const seed of legoPairs.seeds) {
-    const seedNum = parseInt(seed.seed_id.replace('S', ''));
-    if (seedNum >= targetSeedNum) break;
-
-    // Add seed sentence words
-    if (seed.seed_pair) {
-      extractWords(seed.seed_pair.known).forEach(w => knownVocab.add(w));
-      extractWords(seed.seed_pair.target).forEach(w => targetVocab.add(w));
-    }
-
-    // Add all LEGO words from this seed
-    for (const lego of (seed.legos || [])) {
-      if (lego.lego) {
-        extractWords(lego.known).forEach(w => knownVocab.add(w));
-        extractWords(lego.target).forEach(w => targetVocab.add(w));
-      }
-    }
-  }
-
-  return { known: knownVocab, target: targetVocab };
-}
-
-/**
- * Build vocabulary available for a specific LEGO within its seed
- * (prior seeds + earlier LEGOs in current seed + current LEGO)
- */
-function buildVocabForLego(legoPairs, seedId, legoIndex) {
-  const seedNum = parseInt(seedId.replace('S', ''));
-  const vocab = buildVocabUpToSeed(legoPairs, seedNum);
-
-  // Find this seed
-  const seed = legoPairs.seeds.find(s => s.seed_id === seedId);
-  if (!seed) return vocab;
-
-  // Add seed sentence
-  if (seed.seed_pair) {
-    extractWords(seed.seed_pair.known).forEach(w => vocab.known.add(w));
-    extractWords(seed.seed_pair.target).forEach(w => vocab.target.add(w));
-  }
-
-  // Add LEGOs up to and including current index
-  for (let i = 0; i <= legoIndex; i++) {
-    const lego = seed.legos[i];
-    if (lego?.lego) {
-      extractWords(lego.known).forEach(w => vocab.known.add(w));
-      extractWords(lego.target).forEach(w => vocab.target.add(w));
-    }
-  }
-
-  return vocab;
-}
-
-/**
- * Get recent LEGOs for context (last N LEGOs before current position)
- */
-function getRecentLegos(legoPairs, seedId, legoIndex, count = 20) {
-  const result = [];
-  const seedNum = parseInt(seedId.replace('S', ''));
-
-  // Start from current position and work backwards
-  let currentSeedNum = seedNum;
-  let currentLegoIdx = legoIndex - 1;
-
-  while (result.length < count && currentSeedNum > 0) {
-    const currentSeed = legoPairs.seeds.find(s => s.seed_id === `S${String(currentSeedNum).padStart(4, '0')}`);
-
-    if (currentSeed && currentSeed.legos) {
-      // If we're in a previous seed, start from the end
-      if (currentSeedNum < seedNum) {
-        currentLegoIdx = currentSeed.legos.length - 1;
-      }
-
-      while (currentLegoIdx >= 0 && result.length < count) {
-        const lego = currentSeed.legos[currentLegoIdx];
-        if (lego?.new && lego.lego) {
-          result.push({
-            id: lego.id,
-            known: lego.known,
-            target: lego.target,
-            type: lego.type
-          });
-        }
-        currentLegoIdx--;
-      }
-    }
-
-    currentSeedNum--;
-    currentLegoIdx = 999; // Reset for next seed
-  }
-
-  return result;
-}
-
-/**
  * Count syllables in text (language-agnostic)
- * - CJK languages: each character ≈ 1 syllable
- * - Alphabetic languages: estimate via vowel clusters
  */
 function countSyllables(text) {
   if (!text || typeof text !== 'string') return 0;
@@ -206,71 +112,138 @@ function countSyllables(text) {
 
 /**
  * Assign recommended model tier based on difficulty factors
- * @returns 'haiku' | 'sonnet' | 'opus'
- *
- * Difficulty factors (hardest first):
- * 1. Very limited vocab (<15 words) - OPUS only
- * 2. Limited vocab (<30) OR complex M-type (3+ syllables) - SONNET
- * 3. Moderate vocab (30-60) - SONNET (safe default)
- * 4. Rich vocab (>60) with simple LEGO - HAIKU
  */
 function assignModelTier(seedNum, vocabSize, legoSyllableCount, legoType) {
-  // Tier 1: OPUS - Very constrained (hardest cases)
-  // Very limited vocabulary makes GATE compliance extremely difficult
   if (vocabSize < 15) return 'opus';
-
-  // Tier 2: SONNET - Moderate difficulty (default safe choice)
-  // Limited vocab OR complex multi-word LEGOs
   if (vocabSize < 30) return 'sonnet';
   if (legoType === 'M' && legoSyllableCount >= 3) return 'sonnet';
-
-  // Tier 3: Still SONNET for moderate vocab (30-60)
-  // This is the "safe zone" - Sonnet handles these well
   if (vocabSize < 60) return 'sonnet';
-
-  // Tier 4: HAIKU - Rich vocabulary with simple LEGOs
-  // Plenty of vocab options makes generation easier
   return 'haiku';
+}
+
+/**
+ * Build cumulative vocabulary up to (but not including) a specific seed
+ * @param {Array} allSeeds - All seeds from DB
+ * @param {Array} allLegos - All LEGOs from DB
+ * @param {number} targetSeedNum - Build vocab up to this seed
+ */
+function buildVocabUpToSeed(allSeeds, allLegos, targetSeedNum) {
+  const knownVocab = new Set();
+  const targetVocab = new Set();
+
+  // Add words from all seeds before target
+  for (const seed of allSeeds) {
+    if (seed.seed_number >= targetSeedNum) break;
+    extractWords(seed.known_text).forEach(w => knownVocab.add(w));
+    extractWords(seed.target_text).forEach(w => targetVocab.add(w));
+  }
+
+  // Add words from all LEGOs in seeds before target
+  for (const lego of allLegos) {
+    if (lego.seed_number >= targetSeedNum) continue;
+    extractWords(lego.known_text).forEach(w => knownVocab.add(w));
+    extractWords(lego.target_text).forEach(w => targetVocab.add(w));
+  }
+
+  return { known: knownVocab, target: targetVocab };
+}
+
+/**
+ * Build vocabulary available for a specific LEGO within its seed
+ */
+function buildVocabForLego(allSeeds, allLegos, seedNumber, legoIndex) {
+  const vocab = buildVocabUpToSeed(allSeeds, allLegos, seedNumber);
+
+  // Find this seed
+  const seed = allSeeds.find(s => s.seed_number === seedNumber);
+  if (seed) {
+    extractWords(seed.known_text).forEach(w => vocab.known.add(w));
+    extractWords(seed.target_text).forEach(w => vocab.target.add(w));
+  }
+
+  // Add LEGOs up to and including current index in this seed
+  const seedLegos = allLegos.filter(l => l.seed_number === seedNumber);
+  for (const lego of seedLegos) {
+    if (lego.lego_index <= legoIndex) {
+      extractWords(lego.known_text).forEach(w => vocab.known.add(w));
+      extractWords(lego.target_text).forEach(w => vocab.target.add(w));
+    }
+  }
+
+  return vocab;
+}
+
+/**
+ * Get recent NEW LEGOs for context (for recombination priority)
+ */
+function getRecentLegos(allLegos, seedNumber, legoIndex, count = 30) {
+  const result = [];
+
+  // Get all new LEGOs before this position
+  const newLegosBefore = allLegos.filter(l =>
+    l.is_new &&
+    (l.seed_number < seedNumber ||
+     (l.seed_number === seedNumber && l.lego_index < legoIndex))
+  );
+
+  // Sort by position descending (most recent first)
+  newLegosBefore.sort((a, b) => {
+    if (b.seed_number !== a.seed_number) return b.seed_number - a.seed_number;
+    return b.lego_index - a.lego_index;
+  });
+
+  // Take the most recent N
+  for (const lego of newLegosBefore.slice(0, count)) {
+    result.push({
+      id: lego.lego_id,
+      known: lego.known_text,
+      target: lego.target_text,
+      type: lego.type
+    });
+  }
+
+  return result;
 }
 
 /**
  * Generate scaffold for a single LEGO
  */
-function generateLegoScaffold(legoPairs, seed, legoIndex) {
-  const lego = seed.legos[legoIndex];
-  const seedNum = parseInt(seed.seed_id.replace('S', ''));
+function generateLegoScaffold(allSeeds, allLegos, lego, seedLegos) {
+  const seedNumber = lego.seed_number;
+  const legoIndex = lego.lego_index;
 
   // Get available vocabulary
-  const vocab = buildVocabForLego(legoPairs, seed.seed_id, legoIndex);
+  const vocab = buildVocabForLego(allSeeds, allLegos, seedNumber, legoIndex);
 
-  // Get recent LEGOs for context (30 most recent new:true LEGOs for recombination priority)
-  const recentLegos = getRecentLegos(legoPairs, seed.seed_id, legoIndex, 30);
+  // Get recent LEGOs for context
+  const recentLegos = getRecentLegos(allLegos, seedNumber, legoIndex, 30);
 
   // Is this the final LEGO in the seed?
-  const isFinalLego = legoIndex === seed.legos.length - 1;
+  const maxLegoIndex = Math.max(...seedLegos.map(l => l.lego_index));
+  const isFinalLego = legoIndex === maxLegoIndex;
 
   // Calculate difficulty metrics
   const vocabSize = vocab.target.size;
-  const legoSyllableCount = countSyllables(lego.target);
-  const recommendedModel = assignModelTier(seedNum, vocabSize, legoSyllableCount, lego.type);
+  const legoSyllableCount = countSyllables(lego.target_text);
+  const recommendedModel = assignModelTier(seedNumber, vocabSize, legoSyllableCount, lego.type);
 
   // Build compact scaffold
   return {
-    lego_id: lego.id,
+    lego_id: lego.lego_id,
     lego: {
-      known: lego.known,
-      target: lego.target
+      known: lego.known_text,
+      target: lego.target_text
     },
     type: lego.type,
-    is_new: lego.new,
+    is_new: lego.is_new,
     is_final_lego: isFinalLego,
-    position: `${legoIndex + 1}/${seed.legos.length}`,
+    position: `${legoIndex}/${maxLegoIndex}`,
 
     // Difficulty metrics for model selection
     difficulty: {
       vocab_size: vocabSize,
       lego_syllable_count: legoSyllableCount,
-      seed_position: seedNum,
+      seed_position: seedNumber,
       recommended_model: recommendedModel
     },
 
@@ -280,8 +253,8 @@ function generateLegoScaffold(legoPairs, seed, legoIndex) {
       target: Array.from(vocab.target).sort()
     },
 
-    // Recent context (30 most recent new:true LEGOs - prioritize these for recombination)
-    recent_legos: recentLegos.slice(0, 30).map(l => ({
+    // Recent context (30 most recent new:true LEGOs)
+    recent_legos: recentLegos.map(l => ({
       id: l.id,
       known: l.known,
       target: l.target
@@ -301,74 +274,112 @@ function generateLegoScaffold(legoPairs, seed, legoIndex) {
 }
 
 /**
- * Generate all scaffolds for a course
+ * Generate all scaffolds for a course (reads from Supabase)
  */
-async function generateAllScaffolds(courseDir) {
-  const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
-  const outputDir = path.join(courseDir, 'phase3_scaffolds');
+async function generateAllScaffolds(courseCode) {
+  const supabase = getSupabase();
 
-  // Load lego_pairs.json
-  if (!await fs.pathExists(legoPairsPath)) {
-    console.error(`❌ lego_pairs.json not found in ${courseDir}`);
+  // Determine output directory
+  const vfsRoot = process.env.VFS_ROOT || path.join(__dirname, '../../../public/vfs/courses');
+  const outputDir = path.join(vfsRoot, courseCode, 'phase3_scaffolds');
+
+  console.log(`\n📚 Generating Phase 3 scaffolds for ${courseCode}`);
+  console.log(`   Reading from Supabase (database is SSoT)`);
+
+  // Fetch all seeds for this course
+  const { data: allSeeds, error: seedError } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number');
+
+  if (seedError) {
+    console.error(`❌ Failed to fetch seeds:`, seedError.message);
     process.exit(1);
   }
 
-  const legoPairs = await fs.readJson(legoPairsPath);
-  console.log(`\n📚 Generating Phase 3 scaffolds for ${path.basename(courseDir)}`);
-  console.log(`   Seeds: ${legoPairs.seeds.length}`);
+  console.log(`   Seeds: ${allSeeds.length}`);
+
+  // Fetch ALL LEGOs for this course (need all for vocab building)
+  const { data: allLegos, error: legoError } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, lego_id, type, is_new, known_text, target_text, components')
+    .eq('course_code', courseCode)
+    .order('seed_number')
+    .order('lego_index');
+
+  if (legoError) {
+    console.error(`❌ Failed to fetch LEGOs:`, legoError.message);
+    process.exit(1);
+  }
+
+  const totalLegos = allLegos.length;
+  const newLegos = allLegos.filter(l => l.is_new);
+  console.log(`   Total LEGOs: ${totalLegos}`);
+  console.log(`   NEW LEGOs (is_new=true): ${newLegos.length}`);
 
   // Create output directory
   await fs.ensureDir(outputDir);
 
+  // Group LEGOs by seed
+  const legosBySeed = {};
+  for (const lego of allLegos) {
+    if (!legosBySeed[lego.seed_number]) {
+      legosBySeed[lego.seed_number] = [];
+    }
+    legosBySeed[lego.seed_number].push(lego);
+  }
+
   // Track stats
-  let totalLegos = 0;
-  let totalNewLegos = 0;
   const seedIndex = [];
+  let totalNewLegos = 0;
 
-  // Process each seed
-  for (const seed of legoPairs.seeds) {
-    const seedLegos = {};
-    let newLegosInSeed = 0;
+  // Process each seed that has new LEGOs
+  for (const seed of allSeeds) {
+    const seedLegos = legosBySeed[seed.seed_number] || [];
+    const newLegosInSeed = seedLegos.filter(l => l.is_new);
 
-    for (let i = 0; i < seed.legos.length; i++) {
-      const lego = seed.legos[i];
-      totalLegos++;
+    if (newLegosInSeed.length === 0) continue;
 
-      if (lego.new) {
-        totalNewLegos++;
-        newLegosInSeed++;
-        seedLegos[lego.id] = generateLegoScaffold(legoPairs, seed, i);
-      }
+    totalNewLegos += newLegosInSeed.length;
+
+    // Generate scaffolds for new LEGOs in this seed
+    const seedScaffolds = {};
+    for (const lego of newLegosInSeed) {
+      seedScaffolds[lego.lego_id] = generateLegoScaffold(allSeeds, allLegos, lego, seedLegos);
     }
 
-    // Write seed file (only if it has new LEGOs)
-    if (newLegosInSeed > 0) {
-      const seedFile = {
-        seed_id: seed.seed_id,
-        seed_pair: seed.seed_pair,
-        lego_count: newLegosInSeed,
-        legos: seedLegos
-      };
+    // Write seed file
+    const seedId = `S${String(seed.seed_number).padStart(4, '0')}`;
+    const seedFile = {
+      seed_id: seedId,
+      seed_pair: {
+        known: seed.known_text,
+        target: seed.target_text
+      },
+      lego_count: newLegosInSeed.length,
+      legos: seedScaffolds
+    };
 
-      await fs.writeJson(
-        path.join(outputDir, `${seed.seed_id}.json`),
-        seedFile,
-        { spaces: 2 }
-      );
+    await fs.writeJson(
+      path.join(outputDir, `${seedId}.json`),
+      seedFile,
+      { spaces: 2 }
+    );
 
-      seedIndex.push({
-        seed_id: seed.seed_id,
-        lego_count: newLegosInSeed,
-        lego_ids: Object.keys(seedLegos)
-      });
-    }
+    seedIndex.push({
+      seed_id: seedId,
+      lego_count: newLegosInSeed.length,
+      lego_ids: Object.keys(seedScaffolds)
+    });
   }
 
   // Write index
   const index = {
-    course: path.basename(courseDir),
+    course: courseCode,
     generated_at: new Date().toISOString(),
-    total_seeds: legoPairs.seeds.length,
+    source: 'supabase',
+    total_seeds: allSeeds.length,
     seeds_with_new_legos: seedIndex.length,
     total_legos: totalLegos,
     total_new_legos: totalNewLegos,
@@ -395,7 +406,11 @@ async function generateAllScaffolds(courseDir) {
     totalSize += stat.size;
   }
   console.log(`   Total size: ${(totalSize / 1024).toFixed(1)} KB`);
-  console.log(`   Avg per seed: ${(totalSize / seedIndex.length / 1024).toFixed(1)} KB`);
+  if (seedIndex.length > 0) {
+    console.log(`   Avg per seed: ${(totalSize / seedIndex.length / 1024).toFixed(1)} KB`);
+  }
+
+  return { totalNewLegos, seedCount: seedIndex.length };
 }
 
 // Export for programmatic use
@@ -403,12 +418,22 @@ module.exports = { generateAllScaffolds };
 
 // CLI entry point (only runs when executed directly)
 if (require.main === module) {
-  const courseDir = process.argv[2];
-  if (!courseDir) {
-    console.error('Usage: node generate-all-scaffolds.cjs <courseDir>');
-    console.error('Example: node generate-all-scaffolds.cjs public/vfs/courses/spa_for_eng_v2');
+  // Load .env if available
+  try {
+    require('dotenv').config({ path: path.join(__dirname, '../../../.env') });
+  } catch (e) {
+    // dotenv not available, rely on environment
+  }
+
+  const courseCode = process.argv[2];
+  if (!courseCode) {
+    console.error('Usage: node generate-all-scaffolds.cjs <courseCode>');
+    console.error('Example: node generate-all-scaffolds.cjs zho_for_eng');
     process.exit(1);
   }
 
-  generateAllScaffolds(path.resolve(courseDir));
+  generateAllScaffolds(courseCode).catch(err => {
+    console.error('Error:', err.message);
+    process.exit(1);
+  });
 }

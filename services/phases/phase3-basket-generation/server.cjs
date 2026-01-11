@@ -828,9 +828,9 @@ app.post('/start', async (req, res) => {
       console.log(`\n[Phase 3] ⚠️  Scaffolds not found - generating automatically...`);
       job.status = 'generating_scaffolds';
 
-      // Run scaffold generator
+      // Run scaffold generator (reads from Supabase)
       const { generateAllScaffolds } = require('./generate-all-scaffolds.cjs');
-      await generateAllScaffolds(baseCourseDir);
+      await generateAllScaffolds(courseCode);
 
       console.log(`[Phase 3] ✅ Scaffolds generated successfully`);
     } else {
