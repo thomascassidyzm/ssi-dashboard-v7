@@ -93,8 +93,8 @@ function buildVocabUpToSeed(legoPairs, targetSeedNum) {
     // Add all LEGO words from this seed
     for (const lego of (seed.legos || [])) {
       if (lego.lego) {
-        extractWords(lego.lego.known).forEach(w => knownVocab.add(w));
-        extractWords(lego.lego.target).forEach(w => targetVocab.add(w));
+        extractWords(lego.known).forEach(w => knownVocab.add(w));
+        extractWords(lego.target).forEach(w => targetVocab.add(w));
       }
     }
   }
@@ -124,8 +124,8 @@ function buildVocabForLego(legoPairs, seedId, legoIndex) {
   for (let i = 0; i <= legoIndex; i++) {
     const lego = seed.legos[i];
     if (lego?.lego) {
-      extractWords(lego.lego.known).forEach(w => vocab.known.add(w));
-      extractWords(lego.lego.target).forEach(w => vocab.target.add(w));
+      extractWords(lego.known).forEach(w => vocab.known.add(w));
+      extractWords(lego.target).forEach(w => vocab.target.add(w));
     }
   }
 
@@ -157,8 +157,8 @@ function getRecentLegos(legoPairs, seedId, legoIndex, count = 20) {
         if (lego?.new && lego.lego) {
           result.push({
             id: lego.id,
-            known: lego.lego.known,
-            target: lego.lego.target,
+            known: lego.known,
+            target: lego.target,
             type: lego.type
           });
         }
@@ -251,15 +251,15 @@ function generateLegoScaffold(legoPairs, seed, legoIndex) {
 
   // Calculate difficulty metrics
   const vocabSize = vocab.target.size;
-  const legoSyllableCount = countSyllables(lego.lego.target);
+  const legoSyllableCount = countSyllables(lego.target);
   const recommendedModel = assignModelTier(seedNum, vocabSize, legoSyllableCount, lego.type);
 
   // Build compact scaffold
   return {
     lego_id: lego.id,
     lego: {
-      known: lego.lego.known,
-      target: lego.lego.target
+      known: lego.known,
+      target: lego.target
     },
     type: lego.type,
     is_new: lego.new,
