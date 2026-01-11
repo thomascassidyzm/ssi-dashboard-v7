@@ -307,6 +307,20 @@
               Cancel
             </button>
 
+            <!-- Clear Stale Job Button (when preview shows 0 work but phases incomplete) -->
+            <button
+              v-if="showClearStaleButton"
+              @click="clearStaleJob"
+              :disabled="clearingStale"
+              class="px-5 py-2.5 bg-amber-600/80 hover:bg-amber-600 disabled:opacity-50 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
+            >
+              <svg v-if="clearingStale" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>{{ clearingStale ? 'Clearing...' : 'Clear Stale Job' }}</span>
+            </button>
+
             <!-- Stop Button -->
             <button
               v-if="jobStatus === 'running'"
@@ -513,6 +527,9 @@ const previewData = ref(null)
 const previewLoading = ref(false)
 const previewError = ref(null)
 
+// Stale job clearing
+const clearingStale = ref(false)
+
 // ETA tracking
 const etaHistory = ref([])
 const MAX_HISTORY = 30
@@ -638,6 +655,18 @@ const showForceKill = computed(() => {
   if (jobStatus.value === 'stopping' && stopRequestedAt.value) {
     const secondsSinceStop = (Date.now() - stopRequestedAt.value) / 1000
     return secondsSinceStop > 30
+  }
+  return false
+})
+
+// Show clear stale button when preview shows 0 work but phases are incomplete
+const showClearStaleButton = computed(() => {
+  if (jobStatus.value !== 'idle') return false
+  if (!hasIncompletePhases.value) return false
+  // Show if preview is expanded and shows 0 work
+  if (previewExpanded.value && previewData.value) {
+    const work = previewData.value.legosToProcess || previewData.value.seedsToProcess || 0
+    return work === 0
   }
   return false
 })
@@ -1023,6 +1052,38 @@ async function forceKill() {
   } catch (error) {
     console.error('Failed to force kill:', error)
     addEvent(`Error: ${error.message}`)
+  }
+}
+
+async function clearStaleJob() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  clearingStale.value = true
+
+  try {
+    // Call abort on Phase 3 service directly
+    const phase3Url = import.meta.env.VITE_PHASE3_URL || 'http://localhost:3459'
+    await fetch(`${phase3Url}/abort/${code}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    addEvent('Stale job cleared from Phase 3 server')
+
+    // Close preview and refresh it
+    closePreview()
+
+    // Wait a moment then re-fetch preview
+    setTimeout(() => {
+      fetchPreview()
+    }, 500)
+
+  } catch (error) {
+    console.error('Failed to clear stale job:', error)
+    addEvent(`Error clearing stale job: ${error.message}`)
+  } finally {
+    clearingStale.value = false
   }
 }
 

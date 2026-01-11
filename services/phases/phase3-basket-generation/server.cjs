@@ -1684,14 +1684,14 @@ tell application "${browser}"
         set current tab to newTab
     end tell
 
-    -- Wait for page to load (3 seconds)
-    delay 3
+    -- Wait for page to fully load (5 seconds for JS-heavy interface)
+    delay 5
 
-    -- Cmd+A clears any synced draft, then paste and submit with delay
+    -- Cmd+A clears any synced draft, then paste and submit
     tell application "System Events"
         keystroke "a" using command down
         keystroke "v" using command down
-        delay 1
+        delay 1.5
         keystroke return
     end tell
 
