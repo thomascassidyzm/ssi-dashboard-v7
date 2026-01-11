@@ -1,0 +1,1309 @@
+{
+  "course": "zho_for_eng",
+  "seeds": [
+    {
+      "seed_id": "S0166",
+      "seed_pair": {
+        "known": "My name is not very unusual.",
+        "target": "我的名字不太少见。"
+      },
+      "legos": [
+        {
+          "id": "S0166L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "my name",
+            "target": "我的名字"
+          }
+        },
+        {
+          "id": "S0166L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "is not very",
+            "target": "不太"
+          }
+        },
+        {
+          "id": "S0166L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "unusual",
+            "target": "少见"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0167",
+      "seed_pair": {
+        "known": "What do you need to do tomorrow afternoon?",
+        "target": "你明天下午需要做什么？"
+      },
+      "legos": [
+        {
+          "id": "S0167L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "明天"
+          }
+        },
+        {
+          "id": "S0167L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "afternoon",
+            "target": "下午"
+          }
+        },
+        {
+          "id": "S0167L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0167L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "need to",
+            "target": "需要"
+          }
+        },
+        {
+          "id": "S0167L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "do",
+            "target": "做"
+          }
+        },
+        {
+          "id": "S0167L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0167L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what do you need to do",
+            "target": "你需要做什么"
+          },
+          "components": [
+            {
+              "known": "need to",
+              "target": "需要"
+            },
+            {
+              "known": "do",
+              "target": "做"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0168",
+      "seed_pair": {
+        "known": "And then I'll be able to come and help later on.",
+        "target": "然后我以后能来帮忙。"
+      },
+      "legos": [
+        {
+          "id": "S0168L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "and then",
+            "target": "然后"
+          }
+        },
+        {
+          "id": "S0168L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0168L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "later on",
+            "target": "以后"
+          }
+        },
+        {
+          "id": "S0168L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "will be able to",
+            "target": "能"
+          }
+        },
+        {
+          "id": "S0168L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "come",
+            "target": "来"
+          }
+        },
+        {
+          "id": "S0168L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help",
+            "target": "帮忙"
+          }
+        },
+        {
+          "id": "S0168L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "come and help",
+            "target": "来帮忙"
+          },
+          "components": [
+            {
+              "known": "come",
+              "target": "来"
+            },
+            {
+              "known": "help",
+              "target": "帮忙"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0169",
+      "seed_pair": {
+        "known": "What do you want me to do?",
+        "target": "你想让我做什么？"
+      },
+      "legos": [
+        {
+          "id": "S0169L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0169L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0169L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "me",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0169L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "to do",
+            "target": "做"
+          }
+        },
+        {
+          "id": "S0169L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0169L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "want me to",
+            "target": "想让我"
+          },
+          "components": [
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            }
+          ]
+        },
+        {
+          "id": "S0169L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what do you want me to do",
+            "target": "你想让我做什么"
+          },
+          "components": [
+            {
+              "known": "want me to",
+              "target": "想让我"
+            },
+            {
+              "known": "to do",
+              "target": "做"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0170",
+      "seed_pair": {
+        "known": "I'd like you to tell me what you need.",
+        "target": "我想让你告诉我你需要什么。"
+      },
+      "legos": [
+        {
+          "id": "S0170L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0170L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0170L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "would like",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0170L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tell",
+            "target": "告诉"
+          }
+        },
+        {
+          "id": "S0170L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "me",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0170L06",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "need",
+            "target": "需要"
+          }
+        },
+        {
+          "id": "S0170L07",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0170L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'd like you to",
+            "target": "我想让你"
+          },
+          "components": [
+            {
+              "known": "would like",
+              "target": "想"
+            },
+            {
+              "known": "you",
+              "target": "你"
+            }
+          ]
+        },
+        {
+          "id": "S0170L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what you need",
+            "target": "你需要什么"
+          },
+          "components": [
+            {
+              "known": "need",
+              "target": "需要"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0171",
+      "seed_pair": {
+        "known": "Do you want me to help you look for it?",
+        "target": "你想让我帮你找吗？"
+      },
+      "legos": [
+        {
+          "id": "S0171L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0171L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0171L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "me",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0171L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "help",
+            "target": "帮忙"
+          }
+        },
+        {
+          "id": "S0171L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "look for",
+            "target": "找"
+          }
+        },
+        {
+          "id": "S0171L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "help you",
+            "target": "帮你"
+          },
+          "components": [
+            {
+              "known": "help",
+              "target": "帮忙"
+            },
+            {
+              "known": "you",
+              "target": "你"
+            }
+          ]
+        },
+        {
+          "id": "S0171L07",
+          "type": "M",
+          "new": false,
+          "lego": {
+            "known": "want me to",
+            "target": "想让我"
+          },
+          "components": [
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            }
+          ]
+        },
+        {
+          "id": "S0171L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you want me to help you look for it",
+            "target": "你想让我帮你找吗"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "want me to",
+              "target": "想让我"
+            },
+            {
+              "known": "help you",
+              "target": "帮你"
+            },
+            {
+              "known": "look for",
+              "target": "找"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0172",
+      "seed_pair": {
+        "known": "Yes that would be very helpful.",
+        "target": "是的，那会很有帮助。"
+      },
+      "legos": [
+        {
+          "id": "S0172L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yes",
+            "target": "是的"
+          }
+        },
+        {
+          "id": "S0172L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "that",
+            "target": "那"
+          }
+        },
+        {
+          "id": "S0172L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "would be",
+            "target": "会"
+          }
+        },
+        {
+          "id": "S0172L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very",
+            "target": "很"
+          }
+        },
+        {
+          "id": "S0172L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "helpful",
+            "target": "有帮助"
+          }
+        },
+        {
+          "id": "S0172L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "that would be very helpful",
+            "target": "那会很有帮助"
+          },
+          "components": [
+            {
+              "known": "that",
+              "target": "那"
+            },
+            {
+              "known": "would be",
+              "target": "会"
+            },
+            {
+              "known": "very",
+              "target": "很"
+            },
+            {
+              "known": "helpful",
+              "target": "有帮助"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0173",
+      "seed_pair": {
+        "known": "No thank you I can manage on my own.",
+        "target": "不用了，谢谢，我自己能应付。"
+      },
+      "legos": [
+        {
+          "id": "S0173L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0173L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "can",
+            "target": "能"
+          }
+        },
+        {
+          "id": "S0173L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "manage",
+            "target": "应付"
+          }
+        },
+        {
+          "id": "S0173L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "on my own",
+            "target": "自己"
+          }
+        },
+        {
+          "id": "S0173L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "no thank you",
+            "target": "不用了，谢谢"
+          },
+          "components": [
+            {
+              "known": "no",
+              "target": "不用了"
+            },
+            {
+              "known": "thank you",
+              "target": "谢谢"
+            }
+          ]
+        },
+        {
+          "id": "S0173L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I can manage on my own",
+            "target": "我自己能应付"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "on my own",
+              "target": "自己"
+            },
+            {
+              "known": "can",
+              "target": "能"
+            },
+            {
+              "known": "manage",
+              "target": "应付"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0174",
+      "seed_pair": {
+        "known": "Can you understand what I'm saying?",
+        "target": "你能听懂我说的话吗？"
+      },
+      "legos": [
+        {
+          "id": "S0174L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "can you",
+            "target": "你能"
+          }
+        },
+        {
+          "id": "S0174L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "understand",
+            "target": "听懂"
+          }
+        },
+        {
+          "id": "S0174L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm saying",
+            "target": "我说的"
+          }
+        },
+        {
+          "id": "S0174L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I'm saying",
+            "target": "我说的话"
+          },
+          "components": [
+            {
+              "known": "I'm saying",
+              "target": "我说的"
+            }
+          ]
+        },
+        {
+          "id": "S0174L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "can you understand what I'm saying",
+            "target": "你能听懂我说的话吗"
+          },
+          "components": [
+            {
+              "known": "can you",
+              "target": "你能"
+            },
+            {
+              "known": "understand",
+              "target": "听懂"
+            },
+            {
+              "known": "what I'm saying",
+              "target": "我说的话"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0175",
+      "seed_pair": {
+        "known": "What do you want to do on Sunday morning?",
+        "target": "星期天早上你想做什么？"
+      },
+      "legos": [
+        {
+          "id": "S0175L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0175L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0175L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0175L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "to do",
+            "target": "做"
+          }
+        },
+        {
+          "id": "S0175L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Sunday",
+            "target": "星期天"
+          }
+        },
+        {
+          "id": "S0175L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "morning",
+            "target": "早上"
+          }
+        },
+        {
+          "id": "S0175L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Sunday morning",
+            "target": "星期天早上"
+          },
+          "components": [
+            {
+              "known": "Sunday",
+              "target": "星期天"
+            },
+            {
+              "known": "morning",
+              "target": "早上"
+            }
+          ]
+        },
+        {
+          "id": "S0175L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what do you want to do",
+            "target": "你想做什么"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "to do",
+              "target": "做"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        },
+        {
+          "id": "S0175L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what do you want to do on Sunday morning",
+            "target": "星期天早上你想做什么"
+          },
+          "components": [
+            {
+              "known": "Sunday morning",
+              "target": "星期天早上"
+            },
+            {
+              "known": "what do you want to do",
+              "target": "你想做什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0176",
+      "seed_pair": {
+        "known": "I'll ask him if he'll be able to help next year.",
+        "target": "我会问他明年能不能帮忙。"
+      },
+      "legos": [
+        {
+          "id": "S0176L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "next year",
+            "target": "明年"
+          }
+        },
+        {
+          "id": "S0176L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ask",
+            "target": "问"
+          }
+        },
+        {
+          "id": "S0176L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "help",
+            "target": "帮忙"
+          }
+        },
+        {
+          "id": "S0176L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'll ask him",
+            "target": "我会问他"
+          },
+          "components": [
+            {
+              "known": "ask",
+              "target": "问"
+            }
+          ]
+        },
+        {
+          "id": "S0176L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if he'll be able to help",
+            "target": "能不能帮忙"
+          },
+          "components": [
+            {
+              "known": "help",
+              "target": "帮忙"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0177",
+      "seed_pair": {
+        "known": "I'll ask her where she wants to go.",
+        "target": "我会问她想去哪里。"
+      },
+      "legos": [
+        {
+          "id": "S0177L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "where",
+            "target": "哪里"
+          }
+        },
+        {
+          "id": "S0177L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "ask",
+            "target": "问"
+          }
+        },
+        {
+          "id": "S0177L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0177L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "go",
+            "target": "去"
+          }
+        },
+        {
+          "id": "S0177L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'll ask her",
+            "target": "我会问她"
+          },
+          "components": [
+            {
+              "known": "ask",
+              "target": "问"
+            }
+          ]
+        },
+        {
+          "id": "S0177L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "where she wants to go",
+            "target": "想去哪里"
+          },
+          "components": [
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "go",
+              "target": "去"
+            },
+            {
+              "known": "where",
+              "target": "哪里"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0178",
+      "seed_pair": {
+        "known": "I didn't have time, although I wanted to see you.",
+        "target": "我没有时间,虽然我想见你。"
+      },
+      "legos": [
+        {
+          "id": "S0178L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "时间"
+          }
+        },
+        {
+          "id": "S0178L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "although",
+            "target": "虽然"
+          }
+        },
+        {
+          "id": "S0178L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have",
+            "target": "有"
+          }
+        },
+        {
+          "id": "S0178L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0178L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "see",
+            "target": "见"
+          }
+        },
+        {
+          "id": "S0178L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I didn't have time",
+            "target": "我没有时间"
+          },
+          "components": [
+            {
+              "known": "have",
+              "target": "有"
+            },
+            {
+              "known": "time",
+              "target": "时间"
+            }
+          ]
+        },
+        {
+          "id": "S0178L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wanted to see you",
+            "target": "我想见你"
+          },
+          "components": [
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "see",
+              "target": "见"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0179",
+      "seed_pair": {
+        "known": "What are you going to do on Sunday afternoon?",
+        "target": "星期天下午你打算做什么?"
+      },
+      "legos": [
+        {
+          "id": "S0179L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "Sunday",
+            "target": "星期天"
+          }
+        },
+        {
+          "id": "S0179L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "afternoon",
+            "target": "下午"
+          }
+        },
+        {
+          "id": "S0179L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0179L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are going to",
+            "target": "打算"
+          }
+        },
+        {
+          "id": "S0179L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "do",
+            "target": "做"
+          }
+        },
+        {
+          "id": "S0179L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "on Sunday afternoon",
+            "target": "星期天下午"
+          },
+          "components": [
+            {
+              "known": "Sunday",
+              "target": "星期天"
+            },
+            {
+              "known": "afternoon",
+              "target": "下午"
+            }
+          ]
+        },
+        {
+          "id": "S0179L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what are you going to do",
+            "target": "你打算做什么"
+          },
+          "components": [
+            {
+              "known": "are going to",
+              "target": "打算"
+            },
+            {
+              "known": "do",
+              "target": "做"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0180",
+      "seed_pair": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想看一会儿我的书。"
+      },
+      "legos": [
+        {
+          "id": "S0180L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "read",
+            "target": "看"
+          }
+        },
+        {
+          "id": "S0180L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "for a while",
+            "target": "一会儿"
+          }
+        },
+        {
+          "id": "S0180L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "book",
+            "target": "书"
+          }
+        },
+        {
+          "id": "S0180L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0180L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'd like to read",
+            "target": "我想看"
+          },
+          "components": [
+            {
+              "known": "want",
+              "target": "想"
+            },
+            {
+              "known": "read",
+              "target": "看"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

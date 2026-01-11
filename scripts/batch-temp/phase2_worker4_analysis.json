@@ -1,0 +1,79 @@
+{
+  "courseCode": "zho_for_eng",
+  "worker": 4,
+  "assignedSeeds": ["S0196", "S0197", "S0198", "S0199", "S0200", "S0201", "S0202", "S0203", "S0204", "S0205", "S0206", "S0207", "S0208", "S0209", "S0210"],
+  "foundSeeds": ["S0196", "S0197", "S0198", "S0199", "S0200"],
+  "missingSeeds": ["S0201", "S0202", "S0203", "S0204", "S0205", "S0206", "S0207", "S0208", "S0209", "S0210"],
+  "analysis": {
+    "S0196": {
+      "sentence": "Have you heard the latest idea?",
+      "legos": [
+        {"type": "A", "known": "you", "target": "你", "new": true},
+        {"type": "A", "known": "heard", "target": "听说", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "have heard", "target": "听说过", "new": true, "components": ["heard"]},
+        {"type": "A", "known": "latest", "target": "最新的", "new": true},
+        {"type": "A", "known": "idea", "target": "想法", "new": true}
+      ],
+      "conflicts": [],
+      "status": "OK - M-type upchunk created for 'have heard', component properly marked"
+    },
+    "S0197": {
+      "sentence": "My son works as a teacher.",
+      "legos": [
+        {"type": "A", "known": "son", "target": "儿子", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "my son", "target": "我儿子", "new": true, "components": ["son"]},
+        {"type": "A", "known": "works as", "target": "当", "new": true},
+        {"type": "A", "known": "teacher", "target": "老师", "new": true}
+      ],
+      "conflicts": [],
+      "status": "OK - M-type upchunk created for 'my son', component properly marked"
+    },
+    "S0198": {
+      "sentence": "My daughter works for the council.",
+      "legos": [
+        {"type": "A", "known": "daughter", "target": "女儿", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "my daughter", "target": "我女儿", "new": true, "components": ["daughter"]},
+        {"type": "A", "known": "work", "target": "工作", "new": false, "note": "Component of M-type"},
+        {"type": "A", "known": "council", "target": "市政府", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "works for the council", "target": "在市政府工作", "new": true, "components": ["work", "council"]}
+      ],
+      "conflicts": [],
+      "status": "OK - M-types created, components properly marked"
+    },
+    "S0199": {
+      "sentence": "My friend used to work in an office.",
+      "legos": [
+        {"type": "A", "known": "friend", "target": "朋友", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "my friend", "target": "我朋友", "new": true, "components": ["friend"]},
+        {"type": "A", "known": "used to", "target": "以前", "new": true},
+        {"type": "A", "known": "work", "target": "工作", "new": false, "note": "Reused from S0198"},
+        {"type": "A", "known": "office", "target": "办公室", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "work in an office", "target": "在办公室工作", "new": true, "components": ["work", "office"]}
+      ],
+      "conflicts": [],
+      "status": "OK - M-types created, components properly marked, 'work' reused consistently"
+    },
+    "S0200": {
+      "sentence": "They say they want to make sure that we finish everything in time.",
+      "legos": [
+        {"type": "A", "known": "they", "target": "他们", "new": true},
+        {"type": "A", "known": "say", "target": "说", "new": true},
+        {"type": "A", "known": "want", "target": "想", "new": true},
+        {"type": "A", "known": "to make sure", "target": "确保", "new": true},
+        {"type": "A", "known": "we", "target": "我们", "new": true},
+        {"type": "A", "known": "finish", "target": "完成", "new": false, "note": "Component of M-type"},
+        {"type": "A", "known": "everything", "target": "所有事情", "new": false, "note": "Component of M-type"},
+        {"type": "A", "known": "in time", "target": "按时", "new": false, "note": "Component of M-type"},
+        {"type": "M", "known": "finish everything in time", "target": "按时完成所有事情", "new": true, "components": ["finish", "everything", "in time"]}
+      ],
+      "conflicts": [],
+      "status": "OK - M-type created for phrase, components properly marked"
+    }
+  },
+  "overallStatus": {
+    "conflictsFound": 0,
+    "resolutionNeeded": false,
+    "zutCompliant": true,
+    "note": "All 5 seeds have proper conflict resolution applied. M-types created for multi-word phrases, components marked as new: false. No conflicts detected (same known → different targets). Ready for upload."
+  }
+}

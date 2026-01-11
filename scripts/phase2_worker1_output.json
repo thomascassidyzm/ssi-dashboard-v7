@@ -1,0 +1,962 @@
+{
+  "course": "zho_for_eng",
+  "seeds": [
+    [
+      "S0151",
+      {
+        "k": "That wasn't what I was hoping would happen.",
+        "t": "那不是我希望会发生的。"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "That wasn't what I was hoping would happen.",
+            "t": "那不是我希望会发生的。"
+          },
+          [
+            {
+              "k": "wasn't",
+              "t": "不是"
+            },
+            {
+              "k": "I was hoping",
+              "t": "我希望"
+            },
+            {
+              "k": "would happen",
+              "t": "会发生"
+            }
+          ]
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "wasn't",
+            "t": "不是"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "I was hoping",
+            "t": "我希望"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "would happen",
+            "t": "会发生"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0152",
+      {
+        "k": "I would have done it differently if I had known what you wanted.",
+        "t": "如果我早知道你想要什么，我会做得不一样。"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "I would have done it differently if I had known what you wanted.",
+            "t": "如果我早知道你想要什么，我会做得不一样。"
+          },
+          [
+            {
+              "k": "if I had known",
+              "t": "如果我知道"
+            },
+            {
+              "k": "what you wanted",
+              "t": "你想要什么"
+            },
+            {
+              "k": "I would have done it differently",
+              "t": "我会做得不一样"
+            }
+          ]
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "if I had known",
+            "t": "如果我知道"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "what you wanted",
+            "t": "你想要什么"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "I would have done it differently",
+            "t": "我会做得不一样"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0153",
+      {
+        "k": "I wouldn't have said it in exactly the same way.",
+        "t": "我说得不会完全一样。"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "I wouldn't have said it in exactly the same way.",
+            "t": "我说得不会完全一样。"
+          },
+          [
+            {
+              "k": "I wouldn't have said it",
+              "t": "我不会说"
+            },
+            {
+              "k": "in exactly the same way",
+              "t": "完全一样"
+            }
+          ]
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "I wouldn't have said it",
+            "t": "我不会说"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "in exactly the same way",
+            "t": "完全一样"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0154",
+      {
+        "k": "Where do you want to meet on Saturday night?",
+        "t": "你想在周六晚上哪里见面？"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "Where do you want to meet on Saturday night?",
+            "t": "你想在周六晚上哪里见面？"
+          },
+          [
+            {
+              "k": "Where",
+              "t": "哪里"
+            },
+            {
+              "k": "do you want to meet",
+              "t": "你想见面"
+            },
+            {
+              "k": "on Saturday night",
+              "t": "在周六晚上"
+            }
+          ]
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "Where",
+            "t": "哪里"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "do you want to meet",
+            "t": "你想见面"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "on Saturday night",
+            "t": "在周六晚上"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0155",
+      {
+        "k": "I don't mind waiting for a few minutes tomorrow morning.",
+        "t": "我不介意明天早上等一会儿。"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "I don't mind waiting for a few minutes tomorrow morning.",
+            "t": "我不介意明天早上等一会儿。"
+          },
+          [
+            {
+              "k": "I don't mind",
+              "t": "我不介意"
+            },
+            {
+              "k": "waiting",
+              "t": "等"
+            },
+            {
+              "k": "for a few minutes",
+              "t": "一会儿"
+            },
+            {
+              "k": "tomorrow morning",
+              "t": "明天早上"
+            }
+          ]
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "I don't mind",
+            "t": "我不介意"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "waiting",
+            "t": "等"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "for a few minutes",
+            "t": "一会儿"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "tomorrow morning",
+            "t": "明天早上"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0156",
+      {
+        "k": "Do you want to go to a restaurant tonight?",
+        "t": "你今晚想去餐厅吗？"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "you",
+            "t": "你"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "want to",
+            "t": "想"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "go",
+            "t": "去"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "restaurant",
+            "t": "餐厅"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "tonight",
+            "t": "今晚"
+          },
+          null
+        ],
+        [
+          "M",
+          0,
+          {
+            "k": "go to a restaurant",
+            "t": "去餐厅"
+          },
+          [
+            {
+              "k": "go",
+              "t": "去"
+            },
+            {
+              "k": "restaurant",
+              "t": "餐厅"
+            }
+          ]
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "go to a restaurant tonight",
+            "t": "今晚去餐厅"
+          },
+          [
+            {
+              "k": "tonight",
+              "t": "今晚"
+            },
+            {
+              "k": "go to a restaurant",
+              "t": "去餐厅"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0157",
+      {
+        "k": "I won't be able to be there next month.",
+        "t": "我下个月不能在那里。"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "I",
+            "t": "我"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "next month",
+            "t": "下个月"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "not",
+            "t": "不"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "at",
+            "t": "在"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "be able to",
+            "t": "能"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "there",
+            "t": "那里"
+          },
+          null
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "won't be able to",
+            "t": "不能"
+          },
+          [
+            {
+              "k": "not",
+              "t": "不"
+            },
+            {
+              "k": "be able to",
+              "t": "能"
+            }
+          ]
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "be there",
+            "t": "在那里"
+          },
+          [
+            {
+              "k": "at",
+              "t": "在"
+            },
+            {
+              "k": "there",
+              "t": "那里"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0158",
+      {
+        "k": "Let's talk about something else.",
+        "t": "我们聊聊别的事情吧。"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "we",
+            "t": "我们"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "something else",
+            "t": "别的事情"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "talk",
+            "t": "聊聊"
+          },
+          null
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "let's talk",
+            "t": "我们聊聊吧"
+          },
+          [
+            {
+              "k": "we",
+              "t": "我们"
+            },
+            {
+              "k": "talk",
+              "t": "聊聊"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0159",
+      {
+        "k": "That isn't what I'm trying to say.",
+        "t": "那不是我想说的。"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "that",
+            "t": "那"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "not",
+            "t": "不"
+          },
+          null,
+          "S0157L03"
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "is",
+            "t": "是"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "I",
+            "t": "我"
+          },
+          null,
+          "S0157L01"
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "say",
+            "t": "说"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "trying to",
+            "t": "想"
+          },
+          null
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "is not",
+            "t": "不是"
+          },
+          [
+            {
+              "k": "not",
+              "t": "不"
+            },
+            {
+              "k": "is",
+              "t": "是"
+            }
+          ]
+        ],
+        [
+          "M",
+          0,
+          {
+            "k": "trying to say",
+            "t": "想说"
+          },
+          [
+            {
+              "k": "trying to",
+              "t": "想"
+            },
+            {
+              "k": "say",
+              "t": "说"
+            }
+          ]
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "what I'm trying to say",
+            "t": "我想说的"
+          },
+          [
+            {
+              "k": "I",
+              "t": "我"
+            },
+            {
+              "k": "trying to say",
+              "t": "想说"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0160",
+      {
+        "k": "How do you say this word in Chinese?",
+        "t": "这个词中文怎么说？"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "this",
+            "t": "这个"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "word",
+            "t": "词"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "how",
+            "t": "怎么"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "say",
+            "t": "说"
+          },
+          null,
+          "S0159L05"
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "Chinese",
+            "t": "中文"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "in Chinese",
+            "t": "中文"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0161",
+      {
+        "k": "Can you give me that book on Sunday morning?",
+        "t": "星期天早上你能给我那本书吗？"
+      },
+      [
+        [
+          "A",
+          0,
+          {
+            "k": "you",
+            "t": "你"
+          },
+          null,
+          "S0156L01"
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "can",
+            "t": "能"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "give",
+            "t": "给"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "me",
+            "t": "我"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "book",
+            "t": "书"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "Sunday",
+            "t": "星期天"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "morning",
+            "t": "早上"
+          },
+          null
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "that book",
+            "t": "那本书"
+          },
+          [
+            {
+              "k": "that",
+              "t": "那"
+            },
+            {
+              "k": "book",
+              "t": "书"
+            }
+          ]
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "on Sunday morning",
+            "t": "星期天早上"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0162",
+      {
+        "k": "What do you think about that?",
+        "t": "你觉得那个怎么样？"
+      },
+      [
+        [
+          "A",
+          0,
+          {
+            "k": "think",
+            "t": "觉得"
+          },
+          null
+        ],
+        [
+          "A",
+          0,
+          {
+            "k": "that",
+            "t": "那个"
+          },
+          null
+        ],
+        [
+          "M",
+          1,
+          {
+            "k": "about that",
+            "t": "那个怎么样"
+          },
+          [
+            {
+              "k": "that",
+              "t": "那个"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0163",
+      {
+        "k": "I think that it's interesting.",
+        "t": "我觉得它很有意思。"
+      },
+      [
+        [
+          "A",
+          0,
+          {
+            "k": "I",
+            "t": "我"
+          },
+          null,
+          "S0157L01"
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "it",
+            "t": "它"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "interesting",
+            "t": "有意思"
+          },
+          null
+        ]
+      ]
+    ],
+    [
+      "S0164",
+      {
+        "k": "An interesting book",
+        "t": "一本有意思的书"
+      },
+      [
+        [
+          "M",
+          1,
+          {
+            "k": "an interesting book",
+            "t": "一本有意思的书"
+          },
+          [
+            {
+              "k": "interesting",
+              "t": "有意思"
+            },
+            {
+              "k": "book",
+              "t": "书"
+            }
+          ]
+        ]
+      ]
+    ],
+    [
+      "S0165",
+      {
+        "k": "But I'm not sure if it's true.",
+        "t": "但我不确定它是不是真的。"
+      },
+      [
+        [
+          "A",
+          1,
+          {
+            "k": "but",
+            "t": "但是"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "not sure",
+            "t": "不确定"
+          },
+          null
+        ],
+        [
+          "A",
+          1,
+          {
+            "k": "true",
+            "t": "真的"
+          },
+          null
+        ]
+      ]
+    ]
+  ]
+}

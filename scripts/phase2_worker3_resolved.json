@@ -1,0 +1,874 @@
+{
+  "course": "zho_for_eng",
+  "seeds": [
+    {
+      "seed_id": "S0181",
+      "seed_pair": {
+        "known": "But I have to take my mother to the doctor.",
+        "target": "但是我得带我妈妈去看医生。"
+      },
+      "legos": [
+        {
+          "id": "S0181L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "But",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0181L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0181L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I have to",
+            "target": "我得"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            }
+          ]
+        },
+        {
+          "id": "S0181L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "take",
+            "target": "带"
+          }
+        },
+        {
+          "id": "S0181L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "mother",
+            "target": "妈妈"
+          }
+        },
+        {
+          "id": "S0181L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "my mother",
+            "target": "我妈妈"
+          },
+          "components": [
+            {
+              "known": "mother",
+              "target": "妈妈"
+            }
+          ]
+        },
+        {
+          "id": "S0181L07",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "doctor",
+            "target": "医生"
+          }
+        },
+        {
+          "id": "S0181L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to the doctor",
+            "target": "去看医生"
+          },
+          "components": [
+            {
+              "known": "doctor",
+              "target": "医生"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0182",
+      "seed_pair": {
+        "known": "Have you seen my keys anywhere?",
+        "target": "你在哪儿看到我的钥匙了吗？"
+      },
+      "legos": [
+        {
+          "id": "S0182L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0182L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "see",
+            "target": "看到"
+          }
+        },
+        {
+          "id": "S0182L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Have you seen",
+            "target": "你看到了吗"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "see",
+              "target": "看到"
+            }
+          ]
+        },
+        {
+          "id": "S0182L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "keys",
+            "target": "钥匙"
+          }
+        },
+        {
+          "id": "S0182L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "my keys",
+            "target": "我的钥匙"
+          },
+          "components": [
+            {
+              "known": "keys",
+              "target": "钥匙"
+            }
+          ]
+        },
+        {
+          "id": "S0182L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anywhere",
+            "target": "在哪儿"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0183",
+      "seed_pair": {
+        "known": "No I'm afraid I haven't seen them.",
+        "target": "没有，恐怕我没看到它们。"
+      },
+      "legos": [
+        {
+          "id": "S0183L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "No",
+            "target": "没有"
+          }
+        },
+        {
+          "id": "S0183L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm afraid",
+            "target": "恐怕"
+          }
+        },
+        {
+          "id": "S0183L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0183L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "see",
+            "target": "看到"
+          }
+        },
+        {
+          "id": "S0183L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I haven't seen",
+            "target": "我没看到"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "see",
+              "target": "看到"
+            }
+          ]
+        },
+        {
+          "id": "S0183L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "them",
+            "target": "它们"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0184",
+      "seed_pair": {
+        "known": "Yes I saw them in the office a while ago.",
+        "target": "看到了，我刚才在办公室看到了。"
+      },
+      "legos": [
+        {
+          "id": "S0184L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Yes",
+            "target": "看到了"
+          }
+        },
+        {
+          "id": "S0184L02",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0184L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "saw",
+            "target": "看到"
+          }
+        },
+        {
+          "id": "S0184L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I saw",
+            "target": "我看到了"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "saw",
+              "target": "看到"
+            }
+          ]
+        },
+        {
+          "id": "S0184L05",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "office",
+            "target": "办公室"
+          }
+        },
+        {
+          "id": "S0184L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in the office",
+            "target": "在办公室"
+          },
+          "components": [
+            {
+              "known": "office",
+              "target": "办公室"
+            }
+          ]
+        },
+        {
+          "id": "S0184L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a while ago",
+            "target": "刚才"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0185",
+      "seed_pair": {
+        "known": "I think you left them at work.",
+        "target": "我觉得你把它们落在办公室了。"
+      },
+      "legos": [
+        {
+          "id": "S0185L01",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0185L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think",
+            "target": "我觉得"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            }
+          ]
+        },
+        {
+          "id": "S0185L03",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0185L04",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "them",
+            "target": "它们"
+          }
+        },
+        {
+          "id": "S0185L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "left them",
+            "target": "把它们落"
+          },
+          "components": [
+            {
+              "known": "them",
+              "target": "它们"
+            }
+          ]
+        },
+        {
+          "id": "S0185L06",
+          "type": "A",
+          "new": false,
+          "lego": {
+            "known": "office",
+            "target": "办公室"
+          }
+        },
+        {
+          "id": "S0185L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the office",
+            "target": "在办公室"
+          },
+          "components": [
+            {
+              "known": "office",
+              "target": "办公室"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0186",
+      "seed_pair": {
+        "known": "Do you want to talk about something different next week?",
+        "target": "你下周想谈点不一样的东西吗？"
+      },
+      "legos": [
+        {
+          "id": "S0186L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "你想"
+          }
+        },
+        {
+          "id": "S0186L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to talk about",
+            "target": "谈"
+          }
+        },
+        {
+          "id": "S0186L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "东西"
+          }
+        },
+        {
+          "id": "S0186L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "something different",
+            "target": "不一样的东西"
+          },
+          "components": [
+            {
+              "known": "different",
+              "target": "不一样的"
+            },
+            {
+              "known": "something",
+              "target": "东西"
+            }
+          ]
+        },
+        {
+          "id": "S0186L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "next week",
+            "target": "下周"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0187",
+      "seed_pair": {
+        "known": "I'm happy so far.",
+        "target": "到目前为止我很开心。"
+      },
+      "legos": [
+        {
+          "id": "S0187L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm happy",
+            "target": "我很开心"
+          }
+        },
+        {
+          "id": "S0187L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "so far",
+            "target": "到目前为止"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0188",
+      "seed_pair": {
+        "known": "So I don't need to change.",
+        "target": "所以我不需要改变。"
+      },
+      "legos": [
+        {
+          "id": "S0188L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "so",
+            "target": "所以"
+          }
+        },
+        {
+          "id": "S0188L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't need to",
+            "target": "我不需要"
+          },
+          "components": [
+            {
+              "known": "I need to",
+              "target": "我需要"
+            }
+          ]
+        },
+        {
+          "id": "S0188L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to change",
+            "target": "改变"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0189",
+      "seed_pair": {
+        "known": "Yes that's a good idea.",
+        "target": "是的，那是个好主意。"
+      },
+      "legos": [
+        {
+          "id": "S0189L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yes",
+            "target": "是的"
+          }
+        },
+        {
+          "id": "S0189L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "that's",
+            "target": "那是"
+          }
+        },
+        {
+          "id": "S0189L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a good idea",
+            "target": "个好主意"
+          },
+          "components": [
+            {
+              "known": "good",
+              "target": "好"
+            },
+            {
+              "known": "idea",
+              "target": "主意"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0190",
+      "seed_pair": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      },
+      "legos": [
+        {
+          "id": "S0190L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you mind if",
+            "target": "你介意...吗"
+          },
+          "components": [
+            {
+              "known": "you mind",
+              "target": "你介意"
+            }
+          ]
+        },
+        {
+          "id": "S0190L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I ask you",
+            "target": "我问你"
+          },
+          "components": [
+            {
+              "known": "I ask",
+              "target": "我问"
+            },
+            {
+              "known": "you",
+              "target": "你"
+            }
+          ]
+        },
+        {
+          "id": "S0190L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "some questions",
+            "target": "一些问题"
+          },
+          "components": [
+            {
+              "known": "questions",
+              "target": "问题"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0191",
+      "seed_pair": {
+        "known": "No I don't mind at all.",
+        "target": "不，我一点也不介意。"
+      },
+      "legos": [
+        {
+          "id": "S0191L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "No",
+            "target": "不"
+          }
+        },
+        {
+          "id": "S0191L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't mind at all",
+            "target": "我一点也不介意"
+          },
+          "components": [
+            {
+              "known": "I don't mind",
+              "target": "我不介意"
+            },
+            {
+              "known": "at all",
+              "target": "一点也不"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0192",
+      "seed_pair": {
+        "known": "I'm busy tomorrow night.",
+        "target": "我明天晚上很忙。"
+      },
+      "legos": [
+        {
+          "id": "S0192L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm busy",
+            "target": "我很忙"
+          }
+        },
+        {
+          "id": "S0192L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow night",
+            "target": "明天晚上"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0193",
+      "seed_pair": {
+        "known": "I'm sorry but I'm too busy today.",
+        "target": "对不起，但是我今天太忙了。"
+      },
+      "legos": [
+        {
+          "id": "S0193L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm sorry",
+            "target": "对不起"
+          }
+        },
+        {
+          "id": "S0193L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0193L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm too busy today",
+            "target": "我今天太忙了"
+          },
+          "components": [
+            {
+              "known": "I'm too busy",
+              "target": "我太忙了"
+            },
+            {
+              "known": "today",
+              "target": "今天"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0194",
+      "seed_pair": {
+        "known": "What are you looking for?",
+        "target": "你在找什么？"
+      },
+      "legos": [
+        {
+          "id": "S0194L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "What are you looking for",
+            "target": "你在找什么"
+          },
+          "components": [
+            {
+              "known": "are you looking for",
+              "target": "你在找"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0195",
+      "seed_pair": {
+        "known": "I'm trying to find the money I left on the table.",
+        "target": "我在试着找我放在桌子上的钱。"
+      },
+      "legos": [
+        {
+          "id": "S0195L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to find",
+            "target": "我在试着找"
+          },
+          "components": [
+            {
+              "known": "I'm trying to",
+              "target": "我在试着"
+            },
+            {
+              "known": "find",
+              "target": "找"
+            }
+          ]
+        },
+        {
+          "id": "S0195L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the money",
+            "target": "钱"
+          }
+        },
+        {
+          "id": "S0195L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I left on the table",
+            "target": "我放在桌子上的"
+          },
+          "components": [
+            {
+              "known": "I left",
+              "target": "我放"
+            },
+            {
+              "known": "on the table",
+              "target": "在桌子上"
+            }
+          ]
+        },
+        {
+          "id": "S0195L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the table",
+            "target": "桌子"
+          }
+        }
+      ]
+    }
+  ]
+}

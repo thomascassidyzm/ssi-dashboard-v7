@@ -1,0 +1,29 @@
+{
+  "analysis": {
+    "seeds_received": 15,
+    "seed_ids": ["S0181", "S0182", "S0183", "S0184", "S0185", "S0186", "S0187", "S0188", "S0189", "S0190", "S0191", "S0192", "S0193", "S0194", "S0195"],
+    "conflicts_found": 0,
+    "inconsistencies_found": 1,
+    "issues": [
+      {
+        "seed_id": "S0185",
+        "lego_id": "S0185L03",
+        "issue": "Incorrect 'new' flag",
+        "current": {"known": "you", "target": "你", "new": true},
+        "should_be": {"known": "you", "target": "你", "new": false},
+        "reason": "'you' → '你' was already introduced in S0182L01 with new:false, so S0185L03 should also have new:false"
+      }
+    ],
+    "reused_legos": {
+      "I": {"target": "我", "seeds": ["S0181", "S0183", "S0184", "S0185"], "consistent": true},
+      "you": {"target": "你", "seeds": ["S0182", "S0185"], "consistent": true, "needs_fix": true},
+      "see": {"target": "看到", "seeds": ["S0182", "S0183"], "consistent": true},
+      "saw": {"target": "看到", "seeds": ["S0184"], "consistent": true},
+      "office": {"target": "办公室", "seeds": ["S0184", "S0185"], "consistent": true},
+      "them": {"target": "它们", "seeds": ["S0183", "S0185"], "consistent": true},
+      "doctor": {"target": "医生", "seeds": ["S0181"], "consistent": true},
+      "mother": {"target": "妈妈", "seeds": ["S0181"], "consistent": true},
+      "keys": {"target": "钥匙", "seeds": ["S0182"], "consistent": true}
+    }
+  }
+}
