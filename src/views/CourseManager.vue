@@ -545,13 +545,14 @@ const engines = [
   { id: 'browser', label: 'Safari', description: 'Browser-based' }
 ]
 
-// Machine profiles for parallelization (loaded from API on mount)
+// Machine profiles for parallelization (synced with environment switcher)
 const machineProfiles = ref([
   { id: 'tom', name: "Tom's MacBook", description: '24GB RAM' },
   { id: 'kai', name: "Kai's Machine", description: '8GB RAM' },
   { id: 'default', name: 'Default', description: '16GB assumed' }
 ])
-const selectedMachineProfile = ref('tom')
+// Read from localStorage (set by EnvironmentSwitcher based on selected environment)
+const selectedMachineProfile = ref(localStorage.getItem('ssi_machine_profile') || 'tom')
 
 // Computed
 const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode)
@@ -1158,6 +1159,11 @@ watch(() => route.params.courseCode, (newCode, oldCode) => {
     disconnectWebSocket()
     configExpanded.value = true
   }
+})
+
+// Persist machine profile changes to localStorage (allows manual override)
+watch(selectedMachineProfile, (newProfile) => {
+  localStorage.setItem('ssi_machine_profile', newProfile)
 })
 </script>
 

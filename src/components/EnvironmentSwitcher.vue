@@ -40,15 +40,18 @@ import { ref, onMounted, computed } from 'vue'
 const ENVIRONMENTS = {
   tom: {
     name: "Tom's Machine",
-    url: 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev'
+    url: 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev',
+    machineProfile: 'tom'
   },
   kai: {
     name: "Kai's Machine",
-    url: 'https://kai-lizard-function.ngrok-free.dev'
+    url: 'https://kai-lizard-function.ngrok-free.dev',
+    machineProfile: 'kai'
   },
   api: {
     name: 'API Server',
-    url: 'http://localhost:3456'  // Or deployed API URL
+    url: 'http://localhost:3456',  // Or deployed API URL
+    machineProfile: 'default'  // API mode will use default until we add API-specific profiles
   }
 }
 
@@ -60,9 +63,14 @@ if (!savedEnv) {
   localStorage.setItem('ssi_environment', 'tom')
 }
 const expectedUrl = ENVIRONMENTS[initialEnv].url
+const expectedProfile = ENVIRONMENTS[initialEnv].machineProfile
 if (localStorage.getItem('api_base_url') !== expectedUrl) {
   localStorage.setItem('api_base_url', expectedUrl)
   console.log(`[EnvironmentSwitcher] Initialized api_base_url to: ${expectedUrl}`)
+}
+if (localStorage.getItem('ssi_machine_profile') !== expectedProfile) {
+  localStorage.setItem('ssi_machine_profile', expectedProfile)
+  console.log(`[EnvironmentSwitcher] Initialized machine_profile to: ${expectedProfile}`)
 }
 
 const selectedEnv = ref(initialEnv)
@@ -105,9 +113,13 @@ async function switchEnvironment() {
 
   // Update API base URL globally
   const newUrl = ENVIRONMENTS[selectedEnv.value].url
+  const newProfile = ENVIRONMENTS[selectedEnv.value].machineProfile
 
-  // Store in localStorage for api.js to pick up
+  // Store in localStorage for api.js and CourseManager to pick up
   localStorage.setItem('api_base_url', newUrl)
+  localStorage.setItem('ssi_machine_profile', newProfile)
+
+  console.log(`[EnvironmentSwitcher] Switched to ${selectedEnv.value}: url=${newUrl}, profile=${newProfile}`)
 
   // Check connection to new environment
   await checkConnection()
