@@ -126,7 +126,7 @@ function getLanguageName(code) {
 /**
  * Generate Phase 1 Master Prompt
  * Uses Master/Worker pattern where workers fetch prompts from URLs and POST results to endpoints
- * DO NOT write files - all output goes through /upload-batch endpoint
+ * DO NOT write files - all output goes through /api/upload-seed endpoint
  *
  * @param {string} courseCode - Course code
  * @param {object} params - { target, known, startSeed, endSeed, workersPerMaster, seedsPerWorker, masterNum }
@@ -234,35 +234,45 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 6: UPLOAD TO SUPABASE - MANDATORY FINAL STEP
+## STEP 6: UPLOAD EACH SEED - MANDATORY FINAL STEP
 
-YOUR WORK IS NOT COMPLETE UNTIL YOU RUN THIS CURL COMMAND!
+YOUR WORK IS NOT COMPLETE UNTIL YOU UPLOAD ALL SEEDS!
 
-You MUST execute this curl command using the Bash tool - do NOT just display it:
+For EACH seed you processed, POST to the upload-seed endpoint:
 
-curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
-  -H "apikey: ${SUPABASE_ANON_KEY}" \\
+curl -X POST "https://popty.app/api/upload-seed" \\
   -H "Content-Type: application/json" \\
-  -H "Prefer: return=minimal" \\
-  -d '{"course_code":"${courseCode}","agent_id":"worker-[YOUR_NUM]","payload":[YOUR_SEEDS_ARRAY]}'
+  -d '{
+    "course": "${courseCode}",
+    "seed_number": [SEED_NUM],
+    "known_text": "[KNOWN_TEXT]",
+    "target_text": "[TARGET_TEXT]",
+    "legos": [
+      {"lego_index": 0, "known_text": "...", "target_text": "...", "type": "A", "is_new": true},
+      {"lego_index": 1, "known_text": "...", "target_text": "...", "type": "M", "is_new": true, "components": [{"known": "...", "target": "..."}]}
+    ]
+  }'
 
-**COMPACT FORMAT** for the payload array:
+**Example for seed S0005:**
 \`\`\`json
-[
-  {"s":"S0001","k":"known text","t":"target text","l":[
-    {"y":"A","n":1,"k":"I want","t":"quiero"},
-    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
-  ]}
-]
+{
+  "course": "${courseCode}",
+  "seed_number": 5,
+  "known_text": "I want to go",
+  "target_text": "Quiero ir",
+  "legos": [
+    {"lego_index": 0, "known_text": "I want", "target_text": "Quiero", "type": "A", "is_new": true},
+    {"lego_index": 1, "known_text": "to go", "target_text": "ir", "type": "A", "is_new": true}
+  ]
+}
 \`\`\`
-Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
 **CRITICAL REQUIREMENTS:**
-- RUN the curl command using Bash tool - this is NOT optional!
+- RUN curl using Bash tool for EACH seed - this is NOT optional!
 - Use curl for uploads, NOT WebFetch!
-- One POST per worker with ALL your seeds in the payload array
+- One POST per seed (atomic uploads)
 - If curl fails, RETRY once before giving up
-- Confirm "201 Created" or empty response = success
+- Response: {"success": true, "seed_number": N, "lego_count": M}
 \`\`\`
 
 ---
@@ -283,7 +293,7 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
 
 **DO NOT process seeds yourself - spawn workers and coordinate!**
 **IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
-**DO NOT write files - all output goes through /upload-batch endpoint!**
+**DO NOT write files - all output goes through /api/upload-seed endpoint!**
 `;
 }
 
@@ -416,35 +426,45 @@ Apply ZUT to every potential LEGO:
 3. If uncertain → chunk UP until zero ambiguity
 4. Mark embedded chunks as new: false
 
-## STEP 6: UPLOAD TO SUPABASE - MANDATORY FINAL STEP
+## STEP 6: UPLOAD EACH SEED - MANDATORY FINAL STEP
 
-YOUR WORK IS NOT COMPLETE UNTIL YOU RUN THIS CURL COMMAND!
+YOUR WORK IS NOT COMPLETE UNTIL YOU UPLOAD ALL SEEDS!
 
-You MUST execute this curl command using the Bash tool - do NOT just display it:
+For EACH seed you processed, POST to the upload-seed endpoint:
 
-curl -X POST "${supabaseUrl}/rest/v1/raw_seed_uploads" \\
-  -H "apikey: ${SUPABASE_ANON_KEY}" \\
+curl -X POST "https://popty.app/api/upload-seed" \\
   -H "Content-Type: application/json" \\
-  -H "Prefer: return=minimal" \\
-  -d '{"course_code":"${courseCode}","agent_id":"worker-[YOUR_NUM]","payload":[YOUR_SEEDS_ARRAY]}'
+  -d '{
+    "course": "${courseCode}",
+    "seed_number": [SEED_NUM],
+    "known_text": "[KNOWN_TEXT]",
+    "target_text": "[TARGET_TEXT]",
+    "legos": [
+      {"lego_index": 0, "known_text": "...", "target_text": "...", "type": "A", "is_new": true},
+      {"lego_index": 1, "known_text": "...", "target_text": "...", "type": "M", "is_new": true, "components": [{"known": "...", "target": "..."}]}
+    ]
+  }'
 
-**COMPACT FORMAT** for the payload array:
+**Example for seed S0005:**
 \`\`\`json
-[
-  {"s":"S0001","k":"known text","t":"target text","l":[
-    {"y":"A","n":1,"k":"I want","t":"quiero"},
-    {"y":"M","n":1,"k":"in Spanish","t":"en español","c":[{"k":"Spanish","t":"español"}]}
-  ]}
-]
+{
+  "course": "${courseCode}",
+  "seed_number": 5,
+  "known_text": "I want to go",
+  "target_text": "Quiero ir",
+  "legos": [
+    {"lego_index": 0, "known_text": "I want", "target_text": "Quiero", "type": "A", "is_new": true},
+    {"lego_index": 1, "known_text": "to go", "target_text": "ir", "type": "A", "is_new": true}
+  ]
+}
 \`\`\`
-Keys: s=seed_id, k=known, t=target, l=legos, y=type, n=new(1/0), c=components
 
 **CRITICAL REQUIREMENTS:**
-- RUN the curl command using Bash tool - this is NOT optional!
+- RUN curl using Bash tool for EACH seed - this is NOT optional!
 - Use curl for uploads, NOT WebFetch!
-- One POST per worker with ALL your seeds in the payload array
+- One POST per seed (atomic uploads)
 - If curl fails, RETRY once before giving up
-- Confirm "201 Created" or empty response = success
+- Response: {"success": true, "seed_number": N, "lego_count": M}
 \`\`\`
 
 ---
@@ -465,7 +485,7 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
 
 **DO NOT process seeds yourself - spawn workers and coordinate!**
 **IMPORTANT: Use curl for all HTTP requests, NOT WebFetch!**
-**DO NOT write files - all output goes through /upload-batch endpoint!**
+**DO NOT write files - all output goes through /api/upload-seed endpoint!**
 `;
 }
 
