@@ -1154,6 +1154,27 @@ function connectWebSocket() {
         { label: 'Phrases', value: data.stats.basketsGenerated || 0 }
       ]
     }
+    // Update event log from recentLogs
+    if (data.recentLogs && data.recentLogs.length > 0) {
+      // Add new logs that aren't already in events
+      const existingMessages = new Set(events.value.map(e => e.message))
+      for (const log of data.recentLogs) {
+        if (!existingMessages.has(log.message)) {
+          const time = new Date(log.time).toLocaleTimeString('en-GB', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+          })
+          events.value.unshift({
+            id: Date.now() + Math.random(),
+            time,
+            message: log.message
+          })
+        }
+      }
+      // Keep only last 100 events
+      if (events.value.length > 100) {
+        events.value = events.value.slice(0, 100)
+      }
+    }
   })
 
   socket.on('batch:received', (data) => {
