@@ -1,0 +1,44 @@
+{
+  "analysis": {
+    "received_seeds": ["S0006", "S0007", "S0008", "S0009", "S0010", "S0011", "S0012", "S0013", "S0014", "S0015"],
+    "missing_seeds": ["S0001", "S0002", "S0003", "S0004", "S0005"],
+    "conflicts_identified": [
+      {
+        "lego": {"known": "I", "target": "我"},
+        "occurrences": [
+          {"seed": "S0006", "id": "S0006L01", "new": false, "status": "CORRECT"},
+          {"seed": "S0007", "id": "S0007L01", "new": true, "status": "INCORRECT - should be false"},
+          {"seed": "S0008", "id": "S0008L01", "new": true, "status": "INCORRECT - should be false"},
+          {"seed": "S0009", "id": "S0009L01", "new": true, "status": "INCORRECT - should be false"},
+          {"seed": "S0010", "id": "S0010L01", "new": true, "status": "INCORRECT - should be false"}
+        ],
+        "resolution": "Mark all as new:false except first introduction (S0006)"
+      },
+      {
+        "lego": {"known": "speak", "target": "说 vs 说话"},
+        "occurrences": [
+          {"seed": "S0009", "id": "S0009L02", "target": "说", "context": "speak a language"},
+          {"seed": "S0011", "id": "S0011L02", "target": "说话", "context": "to speak/talk in general"},
+          {"seed": "S0015", "id": "S0015L03", "target": "说", "context": "speak a language"}
+        ],
+        "resolution": "LANGUAGE CONFLICT - need M-type upchunks to disambiguate: 'speak [language]' vs 'to speak/talk'"
+      },
+      {
+        "lego": {"known": "tomorrow", "target": "明天"},
+        "occurrences": [
+          {"seed": "S0012", "id": "S0012L05", "new": true, "status": "CORRECT"},
+          {"seed": "S0015", "id": "S0015L05", "new": true, "status": "INCORRECT - should be false"}
+        ],
+        "resolution": "Mark S0015 as new:false"
+      },
+      {
+        "lego": {"known": "you", "target": "你"},
+        "occurrences": [
+          {"seed": "S0011", "id": "S0011L03", "new": true, "status": "CORRECT"},
+          {"seed": "S0015", "id": "S0015L02", "new": true, "status": "INCORRECT - should be false"}
+        ],
+        "resolution": "Mark S0015 as new:false"
+      }
+    ]
+  }
+}

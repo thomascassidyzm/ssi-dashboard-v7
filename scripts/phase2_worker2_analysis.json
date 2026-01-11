@@ -1,0 +1,65 @@
+{
+  "analysis": "Phase 2 Conflict Resolution Analysis for S0016-S0030",
+  "conflicts_identified": [
+    {
+      "conflict_type": "Same known, different target",
+      "known": "to meet",
+      "targets": ["见面", "见"],
+      "seeds": ["S0018", "S0022"],
+      "resolution": "Create M-type upchunks to disambiguate context: 'to meet (people)' vs 'to meet (at a place/time)'"
+    },
+    {
+      "conflict_type": "Duplicate A-types across seeds",
+      "known": "I",
+      "target": "我",
+      "first_appearance": "S0019",
+      "subsequent": ["S0022", "S0023", "S0024", "S0025", "S0026", "S0027", "S0029", "S0030"],
+      "resolution": "Mark new: false for all appearances after S0019"
+    },
+    {
+      "conflict_type": "Duplicate A-types across seeds",
+      "known": "you",
+      "target": "你",
+      "first_appearance": "S0020",
+      "subsequent": ["S0021", "S0025"],
+      "resolution": "Mark new: false for S0021 and S0025"
+    },
+    {
+      "conflict_type": "Duplicate A-types across seeds",
+      "known": "name",
+      "target": "名字",
+      "first_appearance": "S0020",
+      "subsequent": ["S0021"],
+      "resolution": "Mark new: false for S0021"
+    },
+    {
+      "conflict_type": "Duplicate A-types across seeds",
+      "known": "talking",
+      "target": "说话",
+      "first_appearance": "S0019",
+      "subsequent": ["S0023", "S0028"],
+      "resolution": "Mark new: false for S0023 and S0028"
+    },
+    {
+      "conflict_type": "Duplicate A-types across seeds",
+      "known": "going to",
+      "target": "会",
+      "first_appearance": "S0023",
+      "subsequent": ["S0025"],
+      "resolution": "Mark new: false for S0025"
+    },
+    {
+      "conflict_type": "Component covered by M-type",
+      "seed": "S0021",
+      "lego": "her",
+      "resolution": "Keep A-type 'her' as new: true, but ensure M-type 'her name' is primary"
+    },
+    {
+      "conflict_type": "Component covered by M-type",
+      "seed": "S0022",
+      "lego": "people",
+      "resolution": "Keep A-type 'people' as new: true, M-type 'people who speak Chinese' is compound"
+    }
+  ],
+  "resolution_strategy": "Apply ZUT (Zero Uncertainty Test) - each LEGO must have unambiguous usage in context"
+}
