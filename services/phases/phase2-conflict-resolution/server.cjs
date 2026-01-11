@@ -2191,6 +2191,57 @@ app.post('/phase2/detect', async (req, res) => {
 });
 
 /**
+ * POST /phase2/detect-db
+ * Database-based conflict detection (new approach)
+ *
+ * Scans course_legos table directly instead of JSON files.
+ * - Marks duplicates as is_new = false
+ * - Identifies conflicts for agent resolution
+ * - Saves phase2_conflicts.json with full details
+ *
+ * Body: { courseCode: string, dryRun?: boolean }
+ */
+app.post('/phase2/detect-db', async (req, res) => {
+  const { courseCode, dryRun = false } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`\n🔍 Phase 2 DB Detection: ${courseCode} (${dryRun ? 'dry-run' : 'live'})`);
+
+  try {
+    // Import and run the detection script
+    const { detect } = require('./detect.cjs');
+
+    // Temporarily override argv for the script
+    const originalArgv = process.argv;
+    process.argv = ['node', 'detect.cjs', courseCode];
+    if (dryRun) process.argv.push('--dry-run');
+
+    const result = await detect();
+
+    process.argv = originalArgv;
+
+    console.log(`   ✅ Detection complete: ${result.summary.conflictCount} conflicts`);
+
+    res.json({
+      success: true,
+      dryRun,
+      summary: result.summary,
+      conflicts: result.conflicts?.slice(0, 10) || [],
+      message: result.summary.conflictCount === 0
+        ? 'No conflicts - ready for Phase 3'
+        : `${result.summary.conflictCount} conflicts need agent resolution`
+    });
+
+  } catch (error) {
+    console.error(`   ❌ DB Detection failed:`, error.message);
+    res.status(500).json({ error: error.message, stack: error.stack });
+  }
+});
+
+/**
  * POST /phase2/passthrough
  * Passthrough mode for courses with 0 conflicts.
  *
