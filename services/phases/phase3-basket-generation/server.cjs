@@ -820,9 +820,22 @@ app.post('/start', async (req, res) => {
   activeJobs.set(courseCode, job);
 
   try {
-    // STEP 1: Scaffolds already exist in phase3_scaffolds/ directory
-    // No need to generate them - they're pre-existing data files
-    console.log(`\n[Phase 3] Using existing scaffolds from: ${path.join(baseCourseDir, 'phase3_scaffolds')}`);
+    // STEP 1: Ensure scaffolds exist (auto-generate if missing)
+    const scaffoldsDir = path.join(baseCourseDir, 'phase3_scaffolds');
+    const scaffoldIndex = path.join(scaffoldsDir, 'index.json');
+
+    if (!await fs.pathExists(scaffoldIndex)) {
+      console.log(`\n[Phase 3] ⚠️  Scaffolds not found - generating automatically...`);
+      job.status = 'generating_scaffolds';
+
+      // Run scaffold generator
+      const { generateAllScaffolds } = require('./generate-all-scaffolds.cjs');
+      await generateAllScaffolds(baseCourseDir);
+
+      console.log(`[Phase 3] ✅ Scaffolds generated successfully`);
+    } else {
+      console.log(`\n[Phase 3] ✅ Using existing scaffolds from: ${scaffoldsDir}`);
+    }
 
     // Update milestone
     job.milestones.scaffoldsReady = true;

@@ -398,12 +398,17 @@ async function generateAllScaffolds(courseDir) {
   console.log(`   Avg per seed: ${(totalSize / seedIndex.length / 1024).toFixed(1)} KB`);
 }
 
-// CLI entry point
-const courseDir = process.argv[2];
-if (!courseDir) {
-  console.error('Usage: node generate-all-scaffolds.cjs <courseDir>');
-  console.error('Example: node generate-all-scaffolds.cjs public/vfs/courses/spa_for_eng_v2');
-  process.exit(1);
-}
+// Export for programmatic use
+module.exports = { generateAllScaffolds };
 
-generateAllScaffolds(path.resolve(courseDir));
+// CLI entry point (only runs when executed directly)
+if (require.main === module) {
+  const courseDir = process.argv[2];
+  if (!courseDir) {
+    console.error('Usage: node generate-all-scaffolds.cjs <courseDir>');
+    console.error('Example: node generate-all-scaffolds.cjs public/vfs/courses/spa_for_eng_v2');
+    process.exit(1);
+  }
+
+  generateAllScaffolds(path.resolve(courseDir));
+}
