@@ -1,0 +1,75 @@
+{
+  "worker": "Phase 2 Worker 2",
+  "course": "zho_for_eng",
+  "assigned_seeds": "S0091-S0105 (15 seeds requested)",
+  "received_seeds": "S0101-S0105 (5 seeds found)",
+  "analysis": {
+    "lego_inventory": {
+      "S0101": {
+        "I'm enjoying": "我喜欢",
+        "finding out": "了解",
+        "more": "更多",
+        "this": "这",
+        "language": "语言",
+        "this language (M)": "这门语言"
+      },
+      "S0102": {
+        "We're trying": "我们正在尝试",
+        "to say": "说",
+        "that": "那",
+        "it's not": "不是",
+        "like that": "那样"
+      },
+      "S0103": {
+        "We're not trying": "我们不在尝试",
+        "to hear": "听",
+        "more": "更多",
+        "words": "词"
+      },
+      "S0104": {
+        "We need": "我们需要",
+        "to change": "改变",
+        "we're doing": "我们正在做",
+        "thing": "事情",
+        "what we're doing (M)": "我们正在做的事情"
+      },
+      "S0105": {
+        "That is why": "那就是为什么",
+        "he": "他",
+        "didn't know": "不知道",
+        "the answer": "答案"
+      }
+    },
+    "conflicts_detected": [],
+    "consistent_mappings": [
+      {
+        "known": "more",
+        "target": "更多",
+        "appears_in": ["S0101L03", "S0103L03"],
+        "status": "CONSISTENT - No conflict"
+      }
+    ],
+    "m_type_components_to_mark": [
+      {
+        "m_type": "S0101L06 (this language)",
+        "components_to_mark_new_false": [
+          "S0101L04 (this → 这)",
+          "S0101L05 (language → 语言)"
+        ]
+      },
+      {
+        "m_type": "S0104L05 (what we're doing)",
+        "components_to_mark_new_false": [
+          "S0104L03 (we're doing → 我们正在做)",
+          "S0104L04 (thing → 事情)"
+        ]
+      }
+    ]
+  },
+  "resolution_actions": [
+    "Mark S0101L04 (this) and S0101L05 (language) as new: false - they're components of M-type S0101L06",
+    "Mark S0104L03 (we're doing) and S0104L04 (thing) as new: false - they're components of M-type S0104L05",
+    "No conflicts to resolve - all mappings are consistent",
+    "No additional M-types needed"
+  ]
+}

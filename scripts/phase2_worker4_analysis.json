@@ -1,0 +1,40 @@
+{
+  "worker": 4,
+  "course": "zho_for_eng",
+  "seeds": "S0121-S0135",
+  "analysis": {
+    "conflicts_found": [
+      {
+        "lego": "think",
+        "conflict": "S0123: think → 认为 vs S0135: think → 觉得",
+        "resolution": "Mark both as new:false (component of M-types), create M-types for context"
+      }
+    ],
+    "components_to_mark_false": {
+      "S0121": ["like", "use"],
+      "S0122": ["starting", "feel", "easier", "excited"],
+      "S0123": ["think", "good", "idea"],
+      "S0124": ["thought", "was"],
+      "S0125": ["very", "believe"],
+      "S0135": ["I", "don't know", "you", "think"]
+    },
+    "new_m_types": {
+      "S0135": [
+        {
+          "id": "S0135L08",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I don't know", "target": "我不知道"},
+          "components": [{"known": "I", "target": "我"}, {"known": "don't know", "target": "不知道"}]
+        },
+        {
+          "id": "S0135L09",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "you think", "target": "你觉得"},
+          "components": [{"known": "you", "target": "你"}, {"known": "think", "target": "觉得"}]
+        }
+      ]
+    }
+  }
+}

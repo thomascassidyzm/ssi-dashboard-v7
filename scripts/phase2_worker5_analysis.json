@@ -1,0 +1,73 @@
+{
+  "worker": "Phase 2 Worker 5",
+  "course": "zho_for_eng",
+  "seeds": "S0136-S0150",
+  "conflict_analysis": {
+    "conflict_1_sorry": {
+      "description": "Word 'sorry' maps to two different Chinese translations",
+      "occurrences": [
+        {
+          "seed": "S0139",
+          "lego_id": "S0139L01",
+          "known": "sorry",
+          "target": "遗憾",
+          "context": "I'm sorry that I need to leave (expressing regret)"
+        },
+        {
+          "seed": "S0140",
+          "lego_id": "S0140L01",
+          "known": "sorry",
+          "target": "抱歉",
+          "context": "I'm sorry that I can't see (apologizing)"
+        }
+      ],
+      "resolution": "Create M-type upchunks for full 'I'm sorry that...' phrases, mark A-type 'sorry' as new:false in both seeds"
+    },
+    "conflict_2_earlier": {
+      "description": "Word 'earlier' maps to two different Chinese translations",
+      "occurrences": [
+        {
+          "seed": "S0143",
+          "lego_id": "S0143L04",
+          "known": "earlier",
+          "target": "之前",
+          "context": "we were talking about earlier (previously/before)"
+        },
+        {
+          "seed": "S0144",
+          "lego_id": "S0144L02",
+          "known": "earlier",
+          "target": "早",
+          "context": "earlier than I wanted to (time comparison)"
+        }
+      ],
+      "resolution": "Both already have M-type upchunks. Mark A-type 'earlier' as new:false in both seeds"
+    },
+    "potential_conflict_this": {
+      "description": "Word 'this' has slight variation",
+      "occurrences": [
+        {
+          "seed": "S0138",
+          "lego_id": "S0138L01",
+          "known": "this",
+          "target": "这"
+        },
+        {
+          "seed": "S0149",
+          "lego_id": "S0149L01",
+          "known": "This",
+          "target": "这个"
+        }
+      ],
+      "resolution": "These appear to be intentionally different (这 vs 这个 with classifier). Keep both as new:true unless further analysis shows conflict."
+    }
+  },
+  "actions_required": [
+    "Add M-type 'I'm sorry that I can't see' to S0140",
+    "Mark S0139L01 (sorry) as new:false",
+    "Mark S0140L01 (sorry) as new:false",
+    "Mark S0143L04 (earlier) as new:false",
+    "Mark S0144L02 (earlier) as new:false",
+    "Verify all M-types properly cover their A-type components"
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "course": "zho_for_eng",
+  "seeds": [
+    {
+      "seed_id": "S0101",
+      "seed_pair": {
+        "known": "I'm enjoying finding out more about this language.",
+        "target": "我喜欢了解更多这门语言。"
+      },
+      "legos": [
+        {
+          "id": "S0101L01",
+          "new": true,
+          "lego": {
+            "known": "I'm enjoying",
+            "target": "我喜欢"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0101L02",
+          "new": true,
+          "lego": {
+            "known": "finding out",
+            "target": "了解"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0101L03",
+          "new": true,
+          "lego": {
+            "known": "more",
+            "target": "更多"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0101L04",
+          "new": false,
+          "lego": {
+            "known": "this",
+            "target": "这"
+          },
+          "type": "A",
+          "reason": "Component of M-type S0101L06"
+        },
+        {
+          "id": "S0101L05",
+          "new": false,
+          "lego": {
+            "known": "language",
+            "target": "语言"
+          },
+          "type": "A",
+          "reason": "Component of M-type S0101L06"
+        },
+        {
+          "id": "S0101L06",
+          "new": true,
+          "lego": {
+            "known": "this language",
+            "target": "这门语言"
+          },
+          "type": "M",
+          "components": [
+            {
+              "known": "this",
+              "target": "这"
+            },
+            {
+              "known": "language",
+              "target": "语言"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0102",
+      "seed_pair": {
+        "known": "We're trying to say that it's not like that.",
+        "target": "我们正在尝试说那不是那样。"
+      },
+      "legos": [
+        {
+          "id": "S0102L01",
+          "new": true,
+          "lego": {
+            "known": "We're trying",
+            "target": "我们正在尝试"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0102L02",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "说"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0102L03",
+          "new": true,
+          "lego": {
+            "known": "that",
+            "target": "那"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0102L04",
+          "new": true,
+          "lego": {
+            "known": "it's not",
+            "target": "不是"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0102L05",
+          "new": true,
+          "lego": {
+            "known": "like that",
+            "target": "那样"
+          },
+          "type": "A"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0103",
+      "seed_pair": {
+        "known": "We're not trying to hear many more words.",
+        "target": "我们不在尝试听更多词。"
+      },
+      "legos": [
+        {
+          "id": "S0103L01",
+          "new": true,
+          "lego": {
+            "known": "We're not trying",
+            "target": "我们不在尝试"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0103L02",
+          "new": true,
+          "lego": {
+            "known": "to hear",
+            "target": "听"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0103L03",
+          "new": false,
+          "lego": {
+            "known": "more",
+            "target": "更多"
+          },
+          "type": "A",
+          "reason": "Already introduced in S0101L03"
+        },
+        {
+          "id": "S0103L04",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "词"
+          },
+          "type": "A"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0104",
+      "seed_pair": {
+        "known": "We need to change what we're doing.",
+        "target": "我们需要改变我们正在做的事情。"
+      },
+      "legos": [
+        {
+          "id": "S0104L01",
+          "new": true,
+          "lego": {
+            "known": "We need",
+            "target": "我们需要"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0104L02",
+          "new": true,
+          "lego": {
+            "known": "to change",
+            "target": "改变"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0104L03",
+          "new": false,
+          "lego": {
+            "known": "we're doing",
+            "target": "我们正在做"
+          },
+          "type": "A",
+          "reason": "Component of M-type S0104L05"
+        },
+        {
+          "id": "S0104L04",
+          "new": false,
+          "lego": {
+            "known": "thing",
+            "target": "事情"
+          },
+          "type": "A",
+          "reason": "Component of M-type S0104L05"
+        },
+        {
+          "id": "S0104L05",
+          "new": true,
+          "lego": {
+            "known": "what we're doing",
+            "target": "我们正在做的事情"
+          },
+          "type": "M",
+          "components": [
+            {
+              "known": "we're doing",
+              "target": "我们正在做"
+            },
+            {
+              "known": "thing",
+              "target": "事情"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0105",
+      "seed_pair": {
+        "known": "That is why he didn't know the answer.",
+        "target": "那就是他为什么不知道答案。"
+      },
+      "legos": [
+        {
+          "id": "S0105L01",
+          "new": true,
+          "lego": {
+            "known": "That is why",
+            "target": "那就是为什么"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0105L02",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "他"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0105L03",
+          "new": true,
+          "lego": {
+            "known": "didn't know",
+            "target": "不知道"
+          },
+          "type": "A"
+        },
+        {
+          "id": "S0105L04",
+          "new": true,
+          "lego": {
+            "known": "the answer",
+            "target": "答案"
+          },
+          "type": "A"
+        }
+      ]
+    }
+  ]
+}

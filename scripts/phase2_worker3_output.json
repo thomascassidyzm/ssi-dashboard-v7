@@ -1,0 +1,810 @@
+[
+  [
+    "S0106",
+    {
+      "k": "We don't need to feel happy, we just need to work hard.",
+      "t": "我们不需要感到快乐，我们只需要努力工作。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "We",
+          "t": "我们"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "don't need",
+          "t": "不需要"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "to feel",
+          "t": "感到"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "happy",
+          "t": "快乐"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "work hard",
+          "t": "努力工作"
+        }
+      ]
+    ]
+  ],
+  [
+    "S0107",
+    {
+      "k": "We hoped to see what you were doing.",
+      "t": "我们希望看到你当时在做什么。"
+    },
+    [
+      [
+        "A",
+        0,
+        {
+          "k": "We",
+          "t": "我们"
+        },
+        null,
+        "S0106L01"
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "hoped",
+          "t": "希望"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "to see",
+          "t": "看到"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "you",
+          "t": "你"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "were doing",
+          "t": "在做"
+        }
+      ]
+    ]
+  ],
+  [
+    "S0108",
+    {
+      "k": "We didn't hope to wake in the middle of the night.",
+      "t": "我们不希望在半夜被唤醒。"
+    },
+    [
+      [
+        "A",
+        0,
+        {
+          "k": "We",
+          "t": "我们"
+        },
+        null,
+        "S0106L01"
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "didn't hope",
+          "t": "不希望"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "to wake",
+          "t": "醒来"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "in the middle of the night",
+          "t": "在半夜"
+        }
+      ]
+    ]
+  ],
+  [
+    "S0109",
+    {
+      "k": "We must work hard to learn a lot of new words.",
+      "t": "我们必须努力工作来学习许多新词汇。"
+    },
+    [
+      [
+        "A",
+        0,
+        {
+          "k": "We",
+          "t": "我们"
+        },
+        null,
+        "S0106L01"
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "must",
+          "t": "必须"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "work hard",
+          "t": "努力工作"
+        },
+        null,
+        "S0106L05"
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "to learn",
+          "t": "学习"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "a lot of",
+          "t": "许多"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "new words",
+          "t": "新词汇"
+        }
+      ]
+    ]
+  ],
+  [
+    "S0110",
+    {
+      "k": "We're friends, and after we finish I'd like to relax.",
+      "t": "我们是朋友，在我们完成之后，我想放松。"
+    },
+    [
+      [
+        "A",
+        0,
+        {
+          "k": "We",
+          "t": "我们"
+        },
+        null,
+        "S0106L01"
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "are",
+          "t": "是"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "friends",
+          "t": "朋友"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "after",
+          "t": "之后"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "we finish",
+          "t": "我们完成"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "I'd like to",
+          "t": "我想"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "relax",
+          "t": "放松"
+        }
+      ]
+    ]
+  ],
+  [
+    "S0111",
+    {
+      "k": "When we learn something new it changes our brain.",
+      "t": "当我们学习新东西时，它改变了我们的大脑。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "learn",
+          "t": "学习"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "something new",
+          "t": "新东西"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "changes",
+          "t": "改变"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "our brain",
+          "t": "我们的大脑"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "When we learn something new it changes our brain.",
+          "t": "当我们学习新东西时，它改变了我们的大脑。"
+        },
+        [
+          {
+            "k": "learn",
+            "t": "学习"
+          },
+          {
+            "k": "something new",
+            "t": "新东西"
+          },
+          {
+            "k": "changes",
+            "t": "改变"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0112",
+    {
+      "k": "That was very interesting, and I wasn't expecting it.",
+      "t": "那非常有趣，我没有预料到。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "very interesting",
+          "t": "非常有趣"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "wasn't expecting",
+          "t": "没有预料到"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "That was very interesting, and I wasn't expecting it.",
+          "t": "那非常有趣，我没有预料到。"
+        },
+        [
+          {
+            "k": "very interesting",
+            "t": "非常有趣"
+          },
+          {
+            "k": "wasn't expecting",
+            "t": "没有预料到"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0113",
+    {
+      "k": "Why can't I remember what you said?",
+      "t": "我为什么记不住你说的话？"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "remember",
+          "t": "记住"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "what you said",
+          "t": "你说的话"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "Why can't I remember what you said?",
+          "t": "我为什么记不住你说的话？"
+        },
+        [
+          {
+            "k": "remember",
+            "t": "记住"
+          },
+          {
+            "k": "what you said",
+            "t": "你说的话"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0114",
+    {
+      "k": "I feel as if I'm doing worse today than yesterday.",
+      "t": "我觉得今天比昨天做得更差。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "feel as if",
+          "t": "觉得"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "doing worse",
+          "t": "做得更差"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "today",
+          "t": "今天"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "yesterday",
+          "t": "昨天"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "I feel as if I'm doing worse today than yesterday.",
+          "t": "我觉得今天比昨天做得更差。"
+        },
+        [
+          {
+            "k": "feel as if",
+            "t": "觉得"
+          },
+          {
+            "k": "doing worse",
+            "t": "做得更差"
+          },
+          {
+            "k": "today",
+            "t": "今天"
+          },
+          {
+            "k": "yesterday",
+            "t": "昨天"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0115",
+    {
+      "k": "I don't feel as if I'm ready to have a conversation.",
+      "t": "我不觉得我已经准备好进行一次对话。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "ready",
+          "t": "准备好"
+        }
+      ],
+      [
+        "A",
+        1,
+        {
+          "k": "have a conversation",
+          "t": "进行对话"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "I don't feel as if I'm ready to have a conversation.",
+          "t": "我不觉得我已经准备好进行一次对话。"
+        },
+        [
+          {
+            "k": "ready",
+            "t": "准备好"
+          },
+          {
+            "k": "have a conversation",
+            "t": "进行对话"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0116",
+    {
+      "k": "This isn't the best choice I could make.",
+      "t": "这不是我能做出的最好选择。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "This isn't",
+          "t": "这不是"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "the best choice",
+          "t": "最好的选择"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "I could make",
+          "t": "我能做出的"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "the best choice I could make",
+          "t": "我能做出的最好选择"
+        },
+        [
+          {
+            "k": "the best choice",
+            "t": "最好的选择"
+          },
+          {
+            "k": "I could make",
+            "t": "我能做出的"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0117",
+    {
+      "k": "I'm definitely doing better than I was last time we talked to each other.",
+      "t": "我肯定比上次我们彼此交谈时做得更好。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "I'm definitely",
+          "t": "我肯定"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "better",
+          "t": "更好"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "last time we talked to each other",
+          "t": "上次我们彼此交谈的时候"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "doing better than I was last time we talked to each other",
+          "t": "比上次我们彼此交谈时做得更好"
+        },
+        [
+          {
+            "k": "better",
+            "t": "更好"
+          },
+          {
+            "k": "last time we talked to each other",
+            "t": "上次我们彼此交谈的时候"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0118",
+    {
+      "k": "I feel better than I felt when we were in the pub.",
+      "t": "我比在酒吧的时候感觉更好。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "I feel",
+          "t": "我感觉"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "better",
+          "t": "更好"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "when we were in the pub",
+          "t": "我们在酒吧的时候"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "feel better than I felt when we were in the pub",
+          "t": "比在酒吧的时候感觉更好"
+        },
+        [
+          {
+            "k": "better",
+            "t": "更好"
+          },
+          {
+            "k": "when we were in the pub",
+            "t": "我们在酒吧的时候"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0119",
+    {
+      "k": "Can I ask you something before you leave?",
+      "t": "我能在你离开之前问你什么吗？"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "Can I",
+          "t": "我能"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "ask you something",
+          "t": "问你什么"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "before you leave",
+          "t": "在你离开之前"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "Can I ask you something before you leave",
+          "t": "我能在你离开之前问你什么吗"
+        },
+        [
+          {
+            "k": "ask you something",
+            "t": "问你什么"
+          },
+          {
+            "k": "before you leave",
+            "t": "在你离开之前"
+          }
+        ]
+      ]
+    ]
+  ],
+  [
+    "S0120",
+    {
+      "k": "It's interesting that you like to go by bus.",
+      "t": "你喜欢坐公交车很有趣。"
+    },
+    [
+      [
+        "A",
+        1,
+        {
+          "k": "It's interesting",
+          "t": "很有趣"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "you like",
+          "t": "你喜欢"
+        }
+      ],
+      [
+        "A",
+        0,
+        {
+          "k": "to go by bus",
+          "t": "坐公交车"
+        }
+      ],
+      [
+        "M",
+        1,
+        {
+          "k": "you like to go by bus",
+          "t": "你喜欢坐公交车"
+        },
+        [
+          {
+            "k": "you like",
+            "t": "你喜欢"
+          },
+          {
+            "k": "to go by bus",
+            "t": "坐公交车"
+          }
+        ]
+      ]
+    ]
+  ]
+]
+
+=== CONFLICT RESOLUTION SUMMARY ===
+Fixed reuse tracking:
+  - S0107L01 "We" → marked new:false, ref:S0106L01
+  - S0108L01 "We" → marked new:false, ref:S0106L01
+  - S0109L01 "We" → marked new:false, ref:S0106L01
+  - S0109L03 "work hard" → marked new:false, ref:S0106L05
+  - S0110L01 "We" → marked new:false, ref:S0106L01
+
+Fixed M-type components:
+  - S0111L05: Added 3 components
+  - S0112L03: Added 2 components
+  - S0113L03: Added 2 components
+  - S0114L05: Added 4 components
+  - S0115L03: Added 2 components
+  - S0116L04: Added 2 components
+  - S0117L04: Added 2 components
+  - S0118L04: Added 2 components
+  - S0119L04: Added 2 components
+  - S0120L04: Added 2 components
+
+Total seeds processed: 15 (S0106-S0120)
+No KNOWN→TARGET conflicts detected within this batch

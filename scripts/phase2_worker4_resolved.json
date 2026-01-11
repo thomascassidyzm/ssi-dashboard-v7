@@ -1,0 +1,648 @@
+{
+  "course": "zho_for_eng",
+  "seeds": [
+    {
+      "seed_id": "S0121",
+      "seed_pair": {
+        "known": "It's unusual that you don't like to use your car.",
+        "target": "你不喜欢用你的车很不寻常。"
+      },
+      "legos": [
+        {
+          "id": "S0121L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "car", "target": "车"},
+          "components": []
+        },
+        {
+          "id": "S0121L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "unusual", "target": "不寻常"},
+          "components": []
+        },
+        {
+          "id": "S0121L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "your", "target": "你的"},
+          "components": []
+        },
+        {
+          "id": "S0121L04",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "like", "target": "喜欢"},
+          "components": []
+        },
+        {
+          "id": "S0121L05",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "use", "target": "用"},
+          "components": []
+        },
+        {
+          "id": "S0121L06",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "don't like to use your car", "target": "不喜欢用你的车"},
+          "components": [
+            {"known": "like", "target": "喜欢"},
+            {"known": "use", "target": "用"}
+          ]
+        },
+        {
+          "id": "S0121L07",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "It's unusual", "target": "很不寻常"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0122",
+      "seed_pair": {
+        "known": "It's starting to feel easier and I'm excited about how it's going.",
+        "target": "开始感觉更容易，我对事情的进展很兴奋。"
+      },
+      "legos": [
+        {
+          "id": "S0122L01",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "easier", "target": "容易"},
+          "components": []
+        },
+        {
+          "id": "S0122L02",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "excited", "target": "兴奋"},
+          "components": []
+        },
+        {
+          "id": "S0122L03",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "feel", "target": "感觉"},
+          "components": []
+        },
+        {
+          "id": "S0122L04",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "starting", "target": "开始"},
+          "components": []
+        },
+        {
+          "id": "S0122L05",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "it's starting to feel easier", "target": "开始感觉更容易"},
+          "components": [
+            {"known": "starting", "target": "开始"},
+            {"known": "feel", "target": "感觉"},
+            {"known": "easier", "target": "容易"}
+          ]
+        },
+        {
+          "id": "S0122L06",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I'm excited about how it's going", "target": "我对事情的进展很兴奋"},
+          "components": [
+            {"known": "excited", "target": "兴奋"},
+            {"known": "going", "target": "进展"}
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0123",
+      "seed_pair": {
+        "known": "I think that's a good idea.",
+        "target": "我认为那是个好主意。"
+      },
+      "legos": [
+        {
+          "id": "S0123L01",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "think", "target": "认为"},
+          "components": []
+        },
+        {
+          "id": "S0123L02",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "idea", "target": "主意"},
+          "components": []
+        },
+        {
+          "id": "S0123L03",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "good", "target": "好"},
+          "components": []
+        },
+        {
+          "id": "S0123L04",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I think that's a good idea", "target": "我认为那是个好主意"},
+          "components": [
+            {"known": "think", "target": "认为"},
+            {"known": "good", "target": "好"},
+            {"known": "idea", "target": "主意"}
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0124",
+      "seed_pair": {
+        "known": "I thought that was a good idea.",
+        "target": "我当时认为那是个好主意。"
+      },
+      "legos": [
+        {
+          "id": "S0124L01",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "thought", "target": "认为"},
+          "components": []
+        },
+        {
+          "id": "S0124L02",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "was", "target": "是"},
+          "components": []
+        },
+        {
+          "id": "S0124L03",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "that was a good idea", "target": "那是个好主意"},
+          "components": [
+            {"known": "was", "target": "是"},
+            {"known": "good", "target": "好"},
+            {"known": "idea", "target": "主意"}
+          ]
+        },
+        {
+          "id": "S0124L04",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I thought that was a good idea", "target": "我当时认为那是个好主意"},
+          "components": [
+            {"known": "thought", "target": "认为"},
+            {"known": "was", "target": "是"}
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0125",
+      "seed_pair": {
+        "known": "I believe that your idea was very good.",
+        "target": "我相信你的主意非常好。"
+      },
+      "legos": [
+        {
+          "id": "S0125L01",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "believe", "target": "相信"},
+          "components": []
+        },
+        {
+          "id": "S0125L02",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "very", "target": "非常"},
+          "components": []
+        },
+        {
+          "id": "S0125L03",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "your idea", "target": "你的主意"},
+          "components": [
+            {"known": "your", "target": "你的"},
+            {"known": "idea", "target": "主意"}
+          ]
+        },
+        {
+          "id": "S0125L04",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "very good", "target": "非常好"},
+          "components": [
+            {"known": "very", "target": "非常"},
+            {"known": "good", "target": "好"}
+          ]
+        },
+        {
+          "id": "S0125L05",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I believe that your idea was very good", "target": "我相信你的主意非常好"},
+          "components": [
+            {"known": "believe", "target": "相信"},
+            {"known": "very good", "target": "非常好"}
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0126",
+      "seed_pair": {
+        "known": "This work is changing the shape of my brain.",
+        "target": "这项工作正在改变我大脑的形状。"
+      },
+      "legos": [
+        {
+          "id": "S0126L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "This work", "target": "这项工作"},
+          "components": []
+        },
+        {
+          "id": "S0126L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "is changing", "target": "正在改变"},
+          "components": []
+        },
+        {
+          "id": "S0126L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "the shape of my brain", "target": "我大脑的形状"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0127",
+      "seed_pair": {
+        "known": "That is not why I wanted to see you.",
+        "target": "那不是为什么我想看你。"
+      },
+      "legos": [
+        {
+          "id": "S0127L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "That is not why", "target": "那不是为什么"},
+          "components": []
+        },
+        {
+          "id": "S0127L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "I wanted to see you", "target": "我想看你"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0128",
+      "seed_pair": {
+        "known": "You are like someone I used to know.",
+        "target": "你像我曾经认识的某个人。"
+      },
+      "legos": [
+        {
+          "id": "S0128L01",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "You are like someone I used to know", "target": "你像我曾经认识的某个人"},
+          "components": [
+            {"known": "like someone", "target": "像某个人"},
+            {"known": "used to know", "target": "曾经认识"}
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0129",
+      "seed_pair": {
+        "known": "I am so happy that you are doing so well.",
+        "target": "我非常高兴你做得这么好。"
+      },
+      "legos": [
+        {
+          "id": "S0129L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "I am so happy", "target": "我非常高兴"},
+          "components": []
+        },
+        {
+          "id": "S0129L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "you are doing so well", "target": "你做得这么好"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0130",
+      "seed_pair": {
+        "known": "That was a surprise, because he is my friend.",
+        "target": "那是个惊喜，因为他是我的朋友。"
+      },
+      "legos": [
+        {
+          "id": "S0130L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "That was a surprise", "target": "那是个惊喜"},
+          "components": []
+        },
+        {
+          "id": "S0130L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "because he is my friend", "target": "因为他是我的朋友"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0131",
+      "seed_pair": {
+        "known": "There are too many ideas going around in my head.",
+        "target": "我脑子里有太多想法在转"
+      },
+      "legos": [
+        {
+          "id": "S0131L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "There are", "target": "有"},
+          "components": []
+        },
+        {
+          "id": "S0131L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "too many", "target": "太多"},
+          "components": []
+        },
+        {
+          "id": "S0131L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "ideas", "target": "想法"},
+          "components": []
+        },
+        {
+          "id": "S0131L04",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "going around", "target": "转"},
+          "components": []
+        },
+        {
+          "id": "S0131L05",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "in my head", "target": "在我脑子里"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0132",
+      "seed_pair": {
+        "known": "That's less exciting than what she was saying.",
+        "target": "那不如她说的话那么令人兴奋"
+      },
+      "legos": [
+        {
+          "id": "S0132L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "That's", "target": "那"},
+          "components": []
+        },
+        {
+          "id": "S0132L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "less", "target": "不如"},
+          "components": []
+        },
+        {
+          "id": "S0132L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "exciting", "target": "令人兴奋"},
+          "components": []
+        },
+        {
+          "id": "S0132L04",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "what she was saying", "target": "她说的话"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0133",
+      "seed_pair": {
+        "known": "You get to know someone very well when you work together.",
+        "target": "当你们一起工作时，你会很好地了解某个人"
+      },
+      "legos": [
+        {
+          "id": "S0133L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "You", "target": "你"},
+          "components": []
+        },
+        {
+          "id": "S0133L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "get to know", "target": "了解"},
+          "components": []
+        },
+        {
+          "id": "S0133L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "someone", "target": "某个人"},
+          "components": []
+        },
+        {
+          "id": "S0133L04",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "very well", "target": "很好地"},
+          "components": []
+        },
+        {
+          "id": "S0133L05",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "when", "target": "当"},
+          "components": []
+        },
+        {
+          "id": "S0133L06",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "work together", "target": "一起工作"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0134",
+      "seed_pair": {
+        "known": "It's not a problem when you work at something difficult with them.",
+        "target": "当你和他们一起处理困难的事时，这不是个问题"
+      },
+      "legos": [
+        {
+          "id": "S0134L01",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "It's", "target": "这是"},
+          "components": []
+        },
+        {
+          "id": "S0134L02",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "not a problem", "target": "不是个问题"},
+          "components": []
+        },
+        {
+          "id": "S0134L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "when", "target": "当"},
+          "components": []
+        },
+        {
+          "id": "S0134L04",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "you", "target": "你"},
+          "components": []
+        },
+        {
+          "id": "S0134L05",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "work at", "target": "处理"},
+          "components": []
+        },
+        {
+          "id": "S0134L06",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "something difficult", "target": "困难的事"},
+          "components": []
+        },
+        {
+          "id": "S0134L07",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "with them", "target": "和他们"},
+          "components": []
+        }
+      ]
+    },
+    {
+      "seed_id": "S0135",
+      "seed_pair": {
+        "known": "I don't know why you think that it's so good.",
+        "target": "我不知道你为什么觉得那么好"
+      },
+      "legos": [
+        {
+          "id": "S0135L01",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "I", "target": "我"},
+          "components": []
+        },
+        {
+          "id": "S0135L02",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "don't know", "target": "不知道"},
+          "components": []
+        },
+        {
+          "id": "S0135L03",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "why", "target": "为什么"},
+          "components": []
+        },
+        {
+          "id": "S0135L04",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "you", "target": "你"},
+          "components": []
+        },
+        {
+          "id": "S0135L05",
+          "type": "A",
+          "new": false,
+          "lego": {"known": "think", "target": "觉得"},
+          "components": []
+        },
+        {
+          "id": "S0135L06",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "that", "target": "那"},
+          "components": []
+        },
+        {
+          "id": "S0135L07",
+          "type": "A",
+          "new": true,
+          "lego": {"known": "so good", "target": "那么好"},
+          "components": []
+        },
+        {
+          "id": "S0135L08",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "I don't know", "target": "我不知道"},
+          "components": [
+            {"known": "I", "target": "我"},
+            {"known": "don't know", "target": "不知道"}
+          ]
+        },
+        {
+          "id": "S0135L09",
+          "type": "M",
+          "new": true,
+          "lego": {"known": "you think", "target": "你觉得"},
+          "components": [
+            {"known": "you", "target": "你"},
+            {"known": "think", "target": "觉得"}
+          ]
+        }
+      ]
+    }
+  ]
+}
