@@ -40,6 +40,27 @@ function parseSeedNumber(value) {
   return null;
 }
 
+function formatSeedId(num) {
+  return `S${String(num).padStart(4, '0')}`;
+}
+
+// Report event to orchestrator for WebSocket broadcast (fire-and-forget)
+async function reportEvent(courseCode, eventData) {
+  const orchestratorUrl = process.env.ORCHESTRATOR_URL;
+  if (!orchestratorUrl) return;
+
+  try {
+    await fetch(`${orchestratorUrl}/api/events/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(eventData)
+    });
+  } catch (err) {
+    // Fire-and-forget - don't block on event reporting
+    console.warn('[Upload Seed] Event report failed:', err.message);
+  }
+}
+
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -146,6 +167,14 @@ export default async function handler(req, res) {
         error: `Failed to insert LEGOs: ${insertLegoError.message}`
       });
     }
+
+    // Report seed:complete event to orchestrator (fire-and-forget)
+    const seedId = formatSeedId(seedNum);
+    reportEvent(course, {
+      event: 'seed:complete',
+      seedId,
+      legoCount: legoRows.length
+    });
 
     return res.status(200).json({
       success: true,

@@ -435,9 +435,13 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { io } from 'socket.io-client'
 
 const route = useRoute()
 const router = useRouter()
+
+// WebSocket connection for real-time events
+let socket = null
 
 // Props
 const props = defineProps({
@@ -1012,14 +1016,88 @@ function stopPolling() {
   isPolling.value = false
 }
 
+// WebSocket functions for real-time events
+function connectWebSocket() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+  socket = io(apiBase, {
+    path: '/api/orchestrator/websocket',
+    transports: ['websocket', 'polling']
+  })
+
+  socket.on('connect', () => {
+    console.log('[WebSocket] Connected:', socket.id)
+    socket.emit('subscribe', code)
+    addEvent('WebSocket connected')
+  })
+
+  socket.on('seed:update', (data) => {
+    // Add event for seed completion
+    if (data.event === 'seed:complete') {
+      addEvent(`Seed ${data.seed?.id || 'unknown'} completed`)
+      lastProgressAt.value = new Date().toISOString()
+    } else if (data.event === 'seed:failed') {
+      addEvent(`Seed ${data.seed?.id || 'unknown'} failed`)
+    }
+    // Update active workers count
+    if (data.stats) {
+      activeWorkers.value = data.stats.processing || 0
+    }
+  })
+
+  socket.on('progress', (data) => {
+    console.log('[WebSocket] Progress:', data)
+    // Update stats from WebSocket progress
+    if (data.stats) {
+      stats.value = [
+        { label: 'Seeds', value: data.stats.seedsComplete || 0 },
+        { label: 'LEGOs', value: data.stats.legosGenerated || 0 },
+        { label: 'NEW LEGOs', value: data.stats.newLegos || 0 },
+        { label: 'Phrases', value: data.stats.basketsGenerated || 0 }
+      ]
+    }
+  })
+
+  socket.on('batch:received', (data) => {
+    addEvent(`Batch received: ${data.seedCount || data.seedIds?.length || 0} seeds`)
+  })
+
+  socket.on('browser:complete', (data) => {
+    addEvent(`Browser ${data.browserId || data.masterNum} complete`)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('[WebSocket] Disconnected')
+  })
+
+  socket.on('connect_error', (err) => {
+    console.error('[WebSocket] Connection error:', err.message)
+  })
+}
+
+function disconnectWebSocket() {
+  if (socket) {
+    const code = props.courseCode || route.params.courseCode
+    if (code) {
+      socket.emit('unsubscribe', code)
+    }
+    socket.disconnect()
+    socket = null
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   const code = props.courseCode || route.params.courseCode
 
   if (code) {
-    // Management mode - collapse config, start polling
+    // Management mode - collapse config, start polling and WebSocket
     configExpanded.value = false
     startPolling()
+    connectWebSocket()
   } else {
     // Creation mode - expand config
     configExpanded.value = true
@@ -1028,15 +1106,23 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopPolling()
+  disconnectWebSocket()
 })
 
 // Watch for route changes
-watch(() => route.params.courseCode, (newCode) => {
+watch(() => route.params.courseCode, (newCode, oldCode) => {
+  // Disconnect from old course
+  if (oldCode) {
+    disconnectWebSocket()
+  }
+
   if (newCode) {
     configExpanded.value = false
     startPolling()
+    connectWebSocket()
   } else {
     stopPolling()
+    disconnectWebSocket()
     configExpanded.value = true
   }
 })
