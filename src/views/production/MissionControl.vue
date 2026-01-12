@@ -281,6 +281,14 @@ const quickActions = computed(() => {
       disabled: (store.samplesByStatus.flagged_human_needed?.length || 0) === 0
     },
     {
+      id: 'recording_optimizer',
+      icon: '🧬',
+      label: 'Recording Optimizer',
+      description: 'LEGO splice engine for non-TTS languages',
+      badge: null,
+      disabled: false
+    },
+    {
       id: 'compile_manifest',
       icon: '📦',
       label: 'Compile Manifest',
@@ -391,6 +399,12 @@ function handleQuickAction(actionId: string) {
     case 'record_human':
       router.push({
         name: 'RecordingStudio',
+        params: { courseCode: selectedCourse.value }
+      })
+      break
+    case 'recording_optimizer':
+      router.push({
+        name: 'RecordingOptimizer',
         params: { courseCode: selectedCourse.value }
       })
       break

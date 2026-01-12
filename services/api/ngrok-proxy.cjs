@@ -209,6 +209,7 @@ app.use('/api/production', createProxyMiddleware({
 app.use('/api', createProxyMiddleware({
   target: 'http://localhost:3456',
   changeOrigin: true,
+  ws: true, // Enable WebSocket proxying for /api/orchestrator/websocket
   // Rewrite path to include /api prefix (which Express strips on mount)
   pathRewrite: (path) => `/api${path}`,
   logLevel: 'info',
@@ -253,14 +254,39 @@ app.get('/', (req, res) => {
   });
 });
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Route not found',
-    path: req.path,
-    availableRoutes: ['/api/production/*', '/api/*', '/phase1/*', '/phase3/*', '/phase5/*', '/phase8/*', '/health']
-  });
-});
+// ===== FRONTEND PROXY =====
+// All other routes (non-API) proxy to Vite dev server for the dashboard UI
+// This allows accessing the full dashboard via ngrok including:
+// - Production Suite (/production/*)
+// - Recording Optimizer (/production/:courseCode/recording-optimizer)
+// - All other frontend routes
+
+app.use('/', createProxyMiddleware({
+  target: 'http://localhost:5173',
+  changeOrigin: true,
+  ws: true, // Enable WebSocket proxying for Vite HMR
+  logLevel: 'warn', // Less verbose for frontend
+  onProxyReq: (proxyReq, req, res) => {
+    // Only log non-asset requests
+    if (!req.path.match(/\.(js|css|png|jpg|svg|ico|woff|woff2)$/)) {
+      console.log(`[Frontend Proxy] ${req.method} ${req.path} → http://localhost:5173${req.path}`);
+    }
+  },
+  onError: (err, req, res) => {
+    console.error(`[Frontend Proxy Error] ${err.message}`);
+    res.status(502).send(`
+      <html>
+        <head><title>Dashboard Unavailable</title></head>
+        <body style="font-family: system-ui; background: #1e293b; color: #e2e8f0; padding: 2rem;">
+          <h1 style="color: #f87171;">Dashboard UI Not Available</h1>
+          <p>The Vite dev server is not running on port 5173.</p>
+          <p>Start it with: <code style="background: #334155; padding: 0.25rem 0.5rem; border-radius: 4px;">npm run dev</code></p>
+          <p style="margin-top: 2rem; color: #94a3b8;">API routes are still available at /api/* and /phase*/*</p>
+        </body>
+      </html>
+    `);
+  }
+}));
 
 app.listen(PORT, () => {
   console.log('');
@@ -274,6 +300,7 @@ app.listen(PORT, () => {
   console.log(`   /phase3/*         → http://localhost:3458 (Phase 3: LEGO Extraction)`);
   console.log(`   /phase5/*         → http://localhost:3459 (Phase 5: Basket Generation)`);
   console.log(`   /phase8/*         → http://localhost:3465 (Phase 8: Audio/TTS)`);
+  console.log(`   /*                → http://localhost:5173 (Dashboard UI / Vite)`);
   console.log('');
   console.log(`🌐 Usage:`);
   console.log(`   Dashboard: GET https://${NGROK_DOMAIN}/api/languages`);

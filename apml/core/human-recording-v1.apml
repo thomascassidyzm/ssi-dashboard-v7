@@ -1,0 +1,424 @@
+# APML: Human Recording & LEGO Splice Architecture
+# Version: 1.0.0 (2026-01-11)
+# Status: CANONICAL - This is the source of truth
+# Type: CORE ARCHITECTURE SPECIFICATION
+
+architecture HumanRecording:
+  name: "Human Recording with LEGO Splice Generation"
+  purpose: "Enable audio generation for languages without TTS via minimal human recording"
+  version: "1.0.0"
+
+  ## ==========================================================================
+  ## THE PROBLEM
+  ## ==========================================================================
+
+  problem: |
+    Many minority languages lack quality TTS (Text-to-Speech):
+    - Welsh, Breton, Cornish, Manx
+    - Indigenous languages worldwide
+    - Regional dialects and variants
+
+    A typical course needs ~6000+ practice phrases.
+    Recording all of them requires 100+ hours of studio time.
+    This is prohibitively expensive for community-driven courses.
+
+  ## ==========================================================================
+  ## THE SOLUTION: LEGO SPLICING
+  ## ==========================================================================
+
+  solution: |
+    Record a MINIMAL SET of phrases, extract LEGO components,
+    and SPLICE them together to generate all other phrases.
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                    LEGO SPLICE ARCHITECTURE                     │
+    │                                                                 │
+    │  Recording Session (~1 hour)                                    │
+    │  ═══════════════════════════                                    │
+    │  254 optimized phrases × 2 cadences = ~66 minutes               │
+    │                                                                 │
+    │          ↓ Whisper segmentation                                 │
+    │                                                                 │
+    │  LEGO Library (627 components)                                  │
+    │  ═════════════════════════════                                  │
+    │  Each word/phrase extracted with precise timestamps             │
+    │  Normalized to -16 LUFS (EBU R128)                              │
+    │                                                                 │
+    │          ↓ Splice engine                                        │
+    │                                                                 │
+    │  Generated Phrases (11,818)                                     │
+    │  ═════════════════════════                                      │
+    │  Crossfade concatenation of LEGO components                     │
+    │  Quality: Good enough for learner practice                      │
+    │                                                                 │
+    └─────────────────────────────────────────────────────────────────┘
+
+    Result: 97.8% reduction in recording effort
+
+  ## ==========================================================================
+  ## GUARANTEED COVERAGE ALGORITHM
+  ## ==========================================================================
+
+  algorithm GuaranteedCoverage:
+    purpose: "Find minimum set of phrases that cover all LEGOs"
+    type: "Greedy Set Cover (NP-hard approximation)"
+
+    pseudocode: |
+      function guaranteedCoverage(legos, phrases):
+        uncovered = Set(legos)
+        selected = []
+
+        while uncovered is not empty:
+          # Find phrase covering most uncovered LEGOs
+          best = phrases.maxBy(p => |p.legos ∩ uncovered|)
+
+          if best covers 0 LEGOs:
+            # Remaining LEGOs need direct recording
+            break
+
+          selected.push(best)
+          uncovered = uncovered - best.legos
+
+        directRecord = uncovered  # LEGOs not in any phrase
+        return { selected, directRecord }
+
+    complexity: "O(n × m) where n=phrases, m=legos"
+    approximation_ratio: "ln(n) of optimal"
+
+    example_results:
+      welsh_north:
+        total_legos: 627
+        phrases_to_record: 199
+        direct_record_items: 55
+        total_recordings: 254
+        practice_phrases_generated: 11818
+        effort_reduction: "97.8%"
+        recording_time: "~66 minutes (both cadences)"
+
+  ## ==========================================================================
+  ## TWO CADENCES
+  ## ==========================================================================
+
+  cadences:
+    purpose: "Support both listening comprehension and learner repetition"
+
+    natural:
+      description: "Native speaker pace"
+      use_case: "Listening comprehension, exposure"
+      recording_instruction: "Speak naturally as you would to another native"
+
+    slow:
+      description: "Learner-friendly pace with clear articulation"
+      use_case: "Repetition, shadowing, pronunciation practice"
+      recording_instruction: "Speak clearly with small gaps between words"
+
+    recording_session: |
+      Each phrase is recorded TWICE:
+      1. Natural cadence pass
+      2. Slow cadence pass
+
+      Total time doubles but value is essential for learning.
+
+  ## ==========================================================================
+  ## PROGRESSIVE QUALITY MODEL
+  ## ==========================================================================
+
+  quality_model:
+    purpose: "Allow community to improve quality over time"
+
+    tiers:
+      spliced:
+        description: "Generated by concatenating LEGO components"
+        quality: "Good - minimal audible difference from real"
+        cost: "Zero - automatic generation"
+        origin: "splice"
+
+      recorded:
+        description: "Full phrase recorded by human"
+        quality: "Perfect - natural prosody and flow"
+        cost: "Recording time"
+        origin: "human"
+
+    progression: |
+      ┌─────────────────────────────────────────────────────────────────┐
+      │                QUALITY PROGRESSION OVER TIME                    │
+      │                                                                 │
+      │  Day 1: MVP Launch                                              │
+      │  ═══════════════                                                │
+      │  - 254 recorded phrases (seed set)                              │
+      │  - 11,564 spliced phrases (generated)                           │
+      │  - 100% coverage, learner-ready                                 │
+      │                                                                 │
+      │  Month 3: Community Contribution                                │
+      │  ════════════════════════════                                   │
+      │  - Community flags awkward splices                              │
+      │  - Voice talent records priority phrases                        │
+      │  - 500 recorded, 11,318 spliced                                 │
+      │                                                                 │
+      │  Year 1: Polished Course                                        │
+      │  ══════════════════════                                         │
+      │  - Most common phrases recorded                                 │
+      │  - Spliced phrases only for rare combinations                   │
+      │  - 3000 recorded, 8,818 spliced                                 │
+      │                                                                 │
+      │  Year 3: Premium Quality                                        │
+      │  ═══════════════════════                                        │
+      │  - Full human recording for all phrases                         │
+      │  - 11,818 recorded, 0 spliced                                   │
+      │  - Equivalent to professional studio course                     │
+      │                                                                 │
+      └─────────────────────────────────────────────────────────────────┘
+
+    priority_recording: |
+      When adding more recordings, prioritize:
+      1. High-frequency phrases (appear in many lessons)
+      2. Community-flagged awkward splices
+      3. Early course phrases (first impressions matter)
+      4. Phrases with difficult splice points
+
+  ## ==========================================================================
+  ## DATABASE SCHEMA
+  ## ==========================================================================
+
+  schema:
+    extension_to_v13: |
+      This schema EXTENDS audio-registry-v13.apml.
+      It adds tables for LEGO library and splice tracking.
+
+    tables:
+
+      course_lego_library:
+        purpose: "Extracted LEGO audio components"
+        columns:
+          - id: uuid primary key default gen_random_uuid()
+          - course_code: text not null references courses(code)
+          - lego_id: uuid not null  # References course_legos
+          - text_target: text not null
+          - text_source: text  # Translation
+          - cadence: text not null check (cadence in ('natural', 'slow'))
+          - s3_key: text not null unique
+          - duration_ms: integer not null
+          - source_phrase_id: uuid  # Which recording this was extracted from
+          - start_ms: integer not null  # Offset in source recording
+          - end_ms: integer not null
+          - normalized: boolean default false  # EBU R128 applied
+          - quality_score: float  # 0-1, from Whisper confidence
+          - created_at: timestamptz default now()
+        indexes:
+          - (course_code, lego_id, cadence) unique
+          - (course_code, text_target)
+
+      course_audio_origin:
+        purpose: "Track whether audio is spliced or recorded"
+        extension: |
+          Add column to course_audio table:
+            origin: text check (origin in ('tts', 'human', 'splice'))
+
+          - tts: Generated by TTS engine (Azure, ElevenLabs)
+          - human: Recorded by human voice talent
+          - splice: Generated by concatenating LEGOs
+
+      recording_sessions:
+        purpose: "Track recording sessions for a course"
+        columns:
+          - id: uuid primary key default gen_random_uuid()
+          - course_code: text not null references courses(code)
+          - voice_talent: text  # Name or identifier
+          - recorded_at: timestamptz
+          - phrases_count: integer
+          - duration_minutes: float
+          - notes: text
+          - created_at: timestamptz default now()
+
+      phrase_recordings:
+        purpose: "Individual phrase recordings from a session"
+        columns:
+          - id: uuid primary key default gen_random_uuid()
+          - session_id: uuid references recording_sessions(id)
+          - phrase_text: text not null
+          - cadence: text not null
+          - s3_key: text not null
+          - duration_ms: integer
+          - segmented: boolean default false
+          - created_at: timestamptz default now()
+
+  ## ==========================================================================
+  ## AUDIO PROCESSING PIPELINE
+  ## ==========================================================================
+
+  pipeline:
+
+    step1_recording:
+      name: "Recording Session"
+      input: "Recording script (from GuaranteedCoverage)"
+      output: "Raw audio files (one per phrase × cadence)"
+      tools:
+        - "Any DAW or voice recording app"
+        - "Recommended: 44.1kHz, 16-bit WAV"
+
+    step2_segmentation:
+      name: "Whisper Segmentation"
+      input: "Phrase audio files"
+      output: "Word-level timestamps and LEGO extractions"
+      tools:
+        - "whisper.cpp with language-specific model"
+        - "Welsh: techiaith/whisper-base-ft-commonvoice-cy-cpp"
+      process: |
+        1. Convert to 16kHz mono WAV
+        2. Run Whisper with word timestamps
+        3. Align detected words with expected phrase
+        4. Extract each word to separate file
+        5. Store in course_lego_library
+
+    step3_normalization:
+      name: "Audio Normalization"
+      input: "Extracted LEGO files"
+      output: "Normalized LEGO files (-16 LUFS)"
+      tools:
+        - "ffmpeg with loudnorm filter"
+      command: |
+        ffmpeg -i input.mp3 -af loudnorm=I=-16:TP=-1.5:LRA=11 output.mp3
+
+    step4_splice_generation:
+      name: "Phrase Generation"
+      input: "LEGO library + phrase list"
+      output: "Complete phrase audio files"
+      process: |
+        For each phrase not in recordings:
+          1. Look up component LEGOs
+          2. Load normalized audio for each
+          3. Concatenate with crossfade (20-30ms)
+          4. Apply final normalization
+          5. Store with origin='splice'
+
+  ## ==========================================================================
+  ## SPLICE ENGINE PARAMETERS
+  ## ==========================================================================
+
+  splice_engine:
+    crossfade_ms: 25  # Overlap between adjacent LEGOs
+    silence_gap_ms: 0  # No gap for natural cadence
+    slow_gap_ms: 100  # Small gap for slow cadence
+    output_format: "mp3"
+    output_bitrate: "128k"
+    normalization: "EBU R128 -16 LUFS"
+
+    quality_checks:
+      - "Total duration within 20% of expected"
+      - "No clipping (peak < -1 dB)"
+      - "Consistent volume across LEGOs"
+
+  ## ==========================================================================
+  ## COMMUNITY CONTRIBUTION WORKFLOW
+  ## ==========================================================================
+
+  community:
+    flagging: |
+      Learners can flag phrases as:
+      - "sounds_robotic": Splice is noticeably artificial
+      - "wrong_pronunciation": LEGO has incorrect sound
+      - "timing_off": Rhythm feels unnatural
+
+    contribution: |
+      Community voice talents can:
+      1. View priority recording list (flagged + high-frequency)
+      2. Record phrases in-browser or upload files
+      3. Submit for review by course maintainers
+      4. Approved recordings replace spliced versions
+
+    quality_gate: |
+      New recordings must:
+      - Match target phrase exactly (Whisper verification)
+      - Meet duration expectations (within 30%)
+      - Pass audio quality checks (no clipping, noise floor)
+      - Be approved by at least one maintainer
+
+  ## ==========================================================================
+  ## POPTY DASHBOARD INTEGRATION
+  ## ==========================================================================
+
+  dashboard:
+    recording_optimizer_view:
+      purpose: "Plan and track recording sessions"
+      features:
+        - "Run GuaranteedCoverage algorithm"
+        - "Generate recording script PDF"
+        - "Track recording session progress"
+        - "View coverage statistics"
+
+    lego_library_view:
+      purpose: "Manage extracted LEGO components"
+      features:
+        - "Browse all LEGOs with audio playback"
+        - "View extraction quality scores"
+        - "Re-extract from different source if needed"
+        - "Mark LEGOs as needs-re-recording"
+
+    audio_origin_view:
+      purpose: "Track spliced vs recorded audio"
+      features:
+        - "Pie chart: spliced vs human vs tts"
+        - "Progress toward full human recording"
+        - "Priority queue for next recordings"
+        - "Community flag summary"
+
+    quality_progression_view:
+      purpose: "Visualize quality improvement over time"
+      features:
+        - "Timeline of recording additions"
+        - "Coverage trend graphs"
+        - "Community contribution metrics"
+
+  ## ==========================================================================
+  ## EXAMPLE: WELSH NORTH COURSE
+  ## ==========================================================================
+
+  example:
+    course: "cym_n_for_eng"
+    name: "Welsh North for English Speakers"
+
+    initial_state:
+      total_legos: 627
+      total_practice_phrases: 11818
+      recording_needed: 254
+      recording_time: "~66 minutes"
+
+    recording_script_preview: |
+      Top phrases by LEGO coverage:
+      1. "mae'n fyd mawr ond dydy hynna ddim yn meddwl..." (11 LEGOs)
+      2. "dw i'n cofio pan oeddan nhw newydd ddechrau..." (10 LEGOs)
+      3. "os na wnei di banad o goffi i mi rŵan hyn..." (10 LEGOs)
+
+      Direct record items (not in any phrase):
+      - "pryd?" (when?)
+      - "lle?" (where?)
+      - "pa mor hir?" (how long?)
+
+    quality_tested: |
+      A/B test comparing REAL vs SPLICED for "stopio siarad Cymraeg":
+      - Source LEGOs: stopio, siarad, Cymraeg (each from different contexts)
+      - Result: Difference is "completely minimal" (user feedback)
+      - With normalization: Expected to be indistinguishable
+
+  ## ==========================================================================
+  ## FUTURE ENHANCEMENTS
+  ## ==========================================================================
+
+  future:
+    prosody_transfer: |
+      Use ML to transfer intonation patterns from recorded phrases
+      to spliced ones, improving naturalness.
+
+    voice_cloning: |
+      Once enough recordings exist (~2 hours), train a custom
+      TTS voice for the speaker. Hybrid approach:
+      - Clone voice for common patterns
+      - Keep human recordings for complex phrases
+
+    dialect_variants: |
+      Same course can have multiple voice variants:
+      - Welsh North vs Welsh South
+      - Formal vs Colloquial
+      Each with its own LEGO library
+
+## END OF SPECIFICATION

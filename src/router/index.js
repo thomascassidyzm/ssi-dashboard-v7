@@ -382,6 +382,22 @@ const routes = [
     meta: { title: 'User Feedback - Production Suite' }
   },
 
+  // ===========================================
+  // Recording Optimizer (Human Recording for non-TTS languages)
+  // ===========================================
+  {
+    path: '/production/:courseCode/recording-optimizer',
+    name: 'RecordingOptimizer',
+    component: () => import('../views/RecordingOptimizer.vue'),
+    props: true,
+    meta: { title: 'Recording Optimizer - Production Suite' }
+  },
+  // Legacy route redirect
+  {
+    path: '/recording-optimizer/:courseCode',
+    redirect: to => `/production/${to.params.courseCode}/recording-optimizer`
+  },
+
   // Catch-all route
   {
     path: '/:pathMatch(.*)*',

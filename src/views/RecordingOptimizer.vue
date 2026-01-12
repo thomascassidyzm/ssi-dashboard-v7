@@ -1,0 +1,345 @@
+<template>
+  <div class="min-h-screen bg-slate-900 text-slate-100">
+    <div class="max-w-[1600px] mx-auto p-6 lg:p-8">
+
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="flex items-center gap-3 mb-6">
+          <router-link :to="`/production/${courseCode}`" class="text-slate-400 hover:text-emerald-400 transition-colors text-sm">
+            &larr; Production Suite
+          </router-link>
+          <span class="text-slate-600">|</span>
+          <h1 class="text-xl font-semibold text-slate-100">Recording Optimizer</h1>
+          <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded text-sm font-medium">
+            {{ courseCode }}
+          </span>
+          <div class="ml-auto flex items-center gap-6 text-sm">
+            <div class="text-right">
+              <span class="text-slate-500 uppercase tracking-wider text-xs">Phrases</span>
+              <div class="text-lg font-semibold">
+                <span class="text-emerald-400">{{ recordedCount }}</span>
+                <span class="text-slate-500"> / </span>
+                <span class="text-slate-300">{{ totalRecordings }}</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-500 uppercase tracking-wider text-xs">Coverage</span>
+              <div class="text-lg font-semibold text-emerald-400">{{ totalCoverage }}%</div>
+            </div>
+          </div>
+        </div>
+        <div class="h-px bg-gradient-to-r from-emerald-500/50 via-slate-700 to-transparent"></div>
+      </header>
+
+      <!-- Main Grid -->
+      <div class="grid grid-cols-1 xl:grid-cols-[1fr,400px] gap-6">
+
+        <!-- Left Column -->
+        <div class="space-y-6">
+
+          <!-- Algorithm Results -->
+          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
+              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                GuaranteedCoverage Algorithm
+              </h2>
+              <button @click="runAlgorithm"
+                      :disabled="isCalculating"
+                      class="text-sm px-4 py-1.5 bg-slate-700 text-slate-300 rounded
+                             hover:bg-slate-600 transition-colors disabled:opacity-50">
+                {{ isCalculating ? 'Calculating...' : 'Recalculate' }}
+              </button>
+            </div>
+
+            <div class="p-6">
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                  <div class="text-2xl font-bold text-slate-100">{{ stats.totalLegos }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Total LEGOs</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                  <div class="text-2xl font-bold text-emerald-400">{{ stats.phrasesToRecord }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Phrases</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                  <div class="text-2xl font-bold text-amber-400">{{ stats.directRecord }}</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Direct</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                  <div class="text-2xl font-bold text-slate-100">~{{ stats.estimatedMinutes }}m</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Est. Time</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                  <div class="text-2xl font-bold text-emerald-400">{{ stats.reductionPercent }}%</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Reduction</div>
+                </div>
+              </div>
+
+              <!-- Efficiency Bar -->
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <div class="flex items-center justify-between mb-2 text-sm">
+                  <span class="text-slate-400">Recording Efficiency</span>
+                  <span class="text-slate-300">{{ totalRecordings }} recordings &rarr; {{ stats.totalPhrases.toLocaleString() }} phrases</span>
+                </div>
+                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                  <div class="h-full bg-emerald-500 rounded-full" :style="{ width: stats.reductionPercent + '%' }"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Start Recording Session CTA -->
+          <section class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-lg font-semibold text-emerald-400">Ready to Record?</h2>
+                <p class="text-slate-400 text-sm mt-1">
+                  Open the teleprompter-style Recording Studio to flow through all {{ totalRecordings }} phrases
+                </p>
+              </div>
+              <router-link
+                :to="`/production/${courseCode}/recording-studio`"
+                class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium
+                       hover:bg-emerald-500 transition-colors flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                </svg>
+                Open Recording Studio
+              </router-link>
+            </div>
+          </section>
+
+          <!-- Recording Script Preview -->
+          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
+              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                Recording Script Preview
+              </h2>
+              <div class="flex items-center gap-3">
+                <span class="text-xs text-slate-500">{{ filteredPhrases.length }} phrases</span>
+                <button @click="exportPDF"
+                        class="text-sm px-4 py-1.5 bg-slate-700 text-slate-300 rounded
+                               hover:bg-slate-600 transition-colors">
+                  Export PDF
+                </button>
+              </div>
+            </div>
+
+            <!-- Phrase List -->
+            <div class="max-h-[400px] overflow-y-auto">
+              <div v-for="(phrase, index) in filteredPhrases.slice(0, 20)" :key="phrase.id"
+                   class="px-6 py-3 border-b border-slate-700/50">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="text-slate-600 text-xs font-mono">{{ String(index + 1).padStart(3, '0') }}</span>
+                      <span class="text-xs text-slate-500">{{ phrase.legoCount }} LEGOs</span>
+                    </div>
+                    <p class="text-sm text-slate-100">{{ phrase.target }}</p>
+                    <p class="text-xs text-slate-500 mt-0.5">{{ phrase.source }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="filteredPhrases.length > 20" class="px-6 py-4 text-center text-slate-500 text-sm">
+                + {{ filteredPhrases.length - 20 }} more phrases...
+              </div>
+
+              <div v-if="filteredPhrases.length === 0" class="p-12 text-center text-slate-500">
+                Run the algorithm to generate the recording script
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-6">
+
+          <!-- Coverage Overview -->
+          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-700">
+              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                Coverage
+              </h2>
+            </div>
+            <div class="p-6">
+              <!-- Ring Chart -->
+              <div class="flex justify-center mb-6">
+                <div class="relative w-32 h-32">
+                  <svg class="w-32 h-32 -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor"
+                            class="text-slate-700" stroke-width="8"/>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor"
+                            class="text-emerald-500" stroke-width="8"
+                            :stroke-dasharray="`${recordedPercent * 2.51} 251`"
+                            stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor"
+                            class="text-violet-500" stroke-width="8"
+                            :stroke-dasharray="`${splicedPercent * 2.51} 251`"
+                            :stroke-dashoffset="`-${recordedPercent * 2.51}`"
+                            stroke-linecap="round"/>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-bold text-slate-100">{{ totalCoverage }}%</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-wider">Audio</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legend -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                    <span class="text-sm text-slate-400">Recorded</span>
+                  </div>
+                  <span class="text-sm text-slate-200">{{ recordedCount }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-violet-500"></div>
+                    <span class="text-sm text-slate-400">Spliced</span>
+                  </div>
+                  <span class="text-sm text-slate-200">{{ splicedCount }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                    <span class="text-sm text-slate-400">Pending</span>
+                  </div>
+                  <span class="text-sm text-slate-200">{{ pendingCount }}</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Progressive Quality -->
+          <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-700">
+              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                Quality Progression
+              </h2>
+            </div>
+            <div class="p-6 space-y-4">
+              <p class="text-sm text-slate-400">
+                Start with spliced audio, add human recordings over time:
+              </p>
+              <div class="space-y-3 text-sm">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                  <span class="text-slate-300">Day 1: {{ totalRecordings }} recorded &rarr; {{ stats.totalPhrases.toLocaleString() }} spliced</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                  <span class="text-slate-500">Community adds more over time</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                  <span class="text-slate-500">Priority: flagged splices first</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Priority Queue -->
+          <section class="rounded-xl border border-dashed border-slate-600 bg-slate-800/30 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-700">
+              <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                Flagged Splices
+              </h2>
+              <p class="text-xs text-emerald-400 mt-1">
+                {{ flaggedPhrases.length }} need re-recording
+              </p>
+            </div>
+
+            <div class="max-h-[250px] overflow-y-auto">
+              <div v-for="flag in flaggedPhrases" :key="flag.id"
+                   class="px-6 py-3 border-b border-slate-700/50">
+                <div class="flex items-start gap-3">
+                  <div :class="[
+                    'w-6 h-6 rounded flex items-center justify-center text-xs font-semibold',
+                    flag.priority === 'high' ? 'bg-red-500/20 text-red-400' :
+                    flag.priority === 'medium' ? 'bg-amber-500/20 text-amber-400' :
+                    'bg-slate-700 text-slate-400'
+                  ]">
+                    {{ flag.score }}
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm text-slate-200 truncate">{{ flag.phrase }}</p>
+                    <p class="text-xs text-slate-500">{{ flag.reason }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="flaggedPhrases.length === 0" class="p-6 text-center text-slate-500 text-sm">
+                No flagged splices yet
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')
+
+// Algorithm state
+const isCalculating = ref(false)
+const stats = ref({
+  totalLegos: 627,
+  phrasesToRecord: 199,
+  directRecord: 55,
+  estimatedMinutes: 66,
+  reductionPercent: 97.8,
+  totalPhrases: 11818
+})
+
+// Coverage stats
+const totalRecordings = computed(() => stats.value.phrasesToRecord + stats.value.directRecord)
+const recordedCount = ref(142)
+const splicedCount = ref(847)
+const pendingCount = ref(112)
+const recordedPercent = computed(() => Math.round((recordedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
+const splicedPercent = computed(() => Math.round((splicedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
+const totalCoverage = computed(() => recordedPercent.value + splicedPercent.value)
+
+// Recording script
+const filteredPhrases = ref([
+  { id: 1, target: "mae'n fyd mawr ond dydy hynna ddim yn meddwl na fedra i ddysgu", source: "it's a big world but that doesn't mean I can't learn", legoCount: 11 },
+  { id: 2, target: "dw i'n cofio pan oeddan nhw newydd ddechrau yn yr ysgol", source: "I remember when they had just started at school", legoCount: 10 },
+  { id: 3, target: "os na wnei di banad o goffi i mi rŵan hyn fydda i ddim yn hapus", source: "if you don't make me a cup of coffee right now I won't be happy", legoCount: 10 },
+  { id: 4, target: "dw i isio ffeindio siop yn agos at y gwesty lle medra i brynu", source: "I want to find a shop close to the hotel where I can buy", legoCount: 9 },
+  { id: 5, target: "a deud y gwir, efallai dylen ni agor y drws a chau'r ffenest", source: "to tell the truth, maybe we should open the door and close the window", legoCount: 9 },
+  { id: 6, target: "stopio siarad Cymraeg", source: "stop speaking Welsh", legoCount: 3 },
+  { id: 7, target: "dw i isio dysgu siarad Cymraeg", source: "I want to learn to speak Welsh", legoCount: 5 },
+])
+
+// Flagged phrases
+const flaggedPhrases = ref([
+  { id: 1, phrase: "mae gen i gar coch", reason: "sounds_robotic", score: 95, priority: 'high' },
+  { id: 2, phrase: "ble mae'r tŷ bach", reason: "timing_off", score: 82, priority: 'medium' },
+  { id: 3, phrase: "dw i'n hoffi coffi", reason: "sounds_robotic", score: 78, priority: 'medium' },
+  { id: 4, phrase: "bore da", reason: "wrong_pronunciation", score: 65, priority: 'low' },
+])
+
+// Methods
+async function runAlgorithm() {
+  isCalculating.value = true
+  // TODO: Call actual API
+  await new Promise(resolve => setTimeout(resolve, 1500))
+  isCalculating.value = false
+}
+
+function exportPDF() {
+  // TODO: Generate PDF of recording script
+  console.log('Exporting PDF...')
+}
+</script>
