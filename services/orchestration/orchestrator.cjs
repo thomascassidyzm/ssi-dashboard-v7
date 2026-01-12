@@ -9911,8 +9911,6 @@ app.post('/api/import-course', async (req, res) => {
 // DOCUMENTATION API
 // =============================================================================
 
-const supabaseClient = require('../supabase-client.cjs');
-
 /**
  * GET /api/docs/list - Get documentation list for navigation
  * Query: ?category=reference (optional filter)
