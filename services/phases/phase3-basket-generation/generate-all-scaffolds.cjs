@@ -122,55 +122,67 @@ function assignModelTier(seedNum, vocabSize, legoSyllableCount, legoType) {
 }
 
 /**
- * Build cumulative vocabulary up to (but not including) a specific seed
- * @param {Array} allSeeds - All seeds from DB
- * @param {Array} allLegos - All LEGOs from DB
- * @param {number} targetSeedNum - Build vocab up to this seed
+ * Build available vocabulary using TAUGHT UNITS only:
+ * 1. Intact A-LEGOs learned before current position
+ * 2. Intact M-LEGOs learned before current position
+ * 3. Components of M-LEGOs learned before current position
+ *
+ * This is language-agnostic - works for word-based (Italian) and character-based (Chinese) languages.
+ * We don't extract words/characters - we use the actual taught units.
+ *
+ * @param {Array} allLegos - All LEGOs from DB (must include 'components' column)
+ * @param {number} targetSeedNum - Current seed number
+ * @param {number} targetLegoIndex - Current LEGO index
+ * @returns {Object} { known: string[], target: string[] } - Arrays of taught units (not Sets)
  */
-function buildVocabUpToSeed(allSeeds, allLegos, targetSeedNum) {
-  const knownVocab = new Set();
-  const targetVocab = new Set();
+function buildTaughtUnitsVocab(allLegos, targetSeedNum, targetLegoIndex) {
+  const knownUnits = [];
+  const targetUnits = [];
 
-  // Add words from all seeds before target
-  for (const seed of allSeeds) {
-    if (seed.seed_number >= targetSeedNum) break;
-    extractWords(seed.known_text).forEach(w => knownVocab.add(w));
-    extractWords(seed.target_text).forEach(w => targetVocab.add(w));
-  }
+  // Get all LEGOs learned BEFORE current position
+  const learnedLegos = allLegos.filter(lego =>
+    lego.seed_number < targetSeedNum ||
+    (lego.seed_number === targetSeedNum && lego.lego_index < targetLegoIndex)
+  );
 
-  // Add words from all LEGOs in seeds before target
-  for (const lego of allLegos) {
-    if (lego.seed_number >= targetSeedNum) continue;
-    extractWords(lego.known_text).forEach(w => knownVocab.add(w));
-    extractWords(lego.target_text).forEach(w => targetVocab.add(w));
-  }
+  for (const lego of learnedLegos) {
+    // Add the intact LEGO (A-type or M-type)
+    if (lego.known_text) knownUnits.push(lego.known_text);
+    if (lego.target_text) targetUnits.push(lego.target_text);
 
-  return { known: knownVocab, target: targetVocab };
-}
-
-/**
- * Build vocabulary available for a specific LEGO within its seed
- */
-function buildVocabForLego(allSeeds, allLegos, seedNumber, legoIndex) {
-  const vocab = buildVocabUpToSeed(allSeeds, allLegos, seedNumber);
-
-  // Find this seed
-  const seed = allSeeds.find(s => s.seed_number === seedNumber);
-  if (seed) {
-    extractWords(seed.known_text).forEach(w => vocab.known.add(w));
-    extractWords(seed.target_text).forEach(w => vocab.target.add(w));
-  }
-
-  // Add LEGOs up to and including current index in this seed
-  const seedLegos = allLegos.filter(l => l.seed_number === seedNumber);
-  for (const lego of seedLegos) {
-    if (lego.lego_index <= legoIndex) {
-      extractWords(lego.known_text).forEach(w => vocab.known.add(w));
-      extractWords(lego.target_text).forEach(w => vocab.target.add(w));
+    // For M-types, also add their explicit components
+    if (lego.type === 'M' && lego.components && Array.isArray(lego.components)) {
+      for (const comp of lego.components) {
+        // Handle all three formats: { k, t }, { known, target }, { known_text, target_text }
+        const knownComp = comp.k || comp.known || comp.known_text;
+        const targetComp = comp.t || comp.target || comp.target_text;
+        if (knownComp) knownUnits.push(knownComp);
+        if (targetComp) targetUnits.push(targetComp);
+      }
     }
   }
 
-  return vocab;
+  // Remove duplicates while preserving as arrays (not Sets)
+  return {
+    known: [...new Set(knownUnits)],
+    target: [...new Set(targetUnits)]
+  };
+}
+
+// Legacy wrapper for backwards compatibility (returns Sets with extracted words)
+// TODO: Remove once all code is updated to use buildTaughtUnitsVocab
+function buildVocabForLego(allSeeds, allLegos, seedNumber, legoIndex) {
+  const taught = buildTaughtUnitsVocab(allLegos, seedNumber, legoIndex);
+  // Convert to Sets and extract words for backwards compatibility
+  const knownVocab = new Set();
+  const targetVocab = new Set();
+  for (const unit of taught.known) {
+    extractWords(unit).forEach(w => knownVocab.add(w));
+  }
+  for (const unit of taught.target) {
+    extractWords(unit).forEach(w => targetVocab.add(w));
+  }
+  return { known: knownVocab, target: targetVocab };
 }
 
 /**
@@ -212,8 +224,8 @@ function generateLegoScaffold(allSeeds, allLegos, lego, seedLegos) {
   const seedNumber = lego.seed_number;
   const legoIndex = lego.lego_index;
 
-  // Get available vocabulary
-  const vocab = buildVocabForLego(allSeeds, allLegos, seedNumber, legoIndex);
+  // Get available vocabulary as TAUGHT UNITS (intact LEGOs + M-LEGO components)
+  const taughtUnits = buildTaughtUnitsVocab(allLegos, seedNumber, legoIndex);
 
   // Get recent LEGOs for context
   const recentLegos = getRecentLegos(allLegos, seedNumber, legoIndex, 30);
@@ -222,8 +234,8 @@ function generateLegoScaffold(allSeeds, allLegos, lego, seedLegos) {
   const maxLegoIndex = Math.max(...seedLegos.map(l => l.lego_index));
   const isFinalLego = legoIndex === maxLegoIndex;
 
-  // Calculate difficulty metrics
-  const vocabSize = vocab.target.size;
+  // Calculate difficulty metrics (use count of taught units)
+  const vocabSize = taughtUnits.target.length;
   const legoSyllableCount = countSyllables(lego.target_text);
   const recommendedModel = assignModelTier(seedNumber, vocabSize, legoSyllableCount, lego.type);
 
@@ -247,10 +259,12 @@ function generateLegoScaffold(allSeeds, allLegos, lego, seedLegos) {
       recommended_model: recommendedModel
     },
 
-    // Vocabulary as sorted arrays (compact)
+    // Available vocabulary as TAUGHT UNITS (intact LEGOs + M-LEGO components)
+    // NOT extracted words - these are the actual units the learner has been taught
+    // Phrases must be built from combinations of these units
     available_vocab: {
-      known: Array.from(vocab.known).sort(),
-      target: Array.from(vocab.target).sort()
+      known: taughtUnits.known.sort(),
+      target: taughtUnits.target.sort()
     },
 
     // Recent context (30 most recent new:true LEGOs)

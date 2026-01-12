@@ -319,16 +319,32 @@ function countLegosInPhrase(phraseTarget, legoTargets) {
  *
  * @param {Object} basket - The basket with lego and practice_phrases
  * @param {string} legoId - The LEGO ID (e.g., "S0010L01")
- * @param {Object} legoPairs - The lego_pairs.json data
+ * @param {Object} legoPairsOrNull - The lego_pairs.json data (DEPRECATED - use scaffoldVocab)
+ * @param {Object} scaffoldVocab - Pre-computed available_vocab from scaffold { known: string[], target: string[] }
  * @returns {Object} { valid: boolean, errors: Array<{phrase, error}> }
  */
-function validateBasketPhrases(basket, legoId, legoPairs) {
+function validateBasketPhrases(basket, legoId, legoPairsOrNull, scaffoldVocab = null) {
   const errors = [];
   const legoKnown = basket.lego.known;
   const legoTarget = basket.lego.target;
 
-  // Build available vocabulary for this LEGO position (both languages)
-  const availableVocab = buildAvailableVocab(legoPairs, legoId);
+  // Use scaffold's pre-computed vocab if provided (preferred), otherwise fall back to legacy
+  let availableVocab;
+  if (scaffoldVocab && scaffoldVocab.known && scaffoldVocab.target) {
+    // Convert arrays to Sets for efficient lookup
+    availableVocab = {
+      known: new Set(scaffoldVocab.known.map(w => normalizeSpelling(w.toLowerCase()))),
+      target: new Set(scaffoldVocab.target.map(w => w.toLowerCase()))
+    };
+  } else if (legoPairsOrNull) {
+    // Legacy fallback: build from lego_pairs.json (may be incomplete!)
+    console.warn(`[GATE] ⚠️ Using legacy lego_pairs.json for ${legoId} - scaffold vocab preferred`);
+    availableVocab = buildAvailableVocab(legoPairsOrNull, legoId);
+  } else {
+    // No vocab available - skip validation with warning
+    console.warn(`[GATE] ⚠️ No vocabulary data for ${legoId} - skipping GATE validation`);
+    return { valid: true, errors: [], skipped: true };
+  }
 
   // Also add the current LEGO's words (it's always available)
   const legoKnownWords = extractWords(legoKnown);
@@ -503,22 +519,48 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
  * Returns object with complete LEGO data ready to embed in prompt
  */
 /**
- * Generate text scaffolds for LEGOs
- * Returns object mapping legoId -> human-readable text scaffold
+ * Load pre-built scaffolds for LEGOs from phase3_scaffolds/
+ * Returns object mapping legoId -> scaffold data (from pre-generated files)
+ *
+ * IMPORTANT: Scaffolds must be pre-generated using generate-all-scaffolds.cjs
+ * This function does NOT read from lego_pairs.json
  */
 async function loadScaffoldData(baseCourseDir, missingLegos) {
-  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
-  const legoPairs = await fs.readJson(legoPairsPath);
+  const scaffoldsDir = path.join(baseCourseDir, 'phase3_scaffolds');
+  const scaffolds = {};
 
-  const textScaffolds = {};
-
+  // Group missing LEGOs by seed for efficient file reading
+  const legosBySeed = {};
   for (const lego of missingLegos) {
-    // Generate text scaffold for this LEGO
-    const textScaffold = generateTextScaffold(lego, legoPairs, {});
-    textScaffolds[lego.legoId] = textScaffold;
+    const seed = lego.seed; // e.g., 'S0001'
+    if (!legosBySeed[seed]) legosBySeed[seed] = [];
+    legosBySeed[seed].push(lego.legoId);
   }
 
-  return textScaffolds;
+  // Load scaffold file for each seed that has missing LEGOs
+  for (const [seed, legoIds] of Object.entries(legosBySeed)) {
+    const seedScaffoldPath = path.join(scaffoldsDir, `${seed}.json`);
+
+    if (!await fs.pathExists(seedScaffoldPath)) {
+      console.warn(`[Phase 3] ⚠️ Scaffold file not found: ${seedScaffoldPath}`);
+      continue;
+    }
+
+    const seedScaffold = await fs.readJson(seedScaffoldPath);
+
+    // Extract scaffold for each missing LEGO in this seed
+    for (const legoId of legoIds) {
+      if (seedScaffold.legos && seedScaffold.legos[legoId]) {
+        scaffolds[legoId] = seedScaffold.legos[legoId];
+      } else {
+        console.warn(`[Phase 3] ⚠️ LEGO ${legoId} not found in scaffold file ${seed}.json`);
+      }
+    }
+  }
+
+  console.log(`[Phase 3] Loaded ${Object.keys(scaffolds).length}/${missingLegos.length} scaffolds from pre-built files`);
+
+  return scaffolds;
 }
 
 // Branch watcher processes (courseCode -> child process)
@@ -719,25 +761,42 @@ app.post('/start', async (req, res) => {
     console.log(`[Phase 3] Using base course: ${baseCourseCode}`);
   }
 
-  // Check prerequisites in base course directory
-  const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
-  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+  // Check prerequisites - DATABASE IS SOURCE OF TRUTH
+  // First try database, fallback to JSON files for backwards compatibility
+  const { supabase, isInitialized } = require('../../supabase-client.cjs');
+  let hasLegosInDb = false;
 
-  // lego_pairs.json is always required
-  if (!await fs.pathExists(legoPairsPath)) {
-    return res.status(400).json({ error: `Phase 3 requires lego_pairs.json in ${baseCourseCode} - run Phase 2 first` });
+  if (isInitialized()) {
+    const { count, error } = await supabase
+      .from('course_legos')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', baseCourseCode);
+
+    if (!error && count > 0) {
+      hasLegosInDb = true;
+      console.log(`[Phase 3] ✅ Found ${count} LEGOs in database for ${baseCourseCode}`);
+    }
   }
 
-  // seed_pairs.json is optional in v2 format (seed_pair embedded in lego_pairs.json)
-  const hasSeedPairs = await fs.pathExists(seedPairsPath);
-  if (!hasSeedPairs) {
-    // Check if lego_pairs.json has embedded seed_pair (v2 format)
-    const legoPairs = await fs.readJson(legoPairsPath);
-    const hasEmbeddedSeedPairs = legoPairs.seeds?.some(s => s.seed_pair);
-    if (!hasEmbeddedSeedPairs) {
-      return res.status(400).json({ error: `Phase 3 requires seed_pairs.json OR embedded seed_pair in lego_pairs.json - run Phase 1 first` });
+  // Fallback to JSON files if database has no LEGOs
+  if (!hasLegosInDb) {
+    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+    const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(400).json({ error: `Phase 3 requires LEGOs in database or lego_pairs.json - run Phase 2 first` });
     }
-    console.log(`[Phase 3] ✅ Using v2 format (seed_pair embedded in lego_pairs.json)`);
+
+    const hasSeedPairs = await fs.pathExists(seedPairsPath);
+    if (!hasSeedPairs) {
+      const legoPairs = await fs.readJson(legoPairsPath);
+      const hasEmbeddedSeedPairs = legoPairs.seeds?.some(s => s.seed_pair);
+      if (!hasEmbeddedSeedPairs) {
+        return res.status(400).json({ error: `Phase 3 requires seed_pairs.json OR embedded seed_pair in lego_pairs.json` });
+      }
+      console.log(`[Phase 3] ✅ Using v2 format (seed_pair embedded in lego_pairs.json)`);
+    }
+    console.log(`[Phase 3] ✅ Using JSON file prerequisites (legacy mode)`);
   }
 
   console.log(`[Phase 3] ✅ Prerequisites found`);
@@ -1021,21 +1080,30 @@ app.get('/preview/:courseCode', async (req, res) => {
       });
     }
 
-    // Get seed range (full course)
-    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
-    if (!await fs.pathExists(legoPairsPath)) {
-      return res.status(400).json({ error: 'lego_pairs.json not found - Phase 2 must complete first' });
+    // DATABASE-FIRST: Get missing LEGOs directly from database
+    let missingLegos = await courseDataService.getMissingNewLegos(courseCode);
+
+    // Fallback to JSON if database reads disabled
+    if (missingLegos === null) {
+      console.log(`[Phase 3] Database reads disabled, falling back to JSON for preview`);
+      const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+      if (!await fs.pathExists(legoPairsPath)) {
+        return res.status(400).json({ error: 'lego_pairs.json not found - Phase 2 must complete first' });
+      }
+      const legoPairs = await fs.readJson(legoPairsPath);
+      const allSeeds = legoPairs.seeds || [];
+      const seedNumbers = allSeeds.map(s => parseInt(s.seed_id.replace('S', '')));
+      const startSeed = Math.min(...seedNumbers);
+      const endSeed = Math.max(...seedNumbers);
+      missingLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
     }
 
-    const legoPairs = await fs.readJson(legoPairsPath);
-    const allSeeds = legoPairs.seeds || [];
-    const seedNumbers = allSeeds.map(s => parseInt(s.seed_id.replace('S', '')));
-    const startSeed = Math.min(...seedNumbers);
-    const endSeed = Math.max(...seedNumbers);
-
-    // Identify missing LEGOs
-    const missingLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
     const legosToProcess = missingLegos.length;
+
+    // Get seed range from missing LEGOs (or default)
+    const seedNumbers = missingLegos.map(l => parseInt(l.seed.replace('S', '')));
+    const startSeed = seedNumbers.length > 0 ? Math.min(...seedNumbers) : 1;
+    const endSeed = seedNumbers.length > 0 ? Math.max(...seedNumbers) : 260;
 
     if (legosToProcess === 0) {
       return res.json({
@@ -3309,11 +3377,25 @@ app.post('/upload-basket-legacy', async (req, res) => {
 
     // ==============================================================================
     // CONTENT VALIDATION: GATE compliance + LEGO presence
+    // Uses scaffold's pre-computed available_vocab (database-first) instead of lego_pairs.json
     // ==============================================================================
     const allValidationErrors = [];
 
+    // Load scaffold for this seed (contains correct available_vocab from database)
+    const scaffoldPath = path.join(VFS_ROOT, course, 'phase3_scaffolds', `${seed}.json`);
+    let seedScaffold = null;
+    if (await fs.pathExists(scaffoldPath)) {
+      seedScaffold = await fs.readJson(scaffoldPath);
+      console.log(`[GATE] ✅ Using scaffold vocab from ${scaffoldPath}`);
+    } else {
+      console.warn(`[GATE] ⚠️ Scaffold not found at ${scaffoldPath} - falling back to lego_pairs.json (may be incomplete)`);
+    }
+
     for (const [legoId, basket] of Object.entries(baskets)) {
-      const validation = validateBasketPhrases(basket, legoId, legoPairs);
+      // Get scaffold's available_vocab for this LEGO (if available)
+      const scaffoldVocab = seedScaffold?.legos?.[legoId]?.available_vocab || null;
+
+      const validation = validateBasketPhrases(basket, legoId, legoPairs, scaffoldVocab);
 
       if (!validation.valid) {
         allValidationErrors.push({
@@ -3598,6 +3680,214 @@ app.post('/upload-basket', async (req, res) => {
     }
     const seedNumber = parseInt(seedMatch[1], 10);
     const legoIndex = parseInt(seedMatch[2], 10);
+    const seedId = `S${String(seedNumber).padStart(4, '0')}`;
+
+    // =========================================================================
+    // GATE VALIDATION: Load scaffold and validate phrases BEFORE saving
+    // =========================================================================
+    const scaffoldPath = path.join(VFS_ROOT, course, 'phase3_scaffolds', `${seedId}.json`);
+    let scaffoldVocab = null;
+    let legoData = null;
+
+    try {
+      if (await fs.pathExists(scaffoldPath)) {
+        const scaffold = await fs.readJson(scaffoldPath);
+        const legoScaffold = scaffold.legos?.[legoId];
+        if (legoScaffold) {
+          scaffoldVocab = legoScaffold.available_vocab;
+          legoData = legoScaffold.lego;
+        }
+      }
+    } catch (scaffoldErr) {
+      console.warn(`   ⚠️  Could not load scaffold: ${scaffoldErr.message}`);
+    }
+
+    if (scaffoldVocab && legoData) {
+      // Build taught units arrays (include current LEGO)
+      const knownUnits = [...(scaffoldVocab.known || []), legoData.known];
+      const targetUnits = [...(scaffoldVocab.target || []), legoData.target];
+
+      /**
+       * Check if a phrase can be decomposed into taught units
+       * Uses greedy matching (longest units first)
+       * Returns { valid: boolean, unmatched: string, matched: string[] }
+       */
+      function decomposeIntoUnits(phrase, units) {
+        // Normalize and sort units by length (longest first for greedy matching)
+        const sortedUnits = [...new Set(units)]
+          .filter(u => u && u.length > 0)
+          .sort((a, b) => b.length - a.length);
+
+        // Remove punctuation and extra spaces for matching
+        let remaining = phrase.replace(/[.,!?;:'"()[\]{}]/g, '').trim();
+        const matched = [];
+
+        while (remaining.length > 0) {
+          // Skip leading whitespace
+          remaining = remaining.trimStart();
+          if (remaining.length === 0) break;
+
+          let foundMatch = false;
+          for (const unit of sortedUnits) {
+            // Check if remaining starts with this unit (case-insensitive for known)
+            const unitLower = unit.toLowerCase();
+            const remainingLower = remaining.toLowerCase();
+
+            if (remainingLower.startsWith(unitLower)) {
+              // Check word boundary for space-separated languages
+              const afterUnit = remaining.slice(unit.length);
+              const isWordBoundary = afterUnit.length === 0 ||
+                                     afterUnit[0] === ' ' ||
+                                     /[\u4E00-\u9FFF]/.test(unit); // CJK doesn't need word boundary
+
+              if (isWordBoundary) {
+                matched.push(unit);
+                remaining = afterUnit.trimStart();
+                foundMatch = true;
+                break;
+              }
+            }
+          }
+
+          if (!foundMatch) {
+            // No taught unit matches - return what's unmatched
+            return { valid: false, unmatched: remaining, matched };
+          }
+        }
+
+        return { valid: true, unmatched: '', matched };
+      }
+
+      // Validate each phrase
+      const gateErrors = [];
+      for (let i = 0; i < phrases.length; i++) {
+        const phrase = phrases[i];
+        const phraseNum = i + 1;
+
+        // Check LEGO presence in target
+        if (!phrase.target.includes(legoData.target)) {
+          gateErrors.push({
+            phraseNum,
+            type: 'missing_lego',
+            error: `Phrase ${phraseNum} target doesn't contain LEGO "${legoData.target}"`,
+            phrase: phrase.target
+          });
+        }
+
+        // Check GATE: target phrase must decompose into taught units
+        const targetCheck = decomposeIntoUnits(phrase.target, targetUnits);
+        if (!targetCheck.valid) {
+          gateErrors.push({
+            phraseNum,
+            type: 'gate_target',
+            error: `GATE violation (target): cannot decompose "${targetCheck.unmatched}" into taught units`,
+            phrase: phrase.target,
+            unmatched: targetCheck.unmatched,
+            matched: targetCheck.matched
+          });
+        }
+
+        // Check GATE: known phrase must decompose into taught units (ZUT)
+        const knownCheck = decomposeIntoUnits(phrase.known, knownUnits);
+        if (!knownCheck.valid) {
+          gateErrors.push({
+            phraseNum,
+            type: 'gate_known',
+            error: `GATE violation (known): cannot decompose "${knownCheck.unmatched}" into taught units`,
+            phrase: phrase.known,
+            unmatched: knownCheck.unmatched,
+            matched: knownCheck.matched
+          });
+        }
+      }
+
+      // Reject if any GATE errors
+      if (gateErrors.length > 0) {
+        console.log(`   ❌ GATE validation failed: ${gateErrors.length} errors`);
+        gateErrors.slice(0, 3).forEach(e => console.log(`      - ${e.error}`));
+        if (gateErrors.length > 3) console.log(`      ... and ${gateErrors.length - 3} more`);
+
+        return res.status(400).json({
+          success: false,
+          error: 'GATE validation failed - fix phrases and retry',
+          legoId,
+          errorCount: gateErrors.length,
+          errors: gateErrors,
+          taughtUnits: {
+            known: knownUnits.slice(0, 30),
+            target: targetUnits.slice(0, 30),
+            truncated: knownUnits.length > 30 || targetUnits.length > 30
+          }
+        });
+      }
+
+      console.log(`   ✅ GATE validation passed (LEGO-level decomposition)`);
+
+      // =========================================================================
+      // RECENCY VALIDATION: At least 50% of LEGOs must be from recent_legos
+      // Only applies when there are enough recent LEGOs to choose from
+      // =========================================================================
+      const recentLegos = legoScaffold.recent_legos || [];
+
+      // Only enforce recency if we have at least 5 recent LEGOs to choose from
+      if (recentLegos.length >= 5) {
+        // Build sets of recent target units for quick lookup
+        const recentTargetUnits = new Set(recentLegos.map(l => l.target));
+
+        // Count LEGO usage across all phrases (excluding the current LEGO itself)
+        let totalLegoUsage = 0;
+        let recentLegoUsage = 0;
+
+        for (const phrase of phrases) {
+          const targetCheck = decomposeIntoUnits(phrase.target, targetUnits);
+          if (targetCheck.valid) {
+            for (const matchedUnit of targetCheck.matched) {
+              // Don't count the current LEGO - we're measuring vocab variety
+              if (matchedUnit !== legoData.target) {
+                totalLegoUsage++;
+                if (recentTargetUnits.has(matchedUnit)) {
+                  recentLegoUsage++;
+                }
+              }
+            }
+          }
+        }
+
+        // Calculate recency percentage
+        const recencyPercent = totalLegoUsage > 0
+          ? Math.round((recentLegoUsage / totalLegoUsage) * 100)
+          : 100; // If no other LEGOs used, that's fine
+
+        if (recencyPercent < 50 && totalLegoUsage >= 5) {
+          console.log(`   ❌ Recency validation failed: ${recencyPercent}% recent (need 50%+)`);
+
+          return res.status(400).json({
+            success: false,
+            error: 'Recency validation failed - use more recent vocabulary',
+            legoId,
+            recency: {
+              percent: recencyPercent,
+              required: 50,
+              recentUsed: recentLegoUsage,
+              totalUsed: totalLegoUsage,
+              recentAvailable: recentLegos.length
+            },
+            hint: 'At least 50% of LEGOs (excluding current) should be from the 30 most recent NEW LEGOs',
+            recentLegos: recentLegos.slice(0, 15).map(l => ({ known: l.known, target: l.target }))
+          });
+        }
+
+        console.log(`   ✅ Recency validation passed (${recencyPercent}% from recent LEGOs)`);
+      } else {
+        console.log(`   ⏭️  Recency validation skipped (only ${recentLegos.length} recent LEGOs available)`);
+      }
+    } else {
+      console.warn(`   ⚠️  No scaffold found for ${legoId} - skipping GATE validation`);
+    }
+
+    // =========================================================================
+    // DATABASE WRITE (only reached if GATE validation passed)
+    // =========================================================================
 
     // Load lego_pairs.json for enrichment (needed for lego_count calculation)
     const legoPairsPath = path.join(VFS_ROOT, course, 'lego_pairs.json');
