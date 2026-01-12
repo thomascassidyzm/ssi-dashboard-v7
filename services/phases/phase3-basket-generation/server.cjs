@@ -3688,11 +3688,12 @@ app.post('/upload-basket', async (req, res) => {
     const scaffoldPath = path.join(VFS_ROOT, course, 'phase3_scaffolds', `${seedId}.json`);
     let scaffoldVocab = null;
     let legoData = null;
+    let legoScaffold = null;
 
     try {
       if (await fs.pathExists(scaffoldPath)) {
         const scaffold = await fs.readJson(scaffoldPath);
-        const legoScaffold = scaffold.legos?.[legoId];
+        legoScaffold = scaffold.legos?.[legoId];
         if (legoScaffold) {
           scaffoldVocab = legoScaffold.available_vocab;
           legoData = legoScaffold.lego;
@@ -4251,6 +4252,116 @@ async function waitForGrammarValidation(courseCode) {
 
   throw new Error('Grammar validation timeout: took longer than 30 minutes');
 }
+
+/**
+ * POST /test-run
+ * Run Phase 3 on a random sample of seeds for validation testing
+ *
+ * Body: {
+ *   courseCode: string,         // e.g., "zho_for_eng"
+ *   sampleSize?: number,        // Default: 10 random seeds
+ *   minSeed?: number,           // Default: 20 (ensure vocabulary variety)
+ *   target: string,             // e.g., "Chinese"
+ *   known: string               // e.g., "English"
+ * }
+ */
+app.post('/test-run', async (req, res) => {
+  const {
+    courseCode,
+    sampleSize = 10,
+    minSeed = 20,
+    target,
+    known
+  } = req.body;
+
+  if (!courseCode || !target || !known) {
+    return res.status(400).json({ error: 'courseCode, target, known required' });
+  }
+
+  console.log(`\n[Phase 3] 🧪 TEST RUN: ${courseCode}`);
+  console.log(`   Sample size: ${sampleSize} random seeds`);
+  console.log(`   Min seed: ${minSeed} (for vocab variety)`);
+
+  try {
+    // Load scaffold index
+    const indexPath = path.join(VFS_ROOT, courseCode, 'phase3_scaffolds', 'index.json');
+    if (!await fs.pathExists(indexPath)) {
+      return res.status(400).json({
+        error: 'Scaffolds not found - run scaffold generator first',
+        hint: `node services/phases/phase3-basket-generation/generate-all-scaffolds.cjs ${courseCode}`
+      });
+    }
+
+    const index = await fs.readJson(indexPath);
+
+    // Filter eligible seeds (>= minSeed)
+    const eligibleSeeds = index.seeds.filter(s => {
+      const seedNum = parseInt(s.seed_id.replace('S', ''));
+      return seedNum >= minSeed;
+    });
+
+    if (eligibleSeeds.length === 0) {
+      return res.status(400).json({
+        error: `No seeds >= ${minSeed} found in scaffolds`,
+        totalSeeds: index.seeds.length
+      });
+    }
+
+    // Random sample
+    const shuffled = eligibleSeeds.sort(() => Math.random() - 0.5);
+    const sampledSeeds = shuffled.slice(0, Math.min(sampleSize, shuffled.length));
+
+    // Sort by seed number for orderly processing
+    sampledSeeds.sort((a, b) => {
+      const aNum = parseInt(a.seed_id.replace('S', ''));
+      const bNum = parseInt(b.seed_id.replace('S', ''));
+      return aNum - bNum;
+    });
+
+    // Calculate total LEGOs
+    const totalLegos = sampledSeeds.reduce((sum, s) => sum + s.lego_count, 0);
+
+    console.log(`   Sampled: ${sampledSeeds.map(s => s.seed_id).join(', ')}`);
+    console.log(`   Total LEGOs: ${totalLegos}`);
+
+    // Get seed numbers for the job
+    const seedNumbers = sampledSeeds.map(s => parseInt(s.seed_id.replace('S', '')));
+    const startSeed = Math.min(...seedNumbers);
+    const endSeed = Math.max(...seedNumbers);
+
+    // Return info and trigger point
+    res.json({
+      success: true,
+      testRun: {
+        courseCode,
+        sampledSeeds: sampledSeeds.map(s => s.seed_id),
+        seedNumbers,
+        totalLegos,
+        minSeed,
+        sampleSize: sampledSeeds.length
+      },
+      trigger: {
+        endpoint: '/start',
+        method: 'POST',
+        body: {
+          courseCode,
+          startSeed,
+          endSeed,
+          target,
+          known,
+          browserWindows: 1,
+          agentsPerWindow: 1,
+          specificSeeds: seedNumbers  // Only process these seeds
+        }
+      },
+      message: `Ready to test ${totalLegos} LEGOs across ${sampledSeeds.length} seeds. Call /start with specificSeeds to begin.`
+    });
+
+  } catch (error) {
+    console.error('[Phase 3] Test run error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 /**
  * Start server
