@@ -4298,6 +4298,9 @@ app.post('/api/courses/generate', async (req, res) => {
     if (phaseSelection === 'phase1' || phaseSelection === 'all') {
       phase = '1_translation';  // Start with translation
       phaseName = 'Phase 1';
+    } else if (phaseSelection === 'phase2') {
+      phase = 2;  // Conflict resolution
+      phaseName = 'Phase 2 (Conflicts)';
     } else if (phaseSelection === 'phase3') {
       phase = 3;
       phaseName = 'Phase 3 (Baskets)';
