@@ -10,14 +10,14 @@
     "quick_test": {
       "name": "Quick Test",
       "description": "Fast validation - fewer browsers, more agents per browser",
-      "seeds": 10,
+      "seeds": 30,
       "pattern": {
-        "browsers": 2,
+        "browsers": 3,
         "agents_per_browser": 5,
-        "seeds_per_agent": 1
+        "seeds_per_agent": 2
       },
-      "capacity": 10,
-      "estimated_time_minutes": 2,
+      "capacity": 30,
+      "estimated_time_minutes": 4,
       "use_case": "Validation, fast feedback loop",
       "rationale": "2 browsers with 5 agents each is more robust than 5 browsers with 2 agents"
     },
