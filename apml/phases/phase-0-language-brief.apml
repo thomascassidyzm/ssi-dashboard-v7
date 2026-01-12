@@ -1,11 +1,13 @@
 # APML Phase 0: Language Pair Intelligence Brief
-# Version: 1.1.0 (2026-01-07)
+# Version: 1.2.0 (2026-01-12)
 # Status: Production-ready
 # Server Port: 3455 (pre-Phase 1)
 #
 # Phase 0 runs ONCE per language pair (not per course).
 # Generated brief is cached in Supabase and reused for all courses with that pair.
 # v1.1: Added conflict_patterns and upchunking_notes for Phase 2
+# v1.2: Added CIK (Context is King) principles and enhanced atomicity rules
+#       See: apml/core/cik-lego-principles-v1.apml for full CIK specification
 
 phase Phase0LanguageBrief:
   name: "Phase 0: Language Pair Intelligence Brief"
@@ -97,6 +99,32 @@ phase Phase0LanguageBrief:
       phrase_generation_notes: array # Strings - guidance for Phase 3 baskets
 
       common_pitfalls: array         # Strings - mistakes agents make
+
+      # CIK-Enhanced Fields (v1.2)
+      atomicity_rules: array         # A-type vs M-type guidance (CIK principles)
+        schema:
+          rule: string               # Specific rule for this language pair
+
+      grammatical_patterns: object   # Key grammar patterns for LEGO extraction
+        schema:
+          pattern_name:
+            pattern: string          # Description of the pattern
+            examples: array          # [{known, target, type}]
+            rule: string             # How to handle in extraction
+
+      m_type_validation: object      # Rules for M-type component validation
+        schema:
+          rule: string               # Overall validation rule
+          examples: array            # Example M-types with components
+
+      translation_quality: array     # Guidelines for natural translations
+        schema: string               # Each guideline as string
+
+      vocabulary_consistency: object # Guidelines for consistent vocabulary
+        schema:
+          same_meaning_same_word: boolean
+          track_across_seeds: boolean
+          notes: string
 
       cognate_notes: string          # Notes about cognates (if applicable)
 
@@ -281,6 +309,18 @@ phase Phase0LanguageBrief:
   ## ==========================================================================
 
   version_history:
+    v1_2_0:
+      date: "2026-01-12"
+      status: "CIK Enhancement"
+      changes:
+        - "Added CIK (Context is King) principles reference"
+        - "Added atomicity_rules field with CIK-aware guidance"
+        - "Added grammatical_patterns field for language-specific patterns"
+        - "Added m_type_validation field for component validation"
+        - "Added translation_quality field for natural output"
+        - "Added vocabulary_consistency field for tracking"
+        - "Reference to apml/core/cik-lego-principles-v1.apml"
+
     v1_1_0:
       date: "2026-01-07"
       status: "Added Phase 2 support"

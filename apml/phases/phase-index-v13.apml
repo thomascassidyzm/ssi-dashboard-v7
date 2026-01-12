@@ -1,7 +1,12 @@
-# APML Phase Index v13.0.0
+# APML Phase Index v13.1.0
 # SSI Course Production Pipeline
-# Version: 13.0.0 (2026-01-03)
+# Version: 13.1.0 (2026-01-12)
 # Status: CANONICAL - This is the source of truth
+#
+# v13.1 Changes:
+# - Added CIK LEGO Principles (apml/core/cik-lego-principles-v1.apml)
+# - Added Prompt Registry (apml/core/prompt-registry-v1.apml)
+# - Updated Phase 0 to v1.2.0 with CIK fields
 #
 # BREAKING CHANGES from v12:
 # - Removed texts → audio_files → course_audio indirection
@@ -52,6 +57,36 @@ BREAKING_CHANGES:
 ## ============================================================================
 ## DATA LAYER ARCHITECTURE (v13)
 ## ============================================================================
+
+## ============================================================================
+## CORE SPECIFICATIONS
+## ============================================================================
+
+CORE_SPECS:
+  audio_registry:
+    spec: "apml/core/audio-registry-v13.apml"
+    description: "Audio storage and retrieval schema"
+
+  cik_lego_principles:
+    spec: "apml/core/cik-lego-principles-v1.apml"
+    version: "1.0.0"
+    description: |
+      Context is King (CIK) principles for LEGO extraction.
+      - M-type is the NORM (provides context for ZUT)
+      - A-type is the EXCEPTION (only truly unambiguous words)
+      - Articles/prepositions/conjunctions NEVER standalone
+      - Components are build-up scaffolding, not parse trees
+      - Target 3-4 LEGOs per seed with overlap for richness
+
+  prompt_registry:
+    spec: "apml/core/prompt-registry-v1.apml"
+    version: "1.0.0"
+    description: |
+      Centralized storage for canonical prompts and language briefs.
+      - Supabase tables: phase_prompts, language_briefs, apml_documents
+      - API endpoints for fetch/update
+      - Dashboard integration for viewing/editing
+      - Single Source of Truth for agent prompts
 
 DATA_LAYER:
   core_spec: "apml/core/audio-registry-v13.apml"
@@ -220,8 +255,8 @@ CONTENT_PHASES:
 
   PHASE_0:
     name: "Language Pair Intelligence Brief"
-    version: "1.0.0"
-    status: "NEW - 2026-01-07"
+    version: "1.2.0"
+    status: "CIK-Enhanced - 2026-01-12"
     port: 3455
     spec: "apml/phases/phase-0-language-brief.apml"
     description: |
@@ -229,19 +264,32 @@ CONTENT_PHASES:
       Agent analyzes the pair and produces a brief with:
       - Target language profile (grammar features)
       - ZUT failure/pass examples
-      - Chunking guidance for Phase 1
+      - Chunking guidance for Phase 1 (CIK-aware)
+      - Atomicity rules (M-type norm, A-type exception)
+      - Grammatical patterns for LEGO extraction
       - Phrase generation notes for Phase 3
       - Common pitfalls to avoid
     storage: "Supabase language_pair_briefs table"
     trigger: "First course creation for a language pair"
     reuse: "All subsequent courses with same pair"
+    cik_integration: |
+      Brief includes CIK-aware atomicity_rules that guide Phase 1:
+      - Which words NEVER pass ZUT (articles, prepositions, etc.)
+      - Grammatical patterns that require M-type extraction
+      - Component validation rules
 
   PHASE_1:
     name: "Translation + LEGO Extraction"
-    version: "13.0.0"
-    changes: "NONE - Perfect, don't touch"
-    status: "STABLE"
+    version: "13.1.0"
+    status: "STABLE + CIK Integration"
     port: 3457
+    cik_integration: |
+      Phase 1 prompt enhanced with CIK principles:
+      - M-type is the NORM, A-type is the EXCEPTION
+      - Articles/prepositions/conjunctions NEVER standalone
+      - Components are build-up scaffolding
+      - Target 3-4 LEGOs per seed with overlap
+      See: apml/core/cik-lego-principles-v1.apml
 
   PHASE_2:
     name: "Conflict Resolution"
@@ -377,10 +425,16 @@ MIGRATION:
 ## ============================================================================
 
 SUMMARY:
-  version: "13.0.0"
-  date: "2026-01-03"
+  version: "13.1.0"
+  date: "2026-01-12"
 
-  key_changes:
+  key_changes_v13_1:
+    - "Added CIK LEGO Principles (apml/core/cik-lego-principles-v1.apml)"
+    - "Added Prompt Registry (apml/core/prompt-registry-v1.apml)"
+    - "Updated Phase 0 to v1.2.0 with CIK fields"
+    - "Updated Phase 1 with CIK integration notes"
+
+  key_changes_v13_0:
     - "Removed texts table (indirection layer)"
     - "Removed audio_files table (indirection layer)"
     - "course_audio is flat - course owns audio directly"
@@ -394,12 +448,15 @@ SUMMARY:
     - "Clearer ownership model"
     - "Easier to understand and maintain"
     - "Human audio handled explicitly"
+    - "CIK principles ensure consistent LEGO extraction"
+    - "Prompt Registry provides SSoT for agent prompts"
 
-  principle: |
-    Courses own their audio. Simple is better.
-    Only share what's genuinely shared.
+  principles: |
+    1. Courses own their audio. Simple is better.
+    2. Context is King (CIK) - M-type LEGOs are the norm.
+    3. Prompts are stored centrally (Prompt Registry).
 
 ## ============================================================================
-## GENERATED: 2026-01-03
-## APML v13.0.0 - Course-Owned Audio Architecture
+## GENERATED: 2026-01-12
+## APML v13.1.0 - CIK LEGO Principles + Prompt Registry
 ## ============================================================================

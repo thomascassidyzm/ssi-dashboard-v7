@@ -9397,6 +9397,390 @@ app.post('/api/language-brief/generate', async (req, res) => {
 
 const PRODUCTION_API_URL = process.env.PRODUCTION_API_URL || 'http://localhost:3470';
 
+// =============================================================================
+// PROMPT REGISTRY API (APML v1.0)
+// Centralized storage for phase prompts and language briefs
+// =============================================================================
+
+const supabaseClient = require('../supabase-client.cjs');
+
+/**
+ * GET /api/prompts/:phaseCode
+ * Get the currently active prompt for a phase
+ */
+app.get('/api/prompts/:phaseCode', async (req, res) => {
+  try {
+    const { phaseCode } = req.params;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('phase_prompts')
+      .select('prompt_content, version, title, updated_at, metadata')
+      .eq('phase_code', phaseCode)
+      .eq('is_active', true)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return res.status(404).json({
+          success: false,
+          error: `No active prompt found for phase: ${phaseCode}`
+        });
+      }
+      throw error;
+    }
+
+    res.json({
+      success: true,
+      prompt_content: data.prompt_content,
+      version: data.version,
+      title: data.title,
+      updated_at: data.updated_at,
+      metadata: data.metadata
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error fetching prompt:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/prompts/:phaseCode/versions
+ * List all versions for a phase
+ */
+app.get('/api/prompts/:phaseCode/versions', async (req, res) => {
+  try {
+    const { phaseCode } = req.params;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('phase_prompts')
+      .select('id, version, title, is_active, created_at, updated_at')
+      .eq('phase_code', phaseCode)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    res.json({
+      success: true,
+      phaseCode,
+      versions: data || []
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error listing prompt versions:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/prompts/:phaseCode
+ * Create a new prompt version
+ */
+app.post('/api/prompts/:phaseCode', async (req, res) => {
+  try {
+    const { phaseCode } = req.params;
+    const { version, title, prompt_content, metadata } = req.body;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    if (!version || !prompt_content) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: version, prompt_content'
+      });
+    }
+
+    // Validate phase code
+    const validPhaseCodes = ['phase0', 'phase1', 'phase2', 'phase3'];
+    if (!validPhaseCodes.includes(phaseCode)) {
+      return res.status(400).json({
+        success: false,
+        error: `Invalid phase_code. Must be one of: ${validPhaseCodes.join(', ')}`
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('phase_prompts')
+      .insert({
+        phase_code: phaseCode,
+        version,
+        title: title || `${phaseCode} ${version}`,
+        prompt_content,
+        metadata: metadata || {},
+        is_active: false
+      })
+      .select('id, version, created_at')
+      .single();
+
+    if (error) {
+      if (error.code === '23505') {
+        return res.status(409).json({
+          success: false,
+          error: `Version ${version} already exists for ${phaseCode}`
+        });
+      }
+      throw error;
+    }
+
+    console.log(`[Orchestrator] Created prompt version: ${phaseCode} ${version}`);
+
+    res.json({
+      success: true,
+      id: data.id,
+      version: data.version,
+      created_at: data.created_at
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error creating prompt:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/prompts/:phaseCode/:version/activate
+ * Activate a specific version (deactivates others)
+ */
+app.post('/api/prompts/:phaseCode/:version/activate', async (req, res) => {
+  try {
+    const { phaseCode, version } = req.params;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    // Find the current active version
+    const { data: currentActive } = await supabase
+      .from('phase_prompts')
+      .select('version')
+      .eq('phase_code', phaseCode)
+      .eq('is_active', true)
+      .single();
+
+    const previousActive = currentActive?.version || null;
+
+    // Deactivate all versions for this phase
+    const { error: deactivateError } = await supabase
+      .from('phase_prompts')
+      .update({ is_active: false })
+      .eq('phase_code', phaseCode);
+
+    if (deactivateError) throw deactivateError;
+
+    // Activate the requested version
+    const { data, error: activateError } = await supabase
+      .from('phase_prompts')
+      .update({ is_active: true, updated_at: new Date().toISOString() })
+      .eq('phase_code', phaseCode)
+      .eq('version', version)
+      .select('id, version')
+      .single();
+
+    if (activateError) {
+      if (activateError.code === 'PGRST116') {
+        return res.status(404).json({
+          success: false,
+          error: `Version ${version} not found for ${phaseCode}`
+        });
+      }
+      throw activateError;
+    }
+
+    console.log(`[Orchestrator] Activated prompt: ${phaseCode} ${version} (was: ${previousActive})`);
+
+    res.json({
+      success: true,
+      version: data.version,
+      previous_active: previousActive
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error activating prompt:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/briefs/:knownCode/:targetCode
+ * Get the active language brief for a language pair
+ */
+app.get('/api/briefs/:knownCode/:targetCode', async (req, res) => {
+  try {
+    const { knownCode, targetCode } = req.params;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('language_briefs')
+      .select('brief_content, version, created_at, updated_at')
+      .eq('known_code', knownCode)
+      .eq('target_code', targetCode)
+      .eq('is_active', true)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return res.status(404).json({
+          success: false,
+          error: `No active brief found for ${knownCode} → ${targetCode}`
+        });
+      }
+      throw error;
+    }
+
+    res.json({
+      success: true,
+      brief_content: data.brief_content,
+      version: data.version,
+      created_at: data.created_at,
+      updated_at: data.updated_at,
+      cached: false
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error fetching brief:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/briefs/:knownCode/:targetCode
+ * Create or update a language brief
+ */
+app.post('/api/briefs/:knownCode/:targetCode', async (req, res) => {
+  try {
+    const { knownCode, targetCode } = req.params;
+    const { version, brief_content } = req.body;
+    const supabase = supabaseClient.getClient();
+
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        error: 'Supabase not initialized'
+      });
+    }
+
+    if (!version || !brief_content) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: version, brief_content'
+      });
+    }
+
+    // Deactivate existing briefs for this language pair
+    await supabase
+      .from('language_briefs')
+      .update({ is_active: false })
+      .eq('known_code', knownCode)
+      .eq('target_code', targetCode);
+
+    // Insert new brief as active
+    const { data, error } = await supabase
+      .from('language_briefs')
+      .insert({
+        known_code: knownCode,
+        target_code: targetCode,
+        version,
+        brief_content,
+        is_active: true
+      })
+      .select('id, version, created_at')
+      .single();
+
+    if (error) {
+      if (error.code === '23505') {
+        // Version already exists - update it instead
+        const { data: updateData, error: updateError } = await supabase
+          .from('language_briefs')
+          .update({
+            brief_content,
+            is_active: true,
+            updated_at: new Date().toISOString()
+          })
+          .eq('known_code', knownCode)
+          .eq('target_code', targetCode)
+          .eq('version', version)
+          .select('id, version, updated_at')
+          .single();
+
+        if (updateError) throw updateError;
+
+        console.log(`[Orchestrator] Updated brief: ${knownCode} → ${targetCode} ${version}`);
+
+        return res.json({
+          success: true,
+          id: updateData.id,
+          version: updateData.version,
+          updated: true,
+          updated_at: updateData.updated_at
+        });
+      }
+      throw error;
+    }
+
+    console.log(`[Orchestrator] Created brief: ${knownCode} → ${targetCode} ${version}`);
+
+    res.json({
+      success: true,
+      id: data.id,
+      version: data.version,
+      created_at: data.created_at
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error creating/updating brief:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// =============================================================================
+// PRODUCTION API PROXY
+// =============================================================================
+
 app.use('/api/production', async (req, res) => {
   const targetUrl = `${PRODUCTION_API_URL}/api/production${req.url}`;
 

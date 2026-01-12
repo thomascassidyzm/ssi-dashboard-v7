@@ -1,0 +1,398 @@
+# APML: Prompt Registry
+# Version: 1.0.0 (2026-01-12)
+# Status: Draft
+# Type: CORE (infrastructure specification)
+#
+# Single Source of Truth for agent prompts and language briefs.
+# Stored in Supabase, fetched by phase servers and dashboard.
+
+core PromptRegistry:
+  name: "Prompt Registry"
+  purpose: "Centralized storage for canonical prompts and language briefs"
+  version: "1.0.0"
+  status: "Draft"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  overview:
+    principle: |
+      All agent prompts and language briefs are stored in Supabase.
+      This provides a Single Source of Truth (SSoT) for:
+      - Phase 0/1/2/3 prompts
+      - Language pair briefs
+      - CIK principles documentation
+      - APML specifications
+
+    benefits:
+      - "SSoT: No divergence between files and reality"
+      - "Versioning: Track prompt evolution"
+      - "API Access: Phase servers fetch latest prompts"
+      - "Dashboard: View and edit prompts in UI"
+      - "Collaboration: Consistent prompts across team"
+
+    architecture: |
+      ┌─────────────────────────────────────────────────────────────────┐
+      │                    SUPABASE (SSoT)                              │
+      ├─────────────────────────────────────────────────────────────────┤
+      │  phase_prompts           language_briefs                        │
+      │  ─────────────           ───────────────                        │
+      │  Phase 0/1/2/3           CIK-enhanced briefs                    │
+      │  Version history         Per language pair                      │
+      │  Active flag             Version history                        │
+      │                          Active flag                            │
+      │                                                                 │
+      │  apml_documents          prompt_templates                       │
+      │  ──────────────          ────────────────                       │
+      │  Core APML specs         Reusable sections                      │
+      │  Version history         Shared across prompts                  │
+      └─────────────────────────────────────────────────────────────────┘
+               │                           │
+               ▼                           ▼
+      ┌─────────────────────┐    ┌─────────────────────┐
+      │   Phase Servers     │    │   Popty Dashboard   │
+      │   (fetch prompts)   │    │   (view/edit)       │
+      └─────────────────────┘    └─────────────────────┘
+
+  ## ==========================================================================
+  ## DATABASE SCHEMA
+  ## ==========================================================================
+
+  supabase_schema:
+
+    phase_prompts:
+      description: "Canonical prompts for each phase"
+      table_name: "phase_prompts"
+
+      columns:
+        id:
+          type: "UUID"
+          default: "gen_random_uuid()"
+          primary_key: true
+
+        phase_code:
+          type: "TEXT"
+          not_null: true
+          check: "phase_code IN ('phase0', 'phase1', 'phase2', 'phase3')"
+          description: "Which phase this prompt is for"
+
+        version:
+          type: "TEXT"
+          not_null: true
+          description: "Semantic version, e.g., 'v9.3-cik'"
+
+        title:
+          type: "TEXT"
+          description: "Human-readable title"
+
+        prompt_content:
+          type: "TEXT"
+          not_null: true
+          description: "Full markdown prompt content"
+
+        is_active:
+          type: "BOOLEAN"
+          default: false
+          description: "Whether this version is currently active"
+
+        metadata:
+          type: "JSONB"
+          description: "Additional config, notes, changelog"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "now()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "now()"
+
+      constraints:
+        unique: "(phase_code, version)"
+        check_one_active: |
+          -- Only one active version per phase
+          CREATE UNIQUE INDEX one_active_per_phase
+          ON phase_prompts (phase_code)
+          WHERE is_active = true
+
+      indexes:
+        - "phase_code"
+        - "is_active"
+
+    language_briefs:
+      description: "CIK-enhanced language pair briefs"
+      table_name: "language_briefs"
+
+      columns:
+        id:
+          type: "UUID"
+          default: "gen_random_uuid()"
+          primary_key: true
+
+        known_code:
+          type: "TEXT"
+          not_null: true
+          description: "ISO 639-3 code for known language"
+
+        target_code:
+          type: "TEXT"
+          not_null: true
+          description: "ISO 639-3 code for target language"
+
+        version:
+          type: "TEXT"
+          not_null: true
+          description: "Brief version, e.g., 'v1.0-cik'"
+
+        brief_content:
+          type: "JSONB"
+          not_null: true
+          description: "Full brief JSON following Phase 0 output schema"
+
+        is_active:
+          type: "BOOLEAN"
+          default: false
+          description: "Whether this version is currently active"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "now()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "now()"
+
+      constraints:
+        unique: "(known_code, target_code, version)"
+        check_one_active: |
+          -- Only one active version per language pair
+          CREATE UNIQUE INDEX one_active_per_pair
+          ON language_briefs (known_code, target_code)
+          WHERE is_active = true
+
+      indexes:
+        - "(known_code, target_code)"
+        - "is_active"
+
+    apml_documents:
+      description: "APML specification documents"
+      table_name: "apml_documents"
+
+      columns:
+        id:
+          type: "UUID"
+          default: "gen_random_uuid()"
+          primary_key: true
+
+        document_path:
+          type: "TEXT"
+          not_null: true
+          description: "Path like 'core/cik-lego-principles-v1'"
+
+        version:
+          type: "TEXT"
+          not_null: true
+
+        title:
+          type: "TEXT"
+
+        content:
+          type: "TEXT"
+          not_null: true
+          description: "Full APML document content"
+
+        is_active:
+          type: "BOOLEAN"
+          default: false
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "now()"
+
+      constraints:
+        unique: "(document_path, version)"
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    base_path: "/api/prompts"
+
+    get_active_prompt:
+      method: "GET"
+      path: "/api/prompts/:phaseCode"
+      description: "Get currently active prompt for a phase"
+      response:
+        prompt_content: "string"
+        version: "string"
+        updated_at: "timestamp"
+
+    get_prompt_version:
+      method: "GET"
+      path: "/api/prompts/:phaseCode/:version"
+      description: "Get specific version of a prompt"
+      response:
+        prompt_content: "string"
+        version: "string"
+        metadata: "object"
+
+    list_prompt_versions:
+      method: "GET"
+      path: "/api/prompts/:phaseCode/versions"
+      description: "List all versions for a phase"
+      response:
+        versions: "array of { version, is_active, created_at }"
+
+    create_prompt_version:
+      method: "POST"
+      path: "/api/prompts/:phaseCode"
+      description: "Create new prompt version"
+      body:
+        version: "string"
+        title: "string"
+        prompt_content: "string"
+        metadata: "object (optional)"
+      response:
+        id: "uuid"
+        version: "string"
+
+    activate_prompt:
+      method: "POST"
+      path: "/api/prompts/:phaseCode/:version/activate"
+      description: "Set this version as active (deactivates others)"
+      response:
+        success: "boolean"
+        previous_active: "string (version)"
+
+    get_language_brief:
+      method: "GET"
+      path: "/api/briefs/:knownCode/:targetCode"
+      description: "Get active brief for language pair"
+      response:
+        brief_content: "object"
+        version: "string"
+        cached: "boolean"
+
+    create_language_brief:
+      method: "POST"
+      path: "/api/briefs/:knownCode/:targetCode"
+      description: "Create or update brief for language pair"
+      body:
+        version: "string"
+        brief_content: "object"
+      response:
+        id: "uuid"
+        version: "string"
+
+  ## ==========================================================================
+  ## PHASE SERVER INTEGRATION
+  ## ==========================================================================
+
+  phase_server_integration:
+    description: |
+      Phase servers fetch their prompts from the registry on startup
+      and when requested. This ensures all servers use the same prompts.
+
+    startup_flow:
+      1: "Phase server starts"
+      2: "Fetch active prompt from /api/prompts/{phaseCode}"
+      3: "Cache in memory"
+      4: "Use cached prompt for all requests"
+
+    refresh_flow:
+      trigger: "POST /refresh-prompt"
+      action: "Re-fetch from registry, update cache"
+
+    injection_flow:
+      description: "Language brief injected into prompts"
+      1: "Phase server receives request with course_code"
+      2: "Look up course's known_lang and target_lang"
+      3: "Fetch brief from /api/briefs/{known}/{target}"
+      4: "Inject brief sections into prompt"
+      5: "Process request with enriched prompt"
+
+  ## ==========================================================================
+  ## DASHBOARD INTEGRATION
+  ## ==========================================================================
+
+  dashboard_integration:
+    description: |
+      The Popty dashboard provides UI for viewing and editing prompts.
+      Changes are saved to the registry and become SSoT.
+
+    views:
+      prompt_library:
+        path: "/prompts"
+        features:
+          - "List all phases with active versions"
+          - "View prompt content (rendered markdown)"
+          - "Version history with diffs"
+          - "Create new version"
+          - "Activate version"
+
+      language_briefs:
+        path: "/briefs"
+        features:
+          - "List all language pairs with briefs"
+          - "View brief content (formatted JSON)"
+          - "Edit brief in structured form"
+          - "Generate new brief via Phase 0"
+
+      apml_docs:
+        path: "/docs/apml"
+        features:
+          - "Browse APML specifications"
+          - "Rendered documentation view"
+          - "Version history"
+
+  ## ==========================================================================
+  ## MIGRATION FROM FILES
+  ## ==========================================================================
+
+  migration:
+    description: |
+      One-time migration of existing prompts from files to database.
+
+    source_files:
+      phase0: "services/phases/phase0-language-brief/PROMPT.md"
+      phase1: "services/phases/phase1-translation/PROMPT.md"
+      phase2: "services/phases/phase1-lego-extraction/PROMPT.md"
+      phase3: "services/phases/phase3-basket-generation/PROMPT.md"
+
+    migration_script: |
+      -- Insert existing prompts with version 'v9.2-file'
+      INSERT INTO phase_prompts (phase_code, version, title, prompt_content, is_active)
+      VALUES
+        ('phase0', 'v1.0.0-file', 'Language Brief', $phase0_content, true),
+        ('phase1', 'v9.2-file', 'Translation + LEGO', $phase1_content, true),
+        ('phase2', 'v9.2-file', 'Conflict Resolution', $phase2_content, true),
+        ('phase3', 'v9.2-file', 'Basket Generation', $phase3_content, true);
+
+      -- Then add CIK-enhanced versions
+      INSERT INTO phase_prompts (phase_code, version, title, prompt_content, is_active)
+      VALUES
+        ('phase1', 'v9.3-cik', 'Translation + LEGO (CIK)', $phase1_cik_content, false);
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v1_0_0:
+      date: "2026-01-12"
+      status: "Initial Release"
+      changes:
+        - "Initial schema for phase_prompts table"
+        - "Initial schema for language_briefs table"
+        - "Initial schema for apml_documents table"
+        - "API endpoints specification"
+        - "Phase server integration flow"
+        - "Dashboard integration spec"
+        - "Migration plan from files"
+
+## ============================================================================
+## GENERATED: 2026-01-12
+## APML Prompt Registry v1.0.0
+## ============================================================================

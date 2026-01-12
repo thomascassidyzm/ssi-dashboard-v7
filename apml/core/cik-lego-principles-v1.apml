@@ -1,0 +1,355 @@
+# APML: CIK LEGO Principles
+# Version: 1.0.0 (2026-01-12)
+# Status: Production
+# Type: CORE (pedagogical specification)
+#
+# CIK = Context is King
+# The foundational principle for LEGO extraction in SSi methodology
+
+core CIKLegoPrinciples:
+  name: "CIK LEGO Principles"
+  purpose: "Define how sentences are broken into teachable LEGO units"
+  version: "1.0.0"
+  status: "Production"
+
+  ## ==========================================================================
+  ## THE CORE INSIGHT
+  ## ==========================================================================
+
+  core_insight:
+    title: "Context is King (CIK)"
+
+    statement: |
+      Meaning emerges from CONTEXT, not isolated words.
+      Most single words FAIL ZUT because their translation depends on context.
+      Therefore, M-type (contextual) LEGOs are the PRIMARY teaching unit.
+      A-type (atomic) LEGOs are the EXCEPTION, not the rule.
+
+    zut_definition: |
+      ZUT = Zero Uncertainty Test
+      When learner hears X in known language, they must ALWAYS know
+      EXACTLY what to produce in target language with ZERO ambiguity.
+
+    examples_of_zut_failure:
+      - known: "the"
+        why: "la? il? lo? gli? le? - depends on noun gender/number"
+      - known: "in"
+        why: "in? a? nel? - depends on what follows"
+      - known: "that"
+        why: "che? quello? - conjunction vs demonstrative vs relative"
+      - known: "I'm"
+        why: "sono? sto? - state vs action (Romance languages)"
+      - known: "for"
+        why: "per? por? para? - purpose vs reason vs duration"
+
+  ## ==========================================================================
+  ## LEGO TYPES
+  ## ==========================================================================
+
+  lego_types:
+
+    M_TYPE:
+      name: "Molecular LEGO"
+      role: "PRIMARY teaching unit"
+
+      definition: |
+        An M-type provides enough CONTEXT to pass ZUT.
+        It HAS components that learners practice BEFORE the full LEGO.
+        Components show the BUILD-UP, teaching derivable patterns.
+
+      requirements:
+        - "Must be multi-word on BOTH sides"
+        - "Must have components array"
+        - "Components are pedagogical scaffolding, not a parse tree"
+
+      example:
+        lego:
+          known: "I think that I've done a lot"
+          target: "penso che abbia fatto molto"
+        components:
+          - { known: "I think", target: "penso" }
+          - { known: "I think that", target: "penso che" }
+          - { known: "I've done a lot", target: "abbia fatto molto" }
+          - { known: "I think that I've done a lot", target: "penso che abbia fatto molto" }
+
+    A_TYPE:
+      name: "Atomic LEGO"
+      role: "EXCEPTION - truly unambiguous units"
+
+      definition: |
+        An A-type is the smallest teachable unit that passes ZUT in isolation.
+        A-types do NOT have components - they're taught as single units.
+        A-types are RARE - most words need context.
+
+      when_valid:
+        - "Adverbs: 'now' → 'adesso', 'soon' → 'presto'"
+        - "Unambiguous infinitives: 'to speak' → 'parlare'"
+        - "Proper nouns: 'Italian' → 'italiano'"
+        - "Simple conjunctions: 'and' → 'e', 'because' → 'perché'"
+        - "Multi-word idioms with no useful breakdown"
+        - "Clitic+verb combinations: 'to ask you' → 'chiederti'"
+
+      example:
+        lego:
+          known: "soon"
+          target: "presto"
+        note: "No components - unambiguous adverb"
+
+  ## ==========================================================================
+  ## WHAT NEVER PASSES ZUT
+  ## ==========================================================================
+
+  zut_failures:
+    title: "Categories That NEVER Pass ZUT Alone"
+
+    critical_rule: |
+      These categories should NEVER be A-type LEGOs.
+      They MUST be absorbed into M-types where context disambiguates.
+
+    categories:
+      articles:
+        known_examples: ["the", "a", "an"]
+        why_fails: "Gender/number unknown in isolation"
+        solution: "Absorb into M-type with noun"
+        example:
+          wrong: { known: "the", target: "il", type: "A" }
+          right: { known: "the problem", target: "il problema", type: "M" }
+
+      prepositions:
+        known_examples: ["in", "to", "for", "with", "of"]
+        why_fails: "Multiple translations depending on context"
+        solution: "Absorb into M-type with object"
+        example:
+          wrong: { known: "in", target: "in", type: "A" }
+          right: { known: "in a short time", target: "in poco tempo", type: "M" }
+
+      conjunctions_relative:
+        known_examples: ["that", "which", "who"]
+        why_fails: "Different words for different functions"
+        solution: "Absorb into M-type with verb"
+        example:
+          wrong: { known: "that", target: "che", type: "A" }
+          right: { known: "I think that", target: "penso che", type: "M" }
+
+      subject_pronouns:
+        known_examples: ["I", "you", "he", "she", "it"]
+        why_fails: "Often absorbed into verb or vary by context"
+        solution: "Usually omitted; when needed, include with verb"
+        example:
+          note: "In Italian, pronouns often dropped - absorbed into conjugation"
+
+      grammatical_particles:
+        examples: ["了", "着", "de (的/得/地)", "a (linking verbs)"]
+        why_fails: "No standalone meaning"
+        solution: "Always absorbed into M-type context"
+        example:
+          wrong: { known: "a", target: "a", type: "A", note: "verb+a+infinitive glue" }
+          right: { known: "I'm going to start talking", target: "inizierò a parlare", type: "M" }
+
+  ## ==========================================================================
+  ## COMPONENTS: PEDAGOGICAL SCAFFOLDING
+  ## ==========================================================================
+
+  components:
+    title: "Components Are Build-Up Scaffolding"
+
+    principle: |
+      Components are NOT a linguistic parse tree.
+      Components are practice prompts shown BEFORE the M-type debut.
+      They show the DERIVATION PATH, not every word.
+
+    rules:
+      - "Components don't need to tile exactly"
+      - "Single words that fail ZUT are absorbed, not listed"
+      - "Components can overlap (same piece in multiple paths)"
+      - "Components show build-up from simple → complex"
+      - "The full LEGO is always the LAST component"
+
+    example:
+      lego: { known: "in a short time", target: "in poco tempo" }
+      components:
+        - { known: "time", target: "tempo" }
+        - { known: "a short time", target: "poco tempo" }
+        - { known: "in a short time", target: "in poco tempo" }
+      note: |
+        Notice: "in" is NOT a component - it fails ZUT alone.
+        Notice: "short" is NOT a component - absorbed into "poco tempo".
+        The learner derives the pattern from the build-up.
+
+  ## ==========================================================================
+  ## OVERLAPPING LEGOS
+  ## ==========================================================================
+
+  overlapping_legos:
+    title: "Overlapping LEGOs for Richness"
+
+    principle: |
+      Multiple LEGOs can overlap within a seed.
+      Embedded LEGOs use new: false.
+      This provides flexible building blocks for basket generation.
+
+    example:
+      seed: "I think that I've done a lot in a short time."
+      legos:
+        - id: "S0089L01"
+          type: "M"
+          new: true
+          lego: { known: "I think that", target: "penso che" }
+
+        - id: "S0089L02"
+          type: "M"
+          new: true
+          lego: { known: "I think that I've done a lot", target: "penso che abbia fatto molto" }
+          note: "Overlaps with L01"
+
+        - id: "S0089L03"
+          type: "M"
+          new: false
+          lego: { known: "I've done a lot", target: "abbia fatto molto" }
+          note: "Embedded in L02"
+
+        - id: "S0089L04"
+          type: "M"
+          new: true
+          lego: { known: "in a short time", target: "in poco tempo" }
+
+    new_flag_rules:
+      new_true: "First time this LEGO appears as a teaching target"
+      new_false: "Embedded character-exact in a larger LEGO in SAME seed"
+
+  ## ==========================================================================
+  ## BALANCE TARGET
+  ## ==========================================================================
+
+  balance:
+    title: "LEGO Count Balance"
+
+    principle: |
+      Each seed should produce a balanced number of LEGOs.
+      Too few = not enough practice variety.
+      Too many = overwhelms the learner.
+
+    target:
+      min_legos: 3
+      max_legos: 5
+      sweet_spot: "3-4 LEGOs per seed"
+
+    exceptions:
+      short_sentences: "2 LEGOs acceptable for very short sentences"
+      complex_sentences: "5+ acceptable with overlapping structure"
+
+    note: |
+      Overlapping LEGOs provide richness without overwhelming.
+      Components handle "big" LEGOs - no need to over-fragment.
+
+  ## ==========================================================================
+  ## IDIOMS AND LARGE PHRASES
+  ## ==========================================================================
+
+  idioms:
+    title: "Handling Idiomatic Expressions"
+
+    principle: |
+      Large idiomatic phrases are essentially A-types (can't be usefully split).
+      BUT they still get components showing whatever derivation is possible.
+
+    example:
+      phrase: "I'm keen on going"
+      target: "tengo ganas de ir"
+      type: "M"
+      components:
+        - { known: "on going", target: "de ir" }
+        - { known: "I'm keen", target: "tengo ganas de" }
+        - { known: "I'm keen on going", target: "tengo ganas de ir" }
+      note: |
+        "tengo ganas de" is essentially atomic (idiomatic).
+        But we still show what pieces CAN be derived.
+        The learner gets SOME scaffolding even for idioms.
+
+  ## ==========================================================================
+  ## DECISION TREE
+  ## ==========================================================================
+
+  decision_tree:
+    title: "CIK LEGO Extraction Decision Tree"
+
+    step_1:
+      question: "Does every word in this phrase pass ZUT alone?"
+      if_yes: "Still likely M-type - check if build-up is useful"
+      if_no: "Definitely M-type - context needed"
+
+    step_2:
+      question: "Is this a single unambiguous word (adverb, proper noun, clear infinitive)?"
+      if_yes: "A-type (no components)"
+      if_no: "M-type (with components)"
+
+    step_3:
+      question: "Is this an idiom with no useful breakdown?"
+      if_yes: "A-type OR M-type with partial components"
+      if_no: "M-type with full component build-up"
+
+    step_4:
+      question: "For M-type: what components show the derivation path?"
+      action: "Build components from simple → complex, ending with full LEGO"
+      rule: "Skip ZUT-failing single words - absorb them"
+
+    step_5:
+      question: "Does this LEGO overlap with another in this seed?"
+      if_yes: "Smaller embedded LEGO gets new: false"
+      if_no: "All LEGOs get new: true"
+
+  ## ==========================================================================
+  ## SUBJUNCTIVE AND MOOD PATTERNS
+  ## ==========================================================================
+
+  grammar_patterns:
+    subjunctive:
+      principle: |
+        Mood patterns (subjunctive, conditional) are learned through M-types.
+        The pattern is ABSORBED, not explained.
+        Learner derives the rule from repeated exposure.
+
+      example:
+        phrase: "I think that it's"
+        known_wrong: "penso che è"
+        known_right: "penso che sia"
+        teaching_approach: |
+          M-type: "I think that it's" → "penso che sia"
+          Learner hears the subjunctive in context.
+          After multiple examples, the pattern becomes natural.
+
+    verb_linking:
+      principle: |
+        Linking particles (a, di, per + infinitive) are absorbed.
+        They're grammatical glue, not standalone LEGOs.
+
+      example:
+        phrase: "I'm going to start talking"
+        target: "inizierò a parlare"
+        extraction: |
+          M-type: "I'm going to start talking" → "inizierò a parlare"
+          Components: I'm going to start → inizierò
+                      talking → parlare
+                      I'm going to start talking → inizierò a parlare
+          Note: "a" is absorbed - NOT a component
+
+  ## ==========================================================================
+  ## SUMMARY
+  ## ==========================================================================
+
+  summary:
+    principles:
+      - "CIK: Context is King - meaning emerges from context"
+      - "M-type is the NORM - provides context for ZUT"
+      - "A-type is the EXCEPTION - only truly unambiguous words"
+      - "Articles/prepositions/conjunctions NEVER standalone"
+      - "Components are build-up scaffolding, not parse trees"
+      - "Components don't tile exactly - they show derivation"
+      - "Overlapping LEGOs provide richness"
+      - "Target 3-4 LEGOs per seed"
+      - "Grammatical patterns absorbed through M-type exposure"
+
+## ============================================================================
+## GENERATED: 2026-01-12
+## APML CIK LEGO Principles v1.0.0
+## ============================================================================

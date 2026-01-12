@@ -1,4 +1,4 @@
-# Phase 1: LEGO Pair Generation v9.2
+# Phase 1: LEGO Pair Generation v9.3-cik
 
 **APML**: v13.0.0
 **Port**: 3457
@@ -58,13 +58,25 @@ You are a world-class language course creator building teachable units.
 
 ---
 
-## THE CORE PRINCIPLE: Smallest Teachable Units
+## THE CORE PRINCIPLE: Context is King (CIK)
 
-The SSi methodology is about finding the **smallest possible units that pass ZUT**.
+The SSi methodology is built on **CIK (Context is King)**: meaning emerges from context, not isolated words.
 
 > **ZUT (Zero Uncertainty Test):** When learner hears X, do they ALWAYS know to produce Y with ZERO uncertainty?
 
-Your job: Break sentences into the smallest chunks that still pass ZUT.
+### The Key Insight
+
+**Most single words FAIL ZUT** because their meaning depends on context:
+- "the" → la? il? lo? gli? (depends on noun gender/number)
+- "in" → in? a? nel? (depends on what follows)
+- "that" → che? quello? (conjunction? relative pronoun? demonstrative?)
+- "I'm" → sono? sto? (state vs action in Romance languages)
+
+**Context disambiguates.** Therefore:
+- **M-type (Molecular) is the PRIMARY teaching unit** - context provides meaning
+- **A-type (Atomic) is the EXCEPTION** - only truly unambiguous words
+
+Your job: Build M-types with enough context to pass ZUT. Only use A-types for genuinely unambiguous words.
 
 ---
 
@@ -123,87 +135,106 @@ The Language Pair Brief contains vocabulary guidance specific to the target lang
 
 ---
 
-## LEGO Types: The Key Distinction
+## LEGO Types: The Key Distinction (CIK Enhanced)
 
-### The Core Insight: Inferability
+### M-type (Molecular): The Primary Teaching Unit
 
-The key question is: **Given what the learner already knows, can they figure this out themselves?**
+M-types are how learners acquire language. They provide:
+1. **Enough context** to disambiguate meaning
+2. **Components** that learners practice BEFORE seeing the full LEGO
+3. **Derivable patterns** - learners extract rules from repeated exposure
 
-**A-type (Atomic):** The smallest teachable unit that passes ZUT (Zero Uncertainty Test).
-- Can be single-word OR multi-word
-- No components - taught as a single unit
-- The learner hears KNOWN and produces TARGET with zero ambiguity
-- Examples:
-  - Single words: "want" → "quiero"
-  - Multi-word: "I want" → "quiero" (conjugation absorbed)
-  - Idiomatic: "once upon a time" → "[fixed phrase]" (no useful breakdown)
+**M-type structure:**
+```json
+{
+  "type": "M",
+  "lego": {"known": "it's a good thing", "target": "è una buona cosa"},
+  "components": [
+    {"known": "a good thing", "target": "una buona cosa"},
+    {"known": "it's a good thing", "target": "è una buona cosa"}
+  ]
+}
+```
 
-**M-type (Molecular):** An introducible unit that the learner CANNOT infer from what they already know.
-- HAS components that are practiced BEFORE the full LEGO
-- MUST be multi-word on both sides
-- **Components don't need to TILE exactly** - they're pedagogically useful pieces
+**What components ARE:**
+- Pedagogical scaffolding practiced BEFORE the LEGO debut
+- Building blocks that show derivable patterns
+- Practice items that prepare learners for the full combination
 
-### Why an M-type is Needed
+**What components are NOT:**
+- A complete linguistic parse tree
+- Standalone LEGOs themselves (they're just practice prompts)
+- Required to "tile exactly" into the M-type
 
-An M-type is required when the learner cannot figure out the combination themselves:
+### A-type (Atomic): The Exception
 
-1. **Missing components** - Some pieces haven't been learned yet
-2. **Contains glue/filler** - Parts are idiomatic or grammatical glue that can't exist as standalone LEGOs
-3. **Order mismatch** - Learner knows all pieces but can't work out the combination because word order differs between languages
+A-types are for words that TRULY pass ZUT in isolation:
+- Unambiguous nouns: "house" → "casa" (no gender ambiguity in known language)
+- Adverbs: "now" → "adesso", "soon" → "presto"
+- Proper nouns: "Italian" → "italiano"
+- Truly unambiguous verbs: "to speak" → "parlare"
 
-### The Inferability Test
+**A-types do NOT have components** - they're taught as single units.
 
-| Learner's Situation | Result |
-|---------------------|--------|
-| Can tile known A-types in the **same order** | NOT a new LEGO - just combine existing A-types |
-| **Missing knowledge** (component not yet learned) | M-type needed |
-| **Glue words** present (idiom, grammatical filler) | M-type needed |
-| **Reordering required** (word order differs) | M-type needed |
+### What NEVER Passes ZUT (CRITICAL)
 
-### Examples
+These should NEVER be A-types - always absorb into M-types:
 
-| Phrase | Situation | Type |
-|--------|-----------|------|
-| "speak Chinese" = "说中文" | Both A-types exist, same order | Just tile - no M-type |
-| "blue thing" = "cosa azul" | Both A-types exist but order reversed | M-type needed |
-| "I feel like" = "tengo ganas de" | "ganas de" is idiomatic glue | M-type needed |
-| "the cat" = "y gath" (Welsh) | "the" triggers mutation | M-type needed |
-
-**The distinction is pedagogical:**
-- A-type = taught as atomic unit (no build-up)
-- M-type = learner can't infer it, needs explicit teaching with components
+| Category | Why it fails ZUT |
+|----------|------------------|
+| **Articles** (the, a, an) | Gender/number unknown in isolation |
+| **Prepositions** (in, to, for, with) | Multiple translations depending on context |
+| **Conjunctions** (that, if, because) | Different words for different functions |
+| **Subject pronouns** (I, you, he) | Often absorbed into verb OR vary by context |
+| **Grammatical particles** | No standalone meaning |
+| **Linking words** (of, the one, which) | Ambiguous without context |
 
 ---
 
-## The Decision Tree
+## The Decision Tree (CIK Order)
 
-### Step 1: Does it pass ZUT as a single-word pair?
+### Step 1: Start with M-type Assumption
 
-If EITHER side is a single word and meaning is unambiguous → **A-type**
+**Default assumption: This will be an M-type.**
 
-### Step 2: If multi-word, apply the Inferability Test
+Ask: Does this phrase have:
+- Multiple words that combine to create meaning?
+- Any words that would be ambiguous in isolation?
+- Grammar patterns the learner needs to see in context?
 
-**Can the learner figure this out from what they already know?**
+If YES to any → **M-type** with components
 
-Ask: If the learner knows all the component A-types, can they just tile them in the same order?
+### Step 2: Check for True A-type Exceptions
 
-| Answer | Decision |
-|--------|----------|
-| **YES** - same order, no glue | Not a new LEGO - components tile naturally |
-| **NO** - order mismatch | **M-type needed** - teach the reordering pattern |
-| **NO** - glue words needed | **M-type needed** - glue can't be standalone A-types |
-| **NO** - missing components | **M-type needed** - some pieces not yet learned |
+Only if EVERY condition is met:
+- The word is unambiguous in isolation (passes ZUT cold)
+- No context is needed to determine the target translation
+- The word doesn't trigger grammatical changes in neighbors
 
-### Step 3: If idiomatic with no useful breakdown → A-type
+Then → **A-type** (no components)
 
-Some multi-word phrases have no pedagogically useful components (opaque idioms).
-These become A-types even though they're multi-word.
+### Step 3: For M-types, Design Useful Components
 
-### Step 4: For M-types, choose useful components
+Components are practice items shown BEFORE the M-type debut:
 
-Components are **pedagogical scaffolding** - practice items before the LEGO debut.
+**Good component design:**
+```
+M-type: "I think that I've done" → "penso che abbia fatto"
+Components:
+  - I think → penso
+  - that I've done → che abbia fatto
+  - I think that I've done → penso che abbia fatto
+```
 
-**Partial breakdown is fine.** Components don't need to tile exactly - they're the pieces the learner needs to know before combining.
+**Note:** "that" (che) is NEVER a component by itself - it fails ZUT!
+
+### Step 4: Handle Multi-Word A-types
+
+Some multi-word phrases have no useful breakdown:
+- Idiomatic expressions: "once upon a time" → "[fixed phrase]"
+- Absorbed conjugations: "I want" → "voglio" (subject absorbed)
+
+These are A-types even though they're multi-word.
 
 ---
 
@@ -225,9 +256,38 @@ When a smaller LEGO appears **character-exact** inside a larger LEGO **in the sa
 
 ---
 
-## Components: Pedagogical Scaffolding
+## Components: Build-Up Scaffolding (CIK Enhanced)
 
 **Components are NOT a linguistic parse tree.** They are practice items that precede the LEGO debut.
+
+### The Build-Up Principle
+
+Components show the DERIVATION PATH from simple to complex:
+
+**Example: "in a short time" → "in poco tempo"**
+```json
+{
+  "lego": {"known": "in a short time", "target": "in poco tempo"},
+  "components": [
+    {"known": "time", "target": "tempo"},
+    {"known": "a short time", "target": "poco tempo"},
+    {"known": "in a short time", "target": "in poco tempo"}
+  ]
+}
+```
+
+**Notice:**
+- "in" is NOT a component - it fails ZUT alone
+- "short" is absorbed into "poco tempo" - not standalone
+- The learner derives the pattern from the build-up
+
+### Component Rules
+
+1. **Components don't need to tile exactly** - they show useful build-up
+2. **Single words that fail ZUT are absorbed**, not listed
+3. **Components can overlap** (same piece in multiple paths)
+4. **Build simple → complex**, ending with full LEGO
+5. **The full LEGO is always the LAST component**
 
 ### Component Format (STRICT)
 
@@ -238,7 +298,8 @@ Components MUST be objects with `known` and `target` fields:
   "lego": {"known": "speak Chinese with you", "target": "[target phrase]"},
   "components": [
     {"known": "with you", "target": "[target]"},
-    {"known": "speak Chinese", "target": "[target]"}
+    {"known": "speak Chinese", "target": "[target]"},
+    {"known": "speak Chinese with you", "target": "[target phrase]"}
   ]
 }
 ```
@@ -317,21 +378,52 @@ If the target language requires gender or inflection marking, **follow the guida
 
 ---
 
+## Common CIK Violations to Avoid
+
+| Wrong | Why | Right |
+|-------|-----|-------|
+| "that" → "che" [A] | "che" has many uses - fails ZUT | Absorb into M-type with verb |
+| "in" → "in" [A] | Preposition varies by context | Absorb into M-type phrase |
+| "I'm going to start" → "inizierò a" [A] | The "a" is grammatical glue | M-type with infinitive attached |
+| "it's" → "è" [A] | Could be subjunctive "sia" | M-type with full clause |
+| "a" → "un/una" [A] | Gender unknown | Absorb into M-type with noun |
+| "the" → "il/la/lo" [A] | Gender/number unknown | Absorb into M-type with noun |
+
+---
+
+## LEGO Count Target
+
+Each seed should produce a balanced number of LEGOs:
+
+- **Target**: 3-4 LEGOs per seed (sweet spot)
+- **Minimum**: 2 LEGOs (for very short sentences)
+- **Maximum**: 5+ LEGOs (acceptable with overlapping structure)
+
+**Overlapping LEGOs provide richness** - a single seed can have multiple M-types that share components.
+
+---
+
 ## Checklist
 
 - [ ] Every LEGO passes ZUT (zero uncertainty)
+- [ ] **M-type is the DEFAULT** - most phrases need context
+- [ ] **A-type is the EXCEPTION** - only truly unambiguous words
+- [ ] **Articles/prepositions/conjunctions NEVER standalone** - always absorbed
 - [ ] A-types have NO components (even multi-word idiomatic ones)
 - [ ] M-types ALWAYS have components (at least one)
-- [ ] Components are pedagogically useful (not just a parse tree)
+- [ ] Components are BUILD-UP scaffolding (not parse trees)
+- [ ] Components show derivation: simple → complex → full LEGO
 - [ ] Output is valid JSON array
 - [ ] **EXACT word forms from seed preserved** (speaking ≠ speak)
 - [ ] **Consistent within your batch** - same known = same target
 - [ ] **For non-English courses: LEGOs bridge Known↔Target, NOT English↔Target**
 - [ ] **Language Pair Brief guidance applied**
+- [ ] **Target 3-4 LEGOs per seed** with overlapping structure
 
-**Key rules:**
-- A-type = smallest teachable unit passing ZUT (no build-up possible/useful)
-- M-type = learner can't infer it (missing pieces, glue words, or reordering needed)
-- The Inferability Test: Can learner tile existing A-types in same order? YES → not an M-type
-- When in doubt: try smaller first, chunk UP only if ZUT fails
+**CIK Summary:**
+- M-type is the NORM - provides context for ZUT
+- A-type is the EXCEPTION - only truly unambiguous words
+- Articles/prepositions/conjunctions NEVER standalone
+- Components are build-up scaffolding, not parse trees
+- Grammatical patterns absorbed through M-type exposure
 - Cross-batch conflicts? Phase 2 handles it
