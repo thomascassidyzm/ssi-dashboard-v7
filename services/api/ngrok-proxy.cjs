@@ -206,7 +206,7 @@ app.use('/api/production', createProxyMiddleware({
 
 // API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
 // Mount at /api and rewrite path to include /api prefix
-app.use('/api', createProxyMiddleware({
+const apiProxy = createProxyMiddleware({
   target: 'http://localhost:3456',
   changeOrigin: true,
   ws: true, // Enable WebSocket proxying for /api/orchestrator/websocket
@@ -224,7 +224,8 @@ app.use('/api', createProxyMiddleware({
       details: err.message
     });
   }
-}));
+});
+app.use('/api', apiProxy);
 
 // Root route - show available endpoints
 app.get('/', (req, res) => {
@@ -288,7 +289,7 @@ app.use('/', createProxyMiddleware({
   }
 }));
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('');
   console.log(`✅ ngrok Reverse Proxy listening on port ${PORT}`);
   console.log(`   🌐 Public URL: https://${NGROK_DOMAIN}`);
@@ -318,6 +319,15 @@ app.listen(PORT, () => {
   console.log(`   - External agents working via Claude Projects`);
   console.log(`   - PM2 automation (ecosystem.config.cjs)`);
   console.log('');
+});
+
+// WebSocket upgrade handler - required for http-proxy-middleware ws:true to work
+// Note: Must strip /api prefix because pathRewrite expects it stripped (like Express does for HTTP)
+server.on('upgrade', (req, socket, head) => {
+  if (req.url.startsWith('/api/')) {
+    req.url = req.url.slice(4); // Strip '/api' so pathRewrite adds it back correctly
+    apiProxy.upgrade(req, socket, head);
+  }
 });
 
 module.exports = app;

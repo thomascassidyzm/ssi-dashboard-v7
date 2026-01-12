@@ -114,7 +114,7 @@ const io = new Server(httpServer, {
       'https://popty.app',
       /\.vercel\.app$/,
       /\.popty\.app$/,
-      /ngrok.*\.(app|dev)$/
+      /ngrok.*\.app$/
     ],
     methods: ['GET', 'POST']
   }
@@ -2537,9 +2537,9 @@ async function triggerPhase(courseCode, phase, totalSeeds = SEED_COUNTS.FULL_COU
 
     // Phase 2 requires detect + apply workflow
     if (phase === 2) {
-      // Step 1: Detect conflicts from database (SSoT)
-      console.log(`   Step 1: Detecting conflicts from database...`);
-      const detectResponse = await axios.post(`${phaseServer}/phase2/detect-db`, { courseCode, dryRun: false });
+      // Step 1: Detect conflicts
+      console.log(`   Step 1: Detecting conflicts...`);
+      const detectResponse = await axios.post(`${phaseServer}/phase2/detect`, { courseCode });
       const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
       console.log(`   ✓ Found ${conflictCount} conflicts`);
 

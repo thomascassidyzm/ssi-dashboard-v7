@@ -592,24 +592,30 @@ const hasIncompletePhases = computed(() => {
 })
 
 const nextPhaseAction = computed(() => {
-  const incompletePhase = phases.value.find(p => p.status === 'partial')
-  if (incompletePhase) return `Resume Phase ${incompletePhase.number}`
+  // Pick earliest incomplete phase by number (pending or partial)
+  const nextPhase = phases.value
+    .filter(p => p.status === 'pending' || p.status === 'partial')
+    .sort((a, b) => a.number - b.number)[0]
 
-  const pendingPhase = phases.value.find(p => p.status === 'pending')
-  if (pendingPhase) return `Start Phase ${pendingPhase.number}`
+  if (nextPhase) {
+    return nextPhase.status === 'partial'
+      ? `Resume Phase ${nextPhase.number}`
+      : `Start Phase ${nextPhase.number}`
+  }
 
   return 'Start'
 })
 
 const nextActionDescription = computed(() => {
-  const incompletePhase = phases.value.find(p => p.status === 'partial')
-  if (incompletePhase) {
-    return `Phase ${incompletePhase.number} is ${incompletePhase.completed}/${incompletePhase.total} ${incompletePhase.unit}`
-  }
+  // Pick earliest incomplete phase by number (pending or partial)
+  const nextPhase = phases.value
+    .filter(p => p.status === 'pending' || p.status === 'partial')
+    .sort((a, b) => a.number - b.number)[0]
 
-  const pendingPhase = phases.value.find(p => p.status === 'pending')
-  if (pendingPhase) {
-    return `Ready to start Phase ${pendingPhase.number}: ${pendingPhase.name}`
+  if (nextPhase) {
+    return nextPhase.status === 'partial'
+      ? `Phase ${nextPhase.number} is ${nextPhase.completed}/${nextPhase.total} ${nextPhase.unit}`
+      : `Ready to start Phase ${nextPhase.number}: ${nextPhase.name}`
   }
 
   return 'All phases complete'
@@ -906,10 +912,10 @@ async function fetchPreview() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
-  // Find the next phase to preview
-  const incompletePhase = phases.value.find(p => p.status === 'partial')
-  const pendingPhase = phases.value.find(p => p.status === 'pending')
-  const targetPhase = incompletePhase || pendingPhase
+  // Find earliest incomplete phase by number (pending or partial)
+  const targetPhase = phases.value
+    .filter(p => p.status === 'pending' || p.status === 'partial')
+    .sort((a, b) => a.number - b.number)[0]
 
   if (!targetPhase) return
 
@@ -951,10 +957,10 @@ async function startPhase() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
-  // Find the next phase to start
-  const incompletePhase = phases.value.find(p => p.status === 'partial')
-  const pendingPhase = phases.value.find(p => p.status === 'pending')
-  const targetPhase = incompletePhase || pendingPhase
+  // Find earliest incomplete phase by number (pending or partial)
+  const targetPhase = phases.value
+    .filter(p => p.status === 'pending' || p.status === 'partial')
+    .sort((a, b) => a.number - b.number)[0]
 
   if (!targetPhase) return
 
