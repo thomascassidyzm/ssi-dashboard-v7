@@ -3238,8 +3238,8 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
 
       // If no explicit target, infer from current seeds
       if (!targetSeeds || targetSeeds === 668) {
-        if (currentSeeds <= 10) {
-          targetSeeds = 10;
+        if (currentSeeds <= 30) {
+          targetSeeds = 30;
           courseMode = 'quick_test';
         } else if (currentSeeds <= 260) {
           targetSeeds = 260;
@@ -3250,7 +3250,7 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
         }
       } else {
         // Explicit target - infer mode from it
-        if (targetSeeds <= 10) {
+        if (targetSeeds <= 30) {
           courseMode = 'quick_test';
         } else if (targetSeeds <= 260) {
           courseMode = 'mvp_course';

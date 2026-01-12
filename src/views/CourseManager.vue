@@ -970,7 +970,7 @@ async function fetchPreview() {
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const mode = seedCount.value === 10 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+    const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
     const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1026,7 +1026,7 @@ async function startPhase() {
         phaseSelection: `phase${targetPhase.number}`,
         spawnerMode: agentEngine.value,
         machineProfile: selectedMachineProfile.value,
-        mode: seedCount.value === 10 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
       })
     })
 
