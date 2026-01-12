@@ -112,3 +112,9 @@ tests/
 public/vfs/courses_backup_*
 **/backups/
 **/*backup*
+
+# --------------------------
+# Scripts (agent workspace)
+# --------------------------
+# Agent-generated batch processors and experimental code
+scripts/
