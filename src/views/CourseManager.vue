@@ -564,7 +564,7 @@ const languages = ref([
 ])
 
 const courseSizes = [
-  { seeds: 10, label: 'Test' },
+  { seeds: 30, label: 'Test' },
   { seeds: 260, label: 'MVP' },
   { seeds: 668, label: 'Full' }
 ]
