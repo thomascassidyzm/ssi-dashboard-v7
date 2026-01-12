@@ -1,0 +1,50 @@
+{
+  "worker": 11,
+  "legos": ["S0121L02", "S0121L03"],
+  "endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+  "course": "zho_for_eng",
+  "baskets": [
+    {
+      "course": "zho_for_eng",
+      "seed": "S0121",
+      "baskets": {
+        "S0121L02": {
+          "lego_id": "S0121L02",
+          "practice_phrases": [
+            {"known": "It is unusual", "target": "这很不寻常"},
+            {"known": "That is unusual", "target": "那很不寻常"},
+            {"known": "Is it unusual?", "target": "这不寻常吗？"},
+            {"known": "Was that unusual?", "target": "那不寻常吗？"},
+            {"known": "This is very unusual", "target": "这非常不寻常"},
+            {"known": "It seems unusual", "target": "这似乎很不寻常"},
+            {"known": "That is quite unusual for him", "target": "这对他来说很不寻常"},
+            {"known": "I find this unusual", "target": "我觉得这很不寻常"},
+            {"known": "This is not unusual here", "target": "这在这里并不不寻常"},
+            {"known": "It would be unusual to see that", "target": "看到那个会很不寻常"}
+          ]
+        }
+      }
+    },
+    {
+      "course": "zho_for_eng",
+      "seed": "S0121",
+      "baskets": {
+        "S0121L03": {
+          "lego_id": "S0121L03",
+          "practice_phrases": [
+            {"known": "your book", "target": "你的书"},
+            {"known": "your house", "target": "你的房子"},
+            {"known": "Is this your bag?", "target": "这是你的包吗？"},
+            {"known": "Is that your car?", "target": "那是你的车吗？"},
+            {"known": "I like your idea", "target": "我喜欢你的想法"},
+            {"known": "Your friend is here", "target": "你的朋友在这里"},
+            {"known": "This is your opportunity", "target": "这是你的机会"},
+            {"known": "I appreciate your help", "target": "我感谢你的帮助"},
+            {"known": "Your decision is important", "target": "你的决定很重要"},
+            {"known": "What is your name?", "target": "你的名字是什么？"}
+          ]
+        }
+      }
+    }
+  ]
+}

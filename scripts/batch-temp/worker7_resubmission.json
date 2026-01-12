@@ -1,0 +1,59 @@
+{
+  "worker": "worker7",
+  "legos": ["S0015L07", "S0015L08"],
+  "baskets": {
+    "S0015L07": {
+      "lego_id": "S0015L07",
+      "lego_data": {
+        "id": "S0015L07",
+        "type": "M",
+        "known": "speak with me",
+        "target": "和我说",
+        "new": true,
+        "components": [
+          {"known": "speak", "target": "说"},
+          {"known": "with me", "target": "和我"}
+        ]
+      },
+      "practice_phrases": [
+        {"known": "I want to speak with me.", "target": "我想和我说。"},
+        {"known": "You speak with me.", "target": "你和我说。"},
+        {"known": "I want you to speak with me.", "target": "我想让你和我说。"},
+        {"known": "Speak with me tomorrow.", "target": "明天和我说。"},
+        {"known": "Do you want to speak with me?", "target": "你想和我说吗？"},
+        {"known": "I want to speak with you today.", "target": "我想今天和你说。"},
+        {"known": "Speak with me in the coffee shop.", "target": "在咖啡馆和我说。"},
+        {"known": "I want you to speak with me in Chinese.", "target": "我想让你用中文和我说。"},
+        {"known": "Can you speak with me tomorrow in the coffee shop?", "target": "你能明天在咖啡馆和我说吗？"},
+        {"known": "I want to speak with you, but I don't have time today.", "target": "我想和你说，但我今天没有时间。"}
+      ]
+    },
+    "S0015L08": {
+      "lego_id": "S0015L08",
+      "lego_data": {
+        "id": "S0015L08",
+        "type": "M",
+        "known": "I want you to speak with me tomorrow",
+        "target": "我想让你明天和我说",
+        "new": true,
+        "components": [
+          {"known": "I want you to speak", "target": "我想让你说"},
+          {"known": "with me", "target": "和我"},
+          {"known": "tomorrow", "target": "明天"}
+        ]
+      },
+      "practice_phrases": [
+        {"known": "I want you to speak with me tomorrow.", "target": "我想让你明天和我说。"},
+        {"known": "I want you to speak with me today.", "target": "我想让你今天和我说。"},
+        {"known": "Do you want me to speak with you tomorrow?", "target": "你想让我明天和你说吗？"},
+        {"known": "I want you to speak with me tomorrow in Chinese.", "target": "我想让你明天用中文和我说。"},
+        {"known": "I want you to speak with me tomorrow in the coffee shop.", "target": "我想让你明天在咖啡馆和我说。"},
+        {"known": "Can you speak with me tomorrow?", "target": "你能明天和我说吗？"},
+        {"known": "I want you to speak with me tomorrow, but I have work.", "target": "我想让你明天和我说，但我有工作。"},
+        {"known": "I want you to speak with me tomorrow in the coffee shop in Chinese.", "target": "我想让你明天在咖啡馆用中文和我说。"},
+        {"known": "I want you to speak with me tomorrow, but do you have time?", "target": "我想让你明天和我说，但你有时间吗？"},
+        {"known": "I really want you to speak with me tomorrow in the coffee shop about this.", "target": "我真的想让你明天在咖啡馆和我说这个。"}
+      ]
+    }
+  }
+}

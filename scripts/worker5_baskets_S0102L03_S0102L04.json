@@ -1,0 +1,58 @@
+{
+  "worker": "worker-5",
+  "timestamp": "2026-01-11",
+  "legos": ["S0102L03", "S0102L04"],
+  "status": "Generated - Upload Failed (SSL Connection Error)",
+  "baskets": {
+    "S0102L03": {
+      "lego_id": "S0102L03",
+      "lego_data": {
+        "id": "S0102L03",
+        "type": "A",
+        "known": "that",
+        "target": "那",
+        "new": true
+      },
+      "practice_phrases": [
+        {"known": "I want that.", "target": "我想要那个。"},
+        {"known": "That is good.", "target": "那很好。"},
+        {"known": "We know that.", "target": "我们知道那个。"},
+        {"known": "I like that idea.", "target": "我喜欢那个主意。"},
+        {"known": "That is mine.", "target": "那是我的。"},
+        {"known": "We want that one.", "target": "我们想要那个。"},
+        {"known": "I'm saying that now.", "target": "我现在说那个。"},
+        {"known": "We're learning that today.", "target": "我们今天正在学那个。"},
+        {"known": "That is what I'm trying to say.", "target": "那就是我正在尝试说的。"},
+        {"known": "I'm trying to understand that point.", "target": "我正在尝试理解那个要点。"}
+      ]
+    },
+    "S0102L04": {
+      "lego_id": "S0102L04",
+      "lego_data": {
+        "id": "S0102L04",
+        "type": "A",
+        "known": "it's not",
+        "target": "不是",
+        "new": true
+      },
+      "practice_phrases": [
+        {"known": "It's not good.", "target": "不是好。"},
+        {"known": "It's not mine.", "target": "不是我的。"},
+        {"known": "It's not here.", "target": "不是这里。"},
+        {"known": "It's not what I want.", "target": "不是我想要的。"},
+        {"known": "It's not that.", "target": "不是那个。"},
+        {"known": "It's not like that.", "target": "不是那样。"},
+        {"known": "It's not the one I like.", "target": "不是我喜欢的那个。"},
+        {"known": "We're trying to say it's not good.", "target": "我们正在尝试说不是好。"},
+        {"known": "I'm learning that it's not like that.", "target": "我正在学习那不是那样。"},
+        {"known": "It's not what we're trying to understand.", "target": "不是我们正在尝试理解的。"}
+      ]
+    }
+  },
+  "error": {
+    "type": "SSL_CONNECTION_ERROR",
+    "endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+    "details": "SSL handshake fails with 'SSL_ERROR_SYSCALL' and 'unexpected EOF'. Server is reachable via ping, but SSL connection terminates immediately. Both curl and Python requests fail with same error.",
+    "suggested_action": "Check if ngrok tunnel is active and backend server is running properly on port 3456."
+  }
+}

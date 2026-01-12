@@ -1,0 +1,75 @@
+{
+  "endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+  "course": "zho_for_eng",
+  "status": "READY_FOR_UPLOAD",
+  "issue": "ngrok endpoint unreachable - SSL_ERROR_SYSCALL",
+  "legos": [
+    {
+      "lego_id": "S0116L02",
+      "seed": "S0116",
+      "known": "the best choice",
+      "target": "最好的选择",
+      "type": "A-type",
+      "payload": {
+        "course": "zho_for_eng",
+        "seed": "S0116",
+        "baskets": {
+          "S0116L02": {
+            "lego_id": "S0116L02",
+            "practice_phrases": [
+              {"known": "That's the best choice", "target": "那是最好的选择"},
+              {"known": "This is the best choice for you", "target": "这是你最好的选择"},
+              {"known": "It's not the best choice", "target": "这不是最好的选择"},
+              {"known": "Was that the best choice?", "target": "那是最好的选择吗？"},
+              {"known": "I think it's the best choice", "target": "我认为这是最好的选择"},
+              {"known": "The best choice would be to wait", "target": "最好的选择是等待"},
+              {"known": "What's the best choice here?", "target": "这里最好的选择是什么？"},
+              {"known": "He always makes the best choice", "target": "他总是做出最好的选择"},
+              {"known": "The best choice isn't always easy", "target": "最好的选择并不总是容易的"},
+              {"known": "We need to find the best choice", "target": "我们需要找到最好的选择"}
+            ]
+          }
+        }
+      }
+    },
+    {
+      "lego_id": "S0116L03",
+      "seed": "S0116",
+      "known": "I could make",
+      "target": "我能做出的",
+      "type": "A-type",
+      "payload": {
+        "course": "zho_for_eng",
+        "seed": "S0116",
+        "baskets": {
+          "S0116L03": {
+            "lego_id": "S0116L03",
+            "practice_phrases": [
+              {"known": "the decision I could make", "target": "我能做出的决定"},
+              {"known": "the choice I could make", "target": "我能做出的选择"},
+              {"known": "It's the best thing I could make", "target": "这是我能做出的最好的东西"},
+              {"known": "the only choice I could make", "target": "我能做出的唯一选择"},
+              {"known": "the biggest change I could make", "target": "我能做出的最大改变"},
+              {"known": "the difference I could make here", "target": "我能做出的改变在这里"},
+              {"known": "What's the best decision I could make?", "target": "我能做出的最好决定是什么？"},
+              {"known": "the contribution I could make to the team", "target": "我能为团队做出的贡献"},
+              {"known": "I thought about every choice I could make", "target": "我考虑了我能做出的每个选择"},
+              {"known": "the impact I could make would be significant", "target": "我能做出的影响将是显著的"}
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "curl_commands": {
+    "S0116L02": "curl -X POST -H 'Content-Type: application/json' -H 'ngrok-skip-browser-warning: true' -d @s0116l02_payload.json https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+    "S0116L03": "curl -X POST -H 'Content-Type: application/json' -H 'ngrok-skip-browser-warning: true' -d @s0116l03_payload.json https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket"
+  },
+  "manual_upload_instructions": [
+    "1. Verify ngrok endpoint is running",
+    "2. Extract individual payloads from this file",
+    "3. Save each payload to a temp file (e.g., s0116l02_payload.json)",
+    "4. Use curl commands above to upload",
+    "5. Verify 200 OK response for each upload"
+  ]
+}

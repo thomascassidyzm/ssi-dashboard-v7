@@ -1,0 +1,99 @@
+===============================================================
+BASKET UPLOAD SUMMARY - S0052L07 & S0053L03
+===============================================================
+Date: 2026-01-11
+Course: zho_for_eng (Chinese for English speakers)
+
+LEGO DETAILS:
+-------------
+
+1. S0052L07 (Seed S0052)
+   - LEGO: "last week" / "上周"
+   - Type: A-type (Atomic)
+   - Status: New LEGO (new: true)
+   - Practice Phrases: 10
+   - Upload Status: ✅ SUCCESS
+
+2. S0053L03 (Seed S0053)
+   - LEGO: "put" / "放"
+   - Type: A-type (Atomic)
+   - Status: New LEGO (new: true)
+   - Practice Phrases: 10
+   - Upload Status: ✅ SUCCESS
+
+PRACTICE PHRASE STRUCTURE:
+--------------------------
+
+Both baskets follow the progressive 2-2-2-4 pattern:
+- Phrases 1-2: LEGO in isolation (2 reps)
+- Phrases 3-4: Simple sentence with LEGO (2 reps)
+- Phrases 5-6: Slightly more complex sentence (2 reps)
+- Phrases 7-10: Seed sentence or complex variations (4 reps)
+
+VOCABULARY CONSTRAINTS:
+-----------------------
+
+All practice phrases use only vocabulary available up to S0053:
+- Total available vocabulary: 223 unique phrases/words
+- Key vocabulary used:
+  * "last week" (上周)
+  * "put" (放)
+  * "wanted to" (想)
+  * "letter" (信)
+  * "bag" (包)
+  * "something" (东西)
+  * "here" (这里)
+  
+Validation errors resolved:
+- Initial attempt used "book" which was not yet available
+- Corrected to use "something" and existing vocabulary
+
+STAGING LOCATION:
+-----------------
+
+Files saved to:
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/zho_for_eng/phase3_baskets_staging/
+
+- seed_S0052_baskets.json (15K) - Updated at 03:08
+- seed_S0053_baskets.json (16K) - Updated at 03:08
+
+NEXT STEPS:
+-----------
+
+The API response suggests the following commands for review and merge:
+
+1. Preview before merging:
+   node tools/phase3/preview-merge.cjs zho_for_eng
+
+2. Extract and normalize (merge to main):
+   node tools/phase3/extract-and-normalize.cjs zho_for_eng
+
+API VALIDATION:
+---------------
+
+Both baskets passed all validation checks:
+✅ All phrases contain the target LEGO
+✅ No GATE violations in target language
+✅ No GATE violations in known language
+✅ All vocabulary within learner's current knowledge
+✅ Proper basket structure with "lego" field
+✅ 10 practice phrases per basket
+
+UPLOAD DETAILS:
+---------------
+
+Endpoint: POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket
+Method: Python script with retry logic (3 attempts max)
+Retry Strategy: Exponential backoff (1s, 2s, 4s)
+Status Codes: 200 (Success)
+Total Attempts: 2 (1 per basket, all succeeded on first try)
+
+SCRIPT LOCATION:
+----------------
+
+Upload script saved to:
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/upload_baskets_s0052_s0053.py
+
+===============================================================
+COMPLETION STATUS: ✅ ALL BASKETS SUCCESSFULLY UPLOADED
+===============================================================

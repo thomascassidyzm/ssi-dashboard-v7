@@ -1274,24 +1274,14 @@ async function loadWebAgentSpawner() {
 
 /**
  * GET /preview/:courseCode
- * Preview what a Phase 2 job would look like without starting it (dry run)
+ * Preview what Phase 2 will do - queries DATABASE (SSoT) for conflicts and is_new flag issues
  */
 app.get('/preview/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { mode = 'full_course' } = req.query;
 
-  console.log(`\n[Phase 2] 🔍 Preview requested for: ${courseCode} (mode: ${mode})`);
+  console.log(`\n[Phase 2] 🔍 Preview requested for: ${courseCode} (DB-based)`);
 
   try {
-    // Parse course code for language pair
-    const parts = courseCode.split('_for_');
-    if (parts.length !== 2) {
-      return res.status(400).json({ error: 'Invalid course code format. Expected: target_for_known' });
-    }
-
-    const [target, known] = parts;
-    const courseDir = path.join(VFS_ROOT, courseCode);
-
     // Check for existing active job
     const existingJob = activeJobs.get(courseCode);
     if (existingJob) {
@@ -1304,82 +1294,125 @@ app.get('/preview/:courseCode', async (req, res) => {
       });
     }
 
-    // Check prerequisites
-    const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    // Query database for LEGOs (SSoT)
+    const { data: legos, error } = await courseDataService.supabase
+      .from('course_legos')
+      .select('id, lego_id, known_text, target_text, is_new, seed_number')
+      .eq('course_code', courseCode)
+      .order('seed_number');
 
-    if (!await fs.pathExists(draftPath)) {
+    if (error) {
+      return res.status(500).json({ error: `Database error: ${error.message}` });
+    }
+
+    if (!legos || legos.length === 0) {
       return res.status(400).json({
         phase: 2,
-        error: 'draft_lego_pairs.json not found - Phase 1 must complete first',
+        error: 'No LEGOs found in database - Phase 1 must complete first',
         prerequisiteMissing: true
       });
     }
 
-    // Check if already complete
-    if (await fs.pathExists(legoPairsPath)) {
-      try {
-        const legoPairs = await fs.readJson(legoPairsPath);
-        const seedCount = legoPairs.seeds ? legoPairs.seeds.length : 0;
-        const legoCount = legoPairs.seeds ? legoPairs.seeds.reduce((sum, s) => sum + (s.legos?.length || 0), 0) : 0;
+    // Count unique seeds
+    const seeds = new Set(legos.map(l => l.seed_number));
+    const totalSeeds = seeds.size;
 
-        return res.json({
-          phase: 2,
-          courseCode,
-          alreadyComplete: true,
-          seedCount,
-          legoCount,
-          message: 'Phase 2 is already complete - lego_pairs.json exists'
-        });
-      } catch (err) {
-        console.warn(`[Phase 2] Error reading lego_pairs.json: ${err.message}`);
+    // Group by known|target to find unique pairs
+    const pairs = new Map();
+    for (const l of legos) {
+      const key = (l.known_text || '').toLowerCase().trim() + '|' + (l.target_text || '').toLowerCase().trim();
+      if (!pairs.has(key)) pairs.set(key, []);
+      pairs.get(key).push(l);
+    }
+    const uniquePairs = pairs.size;
+
+    // Find conflicts (same known -> different targets)
+    const knownGroups = new Map();
+    for (const l of legos) {
+      const key = (l.known_text || '').toLowerCase().trim();
+      if (!key) continue;
+      if (!knownGroups.has(key)) knownGroups.set(key, []);
+      knownGroups.get(key).push(l);
+    }
+
+    let conflictCount = 0;
+    let duplicateCount = 0;
+    const conflictExamples = [];
+
+    for (const [known, group] of knownGroups) {
+      const targets = new Set(group.map(l => (l.target_text || '').trim()));
+      if (targets.size > 1) {
+        conflictCount++;
+        if (conflictExamples.length < 5) {
+          conflictExamples.push({ known: group[0].known_text, targets: [...targets] });
+        }
+      } else if (group.length > 1) {
+        duplicateCount++;
       }
     }
 
-    // Load draft to count seeds
-    let totalSeeds = 0;
-    try {
-      const draft = await fs.readJson(draftPath);
-      totalSeeds = Array.isArray(draft) ? draft.length : (draft.seeds?.length || 0);
-    } catch (err) {
-      return res.status(500).json({ error: `Failed to read draft_lego_pairs.json: ${err.message}` });
+    // Check is_new flag correctness (FCFS rule)
+    let wrongFirstOccurrence = 0;
+    let wrongLaterOccurrence = 0;
+    for (const [key, group] of pairs) {
+      if (group[0].is_new !== true) wrongFirstOccurrence++;
+      for (let i = 1; i < group.length; i++) {
+        if (group[i].is_new !== false) wrongLaterOccurrence++;
+      }
     }
 
-    // Calculate job shape
-    const segmentation = calculateSegmentation(totalSeeds);
-    const { browsers, agentsPerBrowser, seedsPerAgent, totalAgents } = segmentation;
+    const isNewFlagsCorrect = wrongFirstOccurrence === 0 && wrongLaterOccurrence === 0;
+    const currentNewCount = legos.filter(l => l.is_new === true).length;
+    const correctNewCount = uniquePairs;
 
-    // Estimate time (conservative: ~5 LEGOs/minute across all agents)
-    const estimatedRate = 5 * totalAgents; // LEGOs per minute (rough estimate)
-    const estimatedLegos = totalSeeds * 3; // Rough average of 3 LEGOs per seed
-    const estimatedMinutes = Math.ceil(estimatedLegos / estimatedRate);
+    // Determine what Phase 2 will do
+    const actions = [];
+    if (!isNewFlagsCorrect) {
+      actions.push(`Fix ${wrongFirstOccurrence + wrongLaterOccurrence} incorrect is_new flags`);
+    }
+    if (conflictCount > 0) {
+      actions.push(`Resolve ${conflictCount} conflicts via context upchunking`);
+    }
+    if (actions.length === 0) {
+      actions.push('Phase 2 complete - no actions needed');
+    }
 
-    console.log(`[Phase 2] Preview: ${totalSeeds} seeds, ${browsers} browsers × ${agentsPerBrowser} agents`);
+    console.log(`[Phase 2] Preview: ${legos.length} LEGOs, ${conflictCount} conflicts, ${wrongFirstOccurrence + wrongLaterOccurrence} wrong flags`);
 
     res.json({
       phase: 2,
       courseCode,
       hasActiveJob: false,
 
-      // Input info
+      // Database stats
+      totalLegos: legos.length,
       totalSeeds,
-      estimatedLegos,
+      uniquePairs,
 
-      // Worker configuration
-      browserTabs: browsers,
-      agentsPerBrowser,
-      totalAgents,
-      seedsPerAgent,
-      strategy: segmentation.strategy,
+      // Conflict analysis
+      conflictCount,
+      duplicateCount,
+      conflictExamples,
 
-      // Seed range
-      seedRange: { start: 1, end: totalSeeds },
+      // is_new flag analysis
+      isNewFlags: {
+        current: currentNewCount,
+        correct: correctNewCount,
+        wrongFirstOccurrence,
+        wrongLaterOccurrence,
+        isCorrect: isNewFlagsCorrect
+      },
 
-      // Time estimate
-      estimatedMinutes,
+      // What will happen
+      actions,
+      needsWork: conflictCount > 0 || !isNewFlagsCorrect,
 
       // Summary message
-      summary: `Will extract LEGOs from ${totalSeeds} seeds using ${browsers} browser tab${browsers > 1 ? 's' : ''} × ${agentsPerBrowser} agents (~${seedsPerAgent} seeds/agent)`
+      summary: conflictCount > 0
+        ? `${conflictCount} conflicts need resolution, ${wrongFirstOccurrence + wrongLaterOccurrence} is_new flags need fixing`
+        : isNewFlagsCorrect
+          ? 'Phase 2 complete - no conflicts, flags correct'
+          : `${wrongFirstOccurrence + wrongLaterOccurrence} is_new flags need fixing`
     });
 
   } catch (error) {

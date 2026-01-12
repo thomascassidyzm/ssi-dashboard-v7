@@ -1801,6 +1801,11 @@ app.post('/api/production/internal/emit', (req, res) => {
 const PHASE8_URL = process.env.PHASE8_URL || 'http://localhost:3465'
 const axios = require('axios')
 
+// GET /api/production/:courseCode/audio-stats (alias for audio-pipeline/stats)
+app.get('/api/production/:courseCode/audio-stats', (req, res) => {
+  res.redirect(307, `/api/production/${req.params.courseCode}/audio-pipeline/stats`)
+})
+
 // GET /api/production/:courseCode/audio-pipeline/stats
 // Fast stats using plan endpoint - use this for dashboard loading
 app.get('/api/production/:courseCode/audio-pipeline/stats', async (req, res) => {

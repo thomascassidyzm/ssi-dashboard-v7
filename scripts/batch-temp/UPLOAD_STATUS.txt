@@ -1,0 +1,146 @@
+================================================================================
+BASKET UPLOAD STATUS: S0048L02 & S0049L01
+================================================================================
+Date: 2026-01-11
+Time: Generated and ready for upload
+Status: ⚠️ READY BUT UNABLE TO UPLOAD DUE TO SSL/NETWORK ISSUES
+
+================================================================================
+GENERATED BASKETS
+================================================================================
+
+✓ S0048L02: "don't care about" (不在乎) - 10 practice phrases
+✓ S0049L01: "It's like this" (就是这样) - 10 practice phrases
+
+Total: 20 practice phrases following 2-2-2-4 complexity pattern
+
+================================================================================
+FILE LOCATIONS
+================================================================================
+
+1. S0048L02 basket (ready for upload):
+   /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/basket_s0048l02_ready.json
+
+2. S0049L01 basket (ready for upload):
+   /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/basket_s0049l01_ready.json
+
+3. Detailed report:
+   /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/S0048_S0049_BASKET_REPORT.md
+
+4. This status file:
+   /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/UPLOAD_STATUS.txt
+
+================================================================================
+UPLOAD ATTEMPTS
+================================================================================
+
+✗ Node.js HTTPS module - SSL handshake failed
+✗ Python requests library - SSL EOF error
+✗ curl with --insecure flag - Connection failed (HTTP 000)
+✗ curl with -k flag - Connection failed (HTTP 000)
+
+Error Details:
+- SSL EOF occurred in violation of protocol
+- Network is reachable (ping successful: 3.125.102.39)
+- SSL connection times out (openssl s_client test failed)
+
+================================================================================
+DIAGNOSIS
+================================================================================
+
+The ngrok tunnel appears to be:
+1. DNS-resolvable ✓ (mirthlessly-nonanesthetized-marilyn.ngrok-free.dev → 3.125.102.39)
+2. Network-reachable ✓ (ping successful, 18ms latency)
+3. SSL-unreachable ✗ (SSL handshake fails/times out)
+
+Possible causes:
+- ngrok tunnel is not active/running
+- ngrok tunnel SSL termination issue
+- Firewall blocking SSL connections on port 443
+- Backend service not responding to SSL requests
+- ngrok free tier rate limiting
+
+================================================================================
+MANUAL UPLOAD INSTRUCTIONS
+================================================================================
+
+Option 1: Using curl (if SSL is fixed)
+---------------------------------------
+curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket \
+  -H "Content-Type: application/json" \
+  -H "ngrok-skip-browser-warning: true" \
+  --data @/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/basket_s0048l02_ready.json
+
+curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket \
+  -H "Content-Type: application/json" \
+  -H "ngrok-skip-browser-warning: true" \
+  --data @/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/basket_s0049l01_ready.json
+
+
+Option 2: Using Postman/Insomnia
+---------------------------------
+1. Open Postman or Insomnia
+2. Create POST request to:
+   https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket
+3. Add headers:
+   Content-Type: application/json
+   ngrok-skip-browser-warning: true
+4. Import JSON body from files above
+5. Send requests
+
+
+Option 3: Web Browser (if endpoint supports GET)
+-------------------------------------------------
+Visit the endpoint in a browser to check if it's active:
+https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/
+
+
+Option 4: Ask System Administrator
+-----------------------------------
+Contact the person running the ngrok tunnel to:
+- Verify ngrok is running
+- Check server-side logs
+- Restart ngrok tunnel if needed
+- Provide alternative upload method
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Verify ngrok tunnel is active and running
+2. Check server-side logs for connection attempts
+3. Restart ngrok tunnel if necessary
+4. Re-attempt upload using one of the methods above
+5. Confirm successful database insertion
+
+================================================================================
+BASKET CONTENT SUMMARY
+================================================================================
+
+S0048L02 Practice Phrases (10):
+1. I don't care about this → 我不在乎这个
+2. You don't care about it → 你不在乎它
+3. I don't care about making mistakes now → 我现在不在乎犯错
+4. I don't care about practice every day → 我不在乎每天练习
+5. I think you don't care about learning Chinese → 我觉得你不在乎学中文
+6. I don't care about speaking with you → 我不在乎跟你说
+7. I don't care about trying to understand this question → 我不在乎试试理解这个问题
+8. Do you understand I don't care about making mistakes now → 你明白我现在不在乎犯错
+9. I'm learning and I don't care about saying something wrong → 我在学，我不在乎说一些错的事
+10. That's good because I don't care about this every day → 那是好，因为我不在乎每天这个
+
+S0049L01 Practice Phrases (10):
+1. It's like this now → 就是这样现在
+2. It's like this every day → 就是这样每天
+3. It's like this when I'm learning → 就是这样当我在学
+4. It's like this, I need to practice → 就是这样，我需要练习
+5. I think it's like this with Chinese → 我觉得就是这样跟中文
+6. It's like this, I don't care about mistakes → 就是这样，我不在乎错误
+7. Do you understand it's like this when learning → 你明白就是这样当学习
+8. That's good, it's like this every day now → 那是好，就是这样每天现在
+9. It's like this, I want to speak Chinese with you → 就是这样，我想跟你说中文
+10. I know it's like this, I'm trying to learn something → 我知道就是这样，我在尝试学一些事
+
+================================================================================
+END OF STATUS REPORT
+================================================================================

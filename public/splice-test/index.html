@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welsh LEGO Splice A/B Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 { color: #4ade80; margin-bottom: 0.5rem; }
+    h2 { color: #fbbf24; margin-top: 2rem; border-top: 1px solid #333; padding-top: 2rem; }
+    .subtitle { color: #888; margin-bottom: 2rem; }
+    .phrase {
+      background: #16213e;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fbbf24;
+      font-style: italic;
+    }
+    .translation {
+      color: #888;
+      font-size: 1rem;
+      font-style: normal;
+      margin-top: 0.5rem;
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .audio-card {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .audio-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: #4ade80;
+      font-size: 1rem;
+    }
+    .audio-card .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .badge.real { background: #166534; color: #4ade80; }
+    .badge.spliced { background: #7c3aed; color: #c4b5fd; }
+    .badge.lego { background: #0369a1; color: #7dd3fc; }
+    .duration { color: #888; font-size: 0.8rem; margin-top: 0.5rem; }
+    audio { width: 100%; margin-top: 0.75rem; height: 36px; }
+    .note {
+      background: #1e3a5f;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #3b82f6;
+      font-size: 0.95rem;
+    }
+    .note h4 { margin: 0 0 0.5rem 0; color: #60a5fa; }
+    .lego-sources {
+      background: #16213e;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .lego-sources h4 { color: #7dd3fc; margin: 0 0 1rem 0; font-size: 0.9rem; }
+    .lego-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+    }
+    .lego-item {
+      background: #0f172a;
+      padding: 0.75rem;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .lego-item .word {
+      font-weight: 600;
+      color: #7dd3fc;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .lego-item audio { height: 32px; }
+    .verdict {
+      background: linear-gradient(135deg, #166534 0%, #14532d 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .verdict h3 { margin: 0 0 0.5rem 0; color: #4ade80; }
+    .verdict p { margin: 0; color: #bbf7d0; }
+  </style>
+</head>
+<body>
+  <h1>Welsh LEGO Splice A/B Test</h1>
+  <p class="subtitle">Can we recreate Welsh phrases by splicing standalone word recordings?</p>
+
+  <div class="note">
+    <h4>The Test:</h4>
+    <p>
+      Each word below was recorded <strong>independently</strong> as a standalone LEGO.
+      We splice them together and compare with the <strong>actual phrase recording</strong>.
+      <br><br>
+      Listen to REAL first, then the spliced versions. Can you tell the difference?
+    </p>
+  </div>
+
+  <h2>Test: "stopio siarad Cymraeg"</h2>
+  <div class="phrase">
+    "stopio siarad Cymraeg"
+    <div class="translation">stop speaking Welsh</div>
+  </div>
+
+  <div class="lego-sources">
+    <h4>Source LEGOs (each recorded independently):</h4>
+    <div class="lego-grid">
+      <div class="lego-item">
+        <div class="word">stopio</div>
+        <audio controls src="lego_stopio.mp3"></audio>
+      </div>
+      <div class="lego-item">
+        <div class="word">siarad</div>
+        <audio controls src="lego_siarad.mp3"></audio>
+      </div>
+      <div class="lego-item">
+        <div class="word">Cymraeg</div>
+        <audio controls src="lego_cymraeg.mp3"></audio>
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison">
+    <div class="audio-card">
+      <h3>REAL Recording</h3>
+      <span class="badge real">HUMAN ORIGINAL</span>
+      <audio controls src="REAL_stopio_siarad_cymraeg.mp3"></audio>
+      <div class="duration">3.38s - recorded as one phrase</div>
+    </div>
+
+    <div class="audio-card">
+      <h3>Spliced (Simple)</h3>
+      <span class="badge spliced">FRANKENSTEIN</span>
+      <audio controls src="SPLICED_simple.mp3"></audio>
+      <div class="duration">3.79s - concatenated</div>
+    </div>
+
+    <div class="audio-card">
+      <h3>Spliced (Crossfade)</h3>
+      <span class="badge spliced">FRANKENSTEIN</span>
+      <audio controls src="SPLICED_crossfade.mp3"></audio>
+      <div class="duration">3.74s - 30ms crossfade</div>
+    </div>
+
+    <div class="audio-card">
+      <h3>Spliced (Slow Pace)</h3>
+      <span class="badge spliced">FRANKENSTEIN</span>
+      <audio controls src="SPLICED_slow.mp3"></audio>
+      <div class="duration">4.39s - with gaps</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>The Promise</h3>
+    <p>
+      Welsh course: <strong>670 LEGOs</strong> &rarr; <strong>6000+ practice phrases</strong><br>
+      Record ~270 optimized phrases (~35 min) &rarr; Generate all others automatically
+    </p>
+  </div>
+
+  <div class="note">
+    <h4>Technical Notes:</h4>
+    <p>
+      <strong>Source:</strong> Welsh North (cym_n_for_eng) target1 voice (slow learner pace)<br>
+      <strong>LEGOs:</strong> Each word is a standalone recording from different parts of the course<br>
+      <strong>Splicing:</strong> ffmpeg concatenation with optional crossfade/silence gaps<br>
+      <strong>Model:</strong> Techiaith Welsh Whisper for segmentation
+    </p>
+  </div>
+</body>
+</html>

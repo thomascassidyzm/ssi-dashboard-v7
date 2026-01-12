@@ -1,0 +1,68 @@
+================================================================================
+WORKER 6 - UPLOAD INSTRUCTIONS
+================================================================================
+
+ORCHESTRATOR STATUS: Currently OFFLINE (SSL connection error)
+
+When the orchestrator comes back online, follow these steps:
+
+1. VERIFY ORCHESTRATOR IS ONLINE:
+   ------------------------------------
+   curl https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/health
+
+   Expected response:
+   {"status":"ok","service":"Orchestrator",...}
+
+2. RUN THE UPLOAD SCRIPT:
+   ------------------------------------
+   cd /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts
+   ./upload_worker6_baskets.sh
+
+3. VERIFY UPLOADS:
+   ------------------------------------
+   Check orchestrator logs or query the API to confirm all 5 baskets uploaded:
+   - S0223L01 (he - 他)
+   - S0223L03 (ask - 问)
+   - S0223L04 (you - 你)
+   - S0223L05 (tomorrow - 明天)
+   - S0224L01 (he - 他)
+
+================================================================================
+BASKET SUMMARY
+================================================================================
+
+Total LEGOs:    5
+Total Phrases:  50 (10 per LEGO)
+Distribution:   2-2-2-4 (simple → complex)
+GATE Compliant: ✅ 100%
+Grammar Check:  ✅ Complete
+
+================================================================================
+FILES CREATED
+================================================================================
+
+1. worker6_baskets_ready.json
+   → Complete basket data in JSON format
+
+2. upload_worker6_baskets.sh  (executable)
+   → Automated upload script with curl commands
+
+3. WORKER6_COMPLETION_REPORT.md
+   → Detailed completion report with samples
+
+4. WORKER6_UPLOAD_INSTRUCTIONS.txt  (this file)
+   → Quick reference for upload process
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If upload fails:
+1. Check ngrok tunnel is active
+2. Verify orchestrator service is running (port 3456)
+3. Check network connectivity
+4. Try individual basket uploads from the JSON file
+
+Contact system admin if issues persist.
+
+================================================================================

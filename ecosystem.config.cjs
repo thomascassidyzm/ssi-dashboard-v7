@@ -208,6 +208,35 @@ module.exports = {
     },
 
     // ===========================================
+    // PRODUCTION API (Port 3470)
+    // QA workflow, audio management, human recording
+    // ===========================================
+    {
+      name: 'production-api',
+      script: 'services/production-api.cjs',
+      cwd: __dirname,
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '500M',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3470,
+        VFS_ROOT: VFS_ROOT,
+        SERVICE_NAME: 'Production API',
+        AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+        AWS_REGION: process.env.AWS_REGION || 'eu-west-1',
+        S3_BUCKET: process.env.S3_BUCKET || 'ssi-audio-stage',
+        SUPABASE_URL: process.env.SUPABASE_URL,
+        SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY
+      },
+      error_file: 'logs/production-api-error.log',
+      out_file: 'logs/production-api-out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
+    },
+
+    // ===========================================
     // DASHBOARD UI (Port 5173)
     // ===========================================
     {

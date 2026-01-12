@@ -1116,7 +1116,7 @@ function connectWebSocket() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
   socket = io(apiBase, {
     path: '/api/orchestrator/websocket',

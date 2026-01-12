@@ -1,0 +1,55 @@
+{
+  "worker": 7,
+  "seed": "S0119",
+  "legos": ["S0119L02", "S0119L03"],
+  "status": "ready_for_upload",
+  "endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+  "baskets": [
+    {
+      "course": "zho_for_eng",
+      "seed": "S0119",
+      "baskets": {
+        "S0119L02": {
+          "lego_id": "S0119L02",
+          "lego_known": "ask you something",
+          "lego_target": "问你什么",
+          "practice_phrases": [
+            {"known": "I want to ask you something", "target": "我想问你什么"},
+            {"known": "Can I ask you something?", "target": "我可以问你什么吗？"},
+            {"known": "I need to ask you something important", "target": "我需要问你什么重要的事"},
+            {"known": "May I ask you something quickly?", "target": "我可以快速问你什么吗？"},
+            {"known": "Before we start, I should ask you something", "target": "在我们开始之前，我应该问你什么"},
+            {"known": "I forgot to ask you something yesterday", "target": "我昨天忘了问你什么"},
+            {"known": "She wanted to ask you something about the project", "target": "她想问你什么关于这个项目的事"},
+            {"known": "They called because they need to ask you something", "target": "他们打电话是因为他们需要问你什么"},
+            {"known": "I was going to ask you something, but I forgot what it was", "target": "我本来想问你什么，但我忘了是什么"},
+            {"known": "Before you make a decision, I really need to ask you something", "target": "在你做决定之前，我真的需要问你什么"}
+          ]
+        }
+      }
+    },
+    {
+      "course": "zho_for_eng",
+      "seed": "S0119",
+      "baskets": {
+        "S0119L03": {
+          "lego_id": "S0119L03",
+          "lego_known": "before you leave",
+          "lego_target": "在你离开之前",
+          "practice_phrases": [
+            {"known": "I need to tell you before you leave", "target": "在你离开之前我需要告诉你"},
+            {"known": "Can we talk before you leave?", "target": "在你离开之前我们可以谈谈吗？"},
+            {"known": "Please sign this before you leave", "target": "在你离开之前请签这个"},
+            {"known": "I want to give you something before you leave", "target": "在你离开之前我想给你一些东西"},
+            {"known": "You should finish your coffee before you leave", "target": "在你离开之前你应该喝完你的咖啡"},
+            {"known": "I forgot to mention this before you leave", "target": "在你离开之前我忘了提到这个"},
+            {"known": "She wants to see you before you leave the office", "target": "在你离开办公室之前她想见你"},
+            {"known": "They need to confirm the details before you leave tomorrow", "target": "在你明天离开之前他们需要确认细节"},
+            {"known": "I was hoping we could review the plan before you leave for vacation", "target": "在你去度假之前我希望我们能审查一下计划"},
+            {"known": "Make sure you have everything you need before you leave for the trip", "target": "在你离开去旅行之前确保你有你需要的一切"}
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "worker": 12,
+  "seed": "S0121",
+  "course": "zho_for_eng",
+  "status": "ready_for_upload",
+  "endpoint_status": "unreachable",
+  "attempted_endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket",
+  "legos": [
+    {
+      "lego_id": "S0121L05",
+      "type": "A-type",
+      "known": "use",
+      "target": "用",
+      "payload": {
+        "course": "zho_for_eng",
+        "seed": "S0121",
+        "baskets": {
+          "S0121L05": {
+            "lego_id": "S0121L05",
+            "practice_phrases": [
+              {
+                "known": "I use it",
+                "target": "我用它",
+                "level": 1,
+                "note": "Simple subject variation"
+              },
+              {
+                "known": "you use it",
+                "target": "你用它",
+                "level": 1,
+                "note": "Simple subject variation"
+              },
+              {
+                "known": "I want to use it",
+                "target": "我想用它",
+                "level": 2,
+                "note": "Adding modal verb 'want'"
+              },
+              {
+                "known": "I don't want to use that",
+                "target": "我不想用那个",
+                "level": 2,
+                "note": "Negation + object variation"
+              },
+              {
+                "known": "I like to use this",
+                "target": "我喜欢用这个",
+                "level": 3,
+                "note": "Different modal + demonstrative"
+              },
+              {
+                "known": "you don't like to use it",
+                "target": "你不喜欢用它",
+                "level": 3,
+                "note": "Subject variation + negation"
+              },
+              {
+                "known": "I want to use your car",
+                "target": "我想用你的车",
+                "level": 4,
+                "note": "Complex object (possessive + noun)"
+              },
+              {
+                "known": "I don't like to use it",
+                "target": "我不喜欢用它",
+                "level": 4,
+                "note": "Modal + negation combination"
+              },
+              {
+                "known": "do you want to use this?",
+                "target": "你想用这个吗?",
+                "level": 4,
+                "note": "Question form"
+              },
+              {
+                "known": "I like to use it",
+                "target": "我喜欢用它",
+                "level": 4,
+                "note": "Affirmative consolidation"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "lego_id": "S0121L06",
+      "type": "M-type",
+      "known": "don't like to use your car",
+      "target": "不喜欢用你的车",
+      "payload": {
+        "course": "zho_for_eng",
+        "seed": "S0121",
+        "baskets": {
+          "S0121L06": {
+            "lego_id": "S0121L06",
+            "practice_phrases": [
+              {
+                "known": "I don't like to use your car",
+                "target": "我不喜欢用你的车",
+                "level": 1,
+                "note": "Base form with subject 'I'"
+              },
+              {
+                "known": "you don't like to use your car",
+                "target": "你不喜欢用你的车",
+                "level": 1,
+                "note": "Subject variation to 'you'"
+              },
+              {
+                "known": "I don't like to use your car today",
+                "target": "我今天不喜欢用你的车",
+                "level": 2,
+                "note": "Adding time expression"
+              },
+              {
+                "known": "do you like to use your car?",
+                "target": "你喜欢用你的车吗?",
+                "level": 2,
+                "note": "Affirmative question form"
+              },
+              {
+                "known": "I don't like to use your car at work",
+                "target": "我不喜欢在工作时用你的车",
+                "level": 3,
+                "note": "Adding location/context"
+              },
+              {
+                "known": "you don't like to use your car here",
+                "target": "你不喜欢在这里用你的车",
+                "level": 3,
+                "note": "Location + subject variation"
+              },
+              {
+                "known": "I don't want to use your car",
+                "target": "我不想用你的车",
+                "level": 4,
+                "note": "Modal substitution (like→want)"
+              },
+              {
+                "known": "why don't you like to use your car?",
+                "target": "你为什么不喜欢用你的车?",
+                "level": 4,
+                "note": "Why-question form"
+              },
+              {
+                "known": "I really don't like to use your car",
+                "target": "我真的不喜欢用你的车",
+                "level": 4,
+                "note": "Adding intensifier 'really'"
+              },
+              {
+                "known": "I don't like to use your car much",
+                "target": "我不太喜欢用你的车",
+                "level": 4,
+                "note": "Degree adverb variation"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "curl_commands": [
+    "curl -X POST 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket' -H 'Content-Type: application/json' -H 'ngrok-skip-browser-warning: true' -d @/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/worker12_s0121l05_payload.json",
+    "curl -X POST 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/upload-basket' -H 'Content-Type: application/json' -H 'ngrok-skip-browser-warning: true' -d @/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/batch-temp/worker12_s0121l06_payload.json"
+  ],
+  "notes": [
+    "Endpoint was unreachable at time of generation",
+    "All practice phrases follow 2-2-2-4 progression pattern",
+    "S0121L05 practices the atomic verb '用' (use)",
+    "S0121L06 practices the molecular phrase '不喜欢用你的车' (don't like to use your car)",
+    "Ready for manual upload when endpoint is available"
+  ]
+}
