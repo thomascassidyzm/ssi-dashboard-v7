@@ -4382,11 +4382,27 @@ app.post('/api/courses/generate', async (req, res) => {
     };
 
     if (isResume) {
-      console.log(`[Orchestrator] INTELLIGENT RESUME - Sending ${missingSeeds.length} missing seeds to Phase 1`);
+      console.log(`[Orchestrator] INTELLIGENT RESUME - Sending ${missingSeeds.length} missing seeds`);
       console.log(`   → Missing seeds: ${missingSeeds.slice(0, 10).join(', ')}${missingSeeds.length > 10 ? '...' : ''}`);
     }
-    console.log(`[Orchestrator] Sending to Phase 1:`, JSON.stringify(payload, null, 2));
-    const response = await axios.post(`${phaseServer}/start`, payload);
+
+    // Phase 2 uses different endpoint structure
+    let response;
+    if (phase === 2) {
+      const phase2Payload = {
+        courseCode,
+        target: resolvedTarget,
+        known: resolvedKnown,
+        mastersCount: pattern?.browsers || 4,
+        workersPerMaster: pattern?.agents_per_browser || 5,
+        seedsPerWorker: pattern?.seeds_per_agent || 15
+      };
+      console.log(`[Orchestrator] Sending to Phase 2 (launch-full):`, JSON.stringify(phase2Payload, null, 2));
+      response = await axios.post(`${phaseServer}/phase2/launch-full`, phase2Payload);
+    } else {
+      console.log(`[Orchestrator] Sending to ${phaseName}:`, JSON.stringify(payload, null, 2));
+      response = await axios.post(`${phaseServer}/start`, payload);
+    }
 
     // Store Phase 1 tracking state with expected seed range for seed-based completion
     // The completion logic checks actual seeds received, not just master count
