@@ -49,18 +49,22 @@ const PHASE_SERVERS = {
   2: process.env.PHASE1_LEGO_URL || 'http://localhost:3458',
   // Phase 3: Basket Generation (APML v9.0 terminology)
   3: process.env.PHASE3_URL || 'http://localhost:3459',
-  // Manifest: Course Compilation (APML v9.0 terminology)
-  'manifest': process.env.MANIFEST_URL || 'http://localhost:3464',
-  // Audio: TTS Generation (APML v9.0 terminology)
-  'audio': process.env.AUDIO_URL || 'http://localhost:3465'
+  // Phase 8: Audio Generation (TTS)
+  8: process.env.PHASE8_URL || process.env.AUDIO_URL || 'http://localhost:3465',
+  // Phase 9: Manifest Compilation (Supabase-backed) - CURRENT
+  9: process.env.PHASE9_URL || 'http://localhost:3466',
+  // Legacy aliases (deprecated)
+  'manifest': process.env.MANIFEST_URL || 'http://localhost:3464',  // Legacy Phase 7
+  'audio': process.env.AUDIO_URL || 'http://localhost:3465'         // Alias for Phase 8
 };
 
 // Legacy aliases for backward compatibility during migration
 const LEGACY_PHASE_ALIASES = {
   1: PHASE_SERVERS['1_translation'],
   5: PHASE_SERVERS[3],       // Legacy Phase 5 → Phase 3 (APML v9.0)
-  7: PHASE_SERVERS['manifest'],
-  8: PHASE_SERVERS['audio']
+  7: PHASE_SERVERS['manifest'],  // Legacy Phase 7 → 3464 (deprecated)
+  8: PHASE_SERVERS[8],       // Phase 8: Audio Generation
+  9: PHASE_SERVERS[9]        // Phase 9: Manifest Compilation (Supabase)
 };
 
 /**
@@ -9900,6 +9904,67 @@ app.post('/api/import-course', async (req, res) => {
       success: false,
       error: error.message
     });
+  }
+});
+
+// =============================================================================
+// DOCUMENTATION API
+// =============================================================================
+
+const supabaseClient = require('../supabase-client.cjs');
+
+/**
+ * GET /api/docs/list - Get documentation list for navigation
+ * Query: ?category=reference (optional filter)
+ */
+app.get('/api/docs/list', async (req, res) => {
+  try {
+    const { category } = req.query;
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Database not initialized' });
+    }
+
+    const docs = await supabaseClient.getDocumentationList(category || null);
+
+    res.json({
+      success: true,
+      count: docs.length,
+      documents: docs
+    });
+  } catch (error) {
+    console.error('[Docs API] Error getting documentation list:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /api/docs/:slug - Get documentation by slug with all sections
+ */
+app.get('/api/docs/:slug', async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Database not initialized' });
+    }
+
+    const doc = await supabaseClient.getDocumentation(slug);
+
+    if (!doc) {
+      return res.status(404).json({
+        error: 'Document not found',
+        slug
+      });
+    }
+
+    res.json({
+      success: true,
+      document: doc
+    });
+  } catch (error) {
+    console.error(`[Docs API] Error getting document ${req.params.slug}:`, error);
+    res.status(500).json({ error: error.message });
   }
 });
 

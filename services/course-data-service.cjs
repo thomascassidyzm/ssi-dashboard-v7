@@ -470,6 +470,7 @@ async function updateLego(courseCode, seedNumber, legoIndex, updates) {
  * @param {string} phraseData.targetText
  * @param {number} phraseData.position - Position in practice sequence
  * @param {number} phraseData.wordCount - Word count for classification
+ * @param {number} [phraseData.targetSyllableCount] - Target language syllable count for timing/ordering
  * @param {number} phraseData.legoCount - LEGO count for classification
  * @param {string} [phraseData.difficulty] - 'easy', 'medium', 'hard'
  * @param {string} [phraseData.register] - 'casual', 'formal'
@@ -490,6 +491,7 @@ async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData)
       target_text: phraseData.targetText || phraseData.target_text || phraseData.target,
       position: phraseData.position,
       word_count: phraseData.wordCount || phraseData.word_count || 0,
+      target_syllable_count: phraseData.targetSyllableCount || phraseData.target_syllable_count || null,
       lego_count: phraseData.legoCount || phraseData.lego_count || 0,
       difficulty: phraseData.difficulty || null,
       register: phraseData.register || null,

@@ -1,12 +1,12 @@
 # APML Phase 3: Practice Basket Generation
-# Version: 10.2.0 (2026-01-06)
-# Status: Production-ready
+# Version: 11.1.0 (2026-01-12)
+# Status: Production-ready (DB-first)
 # Server Port: 3459
 
 phase Phase3BasketGeneration:
   name: "Phase 3: Practice Basket Generation"
   purpose: "Generate high-quality practice phrase baskets using linguistic reasoning"
-  version: "10.2.0"
+  version: "11.1.0"
   server_port: 3459
 
   ## ==========================================================================
@@ -15,21 +15,77 @@ phase Phase3BasketGeneration:
 
   description: |
     Generate 10 practice phrases per LEGO using ONLY linguistic intelligence.
-    Receives pre-built scaffold JSON with whitelist and metadata.
+    Reads LEGOs from database, generates practice phrases, writes to database.
     Agent fills practice_phrases arrays using extended thinking for each LEGO.
 
-  pipeline_architecture: "Staged Pipeline"
+  pipeline_architecture: "DB-First Pipeline"
+    input_source: "course_legos table (WHERE is_new=true AND status='released')"
+    output_target: "course_practice_phrases table"
+
     stage_1: "Mechanical preparation (done before agent)"
-      - "Build whitelist (3-category rule)"
-      - "Create JSON scaffold"
-      - "Mark is_final_lego flags"
+      - "Query course_legos for released new LEGOs"
+      - "Build whitelist (3-category rule) from cumulative LEGOs"
+      - "Prepare LEGO batch with metadata"
 
     stage_2: "Linguistic generation (agent task)"
       - "Fill practice_phrases arrays"
       - "Use extended thinking per LEGO"
       - "Ensure GATE compliance"
 
+    stage_3: "Database persistence"
+      - "Write to course_practice_phrases table"
+      - "Set status='draft' initially"
+      - "Include word_count and lego_count metadata"
+
   core_principle: "This is a LINGUISTIC task, not a CODING task"
+
+  ## ==========================================================================
+  ## DATABASE SCHEMA REFERENCE
+  ## ==========================================================================
+
+  database_schema:
+    description: "Reference: database/migrations/002_registry_schema.sql"
+
+    input_table: "course_legos"
+      columns:
+        - "id: UUID PRIMARY KEY"
+        - "course_code: TEXT NOT NULL"
+        - "seed_number: INTEGER NOT NULL"
+        - "lego_index: INTEGER NOT NULL"
+        - "lego_id: TEXT (generated as S{seed_number}L{lego_index})"
+        - "type: lego_type ENUM ('A', 'M')"
+        - "is_new: BOOLEAN NOT NULL"
+        - "known_text: TEXT NOT NULL"
+        - "target_text: TEXT NOT NULL"
+        - "components: JSONB (for M-type only)"
+        - "status: content_status ENUM ('draft', 'released', 'deprecated')"
+
+      query_filter: "WHERE is_new = true AND status = 'released'"
+
+    output_table: "course_practice_phrases"
+      columns:
+        - "id: UUID PRIMARY KEY (auto-generated)"
+        - "course_code: TEXT NOT NULL"
+        - "seed_number: INTEGER NOT NULL"
+        - "lego_index: INTEGER NOT NULL"
+        - "position: INTEGER NOT NULL (0=component, 1=lego, 2-7=debut, 8+=eternal)"
+        - "known_text: TEXT NOT NULL"
+        - "target_text: TEXT NOT NULL"
+        - "word_count: INTEGER NOT NULL"
+        - "target_syllable_count: INTEGER NOT NULL (cognitive load metric, max 25)"
+        - "lego_count: INTEGER NOT NULL"
+        - "status: content_status DEFAULT 'draft'"
+
+      unique_constraint: "(course_code, seed_number, lego_index, position)"
+
+    phrase_type_classification:
+      description: "phrase_type is NOT stored - computed at runtime"
+      view: "course_practice_phrases_with_type"
+      rules:
+        - "position = 0 -> 'component'"
+        - "position = 1 -> 'lego'"
+        - "position BETWEEN 2 AND 7 -> 'debut'"
+        - "position >= 8 -> 'eternal'"
 
   ## ==========================================================================
   ## CRITICAL: PROHIBITED APPROACHES
@@ -68,47 +124,59 @@ phase Phase3BasketGeneration:
     quality_standard: "Top dollar content quality (slower but higher quality)"
 
   ## ==========================================================================
-  ## INPUT: SCAFFOLD STRUCTURE
+  ## INPUT: DATABASE QUERY
   ## ==========================================================================
 
-  input_scaffold:
-    description: "Pre-built JSON with ALL mechanical work complete"
+  input_query:
+    description: "Query course_legos for LEGOs requiring basket generation"
 
-    what_is_done:
-      - "✅ JSON structure"
-      - "✅ Whitelist arrays (3-category rule applied)"
-      - "✅ Metadata (available_legos, cumulative_legos, is_final_lego)"
-      - "✅ Seed context for thematic guidance"
+    sql_example: |
+      SELECT
+        cl.id,
+        cl.course_code,
+        cl.seed_number,
+        cl.lego_index,
+        cl.lego_id,
+        cl.type,
+        cl.is_new,
+        cl.known_text,
+        cl.target_text,
+        cl.components,
+        cs.known_text AS seed_known,
+        cs.target_text AS seed_target
+      FROM course_legos cl
+      JOIN course_seeds cs ON cs.course_code = cl.course_code
+                          AND cs.seed_number = cl.seed_number
+      WHERE cl.course_code = $1
+        AND cl.is_new = true
+        AND cl.status = 'released'
+      ORDER BY cl.seed_number, cl.lego_index;
+
+    whitelist_query: |
+      -- Build whitelist from all LEGOs up to current seed
+      SELECT DISTINCT
+        cl.target_text,
+        cl.known_text,
+        cl.type,
+        cl.components
+      FROM course_legos cl
+      WHERE cl.course_code = $1
+        AND cl.seed_number <= $2
+        AND cl.status = 'released'
+      ORDER BY cl.seed_number, cl.lego_index;
+
+    what_is_available:
+      - "LEGO content (known_text, target_text)"
+      - "LEGO type (A or M)"
+      - "Components for M-type LEGOs"
+      - "Seed context (seed_known, seed_target)"
+      - "Cumulative whitelist from all previous LEGOs"
 
     what_agent_must_do:
-      - "Fill the practice_phrases arrays ONLY"
-      - "Update phrase_distribution to match actual phrase counts"
-      - "DO NOT modify any other fields"
-
-    scaffold_schema:
-      version: "curated_v7_spanish"
-      agent_id: integer
-      seed_range: string                 # "S0001-S0020"
-      seeds:
-        seed_id:
-          seed: string                   # "S0001"
-          seed_pair:
-            known: string
-            target: string
-          whitelist: array               # Available Spanish vocabulary
-          cumulative_legos: integer
-          legos:
-            lego_id:
-              lego: [known, target]
-              type: "A" | "M"
-              available_legos: integer
-              is_final_lego: boolean
-              practice_phrases: array    # ← AGENT FILLS THIS
-              phrase_distribution:
-                really_short_1_2: integer
-                quite_short_3: integer
-                longer_4_5: integer
-                long_6_plus: integer
+      - "Generate practice_phrases for each LEGO"
+      - "Ensure GATE compliance against whitelist"
+      - "Calculate word_count for each phrase"
+      - "Set appropriate position values"
 
   ## ==========================================================================
   ## WHITELIST: THE 3-CATEGORY RULE
@@ -124,8 +192,8 @@ phase Phase3BasketGeneration:
         example:
           lego:
             type: "A"
-            target: "quiero"
-            known: "I want"
+            target_text: "quiero"
+            known_text: "I want"
           whitelist_entry: "quiero"
           learner_knows: "quiero = I want"
 
@@ -134,8 +202,8 @@ phase Phase3BasketGeneration:
         example:
           lego:
             type: "M"
-            target: "estoy intentando"
-            known: "I'm trying"
+            target_text: "estoy intentando"
+            known_text: "I'm trying"
           whitelist_entries: ["estoy", "intentando"]
           learner_knows: "estoy intentando = I'm trying (as phrase)"
 
@@ -144,11 +212,11 @@ phase Phase3BasketGeneration:
         example:
           lego:
             type: "M"
-            target: "estoy intentando"
-            known: "I'm trying"
+            target_text: "estoy intentando"
+            known_text: "I'm trying"
             components:
-              - ["estoy", "I am"]         # Literal translation
-              - ["intentando", "trying"]  # Literal translation
+              - {"known": "I am", "target": "estoy"}
+              - {"known": "trying", "target": "intentando"}
           whitelist_entries: ["estoy", "intentando"]
           learner_knows:
             - "estoy = I am (literal)"
@@ -159,15 +227,15 @@ phase Phase3BasketGeneration:
       They see grammar without explanation!
 
       Example:
-        LEGO: "lo más posible" = "as much as possible" (M-type)
+        LEGO: "lo mas posible" = "as much as possible" (M-type)
         Components:
-          - "lo más" = "the most" (literal)
+          - "lo mas" = "the most" (literal)
           - "posible" = "possible" (literal)
 
         Learner can now use:
-          ✅ "lo más posible" (the whole phrase)
-          ✅ "lo más" alone (knows it means "the most")
-          ✅ "posible" alone (knows it means "possible")
+          lo mas posible (the whole phrase)
+          lo mas alone (knows it means "the most")
+          posible alone (knows it means "possible")
 
   ## ==========================================================================
   ## BASKET CYCLE SEQUENCE (v10.1)
@@ -181,42 +249,44 @@ phase Phase3BasketGeneration:
 
     sequence_for_M_type:
       1_components:
-        description: "Individual component words (is_component: true)"
+        description: "Individual component words (position: 0, is_component: true)"
         purpose: "Learner hears and understands the building blocks"
+        database_position: 0
         example:
-          - ["I", "我", "is_component: true"]
-          - ["want", "想", "is_component: true"]
+          - {known_text: "I", target_text: "yo", position: 0, word_count: 1, lego_count: 1}
+          - {known_text: "want", target_text: "quiero", position: 0, word_count: 1, lego_count: 1}
 
       2_lego_debut:
-        description: "The LEGO itself (is_debut: true)"
+        description: "The LEGO itself (position: 1, is_debut: true)"
         purpose: "Learner combines components into the complete LEGO"
+        database_position: 1
         example:
-          - ["I want to", "我想", "is_debut: true"]
+          - {known_text: "I want to", target_text: "quiero", position: 1, word_count: 1, lego_count: 1}
 
       3_practice_sentences:
-        description: "Practice phrases using the LEGO"
+        description: "Practice phrases using the LEGO (position: 2+)"
         purpose: "Learner uses LEGO in natural sentences"
+        database_position: "2-11 (for 10 phrases)"
         example:
-          - ["I want to go", "我想去", null]
-          - ["I want to eat", "我想吃", null]
+          - {known_text: "I want to go", target_text: "quiero ir", position: 2, word_count: 2, lego_count: 2}
+          - {known_text: "I want to eat", target_text: "quiero comer", position: 3, word_count: 2, lego_count: 2}
 
     sequence_for_A_type:
       description: "A-type (atomic) LEGOs skip components and debut"
       note: "A-type LEGOs are single words, no decomposition needed"
       sequence:
-        - "Practice sentences only (10 phrases)"
+        - "Practice sentences only (10 phrases, positions 2-11)"
 
-    example_M_type_basket:
-      lego: ["I want to", "我想"]
+    example_M_type_output:
+      lego: {known_text: "I want to", target_text: "quiero"}
       type: "M"
-      cycles:
-        - { known: "I", target: "我", is_component: true, word_count: 1 }
-        - { known: "want", target: "想", is_component: true, word_count: 1 }
-        - { known: "I want to", target: "我想", is_debut: true, word_count: 2 }
-        - { known: "I want to go", target: "我想去", word_count: 3 }
-        - { known: "I want to eat", target: "我想吃", word_count: 3 }
-        - { known: "I want to sleep", target: "我想睡觉", word_count: 4 }
-        # ... more practice sentences
+      database_rows:
+        - {position: 0, known_text: "I", target_text: "yo", word_count: 1, lego_count: 1}
+        - {position: 0, known_text: "want", target_text: "quiero", word_count: 1, lego_count: 1}
+        - {position: 1, known_text: "I want to", target_text: "quiero", word_count: 1, lego_count: 1}
+        - {position: 2, known_text: "I want to go", target_text: "quiero ir", word_count: 2, lego_count: 2}
+        - {position: 3, known_text: "I want to eat", target_text: "quiero comer", word_count: 2, lego_count: 2}
+        # ... more practice phrases
 
   ## ==========================================================================
   ## PHRASE GENERATION PROCESS
@@ -262,10 +332,10 @@ phase Phase3BasketGeneration:
           - "I met someone yesterday"
           - "I want to show you something"
         incorrect_usage:
-          - "❌ I think that wants is good"
-          - "❌ This is said"
-          - "❌ I know met"
-          - "❌ Do you have to show?"
+          - "I think that wants is good"
+          - "This is said"
+          - "I know met"
+          - "Do you have to show?"
 
       noun_legos:
         examples: ["coffee", "something", "woman"]
@@ -297,9 +367,21 @@ phase Phase3BasketGeneration:
         really_short_1_2_words: 2       # Fragments OK, show bare LEGO
         quite_short_3_words: 2          # Complete thoughts
         longer_4_5_words: 2             # Complete thoughts
-        long_6_plus_words: 4            # Conversational gold ⭐
+        long_6_plus_words: 4            # Conversational gold
 
-      phrase_format: "[english, spanish, pattern_code_or_null, word_count]"
+      output_format:
+        description: "Each phrase becomes a row in course_practice_phrases"
+        fields:
+          - "course_code: from input LEGO"
+          - "seed_number: from input LEGO"
+          - "lego_index: from input LEGO"
+          - "position: 2-11 for practice phrases"
+          - "known_text: English phrase"
+          - "target_text: Spanish phrase"
+          - "word_count: count of target language words"
+          - "target_syllable_count: syllable count of target phrase (for cognitive load)"
+          - "lego_count: count of LEGOs used in phrase"
+          - "status: 'draft'"
 
       requirements_for_all_phrases:
         - "GATE Compliance: Every Spanish word must be in whitelist"
@@ -310,9 +392,14 @@ phase Phase3BasketGeneration:
 
     STEP_4_SPECIAL_RULES:
       final_lego_rule:
-        condition: "is_final_lego: true"
+        condition: "Last LEGO in seed (highest lego_index)"
         requirement: "Phrase #10 MUST be the complete seed sentence"
-        example: "[\"I want to speak Spanish with you now.\", \"Quiero hablar español contigo ahora.\", null, 7]"
+        example:
+          position: 11
+          known_text: "I want to speak Spanish with you now."
+          target_text: "Quiero hablar espanol contigo ahora."
+          word_count: 5
+          lego_count: 5
 
       recency_priority:
         principle: "Prioritize vocabulary from 5 previous seeds"
@@ -335,72 +422,100 @@ phase Phase3BasketGeneration:
         description: "Extract words from Spanish phrase"
         method: "Split on spaces and punctuation, lowercase all"
         example:
-          phrase: "Quiero hablar español."
-          extracted: ["quiero", "hablar", "español"]
+          phrase: "Quiero hablar espanol."
+          extracted: ["quiero", "hablar", "espanol"]
 
       STEP_2_CHECK:
         description: "Check each word against whitelist"
         checks:
-          - "Is 'quiero' in whitelist? ✅"
-          - "Is 'hablar' in whitelist? ✅"
-          - "Is 'español' in whitelist? ✅"
+          - "Is 'quiero' in whitelist?"
+          - "Is 'hablar' in whitelist?"
+          - "Is 'espanol' in whitelist?"
 
-      STEP_3_REJECT:
-        condition: "If ANY word is missing"
+      STEP_3_SYLLABLE_CHECK:
+        description: "Check syllable count for cognitive load"
+        max_syllables: 25
+        method: "Count syllables in target phrase (vowel cluster estimation)"
+        rationale: "Phrases over 25 syllables create excessive cognitive load for learners"
+        example:
+          phrase: "Quiero hablar espanol contigo ahora mismo"
+          syllables: 14
+          status: "PASS (under 25)"
+
+      STEP_4_REJECT:
+        condition: "If ANY word is missing OR syllable count exceeds 25"
         action: "REJECT phrase, generate replacement"
+
+    validation_error_types:
+      - "missing_lego: Phrase doesn't contain the complete LEGO"
+      - "gate_target: Target text contains unknown vocabulary"
+      - "gate_known: Known text contains unknown vocabulary"
+      - "syllable_overload: Phrase exceeds 25 syllables (cognitive load limit)"
 
     common_mistakes:
       mistake_1:
         whitelist_has: "quiero (I want)"
-        wrong: "Quiere hablar español (quiere not in whitelist)"
-        correct: "Quiero hablar español (quiero is in whitelist)"
+        wrong: "Quiere hablar espanol (quiere not in whitelist)"
+        correct: "Quiero hablar espanol (quiero is in whitelist)"
 
       mistake_2:
         whitelist_has: "estoy (I am)"
-        wrong: "Ella está aquí (está not in whitelist)"
-        correct: "Estoy aquí (estoy is in whitelist)"
+        wrong: "Ella esta aqui (esta not in whitelist)"
+        correct: "Estoy aqui (estoy is in whitelist)"
 
     critical_rule: "NO conjugations, NO variations - exact forms only"
 
   ## ==========================================================================
-  ## OUTPUT FORMAT
+  ## OUTPUT: DATABASE INSERT
   ## ==========================================================================
 
   output:
-    description: "Return SAME scaffold JSON with practice_phrases filled"
+    description: "Insert practice phrases into course_practice_phrases table"
 
-    do_not_modify:
-      - "version, agent_id, seed_range"
-      - "whitelist arrays"
-      - "is_final_lego flags"
-      - "seed_pair data"
+    insert_statement: |
+      INSERT INTO course_practice_phrases (
+        course_code,
+        seed_number,
+        lego_index,
+        position,
+        known_text,
+        target_text,
+        word_count,
+        target_syllable_count,
+        lego_count,
+        status
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'draft')
+      ON CONFLICT (course_code, seed_number, lego_index, position)
+      DO UPDATE SET
+        known_text = EXCLUDED.known_text,
+        target_text = EXCLUDED.target_text,
+        word_count = EXCLUDED.word_count,
+        target_syllable_count = EXCLUDED.target_syllable_count,
+        lego_count = EXCLUDED.lego_count,
+        status = 'draft',
+        updated_at = now();
 
-    must_modify:
-      - "practice_phrases arrays (fill them in)"
-      - "phrase_distribution (update to match actual counts)"
-      - "generation_stage (change to 'PHRASES_GENERATED')"
+    position_mapping:
+      - "0: Component phrases (M-type only)"
+      - "1: LEGO debut phrase"
+      - "2-11: Practice phrases (10 total)"
 
     example_output:
-      seed_id: "S0001"
-      lego_id: "S0001L01"
-      lego: ["I want", "quiero"]
+      seed_number: 1
+      lego_index: 1
+      lego: {known_text: "I want", target_text: "quiero"}
       type: "A"
-      practice_phrases:
-        - ["I want", "quiero", null, 1]
-        - ["I want coffee", "quiero café", null, 2]
-        - ["I want to speak", "quiero hablar", null, 3]
-        - ["I want to learn Spanish", "quiero aprender español", null, 4]
-        - ["I want to speak Spanish now", "quiero hablar español ahora", null, 5]
-        - ["I want to speak Spanish with you", "quiero hablar español contigo", null, 6]
-        - ["I want to speak with you now", "quiero hablar contigo ahora", null, 6]
-        - ["I want to learn Spanish with you", "quiero aprender español contigo", null, 6]
-        - ["I want to speak Spanish with someone", "quiero hablar español con alguien", null, 7]
-        - ["I want to speak Spanish with you now", "quiero hablar español contigo ahora", null, 7]
-      phrase_distribution:
-        really_short_1_2: 2
-        quite_short_3: 2
-        longer_4_5: 2
-        long_6_plus: 4
+      inserted_rows:
+        - {position: 2, known_text: "I want", target_text: "quiero", word_count: 1, lego_count: 1}
+        - {position: 3, known_text: "I want coffee", target_text: "quiero cafe", word_count: 2, lego_count: 2}
+        - {position: 4, known_text: "I want to speak", target_text: "quiero hablar", word_count: 2, lego_count: 2}
+        - {position: 5, known_text: "I want to learn Spanish", target_text: "quiero aprender espanol", word_count: 3, lego_count: 3}
+        - {position: 6, known_text: "I want to speak Spanish now", target_text: "quiero hablar espanol ahora", word_count: 4, lego_count: 4}
+        - {position: 7, known_text: "I want to speak Spanish with you", target_text: "quiero hablar espanol contigo", word_count: 4, lego_count: 4}
+        - {position: 8, known_text: "I want to speak with you now", target_text: "quiero hablar contigo ahora", word_count: 4, lego_count: 4}
+        - {position: 9, known_text: "I want to learn Spanish with you", target_text: "quiero aprender espanol contigo", word_count: 4, lego_count: 4}
+        - {position: 10, known_text: "I want to speak Spanish with someone", target_text: "quiero hablar espanol con alguien", word_count: 5, lego_count: 5}
+        - {position: 11, known_text: "I want to speak Spanish with you now", target_text: "quiero hablar espanol contigo ahora", word_count: 5, lego_count: 5}
 
   ## ==========================================================================
   ## QUALITY CHECKLIST (Per LEGO)
@@ -413,13 +528,17 @@ phase Phase3BasketGeneration:
       - "10 phrases generated (exactly 10)"
       - "Distribution: 2-2-2-4 (short-quite short-longer-long)"
       - "ALL Spanish words in whitelist (zero violations)"
+      - "All phrases under 25 syllables (cognitive load limit)"
       - "All phrases sound natural in BOTH languages"
       - "Word class used correctly (verb as verb, noun as noun)"
-      - "Progressive complexity (simple → complex)"
+      - "Progressive complexity (simple -> complex)"
       - "Thematic coherence (relates to seed theme)"
       - "If final LEGO: phrase 10 is complete seed sentence"
       - "No template patterns detected"
       - "Extended thinking used for challenging LEGOs"
+      - "word_count accurately calculated for each phrase"
+      - "target_syllable_count accurately calculated for each phrase"
+      - "lego_count accurately calculated for each phrase"
 
   ## ==========================================================================
   ## MULTI-MASTER ORCHESTRATION (v10.2)
@@ -463,17 +582,17 @@ phase Phase3BasketGeneration:
         action: "Flag for attention, may need intervention"
 
     worker_tracking:
-      description: "Workers tracked by LEGO uploads, not browser sessions"
+      description: "Workers tracked by database inserts, not browser sessions"
 
       worker_status:
-        pending: "No uploads received yet"
-        running: "At least one upload received"
-        complete: "All assigned LEGOs uploaded"
+        pending: "No inserts received yet"
+        running: "At least one insert received"
+        complete: "All assigned LEGOs processed"
 
       completion_detection: |
-        When a LEGO basket is uploaded via POST /upload-lego,
-        the server checks the uploader_hint to identify the worker
-        and updates worker.legosUploaded count.
+        When practice phrases are inserted via database,
+        the server queries course_practice_phrases to track progress
+        and updates worker status accordingly.
 
     data_model:
       job:
@@ -510,9 +629,13 @@ phase Phase3BasketGeneration:
           status: string
           masters: array of master objects (when available)
 
-      upload_tracking:
-        endpoint: "POST /upload-lego"
-        side_effect: "Updates worker.legosUploaded and master.legosReceived"
+      progress_tracking:
+        method: "Query course_practice_phrases table"
+        query: |
+          SELECT seed_number, lego_index, COUNT(*) as phrase_count
+          FROM course_practice_phrases
+          WHERE course_code = $1 AND status = 'draft'
+          GROUP BY seed_number, lego_index;
 
     monitoring:
       component: "AgentSwimlane.vue"
@@ -535,10 +658,24 @@ phase Phase3BasketGeneration:
       the system supports intelligent resume to continue from where it left off.
 
     mechanism:
-      - "Query lego_baskets.json for existing baskets"
-      - "Compare against expected LEGOs from lego_pairs.json"
-      - "Calculate missing LEGOs"
+      - "Query course_practice_phrases for existing phrases"
+      - "Compare against expected LEGOs from course_legos (is_new=true, status='released')"
+      - "Calculate missing LEGOs (those without practice phrases)"
       - "Launch new job targeting only missing LEGOs"
+
+    missing_legos_query: |
+      SELECT cl.* FROM course_legos cl
+      LEFT JOIN (
+        SELECT DISTINCT course_code, seed_number, lego_index
+        FROM course_practice_phrases
+        WHERE position >= 2  -- Has practice phrases
+      ) cpp ON cpp.course_code = cl.course_code
+           AND cpp.seed_number = cl.seed_number
+           AND cpp.lego_index = cl.lego_index
+      WHERE cl.course_code = $1
+        AND cl.is_new = true
+        AND cl.status = 'released'
+        AND cpp.course_code IS NULL;
 
     trigger: "Re-launch /launch-15-masters with same courseCode"
     behavior: "System detects existing progress and resumes"
@@ -554,28 +691,53 @@ phase Phase3BasketGeneration:
   ## ==========================================================================
 
   version_history:
+    v11_1:
+      date: "2026-01-12"
+      status: "Production Ready"
+      title: "Syllable Count Validation"
+      changes:
+        - "Added syllable_overload GATE check (max 25 syllables per phrase)"
+        - "Added target_syllable_count field to database output"
+        - "Updated validation_error_types to include syllable_overload"
+        - "Updated quality checklist with syllable count requirements"
+        - "Aligned APML spec with server.cjs implementation"
+
+    v11_0:
+      date: "2026-01-12"
+      status: "Deprecated"
+      title: "DB-First Architecture"
+      changes:
+        - "BREAKING: Remove all JSON file references (lego_pairs.json, lego_baskets.json, scaffolds)"
+        - "Input: Read from course_legos table WHERE is_new=true AND status='released'"
+        - "Output: Write to course_practice_phrases table"
+        - "Added database schema reference section"
+        - "Updated output format with position, word_count, lego_count fields"
+        - "Updated intelligent resume to use database queries instead of JSON"
+        - "Updated worker tracking to use database inserts instead of file uploads"
+        - "Aligned with database/migrations/002_registry_schema.sql"
+
     v10_2:
       date: "2026-01-06"
-      status: "Production Ready"
+      status: "Deprecated"
       title: "Multi-Master Orchestration Tracking"
       changes:
         - "Added master/worker job tracking data model"
-        - "Document spawn status states (pending → spawning → running → complete/failed)"
+        - "Document spawn status states (pending -> spawning -> running -> complete/failed)"
         - "Upload-based worker completion tracking"
         - "Integration with Agent Swimlane Monitor"
         - "Intelligent resume mechanism for partial failures"
 
     v10_1:
       date: "2025-12-03"
-      status: "Production Ready"
+      status: "Deprecated"
       title: "Basket Cycle Sequence"
       changes:
         - "Added LEGO Debut cycle for M-type LEGOs"
-        - "Documented component → debut → practice sequence"
+        - "Documented component -> debut -> practice sequence"
 
     v5_0:
       date: "2025-11-09"
-      status: "Production Ready"
+      status: "Deprecated"
       title: "Staged Pipeline with Correct Whitelist Logic"
       changes:
         - "Separated mechanical (whitelist) from linguistic (phrases)"

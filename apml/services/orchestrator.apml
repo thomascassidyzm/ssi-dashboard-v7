@@ -1,14 +1,14 @@
 # APML: Orchestrator Service
-# Version: 1.0.0 (2026-01-03)
+# Version: 1.1.0 (2026-01-12)
 # Status: CANONICAL - This is the source of truth
 # Type: SERVICE SPECIFICATION
 
 service Orchestrator:
   name: "SSi Automation Orchestrator"
   purpose: "Coordinate multi-agent course generation and phase execution"
-  version: "1.0.0"
+  version: "1.1.0"
   port: 3456
-  script: "services/orchestration/automation_server.cjs"
+  script: "services/orchestration/orchestrator.cjs"
 
   ## ==========================================================================
   ## OVERVIEW
@@ -32,80 +32,528 @@ service Orchestrator:
   ## ==========================================================================
 
   endpoints:
+    ## Health & Status
     health:
       path: "GET /health"
       description: "Health check"
-      response: '{"status": "healthy", "uptime": 12345}'
+      response: '{"status": "ok", "uptime": 12345, "version": "1.1.0"}'
 
-    status:
-      path: "GET /status"
-      description: "Full service mesh status"
-      response: |
-        {
-          "orchestrator": "healthy",
-          "phase1_translation": "healthy",
-          "phase1_lego": "healthy",
-          "phase3_basket": "healthy",
-          "phase8_audio": "healthy",
-          "production_api": "healthy"
-        }
+    health_all:
+      path: "GET /health/all"
+      description: "Health check for all services in mesh"
+
+    api_health:
+      path: "GET /api/health"
+      description: "API health check with port info"
 
     ## Course Management
-    courses:
-      path: "GET /courses"
-      description: "List all courses"
+    list_courses:
+      path: "GET /api/courses"
+      description: "List all available courses"
+
+    get_course:
+      path: "GET /api/courses/:courseCode"
+      description: "Get course details"
+
+    course_exists:
+      path: "GET /api/courses/:courseCode/exists"
+      description: "Check if course exists"
 
     course_status:
-      path: "GET /courses/:courseCode/status"
+      path: "GET /api/courses/:courseCode/status"
       description: "Get course pipeline status"
 
+    course_progress:
+      path: "GET /api/courses/:courseCode/progress"
+      description: "Get course progress across phases"
+
+    course_analyze:
+      path: "GET /api/courses/:courseCode/analyze"
+      description: "Analyze course content"
+
+    create_course:
+      path: "POST /api/courses/create"
+      description: "Create a new course"
+
+    sync_course:
+      path: "POST /api/courses/:courseCode/sync"
+      description: "Sync course data"
+
     ## Phase Execution
-    run_phase:
-      path: "POST /run-phase"
-      description: "Execute a specific phase"
-      body:
-        courseCode: "spa_for_eng"
-        phase: "translation | lego | basket"
-        seedRange: "S0001-S0100"
-        options:
-          dryRun: false
-          force: false
+    start_phase:
+      path: "POST /api/courses/:courseCode/start-phase"
+      description: "Start a specific phase for a course"
 
-    ## Multi-Agent Orchestration
-    spawn_agents:
-      path: "POST /spawn-agents"
-      description: "Launch multiple Claude agents for parallel work"
-      body:
-        courseCode: "spa_for_eng"
-        seedRange: "S0001-S0100"
-        agentCount: 5
-        phase: "translation"
+    phase_complete:
+      path: "POST /phase-complete"
+      description: "Mark a phase as complete (called by phase servers)"
 
-    agent_status:
-      path: "GET /agents/status"
-      description: "Status of all active agents"
+    ## Phase 1: Translation
+    phase1_submit:
+      path: "POST /api/phase1/:courseCode/submit"
+      description: "Submit Phase 1 translation"
+
+    phase1_upload_batch:
+      path: "POST /api/phase1/:courseCode/upload-batch"
+      description: "Upload batch of Phase 1 translations"
+
+    phase1_master_complete:
+      path: "POST /api/phase1/:courseCode/master-complete"
+      description: "Mark Phase 1 as complete"
+
+    phase1_stop:
+      path: "POST /phase1/stop/:courseCode"
+      description: "Stop Phase 1 processing"
+
+    ## Phase 2: Conflict Resolution
+    phase2_draft:
+      path: "GET /api/phase2/:courseCode/draft"
+      description: "Get Phase 2 draft LEGOs"
+
+    phase2_seeds:
+      path: "GET /api/phase2/:courseCode/seeds"
+      description: "Get Phase 2 seeds"
+
+    phase2_upload:
+      path: "POST /api/phase2/:courseCode/upload"
+      description: "Upload Phase 2 conflict resolution"
+
+    phase2_upload_batch:
+      path: "POST /api/phase2/:courseCode/upload-batch"
+      description: "Upload batch of Phase 2 resolutions"
+
+    phase2_master_complete:
+      path: "POST /api/phase2/:courseCode/master-complete"
+      description: "Mark Phase 2 as complete"
+
+    phase2_stats:
+      path: "GET /api/courses/:courseCode/phase2-stats"
+      description: "Get Phase 2 statistics"
+
+    ## Phase 3: Basket Generation
+    phase3_submit:
+      path: "POST /api/phase3/:courseCode/submit"
+      description: "Submit Phase 3 baskets"
+      aliases:
+        - "POST /api/phase5/:courseCode/submit (legacy)"
+
+    phase3_validate:
+      path: "POST /api/courses/:courseCode/phase/3/validate"
+      description: "Validate Phase 3 baskets"
+
+    phase3_infinitive_check:
+      path: "POST /api/courses/:courseCode/phase/3/infinitive-check"
+      description: "Check infinitive forms in baskets"
+
+    phase3_fix_collisions:
+      path: "POST /api/courses/:courseCode/phase/3/fix-collisions"
+      description: "Fix FD/LUT collisions in baskets"
+
+    phase3_start:
+      path: "POST /phase3/start"
+      description: "Start Phase 3 basket generation"
+
+    phase3_stop:
+      path: "POST /phase3/stop/:courseCode"
+      description: "Stop Phase 3 processing"
+
+    phase3_abort:
+      path: "POST /phase5/abort/:courseCode"
+      description: "Abort Phase 3 processing (legacy route)"
+
+    ## Basket Management
+    baskets_gaps:
+      path: "GET /api/courses/:courseCode/baskets/gaps"
+      description: "Get missing baskets"
+
+    baskets_cleanup:
+      path: "POST /api/courses/:courseCode/baskets/cleanup"
+      description: "Cleanup baskets"
+
+    baskets_regenerate:
+      path: "POST /api/courses/:courseCode/baskets/regenerate"
+      description: "Regenerate baskets"
+
+    upload_basket:
+      path: "POST /upload-basket"
+      description: "Upload a single basket"
+
+    ## Phase 8: Audio Generation (proxied to port 3465)
+    audio_plan:
+      path: "POST /api/audio/plan"
+      description: "Get audio generation plan"
+      aliases:
+        - "POST /api/phase8/plan (legacy)"
+
+    audio_start:
+      path: "POST /api/audio/start"
+      description: "Start audio generation"
+      aliases:
+        - "POST /api/audio/generate"
+        - "POST /api/phase8/start (legacy)"
+
+    audio_status:
+      path: "GET /api/audio/status/:courseCode"
+      description: "Get audio generation status"
+      aliases:
+        - "GET /api/audio/generation-status/:courseCode"
+        - "GET /api/phase8/status/:courseCode (legacy)"
+
+    audio_progress:
+      path: "GET /api/audio/progress/:courseCode"
+      description: "Get audio generation progress"
+
+    audio_continue:
+      path: "POST /api/audio/continue"
+      description: "Continue audio generation"
+      aliases:
+        - "POST /api/phase8/continue (legacy)"
+
+    audio_regenerate:
+      path: "POST /api/audio/regenerate"
+      description: "Regenerate specific audio"
+      aliases:
+        - "POST /api/phase8/regenerate (legacy)"
+
+    audio_regenerate_role:
+      path: "POST /api/audio/regenerate-role/:courseCode"
+      description: "Regenerate audio for a role"
+
+    audio_regenerate_presentations:
+      path: "POST /api/audio/regenerate-presentations/:courseCode"
+      description: "Regenerate presentation audio"
+
+    audio_qc_report:
+      path: "GET /api/audio/qc-report/:courseCode"
+      description: "Get audio QC report"
+      aliases:
+        - "GET /api/phase8/qc-report/:courseCode (legacy)"
+
+    audio_status_all:
+      path: "GET /api/audio/status"
+      description: "Get status of all audio jobs"
+
+    audio_voices:
+      path: "GET /api/audio/voices"
+      description: "Get available TTS voices"
+
+    audio_stream:
+      path: "GET /api/audio/stream/:uuid"
+      description: "Stream audio file by UUID"
+
+    audio_random_sample:
+      path: "GET /api/audio/random-sample/:courseCode/:role"
+      description: "Get random audio sample for QC"
+
+    audio_random_cycle:
+      path: "GET /api/audio/random-cycle/:courseCode"
+      description: "Get random audio cycle for QC"
+
+    audio_flag_sample:
+      path: "POST /api/audio/flag-sample"
+      description: "Flag audio sample for review"
+
+    ## Manifest Compilation (Phase 9 - proxied to port 3466)
+    manifest_submit:
+      path: "POST /api/manifest/:courseCode/submit"
+      description: "Submit manifest compilation request"
+      aliases:
+        - "POST /api/phase7/:courseCode/submit (legacy)"
+
+    manifest_regenerate:
+      path: "POST /api/courses/:courseCode/regenerate/manifest"
+      description: "Regenerate course manifest"
+      aliases:
+        - "POST /api/courses/:courseCode/regenerate/phase7 (legacy)"
+
+    regenerate_manifest_legacy:
+      path: "POST /api/regenerate-manifest"
+      description: "Regenerate manifest (legacy)"
+
+    ## Voice Configuration
+    voice_config_get:
+      path: "GET /api/courses/:courseCode/voice-config"
+      description: "Get voice configuration for course"
+
+    voice_config_update:
+      path: "PUT /api/courses/:courseCode/voice-config"
+      description: "Update voice configuration"
+
+    voices_discover:
+      path: "GET /api/voices/discover/:languageCode"
+      description: "Discover available voices for language"
+
+    voices_preview:
+      path: "POST /api/voices/preview"
+      description: "Generate voice preview"
+
+    voices_samples:
+      path: "GET /api/voices/samples/:languageCode"
+      description: "Get voice samples for language"
+
+    ## Preview/Sample Generation
+    sample_phrases:
+      path: "GET /api/courses/:courseCode/sample-phrases"
+      description: "Get sample phrases for preview"
+
+    preview_generate:
+      path: "POST /api/courses/:courseCode/preview/generate"
+      description: "Generate preview audio"
+
+    preview_generate_single:
+      path: "POST /api/courses/:courseCode/preview/generate-single"
+      description: "Generate single preview"
+
+    preview_compare:
+      path: "POST /api/courses/:courseCode/preview/compare"
+      description: "Compare voice previews"
+
+    preview_delete:
+      path: "DELETE /api/courses/:courseCode/preview/:previewId"
+      description: "Delete preview"
+
+    preview_cleanup:
+      path: "POST /api/courses/:courseCode/preview/cleanup"
+      description: "Cleanup preview files"
+
+    ## Pipeline Management
+    pipelines_list:
+      path: "GET /api/pipelines"
+      description: "List all pipelines"
+
+    pipelines_active:
+      path: "GET /api/pipelines/active"
+      description: "Get active pipelines"
+
+    pipeline_get:
+      path: "GET /api/pipelines/:pipelineId"
+      description: "Get pipeline by ID"
+
+    pipeline_create:
+      path: "POST /api/courses/:courseCode/pipeline"
+      description: "Create pipeline for course"
+
+    pipeline_get_course:
+      path: "GET /api/courses/:courseCode/pipeline"
+      description: "Get pipeline for course"
+
+    pipeline_update_phase:
+      path: "PUT /api/pipelines/:pipelineId/phases/:phase"
+      description: "Update pipeline phase"
+
+    pipeline_add_job:
+      path: "POST /api/pipelines/:pipelineId/jobs"
+      description: "Add job to pipeline"
+
+    pipeline_get_jobs:
+      path: "GET /api/pipelines/:pipelineId/jobs"
+      description: "Get pipeline jobs"
+
+    ## Validation
+    validate_all:
+      path: "GET /api/courses/validate/all"
+      description: "Validate all courses"
+
+    validate_course:
+      path: "GET /api/courses/:courseCode/validate"
+      description: "Validate specific course"
+
+    ## Cancellation
+    cancel_course:
+      path: "POST /api/cancel/:courseCode"
+      description: "Cancel processing for course"
+
+    cancel_all:
+      path: "POST /api/cancel-all"
+      description: "Cancel all processing"
+
+    force_kill:
+      path: "POST /api/force-kill/:courseCode"
+      description: "Force kill course processing"
+
+    ## Jobs & Events
+    jobs_list:
+      path: "GET /api/jobs"
+      description: "List all jobs"
+
+    events_push:
+      path: "POST /api/events/:courseCode"
+      description: "Push event for course"
+
+    events_state:
+      path: "GET /api/events/:courseCode/state"
+      description: "Get event state for course"
+
+    events_clear:
+      path: "DELETE /api/events/:courseCode"
+      description: "Clear events for course"
 
     ## VFS Management
-    vfs_list:
-      path: "GET /vfs/:courseCode"
-      description: "List VFS contents for a course"
-
     vfs_read:
-      path: "GET /vfs/:courseCode/:filename"
-      description: "Read a VFS file"
+      path: "GET /api/vfs/courses/:code/:file"
+      description: "Read VFS file"
 
-    vfs_write:
-      path: "POST /vfs/:courseCode/:filename"
-      description: "Write a VFS file"
+    course_files:
+      path: "GET /api/courses/:courseCode/files/:filename"
+      description: "Get course file"
 
-    ## Git Operations
-    git_status:
-      path: "GET /git/status"
-      description: "Git repository status"
+    phase_outputs_get:
+      path: "GET /api/courses/:courseCode/phase-outputs/:phase/:file"
+      description: "Get phase output file"
 
-    git_merge:
-      path: "POST /git/merge"
-      description: "Merge agent branch to main"
+    phase_outputs_put:
+      path: "PUT /api/courses/:courseCode/phase-outputs/:phase/:file"
+      description: "Update phase output file"
+
+    ## Languages & Seeds
+    languages_list:
+      path: "GET /api/languages"
+      description: "List supported languages"
+
+    canonical_seeds:
+      path: "GET /api/canonical-seeds"
+      description: "Get canonical seed phrases"
+
+    ## Flags
+    flags_set:
+      path: "POST /api/courses/:courseCode/flags"
+      description: "Set course flags"
+
+    flags_get:
+      path: "GET /api/courses/:courseCode/flags"
+      description: "Get course flags"
+
+    flags_delete:
+      path: "DELETE /api/courses/:courseCode/flags/:flagId"
+      description: "Delete course flag"
+
+    ## Miscellaneous
+    translations_update:
+      path: "PUT /api/courses/:courseCode/translations/:seedId"
+      description: "Update translation for seed"
+
+    phase_intelligence:
+      path: "GET /api/phase-intelligence/:phase"
+      description: "Get phase intelligence/prompts"
+
+    zut_examples:
+      path: "GET /api/zut-examples/:known/:target"
+      description: "Get ZUT examples"
+
+    course_script:
+      path: "GET /api/courses/:courseCode/script"
+      description: "Get course script"
+
+    course_agents:
+      path: "GET /api/courses/:courseCode/agents"
+      description: "Get active agents for course"
+
+    ## Language Brief
+    language_brief_get:
+      path: "GET /api/language-brief/:known/:target"
+      description: "Get language brief"
+
+    language_brief_create:
+      path: "POST /api/language-brief"
+      description: "Create language brief"
+
+    language_brief_update:
+      path: "PUT /api/language-brief/:known/:target"
+      description: "Update language brief"
+
+    language_brief_generate:
+      path: "POST /api/language-brief/generate"
+      description: "Generate language brief"
+
+    ## Prompts
+    prompts_get:
+      path: "GET /api/prompts/:phaseCode"
+      description: "Get prompt for phase"
+
+    prompts_versions:
+      path: "GET /api/prompts/:phaseCode/versions"
+      description: "Get prompt versions"
+
+    prompts_create:
+      path: "POST /api/prompts/:phaseCode"
+      description: "Create new prompt"
+
+    prompts_activate:
+      path: "POST /api/prompts/:phaseCode/:version/activate"
+      description: "Activate prompt version"
+
+    ## Briefs
+    briefs_get:
+      path: "GET /api/briefs/:knownCode/:targetCode"
+      description: "Get brief for language pair"
+
+    briefs_create:
+      path: "POST /api/briefs/:knownCode/:targetCode"
+      description: "Create brief for language pair"
+
+    ## Preview
+    preview_list:
+      path: "GET /api/preview/:courseCode"
+      description: "Get preview for course"
+
+    preview_phase:
+      path: "GET /api/preview/:courseCode/:phase"
+      description: "Get preview for specific phase"
+
+    ## Scaffolds
+    scaffolds_batch:
+      path: "GET /scaffolds/:courseCode/batch"
+      description: "Get scaffold batch"
+
+    scaffolds_seed:
+      path: "GET /scaffolds/:courseCode/seed/:seedId"
+      description: "Get scaffold for seed"
+
+    ## Master Heartbeat
+    master_heartbeat:
+      path: "POST /master-heartbeat"
+      description: "Master agent heartbeat"
+
+    masters_get:
+      path: "GET /masters/:courseCode/:phase"
+      description: "Get master for phase"
+
+    ## Course Generation
+    generate_course:
+      path: "POST /api/courses/generate"
+      description: "Generate new course"
+
+    ## Modes & Profiles
+    modes_list:
+      path: "GET /api/modes"
+      description: "List processing modes"
+
+    machine_profiles:
+      path: "GET /api/machine-profiles"
+      description: "List machine profiles"
+
+    machine_profile_pattern:
+      path: "GET /api/machine-profiles/:profileId/pattern"
+      description: "Get machine profile pattern"
+
+    ## Import
+    import_course:
+      path: "POST /api/import-course"
+      description: "Import course from external source"
+
+    ## Documentation
+    docs_list:
+      path: "GET /api/docs/list"
+      description: "List available docs"
+
+    docs_get:
+      path: "GET /api/docs/:slug"
+      description: "Get doc by slug"
+
+    ## Production API Proxy
+    production_proxy:
+      path: "/api/production/*"
+      description: "Proxied to production-api on port 3470"
 
   ## ==========================================================================
   ## MULTI-AGENT COORDINATION
@@ -186,43 +634,81 @@ service Orchestrator:
         - "Git commit detected"
 
   ## ==========================================================================
-  ## SERVICE MESH
+  ## SERVICE MESH (PHASE_SERVERS)
   ## ==========================================================================
 
   service_mesh:
-    description: "Inter-service communication"
+    description: |
+      Inter-service communication. The orchestrator maintains a PHASE_SERVERS
+      mapping that routes requests to phase-specific services. Each service
+      can be overridden via environment variables for remote/tunnel access.
 
-    proxied_services:
-      phase1_translation:
+    phase_servers:
+      ## PHASE_SERVERS constant in orchestrator.cjs
+      1_translation:
         port: 3457
-        routes:
-          - "POST /translate"
-          - "GET /status"
+        env_var: "PHASE1_TRANSLATION_URL"
+        default: "http://localhost:3457"
+        description: "Phase 1: Translation + LEGO Extraction"
 
-      phase1_lego:
+      1_lego:
         port: 3458
-        routes:
-          - "POST /extract"
-          - "GET /status"
+        env_var: "PHASE1_LEGO_URL"
+        default: "http://localhost:3458"
+        description: "Phase 1 (LEGO extraction service)"
 
-      phase3_basket:
+      2:
+        port: 3458
+        env_var: "PHASE1_LEGO_URL"
+        default: "http://localhost:3458"
+        description: "Phase 2: Conflict Resolution (shares server with 1_lego)"
+
+      3:
         port: 3459
-        routes:
-          - "POST /generate"
-          - "GET /status"
+        env_var: "PHASE3_URL"
+        default: "http://localhost:3459"
+        description: "Phase 3: Basket Generation (APML v9.0)"
 
-      phase8_audio:
+      8:
         port: 3465
-        routes:
-          - "POST /plan"
-          - "POST /generate"
-          - "GET /status/:courseCode"
-          - "GET /inventory/:courseCode"
+        env_var: "PHASE8_URL"
+        fallback_env: "AUDIO_URL"
+        default: "http://localhost:3465"
+        description: "Phase 8: Audio Generation (TTS)"
 
-      production_api:
-        port: 3470
-        routes:
-          - "All /api/production/* routes"
+      9:
+        port: 3466
+        env_var: "PHASE9_URL"
+        default: "http://localhost:3466"
+        description: "Phase 9: Manifest Compilation (Supabase-backed)"
+
+      manifest:
+        port: 3464
+        env_var: "MANIFEST_URL"
+        default: "http://localhost:3464"
+        description: "Legacy Phase 7 - DEPRECATED"
+
+      audio:
+        port: 3465
+        env_var: "AUDIO_URL"
+        default: "http://localhost:3465"
+        description: "Alias for Phase 8"
+
+    legacy_aliases:
+      ## LEGACY_PHASE_ALIASES for backward compatibility
+      1: "→ 1_translation (port 3457)"
+      5: "→ Phase 3 (port 3459) - Legacy Phase 5"
+      7: "→ manifest (port 3464) - DEPRECATED"
+      8: "→ Phase 8 (port 3465)"
+      9: "→ Phase 9 (port 3466)"
+
+    production_api:
+      port: 3470
+      env_var: "PRODUCTION_API_URL"
+      default: "http://localhost:3470"
+      description: "Production API for QA, recording, WebSocket"
+      routes:
+        - "All /api/production/* routes proxied"
 
   ## ==========================================================================
   ## DEPENDENCIES
@@ -258,6 +744,7 @@ service Orchestrator:
       6: "Open WebSocket for real-time updates"
 
 ## ============================================================================
-## GENERATED: 2026-01-03
-## APML Orchestrator Service v1.0.0
+## GENERATED: 2026-01-12
+## APML Orchestrator Service v1.1.0
+## Synchronized with orchestrator.cjs - PHASE_SERVERS mapping verified
 ## ============================================================================

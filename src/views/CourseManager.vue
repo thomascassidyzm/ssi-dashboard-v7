@@ -96,6 +96,17 @@
             <div v-else class="text-lg text-slate-200">
               {{ displayName }}
             </div>
+
+            <!-- Language Brief Editor -->
+            <LanguageBriefEditor
+              v-if="effectiveKnownCode && effectiveTargetCode"
+              :known-code="effectiveKnownCode"
+              :target-code="effectiveTargetCode"
+              :known-name="effectiveKnownName"
+              :target-name="effectiveTargetName"
+              @brief-ready="onBriefReady"
+              class="mt-4"
+            />
           </div>
 
           <!-- Course Size -->
@@ -474,6 +485,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { io } from 'socket.io-client'
+import { LanguageBriefEditor } from '../components/generation'
 
 const route = useRoute()
 const router = useRouter()
@@ -582,6 +594,40 @@ const displayName = computed(() => {
   const knownName = languages.value.find(l => l.code === known)?.name || known
   return `${targetName} for ${knownName} speakers`
 })
+
+// Effective language codes (from existing course or new course selection)
+const effectiveKnownCode = computed(() => {
+  const code = props.courseCode || route.params.courseCode
+  if (code) {
+    const [, , known] = code.split('_')
+    return known
+  }
+  return knownLang.value
+})
+
+const effectiveTargetCode = computed(() => {
+  const code = props.courseCode || route.params.courseCode
+  if (code) {
+    const [target] = code.split('_')
+    return target
+  }
+  return targetLang.value
+})
+
+const effectiveKnownName = computed(() => {
+  return languages.value.find(l => l.code === effectiveKnownCode.value)?.name || effectiveKnownCode.value
+})
+
+const effectiveTargetName = computed(() => {
+  return languages.value.find(l => l.code === effectiveTargetCode.value)?.name || effectiveTargetCode.value
+})
+
+// Language brief state
+const languageBrief = ref(null)
+
+function onBriefReady(brief) {
+  languageBrief.value = brief
+}
 
 const canCreateCourse = computed(() => {
   return knownLang.value && targetLang.value && knownLang.value !== targetLang.value

@@ -1,15 +1,16 @@
 # APML Phase 2: Conflict Resolution (Upchunking)
-# Version: 10.1.0 (2025-12-03)
+# Version: 11.0.0 (2026-01-12)
 # Status: Production-ready
 # Server Port: 3458
 #
 # Source prompts:
 #   - public/docs/phase_intelligence/phase_2_conflict_resolution.md
+#   - apml/core/cik-lego-principles-v1.apml
 
 phase Phase2ConflictResolution:
   name: "Phase 2: Conflict Resolution"
   purpose: "Resolve LEGO conflicts through upchunking"
-  version: "10.1.0"
+  version: "11.0.0"
   server_port: 3458
 
   ## ==========================================================================
@@ -17,19 +18,90 @@ phase Phase2ConflictResolution:
   ## ==========================================================================
 
   description: |
-    Phase 2 resolves KNOWN→TARGET conflicts from Phase 1's draft_lego_pairs.json
+    Phase 2 resolves KNOWN->TARGET conflicts from Phase 1's draft LEGOs
     through **upchunking** - creating M-type LEGOs that teach conflicting patterns
     explicitly with disambiguating context.
 
+    **CIK Integration**: Upchunking naturally produces M-type LEGOs, which are
+    the PRIMARY teaching unit per CIK principles. Phase 1 already produces
+    CIK-compliant LEGOs; Phase 2 catches edge cases where single words
+    slipped through that require contextual disambiguation.
+
+  ## ==========================================================================
+  ## DATABASE-FIRST INPUT/OUTPUT
+  ## ==========================================================================
+
   input:
-    file: "draft_lego_pairs.json"
-    location: "S3: s3://ssi-audio-stage/courses/{course_code}/draft_lego_pairs.json"
-    description: "LEGOs from Phase 1 that may have conflicts"
+    source: "course_legos table"
+    query: "SELECT * FROM course_legos WHERE course_code = :course_code AND status = 'draft' ORDER BY seed_number, lego_index"
+    description: "LEGOs from Phase 1 in draft status that may have conflicts"
+
+    columns_used:
+      - id: "UUID primary key"
+      - course_code: "Course identifier (e.g., spa_for_eng)"
+      - seed_number: "Seed position in learning sequence"
+      - lego_index: "Position within seed (1-99)"
+      - lego_id: "Human-readable identifier (e.g., S0001L01)"
+      - type: "A (Atomic) or M (Molecular)"
+      - is_new: "true = first occurrence, false = duplicate/embedded"
+      - known_text: "Source language text"
+      - target_text: "Target language translation"
+      - components: "JSONB array for M-type LEGOs"
+      - status: "draft (input to Phase 2)"
 
   output:
-    file: "lego_pairs.json"
-    location: "S3: s3://ssi-audio-stage/courses/{course_code}/lego_pairs.json"
-    description: "Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)"
+    destination: "course_legos table"
+    description: "Updated LEGOs with is_new flags, upchunked M-types, and released status"
+
+    operations:
+      set_is_new_flags:
+        description: "Mark first occurrence vs duplicates/embedded"
+        logic: |
+          - First occurrence of a LEGO (by known_text+target_text): is_new = true
+          - Exact duplicate appearing later: is_new = false
+          - Embedded LEGO (substring of recent larger LEGO): is_new = false
+
+      create_upchunked_legos:
+        description: "Create new M-type LEGOs when conflicts detected"
+        logic: |
+          - When same KNOWN word maps to multiple TARGET translations
+          - Create M-type LEGO with disambiguating context
+          - Assign next available lego_index within the seed
+          - Set type = 'M', is_new = true, status = 'draft' initially
+
+      release_conflict_free:
+        description: "Promote to released status when conflict-free"
+        query: "UPDATE course_legos SET status = 'released' WHERE course_code = :course_code AND <conflict_resolved>"
+
+  ## ==========================================================================
+  ## CIK PRINCIPLES INTEGRATION
+  ## ==========================================================================
+
+  cik_integration:
+    reference: "apml/core/cik-lego-principles-v1.apml"
+
+    phase_1_compliance: |
+      Phase 1 (LEGO Extraction) already produces CIK-compliant LEGOs:
+      - M-type is the NORM (context needed for ZUT)
+      - A-type is the EXCEPTION (only truly unambiguous words)
+      - Articles/prepositions/conjunctions are absorbed into M-types
+
+    phase_2_role: |
+      Phase 2 catches remaining edge cases:
+      - Words that SEEMED unambiguous but have multiple meanings
+      - Context-dependent translations that slipped through
+      - Upchunking creates M-types with sufficient context for ZUT
+
+    upchunking_as_cik: |
+      Upchunking naturally enforces CIK principles:
+      - Creates M-type LEGOs (the primary CIK teaching unit)
+      - Adds disambiguating context (CIK's core insight)
+      - Ensures ZUT compliance (Zero Uncertainty Test)
+
+    zut_guarantee: |
+      After Phase 2, EVERY LEGO must pass ZUT:
+      When learner hears KNOWN, there is exactly ONE TARGET they should produce.
+      This is the Zero Uncertainty Test from CIK principles.
 
   ## ==========================================================================
   ## CONFLICT TYPES
@@ -39,83 +111,75 @@ phase Phase2ConflictResolution:
     known_to_target:
       description: "Same KNOWN word maps to multiple TARGET translations"
       example:
-        conflict: "'tarde' → 'afternoon' vs 'tarde' → 'late'"
-        resolution: "Create M-type LEGO 'por la tarde' → 'in the afternoon'"
+        conflict: "'tarde' -> 'afternoon' vs 'tarde' -> 'late'"
+        resolution: "Create M-type LEGO 'por la tarde' -> 'in the afternoon'"
 
   ## ==========================================================================
   ## UPCHUNKING ALGORITHM
   ## ==========================================================================
 
   upchunking_algorithm:
-    description: "Create M-type LEGOs with disambiguating context"
+    description: "Create M-type LEGOs with disambiguating context (CIK-compliant)"
 
     steps:
-      1: "Identify all seeds where conflict occurs"
-      2: "Analyze context words around conflicting KNOWN word"
-      3: "Create M-type LEGO with:"
-         - "KNOWN: conflicting word + context (2+ words)"
-         - "TARGET: full translation (2+ words)"
-         - "Type: 'M' (Molecular)"
-      4: "Record resolution in upchunk_resolutions.json"
+      1: "Query all draft LEGOs for the course from course_legos table"
+      2: "Identify conflicts: same known_text with different target_text"
+      3: "For each conflict, analyze surrounding context in the seed"
+      4: "Create M-type LEGO with:"
+         - "known_text: conflicting word + context (2+ words)"
+         - "target_text: full translation (2+ words)"
+         - "type: 'M' (Molecular)"
+         - "components: JSONB array showing build-up"
+      5: "INSERT new upchunked LEGO into course_legos table"
+      6: "Mark original conflicting A-type as deprecated or remove"
 
     example:
       conflict:
         word: "tarde"
         meanings:
           - { target: "afternoon", context: "por la tarde" }
-          - { target: "late", context: "llegó tarde" }
+          - { target: "late", context: "llego tarde" }
 
       resolution:
-        - { id: "UPCHUNK001", type: "M", known: "in the afternoon", target: "por la tarde" }
-        - { id: "UPCHUNK002", type: "M", known: "arrived late", target: "llegó tarde" }
+        - id: "auto-generated UUID"
+          lego_id: "S0089L03"
+          type: "M"
+          known_text: "in the afternoon"
+          target_text: "por la tarde"
+          is_new: true
+          components: "[{\"known\": \"afternoon\", \"target\": \"tarde\"}, {\"known\": \"in the afternoon\", \"target\": \"por la tarde\"}]"
+
+        - id: "auto-generated UUID"
+          lego_id: "S0095L04"
+          type: "M"
+          known_text: "arrived late"
+          target_text: "llego tarde"
+          is_new: true
+          components: "[{\"known\": \"arrived\", \"target\": \"llego\"}, {\"known\": \"arrived late\", \"target\": \"llego tarde\"}]"
 
   ## ==========================================================================
-  ## OUTPUT FORMAT
-  ## ==========================================================================
-
-  output_format:
-    description: "lego_pairs.json (APML v10.1 format)"
-
-    schema:
-      version: "10.1"
-      seeds:
-        - seed_id: "S0001"
-          seed_pair:
-            known: "I want"
-            target: "Dw i eisiau"
-          legos:
-            - id: "S0001L01"
-              type: "A"
-              lego:
-                known: "I"
-                target: "Dw i"
-            - id: "S0001L02"
-              type: "A"
-              lego:
-                known: "want"
-                target: "eisiau"
-
-  ## ==========================================================================
-  ## LEGO REUSE TRACKING
+  ## LEGO REUSE TRACKING (FCFS - First Come First Served)
   ## ==========================================================================
 
   lego_reuse_tracking:
     description: |
-      Phase 2 marks LEGO reuse across the course. Two types of reuse:
+      Phase 2 marks LEGO reuse across the course using FCFS algorithm.
+      Two types of reuse:
+
+    algorithm: "FCFS (First Come First Served)"
 
     exact_duplicates:
       description: "Same LEGO appearing again later in course"
-      detection: "Global check against all previously seen LEGOs"
+      detection: "Global check against all previously seen LEGOs (ordered by seed_number, lego_index)"
       marking:
-        new: false
-        ref: "original seed ID"
+        is_new: false
+        note: "First occurrence keeps is_new: true, all subsequent get is_new: false"
 
     embedded_legos:
       description: "LEGO that appeared as substring within a recent larger LEGO"
       detection: "10-LEGO sliding window, character-level substring match"
       marking:
-        new: false
-        ref: null  # No ref for embedded matches
+        is_new: false
       example:
         container: { known: "to remember a word", target: "recordar una palabra" }
         embedded: { known: "a word", target: "una palabra" }
@@ -128,7 +192,38 @@ phase Phase2ConflictResolution:
 
     character_matching: |
       Uses character-level substring matching (not word boundaries).
-      Works for all languages including Chinese: "说" matches inside "说中文"
+      Works for all languages including Chinese: "shuo" matches inside "shuo zhongwen"
+
+  ## ==========================================================================
+  ## DATABASE SCHEMA REFERENCE
+  ## ==========================================================================
+
+  database_schema:
+    reference: "database/migrations/002_registry_schema.sql"
+
+    course_legos_table:
+      columns:
+        id: "UUID PRIMARY KEY DEFAULT gen_random_uuid()"
+        course_code: "TEXT NOT NULL REFERENCES courses(course_code)"
+        seed_number: "INTEGER NOT NULL CHECK (seed_number > 0)"
+        lego_index: "INTEGER NOT NULL CHECK (lego_index > 0 AND lego_index < 100)"
+        lego_id: "TEXT GENERATED ALWAYS AS ('S' || lpad(seed_number::text, 4, '0') || 'L' || lpad(lego_index::text, 2, '0')) STORED"
+        type: "lego_type NOT NULL (ENUM: 'A', 'M')"
+        is_new: "BOOLEAN NOT NULL"
+        known_text: "TEXT NOT NULL"
+        target_text: "TEXT NOT NULL"
+        components: "JSONB (for M-type LEGOs)"
+        status: "content_status NOT NULL DEFAULT 'draft' (ENUM: 'draft', 'released', 'deprecated')"
+        release_batch: "INTEGER"
+        version: "INTEGER NOT NULL DEFAULT 1"
+        updated_at: "TIMESTAMPTZ NOT NULL DEFAULT now()"
+        created_at: "TIMESTAMPTZ NOT NULL DEFAULT now()"
+
+      constraints:
+        - "UNIQUE(course_code, seed_number, lego_index)"
+
+      triggers:
+        - "course_legos_version_trigger: Auto-increment version on UPDATE"
 
   ## ==========================================================================
   ## AGENT REQUIREMENTS
@@ -137,11 +232,17 @@ phase Phase2ConflictResolution:
   agent_requirements:
     linguistic_judgment: |
       Agent must understand context to determine which meaning applies
-      and create appropriate upchunked LEGOs.
+      and create appropriate upchunked LEGOs (M-types per CIK).
 
     zero_ambiguity_rule: |
-      After upchunking, every LEGO must have ZERO ambiguity:
+      After upchunking, every LEGO must have ZERO ambiguity (ZUT compliance):
       When learner hears KNOWN, there is exactly ONE TARGET they should produce.
+
+    cik_awareness: |
+      Agent should recognize that:
+      - M-type LEGOs are the PRIMARY teaching unit (CIK principle)
+      - A-types are EXCEPTIONS for truly unambiguous words
+      - Upchunking enforces CIK by adding necessary context
 
   ## ==========================================================================
   ## SCRIPTS
@@ -156,9 +257,21 @@ phase Phase2ConflictResolution:
   ## ==========================================================================
 
   version_history:
+    v11_0_0:
+      date: "2026-01-12"
+      status: "Production Ready"
+      changes:
+        - "DB-first architecture: Read from course_legos WHERE status='draft'"
+        - "DB-first output: Update course_legos table directly"
+        - "Removed JSON file references (draft_lego_pairs.json, lego_pairs.json)"
+        - "Integrated CIK principles (upchunking creates M-types)"
+        - "Added ZUT compliance as explicit requirement"
+        - "Added database schema reference section"
+        - "Updated examples to show database operations"
+
     v10_1_1:
       date: "2025-12-03"
-      status: "Production Ready"
+      status: "Deprecated (JSON-based)"
       changes:
         - "Added embedded LEGO detection (10-LEGO sliding window)"
         - "Character-level substring matching for all languages"
@@ -166,8 +279,9 @@ phase Phase2ConflictResolution:
 
     v10_1_0:
       date: "2025-12-03"
-      status: "Production Ready"
+      status: "Deprecated (JSON-based)"
       changes:
         - "Extracted as separate phase from old Phase 3"
         - "Added server_port 3458"
         - "Updated to v10.1 phase numbering"
+
