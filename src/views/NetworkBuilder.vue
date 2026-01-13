@@ -164,7 +164,10 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-const API_BASE = 'http://localhost:3480/api/network-builder'
+// Use ngrok tunnel for production, localhost for dev
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:3480/api/network-builder'
+  : 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/network-builder'
 
 const legos = ref([])
 const phrases = ref([])
