@@ -100,6 +100,11 @@ app.get('/api/network-builder/state', (req, res) => {
   });
 });
 
+// Helper to find LEGO by ID or Chinese text
+function findLego(legos, ref) {
+  return legos.find(l => l.id === ref || l.chinese === ref);
+}
+
 // Add a new LEGO
 app.post('/api/network-builder/lego', (req, res) => {
   const networkId = req.query.network || req.body.network || 'default';
@@ -117,26 +122,38 @@ app.post('/api/network-builder/lego', (req, res) => {
     id,
     chinese,
     english,
-    parents: [...canFollow],
-    children: [...canPrecede],
+    parents: [],
+    children: [],
     addedAt: new Date().toISOString()
   };
 
   net.builder.addLego(id, chinese, english);
 
-  for (const parentId of canFollow) {
-    net.builder.connectPhrase([parentId, id]);
-    const parent = net.legos.find(l => l.id === parentId);
-    if (parent && !parent.children.includes(id)) {
-      parent.children.push(id);
+  // Resolve parent references (can be ID or Chinese text)
+  for (const parentRef of canFollow) {
+    const parent = findLego(net.legos, parentRef);
+    if (parent) {
+      net.builder.connectPhrase([parent.id, id]);
+      if (!parent.children.includes(id)) {
+        parent.children.push(id);
+      }
+      if (!newLego.parents.includes(parent.id)) {
+        newLego.parents.push(parent.id);
+      }
     }
   }
 
-  for (const childId of canPrecede) {
-    net.builder.connectPhrase([id, childId]);
-    const child = net.legos.find(l => l.id === childId);
-    if (child && !child.parents.includes(id)) {
-      child.parents.push(id);
+  // Resolve child references (can be ID or Chinese text)
+  for (const childRef of canPrecede) {
+    const child = findLego(net.legos, childRef);
+    if (child) {
+      net.builder.connectPhrase([id, child.id]);
+      if (!child.parents.includes(id)) {
+        child.parents.push(id);
+      }
+      if (!newLego.children.includes(child.id)) {
+        newLego.children.push(child.id);
+      }
     }
   }
 
