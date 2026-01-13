@@ -120,6 +120,13 @@ const routes = [
     props: true,
     meta: { title: 'Agent Monitor' }
   },
+  // Network Builder - Real-time LEGO network construction
+  {
+    path: '/network-builder',
+    name: 'NetworkBuilder',
+    component: () => import('../views/NetworkBuilder.vue'),
+    meta: { title: 'Network Builder' }
+  },
   {
     path: '/validate',
     name: 'CourseValidator',
