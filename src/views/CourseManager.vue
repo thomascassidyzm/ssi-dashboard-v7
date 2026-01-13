@@ -52,7 +52,7 @@
           <div class="flex items-center gap-3">
             <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Configuration</span>
             <span v-if="!configExpanded && courseCode" class="text-sm text-slate-500">
-              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }}
+              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }} &middot; {{ buildMode === 'builder' ? 'Course Builder' : 'Phases 1-3' }}
             </span>
           </div>
           <svg
@@ -175,6 +175,27 @@
             </div>
           </div>
 
+          <!-- Build Mode -->
+          <div>
+            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+              Build Mode
+            </label>
+            <div class="flex gap-2">
+              <button
+                v-for="mode in buildModes"
+                :key="mode.id"
+                @click="buildMode = mode.id"
+                class="flex-1 px-4 py-3 rounded-lg border transition-all text-sm"
+                :class="buildMode === mode.id
+                  ? 'bg-cyan-600/20 border-cyan-500/50 text-cyan-400'
+                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+              >
+                <div class="font-medium">{{ mode.label }}</div>
+                <div class="text-xs opacity-70 mt-0.5">{{ mode.description }}</div>
+              </button>
+            </div>
+          </div>
+
           <!-- Create Course Button (New Course Only) -->
           <div v-if="isNewCourse" class="pt-2">
             <button
@@ -188,8 +209,8 @@
         </div>
       </section>
 
-      <!-- Phase Progress -->
-      <section class="space-y-4">
+      <!-- Phase Progress (Phases 1-3 mode) -->
+      <section v-if="buildMode === 'phases'" class="space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide">Phase Progress</h2>
           <div v-if="etaDisplay" class="text-sm text-slate-400">
@@ -241,6 +262,72 @@
         </div>
       </section>
 
+      <!-- Course Builder Progress (Builder mode) -->
+      <section v-else class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide">Course Builder</h2>
+          <div v-if="builderProgress.status === 'running'" class="text-sm text-slate-400">
+            <span class="text-cyan-400">Building...</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/30 border rounded-lg p-6"
+          :class="builderProgress.status === 'running' ? 'border-cyan-500/30' : 'border-slate-700/50'"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-slate-500'"></span>
+              <div>
+                <div class="text-xs text-slate-500 uppercase tracking-wide">Single Agent</div>
+                <div class="text-sm font-medium text-slate-200">Sequential LEGO Network</div>
+              </div>
+            </div>
+            <span
+              class="text-xs uppercase tracking-wide px-2 py-0.5 rounded"
+              :class="builderProgress.status === 'running' ? 'bg-cyan-500/20 text-cyan-400' : builderProgress.status === 'complete' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-slate-500'"
+            >
+              {{ builderProgress.status }}
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3">
+            <div
+              class="h-full transition-all duration-500 rounded-full bg-cyan-500"
+              :style="{ width: `${builderProgress.totalSeeds > 0 ? (builderProgress.currentSeed / builderProgress.totalSeeds * 100) : 0}%` }"
+            ></div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.currentSeed }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">/ {{ builderProgress.totalSeeds || seedCount }} seeds</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.legosInserted }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">LEGOs</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.phrasesInserted }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
+            </div>
+            <div>
+              <div class="text-2xl font-mono font-semibold text-slate-200">
+                {{ builderProgress.legosInserted > 0 ? (builderProgress.phrasesInserted / builderProgress.legosInserted).toFixed(1) : '0.0' }}
+              </div>
+              <div class="text-xs text-slate-500 uppercase tracking-wide">Ratio</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Stats Bar -->
       <section class="grid grid-cols-4 gap-4">
         <div
@@ -259,7 +346,7 @@
 
       <!-- Job Control -->
       <section
-        v-if="jobStatus !== 'idle' || hasIncompletePhases"
+        v-if="jobStatus !== 'idle' || hasWorkToDo"
         class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6"
       >
         <div class="flex items-center justify-between">
@@ -276,19 +363,25 @@
 
             <div v-if="jobStatus === 'running'" class="text-sm text-slate-400 space-y-1">
               <div>Elapsed: <span class="font-mono text-slate-300">{{ elapsedTime }}</span></div>
-              <div>Workers: <span class="font-mono text-slate-300">{{ activeWorkers }} active</span></div>
+              <div v-if="buildMode === 'phases'">Workers: <span class="font-mono text-slate-300">{{ activeWorkers }} active</span></div>
+              <div v-if="buildMode === 'builder'">Seed: <span class="font-mono text-slate-300">{{ builderProgress.currentSeed }} / {{ builderProgress.totalSeeds }}</span></div>
               <div v-if="lastActivityAgo">Last activity: <span class="font-mono text-slate-300">{{ lastActivityAgo }}</span></div>
             </div>
 
-            <div v-else-if="hasIncompletePhases" class="text-sm text-slate-400">
-              {{ nextActionDescription }}
+            <div v-else-if="hasWorkToDo" class="text-sm text-slate-400">
+              <template v-if="buildMode === 'builder'">
+                Ready to build {{ seedCount }} seeds with single agent
+              </template>
+              <template v-else>
+                {{ nextActionDescription }}
+              </template>
             </div>
           </div>
 
           <div class="flex gap-3">
-            <!-- Preview Button (when no preview shown) -->
+            <!-- PHASES MODE: Preview Button (when no preview shown) -->
             <button
-              v-if="jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
+              v-if="buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
               @click="fetchPreview"
               :disabled="previewLoading"
               class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-slate-200 font-medium rounded-lg transition-colors flex items-center gap-2"
@@ -300,13 +393,22 @@
               <span>{{ previewLoading ? 'Loading...' : 'Preview' }}</span>
             </button>
 
-            <!-- Execute Button (when preview shown) -->
+            <!-- PHASES MODE: Execute Button (when preview shown) -->
             <button
-              v-if="jobStatus === 'idle' && hasIncompletePhases && previewExpanded"
+              v-if="buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && previewExpanded"
               @click="startPhase"
               class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg transition-colors"
             >
               Execute {{ nextPhaseAction }}
+            </button>
+
+            <!-- BUILDER MODE: Start Button -->
+            <button
+              v-if="buildMode === 'builder' && jobStatus === 'idle' && canStartBuilder"
+              @click="startCourseBuilder"
+              class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg transition-colors"
+            >
+              Start Course Builder
             </button>
 
             <!-- Cancel Preview Button -->
@@ -570,7 +672,8 @@ const courseSizes = [
 ]
 
 const engines = [
-  { id: 'cli', label: 'CLI', description: 'iTerm2 + Claude Code' },
+  { id: 'cli', label: 'iTerm2', description: 'Pro Max #1' },
+  { id: 'terminal', label: 'Terminal', description: 'Pro Max #2' },
   { id: 'browser', label: 'Safari', description: 'Browser-based' }
 ]
 
@@ -582,6 +685,22 @@ const machineProfiles = ref([
 ])
 // Read from localStorage (set by EnvironmentSwitcher based on selected environment)
 const selectedMachineProfile = ref(localStorage.getItem('ssi_machine_profile') || 'tom')
+
+// Build mode: phases (legacy 1-3) or builder (single agent)
+const buildMode = ref('phases')
+const buildModes = [
+  { id: 'phases', label: 'Phases 1-3', description: 'Parallel agents' },
+  { id: 'builder', label: 'Course Builder', description: 'Single agent' }
+]
+
+// Course Builder state
+const builderProgress = ref({
+  status: 'idle', // idle, running, paused, complete
+  currentSeed: 0,
+  totalSeeds: 0,
+  legosInserted: 0,
+  phrasesInserted: 0
+})
 
 // Computed
 const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode)
@@ -637,6 +756,19 @@ const hasIncompletePhases = computed(() => {
   return phases.value.some(p => p.status !== 'complete')
 })
 
+// Builder mode: can start if not already complete
+const canStartBuilder = computed(() => {
+  return builderProgress.value.status !== 'complete' && builderProgress.value.status !== 'running'
+})
+
+// Unified: has work to do based on mode
+const hasWorkToDo = computed(() => {
+  if (buildMode.value === 'builder') {
+    return canStartBuilder.value
+  }
+  return hasIncompletePhases.value
+})
+
 const nextPhaseAction = computed(() => {
   // Pick earliest incomplete phase by number (pending or partial)
   const nextPhase = phases.value
@@ -669,6 +801,9 @@ const nextActionDescription = computed(() => {
 
 const statusLabel = computed(() => {
   if (jobStatus.value === 'running') {
+    if (buildMode.value === 'builder') {
+      return 'Building Course'
+    }
     const activePhase = phases.value.find(p => p.status === 'running')
     return activePhase ? `Phase ${activePhase.number} Running` : 'Running'
   }
@@ -831,6 +966,39 @@ async function fetchProgress() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
+  // Builder mode: poll course-builder-api stats
+  if (buildMode.value === 'builder') {
+    try {
+      const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+      const response = await fetch(`${builderApiUrl}/api/stats/${code}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        builderProgress.value = {
+          ...builderProgress.value,
+          legosInserted: data.legos || 0,
+          phrasesInserted: data.phrases || 0
+        }
+
+        // Update stats bar
+        stats.value = [
+          { label: 'Seeds', value: builderProgress.value.currentSeed },
+          { label: 'LEGOs', value: data.legos || 0 },
+          { label: 'Phrases', value: data.phrases || 0 },
+          { label: 'Ratio', value: data.legos > 0 ? parseFloat(data.ratio) || 0 : 0 }
+        ]
+
+        lastProgressAt.value = new Date().toISOString()
+      }
+    } catch (error) {
+      console.error('Failed to fetch builder progress:', error)
+    }
+    return
+  }
+
+  // Phases mode: poll orchestrator progress
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/courses/${code}/progress`, {
@@ -1040,6 +1208,48 @@ async function startPhase() {
 
   } catch (error) {
     console.error('Failed to start phase:', error)
+    addEvent(`Error: ${error.message}`)
+  }
+}
+
+async function startCourseBuilder() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/courses/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        courseCode: code,
+        buildMode: 'course-builder',
+        spawnerMode: agentEngine.value,
+        machineProfile: selectedMachineProfile.value,
+        seedCount: seedCount.value,
+        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+      })
+    })
+
+    if (!response.ok) throw new Error('Failed to start course builder')
+
+    builderProgress.value = {
+      status: 'running',
+      currentSeed: 0,
+      totalSeeds: seedCount.value,
+      legosInserted: 0,
+      phrasesInserted: 0
+    }
+    jobStatus.value = 'running'
+    jobStartTime.value = Date.now()
+
+    addEvent(`Started Course Builder for ${code} (${seedCount.value} seeds)`)
+
+  } catch (error) {
+    console.error('Failed to start course builder:', error)
     addEvent(`Error: ${error.message}`)
   }
 }

@@ -31,6 +31,9 @@ const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes, getM
 // Database-first course data service
 const courseDataService = require('../course-data-service.cjs');
 
+// Course Builder spawner (for single-agent sequential course building)
+const { spawnCourseBuilder } = require('../shared/spawn-course-builder.cjs');
+
 // Load .env file for AWS credentials etc.
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
@@ -4085,8 +4088,95 @@ app.post('/api/courses/generate', async (req, res) => {
     modelSuffix,  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
     mode,  // Course mode (quick_test, mvp_course, full_course)
     spawnerMode = 'cli',  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
-    machineProfile  // Machine profile ID (e.g., 'tom', 'kai') - affects parallelization
+    machineProfile,  // Machine profile ID (e.g., 'tom', 'kai') - affects parallelization
+    buildMode,  // 'course-builder' for single-agent LEGO network building
+    seedCount  // Number of seeds for course-builder mode
   } = req.body;
+
+  // ============================================
+  // COURSE BUILDER MODE - Single agent sequential processing
+  // ============================================
+  if (buildMode === 'course-builder') {
+    const builderCourseCode = providedCourseCode || `${target}_for_${known}`;
+    const totalSeeds = seedCount || 260;
+
+    console.log(`\n🔨 Course Builder Mode:`);
+    console.log(`   Course: ${builderCourseCode}`);
+    console.log(`   Seeds: ${totalSeeds}`);
+    console.log(`   Spawner: ${spawnerMode}`);
+
+    // For now, return success - the agent will be spawned by the spawner service
+    // The agent will use the course-builder-api to insert LEGOs
+    try {
+      const builderApiUrl = process.env.COURSE_BUILDER_API_URL || 'http://localhost:3471';
+
+      // Check if course-builder-api is running
+      try {
+        await axios.get(`${builderApiUrl}/health`, { timeout: 2000 });
+      } catch (e) {
+        return res.status(503).json({
+          error: 'Course Builder API not available',
+          message: 'Please start the course-builder-api service',
+          command: 'node services/course-builder-api.cjs'
+        });
+      }
+
+      // Determine terminal type from spawnerMode
+      // 'cli' = iTerm2, 'terminal' = Terminal.app (for second Pro Max account)
+      const terminalType = spawnerMode === 'terminal' ? 'terminal' : 'iterm';
+
+      // Extract language names for the brief
+      const langNames = {
+        eng: 'English', spa: 'Spanish', fra: 'French', deu: 'German',
+        ita: 'Italian', por: 'Portuguese', zho: 'Chinese', jpn: 'Japanese',
+        kor: 'Korean', ara: 'Arabic'
+      };
+      const [targetCode, , knownCode] = builderCourseCode.split('_');
+      const targetLang = langNames[targetCode] || targetCode;
+      const knownLang = langNames[knownCode] || knownCode;
+
+      // Spawn the Course Builder agent
+      console.log(`[Orchestrator] Spawning Course Builder in ${terminalType}...`);
+
+      try {
+        const spawnResult = await spawnCourseBuilder({
+          courseCode: builderCourseCode,
+          seedCount: totalSeeds,
+          terminal: terminalType,
+          model: 'opus',  // Always use Opus for vocab discipline
+          knownLang,
+          targetLang,
+          workingDir: path.join(__dirname, '../..')
+        });
+
+        return res.json({
+          success: true,
+          mode: 'course-builder',
+          courseCode: builderCourseCode,
+          seedCount: totalSeeds,
+          terminal: terminalType,
+          model: 'opus',
+          builderApiUrl,
+          spawnResult,
+          message: `Course Builder agent spawned in ${terminalType === 'iterm' ? 'iTerm2' : 'Terminal.app'} for ${builderCourseCode}.`,
+          statusUrl: `${builderApiUrl}/api/stats/${builderCourseCode}`
+        });
+      } catch (spawnErr) {
+        console.error('[Orchestrator] Failed to spawn Course Builder:', spawnErr.message);
+        return res.status(500).json({
+          error: 'Failed to spawn Course Builder agent',
+          message: spawnErr.message,
+          terminal: terminalType
+        });
+      }
+    } catch (error) {
+      console.error('[Orchestrator] Course Builder error:', error.message);
+      return res.status(500).json({
+        error: 'Failed to initialize Course Builder',
+        message: error.message
+      });
+    }
+  }
 
   // Generate or use provided course code
   let courseCode;
@@ -6410,36 +6500,26 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
   // Trigger Phase 2 (Conflict Resolution)
   console.log(`[Orchestrator] → Triggering Phase 2 (Conflict Resolution)...`);
   updatePhaseProgress(courseCode, 2, { status: 'running', startTime: new Date().toISOString() });
-  addProgressLog(courseCode, `Phase 2: Starting conflict detection...`);
+  addProgressLog(courseCode, `Phase 2: Starting conflict resolution...`);
 
   const phase2Server = PHASE_SERVERS[2];
 
   try {
-    // Step 1: Detect conflicts
-    console.log(`[Orchestrator]    Step 1: Detecting conflicts...`);
-    const detectResponse = await axios.post(`${phase2Server}/phase2/detect`, { courseCode });
-    const conflictCount = detectResponse.data?.summary?.conflictCount || 0;
+    // Call Phase 2 /resolve endpoint (runs detect, deduplicate, resolve in one call)
+    console.log(`[Orchestrator]    Calling Phase 2 /resolve...`);
+    const resolveResponse = await axios.post(`${phase2Server}/resolve`, { courseCode });
+
+    const detection = resolveResponse.data?.detection || {};
+    const deduplication = resolveResponse.data?.deduplication || {};
+    const conflictCount = detection.conflictCount || 0;
+
     console.log(`[Orchestrator]    ✓ Found ${conflictCount} conflicts`);
     addProgressLog(courseCode, `Phase 2: Found ${conflictCount} conflicts`);
 
-    // Step 2: Apply LEGO reuse tracking
-    console.log(`[Orchestrator]    Step 2: Applying LEGO reuse tracking...`);
-    addProgressLog(courseCode, `Phase 2: Applying LEGO reuse tracking...`);
-    const resolutionsPath = path.join(VFS_ROOT, courseCode, 'upchunk_resolutions.json');
-    let resolutions = [];
-    if (await fs.pathExists(resolutionsPath)) {
-      const resData = await fs.readJSON(resolutionsPath);
-      resolutions = resData.resolutions || resData || [];
-      console.log(`[Orchestrator]    📄 Found ${resolutions.length} manual resolutions`);
-      addProgressLog(courseCode, `Phase 2: Found ${resolutions.length} manual resolutions`);
-    }
+    console.log(`[Orchestrator]    ✓ LEGO reuse tracking applied`);
+    addProgressLog(courseCode, `Phase 2: LEGO reuse tracking applied`);
 
-    const applyResponse = await axios.post(`${phase2Server}/phase2/apply`, {
-      courseCode,
-      resolutions
-    });
-
-    const summary = applyResponse.data?.summary || {};
+    const summary = deduplication || {};
     console.log(`[Orchestrator]    ✓ Created lego_pairs.json`);
     console.log(`[Orchestrator]      - Unique LEGOs (new: true): ${summary.uniqueNew || 'N/A'}`);
     console.log(`[Orchestrator]      - Exact duplicates: ${summary.exactDuplicates || 'N/A'}`);
@@ -8389,6 +8469,30 @@ app.get('/scaffolds/:courseCode/seed/:seedId', async (req, res) => {
     console.error(`[Orchestrator] scaffold seed failed: ${error.message}`);
     if (error.response) {
       res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
+ * GET /scaffold-v9/:courseCode/:legoId - Fetch v9 scaffold for single LEGO
+ * Proxies to Phase 3 server - returns elegant text format with [brackets]
+ */
+app.get('/scaffold-v9/:courseCode/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params;
+  console.log(`[Orchestrator] scaffold-v9: ${courseCode}/${legoId}`);
+
+  try {
+    const response = await axios.get(
+      `${PHASE_SERVERS[3]}/scaffold-v9/${courseCode}/${legoId}`,
+      { timeout: 30000 }
+    );
+    res.type('text/plain').send(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] scaffold-v9 failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).send(error.response.data);
     } else {
       res.status(500).json({ error: error.message });
     }
