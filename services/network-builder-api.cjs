@@ -1,8 +1,7 @@
 /**
  * Network Builder API
  * Real-time LEGO network construction for course creation
- *
- * Agents can add LEGOs and see the network grow with computed phrases
+ * Supports multiple networks via ?network=<id> query param
  */
 
 const express = require('express');
@@ -13,31 +12,56 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Global network state (in-memory for now)
-let builder = new NetworkBuilder();
-let legos = [];
-let phrases = [];
-let legoCounter = 0;
+// Multiple networks keyed by networkId
+const networks = {};
+
+function getNetwork(networkId = 'default') {
+  if (!networks[networkId]) {
+    networks[networkId] = {
+      builder: new NetworkBuilder(),
+      legos: [],
+      legoCounter: 0,
+      createdAt: new Date().toISOString()
+    };
+    console.log(`\n🆕 Created new network: "${networkId}"`);
+  }
+  return networks[networkId];
+}
 
 // Helper to compute all valid phrases from current LEGOs
-function computePhrases() {
+function computePhrases(legos) {
   const allPhrases = [];
 
-  // For each LEGO, find all valid paths it can start
+  function findPaths(currentLego, pathSoFar, maxDepth = 6) {
+    if (pathSoFar.length >= maxDepth) return;
+
+    for (const childId of currentLego.children || []) {
+      const childLego = legos.find(l => l.id === childId);
+      if (!childLego) continue;
+      if (pathSoFar.some(l => l.id === childId)) continue;
+
+      const newPath = [...pathSoFar, childLego];
+      allPhrases.push({
+        path: newPath.map(l => l.id),
+        chinese: newPath.map(l => l.chinese).join(''),
+        english: newPath.map(l => l.english).join(' '),
+        legoCount: newPath.length
+      });
+
+      findPaths(childLego, newPath, maxDepth);
+    }
+  }
+
   for (const lego of legos) {
-    // Single LEGO phrase
     allPhrases.push({
       path: [lego.id],
       chinese: lego.chinese,
       english: lego.english,
       legoCount: 1
     });
-
-    // Find multi-LEGO phrases by following children
-    findPaths(lego, [lego], allPhrases);
+    findPaths(lego, [lego]);
   }
 
-  // Deduplicate and sort by length
   const seen = new Set();
   return allPhrases
     .filter(p => {
@@ -49,195 +73,181 @@ function computePhrases() {
     .sort((a, b) => a.legoCount - b.legoCount);
 }
 
-function findPaths(currentLego, pathSoFar, results, maxDepth = 6) {
-  if (pathSoFar.length >= maxDepth) return;
-
-  for (const childId of currentLego.children || []) {
-    const childLego = legos.find(l => l.id === childId);
-    if (!childLego) continue;
-    if (pathSoFar.some(l => l.id === childId)) continue; // No cycles
-
-    const newPath = [...pathSoFar, childLego];
-    results.push({
-      path: newPath.map(l => l.id),
-      chinese: newPath.map(l => l.chinese).join(''),
-      english: newPath.map(l => l.english).join(' '),
-      legoCount: newPath.length
-    });
-
-    findPaths(childLego, newPath, results, maxDepth);
-  }
-}
-
-// API Endpoints
+// List all networks
+app.get('/api/network-builder/networks', (req, res) => {
+  const list = Object.entries(networks).map(([id, net]) => ({
+    id,
+    legoCount: net.legos.length,
+    phraseCount: computePhrases(net.legos).length,
+    createdAt: net.createdAt
+  }));
+  res.json({ networks: list });
+});
 
 // Get current network state
 app.get('/api/network-builder/state', (req, res) => {
-  const stats = builder.getStats();
-  const currentPhrases = computePhrases();
+  const networkId = req.query.network || 'default';
+  const net = getNetwork(networkId);
+  const phrases = computePhrases(net.legos);
+  const stats = net.builder.getStats();
 
   res.json({
-    legos,
-    phrases: currentPhrases,
+    networkId,
+    legos: net.legos,
+    phrases,
     stats,
-    network: builder.export()
+    network: net.builder.export()
   });
 });
 
 // Add a new LEGO
 app.post('/api/network-builder/lego', (req, res) => {
+  const networkId = req.query.network || req.body.network || 'default';
   const { chinese, english, canFollow = [], canPrecede = [] } = req.body;
+  const net = getNetwork(networkId);
 
   if (!chinese || !english) {
     return res.status(400).json({ error: 'chinese and english are required' });
   }
 
-  legoCounter++;
-  const id = `L${String(legoCounter).padStart(3, '0')}`;
+  net.legoCounter++;
+  const id = `L${String(net.legoCounter).padStart(3, '0')}`;
 
   const newLego = {
     id,
     chinese,
     english,
-    parents: canFollow,
-    children: canPrecede,
+    parents: [...canFollow],
+    children: [...canPrecede],
     addedAt: new Date().toISOString()
   };
 
-  // Add to NetworkBuilder
-  builder.addLego(id, chinese, english);
+  net.builder.addLego(id, chinese, english);
 
-  // Create connections
   for (const parentId of canFollow) {
-    builder.connectPhrase([parentId, id]);
-    // Update parent's children
-    const parent = legos.find(l => l.id === parentId);
+    net.builder.connectPhrase([parentId, id]);
+    const parent = net.legos.find(l => l.id === parentId);
     if (parent && !parent.children.includes(id)) {
       parent.children.push(id);
     }
   }
 
   for (const childId of canPrecede) {
-    builder.connectPhrase([id, childId]);
-    // Update child's parents
-    const child = legos.find(l => l.id === childId);
+    net.builder.connectPhrase([id, childId]);
+    const child = net.legos.find(l => l.id === childId);
     if (child && !child.parents.includes(id)) {
       child.parents.push(id);
     }
   }
 
-  legos.push(newLego);
+  net.legos.push(newLego);
 
-  // Compute new phrases
-  const currentPhrases = computePhrases();
-  const newPhrases = currentPhrases.filter(p => p.path.includes(id));
+  const phrases = computePhrases(net.legos);
+  const newPhrases = phrases.filter(p => p.path.includes(id));
 
   console.log(`\n${'='.repeat(60)}`);
-  console.log(`ADDED: ${id} | ${chinese} | "${english}"`);
+  console.log(`[${networkId}] ADDED: ${id} | ${chinese} | "${english}"`);
   console.log(`Parents: [${canFollow.join(', ')}], Children: [${canPrecede.join(', ')}]`);
-  console.log(`New phrases unlocked: ${newPhrases.length}`);
-  newPhrases.slice(0, 5).forEach(p => {
-    console.log(`  ${p.chinese} → "${p.english}"`);
-  });
-  if (newPhrases.length > 5) {
-    console.log(`  ... and ${newPhrases.length - 5} more`);
-  }
-  console.log(`Total: ${legos.length} LEGOs, ${currentPhrases.length} phrases`);
+  console.log(`New phrases: ${newPhrases.length}`);
+  newPhrases.slice(0, 5).forEach(p => console.log(`  ${p.chinese} → "${p.english}"`));
+  if (newPhrases.length > 5) console.log(`  ... and ${newPhrases.length - 5} more`);
+  console.log(`Total: ${net.legos.length} LEGOs, ${phrases.length} phrases`);
   console.log('='.repeat(60));
 
   res.json({
+    networkId,
     lego: newLego,
     newPhrases,
-    totalLegos: legos.length,
-    totalPhrases: currentPhrases.length,
-    stats: builder.getStats()
+    totalLegos: net.legos.length,
+    totalPhrases: phrases.length,
+    stats: net.builder.getStats()
   });
 });
 
-// Connect existing LEGOs to form a phrase
+// Connect existing LEGOs
 app.post('/api/network-builder/connect', (req, res) => {
+  const networkId = req.query.network || req.body.network || 'default';
   const { legoIds } = req.body;
+  const net = getNetwork(networkId);
 
   if (!legoIds || legoIds.length < 2) {
     return res.status(400).json({ error: 'legoIds array with at least 2 IDs required' });
   }
 
-  // Validate all LEGOs exist
   for (const id of legoIds) {
-    if (!legos.find(l => l.id === id)) {
-      return res.status(400).json({ error: `LEGO ${id} not found` });
+    if (!net.legos.find(l => l.id === id)) {
+      return res.status(400).json({ error: `LEGO ${id} not found in network ${networkId}` });
     }
   }
 
-  // Create connections between consecutive LEGOs
   for (let i = 0; i < legoIds.length - 1; i++) {
     const parentId = legoIds[i];
     const childId = legoIds[i + 1];
+    net.builder.connectPhrase([parentId, childId]);
 
-    builder.connectPhrase([parentId, childId]);
+    const parent = net.legos.find(l => l.id === parentId);
+    const child = net.legos.find(l => l.id === childId);
 
-    const parent = legos.find(l => l.id === parentId);
-    const child = legos.find(l => l.id === childId);
-
-    if (parent && !parent.children.includes(childId)) {
-      parent.children.push(childId);
-    }
-    if (child && !child.parents.includes(parentId)) {
-      child.parents.push(parentId);
-    }
+    if (parent && !parent.children.includes(childId)) parent.children.push(childId);
+    if (child && !child.parents.includes(parentId)) child.parents.push(parentId);
   }
 
-  const currentPhrases = computePhrases();
-  const pathLegos = legoIds.map(id => legos.find(l => l.id === id));
+  const phrases = computePhrases(net.legos);
+  const pathLegos = legoIds.map(id => net.legos.find(l => l.id === id));
 
-  console.log(`\nCONNECTED: ${legoIds.join(' → ')}`);
-  console.log(`Phrase: ${pathLegos.map(l => l.chinese).join('')} → "${pathLegos.map(l => l.english).join(' ')}"`);
+  console.log(`[${networkId}] CONNECTED: ${legoIds.join(' → ')}`);
 
   res.json({
+    networkId,
     connected: legoIds,
     phrase: {
       chinese: pathLegos.map(l => l.chinese).join(''),
       english: pathLegos.map(l => l.english).join(' ')
     },
-    totalPhrases: currentPhrases.length
+    totalPhrases: phrases.length
   });
 });
 
-// Reset the network
+// Reset a specific network
 app.post('/api/network-builder/reset', (req, res) => {
-  builder = new NetworkBuilder();
-  legos = [];
-  phrases = [];
-  legoCounter = 0;
+  const networkId = req.query.network || req.body.network || 'default';
 
-  console.log('\n🔄 Network reset\n');
+  networks[networkId] = {
+    builder: new NetworkBuilder(),
+    legos: [],
+    legoCounter: 0,
+    createdAt: new Date().toISOString()
+  };
 
-  res.json({ status: 'reset', legos: 0, phrases: 0 });
+  console.log(`\n🔄 Network "${networkId}" reset`);
+
+  res.json({ status: 'reset', networkId, legos: 0, phrases: 0 });
 });
 
-// Get just the phrases
+// Get phrases for a network
 app.get('/api/network-builder/phrases', (req, res) => {
-  const currentPhrases = computePhrases();
-  res.json({
-    count: currentPhrases.length,
-    phrases: currentPhrases
-  });
+  const networkId = req.query.network || 'default';
+  const net = getNetwork(networkId);
+  const phrases = computePhrases(net.legos);
+  res.json({ networkId, count: phrases.length, phrases });
 });
 
 // Health check
 app.get('/api/network-builder/health', (req, res) => {
-  res.json({ status: 'ok', legos: legos.length, phrases: computePhrases().length });
+  const networkCount = Object.keys(networks).length;
+  res.json({ status: 'ok', networkCount, networks: Object.keys(networks) });
 });
 
 const PORT = process.env.NETWORK_BUILDER_PORT || 3480;
 
 app.listen(PORT, () => {
   console.log(`\n🌐 Network Builder API running on port ${PORT}`);
-  console.log(`\nEndpoints:`);
-  console.log(`  GET  /api/network-builder/state   - Get current network`);
-  console.log(`  GET  /api/network-builder/phrases - Get all valid phrases`);
-  console.log(`  POST /api/network-builder/lego    - Add a LEGO`);
-  console.log(`  POST /api/network-builder/connect - Connect LEGOs`);
-  console.log(`  POST /api/network-builder/reset   - Reset network`);
+  console.log(`\nEndpoints (add ?network=<id> for multiple networks):`);
+  console.log(`  GET  /api/network-builder/networks - List all networks`);
+  console.log(`  GET  /api/network-builder/state    - Get network state`);
+  console.log(`  GET  /api/network-builder/phrases  - Get all phrases`);
+  console.log(`  POST /api/network-builder/lego     - Add a LEGO`);
+  console.log(`  POST /api/network-builder/connect  - Connect LEGOs`);
+  console.log(`  POST /api/network-builder/reset    - Reset network`);
   console.log(`\nReady for agents to build! 🏗️\n`);
 });

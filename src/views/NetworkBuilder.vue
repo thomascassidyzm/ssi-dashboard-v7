@@ -3,7 +3,24 @@
     <div class="header">
       <h1>Network Builder</h1>
       <p class="subtitle">Build LEGO networks in real-time - watch phrases emerge</p>
+
+      <!-- Network Tabs -->
+      <div class="network-tabs">
+        <button
+          v-for="net in networkList"
+          :key="net.id"
+          @click="switchNetwork(net.id)"
+          class="network-tab"
+          :class="{ active: currentNetwork === net.id }"
+        >
+          <span class="tab-name">{{ net.id }}</span>
+          <span class="tab-stats">{{ net.legoCount }} LEGOs / {{ net.phraseCount }} phrases</span>
+        </button>
+        <button @click="createNetwork" class="network-tab new-network">+ New</button>
+      </div>
+
       <div class="stats-bar">
+        <span class="network-label">{{ currentNetwork }}</span>
         <span class="stat">
           <strong>{{ legos.length }}</strong> LEGOs
         </span>
@@ -169,6 +186,8 @@ const API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:3480/api/network-builder'
   : 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/network-builder'
 
+const currentNetwork = ref('default')
+const networkList = ref([])
 const legos = ref([])
 const phrases = ref([])
 const stats = ref({})
@@ -228,21 +247,45 @@ function phrasesContaining(legoId) {
   return phrases.value.filter(p => p.path?.includes(legoId))
 }
 
+async function fetchNetworks() {
+  try {
+    const res = await fetch(`${API_BASE}/networks`)
+    const data = await res.json()
+    networkList.value = data.networks || []
+  } catch (e) {
+    console.error('Failed to fetch networks:', e)
+  }
+}
+
 async function fetchState() {
   try {
-    const res = await fetch(`${API_BASE}/state`)
+    const res = await fetch(`${API_BASE}/state?network=${currentNetwork.value}`)
     const data = await res.json()
     legos.value = data.legos || []
     phrases.value = data.phrases || []
     stats.value = data.stats || {}
+    // Also refresh network list
+    await fetchNetworks()
   } catch (e) {
     console.error('Failed to fetch state:', e)
   }
 }
 
+async function switchNetwork(networkId) {
+  currentNetwork.value = networkId
+  await fetchState()
+}
+
+async function createNetwork() {
+  const name = prompt('Network name (e.g., opus, sonnet, haiku):')
+  if (!name) return
+  currentNetwork.value = name
+  await fetchState()  // This will create the network on first access
+}
+
 async function addLego() {
   try {
-    const res = await fetch(`${API_BASE}/lego`, {
+    const res = await fetch(`${API_BASE}/lego?network=${currentNetwork.value}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newLego.value)
@@ -258,9 +301,9 @@ async function addLego() {
 }
 
 async function resetNetwork() {
-  if (!confirm('Reset the entire network?')) return
+  if (!confirm(`Reset the "${currentNetwork.value}" network?`)) return
   try {
-    await fetch(`${API_BASE}/reset`, { method: 'POST' })
+    await fetch(`${API_BASE}/reset?network=${currentNetwork.value}`, { method: 'POST' })
     await fetchState()
     selectedLego.value = null
   } catch (e) {
@@ -574,5 +617,72 @@ onMounted(() => {
   font-size: 0.85rem;
   color: #aaa;
   padding: 0.2rem 0;
+}
+
+/* Network Tabs */
+.network-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.network-tab {
+  padding: 0.5rem 1rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  transition: all 0.2s;
+}
+
+.network-tab:hover {
+  background: #21262d;
+  border-color: #4fc3f7;
+}
+
+.network-tab.active {
+  background: #1a365d;
+  border-color: #4fc3f7;
+}
+
+.network-tab .tab-name {
+  font-weight: bold;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.network-tab.active .tab-name {
+  color: #4fc3f7;
+}
+
+.network-tab .tab-stats {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.network-tab.new-network {
+  background: #1a1a2e;
+  border-style: dashed;
+  color: #666;
+}
+
+.network-tab.new-network:hover {
+  color: #4fc3f7;
+}
+
+.network-label {
+  background: #4fc3f7;
+  color: #0d1117;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 </style>
