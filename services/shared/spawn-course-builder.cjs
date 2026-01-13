@@ -107,26 +107,27 @@ ${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 
 ## Seed Source
 
-**Seeds are in the database.** Query them from \`course_seeds\` table:
+**668 canonical seeds are in the database.** Query them from \`canonical_seeds\` table:
 
 \`\`\`javascript
-// Get seeds for this course (or use spa_for_eng as canonical English source)
+// Get canonical English seeds
 const { data: seeds } = await supabase
-  .from('course_seeds')
-  .select('seed_number, known_text')
-  .eq('course_code', 'spa_for_eng')  // Canonical English seeds
+  .from('canonical_seeds')
+  .select('seed_number, seed_id, source_text')
   .order('seed_number')
   .limit(${seedCount});
 
 // Each seed has:
 // - seed_number: 1, 2, 3...
-// - known_text: "I want to speak Spanish with you now"
-// Replace language name and translate to ${targetLang || targetCode}
+// - seed_id: "S0001", "S0002", etc.
+// - source_text: "I want to speak {target} with you now."
+//
+// Replace {target} with "${targetLang || targetCode}" then translate
 \`\`\`
 
-**Or fetch via API:** \`${builderApiUrl}/api/seeds/spa_for_eng?limit=${seedCount}\`
+**Or fetch via API:** \`${builderApiUrl}/api/seeds?limit=${seedCount}\`
 
-The English \`known_text\` is your source - translate it to ${targetLang || targetCode} and break into LEGOs.
+The \`source_text\` contains \`{target}\` placeholder - replace with "${targetLang || targetCode}" to get the English source, then translate and break into LEGOs.
 
 ## Process
 

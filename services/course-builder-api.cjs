@@ -440,8 +440,35 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 });
 
 /**
- * GET /api/seeds/:courseCode - Get canonical seeds for a course
- * Use spa_for_eng as the canonical English seed source
+ * GET /api/seeds - Get canonical seeds (668 master English seeds)
+ * These have {target} placeholder for the target language name
+ */
+app.get('/api/seeds', async (req, res) => {
+  const limit = parseInt(req.query.limit) || 668;
+  const offset = parseInt(req.query.offset) || 0;
+
+  const { data: seeds, error } = await supabase
+    .from('canonical_seeds')
+    .select('seed_number, seed_id, source_text')
+    .order('seed_number')
+    .range(offset, offset + limit - 1);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.json({
+    source: 'canonical_seeds',
+    total: 668,
+    count: seeds?.length || 0,
+    offset,
+    seeds: seeds || []
+  });
+});
+
+/**
+ * GET /api/seeds/:courseCode - Get course-specific seeds (legacy)
+ * Use canonical_seeds endpoint instead for new courses
  */
 app.get('/api/seeds/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
