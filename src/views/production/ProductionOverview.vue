@@ -1,51 +1,28 @@
 <template>
   <div class="production-overview">
-    <!-- Overall Progress -->
-    <section class="overall-progress">
-      <div class="progress-header">
-        <h2>Overall Progress</h2>
-        <div class="progress-stats">
-          <!-- Audio stats (primary for pre-audio courses) -->
-          <div class="stat" v-if="store.audioCourseStats.total > 0">
-            <span class="stat-value audio">{{ store.audioCourseStats.total }}</span>
-            <span class="stat-label">NEEDED</span>
-          </div>
-          <div class="stat" v-if="store.audioCourseStats.total > 0">
-            <span class="stat-value generated">{{ store.audioCourseStats.existing }}</span>
-            <span class="stat-label">GENERATED</span>
-          </div>
-          <div class="stat" v-if="store.audioCourseStats.total > 0">
-            <span class="stat-value pending">{{ store.audioCourseStats.missing }}</span>
-            <span class="stat-label">PENDING</span>
-          </div>
-          <div class="stat" v-if="store.progressStats.flagged > 0">
-            <span class="stat-value flagged">{{ store.progressStats.flagged }}</span>
-            <span class="stat-label">FLAGGED</span>
-          </div>
-          <!-- QA stats (fallback when no audio stats) -->
-          <template v-else>
-            <div class="stat">
-              <span class="stat-value">{{ store.progressStats.approved }}</span>
-              <span class="stat-label">Approved</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">{{ store.progressStats.total }}</span>
-              <span class="stat-label">Total</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">{{ estimatedDays }}</span>
-              <span class="stat-label">Days Left</span>
-            </div>
-          </template>
-        </div>
+    <!-- Headline Stats -->
+    <section class="headline-stats">
+      <div class="stat-card">
+        <div class="stat-value">{{ courseStats.seeds }}</div>
+        <div class="stat-label">Seeds</div>
       </div>
-      <div class="progress-visual">
-        <ProgressRing
-          :value="audioProgressPercent"
-          label="Audio"
-          :size="240"
-          :stroke-width="16"
-        />
+      <div class="stat-card">
+        <div class="stat-value">{{ courseStats.legos.toLocaleString() }}</div>
+        <div class="stat-label">LEGOs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ courseStats.phrases.toLocaleString() }}</div>
+        <div class="stat-label">Phrases</div>
+      </div>
+      <div class="stat-card audio">
+        <div class="stat-value">
+          {{ store.audioCourseStats.existing.toLocaleString() }}
+          <span class="stat-total">/ {{ store.audioCourseStats.total.toLocaleString() }}</span>
+        </div>
+        <div class="stat-label">Audio</div>
+        <div class="stat-progress">
+          <div class="progress-bar" :style="{ width: `${audioProgressPercent}%` }"></div>
+        </div>
       </div>
     </section>
 
@@ -85,10 +62,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
-import ProgressRing from './components/ProgressRing.vue'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
@@ -105,77 +81,51 @@ const router = useRouter()
 const store = useProductionStore()
 const showImportModal = ref(false)
 
-// Computed
-const estimatedDays = computed(() => {
-  const { total, approved } = store.progressStats
-  const remaining = total - approved
-  if (remaining === 0) return 0
-  return Math.ceil(remaining / 100)
+// Course stats from Course Builder API
+const courseStats = ref({
+  seeds: 0,
+  legos: 0,
+  phrases: 0
 })
 
+// Fetch course stats from Course Builder API
+async function fetchCourseStats() {
+  try {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/stats/${props.courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      courseStats.value = {
+        seeds: data.seeds || 0,
+        legos: data.legos || 0,
+        phrases: data.phrases || 0
+      }
+    }
+  } catch (err) {
+    console.error('Failed to fetch course stats:', err)
+  }
+}
+
+onMounted(() => {
+  fetchCourseStats()
+})
+
+watch(() => props.courseCode, () => {
+  fetchCourseStats()
+})
+
+// Computed
 const audioProgressPercent = computed(() => {
   const audio = store.audioCourseStats
-  if (!audio || audio.total === 0) return store.progressStats.percentComplete
+  if (!audio || audio.total === 0) return 0
   return Math.round((audio.existing / audio.total) * 100)
 })
 
+// Trimmed quick actions - only essentials
 const quickActions = computed(() => {
   return [
-    {
-      id: 'import_course',
-      icon: '📥',
-      label: 'Import Legacy Course',
-      description: 'Upload a legacy course manifest JSON',
-      badge: null,
-      disabled: false
-    },
-    {
-      id: 'generate_audio',
-      icon: '🔊',
-      label: 'Generate Audio',
-      description: 'Start TTS generation for flagged samples',
-      badge: store.samplesByStatus.flagged_regen_tts?.length || 0,
-      disabled: (store.samplesByStatus.flagged_regen_tts?.length || 0) === 0
-    },
-    {
-      id: 'review_samples',
-      icon: '👀',
-      label: 'Review Samples',
-      description: 'Review audio samples awaiting approval',
-      badge: store.samplesByStatus.needs_review?.length || 0,
-      disabled: (store.samplesByStatus.needs_review?.length || 0) === 0
-    },
-    {
-      id: 'record_human',
-      icon: '🎤',
-      label: 'Record Human',
-      description: 'Create recording queue for human voice',
-      badge: store.samplesByStatus.flagged_human_needed?.length || 0,
-      disabled: (store.samplesByStatus.flagged_human_needed?.length || 0) === 0
-    },
-    {
-      id: 'recording_optimizer',
-      icon: '🧬',
-      label: 'Recording Optimizer',
-      description: 'LEGO splice engine for non-TTS languages',
-      badge: null,
-      disabled: false
-    },
-    {
-      id: 'compile_manifest',
-      icon: '📦',
-      label: 'Compile Manifest',
-      description: 'Generate final course manifest',
-      disabled: store.progressStats.percentComplete < 100
-    },
-    {
-      id: 'user_feedback',
-      icon: '💬',
-      label: 'User Feedback',
-      description: 'View and resolve user-reported issues',
-      badge: null,
-      disabled: false
-    },
     {
       id: 'launch_learning_app',
       icon: '🚀',
@@ -185,10 +135,10 @@ const quickActions = computed(() => {
       disabled: false
     },
     {
-      id: 'agent_monitor',
-      icon: '📡',
-      label: 'Agent Monitor',
-      description: 'View real-time pipeline agent activity',
+      id: 'import_course',
+      icon: '📥',
+      label: 'Import Legacy Course',
+      description: 'Upload a legacy course manifest JSON',
       badge: null,
       disabled: false
     },
@@ -197,6 +147,14 @@ const quickActions = computed(() => {
       icon: '📜',
       label: 'Export Legacy',
       description: 'Download manifest for old learning app',
+      badge: null,
+      disabled: false
+    },
+    {
+      id: 'agent_monitor',
+      icon: '📡',
+      label: 'Agent Monitor',
+      description: 'View real-time pipeline agent activity',
       badge: null,
       disabled: false
     }
@@ -327,54 +285,60 @@ function exportLegacyManifest() {
   padding: 1.5rem;
 }
 
-.overall-progress {
+/* Headline Stats Grid */
+.headline-stats {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: center;
-  background: var(--color-slate, #334155);
-  border-radius: 12px;
-  padding: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.progress-header h2 {
-  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
-  margin: 0 0 1rem;
-}
-
-.progress-stats {
-  display: flex;
-  gap: 2rem;
-}
-
-.stat {
+.stat-card {
+  background: var(--color-slate, #334155);
+  border-radius: 12px;
+  padding: 1.25rem;
   text-align: center;
 }
 
-.stat-value {
-  display: block;
+.stat-card .stat-value {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-paper, #f7f7f2);
+  line-height: 1.2;
 }
 
-.stat-value.audio { color: var(--color-tungsten, #ffa630); }
-.stat-value.generated { color: #10b981; }
-.stat-value.pending { color: var(--color-paper-dim, #c1c1bb); }
-.stat-value.flagged { color: #f59e0b; }
+.stat-card .stat-total {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-paper-dim, #c1c1bb);
+}
 
-.stat-label {
-  display: block;
+.stat-card .stat-label {
   font-size: 0.75rem;
   color: var(--color-paper-dim, #c1c1bb);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-top: 0.25rem;
+}
+
+.stat-card.audio .stat-value {
+  color: var(--color-tungsten, #ffa630);
+}
+
+.stat-progress {
+  margin-top: 0.75rem;
+  height: 4px;
+  background: var(--color-graphite, #475569);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-progress .progress-bar {
+  height: 100%;
+  background: var(--color-tungsten, #ffa630);
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .pipeline-stages {
@@ -398,18 +362,12 @@ function exportLegacyManifest() {
 }
 
 @media (max-width: 768px) {
-  .overall-progress {
-    grid-template-columns: 1fr;
+  .headline-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .progress-visual {
-    display: flex;
-    justify-content: center;
-  }
-
-  .progress-stats {
-    flex-wrap: wrap;
-    justify-content: center;
+  .stat-card .stat-value {
+    font-size: 1.5rem;
   }
 }
 </style>

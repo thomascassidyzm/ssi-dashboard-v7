@@ -191,18 +191,11 @@ const routes = [
     redirect: '/autocue'
   },
 
-  // Autocue Recording System (Two-Mode Teleprompter)
+  // Autocue Recording System (standalone entry point - course-specific handled by nested routes)
   {
     path: '/autocue',
     name: 'AutocueStudio',
     component: () => import('../components/production/autocue/AutocueStudio.vue'),
-    meta: { title: 'Autocue Studio', requiresAuth: true }
-  },
-  {
-    path: '/production/:courseCode/recording',
-    name: 'AutocueStudioCourse',
-    component: () => import('../components/production/autocue/AutocueStudio.vue'),
-    props: true,
     meta: { title: 'Autocue Studio', requiresAuth: true }
   },
   {
@@ -303,21 +296,7 @@ const routes = [
     meta: { title: 'Recursive Up-Regulation' }
   },
 
-  // Production QA Tools
-  {
-    // QA Browser - primary samples review interface
-    path: '/production/:courseCode/samples',
-    name: 'SamplesBrowser',
-    component: SamplesBrowser,
-    props: true,
-    meta: { title: 'Samples Browser' }
-  },
-  {
-    // DEPRECATED: Redirect /qa to /samples
-    path: '/production/:courseCode/qa',
-    name: 'ProductionQA',
-    redirect: to => `/production/${to.params.courseCode}/samples`
-  },
+  // Production QA Tools - handled by nested routes under /production/:courseCode
 
   {
     path: '/edit/:courseCode',
@@ -428,11 +407,6 @@ const routes = [
   {
     path: '/recording-optimizer/:courseCode',
     redirect: to => `/production/${to.params.courseCode}/recording-optimizer`
-  },
-  // Redirect old /production/:courseCode/qa to /production/:courseCode/qa (samples browser)
-  {
-    path: '/production/:courseCode/samples',
-    redirect: to => `/production/${to.params.courseCode}/qa`
   },
 
   // Catch-all route

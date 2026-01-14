@@ -1,20 +1,10 @@
 <template>
   <div class="text-generation">
     <div class="max-w-4xl mx-auto px-6 py-8 space-y-6">
-      <!-- Header -->
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-2xl font-semibold text-slate-100">Text Generation</h1>
-          <p class="text-sm text-slate-400 mt-1">
-            Build course content using the Course Builder agent
-          </p>
-        </div>
-        <span
-          class="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded text-sm font-mono text-emerald-400"
-        >
-          {{ courseCode }}
-        </span>
-      </div>
+      <!-- Subtitle -->
+      <p class="text-sm text-slate-400">
+        Build course content using the Course Builder agent
+      </p>
 
       <!-- Configuration -->
       <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6">

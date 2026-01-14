@@ -1,33 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100">
-    <!-- Header -->
-    <header class="border-b border-slate-700/50">
-      <div class="max-w-7xl mx-auto px-6 py-5">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-6">
-            <button
-              @click="$router.back()"
-              class="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 text-sm font-medium"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              Back to Dashboard
-            </button>
-            <h1 class="text-2xl font-bold tracking-wider text-emerald-400">AUDIO PIPELINE</h1>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="text-slate-400 text-sm">Course:</span>
-            <span class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-md text-slate-200 font-medium">
-              {{ courseCode }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </header>
-
+  <div class="audio-pipeline text-slate-100">
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-8">
+    <main class="max-w-5xl mx-auto px-6 py-6">
       <!-- Loading State -->
       <div v-if="loading" class="flex flex-col items-center justify-center py-20">
         <div class="relative">
@@ -1152,3 +1126,9 @@ const executeAllFlagged = async () => {
   }
 }
 </script>
+
+<style scoped>
+.audio-pipeline {
+  padding: 0;
+}
+</style>
