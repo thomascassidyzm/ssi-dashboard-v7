@@ -11,24 +11,33 @@
         </div>
 
         <div class="header-right flex items-center gap-3">
-          <!-- View Mode Toggle -->
-          <button
-            @click="toggleViewMode"
-            class="px-4 py-2 text-sm rounded-lg transition-colors flex items-center gap-2"
-            :class="viewMode === 'journey'
-              ? 'bg-emerald-500 text-white hover:bg-emerald-600'
-              : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
-            :title="viewMode === 'journey' ? 'Switch to Script View' : 'View as Learner'"
-          >
-            <svg v-if="viewMode === 'script'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-            </svg>
-            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            {{ viewMode === 'journey' ? 'Script View' : 'View as Learner' }}
-          </button>
+          <!-- View Mode Toggle Buttons -->
+          <div class="view-mode-toggle flex rounded-lg overflow-hidden">
+            <button
+              @click="viewMode = 'journey'; if (!learningJourneyData) loadLearningJourney(journeyMaxLegos)"
+              class="px-4 py-2 text-sm transition-colors flex items-center gap-2"
+              :class="viewMode === 'journey'
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+              Learning Journey
+            </button>
+            <button
+              @click="viewMode = 'script'"
+              class="px-4 py-2 text-sm transition-colors flex items-center gap-2"
+              :class="viewMode === 'script'
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Script View
+            </button>
+          </div>
 
           <!-- Collapse/Expand All (only in script mode) -->
           <template v-if="viewMode === 'script'">
