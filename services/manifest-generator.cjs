@@ -237,50 +237,96 @@ async function generateManifest(courseCode, options = {}) {
     v12AudioMap = await buildV12AudioMap(courseCode);
   }
 
-  // Get all seeds with LEGOs
-  const { data: seeds, error: seedsError } = await supabase
-    .from('course_seeds')
-    .select(`
-      id,
-      seed_number,
-      seed_id,
-      known_text,
-      target_text,
-      status
-    `)
-    .eq('course_code', courseCode)
-    .eq('status', 'released')
-    .order('seed_number');
+  // Get all seeds with LEGOs (paginated)
+  const PAGE_SIZE = 1000;
+  const seeds = [];
+  let seedsOffset = 0;
+  let hasMoreSeeds = true;
 
-  if (seedsError) {
-    throw seedsError;
+  while (hasMoreSeeds) {
+    const { data: seedsBatch, error: seedsError } = await supabase
+      .from('course_seeds')
+      .select(`
+        id,
+        seed_number,
+        seed_id,
+        known_text,
+        target_text,
+        status
+      `)
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+      .order('seed_number')
+      .range(seedsOffset, seedsOffset + PAGE_SIZE - 1);
+
+    if (seedsError) {
+      throw seedsError;
+    }
+
+    if (seedsBatch && seedsBatch.length > 0) {
+      seeds.push(...seedsBatch);
+      hasMoreSeeds = seedsBatch.length === PAGE_SIZE;
+      seedsOffset += PAGE_SIZE;
+    } else {
+      hasMoreSeeds = false;
+    }
   }
 
-  // Get all LEGOs for this course
-  const { data: legos, error: legosError } = await supabase
-    .from('course_legos')
-    .select('*')
-    .eq('course_code', courseCode)
-    .eq('status', 'released')
-    .order('seed_number')
-    .order('lego_index');
+  // Get all LEGOs for this course (paginated)
+  const legos = [];
+  let legosOffset = 0;
+  let hasMoreLegos = true;
 
-  if (legosError) {
-    throw legosError;
+  while (hasMoreLegos) {
+    const { data: legosBatch, error: legosError } = await supabase
+      .from('course_legos')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+      .order('seed_number')
+      .order('lego_index')
+      .range(legosOffset, legosOffset + PAGE_SIZE - 1);
+
+    if (legosError) {
+      throw legosError;
+    }
+
+    if (legosBatch && legosBatch.length > 0) {
+      legos.push(...legosBatch);
+      hasMoreLegos = legosBatch.length === PAGE_SIZE;
+      legosOffset += PAGE_SIZE;
+    } else {
+      hasMoreLegos = false;
+    }
   }
 
-  // Get all practice phrases for this course
-  const { data: phrases, error: phrasesError } = await supabase
-    .from('course_practice_phrases')
-    .select('*')
-    .eq('course_code', courseCode)
-    .eq('status', 'released')
-    .order('seed_number')
-    .order('lego_index')
-    .order('position');
+  // Get all practice phrases for this course (paginated)
+  const phrases = [];
+  let phrasesOffset = 0;
+  let hasMorePhrases = true;
 
-  if (phrasesError) {
-    throw phrasesError;
+  while (hasMorePhrases) {
+    const { data: phrasesBatch, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+      .order('seed_number')
+      .order('lego_index')
+      .order('position')
+      .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1);
+
+    if (phrasesError) {
+      throw phrasesError;
+    }
+
+    if (phrasesBatch && phrasesBatch.length > 0) {
+      phrases.push(...phrasesBatch);
+      hasMorePhrases = phrasesBatch.length === PAGE_SIZE;
+      phrasesOffset += PAGE_SIZE;
+    } else {
+      hasMorePhrases = false;
+    }
   }
 
   // Organize LEGOs by seed

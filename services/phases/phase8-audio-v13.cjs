@@ -48,9 +48,11 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // CONCURRENCY SETTINGS
 // =============================================================================
 
-// Azure TTS limits: Free=20/min, Standard=200/min
-// Default 10 works well with standard tier (200 req/min)
-const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 10
+// Azure TTS S0 (Standard) tier limits:
+// - 200 transactions per second (TPS)
+// - 20 concurrent connections max
+// Default 5 = conservative concurrency to avoid rate limiting
+const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 5
 
 /**
  * Process items in parallel with concurrency limit
@@ -219,6 +221,7 @@ app.get('/plan/:courseCode', planHandler)
 async function planHandler(req, res) {
   try {
     const { courseCode } = req.params
+    const PAGE_SIZE = 1000
 
     // Get course info
     const { data: course, error: courseError } = await supabase
@@ -231,21 +234,51 @@ async function planHandler(req, res) {
       return res.status(404).json({ error: 'Course not found' })
     }
 
-    // Get what audio we have
-    const { data: existingAudio, error: audioError } = await supabase
-      .from('course_audio')
-      .select('text_normalized, language, role')
-      .eq('course_code', courseCode)
+    // Get what audio we have (paginated)
+    const existingAudio = []
+    let audioOffset = 0
+    let hasMoreAudio = true
 
-    if (audioError) throw audioError
+    while (hasMoreAudio) {
+      const { data: audioBatch, error: audioError } = await supabase
+        .from('course_audio')
+        .select('text_normalized, language, role')
+        .eq('course_code', courseCode)
+        .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
-    // Get what phrases we need (from practice phrases)
-    const { data: phrases, error: phrasesError } = await supabase
-      .from('course_practice_phrases')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
+      if (audioError) throw audioError
 
-    if (phrasesError) throw phrasesError
+      if (audioBatch && audioBatch.length > 0) {
+        existingAudio.push(...audioBatch)
+        hasMoreAudio = audioBatch.length === PAGE_SIZE
+        audioOffset += PAGE_SIZE
+      } else {
+        hasMoreAudio = false
+      }
+    }
+
+    // Get what phrases we need (from practice phrases, paginated)
+    const phrases = []
+    let phrasesOffset = 0
+    let hasMorePhrases = true
+
+    while (hasMorePhrases) {
+      const { data: phrasesBatch, error: phrasesError } = await supabase
+        .from('course_practice_phrases')
+        .select('known_text, target_text')
+        .eq('course_code', courseCode)
+        .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
+
+      if (phrasesError) throw phrasesError
+
+      if (phrasesBatch && phrasesBatch.length > 0) {
+        phrases.push(...phrasesBatch)
+        hasMorePhrases = phrasesBatch.length === PAGE_SIZE
+        phrasesOffset += PAGE_SIZE
+      } else {
+        hasMorePhrases = false
+      }
+    }
 
     // Build needed list
     const needed = []
@@ -286,9 +319,9 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: existingAudio?.length || 0,
+      existing: existingAudio.length,
       missing: uniqueNeeded.length,
-      totalPhrases: phrases?.length || 0,
+      totalPhrases: phrases.length,
       estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedChars: totalChars,
       breakdown: {
@@ -333,7 +366,7 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = false, limit = 100 } = req.body
+    const { dryRun = false, limit = 50000 } = req.body  // High default for bulk generation
 
     // Get course with voice config
     const { data: course, error: courseError } = await supabase
@@ -347,45 +380,84 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     const voiceConfig = course.voice_config || {}
-    if (!voiceConfig.known || !voiceConfig.target1) {
+    const voices = voiceConfig.voices || voiceConfig  // Support both nested and flat structure
+    if (!voices.known || !voices.target1) {
       return res.status(400).json({
         error: 'Course missing voice configuration',
         voiceConfig
       })
     }
 
-    // Get missing audio using RPC
-    const { data: phrases, error: phrasesError } = await supabase
-      .from('course_practice_phrases')
-      .select('known_text, target_text')
-      .eq('course_code', courseCode)
+    // Get practice phrases (paginated)
+    const PAGE_SIZE = 1000
+    const phrases = []
+    let phrasesOffset = 0
+    let hasMorePhrases = true
 
-    if (phrasesError) throw phrasesError
+    while (hasMorePhrases) {
+      const { data: phrasesBatch, error: phrasesError } = await supabase
+        .from('course_practice_phrases')
+        .select('known_text, target_text')
+        .eq('course_code', courseCode)
+        .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
 
-    // Build needed list (same logic as plan)
-    const { data: existingAudio } = await supabase
-      .from('course_audio')
-      .select('text_normalized, language, role')
-      .eq('course_code', courseCode)
+      if (phrasesError) throw phrasesError
+
+      if (phrasesBatch && phrasesBatch.length > 0) {
+        phrases.push(...phrasesBatch)
+        hasMorePhrases = phrasesBatch.length === PAGE_SIZE
+        phrasesOffset += PAGE_SIZE
+      } else {
+        hasMorePhrases = false
+      }
+    }
+
+    // Get existing audio (paginated)
+    const existingAudio = []
+    let audioOffset = 0
+    let hasMoreAudio = true
+
+    while (hasMoreAudio) {
+      const { data: audioBatch, error: audioError } = await supabase
+        .from('course_audio')
+        .select('text_normalized, language, role')
+        .eq('course_code', courseCode)
+        .range(audioOffset, audioOffset + PAGE_SIZE - 1)
+
+      if (audioError) throw audioError
+
+      if (audioBatch && audioBatch.length > 0) {
+        existingAudio.push(...audioBatch)
+        hasMoreAudio = audioBatch.length === PAGE_SIZE
+        audioOffset += PAGE_SIZE
+      } else {
+        hasMoreAudio = false
+      }
+    }
 
     const existingSet = new Set(
-      (existingAudio || []).map(a => `${a.text_normalized}|${a.language}|${a.role}`)
+      existingAudio.map(a => `${a.text_normalized}|${a.language}|${a.role}`)
     )
 
     const needed = []
-    // Helper to get speed from voice config (everything is a parameter!)
-    const getSpeedForRole = (role) => {
-      return voiceConfig.voices?.[role]?.settings?.speed || 1.0
+    // Helper to get voice settings from config (supports nested voices structure)
+    const getVoiceForRole = (role) => {
+      const v = voices[role]
+      if (!v) return null
+      // Combine provider and voiceId: azure_en-GB-AdaMultilingualNeural
+      if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
+      return v.voiceId || v
     }
+    const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
-    for (const phrase of phrases || []) {
+    for (const phrase of phrases) {
       const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
       if (!existingSet.has(knownKey)) {
         needed.push({
           text: phrase.known_text,
           language: course.known_lang,
           role: 'known',
-          voiceId: voiceConfig.known,
+          voiceId: getVoiceForRole('known'),
           speed: getSpeedForRole('known')
         })
       }
@@ -397,7 +469,7 @@ app.post('/generate/:courseCode', async (req, res) => {
             text: phrase.target_text,
             language: course.target_lang,
             role,
-            voiceId: voiceConfig[role],
+            voiceId: getVoiceForRole(role),
             speed: getSpeedForRole(role)
           })
         }
@@ -921,15 +993,31 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Using template: ${template}`)
 
-    // Get all LEGOs for this course
-    const { data: legos, error: legosError } = await supabase
-      .from('course_legos')
-      .select('lego_id, known_text, target_text, seed_number')
-      .eq('course_code', courseCode)
+    // Get all LEGOs for this course (paginated)
+    const PAGE_SIZE = 1000
+    const legos = []
+    let legosOffset = 0
+    let hasMoreLegos = true
 
-    if (legosError) throw legosError
+    while (hasMoreLegos) {
+      const { data: legosBatch, error: legosError } = await supabase
+        .from('course_legos')
+        .select('lego_id, known_text, target_text, seed_number')
+        .eq('course_code', courseCode)
+        .range(legosOffset, legosOffset + PAGE_SIZE - 1)
 
-    if (!legos || legos.length === 0) {
+      if (legosError) throw legosError
+
+      if (legosBatch && legosBatch.length > 0) {
+        legos.push(...legosBatch)
+        hasMoreLegos = legosBatch.length === PAGE_SIZE
+        legosOffset += PAGE_SIZE
+      } else {
+        hasMoreLegos = false
+      }
+    }
+
+    if (legos.length === 0) {
       return res.json({
         success: true,
         message: 'No LEGOs found for this course',
@@ -937,19 +1025,26 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       })
     }
 
-    // Get all seed sentences for context
+    // Get all seed sentences for context (paginated in batches of seed numbers)
     const seedNumbers = [...new Set(legos.map(l => l.seed_number).filter(Boolean))]
 
     let seedMap = {}
     if (seedNumbers.length > 0) {
-      const { data: seeds, error: seedsError } = await supabase
-        .from('course_seeds')
-        .select('seed_number, known_text')
-        .eq('course_code', courseCode)
-        .in('seed_number', seedNumbers)
+      // Query seeds in batches to avoid "too many parameters" error
+      const SEED_BATCH_SIZE = 500
+      for (let i = 0; i < seedNumbers.length; i += SEED_BATCH_SIZE) {
+        const seedNumberBatch = seedNumbers.slice(i, i + SEED_BATCH_SIZE)
+        const { data: seeds, error: seedsError } = await supabase
+          .from('course_seeds')
+          .select('seed_number, known_text')
+          .eq('course_code', courseCode)
+          .in('seed_number', seedNumberBatch)
 
-      if (!seedsError && seeds) {
-        seedMap = Object.fromEntries(seeds.map(s => [s.seed_number, s.known_text]))
+        if (!seedsError && seeds) {
+          for (const s of seeds) {
+            seedMap[s.seed_number] = s.known_text
+          }
+        }
       }
     }
 
@@ -1000,91 +1095,36 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       })
     }
 
-    // Actually update/insert presentation audio records AND lego_introductions
+    // Bulk upsert presentation text to course_audio
     const voiceConfig = course.voice_config || {}
-    const presentationVoiceId = voiceConfig.presentation || `azure_${knownLang === 'eng' ? 'en-GB-SoniaNeural' : 'en-GB-SoniaNeural'}`
+    const presentationVoiceId = voiceConfig.voices?.presentation?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural'
 
-    let updated = 0
-    let introductions = 0
-    let errors = []
+    // Build records for bulk upsert
+    const audioRecords = presentations.map(pres => ({
+      course_code: courseCode,
+      text: pres.presentation_text,
+      text_normalized: pres.presentation_text.toLowerCase().trim(),
+      language: knownLang,
+      role: 'presentation',
+      voice_id: presentationVoiceId,
+      origin: 'tts',
+      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+    }))
 
-    for (const pres of presentations) {
-      try {
-        const textNormalized = pres.presentation_text.toLowerCase().trim()
+    // Bulk upsert - ignore conflicts (existing records stay as-is)
+    const { error: audioError } = await supabase
+      .from('course_audio')
+      .upsert(audioRecords, {
+        onConflict: 'course_code,text_normalized,language,role',
+        ignoreDuplicates: true
+      })
 
-        // Check if record already exists (don't overwrite existing mastered audio)
-        const { data: existing } = await supabase
-          .from('course_audio')
-          .select('id, s3_key')
-          .eq('course_code', courseCode)
-          .eq('text_normalized', textNormalized)
-          .eq('language', knownLang)
-          .eq('role', 'presentation')
-          .single()
-
-        if (!existing) {
-          // Insert new record with placeholder s3_key
-          const placeholderUuid = uuidv4().toUpperCase()
-          const placeholderS3Key = `pending/${placeholderUuid}.mp3`
-
-          const { error: insertError } = await supabase
-            .from('course_audio')
-            .insert({
-              course_code: courseCode,
-              text: pres.presentation_text,
-              text_normalized: textNormalized,
-              language: knownLang,
-              role: 'presentation',
-              voice_id: presentationVoiceId,
-              origin: 'tts',
-              s3_key: placeholderS3Key
-            })
-
-          if (insertError) {
-            errors.push({ lego_id: pres.lego_id, error: insertError.message })
-            continue
-          }
-        }
-        // If record exists, don't overwrite - just use it for linking
-
-        // Query for the ID explicitly
-        const { data: audioRecord, error: selectError } = await supabase
-          .from('course_audio')
-          .select('id')
-          .eq('course_code', courseCode)
-          .eq('text_normalized', textNormalized)
-          .eq('language', knownLang)
-          .eq('role', 'presentation')
-          .single()
-
-        if (selectError || !audioRecord?.id) {
-          errors.push({ lego_id: pres.lego_id, error: 'Could not find audio record' })
-          continue
-        }
-
-        updated++
-        const presentationAudioId = audioRecord.id
-
-        // Upsert into lego_introductions (only presentation_audio_id needed)
-        // Target1/target2 audio derived from course_audio by LEGO's target_text at playback
-        const { error: introError } = await supabase
-          .from('lego_introductions')
-          .upsert({
-            lego_id: pres.lego_id,
-            course_code: courseCode,
-            presentation_audio_id: presentationAudioId,
-            updated_at: new Date().toISOString()
-          }, {
-            onConflict: 'lego_id,course_code'
-          })
-
-        if (!introError) {
-          introductions++
-        }
-      } catch (err) {
-        errors.push({ lego_id: pres.lego_id, error: err.message })
-      }
+    if (audioError) {
+      logger.error('Bulk audio upsert error:', audioError)
+      return res.status(500).json({ error: audioError.message })
     }
+
+    logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
     res.json({
       success: true,
@@ -1093,10 +1133,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       template,
       targetLangName,
       total: presentations.length,
-      updated,
-      introductions,
-      errors: errors.slice(0, 10),
-      message: `Presentation text updated. ${introductions} lego_introductions created. Run regenerate-role with role=presentation to generate audio.`
+      message: `${presentations.length} presentation texts created. Run regenerate-role with role=presentation to generate audio.`
     })
 
   } catch (error) {

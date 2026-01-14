@@ -5,10 +5,18 @@
  */
 
 const express = require('express');
+const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
 const app = express();
+
+// CORS - allow dashboard from any origin (popty.app, localhost, etc.)
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+
 app.use(express.json({ limit: '10mb' }));
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
@@ -18,7 +26,56 @@ const PORT = process.env.COURSE_BUILDER_PORT || 3471;
 // PER-COURSE VOCABULARY TRACKING
 // Each course has its own vocab set built from LEGOs in insertion order
 // =============================================================================
-const courseVocabCache = new Map();  // course_code -> Set of vocab units
+
+// LRU Cache with TTL for course vocabulary
+// Stores: course_code -> { vocab: Set, lastAccess: timestamp }
+const MAX_CACHE_SIZE = 10;
+const CACHE_TTL_MS = 30 * 60 * 1000;  // 30 minutes
+const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess: number }
+
+/**
+ * Get cache entry, updating access time. Returns null if expired or missing.
+ */
+function getCacheEntry(courseCode) {
+  const entry = courseVocabCache.get(courseCode);
+  if (!entry) return null;
+
+  // Check TTL expiration
+  if (Date.now() - entry.lastAccess > CACHE_TTL_MS) {
+    courseVocabCache.delete(courseCode);
+    return null;
+  }
+
+  // Update access time (LRU touch)
+  entry.lastAccess = Date.now();
+  // Move to end of Map (most recently used)
+  courseVocabCache.delete(courseCode);
+  courseVocabCache.set(courseCode, entry);
+
+  return entry.vocab;
+}
+
+/**
+ * Set cache entry, evicting oldest if at capacity.
+ */
+function setCacheEntry(courseCode, vocabSet) {
+  // If already exists, delete first (to update position)
+  if (courseVocabCache.has(courseCode)) {
+    courseVocabCache.delete(courseCode);
+  }
+
+  // Evict oldest entries if at capacity
+  while (courseVocabCache.size >= MAX_CACHE_SIZE) {
+    // Map iterates in insertion order, so first key is oldest
+    const oldestKey = courseVocabCache.keys().next().value;
+    courseVocabCache.delete(oldestKey);
+  }
+
+  courseVocabCache.set(courseCode, {
+    vocab: vocabSet,
+    lastAccess: Date.now()
+  });
+}
 
 /**
  * Detect if course is Chinese-based (character-level vocab)
@@ -60,8 +117,10 @@ function extractVocab(text, chinese = false) {
  * Load existing vocabulary for a course from database
  */
 async function loadCourseVocab(courseCode) {
-  if (courseVocabCache.has(courseCode)) {
-    return courseVocabCache.get(courseCode);
+  // Check cache first (handles TTL and LRU ordering)
+  const cached = getCacheEntry(courseCode);
+  if (cached) {
+    return cached;
   }
 
   const chinese = isChinese(courseCode);
@@ -87,7 +146,8 @@ async function loadCourseVocab(courseCode) {
     }
   }
 
-  courseVocabCache.set(courseCode, vocabSet);
+  // Store in cache (handles LRU eviction)
+  setCacheEntry(courseCode, vocabSet);
   return vocabSet;
 }
 
@@ -96,10 +156,11 @@ async function loadCourseVocab(courseCode) {
  */
 function addToCourseVocab(courseCode, lego) {
   const chinese = isChinese(courseCode);
-  let vocabSet = courseVocabCache.get(courseCode);
+
+  // Get existing vocab set or create new one
+  let vocabSet = getCacheEntry(courseCode);
   if (!vocabSet) {
     vocabSet = new Set();
-    courseVocabCache.set(courseCode, vocabSet);
   }
 
   // Add LEGO vocab
@@ -111,6 +172,9 @@ function addToCourseVocab(courseCode, lego) {
       extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
     }
   }
+
+  // Update cache (this refreshes the access time and handles LRU)
+  setCacheEntry(courseCode, vocabSet);
 }
 
 /**
