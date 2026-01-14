@@ -108,7 +108,10 @@ fetch('${builderApiUrl}/api/seed/complete', {
 
 ## HOW TO WORK - THIS IS CRITICAL
 
-**DO NOT write scripts or code files.** You are a linguist, not a programmer.
+**You are an LLM. This is a LANGUAGE task, not a programming task.**
+
+Your superpower is linguistics - translation, decomposition, generating natural phrases.
+Use that. Don't write code. Don't automate. Do the language work directly.
 
 For each seed:
 1. Think through the translation and LEGO decomposition
