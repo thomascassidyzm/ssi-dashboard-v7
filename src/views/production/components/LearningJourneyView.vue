@@ -26,27 +26,46 @@
       </div>
     </div>
 
-    <!-- Item Type Legend -->
-    <div class="legend flex flex-wrap gap-4 mb-6 text-sm">
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-purple-500"></span>
-        <span class="text-slate-300">Intro</span>
+    <!-- Controls Row: Legend + Expand/Collapse -->
+    <div class="controls-row flex items-center justify-between mb-6">
+      <!-- Item Type Legend -->
+      <div class="legend flex flex-wrap gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+          <span class="text-slate-300">Intro</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+          <span class="text-slate-300">Debut</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+          <span class="text-slate-300">Debut Phrase</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+          <span class="text-slate-300">Spaced Rep</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
+          <span class="text-slate-300">Consolidation</span>
+        </div>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-        <span class="text-slate-300">Debut</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-        <span class="text-slate-300">Debut Phrase</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-        <span class="text-slate-300">Spaced Rep</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-        <span class="text-slate-300">Consolidation</span>
+
+      <!-- Expand/Collapse Buttons -->
+      <div class="expand-collapse-btns flex gap-2">
+        <button
+          @click="collapseAll"
+          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+        >
+          Collapse All
+        </button>
+        <button
+          @click="expandAll"
+          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+        >
+          Expand All
+        </button>
       </div>
     </div>
 
@@ -78,8 +97,11 @@
                 REVIEW
               </span>
             </div>
-            <div class="seed-badge text-slate-400 text-sm">
-              {{ round.seedId }}
+            <!-- LEGO Text: known = target -->
+            <div class="lego-text text-slate-300 text-sm">
+              <span class="text-slate-400">{{ getLegoKnownText(round) }}</span>
+              <span class="text-slate-500 mx-2">=</span>
+              <span class="text-white">{{ getLegoTargetText(round) }}</span>
             </div>
           </div>
 
@@ -258,6 +280,28 @@ const toggleRound = (roundNumber: number) => {
   } else {
     expandedRounds.value.add(roundNumber)
   }
+}
+
+const expandAll = () => {
+  props.rounds.forEach(round => {
+    expandedRounds.value.add(round.roundNumber)
+  })
+}
+
+const collapseAll = () => {
+  expandedRounds.value.clear()
+}
+
+// Get LEGO text from the debut or intro item in the round
+const getLegoKnownText = (round: RoundData): string => {
+  // Look for debut or intro item which has the LEGO's text
+  const debutItem = round.items.find(item => item.type === 'debut' || item.type === 'intro')
+  return debutItem?.known_text || ''
+}
+
+const getLegoTargetText = (round: RoundData): string => {
+  const debutItem = round.items.find(item => item.type === 'debut' || item.type === 'intro')
+  return debutItem?.target_text || ''
 }
 
 const formatItemType = (type: string): string => {
