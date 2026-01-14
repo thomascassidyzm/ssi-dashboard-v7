@@ -87,15 +87,6 @@
             </div>
             <div class="lego-info">
               <span class="text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
-              <span
-                v-if="round.isNew"
-                class="ml-2 px-2 py-0.5 bg-emerald-500 bg-opacity-20 text-emerald-400 text-xs rounded"
-              >
-                NEW
-              </span>
-              <span v-else class="ml-2 px-2 py-0.5 bg-slate-600 text-slate-400 text-xs rounded">
-                REVIEW
-              </span>
             </div>
             <!-- LEGO Text: known = target -->
             <div class="lego-text text-slate-300 text-sm">
