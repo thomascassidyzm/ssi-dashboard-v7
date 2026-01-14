@@ -210,6 +210,147 @@ function checkVocabViolations(phrases, vocabSet, courseCode) {
 }
 
 // =============================================================================
+// M-LEGO BUILD-UP: Particles and Component Filtering
+// =============================================================================
+
+// Chinese particles that don't get their own build-up phrase (they appear in the
+// full LEGO but don't need separate practice)
+const PARTICLES = ['了', '着', '过', '的', '地', '得', '吗', '呢', '吧', '啊', '把', '被'];
+
+/**
+ * Check if a target text is a particle (should skip in build-up)
+ */
+function isParticle(target) {
+  if (!target) return false;
+  return PARTICLES.includes(target.trim());
+}
+
+/**
+ * Get meaningful components for M-LEGO build-up.
+ * Filters out:
+ * 1. Particles (了, 着, etc.)
+ * 2. Components where target === the LEGO's target_text itself
+ */
+function getMeaningfulComponents(components, legoTarget) {
+  if (!components || !Array.isArray(components)) return [];
+  return components.filter(c =>
+    c && c.target && !isParticle(c.target) && c.target !== legoTarget
+  );
+}
+
+/**
+ * Generate build-up phrases for M-type LEGO.
+ * Returns array of phrase objects ready for insertion.
+ *
+ * Build-up structure:
+ * - P1..PN: Each meaningful component {known, target}
+ * - P(N+1): LEGO itself {known, target}
+ * - P(N+2)+: Agent's practice phrases
+ */
+function generateBuildupPhrases(lego, courseCode) {
+  const { seed, idx, known, target, components } = lego;
+  const meaningful = getMeaningfulComponents(components, target);
+
+  const buildupPhrases = [];
+
+  // Add component build-up phrases (P1, P2, ... PN)
+  for (let i = 0; i < meaningful.length; i++) {
+    const comp = meaningful[i];
+    buildupPhrases.push({
+      course_code: courseCode,
+      seed_number: seed,
+      lego_index: idx,
+      position: i + 1,
+      known_text: comp.known,
+      target_text: comp.target,
+      word_count: comp.target.length,
+      lego_count: 1,
+      metadata: { buildup: 'component', component_index: i },
+      status: 'draft',
+      version: 1
+    });
+  }
+
+  // Add LEGO itself at P(N+1)
+  const legoPosition = meaningful.length + 1;
+  buildupPhrases.push({
+    course_code: courseCode,
+    seed_number: seed,
+    lego_index: idx,
+    position: legoPosition,
+    known_text: known,
+    target_text: target,
+    word_count: target.length,
+    lego_count: 1,
+    metadata: { buildup: 'lego' },
+    status: 'draft',
+    version: 1
+  });
+
+  return { buildupPhrases, startPosition: legoPosition + 1 };
+}
+
+// =============================================================================
+// LEGO CONFLICT DETECTION (ZUT Violations)
+// =============================================================================
+
+/**
+ * Check for LEGO conflicts before insertion.
+ *
+ * Returns:
+ * - { conflict: false } - No conflict, proceed with is_new: true
+ * - { conflict: 'duplicate', existing } - Same known+target exists, use is_new: false
+ * - { conflict: 'zut', existing, error } - Same known, different target = ZUT violation
+ */
+async function checkLegoConflict(courseCode, knownText, targetText) {
+  // Find any existing LEGOs with the same known_text
+  const { data: existing, error } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text')
+    .eq('course_code', courseCode)
+    .eq('known_text', knownText);
+
+  if (error) {
+    throw new Error(`Conflict check failed: ${error.message}`);
+  }
+
+  if (!existing || existing.length === 0) {
+    return { conflict: false };
+  }
+
+  // Check if any have the same target (duplicate) or different target (ZUT)
+  const sameTarget = existing.find(e => e.target_text === targetText);
+
+  if (sameTarget) {
+    // Duplicate - same known + same target
+    return {
+      conflict: 'duplicate',
+      existing: sameTarget,
+      legoId: `S${String(sameTarget.seed_number).padStart(4,'0')}L${String(sameTarget.lego_index).padStart(2,'0')}`
+    };
+  }
+
+  // ZUT violation - same known + different target
+  const existingTargets = existing.map(e => ({
+    target: e.target_text,
+    legoId: `S${String(e.seed_number).padStart(4,'0')}L${String(e.lego_index).padStart(2,'0')}`
+  }));
+
+  return {
+    conflict: 'zut',
+    existing: existingTargets,
+    error: `ZUT violation: "${knownText}" already maps to "${existing[0].target_text}"`,
+    suggestions: [
+      `UPCHUNK: Add context to disambiguate (recommended)`,
+      `  - "${knownText}" → "${existing[0].target_text}" (existing)`,
+      `  - "[more specific phrase]" → "${targetText}" (new)`,
+      `SYNONYM: Use different known text`,
+      `  - Find a synonym or variant for "${knownText}"`
+    ]
+  };
+}
+
+// =============================================================================
 // VALIDATION GATES - Enforce quality, prevent lazy agents
 // =============================================================================
 const MIN_PHRASES_PER_LEGO = 7;       // Each LEGO must have at least 7 phrases
@@ -278,6 +419,35 @@ app.post('/api/lego', async (req, res) => {
       console.log(`⚠ ${legoId}: ${phraseCount} phrases exceeds max ${MAX_PHRASES_PER_LEGO} (will use first ${MAX_PHRASES_PER_LEGO})`);
     }
 
+    // CONFLICT DETECTION: Check for duplicate or ZUT violation
+    let isNew = true;
+    let skipBaskets = false;
+
+    if (!allowValidationBypass(req.body)) {
+      const conflictResult = await checkLegoConflict(course_code, known, target);
+
+      if (conflictResult.conflict === 'zut') {
+        // ZUT violation - same known, different target = REJECT
+        console.log(`✗ ${legoId}: REJECTED - ${conflictResult.error}`);
+        return res.status(400).json({
+          error: 'ZUT violation: ambiguous prompt',
+          lego_id: legoId,
+          known_text: known,
+          new_target: target,
+          existing: conflictResult.existing,
+          suggestions: conflictResult.suggestions,
+          hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym.'
+        });
+      }
+
+      if (conflictResult.conflict === 'duplicate') {
+        // Duplicate - same known + same target = mark as re-introduction, skip baskets
+        isNew = false;
+        skipBaskets = true;
+        console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} - marking is_new=false, skipping baskets`);
+      }
+    }
+
     // VOCABULARY VALIDATION: Load course vocab and check phrases
     const vocabSet = await loadCourseVocab(course_code);
 
@@ -285,8 +455,8 @@ app.post('/api/lego', async (req, res) => {
     const newLego = { target, type, components };
     addToCourseVocab(course_code, newLego);
 
-    // Check phrases for vocab violations
-    if (phrases && phrases.length > 0 && !allowValidationBypass(req.body)) {
+    // Check phrases for vocab violations (only if not skipping baskets)
+    if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
       const violations = checkVocabViolations(phrases, vocabSet, course_code);
       if (violations.length > 0) {
         // Remove the vocab we just added since we're rejecting
@@ -314,7 +484,7 @@ app.post('/api/lego', async (req, res) => {
         seed_number: seed,
         lego_index: idx,
         type: type || 'A',
-        is_new: true,
+        is_new: isNew,
         known_text: known,
         target_text: target,
         components: components || null,
@@ -324,38 +494,73 @@ app.post('/api/lego', async (req, res) => {
 
     if (legoError) throw legoError;
 
-    // Insert phrases
-    if (phrases && phrases.length > 0) {
-      // Sort by target syllable count (Chinese characters = syllables roughly)
-      const sorted = [...phrases].sort((a, b) => a.target.length - b.target.length);
+    // Insert phrases (with M-LEGO build-up auto-generation)
+    // Skip if this is a duplicate LEGO (already has baskets from first introduction)
+    let allPhraseRows = [];
+    let buildupCount = 0;
+    let practiceStartPosition = 1;
+    const practiceCount = phrases?.length || 0;
 
-      const phraseRows = sorted.map((p, i) => ({
-        course_code,
-        seed_number: seed,
-        lego_index: idx,
-        position: i + 1,
-        known_text: p.known,
-        target_text: p.target,
-        word_count: p.target.length,
-        lego_count: (p.known.match(/\s+/g) || []).length + 1,
-        metadata: {},
-        status: 'draft',
-        version: 1
-      }));
+    if (!skipBaskets) {
+      // M-TYPE BUILD-UP: Auto-generate build-up phrases for M-type LEGOs
+      // NEVER trust agent to provide build-up - always generate it ourselves
+      if (type === 'M' && components && components.length > 0) {
+        const { buildupPhrases, startPosition } = generateBuildupPhrases(
+          { seed, idx, known, target, components },
+          course_code
+        );
+        allPhraseRows = [...buildupPhrases];
+        buildupCount = buildupPhrases.length;
+        practiceStartPosition = startPosition;
 
-      const { error: phraseError } = await supabase
-        .from('course_practice_phrases')
-        .upsert(phraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+        console.log(`  M-LEGO build-up: ${buildupCount} phrases (${buildupPhrases.length - 1} components + LEGO)`);
+      }
 
-      if (phraseError) throw phraseError;
+      // Add agent's practice phrases after build-up
+      if (phrases && phrases.length > 0) {
+        // Sort by target syllable count (Chinese characters = syllables roughly)
+        const sorted = [...phrases].sort((a, b) => a.target.length - b.target.length);
+
+        const practicePhrases = sorted.map((p, i) => ({
+          course_code,
+          seed_number: seed,
+          lego_index: idx,
+          position: practiceStartPosition + i,  // Start after build-up
+          known_text: p.known,
+          target_text: p.target,
+          word_count: p.target.length,
+          lego_count: (p.known.match(/\s+/g) || []).length + 1,
+          metadata: {},
+          status: 'draft',
+          version: 1
+        }));
+
+        allPhraseRows = [...allPhraseRows, ...practicePhrases];
+      }
+
+      // Insert all phrases (build-up + practice)
+      if (allPhraseRows.length > 0) {
+        const { error: phraseError } = await supabase
+          .from('course_practice_phrases')
+          .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+
+        if (phraseError) throw phraseError;
+      }
     }
 
-    console.log(`✓ S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}: ${known} → ${target} (${phrases?.length || 0} phrases)`);
+    const totalPhrases = allPhraseRows.length;
+    const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup + ${practiceCount} practice]` : '';
+    const dupInfo = skipBaskets ? ' (duplicate, no baskets)' : '';
+    console.log(`✓ S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}: ${known} → ${target} (${totalPhrases} phrases${buildupInfo})${dupInfo}`);
 
     res.json({
       ok: true,
       lego_id: `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`,
-      phrases: phrases?.length || 0
+      is_new: isNew,
+      skipped_baskets: skipBaskets,
+      phrases: totalPhrases,
+      buildup_phrases: buildupCount,
+      practice_phrases: practiceCount
     });
 
   } catch (err) {
@@ -411,8 +616,42 @@ app.post('/api/batch', async (req, res) => {
 
     // Reset for actual insertion count
     totalPhrases = 0;
+    let totalBuildupPhrases = 0;
+    let totalPracticePhrases = 0;
+
+    let zutViolations = [];
+    let duplicates = 0;
+
     for (const lego of legos) {
-      // Insert each LEGO
+      const legoId = `S${String(lego.seed).padStart(4,'0')}L${String(lego.idx).padStart(2,'0')}`;
+
+      // CONFLICT DETECTION: Check for duplicate or ZUT violation
+      let isNew = true;
+      let skipBaskets = false;
+
+      if (!allowValidationBypass(req.body)) {
+        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
+
+        if (conflictResult.conflict === 'zut') {
+          // Collect ZUT violations but continue processing (report all at end)
+          zutViolations.push({
+            lego_id: legoId,
+            known: lego.known,
+            new_target: lego.target,
+            existing: conflictResult.existing
+          });
+          continue;  // Skip this LEGO entirely
+        }
+
+        if (conflictResult.conflict === 'duplicate') {
+          isNew = false;
+          skipBaskets = true;
+          duplicates++;
+          console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} - is_new=false, skipping baskets`);
+        }
+      }
+
+      // Insert LEGO
       const { error: legoError } = await supabase
         .from('course_legos')
         .upsert({
@@ -420,7 +659,7 @@ app.post('/api/batch', async (req, res) => {
           seed_number: lego.seed,
           lego_index: lego.idx,
           type: lego.type || 'A',
-          is_new: true,
+          is_new: isNew,
           known_text: lego.known,
           target_text: lego.target,
           components: lego.components || null,
@@ -430,15 +669,342 @@ app.post('/api/batch', async (req, res) => {
 
       if (legoError) throw legoError;
 
-      // Insert phrases
+      // Insert phrases (with M-LEGO build-up auto-generation)
+      // Skip if duplicate LEGO
+      let allPhraseRows = [];
+      let buildupCount = 0;
+      let practiceStartPosition = 1;
+
+      if (!skipBaskets) {
+        // M-TYPE BUILD-UP: Auto-generate build-up phrases for M-type LEGOs
+        if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+          const { buildupPhrases, startPosition } = generateBuildupPhrases(
+            { seed: lego.seed, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
+            course_code
+          );
+          allPhraseRows = [...buildupPhrases];
+          buildupCount = buildupPhrases.length;
+          practiceStartPosition = startPosition;
+          totalBuildupPhrases += buildupCount;
+        }
+
+        // Add agent's practice phrases after build-up
+        if (lego.phrases && lego.phrases.length > 0) {
+          const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
+
+          const practicePhrases = sorted.map((p, i) => ({
+            course_code,
+            seed_number: lego.seed,
+            lego_index: lego.idx,
+            position: practiceStartPosition + i,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            metadata: {},
+            status: 'draft',
+            version: 1
+          }));
+
+          allPhraseRows = [...allPhraseRows, ...practicePhrases];
+          totalPracticePhrases += lego.phrases.length;
+        }
+
+        // Insert all phrases (build-up + practice)
+        if (allPhraseRows.length > 0) {
+          const { error: phraseError } = await supabase
+            .from('course_practice_phrases')
+            .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+
+          if (phraseError) throw phraseError;
+          totalPhrases += allPhraseRows.length;
+        }
+      }
+
+      const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup]` : '';
+      const dupInfo = skipBaskets ? ' (dup)' : '';
+      console.log(`✓ ${legoId}: ${lego.known} → ${lego.target}${buildupInfo}${dupInfo}`);
+    }
+
+    // If any ZUT violations, report them
+    if (zutViolations.length > 0) {
+      console.log(`✗ Batch had ${zutViolations.length} ZUT violations (skipped)`);
+      return res.status(400).json({
+        error: 'ZUT violations detected',
+        zut_violations: zutViolations,
+        processed_before_error: totalPhrases,
+        hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms.'
+      });
+    }
+
+    res.json({
+      ok: true,
+      legos: legos.length,
+      duplicates_skipped: duplicates,
+      phrases: totalPhrases,
+      buildup_phrases: totalBuildupPhrases,
+      practice_phrases: totalPracticePhrases
+    });
+
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/seed/complete - Submit a complete seed with translation and all LEGOs
+ *
+ * THE GOLDEN PATH: Agent submits everything for one seed atomically.
+ * Validates everything upfront, inserts all or nothing.
+ *
+ * Body:
+ * {
+ *   "course_code": "zho_for_eng",
+ *   "seed_number": 42,
+ *   "known_text": "I want to learn Chinese",
+ *   "target_text": "我想学中文",
+ *   "legos": [
+ *     {
+ *       "idx": 1,
+ *       "type": "A",
+ *       "known": "I",
+ *       "target": "我",
+ *       "phrases": [{"known": "I", "target": "我"}, ...]
+ *     },
+ *     {
+ *       "idx": 2,
+ *       "type": "M",
+ *       "known": "want to learn",
+ *       "target": "想学",
+ *       "components": [{"known": "want", "target": "想"}, {"known": "learn", "target": "学"}],
+ *       "phrases": [...]
+ *     }
+ *   ]
+ * }
+ */
+app.post('/api/seed/complete', async (req, res) => {
+  try {
+    const { course_code, seed_number, known_text, target_text, legos, SKIP_VALIDATION } = req.body;
+    const seedId = `S${String(seed_number).padStart(4, '0')}`;
+
+    // Basic validation
+    if (!course_code || !seed_number || !known_text || !target_text || !legos) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['course_code', 'seed_number', 'known_text', 'target_text', 'legos']
+      });
+    }
+
+    if (!Array.isArray(legos) || legos.length === 0) {
+      return res.status(400).json({
+        error: 'legos must be a non-empty array',
+        seed: seedId
+      });
+    }
+
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`SEED COMPLETE: ${seedId} "${known_text}" → "${target_text}"`);
+    console.log(`${'='.repeat(60)}`);
+
+    // =========================================================================
+    // VALIDATION PHASE (all checks before any inserts)
+    // =========================================================================
+
+    const errors = [];
+    const warnings = [];
+
+    // 1. ZUT VALIDATION: Check for conflicts with existing LEGOs
+    const zutViolations = [];
+    const duplicateLegos = [];
+
+    for (const lego of legos) {
+      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+
+      if (!SKIP_VALIDATION) {
+        const conflictResult = await checkLegoConflict(course_code, lego.known, lego.target);
+
+        if (conflictResult.conflict === 'zut') {
+          zutViolations.push({
+            lego_id: legoId,
+            known: lego.known,
+            new_target: lego.target,
+            existing: conflictResult.existing,
+            suggestions: conflictResult.suggestions
+          });
+        } else if (conflictResult.conflict === 'duplicate') {
+          duplicateLegos.push({
+            lego_id: legoId,
+            known: lego.known,
+            target: lego.target,
+            original: conflictResult.legoId
+          });
+          console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} (will skip baskets)`);
+        }
+      }
+    }
+
+    if (zutViolations.length > 0) {
+      errors.push({
+        type: 'zut',
+        message: `${zutViolations.length} ZUT violation(s) - same known text maps to different targets`,
+        violations: zutViolations
+      });
+    }
+
+    // 2. VOCAB VALIDATION: Load vocab and check all phrases
+    const vocabSet = await loadCourseVocab(course_code);
+
+    // Add all new LEGO vocab first (so phrases can use them)
+    for (const lego of legos) {
+      addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
+    }
+
+    // Now check all phrases
+    const vocabViolations = [];
+    for (const lego of legos) {
+      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+      const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+
+      // Skip vocab check for duplicates (they won't have baskets anyway)
+      if (isDuplicate || !lego.phrases || lego.phrases.length === 0) continue;
+
+      const violations = checkVocabViolations(lego.phrases, vocabSet, course_code);
+      if (violations.length > 0 && !SKIP_VALIDATION) {
+        vocabViolations.push({
+          lego_id: legoId,
+          violations: violations.slice(0, 3)  // First 3
+        });
+      }
+    }
+
+    if (vocabViolations.length > 0) {
+      // Clear vocab cache since we're rejecting
+      courseVocabCache.delete(course_code);
+      errors.push({
+        type: 'vocab',
+        message: 'Vocabulary violations - phrases use unknown vocabulary',
+        legos_with_violations: vocabViolations
+      });
+    }
+
+    // 3. PHRASE COUNT VALIDATION
+    const globalPosition = (seed_number - 1) * 3;  // Rough estimate
+    for (const lego of legos) {
+      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+      const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+      if (isDuplicate) continue;
+
+      const phraseCount = lego.phrases?.length || 0;
+      const legoPosition = globalPosition + lego.idx;
+
+      let minRequired = MIN_PHRASES_PER_LEGO;
+      if (legoPosition <= 3) minRequired = 1;
+      else if (legoPosition <= 6) minRequired = 2;
+      else if (legoPosition <= 10) minRequired = 3;
+
+      if (phraseCount < minRequired && !SKIP_VALIDATION) {
+        errors.push({
+          type: 'phrases',
+          message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ at position ~${legoPosition})`,
+          lego_id: legoId
+        });
+      }
+    }
+
+    // If any errors, reject everything
+    if (errors.length > 0) {
+      console.log(`✗ ${seedId}: REJECTED - ${errors.length} validation error(s)`);
+      return res.status(400).json({
+        error: 'Validation failed',
+        seed: seedId,
+        errors,
+        warnings,
+        hint: 'Fix all errors and resubmit. Nothing was inserted.'
+      });
+    }
+
+    // =========================================================================
+    // INSERT PHASE (all validations passed)
+    // =========================================================================
+
+    console.log(`\nInserting ${seedId}...`);
+
+    // 1. Insert/update seed
+    const { error: seedError } = await supabase
+      .from('course_seeds')
+      .upsert({
+        course_code,
+        seed_number,
+        known_text,
+        target_text,
+        status: 'complete',
+        version: 1
+      }, { onConflict: 'course_code,seed_number' });
+
+    if (seedError) throw new Error(`Seed insert failed: ${seedError.message}`);
+    console.log(`✓ Seed: "${known_text}" → "${target_text}"`);
+
+    // 2. Insert LEGOs and phrases
+    let totalPhrases = 0;
+    let totalBuildupPhrases = 0;
+    let skippedDuplicates = 0;
+
+    for (const lego of legos) {
+      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+      const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+
+      // Insert LEGO
+      const { error: legoError } = await supabase
+        .from('course_legos')
+        .upsert({
+          course_code,
+          seed_number,
+          lego_index: lego.idx,
+          type: lego.type || 'A',
+          is_new: !isDuplicate,
+          known_text: lego.known,
+          target_text: lego.target,
+          components: lego.components || null,
+          status: 'draft',
+          version: 1
+        }, { onConflict: 'course_code,seed_number,lego_index' });
+
+      if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
+
+      // Skip baskets for duplicates
+      if (isDuplicate) {
+        skippedDuplicates++;
+        console.log(`  ${legoId}: ${lego.known} → ${lego.target} (duplicate, no baskets)`);
+        continue;
+      }
+
+      // Generate phrases (with M-LEGO build-up)
+      let allPhraseRows = [];
+      let buildupCount = 0;
+      let practiceStartPosition = 1;
+
+      // M-TYPE BUILD-UP
+      if (lego.type === 'M' && lego.components && lego.components.length > 0) {
+        const { buildupPhrases, startPosition } = generateBuildupPhrases(
+          { seed: seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
+          course_code
+        );
+        allPhraseRows = [...buildupPhrases];
+        buildupCount = buildupPhrases.length;
+        practiceStartPosition = startPosition;
+        totalBuildupPhrases += buildupCount;
+      }
+
+      // Practice phrases
       if (lego.phrases && lego.phrases.length > 0) {
         const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
 
-        const phraseRows = sorted.map((p, i) => ({
+        const practicePhrases = sorted.map((p, i) => ({
           course_code,
-          seed_number: lego.seed,
+          seed_number,
           lego_index: lego.idx,
-          position: i + 1,
+          position: practiceStartPosition + i,
           known_text: p.known,
           target_text: p.target,
           word_count: p.target.length,
@@ -448,18 +1014,39 @@ app.post('/api/batch', async (req, res) => {
           version: 1
         }));
 
-        const { error: phraseError } = await supabase
-          .from('course_practice_phrases')
-          .upsert(phraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
-
-        if (phraseError) throw phraseError;
-        totalPhrases += lego.phrases.length;
+        allPhraseRows = [...allPhraseRows, ...practicePhrases];
       }
 
-      console.log(`✓ S${String(lego.seed).padStart(4,'0')}L${String(lego.idx).padStart(2,'0')}: ${lego.known} → ${lego.target}`);
+      // Insert all phrases
+      if (allPhraseRows.length > 0) {
+        const { error: phraseError } = await supabase
+          .from('course_practice_phrases')
+          .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
+
+        if (phraseError) throw new Error(`Phrase insert failed: ${phraseError.message}`);
+        totalPhrases += allPhraseRows.length;
+      }
+
+      const buildupInfo = buildupCount > 0 ? ` [${buildupCount} buildup + ${lego.phrases?.length || 0} practice]` : '';
+      console.log(`  ${legoId}: ${lego.known} → ${lego.target} (${allPhraseRows.length} phrases${buildupInfo})`);
     }
 
-    res.json({ ok: true, legos: legos.length, phrases: totalPhrases });
+    console.log(`\n✓ ${seedId} COMPLETE`);
+    console.log(`  LEGOs: ${legos.length} (${skippedDuplicates} duplicates)`);
+    console.log(`  Phrases: ${totalPhrases} (${totalBuildupPhrases} buildup)`);
+    console.log(`${'='.repeat(60)}\n`);
+
+    res.json({
+      ok: true,
+      seed: seedId,
+      known_text,
+      target_text,
+      legos: legos.length,
+      duplicates_skipped: skippedDuplicates,
+      phrases: totalPhrases,
+      buildup_phrases: totalBuildupPhrases,
+      warnings: warnings.length > 0 ? warnings : undefined
+    });
 
   } catch (err) {
     console.error('Error:', err);
@@ -594,6 +1181,7 @@ app.get('/api/vocab/:courseCode', async (req, res) => {
 app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
   const { courseCode, seedNumber } = req.params;
   const { target_text } = req.body;
+  const seedNum = parseInt(seedNumber);
 
   if (!target_text) {
     return res.status(400).json({ error: 'target_text is required' });
@@ -603,14 +1191,121 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
     .from('course_seeds')
     .update({ target_text, status: 'complete' })
     .eq('course_code', courseCode)
-    .eq('seed_number', parseInt(seedNumber));
+    .eq('seed_number', seedNum);
 
   if (error) {
     return res.status(500).json({ error: error.message });
   }
 
-  console.log(`✓ S${String(seedNumber).padStart(4,'0')} translation: ${target_text}`);
-  res.json({ ok: true, seed: seedNumber, target_text });
+  console.log(`✓ S${String(seedNum).padStart(4,'0')} translation: ${target_text}`);
+  res.json({ ok: true, seed: seedNum, target_text });
+});
+
+/**
+ * POST /api/phrases - Add phrases to an existing LEGO basket
+ * Used for topping up baskets that need more phrases
+ */
+app.post('/api/phrases', async (req, res) => {
+  const { course_code, seed_number, lego_index, phrases } = req.body;
+
+  if (!course_code || !seed_number || !lego_index || !phrases || !Array.isArray(phrases)) {
+    return res.status(400).json({
+      error: 'Required: course_code, seed_number, lego_index, phrases (array)'
+    });
+  }
+
+  // Verify LEGO exists
+  const { data: lego, error: legoErr } = await supabase
+    .from('course_legos')
+    .select('id, known_text, target_text')
+    .eq('course_code', course_code)
+    .eq('seed_number', seed_number)
+    .eq('lego_index', lego_index)
+    .single();
+
+  if (legoErr || !lego) {
+    return res.status(404).json({
+      error: `LEGO not found: ${course_code} S${seed_number}L${lego_index}`
+    });
+  }
+
+  // Get current max position
+  const { data: existing } = await supabase
+    .from('course_practice_phrases')
+    .select('position')
+    .eq('course_code', course_code)
+    .eq('seed_number', seed_number)
+    .eq('lego_index', lego_index)
+    .order('position', { ascending: false })
+    .limit(1);
+
+  let nextPosition = (existing?.[0]?.position || 0) + 1;
+
+  // VOCABULARY VALIDATION
+  const chinese = isChinese(course_code);
+  const vocabSet = await loadCourseVocab(course_code);
+
+  const violations = [];
+  const validPhrases = [];
+
+  for (const phrase of phrases) {
+    const { known, target } = phrase;
+    if (!known || !target) continue;
+
+    // Check vocab
+    const phraseChars = chinese
+      ? [...target].filter(c => c.trim() && !/[\s\u3000。，！？、：；""'']/.test(c))
+      : target.toLowerCase().split(/\s+/);
+
+    const unknown = phraseChars.filter(c => !vocabSet.has(c));
+
+    if (unknown.length > 0) {
+      violations.push({
+        phrase: target,
+        unknown: chinese ? unknown.join('') : unknown.join(', ')
+      });
+    } else {
+      validPhrases.push({
+        course_code,
+        seed_number,
+        lego_index,
+        position: nextPosition++,
+        known_text: known,
+        target_text: target
+      });
+    }
+  }
+
+  if (violations.length > 0) {
+    return res.status(400).json({
+      error: 'Vocabulary violations detected',
+      violations,
+      message: 'These phrases use characters not yet introduced'
+    });
+  }
+
+  if (validPhrases.length === 0) {
+    return res.status(400).json({ error: 'No valid phrases to insert' });
+  }
+
+  // Insert phrases
+  const { error: insertErr } = await supabase
+    .from('course_practice_phrases')
+    .insert(validPhrases);
+
+  if (insertErr) {
+    return res.status(500).json({ error: insertErr.message });
+  }
+
+  const legoId = `S${String(seed_number).padStart(4,'0')}L${String(lego_index).padStart(2,'0')}`;
+  console.log(`✓ Added ${validPhrases.length} phrases to ${legoId}`);
+
+  res.json({
+    ok: true,
+    lego: legoId,
+    added: validPhrases.length,
+    phrases: validPhrases.map(p => ({ position: p.position, target: p.target_text }))
+  });
 });
 
 /**
@@ -639,11 +1334,17 @@ app.listen(PORT, () => {
   console.log(`║  • Phrases per LEGO: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO}            ║`);
   console.log(`║  • Batch ratio: min ${MIN_BATCH_PHRASE_RATIO} phrases per LEGO                  ║`);
   console.log(`║  • Vocabulary validation: per-course tracking (ZUT)          ║`);
+  console.log(`║  • M-LEGO build-up: Auto-generated (components→LEGO→phrases) ║`);
+  console.log(`║  • Conflict detection: ZUT reject, duplicates → is_new=false ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  Endpoints:                                                  ║`);
+  console.log(`║  GOLDEN PATH:                                                ║`);
+  console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  Other Endpoints:                                            ║`);
   console.log(`║  GET  /api/seeds/:code - Canonical seeds from database       ║`);
-  console.log(`║  POST /api/lego   - Insert LEGO (validates vocab + phrases)  ║`);
-  console.log(`║  POST /api/batch  - Insert batch (validates ratio)           ║`);
+  console.log(`║  POST /api/lego   - Insert single LEGO                       ║`);
+  console.log(`║  POST /api/batch  - Insert multiple LEGOs                    ║`);
+  console.log(`║  PATCH /api/seed/:code/:num - Update seed translation        ║`);
   console.log(`║  GET  /api/stats/:code - Quality metrics + vocab size        ║`);
   console.log(`║  GET  /api/vocab/:code - Current vocabulary set              ║`);
   console.log(`║  DELETE /api/course/:code - Clear course + vocab cache       ║`);

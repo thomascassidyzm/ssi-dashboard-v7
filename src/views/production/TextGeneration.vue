@@ -283,8 +283,11 @@ async function fetchProgress() {
       }
 
       // Update status based on progress
-      if (data.seeds >= seedCount.value) {
+      if (data.seeds >= seedCount.value && data.seeds > 0) {
         progress.value.status = 'complete'
+      } else if (data.seeds === 0 && progress.value.status === 'complete') {
+        // Course was reset externally - go back to idle
+        progress.value.status = 'idle'
       }
     }
   } catch (error) {

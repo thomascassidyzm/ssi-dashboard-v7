@@ -1,0 +1,444 @@
+# APML Service: Course Builder API
+# Version: 2.0.0 (2026-01-14)
+# Status: Production-ready
+# Server Port: 3471
+
+service CourseBuilderAPI:
+  name: "Course Builder API"
+  version: "2.0.0"
+  port: 3471
+  purpose: "Bulletproof API for LLM agents to insert course content"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    The Course Builder API provides a validated, bulletproof interface for LLM agents
+    to insert course content (seeds, LEGOs, practice phrases) into the database.
+
+    All content is validated BEFORE insertion using multiple quality gates.
+    The API enforces functional determinism (ZUT principle) and proper M-LEGO structure.
+
+  architecture:
+    database: "Supabase (course_seeds, course_legos, course_practice_phrases)"
+    validation: "All validations run BEFORE any database writes"
+    atomicity: "Golden path endpoint is all-or-nothing"
+
+  ## ==========================================================================
+  ## GOLDEN PATH: POST /api/seed/complete
+  ## ==========================================================================
+
+  golden_path:
+    endpoint: "POST /api/seed/complete"
+    description: |
+      THE RECOMMENDED APPROACH: Submit a complete seed with translation and all LEGOs atomically.
+      Validates everything upfront, inserts all or nothing.
+
+      Agent completes one seed at a time:
+      1. Translate the seed (known → target)
+      2. Decompose into LEGOs
+      3. Create practice phrases for each LEGO
+      4. Submit everything in one request
+
+    request_body:
+      course_code: "string (e.g., 'zho_for_eng')"
+      seed_number: "integer (1-668)"
+      known_text: "string (English seed sentence)"
+      target_text: "string (target language translation)"
+      legos: |
+        array of LEGO objects:
+        [
+          {
+            "idx": 1,
+            "type": "A",
+            "known": "I",
+            "target": "我",
+            "phrases": [{"known": "I speak", "target": "我说"}, ...]
+          },
+          {
+            "idx": 2,
+            "type": "M",
+            "known": "want to learn",
+            "target": "想学",
+            "components": [{"known": "want", "target": "想"}, {"known": "learn", "target": "学"}],
+            "phrases": [...]
+          }
+        ]
+
+    example_request: |
+      POST /api/seed/complete
+      {
+        "course_code": "zho_for_eng",
+        "seed_number": 42,
+        "known_text": "I want to learn Chinese",
+        "target_text": "我想学中文",
+        "legos": [
+          {
+            "idx": 1,
+            "type": "A",
+            "known": "I",
+            "target": "我",
+            "phrases": [
+              {"known": "I speak", "target": "我说"},
+              {"known": "I understand", "target": "我明白"}
+            ]
+          },
+          {
+            "idx": 2,
+            "type": "M",
+            "known": "want to learn",
+            "target": "想学",
+            "components": [
+              {"known": "want", "target": "想"},
+              {"known": "learn", "target": "学"}
+            ],
+            "phrases": [
+              {"known": "I want to learn", "target": "我想学"},
+              {"known": "want to learn Chinese", "target": "想学中文"}
+            ]
+          },
+          {
+            "idx": 3,
+            "type": "A",
+            "known": "Chinese",
+            "target": "中文",
+            "phrases": [
+              {"known": "speak Chinese", "target": "说中文"},
+              {"known": "learn Chinese", "target": "学中文"}
+            ]
+          }
+        ]
+      }
+
+    success_response: |
+      {
+        "ok": true,
+        "seed": "S0042",
+        "known_text": "I want to learn Chinese",
+        "target_text": "我想学中文",
+        "legos": 3,
+        "duplicates_skipped": 0,
+        "phrases": 24,
+        "buildup_phrases": 3
+      }
+
+    failure_response: |
+      {
+        "error": "Validation failed",
+        "seed": "S0042",
+        "errors": [
+          {
+            "type": "zut",
+            "message": "ZUT violation - same known text maps to different targets",
+            "violations": [...]
+          }
+        ],
+        "hint": "Fix all errors and resubmit. Nothing was inserted."
+      }
+
+  ## ==========================================================================
+  ## VALIDATION GATES
+  ## ==========================================================================
+
+  validation_gates:
+    description: |
+      All validations run BEFORE any database writes.
+      If ANY validation fails, NOTHING is inserted.
+
+      NOTE: Seed tiling validation was REMOVED because:
+      - LEGOs can be introduced in one seed and reused in later seeds (is_new=false)
+      - LEGOs can overlap to handle different word orders
+      - Seeds are conceptual guides, not real course content
+
+    gate_1_zut_conflict:
+      name: "ZUT (Zero Untaught) Conflict Detection"
+      description: |
+        Same known text cannot map to different targets (ambiguous prompt).
+        This is a functional determinism violation - learner wouldn't know which answer is correct.
+
+      scenarios:
+        no_conflict:
+          condition: "Known text is unique (not seen before)"
+          action: "Proceed with is_new: true"
+
+        duplicate:
+          condition: "Same known + same target exists"
+          action: "Mark is_new: false, skip basket generation"
+          rationale: "LEGO already introduced - don't create redundant baskets"
+
+        zut_violation:
+          condition: "Same known + DIFFERENT target exists"
+          action: "REJECT with helpful error"
+          error_format: |
+            {
+              "error": "ZUT violation: ambiguous prompt",
+              "known_text": "to learn",
+              "new_target": "学习",
+              "existing": [{"target": "学", "legoId": "S0002L02"}],
+              "suggestions": [
+                "UPCHUNK: Add context to disambiguate (recommended)",
+                "  - 'to learn' → '学' (existing)",
+                "  - '[more specific phrase]' → '学习' (new)",
+                "SYNONYM: Use different known text",
+                "  - Find a synonym or variant for 'to learn'"
+              ]
+            }
+
+      resolution_strategies:
+        upchunk:
+          description: "Add context to disambiguate - creates natural M-LEGO"
+          example:
+            before: "'to learn' → '学习' (conflicts with 'to learn' → '学')"
+            after: "'to study formally' → '学习' (no conflict)"
+          recommended: true
+
+        synonym:
+          description: "Use different known text"
+          example:
+            before: "'to learn' → '学习'"
+            after: "'to study' → '学习'"
+          note: "Less elegant but acceptable"
+
+    gate_2_vocabulary:
+      name: "Vocabulary Validation (ZUT Principle)"
+      description: |
+        Phrases can only use vocabulary that has been introduced.
+        Per-course vocabulary tracking with LRU cache.
+
+      what_counts_as_introduced:
+        - "A-type LEGO target text (single word)"
+        - "M-type LEGO target text (all words)"
+        - "M-type component targets (individual words)"
+
+      chinese_mode: "Character-level validation"
+      european_mode: "Word-level validation (space-separated)"
+
+      example_violation:
+        lego: {known: "I", target: "我"}
+        phrase: {known: "I drink", target: "我喝"}
+        error: "Vocabulary violation: '喝' not yet introduced"
+
+    gate_3_phrase_count:
+      name: "Minimum Phrase Count"
+      description: |
+        Each LEGO must have sufficient practice phrases.
+        Graduated minimums based on LEGO position in course.
+
+      minimums:
+        positions_1_3: "1 phrase minimum (first 3 LEGOs)"
+        positions_4_6: "2 phrases minimum"
+        positions_7_10: "3 phrases minimum"
+        positions_11_plus: "7 phrases minimum"
+
+      target: "10 phrases per LEGO"
+      maximum: "13 phrases (diminishing returns)"
+
+  ## ==========================================================================
+  ## M-LEGO BUILD-UP AUTO-GENERATION
+  ## ==========================================================================
+
+  m_lego_buildup:
+    description: |
+      For M-type (molecular) LEGOs, the API automatically generates "build-up" phrases
+      that introduce meaningful components before the complete LEGO.
+
+      AGENTS DO NOT PROVIDE BUILD-UP - it is always auto-generated.
+      Agents only provide practice phrases; the API handles the rest.
+
+    structure:
+      positions_1_to_N: "Meaningful component phrases (one per component)"
+      position_N_plus_1: "The LEGO itself"
+      positions_N_plus_2_onwards: "Agent's practice phrases"
+
+    particle_handling:
+      description: "Particles are SKIPPED in build-up (no separate position)"
+      chinese_particles: ["了", "着", "过", "的", "地", "得", "吗", "呢", "吧", "啊", "把", "被"]
+      rationale: "Learners see particles as 'grammatical glue' when full LEGO appears"
+
+    example:
+      lego:
+        known_text: "I've been learning"
+        target_text: "我学了"
+        type: "M"
+        components:
+          - {known: "I", target: "我"}
+          - {known: "learn", target: "学"}
+          - {known: "completed", target: "了"}  # PARTICLE - skipped
+
+      auto_generated_buildup:
+        - {position: 1, known_text: "I", target_text: "我"}
+        - {position: 2, known_text: "learn", target_text: "学"}
+        - {position: 3, known_text: "I've been learning", target_text: "我学了"}
+
+      agent_phrases_start_at: "position 4"
+
+  ## ==========================================================================
+  ## OTHER ENDPOINTS
+  ## ==========================================================================
+
+  other_endpoints:
+    description: |
+      These endpoints exist for backwards compatibility and edge cases.
+      The golden path (POST /api/seed/complete) is recommended for new work.
+
+    post_api_lego:
+      path: "POST /api/lego"
+      purpose: "Insert a single LEGO with phrases"
+      includes: "ZUT detection, M-LEGO build-up, vocab validation"
+      body:
+        course_code: "string"
+        seed: "integer"
+        idx: "integer"
+        type: "'A' or 'M'"
+        known: "string"
+        target: "string"
+        components: "array (for M-type only)"
+        phrases: "array of {known, target}"
+
+    post_api_batch:
+      path: "POST /api/batch"
+      purpose: "Insert multiple LEGOs at once"
+      includes: "ZUT detection, M-LEGO build-up, vocab validation"
+      body:
+        course_code: "string"
+        legos: "array of LEGO objects"
+
+    patch_api_seed:
+      path: "PATCH /api/seed/:courseCode/:seedNumber"
+      purpose: "Update seed translation"
+      body:
+        target_text: "string"
+
+    get_api_seeds:
+      path: "GET /api/seeds/:courseCode"
+      purpose: "Get seeds for a course"
+      returns: "Array of seed objects"
+
+    get_api_stats:
+      path: "GET /api/stats/:courseCode"
+      purpose: "Get course quality metrics"
+      returns: "LEGOs count, phrases count, ratio, vocab size"
+
+    get_api_vocab:
+      path: "GET /api/vocab/:courseCode"
+      purpose: "Get current vocabulary set for a course"
+      returns: "Vocabulary list (for debugging)"
+
+    delete_api_course:
+      path: "DELETE /api/course/:courseCode"
+      purpose: "Clear all data for a course"
+      warning: "Destructive - use with caution"
+
+  ## ==========================================================================
+  ## VALIDATION BYPASS
+  ## ==========================================================================
+
+  validation_bypass:
+    description: |
+      For testing and edge cases, validation can be bypassed.
+      NOT RECOMMENDED for production use.
+
+    how_to_bypass: "Include SKIP_VALIDATION: true in request body"
+
+    example: |
+      POST /api/seed/complete
+      {
+        "course_code": "test_course",
+        "seed_number": 1,
+        "known_text": "Test",
+        "target_text": "测试",
+        "legos": [...],
+        "SKIP_VALIDATION": true
+      }
+
+  ## ==========================================================================
+  ## STARTUP BANNER
+  ## ==========================================================================
+
+  startup_banner: |
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  Course Builder API - Port 3471                              ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  QUALITY GATES:                                              ║
+    ║  • Phrases per LEGO: min 7, target 10, max 13                ║
+    ║  • Batch ratio: min 7.0 phrases per LEGO                     ║
+    ║  • Vocabulary validation: per-course tracking (ZUT)          ║
+    ║  • M-LEGO build-up: Auto-generated (components→LEGO→phrases) ║
+    ║  • Conflict detection: ZUT reject, duplicates → is_new=false ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  GOLDEN PATH:                                                ║
+    ║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Other Endpoints:                                            ║
+    ║  GET  /api/seeds/:code - Canonical seeds from database       ║
+    ║  POST /api/lego   - Insert single LEGO                       ║
+    ║  POST /api/batch  - Insert multiple LEGOs                    ║
+    ║  PATCH /api/seed/:code/:num - Update seed translation        ║
+    ║  GET  /api/stats/:code - Quality metrics + vocab size        ║
+    ║  GET  /api/vocab/:code - Current vocabulary set              ║
+    ║  DELETE /api/course/:code - Clear course + vocab cache       ║
+    ╚══════════════════════════════════════════════════════════════╝
+
+  ## ==========================================================================
+  ## AGENT WORKFLOW SUMMARY
+  ## ==========================================================================
+
+  agent_workflow:
+    description: "Recommended workflow for LLM agents building a course"
+
+    for_each_seed:
+      step_1: "Get the canonical English seed from GET /api/seeds"
+      step_2: "Translate to target language"
+      step_3: "Decompose into LEGOs (identify A-type and M-type)"
+      step_4: "For each LEGO, generate 10+ practice phrases"
+      step_5: "Submit via POST /api/seed/complete"
+      step_6: "Handle errors if validation fails, fix and resubmit"
+
+    on_zut_violation:
+      description: "When same known text maps to different targets"
+      preferred: "Upchunk - add context to create a more specific M-LEGO"
+      alternative: "Synonym - use different known text"
+
+    on_duplicate:
+      description: "When same known + same target already exists"
+      action: "API handles automatically (is_new=false, no baskets)"
+      agent_action: "Nothing special needed - submit as normal"
+
+  ## ==========================================================================
+  ## AUTONOMOUS OPERATION
+  ## ==========================================================================
+
+  autonomous:
+    description: |
+      For autonomous course building without human intervention.
+      Agent processes seeds in batches, continues until complete.
+
+    task: "Build complete course from canonical seeds"
+    batch_size: 30
+
+    quality_bar: |
+      - No lazy shortcuts (don't make whole sentence one LEGO)
+      - Proper granular decomposition (reusable units that combine well)
+      - Meaningful components (no placeholder junk like "..." or empty meanings)
+      - 10+ natural, useful practice phrases per LEGO
+      - Trust your linguistic judgment - you know the languages
+
+    workflow: |
+      1. GET /api/seeds/:courseCode to fetch canonical English seeds
+      2. Process batch of 30 seeds
+      3. For each seed: translate, decompose, generate phrases, submit
+      4. On success: continue to next batch
+      5. On error: fix and resubmit, then continue
+      6. Repeat until all seeds complete
+
+    on_context_compaction: |
+      If conversation context compacts mid-task:
+      1. Read this APML to restore understanding
+      2. GET /api/stats/:courseCode to see current progress
+      3. Query database for next incomplete seed
+      4. Continue from where you left off
+
+      The database IS the state - no external tracking needed.
+
+    done_when: "All seeds submitted successfully via POST /api/seed/complete"

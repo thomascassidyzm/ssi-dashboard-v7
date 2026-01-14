@@ -44,141 +44,139 @@ You are building a language course: **${courseCode}**
 - **Target language**: ${targetLang || targetCode}
 - **Seeds to build**: ${seedCount}
 
-## API Endpoint
-Insert LEGOs and phrases via POST to: \`${builderApiUrl}/api/lego\`
+## Full Documentation
+Read the complete API spec: \`apml/services/course-builder-api.apml\`
+
+## Golden Path: POST /api/seed/complete
+
+Submit complete seeds atomically - translate, decompose into LEGOs, generate phrases, submit in ONE request.
 
 \`\`\`javascript
-// Example request
-fetch('${builderApiUrl}/api/lego', {
+// GOLDEN PATH: Submit entire seed at once
+fetch('${builderApiUrl}/api/seed/complete', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     course_code: '${courseCode}',
-    seed: 1,           // Seed number
-    idx: 1,            // LEGO index within seed
-    type: 'M',         // A (atomic) or M (molecular)
-    known: 'I want',   // Known language text
-    target: '我想',    // Target language text
-    components: [      // Required for M-type LEGOs
-      { known: 'I', target: '我' },
-      { known: 'want', target: '想' }
-    ],
-    phrases: [         // Practice phrases (10 per LEGO)
-      { known: 'I want', target: '我想' },
-      { known: 'I want to speak', target: '我想说' },
-      // ... 10 total phrases
+    seed_number: 42,
+    known_text: 'I want to learn Chinese',
+    target_text: '我想学中文',
+    legos: [
+      {
+        idx: 1,
+        type: 'A',
+        known: 'I',
+        target: '我',
+        phrases: [
+          { known: 'I speak', target: '我说' },
+          { known: 'I understand', target: '我明白' }
+          // ... 10 total phrases
+        ]
+      },
+      {
+        idx: 2,
+        type: 'M',
+        known: 'want to learn',
+        target: '想学',
+        components: [
+          { known: 'want', target: '想' },
+          { known: 'learn', target: '学' }
+        ],
+        phrases: [
+          { known: 'I want to learn', target: '我想学' },
+          { known: 'want to learn Chinese', target: '想学中文' }
+          // ... 10 total phrases
+        ]
+      },
+      {
+        idx: 3,
+        type: 'A',
+        known: 'Chinese',
+        target: '中文',
+        phrases: [
+          { known: 'speak Chinese', target: '说中文' },
+          { known: 'learn Chinese', target: '学中文' }
+          // ... 10 total phrases
+        ]
+      }
     ]
   })
 });
 \`\`\`
 
-## CRITICAL RULES
+**All-or-nothing**: If any validation fails, nothing is inserted. Fix and resubmit.
 
-### 1. Vocabulary Discipline (Zero Uncertainty)
-- **Every phrase must ONLY use vocabulary already introduced**
-- Characters/words in phrases must come from:
-  - Previously introduced LEGOs
-  - Components of the current M-type LEGO
-- This is NON-NEGOTIABLE - learners must never see unknown vocabulary
+## QUALITY BAR - THIS IS CRITICAL
 
-### 2. M-type Components
-- For languages with grammar particles (Chinese 着/得/的, etc.), use M-type LEGOs
-- Components introduce new characters through exposure, not explanation
-- Example: "trying to" → "试着" with components: ["try" → "试", "trying to" → "试着"]
+### No Lazy Shortcuts
+- **DO NOT** make the whole sentence one giant LEGO
+- **DO NOT** use meaningless components like "that" → "..."
+- **DO** break sentences into proper granular, reusable units
+- **DO** ensure each LEGO combines meaningfully with others
 
-### 3. Phrase Requirements
-- Minimum 7 phrases per LEGO (after position 10)
-- Target 10 phrases per LEGO
-- Maximum 13 phrases per LEGO
-- Early LEGOs (positions 1-10) can have fewer as vocabulary builds
+### Proper Decomposition
+- A-type LEGOs: Single meaningful words
+- M-type LEGOs: Multi-word phrases with meaningful components
+- Components must be real vocabulary, not placeholders
 
-### 4. Phrase Variety & DEBUT/ETERNAL Pattern
-- Combine current LEGO with previously introduced LEGOs
-- Include both short (3-5 syllables) and long (10+ syllables) phrases
-- Build progressively longer combinations as vocabulary grows
+### Phrase Quality
+- Target 10 natural, useful phrases per LEGO
+- Include variety: short (3-5 syllables) AND long (10+ syllables)
+- Long phrases (10+ syllables) are essential for ETERNAL spaced repetition
+- Each LEGO needs 2-3 long phrases minimum
 
-**Why long phrases matter (DEBUT vs ETERNAL):**
-- **DEBUT phase**: When a LEGO is first introduced, learner practices with SHORT phrases (building up)
-- **ETERNAL phase**: Once mastered, LEGO enters spaced repetition using ONLY 10+ syllable phrases
-- Long phrases prove fluency and prevent rote memorization
-- Each LEGO needs at least 2-3 phrases with 10+ syllables for ETERNAL rotation
+## What the API Does Automatically
+
+- **M-LEGO Build-up**: Auto-generates component→LEGO→phrases structure
+- **Duplicate Detection**: Same known+target = is_new:false (no redundant baskets)
+- **ZUT Conflict Detection**: Same known→different target = REJECTED with suggestions
+- **Vocabulary Validation**: Phrases using unknown vocab = REJECTED
+- **Particle Handling**: Chinese particles (了,着,过,etc.) skipped in build-up
+
+**You provide**: translation, decomposition, practice phrases
+**API handles**: build-up generation, validation, deduplication
 
 ${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 
 ## Seed Source
 
-**668 canonical seeds are in the database.** Query them from \`canonical_seeds\` table:
+Fetch canonical seeds: \`GET ${builderApiUrl}/api/seeds?limit=${seedCount}\`
 
-\`\`\`javascript
-// Get canonical English seeds
-const { data: seeds } = await supabase
-  .from('canonical_seeds')
-  .select('seed_number, seed_id, source_text')
-  .order('seed_number')
-  .limit(${seedCount});
+Each seed has \`source_text\` with \`{target}\` placeholder. Replace with "${targetLang || targetCode}".
 
-// Each seed has:
-// - seed_number: 1, 2, 3...
-// - seed_id: "S0001", "S0002", etc.
-// - source_text: "I want to speak {target} with you now."
-//
-// Replace {target} with "${targetLang || targetCode}" then translate
-\`\`\`
+## Workflow
 
-**Or fetch via API:** \`${builderApiUrl}/api/seeds?limit=${seedCount}\`
+1. \`GET /api/stats/${courseCode}\` - check existing progress
+2. Continue from next incomplete seed (don't restart from 1)
+3. Work in batches of 30 seeds
+4. For each seed:
+   - Translate to ${targetLang || targetCode}
+   - Decompose into proper granular LEGOs (NOT one big chunk)
+   - Generate 10 practice phrases per LEGO
+   - Submit via \`POST /api/seed/complete\`
+5. On error: fix based on error message, resubmit
+6. After batch: continue to next batch until all ${seedCount} seeds done
 
-The \`source_text\` contains \`{target}\` placeholder - replace with "${targetLang || targetCode}" to get the English source, then translate and break into LEGOs.
+## Recovery (Context Compaction)
 
-## Process
+If interrupted or context compacts:
+1. Read \`apml/services/course-builder-api.apml\` for full docs
+2. \`GET /api/stats/${courseCode}\` - see current progress
+3. Continue from next incomplete seed
+4. **Database is the state** - no external tracking needed
 
-1. **Check existing progress first**: \`GET /api/stats/${courseCode}\`
-2. **Continue from last completed seed** (don't restart from 1 if work exists)
-3. **Work in batches of 20-30 seeds** - don't try to load entire course into context
-4. **For each seed**:
-   - Break into LEGOs that tile in both languages
-   - Use M-type for multi-word phrases or grammar patterns
-   - Generate 10 practice phrases per LEGO (include 2-3 with 10+ syllables)
-   - POST each LEGO to the API
-5. **After each batch**: Check stats, verify ratio ≥7.0, then continue
-
-## Recovery (If Interrupted)
-
-If you get interrupted or need to resume:
-1. \`GET /api/stats/${courseCode}\` - see current progress
-2. \`GET /api/vocab/${courseCode}\` - see available vocabulary
-3. Continue from the next seed after the last completed one
-4. The API has full course state - you just need to continue building
-
-## Quality Gates
-
-The API **automatically validates** each LEGO and will REJECT submissions with:
-- **Vocabulary violations**: Using characters/words not yet introduced
-- **Insufficient phrases**: Fewer than required (position-dependent: 1-3 early, 7+ later)
-
-**The API tracks vocabulary per-course.** Before each phrase is accepted, it checks:
-1. Load all previously inserted LEGOs + their M-type components
-2. Build vocab set from those
-3. Add current LEGO's vocab (so phrases CAN use the new vocab)
-4. Check each phrase only uses vocab in the set
-5. REJECT with specific error if violation found
-
-This enforces **Zero Uncertainty Test (ZUT)** - learners never see unknown vocabulary.
-
-## Useful Endpoints
+## Endpoints
 
 | Endpoint | Purpose |
 |----------|---------|
-| \`GET /api/stats/${courseCode}\` | Progress: LEGOs, phrases, ratio, vocab size |
-| \`GET /api/vocab/${courseCode}\` | Current vocabulary set (for debugging) |
-| \`POST /api/lego\` | Insert LEGO (validates vocab + phrase count) |
-
-## Current Progress
-
-Check progress at: \`${builderApiUrl}/api/stats/${courseCode}\`
+| \`POST /api/seed/complete\` | **GOLDEN PATH** - atomic seed submission |
+| \`GET /api/stats/${courseCode}\` | Progress: seeds, LEGOs, phrases, ratio |
+| \`GET /api/seeds?limit=N\` | Fetch canonical English seeds |
+| \`GET /api/vocab/${courseCode}\` | Current vocabulary (debugging) |
 
 ---
 
-**BEGIN**: Start building the course now. Process seeds sequentially, inserting LEGOs via the API.
+**BEGIN**: Build the course now. Process all ${seedCount} seeds. Don't stop until done.
 `;
 
   return brief;
