@@ -1,6 +1,16 @@
 /**
  * Course Builder API - Simple endpoint for LLM agents to insert LEGOs and phrases
  *
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * Course data is stored EXCLUSIVELY in Supabase, NOT in JSON files.
+ * This service writes directly to Supabase tables:
+ * - course_legos: LEGO definitions
+ * - course_practice_phrases: Practice phrases for each LEGO
+ *
+ * JSON files (lego_pairs.json, lego_baskets.json) are DEPRECATED.
+ * Do NOT read course data from JSON files - always query Supabase.
+ *
  * POST /api/lego - Insert a LEGO with its phrases
  */
 
@@ -473,10 +483,12 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .select('*', { count: 'exact', head: true })
     .eq('course_code', courseCode);
 
-  const { count: seeds } = await supabase
+  // Count DISTINCT seed numbers (not all LEGO rows)
+  const { data: seedData } = await supabase
     .from('course_legos')
-    .select('seed_number', { count: 'exact', head: true })
+    .select('seed_number')
     .eq('course_code', courseCode);
+  const seeds = new Set(seedData?.map(r => r.seed_number)).size;
 
   const ratio = legos > 0 ? (phrases/legos) : 0;
   const quality = ratio >= MIN_BATCH_PHRASE_RATIO ? 'PASS' : 'FAIL';
@@ -573,6 +585,32 @@ app.get('/api/vocab/:courseCode', async (req, res) => {
     vocab_size: vocabSet.size,
     vocab: [...vocabSet].sort().join(chinese ? '' : ', ')
   });
+});
+
+/**
+ * PATCH /api/seed/:courseCode/:seedNumber - Update seed's target translation
+ * Call this after completing all LEGOs for a seed to set the full translation
+ */
+app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
+  const { courseCode, seedNumber } = req.params;
+  const { target_text } = req.body;
+
+  if (!target_text) {
+    return res.status(400).json({ error: 'target_text is required' });
+  }
+
+  const { error } = await supabase
+    .from('course_seeds')
+    .update({ target_text, status: 'complete' })
+    .eq('course_code', courseCode)
+    .eq('seed_number', parseInt(seedNumber));
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  console.log(`✓ S${String(seedNumber).padStart(4,'0')} translation: ${target_text}`);
+  res.json({ ok: true, seed: seedNumber, target_text });
 });
 
 /**
