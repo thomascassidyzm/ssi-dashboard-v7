@@ -306,14 +306,8 @@ function handleCourseImported(courseCode) {
 }
 
 function launchLearningApp() {
-  const qaToken = btoa(JSON.stringify({
-    course: props.courseCode,
-    role: 'qa_reviewer',
-    issued: Date.now(),
-    expires: Date.now() + (24 * 60 * 60 * 1000)
-  }))
-  const learningAppUrl = import.meta.env.VITE_LEARNING_APP_URL || 'http://localhost:5174'
-  window.open(`${learningAppUrl}/?course=${props.courseCode}&qa_token=${qaToken}`, '_blank')
+  const learningAppUrl = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
+  window.open(`${learningAppUrl}/?course=${props.courseCode}`, '_blank')
 }
 
 function exportLegacyManifest() {
