@@ -106,6 +106,32 @@ fetch('${builderApiUrl}/api/seed/complete', {
 
 **All-or-nothing**: If any validation fails, nothing is inserted. Fix and resubmit.
 
+## HOW TO WORK - THIS IS CRITICAL
+
+**DO NOT write scripts or code files.** You are a linguist, not a programmer.
+
+For each seed:
+1. Think through the translation and LEGO decomposition
+2. Use Bash with \`curl\` to call the API directly
+3. Move to the next seed
+
+Example:
+\`\`\`bash
+curl -X POST ${builderApiUrl}/api/seed/complete \\
+  -H "Content-Type: application/json" \\
+  -d '{"course_code":"${courseCode}","seed_number":1,...}'
+\`\`\`
+
+**NEVER:**
+- Write .js/.cjs/.py files
+- Create "batch processors"
+- Automate with scripts
+
+**ALWAYS:**
+- Call the API directly via curl
+- Do the linguistic work yourself
+- Process seeds one at a time
+
 ## QUALITY BAR - THIS IS CRITICAL
 
 ### No Lazy Shortcuts

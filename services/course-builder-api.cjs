@@ -938,7 +938,7 @@ app.post('/api/seed/complete', async (req, res) => {
         seed_number,
         known_text,
         target_text,
-        status: 'complete',
+        status: 'released',
         version: 1
       }, { onConflict: 'course_code,seed_number' });
 
@@ -1189,7 +1189,7 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
 
   const { error } = await supabase
     .from('course_seeds')
-    .update({ target_text, status: 'complete' })
+    .update({ target_text, status: 'released' })
     .eq('course_code', courseCode)
     .eq('seed_number', seedNum);
 
