@@ -1,26 +1,53 @@
 <template>
-  <div class="filter-bar bg-slate-800 border-b border-slate-700 px-6 py-4">
+  <div class="filter-bar bg-slate-800 border-b border-slate-700 px-6 py-3">
     <div class="filter-controls flex flex-wrap items-center gap-4">
+      <!-- Pagination -->
+      <div class="pagination flex items-center gap-2">
+        <button
+          @click="prevPage"
+          :disabled="!canGoPrev"
+          class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+          :class="canGoPrev
+            ? 'bg-slate-700 text-white hover:bg-slate-600'
+            : 'bg-slate-800 text-slate-500 cursor-not-allowed'"
+        >
+          ← Prev 50
+        </button>
+        <span class="text-sm text-slate-300 font-mono px-2">
+          {{ localSeedStart }} – {{ localSeedEnd }}
+        </span>
+        <button
+          @click="nextPage"
+          :disabled="!canGoNext"
+          class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+          :class="canGoNext
+            ? 'bg-slate-700 text-white hover:bg-slate-600'
+            : 'bg-slate-800 text-slate-500 cursor-not-allowed'"
+        >
+          Next 50 →
+        </button>
+      </div>
+
       <!-- Search -->
-      <div class="search-field flex-1 min-w-64">
+      <div class="search-field w-48">
         <div class="relative">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
             v-model="localSearch"
             type="text"
-            placeholder="Search by text..."
-            class="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            placeholder="Search..."
+            class="w-full pl-9 pr-8 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             @input="onSearchInput"
           />
           <button
             v-if="localSearch"
             @click="clearSearch"
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
+            class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
             title="Clear search"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -28,73 +55,39 @@
       </div>
 
       <!-- Status Filter -->
-      <div class="status-filter">
-        <label class="block text-xs font-medium text-slate-400 mb-1">Status</label>
-        <select
-          v-model="localStatus"
-          class="px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          @change="onFilterChange"
-        >
-          <option value="all">All Samples</option>
-          <option value="pending_regen">Pending Regen</option>
-        </select>
-      </div>
+      <select
+        v-model="localStatus"
+        class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        @change="onFilterChange"
+      >
+        <option value="all">All Samples</option>
+        <option value="pending_regen">Pending Regen</option>
+      </select>
 
-      <!-- Seed Range Filter -->
-      <div class="seed-range-filter flex items-end gap-2">
-        <div>
-          <label class="block text-xs font-medium text-slate-400 mb-1">Seed Range</label>
-          <div class="flex items-center gap-2">
-            <input
-              v-model="localSeedStart"
-              type="text"
-              placeholder="S0001"
-              class="w-24 px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent uppercase"
-              @input="onSeedRangeInput"
-            />
-            <span class="text-slate-400">to</span>
-            <input
-              v-model="localSeedEnd"
-              type="text"
-              placeholder="S0030"
-              class="w-24 px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent uppercase"
-              @input="onSeedRangeInput"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Filters -->
-      <div class="quick-filters flex items-end gap-2">
-        <button
-          @click="toggleFlaggedOnly"
-          class="px-4 py-2 rounded-lg font-medium text-sm transition-all"
-          :class="showFlaggedOnly
-            ? 'bg-amber-500 text-white hover:bg-amber-600'
-            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
-          title="Show only items pending regeneration"
-        >
-          <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          Regen Queue
-        </button>
-      </div>
+      <!-- Regen Queue Toggle -->
+      <button
+        @click="toggleFlaggedOnly"
+        class="px-3 py-2 rounded-lg font-medium text-sm transition-all"
+        :class="showFlaggedOnly
+          ? 'bg-amber-500 text-white hover:bg-amber-600'
+          : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
+        title="Show only items pending regeneration"
+      >
+        Regen Queue
+      </button>
 
       <!-- Clear All Filters -->
-      <div class="clear-filters flex items-end ml-auto">
-        <button
-          v-if="hasActiveFilters"
-          @click="clearAllFilters"
-          class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors"
-        >
-          Clear Filters
-        </button>
-      </div>
+      <button
+        v-if="hasActiveFilters"
+        @click="clearAllFilters"
+        class="ml-auto px-3 py-2 text-sm text-slate-400 hover:text-white transition-colors"
+      >
+        Clear Filters
+      </button>
     </div>
 
     <!-- Active Filters Summary -->
-    <div v-if="hasActiveFilters" class="active-filters-summary mt-4 flex flex-wrap items-center gap-2">
+    <div v-if="activeFilterCount > 0" class="active-filters-summary mt-3 flex flex-wrap items-center gap-2">
       <span class="text-xs text-slate-400">Active filters:</span>
 
       <span v-if="localSearch" class="filter-tag">
@@ -105,11 +98,6 @@
       <span v-if="localStatus !== 'all'" class="filter-tag">
         Status: {{ formatStatus(localStatus) }}
         <button @click="localStatus = 'all'; onFilterChange();" class="ml-1 hover:text-white">×</button>
-      </span>
-
-      <span v-if="localSeedStart || localSeedEnd" class="filter-tag">
-        Seeds: {{ localSeedStart || '...' }} - {{ localSeedEnd || '...' }}
-        <button @click="clearSeedRange" class="ml-1 hover:text-white">×</button>
       </span>
 
       <span v-if="showFlaggedOnly" class="filter-tag">
@@ -131,6 +119,7 @@ const props = defineProps<{
   seedEnd?: string;
   searchText?: string;
   flaggedOnly?: boolean;
+  totalSeeds?: number;
 }>();
 
 // Emits
@@ -143,40 +132,82 @@ const emit = defineEmits<{
   change: [];
 }>();
 
-// Local state (for debouncing)
+// Pagination constants
+const PAGE_SIZE = 50;
+
+// Local state
 const localStatus = ref(props.status || 'all');
-const localSeedStart = ref(props.seedStart || '');
-const localSeedEnd = ref(props.seedEnd || '');
+const localSeedStart = ref(props.seedStart || 'S0001');
+const localSeedEnd = ref(props.seedEnd || 'S0050');
 const localSearch = ref(props.searchText || '');
 const showFlaggedOnly = ref(props.flaggedOnly || false);
 
-// Debounce timers
+// Debounce timer for search
 let searchDebounce: NodeJS.Timeout | null = null;
-let seedRangeDebounce: NodeJS.Timeout | null = null;
 
-// Computed
+// Pagination computed values
+const currentStartNum = computed(() => {
+  const match = localSeedStart.value.match(/S(\d+)/i);
+  return match ? parseInt(match[1], 10) : 1;
+});
+
+const currentEndNum = computed(() => {
+  const match = localSeedEnd.value.match(/S(\d+)/i);
+  return match ? parseInt(match[1], 10) : PAGE_SIZE;
+});
+
+const maxSeeds = computed(() => props.totalSeeds || 260);
+
+const canGoPrev = computed(() => currentStartNum.value > 1);
+const canGoNext = computed(() => currentEndNum.value < maxSeeds.value);
+
+// Count of active non-pagination filters (for showing summary)
+const activeFilterCount = computed(() => {
+  let count = 0;
+  if (localSearch.value) count++;
+  if (localStatus.value !== 'all') count++;
+  if (showFlaggedOnly.value) count++;
+  return count;
+});
+
+// hasActiveFilters includes pagination awareness
 const hasActiveFilters = computed(() => {
   return localStatus.value !== 'all'
-    || localSeedStart.value !== ''
-    || localSeedEnd.value !== ''
     || localSearch.value !== ''
     || showFlaggedOnly.value;
 });
 
 // Methods
+const formatSeedId = (num: number): string => {
+  return `S${String(num).padStart(4, '0')}`;
+};
+
+const prevPage = () => {
+  const newStart = Math.max(1, currentStartNum.value - PAGE_SIZE);
+  const newEnd = newStart + PAGE_SIZE - 1;
+  localSeedStart.value = formatSeedId(newStart);
+  localSeedEnd.value = formatSeedId(newEnd);
+  emitPageChange();
+};
+
+const nextPage = () => {
+  const newStart = currentEndNum.value + 1;
+  const newEnd = Math.min(maxSeeds.value, newStart + PAGE_SIZE - 1);
+  localSeedStart.value = formatSeedId(newStart);
+  localSeedEnd.value = formatSeedId(newEnd);
+  emitPageChange();
+};
+
+const emitPageChange = () => {
+  emit('update:seedStart', localSeedStart.value);
+  emit('update:seedEnd', localSeedEnd.value);
+  emit('change');
+};
+
 const onSearchInput = () => {
   if (searchDebounce) clearTimeout(searchDebounce);
   searchDebounce = setTimeout(() => {
     emit('update:searchText', localSearch.value);
-    emit('change');
-  }, 300);
-};
-
-const onSeedRangeInput = () => {
-  if (seedRangeDebounce) clearTimeout(seedRangeDebounce);
-  seedRangeDebounce = setTimeout(() => {
-    emit('update:seedStart', localSeedStart.value.toUpperCase());
-    emit('update:seedEnd', localSeedEnd.value.toUpperCase());
     emit('change');
   }, 300);
 };
@@ -198,24 +229,12 @@ const clearSearch = () => {
   emit('change');
 };
 
-const clearSeedRange = () => {
-  localSeedStart.value = '';
-  localSeedEnd.value = '';
-  emit('update:seedStart', '');
-  emit('update:seedEnd', '');
-  emit('change');
-};
-
 const clearAllFilters = () => {
   localStatus.value = 'all';
-  localSeedStart.value = '';
-  localSeedEnd.value = '';
   localSearch.value = '';
   showFlaggedOnly.value = false;
 
   emit('update:status', 'all');
-  emit('update:seedStart', '');
-  emit('update:seedEnd', '');
   emit('update:searchText', '');
   emit('update:flaggedOnly', false);
   emit('change');
