@@ -1,5 +1,31 @@
 <template>
   <div class="production-overview">
+    <!-- Course Status Control -->
+    <section class="status-control">
+      <div class="status-row">
+        <div class="status-label">Course Status</div>
+        <div class="status-selector">
+          <button
+            v-for="status in availableStatuses"
+            :key="status.value"
+            @click="handleStatusChange(status.value)"
+            class="status-btn"
+            :class="{
+              'active': currentStatus === status.value,
+              [status.colorClass]: true
+            }"
+            :disabled="isUpdatingStatus"
+          >
+            <span class="status-icon">{{ status.icon }}</span>
+            <span class="status-text">{{ status.label }}</span>
+          </button>
+        </div>
+        <div v-if="isUpdatingStatus" class="status-updating">
+          Updating...
+        </div>
+      </div>
+    </section>
+
     <!-- Headline Stats -->
     <section class="headline-stats">
       <div class="stat-card">
@@ -80,6 +106,33 @@ const props = defineProps({
 const router = useRouter()
 const store = useProductionStore()
 const showImportModal = ref(false)
+const isUpdatingStatus = ref(false)
+
+// Available status options
+const availableStatuses = [
+  { value: 'draft', label: 'Draft', icon: '📝', colorClass: 'status-draft' },
+  { value: 'beta', label: 'Beta', icon: '🧪', colorClass: 'status-beta' },
+  { value: 'released', label: 'Released', icon: '🚀', colorClass: 'status-released' }
+]
+
+// Current course status from store
+const currentStatus = computed(() => {
+  return store.courseInfo?.status || 'draft'
+})
+
+// Handle status change
+async function handleStatusChange(newStatus) {
+  if (newStatus === currentStatus.value || isUpdatingStatus.value) return
+
+  isUpdatingStatus.value = true
+  try {
+    await store.updateCourseStatus(newStatus)
+  } catch (err) {
+    console.error('Failed to update status:', err)
+  } finally {
+    isUpdatingStatus.value = false
+  }
+}
 
 // Course stats from Course Builder API
 const courseStats = ref({
@@ -110,10 +163,12 @@ async function fetchCourseStats() {
 
 onMounted(() => {
   fetchCourseStats()
+  store.loadCourseInfo(props.courseCode)
 })
 
 watch(() => props.courseCode, () => {
   fetchCourseStats()
+  store.loadCourseInfo(props.courseCode)
 })
 
 // Computed
@@ -283,6 +338,100 @@ function exportLegacyManifest() {
 <style scoped>
 .production-overview {
   padding: 1.5rem;
+}
+
+/* Status Control */
+.status-control {
+  margin-bottom: 1.5rem;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-paper-dim, #c1c1bb);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: var(--color-slate, #334155);
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-btn:hover:not(:disabled) {
+  background: var(--color-graphite, #475569);
+}
+
+.status-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-btn.active {
+  border-color: currentColor;
+}
+
+.status-btn.status-draft {
+  color: var(--color-paper-dim, #c1c1bb);
+}
+
+.status-btn.status-draft.active {
+  background: rgba(148, 163, 184, 0.2);
+  border-color: #94a3b8;
+}
+
+.status-btn.status-beta {
+  color: #fbbf24;
+}
+
+.status-btn.status-beta.active {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: #fbbf24;
+}
+
+.status-btn.status-released {
+  color: #34d399;
+}
+
+.status-btn.status-released.active {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: #34d399;
+}
+
+.status-icon {
+  font-size: 1rem;
+}
+
+.status-updating {
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 /* Headline Stats Grid */

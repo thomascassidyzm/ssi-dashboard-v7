@@ -39,6 +39,7 @@ export const useProductionStore = defineStore('production', () => {
   // Course state
   const currentCourseCode = ref(null)
   const courseManifest = ref(null)
+  const courseInfo = ref(null) // Course metadata including status
   const sampleFlags = ref({})
   const audioMetadata = ref({})
 
@@ -378,6 +379,76 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
+  // Load course info including status
+  async function loadCourseInfo(courseCode) {
+    try {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${courseCode}/info`, {
+        headers: getApiHeaders()
+      })
+
+      if (!response.ok) {
+        // Course might not exist in database yet - use defaults
+        console.warn(`[Production] Could not load course info for ${courseCode}`)
+        courseInfo.value = {
+          code: courseCode,
+          displayName: courseCode.replace(/_/g, ' '),
+          status: 'draft'
+        }
+        return courseInfo.value
+      }
+
+      const data = await response.json()
+      courseInfo.value = data.course
+      console.log(`[Production] Loaded course info: status=${data.course.status}`)
+      return data.course
+    } catch (err) {
+      console.warn('[Production] Failed to load course info:', err.message)
+      // Set defaults on error
+      courseInfo.value = {
+        code: courseCode,
+        displayName: courseCode.replace(/_/g, ' '),
+        status: 'draft'
+      }
+      return courseInfo.value
+    }
+  }
+
+  // Update course status
+  async function updateCourseStatus(status) {
+    if (!currentCourseCode.value) {
+      throw new Error('No course loaded')
+    }
+
+    try {
+      const baseUrl = getApiBaseUrl()
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/status`, {
+        method: 'POST',
+        headers: getApiHeaders(),
+        body: JSON.stringify({ status })
+      })
+
+      if (!response.ok) {
+        const errData = await response.json()
+        throw new Error(errData.error || 'Failed to update status')
+      }
+
+      const data = await response.json()
+
+      // Update local state
+      if (courseInfo.value) {
+        courseInfo.value.status = data.course.status
+        courseInfo.value.updatedAt = data.course.updatedAt
+      }
+
+      console.log(`[Production] Updated course status to ${status}`)
+      return data.course
+    } catch (err) {
+      error.value = err.message
+      throw err
+    }
+  }
+
   async function updateSampleFlag(uuid, flagData) {
     try {
       const baseUrl = getApiBaseUrl()
@@ -703,6 +774,7 @@ export const useProductionStore = defineStore('production', () => {
     // State
     currentCourseCode,
     courseManifest,
+    courseInfo,
     sampleFlags,
     audioMetadata,
     generationQueue,
@@ -727,6 +799,8 @@ export const useProductionStore = defineStore('production', () => {
 
     // Actions
     loadCourse,
+    loadCourseInfo,
+    updateCourseStatus,
     updateSampleFlag,
     bulkUpdateFlags,
     updateGenerationProgress,

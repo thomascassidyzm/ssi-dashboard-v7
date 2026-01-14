@@ -226,6 +226,33 @@ async function updateCourseVoices(courseCode, voiceConfig) {
   return data
 }
 
+/**
+ * Update course status
+ *
+ * @param {string} courseCode
+ * @param {string} status - 'draft', 'beta', or 'released'
+ * @returns {Promise<Object>}
+ */
+async function updateCourseStatus(courseCode, status) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Validate status
+  const validStatuses = ['draft', 'beta', 'released']
+  if (!validStatuses.includes(status)) {
+    throw new Error(`Invalid status: ${status}. Must be one of: ${validStatuses.join(', ')}`)
+  }
+
+  const { data, error } = await supabase
+    .from('courses')
+    .update({ status })
+    .eq('code', courseCode)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
 // =============================================================================
 // COURSE AUDIO (course-specific audio)
 // =============================================================================
@@ -1073,6 +1100,194 @@ async function getIntroductionsByCourse(courseCode) {
 }
 
 // =============================================================================
+// DOCUMENTATION CONTENT
+// =============================================================================
+
+/**
+ * Get documentation by slug with all sections
+ *
+ * @param {string} slug - Document slug (e.g., 'pedagogy', 'apml-spec')
+ * @returns {Promise<Object|null>} Document with sections or null
+ */
+async function getDocumentation(slug) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Use the RPC function for efficient fetching with sections
+  const { data, error } = await supabase
+    .rpc('get_documentation', { p_slug: slug })
+
+  if (error) {
+    // If RPC doesn't exist yet, fall back to manual query
+    if (error.code === 'PGRST202') {
+      return getDocumentationFallback(slug)
+    }
+    throw error
+  }
+
+  return data && data.length > 0 ? data[0] : null
+}
+
+/**
+ * Fallback for getting documentation without RPC function
+ * (useful during migration before RPC is deployed)
+ */
+async function getDocumentationFallback(slug) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get document
+  const { data: doc, error: docError } = await supabase
+    .from('documentation_content')
+    .select('*')
+    .eq('slug', slug)
+    .single()
+
+  if (docError && docError.code !== 'PGRST116') {
+    throw docError
+  }
+
+  if (!doc) return null
+
+  // Get sections
+  const { data: sections, error: secError } = await supabase
+    .from('documentation_sections')
+    .select('*')
+    .eq('document_id', doc.id)
+    .order('display_order')
+
+  if (secError) throw secError
+
+  return {
+    ...doc,
+    sections: sections || []
+  }
+}
+
+/**
+ * Get documentation list for navigation
+ *
+ * @param {string|null} category - Optional category filter
+ * @returns {Promise<Array>} Array of document summaries
+ */
+async function getDocumentationList(category = null) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Try RPC first
+  const { data, error } = await supabase
+    .rpc('get_documentation_list', { p_category: category })
+
+  if (error) {
+    // If RPC doesn't exist yet, fall back to manual query
+    if (error.code === 'PGRST202') {
+      return getDocumentationListFallback(category)
+    }
+    throw error
+  }
+
+  return data || []
+}
+
+/**
+ * Fallback for getting documentation list without RPC function
+ */
+async function getDocumentationListFallback(category = null) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  let query = supabase
+    .from('documentation_content')
+    .select('id, slug, title, subtitle, category, display_order, badge_text, badge_color, icon_name, is_featured, updated_at')
+    .eq('is_published', true)
+
+  if (category) {
+    query = query.eq('category', category)
+  }
+
+  const { data, error } = await query.order('display_order').order('title')
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Upsert documentation content
+ *
+ * @param {Object} doc - Document data
+ * @returns {Promise<Object>} Created/updated document
+ */
+async function upsertDocumentation(doc) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('documentation_content')
+    .upsert({
+      slug: doc.slug,
+      title: doc.title,
+      subtitle: doc.subtitle,
+      category: doc.category || 'reference',
+      display_order: doc.display_order || 0,
+      content_type: doc.content_type || 'structured',
+      content: doc.content,
+      markdown_content: doc.markdown_content,
+      version: doc.version || '1.0',
+      badge_text: doc.badge_text,
+      badge_color: doc.badge_color,
+      icon_name: doc.icon_name,
+      is_published: doc.is_published !== false,
+      is_featured: doc.is_featured || false
+    }, {
+      onConflict: 'slug'
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Upsert documentation section
+ *
+ * @param {string} documentSlug - Parent document slug
+ * @param {Object} section - Section data
+ * @returns {Promise<Object>} Created/updated section
+ */
+async function upsertDocumentationSection(documentSlug, section) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get document ID
+  const { data: doc, error: docError } = await supabase
+    .from('documentation_content')
+    .select('id')
+    .eq('slug', documentSlug)
+    .single()
+
+  if (docError) throw docError
+  if (!doc) throw new Error(`Document not found: ${documentSlug}`)
+
+  const { data, error } = await supabase
+    .from('documentation_sections')
+    .upsert({
+      document_id: doc.id,
+      section_key: section.section_key,
+      title: section.title,
+      anchor: section.anchor || section.section_key,
+      content: section.content,
+      content_html: section.content_html,
+      display_order: section.display_order || 0,
+      style_variant: section.style_variant || 'default',
+      border_color: section.border_color,
+      is_collapsible: section.is_collapsible || false,
+      default_collapsed: section.default_collapsed || false
+    }, {
+      onConflict: 'document_id,section_key'
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -1093,6 +1308,7 @@ module.exports = {
   getCourseVoices,
   upsertCourse,
   updateCourseVoices,
+  updateCourseStatus,
 
   // Course audio
   courseAudioExists,
@@ -1126,5 +1342,11 @@ module.exports = {
   // Content stats
   getCourseContentStats,
   getAllCourseContentStats,
-  getIntroductionsByCourse
+  getIntroductionsByCourse,
+
+  // Documentation content
+  getDocumentation,
+  getDocumentationList,
+  upsertDocumentation,
+  upsertDocumentationSection
 }

@@ -158,6 +158,88 @@ app.get('/api/production/:courseCode/stats', async (req, res) => {
   }
 })
 
+// Get course info including status
+// Used by Production Suite to display course status and allow status changes
+app.get('/api/production/:courseCode/info', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` })
+    }
+
+    logger.info(`Returning info for ${courseCode}: status=${course.status}`)
+
+    res.json({
+      success: true,
+      course: {
+        code: course.code,
+        displayName: course.display_name,
+        knownLang: course.known_lang,
+        targetLang: course.target_lang,
+        status: course.status,
+        courseType: course.course_type,
+        creatorEmail: course.creator_email,
+        createdAt: course.created_at,
+        updatedAt: course.updated_at
+      }
+    })
+  } catch (err) {
+    logger.error(`Failed to get info for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Update course status
+// Used by Production Suite to mark courses as draft, beta, or released
+app.post('/api/production/:courseCode/status', async (req, res) => {
+  const { courseCode } = req.params
+  const { status } = req.body
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    if (!status) {
+      return res.status(400).json({ error: 'Status is required' })
+    }
+
+    const validStatuses = ['draft', 'beta', 'released']
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({
+        error: `Invalid status: ${status}. Must be one of: ${validStatuses.join(', ')}`
+      })
+    }
+
+    const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, status)
+    logger.info(`Updated ${courseCode} status to ${status}`)
+
+    // Emit WebSocket event for real-time UI updates
+    io.emit('course:statusChanged', {
+      courseCode,
+      status,
+      updatedAt: updatedCourse.updated_at
+    })
+
+    res.json({
+      success: true,
+      course: {
+        code: updatedCourse.code,
+        status: updatedCourse.status,
+        updatedAt: updatedCourse.updated_at
+      }
+    })
+  } catch (err) {
+    logger.error(`Failed to update status for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get introductions for a course
 // Used by Course Editor INTRODUCTIONS tab to display lego presentations
 app.get('/api/production/:courseCode/introductions', async (req, res) => {
