@@ -15,6 +15,7 @@ const supabaseClient = require('./supabase-client.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
+const learningScriptGenerator = require('./learning-script-generator.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -1899,7 +1900,7 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   const { courseCode } = req.params
   const { options } = req.body
   try {
-    const response = await axios.post(`${PHASE8_URL}/generate`, { courseCode, options })
+    const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {})
     res.json(response.data)
   } catch (error) {
     logger.error(`Audio start error for ${courseCode}:`, error.message)
@@ -1951,8 +1952,7 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
   const { courseCode } = req.params
   const { options } = req.body
   try {
-    const response = await axios.post(`${PHASE8_URL}/generate`, {
-      courseCode,
+    const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, {
       retry: true,
       ...options
     })
@@ -2883,6 +2883,53 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     })
   } catch (err) {
     logger.error(`Failed to get script view for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// =============================================================================
+// LEARNING JOURNEY VIEW
+// =============================================================================
+// Generate learning script showing how the course looks to a learner
+// Shows rounds with spaced repetition (Fibonacci-based reviews)
+// Ported from ssi-learning-app's generateLearningScript()
+app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
+  const { courseCode } = req.params
+  const { maxLegos, offset } = req.query
+
+  // Parse query params
+  const maxLegosNum = maxLegos ? parseInt(maxLegos, 10) : 50
+  const offsetNum = offset ? parseInt(offset, 10) : 0
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    const { rounds, allItems, stats } = await learningScriptGenerator.generateLearningScript(
+      supabase,
+      courseCode,
+      maxLegosNum,
+      offsetNum
+    )
+
+    logger.info(`Returning learning journey for ${courseCode}: ${rounds.length} rounds, ${allItems.length} items`)
+
+    res.json({
+      courseCode,
+      rounds,
+      allItems,
+      stats,
+      pagination: {
+        maxLegos: maxLegosNum,
+        offset: offsetNum,
+        returned: rounds.length,
+      }
+    })
+  } catch (err) {
+    logger.error(`Failed to generate learning journey for ${courseCode}:`, err)
     res.status(500).json({ error: err.message })
   }
 })

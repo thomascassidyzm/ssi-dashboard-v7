@@ -28,28 +28,67 @@
         </div>
 
         <div class="header-right flex items-center gap-3">
-          <!-- Collapse/Expand All -->
+          <!-- View Mode Toggle -->
           <button
-            @click="collapseAll"
-            class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-            title="Collapse all seeds"
+            @click="toggleViewMode"
+            class="px-4 py-2 text-sm rounded-lg transition-colors flex items-center gap-2"
+            :class="viewMode === 'journey'
+              ? 'bg-emerald-500 text-white hover:bg-emerald-600'
+              : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'"
+            :title="viewMode === 'journey' ? 'Switch to Script View' : 'View as Learner'"
           >
-            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            <svg v-if="viewMode === 'script'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
             </svg>
-            Collapse All
+            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            {{ viewMode === 'journey' ? 'Script View' : 'View as Learner' }}
           </button>
 
-          <button
-            @click="expandAll"
-            class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-            title="Expand all seeds"
-          >
-            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-            Expand All
-          </button>
+          <!-- Collapse/Expand All (only in script mode) -->
+          <template v-if="viewMode === 'script'">
+            <button
+              @click="collapseAll"
+              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              title="Collapse all seeds"
+            >
+              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+              </svg>
+              Collapse All
+            </button>
+
+            <button
+              @click="expandAll"
+              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              title="Expand all seeds"
+            >
+              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              Expand All
+            </button>
+          </template>
+
+          <!-- Max LEGOs selector (only in journey mode) -->
+          <template v-if="viewMode === 'journey'">
+            <div class="flex items-center gap-2">
+              <label class="text-sm text-slate-400">LEGOs:</label>
+              <select
+                v-model="journeyMaxLegos"
+                @change="reloadLearningJourney"
+                class="bg-slate-700 text-white text-sm rounded px-2 py-1 border border-slate-600 focus:outline-none focus:border-emerald-500"
+              >
+                <option :value="20">20</option>
+                <option :value="50">50</option>
+                <option :value="100">100</option>
+                <option :value="200">200</option>
+                <option :value="500">All (500)</option>
+              </select>
+            </div>
+          </template>
 
           <!-- Keyboard Shortcuts Help -->
           <button
@@ -66,8 +105,9 @@
       </div>
     </div>
 
-    <!-- Filter Bar -->
+    <!-- Filter Bar (only in script mode) -->
     <FilterBar
+      v-if="viewMode === 'script'"
       v-model:status="filterStatus"
       v-model:seed-start="filterSeedStart"
       v-model:seed-end="filterSeedEnd"
@@ -152,25 +192,66 @@
         />
       </div>
 
-      <!-- Empty State (standard) -->
-      <div v-else-if="filteredSeeds.length === 0" class="empty-state flex items-center justify-center h-64">
-        <div class="text-center">
-          <svg class="w-12 h-12 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <h3 class="text-lg font-semibold text-white mb-2">No Results</h3>
-          <p class="text-slate-400 mb-4">No seeds match your current filters</p>
-          <button
-            @click="clearFilters"
-            class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
-          >
-            Clear Filters
-          </button>
+      <!-- Learning Journey View Mode -->
+      <template v-else-if="viewMode === 'journey'">
+        <!-- Loading Journey -->
+        <div v-if="isLoadingJourney" class="loading-state flex items-center justify-center h-64">
+          <div class="text-center">
+            <svg class="w-12 h-12 mx-auto mb-4 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="text-slate-400">Generating learning journey...</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Seeds List (Virtualized) -->
-      <div v-else class="seeds-list space-y-4">
+        <!-- Journey Error -->
+        <div v-else-if="journeyError" class="error-state flex items-center justify-center h-64">
+          <div class="text-center max-w-md">
+            <svg class="w-12 h-12 mx-auto mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-lg font-semibold text-white mb-2">Error Generating Journey</h3>
+            <p class="text-slate-400 mb-4">{{ journeyError }}</p>
+            <button
+              @click="reloadLearningJourney"
+              class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Learning Journey View Component -->
+        <LearningJourneyView
+          v-else-if="learningJourneyData"
+          :rounds="learningJourneyData.rounds"
+          :stats="learningJourneyData.stats"
+          :is-loading="isLoadingJourney"
+        />
+      </template>
+
+      <!-- Script View Mode (original) -->
+      <template v-else>
+        <!-- Empty State (standard) -->
+        <div v-if="filteredSeeds.length === 0" class="empty-state flex items-center justify-center h-64">
+          <div class="text-center">
+            <svg class="w-12 h-12 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-lg font-semibold text-white mb-2">No Results</h3>
+            <p class="text-slate-400 mb-4">No seeds match your current filters</p>
+            <button
+              @click="clearFilters"
+              class="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+            >
+              Clear Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- Seeds List (Virtualized) -->
+        <div v-else class="seeds-list space-y-4">
         <!-- Show a message if using virtual scrolling would be beneficial -->
         <div v-if="filteredSeeds.length > 50" class="performance-notice bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-30 rounded-lg p-4 mb-4">
           <div class="flex items-start gap-3">
@@ -208,6 +289,7 @@
           </button>
         </div>
       </div>
+      </template>
     </div>
 
     <!-- Playback Bar (Sticky Bottom) -->
@@ -300,6 +382,7 @@ import AudioPlayer from './components/AudioPlayer.vue';
 import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import FlaggedItemRow from './components/FlaggedItemRow.vue';
+import LearningJourneyView from './components/LearningJourneyView.vue';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
@@ -357,6 +440,17 @@ const phraseToEdit = ref<{
 
 // Shortcuts Help
 const showShortcutsHelp = ref(false);
+
+// Learning Journey View Mode
+const viewMode = ref<'script' | 'journey'>('script');
+const learningJourneyData = ref<{
+  rounds: any[];
+  allItems: any[];
+  stats: any;
+} | null>(null);
+const isLoadingJourney = ref(false);
+const journeyError = ref<string | null>(null);
+const journeyMaxLegos = ref(50);
 
 // API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
 const getApiBaseUrl = (): string => {
@@ -561,6 +655,55 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   } finally {
     isLoading.value = false;
   }
+};
+
+// Load learning journey data
+const loadLearningJourney = async (maxLegos: number = 50) => {
+  isLoadingJourney.value = true;
+  journeyError.value = null;
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${maxLegos}`;
+
+    const response = await fetch(url, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    });
+
+    if (!response.ok) throw new Error('Failed to load learning journey');
+
+    const data = await response.json();
+    learningJourneyData.value = {
+      rounds: data.rounds || [],
+      allItems: data.allItems || [],
+      stats: data.stats || null,
+    };
+  } catch (err) {
+    journeyError.value = err instanceof Error ? err.message : 'Unknown error occurred';
+    console.error('Error loading learning journey:', err);
+  } finally {
+    isLoadingJourney.value = false;
+  }
+};
+
+// Toggle between script view and learning journey view
+const toggleViewMode = () => {
+  if (viewMode.value === 'script') {
+    viewMode.value = 'journey';
+    // Load learning journey data if not already loaded
+    if (!learningJourneyData.value) {
+      loadLearningJourney(journeyMaxLegos.value);
+    }
+  } else {
+    viewMode.value = 'script';
+  }
+};
+
+// Reload learning journey with different max LEGOs
+const reloadLearningJourney = () => {
+  loadLearningJourney(journeyMaxLegos.value);
 };
 
 // Transform new /script-view endpoint data into SeedRowData format
