@@ -369,9 +369,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     })
     usedPhrasesInRound.add(normalizePhrase(currentLego.lego.target_text))
 
-    // Phase 4: DEBUT PHRASES - up to 7 shortest phrases
-    for (let i = 0; i < Math.min(currentDebuts.length, 7); i++) {
-      const phrase = currentDebuts[i]
+    // Phase 4: DEBUT PHRASES - up to 7 phrases, sorted by target text character count (shortest first)
+    // This ensures simpler phrases come before more complex ones
+    const sortedDebuts = [...currentDebuts].sort((a, b) =>
+      (a.target_text?.length || 0) - (b.target_text?.length || 0)
+    )
+    for (let i = 0; i < Math.min(sortedDebuts.length, 7); i++) {
+      const phrase = sortedDebuts[i]
       if (usedPhrasesInRound.has(normalizePhrase(phrase.target_text))) continue
 
       roundItems.push({
