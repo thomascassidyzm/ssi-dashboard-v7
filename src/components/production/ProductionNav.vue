@@ -5,28 +5,35 @@
       class="nav-item"
       :class="{ active: isActive('ProductionDashboard') }"
     >
-      Dashboard
+      Overview
     </router-link>
     <router-link
-      :to="`/production/${courseCode}/qa`"
+      :to="`/production/${courseCode}/text`"
       class="nav-item"
-      :class="{ active: isActive('ProductionQA') || isActive('SamplesBrowser') }"
+      :class="{ active: isActive('TextGeneration') }"
     >
-      QA Browser
+      Text
     </router-link>
     <router-link
       :to="`/production/${courseCode}/pipeline`"
       class="nav-item"
       :class="{ active: isActive('AudioPipelineProduction') }"
     >
-      Audio Pipeline
+      Audio
     </router-link>
     <router-link
       :to="`/production/${courseCode}/recording`"
       class="nav-item"
       :class="{ active: isActive('AutocueStudioCourse') }"
     >
-      Autocue Studio
+      Recording
+    </router-link>
+    <router-link
+      :to="`/production/${courseCode}/qa`"
+      class="nav-item"
+      :class="{ active: isActive('ProductionQA') || isActive('SamplesBrowser') }"
+    >
+      QA
     </router-link>
   </nav>
 </template>

@@ -52,7 +52,7 @@
           <div class="flex items-center gap-3">
             <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Configuration</span>
             <span v-if="!configExpanded && courseCode" class="text-sm text-slate-500">
-              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }} &middot; {{ buildMode === 'builder' ? 'Course Builder' : 'Phases 1-3' }}
+              {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }}{{ showLegacyMode ? ` · ${buildMode === 'builder' ? 'Course Builder' : 'Phases 1-3'}` : '' }}
             </span>
           </div>
           <svg
@@ -175,8 +175,8 @@
             </div>
           </div>
 
-          <!-- Build Mode -->
-          <div>
+          <!-- Build Mode (hidden by default - legacy feature) -->
+          <div v-if="showLegacyMode">
             <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
               Build Mode
             </label>
@@ -209,8 +209,8 @@
         </div>
       </section>
 
-      <!-- Phase Progress (Phases 1-3 mode) -->
-      <section v-if="buildMode === 'phases'" class="space-y-4">
+      <!-- Phase Progress (Phases 1-3 mode) - Legacy, hidden by default -->
+      <section v-if="showLegacyMode && buildMode === 'phases'" class="space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide">Phase Progress</h2>
           <div v-if="etaDisplay" class="text-sm text-slate-400">
@@ -379,9 +379,9 @@
           </div>
 
           <div class="flex gap-3">
-            <!-- PHASES MODE: Preview Button (when no preview shown) -->
+            <!-- PHASES MODE: Preview Button (when no preview shown) - Legacy -->
             <button
-              v-if="buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
+              v-if="showLegacyMode && buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
               @click="fetchPreview"
               :disabled="previewLoading"
               class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-slate-200 font-medium rounded-lg transition-colors flex items-center gap-2"
@@ -393,9 +393,9 @@
               <span>{{ previewLoading ? 'Loading...' : 'Preview' }}</span>
             </button>
 
-            <!-- PHASES MODE: Execute Button (when preview shown) -->
+            <!-- PHASES MODE: Execute Button (when preview shown) - Legacy -->
             <button
-              v-if="buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && previewExpanded"
+              v-if="showLegacyMode && buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && previewExpanded"
               @click="startPhase"
               class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg transition-colors"
             >
@@ -687,7 +687,9 @@ const machineProfiles = ref([
 const selectedMachineProfile = ref(localStorage.getItem('ssi_machine_profile') || 'tom')
 
 // Build mode: phases (legacy 1-3) or builder (single agent)
-const buildMode = ref('phases')
+// Default to builder mode - phases 1-3 is legacy
+const buildMode = ref('builder')
+const showLegacyMode = ref(false) // Set to true to show Phases 1-3 option
 const buildModes = [
   { id: 'phases', label: 'Phases 1-3', description: 'Parallel agents' },
   { id: 'builder', label: 'Course Builder', description: 'Single agent' }

@@ -361,6 +361,13 @@ const routes = [
     meta: { title: 'Production Suite' }
   },
   {
+    path: '/production/:courseCode/text',
+    name: 'TextGeneration',
+    component: () => import('../views/production/TextGeneration.vue'),
+    props: true,
+    meta: { title: 'Text Generation - Production Suite' }
+  },
+  {
     path: '/production/:courseCode/script',
     name: 'ScriptViewer',
     component: ScriptViewer,
