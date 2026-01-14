@@ -353,63 +353,86 @@ const routes = [
     component: () => import('@/components/production/CourseSelector.vue'),
     meta: { title: 'Course Selection - Production Suite' }
   },
+  // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
     path: '/production/:courseCode',
-    name: 'ProductionDashboard',
-    component: MissionControl,
+    component: () => import('../views/production/ProductionLayout.vue'),
     props: true,
-    meta: { title: 'Production Suite' }
-  },
-  {
-    path: '/production/:courseCode/text',
-    name: 'TextGeneration',
-    component: () => import('../views/production/TextGeneration.vue'),
-    props: true,
-    meta: { title: 'Text Generation - Production Suite' }
-  },
-  {
-    path: '/production/:courseCode/script',
-    name: 'ScriptViewer',
-    component: ScriptViewer,
-    props: true,
-    meta: { title: 'Script Viewer - Production Suite' }
-  },
-  {
-    path: '/production/:courseCode/pipeline',
-    name: 'AudioPipelineProduction',
-    component: AudioPipeline,
-    props: true,
-    meta: { title: 'Audio Pipeline - Production Suite' }
-  },
-  {
-    path: '/production/:courseCode/recording-studio',
-    name: 'RecordingStudioProduction',
-    component: RecordingStudioV2,
-    props: true,
-    meta: { title: 'Recording Studio - Production Suite' }
-  },
-  {
-    path: '/production/:courseCode/feedback',
-    name: 'UserFeedback',
-    component: UserFeedback,
-    props: true,
-    meta: { title: 'User Feedback - Production Suite' }
-  },
-
-  // ===========================================
-  // Recording Optimizer (Human Recording for non-TTS languages)
-  // ===========================================
-  {
-    path: '/production/:courseCode/recording-optimizer',
-    name: 'RecordingOptimizer',
-    component: () => import('../views/RecordingOptimizer.vue'),
-    props: true,
-    meta: { title: 'Recording Optimizer - Production Suite' }
+    children: [
+      {
+        path: '',
+        name: 'ProductionDashboard',
+        component: () => import('../views/production/ProductionOverview.vue'),
+        props: true,
+        meta: { title: 'Overview - Production Suite' }
+      },
+      {
+        path: 'text',
+        name: 'TextGeneration',
+        component: () => import('../views/production/TextGeneration.vue'),
+        props: true,
+        meta: { title: 'Text Generation - Production Suite' }
+      },
+      {
+        path: 'pipeline',
+        name: 'AudioPipelineProduction',
+        component: AudioPipeline,
+        props: true,
+        meta: { title: 'Audio Pipeline - Production Suite' }
+      },
+      {
+        path: 'recording',
+        name: 'AutocueStudioCourse',
+        component: () => import('../components/production/autocue/AutocueStudio.vue'),
+        props: true,
+        meta: { title: 'Recording - Production Suite' }
+      },
+      {
+        path: 'qa',
+        name: 'SamplesBrowser',
+        component: SamplesBrowser,
+        props: true,
+        meta: { title: 'QA - Production Suite' }
+      },
+      {
+        path: 'script',
+        name: 'ScriptViewer',
+        component: ScriptViewer,
+        props: true,
+        meta: { title: 'Script Viewer - Production Suite' }
+      },
+      {
+        path: 'recording-studio',
+        name: 'RecordingStudioProduction',
+        component: RecordingStudioV2,
+        props: true,
+        meta: { title: 'Recording Studio - Production Suite' }
+      },
+      {
+        path: 'feedback',
+        name: 'UserFeedback',
+        component: UserFeedback,
+        props: true,
+        meta: { title: 'User Feedback - Production Suite' }
+      },
+      {
+        path: 'recording-optimizer',
+        name: 'RecordingOptimizer',
+        component: () => import('../views/RecordingOptimizer.vue'),
+        props: true,
+        meta: { title: 'Recording Optimizer - Production Suite' }
+      }
+    ]
   },
   // Legacy route redirect
   {
     path: '/recording-optimizer/:courseCode',
     redirect: to => `/production/${to.params.courseCode}/recording-optimizer`
+  },
+  // Redirect old /production/:courseCode/qa to /production/:courseCode/qa (samples browser)
+  {
+    path: '/production/:courseCode/samples',
+    redirect: to => `/production/${to.params.courseCode}/qa`
   },
 
   // Catch-all route

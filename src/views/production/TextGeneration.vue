@@ -1,8 +1,5 @@
 <template>
   <div class="text-generation">
-    <!-- Production Nav -->
-    <ProductionNav :course-code="courseCode" />
-
     <div class="max-w-4xl mx-auto px-6 py-8 space-y-6">
       <!-- Header -->
       <div class="flex items-center justify-between">
@@ -200,7 +197,6 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import ProductionNav from '../../components/production/ProductionNav.vue'
 
 const props = defineProps({
   courseCode: {
