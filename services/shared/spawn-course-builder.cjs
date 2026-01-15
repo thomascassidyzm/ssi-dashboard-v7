@@ -171,11 +171,11 @@ Include them as components of M-LEGOs. Example:
 \`\`\`json
 {
   "type": "M",
-  "known": "Is it...?",
-  "target": "是...吗",
+  "known": "Is it good?",
+  "target": "好吗",
   "components": [
-    {"known": "is", "target": "是"},
-    {"known": "(question)", "target": "吗"}
+    {"known": "good", "target": "好"},
+    {"known": "(question marker)", "target": "吗"}
   ]
 }
 \`\`\`
