@@ -112,13 +112,12 @@ function countSyllables(text) {
 
 /**
  * Assign recommended model tier based on difficulty factors
+ * NEVER use Haiku - it produces garbage grammar
  */
 function assignModelTier(seedNum, vocabSize, legoSyllableCount, legoType) {
   if (vocabSize < 15) return 'opus';
-  if (vocabSize < 30) return 'sonnet';
-  if (legoType === 'M' && legoSyllableCount >= 3) return 'sonnet';
-  if (vocabSize < 60) return 'sonnet';
-  return 'haiku';
+  // Always Sonnet minimum - Haiku produces ungrammatical garbage
+  return 'sonnet';
 }
 
 /**

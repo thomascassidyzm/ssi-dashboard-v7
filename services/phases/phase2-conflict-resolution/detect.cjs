@@ -16,6 +16,112 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../../.env'
 const { createClient } = require('@supabase/supabase-js')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+const { v4: uuidv4 } = require('uuid')
+
+// Language name mapping for presentation text
+const LANG_NAMES = {
+  spa: 'Spanish', ita: 'Italian', fra: 'French', deu: 'German',
+  por: 'Portuguese', zho: 'Chinese', cmn: 'Mandarin', jpn: 'Japanese',
+  kor: 'Korean', ara: 'Arabic', rus: 'Russian', hin: 'Hindi',
+  cym: 'Welsh', gle: 'Irish', gla: 'Scottish Gaelic', eus: 'Basque',
+  cat: 'Catalan', nld: 'Dutch', swe: 'Swedish', nor: 'Norwegian',
+  dan: 'Danish', fin: 'Finnish', pol: 'Polish', ces: 'Czech',
+  hun: 'Hungarian', tur: 'Turkish', heb: 'Hebrew', tha: 'Thai',
+  vie: 'Vietnamese', ind: 'Indonesian', msa: 'Malay', eng: 'English'
+}
+
+/**
+ * Generate presentation texts for all NEW LEGOs
+ * Called automatically after is_new flags are set
+ */
+async function generatePresentationTexts(courseCode) {
+  console.log(`\n   Generating presentation texts for NEW LEGOs...`)
+
+  // Get course info
+  const { data: course, error: courseError } = await supabase
+    .from('courses')
+    .select('known_lang, target_lang, voice_config')
+    .eq('code', courseCode)
+    .single()
+
+  if (courseError || !course) {
+    console.log(`      Skipped: Course not found in database`)
+    return { generated: 0 }
+  }
+
+  const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
+  const fullTemplate = "The {target_lang_name} for '{known}', as in '{seed}', is:"
+  const shortTemplate = "The {target_lang_name} for '{known}' is:"
+  const voiceId = course.voice_config?.presentation || 'azure_en-GB-SoniaNeural'
+
+  // Get all NEW LEGOs with their seed context
+  const { data: legos, error: legosError } = await supabase
+    .from('course_legos')
+    .select('lego_id, known_text, seed_number, lego_index')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+
+  if (legosError || !legos?.length) {
+    console.log(`      No NEW LEGOs found`)
+    return { generated: 0 }
+  }
+
+  // Get seed sentences for context
+  const seedNumbers = [...new Set(legos.map(l => l.seed_number).filter(Boolean))]
+  let seedMap = {}
+  if (seedNumbers.length > 0) {
+    const { data: seeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text')
+      .eq('course_code', courseCode)
+      .in('seed_number', seedNumbers)
+    if (seeds) {
+      seedMap = Object.fromEntries(seeds.map(s => [s.seed_number, s.known_text]))
+    }
+  }
+
+  // Build presentation records
+  const audioRecords = legos.map(lego => {
+    const seedText = seedMap[lego.seed_number] || lego.known_text
+
+    // For first 2 seeds, alternate: odd LEGOs get full template, even get short
+    // This avoids boring learners with repetitive "as in..." at the start
+    const useShort = lego.seed_number <= 2 && lego.lego_index % 2 === 0
+    const template = useShort ? shortTemplate : fullTemplate
+
+    const presText = template
+      .replace('{target_lang_name}', targetLangName)
+      .replace('{known}', lego.known_text)
+      .replace('{seed}', seedText)
+
+    return {
+      course_code: courseCode,
+      text: presText,
+      text_normalized: presText.toLowerCase().trim(),
+      language: course.known_lang,
+      role: 'presentation',
+      voice_id: voiceId,
+      origin: 'tts',
+      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+    }
+  })
+
+  // Bulk upsert
+  const { error: upsertError } = await supabase
+    .from('course_audio')
+    .upsert(audioRecords, {
+      onConflict: 'course_code,text_normalized,language,role',
+      ignoreDuplicates: true
+    })
+
+  if (upsertError) {
+    console.log(`      Error: ${upsertError.message}`)
+    return { generated: 0, error: upsertError.message }
+  }
+
+  console.log(`      Generated ${audioRecords.length} presentation texts`)
+  return { generated: audioRecords.length }
+}
 
 /**
  * Run Phase 2 detection
@@ -230,6 +336,9 @@ async function detect(courseCodeParam, dryRunParam = false) {
 
       console.log(`      Updated: ${updated}, Failed: ${failed}`)
     }
+
+    // Generate presentation texts for NEW LEGOs
+    await generatePresentationTexts(courseCode)
 
     // Store conflicts (upsert to phase2_conflicts table or write to JSON)
     if (conflicts.length > 0) {

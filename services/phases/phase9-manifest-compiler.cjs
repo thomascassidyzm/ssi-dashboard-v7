@@ -1,11 +1,23 @@
 /**
  * Phase 9: Manifest Compiler Service
  *
- * Compiles lego_baskets.json into course_manifest.json with Supabase UUID lookups.
- * Validates that all required audio samples exist before writing the manifest.
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * Course data is read EXCLUSIVELY from Supabase, NOT from JSON files.
+ * This service reads from course_legos and course_practice_phrases tables.
+ *
+ * JSON files (lego_baskets.json) are DEPRECATED and only used as fallback.
+ * The loadBasketsFromSupabase() function is the PRIMARY data source.
+ *
+ * Data Flow (DATABASE-FIRST):
+ * 1. Load LEGOs from course_legos table
+ * 2. Load phrases from course_practice_phrases table
+ * 3. Transform into basket format for manifest generation
+ * 4. Look up audio UUIDs from course_audio/audio_samples
+ * 5. Generate course_manifest.json
  *
  * Features:
- * - Reads lego_baskets.json
+ * - Reads from Supabase (primary) or lego_baskets.json (fallback only)
  * - Looks up all audio UUIDs from Supabase
  * - Validates 100% audio coverage
  * - Writes course_manifest.json

@@ -3,10 +3,22 @@
 **Port**: 3465
 **Version**: 2.0
 **Status**: Active
-**Input**: lego_baskets.json (APML v11.2.0: audio-first approach)
+**Input**: Supabase (course_legos, course_practice_phrases tables)
 **Output**:
 - MP3 audio files (uploaded to S3)
-- Supabase `audio_samples` table records
+- Supabase `course_audio` / `audio_samples` table records
+
+---
+
+## IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+
+**Course data is read EXCLUSIVELY from Supabase, NOT from JSON files.**
+
+The service reads from:
+- `course_legos` table: LEGO definitions
+- `course_practice_phrases` table: Practice phrases
+
+JSON files (lego_baskets.json) are DEPRECATED. Do not read course data from JSON.
 
 ---
 
@@ -20,7 +32,7 @@ Generate audio files for all text in the course using text-to-speech. In APML v1
 
 ### 1. **Audio-First (APML v11.0)**
 
-Phase 8 reads from `lego_baskets.json` directly - NOT from course_manifest.json. Audio is generated BEFORE the manifest exists.
+Phase 8 reads course data from Supabase - NOT from course_manifest.json. Audio is generated BEFORE the manifest exists.
 
 ### 2. **Deterministic UUID**
 

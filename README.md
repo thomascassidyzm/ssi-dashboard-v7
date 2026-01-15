@@ -1,20 +1,18 @@
-# SSi Course Production Dashboard v11.0.0
+# SSi Course Production Dashboard v14.0.0 (Popty)
 
-**APML v11.0: Audio-First Supabase Pipeline**
+**APML v14.0: Course Builder Consolidation**
 
 ## Overview
 
-Course production dashboard for SSi language learning system. Course content lives in S3, audio samples are managed via Supabase.
+Course production dashboard for SSi language learning system. Content lives in Supabase, audio files in S3.
 
-**v11.0 Features:**
-- **Audio-first workflow**: Generate audio from lego_baskets BEFORE manifest compilation
-- **Supabase** as Master Audio Registry (MAR) - source of truth for audio samples
-- **Deterministic UUID**: hash(voice_id|text|lang|role|cadence) for cross-course deduplication
-- S3 for course data and audio file storage
-- Manifest compiled LAST after all audio exists (Phase 9)
+**v14.0 Features:**
+- **Course Builder API**: Single endpoint replaces Phases 0-3
+- **Methodology by example**: Agent learns from Welsh/Spanish patterns
+- **Atomic validation**: Tiling, ZUT, vocabulary, phrase counts in one call
+- **Database-first**: All content in Supabase, no JSON files
+- **Audio pipeline**: Phase 8 (TTS) + Phase 9 (manifest) unchanged
 - QA workflow with sample flagging and real-time status
-- LEGO Debut cycle in basket generation
-- API proxy for course files (avoids CORS)
 - Support for TTS (primary) and human recordings (edge-case languages)
 
 ## Quick Start
@@ -40,48 +38,41 @@ AWS_REGION=eu-west-1
 
 ## Architecture
 
-### Data Flow (APML v11.0)
+### Data Flow (APML v14.0)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    COURSE PRODUCTION PIPELINE                    │
+│                    v14 COURSE PRODUCTION PIPELINE                │
 └─────────────────────────────────────────────────────────────────┘
 
-Phase 1-3: Content Generation
-─────────────────────────────
-seeds.json → Phase 1 (Translation) → Phase 3 (Baskets) → lego_baskets.json
+Content Creation: Course Builder API (Port 3471)
+────────────────────────────────────────────────
+Agent reads brief → POST /api/seed/complete for each seed → Supabase
 
-Phase 8: Audio Generation (NEW)
-───────────────────────────────
-lego_baskets.json
-       ↓
 ┌──────────────────────────────────────┐
-│  For each unique (text, lang, role): │
-│    1. UUID = hash(voice|text|...)    │
-│    2. Check Supabase - exists? SKIP  │
-│    3. Generate TTS (Azure/ElevenLabs)│
-│    4. Upload to S3                   │
-│    5. Insert into Supabase           │
-└──────────────────────────────────────┘
-       ↓
-     Supabase audio_samples table
-
-Phase 9: Manifest Compilation (NEW)
-───────────────────────────────────
-Supabase audio_samples
-       ↓
-┌──────────────────────────────────────┐
-│  For each sample needed:             │
-│    1. Query Supabase by text+role    │
-│    2. Get UUID                       │
-│    3. Build manifest entry           │
+│  For each seed:                      │
+│    1. Translate seed to target lang  │
+│    2. Decompose into LEGOs (peda-    │
+│       gogical order, not sentence)   │
+│    3. Generate practice phrases      │
+│    4. POST to /api/seed/complete     │
 │                                      │
-│  Validation: 100% audio coverage     │
-│    YES → write course_manifest.json  │
-│    NO  → fail with missing list      │
+│  API validates atomically:           │
+│    - Tiling (seed = LEGO assembly)   │
+│    - ZUT conflicts                   │
+│    - Vocabulary constraints          │
+│    - Phrase progression              │
 └──────────────────────────────────────┘
        ↓
-   course_manifest.json
+   Supabase (course_seeds, course_legos, course_practice_phrases)
+
+Audio Generation: Phase 8 (Port 3465)
+─────────────────────────────────────
+Supabase content → TTS generation → S3 upload → course_audio table
+
+Manifest Compilation: Phase 9 (Port 3466)
+─────────────────────────────────────────
+course_audio → 100% coverage check → course_manifest.json
 ```
 
 ### S3 Storage
@@ -109,21 +100,23 @@ Tables:
 └── courses             # Course configuration
 ```
 
-### Pipeline (APML v10.2)
+### Pipeline (APML v14.0)
 
-| Phase | Name | Port | Description |
-|-------|------|------|-------------|
-| 1 | Translation + LEGO Extraction | 3457 | Translate seeds, extract LEGOs |
-| 2 | Conflict Resolution | 3458 | Resolve LEGO conflicts |
-| 3 | Basket Generation | 3459 | Generate practice baskets with LEGO Debut cycle |
-| **8** | **Audio Generator** | **3465** | **TTS generation → Supabase + S3** |
-| **9** | **Manifest Compiler** | **3466** | **Compile manifest from Supabase** |
-| - | Production API | 3470 | QA workflow + WebSocket |
+| Service | Port | Description |
+|---------|------|-------------|
+| **Course Builder** | **3471** | **Content creation (replaces Phase 1-3)** |
+| Audio Generator | 3465 | TTS generation → Supabase + S3 |
+| Manifest Compiler | 3466 | Compile manifest from Supabase |
+| Production API | 3470 | QA workflow + WebSocket |
+| Orchestrator | 3456 | Proxy hub for all services |
 
-**v10.2 Basket Cycle Sequence (M-type LEGOs):**
-1. Components (`is_component: true`) - building blocks
-2. LEGO Debut (`is_debut: true`) - the complete LEGO
-3. Practice sentences - LEGO used in context
+**Course Builder handles:**
+- Translation (seed → target language)
+- LEGO extraction (pedagogical order)
+- Conflict resolution (ZUT validation)
+- Basket generation (phrase build-up)
+
+**Deprecated (v13):** Phase 1 (3457), Phase 2 (3458), Phase 3 (3459)
 
 ### API Endpoints
 
@@ -154,16 +147,16 @@ pm2 start ecosystem.config.cjs
 pm2 status
 ```
 
-| Service | Port | Description |
-|---------|------|-------------|
-| ssi-orchestrator | 3456 | Main orchestrator |
-| phase1-translation | 3457 | Phase 1 server |
-| phase2-conflict | 3458 | Phase 2 server |
-| phase3-baskets | 3459 | Phase 3 server |
-| phase7-manifest | 3464 | Legacy manifest (deprecated) |
-| **phase8-audio** | **3465** | **Audio generation (Supabase)** |
-| **phase9-manifest** | **3466** | **Manifest compilation (Supabase)** |
-| production-api | 3470 | QA workflow + WebSocket |
+| Service | Port | Description | Status |
+|---------|------|-------------|--------|
+| orchestrator | 3456 | Main proxy hub | Active |
+| **course-builder** | **3471** | **Content creation API** | **Active** |
+| phase8-audio | 3465 | Audio generation (Supabase) | Active |
+| phase9-manifest | 3466 | Manifest compilation (Supabase) | Active |
+| production-api | 3470 | QA workflow + WebSocket | Active |
+| ~~phase1-translation~~ | ~~3457~~ | ~~Translation server~~ | Deprecated |
+| ~~phase2-conflict~~ | ~~3458~~ | ~~Conflict resolution~~ | Deprecated |
+| ~~phase3-baskets~~ | ~~3459~~ | ~~Basket generation~~ | Deprecated |
 
 ## Build & Deploy
 
@@ -172,16 +165,19 @@ npm run build
 vercel --prod
 ```
 
-## SSoT Files
+## Data Sources
 
-| File | Owner | Location |
+| Data | Owner | Location |
 |------|-------|----------|
-| `lego_pairs.json` | Phase 2 | S3: `courses/{code}/lego_pairs.json` |
-| `lego_baskets.json` | Phase 3 | S3: `courses/{code}/lego_baskets.json` |
-| `course_manifest.json` | Phase 9 | S3: `courses/{code}/course_manifest.json` |
-| Audio files | Phase 8 | S3: `ssiborg-assets/mastered/{uuid}.mp3` |
-| Audio registry | Phase 8 | Supabase: `audio_samples` table |
-| QA flags | Production API | Supabase: `sample_flags` table |
+| Seeds | Course Builder | Supabase: `course_seeds` |
+| LEGOs | Course Builder | Supabase: `course_legos` |
+| Phrases | Course Builder | Supabase: `course_practice_phrases` |
+| Audio metadata | Phase 8 | Supabase: `course_audio` |
+| Audio files | Phase 8 | S3: `mastered/{uuid}.mp3` |
+| Manifest | Phase 9 | S3: `courses/{code}/course_manifest.json` |
+| QA flags | Production API | Supabase: `sample_flags` |
+
+**Deprecated (JSON files):** `lego_pairs.json`, `lego_baskets.json` - data now in Supabase
 
 ## Tech Stack
 
@@ -194,8 +190,8 @@ vercel --prod
 
 ---
 
-**Version:** 10.2.0
-**APML:** v10.2
-**Pipeline:** v2.0 (Supabase-backed)
+**Version:** 14.0.0
+**APML:** v14.0 (Course Builder Consolidation)
+**Pipeline:** v3.0 (Course Builder + Supabase)
 **S3 Bucket:** ssi-audio-stage (eu-west-1)
-**Date:** 2025-12-04
+**Date:** 2026-01-15

@@ -1,8 +1,21 @@
 /**
  * Manifest Generator Service
  *
- * Generates course manifests on-the-fly from database.
- * Replaces static JSON file compilation with dynamic generation.
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * This service generates course manifests ON-DEMAND from Supabase.
+ * Course data is stored EXCLUSIVELY in Supabase, NOT in JSON files.
+ *
+ * Data Sources (all from Supabase):
+ * - courses: Course metadata and voice configuration
+ * - course_seeds: Seed sentences
+ * - course_legos: LEGO definitions
+ * - course_practice_phrases: Practice phrases
+ * - course_audio / audio_samples: Audio file references
+ * - encouragements: Encouragement audio
+ *
+ * JSON files (lego_pairs.json, lego_baskets.json) are DEPRECATED.
+ * Do NOT read course data from JSON files - always query Supabase.
  *
  * The manifest format matches legacy app expectations for backwards compatibility.
  */

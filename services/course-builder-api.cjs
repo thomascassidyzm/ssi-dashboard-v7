@@ -362,12 +362,20 @@ const MIN_BATCH_PHRASE_RATIO = 7.0;   // Batch must have ≥7.0 phrases per LEGO
 const PHRASE_TIERS = {
   SHORT: { min: 2, max: 5 },     // 2-5 chars/words
   MEDIUM: { min: 6, max: 8 },    // 6-8 chars/words
-  LONG: { min: 9, max: 11 },     // 9-11 chars/words
-  ETERNAL: { min: 12, max: 999 } // 12+ chars/words
+  LONG: { min: 9, max: 9 },      // 9 chars/words
+  ETERNAL: { min: 10, max: 999 } // 10+ chars/words
 };
 
 // Minimum ETERNAL phrases per LEGO (for spaced repetition)
 const MIN_ETERNAL_PHRASES = 4;
+
+// LEGO balance thresholds (practice_score = phrase_count / seeds_since_introduction)
+const BALANCE_UNDERUSED_THRESHOLD = 0.3;  // < 0.3 = needs more practice
+const BALANCE_OVERUSED_THRESHOLD = 1.5;   // > 1.5 = used too much
+const BALANCE_MAX_STRIKES = 3;            // Hard reject after 3 consecutive violations
+
+// In-memory tracking for balance violations (resets on service restart)
+const balanceViolations = {};  // { course_code: consecutive_strike_count }
 
 // Allow bypass for testing (set SKIP_VALIDATION=true in request body)
 const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
@@ -466,12 +474,142 @@ function checkPhraseComplexity(phrases, courseCode) {
     return {
       valid: false,
       tiers: tierCounts,
-      error: `Need ${MIN_ETERNAL_PHRASES}+ ETERNAL phrases (12+ ${chinese ? 'characters' : 'words'}), got ${tiers.ETERNAL.length}`,
+      error: `Need ${MIN_ETERNAL_PHRASES}+ ETERNAL phrases (10+ ${chinese ? 'characters' : 'words'}), got ${tiers.ETERNAL.length}`,
       hint: `See /ssi-build-phrases for phrase length requirements. ETERNAL phrases are critical for spaced repetition.`
     };
   }
 
   return { valid: true, tiers: tierCounts };
+}
+
+// =============================================================================
+// LEGO BALANCE VALIDATION - Ensure vocabulary gets balanced practice
+// =============================================================================
+
+/**
+ * Calculate practice scores for all LEGOs in a course.
+ * practice_score = phrase_count / seeds_since_introduction
+ *
+ * Returns: { legoScores: Map, underused: [], overused: [], avgScore }
+ */
+async function calculateLegoBalanceScores(courseCode, currentSeedNumber) {
+  // Get all LEGOs with their introduction seed
+  const { data: legos, error: legoError } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true);  // Only track new (non-duplicate) LEGOs
+
+  if (legoError) throw new Error(`Balance check failed: ${legoError.message}`);
+  if (!legos || legos.length === 0) return { legoScores: new Map(), underused: [], overused: [], avgScore: 0 };
+
+  // Get phrase counts per LEGO
+  const { data: phraseCounts, error: phraseError } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number, lego_index')
+    .eq('course_code', courseCode);
+
+  if (phraseError) throw new Error(`Balance check failed: ${phraseError.message}`);
+
+  // Count phrases per LEGO
+  const phrasesByLego = {};
+  (phraseCounts || []).forEach(p => {
+    const key = `${p.seed_number}-${p.lego_index}`;
+    phrasesByLego[key] = (phrasesByLego[key] || 0) + 1;
+  });
+
+  // Calculate practice score for each LEGO
+  const legoScores = new Map();
+  const underused = [];
+  const overused = [];
+  let totalScore = 0;
+
+  for (const lego of legos) {
+    const key = `${lego.seed_number}-${lego.lego_index}`;
+    const phraseCount = phrasesByLego[key] || 0;
+    const seedsSince = Math.max(1, currentSeedNumber - lego.seed_number + 1);
+    const score = phraseCount / seedsSince;
+
+    legoScores.set(lego.target_text, {
+      known: lego.known_text,
+      target: lego.target_text,
+      phraseCount,
+      seedsSince,
+      score: Math.round(score * 100) / 100
+    });
+
+    totalScore += score;
+
+    if (score < BALANCE_UNDERUSED_THRESHOLD) {
+      underused.push({ known: lego.known_text, target: lego.target_text, score: Math.round(score * 100) / 100 });
+    } else if (score > BALANCE_OVERUSED_THRESHOLD) {
+      overused.push({ known: lego.known_text, target: lego.target_text, score: Math.round(score * 100) / 100 });
+    }
+  }
+
+  const avgScore = legos.length > 0 ? totalScore / legos.length : 0;
+
+  return {
+    legoScores,
+    underused: underused.sort((a, b) => a.score - b.score).slice(0, 10),  // Top 10 most underused
+    overused: overused.sort((a, b) => b.score - a.score).slice(0, 10),    // Top 10 most overused
+    avgScore: Math.round(avgScore * 100) / 100
+  };
+}
+
+/**
+ * Check if new phrases have balanced vocabulary usage.
+ * Checks if phrases over-rely on overused LEGOs without using underused ones.
+ *
+ * Returns: { balanced: true } or { balanced: false, overusedInPhrases, underusedAvailable, ... }
+ */
+function checkPhraseBalance(phrases, balanceData, courseCode) {
+  const { legoScores, underused, overused } = balanceData;
+
+  if (legoScores.size === 0 || underused.length === 0) {
+    // Not enough data to check balance yet, or no underused LEGOs
+    return { balanced: true, reason: 'insufficient_data' };
+  }
+
+  // Extract vocabulary from new phrases (Chinese = characters, European = words)
+  const chinese = isChinese(courseCode);
+  const overusedTargets = new Set(overused.map(l => l.target));
+  const underusedTargets = new Set(underused.map(l => l.target));
+
+  let overusedCount = 0;
+  let underusedCount = 0;
+  let totalVocabRefs = 0;
+
+  for (const phrase of phrases) {
+    const target = phrase.target;
+
+    // Check each known LEGO target against this phrase
+    for (const [legoTarget, data] of legoScores) {
+      if (target.includes(legoTarget)) {
+        totalVocabRefs++;
+        if (overusedTargets.has(legoTarget)) overusedCount++;
+        if (underusedTargets.has(legoTarget)) underusedCount++;
+      }
+    }
+  }
+
+  // Balance check: fail if >50% overused refs AND 0 underused refs
+  const overusedRatio = totalVocabRefs > 0 ? overusedCount / totalVocabRefs : 0;
+  const hasUnderusedUsage = underusedCount > 0;
+
+  if (overusedRatio > 0.5 && !hasUnderusedUsage && underused.length > 0) {
+    return {
+      balanced: false,
+      overusedRatio: Math.round(overusedRatio * 100),
+      overusedInPhrases: overused.filter(l =>
+        phrases.some(p => p.target.includes(l.target))
+      ).slice(0, 5),
+      underusedAvailable: underused.slice(0, 5),
+      message: `${Math.round(overusedRatio * 100)}% of vocabulary refs are overused LEGOs, with 0 underused LEGOs included`
+    };
+  }
+
+  return { balanced: true };
 }
 
 // =============================================================================
@@ -488,8 +626,8 @@ const METHODOLOGY_HINTS = {
   phrases: `
 📚 See /ssi-build-phrases for phrase requirements:
    - 6+ practice phrases per LEGO
-   - 4+ ETERNAL phrases (12+ characters/words)
-   - Build: SHORT (2-5) → MEDIUM (6-8) → LONG (9-11) → ETERNAL (12+)`,
+   - 4+ ETERNAL phrases (10+ characters/words)
+   - Build: SHORT (2-5) → MEDIUM (6-8) → LONG (9) → ETERNAL (10+)`,
 
   vocab: `
 📚 See /ssi-learner-pattern for how vocabulary builds:
@@ -507,7 +645,14 @@ const METHODOLOGY_HINTS = {
    - ALL M-type LEGOs MUST have component breakdown
    - Components teach the building blocks BEFORE the assembled phrase
    - Long M-LEGOs (4+ chars) need 2+ meaningful components
-   - Components enable the learner to construct the M-LEGO mentally`
+   - Components enable the learner to construct the M-LEGO mentally`,
+
+  balance: `
+📚 See /ssi-phrase-variety for balance requirements:
+   - Prioritize recent, underused LEGOs in new phrases
+   - Avoid over-relying on common vocabulary (>1.5x avg usage)
+   - Include underused LEGOs (<0.3x avg usage) in your phrases
+   - Each LEGO needs balanced practice exposure`
 };
 
 /**
@@ -1154,6 +1299,62 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
+    // 7. LEGO BALANCE VALIDATION (three-strike escalation)
+    // Ensure phrases don't over-rely on common vocabulary while neglecting underused LEGOs
+    if (!SKIP_VALIDATION && seed_number > 20) {  // Only check after enough vocabulary exists
+      // Gather all phrases from this submission
+      const allNewPhrases = [];
+      for (const lego of legos) {
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === `${seedId}L${String(lego.idx).padStart(2, '0')}`);
+        if (!isDuplicate && lego.phrases) {
+          allNewPhrases.push(...lego.phrases);
+        }
+      }
+
+      if (allNewPhrases.length > 0) {
+        const balanceData = await calculateLegoBalanceScores(course_code, seed_number);
+        const balanceResult = checkPhraseBalance(allNewPhrases, balanceData, course_code);
+
+        if (!balanceResult.balanced) {
+          // Increment strike counter
+          balanceViolations[course_code] = (balanceViolations[course_code] || 0) + 1;
+          const strikes = balanceViolations[course_code];
+
+          if (strikes >= BALANCE_MAX_STRIKES) {
+            // HARD REJECT on third strike
+            errors.push({
+              type: 'balance',
+              message: `Balance violation #${strikes} - REJECTED. Phrases over-rely on overused vocabulary.`,
+              strikes,
+              overused_in_phrases: balanceResult.overusedInPhrases,
+              underused_available: balanceResult.underusedAvailable,
+              hint: `Include underused LEGOs in your phrases. Strike counter resets on compliant submission.`,
+              methodology: METHODOLOGY_HINTS.balance
+            });
+            console.log(`✗ ${seedId}: BALANCE STRIKE ${strikes}/${BALANCE_MAX_STRIKES} - REJECTED`);
+          } else {
+            // SOFT WARNING on strikes 1-2
+            warnings.push({
+              type: 'balance',
+              message: `Balance warning ${strikes}/${BALANCE_MAX_STRIKES} - next violation will reject`,
+              strikes,
+              overused_ratio: balanceResult.overusedRatio + '%',
+              overused_in_phrases: balanceResult.overusedInPhrases,
+              underused_available: balanceResult.underusedAvailable,
+              methodology: METHODOLOGY_HINTS.balance
+            });
+            console.log(`⚠️ ${seedId}: BALANCE STRIKE ${strikes}/${BALANCE_MAX_STRIKES} - warned`);
+          }
+        } else {
+          // Compliant submission - reset strike counter
+          if (balanceViolations[course_code] > 0) {
+            console.log(`✓ ${seedId}: Balance OK - strike counter reset`);
+          }
+          balanceViolations[course_code] = 0;
+        }
+      }
+    }
+
     // If any errors, reject everything
     if (errors.length > 0) {
       console.log(`✗ ${seedId}: REJECTED - ${errors.length} validation error(s)`);
@@ -1585,8 +1786,9 @@ app.listen(PORT, () => {
   console.log(`║  2. ZUT: Same known → same target (or reject)                ║`);
   console.log(`║  3. VOCAB: Phrases only use introduced vocabulary            ║`);
   console.log(`║  4. COUNT: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO} phrases/LEGO           ║`);
-  console.log(`║  5. ETERNAL: ${MIN_ETERNAL_PHRASES}+ phrases with 12+ chars (spaced repetition)     ║`);
+  console.log(`║  5. ETERNAL: ${MIN_ETERNAL_PHRASES}+ phrases with 10+ chars (spaced repetition)     ║`);
   console.log(`║  6. COMPONENTS: M-LEGOs MUST have component breakdown        ║`);
+  console.log(`║  7. BALANCE: 3-strike vocab variety (soft→soft→hard reject) ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  AUTO-FEATURES:                                              ║`);
   console.log(`║  • M-LEGO build-up: auto-generates component→LEGO phrases    ║`);
@@ -1596,6 +1798,7 @@ app.listen(PORT, () => {
   console.log(`║  • /ssi-decompose-seed - LEGO decomposition, tiling, comps   ║`);
   console.log(`║  • /ssi-build-phrases  - Phrase requirements & progression   ║`);
   console.log(`║  • /ssi-learner-pattern - What the learner experiences       ║`);
+  console.log(`║  • /ssi-phrase-variety - Vocabulary balance requirements     ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  GOLDEN PATH:                                                ║`);
   console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);

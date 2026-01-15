@@ -1641,5 +1641,30 @@ export default {
       targetText
     })
     return response.data
+  },
+
+  // ============================================================================
+  // DOCUMENTATION API
+  // ============================================================================
+
+  /**
+   * Get documentation list for navigation
+   * @param {string} [category] - Optional category filter ('reference', 'course-content', 'architecture', 'tutorial')
+   * @returns {Promise<{success: boolean, count: number, documents: Array}>}
+   */
+  async getDocumentationList(category = null) {
+    const params = category ? { category } : {}
+    const response = await api.get('/api/docs/list', { params })
+    return response.data
+  },
+
+  /**
+   * Get documentation by slug with all sections
+   * @param {string} slug - Document slug (e.g., 'pedagogy', 'apml-spec')
+   * @returns {Promise<{success: boolean, document: Object}>}
+   */
+  async getDocumentation(slug) {
+    const response = await api.get(`/api/docs/${slug}`)
+    return response.data
   }
 }

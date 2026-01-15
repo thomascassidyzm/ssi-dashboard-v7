@@ -38,6 +38,7 @@ Use Task tool {{WORKERS_TO_SPAWN}} times in a SINGLE message (parallel spawn).
 ```
 {
   "subagent_type": "general-purpose",
+  "model": "sonnet",
   "description": "Phase 3 Worker N",
   "prompt": "# Phase 3 Worker
 
@@ -63,21 +64,23 @@ curl {{ORCHESTRATOR_URL}}/api/phase-intelligence/3
 Read the basket generation methodology. Key principles:
 - GATE compliance (only use available vocabulary)
 - LEGO must appear in EVERY phrase
-- ~10 phrases per basket (2-2-2-4 distribution)
+- 15-20 phrases per basket (server filters to best 10)
 - Grammar must be correct in both languages
 
-### 3. Fetch Scaffolds
-```bash
-curl \"{{ORCHESTRATOR_URL}}/scaffolds/{{COURSE_CODE}}/batch?seeds=[SEED_IDS_HERE]\"
-```
-The scaffold provides:
-- Each LEGO's known/target text
-- Available vocabulary for GATE checking
-- 30 most recent LEGOs for recombination
-
-### 4. Generate Phrases
+### 3. Process Each LEGO
 
 For each LEGO in your assignment:
+
+**Fetch its scaffold:**
+```bash
+curl {{ORCHESTRATOR_URL}}/scaffold-v9/{{COURSE_CODE}}/S0001L01
+```
+The scaffold shows:
+- YOUR LEGO with [brackets]
+- Recent seed patterns with [NEW LEGOs] bracketed
+- Available vocabulary for GATE compliance
+
+### 4. Generate Phrases
 1. Think linguistically - What natural phrases use this LEGO?
 2. Generate ~10 phrases following 2-2-2-4 complexity distribution
 3. Validate each phrase: contains LEGO, GATE compliant, correct grammar
@@ -118,9 +121,8 @@ Work silently during generation."
 
 Each worker:
 1. Gets its LEGO ID list from assignments above
-2. Fetches scaffolds: `GET {{ORCHESTRATOR_URL}}/scaffolds/{{COURSE_CODE}}/batch?seeds=...`
-3. Fetches methodology: `GET {{ORCHESTRATOR_URL}}/api/phase-intelligence/3`
-4. Generates baskets for assigned LEGOs
-5. Submits via REST API: `POST {{ORCHESTRATOR_URL}}/upload-basket`
+2. Fetches methodology: `GET {{ORCHESTRATOR_URL}}/api/phase-intelligence/3`
+3. For each LEGO: fetches scaffold `GET {{ORCHESTRATOR_URL}}/scaffold-v9/{{COURSE_CODE}}/[LEGO_ID]`
+4. Generates basket (~10 phrases) and uploads: `POST {{ORCHESTRATOR_URL}}/upload-basket`
 
 Report: "Master complete: {{WORKERS_TO_SPAWN}} workers spawned for {{LEGO_COUNT}} LEGOs"

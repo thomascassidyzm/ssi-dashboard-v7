@@ -61,7 +61,7 @@
     <!-- No brief yet -->
     <div v-else-if="!brief" class="brief-empty">
       <p>No language brief exists for this pair yet.</p>
-      <p class="brief-hint">Generate one to provide linguistic guidance for Phase 1-3.</p>
+      <p class="brief-hint">Generate one to provide linguistic guidance for the Course Builder.</p>
     </div>
 
     <!-- Brief content -->
@@ -171,7 +171,7 @@
         <section class="brief-section">
           <h4 @click="toggleSection('chunking')">
             <span class="section-arrow" :class="{ open: openSections.chunking }">&#9654;</span>
-            Chunking Guidance (Phase 1)
+            Chunking Guidance (LEGO Extraction)
           </h4>
           <div v-if="openSections.chunking" class="section-content">
             <textarea
@@ -187,7 +187,7 @@
         <section class="brief-section">
           <h4 @click="toggleSection('conflicts')">
             <span class="section-arrow" :class="{ open: openSections.conflicts }">&#9654;</span>
-            Conflict Patterns (Phase 2)
+            Conflict Patterns (ZUT Resolution)
           </h4>
           <div v-if="openSections.conflicts" class="section-content">
             <div
@@ -221,7 +221,7 @@
         <section class="brief-section">
           <h4 @click="toggleSection('upchunking')">
             <span class="section-arrow" :class="{ open: openSections.upchunking }">&#9654;</span>
-            Upchunking Notes (Phase 2)
+            Upchunking Notes (ZUT Resolution)
           </h4>
           <div v-if="openSections.upchunking" class="section-content">
             <textarea
@@ -237,7 +237,7 @@
         <section class="brief-section">
           <h4 @click="toggleSection('phrases')">
             <span class="section-arrow" :class="{ open: openSections.phrases }">&#9654;</span>
-            Phrase Generation Notes (Phase 3)
+            Phrase Generation Notes (Basket Building)
           </h4>
           <div v-if="openSections.phrases" class="section-content">
             <textarea

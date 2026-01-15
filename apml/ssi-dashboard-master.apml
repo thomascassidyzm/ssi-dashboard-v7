@@ -1,19 +1,23 @@
-# APML v1.1.0 - Master Specification
-# SSI Course Production Dashboard v8.0.0
+# APML v14.0.0 - Master Specification
+# SSI Course Production Dashboard (Popty)
 # Single Source of Truth (SSoT) for entire project
+#
+# v14.0 (2026-01-15): Course Builder consolidation
+# - Phases 0-3 replaced by Course Builder API
+# - Methodology taught by example (see skills)
+# - Database-first architecture
 
 app SSiDashboard:
-  title: "SSI Course Production Dashboard"
-  version: "8.0.0"
-  apml_version: "1.1.0"
+  title: "SSI Course Production Dashboard (Popty)"
+  version: "14.0.0"
+  apml_version: "2.1.0"
 
   description: |
     Complete course generation system for SSI language learning methodology.
-    Automates the 8-phase process from canonical seeds to compiled courses.
+    Course Builder API handles content creation with atomic validation.
+    Audio generation (Phase 8) and manifest compilation (Phase 9) unchanged.
 
-  compilation_method: "reverse-compilation"
-  extracted_from: "Clean v8.0.0 codebase (2025-11-09)"
-  last_updated: "2025-11-10"
+  last_updated: "2026-01-15"
 
   ## ==========================================================================
   ## CORE SPECIFICATIONS (Extracted - Complete)
@@ -38,29 +42,57 @@ app SSiDashboard:
     coverage: "Web Mode, API Mode, Legacy Local Mode"
 
   ## ==========================================================================
-  ## PHASE INTELLIGENCE (Extracted - Complete)
+  ## CONTENT CREATION (v14 - Course Builder)
   ## ==========================================================================
 
-  import phases/phase-1-translation:
-    status: "extracted"
-    date: "2025-11-10"
-    source: "docs/phase_intelligence/phase_1_orchestrator.md"
-    version: "1.1"
-    coverage: "Orchestrator pattern, 3×10 agent architecture, validation, workflow"
+  import services/course-builder-api:
+    status: "active"
+    date: "2026-01-15"
+    source: "services/course-builder-api.cjs"
+    spec: "apml/services/course-builder-api.apml"
+    port: 3471
+    coverage: "Translation, LEGO extraction, conflict resolution, basket generation"
+    note: "Replaces Phase 0-3 with single atomic API"
 
-  import phases/phase-3-lego-extraction:
-    status: "extracted"
-    date: "2025-11-10"
-    source: "docs/phase_intelligence/phase_3_lego_pairs.md"
-    version: "5.0"
-    coverage: "Three Absolutes, FD test, Atomic/Molecular classification, componentization"
+  ## ==========================================================================
+  ## METHODOLOGY (Skills)
+  ## ==========================================================================
 
-  import phases/phase-5-basket-generation:
-    status: "extracted"
-    date: "2025-11-10"
-    source: "docs/phase_intelligence/phase_5_lego_baskets.md"
-    version: "5.0"
-    coverage: "Staged pipeline, 3-category whitelist, linguistic reasoning, GATE compliance"
+  import skills/ssi-learner-pattern:
+    source: ".claude/commands/ssi-learner-pattern.md"
+    purpose: "What the learner experiences - ROUND-by-ROUND example"
+
+  import skills/ssi-decompose-seed:
+    source: ".claude/commands/ssi-decompose-seed.md"
+    purpose: "How to break seeds into LEGOs (pedagogical order)"
+
+  import skills/ssi-build-phrases:
+    source: ".claude/commands/ssi-build-phrases.md"
+    purpose: "How to generate practice phrases (build-up pattern)"
+
+  ## ==========================================================================
+  ## AUDIO PIPELINE (Unchanged from v13)
+  ## ==========================================================================
+
+  import phases/phase-audio-generation:
+    status: "active"
+    port: 3465
+    spec: "apml/phases/phase-audio-generation.apml"
+
+  import phases/phase-index-v14:
+    status: "canonical"
+    date: "2026-01-15"
+    spec: "apml/phases/phase-index-v14.apml"
+
+  ## ==========================================================================
+  ## DEPRECATED PHASES (Archived)
+  ## ==========================================================================
+
+  # The following phases are DEPRECATED and archived to apml/archive/phases-v13/:
+  # - phase-0-language-brief.apml (replaced by methodology skills)
+  # - phase-1-translation.apml (replaced by Course Builder)
+  # - phase-2-conflict-resolution.apml (replaced by Course Builder validation)
+  # - phase-3-basket-generation.apml (replaced by Course Builder)
 
   ## ==========================================================================
   ## INTERFACES (To Be Extracted)

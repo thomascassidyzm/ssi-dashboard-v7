@@ -1,0 +1,367 @@
+# APML Phase Index v14.0.0
+# SSI Course Production Pipeline
+# Version: 14.0.0 (2026-01-15)
+# Status: CANONICAL - This is the source of truth
+#
+# v14.0 Changes:
+# - MAJOR: Phases 0-3 CONSOLIDATED into Course Builder API
+# - Single /api/seed/complete endpoint replaces 4 separate phases
+# - Methodology taught by example (Welsh/Spanish patterns)
+# - Agent works directly via curl, no orchestration needed
+#
+# BREAKING CHANGES from v13:
+# - Phase 0-3 servers DEPRECATED (ports 3455-3459)
+# - Agent swimlane monitoring DEPRECATED
+# - Master/Worker orchestration REMOVED
+# - Course Builder (port 3471) is now the content creation path
+
+## ============================================================================
+## VERSION 14 ARCHITECTURE CHANGE
+## ============================================================================
+
+ARCHITECTURE_CHANGE:
+  summary: |
+    Version 14 CONSOLIDATES content creation into a single Course Builder API.
+
+    v13 Pipeline:
+      Phase 0 → Phase 1 → Phase 2 → Phase 3 → Phase 8 → Phase 9
+      (Brief)   (Trans)   (Conflict) (Basket)  (Audio)   (Manifest)
+
+    v14 Pipeline:
+      Course Builder → Phase 8 → Phase 9
+      (/api/seed/complete)  (Audio)   (Manifest)
+
+  rationale: |
+    v13 phases were over-complicated:
+    - 4 separate servers for content creation
+    - Complex Master/Worker orchestration
+    - Context loss between phases
+    - Brittle handoffs
+
+    v14 embraces simplicity:
+    - One API endpoint handles translation + LEGOs + phrases
+    - Agent learns methodology from examples
+    - Direct curl submission with atomic validation
+    - No orchestration overhead
+
+  benefits:
+    - "Single API validates all constraints atomically"
+    - "Agent retains context for entire seed"
+    - "Methodology taught by example, not rules"
+    - "Faster course creation (no phase handoffs)"
+    - "Simpler debugging (one endpoint)"
+
+## ============================================================================
+## DEPRECATED PHASES (v13 → Archive)
+## ============================================================================
+
+DEPRECATED_PHASES:
+  note: |
+    These phases are ARCHIVED at: apml/archive/phases-v13/
+    Do NOT use these for new course creation.
+
+  archived:
+    PHASE_0:
+      name: "Language Pair Intelligence Brief"
+      status: "DEPRECATED - Replaced by methodology in course-builder brief"
+      archive: "apml/archive/phases-v13/phase-0-language-brief.apml"
+
+    PHASE_1:
+      name: "Translation + LEGO Extraction"
+      status: "DEPRECATED - Handled by Course Builder"
+      archive: "apml/archive/phases-v13/phase-1-translation.apml"
+
+    PHASE_2:
+      name: "Conflict Resolution"
+      status: "DEPRECATED - Handled by Course Builder API validation"
+      archive: "apml/archive/phases-v13/phase-2-conflict-resolution.apml"
+
+    PHASE_3:
+      name: "Basket Generation"
+      status: "DEPRECATED - Handled by Course Builder"
+      archive: "apml/archive/phases-v13/phase-3-basket-generation.apml"
+
+## ============================================================================
+## v14 PIPELINE
+## ============================================================================
+
+PIPELINE_V14:
+  description: |
+    Simplified 3-stage pipeline:
+
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │                        v14 PIPELINE                                      │
+    │                                                                          │
+    │   [Course Builder API]  →  [Phase 8 Audio]  →  [Phase 9 Manifest]       │
+    │       Port 3471              Port 3465           Port 3466               │
+    │                                                                          │
+    │   /api/seed/complete        /generate            /compile                │
+    │   - Translation             - TTS generation     - Compile manifest      │
+    │   - LEGO extraction         - S3 upload          - Validate coverage     │
+    │   - Conflict check          - Supabase insert                            │
+    │   - Basket generation                                                    │
+    │   - Atomic validation                                                    │
+    └─────────────────────────────────────────────────────────────────────────┘
+
+  stages:
+    1_COURSE_BUILDER:
+      name: "Course Builder"
+      port: 3471
+      spec: "apml/services/course-builder-api.apml"
+      implements:
+        - "Translation"
+        - "LEGO extraction (with ZUT validation)"
+        - "Conflict resolution (automatic)"
+        - "Practice phrase generation"
+        - "Basket assembly"
+
+      endpoint: "POST /api/seed/complete"
+
+      validation:
+        tiling: "Seed must be constructable from LEGO targets"
+        zut_conflict: "Same known → different target = REJECT"
+        vocabulary: "Phrases only use introduced vocabulary"
+        phrase_count: "Minimum phrases per LEGO based on position"
+
+      on_failure: "Nothing inserted, clear error message with fix suggestions"
+
+    2_AUDIO:
+      name: "Audio Generation"
+      port: 3465
+      spec: "apml/phases/phase-audio-generation.apml"
+      unchanged_from_v13: true
+
+    3_MANIFEST:
+      name: "Manifest Compilation"
+      port: 3466
+      unchanged_from_v13: true
+
+## ============================================================================
+## COURSE BUILDER METHODOLOGY
+## ============================================================================
+
+METHODOLOGY:
+  principle: |
+    Agent learns SSi methodology by studying EXAMPLES, not by following rules.
+    The course-builder brief shows Welsh and Spanish patterns.
+    Agent applies the same patterns to new languages.
+
+  examples_location:
+    - "temp/course-builder-brief-{lang}.md"
+    - ".claude/commands/ssi-learner-pattern.md"
+    - ".claude/commands/ssi-decompose-seed.md"
+    - ".claude/commands/ssi-build-phrases.md"
+
+  key_patterns:
+    LEGO_ORDER:
+      description: "LEGOs ordered PEDAGOGICALLY, not mechanically"
+      rule: "Grammar markers (now, question particles) come LAST"
+
+    BUILD_UP:
+      description: "Phrases build from short to long"
+      progression:
+        - "2 words: I want to speak"
+        - "3 words: I want to speak Spanish"
+        - "4 words: I want to speak Spanish now"
+        - "ETERNAL: I want to speak Spanish with you now (10+ syllables)"
+
+    VOCABULARY_CONSTRAINT:
+      description: "Phrases only use what learner has learned"
+      rule: "LEGO N can use LEGOs 1..N-1 from current seed + all prior seeds"
+
+    M_LEGO_BUILD_UP:
+      description: "M-LEGOs teach components first"
+      example: |
+        M-LEGO: "I want" → "我想"
+        Components: ["I" → "我"], ["want" → "想"]
+
+        Learner sees:
+        1. I → 我
+        2. want → 想
+        3. I want → 我想  ← full M-LEGO
+
+    PARTICLE_INFERENCE:
+      description: "Particles learned from context, not taught explicitly"
+      example: |
+        Components: good → 好
+        M-LEGO: Is it good? → 好吗
+
+        Learner infers 吗 = question marker from contrast
+
+## ============================================================================
+## DATA LAYER (Unchanged from v13)
+## ============================================================================
+
+DATA_LAYER:
+  note: "v14 uses the same database schema as v13"
+  spec: "apml/core/audio-registry-v13.apml"
+
+  tables:
+    courses: "Course metadata with voice_config JSONB"
+    course_seeds: "Canonical seeds per course"
+    course_legos: "LEGOs extracted from seeds"
+    course_practice_phrases: "Practice phrases per LEGO"
+    course_audio: "Audio owned by courses (flat, no joins)"
+    shared_audio: "Encouragements/instructions only"
+    sample_flags: "QA workflow state"
+
+## ============================================================================
+## AUDIO PHASES (Unchanged from v13)
+## ============================================================================
+
+AUDIO_PHASES:
+  note: "Phase 8 and Phase 9 are UNCHANGED from v13"
+
+  PHASE_8:
+    name: "Audio Generation"
+    version: "13.0.0"
+    port: 3465
+    spec: "apml/phases/phase-audio-generation.apml"
+
+    endpoints:
+      plan:
+        method: "POST /plan"
+        description: "Count missing audio"
+
+      generate:
+        method: "POST /generate"
+        description: "Generate TTS, insert to course_audio"
+
+      inventory:
+        method: "GET /inventory/:courseCode"
+        description: "Get audio inventory summary"
+
+  PHASE_9:
+    name: "Manifest Compilation"
+    version: "13.0.0"
+    port: 3466
+
+    endpoints:
+      compile:
+        method: "POST /compile"
+        description: "Compile manifest from Supabase"
+
+      validate:
+        method: "GET /validate/:courseCode"
+        description: "Check 100% audio coverage"
+
+## ============================================================================
+## PORT ASSIGNMENTS (v14)
+## ============================================================================
+
+PORTS:
+  active:
+    3456: "Orchestrator (proxy hub)"
+    3465: "Phase 8 - Audio Generation"
+    3466: "Phase 9 - Manifest Compilation"
+    3470: "Production API (QA + WebSocket)"
+    3471: "Course Builder API"
+
+  deprecated:
+    3455: "Phase 0 - Language Brief (ARCHIVED)"
+    3457: "Phase 1 - Translation (ARCHIVED)"
+    3458: "Phase 2 - Conflict Resolution (ARCHIVED)"
+    3459: "Phase 3 - Basket Generation (ARCHIVED)"
+
+## ============================================================================
+## SERVICES TABLE (PM2)
+## ============================================================================
+
+PM2_SERVICES:
+  active:
+    - name: "orchestrator"
+      port: 3456
+      script: "services/orchestration/orchestrator.cjs"
+
+    - name: "production-api"
+      port: 3470
+      script: "services/production-api.cjs"
+
+    - name: "phase8-audio"
+      port: 3465
+      script: "services/phases/phase8-audio-v13.cjs"
+
+    - name: "phase9-manifest"
+      port: 3466
+      script: "services/phases/phase9-manifest-compiler.cjs"
+
+    - name: "course-builder"
+      port: 3471
+      script: "services/course-builder-api.cjs"
+
+  deprecated:
+    - name: "phase1-translation"
+      reason: "Replaced by Course Builder"
+    - name: "phase2-conflict"
+      reason: "Replaced by Course Builder"
+    - name: "phase3-basket"
+      reason: "Replaced by Course Builder"
+
+## ============================================================================
+## WORKFLOW COMPARISON
+## ============================================================================
+
+WORKFLOW_COMPARISON:
+  v13_workflow:
+    description: "Multi-phase orchestration"
+    steps:
+      1: "Generate language brief (Phase 0)"
+      2: "Spawn Phase 1 agent for translation + LEGO extraction"
+      3: "Spawn Phase 2 agent for conflict resolution"
+      4: "Spawn Phase 3 masters/workers for basket generation"
+      5: "Monitor via Agent Swimlane dashboard"
+      6: "Collect outputs, resolve conflicts"
+      7: "Generate audio (Phase 8)"
+      8: "Compile manifest (Phase 9)"
+
+  v14_workflow:
+    description: "Direct agent submission"
+    steps:
+      1: "Agent reads course-builder brief (methodology examples)"
+      2: "Agent calls POST /api/seed/complete for each seed"
+      3: "API validates atomically, inserts to Supabase"
+      4: "Repeat for all seeds"
+      5: "Generate audio (Phase 8)"
+      6: "Compile manifest (Phase 9)"
+
+    benefits:
+      - "No orchestration overhead"
+      - "Agent retains context for entire seed"
+      - "Atomic validation catches errors immediately"
+      - "Simple recovery (check /api/stats, continue from next seed)"
+
+## ============================================================================
+## SUMMARY
+## ============================================================================
+
+SUMMARY:
+  version: "14.0.0"
+  date: "2026-01-15"
+
+  major_change: |
+    Phases 0-3 consolidated into Course Builder API.
+    Agent learns methodology from examples, submits directly via curl.
+
+  active_services:
+    - "Orchestrator (3456)"
+    - "Course Builder API (3471)"
+    - "Phase 8 Audio (3465)"
+    - "Phase 9 Manifest (3466)"
+    - "Production API (3470)"
+
+  archived:
+    - "Phase 0-3 servers"
+    - "Agent Swimlane monitor"
+    - "Master/Worker orchestration"
+
+  methodology:
+    location:
+      - ".claude/commands/ssi-learner-pattern.md"
+      - ".claude/commands/ssi-decompose-seed.md"
+      - ".claude/commands/ssi-build-phrases.md"
+    principle: "Learn by example, not by rules"
+
+## ============================================================================
+## GENERATED: 2026-01-15
+## APML v14.0.0 - Course Builder Consolidation
+## ============================================================================

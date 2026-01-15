@@ -1,47 +1,37 @@
 <template>
   <div class="agent-monitor-page">
-    <AgentSwimlane
-      v-if="courseCode"
-      :course-code="courseCode"
-      :poll-interval="3000"
-    />
-
-    <!-- No course selected state -->
-    <div v-else class="no-course">
-      <div class="no-course-content">
-        <div class="no-course-icon">
+    <div class="deprecated-notice">
+      <div class="deprecated-content">
+        <div class="deprecated-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-6v6m18-6v6"/>
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
           </svg>
         </div>
-        <h2>Agent Swimlane Monitor</h2>
-        <p>Select a course to view agent activity</p>
+        <h2>Agent Monitor Deprecated</h2>
+        <p class="deprecated-message">
+          This feature has been replaced by the <strong>Course Builder</strong> workflow in APML v14.
+        </p>
 
-        <div class="course-selector">
-          <label>Course Code</label>
-          <div class="input-row">
-            <input
-              v-model="inputCourseCode"
-              type="text"
-              placeholder="e.g., zho_for_eng"
-              @keyup.enter="navigateToCourse"
-            />
-            <button @click="navigateToCourse" :disabled="!inputCourseCode">
-              Monitor
-            </button>
-          </div>
+        <div class="info-box">
+          <h3>What Changed</h3>
+          <p>
+            Phases 0-3 (translation, conflict resolution, basket generation) have been
+            consolidated into a single <code>Course Builder API</code>.
+          </p>
+          <ul>
+            <li>Agent submits seeds directly via <code>POST /api/seed/complete</code></li>
+            <li>No master/worker orchestration needed</li>
+            <li>Progress tracked via <code>GET /api/stats/:courseCode</code></li>
+          </ul>
         </div>
 
-        <div class="recent-courses" v-if="recentCourses.length">
-          <span class="recent-label">Recent:</span>
-          <button
-            v-for="course in recentCourses"
-            :key="course"
-            class="recent-course"
-            @click="inputCourseCode = course; navigateToCourse()"
-          >
-            {{ course }}
-          </button>
+        <div class="actions">
+          <router-link to="/" class="btn btn-primary">
+            Return to Dashboard
+          </router-link>
+          <router-link to="/production" class="btn btn-secondary">
+            Production Suite
+          </router-link>
         </div>
       </div>
     </div>
@@ -49,33 +39,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import AgentSwimlane from '../components/AgentSwimlane.vue'
-
-const route = useRoute()
-const router = useRouter()
-
-const courseCode = computed(() => route.params.courseCode || '')
-const inputCourseCode = ref('')
-const recentCourses = ref([])
-
-function navigateToCourse() {
-  if (inputCourseCode.value) {
-    // Save to recent courses
-    const recent = JSON.parse(localStorage.getItem('recentAgentMonitorCourses') || '[]')
-    if (!recent.includes(inputCourseCode.value)) {
-      recent.unshift(inputCourseCode.value)
-      localStorage.setItem('recentAgentMonitorCourses', JSON.stringify(recent.slice(0, 5)))
-    }
-
-    router.push(`/monitor/${inputCourseCode.value}`)
-  }
-}
-
-onMounted(() => {
-  recentCourses.value = JSON.parse(localStorage.getItem('recentAgentMonitorCourses') || '[]')
-})
+// v14: AgentSwimlane component has been deprecated
+// The Course Builder workflow doesn't use master/worker orchestration
 </script>
 
 <style scoped>
@@ -84,7 +49,7 @@ onMounted(() => {
   background: #0a0f1a;
 }
 
-.no-course {
+.deprecated-notice {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -93,29 +58,29 @@ onMounted(() => {
   background: linear-gradient(180deg, #0a0f1a 0%, #0f172a 100%);
 }
 
-.no-course-content {
+.deprecated-content {
   text-align: center;
-  max-width: 400px;
+  max-width: 500px;
 }
 
-.no-course-icon {
+.deprecated-icon {
   width: 4rem;
   height: 4rem;
   margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #10b981 0%, rgba(16, 185, 129, 0.4) 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, rgba(245, 158, 11, 0.4) 100%);
   border-radius: 1rem;
 }
 
-.no-course-icon svg {
+.deprecated-icon svg {
   width: 2rem;
   height: 2rem;
   color: #0a0f1a;
 }
 
-.no-course-content h2 {
+.deprecated-content h2 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #f1f5f9;
@@ -123,101 +88,93 @@ onMounted(() => {
   letter-spacing: 0.05em;
 }
 
-.no-course-content p {
-  color: #64748b;
-  font-size: 0.875rem;
+.deprecated-message {
+  color: #94a3b8;
+  font-size: 1rem;
   margin: 0 0 2rem 0;
 }
 
-.course-selector {
-  text-align: left;
+.deprecated-message strong {
+  color: #10b981;
 }
 
-.course-selector label {
-  display: block;
-  font-size: 0.6875rem;
+.info-box {
+  text-align: left;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-box h3 {
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  color: #f59e0b;
+  margin: 0 0 0.75rem 0;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-box p {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 1.25rem;
   color: #64748b;
+  font-size: 0.8125rem;
+}
+
+.info-box li {
   margin-bottom: 0.5rem;
 }
 
-.input-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.input-row input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 0.5rem;
-  color: #f1f5f9;
-  font-size: 0.875rem;
+.info-box code {
+  background: #0f172a;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
   font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  color: #10b981;
 }
 
-.input-row input:focus {
-  outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-}
-
-.input-row input::placeholder {
-  color: #475569;
-}
-
-.input-row button {
-  padding: 0.75rem 1.5rem;
-  background: #10b981;
-  border: none;
-  border-radius: 0.5rem;
-  color: #0a0f1a;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.input-row button:hover:not(:disabled) {
-  background: #34d399;
-}
-
-.input-row button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.recent-courses {
-  margin-top: 1.5rem;
+.actions {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
 }
 
-.recent-label {
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-.recent-course {
-  padding: 0.375rem 0.75rem;
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 0.375rem;
-  color: #94a3b8;
-  font-size: 0.75rem;
-  font-family: 'SF Mono', Monaco, monospace;
-  cursor: pointer;
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
   transition: all 0.2s;
 }
 
-.recent-course:hover {
-  border-color: #10b981;
-  color: #10b981;
+.btn-primary {
+  background: #10b981;
+  color: #0a0f1a;
+}
+
+.btn-primary:hover {
+  background: #34d399;
+}
+
+.btn-secondary {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #94a3b8;
+}
+
+.btn-secondary:hover {
+  border-color: #475569;
+  color: #f1f5f9;
 }
 </style>

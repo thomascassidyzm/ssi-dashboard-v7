@@ -107,13 +107,14 @@ const props = defineProps({
 
 defineEmits(['toggle'])
 
-// Phase display config
+// Phase display config (v14 - Course Builder consolidation)
 const phaseLabels = {
-  phase1: { title: 'Phase 1', subtitle: 'Translation + LEGO Extraction' },
-  phase2: { title: 'Phase 2', subtitle: 'Conflict Resolution' },
-  phase3: { title: 'Phase 3', subtitle: 'Basket Generation' },
-  audio: { title: 'Audio', subtitle: 'TTS Generation' },
-  manifest: { title: 'Manifest', subtitle: 'Course Compilation' }
+  courseBuilder: { title: 'Course Builder', subtitle: 'Seeds + LEGOs + Phrases' },
+  phase1: { title: 'Phase 1', subtitle: 'Deprecated - use Course Builder' },
+  phase2: { title: 'Phase 2', subtitle: 'Deprecated - use Course Builder' },
+  phase3: { title: 'Phase 3', subtitle: 'Deprecated - use Course Builder' },
+  audio: { title: 'Phase 8', subtitle: 'Audio Generation (TTS)' },
+  manifest: { title: 'Phase 9', subtitle: 'Manifest Compilation' }
 }
 
 // Computed

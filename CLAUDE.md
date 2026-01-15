@@ -1,20 +1,32 @@
 # CLAUDE.md - Agent Onboarding Guide
 
-> **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project without creating chaos.
+> **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project (Popty) without creating chaos.
 
 ## ⚠️ CRITICAL RULES
+
+### **APML v14.0 - Course Builder Architecture**
+
+**v14 Major Change (January 2026):** Phases 0-3 consolidated into Course Builder API.
+
+Content creation is now a single API endpoint: `POST /api/seed/complete` (port 3471)
+- Agent learns methodology from examples (Welsh/Spanish patterns)
+- API validates atomically: tiling, ZUT, vocabulary, phrase counts
+- See skills: `.claude/commands/ssi-learner-pattern.md`, `ssi-decompose-seed.md`
 
 ### **READ THE SCHEMA BEFORE MODIFYING DATABASE CODE**
 
 Before writing any code that touches the database, you MUST read:
-- `apml/core/audio-registry-v13.apml` - The canonical database schema (v13)
+- `apml/core/audio-registry-v13.apml` - The canonical database schema
 
-**v13 Key Tables (January 2026):**
+**Key Tables:**
 - `courses` - Course metadata with `voice_config` JSONB
+- `course_seeds` - Canonical seeds per course
+- `course_legos` - LEGOs extracted from seeds
+- `course_practice_phrases` - Practice phrases per LEGO
 - `course_audio` - Audio owned by courses (flat, no joins)
 - `shared_audio` - Encouragements/instructions only
 
-**v13 Principles:**
+**Database Principles:**
 - Course owns its audio directly (no texts/audio_files indirection)
 - S3 is flat: `{uuid}.mp3` - all metadata in Supabase
 - Roles: `known`, `target1`, `target2`, `presentation`
@@ -85,7 +97,7 @@ Solve problems autonomously and proceed to the next workflow step without human 
 
 ---
 
-## 🌐 ECOSYSTEM CONTEXT (December 2025)
+## 🌐 ECOSYSTEM CONTEXT (January 2026)
 
 This dashboard (Popty) is the **content creation** half of the SSi system. The other half is the **learning app** that delivers content to learners.
 
@@ -101,54 +113,62 @@ This dashboard (Popty) is the **content creation** half of the SSi system. The o
 │  • Phase 8: Audio generation (TTS)       • player-vue: Demo UI          │
 │  • Phase 9: Manifest compilation         • apps/web: PWA (TODO)         │
 │  • Production API: QA, recording         • apps/schools-dashboard       │
-│  • Database-first writes ✅               • Database-first reads (TODO)  │
+│  • DATABASE-ONLY (Supabase) ✅            • Database-first reads (TODO)  │
 │                                                                          │
 │  Dashboard → Supabase/S3 → Learning App → Learner                       │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### TRANSITION STATE
+### IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
 
-We are migrating from **manifest-first** to **database-first** architecture:
+**COURSES ARE STORED IN SUPABASE, NOT JSON FILES.**
 
-| Aspect | Old (Manifest-first) | New (Database-first) |
-|--------|---------------------|---------------------|
-| Phase outputs | JSON files only | Supabase + JSON (dual-write) |
-| Manifest compilation | Read JSON files | Query Supabase |
-| Content updates | Recompile + rebuild app | Hot-swap in database |
-| Learning app | Load manifest.json | Query Supabase directly |
+The migration from manifest-first to database-first is COMPLETE for course data:
+- All course content (seeds, LEGOs, practice phrases) lives in Supabase
+- JSON files (lego_pairs.json, lego_baskets.json) are LEGACY ARTIFACTS only
+- Never read course data from JSON files - always query Supabase
+- The manifest-generator.cjs generates manifests ON-DEMAND from database
 
-**Current Status (Dec 2025):**
-- ✅ Phase 1-3 services write to Supabase (dual-write with JSON)
+| Data Type | Source of Truth | JSON Status |
+|-----------|-----------------|-------------|
+| Seeds | `course_seeds` table | DEPRECATED |
+| LEGOs | `course_legos` table | DEPRECATED |
+| Practice Phrases | `course_practice_phrases` table | DEPRECATED |
+| Audio | `course_audio` table | DEPRECATED |
+| Manifest | Generated from Supabase | Output only |
+
+**Current Status (Jan 2026):**
+- ✅ All course data stored in Supabase (DATABASE-ONLY)
 - ✅ `course-data-service.cjs` provides unified database operations
-- ✅ Manifest generator queries Supabase for audio UUIDs
+- ✅ `manifest-generator.cjs` generates manifests from database
+- ✅ `course-builder-api.cjs` writes directly to Supabase
+- ✅ Phase 8 & 9 read from Supabase, not JSON files
 - 🔄 Learning app still uses manifest (Supabase integration pending)
-- 📋 PWA with cache-as-you-go planned for community courses
 
-### Backwards Compatibility Strategy
+### Feature Flags (LEGACY - defaults to database)
 
-1. **Dual-write**: All phase outputs go to BOTH Supabase AND JSON files
-2. **DB-first reads**: New code reads from Supabase, falls back to JSON
-3. **Manifest still generated**: Legacy native app requires it
-4. **Feature flags**: `USE_DATABASE_WRITES`, `USE_DATABASE_READS` in `.env`
+Feature flags exist for backwards compatibility but default to DATABASE mode:
+- `USE_DATABASE_WRITES=true` (default) - Write to Supabase
+- `USE_DATABASE_READS=true` (default) - Read from Supabase
+
+Setting these to `false` is NOT RECOMMENDED and only for debugging.
 
 ---
 
 ## 🎯 Project Overview
 
-**SSi Dashboard v7 Clean** is a language learning pipeline that generates and manages course content through multiple processing phases. You're working on a system that transforms seed phrases into complete language courses with LEGO-based recombination for maximum learning efficiency.
+**SSi Dashboard v7 Clean (Popty)** is a language learning pipeline that generates and manages course content. You're working on a system that transforms seed phrases into complete language courses with LEGO-based recombination for maximum learning efficiency.
 
 ### Quick Facts
-- **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Audio Generation → Manifest Compilation (APML v13)
+- **Primary Language**: Any → builds courses for language learners
+- **Pipeline (v14)**: Course Builder → Audio Generation → Manifest Compilation
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
-- **Scale**: 668 seeds per course, thousands of LEGO components
-- **Architecture**: Multi-agent orchestration with validation gates
-- **Storage**: S3 for files (ssi-audio-stage, eu-west-1), **Supabase for audio registry**
-- **Audio Key**: `voiceId:lang:role:cadence:text` → UUID v5 (RFC 4122) - see `services/uuid-v11.cjs`
-- **Flow**: Audio-first (generate audio BEFORE manifest compilation)
-- **Orchestrator**: Port 3456
+- **Scale**: 260+ seeds per course, thousands of LEGO components
+- **Architecture**: Course Builder API with atomic validation
+- **Storage**: Supabase for content + audio registry, S3 for audio files
+- **Flow**: Content → Audio → Manifest (database-first)
+- **Key Services**: Course Builder (3471), Audio (3465), Manifest (3466)
 
 ---
 
@@ -215,7 +235,7 @@ Orchestration, automation, and processing services.
 ```
 services/
 ├── orchestration/       # Multi-agent coordination (Port 3456)
-├── phases/             # Phase servers (APML v13)
+├── phases/             # Phase 8-9 servers + legacy (APML v14)
 │   ├── phase1-translation/       # Port 3457: Translation + LEGO Extraction
 │   ├── phase1-lego-extraction/   # Port 3458: Conflict Resolution (Phase 2)
 │   ├── phase3-basket-generation/ # Port 3459: Basket Generation (Phase 3)
@@ -274,18 +294,16 @@ If you're generating files, verify they're in gitignored directories.
 
 APML is our custom format for language learning content. Key concepts:
 
-### **Phase Outputs (APML v13)**
-- **Phase 1 (Translation + LEGO Extraction)**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
-- **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs with `new: true/false` flags (SSoT)
-- **Phase 3 (Basket Generation)**: `lego_baskets.json` - Practice baskets with LEGO Debut cycle
-- **Audio Generation (Script)**: Supabase `audio_samples` table + S3 `mastered/{uuid}.mp3` (Audio-first!)
-- **Manifest Compilation (Script)**: `course_manifest.json` - Compiled LAST, referencing existing audio UUIDs
+### **Pipeline Outputs (APML v14)**
+- **Course Builder**: Writes directly to Supabase tables (`course_seeds`, `course_legos`, `course_practice_phrases`)
+- **Audio Generation (Phase 8)**: Supabase `course_audio` table + S3 `mastered/{uuid}.mp3`
+- **Manifest Compilation (Phase 9)**: `course_manifest.json` - Compiled LAST, referencing existing audio UUIDs
 
-### **v13 Key Changes**
-- **Audio-first**: Generate audio BEFORE manifest (not after)
-- **Manifest Pruning**: LEGOs with `new: false` don't get introduction_items (already introduced earlier)
-- **Deterministic UUID**: `hash(voice_id|text|lang|role|cadence)` ensures same phrase = same UUID
-- **Cadence Rules**: source=natural, target=slow
+### **v14 Key Changes**
+- **Course Builder consolidation**: Phases 0-3 replaced by single `/api/seed/complete` endpoint
+- **Methodology by example**: Agent learns from Welsh/Spanish patterns in skills
+- **Atomic validation**: Tiling, ZUT, vocabulary constraints checked in one call
+- **Database-first**: All content in Supabase, JSON files deprecated
 
 ### **LEGO Types**
 - **A-type (Atomic)**: Single words (e.g., "want" / "quiero")
@@ -303,19 +321,18 @@ Language is broken into reusable "LEGO" pieces:
 - **LUT** (Look-Up Tables): Higher-order patterns
 - **Recombination**: LEGOs combine to form new phrases
 
-### **Phase Servers**
-A "Phase" = one server = one prompt = one agent job
+### **Services (v14)**
 
-| Port | Phase | Service | Endpoints |
-|------|-------|---------|-----------|
-| 3456 | - | Orchestrator | Multi-agent coordination |
-| 3457 | 1 | Translation + LEGO Extraction | POST /translate, GET /status, GET /health |
-| 3458 | 2 | Conflict Resolution | POST /resolve, GET /status, GET /health |
-| 3459 | 3 | Basket Generation | POST /generate, GET /status, GET /health |
-| 3464 | - | Legacy Manifest (deprecated) | - |
-| **3465** | **8** | **Audio Generator** | **POST /generate, POST /plan, GET /status/:courseCode, DELETE /cancel/:courseCode, GET /health** |
-| **3466** | **9** | **Manifest Compiler** | **POST /compile, GET /validate/:courseCode, GET /status/:courseCode, GET /health** |
-| **3470** | **-** | **Production API** | **See detailed list above (QA + WebSocket)** |
+| Port | Service | Status | Endpoints |
+|------|---------|--------|-----------|
+| 3456 | Orchestrator | Active | Proxy hub for all services |
+| **3471** | **Course Builder** | **Active** | **POST /api/seed/complete, GET /api/stats/:courseCode** |
+| 3465 | Audio Generator | Active | POST /generate, POST /plan, GET /status/:courseCode |
+| 3466 | Manifest Compiler | Active | POST /compile, GET /validate/:courseCode |
+| 3470 | Production API | Active | QA workflow + WebSocket |
+| ~~3457~~ | ~~Translation~~ | Deprecated | Replaced by Course Builder |
+| ~~3458~~ | ~~Conflict Resolution~~ | Deprecated | Replaced by Course Builder |
+| ~~3459~~ | ~~Basket Generation~~ | Deprecated | Replaced by Course Builder |
 
 ### **Environment Variables**
 
@@ -337,15 +354,15 @@ AWS_REGION=eu-west-1
 
 ### **Service Mesh URLs**
 
-Services discover each other via environment variables (auto-configured by `start-automation.cjs`):
+Services discover each other via environment variables:
 
 - `ORCHESTRATOR_URL` - Main orchestrator (port 3456)
-- `PHASE1_TRANSLATION_URL` - Translation service (port 3457)
-- `PHASE1_LEGO_URL` - LEGO extraction (port 3458)
-- `PHASE3_URL` - Basket generation (port 3459)
+- `COURSE_BUILDER_URL` - Course Builder API (port 3471)
 - `PHASE8_URL` - Audio generation (port 3465)
 - `PHASE9_URL` - Manifest compilation (port 3466)
 - `PRODUCTION_API_URL` - QA workflow API (port 3470)
+
+**Deprecated:** `PHASE1_TRANSLATION_URL`, `PHASE1_LEGO_URL`, `PHASE3_URL` - use Course Builder instead
 
 **Default:** All services run on localhost. Override for ngrok tunnels or remote services.
 
@@ -540,6 +557,43 @@ POST /api/production/internal/emit                       # Internal WebSocket em
 
 ⚠️ **Remember**: Audio generation costs money (TTS API calls). Always require user approval.
 
+### **5. Course Builder API (Agent Content Submission)**
+
+📖 **Full spec**: `apml/services/course-builder-api.apml`
+
+The Course Builder API provides a bulletproof interface for LLM agents to submit course content.
+
+**Golden Path - POST /api/seed/complete (Port 3471)**
+```bash
+# Submit a complete seed with translation + LEGOs + phrases atomically
+POST /api/seed/complete
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 42,
+  "known_text": "I want to learn Chinese",
+  "target_text": "我想学中文",
+  "legos": [
+    {"idx": 1, "type": "A", "known": "I", "target": "我", "phrases": [...]},
+    {"idx": 2, "type": "M", "known": "want to learn", "target": "想学",
+     "components": [{"known": "want", "target": "想"}, {"known": "learn", "target": "学"}],
+     "phrases": [...]}
+  ]
+}
+```
+
+**Validation Gates (all checked BEFORE any inserts):**
+- **Tiling**: Seed translation must be constructable from LEGO targets
+- **ZUT Conflict**: Same known → different target = REJECT with suggestions
+- **Vocabulary**: Phrases only use introduced vocabulary
+- **Phrase Count**: Minimum phrases per LEGO based on position
+
+**Automatic Features:**
+- **M-LEGO Build-up**: Auto-generates component→LEGO→phrases structure
+- **Duplicate Detection**: Same known+target = `is_new: false`, skip baskets
+- **Particle Handling**: Chinese particles (了, 着, 过) skipped in build-up
+
+**On Failure**: Nothing inserted, clear error message with fix suggestions.
+
 ---
 
 ## 🔀 Git Workflow & Recent Changes
@@ -692,13 +746,12 @@ Before starting work, verify:
 - [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `README.md`
 - [ ] **I've checked recent commits** (`git log --oneline -10`)
 - [ ] **I understand what changed recently** (cleanup? new tools?)
-- [ ] I understand the APML v13 pipeline (Phase 1 → Phase 2 → Phase 3 → Audio → Manifest)
+- [ ] I understand the APML v14 pipeline (Course Builder → Audio → Manifest)
+- [ ] I know about the methodology skills in `.claude/commands/`
 - [ ] I know where to create files (NOT in root!)
 - [ ] I've checked `.gitignore` for file placement
-- [ ] I have access to `tools/` for shared utilities
 - [ ] I understand validation gates and quality standards
 - [ ] I won't commit experimental scripts to git
-- [ ] I'll document any new tools I create
 
 ---
 
@@ -741,6 +794,6 @@ You're doing well if:
 
 ---
 
-*Last updated: 2025-12-13*
-*APML: v13 | Pipeline: v2.0 (Supabase + Audio-first)*
-*Status: TRANSITION - Manifest-first → Database-first*
+*Last updated: 2026-01-15*
+*APML: v14.0 | Pipeline: v3.0 (Course Builder + Supabase)*
+*Status: DATABASE-ONLY - All course data in Supabase (JSON files deprecated)*
