@@ -40,7 +40,8 @@ export const useProductionStore = defineStore('production', () => {
   const currentCourseCode = ref(null)
   const courseManifest = ref(null)
   const courseInfo = ref(null) // Course metadata including status
-  const sampleFlags = ref({})
+  const sampleFlags = ref({}) // Legacy - deprecated
+  const audioFlags = ref({ flags: [], stats: {} }) // NEW audio_flags system
   const audioMetadata = ref({})
 
   // Loading states
@@ -150,66 +151,34 @@ export const useProductionStore = defineStore('production', () => {
     }
   })
 
-  // Computed: blockers
+  // Computed: blockers (uses NEW audio_flags system)
   const blockers = computed(() => {
     const blockersArray = []
-    const samples = sampleFlags.value.samples || {}
+    const flags = audioFlags.value.flags || []
+    const stats = audioFlags.value.stats || {}
 
-    // Count samples needing human recording
-    const humanNeeded = Object.values(samples).filter(
-      s => s.status === 'flagged_human_needed'
-    ).length
-    if (humanNeeded > 0) {
+    // Count audio flagged for regeneration (from new audio_flags table)
+    const flaggedCount = stats.flagged || flags.filter(f => f.status === 'flagged').length
+    if (flaggedCount > 0) {
       blockersArray.push({
-        id: 'human_recording',
-        severity: 'high',
-        icon: '🎤',
-        count: humanNeeded,
-        message: `${humanNeeded} samples flagged for human recording`,
-        suggestedAction: 'Create Recording Queue',
-        action: 'createRecordingQueue'
-      })
-    }
-
-    // Count samples needing TTS regeneration
-    const ttsRegen = Object.values(samples).filter(
-      s => s.status === 'flagged_regen_tts'
-    ).length
-    if (ttsRegen > 0) {
-      blockersArray.push({
-        id: 'tts_regen',
+        id: 'audio_flagged',
         severity: 'medium',
-        icon: '🔄',
-        count: ttsRegen,
-        message: `${ttsRegen} samples flagged for TTS regeneration`,
-        suggestedAction: 'Send to Audio Pipeline',
-        action: 'sendToAudioPipeline'
-      })
-    }
-
-    // Count samples in review
-    const needsReview = Object.values(samples).filter(
-      s => s.status === 'needs_review'
-    ).length
-    if (needsReview > 0) {
-      blockersArray.push({
-        id: 'needs_review',
-        severity: 'low',
         icon: '👀',
-        count: needsReview,
-        message: `${needsReview} samples awaiting review`,
-        suggestedAction: 'Review Samples',
-        action: 'reviewSamples'
+        count: flaggedCount,
+        message: `${flaggedCount} audio files flagged for review`,
+        suggestedAction: 'Review in Script Viewer',
+        action: 'reviewFlaggedAudio'
       })
     }
 
     return blockersArray
   })
 
-  // Computed: pipeline stages
+  // Computed: pipeline stages (uses NEW audio_flags system)
   const pipelineStagesComputed = computed(() => {
-    const samples = sampleFlags.value.samples || {}
-    const total = Object.keys(samples).length
+    const flags = audioFlags.value.flags || []
+    const stats = audioFlags.value.stats || {}
+    const flaggedCount = stats.flagged || flags.filter(f => f.status === 'flagged').length
 
     const stages = [
       {
@@ -217,10 +186,12 @@ export const useProductionStore = defineStore('production', () => {
         name: 'QA Review',
         icon: '📄',
         route: 'ScriptViewer',
-        progress: progressStats.value.percentComplete,
-        status: 'in_progress',
-        count: progressStats.value.approved,
-        total: total,
+        progress: audioCourseStats.value.total > 0
+          ? Math.round((audioCourseStats.value.existing / audioCourseStats.value.total) * 100)
+          : 0,
+        status: flaggedCount > 0 ? 'in_progress' : 'idle',
+        count: flaggedCount,
+        total: flaggedCount,
         lastActivity: 'Active now'
       },
       {
@@ -243,19 +214,20 @@ export const useProductionStore = defineStore('production', () => {
         route: 'RecordingStudioProduction',
         progress: 0,
         status: 'pending',
-        count: samplesByStatus.value.in_recording?.length || 0,
-        total: (samplesByStatus.value.flagged_human_needed?.length || 0) + (samplesByStatus.value.in_recording?.length || 0),
+        count: 0,
+        total: 0,
         lastActivity: '2 hours ago'
       },
       {
         id: 'final_review',
         name: 'Final Review',
         icon: '🔊',
-        route: 'SamplesBrowser',
+        route: 'ScriptViewer',
+        routeQuery: { filter: 'flagged' },
         progress: 0,
-        status: (samplesByStatus.value.needs_review?.length || 0) > 0 ? 'needs_attention' : 'idle',
-        count: samplesByStatus.value.needs_review?.length || 0,
-        total: samplesByStatus.value.needs_review?.length || 0,
+        status: flaggedCount > 0 ? 'needs_attention' : 'idle',
+        count: flaggedCount,
+        total: flaggedCount,
         lastActivity: '30 minutes ago'
       }
     ]
@@ -294,9 +266,10 @@ export const useProductionStore = defineStore('production', () => {
       const headers = getApiHeaders()
 
       // Fetch course data - all requests are optional, we'll use what we get
-      const [manifestRes, flagsRes, metadataRes] = await Promise.all([
+      const [manifestRes, flagsRes, audioFlagsRes, metadataRes] = await Promise.all([
         fetch(`${baseUrl}/api/production/${courseCode}/manifest`, { headers }).catch(() => null),
         fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }).catch(() => null),
+        fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers }).catch(() => null),
         fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null)
       ])
 
@@ -328,7 +301,8 @@ export const useProductionStore = defineStore('production', () => {
       }
 
       courseManifest.value = manifestData
-      sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} }
+      sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} } // Legacy
+      audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
       // Load accurate pipeline stats from /plan endpoint
@@ -781,7 +755,8 @@ export const useProductionStore = defineStore('production', () => {
     currentCourseCode,
     courseManifest,
     courseInfo,
-    sampleFlags,
+    sampleFlags, // Legacy - deprecated
+    audioFlags, // NEW audio_flags system
     audioMetadata,
     generationQueue,
     jobStatus,

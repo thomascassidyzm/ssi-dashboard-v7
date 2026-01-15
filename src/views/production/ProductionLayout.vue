@@ -37,9 +37,9 @@
             Recording
           </router-link>
           <router-link
-            :to="`/production/${courseCode}/qa`"
+            :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
             class="tab-item"
-            :class="{ active: isActiveRoute('SamplesBrowser') }"
+            :class="{ active: isActiveRoute('ScriptViewer') && $route.query.filter === 'flagged' }"
           >
             QA
           </router-link>

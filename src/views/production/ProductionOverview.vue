@@ -237,10 +237,11 @@ function handleResolveBlocker(blocker) {
       })
       break
     case 'reviewSamples':
+    case 'reviewFlaggedAudio':
       router.push({
-        name: 'SamplesBrowser',
+        name: 'ScriptViewer',
         params: { courseCode: props.courseCode },
-        query: { filter: 'needs_review' }
+        query: { filter: 'flagged' }
       })
       break
   }
@@ -259,9 +260,9 @@ function handleQuickAction(actionId) {
       break
     case 'review_samples':
       router.push({
-        name: 'SamplesBrowser',
+        name: 'ScriptViewer',
         params: { courseCode: props.courseCode },
-        query: { filter: 'needs_review' }
+        query: { filter: 'flagged' }
       })
       break
     case 'record_human':

@@ -16,6 +16,9 @@ import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
+
+// Documentation Layout (v14 nested navigation)
+import DocsLayout from '../views/docs/DocsLayout.vue'
 import CourseValidator from '../views/CourseValidator.vue'
 import CourseProgress from '../views/CourseProgress.vue'
 // DEPRECATED: RecordingStudio - use /autocue (AutocueStudio) instead
@@ -45,9 +48,7 @@ const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
 const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
 const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
-// Production Suite components
-import SamplesBrowser from '../components/production/qa/SamplesBrowser.vue'
-// Note: Legacy v1 components have been deprecated and removed
+// Note: SamplesBrowser removed - QA now uses ScriptViewer with filter=flagged
 
 
 const routes = [
@@ -60,11 +61,62 @@ const routes = [
     component: MissionControlHub,
     meta: { title: 'Mission Control' }
   },
+  // ============================================
+  // Documentation Section (nested routes with shared layout)
+  // ============================================
   {
     path: '/docs',
-    name: 'DocsIndex',
-    component: () => import('../views/DocsIndex.vue'),
-    meta: { title: 'Documentation' }
+    component: DocsLayout,
+    children: [
+      {
+        path: '',
+        name: 'DocsIndex',
+        component: () => import('../views/DocsIndex.vue'),
+        meta: { title: 'Documentation' }
+      },
+      {
+        path: 'apml',
+        name: 'APMLSpec',
+        component: APMLSpec,
+        meta: { title: 'APML Specification' }
+      },
+      {
+        path: 'pedagogy',
+        name: 'Pedagogy',
+        component: Pedagogy,
+        meta: { title: 'Pedagogical Model' }
+      },
+      {
+        path: 'terminology',
+        name: 'TerminologyGlossary',
+        component: TerminologyGlossary,
+        meta: { title: 'Terminology Glossary' }
+      },
+      {
+        path: 'seeds',
+        name: 'CanonicalSeeds',
+        component: CanonicalSeeds,
+        meta: { title: 'Canonical Seeds' }
+      },
+      {
+        path: 'canonical',
+        name: 'CanonicalContent',
+        component: CanonicalContent,
+        meta: { title: 'Canonical Content' }
+      },
+      {
+        path: 'pipeline',
+        name: 'ProcessOverview',
+        component: ProcessOverview,
+        meta: { title: 'Pipeline Overview' }
+      },
+      {
+        path: 'intelligence',
+        name: 'PhaseIntelligence',
+        component: PhaseIntelligence,
+        meta: { title: 'Phase Intelligence' }
+      }
+    ]
   },
 
   // ============================================
@@ -204,45 +256,14 @@ const routes = [
     component: UserManagement,
     meta: { title: 'User Management', requiresAuth: true, requiresAdmin: true }
   },
-  {
-    path: '/reference/overview',
-    name: 'ProcessOverview',
-    component: ProcessOverview
-  },
-  {
-    path: '/reference/seeds',
-    name: 'CanonicalSeeds',
-    component: CanonicalSeeds
-  },
-  {
-    path: '/reference/canonical',
-    name: 'CanonicalContent',
-    component: CanonicalContent,
-    meta: { title: 'Canonical Content' }
-  },
-  {
-    path: '/reference/apml',
-    name: 'APMLSpec',
-    component: APMLSpec
-  },
-  {
-    path: '/reference/terminology',
-    name: 'TerminologyGlossary',
-    component: TerminologyGlossary,
-    meta: { title: 'Terminology Glossary' }
-  },
-  {
-    path: '/reference/pedagogy',
-    name: 'Pedagogy',
-    component: Pedagogy,
-    meta: { title: 'Pedagogical Model' }
-  },
-  {
-    path: '/intelligence',
-    name: 'PhaseIntelligence',
-    component: PhaseIntelligence,
-    meta: { title: 'Phase Intelligence' }
-  },
+  // Legacy redirects for /reference/* routes → /docs/*
+  { path: '/reference/overview', redirect: '/docs/pipeline' },
+  { path: '/reference/seeds', redirect: '/docs/seeds' },
+  { path: '/reference/canonical', redirect: '/docs/canonical' },
+  { path: '/reference/apml', redirect: '/docs/apml' },
+  { path: '/reference/terminology', redirect: '/docs/terminology' },
+  { path: '/reference/pedagogy', redirect: '/docs/pedagogy' },
+  { path: '/intelligence', redirect: '/docs/intelligence' },
   // DEPRECATED: Skills route - feature not in use
   // {
   //   path: '/skills',
@@ -368,10 +389,12 @@ const routes = [
       },
       {
         path: 'qa',
-        name: 'SamplesBrowser',
-        component: SamplesBrowser,
-        props: true,
-        meta: { title: 'QA - Production Suite' }
+        name: 'SamplesBrowser', // Legacy name - redirects to ScriptViewer
+        redirect: to => ({
+          name: 'ScriptViewer',
+          params: { courseCode: to.params.courseCode },
+          query: { filter: 'flagged' }
+        })
       },
       {
         path: 'script',
