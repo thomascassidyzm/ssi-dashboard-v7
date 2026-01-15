@@ -186,6 +186,45 @@ The learner infers the particle 吗 from context (it makes questions).
 **You provide**: translation, decomposition, practice phrases
 **API handles**: build-up generation, validation, deduplication
 
+## LEARNER SCRIPT - UNDERSTAND THE PATTERN
+
+This is what the learner experiences. DEBUT phrases can ONLY use vocabulary introduced up to that point:
+
+\`\`\`
+ROUND 1 - S0001L01: "I want" → 我想
+  INTRO: I want → 我想
+  (No DEBUT phrases yet - nothing to combine with)
+
+ROUND 2 - S0001L02: "to speak" → 说
+  INTRO: to speak → 说
+  DEBUT-1: I want to speak → 我想说  ← combines L01 + L02
+
+ROUND 3 - S0001L03: "Chinese" → 中文
+  INTRO: Chinese → 中文
+  DEBUT-1: speak Chinese → 说中文  ← combines L02 + L03
+  DEBUT-2: I want to speak Chinese → 我想说中文  ← combines L01 + L02 + L03
+  REP #2: I want to speak → 我想说 (review)
+
+ROUND 4 - S0002L01: "to learn" → 学
+  INTRO: to learn → 学
+  DEBUT-1: learn Chinese → 学中文  ← uses L03
+  DEBUT-2: I want to learn → 我想学  ← uses L01
+  DEBUT-3: I want to learn Chinese → 我想学中文  ← uses L01 + L03
+  DEBUT-4: I want to learn to speak Chinese → 我想学说中文  ← uses L01 + L02 + L03
+  REP #3: speak Chinese → 说中文 (review)
+\`\`\`
+
+**KEY INSIGHT**: Each LEGO's phrases can ONLY use:
+- That LEGO itself
+- All LEGOs from earlier seeds (S0001..S(N-1))
+- Earlier LEGOs from the current seed (L01..L(M-1))
+
+S0001L01 has NO prior vocab → minimal phrases (just the LEGO itself)
+S0001L02 can use L01 → "I want to speak"
+S0001L03 can use L01, L02 → "I want to speak Chinese"
+
+**Generate phrases that follow this pattern!**
+
 ${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 
 ## Seed Source
