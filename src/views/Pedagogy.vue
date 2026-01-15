@@ -1,34 +1,28 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
-    <div class="max-w-5xl mx-auto">
-      <!-- Loading State -->
-      <div v-if="loading" class="flex items-center justify-center py-20">
-        <div class="text-center">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 mx-auto mb-4"></div>
-          <p class="text-slate-400">Loading documentation...</p>
-        </div>
+  <div class="pedagogy-view">
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Loading documentation...</p>
+    </div>
+
+    <!-- Content (Database or Fallback) -->
+    <template v-else>
+      <!-- Database Source Indicator (development only) -->
+      <div v-if="dataSource === 'database'" class="db-indicator">
+        <div class="db-dot"></div>
+        <p class="db-text">
+          Content loaded from database
+          <span v-if="document?.updated_at" class="db-updated"> - Last updated: {{ formatDate(document.updated_at) }}</span>
+        </p>
       </div>
 
-      <!-- Content (Database or Fallback) -->
-      <template v-else>
-        <!-- Database Source Indicator (development only) -->
-        <div v-if="dataSource === 'database'" class="bg-emerald-900/20 border border-emerald-600 rounded-lg p-3 mb-4 flex items-center gap-2">
-          <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
-          <p class="text-emerald-300 text-sm">
-            Content loaded from database
-            <span v-if="document?.updated_at" class="text-slate-400"> - Last updated: {{ formatDate(document.updated_at) }}</span>
-          </p>
-        </div>
-
-        <!-- Header -->
-        <div class="mb-8">
-          <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
-            &larr; Back to Dashboard
-          </router-link>
-          <h1 class="text-4xl font-bold text-emerald-400 mb-2">{{ title }}</h1>
-          <p class="text-slate-400">{{ subtitle }}</p>
-          <p class="text-sm text-slate-500 mt-2">{{ versionInfo }}</p>
-        </div>
+      <!-- Page Header (within DocsLayout) -->
+      <div class="page-header">
+        <h1 class="page-title">{{ title }}</h1>
+        <p class="page-subtitle">{{ subtitle }}</p>
+        <p class="page-meta">{{ versionInfo }}</p>
+      </div>
 
         <!-- Core Philosophy -->
         <div class="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border-2 border-emerald-500/50 rounded-lg p-6 mb-12">
@@ -347,7 +341,7 @@
           <div class="bg-blue-900/20 border border-blue-600 rounded-lg p-6 mb-6">
             <h3 class="text-blue-300 font-semibold mb-3 text-lg">The ZUT (Zero Uncertainty Test)</h3>
             <p class="text-slate-200 mb-4">
-              Also called "Functional Determinism" - the ZUT is the guiding principle for LEGO extraction in Phase 1 and basket generation in Phase 3.
+              Also called "Functional Determinism" - the ZUT is the guiding principle for LEGO extraction and basket generation in the Course Builder.
             </p>
             <div class="bg-slate-900 p-4 rounded">
               <p class="text-emerald-400 font-semibold mb-2">The Test:</p>
@@ -580,13 +574,12 @@
           <p>This document explains the <strong>"why"</strong> behind the system.</p>
           <p class="mt-2">
             For technical implementation details, see
-            <router-link to="/reference/terminology" class="text-emerald-400 hover:text-emerald-300">Terminology Glossary</router-link>
+            <router-link to="/docs/terminology" class="text-emerald-400 hover:text-emerald-300">Terminology Glossary</router-link>
             and
-            <router-link to="/reference/apml" class="text-emerald-400 hover:text-emerald-300">APML Specification</router-link>.
+            <router-link to="/docs/apml" class="text-emerald-400 hover:text-emerald-300">APML Specification</router-link>.
           </p>
         </div>
       </template>
-    </div>
   </div>
 </template>
 
@@ -639,3 +632,85 @@ onMounted(async () => {
   }
 })
 </script>
+
+<style scoped>
+.pedagogy-view {
+  padding: 2rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid transparent;
+  border-bottom-color: #10b981;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #94a3b8;
+}
+
+.db-indicator {
+  background: rgba(6, 78, 59, 0.2);
+  border: 1px solid #059669;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.db-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.db-text {
+  color: #6ee7b7;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.db-updated {
+  color: #94a3b8;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.page-meta {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+</style>

@@ -1,23 +1,15 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
-    <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
-          <span>←</span>
-          <span>Back to Dashboard</span>
-        </router-link>
-        <h1 class="text-3xl font-bold text-emerald-400">
-          Canonical Content
-        </h1>
-        <p class="mt-2 text-slate-400">
-          Language-agnostic source data for all SSi courses - the 3-parameter input model
-        </p>
-      </div>
-    </header>
+  <div class="canonical-content-view">
+    <!-- Page Header (within DocsLayout) -->
+    <div class="page-header">
+      <h1 class="page-title">Canonical Content</h1>
+      <p class="page-subtitle">
+        Language-agnostic source data for all SSi courses - the 3-parameter input model
+      </p>
+    </div>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="content-area">
 
       <!-- Overview -->
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 mb-8">
@@ -33,7 +25,7 @@
           </ol>
           <p>
             This architecture means we maintain a single source of truth for curriculum and motivational content,
-            which is then transformed by Phase 1 (Translation with LEGOs) into language-specific courses.
+            which is then transformed by the Course Builder API into language-specific courses.
           </p>
         </div>
       </div>
@@ -123,6 +115,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+// Page styles for DocsLayout integration
+
+
 const canonicalSeeds = ref([])
 const encouragements = ref({})
 const welcomes = ref({})
@@ -147,3 +142,29 @@ onMounted(async () => {
 
 console.log('🌱 Canonical Content Loaded')
 </script>
+
+<style scoped>
+.canonical-content-view {
+  padding: 2rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.content-area {
+  max-width: 100%;
+}
+</style>

@@ -1,23 +1,15 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
-    <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
-          <span>←</span>
-          <span>Back to Dashboard</span>
-        </router-link>
-        <h1 class="text-3xl font-bold text-emerald-400">
-          Complete Process Overview
-        </h1>
-        <p class="mt-2 text-slate-400">
-          Comprehensive documentation of the entire SSi Course Production pipeline
-        </p>
-      </div>
-    </header>
+  <div class="process-overview-view">
+    <!-- Page Header (within DocsLayout) -->
+    <div class="page-header">
+      <h1 class="page-title">Complete Process Overview</h1>
+      <p class="page-subtitle">
+        Comprehensive documentation of the entire SSi Course Production pipeline
+      </p>
+    </div>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="content-area">
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
 
         <section class="mb-8">
@@ -145,3 +137,29 @@
 <script setup>
 // Static documentation page - no reactive data needed
 </script>
+
+<style scoped>
+.process-overview-view {
+  padding: 2rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.content-area {
+  max-width: 100%;
+}
+</style>

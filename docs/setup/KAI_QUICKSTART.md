@@ -12,6 +12,23 @@ Your environment is already set up. Here's what you need for building courses.
 - Each seed deserves thoughtful LEGO decomposition and varied phrases
 - The API validates quality - trust the process, don't try to shortcut it
 
+## CRITICAL: Canonical Seeds
+
+**The English seed sentences are ALREADY IN THE DATABASE. Do NOT make them up.**
+
+1. First, get the canonical seed: `GET /api/seeds/ita_for_eng`
+2. Find the next seed with empty `target_text`
+3. Translate THAT sentence into the target language
+4. Build LEGOs and phrases for THAT sentence
+
+```bash
+# Get seed 1 to see what you need to translate
+curl -s "http://localhost:3471/api/seeds/ita_for_eng" | jq '.seeds[0]'
+# Returns: { "seed_number": 1, "known_text": "I want to speak Italian with you now.", "target_text": "" }
+```
+
+The `known_text` is fixed. You provide `target_text` + LEGOs + phrases.
+
 ## Pull Latest & Restart
 
 ```bash
@@ -25,11 +42,11 @@ pm2 restart all
 
 **Key endpoints:**
 ```
-POST /api/seed/complete              # Submit seed + LEGOs + phrases
-GET  /api/seeds/zho_for_eng          # Get canonical seeds list
-GET  /api/balance/zho_for_eng?seed=N # Check underused/overused LEGOs
-GET  /api/vocab/zho_for_eng          # Current vocabulary
-GET  /api/stats/zho_for_eng          # Course statistics
+GET  /api/seeds/ita_for_eng          # Get canonical seeds (known_text is fixed!)
+POST /api/seed/complete              # Submit translation + LEGOs + phrases
+GET  /api/balance/ita_for_eng?seed=N # Check underused/overused LEGOs
+GET  /api/vocab/ita_for_eng          # Current vocabulary
+GET  /api/stats/ita_for_eng          # Course statistics
 ```
 
 ## Balance Endpoint (Important!)
@@ -54,9 +71,16 @@ All enforced automatically - rejection includes methodology hints:
 | 2. ZUT | Same known = same target | `/ssi-decompose-seed` |
 | 3. VOCAB | Phrases use known vocab only | `/ssi-learner-pattern` |
 | 4. COUNT | Min 7 phrases per LEGO | `/ssi-build-phrases` |
-| 5. ETERNAL | 4+ phrases with 10+ chars | `/ssi-build-phrases` |
+| 5. TIERS | 2+ SHORT, 2+ MEDIUM, 4+ LONG | `/ssi-build-phrases` |
 | 6. COMPONENTS | M-LEGOs need breakdowns | `/ssi-decompose-seed` |
 | 7. BALANCE | Vocabulary variety (3-strike) | `/ssi-phrase-variety` |
+
+### Phrase Length Tiers (Gate 5)
+
+Each LEGO needs balanced phrase lengths:
+- **SHORT** (3-5 chars): 2-3 phrases - quick recall
+- **MEDIUM** (6-9 chars): 2-3 phrases - building complexity
+- **LONG** (10+ chars): 4-5 phrases - full sentences for retention
 
 ### Balance Gate (new)
 
@@ -81,7 +105,9 @@ curl -X DELETE http://localhost:3471/api/course/ita_for_eng
 
 ## Current Status
 
-`ita_for_eng` is wiped and ready for building from seed 1.
+Both courses are wiped and ready for fresh builds:
+- `ita_for_eng` - 260 canonical seeds ready (target_text empty)
+- `zho_for_eng` - 250 canonical seeds ready (target_text empty)
 
 ---
 

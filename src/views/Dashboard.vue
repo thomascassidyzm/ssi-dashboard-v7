@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              Popty v13
+              Popty v14
             </h1>
             <p class="mt-2 text-slate-400">
               SSi Course Production Dashboard
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              APML v13 | Phase 1 → Phase 2 → Phase 3 → Phase 8 (Audio) → Phase 9 (Manifest)
+              APML v14 | Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)
             </p>
           </div>
           <div class="flex items-center gap-6">
@@ -42,7 +42,7 @@
               <div>
                 <h3 class="text-2xl font-bold text-white mb-2">Course Manager</h3>
                 <p class="text-emerald-100 text-sm">
-                  Create new courses or manage existing ones through the content pipeline (Phase 1 → 2 → 3)
+                  Create new courses or manage existing ones through the Course Builder pipeline
                 </p>
               </div>
               <div class="text-white">
@@ -166,57 +166,38 @@
               </div>
             </div>
 
-            <!-- Phase Flow -->
+            <!-- v14 Pipeline Flow -->
             <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4">
-              <!-- Phase 1 -->
+              <!-- Course Builder -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-32 h-28 rounded-lg border-2 border-blue-500 bg-blue-500/10 flex flex-col items-center justify-center">
-                  <div class="text-blue-400 font-bold text-2xl">1</div>
-                  <div class="text-blue-300 text-xs mt-1 px-2 text-center">Translation + LEGO Extraction (Swarm)</div>
+                <div class="w-40 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
+                  <div class="text-emerald-400 font-bold text-lg">Course Builder</div>
+                  <div class="text-emerald-300 text-xs mt-1 px-2 text-center">Seeds + LEGOs + Phrases</div>
+                  <div class="text-emerald-400/60 text-xs mt-1">Port 3471</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
 
-              <!-- Phase 2 -->
+              <!-- Phase 8 Audio -->
               <div class="flex items-center flex-shrink-0">
                 <div class="w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
-                  <div class="text-purple-400 font-bold text-2xl">2</div>
-                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">Conflict Resolution (Upchunking)</div>
+                  <div class="text-purple-400 font-bold text-lg">Phase 8</div>
+                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">Audio Generation</div>
+                  <div class="text-purple-400/60 text-xs mt-1">Port 3465</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
 
-              <!-- Phase 3 -->
+              <!-- Phase 9 Manifest -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-pink-500 bg-pink-500/10 flex flex-col items-center justify-center">
-                  <div class="text-pink-400 font-bold text-2xl">3</div>
-                  <div class="text-pink-300 text-xs mt-1 px-2 text-center">Basket Generation</div>
-                </div>
-                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-
-              <!-- Manifest -->
-              <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-teal-500 bg-teal-500/10 flex flex-col items-center justify-center">
-                  <div class="text-teal-400 font-bold text-lg">Manifest</div>
-                  <div class="text-teal-300 text-xs mt-1 px-2 text-center">Course Compilation (Script)</div>
-                </div>
-                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-
-              <!-- Audio -->
-              <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
-                  <div class="text-emerald-400 font-bold text-lg">Audio</div>
-                  <div class="text-emerald-300 text-xs mt-1 px-2 text-center">TTS Generation</div>
+                <div class="w-32 h-28 rounded-lg border-2 border-amber-500 bg-amber-500/10 flex flex-col items-center justify-center">
+                  <div class="text-amber-400 font-bold text-lg">Phase 9</div>
+                  <div class="text-amber-300 text-xs mt-1 px-2 text-center">Manifest Compilation</div>
+                  <div class="text-amber-400/60 text-xs mt-1">Port 3466</div>
                 </div>
               </div>
             </div>
@@ -258,12 +239,12 @@
               </div>
             </router-link>
 
-            <!-- APML v10.0.0 Specification -->
+            <!-- APML v14.0 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v10.0.0 Specification</h3>
-                <p class="text-sm text-slate-400">Complete architectural specification with linear pipeline (Phase 1 → 2 → 3 → Manifest → Audio)</p>
+                <h3 class="font-semibold text-slate-100">APML v14.0 Specification</h3>
+                <p class="text-sm text-slate-400">Course Builder consolidation - simplified pipeline (Course Builder → Audio → Manifest)</p>
               </div>
             </router-link>
 
@@ -290,8 +271,8 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v10.0.0 • lego_pairs.json is the SINGLE SOURCE OF TRUTH</p>
-        <p class="mt-1">Phase 1 → Phase 2 → Phase 3 → Manifest → Audio</p>
+        <p>SSi Course Production Dashboard v14.0.0 • Supabase is the SINGLE SOURCE OF TRUTH</p>
+        <p class="mt-1">Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)</p>
       </div>
     </main>
   </div>

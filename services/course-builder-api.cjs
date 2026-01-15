@@ -95,6 +95,101 @@ function isChinese(courseCode) {
 }
 
 /**
+ * Get language name from course code for {target} substitution
+ */
+function getLanguageName(courseCode) {
+  const langMap = {
+    'zho': 'Chinese',
+    'ita': 'Italian',
+    'spa': 'Spanish',
+    'fra': 'French',
+    'deu': 'German',
+    'por': 'Portuguese',
+    'jpn': 'Japanese',
+    'kor': 'Korean',
+    'ara': 'Arabic',
+    'rus': 'Russian',
+    'cym': 'Welsh'
+  };
+  // Extract target language code (first 3 chars before _for_)
+  const targetLang = courseCode.split('_')[0];
+  return langMap[targetLang] || targetLang;
+}
+
+/**
+ * Initialize course seeds from canonical_seeds table.
+ * Called automatically when a course has no seeds yet.
+ *
+ * Canonical seeds are in English. Depending on the course:
+ * - X_for_eng (known=eng): known_text = canonical (instant), target_text = agent provides
+ * - eng_for_X (target=eng): target_text = canonical (instant), known_text = agent provides
+ * - X_for_Y (neither eng): both known_text and target_text = agent provides
+ *
+ * For instant cases, the text is pre-populated. For agent cases, left empty.
+ */
+async function initializeCourseSeeds(courseCode) {
+  // Parse course code: target_for_known (e.g., zho_for_eng)
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const knownLang = parts[1] || '';
+
+  const knownIsEng = knownLang === 'eng';
+  const targetIsEng = targetLang === 'eng';
+
+  // Check if course already has seeds
+  const { count: existingCount } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  if (existingCount > 0) {
+    console.log(`Course ${courseCode} already has ${existingCount} seeds`);
+    return { initialized: false, count: existingCount };
+  }
+
+  // Get canonical seeds (English)
+  const { data: canonical, error: canonicalError } = await supabase
+    .from('canonical_seeds')
+    .select('seed_number, source_text')
+    .order('seed_number');
+
+  if (canonicalError || !canonical || canonical.length === 0) {
+    throw new Error('Failed to fetch canonical seeds: ' + (canonicalError?.message || 'no data'));
+  }
+
+  // Get target language name for {target} substitution
+  const targetLangName = getLanguageName(courseCode);
+
+  // Create course seeds based on which language is English
+  const courseSeeds = canonical.map(c => {
+    const canonicalText = c.source_text.replace(/\{target\}/g, targetLangName);
+    return {
+      course_code: courseCode,
+      seed_number: c.seed_number,
+      // known_text: instant if known=eng, otherwise agent provides
+      known_text: knownIsEng ? canonicalText : '',
+      // target_text: instant if target=eng, otherwise agent provides
+      target_text: targetIsEng ? canonicalText : ''
+    };
+  });
+
+  // Insert
+  const { error: insertError } = await supabase
+    .from('course_seeds')
+    .insert(courseSeeds);
+
+  if (insertError) {
+    throw new Error('Failed to initialize course seeds: ' + insertError.message);
+  }
+
+  const mode = knownIsEng ? 'known=eng (instant known_text)' :
+               targetIsEng ? 'target=eng (instant target_text)' :
+               'neither eng (agent provides both)';
+  console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
+  return { initialized: true, count: courseSeeds.length, mode, targetLangName };
+}
+
+/**
  * Normalize text for vocab comparison
  */
 function normalizeText(text, chinese = false) {
@@ -359,15 +454,18 @@ const TARGET_PHRASES_PER_LEGO = 10;   // Ideal target
 const MIN_BATCH_PHRASE_RATIO = 7.0;   // Batch must have ≥7.0 phrases per LEGO
 
 // Phrase length tiers (by target character/word count)
+// Balanced distribution: SHORT → MEDIUM → LONG progression
 const PHRASE_TIERS = {
-  SHORT: { min: 2, max: 5 },     // 2-5 chars/words
-  MEDIUM: { min: 6, max: 8 },    // 6-8 chars/words
-  LONG: { min: 9, max: 9 },      // 9 chars/words
-  ETERNAL: { min: 10, max: 999 } // 10+ chars/words
+  SHORT: { min: 3, max: 5 },     // 3-5 chars: quick recall
+  MEDIUM: { min: 6, max: 9 },    // 6-9 chars: building complexity
+  LONG: { min: 10, max: 999 }    // 10+ chars: full sentences (spaced repetition)
 };
 
-// Minimum ETERNAL phrases per LEGO (for spaced repetition)
-const MIN_ETERNAL_PHRASES = 4;
+// Minimum phrases per tier (ensures balanced progression)
+const MIN_SHORT_PHRASES = 2;    // 2-3 short phrases
+const MIN_MEDIUM_PHRASES = 2;   // 2-3 medium phrases
+const MIN_LONG_PHRASES = 4;     // 4-5 long phrases (critical for retention)
+const MIN_MIDDLE_RANGE = 2;     // At least 2 phrases in 5-10 char range (prevents short→long jump)
 
 // LEGO balance thresholds (practice_score = phrase_count / seeds_since_introduction)
 const BALANCE_UNDERUSED_THRESHOLD = 0.3;  // < 0.3 = needs more practice
@@ -436,29 +534,37 @@ function checkTiling(seedTarget, legos, courseCode) {
  *
  * Returns: { valid: true, tiers: {...} } or { valid: false, error, tiers: {...} }
  */
-function checkPhraseComplexity(phrases, courseCode) {
+function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
   const chinese = isChinese(courseCode);
+  const unit = chinese ? 'characters' : 'words';
 
   const tiers = {
-    SHORT: [],
-    MEDIUM: [],
-    LONG: [],
-    ETERNAL: []
+    SHORT: [],   // 3-5 chars
+    MEDIUM: [],  // 6-9 chars
+    LONG: []     // 10+ chars
   };
+
+  // Track middle range (5-10) separately to ensure smooth progression
+  const middleRange = [];  // 5-10 chars
 
   for (const phrase of phrases) {
     const length = chinese
       ? phrase.target.replace(/[\s\u3000。，！？、：；""'']/g, '').length
       : phrase.target.split(/\s+/).length;
 
-    if (length >= PHRASE_TIERS.ETERNAL.min) {
-      tiers.ETERNAL.push({ target: phrase.target, length });
-    } else if (length >= PHRASE_TIERS.LONG.min) {
+    // Categorize into tiers
+    if (length >= PHRASE_TIERS.LONG.min) {
       tiers.LONG.push({ target: phrase.target, length });
     } else if (length >= PHRASE_TIERS.MEDIUM.min) {
       tiers.MEDIUM.push({ target: phrase.target, length });
-    } else {
+    } else if (length >= PHRASE_TIERS.SHORT.min) {
       tiers.SHORT.push({ target: phrase.target, length });
+    }
+    // Phrases < 3 chars are ignored (too short to be useful)
+
+    // Also track middle range (5-10) for progression check
+    if (length >= 5 && length <= 10) {
+      middleRange.push({ target: phrase.target, length });
     }
   }
 
@@ -466,20 +572,62 @@ function checkPhraseComplexity(phrases, courseCode) {
     SHORT: tiers.SHORT.length,
     MEDIUM: tiers.MEDIUM.length,
     LONG: tiers.LONG.length,
-    ETERNAL: tiers.ETERNAL.length
+    middleRange: middleRange.length
   };
 
-  // Check for minimum ETERNAL phrases
-  if (tiers.ETERNAL.length < MIN_ETERNAL_PHRASES) {
+  // Graduated tier requirements based on seed number
+  // Seeds 1-5: relaxed (skip tier checks)
+  // Seeds 6-20: softened (1 each, 2 long, 1 middle)
+  // Seeds 21+: hard (full requirements)
+  let minShort, minMedium, minLong, minMiddle;
+
+  if (seedNumber <= 5) {
+    // Relaxed: no tier requirements for first 5 seeds
+    return { valid: true, tiers: tierCounts, mode: 'relaxed (seed 1-5)' };
+  } else if (seedNumber <= 20) {
+    // Softened: reduced requirements
+    minShort = 1;
+    minMedium = 1;
+    minLong = 2;
+    minMiddle = 1;
+  } else {
+    // Hard: full requirements from seed 21+
+    minShort = MIN_SHORT_PHRASES;
+    minMedium = MIN_MEDIUM_PHRASES;
+    minLong = MIN_LONG_PHRASES;
+    minMiddle = MIN_MIDDLE_RANGE;
+  }
+
+  // Check tier minimums
+  const errors = [];
+
+  if (tiers.SHORT.length < minShort) {
+    errors.push(`SHORT: need ${minShort}+, got ${tiers.SHORT.length} (3-5 ${unit})`);
+  }
+  if (tiers.MEDIUM.length < minMedium) {
+    errors.push(`MEDIUM: need ${minMedium}+, got ${tiers.MEDIUM.length} (6-9 ${unit})`);
+  }
+  if (tiers.LONG.length < minLong) {
+    errors.push(`LONG: need ${minLong}+, got ${tiers.LONG.length} (10+ ${unit})`);
+  }
+  if (middleRange.length < minMiddle) {
+    errors.push(`MIDDLE: need ${minMiddle}+, got ${middleRange.length} (5-10 ${unit})`);
+  }
+
+  if (errors.length > 0) {
+    const mode = seedNumber <= 20 ? 'softened (seed 6-20)' : 'hard (seed 21+)';
     return {
       valid: false,
       tiers: tierCounts,
-      error: `Need ${MIN_ETERNAL_PHRASES}+ ETERNAL phrases (10+ ${chinese ? 'characters' : 'words'}), got ${tiers.ETERNAL.length}`,
-      hint: `See /ssi-build-phrases for phrase length requirements. ETERNAL phrases are critical for spaced repetition.`
+      mode,
+      error: `Phrase balance failed: ${errors.join('; ')}`,
+      hint: seedNumber <= 20
+        ? `Softened mode: 1+ SHORT, 1+ MEDIUM, 2+ LONG, 1+ middle range`
+        : `Hard mode: 2+ SHORT (3-5), 2+ MEDIUM (6-9), 4+ LONG (10+), 2+ in 5-10 range`
     };
   }
 
-  return { valid: true, tiers: tierCounts };
+  return { valid: true, tiers: tierCounts, mode: seedNumber <= 20 ? 'softened' : 'hard' };
 }
 
 // =============================================================================
@@ -624,10 +772,12 @@ const METHODOLOGY_HINTS = {
    - Use M-LEGOs for multi-word chunks`,
 
   phrases: `
-📚 See /ssi-build-phrases for phrase requirements:
-   - 6+ practice phrases per LEGO
-   - 4+ ETERNAL phrases (10+ characters/words)
-   - Build: SHORT (2-5) → MEDIUM (6-8) → LONG (9) → ETERNAL (10+)`,
+📚 See /ssi-build-phrases for phrase tier requirements:
+   - SHORT (3-5 chars): quick recall
+   - MEDIUM (6-9 chars): building complexity
+   - LONG (10+ chars): full sentences for retention
+   - Must have 2+ phrases in 5-10 char range (smooth progression)
+   Graduated: relaxed (seeds 1-5), softened (6-20), hard (21+)`,
 
   vocab: `
 📚 See /ssi-learner-pattern for how vocabulary builds:
@@ -1060,11 +1210,13 @@ app.post('/api/batch', async (req, res) => {
  * THE GOLDEN PATH: Agent submits everything for one seed atomically.
  * Validates everything upfront, inserts all or nothing.
  *
+ * IMPORTANT: known_text comes from the CANONICAL SEEDS already in the database.
+ * Agent only provides the target language translation and LEGOs.
+ *
  * Body:
  * {
  *   "course_code": "zho_for_eng",
  *   "seed_number": 42,
- *   "known_text": "I want to learn Chinese",
  *   "target_text": "我想学中文",
  *   "legos": [
  *     {
@@ -1087,14 +1239,40 @@ app.post('/api/batch', async (req, res) => {
  */
 app.post('/api/seed/complete', async (req, res) => {
   try {
-    const { course_code, seed_number, known_text, target_text, legos, SKIP_VALIDATION } = req.body;
+    const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = req.body;
     const seedId = `S${String(seed_number).padStart(4, '0')}`;
 
-    // Basic validation
-    if (!course_code || !seed_number || !known_text || !target_text || !legos) {
+    // Parse course to determine which texts agent must provide
+    const courseParts = course_code?.split('_for_') || [];
+    const targetLang = courseParts[0] || '';
+    const knownLang = courseParts[1] || '';
+    const knownIsEng = knownLang === 'eng';
+    const targetIsEng = targetLang === 'eng';
+
+    // Basic validation - what's required depends on course type
+    if (!course_code || !seed_number || !legos) {
       return res.status(400).json({
         error: 'Missing required fields',
-        required: ['course_code', 'seed_number', 'known_text', 'target_text', 'legos']
+        required: ['course_code', 'seed_number', 'legos'],
+        note: 'known_text/target_text requirements depend on course: X_for_eng needs target_text, eng_for_X needs known_text, X_for_Y needs both'
+      });
+    }
+
+    // Validate agent provided required translations
+    if (!knownIsEng && !agent_known_text) {
+      return res.status(400).json({
+        error: 'known_text required',
+        seed: seedId,
+        course_code,
+        hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`
+      });
+    }
+    if (!targetIsEng && !agent_target_text) {
+      return res.status(400).json({
+        error: 'target_text required',
+        seed: seedId,
+        course_code,
+        hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`
       });
     }
 
@@ -1105,8 +1283,71 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
+    // CANONICAL SEED LOOKUP: Get known_text from pre-populated database seeds
+    // If course has no seeds yet, auto-initialize from canonical_seeds table
+    let { data: canonicalSeed, error: seedLookupError } = await supabase
+      .from('course_seeds')
+      .select('known_text, target_text')
+      .eq('course_code', course_code)
+      .eq('seed_number', seed_number)
+      .single();
+
+    if (seedLookupError || !canonicalSeed) {
+      // Try to initialize course seeds from canonical_seeds
+      console.log(`Seed ${seedId} not found for ${course_code}, attempting auto-initialization...`);
+      try {
+        const initResult = await initializeCourseSeeds(course_code);
+        if (initResult.initialized) {
+          console.log(`Auto-initialized ${course_code}: ${initResult.count} seeds (${initResult.language})`);
+          // Retry the lookup
+          const retry = await supabase
+            .from('course_seeds')
+            .select('known_text, target_text')
+            .eq('course_code', course_code)
+            .eq('seed_number', seed_number)
+            .single();
+          canonicalSeed = retry.data;
+          seedLookupError = retry.error;
+        }
+      } catch (initError) {
+        console.error('Auto-initialization failed:', initError.message);
+      }
+    }
+
+    if (seedLookupError || !canonicalSeed) {
+      return res.status(400).json({
+        error: 'Canonical seed not found',
+        seed: seedId,
+        course_code,
+        hint: 'Seeds must be pre-populated in the database. Check /api/seeds/:courseCode for available seeds.'
+      });
+    }
+
+    // Check if seed already built (both known and target populated)
+    const seedAlreadyBuilt = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
+                             canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
+    if (seedAlreadyBuilt) {
+      return res.status(400).json({
+        error: 'Seed already has translation',
+        seed: seedId,
+        existing_known: canonicalSeed.known_text,
+        existing_target: canonicalSeed.target_text,
+        hint: 'This seed has already been built. Use a different seed number.'
+      });
+    }
+
+    // Determine final known_text and target_text
+    // Use canonical if pre-populated (English case), otherwise use agent-provided
+    const known_text = canonicalSeed.known_text || agent_known_text;
+    const target_text = canonicalSeed.target_text || agent_target_text;
+
+    const knownSource = canonicalSeed.known_text ? 'canonical (eng)' : 'agent';
+    const targetSource = canonicalSeed.target_text ? 'canonical (eng)' : 'agent';
+
     console.log(`\n${'='.repeat(60)}`);
-    console.log(`SEED COMPLETE: ${seedId} "${known_text}" → "${target_text}"`);
+    console.log(`SEED COMPLETE: ${seedId}`);
+    console.log(`  known:  "${known_text}" [${knownSource}]`);
+    console.log(`  target: "${target_text}" [${targetSource}]`);
     console.log(`${'='.repeat(60)}`);
 
     // =========================================================================
@@ -1233,25 +1474,26 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
-    // 5. PHRASE COMPLEXITY VALIDATION (ETERNAL phrases for spaced repetition)
-    // Only check for non-early LEGOs (position > 10 means enough vocab exists)
-    if (!SKIP_VALIDATION && globalPosition > 10) {
+    // 5. PHRASE COMPLEXITY VALIDATION (tier balance for progression)
+    // Graduated: relaxed (seeds 1-5), softened (6-20), hard (21+)
+    if (!SKIP_VALIDATION) {
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
         if (isDuplicate) continue;
 
         if (lego.phrases && lego.phrases.length > 0) {
-          const complexityResult = checkPhraseComplexity(lego.phrases, course_code);
+          const complexityResult = checkPhraseComplexity(lego.phrases, course_code, seed_number);
           if (!complexityResult.valid) {
             errors.push({
               type: 'phrase_complexity',
               message: complexityResult.error,
               lego_id: legoId,
               tiers: complexityResult.tiers,
+              mode: complexityResult.mode,
               methodology: METHODOLOGY_HINTS.phrases
             });
-            console.log(`✗ ${legoId}: PHRASE COMPLEXITY - ${complexityResult.error}`);
+            console.log(`✗ ${legoId}: PHRASE TIERS (${complexityResult.mode}) - ${complexityResult.error}`);
           }
         }
       }
@@ -1682,6 +1924,164 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
 });
 
 /**
+ * GET /api/course/:courseCode/translate - Get seeds needing translation with guidance
+ *
+ * Returns canonical seeds that need translation, along with SSi method guidance.
+ * For X_for_eng: known is instant, needs target translations
+ * For eng_for_X: target is instant, needs known translations
+ * For X_for_Y: needs both translations
+ */
+app.get('/api/course/:courseCode/translate', async (req, res) => {
+  const { courseCode } = req.params;
+  const limit = parseInt(req.query.limit) || 260;  // Default course size
+  const offset = parseInt(req.query.offset) || 0;
+
+  // Parse course type
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';
+  const knownLang = parts[1] || '';
+  const knownIsEng = knownLang === 'eng';
+  const targetIsEng = targetLang === 'eng';
+  const targetLangName = getLanguageName(courseCode);
+
+  // Initialize course if needed
+  try {
+    await initializeCourseSeeds(courseCode);
+  } catch (err) {
+    console.error('Init error:', err.message);
+  }
+
+  // Get seeds that need translation
+  const { data: seeds, error } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number')
+    .range(offset, offset + limit - 1);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  // Filter to seeds needing translation
+  const needsTranslation = seeds.filter(s => {
+    const needsKnown = !knownIsEng && (!s.known_text || s.known_text === '');
+    const needsTarget = !targetIsEng && (!s.target_text || s.target_text === '');
+    return needsKnown || needsTarget;
+  });
+
+  // Get canonical text for reference
+  const { data: canonical } = await supabase
+    .from('canonical_seeds')
+    .select('seed_number, source_text')
+    .in('seed_number', needsTranslation.map(s => s.seed_number));
+
+  const canonicalMap = {};
+  (canonical || []).forEach(c => {
+    canonicalMap[c.seed_number] = c.source_text.replace(/\{target\}/g, targetLangName);
+  });
+
+  // Build response with guidance
+  const seedsToTranslate = needsTranslation.map(s => ({
+    seed_number: s.seed_number,
+    canonical_english: canonicalMap[s.seed_number] || '',
+    current_known: s.known_text || null,
+    current_target: s.target_text || null,
+    needs_known: !knownIsEng && (!s.known_text || s.known_text === ''),
+    needs_target: !targetIsEng && (!s.target_text || s.target_text === '')
+  }));
+
+  res.json({
+    course_code: courseCode,
+    target_language: targetLangName,
+    known_language: knownLang,
+    mode: knownIsEng ? 'translate_targets' : targetIsEng ? 'translate_knowns' : 'translate_both',
+    total_seeds: seeds.length,
+    needs_translation: seedsToTranslate.length,
+    seeds: seedsToTranslate,
+    guidance: {
+      principles: [
+        'CONSISTENCY: Same concept = same translation throughout all seeds',
+        'COGNATES: Use cognates where they sound natural (especially for related languages)',
+        'PATTERNS: Maintain consistent grammatical structures across seeds',
+        'SIMPLICITY: Prefer simpler constructions that work for teaching',
+        'ZUT: Translations must pass Zero Uncertainty Test (unambiguous meaning)'
+      ],
+      tips: [
+        `Translate all seeds together to ensure vocabulary consistency`,
+        `Create a mental glossary of key terms before starting`,
+        `For ${targetLangName}: prefer common/standard forms over regional variants`,
+        `Match formality level consistently (tu vs vous, tú vs usted, etc.)`
+      ]
+    }
+  });
+});
+
+/**
+ * POST /api/course/:courseCode/translate - Submit batch translations
+ *
+ * Accepts translations for multiple seeds at once.
+ * Body: { translations: [{ seed_number, known_text?, target_text? }, ...] }
+ */
+app.post('/api/course/:courseCode/translate', async (req, res) => {
+  const { courseCode } = req.params;
+  const { translations } = req.body;
+
+  if (!translations || !Array.isArray(translations)) {
+    return res.status(400).json({
+      error: 'translations array required',
+      example: { translations: [{ seed_number: 1, target_text: '...' }] }
+    });
+  }
+
+  // Parse course type
+  const parts = courseCode.split('_for_');
+  const knownLang = parts[1] || '';
+  const knownIsEng = knownLang === 'eng';
+
+  let updated = 0;
+  let errors = [];
+
+  for (const t of translations) {
+    if (!t.seed_number) {
+      errors.push({ error: 'missing seed_number', item: t });
+      continue;
+    }
+
+    const updateData = {};
+    if (t.known_text) updateData.known_text = t.known_text;
+    if (t.target_text) updateData.target_text = t.target_text;
+
+    if (Object.keys(updateData).length === 0) {
+      errors.push({ error: 'no translation provided', seed_number: t.seed_number });
+      continue;
+    }
+
+    const { error } = await supabase
+      .from('course_seeds')
+      .update(updateData)
+      .eq('course_code', courseCode)
+      .eq('seed_number', t.seed_number);
+
+    if (error) {
+      errors.push({ error: error.message, seed_number: t.seed_number });
+    } else {
+      updated++;
+    }
+  }
+
+  console.log(`Batch translation for ${courseCode}: ${updated}/${translations.length} updated`);
+
+  res.json({
+    course_code: courseCode,
+    submitted: translations.length,
+    updated,
+    errors: errors.length > 0 ? errors : undefined,
+    message: `${updated} seeds translated successfully`
+  });
+});
+
+/**
  * POST /api/phrases - Add phrases to an existing LEGO basket
  * Used for topping up baskets that need more phrases
  */
@@ -1815,7 +2215,7 @@ app.listen(PORT, () => {
   console.log(`║  2. ZUT: Same known → same target (or reject)                ║`);
   console.log(`║  3. VOCAB: Phrases only use introduced vocabulary            ║`);
   console.log(`║  4. COUNT: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO} phrases/LEGO           ║`);
-  console.log(`║  5. ETERNAL: ${MIN_ETERNAL_PHRASES}+ phrases with 10+ chars (spaced repetition)     ║`);
+  console.log(`║  5. TIERS: ${MIN_SHORT_PHRASES}+ SHORT(3-5), ${MIN_MEDIUM_PHRASES}+ MEDIUM(6-9), ${MIN_LONG_PHRASES}+ LONG(10+)   ║`);
   console.log(`║  6. COMPONENTS: M-LEGOs MUST have component breakdown        ║`);
   console.log(`║  7. BALANCE: 3-strike vocab variety (soft→soft→hard reject) ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);

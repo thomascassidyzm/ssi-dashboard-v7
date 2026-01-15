@@ -1,27 +1,19 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
-    <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
-          <span>&larr;</span>
-          <span>Back to Dashboard</span>
-        </router-link>
-        <h1 class="text-3xl font-bold text-emerald-400">
-          Phase Intelligence
-        </h1>
-        <p class="mt-2 text-slate-400">
-          Methodology modules for each phase - the single source of truth for agent instructions
-        </p>
-        <div class="mt-2 inline-flex items-center gap-2 text-xs">
-          <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded">APML v14.0</span>
-          <span class="text-slate-500">Course Builder Consolidation</span>
-        </div>
+  <div class="phase-intelligence-view">
+    <!-- Page Header (within DocsLayout) -->
+    <div class="page-header">
+      <h1 class="page-title">Phase Intelligence</h1>
+      <p class="page-subtitle">
+        Methodology modules for each phase - the single source of truth for agent instructions
+      </p>
+      <div class="page-badges">
+        <span class="version-badge">APML v14.0</span>
+        <span class="version-label">Course Builder Consolidation</span>
       </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="content-area">
 
       <!-- v14 Architecture Notice -->
       <div class="mb-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
@@ -252,3 +244,49 @@ function selectPhase(phase) {
 // Load Course Builder by default (v14 primary)
 selectPhase('CB')
 </script>
+
+<style scoped>
+.phase-intelligence-view {
+  padding: 2rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.page-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.version-badge {
+  padding: 0.25rem 0.5rem;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.version-label {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.content-area {
+  max-width: 100%;
+}
+</style>
