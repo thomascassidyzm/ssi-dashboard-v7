@@ -1380,6 +1380,47 @@ async function deleteAudioFlag(audioUuid, courseCode) {
 }
 
 /**
+ * Get flagged audio with full audio details from course_audio
+ * Used for regeneration queue preview
+ * @param {string} courseCode
+ * @returns {Promise<Array>}
+ */
+async function getAudioFlagsWithDetails(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // Get all flagged items
+  const { data: flags, error: flagsError } = await supabase
+    .from('audio_flags')
+    .select('audio_uuid, status, reason, flagged_by, created_at, regen_count')
+    .eq('course_code', courseCode)
+    .eq('status', 'flagged')
+
+  if (flagsError) throw flagsError
+  if (!flags || flags.length === 0) return []
+
+  // Get audio details for flagged items
+  const audioUuids = flags.map(f => f.audio_uuid)
+  const { data: audioDetails, error: audioError } = await supabase
+    .from('course_audio')
+    .select('id, text, language, role, duration_ms, voice_id')
+    .in('id', audioUuids)
+
+  if (audioError) throw audioError
+
+  // Build lookup map
+  const audioMap = {}
+  for (const audio of (audioDetails || [])) {
+    audioMap[audio.id] = audio
+  }
+
+  // Combine flags with audio details
+  return flags.map(flag => ({
+    ...flag,
+    audio: audioMap[flag.audio_uuid] || null
+  }))
+}
+
+/**
  * Get flagged audio count by status
  * @param {string} courseCode
  * @returns {Promise<Object>}
@@ -1460,6 +1501,7 @@ module.exports = {
   resolveAudioFlag,
   deleteAudioFlag,
   getAudioFlagStats,
+  getAudioFlagsWithDetails,
 
   // Content stats
   getCourseContentStats,

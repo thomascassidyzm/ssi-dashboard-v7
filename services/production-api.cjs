@@ -1338,23 +1338,32 @@ app.get('/api/production/:courseCode/regeneration/queue', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    // Get flagged samples from Supabase
-    const flaggedSamples = await supabaseClient.getFlaggedForRegeneration(courseCode)
+    // Get flagged samples from audio_flags table (new simplified system)
+    const flaggedSamples = await supabaseClient.getAudioFlagsWithDetails(courseCode)
 
-    // Transform to include audio details (v13: audio info from course_audio)
+    // Transform to match expected format
     const items = flaggedSamples.map(flag => ({
       uuid: flag.audio_uuid,
       status: flag.status,
-      notes: flag.notes,
+      notes: flag.reason,
       flaggedBy: flag.flagged_by,
-      flaggedAt: flag.flagged_at,
-      history: flag.history,
-      audio: flag.course_audio || flag.audio_samples  // v13: course_audio, fallback for compat
+      flaggedAt: flag.created_at,
+      regenCount: flag.regen_count || 0,
+      audio: flag.audio
     }))
+
+    // Group by role for UI display
+    const byRole = { known: 0, target1: 0, target2: 0 }
+    for (const item of items) {
+      if (item.audio?.role && byRole[item.audio.role] !== undefined) {
+        byRole[item.audio.role]++
+      }
+    }
 
     res.json({
       items,
-      total: items.length
+      total: items.length,
+      byRole
     })
   } catch (error) {
     logger.error('Error fetching regeneration queue:', error)
