@@ -852,8 +852,8 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // 2. VOCAB VALIDATION: Check phrases BEFORE adding each LEGO's vocab
-    // Rule: LEGO N can only use vocab from seeds 1..S-1 plus LEGOs 1..N-1 of current seed
+    // 2. VOCAB VALIDATION: For each LEGO, add its vocab THEN check phrases
+    // Rule: LEGO N can use vocab from seeds 1..S-1 plus LEGOs 1..N of current seed (including itself)
     const vocabSet = await loadCourseVocab(course_code);
 
     const vocabViolations = [];
@@ -861,7 +861,10 @@ app.post('/api/seed/complete', async (req, res) => {
       const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
       const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
 
-      // Check phrases FIRST (before adding this LEGO's vocab)
+      // Add THIS LEGO's vocab first (so its phrases can use it)
+      addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
+
+      // THEN check phrases (can use this LEGO + all prior vocab)
       if (!isDuplicate && lego.phrases && lego.phrases.length > 0) {
         const violations = checkVocabViolations(lego.phrases, vocabSet, course_code);
         if (violations.length > 0 && !SKIP_VALIDATION) {
@@ -871,9 +874,6 @@ app.post('/api/seed/complete', async (req, res) => {
           });
         }
       }
-
-      // THEN add this LEGO's vocab (so next LEGO can use it)
-      addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
     }
 
     if (vocabViolations.length > 0) {
