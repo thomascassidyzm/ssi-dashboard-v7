@@ -2,6 +2,16 @@
 
 Your environment is already set up. Here's what you need for building courses.
 
+## Important: This is a LANGUAGE Task
+
+**You are an LLM. This is a language task. Never write scripts or try to automate.**
+
+- Build seeds ONE AT A TIME with careful attention to language
+- Don't write batch processors or "efficiency" scripts
+- Steady, meticulous work produces the best results
+- Each seed deserves thoughtful LEGO decomposition and varied phrases
+- The API validates quality - trust the process, don't try to shortcut it
+
 ## Pull Latest & Restart
 
 ```bash
