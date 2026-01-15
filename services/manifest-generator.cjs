@@ -349,57 +349,44 @@ async function generateManifest(courseCode, options = {}) {
     phrasesByLego[key].push(phrase);
   }
 
-  // Get encouragements (canonical texts)
-  const { data: encouragements, error: encError } = await supabase
-    .from('encouragements')
-    .select('*')
-    .eq('lang', knownLang3)
-    .order('pool_type')  // 'ordered' comes before 'pooled' alphabetically
-    .order('position');
+  // ==========================================================================
+  // TEMPORARY: Get encouragements directly from shared_audio
+  // TODO: Once 'encouragements' table is created in Supabase, revert to querying that table
+  // The encouragements table migration is at: supabase/migrations/20260115_encouragements_table.sql
+  // ==========================================================================
+  let encouragements = [];
+  const { data: sharedAudioEnc, error: encError } = await supabase
+    .from('shared_audio')
+    .select('text, text_normalized, s3_key, duration_ms, audio_type')
+    .eq('language', knownLang3)
+    .in('audio_type', ['instruction', 'encouragement'])
+    .order('audio_type')  // encouragement before instruction alphabetically
+    .order('created_at');
 
   if (encError) {
-    console.warn('Could not load encouragements:', encError.message);
-  }
+    console.warn('Could not load encouragements from shared_audio:', encError.message);
+  } else if (sharedAudioEnc) {
+    // Transform shared_audio records to encouragement format
+    // audio_type 'instruction' = ordered (48), 'encouragement' = pooled (26)
+    let orderedPosition = 0;
+    encouragements = sharedAudioEnc.map(row => {
+      const isOrdered = row.audio_type === 'instruction';
+      // Extract UUID from s3_key (e.g., 'mastered/ABC123-DEF456.mp3' -> 'ABC123-DEF456')
+      const uuidMatch = row.s3_key?.match(/mastered\/(.+)\.mp3/);
 
-  // Look up audio for each encouragement from shared_audio
-  if (encouragements && encouragements.length > 0) {
-    console.log(`  Looking up audio for ${encouragements.length} encouragements...`);
+      return {
+        text: row.text,
+        pool_type: isOrdered ? 'ordered' : 'pooled',
+        position: isOrdered ? ++orderedPosition : null,
+        lang: knownLang3,
+        audio_uuid: uuidMatch ? uuidMatch[1] : null,
+        duration_ms: row.duration_ms
+      };
+    });
 
-    // Batch query shared_audio for all encouragement texts
-    const encTexts = encouragements.map(e => e.text.toLowerCase().trim());
-    const { data: sharedAudioData, error: sharedAudioError } = await supabase
-      .from('shared_audio')
-      .select('text_normalized, s3_key, duration_ms, audio_type')
-      .eq('language', knownLang3)
-      .in('text_normalized', encTexts);
-
-    if (sharedAudioError) {
-      console.warn(`  Warning: Could not load shared_audio: ${sharedAudioError.message}`);
-    } else if (sharedAudioData) {
-      // Build lookup map: text_normalized -> { s3_key, duration_ms }
-      const audioLookup = new Map();
-      for (const row of sharedAudioData) {
-        audioLookup.set(row.text_normalized, {
-          s3_key: row.s3_key,
-          duration_ms: row.duration_ms
-        });
-      }
-
-      // Attach audio UUID and duration to each encouragement
-      let foundCount = 0;
-      for (const enc of encouragements) {
-        const normalizedText = enc.text.toLowerCase().trim();
-        const audioInfo = audioLookup.get(normalizedText);
-        if (audioInfo) {
-          // Extract UUID from s3_key (e.g., 'mastered/ABC123-DEF456.mp3' -> 'ABC123-DEF456')
-          const uuidMatch = audioInfo.s3_key?.match(/mastered\/(.+)\.mp3/);
-          enc.audio_uuid = uuidMatch ? uuidMatch[1] : null;
-          enc.duration_ms = audioInfo.duration_ms;
-          if (enc.audio_uuid) foundCount++;
-        }
-      }
-      console.log(`  Found audio for ${foundCount}/${encouragements.length} encouragements`);
-    }
+    const ordered = encouragements.filter(e => e.pool_type === 'ordered').length;
+    const pooled = encouragements.filter(e => e.pool_type === 'pooled').length;
+    console.log(`  Loaded ${encouragements.length} encouragements from shared_audio (${ordered} ordered, ${pooled} pooled)`);
   }
 
   // Get welcome/introduction audio from course_audio
