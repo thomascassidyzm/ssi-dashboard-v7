@@ -349,15 +349,82 @@ async function generateManifest(courseCode, options = {}) {
     phrasesByLego[key].push(phrase);
   }
 
-  // Get encouragements
+  // Get encouragements (canonical texts)
   const { data: encouragements, error: encError } = await supabase
     .from('encouragements')
     .select('*')
     .eq('lang', knownLang3)
+    .order('pool_type')  // 'ordered' comes before 'pooled' alphabetically
     .order('position');
 
   if (encError) {
     console.warn('Could not load encouragements:', encError.message);
+  }
+
+  // Look up audio for each encouragement from shared_audio
+  if (encouragements && encouragements.length > 0) {
+    console.log(`  Looking up audio for ${encouragements.length} encouragements...`);
+
+    // Batch query shared_audio for all encouragement texts
+    const encTexts = encouragements.map(e => e.text.toLowerCase().trim());
+    const { data: sharedAudioData, error: sharedAudioError } = await supabase
+      .from('shared_audio')
+      .select('text_normalized, s3_key, duration_ms, audio_type')
+      .eq('language', knownLang3)
+      .in('text_normalized', encTexts);
+
+    if (sharedAudioError) {
+      console.warn(`  Warning: Could not load shared_audio: ${sharedAudioError.message}`);
+    } else if (sharedAudioData) {
+      // Build lookup map: text_normalized -> { s3_key, duration_ms }
+      const audioLookup = new Map();
+      for (const row of sharedAudioData) {
+        audioLookup.set(row.text_normalized, {
+          s3_key: row.s3_key,
+          duration_ms: row.duration_ms
+        });
+      }
+
+      // Attach audio UUID and duration to each encouragement
+      let foundCount = 0;
+      for (const enc of encouragements) {
+        const normalizedText = enc.text.toLowerCase().trim();
+        const audioInfo = audioLookup.get(normalizedText);
+        if (audioInfo) {
+          // Extract UUID from s3_key (e.g., 'mastered/ABC123-DEF456.mp3' -> 'ABC123-DEF456')
+          const uuidMatch = audioInfo.s3_key?.match(/mastered\/(.+)\.mp3/);
+          enc.audio_uuid = uuidMatch ? uuidMatch[1] : null;
+          enc.duration_ms = audioInfo.duration_ms;
+          if (enc.audio_uuid) foundCount++;
+        }
+      }
+      console.log(`  Found audio for ${foundCount}/${encouragements.length} encouragements`);
+    }
+  }
+
+  // Get welcome/introduction audio from course_audio
+  let welcomeAudio = null;
+  const { data: welcomeData, error: welcomeError } = await supabase
+    .from('course_audio')
+    .select('s3_key, duration_ms, text')
+    .eq('course_code', courseCode)
+    .eq('role', 'welcome')
+    .single();
+
+  if (welcomeError) {
+    console.warn(`  Warning: Could not load welcome audio: ${welcomeError.message}`);
+  } else if (welcomeData) {
+    // Extract UUID from s3_key (e.g., 'mastered/ABC123-DEF456.mp3' -> 'ABC123-DEF456')
+    const s3KeyMatch = welcomeData.s3_key?.match(/mastered\/(.+)\.mp3/);
+    const audioUuid = s3KeyMatch ? s3KeyMatch[1] : null;
+
+    welcomeAudio = {
+      id: audioUuid || 'welcome-audio-not-found',
+      cadence: 'natural',
+      role: 'presentation',
+      duration: (welcomeData.duration_ms || 0) / 1000  // Convert ms to seconds
+    };
+    console.log(`  Loaded welcome audio: ${audioUuid} (${welcomeAudio.duration.toFixed(2)}s)`);
   }
 
   // Build samples dictionary
@@ -495,7 +562,7 @@ async function generateManifest(courseCode, options = {}) {
     });
   }
 
-  // Build encouragement arrays
+  // Build encouragement arrays and add samples from shared_audio
   const pooledEncouragements = [];
   const orderedEncouragements = [];
 
@@ -509,8 +576,22 @@ async function generateManifest(courseCode, options = {}) {
         orderedEncouragements.push(encEntry);
       }
 
-      // Collect encouragement sample
-      collectText(enc.text, knownLang3, 'presentation', voiceAssignments.presentation);
+      // Add sample directly if we have audio from shared_audio
+      if (enc.audio_uuid) {
+        if (!samples[enc.text]) {
+          samples[enc.text] = [];
+        }
+        samples[enc.text].push({
+          id: enc.audio_uuid,
+          cadence: 'natural',
+          role: 'presentation',
+          duration: (enc.duration_ms || 0) / 1000  // Convert ms to seconds
+        });
+        sampleStats.presentation++;
+      } else {
+        // Fall back to legacy audio lookup only if no shared_audio found
+        collectText(enc.text, knownLang3, 'presentation', voiceAssignments.presentation);
+      }
     }
   }
 
@@ -629,7 +710,7 @@ async function generateManifest(courseCode, options = {}) {
     target: targetLang,
     version: '12.0.0',  // Database-generated version
     status: 'alpha',
-    introduction: {
+    introduction: welcomeAudio || {
       id: 'introduction-placeholder',
       cadence: 'natural',
       role: 'presentation',
