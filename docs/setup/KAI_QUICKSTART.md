@@ -13,10 +13,26 @@ pm2 restart all
 
 **Port:** 3471 (proxied through orchestrator at 3456)
 
-**Golden path endpoint:**
+**Key endpoints:**
 ```
-POST /api/seed/complete
+POST /api/seed/complete              # Submit seed + LEGOs + phrases
+GET  /api/seeds/zho_for_eng          # Get canonical seeds list
+GET  /api/balance/zho_for_eng?seed=N # Check underused/overused LEGOs
+GET  /api/vocab/zho_for_eng          # Current vocabulary
+GET  /api/stats/zho_for_eng          # Course statistics
 ```
+
+## Balance Endpoint (Important!)
+
+Before building each seed, check the balance:
+```bash
+curl "http://localhost:3471/api/balance/zho_for_eng?seed=51"
+```
+
+Returns:
+- `underused_legos` - LEGOs needing more practice (prioritize these!)
+- `overused_legos` - LEGOs used too much (avoid overusing)
+- `strikes` - Current violation count (resets on compliant submission)
 
 ## Validation Gates (7 total)
 
