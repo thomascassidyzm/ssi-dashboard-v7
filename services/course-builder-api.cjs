@@ -1626,6 +1626,35 @@ app.get('/api/vocab/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/balance/:courseCode - Get LEGO balance info (underused/overused)
+ * Helps agents know which vocabulary needs more practice
+ */
+app.get('/api/balance/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const seedNumber = parseInt(req.query.seed || '999');
+
+  try {
+    const balanceData = await calculateLegoBalanceScores(courseCode, seedNumber);
+
+    res.json({
+      course_code: courseCode,
+      current_seed: seedNumber,
+      avg_practice_score: balanceData.avgScore,
+      thresholds: {
+        underused: `< ${BALANCE_UNDERUSED_THRESHOLD}`,
+        overused: `> ${BALANCE_OVERUSED_THRESHOLD}`
+      },
+      underused_legos: balanceData.underused,
+      overused_legos: balanceData.overused,
+      strikes: balanceViolations[courseCode] || 0,
+      hint: 'Include underused LEGOs in your phrases to maintain balance'
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * PATCH /api/seed/:courseCode/:seedNumber - Update seed's target translation
  * Call this after completing all LEGOs for a seed to set the full translation
  */
