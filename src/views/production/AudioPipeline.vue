@@ -922,14 +922,13 @@ const playReviewAudio = async (audioId: string) => {
 
 const markItemDone = async (item: any) => {
   try {
-    // Delete the flag - user is happy with this audio
-    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
-      method: 'POST',
+    // Delete the flag using new audio-flags endpoint - user is happy with this audio
+    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({ uuid: item.id })
+      }
     })
     // Remove from review list
     if (regenerateResult.value?.regeneratedItems) {
@@ -946,15 +945,14 @@ const markAllDone = async () => {
   if (!regenerateResult.value?.regeneratedItems?.length) return
 
   try {
-    // Delete all flags - user is happy with all audio
+    // Delete all flags using new audio-flags endpoint - user is happy with all audio
     for (const item of regenerateResult.value.regeneratedItems) {
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
-        method: 'POST',
+      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({ uuid: item.id })
+        }
       })
     }
     // Clear review list

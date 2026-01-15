@@ -452,10 +452,16 @@ export const useProductionStore = defineStore('production', () => {
   async function updateSampleFlag(uuid, flagData) {
     try {
       const baseUrl = getApiBaseUrl()
-      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/flags/update`, {
+      // Use new audio-flags endpoint
+      const response = await fetch(`${baseUrl}/api/production/${currentCourseCode.value}/audio-flags`, {
         method: 'POST',
         headers: getApiHeaders(),
-        body: JSON.stringify({ uuid, ...flagData })
+        body: JSON.stringify({
+          audio_uuid: uuid,
+          status: flagData.status || 'flagged',
+          reason: flagData.note || flagData.reason || null,
+          flagged_by: flagData.flagged_by || 'dashboard_user'
+        })
       })
 
       if (!response.ok) throw new Error('Failed to update flag')

@@ -1288,6 +1288,121 @@ async function upsertDocumentationSection(documentSlug, section) {
 }
 
 // =============================================================================
+// AUDIO FLAGS (Simple QA workflow - replaces complex sample_flags)
+// =============================================================================
+
+/**
+ * Get all flags for a course
+ * @param {string} courseCode
+ * @returns {Promise<Array>}
+ */
+async function getAudioFlags(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('audio_flags')
+    .select('*')
+    .eq('course_code', courseCode)
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+  return data || []
+}
+
+/**
+ * Create or update an audio flag
+ * @param {string} audioUuid
+ * @param {string} courseCode
+ * @param {Object} flagData - { status, reason, flagged_by }
+ * @returns {Promise<Object>}
+ */
+async function upsertAudioFlag(audioUuid, courseCode, flagData) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('audio_flags')
+    .upsert({
+      audio_uuid: audioUuid,
+      course_code: courseCode,
+      status: flagData.status || 'flagged',
+      reason: flagData.reason || null,
+      flagged_by: flagData.flagged_by || 'qa',
+      created_at: new Date().toISOString()
+    }, {
+      onConflict: 'audio_uuid,course_code'
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Resolve a flag (mark as fixed)
+ * @param {string} audioUuid
+ * @param {string} courseCode
+ * @returns {Promise<Object>}
+ */
+async function resolveAudioFlag(audioUuid, courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('audio_flags')
+    .update({
+      status: 'resolved',
+      resolved_at: new Date().toISOString()
+    })
+    .eq('audio_uuid', audioUuid)
+    .eq('course_code', courseCode)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Delete a flag
+ * @param {string} audioUuid
+ * @param {string} courseCode
+ */
+async function deleteAudioFlag(audioUuid, courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { error } = await supabase
+    .from('audio_flags')
+    .delete()
+    .eq('audio_uuid', audioUuid)
+    .eq('course_code', courseCode)
+
+  if (error) throw error
+}
+
+/**
+ * Get flagged audio count by status
+ * @param {string} courseCode
+ * @returns {Promise<Object>}
+ */
+async function getAudioFlagStats(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('audio_flags')
+    .select('status')
+    .eq('course_code', courseCode)
+
+  if (error) throw error
+
+  const stats = { flagged: 0, regenerating: 0, resolved: 0, total: 0 }
+  for (const row of (data || [])) {
+    stats[row.status] = (stats[row.status] || 0) + 1
+    stats.total++
+  }
+  return stats
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -1329,7 +1444,7 @@ module.exports = {
   upsertSharedAudio,
   getSharedAudioList,
 
-  // Sample flags (QA workflow)
+  // Sample flags (QA workflow) - LEGACY
   getCourseFlags,
   updateSampleFlag,
   deleteSampleFlag,
@@ -1338,6 +1453,13 @@ module.exports = {
   bulkGetRegenerationCounts,
   getFlaggedForRegeneration,
   bulkUpdateFlagStatus,
+
+  // Audio flags (NEW simple QA workflow)
+  getAudioFlags,
+  upsertAudioFlag,
+  resolveAudioFlag,
+  deleteAudioFlag,
+  getAudioFlagStats,
 
   // Content stats
   getCourseContentStats,

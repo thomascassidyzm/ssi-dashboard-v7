@@ -503,6 +503,120 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
   }
 })
 
+// =============================================================================
+// AUDIO FLAGS (NEW simple workflow)
+// =============================================================================
+
+// Get all audio flags for a course
+app.get('/api/production/:courseCode/audio-flags', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const flags = await supabaseClient.getAudioFlags(courseCode)
+    const stats = await supabaseClient.getAudioFlagStats(courseCode)
+
+    res.json({ flags, stats })
+  } catch (error) {
+    logger.error('Error getting audio flags:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Create or update an audio flag
+app.post('/api/production/:courseCode/audio-flags', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { audio_uuid, status, reason, flagged_by } = req.body
+
+    if (!audio_uuid) {
+      return res.status(400).json({ error: 'audio_uuid required' })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const flag = await supabaseClient.upsertAudioFlag(audio_uuid, courseCode, {
+      status: status || 'flagged',
+      reason,
+      flagged_by: flagged_by || 'qa'
+    })
+
+    logger.info(`Audio flagged: ${audio_uuid} in ${courseCode} - ${reason || 'no reason'}`)
+
+    // Broadcast via WebSocket
+    io.to(`course:${courseCode}`).emit('audio_flagged', {
+      courseCode,
+      audio_uuid,
+      flag
+    })
+
+    res.json({ success: true, flag })
+  } catch (error) {
+    logger.error('Error creating audio flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Resolve an audio flag
+app.post('/api/production/:courseCode/audio-flags/:audioUuid/resolve', async (req, res) => {
+  try {
+    const { courseCode, audioUuid } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const flag = await supabaseClient.resolveAudioFlag(audioUuid, courseCode)
+
+    logger.info(`Audio flag resolved: ${audioUuid} in ${courseCode}`)
+
+    io.to(`course:${courseCode}`).emit('audio_flag_resolved', {
+      courseCode,
+      audio_uuid: audioUuid,
+      flag
+    })
+
+    res.json({ success: true, flag })
+  } catch (error) {
+    logger.error('Error resolving audio flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Delete an audio flag
+app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res) => {
+  try {
+    const { courseCode, audioUuid } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    await supabaseClient.deleteAudioFlag(audioUuid, courseCode)
+
+    logger.info(`Audio flag deleted: ${audioUuid} in ${courseCode}`)
+
+    io.to(`course:${courseCode}`).emit('audio_flag_deleted', {
+      courseCode,
+      audio_uuid: audioUuid
+    })
+
+    res.json({ success: true })
+  } catch (error) {
+    logger.error('Error deleting audio flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// LEGACY FLAGS (old sample_flags table - keep for backwards compat)
+// =============================================================================
+
 // Delete a sample flag (item is done, no longer needs regen)
 app.post('/api/production/:courseCode/flags/delete', async (req, res) => {
   try {

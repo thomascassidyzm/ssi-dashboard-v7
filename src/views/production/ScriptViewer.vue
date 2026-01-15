@@ -955,18 +955,13 @@ const editFlaggedItem = (item: FlaggedItem) => {
 const unflagItem = async (item: FlaggedItem) => {
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
-      method: 'POST',
+    // Delete the flag using new audio-flags endpoint
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.uuid}`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        uuid: item.uuid,
-        status: 'approved', // Clear the flag by setting to approved
-        note: 'Flag cleared',
-        flagged_by: 'dashboard_user'
-      })
+      }
     });
 
     if (!response.ok) throw new Error('Failed to clear flag');
@@ -1035,14 +1030,13 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
     const apiBaseUrl = getApiBaseUrl();
 
     if (isCurrentlyMarked) {
-      // Delete the flag (user is happy with audio)
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/delete`, {
-        method: 'POST',
+      // Delete the flag using new audio-flags endpoint (user is happy with audio)
+      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${uuid}`, {
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({ uuid })
+        }
       });
 
       if (!response.ok) {
@@ -1052,27 +1046,28 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
       // Clear local state
       (phrase as any)[flagKey] = null;
     } else {
-      // Create/update flag to pending_regen
-      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+      // Create/update flag using new audio-flags endpoint
+      const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({
-          uuid,
-          status: 'pending_regen',
-          note: `Marked ${track} audio for regeneration`,
+          audio_uuid: uuid,
+          status: 'flagged',
+          reason: `Marked ${track} audio for regeneration`,
           flagged_by: 'dashboard_user'
         })
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to update flag: ${response.statusText}`);
+        const errText = await response.text();
+        throw new Error(`Failed to update flag: ${errText}`);
       }
 
       // Set local state
-      (phrase as any)[flagKey] = { status: 'pending_regen', notes: `Marked ${track} audio for regeneration` };
+      (phrase as any)[flagKey] = { status: 'flagged', notes: `Marked ${track} audio for regeneration` };
     }
 
     // Update is_flagged based on any remaining pending_regen flags
@@ -1137,13 +1132,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     if (data.regen_flags.known && phraseToEdit.value.known_audio_uuid) {
       flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            uuid: phraseToEdit.value.known_audio_uuid,
-            status: 'flagged_regen_tts',
-            note: 'Text edited - flagged for regeneration',
+            audio_uuid: phraseToEdit.value.known_audio_uuid,
+            status: 'flagged',
+            reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
           })
         })
@@ -1152,13 +1147,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     if (data.regen_flags.target1 && phraseToEdit.value.target1_audio_uuid) {
       flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            uuid: phraseToEdit.value.target1_audio_uuid,
-            status: 'flagged_regen_tts',
-            note: 'Text edited - flagged for regeneration',
+            audio_uuid: phraseToEdit.value.target1_audio_uuid,
+            status: 'flagged',
+            reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
           })
         })
@@ -1167,13 +1162,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) {
       flagPromises.push(
-        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+        fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({
-            uuid: phraseToEdit.value.target2_audio_uuid,
-            status: 'flagged_regen_tts',
-            note: 'Text edited - flagged for regeneration',
+            audio_uuid: phraseToEdit.value.target2_audio_uuid,
+            status: 'flagged',
+            reason: 'Text edited - flagged for regeneration',
             flagged_by: 'dashboard_user'
           })
         })
@@ -1211,16 +1206,17 @@ const submitFlag = async (data: { flagType: FlagType; notes: string }) => {
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/flags/update`, {
+    // Use new audio-flags endpoint
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
-        uuid: selectedSample.value.uuid,
-        status: `flagged_${data.flagType}`,
-        note: data.notes,
+        audio_uuid: selectedSample.value.uuid,
+        status: 'flagged',
+        reason: `${data.flagType}: ${data.notes}`,
         flagged_by: 'reviewer',
       })
     });
