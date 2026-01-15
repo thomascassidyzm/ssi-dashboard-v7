@@ -385,12 +385,26 @@ The API will REJECT submissions that:
 
 Fix errors and resubmit. The database is the state - check /api/stats to see progress.
 
+## SSi Methodology Commands
+
+You have access to these commands for guidance. **USE THEM** when unsure or after errors:
+
+- \`/ssi-decompose-seed\` - How to break a seed into LEGOs (tiling, ordering, M-LEGOs)
+- \`/ssi-build-phrases\` - How to generate phrases (progression, counts, ETERNAL)
+- \`/ssi-learner-pattern\` - What the learner experiences (the full pedagogical pattern)
+
+**Invoke these commands:**
+- Before starting if you need a refresher
+- After a submission is rejected
+- After context compaction
+- When unsure about decomposition or phrase building
+
 ${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 
 ## Recovery (Context Compaction)
 
 If interrupted or context compacts:
-1. Read this brief again (it's saved to temp/)
+1. Invoke \`/ssi-learner-pattern\` to refresh the methodology
 2. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - see current progress
 3. Continue from next incomplete seed
 4. **Database is the state** - no external tracking needed
