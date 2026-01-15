@@ -237,6 +237,31 @@ async function generateManifest(courseCode, options = {}) {
     v12AudioMap = await buildV12AudioMap(courseCode);
   }
 
+  // Get welcome/introduction audio from course_audio
+  let welcomeAudio = null;
+  const { data: welcomeData, error: welcomeError } = await supabase
+    .from('course_audio')
+    .select('s3_key, duration_ms, text')
+    .eq('course_code', courseCode)
+    .eq('role', 'welcome')
+    .single();
+
+  if (welcomeError) {
+    console.warn(`  Warning: Could not load welcome audio: ${welcomeError.message}`);
+  } else if (welcomeData) {
+    // Extract UUID from s3_key (e.g., 'mastered/ABC123-DEF456.mp3' → 'ABC123-DEF456')
+    const s3KeyMatch = welcomeData.s3_key?.match(/mastered\/(.+)\.mp3/);
+    const audioUuid = s3KeyMatch ? s3KeyMatch[1] : null;
+
+    welcomeAudio = {
+      id: audioUuid || 'welcome-audio-not-found',
+      cadence: 'natural',
+      role: 'presentation',
+      duration: (welcomeData.duration_ms || 0) / 1000  // Convert ms to seconds
+    };
+    console.log(`  Loaded welcome audio: ${audioUuid} (${welcomeAudio.duration.toFixed(2)}s)`);
+  }
+
   // Get all seeds with LEGOs (paginated)
   const PAGE_SIZE = 1000;
   const seeds = [];
@@ -629,7 +654,7 @@ async function generateManifest(courseCode, options = {}) {
     target: targetLang,
     version: '12.0.0',  // Database-generated version
     status: 'alpha',
-    introduction: {
+    introduction: welcomeAudio || {
       id: 'introduction-placeholder',
       cadence: 'natural',
       role: 'presentation',
