@@ -1,14 +1,25 @@
 /**
  * Course Data Service
  *
- * Unified abstraction layer for database operations on course structure.
- * Provides CRUD operations for seeds, legos, and practice_phrases.
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * Course data is stored EXCLUSIVELY in Supabase, NOT in JSON files.
+ * This is the unified abstraction layer for all course database operations.
  *
- * This service enables the database-first architecture where:
+ * JSON files (lego_pairs.json, lego_baskets.json) are DEPRECATED.
+ * Do NOT read course data from JSON files - always use this service.
+ *
+ * Provides CRUD operations for:
+ * - course_seeds: Seed sentences
+ * - course_legos: LEGO definitions
+ * - course_practice_phrases: Practice phrases for each LEGO
+ *
+ * This service enables the database-only architecture where:
  * - Phase 1 writes seeds/legos directly to database
  * - Phase 2 updates is_new flags in database
  * - Phase 3 writes practice phrases to database
- * - Manifest is generated on-demand from database
+ * - course-builder-api.cjs writes LEGOs directly to database
+ * - manifest-generator.cjs generates manifests ON-DEMAND from database
  *
  * ALIGNED WITH: /database/migrations/002_registry_schema.sql
  * SCHEMA VERSION: Registry v1.1.0 (2025-12-15)
@@ -31,9 +42,11 @@ const createLogger = require('./shared/logger.cjs');
 
 const logger = createLogger('CourseData');
 
-// Feature flags - can be overridden via environment variables
-const USE_DATABASE_WRITES = process.env.USE_DATABASE_WRITES !== 'false';
-const USE_DATABASE_READS = process.env.USE_DATABASE_READS !== 'false';
+// Feature flags - default to DATABASE mode (true)
+// Setting these to 'false' is NOT RECOMMENDED - only for debugging
+// As of January 2026, courses are DATABASE-ONLY (Supabase)
+const USE_DATABASE_WRITES = process.env.USE_DATABASE_WRITES !== 'false';  // Default: true
+const USE_DATABASE_READS = process.env.USE_DATABASE_READS !== 'false';    // Default: true
 
 // Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;

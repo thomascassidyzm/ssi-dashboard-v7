@@ -1,15 +1,21 @@
 #!/usr/bin/env node
 
 /**
- * Phase 1: Translation Server
+ * Phase 1: Translation Server (DATABASE-ONLY ARCHITECTURE)
+ *
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * Course data is stored EXCLUSIVELY in Supabase, NOT in JSON files.
+ * - Seeds saved to course_seeds table with status='draft'
+ * - LEGOs saved to course_legos table with status='draft'
+ * - No JSON files written (draft_lego_pairs.json DEPRECATED)
+ * - Uses course-data-service.cjs for all database operations
  *
  * Responsibilities:
  * - Spawn parallel Claude Code browser sessions for translation
  * - Coordinate multiple translation agents (parallelization from centralized config)
- * - Watch for phase1-* branches
- * - Merge translation outputs into seed_pairs.json
+ * - Save seeds and LEGOs directly to Supabase via course-data-service
  * - Validate translation quality
- * - Write seed_pairs.json to VFS
  * - Report completion to orchestrator
  *
  * Port: 3457 (auto-configured by start-automation.js)
@@ -676,7 +682,7 @@ app.post('/start', async (req, res) => {
     // Ensure course directory exists
     const courseDir = path.join(VFS_ROOT, courseCode);
     await fs.ensureDir(courseDir);
-    await fs.ensureDir(path.join(courseDir, 'phase1_batches'));
+    // DB-FIRST: No longer creating phase1_batches directory - data goes to database
 
     // Spawn MASTERS (browser tabs or iTerm2 windows) - each master spawns workers via Task tool
     await spawnMasters(courseCode, {
@@ -1054,6 +1060,7 @@ async function loadAgentSpawner(spawnerMode = 'browser') {
 /**
  * GET /preview/:courseCode
  * Preview what a Phase 1 job would look like without starting it (dry run)
+ * DB-FIRST: Queries database for processed seeds
  */
 app.get('/preview/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
@@ -1069,7 +1076,6 @@ app.get('/preview/:courseCode', async (req, res) => {
     }
 
     const [target, known] = parts;
-    const courseDir = path.join(VFS_ROOT, courseCode);
 
     // Check for existing active job
     const existingJob = activeJobs.get(courseCode);
@@ -1096,48 +1102,29 @@ app.get('/preview/:courseCode', async (req, res) => {
       });
     }
 
-    // Scan for processed seeds
-    const processedSeeds = new Set();
-    const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
-    const batchesDir = path.join(courseDir, 'phase1_batches');
-
-    if (await fs.pathExists(draftPath)) {
-      try {
-        const draft = await fs.readJson(draftPath);
-        for (const seed of draft) {
-          if (seed.seed_id) {
-            processedSeeds.add(seed.seed_id);
-          }
-        }
-      } catch (err) {
-        console.error(`[Phase 1] Error reading draft_lego_pairs.json: ${err.message}`);
-      }
-    } else if (await fs.pathExists(batchesDir)) {
-      const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
-      for (const file of batchFiles) {
-        try {
-          const batch = await fs.readJson(path.join(batchesDir, file));
-          for (const seed of batch) {
-            if (seed.seed_id) {
-              processedSeeds.add(seed.seed_id);
-            }
-          }
-        } catch (err) {
-          console.error(`[Phase 1] Error reading ${file}: ${err.message}`);
+    // DB-FIRST: Query database for processed seeds
+    const processedSeedNumbers = new Set();
+    try {
+      const progress = await courseDataService.getCourseProgress(courseCode);
+      if (progress && progress.phase1 && progress.phase1.seeds) {
+        for (const seedNum of progress.phase1.seeds) {
+          processedSeedNumbers.add(seedNum);
         }
       }
+    } catch (dbError) {
+      console.warn(`[Phase 1] Could not query database: ${dbError.message}`);
     }
 
     // Find missing seeds
     const missingSeeds = [];
     for (let i = 1; i <= totalSeeds; i++) {
-      const seedId = 'S' + String(i).padStart(4, '0');
-      if (!processedSeeds.has(seedId)) {
-        missingSeeds.push(seedId);
+      if (!processedSeedNumbers.has(i)) {
+        missingSeeds.push('S' + String(i).padStart(4, '0'));
       }
     }
 
     const seedsToProcess = missingSeeds.length;
+    const processedCount = processedSeedNumbers.size;
 
     if (seedsToProcess === 0) {
       return res.json({
@@ -1145,14 +1132,14 @@ app.get('/preview/:courseCode', async (req, res) => {
         courseCode,
         alreadyComplete: true,
         seedsToProcess: 0,
-        processedSeeds: processedSeeds.size,
+        processedSeeds: processedCount,
         totalSeeds,
         message: 'Phase 1 is already complete - all seeds translated'
       });
     }
 
     // Calculate job shape
-    const isResumeMode = processedSeeds.size > 0;
+    const isResumeMode = processedCount > 0;
     let pattern;
 
     if (isResumeMode) {
@@ -1188,7 +1175,7 @@ app.get('/preview/:courseCode', async (req, res) => {
 
       // Progress info
       seedsToProcess,
-      processedSeeds: processedSeeds.size,
+      processedSeeds: processedCount,
       totalSeeds,
       isResumeMode,
       mode: isResumeMode ? 'resume' : mode,
@@ -1267,6 +1254,8 @@ app.post('/stop/:courseCode', async (req, res) => {
 
 /**
  * POST /upload-translations - Receive translations directly from Claude Code agents
+ * LEGACY ENDPOINT - receives translation-only format (no LEGOs)
+ * DB-FIRST: Saves to course_seeds table
  *
  * Body: {
  *   course: 'cmn_for_eng',
@@ -1293,98 +1282,51 @@ app.post('/upload-translations', async (req, res) => {
       });
     }
 
-    console.log(`📥 Receiving translation: ${course} / ${seedId} (${translation[0]})${agentId ? ` from ${agentId}` : ''}`);
+    const [knownText, targetText] = translation;
+    console.log(`📥 Receiving translation: ${course} / ${seedId} (${knownText})${agentId ? ` from ${agentId}` : ''}`);
 
-    // Course directory
-    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
-    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-    const phase1OutputsDir = path.join(courseDir, 'phase1_outputs');
-
-    // Ensure directories exist
-    await fs.ensureDir(phase1OutputsDir);
-
-    // Save individual translation file
-    const translationFilePath = path.join(phase1OutputsDir, `seed_${seedId}_translation.json`);
-    await fs.writeJson(translationFilePath, { seedId, translation, agentId, timestamp: new Date().toISOString() }, { spaces: 2 });
-    console.log(`   💾 Saved to ${translationFilePath}`);
-
-    // Load or create seed_pairs.json
-    let seedPairs = {
-      version: '7.7.1',
-      course,
-      target_language: course.split('_')[0], // e.g., 'cmn' from 'cmn_for_eng'
-      known_language: course.split('_')[2] || 'eng', // e.g., 'eng' from 'cmn_for_eng'
-      seed_range: { start: 1, end: 0 },
-      generated: new Date().toISOString(),
-      total_seeds: 0,
-      actual_seeds: 0,
-      translations: {},
-      metadata: {}
-    };
-
-    if (await fs.pathExists(seedPairsPath)) {
-      seedPairs = await fs.readJson(seedPairsPath);
+    // Parse seed number
+    const seedNumber = courseDataService.parseSeedNumber(seedId);
+    if (!seedNumber) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid seedId format'
+      });
     }
 
-    // Add or update translation
-    const isNew = !seedPairs.translations[seedId];
-    seedPairs.translations[seedId] = translation;
+    // DB-FIRST: Save to database
+    try {
+      await courseDataService.ensureCourse(course);
+      await courseDataService.saveSeed(course, {
+        seedNumber: seedNumber,
+        knownText: knownText,
+        targetText: targetText,
+        status: 'draft'
+      });
 
-    // Update counts
-    const totalTranslations = Object.keys(seedPairs.translations).length;
-    seedPairs.total_seeds = totalTranslations;
-    seedPairs.actual_seeds = totalTranslations;
+      console.log(`   💾 Saved seed ${seedId} to database`);
 
-    // Update seed range
-    const seedNumbers = Object.keys(seedPairs.translations)
-      .map(id => parseInt(id.replace('S', '')))
-      .filter(n => !isNaN(n));
+      // Report event
+      reportEvent(course, {
+        event: 'seed:complete',
+        seedId,
+        agentId: agentId || 'unknown'
+      });
 
-    if (seedNumbers.length > 0) {
-      seedPairs.seed_range.start = Math.min(...seedNumbers);
-      seedPairs.seed_range.end = Math.max(...seedNumbers);
+      res.json({
+        success: true,
+        seedId,
+        agentId: agentId || 'unknown',
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (dbError) {
+      console.error(`   ❌ Database save failed: ${dbError.message}`);
+      return res.status(500).json({
+        success: false,
+        error: 'Database save failed: ' + dbError.message
+      });
     }
-
-    // Update metadata with enhanced tracking
-    if (!seedPairs.metadata.uploads) {
-      seedPairs.metadata.uploads = [];
-    }
-
-    seedPairs.metadata = {
-      ...seedPairs.metadata,
-      last_upload: new Date().toISOString(),
-      last_seed: seedId,
-      last_agent: agentId || 'unknown',
-      total_translations: totalTranslations
-    };
-
-    // Record upload event (keep last 50)
-    seedPairs.metadata.uploads.push({
-      timestamp: new Date().toISOString(),
-      seedId,
-      agentId: agentId || 'unknown',
-      isNew,
-      totalAfter: totalTranslations
-    });
-
-    if (seedPairs.metadata.uploads.length > 50) {
-      seedPairs.metadata.uploads = seedPairs.metadata.uploads.slice(-50);
-    }
-
-    // Save merged file
-    await fs.writeJson(seedPairsPath, seedPairs, { spaces: 2 });
-
-    console.log(`   ✅ Merged into seed_pairs.json (${isNew ? 'new' : 'updated'})`);
-    console.log(`   📊 Total translations: ${totalTranslations}`);
-
-    res.json({
-      success: true,
-      seedId,
-      agentId: agentId || 'unknown',
-      timestamp: new Date().toISOString(),
-      isNew,
-      totalTranslations
-    });
 
   } catch (error) {
     console.error('❌ Upload translation error:', error);
@@ -1894,7 +1836,11 @@ function expandCompactFormat(compactData) {
  * POST /api/phase1/:courseCode/upload-batch
  * Workers upload their completed batches here
  * Accepts both compact and full format
- * Now also writes to database (dual-write for backwards compatibility)
+ *
+ * DB-FIRST ARCHITECTURE: Writes directly to Supabase via course-data-service
+ * - Seeds saved to course_seeds table with status='draft'
+ * - LEGOs saved to course_legos table with status='draft'
+ * - No JSON files written
  */
 app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
   const { courseCode } = req.params;
@@ -1917,16 +1863,7 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
     batchData = expandCompactFormat(batchData);
   }
 
-  const courseDir = path.join(VFS_ROOT, courseCode);
-  const batchesDir = path.join(courseDir, 'phase1_batches');
-  await fs.ensureDir(batchesDir);
-
-  // Save batch with timestamp + random suffix to avoid collisions (JSON fallback)
-  const randomSuffix = Math.random().toString(36).substring(2, 8);
-  const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
-  await fs.writeJson(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
-
-  console.log(`[Phase 1] ✅ Received batch: ${batchData.length} seeds → ${batchFile}`);
+  console.log(`[Phase 1] ✅ Received batch: ${batchData.length} seeds`);
 
   // Extract seed IDs and report batch:received event
   const seedIds = batchData.map(seed => seed.seed_id).filter(Boolean);
@@ -1937,7 +1874,6 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
     event: 'batch:received',
     seedIds,
     agentId,
-    batchFile,
     seedCount: batchData.length
   });
 
@@ -1950,40 +1886,112 @@ app.post('/api/phase1/:courseCode/upload-batch', async (req, res) => {
     });
   }
 
-  // DATABASE-FIRST: Write to Supabase
-  let dbStats = { seeds: 0, legos: 0, components: 0 };
-  if (courseDataService.USE_DATABASE_WRITES) {
-    try {
-      // Ensure course exists in database
-      await courseDataService.ensureCourse(courseCode);
+  // DB-FIRST: Write to Supabase (required - no JSON fallback)
+  let dbStats = { seeds: 0, legos: 0, components: 0, errors: [] };
 
-      // Import each seed to database
-      for (const seedData of batchData) {
-        const result = await courseDataService.importSeedWithLegos(courseCode, seedData);
-        if (result) {
-          dbStats.seeds++;
-          dbStats.legos += result.legoCount || 0;
-          dbStats.components += result.componentCount || 0;
+  try {
+    // Ensure course exists in database
+    await courseDataService.ensureCourse(courseCode);
+
+    // Save each seed and its LEGOs to database
+    for (const seedData of batchData) {
+      try {
+        // Parse seed number from seed_id
+        const seedNumber = courseDataService.parseSeedNumber(seedData.seed_id);
+        if (!seedNumber) {
+          dbStats.errors.push({ seedId: seedData.seed_id, error: 'Invalid seed_id format' });
+          continue;
         }
+
+        // Save seed to course_seeds table
+        await courseDataService.saveSeed(courseCode, {
+          seedNumber: seedNumber,
+          knownText: seedData.seed_pair?.known || seedData.known_text,
+          targetText: seedData.seed_pair?.target || seedData.target_text,
+          status: 'draft'
+        });
+        dbStats.seeds++;
+
+        // Save each LEGO to course_legos table
+        const legos = seedData.legos || [];
+        const seedKnown = seedData.seed_pair?.known || seedData.known_text;
+        const seedTarget = seedData.seed_pair?.target || seedData.target_text;
+
+        for (const legoData of legos) {
+          const legoIndex = legoData.lego_index || courseDataService.parseLegoIndex(legoData.id);
+          const legoKnown = legoData.lego?.known || legoData.known;
+          const legoTarget = legoData.lego?.target || legoData.target;
+
+          // VALIDATION: Skip LEGOs that are the entire seed sentence
+          // A LEGO should NEVER be the complete seed - that's preposterous
+          // The seed sentence is practiced via the culminating LEGO's practice phrases
+          if (legoKnown === seedKnown || legoTarget === seedTarget) {
+            console.warn(`[Phase 1] ⚠️  Skipping invalid LEGO (entire seed): ${legoData.id || `L${legoIndex}`}`);
+            dbStats.errors.push({
+              seedId: seedData.seed_id,
+              error: `LEGO is entire seed sentence (skipped): "${legoKnown}"`
+            });
+            continue;
+          }
+
+          // Prepare components for M-type LEGOs
+          let components = null;
+          if (legoData.type === 'M' && legoData.components) {
+            components = legoData.components;
+          }
+
+          await courseDataService.saveLego(courseCode, seedNumber, {
+            legoIndex: legoIndex,
+            knownText: legoKnown,
+            targetText: legoTarget,
+            type: legoData.type || 'A',
+            isNew: legoData.new !== false,
+            components: components,
+            status: 'draft'
+          });
+          dbStats.legos++;
+
+          if (components) {
+            dbStats.components += components.length;
+          }
+        }
+      } catch (seedError) {
+        console.error(`[Phase 1] ⚠️  Error saving seed ${seedData.seed_id}:`, seedError.message);
+        dbStats.errors.push({ seedId: seedData.seed_id, error: seedError.message });
       }
-      console.log(`[Phase 1] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos, ${dbStats.components} components`);
-    } catch (dbError) {
-      console.error(`[Phase 1] ⚠️  Database write failed (JSON saved as fallback):`, dbError.message);
     }
+
+    console.log(`[Phase 1] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos, ${dbStats.components} components`);
+    if (dbStats.errors.length > 0) {
+      console.warn(`[Phase 1] ⚠️  ${dbStats.errors.length} errors during save`);
+    }
+  } catch (dbError) {
+    console.error(`[Phase 1] ❌ Database write failed:`, dbError.message);
+    return res.status(500).json({
+      success: false,
+      error: 'Database write failed: ' + dbError.message,
+      received: batchData.length
+    });
   }
 
   res.json({
     success: true,
     received: batchData.length,
-    file: batchFile,
     expanded: isCompact,
-    database: dbStats
+    database: {
+      seeds: dbStats.seeds,
+      legos: dbStats.legos,
+      components: dbStats.components,
+      errors: dbStats.errors.length
+    }
   });
 });
 
 /**
  * POST /api/phase1/:courseCode/master-complete
  * Masters report completion here
+ *
+ * DB-FIRST: No batch merging needed - data is already in database
  */
 app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
   const { courseCode } = req.params;
@@ -2008,8 +2016,10 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
 
     // Check if all masters complete
     if (job.mastersComplete >= job.masters) {
-      console.log(`[Phase 1] 🎉 All masters complete! Merging batches...`);
-      await mergeBatches(courseCode);
+      console.log(`[Phase 1] 🎉 All masters complete!`);
+      // DB-FIRST: Data is already in database via upload-batch calls
+      // Query database for completion stats
+      await reportPhase1Complete(courseCode);
       job.status = 'complete';
     }
   }
@@ -2018,37 +2028,28 @@ app.post('/api/phase1/:courseCode/master-complete', async (req, res) => {
 });
 
 /**
- * Merge all batch files into draft_lego_pairs.json
+ * Report Phase 1 completion - query database for stats
+ * DB-FIRST: No file merging needed, data is in course_seeds and course_legos tables
  */
-async function mergeBatches(courseCode) {
-  const courseDir = path.join(VFS_ROOT, courseCode);
-  const batchesDir = path.join(courseDir, 'phase1_batches');
+async function reportPhase1Complete(courseCode) {
+  try {
+    // Get progress stats from database
+    const progress = await courseDataService.getCourseProgress(courseCode);
 
-  if (!await fs.pathExists(batchesDir)) {
-    console.log(`[Phase 1] No batches directory found`);
-    return;
+    if (progress) {
+      console.log(`[Phase 1] 📊 Database stats for ${courseCode}:`);
+      console.log(`   Seeds: ${progress.seeds}`);
+      console.log(`   LEGOs: ${progress.legos}`);
+      console.log(`   Phase 1 complete: ${progress.phase1.complete}/${progress.phase1.target}`);
+    }
+
+    // Notify orchestrator
+    await notifyOrchestrator(courseCode, 'complete');
+  } catch (error) {
+    console.error(`[Phase 1] ⚠️  Error getting completion stats:`, error.message);
+    // Still notify orchestrator even if stats fail
+    await notifyOrchestrator(courseCode, 'complete');
   }
-
-  const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
-  console.log(`[Phase 1] Merging ${batchFiles.length} batch files...`);
-
-  const allSeeds = [];
-  for (const file of batchFiles) {
-    const batch = await fs.readJson(path.join(batchesDir, file));
-    allSeeds.push(...batch);
-  }
-
-  // Sort by seed_id
-  allSeeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
-
-  // Write draft_lego_pairs.json
-  const outputPath = path.join(courseDir, 'draft_lego_pairs.json');
-  await fs.writeJson(outputPath, allSeeds, { spaces: 2 });
-
-  console.log(`[Phase 1] ✅ Merged ${allSeeds.length} seeds → draft_lego_pairs.json`);
-
-  // Notify orchestrator
-  await notifyOrchestrator(courseCode, 'complete');
 }
 
 /**
@@ -2104,54 +2105,28 @@ app.post('/resume', async (req, res) => {
   console.log(`[Phase 1] Pattern: ${workersPerMaster} workers × ${seedsPerWorker} seed (RESUME CONFIG - max granularity)`);
 
   const orchestratorUrl = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
-  const courseDir = path.join(VFS_ROOT, courseCode);
-  const batchesDir = path.join(courseDir, 'phase1_batches');
 
-  // Step 1: Scan draft_lego_pairs.json (the actual output file) for processed seeds
-  // Fall back to batch files if draft doesn't exist yet
-  const processedSeeds = new Set();
-  const draftPath = path.join(courseDir, 'draft_lego_pairs.json');
-
-  if (await fs.pathExists(draftPath)) {
-    // Primary: scan the merged output file
-    try {
-      const draft = await fs.readJson(draftPath);
-      for (const seed of draft) {
-        if (seed.seed_id) {
-          processedSeeds.add(seed.seed_id);
-        }
-      }
-      console.log(`[Phase 1] Scanned draft_lego_pairs.json: ${processedSeeds.size} seeds`);
-    } catch (err) {
-      console.error(`[Phase 1] Error reading draft_lego_pairs.json: ${err.message}`);
-    }
-  } else if (await fs.pathExists(batchesDir)) {
-    // Fallback: scan batch files if draft doesn't exist
-    console.log(`[Phase 1] No draft_lego_pairs.json found, scanning batch files...`);
-    const batchFiles = (await fs.readdir(batchesDir)).filter(f => f.endsWith('.json'));
-    for (const file of batchFiles) {
-      try {
-        const batch = await fs.readJson(path.join(batchesDir, file));
-        for (const seed of batch) {
-          if (seed.seed_id) {
-            processedSeeds.add(seed.seed_id);
-          }
-        }
-      } catch (err) {
-        console.error(`[Phase 1] Error reading ${file}: ${err.message}`);
+  // DB-FIRST: Query database for processed seeds
+  const processedSeedNumbers = new Set();
+  try {
+    const progress = await courseDataService.getCourseProgress(courseCode);
+    if (progress && progress.phase1 && progress.phase1.seeds) {
+      for (const seedNum of progress.phase1.seeds) {
+        processedSeedNumbers.add(seedNum);
       }
     }
-    console.log(`[Phase 1] Scanned ${batchFiles.length} batch files: ${processedSeeds.size} seeds`);
+    console.log(`[Phase 1] Database query: ${processedSeedNumbers.size} seeds found`);
+  } catch (dbError) {
+    console.warn(`[Phase 1] Could not query database: ${dbError.message}`);
   }
 
-  console.log(`[Phase 1] Processed seeds found: ${processedSeeds.size}`);
+  console.log(`[Phase 1] Processed seeds found: ${processedSeedNumbers.size}`);
 
   // Step 2: Find missing seeds
   const missingSeeds = [];
   for (let i = 1; i <= totalSeeds; i++) {
-    const seedId = 'S' + String(i).padStart(4, '0');
-    if (!processedSeeds.has(seedId)) {
-      missingSeeds.push(seedId);
+    if (!processedSeedNumbers.has(i)) {
+      missingSeeds.push('S' + String(i).padStart(4, '0'));
     }
   }
 
@@ -2161,7 +2136,7 @@ app.post('/resume', async (req, res) => {
     return res.json({
       success: true,
       message: 'No missing seeds - Phase 1 is complete!',
-      processedSeeds: processedSeeds.size,
+      processedSeeds: processedSeedNumbers.size,
       missingSeeds: 0
     });
   }
@@ -2372,7 +2347,7 @@ curl -X POST "${orchestratorUrl}/api/phase1/${courseCode}/master-complete" \\
     success: true,
     message: `Launched ${masters.length} gap-fill masters for ${missingSeeds.length} missing seeds`,
     courseCode,
-    processedSeeds: processedSeeds.size,
+    processedSeeds: processedSeedNumbers.size,
     missingSeeds: missingSeeds.length,
     masters: masters.length,
     workersPerMaster,
@@ -2619,7 +2594,7 @@ app.get('/api/phase1/jobs', (req, res) => {
 
 /**
  * Process a single pending upload from the queue
- * Uses the same logic as upload-batch endpoint
+ * DB-FIRST: Writes directly to Supabase, no JSON files
  */
 async function processQueueItem(item) {
   const { id, course_code: courseCode, payload, agent_id: agentId } = item;
@@ -2643,16 +2618,7 @@ async function processQueueItem(item) {
       batchData = expandCompactFormat(batchData);
     }
 
-    // Save to local JSON (dual-write for backwards compatibility)
-    const courseDir = path.join(VFS_ROOT, courseCode);
-    const batchesDir = path.join(courseDir, 'phase1_batches');
-    await fs.ensureDir(batchesDir);
-
-    const randomSuffix = Math.random().toString(36).substring(2, 8);
-    const batchFile = `batch_${Date.now()}_${randomSuffix}_${batchData.length}seeds.json`;
-    await fs.writeJson(path.join(batchesDir, batchFile), batchData, { spaces: 2 });
-
-    console.log(`[Queue] ✅ Saved batch: ${batchData.length} seeds → ${batchFile}`);
+    console.log(`[Queue] ✅ Processing ${batchData.length} seeds from queue`);
 
     // Extract seed IDs
     const seedIds = batchData.map(seed => seed.seed_id).filter(Boolean);
@@ -2662,7 +2628,6 @@ async function processQueueItem(item) {
       event: 'batch:received',
       seedIds,
       agentId: agentId || 'queue',
-      batchFile,
       seedCount: batchData.length,
       source: 'queue'
     });
@@ -2677,20 +2642,81 @@ async function processQueueItem(item) {
       });
     }
 
-    // DATABASE-FIRST: Write to Supabase
-    let dbStats = { seeds: 0, legos: 0, components: 0 };
-    if (courseDataService.USE_DATABASE_WRITES) {
-      await courseDataService.ensureCourse(courseCode);
+    // DB-FIRST: Write to Supabase (required - no JSON fallback)
+    let dbStats = { seeds: 0, legos: 0, components: 0, errors: [] };
 
-      for (const seedData of batchData) {
-        const result = await courseDataService.importSeedWithLegos(courseCode, seedData);
-        if (result) {
-          dbStats.seeds++;
-          dbStats.legos += result.legoCount || 0;
-          dbStats.components += result.componentCount || 0;
+    await courseDataService.ensureCourse(courseCode);
+
+    for (const seedData of batchData) {
+      try {
+        // Parse seed number from seed_id
+        const seedNumber = courseDataService.parseSeedNumber(seedData.seed_id);
+        if (!seedNumber) {
+          dbStats.errors.push({ seedId: seedData.seed_id, error: 'Invalid seed_id format' });
+          continue;
         }
+
+        // Save seed to course_seeds table
+        await courseDataService.saveSeed(courseCode, {
+          seedNumber: seedNumber,
+          knownText: seedData.seed_pair?.known || seedData.known_text,
+          targetText: seedData.seed_pair?.target || seedData.target_text,
+          status: 'draft'
+        });
+        dbStats.seeds++;
+
+        // Save each LEGO to course_legos table
+        const legos = seedData.legos || [];
+        const seedKnown = seedData.seed_pair?.known || seedData.known_text;
+        const seedTarget = seedData.seed_pair?.target || seedData.target_text;
+
+        for (const legoData of legos) {
+          const legoIndex = legoData.lego_index || courseDataService.parseLegoIndex(legoData.id);
+          const legoKnown = legoData.lego?.known || legoData.known;
+          const legoTarget = legoData.lego?.target || legoData.target;
+
+          // VALIDATION: Skip LEGOs that are the entire seed sentence
+          // A LEGO should NEVER be the complete seed - that's preposterous
+          // The seed sentence is practiced via the culminating LEGO's practice phrases
+          if (legoKnown === seedKnown || legoTarget === seedTarget) {
+            console.warn(`[Phase 1] ⚠️  Skipping invalid LEGO (entire seed): ${legoData.id || `L${legoIndex}`}`);
+            dbStats.errors.push({
+              seedId: seedData.seed_id,
+              error: `LEGO is entire seed sentence (skipped): "${legoKnown}"`
+            });
+            continue;
+          }
+
+          // Prepare components for M-type LEGOs
+          let components = null;
+          if (legoData.type === 'M' && legoData.components) {
+            components = legoData.components;
+          }
+
+          await courseDataService.saveLego(courseCode, seedNumber, {
+            legoIndex: legoIndex,
+            knownText: legoKnown,
+            targetText: legoTarget,
+            type: legoData.type || 'A',
+            isNew: legoData.new !== false,
+            components: components,
+            status: 'draft'
+          });
+          dbStats.legos++;
+
+          if (components) {
+            dbStats.components += components.length;
+          }
+        }
+      } catch (seedError) {
+        console.error(`[Queue] ⚠️  Error saving seed ${seedData.seed_id}:`, seedError.message);
+        dbStats.errors.push({ seedId: seedData.seed_id, error: seedError.message });
       }
-      console.log(`[Queue] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos`);
+    }
+
+    console.log(`[Queue] 💾 Database write: ${dbStats.seeds} seeds, ${dbStats.legos} legos, ${dbStats.components} components`);
+    if (dbStats.errors.length > 0) {
+      console.warn(`[Queue] ⚠️  ${dbStats.errors.length} errors during save`);
     }
 
     // Mark as completed

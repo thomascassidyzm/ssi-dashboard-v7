@@ -57,16 +57,17 @@ const props = defineProps({
   }
 })
 
-// Phase configuration with display names
+// Phase configuration with display names (v14 - Course Builder consolidation)
 const phaseConfig = {
-  phase1: { name: 'PHASE 1', label: 'Translation' },
-  phase2: { name: 'PHASE 2', label: 'Conflict Resolution' },
-  phase3: { name: 'PHASE 3', label: 'Baskets' },
-  audio: { name: 'AUDIO', label: 'TTS' },
-  manifest: { name: 'MANIFEST', label: 'Compilation' }
+  courseBuilder: { name: 'COURSE BUILDER', label: 'Seeds + LEGOs + Phrases' },
+  phase1: { name: 'PHASE 1', label: 'Deprecated' },
+  phase2: { name: 'PHASE 2', label: 'Deprecated' },
+  phase3: { name: 'PHASE 3', label: 'Deprecated' },
+  audio: { name: 'PHASE 8', label: 'Audio Generation' },
+  manifest: { name: 'PHASE 9', label: 'Manifest' }
 }
 
-const phaseOrder = ['phase1', 'phase2', 'phase3', 'audio', 'manifest']
+const phaseOrder = ['courseBuilder', 'audio', 'manifest']
 
 // Methods
 function getPhaseData(key) {

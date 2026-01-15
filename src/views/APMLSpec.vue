@@ -8,13 +8,13 @@
           <span>Back to Documentation</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v13 Specification
+          APML v14 Specification
         </h1>
         <p class="mt-2 text-slate-400">
-          Course-owned audio architecture with flat storage
+          Course Builder Consolidation - Simplified content creation pipeline
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: v13.0.0 | Jan 3, 2026
+          Build: v14.0.0 | Jan 15, 2026
         </p>
       </div>
     </header>
@@ -24,20 +24,20 @@
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
 
         <!-- Breaking Change Banner -->
-        <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-8">
-          <h3 class="text-amber-400 font-semibold flex items-center gap-2">
-            <span>&#9888;</span> v13 Breaking Change: Simplified Audio Ownership
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 mb-8">
+          <h3 class="text-emerald-400 font-semibold flex items-center gap-2">
+            <span>&#9733;</span> v14 Architecture: Course Builder Consolidation
           </h3>
           <p class="text-sm text-slate-300 mt-2">
-            Audio is now <strong>directly owned by courses</strong> (no texts/audio_files indirection).
-            The <code class="text-emerald-300">course_audio</code> table is flat - courses own their audio directly.
-            <code class="text-emerald-300">shared_audio</code> is only for encouragements/instructions.
+            Phases 0-3 (translation, conflict resolution, basket generation) are now <strong>consolidated into the Course Builder API</strong>.
+            Single endpoint <code class="text-emerald-300">POST /api/seed/complete</code> validates atomically (tiling, ZUT, vocabulary).
+            Pipeline is now: <strong>Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)</strong>.
           </p>
         </div>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">The 12 Directions</h2>
-          <p class="text-slate-300 mb-4">APML v13 is guided by these architectural principles:</p>
+          <p class="text-slate-300 mb-4">APML v14 is guided by these architectural principles:</p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
@@ -194,64 +194,69 @@
         </section>
 
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Pipeline Architecture</h2>
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Pipeline Architecture (v14)</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
-              <p class="text-xs text-slate-400">Pipeline: <span class="text-emerald-400">Phase 1 (Translation + LEGO) → Phase 2 (Conflict Resolution) → Phase 3 (Baskets) → Phase 8 (Audio) → Phase 9 (Manifest)</span></p>
+              <p class="text-xs text-slate-400">Pipeline v14: <span class="text-emerald-400">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Phase Pipeline</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Service Pipeline</h3>
             <div class="overflow-x-auto">
               <table class="w-full text-sm border border-slate-600">
                 <thead class="bg-slate-800">
                   <tr>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Phase</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Name</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Input</th>
+                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Service</th>
+                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Port</th>
+                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Endpoint</th>
                     <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Output</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="border border-slate-600 px-3 py-2">1</td>
-                    <td class="border border-slate-600 px-3 py-2">Translation + LEGO Extraction</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">canonical_seeds.json</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">draft_lego_pairs.json</td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-600 px-3 py-2">2</td>
-                    <td class="border border-slate-600 px-3 py-2">Conflict Resolution</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">draft_lego_pairs.json</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">lego_pairs.json</td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-600 px-3 py-2">3</td>
-                    <td class="border border-slate-600 px-3 py-2">Basket Generation</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">lego_pairs.json</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">lego_baskets.json + Supabase</td>
+                  <tr class="bg-emerald-900/20">
+                    <td class="border border-slate-600 px-3 py-2 text-emerald-400 font-semibold">Course Builder</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3471</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /api/seed/complete</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_seeds, course_legos, course_practice_phrases</td>
                   </tr>
                   <tr class="bg-purple-900/20">
-                    <td class="border border-slate-600 px-3 py-2 text-purple-400">8</td>
-                    <td class="border border-slate-600 px-3 py-2 text-purple-400">Audio Generation (v13)</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_practice_phrases</td>
+                    <td class="border border-slate-600 px-3 py-2 text-purple-400">Phase 8 Audio</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3465</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /generate</td>
                     <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_audio + S3</td>
                   </tr>
                   <tr class="bg-amber-900/20">
-                    <td class="border border-slate-600 px-3 py-2 text-amber-400">9</td>
-                    <td class="border border-slate-600 px-3 py-2 text-amber-400">Manifest Compilation</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_audio (query)</td>
+                    <td class="border border-slate-600 px-3 py-2 text-amber-400">Phase 9 Manifest</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3466</td>
+                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /compile</td>
                     <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_manifest.json</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v13)</h3>
+            <div class="mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded">
+              <p class="text-xs text-amber-300"><strong>Deprecated (v13):</strong> Phase 1 (3457), Phase 2 (3458), Phase 3 (3459) - all replaced by Course Builder</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Course Builder Validation</h3>
+            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4 font-mono text-xs">
+              <pre class="text-slate-300">
+POST /api/seed/complete validates atomically:
+1. Tiling: Seed translation constructable from LEGO targets
+2. ZUT Conflicts: Same known → different target = REJECT
+3. Vocabulary: Phrases only use introduced vocabulary
+4. Phrase Count: Minimum phrases per LEGO based on position
+
+On failure: Nothing inserted, clear error with fix suggestions
+On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v14)</h3>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4 font-mono text-xs">
               <pre class="text-slate-300">
 1. Get course voice_config from courses table
-2. Extract audio needs from course_practice_phrases
+2. Extract audio needs from course_practice_phrases (Supabase)
 3. Check what's missing: get_missing_audio() RPC
 4. Generate TTS for missing audio (Azure)
 5. Upload to S3: {uuid}.mp3 (flat storage)
@@ -262,34 +267,28 @@
         </section>
 
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Core Data Files</h2>
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Data Architecture (v14)</h2>
           <div class="space-y-3">
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-emerald-300">draft_lego_pairs.json</h4>
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded p-4">
+              <h4 class="font-semibold text-emerald-300">Supabase Tables (Source of Truth)</h4>
               <p class="text-sm text-slate-400 mt-1">
-                Phase 1 output: translations with LEGO extraction (may have conflicts)<br/>
-                <code class="text-xs">{"version": "9.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}</code>
+                <strong>Course Data:</strong> <code class="text-xs">course_seeds</code>, <code class="text-xs">course_legos</code>, <code class="text-xs">course_practice_phrases</code><br/>
+                <strong>Audio Registry:</strong> <code class="text-xs">courses</code>, <code class="text-xs">course_audio</code>, <code class="text-xs">shared_audio</code><br/>
+                <span class="text-emerald-400 text-xs">All content written by Course Builder API, read by Phase 8 & 9</span>
               </p>
             </div>
             <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-emerald-300">lego_pairs.json</h4>
+              <h4 class="font-semibold text-slate-300">course_manifest.json</h4>
               <p class="text-sm text-slate-400 mt-1">
-                Phase 2 output: conflict-free LEGOs (SINGLE SOURCE OF TRUTH)<br/>
-                <code class="text-xs">{"version": "9.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}</code>
+                Phase 9 output: compiled manifest for learning app<br/>
+                Generated ON-DEMAND from Supabase (not stored, regenerable)
               </p>
             </div>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-emerald-300">lego_baskets.json</h4>
+            <div class="bg-amber-900/20 border border-amber-500/30 rounded p-4">
+              <h4 class="font-semibold text-amber-300">Deprecated JSON Files (v13)</h4>
               <p class="text-sm text-slate-400 mt-1">
-                Phase 3 output: learning baskets with enabling/discovery phrases<br/>
-                <code class="text-xs">{"version": "9.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}</code>
-              </p>
-            </div>
-            <div class="bg-slate-900/80 border border-purple-400/20 rounded p-4">
-              <h4 class="font-semibold text-purple-300">Supabase Tables (v13)</h4>
-              <p class="text-sm text-slate-400 mt-1">
-                Audio registry: <code class="text-xs">courses</code>, <code class="text-xs">course_audio</code>, <code class="text-xs">shared_audio</code><br/>
-                Practice data: <code class="text-xs">course_practice_phrases</code>, <code class="text-xs">practice_cycles</code>
+                <span class="line-through text-slate-500">draft_lego_pairs.json, lego_pairs.json, lego_baskets.json</span><br/>
+                <span class="text-xs text-amber-400">Legacy artifacts only - do not read course data from JSON files</span>
               </p>
             </div>
           </div>

@@ -1,0 +1,1534 @@
+{
+  "course_code": "deu_for_eng",
+  "legos": [
+    {
+      "seed_number": 1,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I want",
+      "target_text": "ich will",
+      "components": null
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to speak",
+      "target_text": "sprechen",
+      "components": null
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "German",
+      "target_text": "Deutsch",
+      "components": null
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 4,
+      "type": "A",
+      "is_new": true,
+      "known_text": "with you",
+      "target_text": "mit dir",
+      "components": null
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 5,
+      "type": "A",
+      "is_new": true,
+      "known_text": "now",
+      "target_text": "jetzt",
+      "components": null
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I'm trying",
+      "target_text": "ich versuche",
+      "components": null
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 2,
+      "type": "B",
+      "is_new": false,
+      "known_text": "trying to learn",
+      "target_text": "zu lernen",
+      "components": [
+        "S0002L01",
+        "S0002L03"
+      ]
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to learn",
+      "target_text": "zu lernen",
+      "components": null
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "how to speak",
+      "target_text": "wie man spricht",
+      "components": null
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "as often as possible",
+      "target_text": "so oft wie möglich",
+      "components": null
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "something",
+      "target_text": "etwas",
+      "components": null
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to say something",
+      "target_text": "etwas zu sagen",
+      "components": null
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 3,
+      "type": "B",
+      "is_new": false,
+      "known_text": "how to say something",
+      "target_text": "wie man etwas sagt",
+      "components": [
+        "S0003L01",
+        "S0004L01"
+      ]
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 4,
+      "type": "A",
+      "is_new": true,
+      "known_text": "something in German",
+      "target_text": "etwas auf Deutsch",
+      "components": null
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I'm going to",
+      "target_text": "ich werde",
+      "components": null
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 2,
+      "type": "B",
+      "is_new": false,
+      "known_text": "I'm going to practise",
+      "target_text": "ich werde üben",
+      "components": [
+        "S0005L01",
+        "S0005L03"
+      ]
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to practise",
+      "target_text": "üben",
+      "components": null
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 4,
+      "type": "B",
+      "is_new": false,
+      "known_text": "to practise speaking",
+      "target_text": "sprechen zu üben",
+      "components": [
+        "S0001L02",
+        "S0005L03"
+      ]
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 5,
+      "type": "A",
+      "is_new": true,
+      "known_text": "with someone else",
+      "target_text": "mit jemand anderem",
+      "components": null
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I need",
+      "target_text": "ich brauche",
+      "components": null
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to understand",
+      "target_text": "zu verstehen",
+      "components": null
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "what you say",
+      "target_text": "was du sagst",
+      "components": null
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I can",
+      "target_text": "ich kann",
+      "components": null
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "a little",
+      "target_text": "ein bisschen",
+      "components": null
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "but not",
+      "target_text": "aber nicht",
+      "components": null
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 4,
+      "type": "A",
+      "is_new": true,
+      "known_text": "very well",
+      "target_text": "sehr gut",
+      "components": null
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I have",
+      "target_text": "ich habe",
+      "components": null
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "been learning",
+      "target_text": "gelernt",
+      "components": null
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "for a while",
+      "target_text": "seit einer Weile",
+      "components": null
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "it's difficult",
+      "target_text": "es ist schwierig",
+      "components": null
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "for me",
+      "target_text": "für mich",
+      "components": null
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "at first",
+      "target_text": "am Anfang",
+      "components": null
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I think",
+      "target_text": "ich denke",
+      "components": null
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "that",
+      "target_text": "dass",
+      "components": null
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "it's important",
+      "target_text": "es wichtig ist",
+      "components": null
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "every day",
+      "target_text": "jeden Tag",
+      "components": null
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "if possible",
+      "target_text": "wenn möglich",
+      "components": null
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I like",
+      "target_text": "ich mag",
+      "components": null
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "to listen",
+      "target_text": "zuhören",
+      "components": null
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "and to repeat",
+      "target_text": "und wiederholen",
+      "components": null
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "please",
+      "target_text": "bitte",
+      "components": null
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "speak slowly",
+      "target_text": "sprich langsam",
+      "components": null
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "repeat that",
+      "target_text": "wiederhole das",
+      "components": null
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "I don't understand",
+      "target_text": "ich verstehe nicht",
+      "components": null
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "this word",
+      "target_text": "dieses Wort",
+      "components": null
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "what does it mean",
+      "target_text": "was bedeutet das",
+      "components": null
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "how do you say",
+      "target_text": "wie sagt man",
+      "components": null
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "in German",
+      "target_text": "auf Deutsch",
+      "components": null
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "this",
+      "target_text": "das",
+      "components": null
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 4,
+      "type": "A",
+      "is_new": true,
+      "known_text": "in English",
+      "target_text": "auf Englisch",
+      "components": null
+    },
+    {
+      "seed_number": 16,
+      "lego_index": 1,
+      "type": "A",
+      "is_new": true,
+      "known_text": "speak",
+      "target_text": "sprechen",
+      "components": null
+    },
+    {
+      "seed_number": 16,
+      "lego_index": 2,
+      "type": "A",
+      "is_new": true,
+      "known_text": "understand",
+      "target_text": "verstehen",
+      "components": null
+    },
+    {
+      "seed_number": 16,
+      "lego_index": 3,
+      "type": "A",
+      "is_new": true,
+      "known_text": "speaking",
+      "target_text": "zu sprechen",
+      "components": null
+    },
+    {
+      "seed_number": 16,
+      "lego_index": 4,
+      "type": "A",
+      "is_new": true,
+      "known_text": "slowly",
+      "target_text": "langsam",
+      "components": null
+    }
+  ],
+  "phrases": [
+    {
+      "seed_number": 1,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I want",
+      "target_text": "Ich will"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "to speak",
+      "target_text": "Sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I want to speak",
+      "target_text": "Ich will sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "German",
+      "target_text": "Deutsch"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I want to speak German",
+      "target_text": "Ich will Deutsch sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 4,
+      "position": 1,
+      "known_text": "with you",
+      "target_text": "Mit dir"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 4,
+      "position": 2,
+      "known_text": "I want to speak with you",
+      "target_text": "Ich will mit dir sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 4,
+      "position": 3,
+      "known_text": "I want to speak German with you",
+      "target_text": "Ich will mit dir Deutsch sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 5,
+      "position": 1,
+      "known_text": "now",
+      "target_text": "Jetzt"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 5,
+      "position": 2,
+      "known_text": "I want to speak now",
+      "target_text": "Ich will jetzt sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 5,
+      "position": 3,
+      "known_text": "I want to speak German now",
+      "target_text": "Ich will jetzt Deutsch sprechen"
+    },
+    {
+      "seed_number": 1,
+      "lego_index": 5,
+      "position": 4,
+      "known_text": "I want to speak German with you now",
+      "target_text": "Ich will jetzt mit dir Deutsch sprechen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I'm trying",
+      "target_text": "Ich versuche"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I'm trying to speak",
+      "target_text": "Ich versuche zu sprechen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I'm trying to speak German",
+      "target_text": "Ich versuche Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "I'm trying to speak German now",
+      "target_text": "Ich versuche jetzt Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "to learn",
+      "target_text": "Zu lernen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I want to learn",
+      "target_text": "Ich will lernen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I want to learn German",
+      "target_text": "Ich will Deutsch lernen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "position": 4,
+      "known_text": "I'm trying to learn",
+      "target_text": "Ich versuche zu lernen"
+    },
+    {
+      "seed_number": 2,
+      "lego_index": 3,
+      "position": 5,
+      "known_text": "I'm trying to learn German",
+      "target_text": "Ich versuche Deutsch zu lernen"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "how to speak",
+      "target_text": "Wie man spricht"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I want to learn how to speak",
+      "target_text": "Ich will lernen wie man spricht"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I want to learn how to speak German",
+      "target_text": "Ich will lernen wie man Deutsch spricht"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "I'm trying to learn how to speak German",
+      "target_text": "Ich versuche zu lernen wie man Deutsch spricht"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "as often as possible",
+      "target_text": "So oft wie möglich"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I want to speak as often as possible",
+      "target_text": "Ich will so oft wie möglich sprechen"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I want to speak German as often as possible",
+      "target_text": "Ich will so oft wie möglich Deutsch sprechen"
+    },
+    {
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 4,
+      "known_text": "I'm trying to speak German as often as possible",
+      "target_text": "Ich versuche so oft wie möglich Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "something",
+      "target_text": "Etwas"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I want something",
+      "target_text": "Ich will etwas"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "to say something",
+      "target_text": "Etwas zu sagen"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I want to say something",
+      "target_text": "Ich will etwas sagen"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I'm trying to say something",
+      "target_text": "Ich versuche etwas zu sagen"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "how to say something",
+      "target_text": "Wie man etwas sagt"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I want to learn how to say something",
+      "target_text": "Ich will lernen wie man etwas sagt"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 4,
+      "position": 1,
+      "known_text": "something in German",
+      "target_text": "Etwas auf Deutsch"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 4,
+      "position": 2,
+      "known_text": "I want to say something in German",
+      "target_text": "Ich will etwas auf Deutsch sagen"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 4,
+      "position": 3,
+      "known_text": "how to say something in German",
+      "target_text": "Wie man etwas auf Deutsch sagt"
+    },
+    {
+      "seed_number": 4,
+      "lego_index": 4,
+      "position": 4,
+      "known_text": "I want to learn how to say something in German",
+      "target_text": "Ich will lernen wie man etwas auf Deutsch sagt"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I'm going to",
+      "target_text": "Ich werde"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I'm going to speak",
+      "target_text": "Ich werde sprechen"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I'm going to speak German",
+      "target_text": "Ich werde Deutsch sprechen"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "I'm going to speak German now",
+      "target_text": "Ich werde jetzt Deutsch sprechen"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "to practise",
+      "target_text": "Üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I want to practise",
+      "target_text": "Ich will üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I'm going to practise",
+      "target_text": "Ich werde üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 4,
+      "position": 1,
+      "known_text": "to practise speaking",
+      "target_text": "Sprechen zu üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 4,
+      "position": 2,
+      "known_text": "I want to practise speaking",
+      "target_text": "Ich will sprechen üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 4,
+      "position": 3,
+      "known_text": "I want to practise speaking German",
+      "target_text": "Ich will Deutsch sprechen üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 4,
+      "position": 4,
+      "known_text": "I'm going to practise speaking German",
+      "target_text": "Ich werde Deutsch sprechen üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 5,
+      "position": 1,
+      "known_text": "with someone else",
+      "target_text": "Mit jemand anderem"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 5,
+      "position": 2,
+      "known_text": "I want to speak with someone else",
+      "target_text": "Ich will mit jemand anderem sprechen"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 5,
+      "position": 3,
+      "known_text": "I'm going to practise with someone else",
+      "target_text": "Ich werde mit jemand anderem üben"
+    },
+    {
+      "seed_number": 5,
+      "lego_index": 5,
+      "position": 4,
+      "known_text": "I'm going to practise speaking German with someone else",
+      "target_text": "Ich werde mit jemand anderem Deutsch sprechen üben"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I need",
+      "target_text": "Ich brauche"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I need to speak",
+      "target_text": "Ich brauche zu sprechen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I need to speak German",
+      "target_text": "Ich brauche Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "to understand",
+      "target_text": "Zu verstehen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I want to understand",
+      "target_text": "Ich will verstehen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I need to understand",
+      "target_text": "Ich brauche zu verstehen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 2,
+      "position": 4,
+      "known_text": "I'm trying to understand",
+      "target_text": "Ich versuche zu verstehen"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "what you say",
+      "target_text": "Was du sagst"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I want to understand what you say",
+      "target_text": "Ich will verstehen was du sagst"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I need to understand what you say",
+      "target_text": "Ich brauche zu verstehen was du sagst"
+    },
+    {
+      "seed_number": 6,
+      "lego_index": 3,
+      "position": 4,
+      "known_text": "I'm trying to understand what you say",
+      "target_text": "Ich versuche zu verstehen was du sagst"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I can",
+      "target_text": "Ich kann"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I can speak",
+      "target_text": "Ich kann sprechen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I can speak German",
+      "target_text": "Ich kann Deutsch sprechen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "I can understand",
+      "target_text": "Ich kann verstehen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "a little",
+      "target_text": "Ein bisschen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I can speak a little",
+      "target_text": "Ich kann ein bisschen sprechen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I can speak German a little",
+      "target_text": "Ich kann ein bisschen Deutsch sprechen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 2,
+      "position": 4,
+      "known_text": "I can understand a little",
+      "target_text": "Ich kann ein bisschen verstehen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "but not",
+      "target_text": "Aber nicht"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I can speak a little but not",
+      "target_text": "Ich kann ein bisschen sprechen aber nicht"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 4,
+      "position": 1,
+      "known_text": "very well",
+      "target_text": "Sehr gut"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 4,
+      "position": 2,
+      "known_text": "I can speak very well",
+      "target_text": "Ich kann sehr gut sprechen"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 4,
+      "position": 3,
+      "known_text": "I can speak a little but not very well",
+      "target_text": "Ich kann ein bisschen sprechen aber nicht sehr gut"
+    },
+    {
+      "seed_number": 7,
+      "lego_index": 4,
+      "position": 4,
+      "known_text": "I can speak German a little but not very well",
+      "target_text": "Ich kann ein bisschen Deutsch sprechen aber nicht sehr gut"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I have",
+      "target_text": "Ich habe"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "been learning",
+      "target_text": "Gelernt"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I have been learning",
+      "target_text": "Ich habe gelernt"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I have been learning German",
+      "target_text": "Ich habe Deutsch gelernt"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "for a while",
+      "target_text": "Seit einer Weile"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I have been learning for a while",
+      "target_text": "Ich habe seit einer Weile gelernt"
+    },
+    {
+      "seed_number": 8,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I have been learning German for a while",
+      "target_text": "Ich habe seit einer Weile Deutsch gelernt"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "it's difficult",
+      "target_text": "Es ist schwierig"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "it's difficult to speak",
+      "target_text": "Es ist schwierig zu sprechen"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "it's difficult to speak German",
+      "target_text": "Es ist schwierig Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "for me",
+      "target_text": "Für mich"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "it's difficult for me",
+      "target_text": "Es ist schwierig für mich"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "it's difficult for me to speak",
+      "target_text": "Es ist schwierig für mich zu sprechen"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 4,
+      "known_text": "it's difficult for me to speak German",
+      "target_text": "Es ist schwierig für mich Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "at first",
+      "target_text": "Am Anfang"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "it's difficult at first",
+      "target_text": "Am Anfang ist es schwierig"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "it's difficult for me at first",
+      "target_text": "Am Anfang ist es schwierig für mich"
+    },
+    {
+      "seed_number": 9,
+      "lego_index": 3,
+      "position": 4,
+      "known_text": "it's difficult to speak German at first",
+      "target_text": "Am Anfang ist es schwierig Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I think",
+      "target_text": "Ich denke"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "that",
+      "target_text": "Dass"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I think that",
+      "target_text": "Ich denke dass"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "it's important",
+      "target_text": "Es wichtig ist"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I think that it's important",
+      "target_text": "Ich denke dass es wichtig ist"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I think that it's important to speak",
+      "target_text": "Ich denke dass es wichtig ist zu sprechen"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 4,
+      "known_text": "I think that it's important to speak German",
+      "target_text": "Ich denke dass es wichtig ist Deutsch zu sprechen"
+    },
+    {
+      "seed_number": 10,
+      "lego_index": 3,
+      "position": 5,
+      "known_text": "I think that it's important to learn German",
+      "target_text": "Ich denke dass es wichtig ist Deutsch zu lernen"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "every day",
+      "target_text": "Jeden Tag"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I want to speak every day",
+      "target_text": "Ich will jeden Tag sprechen"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I want to speak German every day",
+      "target_text": "Ich will jeden Tag Deutsch sprechen"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "I'm going to practise every day",
+      "target_text": "Ich werde jeden Tag üben"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "if possible",
+      "target_text": "Wenn möglich"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I want to speak every day if possible",
+      "target_text": "Ich will jeden Tag sprechen wenn möglich"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I want to speak German every day if possible",
+      "target_text": "Ich will jeden Tag Deutsch sprechen wenn möglich"
+    },
+    {
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 4,
+      "known_text": "I'm going to practise every day if possible",
+      "target_text": "Ich werde jeden Tag üben wenn möglich"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I like",
+      "target_text": "Ich mag"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I like to speak",
+      "target_text": "Ich mag sprechen"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 1,
+      "position": 3,
+      "known_text": "I like to speak German",
+      "target_text": "Ich mag Deutsch sprechen"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "to listen",
+      "target_text": "Zuhören"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I like to listen",
+      "target_text": "Ich mag zuhören"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I want to listen",
+      "target_text": "Ich will zuhören"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "and to repeat",
+      "target_text": "Und wiederholen"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I like to listen and to repeat",
+      "target_text": "Ich mag zuhören und wiederholen"
+    },
+    {
+      "seed_number": 12,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "I want to listen and to repeat",
+      "target_text": "Ich will zuhören und wiederholen"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "please",
+      "target_text": "Bitte"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "speak slowly",
+      "target_text": "Sprich langsam"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "please speak slowly",
+      "target_text": "Bitte sprich langsam"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "I want to speak slowly",
+      "target_text": "Ich will langsam sprechen"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "repeat that",
+      "target_text": "Wiederhole das"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "please repeat that",
+      "target_text": "Bitte wiederhole das"
+    },
+    {
+      "seed_number": 13,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "please repeat that slowly",
+      "target_text": "Bitte wiederhole das langsam"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I don't understand",
+      "target_text": "Ich verstehe nicht"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "I don't understand what you say",
+      "target_text": "Ich verstehe nicht was du sagst"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "this word",
+      "target_text": "Dieses Wort"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "I don't understand this word",
+      "target_text": "Ich verstehe dieses Wort nicht"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "what does it mean",
+      "target_text": "Was bedeutet das"
+    },
+    {
+      "seed_number": 14,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "I don't understand what does it mean",
+      "target_text": "Ich verstehe nicht was bedeutet das"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "how do you say",
+      "target_text": "Wie sagt man"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 1,
+      "position": 2,
+      "known_text": "how do you say something",
+      "target_text": "Wie sagt man etwas"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 2,
+      "position": 1,
+      "known_text": "in German",
+      "target_text": "Auf Deutsch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "how do you say in German",
+      "target_text": "Wie sagt man auf Deutsch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "how do you say something in German",
+      "target_text": "Wie sagt man etwas auf Deutsch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "this",
+      "target_text": "Das"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "how do you say this",
+      "target_text": "Wie sagt man das"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 3,
+      "position": 3,
+      "known_text": "how do you say this in German",
+      "target_text": "Wie sagt man das auf Deutsch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 4,
+      "position": 1,
+      "known_text": "in English",
+      "target_text": "Auf Englisch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 4,
+      "position": 2,
+      "known_text": "how do you say this in English",
+      "target_text": "Wie sagt man das auf Englisch"
+    },
+    {
+      "seed_number": 15,
+      "lego_index": 4,
+      "position": 3,
+      "known_text": "I want to say something in English",
+      "target_text": "Ich will etwas auf Englisch sagen"
+    }
+  ]
+}

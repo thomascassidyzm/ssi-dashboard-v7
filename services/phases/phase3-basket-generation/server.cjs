@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
 /**
- * Phase 3: Practice Basket Generation Server (DB-FIRST ARCHITECTURE)
+ * Phase 3: Practice Basket Generation Server (DATABASE-ONLY ARCHITECTURE)
  *
- * Refactored for database-first architecture:
- * - Reads LEGOs from database via course-data-service.cjs
- * - Writes practice phrases directly to database
- * - Builds scaffolds dynamically from DB data (no JSON scaffold files)
- * - No JSON file reads/writes for lego_pairs.json or lego_baskets.json
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * Course data is stored EXCLUSIVELY in Supabase, NOT in JSON files.
+ * This service reads and writes directly to Supabase:
+ * - Reads LEGOs from course_legos table
+ * - Writes practice phrases to course_practice_phrases table
+ *
+ * JSON files (lego_pairs.json, lego_baskets.json) are DEPRECATED.
+ * Do NOT read course data from JSON files - always query Supabase.
  *
  * Key Methods Used:
  * - getLegosByCourse(courseCode, { status: 'released', isNew: true }) - read LEGOs needing baskets
@@ -131,6 +135,10 @@ function countLegosInPhrase(phraseTarget, legoTargets) {
 /**
  * Format LEGO ID from seed number and lego index
  */
+function formatSeedId(seedNumber) {
+  return `S${String(seedNumber).padStart(4, '0')}`;
+}
+
 function formatLegoId(seedNumber, legoIndex) {
   return `S${String(seedNumber).padStart(4, '0')}L${String(legoIndex).padStart(2, '0')}`;
 }
@@ -232,6 +240,211 @@ function buildLegoScaffold(lego, allLegos) {
     recent_legos: recentLegos,
     vocab_size: vocab.known.length + vocab.target.length
   };
+}
+
+// ==============================================================================
+// V9 SCAFFOLD FORMAT - ELEGANT [BRACKETS] IN CONTEXT
+// ==============================================================================
+
+/**
+ * Format a sentence with [brackets] around NEW LEGOs
+ * This shows agents which parts are recently learned and should be prioritized
+ */
+function formatSentenceWithBrackets(sentence, legos) {
+  if (!sentence) return '';
+  let result = sentence;
+
+  // Sort LEGOs by text length descending (replace longer ones first)
+  const sortedLegos = [...legos]
+    .filter(l => l.is_new && (l.known_text || l.target_text))
+    .sort((a, b) => {
+      const aLen = (a.known_text || '').length;
+      const bLen = (b.known_text || '').length;
+      return bLen - aLen;
+    });
+
+  // Track replacements with placeholders to avoid double-bracketing
+  const bracketed = new Map();
+  let idx = 0;
+
+  for (const lego of sortedLegos) {
+    const text = lego.known_text;
+    if (!text) continue;
+
+    const escaped = text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escaped}\\b`, 'gi');
+
+    if (regex.test(result)) {
+      const placeholder = `__BRACKET_${idx}__`;
+      bracketed.set(placeholder, `[${text}]`);
+      result = result.replace(regex, placeholder);
+      idx++;
+    }
+  }
+
+  // Restore placeholders
+  for (const [placeholder, bracketedText] of bracketed) {
+    result = result.replace(placeholder, bracketedText);
+  }
+
+  return result;
+}
+
+/**
+ * Format target sentence with [brackets] - handles CJK characters
+ */
+function formatTargetWithBrackets(sentence, legos) {
+  if (!sentence) return '';
+  let result = sentence;
+
+  const sortedLegos = [...legos]
+    .filter(l => l.is_new && l.target_text)
+    .sort((a, b) => (b.target_text || '').length - (a.target_text || '').length);
+
+  const bracketed = new Map();
+  let idx = 0;
+
+  for (const lego of sortedLegos) {
+    const text = lego.target_text;
+    if (!text) continue;
+
+    const escaped = text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // For CJK, don't require word boundaries
+    const isCJK = /[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]/.test(text);
+    const regex = isCJK ? new RegExp(escaped, 'g') : new RegExp(`\\b${escaped}\\b`, 'gi');
+
+    if (regex.test(result)) {
+      const placeholder = `__TBRACKET_${idx}__`;
+      bracketed.set(placeholder, `[${text}]`);
+      result = result.replace(regex, placeholder);
+      idx++;
+    }
+  }
+
+  for (const [placeholder, bracketedText] of bracketed) {
+    result = result.replace(placeholder, bracketedText);
+  }
+
+  return result;
+}
+
+/**
+ * Build v9 elegant scaffold with [brackets] showing NEW LEGOs in context
+ */
+async function buildV9Scaffold(courseCode, lego, allLegos, seedSentences) {
+  const seedNumber = lego.seed_number;
+  const legoIndex = lego.lego_index;
+  const legoId = formatLegoId(seedNumber, legoIndex);
+
+  // Get seed sentence
+  const seedSentence = seedSentences.get(seedNumber) || { known: '', target: '' };
+
+  // Get LEGOs for this seed (for bracketing)
+  const seedLegos = allLegos.filter(l => l.seed_number === seedNumber);
+
+  // Get recent NEW LEGOs (30 most recent before current position)
+  const recentLegos = getRecentLegos(allLegos, seedNumber, legoIndex, 30);
+
+  // Get seeds containing recent LEGOs
+  const recentSeedNumbers = [...new Set(recentLegos.map(l => {
+    const match = l.legoId.match(/S(\d+)L/);
+    return match ? parseInt(match[1], 10) : 0;
+  }).filter(n => n > 0))].sort((a, b) => b - a).slice(0, 12);
+
+  // Format current seed with brackets
+  const currentKnown = formatSentenceWithBrackets(seedSentence.known, seedLegos);
+  const currentTarget = formatTargetWithBrackets(seedSentence.target, seedLegos);
+
+  // Build recent patterns section
+  const recentPatterns = [];
+  for (const sn of recentSeedNumbers) {
+    const ss = seedSentences.get(sn);
+    if (!ss) continue;
+    const sLegos = allLegos.filter(l => l.seed_number === sn);
+    recentPatterns.push({
+      seedId: formatSeedId(sn),
+      known: formatSentenceWithBrackets(ss.known, sLegos),
+      target: formatTargetWithBrackets(ss.target, sLegos)
+    });
+  }
+
+  // Determine language names
+  const [targetLang, , knownLang] = courseCode.split('_');
+  const langNames = {
+    'eng': 'English', 'ita': 'Italian', 'spa': 'Spanish', 'zho': 'Chinese',
+    'cmn': 'Mandarin', 'fra': 'French', 'deu': 'German', 'por': 'Portuguese',
+    'jpn': 'Japanese', 'kor': 'Korean', 'cym': 'Welsh'
+  };
+  const knownName = langNames[knownLang] || knownLang;
+  const targetName = langNames[targetLang] || targetLang;
+
+  // Build the elegant v9 scaffold with pedagogical framing
+  let scaffold = `=== PHASE 3: BASKET GENERATION ===
+
+You are a WORLD-CLASS LANGUAGE TEACHER creating practice phrases.
+
+Course: ${courseCode}
+Languages: ${knownName} → ${targetName}
+
+---
+
+## YOUR LEGO: [${lego.known_text}] / [${lego.target_text}]
+
+From seed ${formatSeedId(seedNumber)}:
+  "${currentKnown}"
+  "${currentTarget}"
+
+---
+
+## RECENT PATTERNS ([brackets] = NEW LEGOs - prioritize these for recombination)
+
+`;
+
+  for (const p of recentPatterns) {
+    scaffold += `${p.seedId}: "${p.known}"
+       "${p.target}"
+
+`;
+  }
+
+  scaffold += `---
+
+## THE SSi METHOD: LEGO Recombination
+
+You're creating practice phrases that help learners RECOMBINE vocabulary.
+- Each [bracketed] item is a LEGO - a vocabulary building block
+- Non-bracketed words (to, the, a, is, etc.) are GRAMMAR GLUE - you MUST include them!
+- Example: "[I] [want] to [speak]" → the "to" is essential grammar, not a LEGO
+
+## CRITICAL: Do NOT just concatenate LEGOs!
+
+❌ WRONG: "I want speak Chinese" (missing "to")
+✅ RIGHT: "I want to speak Chinese" (natural English grammar)
+
+❌ WRONG: "I learn Chinese" (grammatically awkward without context)
+✅ RIGHT: "I'm learning Chinese" or "I want to learn Chinese"
+
+Phrases MUST sound like something a native speaker would actually say.
+
+## TASK: Generate 15-20 practice phrases containing [${lego.known_text}] / [${lego.target_text}]
+
+### Guidelines:
+- Write COMPLETE, NATURAL sentences - not LEGO concatenations
+- PRIORITIZE [bracketed] LEGOs from recent patterns above
+- Natural in BOTH ${knownName} AND ${targetName} - quality over quantity
+- Include all necessary grammar words (to, the, a, is, are, etc.)
+- Server filters to best 6-13 depending on LEGO richness, so OVERGENERATE naturally
+
+### Output JSON:
+{
+  "phrases": [
+    { "known": "...", "target": "..." },
+    ... (15-20 phrases)
+  ]
+}
+`;
+
+  return scaffold;
 }
 
 /**
@@ -356,13 +569,37 @@ function decomposeIntoUnits(phrase, units) {
 
 /**
  * Validate basket phrases for GATE compliance
+ *
+ * IMPORTANT: The current LEGO being debuted MUST be included in decomposition units.
+ * Practice phrases for a LEGO's debut basket are ALLOWED to contain that LEGO.
  */
 function validateBasketPhrases(phrases, legoData, scaffoldVocab) {
   const errors = [];
 
-  // Build taught units (include current LEGO)
-  const knownUnits = [...(scaffoldVocab?.known || []), legoData.known];
-  const targetUnits = [...(scaffoldVocab?.target || []), legoData.target];
+  // Build taught units - MUST include current LEGO (it's being debuted in this basket)
+  const currentLegoKnown = legoData?.known;
+  const currentLegoTarget = legoData?.target;
+  const currentLegoComponents = legoData?.components || [];
+
+  if (!currentLegoKnown || !currentLegoTarget) {
+    console.warn(`   GATE: Missing LEGO data - known: "${currentLegoKnown}", target: "${currentLegoTarget}"`);
+  }
+
+  // Start with previously taught vocab
+  const knownUnits = [...(scaffoldVocab?.known || [])];
+  const targetUnits = [...(scaffoldVocab?.target || [])];
+
+  // Add the current LEGO being debuted
+  if (currentLegoKnown) knownUnits.push(currentLegoKnown);
+  if (currentLegoTarget) targetUnits.push(currentLegoTarget);
+
+  // For M-type LEGOs, also add their components (they're taught as part of the LEGO)
+  for (const comp of currentLegoComponents) {
+    const knownComp = comp.k || comp.known || comp.known_text;
+    const targetComp = comp.t || comp.target || comp.target_text;
+    if (knownComp) knownUnits.push(knownComp);
+    if (targetComp) targetUnits.push(targetComp);
+  }
 
   for (let i = 0; i < phrases.length; i++) {
     const phrase = phrases[i];
@@ -400,13 +637,13 @@ function validateBasketPhrases(phrases, legoData, scaffoldVocab) {
       });
     }
 
-    // Check syllable count (max 25 for cognitive load)
+    // Check syllable count (max 20 for cognitive load - ~10-12 English words)
     const syllables = countSyllables(phrase.target);
-    if (syllables > 25) {
+    if (syllables > 20) {
       errors.push({
         phraseNum,
         type: 'syllable_overload',
-        error: `Phrase ${phraseNum} has ${syllables} syllables (max 25 for cognitive load)`,
+        error: `Phrase ${phraseNum} has ${syllables} syllables (max 20 for cognitive load)`,
         phrase: phrase.target
       });
     }
@@ -456,7 +693,7 @@ function generatePhase3OrchestratorPrompt(courseCode, params, courseDir) {
   const sortedLegos = [...targetLegos].sort((a, b) => a.legoId.localeCompare(b.legoId));
   const legoCount = sortedLegos.length;
   const requestedWorkers = agentsPerWindow || 13;
-  const targetLegosPerWorker = legosPerWorker || 10;
+  const targetLegosPerWorker = legosPerWorker || 5;
 
   // Calculate workers needed
   const workersNeeded = Math.ceil(legoCount / targetLegosPerWorker);
@@ -504,7 +741,7 @@ function generatePhase3OrchestratorPrompt(courseCode, params, courseDir) {
     WORKER_ASSIGNMENTS: workerAssignmentsText,
     KNOWN_LANGUAGE: known,
     TARGET_LANGUAGE: target,
-    ORCHESTRATOR_URL: process.env.EXTERNAL_URL
+    ORCHESTRATOR_URL: ngrokUrl
   });
 }
 
@@ -725,7 +962,7 @@ app.get('/preview/:courseCode', async (req, res) => {
     const isResumeMode = totalNewLegosInCourse > 0 && legosToProcess < totalNewLegosInCourse;
     const LEGOS_PER_AGENT = isResumeMode
       ? (phase3Config.legos_per_agent_resume || 5)
-      : (phase3Config.legos_per_agent || 10);
+      : (phase3Config.legos_per_agent || 5);
 
     const totalWorkersNeeded = Math.ceil(legosToProcess / LEGOS_PER_AGENT);
     const masterCount = Math.max(1, Math.ceil(totalWorkersNeeded / AGENTS_PER_BROWSER));
@@ -949,18 +1186,20 @@ app.post('/start', async (req, res) => {
     console.log(`[Phase 3] Scaffolds built for ${Object.keys(legoData).length} LEGOs`);
 
     // STEP 3: Calculate parallelization
+    // Use passed values if provided, otherwise fall back to config
     const config = loadConfig();
     const phase3Config = config.phase_overrides?.phase3_basket_generation || {};
-    const AGENTS_PER_BROWSER = phase3Config.agents_per_browser || 13;
+    const AGENTS_PER_BROWSER = agentsPerWindow || phase3Config.agents_per_browser || 13;
 
     const totalNewLegosInCourse = await getTotalNewLegosForCourse(courseCode);
     const isResumeMode = totalNewLegosInCourse > 0 && targetLegos.length < totalNewLegosInCourse;
-    const LEGOS_PER_AGENT = isResumeMode
+    const LEGOS_PER_AGENT = seedsPerAgent || (isResumeMode
       ? (phase3Config.legos_per_agent_resume || 5)
-      : (phase3Config.legos_per_agent || 10);
+      : (phase3Config.legos_per_agent || 5));
 
     const totalWorkersNeeded = Math.ceil(targetLegos.length / LEGOS_PER_AGENT);
-    const masterCount = Math.max(1, Math.ceil(totalWorkersNeeded / AGENTS_PER_BROWSER));
+    // Use passed browserWindows if provided, otherwise calculate dynamically
+    const masterCount = browserWindows || Math.max(1, Math.ceil(totalWorkersNeeded / AGENTS_PER_BROWSER));
     const totalWorkers = masterCount * AGENTS_PER_BROWSER;
     const legosPerWorker = Math.ceil(targetLegos.length / totalWorkers);
 
@@ -1234,7 +1473,6 @@ app.post('/launch-15-masters', async (req, res) => {
 function generatePhase3MasterPrompt({ courseCode, target, known, masterNum, workers, totalLegos, seedRange }) {
   const workerPrompts = workers.map(w => {
     const legoList = w.legoIds.join(', ');
-    const legoData = w.legos.map(l => `    "${l.legoId}": { "known": "${l.known}", "target": "${l.target}" }`).join(',\n');
 
     return `
 ## WORKER ${w.workerNum} PROMPT:
@@ -1244,36 +1482,43 @@ function generatePhase3MasterPrompt({ courseCode, target, known, masterNum, work
 
 Course: ${courseCode}
 LEGOs: ${legoList}
-Upload: ${BASKET_UPLOAD_URL}
+API: ${ngrokUrl}
 
-## YOUR LEGO DATA (embedded - no fetch needed):
-{
-${legoData}
-}
+## WORKFLOW: For each LEGO in your list:
 
-## TASK: For each LEGO, generate ~10 practice phrases
-
-Rules:
-1. EVERY phrase contains the COMPLETE LEGO
-2. Progressive complexity: 2 short, 2 medium, 2 longer, 4 longest
-3. Natural grammar in BOTH languages
-4. Work silently - no verbose output
-
-## UPLOAD FORMAT (minimal - server enriches):
-
-For each LEGO, POST to ${BASKET_UPLOAD_URL}:
-\`\`\`json
-{
-  "course": "${courseCode}",
-  "legoId": "S0001L01",
-  "phrases": [
-    { "known": "I want", "target": "..." },
-    { "known": "I want that", "target": "..." }
-  ]
-}
+### Step 1: Fetch the scaffold
+\`\`\`bash
+curl ${ngrokUrl}/scaffold-v9/${courseCode}/[LEGO_ID]
 \`\`\`
 
-Upload each LEGO as you complete it. Report: "Worker ${w.workerNum}: ${w.legoCount} LEGOs done"
+The scaffold contains:
+- YOUR LEGO in context
+- RECENT PATTERNS showing how vocabulary combines naturally
+- TASK instructions
+
+### Step 2: Generate phrases using the scaffold
+- READ the recent patterns carefully - they show natural English grammar
+- Generate 15-20 phrases that sound natural in BOTH English AND Chinese
+- English grammar MUST be perfect (e.g., "I want TO say" not "I want say")
+- Every phrase must contain the complete LEGO
+
+### Step 3: Upload
+\`\`\`bash
+curl -X POST ${ngrokUrl}/upload-basket -H "Content-Type: application/json" -d '{
+  "course": "${courseCode}",
+  "legoId": "[LEGO_ID]",
+  "phrases": [
+    { "known": "English phrase", "target": "Chinese phrase" }
+  ]
+}'
+\`\`\`
+
+## CRITICAL: English must be grammatically perfect
+- "I want to speak" NOT "I want speak"
+- "Can I say..." NOT "Can or not say..."
+- "I'm not sure if I can..." NOT "I'm not sure can..."
+
+Work silently. Report when done: "Worker ${w.workerNum}: ${w.legoCount} LEGOs done"
 \`\`\`
 `;
   }).join('\n');
@@ -1372,17 +1617,20 @@ app.post('/upload-basket', async (req, res) => {
     // Build scaffold from database for GATE validation
     let scaffoldVocab = null;
     let legoData = null;
+    let allLegos = null;
 
     try {
-      const allLegos = await courseDataService.getLegosByCourse(course, { status: 'all' });
+      allLegos = await courseDataService.getLegosByCourse(course, { status: 'all' });
       const currentLego = allLegos.find(l =>
         l.seed_number === seedNumber && l.lego_index === legoIndex
       );
 
       if (currentLego) {
+        // Include the LEGO itself plus any components (for M-types)
         legoData = {
           known: currentLego.known_text,
-          target: currentLego.target_text
+          target: currentLego.target_text,
+          components: currentLego.components || []
         };
         scaffoldVocab = buildTaughtUnitsVocab(allLegos, seedNumber, legoIndex);
       }
@@ -1442,6 +1690,48 @@ app.post('/upload-basket', async (req, res) => {
       }
 
       console.log(`   Database: ${phraseCount} phrases saved to course_practice_phrases`);
+
+      // CULMINATING LEGO: Add seed sentence as final practice phrase
+      // The culminating LEGO is the highest-indexed LEGO in a seed -
+      // it's the first time the learner can say the complete seed sentence
+      try {
+        if (!allLegos) {
+          allLegos = await courseDataService.getLegosByCourse(course, { status: 'all' });
+        }
+        const seedLegos = allLegos.filter(l => l.seed_number === seedNumber);
+        const maxLegoIndex = Math.max(...seedLegos.map(l => l.lego_index));
+
+        if (legoIndex === maxLegoIndex) {
+          // This is the culminating LEGO - add the seed sentence
+          const seed = await courseDataService.getSeed(course, seedNumber);
+
+          if (seed && seed.known_text && seed.target_text) {
+            // Check if seed sentence is already in the phrases (avoid duplicates)
+            const seedAlreadyIncluded = phrases.some(
+              p => p.target === seed.target_text || p.known === seed.known_text
+            );
+
+            if (!seedAlreadyIncluded) {
+              await courseDataService.savePracticePhrase(course, seedNumber, legoIndex, {
+                knownText: seed.known_text,
+                targetText: seed.target_text,
+                position: phraseCount + 1,
+                wordCount: seed.target_text.split(/\s+/).filter(w => w.length > 0).length,
+                targetSyllableCount: countSyllables(seed.target_text),
+                legoCount: seedLegos.filter(l => l.is_new).length, // All NEW LEGOs in this seed
+                status: 'draft',
+                isCulminatingPhrase: true  // Mark this as the seed sentence
+              });
+              phraseCount++;
+              console.log(`   ✓ Culminating LEGO: Added seed sentence as phrase #${phraseCount}`);
+            } else {
+              console.log(`   ✓ Culminating LEGO: Seed sentence already included`);
+            }
+          }
+        }
+      } catch (culminatingErr) {
+        console.warn(`   Could not add culminating phrase: ${culminatingErr.message}`);
+      }
 
       // Track in job state
       const job = activeJobs.get(course);
@@ -1532,6 +1822,73 @@ app.get('/basket-status/:course', async (req, res) => {
     res.status(500).json({
       success: false,
       error: error.message
+    });
+  }
+});
+
+/**
+ * GET /scaffold-v9/:courseCode/:legoId
+ * Serve v9 elegant scaffold with [brackets] showing LEGOs in context
+ */
+app.get('/scaffold-v9/:courseCode/:legoId', async (req, res) => {
+  try {
+    const { courseCode, legoId } = req.params;
+
+    // Validate LEGO ID format
+    if (!/^S\d{4}L\d{2}$/.test(legoId)) {
+      return res.status(400).json({ error: 'Invalid LEGO ID format. Expected: S0117L01' });
+    }
+
+    const { seedNumber, legoIndex } = parseLegoId(legoId);
+
+    // Get all LEGOs from database
+    const allLegos = await courseDataService.getLegosByCourse(courseCode, { status: 'all' });
+
+    if (!allLegos || allLegos.length === 0) {
+      return res.status(404).json({
+        error: 'No LEGOs found in database for this course',
+        courseCode
+      });
+    }
+
+    // Find the specific LEGO
+    const lego = allLegos.find(l =>
+      l.seed_number === seedNumber && l.lego_index === legoIndex
+    );
+
+    if (!lego) {
+      return res.status(404).json({
+        error: 'LEGO not found in database',
+        legoId
+      });
+    }
+
+    // Get seed sentences from database
+    const seedNumbers = [...new Set(allLegos.map(l => l.seed_number))];
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+
+    const { data: seedsData } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .in('seed_number', seedNumbers);
+
+    const seedSentences = new Map();
+    for (const s of seedsData || []) {
+      seedSentences.set(s.seed_number, { known: s.known_text, target: s.target_text });
+    }
+
+    // Build v9 scaffold
+    const scaffold = await buildV9Scaffold(courseCode, lego, allLegos, seedSentences);
+
+    res.type('text/plain').send(scaffold);
+
+  } catch (error) {
+    console.error('[Phase 3] Error serving v9 scaffold:', error);
+    res.status(500).json({
+      error: 'Failed to build v9 scaffold',
+      message: error.message
     });
   }
 });

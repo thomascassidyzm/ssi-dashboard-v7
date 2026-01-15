@@ -1,0 +1,200 @@
+# APML v9.0 Migration Log
+# Documentation of migration from old phase numbering to APML v9.0 structure
+#
+# Started: 2025-11-25
+# Status: COMPLETE - All Waves Done, Build Verified
+# Original: /docs/APML_V9_MIGRATION_LOG.md
+# Migrated: 2026-01-12
+
+---
+
+# OVERVIEW
+# This document tracks all changes made during the migration from OLD phase numbering
+# to APML v9.0 structure. If context is lost, a new model should read this document first.
+
+---
+
+# PHASE MAPPING REFERENCE
+
+phase_mapping:
+  phase_1:
+    old: "Phase 1"
+    new: "Phase 1"
+    purpose: "Translation (seed_pairs.json)"
+
+  phase_3_lego:
+    old: "Phase 3"
+    new: "Phase 1"
+    purpose: "LEGO Extraction - NOW MERGED into Phase 1"
+
+  phase_5:
+    old: "Phase 5"
+    new: "Phase 3"
+    purpose: "Basket Generation (lego_baskets.json)"
+
+  phase_5_5:
+    old: "Phase 5.5"
+    new: "REMOVED"
+    purpose: "Grammar Validation - DEPRECATED"
+
+  phase_6:
+    old: "Phase 6"
+    new: "Integrated"
+    purpose: "Introductions - merged into Phase 1"
+
+  phase_7:
+    old: "Phase 7"
+    new: "Manifest"
+    purpose: "Course Compilation (no phase number)"
+
+  phase_8:
+    old: "Phase 8"
+    new: "Audio"
+    purpose: "TTS Generation (no phase number)"
+
+# Key principle: "A phase triggers agents. Scripts run instantly."
+
+---
+
+# MIGRATION WAVES
+
+## Wave 1: Backend Services - COMPLETE
+# - [x] Rename service directories
+# - [x] Update service files
+# - [x] Update orchestrator references
+# - [x] Update automation config (start-automation.cjs)
+
+## Wave 2: Frontend - COMPLETE
+# - [x] Update API service (src/services/api.js)
+# - [x] Update VFS service (src/services/vfs.js)
+# - [x] Update all Vue components with phase references
+# - [x] No router changes needed (routes are URL-based)
+
+## Wave 3: Documentation - COMPLETE
+# - [x] Update phase_intelligence docs (README.md - naming convention, pipeline)
+# - [x] Update main README.md (v9.0.0, new phase table, workflow)
+# - [x] Update CLAUDE.md (services, workflows, phase references)
+# - [ ] Archive deprecated docs (deferred - old docs kept for reference)
+
+---
+
+# DETAILED CHANGE LOG
+
+## 2025-11-25 - Wave 1 Completed
+
+### Service Directory Renames
+# - services/phases/phase5-basket-generation/ -> services/phases/phase3-basket-generation/
+# - services/phases/phase7-manifest-compilation/ -> services/phases/manifest-compilation/
+# - services/phases/phase8-audio-server.cjs -> services/phases/audio-server.cjs
+# - services/phases/phase3-lego-extraction/ -> services/phases/phase1-lego-extraction/
+
+### Files Archived to archive/deprecated-services-2025-11-25/
+# - services/phase5_recovery_orchestrator.cjs
+# - services/phases/phase5-basket-server.cjs
+# - services/phases/phase5.5-grammar-validation-server.cjs
+# - services/phases/phase6-introduction-server.cjs
+# - services/phases/phase1-translation-server.cjs
+# - services/phases/phase3-lego-extraction-server.cjs
+
+### Orchestrator Updates (services/orchestration/orchestrator.cjs)
+# - Updated PHASE_SERVERS configuration for APML v9.0
+# - Added LEGACY_PHASE_ALIASES for backward compatibility
+# - Added normalizePhaseIdentifier() function
+# - Updated handlePhaseProgression() for new pipeline: 1 -> 3 -> manifest -> audio
+# - Updated all API endpoints with dual routing:
+#   - /api/audio/* (new) + /api/phase8/* (legacy)
+#   - /api/phase3/:courseCode/submit (new) + /api/phase5/:courseCode/submit (legacy)
+#   - /api/manifest/:courseCode/submit (new) + /api/phase7/:courseCode/submit (legacy)
+#   - /api/courses/:courseCode/regenerate/manifest (new) + /api/courses/:courseCode/regenerate/phase7 (legacy)
+# - Updated helper functions: determineStatus(), getNextPhase()
+
+### start-automation.cjs Updates
+# - Updated SERVICES configuration with new naming
+# - Updated environment variable names (PHASE1_TRANSLATION_URL, PHASE1_LEGO_URL, MANIFEST_URL, AUDIO_URL)
+# - Added APML v9.0 documentation comments
+
+---
+
+## Wave 2: Frontend (COMPLETE)
+
+### 2025-11-25 - Wave 2 Completed
+
+### API Service Updates (src/services/api.js)
+# | Old Function | New Function | Status |
+# |-------------|--------------|--------|
+# | Phase 5 endpoint | Phase 3 routing (with legacy alias) | DONE |
+# | regeneratePhase7() | regenerateManifest() (legacy alias kept) | DONE |
+# | startPhase8Audio() | startAudioGeneration() (legacy alias kept) | DONE |
+# | getPhase8Status() | getAudioStatus() (legacy alias kept) | DONE |
+# | continuePhase8Processing() | continueAudioProcessing() (legacy alias kept) | DONE |
+# | regeneratePhase8Samples() | regenerateAudioSamples() (legacy alias kept) | DONE |
+# | getPhase8QCReport() | getAudioQCReport() (legacy alias kept) | DONE |
+
+### VFS Service Updates (src/services/vfs.js)
+# - Updated phase comments to APML v9.0 file mapping
+# - Phase 1: Translation + LEGO Extraction
+# - Phase 3: Basket Generation
+# - Manifest: Course Compilation
+
+### Component Updates
+# | Component | Changes | Status |
+# |-----------|---------|--------|
+# | CourseValidator.vue | Updated PHASE_LABELS mapping (Phase 5->3, Phase 7->Manifest) | DONE |
+# | CourseProgress.vue | Updated PhaseCard components - now shows 1, 3, M, A | DONE |
+# | CourseBrowser.vue | Updated phase indicators to ['1','3','M','A'], added isPhaseComplete() | DONE |
+# | ProgressMonitor.vue | Updated getPhaseTitle() with legacy mappings | DONE |
+# | LegoBasketViewer.vue | Renamed recompilingPhase7->recompilingManifest, updated UI | DONE |
+# | IntroductionsViewer.vue | Renamed recompilingPhase7->recompilingManifest, updated UI | DONE |
+# | CourseEditor.vue | Added isManifestComplete computed, updated phase labels | DONE |
+# | AudioPipelineView.vue | Added isManifestComplete computed, updated "Phase 7"->"Manifest" | DONE |
+
+---
+
+# FINAL STATUS
+
+## Migration Complete
+
+# Summary:
+# - Wave 1 (Backend): 6 services archived, 4 directories renamed, orchestrator updated with dual routing
+# - Wave 2 (Frontend): API service, VFS service, 8 Vue components updated with APML v9.0 naming
+# - Wave 3 (Documentation): README.md, phase_intelligence/README.md, CLAUDE.md updated
+
+# Build Status: npm run build passed
+# Backward Compatibility: All legacy phase numbers (5, 7, 8) still work via aliases
+
+# Last updated: 2025-11-25 - MIGRATION COMPLETE
+
+---
+
+# VERIFICATION CHECKLIST
+
+verification:
+  build: "npm run build succeeds"  # PASSED 2025-11-25
+  dev_server: "npm run dev starts without errors"  # User to verify
+  phase_refs: "All phase references consistent"  # Legacy aliases maintained
+  orchestrator: "Orchestrator starts correctly"  # User to verify
+  api_endpoints: "API endpoints respond"  # User to verify
+  dashboard: "Dashboard displays correctly"  # User to verify
+
+---
+
+# ROLLBACK INSTRUCTIONS
+
+# If migration needs to be reverted:
+# 1. Check git history: git log --oneline -20
+# 2. Find commit before migration started
+# 3. git reset --hard <commit-hash>
+# 4. Restore archived files from archive/deprecated-services-2025-11-25/
+
+---
+
+# NOTES FOR FUTURE MODELS
+
+notes:
+  1: "This migration is about NAMING CONSISTENCY, not functionality changes"
+  2: "The actual pipeline logic remains the same"
+  3: "Key files to understand the system:"
+     - start-automation.cjs  # main entry point
+     - services/orchestration/orchestrator.cjs  # coordination logic
+  4: "Backend now supports BOTH old and new API routes (legacy aliases maintained)"
+  5: "When in doubt, check what the Dashboard UI shows - that's the target state"

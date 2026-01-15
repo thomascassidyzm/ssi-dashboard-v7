@@ -1,12 +1,12 @@
 # APML Phase 3: Practice Basket Generation
-# Version: 11.1.0 (2026-01-12)
+# Version: 11.5.0 (2026-01-14)
 # Status: Production-ready (DB-first)
 # Server Port: 3459
 
 phase Phase3BasketGeneration:
   name: "Phase 3: Practice Basket Generation"
   purpose: "Generate high-quality practice phrase baskets using linguistic reasoning"
-  version: "11.1.0"
+  version: "11.5.0"
   server_port: 3459
 
   ## ==========================================================================
@@ -14,16 +14,16 @@ phase Phase3BasketGeneration:
   ## ==========================================================================
 
   description: |
-    Generate 10 practice phrases per LEGO using ONLY linguistic intelligence.
+    Generate 15-20 practice phrases per LEGO, server filters to best 10.
     Reads LEGOs from database, generates practice phrases, writes to database.
     Agent fills practice_phrases arrays using extended thinking for each LEGO.
 
   pipeline_architecture: "DB-First Pipeline"
-    input_source: "course_legos table (WHERE is_new=true AND status='released')"
+    input_source: "course_legos table (WHERE is_new=true, status='all')"
     output_target: "course_practice_phrases table"
 
     stage_1: "Mechanical preparation (done before agent)"
-      - "Query course_legos for released new LEGOs"
+      - "Query course_legos for new LEGOs (is_new=true)"
       - "Build whitelist (3-category rule) from cumulative LEGOs"
       - "Prepare LEGO batch with metadata"
 
@@ -38,6 +38,121 @@ phase Phase3BasketGeneration:
       - "Include word_count and lego_count metadata"
 
   core_principle: "This is a LINGUISTIC task, not a CODING task"
+
+  ## ==========================================================================
+  ## API CONFIGURATION (Worker Endpoints)
+  ## ==========================================================================
+
+  api_configuration:
+    description: |
+      Workers spawned by Phase 3 masters communicate with the orchestrator via ngrok.
+      The orchestrator proxies requests to Phase 3 server internally.
+
+    orchestrator_url:
+      source: "ngrok tunnel to localhost:3456"
+      fallback_chain:
+        1: "process.env.EXTERNAL_URL"
+        2: "process.env.ORCHESTRATOR_URL"
+        3: "hardcoded ngrok URL in server.cjs"
+      note: "Workers receive this URL in their spawn prompt"
+
+    worker_endpoints:
+      health_check:
+        method: "GET"
+        path: "/health"
+        purpose: "Verify orchestrator is reachable before starting work"
+
+      phase_intelligence:
+        method: "GET"
+        path: "/api/phase-intelligence/3"
+        purpose: "Fetch basket generation methodology"
+        returns: "Markdown documentation for phrase generation approach"
+
+      scaffold_v9:
+        method: "GET"
+        path: "/scaffold-v9/{courseCode}/{legoId}"
+        purpose: "Fetch per-LEGO scaffold with whitelist and recent patterns"
+        returns: |
+          Text format scaffold containing:
+          - YOUR LEGO with [brackets]
+          - Seed context
+          - Recent patterns with [NEW LEGOs] bracketed
+          - Available vocabulary for GATE compliance
+          - Task instruction: "Generate 15-20 practice phrases..."
+
+      upload_basket:
+        method: "POST"
+        path: "/upload-basket"
+        purpose: "Submit generated phrases for a single LEGO"
+        body:
+          course: "string (course code)"
+          legoId: "string (e.g., S0001L01)"
+          phrases: "array of {known, target} objects"
+        validation: |
+          Server performs GATE validation before accepting:
+          - Checks all target words against whitelist
+          - Checks all known words against whitelist
+          - Rejects phrases with GATE violations
+          - Returns error details for failed phrases
+        enrichment: |
+          Server enriches accepted phrases with:
+          - syllable_count (cognitive load metric)
+          - lego_count (LEGOs used in phrase)
+          - position (2-11 for practice phrases)
+
+    defaults:
+      legos_per_agent: 5
+      phrase_generation: "15-20 phrases (server filters to best 10)"
+      inter_spawn_delay: "5 seconds between master spawns"
+
+    worker_prompt_structure:
+      description: |
+        Workers receive a prompt from generatePhase3MasterPrompt() that instructs them to:
+        1. Fetch scaffold for each LEGO via GET /scaffold-v9/{course}/{legoId}
+        2. Read recent patterns showing natural grammar
+        3. Generate 15-20 phrases with perfect English grammar
+        4. Upload via POST /upload-basket
+
+      critical_grammar_warnings:
+        - '"I want to speak" NOT "I want speak"'
+        - '"Can I say..." NOT "Can or not say..."'
+        - '"I\'m not sure if I can..." NOT "I\'m not sure can..."'
+
+      note: |
+        IMPORTANT: Workers MUST fetch the scaffold. The scaffold shows recent patterns
+        with natural English grammar (e.g., "I want to speak"). Without this context,
+        workers produce literal Chinese-to-English translations with broken grammar.
+
+  ## ==========================================================================
+  ## CULMINATING LEGO RULE
+  ## ==========================================================================
+
+  culminating_lego:
+    description: |
+      The final LEGO in each seed (highest lego_index) is the "culminating LEGO".
+      This is the first time the learner can practice the complete seed sentence.
+
+    rule: |
+      For the culminating LEGO only:
+      - Phrase #10 (position 11) MUST be the complete seed sentence
+      - Server automatically adds this phrase during upload processing
+
+    example:
+      seed: "S0001"
+      seed_sentence:
+        known: "I want to speak Chinese with you now."
+        target: "我现在想跟你说中文"
+      culminating_lego: "S0001L06"
+      auto_added_phrase:
+        position: 11
+        known_text: "I want to speak Chinese with you now."
+        target_text: "我现在想跟你说中文"
+
+    implementation: |
+      Server detects culminating LEGO by:
+      1. Query all LEGOs for the seed
+      2. Find max(lego_index) for that seed
+      3. If current LEGO matches max index, add seed sentence as phrase 10
 
   ## ==========================================================================
   ## DATABASE SCHEMA REFERENCE
@@ -60,7 +175,7 @@ phase Phase3BasketGeneration:
         - "components: JSONB (for M-type only)"
         - "status: content_status ENUM ('draft', 'released', 'deprecated')"
 
-      query_filter: "WHERE is_new = true AND status = 'released'"
+      query_filter: "WHERE is_new = true (status not filtered - accepts draft/released)"
 
     output_table: "course_practice_phrases"
       columns:
@@ -149,7 +264,6 @@ phase Phase3BasketGeneration:
                           AND cs.seed_number = cl.seed_number
       WHERE cl.course_code = $1
         AND cl.is_new = true
-        AND cl.status = 'released'
       ORDER BY cl.seed_number, cl.lego_index;
 
     whitelist_query: |
@@ -162,7 +276,6 @@ phase Phase3BasketGeneration:
       FROM course_legos cl
       WHERE cl.course_code = $1
         AND cl.seed_number <= $2
-        AND cl.status = 'released'
       ORDER BY cl.seed_number, cl.lego_index;
 
     what_is_available:
@@ -238,55 +351,96 @@ phase Phase3BasketGeneration:
           posible alone (knows it means "possible")
 
   ## ==========================================================================
-  ## BASKET CYCLE SEQUENCE (v10.1)
+  ## BASKET CYCLE SEQUENCE (v11.5 - Build-up Structure)
   ## ==========================================================================
 
   basket_cycle_sequence:
     description: |
-      For M-type (molecular) LEGOs, the basket includes a "LEGO Debut" cycle
-      immediately after components and before practice sentences.
-      This ensures learners combine the components before using the LEGO in full sentences.
+      For M-type (molecular) LEGOs, the basket starts with a "build-up" sequence
+      that introduces meaningful components individually before the complete LEGO.
+      This reduces cognitive load by letting learners see HOW an M-LEGO has internal structure.
+
+      CRITICAL: Particles (了, 着, 过, 的, 吗, etc.) are SKIPPED in the build-up.
+      They appear in the full LEGO but don't get their own position - learners see
+      which bits are "grammatical glue" vs semantic content when the LEGO is shown.
 
     sequence_for_M_type:
-      1_components:
-        description: "Individual component words (position: 0, is_component: true)"
-        purpose: "Learner hears and understands the building blocks"
-        database_position: 0
-        example:
-          - {known_text: "I", target_text: "yo", position: 0, word_count: 1, lego_count: 1}
-          - {known_text: "want", target_text: "quiero", position: 0, word_count: 1, lego_count: 1}
+      1_component_buildup:
+        description: "Individual meaningful components (positions 1, 2, ... N)"
+        purpose: "Learner sees building blocks that have standalone meaning"
+        skip_particles: "Particles (了, 着, 过, etc.) are NOT given their own position"
+        database_positions: "1 through N (where N = number of meaningful components)"
+        example_chinese:
+          lego: {known_text: "to take time", target_text: "花时间"}
+          components: [{known: "spend", target: "花"}, {known: "time", target: "时间"}]
+          buildup_phrases:
+            - {position: 1, known_text: "spend", target_text: "花"}
+            - {position: 2, known_text: "time", target_text: "时间"}
 
-      2_lego_debut:
-        description: "The LEGO itself (position: 1, is_debut: true)"
-        purpose: "Learner combines components into the complete LEGO"
-        database_position: 1
+      2_lego_itself:
+        description: "The complete LEGO (position: N+1)"
+        purpose: "Learner sees how components combine (including any particles)"
+        database_position: "N+1 (after all meaningful components)"
         example:
-          - {known_text: "I want to", target_text: "quiero", position: 1, word_count: 1, lego_count: 1}
+          - {position: 3, known_text: "to take time", target_text: "花时间"}
 
       3_practice_sentences:
-        description: "Practice phrases using the LEGO (position: 2+)"
+        description: "Practice phrases using the LEGO (position: N+2 onwards)"
         purpose: "Learner uses LEGO in natural sentences"
-        database_position: "2-11 (for 10 phrases)"
+        database_position: "N+2 through N+11 (for 10 practice phrases)"
         example:
-          - {known_text: "I want to go", target_text: "quiero ir", position: 2, word_count: 2, lego_count: 2}
-          - {known_text: "I want to eat", target_text: "quiero comer", position: 3, word_count: 2, lego_count: 2}
+          - {position: 4, known_text: "I take time", target_text: "我花时间"}
+          - {position: 5, known_text: "take time to learn", target_text: "花时间学"}
+
+    particle_handling:
+      description: "Particles don't get their own build-up position"
+      common_particles:
+        chinese: ["了", "着", "过", "的", "地", "得", "吗", "呢", "吧", "啊", "把", "被"]
+        spanish: []  # Spanish typically doesn't have grammatical particles
+      example:
+        lego: {known_text: "I've been learning", target_text: "我学了"}
+        components:
+          - {known: "I", target: "我"}          # meaningful - gets position
+          - {known: "learn", target: "学"}       # meaningful - gets position
+          - {known: "completed", target: "了"}   # PARTICLE - skipped
+        buildup_phrases:
+          - {position: 1, known_text: "I", target_text: "我"}
+          - {position: 2, known_text: "learn", target_text: "学"}
+          - {position: 3, known_text: "I've been learning", target_text: "我学了"}  # LEGO shows 了
+        learner_sees: "When 我学了 appears, learner can identify 了 as the particle"
 
     sequence_for_A_type:
-      description: "A-type (atomic) LEGOs skip components and debut"
+      description: "A-type (atomic) LEGOs have no build-up - they ARE the atomic unit"
       note: "A-type LEGOs are single words, no decomposition needed"
       sequence:
-        - "Practice sentences only (10 phrases, positions 2-11)"
+        1_lego_itself: {position: 1, description: "The LEGO word itself"}
+        2_practice: {positions: "2-11", description: "Practice phrases using the LEGO"}
 
     example_M_type_output:
-      lego: {known_text: "I want to", target_text: "quiero"}
+      lego: {known_text: "to take time", target_text: "花时间"}
       type: "M"
+      components: [{known: "spend", target: "花"}, {known: "time", target: "时间"}]
       database_rows:
-        - {position: 0, known_text: "I", target_text: "yo", word_count: 1, lego_count: 1}
-        - {position: 0, known_text: "want", target_text: "quiero", word_count: 1, lego_count: 1}
-        - {position: 1, known_text: "I want to", target_text: "quiero", word_count: 1, lego_count: 1}
-        - {position: 2, known_text: "I want to go", target_text: "quiero ir", word_count: 2, lego_count: 2}
-        - {position: 3, known_text: "I want to eat", target_text: "quiero comer", word_count: 2, lego_count: 2}
+        - {position: 1, known_text: "spend", target_text: "花", word_count: 1, lego_count: 1}
+        - {position: 2, known_text: "time", target_text: "时间", word_count: 2, lego_count: 1}
+        - {position: 3, known_text: "to take time", target_text: "花时间", word_count: 3, lego_count: 1}
+        - {position: 4, known_text: "I take time", target_text: "我花时间", word_count: 4, lego_count: 2}
+        - {position: 5, known_text: "take time to learn", target_text: "花时间学", word_count: 4, lego_count: 2}
         # ... more practice phrases
+
+    example_with_particle:
+      lego: {known_text: "I've been learning", target_text: "我学了"}
+      type: "M"
+      components:
+        - {known: "I", target: "我"}
+        - {known: "learn", target: "学"}
+        - {known: "completed action", target: "了"}  # particle
+      meaningful_components: 2  # 了 is skipped
+      database_rows:
+        - {position: 1, known_text: "I", target_text: "我"}
+        - {position: 2, known_text: "learn", target_text: "学"}
+        - {position: 3, known_text: "I've been learning", target_text: "我学了"}  # includes particle
+        - {position: 4+, description: "practice phrases..."}
 
   ## ==========================================================================
   ## PHRASE GENERATION PROCESS
@@ -360,14 +514,17 @@ phase Phase3BasketGeneration:
           - "I work from home"
           - "I'm trying to learn Spanish"
 
-    STEP_3_GENERATE_10_PHRASES:
-      description: "Create exactly 10 phrases per LEGO"
+    STEP_3_GENERATE_15_20_PHRASES:
+      description: "Generate 15-20 natural phrases, server filters to best 10"
 
-      mandatory_distribution:
-        really_short_1_2_words: 2       # Fragments OK, show bare LEGO
-        quite_short_3_words: 2          # Complete thoughts
-        longer_4_5_words: 2             # Complete thoughts
-        long_6_plus_words: 4            # Conversational gold
+      approach:
+        generate: "15-20 phrases prioritizing naturalness"
+        filter: "Server-side GATE validation and quality filtering"
+        result: "Best 10 phrases saved to database"
+
+      rationale: |
+        Overgeneration + filtering produces higher quality than forcing exactly 10.
+        Agents focus on natural language, server handles mechanical validation.
 
       output_format:
         description: "Each phrase becomes a row in course_practice_phrases"
@@ -496,9 +653,13 @@ phase Phase3BasketGeneration:
         updated_at = now();
 
     position_mapping:
-      - "0: Component phrases (M-type only)"
-      - "1: LEGO debut phrase"
-      - "2-11: Practice phrases (10 total)"
+      m_type_legos:
+        - "1 to N: Meaningful component build-up phrases (particles skipped)"
+        - "N+1: LEGO itself"
+        - "N+2 onwards: Practice phrases"
+      a_type_legos:
+        - "1: LEGO itself"
+        - "2-11: Practice phrases (10 total)"
 
     example_output:
       seed_number: 1
@@ -525,8 +686,8 @@ phase Phase3BasketGeneration:
     description: "Verify before moving to next LEGO"
 
     checks:
-      - "10 phrases generated (exactly 10)"
-      - "Distribution: 2-2-2-4 (short-quite short-longer-long)"
+      - "15-20 phrases generated (server filters to best 10)"
+      - "Focus on naturalness over forced distribution"
       - "ALL Spanish words in whitelist (zero violations)"
       - "All phrases under 25 syllables (cognitive load limit)"
       - "All phrases sound natural in BOTH languages"
@@ -659,7 +820,7 @@ phase Phase3BasketGeneration:
 
     mechanism:
       - "Query course_practice_phrases for existing phrases"
-      - "Compare against expected LEGOs from course_legos (is_new=true, status='released')"
+      - "Compare against expected LEGOs from course_legos (is_new=true)"
       - "Calculate missing LEGOs (those without practice phrases)"
       - "Launch new job targeting only missing LEGOs"
 
@@ -674,7 +835,6 @@ phase Phase3BasketGeneration:
            AND cpp.lego_index = cl.lego_index
       WHERE cl.course_code = $1
         AND cl.is_new = true
-        AND cl.status = 'released'
         AND cpp.course_code IS NULL;
 
     trigger: "Re-launch /launch-15-masters with same courseCode"
@@ -691,9 +851,56 @@ phase Phase3BasketGeneration:
   ## ==========================================================================
 
   version_history:
+    v11_5:
+      date: "2026-01-14"
+      status: "Production Ready"
+      title: "M-LEGO Build-up Structure"
+      changes:
+        - "CRITICAL: Documented M-LEGO build-up structure (components → LEGO → practice)"
+        - "Components at positions 1..N, LEGO at N+1, practice at N+2+"
+        - "Particles (了, 着, 过, etc.) are SKIPPED in build-up - only meaningful components"
+        - "Added particle_handling section with language-specific particle lists"
+        - "Added example_with_particle showing how 我学了 build-up works"
+        - "Updated position_mapping to differentiate M-type and A-type sequences"
+        - "Pedagogical rationale: learners see internal structure, identify particles"
+
+    v11_4:
+      date: "2026-01-13"
+      status: "Deprecated"
+      title: "Pedagogical Framing in Scaffold"
+      changes:
+        - "Added 'WORLD-CLASS LANGUAGE TEACHER' framing to scaffold-v9"
+        - "Added SSi method explanation (LEGO recombination) to scaffold"
+        - "Added complexity distribution guide (2-3 short, 2-3 medium, 2-3 longer, 4-5 longest)"
+        - "Emphasized priority on [bracketed] recent LEGOs for recombination"
+        - "Workers now receive full pedagogical context in single scaffold fetch"
+
+    v11_3:
+      date: "2026-01-13"
+      status: "Deprecated"
+      title: "Worker Prompt Fix - Scaffold Fetch & Grammar Warnings"
+      changes:
+        - "CRITICAL FIX: Workers now fetch scaffold via GET /scaffold-v9/{course}/{legoId}"
+        - "Added explicit English grammar warnings to worker prompt"
+        - "Workers must read recent patterns showing natural grammar before generating"
+        - "Fixed generatePhase3MasterPrompt() which was sending bare LEGO data with no context"
+        - "Documented worker_prompt_structure in APML"
+
+    v11_2:
+      date: "2026-01-13"
+      status: "Deprecated"
+      title: "API Configuration & Culminating LEGO Documentation"
+      changes:
+        - "Added API_CONFIGURATION section documenting worker endpoints"
+        - "Documented ngrok URL fallback chain for ORCHESTRATOR_URL"
+        - "Documented /health, /api/phase-intelligence/3, /scaffold-v9, /upload-basket endpoints"
+        - "Documented built-in GATE validation in upload-basket endpoint"
+        - "Added CULMINATING_LEGO section documenting auto-add of seed sentence"
+        - "Documented defaults: 5 LEGOs per agent, 15-20 phrases generation"
+
     v11_1:
       date: "2026-01-12"
-      status: "Production Ready"
+      status: "Deprecated"
       title: "Syllable Count Validation"
       changes:
         - "Added syllable_overload GATE check (max 25 syllables per phrase)"
@@ -708,7 +915,7 @@ phase Phase3BasketGeneration:
       title: "DB-First Architecture"
       changes:
         - "BREAKING: Remove all JSON file references (lego_pairs.json, lego_baskets.json, scaffolds)"
-        - "Input: Read from course_legos table WHERE is_new=true AND status='released'"
+        - "Input: Read from course_legos table WHERE is_new=true"
         - "Output: Write to course_practice_phrases table"
         - "Added database schema reference section"
         - "Updated output format with position, word_count, lego_count fields"

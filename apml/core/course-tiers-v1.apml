@@ -1,0 +1,189 @@
+# APML Course Tiers Specification
+# Version: 1.0.0 (2026-01-12)
+# Status: Production-ready
+#
+# Defines the three standard course tiers used for development and testing.
+# Each tier is a subset of the 668 canonical seeds.
+
+spec CourseTiers:
+  name: "Course Tiers Specification"
+  version: "1.0.0"
+  purpose: "Define standard course sizes for testing and release"
+
+  ## ==========================================================================
+  ## TIER DEFINITIONS
+  ## ==========================================================================
+
+  tiers:
+    TEST_30:
+      name: "Test Course"
+      code_suffix: "test_30"
+      seed_range: "S0001-S0030"
+      seed_count: 30
+      purpose: |
+        Minimal viable course for testing the full pipeline.
+        Large enough to have meaningful vocabulary accumulation.
+        Small enough to iterate quickly.
+
+      rationale: |
+        - Seeds 1-10 are atypical (limited vocab creates edge cases)
+        - Seeds 11-30 provide more realistic testing scenarios
+        - 30 seeds = approximately 100-150 LEGOs
+        - Full pipeline test: Phase 0 -> 1 -> 2 -> 3 -> Audio -> Manifest
+
+      use_cases:
+        - "Pipeline validation"
+        - "New phase server testing"
+        - "Prompt iteration"
+        - "CI/CD integration tests"
+
+    MVP_260:
+      name: "MVP Course"
+      code_suffix: "mvp_260"
+      seed_range: "S0001-S0260"
+      seed_count: 260
+      purpose: |
+        Minimum Viable Product for learner-facing release.
+        Sufficient content for meaningful learning progression.
+        Manageable audio generation costs.
+
+      rationale: |
+        - 260 seeds = approximately 900-1100 LEGOs
+        - Covers core vocabulary and grammar patterns
+        - Enough for 30-60 hours of learning
+        - Affordable TTS costs for community courses
+
+      use_cases:
+        - "Beta testing with real learners"
+        - "Community course releases"
+        - "New language pair launches"
+
+    FULL_668:
+      name: "Full Course"
+      code_suffix: "full_668"
+      seed_range: "S0001-S0668"
+      seed_count: 668
+      purpose: |
+        Complete course with all canonical seeds.
+        Official release quality.
+        Comprehensive language coverage.
+
+      rationale: |
+        - 668 seeds = approximately 2500-3000 LEGOs
+        - Covers advanced vocabulary and idioms
+        - 100+ hours of learning content
+        - Full SSi methodology coverage
+
+      use_cases:
+        - "Official course releases"
+        - "Complete language pair coverage"
+        - "Research and evaluation"
+
+  ## ==========================================================================
+  ## COURSE CODE NAMING
+  ## ==========================================================================
+
+  naming_convention:
+    pattern: "{tier}_{target}_for_{known}"
+    examples:
+      - "test_30_spa_for_eng"
+      - "mvp_260_zho_for_eng"
+      - "full_668_cym_for_eng"
+
+    legacy_note: |
+      Existing courses like "spa_for_eng" without tier prefix
+      are implicitly FULL_668 courses.
+
+  ## ==========================================================================
+  ## PROGRESSION PATH
+  ## ==========================================================================
+
+  progression:
+    description: |
+      Standard development path for a new language pair:
+
+      1. TEST_30: Validate pipeline, iterate on prompts
+      2. MVP_260: Beta release, gather feedback
+      3. FULL_668: Complete official release
+
+    extension_strategy:
+      test_to_mvp:
+        description: "Extend TEST_30 by 230 seeds"
+        action: "Run phases 1-3 for S0031-S0260"
+        merge: "Append to existing lego_pairs.json and lego_baskets.json"
+
+      mvp_to_full:
+        description: "Extend MVP_260 by 408 seeds"
+        action: "Run phases 1-3 for S0261-S0668"
+        merge: "Append to existing outputs"
+
+  ## ==========================================================================
+  ## DEPRECATED
+  ## ==========================================================================
+
+  deprecated:
+    TEST_10:
+      reason: |
+        10 seeds is insufficient for realistic testing.
+        Seeds 1-10 have very limited available vocabulary,
+        creating edge cases that don't represent normal operation.
+      status: "Deprecated 2026-01-12"
+      replacement: "TEST_30"
+
+  ## ==========================================================================
+  ## DATABASE REPRESENTATION
+  ## ==========================================================================
+
+  database:
+    table: "courses"
+
+    columns_used:
+      code: "Unique course identifier (e.g., test_30_spa_for_eng)"
+      display_name: "Human-readable name (e.g., 'Spanish Test Course (30 seeds)')"
+      known_lang: "ISO 639-3 code (e.g., eng)"
+      target_lang: "ISO 639-3 code (e.g., spa)"
+      status: "draft | beta | released"
+      course_type: "official | community"
+
+    tier_metadata:
+      storage: "JSONB in course metadata or separate tier column"
+      fields:
+        tier: "test_30 | mvp_260 | full_668"
+        seed_range_start: "S0001"
+        seed_range_end: "S0030 | S0260 | S0668"
+
+  ## ==========================================================================
+  ## API INTEGRATION
+  ## ==========================================================================
+
+  api:
+    create_course:
+      endpoint: "POST /api/courses"
+      body:
+        tier: "test_30 | mvp_260 | full_668"
+        known_lang: "eng"
+        target_lang: "spa"
+      response:
+        code: "test_30_spa_for_eng"
+        seed_count: 30
+
+    get_course_tier:
+      endpoint: "GET /api/courses/:code/tier"
+      response:
+        tier: "test_30"
+        seed_count: 30
+        seed_range: "S0001-S0030"
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v1_0_0:
+      date: "2026-01-12"
+      status: "Initial Release"
+      changes:
+        - "Defined TEST_30, MVP_260, FULL_668 tiers"
+        - "Deprecated TEST_10"
+        - "Established naming convention"
+        - "Defined extension strategy"

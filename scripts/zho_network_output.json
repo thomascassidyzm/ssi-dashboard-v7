@@ -1,0 +1,311 @@
+{
+  "legos": [
+    {
+      "legoId": "L001",
+      "targetText": "我想",
+      "knownText": "I want to"
+    },
+    {
+      "legoId": "L002",
+      "targetText": "说",
+      "knownText": "speak"
+    },
+    {
+      "legoId": "L003",
+      "targetText": "中文",
+      "knownText": "Chinese"
+    },
+    {
+      "legoId": "L004",
+      "targetText": "我在试着",
+      "knownText": "I'm trying to"
+    },
+    {
+      "legoId": "L005",
+      "targetText": "学",
+      "knownText": "learn"
+    },
+    {
+      "legoId": "L006",
+      "targetText": "我喜欢",
+      "knownText": "I like to"
+    },
+    {
+      "legoId": "L007",
+      "targetText": "喝",
+      "knownText": "drink"
+    },
+    {
+      "legoId": "L008",
+      "targetText": "茶",
+      "knownText": "tea"
+    },
+    {
+      "legoId": "L009",
+      "targetText": "我需要",
+      "knownText": "I need to"
+    },
+    {
+      "legoId": "L010",
+      "targetText": "吃",
+      "knownText": "eat"
+    },
+    {
+      "legoId": "L011",
+      "targetText": "饭",
+      "knownText": "food"
+    }
+  ],
+  "phrases": [
+    {
+      "knownText": "I want to speak",
+      "targetText": "我想说",
+      "legos": [
+        "L001",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I want to speak Chinese",
+      "targetText": "我想说中文",
+      "legos": [
+        "L001",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "speak Chinese",
+      "targetText": "说中文",
+      "legos": [
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I'm trying to learn",
+      "targetText": "我在试着学",
+      "legos": [
+        "L004",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I want to learn",
+      "targetText": "我想学",
+      "legos": [
+        "L001",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I'm trying to speak",
+      "targetText": "我在试着说",
+      "legos": [
+        "L004",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I'm trying to speak Chinese",
+      "targetText": "我在试着说中文",
+      "legos": [
+        "L004",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I want to learn Chinese",
+      "targetText": "我想学中文",
+      "legos": [
+        "L001",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "learn Chinese",
+      "targetText": "学中文",
+      "legos": [
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I like to drink",
+      "targetText": "我喜欢喝",
+      "legos": [
+        "L006",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I like to drink tea",
+      "targetText": "我喜欢喝茶",
+      "legos": [
+        "L006",
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "drink tea",
+      "targetText": "喝茶",
+      "legos": [
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "I want to drink",
+      "targetText": "我想喝",
+      "legos": [
+        "L001",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I want to drink tea",
+      "targetText": "我想喝茶",
+      "legos": [
+        "L001",
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "I'm trying to drink",
+      "targetText": "我在试着喝",
+      "legos": [
+        "L004",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I like to speak",
+      "targetText": "我喜欢说",
+      "legos": [
+        "L006",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I like to speak Chinese",
+      "targetText": "我喜欢说中文",
+      "legos": [
+        "L006",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I like to learn",
+      "targetText": "我喜欢学",
+      "legos": [
+        "L006",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I like to learn Chinese",
+      "targetText": "我喜欢学中文",
+      "legos": [
+        "L006",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I need to eat",
+      "targetText": "我需要吃",
+      "legos": [
+        "L009",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I need to eat food",
+      "targetText": "我需要吃饭",
+      "legos": [
+        "L009",
+        "L010",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "eat food",
+      "targetText": "吃饭",
+      "legos": [
+        "L010",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I want to eat",
+      "targetText": "我想吃",
+      "legos": [
+        "L001",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I want to eat food",
+      "targetText": "我想吃饭",
+      "legos": [
+        "L001",
+        "L010",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I'm trying to eat",
+      "targetText": "我在试着吃",
+      "legos": [
+        "L004",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I like to eat",
+      "targetText": "我喜欢吃",
+      "legos": [
+        "L006",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I like to eat food",
+      "targetText": "我喜欢吃饭",
+      "legos": [
+        "L006",
+        "L010",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I need to speak",
+      "targetText": "我需要说",
+      "legos": [
+        "L009",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I need to learn",
+      "targetText": "我需要学",
+      "legos": [
+        "L009",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I need to drink",
+      "targetText": "我需要喝",
+      "legos": [
+        "L009",
+        "L007"
+      ]
+    }
+  ]
+}

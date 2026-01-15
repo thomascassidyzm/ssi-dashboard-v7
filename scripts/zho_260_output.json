@@ -1,0 +1,892 @@
+{
+  "course_code": "zho_for_eng",
+  "legos": [
+    {
+      "legoId": "L001",
+      "knownText": "I want to",
+      "targetText": "我想"
+    },
+    {
+      "legoId": "L002",
+      "knownText": "speak",
+      "targetText": "说"
+    },
+    {
+      "legoId": "L003",
+      "knownText": "Chinese",
+      "targetText": "中文"
+    },
+    {
+      "legoId": "L004",
+      "knownText": "I'm trying to",
+      "targetText": "我在试着"
+    },
+    {
+      "legoId": "L005",
+      "knownText": "learn",
+      "targetText": "学"
+    },
+    {
+      "legoId": "L006",
+      "knownText": "how to",
+      "targetText": "怎么"
+    },
+    {
+      "legoId": "L007",
+      "knownText": "say",
+      "targetText": "说"
+    },
+    {
+      "legoId": "L008",
+      "knownText": "something",
+      "targetText": "什么"
+    },
+    {
+      "legoId": "L009",
+      "knownText": "I'm going to",
+      "targetText": "我要"
+    },
+    {
+      "legoId": "L010",
+      "knownText": "practise",
+      "targetText": "练习"
+    },
+    {
+      "legoId": "L011",
+      "knownText": "remember",
+      "targetText": "记住"
+    },
+    {
+      "legoId": "L012",
+      "knownText": "a word",
+      "targetText": "一个词"
+    },
+    {
+      "legoId": "L013",
+      "knownText": "try",
+      "targetText": "试"
+    },
+    {
+      "legoId": "L014",
+      "knownText": "I",
+      "targetText": "我"
+    },
+    {
+      "legoId": "L015",
+      "knownText": "a little",
+      "targetText": "一点"
+    },
+    {
+      "legoId": "L016",
+      "knownText": "you",
+      "targetText": "你"
+    },
+    {
+      "legoId": "L017",
+      "knownText": "very well",
+      "targetText": "很好"
+    },
+    {
+      "legoId": "L018",
+      "knownText": "he wants to",
+      "targetText": "他想"
+    },
+    {
+      "legoId": "L019",
+      "knownText": "come back",
+      "targetText": "回来"
+    },
+    {
+      "legoId": "L020",
+      "knownText": "she wants to",
+      "targetText": "她想"
+    },
+    {
+      "legoId": "L021",
+      "knownText": "find out",
+      "targetText": "找出"
+    },
+    {
+      "legoId": "L022",
+      "knownText": "we want to",
+      "targetText": "我们想"
+    },
+    {
+      "legoId": "L023",
+      "knownText": "meet",
+      "targetText": "见面"
+    },
+    {
+      "legoId": "L024",
+      "knownText": "I don't want to",
+      "targetText": "我不想"
+    },
+    {
+      "legoId": "L025",
+      "knownText": "stop",
+      "targetText": "停止"
+    },
+    {
+      "legoId": "L026",
+      "knownText": "you want to",
+      "targetText": "你想"
+    }
+  ],
+  "phrases": [
+    {
+      "knownText": "I want to speak",
+      "targetText": "我想说",
+      "legos": [
+        "L001",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I want to speak Chinese",
+      "targetText": "我想说中文",
+      "legos": [
+        "L001",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "speak Chinese",
+      "targetText": "说中文",
+      "legos": [
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I'm trying to learn",
+      "targetText": "我在试着学",
+      "legos": [
+        "L004",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I want to learn",
+      "targetText": "我想学",
+      "legos": [
+        "L001",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I'm trying to speak",
+      "targetText": "我在试着说",
+      "legos": [
+        "L004",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I'm trying to speak Chinese",
+      "targetText": "我在试着说中文",
+      "legos": [
+        "L004",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I want to learn Chinese",
+      "targetText": "我想学中文",
+      "legos": [
+        "L001",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "learn Chinese",
+      "targetText": "学中文",
+      "legos": [
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "how to speak",
+      "targetText": "怎么说",
+      "legos": [
+        "L006",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "how to learn",
+      "targetText": "怎么学",
+      "legos": [
+        "L006",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "how to speak Chinese",
+      "targetText": "怎么说中文",
+      "legos": [
+        "L006",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "how to learn Chinese",
+      "targetText": "怎么学中文",
+      "legos": [
+        "L006",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I want to say",
+      "targetText": "我想说",
+      "legos": [
+        "L001",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I want to say something",
+      "targetText": "我想说什么",
+      "legos": [
+        "L001",
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "say something",
+      "targetText": "说什么",
+      "legos": [
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "I want to say Chinese",
+      "targetText": "我想说中文",
+      "legos": [
+        "L001",
+        "L007",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "say Chinese",
+      "targetText": "说中文",
+      "legos": [
+        "L007",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I'm trying to say",
+      "targetText": "我在试着说",
+      "legos": [
+        "L004",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I'm trying to say something",
+      "targetText": "我在试着说什么",
+      "legos": [
+        "L004",
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "I'm trying to say Chinese",
+      "targetText": "我在试着说中文",
+      "legos": [
+        "L004",
+        "L007",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "how to say",
+      "targetText": "怎么说",
+      "legos": [
+        "L006",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "how to say something",
+      "targetText": "怎么说什么",
+      "legos": [
+        "L006",
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "knownText": "I want to practise",
+      "targetText": "我想练习",
+      "legos": [
+        "L001",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I'm trying to practise",
+      "targetText": "我在试着练习",
+      "legos": [
+        "L004",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I'm going to practise",
+      "targetText": "我要练习",
+      "legos": [
+        "L009",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I'm going to speak",
+      "targetText": "我要说",
+      "legos": [
+        "L009",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I'm going to learn",
+      "targetText": "我要学",
+      "legos": [
+        "L009",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I'm going to speak Chinese",
+      "targetText": "我要说中文",
+      "legos": [
+        "L009",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I'm going to learn Chinese",
+      "targetText": "我要学中文",
+      "legos": [
+        "L009",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I want to remember",
+      "targetText": "我想记住",
+      "legos": [
+        "L001",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I want to remember a word",
+      "targetText": "我想记住一个词",
+      "legos": [
+        "L001",
+        "L011",
+        "L012"
+      ]
+    },
+    {
+      "knownText": "remember a word",
+      "targetText": "记住一个词",
+      "legos": [
+        "L011",
+        "L012"
+      ]
+    },
+    {
+      "knownText": "I'm trying to remember",
+      "targetText": "我在试着记住",
+      "legos": [
+        "L004",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I'm trying to remember a word",
+      "targetText": "我在试着记住一个词",
+      "legos": [
+        "L004",
+        "L011",
+        "L012"
+      ]
+    },
+    {
+      "knownText": "I'm going to remember",
+      "targetText": "我要记住",
+      "legos": [
+        "L009",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I'm going to remember a word",
+      "targetText": "我要记住一个词",
+      "legos": [
+        "L009",
+        "L011",
+        "L012"
+      ]
+    },
+    {
+      "knownText": "I want to try",
+      "targetText": "我想试",
+      "legos": [
+        "L001",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "I'm trying to try",
+      "targetText": "我在试着试",
+      "legos": [
+        "L004",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "I'm going to try",
+      "targetText": "我要试",
+      "legos": [
+        "L009",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "I speak",
+      "targetText": "我说",
+      "legos": [
+        "L014",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I speak a little",
+      "targetText": "我说一点",
+      "legos": [
+        "L014",
+        "L002",
+        "L015"
+      ]
+    },
+    {
+      "knownText": "speak a little",
+      "targetText": "说一点",
+      "legos": [
+        "L002",
+        "L015"
+      ]
+    },
+    {
+      "knownText": "I speak Chinese",
+      "targetText": "我说中文",
+      "legos": [
+        "L014",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "I learn",
+      "targetText": "我学",
+      "legos": [
+        "L014",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I learn Chinese",
+      "targetText": "我学中文",
+      "legos": [
+        "L014",
+        "L005",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "you speak",
+      "targetText": "你说",
+      "legos": [
+        "L016",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "you speak Chinese",
+      "targetText": "你说中文",
+      "legos": [
+        "L016",
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "knownText": "he wants to speak",
+      "targetText": "他想说",
+      "legos": [
+        "L018",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "he wants to learn",
+      "targetText": "他想学",
+      "legos": [
+        "L018",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "he wants to say",
+      "targetText": "他想说",
+      "legos": [
+        "L018",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "he wants to practise",
+      "targetText": "他想练习",
+      "legos": [
+        "L018",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "he wants to remember",
+      "targetText": "他想记住",
+      "legos": [
+        "L018",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "he wants to try",
+      "targetText": "他想试",
+      "legos": [
+        "L018",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "he wants to come back",
+      "targetText": "他想回来",
+      "legos": [
+        "L018",
+        "L019"
+      ]
+    },
+    {
+      "knownText": "she wants to speak",
+      "targetText": "她想说",
+      "legos": [
+        "L020",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "she wants to learn",
+      "targetText": "她想学",
+      "legos": [
+        "L020",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "she wants to say",
+      "targetText": "她想说",
+      "legos": [
+        "L020",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "she wants to practise",
+      "targetText": "她想练习",
+      "legos": [
+        "L020",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "she wants to remember",
+      "targetText": "她想记住",
+      "legos": [
+        "L020",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "she wants to try",
+      "targetText": "她想试",
+      "legos": [
+        "L020",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "she wants to come back",
+      "targetText": "她想回来",
+      "legos": [
+        "L020",
+        "L019"
+      ]
+    },
+    {
+      "knownText": "she wants to find out",
+      "targetText": "她想找出",
+      "legos": [
+        "L020",
+        "L021"
+      ]
+    },
+    {
+      "knownText": "we want to speak",
+      "targetText": "我们想说",
+      "legos": [
+        "L022",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "we want to learn",
+      "targetText": "我们想学",
+      "legos": [
+        "L022",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "we want to say",
+      "targetText": "我们想说",
+      "legos": [
+        "L022",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "we want to practise",
+      "targetText": "我们想练习",
+      "legos": [
+        "L022",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "we want to remember",
+      "targetText": "我们想记住",
+      "legos": [
+        "L022",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "we want to try",
+      "targetText": "我们想试",
+      "legos": [
+        "L022",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "we want to come back",
+      "targetText": "我们想回来",
+      "legos": [
+        "L022",
+        "L019"
+      ]
+    },
+    {
+      "knownText": "we want to find out",
+      "targetText": "我们想找出",
+      "legos": [
+        "L022",
+        "L021"
+      ]
+    },
+    {
+      "knownText": "we want to meet",
+      "targetText": "我们想见面",
+      "legos": [
+        "L022",
+        "L023"
+      ]
+    },
+    {
+      "knownText": "I don't want to speak",
+      "targetText": "我不想说",
+      "legos": [
+        "L024",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "I don't want to learn",
+      "targetText": "我不想学",
+      "legos": [
+        "L024",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "I don't want to say",
+      "targetText": "我不想说",
+      "legos": [
+        "L024",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "I don't want to practise",
+      "targetText": "我不想练习",
+      "legos": [
+        "L024",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "I don't want to remember",
+      "targetText": "我不想记住",
+      "legos": [
+        "L024",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "I don't want to try",
+      "targetText": "我不想试",
+      "legos": [
+        "L024",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "I don't want to come back",
+      "targetText": "我不想回来",
+      "legos": [
+        "L024",
+        "L019"
+      ]
+    },
+    {
+      "knownText": "I don't want to find out",
+      "targetText": "我不想找出",
+      "legos": [
+        "L024",
+        "L021"
+      ]
+    },
+    {
+      "knownText": "I don't want to meet",
+      "targetText": "我不想见面",
+      "legos": [
+        "L024",
+        "L023"
+      ]
+    },
+    {
+      "knownText": "I don't want to stop",
+      "targetText": "我不想停止",
+      "legos": [
+        "L024",
+        "L025"
+      ]
+    },
+    {
+      "knownText": "you want to speak",
+      "targetText": "你想说",
+      "legos": [
+        "L026",
+        "L002"
+      ]
+    },
+    {
+      "knownText": "you want to learn",
+      "targetText": "你想学",
+      "legos": [
+        "L026",
+        "L005"
+      ]
+    },
+    {
+      "knownText": "you want to say",
+      "targetText": "你想说",
+      "legos": [
+        "L026",
+        "L007"
+      ]
+    },
+    {
+      "knownText": "you want to practise",
+      "targetText": "你想练习",
+      "legos": [
+        "L026",
+        "L010"
+      ]
+    },
+    {
+      "knownText": "you want to remember",
+      "targetText": "你想记住",
+      "legos": [
+        "L026",
+        "L011"
+      ]
+    },
+    {
+      "knownText": "you want to try",
+      "targetText": "你想试",
+      "legos": [
+        "L026",
+        "L013"
+      ]
+    },
+    {
+      "knownText": "you want to come back",
+      "targetText": "你想回来",
+      "legos": [
+        "L026",
+        "L019"
+      ]
+    },
+    {
+      "knownText": "you want to find out",
+      "targetText": "你想找出",
+      "legos": [
+        "L026",
+        "L021"
+      ]
+    },
+    {
+      "knownText": "you want to meet",
+      "targetText": "你想见面",
+      "legos": [
+        "L026",
+        "L023"
+      ]
+    },
+    {
+      "knownText": "you want to stop",
+      "targetText": "你想停止",
+      "legos": [
+        "L026",
+        "L025"
+      ]
+    }
+  ]
+}

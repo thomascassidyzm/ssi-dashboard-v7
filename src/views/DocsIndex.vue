@@ -57,7 +57,7 @@
                   </svg>
                 </div>
                 <div class="card-badge apml">
-                  <span class="badge-value">v13</span>
+                  <span class="badge-value">v14</span>
                   <span class="badge-label">spec</span>
                 </div>
               </div>
@@ -239,7 +239,7 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-value">v13</span>
+            <span class="stat-value">v14</span>
             <span class="stat-label">APML Version</span>
           </div>
           <div class="stat-divider"></div>

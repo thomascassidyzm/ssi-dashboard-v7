@@ -1,0 +1,361 @@
+# APML v9.0 - Pipeline Architecture Specification
+# Single Source of Truth for SSi Course Generation Pipeline
+#
+# Version: 9.0
+# Last Updated: 2025-11-24
+# Original: /public/docs/APML_v9.0_PIPELINE_ARCHITECTURE.md
+# Migrated: 2026-01-12
+
+---
+
+# OVERVIEW
+# APML v9.0 introduces a streamlined 3-phase pipeline for course generation,
+# with clear input/output contracts and automatic handoffs.
+
+---
+
+# PHASE ARCHITECTURE
+
+pipeline SSi_Course_Generation:
+  description: "Complete course generation pipeline"
+
+  # Input: Canonical Seeds
+  input:
+    file: public/vfs/canonical/canonical_seeds.json
+
+  phases:
+    # Phase 1: Translation + LEGO Extraction
+    phase_1:
+      name: "Translation + LEGO Extraction"
+      trigger: Swarm (25 agents in parallel)
+      output: draft_lego_pairs.json (may have conflicts)
+
+    # Phase 2: Conflict Resolution
+    phase_2:
+      name: "Conflict Resolution"
+      trigger: Upchunking Agent
+      steps: [detect, agent, apply]
+      output: lego_pairs.json (conflict-free, single source of truth)
+
+    # Phase 3: Basket Generation
+    phase_3:
+      name: "Basket Generation"
+      trigger: Existing basket server (DO NOT MODIFY)
+      output: lego_baskets.json
+
+    # Manifest: Course Compilation (Script)
+    manifest:
+      name: "Course Compilation"
+      inputs: [lego_pairs.json, lego_baskets.json, introductions.json]
+      output: course_manifest.json
+
+    # Audio: TTS Generation (Separate process)
+    audio:
+      name: "TTS Generation"
+      input: course_manifest.json
+      output: audio/*.mp3
+
+---
+
+# FILE STRUCTURE
+
+file_structure:
+  base: public/vfs/courses/<course_code>/
+
+  seeds_directory:
+    path: seeds/
+    description: "Individual seed files (Phase 1 per-seed)"
+    files: [S0001.json, S0002.json, ...]
+
+  phase_outputs:
+    draft_lego_pairs.json: "Phase 1 output (may have conflicts)"
+    conflict_report.json: "Phase 2a analysis"
+    upchunk_resolutions.json: "Phase 2b agent output"
+    lego_pairs.json: "Phase 2 output (SINGLE SOURCE OF TRUTH)"
+    lego_baskets.json: "Phase 3 output"
+    introductions.json: "Auto-generated at Phase 2 end"
+    course_manifest.json: "Final compiled manifest"
+
+  audio_directory:
+    path: audio/
+    subdirs: [samples/, full/]
+
+---
+
+# DATA FORMATS
+
+## lego_pairs.json (Single Source of Truth)
+# This is THE master file for course content. It contains:
+# - All seed pairs (no separate seed_pairs.json needed)
+# - All extracted LEGOs
+# - All upchunked M-types from conflict resolution
+
+data_format lego_pairs:
+  schema:
+    course: string  # e.g., "spa_for_eng"
+    generated: timestamp  # e.g., "2025-11-24T15:00:00Z"
+    phase: string  # "final"
+    phase2Applied: timestamp
+    totalSeeds: number
+    totalLegos: number
+    seeds: Seed[]
+    upchunked_mtypes: UpchunkedMType[]
+
+  seed_schema:
+    seed_id: string  # e.g., "S0001"
+    seed_pair:
+      known: string
+      target: string
+    legos: LEGO[]
+
+  lego_schema:
+    id: string  # e.g., "S0001L01"
+    type: "A" | "M"
+    new: boolean
+    lego:
+      known: string
+      target: string
+
+  upchunked_mtype_schema:
+    id: string  # e.g., "UP0001"
+    type: "M"
+    source: "phase2_upchunk"
+    lego:
+      known: string
+      target: string
+    components: Component[]
+    teaches: string
+
+---
+
+# LEGO TYPES
+
+lego_types:
+  A_type:
+    name: "Atomic"
+    description: "Single word either side"
+    example: "hello -> hola"
+
+  M_type:
+    name: "Molecular"
+    description: "2+ words both sides, teaches pattern"
+    example: "I'm going to -> voy a"
+
+# M-type Requirements
+m_type_requirements:
+  must_have:
+    - "2+ words on BOTH sides"
+    - "Teach something non-obvious (word order, linking words, idioms)"
+    - "Include `components` array showing constituent parts"
+    - "Include `teaches` field explaining the pattern"
+
+  must_not_be:
+    - "Simple concatenations (e.g., 'I want' = just 'I' + 'want')"
+    - "Trivial word-for-word translations"
+
+---
+
+# PHASE CONTRACTS
+
+## Phase 1: Translation + LEGO Extraction
+phase_contract phase_1:
+  input: canonical_seeds.json
+  output: draft_lego_pairs.json
+  trigger: Swarm (25 parallel agents)
+  handoff: POST /phase2/detect
+
+  swarm_configuration:
+    browser_tabs: 5
+    agents_per_tab: 5
+    seeds_per_agent: 3
+    total_seeds: 75  # processed in parallel
+
+  per_seed_post:
+    endpoint: POST http://localhost:3457/upload-seed
+    content_type: application/json
+    body:
+      course: string
+      agentId: string
+      seed: object
+
+## Phase 2: Conflict Resolution
+phase_contract phase_2:
+  input: draft_lego_pairs.json
+  output: lego_pairs.json
+  trigger: Upchunking Agent
+  handoff: Run Phase 3 basket generation
+
+  steps:
+    1: "POST /phase2/detect -> conflict_report.json"
+    2: "Run upchunking agent -> upchunk_resolutions.json"
+    3: "POST /phase2/apply -> lego_pairs.json"
+
+  conflict_detection:
+    definition: "Same KNOWN phrase mapping to different TARGET translations"
+
+  resolution_strategy:
+    1: "Choose most context-neutral form as canonical"
+    2: "Create M-type upchunks for context-specific variants"
+    3: "Auto-normalize capitalization"
+
+## Phase 3: Basket Generation
+phase_contract phase_3:
+  input: lego_pairs.json
+  output: lego_baskets.json
+  trigger: Existing basket server
+  handoff: Run manifest generation
+
+  important: "Do not modify Phase 3 code. It works perfectly."
+
+---
+
+# PIPELINE SERVER
+
+server_configuration:
+  port: 3457
+
+  endpoints:
+    health:
+      path: /health
+      method: GET
+      description: "Server status"
+
+    pipeline_status:
+      path: /pipeline/:code
+      method: GET
+      description: "Full pipeline status with handoffs"
+
+    course_status:
+      path: /course/:code/status
+      method: GET
+      description: "Real-time progress"
+
+    upload_seed:
+      path: /upload-seed
+      method: POST
+      description: "Phase 1 per-seed upload"
+
+    phase1_merge:
+      path: /phase1/merge
+      method: POST
+      description: "Merge seeds -> draft_lego_pairs"
+
+    phase2_detect:
+      path: /phase2/detect
+      method: POST
+      description: "Analyze conflicts"
+
+    phase2_apply:
+      path: /phase2/apply
+      method: POST
+      description: "Apply resolutions"
+
+    upload_basket:
+      path: /upload-basket
+      method: POST
+      description: "Phase 3 per-basket upload"
+
+---
+
+# PIPELINE STATUS RESPONSE
+
+pipeline_status_response:
+  schema:
+    course: string
+    pipeline:
+      phase1:
+        name: "Translation + LEGO Extraction"
+        status: "complete" | "in_progress" | "pending"
+        input:
+          file: "canonical_seeds.json"
+          ready: boolean
+        output:
+          file: "draft_lego_pairs.json"
+          exists: boolean
+      phase2:
+        name: "Conflict Resolution"
+        status: "complete" | "in_progress" | "pending"
+        input:
+          file: "draft_lego_pairs.json"
+          ready: boolean
+        output:
+          file: "lego_pairs.json"
+          exists: boolean
+      phase3:
+        name: "Basket Generation"
+        status: "ready" | "in_progress" | "pending"
+        input:
+          file: "lego_pairs.json"
+          ready: boolean
+        output:
+          file: "lego_baskets.json"
+          exists: boolean
+    recommendation:
+      phase: number
+      action: string
+
+---
+
+# MIGRATION FROM PREVIOUS VERSIONS
+
+deprecated_files:
+  - seed_pairs.json  # Now embedded in lego_pairs.json
+  - batch_outputs/   # Replaced by per-seed uploads
+
+phase_number_changes:
+  # Old -> New -> Description
+  "Phase 1-3": "Phase 1: Translation + LEGO Extraction"
+  "Phase 4": "Phase 2: Conflict Resolution (Upchunking)"
+  "Phase 5": "Phase 3: Basket Generation"
+  "Phase 6": "Auto-script at Phase 2 end (Introductions)"
+  "Phase 7": "Manifest: Course compilation script"
+  "Phase 8": "Audio: TTS generation (separate process)"
+
+---
+
+# QUALITY GATES
+
+quality_gates:
+  phase_1:
+    - "All 75 seeds present"
+    - "Each seed has at least 1 LEGO"
+    - "All LEGOs have valid structure"
+
+  phase_2:
+    - "Zero conflicts remaining"
+    - "All canonical forms applied"
+    - "Capitalization normalized"
+
+  phase_3:
+    - "All LEGOs assigned to baskets"
+    - "Basket sequences are valid"
+    - "No orphaned LEGOs"
+
+---
+
+# DASHBOARD INTEGRATION
+
+dashboard_integration:
+  reads_from:
+    - "/pipeline/:code - Pipeline status"
+    - "/course/:code/status - Real-time progress"
+    - "VFS files directly for content editing"
+
+---
+
+# QUICK REFERENCE
+
+quick_reference:
+  start_pipeline: "npm run pipeline"
+
+  full_course_generation:
+    steps:
+      1: "Start server: npm run pipeline"
+      2: "Run swarm: node tools/orchestrators/spawn-swarm-5x5x3.cjs spa_for_eng --api-url=https://your-ngrok-url"
+      3: "Merge (after swarm): curl -X POST http://localhost:3457/phase1/merge -d '{\"course\":\"spa_for_eng\"}'"
+      4: "Detect conflicts: curl -X POST http://localhost:3457/phase2/detect -d '{\"course\":\"spa_for_eng\"}'"
+      5: "Run upchunking agent (creates upchunk_resolutions.json)"
+      6: "Apply resolutions: curl -X POST http://localhost:3457/phase2/apply -d '{\"course\":\"spa_for_eng\"}'"
+      7: "Run Phase 3 basket generation"
+      8: "Run manifest generation"
+      9: "Run audio generation"

@@ -1,13 +1,14 @@
 app SSiProductionSuite:
   title: "SSI Course Production Suite"
-  version: "2.3.0"
+  version: "3.0.0"
   apml_version: "2.1.0"
   extensions: [APML-EDU]
   description: "Integrated QA, recording, and audio pipeline system for language course production"
 
 # ============================================
 # DEPLOYMENT ARCHITECTURE
-# Version: 2.3.0 (2026-01-07)
+# Version: 3.0.0 (2026-01-15)
+# v3.0 MAJOR CHANGE: Phases 0-3 consolidated into Course Builder
 # ============================================
 
 architecture:
@@ -29,7 +30,7 @@ architecture:
         - Review and flag audio samples
       requires_local_for:
         - Spawning Claude Code agents
-        - Running generation phases (1, 2, 3)
+        - Running Course Builder (content creation)
         - Audio generation (TTS)
         - Any content creation
 
@@ -43,9 +44,8 @@ architecture:
         - Node.js runtime
         - ngrok tunnel for remote access
       provides:
-        - Phase 1-3 orchestration
-        - Claude Code agent spawning
-        - Browser automation for web agents
+        - Course Builder agent spawning
+        - Claude Code agent coordination
         - Real-time progress via WebSocket
 
     database:
@@ -72,24 +72,26 @@ architecture:
 
   data_flow:
     content_creation:
-      description: "Creating new course content (NO LOCAL FILES)"
+      description: "Creating new course content via Course Builder (v3.0)"
       flow:
-        1: "User connects dashboard to local machine via env switcher"
-        2: "Dashboard sends generation request through ngrok tunnel"
-        3: "Local orchestrator spawns Claude Code web agents"
-        4: "Agents run on local machine using Pro Max subscription"
-        5: "Agents POST results DIRECTLY to Vercel API (popty.app/api/*)"
-        6: "Vercel API writes DIRECTLY to Supabase (no JSON files)"
-        7: "Dashboard polls database for progress updates"
+        1: "Agent reads course-builder brief (methodology examples)"
+        2: "Agent calls POST /api/seed/complete for each seed"
+        3: "Course Builder API validates atomically"
+        4: "API writes directly to Supabase (seeds, LEGOs, phrases)"
+        5: "Dashboard shows progress from database"
 
       upload_endpoints:
-        phase1_seeds: "POST /api/seeds/upload → course_seeds table"
-        phase2_legos: "POST /api/legos/upload → course_legos table"
-        phase3_baskets: "POST /api/baskets/upload → course_practice_phrases table"
+        course_builder: "POST /api/seed/complete → course_seeds, course_legos, course_practice_phrases"
+
+      deprecated_endpoints:
+        phase1_seeds: "POST /api/seeds/upload (DEPRECATED - use Course Builder)"
+        phase2_legos: "POST /api/legos/upload (DEPRECATED - use Course Builder)"
+        phase3_baskets: "POST /api/baskets/upload (DEPRECATED - use Course Builder)"
 
       key_principle: |
-        Agents write DIRECTLY to the production database via Vercel API.
-        No intermediate JSON files. No local storage. Database is SSoT.
+        Course Builder handles all content creation atomically.
+        Single API validates translation, LEGOs, and phrases together.
+        Database is SSoT. No JSON files. No phase handoffs.
 
     content_viewing:
       description: "Viewing existing content"
@@ -167,20 +169,27 @@ architecture:
       local_orchestrator: "Only spawns agents, does NOT store content"
 
     endpoints:
-      phase1:
-        url: "POST https://popty.app/api/seeds/upload"
-        writes_to: "course_seeds, course_legos"
-        payload: "{ course, seeds: [{ seed_id, known, target, legos }] }"
+      course_builder:
+        url: "POST https://popty.app/api/seed/complete"
+        writes_to: "course_seeds, course_legos, course_practice_phrases"
+        payload: |
+          {
+            "course_code": "zho_for_eng",
+            "seed_number": 1,
+            "known_text": "I want to speak Chinese",
+            "target_text": "我想说中文",
+            "legos": [
+              { "idx": 1, "type": "M", "known": "I want", "target": "我想",
+                "components": [...], "phrases": [...] }
+            ]
+          }
+        validation: "Atomic - tiling, ZUT, vocabulary, phrase counts"
+        on_error: "Nothing inserted, clear error message"
 
-      phase2:
-        url: "POST https://popty.app/api/legos/upload"
-        writes_to: "course_legos"
-        payload: "{ course, seed, legos: [{ lego_id, known, target, is_new }] }"
-
-      phase3:
-        url: "POST https://popty.app/api/baskets/upload"
-        writes_to: "course_practice_phrases"
-        payload: "{ course, seed, baskets: { legoId: { practice_phrases } } }"
+      # DEPRECATED (v2.x endpoints - replaced by Course Builder)
+      # phase1: "POST /api/seeds/upload"
+      # phase2: "POST /api/legos/upload"
+      # phase3: "POST /api/baskets/upload"
 
     deprecated:
       - "lego_pairs.json - replaced by course_legos table"
@@ -543,12 +552,21 @@ interface mission_control:
 # ============================================
 # INTERFACE - AGENT SWIMLANE MONITOR
 # Version: 2.1.0 (2026-01-06)
+# STATUS: DEPRECATED in v3.0.0 (2026-01-15)
+# REASON: Phase 0-3 replaced by Course Builder
 # ============================================
 
+# DEPRECATED: This interface is no longer used in v3.0+
+# The Course Builder approach doesn't use master/worker orchestration.
+# Agent progress is now tracked via database stats, not swimlanes.
+# Component archived to: archive/v13-ui/AgentSwimlane.vue
+
 interface agent_swimlane_monitor:
+  status: "DEPRECATED"
   description: |
-    Mission Control-style real-time monitoring dashboard for pipeline agents.
+    [DEPRECATED] Mission Control-style real-time monitoring dashboard for pipeline agents.
     Shows master/worker status in swimlane visualization with live activity feed.
+    NOTE: Not used in v3.0+ - Course Builder uses direct database progress tracking.
 
   route: /monitor/{courseCode}
   component: AgentSwimlane.vue

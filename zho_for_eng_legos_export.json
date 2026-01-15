@@ -1,0 +1,2574 @@
+[
+  {
+    "lego_id": "S0001L01",
+    "seed_number": 1,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0001L02",
+    "seed_number": 1,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "want",
+    "target_text": "想",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0001L03",
+    "seed_number": 1,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "Chinese",
+    "target_text": "中文",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0001L04",
+    "seed_number": 1,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "you",
+    "target_text": "你",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0001L05",
+    "seed_number": 1,
+    "lego_index": 5,
+    "type": "A",
+    "is_new": true,
+    "known_text": "now",
+    "target_text": "现在",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0001L06",
+    "seed_number": 1,
+    "lego_index": 6,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speak Chinese with you",
+    "target_text": "跟你说中文",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "you",
+        "target": "你"
+      },
+      {
+        "known": "with you",
+        "target": "跟你"
+      },
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      },
+      {
+        "known": "speak Chinese with you",
+        "target": "跟你说中文"
+      }
+    ],
+    "component_count": 5
+  },
+  {
+    "lego_id": "S0002L01",
+    "seed_number": 2,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0002L02",
+    "seed_number": 2,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "learn",
+    "target_text": "学",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0002L03",
+    "seed_number": 2,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "trying to learn",
+    "target_text": "在努力学",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "learn",
+        "target": "学"
+      },
+      {
+        "known": "trying to learn",
+        "target": "在努力学"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0003L01",
+    "seed_number": 3,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "speak",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0003L02",
+    "seed_number": 3,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "how to speak",
+    "target_text": "怎么说",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "how to speak",
+        "target": "怎么说"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0003L03",
+    "seed_number": 3,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "as often as possible",
+    "target_text": "尽量多",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "as often as possible",
+        "target": "尽量多"
+      }
+    ],
+    "component_count": 1
+  },
+  {
+    "lego_id": "S0003L04",
+    "seed_number": 3,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "how to speak as often as possible",
+    "target_text": "怎么尽量多说",
+    "known_word_count": 7,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "how to speak",
+        "target": "怎么说"
+      },
+      {
+        "known": "as often as possible",
+        "target": "尽量多"
+      },
+      {
+        "known": "how to speak as often as possible",
+        "target": "怎么尽量多说"
+      }
+    ],
+    "component_count": 4
+  },
+  {
+    "lego_id": "S0004L01",
+    "seed_number": 4,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "say",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0004L02",
+    "seed_number": 4,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "Chinese",
+    "target_text": "中文",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0004L03",
+    "seed_number": 4,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "something",
+    "target_text": "东西",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0004L04",
+    "seed_number": 4,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "how to say",
+    "target_text": "怎么说",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "say",
+        "target": "说"
+      },
+      {
+        "known": "how to say",
+        "target": "怎么说"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0004L05",
+    "seed_number": 4,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "in Chinese",
+    "target_text": "用中文",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "in Chinese",
+        "target": "用中文"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0004L06",
+    "seed_number": 4,
+    "lego_index": 6,
+    "type": "M",
+    "is_new": true,
+    "known_text": "how to say something in Chinese",
+    "target_text": "怎么用中文说东西",
+    "known_word_count": 6,
+    "components": [
+      {
+        "known": "say",
+        "target": "说"
+      },
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "something",
+        "target": "东西"
+      },
+      {
+        "known": "how to say",
+        "target": "怎么说"
+      },
+      {
+        "known": "in Chinese",
+        "target": "用中文"
+      },
+      {
+        "known": "how to say something in Chinese",
+        "target": "怎么用中文说东西"
+      }
+    ],
+    "component_count": 6
+  },
+  {
+    "lego_id": "S0005L01",
+    "seed_number": 5,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "someone else",
+    "target_text": "别人",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0005L02",
+    "seed_number": 5,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "with someone else",
+    "target_text": "跟别人",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "someone else",
+        "target": "别人"
+      },
+      {
+        "known": "with someone else",
+        "target": "跟别人"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0005L03",
+    "seed_number": 5,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "practise speaking",
+    "target_text": "练习说话",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "practise",
+        "target": "练习"
+      },
+      {
+        "known": "speaking",
+        "target": "说话"
+      },
+      {
+        "known": "practise speaking",
+        "target": "练习说话"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0005L04",
+    "seed_number": 5,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm going to",
+    "target_text": "我要",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "I",
+        "target": "我"
+      },
+      {
+        "known": "I'm going to",
+        "target": "我要"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0005L05",
+    "seed_number": 5,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm going to practise speaking",
+    "target_text": "我要练习说话",
+    "known_word_count": 5,
+    "components": [
+      {
+        "known": "I'm going to",
+        "target": "我要"
+      },
+      {
+        "known": "practise speaking",
+        "target": "练习说话"
+      },
+      {
+        "known": "I'm going to practise speaking",
+        "target": "我要练习说话"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0006L01",
+    "seed_number": 6,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0006L02",
+    "seed_number": 6,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "word",
+    "target_text": "词",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0006L03",
+    "seed_number": 6,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "a word",
+    "target_text": "一个词",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "word",
+        "target": "词"
+      },
+      {
+        "known": "a word",
+        "target": "一个词"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0006L04",
+    "seed_number": 6,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "remember",
+    "target_text": "记",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0006L05",
+    "seed_number": 6,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm trying to remember",
+    "target_text": "我试着记",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "I",
+        "target": "我"
+      },
+      {
+        "known": "remember",
+        "target": "记"
+      },
+      {
+        "known": "I'm trying to remember",
+        "target": "我试着记"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0007L01",
+    "seed_number": 7,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0007L02",
+    "seed_number": 7,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "want",
+    "target_text": "想",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0007L03",
+    "seed_number": 7,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "today",
+    "target_text": "今天",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0007L04",
+    "seed_number": 7,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "as hard as I can",
+    "target_text": "尽力",
+    "known_word_count": 5,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0007L05",
+    "seed_number": 7,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I want to try as hard as I can today",
+    "target_text": "今天我想尽力",
+    "known_word_count": 10,
+    "components": [
+      {
+        "known": "I want",
+        "target": "我想"
+      },
+      {
+        "known": "today I want",
+        "target": "今天我想"
+      },
+      {
+        "known": "I want to try as hard as I can today",
+        "target": "今天我想尽力"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0008L01",
+    "seed_number": 8,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0008L02",
+    "seed_number": 8,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": false,
+    "known_text": "I'm going to",
+    "target_text": "我要",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "I",
+        "target": "我"
+      },
+      {
+        "known": "I'm going to",
+        "target": "我要"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0008L03",
+    "seed_number": 8,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "try to",
+    "target_text": "试着",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0008L04",
+    "seed_number": 8,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "explain",
+    "target_text": "解释",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0008L05",
+    "seed_number": 8,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "what I mean",
+    "target_text": "我的意思",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "meaning",
+        "target": "意思"
+      },
+      {
+        "known": "what I mean",
+        "target": "我的意思"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0008L06",
+    "seed_number": 8,
+    "lego_index": 6,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm going to try to explain what I mean",
+    "target_text": "我要试着解释我的意思",
+    "known_word_count": 9,
+    "components": [
+      {
+        "known": "try to explain",
+        "target": "试着解释"
+      },
+      {
+        "known": "I'm going to try to explain",
+        "target": "我要试着解释"
+      },
+      {
+        "known": "I'm going to try to explain what I mean",
+        "target": "我要试着解释我的意思"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0009L01",
+    "seed_number": 9,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "now",
+    "target_text": "现在",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0009L02",
+    "seed_number": 9,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "speak",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0009L03",
+    "seed_number": 9,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": false,
+    "known_text": "Chinese",
+    "target_text": "中文",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0009L04",
+    "seed_number": 9,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "a little Chinese",
+    "target_text": "一点中文",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "a little Chinese",
+        "target": "一点中文"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0009L05",
+    "seed_number": 9,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speak a little Chinese",
+    "target_text": "说一点中文",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "a little Chinese",
+        "target": "一点中文"
+      },
+      {
+        "known": "speak a little Chinese",
+        "target": "说一点中文"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0010L01",
+    "seed_number": 10,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "remember",
+    "target_text": "记住",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0010L02",
+    "seed_number": 10,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "sentence",
+    "target_text": "句子",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0010L03",
+    "seed_number": 10,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "the whole sentence",
+    "target_text": "整个句子",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "sentence",
+        "target": "句子"
+      },
+      {
+        "known": "the whole sentence",
+        "target": "整个句子"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0010L04",
+    "seed_number": 10,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "can or not",
+    "target_text": "能不能",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "can",
+        "target": "能"
+      },
+      {
+        "known": "can or not",
+        "target": "能不能"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0010L05",
+    "seed_number": 10,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm not sure",
+    "target_text": "我不确定",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "not sure",
+        "target": "不确定"
+      },
+      {
+        "known": "I'm not sure",
+        "target": "我不确定"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0010L06",
+    "seed_number": 10,
+    "lego_index": 6,
+    "type": "M",
+    "is_new": true,
+    "known_text": "remember the whole sentence",
+    "target_text": "记住整个句子",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "remember",
+        "target": "记住"
+      },
+      {
+        "known": "the whole sentence",
+        "target": "整个句子"
+      },
+      {
+        "known": "remember the whole sentence",
+        "target": "记住整个句子"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0011L01",
+    "seed_number": 11,
+    "lego_index": 1,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'd like to speak",
+    "target_text": "我想说话",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "want",
+        "target": "想"
+      },
+      {
+        "known": "speak",
+        "target": "说话"
+      },
+      {
+        "known": "I'd like to speak",
+        "target": "我想说话"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0011L02",
+    "seed_number": 11,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "be able to speak",
+    "target_text": "能说话",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说话"
+      },
+      {
+        "known": "be able to speak",
+        "target": "能说话"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0011L03",
+    "seed_number": 11,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "after you finish",
+    "target_text": "你做完以后",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "you",
+        "target": "你"
+      },
+      {
+        "known": "finish",
+        "target": "做完"
+      },
+      {
+        "known": "after you finish",
+        "target": "你做完以后"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0011L04",
+    "seed_number": 11,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": false,
+    "known_text": "speak",
+    "target_text": "说话",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0011L05",
+    "seed_number": 11,
+    "lego_index": 5,
+    "type": "A",
+    "is_new": false,
+    "known_text": "finish",
+    "target_text": "做完",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0012L01",
+    "seed_number": 12,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "tomorrow",
+    "target_text": "明天",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0012L02",
+    "seed_number": 12,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I wouldn't like to guess",
+    "target_text": "我不想猜",
+    "known_word_count": 5,
+    "components": [
+      {
+        "known": "guess",
+        "target": "猜"
+      },
+      {
+        "known": "I wouldn't like",
+        "target": "我不想"
+      },
+      {
+        "known": "I wouldn't like to guess",
+        "target": "我不想猜"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0012L03",
+    "seed_number": 12,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "what's going to happen",
+    "target_text": "会发生什么",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "happen",
+        "target": "发生"
+      },
+      {
+        "known": "going to happen",
+        "target": "会发生"
+      },
+      {
+        "known": "what's going to happen",
+        "target": "会发生什么"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0012L04",
+    "seed_number": 12,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": false,
+    "known_text": "guess",
+    "target_text": "猜",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0012L05",
+    "seed_number": 12,
+    "lego_index": 5,
+    "type": "A",
+    "is_new": false,
+    "known_text": "happen",
+    "target_text": "发生",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0013L01",
+    "seed_number": 13,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "you",
+    "target_text": "你",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0013L02",
+    "seed_number": 13,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "Chinese",
+    "target_text": "中文",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0013L03",
+    "seed_number": 13,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": false,
+    "known_text": "speak",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0013L04",
+    "seed_number": 13,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speak very well",
+    "target_text": "说得很好",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "very",
+        "target": "很"
+      },
+      {
+        "known": "well",
+        "target": "好"
+      },
+      {
+        "known": "speak very well",
+        "target": "说得很好"
+      }
+    ],
+    "component_count": 4
+  },
+  {
+    "lego_id": "S0013L05",
+    "seed_number": 13,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speak Chinese very well",
+    "target_text": "中文说得很好",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "speak very well",
+        "target": "说得很好"
+      },
+      {
+        "known": "speak Chinese very well",
+        "target": "中文说得很好"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0014L01",
+    "seed_number": 14,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "you",
+    "target_text": "你",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0014L02",
+    "seed_number": 14,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "Chinese",
+    "target_text": "中文",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0014L03",
+    "seed_number": 14,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": false,
+    "known_text": "speak",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0014L04",
+    "seed_number": 14,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "all day",
+    "target_text": "整天",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0014L05",
+    "seed_number": 14,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speak Chinese",
+    "target_text": "说中文",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0015L01",
+    "seed_number": 15,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "tomorrow",
+    "target_text": "明天",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0015L02",
+    "seed_number": 15,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": false,
+    "known_text": "speak Chinese",
+    "target_text": "说中文",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0015L03",
+    "seed_number": 15,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "with me",
+    "target_text": "和我",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "with me",
+        "target": "和我"
+      }
+    ],
+    "component_count": 1
+  },
+  {
+    "lego_id": "S0015L04",
+    "seed_number": 15,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "And I want you to speak Chinese with me tomorrow",
+    "target_text": "而且我想让你明天和我说中文",
+    "known_word_count": 10,
+    "components": [
+      {
+        "known": "tomorrow",
+        "target": "明天"
+      },
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      },
+      {
+        "known": "with me",
+        "target": "和我"
+      },
+      {
+        "known": "I want you to",
+        "target": "我想让你"
+      },
+      {
+        "known": "And I want you to speak Chinese with me tomorrow",
+        "target": "而且我想让你明天和我说中文"
+      }
+    ],
+    "component_count": 5
+  },
+  {
+    "lego_id": "S0016L01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "he",
+    "target_text": "他",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0016L02",
+    "seed_number": 16,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "wants",
+    "target_text": "想",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0016L03",
+    "seed_number": 16,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "come back",
+    "target_text": "回来",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0016L04",
+    "seed_number": 16,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "later on",
+    "target_text": "以后",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0016L05",
+    "seed_number": 16,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "with everyone else",
+    "target_text": "和其他人一起",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "everyone else",
+        "target": "其他人"
+      },
+      {
+        "known": "with everyone else",
+        "target": "和其他人一起"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0016L06",
+    "seed_number": 16,
+    "lego_index": 6,
+    "type": "M",
+    "is_new": true,
+    "known_text": "He wants to come back with everyone else later on",
+    "target_text": "他想以后和其他人一起回来",
+    "known_word_count": 10,
+    "components": [
+      {
+        "known": "he",
+        "target": "他"
+      },
+      {
+        "known": "wants",
+        "target": "想"
+      },
+      {
+        "known": "come back",
+        "target": "回来"
+      },
+      {
+        "known": "later on",
+        "target": "以后"
+      },
+      {
+        "known": "with everyone else",
+        "target": "和其他人一起"
+      },
+      {
+        "known": "He wants to come back with everyone else later on",
+        "target": "他想以后和其他人一起回来"
+      }
+    ],
+    "component_count": 6
+  },
+  {
+    "lego_id": "S0017L01",
+    "seed_number": 17,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "she",
+    "target_text": "她",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0017L02",
+    "seed_number": 17,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "wants",
+    "target_text": "想",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0017L03",
+    "seed_number": 17,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "wants to find out",
+    "target_text": "想知道",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "wants",
+        "target": "想"
+      },
+      {
+        "known": "find out",
+        "target": "知道"
+      },
+      {
+        "known": "wants to find out",
+        "target": "想知道"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0017L04",
+    "seed_number": 17,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "answer",
+    "target_text": "答案",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0017L05",
+    "seed_number": 17,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "what the answer is",
+    "target_text": "答案是什么",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "answer",
+        "target": "答案"
+      },
+      {
+        "known": "what the answer is",
+        "target": "答案是什么"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0018L01",
+    "seed_number": 18,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "we",
+    "target_text": "我们",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0018L02",
+    "seed_number": 18,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "want",
+    "target_text": "想",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0018L03",
+    "seed_number": 18,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "want to meet",
+    "target_text": "想见面",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "want",
+        "target": "想"
+      },
+      {
+        "known": "meet",
+        "target": "见面"
+      },
+      {
+        "known": "want to meet",
+        "target": "想见面"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0018L04",
+    "seed_number": 18,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "this evening",
+    "target_text": "今天晚上",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "today",
+        "target": "今天"
+      },
+      {
+        "known": "evening",
+        "target": "晚上"
+      },
+      {
+        "known": "this evening",
+        "target": "今天晚上"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0018L05",
+    "seed_number": 18,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "at six o'clock this evening",
+    "target_text": "今天晚上六点",
+    "known_word_count": 5,
+    "components": [
+      {
+        "known": "this evening",
+        "target": "今天晚上"
+      },
+      {
+        "known": "six o'clock",
+        "target": "六点"
+      },
+      {
+        "known": "at six o'clock this evening",
+        "target": "今天晚上六点"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0019L01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "but",
+    "target_text": "但是",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0019L02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "don't want",
+    "target_text": "不想",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0019L03",
+    "seed_number": 19,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "stop talking",
+    "target_text": "停止说话",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "stop",
+        "target": "停止"
+      },
+      {
+        "known": "talking",
+        "target": "说话"
+      },
+      {
+        "known": "stop talking",
+        "target": "停止说话"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0019L04",
+    "seed_number": 19,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I don't want to stop talking",
+    "target_text": "我不想停止说话",
+    "known_word_count": 6,
+    "components": [
+      {
+        "known": "I",
+        "target": "我"
+      },
+      {
+        "known": "don't want",
+        "target": "不想"
+      },
+      {
+        "known": "I don't want",
+        "target": "我不想"
+      },
+      {
+        "known": "stop",
+        "target": "停止"
+      },
+      {
+        "known": "talking",
+        "target": "说话"
+      },
+      {
+        "known": "stop talking",
+        "target": "停止说话"
+      },
+      {
+        "known": "I don't want to stop talking",
+        "target": "我不想停止说话"
+      }
+    ],
+    "component_count": 7
+  },
+  {
+    "lego_id": "S0020L01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "quickly",
+    "target_text": "快点",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0020L02",
+    "seed_number": 20,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "want to learn",
+    "target_text": "想学",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "want",
+        "target": "想"
+      },
+      {
+        "known": "learn",
+        "target": "学"
+      },
+      {
+        "known": "want to learn",
+        "target": "想学"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0020L03",
+    "seed_number": 20,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "his name",
+    "target_text": "他的名字",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "name",
+        "target": "名字"
+      },
+      {
+        "known": "his name",
+        "target": "他的名字"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0020L04",
+    "seed_number": 20,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "You want to learn his name quickly",
+    "target_text": "你想快点学他的名字",
+    "known_word_count": 7,
+    "components": [
+      {
+        "known": "you",
+        "target": "你"
+      },
+      {
+        "known": "want",
+        "target": "想"
+      },
+      {
+        "known": "learn",
+        "target": "学"
+      },
+      {
+        "known": "quickly",
+        "target": "快点"
+      },
+      {
+        "known": "name",
+        "target": "名字"
+      },
+      {
+        "known": "his name",
+        "target": "他的名字"
+      },
+      {
+        "known": "quickly learn",
+        "target": "快点学"
+      },
+      {
+        "known": "quickly learn his name",
+        "target": "快点学他的名字"
+      },
+      {
+        "known": "You want to learn his name quickly",
+        "target": "你想快点学他的名字"
+      }
+    ],
+    "component_count": 9
+  },
+  {
+    "lego_id": "S0021L01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "why",
+    "target_text": "为什么",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0021L02",
+    "seed_number": 21,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "learning",
+    "target_text": "在学",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0021L03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": false,
+    "known_text": "name",
+    "target_text": "名字",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0021L04",
+    "seed_number": 21,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "her name",
+    "target_text": "她的名字",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "name",
+        "target": "名字"
+      },
+      {
+        "known": "her name",
+        "target": "她的名字"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0021L05",
+    "seed_number": 21,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "learning her name",
+    "target_text": "在学她的名字",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "learning",
+        "target": "在学"
+      },
+      {
+        "known": "her name",
+        "target": "她的名字"
+      },
+      {
+        "known": "learning her name",
+        "target": "在学她的名字"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0022L01",
+    "seed_number": 22,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "because",
+    "target_text": "因为",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0022L02",
+    "seed_number": 22,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "to meet",
+    "target_text": "认识",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0022L03",
+    "seed_number": 22,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": false,
+    "known_text": "speak Chinese",
+    "target_text": "说中文",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "speak",
+        "target": "说"
+      },
+      {
+        "known": "Chinese",
+        "target": "中文"
+      },
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0022L04",
+    "seed_number": 22,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "people who speak Chinese",
+    "target_text": "说中文的人",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "speak Chinese",
+        "target": "说中文"
+      },
+      {
+        "known": "people",
+        "target": "人"
+      },
+      {
+        "known": "people who speak Chinese",
+        "target": "说中文的人"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0022L05",
+    "seed_number": 22,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I want to meet people who speak Chinese",
+    "target_text": "我想认识说中文的人",
+    "known_word_count": 8,
+    "components": [
+      {
+        "known": "I want",
+        "target": "我想"
+      },
+      {
+        "known": "to meet",
+        "target": "认识"
+      },
+      {
+        "known": "people who speak Chinese",
+        "target": "说中文的人"
+      },
+      {
+        "known": "I want to meet people who speak Chinese",
+        "target": "我想认识说中文的人"
+      }
+    ],
+    "component_count": 4
+  },
+  {
+    "lego_id": "S0023L01",
+    "seed_number": 23,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "talking",
+    "target_text": "说",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0023L02",
+    "seed_number": 23,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "soon",
+    "target_text": "很快",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0023L03",
+    "seed_number": 23,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "start",
+    "target_text": "开始",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0023L04",
+    "seed_number": 23,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "talking more",
+    "target_text": "多说",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "talking",
+        "target": "说"
+      },
+      {
+        "known": "talking more",
+        "target": "多说"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0023L05",
+    "seed_number": 23,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm going to start talking more soon",
+    "target_text": "我很快就要开始多说了",
+    "known_word_count": 7,
+    "components": [
+      {
+        "known": "start",
+        "target": "开始"
+      },
+      {
+        "known": "talking more",
+        "target": "多说"
+      },
+      {
+        "known": "start talking more",
+        "target": "开始多说"
+      },
+      {
+        "known": "going to start talking more",
+        "target": "要开始多说"
+      },
+      {
+        "known": "I'm going to start talking more soon",
+        "target": "我很快就要开始多说了"
+      }
+    ],
+    "component_count": 5
+  },
+  {
+    "lego_id": "S0024L01",
+    "seed_number": 24,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "remember",
+    "target_text": "记住",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0024L02",
+    "seed_number": 24,
+    "lego_index": 2,
+    "type": "M",
+    "is_new": true,
+    "known_text": "won't easily remember",
+    "target_text": "不会轻易记住",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "remember",
+        "target": "记住"
+      },
+      {
+        "known": "won't remember",
+        "target": "不会记住"
+      },
+      {
+        "known": "won't easily remember",
+        "target": "不会轻易记住"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0024L03",
+    "seed_number": 24,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "I'm not going to be able to remember easily",
+    "target_text": "我不会轻易记住的",
+    "known_word_count": 9,
+    "components": [
+      {
+        "known": "remember",
+        "target": "记住"
+      },
+      {
+        "known": "won't easily remember",
+        "target": "不会轻易记住"
+      },
+      {
+        "known": "I'm not going to be able to remember easily",
+        "target": "我不会轻易记住的"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0025L01",
+    "seed_number": 25,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "go",
+    "target_text": "走",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0025L02",
+    "seed_number": 25,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "help",
+    "target_text": "帮",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0025L03",
+    "seed_number": 25,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "help me",
+    "target_text": "帮我",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "help",
+        "target": "帮"
+      },
+      {
+        "known": "help me",
+        "target": "帮我"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0025L04",
+    "seed_number": 25,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "before I go",
+    "target_text": "我走之前",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "go",
+        "target": "走"
+      },
+      {
+        "known": "before I go",
+        "target": "我走之前"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0026L01",
+    "seed_number": 26,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "like",
+    "target_text": "喜欢",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0026L02",
+    "seed_number": 26,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": false,
+    "known_text": "go",
+    "target_text": "走",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0026L03",
+    "seed_number": 26,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "ready",
+    "target_text": "准备好",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0026L04",
+    "seed_number": 26,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "nearly ready to go",
+    "target_text": "快准备好走了",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "go",
+        "target": "走"
+      },
+      {
+        "known": "ready",
+        "target": "准备好"
+      },
+      {
+        "known": "ready to go",
+        "target": "准备好走"
+      },
+      {
+        "known": "nearly ready to go",
+        "target": "快准备好走了"
+      }
+    ],
+    "component_count": 4
+  },
+  {
+    "lego_id": "S0027L01",
+    "seed_number": 27,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0027L02",
+    "seed_number": 27,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "don't like",
+    "target_text": "不喜欢",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0027L03",
+    "seed_number": 27,
+    "lego_index": 3,
+    "type": "M",
+    "is_new": true,
+    "known_text": "taking too much time",
+    "target_text": "花太多时间",
+    "known_word_count": 4,
+    "components": [
+      {
+        "known": "time",
+        "target": "时间"
+      },
+      {
+        "known": "too much time",
+        "target": "太多时间"
+      },
+      {
+        "known": "taking too much time",
+        "target": "花太多时间"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0027L04",
+    "seed_number": 27,
+    "lego_index": 4,
+    "type": "A",
+    "is_new": true,
+    "known_text": "to answer",
+    "target_text": "回答",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0028L01",
+    "seed_number": 28,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": true,
+    "known_text": "useful",
+    "target_text": "有用",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0028L02",
+    "seed_number": 28,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "to start",
+    "target_text": "开始",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0028L03",
+    "seed_number": 28,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "talking",
+    "target_text": "说话",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0028L04",
+    "seed_number": 28,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "to start talking",
+    "target_text": "开始说话",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "to start",
+        "target": "开始"
+      },
+      {
+        "known": "talking",
+        "target": "说话"
+      },
+      {
+        "known": "to start talking",
+        "target": "开始说话"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0028L05",
+    "seed_number": 28,
+    "lego_index": 5,
+    "type": "A",
+    "is_new": true,
+    "known_text": "as soon as you can",
+    "target_text": "尽快",
+    "known_word_count": 5,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0029L01",
+    "seed_number": 29,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0029L02",
+    "seed_number": 29,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "looking forward to",
+    "target_text": "期待",
+    "known_word_count": 3,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0029L03",
+    "seed_number": 29,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": true,
+    "known_text": "as soon as I can",
+    "target_text": "尽快",
+    "known_word_count": 5,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0029L04",
+    "seed_number": 29,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "speaking better",
+    "target_text": "说得更好",
+    "known_word_count": 2,
+    "components": [
+      {
+        "known": "speaking",
+        "target": "说"
+      },
+      {
+        "known": "better",
+        "target": "更好"
+      },
+      {
+        "known": "speaking better",
+        "target": "说得更好"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0029L05",
+    "seed_number": 29,
+    "lego_index": 5,
+    "type": "A",
+    "is_new": false,
+    "known_text": "better",
+    "target_text": "更好",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0030L01",
+    "seed_number": 30,
+    "lego_index": 1,
+    "type": "A",
+    "is_new": false,
+    "known_text": "I",
+    "target_text": "我",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0030L02",
+    "seed_number": 30,
+    "lego_index": 2,
+    "type": "A",
+    "is_new": true,
+    "known_text": "yesterday",
+    "target_text": "昨天",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0030L03",
+    "seed_number": 30,
+    "lego_index": 3,
+    "type": "A",
+    "is_new": false,
+    "known_text": "you",
+    "target_text": "你",
+    "known_word_count": 1,
+    "components": null,
+    "component_count": 0
+  },
+  {
+    "lego_id": "S0030L04",
+    "seed_number": 30,
+    "lego_index": 4,
+    "type": "M",
+    "is_new": true,
+    "known_text": "something",
+    "target_text": "一件事",
+    "known_word_count": 1,
+    "components": [
+      {
+        "known": "one",
+        "target": "一"
+      },
+      {
+        "known": "thing",
+        "target": "事"
+      },
+      {
+        "known": "something",
+        "target": "一件事"
+      }
+    ],
+    "component_count": 3
+  },
+  {
+    "lego_id": "S0030L05",
+    "seed_number": 30,
+    "lego_index": 5,
+    "type": "M",
+    "is_new": true,
+    "known_text": "wanted to ask",
+    "target_text": "想问",
+    "known_word_count": 3,
+    "components": [
+      {
+        "known": "to ask",
+        "target": "问"
+      },
+      {
+        "known": "wanted to ask",
+        "target": "想问"
+      }
+    ],
+    "component_count": 2
+  },
+  {
+    "lego_id": "S0030L06",
+    "seed_number": 30,
+    "lego_index": 6,
+    "type": "A",
+    "is_new": false,
+    "known_text": "to ask",
+    "target_text": "问",
+    "known_word_count": 2,
+    "components": null,
+    "component_count": 0
+  }
+]
