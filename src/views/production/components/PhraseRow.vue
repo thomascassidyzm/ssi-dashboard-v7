@@ -322,12 +322,12 @@ const getAudioStatus = (track: AudioTrack): SampleStatus | null => {
   return audioStatuses.value[track];
 };
 
-// Check if specific audio is marked for regen (status === 'pending_regen')
+// Check if specific audio is flagged (status === 'flagged')
 const isAudioFlagged = (track: AudioTrack): boolean => {
   switch (track) {
-    case 'known': return props.phrase.known_flag?.status === 'pending_regen';
-    case 'target1': return props.phrase.target1_flag?.status === 'pending_regen';
-    case 'target2': return props.phrase.target2_flag?.status === 'pending_regen';
+    case 'known': return props.phrase.known_flag?.status === 'flagged';
+    case 'target1': return props.phrase.target1_flag?.status === 'flagged';
+    case 'target2': return props.phrase.target2_flag?.status === 'flagged';
     default: return false;
   }
 };

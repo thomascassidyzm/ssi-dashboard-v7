@@ -6,9 +6,10 @@
  */
 
 // Sample Status States
-// Simplified model: items are either 'pending_regen' or not flagged at all
+// Simplified model: items are either 'flagged' or not flagged at all
 export type SampleStatus =
-  | 'pending_regen'  // Item marked for regeneration (stays until user clicks Done)
+  | 'flagged'        // Item flagged for review/regeneration
+  | 'pending_regen'  // Legacy - kept for backwards compatibility
   // Legacy statuses (kept for backwards compatibility)
   | 'pending'
   | 'flagged_text_edit'

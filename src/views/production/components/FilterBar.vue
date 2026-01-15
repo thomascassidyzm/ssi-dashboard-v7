@@ -61,7 +61,7 @@
         @change="onFilterChange"
       >
         <option value="all">All Samples</option>
-        <option value="pending_regen">Pending Regen</option>
+        <option value="flagged">Flagged</option>
       </select>
 
       <!-- Regen Queue Toggle -->

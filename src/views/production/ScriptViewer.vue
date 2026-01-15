@@ -546,8 +546,8 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
   seeds.value.forEach(seed => {
     seed.legos.forEach(lego => {
       lego.phrases.forEach(phrase => {
-        // Check each audio track for pending_regen status
-        if (phrase.known_flag?.status === 'pending_regen' && phrase.known_audio_uuid) {
+        // Check each audio track for flagged status
+        if (phrase.known_flag?.status === 'flagged' && phrase.known_audio_uuid) {
           items.push({
             uuid: phrase.known_audio_uuid,
             seedId: seed.seed_id,
@@ -561,7 +561,7 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
             flaggedBy: phrase.known_flag.flagged_by,
           });
         }
-        if (phrase.target1_flag?.status === 'pending_regen' && phrase.target1_audio_uuid) {
+        if (phrase.target1_flag?.status === 'flagged' && phrase.target1_audio_uuid) {
           items.push({
             uuid: phrase.target1_audio_uuid,
             seedId: seed.seed_id,
@@ -575,7 +575,7 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
             flaggedBy: phrase.target1_flag.flagged_by,
           });
         }
-        if (phrase.target2_flag?.status === 'pending_regen' && phrase.target2_audio_uuid) {
+        if (phrase.target2_flag?.status === 'flagged' && phrase.target2_audio_uuid) {
           items.push({
             uuid: phrase.target2_audio_uuid,
             seedId: seed.seed_id,
@@ -1018,10 +1018,10 @@ type AudioTrack = 'known' | 'target1' | 'target2';
 
 // Handle per-audio flagging from PhraseRow (toggle: flag if not flagged, unflag if flagged)
 const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {
-  // Check if this track is currently marked for regen
+  // Check if this track is currently flagged
   const flagKey = `${track}_flag` as 'known_flag' | 'target1_flag' | 'target2_flag';
   const currentFlag = phrase[flagKey];
-  const isCurrentlyMarked = currentFlag?.status === 'pending_regen';
+  const isCurrentlyMarked = currentFlag?.status === 'flagged';
 
   const action = isCurrentlyMarked ? 'Clearing' : 'Marking for regen';
   console.log(`${action}: ${track} (${uuid}) for phrase ${phrase.phrase_id}`);
@@ -1070,9 +1070,9 @@ const handleAudioFlag = async (phrase: PhraseRowData, track: AudioTrack, uuid: s
       (phrase as any)[flagKey] = { status: 'flagged', notes: `Marked ${track} audio for regeneration` };
     }
 
-    // Update is_flagged based on any remaining pending_regen flags
-    const hasPendingRegen = (flag: any) => flag?.status === 'pending_regen';
-    phrase.is_flagged = hasPendingRegen(phrase.known_flag) || hasPendingRegen(phrase.target1_flag) || hasPendingRegen(phrase.target2_flag);
+    // Update is_flagged based on any flagged audio
+    const isFlagged = (flag: any) => flag?.status === 'flagged';
+    phrase.is_flagged = isFlagged(phrase.known_flag) || isFlagged(phrase.target1_flag) || isFlagged(phrase.target2_flag);
 
     console.log(`Successfully ${isCurrentlyMarked ? 'cleared' : 'marked for regen'} ${track} audio for phrase ${phrase.phrase_id}`);
 
