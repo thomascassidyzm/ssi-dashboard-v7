@@ -1893,7 +1893,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 
 /**
  * GET /api/courses/:courseCode/exists
- * Check if a course exists (local VFS or S3)
+ * Check if a course exists (database, local VFS, or S3)
  * Used by Create New Course wizard to handle conflicts
  */
 app.get('/api/courses/:courseCode/exists', async (req, res) => {
@@ -1903,8 +1903,24 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
     const coursePath = path.join(VFS_ROOT, courseCode);
     let existsLocal = false;
     let existsS3 = false;
+    let existsDatabase = false;
     let localFiles = [];
     let s3Files = [];
+
+    // Check database first (source of truth for APML v14)
+    try {
+      const { supabase, isInitialized } = require('../supabase-client.cjs');
+      if (isInitialized()) {
+        const { data } = await supabase
+          .from('courses')
+          .select('code')
+          .eq('code', courseCode)
+          .single();
+        existsDatabase = !!data;
+      }
+    } catch (err) {
+      // Database check failed or course doesn't exist there
+    }
 
     // Check local VFS
     try {
@@ -1931,7 +1947,7 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
       console.log(`[Orchestrator] S3 check for ${courseCode}: ${err.message}`);
     }
 
-    const exists = existsLocal || existsS3;
+    const exists = existsDatabase || existsLocal || existsS3;
 
     // Suggest next version if course exists
     let suggestedVersion = null;
@@ -1941,18 +1957,32 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
       const versionMatch = courseCode.match(/_v(\d+)$/);
       const currentVersion = versionMatch ? parseInt(versionMatch[1]) : 1;
 
-      // Check for existing versioned courses
+      // Check for existing versioned courses (database + VFS)
       let nextVersion = currentVersion + 1;
       let suggestedCode = `${baseCode}_v${nextVersion}`;
 
+      // Helper to check if a course code exists anywhere
+      const codeExists = async (code) => {
+        // Check database
+        try {
+          const { supabase, isInitialized } = require('../supabase-client.cjs');
+          if (isInitialized()) {
+            const { data } = await supabase.from('courses').select('code').eq('code', code).single();
+            if (data) return true;
+          }
+        } catch (err) {}
+        // Check VFS
+        try {
+          await fs.stat(path.join(VFS_ROOT, code));
+          return true;
+        } catch (err) {}
+        return false;
+      };
+
       // Keep incrementing if suggested version also exists
-      try {
-        while (await fs.stat(path.join(VFS_ROOT, suggestedCode)).catch(() => false)) {
-          nextVersion++;
-          suggestedCode = `${baseCode}_v${nextVersion}`;
-        }
-      } catch (err) {
-        // Fine, suggested version doesn't exist
+      while (await codeExists(suggestedCode)) {
+        nextVersion++;
+        suggestedCode = `${baseCode}_v${nextVersion}`;
       }
 
       suggestedVersion = suggestedCode;
@@ -1960,6 +1990,7 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
 
     res.json({
       exists,
+      existsDatabase,
       existsLocal,
       existsS3,
       localFiles,
@@ -2085,10 +2116,11 @@ app.post('/api/courses/:courseCode/sync', async (req, res) => {
 
 /**
  * POST /api/courses/create
- * Create a new course directory structure
+ * Create a new course (DATABASE-FIRST, APML v14)
  *
- * Creates the local VFS directory and initializes course metadata.
- * The course can then be populated through the pipeline phases.
+ * Simply inserts into Supabase courses table.
+ * Course Builder API handles all content creation.
+ * VFS directories are legacy and not needed.
  */
 app.post('/api/courses/create', async (req, res) => {
   const { courseCode, displayName, sourceLanguage, targetLanguage, seedStart, seedEnd, seedCount, version } = req.body;
@@ -2103,83 +2135,58 @@ app.post('/api/courses/create', async (req, res) => {
   }
 
   try {
-    const coursePath = path.join(__dirname, '../../public/vfs/courses', courseCode);
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
 
-    // Check if directory already exists
-    if (fs.existsSync(coursePath)) {
-      return res.status(409).json({
-        error: 'Course already exists',
-        courseCode,
-        path: coursePath
+    if (!isInitialized()) {
+      return res.status(503).json({
+        error: 'Database not available',
+        message: 'Supabase is not configured. Course creation requires database.'
       });
     }
 
-    // Create course directory
-    fs.mkdirSync(coursePath, { recursive: true });
+    // Check if course already exists in database
+    const { data: existing } = await supabase
+      .from('courses')
+      .select('code')
+      .eq('code', courseCode)
+      .single();
 
-    // Create course metadata file
-    const metadata = {
-      courseCode,
-      displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
-      sourceLanguage,
-      targetLanguage,
-      seedRange: {
-        start: seedStart || 1,
-        end: seedEnd || SEED_COUNTS.FULL_COURSE
-      },
-      seedCount: seedCount || (seedEnd - seedStart + 1),
-      version: version || '1.0',
-      createdAt: new Date().toISOString(),
-      status: 'initialized',
-      phases: {
-        phase1: { status: 'pending' },
-        phase2: { status: 'pending' },
-        phase3: { status: 'pending' },
-        phase8: { status: 'pending' },
-        phase9: { status: 'pending' }
-      }
-    };
-
-    // Write metadata file
-    fs.writeFileSync(
-      path.join(coursePath, 'course_metadata.json'),
-      JSON.stringify(metadata, null, 2)
-    );
-
-    // Insert into Supabase courses table (v13: courses.code is PK)
-    const { supabase, isInitialized } = require('../supabase-client.cjs');
-    let dbInserted = false;
-
-    if (isInitialized()) {
-      const { error: dbError } = await supabase
-        .from('courses')
-        .insert({
-          code: courseCode,
-          known_lang: sourceLanguage,
-          target_lang: targetLanguage,
-          display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
-          status: 'draft'
-        });
-
-      if (dbError) {
-        console.error(`[Orchestrator] Failed to insert course into database:`, dbError);
-        // Don't fail the request - VFS was created successfully
-      } else {
-        dbInserted = true;
-        console.log(`[Orchestrator] Course inserted into Supabase: ${courseCode}`);
-      }
-    } else {
-      console.warn(`[Orchestrator] Supabase not initialized, course only created in VFS`);
+    if (existing) {
+      return res.status(409).json({
+        error: 'Course already exists',
+        courseCode
+      });
     }
 
-    console.log(`[Orchestrator] Course created: ${courseCode} at ${coursePath}`);
+    // Insert into Supabase courses table
+    const { error: dbError } = await supabase
+      .from('courses')
+      .insert({
+        code: courseCode,
+        known_lang: sourceLanguage,
+        target_lang: targetLanguage,
+        display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+        status: 'draft'
+      });
+
+    if (dbError) {
+      console.error(`[Orchestrator] Failed to insert course into database:`, dbError);
+      return res.status(500).json({
+        error: 'Failed to create course in database',
+        message: dbError.message
+      });
+    }
+
+    console.log(`[Orchestrator] Course created in Supabase: ${courseCode}`);
 
     res.json({
       success: true,
       courseCode,
-      path: coursePath,
-      metadata,
-      database: dbInserted
+      displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+      sourceLanguage,
+      targetLanguage,
+      seedRange: { start: seedStart || 1, end: seedEnd || 668 },
+      message: 'Course created. Use Course Builder to add content.'
     });
 
   } catch (error) {
@@ -4090,7 +4097,8 @@ app.post('/api/courses/generate', async (req, res) => {
     spawnerMode = 'cli',  // 'cli' (iTerm2 + Claude CLI) or 'browser' (Chrome + Claude Web)
     machineProfile,  // Machine profile ID (e.g., 'tom', 'kai') - affects parallelization
     buildMode,  // 'course-builder' for single-agent LEGO network building
-    seedCount  // Number of seeds for course-builder mode
+    seedCount,  // Number of seeds for course-builder mode
+    model = 'opus'  // Claude model: 'opus' or 'sonnet'
   } = req.body;
 
   // ============================================
@@ -4103,6 +4111,7 @@ app.post('/api/courses/generate', async (req, res) => {
     console.log(`\n🔨 Course Builder Mode:`);
     console.log(`   Course: ${builderCourseCode}`);
     console.log(`   Seeds: ${totalSeeds}`);
+    console.log(`   Model: ${model}`);
     console.log(`   Spawner: ${spawnerMode}`);
 
     // For now, return success - the agent will be spawned by the spawner service
@@ -4143,7 +4152,7 @@ app.post('/api/courses/generate', async (req, res) => {
           courseCode: builderCourseCode,
           seedCount: totalSeeds,
           terminal: terminalType,
-          model: 'opus',  // Always use Opus for vocab discipline
+          model,  // 'opus' or 'sonnet' - selected from dashboard
           knownLang,
           targetLang,
           workingDir: path.join(__dirname, '../..')
@@ -4155,7 +4164,7 @@ app.post('/api/courses/generate', async (req, res) => {
           courseCode: builderCourseCode,
           seedCount: totalSeeds,
           terminal: terminalType,
-          model: 'opus',
+          model,
           builderApiUrl,
           spawnResult,
           message: `Course Builder agent spawned in ${terminalType === 'iterm' ? 'iTerm2' : 'Terminal.app'} for ${builderCourseCode}.`,

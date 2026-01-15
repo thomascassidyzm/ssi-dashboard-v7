@@ -48,6 +48,25 @@
               </button>
             </div>
           </div>
+
+          <!-- Model Selection -->
+          <div class="col-span-2">
+            <label class="block text-xs text-slate-500 mb-2">Model</label>
+            <div class="flex gap-2">
+              <button
+                v-for="model in models"
+                :key="model.id"
+                @click="selectedModel = model.id"
+                class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
+                :class="selectedModel === model.id
+                  ? 'bg-purple-600/20 border-purple-500/50 text-purple-400'
+                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+              >
+                <div class="font-medium">{{ model.label }}</div>
+                <div class="text-xs opacity-70">{{ model.description }}</div>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -211,6 +230,12 @@ const engines = [
   { id: 'browser', label: 'Safari', description: 'Browser' }
 ]
 
+const models = [
+  { id: 'opus', label: 'Opus 4.5', description: 'Best quality' },
+  { id: 'sonnet', label: 'Sonnet 4.5', description: 'Faster' }
+]
+const selectedModel = ref('opus')
+
 // Progress state
 const progress = ref({
   status: 'idle',
@@ -309,6 +334,7 @@ async function startBuilder() {
         buildMode: 'course-builder',
         spawnerMode: agentEngine.value,
         seedCount: seedCount.value,
+        model: selectedModel.value,
         mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
       })
     })
