@@ -160,6 +160,55 @@ R6 - S0002L01: "I'm trying" → "estoy intentando"
   CONSOLIDATE: I'm trying to speak Spanish with you now → Estoy intentando hablar español contigo ahora
 \`\`\`
 
+## M-LEGOs WITH COMPONENT BUILD-UP
+
+When a LEGO is multi-word (M-type), break it into components. The API auto-generates build-up:
+
+\`\`\`
+M-LEGO: "I want" → "我想"
+Components: ["I" → "我"], ["want" → "想"]
+
+AUTO-GENERATED BUILD-UP (learner sees):
+  1. I → 我
+  2. want → 想
+  3. I want → 我想  ← the full M-LEGO
+\`\`\`
+
+\`\`\`
+M-LEGO: "with you" → "和你"
+Components: ["with" → "和"], ["you" → "你"]
+
+BUILD-UP:
+  1. with → 和
+  2. you → 你
+  3. with you → 和你
+\`\`\`
+
+\`\`\`
+M-LEGO: "I'm going to try" → "我要试"
+Components: ["I" → "我"], ["going to" → "要"], ["try" → "试"]
+
+BUILD-UP:
+  1. I → 我
+  2. going to → 要
+  3. try → 试
+  4. I'm going to try → 我要试
+\`\`\`
+
+**KEY POINTS:**
+- Components become vocabulary (can be used in later phrases)
+- Build-up teaches the pieces THEN the whole
+- Particles (吗, 了, etc.) are NOT listed as components - they're inferred from context
+
+\`\`\`
+M-LEGO: "Is it good?" → "好吗"
+Components: ["good" → "好"]  ← only the real word, NOT the particle!
+
+BUILD-UP:
+  1. good → 好
+  2. Is it good? → 好吗  ← learner infers 吗 makes questions
+\`\`\`
+
 ## YOUR TASK: Do This For ${targetLang || targetCode}
 
 Use your linguistic expertise to:
