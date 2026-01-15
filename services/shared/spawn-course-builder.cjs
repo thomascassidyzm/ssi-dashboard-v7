@@ -148,6 +148,27 @@ curl -X POST ${builderApiUrl}/api/seed/complete \\
 - M-type LEGOs: Multi-word phrases with meaningful components
 - Components must be real vocabulary, not placeholders
 
+### LEGO Ordering - PEDAGOGICAL, NOT MECHANICAL
+
+Order LEGOs so the learner can make useful phrases as they progress:
+
+**Example**: "I want to speak Chinese with you now" → "我现在想和你说中文"
+
+BAD order (mechanical):
+1. I → 我, 2. now → 现在 ← TOO EARLY! Can't combine yet
+3. want to speak → 想说, 4. with you → 和你, 5. Chinese → 中文
+
+GOOD order (pedagogical):
+1. I → 我
+2. want to speak → 想说 → "I want to speak" = 我想说 ✓
+3. Chinese → 中文 → "speak Chinese" = 说中文 ✓
+4. with you → 和你 → more combinations ✓
+5. now → 现在 → NOW learner sees: 我现在想说, 我现在想和你说中文
+
+**Why this matters**: Temporal markers, question particles, and other grammar
+elements should come LATER when there's enough vocab. Then the learner sees
+through multiple examples WHERE they go (现在 after subject, before verb).
+
 ### Phrase Quality
 - Target 10 natural, useful phrases per LEGO
 - Include variety: short (3-5 syllables) AND long (10+ syllables)
