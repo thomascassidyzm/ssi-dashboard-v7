@@ -1,8 +1,18 @@
 /**
  * Phase 8: Audio Generation Service (v13)
  *
- * Generates TTS audio for courses using the v13 schema.
- * Writes directly to course_audio table (flat, course-owned).
+ * IMPORTANT: DATABASE-ONLY ARCHITECTURE (January 2026)
+ * =====================================================
+ * This service reads course data from Supabase and writes audio records
+ * directly to the course_audio table (flat, course-owned).
+ *
+ * Data Sources (all from Supabase):
+ * - courses: Course metadata and voice configuration
+ * - course_legos: LEGO definitions to generate audio for
+ * - course_practice_phrases: Practice phrases to generate audio for
+ *
+ * JSON files are NOT read. Audio metadata is written to Supabase.
+ * Audio files are stored in S3 (ssi-audio-stage bucket).
  *
  * @version 13.0.0
  * @port 3465
@@ -648,18 +658,24 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     // Get audio for this role - optionally filter by flagged status
     let audioToRegenerate = []
+    let flagRegenCounts = {}  // Map of audio_uuid -> regen_count for TTS variation
 
     if (flaggedOnly) {
-      // Get audio marked for regeneration from sample_flags table
+      // Get audio marked for regeneration from audio_flags table (new simplified system)
       const { data: flags, error: flagsError } = await supabase
-        .from('sample_flags')
-        .select('audio_uuid')
+        .from('audio_flags')
+        .select('audio_uuid, regen_count')
         .eq('course_code', courseCode)
-        .eq('status', 'pending_regen')
+        .eq('status', 'flagged')
 
       if (flagsError) throw flagsError
 
       const flaggedIds = [...new Set(flags?.map(f => f.audio_uuid).filter(Boolean) || [])]
+
+      // Build map of audio_uuid -> regen_count for variation selection
+      for (const f of (flags || [])) {
+        if (f.audio_uuid) flagRegenCounts[f.audio_uuid] = f.regen_count || 0
+      }
 
       if (flaggedIds.length === 0) {
         return res.json({
@@ -742,12 +758,10 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Start progress tracking
     startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
 
-    // Get regeneration counts for flagged items (for Azure determinism workaround)
-    // This helps vary TTS input when re-regenerating flagged audio
-    let regenerationCounts = {}
+    // Use flagRegenCounts from audio_flags query (built earlier in flaggedOnly block)
+    // This tracks which TTS variation to use (Azure is deterministic)
+    const regenerationCounts = flaggedOnly ? flagRegenCounts : {}
     if (flaggedOnly) {
-      const audioIds = audioToRegenerate.map(a => a.id)
-      regenerationCounts = await bulkGetRegenerationCounts(audioIds)
       logger.info(`Got regeneration counts for ${Object.keys(regenerationCounts).length} flagged items`)
     }
 
@@ -853,8 +867,22 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
     }
 
-    // Note: Flag stays at pending_regen - user will delete it when satisfied with the audio
+    // Note: Flag stays at 'flagged' - user will delete it when satisfied with the audio
     // This allows the regenerate-review-regenerate cycle until happy
+
+    // Increment regen_count for successfully regenerated items (for next TTS variation)
+    if (flaggedOnly && regeneratedItems.length > 0) {
+      const regeneratedIds = regeneratedItems.map(r => r.id)
+      for (const audioUuid of regeneratedIds) {
+        const currentCount = flagRegenCounts[audioUuid] || 0
+        await supabase
+          .from('audio_flags')
+          .update({ regen_count: currentCount + 1 })
+          .eq('audio_uuid', audioUuid)
+          .eq('course_code', courseCode)
+      }
+      logger.info(`Incremented regen_count for ${regeneratedIds.length} flagged items`)
+    }
 
     endWork()
 
