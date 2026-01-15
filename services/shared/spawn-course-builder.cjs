@@ -200,13 +200,20 @@ BUILD-UP:
 - Build-up teaches the pieces THEN the whole
 - Particles (吗, 了, etc.) are NOT listed as components - they're inferred from context
 
+**CRITICAL: NO EXPLANATIONS IN CONTENT**
+- NO parentheses like "(question)" or "(past tense)"
+- NO annotations like "← this means X"
+- NO grammar labels
+- JUST the known text and target text - nothing else
+- The learner infers meaning from CONTEXT, not from labels
+
 \`\`\`
 M-LEGO: "Is it good?" → "好吗"
-Components: ["good" → "好"]  ← only the real word, NOT the particle!
+Components: ["good" → "好"]
 
 BUILD-UP:
   1. good → 好
-  2. Is it good? → 好吗  ← learner infers 吗 makes questions
+  2. Is it good? → 好吗
 \`\`\`
 
 \`\`\`
@@ -216,7 +223,7 @@ Components: ["I" → "我"], ["eat" → "吃"]
 BUILD-UP:
   1. I → 我
   2. eat → 吃
-  3. I've eaten → 我吃了  ← learner infers 了 = past/completed
+  3. I've eaten → 我吃了
 \`\`\`
 
 \`\`\`
@@ -225,17 +232,17 @@ Components: ["you" → "你"]
 
 BUILD-UP:
   1. you → 你
-  2. What about you? → 你呢  ← learner infers 呢 = "what about...?"
+  2. What about you? → 你呢
 \`\`\`
 
 \`\`\`
 M-LEGO: "my book" → "我的书"
-Components: ["I/my" → "我"], ["book" → "书"]
+Components: ["I" → "我"], ["book" → "书"]
 
 BUILD-UP:
   1. I → 我
   2. book → 书
-  3. my book → 我的书  ← learner infers 的 = possessive
+  3. my book → 我的书
 \`\`\`
 
 \`\`\`
@@ -245,10 +252,10 @@ Components: ["I" → "我"], ["eat" → "吃"]
 BUILD-UP:
   1. I → 我
   2. eat → 吃
-  3. I'm eating → 我在吃  ← learner infers 在 = ongoing action
+  3. I'm eating → 我在吃
 \`\`\`
 
-**Pattern**: The MEANING of particles emerges from the contrast between components and the full M-LEGO. Learner sees "eat" → "吃", then "I've eaten" → "我吃了" and understands 了 without explicit instruction.
+The meaning of particles emerges from the contrast. Learner sees "eat" → "吃", then "I've eaten" → "我吃了" - they figure out 了 themselves. No explanation needed or wanted.
 
 ## YOUR TASK: Do This For ${targetLang || targetCode}
 
