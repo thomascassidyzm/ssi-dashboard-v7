@@ -248,16 +248,16 @@
                   <div class="space-y-2 max-h-64 overflow-y-auto">
                     <div
                       v-for="item in regenerateResult.regeneratedItems"
-                      :key="item.audioId"
+                      :key="item.id"
                       class="flex items-center gap-3 p-2 bg-slate-800/50 rounded-lg border border-slate-700/30"
                     >
-                      <!-- Play button -->
+                      <!-- Play button (use item.id which is course_audio record ID) -->
                       <button
-                        @click="playReviewAudio(item.audioId)"
+                        @click="playReviewAudio(item.id)"
                         class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center hover:bg-emerald-500/20 transition-colors"
-                        :class="{ 'bg-emerald-500/30': playingAudioId === item.audioId }"
+                        :class="{ 'bg-emerald-500/30': playingAudioId === item.id }"
                       >
-                        <svg v-if="playingAudioId !== item.audioId" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                        <svg v-if="playingAudioId !== item.id" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                         <svg v-else class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
