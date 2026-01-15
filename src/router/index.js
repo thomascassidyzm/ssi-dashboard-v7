@@ -129,19 +129,23 @@ const routes = [
     meta: { title: 'Course Library' }
   },
   // ============================================
-  // Course Manager (Unified - replaces NewCourse, CourseGeneration, GenerationMonitor)
+  // Course Manager (requires courseCode - new course creation is in Production Suite)
   // ============================================
   {
-    path: '/course/:courseCode?',
+    path: '/course/:courseCode',
     name: 'CourseManager',
     component: () => import('../views/CourseManager.vue'),
     props: true,
     meta: { title: 'Course Manager' }
   },
-  // Redirects from deprecated routes
+  // Redirect legacy new course routes to streamlined Production Suite flow
+  {
+    path: '/course',
+    redirect: '/production/new/text'
+  },
   {
     path: '/courses/new',
-    redirect: '/course'
+    redirect: '/production/new/text'
   },
   {
     path: '/generate',
