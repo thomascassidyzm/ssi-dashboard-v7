@@ -209,6 +209,47 @@ BUILD-UP:
   2. Is it good? → 好吗  ← learner infers 吗 makes questions
 \`\`\`
 
+\`\`\`
+M-LEGO: "I've eaten" → "我吃了"
+Components: ["I" → "我"], ["eat" → "吃"]
+
+BUILD-UP:
+  1. I → 我
+  2. eat → 吃
+  3. I've eaten → 我吃了  ← learner infers 了 = past/completed
+\`\`\`
+
+\`\`\`
+M-LEGO: "What about you?" → "你呢"
+Components: ["you" → "你"]
+
+BUILD-UP:
+  1. you → 你
+  2. What about you? → 你呢  ← learner infers 呢 = "what about...?"
+\`\`\`
+
+\`\`\`
+M-LEGO: "my book" → "我的书"
+Components: ["I/my" → "我"], ["book" → "书"]
+
+BUILD-UP:
+  1. I → 我
+  2. book → 书
+  3. my book → 我的书  ← learner infers 的 = possessive
+\`\`\`
+
+\`\`\`
+M-LEGO: "I'm eating" → "我在吃"
+Components: ["I" → "我"], ["eat" → "吃"]
+
+BUILD-UP:
+  1. I → 我
+  2. eat → 吃
+  3. I'm eating → 我在吃  ← learner infers 在 = ongoing action
+\`\`\`
+
+**Pattern**: The MEANING of particles emerges from the contrast between components and the full M-LEGO. Learner sees "eat" → "吃", then "I've eaten" → "我吃了" and understands 了 without explicit instruction.
+
 ## YOUR TASK: Do This For ${targetLang || targetCode}
 
 Use your linguistic expertise to:
