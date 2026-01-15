@@ -358,8 +358,150 @@ const MAX_PHRASES_PER_LEGO = 13;      // Cap at 13 (diminishing returns)
 const TARGET_PHRASES_PER_LEGO = 10;   // Ideal target
 const MIN_BATCH_PHRASE_RATIO = 7.0;   // Batch must have ≥7.0 phrases per LEGO
 
+// Phrase length tiers (by target character/word count)
+const PHRASE_TIERS = {
+  SHORT: { min: 2, max: 5 },     // 2-5 chars/words
+  MEDIUM: { min: 6, max: 8 },    // 6-8 chars/words
+  LONG: { min: 9, max: 11 },     // 9-11 chars/words
+  ETERNAL: { min: 12, max: 999 } // 12+ chars/words
+};
+
+// Minimum ETERNAL phrases per LEGO (for spaced repetition)
+const MIN_ETERNAL_PHRASES = 4;
+
 // Allow bypass for testing (set SKIP_VALIDATION=true in request body)
 const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
+
+// =============================================================================
+// TILING VALIDATION - Seed must be constructable from LEGO targets
+// =============================================================================
+
+/**
+ * Check if seed target_text can be "tiled" (fully constructed) from LEGO targets.
+ *
+ * For Chinese: Characters in seed must be subset of characters in all LEGO targets
+ * For European: Words in seed must be subset of words in all LEGO targets
+ *
+ * Returns: { valid: true } or { valid: false, untiled: [...], message }
+ */
+function checkTiling(seedTarget, legos, courseCode) {
+  const chinese = isChinese(courseCode);
+
+  // Extract all vocabulary units from LEGOs (including M-LEGO components)
+  const availableVocab = new Set();
+
+  for (const lego of legos) {
+    // Add LEGO target vocab
+    extractVocab(lego.target, chinese).forEach(v => availableVocab.add(v));
+
+    // Add M-type component vocab
+    if (lego.type === 'M' && lego.components) {
+      for (const comp of lego.components) {
+        extractVocab(comp.target, chinese).forEach(v => availableVocab.add(v));
+      }
+    }
+  }
+
+  // Check seed target can be built from available vocab
+  const seedVocab = extractVocab(seedTarget, chinese);
+  const untiled = seedVocab.filter(v => !availableVocab.has(v));
+
+  if (untiled.length > 0) {
+    return {
+      valid: false,
+      untiled: chinese ? untiled.join('') : untiled.join(', '),
+      seed_vocab: seedVocab.length,
+      lego_vocab: availableVocab.size,
+      message: `Seed target contains vocabulary not covered by LEGOs: [${chinese ? untiled.join('') : untiled.join(', ')}]`
+    };
+  }
+
+  return { valid: true };
+}
+
+// =============================================================================
+// PHRASE COMPLEXITY VALIDATION - Ensure SHORT→MEDIUM→LONG→ETERNAL progression
+// =============================================================================
+
+/**
+ * Categorize phrases by length tier and check for minimum ETERNAL count.
+ *
+ * Returns: { valid: true, tiers: {...} } or { valid: false, error, tiers: {...} }
+ */
+function checkPhraseComplexity(phrases, courseCode) {
+  const chinese = isChinese(courseCode);
+
+  const tiers = {
+    SHORT: [],
+    MEDIUM: [],
+    LONG: [],
+    ETERNAL: []
+  };
+
+  for (const phrase of phrases) {
+    const length = chinese
+      ? phrase.target.replace(/[\s\u3000。，！？、：；""'']/g, '').length
+      : phrase.target.split(/\s+/).length;
+
+    if (length >= PHRASE_TIERS.ETERNAL.min) {
+      tiers.ETERNAL.push({ target: phrase.target, length });
+    } else if (length >= PHRASE_TIERS.LONG.min) {
+      tiers.LONG.push({ target: phrase.target, length });
+    } else if (length >= PHRASE_TIERS.MEDIUM.min) {
+      tiers.MEDIUM.push({ target: phrase.target, length });
+    } else {
+      tiers.SHORT.push({ target: phrase.target, length });
+    }
+  }
+
+  const tierCounts = {
+    SHORT: tiers.SHORT.length,
+    MEDIUM: tiers.MEDIUM.length,
+    LONG: tiers.LONG.length,
+    ETERNAL: tiers.ETERNAL.length
+  };
+
+  // Check for minimum ETERNAL phrases
+  if (tiers.ETERNAL.length < MIN_ETERNAL_PHRASES) {
+    return {
+      valid: false,
+      tiers: tierCounts,
+      error: `Need ${MIN_ETERNAL_PHRASES}+ ETERNAL phrases (12+ ${chinese ? 'characters' : 'words'}), got ${tiers.ETERNAL.length}`,
+      hint: `See /ssi-build-phrases for phrase length requirements. ETERNAL phrases are critical for spaced repetition.`
+    };
+  }
+
+  return { valid: true, tiers: tierCounts };
+}
+
+// =============================================================================
+// METHODOLOGY COMMAND HINTS - Guide agents to methodology on rejection
+// =============================================================================
+
+const METHODOLOGY_HINTS = {
+  tiling: `
+📚 See /ssi-decompose-seed for how to break seeds into LEGOs:
+   - Every word/character in seed must appear in a LEGO target
+   - Order LEGOs SHORT→LONG (by target length)
+   - Use M-LEGOs for multi-word chunks`,
+
+  phrases: `
+📚 See /ssi-build-phrases for phrase requirements:
+   - 6+ practice phrases per LEGO
+   - 4+ ETERNAL phrases (12+ characters/words)
+   - Build: SHORT (2-5) → MEDIUM (6-8) → LONG (9-11) → ETERNAL (12+)`,
+
+  vocab: `
+📚 See /ssi-learner-pattern for how vocabulary builds:
+   - Phrases can only use vocabulary from prior LEGOs
+   - LEGO N can use: (all prior seeds) + (LEGOs 1..N of current seed)`,
+
+  zut: `
+📚 See /ssi-decompose-seed for handling ZUT conflicts:
+   - Same known text cannot map to different targets
+   - UPCHUNK: Add context to disambiguate
+   - Or use a synonym for the known text`
+};
 
 /**
  * POST /api/lego
@@ -848,11 +990,30 @@ app.post('/api/seed/complete', async (req, res) => {
       errors.push({
         type: 'zut',
         message: `${zutViolations.length} ZUT violation(s) - same known text maps to different targets`,
-        violations: zutViolations
+        violations: zutViolations,
+        methodology: METHODOLOGY_HINTS.zut
       });
     }
 
-    // 2. VOCAB VALIDATION: For each LEGO, add its vocab THEN check phrases
+    // 2. TILING VALIDATION: Seed target must be constructable from LEGO targets
+    if (!SKIP_VALIDATION) {
+      const tilingResult = checkTiling(target_text, legos, course_code);
+      if (!tilingResult.valid) {
+        errors.push({
+          type: 'tiling',
+          message: tilingResult.message,
+          untiled: tilingResult.untiled,
+          seed_target: target_text,
+          legos_provided: legos.map(l => ({ idx: l.idx, target: l.target })),
+          methodology: METHODOLOGY_HINTS.tiling
+        });
+        console.log(`✗ ${seedId}: TILING FAILED - untiled: [${tilingResult.untiled}]`);
+      } else {
+        console.log(`✓ ${seedId}: Tiling valid (${tilingResult.seed_vocab || 'ok'} → ${legos.length} LEGOs)`);
+      }
+    }
+
+    // 3. VOCAB VALIDATION: For each LEGO, add its vocab THEN check phrases
     // Rule: LEGO N can use vocab from seeds 1..S-1 plus LEGOs 1..N of current seed (including itself)
     const vocabSet = await loadCourseVocab(course_code);
 
@@ -882,11 +1043,12 @@ app.post('/api/seed/complete', async (req, res) => {
       errors.push({
         type: 'vocab',
         message: 'Vocabulary violations - phrases use unknown vocabulary',
-        legos_with_violations: vocabViolations
+        legos_with_violations: vocabViolations,
+        methodology: METHODOLOGY_HINTS.vocab
       });
     }
 
-    // 3. PHRASE COUNT VALIDATION
+    // 4. PHRASE COUNT VALIDATION
     const globalPosition = (seed_number - 1) * 3;  // Rough estimate
     for (const lego of legos) {
       const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
@@ -905,8 +1067,33 @@ app.post('/api/seed/complete', async (req, res) => {
         errors.push({
           type: 'phrases',
           message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ at position ~${legoPosition})`,
-          lego_id: legoId
+          lego_id: legoId,
+          methodology: METHODOLOGY_HINTS.phrases
         });
+      }
+    }
+
+    // 5. PHRASE COMPLEXITY VALIDATION (ETERNAL phrases for spaced repetition)
+    // Only check for non-early LEGOs (position > 10 means enough vocab exists)
+    if (!SKIP_VALIDATION && globalPosition > 10) {
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+        if (isDuplicate) continue;
+
+        if (lego.phrases && lego.phrases.length > 0) {
+          const complexityResult = checkPhraseComplexity(lego.phrases, course_code);
+          if (!complexityResult.valid) {
+            errors.push({
+              type: 'phrase_complexity',
+              message: complexityResult.error,
+              lego_id: legoId,
+              tiers: complexityResult.tiers,
+              methodology: METHODOLOGY_HINTS.phrases
+            });
+            console.log(`✗ ${legoId}: PHRASE COMPLEXITY - ${complexityResult.error}`);
+          }
+        }
       }
     }
 
@@ -1328,12 +1515,17 @@ app.listen(PORT, () => {
   console.log(`\n╔══════════════════════════════════════════════════════════════╗`);
   console.log(`║  Course Builder API - Port ${PORT}                            ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  QUALITY GATES:                                              ║`);
-  console.log(`║  • Phrases per LEGO: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO}            ║`);
-  console.log(`║  • Batch ratio: min ${MIN_BATCH_PHRASE_RATIO} phrases per LEGO                  ║`);
-  console.log(`║  • Vocabulary validation: per-course tracking (ZUT)          ║`);
-  console.log(`║  • M-LEGO build-up: Auto-generated (components→LEGO→phrases) ║`);
-  console.log(`║  • Conflict detection: ZUT reject, duplicates → is_new=false ║`);
+  console.log(`║  VALIDATION GATES:                                           ║`);
+  console.log(`║  1. TILING: Seed target must be tileable from LEGO targets   ║`);
+  console.log(`║  2. ZUT: Same known → same target (or reject)                ║`);
+  console.log(`║  3. VOCAB: Phrases only use introduced vocabulary            ║`);
+  console.log(`║  4. COUNT: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO} phrases/LEGO           ║`);
+  console.log(`║  5. ETERNAL: ${MIN_ETERNAL_PHRASES}+ phrases with 12+ chars (spaced repetition)     ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  METHODOLOGY COMMANDS (shown on rejection):                  ║`);
+  console.log(`║  • /ssi-decompose-seed - LEGO decomposition & tiling         ║`);
+  console.log(`║  • /ssi-build-phrases  - Phrase requirements & progression   ║`);
+  console.log(`║  • /ssi-learner-pattern - What the learner experiences       ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  GOLDEN PATH:                                                ║`);
   console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);
