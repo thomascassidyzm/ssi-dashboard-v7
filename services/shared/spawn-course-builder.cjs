@@ -44,245 +44,256 @@ You are building a language course: **${courseCode}**
 - **Target language**: ${targetLang || targetCode}
 - **Seeds to build**: ${seedCount}
 
-## Full Documentation
-Read the complete API spec: \`apml/services/course-builder-api.apml\`
+## LEARN BY EXAMPLE - THIS IS HOW SSi COURSES WORK
 
-## Golden Path: POST /api/seed/complete
+Study this Welsh course excerpt carefully. This is EXACTLY the pedagogical pattern you must follow:
 
-Submit complete seeds atomically - translate, decompose into LEGOs, generate phrases, submit in ONE request.
+\`\`\`
+ROUND 1 - S0001L01: "I want" → "dw i isio"
+  INTRO: I want → dw i isio
+  LEGO: I want → dw i isio
+  (No practice phrases yet - nothing to combine with!)
 
-\`\`\`javascript
-// GOLDEN PATH: Submit entire seed at once
-fetch('${builderApiUrl}/api/seed/complete', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    course_code: '${courseCode}',
-    seed_number: 42,
-    known_text: 'I want to learn Chinese',
-    target_text: '我想学中文',
-    legos: [
-      {
-        idx: 1,
-        type: 'A',
-        known: 'I',
-        target: '我',
-        phrases: [
-          { known: 'I speak', target: '我说' },
-          { known: 'I understand', target: '我明白' }
-          // ... 10 total phrases
-        ]
-      },
-      {
-        idx: 2,
-        type: 'M',
-        known: 'want to learn',
-        target: '想学',
-        components: [
-          { known: 'want', target: '想' },
-          { known: 'learn', target: '学' }
-        ],
-        phrases: [
-          { known: 'I want to learn', target: '我想学' },
-          { known: 'want to learn Chinese', target: '想学中文' }
-          // ... 10 total phrases
-        ]
-      },
-      {
-        idx: 3,
-        type: 'A',
-        known: 'Chinese',
-        target: '中文',
-        phrases: [
-          { known: 'speak Chinese', target: '说中文' },
-          { known: 'learn Chinese', target: '学中文' }
-          // ... 10 total phrases
-        ]
-      }
-    ]
-  })
-});
+ROUND 2 - S0001L02: "to speak" → "siarad"
+  INTRO: to speak → siarad
+  LEGO: to speak → siarad
+  DEBUT-1: I want to speak → dw i isio siarad  ← combines L01 + L02
+
+ROUND 3 - S0001L03: "Welsh" → "cymraeg"
+  INTRO: Welsh → cymraeg
+  LEGO: Welsh → cymraeg
+  DEBUT-1: to speak Welsh → siarad cymraeg  ← L02 + L03
+  REP: I want to speak → dw i isio siarad  ← review L02
+
+ROUND 4 - S0002L01: "to learn" → "dysgu"
+  INTRO: to learn → dysgu
+  LEGO: to learn → dysgu
+  DEBUT-1: to learn Welsh → dysgu cymraeg  ← uses L03
+  DEBUT-2: I want to learn → dw i isio dysgu  ← uses L01
+  DEBUT-3: I want to learn Welsh → dw i isio dysgu cymraeg  ← L01 + L03
+  DEBUT-4: I want to learn to speak Welsh → dw i isio dysgu siarad cymraeg  ← LONG phrase!
+  REP: to speak Welsh → siarad cymraeg
+
+ROUND 5 - S0002L02: "I'm trying" → "dw i'n trio"
+  INTRO: I'm trying → dw i'n trio
+  LEGO: I'm trying → dw i'n trio
+  DEBUT-1: I'm trying to learn → dw i'n trio dysgu
+  DEBUT-2: I'm trying to speak → dw i'n trio siarad
+  DEBUT-3: I'm trying to speak Welsh → dw i'n trio siarad cymraeg
+  REP: I want to learn to speak Welsh → dw i isio dysgu siarad cymraeg  ← long review
+  REP: to learn Welsh → dysgu cymraeg
+  REP: I want to learn → dw i isio dysgu
+
+ROUND 6 - S0003L01: "I'm going to" → "dw i'n mynd i"
+  INTRO: I'm going to → dw i'n mynd i
+  LEGO: I'm going to → dw i'n mynd i
+  DEBUT-1: I want to try → dw i isio trio  ← "trio" was in L05!
+  DEBUT-2: I'm going to try → dw i'n mynd i drio
+  DEBUT-3: I'm going to speak → dw i'n mynd i siarad
+  DEBUT-4: I'm going to learn → dw i'n mynd i ddysgu
+  DEBUT-5: I'm going to try to speak → dw i'n mynd i drio siarad
+  DEBUT-6: I want to try to speak Welsh → dw i isio trio siarad cymraeg
+  DEBUT-7: I want to try to learn Welsh → dw i isio trio dysgu cymraeg
+  ETERNAL-1: I'm going to speak Welsh → dw i'n mynd i siarad cymraeg  ← 10+ syllables
+  ETERNAL-2: I'm going to try to learn Welsh → dw i'n mynd i drio dysgu cymraeg
+
+ROUND 9 - S0006L01: "I can't" → "fedra i ddim"
+  INTRO: I can't → fedra i ddim
+  LEGO: I can't → fedra i ddim
+  DEBUT-1: I can't try → fedra i ddim trio
+  DEBUT-2: I can't speak → fedra i ddim siarad
+  DEBUT-3: I can't practice → fedra i ddim ymarfer  ← from earlier seed
+  DEBUT-4: I can't practice speaking → fedra i ddim ymarfer siarad
+  DEBUT-5: I can't learn Welsh → fedra i ddim dysgu cymraeg
+  DEBUT-6: I can't speak Welsh → fedra i ddim siarad cymraeg
+  DEBUT-7: I can't practice speaking Welsh → fedra i ddim ymarfer siarad cymraeg
 \`\`\`
 
-**All-or-nothing**: If any validation fails, nothing is inserted. Fix and resubmit.
+**CRITICAL PATTERNS TO NOTICE:**
 
-## HOW TO WORK - THIS IS CRITICAL
+1. **PHRASES BUILD UP** - Start short (2 words), grow longer (5+ words), reach ETERNAL length (10+ syllables)
 
-**You are an LLM. This is a LANGUAGE task, not a programming task.**
+2. **ONLY USE AVAILABLE VOCAB** - L01 has NO phrases. L02 can only combine with L01. L06 can use L01-L05.
 
-Your superpower is linguistics - translation, decomposition, generating natural phrases.
-Use that. Don't write code. Don't automate. Do the language work directly.
+3. **PHRASES PROGRESS IN COMPLEXITY:**
+   - First: simple 2-word combinations (I want to speak)
+   - Then: 3-word (I want to learn Welsh)
+   - Then: 4-word (I'm trying to speak Welsh)
+   - Finally: 5+ word ETERNAL phrases (I'm going to try to learn Welsh)
 
-For each seed:
-1. Think through the translation and LEGO decomposition
-2. Use Bash with \`curl\` to call the API directly
-3. Move to the next seed
+4. **TEMPORAL/GRAMMAR MARKERS COME LATE** - "now", question particles, etc. introduced AFTER core verbs so learner sees WHERE they go through many examples.
 
-Example:
+## Spanish Example - Same Pattern
+
+\`\`\`
+R1 - S0001L01: "I want" → "quiero"
+  Intro: I want → quiero
+  Debut: I want → quiero
+  (No practice yet!)
+
+R2 - S0001L02: "to speak" → "hablar"
+  Intro: to speak → hablar
+  Debut: to speak → hablar
+  Practice: I want to speak → Quiero hablar  ← L01+L02
+
+R3 - S0001L03: "Spanish" → "español"
+  Intro: Spanish → español
+  Practice: I want to speak Spanish → Quiero hablar español
+  Review: I want to speak → Quiero hablar
+
+R4 - S0001L04: "with you" → "contigo"
+  Practice: I want to speak with you → Quiero hablar contigo
+  Practice: to speak Spanish with you → hablar español contigo
+  Practice: I want to speak Spanish with you → Quiero hablar español contigo
+
+R5 - S0001L05: "now" → "ahora"  ← temporal marker LAST!
+  Practice: I want to speak now → Quiero hablar ahora
+  Practice: I want to speak Spanish now → Quiero hablar español ahora
+  Practice: I want to speak with you now → Quiero hablar contigo ahora
+  Practice: I want to speak Spanish with you now → Quiero hablar español contigo ahora
+  (See how "now" combines with EVERYTHING because it came last?)
+
+R6 - S0002L01: "I'm trying" → "estoy intentando"
+  Practice: I'm trying to speak → Estoy intentando hablar
+  Practice: I'm trying to speak Spanish → Estoy intentando hablar español
+  Practice: I'm trying to speak Spanish now → Estoy intentando hablar español ahora
+  CONSOLIDATE: I'm trying to speak Spanish with you now → Estoy intentando hablar español contigo ahora
+\`\`\`
+
+## YOUR TASK: Do This For ${targetLang || targetCode}
+
+Use your linguistic expertise to:
+
+1. **Translate** each seed naturally into ${targetLang || targetCode}
+2. **Decompose** into LEGOs in PEDAGOGICAL order (not sentence order!)
+3. **Generate phrases** that BUILD UP from short to long, using ONLY available vocabulary
+
+**For LEGO N, phrases can ONLY use:**
+- LEGO N itself
+- All LEGOs from seeds 1 through S-1
+- LEGOs 1 through N-1 from current seed
+
+**Phrase progression for each LEGO:**
+- Start with 2-3 word combinations
+- Build to 4-5 word combinations
+- Include 2-3 ETERNAL phrases (10+ syllables in target language)
+
+## API: POST /api/seed/complete
+
+Submit each seed via curl:
+
 \`\`\`bash
 curl -X POST ${builderApiUrl}/api/seed/complete \\
   -H "Content-Type: application/json" \\
-  -d '{"course_code":"${courseCode}","seed_number":1,...}'
+  -d '{
+    "course_code": "${courseCode}",
+    "seed_number": 1,
+    "known_text": "I want to speak Chinese with you now.",
+    "target_text": "我现在想和你说中文。",
+    "legos": [
+      {
+        "idx": 1,
+        "type": "M",
+        "known": "I want",
+        "target": "我想",
+        "components": [{"known": "I", "target": "我"}, {"known": "want", "target": "想"}],
+        "phrases": []
+      },
+      {
+        "idx": 2,
+        "type": "A",
+        "known": "to speak",
+        "target": "说",
+        "phrases": [
+          {"known": "I want to speak", "target": "我想说"}
+        ]
+      },
+      {
+        "idx": 3,
+        "type": "A",
+        "known": "Chinese",
+        "target": "中文",
+        "phrases": [
+          {"known": "speak Chinese", "target": "说中文"},
+          {"known": "I want to speak Chinese", "target": "我想说中文"}
+        ]
+      },
+      {
+        "idx": 4,
+        "type": "M",
+        "known": "with you",
+        "target": "和你",
+        "components": [{"known": "with", "target": "和"}, {"known": "you", "target": "你"}],
+        "phrases": [
+          {"known": "speak with you", "target": "和你说"},
+          {"known": "speak Chinese with you", "target": "和你说中文"},
+          {"known": "I want to speak with you", "target": "我想和你说"},
+          {"known": "I want to speak Chinese with you", "target": "我想和你说中文"}
+        ]
+      },
+      {
+        "idx": 5,
+        "type": "A",
+        "known": "now",
+        "target": "现在",
+        "phrases": [
+          {"known": "speak now", "target": "现在说"},
+          {"known": "I now want", "target": "我现在想"},
+          {"known": "I now want to speak", "target": "我现在想说"},
+          {"known": "now speak Chinese", "target": "现在说中文"},
+          {"known": "I now want to speak Chinese", "target": "我现在想说中文"},
+          {"known": "I now want to speak with you", "target": "我现在想和你说"},
+          {"known": "I now want to speak Chinese with you", "target": "我现在想和你说中文"}
+        ]
+      }
+    ]
+  }'
 \`\`\`
 
-**NEVER:**
-- Write .js/.cjs/.py files
-- Create "batch processors"
-- Automate with scripts
+**Note how phrases build up and "now" (现在) comes LAST so learner sees it goes AFTER subject, BEFORE verb!**
 
-**ALWAYS:**
-- Call the API directly via curl
-- Do the linguistic work yourself
-- Process seeds one at a time
+## Particles Are Learned In Context
 
-## QUALITY BAR - THIS IS CRITICAL
+For Chinese particles (吗, 呢, 了, etc.), include them in M-LEGOs:
 
-### No Lazy Shortcuts
-- **DO NOT** make the whole sentence one giant LEGO
-- **DO NOT** use meaningless components like "that" → "..."
-- **DO** break sentences into proper granular, reusable units
-- **DO** ensure each LEGO combines meaningfully with others
-
-### Proper Decomposition
-- A-type LEGOs: Single meaningful words
-- M-type LEGOs: Multi-word phrases with meaningful components
-- Components must be real vocabulary, not placeholders
-
-### LEGO Ordering - PEDAGOGICAL, NOT MECHANICAL
-
-Order LEGOs so the learner can make useful phrases as they progress:
-
-**Example**: "I want to speak Chinese with you now" → "我现在想和你说中文"
-
-BAD order (mechanical):
-1. I → 我, 2. now → 现在 ← TOO EARLY! Can't combine yet
-3. want to speak → 想说, 4. with you → 和你, 5. Chinese → 中文
-
-GOOD order (pedagogical):
-1. I → 我
-2. want to speak → 想说 → "I want to speak" = 我想说 ✓
-3. Chinese → 中文 → "speak Chinese" = 说中文 ✓
-4. with you → 和你 → more combinations ✓
-5. now → 现在 → NOW learner sees: 我现在想说, 我现在想和你说中文
-
-**Why this matters**: Temporal markers, question particles, and other grammar
-elements should come LATER when there's enough vocab. Then the learner sees
-through multiple examples WHERE they go (现在 after subject, before verb).
-
-### Phrase Quality
-- Target 10 natural, useful phrases per LEGO
-- Include variety: short (3-5 syllables) AND long (10+ syllables)
-- Long phrases (10+ syllables) are essential for ETERNAL spaced repetition
-- Each LEGO needs 2-3 long phrases minimum
-
-## What the API Does Automatically
-
-- **M-LEGO Build-up**: Auto-generates component→LEGO→phrases structure
-- **Duplicate Detection**: Same known+target = is_new:false (no redundant baskets)
-- **ZUT Conflict Detection**: Same known→different target = REJECTED with suggestions
-- **Vocabulary Validation**: Phrases using unknown vocab = REJECTED
-- **Particle Handling**: Chinese particles (了,着,过,etc.) skipped in build-up
-
-## PARTICLES ARE LEARNED IN CONTEXT
-
-Particles like 吗, 呢, 了, 着, 的 are learned through M-LEGO build-up, not as explicit vocabulary.
-
-**How particles get introduced:**
 \`\`\`json
 {
   "type": "M",
   "known": "Is it good?",
   "target": "好吗",
-  "components": [
-    {"known": "good", "target": "好"}
-  ]
+  "components": [{"known": "good", "target": "好"}]
 }
 \`\`\`
 
-Build-up teaches: "good" → "好", then "Is it good?" → "好吗"
-The learner infers the particle 吗 from context (it makes questions).
-
-**Don't avoid particles** - use them naturally in M-LEGOs. The build-up teaches them.
-
-**You provide**: translation, decomposition, practice phrases
-**API handles**: build-up generation, validation, deduplication
-
-## LEARNER SCRIPT - UNDERSTAND THE PATTERN
-
-This is what the learner experiences. DEBUT phrases can ONLY use vocabulary introduced up to that point:
-
-\`\`\`
-ROUND 1 - S0001L01: "I want" → 我想
-  INTRO: I want → 我想
-  (No DEBUT phrases yet - nothing to combine with)
-
-ROUND 2 - S0001L02: "to speak" → 说
-  INTRO: to speak → 说
-  DEBUT-1: I want to speak → 我想说  ← combines L01 + L02
-
-ROUND 3 - S0001L03: "Chinese" → 中文
-  INTRO: Chinese → 中文
-  DEBUT-1: speak Chinese → 说中文  ← combines L02 + L03
-  DEBUT-2: I want to speak Chinese → 我想说中文  ← combines L01 + L02 + L03
-  REP #2: I want to speak → 我想说 (review)
-
-ROUND 4 - S0002L01: "to learn" → 学
-  INTRO: to learn → 学
-  DEBUT-1: learn Chinese → 学中文  ← uses L03
-  DEBUT-2: I want to learn → 我想学  ← uses L01
-  DEBUT-3: I want to learn Chinese → 我想学中文  ← uses L01 + L03
-  DEBUT-4: I want to learn to speak Chinese → 我想学说中文  ← uses L01 + L02 + L03
-  REP #3: speak Chinese → 说中文 (review)
-\`\`\`
-
-**KEY INSIGHT**: Each LEGO's phrases can ONLY use:
-- That LEGO itself
-- All LEGOs from earlier seeds (S0001..S(N-1))
-- Earlier LEGOs from the current seed (L01..L(M-1))
-
-S0001L01 has NO prior vocab → minimal phrases (just the LEGO itself)
-S0001L02 can use L01 → "I want to speak"
-S0001L03 can use L01, L02 → "I want to speak Chinese"
-
-**Generate phrases that follow this pattern!**
-
-${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
-
-## Seed Source
-
-Fetch canonical seeds: \`GET ${builderApiUrl}/api/seeds?limit=${seedCount}\`
-
-Each seed has \`source_text\` with \`{target}\` placeholder. Replace with "${targetLang || targetCode}".
+Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner infers 吗 from context.
 
 ## Workflow
 
-1. \`GET /api/stats/${courseCode}\` - check existing progress
-2. Continue from next incomplete seed (don't restart from 1)
-3. Work in batches of 30 seeds
-4. For each seed:
-   - Translate to ${targetLang || targetCode}
-   - Decompose into proper granular LEGOs (NOT one big chunk)
-   - Generate 10 practice phrases per LEGO
-   - Submit via \`POST /api/seed/complete\`
-5. On error: fix based on error message, resubmit
-6. After batch: continue to next batch until all ${seedCount} seeds done
+1. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - check progress
+2. \`GET ${builderApiUrl}/api/seeds?limit=${seedCount}\` - get seed texts
+3. For each seed: translate, decompose, generate phrases, submit via curl
+4. On error: read the message, fix, resubmit
+
+**NEVER write scripts or batch processors. Do the linguistic work directly via curl.**
+
+## Quality Validation
+
+The API will REJECT submissions that:
+- Use vocabulary not yet introduced
+- Have phrases that don't build up progressively
+- Missing minimum phrase counts
+
+Fix errors and resubmit. The database is the state - check /api/stats to see progress.
+
+${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 
 ## Recovery (Context Compaction)
 
 If interrupted or context compacts:
-1. Read \`apml/services/course-builder-api.apml\` for full docs
-2. \`GET /api/stats/${courseCode}\` - see current progress
+1. Read this brief again (it's saved to temp/)
+2. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - see current progress
 3. Continue from next incomplete seed
 4. **Database is the state** - no external tracking needed
-
-## Endpoints
-
-| Endpoint | Purpose |
-|----------|---------|
-| \`POST /api/seed/complete\` | **GOLDEN PATH** - atomic seed submission |
-| \`GET /api/stats/${courseCode}\` | Progress: seeds, LEGOs, phrases, ratio |
-| \`GET /api/seeds?limit=N\` | Fetch canonical English seeds |
-| \`GET /api/vocab/${courseCode}\` | Current vocabulary (debugging) |
 
 ---
 
