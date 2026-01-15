@@ -162,6 +162,28 @@ curl -X POST ${builderApiUrl}/api/seed/complete \\
 - **Vocabulary Validation**: Phrases using unknown vocab = REJECTED
 - **Particle Handling**: Chinese particles (了,着,过,etc.) skipped in build-up
 
+## PARTICLES ARE VOCABULARY
+
+Particles like 吗, 呢, 了, 着, 的 ARE vocabulary that must be introduced.
+
+**How to introduce particles:**
+Include them as components of M-LEGOs. Example:
+\`\`\`json
+{
+  "type": "M",
+  "known": "Is it...?",
+  "target": "是...吗",
+  "components": [
+    {"known": "is", "target": "是"},
+    {"known": "(question)", "target": "吗"}
+  ]
+}
+\`\`\`
+
+Once 吗 is a component of ANY M-LEGO, it's in the vocabulary and can be used in phrases.
+
+**Don't avoid particles** - introduce them properly via M-LEGOs, then use them freely.
+
 **You provide**: translation, decomposition, practice phrases
 **API handles**: build-up generation, validation, deduplication
 
