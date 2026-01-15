@@ -201,8 +201,11 @@ BUILD-UP:
 - Particles (吗, 了, etc.) are NOT listed as components - they're inferred from context
 
 **CRITICAL: NO EXPLANATIONS IN CONTENT**
+
+All text becomes audio via TTS. Annotations would be read aloud!
+
 - NO parentheses like "(question)" or "(past tense)"
-- NO annotations like "← this means X"
+- NO annotations or comments
 - NO grammar labels
 - JUST the known text and target text - nothing else
 - The learner infers meaning from CONTEXT, not from labels
