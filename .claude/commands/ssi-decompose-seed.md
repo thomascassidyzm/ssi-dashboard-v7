@@ -63,9 +63,19 @@ Later seeds will reuse vocabulary. Check what's already available:
 A seed might only need 1 new LEGO if the rest is covered. That's fine!
 But the seed must still TILE from available LEGOs.
 
-## M-LEGO Components
+## M-LEGO Components - MANDATORY
 
-For M-LEGOs, components become vocabulary for the build-up:
+**ALL M-type LEGOs MUST have component breakdown.** This is not optional.
+
+Components teach the building blocks BEFORE the assembled phrase. Without them, learners are asked to memorize chunks they can't construct mentally.
+
+### Component Rules
+
+1. **Every M-LEGO needs at least 1 component** (excluding particles)
+2. **Long M-LEGOs (4+ characters) need 2+ components**
+3. **Components enable construction** - learner should be able to mentally build the M-LEGO
+
+### Example: Good M-LEGO
 
 ```json
 {
@@ -81,7 +91,32 @@ For M-LEGOs, components become vocabulary for the build-up:
 
 Learner sees: I → 我, want → 想, I want → 我想
 
-**Particles are NOT components** - they're inferred from context:
+### Example: BAD (will be REJECTED)
+
+```json
+{
+  "type": "M",
+  "known": "everything you've done",
+  "target": "你做的一切",
+  "components": []  // ❌ REJECTED! No components for 5-char M-LEGO
+}
+```
+
+**Fix:** Add components:
+```json
+{
+  "components": [
+    {"known": "you", "target": "你"},
+    {"known": "do", "target": "做"},
+    {"known": "everything", "target": "一切"}
+  ]
+}
+```
+
+### Particles are Exceptions
+
+Particles (了, 着, 过, 吗, 的, etc.) are NOT counted as components - learners infer them:
+
 ```json
 {
   "type": "M",
@@ -90,7 +125,8 @@ Learner sees: I → 我, want → 想, I want → 我想
   "components": [{"known": "good", "target": "好"}]
 }
 ```
-Learner infers 吗 makes questions.
+
+Learner infers 吗 makes questions - no explicit component needed.
 
 ## Decomposition Checklist
 

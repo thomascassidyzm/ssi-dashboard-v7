@@ -500,7 +500,14 @@ const METHODOLOGY_HINTS = {
 📚 See /ssi-decompose-seed for handling ZUT conflicts:
    - Same known text cannot map to different targets
    - UPCHUNK: Add context to disambiguate
-   - Or use a synonym for the known text`
+   - Or use a synonym for the known text`,
+
+  components: `
+📚 See /ssi-decompose-seed for M-LEGO component requirements:
+   - ALL M-type LEGOs MUST have component breakdown
+   - Components teach the building blocks BEFORE the assembled phrase
+   - Long M-LEGOs (4+ chars) need 2+ meaningful components
+   - Components enable the learner to construct the M-LEGO mentally`
 };
 
 /**
@@ -660,8 +667,16 @@ app.post('/api/lego', async (req, res) => {
 
       // Add agent's practice phrases after build-up
       if (phrases && phrases.length > 0) {
+        // DEDUPLICATION: Filter out agent phrases that duplicate build-up phrases
+        const buildupTargets = new Set(allPhraseRows.map(p => p.target_text));
+        const dedupedPhrases = phrases.filter(p => !buildupTargets.has(p.target));
+        const dedupedCount = phrases.length - dedupedPhrases.length;
+        if (dedupedCount > 0) {
+          console.log(`    Deduped ${dedupedCount} phrases that duplicated build-up`);
+        }
+
         // Sort by target syllable count (Chinese characters = syllables roughly)
-        const sorted = [...phrases].sort((a, b) => a.target.length - b.target.length);
+        const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
         const practicePhrases = sorted.map((p, i) => ({
           course_code,
@@ -1097,6 +1112,48 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
+    // 6. M-LEGO COMPONENT ADEQUACY VALIDATION
+    // All M-type LEGOs MUST have component breakdown - this is fundamental to the methodology
+    if (!SKIP_VALIDATION) {
+      for (const lego of legos) {
+        if (lego.type !== 'M') continue;
+
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        const targetLen = lego.target.length;
+        const meaningfulComps = getMeaningfulComponents(lego.components, lego.target);
+        const compCount = meaningfulComps.length;
+
+        // ALL M-LEGOs must have at least 1 component
+        if (compCount === 0) {
+          errors.push({
+            type: 'components',
+            message: `${legoId}: M-LEGO "${lego.known}" has NO components - M-LEGOs MUST have component breakdown`,
+            lego_id: legoId,
+            target: lego.target,
+            target_length: targetLen,
+            components_provided: lego.components?.length || 0,
+            meaningful_components: compCount,
+            methodology: METHODOLOGY_HINTS.components
+          });
+          console.log(`✗ ${legoId}: M-LEGO MISSING COMPONENTS - "${lego.known}" → "${lego.target}"`);
+        }
+        // Long M-LEGOs (4+ chars) need 2+ meaningful components
+        else if (targetLen >= 4 && compCount < 2) {
+          errors.push({
+            type: 'components',
+            message: `${legoId}: Long M-LEGO "${lego.known}" (${targetLen} chars) needs 2+ components, got ${compCount}`,
+            lego_id: legoId,
+            target: lego.target,
+            target_length: targetLen,
+            components_provided: lego.components?.length || 0,
+            meaningful_components: compCount,
+            methodology: METHODOLOGY_HINTS.components
+          });
+          console.log(`✗ ${legoId}: M-LEGO TOO CHUNKY - "${lego.known}" → "${lego.target}" (${compCount} comps for ${targetLen} chars)`);
+        }
+      }
+    }
+
     // If any errors, reject everything
     if (errors.length > 0) {
       console.log(`✗ ${seedId}: REJECTED - ${errors.length} validation error(s)`);
@@ -1183,7 +1240,15 @@ app.post('/api/seed/complete', async (req, res) => {
 
       // Practice phrases
       if (lego.phrases && lego.phrases.length > 0) {
-        const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
+        // DEDUPLICATION: Filter out agent phrases that duplicate build-up phrases
+        const buildupTargets = new Set(allPhraseRows.map(p => p.target_text));
+        const dedupedPhrases = lego.phrases.filter(p => !buildupTargets.has(p.target));
+        const dedupedCount = lego.phrases.length - dedupedPhrases.length;
+        if (dedupedCount > 0) {
+          console.log(`    Deduped ${dedupedCount} phrases that duplicated build-up`);
+        }
+
+        const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
         const practicePhrases = sorted.map((p, i) => ({
           course_code,
@@ -1521,9 +1586,14 @@ app.listen(PORT, () => {
   console.log(`║  3. VOCAB: Phrases only use introduced vocabulary            ║`);
   console.log(`║  4. COUNT: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO} phrases/LEGO           ║`);
   console.log(`║  5. ETERNAL: ${MIN_ETERNAL_PHRASES}+ phrases with 12+ chars (spaced repetition)     ║`);
+  console.log(`║  6. COMPONENTS: M-LEGOs MUST have component breakdown        ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  AUTO-FEATURES:                                              ║`);
+  console.log(`║  • M-LEGO build-up: auto-generates component→LEGO phrases    ║`);
+  console.log(`║  • Deduplication: removes agent phrases that match build-up  ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  METHODOLOGY COMMANDS (shown on rejection):                  ║`);
-  console.log(`║  • /ssi-decompose-seed - LEGO decomposition & tiling         ║`);
+  console.log(`║  • /ssi-decompose-seed - LEGO decomposition, tiling, comps   ║`);
   console.log(`║  • /ssi-build-phrases  - Phrase requirements & progression   ║`);
   console.log(`║  • /ssi-learner-pattern - What the learner experiences       ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
