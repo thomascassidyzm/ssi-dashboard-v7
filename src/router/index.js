@@ -152,15 +152,15 @@ const routes = [
     redirect: to => {
       const query = to.query
       if (query.target && query.known) {
-        return `/course/${query.target}_for_${query.known}`
+        return `/production/${query.target}_for_${query.known}/text`
       }
-      return '/course'
+      return '/library'
     }
   },
   {
-    // Legacy route - redirect to new unified course page
+    // Legacy route - redirect to Production Suite text view
     path: '/generate/:courseCode/monitor',
-    redirect: to => `/course/${to.params.courseCode}`
+    redirect: to => `/production/${to.params.courseCode}/text`
   },
   // Jobs Monitor - Mission Control for all active jobs across services
   {
