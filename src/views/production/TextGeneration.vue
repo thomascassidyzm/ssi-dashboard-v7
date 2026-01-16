@@ -339,7 +339,9 @@ async function fetchProgress() {
   if (!courseCode) return  // Skip if no course selected yet
 
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    // Use relative URL for remote access (orchestrator proxies to course builder)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
 
     // Fetch both stats and build status in parallel
     const [statsResponse, buildResponse] = await Promise.all([
@@ -398,8 +400,10 @@ async function startBuilder() {
   }
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    // Use relative URL for remote access (orchestrator proxies all APIs)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
 
     // If in create mode, create the course first
     if (isCreateMode.value) {
@@ -463,7 +467,9 @@ async function startBuilder() {
 
 async function stopBuilder() {
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    // Use relative URL for remote access (orchestrator proxies to course builder)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
     const response = await fetch(`${builderApiUrl}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -512,7 +518,9 @@ function stopPolling() {
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    // Use relative URL for remote access (orchestrator proxies all APIs)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
     const response = await fetch(`${apiBase}/api/languages`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })

@@ -5,14 +5,17 @@ import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
-// API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
+// API Base URL - use relative URLs when accessed remotely (via ngrok, etc.)
 function getApiBaseUrl() {
+  // If accessed via ngrok or other remote URL, use relative paths (orchestrator proxies all APIs)
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return ''  // Relative URL - goes through same origin
+  }
   // Check localStorage for user-selected environment
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
-
   // Fall back to environment variable or default
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
@@ -21,6 +24,10 @@ function getApiBaseUrl() {
 // NOTE: Production API runs on port 3470, but orchestrator (3456) proxies /api/production/* to it
 // Always use orchestrator URL so everything works through ngrok tunnel
 function getProductionApiUrl() {
+  // If accessed via ngrok or other remote URL, use relative paths
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return ''  // Relative URL - goes through same origin
+  }
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl

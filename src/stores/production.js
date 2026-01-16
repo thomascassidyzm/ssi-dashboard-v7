@@ -4,13 +4,13 @@ import { ref, computed } from 'vue'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server
-// On Vercel deployment, uses relative URLs (/api/...) which Vercel handles
+// On Vercel deployment or remote access (ngrok), uses relative URLs
 function getApiBaseUrl() {
-  // 1. Check localStorage override (user set via EnvironmentSwitcher)
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
-  }
+  // 1. Check if accessed remotely (ngrok, etc) - use relative URLs
+  // (orchestrator proxies all APIs)
+  const isRemote = typeof window !== 'undefined' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
 
   // 2. Check if we're on Vercel deployment (use relative URLs)
   const isVercel = typeof window !== 'undefined' && (
@@ -18,12 +18,19 @@ function getApiBaseUrl() {
     window.location.hostname === 'popty.app' ||
     window.location.hostname.endsWith('.popty.app')
   )
-  if (isVercel) {
-    // Use empty string = relative URLs, Vercel handles /api/* routes
+
+  if (isVercel || isRemote) {
+    // Use empty string = relative URLs, orchestrator handles /api/* routes
     return ''
   }
 
-  // 3. Use env var or localhost for local development
+  // 3. Check localStorage override (user set via EnvironmentSwitcher)
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
+
+  // 4. Use env var or localhost for local development
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
 

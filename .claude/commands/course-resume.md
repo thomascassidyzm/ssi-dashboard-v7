@@ -2,7 +2,19 @@
 
 Use this skill when resuming course building after a context compaction or interruption.
 
-## FIRST: Get Your Bearings
+## FIRST: Understand the Methodology
+
+**CRITICAL**: Before building ANY content, you MUST understand what the learner experiences.
+
+Run `/ssi-learner-pattern` NOW to load the full methodology brief. This is non-negotiable - without understanding how learners experience the content, you'll create unusable material.
+
+Key principles you MUST internalize:
+- **Learners only know what's been introduced** - never use vocabulary they haven't seen
+- **Phrases build from SHORT to LONG** - start simple, add complexity
+- **Grammar emerges from context** - never explain, let patterns reveal meaning
+- **M-LEGOs teach components first** - "I" then "want" then "I want"
+
+## SECOND: Get Your Bearings
 
 **IMMEDIATELY** call the resume endpoint:
 
@@ -14,10 +26,22 @@ Replace `{course_code}` with your course (e.g., `zho_for_eng`, `deu_for_eng`).
 
 This returns:
 - `next_seed`: The EXACT seed number and known_text to work on
+- `available_vocabulary`: **ALL LEGOs you can use** (known/target pairs with components)
 - `recent_seeds`: Last 5 completed seeds (for style reference)
-- `recent_legos`: Last 20 new LEGOs (for phrase vocabulary)
+- `recent_legos`: Last 20 new LEGOs (recently introduced)
+- `recency.patterns_to_avoid`: Patterns that are overused - don't repeat these
+- `recency.vocab_to_reinforce`: Vocabulary needing practice - try to include these
 - `progress`: How far along you are
 - `vocab_size`: Current vocabulary count
+
+**CRITICAL**: The `available_vocabulary` array contains EVERY LEGO the learner knows at your starting point.
+
+**VOCABULARY GROWS AS YOU BUILD**: When you introduce a new LEGO, it immediately becomes available for phrases in that SAME seed and all subsequent seeds. So:
+- Seed 51 phrases can use: `available_vocabulary` + seed 51's new LEGOs
+- Seed 52 phrases can use: `available_vocabulary` + seed 51's LEGOs + seed 52's new LEGOs
+- And so on...
+
+The API validates this automatically - your LEGOs are inserted first, then phrases are checked against the updated vocabulary.
 
 ## DO NOT:
 - Guess what seed comes next

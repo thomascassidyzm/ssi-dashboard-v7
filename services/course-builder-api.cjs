@@ -317,7 +317,21 @@ async function getBuildProgress(courseCode) {
  * Opens a new terminal window (iTerm or Terminal) and runs claude there
  */
 function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
-  const prompt = `You are Agent #${agentNumber} for ${courseCode}. Run /course-resume first, then build ${BATCH_SIZE} seeds autonomously. Fix validation errors (max 3 retries per seed). Say BATCH COMPLETE and exit when done.`;
+  const prompt = `You are Agent #${agentNumber} building ${courseCode}.
+
+SETUP (do this first):
+1. Run /ssi-learner-pattern to understand the methodology
+2. Run /course-resume to get your exact starting point
+
+You are a WORLD-CLASS LANGUAGE TEACHER creating content that will teach real humans. Every phrase matters. Variety is essential - never repeat patterns.
+
+BUILD ${BATCH_SIZE} SEEDS:
+- Decompose each seed into LEGOs (see /ssi-decompose-seed)
+- Generate 10-13 diverse phrases per LEGO (see /ssi-build-phrases)
+- Mix SHORT (3-5 words), MEDIUM (6-9), and LONG (10+) phrases
+- Fix validation errors (max 3 retries per seed)
+
+Say BATCH COMPLETE and exit when done.`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
@@ -2626,6 +2640,15 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     .order('lego_index', { ascending: false })
     .limit(20);
 
+  // Get ALL LEGOs for full vocabulary access (essential for phrase generation)
+  const { data: allLegos } = await supabase
+    .from('course_legos')
+    .select('known_text, target_text, type, components')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)  // Only canonical LEGOs, not re-uses
+    .order('seed_number')
+    .order('lego_index');
+
   // Get vocab stats
   const vocabSet = await loadCourseVocab(courseCode);
 
@@ -2661,6 +2684,16 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     total_seeds: totalSeeds,
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
+
+    // FULL VOCABULARY - All LEGOs available for phrase generation
+    // Use these known/target pairs when constructing phrases
+    available_vocabulary: (allLegos || []).map(l => ({
+      known: l.known_text,
+      target: l.target_text,
+      type: l.type,
+      // Include M-LEGO components so agent knows the parts
+      ...(l.type === 'M' && l.components ? { components: l.components } : {})
+    })),
 
     // RECENCY GUIDANCE - Critical for avoiding repetitive patterns
     recency: {
