@@ -6,13 +6,16 @@
  *
  * ROUND Structure (per APML spec):
  * 1. INTRO - Introduction audio ("The Chinese for X is...")
- * 2. COMPONENTS - For M-type LEGOs only
- * 3. DEBUT - The LEGO phrase itself
- * 4. DEBUT PHRASES - Up to 7 shortest phrases by duration
+ * 2. COMPONENTS - For M-type LEGOs only (build-up before LEGO)
+ * 3. LEGO - The LEGO phrase itself (formerly "DEBUT")
+ * 4. DEBUT-1 to DEBUT-7 - Practice phrases using the new LEGO
  * 5. SPACED REP - Fibonacci-based reviews:
  *    - N-1 (first revisit) gets 3x eternal phrases
  *    - N-2, N-3, N-5, N-8, etc. get 1x each
  * 6. CONSOLIDATION - 2 eternal phrases for the new LEGO
+ *
+ * For A-type LEGOs: INTRO -> LEGO -> DEBUT-1..7 -> SPACED REP -> CONSOLIDATION
+ * For M-type LEGOs: INTRO -> COMPONENTS -> LEGO -> DEBUT-1..7 -> SPACED REP -> CONSOLIDATION
  *
  * Ported from: ssi-learning-app/packages/player-vue/src/providers/CourseDataProvider.ts
  */
@@ -118,13 +121,14 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 
 /**
  * Load ALL practice phrases grouped by LEGO
- * Returns debut (shortest 7) and eternal (longest 5) maps
+ * Returns debut (shortest 7), eternal (longest 5), and component maps
  */
 async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
   const debutMap = new Map()  // lego_id -> phrases[]
   const eternalMap = new Map()
+  const componentMap = new Map()  // lego_id -> component phrases[]
 
-  if (!supabase) return { debutMap, eternalMap }
+  if (!supabase) return { debutMap, eternalMap, componentMap }
 
   try {
     // Paginate to handle large courses
@@ -154,7 +158,7 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       offset += pageSize
     }
 
-    if (allData.length === 0) return { debutMap, eternalMap }
+    if (allData.length === 0) return { debutMap, eternalMap, componentMap }
 
     logger.info(`Loaded ${allData.length} practice phrases from practice_cycles`)
 
@@ -166,13 +170,14 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       grouped.get(legoId).push(row)
     }
 
-    // Transform and split into debut (first 7) and eternal (last 5)
+    // Transform and split into components, debut (first 7), and eternal (last 5)
     for (const [legoId, rows] of grouped) {
       const allPhrases = rows.map(row => ({
         id: row.id,
         known_text: row.known_text,
         target_text: row.target_text,
         position: row.position,
+        phrase_type: row.phrase_type,
         known_audio_uuid: row.known_audio_uuid,
         target1_audio_uuid: row.target1_audio_uuid,
         target2_audio_uuid: row.target2_audio_uuid,
@@ -181,24 +186,33 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         target2_duration_ms: row.target2_duration_ms,
       }))
 
+      // Components = phrases with position 0 (for M-type LEGO build-up)
+      const componentPhrases = allPhrases.filter(p => p.phrase_type === 'component' || p.position === 0)
+      if (componentPhrases.length > 0) {
+        componentMap.set(legoId, componentPhrases)
+      }
+
+      // Filter out components for debut/eternal selection
+      const nonComponentPhrases = allPhrases.filter(p => p.phrase_type !== 'component' && p.position !== 0)
+
       // Debut = shortest 7 (already sorted by duration)
-      const debutPhrases = allPhrases.slice(0, 7)
+      const debutPhrases = nonComponentPhrases.slice(0, 7)
       if (debutPhrases.length > 0) {
         debutMap.set(legoId, debutPhrases)
       }
 
       // Eternal = longest 5 (take from end, reverse so longest first)
-      const eternalPhrases = allPhrases.slice(-5).reverse()
+      const eternalPhrases = nonComponentPhrases.slice(-5).reverse()
       if (eternalPhrases.length > 0) {
         eternalMap.set(legoId, eternalPhrases)
       }
     }
 
-    logger.info(`Grouped into ${debutMap.size} LEGOs with debut phrases, ${eternalMap.size} with eternal phrases`)
-    return { debutMap, eternalMap }
+    logger.info(`Grouped into ${debutMap.size} LEGOs with debut phrases, ${eternalMap.size} with eternal, ${componentMap.size} with components`)
+    return { debutMap, eternalMap, componentMap }
   } catch (err) {
     logger.error('Error loading practice phrases:', err)
-    return { debutMap, eternalMap }
+    return { debutMap, eternalMap, componentMap }
   }
 }
 
@@ -304,8 +318,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
-  // Load ALL practice phrases split into debut and eternal
-  const { debutMap, eternalMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
+  // Load ALL practice phrases split into components, debut and eternal
+  const { debutMap, eternalMap, componentMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
   // Load introduction audio for all LEGOs
   const legoIds = legos.map(l => l.lego.id)
@@ -354,7 +368,23 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       hasAudio: !!introAudio,
     })
 
-    // Phase 2: COMPONENTS (for M-type LEGOs - skipped for now)
+    // Phase 2: COMPONENTS (for M-type LEGOs - build-up before the LEGO)
+    if (currentLego.lego.type === 'M') {
+      const components = componentMap.get(currentLego.lego.id) || []
+      for (const component of components) {
+        roundItems.push({
+          ...baseItem,
+          type: 'component',
+          known_text: component.known_text,
+          target_text: component.target_text,
+          known_audio_uuid: component.known_audio_uuid,
+          target1_audio_uuid: component.target1_audio_uuid,
+          target2_audio_uuid: component.target2_audio_uuid,
+          hasAudio: !!(component.known_audio_uuid && component.target1_audio_uuid),
+        })
+        usedPhrasesInRound.add(normalizePhrase(component.target_text))
+      }
+    }
 
     // Phase 3: LEGO DEBUT
     roundItems.push({
@@ -534,6 +564,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     totalItems: allItems.length,
     itemsByType: {
       intro: allItems.filter(i => i.type === 'intro').length,
+      component: allItems.filter(i => i.type === 'component').length,
       debut: allItems.filter(i => i.type === 'debut').length,
       debut_phrase: allItems.filter(i => i.type === 'debut_phrase').length,
       spaced_rep: allItems.filter(i => i.type === 'spaced_rep').length,
