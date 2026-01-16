@@ -1,0 +1,96 @@
+{
+  "course_code": "eus_for_spa",
+  "seed_number": 20,
+  "known_text": "Quieres aprender su nombre rapidamente.",
+  "target_text": "Haren izena azkar ikasi nahi duzu.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "su nombre",
+      "target": "haren izena",
+      "components": [
+        {"known": "su", "target": "haren"},
+        {"known": "nombre", "target": "izena"}
+      ],
+      "phrases": [
+        {"known": "su", "target": "haren"},
+        {"known": "nombre", "target": "izena"},
+        {"known": "su nombre", "target": "haren izena"},
+        {"known": "su nombre es", "target": "haren izena da"},
+        {"known": "quiero su nombre", "target": "haren izena nahi dut"},
+        {"known": "el quiere su nombre", "target": "haren izena nahi du"},
+        {"known": "quiero saber su nombre", "target": "haren izena jakin nahi dut"},
+        {"known": "ella quiere saber su nombre ahora", "target": "orain haren izena jakin nahi du"},
+        {"known": "queremos saber su nombre mas tarde", "target": "geroago haren izena jakin nahi dugu"},
+        {"known": "pero no quiero saber su nombre ahora con todos los demas", "target": "baina ez dut orain beste guztiekin haren izena jakin nahi"},
+        {"known": "el quiere saber su nombre a las seis de la tarde con todos los demas", "target": "arratsaldeko seietan beste guztiekin haren izena jakin nahi du"},
+        {"known": "pero ella no quiere saber su nombre manana con todos los demas mas tarde", "target": "baina ez du bihar geroago beste guztiekin haren izena jakin nahi"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "rapidamente",
+      "target": "azkar",
+      "phrases": [
+        {"known": "rapidamente", "target": "azkar"},
+        {"known": "hablar rapidamente", "target": "azkar hitz egin"},
+        {"known": "volver rapidamente", "target": "azkar itzuli"},
+        {"known": "quiero hablar rapidamente", "target": "azkar hitz egin nahi dut"},
+        {"known": "el quiere volver rapidamente", "target": "azkar itzuli nahi du"},
+        {"known": "ella quiere hablar euskera rapidamente", "target": "azkar euskaraz hitz egin nahi du"},
+        {"known": "queremos reunirnos rapidamente con alguien", "target": "azkar norbaitekin elkartu nahi dugu"},
+        {"known": "pero no quiero hablar euskera rapidamente con todos los demas", "target": "baina ez dut azkar beste guztiekin euskaraz hitz egin nahi"},
+        {"known": "el quiere volver rapidamente con todos los demas a las seis de la tarde", "target": "azkar arratsaldeko seietan beste guztiekin itzuli nahi du"},
+        {"known": "pero ella no quiere reunirse rapidamente con todos los demas manana", "target": "baina ez du azkar bihar beste guztiekin elkartu nahi"},
+        {"known": "queremos hablar euskera muy bien rapidamente con todos los demas ahora", "target": "orain azkar beste guztiekin oso ondo euskaraz hitz egin nahi dugu"},
+        {"known": "pero no quiero dejar de hablar euskera rapidamente con todos los demas", "target": "baina ez dut azkar beste guztiekin euskaraz hitz egiteari utzi nahi"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "aprender",
+      "target": "ikasi",
+      "phrases": [
+        {"known": "aprender", "target": "ikasi"},
+        {"known": "aprender ahora", "target": "orain ikasi"},
+        {"known": "quiero aprender", "target": "ikasi nahi dut"},
+        {"known": "el quiere aprender", "target": "ikasi nahi du"},
+        {"known": "quiero aprender euskera", "target": "euskara ikasi nahi dut"},
+        {"known": "ella quiere aprender rapidamente", "target": "azkar ikasi nahi du"},
+        {"known": "queremos aprender euskera ahora", "target": "orain euskara ikasi nahi dugu"},
+        {"known": "pero no quiero aprender con todos los demas", "target": "baina ez dut beste guztiekin ikasi nahi"},
+        {"known": "el quiere aprender euskera rapidamente con todos los demas manana", "target": "bihar azkar beste guztiekin euskara ikasi nahi du"},
+        {"known": "pero ella no quiere aprender euskera con todos los demas a las seis de la tarde", "target": "baina ez du arratsaldeko seietan beste guztiekin euskara ikasi nahi"},
+        {"known": "queremos aprender euskera rapidamente con todos los demas a las seis de la tarde", "target": "arratsaldeko seietan azkar beste guztiekin euskara ikasi nahi dugu"},
+        {"known": "pero no quiero aprender su nombre rapidamente con todos los demas manana", "target": "baina ez dut bihar azkar beste guztiekin haren izena ikasi nahi"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "quieres",
+      "target": "nahi duzu",
+      "components": [
+        {"known": "querer", "target": "nahi"},
+        {"known": "tu lo haces", "target": "duzu"}
+      ],
+      "phrases": [
+        {"known": "querer", "target": "nahi"},
+        {"known": "tu lo haces", "target": "duzu"},
+        {"known": "quieres", "target": "nahi duzu"},
+        {"known": "quieres hablar", "target": "hitz egin nahi duzu"},
+        {"known": "quieres volver", "target": "itzuli nahi duzu"},
+        {"known": "quieres hablar euskera", "target": "euskaraz hitz egin nahi duzu"},
+        {"known": "quieres aprender rapidamente", "target": "azkar ikasi nahi duzu"},
+        {"known": "quieres reunirte con alguien", "target": "norbaitekin elkartu nahi duzu"},
+        {"known": "quieres aprender su nombre rapidamente ahora con todos los demas", "target": "orain azkar beste guztiekin haren izena ikasi nahi duzu"},
+        {"known": "pero quieres hablar euskera muy bien con todos los demas manana", "target": "baina bihar beste guztiekin oso ondo euskaraz hitz egin nahi duzu"},
+        {"known": "quieres volver con todos los demas a las seis de la tarde y hablar euskera", "target": "arratsaldeko seietan beste guztiekin itzuli nahi duzu eta euskaraz hitz egin"},
+        {"known": "pero quieres aprender euskera rapidamente con todos los demas a las seis de la tarde", "target": "baina arratsaldeko seietan azkar beste guztiekin euskara ikasi nahi duzu"}
+      ]
+    }
+  ]
+}

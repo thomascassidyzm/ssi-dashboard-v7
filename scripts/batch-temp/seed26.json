@@ -1,0 +1,148 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 26,
+  "known_text": "I like feeling as if I'm nearly ready to go.",
+  "target_text": "J'aime me sentir comme si j'étais presque prêt à partir.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I like",
+      "target": "j'aime",
+      "components": [
+        {"known": "I", "target": "j'"},
+        {"known": "love", "target": "aime"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "j'"},
+        {"known": "love", "target": "aime"},
+        {"known": "I like", "target": "j'aime"},
+        {"known": "I like to learn", "target": "j'aime apprendre"},
+        {"known": "I like to talk", "target": "j'aime parler"},
+        {"known": "I like to learn more", "target": "j'aime apprendre plus"},
+        {"known": "I like to start soon", "target": "j'aime commencer bientôt"},
+        {"known": "I like to help everyone else this evening", "target": "j'aime aider tout le monde ce soir"},
+        {"known": "because I like to encounter people who speak French", "target": "parce que j'aime rencontrer des gens qui parlent français"},
+        {"known": "why do I like to learn more with everyone else this evening?", "target": "pourquoi j'aime apprendre plus avec tout le monde ce soir?"},
+        {"known": "I like to start to talk more with people who speak French soon", "target": "j'aime commencer à parler plus avec des gens qui parlent français bientôt"},
+        {"known": "because I like to be able to remember easily before I have to go", "target": "parce que j'aime pouvoir me souvenir facilement avant que je doive partir"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "feeling",
+      "target": "me sentir",
+      "components": [
+        {"known": "myself", "target": "me"},
+        {"known": "feel", "target": "sentir"}
+      ],
+      "phrases": [
+        {"known": "myself", "target": "me"},
+        {"known": "feel", "target": "sentir"},
+        {"known": "feeling", "target": "me sentir"},
+        {"known": "I like feeling", "target": "j'aime me sentir"},
+        {"known": "feeling more easily", "target": "me sentir plus facilement"},
+        {"known": "I like feeling more easily", "target": "j'aime me sentir plus facilement"},
+        {"known": "she likes feeling with everyone else", "target": "elle aime se sentir avec tout le monde"},
+        {"known": "because I like feeling with everyone else", "target": "parce que j'aime me sentir avec tout le monde"},
+        {"known": "I like feeling before I have to go with everyone else", "target": "j'aime me sentir avant que je doive partir avec tout le monde"},
+        {"known": "because he likes feeling with people who speak French this evening", "target": "parce que il aime se sentir avec des gens qui parlent français ce soir"},
+        {"known": "why do I like feeling more easily before I have to go later on?", "target": "pourquoi j'aime me sentir plus facilement avant que je doive partir plus tard?"},
+        {"known": "because she likes feeling before she has to go with everyone else soon", "target": "parce que elle aime se sentir avant que elle doive partir avec tout le monde bientôt"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "as if",
+      "target": "comme si",
+      "components": [
+        {"known": "like", "target": "comme"},
+        {"known": "if", "target": "si"}
+      ],
+      "phrases": [
+        {"known": "like", "target": "comme"},
+        {"known": "if", "target": "si"},
+        {"known": "as if", "target": "comme si"},
+        {"known": "feeling as if", "target": "me sentir comme si"},
+        {"known": "as if I want to learn", "target": "comme si je veux apprendre"},
+        {"known": "I like feeling as if", "target": "j'aime me sentir comme si"},
+        {"known": "as if I'm going to start to talk soon", "target": "comme si je vais commencer à parler bientôt"},
+        {"known": "I like feeling as if I want to learn more", "target": "j'aime me sentir comme si je veux apprendre plus"},
+        {"known": "I like feeling as if I'm going to start to talk soon", "target": "j'aime me sentir comme si je vais commencer à parler bientôt"},
+        {"known": "because I like feeling as if I want to help everyone else", "target": "parce que j'aime me sentir comme si je veux aider tout le monde"},
+        {"known": "I like feeling as if I'm going to encounter people who speak French", "target": "j'aime me sentir comme si je vais rencontrer des gens qui parlent français"},
+        {"known": "because I like feeling as if I'm going to be able to remember easily", "target": "parce que j'aime me sentir comme si je vais pouvoir me souvenir facilement"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I'm nearly",
+      "target": "j'étais presque",
+      "components": [
+        {"known": "I was", "target": "j'étais"},
+        {"known": "almost", "target": "presque"}
+      ],
+      "phrases": [
+        {"known": "I was", "target": "j'étais"},
+        {"known": "almost", "target": "presque"},
+        {"known": "I'm nearly", "target": "j'étais presque"},
+        {"known": "almost able to", "target": "presque pouvoir"},
+        {"known": "I was nearly able to learn", "target": "j'étais presque pouvoir apprendre"},
+        {"known": "as if I'm nearly", "target": "comme si j'étais presque"},
+        {"known": "as if I'm nearly able to learn", "target": "comme si j'étais presque pouvoir apprendre"},
+        {"known": "I like feeling as if I'm nearly able to", "target": "j'aime me sentir comme si j'étais presque pouvoir"},
+        {"known": "as if I'm nearly able to remember easily", "target": "comme si j'étais presque pouvoir me souvenir facilement"},
+        {"known": "I like feeling as if I'm nearly able to start to talk more", "target": "j'aime me sentir comme si j'étais presque pouvoir commencer à parler plus"},
+        {"known": "I like feeling as if I'm nearly able to encounter people who speak French", "target": "j'aime me sentir comme si j'étais presque pouvoir rencontrer des gens qui parlent français"},
+        {"known": "I like feeling as if I'm nearly able to go with everyone else this evening", "target": "j'aime me sentir comme si j'étais presque pouvoir partir avec tout le monde ce soir"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "ready to",
+      "target": "prêt à",
+      "components": [
+        {"known": "ready", "target": "prêt"},
+        {"known": "to", "target": "à"}
+      ],
+      "phrases": [
+        {"known": "ready", "target": "prêt"},
+        {"known": "to", "target": "à"},
+        {"known": "ready to", "target": "prêt à"},
+        {"known": "ready to go", "target": "prêt à partir"},
+        {"known": "ready to learn", "target": "prêt à apprendre"},
+        {"known": "I'm nearly ready to go", "target": "j'étais presque prêt à partir"},
+        {"known": "as if I'm nearly ready to learn", "target": "comme si j'étais presque prêt à apprendre"},
+        {"known": "I'm nearly ready to start to talk more", "target": "j'étais presque prêt à commencer à parler plus"},
+        {"known": "I like feeling as if I'm nearly ready to go", "target": "j'aime me sentir comme si j'étais presque prêt à partir"},
+        {"known": "I like feeling as if I'm nearly ready to start to talk more", "target": "j'aime me sentir comme si j'étais presque prêt à commencer à parler plus"},
+        {"known": "I like feeling as if I'm nearly ready to go with everyone else this evening", "target": "j'aime me sentir comme si j'étais presque prêt à partir avec tout le monde ce soir"},
+        {"known": "because I like feeling as if I'm nearly ready to encounter people who speak French", "target": "parce que j'aime me sentir comme si j'étais presque prêt à rencontrer des gens qui parlent français"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "go",
+      "target": "partir",
+      "phrases": [
+        {"known": "go", "target": "partir"},
+        {"known": "go soon", "target": "partir bientôt"},
+        {"known": "ready to go", "target": "prêt à partir"},
+        {"known": "I'm nearly ready to go", "target": "j'étais presque prêt à partir"},
+        {"known": "I like feeling as if I'm nearly ready to go", "target": "j'aime me sentir comme si j'étais presque prêt à partir"},
+        {"known": "before I have to go with everyone else soon", "target": "avant que je doive partir avec tout le monde bientôt"},
+        {"known": "because I want to go with everyone else this evening", "target": "parce que je veux partir avec tout le monde ce soir"},
+        {"known": "I like feeling as if I'm nearly ready to go with everyone else", "target": "j'aime me sentir comme si j'étais presque prêt à partir avec tout le monde"},
+        {"known": "why do I like feeling as if I'm nearly ready to go later on?", "target": "pourquoi j'aime me sentir comme si j'étais presque prêt à partir plus tard?"},
+        {"known": "because I like feeling as if I'm nearly ready to go this evening", "target": "parce que j'aime me sentir comme si j'étais presque prêt à partir ce soir"},
+        {"known": "I like feeling as if I'm nearly ready to go with everyone else this evening", "target": "j'aime me sentir comme si j'étais presque prêt à partir avec tout le monde ce soir"},
+        {"known": "because I like feeling as if I'm nearly ready to go with people who speak French", "target": "parce que j'aime me sentir comme si j'étais presque prêt à partir avec des gens qui parlent français"}
+      ]
+    }
+  ]
+}

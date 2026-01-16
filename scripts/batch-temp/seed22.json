@@ -1,0 +1,144 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 22,
+  "known_text": "Because I want to meet people who speak French.",
+  "target_text": "Parce que je veux rencontrer des gens qui parlent français.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "because",
+      "target": "parce que",
+      "components": [
+        {"known": "for", "target": "parce"},
+        {"known": "that", "target": "que"}
+      ],
+      "phrases": [
+        {"known": "because not", "target": "parce que pas"},
+        {"known": "because later", "target": "parce que plus tard"},
+        {"known": "because this evening", "target": "parce que ce soir"},
+        {"known": "because he wants to learn", "target": "parce que il veut apprendre"},
+        {"known": "because she wants to come back", "target": "parce que elle veut revenir"},
+        {"known": "because we want to meet this evening", "target": "parce que nous voulons nous retrouver ce soir"},
+        {"known": "because I dont want to stop talking", "target": "parce que je ne veux pas arrêter de parler"},
+        {"known": "because he wants to learn his name quickly", "target": "parce que il veut apprendre son nom rapidement"},
+        {"known": "because she wants to find out what the answer is quickly", "target": "parce que elle veut savoir quelle est la réponse rapidement"},
+        {"known": "because we want to come back with everyone else later on", "target": "parce que nous voulons revenir avec tout le monde plus tard"},
+        {"known": "because he wants to find out why she wants to come back later", "target": "parce que il veut savoir pourquoi elle veut revenir plus tard"},
+        {"known": "because I dont want to stop learning with everyone else this evening", "target": "parce que je ne veux pas arrêter de apprendre avec tout le monde ce soir"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I want",
+      "target": "je veux",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"},
+        {"known": "I want", "target": "je veux"},
+        {"known": "I want to learn", "target": "je veux apprendre"},
+        {"known": "I want to come back", "target": "je veux revenir"},
+        {"known": "I want to come back later", "target": "je veux revenir plus tard"},
+        {"known": "because I want to learn quickly", "target": "parce que je veux apprendre rapidement"},
+        {"known": "I want to find out what the answer is", "target": "je veux savoir quelle est la réponse"},
+        {"known": "I want to come back with everyone else this evening", "target": "je veux revenir avec tout le monde ce soir"},
+        {"known": "because I want to learn his name quickly this evening", "target": "parce que je veux apprendre son nom rapidement ce soir"},
+        {"known": "I want to come back with everyone else at six o clock", "target": "je veux revenir avec tout le monde à six heures"},
+        {"known": "because I want to find out what the answer is with everyone else", "target": "parce que je veux savoir quelle est la réponse avec tout le monde"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to encounter",
+      "target": "rencontrer",
+      "phrases": [
+        {"known": "to encounter", "target": "rencontrer"},
+        {"known": "encounter later", "target": "rencontrer plus tard"},
+        {"known": "I want to encounter", "target": "je veux rencontrer"},
+        {"known": "he wants to encounter", "target": "il veut rencontrer"},
+        {"known": "she wants to encounter this evening", "target": "elle veut rencontrer ce soir"},
+        {"known": "we want to encounter later on", "target": "nous voulons rencontrer plus tard"},
+        {"known": "because he wants to encounter quickly", "target": "parce que il veut rencontrer rapidement"},
+        {"known": "I want to encounter everyone else at six o clock", "target": "je veux rencontrer tout le monde à six heures"},
+        {"known": "because she wants to encounter everyone else later on this evening", "target": "parce que elle veut rencontrer tout le monde plus tard ce soir"},
+        {"known": "why does he want to encounter everyone else at six o clock?", "target": "pourquoi il veut rencontrer tout le monde à six heures?"},
+        {"known": "because I want to encounter everyone else at six o clock this evening", "target": "parce que je veux rencontrer tout le monde à six heures ce soir"},
+        {"known": "because we dont want to stop encountering everyone else later on", "target": "parce que nous ne voulons pas arrêter de rencontrer tout le monde plus tard"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "people",
+      "target": "des gens",
+      "components": [
+        {"known": "some", "target": "des"},
+        {"known": "folks", "target": "gens"}
+      ],
+      "phrases": [
+        {"known": "some", "target": "des"},
+        {"known": "folks", "target": "gens"},
+        {"known": "people", "target": "des gens"},
+        {"known": "encounter people", "target": "rencontrer des gens"},
+        {"known": "I want to encounter people", "target": "je veux rencontrer des gens"},
+        {"known": "he wants to encounter people later", "target": "il veut rencontrer des gens plus tard"},
+        {"known": "because she wants to encounter people this evening", "target": "parce que elle veut rencontrer des gens ce soir"},
+        {"known": "we want to encounter people later on with everyone", "target": "nous voulons rencontrer des gens plus tard avec tout le monde"},
+        {"known": "why does he want to encounter people at six o clock?", "target": "pourquoi il veut rencontrer des gens à six heures?"},
+        {"known": "because I want to encounter people with everyone else later on", "target": "parce que je veux rencontrer des gens avec tout le monde plus tard"},
+        {"known": "she wants to encounter people at six o clock this evening with everyone", "target": "elle veut rencontrer des gens à six heures ce soir avec tout le monde"},
+        {"known": "because we want to encounter people with everyone else at six o clock", "target": "parce que nous voulons rencontrer des gens avec tout le monde à six heures"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "who speak",
+      "target": "qui parlent",
+      "components": [
+        {"known": "who", "target": "qui"},
+        {"known": "they speak", "target": "parlent"}
+      ],
+      "phrases": [
+        {"known": "who", "target": "qui"},
+        {"known": "they speak", "target": "parlent"},
+        {"known": "who speak", "target": "qui parlent"},
+        {"known": "people who speak", "target": "des gens qui parlent"},
+        {"known": "encounter people who speak", "target": "rencontrer des gens qui parlent"},
+        {"known": "I want to encounter people who speak", "target": "je veux rencontrer des gens qui parlent"},
+        {"known": "because he wants to encounter people who speak", "target": "parce que il veut rencontrer des gens qui parlent"},
+        {"known": "she wants to encounter people who speak this evening", "target": "elle veut rencontrer des gens qui parlent ce soir"},
+        {"known": "we want to encounter people who speak with everyone else", "target": "nous voulons rencontrer des gens qui parlent avec tout le monde"},
+        {"known": "why does he want to encounter people who speak at six o clock?", "target": "pourquoi il veut rencontrer des gens qui parlent à six heures?"},
+        {"known": "because I want to encounter people who speak with everyone else later", "target": "parce que je veux rencontrer des gens qui parlent avec tout le monde plus tard"},
+        {"known": "she wants to encounter people who speak at six o clock this evening", "target": "elle veut rencontrer des gens qui parlent à six heures ce soir"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "French",
+      "target": "français",
+      "phrases": [
+        {"known": "French", "target": "français"},
+        {"known": "in French", "target": "en français"},
+        {"known": "speak French", "target": "parler français"},
+        {"known": "they speak French", "target": "parlent français"},
+        {"known": "who speak French", "target": "qui parlent français"},
+        {"known": "people who speak French", "target": "des gens qui parlent français"},
+        {"known": "encounter people who speak French", "target": "rencontrer des gens qui parlent français"},
+        {"known": "I want to encounter people who speak French", "target": "je veux rencontrer des gens qui parlent français"},
+        {"known": "because he wants to encounter people who speak French", "target": "parce que il veut rencontrer des gens qui parlent français"},
+        {"known": "she wants to encounter people who speak French this evening", "target": "elle veut rencontrer des gens qui parlent français ce soir"},
+        {"known": "we want to encounter people who speak French with everyone else later", "target": "nous voulons rencontrer des gens qui parlent français avec tout le monde plus tard"},
+        {"known": "why does he want to encounter people who speak French at six o clock?", "target": "pourquoi il veut rencontrer des gens qui parlent français à six heures?"}
+      ]
+    }
+  ]
+}

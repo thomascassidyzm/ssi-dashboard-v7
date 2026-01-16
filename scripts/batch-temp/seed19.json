@@ -1,0 +1,76 @@
+{
+  "course_code": "eus_for_spa",
+  "seed_number": 19,
+  "known_text": "Pero no quiero dejar de hablar.",
+  "target_text": "Baina ez dut hitz egiteari utzi nahi.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "pero",
+      "target": "baina",
+      "phrases": [
+        {"known": "pero", "target": "baina"},
+        {"known": "pero ahora", "target": "baina orain"},
+        {"known": "pero manana", "target": "baina bihar"},
+        {"known": "pero mas tarde", "target": "baina geroago"},
+        {"known": "pero quiero hablar", "target": "baina hitz egin nahi dut"},
+        {"known": "pero el quiere volver", "target": "baina itzuli nahi du"},
+        {"known": "pero ella quiere hablar euskera", "target": "baina euskaraz hitz egin nahi du"},
+        {"known": "pero queremos reunirnos con alguien", "target": "baina norbaitekin elkartu nahi dugu"},
+        {"known": "pero quiero volver con todos los demas mas tarde", "target": "baina geroago beste guztiekin itzuli nahi dut"},
+        {"known": "pero ella quiere reunirse con todos los demas a las seis de la tarde", "target": "baina arratsaldeko seietan beste guztiekin elkartu nahi du"},
+        {"known": "pero queremos hablar euskera muy bien con todos los demas manana", "target": "baina bihar beste guztiekin oso ondo euskaraz hitz egin nahi dugu"},
+        {"known": "pero el quiere reunirse con todos los demas a las seis de la tarde y hablar euskera", "target": "baina arratsaldeko seietan beste guztiekin elkartu nahi du eta euskaraz hitz egin"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "no quiero",
+      "target": "ez dut nahi",
+      "components": [
+        {"known": "no", "target": "ez"},
+        {"known": "quiero", "target": "dut nahi"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "ez"},
+        {"known": "quiero", "target": "dut nahi"},
+        {"known": "no quiero", "target": "ez dut nahi"},
+        {"known": "no quiero hablar", "target": "ez dut hitz egin nahi"},
+        {"known": "no quiero volver", "target": "ez dut itzuli nahi"},
+        {"known": "no quiero reunirme ahora", "target": "ez dut orain elkartu nahi"},
+        {"known": "no quiero hablar euskera ahora", "target": "ez dut orain euskaraz hitz egin nahi"},
+        {"known": "no quiero volver mas tarde con alguien", "target": "ez dut geroago norbaitekin itzuli nahi"},
+        {"known": "pero no quiero reunirme con todos los demas mas tarde", "target": "baina ez dut geroago beste guztiekin elkartu nahi"},
+        {"known": "no quiero hablar euskera con todos los demas a las seis de la tarde", "target": "ez dut arratsaldeko seietan beste guztiekin euskaraz hitz egin nahi"},
+        {"known": "pero no quiero volver con todos los demas a las seis de la tarde manana", "target": "baina ez dut bihar arratsaldeko seietan beste guztiekin itzuli nahi"},
+        {"known": "no quiero reunirme con todos los demas a las seis de la tarde y hablar euskera", "target": "ez dut arratsaldeko seietan beste guztiekin elkartu nahi eta euskaraz hitz egin"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "dejar de hablar",
+      "target": "hitz egiteari utzi",
+      "components": [
+        {"known": "hablar", "target": "hitz egiteari"},
+        {"known": "dejar", "target": "utzi"}
+      ],
+      "phrases": [
+        {"known": "hablar", "target": "hitz egiteari"},
+        {"known": "dejar", "target": "utzi"},
+        {"known": "dejar de hablar", "target": "hitz egiteari utzi"},
+        {"known": "quiero dejar de hablar", "target": "hitz egiteari utzi nahi dut"},
+        {"known": "el quiere dejar de hablar", "target": "hitz egiteari utzi nahi du"},
+        {"known": "no quiero dejar de hablar", "target": "ez dut hitz egiteari utzi nahi"},
+        {"known": "ella no quiere dejar de hablar", "target": "ez du hitz egiteari utzi nahi"},
+        {"known": "queremos dejar de hablar mas tarde", "target": "geroago hitz egiteari utzi nahi dugu"},
+        {"known": "pero no quiero dejar de hablar con alguien ahora", "target": "baina ez dut orain norbaitekin hitz egiteari utzi nahi"},
+        {"known": "el no quiere dejar de hablar euskera con todos los demas", "target": "ez du beste guztiekin euskaraz hitz egiteari utzi nahi"},
+        {"known": "pero ella no quiere dejar de hablar euskera con todos los demas manana", "target": "baina ez du bihar beste guztiekin euskaraz hitz egiteari utzi nahi"},
+        {"known": "no queremos dejar de hablar euskera con todos los demas a las seis de la tarde", "target": "ez dugu arratsaldeko seietan beste guztiekin euskaraz hitz egiteari utzi nahi"}
+      ]
+    }
+  ]
+}

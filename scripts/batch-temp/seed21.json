@@ -1,0 +1,76 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 21,
+  "known_text": "Why are you learning her name?",
+  "target_text": "Pourquoi apprends-tu son nom?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "why",
+      "target": "pourquoi",
+      "phrases": [
+        {"known": "why not?", "target": "pourquoi pas?"},
+        {"known": "why learn?", "target": "pourquoi apprendre?"},
+        {"known": "why later?", "target": "pourquoi plus tard?"},
+        {"known": "why stop talking?", "target": "pourquoi arrêter de parler?"},
+        {"known": "why does he want to learn?", "target": "pourquoi il veut apprendre?"},
+        {"known": "why does she want to come back?", "target": "pourquoi elle veut revenir?"},
+        {"known": "why do we want to meet this evening?", "target": "pourquoi nous voulons nous retrouver ce soir?"},
+        {"known": "why is he wanting to learn his name so quickly?", "target": "pourquoi il veut apprendre son nom rapidement?"},
+        {"known": "why is she wanting to come back with everyone else later on?", "target": "pourquoi elle veut revenir avec tout le monde plus tard?"},
+        {"known": "why is he wanting to come back with everyone else later on this evening?", "target": "pourquoi il veut revenir avec tout le monde plus tard ce soir?"},
+        {"known": "why do we want to meet at six o clock this evening with everyone else?", "target": "pourquoi nous voulons nous retrouver à six heures ce soir avec tout le monde?"},
+        {"known": "why does she want to find out what the answer is quickly this evening?", "target": "pourquoi elle veut savoir quelle est la réponse rapidement ce soir?"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "are you learning",
+      "target": "apprends-tu",
+      "components": [
+        {"known": "learning", "target": "apprends"},
+        {"known": "you", "target": "tu"}
+      ],
+      "phrases": [
+        {"known": "you learn", "target": "tu apprends"},
+        {"known": "learning quickly", "target": "apprends rapidement"},
+        {"known": "learning his name", "target": "apprends son nom"},
+        {"known": "you are learning", "target": "tu apprends"},
+        {"known": "you are learning this evening", "target": "tu apprends ce soir"},
+        {"known": "you are learning with everyone else", "target": "tu apprends avec tout le monde"},
+        {"known": "you are learning the answer this evening quickly", "target": "tu apprends la réponse ce soir rapidement"},
+        {"known": "you are learning with everyone else this evening at six o clock", "target": "tu apprends avec tout le monde ce soir à six heures"},
+        {"known": "why are you learning his name so quickly this evening with everyone?", "target": "pourquoi apprends-tu son nom rapidement ce soir avec tout le monde?"},
+        {"known": "you want to learn what the answer is this evening with everyone else", "target": "tu veux apprendre quelle est la réponse ce soir avec tout le monde"},
+        {"known": "you are learning to find out what the answer is quickly later on", "target": "tu apprends à savoir quelle est la réponse rapidement plus tard"},
+        {"known": "but you dont want to stop learning with everyone else later on this evening", "target": "mais tu ne veux pas arrêter de apprendre avec tout le monde plus tard ce soir"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "her name",
+      "target": "son nom",
+      "components": [
+        {"known": "her", "target": "son"},
+        {"known": "name", "target": "nom"}
+      ],
+      "phrases": [
+        {"known": "her name", "target": "son nom"},
+        {"known": "her name is", "target": "son nom est"},
+        {"known": "learn her name", "target": "apprendre son nom"},
+        {"known": "I want to learn her name", "target": "je veux apprendre son nom"},
+        {"known": "he wants to learn her name", "target": "il veut apprendre son nom"},
+        {"known": "she wants to find out her name", "target": "elle veut savoir son nom"},
+        {"known": "he wants to learn her name quickly", "target": "il veut apprendre son nom rapidement"},
+        {"known": "we want to find out her name this evening", "target": "nous voulons savoir son nom ce soir"},
+        {"known": "why does he want to learn her name so quickly this evening?", "target": "pourquoi il veut apprendre son nom rapidement ce soir?"},
+        {"known": "she wants to learn her name with everyone else this evening at six", "target": "elle veut apprendre son nom avec tout le monde ce soir à six heures"},
+        {"known": "he wants to find out her name with everyone else later on this evening", "target": "il veut savoir son nom avec tout le monde plus tard ce soir"},
+        {"known": "but I dont want to stop learning her name with everyone else later on", "target": "mais je ne veux pas arrêter de apprendre son nom avec tout le monde plus tard"}
+      ]
+    }
+  ]
+}

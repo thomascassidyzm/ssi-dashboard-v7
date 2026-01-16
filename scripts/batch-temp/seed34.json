@@ -1,0 +1,127 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 34,
+  "known_text": "He doesn't want to be quiet when other people are here.",
+  "target_text": "Il ne veut pas se taire quand d'autres personnes sont ici.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he doesn't want",
+      "target": "il ne veut pas",
+      "components": [
+        {"known": "he", "target": "il"},
+        {"known": "not", "target": "ne"},
+        {"known": "wants", "target": "veut"},
+        {"known": "not", "target": "pas"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "il"},
+        {"known": "wants", "target": "veut"},
+        {"known": "he doesn't want", "target": "il ne veut pas"},
+        {"known": "he doesn't want to learn", "target": "il ne veut pas apprendre"},
+        {"known": "he doesn't want to go soon", "target": "il ne veut pas partir bientôt"},
+        {"known": "he doesn't want to speak with me", "target": "il ne veut pas parler avec moi"},
+        {"known": "because he doesn't want to ask me something", "target": "parce que il ne veut pas me demander quelque chose"},
+        {"known": "why doesn't he want to show you something tonight", "target": "pourquoi il ne veut pas te montrer quelque chose ce soir"},
+        {"known": "he doesn't want to learn the French language better", "target": "il ne veut pas apprendre le français mieux"},
+        {"known": "because he doesn't want to feel ready to go yesterday", "target": "parce que il ne veut pas se sentir prêt à partir hier"},
+        {"known": "he doesn't want to encounter people who speak French with everyone else", "target": "il ne veut pas rencontrer des gens qui parlent français avec tout le monde"},
+        {"known": "how long has he not wanted to learn the French language with you", "target": "depuis combien de temps il ne veut pas apprendre le français avec toi"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to be quiet",
+      "target": "se taire",
+      "components": [
+        {"known": "oneself", "target": "se"},
+        {"known": "to silence", "target": "taire"}
+      ],
+      "phrases": [
+        {"known": "oneself", "target": "se"},
+        {"known": "to silence", "target": "taire"},
+        {"known": "to be quiet", "target": "se taire"},
+        {"known": "to be quiet soon", "target": "se taire bientôt"},
+        {"known": "be quiet yesterday", "target": "se taire hier"},
+        {"known": "he doesn't want to be quiet", "target": "il ne veut pas se taire"},
+        {"known": "I wanted to be quiet tonight", "target": "je voulais me taire ce soir"},
+        {"known": "he doesn't want to be quiet this evening", "target": "il ne veut pas se taire ce soir"},
+        {"known": "because I wanted to be quiet yesterday", "target": "parce que je voulais me taire hier"},
+        {"known": "why doesn't he want to be quiet with everyone else", "target": "pourquoi il ne veut pas se taire avec tout le monde"},
+        {"known": "he doesn't want to be quiet before he has to go", "target": "il ne veut pas se taire avant que il doive partir"},
+        {"known": "I'm looking forward to being quiet as soon as I can tonight", "target": "j'ai hâte de me taire dès que je peux ce soir"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "when",
+      "target": "quand",
+      "phrases": [
+        {"known": "when", "target": "quand"},
+        {"known": "when you learn", "target": "quand tu apprends"},
+        {"known": "when you speak", "target": "quand tu parles"},
+        {"known": "to be quiet when", "target": "se taire quand"},
+        {"known": "he doesn't want to be quiet when", "target": "il ne veut pas se taire quand"},
+        {"known": "I wanted to speak when I was ready", "target": "je voulais parler quand j'étais prêt"},
+        {"known": "when he doesn't want to be quiet", "target": "quand il ne veut pas se taire"},
+        {"known": "because I wanted to be quiet when you speak", "target": "parce que je voulais me taire quand tu parles"},
+        {"known": "he doesn't want to be quiet when I have to go tonight", "target": "il ne veut pas se taire quand je doive partir ce soir"},
+        {"known": "I'm looking forward to being quiet when you learn with me", "target": "j'ai hâte de me taire quand tu apprends avec moi"},
+        {"known": "how long has he not wanted to be quiet when you were speaking", "target": "depuis combien de temps il ne veut pas se taire quand tu parles"},
+        {"known": "he doesn't want to be quiet when I'm looking forward to speaking better", "target": "il ne veut pas se taire quand j'ai hâte de parler mieux"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "other people",
+      "target": "d'autres personnes",
+      "components": [
+        {"known": "of other", "target": "d'autres"},
+        {"known": "people", "target": "personnes"}
+      ],
+      "phrases": [
+        {"known": "of other", "target": "d'autres"},
+        {"known": "people", "target": "personnes"},
+        {"known": "other people", "target": "d'autres personnes"},
+        {"known": "with other people", "target": "avec d'autres personnes"},
+        {"known": "when other people", "target": "quand d'autres personnes"},
+        {"known": "to be quiet when other people", "target": "se taire quand d'autres personnes"},
+        {"known": "he doesn't want to be quiet when other people", "target": "il ne veut pas se taire quand d'autres personnes"},
+        {"known": "I wanted to speak with other people tonight", "target": "je voulais parler avec d'autres personnes ce soir"},
+        {"known": "because he doesn't want to be quiet when other people speak", "target": "parce que il ne veut pas se taire quand d'autres personnes parlent"},
+        {"known": "why doesn't he want to be quiet when other people are speaking", "target": "pourquoi il ne veut pas se taire quand d'autres personnes parlent"},
+        {"known": "I'm looking forward to speaking with other people as soon as I can", "target": "j'ai hâte de parler avec d'autres personnes dès que je peux"},
+        {"known": "how long has he not wanted to be quiet when other people are speaking French", "target": "depuis combien de temps il ne veut pas se taire quand d'autres personnes parlent français"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "are here",
+      "target": "sont ici",
+      "components": [
+        {"known": "are", "target": "sont"},
+        {"known": "here", "target": "ici"}
+      ],
+      "phrases": [
+        {"known": "are", "target": "sont"},
+        {"known": "here", "target": "ici"},
+        {"known": "are here", "target": "sont ici"},
+        {"known": "are here soon", "target": "sont ici bientôt"},
+        {"known": "other people are here", "target": "d'autres personnes sont ici"},
+        {"known": "other people are here tonight", "target": "d'autres personnes sont ici ce soir"},
+        {"known": "other people are here with me tonight", "target": "d'autres personnes sont ici avec moi ce soir"},
+        {"known": "when other people are here", "target": "quand d'autres personnes sont ici"},
+        {"known": "he doesn't want to be quiet when other people are here", "target": "il ne veut pas se taire quand d'autres personnes sont ici"},
+        {"known": "because other people are here tonight with me", "target": "parce que d'autres personnes sont ici ce soir avec moi"},
+        {"known": "why doesn't he want to be quiet when other people are here", "target": "pourquoi il ne veut pas se taire quand d'autres personnes sont ici"},
+        {"known": "he doesn't want to be quiet when other people are here with everyone else", "target": "il ne veut pas se taire quand d'autres personnes sont ici avec tout le monde"},
+        {"known": "how long has he not wanted to be quiet when other people are here tonight", "target": "depuis combien de temps il ne veut pas se taire quand d'autres personnes sont ici ce soir"}
+      ]
+    }
+  ]
+}
