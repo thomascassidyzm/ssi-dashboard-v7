@@ -323,7 +323,9 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
   require('fs').writeFileSync(tmpFile, prompt);
 
-  const claudeCmd = `claude --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  // cd to project dir so skills work, then run claude
+  const projectDir = __dirname.replace('/services', '');
+  const claudeCmd = `cd "${projectDir}" && claude --dangerously-skip-permissions "$(cat ${tmpFile})"`;
   // Escape for AppleScript string
   const escapedCmd = claudeCmd.replace(/"/g, '\\"');
 
