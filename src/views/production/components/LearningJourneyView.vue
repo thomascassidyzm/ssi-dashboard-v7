@@ -52,7 +52,7 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">Consolidation</span>
+          <span class="text-slate-300">Eternal</span>
         </div>
       </div>
 
@@ -149,16 +149,16 @@
                 class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center"
                 :class="getTypeBadgeClass(item.type)"
               >
-                {{ formatItemType(item.type, item.phrasePosition) }}
+                {{ formatItemType(item.type, item.phrasePosition, item.consolidationIndex) }}
               </div>
 
-              <!-- Review Badge (for spaced rep) -->
+              <!-- Review Badge (for spaced rep) - shows which round is being reviewed -->
               <div
                 v-if="item.type === 'spaced_rep'"
                 class="review-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
-                :title="item.isFirstRevisit ? 'First revisit (3x phrases)' : 'Fibonacci review'"
+                :title="`Reviewing Round ${item.reviewOf}`"
               >
-                {{ item.isFirstRevisit ? 'N-1' : `R${item.reviewOf}` }}
+                R{{ item.reviewOf }}
               </div>
 
               <!-- Content -->
@@ -232,6 +232,7 @@ interface ScriptItem {
   isFirstRevisit?: boolean
   fibonacciPosition?: number
   phrasePosition?: number
+  consolidationIndex?: number
 }
 
 interface RoundData {
@@ -300,14 +301,14 @@ const getLegoTargetText = (round: RoundData): string => {
   return debutItem?.target_text || ''
 }
 
-const formatItemType = (type: string, phrasePosition?: number): string => {
+const formatItemType = (type: string, phrasePosition?: number, consolidationIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
     case 'component': return 'Component'
     case 'debut': return 'LEGO'
     case 'debut_phrase': return phrasePosition ? `Debut-${phrasePosition}` : 'Debut'
     case 'spaced_rep': return 'Review'
-    case 'consolidation': return 'Consolidate'
+    case 'consolidation': return consolidationIndex ? `Eternal-${consolidationIndex}` : 'Eternal'
     default: return type
   }
 }

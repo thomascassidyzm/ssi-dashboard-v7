@@ -186,23 +186,23 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         target2_duration_ms: row.target2_duration_ms,
       }))
 
-      // Components = phrases with position 0 (for M-type LEGO build-up)
-      const componentPhrases = allPhrases.filter(p => p.phrase_type === 'component' || p.position === 0)
+      // Components = phrases marked as component in metadata (for M-type LEGO build-up)
+      const componentPhrases = allPhrases.filter(p => p.phrase_type === 'component')
       if (componentPhrases.length > 0) {
         componentMap.set(legoId, componentPhrases)
       }
 
-      // Filter out components for debut/eternal selection
-      const nonComponentPhrases = allPhrases.filter(p => p.phrase_type !== 'component' && p.position !== 0)
+      // Practice phrases only (exclude components AND the LEGO debut itself)
+      const practicePhrases = allPhrases.filter(p => p.phrase_type === 'practice')
 
-      // Debut = shortest 7 (already sorted by duration)
-      const debutPhrases = nonComponentPhrases.slice(0, 7)
+      // Debut = shortest 7 practice phrases (already sorted by duration)
+      const debutPhrases = practicePhrases.slice(0, 7)
       if (debutPhrases.length > 0) {
         debutMap.set(legoId, debutPhrases)
       }
 
-      // Eternal = longest 5 (take from end, reverse so longest first)
-      const eternalPhrases = nonComponentPhrases.slice(-5).reverse()
+      // Eternal = longest 5 practice phrases (take from end, reverse so longest first)
+      const eternalPhrases = practicePhrases.slice(-5).reverse()
       if (eternalPhrases.length > 0) {
         eternalMap.set(legoId, eternalPhrases)
       }

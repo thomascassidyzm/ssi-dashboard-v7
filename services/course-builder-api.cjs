@@ -2332,13 +2332,20 @@ app.post('/api/seed/complete', async (req, res) => {
     res.json({
       ok: true,
       seed: seedId,
+      status: 'INSERTED',  // Explicit: this seed is DONE
+      action: 'PROCEED TO NEXT SEED',  // Clear instruction
       known_text,
       target_text,
       legos: legos.length,
       duplicates_skipped: skippedDuplicates,
       phrases: totalPhrases,
       buildup_phrases: totalBuildupPhrases,
-      warnings: warnings.length > 0 ? warnings : undefined,
+
+      // Warnings are for FUTURE improvement, NOT for resubmission
+      warnings: warnings.length > 0 ? {
+        note: 'THESE ARE FOR YOUR NEXT SEED - this seed is already saved. Do NOT resubmit.',
+        items: warnings
+      } : undefined,
 
       // QUALITY REMINDER - reinforced on every successful submission
       quality_reminder: {
@@ -2352,12 +2359,15 @@ app.post('/api/seed/complete', async (req, res) => {
         mantra: 'If you catch yourself repeating a pattern, STOP and create something different.'
       },
 
-      // Always tell agent what's next
+      // YOUR NEXT TASK - proceed immediately
       next_seed: nextSeed ? {
+        instruction: 'BUILD THIS SEED NOW - do not resubmit the previous one',
         seed_number: nextSeed.seed_number,
         known_text: nextSeed.known_text,
         recency_hints: recencyHints
-      } : null
+      } : {
+        instruction: 'ALL SEEDS COMPLETE - say BATCH COMPLETE and exit'
+      }
     });
 
   } catch (err) {
