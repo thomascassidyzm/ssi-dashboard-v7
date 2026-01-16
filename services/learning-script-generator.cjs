@@ -337,9 +337,27 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // Normalization helpers
   const normalizePhrase = (text) => text?.toLowerCase().trim().replace(/[.,!?;:¡¿'"]+/g, '') || ''
 
-  // Generate each ROUND
-  for (let n = 1; n <= legos.length; n++) {
-    const currentLego = legos[n - 1]
+  // Build a map from round number to LEGO for spaced rep lookups
+  // Only NEW LEGOs get rounds - duplicates are skipped entirely
+  const roundToLegoMap = new Map()
+  let roundCounter = 0
+
+  // Generate each ROUND (only for NEW LEGOs)
+  for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
+    const currentLego = legos[legoIdx]
+
+    // Skip duplicate LEGOs - they don't need their own round
+    if (!currentLego.lego.new) {
+      logger.debug(`Skipping duplicate LEGO: ${currentLego.lego.id}`)
+      continue
+    }
+
+    roundCounter++
+    const n = roundCounter  // Current round number
+
+    // Map this round to its LEGO for spaced rep
+    roundToLegoMap.set(n, currentLego)
+
     const currentDebuts = debutMap.get(currentLego.lego.id) || []
     const currentEternals = eternalMap.get(currentLego.lego.id) || []
     const roundItems = []
@@ -350,7 +368,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     const baseItem = {
       roundNumber: n,
       legoId: currentLego.lego.id,
-      legoIndex: n,
+      legoIndex: legoIdx + 1,  // Original LEGO index (1-based)
       seedId: currentLego.seed.seed_id,
       seedNumber: currentLego.seed.seed_number,
       legoType: currentLego.lego.type,
@@ -423,11 +441,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
 
     // Phase 5: SPACED REP - Interleaved reviews from eternal phrases
+    // Reviews are based on round numbers, which now only include NEW LEGOs
     const reviews = calculateSpacedRepReviews(n)
     const reviewIndices = []
 
     for (const review of reviews) {
-      const reviewLego = legoMap.get(review.legoIndex)
+      const reviewLego = roundToLegoMap.get(review.legoIndex)
       if (!reviewLego) continue
 
       reviewIndices.push(review.legoIndex)
