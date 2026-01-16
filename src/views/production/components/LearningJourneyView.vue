@@ -35,12 +35,16 @@
           <span class="text-slate-300">Intro</span>
         </div>
         <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-pink-500"></span>
+          <span class="text-slate-300">Component</span>
+        </div>
+        <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span class="text-slate-300">Debut</span>
+          <span class="text-slate-300">LEGO</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-          <span class="text-slate-300">Debut Phrase</span>
+          <span class="text-slate-300">Debut</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-amber-500"></span>
@@ -48,7 +52,7 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">Consolidation</span>
+          <span class="text-slate-300">Eternal</span>
         </div>
       </div>
 
@@ -145,16 +149,16 @@
                 class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center"
                 :class="getTypeBadgeClass(item.type)"
               >
-                {{ formatItemType(item.type) }}
+                {{ formatItemType(item.type, item.phrasePosition, item.consolidationIndex) }}
               </div>
 
-              <!-- Review Badge (for spaced rep) -->
+              <!-- Review Badge (for spaced rep) - shows which round is being reviewed -->
               <div
                 v-if="item.type === 'spaced_rep'"
                 class="review-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
-                :title="item.isFirstRevisit ? 'First revisit (3x phrases)' : 'Fibonacci review'"
+                :title="`Reviewing Round ${item.reviewOf}`"
               >
-                {{ item.isFirstRevisit ? 'N-1' : `R${item.reviewOf}` }}
+                R{{ item.reviewOf }}
               </div>
 
               <!-- Content -->
@@ -220,13 +224,15 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'debut_phrase' | 'spaced_rep' | 'consolidation'
+  type: 'intro' | 'component' | 'debut' | 'debut_phrase' | 'spaced_rep' | 'consolidation'
   known_text: string
   target_text: string
   hasAudio: boolean
   reviewOf?: number
   isFirstRevisit?: boolean
   fibonacciPosition?: number
+  phrasePosition?: number
+  consolidationIndex?: number
 }
 
 interface RoundData {
@@ -295,13 +301,14 @@ const getLegoTargetText = (round: RoundData): string => {
   return debutItem?.target_text || ''
 }
 
-const formatItemType = (type: string): string => {
+const formatItemType = (type: string, phrasePosition?: number, consolidationIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
-    case 'debut': return 'Debut'
-    case 'debut_phrase': return 'Practice'
+    case 'component': return 'Component'
+    case 'debut': return 'LEGO'
+    case 'debut_phrase': return phrasePosition ? `Debut-${phrasePosition}` : 'Debut'
     case 'spaced_rep': return 'Review'
-    case 'consolidation': return 'Consolidate'
+    case 'consolidation': return consolidationIndex ? `Eternal-${consolidationIndex}` : 'Eternal'
     default: return type
   }
 }
@@ -309,6 +316,7 @@ const formatItemType = (type: string): string => {
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
     case 'intro': return 'bg-purple-500 bg-opacity-20 text-purple-400'
+    case 'component': return 'bg-pink-500 bg-opacity-20 text-pink-400'
     case 'debut': return 'bg-emerald-500 bg-opacity-20 text-emerald-400'
     case 'debut_phrase': return 'bg-blue-500 bg-opacity-20 text-blue-400'
     case 'spaced_rep': return 'bg-amber-500 bg-opacity-20 text-amber-400'

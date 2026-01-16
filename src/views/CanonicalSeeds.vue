@@ -1,47 +1,35 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
-    <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
-          <span>←</span>
-          <span>Back to Dashboard</span>
-        </router-link>
-        <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-3xl font-bold text-emerald-400">
-              Canonical Seeds
-            </h1>
-            <p class="mt-2 text-slate-400">
-              All {{ totalSeeds }} canonical seeds (16 years empirical optimization) • Single Source of Truth
-            </p>
-          </div>
-          <div class="flex items-center gap-4">
-            <button
-              v-if="!editing"
-              @click="editing = true"
-              class="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 rounded transition">
-              Edit Seeds
+  <div class="canonical-seeds-view">
+    <!-- Page Header (within DocsLayout) -->
+    <div class="page-header">
+      <div class="header-row">
+        <div>
+          <h1 class="page-title">Canonical Seeds</h1>
+          <p class="page-subtitle">
+            All {{ totalSeeds }} canonical seeds (16 years empirical optimization) - Single Source of Truth
+          </p>
+        </div>
+        <div class="header-actions">
+          <button
+            v-if="!editing"
+            @click="editing = true"
+            class="btn-edit">
+            Edit Seeds
+          </button>
+          <template v-if="editing">
+            <button @click="saveSeeds" class="btn-save">
+              Save Changes
             </button>
-            <template v-if="editing">
-              <button
-                @click="saveSeeds"
-                class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-semibold rounded transition">
-                Save Changes
-              </button>
-              <button
-                @click="cancelEdit"
-                class="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-slate-300 rounded transition">
-                Cancel
-              </button>
-            </template>
-          </div>
+            <button @click="cancelEdit" class="btn-cancel">
+              Cancel
+            </button>
+          </template>
         </div>
       </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="content-area">
 
       <!-- Loading State -->
       <div v-if="loading" class="flex items-center justify-center py-12">
@@ -149,11 +137,11 @@
                 <li><strong>Universal Concepts:</strong> Language-agnostic foundations that work across all languages</li>
               </ul>
 
-              <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Role in Pipeline</h3>
+              <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Role in Pipeline (v14)</h3>
               <p>Canonical seeds are the <strong>universal foundation</strong> for all courses:</p>
               <ul class="space-y-1">
-                <li><strong>Phase 1:</strong> Translated into target + known languages with LEGOs (outputs draft_lego_pairs.json)</li>
-                <li><strong>Phase 3:</strong> Basket Generation - creates practice phrases from LEGOs</li>
+                <li><strong>Course Builder:</strong> Translates seeds, extracts LEGOs, and generates practice phrases atomically</li>
+                <li><strong>Supabase:</strong> Seeds stored in course_seeds table (database-first architecture)</li>
                 <li><strong>Edit Propagation:</strong> Changes to seeds automatically propagate through all language directions</li>
               </ul>
             </div>
@@ -248,3 +236,84 @@ onMounted(() => {
 
 console.log('🌱 Canonical Seeds (SSoT) Loaded')
 </script>
+
+<style scoped>
+.canonical-seeds-view {
+  padding: 2rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-edit {
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.btn-save {
+  padding: 0.5rem 1rem;
+  background: #10b981;
+  color: #0f172a;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-save:hover {
+  background: #059669;
+}
+
+.btn-cancel {
+  padding: 0.5rem 1rem;
+  background: #475569;
+  color: #cbd5e1;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #334155;
+}
+
+.content-area {
+  max-width: 100%;
+}
+</style>

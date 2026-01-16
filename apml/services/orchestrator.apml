@@ -1,12 +1,12 @@
 # APML: Orchestrator Service
-# Version: 1.1.0 (2026-01-12)
+# Version: 1.2.0 (2026-01-15)
 # Status: CANONICAL - This is the source of truth
 # Type: SERVICE SPECIFICATION
 
 service Orchestrator:
   name: "SSi Automation Orchestrator"
-  purpose: "Coordinate multi-agent course generation and phase execution"
-  version: "1.1.0"
+  purpose: "Coordinate course creation and service mesh"
+  version: "1.2.0"
   port: 3456
   script: "services/orchestration/orchestrator.cjs"
 
@@ -18,14 +18,19 @@ service Orchestrator:
     The Orchestrator is the central coordination service for the SSi
     course production pipeline. It manages:
 
-    1. Multi-agent coordination for parallel course generation
-    2. Phase execution (Translation, LEGO extraction, Basket generation)
-    3. VFS (Virtual File System) management for course files
-    4. Git workflow for agent branches
-    5. Health monitoring for all services
+    1. Course creation (database-first - inserts into Supabase)
+    2. Service mesh coordination (proxying to phase servers)
+    3. Health monitoring for all services
+    4. Legacy VFS support for existing courses
 
-    The orchestrator does NOT handle audio generation directly -
-    that's delegated to Phase 8 (Audio Generator) and Phase 9 (Manifest).
+    **APML v14 Architecture (January 2026):**
+    - Course creation: Just inserts into Supabase `courses` table
+    - Content creation: Delegated to Course Builder API (port 3471)
+    - Audio generation: Phase 8 (port 3465)
+    - Manifest compilation: Phase 9 (port 3466)
+
+    The orchestrator does NOT handle content generation directly -
+    that's delegated to Course Builder API, Phase 8, and Phase 9.
 
   ## ==========================================================================
   ## ENDPOINTS
@@ -57,7 +62,11 @@ service Orchestrator:
 
     course_exists:
       path: "GET /api/courses/:courseCode/exists"
-      description: "Check if course exists"
+      description: "Check if course exists (database + VFS + S3)"
+      details: |
+        Checks Supabase first (source of truth), then VFS, then S3.
+        Returns existsDatabase, existsLocal, existsS3 flags.
+        Suggests next version (e.g., zho_for_eng_v2) if course exists.
 
     course_status:
       path: "GET /api/courses/:courseCode/status"
@@ -73,7 +82,20 @@ service Orchestrator:
 
     create_course:
       path: "POST /api/courses/create"
-      description: "Create a new course"
+      description: "Create a new course (DATABASE-FIRST, APML v14)"
+      details: |
+        Inserts into Supabase `courses` table only. No VFS directory creation.
+        Course Builder API (port 3471) handles all content creation via /api/seed/complete.
+        VFS directories are legacy artifacts - not needed for new courses.
+      request:
+        courseCode: "zho_for_eng"
+        displayName: "Chinese for English Speakers"
+        sourceLanguage: "eng"
+        targetLanguage: "zho"
+      response:
+        success: true
+        courseCode: "zho_for_eng"
+        message: "Course created. Use Course Builder to add content."
 
     sync_course:
       path: "POST /api/courses/:courseCode/sync"
@@ -518,10 +540,12 @@ service Orchestrator:
       path: "GET /masters/:courseCode/:phase"
       description: "Get master for phase"
 
-    ## Course Generation
+    ## Course Generation (DEPRECATED - use Course Builder API)
     generate_course:
       path: "POST /api/courses/generate"
-      description: "Generate new course"
+      description: "DEPRECATED - Was Phase 5 trigger, now use Course Builder API (port 3471)"
+      deprecated: true
+      replacement: "POST /api/seed/complete on port 3471 (Course Builder API)"
 
     ## Modes & Profiles
     modes_list:

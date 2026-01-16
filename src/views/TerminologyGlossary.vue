@@ -1,15 +1,11 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
-    <div class="max-w-5xl mx-auto">
-      <!-- Header -->
-      <div class="mb-8">
-        <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
-          ← Back to Dashboard
-        </router-link>
-        <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
-        <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2026-01-07 | APML v13 | Status: Current definitions (A-type/M-type terminology)</p>
-      </div>
+  <div class="terminology-view">
+    <!-- Page Header (within DocsLayout) -->
+    <div class="page-header">
+      <h1 class="page-title">Terminology Glossary</h1>
+      <p class="page-subtitle">Single source of truth for all SSi Course Production terminology</p>
+      <p class="page-meta">Date: 2026-01-15 | APML v14 | Status: Current definitions (A-type/M-type terminology)</p>
+    </div>
 
       <!-- Quick Reference -->
       <div class="bg-emerald-900/20 border border-emerald-500/50 rounded-lg p-6 mb-12">
@@ -486,10 +482,39 @@
         </div>
       </section>
 
-    </div>
   </div>
 </template>
 
 <script setup>
 // Pure presentation component - no logic needed
 </script>
+
+<style scoped>
+.terminology-view {
+  padding: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.page-meta {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+</style>

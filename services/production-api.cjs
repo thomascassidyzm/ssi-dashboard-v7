@@ -1630,15 +1630,15 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
     let samplesToRegenerate = audioSamples || []
 
-    // If flaggedOnly, filter to only flagged samples
+    // If flaggedOnly, filter to only flagged samples (using NEW audio_flags table)
     if (flaggedOnly && samplesToRegenerate.length > 0) {
       const uuids = samplesToRegenerate.map(s => s.id)
       const { data: flags } = await supabaseClient.getClient()
-        .from('sample_flags')
+        .from('audio_flags')
         .select('audio_uuid')
         .eq('course_code', courseCode)
         .in('audio_uuid', uuids)
-        .in('status', ['flagged_regen_tts', 'pending_regen'])
+        .eq('status', 'flagged')
 
       const flaggedUuids = new Set((flags || []).map(f => f.audio_uuid))
       samplesToRegenerate = samplesToRegenerate.filter(s => flaggedUuids.has(s.id))
@@ -2900,10 +2900,10 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       legosQuery = legosQuery.lte('seed_number', endNum)
     }
 
-    // Also query sample_flags for this course
+    // Query audio_flags for this course (NEW simplified system)
     const flagsQuery = supabase
-      .from('sample_flags')
-      .select('audio_uuid, status, notes, flagged_by, flagged_at')
+      .from('audio_flags')
+      .select('audio_uuid, status, reason, flagged_by, created_at, regen_count')
       .eq('course_code', courseCode)
 
     // Run all queries in parallel
@@ -2924,14 +2924,15 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     const legosData = legosResult.data || []
     const flagsData = flagsResult.data || []
 
-    // Build flags lookup map: audio_uuid -> { status, notes, flagged_by, flagged_at }
+    // Build flags lookup map: audio_uuid -> { status, notes, flagged_by, flagged_at, regen_count }
     const flagsMap = new Map()
     for (const flag of flagsData) {
       flagsMap.set(flag.audio_uuid, {
         status: flag.status,
-        notes: flag.notes,
+        notes: flag.reason, // Map to old field name for compatibility
         flagged_by: flag.flagged_by,
-        flagged_at: flag.flagged_at
+        flagged_at: flag.created_at, // Map to old field name for compatibility
+        regen_count: flag.regen_count || 0
       })
     }
 
@@ -2999,9 +3000,9 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       const knownFlag = cycle.known_audio_uuid ? flagsMap.get(cycle.known_audio_uuid) : null
       const target1Flag = cycle.target1_audio_uuid ? flagsMap.get(cycle.target1_audio_uuid) : null
       const target2Flag = cycle.target2_audio_uuid ? flagsMap.get(cycle.target2_audio_uuid) : null
-      // Only count as flagged if status is 'pending_regen'
-      const isPendingRegen = (flag) => flag?.status === 'pending_regen'
-      const anyFlagged = isPendingRegen(knownFlag) || isPendingRegen(target1Flag) || isPendingRegen(target2Flag)
+      // Only count as flagged if status is 'flagged' (new audio_flags table)
+      const isFlagged = (flag) => flag?.status === 'flagged'
+      const anyFlagged = isFlagged(knownFlag) || isFlagged(target1Flag) || isFlagged(target2Flag)
 
       // Add phrase
       legoEntry.phrases.push({

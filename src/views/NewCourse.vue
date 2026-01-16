@@ -349,9 +349,9 @@
                 <div class="text-sm">
                   <p class="text-emerald-300 font-medium mb-2">What happens next?</p>
                   <ul class="text-slate-400 space-y-1">
-                    <li>• Course structure will be created</li>
+                    <li>• Course will be created in the database</li>
                     <li>• You'll be redirected to the course editor</li>
-                    <li>• Start generating content through the pipeline</li>
+                    <li>• Use Course Builder to add seeds, LEGOs and phrases</li>
                   </ul>
                 </div>
               </div>
@@ -714,7 +714,7 @@ const getModeName = (modeId) => {
   return mode ? `${mode.name} (${mode.seeds} seeds)` : modeId
 }
 
-// Create Course
+// Create Course (APML v14 - Database-first, Course Builder)
 const createCourse = async () => {
   creating.value = true
 
@@ -733,23 +733,12 @@ const createCourse = async () => {
 
     console.log('Creating course with data:', courseData)
 
-    // Step 1: Create course directory structure
+    // Create course in Supabase (database-first)
     await apiClient.post('/api/courses/create', courseData)
 
-    // Step 2: Trigger the production pipeline (Phase 1 → Phase 2 → Phase 3 → etc.)
-    console.log('Triggering production pipeline...')
-    await apiClient.post('/api/courses/generate', {
-      courseCode: computedCourseCode.value,
-      target: formData.value.targetLanguage,
-      known: formData.value.sourceLanguage,
-      startSeed: formData.value.seedStart,
-      endSeed: formData.value.seedEnd,
-      mode: selectedMode.value,
-      phaseSelection: 'phase1'  // Start with Phase 1
-    })
-
-    // Success - redirect to production page to monitor progress
-    router.push(`/production/${computedCourseCode.value}`)
+    // Success - redirect to course editor
+    // Course Builder API will be used to add content
+    router.push(`/courses/${computedCourseCode.value}`)
   } catch (error) {
     console.error('Failed to create course:', error)
     alert('Failed to create course. Please try again.')

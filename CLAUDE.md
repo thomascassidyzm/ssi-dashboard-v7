@@ -594,6 +594,17 @@ POST /api/seed/complete
 
 **On Failure**: Nothing inserted, clear error message with fix suggestions.
 
+**⚠️ After Context Compaction**: If your context was compacted mid-task:
+1. Run `/course-resume` skill OR call `GET /api/resume/:courseCode`
+2. This gives you the exact next seed - do NOT guess from memory
+3. Continue from `next_seed` in the response
+
+**Related Skills:**
+- `/course-resume` - Full recovery guide after compaction
+- `/ssi-decompose-seed` - How to break seeds into LEGOs
+- `/ssi-build-phrases` - How to generate practice phrases
+- `/ssi-phrase-variety` - Phrase tier requirements
+
 ---
 
 ## 🔀 Git Workflow & Recent Changes

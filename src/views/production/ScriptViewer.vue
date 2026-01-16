@@ -1259,6 +1259,10 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 // Lifecycle
 onMounted(() => {
+  // Check for filter query param (from QA link)
+  if (route.query.filter === 'flagged') {
+    filterFlaggedOnly.value = true;
+  }
   loadCourseData();
   window.addEventListener('keydown', handleKeydown);
 });

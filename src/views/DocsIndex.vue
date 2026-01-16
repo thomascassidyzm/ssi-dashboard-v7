@@ -7,18 +7,8 @@
       <div class="glow-orb glow-orb-2"></div>
     </div>
 
-    <!-- Header -->
+    <!-- Page Title (navigation handled by DocsLayout) -->
     <header class="docs-header">
-      <div class="header-inner">
-        <div class="header-left">
-          <router-link to="/" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <span>Back to Mission Control</span>
-          </router-link>
-        </div>
-      </div>
       <div class="header-titles">
         <div class="title-mark">
           <svg viewBox="0 0 40 40" class="title-icon">
@@ -28,7 +18,7 @@
           </svg>
         </div>
         <div>
-          <h1 class="page-title">Documentation</h1>
+          <h1 class="page-title">Documentation Hub</h1>
           <p class="page-subtitle">Reference materials, specifications, and system architecture</p>
         </div>
       </div>
@@ -45,7 +35,7 @@
 
         <div class="docs-grid">
           <!-- APML Specification -->
-          <router-link to="/reference/apml" class="doc-card card-apml">
+          <router-link to="/docs/apml" class="doc-card card-apml">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -75,7 +65,7 @@
           </router-link>
 
           <!-- Pedagogical Model -->
-          <router-link to="/reference/pedagogy" class="doc-card card-pedagogy">
+          <router-link to="/docs/pedagogy" class="doc-card card-pedagogy">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -104,7 +94,7 @@
           </router-link>
 
           <!-- Terminology Glossary -->
-          <router-link to="/reference/terminology" class="doc-card card-glossary">
+          <router-link to="/docs/terminology" class="doc-card card-glossary">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -143,7 +133,7 @@
 
         <div class="docs-grid">
           <!-- Canonical Seeds -->
-          <router-link to="/reference/seeds" class="doc-card card-seeds">
+          <router-link to="/docs/seeds" class="doc-card card-seeds">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -173,7 +163,7 @@
           </router-link>
 
           <!-- Canonical Content -->
-          <router-link to="/reference/canonical" class="doc-card card-content-ref">
+          <router-link to="/docs/canonical" class="doc-card card-content-ref">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -201,7 +191,7 @@
           </router-link>
 
           <!-- Process Overview -->
-          <router-link to="/reference/overview" class="doc-card card-architecture">
+          <router-link to="/docs/pipeline" class="doc-card card-architecture">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">

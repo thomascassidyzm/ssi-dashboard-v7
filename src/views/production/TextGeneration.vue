@@ -6,6 +6,49 @@
         Build course content using the Course Builder agent
       </p>
 
+      <!-- Language Selection (Create Mode) -->
+      <section v-if="isCreateMode" class="bg-slate-800/30 border border-emerald-500/30 rounded-lg p-6">
+        <h2 class="text-sm font-medium text-emerald-400 uppercase tracking-wide mb-4">New Course</h2>
+
+        <div class="grid grid-cols-2 gap-6">
+          <!-- Source Language (Known) -->
+          <div>
+            <label class="block text-xs text-slate-500 mb-2">Known Language (Learning FROM)</label>
+            <select
+              v-model="sourceLanguage"
+              class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            >
+              <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+              <option v-for="lang in languages" :key="lang.code" :value="lang.code">
+                {{ lang.name }} ({{ lang.code }})
+              </option>
+            </select>
+          </div>
+
+          <!-- Target Language -->
+          <div>
+            <label class="block text-xs text-slate-500 mb-2">Target Language (Learning TO)</label>
+            <select
+              v-model="targetLanguage"
+              class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            >
+              <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+              <option v-for="lang in languages" :key="lang.code" :value="lang.code">
+                {{ lang.name }} ({{ lang.code }})
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Course Code Preview -->
+        <div v-if="computedCourseCode" class="mt-4 bg-emerald-900/20 border border-emerald-500/20 rounded-lg p-3">
+          <p class="text-sm">
+            <span class="text-slate-400">Course code:</span>
+            <span class="text-emerald-400 font-mono ml-2">{{ computedCourseCode }}</span>
+          </p>
+        </div>
+      </section>
+
       <!-- Configuration -->
       <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6">
         <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide mb-4">Configuration</h2>
@@ -48,6 +91,7 @@
               </button>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -187,12 +231,35 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps({
   courseCode: {
     type: String,
-    required: true
+    default: 'new'
   }
+})
+
+// Create mode detection
+const isCreateMode = computed(() => props.courseCode === 'new')
+
+// Language selection state
+const sourceLanguage = ref('eng')  // Default to English as known language
+const targetLanguage = ref('')
+const languages = ref([])
+const languagesLoading = ref(true)
+
+// Computed course code from language selection
+const computedCourseCode = computed(() => {
+  if (!sourceLanguage.value || !targetLanguage.value) return ''
+  return `${targetLanguage.value}_for_${sourceLanguage.value}`
+})
+
+// Effective course code (from prop or computed)
+const effectiveCourseCode = computed(() => {
+  return isCreateMode.value ? computedCourseCode.value : props.courseCode
 })
 
 // Configuration
@@ -210,6 +277,8 @@ const engines = [
   { id: 'terminal', label: 'Terminal', description: 'Pro Max #2' },
   { id: 'browser', label: 'Safari', description: 'Browser' }
 ]
+
+// Model is always Opus 4.5 (Sonnet produces poor quality - formulaic, repetitive patterns)
 
 // Progress state
 const progress = ref({
@@ -266,27 +335,53 @@ function addEvent(message) {
 }
 
 async function fetchProgress() {
-  try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const response = await fetch(`${builderApiUrl}/api/stats/${props.courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return  // Skip if no course selected yet
 
-    if (response.ok) {
-      const data = await response.json()
+  try {
+    // Use relative URL for remote access (orchestrator proxies to course builder)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
+
+    // Fetch both stats and build status in parallel
+    const [statsResponse, buildResponse] = await Promise.all([
+      fetch(`${builderApiUrl}/api/stats/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      }),
+      fetch(`${builderApiUrl}/api/build/status/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    ])
+
+    if (statsResponse.ok) {
+      const data = await statsResponse.json()
+      const totalSeeds = data.total_seeds || seedCount.value
+
       progress.value = {
         ...progress.value,
-        currentSeed: data.seeds || 0,
-        totalSeeds: seedCount.value,
+        currentSeed: data.seeds_with_legos || data.seeds || 0,
+        totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
         phrasesInserted: data.phrases || 0
       }
 
-      // Update status based on progress
-      if (data.seeds >= seedCount.value && data.seeds > 0) {
-        progress.value.status = 'complete'
-      } else if (data.seeds === 0 && progress.value.status === 'complete') {
-        // Course was reset externally - go back to idle
+      // Check build status for running state
+      if (buildResponse.ok) {
+        const buildData = await buildResponse.json()
+        if (buildData.active) {
+          progress.value.status = 'running'
+          progress.value.agentCount = buildData.build?.agent_count || 0
+          progress.value.batchSeeds = buildData.build?.current_batch_seeds || 0
+        } else if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
+          progress.value.status = 'complete'
+        } else if (progress.value.status === 'running') {
+          // Build finished or was stopped
+          progress.value.status = 'idle'
+        }
+      }
+
+      // Handle external reset
+      if (data.seeds === 0 && progress.value.status === 'complete') {
         progress.value.status = 'idle'
       }
     }
@@ -296,28 +391,73 @@ async function fetchProgress() {
 }
 
 async function startBuilder() {
+  const courseCode = effectiveCourseCode.value
+
+  // Validate in create mode
+  if (isCreateMode.value && !courseCode) {
+    addEvent('Error: Please select both languages')
+    return
+  }
+
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/courses/generate`, {
+    // Use relative URL for remote access (orchestrator proxies all APIs)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
+
+    // If in create mode, create the course first
+    if (isCreateMode.value) {
+      addEvent(`Creating course ${courseCode}...`)
+
+      const createResponse = await fetch(`${apiBase}/api/courses/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
+        body: JSON.stringify({
+          courseCode,
+          sourceLanguage: sourceLanguage.value,
+          targetLanguage: targetLanguage.value,
+          seedStart: 1,
+          seedEnd: seedCount.value
+        })
+      })
+
+      if (!createResponse.ok) {
+        const err = await createResponse.json()
+        throw new Error(err.error || 'Failed to create course')
+      }
+
+      addEvent(`Course ${courseCode} created`)
+    }
+
+    // Map engine selection to terminal name
+    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
+    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
+
+    // Start the course builder via Build Manager (30-seed batch agents)
+    const response = await fetch(`${builderApiUrl}/api/build/start/${courseCode}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({
-        courseCode: props.courseCode,
-        buildMode: 'course-builder',
-        spawnerMode: agentEngine.value,
-        seedCount: seedCount.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
-      })
+      body: JSON.stringify({ terminal })
     })
 
-    if (!response.ok) throw new Error('Failed to start course builder')
+    const result = await response.json()
+    if (!result.ok) throw new Error(result.error || 'Failed to start course builder')
 
     progress.value.status = 'running'
-    progress.value.totalSeeds = seedCount.value
-    addEvent(`Started Course Builder (${seedCount.value} seeds)`)
+    progress.value.totalSeeds = result.progress?.total || seedCount.value
+    progress.value.currentSeed = result.progress?.completed || 0
+    addEvent(`Started Course Builder (${result.progress?.total || seedCount.value} seeds, 30-seed batch agents)`)
+
+    // Navigate to the course page if we created a new one
+    if (isCreateMode.value) {
+      router.push(`/production/${courseCode}/text`)
+    }
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
@@ -327,14 +467,17 @@ async function startBuilder() {
 
 async function stopBuilder() {
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    await fetch(`${apiBase}/api/cancel/${props.courseCode}`, {
+    // Use relative URL for remote access (orchestrator proxies to course builder)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
+    const response = await fetch(`${builderApiUrl}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
+    const result = await response.json()
     progress.value.status = 'idle'
-    addEvent('Course Builder stopped')
+    addEvent(`Course Builder stopped (${result.agents_used || 0} agents used)`)
 
   } catch (error) {
     console.error('Failed to stop builder:', error)
@@ -371,10 +514,42 @@ function stopPolling() {
   isPolling.value = false
 }
 
+// Load languages from API
+async function loadLanguages() {
+  languagesLoading.value = true
+  try {
+    // Use relative URL for remote access (orchestrator proxies all APIs)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
+    const response = await fetch(`${apiBase}/api/languages`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      languages.value = await response.json()
+    }
+  } catch (error) {
+    console.error('Failed to load languages:', error)
+    // Fallback
+    languages.value = [
+      { code: 'eng', name: 'English' },
+      { code: 'deu', name: 'German' },
+      { code: 'spa', name: 'Spanish' },
+      { code: 'fra', name: 'French' },
+      { code: 'zho', name: 'Chinese' },
+      { code: 'jpn', name: 'Japanese' }
+    ]
+  } finally {
+    languagesLoading.value = false
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   startPolling()
   addEvent('Text Generation view loaded')
+  if (isCreateMode.value) {
+    loadLanguages()
+  }
 })
 
 onUnmounted(() => {

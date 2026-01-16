@@ -4,7 +4,20 @@
 
 Build a language course for **[TARGET_LANGUAGE]** for English speakers.
 
-Work through the 260 seed sentences. For each, add LEGOs and phrases using your language knowledge.
+Work through ALL 260 seed sentences. For each, add LEGOs and phrases using your language knowledge.
+
+---
+
+## AUTONOMY: DO NOT STOP TO ASK
+
+**CRITICAL**: Complete ALL seeds autonomously without stopping to ask for confirmation.
+
+- Do NOT pause between batches to ask "should I continue?"
+- Do NOT ask "would you like me to proceed with the next seeds?"
+- Just keep going until all 260 seeds are complete
+- Only stop if you encounter an ERROR you cannot resolve
+
+The validation API will catch any issues. Trust it and keep building.
 
 ---
 
@@ -126,7 +139,7 @@ When posting the final LEGO, set `"is_final_lego": true` and ensure the complete
 
 ## Process
 
-**Work in batches of 20-30 seeds.**
+**One seed at a time, all 260 seeds.**
 
 For each seed:
 1. **Translate** the full seed sentence naturally
@@ -184,12 +197,22 @@ Baskets with < 7 phrases are rejected. Baskets with 7+ but missing ETERNAL phras
 
 ---
 
-## Recovery (If Interrupted)
+## Recovery (If Interrupted or Context Compacted)
 
-1. `GET /api/stats/:courseCode` - see progress (seeds, LEGOs, phrases, ratio)
-2. `GET /api/vocab/:courseCode` - see available vocabulary
-3. `GET /api/seeds/:courseCode` - see which seeds have translations
-4. Continue from the next incomplete seed
+**IMPORTANT**: After context compaction, ALWAYS call this endpoint first:
+
+```
+GET http://localhost:3471/api/resume/:courseCode
+```
+
+This returns EVERYTHING you need to continue:
+- `next_seed`: The exact seed number and known_text to work on next
+- `recent_seeds`: Last 5 completed seeds (for translation style reference)
+- `recent_legos`: Last 20 new LEGOs (for phrase generation vocabulary)
+- `progress`: Percentage complete
+- `vocab_size`: Current vocabulary
+
+**Do NOT guess or invent seeds after compaction.** The resume endpoint gives you the canonical seed text.
 
 ---
 
@@ -197,6 +220,8 @@ Baskets with < 7 phrases are rejected. Baskets with 7+ but missing ETERNAL phras
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
+| /api/resume/:code | GET | **Recovery after compaction** |
+| /api/seed/complete | POST | Submit complete seed (golden path) |
 | /api/lego | POST | Insert single LEGO with phrases |
 | /api/batch | POST | Insert multiple LEGOs |
 | /api/seed/:code/:num | PATCH | Save seed translation |

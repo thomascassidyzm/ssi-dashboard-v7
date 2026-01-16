@@ -11,6 +11,13 @@
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
             <p class="text-slate-400">Browse and edit existing courses</p>
           </div>
+          <router-link
+            to="/production/new/text"
+            class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+          >
+            <span class="text-lg">+</span>
+            <span>New Course</span>
+          </router-link>
         </div>
       </div>
 
@@ -43,10 +50,10 @@
         <div v-else class="text-slate-400 mb-4">No courses found</div>
         <router-link
           v-if="!searchQuery"
-          to="/generate"
+          to="/production/new/text"
           class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-lg transition-colors"
         >
-          Generate Your First Course
+          Create Your First Course
         </router-link>
       </div>
 
@@ -96,7 +103,7 @@
               <div class="text-slate-500 text-xs mb-1">Seeds</div>
               <div class="font-mono">
                 <span class="text-emerald-400">{{ course.seed_pairs || 0 }}</span>
-                <span class="text-slate-500"> / 260</span>
+                <span class="text-slate-500"> / {{ course.total_seeds || 668 }}</span>
               </div>
             </div>
             <!-- LEGOs -->

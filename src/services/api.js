@@ -5,14 +5,17 @@ import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
-// API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
+// API Base URL - use relative URLs when accessed remotely (via ngrok, etc.)
 function getApiBaseUrl() {
+  // If accessed via ngrok or other remote URL, use relative paths (orchestrator proxies all APIs)
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return ''  // Relative URL - goes through same origin
+  }
   // Check localStorage for user-selected environment
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
-
   // Fall back to environment variable or default
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
@@ -21,6 +24,10 @@ function getApiBaseUrl() {
 // NOTE: Production API runs on port 3470, but orchestrator (3456) proxies /api/production/* to it
 // Always use orchestrator URL so everything works through ngrok tunnel
 function getProductionApiUrl() {
+  // If accessed via ngrok or other remote URL, use relative paths
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return ''  // Relative URL - goes through same origin
+  }
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
@@ -424,9 +431,9 @@ export default {
         }
 
         // Transform API response to expected format
-        // Stats: { seeds, legos, baskets, phrases, introductions, audio }
+        // Stats: { seeds, completedSeeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
-          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+          const stats = contentStats[course.code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
           return {
             course_code: course.code,
             source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
@@ -435,7 +442,7 @@ export default {
             version: '1.0',
             created_at: new Date().toISOString(),
             status: course.complete ? 'complete' : 'in_progress',
-            seed_pairs: stats.seeds,
+            seed_pairs: stats.completedSeeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
             phrases: stats.phrases,
@@ -444,7 +451,7 @@ export default {
               introductions: stats.introductions
             },
             phases_completed: [
-              ...(stats.seeds > 0 ? ['1'] : []),
+              ...(stats.completedSeeds > 0 ? ['1'] : []),
               ...(stats.legos > 0 ? ['3'] : []),
               ...(stats.baskets > 0 ? ['5'] : []),
               ...(stats.introductions > 0 ? ['6'] : []),

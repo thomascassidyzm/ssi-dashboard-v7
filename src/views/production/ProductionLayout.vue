@@ -9,6 +9,7 @@
         <!-- Tabs inline in header -->
         <nav class="header-tabs">
           <router-link
+            v-if="!isCreateMode"
             :to="`/production/${courseCode}`"
             class="tab-item"
             :class="{ active: isActiveRoute('ProductionDashboard') }"
@@ -16,13 +17,14 @@
             Overview
           </router-link>
           <router-link
-            :to="`/production/${courseCode}/text`"
+            :to="isCreateMode ? `/production/new/text` : `/production/${courseCode}/text`"
             class="tab-item"
             :class="{ active: isActiveRoute('TextGeneration') }"
           >
             Text
           </router-link>
           <router-link
+            v-if="!isCreateMode"
             :to="`/production/${courseCode}/pipeline`"
             class="tab-item"
             :class="{ active: isActiveRoute('AudioPipelineProduction') }"
@@ -30,6 +32,7 @@
             Audio
           </router-link>
           <router-link
+            v-if="!isCreateMode"
             :to="`/production/${courseCode}/recording`"
             class="tab-item"
             :class="{ active: isActiveRoute('AutocueStudioCourse') }"
@@ -37,9 +40,10 @@
             Recording
           </router-link>
           <router-link
-            :to="`/production/${courseCode}/qa`"
+            v-if="!isCreateMode"
+            :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
             class="tab-item"
-            :class="{ active: isActiveRoute('SamplesBrowser') }"
+            :class="{ active: isActiveRoute('ScriptViewer') && $route.query.filter === 'flagged' }"
           >
             QA
           </router-link>
@@ -51,8 +55,8 @@
             class="course-button"
             @click="toggleDropdown"
           >
-            <span class="course-code">{{ courseCode }}</span>
-            <span class="course-name">{{ courseName }}</span>
+            <span class="course-code" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? '+ New' : courseCode }}</span>
+            <span class="course-name" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? 'Create Course' : courseName }}</span>
             <svg class="dropdown-arrow" :class="{ open: dropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -68,6 +72,15 @@
               @keydown.escape="closeDropdown"
             />
             <div class="course-list">
+              <!-- New Course Option -->
+              <button
+                class="course-option new-course-option"
+                @click="createNewCourse"
+              >
+                <span class="option-code text-emerald-400">+ New</span>
+                <span class="option-name text-emerald-400">Create Course</span>
+              </button>
+              <div class="course-list-divider"></div>
               <button
                 v-for="course in filteredCourses"
                 :key="course.code"
@@ -128,6 +141,9 @@ const loading = ref(false)
 const error = ref(null)
 const courseName = ref('')
 const courses = ref([])
+
+// Create mode detection
+const isCreateMode = computed(() => props.courseCode === 'new')
 
 // Dropdown state
 const dropdownOpen = ref(false)
@@ -197,6 +213,12 @@ function switchCourse(newCode) {
   }
 }
 
+// Create new course - go to TextGeneration in create mode
+function createNewCourse() {
+  closeDropdown()
+  router.push('/production/new/text')
+}
+
 // Close dropdown when clicking outside
 function handleClickOutside(event) {
   if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
@@ -226,7 +248,7 @@ async function loadCourses() {
 
 // Load course data
 async function loadCourseData() {
-  if (!props.courseCode) return
+  if (!props.courseCode || isCreateMode.value) return
 
   loading.value = true
   error.value = null
@@ -450,6 +472,16 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   text-align: center;
   color: var(--color-paper-dim, #c1c1bb);
   font-size: 0.875rem;
+}
+
+.course-list-divider {
+  height: 1px;
+  background: var(--color-shadow, #1e293b);
+  margin: 0.25rem 0;
+}
+
+.new-course-option:hover {
+  background: rgba(16, 185, 129, 0.1);
 }
 
 /* Content */

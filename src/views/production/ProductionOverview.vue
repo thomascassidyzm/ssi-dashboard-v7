@@ -144,7 +144,9 @@ const courseStats = ref({
 // Fetch course stats from Course Builder API
 async function fetchCourseStats() {
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    // Use relative URL for remote access (orchestrator proxies to course builder)
+    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
     const response = await fetch(`${builderApiUrl}/api/stats/${props.courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -237,10 +239,11 @@ function handleResolveBlocker(blocker) {
       })
       break
     case 'reviewSamples':
+    case 'reviewFlaggedAudio':
       router.push({
-        name: 'SamplesBrowser',
+        name: 'ScriptViewer',
         params: { courseCode: props.courseCode },
-        query: { filter: 'needs_review' }
+        query: { filter: 'flagged' }
       })
       break
   }
@@ -259,9 +262,9 @@ function handleQuickAction(actionId) {
       break
     case 'review_samples':
       router.push({
-        name: 'SamplesBrowser',
+        name: 'ScriptViewer',
         params: { courseCode: props.courseCode },
-        query: { filter: 'needs_review' }
+        query: { filter: 'flagged' }
       })
       break
     case 'record_human':
@@ -311,7 +314,9 @@ function launchLearningApp() {
 }
 
 function exportLegacyManifest() {
-  const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  // Use relative URL for remote access (orchestrator handles the request)
+  const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+  const apiBase = isRemote ? '' : (localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
   window.open(`${apiBase}/api/manifest/${props.courseCode}?format=legacy&download=true`, '_blank')
 }
 </script>

@@ -370,9 +370,14 @@ Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner inf
 ## Workflow
 
 1. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - check progress
-2. \`GET ${builderApiUrl}/api/seeds?limit=${seedCount}\` - get seed texts
-3. For each seed: translate, decompose, generate phrases, submit via curl
+2. \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\` - get seeds with English text
+3. For each seed in the response: translate, decompose, generate phrases, submit via curl
 4. On error: read the message, fix, resubmit
+
+**The /translate endpoint returns:**
+- \`canonical_english\`: The English seed text (with language name substituted)
+- \`needs_target\`: true if you need to provide target language translation
+- Seeds are pre-initialized in the database
 
 **NEVER write scripts or batch processors. Do the linguistic work directly via curl.**
 
