@@ -339,16 +339,16 @@ async function fetchProgress() {
   if (!courseCode) return  // Skip if no course selected yet
 
   try {
-    // Use relative URL for remote access (orchestrator proxies to course builder)
-    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    // Orchestrator proxies /api/stats/* and /api/build/* to Course Builder API
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
     // Fetch both stats and build status in parallel
     const [statsResponse, buildResponse] = await Promise.all([
-      fetch(`${builderApiUrl}/api/stats/${courseCode}`, {
+      fetch(`${apiBase}/api/stats/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       }),
-      fetch(`${builderApiUrl}/api/build/status/${courseCode}`, {
+      fetch(`${apiBase}/api/build/status/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
     ])
@@ -400,10 +400,9 @@ async function startBuilder() {
   }
 
   try {
-    // Use relative URL for remote access (orchestrator proxies all APIs)
-    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
-    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    // Orchestrator proxies /api/stats/* and /api/build/* to Course Builder API
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
     // If in create mode, create the course first
     if (isCreateMode.value) {
@@ -437,7 +436,7 @@ async function startBuilder() {
     const terminal = terminalMap[agentEngine.value] || 'iTerm2'
 
     // Start the course builder via Build Manager (30-seed batch agents)
-    const response = await fetch(`${builderApiUrl}/api/build/start/${courseCode}`, {
+    const response = await fetch(`${apiBase}/api/build/start/${courseCode}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -467,10 +466,9 @@ async function startBuilder() {
 
 async function stopBuilder() {
   try {
-    // Use relative URL for remote access (orchestrator proxies to course builder)
-    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
-    const response = await fetch(`${builderApiUrl}/api/build/stop/${effectiveCourseCode.value}`, {
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -518,9 +516,8 @@ function stopPolling() {
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    // Use relative URL for remote access (orchestrator proxies all APIs)
-    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const apiBase = isRemote ? '' : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/languages`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })

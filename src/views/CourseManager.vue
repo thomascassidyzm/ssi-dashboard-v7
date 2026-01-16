@@ -1002,7 +1002,7 @@ async function fetchProgress() {
 
   // Phases mode: poll orchestrator progress
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/courses/${code}/progress`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1098,7 +1098,7 @@ async function createCourse() {
   const newCode = `${targetLang.value}_for_${knownLang.value}`
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/courses/create`, {
       method: 'POST',
       headers: {
@@ -1139,7 +1139,7 @@ async function fetchPreview() {
   previewError.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
     const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -1184,7 +1184,7 @@ async function startPhase() {
   closePreview()
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/courses/generate`, {
       method: 'POST',
       headers: {
@@ -1219,7 +1219,7 @@ async function startCourseBuilder() {
   if (!code) return
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${apiBase}/api/courses/generate`, {
       method: 'POST',
       headers: {
@@ -1264,7 +1264,7 @@ async function stopJob() {
   stopRequestedAt.value = Date.now()
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
     // Send cancel to orchestrator
     await fetch(`${apiBase}/api/cancel/${code}`, {
@@ -1301,7 +1301,7 @@ async function forceKill() {
   if (!code) return
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     await fetch(`${apiBase}/api/force-kill/${code}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
