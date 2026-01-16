@@ -276,11 +276,105 @@ Learner sees:
 They figure out 吗 = question marker from the contrast!
 ```
 
+## Chinese Course Examples (Seeds 25-40)
+
+These examples show what YOUR content becomes. Study the structure!
+
+### A-LEGO Round: "need to" → "要" (S0025L05)
+
+```
+ROUND 47 - Introducing A-LEGO "need to" → "要"
+
+INTRO: need to → 要
+
+LEGO: need to → 要
+
+DEBUT PHRASES (SHORT → MEDIUM → LONG):
+  [SHORT]  need to → 要
+  [SHORT]  need to go → 要走
+  [SHORT]  need to learn → 要学
+  [SHORT]  I need to go → 我要走
+  [SHORT]  I need to learn → 我要学
+  [MEDIUM] I need to speak Chinese today → 我今天要说中文
+  [MEDIUM] she needs to learn Chinese now → 她现在要学中文
+  [LONG]   he needs to learn Chinese with us today → 他今天要和我们学中文
+  [LONG]   we need to speak more Chinese before we go → 我们走之前要多说中文
+  [LONG]   she needs to start speaking Chinese with us today → 她今天要和我们开始说中文
+  [LONG]   I need to help you learn Chinese before I go → 我走之前要帮你学中文
+
+REVIEW (from earlier rounds):
+  R46: I feel like learning Chinese with you → 我感觉想和你学中文
+  R45: she likes speaking Chinese → 她喜欢说中文
+  R42: I want to go before he starts speaking → 我想在他开始说之前走
+  R38: we like learning together → 我们喜欢一起学
+
+ETERNAL (longest phrases for spaced repetition):
+  I need to help you learn Chinese before I go → 我走之前要帮你学中文
+  she needs to start speaking Chinese with us today → 她今天要和我们开始说中文
+```
+
+### M-LEGO Round: "as if" → "好像" (S0026L03)
+
+```
+ROUND 51 - Introducing M-LEGO "as if" → "好像"
+
+INTRO: as if → 好像
+
+COMPONENTS (taught BEFORE the M-LEGO):
+  good → 好
+  like → 像
+
+LEGO: as if → 好像
+
+DEBUT PHRASES (SHORT → MEDIUM → LONG):
+  [SHORT]  good → 好
+  [SHORT]  like → 像
+  [SHORT]  as if → 好像
+  [SHORT]  you seem like → 你好像
+  [SHORT]  it seems like → 好像是
+  [SHORT]  I feel as if → 我感觉好像
+  [SHORT]  it seems like you want to go → 好像你想走
+  [MEDIUM] I feel as if I want to learn Chinese → 我感觉好像想学中文
+  [MEDIUM] she feels as if she wants to speak Chinese → 她感觉好像想说中文
+  [LONG]   I feel as if I want to speak Chinese with you today → 我今天感觉好像想和你说中文
+  [LONG]   I feel as if I like speaking Chinese with them → 我感觉好像喜欢和别人说中文
+  [LONG]   it seems like she likes learning Chinese with us today → 好像她今天喜欢和我们学中文
+  [LONG]   it seems like he likes helping us learn Chinese → 好像他喜欢帮我们学中文
+
+REVIEW (from earlier rounds):
+  R50: I need to help you learn Chinese before I go → 我走之前要帮你学中文
+  R48: she likes speaking Chinese with us → 她喜欢和我们说中文
+  R45: I want to start learning now → 我想现在开始学
+  R41: we want to go together → 我们想一起走
+
+ETERNAL (longest phrases for spaced repetition):
+  I feel as if I want to speak Chinese with you today → 我今天感觉好像想和你说中文
+  it seems like he likes helping us learn Chinese → 好像他喜欢帮我们学中文
+```
+
+### Key Observations for Chinese
+
+1. **M-LEGOs are chunks, not atoms**
+   - "as if" → "好像" is ONE teachable unit (M-LEGO)
+   - NOT two separate A-LEGOs: "good" → "好" and "like" → "像"
+   - Components teach the parts, then the whole emerges
+
+2. **Phrase tiers by CHARACTER count** (not words)
+   - SHORT: 3-5 characters
+   - MEDIUM: 6-9 characters
+   - LONG: 10+ characters
+
+3. **Natural chunking for Chinese**
+   - "今天晚上" (this evening) = one M-LEGO, not 2 A-LEGOs
+   - "和别人一起" (with everyone else) = one M-LEGO, not 3 A-LEGOs
+   - Think: "What would a teacher write on one flashcard?"
+
 ## Apply This Pattern
 
 When building a course:
 1. Think about what the LEARNER will experience
 2. Ensure phrases only use what they've learned
-3. Build from simple to complex
+3. Build from simple to complex (SHORT → MEDIUM → LONG)
 4. Include ETERNAL phrases for long-term retention
 5. Let grammar emerge from context, don't explain it
+6. **Chunk meaningfully** - create M-LEGOs for multi-character concepts

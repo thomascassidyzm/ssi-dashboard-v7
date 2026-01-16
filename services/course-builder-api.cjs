@@ -1028,7 +1028,7 @@ const PHRASE_TIERS = {
 // Minimum phrases per tier (ensures balanced progression)
 const MIN_SHORT_PHRASES = 2;    // 2-3 short phrases
 const MIN_MEDIUM_PHRASES = 2;   // 2-3 medium phrases
-const MIN_LONG_PHRASES = 4;     // 4-5 long phrases (critical for retention)
+const MIN_LONG_PHRASES = 3;     // 3-4 long phrases (critical for retention, reduced from 4 for Chinese)
 const MIN_MIDDLE_RANGE = 2;     // At least 2 phrases in 5-10 char range (prevents short→long jump)
 
 // LEGO balance thresholds (practice_score = phrase_count / seeds_since_introduction)
@@ -2717,15 +2717,11 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
 
-    // FULL VOCABULARY - All LEGOs available for phrase generation
-    // Use these known/target pairs when constructing phrases
-    available_vocabulary: (allLegos || []).map(l => ({
-      known: l.known_text,
-      target: l.target_text,
-      type: l.type,
-      // Include M-LEGO components so agent knows the parts
-      ...(l.type === 'M' && l.components ? { components: l.components } : {})
-    })),
+    // Vocabulary summary (full list available via GET /api/vocab/:courseCode if needed)
+    vocabulary_summary: {
+      total: (allLegos || []).length,
+      hint: 'Trust your instincts as a language teacher. Create meaningful M-type chunks for multi-character concepts. The API validates ZUT - it will tell you if you conflict with existing vocabulary.'
+    },
 
     // RECENCY GUIDANCE - Critical for avoiding repetitive patterns
     recency: {
