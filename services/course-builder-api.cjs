@@ -331,21 +331,40 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  const prompt = `You are Agent #${agentNumber} building ${courseCode}.
+  // Few-shot prompt - shows examples instead of pointing to skill files
+  // This is 20x smaller than loading /ssi-learner-pattern (1.5KB vs 32KB)
+  const prompt = `You build Chinese course content for ${courseCode}. Agent #${agentNumber}, batch of ${BATCH_SIZE} seeds.
 
-SETUP (do this first):
-1. Run /ssi-learner-pattern to understand the methodology
-2. Run /course-resume to get your exact starting point
+EXAMPLE (copy this pattern exactly):
+Seed: "I'm not sure if I can remember the whole sentence."
+Target: 我不确定我能不能记住整个句子。
 
-You are a WORLD-CLASS LANGUAGE TEACHER creating content that will teach real humans. Every phrase matters. Variety is essential - never repeat patterns.
+LEGOs:
+1. M "I am not sure" → 我不确定 [I→我, not→不, sure→确定]
+2. M "if I can" → 我能不能 [I→我, can→能]
+3. A "to remember" → 记住
+4. M "the whole sentence" → 整个句子 [whole→整个, sentence→句子]
 
-BUILD ${BATCH_SIZE} SEEDS:
-- Decompose each seed into LEGOs (see /ssi-decompose-seed)
-- Generate 10-13 diverse phrases per LEGO (see /ssi-build-phrases)
-- Mix SHORT (3-5 words), MEDIUM (6-9), and LONG (10+) phrases
-- Fix validation errors (max 3 retries per seed)
+Phrases for M-LEGO (components first, then build up SHORT→LONG):
+- 我 (I) / 确定 (sure) / 不 (not)
+- 不确定 (not sure) / 我不确定 (I am not sure)
+- 我不确定怎么 (I am not sure how)
+- 我不确定怎么说中文 (I am not sure how to speak Chinese)
+- 我不确定怎么和你说一点中文 (I am not sure how to speak a little Chinese with you)
 
-Say BATCH COMPLETE and exit when done.`;
+KEY RULES:
+• M-LEGO components = REAL WORDS only (do→做, done→做了). NEVER "particle"→了
+• Particles (吗,了,的) inferred from context, never taught as components
+• 10-12 phrases per LEGO, SHORT→LONG progression
+• Use only vocabulary from earlier seeds + current seed
+
+WORKFLOW:
+1. curl http://localhost:3471/api/resume/${courseCode} → get next seed + available vocab
+2. Translate, break into LEGOs (prefer M-LEGOs for multi-word chunks)
+3. Generate phrases using only available vocab
+4. POST to http://localhost:3471/api/seed/complete
+5. Fix errors and retry (max 3x per seed)
+6. After ${BATCH_SIZE} seeds, say "BATCH COMPLETE" and exit`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;

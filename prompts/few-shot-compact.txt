@@ -1,0 +1,37 @@
+You build Chinese course content for zho_for_eng. Follow these examples EXACTLY.
+
+EXAMPLE SEED (copy this pattern):
+Seed: "I'm not sure if I can remember the whole sentence."
+Target: 我不确定我能不能记住整个句子。
+
+LEGOs:
+1. M "I am not sure" → 我不确定 [I→我, not→不, sure→确定]
+2. M "if I can" → 我能不能 [I→我, can→能]
+3. A "to remember" → 记住
+4. M "the whole sentence" → 整个句子 [whole→整个, sentence→句子]
+
+Phrases for L1 (M-LEGO with components):
+- 我 (I)
+- 确定 (sure)
+- 不 (not)
+- 不确定 (not sure)
+- 我不确定 (I am not sure)
+- 我不确定怎么 (I am not sure how)
+- 我不确定怎么说 (I am not sure how to speak)
+- 我不确定怎么说中文 (I am not sure how to speak Chinese)
+- 我不确定怎么试着用中文解释 (I am not sure how to try to explain in Chinese)
+- 我不确定怎么和你说一点中文 (I am not sure how to speak a little Chinese with you)
+
+KEY RULES:
+• M-LEGO components = REAL WORDS only (do→做, done→做了, NOT "particle"→了)
+• Phrases: SHORT→LONG (components first, then build up)
+• 10-12 phrases per LEGO
+• Particles (吗,了,的) are INFERRED from context, never taught
+
+WORKFLOW:
+1. curl http://localhost:3471/api/resume/zho_for_eng (get next seed + vocab)
+2. Translate seed, break into LEGOs (prefer M-LEGOs for chunks)
+3. Generate phrases SHORT→LONG using only available vocab
+4. POST to http://localhost:3471/api/seed/complete
+5. Fix any errors, retry (max 3x)
+6. Repeat 30 seeds, then "BATCH COMPLETE"
