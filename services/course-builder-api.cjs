@@ -90,7 +90,7 @@ function getActivityStatus() {
 // =============================================================================
 const { spawn } = require('child_process');
 
-const BATCH_SIZE = 30;  // Seeds per agent
+const BATCH_SIZE = 20;  // Seeds per agent (20 for Chinese, safer context margin)
 const BUILD_CHECK_INTERVAL_MS = 30000;  // Check progress every 30s
 
 // =============================================================================
@@ -317,6 +317,20 @@ async function getBuildProgress(courseCode) {
  * Opens a new terminal window (iTerm or Terminal) and runs claude there
  */
 function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  // Close any previous agent windows for this course (cleanup for RAM)
+  if (agentNumber > 1) {
+    const closeScript = terminal === 'iTerm2'
+      ? `tell application "iTerm" to close (every window whose name contains "${courseCode}")`
+      : `tell application "Terminal" to close (every window whose name contains "${courseCode}")`;
+
+    try {
+      require('child_process').execSync(`osascript -e '${closeScript}'`, { stdio: 'ignore' });
+      console.log(`[BUILD] Closed previous windows for ${courseCode}`);
+    } catch (e) {
+      // Ignore errors - window might already be closed
+    }
+  }
+
   const prompt = `You are Agent #${agentNumber} building ${courseCode}.
 
 SETUP (do this first):
@@ -399,9 +413,12 @@ async function checkBuilds() {
       const progress = await getBuildProgress(courseCode);
       const now = Date.now();
 
-      // Course complete?
-      if (progress.isComplete) {
-        console.log(`[BUILD] ✓ COMPLETE: ${courseCode} (${progress.completed}/${progress.total} seeds)`);
+      // Course complete? Use build.targetSeeds if set, otherwise progress.total
+      const targetSeeds = build.targetSeeds || progress.total;
+      const isComplete = progress.completed >= targetSeeds;
+
+      if (isComplete) {
+        console.log(`[BUILD] ✓ COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
         console.log(`[BUILD]   Total agents used: ${build.agentCount}`);
         if (build.agent && build.agent.pid) {
           try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
@@ -442,8 +459,10 @@ async function checkBuilds() {
       // Batch complete?
       if (seedsThisBatch >= BATCH_SIZE) {
         console.log(`[BUILD] Batch complete for ${courseCode} (${seedsThisBatch} seeds)`);
-        // Agent should exit naturally, we'll spawn new one next check
+        // Clear agent reference so next check spawns a new one
+        build.agent = null;
         build.status = 'batch_complete';
+        // Will spawn new agent on next check
         continue;
       }
 
@@ -491,15 +510,17 @@ function stopBuildManager() {
  * @param {string} courseCode
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode, terminal = 'iTerm2') {
+async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 260) {
   if (activeBuilds.has(courseCode)) {
     return { ok: false, error: 'Build already active for this course' };
   }
 
   const progress = await getBuildProgress(courseCode);
 
-  if (progress.isComplete) {
-    return { ok: false, error: 'Course already complete' };
+  // Use user-specified target, not total seeds in database
+  const effectiveTarget = Math.min(targetSeeds, progress.total);
+  if (progress.completed >= effectiveTarget) {
+    return { ok: false, error: `Target reached (${progress.completed}/${effectiveTarget} seeds)` };
   }
 
   activeBuilds.set(courseCode, {
@@ -510,7 +531,8 @@ async function startBuild(courseCode, terminal = 'iTerm2') {
     lastSeenSeed: progress.completed,
     lastProgressTime: Date.now(),
     status: 'starting',
-    terminal: terminal  // Store terminal preference
+    terminal: terminal,  // Store terminal preference
+    targetSeeds: effectiveTarget  // Store target for completion check
   });
 
   // Ensure build manager is running
@@ -2498,10 +2520,10 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { terminal = 'iTerm2' } = req.body || {};
+  const { terminal = 'iTerm2', targetSeeds = 260 } = req.body || {};
 
   try {
-    const result = await startBuild(courseCode, terminal);
+    const result = await startBuild(courseCode, terminal, targetSeeds);
     res.json(result);
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
