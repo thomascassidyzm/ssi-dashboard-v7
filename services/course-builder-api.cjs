@@ -85,6 +85,275 @@ function getActivityStatus() {
   return result;
 }
 
+// =============================================================================
+// BUILD MANAGER - Sequential 30-seed batch agent spawning
+// =============================================================================
+const { spawn } = require('child_process');
+
+const BATCH_SIZE = 30;  // Seeds per agent
+const BUILD_CHECK_INTERVAL_MS = 30000;  // Check progress every 30s
+
+// Active builds: course_code -> { agent, batchStartSeed, batchStartTime, agentCount, status }
+const activeBuilds = new Map();
+
+/**
+ * Get current progress for a course (seeds with LEGOs = fully processed)
+ */
+async function getBuildProgress(courseCode) {
+  const { count: totalSeeds } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  const { data: legoData } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+
+  const completedSeeds = new Set(legoData?.map(r => r.seed_number)).size;
+
+  return {
+    completed: completedSeeds,
+    total: totalSeeds || 668,
+    isComplete: completedSeeds >= (totalSeeds || 668)
+  };
+}
+
+/**
+ * Spawn a new Claude agent for a course
+ */
+function spawnBuildAgent(courseCode, agentNumber) {
+  const prompt = `You are Agent #${agentNumber} building seeds for ${courseCode}.
+
+FIRST: Run /course-resume to get your context and starting position.
+
+YOUR MISSION: Build exactly ${BATCH_SIZE} seeds from your starting position, then EXIT.
+
+RULES:
+1. Do NOT stop to ask questions - build autonomously
+2. Do NOT wait for approval - proceed continuously
+3. If validation fails, fix and retry (max 3 attempts per seed, then skip)
+4. After completing ${BATCH_SIZE} seeds, say "BATCH COMPLETE" and exit
+5. Do NOT continue beyond your ${BATCH_SIZE}-seed quota
+
+The coordinator will spawn a fresh agent to continue after you.`;
+
+  console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode}`);
+
+  const agent = spawn('claude', [
+    '--model', 'opus',
+    '--dangerously-skip-permissions',
+    '-p', prompt
+  ], {
+    stdio: 'inherit',
+    detached: false
+  });
+
+  agent.on('error', (err) => {
+    console.error(`[BUILD] Agent #${agentNumber} spawn error:`, err.message);
+    const build = activeBuilds.get(courseCode);
+    if (build) {
+      build.agent = null;
+      build.status = 'agent_error';
+    }
+  });
+
+  agent.on('exit', (code) => {
+    console.log(`[BUILD] Agent #${agentNumber} exited with code ${code}`);
+    const build = activeBuilds.get(courseCode);
+    if (build) {
+      build.agent = null;
+      build.status = 'agent_exited';
+    }
+  });
+
+  return agent;
+}
+
+/**
+ * Check build progress and spawn new agents as needed
+ */
+async function checkBuilds() {
+  for (const [courseCode, build] of activeBuilds.entries()) {
+    try {
+      const progress = await getBuildProgress(courseCode);
+      const now = Date.now();
+
+      // Course complete?
+      if (progress.isComplete) {
+        console.log(`[BUILD] ✓ COMPLETE: ${courseCode} (${progress.completed}/${progress.total} seeds)`);
+        console.log(`[BUILD]   Total agents used: ${build.agentCount}`);
+        if (build.agent && build.agent.pid) {
+          try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+        }
+        activeBuilds.delete(courseCode);
+        continue;
+      }
+
+      // No agent running - spawn one
+      if (!build.agent) {
+        console.log(`[BUILD] No agent for ${courseCode}, spawning...`);
+        console.log(`[BUILD]   Progress: ${progress.completed}/${progress.total}`);
+
+        build.agentCount++;
+        build.batchStartSeed = progress.completed;
+        build.batchStartTime = now;
+        build.lastSeenSeed = progress.completed;
+        build.lastProgressTime = now;
+        build.status = 'running';
+        build.agent = spawnBuildAgent(courseCode, build.agentCount);
+
+        // Ping activity to reset stall timer
+        recordActivity(courseCode, progress.completed);
+        continue;
+      }
+
+      // Agent running - check progress
+      const seedsThisBatch = progress.completed - build.batchStartSeed;
+      const timeSinceProgress = now - build.lastProgressTime;
+
+      // Progress made?
+      if (progress.completed > build.lastSeenSeed) {
+        console.log(`[BUILD] ${courseCode}: ${progress.completed}/${progress.total} (+${progress.completed - build.lastSeenSeed})`);
+        build.lastSeenSeed = progress.completed;
+        build.lastProgressTime = now;
+      }
+
+      // Batch complete?
+      if (seedsThisBatch >= BATCH_SIZE) {
+        console.log(`[BUILD] Batch complete for ${courseCode} (${seedsThisBatch} seeds)`);
+        // Agent should exit naturally, we'll spawn new one next check
+        build.status = 'batch_complete';
+        continue;
+      }
+
+      // Stalled?
+      if (timeSinceProgress > STALL_THRESHOLD_MS) {
+        console.log(`[BUILD] STALL: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
+        console.log(`[BUILD]   Killing agent and spawning fresh one...`);
+
+        if (build.agent && build.agent.pid) {
+          try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+        }
+        build.agent = null;
+        build.status = 'stalled';
+        // Will spawn new agent on next check
+      }
+
+    } catch (err) {
+      console.error(`[BUILD] Error checking ${courseCode}:`, err.message);
+    }
+  }
+}
+
+/**
+ * Start the build manager loop
+ */
+let buildManagerInterval = null;
+
+function startBuildManager() {
+  if (buildManagerInterval) return;  // Already running
+
+  console.log('[BUILD] Starting build manager loop...');
+  buildManagerInterval = setInterval(checkBuilds, BUILD_CHECK_INTERVAL_MS);
+}
+
+function stopBuildManager() {
+  if (buildManagerInterval) {
+    clearInterval(buildManagerInterval);
+    buildManagerInterval = null;
+    console.log('[BUILD] Build manager stopped');
+  }
+}
+
+/**
+ * Start a build for a course
+ */
+async function startBuild(courseCode) {
+  if (activeBuilds.has(courseCode)) {
+    return { ok: false, error: 'Build already active for this course' };
+  }
+
+  const progress = await getBuildProgress(courseCode);
+
+  if (progress.isComplete) {
+    return { ok: false, error: 'Course already complete' };
+  }
+
+  activeBuilds.set(courseCode, {
+    agent: null,
+    agentCount: 0,
+    batchStartSeed: progress.completed,
+    batchStartTime: Date.now(),
+    lastSeenSeed: progress.completed,
+    lastProgressTime: Date.now(),
+    status: 'starting'
+  });
+
+  // Ensure build manager is running
+  startBuildManager();
+
+  // Trigger immediate check to spawn first agent
+  setTimeout(() => checkBuilds(), 100);
+
+  return {
+    ok: true,
+    course_code: courseCode,
+    progress: progress,
+    message: `Build started - will spawn agents in ${BATCH_SIZE}-seed batches`
+  };
+}
+
+/**
+ * Stop a build for a course
+ */
+function stopBuild(courseCode) {
+  const build = activeBuilds.get(courseCode);
+
+  if (!build) {
+    return { ok: false, error: 'No active build for this course' };
+  }
+
+  // Kill agent if running
+  if (build.agent && build.agent.pid) {
+    try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+  }
+
+  activeBuilds.delete(courseCode);
+
+  // Stop manager if no more builds
+  if (activeBuilds.size === 0) {
+    stopBuildManager();
+  }
+
+  return {
+    ok: true,
+    course_code: courseCode,
+    agents_used: build.agentCount,
+    message: 'Build stopped'
+  };
+}
+
+/**
+ * Get build status for a course
+ */
+async function getBuildStatus(courseCode) {
+  const build = activeBuilds.get(courseCode);
+  const progress = await getBuildProgress(courseCode);
+
+  return {
+    course_code: courseCode,
+    active: !!build,
+    progress: progress,
+    build: build ? {
+      status: build.status,
+      agent_count: build.agentCount,
+      current_batch_seeds: progress.completed - build.batchStartSeed,
+      batch_size: BATCH_SIZE
+    } : null
+  };
+}
+
 /**
  * Get cache entry, updating access time. Returns null if expired or missing.
  */
@@ -1951,6 +2220,72 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
     ok: true,
     course_code: courseCode,
     message: 'Activity recorded - stall timer reset'
+  });
+});
+
+// =============================================================================
+// BUILD MANAGER ENDPOINTS
+// =============================================================================
+
+/**
+ * POST /api/build/start/:courseCode - Start a build with batch agent spawning
+ *
+ * This spawns Claude agents in sequential 30-seed batches.
+ * Each agent exits after its batch, and a fresh agent picks up from there.
+ */
+app.post('/api/build/start/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const result = await startBuild(courseCode);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * POST /api/build/stop/:courseCode - Stop an active build
+ */
+app.post('/api/build/stop/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const result = stopBuild(courseCode);
+  res.json(result);
+});
+
+/**
+ * GET /api/build/status/:courseCode - Get build status for a course
+ */
+app.get('/api/build/status/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const status = await getBuildStatus(courseCode);
+    res.json(status);
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/build/active - List all active builds
+ */
+app.get('/api/build/active', async (req, res) => {
+  const builds = [];
+
+  for (const [courseCode, build] of activeBuilds.entries()) {
+    const progress = await getBuildProgress(courseCode);
+    builds.push({
+      course_code: courseCode,
+      status: build.status,
+      agent_count: build.agentCount,
+      progress: progress
+    });
+  }
+
+  res.json({
+    active_builds: builds.length,
+    builds
   });
 });
 

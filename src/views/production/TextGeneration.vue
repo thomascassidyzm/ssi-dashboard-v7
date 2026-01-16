@@ -362,25 +362,46 @@ async function fetchProgress() {
 
   try {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const response = await fetch(`${builderApiUrl}/api/stats/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
 
-    if (response.ok) {
-      const data = await response.json()
+    // Fetch both stats and build status in parallel
+    const [statsResponse, buildResponse] = await Promise.all([
+      fetch(`${builderApiUrl}/api/stats/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      }),
+      fetch(`${builderApiUrl}/api/build/status/${courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    ])
+
+    if (statsResponse.ok) {
+      const data = await statsResponse.json()
+      const totalSeeds = data.total_seeds || seedCount.value
+
       progress.value = {
         ...progress.value,
-        currentSeed: data.seeds || 0,
-        totalSeeds: seedCount.value,
+        currentSeed: data.seeds_with_legos || data.seeds || 0,
+        totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
         phrasesInserted: data.phrases || 0
       }
 
-      // Update status based on progress
-      if (data.seeds >= seedCount.value && data.seeds > 0) {
-        progress.value.status = 'complete'
-      } else if (data.seeds === 0 && progress.value.status === 'complete') {
-        // Course was reset externally - go back to idle
+      // Check build status for running state
+      if (buildResponse.ok) {
+        const buildData = await buildResponse.json()
+        if (buildData.active) {
+          progress.value.status = 'running'
+          progress.value.agentCount = buildData.build?.agent_count || 0
+          progress.value.batchSeeds = buildData.build?.current_batch_seeds || 0
+        } else if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
+          progress.value.status = 'complete'
+        } else if (progress.value.status === 'running') {
+          // Build finished or was stopped
+          progress.value.status = 'idle'
+        }
+      }
+
+      // Handle external reset
+      if (data.seeds === 0 && progress.value.status === 'complete') {
         progress.value.status = 'idle'
       }
     }
@@ -428,28 +449,22 @@ async function startBuilder() {
       addEvent(`Course ${courseCode} created`)
     }
 
-    // Start the course builder
-    const response = await fetch(`${apiBase}/api/courses/generate`, {
+    // Start the course builder via Build Manager (30-seed batch agents)
+    const response = await fetch(`${builderApiUrl}/api/build/start/${courseCode}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        courseCode,
-        buildMode: 'course-builder',
-        spawnerMode: agentEngine.value,
-        seedCount: seedCount.value,
-        model: selectedModel.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
-      })
+      }
     })
 
-    if (!response.ok) throw new Error('Failed to start course builder')
+    const result = await response.json()
+    if (!result.ok) throw new Error(result.error || 'Failed to start course builder')
 
     progress.value.status = 'running'
-    progress.value.totalSeeds = seedCount.value
-    addEvent(`Started Course Builder (${seedCount.value} seeds, ${selectedModel.value})`)
+    progress.value.totalSeeds = result.progress?.total || seedCount.value
+    progress.value.currentSeed = result.progress?.completed || 0
+    addEvent(`Started Course Builder (${result.progress?.total || seedCount.value} seeds, 30-seed batch agents)`)
 
     // Navigate to the course page if we created a new one
     if (isCreateMode.value) {
@@ -464,14 +479,15 @@ async function startBuilder() {
 
 async function stopBuilder() {
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    await fetch(`${apiBase}/api/cancel/${effectiveCourseCode.value}`, {
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
+    const response = await fetch(`${builderApiUrl}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
+    const result = await response.json()
     progress.value.status = 'idle'
-    addEvent('Course Builder stopped')
+    addEvent(`Course Builder stopped (${result.agents_used || 0} agents used)`)
 
   } catch (error) {
     console.error('Failed to stop builder:', error)
