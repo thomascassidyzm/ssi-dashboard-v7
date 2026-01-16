@@ -421,6 +421,7 @@ async function startBuilder() {
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
 
     // If in create mode, create the course first
     if (isCreateMode.value) {
