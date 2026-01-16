@@ -1860,12 +1860,25 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .select('*', { count: 'exact', head: true })
     .eq('course_code', courseCode);
 
-  // Count DISTINCT seed numbers (not all LEGO rows)
+  // Count total seeds in course_seeds table
+  const { count: totalSeeds } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  // Count completed seeds (those with non-empty target_text)
+  const { count: completedSeeds } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .neq('target_text', '');
+
+  // Count DISTINCT seed numbers from LEGOs (seeds with decomposition done)
   const { data: seedData } = await supabase
     .from('course_legos')
     .select('seed_number')
     .eq('course_code', courseCode);
-  const seeds = new Set(seedData?.map(r => r.seed_number)).size;
+  const seedsWithLegos = new Set(seedData?.map(r => r.seed_number)).size;
 
   const ratio = legos > 0 ? (phrases/legos) : 0;
   const quality = ratio >= MIN_BATCH_PHRASE_RATIO ? 'PASS' : 'FAIL';
@@ -1876,7 +1889,10 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 
   res.json({
     course_code: courseCode,
-    seeds: seeds || 0,
+    total_seeds: totalSeeds || 668,
+    completed_seeds: completedSeeds || 0,
+    seeds_with_legos: seedsWithLegos || 0,
+    seeds: seedsWithLegos || 0,  // Legacy field, same as seeds_with_legos
     legos: legos || 0,
     phrases: phrases || 0,
     ratio: ratio.toFixed(1),
