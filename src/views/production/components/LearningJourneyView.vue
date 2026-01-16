@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <!-- Controls Row: Legend + Expand/Collapse -->
+    <!-- Controls Row: Legend (Expand/Collapse moved to parent when hideControls) -->
     <div class="controls-row flex items-center justify-between mb-6">
       <!-- Item Type Legend -->
       <div class="legend flex flex-wrap gap-4 text-sm">
@@ -56,8 +56,8 @@
         </div>
       </div>
 
-      <!-- Expand/Collapse Buttons -->
-      <div class="expand-collapse-btns flex gap-2">
+      <!-- Expand/Collapse Buttons (only shown when controls not hidden) -->
+      <div v-if="!hideControls" class="expand-collapse-btns flex gap-2">
         <button
           @click="collapseAll"
           class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
@@ -259,6 +259,7 @@ const props = defineProps<{
   rounds: RoundData[]
   stats: Stats | null
   isLoading?: boolean
+  hideControls?: boolean
 }>()
 
 // Track which rounds are expanded
@@ -288,6 +289,12 @@ const expandAll = () => {
 const collapseAll = () => {
   expandedRounds.value.clear()
 }
+
+// Expose methods for parent component to call
+defineExpose({
+  expandAll,
+  collapseAll
+})
 
 // Get LEGO text from the debut or intro item in the round
 const getLegoKnownText = (round: RoundData): string => {
