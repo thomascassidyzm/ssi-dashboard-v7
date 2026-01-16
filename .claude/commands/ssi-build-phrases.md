@@ -14,24 +14,38 @@ For LEGO N in seed S, you can ONLY use:
 
 ## Phrase Tier Requirements (CRITICAL)
 
-Validation checks phrase length tiers. Counting is by **words** for most languages, **characters** for Chinese/Japanese.
+Validation checks phrase length tiers based on **syllable count** (language-agnostic).
 
 ### Tier Minimums by Seed Number
 
-| Seed Range | SHORT (3-5) | MEDIUM (6-9) | LONG (10+) | Middle (5-10) |
-|------------|-------------|--------------|------------|---------------|
-| **1-5**    | relaxed     | relaxed      | relaxed    | relaxed       |
-| **6-20**   | 1+          | 1+           | **2+**     | 1+            |
-| **21+**    | **2+**      | **2+**       | **3+**     | 2+            |
+| Seed Range | SHORT (3-5 syl) | MEDIUM (6-9 syl) | LONG (10+ syl) | Middle (5-10 syl) |
+|------------|-----------------|------------------|----------------|-------------------|
+| **1-5**    | relaxed         | relaxed          | relaxed        | relaxed           |
+| **6-20**   | 1+              | 1+               | **2+**         | 1+                |
+| **21+**    | **2+**          | **2+**           | **3+**         | 2+                |
 
-**Most common failure:** Not enough LONG phrases (10+ words). For seeds 21+, you need **at least 3 LONG phrases** and **at least 2 each of SHORT and MEDIUM**.
+**Most common failure:** Not enough LONG phrases (10+ syllables). For seeds 21+, you need **at least 3 LONG phrases**.
 
-### What Counts as Each Tier (word count)
+### What Counts as Each Tier (syllables)
 
-- **SHORT**: 3-5 words (e.g., "I want to learn")
-- **MEDIUM**: 6-9 words (e.g., "I want to learn French with you")
-- **LONG**: 10+ words (e.g., "I want to learn to speak French with you tomorrow")
-- **Middle range**: 5-10 words (ensures smooth SHORT→LONG progression)
+- **SHORT**: 3-5 syllables (e.g., "I want to learn" = 4 syl)
+- **MEDIUM**: 6-9 syllables (e.g., "I want to learn French with you" = 8 syl)
+- **LONG**: 10+ syllables (e.g., "I want to learn to speak French with you tomorrow" = 14 syl)
+- **Middle range**: 5-10 syllables (ensures smooth SHORT→LONG progression)
+
+### Language-Specific Character Equivalents
+
+The API converts syllable thresholds to characters using these ratios:
+
+| Language | Chars/Syllable | SHORT (chars) | MEDIUM (chars) | LONG (chars) |
+|----------|----------------|---------------|----------------|--------------|
+| Chinese  | 1.0            | 3-5           | 6-9            | 10+          |
+| Japanese | 1.5            | 5-8           | 9-14           | 15+          |
+| French   | 3.5            | 11-18         | 21-32          | 35+          |
+| Spanish  | 3.2            | 10-16         | 19-29          | 32+          |
+| German   | 3.0            | 9-15          | 18-27          | 30+          |
+| English  | 3.8            | 11-19         | 23-34          | 38+          |
+| Italian  | 3.0            | 9-15          | 18-27          | 30+          |
 
 ## Phrase Progression: SHORT → LONG
 
@@ -40,22 +54,21 @@ Phrases must BUILD UP from simple to complex. Example for French (Seed 22+):
 ```
 LEGO: "I want to" → "je veux"
 
-SHORT (3-5 words) - need 2+:
-  I want to speak → je veux parler
-  I want to learn → je veux apprendre
+SHORT (3-5 syllables) - need 2+:
+  I want to speak → je veux parler (4 syl)
+  I want to learn → je veux apprendre (5 syl)
 
-MEDIUM (6-9 words) - need 2+:
-  I want to speak French now → je veux parler français maintenant
-  I want to learn French with you → je veux apprendre le français avec toi
-  I want to speak with my friend → je veux parler avec mon ami
+MEDIUM (6-9 syllables) - need 2+:
+  I want to speak French now → je veux parler français maintenant (8 syl)
+  I want to learn with you → je veux apprendre avec toi (7 syl)
 
-LONG (10+ words) - need 3+:
-  I want to speak French with you tomorrow morning → je veux parler français avec toi demain matin
-  I want to learn to speak French with my friends → je veux apprendre à parler français avec mes amis
-  I want to learn French because it is a beautiful language → je veux apprendre le français parce que c'est une belle langue
+LONG (10+ syllables) - need 3+:
+  I want to speak French with you tomorrow → je veux parler français avec toi demain (11 syl)
+  I want to learn to speak French with my friends → je veux apprendre à parler français avec mes amis (14 syl)
+  I want to learn French because it is beautiful → je veux apprendre le français parce que c'est beau (13 syl)
 ```
 
-**TIP**: Make LONG phrases genuinely long (10+ words). A common mistake is submitting phrases that are only 8-9 words.
+**TIP**: Count syllables in your target language text. Make LONG phrases genuinely 10+ syllables.
 
 ## Early Seeds: Relaxed Requirements
 
@@ -91,32 +104,32 @@ GOOD:
 Before submitting, verify:
 
 1. [ ] Using only available vocabulary?
-2. [ ] Enough SHORT phrases? (1+ for seeds 6-20, 2+ for 21+)
-3. [ ] Enough MEDIUM phrases? (1+ for seeds 6-20, 2+ for 21+)
-4. [ ] Enough LONG phrases? (2+ for seeds 6-20, **3+ for 21+**)
-5. [ ] Smooth progression (some phrases in 5-10 word range)?
+2. [ ] Enough SHORT phrases? (3-5 syllables: 1+ for seeds 6-20, 2+ for 21+)
+3. [ ] Enough MEDIUM phrases? (6-9 syllables: 1+ for seeds 6-20, 2+ for 21+)
+4. [ ] Enough LONG phrases? (10+ syllables: 2+ for seeds 6-20, **3+ for 21+**)
+5. [ ] Smooth progression (some phrases in 5-10 syllable range)?
 6. [ ] No annotations or explanations in text?
 7. [ ] Recent vocabulary prioritized?
 
-## Example: Complete Phrase Set (Seed 25)
+## Example: Complete Phrase Set (Seed 25, French)
 
 ```
-LEGO: "I can't" → "je ne peux pas" (has 50+ prior LEGOs available)
+LEGO: "I can't" → "je ne peux pas"
 
-SHORT (3-5 words) - need 2+:
-1. I can't speak → je ne peux pas parler
-2. I can't learn → je ne peux pas apprendre
+SHORT (3-5 syllables) - need 2+:
+1. I can't speak → je ne peux pas parler (5 syl)
+2. I can't learn → je ne peux pas apprendre (5 syl)
 
-MEDIUM (6-9 words) - need 2+:
-3. I can't speak French now → je ne peux pas parler français maintenant
-4. I can't learn with you → je ne peux pas apprendre avec toi
-5. I can't speak with my friend → je ne peux pas parler avec mon ami
+MEDIUM (6-9 syllables) - need 2+:
+3. I can't speak French now → je ne peux pas parler français maintenant (9 syl)
+4. I can't learn with you → je ne peux pas apprendre avec toi (8 syl)
+5. I can't speak with my friend → je ne peux pas parler avec mon ami (9 syl)
 
-LONG (10+ words) - need 3+:
-6. I can't speak French with you right now → je ne peux pas parler français avec toi maintenant
-7. I can't learn to speak French with my friends today → je ne peux pas apprendre à parler français avec mes amis aujourd'hui
-8. I can't speak French because I don't have enough time → je ne peux pas parler français parce que je n'ai pas assez de temps
-9. I can't learn French with you tomorrow because I am busy → je ne peux pas apprendre le français avec toi demain parce que je suis occupé
+LONG (10+ syllables) - need 3+:
+6. I can't speak French with you right now → je ne peux pas parler français avec toi maintenant (12 syl)
+7. I can't learn to speak French with my friends → je ne peux pas apprendre à parler français avec mes amis (15 syl)
+8. I can't speak French because I don't have time → je ne peux pas parler français parce que je n'ai pas le temps (14 syl)
+9. I can't learn French with you tomorrow because I'm busy → je ne peux pas apprendre le français avec toi demain parce que je suis occupé (18 syl)
 ```
 
 This set has: 2 SHORT, 3 MEDIUM, 4 LONG - passes all tier requirements.
