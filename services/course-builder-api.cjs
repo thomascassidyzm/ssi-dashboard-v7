@@ -43,6 +43,48 @@ const MAX_CACHE_SIZE = 10;
 const CACHE_TTL_MS = 30 * 60 * 1000;  // 30 minutes
 const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess: number }
 
+// =============================================================================
+// ACTIVITY TRACKING FOR STALL DETECTION
+// Dashboard can poll /api/activity to detect stalled courses and respawn agents
+// =============================================================================
+const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
+const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, status: 'active'|'stalled' }
+
+/**
+ * Record activity for a course (called after successful seed submission)
+ */
+function recordActivity(courseCode, seedNumber) {
+  courseActivity.set(courseCode, {
+    lastSubmission: Date.now(),
+    lastSeed: seedNumber,
+    status: 'active'
+  });
+}
+
+/**
+ * Get stall status for all tracked courses
+ */
+function getActivityStatus() {
+  const now = Date.now();
+  const result = {};
+
+  for (const [courseCode, activity] of courseActivity.entries()) {
+    const elapsed = now - activity.lastSubmission;
+    const stalled = elapsed > STALL_THRESHOLD_MS;
+
+    result[courseCode] = {
+      lastSubmission: new Date(activity.lastSubmission).toISOString(),
+      lastSeed: activity.lastSeed,
+      elapsedMs: elapsed,
+      elapsedMinutes: (elapsed / 60000).toFixed(1),
+      stalled,
+      status: stalled ? 'STALLED' : 'active'
+    };
+  }
+
+  return result;
+}
+
 /**
  * Get cache entry, updating access time. Returns null if expired or missing.
  */
@@ -88,10 +130,18 @@ function setCacheEntry(courseCode, vocabSet) {
 }
 
 /**
- * Detect if course is Chinese-based (character-level vocab)
+ * Detect if course uses character-level vocab (Chinese, Japanese, Korean)
+ * These languages don't use spaces between words, so vocabulary is character-based
  */
 function isChinese(courseCode) {
-  return courseCode.startsWith('zho') || courseCode.includes('_zho');
+  // Check for Chinese, Japanese, or Korean (all use character-based vocab)
+  const characterBasedLangs = ['zho', 'jpn', 'kor'];
+  for (const lang of characterBasedLangs) {
+    if (courseCode.startsWith(lang) || courseCode.includes(`_${lang}`)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -842,7 +892,8 @@ app.post('/api/lego', async (req, res) => {
 
     // Graduated minimum: early LEGOs can have fewer phrases
     let minRequired = MIN_PHRASES_PER_LEGO;
-    if (globalPosition <= 3) minRequired = 1;       // First 3 LEGOs
+    if (globalPosition === 1) minRequired = 0;      // Very first LEGO - nothing to combine with!
+    else if (globalPosition <= 3) minRequired = 1;  // First 3 LEGOs
     else if (globalPosition <= 6) minRequired = 2;  // LEGOs 4-6
     else if (globalPosition <= 10) minRequired = 3; // LEGOs 7-10
 
@@ -1336,6 +1387,26 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
+    // CANONICAL VALIDATION: If agent provides known_text, it MUST match canonical
+    // This catches hallucinated seeds after context compaction
+    if (agent_known_text && canonicalSeed.known_text) {
+      // Normalize both strings for comparison (trim, collapse whitespace)
+      const normalize = (s) => s.trim().replace(/\s+/g, ' ').toLowerCase();
+      const agentNorm = normalize(agent_known_text);
+      const canonicalNorm = normalize(canonicalSeed.known_text);
+
+      if (agentNorm !== canonicalNorm) {
+        return res.status(400).json({
+          error: 'CANONICAL MISMATCH: Your known_text does not match the canonical seed',
+          seed: seedId,
+          you_sent: agent_known_text,
+          canonical: canonicalSeed.known_text,
+          action_required: `GET /api/resume/${course_code} to get the correct next seed and context`,
+          hint: 'After context compaction, ALWAYS call /api/resume first. Do NOT guess seed text.'
+        });
+      }
+    }
+
     // Determine final known_text and target_text
     // Use canonical if pre-populated (English case), otherwise use agent-provided
     const known_text = canonicalSeed.known_text || agent_known_text;
@@ -1460,7 +1531,8 @@ app.post('/api/seed/complete', async (req, res) => {
       const legoPosition = globalPosition + lego.idx;
 
       let minRequired = MIN_PHRASES_PER_LEGO;
-      if (legoPosition <= 3) minRequired = 1;
+      if (legoPosition === 1) minRequired = 0;        // Very first LEGO - nothing to combine with!
+      else if (legoPosition <= 3) minRequired = 1;
       else if (legoPosition <= 6) minRequired = 2;
       else if (legoPosition <= 10) minRequired = 3;
 
@@ -1729,6 +1801,26 @@ app.post('/api/seed/complete', async (req, res) => {
     console.log(`  Phrases: ${totalPhrases} (${totalBuildupPhrases} buildup)`);
     console.log(`${'='.repeat(60)}\n`);
 
+    // Find next incomplete seed to guide agent
+    const { data: completedSeeds } = await supabase
+      .from('course_legos')
+      .select('seed_number')
+      .eq('course_code', course_code);
+    const completedSet = new Set(completedSeeds?.map(s => s.seed_number) || []);
+
+    const { data: allSeeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text')
+      .eq('course_code', course_code)
+      .gt('seed_number', seed_number)
+      .order('seed_number')
+      .limit(50);
+
+    const nextSeed = allSeeds?.find(s => !completedSet.has(s.seed_number) && s.known_text);
+
+    // Record activity for stall detection
+    recordActivity(course_code, seed_number);
+
     res.json({
       ok: true,
       seed: seedId,
@@ -1738,7 +1830,12 @@ app.post('/api/seed/complete', async (req, res) => {
       duplicates_skipped: skippedDuplicates,
       phrases: totalPhrases,
       buildup_phrases: totalBuildupPhrases,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
+      // Always tell agent what's next
+      next_seed: nextSeed ? {
+        seed_number: nextSeed.seed_number,
+        known_text: nextSeed.known_text
+      } : null
     });
 
   } catch (err) {
@@ -1791,6 +1888,167 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       target: TARGET_PHRASES_PER_LEGO,
       max: MAX_PHRASES_PER_LEGO,
       min_batch_ratio: MIN_BATCH_PHRASE_RATIO
+    }
+  });
+});
+
+/**
+ * GET /api/activity - Get activity status for all courses (for stall detection)
+ *
+ * Dashboard can poll this endpoint to detect stalled agents and respawn them.
+ * A course is considered "stalled" if no seed was submitted in the last 5 minutes.
+ *
+ * Returns:
+ * - courses: Object with activity status per course
+ * - stalled: Array of course codes that need respawning
+ * - threshold_minutes: Current stall threshold
+ */
+app.get('/api/activity', (req, res) => {
+  const activity = getActivityStatus();
+  const stalledCourses = Object.entries(activity)
+    .filter(([_, status]) => status.stalled)
+    .map(([code, _]) => code);
+
+  res.json({
+    courses: activity,
+    stalled: stalledCourses,
+    stalled_count: stalledCourses.length,
+    threshold_minutes: STALL_THRESHOLD_MS / 60000,
+    message: stalledCourses.length > 0
+      ? `${stalledCourses.length} course(s) stalled - spawn new agents with /course-resume`
+      : 'All active courses are progressing normally'
+  });
+});
+
+/**
+ * POST /api/activity/:courseCode/ping - Mark a course as active (for agents starting up)
+ *
+ * Call this when spawning a new agent to reset the stall timer.
+ */
+app.post('/api/activity/:courseCode/ping', (req, res) => {
+  const { courseCode } = req.params;
+  const seedNumber = req.body?.seed_number || 0;
+
+  recordActivity(courseCode, seedNumber);
+
+  res.json({
+    ok: true,
+    course_code: courseCode,
+    message: 'Activity recorded - stall timer reset'
+  });
+});
+
+/**
+ * GET /api/resume/:courseCode - Get everything needed to resume after context compaction
+ *
+ * Returns:
+ * - next_seed: The next incomplete seed number
+ * - recent_seeds: Last 5 completed seeds with translations
+ * - recent_legos: Last 20 LEGOs introduced (for phrase generation context)
+ * - vocab_stats: Current vocabulary size and mode
+ * - progress: Percentage complete
+ */
+app.get('/api/resume/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const targetLangName = getLanguageName(courseCode);
+  const chinese = isChinese(courseCode);
+
+  // Get all seeds with their completion status
+  const { data: allSeeds } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number');
+
+  // Get seeds that have LEGOs (completed)
+  const { data: completedData } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+
+  const completedSeeds = new Set(completedData?.map(l => l.seed_number) || []);
+
+  // Find next incomplete seed
+  const incompleteSeed = allSeeds?.find(s =>
+    !completedSeeds.has(s.seed_number) && s.known_text && s.known_text !== ''
+  );
+
+  // Get recent completed seeds (last 5)
+  const recentCompleted = allSeeds
+    ?.filter(s => completedSeeds.has(s.seed_number))
+    .slice(-5)
+    .map(s => ({
+      seed_number: s.seed_number,
+      known_text: s.known_text,
+      target_text: s.target_text
+    }));
+
+  // Get recent LEGOs (last 20 new ones for context)
+  const { data: recentLegos } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, type, known_text, target_text, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .order('seed_number', { ascending: false })
+    .order('lego_index', { ascending: false })
+    .limit(20);
+
+  // Get vocab stats
+  const vocabSet = await loadCourseVocab(courseCode);
+
+  // Calculate progress
+  const totalSeeds = allSeeds?.length || 0;
+  const completedCount = completedSeeds.size;
+  const progress = totalSeeds > 0 ? ((completedCount / totalSeeds) * 100).toFixed(1) : 0;
+
+  res.json({
+    course_code: courseCode,
+    target_language: targetLangName,
+
+    // Resume point
+    next_seed: incompleteSeed ? {
+      seed_number: incompleteSeed.seed_number,
+      known_text: incompleteSeed.known_text,
+      hint: `Translate to ${targetLangName}, decompose into LEGOs, generate phrases`
+    } : null,
+
+    // Context from recent work
+    recent_seeds: recentCompleted || [],
+    recent_legos: recentLegos?.reverse() || [],
+
+    // Stats
+    progress: `${progress}%`,
+    completed_seeds: completedCount,
+    total_seeds: totalSeeds,
+    vocab_size: vocabSet.size,
+    vocab_mode: chinese ? 'characters' : 'words',
+
+    // Full methodology for self-recovery after compaction
+    methodology: {
+      workflow: [
+        '1. Use next_seed.known_text exactly (do NOT invent or guess seeds)',
+        `2. Translate naturally to ${targetLangName}`,
+        '3. Decompose into LEGOs: A-type (single words), M-type (phrases with components)',
+        '4. Generate 10+ practice phrases per LEGO',
+        '5. POST to /api/seed/complete with {course_code, seed_number, target_text, legos}',
+        '6. Use next_seed from response for next iteration',
+        '7. Continue autonomously until all seeds complete - do NOT stop to ask'
+      ],
+      lego_types: {
+        'A-type': 'Single meaningful word: {"type":"A","known":"speak","target":"说"}',
+        'M-type': 'Multi-word phrase with components: {"type":"M","known":"I want","target":"我想","components":[{"known":"I","target":"我"},{"known":"want","target":"想"}]}'
+      },
+      phrase_requirements: {
+        minimum: '7 phrases per LEGO (for seeds 21+)',
+        target: '10-13 phrases per LEGO',
+        tiers: 'Mix of SHORT (3-5 words), MEDIUM (6-9 words), LONG (10+ words)'
+      },
+      rules: [
+        'ZUT: Phrases can only use vocabulary already introduced',
+        'Tiling: Seed must be reconstructable from LEGO targets',
+        'M-LEGOs MUST have components array',
+        'Trust API validation errors - they tell you exactly what to fix'
+      ]
     }
   });
 });
@@ -2233,12 +2491,16 @@ app.listen(PORT, () => {
   console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  Other Endpoints:                                            ║`);
+  console.log(`║  GET  /api/resume/:code - Resume context after compaction    ║`);
+  console.log(`║  GET  /api/activity - Stall detection (dashboard polling)    ║`);
+  console.log(`║  POST /api/activity/:code/ping - Reset stall timer           ║`);
   console.log(`║  GET  /api/seeds/:code - Canonical seeds from database       ║`);
-  console.log(`║  POST /api/lego   - Insert single LEGO                       ║`);
-  console.log(`║  POST /api/batch  - Insert multiple LEGOs                    ║`);
-  console.log(`║  PATCH /api/seed/:code/:num - Update seed translation        ║`);
   console.log(`║  GET  /api/stats/:code - Quality metrics + vocab size        ║`);
   console.log(`║  GET  /api/vocab/:code - Current vocabulary set              ║`);
   console.log(`║  DELETE /api/course/:code - Clear course + vocab cache       ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  STALL DETECTION: Dashboard polls /api/activity every 60s    ║`);
+  console.log(`║  Threshold: ${STALL_THRESHOLD_MS/60000} minutes without submission = STALLED           ║`);
+  console.log(`║  On stall: Spawn new agent with /course-resume skill         ║`);
   console.log(`╚══════════════════════════════════════════════════════════════╝\n`);
 });

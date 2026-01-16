@@ -151,6 +151,29 @@ service CourseBuilderAPI:
       - LEGOs can overlap to handle different word orders
       - Seeds are conceptual guides, not real course content
 
+    gate_0_canonical_mismatch:
+      name: "Canonical Seed Validation"
+      description: |
+        Prevents hallucinated seeds after context compaction.
+        If agent provides known_text, it MUST match the canonical seed in the database.
+
+        Why this matters:
+        - After long runs, context compaction may cause agent to "invent" seeds
+        - Agent might follow patterns rather than fetching actual seed text
+        - This gate catches the mismatch and shows the correct seed
+
+      check: "agent_known_text vs course_seeds.known_text (normalized comparison)"
+      error_format: |
+        {
+          "error": "CANONICAL MISMATCH: Your known_text does not match the canonical seed",
+          "seed": "S0105",
+          "you_sent": "[hallucinated seed text]",
+          "canonical": "[actual seed from database]",
+          "hint": "Use the EXACT canonical seed text. Fetch from GET /api/seeds if unsure."
+        }
+
+      resolution: "Agent must fetch correct seed via GET /api/seeds and resubmit"
+
     gate_1_zut_conflict:
       name: "ZUT (Zero Untaught) Conflict Detection"
       description: |
@@ -310,6 +333,22 @@ service CourseBuilderAPI:
       body:
         target_text: "string"
 
+    get_api_resume:
+      path: "GET /api/resume/:courseCode"
+      purpose: "Get everything needed to resume after context compaction"
+      returns: |
+        {
+          "next_seed": {"seed_number": 107, "known_text": "...", "hint": "..."},
+          "recent_seeds": [...last 5 completed with translations...],
+          "recent_legos": [...last 20 new LEGOs for phrase context...],
+          "progress": "15.9%",
+          "completed_seeds": 106,
+          "total_seeds": 668,
+          "vocab_size": 241,
+          "vocab_mode": "characters"
+        }
+      critical: "ALWAYS call this after context compaction - do NOT guess seeds"
+
     get_api_seeds:
       path: "GET /api/seeds/:courseCode"
       purpose: "Get seeds for a course"
@@ -414,6 +453,14 @@ service CourseBuilderAPI:
       For autonomous course building without human intervention.
       Agent processes seeds in batches, continues until complete.
 
+    ## ⚠️ FIRST THING AFTER RESUMING OR COMPACTION ⚠️
+    resume_first: |
+      If you're resuming work or your context was compacted:
+      IMMEDIATELY call: GET /api/resume/:courseCode
+
+      This gives you the exact next seed. Do NOT proceed from memory.
+      Do NOT guess what seed comes next. The API knows the truth.
+
     task: "Build complete course from canonical seeds"
     batch_size: 30
 
@@ -434,11 +481,14 @@ service CourseBuilderAPI:
 
     on_context_compaction: |
       If conversation context compacts mid-task:
-      1. Read this APML to restore understanding
-      2. GET /api/stats/:courseCode to see current progress
-      3. Query database for next incomplete seed
-      4. Continue from where you left off
+      1. GET /api/resume/:courseCode - This single call returns EVERYTHING:
+         - next_seed: The exact seed number and known_text to work on
+         - recent_seeds: Last 5 completed seeds (translation style reference)
+         - recent_legos: Last 20 new LEGOs (phrase vocabulary context)
+         - progress: Percentage complete, vocab size
+      2. Continue from next_seed immediately - do NOT guess or invent seeds
 
-      The database IS the state - no external tracking needed.
+      CRITICAL: After compaction, ALWAYS use /api/resume to get the canonical
+      seed text. Do NOT hallucinate seeds based on patterns you remember.
 
     done_when: "All seeds submitted successfully via POST /api/seed/complete"

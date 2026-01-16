@@ -424,9 +424,9 @@ export default {
         }
 
         // Transform API response to expected format
-        // Stats: { seeds, legos, baskets, phrases, introductions, audio }
+        // Stats: { seeds, completedSeeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
-          const stats = contentStats[course.code] || { seeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+          const stats = contentStats[course.code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
           return {
             course_code: course.code,
             source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
@@ -435,7 +435,7 @@ export default {
             version: '1.0',
             created_at: new Date().toISOString(),
             status: course.complete ? 'complete' : 'in_progress',
-            seed_pairs: stats.seeds,
+            seed_pairs: stats.completedSeeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
             phrases: stats.phrases,
@@ -444,7 +444,7 @@ export default {
               introductions: stats.introductions
             },
             phases_completed: [
-              ...(stats.seeds > 0 ? ['1'] : []),
+              ...(stats.completedSeeds > 0 ? ['1'] : []),
               ...(stats.legos > 0 ? ['3'] : []),
               ...(stats.baskets > 0 ? ['5'] : []),
               ...(stats.introductions > 0 ? ['6'] : []),

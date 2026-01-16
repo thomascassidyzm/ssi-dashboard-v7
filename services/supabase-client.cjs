@@ -988,14 +988,22 @@ async function bulkUpdateFlagStatus(uuids, courseCode, status, notes = '') {
 async function getCourseContentStats(courseCode) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const stats = { seeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+  const stats = { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
 
-  // Count seeds
+  // Count total seeds (all rows in course_seeds)
   const { count: seedCount } = await supabase
     .from('course_seeds')
     .select('*', { count: 'exact', head: true })
     .eq('course_code', courseCode)
   stats.seeds = seedCount || 0
+
+  // Count completed seeds (those with non-empty target_text)
+  const { count: completedSeedCount } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .neq('target_text', '')
+  stats.completedSeeds = completedSeedCount || 0
 
   // Count legos
   const { count: legoCount } = await supabase
@@ -1035,7 +1043,7 @@ async function getCourseContentStats(courseCode) {
  * Get content stats for all courses
  * Returns an object keyed by course code
  *
- * @returns {Promise<Object>} { courseCode: { seeds, legos, baskets }, ... }
+ * @returns {Promise<Object>} { courseCode: { seeds, completedSeeds, legos, baskets }, ... }
  */
 async function getAllCourseContentStats() {
   if (!supabase) throw new Error('Supabase not initialized')
@@ -1053,8 +1061,9 @@ async function getAllCourseContentStats() {
   await Promise.all((courses || []).map(async (course) => {
     const courseCode = course.code
 
-    const [seedsResult, legosResult, phrasesResult, audioResult] = await Promise.all([
+    const [seedsResult, completedSeedsResult, legosResult, phrasesResult, audioResult] = await Promise.all([
       supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
+      supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).neq('target_text', ''),
       supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
       supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
       supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode)
@@ -1062,6 +1071,7 @@ async function getAllCourseContentStats() {
 
     result[courseCode] = {
       seeds: seedsResult.count || 0,
+      completedSeeds: completedSeedsResult.count || 0,
       legos: legosResult.count || 0,
       baskets: legosResult.count || 0,  // 1 basket per lego
       phrases: phrasesResult.count || 0,

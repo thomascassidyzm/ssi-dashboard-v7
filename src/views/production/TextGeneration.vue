@@ -296,9 +296,9 @@ const engines = [
   { id: 'browser', label: 'Safari', description: 'Browser' }
 ]
 
+// Only Opus - Sonnet produces poor quality (formulaic, repetitive patterns)
 const models = [
-  { id: 'opus', label: 'Opus 4.5', description: 'Best quality' },
-  { id: 'sonnet', label: 'Sonnet 4.5', description: 'Faster' }
+  { id: 'opus', label: 'Opus 4.5', description: 'Best quality' }
 ]
 const selectedModel = ref('opus')
 
