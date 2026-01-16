@@ -2309,6 +2309,19 @@ app.post('/api/seed/complete', async (req, res) => {
       phrases: totalPhrases,
       buildup_phrases: totalBuildupPhrases,
       warnings: warnings.length > 0 ? warnings : undefined,
+
+      // QUALITY REMINDER - reinforced on every successful submission
+      quality_reminder: {
+        role: 'You are a world-class language teacher creating speakable phrases.',
+        goal: 'Maximum VARIETY in sentence structures, within vocabulary constraints.',
+        anti_pattern: 'Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.',
+        examples: [
+          'GOOD: "I think we should go tomorrow" → "Maybe she wants to come too" → "The weather looks nice today"',
+          'BAD: "I don\'t know if..." → "I\'m not sure if..." → "I don\'t know if..." (formulaic, lazy)'
+        ],
+        mantra: 'If you catch yourself repeating a pattern, STOP and create something different.'
+      },
+
       // Always tell agent what's next
       next_seed: nextSeed ? {
         seed_number: nextSeed.seed_number,
