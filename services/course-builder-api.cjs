@@ -313,37 +313,42 @@ async function getBuildProgress(courseCode) {
 }
 
 /**
- * Spawn a new Claude agent for a course
+ * Spawn a new Claude agent for a course using osascript
+ * Opens a new terminal window (iTerm2 or Terminal) and runs claude there
  */
-function spawnBuildAgent(courseCode, agentNumber) {
-  const prompt = `You are Agent #${agentNumber} building seeds for ${courseCode}.
+function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  // Keep prompt on single line to avoid AppleScript escaping issues
+  const prompt = `You are Agent #${agentNumber} for ${courseCode}. Run /course-resume first, then build ${BATCH_SIZE} seeds autonomously. Fix validation errors (max 3 retries per seed). Say BATCH COMPLETE and exit when done.`;
 
-FIRST: Run /course-resume to get your context and starting position.
+  console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode} in ${terminal}`);
 
-YOUR MISSION: Build exactly ${BATCH_SIZE} seeds from your starting position, then EXIT.
+  // Build the claude command
+  const claudeCmd = `claude --model opus --dangerously-skip-permissions -p '${prompt.replace(/'/g, "'\"'\"'")}'`;
 
-RULES:
-1. Do NOT stop to ask questions - build autonomously
-2. Do NOT wait for approval - proceed continuously
-3. If validation fails, fix and retry (max 3 attempts per seed, then skip)
-4. After completing ${BATCH_SIZE} seeds, say "BATCH COMPLETE" and exit
-5. Do NOT continue beyond your ${BATCH_SIZE}-seed quota
+  let osascript;
+  if (terminal === 'iTerm2') {
+    osascript = `tell application "iTerm2"
+      activate
+      set newWindow to (create window with default profile)
+      tell current session of newWindow
+        write text "${claudeCmd.replace(/"/g, '\\"')}"
+      end tell
+    end tell`;
+  } else {
+    // Default to Terminal.app
+    osascript = `tell application "Terminal"
+      activate
+      do script "${claudeCmd.replace(/"/g, '\\"')}"
+    end tell`;
+  }
 
-The coordinator will spawn a fresh agent to continue after you.`;
-
-  console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode}`);
-
-  const agent = spawn('claude', [
-    '--model', 'opus',
-    '--dangerously-skip-permissions',
-    '-p', prompt
-  ], {
-    stdio: 'inherit',
-    detached: false
+  const agent = spawn('osascript', ['-e', osascript], {
+    stdio: 'pipe',
+    detached: true
   });
 
   agent.on('error', (err) => {
-    console.error(`[BUILD] Agent #${agentNumber} spawn error:`, err.message);
+    console.error(`[BUILD] Agent #${agentNumber} osascript error:`, err.message);
     const build = activeBuilds.get(courseCode);
     if (build) {
       build.agent = null;
@@ -352,11 +357,13 @@ The coordinator will spawn a fresh agent to continue after you.`;
   });
 
   agent.on('exit', (code) => {
-    console.log(`[BUILD] Agent #${agentNumber} exited with code ${code}`);
+    // osascript exits immediately after launching the terminal window
+    // The actual claude process runs independently in the terminal
+    console.log(`[BUILD] Agent #${agentNumber} terminal launched (osascript exit code: ${code})`);
     const build = activeBuilds.get(courseCode);
     if (build) {
-      build.agent = null;
-      build.status = 'agent_exited';
+      // Don't set agent to null - we track via progress, not process
+      build.status = 'agent_running';
     }
   });
 
@@ -394,7 +401,7 @@ async function checkBuilds() {
         build.lastSeenSeed = progress.completed;
         build.lastProgressTime = now;
         build.status = 'running';
-        build.agent = spawnBuildAgent(courseCode, build.agentCount);
+        build.agent = spawnBuildAgent(courseCode, build.agentCount, build.terminal);
 
         // Ping activity to reset stall timer
         recordActivity(courseCode, progress.completed);
@@ -461,8 +468,10 @@ function stopBuildManager() {
 
 /**
  * Start a build for a course
+ * @param {string} courseCode
+ * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode) {
+async function startBuild(courseCode, terminal = 'iTerm2') {
   if (activeBuilds.has(courseCode)) {
     return { ok: false, error: 'Build already active for this course' };
   }
@@ -480,7 +489,8 @@ async function startBuild(courseCode) {
     batchStartTime: Date.now(),
     lastSeenSeed: progress.completed,
     lastProgressTime: Date.now(),
-    status: 'starting'
+    status: 'starting',
+    terminal: terminal  // Store terminal preference
   });
 
   // Ensure build manager is running
@@ -2458,9 +2468,10 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
+  const { terminal = 'iTerm2' } = req.body || {};
 
   try {
-    const result = await startBuild(courseCode);
+    const result = await startBuild(courseCode, terminal);
     res.json(result);
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });

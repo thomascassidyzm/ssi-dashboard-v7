@@ -92,24 +92,6 @@
             </div>
           </div>
 
-          <!-- Model Selection -->
-          <div class="col-span-2">
-            <label class="block text-xs text-slate-500 mb-2">Model</label>
-            <div class="flex gap-2">
-              <button
-                v-for="model in models"
-                :key="model.id"
-                @click="selectedModel = model.id"
-                class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
-                :class="selectedModel === model.id
-                  ? 'bg-purple-600/20 border-purple-500/50 text-purple-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
-              >
-                <div class="font-medium">{{ model.label }}</div>
-                <div class="text-xs opacity-70">{{ model.description }}</div>
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -296,11 +278,7 @@ const engines = [
   { id: 'browser', label: 'Safari', description: 'Browser' }
 ]
 
-// Only Opus - Sonnet produces poor quality (formulaic, repetitive patterns)
-const models = [
-  { id: 'opus', label: 'Opus 4.5', description: 'Best quality' }
-]
-const selectedModel = ref('opus')
+// Model is always Opus 4.5 (Sonnet produces poor quality - formulaic, repetitive patterns)
 
 // Progress state
 const progress = ref({
@@ -450,13 +428,18 @@ async function startBuilder() {
       addEvent(`Course ${courseCode} created`)
     }
 
+    // Map engine selection to terminal name
+    const terminalMap = { cli: 'iTerm2', terminal: 'Terminal' }
+    const terminal = terminalMap[agentEngine.value] || 'iTerm2'
+
     // Start the course builder via Build Manager (30-seed batch agents)
     const response = await fetch(`${builderApiUrl}/api/build/start/${courseCode}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
-      }
+      },
+      body: JSON.stringify({ terminal })
     })
 
     const result = await response.json()
