@@ -1017,18 +1017,60 @@ const MAX_PHRASES_PER_LEGO = 13;      // Cap at 13 (diminishing returns)
 const TARGET_PHRASES_PER_LEGO = 10;   // Ideal target
 const MIN_BATCH_PHRASE_RATIO = 7.0;   // Batch must have ≥7.0 phrases per LEGO
 
-// Phrase length tiers (by target character/word count)
-// Balanced distribution: SHORT → MEDIUM → LONG progression
-const PHRASE_TIERS = {
-  SHORT: { min: 3, max: 5 },     // 3-5 chars: quick recall
-  MEDIUM: { min: 6, max: 9 },    // 6-9 chars: building complexity
-  LONG: { min: 10, max: 999 }    // 10+ chars: full sentences (spaced repetition)
+// Phrase length tiers in SYLLABLES (language-agnostic target)
+// We convert to characters using language-specific ratios
+const SYLLABLE_TIERS = {
+  SHORT: { min: 3, max: 5 },     // 3-5 syllables: quick recall
+  MEDIUM: { min: 6, max: 9 },    // 6-9 syllables: building complexity
+  LONG: { min: 10, max: 999 }    // 10+ syllables: full sentences (spaced repetition)
 };
+
+// Average characters per syllable by target language
+// Used to convert syllable tiers to character thresholds
+const CHARS_PER_SYLLABLE = {
+  zho: 1.0,   // Chinese: 1 character ≈ 1 syllable
+  jpn: 1.5,   // Japanese: hiragana/katakana ~1.5 chars per syllable
+  kor: 1.0,   // Korean: 1 syllable block = 1 "character"
+  fra: 3.5,   // French: ~3.5 chars per syllable (e.g., "parler" = 6 chars, 2 syllables)
+  spa: 3.2,   // Spanish: ~3.2 chars per syllable (e.g., "hablar" = 6 chars, 2 syllables)
+  deu: 3.0,   // German: ~3 chars per syllable (compound words!)
+  eng: 3.8,   // English: ~3.8 chars per syllable
+  ita: 3.0,   // Italian: ~3 chars per syllable
+  por: 3.3,   // Portuguese: ~3.3 chars per syllable
+  DEFAULT: 3.5 // Default for unknown languages
+};
+
+// Extract target language from course_code (e.g., "fra_for_eng" → "fra")
+function getTargetLang(courseCode) {
+  const match = courseCode.match(/^([a-z]{3})_for_/);
+  return match ? match[1] : 'DEFAULT';
+}
+
+// Get character thresholds for a language
+function getCharThresholds(courseCode) {
+  const targetLang = getTargetLang(courseCode);
+  const charsPerSyl = CHARS_PER_SYLLABLE[targetLang] || CHARS_PER_SYLLABLE.DEFAULT;
+
+  return {
+    SHORT: {
+      min: Math.round(SYLLABLE_TIERS.SHORT.min * charsPerSyl),
+      max: Math.round(SYLLABLE_TIERS.SHORT.max * charsPerSyl)
+    },
+    MEDIUM: {
+      min: Math.round(SYLLABLE_TIERS.MEDIUM.min * charsPerSyl),
+      max: Math.round(SYLLABLE_TIERS.MEDIUM.max * charsPerSyl)
+    },
+    LONG: {
+      min: Math.round(SYLLABLE_TIERS.LONG.min * charsPerSyl),
+      max: 999
+    }
+  };
+}
 
 // Minimum phrases per tier (ensures balanced progression)
 const MIN_SHORT_PHRASES = 2;    // 2-3 short phrases
 const MIN_MEDIUM_PHRASES = 2;   // 2-3 medium phrases
-const MIN_LONG_PHRASES = 4;     // 4-5 long phrases (critical for retention)
+const MIN_LONG_PHRASES = 3;     // 3-4 long phrases (critical for retention, reduced from 4 for Chinese)
 const MIN_MIDDLE_RANGE = 2;     // At least 2 phrases in 5-10 char range (prevents short→long jump)
 
 // LEGO balance thresholds (practice_score = phrase_count / seeds_since_introduction)
@@ -1094,40 +1136,46 @@ function checkTiling(seedTarget, legos, courseCode) {
 // =============================================================================
 
 /**
- * Categorize phrases by length tier and check for minimum ETERNAL count.
+ * Categorize phrases by length tier and check for minimum counts.
+ * Uses CHARACTER COUNT with language-specific thresholds (based on chars/syllable ratio).
  *
  * Returns: { valid: true, tiers: {...} } or { valid: false, error, tiers: {...} }
  */
 function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
-  const chinese = isChinese(courseCode);
-  const unit = chinese ? 'characters' : 'words';
+  // Get language-specific character thresholds (converts syllables → chars)
+  const thresholds = getCharThresholds(courseCode);
+  const targetLang = getTargetLang(courseCode);
+  const charsPerSyl = CHARS_PER_SYLLABLE[targetLang] || CHARS_PER_SYLLABLE.DEFAULT;
 
   const tiers = {
-    SHORT: [],   // 3-5 chars
-    MEDIUM: [],  // 6-9 chars
-    LONG: []     // 10+ chars
+    SHORT: [],
+    MEDIUM: [],
+    LONG: []
   };
 
-  // Track middle range (5-10) separately to ensure smooth progression
-  const middleRange = [];  // 5-10 chars
+  // Track middle range separately to ensure smooth progression
+  const middleMin = Math.round(5 * charsPerSyl);
+  const middleMax = Math.round(10 * charsPerSyl);
+  const middleRange = [];
 
   for (const phrase of phrases) {
-    const length = chinese
-      ? phrase.target.replace(/[\s\u3000。，！？、：；""'']/g, '').length
-      : phrase.target.split(/\s+/).length;
+    // Always use character count (excluding punctuation and spaces)
+    const length = phrase.target
+      .replace(/[\s\u3000。，！？、：；""''.,!?;:'"()-]/g, '')
+      .length;
 
-    // Categorize into tiers
-    if (length >= PHRASE_TIERS.LONG.min) {
+    // Categorize into tiers based on language-specific thresholds
+    if (length >= thresholds.LONG.min) {
       tiers.LONG.push({ target: phrase.target, length });
-    } else if (length >= PHRASE_TIERS.MEDIUM.min) {
+    } else if (length >= thresholds.MEDIUM.min) {
       tiers.MEDIUM.push({ target: phrase.target, length });
-    } else if (length >= PHRASE_TIERS.SHORT.min) {
+    } else if (length >= thresholds.SHORT.min) {
       tiers.SHORT.push({ target: phrase.target, length });
     }
-    // Phrases < 3 chars are ignored (too short to be useful)
+    // Phrases below SHORT.min are ignored (too short to be useful)
 
-    // Also track middle range (5-10) for progression check
-    if (length >= 5 && length <= 10) {
+    // Also track middle range for progression check
+    if (length >= middleMin && length <= middleMax) {
       middleRange.push({ target: phrase.target, length });
     }
   }
@@ -1166,16 +1214,16 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
   const errors = [];
 
   if (tiers.SHORT.length < minShort) {
-    errors.push(`SHORT: need ${minShort}+, got ${tiers.SHORT.length} (3-5 ${unit})`);
+    errors.push(`SHORT: need ${minShort}+, got ${tiers.SHORT.length} (${thresholds.SHORT.min}-${thresholds.SHORT.max} chars ≈ 3-5 syllables)`);
   }
   if (tiers.MEDIUM.length < minMedium) {
-    errors.push(`MEDIUM: need ${minMedium}+, got ${tiers.MEDIUM.length} (6-9 ${unit})`);
+    errors.push(`MEDIUM: need ${minMedium}+, got ${tiers.MEDIUM.length} (${thresholds.MEDIUM.min}-${thresholds.MEDIUM.max} chars ≈ 6-9 syllables)`);
   }
   if (tiers.LONG.length < minLong) {
-    errors.push(`LONG: need ${minLong}+, got ${tiers.LONG.length} (10+ ${unit})`);
+    errors.push(`LONG: need ${minLong}+, got ${tiers.LONG.length} (${thresholds.LONG.min}+ chars ≈ 10+ syllables)`);
   }
   if (middleRange.length < minMiddle) {
-    errors.push(`MIDDLE: need ${minMiddle}+, got ${middleRange.length} (5-10 ${unit})`);
+    errors.push(`MIDDLE: need ${minMiddle}+, got ${middleRange.length} (${middleMin}-${middleMax} chars ≈ 5-10 syllables)`);
   }
 
   if (errors.length > 0) {
@@ -1183,15 +1231,16 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
     return {
       valid: false,
       tiers: tierCounts,
+      thresholds,  // Include thresholds in response for debugging
       mode,
       error: `Phrase balance failed: ${errors.join('; ')}`,
       hint: seedNumber <= 20
-        ? `Softened mode: 1+ SHORT, 1+ MEDIUM, 2+ LONG, 1+ middle range`
-        : `Hard mode: 2+ SHORT (3-5), 2+ MEDIUM (6-9), 4+ LONG (10+), 2+ in 5-10 range`
+        ? `Softened mode: 1+ SHORT (${thresholds.SHORT.min}+ chars), 1+ MEDIUM (${thresholds.MEDIUM.min}+ chars), 2+ LONG (${thresholds.LONG.min}+ chars)`
+        : `Hard mode: 2+ SHORT, 2+ MEDIUM, 3+ LONG (${thresholds.LONG.min}+ chars for ${targetLang})`
     };
   }
 
-  return { valid: true, tiers: tierCounts, mode: seedNumber <= 20 ? 'softened' : 'hard' };
+  return { valid: true, tiers: tierCounts, thresholds, mode: seedNumber <= 20 ? 'softened' : 'hard' };
 }
 
 // =============================================================================
@@ -2717,15 +2766,11 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
 
-    // FULL VOCABULARY - All LEGOs available for phrase generation
-    // Use these known/target pairs when constructing phrases
-    available_vocabulary: (allLegos || []).map(l => ({
-      known: l.known_text,
-      target: l.target_text,
-      type: l.type,
-      // Include M-LEGO components so agent knows the parts
-      ...(l.type === 'M' && l.components ? { components: l.components } : {})
-    })),
+    // Vocabulary summary (full list available via GET /api/vocab/:courseCode if needed)
+    vocabulary_summary: {
+      total: (allLegos || []).length,
+      hint: 'Trust your instincts as a language teacher. Create meaningful M-type chunks for multi-character concepts. The API validates ZUT - it will tell you if you conflict with existing vocabulary.'
+    },
 
     // RECENCY GUIDANCE - Critical for avoiding repetitive patterns
     recency: {

@@ -132,6 +132,36 @@
             </div>
           </button>
 
+          <!-- Active Jobs Card -->
+          <router-link to="/jobs" class="action-card card-jobs">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 21V9"/>
+                    <path d="M13 13h4M13 17h2"/>
+                  </svg>
+                </div>
+                <div class="card-badge jobs">
+                  <span class="badge-pulse"></span>
+                  <span class="badge-label">live</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Active Jobs</h2>
+                <p class="card-description">Monitor and control all running builds, audio generation, and pipelines</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">View Jobs</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
             <div class="card-glow"></div>
@@ -263,6 +293,8 @@ onMounted(() => {
   --mc-docs-glow: rgba(168, 85, 247, 0.15);
   --mc-import: #f97316;
   --mc-import-glow: rgba(249, 115, 22, 0.15);
+  --mc-jobs: #8b5cf6;
+  --mc-jobs-glow: rgba(139, 92, 246, 0.15);
 
   min-height: 100vh;
   background: var(--mc-void);
@@ -459,8 +491,14 @@ onMounted(() => {
 
 .actions-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+}
+
+@media (min-width: 1400px) {
+  .actions-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 @media (max-width: 1280px) {
@@ -533,6 +571,10 @@ button.action-card {
   background: linear-gradient(180deg, var(--mc-import-glow) 0%, transparent 100%);
 }
 
+.card-jobs .card-glow {
+  background: linear-gradient(180deg, var(--mc-jobs-glow) 0%, transparent 100%);
+}
+
 .action-card:hover .card-glow {
   opacity: 1;
 }
@@ -560,6 +602,11 @@ button.action-card {
 .card-import:hover {
   border-color: var(--mc-import);
   box-shadow: 0 20px 40px -20px var(--mc-import-glow);
+}
+
+.card-jobs:hover {
+  border-color: var(--mc-jobs);
+  box-shadow: 0 20px 40px -20px var(--mc-jobs-glow);
 }
 
 .card-content {
@@ -615,6 +662,10 @@ button.action-card {
   color: var(--mc-import);
 }
 
+.card-jobs .card-icon {
+  color: var(--mc-jobs);
+}
+
 .card-library:hover .card-icon {
   background: var(--mc-accent);
   border-color: var(--mc-accent);
@@ -642,6 +693,12 @@ button.action-card {
 .card-import:hover .card-icon {
   background: var(--mc-import);
   border-color: var(--mc-import);
+  color: white;
+}
+
+.card-jobs:hover .card-icon {
+  background: var(--mc-jobs);
+  border-color: var(--mc-jobs);
   color: white;
 }
 
@@ -711,6 +768,19 @@ button.action-card {
   color: var(--mc-import);
 }
 
+.card-badge.jobs {
+  background: var(--mc-jobs-glow);
+  border-color: var(--mc-jobs);
+}
+
+.card-badge.jobs .badge-label {
+  color: var(--mc-jobs);
+}
+
+.card-badge.jobs .badge-pulse {
+  background: var(--mc-jobs);
+}
+
 .card-badge.loading {
   min-width: 60px;
 }
@@ -770,6 +840,7 @@ button.action-card {
 .card-production:hover .card-action { color: var(--mc-production); }
 .card-docs:hover .card-action { color: var(--mc-docs); }
 .card-import:hover .card-action { color: var(--mc-import); }
+.card-jobs:hover .card-action { color: var(--mc-jobs); }
 
 .card-arrow {
   width: 20px;
@@ -787,6 +858,7 @@ button.action-card {
 .card-production:hover .card-arrow { color: var(--mc-production); }
 .card-docs:hover .card-arrow { color: var(--mc-docs); }
 .card-import:hover .card-arrow { color: var(--mc-import); }
+.card-jobs:hover .card-arrow { color: var(--mc-jobs); }
 
 /* Stats Bar */
 .stats-section {

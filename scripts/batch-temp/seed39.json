@@ -1,0 +1,121 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 39,
+  "known_text": "But I'm a little tired this morning.",
+  "target_text": "Mais je suis un peu fatigué ce matin.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "but",
+      "target": "mais",
+      "phrases": [
+        {"known": "but", "target": "mais"},
+        {"known": "but I learn", "target": "mais j'apprends"},
+        {"known": "but I started", "target": "mais j'ai commencé"},
+        {"known": "but she doesn't want", "target": "mais elle ne veut pas"},
+        {"known": "but we don't want to interrupt", "target": "mais nous ne voulons pas interrompre"},
+        {"known": "but I've been learning for about a week", "target": "mais j'apprends depuis environ une semaine"},
+        {"known": "but I started to think about it carefully", "target": "mais j'ai commencé à y penser soigneusement"},
+        {"known": "because I want to go but she doesn't want to", "target": "parce que je veux partir mais elle ne veut pas"},
+        {"known": "but we don't want to interrupt the story this afternoon", "target": "mais nous ne voulons pas interrompre l'histoire cet après-midi"},
+        {"known": "but I've been learning the French language for about a week here", "target": "mais j'apprends le français depuis environ une semaine ici"},
+        {"known": "but she doesn't want to read anything when other people are here", "target": "mais elle ne veut rien lire quand d'autres personnes sont ici"},
+        {"known": "but I started to think about it carefully last month with everyone else", "target": "mais j'ai commencé à y penser soigneusement le mois dernier avec tout le monde"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm",
+      "target": "je suis",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "am", "target": "suis"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "am", "target": "suis"},
+        {"known": "I'm", "target": "je suis"},
+        {"known": "I'm here", "target": "je suis ici"},
+        {"known": "but I'm here", "target": "mais je suis ici"},
+        {"known": "I'm here tonight", "target": "je suis ici ce soir"},
+        {"known": "but I'm here with everyone", "target": "mais je suis ici avec tout le monde"},
+        {"known": "because I'm here this afternoon", "target": "parce que je suis ici cet après-midi"},
+        {"known": "why am I here when other people are here", "target": "pourquoi je suis ici quand d'autres personnes sont ici"},
+        {"known": "but I'm here with everyone else this afternoon", "target": "mais je suis ici avec tout le monde cet après-midi"},
+        {"known": "because I'm here to learn the French language with other people", "target": "parce que je suis ici pour apprendre le français avec d'autres personnes"},
+        {"known": "but I'm here to read the story carefully with everyone else tonight", "target": "mais je suis ici pour lire l'histoire soigneusement avec tout le monde ce soir"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a little",
+      "target": "un peu",
+      "components": [
+        {"known": "a", "target": "un"},
+        {"known": "little", "target": "peu"}
+      ],
+      "phrases": [
+        {"known": "a", "target": "un"},
+        {"known": "little", "target": "peu"},
+        {"known": "a little", "target": "un peu"},
+        {"known": "a little here", "target": "un peu ici"},
+        {"known": "I'm a little", "target": "je suis un peu"},
+        {"known": "but I'm a little", "target": "mais je suis un peu"},
+        {"known": "I'm a little here tonight", "target": "je suis un peu ici ce soir"},
+        {"known": "because I'm a little here this afternoon", "target": "parce que je suis un peu ici cet après-midi"},
+        {"known": "but I'm a little here with everyone else", "target": "mais je suis un peu ici avec tout le monde"},
+        {"known": "why am I a little here when other people are here tonight", "target": "pourquoi je suis un peu ici quand d'autres personnes sont ici ce soir"},
+        {"known": "because I'm a little here to learn the French language this afternoon", "target": "parce que je suis un peu ici pour apprendre le français cet après-midi"},
+        {"known": "but I'm a little here to read the story carefully with everyone else", "target": "mais je suis un peu ici pour lire l'histoire soigneusement avec tout le monde"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "tired",
+      "target": "fatigué",
+      "phrases": [
+        {"known": "tired", "target": "fatigué"},
+        {"known": "a little tired", "target": "un peu fatigué"},
+        {"known": "I'm tired", "target": "je suis fatigué"},
+        {"known": "I'm a little tired", "target": "je suis un peu fatigué"},
+        {"known": "but I'm a little tired", "target": "mais je suis un peu fatigué"},
+        {"known": "I'm a little tired tonight", "target": "je suis un peu fatigué ce soir"},
+        {"known": "but I'm a little tired here", "target": "mais je suis un peu fatigué ici"},
+        {"known": "because I'm a little tired this afternoon", "target": "parce que je suis un peu fatigué cet après-midi"},
+        {"known": "why am I a little tired when other people are here", "target": "pourquoi je suis un peu fatigué quand d'autres personnes sont ici"},
+        {"known": "but I'm a little tired when I've been learning for about a week", "target": "mais je suis un peu fatigué quand j'apprends depuis environ une semaine"},
+        {"known": "because I'm a little tired after reading the story carefully tonight", "target": "parce que je suis un peu fatigué après lire l'histoire soigneusement ce soir"},
+        {"known": "but I'm a little tired when I started to think about it carefully last month", "target": "mais je suis un peu fatigué quand j'ai commencé à y penser soigneusement le mois dernier"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "this morning",
+      "target": "ce matin",
+      "components": [
+        {"known": "this", "target": "ce"},
+        {"known": "morning", "target": "matin"}
+      ],
+      "phrases": [
+        {"known": "this", "target": "ce"},
+        {"known": "morning", "target": "matin"},
+        {"known": "this morning", "target": "ce matin"},
+        {"known": "go this morning", "target": "partir ce matin"},
+        {"known": "tired this morning", "target": "fatigué ce matin"},
+        {"known": "I'm a little tired this morning", "target": "je suis un peu fatigué ce matin"},
+        {"known": "but I'm a little tired this morning", "target": "mais je suis un peu fatigué ce matin"},
+        {"known": "because I'm a little tired this morning here", "target": "parce que je suis un peu fatigué ce matin ici"},
+        {"known": "why am I a little tired this morning when other people are here", "target": "pourquoi je suis un peu fatigué ce matin quand d'autres personnes sont ici"},
+        {"known": "but I'm a little tired this morning after learning for about a week", "target": "mais je suis un peu fatigué ce matin après apprendre depuis environ une semaine"},
+        {"known": "because I'm a little tired this morning after reading the story carefully", "target": "parce que je suis un peu fatigué ce matin après lire l'histoire soigneusement"},
+        {"known": "but I'm a little tired this morning when I started to think about it carefully", "target": "mais je suis un peu fatigué ce matin quand j'ai commencé à y penser soigneusement"},
+        {"known": "because I'm a little tired this morning after learning the French language with everyone else", "target": "parce que je suis un peu fatigué ce matin après apprendre le français avec tout le monde"}
+      ]
+    }
+  ]
+}

@@ -26,7 +26,6 @@ Replace `{course_code}` with your course (e.g., `zho_for_eng`, `deu_for_eng`).
 
 This returns:
 - `next_seed`: The EXACT seed number and known_text to work on
-- `available_vocabulary`: **ALL LEGOs you can use** (known/target pairs with components)
 - `recent_seeds`: Last 5 completed seeds (for style reference)
 - `recent_legos`: Last 20 new LEGOs (recently introduced)
 - `recency.patterns_to_avoid`: Patterns that are overused - don't repeat these
@@ -34,14 +33,7 @@ This returns:
 - `progress`: How far along you are
 - `vocab_size`: Current vocabulary count
 
-**CRITICAL**: The `available_vocabulary` array contains EVERY LEGO the learner knows at your starting point.
-
-**VOCABULARY GROWS AS YOU BUILD**: When you introduce a new LEGO, it immediately becomes available for phrases in that SAME seed and all subsequent seeds. So:
-- Seed 51 phrases can use: `available_vocabulary` + seed 51's new LEGOs
-- Seed 52 phrases can use: `available_vocabulary` + seed 51's LEGOs + seed 52's new LEGOs
-- And so on...
-
-The API validates this automatically - your LEGOs are inserted first, then phrases are checked against the updated vocabulary.
+**TRUST THE API**: You don't need the full vocabulary list. The API validates ZUT automatically - if you create a LEGO that conflicts with existing vocabulary, it will tell you and suggest fixes. Just decompose naturally as a language teacher would.
 
 ## DO NOT:
 - Guess what seed comes next
