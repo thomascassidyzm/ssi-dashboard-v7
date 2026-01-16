@@ -10162,6 +10162,289 @@ app.get('/api/docs/:slug', async (req, res) => {
   }
 });
 
+// =============================================================================
+// MISSION CONTROL API - Aggregated job management across all services
+// =============================================================================
+
+/**
+ * GET /api/mission-control/jobs
+ *
+ * Aggregates active jobs from all services:
+ * - Course Builder (port 3471): Active build jobs
+ * - Phase 8 Audio (port 3465): Audio generation progress
+ * - Phase 9 Manifest (port 3466): Manifest compilation
+ * - Orchestrator pipelines: Internal pipeline jobs
+ *
+ * Returns unified job list with service, status, progress, and controls.
+ */
+app.get('/api/mission-control/jobs', async (req, res) => {
+  const jobs = [];
+  const services = {};
+
+  // Service URLs
+  const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_API_URL || 'http://localhost:3471';
+  const PHASE8_URL = PHASE_SERVERS[8] || 'http://localhost:3465';
+  const PHASE9_URL = PHASE_SERVERS[9] || 'http://localhost:3466';
+
+  // Helper to check service health
+  async function checkService(name, url, healthPath = '/health') {
+    try {
+      const response = await axios.get(`${url}${healthPath}`, { timeout: 2000 });
+      return { healthy: true, port: new URL(url).port || 80, status: response.data?.status || 'ok' };
+    } catch (err) {
+      return { healthy: false, port: new URL(url).port || 80, error: err.code || 'UNAVAILABLE' };
+    }
+  }
+
+  // Check all services health in parallel
+  const [courseBuilderHealth, phase8Health, phase9Health] = await Promise.all([
+    checkService('course-builder', COURSE_BUILDER_URL),
+    checkService('phase8-audio', PHASE8_URL),
+    checkService('phase9-manifest', PHASE9_URL)
+  ]);
+
+  services['course-builder'] = courseBuilderHealth;
+  services['phase8-audio'] = phase8Health;
+  services['phase9-manifest'] = phase9Health;
+  services['orchestrator'] = { healthy: true, port: PORT };
+
+  // 1. Get Course Builder active builds
+  if (courseBuilderHealth.healthy) {
+    try {
+      const response = await axios.get(`${COURSE_BUILDER_URL}/api/build/active`, { timeout: 5000 });
+      const builds = response.data?.builds || [];
+
+      for (const build of builds) {
+        jobs.push({
+          id: `${build.course_code}-build`,
+          service: 'course-builder',
+          type: 'build',
+          courseCode: build.course_code,
+          status: build.status === 'agent_running' ? 'running' :
+                  build.status === 'complete' ? 'completed' :
+                  build.status === 'agent_error' ? 'failed' : build.status,
+          progress: build.progress ? {
+            current: build.progress.completed || 0,
+            total: build.progress.total || 260,
+            percentage: build.progress.total ? Math.round((build.progress.completed / build.progress.total) * 100) : 0
+          } : null,
+          metadata: {
+            agentCount: build.agent_count
+          },
+          startedAt: build.started_at || null,
+          canStop: true,
+          canPause: false,
+          canResume: false
+        });
+      }
+    } catch (err) {
+      console.warn('[Mission Control] Could not fetch Course Builder jobs:', err.message);
+    }
+  }
+
+  // 2. Get Phase 8 Audio generation status
+  if (phase8Health.healthy) {
+    try {
+      const response = await axios.get(`${PHASE8_URL}/status`, { timeout: 5000 });
+      const status = response.data;
+
+      if (status.active && status.courseCode) {
+        jobs.push({
+          id: `${status.courseCode}-audio`,
+          service: 'phase8-audio',
+          type: 'audio-generation',
+          courseCode: status.courseCode,
+          status: 'running',
+          progress: {
+            current: status.current || 0,
+            total: status.total || 0,
+            percentage: status.total ? Math.round((status.current / status.total) * 100) : 0,
+            success: status.success || 0,
+            failed: status.failed || 0
+          },
+          metadata: {
+            operation: status.operation,
+            role: status.role,
+            lastItem: status.lastItem,
+            errors: status.errors?.slice(0, 5) || []
+          },
+          startedAt: status.startedAt || null,
+          canStop: true,
+          canPause: false,
+          canResume: false
+        });
+      }
+    } catch (err) {
+      console.warn('[Mission Control] Could not fetch Phase 8 status:', err.message);
+    }
+  }
+
+  // 3. Get internal pipeline jobs
+  for (const [courseCode, pipeline] of pipelineJobs.entries()) {
+    const progress = courseProgress.get(courseCode);
+    if (progress && progress.overallStatus === 'running') {
+      jobs.push({
+        id: `${courseCode}-pipeline`,
+        service: 'orchestrator',
+        type: 'pipeline',
+        courseCode,
+        status: progress.overallStatus,
+        progress: {
+          currentPhase: progress.currentPhase,
+          phases: progress.phases
+        },
+        startedAt: pipeline.startedAt || null,
+        canStop: true,
+        canPause: false,
+        canResume: false
+      });
+    }
+  }
+
+  res.json({
+    jobs,
+    services,
+    timestamp: new Date().toISOString()
+  });
+});
+
+/**
+ * POST /api/mission-control/jobs/:jobId/stop
+ *
+ * Stop a job by ID. Job IDs are formatted as: {courseCode}-{type}
+ * Examples: fra_for_eng-build, zho_for_eng-audio, spa_for_eng-pipeline
+ */
+app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
+  const { jobId } = req.params;
+
+  // Parse job ID to extract course code and type
+  const match = jobId.match(/^(.+)-(build|audio|pipeline|manifest)$/);
+  if (!match) {
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid job ID format. Expected: {courseCode}-{type}'
+    });
+  }
+
+  const [, courseCode, jobType] = match;
+
+  const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_API_URL || 'http://localhost:3471';
+  const PHASE8_URL = PHASE_SERVERS[8] || 'http://localhost:3465';
+
+  try {
+    switch (jobType) {
+      case 'build':
+        // Stop Course Builder job
+        const buildResponse = await axios.post(
+          `${COURSE_BUILDER_URL}/api/build/stop/${courseCode}`,
+          {},
+          { timeout: 5000 }
+        );
+        return res.json({
+          success: true,
+          message: `Build for ${courseCode} stopped`,
+          result: buildResponse.data
+        });
+
+      case 'audio':
+        // Stop Phase 8 audio generation - Phase 8 doesn't have a cancel endpoint yet
+        // We'll return a message indicating this limitation
+        return res.status(501).json({
+          success: false,
+          error: 'Audio generation cancel not implemented in Phase 8 service',
+          suggestion: 'Audio generation must complete or be stopped manually'
+        });
+
+      case 'pipeline':
+        // Cancel orchestrator pipeline
+        const pipelineProgress = courseProgress.get(courseCode);
+        if (pipelineProgress) {
+          pipelineProgress.overallStatus = 'cancelled';
+          courseProgress.set(courseCode, pipelineProgress);
+
+          // Emit cancellation event via WebSocket
+          io.to(`course:${courseCode}`).emit('pipeline:cancelled', { courseCode });
+
+          return res.json({
+            success: true,
+            message: `Pipeline for ${courseCode} cancelled`
+          });
+        }
+        return res.status(404).json({
+          success: false,
+          error: `No active pipeline found for ${courseCode}`
+        });
+
+      default:
+        return res.status(400).json({
+          success: false,
+          error: `Unknown job type: ${jobType}`
+        });
+    }
+  } catch (err) {
+    console.error(`[Mission Control] Error stopping job ${jobId}:`, err.message);
+    return res.status(err.response?.status || 500).json({
+      success: false,
+      error: err.response?.data?.error || err.message
+    });
+  }
+});
+
+/**
+ * GET /api/mission-control/services
+ *
+ * Get health status of all services
+ */
+app.get('/api/mission-control/services', async (req, res) => {
+  const services = {};
+
+  const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_API_URL || 'http://localhost:3471';
+  const PHASE8_URL = PHASE_SERVERS[8] || 'http://localhost:3465';
+  const PHASE9_URL = PHASE_SERVERS[9] || 'http://localhost:3466';
+
+  async function checkService(name, url, healthPath = '/health') {
+    try {
+      const start = Date.now();
+      const response = await axios.get(`${url}${healthPath}`, { timeout: 3000 });
+      const latency = Date.now() - start;
+      return {
+        name,
+        url,
+        healthy: true,
+        port: new URL(url).port || 80,
+        status: response.data?.status || 'ok',
+        version: response.data?.version,
+        latencyMs: latency
+      };
+    } catch (err) {
+      return {
+        name,
+        url,
+        healthy: false,
+        port: new URL(url).port || 80,
+        error: err.code || err.message
+      };
+    }
+  }
+
+  const [courseBuilder, phase8, phase9] = await Promise.all([
+    checkService('Course Builder', COURSE_BUILDER_URL),
+    checkService('Phase 8 Audio', PHASE8_URL),
+    checkService('Phase 9 Manifest', PHASE9_URL)
+  ]);
+
+  res.json({
+    orchestrator: {
+      name: 'Orchestrator',
+      healthy: true,
+      port: PORT,
+      version: '7.0.0'
+    },
+    services: [courseBuilder, phase8, phase9],
+    timestamp: new Date().toISOString()
+  });
+});
+
 /**
  * Start server
  */

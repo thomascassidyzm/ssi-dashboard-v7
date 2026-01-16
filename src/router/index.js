@@ -162,6 +162,13 @@ const routes = [
     path: '/generate/:courseCode/monitor',
     redirect: to => `/course/${to.params.courseCode}`
   },
+  // Jobs Monitor - Mission Control for all active jobs across services
+  {
+    path: '/jobs',
+    name: 'JobsMonitor',
+    component: () => import('../views/JobsMonitor.vue'),
+    meta: { title: 'Active Jobs - Mission Control' }
+  },
   // Agent Swimlane Monitor - Mission Control style real-time agent tracking
   {
     path: '/monitor',
