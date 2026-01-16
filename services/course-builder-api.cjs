@@ -325,20 +325,21 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
   // Build the claude command
   const claudeCmd = `claude --model opus --dangerously-skip-permissions -p '${prompt.replace(/'/g, "'\"'\"'")}'`;
 
+  // Escape for AppleScript double-quoted string
+  const escapedCmd = claudeCmd.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
   let osascript;
   if (terminal === 'iTerm2') {
+    // Use iTerm2's direct command execution
     osascript = `tell application "iTerm2"
       activate
-      set newWindow to (create window with default profile)
-      tell current session of newWindow
-        write text "${claudeCmd.replace(/"/g, '\\"')}"
-      end tell
+      create window with default profile command "${escapedCmd}"
     end tell`;
   } else {
-    // Default to Terminal.app
+    // Terminal.app's do script auto-executes
     osascript = `tell application "Terminal"
       activate
-      do script "${claudeCmd.replace(/"/g, '\\"')}"
+      do script "${escapedCmd}"
     end tell`;
   }
 
