@@ -2495,6 +2495,13 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .select('*', { count: 'exact', head: true })
     .eq('course_code', courseCode);
 
+  // Count only NEW legos (unique introductions, not duplicates)
+  const { count: newLegos } = await supabase
+    .from('course_legos')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('is_new', true);
+
   const { count: phrases } = await supabase
     .from('course_practice_phrases')
     .select('*', { count: 'exact', head: true })
@@ -2520,7 +2527,9 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .eq('course_code', courseCode);
   const seedsWithLegos = new Set(seedData?.map(r => r.seed_number)).size;
 
-  const ratio = legos > 0 ? (phrases/legos) : 0;
+  // Ratio based on NEW legos only (the meaningful metric)
+  const effectiveLegos = newLegos || 0;
+  const ratio = effectiveLegos > 0 ? (phrases/effectiveLegos) : 0;
   const quality = ratio >= MIN_BATCH_PHRASE_RATIO ? 'PASS' : 'FAIL';
 
   // Get vocab size
@@ -2533,7 +2542,8 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     completed_seeds: completedSeeds || 0,
     seeds_with_legos: seedsWithLegos || 0,
     seeds: seedsWithLegos || 0,  // Legacy field, same as seeds_with_legos
-    legos: legos || 0,
+    legos: effectiveLegos,       // Now shows NEW legos only (the useful metric)
+    legos_total: legos || 0,     // Total including duplicates (for reference)
     phrases: phrases || 0,
     ratio: ratio.toFixed(1),
     vocab_size: vocabSet.size,
