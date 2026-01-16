@@ -223,8 +223,15 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 
-// API base URL
+// API base URL - check localStorage FIRST (EnvironmentSwitcher override)
 function getApiBaseUrl() {
+  // 1. Check localStorage override (user set via EnvironmentSwitcher) - takes priority
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
+
+  // 2. If on Vercel/remote with no override, use relative URLs
   const isRemote = typeof window !== 'undefined' &&
     window.location.hostname !== 'localhost' &&
     window.location.hostname !== '127.0.0.1'
@@ -239,11 +246,7 @@ function getApiBaseUrl() {
     return ''
   }
 
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
-  }
-
+  // 3. Local development fallback
   return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 }
 
