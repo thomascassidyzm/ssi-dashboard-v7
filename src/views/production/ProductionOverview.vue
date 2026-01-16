@@ -40,6 +40,10 @@
         <div class="stat-value">{{ courseStats.phrases.toLocaleString() }}</div>
         <div class="stat-label">Phrases</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-value" :class="ratioClass">{{ courseStats.ratio }}</div>
+        <div class="stat-label">Ratio</div>
+      </div>
       <div class="stat-card audio">
         <div class="stat-value">
           {{ store.audioCourseStats.existing.toLocaleString() }}
@@ -138,16 +142,24 @@ async function handleStatusChange(newStatus) {
 const courseStats = ref({
   seeds: 0,
   legos: 0,
-  phrases: 0
+  phrases: 0,
+  ratio: '0.0'
+})
+
+// Ratio color class based on quality threshold
+const ratioClass = computed(() => {
+  const r = parseFloat(courseStats.value.ratio)
+  if (r >= 10) return 'text-emerald-400'
+  if (r >= 7) return 'text-yellow-400'
+  return 'text-red-400'
 })
 
 // Fetch course stats from Course Builder API
 async function fetchCourseStats() {
   try {
-    // Use relative URL for remote access (orchestrator proxies to course builder)
-    const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const builderApiUrl = isRemote ? '' : (import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471')
-    const response = await fetch(`${builderApiUrl}/api/stats/${props.courseCode}`, {
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
@@ -155,7 +167,8 @@ async function fetchCourseStats() {
       courseStats.value = {
         seeds: data.seeds || 0,
         legos: data.legos || 0,
-        phrases: data.phrases || 0
+        phrases: data.phrases || 0,
+        ratio: data.ratio || '0.0'
       }
     }
   } catch (err) {
