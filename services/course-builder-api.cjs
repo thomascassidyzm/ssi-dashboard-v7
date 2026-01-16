@@ -331,40 +331,58 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Few-shot prompt - shows examples instead of pointing to skill files
-  // This is 20x smaller than loading /ssi-learner-pattern (1.5KB vs 32KB)
-  const prompt = `You build Chinese course content for ${courseCode}. Agent #${agentNumber}, batch of ${BATCH_SIZE} seeds.
+  // Few-shot prompt v2 - shows ROUND experience + inline error fixes
+  // Full version in prompts/few-shot-v2.md (10KB vs 32KB old approach)
+  const prompt = `You build Chinese course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
 
-EXAMPLE (copy this pattern exactly):
-Seed: "I'm not sure if I can remember the whole sentence."
-Target: 我不确定我能不能记住整个句子。
+## WHAT THE LEARNER EXPERIENCES (copy this structure!)
 
-LEGOs:
-1. M "I am not sure" → 我不确定 [I→我, not→不, sure→确定]
-2. M "if I can" → 我能不能 [I→我, can→能]
-3. A "to remember" → 记住
-4. M "the whole sentence" → 整个句子 [whole→整个, sentence→句子]
+ROUND 9: LEGO "as often as possible" → 尽量多
 
-Phrases for M-LEGO (components first, then build up SHORT→LONG):
-- 我 (I) / 确定 (sure) / 不 (not)
-- 不确定 (not sure) / 我不确定 (I am not sure)
-- 我不确定怎么 (I am not sure how)
-- 我不确定怎么说中文 (I am not sure how to speak Chinese)
-- 我不确定怎么和你说一点中文 (I am not sure how to speak a little Chinese with you)
+INTRO       as often as possible           →  尽量多
+COMPONENT   as much as possible            →  尽量          ← M-LEGO parts first
+COMPONENT   often                          →  多
+LEGO        as often as possible           →  尽量多        ← now they build it!
+DEBUT-1     speak as often as possible     →  尽量多说      ← 7 SHORTEST phrases
+DEBUT-2     I want to speak as often as possible → 我想尽量多说
+...
+DEBUT-7     I want to speak Chinese as often as possible → 我想尽量多说中文
+ETERNAL-1   now I want to speak Chinese as often as possible → 我现在想尽量多说中文  ← 5 LONGEST
+ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试着学怎么尽量多说
 
-KEY RULES:
-• M-LEGO components = REAL WORDS only (do→做, done→做了). NEVER "particle"→了
-• Particles (吗,了,的) inferred from context, never taught as components
-• 10-12 phrases per LEGO, SHORT→LONG progression
-• Use only vocabulary from earlier seeds + current seed
+**DEBUT/ETERNAL are computed:** 7 shortest = DEBUT, 5 longest = ETERNAL. Just order SHORT→LONG.
 
-WORKFLOW:
-1. curl http://localhost:3471/api/resume/${courseCode} → get next seed + available vocab
-2. Translate, break into LEGOs (prefer M-LEGOs for multi-word chunks)
-3. Generate phrases using only available vocab
+## BASKET FORMAT
+
+\`\`\`json
+{"idx": 2, "type": "M", "known": "as often as possible", "target": "尽量多",
+ "components": [{"known": "as much as possible", "target": "尽量"}, {"known": "often", "target": "多"}],
+ "phrases": [
+   {"known": "often", "target": "多"},
+   {"known": "as much as possible", "target": "尽量"},
+   {"known": "as often as possible", "target": "尽量多"},
+   ... (10-12 total, SHORT→LONG)
+ ]}
+\`\`\`
+
+## M-LEGO COMPONENTS = REAL WORDS ONLY
+✓ do → 做, then done → 做了 (learner infers 了 from contrast)
+✗ NEVER: "completed action marker" → 了
+
+## ERROR FIXES (don't read external files)
+• TILING FAILED [吗]: Add to M-LEGO "Is it good?" → 好吗 with [good→好]
+• ZUT VIOLATION: Use existing mapping OR upchunk "to say (formally)" → 讲
+• VOCAB VIOLATION [明天]: Remove - that LEGO not introduced yet
+• PHRASE TIERS need 3+ LONG: Add phrases with 10+ Chinese characters
+• M-LEGO MISSING COMPONENTS: Add [I→我, want→想, go→去]
+
+## WORKFLOW
+1. curl http://localhost:3471/api/resume/${courseCode} → get next seed
+2. Translate, break into 3-5 LEGOs (prefer M-LEGOs)
+3. Generate 10-12 phrases per LEGO, components first then SHORT→LONG
 4. POST to http://localhost:3471/api/seed/complete
-5. Fix errors and retry (max 3x per seed)
-6. After ${BATCH_SIZE} seeds, say "BATCH COMPLETE" and exit`;
+5. Fix errors inline (see above), retry max 3x
+6. After ${BATCH_SIZE} seeds: "BATCH COMPLETE"`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
