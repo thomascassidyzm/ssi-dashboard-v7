@@ -93,6 +93,200 @@ const { spawn } = require('child_process');
 const BATCH_SIZE = 30;  // Seeds per agent
 const BUILD_CHECK_INTERVAL_MS = 30000;  // Check progress every 30s
 
+// =============================================================================
+// RECENCY TRACKING - Pattern fatigue & vocabulary reinforcement
+// =============================================================================
+const RECENCY_WINDOW = 50;  // Look at last 50 seeds for pattern analysis
+const PATTERN_FATIGUE_THRESHOLD = 5;  // Max times a 3-gram can appear in window
+const REINFORCEMENT_ZONE = { min: 20, max: 60 };  // Seeds ago when vocab needs practice
+
+/**
+ * Extract n-grams from text (for pattern detection)
+ */
+function extractNgrams(text, n = 3) {
+  const words = text.toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, '')  // Keep letters/numbers/spaces (Unicode-aware)
+    .split(/\s+/)
+    .filter(w => w.length > 0);
+
+  const ngrams = [];
+  for (let i = 0; i <= words.length - n; i++) {
+    ngrams.push(words.slice(i, i + n).join(' '));
+  }
+  return ngrams;
+}
+
+/**
+ * Analyze pattern recency for a course
+ * Returns over-used patterns that should be avoided
+ */
+async function analyzePatternRecency(courseCode, windowSize = RECENCY_WINDOW) {
+  // Get phrases from recent seeds
+  const { data: recentPhrases } = await supabase
+    .from('course_practice_phrases')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: false })
+    .limit(windowSize * 50);  // Estimate ~50 phrases per seed
+
+  if (!recentPhrases || recentPhrases.length === 0) {
+    return { overusedPatterns: [], patternCounts: {} };
+  }
+
+  // Get the seed numbers in the window
+  const seedNumbers = [...new Set(recentPhrases.map(p => p.seed_number))].sort((a, b) => b - a);
+  const windowSeeds = new Set(seedNumbers.slice(0, windowSize));
+
+  // Count n-grams in the window
+  const patternCounts = {};  // pattern -> { count, seeds: Set }
+
+  for (const phrase of recentPhrases) {
+    if (!windowSeeds.has(phrase.seed_number)) continue;
+
+    // Analyze both known and target text
+    const knownNgrams = extractNgrams(phrase.known_text, 3);
+    const targetNgrams = extractNgrams(phrase.target_text, 3);
+
+    for (const ngram of [...knownNgrams, ...targetNgrams]) {
+      if (!patternCounts[ngram]) {
+        patternCounts[ngram] = { count: 0, seeds: new Set() };
+      }
+      patternCounts[ngram].count++;
+      patternCounts[ngram].seeds.add(phrase.seed_number);
+    }
+  }
+
+  // Find over-used patterns (appear in too many seeds)
+  const overusedPatterns = Object.entries(patternCounts)
+    .filter(([_, data]) => data.seeds.size >= PATTERN_FATIGUE_THRESHOLD)
+    .map(([pattern, data]) => ({
+      pattern,
+      seedCount: data.seeds.size,
+      totalCount: data.count
+    }))
+    .sort((a, b) => b.seedCount - a.seedCount)
+    .slice(0, 20);  // Top 20 most overused
+
+  return { overusedPatterns, patternCounts };
+}
+
+/**
+ * Analyze vocabulary recency for reinforcement recommendations
+ * Returns vocabulary that was introduced a while ago but hasn't been practiced recently
+ */
+async function analyzeVocabRecency(courseCode) {
+  // Get all LEGOs with their introduction seed
+  const { data: legos } = await supabase
+    .from('course_legos')
+    .select('seed_number, known_text, target_text, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .order('seed_number');
+
+  if (!legos || legos.length === 0) {
+    return { needsReinforcement: [], recentlyOverused: [] };
+  }
+
+  // Get current max seed number
+  const { data: maxSeedData } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode)
+    .order('seed_number', { ascending: false })
+    .limit(1);
+
+  const currentSeed = maxSeedData?.[0]?.seed_number || 0;
+
+  // Get recent phrase usage to see what vocabulary is being used
+  const { data: recentPhrases } = await supabase
+    .from('course_practice_phrases')
+    .select('known_text, target_text, seed_number')
+    .eq('course_code', courseCode)
+    .gte('seed_number', currentSeed - RECENCY_WINDOW)
+    .order('seed_number', { ascending: false });
+
+  // Build vocab usage map from recent phrases
+  const recentVocabUsage = new Map();  // word -> lastUsedSeed
+  for (const phrase of (recentPhrases || [])) {
+    const words = `${phrase.known_text} ${phrase.target_text}`.toLowerCase().split(/\s+/);
+    for (const word of words) {
+      if (word.length > 1) {
+        const current = recentVocabUsage.get(word) || 0;
+        recentVocabUsage.set(word, Math.max(current, phrase.seed_number));
+      }
+    }
+  }
+
+  // Categorize LEGOs by recency
+  const needsReinforcement = [];  // Introduced in reinforcement zone, not used recently
+  const recentlyOverused = [];    // Introduced recently and used a LOT
+
+  for (const lego of legos) {
+    const seedsAgo = currentSeed - lego.seed_number;
+    const knownWords = lego.known_text.toLowerCase().split(/\s+/);
+
+    // Check if in reinforcement zone (20-60 seeds ago)
+    if (seedsAgo >= REINFORCEMENT_ZONE.min && seedsAgo <= REINFORCEMENT_ZONE.max) {
+      // Check if used recently
+      const lastUsed = Math.max(...knownWords.map(w => recentVocabUsage.get(w) || 0));
+      const seedsSinceUse = currentSeed - lastUsed;
+
+      if (seedsSinceUse > 10) {  // Not used in last 10 seeds
+        needsReinforcement.push({
+          known: lego.known_text,
+          target: lego.target_text,
+          introduced_seed: lego.seed_number,
+          seeds_ago: seedsAgo,
+          last_used_seed: lastUsed || null
+        });
+      }
+    }
+  }
+
+  return {
+    needsReinforcement: needsReinforcement.slice(0, 15),  // Top 15 needing reinforcement
+    currentSeed,
+    reinforcementZone: REINFORCEMENT_ZONE
+  };
+}
+
+/**
+ * Check if a phrase would cause pattern fatigue
+ * Returns { ok: true } or { ok: false, reason, suggestions }
+ */
+async function checkPatternFatigue(courseCode, knownText, targetText) {
+  const { overusedPatterns } = await analyzePatternRecency(courseCode);
+
+  if (overusedPatterns.length === 0) {
+    return { ok: true };
+  }
+
+  // Build lookup set of over-used patterns
+  const overusedSet = new Set(overusedPatterns.map(p => p.pattern));
+
+  // Check if phrase contains any over-used patterns
+  const knownNgrams = extractNgrams(knownText, 3);
+  const targetNgrams = extractNgrams(targetText, 3);
+  const violations = [];
+
+  for (const ngram of [...knownNgrams, ...targetNgrams]) {
+    if (overusedSet.has(ngram)) {
+      violations.push(ngram);
+    }
+  }
+
+  if (violations.length > 0) {
+    return {
+      ok: false,
+      reason: 'Pattern fatigue detected',
+      violations: violations.slice(0, 5),
+      suggestion: 'Use different sentence structures. These patterns have been overused in recent seeds.'
+    };
+  }
+
+  return { ok: true };
+}
+
 // Active builds: course_code -> { agent, batchStartSeed, batchStartTime, agentCount, status }
 const activeBuilds = new Map();
 
@@ -2090,6 +2284,22 @@ app.post('/api/seed/complete', async (req, res) => {
     // Record activity for stall detection
     recordActivity(course_code, seed_number);
 
+    // Get recency hints for next iteration (avoid pattern fatigue)
+    let recencyHints = null;
+    if (nextSeed && seed_number > 10) {
+      try {
+        const { overusedPatterns } = await analyzePatternRecency(course_code, 30);  // Smaller window for quick check
+        if (overusedPatterns.length > 0) {
+          recencyHints = {
+            patterns_to_avoid: overusedPatterns.slice(0, 5).map(p => p.pattern),
+            warning: `These ${overusedPatterns.length} patterns are overused - use different sentence structures`
+          };
+        }
+      } catch (e) {
+        // Non-critical, continue without hints
+      }
+    }
+
     res.json({
       ok: true,
       seed: seedId,
@@ -2103,7 +2313,8 @@ app.post('/api/seed/complete', async (req, res) => {
       // Always tell agent what's next
       next_seed: nextSeed ? {
         seed_number: nextSeed.seed_number,
-        known_text: nextSeed.known_text
+        known_text: nextSeed.known_text,
+        recency_hints: recencyHints
       } : null
     });
 
@@ -2290,6 +2501,48 @@ app.get('/api/build/active', async (req, res) => {
 });
 
 /**
+ * GET /api/recency/:courseCode - Analyze pattern and vocabulary recency
+ *
+ * Returns detailed analysis of pattern fatigue and vocab reinforcement needs.
+ * Useful for debugging distribution issues.
+ */
+app.get('/api/recency/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const windowSize = parseInt(req.query.window) || RECENCY_WINDOW;
+
+  try {
+    const [patternAnalysis, vocabAnalysis] = await Promise.all([
+      analyzePatternRecency(courseCode, windowSize),
+      analyzeVocabRecency(courseCode)
+    ]);
+
+    res.json({
+      course_code: courseCode,
+      window_size: windowSize,
+      pattern_fatigue_threshold: PATTERN_FATIGUE_THRESHOLD,
+      reinforcement_zone: REINFORCEMENT_ZONE,
+
+      // Patterns that are overused
+      overused_patterns: patternAnalysis.overusedPatterns,
+      overused_count: patternAnalysis.overusedPatterns.length,
+
+      // Vocabulary needing reinforcement
+      needs_reinforcement: vocabAnalysis.needsReinforcement,
+      reinforcement_count: vocabAnalysis.needsReinforcement.length,
+
+      // Summary
+      health: patternAnalysis.overusedPatterns.length === 0
+        ? 'HEALTHY - Good pattern distribution'
+        : patternAnalysis.overusedPatterns.length < 5
+        ? 'FAIR - Some patterns overused, watch variety'
+        : 'POOR - Many patterns overused, need more variety'
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * GET /api/resume/:courseCode - Get everything needed to resume after context compaction
  *
  * Returns:
@@ -2352,6 +2605,12 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const completedCount = completedSeeds.size;
   const progress = totalSeeds > 0 ? ((completedCount / totalSeeds) * 100).toFixed(1) : 0;
 
+  // Get recency analysis for pattern/vocab distribution guidance
+  const [patternAnalysis, vocabAnalysis] = await Promise.all([
+    analyzePatternRecency(courseCode),
+    analyzeVocabRecency(courseCode)
+  ]);
+
   res.json({
     course_code: courseCode,
     target_language: targetLangName,
@@ -2374,6 +2633,30 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
 
+    // RECENCY GUIDANCE - Critical for avoiding repetitive patterns
+    recency: {
+      // Patterns to AVOID - these have been overused in recent seeds
+      patterns_to_avoid: patternAnalysis.overusedPatterns.map(p => ({
+        pattern: p.pattern,
+        used_in_seeds: p.seedCount,
+        warning: `Appears in ${p.seedCount} of last ${RECENCY_WINDOW} seeds - use different structures`
+      })),
+
+      // Vocabulary needing REINFORCEMENT - introduced a while ago, not practiced recently
+      vocab_to_reinforce: vocabAnalysis.needsReinforcement.map(v => ({
+        known: v.known,
+        target: v.target,
+        introduced: `Seed ${v.introduced_seed} (${v.seeds_ago} seeds ago)`,
+        action: 'Include in your practice phrases to reinforce this vocabulary'
+      })),
+
+      // Guidance summary
+      guidance: patternAnalysis.overusedPatterns.length > 0 || vocabAnalysis.needsReinforcement.length > 0
+        ? `IMPORTANT: Avoid the ${patternAnalysis.overusedPatterns.length} overused patterns listed above. ` +
+          `Try to reinforce the ${vocabAnalysis.needsReinforcement.length} vocabulary items that need practice.`
+        : 'Pattern distribution looks healthy. Continue with varied sentence structures.'
+    },
+
     // Full methodology for self-recovery after compaction
     methodology: {
       workflow: [
@@ -2383,7 +2666,9 @@ app.get('/api/resume/:courseCode', async (req, res) => {
         '4. Generate 10+ practice phrases per LEGO',
         '5. POST to /api/seed/complete with {course_code, seed_number, target_text, legos}',
         '6. Use next_seed from response for next iteration',
-        '7. Continue autonomously until all seeds complete - do NOT stop to ask'
+        '7. Continue autonomously until all seeds complete - do NOT stop to ask',
+        '8. CHECK recency.patterns_to_avoid - do NOT use overused patterns!',
+        '9. TRY TO USE recency.vocab_to_reinforce items in your phrases'
       ],
       lego_types: {
         'A-type': 'Single meaningful word: {"type":"A","known":"speak","target":"说"}',
@@ -2392,13 +2677,16 @@ app.get('/api/resume/:courseCode', async (req, res) => {
       phrase_requirements: {
         minimum: '7 phrases per LEGO (for seeds 21+)',
         target: '10-13 phrases per LEGO',
-        tiers: 'Mix of SHORT (3-5 words), MEDIUM (6-9 words), LONG (10+ words)'
+        tiers: 'Mix of SHORT (3-5 words), MEDIUM (6-9 words), LONG (10+ words)',
+        variety: 'CRITICAL: Avoid repetitive patterns. Each phrase should have unique structure.'
       },
       rules: [
         'ZUT: Phrases can only use vocabulary already introduced',
         'Tiling: Seed must be reconstructable from LEGO targets',
         'M-LEGOs MUST have components array',
-        'Trust API validation errors - they tell you exactly what to fix'
+        'Trust API validation errors - they tell you exactly what to fix',
+        'PATTERN VARIETY: Do NOT repeat same sentence structures across phrases',
+        'REINFORCEMENT: Include vocabulary from recency.vocab_to_reinforce when possible'
       ]
     }
   });
