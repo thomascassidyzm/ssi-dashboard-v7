@@ -314,33 +314,36 @@ async function getBuildProgress(courseCode) {
 
 /**
  * Spawn a new Claude agent for a course using osascript
- * Opens a new terminal window (iTerm2 or Terminal) and runs claude there
+ * Opens a new terminal window (iTerm or Terminal) and runs claude there
  */
 function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
-  // Keep prompt on single line to avoid AppleScript escaping issues
   const prompt = `You are Agent #${agentNumber} for ${courseCode}. Run /course-resume first, then build ${BATCH_SIZE} seeds autonomously. Fix validation errors (max 3 retries per seed). Say BATCH COMPLETE and exit when done.`;
+
+  // Write prompt to temp file to avoid escaping nightmares
+  const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
+  require('fs').writeFileSync(tmpFile, prompt);
+
+  const claudeCmd = `claude --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+  // Escape for AppleScript string
+  const escapedCmd = claudeCmd.replace(/"/g, '\\"');
 
   console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode} in ${terminal}`);
 
-  // Build the claude command
-  const claudeCmd = `claude --model opus --dangerously-skip-permissions -p '${prompt.replace(/'/g, "'\"'\"'")}'`;
-
-  // Escape for AppleScript double-quoted string
-  const escapedCmd = claudeCmd.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-
   let osascript;
   if (terminal === 'iTerm2') {
-    // Use iTerm2's direct command execution
-    osascript = `tell application "iTerm2"
-      activate
-      create window with default profile command "${escapedCmd}"
-    end tell`;
+    // Note: "iTerm" not "iTerm2" in AppleScript
+    osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    write text "${escapedCmd}"
+  end tell
+end tell`;
   } else {
-    // Terminal.app's do script auto-executes
     osascript = `tell application "Terminal"
-      activate
-      do script "${escapedCmd}"
-    end tell`;
+  activate
+  do script "${escapedCmd}"
+end tell`;
   }
 
   const agent = spawn('osascript', ['-e', osascript], {
