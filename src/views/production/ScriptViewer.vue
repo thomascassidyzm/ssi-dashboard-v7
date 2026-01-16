@@ -82,8 +82,8 @@
               </button>
             </div>
 
-            <!-- Pagination Controls -->
-            <div class="flex items-center gap-2">
+            <!-- Pagination Controls (only show when data is loaded) -->
+            <div v-if="totalJourneyRounds > 0" class="flex items-center gap-2">
               <button
                 @click="prevPage"
                 :disabled="journeyPage === 1"
