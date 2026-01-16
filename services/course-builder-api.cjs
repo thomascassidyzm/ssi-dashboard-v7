@@ -137,17 +137,17 @@ async function analyzePatternRecency(courseCode, windowSize = RECENCY_WINDOW) {
   const seedNumbers = [...new Set(recentPhrases.map(p => p.seed_number))].sort((a, b) => b - a);
   const windowSeeds = new Set(seedNumbers.slice(0, windowSize));
 
-  // Count n-grams in the window
+  // Count n-grams in the window (KNOWN LANGUAGE ONLY)
+  // Target language repetition is pedagogically useful; known language repetition is boring
   const patternCounts = {};  // pattern -> { count, seeds: Set }
 
   for (const phrase of recentPhrases) {
     if (!windowSeeds.has(phrase.seed_number)) continue;
 
-    // Analyze both known and target text
+    // Only analyze known language text - that's where repetition feels stale
     const knownNgrams = extractNgrams(phrase.known_text, 3);
-    const targetNgrams = extractNgrams(phrase.target_text, 3);
 
-    for (const ngram of [...knownNgrams, ...targetNgrams]) {
+    for (const ngram of knownNgrams) {
       if (!patternCounts[ngram]) {
         patternCounts[ngram] = { count: 0, seeds: new Set() };
       }
@@ -251,10 +251,10 @@ async function analyzeVocabRecency(courseCode) {
 }
 
 /**
- * Check if a phrase would cause pattern fatigue
+ * Check if a phrase would cause pattern fatigue (known language only)
  * Returns { ok: true } or { ok: false, reason, suggestions }
  */
-async function checkPatternFatigue(courseCode, knownText, targetText) {
+async function checkPatternFatigue(courseCode, knownText) {
   const { overusedPatterns } = await analyzePatternRecency(courseCode);
 
   if (overusedPatterns.length === 0) {
@@ -264,12 +264,11 @@ async function checkPatternFatigue(courseCode, knownText, targetText) {
   // Build lookup set of over-used patterns
   const overusedSet = new Set(overusedPatterns.map(p => p.pattern));
 
-  // Check if phrase contains any over-used patterns
+  // Check if phrase contains any over-used patterns (known language only)
   const knownNgrams = extractNgrams(knownText, 3);
-  const targetNgrams = extractNgrams(targetText, 3);
   const violations = [];
 
-  for (const ngram of [...knownNgrams, ...targetNgrams]) {
+  for (const ngram of knownNgrams) {
     if (overusedSet.has(ngram)) {
       violations.push(ngram);
     }
@@ -280,7 +279,7 @@ async function checkPatternFatigue(courseCode, knownText, targetText) {
       ok: false,
       reason: 'Pattern fatigue detected',
       violations: violations.slice(0, 5),
-      suggestion: 'Use different sentence structures. These patterns have been overused in recent seeds.'
+      suggestion: 'Use different sentence structures. These known-language patterns have been overused in recent seeds.'
     };
   }
 
