@@ -4144,6 +4144,19 @@ app.post('/api/courses/generate', async (req, res) => {
       const targetLang = langNames[targetCode] || targetCode;
       const knownLang = langNames[knownCode] || knownCode;
 
+      // Initialize course seeds BEFORE spawning the agent
+      // This populates course_seeds table with canonical seeds + language substitution
+      console.log(`[Orchestrator] Initializing course seeds for ${builderCourseCode}...`);
+      try {
+        const initResponse = await axios.get(
+          `${builderApiUrl}/api/course/${builderCourseCode}/translate?limit=1`,
+          { timeout: 10000 }
+        );
+        console.log(`[Orchestrator] Seeds initialized: ${initResponse.data.total_seeds || 'unknown'} seeds`);
+      } catch (initErr) {
+        console.warn(`[Orchestrator] Seed init warning: ${initErr.message} (will retry on first submit)`);
+      }
+
       // Spawn the Course Builder agent
       console.log(`[Orchestrator] Spawning Course Builder in ${terminalType}...`);
 
