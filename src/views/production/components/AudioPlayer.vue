@@ -161,10 +161,24 @@ const onEnded = () => {
 };
 
 const onError = (event: Event) => {
-  console.error('Audio loading error:', event);
+  const audio = event.target as HTMLAudioElement;
+  const errorCode = audio?.error?.code;
+  const errorMsg = audio?.error?.message || 'Unknown error';
+  const errorCodes: Record<number, string> = {
+    1: 'MEDIA_ERR_ABORTED',
+    2: 'MEDIA_ERR_NETWORK',
+    3: 'MEDIA_ERR_DECODE',
+    4: 'MEDIA_ERR_SRC_NOT_SUPPORTED'
+  };
+  console.error('[AudioPlayer] Error loading audio:', {
+    url: props.audioUrl,
+    errorCode,
+    errorType: errorCodes[errorCode] || 'UNKNOWN',
+    errorMsg
+  });
   isLoading.value = false;
   isPlaying.value = false;
-  emit('error', new Error('Failed to load audio'));
+  emit('error', new Error(`Failed to load audio: ${errorCodes[errorCode] || errorMsg}`));
 };
 
 const formatTime = (seconds: number): string => {
