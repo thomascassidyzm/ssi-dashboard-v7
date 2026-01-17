@@ -416,13 +416,13 @@ function formatTime(isoString) {
 function getJobLink(job) {
   switch (job.type) {
     case 'build':
-      return `/production/${job.courseCode}/text`
+      return `/production/${job.courseCode}`
     case 'audio-generation':
-      return `/production/${job.courseCode}/audio`
+      return `/production/${job.courseCode}/pipeline`
     case 'pipeline':
-      return `/production/${job.courseCode}/text`
+      return `/production/${job.courseCode}`
     default:
-      return `/production/${job.courseCode}/text`
+      return `/production/${job.courseCode}`
   }
 }
 
