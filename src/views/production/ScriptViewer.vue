@@ -43,10 +43,10 @@
           <template v-if="viewMode === 'script'">
             <button
               @click="collapseAll"
-              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
               title="Collapse all seeds"
             >
-              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
               </svg>
               Collapse All
@@ -54,14 +54,47 @@
 
             <button
               @click="expandAll"
-              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
               title="Expand all seeds"
             >
-              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
               Expand All
             </button>
+
+            <!-- Pagination Controls for Seeds -->
+            <div v-if="totalSeeds > 0" class="flex items-center gap-2">
+              <button
+                @click="prevSeedPage"
+                :disabled="seedPageStart <= 1"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="seedPageStart <= 1
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <span class="text-sm text-slate-300">
+                <span class="font-medium text-white">{{ seedPageStart }}-{{ seedPageEnd }}</span>
+                <span class="text-slate-500"> of </span>
+                <span class="text-white">{{ totalSeeds }}</span>
+              </span>
+              <button
+                @click="nextSeedPage"
+                :disabled="seedPageEnd >= totalSeeds"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="seedPageEnd >= totalSeeds
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
           </template>
 
           <!-- Pagination for journey mode -->
@@ -977,6 +1010,7 @@ const playAudioSample = (sample: AudioSample) => {
 
 // Play flagged item audio
 const playFlaggedItem = async (item: FlaggedItem) => {
+  console.log('[playFlaggedItem] Called with item:', item);
   try {
     const apiBaseUrl = getApiBaseUrl();
     const response = await fetch(

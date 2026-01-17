@@ -1464,8 +1464,8 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
 
     logger.log(`Triggering regeneration for ALL flagged samples in ${courseCode}`)
 
-    // Get all flagged samples
-    const flaggedSamples = await supabaseClient.getFlaggedForRegeneration(courseCode)
+    // Get all flagged samples (using new audio_flags system)
+    const flaggedSamples = await supabaseClient.getAudioFlagsWithDetails(courseCode)
 
     if (flaggedSamples.length === 0) {
       return res.json({
@@ -1478,20 +1478,12 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
     // Group by role for regeneration
     const byRole = {}
     for (const flag of flaggedSamples) {
-      const role = flag.course_audio?.role || 'unknown'
+      const role = flag.audio?.role || 'unknown'
       if (!byRole[role]) byRole[role] = []
       byRole[role].push(flag.audio_uuid)
     }
 
     const uuids = flaggedSamples.map(flag => flag.audio_uuid)
-
-    // Update status to 'in_pipeline'
-    await supabaseClient.bulkUpdateFlagStatus(
-      uuids,
-      courseCode,
-      'in_pipeline',
-      'Bulk regeneration triggered'
-    )
 
     // Emit WebSocket event
     io.to(`course:${courseCode}`).emit('regeneration_started', {
@@ -1528,13 +1520,8 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
     const totalFailed = roleResults.reduce((sum, r) => sum + (r.data?.failed || 0), 0)
 
     if (allSuccess) {
-      // Mark flags as complete after successful regeneration
-      await supabaseClient.bulkUpdateFlagStatus(
-        uuids,
-        courseCode,
-        'complete',
-        'Bulk regeneration completed'
-      )
+      // Mark flags as resolved after successful regeneration
+      await supabaseClient.bulkResolveAudioFlags(uuids, courseCode)
       res.json({
         success: true,
         count: uuids.length,
@@ -1543,28 +1530,15 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
         byRole: roleResults.map(r => ({ role: r.role, ...r.data }))
       })
     } else {
-      // Some roles failed - mark those as failed, keep successful ones as complete
+      // Some roles failed - resolve successful ones, leave failed ones flagged
       const failedRoles = roleResults.filter(r => !r.success)
       const failedUuids = failedRoles.flatMap(r => byRole[r.role] || [])
       const successUuids = uuids.filter(u => !failedUuids.includes(u))
 
       if (successUuids.length > 0) {
-        await supabaseClient.bulkUpdateFlagStatus(
-          successUuids,
-          courseCode,
-          'complete',
-          'Bulk regeneration completed'
-        )
+        await supabaseClient.bulkResolveAudioFlags(successUuids, courseCode)
       }
-
-      if (failedUuids.length > 0) {
-        await supabaseClient.bulkUpdateFlagStatus(
-          failedUuids,
-          courseCode,
-          'flagged_regen_tts',
-          `Regeneration failed for roles: ${failedRoles.map(r => r.role).join(', ')}`
-        )
-      }
+      // Failed flags stay as 'flagged' for retry
 
       res.json({
         success: false,
