@@ -1,0 +1,114 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 10,
+  "known_text": "I'm not sure if I can remember the whole sentence.",
+  "target_text": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm not sure",
+      "target": "je ne suis pas sûr",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "am not", "target": "ne suis pas"},
+        {"known": "sure", "target": "sûr"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "am not", "target": "ne suis pas"},
+        {"known": "sure", "target": "sûr"},
+        {"known": "I'm not sure", "target": "je ne suis pas sûr"},
+        {"known": "I'm not sure now", "target": "je ne suis pas sûr maintenant"},
+        {"known": "I'm not sure what I want", "target": "je ne suis pas sûr ce que je veux"},
+        {"known": "I'm not sure what I want to say", "target": "je ne suis pas sûr ce que je veux dire"},
+        {"known": "I'm not sure what I want to explain to you today", "target": "je ne suis pas sûr ce que je veux expliquer avec toi aujourd'hui"},
+        {"known": "I'm not sure what I want to try to say in French now", "target": "je ne suis pas sûr ce que je veux essayer de dire en français maintenant"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "if",
+      "target": "si",
+      "phrases": [
+        {"known": "if", "target": "si"},
+        {"known": "if I want", "target": "si je veux"},
+        {"known": "I'm not sure if", "target": "je ne suis pas sûr si"},
+        {"known": "I'm not sure if I want", "target": "je ne suis pas sûr si je veux"},
+        {"known": "I'm not sure if I want to try", "target": "je ne suis pas sûr si je veux essayer"},
+        {"known": "I'm not sure if I want to speak French", "target": "je ne suis pas sûr si je veux parler français"},
+        {"known": "I'm not sure if I want to try to speak French with you", "target": "je ne suis pas sûr si je veux essayer de parler français avec toi"},
+        {"known": "I'm not sure if I want to try to explain what I mean today", "target": "je ne suis pas sûr si je veux essayer d'expliquer ce que je veux dire aujourd'hui"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I can",
+      "target": "je peux",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "can", "target": "peux"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "can", "target": "peux"},
+        {"known": "I can", "target": "je peux"},
+        {"known": "I can speak", "target": "je peux parler"},
+        {"known": "I can speak French", "target": "je peux parler français"},
+        {"known": "I can try", "target": "je peux essayer"},
+        {"known": "if I can", "target": "si je peux"},
+        {"known": "I'm not sure if I can", "target": "je ne suis pas sûr si je peux"},
+        {"known": "I can explain what I mean", "target": "je peux expliquer ce que je veux dire"},
+        {"known": "I'm not sure if I can try to speak French with you today", "target": "je ne suis pas sûr si je peux essayer de parler français avec toi aujourd'hui"},
+        {"known": "I can try to explain something to someone else in French today", "target": "je peux essayer d'expliquer quelque chose avec quelqu'un d'autre en français aujourd'hui"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to remember",
+      "target": "de me souvenir",
+      "components": [
+        {"known": "to", "target": "de"},
+        {"known": "myself", "target": "me"},
+        {"known": "remember", "target": "souvenir"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "de"},
+        {"known": "myself", "target": "me"},
+        {"known": "remember", "target": "souvenir"},
+        {"known": "to remember", "target": "de me souvenir"},
+        {"known": "I can remember", "target": "je peux me souvenir"},
+        {"known": "if I can remember", "target": "si je peux me souvenir"},
+        {"known": "I'm not sure if I can remember", "target": "je ne suis pas sûr si je peux me souvenir"},
+        {"known": "I can remember something in French", "target": "je peux me souvenir de quelque chose en français"},
+        {"known": "I'm not sure if I can remember what I want to say now", "target": "je ne suis pas sûr si je peux me souvenir ce que je veux dire maintenant"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "the whole sentence",
+      "target": "de toute la phrase",
+      "components": [
+        {"known": "of", "target": "de"},
+        {"known": "whole", "target": "toute"},
+        {"known": "the", "target": "la"},
+        {"known": "sentence", "target": "phrase"}
+      ],
+      "phrases": [
+        {"known": "of", "target": "de"},
+        {"known": "whole", "target": "toute"},
+        {"known": "the", "target": "la"},
+        {"known": "sentence", "target": "phrase"},
+        {"known": "the whole sentence", "target": "toute la phrase"},
+        {"known": "to remember the whole sentence", "target": "me souvenir de toute la phrase"},
+        {"known": "I can remember the whole sentence", "target": "je peux me souvenir de toute la phrase"},
+        {"known": "I'm not sure if I can remember the whole sentence", "target": "je ne suis pas sûr si je peux me souvenir de toute la phrase"},
+        {"known": "I want to try to remember the whole sentence in French", "target": "je veux essayer de me souvenir de toute la phrase en français"}
+      ]
+    }
+  ]
+}

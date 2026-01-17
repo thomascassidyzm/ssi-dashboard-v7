@@ -1,0 +1,121 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 97,
+  "known_text": "Yes I'm ready to go as soon as you want.",
+  "target_text": "好，我准备好了，你想什么时候走都可以。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "yes/good",
+      "target": "好",
+      "phrases": [
+        {"known": "yes/good", "target": "好"},
+        {"known": "okay", "target": "好"},
+        {"known": "is it good?", "target": "好吗？"},
+        {"known": "good or not?", "target": "好不好？"},
+        {"known": "very good", "target": "很好"},
+        {"known": "okay, I'm ready", "target": "好，我准备好了"},
+        {"known": "yes, I understand", "target": "好，我懂"},
+        {"known": "okay, I'll go home now", "target": "好，我现在回家"},
+        {"known": "yes, I need a little more time before I'm ready", "target": "好，我需要多一点时间准备好"},
+        {"known": "okay, I'll take the next bus home with you", "target": "好，我跟你坐下一班车回家"},
+        {"known": "yes, she said she's ready to go home on the bus now", "target": "好，她说她准备好现在坐车回家"},
+        {"known": "okay, I think we should go home before it gets too late", "target": "好，我觉得我们该回家了"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm ready",
+      "target": "我准备好了",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "ready", "target": "准备好"},
+        {"known": "(completed)", "target": "了"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "我"},
+        {"known": "ready", "target": "准备好"},
+        {"known": "(completed)", "target": "了"},
+        {"known": "I'm ready", "target": "我准备好了"},
+        {"known": "she's ready", "target": "她准备好了"},
+        {"known": "are you ready?", "target": "你准备好了吗？"},
+        {"known": "yes, I'm ready now", "target": "好，我准备好了"},
+        {"known": "I'm ready to go home now", "target": "我准备好回家了"},
+        {"known": "she said she's ready to go whenever", "target": "她说她准备好走了"},
+        {"known": "I'm ready to take the next bus home now", "target": "我准备好坐下一班车回家了"},
+        {"known": "he said he's ready to go home on the bus", "target": "他说他准备好坐车回家了"},
+        {"known": "okay, I'm ready now, let's take the next bus", "target": "好，我准备好了，我们坐下一班车"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "whenever you want",
+      "target": "你想什么时候",
+      "components": [
+        {"known": "you want", "target": "你想"},
+        {"known": "what time/when", "target": "什么时候"}
+      ],
+      "phrases": [
+        {"known": "you want", "target": "你想"},
+        {"known": "when", "target": "什么时候"},
+        {"known": "what time?", "target": "什么时候？"},
+        {"known": "whenever you want", "target": "你想什么时候"},
+        {"known": "whenever you want to go", "target": "你想什么时候走"},
+        {"known": "when do you want to go home?", "target": "你想什么时候回家？"},
+        {"known": "she asked when you want to go", "target": "她问你想什么时候走"},
+        {"known": "when do you want to take the bus?", "target": "你想什么时候坐车？"},
+        {"known": "I'm ready whenever you want to go", "target": "我准备好了你想什么时候走"},
+        {"known": "she said when do you want to go home", "target": "她说你想什么时候回家"},
+        {"known": "he asked when you want to take the next bus", "target": "他问你想什么时候坐下一班车"},
+        {"known": "whenever you want to go I'll be ready", "target": "你想什么时候走我准备好了"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to go/leave",
+      "target": "走",
+      "phrases": [
+        {"known": "to go", "target": "走"},
+        {"known": "go now", "target": "现在走"},
+        {"known": "let's go", "target": "我们走"},
+        {"known": "ready to go", "target": "准备好走"},
+        {"known": "time to go", "target": "该走了"},
+        {"known": "I'm ready to go", "target": "我准备好走了"},
+        {"known": "whenever you want to go", "target": "你想什么时候走"},
+        {"known": "she said it's time to go now", "target": "她说现在该走了"},
+        {"known": "I'm ready to go whenever you want", "target": "我准备好了你想什么时候走"},
+        {"known": "he's not ready to go home yet but I am", "target": "他还没准备好走但是我准备好了"},
+        {"known": "whenever you want to go I can take the bus", "target": "你想什么时候走我可以坐车"},
+        {"known": "okay I'm ready to go when you want to go", "target": "好我准备好了你想什么时候走"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "it's all okay",
+      "target": "都可以",
+      "components": [
+        {"known": "all/both", "target": "都"},
+        {"known": "can/okay", "target": "可以"}
+      ],
+      "phrases": [
+        {"known": "all/both", "target": "都"},
+        {"known": "can/okay", "target": "可以"},
+        {"known": "it's all okay", "target": "都可以"},
+        {"known": "both are fine", "target": "都可以"},
+        {"known": "anything is fine", "target": "什么都可以"},
+        {"known": "whenever is fine", "target": "什么时候都可以"},
+        {"known": "whenever you want is okay", "target": "你想什么时候都可以"},
+        {"known": "whenever you want to go is fine", "target": "你想什么时候走都可以"},
+        {"known": "she said whenever you want is okay", "target": "她说你想什么时候都可以"},
+        {"known": "I think any time you want to go is fine", "target": "我觉得你想什么时候走都可以"},
+        {"known": "he said whenever you want to go home is okay", "target": "他说你想什么时候回家都可以"},
+        {"known": "yes I'm ready to go as soon as you want", "target": "好我准备好了你想什么时候走都可以"}
+      ]
+    }
+  ]
+}

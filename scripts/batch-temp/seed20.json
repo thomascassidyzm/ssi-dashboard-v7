@@ -1,95 +1,76 @@
 {
-  "course_code": "eus_for_spa",
+  "course_code": "deu_for_eng",
   "seed_number": 20,
-  "known_text": "Quieres aprender su nombre rapidamente.",
-  "target_text": "Haren izena azkar ikasi nahi duzu.",
+  "known_text": "You want to learn his name quickly.",
+  "target_text": "Du möchtest seinen Namen schnell lernen.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "su nombre",
-      "target": "haren izena",
+      "known": "you want",
+      "target": "du möchtest",
       "components": [
-        {"known": "su", "target": "haren"},
-        {"known": "nombre", "target": "izena"}
+        {"known": "you", "target": "du"},
+        {"known": "want", "target": "möchtest"}
       ],
       "phrases": [
-        {"known": "su", "target": "haren"},
-        {"known": "nombre", "target": "izena"},
-        {"known": "su nombre", "target": "haren izena"},
-        {"known": "saber su nombre", "target": "haren izena jakin"},
-        {"known": "quiero su nombre", "target": "haren izena nahi dut"},
-        {"known": "el quiere su nombre", "target": "haren izena nahi du"},
-        {"known": "quiero saber su nombre", "target": "haren izena jakin nahi dut"},
-        {"known": "ella quiere saber su nombre ahora", "target": "orain haren izena jakin nahi du"},
-        {"known": "queremos saber su nombre mas tarde", "target": "geroago haren izena jakin nahi dugu"},
-        {"known": "pero no quiero saber su nombre ahora con todos los demas", "target": "baina ez dut orain beste guztiekin haren izena jakin nahi"},
-        {"known": "el quiere saber su nombre a las seis de la tarde con todos los demas", "target": "arratsaldeko seietan beste guztiekin haren izena jakin nahi du"},
-        {"known": "pero ella no quiere saber su nombre manana con todos los demas mas tarde", "target": "baina ez du bihar geroago beste guztiekin haren izena jakin nahi"}
+        {"known": "you", "target": "du"},
+        {"known": "want", "target": "möchtest"},
+        {"known": "you want", "target": "du möchtest"},
+        {"known": "you want to speak", "target": "du möchtest sprechen"},
+        {"known": "you want to learn German", "target": "du möchtest Deutsch lernen"},
+        {"known": "you want to find out the answer", "target": "du möchtest die Antwort herausfinden"},
+        {"known": "but you want to meet this evening", "target": "aber du möchtest heute Abend treffen"},
+        {"known": "you want to stop talking at six o'clock", "target": "du möchtest um sechs Uhr aufhören zu reden"}
       ]
     },
     {
       "idx": 2,
-      "type": "A",
-      "known": "rapidamente",
-      "target": "azkar",
+      "type": "M",
+      "known": "his name",
+      "target": "seinen Namen",
+      "components": [
+        {"known": "his", "target": "seinen"},
+        {"known": "name", "target": "Namen"}
+      ],
       "phrases": [
-        {"known": "rapidamente", "target": "azkar"},
-        {"known": "hablar rapidamente", "target": "azkar hitz egin"},
-        {"known": "volver rapidamente", "target": "azkar itzuli"},
-        {"known": "quiero hablar rapidamente", "target": "azkar hitz egin nahi dut"},
-        {"known": "el quiere volver rapidamente", "target": "azkar itzuli nahi du"},
-        {"known": "ella quiere hablar euskera rapidamente", "target": "azkar euskaraz hitz egin nahi du"},
-        {"known": "queremos reunirnos rapidamente con alguien", "target": "azkar norbaitekin elkartu nahi dugu"},
-        {"known": "pero no quiero hablar euskera rapidamente con todos los demas", "target": "baina ez dut azkar beste guztiekin euskaraz hitz egin nahi"},
-        {"known": "el quiere volver rapidamente con todos los demas a las seis de la tarde", "target": "azkar arratsaldeko seietan beste guztiekin itzuli nahi du"},
-        {"known": "pero ella no quiere reunirse rapidamente con todos los demas manana", "target": "baina ez du azkar bihar beste guztiekin elkartu nahi"},
-        {"known": "queremos hablar euskera muy bien rapidamente con todos los demas ahora", "target": "orain azkar beste guztiekin oso ondo euskaraz hitz egin nahi dugu"},
-        {"known": "pero no quiero dejar de hablar euskera rapidamente con todos los demas", "target": "baina ez dut azkar beste guztiekin euskaraz hitz egiteari utzi nahi"}
+        {"known": "his", "target": "seinen"},
+        {"known": "name", "target": "Namen"},
+        {"known": "his name", "target": "seinen Namen"},
+        {"known": "learn his name", "target": "seinen Namen lernen"},
+        {"known": "you want to learn his name", "target": "du möchtest seinen Namen lernen"},
+        {"known": "she wants to find out his name", "target": "sie möchte seinen Namen herausfinden"},
+        {"known": "I am not sure if you want to learn his name", "target": "ich bin nicht sicher ob du seinen Namen lernen möchtest"}
       ]
     },
     {
       "idx": 3,
       "type": "A",
-      "known": "aprender",
-      "target": "ikasi",
+      "known": "quickly",
+      "target": "schnell",
       "phrases": [
-        {"known": "aprender", "target": "ikasi"},
-        {"known": "aprender ahora", "target": "orain ikasi"},
-        {"known": "quiero aprender", "target": "ikasi nahi dut"},
-        {"known": "el quiere aprender", "target": "ikasi nahi du"},
-        {"known": "quiero aprender euskera", "target": "euskara ikasi nahi dut"},
-        {"known": "ella quiere aprender rapidamente", "target": "azkar ikasi nahi du"},
-        {"known": "queremos aprender euskera ahora", "target": "orain euskara ikasi nahi dugu"},
-        {"known": "pero no quiero aprender con todos los demas", "target": "baina ez dut beste guztiekin ikasi nahi"},
-        {"known": "el quiere aprender euskera rapidamente con todos los demas manana", "target": "bihar azkar beste guztiekin euskara ikasi nahi du"},
-        {"known": "pero ella no quiere aprender euskera con todos los demas a las seis de la tarde", "target": "baina ez du arratsaldeko seietan beste guztiekin euskara ikasi nahi"},
-        {"known": "queremos aprender euskera rapidamente con todos los demas a las seis de la tarde", "target": "arratsaldeko seietan azkar beste guztiekin euskara ikasi nahi dugu"},
-        {"known": "pero no quiero aprender su nombre rapidamente con todos los demas manana", "target": "baina ez dut bihar azkar beste guztiekin haren izena ikasi nahi"}
+        {"known": "quickly", "target": "schnell"},
+        {"known": "learn quickly", "target": "schnell lernen"},
+        {"known": "his name quickly", "target": "seinen Namen schnell"},
+        {"known": "you want to learn quickly", "target": "du möchtest schnell lernen"},
+        {"known": "learn his name quickly", "target": "seinen Namen schnell lernen"},
+        {"known": "you want to learn his name quickly", "target": "du möchtest seinen Namen schnell lernen"},
+        {"known": "she wants to find out the answer quickly", "target": "sie möchte die Antwort schnell herausfinden"}
       ]
     },
     {
       "idx": 4,
-      "type": "M",
-      "known": "quieres",
-      "target": "nahi duzu",
-      "components": [
-        {"known": "querer", "target": "nahi"},
-        {"known": "tu lo haces", "target": "duzu"}
-      ],
+      "type": "A",
+      "known": "learn",
+      "target": "lernen",
       "phrases": [
-        {"known": "querer", "target": "nahi"},
-        {"known": "tu lo haces", "target": "duzu"},
-        {"known": "quieres", "target": "nahi duzu"},
-        {"known": "quieres hablar", "target": "hitz egin nahi duzu"},
-        {"known": "quieres volver", "target": "itzuli nahi duzu"},
-        {"known": "quieres hablar euskera", "target": "euskaraz hitz egin nahi duzu"},
-        {"known": "quieres aprender rapidamente", "target": "azkar ikasi nahi duzu"},
-        {"known": "quieres reunirte con alguien", "target": "norbaitekin elkartu nahi duzu"},
-        {"known": "quieres aprender su nombre rapidamente ahora con todos los demas", "target": "orain azkar beste guztiekin haren izena ikasi nahi duzu"},
-        {"known": "pero quieres hablar euskera muy bien con todos los demas manana", "target": "baina bihar beste guztiekin oso ondo euskaraz hitz egin nahi duzu"},
-        {"known": "quieres volver con todos los demas a las seis de la tarde y hablar euskera", "target": "arratsaldeko seietan beste guztiekin itzuli nahi duzu eta euskaraz hitz egin"},
-        {"known": "pero quieres aprender euskera rapidamente con todos los demas a las seis de la tarde", "target": "baina arratsaldeko seietan azkar beste guztiekin euskara ikasi nahi duzu"}
+        {"known": "learn", "target": "lernen"},
+        {"known": "learn German", "target": "Deutsch lernen"},
+        {"known": "learn his name", "target": "seinen Namen lernen"},
+        {"known": "you want to learn", "target": "du möchtest lernen"},
+        {"known": "learn his name quickly", "target": "seinen Namen schnell lernen"},
+        {"known": "you want to learn his name quickly", "target": "du möchtest seinen Namen schnell lernen"},
+        {"known": "I want to learn his name as soon as possible", "target": "ich möchte seinen Namen so schnell lernen"}
       ]
     }
   ]

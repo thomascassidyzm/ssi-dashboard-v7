@@ -1,0 +1,94 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 221,
+  "known_text": "I watched the football and then I watched a film.",
+  "target_text": "我看了足球，然后我看了电影。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I watched",
+      "target": "我看了",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "watched", "target": "看了"}
+      ],
+      "phrases": [
+        {"known": "watched", "target": "看了"},
+        {"known": "I watched", "target": "我看了"},
+        {"known": "I watched television", "target": "我看了电视"},
+        {"known": "I watched a bit", "target": "我看了一点"},
+        {"known": "I watched a bit of television", "target": "我看了一点电视"},
+        {"known": "I watched it yesterday", "target": "我昨天看了"},
+        {"known": "I watched it with my friend", "target": "我和朋友看了"},
+        {"known": "I watched it at home yesterday", "target": "我昨天在家看了"},
+        {"known": "I watched something interesting yesterday", "target": "我昨天看了有意思的"},
+        {"known": "I watched it with my friend at home yesterday", "target": "我昨天和朋友在家看了"},
+        {"known": "I watched it with my friend on Saturday night", "target": "我星期六晚上和朋友看了"},
+        {"known": "I watched television with my friend at home yesterday", "target": "我昨天和朋友在家看了电视"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "football",
+      "target": "足球",
+      "phrases": [
+        {"known": "football", "target": "足球"},
+        {"known": "watch football", "target": "看足球"},
+        {"known": "I watched football", "target": "我看了足球"},
+        {"known": "like football", "target": "喜欢足球"},
+        {"known": "I like football", "target": "我喜欢足球"},
+        {"known": "I want to watch football", "target": "我想看足球"},
+        {"known": "do you like football", "target": "你喜欢足球吗"},
+        {"known": "I watched football yesterday", "target": "我昨天看了足球"},
+        {"known": "I want to watch football with you", "target": "我想和你看足球"},
+        {"known": "do you want to watch football with me", "target": "你想和我看足球吗"},
+        {"known": "I watched football with my friend yesterday", "target": "我昨天和朋友看了足球"},
+        {"known": "I watched football with my friend at home yesterday", "target": "我昨天和朋友在家看了足球"},
+        {"known": "I want to watch football with you on Saturday night", "target": "我想星期六晚上和你看足球"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "and then",
+      "target": "然后",
+      "phrases": [
+        {"known": "and then", "target": "然后"},
+        {"known": "and then I", "target": "然后我"},
+        {"known": "and then go", "target": "然后去"},
+        {"known": "and then I go", "target": "然后我去"},
+        {"known": "and then I watched", "target": "然后我看了"},
+        {"known": "and then I go home", "target": "然后我回家"},
+        {"known": "and then I went home", "target": "然后我回家了"},
+        {"known": "and then I ate", "target": "然后我吃了"},
+        {"known": "and then I watched television", "target": "然后我看了电视"},
+        {"known": "and then I went home to eat", "target": "然后我回家吃了"},
+        {"known": "and then I went home to watch television", "target": "然后我回家看了电视"},
+        {"known": "and then I went home to watch a bit of television", "target": "然后我回家看了一点电视"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "film",
+      "target": "电影",
+      "phrases": [
+        {"known": "film", "target": "电影"},
+        {"known": "watch a film", "target": "看电影"},
+        {"known": "I watched a film", "target": "我看了电影"},
+        {"known": "like films", "target": "喜欢电影"},
+        {"known": "I like films", "target": "我喜欢电影"},
+        {"known": "I want to watch a film", "target": "我想看电影"},
+        {"known": "do you like films", "target": "你喜欢电影吗"},
+        {"known": "I watched a film yesterday", "target": "我昨天看了电影"},
+        {"known": "I want to watch a film with you", "target": "我想和你看电影"},
+        {"known": "do you want to watch a film with me", "target": "你想和我看电影吗"},
+        {"known": "I watched an interesting film yesterday", "target": "我昨天看了有意思的电影"},
+        {"known": "I watched a film with my friend at home yesterday", "target": "我昨天和朋友在家看了电影"},
+        {"known": "I want to watch an interesting film with you tomorrow", "target": "我想明天和你看有意思的电影"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 48,
+  "known_text": "I don't care about making mistakes.",
+  "target_text": "Es ist mir egal, Fehler zu machen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't care",
+      "target": "es ist mir egal",
+      "components": [
+        {"known": "it is to me", "target": "es ist mir"},
+        {"known": "equal/same", "target": "egal"}
+      ],
+      "phrases": [
+        {"known": "it is to me", "target": "es ist mir"},
+        {"known": "equal/same", "target": "egal"},
+        {"known": "I don't care", "target": "es ist mir egal"},
+        {"known": "I don't care now", "target": "es ist mir jetzt egal"},
+        {"known": "I don't care today", "target": "es ist mir heute egal"},
+        {"known": "I don't care at the moment", "target": "es ist mir im Moment egal"},
+        {"known": "I don't care because I think", "target": "es ist mir egal weil ich denke"},
+        {"known": "I don't care but I know", "target": "es ist mir egal aber ich weiss"},
+        {"known": "I don't care because it is good", "target": "es ist mir egal weil es gut ist"},
+        {"known": "I don't care because I don't worry", "target": "es ist mir egal weil ich mir keine Sorgen mache"},
+        {"known": "I don't care because I think it is good", "target": "es ist mir egal weil ich denke dass es gut ist"},
+        {"known": "I don't care because I think it is okay", "target": "es ist mir egal weil ich denke dass es okay ist"},
+        {"known": "I don't care because I know I can improve myself", "target": "es ist mir egal weil ich weiss ich kann mich verbessern"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "mistakes",
+      "target": "Fehler",
+      "phrases": [
+        {"known": "mistakes", "target": "Fehler"},
+        {"known": "no mistakes", "target": "keine Fehler"},
+        {"known": "I make mistakes", "target": "ich mache Fehler"},
+        {"known": "to make mistakes", "target": "Fehler zu machen"},
+        {"known": "I don't care about mistakes", "target": "Fehler sind mir egal"},
+        {"known": "I think I make mistakes", "target": "ich denke ich mache Fehler"},
+        {"known": "it is good to make mistakes", "target": "es ist gut Fehler zu machen"},
+        {"known": "because I make mistakes", "target": "weil ich Fehler mache"},
+        {"known": "I don't care about making mistakes", "target": "es ist mir egal Fehler zu machen"},
+        {"known": "I don't worry about making mistakes", "target": "ich mache mir keine Sorgen Fehler zu machen"},
+        {"known": "I don't care about making mistakes because it is good", "target": "es ist mir egal Fehler zu machen weil es gut ist"},
+        {"known": "I don't care about making mistakes because I can improve", "target": "es ist mir egal Fehler zu machen weil ich mich verbessern kann"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "to make",
+      "target": "zu machen",
+      "components": [
+        {"known": "to", "target": "zu"},
+        {"known": "make", "target": "machen"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "zu"},
+        {"known": "make", "target": "machen"},
+        {"known": "to make", "target": "zu machen"},
+        {"known": "to make mistakes", "target": "Fehler zu machen"},
+        {"known": "to make now", "target": "jetzt zu machen"},
+        {"known": "to make today", "target": "heute zu machen"},
+        {"known": "I don't care about making mistakes", "target": "es ist mir egal Fehler zu machen"},
+        {"known": "it is good to make mistakes", "target": "es ist gut Fehler zu machen"},
+        {"known": "I don't worry about making mistakes", "target": "ich mache mir keine Sorgen Fehler zu machen"},
+        {"known": "I think it is good to make mistakes", "target": "ich denke es ist gut Fehler zu machen"},
+        {"known": "I don't care about making mistakes at the moment", "target": "es ist mir im Moment egal Fehler zu machen"},
+        {"known": "I don't care about making mistakes because I can improve", "target": "es ist mir egal Fehler zu machen weil ich mich verbessern kann"}
+      ]
+    }
+  ]
+}

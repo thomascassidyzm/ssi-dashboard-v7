@@ -1,0 +1,104 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 92,
+  "known_text": "I'd like to keep on doing this for a while.",
+  "target_text": "我想继续做这个一会儿。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "keep on doing",
+      "target": "继续做",
+      "components": [
+        {"known": "continue", "target": "继续"},
+        {"known": "do", "target": "做"}
+      ],
+      "phrases": [
+        {"known": "continue", "target": "继续"},
+        {"known": "do", "target": "做"},
+        {"known": "keep on doing", "target": "继续做"},
+        {"known": "keep learning", "target": "继续学"},
+        {"known": "keep trying", "target": "继续试"},
+        {"known": "can you keep on doing?", "target": "你可以继续做吗？"},
+        {"known": "it's difficult to keep doing", "target": "很难继续做"},
+        {"known": "if you can keep on doing it would be great", "target": "如果你可以继续做就太好了"},
+        {"known": "I think it's difficult to keep on doing in a short time", "target": "我觉得在短时间内继续做很难"},
+        {"known": "she thinks it's not possible to keep on doing", "target": "她觉得不可能继续做"},
+        {"known": "unfortunately I can't keep on doing this before answering", "target": "很可惜回答之前我不会继续做"},
+        {"known": "if they can keep on doing that would be great", "target": "如果他们可以继续做就太好了"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "for a while",
+      "target": "一会儿",
+      "components": [
+        {"known": "one", "target": "一"},
+        {"known": "moment", "target": "会儿"}
+      ],
+      "phrases": [
+        {"known": "one", "target": "一"},
+        {"known": "moment", "target": "会儿"},
+        {"known": "for a while", "target": "一会儿"},
+        {"known": "wait a moment", "target": "等一会儿"},
+        {"known": "just a moment", "target": "一会儿"},
+        {"known": "can you wait for a while?", "target": "你可以等一会儿吗？"},
+        {"known": "I'll continue for a while", "target": "我继续做一会儿"},
+        {"known": "she'd like to keep learning for a while", "target": "她想继续学一会儿"},
+        {"known": "if you can wait for a while that would be great", "target": "如果你可以等一会儿就太好了"},
+        {"known": "I think I'll keep on doing this for a while", "target": "我觉得我会继续做一会儿"},
+        {"known": "she said she wants to continue for a while before stopping", "target": "她说她想继续做一会儿再停"},
+        {"known": "unfortunately I can't wait for a while but I will come back", "target": "很可惜我不会等一会儿但是我会回来"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I'd like to",
+      "target": "我想",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "want/would like", "target": "想"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "我"},
+        {"known": "want/would like", "target": "想"},
+        {"known": "I'd like to", "target": "我想"},
+        {"known": "he wants to", "target": "他想"},
+        {"known": "I'd like to try", "target": "我想试"},
+        {"known": "she'd like to come", "target": "她想来"},
+        {"known": "I'd like to continue for a while", "target": "我想继续做一会儿"},
+        {"known": "I'd like to keep doing this", "target": "我想继续做这个"},
+        {"known": "they'd like to talk to those people", "target": "他们想跟那些人说话"},
+        {"known": "I'd like to do more in a short time", "target": "我想在短时间内做更多"},
+        {"known": "she'd like to answer in time but it's difficult", "target": "她想及时回答但是很难"},
+        {"known": "I'd like to keep on learning Chinese for a while", "target": "我想继续学中文一会儿"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "this",
+      "target": "这个",
+      "components": [
+        {"known": "this", "target": "这"},
+        {"known": "one/individual", "target": "个"}
+      ],
+      "phrases": [
+        {"known": "this", "target": "这"},
+        {"known": "one/individual", "target": "个"},
+        {"known": "this one", "target": "这个"},
+        {"known": "this thing", "target": "这个东西"},
+        {"known": "this person", "target": "这个人"},
+        {"known": "I'd like this one", "target": "我想要这个"},
+        {"known": "can you do this one?", "target": "你可以做这个吗？"},
+        {"known": "I think this one is good", "target": "我觉得这个好"},
+        {"known": "this one is difficult to do", "target": "这个很难做"},
+        {"known": "I'd like to keep on doing this for a while", "target": "我想继续做这个一会儿"},
+        {"known": "if you can keep on doing this it would be great", "target": "如果你可以继续做这个就太好了"},
+        {"known": "she thinks this one is very difficult but I don't agree", "target": "她觉得这个很难但是我不同意"}
+      ]
+    }
+  ]
+}

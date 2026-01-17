@@ -1,0 +1,94 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 8,
+  "known_text": "I'm going to try to explain what I mean.",
+  "target_text": "Je vais essayer d'expliquer ce que je veux dire.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm going",
+      "target": "je vais",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "am going", "target": "vais"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "am going", "target": "vais"},
+        {"known": "I'm going", "target": "je vais"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to try",
+      "target": "essayer",
+      "phrases": [
+        {"known": "to try", "target": "essayer"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "to explain",
+      "target": "d'expliquer",
+      "components": [
+        {"known": "to", "target": "de"},
+        {"known": "explain", "target": "expliquer"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "de"},
+        {"known": "explain", "target": "expliquer"},
+        {"known": "to explain", "target": "d'expliquer"},
+        {"known": "I'm going to explain", "target": "je vais expliquer"},
+        {"known": "to try to explain", "target": "essayer d'expliquer"},
+        {"known": "I'm going to try to explain", "target": "je vais essayer d'expliquer"},
+        {"known": "I want to explain", "target": "je veux expliquer"},
+        {"known": "to explain something", "target": "expliquer quelque chose"},
+        {"known": "I'm going to try to explain something in French", "target": "je vais essayer d'expliquer quelque chose en français"},
+        {"known": "I want to try to explain something to someone else", "target": "je veux essayer d'expliquer quelque chose avec quelqu'un d'autre"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "what",
+      "target": "ce que",
+      "components": [
+        {"known": "this", "target": "ce"},
+        {"known": "that", "target": "que"}
+      ],
+      "phrases": [
+        {"known": "this", "target": "ce"},
+        {"known": "that", "target": "que"},
+        {"known": "what", "target": "ce que"},
+        {"known": "what I want", "target": "ce que je veux"},
+        {"known": "to explain what I want", "target": "expliquer ce que je veux"},
+        {"known": "I'm going to explain what I want", "target": "je vais expliquer ce que je veux"},
+        {"known": "I'm going to try to explain what I want to say", "target": "je vais essayer d'expliquer ce que je veux dire"},
+        {"known": "I want to try to explain what I want to learn", "target": "je veux essayer d'expliquer ce que je veux apprendre"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I mean",
+      "target": "je veux dire",
+      "components": [
+        {"known": "I want", "target": "je veux"},
+        {"known": "to say", "target": "dire"}
+      ],
+      "phrases": [
+        {"known": "I want", "target": "je veux"},
+        {"known": "to say", "target": "dire"},
+        {"known": "I mean", "target": "je veux dire"},
+        {"known": "what I mean", "target": "ce que je veux dire"},
+        {"known": "to explain what I mean", "target": "expliquer ce que je veux dire"},
+        {"known": "I'm going to try to explain what I mean", "target": "je vais essayer d'expliquer ce que je veux dire"},
+        {"known": "I want to explain what I mean in French", "target": "je veux expliquer ce que je veux dire en français"},
+        {"known": "I'm going to try to explain what I mean to someone else today", "target": "je vais essayer d'expliquer ce que je veux dire avec quelqu'un d'autre aujourd'hui"}
+      ]
+    }
+  ]
+}

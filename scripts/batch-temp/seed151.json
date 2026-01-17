@@ -1,0 +1,75 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 151,
+  "known_text": "That wasn't what I was hoping would happen.",
+  "target_text": "Das war nicht das, was ich gehofft hatte, dass passiert.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that wasn't",
+      "target": "das war nicht das",
+      "components": [
+        {"known": "that", "target": "das"},
+        {"known": "wasn't", "target": "war nicht"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "das"},
+        {"known": "wasn't", "target": "war nicht"},
+        {"known": "that wasn't", "target": "das war nicht das"},
+        {"known": "that wasn't it", "target": "das war es nicht"},
+        {"known": "that wasn't good", "target": "das war nicht gut"},
+        {"known": "that wasn't difficult", "target": "das war nicht schwierig"},
+        {"known": "I know that wasn't it", "target": "ich weiß das war es nicht"},
+        {"known": "that wasn't what I said", "target": "das war nicht das was ich gesagt habe"},
+        {"known": "she said that wasn't very good", "target": "sie hat gesagt das war nicht sehr gut"},
+        {"known": "he told me that wasn't very difficult", "target": "er hat mir gesagt das war nicht sehr schwierig"},
+        {"known": "I believe that wasn't what you wanted to learn today", "target": "ich glaube das war nicht das was du heute lernen wolltest"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what I was hoping",
+      "target": "was ich gehofft hatte",
+      "components": [
+        {"known": "what", "target": "was"},
+        {"known": "I was hoping", "target": "ich gehofft hatte"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "I was hoping", "target": "ich gehofft hatte"},
+        {"known": "I was hoping so", "target": "ich hatte so gehofft"},
+        {"known": "what I was hoping", "target": "was ich gehofft hatte"},
+        {"known": "this is what I was hoping", "target": "das ist was ich gehofft hatte"},
+        {"known": "that was what I was hoping for", "target": "das war was ich gehofft hatte"},
+        {"known": "she knew what I was hoping", "target": "sie wusste was ich gehofft hatte"},
+        {"known": "I told her what I was hoping for", "target": "ich habe gesagt was ich gehofft hatte"},
+        {"known": "I think you understand what I was hoping we could learn together today", "target": "ich denke du verstehst was ich gehofft hatte dass wir heute zusammen lernen können"},
+        {"known": "that wasn't what I was hoping you would say because I thought we could do it", "target": "das war nicht das was ich gehofft hatte dass du sagen wolltest weil ich dachte wir können es machen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "would happen",
+      "target": "dass passiert",
+      "components": [
+        {"known": "would", "target": "dass"},
+        {"known": "happen", "target": "passiert"}
+      ],
+      "phrases": [
+        {"known": "happen", "target": "passiert"},
+        {"known": "would happen", "target": "dass passiert"},
+        {"known": "it would happen", "target": "dass es passiert"},
+        {"known": "I thought it would happen", "target": "ich dachte dass es passiert"},
+        {"known": "she said it would happen", "target": "sie hat gesagt dass es passiert"},
+        {"known": "I was hoping it would happen today", "target": "ich hatte gehofft dass es heute passiert"},
+        {"known": "he told me it would happen soon", "target": "er hat mir gesagt dass es bald passiert"},
+        {"known": "that wasn't what I was hoping would happen at all", "target": "das war nicht das was ich gehofft hatte dass passiert"},
+        {"known": "I thought this would happen so I was happy", "target": "ich dachte dass das passiert also war ich glücklich"},
+        {"known": "I was hoping this would happen so that I could learn German in a short time", "target": "ich hatte gehofft dass das passiert so dass ich Deutsch in kurzer Zeit lernen kann"}
+      ]
+    }
+  ]
+}

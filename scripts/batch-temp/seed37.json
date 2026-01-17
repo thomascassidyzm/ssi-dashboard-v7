@@ -1,104 +1,91 @@
 {
-  "course_code": "fra_for_eng",
+  "course_code": "deu_for_eng",
   "seed_number": 37,
   "known_text": "I started to think about it carefully last month.",
-  "target_text": "J'ai commencé à y penser soigneusement le mois dernier.",
+  "target_text": "Ich habe letzten Monat angefangen sorgfältig darüber nachzudenken.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
       "known": "I started",
-      "target": "j'ai commencé",
+      "target": "ich habe angefangen",
       "components": [
-        {"known": "I have", "target": "j'ai"},
-        {"known": "started", "target": "commencé"}
+        {"known": "I have", "target": "ich habe"},
+        {"known": "started", "target": "angefangen"}
       ],
       "phrases": [
-        {"known": "I have", "target": "j'ai"},
-        {"known": "started", "target": "commencé"},
-        {"known": "I started", "target": "j'ai commencé"},
-        {"known": "I started to learn", "target": "j'ai commencé à apprendre"},
-        {"known": "I started to speak", "target": "j'ai commencé à parler"},
-        {"known": "I started to read the story", "target": "j'ai commencé à lire l'histoire"},
-        {"known": "I started to learn the French language", "target": "j'ai commencé à apprendre le français"},
-        {"known": "because I started to speak better yesterday", "target": "parce que j'ai commencé à parler mieux hier"},
-        {"known": "why did I start to read the story this afternoon", "target": "pourquoi j'ai commencé à lire l'histoire cet après-midi"},
-        {"known": "I started to speak with other people here tonight", "target": "j'ai commencé à parler avec d'autres personnes ici ce soir"},
-        {"known": "because I started to learn the French language with everyone else", "target": "parce que j'ai commencé à apprendre le français avec tout le monde"},
-        {"known": "I started to feel ready to go when other people are here", "target": "j'ai commencé à me sentir prêt à partir quand d'autres personnes sont ici"}
+        {"known": "I started.", "target": "Ich habe angefangen."},
+        {"known": "I have started.", "target": "Ich habe angefangen."},
+        {"known": "I started today.", "target": "Ich habe heute angefangen."},
+        {"known": "I started to learn.", "target": "Ich habe angefangen zu lernen."},
+        {"known": "I started to read.", "target": "Ich habe angefangen zu lesen."},
+        {"known": "I started to speak German.", "target": "Ich habe angefangen Deutsch zu sprechen."},
+        {"known": "I started to learn German today.", "target": "Ich habe heute angefangen Deutsch zu lernen."},
+        {"known": "I started this afternoon.", "target": "Ich habe heute Nachmittag angefangen."},
+        {"known": "I started to read the story.", "target": "Ich habe angefangen die Geschichte zu lesen."},
+        {"known": "I started to help you with German today.", "target": "Ich habe heute angefangen dir mit Deutsch zu helfen."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "to think about it",
-      "target": "à y penser",
+      "known": "last month",
+      "target": "letzten Monat",
       "components": [
-        {"known": "to", "target": "à"},
-        {"known": "there", "target": "y"},
-        {"known": "think", "target": "penser"}
+        {"known": "last", "target": "letzten"},
+        {"known": "month", "target": "Monat"}
       ],
       "phrases": [
-        {"known": "to", "target": "à"},
-        {"known": "there", "target": "y"},
-        {"known": "think", "target": "penser"},
-        {"known": "to think about it", "target": "à y penser"},
-        {"known": "I started to think about it", "target": "j'ai commencé à y penser"},
-        {"known": "to think about it soon", "target": "à y penser bientôt"},
-        {"known": "I started to think about it tonight", "target": "j'ai commencé à y penser ce soir"},
-        {"known": "because I started to think about it yesterday", "target": "parce que j'ai commencé à y penser hier"},
-        {"known": "why did I start to think about it this afternoon", "target": "pourquoi j'ai commencé à y penser cet après-midi"},
-        {"known": "I started to think about it when other people are here", "target": "j'ai commencé à y penser quand d'autres personnes sont ici"},
-        {"known": "because I started to think about it with everyone else tonight", "target": "parce que j'ai commencé à y penser avec tout le monde ce soir"},
-        {"known": "I started to think about it before I have to go with other people", "target": "j'ai commencé à y penser avant que je doive partir avec d'autres personnes"}
+        {"known": "Last month.", "target": "Letzten Monat."},
+        {"known": "Last month?", "target": "Letzten Monat?"},
+        {"known": "Not last month.", "target": "Nicht letzten Monat."},
+        {"known": "Just last month.", "target": "Schon letzten Monat."},
+        {"known": "I started last month.", "target": "Ich habe letzten Monat angefangen."},
+        {"known": "Last month I started.", "target": "Letzten Monat habe ich angefangen."},
+        {"known": "I started to read last month.", "target": "Ich habe letzten Monat angefangen zu lesen."},
+        {"known": "I started to speak German last month.", "target": "Ich habe letzten Monat angefangen Deutsch zu sprechen."},
+        {"known": "Last month I wanted to read the story.", "target": "Letzten Monat wollte ich die Geschichte lesen."},
+        {"known": "I started to read the story last month.", "target": "Ich habe letzten Monat angefangen die Geschichte zu lesen."}
       ]
     },
     {
       "idx": 3,
       "type": "A",
       "known": "carefully",
-      "target": "soigneusement",
+      "target": "sorgfältig",
       "phrases": [
-        {"known": "carefully", "target": "soigneusement"},
-        {"known": "think carefully", "target": "penser soigneusement"},
-        {"known": "read carefully", "target": "lire soigneusement"},
-        {"known": "speak carefully", "target": "parler soigneusement"},
-        {"known": "think about it carefully", "target": "y penser soigneusement"},
-        {"known": "read the story carefully", "target": "lire l'histoire soigneusement"},
-        {"known": "to think about it carefully", "target": "à y penser soigneusement"},
-        {"known": "I started to think about it carefully", "target": "j'ai commencé à y penser soigneusement"},
-        {"known": "I started to read carefully tonight", "target": "j'ai commencé à lire soigneusement ce soir"},
-        {"known": "to think about it carefully this afternoon", "target": "à y penser soigneusement cet après-midi"},
-        {"known": "because I started to think about it carefully yesterday", "target": "parce que j'ai commencé à y penser soigneusement hier"},
-        {"known": "why did I start to read the story carefully here", "target": "pourquoi j'ai commencé à lire l'histoire soigneusement ici"},
-        {"known": "I started to think about it carefully when other people are here", "target": "j'ai commencé à y penser soigneusement quand d'autres personnes sont ici"},
-        {"known": "because I started to read the story carefully with everyone else", "target": "parce que j'ai commencé à lire l'histoire soigneusement avec tout le monde"},
-        {"known": "I started to think about it carefully before I have to go tonight", "target": "j'ai commencé à y penser soigneusement avant que je doive partir ce soir"}
+        {"known": "Carefully.", "target": "Sorgfältig."},
+        {"known": "Very carefully.", "target": "Sehr sorgfältig."},
+        {"known": "I try carefully.", "target": "Ich versuche sorgfältig."},
+        {"known": "I started to learn carefully.", "target": "Ich habe angefangen sorgfältig zu lernen."},
+        {"known": "I want to read carefully.", "target": "Ich möchte sorgfältig lesen."},
+        {"known": "I started carefully last month.", "target": "Ich habe letzten Monat sorgfältig angefangen."},
+        {"known": "I want to read the story carefully.", "target": "Ich möchte die Geschichte sorgfältig lesen."},
+        {"known": "I started to speak German carefully.", "target": "Ich habe angefangen sorgfältig Deutsch zu sprechen."},
+        {"known": "I started to learn German carefully last month.", "target": "Ich habe letzten Monat angefangen sorgfältig Deutsch zu lernen."},
+        {"known": "I don't want to read it carefully.", "target": "Ich möchte es nicht sorgfältig lesen."}
       ]
     },
     {
       "idx": 4,
       "type": "M",
-      "known": "last month",
-      "target": "le mois dernier",
+      "known": "to think about it",
+      "target": "darüber nachzudenken",
       "components": [
-        {"known": "the", "target": "le"},
-        {"known": "month", "target": "mois"},
-        {"known": "last", "target": "dernier"}
+        {"known": "about it", "target": "darüber"},
+        {"known": "to think", "target": "nachzudenken"}
       ],
       "phrases": [
-        {"known": "the", "target": "le"},
-        {"known": "month", "target": "mois"},
-        {"known": "last", "target": "dernier"},
-        {"known": "last month", "target": "le mois dernier"},
-        {"known": "I started last month", "target": "j'ai commencé le mois dernier"},
-        {"known": "to think about it last month", "target": "à y penser le mois dernier"},
-        {"known": "I started to think about it carefully last month", "target": "j'ai commencé à y penser soigneusement le mois dernier"},
-        {"known": "I started to learn the French language last month", "target": "j'ai commencé à apprendre le français le mois dernier"},
-        {"known": "because I started to read the story carefully last month", "target": "parce que j'ai commencé à lire l'histoire soigneusement le mois dernier"},
-        {"known": "why did I start to think about it carefully last month here", "target": "pourquoi j'ai commencé à y penser soigneusement le mois dernier ici"},
-        {"known": "I started to think about it carefully last month when other people are here", "target": "j'ai commencé à y penser soigneusement le mois dernier quand d'autres personnes sont ici"},
-        {"known": "because I started to read the story carefully last month with everyone else", "target": "parce que j'ai commencé à lire l'histoire soigneusement le mois dernier avec tout le monde"}
+        {"known": "About it now.", "target": "Darüber jetzt."},
+        {"known": "About it today.", "target": "Darüber heute."},
+        {"known": "To think about it.", "target": "Darüber nachzudenken."},
+        {"known": "I started to think about it.", "target": "Ich habe angefangen darüber nachzudenken."},
+        {"known": "I want to think about it carefully.", "target": "Ich möchte sorgfältig darüber nachzudenken."},
+        {"known": "I started to think about it last month.", "target": "Ich habe letzten Monat angefangen darüber nachzudenken."},
+        {"known": "I don't want to think about it.", "target": "Ich möchte nicht darüber nachzudenken."},
+        {"known": "I started to think about it carefully.", "target": "Ich habe angefangen sorgfältig darüber nachzudenken."},
+        {"known": "I started to think about it carefully last month.", "target": "Ich habe letzten Monat angefangen sorgfältig darüber nachzudenken."},
+        {"known": "Do you want to think about it?", "target": "Möchtest du darüber nachzudenken?"}
       ]
     }
   ]

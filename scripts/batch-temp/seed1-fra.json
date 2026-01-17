@@ -1,0 +1,74 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 1,
+  "known_text": "I want to speak French with you now.",
+  "target_text": "Je veux parler français avec toi maintenant.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I want",
+      "target": "je veux",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"},
+        {"known": "I want", "target": "je veux"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to speak",
+      "target": "parler",
+      "phrases": [
+        {"known": "to speak", "target": "parler"},
+        {"known": "I want to speak", "target": "je veux parler"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "French",
+      "target": "français",
+      "phrases": [
+        {"known": "French", "target": "français"},
+        {"known": "to speak French", "target": "parler français"},
+        {"known": "I want to speak French", "target": "je veux parler français"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "with you",
+      "target": "avec toi",
+      "components": [
+        {"known": "with", "target": "avec"},
+        {"known": "you", "target": "toi"}
+      ],
+      "phrases": [
+        {"known": "with", "target": "avec"},
+        {"known": "you", "target": "toi"},
+        {"known": "with you", "target": "avec toi"},
+        {"known": "to speak with you", "target": "parler avec toi"},
+        {"known": "to speak French with you", "target": "parler français avec toi"},
+        {"known": "I want to speak French with you", "target": "je veux parler français avec toi"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "now",
+      "target": "maintenant",
+      "phrases": [
+        {"known": "now", "target": "maintenant"},
+        {"known": "with you now", "target": "avec toi maintenant"},
+        {"known": "to speak with you now", "target": "parler avec toi maintenant"},
+        {"known": "I want to speak French with you now", "target": "je veux parler français avec toi maintenant"}
+      ]
+    }
+  ]
+}

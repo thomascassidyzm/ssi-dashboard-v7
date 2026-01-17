@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 225,
+  "known_text": "He would give you an answer if he could.",
+  "target_text": "如果他能的话，他会给你一个答案。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if he could",
+      "target": "如果他能的话",
+      "components": [
+        {"known": "if", "target": "如果"},
+        {"known": "he could", "target": "他能的话"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "如果"},
+        {"known": "he could", "target": "他能"},
+        {"known": "he can come", "target": "他能来"},
+        {"known": "she can help", "target": "她能帮"},
+        {"known": "I can go", "target": "我能去"},
+        {"known": "if he could", "target": "如果他能的话"},
+        {"known": "if she could", "target": "如果她能的话"},
+        {"known": "if I could", "target": "如果我能的话"},
+        {"known": "if you could help", "target": "如果你能帮的话"},
+        {"known": "if he could come", "target": "如果他能来的话"},
+        {"known": "if she could help me", "target": "如果她能帮我的话"},
+        {"known": "if I could understand Chinese", "target": "如果我能理解中文的话"},
+        {"known": "if he could help us tomorrow", "target": "如果他明天能帮我们的话"},
+        {"known": "if she could tell me what she wants", "target": "如果她能告诉我她想要什么的话"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "he would give you",
+      "target": "他会给你",
+      "components": [
+        {"known": "he would", "target": "他会"},
+        {"known": "give you", "target": "给你"}
+      ],
+      "phrases": [
+        {"known": "give", "target": "给"},
+        {"known": "give you", "target": "给你"},
+        {"known": "give me", "target": "给我"},
+        {"known": "he would give", "target": "他会给"},
+        {"known": "he would give you", "target": "他会给你"},
+        {"known": "she would give me", "target": "她会给我"},
+        {"known": "I would give her", "target": "我会给她"},
+        {"known": "he would give you something", "target": "他会给你一些"},
+        {"known": "she would give me the book tomorrow", "target": "她明天会给我书"},
+        {"known": "if he could, he would give you the book", "target": "如果他能的话，他会给你书"},
+        {"known": "he would give you something interesting tomorrow", "target": "他明天会给你有意思的"},
+        {"known": "she would give me something if she could help", "target": "如果她能帮的话，她会给我一些"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "an answer",
+      "target": "一个答案",
+      "components": [
+        {"known": "one", "target": "一个"},
+        {"known": "answer", "target": "答案"}
+      ],
+      "phrases": [
+        {"known": "answer", "target": "答案"},
+        {"known": "one", "target": "一个"},
+        {"known": "an answer", "target": "一个答案"},
+        {"known": "this answer", "target": "这个答案"},
+        {"known": "give an answer", "target": "给一个答案"},
+        {"known": "I need an answer", "target": "我需要一个答案"},
+        {"known": "he will give you an answer", "target": "他会给你一个答案"},
+        {"known": "can you give me an answer", "target": "你能给我一个答案吗"},
+        {"known": "she wants to give him an answer", "target": "她想给他一个答案"},
+        {"known": "he would give you an answer if he could", "target": "如果他能的话，他会给你一个答案"},
+        {"known": "can you give me an answer tomorrow", "target": "你明天能给我一个答案吗"},
+        {"known": "I need an answer from you tomorrow morning", "target": "我明天早上需要你给我一个答案"},
+        {"known": "she will give me an answer tomorrow afternoon", "target": "她明天下午会给我一个答案"}
+      ]
+    }
+  ]
+}

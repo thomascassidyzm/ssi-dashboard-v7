@@ -1,0 +1,79 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 83,
+  "known_text": "I agree with what you said about your friend.",
+  "target_text": "Eu concordo com o que você disse sobre o seu amigo.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I agree with",
+      "target": "eu concordo com",
+      "components": [
+        {"known": "I", "target": "eu"},
+        {"known": "agree with", "target": "concordo com"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "eu"},
+        {"known": "agree with", "target": "concordo com"},
+        {"known": "I agree with", "target": "eu concordo com"},
+        {"known": "I agree", "target": "eu concordo"},
+        {"known": "I agree with you", "target": "eu concordo com você"},
+        {"known": "I do not agree", "target": "eu não concordo"},
+        {"known": "I do not agree with you", "target": "eu não concordo com você"},
+        {"known": "I agree with what you said", "target": "eu concordo com o que você disse"},
+        {"known": "I do not agree with what you said", "target": "eu não concordo com o que você disse"},
+        {"known": "I do not agree with what you said but I understand", "target": "eu não concordo com o que você disse mas eu entendo"},
+        {"known": "I agree with what you said but I do not understand", "target": "eu concordo com o que você disse mas eu não entendo"},
+        {"known": "I do not agree with you but I want to understand", "target": "eu não concordo com você mas eu quero entender"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what you said",
+      "target": "o que você disse",
+      "components": [
+        {"known": "what", "target": "o que"},
+        {"known": "you said", "target": "você disse"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "o que"},
+        {"known": "you said", "target": "você disse"},
+        {"known": "what you said", "target": "o que você disse"},
+        {"known": "what did you say?", "target": "o que você disse?"},
+        {"known": "I heard what you said", "target": "eu ouvi o que você disse"},
+        {"known": "I understand what you said", "target": "eu entendo o que você disse"},
+        {"known": "I do not understand what you said", "target": "eu não entendo o que você disse"},
+        {"known": "I agree with what you said", "target": "eu concordo com o que você disse"},
+        {"known": "I do not remember what you said yesterday", "target": "eu não lembro o que você disse ontem"},
+        {"known": "I understand what you said but I do not agree with you", "target": "eu entendo o que você disse mas eu não concordo com você"},
+        {"known": "I want to understand what you said but it is difficult", "target": "eu quero entender o que você disse mas é difícil"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "about your friend",
+      "target": "sobre o seu amigo",
+      "components": [
+        {"known": "about", "target": "sobre"},
+        {"known": "your friend", "target": "o seu amigo"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "sobre"},
+        {"known": "your", "target": "o seu"},
+        {"known": "your friend", "target": "o seu amigo"},
+        {"known": "about your friend", "target": "sobre o seu amigo"},
+        {"known": "about you", "target": "sobre você"},
+        {"known": "about that", "target": "sobre isso"},
+        {"known": "about learning", "target": "sobre aprender"},
+        {"known": "what did you say about your friend?", "target": "o que você disse sobre o seu amigo?"},
+        {"known": "I want to know more about your friend", "target": "eu quero saber mais sobre o seu amigo"},
+        {"known": "what did you say about learning Portuguese?", "target": "o que você disse sobre aprender português?"},
+        {"known": "I agree with what you said about your friend", "target": "eu concordo com o que você disse sobre o seu amigo"},
+        {"known": "I do not understand what you said about your friend yesterday", "target": "eu não entendo o que você disse sobre o seu amigo ontem"}
+      ]
+    }
+  ]
+}

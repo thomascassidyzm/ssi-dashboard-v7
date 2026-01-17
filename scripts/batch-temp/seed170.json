@@ -1,0 +1,54 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 170,
+  "known_text": "I'd like you to tell me what you need.",
+  "target_text": "Eu gostaria que você me dissesse o que você precisa.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'd like you to",
+      "target": "eu gostaria que você",
+      "components": [
+        {"known": "I'd like", "target": "eu gostaria"},
+        {"known": "you to", "target": "que você"}
+      ],
+      "phrases": [
+        {"known": "I'd like", "target": "eu gostaria"},
+        {"known": "you to", "target": "que você"},
+        {"known": "I'd like you to", "target": "eu gostaria que você"},
+        {"known": "I'd like you to help", "target": "eu gostaria que você ajudar"},
+        {"known": "she'd like you to come", "target": "ela gostaria que você vir"},
+        {"known": "I'd like you to do that", "target": "eu gostaria que você fazer isso"},
+        {"known": "I'd like you to come later on", "target": "eu gostaria que você vir mais tarde"},
+        {"known": "I think I'd like you to help me", "target": "eu acho que eu gostaria que você me ajudar"},
+        {"known": "he said I'd like you to come and help tomorrow afternoon", "target": "ele disse eu gostaria que você vir e ajudar amanhã à tarde"},
+        {"known": "I'm not sure but I'd like you to do something else later on", "target": "eu não tenho certeza mas eu gostaria que você fazer outra coisa mais tarde"},
+        {"known": "and then I'd like you to tell me what do you want me to do with that book", "target": "e depois eu gostaria que você me dizer o que você quer que eu faça com esse livro"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "tell me what you need",
+      "target": "me dissesse o que você precisa",
+      "components": [
+        {"known": "tell me", "target": "me dissesse"},
+        {"known": "what you need", "target": "o que você precisa"}
+      ],
+      "phrases": [
+        {"known": "tell me", "target": "me dissesse"},
+        {"known": "what you need", "target": "o que você precisa"},
+        {"known": "tell me what you need", "target": "me dissesse o que você precisa"},
+        {"known": "I'd like you to tell me what you need", "target": "eu gostaria que você me dissesse o que você precisa"},
+        {"known": "she needs to tell me what you need", "target": "ela precisa me dizer o que você precisa"},
+        {"known": "can you tell me what you need to do", "target": "você pode me dizer o que você precisa fazer"},
+        {"known": "I think he needs to tell me what you need later on", "target": "eu acho que ele precisa me dizer o que você precisa mais tarde"},
+        {"known": "I'm not sure what you need but I'd like you to tell me", "target": "eu não tenho certeza o que você precisa mas eu gostaria que você me dissesse"},
+        {"known": "and then I'd like you to tell me what you need to do tomorrow afternoon", "target": "e depois eu gostaria que você me dissesse o que você precisa fazer amanhã à tarde"},
+        {"known": "she said I'd like you to tell me what you need because I want to come and help", "target": "ela disse eu gostaria que você me dissesse o que você precisa porque eu quero vir e ajudar"},
+        {"known": "what do you want me to do because I'd like you to tell me what you need first", "target": "o que você quer que eu faça porque eu gostaria que você me dissesse o que você precisa"}
+      ]
+    }
+  ]
+}

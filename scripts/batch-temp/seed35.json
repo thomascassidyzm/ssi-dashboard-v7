@@ -1,97 +1,88 @@
 {
-  "course_code": "fra_for_eng",
+  "course_code": "deu_for_eng",
   "seed_number": 35,
   "known_text": "She doesn't want to read anything this afternoon.",
-  "target_text": "Elle ne veut rien lire cet après-midi.",
+  "target_text": "Sie möchte heute Nachmittag nichts lesen.",
   "legos": [
     {
       "idx": 1,
-      "type": "A",
-      "known": "she",
-      "target": "elle",
+      "type": "M",
+      "known": "she wants",
+      "target": "sie möchte",
+      "components": [
+        {"known": "she", "target": "sie"},
+        {"known": "wants", "target": "möchte"}
+      ],
       "phrases": [
-        {"known": "she", "target": "elle"},
-        {"known": "she wants", "target": "elle veut"},
-        {"known": "she is here", "target": "elle est ici"},
-        {"known": "she doesn't want", "target": "elle ne veut pas"},
-        {"known": "she doesn't want to go", "target": "elle ne veut pas partir"},
-        {"known": "she doesn't want to speak", "target": "elle ne veut pas parler"},
-        {"known": "because she doesn't want to go yesterday", "target": "parce que elle ne veut pas partir hier"},
-        {"known": "why doesn't she want to be quiet tonight", "target": "pourquoi elle ne veut pas se taire ce soir"},
-        {"known": "she doesn't want to speak with other people", "target": "elle ne veut pas parler avec d'autres personnes"},
-        {"known": "how long has she not wanted to show me something here", "target": "depuis combien de temps elle ne veut pas me montrer quelque chose ici"},
-        {"known": "she doesn't want to be quiet when other people are here tonight", "target": "elle ne veut pas se taire quand d'autres personnes sont ici ce soir"},
-        {"known": "because she doesn't want to learn the French language with everyone else", "target": "parce que elle ne veut pas apprendre le français avec tout le monde"}
+        {"known": "She wants it.", "target": "Sie möchte es."},
+        {"known": "She wants that.", "target": "Sie möchte das."},
+        {"known": "She wants to try.", "target": "Sie möchte versuchen."},
+        {"known": "She wants to learn it.", "target": "Sie möchte es lernen."},
+        {"known": "She wants to go with me today.", "target": "Sie möchte heute mit mir gehen."},
+        {"known": "She wants to speak German with us.", "target": "Sie möchte Deutsch mit uns sprechen."},
+        {"known": "She wants to talk with me now.", "target": "Sie möchte jetzt mit mir reden."},
+        {"known": "She wants to help me learn German today.", "target": "Sie möchte mir heute helfen Deutsch zu lernen."},
+        {"known": "She wants to be quiet when I speak.", "target": "Sie möchte still sein wenn ich spreche."},
+        {"known": "She wants to go with us today.", "target": "Sie möchte heute mit uns gehen."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "doesn't want anything",
-      "target": "ne veut rien",
+      "known": "this afternoon",
+      "target": "heute Nachmittag",
       "components": [
-        {"known": "not", "target": "ne"},
-        {"known": "wants", "target": "veut"},
-        {"known": "nothing", "target": "rien"}
+        {"known": "this/today", "target": "heute"},
+        {"known": "afternoon", "target": "Nachmittag"}
       ],
       "phrases": [
-        {"known": "not", "target": "ne"},
-        {"known": "wants", "target": "veut"},
-        {"known": "nothing", "target": "rien"},
-        {"known": "doesn't want anything", "target": "ne veut rien"},
-        {"known": "she doesn't want anything", "target": "elle ne veut rien"},
-        {"known": "she doesn't want anything tonight", "target": "elle ne veut rien ce soir"},
-        {"known": "she doesn't want anything here", "target": "elle ne veut rien ici"},
-        {"known": "because she doesn't want anything from me", "target": "parce que elle ne veut rien de moi"},
-        {"known": "why doesn't she want anything from other people", "target": "pourquoi elle ne veut rien de d'autres personnes"},
-        {"known": "she doesn't want anything when other people are here", "target": "elle ne veut rien quand d'autres personnes sont ici"},
-        {"known": "how long has she not wanted anything from everyone else", "target": "depuis combien de temps elle ne veut rien de tout le monde"},
-        {"known": "she doesn't want anything when I'm looking forward to going tonight", "target": "elle ne veut rien quand j'ai hâte de partir ce soir"},
-        {"known": "she doesn't want anything when other people are here with me tonight", "target": "elle ne veut rien quand d'autres personnes sont ici avec moi ce soir"}
+        {"known": "This afternoon.", "target": "Heute Nachmittag."},
+        {"known": "She wants this.", "target": "Sie möchte das."},
+        {"known": "She wants this afternoon.", "target": "Sie möchte heute Nachmittag."},
+        {"known": "This afternoon I want to go.", "target": "Heute Nachmittag möchte ich gehen."},
+        {"known": "She wants to try this afternoon.", "target": "Sie möchte heute Nachmittag versuchen."},
+        {"known": "Other people are here this afternoon.", "target": "Andere Leute sind heute Nachmittag hier."},
+        {"known": "She wants to speak German this afternoon.", "target": "Sie möchte heute Nachmittag Deutsch sprechen."},
+        {"known": "When other people are here this afternoon.", "target": "Wenn andere Leute heute Nachmittag hier sind."},
+        {"known": "She wants to be quiet this afternoon.", "target": "Sie möchte heute Nachmittag still sein."},
+        {"known": "He doesn't want to go with us this afternoon.", "target": "Er möchte heute Nachmittag nicht mit uns gehen."}
       ]
     },
     {
       "idx": 3,
       "type": "A",
-      "known": "to read",
-      "target": "lire",
+      "known": "nothing",
+      "target": "nichts",
       "phrases": [
-        {"known": "to read", "target": "lire"},
-        {"known": "to read more", "target": "lire plus"},
-        {"known": "to read better", "target": "lire mieux"},
-        {"known": "doesn't want to read anything", "target": "ne veut rien lire"},
-        {"known": "she doesn't want to read anything", "target": "elle ne veut rien lire"},
-        {"known": "I wanted to read something tonight", "target": "je voulais lire quelque chose ce soir"},
-        {"known": "she doesn't want to read anything here", "target": "elle ne veut rien lire ici"},
-        {"known": "because she doesn't want to read anything tonight", "target": "parce que elle ne veut rien lire ce soir"},
-        {"known": "why doesn't she want to read anything with me", "target": "pourquoi elle ne veut rien lire avec moi"},
-        {"known": "she doesn't want to read anything when other people are here", "target": "elle ne veut rien lire quand d'autres personnes sont ici"},
-        {"known": "how long has she not wanted to read anything with everyone else", "target": "depuis combien de temps elle ne veut rien lire avec tout le monde"},
-        {"known": "she doesn't want to read anything when I'm looking forward to learning", "target": "elle ne veut rien lire quand j'ai hâte de apprendre"}
+        {"known": "Nothing.", "target": "Nichts."},
+        {"known": "I want nothing.", "target": "Ich möchte nichts."},
+        {"known": "She wants nothing.", "target": "Sie möchte nichts."},
+        {"known": "I want nothing today.", "target": "Ich möchte heute nichts."},
+        {"known": "She wants nothing this afternoon.", "target": "Sie möchte heute Nachmittag nichts."},
+        {"known": "He wants nothing with us.", "target": "Er möchte nichts mit uns."},
+        {"known": "She wants nothing when I am here.", "target": "Sie möchte nichts wenn ich hier bin."},
+        {"known": "Other people want nothing today.", "target": "Andere Leute möchten heute nichts."},
+        {"known": "I want nothing when other people are here.", "target": "Ich möchte nichts wenn andere Leute hier sind."},
+        {"known": "She wants nothing this afternoon with us.", "target": "Sie möchte heute Nachmittag nichts mit uns."}
       ]
     },
     {
       "idx": 4,
-      "type": "M",
-      "known": "this afternoon",
-      "target": "cet après-midi",
-      "components": [
-        {"known": "this", "target": "cet"},
-        {"known": "afternoon", "target": "après-midi"}
-      ],
+      "type": "A",
+      "known": "to read",
+      "target": "lesen",
       "phrases": [
-        {"known": "this", "target": "cet"},
-        {"known": "afternoon", "target": "après-midi"},
-        {"known": "this afternoon", "target": "cet après-midi"},
-        {"known": "go this afternoon", "target": "partir cet après-midi"},
-        {"known": "read this afternoon", "target": "lire cet après-midi"},
-        {"known": "she doesn't want to read anything this afternoon", "target": "elle ne veut rien lire cet après-midi"},
-        {"known": "I wanted to speak with you this afternoon", "target": "je voulais parler avec toi cet après-midi"},
-        {"known": "because she doesn't want to be quiet this afternoon", "target": "parce que elle ne veut pas se taire cet après-midi"},
-        {"known": "why doesn't she want to read anything this afternoon with me", "target": "pourquoi elle ne veut rien lire cet après-midi avec moi"},
-        {"known": "she doesn't want to read anything this afternoon when other people are here", "target": "elle ne veut rien lire cet après-midi quand d'autres personnes sont ici"},
-        {"known": "how long has she not wanted to read anything this afternoon with everyone else", "target": "depuis combien de temps elle ne veut rien lire cet après-midi avec tout le monde"},
-        {"known": "she doesn't want to read anything this afternoon before I have to go tonight", "target": "elle ne veut rien lire cet après-midi avant que je doive partir ce soir"}
+        {"known": "To read.", "target": "Lesen."},
+        {"known": "I want to read.", "target": "Ich möchte lesen."},
+        {"known": "She wants to read.", "target": "Sie möchte lesen."},
+        {"known": "I want to read now.", "target": "Ich möchte jetzt lesen."},
+        {"known": "She wants to read this afternoon.", "target": "Sie möchte heute Nachmittag lesen."},
+        {"known": "He doesn't want to read.", "target": "Er möchte nicht lesen."},
+        {"known": "She wants nothing to read.", "target": "Sie möchte nichts lesen."},
+        {"known": "I want nothing to read this afternoon.", "target": "Ich möchte heute Nachmittag nichts lesen."},
+        {"known": "When she wants to read today.", "target": "Wenn sie heute lesen möchte."},
+        {"known": "She doesn't want to read anything this afternoon.", "target": "Sie möchte heute Nachmittag nichts lesen."},
+        {"known": "Other people want to read nothing this afternoon.", "target": "Andere Leute möchten heute Nachmittag nichts lesen."}
       ]
     }
   ]

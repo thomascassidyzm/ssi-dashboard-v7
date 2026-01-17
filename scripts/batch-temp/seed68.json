@@ -1,0 +1,49 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 68,
+  "known_text": "What are you looking for?",
+  "target_text": "Was suchen Sie?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "are you looking for",
+      "target": "suchen Sie",
+      "components": [
+        {"known": "look for/search", "target": "suchen"},
+        {"known": "you (formal)", "target": "Sie"}
+      ],
+      "phrases": [
+        {"known": "look for/search", "target": "suchen"},
+        {"known": "you (formal)", "target": "Sie"},
+        {"known": "are you looking for", "target": "suchen Sie"},
+        {"known": "what are you looking for", "target": "was suchen Sie"},
+        {"known": "are you looking for the answer", "target": "suchen Sie die Antwort"},
+        {"known": "why are you looking for the answer", "target": "warum suchen Sie die Antwort"},
+        {"known": "are you looking for something", "target": "suchen Sie etwas"},
+        {"known": "are you sure you are looking for the answer", "target": "sind Sie sicher dass Sie die Antwort suchen"},
+        {"known": "it is not difficult to find what you are looking for", "target": "es ist nicht schwierig zu finden was Sie suchen"},
+        {"known": "do you want to stop looking for the answer", "target": "mochten Sie aufhoren die Antwort zu suchen"},
+        {"known": "are you looking for time to learn German", "target": "suchen Sie Zeit um Deutsch zu lernen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "what",
+      "target": "was",
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "what is that (thing)", "target": "was ist das"},
+        {"known": "what do you want", "target": "was mochten Sie"},
+        {"known": "what are you looking for", "target": "was suchen Sie"},
+        {"known": "what do you want to say", "target": "was mochten Sie sagen"},
+        {"known": "what is the answer", "target": "was ist die Antwort"},
+        {"known": "what do you want to learn", "target": "was mochten Sie lernen"},
+        {"known": "what do you want to find", "target": "was mochten Sie finden"},
+        {"known": "are you sure you know what you are looking for", "target": "sind Sie sicher dass Sie wissen was Sie suchen"},
+        {"known": "I am not sure what the answer is", "target": "ich bin nicht sicher was die Antwort ist"}
+      ]
+    }
+  ]
+}

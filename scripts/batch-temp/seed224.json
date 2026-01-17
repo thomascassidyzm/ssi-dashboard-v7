@@ -1,0 +1,55 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 224,
+  "known_text": "He's just started to learn.",
+  "target_text": "他刚开始学。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he's just started",
+      "target": "他刚开始",
+      "components": [
+        {"known": "he", "target": "他"},
+        {"known": "just started", "target": "刚开始"}
+      ],
+      "phrases": [
+        {"known": "just started", "target": "刚开始"},
+        {"known": "he just started", "target": "他刚开始"},
+        {"known": "she just started", "target": "她刚开始"},
+        {"known": "I just started", "target": "我刚开始"},
+        {"known": "we just started", "target": "我们刚开始"},
+        {"known": "he just started working", "target": "他刚开始工作"},
+        {"known": "she just started learning", "target": "她刚开始学"},
+        {"known": "I just started to understand", "target": "我刚开始理解"},
+        {"known": "he just started learning Chinese", "target": "他刚开始学中文"},
+        {"known": "we just started to understand the problem", "target": "我们刚开始理解问题"},
+        {"known": "he just started learning how to speak Chinese", "target": "他刚开始学怎么说中文"},
+        {"known": "she just started to help us with the work", "target": "她刚开始帮我们做工作"},
+        {"known": "he just started to tell us what he wants", "target": "他刚开始告诉我们他想要什么"},
+        {"known": "she just started to learn how to speak Chinese with us", "target": "她刚开始学怎么和我们说中文"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to learn",
+      "target": "学",
+      "phrases": [
+        {"known": "learn", "target": "学"},
+        {"known": "learn Chinese", "target": "学中文"},
+        {"known": "want to learn", "target": "想学"},
+        {"known": "I want to learn", "target": "我想学"},
+        {"known": "like to learn", "target": "喜欢学"},
+        {"known": "he is learning Chinese", "target": "他在学中文"},
+        {"known": "she wants to learn Chinese", "target": "她想学中文"},
+        {"known": "I am trying to learn Chinese", "target": "我在试着学中文"},
+        {"known": "he just started learning Chinese", "target": "他刚开始学中文"},
+        {"known": "she wants to learn how to speak Chinese", "target": "她想学怎么说中文"},
+        {"known": "he just started to learn how to speak with us", "target": "他刚开始学怎么和我们说"},
+        {"known": "she wants to learn something interesting tomorrow", "target": "她想明天学有意思的"},
+        {"known": "he has been trying to learn Chinese for a while", "target": "他试着学中文一会儿了"}
+      ]
+    }
+  ]
+}

@@ -1,75 +1,96 @@
 {
-  "course_code": "eus_for_spa",
+  "course_code": "deu_for_eng",
   "seed_number": 18,
-  "known_text": "Queremos reunirnos a las seis de la tarde.",
-  "target_text": "Arratsaldeko seietan elkartu nahi dugu.",
+  "known_text": "We want to meet at six o'clock this evening.",
+  "target_text": "Wir möchten uns um sechs Uhr heute Abend treffen.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "a las seis de la tarde",
-      "target": "arratsaldeko seietan",
+      "known": "we want",
+      "target": "wir möchten",
       "components": [
-        {"known": "de la tarde", "target": "arratsaldeko"},
-        {"known": "a las seis", "target": "seietan"}
+        {"known": "we", "target": "wir"},
+        {"known": "want", "target": "möchten"}
       ],
       "phrases": [
-        {"known": "de la tarde", "target": "arratsaldeko"},
-        {"known": "a las seis", "target": "seietan"},
-        {"known": "a las seis de la tarde", "target": "arratsaldeko seietan"},
-        {"known": "volver a las seis de la tarde", "target": "arratsaldeko seietan itzuli"},
-        {"known": "quiero volver a las seis de la tarde", "target": "arratsaldeko seietan itzuli nahi dut"},
-        {"known": "el quiere volver a las seis de la tarde", "target": "arratsaldeko seietan itzuli nahi du"},
-        {"known": "quiero hablar euskera a las seis de la tarde", "target": "arratsaldeko seietan euskaraz hitz egin nahi dut"},
-        {"known": "el quiere volver con todos los demas a las seis de la tarde", "target": "arratsaldeko seietan beste guztiekin itzuli nahi du"},
-        {"known": "el quiere volver con todos los demas a las seis de la tarde y hablar euskera ahora", "target": "arratsaldeko seietan beste guztiekin itzuli nahi du eta orain euskaraz hitz egin"},
-        {"known": "ella quiere hablar euskera con todos los demas a las seis de la tarde manana muy bien", "target": "bihar arratsaldeko seietan beste guztiekin oso ondo euskaraz hitz egin nahi du"},
-        {"known": "quiero volver con todos los demas a las seis de la tarde y hablar euskera con alguien", "target": "arratsaldeko seietan beste guztiekin itzuli nahi dut eta norbaitekin euskaraz hitz egin"},
-        {"known": "ella quiere hablar euskera muy bien con alguien a las seis de la tarde manana ahora", "target": "bihar orain arratsaldeko seietan norbaitekin oso ondo euskaraz hitz egin nahi du"}
+        {"known": "we", "target": "wir"},
+        {"known": "want", "target": "möchten"},
+        {"known": "we want", "target": "wir möchten"},
+        {"known": "we want to speak", "target": "wir möchten sprechen"},
+        {"known": "we want to learn German", "target": "wir möchten Deutsch lernen"},
+        {"known": "we want to find out the answer", "target": "wir möchten die Antwort herausfinden"},
+        {"known": "I am not sure if we want to come back later on", "target": "ich bin nicht sicher ob wir später zurückkommen möchten"},
+        {"known": "we want to speak German with everyone else tomorrow", "target": "wir möchten morgen Deutsch mit allen anderen sprechen"}
       ]
     },
     {
       "idx": 2,
       "type": "A",
-      "known": "reunirnos",
-      "target": "elkartu",
+      "known": "ourselves",
+      "target": "uns",
       "phrases": [
-        {"known": "reunirnos", "target": "elkartu"},
-        {"known": "quiero reunirme", "target": "elkartu nahi dut"},
-        {"known": "el quiere reunirse", "target": "elkartu nahi du"},
-        {"known": "quiero reunirme manana", "target": "bihar elkartu nahi dut"},
-        {"known": "ella quiere reunirse mas tarde", "target": "geroago elkartu nahi du"},
-        {"known": "quiero reunirme con alguien", "target": "norbaitekin elkartu nahi dut"},
-        {"known": "el quiere reunirse con todos los demas", "target": "beste guztiekin elkartu nahi du"},
-        {"known": "quiero reunirme con todos los demas mas tarde manana", "target": "bihar geroago beste guztiekin elkartu nahi dut"},
-        {"known": "el quiere reunirse con todos los demas a las seis de la tarde y hablar euskera", "target": "arratsaldeko seietan beste guztiekin elkartu nahi du eta euskaraz hitz egin"},
-        {"known": "ella quiere reunirse con todos los demas a las seis de la tarde manana y volver mas tarde", "target": "bihar arratsaldeko seietan beste guztiekin elkartu nahi du eta geroago itzuli"},
-        {"known": "quiero reunirme con alguien a las seis de la tarde y hablar euskera muy bien ahora", "target": "arratsaldeko seietan norbaitekin elkartu nahi dut eta orain oso ondo euskaraz hitz egin"},
-        {"known": "el quiere reunirse con todos los demas a las seis de la tarde manana y hablar euskera muy bien", "target": "bihar arratsaldeko seietan beste guztiekin elkartu nahi du eta oso ondo euskaraz hitz egin"}
+        {"known": "ourselves", "target": "uns"},
+        {"known": "we want ourselves", "target": "wir möchten uns"},
+        {"known": "with us", "target": "mit uns"},
+        {"known": "she wants to speak with us", "target": "sie möchte mit uns sprechen"},
+        {"known": "he wants to speak German with us", "target": "er möchte Deutsch mit uns sprechen"},
+        {"known": "I am not sure if he wants to speak with us", "target": "ich bin nicht sicher ob er mit uns sprechen möchte"},
+        {"known": "she wants to find out the answer with us", "target": "sie möchte die Antwort mit uns herausfinden"}
       ]
     },
     {
       "idx": 3,
       "type": "M",
-      "known": "queremos",
-      "target": "nahi dugu",
+      "known": "at six o'clock",
+      "target": "um sechs Uhr",
       "components": [
-        {"known": "querer", "target": "nahi"},
-        {"known": "nosotros lo hacemos", "target": "dugu"}
+        {"known": "at", "target": "um"},
+        {"known": "six", "target": "sechs"},
+        {"known": "o'clock", "target": "Uhr"}
       ],
       "phrases": [
-        {"known": "querer", "target": "nahi"},
-        {"known": "nosotros lo hacemos", "target": "dugu"},
-        {"known": "queremos", "target": "nahi dugu"},
-        {"known": "queremos hablar", "target": "hitz egin nahi dugu"},
-        {"known": "queremos volver", "target": "itzuli nahi dugu"},
-        {"known": "queremos hablar euskera ahora", "target": "orain euskaraz hitz egin nahi dugu"},
-        {"known": "queremos volver mas tarde manana", "target": "bihar geroago itzuli nahi dugu"},
-        {"known": "queremos reunirnos con alguien ahora", "target": "orain norbaitekin elkartu nahi dugu"},
-        {"known": "queremos reunirnos con todos los demas", "target": "beste guztiekin elkartu nahi dugu"},
-        {"known": "queremos reunirnos con todos los demas a las seis de la tarde y hablar euskera", "target": "arratsaldeko seietan beste guztiekin elkartu nahi dugu eta euskaraz hitz egin"},
-        {"known": "queremos volver con todos los demas a las seis de la tarde manana y hablar euskera", "target": "bihar arratsaldeko seietan beste guztiekin itzuli nahi dugu eta euskaraz hitz egin"},
-        {"known": "queremos reunirnos con todos los demas a las seis de la tarde manana y volver mas tarde", "target": "bihar arratsaldeko seietan beste guztiekin elkartu nahi dugu eta geroago itzuli"}
+        {"known": "at", "target": "um"},
+        {"known": "six", "target": "sechs"},
+        {"known": "o'clock", "target": "Uhr"},
+        {"known": "at six o'clock", "target": "um sechs Uhr"},
+        {"known": "at six o'clock we want", "target": "um sechs Uhr möchten wir"},
+        {"known": "she wants to come back at six o'clock", "target": "sie möchte um sechs Uhr zurückkommen"},
+        {"known": "I am not sure if she wants to speak at six o'clock", "target": "ich bin nicht sicher ob sie um sechs Uhr sprechen möchte"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "this evening",
+      "target": "heute Abend",
+      "components": [
+        {"known": "today", "target": "heute"},
+        {"known": "evening", "target": "Abend"}
+      ],
+      "phrases": [
+        {"known": "today", "target": "heute"},
+        {"known": "evening", "target": "Abend"},
+        {"known": "this evening", "target": "heute Abend"},
+        {"known": "at six o'clock this evening", "target": "um sechs Uhr heute Abend"},
+        {"known": "we want to come back this evening", "target": "wir möchten heute Abend zurückkommen"},
+        {"known": "she wants to find out the answer this evening", "target": "sie möchte heute Abend die Antwort herausfinden"},
+        {"known": "I am not sure if he wants to speak this evening", "target": "ich bin nicht sicher ob er heute Abend sprechen möchte"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "meet",
+      "target": "treffen",
+      "phrases": [
+        {"known": "meet", "target": "treffen"},
+        {"known": "we want to meet", "target": "wir möchten uns treffen"},
+        {"known": "meet this evening", "target": "heute Abend treffen"},
+        {"known": "we want to meet at six o'clock", "target": "wir möchten uns um sechs Uhr treffen"},
+        {"known": "she wants to meet later on", "target": "sie möchte später treffen"},
+        {"known": "we want to meet at six o'clock this evening", "target": "wir möchten uns um sechs Uhr heute Abend treffen"},
+        {"known": "I am not sure if we want to meet this evening", "target": "ich bin nicht sicher ob wir uns heute Abend treffen möchten"}
       ]
     }
   ]

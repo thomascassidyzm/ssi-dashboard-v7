@@ -1,0 +1,78 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 136,
+  "known_text": "Of course you can ask her because she's my friend.",
+  "target_text": "Claro que você pode perguntar a ela porque ela é minha amiga.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "of course you can",
+      "target": "claro que você pode",
+      "components": [
+        {"known": "of course", "target": "claro que"},
+        {"known": "you can", "target": "você pode"}
+      ],
+      "phrases": [
+        {"known": "of course", "target": "claro que"},
+        {"known": "you can", "target": "você pode"},
+        {"known": "of course you can", "target": "claro que você pode"},
+        {"known": "I can", "target": "eu posso"},
+        {"known": "she can", "target": "ela pode"},
+        {"known": "of course I can", "target": "claro que eu posso"},
+        {"known": "of course she can do this", "target": "claro que ela pode fazer isso"},
+        {"known": "you can do this very well", "target": "você pode fazer isso muito bem"},
+        {"known": "of course you can do this if you want", "target": "claro que você pode fazer isso se você quiser"},
+        {"known": "I think you can do this very well now", "target": "eu acho que você pode fazer isso muito bem agora"},
+        {"known": "of course you can work at something difficult with them", "target": "claro que você pode trabalhar em algo difícil com eles"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "ask her",
+      "target": "perguntar a ela",
+      "components": [
+        {"known": "ask", "target": "perguntar"},
+        {"known": "her", "target": "a ela"}
+      ],
+      "phrases": [
+        {"known": "ask", "target": "perguntar"},
+        {"known": "her", "target": "a ela"},
+        {"known": "ask her", "target": "perguntar a ela"},
+        {"known": "can ask her", "target": "pode perguntar a ela"},
+        {"known": "I can ask her", "target": "eu posso perguntar a ela"},
+        {"known": "you can ask her", "target": "você pode perguntar a ela"},
+        {"known": "of course you can ask", "target": "claro que você pode perguntar"},
+        {"known": "of course you can ask her", "target": "claro que você pode perguntar a ela"},
+        {"known": "you can ask her about this", "target": "você pode perguntar a ela sobre isso"},
+        {"known": "of course I can ask her about this", "target": "claro que eu posso perguntar a ela sobre isso"},
+        {"known": "I don't know why you can not ask her", "target": "eu não sei por que você não pode perguntar a ela"},
+        {"known": "of course you can ask her because she is very well", "target": "claro que você pode perguntar a ela porque ela está muito bem"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "because she's my friend",
+      "target": "porque ela é minha amiga",
+      "components": [
+        {"known": "because", "target": "porque"},
+        {"known": "she's my friend", "target": "ela é minha amiga"}
+      ],
+      "phrases": [
+        {"known": "because", "target": "porque"},
+        {"known": "she's my friend", "target": "ela é minha amiga"},
+        {"known": "because she's my friend", "target": "porque ela é minha amiga"},
+        {"known": "he's my friend", "target": "ele é meu amigo"},
+        {"known": "because he's my friend", "target": "porque ele é meu amigo"},
+        {"known": "you can ask her because she's my friend", "target": "você pode perguntar a ela porque ela é minha amiga"},
+        {"known": "of course you can ask her because she's my friend", "target": "claro que você pode perguntar a ela porque ela é minha amiga"},
+        {"known": "I don't know why she is not my friend", "target": "eu não sei por que ela não é minha amiga"},
+        {"known": "I think you can ask him because he's my friend", "target": "eu acho que você pode perguntar a ele porque ele é meu amigo"},
+        {"known": "of course you can ask her because she's my friend and she is very well", "target": "claro que você pode perguntar a ela porque ela é minha amiga e ela está muito bem"},
+        {"known": "unfortunately I don't know why she is not my friend now", "target": "infelizmente eu não sei por que ela não é minha amiga agora"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 232,
+  "known_text": "I know an old woman who can remember the answer.",
+  "target_text": "我认识一个老女人能记住答案。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I know",
+      "target": "我认识",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "know (a person)", "target": "认识"}
+      ],
+      "phrases": [
+        {"known": "know", "target": "认识"},
+        {"known": "I know", "target": "我认识"},
+        {"known": "I know him", "target": "我认识他"},
+        {"known": "I know her", "target": "我认识她"},
+        {"known": "I know that man", "target": "我认识那个男人"},
+        {"known": "I know that old man", "target": "我认识那个老人"},
+        {"known": "do you know her", "target": "你认识她吗"},
+        {"known": "do you know that woman", "target": "你认识那个女人吗"},
+        {"known": "I know a person who can help", "target": "我认识一个能帮的人"},
+        {"known": "I know an old man who needs help", "target": "我认识一个需要帮忙的老人"},
+        {"known": "do you know that old man who was here yesterday", "target": "你认识昨天在这的那个老人吗"},
+        {"known": "I know a woman who wants to work with you", "target": "我认识一个想和你工作的女人"},
+        {"known": "I know an old man who wanted to ask for help", "target": "我认识一个想请人帮忙的老人"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "an old woman",
+      "target": "一个老女人",
+      "components": [
+        {"known": "a", "target": "一个"},
+        {"known": "old woman", "target": "老女人"}
+      ],
+      "phrases": [
+        {"known": "old", "target": "老"},
+        {"known": "woman", "target": "女人"},
+        {"known": "old woman", "target": "老女人"},
+        {"known": "an old woman", "target": "一个老女人"},
+        {"known": "that old woman", "target": "那个老女人"},
+        {"known": "this old woman", "target": "这个老女人"},
+        {"known": "the old woman can help", "target": "那个老女人能帮"},
+        {"known": "do you know that old woman", "target": "你认识那个老女人吗"},
+        {"known": "that old woman wants to learn Chinese", "target": "那个老女人想学中文"},
+        {"known": "I know an old woman who lives here", "target": "我认识一个住在这的老女人"},
+        {"known": "that old woman is trying to understand", "target": "那个老女人在试着理解"},
+        {"known": "I know an old woman who can speak Chinese well", "target": "我认识一个能说中文说得好的老女人"},
+        {"known": "that old woman wanted to tell me something yesterday", "target": "那个老女人昨天想告诉我一些"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "can remember the answer",
+      "target": "能记住答案",
+      "components": [
+        {"known": "can", "target": "能"},
+        {"known": "remember the answer", "target": "记住答案"}
+      ],
+      "phrases": [
+        {"known": "can", "target": "能"},
+        {"known": "remember", "target": "记住"},
+        {"known": "answer", "target": "答案"},
+        {"known": "the answer", "target": "答案"},
+        {"known": "can remember", "target": "能记住"},
+        {"known": "remember this", "target": "记住这个"},
+        {"known": "can remember the answer", "target": "能记住答案"},
+        {"known": "I can remember", "target": "我能记住"},
+        {"known": "she can remember the answer", "target": "她能记住答案"},
+        {"known": "can you remember what I said", "target": "你能记住我说的吗"},
+        {"known": "I know someone who can remember the answer", "target": "我认识一个能记住答案的人"},
+        {"known": "that old woman can remember everything I told her", "target": "那个老女人能记住我告诉她的"},
+        {"known": "can you remember the answer to this question", "target": "你能记住这个问题的答案吗"}
+      ]
+    }
+  ]
+}

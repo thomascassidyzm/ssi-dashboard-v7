@@ -2,6 +2,42 @@
 
 What the learner experiences. Understand this to build courses correctly.
 
+## Same Pattern, Any Language
+
+The LEGO methodology works identically across ALL language families:
+
+**CHINESE (Sinitic):**
+```
+M-LEGO: "as often as possible" → 尽量多
+Components: [as much as possible→尽量, often→多]
+Phrases: 尽量多说, 我想尽量多说, 我想尽量多说中文...
+```
+
+**PORTUGUESE (Romance):**
+```
+M-LEGO: "I have been learning" → tenho aprendido
+Components: [I have→tenho, learning→aprendido]
+Phrases: tenho aprendido, tenho aprendido português, eu tenho aprendido a falar...
+```
+
+**GERMAN (Germanic):**
+```
+M-LEGO: "I would like to" → ich möchte
+Components: [I→ich, would like→möchte]
+Phrases: ich möchte, ich möchte sprechen, ich möchte Deutsch sprechen...
+```
+
+**WELSH (Celtic):**
+```
+M-LEGO: "I'm trying" → dw i'n trio
+Components: [I am→dw i, trying→trio]
+Phrases: dw i'n trio, dw i'n trio dysgu, dw i'n trio siarad cymraeg...
+```
+
+**The principle is universal:** chunk meaningful phrases as M-LEGOs, build SHORT→LONG.
+
+---
+
 ## The Learning Journey
 
 Each LEGO introduction follows this pattern:
@@ -261,12 +297,13 @@ Then DEBUT phrases use the M-LEGO:
 ...
 ```
 
-## Particle Inference
+## Grammar is INFERRED, Never Taught
 
-**Particles are NEVER taught explicitly.** Learners infer their meaning from contrast.
+**Grammar patterns are NEVER taught explicitly.** Learners infer meaning from contrast.
 
 **M-LEGO components are only REAL WORDS - never grammatical explanations!**
 
+### Chinese Examples
 ```
 M-LEGO: "done" → "做了"
 Component: do → 做    (real word ✓)
@@ -275,22 +312,43 @@ NOT: "completed action marker" → 了  (bullshit explanation ✗)
 Learner sees:
 1. do → 做
 2. done → 做了
+→ They infer 了 = completion from the contrast!
 
-They infer 了 = completion from the contrast!
-```
-
-More examples:
-```
 good        → 好
 Is it good? → 好吗
 → Learner infers 吗 = question
-
-eat     → 吃
-eating  → 在吃
-→ Learner infers 在 = ongoing action
 ```
 
-**Rule: If you can't translate it to a single English WORD, don't make it a component.**
+### Portuguese Examples
+```
+M-LEGO: "I speak" → "eu falo"
+Component: to speak → falar    (real word ✓)
+NOT: "first person conjugation" → -o  (bullshit explanation ✗)
+
+Learner sees:
+1. to speak → falar
+2. I speak → eu falo
+→ They infer the conjugation pattern from contrast!
+
+to eat    → comer
+eaten     → comido
+→ Learner infers participle formation
+```
+
+### German Examples
+```
+M-LEGO: "I have eaten" → "ich habe gegessen"
+Components: I have → ich habe, eaten → gegessen    (real words ✓)
+NOT: "past participle prefix" → ge-  (bullshit explanation ✗)
+
+Learner sees:
+1. I have → ich habe
+2. eaten → gegessen
+3. I have eaten → ich habe gegessen
+→ They infer the perfect tense structure!
+```
+
+**Rule: If you can't translate it to a single English WORD (not an explanation), don't make it a component.**
 
 ## How Baskets Become Script View
 

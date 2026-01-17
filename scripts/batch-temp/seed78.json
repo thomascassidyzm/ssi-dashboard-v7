@@ -1,0 +1,63 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 78,
+  "known_text": "I don't understand what you said.",
+  "target_text": "Ich verstehe nicht was Sie gesagt haben.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't understand",
+      "target": "ich verstehe nicht",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "understand", "target": "verstehe"},
+        {"known": "not", "target": "nicht"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "understand", "target": "verstehe"},
+        {"known": "not", "target": "nicht"},
+        {"known": "I understand", "target": "ich verstehe"},
+        {"known": "I don't understand", "target": "ich verstehe nicht"},
+        {"known": "I understand that (thing)", "target": "ich verstehe das"},
+        {"known": "I don't understand why", "target": "ich verstehe nicht warum"},
+        {"known": "I understand that it is important", "target": "ich verstehe dass es wichtig ist"},
+        {"known": "I don't understand what that (thing) is", "target": "ich verstehe nicht was das ist"},
+        {"known": "I understand how well you are doing", "target": "ich verstehe wie gut Sie das machen"},
+        {"known": "I don't understand why it is not easy to learn German", "target": "ich verstehe nicht warum es nicht einfach ist Deutsch zu lernen"},
+        {"known": "I don't understand what you want me to do", "target": "ich verstehe nicht was Sie mochten dass ich mache"},
+        {"known": "I'm surprised that you understand German very well", "target": "ich bin überrascht dass Sie Deutsch sehr gut verstehen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what you said",
+      "target": "was Sie gesagt haben",
+      "components": [
+        {"known": "what", "target": "was"},
+        {"known": "you (formal)", "target": "Sie"},
+        {"known": "said", "target": "gesagt"},
+        {"known": "have (auxiliary)", "target": "haben"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "you (formal)", "target": "Sie"},
+        {"known": "said", "target": "gesagt"},
+        {"known": "have (auxiliary)", "target": "haben"},
+        {"known": "you have", "target": "Sie haben"},
+        {"known": "you said", "target": "Sie haben gesagt"},
+        {"known": "what you said", "target": "was Sie gesagt haben"},
+        {"known": "you didn't say that (thing)", "target": "das haben Sie nicht gesagt"},
+        {"known": "did you say that (thing)", "target": "haben Sie das gesagt"},
+        {"known": "I don't understand what you said", "target": "ich verstehe nicht was Sie gesagt haben"},
+        {"known": "what did you say", "target": "was haben Sie gesagt"},
+        {"known": "I know what you said", "target": "ich weiss was Sie gesagt haben"},
+        {"known": "I don't know what you said", "target": "ich weiss nicht was Sie gesagt haben"},
+        {"known": "thank you for what you said", "target": "vielen Dank dass Sie das gesagt haben"},
+        {"known": "I'm surprised at what you said", "target": "ich bin überrascht was Sie gesagt haben"}
+      ]
+    }
+  ]
+}

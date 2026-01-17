@@ -1,79 +1,87 @@
 {
-  "course_code": "fra_for_eng",
+  "course_code": "deu_for_eng",
   "seed_number": 36,
   "known_text": "We don't want to interrupt the story.",
-  "target_text": "Nous ne voulons pas interrompre l'histoire.",
+  "target_text": "Wir möchten die Geschichte nicht unterbrechen.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "we don't want",
-      "target": "nous ne voulons pas",
+      "known": "we want",
+      "target": "wir möchten",
       "components": [
-        {"known": "we", "target": "nous"},
-        {"known": "not", "target": "ne"},
-        {"known": "want", "target": "voulons"},
-        {"known": "not", "target": "pas"}
+        {"known": "we", "target": "wir"},
+        {"known": "want", "target": "möchten"}
       ],
       "phrases": [
-        {"known": "we", "target": "nous"},
-        {"known": "want", "target": "voulons"},
-        {"known": "we don't want", "target": "nous ne voulons pas"},
-        {"known": "we don't want to go", "target": "nous ne voulons pas partir"},
-        {"known": "we don't want to learn", "target": "nous ne voulons pas apprendre"},
-        {"known": "we don't want to speak tonight", "target": "nous ne voulons pas parler ce soir"},
-        {"known": "because we don't want to be quiet here", "target": "parce que nous ne voulons pas se taire ici"},
-        {"known": "we don't want to read anything this afternoon", "target": "nous ne voulons pas rien lire cet après-midi"},
-        {"known": "why don't we want to show you something tonight", "target": "pourquoi nous ne voulons pas te montrer quelque chose ce soir"},
-        {"known": "we don't want to be quiet when other people are here", "target": "nous ne voulons pas se taire quand d'autres personnes sont ici"},
-        {"known": "because we don't want to learn the French language with everyone else", "target": "parce que nous ne voulons pas apprendre le français avec tout le monde"},
-        {"known": "we don't want to speak better with other people this afternoon", "target": "nous ne voulons pas parler mieux avec d'autres personnes cet après-midi"}
+        {"known": "We want it.", "target": "Wir möchten es."},
+        {"known": "We want that.", "target": "Wir möchten das."},
+        {"known": "We want to try.", "target": "Wir möchten versuchen."},
+        {"known": "We want to learn it.", "target": "Wir möchten es lernen."},
+        {"known": "We want to go today.", "target": "Wir möchten heute gehen."},
+        {"known": "We want to speak German with you.", "target": "Wir möchten Deutsch mit dir sprechen."},
+        {"known": "We want to talk with you now.", "target": "Wir möchten jetzt mit dir reden."},
+        {"known": "We want to read something this afternoon.", "target": "Wir möchten heute Nachmittag etwas lesen."},
+        {"known": "We want to be quiet when they are here.", "target": "Wir möchten still sein wenn sie hier sind."},
+        {"known": "We want to help you learn German today.", "target": "Wir möchten dir heute helfen Deutsch zu lernen."}
       ]
     },
     {
       "idx": 2,
-      "type": "A",
-      "known": "to interrupt",
-      "target": "interrompre",
+      "type": "M",
+      "known": "the story",
+      "target": "die Geschichte",
+      "components": [
+        {"known": "the", "target": "die"},
+        {"known": "story", "target": "Geschichte"}
+      ],
       "phrases": [
-        {"known": "to interrupt", "target": "interrompre"},
-        {"known": "interrupt soon", "target": "interrompre bientôt"},
-        {"known": "interrupt here", "target": "interrompre ici"},
-        {"known": "we don't want to interrupt", "target": "nous ne voulons pas interrompre"},
-        {"known": "I wanted to interrupt tonight", "target": "je voulais interrompre ce soir"},
-        {"known": "we don't want to interrupt here", "target": "nous ne voulons pas interrompre ici"},
-        {"known": "she doesn't want to interrupt tonight", "target": "elle ne veut pas interrompre ce soir"},
-        {"known": "because we don't want to interrupt this afternoon", "target": "parce que nous ne voulons pas interrompre cet après-midi"},
-        {"known": "why don't we want to interrupt when she speaks", "target": "pourquoi nous ne voulons pas interrompre quand elle parle"},
-        {"known": "we don't want to interrupt when other people are here", "target": "nous ne voulons pas interrompre quand d'autres personnes sont ici"},
-        {"known": "because he doesn't want to interrupt when I'm speaking tonight", "target": "parce que il ne veut pas interrompre quand je parle ce soir"},
-        {"known": "we don't want to interrupt when she doesn't want to read anything", "target": "nous ne voulons pas interrompre quand elle ne veut rien lire"}
+        {"known": "The story.", "target": "Die Geschichte."},
+        {"known": "The story?", "target": "Die Geschichte?"},
+        {"known": "I like the story.", "target": "Ich mag die Geschichte."},
+        {"known": "The story is good.", "target": "Die Geschichte ist gut."},
+        {"known": "We want the story.", "target": "Wir möchten die Geschichte."},
+        {"known": "She wants to read the story.", "target": "Sie möchte die Geschichte lesen."},
+        {"known": "I want to read the story this afternoon.", "target": "Ich möchte die Geschichte heute Nachmittag lesen."},
+        {"known": "We want to read the story today.", "target": "Wir möchten heute die Geschichte lesen."},
+        {"known": "When she wants to read the story.", "target": "Wenn sie die Geschichte lesen möchte."},
+        {"known": "He doesn't want to read the story this afternoon.", "target": "Er möchte die Geschichte heute Nachmittag nicht lesen."}
       ]
     },
     {
       "idx": 3,
-      "type": "M",
-      "known": "the story",
-      "target": "l'histoire",
-      "components": [
-        {"known": "the", "target": "l'"},
-        {"known": "story", "target": "histoire"}
-      ],
+      "type": "A",
+      "known": "not",
+      "target": "nicht",
       "phrases": [
-        {"known": "the", "target": "l'"},
-        {"known": "story", "target": "histoire"},
-        {"known": "the story", "target": "l'histoire"},
-        {"known": "read the story", "target": "lire l'histoire"},
-        {"known": "read the story soon", "target": "lire l'histoire bientôt"},
-        {"known": "interrupt the story", "target": "interrompre l'histoire"},
-        {"known": "interrupt the story here", "target": "interrompre l'histoire ici"},
-        {"known": "we don't want to interrupt the story", "target": "nous ne voulons pas interrompre l'histoire"},
-        {"known": "I wanted to read the story tonight", "target": "je voulais lire l'histoire ce soir"},
-        {"known": "she doesn't want to interrupt the story here", "target": "elle ne veut pas interrompre l'histoire ici"},
-        {"known": "because we don't want to interrupt the story this afternoon", "target": "parce que nous ne voulons pas interrompre l'histoire cet après-midi"},
-        {"known": "why don't we want to interrupt the story when you speak", "target": "pourquoi nous ne voulons pas interrompre l'histoire quand tu parles"},
-        {"known": "we don't want to interrupt the story when other people are here tonight", "target": "nous ne voulons pas interrompre l'histoire quand d'autres personnes sont ici ce soir"},
-        {"known": "because she doesn't want to read the story when other people are here this afternoon", "target": "parce que elle ne veut pas lire l'histoire quand d'autres personnes sont ici cet après-midi"}
+        {"known": "Not now.", "target": "Nicht jetzt."},
+        {"known": "Not today.", "target": "Nicht heute."},
+        {"known": "Not the story.", "target": "Nicht die Geschichte."},
+        {"known": "I don't want.", "target": "Ich möchte nicht."},
+        {"known": "We don't want the story.", "target": "Wir möchten die Geschichte nicht."},
+        {"known": "She doesn't want to read.", "target": "Sie möchte nicht lesen."},
+        {"known": "I don't want to read the story now.", "target": "Ich möchte die Geschichte jetzt nicht lesen."},
+        {"known": "We don't want to read today.", "target": "Wir möchten heute nicht lesen."},
+        {"known": "He doesn't want to read the story.", "target": "Er möchte die Geschichte nicht lesen."},
+        {"known": "They don't want to read the story this afternoon.", "target": "Sie möchten die Geschichte heute Nachmittag nicht lesen."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to interrupt",
+      "target": "unterbrechen",
+      "phrases": [
+        {"known": "To interrupt.", "target": "Unterbrechen."},
+        {"known": "I want to interrupt.", "target": "Ich möchte unterbrechen."},
+        {"known": "Don't interrupt.", "target": "Nicht unterbrechen."},
+        {"known": "I don't want to interrupt.", "target": "Ich möchte nicht unterbrechen."},
+        {"known": "We don't want to interrupt.", "target": "Wir möchten nicht unterbrechen."},
+        {"known": "She doesn't want to interrupt the story.", "target": "Sie möchte die Geschichte nicht unterbrechen."},
+        {"known": "Do you want to interrupt?", "target": "Möchtest du unterbrechen?"},
+        {"known": "I don't want to interrupt you.", "target": "Ich möchte dich nicht unterbrechen."},
+        {"known": "We don't want to interrupt the story today.", "target": "Wir möchten die Geschichte heute nicht unterbrechen."},
+        {"known": "When other people don't want to interrupt.", "target": "Wenn andere Leute nicht unterbrechen möchten."}
       ]
     }
   ]

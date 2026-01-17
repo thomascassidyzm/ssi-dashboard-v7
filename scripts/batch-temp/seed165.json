@@ -1,0 +1,57 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 165,
+  "known_text": "But I'm not sure if it's true.",
+  "target_text": "Aber ich bin mir nicht sicher, ob es wahr ist.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "but I'm not sure",
+      "target": "aber ich bin mir nicht sicher",
+      "components": [
+        {"known": "but", "target": "aber"},
+        {"known": "I'm not sure", "target": "ich bin mir nicht sicher"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "aber"},
+        {"known": "not", "target": "nicht"},
+        {"known": "sure", "target": "sicher"},
+        {"known": "but not", "target": "aber nicht"},
+        {"known": "not sure", "target": "nicht sicher"},
+        {"known": "I'm not sure", "target": "ich bin mir nicht sicher"},
+        {"known": "but I'm not sure", "target": "aber ich bin mir nicht sicher"},
+        {"known": "but I'm not sure now", "target": "aber ich bin mir jetzt nicht sicher"},
+        {"known": "she said but I'm not sure", "target": "sie hat gesagt aber ich bin mir nicht sicher"},
+        {"known": "I think but I'm not sure about that", "target": "ich denke aber ich bin mir darüber nicht sicher"},
+        {"known": "what do you think because I'm not sure", "target": "was denkst du weil ich bin mir nicht sicher"},
+        {"known": "let's talk about it but I'm not sure if we have time", "target": "lass uns darüber reden aber ich bin mir nicht sicher ob wir Zeit haben"},
+        {"known": "I wanted to know but I'm not sure what to say", "target": "ich wollte wissen aber ich bin mir nicht sicher was ich sagen soll"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "if it's true",
+      "target": "ob es wahr ist",
+      "components": [
+        {"known": "if", "target": "ob"},
+        {"known": "it's true", "target": "es wahr ist"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "ob"},
+        {"known": "true", "target": "wahr"},
+        {"known": "it's true", "target": "es ist wahr"},
+        {"known": "if it's true", "target": "ob es wahr ist"},
+        {"known": "I don't know if it's true", "target": "ich weiß nicht ob es wahr ist"},
+        {"known": "she wanted to know if it's true", "target": "sie wollte wissen ob es wahr ist"},
+        {"known": "I think that it's true", "target": "ich denke dass es wahr ist"},
+        {"known": "what do you think is it true", "target": "was denkst du ist es wahr"},
+        {"known": "can you tell me if it's true", "target": "kannst du mir sagen ob es wahr ist"},
+        {"known": "let's talk about if it's true tomorrow morning", "target": "lass uns morgen früh darüber reden ob es wahr ist"},
+        {"known": "I'm not sure if it's true but I think so", "target": "ich bin mir nicht sicher ob es wahr ist aber ich denke so"},
+        {"known": "I wanted to know if it's true because I'm not sure about it", "target": "ich wollte wissen ob es wahr ist weil ich mir darüber nicht sicher bin"}
+      ]
+    }
+  ]
+}

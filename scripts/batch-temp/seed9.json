@@ -1,0 +1,81 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 9,
+  "known_text": "I speak a little German now.",
+  "target_text": "Ich spreche jetzt ein bisschen Deutsch.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I speak",
+      "target": "ich spreche",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "speak", "target": "spreche"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "speak", "target": "spreche"},
+        {"known": "I speak", "target": "ich spreche"},
+        {"known": "I speak German", "target": "ich spreche Deutsch"},
+        {"known": "I speak with you", "target": "ich spreche mit dir"},
+        {"known": "I speak German with you", "target": "ich spreche Deutsch mit dir"},
+        {"known": "I speak German as well as I can", "target": "ich spreche so gut ich kann Deutsch"},
+        {"known": "I speak German with someone else today", "target": "ich spreche heute Deutsch mit jemand anderem"},
+        {"known": "I speak German as often as possible", "target": "ich spreche so oft wie möglich Deutsch"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "now",
+      "target": "jetzt",
+      "phrases": [
+        {"known": "now", "target": "jetzt"},
+        {"known": "I speak now", "target": "ich spreche jetzt"},
+        {"known": "I speak German now", "target": "ich spreche jetzt Deutsch"},
+        {"known": "I want to speak now", "target": "ich möchte jetzt sprechen"},
+        {"known": "now I can speak German", "target": "jetzt kann ich Deutsch sprechen"},
+        {"known": "I'm going to speak German now", "target": "ich werde jetzt Deutsch sprechen"},
+        {"known": "now I can explain what I mean", "target": "jetzt kann ich erklären was ich meine"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a little",
+      "target": "ein bisschen",
+      "components": [
+        {"known": "a", "target": "ein"},
+        {"known": "little", "target": "bisschen"}
+      ],
+      "phrases": [
+        {"known": "a", "target": "ein"},
+        {"known": "little", "target": "bisschen"},
+        {"known": "a little", "target": "ein bisschen"},
+        {"known": "a little German", "target": "ein bisschen Deutsch"},
+        {"known": "speak a little", "target": "ein bisschen sprechen"},
+        {"known": "I speak a little German", "target": "ich spreche ein bisschen Deutsch"},
+        {"known": "I speak a little German now", "target": "ich spreche jetzt ein bisschen Deutsch"},
+        {"known": "I want to learn a little today", "target": "ich möchte heute ein bisschen lernen"},
+        {"known": "I can speak a little German with you", "target": "ich kann ein bisschen Deutsch mit dir sprechen"},
+        {"known": "I'm going to try to speak a little German today", "target": "ich werde heute versuchen ein bisschen Deutsch zu sprechen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "German",
+      "target": "Deutsch",
+      "phrases": [
+        {"known": "German", "target": "Deutsch"},
+        {"known": "speak German", "target": "Deutsch sprechen"},
+        {"known": "I speak German", "target": "ich spreche Deutsch"},
+        {"known": "in German", "target": "auf Deutsch"},
+        {"known": "I speak a little German now", "target": "ich spreche jetzt ein bisschen Deutsch"},
+        {"known": "I want to learn German as well as I can", "target": "ich möchte so gut ich kann Deutsch lernen"},
+        {"known": "I'm going to try to explain what I mean in German", "target": "ich werde versuchen auf Deutsch zu erklären was ich meine"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 6,
+  "known_text": "I'm trying to remember a word.",
+  "target_text": "J'essaie de me souvenir d'un mot.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm trying",
+      "target": "j'essaie",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "am trying", "target": "essaie"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "am trying", "target": "essaie"},
+        {"known": "I'm trying", "target": "j'essaie"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to remember",
+      "target": "de me souvenir",
+      "components": [
+        {"known": "to", "target": "de"},
+        {"known": "myself", "target": "me"},
+        {"known": "remember", "target": "souvenir"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "de"},
+        {"known": "myself", "target": "me"},
+        {"known": "remember", "target": "souvenir"},
+        {"known": "to remember", "target": "de me souvenir"},
+        {"known": "I'm trying to remember", "target": "j'essaie de me souvenir"},
+        {"known": "I want to remember", "target": "je veux me souvenir"},
+        {"known": "I'm going to remember", "target": "je vais me souvenir"},
+        {"known": "how to remember something", "target": "comment me souvenir de quelque chose"},
+        {"known": "I'm trying to remember something now", "target": "j'essaie de me souvenir de quelque chose maintenant"},
+        {"known": "I want to remember how to say something in French", "target": "je veux me souvenir comment dire quelque chose en français"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a word",
+      "target": "d'un mot",
+      "components": [
+        {"known": "of a", "target": "d'un"},
+        {"known": "word", "target": "mot"}
+      ],
+      "phrases": [
+        {"known": "of a", "target": "d'un"},
+        {"known": "word", "target": "mot"},
+        {"known": "a word", "target": "d'un mot"},
+        {"known": "to remember a word", "target": "me souvenir d'un mot"},
+        {"known": "I'm trying to remember a word", "target": "j'essaie de me souvenir d'un mot"},
+        {"known": "I want to remember a word", "target": "je veux me souvenir d'un mot"},
+        {"known": "how to say a word", "target": "comment dire un mot"},
+        {"known": "a word in French", "target": "un mot en français"},
+        {"known": "I'm trying to remember a word in French now", "target": "j'essaie de me souvenir d'un mot en français maintenant"},
+        {"known": "I want to remember how to say a word in French", "target": "je veux me souvenir comment dire un mot en français"}
+      ]
+    }
+  ]
+}

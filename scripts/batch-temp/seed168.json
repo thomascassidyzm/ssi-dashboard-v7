@@ -1,0 +1,56 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 168,
+  "known_text": "And then I'll be able to come and help later on.",
+  "target_text": "Und dann werde ich kommen und später helfen können.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "and then I'll be able to come",
+      "target": "und dann werde ich kommen können",
+      "components": [
+        {"known": "and then", "target": "und dann"},
+        {"known": "I'll be able to come", "target": "werde ich kommen können"}
+      ],
+      "phrases": [
+        {"known": "and", "target": "und"},
+        {"known": "then", "target": "dann"},
+        {"known": "and then", "target": "und dann"},
+        {"known": "I will", "target": "ich werde"},
+        {"known": "then I will", "target": "dann werde ich"},
+        {"known": "I'll come", "target": "ich werde kommen"},
+        {"known": "I'll be able to come", "target": "ich werde kommen können"},
+        {"known": "and then I'll come", "target": "und dann werde ich kommen"},
+        {"known": "and then I'll be able to come", "target": "und dann werde ich kommen können"},
+        {"known": "she said and then I'll be able to come", "target": "sie hat gesagt und dann werde ich kommen können"},
+        {"known": "I'm not sure if I'll be able to come but I'll try", "target": "ich bin mir nicht sicher ob ich kommen kann aber ich werde es versuchen"},
+        {"known": "and then I'll be able to do something else", "target": "und dann werde ich etwas anderes machen können"},
+        {"known": "do you think I'll be able to come tomorrow afternoon", "target": "denkst du ich werde morgen Nachmittag kommen können"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "and help later on",
+      "target": "und später helfen",
+      "components": [
+        {"known": "and help", "target": "und helfen"},
+        {"known": "later on", "target": "später"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "helfen"},
+        {"known": "later on", "target": "später"},
+        {"known": "and help", "target": "und helfen"},
+        {"known": "help later", "target": "später helfen"},
+        {"known": "and help later on", "target": "und später helfen"},
+        {"known": "I'll help later on", "target": "ich werde später helfen"},
+        {"known": "can you help later on", "target": "kannst du später helfen"},
+        {"known": "she said she'll help later on", "target": "sie hat gesagt sie wird später helfen"},
+        {"known": "I'm not sure if I can help later on but I'll try", "target": "ich bin mir nicht sicher ob ich später helfen kann aber ich werde es versuchen"},
+        {"known": "and then I'll be able to come and help later on", "target": "und dann werde ich kommen und später helfen können"},
+        {"known": "what do you think can I help later on tomorrow afternoon", "target": "was denkst du kann ich morgen Nachmittag später helfen"}
+      ]
+    }
+  ]
+}

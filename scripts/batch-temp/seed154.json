@@ -1,0 +1,75 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 154,
+  "known_text": "Where do you want to meet on Saturday night?",
+  "target_text": "Wo willst du dich am Samstagabend treffen?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "where do you want",
+      "target": "wo willst du",
+      "components": [
+        {"known": "where", "target": "wo"},
+        {"known": "do you want", "target": "willst du"}
+      ],
+      "phrases": [
+        {"known": "where", "target": "wo"},
+        {"known": "do you want", "target": "willst du"},
+        {"known": "where do you want", "target": "wo willst du"},
+        {"known": "where do you want to be", "target": "wo willst du sein"},
+        {"known": "I know where do you want to go", "target": "ich weiß wo du gehen willst"},
+        {"known": "she knows where do you want", "target": "sie weiß wo du willst"},
+        {"known": "where do you want to learn German", "target": "wo willst du Deutsch lernen"},
+        {"known": "tell me where do you want to meet", "target": "kannst du mir sagen wo willst du treffen"},
+        {"known": "he wanted to know where do you want to meet because he wasn't sure about it", "target": "er wollte wissen wo willst du treffen weil er nicht sicher darüber war"},
+        {"known": "I would have said where do you want to go if I had known you wanted to know", "target": "ich hätte gesagt wo willst du gehen wenn ich gewusst hätte dass du es wissen wolltest"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to meet",
+      "target": "dich treffen",
+      "components": [
+        {"known": "yourself", "target": "dich"},
+        {"known": "meet", "target": "treffen"}
+      ],
+      "phrases": [
+        {"known": "yourself", "target": "dich"},
+        {"known": "meet", "target": "treffen"},
+        {"known": "to meet", "target": "dich treffen"},
+        {"known": "I want to meet", "target": "ich möchte dich treffen"},
+        {"known": "where to meet", "target": "wo treffen"},
+        {"known": "where do you want to meet", "target": "wo willst du dich treffen"},
+        {"known": "I would like to meet you", "target": "ich möchte dich treffen"},
+        {"known": "I didn't know where you wanted to meet today", "target": "ich wusste nicht wo du dich heute treffen wolltest"},
+        {"known": "she would like to meet you soon because she said so", "target": "sie möchte dich bald treffen weil sie es gesagt hat"},
+        {"known": "he told me where do you want to meet so that we can go there together", "target": "er hat mir gesagt wo willst du dich treffen so dass wir zusammen gehen können"},
+        {"known": "I believe I would like to meet you soon if that wasn't very difficult", "target": "ich glaube ich möchte dich bald treffen wenn das nicht sehr schwierig war"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "on Saturday night",
+      "target": "am Samstagabend",
+      "components": [
+        {"known": "on", "target": "am"},
+        {"known": "Saturday night", "target": "Samstagabend"}
+      ],
+      "phrases": [
+        {"known": "on", "target": "am"},
+        {"known": "Saturday night", "target": "Samstagabend"},
+        {"known": "on Saturday night", "target": "am Samstagabend"},
+        {"known": "we meet on Saturday night", "target": "wir treffen uns am Samstagabend"},
+        {"known": "on Saturday night we meet", "target": "am Samstagabend treffen wir uns"},
+        {"known": "where do you want to meet on Saturday night", "target": "wo willst du dich am Samstagabend treffen"},
+        {"known": "I was hoping we could meet on Saturday night", "target": "ich hatte gehofft wir könnten uns am Samstagabend treffen"},
+        {"known": "I think we should meet on Saturday night if you want", "target": "ich denke wir sollten uns am Samstagabend treffen wenn du willst"},
+        {"known": "she said she would meet us on Saturday night", "target": "sie hat gesagt sie möchte uns am Samstagabend treffen"},
+        {"known": "where do you want to meet on Saturday night because I need to know soon", "target": "wo willst du dich am Samstagabend treffen weil ich es bald wissen muss"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 7,
+  "known_text": "I want to try as hard as I can today.",
+  "target_text": "Je veux essayer aussi fort que possible aujourd'hui.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I want",
+      "target": "je veux",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "want", "target": "veux"},
+        {"known": "I want", "target": "je veux"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to try",
+      "target": "essayer",
+      "phrases": [
+        {"known": "to try", "target": "essayer"},
+        {"known": "I want to try", "target": "je veux essayer"},
+        {"known": "I'm going to try", "target": "je vais essayer"},
+        {"known": "I want to try now", "target": "je veux essayer maintenant"},
+        {"known": "to try to speak French", "target": "essayer de parler français"},
+        {"known": "I want to try to speak French with you", "target": "je veux essayer de parler français avec toi"},
+        {"known": "I'm going to try to say something in French", "target": "je vais essayer de dire quelque chose en français"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "as hard as possible",
+      "target": "aussi fort que possible",
+      "components": [
+        {"known": "as", "target": "aussi"},
+        {"known": "hard", "target": "fort"},
+        {"known": "as", "target": "que"},
+        {"known": "possible", "target": "possible"}
+      ],
+      "phrases": [
+        {"known": "as", "target": "aussi"},
+        {"known": "hard", "target": "fort"},
+        {"known": "as", "target": "que"},
+        {"known": "possible", "target": "possible"},
+        {"known": "as hard as possible", "target": "aussi fort que possible"},
+        {"known": "to try as hard as possible", "target": "essayer aussi fort que possible"},
+        {"known": "I want to try as hard as possible", "target": "je veux essayer aussi fort que possible"},
+        {"known": "I'm going to try as hard as possible now", "target": "je vais essayer aussi fort que possible maintenant"},
+        {"known": "I want to try to speak French as hard as possible", "target": "je veux essayer de parler français aussi fort que possible"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "today",
+      "target": "aujourd'hui",
+      "phrases": [
+        {"known": "today", "target": "aujourd'hui"},
+        {"known": "now today", "target": "maintenant aujourd'hui"},
+        {"known": "with you today", "target": "avec toi aujourd'hui"},
+        {"known": "I want to try today", "target": "je veux essayer aujourd'hui"},
+        {"known": "I'm going to speak French today", "target": "je vais parler français aujourd'hui"},
+        {"known": "I want to learn something today", "target": "je veux apprendre quelque chose aujourd'hui"},
+        {"known": "I want to try as hard as possible today", "target": "je veux essayer aussi fort que possible aujourd'hui"},
+        {"known": "I'm going to practise speaking French with someone today", "target": "je vais m'entraîner à parler français avec quelqu'un aujourd'hui"}
+      ]
+    }
+  ]
+}

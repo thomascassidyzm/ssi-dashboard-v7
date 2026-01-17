@@ -1,0 +1,98 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 65,
+  "known_text": "It's important to take time to test yourself.",
+  "target_text": "Es ist wichtig sich Zeit zu nehmen um sich selbst zu testen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's important",
+      "target": "es ist wichtig",
+      "components": [
+        {"known": "it", "target": "es"},
+        {"known": "is important", "target": "ist wichtig"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "es"},
+        {"known": "is important", "target": "ist wichtig"},
+        {"known": "it's important", "target": "es ist wichtig"},
+        {"known": "that (thing) is important", "target": "das ist wichtig"},
+        {"known": "learning German is important", "target": "Deutsch zu lernen ist wichtig"},
+        {"known": "it's important to learn German", "target": "es ist wichtig Deutsch zu lernen"},
+        {"known": "it's important to help you (formal)", "target": "es ist wichtig Ihnen zu helfen"},
+        {"known": "I think that (thing) is important", "target": "ich denke dass das wichtig ist"},
+        {"known": "it's important to speak German well", "target": "es ist wichtig gut Deutsch zu sprechen"},
+        {"known": "it's important but it isn't easy", "target": "es ist wichtig aber es ist nicht einfach"},
+        {"known": "I think it's important to learn how to speak German", "target": "ich denke es ist wichtig zu lernen wie ich Deutsch sprechen soll"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to take time",
+      "target": "sich Zeit zu nehmen",
+      "components": [
+        {"known": "oneself", "target": "sich"},
+        {"known": "time", "target": "Zeit"},
+        {"known": "to take", "target": "zu nehmen"}
+      ],
+      "phrases": [
+        {"known": "oneself", "target": "sich"},
+        {"known": "time", "target": "Zeit"},
+        {"known": "to take", "target": "zu nehmen"},
+        {"known": "take time", "target": "Zeit nehmen"},
+        {"known": "time to learn", "target": "Zeit zu lernen"},
+        {"known": "to take time", "target": "sich Zeit zu nehmen"},
+        {"known": "time is important", "target": "Zeit ist wichtig"},
+        {"known": "take time to learn", "target": "Zeit nehmen zu lernen"},
+        {"known": "it's important to take time", "target": "es ist wichtig sich Zeit zu nehmen"},
+        {"known": "I want to take time to learn German", "target": "ich mochte mir Zeit nehmen Deutsch zu lernen"},
+        {"known": "it's important to take time to learn German", "target": "es ist wichtig sich Zeit zu nehmen Deutsch zu lernen"},
+        {"known": "I think it's important to take time to help you (formal)", "target": "ich denke es ist wichtig sich Zeit zu nehmen Ihnen zu helfen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "in order to",
+      "target": "um",
+      "phrases": [
+        {"known": "in order to", "target": "um"},
+        {"known": "in order to learn", "target": "um zu lernen"},
+        {"known": "in order to help", "target": "um zu helfen"},
+        {"known": "in order to speak German", "target": "um Deutsch zu sprechen"},
+        {"known": "in order to say that (thing)", "target": "um das zu sagen"},
+        {"known": "in order to speak German well", "target": "um gut Deutsch zu sprechen"},
+        {"known": "it's important to take time in order to learn", "target": "es ist wichtig sich Zeit zu nehmen um zu lernen"},
+        {"known": "I want to help you (formal) in order to learn German", "target": "ich mochte Ihnen helfen um Deutsch zu lernen"},
+        {"known": "it's important to take time in order to speak German well", "target": "es ist wichtig sich Zeit zu nehmen um gut Deutsch zu sprechen"},
+        {"known": "I think it's important to take time in order to learn German", "target": "ich denke es ist wichtig sich Zeit zu nehmen um Deutsch zu lernen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to test yourself",
+      "target": "sich selbst zu testen",
+      "components": [
+        {"known": "oneself", "target": "sich"},
+        {"known": "yourself/self", "target": "selbst"},
+        {"known": "to test", "target": "zu testen"}
+      ],
+      "phrases": [
+        {"known": "yourself/self", "target": "selbst"},
+        {"known": "to test", "target": "zu testen"},
+        {"known": "test yourself", "target": "selbst testen"},
+        {"known": "yourself to test", "target": "sich selbst testen"},
+        {"known": "to test yourself", "target": "sich selbst zu testen"},
+        {"known": "I want to test myself", "target": "ich mochte mich selbst testen"},
+        {"known": "it's important to test yourself", "target": "es ist wichtig sich selbst zu testen"},
+        {"known": "it's fun to test yourself", "target": "es macht Spass sich selbst zu testen"},
+        {"known": "it's important to take time to test yourself", "target": "es ist wichtig sich Zeit zu nehmen um sich selbst zu testen"},
+        {"known": "I want to take time in order to test myself", "target": "ich mochte mir Zeit nehmen um mich selbst zu testen"},
+        {"known": "I think it's important to test yourself when learning German", "target": "ich denke es ist wichtig sich selbst zu testen wenn ich Deutsch lerne"}
+      ]
+    }
+  ]
+}

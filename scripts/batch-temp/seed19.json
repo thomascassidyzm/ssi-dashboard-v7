@@ -1,75 +1,86 @@
 {
-  "course_code": "eus_for_spa",
+  "course_code": "deu_for_eng",
   "seed_number": 19,
-  "known_text": "Pero no quiero dejar de hablar.",
-  "target_text": "Baina ez dut hitz egiteari utzi nahi.",
+  "known_text": "But I don't want to stop talking.",
+  "target_text": "Aber ich möchte nicht aufhören zu reden.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "pero",
-      "target": "baina",
+      "known": "but",
+      "target": "aber",
       "phrases": [
-        {"known": "pero", "target": "baina"},
-        {"known": "pero ahora", "target": "baina orain"},
-        {"known": "pero manana", "target": "baina bihar"},
-        {"known": "pero mas tarde", "target": "baina geroago"},
-        {"known": "pero quiero hablar", "target": "baina hitz egin nahi dut"},
-        {"known": "pero el quiere volver", "target": "baina itzuli nahi du"},
-        {"known": "pero ella quiere hablar euskera", "target": "baina euskaraz hitz egin nahi du"},
-        {"known": "pero queremos reunirnos con alguien", "target": "baina norbaitekin elkartu nahi dugu"},
-        {"known": "pero quiero volver con todos los demas mas tarde", "target": "baina geroago beste guztiekin itzuli nahi dut"},
-        {"known": "pero ella quiere reunirse con todos los demas a las seis de la tarde", "target": "baina arratsaldeko seietan beste guztiekin elkartu nahi du"},
-        {"known": "pero queremos hablar euskera muy bien con todos los demas manana", "target": "baina bihar beste guztiekin oso ondo euskaraz hitz egin nahi dugu"},
-        {"known": "pero el quiere reunirse con todos los demas a las seis de la tarde y hablar euskera", "target": "baina arratsaldeko seietan beste guztiekin elkartu nahi du eta euskaraz hitz egin"}
+        {"known": "but", "target": "aber"},
+        {"known": "but I want", "target": "aber ich möchte"},
+        {"known": "but she wants", "target": "aber sie möchte"},
+        {"known": "but he wants to come back", "target": "aber er möchte zurückkommen"},
+        {"known": "but we want to meet this evening", "target": "aber wir möchten uns heute Abend treffen"},
+        {"known": "but I am not sure if she wants", "target": "aber ich bin nicht sicher ob sie möchte"},
+        {"known": "but I want to find out the answer tomorrow", "target": "aber ich möchte morgen die Antwort herausfinden"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "no quiero",
-      "target": "ez dut nahi",
+      "known": "I don't want",
+      "target": "ich möchte nicht",
       "components": [
-        {"known": "no", "target": "ez"},
-        {"known": "quiero", "target": "dut nahi"}
+        {"known": "I want", "target": "ich möchte"},
+        {"known": "not", "target": "nicht"}
       ],
       "phrases": [
-        {"known": "no", "target": "ez"},
-        {"known": "quiero", "target": "dut nahi"},
-        {"known": "no quiero", "target": "ez dut nahi"},
-        {"known": "no quiero hablar", "target": "ez dut hitz egin nahi"},
-        {"known": "no quiero volver", "target": "ez dut itzuli nahi"},
-        {"known": "no quiero reunirme ahora", "target": "ez dut orain elkartu nahi"},
-        {"known": "no quiero hablar euskera ahora", "target": "ez dut orain euskaraz hitz egin nahi"},
-        {"known": "no quiero volver mas tarde con alguien", "target": "ez dut geroago norbaitekin itzuli nahi"},
-        {"known": "pero no quiero reunirme con todos los demas mas tarde", "target": "baina ez dut geroago beste guztiekin elkartu nahi"},
-        {"known": "no quiero hablar euskera con todos los demas a las seis de la tarde", "target": "ez dut arratsaldeko seietan beste guztiekin euskaraz hitz egin nahi"},
-        {"known": "pero no quiero volver con todos los demas a las seis de la tarde manana", "target": "baina ez dut bihar arratsaldeko seietan beste guztiekin itzuli nahi"},
-        {"known": "no quiero reunirme con todos los demas a las seis de la tarde y hablar euskera", "target": "ez dut arratsaldeko seietan beste guztiekin elkartu nahi eta euskaraz hitz egin"}
+        {"known": "I want", "target": "ich möchte"},
+        {"known": "not", "target": "nicht"},
+        {"known": "I don't want", "target": "ich möchte nicht"},
+        {"known": "but I don't want", "target": "aber ich möchte nicht"},
+        {"known": "I don't want to speak today", "target": "ich möchte heute nicht sprechen"},
+        {"known": "but I don't want to come back later on", "target": "aber ich möchte nicht später zurückkommen"},
+        {"known": "I don't want to meet at six o'clock this evening", "target": "ich möchte nicht um sechs Uhr heute Abend treffen"}
       ]
     },
     {
       "idx": 3,
-      "type": "M",
-      "known": "dejar de hablar",
-      "target": "hitz egiteari utzi",
-      "components": [
-        {"known": "hablar", "target": "hitz egiteari"},
-        {"known": "dejar", "target": "utzi"}
-      ],
+      "type": "A",
+      "known": "stop",
+      "target": "aufhören",
       "phrases": [
-        {"known": "hablar", "target": "hitz egiteari"},
-        {"known": "dejar", "target": "utzi"},
-        {"known": "dejar de hablar", "target": "hitz egiteari utzi"},
-        {"known": "quiero dejar de hablar", "target": "hitz egiteari utzi nahi dut"},
-        {"known": "el quiere dejar de hablar", "target": "hitz egiteari utzi nahi du"},
-        {"known": "no quiero dejar de hablar", "target": "ez dut hitz egiteari utzi nahi"},
-        {"known": "ella no quiere dejar de hablar", "target": "ez du hitz egiteari utzi nahi"},
-        {"known": "queremos dejar de hablar mas tarde", "target": "geroago hitz egiteari utzi nahi dugu"},
-        {"known": "pero no quiero dejar de hablar con alguien ahora", "target": "baina ez dut orain norbaitekin hitz egiteari utzi nahi"},
-        {"known": "el no quiere dejar de hablar euskera con todos los demas", "target": "ez du beste guztiekin euskaraz hitz egiteari utzi nahi"},
-        {"known": "pero ella no quiere dejar de hablar euskera con todos los demas manana", "target": "baina ez du bihar beste guztiekin euskaraz hitz egiteari utzi nahi"},
-        {"known": "no queremos dejar de hablar euskera con todos los demas a las seis de la tarde", "target": "ez dugu arratsaldeko seietan beste guztiekin euskaraz hitz egiteari utzi nahi"}
+        {"known": "stop", "target": "aufhören"},
+        {"known": "I don't want to stop", "target": "ich möchte nicht aufhören"},
+        {"known": "but I don't want to stop", "target": "aber ich möchte nicht aufhören"},
+        {"known": "she wants to stop", "target": "sie möchte aufhören"},
+        {"known": "we don't want to stop tomorrow", "target": "wir möchten morgen nicht aufhören"},
+        {"known": "I am not sure if he wants to stop", "target": "ich bin nicht sicher ob er aufhören möchte"},
+        {"known": "but I don't want to stop this evening", "target": "aber ich möchte heute Abend nicht aufhören"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to",
+      "target": "zu",
+      "phrases": [
+        {"known": "to", "target": "zu"},
+        {"known": "stop to", "target": "aufhören zu"},
+        {"known": "I don't want to stop to", "target": "ich möchte nicht aufhören zu"},
+        {"known": "but I don't want to stop to", "target": "aber ich möchte nicht aufhören zu"},
+        {"known": "she wants to try to learn", "target": "sie möchte zu lernen"},
+        {"known": "we want to try to find out the answer", "target": "wir möchten die Antwort herausfinden"},
+        {"known": "I am not sure if I want to stop to speak", "target": "ich bin nicht sicher ob ich aufhören möchte zu sprechen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "talking",
+      "target": "reden",
+      "phrases": [
+        {"known": "talking", "target": "reden"},
+        {"known": "stop talking", "target": "aufhören zu reden"},
+        {"known": "I don't want to stop talking", "target": "ich möchte nicht aufhören zu reden"},
+        {"known": "but I don't want to stop talking", "target": "aber ich möchte nicht aufhören zu reden"},
+        {"known": "she wants to start talking", "target": "sie möchte reden"},
+        {"known": "we don't want to stop talking this evening", "target": "wir möchten heute Abend nicht aufhören zu reden"},
+        {"known": "I am not sure if he wants to stop talking", "target": "ich bin nicht sicher ob er aufhören möchte zu reden"}
       ]
     }
   ]

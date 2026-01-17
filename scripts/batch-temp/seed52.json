@@ -1,0 +1,126 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 52,
+  "known_text": "He wanted to write a letter to his friend last week.",
+  "target_text": "Er wollte letzte Woche einen Brief an seinen Freund schreiben.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he wanted",
+      "target": "er wollte",
+      "components": [
+        {"known": "he", "target": "er"},
+        {"known": "wanted", "target": "wollte"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "er"},
+        {"known": "wanted", "target": "wollte"},
+        {"known": "he wanted", "target": "er wollte"},
+        {"known": "he wanted it", "target": "er wollte es"},
+        {"known": "he wanted not", "target": "er wollte nicht"},
+        {"known": "he wanted it now", "target": "er wollte es jetzt"},
+        {"known": "I think he wanted", "target": "ich denke er wollte"},
+        {"known": "I know that he wanted", "target": "ich weiss dass er wollte"},
+        {"known": "he wanted it because he must", "target": "er wollte es weil er muss"},
+        {"known": "I think he wanted it today", "target": "ich denke er wollte es heute"},
+        {"known": "I know that he wanted it at the moment", "target": "ich weiss dass er es im Moment wollte"},
+        {"known": "he wanted it but I don't know if it is okay", "target": "er wollte es aber ich weiss nicht ob es okay ist"},
+        {"known": "I think that he wanted it because I know it is good", "target": "ich denke dass er es wollte weil ich weiss es ist gut"},
+        {"known": "he wanted it at the moment but I don't worry about it", "target": "er wollte es im Moment aber ich mache mir keine Sorgen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "last week",
+      "target": "letzte Woche",
+      "components": [
+        {"known": "last", "target": "letzte"},
+        {"known": "week", "target": "Woche"}
+      ],
+      "phrases": [
+        {"known": "last", "target": "letzte"},
+        {"known": "week", "target": "Woche"},
+        {"known": "last week", "target": "letzte Woche"},
+        {"known": "not last week", "target": "nicht letzte Woche"},
+        {"known": "he wanted last week", "target": "er wollte letzte Woche"},
+        {"known": "I think last week", "target": "ich denke letzte Woche"},
+        {"known": "he wanted it last week", "target": "er wollte es letzte Woche"},
+        {"known": "I know that he wanted it last week", "target": "ich weiss dass er es letzte Woche wollte"},
+        {"known": "I don't know if he wanted it last week", "target": "ich weiss nicht ob er es letzte Woche wollte"},
+        {"known": "I think he wanted it last week", "target": "ich denke er wollte es letzte Woche"},
+        {"known": "he wanted it last week but I don't know", "target": "er wollte es letzte Woche aber ich weiss nicht"},
+        {"known": "I think that he wanted it last week because I know", "target": "ich denke dass er es letzte Woche wollte weil ich weiss"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a letter",
+      "target": "einen Brief",
+      "components": [
+        {"known": "a (masculine acc.)", "target": "einen"},
+        {"known": "letter", "target": "Brief"}
+      ],
+      "phrases": [
+        {"known": "a (masculine acc.)", "target": "einen"},
+        {"known": "letter", "target": "Brief"},
+        {"known": "a letter", "target": "einen Brief"},
+        {"known": "not a letter", "target": "nicht einen Brief"},
+        {"known": "a letter now", "target": "einen Brief jetzt"},
+        {"known": "he wanted a letter", "target": "er wollte einen Brief"},
+        {"known": "I think a letter is good", "target": "ich denke ein Brief ist gut"},
+        {"known": "he wanted a letter last week", "target": "er wollte letzte Woche einen Brief"},
+        {"known": "I don't know if he wanted a letter", "target": "ich weiss nicht ob er einen Brief wollte"},
+        {"known": "I think he wanted a letter last week", "target": "ich denke er wollte letzte Woche einen Brief"},
+        {"known": "he wanted a letter last week but I don't know if it is okay", "target": "er wollte letzte Woche einen Brief aber ich weiss nicht ob es okay ist"},
+        {"known": "I know that he wanted a letter last week because I think it is good", "target": "ich weiss dass er letzte Woche einen Brief wollte weil ich denke es ist gut"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to his friend",
+      "target": "an seinen Freund",
+      "components": [
+        {"known": "to/at", "target": "an"},
+        {"known": "his friend", "target": "seinen Freund"}
+      ],
+      "phrases": [
+        {"known": "to/at", "target": "an"},
+        {"known": "his friend", "target": "seinen Freund"},
+        {"known": "to his friend", "target": "an seinen Freund"},
+        {"known": "not to his friend", "target": "nicht an seinen Freund"},
+        {"known": "to his friend now", "target": "jetzt an seinen Freund"},
+        {"known": "a letter to his friend", "target": "einen Brief an seinen Freund"},
+        {"known": "I think to his friend", "target": "ich denke an seinen Freund"},
+        {"known": "he wanted a letter to his friend", "target": "er wollte einen Brief an seinen Freund"},
+        {"known": "he wanted a letter to his friend last week", "target": "er wollte letzte Woche einen Brief an seinen Freund"},
+        {"known": "I know that he wanted a letter to his friend", "target": "ich weiss dass er einen Brief an seinen Freund wollte"},
+        {"known": "I think he wanted a letter to his friend last week", "target": "ich denke er wollte letzte Woche einen Brief an seinen Freund"},
+        {"known": "he wanted a letter to his friend last week but I don't know", "target": "er wollte letzte Woche einen Brief an seinen Freund aber ich weiss nicht"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "to write",
+      "target": "schreiben",
+      "phrases": [
+        {"known": "to write", "target": "schreiben"},
+        {"known": "not to write", "target": "nicht schreiben"},
+        {"known": "to write now", "target": "jetzt schreiben"},
+        {"known": "he wanted to write", "target": "er wollte schreiben"},
+        {"known": "to write a letter", "target": "einen Brief schreiben"},
+        {"known": "he wanted to write last week", "target": "er wollte letzte Woche schreiben"},
+        {"known": "he wanted to write a letter", "target": "er wollte einen Brief schreiben"},
+        {"known": "I think he wanted to write", "target": "ich denke er wollte schreiben"},
+        {"known": "he wanted to write a letter to his friend", "target": "er wollte einen Brief an seinen Freund schreiben"},
+        {"known": "he wanted to write a letter to his friend last week", "target": "er wollte letzte Woche einen Brief an seinen Freund schreiben"},
+        {"known": "I know that he wanted to write a letter to his friend", "target": "ich weiss dass er einen Brief an seinen Freund schreiben wollte"},
+        {"known": "I think he wanted to write a letter to his friend last week", "target": "ich denke er wollte letzte Woche einen Brief an seinen Freund schreiben"}
+      ]
+    }
+  ]
+}

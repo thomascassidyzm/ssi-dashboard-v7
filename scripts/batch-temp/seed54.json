@@ -1,0 +1,97 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 54,
+  "known_text": "We wanted to give you a little more time.",
+  "target_text": "Wir wollten dir ein bisschen mehr Zeit geben.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we wanted",
+      "target": "wir wollten",
+      "components": [
+        {"known": "we", "target": "wir"},
+        {"known": "wanted (we)", "target": "wollten"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "wir"},
+        {"known": "wanted (we)", "target": "wollten"},
+        {"known": "we wanted", "target": "wir wollten"},
+        {"known": "we wanted it", "target": "wir wollten es"},
+        {"known": "we wanted not", "target": "wir wollten nicht"},
+        {"known": "we wanted it now", "target": "wir wollten es jetzt"},
+        {"known": "I think we wanted", "target": "ich denke wir wollten"},
+        {"known": "we wanted it today", "target": "wir wollten es heute"},
+        {"known": "I know that we wanted it", "target": "ich weiss dass wir es wollten"},
+        {"known": "we wanted it last week", "target": "wir wollten es letzte Woche"},
+        {"known": "I think that we wanted it at the moment", "target": "ich denke dass wir es im Moment wollten"},
+        {"known": "we wanted it but I don't know if it is okay", "target": "wir wollten es aber ich weiss nicht ob es okay ist"},
+        {"known": "I think that we wanted it because I know it is good", "target": "ich denke dass wir es wollten weil ich weiss es ist gut"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "you (to you)",
+      "target": "dir",
+      "phrases": [
+        {"known": "to you", "target": "dir"},
+        {"known": "not to you", "target": "nicht dir"},
+        {"known": "to you now", "target": "dir jetzt"},
+        {"known": "we wanted to you", "target": "wir wollten dir"},
+        {"known": "I think to you", "target": "ich denke dir"},
+        {"known": "we wanted it for you", "target": "wir wollten es dir"},
+        {"known": "we wanted to give you today", "target": "wir wollten dir heute"},
+        {"known": "I know that we wanted it for you", "target": "ich weiss dass wir es dir wollten"},
+        {"known": "we wanted it for you last week", "target": "wir wollten es dir letzte Woche"},
+        {"known": "I think we wanted to give it to you last week", "target": "ich denke wir wollten es dir letzte Woche"},
+        {"known": "we wanted it for you but I don't know if it is okay", "target": "wir wollten es dir aber ich weiss nicht ob es okay ist"},
+        {"known": "I think that we wanted it for you because I know it is good", "target": "ich denke dass wir es dir wollten weil ich weiss es ist gut"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a little more time",
+      "target": "ein bisschen mehr Zeit",
+      "components": [
+        {"known": "a little", "target": "ein bisschen"},
+        {"known": "more time", "target": "mehr Zeit"}
+      ],
+      "phrases": [
+        {"known": "a little", "target": "ein bisschen"},
+        {"known": "more time", "target": "mehr Zeit"},
+        {"known": "a little more time", "target": "ein bisschen mehr Zeit"},
+        {"known": "not a little", "target": "nicht ein bisschen"},
+        {"known": "a little now", "target": "ein bisschen jetzt"},
+        {"known": "a little more time now", "target": "ein bisschen mehr Zeit jetzt"},
+        {"known": "we wanted a little more time", "target": "wir wollten ein bisschen mehr Zeit"},
+        {"known": "I think a little more time is good", "target": "ich denke ein bisschen mehr Zeit ist gut"},
+        {"known": "we wanted a little more time for you", "target": "wir wollten dir ein bisschen mehr Zeit"},
+        {"known": "we wanted a little more time last week", "target": "wir wollten letzte Woche ein bisschen mehr Zeit"},
+        {"known": "I know that we wanted a little more time for you", "target": "ich weiss dass wir dir ein bisschen mehr Zeit wollten"},
+        {"known": "we wanted a little more time for you but I don't know if it is okay", "target": "wir wollten dir ein bisschen mehr Zeit aber ich weiss nicht ob es okay ist"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to give",
+      "target": "geben",
+      "phrases": [
+        {"known": "to give", "target": "geben"},
+        {"known": "not to give", "target": "nicht geben"},
+        {"known": "to give now", "target": "jetzt geben"},
+        {"known": "we wanted to give", "target": "wir wollten geben"},
+        {"known": "to give time", "target": "Zeit geben"},
+        {"known": "to give more time", "target": "mehr Zeit geben"},
+        {"known": "to give you a little", "target": "dir ein bisschen geben"},
+        {"known": "we wanted to give you time", "target": "wir wollten dir Zeit geben"},
+        {"known": "we wanted to give you more time", "target": "wir wollten dir mehr Zeit geben"},
+        {"known": "we wanted to give you a little more time", "target": "wir wollten dir ein bisschen mehr Zeit geben"},
+        {"known": "I think we wanted to give you a little more time", "target": "ich denke wir wollten dir ein bisschen mehr Zeit geben"},
+        {"known": "we wanted to give you a little more time last week", "target": "wir wollten dir letzte Woche ein bisschen mehr Zeit geben"}
+      ]
+    }
+  ]
+}

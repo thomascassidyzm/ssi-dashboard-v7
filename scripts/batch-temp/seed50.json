@@ -1,0 +1,102 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 50,
+  "known_text": "I'm not trying to finish as quickly as possible.",
+  "target_text": "Ich versuche nicht, so schnell wie möglich fertig zu werden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm trying",
+      "target": "ich versuche",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "try/am trying", "target": "versuche"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "try/am trying", "target": "versuche"},
+        {"known": "I'm trying", "target": "ich versuche"},
+        {"known": "I'm not trying", "target": "ich versuche nicht"},
+        {"known": "I'm trying now", "target": "ich versuche jetzt"},
+        {"known": "I'm trying today", "target": "ich versuche heute"},
+        {"known": "I'm not trying now", "target": "ich versuche jetzt nicht"},
+        {"known": "I'm trying to improve", "target": "ich versuche mich zu verbessern"},
+        {"known": "I'm not trying because I don't care", "target": "ich versuche nicht weil es mir egal ist"},
+        {"known": "I'm trying because I think it's good", "target": "ich versuche weil ich denke dass es gut ist"},
+        {"known": "I'm not trying to improve at the moment", "target": "ich versuche im Moment nicht mich zu verbessern"},
+        {"known": "I'm trying because I know I can improve", "target": "ich versuche weil ich weiss ich kann mich verbessern"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "not",
+      "target": "nicht",
+      "phrases": [
+        {"known": "not", "target": "nicht"},
+        {"known": "not now", "target": "nicht jetzt"},
+        {"known": "not today", "target": "nicht heute"},
+        {"known": "I'm not trying", "target": "ich versuche nicht"},
+        {"known": "I'm not trying now", "target": "ich versuche jetzt nicht"},
+        {"known": "not so quickly", "target": "nicht so schnell"},
+        {"known": "I'm not trying today", "target": "ich versuche heute nicht"},
+        {"known": "I'm not trying to improve", "target": "ich versuche nicht mich zu verbessern"},
+        {"known": "I'm not trying because I don't care", "target": "ich versuche nicht weil es mir egal ist"},
+        {"known": "I'm not trying to improve at the moment", "target": "ich versuche im Moment nicht mich zu verbessern"},
+        {"known": "I don't think I need to finish quickly", "target": "ich denke nicht dass ich schnell fertig werden muss"},
+        {"known": "I'm not trying to finish because I don't care", "target": "ich versuche nicht fertig zu werden weil es mir egal ist"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "as quickly as possible",
+      "target": "so schnell wie möglich",
+      "components": [
+        {"known": "so/as", "target": "so"},
+        {"known": "quickly", "target": "schnell"},
+        {"known": "as possible", "target": "wie möglich"}
+      ],
+      "phrases": [
+        {"known": "so/as", "target": "so"},
+        {"known": "quickly", "target": "schnell"},
+        {"known": "as possible", "target": "wie möglich"},
+        {"known": "so quickly", "target": "so schnell"},
+        {"known": "as quickly as possible", "target": "so schnell wie möglich"},
+        {"known": "not so quickly", "target": "nicht so schnell"},
+        {"known": "I'm trying as quickly as possible", "target": "ich versuche so schnell wie möglich"},
+        {"known": "I'm not trying as quickly as possible", "target": "ich versuche nicht so schnell wie möglich"},
+        {"known": "as quickly as possible today", "target": "heute so schnell wie möglich"},
+        {"known": "I'm trying to improve as quickly as possible", "target": "ich versuche mich so schnell wie möglich zu verbessern"},
+        {"known": "I don't care about finishing as quickly as possible", "target": "es ist mir egal so schnell wie möglich fertig zu werden"},
+        {"known": "I'm not trying to finish as quickly as possible", "target": "ich versuche nicht so schnell wie möglich fertig zu werden"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to finish",
+      "target": "fertig zu werden",
+      "components": [
+        {"known": "finished/done", "target": "fertig"},
+        {"known": "to become", "target": "zu werden"}
+      ],
+      "phrases": [
+        {"known": "finished/done", "target": "fertig"},
+        {"known": "to become", "target": "zu werden"},
+        {"known": "not finished", "target": "nicht fertig"},
+        {"known": "to finish", "target": "fertig zu werden"},
+        {"known": "to finish now", "target": "jetzt fertig zu werden"},
+        {"known": "to finish today", "target": "heute fertig zu werden"},
+        {"known": "I'm trying to finish", "target": "ich versuche fertig zu werden"},
+        {"known": "I'm not trying to finish", "target": "ich versuche nicht fertig zu werden"},
+        {"known": "I'm trying to finish today", "target": "ich versuche heute fertig zu werden"},
+        {"known": "to finish as quickly as possible", "target": "so schnell wie möglich fertig zu werden"},
+        {"known": "I'm trying to finish as quickly as possible", "target": "ich versuche so schnell wie möglich fertig zu werden"},
+        {"known": "I'm not trying to finish as quickly as possible", "target": "ich versuche nicht so schnell wie möglich fertig zu werden"},
+        {"known": "I'm not trying to finish because I don't care", "target": "ich versuche nicht fertig zu werden weil es mir egal ist"}
+      ]
+    }
+  ]
+}

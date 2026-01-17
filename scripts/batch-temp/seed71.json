@@ -1,0 +1,109 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 71,
+  "known_text": "We didn't want to let anyone hear the truth.",
+  "target_text": "Wir wollten nicht dass jemand die Wahrheit hort.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we didn't want",
+      "target": "wir wollten nicht",
+      "components": [
+        {"known": "we", "target": "wir"},
+        {"known": "wanted (plural)", "target": "wollten"},
+        {"known": "not", "target": "nicht"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "wir"},
+        {"known": "wanted (plural)", "target": "wollten"},
+        {"known": "we wanted", "target": "wir wollten"},
+        {"known": "we didn't want", "target": "wir wollten nicht"},
+        {"known": "we wanted to learn", "target": "wir wollten lernen"},
+        {"known": "we didn't want to stop", "target": "wir wollten nicht aufhoren"},
+        {"known": "we wanted to speak German", "target": "wir wollten Deutsch sprechen"},
+        {"known": "we didn't want to find the answer", "target": "wir wollten nicht die Antwort finden"},
+        {"known": "why didn't we want to learn German", "target": "warum wollten wir nicht Deutsch lernen"},
+        {"known": "we wanted to take time to learn but it was not easy", "target": "wir wollten uns Zeit nehmen zu lernen aber es war nicht einfach"},
+        {"known": "we didn't want to stop learning German all afternoon", "target": "wir wollten nicht den ganzen Nachmittag aufhoren Deutsch zu lernen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "that (conjunction)",
+      "target": "dass",
+      "phrases": [
+        {"known": "that (conjunction)", "target": "dass"},
+        {"known": "I know that (conjunction)", "target": "ich weiss dass"},
+        {"known": "I think that (conjunction)", "target": "ich denke dass"},
+        {"known": "we didn't want that (conjunction)", "target": "wir wollten nicht dass"},
+        {"known": "are you sure that (conjunction)", "target": "sind Sie sicher dass"},
+        {"known": "I know that (conjunction) it is important", "target": "ich weiss dass es wichtig ist"},
+        {"known": "we didn't want that (conjunction) anyone knows", "target": "wir wollten nicht dass jemand weiss"},
+        {"known": "I think that (conjunction) learning German is fun", "target": "ich denke dass Deutsch zu lernen Spass macht"},
+        {"known": "are you sure that (conjunction) you know where it was", "target": "sind Sie sicher dass Sie wissen wo es war"},
+        {"known": "we didn't want that (conjunction) she tells me where it was", "target": "wir wollten nicht dass sie mir sagt wo es war"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "anyone",
+      "target": "jemand",
+      "phrases": [
+        {"known": "anyone", "target": "jemand"},
+        {"known": "did anyone want", "target": "wollte jemand"},
+        {"known": "anyone can help", "target": "jemand kann helfen"},
+        {"known": "we didn't want that anyone knows", "target": "wir wollten nicht dass jemand weiss"},
+        {"known": "did anyone want to help", "target": "wollte jemand helfen"},
+        {"known": "I do not know if anyone wanted to help", "target": "ich weiss nicht ob jemand helfen wollte"},
+        {"known": "did anyone want to learn German", "target": "wollte jemand Deutsch lernen"},
+        {"known": "we didn't want that anyone knows where it was", "target": "wir wollten nicht dass jemand weiss wo es war"},
+        {"known": "did anyone want to learn German all afternoon", "target": "wollte jemand den ganzen Nachmittag Deutsch lernen"},
+        {"known": "we didn't want that anyone knows the answer", "target": "wir wollten nicht dass jemand die Antwort weiss"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "the truth",
+      "target": "die Wahrheit",
+      "components": [
+        {"known": "the", "target": "die"},
+        {"known": "truth", "target": "Wahrheit"}
+      ],
+      "phrases": [
+        {"known": "the", "target": "die"},
+        {"known": "truth", "target": "Wahrheit"},
+        {"known": "the truth", "target": "die Wahrheit"},
+        {"known": "the truth is", "target": "die Wahrheit ist"},
+        {"known": "I know the truth", "target": "ich weiss die Wahrheit"},
+        {"known": "we wanted to know the truth", "target": "wir wollten die Wahrheit wissen"},
+        {"known": "we didn't want that anyone knows the truth", "target": "wir wollten nicht dass jemand die Wahrheit weiss"},
+        {"known": "the truth is not easy to find", "target": "die Wahrheit ist nicht einfach zu finden"},
+        {"known": "she didn't want to tell me the truth", "target": "sie wollte mir nicht die Wahrheit sagen"},
+        {"known": "are you sure you want to know the truth", "target": "sind Sie sicher dass Sie die Wahrheit wissen mochten"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "hears",
+      "target": "hort",
+      "phrases": [
+        {"known": "hears", "target": "hort"},
+        {"known": "anyone hears", "target": "jemand hort"},
+        {"known": "hears the truth", "target": "die Wahrheit hort"},
+        {"known": "anyone hears that (thing)", "target": "jemand hort das"},
+        {"known": "anyone hears the truth", "target": "jemand hort die Wahrheit"},
+        {"known": "we didn't want that anyone hears", "target": "wir wollten nicht dass jemand hort"},
+        {"known": "we didn't want that anyone hears the truth", "target": "wir wollten nicht dass jemand die Wahrheit hort"},
+        {"known": "I do not know if anyone hears the truth", "target": "ich weiss nicht ob jemand die Wahrheit hort"},
+        {"known": "we didn't want that anyone hears where it was", "target": "wir wollten nicht dass jemand hort wo es war"},
+        {"known": "are you sure that anyone hears the truth", "target": "sind Sie sicher dass jemand die Wahrheit hort"},
+        {"known": "she didn't want that anyone hears what she wanted to say", "target": "sie wollte nicht dass jemand hort was sie sagen wollte"}
+      ]
+    }
+  ]
+}

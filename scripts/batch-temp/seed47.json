@@ -1,0 +1,178 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 47,
+  "known_text": "Because I think that it's a good thing to make mistakes.",
+  "target_text": "Weil ich denke, dass es gut ist, Fehler zu machen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "because",
+      "target": "weil",
+      "phrases": [
+        {"known": "because", "target": "weil"},
+        {"known": "because I", "target": "weil ich"},
+        {"known": "because not", "target": "weil nicht"},
+        {"known": "because I must", "target": "weil ich muss"},
+        {"known": "because I know", "target": "weil ich weiss"},
+        {"known": "because everything is okay", "target": "weil alles okay ist"},
+        {"known": "because I don't worry", "target": "weil ich mir keine Sorgen mache"},
+        {"known": "because I can improve", "target": "weil ich mich verbessern kann"},
+        {"known": "because I know I make mistakes", "target": "weil ich weiss ich mache Fehler"},
+        {"known": "because I don't worry about mistakes", "target": "weil ich mir keine Sorgen mache Fehler zu machen"},
+        {"known": "because I don't need to know everything", "target": "weil ich nicht alles wissen muss"},
+        {"known": "because I know I can improve myself", "target": "weil ich weiss ich kann mich verbessern"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I think",
+      "target": "ich denke",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "think", "target": "denke"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "think", "target": "denke"},
+        {"known": "I think", "target": "ich denke"},
+        {"known": "I think now", "target": "ich denke jetzt"},
+        {"known": "I think so", "target": "ich denke so"},
+        {"known": "I don't think so", "target": "ich denke nicht so"},
+        {"known": "because I think", "target": "weil ich denke"},
+        {"known": "I think everything is okay", "target": "ich denke alles ist okay"},
+        {"known": "I think I must improve", "target": "ich denke ich muss mich verbessern"},
+        {"known": "I think I don't need to worry", "target": "ich denke ich muss mir keine Sorgen machen"},
+        {"known": "because I think I can improve myself", "target": "weil ich denke ich kann mich verbessern"},
+        {"known": "I think I don't need to know everything", "target": "ich denke ich muss nicht alles wissen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "that",
+      "target": "dass",
+      "phrases": [
+        {"known": "that", "target": "dass"},
+        {"known": "that I", "target": "dass ich"},
+        {"known": "that it", "target": "dass es"},
+        {"known": "I think that", "target": "ich denke dass"},
+        {"known": "I know that", "target": "ich weiss dass"},
+        {"known": "that I must", "target": "dass ich muss"},
+        {"known": "I think that I", "target": "ich denke dass ich"},
+        {"known": "I know that everything is okay", "target": "ich weiss dass alles okay ist"},
+        {"known": "because I think that", "target": "weil ich denke dass"},
+        {"known": "I think that I must improve", "target": "ich denke dass ich mich verbessern muss"},
+        {"known": "I think that I don't need to worry", "target": "ich denke dass ich mir keine Sorgen machen muss"},
+        {"known": "because I think that I can improve myself", "target": "weil ich denke dass ich mich verbessern kann"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "it",
+      "target": "es",
+      "phrases": [
+        {"known": "it", "target": "es"},
+        {"known": "it is", "target": "es ist"},
+        {"known": "that it", "target": "dass es"},
+        {"known": "it is okay", "target": "es ist okay"},
+        {"known": "it is good", "target": "es ist gut"},
+        {"known": "that it is good", "target": "dass es gut ist"},
+        {"known": "I think that it is okay", "target": "ich denke dass es okay ist"},
+        {"known": "I think that it is good", "target": "ich denke dass es gut ist"},
+        {"known": "because I think that it is good", "target": "weil ich denke dass es gut ist"},
+        {"known": "I think that it is okay now", "target": "ich denke dass es jetzt okay ist"},
+        {"known": "because I think that it is okay today", "target": "weil ich denke dass es heute okay ist"},
+        {"known": "I think that it is good to make mistakes", "target": "ich denke dass es gut ist Fehler zu machen"},
+        {"known": "because I think that it is good to make mistakes", "target": "weil ich denke dass es gut ist Fehler zu machen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "is",
+      "target": "ist",
+      "phrases": [
+        {"known": "is", "target": "ist"},
+        {"known": "it is", "target": "es ist"},
+        {"known": "is good", "target": "ist gut"},
+        {"known": "is okay", "target": "ist okay"},
+        {"known": "it is good", "target": "es ist gut"},
+        {"known": "that it is", "target": "dass es ist"},
+        {"known": "everything is okay", "target": "alles ist okay"},
+        {"known": "I think it is good", "target": "ich denke es ist gut"},
+        {"known": "because it is good", "target": "weil es gut ist"},
+        {"known": "I think that it is good", "target": "ich denke dass es gut ist"},
+        {"known": "I think that everything is okay now", "target": "ich denke dass alles jetzt okay ist"},
+        {"known": "because I think that it is good to make mistakes", "target": "weil ich denke dass es gut ist Fehler zu machen"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "good",
+      "target": "gut",
+      "phrases": [
+        {"known": "good", "target": "gut"},
+        {"known": "is good", "target": "ist gut"},
+        {"known": "it is good", "target": "es ist gut"},
+        {"known": "everything is good", "target": "alles ist gut"},
+        {"known": "that it is good", "target": "dass es gut ist"},
+        {"known": "I feel good", "target": "ich fühle mich gut"},
+        {"known": "I think it is good", "target": "ich denke es ist gut"},
+        {"known": "because it is good", "target": "weil es gut ist"},
+        {"known": "I think that it is good", "target": "ich denke dass es gut ist"},
+        {"known": "it is good to make mistakes", "target": "es ist gut Fehler zu machen"},
+        {"known": "I think that it is good to make mistakes", "target": "ich denke dass es gut ist Fehler zu machen"},
+        {"known": "I don't worry because it is good to make mistakes", "target": "ich mache mir keine Sorgen weil es gut ist Fehler zu machen"},
+        {"known": "because I think that it is good to make mistakes", "target": "weil ich denke dass es gut ist Fehler zu machen"}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "mistakes",
+      "target": "Fehler",
+      "phrases": [
+        {"known": "mistakes", "target": "Fehler"},
+        {"known": "no mistakes", "target": "keine Fehler"},
+        {"known": "I make mistakes", "target": "ich mache Fehler"},
+        {"known": "to make mistakes", "target": "Fehler zu machen"},
+        {"known": "it is good to make mistakes", "target": "es ist gut Fehler zu machen"},
+        {"known": "I think I make mistakes", "target": "ich denke ich mache Fehler"},
+        {"known": "because I make mistakes", "target": "weil ich Fehler mache"},
+        {"known": "I don't worry about making mistakes", "target": "ich mache mir keine Sorgen Fehler zu machen"},
+        {"known": "I think that it is good to make mistakes", "target": "ich denke dass es gut ist Fehler zu machen"},
+        {"known": "because I think it is good to make mistakes", "target": "weil ich denke es ist gut Fehler zu machen"},
+        {"known": "I don't worry about making mistakes because I can improve", "target": "ich mache mir keine Sorgen Fehler zu machen weil ich mich verbessern kann"},
+        {"known": "because I think that it is good to make mistakes", "target": "weil ich denke dass es gut ist Fehler zu machen"}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "M",
+      "known": "to make",
+      "target": "zu machen",
+      "components": [
+        {"known": "to", "target": "zu"},
+        {"known": "make", "target": "machen"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "zu"},
+        {"known": "make", "target": "machen"},
+        {"known": "to make", "target": "zu machen"},
+        {"known": "to make mistakes", "target": "Fehler zu machen"},
+        {"known": "to make now", "target": "jetzt zu machen"},
+        {"known": "it is good to make mistakes", "target": "es ist gut Fehler zu machen"},
+        {"known": "I think it is good to make mistakes", "target": "ich denke es ist gut Fehler zu machen"},
+        {"known": "because it is good to make mistakes", "target": "weil es gut ist Fehler zu machen"},
+        {"known": "I think that it is good to make mistakes", "target": "ich denke dass es gut ist Fehler zu machen"},
+        {"known": "I don't worry about making mistakes", "target": "ich mache mir keine Sorgen Fehler zu machen"},
+        {"known": "because I think that it is good to make mistakes", "target": "weil ich denke dass es gut ist Fehler zu machen"},
+        {"known": "I don't worry about making mistakes because I can improve", "target": "ich mache mir keine Sorgen Fehler zu machen weil ich mich verbessern kann"}
+      ]
+    }
+  ]
+}

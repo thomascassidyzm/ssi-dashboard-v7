@@ -1,0 +1,120 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 61,
+  "known_text": "Could you say that again a little more slowly?",
+  "target_text": "Konnten Sie das noch einmal etwas langsamer sagen?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "could you",
+      "target": "konnten Sie",
+      "components": [
+        {"known": "could", "target": "konnten"},
+        {"known": "you (formal)", "target": "Sie"}
+      ],
+      "phrases": [
+        {"known": "could", "target": "konnten"},
+        {"known": "you (formal)", "target": "Sie"},
+        {"known": "could you", "target": "konnten Sie"},
+        {"known": "could you say", "target": "konnten Sie sagen"},
+        {"known": "could you speak", "target": "konnten Sie sprechen"},
+        {"known": "could you explain", "target": "konnten Sie erklaren"},
+        {"known": "could you try", "target": "konnten Sie versuchen"},
+        {"known": "could you say something", "target": "konnten Sie etwas sagen"},
+        {"known": "could you say a word", "target": "konnten Sie ein Wort sagen"},
+        {"known": "could you explain what I mean", "target": "konnten Sie erklaren was ich meine"},
+        {"known": "could you say what you want to say", "target": "konnten Sie sagen was Sie sagen mochten"},
+        {"known": "could you speak German with someone else", "target": "konnten Sie Deutsch mit jemand anderem sprechen"},
+        {"known": "could you try to explain what you mean to say", "target": "konnten Sie versuchen zu erklaren was Sie sagen mochten"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "that (thing)",
+      "target": "das",
+      "phrases": [
+        {"known": "that (thing)", "target": "das"},
+        {"known": "say that (thing)", "target": "das sagen"},
+        {"known": "I know that (thing)", "target": "ich weiss das"},
+        {"known": "I mean that (thing)", "target": "ich meine das"},
+        {"known": "could you say that (thing)", "target": "konnten Sie das sagen"},
+        {"known": "I want to say that (thing)", "target": "ich mochte das sagen"},
+        {"known": "could you explain that (thing)", "target": "konnten Sie das erklaren"},
+        {"known": "I am sure about that (thing)", "target": "ich bin sicher das"},
+        {"known": "could you say that (thing) in German", "target": "konnten Sie das auf Deutsch sagen"},
+        {"known": "I want to know how to say that (thing)", "target": "ich mochte wissen wie ich das sagen soll"},
+        {"known": "could you try to explain that (thing) to me", "target": "konnten Sie versuchen das zu erklaren"},
+        {"known": "I am not sure how to say that (thing) in German", "target": "ich bin nicht sicher wie ich das auf Deutsch sagen soll"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "again",
+      "target": "noch einmal",
+      "components": [
+        {"known": "still", "target": "noch"},
+        {"known": "once", "target": "einmal"}
+      ],
+      "phrases": [
+        {"known": "still", "target": "noch"},
+        {"known": "once", "target": "einmal"},
+        {"known": "again", "target": "noch einmal"},
+        {"known": "say again", "target": "noch einmal sagen"},
+        {"known": "speak again", "target": "noch einmal sprechen"},
+        {"known": "try again", "target": "noch einmal versuchen"},
+        {"known": "say that (thing) again", "target": "das noch einmal sagen"},
+        {"known": "could you say that (thing) again", "target": "konnten Sie das noch einmal sagen"},
+        {"known": "I want to try again", "target": "ich mochte noch einmal versuchen"},
+        {"known": "could you speak German again", "target": "konnten Sie noch einmal Deutsch sprechen"},
+        {"known": "I want to say something again", "target": "ich mochte noch einmal etwas sagen"},
+        {"known": "could you explain that (thing) again", "target": "konnten Sie das noch einmal erklaren"},
+        {"known": "I am going to try to say that (thing) again", "target": "ich werde versuchen das noch einmal zu sagen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "a little more slowly",
+      "target": "etwas langsamer",
+      "components": [
+        {"known": "a little", "target": "etwas"},
+        {"known": "more slowly", "target": "langsamer"}
+      ],
+      "phrases": [
+        {"known": "a little", "target": "etwas"},
+        {"known": "more slowly", "target": "langsamer"},
+        {"known": "a little more slowly", "target": "etwas langsamer"},
+        {"known": "speak more slowly", "target": "langsamer sprechen"},
+        {"known": "say it more slowly", "target": "etwas langsamer sagen"},
+        {"known": "I speak more slowly", "target": "ich spreche langsamer"},
+        {"known": "could you speak more slowly", "target": "konnten Sie langsamer sprechen"},
+        {"known": "could you speak a little more slowly", "target": "konnten Sie etwas langsamer sprechen"},
+        {"known": "could you say that (thing) a little more slowly", "target": "konnten Sie das etwas langsamer sagen"},
+        {"known": "I want to speak a little more slowly", "target": "ich mochte etwas langsamer sprechen"},
+        {"known": "I am trying to speak a little more slowly", "target": "ich versuche etwas langsamer zu sprechen"},
+        {"known": "could you say that (thing) again a little more slowly", "target": "konnten Sie das noch einmal etwas langsamer sagen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "to say",
+      "target": "sagen",
+      "phrases": [
+        {"known": "to say", "target": "sagen"},
+        {"known": "I say", "target": "ich sage"},
+        {"known": "say it", "target": "sagen Sie"},
+        {"known": "to say something", "target": "etwas sagen"},
+        {"known": "to say that (thing)", "target": "das sagen"},
+        {"known": "I want to say", "target": "ich mochte sagen"},
+        {"known": "could you say", "target": "konnten Sie sagen"},
+        {"known": "I want to say something", "target": "ich mochte etwas sagen"},
+        {"known": "how to say that (thing) in German", "target": "wie ich das auf Deutsch sagen soll"},
+        {"known": "could you say that (thing) again a little more slowly", "target": "konnten Sie das noch einmal etwas langsamer sagen"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 84,
+  "known_text": "I don't agree with what he said about my friend.",
+  "target_text": "Eu não concordo com o que ele disse sobre o meu amigo.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't agree with",
+      "target": "eu não concordo com",
+      "components": [
+        {"known": "I don't", "target": "eu não"},
+        {"known": "agree with", "target": "concordo com"}
+      ],
+      "phrases": [
+        {"known": "I don't", "target": "eu não"},
+        {"known": "agree with", "target": "concordo com"},
+        {"known": "I don't agree with", "target": "eu não concordo com"},
+        {"known": "I don't agree", "target": "eu não concordo"},
+        {"known": "I don't agree with you", "target": "eu não concordo com você"},
+        {"known": "I don't agree with that", "target": "eu não concordo com isso"},
+        {"known": "I don't agree with what you said", "target": "eu não concordo com o que você disse"},
+        {"known": "I don't agree with what he said", "target": "eu não concordo com o que ele disse"},
+        {"known": "I don't agree with you but I understand what you said", "target": "eu não concordo com você mas eu entendo o que você disse"},
+        {"known": "I don't agree with what he said but I want to understand", "target": "eu não concordo com o que ele disse mas eu quero entender"},
+        {"known": "I don't agree with what you said about your friend", "target": "eu não concordo com o que você disse sobre o seu amigo"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what he said",
+      "target": "o que ele disse",
+      "components": [
+        {"known": "what", "target": "o que"},
+        {"known": "he said", "target": "ele disse"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "o que"},
+        {"known": "he said", "target": "ele disse"},
+        {"known": "what he said", "target": "o que ele disse"},
+        {"known": "he said that", "target": "ele disse que"},
+        {"known": "I understand what he said", "target": "eu entendo o que ele disse"},
+        {"known": "I don't understand what he said", "target": "eu não entendo o que ele disse"},
+        {"known": "I agree with what he said", "target": "eu concordo com o que ele disse"},
+        {"known": "I don't agree with what he said", "target": "eu não concordo com o que ele disse"},
+        {"known": "I don't understand what he said about you", "target": "eu não entendo o que ele disse sobre você"},
+        {"known": "I agree with what he said about learning Portuguese", "target": "eu concordo com o que ele disse sobre aprender português"},
+        {"known": "I don't agree with what he said about speaking Portuguese", "target": "eu não concordo com o que ele disse sobre falar português"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "about my friend",
+      "target": "sobre o meu amigo",
+      "components": [
+        {"known": "my", "target": "o meu"},
+        {"known": "my friend", "target": "o meu amigo"}
+      ],
+      "phrases": [
+        {"known": "my", "target": "o meu"},
+        {"known": "my friend", "target": "o meu amigo"},
+        {"known": "about my friend", "target": "sobre o meu amigo"},
+        {"known": "my friend is here", "target": "o meu amigo está aqui"},
+        {"known": "my friend wants to learn", "target": "o meu amigo quer aprender"},
+        {"known": "what did he say about my friend?", "target": "o que ele disse sobre o meu amigo?"},
+        {"known": "I don't agree with what he said about my friend", "target": "eu não concordo com o que ele disse sobre o meu amigo"},
+        {"known": "my friend said that he wants to learn Portuguese", "target": "o meu amigo disse que ele quer aprender português"},
+        {"known": "I want to know what he said about my friend yesterday", "target": "eu quero saber o que ele disse sobre o meu amigo ontem"},
+        {"known": "my friend doesn't understand what you said about him", "target": "o meu amigo não entende o que você disse sobre ele"},
+        {"known": "I don't agree with what he said about my friend but I understand", "target": "eu não concordo com o que ele disse sobre o meu amigo mas eu entendo"}
+      ]
+    }
+  ]
+}

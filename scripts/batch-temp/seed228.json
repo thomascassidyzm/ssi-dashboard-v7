@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 228,
+  "known_text": "That man has just started to practise speaking.",
+  "target_text": "那个男人刚开始练习说。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that man",
+      "target": "那个男人",
+      "components": [
+        {"known": "that", "target": "那个"},
+        {"known": "man", "target": "男人"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "那个"},
+        {"known": "that man", "target": "那个男人"},
+        {"known": "this man", "target": "这个男人"},
+        {"known": "that person", "target": "那个人"},
+        {"known": "I see that man", "target": "我看到那个男人"},
+        {"known": "that man is learning", "target": "那个男人在学"},
+        {"known": "do you know that man", "target": "你认识那个男人吗"},
+        {"known": "that man just started learning", "target": "那个男人刚开始学"},
+        {"known": "that man can speak Chinese now", "target": "那个男人现在能说中文"},
+        {"known": "I want to help that man learn Chinese", "target": "我想帮那个男人学中文"},
+        {"known": "that man is trying to help me understand", "target": "那个男人在试着帮我理解"},
+        {"known": "that man just started to learn how to speak", "target": "那个男人刚开始学怎么说"},
+        {"known": "I saw that man at my friend's house yesterday", "target": "我昨天在朋友家看到那个男人"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "has just started",
+      "target": "刚开始",
+      "components": [
+        {"known": "just", "target": "刚"},
+        {"known": "started", "target": "开始"}
+      ],
+      "phrases": [
+        {"known": "just", "target": "刚"},
+        {"known": "start", "target": "开始"},
+        {"known": "just started", "target": "刚开始"},
+        {"known": "he just started", "target": "他刚开始"},
+        {"known": "I just started", "target": "我刚开始"},
+        {"known": "she just started learning", "target": "她刚开始学"},
+        {"known": "he just started working", "target": "他刚开始工作"},
+        {"known": "I just started to understand", "target": "我刚开始理解"},
+        {"known": "that man just started speaking", "target": "那个男人刚开始说"},
+        {"known": "she just started to help us with the work", "target": "她刚开始帮我们做工作"},
+        {"known": "he just started to learn how to speak Chinese", "target": "他刚开始学怎么说中文"},
+        {"known": "that man just started to tell me something new", "target": "那个男人刚开始告诉我新东西"},
+        {"known": "she just started to understand what we want", "target": "她刚开始理解我们想要什么"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "to practise speaking",
+      "target": "练习说",
+      "components": [
+        {"known": "practise", "target": "练习"},
+        {"known": "speak", "target": "说"}
+      ],
+      "phrases": [
+        {"known": "speak", "target": "说"},
+        {"known": "practise", "target": "练习"},
+        {"known": "practise speaking", "target": "练习说"},
+        {"known": "I want to practise", "target": "我想练习"},
+        {"known": "practise Chinese", "target": "练习中文"},
+        {"known": "practise speaking Chinese", "target": "练习说中文"},
+        {"known": "I want to practise speaking", "target": "我想练习说"},
+        {"known": "he needs to practise more", "target": "他需要练习多一点"},
+        {"known": "I want to practise speaking Chinese with you", "target": "我想和你练习说中文"},
+        {"known": "that man just started to practise speaking", "target": "那个男人刚开始练习说"},
+        {"known": "she is trying to practise speaking with us", "target": "她在试着和我们练习说"},
+        {"known": "he wants to practise speaking Chinese tomorrow", "target": "他明天想练习说中文"},
+        {"known": "that man needs to practise speaking Chinese more", "target": "那个男人需要练习说中文多一点"}
+      ]
+    }
+  ]
+}

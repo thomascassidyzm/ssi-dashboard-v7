@@ -1,0 +1,75 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 152,
+  "known_text": "I would have done it differently if I had known what you wanted.",
+  "target_text": "Ich hätte es anders gemacht, wenn ich gewusst hätte, was du wolltest.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I would have done it differently",
+      "target": "ich hätte es anders gemacht",
+      "components": [
+        {"known": "I would have done it", "target": "ich hätte es gemacht"},
+        {"known": "differently", "target": "anders"}
+      ],
+      "phrases": [
+        {"known": "differently", "target": "anders"},
+        {"known": "done it", "target": "es gemacht"},
+        {"known": "I would have done it", "target": "ich hätte es gemacht"},
+        {"known": "I would have done it differently", "target": "ich hätte es anders gemacht"},
+        {"known": "she would have done it differently", "target": "sie hätte es anders gemacht"},
+        {"known": "I think I would have done it differently", "target": "ich denke ich hätte es anders gemacht"},
+        {"known": "he said he would have done it differently", "target": "er hat gesagt er hätte es anders gemacht"},
+        {"known": "I believe I would have done it differently but I didn't have time", "target": "ich glaube ich hätte es anders gemacht aber ich hatte keine Zeit"},
+        {"known": "she told me she would have done it differently because she thought it was not good", "target": "sie hat mir gesagt sie hätte es anders gemacht weil sie dachte es war nicht gut"},
+        {"known": "I would have done it differently today because I think this wasn't very good", "target": "ich hätte es heute anders gemacht weil ich denke das war nicht sehr gut"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "if I had known",
+      "target": "wenn ich gewusst hätte",
+      "components": [
+        {"known": "if", "target": "wenn"},
+        {"known": "I had known", "target": "ich gewusst hätte"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "wenn"},
+        {"known": "if it is", "target": "wenn es ist"},
+        {"known": "I had known", "target": "ich gewusst hätte"},
+        {"known": "if only", "target": "wenn nur"},
+        {"known": "if I had known", "target": "wenn ich gewusst hätte"},
+        {"known": "if I had known that", "target": "wenn ich das gewusst hätte"},
+        {"known": "if I had known before", "target": "wenn ich es vorher gewusst hätte"},
+        {"known": "if I had known this earlier", "target": "wenn ich das früher gewusst hätte"},
+        {"known": "I would have done it differently if I had known", "target": "ich hätte es anders gemacht wenn ich gewusst hätte"},
+        {"known": "I think everything would be different now if I had known what was happening", "target": "ich denke alles wäre jetzt anders wenn ich gewusst hätte was passiert"},
+        {"known": "he told me he would have done it differently if I had known what you wanted", "target": "er hat mir gesagt er hätte es anders gemacht wenn ich gewusst hätte was du wolltest"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what you wanted",
+      "target": "was du wolltest",
+      "components": [
+        {"known": "what", "target": "was"},
+        {"known": "you wanted", "target": "du wolltest"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "you wanted", "target": "du wolltest"},
+        {"known": "what you wanted", "target": "was du wolltest"},
+        {"known": "I knew what you wanted", "target": "ich wusste was du wolltest"},
+        {"known": "tell me what you wanted", "target": "kannst du mir sagen was du wolltest"},
+        {"known": "I didn't know what you wanted", "target": "ich wusste nicht was du wolltest"},
+        {"known": "she said what you wanted", "target": "sie hat gesagt was du wolltest"},
+        {"known": "if I had known what you wanted before", "target": "wenn ich gewusst hätte was du vorher wolltest"},
+        {"known": "I would have done it differently if I had known what you wanted from me", "target": "ich hätte es anders gemacht wenn ich gewusst hätte was du von mir wolltest"},
+        {"known": "he told me that wasn't what you wanted so I should consider doing it differently", "target": "er hat mir gesagt das war nicht was du wolltest also sollte ich überlegen es anders zu machen"}
+      ]
+    }
+  ]
+}

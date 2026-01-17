@@ -1,0 +1,56 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 135,
+  "known_text": "I don't know why you think that it's so good.",
+  "target_text": "Eu não sei por que você acha que é tão bom.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't know why",
+      "target": "eu não sei por que",
+      "components": [
+        {"known": "I don't know", "target": "eu não sei"},
+        {"known": "why", "target": "por que"}
+      ],
+      "phrases": [
+        {"known": "I don't know", "target": "eu não sei"},
+        {"known": "why", "target": "por que"},
+        {"known": "I don't know why", "target": "eu não sei por que"},
+        {"known": "why this", "target": "por que isso"},
+        {"known": "I don't know this", "target": "eu não sei isso"},
+        {"known": "I don't know why this", "target": "eu não sei por que isso"},
+        {"known": "she doesn't know why", "target": "ela não sabe por que"},
+        {"known": "why she was saying that", "target": "por que ela estava dizendo isso"},
+        {"known": "unfortunately I don't know why", "target": "infelizmente eu não sei por que"},
+        {"known": "I don't know why you are saying this", "target": "eu não sei por que você está dizendo isso"},
+        {"known": "I don't know why she was doing that", "target": "eu não sei por que ela estava fazendo isso"},
+        {"known": "unfortunately I don't know why this is difficult for them", "target": "infelizmente eu não sei por que isso é difícil para eles"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "you think that it's so good",
+      "target": "você acha que é tão bom",
+      "components": [
+        {"known": "you think that", "target": "você acha que"},
+        {"known": "it's so good", "target": "é tão bom"}
+      ],
+      "phrases": [
+        {"known": "you think that", "target": "você acha que"},
+        {"known": "it's so good", "target": "é tão bom"},
+        {"known": "you think that it's so good", "target": "você acha que é tão bom"},
+        {"known": "this is so good", "target": "isso é tão bom"},
+        {"known": "you think this is good", "target": "você acha que isso é bom"},
+        {"known": "why you think that", "target": "por que você acha que"},
+        {"known": "why you think that it's so good", "target": "por que você acha que é tão bom"},
+        {"known": "I don't know why you think that", "target": "eu não sei por que você acha que"},
+        {"known": "I don't know why you think that it's so good", "target": "eu não sei por que você acha que é tão bom"},
+        {"known": "unfortunately she thinks that this is so good for them", "target": "infelizmente ela acha que isso é tão bom para eles"},
+        {"known": "I don't know why you think that this is so good for them now", "target": "eu não sei por que você acha que isso é tão bom para eles agora"},
+        {"known": "unfortunately I don't know why you think that this is so good", "target": "infelizmente eu não sei por que você acha que isso é tão bom"}
+      ]
+    }
+  ]
+}

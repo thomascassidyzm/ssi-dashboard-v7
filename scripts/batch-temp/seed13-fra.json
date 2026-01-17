@@ -1,0 +1,60 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 13,
+  "known_text": "You speak French very well.",
+  "target_text": "Tu parles français très bien.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you speak",
+      "target": "tu parles",
+      "components": [
+        {"known": "you", "target": "tu"},
+        {"known": "speak", "target": "parles"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "tu"},
+        {"known": "speak", "target": "parles"},
+        {"known": "you speak", "target": "tu parles"},
+        {"known": "you speak French", "target": "tu parles français"},
+        {"known": "you speak a little", "target": "tu parles un peu"},
+        {"known": "you speak with someone else", "target": "tu parles avec quelqu'un d'autre"},
+        {"known": "after you speak", "target": "après que tu parles"},
+        {"known": "I'd like to be able to guess what you speak", "target": "j'aimerais pouvoir deviner ce que tu parles"},
+        {"known": "I wouldn't like to guess what you speak tomorrow", "target": "je n'aimerais pas deviner ce que tu parles demain"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "French",
+      "target": "français",
+      "phrases": [
+        {"known": "French", "target": "français"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "very well",
+      "target": "très bien",
+      "components": [
+        {"known": "very", "target": "très"},
+        {"known": "well", "target": "bien"}
+      ],
+      "phrases": [
+        {"known": "very", "target": "très"},
+        {"known": "well", "target": "bien"},
+        {"known": "very well", "target": "très bien"},
+        {"known": "French very well", "target": "français très bien"},
+        {"known": "you speak very well", "target": "tu parles très bien"},
+        {"known": "you speak French very well", "target": "tu parles français très bien"},
+        {"known": "I can explain very well", "target": "je peux expliquer très bien"},
+        {"known": "you can explain very well", "target": "tu peux expliquer très bien"},
+        {"known": "I'd like to be able to guess very well what's going to happen", "target": "j'aimerais pouvoir deviner très bien ce qui va se passer"},
+        {"known": "I wouldn't like to explain very well what's going to happen tomorrow", "target": "je n'aimerais pas expliquer très bien ce qui va se passer demain"}
+      ]
+    }
+  ]
+}

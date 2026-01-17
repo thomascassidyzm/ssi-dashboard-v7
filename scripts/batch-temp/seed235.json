@@ -1,0 +1,80 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 235,
+  "known_text": "I met someone who said that he wanted to tell you something.",
+  "target_text": "我见了一个人说他想告诉你一些。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I met someone",
+      "target": "我见了一个人",
+      "components": [
+        {"known": "I met", "target": "我见了"},
+        {"known": "someone", "target": "一个人"}
+      ],
+      "phrases": [
+        {"known": "met", "target": "见了"},
+        {"known": "I met", "target": "我见了"},
+        {"known": "someone", "target": "一个人"},
+        {"known": "I met someone", "target": "我见了一个人"},
+        {"known": "I met him", "target": "我见了他"},
+        {"known": "I met your brother", "target": "我见了你哥哥"},
+        {"known": "I met that old woman", "target": "我见了那个老女人"},
+        {"known": "I met your sister yesterday", "target": "我昨天见了你姐姐"},
+        {"known": "I met someone interesting last night", "target": "我昨天晚上见了一个有意思的人"},
+        {"known": "I met someone who works with my brother", "target": "我见了一个和我哥哥工作的人"},
+        {"known": "I met a young man who knows your sister", "target": "我见了一个认识你姐姐的年轻人"},
+        {"known": "I met someone who can remember the answer", "target": "我见了一个能记住答案的人"},
+        {"known": "I met an old man who wanted to ask for help yesterday", "target": "我昨天见了一个想请人帮忙的老人"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "said",
+      "target": "说",
+      "phrases": [
+        {"known": "said", "target": "说"},
+        {"known": "say", "target": "说"},
+        {"known": "he said", "target": "他说"},
+        {"known": "she said", "target": "她说"},
+        {"known": "what did you say", "target": "你说什么"},
+        {"known": "he said he wants to go", "target": "他说他想去"},
+        {"known": "she said she can help", "target": "她说她能帮"},
+        {"known": "what did she say to you", "target": "她对你说什么"},
+        {"known": "he said he met your brother", "target": "他说他见了你哥哥"},
+        {"known": "she said she knows your sister", "target": "她说她认识你姐姐"},
+        {"known": "he said he wanted to tell me something", "target": "他说他想告诉我一些"},
+        {"known": "she said she met someone interesting last night", "target": "她说她昨天晚上见了一个有意思的人"},
+        {"known": "he said he wanted to work with your brother tomorrow", "target": "他说他明天想和你哥哥工作"},
+        {"known": "she said that old man can remember the answer to the question", "target": "她说那个老人能记住问题的答案"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he wanted to tell you something",
+      "target": "他想告诉你一些",
+      "components": [
+        {"known": "he wanted to", "target": "他想"},
+        {"known": "tell you something", "target": "告诉你一些"}
+      ],
+      "phrases": [
+        {"known": "he wanted", "target": "他想"},
+        {"known": "tell you", "target": "告诉你"},
+        {"known": "something", "target": "一些"},
+        {"known": "tell you something", "target": "告诉你一些"},
+        {"known": "he wanted to tell you", "target": "他想告诉你"},
+        {"known": "he wanted to tell you something", "target": "他想告诉你一些"},
+        {"known": "she wanted to tell me", "target": "她想告诉我"},
+        {"known": "he wanted to tell you the answer", "target": "他想告诉你答案"},
+        {"known": "she wanted to tell me something new", "target": "她想告诉我新东西"},
+        {"known": "that man said he wanted to tell you something", "target": "那个男人说他想告诉你一些"},
+        {"known": "he wanted to tell you something about your brother", "target": "他想告诉你一些你哥哥的"},
+        {"known": "she said she wanted to tell you the answer yesterday", "target": "她说她昨天想告诉你答案"},
+        {"known": "that old man wanted to tell you something interesting", "target": "那个老人想告诉你有意思的"}
+      ]
+    }
+  ]
+}

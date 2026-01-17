@@ -1,0 +1,53 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 153,
+  "known_text": "I wouldn't have said it in exactly the same way.",
+  "target_text": "Ich hätte es nicht genau so gesagt.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I wouldn't have said it",
+      "target": "ich hätte es nicht gesagt",
+      "components": [
+        {"known": "I wouldn't have", "target": "ich hätte nicht"},
+        {"known": "said it", "target": "es gesagt"}
+      ],
+      "phrases": [
+        {"known": "said it", "target": "es gesagt"},
+        {"known": "I wouldn't have", "target": "ich hätte nicht"},
+        {"known": "wouldn't have said", "target": "hätte nicht gesagt"},
+        {"known": "I wouldn't have said it", "target": "ich hätte es nicht gesagt"},
+        {"known": "she wouldn't have said it", "target": "sie hätte es nicht gesagt"},
+        {"known": "I think I wouldn't have said it", "target": "ich denke ich hätte es nicht gesagt"},
+        {"known": "he said he wouldn't have said it", "target": "er hat gesagt er hätte es nicht gesagt"},
+        {"known": "I believe I wouldn't have said it if I had known", "target": "ich glaube ich hätte es nicht gesagt wenn ich gewusst hätte"},
+        {"known": "she told me she wouldn't have said it that way", "target": "sie hat mir gesagt sie hätte es nicht so gesagt"},
+        {"known": "he told me he wouldn't have said it if he had known it wasn't good", "target": "er hat mir gesagt er hätte es nicht gesagt wenn er gewusst hätte dass es nicht gut war"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "in exactly the same way",
+      "target": "genau so",
+      "components": [
+        {"known": "exactly", "target": "genau"},
+        {"known": "the same way", "target": "so"}
+      ],
+      "phrases": [
+        {"known": "exactly", "target": "genau"},
+        {"known": "the same way", "target": "so"},
+        {"known": "exactly so", "target": "genau so"},
+        {"known": "it is exactly so", "target": "es ist genau so"},
+        {"known": "not exactly the same way", "target": "nicht genau so"},
+        {"known": "I said it in exactly the same way", "target": "ich habe es genau so gesagt"},
+        {"known": "she did it in exactly the same way", "target": "sie hat es genau so gemacht"},
+        {"known": "I wouldn't have said it in exactly the same way", "target": "ich hätte es nicht genau so gesagt"},
+        {"known": "he told me to do it in exactly the same way", "target": "er hat mir gesagt es genau so zu machen"},
+        {"known": "I think she would have done it in exactly the same way if she had known", "target": "ich denke sie hätte es genau so gemacht wenn sie gewusst hätte"},
+        {"known": "I wouldn't have said it in exactly the same way because that wasn't what you wanted", "target": "ich hätte es nicht genau so gesagt weil das nicht war was du wolltest"}
+      ]
+    }
+  ]
+}

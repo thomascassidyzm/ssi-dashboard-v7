@@ -1,0 +1,53 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 158,
+  "known_text": "Let's talk about something else.",
+  "target_text": "Lass uns über etwas anderes reden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "let's talk",
+      "target": "lass uns reden",
+      "components": [
+        {"known": "let's", "target": "lass uns"},
+        {"known": "talk", "target": "reden"}
+      ],
+      "phrases": [
+        {"known": "talk", "target": "reden"},
+        {"known": "let's", "target": "lass uns"},
+        {"known": "let's talk", "target": "lass uns reden"},
+        {"known": "let's talk now", "target": "lass uns jetzt reden"},
+        {"known": "let's go now", "target": "lass uns jetzt gehen"},
+        {"known": "I think let's talk", "target": "ich denke lass uns reden"},
+        {"known": "let's meet tomorrow", "target": "lass uns morgen treffen"},
+        {"known": "she said let's talk tonight", "target": "sie hat gesagt lass uns heute Abend reden"},
+        {"known": "I was hoping we could talk tomorrow morning", "target": "ich hatte gehofft wir könnten morgen früh reden"},
+        {"known": "he told me let's talk about what you want to do next month", "target": "er hat mir gesagt lass uns reden über was du nächsten Monat machen willst"},
+        {"known": "I don't mind if you want to talk now because I have time", "target": "es macht mir nichts aus wenn du jetzt reden willst weil ich Zeit habe"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "about something else",
+      "target": "über etwas anderes",
+      "components": [
+        {"known": "about", "target": "über"},
+        {"known": "something else", "target": "etwas anderes"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "über"},
+        {"known": "something else", "target": "etwas anderes"},
+        {"known": "about something else", "target": "über etwas anderes"},
+        {"known": "talk about something else", "target": "über etwas anderes reden"},
+        {"known": "I want to talk about something else", "target": "ich möchte über etwas anderes reden"},
+        {"known": "let's talk about something else", "target": "lass uns über etwas anderes reden"},
+        {"known": "she said we should talk about something else", "target": "sie hat gesagt wir sollten über etwas anderes reden"},
+        {"known": "I was hoping we could talk about something else tonight", "target": "ich hatte gehofft wir könnten heute Abend über etwas anderes reden"},
+        {"known": "he told me let's talk about something else because that wasn't interesting", "target": "er hat mir gesagt lass uns über etwas anderes reden weil das nicht interessant war"},
+        {"known": "I don't mind talking about something else if that is what you want to do", "target": "es macht mir nichts aus über etwas anderes zu reden wenn das ist was du machen willst"}
+      ]
+    }
+  ]
+}

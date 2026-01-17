@@ -1,0 +1,55 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 167,
+  "known_text": "What do you need to do tomorrow afternoon?",
+  "target_text": "Was musst du morgen Nachmittag machen?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what do you need to do",
+      "target": "was musst du machen",
+      "components": [
+        {"known": "what", "target": "was"},
+        {"known": "do you need to do", "target": "musst du machen"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "you need", "target": "du musst"},
+        {"known": "to do", "target": "machen"},
+        {"known": "need to do", "target": "musst machen"},
+        {"known": "what do you need to do", "target": "was musst du machen"},
+        {"known": "I need to do that", "target": "ich muss das machen"},
+        {"known": "do you need to do that now", "target": "musst du das jetzt machen"},
+        {"known": "she said what do you need to do", "target": "sie hat gesagt was musst du machen"},
+        {"known": "I'm not sure what I need to do", "target": "ich bin mir nicht sicher was ich machen muss"},
+        {"known": "can you tell me what I need to do tomorrow", "target": "kannst du mir sagen was ich morgen machen muss"},
+        {"known": "I think I need to do something else but I'm not sure", "target": "ich denke ich muss etwas anderes machen aber ich bin mir nicht sicher"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "tomorrow afternoon",
+      "target": "morgen Nachmittag",
+      "components": [
+        {"known": "tomorrow", "target": "morgen"},
+        {"known": "afternoon", "target": "Nachmittag"}
+      ],
+      "phrases": [
+        {"known": "tomorrow", "target": "morgen"},
+        {"known": "afternoon", "target": "Nachmittag"},
+        {"known": "tomorrow afternoon", "target": "morgen Nachmittag"},
+        {"known": "that is tomorrow afternoon", "target": "das ist morgen Nachmittag"},
+        {"known": "I have tomorrow afternoon", "target": "ich habe morgen Nachmittag"},
+        {"known": "I will be there tomorrow afternoon", "target": "ich werde morgen Nachmittag dort sein"},
+        {"known": "do you need to do that tomorrow afternoon", "target": "musst du das morgen Nachmittag machen"},
+        {"known": "she said tomorrow afternoon", "target": "sie hat gesagt morgen Nachmittag"},
+        {"known": "I'm not sure if I can do it tomorrow afternoon", "target": "ich bin mir nicht sicher ob ich das morgen Nachmittag machen kann"},
+        {"known": "can you give me that book tomorrow afternoon", "target": "kannst du mir das Buch morgen Nachmittag geben"},
+        {"known": "what do you need to do tomorrow afternoon", "target": "was musst du morgen Nachmittag machen"},
+        {"known": "I think we could meet tomorrow afternoon if that is not too difficult", "target": "ich denke wir könnten uns morgen Nachmittag treffen wenn das nicht zu schwierig ist"}
+      ]
+    }
+  ]
+}

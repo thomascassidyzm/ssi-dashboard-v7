@@ -1,0 +1,42 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 2,
+  "known_text": "I'm trying to learn.",
+  "target_text": "J'essaie d'apprendre.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm trying",
+      "target": "j'essaie",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "am trying", "target": "essaie"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "am trying", "target": "essaie"},
+        {"known": "I'm trying", "target": "j'essaie"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to learn",
+      "target": "d'apprendre",
+      "components": [
+        {"known": "to", "target": "de"},
+        {"known": "learn", "target": "apprendre"}
+      ],
+      "phrases": [
+        {"known": "to", "target": "de"},
+        {"known": "learn", "target": "apprendre"},
+        {"known": "to learn", "target": "d'apprendre"},
+        {"known": "I'm trying to learn", "target": "j'essaie d'apprendre"},
+        {"known": "I want to learn", "target": "je veux apprendre"},
+        {"known": "I'm trying to speak", "target": "j'essaie de parler"},
+        {"known": "I'm trying to speak French", "target": "j'essaie de parler français"}
+      ]
+    }
+  ]
+}

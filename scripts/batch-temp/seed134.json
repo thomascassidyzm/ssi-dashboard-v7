@@ -1,0 +1,78 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 134,
+  "known_text": "It's not a problem when you work at something difficult with them.",
+  "target_text": "Não é um problema quando você trabalha em algo difícil com eles.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's not a problem",
+      "target": "não é um problema",
+      "components": [
+        {"known": "it is not", "target": "não é"},
+        {"known": "a problem", "target": "um problema"}
+      ],
+      "phrases": [
+        {"known": "it is not", "target": "não é"},
+        {"known": "a problem", "target": "um problema"},
+        {"known": "it's not a problem", "target": "não é um problema"},
+        {"known": "this is not a problem", "target": "isso não é um problema"},
+        {"known": "that is not a problem", "target": "isso não é um problema"},
+        {"known": "I think it's not a problem", "target": "eu acho que não é um problema"},
+        {"known": "it's not a problem for you", "target": "não é um problema para você"},
+        {"known": "unfortunately it is a problem", "target": "infelizmente é um problema"},
+        {"known": "I think this is not a problem for them", "target": "eu acho que isso não é um problema para eles"},
+        {"known": "it's not a problem when you know what to do", "target": "não é um problema quando você sabe o que fazer"},
+        {"known": "unfortunately this is a problem that I have to think about now", "target": "infelizmente isso é um problema que eu tenho que pensar agora"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "when you work at something",
+      "target": "quando você trabalha em algo",
+      "components": [
+        {"known": "when you work", "target": "quando você trabalha"},
+        {"known": "at something", "target": "em algo"}
+      ],
+      "phrases": [
+        {"known": "when you work", "target": "quando você trabalha"},
+        {"known": "at something", "target": "em algo"},
+        {"known": "when you work at something", "target": "quando você trabalha em algo"},
+        {"known": "you work at something", "target": "você trabalha em algo"},
+        {"known": "I work at something", "target": "eu trabalho em algo"},
+        {"known": "she works at something new", "target": "ela trabalha em algo novo"},
+        {"known": "it's not a problem when you work at something", "target": "não é um problema quando você trabalha em algo"},
+        {"known": "when you work at something interesting", "target": "quando você trabalha em algo interessante"},
+        {"known": "I think it is very well when you work at something you like", "target": "eu acho que é muito bem quando você trabalha em algo que você gosta"},
+        {"known": "it's not a problem when you work at something that is interesting for you", "target": "não é um problema quando você trabalha em algo que é interessante para você"},
+        {"known": "unfortunately I do not have time to work at something new now", "target": "infelizmente eu não tenho tempo para trabalhar em algo novo agora"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "difficult with them",
+      "target": "difícil com eles",
+      "components": [
+        {"known": "difficult", "target": "difícil"},
+        {"known": "with them", "target": "com eles"}
+      ],
+      "phrases": [
+        {"known": "difficult", "target": "difícil"},
+        {"known": "with them", "target": "com eles"},
+        {"known": "difficult with them", "target": "difícil com eles"},
+        {"known": "something difficult", "target": "algo difícil"},
+        {"known": "it is difficult", "target": "é difícil"},
+        {"known": "this is difficult with them", "target": "isso é difícil com eles"},
+        {"known": "I think it is difficult", "target": "eu acho que é difícil"},
+        {"known": "that is not difficult with them", "target": "isso não é difícil com eles"},
+        {"known": "when it is difficult with them", "target": "quando é difícil com eles"},
+        {"known": "when you work at something difficult with them", "target": "quando você trabalha em algo difícil com eles"},
+        {"known": "it's not a problem when you work at something difficult with them", "target": "não é um problema quando você trabalha em algo difícil com eles"},
+        {"known": "I think it is not a problem when you work at something difficult with them", "target": "eu acho que não é um problema quando você trabalha em algo difícil com eles"}
+      ]
+    }
+  ]
+}

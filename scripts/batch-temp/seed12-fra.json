@@ -1,0 +1,83 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 12,
+  "known_text": "I wouldn't like to guess what's going to happen tomorrow.",
+  "target_text": "Je n'aimerais pas deviner ce qui va se passer demain.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I wouldn't like",
+      "target": "je n'aimerais pas",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "would not like", "target": "n'aimerais pas"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "would not like", "target": "n'aimerais pas"},
+        {"known": "I wouldn't like", "target": "je n'aimerais pas"},
+        {"known": "I wouldn't like to say", "target": "je n'aimerais pas dire"},
+        {"known": "I wouldn't like to explain", "target": "je n'aimerais pas expliquer"},
+        {"known": "I wouldn't like to try now", "target": "je n'aimerais pas essayer maintenant"},
+        {"known": "I wouldn't like to remember something now", "target": "je n'aimerais pas me souvenir de quelque chose maintenant"},
+        {"known": "I wouldn't like to explain what I mean to someone else", "target": "je n'aimerais pas expliquer ce que je veux dire avec quelqu'un d'autre"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to guess",
+      "target": "deviner",
+      "phrases": [
+        {"known": "to guess", "target": "deviner"},
+        {"known": "I can guess", "target": "je peux deviner"},
+        {"known": "I wouldn't like to guess", "target": "je n'aimerais pas deviner"},
+        {"known": "I'm not sure if I can guess", "target": "je ne suis pas sûr si je peux deviner"},
+        {"known": "I'd like to be able to guess", "target": "j'aimerais pouvoir deviner"},
+        {"known": "I wouldn't like to guess now", "target": "je n'aimerais pas deviner maintenant"},
+        {"known": "I wouldn't like to guess what you mean today", "target": "je n'aimerais pas deviner ce que tu veux dire aujourd'hui"},
+        {"known": "I'm not sure if I can guess what you mean", "target": "je ne suis pas sûr si je peux deviner ce que tu veux dire"},
+        {"known": "I wouldn't like to guess what you want to explain today", "target": "je n'aimerais pas deviner ce que tu veux expliquer aujourd'hui"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what's going to happen",
+      "target": "ce qui va se passer",
+      "components": [
+        {"known": "what", "target": "ce qui"},
+        {"known": "is going to", "target": "va"},
+        {"known": "happen", "target": "se passer"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "ce qui"},
+        {"known": "is going to", "target": "va"},
+        {"known": "happen", "target": "se passer"},
+        {"known": "what's going to happen", "target": "ce qui va se passer"},
+        {"known": "to guess what's going to happen", "target": "deviner ce qui va se passer"},
+        {"known": "I can guess what's going to happen", "target": "je peux deviner ce qui va se passer"},
+        {"known": "I wouldn't like to guess what's going to happen", "target": "je n'aimerais pas deviner ce qui va se passer"},
+        {"known": "I'm not sure what's going to happen after you finish", "target": "je ne suis pas sûr ce qui va se passer après que tu termines"},
+        {"known": "I'd like to be able to guess what's going to happen now", "target": "j'aimerais pouvoir deviner ce qui va se passer maintenant"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "tomorrow",
+      "target": "demain",
+      "phrases": [
+        {"known": "tomorrow", "target": "demain"},
+        {"known": "after tomorrow", "target": "après demain"},
+        {"known": "I can guess tomorrow", "target": "je peux deviner demain"},
+        {"known": "what's going to happen tomorrow", "target": "ce qui va se passer demain"},
+        {"known": "I wouldn't like to guess what's going to happen tomorrow", "target": "je n'aimerais pas deviner ce qui va se passer demain"},
+        {"known": "I'm not sure what's going to happen tomorrow", "target": "je ne suis pas sûr ce qui va se passer demain"},
+        {"known": "I'd like to be able to explain what's going to happen tomorrow", "target": "j'aimerais pouvoir expliquer ce qui va se passer demain"},
+        {"known": "I wouldn't like to remember what's going to happen tomorrow", "target": "je n'aimerais pas me souvenir ce qui va se passer demain"}
+      ]
+    }
+  ]
+}

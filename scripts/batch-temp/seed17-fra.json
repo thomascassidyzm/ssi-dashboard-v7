@@ -1,0 +1,69 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 17,
+  "known_text": "She wants to find out what the answer is.",
+  "target_text": "Elle veut savoir quelle est la réponse.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "she wants",
+      "target": "elle veut",
+      "components": [
+        {"known": "she", "target": "elle"},
+        {"known": "wants", "target": "veut"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "elle"},
+        {"known": "wants", "target": "veut"},
+        {"known": "she wants", "target": "elle veut"},
+        {"known": "she wants now", "target": "elle veut maintenant"},
+        {"known": "she wants something", "target": "elle veut quelque chose"},
+        {"known": "she wants to come back", "target": "elle veut revenir"},
+        {"known": "she wants to come back later on", "target": "elle veut revenir plus tard"},
+        {"known": "she wants to speak French with everyone else", "target": "elle veut parler français avec tout le monde"},
+        {"known": "she wants to come back with everyone else later on tomorrow", "target": "elle veut revenir avec tout le monde plus tard demain"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to find out",
+      "target": "savoir",
+      "phrases": [
+        {"known": "to find out", "target": "savoir"},
+        {"known": "she wants to find out", "target": "elle veut savoir"},
+        {"known": "he wants to find out", "target": "il veut savoir"},
+        {"known": "to find out now", "target": "savoir maintenant"},
+        {"known": "I can find out", "target": "je peux savoir"},
+        {"known": "do you want to find out", "target": "est-ce que tu veux savoir"},
+        {"known": "I'd like to be able to find out tomorrow", "target": "j'aimerais pouvoir savoir demain"},
+        {"known": "she wants to find out what's going to happen", "target": "elle veut savoir ce qui va se passer"},
+        {"known": "he wants to find out what's going to happen with everyone else", "target": "il veut savoir ce qui va se passer avec tout le monde"},
+        {"known": "I wouldn't like to find out what's going to happen later on tomorrow", "target": "je n'aimerais pas savoir ce qui va se passer plus tard demain"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what the answer is",
+      "target": "quelle est la réponse",
+      "components": [
+        {"known": "what", "target": "quelle"},
+        {"known": "is", "target": "est"},
+        {"known": "the answer", "target": "la réponse"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "quelle"},
+        {"known": "is", "target": "est"},
+        {"known": "the answer", "target": "la réponse"},
+        {"known": "what the answer is", "target": "quelle est la réponse"},
+        {"known": "to find out what the answer is", "target": "savoir quelle est la réponse"},
+        {"known": "she wants to find out what the answer is", "target": "elle veut savoir quelle est la réponse"},
+        {"known": "he wants to find out what the answer is now", "target": "il veut savoir quelle est la réponse maintenant"},
+        {"known": "I'd like to be able to find out what the answer is tomorrow", "target": "j'aimerais pouvoir savoir quelle est la réponse demain"},
+        {"known": "do you want to find out what the answer is later on", "target": "est-ce que tu veux savoir quelle est la réponse plus tard"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 12,
+  "known_text": "I wouldn't like to guess what's going to happen tomorrow.",
+  "target_text": "Ich möchte nicht raten was morgen passieren wird.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I wouldn't like",
+      "target": "ich möchte nicht",
+      "components": [
+        {"known": "I would like", "target": "ich möchte"},
+        {"known": "not", "target": "nicht"}
+      ],
+      "phrases": [
+        {"known": "I would like", "target": "ich möchte"},
+        {"known": "not", "target": "nicht"},
+        {"known": "I wouldn't like", "target": "ich möchte nicht"},
+        {"known": "I wouldn't like now", "target": "ich möchte jetzt nicht"},
+        {"known": "I wouldn't like today", "target": "ich möchte heute nicht"},
+        {"known": "I am not sure if I would like", "target": "ich bin nicht sicher ob ich möchte"},
+        {"known": "I wouldn't like to try to explain what I mean", "target": "ich möchte nicht versuchen zu erklären was ich meine"},
+        {"known": "I wouldn't like to remember the whole sentence", "target": "ich möchte nicht mich an den ganzen Satz erinnern"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to guess",
+      "target": "raten",
+      "phrases": [
+        {"known": "to guess", "target": "raten"},
+        {"known": "I wouldn't like to guess", "target": "ich möchte nicht raten"},
+        {"known": "I can guess", "target": "ich kann raten"},
+        {"known": "I am trying to guess", "target": "ich versuche zu raten"},
+        {"known": "I am not sure if I can guess", "target": "ich bin nicht sicher ob ich raten kann"},
+        {"known": "I wouldn't like to have to guess today", "target": "ich möchte heute nicht raten"},
+        {"known": "I am going to try to guess what I can remember", "target": "ich werde versuchen zu raten was ich mich erinnern kann"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "what",
+      "target": "was",
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "what I mean", "target": "was ich meine"},
+        {"known": "guess what", "target": "raten was"},
+        {"known": "I wouldn't like to guess what", "target": "ich möchte nicht raten was"},
+        {"known": "I can guess what I mean", "target": "ich kann raten was ich meine"},
+        {"known": "I am not sure what I mean", "target": "ich bin nicht sicher was ich meine"},
+        {"known": "I am trying to guess what I mean", "target": "ich versuche zu raten was ich meine"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "tomorrow",
+      "target": "morgen",
+      "phrases": [
+        {"known": "tomorrow", "target": "morgen"},
+        {"known": "what tomorrow", "target": "was morgen"},
+        {"known": "tomorrow I would like", "target": "morgen möchte ich"},
+        {"known": "I wouldn't like to guess what tomorrow", "target": "ich möchte nicht raten was morgen"},
+        {"known": "tomorrow I am going to try", "target": "morgen werde ich versuchen"},
+        {"known": "I can explain tomorrow", "target": "ich kann morgen erklären"},
+        {"known": "I wouldn't like to remember the whole sentence tomorrow", "target": "ich möchte morgen nicht mich an den ganzen Satz erinnern"},
+        {"known": "tomorrow I am going to try to explain what I mean", "target": "morgen werde ich versuchen zu erklären was ich meine"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "will happen",
+      "target": "passieren wird",
+      "components": [
+        {"known": "happen", "target": "passieren"},
+        {"known": "will", "target": "wird"}
+      ],
+      "phrases": [
+        {"known": "happen", "target": "passieren"},
+        {"known": "will", "target": "wird"},
+        {"known": "will happen", "target": "passieren wird"},
+        {"known": "what will happen", "target": "was passieren wird"},
+        {"known": "what will happen tomorrow", "target": "was morgen passieren wird"},
+        {"known": "I wouldn't like to guess what will happen", "target": "ich möchte nicht raten was passieren wird"},
+        {"known": "I am not sure what will happen tomorrow", "target": "ich bin nicht sicher was morgen passieren wird"},
+        {"known": "I wouldn't like to guess what will happen tomorrow", "target": "ich möchte nicht raten was morgen passieren wird"},
+        {"known": "I can guess what will happen tomorrow", "target": "ich kann raten was morgen passieren wird"},
+        {"known": "I am trying to guess what will happen after you finish", "target": "ich versuche zu raten was passieren wird nachdem du fertig bist"}
+      ]
+    }
+  ]
+}

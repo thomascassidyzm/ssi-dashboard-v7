@@ -1,0 +1,136 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 42,
+  "known_text": "I was starting to feel better than last night.",
+  "target_text": "Ich habe angefangen, mich besser zu fühlen als gestern Abend.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "better",
+      "target": "besser",
+      "phrases": [
+        {"known": "better", "target": "besser"},
+        {"known": "I am better", "target": "ich bin besser"},
+        {"known": "now better", "target": "jetzt besser"},
+        {"known": "today better", "target": "heute besser"},
+        {"known": "I feel better", "target": "ich fühle mich besser"},
+        {"known": "I am better now", "target": "ich bin jetzt besser"},
+        {"known": "I feel better now", "target": "ich fühle mich jetzt besser"},
+        {"known": "I feel better today", "target": "ich fühle mich heute besser"},
+        {"known": "I feel a little better", "target": "ich fühle mich ein bisschen besser"},
+        {"known": "I feel better at the moment", "target": "ich fühle mich im Moment besser"},
+        {"known": "I feel a little better this morning", "target": "ich fühle mich heute Morgen ein bisschen besser"},
+        {"known": "I feel a little better at the moment", "target": "ich fühle mich im Moment ein bisschen besser"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "than",
+      "target": "als",
+      "phrases": [
+        {"known": "than", "target": "als"},
+        {"known": "than I", "target": "als ich"},
+        {"known": "than today", "target": "als heute"},
+        {"known": "better than", "target": "besser als"},
+        {"known": "better than I", "target": "besser als ich"},
+        {"known": "better than today", "target": "besser als heute"},
+        {"known": "I am better than", "target": "ich bin besser als"},
+        {"known": "better than this morning", "target": "besser als heute Morgen"},
+        {"known": "I feel better than today", "target": "ich fühle mich besser als heute"},
+        {"known": "I feel better than this morning", "target": "ich fühle mich besser als heute Morgen"},
+        {"known": "I feel better now than this morning", "target": "ich fühle mich jetzt besser als heute Morgen"},
+        {"known": "I feel a little better now than this morning", "target": "ich fühle mich jetzt ein bisschen besser als heute Morgen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "myself",
+      "target": "mich",
+      "phrases": [
+        {"known": "myself", "target": "mich"},
+        {"known": "I feel myself", "target": "ich fühle mich"},
+        {"known": "myself better", "target": "mich besser"},
+        {"known": "I feel myself well", "target": "ich fühle mich gut"},
+        {"known": "I feel myself okay", "target": "ich fühle mich okay"},
+        {"known": "I feel myself better", "target": "ich fühle mich besser"},
+        {"known": "I feel myself tired", "target": "ich fühle mich müde"},
+        {"known": "I feel myself better now", "target": "ich fühle mich jetzt besser"},
+        {"known": "I feel myself better today", "target": "ich fühle mich heute besser"},
+        {"known": "I feel myself a little better", "target": "ich fühle mich ein bisschen besser"},
+        {"known": "I feel myself a little better now", "target": "ich fühle mich jetzt ein bisschen besser"},
+        {"known": "I feel myself better than this morning", "target": "ich fühle mich besser als heute Morgen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to feel",
+      "target": "zu fühlen",
+      "phrases": [
+        {"known": "to feel", "target": "zu fühlen"},
+        {"known": "better to feel", "target": "besser zu fühlen"},
+        {"known": "myself to feel", "target": "mich zu fühlen"},
+        {"known": "myself better to feel", "target": "mich besser zu fühlen"},
+        {"known": "I'm starting to feel", "target": "ich fange an zu fühlen"},
+        {"known": "I'm starting to feel better", "target": "ich fange an mich besser zu fühlen"},
+        {"known": "I'm starting to feel better now", "target": "ich fange jetzt an mich besser zu fühlen"},
+        {"known": "I started to feel", "target": "ich habe angefangen mich zu fühlen"},
+        {"known": "I started to feel better", "target": "ich habe angefangen mich besser zu fühlen"},
+        {"known": "I started to feel a little better", "target": "ich habe angefangen mich ein bisschen besser zu fühlen"},
+        {"known": "I started to feel better than this morning", "target": "ich habe angefangen mich besser als heute Morgen zu fühlen"},
+        {"known": "I started to feel a little better than this morning", "target": "ich habe angefangen mich ein bisschen besser als heute Morgen zu fühlen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I started",
+      "target": "ich habe angefangen",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "have started", "target": "habe angefangen"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "have started", "target": "habe angefangen"},
+        {"known": "I started", "target": "ich habe angefangen"},
+        {"known": "I started now", "target": "ich habe jetzt angefangen"},
+        {"known": "I started today", "target": "ich habe heute angefangen"},
+        {"known": "I started to feel", "target": "ich habe angefangen zu fühlen"},
+        {"known": "I started this morning", "target": "ich habe heute Morgen angefangen"},
+        {"known": "I started to feel better", "target": "ich habe angefangen mich besser zu fühlen"},
+        {"known": "I started to feel okay", "target": "ich habe angefangen mich okay zu fühlen"},
+        {"known": "I started to feel a little better", "target": "ich habe angefangen mich ein bisschen besser zu fühlen"},
+        {"known": "I started to feel better than this morning", "target": "ich habe angefangen mich besser als heute Morgen zu fühlen"},
+        {"known": "I started this morning to feel a little better", "target": "ich habe heute Morgen angefangen mich ein bisschen besser zu fühlen"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "last night",
+      "target": "gestern Abend",
+      "components": [
+        {"known": "yesterday", "target": "gestern"},
+        {"known": "evening", "target": "Abend"}
+      ],
+      "phrases": [
+        {"known": "yesterday", "target": "gestern"},
+        {"known": "evening", "target": "Abend"},
+        {"known": "last night", "target": "gestern Abend"},
+        {"known": "better yesterday", "target": "besser gestern"},
+        {"known": "okay yesterday", "target": "okay gestern"},
+        {"known": "I am last night", "target": "ich bin gestern Abend"},
+        {"known": "last night tired", "target": "gestern Abend müde"},
+        {"known": "better than last night", "target": "besser als gestern Abend"},
+        {"known": "I feel better than last night", "target": "ich fühle mich besser als gestern Abend"},
+        {"known": "I feel better now than last night", "target": "ich fühle mich jetzt besser als gestern Abend"},
+        {"known": "I started to feel better than last night", "target": "ich habe angefangen mich besser zu fühlen als gestern Abend"},
+        {"known": "I started to feel better this morning than last night", "target": "ich habe heute Morgen angefangen mich besser zu fühlen als gestern Abend"}
+      ]
+    }
+  ]
+}

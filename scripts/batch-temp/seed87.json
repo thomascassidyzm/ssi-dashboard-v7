@@ -1,0 +1,74 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 87,
+  "known_text": "They are people I don't know.",
+  "target_text": "Eles são pessoas que eu não conheço.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "they are",
+      "target": "eles são",
+      "components": [
+        {"known": "they", "target": "eles"},
+        {"known": "are", "target": "são"}
+      ],
+      "phrases": [
+        {"known": "they", "target": "eles"},
+        {"known": "are", "target": "são"},
+        {"known": "they are", "target": "eles são"},
+        {"known": "they are here", "target": "eles estão aqui"},
+        {"known": "they are learning", "target": "eles estão aprendendo"},
+        {"known": "they are people", "target": "eles são pessoas"},
+        {"known": "they are my friends", "target": "eles são os meus amigos"},
+        {"known": "they are learning Portuguese", "target": "eles estão aprendendo português"},
+        {"known": "they are people I don't know", "target": "eles são pessoas que eu não conheço"},
+        {"known": "they are learning to speak Portuguese with me", "target": "eles estão aprendendo a falar português comigo"},
+        {"known": "they are my friends who are learning Portuguese", "target": "eles são os meus amigos que estão aprendendo português"},
+        {"known": "they are people that I want to know but I don't know yet", "target": "eles são pessoas que eu quero conhecer mas eu ainda não conheço"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "people",
+      "target": "pessoas",
+      "phrases": [
+        {"known": "people", "target": "pessoas"},
+        {"known": "those people", "target": "essas pessoas"},
+        {"known": "many people", "target": "muitas pessoas"},
+        {"known": "people here", "target": "pessoas aqui"},
+        {"known": "they are people", "target": "eles são pessoas"},
+        {"known": "people I know", "target": "pessoas que eu conheço"},
+        {"known": "people are learning Portuguese", "target": "pessoas estão aprendendo português"},
+        {"known": "they are people I don't know", "target": "eles são pessoas que eu não conheço"},
+        {"known": "those people are learning Portuguese with me", "target": "essas pessoas estão aprendendo português comigo"},
+        {"known": "they are people that I want to know but I don't know yet", "target": "eles são pessoas que eu quero conhecer mas eu ainda não conheço"},
+        {"known": "unfortunately, I don't know those people but I want to know them", "target": "infelizmente, eu não conheço essas pessoas mas eu quero conhecer"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that I don't know",
+      "target": "que eu não conheço",
+      "components": [
+        {"known": "that", "target": "que"},
+        {"known": "I don't know", "target": "eu não conheço"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "que"},
+        {"known": "I don't know", "target": "eu não conheço"},
+        {"known": "that I don't know", "target": "que eu não conheço"},
+        {"known": "people that I don't know", "target": "pessoas que eu não conheço"},
+        {"known": "things that I don't know", "target": "coisas que eu não conheço"},
+        {"known": "they are people that I don't know", "target": "eles são pessoas que eu não conheço"},
+        {"known": "those are people that I don't know", "target": "essas são pessoas que eu não conheço"},
+        {"known": "he is a person that I don't know", "target": "ele é uma pessoa que eu não conheço"},
+        {"known": "they are people that I don't know but I want to know them", "target": "eles são pessoas que eu não conheço mas eu quero conhecer"},
+        {"known": "those are people that I don't know but I want to learn about", "target": "essas são pessoas que eu não conheço mas eu quero aprender sobre"},
+        {"known": "they are people that I don't know but my friend said they are here", "target": "eles são pessoas que eu não conheço mas o meu amigo disse que estão aqui"}
+      ]
+    }
+  ]
+}

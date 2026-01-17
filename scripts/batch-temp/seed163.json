@@ -1,0 +1,48 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 163,
+  "known_text": "I think that it's interesting.",
+  "target_text": "Ich denke, dass es interessant ist.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I think that",
+      "target": "ich denke dass",
+      "components": [
+        {"known": "I think", "target": "ich denke"},
+        {"known": "that", "target": "dass"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "ich denke"},
+        {"known": "that", "target": "dass"},
+        {"known": "I think that", "target": "ich denke dass"},
+        {"known": "I think that it is", "target": "ich denke dass es ist"},
+        {"known": "I think that you know", "target": "ich denke dass du weißt"},
+        {"known": "she said I think that too", "target": "sie hat gesagt ich denke das auch"},
+        {"known": "I think that it is good for us", "target": "ich denke dass es gut ist"},
+        {"known": "what do you think about that because I think that it is important", "target": "was denkst du darüber weil ich denke dass es wichtig ist"},
+        {"known": "let's talk about what I think that we should do tomorrow", "target": "lass uns darüber reden was ich denke dass wir morgen machen sollten"},
+        {"known": "I think that isn't what I'm trying to say but let's talk about something else", "target": "ich denke dass das nicht ist was ich versuche zu sagen aber lass uns über etwas anderes reden"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "it's interesting",
+      "target": "es ist interessant",
+      "phrases": [
+        {"known": "interesting", "target": "interessant"},
+        {"known": "it's interesting", "target": "es ist interessant"},
+        {"known": "that is interesting", "target": "das ist interessant"},
+        {"known": "I think that it's interesting", "target": "ich denke dass es interessant ist"},
+        {"known": "she said it's interesting", "target": "sie hat gesagt es ist interessant"},
+        {"known": "what do you think is it interesting", "target": "was denkst du ist es interessant"},
+        {"known": "can you give me that book because I think it's interesting", "target": "kannst du mir das Buch geben weil ich denke es ist interessant"},
+        {"known": "let's talk about what is interesting on Sunday morning", "target": "lass uns am Sonntagmorgen darüber reden was interessant ist"},
+        {"known": "I think that it's interesting but that isn't what I'm trying to say about it", "target": "ich denke dass es interessant ist aber das ist nicht das was ich darüber versuche zu sagen"},
+        {"known": "how do you say that word in German because it's interesting to learn", "target": "wie sagt man dieses Wort auf Deutsch weil es interessant ist zu lernen"}
+      ]
+    }
+  ]
+}

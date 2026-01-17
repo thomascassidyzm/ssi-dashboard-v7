@@ -1,0 +1,78 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 142,
+  "known_text": "That's very kind of you and I'm grateful to you for helping.",
+  "target_text": "Isso é muito gentil da sua parte e eu sou grato a você por ajudar.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that's very kind of you",
+      "target": "isso é muito gentil da sua parte",
+      "components": [
+        {"known": "that's very kind", "target": "isso é muito gentil"},
+        {"known": "of you", "target": "da sua parte"}
+      ],
+      "phrases": [
+        {"known": "that's very kind", "target": "isso é muito gentil"},
+        {"known": "of you", "target": "da sua parte"},
+        {"known": "that's very kind of you", "target": "isso é muito gentil da sua parte"},
+        {"known": "this is very kind", "target": "isso é muito gentil"},
+        {"known": "that's very kind of her", "target": "isso é muito gentil da parte dela"},
+        {"known": "I think that's very kind of you", "target": "eu acho que isso é muito gentil da sua parte"},
+        {"known": "of course that's very kind of you", "target": "claro que isso é muito gentil da sua parte"},
+        {"known": "I'm sorry but that's very kind of you", "target": "eu sinto muito mas isso é muito gentil da sua parte"},
+        {"known": "I think that's very kind of you and everything is okay", "target": "eu acho que isso é muito gentil da sua parte e tudo está bem"},
+        {"known": "no problem that's very kind of you to do this for me", "target": "não tem problema isso é muito gentil da sua parte fazer isso para eu"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "and I'm grateful to you",
+      "target": "e eu sou grato a você",
+      "components": [
+        {"known": "and I'm grateful", "target": "e eu sou grato"},
+        {"known": "to you", "target": "a você"}
+      ],
+      "phrases": [
+        {"known": "and I'm grateful", "target": "e eu sou grato"},
+        {"known": "to you", "target": "a você"},
+        {"known": "and I'm grateful to you", "target": "e eu sou grato a você"},
+        {"known": "I'm grateful", "target": "eu sou grato"},
+        {"known": "I'm grateful to her", "target": "eu sou grato a ela"},
+        {"known": "that's very kind and I'm grateful to you", "target": "isso é muito gentil e eu sou grato a você"},
+        {"known": "I'm grateful to you for this", "target": "eu sou grato a você por isso"},
+        {"known": "of course I'm grateful to you", "target": "claro que eu sou grato a você"},
+        {"known": "I'm very grateful to you for everything", "target": "eu sou muito grato a você por tudo"},
+        {"known": "that's very kind of you and I'm grateful to you for this", "target": "isso é muito gentil da sua parte e eu sou grato a você por isso"},
+        {"known": "I think I'm very grateful to you for doing this for me", "target": "eu acho que eu sou muito grato a você por fazer isso para eu"},
+        {"known": "of course I'm very grateful to you and everything is okay now", "target": "claro que eu sou muito grato a você e tudo está bem agora"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "for helping",
+      "target": "por ajudar",
+      "components": [
+        {"known": "for", "target": "por"},
+        {"known": "helping", "target": "ajudar"}
+      ],
+      "phrases": [
+        {"known": "for", "target": "por"},
+        {"known": "helping", "target": "ajudar"},
+        {"known": "for helping", "target": "por ajudar"},
+        {"known": "helping me", "target": "me ajudar"},
+        {"known": "for helping me", "target": "por me ajudar"},
+        {"known": "I'm grateful for helping", "target": "eu sou grato por ajudar"},
+        {"known": "grato a você por me ajudar", "target": "grato a você por me ajudar"},
+        {"known": "I'm grateful to you for helping", "target": "eu sou grato a você por ajudar"},
+        {"known": "that's very kind of you for helping me", "target": "isso é muito gentil da sua parte por me ajudar"},
+        {"known": "that's very kind of you and I'm grateful to you for helping", "target": "isso é muito gentil da sua parte e eu sou grato a você por ajudar"},
+        {"known": "I think it's very kind of you for helping me with this now", "target": "eu acho que é muito gentil da sua parte por me ajudar com isso agora"},
+        {"known": "no problem I'm grateful to you for helping and everything is okay now", "target": "não tem problema eu sou grato a você por ajudar e tudo está bem agora"}
+      ]
+    }
+  ]
+}

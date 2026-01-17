@@ -1,0 +1,54 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 79,
+  "known_text": "When did you start to learn?",
+  "target_text": "Wann haben Sie angefangen zu lernen?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "when did you",
+      "target": "wann haben Sie",
+      "components": [
+        {"known": "when", "target": "wann"},
+        {"known": "have/did (past)", "target": "haben"},
+        {"known": "you (formal)", "target": "Sie"}
+      ],
+      "phrases": [
+        {"known": "when", "target": "wann"},
+        {"known": "have/did (past)", "target": "haben"},
+        {"known": "you (formal)", "target": "Sie"},
+        {"known": "when did you", "target": "wann haben Sie"},
+        {"known": "when is it", "target": "wann ist es"},
+        {"known": "when did you say that (thing)", "target": "wann haben Sie das gesagt"},
+        {"known": "when did you learn that (thing)", "target": "wann haben Sie das gelernt"},
+        {"known": "I do not know when you said that (thing)", "target": "ich weiss nicht wann Sie das gesagt haben"},
+        {"known": "when did you start to learn German", "target": "wann haben Sie angefangen Deutsch zu lernen"},
+        {"known": "I am surprised at when you started to learn German", "target": "ich bin überrascht wann Sie angefangen haben Deutsch zu lernen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "start to learn",
+      "target": "angefangen zu lernen",
+      "components": [
+        {"known": "started/begun", "target": "angefangen"},
+        {"known": "to learn", "target": "zu lernen"}
+      ],
+      "phrases": [
+        {"known": "started/begun", "target": "angefangen"},
+        {"known": "to learn", "target": "zu lernen"},
+        {"known": "start to learn", "target": "angefangen zu lernen"},
+        {"known": "already started", "target": "schon angefangen"},
+        {"known": "I started to learn", "target": "ich habe angefangen zu lernen"},
+        {"known": "when did you start to learn", "target": "wann haben Sie angefangen zu lernen"},
+        {"known": "started to understand", "target": "angefangen zu verstehen"},
+        {"known": "I started to learn German", "target": "ich habe angefangen Deutsch zu lernen"},
+        {"known": "have you started to learn", "target": "haben Sie angefangen zu lernen"},
+        {"known": "I am surprised at how quickly I have started to learn", "target": "ich bin überrascht wie schnell ich angefangen habe zu lernen"},
+        {"known": "I do not know when I started to learn German", "target": "ich weiss nicht wann ich angefangen habe Deutsch zu lernen"}
+      ]
+    }
+  ]
+}

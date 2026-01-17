@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 227,
+  "known_text": "That man is going to tell me something new.",
+  "target_text": "那个男人会告诉我新东西。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that man",
+      "target": "那个男人",
+      "components": [
+        {"known": "that", "target": "那个"},
+        {"known": "man", "target": "男人"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "那个"},
+        {"known": "that man", "target": "那个男人"},
+        {"known": "that one", "target": "那个"},
+        {"known": "that book", "target": "那本书"},
+        {"known": "I know that man", "target": "我认识那个男人"},
+        {"known": "that man can help", "target": "那个男人能帮"},
+        {"known": "do you see that man", "target": "你看到那个男人吗"},
+        {"known": "that man wants to learn Chinese", "target": "那个男人想学中文"},
+        {"known": "I saw that man yesterday", "target": "我昨天看到那个男人了"},
+        {"known": "that man is trying to help us", "target": "那个男人在试着帮我们"},
+        {"known": "do you know what that man wants", "target": "你知道那个男人想要什么吗"},
+        {"known": "that man wants to tell me something", "target": "那个男人想告诉我一些"},
+        {"known": "I met that man at my friend's house yesterday", "target": "我昨天在朋友家见了那个男人"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "is going to tell me",
+      "target": "会告诉我",
+      "components": [
+        {"known": "will", "target": "会"},
+        {"known": "tell me", "target": "告诉我"}
+      ],
+      "phrases": [
+        {"known": "will tell", "target": "会告诉"},
+        {"known": "tell me", "target": "告诉我"},
+        {"known": "will tell me", "target": "会告诉我"},
+        {"known": "he will tell me", "target": "他会告诉我"},
+        {"known": "she will tell us", "target": "她会告诉我们"},
+        {"known": "he will tell me tomorrow", "target": "他明天会告诉我"},
+        {"known": "she will tell me the answer", "target": "她会告诉我答案"},
+        {"known": "when will you tell me", "target": "你什么时候会告诉我"},
+        {"known": "he will tell me what he wants", "target": "他会告诉我他想要什么"},
+        {"known": "that man is going to tell me tomorrow", "target": "那个男人明天会告诉我"},
+        {"known": "she will tell me what she wants to do", "target": "她会告诉我她想做什么"},
+        {"known": "when will you tell me what you think", "target": "你什么时候会告诉我你觉得怎么样"},
+        {"known": "he will tell me what he wants tomorrow morning", "target": "他明天早上会告诉我他想要什么"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "something new",
+      "target": "新东西",
+      "components": [
+        {"known": "new", "target": "新"},
+        {"known": "thing", "target": "东西"}
+      ],
+      "phrases": [
+        {"known": "new", "target": "新"},
+        {"known": "thing", "target": "东西"},
+        {"known": "something new", "target": "新东西"},
+        {"known": "something", "target": "东西"},
+        {"known": "new things", "target": "新东西"},
+        {"known": "I want something new", "target": "我想要新东西"},
+        {"known": "tell me something new", "target": "告诉我新东西"},
+        {"known": "she learned something new", "target": "她学了新东西"},
+        {"known": "do you have something new", "target": "你有新东西吗"},
+        {"known": "he wants to tell me something new", "target": "他想告诉我新东西"},
+        {"known": "I learned something new today", "target": "我今天学了新东西"},
+        {"known": "that man will tell me something new tomorrow", "target": "那个男人明天会告诉我新东西"},
+        {"known": "she wants to learn something new and interesting", "target": "她想学新的有意思的东西"}
+      ]
+    }
+  ]
+}

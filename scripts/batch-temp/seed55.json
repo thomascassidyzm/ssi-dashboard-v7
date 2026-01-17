@@ -1,0 +1,140 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 55,
+  "known_text": "I don't enjoy waking up when I didn't sleep very well.",
+  "target_text": "Ich wache nicht gerne auf, wenn ich nicht sehr gut geschlafen habe.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "not",
+      "target": "nicht",
+      "phrases": [
+        {"known": "not", "target": "nicht"},
+        {"known": "not now", "target": "nicht jetzt"},
+        {"known": "not today", "target": "nicht heute"},
+        {"known": "not last week", "target": "nicht letzte Woche"},
+        {"known": "I think not", "target": "ich denke nicht"},
+        {"known": "not very well", "target": "nicht sehr gut"},
+        {"known": "I don't enjoy it", "target": "ich mache es nicht gerne"},
+        {"known": "I think it is not okay", "target": "ich denke es ist nicht okay"},
+        {"known": "I know that it is not good", "target": "ich weiss dass es nicht gut ist"},
+        {"known": "not at the moment but I think it is okay", "target": "nicht im Moment aber ich denke es ist okay"},
+        {"known": "I don't think it is good but I don't worry", "target": "ich denke nicht es ist gut aber ich mache mir keine Sorgen"},
+        {"known": "I know it is not okay but I don't worry about it", "target": "ich weiss es ist nicht okay aber ich mache mir keine Sorgen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "gladly/like to",
+      "target": "gerne",
+      "phrases": [
+        {"known": "gladly", "target": "gerne"},
+        {"known": "not gladly", "target": "nicht gerne"},
+        {"known": "gladly now", "target": "gerne jetzt"},
+        {"known": "gladly today", "target": "gerne heute"},
+        {"known": "I like to do it", "target": "ich mache es gerne"},
+        {"known": "I don't like to do it", "target": "ich mache es nicht gerne"},
+        {"known": "I like to do it today", "target": "ich mache es heute gerne"},
+        {"known": "I don't like to do things", "target": "ich mache Sachen nicht gerne"},
+        {"known": "I like to do it because I think it is good", "target": "ich mache es gerne weil ich denke es ist gut"},
+        {"known": "I don't like to do it but I know I must", "target": "ich mache es nicht gerne aber ich weiss ich muss"},
+        {"known": "I don't like to do it at the moment but it is okay", "target": "ich mache es im Moment nicht gerne aber es ist okay"},
+        {"known": "I like to do interesting things because I can improve", "target": "ich mache gerne interessante Sachen weil ich mich verbessern kann"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I wake up",
+      "target": "ich wache auf",
+      "components": [
+        {"known": "I wake", "target": "ich wache"},
+        {"known": "up (separable)", "target": "auf"}
+      ],
+      "phrases": [
+        {"known": "I wake", "target": "ich wache"},
+        {"known": "up (separable)", "target": "auf"},
+        {"known": "I wake up", "target": "ich wache auf"},
+        {"known": "I don't wake up", "target": "ich wache nicht auf"},
+        {"known": "I wake up now", "target": "ich wache jetzt auf"},
+        {"known": "I wake up today", "target": "ich wache heute auf"},
+        {"known": "I don't like waking up", "target": "ich wache nicht gerne auf"},
+        {"known": "I wake up but I don't like it", "target": "ich wache auf aber ich mache es nicht gerne"},
+        {"known": "I don't like waking up today", "target": "ich wache heute nicht gerne auf"},
+        {"known": "I wake up today but I don't like it", "target": "ich wache heute auf aber ich mache es nicht gerne"},
+        {"known": "I don't worry about waking up but I don't like it", "target": "ich mache mir keine Sorgen aber ich wache nicht gerne auf"},
+        {"known": "I think I wake up today but I don't know if it is okay", "target": "ich denke ich wache heute auf aber ich weiss nicht ob es okay ist"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "when",
+      "target": "wenn",
+      "phrases": [
+        {"known": "when", "target": "wenn"},
+        {"known": "when not", "target": "wenn nicht"},
+        {"known": "when I", "target": "wenn ich"},
+        {"known": "when I wake up", "target": "wenn ich wache auf"},
+        {"known": "I don't like it when", "target": "ich mache es nicht gerne wenn"},
+        {"known": "I don't like waking up when", "target": "ich wache nicht gerne auf wenn"},
+        {"known": "when I wake up I think it is okay", "target": "wenn ich wache auf denke ich es ist okay"},
+        {"known": "I don't like waking up when I must", "target": "ich wache nicht gerne auf wenn ich muss"},
+        {"known": "I know that I don't like it when I must", "target": "ich weiss dass ich es nicht gerne mache wenn ich muss"},
+        {"known": "when I wake up I don't worry about it", "target": "wenn ich wache auf mache ich mir keine Sorgen"},
+        {"known": "I think it is okay when I wake up today", "target": "ich denke es ist okay wenn ich heute wache auf"},
+        {"known": "I don't like waking up when I don't want to", "target": "ich wache nicht gerne auf wenn ich nicht will"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I slept",
+      "target": "ich habe geschlafen",
+      "components": [
+        {"known": "I have", "target": "ich habe"},
+        {"known": "slept", "target": "geschlafen"}
+      ],
+      "phrases": [
+        {"known": "I have", "target": "ich habe"},
+        {"known": "slept", "target": "geschlafen"},
+        {"known": "I slept", "target": "ich habe geschlafen"},
+        {"known": "I didn't sleep", "target": "ich habe nicht geschlafen"},
+        {"known": "I slept well", "target": "ich habe gut geschlafen"},
+        {"known": "I didn't sleep well", "target": "ich habe nicht gut geschlafen"},
+        {"known": "when I slept", "target": "wenn ich habe geschlafen"},
+        {"known": "when I didn't sleep", "target": "wenn ich nicht habe geschlafen"},
+        {"known": "I know that I slept", "target": "ich weiss dass ich habe geschlafen"},
+        {"known": "I don't like waking up when I didn't sleep", "target": "ich wache nicht gerne auf wenn ich nicht habe geschlafen"},
+        {"known": "I think I slept well but I don't know", "target": "ich denke ich habe gut geschlafen aber ich weiss nicht"},
+        {"known": "when I didn't sleep well I don't like waking up", "target": "wenn ich nicht gut habe geschlafen wache ich nicht gerne auf"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "very well",
+      "target": "sehr gut",
+      "components": [
+        {"known": "very", "target": "sehr"},
+        {"known": "well/good", "target": "gut"}
+      ],
+      "phrases": [
+        {"known": "very", "target": "sehr"},
+        {"known": "well/good", "target": "gut"},
+        {"known": "very well", "target": "sehr gut"},
+        {"known": "not very well", "target": "nicht sehr gut"},
+        {"known": "very well now", "target": "sehr gut jetzt"},
+        {"known": "I slept very well", "target": "ich habe sehr gut geschlafen"},
+        {"known": "I didn't sleep very well", "target": "ich habe nicht sehr gut geschlafen"},
+        {"known": "I think it is very good", "target": "ich denke es ist sehr gut"},
+        {"known": "when I didn't sleep very well", "target": "wenn ich nicht sehr gut habe geschlafen"},
+        {"known": "I don't like waking up when I didn't sleep very well", "target": "ich wache nicht gerne auf wenn ich nicht sehr gut habe geschlafen"},
+        {"known": "I know that I didn't sleep very well today", "target": "ich weiss dass ich heute nicht sehr gut habe geschlafen"},
+        {"known": "when I didn't sleep very well I don't like waking up", "target": "wenn ich nicht sehr gut habe geschlafen wache ich nicht gerne auf"}
+      ]
+    }
+  ]
+}

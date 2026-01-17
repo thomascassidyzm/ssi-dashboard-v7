@@ -1,0 +1,86 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 19,
+  "known_text": "But I don't want to stop talking.",
+  "target_text": "Mais je ne veux pas arrêter de parler.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "but",
+      "target": "mais",
+      "phrases": [
+        {"known": "but", "target": "mais"},
+        {"known": "but now", "target": "mais maintenant"},
+        {"known": "but I can", "target": "mais je peux"},
+        {"known": "but we want", "target": "mais nous voulons"},
+        {"known": "but he wants", "target": "mais il veut"},
+        {"known": "but she wants to find out", "target": "mais elle veut savoir"},
+        {"known": "but we want to meet this evening", "target": "mais nous voulons nous retrouver ce soir"},
+        {"known": "but he wants to come back with everyone else later on", "target": "mais il veut revenir avec tout le monde plus tard"},
+        {"known": "but I'd like to be able to find out what the answer is tomorrow", "target": "mais j'aimerais pouvoir savoir quelle est la réponse demain"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I don't want",
+      "target": "je ne veux pas",
+      "components": [
+        {"known": "I", "target": "je"},
+        {"known": "don't want", "target": "ne veux pas"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "je"},
+        {"known": "don't want", "target": "ne veux pas"},
+        {"known": "I don't want", "target": "je ne veux pas"},
+        {"known": "but I don't want", "target": "mais je ne veux pas"},
+        {"known": "I don't want now", "target": "je ne veux pas maintenant"},
+        {"known": "I don't want to come back", "target": "je ne veux pas revenir"},
+        {"known": "I don't want to find out", "target": "je ne veux pas savoir"},
+        {"known": "I don't want to come back later on", "target": "je ne veux pas revenir plus tard"},
+        {"known": "I don't want to find out what the answer is this evening", "target": "je ne veux pas savoir quelle est la réponse ce soir"},
+        {"known": "I don't want to come back with everyone else at six o'clock tomorrow", "target": "je ne veux pas revenir avec tout le monde à six heures demain"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to stop",
+      "target": "arrêter",
+      "phrases": [
+        {"known": "to stop", "target": "arrêter"},
+        {"known": "to stop now", "target": "arrêter maintenant"},
+        {"known": "I don't want to stop", "target": "je ne veux pas arrêter"},
+        {"known": "but I don't want to stop", "target": "mais je ne veux pas arrêter"},
+        {"known": "we want to stop", "target": "nous voulons arrêter"},
+        {"known": "he wants to stop later on", "target": "il veut arrêter plus tard"},
+        {"known": "she doesn't want to stop", "target": "elle ne veut pas arrêter"},
+        {"known": "I don't want to stop at six o'clock this evening", "target": "je ne veux pas arrêter à six heures ce soir"},
+        {"known": "we don't want to stop with everyone else later on tomorrow", "target": "nous ne voulons pas arrêter avec tout le monde plus tard demain"},
+        {"known": "she doesn't want to stop at six o'clock with everyone else this evening", "target": "elle ne veut pas arrêter à six heures avec tout le monde ce soir"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "talking",
+      "target": "de parler",
+      "components": [
+        {"known": "of", "target": "de"},
+        {"known": "to talk", "target": "parler"}
+      ],
+      "phrases": [
+        {"known": "of", "target": "de"},
+        {"known": "to talk", "target": "parler"},
+        {"known": "talking", "target": "de parler"},
+        {"known": "to stop talking", "target": "arrêter de parler"},
+        {"known": "I don't want to stop talking", "target": "je ne veux pas arrêter de parler"},
+        {"known": "but I don't want to stop talking", "target": "mais je ne veux pas arrêter de parler"},
+        {"known": "he doesn't want to stop talking", "target": "il ne veut pas arrêter de parler"},
+        {"known": "we don't want to stop talking at six o'clock", "target": "nous ne voulons pas arrêter de parler à six heures"},
+        {"known": "but I don't want to stop talking with everyone else this evening", "target": "mais je ne veux pas arrêter de parler avec tout le monde ce soir"}
+      ]
+    }
+  ]
+}

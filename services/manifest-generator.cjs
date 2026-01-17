@@ -11,7 +11,7 @@
  * - course_seeds: Seed sentences
  * - course_legos: LEGO definitions
  * - course_practice_phrases: Practice phrases
- * - course_audio / audio_samples: Audio file references
+ * - course_audio: Audio file references (v13 flat schema)
  * - encouragements: Encouragement audio
  *
  * JSON files (lego_pairs.json, lego_baskets.json) are DEPRECATED.
@@ -107,34 +107,34 @@ function generateNodeId(seedNumber, legoIndex, knownText, targetText) {
 }
 
 // =============================================================================
-// V12 AUDIO LOOKUP (for human-recorded courses)
+// COURSE AUDIO LOOKUP
 // =============================================================================
 
-// Cache for v12 audio maps (courseCode -> { map, timestamp })
+// Cache for audio maps (courseCode -> { map, timestamp })
 // TTL: 5 minutes - audio rarely changes during a session
-const v12AudioCache = new Map();
-const V12_CACHE_TTL_MS = 5 * 60 * 1000;
+const courseAudioCache = new Map();
+const AUDIO_CACHE_TTL_MS = 5 * 60 * 1000;
 
 /**
- * Build a map of text -> audio info from v12 schema
+ * Build a map of text -> audio info from v13 course_audio table (flat schema)
  * Uses in-memory cache to avoid repeated queries
  *
  * @param {string} courseCode - Course code
- * @returns {Promise<Map>} Map of normalized_text -> { source?, target1?, target2?, presentation? }
+ * @returns {Promise<Map>} Map of text -> { source?, target1?, target2?, presentation? }
  */
-async function buildV12AudioMap(courseCode) {
+async function buildCourseAudioMap(courseCode) {
   // Check cache first
-  const cached = v12AudioCache.get(courseCode);
-  if (cached && (Date.now() - cached.timestamp) < V12_CACHE_TTL_MS) {
-    console.log(`  Using cached v12 audio for ${courseCode} (${cached.map.size} texts)`);
+  const cached = courseAudioCache.get(courseCode);
+  if (cached && (Date.now() - cached.timestamp) < AUDIO_CACHE_TTL_MS) {
+    console.log(`  Using cached audio for ${courseCode} (${cached.map.size} texts)`);
     return cached.map;
   }
 
-  const audioMap = new Map();  // text_content -> { role: { id, duration_ms } }
+  const audioMap = new Map();  // text -> { role: { id, duration_ms } }
 
-  console.log(`  Loading v12 audio for ${courseCode}...`);
+  console.log(`  Loading course audio for ${courseCode}...`);
 
-  // Query course_audio joined with audio_files and texts
+  // Query course_audio directly (v13 flat schema - no joins needed)
   // Paginate to get all records (Supabase default limit is 1000)
   const PAGE_SIZE = 1000;
   let offset = 0;
@@ -144,33 +144,21 @@ async function buildV12AudioMap(courseCode) {
   while (hasMore) {
     const { data: courseAudio, error } = await supabase
       .from('course_audio')
-      .select(`
-        role,
-        audio_id,
-        audio_files!inner (
-          id,
-          duration_ms,
-          text_id,
-          texts!inner (
-            content,
-            content_normalized
-          )
-        )
-      `)
+      .select('id, text, role, duration_ms')
       .eq('course_code', courseCode)
       .range(offset, offset + PAGE_SIZE - 1);
 
     if (error) {
-      console.warn(`  Warning: Could not load v12 audio: ${error.message}`);
+      console.warn(`  Warning: Could not load course audio: ${error.message}`);
       return audioMap;
     }
 
     // Build the map from this batch
     for (const ca of courseAudio || []) {
-      const textContent = ca.audio_files?.texts?.content;
+      const textContent = ca.text;
       if (!textContent) continue;
 
-      // Map role names (v12 uses 'known' instead of 'source')
+      // Map role names (known -> source for manifest compatibility)
       let role = ca.role;
       if (role === 'known') role = 'source';
 
@@ -180,8 +168,8 @@ async function buildV12AudioMap(courseCode) {
 
       const entry = audioMap.get(textContent);
       entry[role] = {
-        id: ca.audio_id,
-        duration_ms: ca.audio_files?.duration_ms || 0
+        id: ca.id,
+        duration_ms: ca.duration_ms || 0
       };
     }
 
@@ -190,13 +178,18 @@ async function buildV12AudioMap(courseCode) {
     offset += PAGE_SIZE;
   }
 
-  console.log(`  Loaded ${totalLoaded} audio records, ${audioMap.size} unique texts from v12 schema`);
+  console.log(`  Loaded ${totalLoaded} audio records, ${audioMap.size} unique texts`);
 
   // Cache for future requests
-  v12AudioCache.set(courseCode, { map: audioMap, timestamp: Date.now() });
+  courseAudioCache.set(courseCode, { map: audioMap, timestamp: Date.now() });
 
   return audioMap;
 }
+
+// Alias for backwards compatibility
+const buildV12AudioMap = buildCourseAudioMap;
+const v12AudioCache = courseAudioCache;
+const V12_CACHE_TTL_MS = AUDIO_CACHE_TTL_MS;
 
 // =============================================================================
 // MAIN GENERATOR
@@ -241,14 +234,10 @@ async function generateManifest(courseCode, options = {}) {
     presentation: course.presentation_voice || course.known_voice  // Default to known_voice if not set
   };
 
-  // Check if we need v12 fallback (when target voices are not set)
-  const needsV12Fallback = !voiceAssignments.target1 || !voiceAssignments.target2;
-  let v12AudioMap = null;
-
-  if (needsV12Fallback) {
-    console.log(`  Voice assignments incomplete, using v12 schema fallback`);
-    v12AudioMap = await buildV12AudioMap(courseCode);
-  }
+  // Always load course audio map (v13 flat schema) for audio lookups
+  // Note: We load this regardless of voice config - audio may already exist in database
+  console.log(`  Loading course audio from database...`);
+  const v12AudioMap = await buildCourseAudioMap(courseCode); // Variable name kept for compatibility
 
   // Get all seeds with LEGOs (paginated)
   const PAGE_SIZE = 1000;
@@ -385,7 +374,7 @@ async function generateManifest(courseCode, options = {}) {
   // ==========================================================================
   // PHASE 1: Collect all texts that need samples
   // ==========================================================================
-  // We collect all texts first, then batch-lookup legacy audio to avoid N+1 queries
+  // We collect all texts first, then lookup from course_audio to avoid N+1 queries
   const textsToProcess = new Map(); // key = text, value = { roles: Set, lang3, voiceId }
 
   function collectText(text, lang3, role, voiceId) {
@@ -528,64 +517,16 @@ async function generateManifest(courseCode, options = {}) {
   }
 
   // ==========================================================================
-  // PHASE 2: Batch lookup legacy audio (for texts not in v12)
+  // PHASE 2: Audio lookup (v13 course_audio table)
   // ==========================================================================
-  // Generate UUIDs for texts that need legacy lookup, then batch query
-  const legacyUuidsToLookup = new Map(); // uuid -> { text, role, lang3, cadence }
-
-  for (const [text, info] of textsToProcess) {
-    for (const role of info.roles) {
-      // Check if already in v12
-      if (v12AudioMap && v12AudioMap.has(text)) {
-        const audioInfo = v12AudioMap.get(text)[role];
-        if (audioInfo) continue; // Already have v12 audio
-      }
-
-      // Need legacy lookup - get the voice ID for this role
-      let voiceId;
-      if (role === 'source') voiceId = voiceAssignments.source;
-      else if (role === 'target1') voiceId = voiceAssignments.target1;
-      else if (role === 'target2') voiceId = voiceAssignments.target2;
-      else voiceId = voiceAssignments.presentation;
-
-      if (!voiceId) continue; // No voice assigned, can't generate UUID
-
-      const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
-      const uuid = generateSampleId(voiceId, text, info.lang3, role, cadence);
-
-      legacyUuidsToLookup.set(uuid, { text, role, lang3: info.lang3, cadence });
-    }
-  }
-
-  // Batch query audio_samples for all legacy UUIDs
-  const legacyAudioMap = new Map(); // uuid -> duration_ms
-  if (legacyUuidsToLookup.size > 0) {
-    console.log(`  Batch looking up ${legacyUuidsToLookup.size} legacy audio samples...`);
-    const uuids = Array.from(legacyUuidsToLookup.keys());
-
-    // Query in batches of 500 (Supabase has limits)
-    const BATCH_SIZE = 500;
-    for (let i = 0; i < uuids.length; i += BATCH_SIZE) {
-      const batch = uuids.slice(i, i + BATCH_SIZE);
-      const { data: audioData, error } = await supabase
-        .from('audio_samples')
-        .select('uuid, duration_ms')
-        .in('uuid', batch);
-
-      if (error) {
-        console.warn(`  Warning: Legacy audio batch lookup failed: ${error.message}`);
-      } else if (audioData) {
-        for (const row of audioData) {
-          legacyAudioMap.set(row.uuid, row.duration_ms || 0);
-        }
-      }
-    }
-    console.log(`  Found ${legacyAudioMap.size}/${legacyUuidsToLookup.size} legacy audio samples`);
-  }
+  // All audio is now in the course_audio table - no legacy lookups needed
 
   // ==========================================================================
   // PHASE 3: Build samples dictionary from collected texts
   // ==========================================================================
+  // Use courseAudioMap (v13 flat schema) for all audio lookups
+  const courseAudioMap = v12AudioMap; // Alias for clarity
+
   for (const [text, info] of textsToProcess) {
     if (!samples[text]) {
       samples[text] = [];
@@ -599,30 +540,16 @@ async function generateManifest(courseCode, options = {}) {
       let duration = 0;
       const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
 
-      // Try v12 first
-      if (v12AudioMap && v12AudioMap.has(text)) {
-        const audioInfo = v12AudioMap.get(text)[role];
+      // Look up audio from course_audio table (v13 schema)
+      if (courseAudioMap && courseAudioMap.has(text)) {
+        const audioInfo = courseAudioMap.get(text)[role];
         if (audioInfo) {
           sampleId = audioInfo.id;
           duration = audioInfo.duration_ms || 0;
         }
       }
 
-      // Try legacy lookup
-      if (!sampleId) {
-        let voiceId;
-        if (role === 'source') voiceId = voiceAssignments.source;
-        else if (role === 'target1') voiceId = voiceAssignments.target1;
-        else if (role === 'target2') voiceId = voiceAssignments.target2;
-        else voiceId = voiceAssignments.presentation;
-
-        if (voiceId) {
-          sampleId = generateSampleId(voiceId, text, info.lang3, role, cadence);
-          duration = legacyAudioMap.get(sampleId) || 0;
-        }
-      }
-
-      // Add sample if found
+      // Add sample if found in database
       if (sampleId) {
         samples[text].push({
           id: sampleId,
@@ -683,11 +610,11 @@ async function validateManifest(manifest) {
         continue;
       }
 
-      // Check if audio exists
+      // Check if audio exists in course_audio (v13 schema)
       const { data } = await supabase
-        .from('audio_samples')
-        .select('uuid')
-        .eq('uuid', sample.id)
+        .from('course_audio')
+        .select('id')
+        .eq('id', sample.id)
         .single();
 
       if (!data) {

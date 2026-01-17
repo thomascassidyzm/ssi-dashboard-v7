@@ -1,0 +1,56 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 141,
+  "known_text": "No problem. Everything is okay.",
+  "target_text": "Não tem problema. Tudo está bem.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "no problem",
+      "target": "não tem problema",
+      "components": [
+        {"known": "no", "target": "não tem"},
+        {"known": "problem", "target": "problema"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "não tem"},
+        {"known": "problem", "target": "problema"},
+        {"known": "no problem", "target": "não tem problema"},
+        {"known": "it's not a problem", "target": "não é um problema"},
+        {"known": "no problem for me", "target": "não tem problema para eu"},
+        {"known": "of course no problem", "target": "claro que não tem problema"},
+        {"known": "I'm sorry but no problem", "target": "eu sinto muito mas não tem problema"},
+        {"known": "no problem with what you're trying to do", "target": "não tem problema com o que você está tentando fazer"},
+        {"known": "I think there is no problem with this", "target": "eu acho que não tem problema com isso"},
+        {"known": "no problem if you need to leave early now", "target": "não tem problema se você preciso sair cedo agora"},
+        {"known": "I'm sorry that there is no problem with this now", "target": "eu sinto muito que não tem problema com isso agora"},
+        {"known": "of course there is no problem with what you are doing here", "target": "claro que não tem problema com o que você está fazendo aqui"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "everything is okay",
+      "target": "tudo está bem",
+      "components": [
+        {"known": "everything", "target": "tudo"},
+        {"known": "is okay", "target": "está bem"}
+      ],
+      "phrases": [
+        {"known": "everything", "target": "tudo"},
+        {"known": "is okay", "target": "está bem"},
+        {"known": "everything is okay", "target": "tudo está bem"},
+        {"known": "she is okay", "target": "ela está bem"},
+        {"known": "I'm okay", "target": "eu estou bem"},
+        {"known": "everything is okay now", "target": "tudo está bem agora"},
+        {"known": "no problem everything is okay", "target": "não tem problema tudo está bem"},
+        {"known": "I think everything is okay here", "target": "eu acho que tudo está bem aqui"},
+        {"known": "of course everything is okay with them", "target": "claro que tudo está bem com eles"},
+        {"known": "I'm sorry but I think everything is okay now", "target": "eu sinto muito mas eu acho que tudo está bem agora"},
+        {"known": "no problem everything is okay because she is my friend", "target": "não tem problema tudo está bem porque ela é minha amiga"},
+        {"known": "I don't know why she thinks everything is not okay", "target": "eu não sei por que ela acha que tudo não está bem"}
+      ]
+    }
+  ]
+}

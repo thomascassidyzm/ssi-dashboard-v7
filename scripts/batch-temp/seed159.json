@@ -1,0 +1,54 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 159,
+  "known_text": "That isn't what I'm trying to say.",
+  "target_text": "Das ist nicht das, was ich versuche zu sagen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that isn't",
+      "target": "das ist nicht das",
+      "components": [
+        {"known": "that", "target": "das"},
+        {"known": "isn't", "target": "ist nicht"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "das"},
+        {"known": "isn't", "target": "ist nicht"},
+        {"known": "that isn't", "target": "das ist nicht das"},
+        {"known": "that isn't good", "target": "das ist nicht gut"},
+        {"known": "that isn't it", "target": "das ist es nicht"},
+        {"known": "I think that isn't", "target": "ich denke das ist nicht"},
+        {"known": "that isn't very good", "target": "das ist nicht sehr gut"},
+        {"known": "she said that isn't what she wanted", "target": "sie hat gesagt das ist nicht das was sie wollte"},
+        {"known": "I believe that isn't very difficult to understand", "target": "ich glaube das ist nicht sehr schwierig zu verstehen"},
+        {"known": "let's talk about that because I think that isn't the best way", "target": "lass uns darüber reden weil ich denke das ist nicht der beste Weg"},
+        {"known": "I don't mind if that isn't what you wanted to do tonight", "target": "es macht mir nichts aus wenn das nicht ist was du heute Abend machen wolltest"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what I'm trying to say",
+      "target": "was ich versuche zu sagen",
+      "components": [
+        {"known": "what", "target": "was"},
+        {"known": "I'm trying to say", "target": "ich versuche zu sagen"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "was"},
+        {"known": "to say", "target": "zu sagen"},
+        {"known": "I'm trying", "target": "ich versuche"},
+        {"known": "trying to say", "target": "versuche zu sagen"},
+        {"known": "I'm trying to say", "target": "ich versuche zu sagen"},
+        {"known": "what I'm trying to say", "target": "was ich versuche zu sagen"},
+        {"known": "do you understand what I'm trying to say", "target": "verstehst du was ich versuche zu sagen"},
+        {"known": "that isn't what I'm trying to say", "target": "das ist nicht das was ich versuche zu sagen"},
+        {"known": "I think you understand what I'm trying to say", "target": "ich denke du verstehst was ich versuche zu sagen"},
+        {"known": "she wanted to know what I'm trying to say about this", "target": "sie wollte wissen was ich versuche darüber zu sagen"},
+        {"known": "let's talk about something else because that isn't what I'm trying to say", "target": "lass uns über etwas anderes reden weil das nicht ist was ich versuche zu sagen"}
+      ]
+    }
+  ]
+}

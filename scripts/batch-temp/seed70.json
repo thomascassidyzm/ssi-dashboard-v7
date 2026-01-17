@@ -1,0 +1,98 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 70,
+  "known_text": "She didn't want to tell me where it was.",
+  "target_text": "Sie wollte mir nicht sagen wo es war.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "she didn't want",
+      "target": "sie wollte nicht",
+      "components": [
+        {"known": "she", "target": "sie"},
+        {"known": "wanted", "target": "wollte"},
+        {"known": "not", "target": "nicht"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "sie"},
+        {"known": "wanted", "target": "wollte"},
+        {"known": "she wanted", "target": "sie wollte"},
+        {"known": "she didn't want", "target": "sie wollte nicht"},
+        {"known": "she wanted to learn", "target": "sie wollte lernen"},
+        {"known": "she didn't want to stop", "target": "sie wollte nicht aufhoren"},
+        {"known": "she wanted to speak German", "target": "sie wollte Deutsch sprechen"},
+        {"known": "she didn't want to look after the dog", "target": "sie wollte nicht auf den Hund aufpassen"},
+        {"known": "why didn't she want to learn German", "target": "warum wollte sie nicht Deutsch lernen"},
+        {"known": "she wanted to find the answer but it isn't easy", "target": "sie wollte die Antwort finden aber es ist nicht einfach"},
+        {"known": "she didn't want to stop learning German all afternoon", "target": "sie wollte nicht den ganzen Nachmittag aufhoren Deutsch zu lernen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to tell me",
+      "target": "mir sagen",
+      "components": [
+        {"known": "me (dative)", "target": "mir"},
+        {"known": "to say", "target": "sagen"}
+      ],
+      "phrases": [
+        {"known": "me (dative)", "target": "mir"},
+        {"known": "to say", "target": "sagen"},
+        {"known": "to tell me", "target": "mir sagen"},
+        {"known": "tell me", "target": "sagen Sie mir"},
+        {"known": "she wanted to tell me", "target": "sie wollte mir sagen"},
+        {"known": "she didn't want to tell me", "target": "sie wollte mir nicht sagen"},
+        {"known": "could you tell me", "target": "konnten Sie mir sagen"},
+        {"known": "could you tell me what you are looking for", "target": "konnten Sie mir sagen was Sie suchen"},
+        {"known": "she didn't want to tell me the answer", "target": "sie wollte mir nicht die Antwort sagen"},
+        {"known": "why didn't she want to tell me the answer", "target": "warum wollte sie mir nicht die Antwort sagen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "where",
+      "target": "wo",
+      "phrases": [
+        {"known": "where", "target": "wo"},
+        {"known": "where is it", "target": "wo ist es"},
+        {"known": "where is that (thing)", "target": "wo ist das"},
+        {"known": "where you are", "target": "wo Sie sind"},
+        {"known": "where is the answer", "target": "wo ist die Antwort"},
+        {"known": "could you tell me where", "target": "konnten Sie mir sagen wo"},
+        {"known": "she didn't want to tell me where", "target": "sie wollte mir nicht sagen wo"},
+        {"known": "I do not know where that (thing) is", "target": "ich weiss nicht wo das ist"},
+        {"known": "could you tell me where the answer is", "target": "konnten Sie mir sagen wo die Antwort ist"},
+        {"known": "she didn't want to tell me where it is", "target": "sie wollte mir nicht sagen wo es ist"},
+        {"known": "are you sure you know where the answer is", "target": "sind Sie sicher dass Sie wissen wo die Antwort ist"},
+        {"known": "why didn't she want to tell me where the answer is", "target": "warum wollte sie mir nicht sagen wo die Antwort ist"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "it was",
+      "target": "es war",
+      "components": [
+        {"known": "it", "target": "es"},
+        {"known": "was", "target": "war"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "es"},
+        {"known": "was", "target": "war"},
+        {"known": "it was", "target": "es war"},
+        {"known": "it was not easy", "target": "es war nicht einfach"},
+        {"known": "it was difficult", "target": "es war schwierig"},
+        {"known": "it was important", "target": "es war wichtig"},
+        {"known": "where it was", "target": "wo es war"},
+        {"known": "she didn't want to tell me where it was", "target": "sie wollte mir nicht sagen wo es war"},
+        {"known": "I do not know where it was", "target": "ich weiss nicht wo es war"},
+        {"known": "are you sure you know where it was", "target": "sind Sie sicher dass Sie wissen wo es war"},
+        {"known": "she didn't want to tell me where the answer was", "target": "sie wollte mir nicht sagen wo die Antwort war"},
+        {"known": "it was not easy but it was important to find the answer", "target": "es war nicht einfach aber es war wichtig die Antwort zu finden"}
+      ]
+    }
+  ]
+}

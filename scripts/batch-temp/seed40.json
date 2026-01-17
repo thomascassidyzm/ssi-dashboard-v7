@@ -1,77 +1,72 @@
 {
-  "course_code": "fra_for_eng",
+  "course_code": "deu_for_eng",
   "seed_number": 40,
   "known_text": "How do you feel at the moment?",
-  "target_text": "Comment tu te sens en ce moment?",
+  "target_text": "Wie fühlst du dich im Moment?",
   "legos": [
     {
       "idx": 1,
       "type": "A",
       "known": "how",
-      "target": "comment",
+      "target": "wie",
       "phrases": [
-        {"known": "how", "target": "comment"},
-        {"known": "how soon", "target": "comment bientôt"},
-        {"known": "how here", "target": "comment ici"},
-        {"known": "how do you learn", "target": "comment tu apprends"},
-        {"known": "how do you feel", "target": "comment tu te sens"},
-        {"known": "how did I start", "target": "comment j'ai commencé"},
-        {"known": "how do you feel tonight", "target": "comment tu te sens ce soir"},
-        {"known": "because how do you learn better here", "target": "parce que comment tu apprends mieux ici"},
-        {"known": "how do you feel when I'm a little tired", "target": "comment tu te sens quand je suis un peu fatigué"},
-        {"known": "how did I start to think about it carefully last month", "target": "comment j'ai commencé à y penser soigneusement le mois dernier"},
-        {"known": "how do you feel when other people are here this afternoon", "target": "comment tu te sens quand d'autres personnes sont ici cet après-midi"},
-        {"known": "how do you feel when you've been learning the French language for about a week", "target": "comment tu te sens quand tu apprends le français depuis environ une semaine"}
+        {"known": "How?", "target": "Wie?"},
+        {"known": "How now?", "target": "Wie jetzt?"},
+        {"known": "But how?", "target": "Aber wie?"},
+        {"known": "How are you?", "target": "Wie bist du?"},
+        {"known": "How is it?", "target": "Wie ist es?"},
+        {"known": "How is it today?", "target": "Wie ist es heute?"},
+        {"known": "How is the story?", "target": "Wie ist die Geschichte?"},
+        {"known": "But how is it this morning?", "target": "Aber wie ist es heute Morgen?"},
+        {"known": "How is it when you are here?", "target": "Wie ist es wenn du hier bist?"},
+        {"known": "But how is it when other people are here?", "target": "Aber wie ist es wenn andere Leute hier sind?"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
       "known": "do you feel",
-      "target": "tu te sens",
+      "target": "fühlst du dich",
       "components": [
-        {"known": "you", "target": "tu"},
-        {"known": "yourself", "target": "te"},
-        {"known": "feel", "target": "sens"}
+        {"known": "feel", "target": "fühlst"},
+        {"known": "you", "target": "du"},
+        {"known": "yourself", "target": "dich"}
       ],
       "phrases": [
-        {"known": "you", "target": "tu"},
-        {"known": "yourself", "target": "te"},
-        {"known": "feel", "target": "sens"},
-        {"known": "do you feel", "target": "tu te sens"},
-        {"known": "how do you feel", "target": "comment tu te sens"},
-        {"known": "do you feel tired", "target": "tu te sens fatigué"},
-        {"known": "how do you feel tonight", "target": "comment tu te sens ce soir"},
-        {"known": "do you feel a little tired here", "target": "tu te sens un peu fatigué ici"},
-        {"known": "because how do you feel this morning", "target": "parce que comment tu te sens ce matin"},
-        {"known": "how do you feel when I'm a little tired tonight", "target": "comment tu te sens quand je suis un peu fatigué ce soir"},
-        {"known": "do you feel a little tired when other people are here this afternoon", "target": "tu te sens un peu fatigué quand d'autres personnes sont ici cet après-midi"},
-        {"known": "how do you feel when you've been learning for about a week with everyone else", "target": "comment tu te sens quand tu apprends depuis environ une semaine avec tout le monde"}
+        {"known": "Do you feel?", "target": "Fühlst du dich?"},
+        {"known": "How do you feel?", "target": "Wie fühlst du dich?"},
+        {"known": "Do you feel tired?", "target": "Fühlst du dich müde?"},
+        {"known": "Do you feel ready?", "target": "Fühlst du dich bereit?"},
+        {"known": "How do you feel today?", "target": "Wie fühlst du dich heute?"},
+        {"known": "But how do you feel?", "target": "Aber wie fühlst du dich?"},
+        {"known": "Do you feel a little tired?", "target": "Fühlst du dich ein bisschen müde?"},
+        {"known": "How do you feel this morning?", "target": "Wie fühlst du dich heute Morgen?"},
+        {"known": "Do you feel ready to learn German?", "target": "Fühlst du dich bereit Deutsch zu lernen?"},
+        {"known": "But how do you feel this morning?", "target": "Aber wie fühlst du dich heute Morgen?"},
+        {"known": "Do you feel ready to learn German today?", "target": "Fühlst du dich heute bereit Deutsch zu lernen?"}
       ]
     },
     {
       "idx": 3,
       "type": "M",
       "known": "at the moment",
-      "target": "en ce moment",
+      "target": "im Moment",
       "components": [
-        {"known": "in", "target": "en"},
-        {"known": "this", "target": "ce"},
-        {"known": "moment", "target": "moment"}
+        {"known": "in the", "target": "im"},
+        {"known": "moment", "target": "Moment"}
       ],
       "phrases": [
-        {"known": "in", "target": "en"},
-        {"known": "this", "target": "ce"},
-        {"known": "moment", "target": "moment"},
-        {"known": "at the moment", "target": "en ce moment"},
-        {"known": "tired at the moment", "target": "fatigué en ce moment"},
-        {"known": "do you feel at the moment", "target": "tu te sens en ce moment"},
-        {"known": "how do you feel at the moment", "target": "comment tu te sens en ce moment"},
-        {"known": "I'm a little tired at the moment", "target": "je suis un peu fatigué en ce moment"},
-        {"known": "because I'm a little tired at the moment here", "target": "parce que je suis un peu fatigué en ce moment ici"},
-        {"known": "how do you feel at the moment when I'm a little tired", "target": "comment tu te sens en ce moment quand je suis un peu fatigué"},
-        {"known": "do you feel a little tired at the moment this morning with everyone else", "target": "tu te sens un peu fatigué en ce moment ce matin avec tout le monde"},
-        {"known": "how do you feel at the moment when other people are here this afternoon", "target": "comment tu te sens en ce moment quand d'autres personnes sont ici cet après-midi"}
+        {"known": "At the moment.", "target": "Im Moment."},
+        {"known": "Not at the moment.", "target": "Nicht im Moment."},
+        {"known": "But at the moment.", "target": "Aber im Moment."},
+        {"known": "At the moment?", "target": "Im Moment?"},
+        {"known": "I am tired at the moment.", "target": "Ich bin im Moment müde."},
+        {"known": "How do you feel at the moment?", "target": "Wie fühlst du dich im Moment?"},
+        {"known": "I am a little tired at the moment.", "target": "Ich bin im Moment ein bisschen müde."},
+        {"known": "Do you feel tired at the moment?", "target": "Fühlst du dich im Moment müde?"},
+        {"known": "But I am a little tired at the moment.", "target": "Aber ich bin im Moment ein bisschen müde."},
+        {"known": "Do you feel ready to learn German at the moment?", "target": "Fühlst du dich im Moment bereit Deutsch zu lernen?"},
+        {"known": "But how do you feel at the moment this morning?", "target": "Aber wie fühlst du dich im Moment heute Morgen?"}
       ]
     }
   ]

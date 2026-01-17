@@ -1,99 +1,88 @@
 {
-  "course_code": "fra_for_eng",
+  "course_code": "deu_for_eng",
   "seed_number": 38,
   "known_text": "I've been learning for about a week.",
-  "target_text": "J'apprends depuis environ une semaine.",
+  "target_text": "Ich lerne seit ungefähr einer Woche.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
       "known": "I've been learning",
-      "target": "j'apprends",
+      "target": "ich lerne",
       "components": [
-        {"known": "I", "target": "j'"},
-        {"known": "learn", "target": "apprends"}
+        {"known": "I", "target": "ich"},
+        {"known": "learn/am learning", "target": "lerne"}
       ],
       "phrases": [
-        {"known": "I", "target": "j'"},
-        {"known": "learn", "target": "apprends"},
-        {"known": "I've been learning", "target": "j'apprends"},
-        {"known": "I've been learning more", "target": "j'apprends plus"},
-        {"known": "I've been learning better", "target": "j'apprends mieux"},
-        {"known": "I've been learning carefully", "target": "j'apprends soigneusement"},
-        {"known": "I've been learning the French language", "target": "j'apprends le français"},
-        {"known": "I've been learning the story carefully", "target": "j'apprends l'histoire soigneusement"},
-        {"known": "because I've been learning with everyone else", "target": "parce que j'apprends avec tout le monde"},
-        {"known": "why have I been learning the French language this afternoon", "target": "pourquoi j'apprends le français cet après-midi"},
-        {"known": "I've been learning to think about it carefully last month", "target": "j'apprends à y penser soigneusement le mois dernier"},
-        {"known": "because I've been learning with other people when she is here", "target": "parce que j'apprends avec d'autres personnes quand elle est ici"},
-        {"known": "I've been learning to read the story carefully with everyone else tonight", "target": "j'apprends à lire l'histoire soigneusement avec tout le monde ce soir"},
-        {"known": "because I've been learning the French language carefully with other people here", "target": "parce que j'apprends le français soigneusement avec d'autres personnes ici"}
+        {"known": "I learn.", "target": "Ich lerne."},
+        {"known": "I am learning.", "target": "Ich lerne."},
+        {"known": "I learn German.", "target": "Ich lerne Deutsch."},
+        {"known": "I've been learning today.", "target": "Ich lerne heute."},
+        {"known": "I've been learning it.", "target": "Ich lerne es."},
+        {"known": "I've been learning this afternoon.", "target": "Ich lerne heute Nachmittag."},
+        {"known": "I've been learning German with you.", "target": "Ich lerne Deutsch mit dir."},
+        {"known": "I've been learning the story carefully.", "target": "Ich lerne die Geschichte sorgfältig."},
+        {"known": "I learn when I want to.", "target": "Ich lerne wenn ich möchte."},
+        {"known": "I've been learning German when other people are here.", "target": "Ich lerne Deutsch wenn andere Leute hier sind."},
+        {"known": "I've been learning German carefully this afternoon.", "target": "Ich lerne heute Nachmittag sorgfältig Deutsch."}
       ]
     },
     {
       "idx": 2,
       "type": "A",
-      "known": "for",
-      "target": "depuis",
+      "known": "for/since",
+      "target": "seit",
       "phrases": [
-        {"known": "for", "target": "depuis"},
-        {"known": "for yesterday", "target": "depuis hier"},
-        {"known": "for tonight", "target": "depuis ce soir"},
-        {"known": "I've been learning for", "target": "j'apprends depuis"},
-        {"known": "for this afternoon", "target": "depuis cet après-midi"},
-        {"known": "I've been learning for yesterday", "target": "j'apprends depuis hier"},
-        {"known": "I've been learning for last month", "target": "j'apprends depuis le mois dernier"},
-        {"known": "because I've been learning for tonight", "target": "parce que j'apprends depuis ce soir"},
-        {"known": "why have I been learning for this afternoon here", "target": "pourquoi j'apprends depuis cet après-midi ici"},
-        {"known": "I've been learning for last month with everyone else", "target": "j'apprends depuis le mois dernier avec tout le monde"},
-        {"known": "because I've been learning for yesterday with other people here", "target": "parce que j'apprends depuis hier avec d'autres personnes ici"},
-        {"known": "I've been learning carefully for last month when other people are here", "target": "j'apprends soigneusement depuis le mois dernier quand d'autres personnes sont ici"},
-        {"known": "I've been learning the French language for yesterday with everyone else tonight", "target": "j'apprends le français depuis hier avec tout le monde ce soir"},
-        {"known": "because I've been learning to read the story carefully for last month here", "target": "parce que j'apprends à lire l'histoire soigneusement depuis le mois dernier ici"}
+        {"known": "Since now.", "target": "Seit jetzt."},
+        {"known": "Since today.", "target": "Seit heute."},
+        {"known": "Since yesterday.", "target": "Seit gestern."},
+        {"known": "Since last month.", "target": "Seit letzten Monat."},
+        {"known": "I've been learning since yesterday.", "target": "Ich lerne seit gestern."},
+        {"known": "I've been learning since last month.", "target": "Ich lerne seit letzten Monat."},
+        {"known": "I've been learning German since yesterday.", "target": "Ich lerne Deutsch seit gestern."},
+        {"known": "I've been learning German since last month.", "target": "Ich lerne Deutsch seit letzten Monat."},
+        {"known": "I've been learning the story since today.", "target": "Ich lerne die Geschichte seit heute."},
+        {"known": "I've been learning the story since this afternoon.", "target": "Ich lerne die Geschichte seit heute Nachmittag."}
       ]
     },
     {
       "idx": 3,
       "type": "A",
-      "known": "about",
-      "target": "environ",
+      "known": "about/approximately",
+      "target": "ungefähr",
       "phrases": [
-        {"known": "about", "target": "environ"},
-        {"known": "for about", "target": "depuis environ"},
-        {"known": "about here", "target": "environ ici"},
-        {"known": "I've been learning for about", "target": "j'apprends depuis environ"},
-        {"known": "for about last month", "target": "depuis environ le mois dernier"},
-        {"known": "I've been learning for about yesterday", "target": "j'apprends depuis environ hier"},
-        {"known": "I've been learning for about last month", "target": "j'apprends depuis environ le mois dernier"},
-        {"known": "because I've been learning for about tonight", "target": "parce que j'apprends depuis environ ce soir"},
-        {"known": "why have I been learning for about this afternoon here", "target": "pourquoi j'apprends depuis environ cet après-midi ici"},
-        {"known": "I've been learning for about last month with everyone else", "target": "j'apprends depuis environ le mois dernier avec tout le monde"},
-        {"known": "because I've been learning for about yesterday with other people here", "target": "parce que j'apprends depuis environ hier avec d'autres personnes ici"},
-        {"known": "I've been learning carefully for about last month when other people are here", "target": "j'apprends soigneusement depuis environ le mois dernier quand d'autres personnes sont ici"}
+        {"known": "About.", "target": "Ungefähr."},
+        {"known": "About now.", "target": "Ungefähr jetzt."},
+        {"known": "About today.", "target": "Ungefähr heute."},
+        {"known": "Since about last month.", "target": "Seit ungefähr letzten Monat."},
+        {"known": "Since about yesterday.", "target": "Seit ungefähr gestern."},
+        {"known": "I've been learning since about yesterday.", "target": "Ich lerne seit ungefähr gestern."},
+        {"known": "I've been learning since about last month.", "target": "Ich lerne seit ungefähr letzten Monat."},
+        {"known": "I've been learning German since about last month.", "target": "Ich lerne Deutsch seit ungefähr letzten Monat."},
+        {"known": "I've been learning carefully since about yesterday.", "target": "Ich lerne sorgfältig seit ungefähr gestern."},
+        {"known": "I've been learning the story since about last month.", "target": "Ich lerne die Geschichte seit ungefähr letzten Monat."}
       ]
     },
     {
       "idx": 4,
       "type": "M",
       "known": "a week",
-      "target": "une semaine",
+      "target": "einer Woche",
       "components": [
-        {"known": "a", "target": "une"},
-        {"known": "week", "target": "semaine"}
+        {"known": "a/one", "target": "einer"},
+        {"known": "week", "target": "Woche"}
       ],
       "phrases": [
-        {"known": "a", "target": "une"},
-        {"known": "week", "target": "semaine"},
-        {"known": "a week", "target": "une semaine"},
-        {"known": "for a week", "target": "depuis une semaine"},
-        {"known": "about a week", "target": "environ une semaine"},
-        {"known": "for about a week", "target": "depuis environ une semaine"},
-        {"known": "I've been learning for about a week", "target": "j'apprends depuis environ une semaine"},
-        {"known": "I started to read the story a week ago", "target": "j'ai commencé à lire l'histoire une semaine"},
-        {"known": "because I've been learning for about a week here", "target": "parce que j'apprends depuis environ une semaine ici"},
-        {"known": "why have I been learning for about a week with everyone else", "target": "pourquoi j'apprends depuis environ une semaine avec tout le monde"},
-        {"known": "I've been learning carefully for about a week with other people here", "target": "j'apprends soigneusement depuis environ une semaine avec d'autres personnes ici"},
-        {"known": "because I've been learning the French language for about a week with everyone else", "target": "parce que j'apprends le français depuis environ une semaine avec tout le monde"}
+        {"known": "A week.", "target": "Einer Woche."},
+        {"known": "One week.", "target": "Einer Woche."},
+        {"known": "For a week.", "target": "Seit einer Woche."},
+        {"known": "For about a week.", "target": "Seit ungefähr einer Woche."},
+        {"known": "I've been learning for a week.", "target": "Ich lerne seit einer Woche."},
+        {"known": "I've been learning for about a week.", "target": "Ich lerne seit ungefähr einer Woche."},
+        {"known": "I've been learning German for a week.", "target": "Ich lerne Deutsch seit einer Woche."},
+        {"known": "I've been learning German for about a week.", "target": "Ich lerne Deutsch seit ungefähr einer Woche."},
+        {"known": "I've been learning the story for about a week.", "target": "Ich lerne die Geschichte seit ungefähr einer Woche."},
+        {"known": "I've been learning German carefully for about a week.", "target": "Ich lerne Deutsch sorgfältig seit ungefähr einer Woche."}
       ]
     }
   ]

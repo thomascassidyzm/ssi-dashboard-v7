@@ -1,0 +1,75 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 149,
+  "known_text": "This isn't very difficult, so I hope you'll finish soon.",
+  "target_text": "Das ist nicht sehr schwierig, also hoffe ich, dass du bald fertig wirst.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this isn't very difficult",
+      "target": "das ist nicht sehr schwierig",
+      "components": [
+        {"known": "this isn't", "target": "das ist nicht"},
+        {"known": "very difficult", "target": "sehr schwierig"}
+      ],
+      "phrases": [
+        {"known": "this isn't", "target": "das ist nicht"},
+        {"known": "very difficult", "target": "sehr schwierig"},
+        {"known": "this isn't very difficult", "target": "das ist nicht sehr schwierig"},
+        {"known": "this isn't difficult", "target": "das ist nicht schwierig"},
+        {"known": "I think this isn't very difficult", "target": "ich denke das ist nicht sehr schwierig"},
+        {"known": "this isn't very difficult to learn", "target": "das ist nicht sehr schwierig zu lernen"},
+        {"known": "I believe this isn't very difficult", "target": "ich glaube das ist nicht sehr schwierig"},
+        {"known": "she said this isn't very difficult", "target": "sie hat gesagt das ist nicht sehr schwierig"},
+        {"known": "I think this isn't very difficult but I need more time", "target": "ich denke das ist nicht sehr schwierig aber ich brauche mehr Zeit"},
+        {"known": "he told me this isn't very difficult to do", "target": "er hat mir gesagt das ist nicht sehr schwierig zu machen"},
+        {"known": "we know this isn't very difficult when you want to learn it", "target": "wir wissen das ist nicht sehr schwierig wenn du es lernen willst"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "so I hope",
+      "target": "also hoffe ich",
+      "components": [
+        {"known": "so", "target": "also"},
+        {"known": "I hope", "target": "hoffe ich"}
+      ],
+      "phrases": [
+        {"known": "so", "target": "also"},
+        {"known": "I hope", "target": "hoffe ich"},
+        {"known": "so I hope", "target": "also hoffe ich"},
+        {"known": "I hope so", "target": "ich hoffe also"},
+        {"known": "so I hope it works", "target": "also hoffe ich es funktioniert"},
+        {"known": "so I hope you understand", "target": "also hoffe ich du verstehst"},
+        {"known": "so I hope we can try", "target": "also hoffe ich wir können es versuchen"},
+        {"known": "so I hope you can learn this", "target": "also hoffe ich du kannst das lernen"},
+        {"known": "so I hope you can help me learn German in a short time", "target": "also hoffe ich du kannst mir helfen Deutsch in kurzer Zeit zu lernen"},
+        {"known": "so I hope we will have enough time to finish everything today", "target": "also hoffe ich wir werden heute genug Zeit haben alles fertig zu machen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "you'll finish soon",
+      "target": "dass du bald fertig wirst",
+      "components": [
+        {"known": "you'll finish", "target": "du fertig wirst"},
+        {"known": "soon", "target": "bald"}
+      ],
+      "phrases": [
+        {"known": "soon", "target": "bald"},
+        {"known": "you finish", "target": "du wirst fertig"},
+        {"known": "you'll finish", "target": "du fertig wirst"},
+        {"known": "you'll finish soon", "target": "dass du bald fertig wirst"},
+        {"known": "I think you'll finish soon", "target": "ich denke dass du bald fertig wirst"},
+        {"known": "I hope you'll finish soon", "target": "ich hoffe dass du bald fertig wirst"},
+        {"known": "she said you'll finish soon", "target": "sie hat gesagt dass du bald fertig wirst"},
+        {"known": "he said you'll finish soon", "target": "er hat gesagt dass du bald fertig wirst"},
+        {"known": "they told me you'll finish soon because I've done a lot", "target": "sie haben mir gesagt dass du bald fertig wirst weil ich viel gemacht habe"},
+        {"known": "I hope you'll finish soon so that we can go home together", "target": "ich hoffe dass du bald fertig wirst so dass wir zusammen nach Hause fahren können"}
+      ]
+    }
+  ]
+}

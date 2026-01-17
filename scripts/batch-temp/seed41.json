@@ -1,0 +1,136 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 41,
+  "known_text": "I feel okay, but I'm starting to feel tired.",
+  "target_text": "Ich fühle mich okay, aber ich fange an, müde zu werden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I feel",
+      "target": "ich fühle mich",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "feel", "target": "fühle"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "feel", "target": "fühle"},
+        {"known": "I feel", "target": "ich fühle mich"},
+        {"known": "I feel well", "target": "ich fühle mich gut"},
+        {"known": "I feel tired", "target": "ich fühle mich müde"},
+        {"known": "I feel well now", "target": "ich fühle mich jetzt gut"},
+        {"known": "I feel well today", "target": "ich fühle mich heute gut"},
+        {"known": "I feel a little tired", "target": "ich fühle mich ein bisschen müde"},
+        {"known": "I feel well at the moment", "target": "ich fühle mich im Moment gut"},
+        {"known": "I feel a little tired now", "target": "ich fühle mich jetzt ein bisschen müde"},
+        {"known": "I feel a little tired this morning", "target": "ich fühle mich heute Morgen ein bisschen müde"},
+        {"known": "I feel well today but I am a little tired", "target": "ich fühle mich heute gut aber ich bin ein bisschen müde"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "okay",
+      "target": "okay",
+      "phrases": [
+        {"known": "okay", "target": "okay"},
+        {"known": "I am okay", "target": "ich bin okay"},
+        {"known": "I am okay now", "target": "ich bin jetzt okay"},
+        {"known": "I am okay today", "target": "ich bin heute okay"},
+        {"known": "I feel okay", "target": "ich fühle mich okay"},
+        {"known": "I am okay at the moment", "target": "ich bin im Moment okay"},
+        {"known": "I feel okay now", "target": "ich fühle mich jetzt okay"},
+        {"known": "I feel okay today", "target": "ich fühle mich heute okay"},
+        {"known": "I feel okay at the moment", "target": "ich fühle mich im Moment okay"},
+        {"known": "I am okay now but I am a little tired", "target": "ich bin jetzt okay aber ich bin ein bisschen müde"},
+        {"known": "I feel okay today but I am a little tired", "target": "ich fühle mich heute okay aber ich bin ein bisschen müde"},
+        {"known": "I feel okay this morning but I am a little tired", "target": "ich fühle mich heute Morgen okay aber ich bin ein bisschen müde"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "but",
+      "target": "aber",
+      "phrases": [
+        {"known": "but", "target": "aber"},
+        {"known": "but I", "target": "aber ich"},
+        {"known": "but now", "target": "aber jetzt"},
+        {"known": "but today", "target": "aber heute"},
+        {"known": "but I am tired", "target": "aber ich bin müde"},
+        {"known": "but I feel okay", "target": "aber ich fühle mich okay"},
+        {"known": "but I am okay now", "target": "aber ich bin jetzt okay"},
+        {"known": "but I feel a little tired", "target": "aber ich fühle mich ein bisschen müde"},
+        {"known": "but I am a little tired today", "target": "aber ich bin heute ein bisschen müde"},
+        {"known": "but I feel okay at the moment", "target": "aber ich fühle mich im Moment okay"},
+        {"known": "but I feel a little tired this morning", "target": "aber ich fühle mich heute Morgen ein bisschen müde"},
+        {"known": "I feel okay but I am a little tired this morning", "target": "ich fühle mich okay aber ich bin heute Morgen ein bisschen müde"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I'm starting",
+      "target": "ich fange an",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "start/begin", "target": "fange an"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "start/begin", "target": "fange an"},
+        {"known": "I'm starting", "target": "ich fange an"},
+        {"known": "I'm starting now", "target": "ich fange jetzt an"},
+        {"known": "I'm starting today", "target": "ich fange heute an"},
+        {"known": "but I'm starting", "target": "aber ich fange an"},
+        {"known": "I'm starting at the moment", "target": "ich fange im Moment an"},
+        {"known": "but I'm starting now", "target": "aber ich fange jetzt an"},
+        {"known": "I'm starting this morning", "target": "ich fange heute Morgen an"},
+        {"known": "I feel okay but I'm starting", "target": "ich fühle mich okay aber ich fange an"},
+        {"known": "I'm starting today but I feel a little tired", "target": "ich fange heute an aber ich fühle mich ein bisschen müde"},
+        {"known": "I feel well at the moment but I'm starting today", "target": "ich fühle mich im Moment gut aber ich fange heute an"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "tired",
+      "target": "müde",
+      "phrases": [
+        {"known": "tired", "target": "müde"},
+        {"known": "I am tired", "target": "ich bin müde"},
+        {"known": "a little tired", "target": "ein bisschen müde"},
+        {"known": "I am tired now", "target": "ich bin jetzt müde"},
+        {"known": "I feel tired", "target": "ich fühle mich müde"},
+        {"known": "I am tired today", "target": "ich bin heute müde"},
+        {"known": "I am a little tired", "target": "ich bin ein bisschen müde"},
+        {"known": "I feel a little tired", "target": "ich fühle mich ein bisschen müde"},
+        {"known": "I feel a little tired now", "target": "ich fühle mich jetzt ein bisschen müde"},
+        {"known": "I am a little tired this morning", "target": "ich bin heute Morgen ein bisschen müde"},
+        {"known": "I feel okay but I am a little tired", "target": "ich fühle mich okay aber ich bin ein bisschen müde"},
+        {"known": "I feel okay but I am a little tired this morning", "target": "ich fühle mich okay aber ich bin heute Morgen ein bisschen müde"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "to become",
+      "target": "zu werden",
+      "phrases": [
+        {"known": "to become", "target": "zu werden"},
+        {"known": "to become tired", "target": "müde zu werden"},
+        {"known": "to become okay", "target": "okay zu werden"},
+        {"known": "I'm starting to become", "target": "ich fange an zu werden"},
+        {"known": "I'm starting to become tired", "target": "ich fange an müde zu werden"},
+        {"known": "I'm starting to become okay", "target": "ich fange an okay zu werden"},
+        {"known": "I'm starting to become a little tired", "target": "ich fange an ein bisschen müde zu werden"},
+        {"known": "I'm starting to become tired now", "target": "ich fange jetzt an müde zu werden"},
+        {"known": "I'm starting to become tired today", "target": "ich fange heute an müde zu werden"},
+        {"known": "I'm starting to become a little tired now", "target": "ich fange jetzt an ein bisschen müde zu werden"},
+        {"known": "but I'm starting to become tired", "target": "aber ich fange an müde zu werden"},
+        {"known": "I feel okay but I'm starting to become a little tired", "target": "ich fühle mich okay aber ich fange an ein bisschen müde zu werden"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 81,
+  "known_text": "When do you want to start?",
+  "target_text": "Quando você quer começar?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "when",
+      "target": "quando",
+      "phrases": [
+        {"known": "when", "target": "quando"},
+        {"known": "when?", "target": "quando?"},
+        {"known": "since when", "target": "desde quando"},
+        {"known": "when I can", "target": "quando eu puder"},
+        {"known": "when you want", "target": "quando você quiser"},
+        {"known": "I remember when", "target": "eu lembro quando"},
+        {"known": "I do not know when", "target": "eu não sei quando"},
+        {"known": "when I feel ready", "target": "quando eu me sentir pronto"},
+        {"known": "when I have more time", "target": "quando eu tiver mais tempo"},
+        {"known": "I do not know when I will be ready", "target": "eu não sei quando eu vou estar pronto"},
+        {"known": "when I started to learn Portuguese", "target": "quando eu comecei a aprender português"},
+        {"known": "I am not sure when I will be ready to speak Portuguese", "target": "não tenho certeza quando eu vou estar pronto para falar português"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you want",
+      "target": "você quer",
+      "components": [
+        {"known": "you", "target": "você"},
+        {"known": "want", "target": "quer"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "você"},
+        {"known": "want", "target": "quer"},
+        {"known": "you want", "target": "você quer"},
+        {"known": "do you want?", "target": "você quer?"},
+        {"known": "what do you want?", "target": "o que você quer?"},
+        {"known": "do you want to start?", "target": "você quer começar?"},
+        {"known": "do you want to learn?", "target": "você quer aprender?"},
+        {"known": "when do you want to start?", "target": "quando você quer começar?"},
+        {"known": "do you want to speak with me?", "target": "você quer falar comigo?"},
+        {"known": "do you want to speak Portuguese with me?", "target": "você quer falar português comigo?"},
+        {"known": "do you want to learn how to speak Portuguese?", "target": "você quer aprender a falar português?"},
+        {"known": "when do you want to start to learn Portuguese?", "target": "quando você quer começar a aprender português?"},
+        {"known": "do you want to try to speak Portuguese with me today?", "target": "você quer tentar falar português comigo hoje?"},
+        {"known": "do you want to try to learn how to speak Portuguese with me?", "target": "você quer tentar aprender a falar português comigo?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to start",
+      "target": "começar",
+      "phrases": [
+        {"known": "start", "target": "começar"},
+        {"known": "to start", "target": "começar"},
+        {"known": "I can start", "target": "eu posso começar"},
+        {"known": "I want to start", "target": "eu quero começar"},
+        {"known": "you want to start", "target": "você quer começar"},
+        {"known": "when to start", "target": "quando começar"},
+        {"known": "before I start", "target": "antes de começar"},
+        {"known": "I want to start soon", "target": "eu quero começar em breve"},
+        {"known": "I do not know when to start", "target": "eu não sei quando começar"},
+        {"known": "I want to start learning Portuguese", "target": "eu quero começar a aprender português"},
+        {"known": "I do not know when I want to start to learn", "target": "eu não sei quando eu quero começar a aprender"},
+        {"known": "I want to start to learn how to speak Portuguese", "target": "eu quero começar a aprender a falar português"},
+        {"known": "I am not sure when I want to start to learn Portuguese", "target": "não tenho certeza quando eu quero começar a aprender português"}
+      ]
+    }
+  ]
+}

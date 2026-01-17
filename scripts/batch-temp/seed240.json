@@ -1,0 +1,80 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 240,
+  "known_text": "My father doesn't like to stop talking.",
+  "target_text": "我爸爸不喜欢停止说话。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my father",
+      "target": "我爸爸",
+      "components": [
+        {"known": "my", "target": "我"},
+        {"known": "father", "target": "爸爸"}
+      ],
+      "phrases": [
+        {"known": "father", "target": "爸爸"},
+        {"known": "my father", "target": "我爸爸"},
+        {"known": "your father", "target": "你爸爸"},
+        {"known": "her father", "target": "她爸爸"},
+        {"known": "his father", "target": "他爸爸"},
+        {"known": "my father is here", "target": "我爸爸在这"},
+        {"known": "my father can help", "target": "我爸爸能帮"},
+        {"known": "my father wants to learn", "target": "我爸爸想学"},
+        {"known": "my father said he can help", "target": "我爸爸说他能帮"},
+        {"known": "I met your father yesterday", "target": "我昨天见了你爸爸"},
+        {"known": "my father wants to meet your mother", "target": "我爸爸想见你妈妈"},
+        {"known": "my father said he would tell me before the weekend", "target": "我爸爸说他会周末以前告诉我"},
+        {"known": "my father wanted you to help him learn how to speak Chinese", "target": "我爸爸想让你帮他学怎么说中文"},
+        {"known": "my father met your brother at his house last night", "target": "我爸爸昨天晚上在他家见了你哥哥"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "doesn't like to stop",
+      "target": "不喜欢停止",
+      "components": [
+        {"known": "doesn't like to", "target": "不喜欢"},
+        {"known": "stop", "target": "停止"}
+      ],
+      "phrases": [
+        {"known": "stop", "target": "停止"},
+        {"known": "doesn't like", "target": "不喜欢"},
+        {"known": "doesn't like to stop", "target": "不喜欢停止"},
+        {"known": "I don't like", "target": "我不喜欢"},
+        {"known": "he doesn't like", "target": "他不喜欢"},
+        {"known": "she doesn't like to stop", "target": "她不喜欢停止"},
+        {"known": "he doesn't like to stop working", "target": "他不喜欢停止工作"},
+        {"known": "my father doesn't like to stop", "target": "我爸爸不喜欢停止"},
+        {"known": "I don't like to stop learning Chinese", "target": "我不喜欢停止学中文"},
+        {"known": "she said she doesn't like to stop reading", "target": "她说她不喜欢停止看书"},
+        {"known": "my brother doesn't like to stop practising Chinese", "target": "我哥哥不喜欢停止练习中文"},
+        {"known": "he doesn't like to stop talking about interesting things", "target": "他不喜欢停止说有意思的"},
+        {"known": "my father said he doesn't like to stop helping people", "target": "我爸爸说他不喜欢停止帮人"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "talking",
+      "target": "说话",
+      "phrases": [
+        {"known": "talk", "target": "说话"},
+        {"known": "talking", "target": "说话"},
+        {"known": "stop talking", "target": "停止说话"},
+        {"known": "I like talking", "target": "我喜欢说话"},
+        {"known": "he is talking", "target": "他在说话"},
+        {"known": "she likes talking", "target": "她喜欢说话"},
+        {"known": "stop talking please", "target": "请停止说话"},
+        {"known": "he doesn't like to stop talking", "target": "他不喜欢停止说话"},
+        {"known": "my father doesn't like to stop talking", "target": "我爸爸不喜欢停止说话"},
+        {"known": "she likes talking about interesting things", "target": "她喜欢说有意思的话"},
+        {"known": "my mother said my father likes talking a lot", "target": "我妈妈说我爸爸喜欢说话多"},
+        {"known": "he doesn't like to stop talking about what happened yesterday", "target": "他不喜欢停止说昨天的"},
+        {"known": "my father likes talking to my mother about interesting books", "target": "我爸爸喜欢和我妈妈说有意思的书"}
+      ]
+    }
+  ]
+}

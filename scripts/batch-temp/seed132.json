@@ -1,0 +1,55 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 132,
+  "known_text": "That's less exciting than what she was saying.",
+  "target_text": "Isso é menos emocionante do que o que ela estava dizendo.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that's less exciting",
+      "target": "isso é menos emocionante",
+      "components": [
+        {"known": "that is", "target": "isso é"},
+        {"known": "less exciting", "target": "menos emocionante"}
+      ],
+      "phrases": [
+        {"known": "that is", "target": "isso é"},
+        {"known": "less exciting", "target": "menos emocionante"},
+        {"known": "is less", "target": "é menos"},
+        {"known": "is less exciting", "target": "é menos emocionante"},
+        {"known": "that's less exciting", "target": "isso é menos emocionante"},
+        {"known": "this is less exciting", "target": "isso é menos emocionante"},
+        {"known": "that is less interesting", "target": "isso é menos interessante"},
+        {"known": "I think that's less exciting", "target": "eu acho que isso é menos emocionante"},
+        {"known": "unfortunately that is less exciting", "target": "infelizmente isso é menos emocionante"},
+        {"known": "that is less exciting now", "target": "isso é menos emocionante agora"},
+        {"known": "I think that this is less exciting for them", "target": "eu acho que isso é menos emocionante para eles"},
+        {"known": "unfortunately that is less exciting than I was thinking", "target": "infelizmente isso é menos emocionante do que eu estava pensando"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "than what she was saying",
+      "target": "do que o que ela estava dizendo",
+      "components": [
+        {"known": "than what", "target": "do que o que"},
+        {"known": "she was saying", "target": "ela estava dizendo"}
+      ],
+      "phrases": [
+        {"known": "than what", "target": "do que o que"},
+        {"known": "she was saying", "target": "ela estava dizendo"},
+        {"known": "she was doing", "target": "ela estava fazendo"},
+        {"known": "than what she was saying", "target": "do que o que ela estava dizendo"},
+        {"known": "what she was saying", "target": "o que ela estava dizendo"},
+        {"known": "what she was doing", "target": "o que ela estava fazendo"},
+        {"known": "less than what she was saying", "target": "menos do que o que ela estava dizendo"},
+        {"known": "this is better than what she was saying", "target": "isso é melhor do que o que ela estava dizendo"},
+        {"known": "that is less exciting than what she was saying before", "target": "isso é menos emocionante do que o que ela estava dizendo antes"},
+        {"known": "unfortunately that is less interesting than what she was saying yesterday", "target": "infelizmente isso é menos interessante do que o que ela estava dizendo ontem"},
+        {"known": "I think this is less exciting than what she was saying about that", "target": "eu acho que isso é menos emocionante do que o que ela estava dizendo sobre isso"}
+      ]
+    }
+  ]
+}

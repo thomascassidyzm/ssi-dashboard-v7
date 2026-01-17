@@ -1,0 +1,121 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 6,
+  "known_text": "I'm trying to remember a word.",
+  "target_text": "Ich versuche mich an ein Wort zu erinnern.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm trying",
+      "target": "ich versuche",
+      "components": [
+        {"known": "I", "target": "ich"},
+        {"known": "trying", "target": "versuche"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ich"},
+        {"known": "trying", "target": "versuche"},
+        {"known": "I'm trying", "target": "ich versuche"},
+        {"known": "I'm trying to speak", "target": "ich versuche zu sprechen"},
+        {"known": "I'm trying to learn German", "target": "ich versuche Deutsch zu lernen"},
+        {"known": "I'm trying to say something in German", "target": "ich versuche etwas auf Deutsch zu sagen"},
+        {"known": "I'm trying to practise speaking with someone else", "target": "ich versuche mit jemand anderem sprechen zu üben"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "myself",
+      "target": "mich",
+      "phrases": [
+        {"known": "myself", "target": "mich"},
+        {"known": "I'm trying myself", "target": "ich versuche mich"},
+        {"known": "I want myself", "target": "ich möchte mich"},
+        {"known": "I'm going to teach myself German", "target": "ich werde mich Deutsch lernen"},
+        {"known": "I'm trying to learn myself", "target": "ich versuche mich zu lernen"},
+        {"known": "I want to practise myself", "target": "ich möchte mich üben"},
+        {"known": "I'm going to practise speaking German myself", "target": "ich werde mich Deutsch sprechen üben"},
+        {"known": "I'm trying to practise myself as often as possible", "target": "ich versuche mich so oft wie möglich zu üben"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "at",
+      "target": "an",
+      "phrases": [
+        {"known": "at", "target": "an"},
+        {"known": "at something", "target": "an etwas"},
+        {"known": "myself at something", "target": "mich an etwas"},
+        {"known": "I'm trying at something", "target": "ich versuche mich an etwas"},
+        {"known": "I want at something", "target": "ich möchte mich an etwas"},
+        {"known": "at German", "target": "an Deutsch"},
+        {"known": "I'm trying to speak German at something", "target": "ich versuche Deutsch an etwas zu sprechen"},
+        {"known": "I'm going to learn German at something", "target": "ich werde Deutsch an etwas lernen"},
+        {"known": "I'm trying to practise myself at something in German", "target": "ich versuche mich an etwas auf Deutsch zu üben"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "a word",
+      "target": "ein Wort",
+      "components": [
+        {"known": "a", "target": "ein"},
+        {"known": "word", "target": "Wort"}
+      ],
+      "phrases": [
+        {"known": "a", "target": "ein"},
+        {"known": "word", "target": "Wort"},
+        {"known": "a word", "target": "ein Wort"},
+        {"known": "at a word", "target": "an ein Wort"},
+        {"known": "myself at a word", "target": "mich an ein Wort"},
+        {"known": "I want a word", "target": "ich möchte ein Wort"},
+        {"known": "a word in German", "target": "ein Wort auf Deutsch"},
+        {"known": "I want to say a word", "target": "ich möchte ein Wort sagen"},
+        {"known": "say a word", "target": "ein Wort sagen"},
+        {"known": "I want to say a word in German", "target": "ich möchte ein Wort auf Deutsch sagen"},
+        {"known": "I'm going to learn a word in German", "target": "ich werde ein Wort auf Deutsch lernen"},
+        {"known": "I'm trying to say a word as often as possible", "target": "ich versuche so oft wie möglich ein Wort zu sagen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "to",
+      "target": "zu",
+      "phrases": [
+        {"known": "to", "target": "zu"},
+        {"known": "to speak", "target": "zu sprechen"},
+        {"known": "to learn", "target": "zu lernen"},
+        {"known": "I'm trying to", "target": "ich versuche zu"},
+        {"known": "to say", "target": "zu sagen"},
+        {"known": "to practise", "target": "zu üben"},
+        {"known": "I'm trying to speak German", "target": "ich versuche Deutsch zu sprechen"},
+        {"known": "I want to learn a word in German", "target": "ich möchte ein Wort auf Deutsch zu lernen"},
+        {"known": "I'm going to learn to say a word in German", "target": "ich werde ein Wort auf Deutsch sagen zu lernen"},
+        {"known": "I'm trying to say a word in German as often as possible", "target": "ich versuche so oft wie möglich ein Wort auf Deutsch zu sagen"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "remember",
+      "target": "erinnern",
+      "phrases": [
+        {"known": "remember", "target": "erinnern"},
+        {"known": "to remember", "target": "zu erinnern"},
+        {"known": "myself to remember", "target": "mich zu erinnern"},
+        {"known": "I'm trying to remember", "target": "ich versuche mich zu erinnern"},
+        {"known": "I'm trying to remember a word", "target": "ich versuche mich an ein Wort zu erinnern"},
+        {"known": "I want to remember", "target": "ich möchte mich erinnern"},
+        {"known": "I'm trying to remember something", "target": "ich versuche mich an etwas zu erinnern"},
+        {"known": "I'm going to remember", "target": "ich werde mich erinnern"},
+        {"known": "I want to remember a word in German", "target": "ich möchte mich an ein Wort auf Deutsch erinnern"},
+        {"known": "I'm going to remember a word", "target": "ich werde mich an ein Wort erinnern"},
+        {"known": "I'm trying to remember how to say something in German", "target": "ich versuche mich zu erinnern wie man etwas auf Deutsch sagt"}
+      ]
+    }
+  ]
+}

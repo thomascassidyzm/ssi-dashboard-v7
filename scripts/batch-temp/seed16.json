@@ -1,0 +1,78 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 16,
+  "known_text": "He wants to come back with everyone else later on.",
+  "target_text": "Er möchte später mit allen anderen zurückkommen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he wants",
+      "target": "er möchte",
+      "components": [
+        {"known": "he", "target": "er"},
+        {"known": "wants", "target": "möchte"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "er"},
+        {"known": "wants", "target": "möchte"},
+        {"known": "he wants", "target": "er möchte"},
+        {"known": "he wants to speak", "target": "er möchte sprechen"},
+        {"known": "he wants to learn German", "target": "er möchte Deutsch lernen"},
+        {"known": "he wants to explain what I mean", "target": "er möchte erklären was ich meine"},
+        {"known": "he wants to speak German with me tomorrow", "target": "er möchte morgen Deutsch mit mir sprechen"},
+        {"known": "I am not sure if he wants to speak today", "target": "ich bin nicht sicher ob er heute sprechen möchte"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "later on",
+      "target": "später",
+      "phrases": [
+        {"known": "later on", "target": "später"},
+        {"known": "he wants later on", "target": "er möchte später"},
+        {"known": "later on he wants to speak", "target": "später möchte er sprechen"},
+        {"known": "I want to try later on", "target": "ich möchte später versuchen"},
+        {"known": "later on I want to learn German", "target": "später möchte ich Deutsch lernen"},
+        {"known": "later on I am going to try to explain", "target": "später werde ich versuchen zu erklären"},
+        {"known": "he wants to speak German with me later on", "target": "er möchte später Deutsch mit mir sprechen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "with everyone else",
+      "target": "mit allen anderen",
+      "components": [
+        {"known": "with", "target": "mit"},
+        {"known": "everyone", "target": "allen"},
+        {"known": "else", "target": "anderen"}
+      ],
+      "phrases": [
+        {"known": "with", "target": "mit"},
+        {"known": "everyone", "target": "allen"},
+        {"known": "else", "target": "anderen"},
+        {"known": "with everyone else", "target": "mit allen anderen"},
+        {"known": "speak with everyone else", "target": "mit allen anderen sprechen"},
+        {"known": "he wants to speak with everyone else", "target": "er möchte mit allen anderen sprechen"},
+        {"known": "later on he wants to speak with everyone else", "target": "später möchte er mit allen anderen sprechen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "come back",
+      "target": "zurückkommen",
+      "phrases": [
+        {"known": "come back", "target": "zurückkommen"},
+        {"known": "he wants to come back", "target": "er möchte zurückkommen"},
+        {"known": "I want to come back later on", "target": "ich möchte später zurückkommen"},
+        {"known": "he wants to come back with everyone else", "target": "er möchte mit allen anderen zurückkommen"},
+        {"known": "later on he wants to come back", "target": "später möchte er zurückkommen"},
+        {"known": "he wants to come back with everyone else later on", "target": "er möchte später mit allen anderen zurückkommen"},
+        {"known": "I am not sure if he wants to come back later on", "target": "ich bin nicht sicher ob er später zurückkommen möchte"}
+      ]
+    }
+  ]
+}

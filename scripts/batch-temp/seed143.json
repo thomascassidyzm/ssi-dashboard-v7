@@ -1,0 +1,76 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 143,
+  "known_text": "It's the same thing as we were talking about earlier.",
+  "target_text": "É a mesma coisa que nós estávamos falando antes.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's the same thing",
+      "target": "é a mesma coisa",
+      "components": [
+        {"known": "it's the same", "target": "é a mesma"},
+        {"known": "thing", "target": "coisa"}
+      ],
+      "phrases": [
+        {"known": "the same", "target": "a mesma"},
+        {"known": "thing", "target": "coisa"},
+        {"known": "it's the same", "target": "é a mesma"},
+        {"known": "the same thing", "target": "a mesma coisa"},
+        {"known": "it's the same thing", "target": "é a mesma coisa"},
+        {"known": "it's the same thing for me", "target": "é a mesma coisa para eu"},
+        {"known": "it's the same thing for her now", "target": "é a mesma coisa para ela agora"},
+        {"known": "I think it's the same thing now", "target": "eu acho que é a mesma coisa agora"},
+        {"known": "of course it's the same thing for them now", "target": "claro que é a mesma coisa para eles agora"},
+        {"known": "it's the same thing that she wanted to do here", "target": "é a mesma coisa que ela queria fazer aqui"},
+        {"known": "unfortunately it's the same thing that my friend wanted to do", "target": "infelizmente é a mesma coisa que meu amigo queria fazer"},
+        {"known": "I think it's the same thing that she was trying to do here now", "target": "eu acho que é a mesma coisa que ela estava tentando fazer aqui agora"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "as we were talking about",
+      "target": "que nós estávamos falando",
+      "components": [
+        {"known": "as we were", "target": "que nós estávamos"},
+        {"known": "talking about", "target": "falando"}
+      ],
+      "phrases": [
+        {"known": "we were", "target": "nós estávamos"},
+        {"known": "talking", "target": "falando"},
+        {"known": "as we were", "target": "que nós estávamos"},
+        {"known": "talking about", "target": "falando"},
+        {"known": "we were talking", "target": "nós estávamos falando"},
+        {"known": "as we were talking about", "target": "que nós estávamos falando"},
+        {"known": "I think we were talking about this", "target": "eu acho que nós estávamos falando isso"},
+        {"known": "of course we were talking about this here", "target": "claro que nós estávamos falando isso aqui"},
+        {"known": "the same thing as we were talking about", "target": "a mesma coisa que nós estávamos falando"},
+        {"known": "I don't know what we were talking about here", "target": "eu não sei o que nós estávamos falando aqui"},
+        {"known": "it's important because we were talking about this now", "target": "é importante porque nós estávamos falando isso agora"},
+        {"known": "I think it's the same thing as we were talking about here now", "target": "eu acho que é a mesma coisa que nós estávamos falando aqui agora"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "earlier",
+      "target": "antes",
+      "phrases": [
+        {"known": "before", "target": "antes"},
+        {"known": "earlier", "target": "antes"},
+        {"known": "I was here earlier", "target": "eu estava aqui antes"},
+        {"known": "she said this earlier", "target": "ela disse isso antes"},
+        {"known": "we were talking earlier", "target": "nós estávamos falando antes"},
+        {"known": "I think she was here earlier", "target": "eu acho que ela estava aqui antes"},
+        {"known": "it's the same thing as earlier", "target": "é a mesma coisa que antes"},
+        {"known": "as we were talking about earlier", "target": "que nós estávamos falando antes"},
+        {"known": "I don't know what she said earlier about this", "target": "eu não sei o que ela disse antes sobre isso"},
+        {"known": "it's the same thing as we were talking about earlier", "target": "é a mesma coisa que nós estávamos falando antes"},
+        {"known": "I think my friend wanted to do this earlier but now everything is okay", "target": "eu acho que meu amigo queria fazer isso antes mas agora tudo está bem"},
+        {"known": "unfortunately I don't know what we were talking about earlier here", "target": "infelizmente eu não sei o que nós estávamos falando antes aqui"}
+      ]
+    }
+  ]
+}

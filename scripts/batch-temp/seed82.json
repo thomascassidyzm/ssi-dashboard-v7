@@ -1,0 +1,94 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 82,
+  "known_text": "I'm not going to wait for you. Why not?",
+  "target_text": "Eu não vou esperar por você. Por quê?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm not going to",
+      "target": "eu não vou",
+      "components": [
+        {"known": "not", "target": "não"},
+        {"known": "I'm going to", "target": "eu vou"}
+      ],
+      "phrases": [
+        {"known": "not", "target": "não"},
+        {"known": "I'm going to", "target": "eu vou"},
+        {"known": "I'm not going to", "target": "eu não vou"},
+        {"known": "I'm going to learn", "target": "eu vou aprender"},
+        {"known": "I'm not going to wait", "target": "eu não vou esperar"},
+        {"known": "I'm going to try", "target": "eu vou tentar"},
+        {"known": "I'm not going to speak", "target": "eu não vou falar"},
+        {"known": "I'm going to speak Portuguese", "target": "eu vou falar português"},
+        {"known": "I'm not going to wait for you", "target": "eu não vou esperar por você"},
+        {"known": "I'm not going to try to speak Portuguese today", "target": "eu não vou tentar falar português hoje"},
+        {"known": "I'm going to learn how to speak Portuguese soon", "target": "eu vou aprender a falar português em breve"},
+        {"known": "I'm not going to wait because I want to learn now", "target": "eu não vou esperar porque eu quero aprender agora"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to wait",
+      "target": "esperar",
+      "phrases": [
+        {"known": "wait", "target": "esperar"},
+        {"known": "to wait", "target": "esperar"},
+        {"known": "I can wait", "target": "eu posso esperar"},
+        {"known": "I want to wait", "target": "eu quero esperar"},
+        {"known": "to wait for you", "target": "esperar por você"},
+        {"known": "I do not like to wait", "target": "eu não gosto de esperar"},
+        {"known": "I am going to wait for you", "target": "eu vou esperar por você"},
+        {"known": "I do not want to wait any longer", "target": "eu não quero esperar mais"},
+        {"known": "I am not going to wait for you", "target": "eu não vou esperar por você"},
+        {"known": "I do not want to wait because I want to start now", "target": "eu não quero esperar porque eu quero começar agora"},
+        {"known": "I am not going to wait because I want to learn Portuguese", "target": "eu não vou esperar porque eu quero aprender português"},
+        {"known": "I do not want to wait for you because I want to start learning", "target": "eu não quero esperar por você porque eu quero começar a aprender"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "for you",
+      "target": "por você",
+      "components": [
+        {"known": "for", "target": "por"},
+        {"known": "you", "target": "você"}
+      ],
+      "phrases": [
+        {"known": "for", "target": "por"},
+        {"known": "you", "target": "você"},
+        {"known": "for you", "target": "por você"},
+        {"known": "I will wait for you", "target": "eu vou esperar por você"},
+        {"known": "thank you very much for everything", "target": "muito obrigado por tudo"},
+        {"known": "this is for you", "target": "isso é para você"},
+        {"known": "I am not going to wait for you today", "target": "eu não vou esperar por você hoje"},
+        {"known": "thank you very much for helping me to learn", "target": "muito obrigado por me ajudar a aprender"},
+        {"known": "thank you very much for speaking Portuguese with me", "target": "muito obrigado por falar português comigo"},
+        {"known": "I do not want to wait for you because I want to learn now", "target": "eu não quero esperar por você porque eu quero aprender agora"},
+        {"known": "thank you very much for helping me to understand Portuguese", "target": "muito obrigado por me ajudar a entender português"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "why not",
+      "target": "por quê",
+      "phrases": [
+        {"known": "why", "target": "por quê"},
+        {"known": "why not", "target": "por que não"},
+        {"known": "why not?", "target": "por que não?"},
+        {"known": "why not try?", "target": "por que não tentar?"},
+        {"known": "why not speak Portuguese?", "target": "por que não falar português?"},
+        {"known": "I do not know why", "target": "eu não sei por quê"},
+        {"known": "why do you want to learn?", "target": "por que você quer aprender?"},
+        {"known": "why not try to speak Portuguese with me?", "target": "por que não tentar falar português comigo?"},
+        {"known": "I do not understand why you do not want to try", "target": "eu não entendo por que você não quer tentar"},
+        {"known": "why do you not want to try to speak Portuguese with me?", "target": "por que você não quer tentar falar português comigo?"},
+        {"known": "I do not know why it is difficult to learn Portuguese", "target": "eu não sei por que é difícil aprender português"}
+      ]
+    }
+  ]
+}

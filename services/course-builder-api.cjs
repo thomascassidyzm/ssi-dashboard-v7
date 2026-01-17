@@ -331,9 +331,9 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Few-shot prompt v2 - shows ROUND experience + inline error fixes
-  // Full version in prompts/few-shot-v2.md (10KB vs 32KB old approach)
-  const prompt = `You build Chinese course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
+  // Few-shot prompt v3 - language-agnostic with multi-language examples
+  // Principle: same LEGO structure works for ALL languages
+  const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
 
 ## WHAT THE LEARNER EXPERIENCES (copy this structure!)
 
@@ -352,6 +352,25 @@ ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试
 
 **DEBUT/ETERNAL are computed:** 7 shortest = DEBUT, 5 longest = ETERNAL. Just order SHORT→LONG.
 
+## SAME PATTERN, ANY LANGUAGE
+
+CHINESE (Sinitic):
+  M-LEGO "as often as possible" → 尽量多
+  components: [as much as possible→尽量, often→多]
+  phrases: 尽量多说, 我想尽量多说, 我想尽量多说中文...
+
+PORTUGUESE (Romance):
+  M-LEGO "I have been learning" → tenho aprendido
+  components: [I have→tenho, learning→aprendido]
+  phrases: tenho aprendido, tenho aprendido português, eu tenho aprendido a falar...
+
+GERMAN (Germanic):
+  M-LEGO "I would like to" → ich möchte
+  components: [I→ich, would like→möchte]
+  phrases: ich möchte, ich möchte sprechen, ich möchte Deutsch sprechen...
+
+**The principle is universal:** chunk meaningful phrases as M-LEGOs, not isolated words.
+
 ## BASKET FORMAT
 
 \`\`\`json
@@ -366,19 +385,20 @@ ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试
 \`\`\`
 
 ## M-LEGO COMPONENTS = REAL WORDS ONLY
-✓ do → 做, then done → 做了 (learner infers 了 from contrast)
-✗ NEVER: "completed action marker" → 了
+✓ Chinese: do → 做, then done → 做了 (learner infers 了 from contrast)
+✓ Portuguese: to speak → falar, I speak → falo (learner infers conjugation)
+✓ German: to want → wollen, I want → ich will (learner sees pattern)
+✗ NEVER teach grammar labels: "completed action marker", "subjunctive", "dative case"
 
 ## ERROR FIXES (don't read external files)
-• TILING FAILED [吗]: Add to M-LEGO "Is it good?" → 好吗 with [good→好]
-• ZUT VIOLATION: Use existing mapping OR upchunk "to say (formally)" → 讲
-• VOCAB VIOLATION [明天]: Remove - that LEGO not introduced yet
-• PHRASE TIERS need 3+ LONG: Add phrases with 10+ Chinese characters
-• M-LEGO MISSING COMPONENTS: Add [I→我, want→想, go→去]
+• ZUT VIOLATION: Use existing mapping OR upchunk to disambiguate
+• VOCAB VIOLATION: Remove phrase - that vocabulary not introduced yet
+• PHRASE TIERS need 3+ LONG: Add phrases with 10+ words/characters
+• M-LEGO MISSING COMPONENTS: Add the component breakdown
 
 ## WORKFLOW
 1. curl http://localhost:3471/api/resume/${courseCode} → get next seed
-2. Translate, break into 3-5 LEGOs (prefer M-LEGOs)
+2. Translate, break into 3-5 LEGOs (prefer M-LEGOs for meaningful chunks)
 3. Generate 10-12 phrases per LEGO, components first then SHORT→LONG
 4. POST to http://localhost:3471/api/seed/complete
 5. Fix errors inline (see above), retry max 3x

@@ -1,0 +1,63 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 14,
+  "known_text": "Do you speak French all day?",
+  "target_text": "Est-ce que tu parles français toute la journée?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "do you speak",
+      "target": "est-ce que tu parles",
+      "components": [
+        {"known": "do", "target": "est-ce que"},
+        {"known": "you", "target": "tu"},
+        {"known": "speak", "target": "parles"}
+      ],
+      "phrases": [
+        {"known": "do", "target": "est-ce que"},
+        {"known": "you", "target": "tu"},
+        {"known": "speak", "target": "parles"},
+        {"known": "do you speak", "target": "est-ce que tu parles"},
+        {"known": "do you speak French", "target": "est-ce que tu parles français"},
+        {"known": "do you speak very well", "target": "est-ce que tu parles très bien"},
+        {"known": "do you speak French very well", "target": "est-ce que tu parles français très bien"},
+        {"known": "do you speak a little French", "target": "est-ce que tu parles un peu français"},
+        {"known": "do you speak French with someone else", "target": "est-ce que tu parles français avec quelqu'un d'autre"},
+        {"known": "do you speak French very well with someone else today", "target": "est-ce que tu parles français très bien avec quelqu'un d'autre aujourd'hui"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "French",
+      "target": "français",
+      "phrases": [
+        {"known": "French", "target": "français"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "all day",
+      "target": "toute la journée",
+      "components": [
+        {"known": "all", "target": "toute"},
+        {"known": "the", "target": "la"},
+        {"known": "day", "target": "journée"}
+      ],
+      "phrases": [
+        {"known": "all", "target": "toute"},
+        {"known": "the", "target": "la"},
+        {"known": "day", "target": "journée"},
+        {"known": "all day", "target": "toute la journée"},
+        {"known": "French all day", "target": "français toute la journée"},
+        {"known": "you speak all day", "target": "tu parles toute la journée"},
+        {"known": "you speak French all day", "target": "tu parles français toute la journée"},
+        {"known": "do you speak French all day", "target": "est-ce que tu parles français toute la journée"},
+        {"known": "I'd like to be able to guess what's going to happen all day", "target": "j'aimerais pouvoir deviner ce qui va se passer toute la journée"},
+        {"known": "I wouldn't like to remember something all day tomorrow", "target": "je n'aimerais pas me souvenir de quelque chose toute la journée demain"}
+      ]
+    }
+  ]
+}

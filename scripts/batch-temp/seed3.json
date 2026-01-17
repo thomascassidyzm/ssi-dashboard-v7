@@ -1,0 +1,50 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 3,
+  "known_text": "how to speak as often as possible.",
+  "target_text": "wie man so oft wie möglich spricht.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "how one speaks",
+      "target": "wie man spricht",
+      "components": [
+        {"known": "how", "target": "wie"},
+        {"known": "one", "target": "man"},
+        {"known": "speaks", "target": "spricht"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "wie"},
+        {"known": "one", "target": "man"},
+        {"known": "speaks", "target": "spricht"},
+        {"known": "how one speaks", "target": "wie man spricht"},
+        {"known": "I want to speak", "target": "ich möchte sprechen"},
+        {"known": "I'm trying to learn how one speaks", "target": "ich versuche zu lernen wie man spricht"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "as often as possible",
+      "target": "so oft wie möglich",
+      "components": [
+        {"known": "often", "target": "oft"},
+        {"known": "possible", "target": "möglich"}
+      ],
+      "phrases": [
+        {"known": "often", "target": "oft"},
+        {"known": "possible", "target": "möglich"},
+        {"known": "as often as possible", "target": "so oft wie möglich"},
+        {"known": "speak as often as possible", "target": "so oft wie möglich sprechen"},
+        {"known": "I want to speak as often as possible", "target": "ich möchte so oft wie möglich sprechen"},
+        {"known": "how one speaks as often as possible", "target": "wie man so oft wie möglich spricht"},
+        {"known": "I'm trying to speak as often as possible", "target": "ich versuche so oft wie möglich zu sprechen"},
+        {"known": "learn German as often as possible", "target": "so oft wie möglich Deutsch lernen"},
+        {"known": "I want to learn German as often as possible", "target": "ich möchte so oft wie möglich Deutsch lernen"},
+        {"known": "I'm trying to learn as often as possible", "target": "ich versuche so oft wie möglich zu lernen"},
+        {"known": "speak German with you as often as possible", "target": "so oft wie möglich Deutsch mit dir sprechen"}
+      ]
+    }
+  ]
+}

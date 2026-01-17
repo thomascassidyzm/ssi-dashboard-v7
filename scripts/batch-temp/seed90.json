@@ -1,0 +1,77 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 90,
+  "known_text": "If you can speak more slowly that would be great.",
+  "target_text": "Se você puder falar mais devagar, seria ótimo.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if you can",
+      "target": "se você puder",
+      "components": [
+        {"known": "if", "target": "se"},
+        {"known": "you can", "target": "você puder"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "se"},
+        {"known": "you can", "target": "você puder"},
+        {"known": "if you can", "target": "se você puder"},
+        {"known": "if I can", "target": "se eu puder"},
+        {"known": "if you can help", "target": "se você puder ajudar"},
+        {"known": "if you can speak", "target": "se você puder falar"},
+        {"known": "if you can speak more slowly", "target": "se você puder falar mais devagar"},
+        {"known": "if you can help me to understand", "target": "se você puder me ajudar a entender"},
+        {"known": "if I can I want to learn Portuguese", "target": "se eu puder eu quero aprender português"},
+        {"known": "if you can speak more slowly I think I can understand", "target": "se você puder falar mais devagar eu acho que eu posso entender"},
+        {"known": "if you can help me to learn Portuguese I would be very happy", "target": "se você puder me ajudar a aprender português eu vou estar muito feliz"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "speak more slowly",
+      "target": "falar mais devagar",
+      "components": [
+        {"known": "speak", "target": "falar"},
+        {"known": "more slowly", "target": "mais devagar"}
+      ],
+      "phrases": [
+        {"known": "speak", "target": "falar"},
+        {"known": "more slowly", "target": "mais devagar"},
+        {"known": "speak more slowly", "target": "falar mais devagar"},
+        {"known": "I want to speak more slowly", "target": "eu quero falar mais devagar"},
+        {"known": "if you can speak more slowly", "target": "se você puder falar mais devagar"},
+        {"known": "I think I need to speak more slowly", "target": "eu acho que eu preciso falar mais devagar"},
+        {"known": "if you can speak more slowly I can understand", "target": "se você puder falar mais devagar eu posso entender"},
+        {"known": "if you can speak more slowly I think I can understand you", "target": "se você puder falar mais devagar eu acho que eu posso entender você"},
+        {"known": "I want you to speak more slowly so I can understand what you said", "target": "eu quero que você fale mais devagar para eu entender o que você disse"},
+        {"known": "if you can speak more slowly I think I can understand what you said", "target": "se você puder falar mais devagar eu acho que eu posso entender o que você disse"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that would be great",
+      "target": "seria ótimo",
+      "components": [
+        {"known": "that would be", "target": "seria"},
+        {"known": "great", "target": "ótimo"}
+      ],
+      "phrases": [
+        {"known": "that would be", "target": "seria"},
+        {"known": "great", "target": "ótimo"},
+        {"known": "that would be great", "target": "seria ótimo"},
+        {"known": "that would be difficult", "target": "seria difícil"},
+        {"known": "it would be great", "target": "seria ótimo"},
+        {"known": "it would be great to learn", "target": "seria ótimo aprender"},
+        {"known": "it would be great for you", "target": "seria ótimo para você"},
+        {"known": "it would be great to learn more", "target": "seria ótimo aprender mais"},
+        {"known": "if you can help me that would be great", "target": "se você puder me ajudar seria ótimo"},
+        {"known": "if you can speak more slowly that would be great", "target": "se você puder falar mais devagar seria ótimo"},
+        {"known": "it would be great if I can learn Portuguese with you", "target": "seria ótimo se eu puder aprender português com você"},
+        {"known": "I think that it would be great if you can speak more slowly", "target": "eu acho que seria ótimo se você puder falar mais devagar"}
+      ]
+    }
+  ]
+}

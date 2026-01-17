@@ -1,0 +1,100 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 58,
+  "known_text": "It's interesting when you understand enough words.",
+  "target_text": "Es ist interessant, wenn du genug Wörter verstehst.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's interesting",
+      "target": "es ist interessant",
+      "components": [
+        {"known": "it is", "target": "es ist"},
+        {"known": "interesting", "target": "interessant"}
+      ],
+      "phrases": [
+        {"known": "it is", "target": "es ist"},
+        {"known": "interesting", "target": "interessant"},
+        {"known": "it's interesting", "target": "es ist interessant"},
+        {"known": "it's not interesting", "target": "es ist nicht interessant"},
+        {"known": "it's interesting now", "target": "es ist jetzt interessant"},
+        {"known": "I think it's interesting", "target": "ich denke es ist interessant"},
+        {"known": "it's interesting today", "target": "es ist heute interessant"},
+        {"known": "I know it's interesting", "target": "ich weiss es ist interessant"},
+        {"known": "I think it's interesting but I don't know", "target": "ich denke es ist interessant aber ich weiss nicht"},
+        {"known": "it's interesting because I can remember", "target": "es ist interessant weil ich mich erinnern kann"},
+        {"known": "I know that it's interesting but I don't worry", "target": "ich weiss dass es interessant ist aber ich mache mir keine Sorgen"},
+        {"known": "I think it's interesting because I can say a few words", "target": "ich denke es ist interessant weil ich ein paar Wörter sagen kann"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "when",
+      "target": "wenn",
+      "phrases": [
+        {"known": "when", "target": "wenn"},
+        {"known": "when not", "target": "wenn nicht"},
+        {"known": "when I", "target": "wenn ich"},
+        {"known": "when you", "target": "wenn du"},
+        {"known": "it's interesting when", "target": "es ist interessant wenn"},
+        {"known": "I think it's interesting when", "target": "ich denke es ist interessant wenn"},
+        {"known": "it's interesting when I can remember", "target": "es ist interessant wenn ich mich erinnern kann"},
+        {"known": "when I can remember a few words", "target": "wenn ich mich an ein paar Wörter erinnern kann"},
+        {"known": "I know it's interesting when I can say something", "target": "ich weiss es ist interessant wenn ich etwas sagen kann"},
+        {"known": "it's interesting when I think about a few words", "target": "es ist interessant wenn ich an ein paar Wörter denke"},
+        {"known": "I think it's interesting when I can remember what I wanted to say", "target": "ich denke es ist interessant wenn ich mich erinnern kann was ich sagen wollte"},
+        {"known": "it's not interesting when I can't remember but I don't worry", "target": "es ist nicht interessant wenn ich mich nicht erinnern kann aber ich mache mir keine Sorgen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "you understand",
+      "target": "du verstehst",
+      "components": [
+        {"known": "you", "target": "du"},
+        {"known": "understand", "target": "verstehst"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "du"},
+        {"known": "understand", "target": "verstehst"},
+        {"known": "you understand", "target": "du verstehst"},
+        {"known": "you don't understand", "target": "du verstehst nicht"},
+        {"known": "when you understand", "target": "wenn du verstehst"},
+        {"known": "I think you understand", "target": "ich denke du verstehst"},
+        {"known": "I know you understand", "target": "ich weiss du verstehst"},
+        {"known": "it's interesting when you understand", "target": "es ist interessant wenn du verstehst"},
+        {"known": "when you understand what I think", "target": "wenn du verstehst was ich denke"},
+        {"known": "I think it's interesting when you understand", "target": "ich denke es ist interessant wenn du verstehst"},
+        {"known": "I know you understand what I wanted to say", "target": "ich weiss du verstehst was ich sagen wollte"},
+        {"known": "it's interesting when you understand but I don't worry if not", "target": "es ist interessant wenn du verstehst aber ich mache mir keine Sorgen wenn nicht"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "enough words",
+      "target": "genug Wörter",
+      "components": [
+        {"known": "enough", "target": "genug"},
+        {"known": "words", "target": "Wörter"}
+      ],
+      "phrases": [
+        {"known": "enough", "target": "genug"},
+        {"known": "words", "target": "Wörter"},
+        {"known": "enough words", "target": "genug Wörter"},
+        {"known": "not enough words", "target": "nicht genug Wörter"},
+        {"known": "enough words now", "target": "genug Wörter jetzt"},
+        {"known": "I know enough words", "target": "ich weiss genug Wörter"},
+        {"known": "you understand enough words", "target": "du verstehst genug Wörter"},
+        {"known": "I can remember enough words", "target": "ich kann mich an genug Wörter erinnern"},
+        {"known": "when you understand enough words", "target": "wenn du genug Wörter verstehst"},
+        {"known": "it's interesting when you understand enough words", "target": "es ist interessant wenn du genug Wörter verstehst"},
+        {"known": "I think it's interesting when you understand enough words", "target": "ich denke es ist interessant wenn du genug Wörter verstehst"},
+        {"known": "it's not interesting when you don't understand enough words", "target": "es ist nicht interessant wenn du nicht genug Wörter verstehst"}
+      ]
+    }
+  ]
+}

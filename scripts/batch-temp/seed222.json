@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 222,
+  "known_text": "He's trying to tell me what he wants",
+  "target_text": "他在试着告诉我他想要什么",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he's trying",
+      "target": "他在试着",
+      "components": [
+        {"known": "he", "target": "他"},
+        {"known": "is trying", "target": "在试着"}
+      ],
+      "phrases": [
+        {"known": "is trying", "target": "在试着"},
+        {"known": "he's trying", "target": "他在试着"},
+        {"known": "he's trying to speak", "target": "他在试着说"},
+        {"known": "he's trying to learn", "target": "他在试着学"},
+        {"known": "she's trying to learn Chinese", "target": "她在试着学中文"},
+        {"known": "he's trying to understand", "target": "他在试着理解"},
+        {"known": "he's trying to help me", "target": "他在试着帮我"},
+        {"known": "she's trying to explain it to me", "target": "她在试着给我解释"},
+        {"known": "he's trying to speak Chinese with me", "target": "他在试着和我说中文"},
+        {"known": "she's trying to help my friend understand", "target": "她在试着帮我朋友理解"},
+        {"known": "he's trying to learn how to speak Chinese", "target": "他在试着学怎么说中文"},
+        {"known": "she's trying to explain something to my friend", "target": "她在试着给我朋友解释"},
+        {"known": "he's trying to help us understand what she wants", "target": "他在试着帮我们理解她想要什么"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to tell me",
+      "target": "告诉我",
+      "components": [
+        {"known": "tell", "target": "告诉"},
+        {"known": "me", "target": "我"}
+      ],
+      "phrases": [
+        {"known": "tell", "target": "告诉"},
+        {"known": "tell me", "target": "告诉我"},
+        {"known": "tell him", "target": "告诉他"},
+        {"known": "tell her", "target": "告诉她"},
+        {"known": "please tell me", "target": "请告诉我"},
+        {"known": "tell me something", "target": "告诉我一些"},
+        {"known": "can you tell me", "target": "你能告诉我吗"},
+        {"known": "he told me yesterday", "target": "他昨天告诉我了"},
+        {"known": "she wants to tell me something", "target": "她想告诉我一些"},
+        {"known": "can you tell me what you want", "target": "你能告诉我你想要什么吗"},
+        {"known": "he told me something interesting yesterday", "target": "他昨天告诉我有意思的"},
+        {"known": "she wants to tell me what she saw yesterday", "target": "她想告诉我她昨天看到的"},
+        {"known": "can you tell me what you want to do tomorrow", "target": "你能告诉我你明天想做什么吗"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what he wants",
+      "target": "他想要什么",
+      "components": [
+        {"known": "what", "target": "什么"},
+        {"known": "he wants", "target": "他想要"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "什么"},
+        {"known": "wants", "target": "想要"},
+        {"known": "he wants", "target": "他想要"},
+        {"known": "what he wants", "target": "他想要什么"},
+        {"known": "what she wants", "target": "她想要什么"},
+        {"known": "what do you want", "target": "你想要什么"},
+        {"known": "she knows what he wants", "target": "她知道他想要什么"},
+        {"known": "he doesn't know what she wants", "target": "他不知道她想要什么"},
+        {"known": "can you tell me what you want", "target": "你能告诉我你想要什么吗"},
+        {"known": "tell me what you want to do", "target": "告诉我你想要做什么"},
+        {"known": "he doesn't know what she wants to do", "target": "他不知道她想要做什么"},
+        {"known": "can you tell me what you want to learn today", "target": "你能告诉我你今天想要学什么吗"},
+        {"known": "she asked me what I wanted to do tomorrow", "target": "她问我明天想要做什么"}
+      ]
+    }
+  ]
+}

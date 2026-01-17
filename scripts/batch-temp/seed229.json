@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 229,
+  "known_text": "That woman would help you if she could.",
+  "target_text": "如果她能的话，那个女人会帮你。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if she could",
+      "target": "如果她能的话",
+      "components": [
+        {"known": "if", "target": "如果"},
+        {"known": "she could", "target": "她能的话"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "如果"},
+        {"known": "she could", "target": "她能"},
+        {"known": "she can go", "target": "她能去"},
+        {"known": "she can come", "target": "她能来"},
+        {"known": "if she could", "target": "如果她能的话"},
+        {"known": "if he could", "target": "如果他能的话"},
+        {"known": "if she could help", "target": "如果她能帮的话"},
+        {"known": "if I could understand", "target": "如果我能理解的话"},
+        {"known": "if she could come tomorrow", "target": "如果她明天能来的话"},
+        {"known": "if he could help us with the work", "target": "如果他能帮我们工作的话"},
+        {"known": "if she could tell me what she wants", "target": "如果她能告诉我她想要什么的话"},
+        {"known": "if she could help us understand the problem", "target": "如果她能帮我们理解问题的话"},
+        {"known": "if he could practise speaking Chinese with us", "target": "如果他能和我们练习说中文的话"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that woman",
+      "target": "那个女人",
+      "components": [
+        {"known": "that", "target": "那个"},
+        {"known": "woman", "target": "女人"}
+      ],
+      "phrases": [
+        {"known": "woman", "target": "女人"},
+        {"known": "that woman", "target": "那个女人"},
+        {"known": "this woman", "target": "这个女人"},
+        {"known": "a woman", "target": "一个女人"},
+        {"known": "that woman can help", "target": "那个女人能帮"},
+        {"known": "do you know that woman", "target": "你认识那个女人吗"},
+        {"known": "that woman is learning Chinese", "target": "那个女人在学中文"},
+        {"known": "that woman wants to help us", "target": "那个女人想帮我们"},
+        {"known": "I saw that woman yesterday", "target": "我昨天看到那个女人了"},
+        {"known": "that woman is trying to learn Chinese", "target": "那个女人在试着学中文"},
+        {"known": "that woman just started to practise speaking", "target": "那个女人刚开始练习说"},
+        {"known": "do you know what that woman wants to do", "target": "你知道那个女人想做什么吗"},
+        {"known": "that woman will help us if she can come tomorrow", "target": "如果她明天能来的话，那个女人会帮我们"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "would help you",
+      "target": "会帮你",
+      "components": [
+        {"known": "would", "target": "会"},
+        {"known": "help you", "target": "帮你"}
+      ],
+      "phrases": [
+        {"known": "would", "target": "会"},
+        {"known": "help you", "target": "帮你"},
+        {"known": "help me", "target": "帮我"},
+        {"known": "would help", "target": "会帮"},
+        {"known": "would help you", "target": "会帮你"},
+        {"known": "she would help me", "target": "她会帮我"},
+        {"known": "I would help her", "target": "我会帮她"},
+        {"known": "he would help you learn", "target": "他会帮你学"},
+        {"known": "that woman would help you", "target": "那个女人会帮你"},
+        {"known": "she would help you if she could", "target": "如果她能的话，她会帮你"},
+        {"known": "I would help you practise speaking", "target": "我会帮你练习说"},
+        {"known": "that man would help you learn Chinese", "target": "那个男人会帮你学中文"},
+        {"known": "if she could, that woman would help you tomorrow", "target": "如果她能的话，那个女人明天会帮你"}
+      ]
+    }
+  ]
+}

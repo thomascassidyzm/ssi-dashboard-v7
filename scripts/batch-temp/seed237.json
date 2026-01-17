@@ -1,0 +1,81 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 237,
+  "known_text": "He wanted me to tell you before the weekend.",
+  "target_text": "他想让我周末以前告诉你。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he wanted me to",
+      "target": "他想让我",
+      "components": [
+        {"known": "he wanted", "target": "他想"},
+        {"known": "me to", "target": "让我"}
+      ],
+      "phrases": [
+        {"known": "wanted", "target": "想"},
+        {"known": "let me", "target": "让我"},
+        {"known": "he wanted", "target": "他想"},
+        {"known": "he wanted me to", "target": "他想让我"},
+        {"known": "she wanted me to", "target": "她想让我"},
+        {"known": "he wanted me to go", "target": "他想让我去"},
+        {"known": "she wanted me to help", "target": "她想让我帮"},
+        {"known": "he wanted me to tell you", "target": "他想让我告诉你"},
+        {"known": "she wanted me to help her", "target": "她想让我帮她"},
+        {"known": "he wanted me to tell you something", "target": "他想让我告诉你一些"},
+        {"known": "she wanted me to meet her brother", "target": "她想让我见她哥哥"},
+        {"known": "he wanted me to tell you the answer yesterday", "target": "他昨天想让我告诉你答案"},
+        {"known": "she wanted me to help her learn how to speak Chinese", "target": "她想让我帮她学怎么说中文"},
+        {"known": "he wanted me to help her understand the problem yesterday", "target": "他昨天想让我帮她理解问题"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "tell you",
+      "target": "告诉你",
+      "phrases": [
+        {"known": "tell", "target": "告诉"},
+        {"known": "tell you", "target": "告诉你"},
+        {"known": "tell me", "target": "告诉我"},
+        {"known": "tell her", "target": "告诉她"},
+        {"known": "tell him", "target": "告诉他"},
+        {"known": "I want to tell you", "target": "我想告诉你"},
+        {"known": "he wanted to tell you", "target": "他想告诉你"},
+        {"known": "she wanted me to tell you", "target": "她想让我告诉你"},
+        {"known": "I need to tell you something", "target": "我需要告诉你一些"},
+        {"known": "he said he wanted to tell you", "target": "他说他想告诉你"},
+        {"known": "she wanted to tell you the answer", "target": "她想告诉你答案"},
+        {"known": "I need to tell you something about your brother", "target": "我需要告诉你你哥哥的"},
+        {"known": "he wanted me to tell you what happened yesterday", "target": "他想让我告诉你昨天的"},
+        {"known": "she said she wanted me to tell you the answer before tomorrow", "target": "她说她想让我明天以前告诉你答案"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before the weekend",
+      "target": "周末以前",
+      "components": [
+        {"known": "weekend", "target": "周末"},
+        {"known": "before", "target": "以前"}
+      ],
+      "phrases": [
+        {"known": "weekend", "target": "周末"},
+        {"known": "before", "target": "以前"},
+        {"known": "before the weekend", "target": "周末以前"},
+        {"known": "at the weekend", "target": "周末"},
+        {"known": "before tomorrow", "target": "明天以前"},
+        {"known": "I need to go before the weekend", "target": "我需要周末以前去"},
+        {"known": "he wanted to tell you before the weekend", "target": "他想周末以前告诉你"},
+        {"known": "can you help me before the weekend", "target": "你能周末以前帮我吗"},
+        {"known": "she said she would tell me before the weekend", "target": "她说她会周末以前告诉我"},
+        {"known": "I need to finish this work before tomorrow", "target": "我需要明天以前做这工作"},
+        {"known": "he wanted me to tell you the answer before the weekend", "target": "他想让我周末以前告诉你答案"},
+        {"known": "she said she would help us with this before tomorrow morning", "target": "她说她会明天早上以前帮我们"},
+        {"known": "I need to meet your brother before the weekend if I can", "target": "我需要周末以前见你哥哥如果我能的话"}
+      ]
+    }
+  ]
+}

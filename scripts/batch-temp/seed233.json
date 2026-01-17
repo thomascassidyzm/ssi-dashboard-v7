@@ -1,0 +1,83 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 233,
+  "known_text": "I know a young woman who knows your sister.",
+  "target_text": "我认识一个年轻女人认识你姐姐。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I know",
+      "target": "我认识",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "know (a person)", "target": "认识"}
+      ],
+      "phrases": [
+        {"known": "know", "target": "认识"},
+        {"known": "I know", "target": "我认识"},
+        {"known": "I know him", "target": "我认识他"},
+        {"known": "I know her", "target": "我认识她"},
+        {"known": "I know that old woman", "target": "我认识那个老女人"},
+        {"known": "I know that young man", "target": "我认识那个年轻人"},
+        {"known": "do you know her", "target": "你认识她吗"},
+        {"known": "do you know that person", "target": "你认识那个人吗"},
+        {"known": "I know a person who lives here", "target": "我认识一个住在这的人"},
+        {"known": "I know an old woman who can remember", "target": "我认识一个能记住的老女人"},
+        {"known": "do you know that young man who just arrived", "target": "你认识刚来的那个年轻人吗"},
+        {"known": "I know a young man who wants to work with you", "target": "我认识一个想和你工作的年轻人"},
+        {"known": "I know an old man who can speak Chinese very well", "target": "我认识一个能说中文说得很好的老人"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "a young woman",
+      "target": "一个年轻女人",
+      "components": [
+        {"known": "a", "target": "一个"},
+        {"known": "young woman", "target": "年轻女人"}
+      ],
+      "phrases": [
+        {"known": "young", "target": "年轻"},
+        {"known": "woman", "target": "女人"},
+        {"known": "young woman", "target": "年轻女人"},
+        {"known": "she is young", "target": "她年轻"},
+        {"known": "a young woman", "target": "一个年轻女人"},
+        {"known": "that young woman", "target": "那个年轻女人"},
+        {"known": "this young woman", "target": "这个年轻女人"},
+        {"known": "the young woman can help", "target": "那个年轻女人能帮"},
+        {"known": "do you know that young woman", "target": "你认识那个年轻女人吗"},
+        {"known": "that young woman wants to learn Chinese", "target": "那个年轻女人想学中文"},
+        {"known": "I know a young woman who lives here", "target": "我认识一个住在这的年轻女人"},
+        {"known": "that young woman can remember the answer", "target": "那个年轻女人能记住答案"},
+        {"known": "that young woman wants to work with us tomorrow", "target": "那个年轻女人明天想和我们工作"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "knows your sister",
+      "target": "认识你姐姐",
+      "components": [
+        {"known": "knows", "target": "认识"},
+        {"known": "your sister", "target": "你姐姐"}
+      ],
+      "phrases": [
+        {"known": "sister", "target": "姐姐"},
+        {"known": "your sister", "target": "你姐姐"},
+        {"known": "my sister", "target": "我姐姐"},
+        {"known": "her sister", "target": "她姐姐"},
+        {"known": "knows your sister", "target": "认识你姐姐"},
+        {"known": "do you know my sister", "target": "你认识我姐姐吗"},
+        {"known": "she knows your sister", "target": "她认识你姐姐"},
+        {"known": "my sister is learning Chinese", "target": "我姐姐在学中文"},
+        {"known": "do you know her sister", "target": "你认识她姐姐吗"},
+        {"known": "I know a woman who knows your sister", "target": "我认识一个认识你姐姐的女人"},
+        {"known": "her sister wants to work with us tomorrow", "target": "她姐姐明天想和我们工作"},
+        {"known": "my sister can remember the answer to the question", "target": "我姐姐能记住问题的答案"},
+        {"known": "that young woman knows your sister and your friend", "target": "那个年轻女人认识你姐姐和你朋友"}
+      ]
+    }
+  ]
+}

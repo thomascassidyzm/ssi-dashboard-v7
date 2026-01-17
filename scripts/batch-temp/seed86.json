@@ -1,0 +1,52 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 86,
+  "known_text": "It wasn't possible, unfortunately.",
+  "target_text": "Não foi possível, infelizmente.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it wasn't possible",
+      "target": "não foi possível",
+      "components": [
+        {"known": "wasn't", "target": "não foi"},
+        {"known": "possible", "target": "possível"}
+      ],
+      "phrases": [
+        {"known": "wasn't", "target": "não foi"},
+        {"known": "possible", "target": "possível"},
+        {"known": "it wasn't possible", "target": "não foi possível"},
+        {"known": "it was possible", "target": "foi possível"},
+        {"known": "it wasn't easy", "target": "não foi fácil"},
+        {"known": "it wasn't difficult", "target": "não foi difícil"},
+        {"known": "it was possible to start", "target": "foi possível começar"},
+        {"known": "it was possible to understand", "target": "foi possível entender"},
+        {"known": "it wasn't possible to try that", "target": "não foi possível tentar isso"},
+        {"known": "it was possible to speak today", "target": "foi possível falar hoje"},
+        {"known": "it wasn't possible to learn Portuguese quickly", "target": "não foi possível aprender português rápido"},
+        {"known": "it was possible to understand what you said about that", "target": "foi possível entender o que você disse sobre isso"},
+        {"known": "it wasn't possible to speak Portuguese with my friend yesterday", "target": "não foi possível falar português com o meu amigo ontem"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "unfortunately",
+      "target": "infelizmente",
+      "phrases": [
+        {"known": "unfortunately", "target": "infelizmente"},
+        {"known": "unfortunately not", "target": "infelizmente não"},
+        {"known": "unfortunately, I can't", "target": "infelizmente, eu não posso"},
+        {"known": "unfortunately, it wasn't possible", "target": "infelizmente, não foi possível"},
+        {"known": "unfortunately, I don't understand", "target": "infelizmente, eu não entendo"},
+        {"known": "unfortunately, I don't know him", "target": "infelizmente, eu não conheço ele"},
+        {"known": "unfortunately, I can't speak Portuguese yet", "target": "infelizmente, eu ainda não posso falar português"},
+        {"known": "unfortunately, it wasn't possible to learn Portuguese quickly", "target": "infelizmente, não foi possível aprender português rápido"},
+        {"known": "unfortunately, I don't know those people but I want to", "target": "infelizmente, eu não conheço essas pessoas mas eu quero"},
+        {"known": "unfortunately, it wasn't possible to understand what he said yesterday", "target": "infelizmente, não foi possível entender o que ele disse ontem"},
+        {"known": "unfortunately, I don't agree with what my friend said about that", "target": "infelizmente, eu não concordo com o que o meu amigo disse sobre isso"}
+      ]
+    }
+  ]
+}

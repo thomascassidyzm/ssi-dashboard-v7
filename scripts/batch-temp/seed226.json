@@ -1,0 +1,58 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 226,
+  "known_text": "The man is trying to help me.",
+  "target_text": "这个男人在试着帮我。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the man",
+      "target": "这个男人",
+      "components": [
+        {"known": "this", "target": "这个"},
+        {"known": "man", "target": "男人"}
+      ],
+      "phrases": [
+        {"known": "man", "target": "男人"},
+        {"known": "this", "target": "这个"},
+        {"known": "this man", "target": "这个男人"},
+        {"known": "that man", "target": "那个男人"},
+        {"known": "a man", "target": "一个男人"},
+        {"known": "the man is here", "target": "这个男人在这"},
+        {"known": "the man wants to help", "target": "这个男人想帮"},
+        {"known": "this man can speak Chinese", "target": "这个男人能说中文"},
+        {"known": "do you know this man", "target": "你认识这个男人吗"},
+        {"known": "the man is trying to learn Chinese", "target": "这个男人在试着学中文"},
+        {"known": "this man wants to help us tomorrow", "target": "这个男人明天想帮我们"},
+        {"known": "do you know what this man wants", "target": "你知道这个男人想要什么吗"},
+        {"known": "the man is trying to tell me something interesting", "target": "这个男人在试着告诉我有意思的"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "is trying to help me",
+      "target": "在试着帮我",
+      "components": [
+        {"known": "is trying to", "target": "在试着"},
+        {"known": "help me", "target": "帮我"}
+      ],
+      "phrases": [
+        {"known": "help me", "target": "帮我"},
+        {"known": "is trying to", "target": "在试着"},
+        {"known": "is trying to help me", "target": "在试着帮我"},
+        {"known": "he is trying to help me", "target": "他在试着帮我"},
+        {"known": "she is trying to help us", "target": "她在试着帮我们"},
+        {"known": "can you help me", "target": "你能帮我吗"},
+        {"known": "he is trying to help me understand", "target": "他在试着帮我理解"},
+        {"known": "the man is trying to help me learn", "target": "这个男人在试着帮我学"},
+        {"known": "she is trying to help me with the work", "target": "她在试着帮我做工作"},
+        {"known": "he is trying to help me understand what she wants", "target": "他在试着帮我理解她想要什么"},
+        {"known": "the man is trying to help me learn how to speak", "target": "这个男人在试着帮我学怎么说"},
+        {"known": "she is trying to help me understand the problem", "target": "她在试着帮我理解问题"},
+        {"known": "he is trying to help me learn Chinese with my friend", "target": "他在试着帮我和朋友学中文"}
+      ]
+    }
+  ]
+}

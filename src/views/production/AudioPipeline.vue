@@ -480,21 +480,11 @@
           <!-- Action Buttons -->
           <div class="mt-4 flex flex-wrap gap-3">
             <button
-              @click="showPlan"
-              :disabled="isGenerating || loadingPlan"
-              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-              </svg>
-              {{ loadingPlan ? 'Loading...' : 'Plan (Dry Run)' }}
-            </button>
-            <button
               @click="startGeneration"
-              :disabled="!canStartGeneration || isGenerating"
+              :disabled="!canStartGeneration || isGenerating || startingGeneration"
               class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:text-slate-500 rounded-lg font-medium transition-all text-sm flex items-center gap-2"
             >
-              <svg v-if="isGenerating" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+              <svg v-if="isGenerating || startingGeneration" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -502,7 +492,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {{ isGenerating ? 'Generating...' : 'Start Generation' }}
+              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : 'Start Generation' }}
             </button>
             <button
               v-if="isGenerating"
@@ -650,10 +640,13 @@ const loadingAllFlaggedQueue = ref(false)
 const regeneratingAll = ref(false)
 const allFlaggedResult = ref<any>(null)
 
-// Plan/dry run state
+// Plan/dry run state (kept for plan panel compatibility)
 const planResult = ref<any>(null)
 const showingPlan = ref(false)
 const loadingPlan = ref(false)
+
+// Generation state for immediate button feedback
+const startingGeneration = ref(false)
 
 // Voice config update key to trigger MissingAudio refresh
 const missingAudioKey = ref(0)
@@ -730,7 +723,12 @@ const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime)
 
 // Actions
 const startGeneration = async () => {
-  await productionStore.startGeneration(courseCode.value)
+  startingGeneration.value = true
+  try {
+    await productionStore.startGeneration(courseCode.value)
+  } finally {
+    startingGeneration.value = false
+  }
 }
 
 const cancelGeneration = async () => {

@@ -1,0 +1,144 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 100,
+  "known_text": "You shouldn't worry about doing something similar.",
+  "target_text": "你不该担心做类似的东西。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you shouldn't",
+      "target": "你不该",
+      "components": [
+        {"known": "you", "target": "你"},
+        {"known": "shouldn't", "target": "不该"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "你"},
+        {"known": "shouldn't", "target": "不该"},
+        {"known": "you shouldn't", "target": "你不该"},
+        {"known": "I shouldn't", "target": "我不该"},
+        {"known": "you shouldn't go", "target": "你不该走"},
+        {"known": "you shouldn't do it", "target": "你不该做"},
+        {"known": "you shouldn't ask why", "target": "你不该问为什么"},
+        {"known": "she thinks you shouldn't go now", "target": "她觉得你不该现在走"},
+        {"known": "you shouldn't consider doing something else", "target": "你不该考虑做别的东西"},
+        {"known": "I think you shouldn't ask yourself that question", "target": "我觉得你不该问自己那个"},
+        {"known": "he said you shouldn't play something else right now", "target": "他说你不该现在玩别的东西"},
+        {"known": "you shouldn't take the bus home without asking first", "target": "你不该问之前坐车回家"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "worry",
+      "target": "担心",
+      "components": [
+        {"known": "carry/bear", "target": "担"},
+        {"known": "heart/mind", "target": "心"}
+      ],
+      "phrases": [
+        {"known": "carry/bear", "target": "担"},
+        {"known": "heart/mind", "target": "心"},
+        {"known": "worry", "target": "担心"},
+        {"known": "I'm worried", "target": "我担心"},
+        {"known": "don't worry", "target": "不担心"},
+        {"known": "are you worried?", "target": "你担心吗？"},
+        {"known": "I'm worried about this", "target": "我担心这个"},
+        {"known": "she's worried why not", "target": "她担心为什么不行"},
+        {"known": "you shouldn't worry about it", "target": "你不该担心这个"},
+        {"known": "you shouldn't worry about asking yourself why", "target": "你不该担心问自己为什么"},
+        {"known": "I think you shouldn't worry about doing it yourself", "target": "我觉得你不该担心自己做"},
+        {"known": "he said you shouldn't worry about something else", "target": "他说你不该担心别的东西"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "do",
+      "target": "做",
+      "phrases": [
+        {"known": "do", "target": "做"},
+        {"known": "do it", "target": "做"},
+        {"known": "doing", "target": "做"},
+        {"known": "I'll do it", "target": "我做"},
+        {"known": "can you do it?", "target": "你可以做吗？"},
+        {"known": "don't worry about doing", "target": "不担心做"},
+        {"known": "you shouldn't worry about doing it", "target": "你不该担心做"},
+        {"known": "I'm worried about doing it myself", "target": "我担心自己做"},
+        {"known": "she said you shouldn't worry about doing this", "target": "她说你不该担心做这个"},
+        {"known": "I think you shouldn't worry about doing it yourself", "target": "我觉得你不该担心自己做"},
+        {"known": "he asked if we should worry about doing something else", "target": "他问我们该担心做别的东西吗"},
+        {"known": "you shouldn't worry about doing it before going home", "target": "你不该担心回家之前做"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "similar",
+      "target": "类似",
+      "components": [
+        {"known": "type/kind", "target": "类"},
+        {"known": "similar to", "target": "似"}
+      ],
+      "phrases": [
+        {"known": "type/kind", "target": "类"},
+        {"known": "similar to", "target": "似"},
+        {"known": "similar", "target": "类似"},
+        {"known": "something similar", "target": "类似的"},
+        {"known": "is it similar?", "target": "类似吗？"},
+        {"known": "do something similar", "target": "做类似的"},
+        {"known": "this is similar", "target": "这个类似"},
+        {"known": "I want to do something similar now", "target": "我想现在做类似的"},
+        {"known": "you shouldn't worry about doing similar things", "target": "你不该担心做类似的"},
+        {"known": "she asked if this is similar to what we did before", "target": "她问这个跟我们之前做的类似吗"},
+        {"known": "I think you shouldn't worry about doing similar things now", "target": "我觉得你不该担心现在做类似的"},
+        {"known": "he said doing something similar shouldn't be a worry", "target": "他说做类似的不该担心"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "(possessive)",
+      "target": "的",
+      "phrases": [
+        {"known": "(possessive)", "target": "的"},
+        {"known": "my", "target": "我的"},
+        {"known": "your", "target": "你的"},
+        {"known": "the one I did", "target": "我做的"},
+        {"known": "something similar", "target": "类似的"},
+        {"known": "similar to mine", "target": "跟我的类似"},
+        {"known": "similar to what you did", "target": "跟你做的类似"},
+        {"known": "you shouldn't worry about the similar one", "target": "你不该担心类似的"},
+        {"known": "I think the similar one is fine to do", "target": "我觉得做类似的行"},
+        {"known": "she said the one I did is very similar to yours", "target": "她说我做的跟你做的很类似"},
+        {"known": "you shouldn't worry about doing something similar to mine", "target": "你不该担心做跟我的类似的"},
+        {"known": "I think you shouldn't worry about the similar one now", "target": "我觉得你不该担心现在类似的"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "thing",
+      "target": "东西",
+      "components": [
+        {"known": "east", "target": "东"},
+        {"known": "west", "target": "西"}
+      ],
+      "phrases": [
+        {"known": "east", "target": "东"},
+        {"known": "west", "target": "西"},
+        {"known": "thing", "target": "东西"},
+        {"known": "this thing", "target": "这个东西"},
+        {"known": "similar things", "target": "类似的东西"},
+        {"known": "something else", "target": "别的东西"},
+        {"known": "you shouldn't worry about this thing", "target": "你不该担心这个东西"},
+        {"known": "I'm worried about doing similar things", "target": "我担心做类似的东西"},
+        {"known": "you shouldn't worry about doing something similar", "target": "你不该担心做类似的东西"},
+        {"known": "she said you shouldn't worry about doing similar things", "target": "她说你不该担心做类似的东西"},
+        {"known": "I think you shouldn't worry about doing something similar to this", "target": "我觉得你不该担心做跟这个类似的东西"},
+        {"known": "he asked why you're worried about doing similar things yourself", "target": "他问你为什么担心自己做类似的东西"}
+      ]
+    }
+  ]
+}

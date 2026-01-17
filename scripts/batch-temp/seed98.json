@@ -1,0 +1,120 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 98,
+  "known_text": "I should consider playing something else.",
+  "target_text": "我该考虑玩别的东西。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I should",
+      "target": "我该",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "should", "target": "该"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "我"},
+        {"known": "should", "target": "该"},
+        {"known": "I should", "target": "我该"},
+        {"known": "you should", "target": "你该"},
+        {"known": "should I go?", "target": "我该走吗？"},
+        {"known": "I should go home", "target": "我该回家"},
+        {"known": "I should be ready", "target": "我该准备好"},
+        {"known": "she thinks I should go now", "target": "她觉得我该现在走"},
+        {"known": "I should take the next bus home", "target": "我该坐下一班车回家"},
+        {"known": "do you think I should wait a little more?", "target": "你觉得我该等多一点吗？"},
+        {"known": "he said I should go home whenever I want", "target": "他说我该回家我想什么时候都可以"},
+        {"known": "she thinks I should be ready to go soon", "target": "她觉得我该准备好快走"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "consider",
+      "target": "考虑",
+      "phrases": [
+        {"known": "consider", "target": "考虑"},
+        {"known": "I'll consider", "target": "我考虑"},
+        {"known": "consider it", "target": "考虑一下"},
+        {"known": "please consider", "target": "考虑一下"},
+        {"known": "I should consider", "target": "我该考虑"},
+        {"known": "are you considering?", "target": "你考虑吗？"},
+        {"known": "I'm considering going home", "target": "我考虑回家"},
+        {"known": "she said she'll consider it", "target": "她说她会考虑"},
+        {"known": "I should consider taking the next bus", "target": "我该考虑坐下一班车"},
+        {"known": "he's considering whether to go home now", "target": "他考虑现在回家不回家"},
+        {"known": "do you think I should consider waiting longer?", "target": "你觉得我该考虑等更多时间吗？"},
+        {"known": "she thinks we should consider going home earlier", "target": "她觉得我们该考虑早一点回家"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "play",
+      "target": "玩",
+      "phrases": [
+        {"known": "play", "target": "玩"},
+        {"known": "let's play", "target": "我们玩"},
+        {"known": "play a little", "target": "玩一下"},
+        {"known": "I want to play", "target": "我想玩"},
+        {"known": "can you play?", "target": "你可以玩吗？"},
+        {"known": "she likes to play", "target": "她喜欢玩"},
+        {"known": "I should consider playing", "target": "我该考虑玩"},
+        {"known": "he wants to play before going home", "target": "他想回家之前玩"},
+        {"known": "I think I should play a little before I go", "target": "我觉得我该走之前玩一下"},
+        {"known": "she said she wants to play whenever she's ready", "target": "她说她准备好了想玩"},
+        {"known": "I should consider playing before taking the bus home", "target": "我该考虑坐车回家之前玩"},
+        {"known": "do you think we have time to play before going?", "target": "你觉得我们走之前有时间玩吗？"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "something else/other",
+      "target": "别的",
+      "components": [
+        {"known": "other/another", "target": "别"},
+        {"known": "(possessive)", "target": "的"}
+      ],
+      "phrases": [
+        {"known": "other/another", "target": "别"},
+        {"known": "(possessive)", "target": "的"},
+        {"known": "something else", "target": "别的"},
+        {"known": "other things", "target": "别的"},
+        {"known": "play something else", "target": "玩别的"},
+        {"known": "consider something else", "target": "考虑别的"},
+        {"known": "I should play something else", "target": "我该玩别的"},
+        {"known": "do you want to do something else?", "target": "你想做别的吗？"},
+        {"known": "I should consider playing something else now", "target": "我该考虑现在玩别的"},
+        {"known": "she said she wants to do something else before going home", "target": "她说她想回家之前做别的"},
+        {"known": "I think I should consider doing something else instead", "target": "我觉得我该考虑做别的"},
+        {"known": "he's considering whether to play something else right now", "target": "他考虑现在玩别的不玩"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "thing",
+      "target": "东西",
+      "components": [
+        {"known": "east", "target": "东"},
+        {"known": "west", "target": "西"}
+      ],
+      "phrases": [
+        {"known": "east", "target": "东"},
+        {"known": "west", "target": "西"},
+        {"known": "thing", "target": "东西"},
+        {"known": "this thing", "target": "这个东西"},
+        {"known": "something else", "target": "别的东西"},
+        {"known": "play something else", "target": "玩别的东西"},
+        {"known": "I want this thing", "target": "我想要这个东西"},
+        {"known": "I should consider something else", "target": "我该考虑别的东西"},
+        {"known": "I should consider playing something else", "target": "我该考虑玩别的东西"},
+        {"known": "she said she wants to play something else first", "target": "她说她想先玩别的东西"},
+        {"known": "do you have something else I can consider?", "target": "你有别的东西我可以考虑吗？"},
+        {"known": "he's considering playing something else before going home", "target": "他考虑回家之前玩别的东西"}
+      ]
+    }
+  ]
+}

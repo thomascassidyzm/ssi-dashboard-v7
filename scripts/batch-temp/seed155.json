@@ -1,0 +1,75 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 155,
+  "known_text": "I don't mind waiting for a few minutes tomorrow morning.",
+  "target_text": "Es macht mir nichts aus, ein paar Minuten morgen früh zu warten.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't mind",
+      "target": "es macht mir nichts aus",
+      "components": [
+        {"known": "it makes", "target": "es macht"},
+        {"known": "nothing to me", "target": "mir nichts aus"}
+      ],
+      "phrases": [
+        {"known": "it makes", "target": "es macht"},
+        {"known": "makes nothing", "target": "macht nichts aus"},
+        {"known": "nothing to me", "target": "mir nichts aus"},
+        {"known": "I don't mind", "target": "es macht mir nichts aus"},
+        {"known": "I don't mind it", "target": "es macht mir nichts aus"},
+        {"known": "I don't mind if you want to go", "target": "es macht mir nichts aus wenn du gehen willst"},
+        {"known": "she said I don't mind doing it today", "target": "sie hat gesagt es macht mir nichts aus es heute zu machen"},
+        {"known": "I don't mind if that wasn't what you wanted because I understand", "target": "es macht mir nichts aus wenn das nicht war was du wolltest weil ich verstehe"},
+        {"known": "he told me I don't mind waiting if we need more time", "target": "er hat mir gesagt es macht mir nichts aus zu warten wenn wir mehr Zeit haben"},
+        {"known": "I wouldn't have said I don't mind if I had known you wanted something", "target": "ich hätte nicht gesagt es macht mir nichts aus wenn ich gewusst hätte dass du etwas wolltest"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "waiting for a few minutes",
+      "target": "ein paar Minuten zu warten",
+      "components": [
+        {"known": "a few minutes", "target": "ein paar Minuten"},
+        {"known": "to wait", "target": "zu warten"}
+      ],
+      "phrases": [
+        {"known": "to wait", "target": "zu warten"},
+        {"known": "a few minutes", "target": "ein paar Minuten"},
+        {"known": "to wait a bit", "target": "etwas zu warten"},
+        {"known": "waiting for a few minutes", "target": "ein paar Minuten zu warten"},
+        {"known": "I can wait for a few minutes", "target": "ich kann ein paar Minuten warten"},
+        {"known": "I don't mind waiting for a few minutes", "target": "es macht mir nichts aus ein paar Minuten zu warten"},
+        {"known": "he said waiting for a few minutes would be good", "target": "er hat gesagt ein paar Minuten zu warten wäre gut"},
+        {"known": "she told me waiting for a few minutes is not very difficult if you want", "target": "sie hat mir gesagt ein paar Minuten zu warten ist nicht sehr schwierig wenn du willst"},
+        {"known": "I think waiting for a few minutes wäre gut if I had known what you wanted", "target": "ich denke ein paar Minuten zu warten wäre gut wenn ich gewusst hätte was du wolltest"},
+        {"known": "I don't mind waiting for a few minutes because I know it wasn't very difficult for you", "target": "es macht mir nichts aus ein paar Minuten zu warten weil ich weiß es war nicht sehr schwierig"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "tomorrow morning",
+      "target": "morgen früh",
+      "components": [
+        {"known": "tomorrow", "target": "morgen"},
+        {"known": "early", "target": "früh"}
+      ],
+      "phrases": [
+        {"known": "tomorrow", "target": "morgen"},
+        {"known": "early", "target": "früh"},
+        {"known": "tomorrow morning", "target": "morgen früh"},
+        {"known": "I am here tomorrow", "target": "ich bin morgen hier"},
+        {"known": "she is here tomorrow", "target": "sie ist morgen früh hier"},
+        {"known": "we meet tomorrow morning", "target": "wir treffen uns morgen früh"},
+        {"known": "I don't mind waiting tomorrow morning", "target": "es macht mir nichts aus morgen früh zu warten"},
+        {"known": "where do you want to meet tomorrow morning", "target": "wo willst du dich morgen früh treffen"},
+        {"known": "I was hoping we could meet tomorrow morning", "target": "ich hatte gehofft wir könnten uns morgen früh treffen"},
+        {"known": "I don't mind waiting for a few minutes tomorrow morning because I understand", "target": "es macht mir nichts aus ein paar Minuten morgen früh zu warten weil ich verstehe"},
+        {"known": "she said she would like to meet tomorrow morning if that wasn't very difficult for you", "target": "sie hat gesagt sie möchte morgen früh treffen wenn das nicht sehr schwierig war"}
+      ]
+    }
+  ]
+}

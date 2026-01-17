@@ -1,0 +1,121 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 96,
+  "known_text": "No I'm not ready yet, I need a little more time.",
+  "target_text": "不，我还没准备好，我需要多一点时间。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "no/not",
+      "target": "不",
+      "phrases": [
+        {"known": "no/not", "target": "不"},
+        {"known": "not good", "target": "不好"},
+        {"known": "can't", "target": "不可以"},
+        {"known": "don't want", "target": "不想"},
+        {"known": "I don't know", "target": "我不知道"},
+        {"known": "she's not coming", "target": "她不来"},
+        {"known": "he doesn't want to go home now", "target": "他不想现在回家"},
+        {"known": "I'm not ready to take the bus yet", "target": "我还不准备好坐车"},
+        {"known": "unfortunately she can't come before tomorrow", "target": "很可惜她明天之前不会来"},
+        {"known": "I think he's not ready to start learning Chinese yet", "target": "我觉得他还不准备好开始学中文"},
+        {"known": "if you're not ready we can wait for the next bus", "target": "如果你不准备好我们可以等下一班车"},
+        {"known": "she said she's not going home on this bus", "target": "她说她不坐这车回家"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm not ready yet",
+      "target": "我还没准备好",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "still haven't", "target": "还没"},
+        {"known": "ready", "target": "准备好"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "我"},
+        {"known": "still haven't", "target": "还没"},
+        {"known": "ready", "target": "准备好"},
+        {"known": "not ready yet", "target": "还没准备好"},
+        {"known": "I'm not ready yet", "target": "我还没准备好"},
+        {"known": "she's not ready yet", "target": "她还没准备好"},
+        {"known": "he's not ready to go home yet", "target": "他还没准备好回家"},
+        {"known": "I'm not ready to take the bus yet", "target": "我还没准备好坐车"},
+        {"known": "she's not ready to start learning yet", "target": "她还没准备好开始学"},
+        {"known": "I think I'm not ready to take the next bus yet", "target": "我觉得我还没准备好坐下一班车"},
+        {"known": "unfortunately I'm not ready to go home yet", "target": "很可惜我还没准备好回家"},
+        {"known": "if you're not ready yet we can wait a little more", "target": "如果你还没准备好我们可以等"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I need",
+      "target": "我需要",
+      "components": [
+        {"known": "I", "target": "我"},
+        {"known": "need", "target": "需要"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "我"},
+        {"known": "need", "target": "需要"},
+        {"known": "I need", "target": "我需要"},
+        {"known": "she needs", "target": "她需要"},
+        {"known": "do you need?", "target": "你需要吗？"},
+        {"known": "I need to go home", "target": "我需要回家"},
+        {"known": "what do you need?", "target": "你需要什么？"},
+        {"known": "I need to go soon", "target": "我需要快回家"},
+        {"known": "do you need more time to get ready?", "target": "你需要更多准备好吗？"},
+        {"known": "I think I need to take the next bus home", "target": "我觉得我需要坐下一班车回家"},
+        {"known": "unfortunately she needs to go home before tomorrow", "target": "很可惜她需要明天之前回家"},
+        {"known": "if you need help I can help you get ready", "target": "如果你需要帮我可以帮你准备好"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "a little more",
+      "target": "多一点",
+      "components": [
+        {"known": "more/many", "target": "多"},
+        {"known": "a little", "target": "一点"}
+      ],
+      "phrases": [
+        {"known": "more/many", "target": "多"},
+        {"known": "a little", "target": "一点"},
+        {"known": "a little more", "target": "多一点"},
+        {"known": "a little bit", "target": "一点"},
+        {"known": "need a little more", "target": "需要多一点"},
+        {"known": "I need a little more", "target": "我需要多一点"},
+        {"known": "can you give a little more?", "target": "你可以给多一点吗？"},
+        {"known": "she needs a little more to get ready", "target": "她需要多一点准备好"},
+        {"known": "I need a little more before I'm ready", "target": "我需要多一点准备好之前"},
+        {"known": "he said he needs a little more to finish", "target": "他说他需要多一点做完"},
+        {"known": "unfortunately I need a little more to go home", "target": "很可惜我需要多一点回家"},
+        {"known": "if you need a little more we can wait for you", "target": "如果你需要多一点我们可以等你"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "time",
+      "target": "时间",
+      "phrases": [
+        {"known": "time", "target": "时间"},
+        {"known": "more time", "target": "更多时间"},
+        {"known": "short time", "target": "短时间"},
+        {"known": "I need time", "target": "我需要时间"},
+        {"known": "a little more time", "target": "多一点时间"},
+        {"known": "I need more time", "target": "我需要更多时间"},
+        {"known": "do you have more time?", "target": "你有更多时间吗？"},
+        {"known": "I need a little more time to get ready", "target": "我需要多一点时间准备好"},
+        {"known": "she said she needs more time to go home", "target": "她说她需要更多时间回家"},
+        {"known": "I think I need a little more time before I'm ready", "target": "我觉得我需要多一点时间准备好之前"},
+        {"known": "unfortunately I don't have much time to take the bus", "target": "很可惜我没有很多时间坐车"},
+        {"known": "if you need more time we can wait for you", "target": "如果你需要更多时间我们可以等你"}
+      ]
+    }
+  ]
+}

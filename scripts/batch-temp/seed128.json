@@ -1,0 +1,52 @@
+{
+  "course_code": "por_for_eng",
+  "seed_number": 128,
+  "known_text": "You're like someone I used to know.",
+  "target_text": "Você é como alguém que eu costumava conhecer.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you're like someone",
+      "target": "você é como alguém",
+      "components": [
+        {"known": "you're like", "target": "você é como"},
+        {"known": "someone", "target": "alguém"}
+      ],
+      "phrases": [
+        {"known": "you're like me", "target": "você é como eu"},
+        {"known": "she's like you", "target": "ela é como você"},
+        {"known": "you're like someone that I", "target": "você é como alguém que eu"},
+        {"known": "you're like how she is today", "target": "você é como ela é hoje"},
+        {"known": "you're like someone I wanted to know", "target": "você é como alguém que eu queria conhecer"},
+        {"known": "you're like someone I wanted to see", "target": "você é como alguém que eu queria ver"},
+        {"known": "you're like someone I wanted to see today", "target": "você é como alguém que eu queria ver hoje"},
+        {"known": "you're like someone that I wanted to know well", "target": "você é como alguém que eu queria conhecer bem"},
+        {"known": "you're like someone I wanted to know very well", "target": "você é como alguém que eu queria conhecer muito bem"},
+        {"known": "you're like someone that I wanted to see very much", "target": "você é como alguém que eu queria ver muito"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I used to know",
+      "target": "que eu costumava conhecer",
+      "components": [
+        {"known": "I used to", "target": "que eu costumava"},
+        {"known": "know", "target": "conhecer"}
+      ],
+      "phrases": [
+        {"known": "I used to", "target": "eu costumava"},
+        {"known": "used to go", "target": "costumava ir"},
+        {"known": "that I used to do", "target": "que eu costumava fazer"},
+        {"known": "that I used to see", "target": "que eu costumava ver"},
+        {"known": "someone that I used to know very well in the past", "target": "alguém que eu costumava conhecer muito bem"},
+        {"known": "something that I used to do very much with you", "target": "algo que eu costumava fazer muito com você"},
+        {"known": "someone that I used to see very much here", "target": "alguém que eu costumava ver muito aqui"},
+        {"known": "something that I used to know very well before", "target": "algo que eu costumava conhecer muito bem"},
+        {"known": "someone that I used to see with her every day", "target": "alguém que eu costumava ver com ela"},
+        {"known": "something that I used to do with you very much", "target": "algo que eu costumava fazer com você muito"}
+      ]
+    }
+  ]
+}

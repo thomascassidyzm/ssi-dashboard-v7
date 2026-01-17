@@ -1,0 +1,112 @@
+{
+  "course_code": "deu_for_eng",
+  "seed_number": 43,
+  "known_text": "I wasn't thinking about how to answer.",
+  "target_text": "Ich habe nicht darüber nachgedacht, wie ich antworten soll.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "not",
+      "target": "nicht",
+      "phrases": [
+        {"known": "not", "target": "nicht"},
+        {"known": "not now", "target": "nicht jetzt"},
+        {"known": "not today", "target": "nicht heute"},
+        {"known": "not okay", "target": "nicht okay"},
+        {"known": "I am not", "target": "ich bin nicht"},
+        {"known": "not at the moment", "target": "nicht im Moment"},
+        {"known": "I am not tired", "target": "ich bin nicht müde"},
+        {"known": "I am not okay", "target": "ich bin nicht okay"},
+        {"known": "I do not feel well", "target": "ich fühle mich nicht gut"},
+        {"known": "I do not feel okay", "target": "ich fühle mich nicht okay"},
+        {"known": "I do not feel tired at the moment", "target": "ich fühle mich im Moment nicht müde"},
+        {"known": "I am not tired this morning but I feel okay", "target": "ich bin heute Morgen nicht müde aber ich fühle mich okay"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "how",
+      "target": "wie",
+      "phrases": [
+        {"known": "how", "target": "wie"},
+        {"known": "how I", "target": "wie ich"},
+        {"known": "how now", "target": "wie jetzt"},
+        {"known": "how today", "target": "wie heute"},
+        {"known": "how do I", "target": "wie kann ich"},
+        {"known": "how do you feel", "target": "wie fühlst du dich"},
+        {"known": "how do I feel", "target": "wie fühle ich mich"},
+        {"known": "I am not sure how", "target": "ich bin nicht sicher wie"},
+        {"known": "how do you feel today", "target": "wie fühlst du dich heute"},
+        {"known": "how do you feel at the moment", "target": "wie fühlst du dich im Moment"},
+        {"known": "I am not sure how I feel", "target": "ich bin nicht sicher wie ich mich fühle"},
+        {"known": "I am not sure how I feel at the moment", "target": "ich bin nicht sicher wie ich mich im Moment fühle"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "should",
+      "target": "soll",
+      "phrases": [
+        {"known": "should", "target": "soll"},
+        {"known": "I should", "target": "ich soll"},
+        {"known": "should I", "target": "soll ich"},
+        {"known": "I should not", "target": "ich soll nicht"},
+        {"known": "how should I", "target": "wie soll ich"},
+        {"known": "should I today", "target": "soll ich heute"},
+        {"known": "how should I feel", "target": "wie soll ich mich fühlen"},
+        {"known": "I am not sure if I should", "target": "ich bin nicht sicher ob ich soll"},
+        {"known": "how should I feel at the moment", "target": "wie soll ich mich im Moment fühlen"},
+        {"known": "I should feel a little better today", "target": "ich soll mich heute ein bisschen besser fühlen"},
+        {"known": "I am not sure if I should feel better now", "target": "ich bin nicht sicher ob ich mich jetzt besser fühlen soll"},
+        {"known": "I am not sure how I should feel at the moment", "target": "ich bin nicht sicher wie ich mich im Moment fühlen soll"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I wasn't thinking about it",
+      "target": "ich habe nicht darüber nachgedacht",
+      "components": [
+        {"known": "I have", "target": "ich habe"},
+        {"known": "thought about it", "target": "darüber nachgedacht"}
+      ],
+      "phrases": [
+        {"known": "I have", "target": "ich habe"},
+        {"known": "thought about it", "target": "darüber nachgedacht"},
+        {"known": "I have not", "target": "ich habe nicht"},
+        {"known": "not about it", "target": "nicht darüber"},
+        {"known": "I wasn't thinking about it", "target": "ich habe nicht darüber nachgedacht"},
+        {"known": "I was thinking", "target": "ich habe nachgedacht"},
+        {"known": "I was thinking about it", "target": "ich habe darüber nachgedacht"},
+        {"known": "I wasn't thinking", "target": "ich habe nicht nachgedacht"},
+        {"known": "I wasn't thinking about it today", "target": "ich habe heute nicht darüber nachgedacht"},
+        {"known": "I wasn't thinking about it this morning", "target": "ich habe heute Morgen nicht darüber nachgedacht"},
+        {"known": "I was thinking about how I should feel", "target": "ich habe darüber nachgedacht wie ich mich fühlen soll"},
+        {"known": "I wasn't thinking about how I should feel", "target": "ich habe nicht darüber nachgedacht wie ich mich fühlen soll"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "give an answer",
+      "target": "antworten",
+      "phrases": [
+        {"known": "give an answer", "target": "antworten"},
+        {"known": "now give an answer", "target": "jetzt antworten"},
+        {"known": "I should give an answer", "target": "ich soll antworten"},
+        {"known": "how to give an answer", "target": "wie antworten"},
+        {"known": "how I should give an answer", "target": "wie ich antworten soll"},
+        {"known": "I am not sure how to give an answer", "target": "ich bin nicht sicher wie antworten"},
+        {"known": "I should give an answer today", "target": "ich soll heute antworten"},
+        {"known": "I am not sure how I should give an answer", "target": "ich bin nicht sicher wie ich antworten soll"},
+        {"known": "I wasn't thinking about how to give an answer", "target": "ich habe nicht darüber nachgedacht wie ich antworten soll"},
+        {"known": "I am not sure how I should give an answer now", "target": "ich bin nicht sicher wie ich jetzt antworten soll"},
+        {"known": "I am not sure how I should give an answer at the moment", "target": "ich bin nicht sicher wie ich im Moment antworten soll"},
+        {"known": "I wasn't thinking about how I should give an answer today", "target": "ich habe heute nicht darüber nachgedacht wie ich antworten soll"}
+      ]
+    }
+  ]
+}

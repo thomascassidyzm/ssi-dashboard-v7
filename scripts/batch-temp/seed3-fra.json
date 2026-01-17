@@ -1,0 +1,50 @@
+{
+  "course_code": "fra_for_eng",
+  "seed_number": 3,
+  "known_text": "how to speak as often as possible.",
+  "target_text": "comment parler le plus souvent possible.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "how",
+      "target": "comment",
+      "phrases": [
+        {"known": "how", "target": "comment"},
+        {"known": "how to speak", "target": "comment parler"},
+        {"known": "how to speak French", "target": "comment parler français"},
+        {"known": "how to learn", "target": "comment apprendre"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "to speak",
+      "target": "parler",
+      "phrases": [
+        {"known": "to speak", "target": "parler"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "as often as possible",
+      "target": "le plus souvent possible",
+      "components": [
+        {"known": "the most", "target": "le plus"},
+        {"known": "often", "target": "souvent"},
+        {"known": "possible", "target": "possible"}
+      ],
+      "phrases": [
+        {"known": "the most", "target": "le plus"},
+        {"known": "often", "target": "souvent"},
+        {"known": "possible", "target": "possible"},
+        {"known": "as often as possible", "target": "le plus souvent possible"},
+        {"known": "to speak as often as possible", "target": "parler le plus souvent possible"},
+        {"known": "how to speak as often as possible", "target": "comment parler le plus souvent possible"},
+        {"known": "I want to speak as often as possible", "target": "je veux parler le plus souvent possible"},
+        {"known": "I'm trying to speak as often as possible", "target": "j'essaie de parler le plus souvent possible"}
+      ]
+    }
+  ]
+}

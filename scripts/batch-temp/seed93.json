@@ -1,0 +1,88 @@
+{
+  "course_code": "zho_for_eng",
+  "seed_number": 93,
+  "known_text": "It's time to go now.",
+  "target_text": "现在该走了。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "now",
+      "target": "现在",
+      "phrases": [
+        {"known": "now", "target": "现在"},
+        {"known": "right now", "target": "现在"},
+        {"known": "do it now", "target": "现在做"},
+        {"known": "can you do it now?", "target": "你现在可以做吗？"},
+        {"known": "I'm ready now", "target": "我现在准备好了"},
+        {"known": "I'd like to start now", "target": "我想现在开始"},
+        {"known": "I think we should go now", "target": "我觉得我们现在该走"},
+        {"known": "she wants to continue doing this now", "target": "她想现在继续做这个"},
+        {"known": "if you can answer now that would be great", "target": "如果你现在可以回答就太好了"},
+        {"known": "I think it's difficult to do now because I'm not ready", "target": "我觉得现在做很难因为我没准备好"},
+        {"known": "unfortunately I can't do it now but I will do it later", "target": "很可惜我现在不会做但是我会以后做"},
+        {"known": "she thinks we should start now because it's getting late", "target": "她觉得我们现在应该开始因为太晚了"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "should/time to",
+      "target": "该",
+      "phrases": [
+        {"known": "should/time to", "target": "该"},
+        {"known": "should do", "target": "该做"},
+        {"known": "should learn", "target": "该学"},
+        {"known": "should go", "target": "该走"},
+        {"known": "time to start", "target": "该开始"},
+        {"known": "it's time to answer", "target": "该回答了"},
+        {"known": "I think it's time to stop", "target": "我觉得该停了"},
+        {"known": "it's time to continue doing this", "target": "该继续做这个了"},
+        {"known": "she thinks it's time to start learning", "target": "她觉得该开始学了"},
+        {"known": "I think it's time to talk to those people now", "target": "我觉得现在该跟那些人说话了"},
+        {"known": "if it's time to go I think we should leave", "target": "如果该走了我觉得我们该走"},
+        {"known": "she said it's time to answer but I'm not ready yet", "target": "她说该回答了但是我还没准备好"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to go/leave",
+      "target": "走",
+      "phrases": [
+        {"known": "to go/leave", "target": "走"},
+        {"known": "go now", "target": "现在走"},
+        {"known": "can you go?", "target": "你可以走吗？"},
+        {"known": "I don't want to go", "target": "我不想走"},
+        {"known": "she's not ready to go yet", "target": "她还没准备好走"},
+        {"known": "it's time to go now", "target": "现在该走了"},
+        {"known": "I'll go in a while", "target": "我一会儿走"},
+        {"known": "is it time to go yet?", "target": "该走了吗？"},
+        {"known": "I think it's time for them to go now", "target": "我觉得他们现在该走了"},
+        {"known": "if you want to go now that's okay with me", "target": "如果你想现在走没事"},
+        {"known": "unfortunately I have to go before I can finish this", "target": "很可惜我要走之前做完这个"},
+        {"known": "she thinks it's not time to go yet because we haven't finished", "target": "她觉得还没该走因为我们没做完"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "(completed action)",
+      "target": "了",
+      "phrases": [
+        {"known": "(completed action)", "target": "了"},
+        {"known": "done", "target": "做了"},
+        {"known": "went", "target": "走了"},
+        {"known": "ready now", "target": "准备好了"},
+        {"known": "it's time to go now", "target": "现在该走了"},
+        {"known": "I've already done it", "target": "我做了"},
+        {"known": "she's left already", "target": "她走了"},
+        {"known": "have you finished?", "target": "你做了吗？"},
+        {"known": "I think it's time to go now", "target": "我觉得现在该走了"},
+        {"known": "she said she's done and it's time to go", "target": "她说她做了该走了"},
+        {"known": "I've done a lot in a short time so it's time to go", "target": "我在短时间内做了很多该走了"},
+        {"known": "if you're done now we should leave", "target": "如果你现在做了我们该走"}
+      ]
+    }
+  ]
+}
