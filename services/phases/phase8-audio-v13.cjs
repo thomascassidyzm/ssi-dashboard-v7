@@ -1154,6 +1154,56 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
+    // Populate lego_introductions: link each LEGO to its presentation audio
+    // Query back the audio IDs by matching presentation text
+    const presTextsNormalized = presentations.map(p => p.presentation_text.toLowerCase().trim())
+    const { data: audioData, error: queryError } = await supabase
+      .from('course_audio')
+      .select('id, text_normalized')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .in('text_normalized', presTextsNormalized)
+
+    if (queryError) {
+      logger.warn('Could not query presentation audio for lego_introductions:', queryError.message)
+    } else if (audioData?.length > 0) {
+      // Build text -> audio_id map
+      const textToAudioId = new Map()
+      for (const audio of audioData) {
+        textToAudioId.set(audio.text_normalized, audio.id)
+      }
+
+      // Build lego_introductions records
+      const introRecords = []
+      for (const pres of presentations) {
+        const audioId = textToAudioId.get(pres.presentation_text.toLowerCase().trim())
+        if (audioId) {
+          introRecords.push({
+            course_code: courseCode,
+            lego_id: pres.lego_id,
+            presentation_audio_id: audioId,
+            audio_uuid: audioId
+          })
+        }
+      }
+
+      // Upsert to lego_introductions (update if exists)
+      if (introRecords.length > 0) {
+        const { error: introError } = await supabase
+          .from('lego_introductions')
+          .upsert(introRecords, {
+            onConflict: 'course_code,lego_id',
+            ignoreDuplicates: false  // Update existing records
+          })
+
+        if (introError) {
+          logger.warn('Could not upsert lego_introductions:', introError.message)
+        } else {
+          logger.info(`Populated ${introRecords.length} lego_introductions records`)
+        }
+      }
+    }
+
     res.json({
       success: true,
       dryRun: false,
