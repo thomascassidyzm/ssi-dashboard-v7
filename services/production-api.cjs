@@ -2877,12 +2877,26 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       .select('audio_uuid, status, reason, flagged_by, created_at, regen_count')
       .eq('course_code', courseCode)
 
+    // Query lego_cycles to get LEGO debut audio (the LEGO itself as a playable/flaggable item)
+    let legoCyclesQuery = supabase
+      .from('lego_cycles')
+      .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid, known_duration_ms, target1_duration_ms, target2_duration_ms')
+      .eq('course_code', courseCode)
+
+    if (startNum !== null) {
+      legoCyclesQuery = legoCyclesQuery.gte('seed_number', startNum)
+    }
+    if (endNum !== null) {
+      legoCyclesQuery = legoCyclesQuery.lte('seed_number', endNum)
+    }
+
     // Run all queries in parallel
-    const [cyclesResult, seedsResult, legosResult, flagsResult] = await Promise.all([
+    const [cyclesResult, seedsResult, legosResult, flagsResult, legoCyclesResult] = await Promise.all([
       cyclesQuery,
       seedsQuery,
       legosQuery,
-      flagsQuery
+      flagsQuery,
+      legoCyclesQuery
     ])
 
     if (cyclesResult.error) {
@@ -2894,6 +2908,14 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     const seedsData = seedsResult.data || []
     const legosData = legosResult.data || []
     const flagsData = flagsResult.data || []
+    const legoCyclesData = legoCyclesResult.data || []
+
+    // Build LEGO debut lookup: "seed_number:lego_index" -> lego cycle with audio
+    const legoDebutMap = new Map()
+    for (const lc of legoCyclesData) {
+      const key = `${lc.seed_number}:${lc.lego_index}`
+      legoDebutMap.set(key, lc)
+    }
 
     // Build flags lookup map: audio_uuid -> { status, notes, flagged_by, flagged_at, regen_count }
     const flagsMap = new Map()
@@ -3024,6 +3046,42 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
               const legoKey = `${seed.seed_number}:${lego.lego_index}`
               const legoData = legoTextMap.get(legoKey) || {}
 
+              // Get LEGO debut (the LEGO itself as a phrase at position 0)
+              const legoDebut = legoDebutMap.get(legoKey)
+              const allPhrases = [...lego.phrases]
+
+              // Insert LEGO debut as position 0 if it has audio
+              if (legoDebut && (legoDebut.known_audio_uuid || legoDebut.target1_audio_uuid || legoDebut.target2_audio_uuid)) {
+                const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
+                const knownFlag = legoDebut.known_audio_uuid ? flagsMap.get(legoDebut.known_audio_uuid) : null
+                const target1Flag = legoDebut.target1_audio_uuid ? flagsMap.get(legoDebut.target1_audio_uuid) : null
+                const target2Flag = legoDebut.target2_audio_uuid ? flagsMap.get(legoDebut.target2_audio_uuid) : null
+                const isFlagged = (flag) => flag?.status === 'flagged'
+
+                allPhrases.unshift({
+                  id: legoDebut.id,
+                  position: 0,
+                  known_text: legoDebut.known_text,
+                  target_text: legoDebut.target_text,
+                  type: 'lego_debut',
+                  word_count: 1,
+                  lego_count: 1,
+                  known_audio_uuid: legoDebut.known_audio_uuid || null,
+                  target1_audio_uuid: legoDebut.target1_audio_uuid || null,
+                  target2_audio_uuid: legoDebut.target2_audio_uuid || null,
+                  known_s3_key: buildS3Key(legoDebut.known_audio_uuid),
+                  target1_s3_key: buildS3Key(legoDebut.target1_audio_uuid),
+                  target2_s3_key: buildS3Key(legoDebut.target2_audio_uuid),
+                  known_duration_ms: legoDebut.known_duration_ms || null,
+                  target1_duration_ms: legoDebut.target1_duration_ms || null,
+                  target2_duration_ms: legoDebut.target2_duration_ms || null,
+                  is_flagged: isFlagged(knownFlag) || isFlagged(target1Flag) || isFlagged(target2Flag),
+                  known_flag: knownFlag || null,
+                  target1_flag: target1Flag || null,
+                  target2_flag: target2Flag || null
+                })
+              }
+
               return {
                 lego_id: lego.lego_id,
                 lego_index: lego.lego_index,
@@ -3031,7 +3089,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                 known_text: legoData.known_text || null,
                 target_text: legoData.target_text || null,
                 is_new: legoData.is_new ?? null,
-                phrases: lego.phrases.sort((a, b) => a.position - b.position)
+                phrases: allPhrases.sort((a, b) => a.position - b.position)
               }
             })
         }
