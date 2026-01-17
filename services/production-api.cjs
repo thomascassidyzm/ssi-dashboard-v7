@@ -1519,33 +1519,30 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
     const totalProcessed = roleResults.reduce((sum, r) => sum + (r.data?.success || 0), 0)
     const totalFailed = roleResults.reduce((sum, r) => sum + (r.data?.failed || 0), 0)
 
+    // Aggregate regeneratedItems from all roles for inline preview
+    const allRegeneratedItems = roleResults.flatMap(r => r.data?.regeneratedItems || [])
+
+    // NOTE: Don't auto-resolve flags here - let user review and mark done manually
+    // Flags stay at 'flagged' until user clicks "Done" after reviewing audio
+
     if (allSuccess) {
-      // Mark flags as resolved after successful regeneration
-      await supabaseClient.bulkResolveAudioFlags(uuids, courseCode)
       res.json({
         success: true,
         count: uuids.length,
         processed: totalProcessed,
         failed: totalFailed,
+        regeneratedItems: allRegeneratedItems,
         byRole: roleResults.map(r => ({ role: r.role, ...r.data }))
       })
     } else {
-      // Some roles failed - resolve successful ones, leave failed ones flagged
-      const failedRoles = roleResults.filter(r => !r.success)
-      const failedUuids = failedRoles.flatMap(r => byRole[r.role] || [])
-      const successUuids = uuids.filter(u => !failedUuids.includes(u))
-
-      if (successUuids.length > 0) {
-        await supabaseClient.bulkResolveAudioFlags(successUuids, courseCode)
-      }
-      // Failed flags stay as 'flagged' for retry
-
+      // Some roles failed
       res.json({
         success: false,
         partial: true,
         count: uuids.length,
         processed: totalProcessed,
         failed: totalFailed,
+        regeneratedItems: allRegeneratedItems,
         byRole: roleResults.map(r => ({ role: r.role, success: r.success, ...r.data, error: r.error }))
       })
     }

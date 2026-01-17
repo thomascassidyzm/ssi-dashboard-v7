@@ -1108,9 +1108,22 @@ const executeAllFlagged = async () => {
       allFlaggedResult.value = {
         success: true,
         count: data.count,
-        jobId: data.jobId
+        processed: data.processed,
+        failed: data.failed
       }
-      // Clear the queue preview since items are now in progress
+      // Populate regenerateResult with items for the review panel
+      if (data.regeneratedItems?.length > 0) {
+        regenerateResult.value = {
+          dryRun: false,
+          flaggedOnly: true,
+          status: 'completed',
+          total: data.count,
+          success: data.processed,
+          failed: data.failed,
+          regeneratedItems: data.regeneratedItems
+        }
+      }
+      // Clear the queue preview since items have been regenerated
       allFlaggedQueue.value = null
       // Reload pipeline stats
       await productionStore.loadCourse(courseCode.value)
