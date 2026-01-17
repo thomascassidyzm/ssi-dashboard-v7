@@ -113,20 +113,58 @@ Learner sees: I → 我, want → 想, I want → 我想
 }
 ```
 
-### Particles are Exceptions
+### Particles are INFERRED, Never Taught
 
-Particles (了, 着, 过, 吗, 的, etc.) are NOT counted as components - learners infer them:
+**Components must be REAL WORDS that translate to actual vocabulary.**
 
+Particles (了, 着, 过, 吗, 的, etc.) are NEVER listed as components. The learner infers their meaning from context.
+
+**WRONG - grammatical explanation as component:**
 ```json
 {
   "type": "M",
-  "known": "Is it good?",
-  "target": "好吗",
-  "components": [{"known": "good", "target": "好"}]
+  "known": "done",
+  "target": "做了",
+  "components": [
+    {"known": "do", "target": "做"},
+    {"known": "completed action marker", "target": "了"}  // ❌ BULLSHIT! Not a word!
+  ]
 }
 ```
 
-Learner infers 吗 makes questions - no explicit component needed.
+**RIGHT - only real vocabulary:**
+```json
+{
+  "type": "M",
+  "known": "done",
+  "target": "做了",
+  "components": [{"known": "do", "target": "做"}]
+}
+```
+
+The learner sees:
+```
+do    →  做
+done  →  做了
+```
+
+They infer 了 indicates completion from the contrast. No explanation needed!
+
+**More examples:**
+
+```
+good     →  好
+Is it good?  →  好吗
+```
+Learner infers 吗 = question marker.
+
+```
+eat      →  吃
+eating   →  在吃
+```
+Learner infers 在 = ongoing action.
+
+**Rule: If you can't translate it to a single English WORD (not an explanation), don't make it a component.**
 
 ## Decomposition Checklist
 

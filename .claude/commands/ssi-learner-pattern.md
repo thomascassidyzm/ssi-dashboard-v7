@@ -263,118 +263,215 @@ Then DEBUT phrases use the M-LEGO:
 
 ## Particle Inference
 
-Particles are NOT taught explicitly. Learner infers from context:
+**Particles are NEVER taught explicitly.** Learners infer their meaning from contrast.
+
+**M-LEGO components are only REAL WORDS - never grammatical explanations!**
 
 ```
-Components: good → 好
-M-LEGO: Is it good? → 好吗
+M-LEGO: "done" → "做了"
+Component: do → 做    (real word ✓)
+NOT: "completed action marker" → 了  (bullshit explanation ✗)
 
 Learner sees:
-1. good → 好
-2. Is it good? → 好吗
+1. do → 做
+2. done → 做了
 
-They figure out 吗 = question marker from the contrast!
+They infer 了 = completion from the contrast!
 ```
 
-## Chinese Course Examples (Seeds 25-40)
-
-These examples show what YOUR content becomes. Study the structure!
-
-### A-LEGO Round: "need to" → "要" (S0025L05)
-
+More examples:
 ```
-ROUND 47 - Introducing A-LEGO "need to" → "要"
+good        → 好
+Is it good? → 好吗
+→ Learner infers 吗 = question
 
-INTRO: need to → 要
-
-LEGO: need to → 要
-
-DEBUT PHRASES (SHORT → MEDIUM → LONG):
-  [SHORT]  need to → 要
-  [SHORT]  need to go → 要走
-  [SHORT]  need to learn → 要学
-  [SHORT]  I need to go → 我要走
-  [SHORT]  I need to learn → 我要学
-  [MEDIUM] I need to speak Chinese today → 我今天要说中文
-  [MEDIUM] she needs to learn Chinese now → 她现在要学中文
-  [LONG]   he needs to learn Chinese with us today → 他今天要和我们学中文
-  [LONG]   we need to speak more Chinese before we go → 我们走之前要多说中文
-  [LONG]   she needs to start speaking Chinese with us today → 她今天要和我们开始说中文
-  [LONG]   I need to help you learn Chinese before I go → 我走之前要帮你学中文
-
-REVIEW (from earlier rounds):
-  R46: I feel like learning Chinese with you → 我感觉想和你学中文
-  R45: she likes speaking Chinese → 她喜欢说中文
-  R42: I want to go before he starts speaking → 我想在他开始说之前走
-  R38: we like learning together → 我们喜欢一起学
-
-ETERNAL (longest phrases for spaced repetition):
-  I need to help you learn Chinese before I go → 我走之前要帮你学中文
-  she needs to start speaking Chinese with us today → 她今天要和我们开始说中文
+eat     → 吃
+eating  → 在吃
+→ Learner infers 在 = ongoing action
 ```
 
-### M-LEGO Round: "as if" → "好像" (S0026L03)
+**Rule: If you can't translate it to a single English WORD, don't make it a component.**
+
+## How Baskets Become Script View
+
+**CRITICAL: DEBUT and ETERNAL are COMPUTED, not labelled!**
+
+The basket you submit is just numbered practice phrases. The engine computes:
+- **DEBUT phrases**: The 7 SHORTEST practice phrases (after components/lego)
+- **ETERNAL phrases**: The 5 LONGEST practice phrases (may overlap with debut in early seeds!)
+
+### Script View Sequence
+
+For each LEGO round, the learner experiences:
 
 ```
-ROUND 51 - Introducing M-LEGO "as if" → "好像"
-
-INTRO: as if → 好像
-
-COMPONENTS (taught BEFORE the M-LEGO):
-  good → 好
-  like → 像
-
-LEGO: as if → 好像
-
-DEBUT PHRASES (SHORT → MEDIUM → LONG):
-  [SHORT]  good → 好
-  [SHORT]  like → 像
-  [SHORT]  as if → 好像
-  [SHORT]  you seem like → 你好像
-  [SHORT]  it seems like → 好像是
-  [SHORT]  I feel as if → 我感觉好像
-  [SHORT]  it seems like you want to go → 好像你想走
-  [MEDIUM] I feel as if I want to learn Chinese → 我感觉好像想学中文
-  [MEDIUM] she feels as if she wants to speak Chinese → 她感觉好像想说中文
-  [LONG]   I feel as if I want to speak Chinese with you today → 我今天感觉好像想和你说中文
-  [LONG]   I feel as if I like speaking Chinese with them → 我感觉好像喜欢和别人说中文
-  [LONG]   it seems like she likes learning Chinese with us today → 好像她今天喜欢和我们学中文
-  [LONG]   it seems like he likes helping us learn Chinese → 好像他喜欢帮我们学中文
-
-REVIEW (from earlier rounds):
-  R50: I need to help you learn Chinese before I go → 我走之前要帮你学中文
-  R48: she likes speaking Chinese with us → 她喜欢和我们说中文
-  R45: I want to start learning now → 我想现在开始学
-  R41: we want to go together → 我们想一起走
-
-ETERNAL (longest phrases for spaced repetition):
-  I feel as if I want to speak Chinese with you today → 我今天感觉好像想和你说中文
-  it seems like he likes helping us learn Chinese → 好像他喜欢帮我们学中文
+1. INTRO          - Hear the new LEGO
+2. COMPONENTS     - (M-LEGO only) Learn the building blocks
+3. LEGO           - Practice the LEGO itself
+4. DEBUT 1-7      - 7 shortest practice phrases (short → medium → long)
+5. REVIEW         - Spaced rep from PREVIOUS rounds' ETERNAL pools
+6. ETERNAL 1-2    - 2 longest practice phrases (consolidation)
 ```
 
-### Key Observations for Chinese
+**The REVIEW sequence pulls from previous LEGOs' ETERNAL pool - NEVER from debut phrases!**
 
-1. **M-LEGOs are chunks, not atoms**
-   - "as if" → "好像" is ONE teachable unit (M-LEGO)
-   - NOT two separate A-LEGOs: "good" → "好" and "like" → "像"
-   - Components teach the parts, then the whole emerges
+---
 
-2. **Phrase tiers by CHARACTER count** (not words)
-   - SHORT: 3-5 characters
-   - MEDIUM: 6-9 characters
-   - LONG: 10+ characters
+## Real Chinese Example: M-LEGO Basket → Script View
 
-3. **Natural chunking for Chinese**
-   - "今天晚上" (this evening) = one M-LEGO, not 2 A-LEGOs
-   - "和别人一起" (with everyone else) = one M-LEGO, not 3 A-LEGOs
-   - Think: "What would a teacher write on one flashcard?"
+### The Basket (what you submit)
+
+S0003L02: "as often as possible" → "尽量多" (M-type, NEW)
+
+```
+Position  Known                                          Target
+────────  ─────────────────────────────────────────────  ──────────────────
+1         often                                          多           (component)
+2         as much as possible                            尽量         (component)
+3         as often as possible                           尽量多       (LEGO itself)
+4         speak as often as possible                     尽量多说
+5         learn as often as possible                     尽量多学
+6         I want to speak as often as possible           我想尽量多说
+7         I want to learn as often as possible           我想尽量多学
+8         speak Chinese as often as possible             尽量多说中文
+9         how to speak as often as possible              怎么尽量多说
+10        I am trying to speak as often as possible      我在试着尽量多说
+11        I want to speak Chinese as often as possible   我想尽量多说中文
+12        I am trying to speak Chinese as often as possible  我在试着尽量多说中文
+13        now I want to speak Chinese as often as possible   我现在想尽量多说中文
+14        I am trying to learn how to speak as often as possible  我在试着学怎么尽量多说
+```
+
+**14 items total**: 2 components + 1 lego + 11 practice phrases
+
+### The Script View (what the learner experiences)
+
+```
+R9 │ S0003L02  as often as possible = 尽量多              R8 R7 R6 R4 R1  19 items
+───┴────────────────────────────────────────────────────────────────────────────────
+
+INTRO       as often as possible                    →  尽量多
+
+COMPONENT   as much as possible                     →  尽量
+COMPONENT   often                                   →  多
+
+LEGO        as often as possible                    →  尽量多
+
+DEBUT-1     speak as often as possible              →  尽量多说
+DEBUT-2     learn as often as possible              →  尽量多学
+DEBUT-3     I want to speak as often as possible    →  我想尽量多说
+DEBUT-4     I want to learn as often as possible    →  我想尽量多学
+DEBUT-5     speak Chinese as often as possible      →  尽量多说中文
+DEBUT-6     how to speak as often as possible       →  怎么尽量多说
+DEBUT-7     I am trying to speak as often as possible →  我在试着尽量多说
+
+REVIEW R8   I am trying to learn how to speak Chinese →  我在试着学怎么说中文     [S0003L01]
+REVIEW R8   I want to learn how to speak             →  我想学怎么说             [S0003L01]
+REVIEW R8   now I want to learn how to speak Chinese →  我现在想学怎么说中文     [S0003L01]
+REVIEW R7   now I am trying to learn Chinese         →  我现在在试着学中文       [S0002L02]
+REVIEW R6   I am trying to speak Chinese with you    →  我在试着和你说中文       [S0002L01]
+REVIEW R4   speak Chinese with you                   →  和你说中文               [S0001L04]
+
+ETERNAL-1   now I want to speak Chinese as often as possible      →  我现在想尽量多说中文
+ETERNAL-2   I am trying to speak Chinese as often as possible     →  我在试着尽量多说中文
+```
+
+### How the Engine Computed This
+
+1. **Components** (positions 1-2): Shown before LEGO
+2. **LEGO** (position 3): The main teaching unit
+3. **Practice phrases** (positions 4-14): Sorted by target character count:
+   - **7 shortest** → DEBUT-1 through DEBUT-7
+   - **5 longest** → ETERNAL pool (positions 10-14 in this case)
+4. **REVIEW**: Pulled 1 ETERNAL phrase each from rounds R8, R7, R6, R4, R1
+5. **ETERNAL-1, ETERNAL-2**: The 2 longest from THIS basket's eternal pool
+
+---
+
+## Real Chinese Example: A-LEGO Basket → Script View
+
+### The Basket (what you submit)
+
+S0002L01: "with you" → "和你" (A-type, NEW)
+
+```
+Position  Known                                    Target
+────────  ───────────────────────────────────────  ──────────────
+1         with you                                 和你         (LEGO itself)
+2         speak with you                           和你说
+3         learn with you                           和你学
+4         speak Chinese with you                   和你说中文
+5         I want to speak with you                 我想和你说
+6         I want to learn with you                 我想和你学
+7         I want to speak Chinese with you         我想和你说中文
+8         I want to learn Chinese with you         我想和你学中文
+9         now I want to speak Chinese with you     我现在想和你说中文
+10        now I want to learn Chinese with you     我现在想和你学中文
+```
+
+**10 items total**: 1 lego + 9 practice phrases (A-type has no components)
+
+### The Script View (what the learner experiences)
+
+```
+R6 │ S0002L01  with you = 和你                            R5 R4 R3 R2 R1  15 items
+───┴────────────────────────────────────────────────────────────────────────────────
+
+INTRO       with you                                →  和你
+
+LEGO        with you                                →  和你
+
+DEBUT-1     speak with you                          →  和你说
+DEBUT-2     learn with you                          →  和你学
+DEBUT-3     speak Chinese with you                  →  和你说中文
+DEBUT-4     I want to speak with you                →  我想和你说
+DEBUT-5     I want to learn with you                →  我想和你学
+DEBUT-6     I want to speak Chinese with you        →  我想和你说中文
+DEBUT-7     I want to learn Chinese with you        →  我想和你学中文
+
+REVIEW R5   now I want to learn Chinese             →  我现在想学中文           [S0001L05]
+REVIEW R4   I want to learn Chinese                 →  我想学中文               [S0001L04]
+REVIEW R3   I want to speak Chinese                 →  我想说中文               [S0001L03]
+REVIEW R2   speak Chinese                           →  说中文                   [S0001L02]
+REVIEW R1   I want to speak                         →  我想说                   [S0001L01]
+
+ETERNAL-1   now I want to speak Chinese with you    →  我现在想和你说中文
+ETERNAL-2   now I want to learn Chinese with you    →  我现在想和你学中文
+```
+
+---
+
+## Key Rules for Basket Construction
+
+1. **Minimum 10 practice phrases** after components/lego
+   - Need 7 for DEBUT + buffer for ETERNAL pool
+   - Early seeds (1-5) may have fewer due to limited vocab
+
+2. **Order by increasing length**
+   - Position 4 should be shortest practice phrase
+   - Position N should be longest practice phrase
+   - Engine sorts anyway, but helps you verify coverage
+
+3. **ETERNAL pool = 5 longest**
+   - Used for: 2 consolidation phrases at end of THIS round
+   - Used for: 1 review phrase in FUTURE rounds
+   - Must be genuinely LONG (10+ characters for Chinese)
+
+4. **DEBUT phrases must progress SHORT → LONG**
+   - Start simple (LEGO + 1 element)
+   - Build complexity gradually
+   - End at medium length (not as long as ETERNAL)
+
+5. **Never annotate or label**
+   - Just provide the phrases
+   - Engine computes DEBUT/ETERNAL by length
+   - Everything becomes TTS audio
 
 ## Apply This Pattern
 
-When building a course:
-1. Think about what the LEARNER will experience
-2. Ensure phrases only use what they've learned
-3. Build from simple to complex (SHORT → MEDIUM → LONG)
-4. Include ETERNAL phrases for long-term retention
-5. Let grammar emerge from context, don't explain it
-6. **Chunk meaningfully** - create M-LEGOs for multi-character concepts
+When building a basket:
+1. Start with components (M-LEGO) or lego (A-LEGO)
+2. Add 10+ practice phrases in order of increasing length
+3. Verify the 7 shortest make sense as DEBUT (progressive build-up)
+4. Verify the 5 longest are suitable for ETERNAL (spaced rep worthy)
+5. Use only vocabulary available at this point in the course

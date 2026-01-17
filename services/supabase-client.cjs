@@ -1390,6 +1390,30 @@ async function deleteAudioFlag(audioUuid, courseCode) {
 }
 
 /**
+ * Bulk resolve audio flags (mark as resolved after regeneration)
+ * @param {Array<string>} audioUuids - Array of audio UUIDs
+ * @param {string} courseCode - Course code
+ * @returns {Promise<number>} Number of resolved records
+ */
+async function bulkResolveAudioFlags(audioUuids, courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!audioUuids || audioUuids.length === 0) return 0
+
+  const { data, error } = await supabase
+    .from('audio_flags')
+    .update({
+      status: 'resolved',
+      resolved_at: new Date().toISOString()
+    })
+    .eq('course_code', courseCode)
+    .in('audio_uuid', audioUuids)
+    .select()
+
+  if (error) throw error
+  return data?.length || 0
+}
+
+/**
  * Get flagged audio with full audio details from course_audio
  * Used for regeneration queue preview
  * @param {string} courseCode
@@ -1510,6 +1534,7 @@ module.exports = {
   upsertAudioFlag,
   resolveAudioFlag,
   deleteAudioFlag,
+  bulkResolveAudioFlags,
   getAudioFlagStats,
   getAudioFlagsWithDetails,
 

@@ -14,7 +14,7 @@
           <!-- View Mode Toggle Buttons -->
           <div class="view-mode-toggle flex rounded-lg overflow-hidden">
             <button
-              @click="viewMode = 'journey'; if (!learningJourneyData) loadLearningJourney(journeyMaxLegos)"
+              @click="viewMode = 'journey'; if (!learningJourneyData) loadLearningJourney()"
               class="px-4 py-2 text-sm transition-colors flex items-center gap-2"
               :class="viewMode === 'journey'
                 ? 'bg-emerald-500 text-white'
@@ -43,10 +43,10 @@
           <template v-if="viewMode === 'script'">
             <button
               @click="collapseAll"
-              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
               title="Collapse all seeds"
             >
-              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
               </svg>
               Collapse All
@@ -54,45 +54,100 @@
 
             <button
               @click="expandAll"
-              class="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
+              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
               title="Expand all seeds"
             >
-              <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
               Expand All
             </button>
-          </template>
 
-          <!-- Max LEGOs selector (only in journey mode) -->
-          <template v-if="viewMode === 'journey'">
-            <div class="flex items-center gap-2">
-              <label class="text-sm text-slate-400">LEGOs:</label>
-              <select
-                v-model="journeyMaxLegos"
-                @change="reloadLearningJourney"
-                class="bg-slate-700 text-white text-sm rounded px-2 py-1 border border-slate-600 focus:outline-none focus:border-emerald-500"
+            <!-- Pagination Controls for Seeds -->
+            <div v-if="totalSeeds > 0" class="flex items-center gap-2">
+              <button
+                @click="prevSeedPage"
+                :disabled="seedPageStart <= 1"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="seedPageStart <= 1
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
               >
-                <option :value="20">20</option>
-                <option :value="50">50</option>
-                <option :value="100">100</option>
-                <option :value="200">200</option>
-                <option :value="500">All (500)</option>
-              </select>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <span class="text-sm text-slate-300">
+                <span class="font-medium text-white">{{ seedPageStart }}-{{ seedPageEnd }}</span>
+                <span class="text-slate-500"> of </span>
+                <span class="text-white">{{ totalSeeds }}</span>
+              </span>
+              <button
+                @click="nextSeedPage"
+                :disabled="seedPageEnd >= totalSeeds"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="seedPageEnd >= totalSeeds
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
             </div>
           </template>
 
-          <!-- Keyboard Shortcuts Help -->
-          <button
-            @click="showShortcutsHelp = !showShortcutsHelp"
-            class="px-3 py-2 text-sm bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white rounded-lg transition-colors"
-            title="Show keyboard shortcuts"
-          >
-            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
-            Shortcuts
-          </button>
+          <!-- Pagination for journey mode -->
+          <template v-if="viewMode === 'journey'">
+            <!-- Collapse/Expand All Buttons (moved here from inside scroll area) -->
+            <div class="flex gap-2">
+              <button
+                @click="collapseAllJourney"
+                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+              >
+                Collapse All
+              </button>
+              <button
+                @click="expandAllJourney"
+                class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+              >
+                Expand All
+              </button>
+            </div>
+
+            <!-- Pagination Controls (only show when data is loaded) -->
+            <div v-if="totalJourneyRounds > 0" class="flex items-center gap-2">
+              <button
+                @click="prevPage"
+                :disabled="journeyPage === 1"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="journeyPage === 1
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <span class="text-sm text-slate-300">
+                <span class="font-medium text-white">{{ journeyPageStart }}-{{ journeyPageEnd }}</span>
+                <span class="text-slate-500"> of </span>
+                <span class="text-white">{{ totalJourneyRounds }}</span>
+              </span>
+              <button
+                @click="nextPage"
+                :disabled="journeyPageEnd >= totalJourneyRounds"
+                class="px-2 py-1 text-sm rounded transition-colors"
+                :class="journeyPageEnd >= totalJourneyRounds
+                  ? 'text-slate-500 cursor-not-allowed'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-600'"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -218,9 +273,11 @@
         <!-- Learning Journey View Component -->
         <LearningJourneyView
           v-else-if="learningJourneyData"
-          :rounds="learningJourneyData.rounds"
+          ref="learningJourneyRef"
+          :rounds="paginatedJourneyRounds"
           :stats="learningJourneyData.stats"
           :is-loading="isLoadingJourney"
+          :hide-controls="true"
         />
       </template>
 
@@ -443,7 +500,44 @@ const learningJourneyData = ref<{
 } | null>(null);
 const isLoadingJourney = ref(false);
 const journeyError = ref<string | null>(null);
-const journeyMaxLegos = ref(50);
+
+// Pagination for journey view (50 rounds per page)
+const journeyPage = ref(1);
+const journeyPageSize = 50;
+const learningJourneyRef = ref<any>(null);
+
+// Computed for pagination
+const totalJourneyRounds = computed(() => learningJourneyData.value?.rounds?.length || 0);
+const journeyPageStart = computed(() => (journeyPage.value - 1) * journeyPageSize + 1);
+const journeyPageEnd = computed(() => Math.min(journeyPage.value * journeyPageSize, totalJourneyRounds.value));
+const paginatedJourneyRounds = computed(() => {
+  if (!learningJourneyData.value?.rounds) return [];
+  const start = (journeyPage.value - 1) * journeyPageSize;
+  const end = start + journeyPageSize;
+  return learningJourneyData.value.rounds.slice(start, end);
+});
+
+// Pagination methods
+const prevPage = () => {
+  if (journeyPage.value > 1) {
+    journeyPage.value--;
+  }
+};
+
+const nextPage = () => {
+  if (journeyPageEnd.value < totalJourneyRounds.value) {
+    journeyPage.value++;
+  }
+};
+
+// Collapse/Expand all methods for journey view
+const collapseAllJourney = () => {
+  learningJourneyRef.value?.collapseAll();
+};
+
+const expandAllJourney = () => {
+  learningJourneyRef.value?.expandAll();
+};
 
 // API Base URL - use localStorage (set by EnvironmentSwitcher), then env, then localhost orchestrator
 const getApiBaseUrl = (): string => {
@@ -650,14 +744,16 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   }
 };
 
-// Load learning journey data
-const loadLearningJourney = async (maxLegos: number = 50) => {
+// Load learning journey data (load all LEGOs, pagination done client-side)
+const loadLearningJourney = async () => {
   isLoadingJourney.value = true;
   journeyError.value = null;
+  journeyPage.value = 1; // Reset to first page
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${maxLegos}`;
+    // Load up to 5000 LEGOs to support full course viewing
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=5000`;
 
     const response = await fetch(url, {
       headers: {
@@ -687,16 +783,16 @@ const toggleViewMode = () => {
     viewMode.value = 'journey';
     // Load learning journey data if not already loaded
     if (!learningJourneyData.value) {
-      loadLearningJourney(journeyMaxLegos.value);
+      loadLearningJourney();
     }
   } else {
     viewMode.value = 'script';
   }
 };
 
-// Reload learning journey with different max LEGOs
+// Reload learning journey
 const reloadLearningJourney = () => {
-  loadLearningJourney(journeyMaxLegos.value);
+  loadLearningJourney();
 };
 
 // Transform new /script-view endpoint data into SeedRowData format
@@ -914,6 +1010,7 @@ const playAudioSample = (sample: AudioSample) => {
 
 // Play flagged item audio
 const playFlaggedItem = async (item: FlaggedItem) => {
+  console.log('[playFlaggedItem] Called with item:', item);
   try {
     const apiBaseUrl = getApiBaseUrl();
     const response = await fetch(

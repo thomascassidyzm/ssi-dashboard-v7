@@ -28,6 +28,8 @@
  * @version 1.0.0
  */
 
+require('dotenv').config()
+
 const express = require('express')
 const path = require('path')
 const fs = require('fs-extra')
@@ -217,8 +219,9 @@ app.post('/compile', async (req, res) => {
       knownLang = parts[parts.length - 1] || 'eng'
     }
 
-    // Get voice config
-    const voices = voiceOverrides || await db.getCourseVoices(courseCode) || {}
+    // Get voice config (handle both nested and flat structure)
+    const voiceConfig = voiceOverrides || await db.getCourseVoices(courseCode) || {}
+    const voices = voiceConfig.voices || voiceConfig
 
     if (!voices.known || !voices.target1 || !voices.target2) {
       return res.status(400).json({
@@ -268,7 +271,7 @@ app.post('/compile', async (req, res) => {
               const cadence = getCadenceForRole(role)
               const uuid = db.generateAudioUUID(voiceId, cycle.target, targetLang, role, cadence)
 
-              const exists = await db.audioExists(uuid)
+              const exists = await db.courseAudioExists(uuid)
               if (!exists) {
                 missing.push({
                   text: cycle.target,
@@ -296,7 +299,7 @@ app.post('/compile', async (req, res) => {
             const cadence = getCadenceForRole('source')
             const uuid = db.generateAudioUUID(voiceId, cycle.source, knownLang, 'source', cadence)
 
-            const exists = await db.audioExists(uuid)
+            const exists = await db.courseAudioExists(uuid)
             if (!exists) {
               missing.push({
                 text: cycle.source,
@@ -428,7 +431,7 @@ app.get('/validate/:courseCode', async (req, res) => {
               if (voiceId) {
                 const cadence = getCadenceForRole(role)
                 const uuid = db.generateAudioUUID(voiceId, cycle.target, targetLang, role, cadence)
-                const exists = await db.audioExists(uuid)
+                const exists = await db.courseAudioExists(uuid)
                 if (exists) existing++
                 else missing++
               } else {
@@ -444,7 +447,7 @@ app.get('/validate/:courseCode', async (req, res) => {
             if (voiceId) {
               const cadence = getCadenceForRole('source')
               const uuid = db.generateAudioUUID(voiceId, cycle.source, knownLang, 'source', cadence)
-              const exists = await db.audioExists(uuid)
+              const exists = await db.courseAudioExists(uuid)
               if (exists) existing++
               else missing++
             } else {
