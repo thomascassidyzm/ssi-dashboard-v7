@@ -1,7 +1,7 @@
 <template>
   <div class="audio-pipeline text-slate-100">
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-6">
+    <main class="max-w-7xl mx-auto px-6 py-6">
       <!-- Loading State -->
       <div v-if="loading" class="flex flex-col items-center justify-center py-20">
         <div class="relative">
