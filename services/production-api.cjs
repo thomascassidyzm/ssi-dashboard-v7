@@ -3284,6 +3284,58 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
   }
 })
 
+// =============================================================================
+// RECORDING OPTIMIZER ENDPOINTS
+// =============================================================================
+
+// Import the recording optimizer algorithm
+const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+
+// GET /api/production/:courseCode/recording-optimizer
+// Runs the GuaranteedCoverage algorithm to find minimum recording set
+app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    logger.log(`[Recording Optimizer] Generating script for ${courseCode}`)
+
+    // Run the algorithm (suppress console output by redirecting)
+    const originalLog = console.log
+    const logs = []
+    console.log = (...args) => logs.push(args.join(' '))
+
+    const result = await generateRecordingScript(courseCode, { verbose: false })
+
+    console.log = originalLog
+
+    if (!result) {
+      return res.status(404).json({ error: 'No LEGOs found for course. Run Course Builder first.' })
+    }
+
+    // Format response for dashboard
+    res.json({
+      courseCode,
+      generatedAt: result.generatedAt,
+      statistics: {
+        totalLegos: result.statistics.totalLegos,
+        phrasesToRecord: result.recordingScript.phrases.length,
+        directRecord: result.directRecord.items.length,
+        totalRecordings: result.statistics.totalRecordings,
+        coveragePercent: result.statistics.coveragePercent,
+        reductionPercent: result.statistics.reductionPercent,
+        estimatedMinutes: result.statistics.estimatedMinutes,
+        totalPhrases: result.statistics.totalLegos * 10 // Approx phrases generatable
+      },
+      recordingScript: result.recordingScript.phrases.slice(0, 50), // First 50 for preview
+      directRecord: result.directRecord.items.slice(0, 20), // First 20 for preview
+      fullScript: result // Full data if needed
+    })
+  } catch (error) {
+    logger.error('Error running recording optimizer:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

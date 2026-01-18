@@ -52,14 +52,28 @@ const CONFIG = {
 // =============================================================================
 
 /**
- * Tokenize a phrase into words (normalized)
+ * Normalize text for matching:
+ * - Lowercase
+ * - Remove accents
+ * - Normalize quotes (curly → straight)
+ * - Strip punctuation
  */
-function tokenize(text) {
+function normalizeForMatching(text) {
   return text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove accents for matching
-    .trim()
+    .replace(/[\u0300-\u036f]/g, '') // Remove accents
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'") // Curly single quotes → straight
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"') // Curly double quotes → straight
+    .replace(/[?!.,;:'"()[\]{}]/g, '') // Remove punctuation
+    .trim();
+}
+
+/**
+ * Tokenize a phrase into words (normalized)
+ */
+function tokenize(text) {
+  return normalizeForMatching(text)
     .split(/\s+/)
     .filter(w => w.length > 0);
 }
@@ -77,24 +91,14 @@ function getAllSubsequences(words) {
   }
 
   // Multi-word subsequences (for M-type LEGOs)
-  for (let len = 2; len <= Math.min(words.length, 6); len++) {
+  // Increased to 8 words to catch longer phrases
+  for (let len = 2; len <= Math.min(words.length, 8); len++) {
     for (let start = 0; start <= words.length - len; start++) {
       result.add(words.slice(start, start + len).join(' '));
     }
   }
 
   return result;
-}
-
-/**
- * Build a normalized lookup key for a LEGO
- */
-function normalizeForMatching(text) {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
 }
 
 /**
@@ -214,7 +218,9 @@ async function generateRecordingScript(courseCode, options = {}) {
   }
 
   // Build universe with both normalized and original text
+  // Also track which seed each LEGO came from (for source-seed coverage)
   const universe = new Map(); // normalized → original
+  const legoSourceSeeds = new Map(); // normalized → seed_number (where this LEGO was first introduced)
   for (const lego of legos) {
     const normalized = normalizeForMatching(lego.target_text);
     if (!universe.has(normalized)) {
@@ -223,7 +229,9 @@ async function generateRecordingScript(courseCode, options = {}) {
         known: lego.known_text,
         type: lego.type,
         legoId: `S${String(lego.seed_number).padStart(4, '0')}L${String(lego.lego_index).padStart(2, '0')}`,
+        sourceSeedNumber: lego.seed_number,
       });
+      legoSourceSeeds.set(normalized, lego.seed_number);
     }
   }
 
@@ -272,6 +280,15 @@ async function generateRecordingScript(courseCode, options = {}) {
   const candidates = [];
   const universeKeys = new Set(universe.keys());
 
+  // Build a map of seed_number → set of LEGO normalized texts that came from it
+  const seedToLegos = new Map();
+  for (const [normalized, seedNum] of legoSourceSeeds) {
+    if (!seedToLegos.has(seedNum)) {
+      seedToLegos.set(seedNum, new Set());
+    }
+    seedToLegos.get(seedNum).add(normalized);
+  }
+
   for (const [normalized, phraseInfo] of phraseMap) {
     const words = tokenize(normalized);
 
@@ -286,6 +303,14 @@ async function generateRecordingScript(courseCode, options = {}) {
     for (const subseq of subsequences) {
       if (universeKeys.has(subseq)) {
         covers.add(subseq);
+      }
+    }
+
+    // CRITICAL: If this is a seed phrase, it automatically covers ALL LEGOs
+    // that were extracted from it (handles mutations, non-contiguous matches, etc.)
+    if (phraseInfo.source === 'seed' && seedToLegos.has(phraseInfo.seedNumber)) {
+      for (const legoKey of seedToLegos.get(phraseInfo.seedNumber)) {
+        covers.add(legoKey);
       }
     }
 
@@ -461,4 +486,10 @@ Examples:
   }
 }
 
-main();
+// Run CLI if called directly
+if (require.main === module) {
+  main();
+}
+
+// Export for API use
+module.exports = { generateRecordingScript };

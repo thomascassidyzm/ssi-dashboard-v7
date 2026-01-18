@@ -285,61 +285,107 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')
 
-// Algorithm state
+// API base URL
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470'
+
+// Loading & error state
 const isCalculating = ref(false)
+const isLoading = ref(true)
+const error = ref(null)
+
+// Algorithm results
 const stats = ref({
-  totalLegos: 627,
-  phrasesToRecord: 199,
-  directRecord: 55,
-  estimatedMinutes: 66,
-  reductionPercent: 97.8,
-  totalPhrases: 11818
+  totalLegos: 0,
+  phrasesToRecord: 0,
+  directRecord: 0,
+  estimatedMinutes: 0,
+  reductionPercent: 0,
+  totalPhrases: 0,
+  coveragePercent: 0
 })
 
-// Coverage stats
+// Recording script phrases
+const filteredPhrases = ref([])
+const directRecordItems = ref([])
+
+// Coverage stats (will be computed from actual recordings later)
 const totalRecordings = computed(() => stats.value.phrasesToRecord + stats.value.directRecord)
-const recordedCount = ref(142)
-const splicedCount = ref(847)
-const pendingCount = ref(112)
-const recordedPercent = computed(() => Math.round((recordedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
-const splicedPercent = computed(() => Math.round((splicedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
-const totalCoverage = computed(() => recordedPercent.value + splicedPercent.value)
+const recordedCount = ref(0) // TODO: fetch from audio inventory
+const splicedCount = ref(0)
+const pendingCount = computed(() => totalRecordings.value - recordedCount.value)
+const recordedPercent = computed(() => {
+  const total = recordedCount.value + splicedCount.value + pendingCount.value
+  return total > 0 ? Math.round((recordedCount.value / total) * 100) : 0
+})
+const splicedPercent = computed(() => {
+  const total = recordedCount.value + splicedCount.value + pendingCount.value
+  return total > 0 ? Math.round((splicedCount.value / total) * 100) : 0
+})
+const totalCoverage = computed(() => stats.value.coveragePercent || 0)
 
-// Recording script
-const filteredPhrases = ref([
-  { id: 1, target: "mae'n fyd mawr ond dydy hynna ddim yn meddwl na fedra i ddysgu", source: "it's a big world but that doesn't mean I can't learn", legoCount: 11 },
-  { id: 2, target: "dw i'n cofio pan oeddan nhw newydd ddechrau yn yr ysgol", source: "I remember when they had just started at school", legoCount: 10 },
-  { id: 3, target: "os na wnei di banad o goffi i mi rŵan hyn fydda i ddim yn hapus", source: "if you don't make me a cup of coffee right now I won't be happy", legoCount: 10 },
-  { id: 4, target: "dw i isio ffeindio siop yn agos at y gwesty lle medra i brynu", source: "I want to find a shop close to the hotel where I can buy", legoCount: 9 },
-  { id: 5, target: "a deud y gwir, efallai dylen ni agor y drws a chau'r ffenest", source: "to tell the truth, maybe we should open the door and close the window", legoCount: 9 },
-  { id: 6, target: "stopio siarad Cymraeg", source: "stop speaking Welsh", legoCount: 3 },
-  { id: 7, target: "dw i isio dysgu siarad Cymraeg", source: "I want to learn to speak Welsh", legoCount: 5 },
-])
+// Flagged phrases (to be fetged from flags system)
+const flaggedPhrases = ref([])
 
-// Flagged phrases
-const flaggedPhrases = ref([
-  { id: 1, phrase: "mae gen i gar coch", reason: "sounds_robotic", score: 95, priority: 'high' },
-  { id: 2, phrase: "ble mae'r tŷ bach", reason: "timing_off", score: 82, priority: 'medium' },
-  { id: 3, phrase: "dw i'n hoffi coffi", reason: "sounds_robotic", score: 78, priority: 'medium' },
-  { id: 4, phrase: "bore da", reason: "wrong_pronunciation", score: 65, priority: 'low' },
-])
-
-// Methods
+// Fetch algorithm results from API
 async function runAlgorithm() {
   isCalculating.value = true
-  // TODO: Call actual API
-  await new Promise(resolve => setTimeout(resolve, 1500))
-  isCalculating.value = false
+  error.value = null
+
+  try {
+    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/recording-optimizer`)
+
+    if (!response.ok) {
+      const data = await response.json()
+      throw new Error(data.error || 'Failed to run algorithm')
+    }
+
+    const data = await response.json()
+
+    // Update stats
+    stats.value = {
+      totalLegos: data.statistics.totalLegos,
+      phrasesToRecord: data.statistics.phrasesToRecord,
+      directRecord: data.statistics.directRecord,
+      estimatedMinutes: data.statistics.estimatedMinutes,
+      reductionPercent: data.statistics.reductionPercent,
+      totalPhrases: data.statistics.totalPhrases,
+      coveragePercent: data.statistics.coveragePercent
+    }
+
+    // Update recording script
+    filteredPhrases.value = data.recordingScript.map((p, i) => ({
+      id: i + 1,
+      target: p.target,
+      wordCount: p.wordCount,
+      legoCount: p.coversLegos
+    }))
+
+    // Update direct record items
+    directRecordItems.value = data.directRecord || []
+
+  } catch (err) {
+    error.value = err.message
+    console.error('Recording optimizer error:', err)
+  } finally {
+    isCalculating.value = false
+    isLoading.value = false
+  }
 }
 
 function exportPDF() {
   // TODO: Generate PDF of recording script
   console.log('Exporting PDF...')
+  alert('PDF export coming soon!')
 }
+
+// Load data on mount
+onMounted(() => {
+  runAlgorithm()
+})
 </script>
