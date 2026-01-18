@@ -1801,8 +1801,18 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 
       const basketCount = baskets ? Object.keys(baskets.baskets || baskets || {}).length : 0;
 
+      // Return in same format as Vercel API for consistency
+      const stats = {
+        seeds: seedCount,
+        legos: legoCount,
+        newLegos: 0,
+        practicePhrases: basketCount,
+        audio: 0
+      };
+
       return res.json({
         course_code: courseCode,
+        stats,
         seed_count: seedCount,
         lego_count: legoCount,
         basket_count: basketCount,
@@ -1838,8 +1848,18 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       // Count baskets - new format is object keyed by lego ID
       const basketCount = baskets ? Object.keys(baskets).length : 0;
 
+      // Return in same format as Vercel API for consistency
+      const stats = {
+        seeds: seedCount,
+        legos: legoCount,
+        newLegos: 0,
+        practicePhrases: basketCount,
+        audio: 0
+      };
+
       return res.json({
         course_code: courseCode,
+        stats,
         seed_count: seedCount,
         lego_count: legoCount,
         basket_count: basketCount,
@@ -1870,20 +1890,44 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     // Get content counts from database
     const { getAllCourseContentStats } = require('../supabase-client.cjs');
     const allStats = await getAllCourseContentStats();
-    const stats = allStats[courseCode] || { seeds: 0, legos: 0, baskets: 0 };
+    const dbStats = allStats[courseCode] || { seeds: 0, legos: 0, baskets: 0 };
+
+    // Return in same format as Vercel API for consistency
+    const stats = {
+      seeds: dbStats.seeds,
+      legos: dbStats.legos,
+      newLegos: 0,  // Would need separate query for is_new count
+      practicePhrases: dbStats.baskets,
+      audio: 0  // Would need separate query for audio count
+    };
 
     res.json({
       course_code: courseCode,
+      display_name: course.display_name || courseCode,
+      known_lang: course.known_lang,
+      target_lang: course.target_lang,
+      status: course.status || 'unknown',
+      course_type: course.course_type,
+
+      // Content statistics (Vercel API format)
+      stats,
+
+      // Legacy format for backwards compatibility
       seed_count: stats.seeds,
       lego_count: stats.legos,
-      basket_count: stats.baskets,
-      has_phase1: stats.seeds > 0,
+      new_lego_count: stats.newLegos,
+      practice_phrase_count: stats.practicePhrases,
+      audio_count: stats.audio,
+      basket_count: dbStats.baskets,
+
+      // Phase status
+      has_phase1: stats.seeds > 0 && stats.legos > 0,
       has_phase3: stats.legos > 0,
-      has_baskets: stats.baskets > 0,
-      data_source: 'database',
-      course_name: course.name,
-      known_lang: course.known_lang,
-      target_lang: course.target_lang
+      has_baskets: dbStats.baskets > 0,
+      has_audio: stats.audio > 0,
+
+      // Data source indicator
+      data_source: 'database'
     });
   } catch (error) {
     console.error(`Failed to load course ${courseCode}:`, error);
