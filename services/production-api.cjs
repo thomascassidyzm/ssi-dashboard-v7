@@ -3342,15 +3342,15 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
   try {
     const { courseCode } = req.params
 
-    // Demo splice URLs (pre-generated spliced audio stored in S3)
-    const DEMO_SPLICE_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/demo-splices'
+    // Demo splice S3 keys (pre-generated spliced audio stored in S3)
+    // V2: Generated with deterministic silence detection, 44.1kHz/128k CBR
     const demoSplices = {
       // demo1: "dw i ddim isio siarad Cymraeg rŵan" - built from seeds 1, 6, 11
-      60: { url: `${DEMO_SPLICE_BASE}/demo1.mp3`, duration: 8520 },
+      60: { s3Key: 'demo-splices/demo1.mp3', duration: 8934 },
       // demo2: "fedra i ddim siarad Cymraeg" - built from seed 6
-      61: { url: `${DEMO_SPLICE_BASE}/demo2.mp3`, duration: 6096 },
+      61: { s3Key: 'demo-splices/demo2.mp3', duration: 7105 },
       // demo3: "dw i isio ymarfer siarad Cymraeg" - built from seeds 1, 11
-      62: { url: `${DEMO_SPLICE_BASE}/demo3.mp3`, duration: 7344 }
+      62: { s3Key: 'demo-splices/demo3.mp3', duration: 7105 }
     }
 
     // The demo phrases for Welsh North
@@ -3368,15 +3368,17 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
     const results = []
 
     for (const phrase of demoPhrases) {
-      // For synthesized phrases, use the pre-spliced demo files
+      // For synthesized phrases, use the pre-spliced demo files with signed URLs
       if (phrase.isSynthesized && demoSplices[phrase.seed]) {
+        const splice = demoSplices[phrase.seed]
+        const url = await s3Service.getAudioSignedUrl(`demo-splice-${phrase.seed}`, 3600, { s3Key: splice.s3Key })
         results.push({
           seed: phrase.seed,
           text: phrase.text,
           english: phrase.english,
           audioId: `demo-splice-${phrase.seed}`,
-          url: demoSplices[phrase.seed].url,
-          duration: demoSplices[phrase.seed].duration,
+          url,
+          duration: splice.duration,
           isSynthesized: true
         })
         continue
