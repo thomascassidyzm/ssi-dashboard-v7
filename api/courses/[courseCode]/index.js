@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       supabase
         .from('courses')
         .select('code, known_lang, target_lang, display_name, status, course_type, voice_config')
-        .eq('code', courseCode)
+        .eq('course_code', courseCode)
         .single(),
 
       // Seeds count

@@ -101,7 +101,7 @@ async function getCourse(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -148,7 +148,7 @@ async function getCourseVoices(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('voice_config')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -218,7 +218,7 @@ async function updateCourseVoices(courseCode, voiceConfig) {
   const { data, error } = await supabase
     .from('courses')
     .update({ voice_config: voiceConfig })
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .select()
     .single()
 
@@ -245,7 +245,7 @@ async function updateCourseStatus(courseCode, status) {
   const { data, error } = await supabase
     .from('courses')
     .update({ status })
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .select()
     .single()
 

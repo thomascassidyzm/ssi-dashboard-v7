@@ -2376,7 +2376,7 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
     const { data: courseData } = await supabase
       .from('courses')
       .select('voice_config')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     const voiceConfig = courseData?.voice_config || {}

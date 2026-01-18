@@ -19,7 +19,7 @@ async function generateManifestFromDB(courseCode) {
   const { data: course, error: courseError } = await db
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (courseError || !course) return null;

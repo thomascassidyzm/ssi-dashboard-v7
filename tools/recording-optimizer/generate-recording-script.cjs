@@ -153,7 +153,7 @@ async function getCourseInfo(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (error) throw new Error(`Course not found: ${courseCode}`);

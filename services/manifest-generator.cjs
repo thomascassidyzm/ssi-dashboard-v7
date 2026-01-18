@@ -213,7 +213,7 @@ async function generateManifest(courseCode, options = {}) {
   const { data: course, error: courseError } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (courseError) {

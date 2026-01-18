@@ -140,7 +140,7 @@ async function loadVoiceConfig(courseCode) {
     const { data, error } = await supabase
       .from('courses')
       .select('voice_config')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single();
 
     if (error && error.code !== 'PGRST116') { // PGRST116 = not found
@@ -296,7 +296,7 @@ async function saveVoiceConfig(courseCode, config) {
       .update({
         voice_config: fullConfig
       })
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .select()
       .single();
 

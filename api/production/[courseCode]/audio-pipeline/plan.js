@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     const { data: course, error: courseError } = await db
       .from('courses')
       .select('code, display_name, known_lang, target_lang, voice_config, status')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single();
 
     if (courseError || !course) {

@@ -237,7 +237,7 @@ async function planHandler(req, res) {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -382,7 +382,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -642,7 +642,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -990,7 +990,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {

@@ -121,6 +121,87 @@ function formatLegoId(seedId, legoIndex) {
 }
 
 // =============================================================================
+// PHRASE ROLE AND COVERAGE HELPERS (January 2026)
+// =============================================================================
+
+/**
+ * Compute phrase_role from position value
+ *
+ * @param {number} position - The phrase position
+ * @returns {'component' | 'practice' | 'eternal_eligible'}
+ */
+function computePhraseRole(position) {
+  if (position === 0) return 'component';
+  if (position >= 8) return 'eternal_eligible';
+  return 'practice';
+}
+
+/**
+ * Find which LEGOs are connected (appear) in a phrase
+ *
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} primaryLegoTarget - The primary LEGO's target text (excluded from results)
+ * @param {Array<{lego_id: string, target_text: string}>} allLegos - All LEGOs introduced so far
+ * @returns {string[]} Array of connected LEGO IDs
+ */
+function computeConnectedLegoIds(phraseTargetText, primaryLegoTarget, allLegos) {
+  if (!allLegos || !Array.isArray(allLegos)) return [];
+
+  const connectedIds = [];
+  const normalizedPhrase = phraseTargetText.toLowerCase().trim();
+  const normalizedPrimary = primaryLegoTarget.toLowerCase().trim();
+
+  for (const lego of allLegos) {
+    const legoTarget = (lego.target_text || lego.target || '').toLowerCase().trim();
+
+    // Skip the primary LEGO itself
+    if (legoTarget === normalizedPrimary) continue;
+
+    // Skip empty or very short targets (single characters might match too broadly)
+    if (legoTarget.length < 2) continue;
+
+    // Check if this LEGO's target text appears in the phrase
+    if (normalizedPhrase.includes(legoTarget)) {
+      connectedIds.push(lego.lego_id || lego.id);
+    }
+  }
+
+  return connectedIds;
+}
+
+/**
+ * Compute where the primary LEGO appears in the phrase (start, middle, end)
+ *
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} legoTargetText - The primary LEGO's target text
+ * @returns {'start' | 'middle' | 'end' | null}
+ */
+function computeLegoPosition(phraseTargetText, legoTargetText) {
+  if (!phraseTargetText || !legoTargetText) return null;
+
+  const phrase = phraseTargetText.trim();
+  const lego = legoTargetText.trim();
+
+  // Find the position of the LEGO in the phrase
+  const index = phrase.indexOf(lego);
+  if (index === -1) return null;
+
+  const phraseLength = phrase.length;
+  const legoLength = lego.length;
+  const legoEndIndex = index + legoLength;
+
+  // Calculate position as percentage of phrase
+  const startPercent = index / phraseLength;
+  const endPercent = legoEndIndex / phraseLength;
+  const centerPercent = (startPercent + endPercent) / 2;
+
+  // Classify based on where the center of the LEGO falls
+  if (centerPercent < 0.33) return 'start';
+  if (centerPercent > 0.67) return 'end';
+  return 'middle';
+}
+
+// =============================================================================
 // SEED OPERATIONS
 // =============================================================================
 
@@ -473,7 +554,7 @@ async function updateLego(courseCode, seedNumber, legoIndex, updates) {
 // =============================================================================
 
 /**
- * Save a practice phrase
+ * Save a practice phrase (with auto-computed coverage metadata)
  *
  * @param {string} courseCode
  * @param {number} seedNumber
@@ -487,12 +568,36 @@ async function updateLego(courseCode, seedNumber, legoIndex, updates) {
  * @param {number} phraseData.legoCount - LEGO count for classification
  * @param {string} [phraseData.difficulty] - 'easy', 'medium', 'hard'
  * @param {string} [phraseData.register] - 'casual', 'formal'
+ * @param {string} [phraseData.phraseRole] - 'component'|'practice'|'eternal_eligible' (auto-computed from position)
+ * @param {string[]} [phraseData.connectedLegoIds] - Other LEGO IDs in phrase (auto-computed if options provided)
+ * @param {string} [phraseData.legoPosition] - 'start'|'middle'|'end' (auto-computed if options provided)
  * @param {Object} [phraseData.metadata] - Additional metadata as JSONB
+ * @param {Object} [options] - Context for auto-computing coverage fields
+ * @param {Array} [options.allLegos] - All LEGOs introduced so far (for connectedLegoIds)
+ * @param {string} [options.primaryLegoTarget] - Primary LEGO's target text (for legoPosition)
  * @returns {Promise<Object>}
  */
-async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData) {
+async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData, options = {}) {
   if (!USE_DATABASE_WRITES) return null;
   if (!supabase) throw new Error('Supabase not initialized');
+
+  const targetText = phraseData.targetText || phraseData.target_text || phraseData.target;
+  const position = phraseData.position;
+
+  // Compute phrase_role from position if not explicitly provided
+  const phraseRole = phraseData.phraseRole || phraseData.phrase_role || computePhraseRole(position);
+
+  // Compute connected_lego_ids if allLegos context is provided
+  let connectedLegoIds = phraseData.connectedLegoIds || phraseData.connected_lego_ids || [];
+  if (connectedLegoIds.length === 0 && options.allLegos && options.primaryLegoTarget) {
+    connectedLegoIds = computeConnectedLegoIds(targetText, options.primaryLegoTarget, options.allLegos);
+  }
+
+  // Compute lego_position if primaryLegoTarget context is provided
+  let legoPosition = phraseData.legoPosition || phraseData.lego_position || null;
+  if (!legoPosition && options.primaryLegoTarget) {
+    legoPosition = computeLegoPosition(targetText, options.primaryLegoTarget);
+  }
 
   const { data, error } = await supabase
     .from('course_practice_phrases')
@@ -501,13 +606,17 @@ async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData)
       seed_number: seedNumber,
       lego_index: legoIndex,
       known_text: phraseData.knownText || phraseData.known_text || phraseData.known,
-      target_text: phraseData.targetText || phraseData.target_text || phraseData.target,
-      position: phraseData.position,
+      target_text: targetText,
+      position: position,
       word_count: phraseData.wordCount || phraseData.word_count || 0,
       target_syllable_count: phraseData.targetSyllableCount || phraseData.target_syllable_count || null,
       lego_count: phraseData.legoCount || phraseData.lego_count || 0,
       difficulty: phraseData.difficulty || null,
       register: phraseData.register || null,
+      // New coverage columns (January 2026)
+      phrase_role: phraseRole,
+      connected_lego_ids: connectedLegoIds,
+      lego_position: legoPosition,
       metadata: phraseData.metadata || {},
       status: phraseData.status || 'draft'
     }, {
@@ -611,7 +720,7 @@ async function getCourseProgress(courseCode) {
   const { data: course } = await supabase
     .from('courses')
     .select('seed_count')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   const targetSeedCount = course?.seed_count || 668;
@@ -730,7 +839,7 @@ async function getSeedProgress(courseCode) {
   const { data: course } = await supabase
     .from('courses')
     .select('seed_count')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   const targetSeedCount = course?.seed_count || 668;
@@ -825,7 +934,7 @@ async function ensureCourse(courseCode, knownLang, targetLang, seedCount = null)
   const { data: existing } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (existing) return existing;
@@ -862,7 +971,7 @@ async function updateCourseSeedCount(courseCode, seedCount) {
   const { data, error } = await supabase
     .from('courses')
     .update({ seed_count: seedCount })
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .select()
     .single();
 
@@ -1088,7 +1197,7 @@ async function getMissingNewLegos(courseCode) {
   const { data: course } = await supabase
     .from('courses')
     .select('seed_count')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   const maxSeed = course?.seed_count || 668;
@@ -1144,6 +1253,11 @@ module.exports = {
   parseLegoIndex,
   formatSeedId,
   formatLegoId,
+
+  // Phrase role and coverage helpers (January 2026)
+  computePhraseRole,
+  computeConnectedLegoIds,
+  computeLegoPosition,
 
   // Seed operations
   saveSeed,

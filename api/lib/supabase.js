@@ -86,7 +86,7 @@ export async function getCourse(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (error && error.code !== 'PGRST116') throw error;
@@ -103,7 +103,7 @@ export async function getCourseVoices(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('voice_config')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (error && error.code !== 'PGRST116') throw error;

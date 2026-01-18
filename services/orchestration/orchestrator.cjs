@@ -1860,7 +1860,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single();
 
     if (courseError || !course) {
@@ -1914,7 +1914,7 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
         const { data } = await supabase
           .from('courses')
           .select('code')
-          .eq('code', courseCode)
+          .eq('course_code', courseCode)
           .single();
         existsDatabase = !!data;
       }
@@ -1967,7 +1967,7 @@ app.get('/api/courses/:courseCode/exists', async (req, res) => {
         try {
           const { supabase, isInitialized } = require('../supabase-client.cjs');
           if (isInitialized()) {
-            const { data } = await supabase.from('courses').select('code').eq('code', code).single();
+            const { data } = await supabase.from('courses').select('course_code').eq('course_code', code).single();
             if (data) return true;
           }
         } catch (err) {}
@@ -2148,7 +2148,7 @@ app.post('/api/courses/create', async (req, res) => {
     const { data: existing } = await supabase
       .from('courses')
       .select('code')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single();
 
     if (existing) {
