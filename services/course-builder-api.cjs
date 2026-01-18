@@ -638,7 +638,7 @@ function stopBuildManager() {
  * @param {string} courseCode
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 260) {
+async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   if (activeBuilds.has(courseCode)) {
     return { ok: false, error: 'Build already active for this course' };
   }
@@ -2736,7 +2736,7 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { terminal = 'iTerm2', targetSeeds = 260 } = req.body || {};
+  const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
 
   try {
     const result = await startBuild(courseCode, terminal, targetSeeds);

@@ -442,7 +442,7 @@ async function startBuilder() {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({ terminal })
+      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
     })
 
     const result = await response.json()
