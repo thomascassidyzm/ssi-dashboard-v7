@@ -114,11 +114,26 @@
           <!-- LEGO Audio Synthesis Demo -->
           <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
             <div class="px-6 py-4 border-b border-violet-500/20">
-              <div class="flex items-center gap-3">
-                <span class="text-2xl">🧬</span>
-                <div>
-                  <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
-                  <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🧬</span>
+                  <div>
+                    <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
+                    <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
+                  </div>
+                </div>
+                <!-- Example selector -->
+                <div class="flex gap-1">
+                  <button v-for="(example, idx) in synthesizedExamples" :key="example.seed"
+                          @click="selectedExampleIndex = idx"
+                          :class="[
+                            'px-3 py-1.5 text-xs font-medium rounded transition-colors',
+                            selectedExampleIndex === idx
+                              ? 'bg-violet-600 text-white'
+                              : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                          ]">
+                    Example {{ idx + 1 }}
+                  </button>
                 </div>
               </div>
             </div>
@@ -126,18 +141,27 @@
             <div class="p-6 space-y-6">
               <!-- Target phrase with audio -->
               <div class="text-center">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Synthesized Phrase (Seed 60)</p>
-                <p class="text-xl text-slate-100 font-medium">{{ frankensteinDemo.target.welsh }}</p>
-                <p class="text-sm text-slate-400 mt-1">"{{ frankensteinDemo.target.english }}"</p>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Synthesized Phrase</p>
+                <p class="text-xl text-slate-100 font-medium">{{ currentExample.welsh }}</p>
+                <p class="text-sm text-slate-400 mt-1">"{{ currentExample.english }}"</p>
                 <!-- Play button for target -->
                 <div class="mt-3 flex justify-center">
-                  <button v-if="demoAudio[60]"
-                          @click="playDemoAudio(60)"
-                          class="flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-colors">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <button v-if="demoAudio[currentExample.seed]"
+                          @click="playDemoAudio(currentExample.seed)"
+                          :class="[
+                            'flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors',
+                            currentlyPlaying === currentExample.seed
+                              ? 'bg-violet-700 ring-2 ring-violet-400'
+                              : 'bg-violet-600 hover:bg-violet-500'
+                          ]">
+                    <svg v-if="currentlyPlaying !== currentExample.seed" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
                     </svg>
-                    Play Result
+                    <svg v-else class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                      <rect x="5" y="4" width="3" height="12" rx="1"/>
+                      <rect x="12" y="4" width="3" height="12" rx="1"/>
+                    </svg>
+                    {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play Spliced Result' }}
                   </button>
                   <span v-else class="text-sm text-slate-500 italic">Loading audio...</span>
                 </div>
@@ -148,7 +172,7 @@
                 <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-6">
-                  <span v-for="(word, idx) in frankensteinDemo.buildOrder" :key="idx"
+                  <span v-for="(word, idx) in currentExample.buildOrder" :key="idx"
                         :class="[
                           'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all cursor-pointer hover:scale-105',
                           word.sourceColor
@@ -161,7 +185,7 @@
 
                 <!-- Source phrases with play buttons -->
                 <div class="space-y-3 mt-6">
-                  <div v-for="source in frankensteinDemo.sources" :key="source.seed"
+                  <div v-for="source in usedSources" :key="source.seed"
                        :class="['p-3 rounded-lg border', source.borderClass]">
                     <div class="flex items-center justify-between">
                       <div class="flex-1 min-w-0">
@@ -172,7 +196,11 @@
                           <!-- Play button -->
                           <button v-if="demoAudio[source.seed]"
                                   @click="playDemoAudio(source.seed)"
-                                  :class="['w-6 h-6 rounded-full flex items-center justify-center transition-colors', source.playBtnClass]">
+                                  :class="[
+                                    'w-6 h-6 rounded-full flex items-center justify-center transition-colors',
+                                    currentlyPlaying === source.seed ? 'ring-2 ring-white/50' : '',
+                                    source.playBtnClass
+                                  ]">
                             <svg class="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
                             </svg>
@@ -182,7 +210,7 @@
                         <p class="text-xs text-slate-500">"{{ source.english }}"</p>
                       </div>
                       <div class="flex flex-wrap gap-1 ml-4">
-                        <span v-for="lego in source.provides" :key="lego"
+                        <span v-for="lego in sourceProvides[source.seed]" :key="lego"
                               :class="['text-xs px-2 py-0.5 rounded', source.badgeClass]">
                           {{ lego }}
                         </span>
@@ -433,55 +461,122 @@ const totalCoverage = computed(() => stats.value.coveragePercent || 0)
 // Flagged phrases (to be fetged from flags system)
 const flaggedPhrases = ref([])
 
-// Frankenstein demo data - showing how Seed 60 is built from Seeds 1, 6, and 11
-const frankensteinDemo = {
-  target: {
+// Styling constants for LEGO word sources
+const sourceStyles = {
+  1: { sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+  6: { sourceColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300' },
+  11: { sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
+}
+
+// Multiple synthesized examples demonstrating LEGO audio splicing
+const synthesizedExamples = [
+  {
     seed: 60,
     welsh: "dw i ddim isio siarad Cymraeg rŵan",
-    english: "I don't want to speak Welsh now"
+    english: "I don't want to speak Welsh now",
+    buildOrder: [
+      { text: 'dw', from: 1 },
+      { text: 'i', from: 1 },
+      { text: 'ddim', from: 6 },
+      { text: 'isio', from: 1 },
+      { text: 'siarad', from: 1 },
+      { text: 'Cymraeg', from: 1 },
+      { text: 'rŵan', from: 11 }
+    ]
   },
-  buildOrder: [
-    { text: 'dw', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-    { text: 'i', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-    { text: 'ddim', from: 6, sourceColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300' },
-    { text: 'isio', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-    { text: 'siarad', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-    { text: 'Cymraeg', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-    { text: 'rŵan', from: 11, sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
-  ],
-  sources: [
-    {
-      seed: 1,
-      welsh: "dw i isio siarad Cymraeg",
-      english: "I want to speak Welsh",
-      provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
-      borderClass: 'border-emerald-500/30 bg-emerald-500/5',
-      textClass: 'text-emerald-400',
-      badgeClass: 'bg-emerald-500/20 text-emerald-300',
-      playBtnClass: 'bg-emerald-600 hover:bg-emerald-500'
-    },
-    {
-      seed: 6,
-      welsh: "fedra i ddim cofio sut i siarad Cymraeg",
-      english: "I can't remember how to speak Welsh",
-      provides: ['ddim'],
-      borderClass: 'border-amber-500/30 bg-amber-500/5',
-      textClass: 'text-amber-400',
-      badgeClass: 'bg-amber-500/20 text-amber-300',
-      playBtnClass: 'bg-amber-600 hover:bg-amber-500'
-    },
-    {
-      seed: 11,
-      welsh: "ond well i mi ymarfer siarad Cymraeg rŵan",
-      english: "but I'd better practice speaking Welsh now",
-      provides: ['rŵan'],
-      borderClass: 'border-violet-500/30 bg-violet-500/5',
-      textClass: 'text-violet-400',
-      badgeClass: 'bg-violet-500/20 text-violet-300',
-      playBtnClass: 'bg-violet-600 hover:bg-violet-500'
-    }
-  ]
-}
+  {
+    seed: 61,
+    welsh: "fedra i ddim siarad Cymraeg",
+    english: "I can't speak Welsh",
+    buildOrder: [
+      { text: 'fedra', from: 6 },
+      { text: 'i', from: 6 },
+      { text: 'ddim', from: 6 },
+      { text: 'siarad', from: 6 },
+      { text: 'Cymraeg', from: 6 }
+    ]
+  },
+  {
+    seed: 62,
+    welsh: "dw i isio ymarfer siarad Cymraeg",
+    english: "I want to practice speaking Welsh",
+    buildOrder: [
+      { text: 'dw', from: 1 },
+      { text: 'i', from: 1 },
+      { text: 'isio', from: 1 },
+      { text: 'ymarfer', from: 11 },
+      { text: 'siarad', from: 1 },
+      { text: 'Cymraeg', from: 1 }
+    ]
+  }
+]
+
+// Selected synthesized example index
+const selectedExampleIndex = ref(0)
+
+// Computed: current synthesized example with styling applied
+const currentExample = computed(() => {
+  const example = synthesizedExamples[selectedExampleIndex.value]
+  return {
+    ...example,
+    buildOrder: example.buildOrder.map(word => ({
+      ...word,
+      sourceColor: sourceStyles[word.from].sourceColor
+    }))
+  }
+})
+
+// Source phrases that provide the LEGOs
+const sourcePhrases = [
+  {
+    seed: 1,
+    welsh: "dw i isio siarad Cymraeg",
+    english: "I want to speak Welsh",
+    provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
+    borderClass: 'border-emerald-500/30 bg-emerald-500/5',
+    textClass: 'text-emerald-400',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300',
+    playBtnClass: 'bg-emerald-600 hover:bg-emerald-500'
+  },
+  {
+    seed: 6,
+    welsh: "fedra i ddim cofio sut i siarad Cymraeg",
+    english: "I can't remember how to speak Welsh",
+    provides: ['fedra', 'ddim', 'cofio', 'sut'],
+    borderClass: 'border-amber-500/30 bg-amber-500/5',
+    textClass: 'text-amber-400',
+    badgeClass: 'bg-amber-500/20 text-amber-300',
+    playBtnClass: 'bg-amber-600 hover:bg-amber-500'
+  },
+  {
+    seed: 11,
+    welsh: "ond well i mi ymarfer siarad Cymraeg rŵan",
+    english: "but I'd better practice speaking Welsh now",
+    provides: ['ond', 'well', 'mi', 'ymarfer', 'rŵan'],
+    borderClass: 'border-violet-500/30 bg-violet-500/5',
+    textClass: 'text-violet-400',
+    badgeClass: 'bg-violet-500/20 text-violet-300',
+    playBtnClass: 'bg-violet-600 hover:bg-violet-500'
+  }
+]
+
+// Computed: which sources are used by the current example
+const usedSources = computed(() => {
+  const usedSeeds = new Set(currentExample.value.buildOrder.map(w => w.from))
+  return sourcePhrases.filter(s => usedSeeds.has(s.seed))
+})
+
+// Computed: which LEGOs each source provides for the current example
+const sourceProvides = computed(() => {
+  const example = currentExample.value
+  const provides = {}
+  for (const source of sourcePhrases) {
+    provides[source.seed] = example.buildOrder
+      .filter(w => w.from === source.seed)
+      .map(w => w.text)
+  }
+  return provides
+})
 
 // Demo audio URLs (fetched from API)
 const demoAudio = ref({})

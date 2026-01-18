@@ -3337,23 +3337,52 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
 })
 
 // GET /api/production/:courseCode/frankenstein-demo
-// Returns audio URLs for the frankenstein demo (Seeds 1, 6, 11, and 60)
+// Returns audio URLs for the frankenstein demo (Seeds 1, 6, 11, and synthesized results)
 app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
   try {
     const { courseCode } = req.params
 
+    // Demo splice URLs (pre-generated spliced audio stored in S3)
+    const DEMO_SPLICE_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/demo-splices'
+    const demoSplices = {
+      // demo1: "dw i ddim isio siarad Cymraeg rŵan" - built from seeds 1, 6, 11
+      60: { url: `${DEMO_SPLICE_BASE}/demo1.mp3`, duration: 8520 },
+      // demo2: "fedra i ddim siarad Cymraeg" - built from seed 6
+      61: { url: `${DEMO_SPLICE_BASE}/demo2.mp3`, duration: 6096 },
+      // demo3: "dw i isio ymarfer siarad Cymraeg" - built from seeds 1, 11
+      62: { url: `${DEMO_SPLICE_BASE}/demo3.mp3`, duration: 7344 }
+    }
+
     // The demo phrases for Welsh North
+    // Source phrases (seeds 1, 6, 11) - fetched from database
+    // Synthesized phrases (seeds 60, 61, 62) - use pre-spliced demo files
     const demoPhrases = [
-      { seed: 1, text: 'dw i isio siarad Cymraeg', role: 'target1' },
-      { seed: 6, text: 'fedra i ddim cofio sut i siarad Cymraeg', role: 'target1' },
-      { seed: 11, text: 'ond well i mi ymarfer siarad Cymraeg rŵan', role: 'target1' },
-      { seed: 60, text: 'dw i ddim isio siarad Cymraeg rŵan', role: 'target1' }
+      { seed: 1, text: 'dw i isio siarad Cymraeg', role: 'target1', isSynthesized: false },
+      { seed: 6, text: 'fedra i ddim cofio sut i siarad Cymraeg', role: 'target1', isSynthesized: false },
+      { seed: 11, text: 'ond well i mi ymarfer siarad Cymraeg rŵan', role: 'target1', isSynthesized: false },
+      { seed: 60, text: 'dw i ddim isio siarad Cymraeg rŵan', english: "I don't want to speak Welsh now", role: 'target1', isSynthesized: true },
+      { seed: 61, text: 'fedra i ddim siarad Cymraeg', english: "I can't speak Welsh", role: 'target1', isSynthesized: true },
+      { seed: 62, text: 'dw i isio ymarfer siarad Cymraeg', english: "I want to practice speaking Welsh", role: 'target1', isSynthesized: true }
     ]
 
     const results = []
 
     for (const phrase of demoPhrases) {
-      // Find audio by text (language is 'cym' for Welsh)
+      // For synthesized phrases, use the pre-spliced demo files
+      if (phrase.isSynthesized && demoSplices[phrase.seed]) {
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          english: phrase.english,
+          audioId: `demo-splice-${phrase.seed}`,
+          url: demoSplices[phrase.seed].url,
+          duration: demoSplices[phrase.seed].duration,
+          isSynthesized: true
+        })
+        continue
+      }
+
+      // For source phrases, find audio in the database
       const audio = await supabaseClient.findCourseAudio(courseCode, phrase.text, 'cym', phrase.role)
 
       if (audio) {
@@ -3364,7 +3393,8 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
           text: phrase.text,
           audioId: audio.id,
           url,
-          duration: audio.duration_ms
+          duration: audio.duration_ms,
+          isSynthesized: false
         })
       } else {
         results.push({
@@ -3372,7 +3402,8 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
           text: phrase.text,
           audioId: null,
           url: null,
-          duration: null
+          duration: null,
+          isSynthesized: false
         })
       }
     }
