@@ -3336,6 +3336,57 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
   }
 })
 
+// GET /api/production/:courseCode/frankenstein-demo
+// Returns audio URLs for the frankenstein demo (Seeds 1, 6, 11, and 60)
+app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // The demo phrases for Welsh North
+    const demoPhrases = [
+      { seed: 1, text: 'dw i isio siarad Cymraeg', role: 'target1' },
+      { seed: 6, text: 'fedra i ddim cofio sut i siarad Cymraeg', role: 'target1' },
+      { seed: 11, text: 'ond well i mi ymarfer siarad Cymraeg rŵan', role: 'target1' },
+      { seed: 60, text: 'dw i ddim isio siarad Cymraeg rŵan', role: 'target1' }
+    ]
+
+    const results = []
+
+    for (const phrase of demoPhrases) {
+      // Find audio by text
+      const audio = await supabaseClient.getAudioByText(courseCode, phrase.text, phrase.role)
+
+      if (audio) {
+        // Get signed URL
+        const url = await s3Service.getAudioSignedUrl(audio.id, 3600, { s3Key: audio.s3_key })
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          audioId: audio.id,
+          url,
+          duration: audio.duration_ms
+        })
+      } else {
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          audioId: null,
+          url: null,
+          duration: null
+        })
+      }
+    }
+
+    res.json({
+      courseCode,
+      phrases: results
+    })
+  } catch (error) {
+    logger.error('Error fetching frankenstein demo audio:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {

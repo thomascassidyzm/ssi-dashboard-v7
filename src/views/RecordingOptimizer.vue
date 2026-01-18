@@ -111,50 +111,73 @@
             </div>
           </section>
 
-          <!-- Frankenstein Demo -->
+          <!-- LEGO Audio Synthesis Demo -->
           <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
             <div class="px-6 py-4 border-b border-violet-500/20">
               <div class="flex items-center gap-3">
-                <span class="text-2xl">🧟</span>
+                <span class="text-2xl">🧬</span>
                 <div>
-                  <h2 class="text-lg font-semibold text-violet-300">Frankenstein Demo</h2>
-                  <p class="text-sm text-slate-400">How we build phrases from LEGO components</p>
+                  <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
+                  <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
                 </div>
               </div>
             </div>
 
             <div class="p-6 space-y-6">
-              <!-- Target phrase -->
+              <!-- Target phrase with audio -->
               <div class="text-center">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Target Phrase (Seed 60)</p>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Synthesized Phrase (Seed 60)</p>
                 <p class="text-xl text-slate-100 font-medium">{{ frankensteinDemo.target.welsh }}</p>
                 <p class="text-sm text-slate-400 mt-1">"{{ frankensteinDemo.target.english }}"</p>
+                <!-- Play button for target -->
+                <div class="mt-3 flex justify-center">
+                  <button v-if="demoAudio[60]"
+                          @click="playDemoAudio(60)"
+                          class="flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
+                    </svg>
+                    Play Result
+                  </button>
+                  <span v-else class="text-sm text-slate-500 italic">Loading audio...</span>
+                </div>
               </div>
 
               <!-- Build visualization -->
               <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
-                <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from recorded phrases:</p>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-6">
                   <span v-for="(word, idx) in frankensteinDemo.buildOrder" :key="idx"
                         :class="[
-                          'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all',
+                          'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all cursor-pointer hover:scale-105',
                           word.sourceColor
-                        ]">
+                        ]"
+                        @click="playDemoAudio(word.from)">
                     {{ word.text }}
                     <span class="text-xs opacity-60 ml-1">S{{ word.from }}</span>
                   </span>
                 </div>
 
-                <!-- Source phrases -->
+                <!-- Source phrases with play buttons -->
                 <div class="space-y-3 mt-6">
                   <div v-for="source in frankensteinDemo.sources" :key="source.seed"
                        :class="['p-3 rounded-lg border', source.borderClass]">
                     <div class="flex items-center justify-between">
-                      <div>
-                        <span :class="['text-xs font-semibold uppercase tracking-wider', source.textClass]">
-                          Seed {{ source.seed }}
-                        </span>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span :class="['text-xs font-semibold uppercase tracking-wider', source.textClass]">
+                            Seed {{ source.seed }}
+                          </span>
+                          <!-- Play button -->
+                          <button v-if="demoAudio[source.seed]"
+                                  @click="playDemoAudio(source.seed)"
+                                  :class="['w-6 h-6 rounded-full flex items-center justify-center transition-colors', source.playBtnClass]">
+                            <svg class="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
+                            </svg>
+                          </button>
+                        </div>
                         <p class="text-sm text-slate-200 mt-1">{{ source.welsh }}</p>
                         <p class="text-xs text-slate-500">"{{ source.english }}"</p>
                       </div>
@@ -184,6 +207,9 @@
                 </div>
               </div>
             </div>
+
+            <!-- Hidden audio element for playback -->
+            <audio ref="demoAudioPlayer" @ended="currentlyPlaying = null"></audio>
           </section>
 
           <!-- Recording Script Preview -->
@@ -431,7 +457,8 @@ const frankensteinDemo = {
       provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
       borderClass: 'border-emerald-500/30 bg-emerald-500/5',
       textClass: 'text-emerald-400',
-      badgeClass: 'bg-emerald-500/20 text-emerald-300'
+      badgeClass: 'bg-emerald-500/20 text-emerald-300',
+      playBtnClass: 'bg-emerald-600 hover:bg-emerald-500'
     },
     {
       seed: 6,
@@ -440,7 +467,8 @@ const frankensteinDemo = {
       provides: ['ddim'],
       borderClass: 'border-amber-500/30 bg-amber-500/5',
       textClass: 'text-amber-400',
-      badgeClass: 'bg-amber-500/20 text-amber-300'
+      badgeClass: 'bg-amber-500/20 text-amber-300',
+      playBtnClass: 'bg-amber-600 hover:bg-amber-500'
     },
     {
       seed: 11,
@@ -449,9 +477,49 @@ const frankensteinDemo = {
       provides: ['rŵan'],
       borderClass: 'border-violet-500/30 bg-violet-500/5',
       textClass: 'text-violet-400',
-      badgeClass: 'bg-violet-500/20 text-violet-300'
+      badgeClass: 'bg-violet-500/20 text-violet-300',
+      playBtnClass: 'bg-violet-600 hover:bg-violet-500'
     }
   ]
+}
+
+// Demo audio URLs (fetched from API)
+const demoAudio = ref({})
+const demoAudioPlayer = ref(null)
+const currentlyPlaying = ref(null)
+
+// Fetch demo audio URLs
+async function fetchDemoAudio() {
+  try {
+    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/frankenstein-demo`)
+    if (response.ok) {
+      const data = await response.json()
+      // Map by seed number for easy lookup
+      const audioMap = {}
+      for (const phrase of data.phrases) {
+        if (phrase.url) {
+          audioMap[phrase.seed] = phrase.url
+        }
+      }
+      demoAudio.value = audioMap
+    }
+  } catch (err) {
+    console.error('Failed to fetch demo audio:', err)
+  }
+}
+
+// Play demo audio for a specific seed
+function playDemoAudio(seedNumber) {
+  const url = demoAudio.value[seedNumber]
+  if (!url || !demoAudioPlayer.value) return
+
+  // Stop current playback
+  demoAudioPlayer.value.pause()
+
+  // Play new audio
+  demoAudioPlayer.value.src = url
+  demoAudioPlayer.value.play()
+  currentlyPlaying.value = seedNumber
 }
 
 // Fetch algorithm results from API
@@ -509,5 +577,6 @@ function exportPDF() {
 // Load data on mount
 onMounted(() => {
   runAlgorithm()
+  fetchDemoAudio()
 })
 </script>
