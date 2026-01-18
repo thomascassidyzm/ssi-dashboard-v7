@@ -287,7 +287,7 @@ Tables:
 │
 ├── course_audio           # Audio owned by courses (flat, no joins)
 │   ├── id                 # UUID
-│   ├── course_code        # FK to courses.code
+│   ├── course_code        # FK to courses.course_code
 │   ├── text               # Original spoken text
 │   ├── text_normalized    # Lowercased/trimmed for matching
 │   ├── language           # ISO 639-3 code

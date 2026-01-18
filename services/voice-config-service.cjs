@@ -136,7 +136,7 @@ async function loadVoiceConfig(courseCode) {
   }
 
   try {
-    // v13: courses.code is the primary key
+    // courses.course_code is the primary key
     const { data, error } = await supabase
       .from('courses')
       .select('voice_config')

@@ -54,7 +54,7 @@ async function copySharedToCourse(courseCode, dryRun = false) {
   // Get course info
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .select('code, known_lang, target_lang, display_name')
+    .select('course_code, known_lang, target_lang, display_name')
     .eq('course_code', courseCode)
     .single();
 

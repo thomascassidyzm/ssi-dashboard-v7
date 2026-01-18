@@ -15,7 +15,7 @@ async function generateManifestFromDB(courseCode) {
   const db = getSupabase();
   if (!db) return null;
 
-  // Get course metadata (v13: courses.code is primary key)
+  // Get course metadata (courses.course_code is primary key)
   const { data: course, error: courseError } = await db
     .from('courses')
     .select('*')

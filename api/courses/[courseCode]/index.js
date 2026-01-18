@@ -53,7 +53,7 @@ export default async function handler(req, res) {
       // Course metadata
       supabase
         .from('courses')
-        .select('code, known_lang, target_lang, display_name, status, course_type, voice_config')
+        .select('course_code, known_lang, target_lang, display_name, status, course_type, voice_config')
         .eq('course_code', courseCode)
         .single(),
 
