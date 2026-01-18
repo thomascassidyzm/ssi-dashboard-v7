@@ -222,6 +222,14 @@ const quickActions = computed(() => {
       disabled: false
     },
     {
+      id: 'recording_optimizer',
+      icon: '🎙️',
+      label: 'Recording Optimizer',
+      description: 'Plan human recordings with minimum phrases',
+      badge: null,
+      disabled: false
+    },
+    {
       id: 'import_course',
       icon: '📥',
       label: 'Import Legacy Course',
