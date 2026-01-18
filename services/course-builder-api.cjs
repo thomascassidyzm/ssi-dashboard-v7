@@ -116,6 +116,77 @@ function extractNgrams(text, n = 3) {
   return ngrams;
 }
 
+// =============================================================================
+// PHRASE COVERAGE HELPERS (January 2026 migration)
+// Compute phrase_role, connected_lego_ids, lego_position for new schema
+// =============================================================================
+
+/**
+ * Compute phrase_role from position value
+ * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = eternal)
+ * @returns {'component' | 'practice' | 'eternal_eligible'}
+ */
+function computePhraseRole(position) {
+  if (position === 0) return 'component';
+  if (position >= 8) return 'eternal_eligible';
+  return 'practice';
+}
+
+/**
+ * Compute which other LEGOs appear in a phrase (for coverage-based selection)
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} primaryLegoTarget - The primary LEGO's target text
+ * @param {Array} introducedLegos - LEGOs introduced before this phrase
+ * @returns {string[]} Array of connected LEGO IDs
+ */
+function computeConnectedLegoIds(phraseTargetText, primaryLegoTarget, introducedLegos) {
+  if (!introducedLegos || !Array.isArray(introducedLegos)) return [];
+
+  const connectedIds = [];
+  const normalizedPhrase = phraseTargetText.toLowerCase().trim();
+  const normalizedPrimary = primaryLegoTarget.toLowerCase().trim();
+
+  for (const lego of introducedLegos) {
+    const legoTarget = (lego.target_text || lego.target || '').toLowerCase().trim();
+    // Skip the primary LEGO itself
+    if (legoTarget === normalizedPrimary) continue;
+    // Skip very short targets (likely particles/noise)
+    if (legoTarget.length < 2) continue;
+    // Check if this LEGO appears in the phrase
+    if (normalizedPhrase.includes(legoTarget)) {
+      connectedIds.push(lego.lego_id || `S${String(lego.seed_number).padStart(4,'0')}L${String(lego.lego_index).padStart(2,'0')}`);
+    }
+  }
+
+  return connectedIds;
+}
+
+/**
+ * Compute where the LEGO appears in the phrase (start/middle/end)
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} legoTargetText - The LEGO's target text
+ * @returns {'start' | 'middle' | 'end' | null}
+ */
+function computeLegoPosition(phraseTargetText, legoTargetText) {
+  if (!phraseTargetText || !legoTargetText) return null;
+
+  const phrase = phraseTargetText.trim();
+  const lego = legoTargetText.trim();
+  const index = phrase.indexOf(lego);
+  if (index === -1) return null;
+
+  const phraseLength = phrase.length;
+  const legoLength = lego.length;
+  const legoEndIndex = index + legoLength;
+  const startPercent = index / phraseLength;
+  const endPercent = legoEndIndex / phraseLength;
+  const centerPercent = (startPercent + endPercent) / 2;
+
+  if (centerPercent < 0.33) return 'start';
+  if (centerPercent > 0.67) return 'end';
+  return 'middle';
+}
+
 /**
  * Analyze pattern recency for a course
  * Returns over-used patterns that should be avoided
@@ -981,6 +1052,10 @@ function generateBuildupPhrases(lego, courseCode) {
       target_text: comp.target,
       word_count: comp.target.length,
       lego_count: 1,
+      // New coverage columns (January 2026)
+      phrase_role: 'component',
+      connected_lego_ids: [],  // Components don't connect to other LEGOs
+      lego_position: computeLegoPosition(comp.target, comp.target),  // Component is the whole phrase
       metadata: { buildup: 'component', component_index: i },
       status: 'draft',
       version: 1
@@ -998,6 +1073,10 @@ function generateBuildupPhrases(lego, courseCode) {
     target_text: target,
     word_count: target.length,
     lego_count: 1,
+    // New coverage columns (January 2026)
+    phrase_role: 'practice',  // LEGO debut is a practice phrase
+    connected_lego_ids: [],   // LEGO debut doesn't connect to others
+    lego_position: computeLegoPosition(target, target),  // LEGO is the whole phrase
     metadata: { buildup: 'lego' },
     status: 'draft',
     version: 1
@@ -1644,19 +1723,26 @@ app.post('/api/lego', async (req, res) => {
         // Sort by target syllable count (Chinese characters = syllables roughly)
         const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
-        const practicePhrases = sorted.map((p, i) => ({
-          course_code,
-          seed_number: seed,
-          lego_index: idx,
-          position: practiceStartPosition + i,  // Start after build-up
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          metadata: {},
-          status: 'draft',
-          version: 1
-        }));
+        const practicePhrases = sorted.map((p, i) => {
+          const position = practiceStartPosition + i;  // Start after build-up
+          return {
+            course_code,
+            seed_number: seed,
+            lego_index: idx,
+            position,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            // New coverage columns (January 2026)
+            phrase_role: computePhraseRole(position),
+            connected_lego_ids: [],  // Populated by backfill for single-LEGO endpoint
+            lego_position: computeLegoPosition(p.target, target),
+            metadata: {},
+            status: 'draft',
+            version: 1
+          };
+        });
 
         allPhraseRows = [...allPhraseRows, ...practicePhrases];
       }
@@ -1815,19 +1901,26 @@ app.post('/api/batch', async (req, res) => {
         if (lego.phrases && lego.phrases.length > 0) {
           const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
 
-          const practicePhrases = sorted.map((p, i) => ({
-            course_code,
-            seed_number: lego.seed,
-            lego_index: lego.idx,
-            position: practiceStartPosition + i,
-            known_text: p.known,
-            target_text: p.target,
-            word_count: p.target.length,
-            lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            metadata: {},
-            status: 'draft',
-            version: 1
-          }));
+          const practicePhrases = sorted.map((p, i) => {
+            const position = practiceStartPosition + i;
+            return {
+              course_code,
+              seed_number: lego.seed,
+              lego_index: lego.idx,
+              position,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              // New coverage columns (January 2026)
+              phrase_role: computePhraseRole(position),
+              connected_lego_ids: [],  // Populated by backfill for batch endpoint
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: {},
+              status: 'draft',
+              version: 1
+            };
+          });
 
           allPhraseRows = [...allPhraseRows, ...practicePhrases];
           totalPracticePhrases += lego.phrases.length;
@@ -2385,19 +2478,26 @@ app.post('/api/seed/complete', async (req, res) => {
 
         const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
-        const practicePhrases = sorted.map((p, i) => ({
-          course_code,
-          seed_number,
-          lego_index: lego.idx,
-          position: practiceStartPosition + i,
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          metadata: {},
-          status: 'draft',
-          version: 1
-        }));
+        const practicePhrases = sorted.map((p, i) => {
+          const position = practiceStartPosition + i;
+          return {
+            course_code,
+            seed_number,
+            lego_index: lego.idx,
+            position,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            // New coverage columns (January 2026)
+            phrase_role: computePhraseRole(position),
+            connected_lego_ids: [],  // Could be enhanced to compute from same-seed LEGOs
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: {},
+            status: 'draft',
+            version: 1
+          };
+        });
 
         allPhraseRows = [...allPhraseRows, ...practicePhrases];
       }
