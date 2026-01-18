@@ -154,21 +154,24 @@ const ratioClass = computed(() => {
   return 'text-red-400'
 })
 
-// Fetch course stats from Course Builder API
+// Fetch course stats from Vercel API (database-first)
 async function fetchCourseStats() {
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || ''
+    const response = await fetch(`${apiBase}/api/courses/${props.courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
       const data = await response.json()
+      const stats = data.stats || {}
+      const legos = stats.legos || 0
+      const phrases = stats.practicePhrases || 0
       courseStats.value = {
-        seeds: data.seeds || 0,
-        legos: data.legos || 0,
-        phrases: data.phrases || 0,
-        ratio: data.ratio || '0.0'
+        seeds: stats.seeds || 0,
+        legos: legos,
+        phrases: phrases,
+        ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
       }
     }
   } catch (err) {
