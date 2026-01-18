@@ -187,7 +187,7 @@ async function upsertCourse({
   const { data, error } = await supabase
     .from('courses')
     .upsert({
-      code,
+      course_code: code,
       display_name: displayName,
       known_lang: knownLang,
       target_lang: targetLang,
@@ -196,7 +196,7 @@ async function upsertCourse({
       course_type: courseType,
       creator_email: creatorEmail
     }, {
-      onConflict: 'code'
+      onConflict: 'course_code'
     })
     .select()
     .single()
@@ -1051,7 +1051,7 @@ async function getAllCourseContentStats() {
   // Get all courses first
   const { data: courses, error: courseError } = await supabase
     .from('courses')
-    .select('code')
+    .select('course_code')
 
   if (courseError) throw courseError
 
@@ -1059,7 +1059,7 @@ async function getAllCourseContentStats() {
 
   // Get counts per course in parallel
   await Promise.all((courses || []).map(async (course) => {
-    const courseCode = course.code
+    const courseCode = course.course_code
 
     const [seedsResult, completedSeedsResult, legosResult, phrasesResult, audioResult] = await Promise.all([
       supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),

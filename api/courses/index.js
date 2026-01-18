@@ -53,7 +53,7 @@ export default async function handler(req, res) {
           if (includeStatus) {
             const fileStatus = {};
             for (const file of keyFiles) {
-              fileStatus[file.replace('.json', '')] = await courseFileExists(course.code, file);
+              fileStatus[file.replace('.json', '')] = await courseFileExists(course.code || course.course_code, file);
             }
             result.files = fileStatus;
             result.complete = Object.values(fileStatus).every(Boolean);
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
 
           // Get database content counts if requested
           if (includeCounts && isSupabaseConfigured()) {
-            const counts = await getCourseContentCounts(course.code);
+            const counts = await getCourseContentCounts(course.code || course.course_code);
             if (counts) {
               result.counts = counts;
               result.hasContent = counts.seeds > 0 || counts.legos > 0;

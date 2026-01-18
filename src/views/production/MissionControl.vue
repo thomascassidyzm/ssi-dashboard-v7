@@ -203,8 +203,8 @@ async function loadCourses() {
       // API returns { courses: [...] } or just [...]
       const courseList = Array.isArray(data) ? data : data.courses || []
       courses.value = courseList.map((c: any) => ({
-        code: c.code || c.id,
-        name: c.name || c.code || c.id,
+        code: c.code || c.course_code || c.id,
+        name: c.name || c.code || c.course_code || c.id,
         status: c.status
       }))
       console.log(`[MissionControl] Loaded ${courses.value.length} courses from ${data.source || 'API'}`)
