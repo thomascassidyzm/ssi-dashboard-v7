@@ -21,6 +21,9 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
+// Use shared audio processor for consistent mastering
+const audioProcessor = require('../../services/audio-processor.cjs');
+
 // =============================================================================
 // CONFIGURATION
 // =============================================================================
@@ -30,10 +33,10 @@ const CONFIG = {
   // Crossfade duration between segments (ms)
   CROSSFADE_MS: 20,
   // Silence to insert between words if no natural gap (ms)
-  WORD_GAP_MS: 80,
+  WORD_GAP_MS: 50,  // Reduced - natural LEGOs have their own gaps
   // Output audio quality
   OUTPUT_BITRATE: '192k',
-  // Normalization target (LUFS)
+  // Normalization target (LUFS) - broadcast standard
   NORMALIZE_LUFS: -16,
 };
 
@@ -201,8 +204,12 @@ function normalizeAudio(inputPath, outputPath) {
 
 /**
  * Splice LEGOs into a phrase
+ *
+ * Two-step process for natural-sounding output:
+ * 1. Normalize each LEGO segment individually to -16 LUFS (consistent volume)
+ * 2. Crossfade concatenate (smooth blending, NO silence gaps)
  */
-function splicePhrase(library, phrase, outputPath, options = {}) {
+async function splicePhrase(library, phrase, outputPath, options = {}) {
   const { verbose = false, normalize: doNormalize = true } = options;
 
   const words = phrase.trim().split(/\s+/);
@@ -228,27 +235,51 @@ function splicePhrase(library, phrase, outputPath, options = {}) {
     };
   }
 
-  // Concatenate with crossfade
-  const tempOutput = path.join(CONFIG.TEMP_DIR, `splice_${Date.now()}.mp3`);
-  concatenateWithCrossfade(legoFiles, tempOutput);
+  const tempDir = path.join(CONFIG.TEMP_DIR, `splice_${Date.now()}`);
 
-  // Normalize if requested
-  if (doNormalize) {
-    normalizeAudio(tempOutput, outputPath);
-    try { fs.unlinkSync(tempOutput); } catch (e) {}
-  } else {
-    fs.renameSync(tempOutput, outputPath);
+  try {
+    fs.mkdirSync(tempDir, { recursive: true });
+
+    // Step 1: Normalize each LEGO segment individually
+    // This ensures consistent volume across segments from different source phrases
+    const normalizedFiles = [];
+
+    if (doNormalize) {
+      for (let i = 0; i < legoFiles.length; i++) {
+        const normalizedPath = path.join(tempDir, `norm_${i}.mp3`);
+        await audioProcessor.normalizeAudio(legoFiles[i], normalizedPath, CONFIG.NORMALIZE_LUFS);
+        normalizedFiles.push(normalizedPath);
+      }
+    } else {
+      normalizedFiles.push(...legoFiles);
+    }
+
+    // Step 2: Crossfade concatenate - smooth blending, NO silence gaps
+    // This produces natural-sounding continuous speech
+    concatenateWithCrossfade(normalizedFiles, outputPath, CONFIG.CROSSFADE_MS);
+
+    // Get duration
+    const metadata = await audioProcessor.getAudioMetadata(outputPath);
+    const durationSec = metadata.duration;
+
+    return {
+      success: true,
+      phrase,
+      outputFile: outputPath,
+      durationSec,
+      legoCount: legoFiles.length,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      phrase,
+      error: `Splice failed: ${err.message}`,
+      missing: [],
+    };
+  } finally {
+    // Cleanup temp files
+    try { fs.rmSync(tempDir, { recursive: true, force: true }); } catch (e) {}
   }
-
-  const duration = getAudioDuration(outputPath);
-
-  return {
-    success: true,
-    phrase,
-    outputFile: outputPath,
-    durationSec: duration,
-    legoCount: legoFiles.length,
-  };
 }
 
 // =============================================================================
@@ -318,8 +349,9 @@ Examples:
     const output = outputIdx !== -1 ? args[outputIdx + 1] : `spliced_${Date.now()}.mp3`;
 
     console.log(`\n🎵 Splicing phrase: "${phrase}"`);
+    console.log(`   (normalize each LEGO → crossfade blend, no gaps)`);
 
-    const result = splicePhrase(library, phrase, output, { normalize: !noNormalize });
+    const result = await splicePhrase(library, phrase, output, { normalize: !noNormalize });
 
     if (result.success) {
       console.log(`   ✅ Created: ${result.outputFile}`);
@@ -341,6 +373,7 @@ Examples:
 
     const phrases = JSON.parse(fs.readFileSync(phrasesFile, 'utf8'));
     console.log(`\n🎵 Splicing ${phrases.length} phrases to: ${outputDir}`);
+    console.log(`   (normalize each LEGO → crossfade blend, no gaps)`);
 
     let success = 0;
     let failed = 0;
@@ -350,7 +383,7 @@ Examples:
       const filename = `${String(i + 1).padStart(4, '0')}_${phrase.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_')}.mp3`;
       const outputPath = path.join(outputDir, filename);
 
-      const result = splicePhrase(library, phrase, outputPath, { normalize: !noNormalize });
+      const result = await splicePhrase(library, phrase, outputPath, { normalize: !noNormalize });
 
       if (result.success) {
         success++;

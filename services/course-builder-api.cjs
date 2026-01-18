@@ -2022,24 +2022,6 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Validate agent provided required translations
-    if (!knownIsEng && !agent_known_text) {
-      return res.status(400).json({
-        error: 'known_text required',
-        seed: seedId,
-        course_code,
-        hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`
-      });
-    }
-    if (!targetIsEng && !agent_target_text) {
-      return res.status(400).json({
-        error: 'target_text required',
-        seed: seedId,
-        course_code,
-        hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`
-      });
-    }
-
     if (!Array.isArray(legos) || legos.length === 0) {
       return res.status(400).json({
         error: 'legos must be a non-empty array',
@@ -2047,8 +2029,8 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // CANONICAL SEED LOOKUP: Get known_text from pre-populated database seeds
-    // If course has no seeds yet, auto-initialize from canonical_seeds table
+    // CANONICAL SEED LOOKUP: Get known_text/target_text from pre-populated database seeds
+    // Do this BEFORE translation validation - seeds may already have translations (target-first workflow)
     let { data: canonicalSeed, error: seedLookupError } = await supabase
       .from('course_seeds')
       .select('known_text, target_text')
@@ -2087,17 +2069,56 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Check if seed already built (both known and target populated)
-    const seedAlreadyBuilt = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
-                             canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
-    if (seedAlreadyBuilt) {
+    // Validate translations - only require from agent if not already in database
+    // This supports target-first workflow where translations are done before LEGOs
+    const needsKnownFromAgent = !knownIsEng && !canonicalSeed.known_text;
+    const needsTargetFromAgent = !targetIsEng && !canonicalSeed.target_text;
+
+    if (needsKnownFromAgent && !agent_known_text) {
       return res.status(400).json({
-        error: 'Seed already has translation',
+        error: 'known_text required',
         seed: seedId,
-        existing_known: canonicalSeed.known_text,
-        existing_target: canonicalSeed.target_text,
-        hint: 'This seed has already been built. Use a different seed number.'
+        course_code,
+        hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`
       });
+    }
+    if (needsTargetFromAgent && !agent_target_text) {
+      return res.status(400).json({
+        error: 'target_text required',
+        seed: seedId,
+        course_code,
+        hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`
+      });
+    }
+
+    // Check if seed already fully built (translation + LEGOs)
+    // For target-first courses, seeds may have translations but no LEGOs yet
+    const hasTranslation = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
+                           canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
+
+    if (hasTranslation) {
+      // Check if LEGOs already exist for this seed
+      const { data: existingLegos, error: legoCheckError } = await supabase
+        .from('course_legos')
+        .select('id')
+        .eq('course_code', course_code)
+        .eq('seed_number', seed_number)
+        .limit(1);
+
+      if (!legoCheckError && existingLegos && existingLegos.length > 0) {
+        // Seed has BOTH translation AND LEGOs - fully built
+        return res.status(400).json({
+          error: 'Seed already fully built',
+          seed: seedId,
+          existing_known: canonicalSeed.known_text,
+          existing_target: canonicalSeed.target_text,
+          has_legos: true,
+          hint: 'This seed has translation and LEGOs. Use a different seed number.'
+        });
+      }
+
+      // Has translation but no LEGOs - allow adding LEGOs (target-first workflow)
+      console.log(`  Seed has translation but no LEGOs - proceeding with LEGO addition`);
     }
 
     // CANONICAL VALIDATION: If agent provides known_text, it MUST match canonical

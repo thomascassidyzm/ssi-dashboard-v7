@@ -1,0 +1,3913 @@
+# Course Audit Report: nld_for_eng
+
+Generated: 2026-01-18T21:58:02.860Z
+Total Seeds: 668 | Total LEGOs: 762 | Total Phrases: 7752
+
+## Executive Summary
+
+- **Critical Issues**: 553
+- **High Priority**: 124
+- **Medium Priority**: 322
+- **Overall Quality Score**: 0/100
+
+Status: Course needs fundamental redesign
+
+## Critical Issues (Fix Immediately)
+
+### TILING_FAILURE
+- **Seed**: 263
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't know who you mean."
+
+### TILING_FAILURE
+- **Seed**: 264
+- **Message**: Seed has no LEGOs
+- **Known**: "An old man."
+
+### TILING_FAILURE
+- **Seed**: 265
+- **Message**: Seed has no LEGOs
+- **Known**: "A friend."
+
+### TILING_FAILURE
+- **Seed**: 266
+- **Message**: Seed has no LEGOs
+- **Known**: "He was an old friend of my father."
+
+### TILING_FAILURE
+- **Seed**: 267
+- **Message**: Seed has no LEGOs
+- **Known**: "Have you heard from your friend?"
+
+### TILING_FAILURE
+- **Seed**: 268
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes she sent me two emails last week."
+
+### TILING_FAILURE
+- **Seed**: 269
+- **Message**: Seed has no LEGOs
+- **Known**: "Why don't you want to wait for your father?"
+
+### TILING_FAILURE
+- **Seed**: 270
+- **Message**: Seed has no LEGOs
+- **Known**: "Because I'm worried that I'm going to be late."
+
+### TILING_FAILURE
+- **Seed**: 271
+- **Message**: Seed has no LEGOs
+- **Known**: "Would you like to come with us next month?"
+
+### TILING_FAILURE
+- **Seed**: 272
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes that sounds like a great idea."
+
+### TILING_FAILURE
+- **Seed**: 273
+- **Message**: Seed has no LEGOs
+- **Known**: "No unfortunately I've got too much work."
+
+### TILING_FAILURE
+- **Seed**: 274
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you have to leave in a few days?"
+
+### TILING_FAILURE
+- **Seed**: 275
+- **Message**: Seed has no LEGOs
+- **Known**: "Longer."
+
+### TILING_FAILURE
+- **Seed**: 276
+- **Message**: Seed has no LEGOs
+- **Known**: "No I can stay here for a little longer."
+
+### TILING_FAILURE
+- **Seed**: 277
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I've got an important meeting early next week."
+
+### TILING_FAILURE
+- **Seed**: 278
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you have to finish everything last night?"
+
+### TILING_FAILURE
+- **Seed**: 279
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes because there wasn't much time left."
+
+### TILING_FAILURE
+- **Seed**: 280
+- **Message**: Seed has no LEGOs
+- **Known**: "No I only had to do the most important job."
+
+### TILING_FAILURE
+- **Seed**: 281
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you mind if I finish my coffee before you start?"
+
+### TILING_FAILURE
+- **Seed**: 282
+- **Message**: Seed has no LEGOs
+- **Known**: "No that's not a problem."
+
+### TILING_FAILURE
+- **Seed**: 283
+- **Message**: Seed has no LEGOs
+- **Known**: "Which of your friends speak nld?"
+
+### TILING_FAILURE
+- **Seed**: 284
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you know my sister's friend?"
+
+### TILING_FAILURE
+- **Seed**: 285
+- **Message**: Seed has no LEGOs
+- **Known**: "She speaks nld."
+
+### TILING_FAILURE
+- **Seed**: 286
+- **Message**: Seed has no LEGOs
+- **Known**: "People who like speaking nld."
+
+### TILING_FAILURE
+- **Seed**: 287
+- **Message**: Seed has no LEGOs
+- **Known**: "How many people do you know who like watching television?"
+
+### TILING_FAILURE
+- **Seed**: 288
+- **Message**: Seed has no LEGOs
+- **Known**: "Most people I know like watching television."
+
+### TILING_FAILURE
+- **Seed**: 289
+- **Message**: Seed has no LEGOs
+- **Known**: "I wonder if she's going to be there this afternoon."
+
+### TILING_FAILURE
+- **Seed**: 290
+- **Message**: Seed has no LEGOs
+- **Known**: "I wonder if he knows the answer."
+
+### TILING_FAILURE
+- **Seed**: 291
+- **Message**: Seed has no LEGOs
+- **Known**: "I hope I'll be able to speak better soon."
+
+### TILING_FAILURE
+- **Seed**: 292
+- **Message**: Seed has no LEGOs
+- **Known**: "I hope you'll be able to come to the party."
+
+### TILING_FAILURE
+- **Seed**: 293
+- **Message**: Seed has no LEGOs
+- **Known**: "I have to find out where he's going to meet me."
+
+### TILING_FAILURE
+- **Seed**: 294
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't have enough time to call you tonight."
+
+### TILING_FAILURE
+- **Seed**: 295
+- **Message**: Seed has no LEGOs
+- **Known**: "I didn't say that I wanted to finish in a day."
+
+### TILING_FAILURE
+- **Seed**: 296
+- **Message**: Seed has no LEGOs
+- **Known**: "I said that I needed a little more time."
+
+### TILING_FAILURE
+- **Seed**: 297
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't know many people who speak nld."
+
+### TILING_FAILURE
+- **Seed**: 298
+- **Message**: Seed has no LEGOs
+- **Known**: "I've got nothing left to say."
+
+### TILING_FAILURE
+- **Seed**: 299
+- **Message**: Seed has no LEGOs
+- **Known**: "He wants to pay half."
+
+### TILING_FAILURE
+- **Seed**: 300
+- **Message**: Seed has no LEGOs
+- **Known**: "She doesn't want to seem unfriendly."
+
+### TILING_FAILURE
+- **Seed**: 301
+- **Message**: Seed has no LEGOs
+- **Known**: "He said that he wants to show you something."
+
+### TILING_FAILURE
+- **Seed**: 302
+- **Message**: Seed has no LEGOs
+- **Known**: "She said that she doesn't want to live in a city."
+
+### TILING_FAILURE
+- **Seed**: 303
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that he wants to sit down."
+
+### TILING_FAILURE
+- **Seed**: 304
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that she doesn't want to work from home."
+
+### TILING_FAILURE
+- **Seed**: 305
+- **Message**: Seed has no LEGOs
+- **Known**: "Woman."
+
+### TILING_FAILURE
+- **Seed**: 306
+- **Message**: Seed has no LEGOs
+- **Known**: "I know that young woman who's talking to your friend."
+
+### TILING_FAILURE
+- **Seed**: 307
+- **Message**: Seed has no LEGOs
+- **Known**: "I know that young man who's sitting over there."
+
+### TILING_FAILURE
+- **Seed**: 308
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes she's a friend of my mother."
+
+### TILING_FAILURE
+- **Seed**: 309
+- **Message**: Seed has no LEGOs
+- **Known**: "No I've never seen her before."
+
+### TILING_FAILURE
+- **Seed**: 310
+- **Message**: Seed has no LEGOs
+- **Known**: "She could write a story about that man."
+
+### TILING_FAILURE
+- **Seed**: 311
+- **Message**: Seed has no LEGOs
+- **Known**: "He couldn't believe the three most important facts."
+
+### TILING_FAILURE
+- **Seed**: 312
+- **Message**: Seed has no LEGOs
+- **Known**: "She said that she could use the other room tomorrow night."
+
+### TILING_FAILURE
+- **Seed**: 313
+- **Message**: Seed has no LEGOs
+- **Known**: "He said that he couldn't watch all five games."
+
+### TILING_FAILURE
+- **Seed**: 314
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that she could put it on the table."
+
+### TILING_FAILURE
+- **Seed**: 315
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that he couldn't afford the car that he wanted."
+
+### TILING_FAILURE
+- **Seed**: 316
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you think that she could bring her brother on Monday?"
+
+### TILING_FAILURE
+- **Seed**: 317
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I think she could if she wanted to."
+
+### TILING_FAILURE
+- **Seed**: 318
+- **Message**: Seed has no LEGOs
+- **Known**: "No I don't think she could this time."
+
+### TILING_FAILURE
+- **Seed**: 319
+- **Message**: Seed has no LEGOs
+- **Known**: "She needs to move to a different country."
+
+### TILING_FAILURE
+- **Seed**: 320
+- **Message**: Seed has no LEGOs
+- **Known**: "He doesn't need to buy another television this year."
+
+### TILING_FAILURE
+- **Seed**: 321
+- **Message**: Seed has no LEGOs
+- **Known**: "A book."
+
+### TILING_FAILURE
+- **Seed**: 322
+- **Message**: Seed has no LEGOs
+- **Known**: "She said that she needs to read the same book."
+
+### TILING_FAILURE
+- **Seed**: 323
+- **Message**: Seed has no LEGOs
+- **Known**: "He said that he doesn't need to walk to school."
+
+### TILING_FAILURE
+- **Seed**: 324
+- **Message**: Seed has no LEGOs
+- **Known**: "That student has both of her hands up."
+
+### TILING_FAILURE
+- **Seed**: 325
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that he needs to consider ten possible problems."
+
+### TILING_FAILURE
+- **Seed**: 326
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't think that she needs to sell the company."
+
+### TILING_FAILURE
+- **Seed**: 327
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you think that she needs to offer another way?"
+
+### TILING_FAILURE
+- **Seed**: 328
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I think she ought to."
+
+### TILING_FAILURE
+- **Seed**: 329
+- **Message**: Seed has no LEGOs
+- **Known**: "It's important."
+
+### TILING_FAILURE
+- **Seed**: 330
+- **Message**: Seed has no LEGOs
+- **Known**: "No I don't think it's very important."
+
+### TILING_FAILURE
+- **Seed**: 331
+- **Message**: Seed has no LEGOs
+- **Known**: "She can't provide all the answers."
+
+### TILING_FAILURE
+- **Seed**: 332
+- **Message**: Seed has no LEGOs
+- **Known**: "He can build a new life for his sister."
+
+### TILING_FAILURE
+- **Seed**: 333
+- **Message**: Seed has no LEGOs
+- **Known**: "She said that she can't spend much time with the group."
+
+### TILING_FAILURE
+- **Seed**: 334
+- **Message**: Seed has no LEGOs
+- **Known**: "He said that he can let you hold the kitten"
+
+### TILING_FAILURE
+- **Seed**: 335
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that he can add some valuable ideas."
+
+### TILING_FAILURE
+- **Seed**: 336
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't think that she can open the door."
+
+### TILING_FAILURE
+- **Seed**: 337
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you think that he can continue to play?"
+
+### TILING_FAILURE
+- **Seed**: 338
+- **Message**: Seed has no LEGOs
+- **Known**: "Badly."
+
+### TILING_FAILURE
+- **Seed**: 339
+- **Message**: Seed has no LEGOs
+- **Known**: "No I think he's hurt himself quite badly."
+
+### TILING_FAILURE
+- **Seed**: 340
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I'm sure he's going to be okay."
+
+### TILING_FAILURE
+- **Seed**: 341
+- **Message**: Seed has no LEGOs
+- **Known**: "I met someone a few days ago."
+
+### TILING_FAILURE
+- **Seed**: 342
+- **Message**: Seed has no LEGOs
+- **Known**: "I met someone who said something."
+
+### TILING_FAILURE
+- **Seed**: 343
+- **Message**: Seed has no LEGOs
+- **Known**: "Who said that she's worried about the economy."
+
+### TILING_FAILURE
+- **Seed**: 344
+- **Message**: Seed has no LEGOs
+- **Known**: "Who said that he's happy to help you."
+
+### TILING_FAILURE
+- **Seed**: 345
+- **Message**: Seed has no LEGOs
+- **Known**: "Who said that he's not ready to leave yet."
+
+### TILING_FAILURE
+- **Seed**: 346
+- **Message**: Seed has no LEGOs
+- **Known**: "I wanted her to know that I liked her book."
+
+### TILING_FAILURE
+- **Seed**: 347
+- **Message**: Seed has no LEGOs
+- **Known**: "He wanted to know what was happening a week ago."
+
+### TILING_FAILURE
+- **Seed**: 348
+- **Message**: Seed has no LEGOs
+- **Known**: "She didn't want to know what was going to happen."
+
+### TILING_FAILURE
+- **Seed**: 349
+- **Message**: Seed has no LEGOs
+- **Known**: "Did he want to go out on Friday night?"
+
+### TILING_FAILURE
+- **Seed**: 350
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes he wanted to see some old friends."
+
+### TILING_FAILURE
+- **Seed**: 351
+- **Message**: Seed has no LEGOs
+- **Known**: "No he didn't want to leave me on my own."
+
+### TILING_FAILURE
+- **Seed**: 352
+- **Message**: Seed has no LEGOs
+- **Known**: "Even if he wanted to he wouldn't be able to."
+
+### TILING_FAILURE
+- **Seed**: 353
+- **Message**: Seed has no LEGOs
+- **Known**: "She needed to run around the field."
+
+### TILING_FAILURE
+- **Seed**: 354
+- **Message**: Seed has no LEGOs
+- **Known**: "He didn't need to appear angry."
+
+### TILING_FAILURE
+- **Seed**: 355
+- **Message**: Seed has no LEGOs
+- **Known**: "Did she need to talk to that woman you know?"
+
+### TILING_FAILURE
+- **Seed**: 356
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes they had something important to discuss."
+
+### TILING_FAILURE
+- **Seed**: 357
+- **Message**: Seed has no LEGOs
+- **Known**: "No she just wanted to send her a message."
+
+### TILING_FAILURE
+- **Seed**: 358
+- **Message**: Seed has no LEGOs
+- **Known**: "Your friend said that she couldn't reach the top."
+
+### TILING_FAILURE
+- **Seed**: 359
+- **Message**: Seed has no LEGOs
+- **Known**: "Your friend said that he could turn left."
+
+### TILING_FAILURE
+- **Seed**: 360
+- **Message**: Seed has no LEGOs
+- **Known**: "Did your friend say anything else?"
+
+### TILING_FAILURE
+- **Seed**: 361
+- **Message**: Seed has no LEGOs
+- **Known**: "He was quiet."
+
+### TILING_FAILURE
+- **Seed**: 362
+- **Message**: Seed has no LEGOs
+- **Known**: "No he was rather quiet after you left."
+
+### TILING_FAILURE
+- **Seed**: 363
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes he felt like talking a lot."
+
+### TILING_FAILURE
+- **Seed**: 364
+- **Message**: Seed has no LEGOs
+- **Known**: "I heard that he didn't like that place."
+
+### TILING_FAILURE
+- **Seed**: 365
+- **Message**: Seed has no LEGOs
+- **Known**: "I didn't hear what she said to him."
+
+### TILING_FAILURE
+- **Seed**: 366
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you hear what he wanted to grow?"
+
+### TILING_FAILURE
+- **Seed**: 367
+- **Message**: Seed has no LEGOs
+- **Known**: "No nobody told me."
+
+### TILING_FAILURE
+- **Seed**: 368
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I heard that he wanted to grow tomatoes."
+
+### TILING_FAILURE
+- **Seed**: 369
+- **Message**: Seed has no LEGOs
+- **Known**: "I saw several horses on the road."
+
+### TILING_FAILURE
+- **Seed**: 370
+- **Message**: Seed has no LEGOs
+- **Known**: "I didn't see anyone that I knew."
+
+### TILING_FAILURE
+- **Seed**: 371
+- **Message**: Seed has no LEGOs
+- **Known**: "I went to see a film on Wednesday."
+
+### TILING_FAILURE
+- **Seed**: 372
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you see what she was trying to create?"
+
+### TILING_FAILURE
+- **Seed**: 373
+- **Message**: Seed has no LEGOs
+- **Known**: "It was beautiful."
+
+### TILING_FAILURE
+- **Seed**: 374
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I thought it was very beautiful."
+
+### TILING_FAILURE
+- **Seed**: 375
+- **Message**: Seed has no LEGOs
+- **Known**: "No I didn't know what she was doing."
+
+### TILING_FAILURE
+- **Seed**: 376
+- **Message**: Seed has no LEGOs
+- **Known**: "I didn't go anywhere last month."
+
+### TILING_FAILURE
+- **Seed**: 377
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you go anywhere in the world last year?"
+
+### TILING_FAILURE
+- **Seed**: 378
+- **Message**: Seed has no LEGOs
+- **Known**: "No I didn't have enough money for holidays."
+
+### TILING_FAILURE
+- **Seed**: 379
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I was lucky enough to travel to Africa."
+
+### TILING_FAILURE
+- **Seed**: 380
+- **Message**: Seed has no LEGOs
+- **Known**: "I asked what she wanted to include."
+
+### TILING_FAILURE
+- **Seed**: 381
+- **Message**: Seed has no LEGOs
+- **Known**: "I didn't ask if he wanted to follow us."
+
+### TILING_FAILURE
+- **Seed**: 382
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you ask where he wanted to put it?"
+
+### TILING_FAILURE
+- **Seed**: 383
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes he said he wanted to put it in the garden."
+
+### TILING_FAILURE
+- **Seed**: 384
+- **Message**: Seed has no LEGOs
+- **Known**: "I couldn't agree with what he said a moment ago."
+
+### TILING_FAILURE
+- **Seed**: 385
+- **Message**: Seed has no LEGOs
+- **Known**: "Did you agree with her?"
+
+### TILING_FAILURE
+- **Seed**: 386
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes I agreed with her."
+
+### TILING_FAILURE
+- **Seed**: 387
+- **Message**: Seed has no LEGOs
+- **Known**: "No I didn't think she was right."
+
+### TILING_FAILURE
+- **Seed**: 388
+- **Message**: Seed has no LEGOs
+- **Known**: "That person you work with."
+
+### TILING_FAILURE
+- **Seed**: 389
+- **Message**: Seed has no LEGOs
+- **Known**: "That person over there."
+
+### TILING_FAILURE
+- **Seed**: 390
+- **Message**: Seed has no LEGOs
+- **Known**: "The one who is standing near the entrance."
+
+### TILING_FAILURE
+- **Seed**: 391
+- **Message**: Seed has no LEGOs
+- **Known**: "The one who is walking towards the bus."
+
+### TILING_FAILURE
+- **Seed**: 392
+- **Message**: Seed has no LEGOs
+- **Known**: "That child with the black hair opposite the post office."
+
+### TILING_FAILURE
+- **Seed**: 393
+- **Message**: Seed has no LEGOs
+- **Known**: "That boy with the green shirt."
+
+### TILING_FAILURE
+- **Seed**: 394
+- **Message**: Seed has no LEGOs
+- **Known**: "That girl with the yellow dress."
+
+### TILING_FAILURE
+- **Seed**: 395
+- **Message**: Seed has no LEGOs
+- **Known**: "We need to turn left at the next corner."
+
+### TILING_FAILURE
+- **Seed**: 396
+- **Message**: Seed has no LEGOs
+- **Known**: "We don't need to stand until everybody else is ready."
+
+### TILING_FAILURE
+- **Seed**: 397
+- **Message**: Seed has no LEGOs
+- **Known**: "Do we need to get ready soon?"
+
+### TILING_FAILURE
+- **Seed**: 398
+- **Message**: Seed has no LEGOs
+- **Known**: "We want to become more patient with our children."
+
+### TILING_FAILURE
+- **Seed**: 399
+- **Message**: Seed has no LEGOs
+- **Known**: "We don't want to lose hope."
+
+### TILING_FAILURE
+- **Seed**: 400
+- **Message**: Seed has no LEGOs
+- **Known**: "Do we want to eat something later on?"
+
+### TILING_FAILURE
+- **Seed**: 401
+- **Message**: Seed has no LEGOs
+- **Known**: "No it would be better to go straight home."
+
+### TILING_FAILURE
+- **Seed**: 402
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes it would be nice to stop somewhere for food."
+
+### TILING_FAILURE
+- **Seed**: 403
+- **Message**: Seed has no LEGOs
+- **Known**: "We should remain quiet for as long as possible."
+
+### TILING_FAILURE
+- **Seed**: 404
+- **Message**: Seed has no LEGOs
+- **Known**: "We shouldn't expect to finish before Thursday."
+
+### TILING_FAILURE
+- **Seed**: 405
+- **Message**: Seed has no LEGOs
+- **Known**: "Should we ask if we have to book?"
+
+### TILING_FAILURE
+- **Seed**: 406
+- **Message**: Seed has no LEGOs
+- **Known**: "No I'm sure it will be okay."
+
+### TILING_FAILURE
+- **Seed**: 407
+- **Message**: Seed has no LEGOs
+- **Known**: "Shouldn't we try to set a good example?"
+
+### TILING_FAILURE
+- **Seed**: 408
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes that's the best way to make a happy family."
+
+### TILING_FAILURE
+- **Seed**: 409
+- **Message**: Seed has no LEGOs
+- **Known**: "No it doesn't matter what we do."
+
+### TILING_FAILURE
+- **Seed**: 410
+- **Message**: Seed has no LEGOs
+- **Known**: "They still fight with each other."
+
+### TILING_FAILURE
+- **Seed**: 411
+- **Message**: Seed has no LEGOs
+- **Known**: "We would like to reserve a table for four tonight."
+
+### TILING_FAILURE
+- **Seed**: 412
+- **Message**: Seed has no LEGOs
+- **Known**: "We couldn't allow them to win everything."
+
+### TILING_FAILURE
+- **Seed**: 413
+- **Message**: Seed has no LEGOs
+- **Known**: "We could fall if we go too close to the edge."
+
+### TILING_FAILURE
+- **Seed**: 414
+- **Message**: Seed has no LEGOs
+- **Known**: "Could we have a bottle of red wine please?"
+
+### TILING_FAILURE
+- **Seed**: 415
+- **Message**: Seed has no LEGOs
+- **Known**: "That wouldn't be a problem if you ask me."
+
+### TILING_FAILURE
+- **Seed**: 416
+- **Message**: Seed has no LEGOs
+- **Known**: "They want to lead the way next year."
+
+### TILING_FAILURE
+- **Seed**: 417
+- **Message**: Seed has no LEGOs
+- **Known**: "Do they want to kill those ants?"
+
+### TILING_FAILURE
+- **Seed**: 418
+- **Message**: Seed has no LEGOs
+- **Known**: "They need to serve the community."
+
+### TILING_FAILURE
+- **Seed**: 419
+- **Message**: Seed has no LEGOs
+- **Known**: "If they want people to like them."
+
+### TILING_FAILURE
+- **Seed**: 420
+- **Message**: Seed has no LEGOs
+- **Known**: "They don't need to ask how old he is."
+
+### TILING_FAILURE
+- **Seed**: 421
+- **Message**: Seed has no LEGOs
+- **Known**: "Because they already know he's getting weak."
+
+### TILING_FAILURE
+- **Seed**: 422
+- **Message**: Seed has no LEGOs
+- **Known**: "A question."
+
+### TILING_FAILURE
+- **Seed**: 423
+- **Message**: Seed has no LEGOs
+- **Known**: "Do they need to ask such an obvious question?"
+
+### TILING_FAILURE
+- **Seed**: 424
+- **Message**: Seed has no LEGOs
+- **Known**: "No they're wasting everybody's time."
+
+### TILING_FAILURE
+- **Seed**: 425
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes they need to make sure they understand."
+
+### TILING_FAILURE
+- **Seed**: 426
+- **Message**: Seed has no LEGOs
+- **Known**: "They would like to love each other but they're unhappy."
+
+### TILING_FAILURE
+- **Seed**: 427
+- **Message**: Seed has no LEGOs
+- **Known**: "They wouldn't like you to think that they're bored."
+
+### TILING_FAILURE
+- **Seed**: 428
+- **Message**: Seed has no LEGOs
+- **Known**: "Would they like to visit us on Tuesday?"
+
+### TILING_FAILURE
+- **Seed**: 429
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes that would be perfect for them."
+
+### TILING_FAILURE
+- **Seed**: 430
+- **Message**: Seed has no LEGOs
+- **Known**: "No that wouldn't be possible."
+
+### TILING_FAILURE
+- **Seed**: 431
+- **Message**: Seed has no LEGOs
+- **Known**: "They're not ready yet but they'll be ready soon."
+
+### TILING_FAILURE
+- **Seed**: 432
+- **Message**: Seed has no LEGOs
+- **Known**: "They could mean that they want you to ask."
+
+### TILING_FAILURE
+- **Seed**: 433
+- **Message**: Seed has no LEGOs
+- **Known**: "They couldn't find out when the film started."
+
+### TILING_FAILURE
+- **Seed**: 434
+- **Message**: Seed has no LEGOs
+- **Known**: "Could they cut the number of students they take?"
+
+### TILING_FAILURE
+- **Seed**: 435
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes they could if they wanted to."
+
+### TILING_FAILURE
+- **Seed**: 436
+- **Message**: Seed has no LEGOs
+- **Known**: "No there's a minimum number they need."
+
+### TILING_FAILURE
+- **Seed**: 437
+- **Message**: Seed has no LEGOs
+- **Known**: "They wanted to raise as much as possible for charity."
+
+### TILING_FAILURE
+- **Seed**: 438
+- **Message**: Seed has no LEGOs
+- **Known**: "They didn't want to decide what he should do."
+
+### TILING_FAILURE
+- **Seed**: 439
+- **Message**: Seed has no LEGOs
+- **Known**: "They don't want to die."
+
+### TILING_FAILURE
+- **Seed**: 440
+- **Message**: Seed has no LEGOs
+- **Known**: "They want to travel while they're still young."
+
+### TILING_FAILURE
+- **Seed**: 441
+- **Message**: Seed has no LEGOs
+- **Known**: "An approach."
+
+### TILING_FAILURE
+- **Seed**: 442
+- **Message**: Seed has no LEGOs
+- **Known**: "Did they want to develop a new approach?"
+
+### TILING_FAILURE
+- **Seed**: 443
+- **Message**: Seed has no LEGOs
+- **Known**: "No they wanted to keep doing it the same way."
+
+### TILING_FAILURE
+- **Seed**: 444
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes they thought it could be done more efficiently."
+
+### TILING_FAILURE
+- **Seed**: 445
+- **Message**: Seed has no LEGOs
+- **Known**: "They will be able to carry that suitcase."
+
+### TILING_FAILURE
+- **Seed**: 446
+- **Message**: Seed has no LEGOs
+- **Known**: "They won't be able to break that window."
+
+### TILING_FAILURE
+- **Seed**: 447
+- **Message**: Seed has no LEGOs
+- **Known**: "Will they be able to drive us home after the meal?"
+
+### TILING_FAILURE
+- **Seed**: 448
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes they'll be happy to help."
+
+### TILING_FAILURE
+- **Seed**: 449
+- **Message**: Seed has no LEGOs
+- **Known**: "They said that they were almost ready."
+
+### TILING_FAILURE
+- **Seed**: 450
+- **Message**: Seed has no LEGOs
+- **Known**: "No they have to catch the train themselves."
+
+### TILING_FAILURE
+- **Seed**: 451
+- **Message**: Seed has no LEGOs
+- **Known**: "They said what they wanted to do."
+
+### TILING_FAILURE
+- **Seed**: 452
+- **Message**: Seed has no LEGOs
+- **Known**: "They didn't say what they wanted to do."
+
+### TILING_FAILURE
+- **Seed**: 453
+- **Message**: Seed has no LEGOs
+- **Known**: "Did they say who they saw last night?"
+
+### TILING_FAILURE
+- **Seed**: 454
+- **Message**: Seed has no LEGOs
+- **Known**: "Our friends came round at about six o'clock."
+
+### TILING_FAILURE
+- **Seed**: 455
+- **Message**: Seed has no LEGOs
+- **Known**: "We had to leave because the children were tired."
+
+### TILING_FAILURE
+- **Seed**: 456
+- **Message**: Seed has no LEGOs
+- **Known**: "He might be there but it's not very likely."
+
+### TILING_FAILURE
+- **Seed**: 457
+- **Message**: Seed has no LEGOs
+- **Known**: "Part of the problem is the number of different areas."
+
+### TILING_FAILURE
+- **Seed**: 458
+- **Message**: Seed has no LEGOs
+- **Known**: "It was all much easier in the past."
+
+### TILING_FAILURE
+- **Seed**: 459
+- **Message**: Seed has no LEGOs
+- **Known**: "It wasn't in front of the blue sign."
+
+### TILING_FAILURE
+- **Seed**: 460
+- **Message**: Seed has no LEGOs
+- **Known**: "I want to find a shop near the hotel."
+
+### TILING_FAILURE
+- **Seed**: 461
+- **Message**: Seed has no LEGOs
+- **Known**: "A shop where I can buy some postcards."
+
+### TILING_FAILURE
+- **Seed**: 462
+- **Message**: Seed has no LEGOs
+- **Known**: "My grandfather fought in Italy during the war."
+
+### TILING_FAILURE
+- **Seed**: 463
+- **Message**: Seed has no LEGOs
+- **Known**: "My room number."
+
+### TILING_FAILURE
+- **Seed**: 464
+- **Message**: Seed has no LEGOs
+- **Known**: "I told her my room number once but she forgot it."
+
+### TILING_FAILURE
+- **Seed**: 465
+- **Message**: Seed has no LEGOs
+- **Known**: "Next time I will ask her what her name is."
+
+### TILING_FAILURE
+- **Seed**: 466
+- **Message**: Seed has no LEGOs
+- **Known**: "Let me throw it over the wall."
+
+### TILING_FAILURE
+- **Seed**: 467
+- **Message**: Seed has no LEGOs
+- **Known**: "It's next to the car park."
+
+### TILING_FAILURE
+- **Seed**: 468
+- **Message**: Seed has no LEGOs
+- **Known**: "It's a big world."
+
+### TILING_FAILURE
+- **Seed**: 469
+- **Message**: Seed has no LEGOs
+- **Known**: "But that doesn't mean we can't change it."
+
+### TILING_FAILURE
+- **Seed**: 470
+- **Message**: Seed has no LEGOs
+- **Known**: "How high do you want to climb before we stop?"
+
+### TILING_FAILURE
+- **Seed**: 471
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you want to stop for a rest?"
+
+### TILING_FAILURE
+- **Seed**: 472
+- **Message**: Seed has no LEGOs
+- **Known**: "Part of the problem is that we don't know the facts."
+
+### TILING_FAILURE
+- **Seed**: 473
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't want it."
+
+### TILING_FAILURE
+- **Seed**: 474
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't even want it as a free offer."
+
+### TILING_FAILURE
+- **Seed**: 475
+- **Message**: Seed has no LEGOs
+- **Known**: "There are many reasons to consider waiting."
+
+### TILING_FAILURE
+- **Seed**: 476
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm waiting for the end of the second half."
+
+### TILING_FAILURE
+- **Seed**: 477
+- **Message**: Seed has no LEGOs
+- **Known**: "He's been sick since the second day of the holidays."
+
+### TILING_FAILURE
+- **Seed**: 478
+- **Message**: Seed has no LEGOs
+- **Known**: "She has such a kind heart."
+
+### TILING_FAILURE
+- **Seed**: 479
+- **Message**: Seed has no LEGOs
+- **Known**: "It's the least I could do."
+
+### TILING_FAILURE
+- **Seed**: 480
+- **Message**: Seed has no LEGOs
+- **Known**: "Whatever he says it's not far ahead now."
+
+### TILING_FAILURE
+- **Seed**: 481
+- **Message**: Seed has no LEGOs
+- **Known**: "It's the only real hope we have left."
+
+### TILING_FAILURE
+- **Seed**: 482
+- **Message**: Seed has no LEGOs
+- **Known**: "The only real hope is that they're not serious."
+
+### TILING_FAILURE
+- **Seed**: 483
+- **Message**: Seed has no LEGOs
+- **Known**: "Life isn't easy but it's not meant to be easy."
+
+### TILING_FAILURE
+- **Seed**: 484
+- **Message**: Seed has no LEGOs
+- **Known**: "It's meant to be a challenge."
+
+### TILING_FAILURE
+- **Seed**: 485
+- **Message**: Seed has no LEGOs
+- **Known**: "Nothing would make me happier than to get away."
+
+### TILING_FAILURE
+- **Seed**: 486
+- **Message**: Seed has no LEGOs
+- **Known**: "I think your eyes are beautiful."
+
+### TILING_FAILURE
+- **Seed**: 487
+- **Message**: Seed has no LEGOs
+- **Known**: "It's under the bridge."
+
+### TILING_FAILURE
+- **Seed**: 488
+- **Message**: Seed has no LEGOs
+- **Known**: "It's on the other side of that yellow line."
+
+### TILING_FAILURE
+- **Seed**: 489
+- **Message**: Seed has no LEGOs
+- **Known**: "If you don't make me a strong cup of coffee right now."
+
+### TILING_FAILURE
+- **Seed**: 490
+- **Message**: Seed has no LEGOs
+- **Known**: "Then I will never trust anyone ever again."
+
+### TILING_FAILURE
+- **Seed**: 491
+- **Message**: Seed has no LEGOs
+- **Known**: "I love the way you try to help."
+
+### TILING_FAILURE
+- **Seed**: 492
+- **Message**: Seed has no LEGOs
+- **Known**: "Which of those places do you think is the most interesting?"
+
+### TILING_FAILURE
+- **Seed**: 493
+- **Message**: Seed has no LEGOs
+- **Known**: "What's going to come next?"
+
+### TILING_FAILURE
+- **Seed**: 494
+- **Message**: Seed has no LEGOs
+- **Known**: "What happens after the first part of the show?"
+
+### TILING_FAILURE
+- **Seed**: 495
+- **Message**: Seed has no LEGOs
+- **Known**: "When it matters."
+
+### TILING_FAILURE
+- **Seed**: 496
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm not planning to lose when it really matters."
+
+### TILING_FAILURE
+- **Seed**: 497
+- **Message**: Seed has no LEGOs
+- **Known**: "That sounds as though you need to get some sleep."
+
+### TILING_FAILURE
+- **Seed**: 498
+- **Message**: Seed has no LEGOs
+- **Known**: "He's standing alone over there inside the entrance."
+
+### TILING_FAILURE
+- **Seed**: 499
+- **Message**: Seed has no LEGOs
+- **Known**: "Maybe we should open the door and close the window."
+
+### TILING_FAILURE
+- **Seed**: 500
+- **Message**: Seed has no LEGOs
+- **Known**: "Why don't you want to sit between the two girls?"
+
+### TILING_FAILURE
+- **Seed**: 501
+- **Message**: Seed has no LEGOs
+- **Known**: "If only I could trust you to play together without arguing."
+
+### TILING_FAILURE
+- **Seed**: 502
+- **Message**: Seed has no LEGOs
+- **Known**: "She almost got lost because she turned left instead of right."
+
+### TILING_FAILURE
+- **Seed**: 503
+- **Message**: Seed has no LEGOs
+- **Known**: "I hate making trouble but that one's mine."
+
+### TILING_FAILURE
+- **Seed**: 504
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm going to run across the grass."
+
+### TILING_FAILURE
+- **Seed**: 505
+- **Message**: Seed has no LEGOs
+- **Known**: "So that I don't get left behind."
+
+### TILING_FAILURE
+- **Seed**: 506
+- **Message**: Seed has no LEGOs
+- **Known**: "I used to live around here years ago before we moved."
+
+### TILING_FAILURE
+- **Seed**: 507
+- **Message**: Seed has no LEGOs
+- **Known**: "We moved to the city."
+
+### TILING_FAILURE
+- **Seed**: 508
+- **Message**: Seed has no LEGOs
+- **Known**: "There's no point worrying about how you're going to pay."
+
+### TILING_FAILURE
+- **Seed**: 509
+- **Message**: Seed has no LEGOs
+- **Known**: "I heard that you're going to pay for a new bed."
+
+### TILING_FAILURE
+- **Seed**: 510
+- **Message**: Seed has no LEGOs
+- **Known**: "She's gone to look for somewhere safe to park the car."
+
+### TILING_FAILURE
+- **Seed**: 511
+- **Message**: Seed has no LEGOs
+- **Known**: "The news took several hours to reach everyone in the office."
+
+### TILING_FAILURE
+- **Seed**: 512
+- **Message**: Seed has no LEGOs
+- **Known**: "Can you hold the door open while I fetch the keys?"
+
+### TILING_FAILURE
+- **Seed**: 513
+- **Message**: Seed has no LEGOs
+- **Known**: "It hurts most when I move my head up and down."
+
+### TILING_FAILURE
+- **Seed**: 514
+- **Message**: Seed has no LEGOs
+- **Known**: "I found the perfect house on the first day."
+
+### TILING_FAILURE
+- **Seed**: 515
+- **Message**: Seed has no LEGOs
+- **Known**: "On the first day of the new year."
+
+### TILING_FAILURE
+- **Seed**: 516
+- **Message**: Seed has no LEGOs
+- **Known**: "They both came on their own."
+
+### TILING_FAILURE
+- **Seed**: 517
+- **Message**: Seed has no LEGOs
+- **Known**: "But they left with each other."
+
+### TILING_FAILURE
+- **Seed**: 518
+- **Message**: Seed has no LEGOs
+- **Known**: "I couldn't imagine myself having exactly the same problem."
+
+### TILING_FAILURE
+- **Seed**: 519
+- **Message**: Seed has no LEGOs
+- **Known**: "I haven't seen their new baby yet."
+
+### TILING_FAILURE
+- **Seed**: 520
+- **Message**: Seed has no LEGOs
+- **Known**: "It might have happened to the whole family."
+
+### TILING_FAILURE
+- **Seed**: 521
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm afraid that you'll forget why we needed to stay here."
+
+### TILING_FAILURE
+- **Seed**: 522
+- **Message**: Seed has no LEGOs
+- **Known**: "Let's agree that it was stupid to tell the truth."
+
+### TILING_FAILURE
+- **Seed**: 523
+- **Message**: Seed has no LEGOs
+- **Known**: "Instead of giving an excuse."
+
+### TILING_FAILURE
+- **Seed**: 524
+- **Message**: Seed has no LEGOs
+- **Known**: "I'll call you back in three or four minutes."
+
+### TILING_FAILURE
+- **Seed**: 525
+- **Message**: Seed has no LEGOs
+- **Known**: "To check if you've been able to finish."
+
+### TILING_FAILURE
+- **Seed**: 526
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm finding it hard to believe that you can't guess."
+
+### TILING_FAILURE
+- **Seed**: 527
+- **Message**: Seed has no LEGOs
+- **Known**: "Guess who told me that funny story."
+
+### TILING_FAILURE
+- **Seed**: 528
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm probably supposed to keep those things in another room."
+
+### TILING_FAILURE
+- **Seed**: 529
+- **Message**: Seed has no LEGOs
+- **Known**: "Can you all put your hands up?"
+
+### TILING_FAILURE
+- **Seed**: 530
+- **Message**: Seed has no LEGOs
+- **Known**: "So I can count them"
+
+### TILING_FAILURE
+- **Seed**: 531
+- **Message**: Seed has no LEGOs
+- **Known**: "It isn't true that anyone can win the game."
+
+### TILING_FAILURE
+- **Seed**: 532
+- **Message**: Seed has no LEGOs
+- **Known**: "Unless they're lucky."
+
+### TILING_FAILURE
+- **Seed**: 533
+- **Message**: Seed has no LEGOs
+- **Known**: "She won't listen to every word you say."
+
+### TILING_FAILURE
+- **Seed**: 534
+- **Message**: Seed has no LEGOs
+- **Known**: "Let's not go outside in this dreadful weather."
+
+### TILING_FAILURE
+- **Seed**: 535
+- **Message**: Seed has no LEGOs
+- **Known**: "He made a promise that he wouldn't choose the wrong job."
+
+### TILING_FAILURE
+- **Seed**: 536
+- **Message**: Seed has no LEGOs
+- **Known**: "I used to think that being crazy was bad."
+
+### TILING_FAILURE
+- **Seed**: 537
+- **Message**: Seed has no LEGOs
+- **Known**: "But I was wrong."
+
+### TILING_FAILURE
+- **Seed**: 538
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't want to seem as though I don't care."
+
+### TILING_FAILURE
+- **Seed**: 539
+- **Message**: Seed has no LEGOs
+- **Known**: "But it's getting late."
+
+### TILING_FAILURE
+- **Seed**: 540
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't mind if you want to leave without the car."
+
+### TILING_FAILURE
+- **Seed**: 541
+- **Message**: Seed has no LEGOs
+- **Known**: "It's a good idea to try and breathe slowly."
+
+### TILING_FAILURE
+- **Seed**: 542
+- **Message**: Seed has no LEGOs
+- **Known**: "Whenever you feel angry."
+
+### TILING_FAILURE
+- **Seed**: 543
+- **Message**: Seed has no LEGOs
+- **Known**: "She was right."
+
+### TILING_FAILURE
+- **Seed**: 544
+- **Message**: Seed has no LEGOs
+- **Known**: "Whoever said it would be difficult was absolutely right."
+
+### TILING_FAILURE
+- **Seed**: 545
+- **Message**: Seed has no LEGOs
+- **Known**: "It's your turn to take the clean clothes upstairs."
+
+### TILING_FAILURE
+- **Seed**: 546
+- **Message**: Seed has no LEGOs
+- **Known**: "The dog is dirty and wet."
+
+### TILING_FAILURE
+- **Seed**: 547
+- **Message**: Seed has no LEGOs
+- **Known**: "Because he has been playing in the mud."
+
+### TILING_FAILURE
+- **Seed**: 548
+- **Message**: Seed has no LEGOs
+- **Known**: "I am feeling sad at the moment."
+
+### TILING_FAILURE
+- **Seed**: 549
+- **Message**: Seed has no LEGOs
+- **Known**: "Because I have got to be quiet."
+
+### TILING_FAILURE
+- **Seed**: 550
+- **Message**: Seed has no LEGOs
+- **Known**: "The end of the village."
+
+### TILING_FAILURE
+- **Seed**: 551
+- **Message**: Seed has no LEGOs
+- **Known**: "The church is ugly."
+
+### TILING_FAILURE
+- **Seed**: 552
+- **Message**: Seed has no LEGOs
+- **Known**: "The church at the other end of the village is ugly."
+
+### TILING_FAILURE
+- **Seed**: 553
+- **Message**: Seed has no LEGOs
+- **Known**: "I think the small church is very ugly."
+
+### TILING_FAILURE
+- **Seed**: 554
+- **Message**: Seed has no LEGOs
+- **Known**: "This towel isn't dry."
+
+### TILING_FAILURE
+- **Seed**: 555
+- **Message**: Seed has no LEGOs
+- **Known**: "And I'm too tired to fetch a new one."
+
+### TILING_FAILURE
+- **Seed**: 556
+- **Message**: Seed has no LEGOs
+- **Known**: "They play music late at night."
+
+### TILING_FAILURE
+- **Seed**: 557
+- **Message**: Seed has no LEGOs
+- **Known**: "I wish they wouldn't play such loud music."
+
+### TILING_FAILURE
+- **Seed**: 558
+- **Message**: Seed has no LEGOs
+- **Known**: "It's so late at night."
+
+### TILING_FAILURE
+- **Seed**: 559
+- **Message**: Seed has no LEGOs
+- **Known**: "Have you found the path through the wood?"
+
+### TILING_FAILURE
+- **Seed**: 560
+- **Message**: Seed has no LEGOs
+- **Known**: "It goes down to the beach"
+
+### TILING_FAILURE
+- **Seed**: 561
+- **Message**: Seed has no LEGOs
+- **Known**: "I don't care if it's a fast car."
+
+### TILING_FAILURE
+- **Seed**: 562
+- **Message**: Seed has no LEGOs
+- **Known**: "I just want to get there safely."
+
+### TILING_FAILURE
+- **Seed**: 563
+- **Message**: Seed has no LEGOs
+- **Known**: "I wouldn't have been able to keep going any longer."
+
+### TILING_FAILURE
+- **Seed**: 564
+- **Message**: Seed has no LEGOs
+- **Known**: "I wouldn't have been able to without your help."
+
+### TILING_FAILURE
+- **Seed**: 565
+- **Message**: Seed has no LEGOs
+- **Known**: "I'd have thought about it more carefully."
+
+### TILING_FAILURE
+- **Seed**: 566
+- **Message**: Seed has no LEGOs
+- **Known**: "I'd have thought more if it had been my choice."
+
+### TILING_FAILURE
+- **Seed**: 567
+- **Message**: Seed has no LEGOs
+- **Known**: "It's been lovely spending time outdoors watching the children play."
+
+### TILING_FAILURE
+- **Seed**: 568
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm expecting to see an improvement next time we meet."
+
+### TILING_FAILURE
+- **Seed**: 569
+- **Message**: Seed has no LEGOs
+- **Known**: "Have you decided how much you are willing to pay?"
+
+### TILING_FAILURE
+- **Seed**: 570
+- **Message**: Seed has no LEGOs
+- **Known**: "How much are you willing to pay for your ticket?"
+
+### TILING_FAILURE
+- **Seed**: 571
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm not convinced that would be a very good idea."
+
+### TILING_FAILURE
+- **Seed**: 572
+- **Message**: Seed has no LEGOs
+- **Known**: "Have you forgotten what happened the last time they visited us?"
+
+### TILING_FAILURE
+- **Seed**: 573
+- **Message**: Seed has no LEGOs
+- **Known**: "It's the kind of thing that makes the holidays very special."
+
+### TILING_FAILURE
+- **Seed**: 574
+- **Message**: Seed has no LEGOs
+- **Known**: "The holidays are very special for everyone."
+
+### TILING_FAILURE
+- **Seed**: 575
+- **Message**: Seed has no LEGOs
+- **Known**: "It's been upsetting."
+
+### TILING_FAILURE
+- **Seed**: 576
+- **Message**: Seed has no LEGOs
+- **Known**: "It has been very upsetting waiting."
+
+### TILING_FAILURE
+- **Seed**: 577
+- **Message**: Seed has no LEGOs
+- **Known**: "We've been waiting for the news from the hospital."
+
+### TILING_FAILURE
+- **Seed**: 578
+- **Message**: Seed has no LEGOs
+- **Known**: "Somewhere warmer."
+
+### TILING_FAILURE
+- **Seed**: 579
+- **Message**: Seed has no LEGOs
+- **Known**: "We've often tried."
+
+### TILING_FAILURE
+- **Seed**: 580
+- **Message**: Seed has no LEGOs
+- **Known**: "We've often wanted to take the children somewhere a little warmer."
+
+### TILING_FAILURE
+- **Seed**: 581
+- **Message**: Seed has no LEGOs
+- **Known**: "He'd like to know a little more about what it's like."
+
+### TILING_FAILURE
+- **Seed**: 582
+- **Message**: Seed has no LEGOs
+- **Known**: "What's it like to grow up here?"
+
+### TILING_FAILURE
+- **Seed**: 583
+- **Message**: Seed has no LEGOs
+- **Known**: "What's it like in this part of the world?"
+
+### TILING_FAILURE
+- **Seed**: 584
+- **Message**: Seed has no LEGOs
+- **Known**: "What's it like to wake up every morning and see the mountains?"
+
+### TILING_FAILURE
+- **Seed**: 585
+- **Message**: Seed has no LEGOs
+- **Known**: "I can see the mountains out of my bedroom window."
+
+### TILING_FAILURE
+- **Seed**: 586
+- **Message**: Seed has no LEGOs
+- **Known**: "I want twenty boiled eggs."
+
+### TILING_FAILURE
+- **Seed**: 587
+- **Message**: Seed has no LEGOs
+- **Known**: "She used to insist that we had eggs for supper."
+
+### TILING_FAILURE
+- **Seed**: 588
+- **Message**: Seed has no LEGOs
+- **Known**: "So I wanted to grow up and leave home."
+
+### TILING_FAILURE
+- **Seed**: 589
+- **Message**: Seed has no LEGOs
+- **Known**: "She told me she'd just seen the last bus."
+
+### TILING_FAILURE
+- **Seed**: 590
+- **Message**: Seed has no LEGOs
+- **Known**: "I saw the last bus leaving the station."
+
+### TILING_FAILURE
+- **Seed**: 591
+- **Message**: Seed has no LEGOs
+- **Known**: "She followed me down to the shops."
+
+### TILING_FAILURE
+- **Seed**: 592
+- **Message**: Seed has no LEGOs
+- **Known**: "And along the main road."
+
+### TILING_FAILURE
+- **Seed**: 593
+- **Message**: Seed has no LEGOs
+- **Known**: "However much I argued I still had to share."
+
+### TILING_FAILURE
+- **Seed**: 594
+- **Message**: Seed has no LEGOs
+- **Known**: "I had to share my toys with my sister."
+
+### TILING_FAILURE
+- **Seed**: 595
+- **Message**: Seed has no LEGOs
+- **Known**: "I need to lie down in the garden."
+
+### TILING_FAILURE
+- **Seed**: 596
+- **Message**: Seed has no LEGOs
+- **Known**: "And I need to close my eyes for a while."
+
+### TILING_FAILURE
+- **Seed**: 597
+- **Message**: Seed has no LEGOs
+- **Known**: "I suspect that he's heard a hundred stories about it."
+
+### TILING_FAILURE
+- **Seed**: 598
+- **Message**: Seed has no LEGOs
+- **Known**: "He's heard a thousand stories about what they were doing."
+
+### TILING_FAILURE
+- **Seed**: 599
+- **Message**: Seed has no LEGOs
+- **Known**: "I'd have been happy to drive if you'd told me."
+
+### TILING_FAILURE
+- **Seed**: 600
+- **Message**: Seed has no LEGOs
+- **Known**: "I'd have driven if you'd told me how tired you were."
+
+### TILING_FAILURE
+- **Seed**: 601
+- **Message**: Seed has no LEGOs
+- **Known**: "We were talking about how it all started."
+
+### TILING_FAILURE
+- **Seed**: 602
+- **Message**: Seed has no LEGOs
+- **Known**: "How it started in the first place."
+
+### TILING_FAILURE
+- **Seed**: 603
+- **Message**: Seed has no LEGOs
+- **Known**: "We didn't have anywhere to live at the time."
+
+### TILING_FAILURE
+- **Seed**: 604
+- **Message**: Seed has no LEGOs
+- **Known**: "She offered to let us stay with her."
+
+### TILING_FAILURE
+- **Seed**: 605
+- **Message**: Seed has no LEGOs
+- **Known**: "Because we needed help."
+
+### TILING_FAILURE
+- **Seed**: 606
+- **Message**: Seed has no LEGOs
+- **Known**: "If I'd known then what I know now I'd have waited."
+
+### TILING_FAILURE
+- **Seed**: 607
+- **Message**: Seed has no LEGOs
+- **Known**: "If I'd known I'd have done things differently."
+
+### TILING_FAILURE
+- **Seed**: 608
+- **Message**: Seed has no LEGOs
+- **Known**: "It would have been the sensible thing to do."
+
+### TILING_FAILURE
+- **Seed**: 609
+- **Message**: Seed has no LEGOs
+- **Known**: "The sensible thing to do would have been to ask."
+
+### TILING_FAILURE
+- **Seed**: 610
+- **Message**: Seed has no LEGOs
+- **Known**: "He needs to look for work."
+
+### TILING_FAILURE
+- **Seed**: 611
+- **Message**: Seed has no LEGOs
+- **Known**: "I would have been ready to look somewhere else."
+
+### TILING_FAILURE
+- **Seed**: 612
+- **Message**: Seed has no LEGOs
+- **Known**: "We would have bought something."
+
+### TILING_FAILURE
+- **Seed**: 613
+- **Message**: Seed has no LEGOs
+- **Known**: "We probably would have bought a house there."
+
+### TILING_FAILURE
+- **Seed**: 614
+- **Message**: Seed has no LEGOs
+- **Known**: "It's near where your family live."
+
+### TILING_FAILURE
+- **Seed**: 615
+- **Message**: Seed has no LEGOs
+- **Known**: "I thought you were very brave to say that."
+
+### TILING_FAILURE
+- **Seed**: 616
+- **Message**: Seed has no LEGOs
+- **Known**: "You were very brave to say you thought that."
+
+### TILING_FAILURE
+- **Seed**: 617
+- **Message**: Seed has no LEGOs
+- **Known**: "You thought that it was a mistake."
+
+### TILING_FAILURE
+- **Seed**: 618
+- **Message**: Seed has no LEGOs
+- **Known**: "It doesn't feel like a long time."
+
+### TILING_FAILURE
+- **Seed**: 619
+- **Message**: Seed has no LEGOs
+- **Known**: "It's a long time since we saw each other."
+
+### TILING_FAILURE
+- **Seed**: 620
+- **Message**: Seed has no LEGOs
+- **Known**: "It's a very long time since we last saw each other."
+
+### TILING_FAILURE
+- **Seed**: 621
+- **Message**: Seed has no LEGOs
+- **Known**: "I wouldn't have dared to tell her that it was broken."
+
+### TILING_FAILURE
+- **Seed**: 622
+- **Message**: Seed has no LEGOs
+- **Known**: "I knew that the children had broken it."
+
+### TILING_FAILURE
+- **Seed**: 623
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you want a cup of coffee or tea?"
+
+### TILING_FAILURE
+- **Seed**: 624
+- **Message**: Seed has no LEGOs
+- **Known**: "Yes, that would be great, please."
+
+### TILING_FAILURE
+- **Seed**: 625
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you want something to drink?"
+
+### TILING_FAILURE
+- **Seed**: 626
+- **Message**: Seed has no LEGOs
+- **Known**: "No, I'm not thirsty, thank you."
+
+### TILING_FAILURE
+- **Seed**: 627
+- **Message**: Seed has no LEGOs
+- **Known**: "Your coffee is ready."
+
+### TILING_FAILURE
+- **Seed**: 628
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you like tea?"
+
+### TILING_FAILURE
+- **Seed**: 629
+- **Message**: Seed has no LEGOs
+- **Known**: "I like it with milk but without sugar."
+
+### TILING_FAILURE
+- **Seed**: 630
+- **Message**: Seed has no LEGOs
+- **Known**: "Can I have something to drink please?"
+
+### TILING_FAILURE
+- **Seed**: 631
+- **Message**: Seed has no LEGOs
+- **Known**: "What would you like?"
+
+### TILING_FAILURE
+- **Seed**: 632
+- **Message**: Seed has no LEGOs
+- **Known**: "A glass of water."
+
+### TILING_FAILURE
+- **Seed**: 633
+- **Message**: Seed has no LEGOs
+- **Known**: "A large glass of water would be fine."
+
+### TILING_FAILURE
+- **Seed**: 634
+- **Message**: Seed has no LEGOs
+- **Known**: "I'd like one of those."
+
+### TILING_FAILURE
+- **Seed**: 635
+- **Message**: Seed has no LEGOs
+- **Known**: "That is Jane's bag."
+
+### TILING_FAILURE
+- **Seed**: 636
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that that is Jane's bag."
+
+### TILING_FAILURE
+- **Seed**: 637
+- **Message**: Seed has no LEGOs
+- **Known**: "Where is her bag?"
+
+### TILING_FAILURE
+- **Seed**: 638
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm trying to think."
+
+### TILING_FAILURE
+- **Seed**: 639
+- **Message**: Seed has no LEGOs
+- **Known**: "with you sir"
+
+### TILING_FAILURE
+- **Seed**: 640
+- **Message**: Seed has no LEGOs
+- **Known**: "It's the red one."
+
+### TILING_FAILURE
+- **Seed**: 641
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that it's the red one on that chair."
+
+### TILING_FAILURE
+- **Seed**: 642
+- **Message**: Seed has no LEGOs
+- **Known**: "how do you feel madam?"
+
+### TILING_FAILURE
+- **Seed**: 643
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you want sir"
+
+### TILING_FAILURE
+- **Seed**: 644
+- **Message**: Seed has no LEGOs
+- **Known**: "Could you say that sir?"
+
+### TILING_FAILURE
+- **Seed**: 645
+- **Message**: Seed has no LEGOs
+- **Known**: "I can help you madam"
+
+### TILING_FAILURE
+- **Seed**: 646
+- **Message**: Seed has no LEGOs
+- **Known**: "You're doing something sir."
+
+### TILING_FAILURE
+- **Seed**: 647
+- **Message**: Seed has no LEGOs
+- **Known**: "You speak it madam"
+
+### TILING_FAILURE
+- **Seed**: 648
+- **Message**: Seed has no LEGOs
+- **Known**: "what you said madam"
+
+### TILING_FAILURE
+- **Seed**: 649
+- **Message**: Seed has no LEGOs
+- **Known**: "Are you ready sir?"
+
+### TILING_FAILURE
+- **Seed**: 650
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you want to go madam?"
+
+### TILING_FAILURE
+- **Seed**: 651
+- **Message**: Seed has no LEGOs
+- **Known**: "What do you think madam?"
+
+### TILING_FAILURE
+- **Seed**: 652
+- **Message**: Seed has no LEGOs
+- **Known**: "What do you need sir?"
+
+### TILING_FAILURE
+- **Seed**: 653
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you mind madam?"
+
+### TILING_FAILURE
+- **Seed**: 654
+- **Message**: Seed has no LEGOs
+- **Known**: "I'm not sure if I can help you, sir."
+
+### TILING_FAILURE
+- **Seed**: 655
+- **Message**: Seed has no LEGOs
+- **Known**: "I think that you're doing very well, madam."
+
+### TILING_FAILURE
+- **Seed**: 656
+- **Message**: Seed has no LEGOs
+- **Known**: "with you all"
+
+### TILING_FAILURE
+- **Seed**: 657
+- **Message**: Seed has no LEGOs
+- **Known**: "how do you all feel?"
+
+### TILING_FAILURE
+- **Seed**: 658
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you all want?"
+
+### TILING_FAILURE
+- **Seed**: 659
+- **Message**: Seed has no LEGOs
+- **Known**: "Could you all say that"
+
+### TILING_FAILURE
+- **Seed**: 660
+- **Message**: Seed has no LEGOs
+- **Known**: "I can help you all"
+
+### TILING_FAILURE
+- **Seed**: 661
+- **Message**: Seed has no LEGOs
+- **Known**: "you're all doing something"
+
+### TILING_FAILURE
+- **Seed**: 662
+- **Message**: Seed has no LEGOs
+- **Known**: "you all speak it"
+
+### TILING_FAILURE
+- **Seed**: 663
+- **Message**: Seed has no LEGOs
+- **Known**: "what you all said"
+
+### TILING_FAILURE
+- **Seed**: 664
+- **Message**: Seed has no LEGOs
+- **Known**: "Are you all ready?"
+
+### TILING_FAILURE
+- **Seed**: 665
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you all want to go?"
+
+### TILING_FAILURE
+- **Seed**: 666
+- **Message**: Seed has no LEGOs
+- **Known**: "What do you all think?"
+
+### TILING_FAILURE
+- **Seed**: 667
+- **Message**: Seed has no LEGOs
+- **Known**: "Do you all mind?"
+
+### TILING_FAILURE
+- **Seed**: 668
+- **Message**: Seed has no LEGOs
+- **Known**: "I hope you'll all be able to go"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 59 | **LEGO**: 2
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "what I need to do" → "wat ik moet doen"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 142 | **LEGO**: 2
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "I am grateful to you" → "ik ben je dankbaar"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 146 | **LEGO**: 3
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "we tried to fix it" → "we het probeerden te repareren"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 167 | **LEGO**: 1
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "do you need to do" → "moet je doen"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 175 | **LEGO**: 1
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "do you want to do" → "wil je doen"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 178 | **LEGO**: 2
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "I wanted to see you" → "ik je wilde zien"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 179 | **LEGO**: 1
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "are you going to do" → "ga je doen"
+
+### BULLSHIT_COMPONENT
+- **Seed**: 195 | **LEGO**: 2
+- **Message**: Grammatical explanation instead of real word
+- **Component**: "I left on the table" → "dat ik op de tafel heb gelaten"
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "want"
+- **Translations**: "wil" vs "willen" vs "wilt"
+- **First at**: S1:L1:P2
+- **Also at**: S12:L1:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to speak"
+- **Translations**: "spreken" vs "te spreken" vs "praten"
+- **First at**: S1:L2:P1
+- **Also at**: S2:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "you"
+- **Translations**: "jou" vs "je"
+- **First at**: S1:L4:P2
+- **Also at**: S11:L4:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "try"
+- **Translations**: "probeer" vs "proberen"
+- **First at**: S2:L1:P2
+- **Also at**: S236:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 3 different translations!
+- **Known**: "i want to try"
+- **Translations**: "ik wil probeer" vs "ik wil te probeer" vs "ik wil proberen"
+- **First at**: S2:L1:P5
+- **Also at**: S2:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm trying to speak"
+- **Translations**: "ik probeer spreken" vs "ik probeer te spreken"
+- **First at**: S2:L1:P7
+- **Also at**: S2:L2:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm trying to speak with you"
+- **Translations**: "ik probeer met jou spreken" vs "ik probeer met jou te spreken"
+- **First at**: S2:L1:P8
+- **Also at**: S2:L2:P6
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm trying to speak dutch"
+- **Translations**: "ik probeer nederlands spreken" vs "ik probeer nederlands te spreken"
+- **First at**: S2:L1:P9
+- **Also at**: S2:L2:P7
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm trying to speak dutch with you now"
+- **Translations**: "ik probeer nu nederlands met jou spreken" vs "ik probeer nu nederlands met jou te spreken"
+- **First at**: S2:L1:P10
+- **Also at**: S2:L2:P9
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to"
+- **Translations**: "te" vs "om te" vs "om" vs "aan"
+- **First at**: S2:L2:P1
+- **Also at**: S26:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to try"
+- **Translations**: "te probeer" vs "proberen"
+- **First at**: S2:L2:P2
+- **Also at**: S7:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to learn"
+- **Translations**: "leren" vs "te leren"
+- **First at**: S2:L3:P1
+- **Also at**: S73:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "in"
+- **Translations**: "in" vs "op"
+- **First at**: S4:L2:P1
+- **Also at**: S199:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "the"
+- **Translations**: "het" vs "de"
+- **First at**: S4:L2:P2
+- **Also at**: S10:L4:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to say"
+- **Translations**: "zeggen" vs "te zeggen"
+- **First at**: S4:L3:P1
+- **Also at**: S60:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "going"
+- **Translations**: "ga" vs "gaat"
+- **First at**: S5:L1:P2
+- **Also at**: S12:L3:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm going to try"
+- **Translations**: "ik ga probeer" vs "ik ga proberen"
+- **First at**: S5:L1:P6
+- **Also at**: S7:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to practise"
+- **Translations**: "oefenen" vs "om te" vs "te oefenen"
+- **First at**: S5:L4:P1
+- **Also at**: S206:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "try to learn"
+- **Translations**: "proberen te leren" vs "probeer te leren"
+- **First at**: S7:L1:P4
+- **Also at**: S109:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "try to remember"
+- **Translations**: "proberen te onthouden" vs "probeer te onthouden"
+- **First at**: S7:L1:P6
+- **Also at**: S113:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "speak"
+- **Translations**: "spreek" vs "spreekt" vs "spreken"
+- **First at**: S9:L1:P2
+- **Also at**: S13:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "know"
+- **Translations**: "weet" vs "kende" vs "weten" vs "ken"
+- **First at**: S10:L1:P2
+- **Also at**: S128:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i know"
+- **Translations**: "ik weet" vs "ik ken"
+- **First at**: S10:L1:P6
+- **Also at**: S85:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i don't know"
+- **Translations**: "ik weet niet" vs "ik ken niet"
+- **First at**: S10:L1:P8
+- **Also at**: S85:L1:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "if"
+- **Translations**: "of" vs "als"
+- **First at**: S10:L2:P1
+- **Also at**: S44:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'd like to learn dutch"
+- **Translations**: "ik zou graag nederlands leren" vs "ik zou graag nederlands willen leren"
+- **First at**: S11:L1:P8
+- **Also at**: S92:L1:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "after"
+- **Translations**: "nadat" vs "op"
+- **First at**: S11:L3:P1
+- **Also at**: S69:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "are"
+- **Translations**: "bent" vs "zijn"
+- **First at**: S11:L4:P3
+- **Also at**: S34:L3:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "very"
+- **Translations**: "heel" vs "erg"
+- **First at**: S13:L3:P1
+- **Also at**: S166:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "that"
+- **Translations**: "dat" vs "die"
+- **First at**: S15:L2:P1
+- **Also at**: S227:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "say that"
+- **Translations**: "dat zeggen" vs "zeggen dat"
+- **First at**: S15:L2:P3
+- **Also at**: S102:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "me"
+- **Translations**: "mij" vs "me"
+- **First at**: S15:L3:P2
+- **Also at**: S70:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "she"
+- **Translations**: "zij" vs "ze"
+- **First at**: S17:L1:P1
+- **Also at**: S35:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "she wants to speak"
+- **Translations**: "zij wil spreken" vs "ze wil praten"
+- **First at**: S17:L1:P4
+- **Also at**: S35:L1:P6
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to find out"
+- **Translations**: "uitvinden" vs "het weten"
+- **First at**: S17:L2:P1
+- **Also at**: S251:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "answer"
+- **Translations**: "antwoord" vs "antwoorden"
+- **First at**: S17:L3:P2
+- **Also at**: S27:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "at"
+- **Translations**: "om" vs "op"
+- **First at**: S18:L3:P1
+- **Also at**: S40:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to meet"
+- **Translations**: "afspreken" vs "ontmoeten"
+- **First at**: S18:L4:P1
+- **Also at**: S22:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "learn"
+- **Translations**: "leer" vs "leren"
+- **First at**: S21:L2:P1
+- **Also at**: S109:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "soon"
+- **Translations**: "binnenkort" vs "snel"
+- **First at**: S23:L2:P1
+- **Also at**: S149:L3:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to start"
+- **Translations**: "beginnen" vs "te beginnen"
+- **First at**: S23:L3:P1
+- **Also at**: S28:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "more"
+- **Translations**: "meer" vs "nog meer"
+- **First at**: S23:L4:P1
+- **Also at**: S73:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to talk"
+- **Translations**: "te praten" vs "om te praten"
+- **First at**: S23:L4:P2
+- **Also at**: S137:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "go"
+- **Translations**: "ga" vs "gaan"
+- **First at**: S25:L1:P1
+- **Also at**: S25:L4:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to help"
+- **Translations**: "helpen" vs "te helpen"
+- **First at**: S25:L2:P2
+- **Also at**: S236:L4:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to help me"
+- **Translations**: "mij helpen" vs "me te helpen"
+- **First at**: S25:L2:P3
+- **Also at**: S236:L4:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "before"
+- **Translations**: "voordat" vs "vroeger" vs "voor"
+- **First at**: S25:L3:P1
+- **Also at**: S199:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "find"
+- **Translations**: "vind" vs "vinden"
+- **First at**: S26:L1:P2
+- **Also at**: S66:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "feel"
+- **Translations**: "voelen" vs "voel" vs "voel me" vs "te voelen ons"
+- **First at**: S26:L2:P2
+- **Also at**: S40:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to feel"
+- **Translations**: "om te voelen" vs "me te voelen"
+- **First at**: S26:L2:P3
+- **Also at**: S42:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to go"
+- **Translations**: "om te gaan" vs "te gaan" vs "gaat"
+- **First at**: S26:L4:P4
+- **Also at**: S95:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'm nearly ready to go"
+- **Translations**: "ik bijna klaar ben om te gaan" vs "ik ben bijna klaar om te gaan"
+- **First at**: S26:L4:P5
+- **Also at**: S26:L4:P8
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "time"
+- **Translations**: "tijd" vs "de tijd"
+- **First at**: S27:L2:P2
+- **Also at**: S65:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to take"
+- **Translations**: "te nemen" vs "om te nemen"
+- **First at**: S27:L2:P3
+- **Also at**: S65:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to take time"
+- **Translations**: "tijd te nemen" vs "om de tijd te nemen"
+- **First at**: S27:L2:P6
+- **Also at**: S65:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to answer"
+- **Translations**: "om te antwoorden" vs "te antwoorden"
+- **First at**: S27:L3:P3
+- **Also at**: S148:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "so"
+- **Translations**: "zo" vs "dus" vs "tot"
+- **First at**: S28:L3:P1
+- **Also at**: S149:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "look"
+- **Translations**: "kijk" vs "passen"
+- **First at**: S29:L1:P2
+- **Also at**: S69:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "wanted"
+- **Translations**: "wilde" vs "wilden"
+- **First at**: S30:L1:P2
+- **Also at**: S201:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to ask you"
+- **Translations**: "je vragen" vs "je te vragen"
+- **First at**: S30:L2:P3
+- **Also at**: S208:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to show me"
+- **Translations**: "mij laten zien" vs "me te laten zien"
+- **First at**: S32:L2:P4
+- **Also at**: S140:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "when"
+- **Translations**: "als" vs "wanneer" vs "toen"
+- **First at**: S34:L3:P1
+- **Also at**: S79:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "started"
+- **Translations**: "begon" vs "begonnen"
+- **First at**: S37:L1:P2
+- **Also at**: S224:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "about it"
+- **Translations**: "erover" vs "het over"
+- **First at**: S37:L2:P1
+- **Also at**: S143:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to think"
+- **Translations**: "na te denken" vs "te denken"
+- **First at**: S37:L2:P2
+- **Also at**: S91:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "yourself"
+- **Translations**: "je" vs "jezelf"
+- **First at**: S40:L1:P4
+- **Also at**: S65:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "don't need to"
+- **Translations**: "hoef niet" vs "hoeven niet te"
+- **First at**: S45:L1:P2
+- **Also at**: S106:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i don't need to"
+- **Translations**: "ik hoef niet" vs "ik hoef niet te"
+- **First at**: S45:L1:P3
+- **Also at**: S188:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "about"
+- **Translations**: "om" vs "over" vs "maken om"
+- **First at**: S46:L2:P1
+- **Also at**: S83:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to make"
+- **Translations**: "te maken" vs "om te maken"
+- **First at**: S46:L2:P2
+- **Also at**: S47:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to do"
+- **Translations**: "om te doen" vs "doen"
+- **First at**: S51:L2:P2
+- **Also at**: S59:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "wanted to"
+- **Translations**: "wilde" vs "wilden"
+- **First at**: S52:L1:P2
+- **Also at**: S54:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "a little more time"
+- **Translations**: "een beetje meer tijd" vs "nog een beetje meer tijd"
+- **First at**: S54:L3:P3
+- **Also at**: S96:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to wake"
+- **Translations**: "om wakker" vs "om wakker te worden"
+- **First at**: S55:L2:P1
+- **Also at**: S108:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "waking up"
+- **Translations**: "om wakker te worden" vs "wakker worden"
+- **First at**: S55:L2:P3
+- **Also at**: S108:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "when i"
+- **Translations**: "als ik" vs "wanneer ik" vs "toen ik"
+- **First at**: S55:L3:P1
+- **Also at**: S80:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "speak more slowly"
+- **Translations**: "spreek langzamer" vs "langzamer spreken"
+- **First at**: S61:L3:P4
+- **Also at**: S90:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "help you"
+- **Translations**: "je helpen" vs "je zou helpen"
+- **First at**: S62:L2:P2
+- **Also at**: S204:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "helping"
+- **Translations**: "om te helpen" vs "het helpen"
+- **First at**: S63:L3:P1
+- **Also at**: S142:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "important"
+- **Translations**: "belangrijk" vs "belangrijks"
+- **First at**: S65:L1:P2
+- **Also at**: S261:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to find"
+- **Translations**: "om te vinden" vs "te vinden"
+- **First at**: S66:L2:P3
+- **Also at**: S195:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "didn't want to"
+- **Translations**: "wilde niet" vs "wilden niet" vs "niet wilden"
+- **First at**: S69:L1:P2
+- **Also at**: S71:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "can you tell me"
+- **Translations**: "kan je me vertellen" vs "kun je me vertellen"
+- **First at**: S70:L2:P5
+- **Also at**: S150:L1:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "hear"
+- **Translations**: "horen" vs "te horen"
+- **First at**: S71:L3:P1
+- **Also at**: S103:L2:LEGO
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "for"
+- **Translations**: "om" vs "voor"
+- **First at**: S74:L1:P2
+- **Also at**: S142:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "understand"
+- **Translations**: "begrijpen" vs "begrijp"
+- **First at**: S74:L3:P2
+- **Also at**: S78:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to understand"
+- **Translations**: "om te begrijpen" vs "te begrijpen"
+- **First at**: S74:L3:P3
+- **Also at**: S77:L3:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i've learnt"
+- **Translations**: "ik geleerd heb" vs "ik heb geleerd"
+- **First at**: S76:L2:P2
+- **Also at**: S244:L1:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "did you"
+- **Translations**: "ben je" vs "heb je"
+- **First at**: S79:L1:P2
+- **Also at**: S220:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "start"
+- **Translations**: "begonnen" vs "beginnen"
+- **First at**: S79:L2:P1
+- **Also at**: S252:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i'll be ready"
+- **Translations**: "ik zal klaar zijn" vs "ik klaar zal zijn"
+- **First at**: S80:L2:P4
+- **Also at**: S256:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i don't"
+- **Translations**: "ik ben niet" vs "ik niet"
+- **First at**: S84:L1:P1
+- **Also at**: S115:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "don't know"
+- **Translations**: "niet ken" vs "weten niet"
+- **First at**: S87:L2:P2
+- **Also at**: S213:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i'm not ready"
+- **Translations**: "ik ben nog niet klaar" vs "ik ben niet klaar"
+- **First at**: S88:L1:P1
+- **Also at**: S96:L1:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i've"
+- **Translations**: "ik heb" vs "ik ben"
+- **First at**: S89:L2:P1
+- **Also at**: S205:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i've done a lot"
+- **Translations**: "ik veel heb gedaan" vs "ik heb veel gedaan"
+- **First at**: S89:L2:P3
+- **Also at**: S89:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "that would be"
+- **Translations**: "zou dat zijn" vs "dat zou zijn"
+- **First at**: S90:L3:P1
+- **Also at**: S172:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i'd like to"
+- **Translations**: "ik zou graag willen" vs "zou ik graag willen"
+- **First at**: S92:L1:P3
+- **Also at**: S110:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i'd like to go"
+- **Translations**: "ik zou graag willen gaan" vs "ik zou graag gaan"
+- **First at**: S92:L1:P4
+- **Also at**: S180:L1:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "for a while"
+- **Translations**: "voor een tijdje" vs "een tijdje"
+- **First at**: S92:L3:P3
+- **Also at**: S180:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "it will work"
+- **Translations**: "het zal werken" vs "waarop het zal werken"
+- **First at**: S94:L2:P2
+- **Also at**: S94:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "no"
+- **Translations**: "nee" vs "geen"
+- **First at**: S96:L1:P1
+- **Also at**: S141:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i need"
+- **Translations**: "ik heb nodig" vs "ik moet"
+- **First at**: S96:L2:P1
+- **Also at**: S139:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "ask"
+- **Translations**: "afvragen" vs "vragen"
+- **First at**: S99:L2:P2
+- **Also at**: S208:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "doing"
+- **Translations**: "te doen" vs "aan het doen"
+- **First at**: S100:L3:P1
+- **Also at**: S104:L3:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "we're trying to"
+- **Translations**: "we proberen te" vs "we proberen om"
+- **First at**: S102:L1:P3
+- **Also at**: S103:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "it's not like that"
+- **Translations**: "het niet zo is" vs "het is niet zo"
+- **First at**: S102:L3:P3
+- **Also at**: S102:L3:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "we're doing"
+- **Translations**: "we aan het doen zijn" vs "we zijn aan het doen"
+- **First at**: S104:L3:P3
+- **Also at**: S104:L3:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "he didn't know"
+- **Translations**: "hij niet wist" vs "hij wist niet"
+- **First at**: S105:L2:P3
+- **Also at**: S105:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "happy"
+- **Translations**: "gelukkig" vs "blij"
+- **First at**: S106:L2:P2
+- **Also at**: S145:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "feel happy"
+- **Translations**: "gelukkig te voelen ons" vs "gelukkig voelen"
+- **First at**: S106:L2:P3
+- **Also at**: S106:L2:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "just"
+- **Translations**: "gewoon" vs "net"
+- **First at**: S106:L3:P2
+- **Also at**: S224:L1:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "we hoped to"
+- **Translations**: "we hoopten te" vs "we hoopten om"
+- **First at**: S107:L1:P3
+- **Also at**: S108:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "you were doing"
+- **Translations**: "je aan het doen was" vs "je was aan het doen"
+- **First at**: S107:L3:P3
+- **Also at**: S107:L3:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "in order to"
+- **Translations**: "om te" vs "om"
+- **First at**: S109:L2:P1
+- **Also at**: S155:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "we finish"
+- **Translations**: "we klaar zijn" vs "we afmaken"
+- **First at**: S110:L2:P2
+- **Also at**: S200:L3:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "after we finish"
+- **Translations**: "nadat we klaar zijn" vs "we klaar zijn"
+- **First at**: S110:L2:P4
+- **Also at**: S251:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i'm doing"
+- **Translations**: "ik doe" vs "ik doe het"
+- **First at**: S114:L2:P1
+- **Also at**: S117:L1:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "that i"
+- **Translations**: "die ik" vs "dat ik"
+- **First at**: S116:L3:P1
+- **Also at**: S169:L2:P1
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "that is a good idea"
+- **Translations**: "dat een goed idee is" vs "dat is een goed idee"
+- **First at**: S123:L2:P3
+- **Also at**: S123:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "that was a good idea"
+- **Translations**: "dat was een goed idee" vs "dat dat een goed idee was"
+- **First at**: S123:L2:P6
+- **Also at**: S124:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "your idea was very good"
+- **Translations**: "jouw idee heel goed was" vs "jouw idee was heel goed"
+- **First at**: S125:L2:P3
+- **Also at**: S125:L2:P5
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "i wanted to see you"
+- **Translations**: "ik je wilde zien" vs "ik wilde je zien"
+- **First at**: S127:L2:P3
+- **Also at**: S127:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "i used to know"
+- **Translations**: "die ik vroeger kende" vs "ik kende vroeger"
+- **First at**: S128:L2:P3
+- **Also at**: S128:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "you are doing so well"
+- **Translations**: "je het zo goed doet" vs "je doet het zo goed"
+- **First at**: S129:L2:P3
+- **Also at**: S129:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "she is my friend"
+- **Translations**: "zij is mijn vriend" vs "zij mijn vriendin is"
+- **First at**: S130:L2:P5
+- **Also at**: S136:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "to leave"
+- **Translations**: "vertrekken" vs "om te vertrekken"
+- **First at**: S139:L2:P2
+- **Also at**: S255:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "as"
+- **Translations**: "als waar" vs "als"
+- **First at**: S143:L2:P1
+- **Also at**: S197:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "to."
+- **Translations**: "om te." vs "naar."
+- **First at**: S155:L2:P4
+- **Also at**: S156:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "be able to"
+- **Translations**: "kunnen" vs "kan"
+- **First at**: S157:L1:P3
+- **Also at**: S176:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "it's true"
+- **Translations**: "het waar is" vs "het is waar"
+- **First at**: S165:L2:P2
+- **Also at**: S165:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "and then"
+- **Translations**: "en dan" vs "en toen"
+- **First at**: S168:L1:P1
+- **Also at**: S221:L3:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "what you need"
+- **Translations**: "wat je nodig hebt" vs "wat je nodig"
+- **First at**: S170:L2:P2
+- **Also at**: S170:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "tell me what you need"
+- **Translations**: "me vertelt wat je nodig hebt" vs "me vertellen wat je nodig hebt"
+- **First at**: S170:L2:P3
+- **Also at**: S170:L2:P6
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "look for it"
+- **Translations**: "het te zoeken" vs "het zoeken"
+- **First at**: S171:L2:P2
+- **Also at**: S171:L2:P4
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "help you look for it"
+- **Translations**: "je help het te zoeken" vs "je helpen het te zoeken"
+- **First at**: S171:L2:P3
+- **Also at**: S171:L2:P7
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "help"
+- **Translations**: "helpen" vs "hulp"
+- **First at**: S176:L3:P1
+- **Also at**: S212:L2:P2
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT violation (also used as M-LEGO component - check if component usage is the only variant)
+- **Known**: "is trying to"
+- **Translations**: "probeert" vs "probeert te"
+- **First at**: S222:L1:P2
+- **Also at**: S226:L2:P3
+
+### ZUT_VIOLATION
+- **Seed**: N/A
+- **Message**: ZUT VIOLATION: Same prompt has 2 different translations!
+- **Known**: "tell you something"
+- **Translations**: "je iets vertellen" vs "je iets zou vertellen"
+- **First at**: S235:L4:P4
+- **Also at**: S237:L2:P4
+
+## High Priority Issues
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 23 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 25 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 25 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 26 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 27 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 27 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 30 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 31 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 33 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 34 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 35 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 38 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 39 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=4
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 39 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=3, MEDIUM=0, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 44 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 46 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 46 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 46 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 47 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 48 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 49 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 50 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 50 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 51 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 55 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 55 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 56 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=6, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 56 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 58 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 59 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 59 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 62 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 62 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2, MEDIUM: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 66 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=5, MEDIUM=0, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 67 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=6, MEDIUM=0, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 69 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 72 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 73 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=5, MEDIUM=0, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 74 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 76 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 76 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 82 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 85 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 86 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 88 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 91 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 92 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 94 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 97 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 99 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 100 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 101 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 101 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 102 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 106 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 110 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 112 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 114 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 114 | **LEGO**: 4
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 120 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 121 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 125 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 126 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 135 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=6, MEDIUM=0, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 135 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=4, MEDIUM=0, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 136 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 136 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 137 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 139 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 139 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 140 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 142 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 142 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 144 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 146 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=3, MEDIUM=0, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 152 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 153 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 155 | **LEGO**: 5
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 157 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 162 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 164 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 165 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 167 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 169 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 178 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=5, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 183 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 184 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 187 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 191 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 191 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 0/2
+- **Current tiers**: SHORT=3, MEDIUM=0, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 192 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 195 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 200 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 200 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 203 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 208 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 209 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 211 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 214 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 218 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=7, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 220 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 230 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=6, MEDIUM=1, LONG=5
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 234 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 234 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 234 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 235 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 236 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 236 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 241 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=3, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 242 | **LEGO**: 3
+- **Message**: Missing phrase tiers: SHORT: 0/2
+- **Current tiers**: SHORT=0, MEDIUM=4, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 243 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 245 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 246 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=2, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 247 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=5, MEDIUM=1, LONG=6
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 249 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 250 | **LEGO**: 3
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 253 | **LEGO**: 2
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=2, MEDIUM=1, LONG=9
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 254 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 255 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=4, MEDIUM=1, LONG=7
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 255 | **LEGO**: 2
+- **Message**: Missing phrase tiers: SHORT: 1/2, MEDIUM: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=1, LONG=10
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 256 | **LEGO**: 1
+- **Message**: Missing phrase tiers: MEDIUM: 1/2
+- **Current tiers**: SHORT=3, MEDIUM=1, LONG=8
+
+### PHRASE_TIER_FAILURE
+- **Seed**: 261 | **LEGO**: 1
+- **Message**: Missing phrase tiers: SHORT: 1/2
+- **Current tiers**: SHORT=1, MEDIUM=4, LONG=8
+
+### PRODUCTION_UNCERTAINTY
+- **Message**: 5 variants of "speak" in first 50 seeds
+- **Variants**:
+  - S1: "to speak" → "spreken"
+  - S3: "to speak" → "spreken"
+  - S5: "to speak" → "spreken"
+  - S11: "to speak" → "spreken"
+  - S31: "to speak with me" → "met mij praten"
+
+### PRODUCTION_UNCERTAINTY
+- **Message**: 6 variants of "i'm" in first 50 seeds
+- **Variants**:
+  - S5: "I'm going to" → "ik ga"
+  - S8: "I'm going to" → "ik ga"
+  - S23: "I'm going to" → "ik ga"
+  - S24: "I'm not going to" → "ik ga niet"
+  - S26: "I'm nearly ready to go" → "ik bijna klaar ben om te gaan"
+
+## Medium Priority Issues
+
+### BUILDUP_GAP
+- **Seed**: 6 | **LEGO**: 1
+- **Message**: Gap of 7 syllables between positions 8 and 9
+
+### BUILDUP_GAP
+- **Seed**: 7 | **LEGO**: 2
+- **Message**: Gap of 7 syllables between positions 8 and 9
+
+### BUILDUP_GAP
+- **Seed**: 7 | **LEGO**: 3
+- **Message**: Gap of 7 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 8 | **LEGO**: 1
+- **Message**: Gap of 7 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 8 | **LEGO**: 2
+- **Message**: Gap of 7 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 8 | **LEGO**: 3
+- **Message**: Gap of 6 syllables between positions 8 and 9
+
+### BUILDUP_GAP
+- **Seed**: 9 | **LEGO**: 1
+- **Message**: Gap of 6 syllables between positions 8 and 9
+
+### BUILDUP_GAP
+- **Seed**: 10 | **LEGO**: 1
+- **Message**: Gap of 8 syllables between positions 11 and 12
+
+### BUILDUP_GAP
+- **Seed**: 10 | **LEGO**: 3
+- **Message**: Gap of 10 syllables between positions 10 and 11
+
+### BUILDUP_GAP
+- **Seed**: 11 | **LEGO**: 2
+- **Message**: Gap of 7 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 11 | **LEGO**: 4
+- **Message**: Gap of 7 syllables between positions 6 and 7
+
+### BUILDUP_GAP
+- **Seed**: 12 | **LEGO**: 1
+- **Message**: Gap of 6 syllables between positions 4 and 5
+
+### BUILDUP_GAP
+- **Seed**: 12 | **LEGO**: 3
+- **Message**: Gap of 7 syllables between positions 6 and 7
+
+### BUILDUP_GAP
+- **Seed**: 12 | **LEGO**: 4
+- **Message**: Gap of 7 syllables between positions 6 and 7
+
+### BUILDUP_GAP
+- **Seed**: 13 | **LEGO**: 1
+- **Message**: Gap of 12 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 13 | **LEGO**: 2
+- **Message**: Gap of 8 syllables between positions 8 and 9
+
+### BUILDUP_GAP
+- **Seed**: 13 | **LEGO**: 3
+- **Message**: Gap of 6 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 14 | **LEGO**: 1
+- **Message**: Gap of 7 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 14 | **LEGO**: 2
+- **Message**: Gap of 6 syllables between positions 9 and 10
+
+### BUILDUP_GAP
+- **Seed**: 15 | **LEGO**: 1
+- **Message**: Gap of 9 syllables between positions 8 and 9
+
+
+*... and 302 more medium issues*
+

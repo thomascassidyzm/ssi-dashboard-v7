@@ -75,8 +75,6 @@ function isBullshitComponent(knownText) {
   for (const pattern of BULLSHIT_PATTERNS) {
     if (pattern.test(text)) return true;
   }
-  // Too long = probably an explanation
-  if (text.split(/\s+/).length > 4) return true;
   return false;
 }
 

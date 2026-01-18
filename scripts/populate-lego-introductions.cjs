@@ -1,11 +1,13 @@
 /**
- * Populate lego_introductions table by matching presentation audio to LEGOs
+ * Populate lego_introductions table from course_audio.lego_id
  *
- * This script:
- * 1. Gets all presentation audio from course_audio
- * 2. Extracts the LEGO known_text from presentation text pattern
- * 3. Matches to lego_cycles to get lego_id
- * 4. Inserts into lego_introductions
+ * This script uses the direct lego_id column in course_audio (no regex parsing!)
+ *
+ * For presentations WITH lego_id:
+ *   - Direct insert into lego_introductions
+ *
+ * For presentations WITHOUT lego_id (legacy):
+ *   - Reports them for manual review or regeneration
  *
  * Usage: node scripts/populate-lego-introductions.cjs <course_code> [--dry-run]
  */
@@ -19,10 +21,10 @@ async function populateLegoIntroductions(courseCode, dryRun = false) {
   console.log(`\n=== Populating lego_introductions for ${courseCode} ===`);
   console.log(`Mode: ${dryRun ? 'DRY RUN' : 'EXECUTE'}\n`);
 
-  // 1. Get all presentation audio for this course
+  // Get all presentation audio for this course
   const { data: presentations, error: presError } = await supabase
     .from('course_audio')
-    .select('id, text, s3_key')
+    .select('id, text, s3_key, lego_id')
     .eq('course_code', courseCode)
     .eq('role', 'presentation');
 
@@ -33,115 +35,80 @@ async function populateLegoIntroductions(courseCode, dryRun = false) {
 
   console.log(`Found ${presentations?.length || 0} presentation audio files`);
 
-  // 2. Get unique LEGOs from lego_cycles
-  const { data: legoCycles, error: legoError } = await supabase
-    .from('lego_cycles')
-    .select('lego_id, known_text, target_text')
-    .eq('course_code', courseCode);
+  // Split into those with lego_id and those without
+  const withLegoId = presentations?.filter(p => p.lego_id) || [];
+  const withoutLegoId = presentations?.filter(p => !p.lego_id) || [];
 
-  if (legoError) {
-    console.error('Error fetching LEGOs:', legoError.message);
-    return;
+  console.log(`  With lego_id: ${withLegoId.length} (ready to link)`);
+  console.log(`  Without lego_id: ${withoutLegoId.length} (need regeneration)`);
+
+  // Build records for insert (dedupe by lego_id, first wins)
+  const seen = new Set();
+  const records = [];
+
+  for (const pres of withLegoId) {
+    if (seen.has(pres.lego_id)) continue;
+    seen.add(pres.lego_id);
+
+    records.push({
+      course_code: courseCode,
+      lego_id: pres.lego_id,
+      presentation_audio_id: pres.id,
+      audio_uuid: pres.id,
+    });
   }
 
-  // Build lookup map: normalized known_text -> lego_id
-  const legoMap = new Map();
-  for (const lego of legoCycles || []) {
-    const normalized = lego.known_text.toLowerCase().trim();
-    if (!legoMap.has(normalized)) {
-      legoMap.set(normalized, lego.lego_id);
-    }
-  }
-  console.log(`Found ${legoMap.size} unique LEGOs\n`);
+  console.log(`\nRecords to insert: ${records.length}`);
 
-  // 3. Match presentations to LEGOs
-  const matchMap = new Map();  // lego_id -> match (dedupe, first wins)
-  const unmatched = [];
-
-  for (const pres of presentations || []) {
-    // Extract known text from: "The German for 'X', as in 'Y', is:"
-    // or "The German for 'X', is:"
-    // Handle contractions like "I'm", "don't" by matching until ', as in' or ', is:'
-    const match = pres.text.match(/The \w+ for '(.+?)'(?:,\s*(?:as in|is:))/);
-    if (!match) {
-      unmatched.push({ id: pres.id, text: pres.text, reason: 'no pattern match' });
-      continue;
-    }
-
-    const extractedKnown = match[1].toLowerCase().trim();
-    const legoId = legoMap.get(extractedKnown);
-
-    if (!legoId) {
-      unmatched.push({ id: pres.id, text: pres.text, extracted: match[1], reason: 'no LEGO match' });
-      continue;
-    }
-
-    // Dedupe - first match wins
-    if (!matchMap.has(legoId)) {
-      matchMap.set(legoId, {
-        course_code: courseCode,
-        lego_id: legoId,
-        presentation_audio_id: pres.id,
-        audio_uuid: pres.id,
-      });
-    }
+  // Show sample
+  console.log('\nSample records:');
+  for (const r of records.slice(0, 5)) {
+    console.log(`  ${r.lego_id} -> ${r.presentation_audio_id}`);
   }
 
-  const matches = Array.from(matchMap.values());
-
-  console.log(`Matched: ${matches.length}`);
-  console.log(`Unmatched: ${unmatched.length}`);
-
-  // Show sample matches
-  console.log('\nSample matches:');
-  for (const m of matches.slice(0, 5)) {
-    console.log(`  ${m.course_code}/${m.lego_id} -> ${m.presentation_audio_id}`);
+  // Show presentations missing lego_id
+  if (withoutLegoId.length > 0) {
+    console.log(`\n⚠️  ${withoutLegoId.length} presentations missing lego_id:`);
+    for (const p of withoutLegoId.slice(0, 10)) {
+      console.log(`  ${p.id}: "${p.text.substring(0, 60)}..."`);
+    }
+    if (withoutLegoId.length > 10) {
+      console.log(`  ... and ${withoutLegoId.length - 10} more`);
+    }
+    console.log('\nTo fix: regenerate presentations via phase8 /regenerate-presentations endpoint');
   }
 
-  // Show unmatched (first 10)
-  if (unmatched.length > 0) {
-    console.log('\nUnmatched (first 10):');
-    for (const u of unmatched.slice(0, 10)) {
-      console.log(`  ${u.reason}: "${u.extracted || u.text.substring(0, 50)}..."`);
-    }
-  }
+  // Insert
+  if (!dryRun && records.length > 0) {
+    console.log(`\nInserting ${records.length} records into lego_introductions...`);
 
-  // 4. Insert into lego_introductions
-  if (!dryRun && matches.length > 0) {
-    console.log(`\nInserting ${matches.length} records into lego_introductions...`);
-
-    // Delete existing entries for this course first
-    const { error: deleteError } = await supabase
-      .from('lego_introductions')
-      .delete()
-      .eq('course_code', courseCode);
-
-    if (deleteError) {
-      console.error('Error deleting existing entries:', deleteError.message);
-      return;
-    }
-
-    // Insert in batches of 500
+    // Upsert (update if exists)
     const batchSize = 500;
-    for (let i = 0; i < matches.length; i += batchSize) {
-      const batch = matches.slice(i, i + batchSize);
+    for (let i = 0; i < records.length; i += batchSize) {
+      const batch = records.slice(i, i + batchSize);
       const { error: insertError } = await supabase
         .from('lego_introductions')
-        .insert(batch);
+        .upsert(batch, {
+          onConflict: 'course_code,lego_id',
+          ignoreDuplicates: false
+        });
 
       if (insertError) {
-        console.error(`Error inserting batch ${i / batchSize + 1}:`, insertError.message);
+        console.error(`Error upserting batch ${Math.floor(i / batchSize) + 1}:`, insertError.message);
         return;
       }
-      console.log(`  Inserted batch ${i / batchSize + 1} (${batch.length} records)`);
+      console.log(`  Upserted batch ${Math.floor(i / batchSize) + 1} (${batch.length} records)`);
     }
 
     console.log('\nDone!');
   } else if (dryRun) {
-    console.log('\n[DRY RUN] Would insert these records - run without --dry-run to execute');
+    console.log('\n[DRY RUN] Would upsert these records - run without --dry-run to execute');
   }
 
-  return { matched: matches.length, unmatched: unmatched.length };
+  return {
+    linked: records.length,
+    missingLegoId: withoutLegoId.length
+  };
 }
 
 // Main

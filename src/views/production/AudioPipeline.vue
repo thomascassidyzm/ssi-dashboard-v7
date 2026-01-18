@@ -677,8 +677,8 @@ const loadingPlan = ref(false)
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
 
-// Concurrency control (1-20, stored in localStorage)
-const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '5', 10))
+// Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
+const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
 
 // Voice config update key to trigger MissingAudio refresh
 const missingAudioKey = ref(0)
