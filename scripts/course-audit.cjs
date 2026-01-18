@@ -442,56 +442,82 @@ class CourseAuditor {
     }
   }
 
-  // Check 9: Consistency Issues (duplicates/variants)
-  checkConsistencyIssues() {
-    console.log('Checking consistency issues...');
+  // Check 9: ZUT Violations (Zero Uncertainty Translation)
+  // CRITICAL: Same known text MUST always map to same target
+  // EXCEPTION: M-LEGO components (position 0) are one-time structure reveals
+  checkZUTViolations() {
+    console.log('Checking ZUT violations (same known → different target)...');
 
-    // Track known→target mappings
-    const knownToTarget = new Map();
+    // Collect all M-LEGO component texts (these are exempt from ZUT)
+    const componentTexts = new Set();
+    for (const lego of this.legos) {
+      if (lego.type === 'M' && lego.components) {
+        const components = typeof lego.components === 'string'
+          ? JSON.parse(lego.components)
+          : lego.components;
+        for (const comp of components) {
+          if (comp.known) {
+            componentTexts.add(comp.known.toLowerCase().trim());
+          }
+        }
+      }
+    }
+
+    // Track known→target mappings (EXCLUDING components at position 0)
+    const knownToTargets = new Map();
 
     for (const phrase of this.phrases) {
+      // Skip component positions (position 0) - these show M-LEGO internals once
+      if (phrase.position === 0) continue;
+
       const known = phrase.known_text.toLowerCase().trim();
       const target = phrase.target_text.toLowerCase().trim();
       const location = `S${phrase.seed_number}:L${phrase.lego_index}:P${phrase.position}`;
 
-      if (knownToTarget.has(known)) {
-        const existing = knownToTarget.get(known);
-        if (existing.target !== target) {
-          this.issues.medium.push({
-            type: 'INCONSISTENT_TRANSLATION',
-            message: `Same known text translated differently`,
-            known: phrase.known_text,
-            location1: existing.location,
-            target1: existing.target,
-            location2: location,
-            target2: target
-          });
-        }
-      } else {
-        knownToTarget.set(known, { target, location });
+      if (!knownToTargets.has(known)) {
+        knownToTargets.set(known, []);
       }
+      knownToTargets.get(known).push({ target, location, type: 'phrase' });
     }
 
-    // Also check LEGOs
+    // Also add LEGOs (these are NEVER exempt - LEGOs must be consistent)
     for (const lego of this.legos) {
       const known = lego.known_text.toLowerCase().trim();
       const target = lego.target_text.toLowerCase().trim();
-      const location = `S${lego.seed_number}:L${lego.lego_index}`;
+      const location = `S${lego.seed_number}:L${lego.lego_index}:LEGO`;
 
-      if (knownToTarget.has(known)) {
-        const existing = knownToTarget.get(known);
-        if (existing.target !== target) {
-          this.issues.medium.push({
-            type: 'INCONSISTENT_TRANSLATION',
-            message: `LEGO has different translation than phrase`,
-            known: lego.known_text,
-            location1: existing.location,
-            target1: existing.target,
-            location2: location,
-            target2: target
-          });
-        }
+      if (!knownToTargets.has(known)) {
+        knownToTargets.set(known, []);
       }
+      knownToTargets.get(known).push({ target, location, type: 'lego' });
+    }
+
+    // Find ZUT violations (same known, different targets)
+    for (const [known, entries] of knownToTargets) {
+      const uniqueTargets = new Set(entries.map(e => e.target));
+      if (uniqueTargets.size <= 1) continue;
+
+      // This is a ZUT VIOLATION - same prompt, different answers = learner confusion
+      const targets = [...uniqueTargets];
+      const firstEntry = entries.find(e => e.target === targets[0]);
+      const secondEntry = entries.find(e => e.target === targets[1]);
+
+      // Check if this known text ALSO appears as a component (partial exemption)
+      const isAlsoComponent = componentTexts.has(known);
+
+      this.issues.critical.push({
+        type: 'ZUT_VIOLATION',
+        message: isAlsoComponent
+          ? `ZUT violation (also used as M-LEGO component - check if component usage is the only variant)`
+          : `ZUT VIOLATION: Same prompt has ${uniqueTargets.size} different translations!`,
+        known: known,
+        location1: firstEntry?.location,
+        target1: targets[0],
+        location2: secondEntry?.location,
+        target2: targets[1],
+        all_targets: targets.slice(0, 5), // Show up to 5 variants
+        is_also_component: isAlsoComponent
+      });
     }
   }
 
@@ -547,9 +573,9 @@ class CourseAuditor {
     // Run all checks
     this.checkTilingFailures();
     this.checkComponentSins();
+    this.checkZUTViolations();  // CRITICAL: Same known must always → same target
     this.checkPhraseTierFailures();
     this.checkBuildupGaps();
-    this.checkConsistencyIssues();
     this.checkProductionUncertainty();
     // Note: Vocabulary violations and semantic issues need more sophisticated analysis
 
@@ -593,9 +619,14 @@ class CourseAuditor {
         if (issue.lego) report += ` | **LEGO**: ${issue.lego}`;
         report += `\n`;
         report += `- **Message**: ${issue.message}\n`;
-        if (issue.known) report += `- **Known**: ${issue.known}\n`;
+        if (issue.known) report += `- **Known**: "${issue.known}"\n`;
         if (issue.target) report += `- **Target**: ${issue.target}\n`;
         if (issue.component_known) report += `- **Component**: "${issue.component_known}" → "${issue.component_target}"\n`;
+        if (issue.all_targets) {
+          report += `- **Translations**: ${issue.all_targets.map(t => `"${t}"`).join(' vs ')}\n`;
+          if (issue.location1) report += `- **First at**: ${issue.location1}\n`;
+          if (issue.location2) report += `- **Also at**: ${issue.location2}\n`;
+        }
         report += `\n`;
       }
     }
