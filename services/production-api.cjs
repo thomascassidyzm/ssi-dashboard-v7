@@ -3353,8 +3353,8 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
     const results = []
 
     for (const phrase of demoPhrases) {
-      // Find audio by text
-      const audio = await supabaseClient.getAudioByText(courseCode, phrase.text, phrase.role)
+      // Find audio by text (language is 'cym' for Welsh)
+      const audio = await supabaseClient.findCourseAudio(courseCode, phrase.text, 'cym', phrase.role)
 
       if (audio) {
         // Get signed URL
