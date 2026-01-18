@@ -81,8 +81,9 @@ function isBullshitComponent(knownText) {
 }
 
 class CourseAuditor {
-  constructor(courseCode) {
+  constructor(courseCode, options = {}) {
     this.courseCode = courseCode;
+    this.seedRange = options.seedRange || null; // {min, max}
     this.issues = {
       critical: [],
       high: [],
@@ -110,33 +111,39 @@ class CourseAuditor {
     }
     this.course = course;
 
-    // Get seeds
-    const { data: seeds } = await supabase
+    // Get seeds (with optional range filter)
+    let seedQuery = supabase
       .from('course_seeds')
       .select('*')
-      .eq('course_code', this.courseCode)
-      .order('seed_number');
+      .eq('course_code', this.courseCode);
+    if (this.seedRange) {
+      seedQuery = seedQuery.gte('seed_number', this.seedRange.min).lte('seed_number', this.seedRange.max);
+    }
+    const { data: seeds } = await seedQuery.order('seed_number');
     this.seeds = seeds || [];
     this.stats.seeds = this.seeds.length;
 
-    // Get LEGOs
-    const { data: legos } = await supabase
+    // Get LEGOs (with optional range filter)
+    let legoQuery = supabase
       .from('course_legos')
       .select('*')
-      .eq('course_code', this.courseCode)
-      .order('seed_number')
-      .order('lego_index');
+      .eq('course_code', this.courseCode);
+    if (this.seedRange) {
+      legoQuery = legoQuery.gte('seed_number', this.seedRange.min).lte('seed_number', this.seedRange.max);
+    }
+    const { data: legos } = await legoQuery.order('seed_number').order('lego_index');
     this.legos = legos || [];
     this.stats.legos = this.legos.length;
 
-    // Get practice phrases
-    const { data: phrases } = await supabase
+    // Get practice phrases (with optional range filter)
+    let phraseQuery = supabase
       .from('course_practice_phrases')
       .select('*')
-      .eq('course_code', this.courseCode)
-      .order('seed_number')
-      .order('lego_index')
-      .order('position');
+      .eq('course_code', this.courseCode);
+    if (this.seedRange) {
+      phraseQuery = phraseQuery.gte('seed_number', this.seedRange.min).lte('seed_number', this.seedRange.max);
+    }
+    const { data: phrases } = await phraseQuery.order('seed_number').order('lego_index').order('position');
     this.phrases = phrases || [];
     this.stats.phrases = this.phrases.length;
 
@@ -551,7 +558,9 @@ class CourseAuditor {
 
   generateReport() {
     const totalIssues = this.issues.critical.length + this.issues.high.length + this.issues.medium.length;
-    const score = Math.max(0, 100 - (this.issues.critical.length * 5) - (this.issues.high.length * 2) - (this.issues.medium.length * 1));
+    // Score relative to course size (issues per 100 phrases)
+    const issueRate = (this.issues.critical.length * 5 + this.issues.high.length * 2 + this.issues.medium.length * 0.5) / Math.max(1, this.stats.phrases / 100);
+    const score = Math.max(0, Math.round(100 - issueRate * 5));
 
     let report = `# Course Audit Report: ${this.courseCode}\n\n`;
     report += `Generated: ${new Date().toISOString()}\n`;
@@ -638,13 +647,36 @@ class CourseAuditor {
   }
 }
 
+// Parse command line arguments
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const options = {};
+
+  let i = 0;
+  while (i < args.length) {
+    if (args[i] === '--seed-range' && args[i + 1]) {
+      const [min, max] = args[i + 1].split('-').map(Number);
+      options.seedRange = { min, max };
+      i += 2;
+    } else if (!args[i].startsWith('--')) {
+      options.courseCode = args[i];
+      i++;
+    } else {
+      i++;
+    }
+  }
+  return options;
+}
+
 // Main
 async function main() {
-  const courseCode = process.argv[2];
+  const args = parseArgs();
+  const courseCode = args.courseCode;
 
   if (!courseCode) {
-    console.error('Usage: node scripts/course-audit.cjs <course_code>');
+    console.error('Usage: node scripts/course-audit.cjs <course_code> [options]');
     console.error('Example: node scripts/course-audit.cjs spa_for_eng');
+    console.error('         node scripts/course-audit.cjs spa_for_eng --seed-range 1-250');
     process.exit(1);
   }
 
@@ -654,7 +686,10 @@ async function main() {
   }
 
   try {
-    const auditor = new CourseAuditor(courseCode);
+    const auditor = new CourseAuditor(courseCode, { seedRange: args.seedRange });
+    if (args.seedRange) {
+      console.log(`Auditing seeds ${args.seedRange.min}-${args.seedRange.max}`);
+    }
     const report = await auditor.runAudit();
     console.log('\n' + report);
 
