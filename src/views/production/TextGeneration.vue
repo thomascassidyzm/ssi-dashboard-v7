@@ -483,32 +483,10 @@ async function stopBuilder() {
   }
 }
 
-async function resetBuilder() {
-  const courseCode = effectiveCourseCode.value
-  if (!courseCode) return
-
-  // Confirm before clearing database
-  if (!confirm(`This will delete all LEGOs and phrases for ${courseCode}. Continue?`)) {
-    return
-  }
-
-  try {
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/course/${courseCode}`, {
-      method: 'DELETE',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (response.ok) {
-      addEvent(`Cleared LEGOs and phrases for ${courseCode}`)
-    } else {
-      addEvent(`Failed to clear database: ${response.statusText}`)
-    }
-  } catch (err) {
-    addEvent(`Error clearing database: ${err.message}`)
-  }
-
-  // Reset local state
+function resetBuilder() {
+  // Just reset local UI state to unlock Start button
+  // Does NOT delete data from database
+  stopPolling()  // Stop polling so it doesn't immediately restore 'complete' status
   progress.value = {
     status: 'idle',
     currentSeed: 0,
@@ -516,7 +494,7 @@ async function resetBuilder() {
     legosInserted: 0,
     phrasesInserted: 0
   }
-  addEvent('Progress reset')
+  addEvent('UI reset - Start button unlocked (polling stopped)')
 }
 
 // Polling
