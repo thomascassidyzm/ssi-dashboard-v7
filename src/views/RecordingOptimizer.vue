@@ -111,6 +111,81 @@
             </div>
           </section>
 
+          <!-- Frankenstein Demo -->
+          <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
+            <div class="px-6 py-4 border-b border-violet-500/20">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🧟</span>
+                <div>
+                  <h2 class="text-lg font-semibold text-violet-300">Frankenstein Demo</h2>
+                  <p class="text-sm text-slate-400">How we build phrases from LEGO components</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-6">
+              <!-- Target phrase -->
+              <div class="text-center">
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Target Phrase (Seed 60)</p>
+                <p class="text-xl text-slate-100 font-medium">{{ frankensteinDemo.target.welsh }}</p>
+                <p class="text-sm text-slate-400 mt-1">"{{ frankensteinDemo.target.english }}"</p>
+              </div>
+
+              <!-- Build visualization -->
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from recorded phrases:</p>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                  <span v-for="(word, idx) in frankensteinDemo.buildOrder" :key="idx"
+                        :class="[
+                          'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all',
+                          word.sourceColor
+                        ]">
+                    {{ word.text }}
+                    <span class="text-xs opacity-60 ml-1">S{{ word.from }}</span>
+                  </span>
+                </div>
+
+                <!-- Source phrases -->
+                <div class="space-y-3 mt-6">
+                  <div v-for="source in frankensteinDemo.sources" :key="source.seed"
+                       :class="['p-3 rounded-lg border', source.borderClass]">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <span :class="['text-xs font-semibold uppercase tracking-wider', source.textClass]">
+                          Seed {{ source.seed }}
+                        </span>
+                        <p class="text-sm text-slate-200 mt-1">{{ source.welsh }}</p>
+                        <p class="text-xs text-slate-500">"{{ source.english }}"</p>
+                      </div>
+                      <div class="flex flex-wrap gap-1 ml-4">
+                        <span v-for="lego in source.provides" :key="lego"
+                              :class="['text-xs px-2 py-0.5 rounded', source.badgeClass]">
+                          {{ lego }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key insight -->
+              <div class="bg-gradient-to-r from-violet-500/10 to-emerald-500/10 rounded-lg p-4 border border-violet-500/20">
+                <div class="flex items-start gap-3">
+                  <span class="text-xl">💡</span>
+                  <div>
+                    <p class="text-sm text-slate-200 font-medium">The Magic</p>
+                    <p class="text-sm text-slate-400 mt-1">
+                      By recording just <span class="text-emerald-400 font-semibold">{{ totalRecordings }} phrases</span>,
+                      we can synthesize audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
+                      That's a <span class="text-amber-400 font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <!-- Recording Script Preview -->
           <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
@@ -331,6 +406,53 @@ const totalCoverage = computed(() => stats.value.coveragePercent || 0)
 
 // Flagged phrases (to be fetged from flags system)
 const flaggedPhrases = ref([])
+
+// Frankenstein demo data - showing how Seed 60 is built from Seeds 1, 6, and 11
+const frankensteinDemo = {
+  target: {
+    seed: 60,
+    welsh: "dw i ddim isio siarad Cymraeg rŵan",
+    english: "I don't want to speak Welsh now"
+  },
+  buildOrder: [
+    { text: 'dw', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+    { text: 'i', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+    { text: 'ddim', from: 6, sourceColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300' },
+    { text: 'isio', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+    { text: 'siarad', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+    { text: 'Cymraeg', from: 1, sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+    { text: 'rŵan', from: 11, sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
+  ],
+  sources: [
+    {
+      seed: 1,
+      welsh: "dw i isio siarad Cymraeg",
+      english: "I want to speak Welsh",
+      provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
+      borderClass: 'border-emerald-500/30 bg-emerald-500/5',
+      textClass: 'text-emerald-400',
+      badgeClass: 'bg-emerald-500/20 text-emerald-300'
+    },
+    {
+      seed: 6,
+      welsh: "fedra i ddim cofio sut i siarad Cymraeg",
+      english: "I can't remember how to speak Welsh",
+      provides: ['ddim'],
+      borderClass: 'border-amber-500/30 bg-amber-500/5',
+      textClass: 'text-amber-400',
+      badgeClass: 'bg-amber-500/20 text-amber-300'
+    },
+    {
+      seed: 11,
+      welsh: "ond well i mi ymarfer siarad Cymraeg rŵan",
+      english: "but I'd better practice speaking Welsh now",
+      provides: ['rŵan'],
+      borderClass: 'border-violet-500/30 bg-violet-500/5',
+      textClass: 'text-violet-400',
+      badgeClass: 'bg-violet-500/20 text-violet-300'
+    }
+  ]
+}
 
 // Fetch algorithm results from API
 async function runAlgorithm() {
