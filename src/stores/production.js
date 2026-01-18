@@ -650,13 +650,13 @@ export const useProductionStore = defineStore('production', () => {
   }
 
   // Audio Pipeline actions
-  async function startGeneration(courseCode) {
+  async function startGeneration(courseCode, options = {}) {
     try {
       const baseUrl = getApiBaseUrl()
       const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
         method: 'POST',
         headers: getApiHeaders(),
-        body: JSON.stringify({ approved: true })
+        body: JSON.stringify({ approved: true, options })
       })
 
       if (!response.ok) throw new Error('Failed to start generation')

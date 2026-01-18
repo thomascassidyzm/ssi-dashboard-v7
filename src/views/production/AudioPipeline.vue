@@ -477,6 +477,35 @@
             :estimated-time="estimatedTime"
           />
 
+          <!-- Concurrency Control -->
+          <div class="mt-4 flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-slate-700/30">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              <span class="text-sm text-slate-400">Concurrency</span>
+            </div>
+            <input
+              type="range"
+              :value="concurrency"
+              @input="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
+              min="1"
+              max="20"
+              class="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+            />
+            <div class="flex items-center gap-2">
+              <input
+                type="number"
+                :value="concurrency"
+                @change="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
+                min="1"
+                max="20"
+                class="w-14 px-2 py-1 bg-slate-900/50 text-slate-100 text-center rounded border border-slate-600/50 text-sm"
+              />
+              <span class="text-xs text-slate-500">/ 20</span>
+            </div>
+          </div>
+
           <!-- Action Buttons -->
           <div class="mt-4 flex flex-wrap gap-3">
             <button
@@ -648,6 +677,9 @@ const loadingPlan = ref(false)
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
 
+// Concurrency control (1-20, stored in localStorage)
+const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '5', 10))
+
 // Voice config update key to trigger MissingAudio refresh
 const missingAudioKey = ref(0)
 
@@ -721,11 +753,17 @@ const canStartGeneration = computed(() =>
 const estimatedCost = computed(() => productionStore.costEstimate.estimated)
 const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime)
 
+// Concurrency update (save to localStorage)
+const updateConcurrency = (value: number) => {
+  concurrency.value = Math.max(1, Math.min(20, value))
+  localStorage.setItem('audio_concurrency', String(concurrency.value))
+}
+
 // Actions
 const startGeneration = async () => {
   startingGeneration.value = true
   try {
-    await productionStore.startGeneration(courseCode.value)
+    await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
   } finally {
     startingGeneration.value = false
   }

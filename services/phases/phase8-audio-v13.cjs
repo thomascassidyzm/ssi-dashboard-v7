@@ -143,6 +143,7 @@ async function masterAudio(audioBuffer) {
 
 const currentWork = {
   active: false,
+  cancelled: false,     // Flag to signal cancellation
   operation: null,      // 'generate' | 'regenerate-role' | 'regenerate-presentations'
   courseCode: null,
   role: null,
@@ -157,6 +158,7 @@ const currentWork = {
 
 function startWork(operation, courseCode, total, role = null) {
   currentWork.active = true
+  currentWork.cancelled = false  // Reset cancellation flag
   currentWork.operation = operation
   currentWork.courseCode = courseCode
   currentWork.role = role
@@ -168,6 +170,15 @@ function startWork(operation, courseCode, total, role = null) {
   currentWork.lastItem = null
   currentWork.errors = []
   logger.info(`[PROGRESS] Started ${operation} for ${courseCode}${role ? ` (${role})` : ''}: ${total} items`)
+}
+
+function cancelWork() {
+  if (currentWork.active) {
+    currentWork.cancelled = true
+    logger.info(`[PROGRESS] Cancellation requested for ${currentWork.operation} on ${currentWork.courseCode}`)
+    return true
+  }
+  return false
 }
 
 function updateWork(itemText, success = true, errorMsg = null) {
@@ -208,6 +219,60 @@ app.get('/health', (req, res) => {
 
 app.get('/status', (req, res) => {
   res.json({ ...currentWork })
+})
+
+// =============================================================================
+// CANCEL ENDPOINT - Stop current work
+// =============================================================================
+
+app.post('/cancel', (req, res) => {
+  if (!currentWork.active) {
+    return res.status(404).json({ error: 'No active job to cancel' })
+  }
+
+  const cancelled = cancelWork()
+  if (cancelled) {
+    res.json({
+      success: true,
+      message: 'Cancellation requested',
+      courseCode: currentWork.courseCode,
+      operation: currentWork.operation,
+      progress: {
+        current: currentWork.current,
+        total: currentWork.total,
+        success: currentWork.success,
+        failed: currentWork.failed
+      }
+    })
+  } else {
+    res.status(400).json({ error: 'Failed to cancel job' })
+  }
+})
+
+// Also support DELETE /cancel/:courseCode for backwards compatibility
+app.delete('/cancel/:courseCode', (req, res) => {
+  if (!currentWork.active) {
+    return res.status(404).json({ error: 'No active job to cancel' })
+  }
+
+  if (currentWork.courseCode !== req.params.courseCode) {
+    return res.status(400).json({
+      error: 'Course code mismatch',
+      activeJob: currentWork.courseCode,
+      requested: req.params.courseCode
+    })
+  }
+
+  const cancelled = cancelWork()
+  if (cancelled) {
+    res.json({
+      success: true,
+      message: 'Cancellation requested',
+      courseCode: currentWork.courseCode
+    })
+  } else {
+    res.status(400).json({ error: 'Failed to cancel job' })
+  }
 })
 
 // =============================================================================
@@ -376,7 +441,12 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = false, limit = 50000 } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency } = req.body  // High default for bulk generation
+
+    // Use requested concurrency if provided, clamped to 1-20, otherwise use env/default
+    const concurrencyToUse = requestedConcurrency
+      ? Math.max(1, Math.min(20, parseInt(requestedConcurrency, 10) || CONCURRENCY))
+      : CONCURRENCY
 
     // Get course with voice config
     const { data: course, error: courseError } = await supabase
@@ -503,7 +573,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     startWork('generate', courseCode, uniqueNeeded.length)
 
     // Process items in parallel with concurrency limit
-    logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${CONCURRENCY}`)
+    logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
     const results = { success: 0, failed: 0, errors: [] }
 
@@ -575,10 +645,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Process in parallel batches
-    for (let i = 0; i < uniqueNeeded.length; i += CONCURRENCY) {
-      const batch = uniqueNeeded.slice(i, i + CONCURRENCY)
-      const batchNum = Math.floor(i / CONCURRENCY) + 1
-      const totalBatches = Math.ceil(uniqueNeeded.length / CONCURRENCY)
+    for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
+      // Check for cancellation at the start of each batch
+      if (currentWork.cancelled) {
+        logger.info(`[PROGRESS] Cancelled after ${currentWork.current}/${currentWork.total} items`)
+        break
+      }
+
+      const batch = uniqueNeeded.slice(i, i + concurrencyToUse)
+      const batchNum = Math.floor(i / concurrencyToUse) + 1
+      const totalBatches = Math.ceil(uniqueNeeded.length / concurrencyToUse)
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
@@ -602,14 +678,16 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    const wasCancelled = currentWork.cancelled
     endWork()
 
     res.json({
-      status: 'completed',
+      status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
+      cancelled: wasCancelled,
       errors: results.errors.slice(0, 10)
     })
 
@@ -835,6 +913,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     // Process in parallel batches
     for (let i = 0; i < audioToRegenerate.length; i += CONCURRENCY) {
+      // Check for cancellation at the start of each batch
+      if (currentWork.cancelled) {
+        logger.info(`[PROGRESS] Cancelled after ${currentWork.current}/${currentWork.total} items`)
+        break
+      }
+
       const batch = audioToRegenerate.slice(i, i + CONCURRENCY)
       const batchNum = Math.floor(i / CONCURRENCY) + 1
       const totalBatches = Math.ceil(audioToRegenerate.length / CONCURRENCY)
@@ -884,16 +968,18 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`Incremented regen_count for ${regeneratedIds.length} flagged items`)
     }
 
+    const wasCancelled = currentWork.cancelled
     endWork()
 
     res.json({
-      status: 'completed',
+      status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       role,
       voiceId,
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
+      cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       regeneratedItems: regeneratedItems.slice(0, 50) // Return up to 50 for review
     })
@@ -1136,7 +1222,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       role: 'presentation',
       voice_id: presentationVoiceId,
       origin: 'tts',
-      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`,
+      lego_id: pres.lego_id  // Store directly - no regex parsing needed later
     }))
 
     // Bulk upsert - ignore conflicts (existing records stay as-is)
