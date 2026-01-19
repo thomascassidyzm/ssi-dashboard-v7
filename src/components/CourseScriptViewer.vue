@@ -252,19 +252,12 @@ export default {
       this.audioCache = new Map()
 
       try {
-        const response = await fetch(
-          `${baseURL}/api/courses/${this.courseCode}/script?startSeed=${this.startSeed}&endSeed=${this.endSeed}`,
-          { headers: { 'ngrok-skip-browser-warning': 'true' } }
-        )
+        // Query Supabase directly - no backend middleware needed
+        const { generateLearningScript } = await import('../services/supabase.js')
+        const result = await generateLearningScript(this.courseCode, this.startSeed, this.endSeed)
 
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}))
-          throw new Error(errorData.error || `HTTP ${response.status}`)
-        }
-
-        const data = await response.json()
-        this.scriptItems = data.items || []
-        console.log(`[ScriptViewer] Loaded ${this.scriptItems.length} items`)
+        this.scriptItems = result.items || []
+        console.log(`[ScriptViewer] Loaded ${this.scriptItems.length} items (direct from Supabase)`)
 
         if (this.scriptItems.length > 0) {
           this.preloadBatch(0)
