@@ -8911,6 +8911,8 @@ app.post('/api/audio/flag-sample', async (req, res) => {
  * - For each LEGO introduced: intro → debut → up to 7 debut phrases (ordered by syllables)
  * - Interleaved with Fibonacci spaced repetition reviews (gentle ramping)
  * - 0-2 consolidation eternals at end of round (ramped based on round number)
+ *
+ * DATA SOURCE: Supabase (database-only architecture)
  */
 app.get('/api/courses/:courseCode/script', async (req, res) => {
   const { courseCode } = req.params;
@@ -8918,45 +8920,12 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
   const endSeed = parseInt(req.query.endSeed) || 10;
 
   try {
-    // Load lego_baskets.json
-    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
-
-    if (!await fs.pathExists(basketsPath)) {
-      return res.status(404).json({ error: 'LEGO baskets not found for course' });
+    // Initialize Supabase client
+    const supabaseClient = require('../supabase-client.cjs');
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' });
     }
-
-    const baskets = await fs.readJson(basketsPath);
-
-    // Parse languages from courseCode (e.g., 'cmn_for_eng' -> target='cmn', known='eng')
-    const langParts = courseCode.split('_for_');
-    const targetLang = langParts[0] || 'spa';  // e.g., 'cmn', 'spa'
-    const knownLang = langParts[1] || 'eng';   // e.g., 'eng'
-
-    // Use UUID service to generate deterministic UUIDs from text|lang|role|cadence
-    // Audio files in S3 are named by UUID - we generate the same UUID to find them
-    const uuidService = require('../../services/uuid-service.cjs');
-
-    // Helper to get audio IDs for a phrase
-    // UUIDs are deterministic: same text+lang+role+cadence = same UUID
-    // Text must be lowercase, targets use 'slow' cadence
-    const getAudioIds = (knownText, targetText) => {
-      let sourceId = null;
-      let target1Id = null;
-      let target2Id = null;
-
-      // Source audio (English prompt) - lowercase, natural cadence
-      if (knownText) {
-        sourceId = uuidService.generateLegacyUUID(knownText.toLowerCase(), knownLang, 'source', 'natural');
-      }
-
-      // Target audio (target language) - lowercase, slow cadence
-      if (targetText) {
-        target1Id = uuidService.generateLegacyUUID(targetText.toLowerCase(), targetLang, 'target1', 'slow');
-        target2Id = uuidService.generateLegacyUUID(targetText.toLowerCase(), targetLang, 'target2', 'slow');
-      }
-
-      return { sourceId, target1Id, target2Id };
-    };
+    const supabase = supabaseClient.getClient();
 
     // Fibonacci sequence for spaced repetition
     const FIBONACCI = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
@@ -8994,28 +8963,152 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
       return vowelClusters ? vowelClusters.length : 1;
     };
 
-    // Organize baskets by seed
-    const basketsBySeed = new Map();
-    for (const [basketKey, basket] of Object.entries(baskets.baskets || {})) {
-      const seedMatch = basketKey.match(/^(S\d{4})/);
-      if (!seedMatch) continue;
+    // ========================================
+    // QUERY SUPABASE FOR ALL DATA
+    // ========================================
 
-      const seedId = seedMatch[1];
-      const seedNum = parseInt(seedId.replace('S', ''));
+    // 1. Query LEGOs
+    const { data: legosData, error: legosError } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text, type, is_new')
+      .eq('course_code', courseCode)
+      .gte('seed_number', startSeed)
+      .lte('seed_number', endSeed)
+      .order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true });
 
-      if (seedNum < startSeed || seedNum > endSeed) continue;
+    if (legosError) {
+      console.error('[Script] LEGOs query error:', legosError);
+      return res.status(500).json({ error: 'Failed to query LEGOs' });
+    }
 
-      if (!basketsBySeed.has(seedNum)) {
-        basketsBySeed.set(seedNum, []);
+    // 2. Query practice phrases (using phrase_role to distinguish types)
+    const { data: phrasesData, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, known_text, target_text, phrase_role, target_syllable_count, position')
+      .eq('course_code', courseCode)
+      .gte('seed_number', startSeed)
+      .lte('seed_number', endSeed)
+      .order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true })
+      .order('position', { ascending: true });
+
+    if (phrasesError) {
+      console.error('[Script] Phrases query error:', phrasesError);
+      return res.status(500).json({ error: 'Failed to query phrases' });
+    }
+
+    // 3. Query practice_cycles view to get audio UUIDs
+    const { data: cyclesData, error: cyclesError } = await supabase
+      .from('practice_cycles')
+      .select('seed_number, lego_index, known_text, target_text, phrase_role, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .eq('course_code', courseCode)
+      .gte('seed_number', startSeed)
+      .lte('seed_number', endSeed);
+
+    if (cyclesError) {
+      console.error('[Script] Cycles query error:', cyclesError);
+      // Non-fatal - we can fall back to no audio
+    }
+
+    // 4. Query lego_cycles for LEGO debut audio
+    const { data: legoCyclesData, error: legoCyclesError } = await supabase
+      .from('lego_cycles')
+      .select('seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid')
+      .eq('course_code', courseCode)
+      .gte('seed_number', startSeed)
+      .lte('seed_number', endSeed);
+
+    if (legoCyclesError) {
+      console.error('[Script] LEGO cycles query error:', legoCyclesError);
+    }
+
+    // 5. Query lego_introductions for presentation audio
+    const { data: introsData, error: introsError } = await supabase
+      .from('lego_introductions')
+      .select('lego_id, presentation_audio_id')
+      .eq('course_code', courseCode);
+
+    if (introsError) {
+      console.error('[Script] Intros query error:', introsError);
+    }
+
+    // Build lookup maps
+    // Audio lookup: "seedNum:legoIdx:known:target" -> { known_audio_uuid, target1_audio_uuid, target2_audio_uuid }
+    const audioMap = new Map();
+    for (const cycle of (cyclesData || [])) {
+      const key = `${cycle.seed_number}:${cycle.lego_index}:${(cycle.known_text || '').toLowerCase()}:${(cycle.target_text || '').toLowerCase()}`;
+      audioMap.set(key, {
+        known_audio_uuid: cycle.known_audio_uuid,
+        target1_audio_uuid: cycle.target1_audio_uuid,
+        target2_audio_uuid: cycle.target2_audio_uuid
+      });
+    }
+
+    // LEGO audio lookup: "seedNum:legoIdx" -> audio UUIDs
+    const legoAudioMap = new Map();
+    for (const lc of (legoCyclesData || [])) {
+      const key = `${lc.seed_number}:${lc.lego_index}`;
+      legoAudioMap.set(key, {
+        known_audio_uuid: lc.known_audio_uuid,
+        target1_audio_uuid: lc.target1_audio_uuid,
+        target2_audio_uuid: lc.target2_audio_uuid
+      });
+    }
+
+    // Intro audio lookup: legoId -> presentation_audio_id
+    const introAudioMap = new Map();
+    for (const intro of (introsData || [])) {
+      introAudioMap.set(intro.lego_id, intro.presentation_audio_id);
+    }
+
+    // Group phrases by LEGO: "seedNum:legoIdx" -> { practice: [], eternal: [] }
+    const phrasesByLego = new Map();
+    for (const phrase of (phrasesData || [])) {
+      const key = `${phrase.seed_number}:${phrase.lego_index}`;
+      if (!phrasesByLego.has(key)) {
+        phrasesByLego.set(key, { practice: [], eternal: [] });
       }
-      basketsBySeed.get(seedNum).push({ basketKey, basket, seedId });
+      const group = phrasesByLego.get(key);
+
+      // v2.0: NO COMPONENTS - skip them entirely
+      if (phrase.phrase_role === 'component') continue;
+
+      if (phrase.phrase_role === 'practice') {
+        group.practice.push(phrase);
+      } else if (phrase.phrase_role === 'eternal_eligible') {
+        group.eternal.push(phrase);
+      }
+    }
+
+    // Sort practice phrases by syllable count within each LEGO
+    for (const [key, group] of phrasesByLego.entries()) {
+      group.practice.sort((a, b) =>
+        (a.target_syllable_count || countTargetSyllables(a.target_text)) -
+        (b.target_syllable_count || countTargetSyllables(b.target_text))
+      );
+    }
+
+    // Helper to get audio for a phrase
+    const getAudioForPhrase = (seedNum, legoIdx, knownText, targetText) => {
+      const key = `${seedNum}:${legoIdx}:${(knownText || '').toLowerCase()}:${(targetText || '').toLowerCase()}`;
+      return audioMap.get(key) || { known_audio_uuid: null, target1_audio_uuid: null, target2_audio_uuid: null };
+    };
+
+    // Organize LEGOs by seed
+    const legosBySeed = new Map();
+    for (const lego of (legosData || [])) {
+      if (!legosBySeed.has(lego.seed_number)) {
+        legosBySeed.set(lego.seed_number, []);
+      }
+      legosBySeed.get(lego.seed_number).push(lego);
     }
 
     // Sort seeds
-    const sortedSeedNums = Array.from(basketsBySeed.keys()).sort((a, b) => a - b);
+    const sortedSeedNums = Array.from(legosBySeed.keys()).sort((a, b) => a - b);
 
     // Track LEGO state for spaced repetition
-    // legoKey -> { fibPosition, lastRound, reviewCount, eternalPhrases, seedId, lego }
+    // legoKey -> { fibPosition, lastRound, reviewCount, eternalPhrases, seedNum, lego }
     const legoState = new Map();
 
     // Build the script
@@ -9025,118 +9118,108 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
     // Process each seed in order
     for (const seedNum of sortedSeedNums) {
-      const seedBaskets = basketsBySeed.get(seedNum);
+      const seedLegos = legosBySeed.get(seedNum);
 
-      // Sort LEGOs within seed by their key (L01, L02, etc.)
-      seedBaskets.sort((a, b) => a.basketKey.localeCompare(b.basketKey));
+      // Sort LEGOs within seed by lego_index
+      seedLegos.sort((a, b) => a.lego_index - b.lego_index);
 
-      for (const { basketKey, basket, seedId } of seedBaskets) {
+      for (const lego of seedLegos) {
         roundNumber++;  // Each LEGO is a new round
-        const lego = basket.lego;
-        const allPhrases = basket.practice_phrases || [];
+        const legoKey = `S${String(seedNum).padStart(4, '0')}L${String(lego.lego_index).padStart(2, '0')}`;
+        const seedId = `S${String(seedNum).padStart(4, '0')}`;
+        const legoNum = String(lego.lego_index).padStart(2, '0');
 
-        // v2.0: NO COMPONENTS - filter them out entirely
-        // Separate debut and practice phrases only
-        const debutPhrase = allPhrases.find(p => p.is_debut === true);
-        const practiceOnly = allPhrases.filter(p => !p.is_component && !p.is_debut);
+        // Get phrases for this LEGO
+        const phraseKey = `${seedNum}:${lego.lego_index}`;
+        const phrases = phrasesByLego.get(phraseKey) || { practice: [], eternal: [] };
 
-        // Get the LEGO's target text for filtering
-        const legoTarget = (debutPhrase?.target || lego?.target || '').toLowerCase().trim();
+        // Practice phrases are already sorted by syllable count in phrasesByLego
+        const practicePhrases = phrases.practice;
+        const eternalPhrases = phrases.eternal;
 
-        // CRITICAL: Debut phrases MUST CONTAIN the LEGO target text
-        // Filter out any phrases that are just components (don't contain the full LEGO)
-        const phrasesContainingLego = practiceOnly.filter(p => {
-          const phraseTarget = (p.target || '').toLowerCase();
-          return phraseTarget.includes(legoTarget);
-        });
+        // Get LEGO audio
+        const legoAudio = legoAudioMap.get(phraseKey) || {};
 
-        // Sort by target syllable count (short → long) for debuts
-        const sortedPractice = [...phrasesContainingLego].sort((a, b) =>
-          countTargetSyllables(a.target) - countTargetSyllables(b.target)
-        );
+        // Get intro audio
+        const presentationAudioId = introAudioMap.get(legoKey);
 
         // === INTRODUCE NEW LEGO (Round N) ===
 
-        // Extract lego number from basketKey (e.g., "S0001L01" -> "01")
-        const legoNum = basketKey.match(/L(\d+)/)?.[1] || '';
-
-        // Phase 1: Intro (presentation audio placeholder)
-        // Note: Actual presentation audio comes from lego_introductions table
+        // Phase 1: Intro (presentation audio)
         cycleNum++;
         items.push({
-          uuid: `${basketKey}_intro_${cycleNum}`,
+          uuid: `${legoKey}_intro_${cycleNum}`,
           cycleNum,
           roundNumber,
           seedId,
-          legoKey: basketKey,
+          legoKey,
           seedCode: seedId,
           legoCode: legoNum,
           type: 'intro',
-          knownText: debutPhrase?.known || lego?.known || '',
-          targetText: debutPhrase?.target || lego?.target || '',
-          hasAudio: false,  // Presentation audio resolved separately
+          knownText: lego.known_text,
+          targetText: lego.target_text,
+          presentationAudioId,
+          hasAudio: !!presentationAudioId,
           isNew: true
         });
 
         // Phase 2: LEGO Debut (the LEGO itself)
-        if (debutPhrase) {
-          cycleNum++;
-          const audio = getAudioIds(debutPhrase.known, debutPhrase.target);
-          items.push({
-            uuid: `${basketKey}_debut_${cycleNum}`,
-            cycleNum,
-            roundNumber,
-            seedId,
-            legoKey: basketKey,
-            seedCode: seedId,
-            legoCode: legoNum,
-            type: 'debut',
-            knownText: debutPhrase.known,
-            targetText: debutPhrase.target,
-            sourceId: audio.sourceId,
-            target1Id: audio.target1Id,
-            target2Id: audio.target2Id,
-            hasAudio: !!(audio.sourceId && audio.target1Id),
-            isNew: true
-          });
-        }
+        cycleNum++;
+        items.push({
+          uuid: `${legoKey}_debut_${cycleNum}`,
+          cycleNum,
+          roundNumber,
+          seedId,
+          legoKey,
+          seedCode: seedId,
+          legoCode: legoNum,
+          type: 'debut',
+          knownText: lego.known_text,
+          targetText: lego.target_text,
+          sourceId: legoAudio.known_audio_uuid,
+          target1Id: legoAudio.target1_audio_uuid,
+          target2Id: legoAudio.target2_audio_uuid,
+          hasAudio: !!(legoAudio.known_audio_uuid && legoAudio.target1_audio_uuid),
+          isNew: true
+        });
 
         // Phase 3: Up to 7 debut phrases (ordered by syllables, short → long)
-        const debutPractice = sortedPractice.slice(0, INTRO_PHRASES);
+        const debutPractice = practicePhrases.slice(0, INTRO_PHRASES);
         for (const phrase of debutPractice) {
           cycleNum++;
-          const audio = getAudioIds(phrase.known, phrase.target);
+          const audio = getAudioForPhrase(seedNum, lego.lego_index, phrase.known_text, phrase.target_text);
           items.push({
-            uuid: `${basketKey}_debut_phrase_${cycleNum}`,
+            uuid: `${legoKey}_debut_phrase_${cycleNum}`,
             cycleNum,
             roundNumber,
             seedId,
-            legoKey: basketKey,
+            legoKey,
             seedCode: seedId,
             legoCode: legoNum,
             type: 'debut_phrase',
-            knownText: phrase.known,
-            targetText: phrase.target,
-            sourceId: audio.sourceId,
-            target1Id: audio.target1Id,
-            target2Id: audio.target2Id,
-            hasAudio: !!(audio.sourceId && audio.target1Id),
+            knownText: phrase.known_text,
+            targetText: phrase.target_text,
+            sourceId: audio.known_audio_uuid,
+            target1Id: audio.target1_audio_uuid,
+            target2Id: audio.target2_audio_uuid,
+            hasAudio: !!(audio.known_audio_uuid && audio.target1_audio_uuid),
             isNew: true,
-            syllableCount: countTargetSyllables(phrase.target)
+            syllableCount: phrase.target_syllable_count || countTargetSyllables(phrase.target_text)
           });
         }
 
         // Initialize this LEGO for future spaced rep
-        // Eternal phrases = all practice phrases after the first 7
-        legoState.set(basketKey, {
+        // Eternal phrases from database + overflow practice phrases
+        const eternalPool = [...eternalPhrases, ...practicePhrases.slice(INTRO_PHRASES)];
+        legoState.set(legoKey, {
           fibPosition: 0,
           lastRound: roundNumber,
           reviewCount: 0,
-          eternalPhrases: sortedPractice.slice(INTRO_PHRASES),  // Remaining phrases for eternals
-          allPhrases: sortedPractice,  // Keep all for consolidation if needed
-          seedId,
-          lego,
-          debutPhrase
+          eternalPhrases: eternalPool,
+          allPhrases: practicePhrases,
+          seedNum,
+          legoIndex: lego.lego_index,
+          lego
         });
 
         // === Phase 4: SPACED REPETITION REVIEWS (Fibonacci) ===
@@ -9152,7 +9235,7 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
           // Find the LEGO from that round
           for (const [prevKey, state] of legoState.entries()) {
-            if (prevKey === basketKey) continue;  // Skip current LEGO
+            if (prevKey === legoKey) continue;  // Skip current LEGO
             if (seenLegos.has(prevKey)) continue;  // Already added
 
             if (state.lastRound === reviewRound ||
@@ -9187,25 +9270,26 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
           // Extract lego number from reviewKey
           const reviewLegoNum = reviewKey.match(/L(\d+)/)?.[1] || '';
+          const reviewSeedId = reviewKey.match(/S\d+/)?.[0] || '';
 
           for (const phrase of reviewPhrases) {
             cycleNum++;
-            const audio = getAudioIds(phrase.known, phrase.target);
+            const audio = getAudioForPhrase(state.seedNum, state.legoIndex, phrase.known_text, phrase.target_text);
             items.push({
               uuid: `${reviewKey}_spaced_rep_${cycleNum}`,
               cycleNum,
               roundNumber,
-              seedId: state.seedId,
+              seedId: reviewSeedId,
               legoKey: reviewKey,
-              seedCode: state.seedId,
+              seedCode: reviewSeedId,
               legoCode: reviewLegoNum,
               type: 'spaced_rep',
-              knownText: phrase.known,
-              targetText: phrase.target,
-              sourceId: audio.sourceId,
-              target1Id: audio.target1Id,
-              target2Id: audio.target2Id,
-              hasAudio: !!(audio.sourceId && audio.target1Id),
+              knownText: phrase.known_text,
+              targetText: phrase.target_text,
+              sourceId: audio.known_audio_uuid,
+              target1Id: audio.target1_audio_uuid,
+              target2Id: audio.target2_audio_uuid,
+              hasAudio: !!(audio.known_audio_uuid && audio.target1_audio_uuid),
               isNew: false,
               fibPosition,
               reviewOf: state.lastRound
@@ -9224,10 +9308,10 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
         // === Phase 5: CONSOLIDATION ETERNALS (end of round) ===
         // v2.0: Gentle ramping - 0 early, 1 mid, 2 late
         const consolidationCount = getConsolidationEternalCount(roundNumber);
-        const currentState = legoState.get(basketKey);
+        const currentState = legoState.get(legoKey);
 
         if (consolidationCount > 0 && currentState) {
-          // Use eternal phrases if available, otherwise use remaining practice phrases
+          // Use eternal phrases if available
           const consolidationPool = currentState.eternalPhrases.length > 0
             ? currentState.eternalPhrases
             : currentState.allPhrases.slice(INTRO_PHRASES);
@@ -9236,22 +9320,22 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
           for (const phrase of consolidationPhrases) {
             cycleNum++;
-            const audio = getAudioIds(phrase.known, phrase.target);
+            const audio = getAudioForPhrase(seedNum, lego.lego_index, phrase.known_text, phrase.target_text);
             items.push({
-              uuid: `${basketKey}_consolidation_${cycleNum}`,
+              uuid: `${legoKey}_consolidation_${cycleNum}`,
               cycleNum,
               roundNumber,
               seedId,
-              legoKey: basketKey,
+              legoKey,
               seedCode: seedId,
               legoCode: legoNum,
               type: 'consolidation',
-              knownText: phrase.known,
-              targetText: phrase.target,
-              sourceId: audio.sourceId,
-              target1Id: audio.target1Id,
-              target2Id: audio.target2Id,
-              hasAudio: !!(audio.sourceId && audio.target1Id),
+              knownText: phrase.known_text,
+              targetText: phrase.target_text,
+              sourceId: audio.known_audio_uuid,
+              target1Id: audio.target1_audio_uuid,
+              target2Id: audio.target2_audio_uuid,
+              hasAudio: !!(audio.known_audio_uuid && audio.target1_audio_uuid),
               isNew: true
             });
           }
@@ -9259,7 +9343,7 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
       }
     }
 
-    console.log(`[Script v2.0] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed} (${cycleNum} cycles, ${roundNumber} rounds)`);
+    console.log(`[Script v2.0] Generated ${items.length} items for ${courseCode} seeds ${startSeed}-${endSeed} (${cycleNum} cycles, ${roundNumber} rounds) [Supabase]`);
 
     res.json({
       courseCode,
