@@ -114,26 +114,11 @@
           <!-- LEGO Audio Synthesis Demo -->
           <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
             <div class="px-6 py-4 border-b border-violet-500/20">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="text-2xl">🧬</span>
-                  <div>
-                    <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
-                    <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
-                  </div>
-                </div>
-                <!-- Example selector -->
-                <div class="flex gap-1">
-                  <button v-for="(example, idx) in synthesizedExamples" :key="example.seed"
-                          @click="selectedExampleIndex = idx"
-                          :class="[
-                            'px-3 py-1.5 text-xs font-medium rounded transition-colors',
-                            selectedExampleIndex === idx
-                              ? 'bg-violet-600 text-white'
-                              : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
-                          ]">
-                    Example {{ idx + 1 }}
-                  </button>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🧬</span>
+                <div>
+                  <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
+                  <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
                 </div>
               </div>
             </div>
@@ -468,58 +453,27 @@ const sourceStyles = {
   11: { sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
 }
 
-// Multiple synthesized examples demonstrating LEGO audio splicing
-const synthesizedExamples = [
-  {
-    seed: 60,
-    welsh: "dw i ddim isio siarad Cymraeg rŵan",
-    english: "I don't want to speak Welsh now",
-    buildOrder: [
-      { text: 'dw', from: 1 },
-      { text: 'i', from: 1 },
-      { text: 'ddim', from: 6 },
-      { text: 'isio', from: 1 },
-      { text: 'siarad', from: 1 },
-      { text: 'Cymraeg', from: 1 },
-      { text: 'rŵan', from: 11 }
-    ]
-  },
-  {
-    seed: 61,
-    welsh: "fedra i ddim siarad Cymraeg",
-    english: "I can't speak Welsh",
-    buildOrder: [
-      { text: 'fedra', from: 6 },
-      { text: 'i', from: 6 },
-      { text: 'ddim', from: 6 },
-      { text: 'siarad', from: 6 },
-      { text: 'Cymraeg', from: 6 }
-    ]
-  },
-  {
-    seed: 62,
-    welsh: "dw i isio ymarfer siarad Cymraeg",
-    english: "I want to practice speaking Welsh",
-    buildOrder: [
-      { text: 'dw', from: 1 },
-      { text: 'i', from: 1 },
-      { text: 'isio', from: 1 },
-      { text: 'ymarfer', from: 11 },
-      { text: 'siarad', from: 1 },
-      { text: 'Cymraeg', from: 1 }
-    ]
-  }
-]
+// Synthesized example demonstrating LEGO audio splicing
+const synthesizedExample = {
+  seed: 60,
+  welsh: "dw i ddim isio siarad Cymraeg rŵan",
+  english: "I don't want to speak Welsh now",
+  buildOrder: [
+    { text: 'dw', from: 1 },
+    { text: 'i', from: 1 },
+    { text: 'ddim', from: 6 },
+    { text: 'isio', from: 1 },
+    { text: 'siarad', from: 1 },
+    { text: 'Cymraeg', from: 1 },
+    { text: 'rŵan', from: 11 }
+  ]
+}
 
-// Selected synthesized example index
-const selectedExampleIndex = ref(0)
-
-// Computed: current synthesized example with styling applied
+// Computed: synthesized example with styling applied
 const currentExample = computed(() => {
-  const example = synthesizedExamples[selectedExampleIndex.value]
   return {
-    ...example,
-    buildOrder: example.buildOrder.map(word => ({
+    ...synthesizedExample,
+    buildOrder: synthesizedExample.buildOrder.map(word => ({
       ...word,
       sourceColor: sourceStyles[word.from].sourceColor
     }))
