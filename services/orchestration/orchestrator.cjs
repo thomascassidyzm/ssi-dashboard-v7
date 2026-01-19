@@ -9040,8 +9040,18 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
         const debutPhrase = allPhrases.find(p => p.is_debut === true);
         const practiceOnly = allPhrases.filter(p => !p.is_component && !p.is_debut);
 
-        // Sort practice phrases by target syllable count (short → long) for debuts
-        const sortedPractice = [...practiceOnly].sort((a, b) =>
+        // Get the LEGO's target text for filtering
+        const legoTarget = (debutPhrase?.target || lego?.target || '').toLowerCase().trim();
+
+        // CRITICAL: Debut phrases MUST CONTAIN the LEGO target text
+        // Filter out any phrases that are just components (don't contain the full LEGO)
+        const phrasesContainingLego = practiceOnly.filter(p => {
+          const phraseTarget = (p.target || '').toLowerCase();
+          return phraseTarget.includes(legoTarget);
+        });
+
+        // Sort by target syllable count (short → long) for debuts
+        const sortedPractice = [...phrasesContainingLego].sort((a, b) =>
           countTargetSyllables(a.target) - countTargetSyllables(b.target)
         );
 
