@@ -377,6 +377,26 @@ async function planHandler(req, res) {
       }
     }
 
+    // Also include presentation audio that needs generation (pending/ s3_key)
+    const { data: pendingPresentations } = await supabase
+      .from('course_audio')
+      .select('id, text, language')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .like('s3_key', 'pending/%')
+
+    if (pendingPresentations?.length > 0) {
+      for (const pres of pendingPresentations) {
+        needed.push({
+          text: pres.text,
+          language: pres.language || course.known_lang,
+          role: 'presentation',
+          existingId: pres.id  // Track existing record ID for update
+        })
+      }
+      logger.info(`Including ${pendingPresentations.length} pending presentation audio items`)
+    }
+
     // Deduplicate
     const uniqueNeeded = [...new Map(
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
@@ -402,7 +422,8 @@ async function planHandler(req, res) {
       breakdown: {
         known: uniqueNeeded.filter(n => n.role === 'known').length,
         target1: uniqueNeeded.filter(n => n.role === 'target1').length,
-        target2: uniqueNeeded.filter(n => n.role === 'target2').length
+        target2: uniqueNeeded.filter(n => n.role === 'target2').length,
+        presentation: uniqueNeeded.filter(n => n.role === 'presentation').length
       }
     })
   } catch (error) {
@@ -553,6 +574,29 @@ app.post('/generate/:courseCode', async (req, res) => {
             speed: getSpeedForRole(role)
           })
         }
+      }
+    }
+
+    // Also include presentation audio that needs generation (pending/ s3_key)
+    const { data: pendingPresentations } = await supabase
+      .from('course_audio')
+      .select('id, text, language, voice_id')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .like('s3_key', 'pending/%')
+
+    if (pendingPresentations?.length > 0) {
+      logger.info(`Found ${pendingPresentations.length} pending presentation audio items`)
+      for (const pres of pendingPresentations) {
+        // Use presentation voice from config, or fallback to known voice
+        const presVoice = getVoiceForRole('presentation') || pres.voice_id || getVoiceForRole('known')
+        needed.push({
+          text: pres.text,
+          language: pres.language || course.known_lang,
+          role: 'presentation',
+          voiceId: presVoice,
+          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0
+        })
       }
     }
 
