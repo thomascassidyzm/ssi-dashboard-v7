@@ -1692,9 +1692,12 @@ app.get('/api/courses', async (req, res) => {
             targetLang: c.target_lang,
             status: c.status,
             seed_pairs: stats.seeds,
+            total_seeds: stats.seeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
             phrases: stats.phrases,
+            audio_count: stats.audio || 0,
+            audio_needed: stats.phrases || 0,
             phases_completed: phases
           };
         });
@@ -1897,8 +1900,8 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       seeds: dbStats.seeds,
       legos: dbStats.legos,
       newLegos: 0,  // Would need separate query for is_new count
-      practicePhrases: dbStats.baskets,
-      audio: 0  // Would need separate query for audio count
+      practicePhrases: dbStats.phrases || 0,
+      audio: dbStats.audio || 0
     };
 
     res.json({
