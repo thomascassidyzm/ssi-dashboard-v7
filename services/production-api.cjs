@@ -2268,7 +2268,12 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
       // For presentation audio, extract the KNOWN word for matching
       // Presentation text format: "The Spanish for 'known_text', is:" or "The Spanish for 'known_text', as in '...', is:"
+      // IMPORTANT: Only count as existing if s3_key is mastered/ (not pending/)
       if (role === 'presentation' && normalizedText) {
+        // Skip pending presentations - they have placeholder s3_key but no actual audio
+        if (ca.s3_key?.startsWith('pending/')) {
+          continue
+        }
         const matches = normalizedText.match(/'([^']+)'/g)
         if (matches && matches.length >= 1) {
           // First quoted word is the known text being introduced

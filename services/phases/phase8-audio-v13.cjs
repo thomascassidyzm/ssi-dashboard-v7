@@ -310,6 +310,7 @@ async function planHandler(req, res) {
     }
 
     // Get what audio we have (paginated)
+    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -319,6 +320,7 @@ async function planHandler(req, res) {
         .from('course_audio')
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
+        .not('s3_key', 'like', 'pending/%')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
@@ -514,6 +516,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Get existing audio (paginated)
+    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -523,6 +526,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .from('course_audio')
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
+        .not('s3_key', 'like', 'pending/%')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
