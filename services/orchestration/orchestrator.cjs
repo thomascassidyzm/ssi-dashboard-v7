@@ -10394,12 +10394,15 @@ app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
         });
 
       case 'audio':
-        // Stop Phase 8 audio generation - Phase 8 doesn't have a cancel endpoint yet
-        // We'll return a message indicating this limitation
-        return res.status(501).json({
-          success: false,
-          error: 'Audio generation cancel not implemented in Phase 8 service',
-          suggestion: 'Audio generation must complete or be stopped manually'
+        // Stop Phase 8 audio generation
+        const audioResponse = await axios.delete(
+          `${PHASE8_URL}/cancel/${courseCode}`,
+          { timeout: 5000 }
+        );
+        return res.json({
+          success: true,
+          message: `Audio generation for ${courseCode} cancelled`,
+          result: audioResponse.data
         });
 
       case 'pipeline':
