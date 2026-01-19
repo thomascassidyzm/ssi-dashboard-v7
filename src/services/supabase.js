@@ -151,9 +151,11 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
       .gte('seed_number', startSeed)
       .lte('seed_number', endSeed),
     supabase
-      .from('lego_introductions')
-      .select('lego_id, presentation_audio_id')
+      .from('course_audio')
+      .select('lego_id, s3_key')
       .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .not('lego_id', 'is', null)
   ])
 
   if (legosResult.error) throw new Error('Failed to query LEGOs: ' + legosResult.error.message)
@@ -181,7 +183,9 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
 
   const introAudioMap = new Map()
   for (const intro of (introsResult.data || [])) {
-    introAudioMap.set(intro.lego_id, intro.presentation_audio_id)
+    // s3_key is "{uuid}.mp3" - extract just the UUID
+    const uuid = intro.s3_key?.replace('.mp3', '') || null
+    if (uuid) introAudioMap.set(intro.lego_id, uuid)
   }
 
   // Group phrases by LEGO

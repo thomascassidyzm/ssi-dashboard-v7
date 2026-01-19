@@ -1356,6 +1356,153 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
+// POST LINK-AUDIO-IDS - Link audio IDs directly to phrases/legos/seeds
+// =============================================================================
+// After audio generation, this populates the *_audio_id columns for direct joins
+// This eliminates text-matching fragility in the cycle views
+// =============================================================================
+
+app.post('/link-audio-ids/:courseCode', async (req, res) => {
+  const { courseCode } = req.params
+  const { dryRun = false } = req.body
+
+  logger.info(`Link audio IDs request for: ${courseCode} (dryRun: ${dryRun})`)
+
+  try {
+    // Get course info
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('course_code, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+
+    const results = {
+      practice_phrases: { known: 0, target1: 0, target2: 0 },
+      legos: { known: 0, target1: 0, target2: 0 },
+      seeds: { known: 0, target1: 0, target2: 0 }
+    }
+
+    if (dryRun) {
+      // Just count what would be updated
+      const { count: ppKnown } = await supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('known_audio_id', null)
+
+      const { count: ppTarget1 } = await supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('target1_audio_id', null)
+
+      const { count: legoKnown } = await supabase
+        .from('course_legos')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('known_audio_id', null)
+
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        wouldUpdate: {
+          practice_phrases_missing_known: ppKnown || 0,
+          practice_phrases_missing_target1: ppTarget1 || 0,
+          legos_missing_known: legoKnown || 0
+        },
+        message: 'Use dryRun: false to execute'
+      })
+    }
+
+    // Link practice phrases - known audio
+    const { data: ppKnownResult } = await supabase.rpc('link_practice_phrase_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.practice_phrases.known = ppKnownResult || 0
+
+    // Link practice phrases - target1 audio
+    const { data: ppT1Result } = await supabase.rpc('link_practice_phrase_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.practice_phrases.target1 = ppT1Result || 0
+
+    // Link practice phrases - target2 audio
+    const { data: ppT2Result } = await supabase.rpc('link_practice_phrase_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.practice_phrases.target2 = ppT2Result || 0
+
+    // Link legos - known audio
+    const { data: legoKnownResult } = await supabase.rpc('link_lego_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.legos.known = legoKnownResult || 0
+
+    // Link legos - target1 audio
+    const { data: legoT1Result } = await supabase.rpc('link_lego_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.legos.target1 = legoT1Result || 0
+
+    // Link legos - target2 audio
+    const { data: legoT2Result } = await supabase.rpc('link_lego_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.legos.target2 = legoT2Result || 0
+
+    // Link seeds - known audio
+    const { data: seedKnownResult } = await supabase.rpc('link_seed_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.seeds.known = seedKnownResult || 0
+
+    // Link seeds - target1 audio
+    const { data: seedT1Result } = await supabase.rpc('link_seed_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.seeds.target1 = seedT1Result || 0
+
+    // Link seeds - target2 audio
+    const { data: seedT2Result } = await supabase.rpc('link_seed_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.seeds.target2 = seedT2Result || 0
+
+    const totalLinked = Object.values(results).reduce((sum, cat) =>
+      sum + Object.values(cat).reduce((s, v) => s + v, 0), 0)
+
+    logger.info(`Linked ${totalLinked} audio IDs for ${courseCode}`)
+
+    res.json({
+      success: true,
+      dryRun: false,
+      courseCode,
+      results,
+      totalLinked,
+      message: `Linked ${totalLinked} audio IDs`
+    })
+
+  } catch (error) {
+    logger.error('Link audio IDs error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // START SERVER
 // =============================================================================
 
