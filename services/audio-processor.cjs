@@ -399,6 +399,139 @@ async function getAudioMetadata(audioPath) {
   }
 }
 
+/**
+ * Process recording buffer from browser upload
+ * Designed for mobile phone recordings (iPhone etc) in quiet rooms
+ *
+ * Pipeline:
+ * 1. Convert WebM/any format to MP3
+ * 2. Trim silence from start/end
+ * 3. High-pass filter (remove rumble below 80Hz)
+ * 4. Normalize loudness (EBU R128, -16 LUFS)
+ * 5. Output: 44.1kHz mono 128kbps MP3
+ *
+ * @param {Buffer} inputBuffer - Raw audio data from browser (typically WebM/Opus)
+ * @param {object} options - Processing options
+ * @param {string} options.inputFormat - Input format hint (default: 'webm')
+ * @param {boolean} options.trimSilence - Trim leading/trailing silence (default: true)
+ * @param {boolean} options.normalize - Apply loudness normalization (default: true)
+ * @param {number} options.targetLUFS - Target loudness (default: -16)
+ * @returns {Promise<{buffer: Buffer, metadata: object}>}
+ */
+async function processRecordingBuffer(inputBuffer, options = {}) {
+  const {
+    inputFormat = 'webm',
+    trimSilence = true,
+    normalize = true,
+    targetLUFS = -16
+  } = options;
+
+  // Check FFmpeg
+  if (!(await checkFfmpegInstalled())) {
+    console.warn('[AudioProcessor] FFmpeg not available, returning unprocessed audio');
+    return {
+      buffer: inputBuffer,
+      metadata: {
+        processed: false,
+        reason: 'ffmpeg_not_available'
+      }
+    };
+  }
+
+  const crypto = require('crypto');
+  const os = require('os');
+  const tempId = crypto.randomBytes(8).toString('hex');
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'ssi-recording-'));
+  const inputPath = path.join(tempDir, `input_${tempId}.${inputFormat}`);
+  const outputPath = path.join(tempDir, `output_${tempId}.mp3`);
+
+  try {
+    // Write input buffer to temp file
+    await fs.writeFile(inputPath, inputBuffer);
+
+    // Build filter chain
+    const filters = [];
+
+    // 1. Trim silence from start and end (gentle threshold for speech)
+    if (trimSilence) {
+      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
+      filters.push('areverse');
+      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
+      filters.push('areverse');
+    }
+
+    // 2. High-pass filter to remove low-frequency rumble (AC hum, handling noise)
+    filters.push('highpass=f=80');
+
+    // 3. Normalize loudness (EBU R128)
+    if (normalize) {
+      filters.push(`loudnorm=I=${targetLUFS}:TP=-1.5:LRA=11`);
+    }
+
+    // 4. Gentle limiter to catch any peaks
+    filters.push('alimiter=limit=0.95:attack=5:release=50');
+
+    const filterChain = filters.join(',');
+
+    // Run FFmpeg: convert to MP3, apply filters, standardize format
+    await execAsync(
+      `ffmpeg -y -i "${inputPath}" ` +
+      `-af "${filterChain}" ` +
+      `-ar 44100 -ac 1 -b:a 128k -codec:a libmp3lame ` +
+      `"${outputPath}"`
+    );
+
+    // Read processed output
+    const outputBuffer = await fs.readFile(outputPath);
+
+    // Get duration
+    let durationMs = 0;
+    try {
+      const { stdout } = await execAsync(
+        `ffprobe -i "${outputPath}" -show_entries format=duration -v quiet -of csv="p=0"`
+      );
+      durationMs = Math.round(parseFloat(stdout.trim()) * 1000);
+    } catch (e) {
+      // Duration extraction failed, not critical
+    }
+
+    return {
+      buffer: outputBuffer,
+      metadata: {
+        processed: true,
+        format: 'mp3',
+        sampleRate: 44100,
+        channels: 1,
+        bitrate: 128000,
+        durationMs,
+        inputFormat,
+        inputSize: inputBuffer.length,
+        outputSize: outputBuffer.length,
+        filters: {
+          trimSilence,
+          normalize,
+          targetLUFS,
+          highpassHz: 80
+        }
+      }
+    };
+
+  } catch (error) {
+    console.error('[AudioProcessor] Processing failed:', error.message);
+    // Return original buffer on failure
+    return {
+      buffer: inputBuffer,
+      metadata: {
+        processed: false,
+        reason: error.message
+      }
+    };
+  } finally {
+    // Cleanup temp files
+    await fs.remove(tempDir).catch(() => {});
+  }
+}
+
 module.exports = {
   checkFfmpegInstalled,
   checkSoxInstalled,
@@ -408,5 +541,6 @@ module.exports = {
   processAudio,
   processBatch,
   concatenateAudio,
-  getAudioMetadata
+  getAudioMetadata,
+  processRecordingBuffer
 };

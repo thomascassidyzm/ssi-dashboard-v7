@@ -16,6 +16,7 @@ const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
+const audioProcessor = require('./audio-processor.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -1071,7 +1072,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       uuid,
       audioData,
       metadata = {},
-      provenance = {}
+      provenance = {},
+      mimeType = 'audio/webm'
     } = req.body
 
     if (!uuid || !audioData) {
@@ -1079,13 +1081,40 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     }
 
     // Decode base64 audio data
-    const audioBuffer = Buffer.from(audioData, 'base64')
+    const rawBuffer = Buffer.from(audioData, 'base64')
+    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${uuid}`)
 
-    // Upload to S3
-    const result = await s3Service.uploadRecording(courseCode, uuid, audioBuffer, {
+    // Determine input format from MIME type
+    let inputFormat = 'webm'
+    if (mimeType.includes('mp3')) inputFormat = 'mp3'
+    else if (mimeType.includes('wav')) inputFormat = 'wav'
+    else if (mimeType.includes('m4a') || mimeType.includes('mp4')) inputFormat = 'm4a'
+    else if (mimeType.includes('ogg')) inputFormat = 'ogg'
+
+    // Process audio: convert to MP3, normalize, trim silence
+    logger.log(`[Upload] Processing audio (format: ${inputFormat})...`)
+    const { buffer: processedBuffer, metadata: audioMeta } = await audioProcessor.processRecordingBuffer(
+      rawBuffer,
+      {
+        inputFormat,
+        trimSilence: true,
+        normalize: true,
+        targetLUFS: -16
+      }
+    )
+
+    if (audioMeta.processed) {
+      logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
+    } else {
+      logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
+    }
+
+    // Upload processed audio to S3
+    const result = await s3Service.uploadRecording(courseCode, uuid, processedBuffer, {
       ...metadata,
       recordedBy: 'human',
-      source: 'recording'
+      source: 'recording',
+      audioProcessing: audioMeta
     })
 
     // Update the sample flag in Supabase to mark as recorded
@@ -1140,7 +1169,16 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       }
     })
 
-    res.json({ success: true, uuid, uploaded: true })
+    res.json({
+      success: true,
+      uuid,
+      uploaded: true,
+      audioProcessing: audioMeta.processed ? {
+        durationMs: audioMeta.durationMs,
+        format: audioMeta.format,
+        sizeReduction: audioMeta.inputSize - audioMeta.outputSize
+      } : null
+    })
   } catch (error) {
     logger.error('Error uploading recording:', error)
     res.status(500).json({ error: error.message })
