@@ -101,7 +101,7 @@ async function getCourse(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -148,7 +148,7 @@ async function getCourseVoices(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('voice_config')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single()
 
   if (error && error.code !== 'PGRST116') {
@@ -187,7 +187,7 @@ async function upsertCourse({
   const { data, error } = await supabase
     .from('courses')
     .upsert({
-      code,
+      course_code: code,
       display_name: displayName,
       known_lang: knownLang,
       target_lang: targetLang,
@@ -196,7 +196,7 @@ async function upsertCourse({
       course_type: courseType,
       creator_email: creatorEmail
     }, {
-      onConflict: 'code'
+      onConflict: 'course_code'
     })
     .select()
     .single()
@@ -218,7 +218,7 @@ async function updateCourseVoices(courseCode, voiceConfig) {
   const { data, error } = await supabase
     .from('courses')
     .update({ voice_config: voiceConfig })
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .select()
     .single()
 
@@ -245,7 +245,7 @@ async function updateCourseStatus(courseCode, status) {
   const { data, error } = await supabase
     .from('courses')
     .update({ status })
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .select()
     .single()
 
@@ -1051,7 +1051,7 @@ async function getAllCourseContentStats() {
   // Get all courses first
   const { data: courses, error: courseError } = await supabase
     .from('courses')
-    .select('code')
+    .select('course_code')
 
   if (courseError) throw courseError
 
@@ -1059,7 +1059,7 @@ async function getAllCourseContentStats() {
 
   // Get counts per course in parallel
   await Promise.all((courses || []).map(async (course) => {
-    const courseCode = course.code
+    const courseCode = course.course_code
 
     const [seedsResult, completedSeedsResult, legosResult, phrasesResult, audioResult] = await Promise.all([
       supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
@@ -1478,6 +1478,197 @@ async function getAudioFlagStats(courseCode) {
 }
 
 // =============================================================================
+// RECORDING QUEUE (Human Recording Workflow)
+// =============================================================================
+
+/**
+ * Get recording queue - audio samples flagged for human recording
+ * Returns samples with status 'flagged_human_needed' or 'in_recording'
+ *
+ * @param {string} courseCode - Course code
+ * @param {number} page - Page number (1-indexed)
+ * @param {number} pageSize - Items per page
+ * @returns {Promise<{items: Array, total: number, page: number, pageSize: number}>}
+ */
+async function getRecordingQueue(courseCode, page = 1, pageSize = 20) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  // First, get the total count for pagination
+  const { count, error: countError } = await supabase
+    .from('sample_flags')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .in('status', ['flagged_human_needed', 'in_recording', 'needs_review'])
+
+  if (countError) throw countError
+
+  // Calculate offset for pagination
+  const offset = (page - 1) * pageSize
+
+  // Get flags with pagination
+  const { data: flags, error: flagsError } = await supabase
+    .from('sample_flags')
+    .select('audio_uuid, status, notes, flagged_by, flagged_at, history')
+    .eq('course_code', courseCode)
+    .in('status', ['flagged_human_needed', 'in_recording', 'needs_review'])
+    .order('flagged_at', { ascending: false })
+    .range(offset, offset + pageSize - 1)
+
+  if (flagsError) throw flagsError
+  if (!flags || flags.length === 0) {
+    return { items: [], total: count || 0, page, pageSize }
+  }
+
+  // Get audio details for flagged items
+  const audioUuids = flags.map(f => f.audio_uuid)
+  const { data: audioDetails, error: audioError } = await supabase
+    .from('course_audio')
+    .select('id, text, language, role, duration_ms, voice_id')
+    .in('id', audioUuids)
+
+  if (audioError) throw audioError
+
+  // Build a map for quick lookup
+  const audioMap = {}
+  for (const audio of (audioDetails || [])) {
+    audioMap[audio.id] = audio
+  }
+
+  // Combine flags with audio details
+  const items = flags.map(flag => {
+    const audio = audioMap[flag.audio_uuid]
+    return {
+      uuid: flag.audio_uuid,
+      status: flag.status,
+      notes: flag.notes,
+      flaggedBy: flag.flagged_by,
+      flaggedAt: flag.flagged_at,
+      // Audio details
+      text: audio?.text || '',
+      language: audio?.language || '',
+      role: audio?.role || '',
+      durationMs: audio?.duration_ms || null,
+      voiceId: audio?.voice_id || ''
+    }
+  })
+
+  return {
+    items,
+    total: count || 0,
+    page,
+    pageSize
+  }
+}
+
+/**
+ * Update recording status for a sample
+ * Used when claiming a sample for recording or marking recording complete
+ *
+ * @param {string} audioUuid - The audio UUID
+ * @param {string} courseCode - Course code
+ * @param {string} status - New status (e.g., 'in_recording', 'needs_review')
+ * @param {string} notes - Status notes
+ * @param {string} claimedBy - Who is recording/claiming this sample
+ * @returns {Promise<Object>}
+ */
+async function updateRecordingStatus(audioUuid, courseCode, status, notes, claimedBy) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const now = new Date().toISOString()
+
+  // Check if flag exists
+  const { data: existing, error: checkError } = await supabase
+    .from('sample_flags')
+    .select('*')
+    .eq('audio_uuid', audioUuid)
+    .single()
+
+  if (checkError && checkError.code !== 'PGRST116') throw checkError
+
+  const historyEntry = {
+    status,
+    notes,
+    flaggedBy: claimedBy,
+    timestamp: now
+  }
+
+  if (existing) {
+    // Update existing flag
+    const newHistory = [...(existing.history || []), historyEntry]
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .update({
+        status,
+        notes,
+        flagged_by: claimedBy,
+        flagged_at: now,
+        history: newHistory
+      })
+      .eq('audio_uuid', audioUuid)
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  } else {
+    // Insert new flag
+    const { data, error } = await supabase
+      .from('sample_flags')
+      .insert({
+        audio_uuid: audioUuid,
+        course_code: courseCode,
+        status,
+        notes,
+        flagged_by: claimedBy,
+        flagged_at: now,
+        history: [historyEntry]
+      })
+      .select()
+      .single()
+
+    if (error) throw error
+    return data
+  }
+}
+
+/**
+ * Insert recording provenance metadata
+ * Tracks who recorded what, when, and with what equipment
+ *
+ * @param {Object} provenance - Provenance metadata
+ * @returns {Promise<Object>}
+ */
+async function insertRecordingProvenance(provenance) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('recording_provenance')
+    .insert({
+      audio_uuid: provenance.audioUuid,
+      recorded_by: provenance.recordedBy,
+      speaker_native_language: provenance.speakerNativeLanguage,
+      speaker_proficiency: provenance.speakerProficiency,
+      speaker_age_range: provenance.speakerAgeRange,
+      speaker_dialect: provenance.speakerDialect,
+      speaker_region: provenance.speakerRegion,
+      recorded_at: provenance.recordedAt,
+      recording_location: provenance.recordingLocation,
+      recording_device: provenance.recordingDevice,
+      recording_environment: provenance.recordingEnvironment,
+      speaker_consent: provenance.speakerConsent,
+      consent_form_ref: provenance.consentFormRef,
+      usage_rights: provenance.usageRights,
+      quality_notes: provenance.qualityNotes,
+      retake_count: provenance.retakeCount
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -1537,6 +1728,11 @@ module.exports = {
   bulkResolveAudioFlags,
   getAudioFlagStats,
   getAudioFlagsWithDetails,
+
+  // Recording queue (Human Recording Workflow)
+  getRecordingQueue,
+  updateRecordingStatus,
+  insertRecordingProvenance,
 
   // Content stats
   getCourseContentStats,

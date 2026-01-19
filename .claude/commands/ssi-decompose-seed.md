@@ -6,16 +6,46 @@ How to break a seed sentence into LEGOs for the SSi language learning system.
 
 Every seed must be FULLY TILEABLE from its LEGOs. No part of the sentence can be skipped.
 
+## Same Pattern, Any Language
+
+The decomposition approach works identically across ALL language families:
+
+**CHINESE:** "I want to speak Chinese" → 我想说中文
+```
+L1 [M] "I want" → 我想 [I→我, want→想]
+L2 [A] "to speak" → 说
+L3 [A] "Chinese" → 中文
+```
+
+**PORTUGUESE:** "I want to speak Portuguese" → Eu quero falar português
+```
+L1 [M] "I want" → eu quero [I→eu, want→quero]
+L2 [A] "to speak" → falar
+L3 [A] "Portuguese" → português
+```
+
+**GERMAN:** "I want to speak German" → Ich möchte Deutsch sprechen
+```
+L1 [M] "I would like" → ich möchte [I→ich, would like→möchte]
+L2 [A] "German" → Deutsch
+L3 [A] "to speak" → sprechen
+```
+
+**The principle is universal:** chunk meaningful phrases as M-LEGOs, single words as A-LEGOs.
+
+---
+
 ## LEGO Types
 
 **A-type (Atomic)**: Single meaningful words
-- "Chinese" → "中文"
-- "now" → "现在"
-- "speak" → "说"
+- Chinese: "Chinese" → "中文", "now" → "现在"
+- Portuguese: "Portuguese" → "português", "now" → "agora"
+- German: "German" → "Deutsch", "now" → "jetzt"
 
 **M-type (Molecular)**: Multi-word phrases with components
-- "I want" → "我想" with components: ["I" → "我"], ["want" → "想"]
-- "with you" → "和你" with components: ["with" → "和"], ["you" → "你"]
+- Chinese: "I want" → "我想" [I→我, want→想]
+- Portuguese: "I want" → "eu quero" [I→eu, want→quero]
+- German: "I would like" → "ich möchte" [I→ich, would like→möchte]
 
 ## Ordering Rule: PEDAGOGICAL, NOT MECHANICAL
 
@@ -113,13 +143,14 @@ Learner sees: I → 我, want → 想, I want → 我想
 }
 ```
 
-### Particles are INFERRED, Never Taught
+### Grammar is INFERRED, Never Taught
 
 **Components must be REAL WORDS that translate to actual vocabulary.**
 
-Particles (了, 着, 过, 吗, 的, etc.) are NEVER listed as components. The learner infers their meaning from context.
+Grammar patterns (particles, conjugations, case endings) are NEVER listed as components. The learner infers their meaning from contrast.
 
-**WRONG - grammatical explanation as component:**
+#### Chinese Example
+**WRONG:**
 ```json
 {
   "type": "M",
@@ -127,12 +158,12 @@ Particles (了, 着, 过, 吗, 的, etc.) are NEVER listed as components. The le
   "target": "做了",
   "components": [
     {"known": "do", "target": "做"},
-    {"known": "completed action marker", "target": "了"}  // ❌ BULLSHIT! Not a word!
+    {"known": "completed action marker", "target": "了"}  // ❌ BULLSHIT!
   ]
 }
 ```
 
-**RIGHT - only real vocabulary:**
+**RIGHT:**
 ```json
 {
   "type": "M",
@@ -141,28 +172,56 @@ Particles (了, 着, 过, 吗, 的, etc.) are NEVER listed as components. The le
   "components": [{"known": "do", "target": "做"}]
 }
 ```
+Learner sees: do → 做, done → 做了. They infer 了 = completion.
 
-The learner sees:
-```
-do    →  做
-done  →  做了
+#### Portuguese Example
+**WRONG:**
+```json
+{
+  "type": "M",
+  "known": "I speak",
+  "target": "eu falo",
+  "components": [
+    {"known": "I", "target": "eu"},
+    {"known": "first person singular conjugation", "target": "-o"}  // ❌ BULLSHIT!
+  ]
+}
 ```
 
-They infer 了 indicates completion from the contrast. No explanation needed!
+**RIGHT:**
+```json
+{
+  "type": "M",
+  "known": "I speak",
+  "target": "eu falo",
+  "components": [{"known": "I", "target": "eu"}, {"known": "speak", "target": "falar"}]
+}
+```
+Learner sees: to speak → falar, I speak → eu falo. They infer conjugation.
 
-**More examples:**
+#### German Example
+**WRONG:**
+```json
+{
+  "type": "M",
+  "known": "eaten",
+  "target": "gegessen",
+  "components": [
+    {"known": "past participle prefix", "target": "ge-"},  // ❌ BULLSHIT!
+    {"known": "eat", "target": "essen"}
+  ]
+}
+```
 
+**RIGHT:**
+```json
+{
+  "type": "A",
+  "known": "eaten",
+  "target": "gegessen"
+}
 ```
-good     →  好
-Is it good?  →  好吗
-```
-Learner infers 吗 = question marker.
-
-```
-eat      →  吃
-eating   →  在吃
-```
-Learner infers 在 = ongoing action.
+Or as part of an M-LEGO: "I have eaten" → "ich habe gegessen" [I have→ich habe, eaten→gegessen]
 
 **Rule: If you can't translate it to a single English WORD (not an explanation), don't make it a component.**
 

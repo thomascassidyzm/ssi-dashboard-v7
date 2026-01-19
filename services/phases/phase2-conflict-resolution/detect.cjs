@@ -41,7 +41,7 @@ async function generatePresentationTexts(courseCode) {
   const { data: course, error: courseError } = await supabase
     .from('courses')
     .select('known_lang, target_lang, voice_config')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single()
 
   if (courseError || !course) {

@@ -116,6 +116,77 @@ function extractNgrams(text, n = 3) {
   return ngrams;
 }
 
+// =============================================================================
+// PHRASE COVERAGE HELPERS (January 2026 migration)
+// Compute phrase_role, connected_lego_ids, lego_position for new schema
+// =============================================================================
+
+/**
+ * Compute phrase_role from position value
+ * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = eternal)
+ * @returns {'component' | 'practice' | 'eternal_eligible'}
+ */
+function computePhraseRole(position) {
+  if (position === 0) return 'component';
+  if (position >= 8) return 'eternal_eligible';
+  return 'practice';
+}
+
+/**
+ * Compute which other LEGOs appear in a phrase (for coverage-based selection)
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} primaryLegoTarget - The primary LEGO's target text
+ * @param {Array} introducedLegos - LEGOs introduced before this phrase
+ * @returns {string[]} Array of connected LEGO IDs
+ */
+function computeConnectedLegoIds(phraseTargetText, primaryLegoTarget, introducedLegos) {
+  if (!introducedLegos || !Array.isArray(introducedLegos)) return [];
+
+  const connectedIds = [];
+  const normalizedPhrase = phraseTargetText.toLowerCase().trim();
+  const normalizedPrimary = primaryLegoTarget.toLowerCase().trim();
+
+  for (const lego of introducedLegos) {
+    const legoTarget = (lego.target_text || lego.target || '').toLowerCase().trim();
+    // Skip the primary LEGO itself
+    if (legoTarget === normalizedPrimary) continue;
+    // Skip very short targets (likely particles/noise)
+    if (legoTarget.length < 2) continue;
+    // Check if this LEGO appears in the phrase
+    if (normalizedPhrase.includes(legoTarget)) {
+      connectedIds.push(lego.lego_id || `S${String(lego.seed_number).padStart(4,'0')}L${String(lego.lego_index).padStart(2,'0')}`);
+    }
+  }
+
+  return connectedIds;
+}
+
+/**
+ * Compute where the LEGO appears in the phrase (start/middle/end)
+ * @param {string} phraseTargetText - The phrase's target text
+ * @param {string} legoTargetText - The LEGO's target text
+ * @returns {'start' | 'middle' | 'end' | null}
+ */
+function computeLegoPosition(phraseTargetText, legoTargetText) {
+  if (!phraseTargetText || !legoTargetText) return null;
+
+  const phrase = phraseTargetText.trim();
+  const lego = legoTargetText.trim();
+  const index = phrase.indexOf(lego);
+  if (index === -1) return null;
+
+  const phraseLength = phrase.length;
+  const legoLength = lego.length;
+  const legoEndIndex = index + legoLength;
+  const startPercent = index / phraseLength;
+  const endPercent = legoEndIndex / phraseLength;
+  const centerPercent = (startPercent + endPercent) / 2;
+
+  if (centerPercent < 0.33) return 'start';
+  if (centerPercent > 0.67) return 'end';
+  return 'middle';
+}
+
 /**
  * Analyze pattern recency for a course
  * Returns over-used patterns that should be avoided
@@ -331,9 +402,9 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Few-shot prompt v2 - shows ROUND experience + inline error fixes
-  // Full version in prompts/few-shot-v2.md (10KB vs 32KB old approach)
-  const prompt = `You build Chinese course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
+  // Few-shot prompt v3 - language-agnostic with multi-language examples
+  // Principle: same LEGO structure works for ALL languages
+  const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
 
 ## WHAT THE LEARNER EXPERIENCES (copy this structure!)
 
@@ -352,6 +423,25 @@ ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试
 
 **DEBUT/ETERNAL are computed:** 7 shortest = DEBUT, 5 longest = ETERNAL. Just order SHORT→LONG.
 
+## SAME PATTERN, ANY LANGUAGE
+
+CHINESE (Sinitic):
+  M-LEGO "as often as possible" → 尽量多
+  components: [as much as possible→尽量, often→多]
+  phrases: 尽量多说, 我想尽量多说, 我想尽量多说中文...
+
+PORTUGUESE (Romance):
+  M-LEGO "I have been learning" → tenho aprendido
+  components: [I have→tenho, learning→aprendido]
+  phrases: tenho aprendido, tenho aprendido português, eu tenho aprendido a falar...
+
+GERMAN (Germanic):
+  M-LEGO "I would like to" → ich möchte
+  components: [I→ich, would like→möchte]
+  phrases: ich möchte, ich möchte sprechen, ich möchte Deutsch sprechen...
+
+**The principle is universal:** chunk meaningful phrases as M-LEGOs, not isolated words.
+
 ## BASKET FORMAT
 
 \`\`\`json
@@ -366,19 +456,20 @@ ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试
 \`\`\`
 
 ## M-LEGO COMPONENTS = REAL WORDS ONLY
-✓ do → 做, then done → 做了 (learner infers 了 from contrast)
-✗ NEVER: "completed action marker" → 了
+✓ Chinese: do → 做, then done → 做了 (learner infers 了 from contrast)
+✓ Portuguese: to speak → falar, I speak → falo (learner infers conjugation)
+✓ German: to want → wollen, I want → ich will (learner sees pattern)
+✗ NEVER teach grammar labels: "completed action marker", "subjunctive", "dative case"
 
 ## ERROR FIXES (don't read external files)
-• TILING FAILED [吗]: Add to M-LEGO "Is it good?" → 好吗 with [good→好]
-• ZUT VIOLATION: Use existing mapping OR upchunk "to say (formally)" → 讲
-• VOCAB VIOLATION [明天]: Remove - that LEGO not introduced yet
-• PHRASE TIERS need 3+ LONG: Add phrases with 10+ Chinese characters
-• M-LEGO MISSING COMPONENTS: Add [I→我, want→想, go→去]
+• ZUT VIOLATION: Use existing mapping OR upchunk to disambiguate
+• VOCAB VIOLATION: Remove phrase - that vocabulary not introduced yet
+• PHRASE TIERS need 3+ LONG: Add phrases with 10+ words/characters
+• M-LEGO MISSING COMPONENTS: Add the component breakdown
 
 ## WORKFLOW
 1. curl http://localhost:3471/api/resume/${courseCode} → get next seed
-2. Translate, break into 3-5 LEGOs (prefer M-LEGOs)
+2. Translate, break into 3-5 LEGOs (prefer M-LEGOs for meaningful chunks)
 3. Generate 10-12 phrases per LEGO, components first then SHORT→LONG
 4. POST to http://localhost:3471/api/seed/complete
 5. Fix errors inline (see above), retry max 3x
@@ -547,7 +638,7 @@ function stopBuildManager() {
  * @param {string} courseCode
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
-async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 260) {
+async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   if (activeBuilds.has(courseCode)) {
     return { ok: false, error: 'Build already active for this course' };
   }
@@ -961,6 +1052,10 @@ function generateBuildupPhrases(lego, courseCode) {
       target_text: comp.target,
       word_count: comp.target.length,
       lego_count: 1,
+      // New coverage columns (January 2026)
+      phrase_role: 'component',
+      connected_lego_ids: [],  // Components don't connect to other LEGOs
+      lego_position: computeLegoPosition(comp.target, comp.target),  // Component is the whole phrase
       metadata: { buildup: 'component', component_index: i },
       status: 'draft',
       version: 1
@@ -978,6 +1073,10 @@ function generateBuildupPhrases(lego, courseCode) {
     target_text: target,
     word_count: target.length,
     lego_count: 1,
+    // New coverage columns (January 2026)
+    phrase_role: 'practice',  // LEGO debut is a practice phrase
+    connected_lego_ids: [],   // LEGO debut doesn't connect to others
+    lego_position: computeLegoPosition(target, target),  // LEGO is the whole phrase
     metadata: { buildup: 'lego' },
     status: 'draft',
     version: 1
@@ -1624,19 +1723,26 @@ app.post('/api/lego', async (req, res) => {
         // Sort by target syllable count (Chinese characters = syllables roughly)
         const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
-        const practicePhrases = sorted.map((p, i) => ({
-          course_code,
-          seed_number: seed,
-          lego_index: idx,
-          position: practiceStartPosition + i,  // Start after build-up
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          metadata: {},
-          status: 'draft',
-          version: 1
-        }));
+        const practicePhrases = sorted.map((p, i) => {
+          const position = practiceStartPosition + i;  // Start after build-up
+          return {
+            course_code,
+            seed_number: seed,
+            lego_index: idx,
+            position,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            // New coverage columns (January 2026)
+            phrase_role: computePhraseRole(position),
+            connected_lego_ids: [],  // Populated by backfill for single-LEGO endpoint
+            lego_position: computeLegoPosition(p.target, target),
+            metadata: {},
+            status: 'draft',
+            version: 1
+          };
+        });
 
         allPhraseRows = [...allPhraseRows, ...practicePhrases];
       }
@@ -1795,19 +1901,26 @@ app.post('/api/batch', async (req, res) => {
         if (lego.phrases && lego.phrases.length > 0) {
           const sorted = [...lego.phrases].sort((a, b) => a.target.length - b.target.length);
 
-          const practicePhrases = sorted.map((p, i) => ({
-            course_code,
-            seed_number: lego.seed,
-            lego_index: lego.idx,
-            position: practiceStartPosition + i,
-            known_text: p.known,
-            target_text: p.target,
-            word_count: p.target.length,
-            lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            metadata: {},
-            status: 'draft',
-            version: 1
-          }));
+          const practicePhrases = sorted.map((p, i) => {
+            const position = practiceStartPosition + i;
+            return {
+              course_code,
+              seed_number: lego.seed,
+              lego_index: lego.idx,
+              position,
+              known_text: p.known,
+              target_text: p.target,
+              word_count: p.target.length,
+              lego_count: (p.known.match(/\s+/g) || []).length + 1,
+              // New coverage columns (January 2026)
+              phrase_role: computePhraseRole(position),
+              connected_lego_ids: [],  // Populated by backfill for batch endpoint
+              lego_position: computeLegoPosition(p.target, lego.target),
+              metadata: {},
+              status: 'draft',
+              version: 1
+            };
+          });
 
           allPhraseRows = [...allPhraseRows, ...practicePhrases];
           totalPracticePhrases += lego.phrases.length;
@@ -1909,24 +2022,6 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Validate agent provided required translations
-    if (!knownIsEng && !agent_known_text) {
-      return res.status(400).json({
-        error: 'known_text required',
-        seed: seedId,
-        course_code,
-        hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`
-      });
-    }
-    if (!targetIsEng && !agent_target_text) {
-      return res.status(400).json({
-        error: 'target_text required',
-        seed: seedId,
-        course_code,
-        hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`
-      });
-    }
-
     if (!Array.isArray(legos) || legos.length === 0) {
       return res.status(400).json({
         error: 'legos must be a non-empty array',
@@ -1934,8 +2029,8 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // CANONICAL SEED LOOKUP: Get known_text from pre-populated database seeds
-    // If course has no seeds yet, auto-initialize from canonical_seeds table
+    // CANONICAL SEED LOOKUP: Get known_text/target_text from pre-populated database seeds
+    // Do this BEFORE translation validation - seeds may already have translations (target-first workflow)
     let { data: canonicalSeed, error: seedLookupError } = await supabase
       .from('course_seeds')
       .select('known_text, target_text')
@@ -1974,17 +2069,56 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // Check if seed already built (both known and target populated)
-    const seedAlreadyBuilt = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
-                             canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
-    if (seedAlreadyBuilt) {
+    // Validate translations - only require from agent if not already in database
+    // This supports target-first workflow where translations are done before LEGOs
+    const needsKnownFromAgent = !knownIsEng && !canonicalSeed.known_text;
+    const needsTargetFromAgent = !targetIsEng && !canonicalSeed.target_text;
+
+    if (needsKnownFromAgent && !agent_known_text) {
       return res.status(400).json({
-        error: 'Seed already has translation',
+        error: 'known_text required',
         seed: seedId,
-        existing_known: canonicalSeed.known_text,
-        existing_target: canonicalSeed.target_text,
-        hint: 'This seed has already been built. Use a different seed number.'
+        course_code,
+        hint: `For ${course_code} (known=${knownLang}), agent must provide known_text translation from English canonical.`
       });
+    }
+    if (needsTargetFromAgent && !agent_target_text) {
+      return res.status(400).json({
+        error: 'target_text required',
+        seed: seedId,
+        course_code,
+        hint: `For ${course_code} (target=${targetLang}), agent must provide target_text translation.`
+      });
+    }
+
+    // Check if seed already fully built (translation + LEGOs)
+    // For target-first courses, seeds may have translations but no LEGOs yet
+    const hasTranslation = canonicalSeed.known_text && canonicalSeed.known_text.length > 0 &&
+                           canonicalSeed.target_text && canonicalSeed.target_text.length > 0;
+
+    if (hasTranslation) {
+      // Check if LEGOs already exist for this seed
+      const { data: existingLegos, error: legoCheckError } = await supabase
+        .from('course_legos')
+        .select('id')
+        .eq('course_code', course_code)
+        .eq('seed_number', seed_number)
+        .limit(1);
+
+      if (!legoCheckError && existingLegos && existingLegos.length > 0) {
+        // Seed has BOTH translation AND LEGOs - fully built
+        return res.status(400).json({
+          error: 'Seed already fully built',
+          seed: seedId,
+          existing_known: canonicalSeed.known_text,
+          existing_target: canonicalSeed.target_text,
+          has_legos: true,
+          hint: 'This seed has translation and LEGOs. Use a different seed number.'
+        });
+      }
+
+      // Has translation but no LEGOs - allow adding LEGOs (target-first workflow)
+      console.log(`  Seed has translation but no LEGOs - proceeding with LEGO addition`);
     }
 
     // CANONICAL VALIDATION: If agent provides known_text, it MUST match canonical
@@ -2365,19 +2499,26 @@ app.post('/api/seed/complete', async (req, res) => {
 
         const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
 
-        const practicePhrases = sorted.map((p, i) => ({
-          course_code,
-          seed_number,
-          lego_index: lego.idx,
-          position: practiceStartPosition + i,
-          known_text: p.known,
-          target_text: p.target,
-          word_count: p.target.length,
-          lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          metadata: {},
-          status: 'draft',
-          version: 1
-        }));
+        const practicePhrases = sorted.map((p, i) => {
+          const position = practiceStartPosition + i;
+          return {
+            course_code,
+            seed_number,
+            lego_index: lego.idx,
+            position,
+            known_text: p.known,
+            target_text: p.target,
+            word_count: p.target.length,
+            lego_count: (p.known.match(/\s+/g) || []).length + 1,
+            // New coverage columns (January 2026)
+            phrase_role: computePhraseRole(position),
+            connected_lego_ids: [],  // Could be enhanced to compute from same-seed LEGOs
+            lego_position: computeLegoPosition(p.target, lego.target),
+            metadata: {},
+            status: 'draft',
+            version: 1
+          };
+        });
 
         allPhraseRows = [...allPhraseRows, ...practicePhrases];
       }
@@ -2616,7 +2757,7 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
  */
 app.post('/api/build/start/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const { terminal = 'iTerm2', targetSeeds = 260 } = req.body || {};
+  const { terminal = 'iTerm2', targetSeeds = 668 } = req.body || {};
 
   try {
     const result = await startBuild(courseCode, terminal, targetSeeds);

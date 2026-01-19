@@ -61,8 +61,8 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // Azure TTS S0 (Standard) tier limits:
 // - 200 transactions per second (TPS)
 // - 20 concurrent connections max
-// Default 5 = conservative concurrency to avoid rate limiting
-const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 5
+// Default 20 = max concurrency for paid tier
+const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 20
 
 /**
  * Process items in parallel with concurrency limit
@@ -143,6 +143,7 @@ async function masterAudio(audioBuffer) {
 
 const currentWork = {
   active: false,
+  cancelled: false,     // Flag to signal cancellation
   operation: null,      // 'generate' | 'regenerate-role' | 'regenerate-presentations'
   courseCode: null,
   role: null,
@@ -157,6 +158,7 @@ const currentWork = {
 
 function startWork(operation, courseCode, total, role = null) {
   currentWork.active = true
+  currentWork.cancelled = false  // Reset cancellation flag
   currentWork.operation = operation
   currentWork.courseCode = courseCode
   currentWork.role = role
@@ -168,6 +170,15 @@ function startWork(operation, courseCode, total, role = null) {
   currentWork.lastItem = null
   currentWork.errors = []
   logger.info(`[PROGRESS] Started ${operation} for ${courseCode}${role ? ` (${role})` : ''}: ${total} items`)
+}
+
+function cancelWork() {
+  if (currentWork.active) {
+    currentWork.cancelled = true
+    logger.info(`[PROGRESS] Cancellation requested for ${currentWork.operation} on ${currentWork.courseCode}`)
+    return true
+  }
+  return false
 }
 
 function updateWork(itemText, success = true, errorMsg = null) {
@@ -211,6 +222,60 @@ app.get('/status', (req, res) => {
 })
 
 // =============================================================================
+// CANCEL ENDPOINT - Stop current work
+// =============================================================================
+
+app.post('/cancel', (req, res) => {
+  if (!currentWork.active) {
+    return res.status(404).json({ error: 'No active job to cancel' })
+  }
+
+  const cancelled = cancelWork()
+  if (cancelled) {
+    res.json({
+      success: true,
+      message: 'Cancellation requested',
+      courseCode: currentWork.courseCode,
+      operation: currentWork.operation,
+      progress: {
+        current: currentWork.current,
+        total: currentWork.total,
+        success: currentWork.success,
+        failed: currentWork.failed
+      }
+    })
+  } else {
+    res.status(400).json({ error: 'Failed to cancel job' })
+  }
+})
+
+// Also support DELETE /cancel/:courseCode for backwards compatibility
+app.delete('/cancel/:courseCode', (req, res) => {
+  if (!currentWork.active) {
+    return res.status(404).json({ error: 'No active job to cancel' })
+  }
+
+  if (currentWork.courseCode !== req.params.courseCode) {
+    return res.status(400).json({
+      error: 'Course code mismatch',
+      activeJob: currentWork.courseCode,
+      requested: req.params.courseCode
+    })
+  }
+
+  const cancelled = cancelWork()
+  if (cancelled) {
+    res.json({
+      success: true,
+      message: 'Cancellation requested',
+      courseCode: currentWork.courseCode
+    })
+  } else {
+    res.status(400).json({ error: 'Failed to cancel job' })
+  }
+})
+
+// =============================================================================
 // GET PLAN - What audio is missing?
 // =============================================================================
 
@@ -237,7 +302,7 @@ async function planHandler(req, res) {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -245,6 +310,7 @@ async function planHandler(req, res) {
     }
 
     // Get what audio we have (paginated)
+    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -254,6 +320,7 @@ async function planHandler(req, res) {
         .from('course_audio')
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
+        .not('s3_key', 'like', 'pending/%')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
@@ -312,6 +379,26 @@ async function planHandler(req, res) {
       }
     }
 
+    // Also include presentation audio that needs generation (pending/ s3_key)
+    const { data: pendingPresentations } = await supabase
+      .from('course_audio')
+      .select('id, text, language')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .like('s3_key', 'pending/%')
+
+    if (pendingPresentations?.length > 0) {
+      for (const pres of pendingPresentations) {
+        needed.push({
+          text: pres.text,
+          language: pres.language || course.known_lang,
+          role: 'presentation',
+          existingId: pres.id  // Track existing record ID for update
+        })
+      }
+      logger.info(`Including ${pendingPresentations.length} pending presentation audio items`)
+    }
+
     // Deduplicate
     const uniqueNeeded = [...new Map(
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
@@ -337,7 +424,8 @@ async function planHandler(req, res) {
       breakdown: {
         known: uniqueNeeded.filter(n => n.role === 'known').length,
         target1: uniqueNeeded.filter(n => n.role === 'target1').length,
-        target2: uniqueNeeded.filter(n => n.role === 'target2').length
+        target2: uniqueNeeded.filter(n => n.role === 'target2').length,
+        presentation: uniqueNeeded.filter(n => n.role === 'presentation').length
       }
     })
   } catch (error) {
@@ -376,13 +464,18 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = false, limit = 50000 } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency } = req.body  // High default for bulk generation
+
+    // Use requested concurrency if provided, clamped to 1-20, otherwise use env/default
+    const concurrencyToUse = requestedConcurrency
+      ? Math.max(1, Math.min(20, parseInt(requestedConcurrency, 10) || CONCURRENCY))
+      : CONCURRENCY
 
     // Get course with voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -423,6 +516,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Get existing audio (paginated)
+    // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -432,6 +526,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .from('course_audio')
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
+        .not('s3_key', 'like', 'pending/%')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
@@ -486,6 +581,29 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    // Also include presentation audio that needs generation (pending/ s3_key)
+    const { data: pendingPresentations } = await supabase
+      .from('course_audio')
+      .select('id, text, language, voice_id')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .like('s3_key', 'pending/%')
+
+    if (pendingPresentations?.length > 0) {
+      logger.info(`Found ${pendingPresentations.length} pending presentation audio items`)
+      for (const pres of pendingPresentations) {
+        // Use presentation voice from config, or fallback to known voice
+        const presVoice = getVoiceForRole('presentation') || pres.voice_id || getVoiceForRole('known')
+        needed.push({
+          text: pres.text,
+          language: pres.language || course.known_lang,
+          role: 'presentation',
+          voiceId: presVoice,
+          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0
+        })
+      }
+    }
+
     // Deduplicate
     const uniqueNeeded = [...new Map(
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
@@ -503,7 +621,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     startWork('generate', courseCode, uniqueNeeded.length)
 
     // Process items in parallel with concurrency limit
-    logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${CONCURRENCY}`)
+    logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
     const results = { success: 0, failed: 0, errors: [] }
 
@@ -575,10 +693,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Process in parallel batches
-    for (let i = 0; i < uniqueNeeded.length; i += CONCURRENCY) {
-      const batch = uniqueNeeded.slice(i, i + CONCURRENCY)
-      const batchNum = Math.floor(i / CONCURRENCY) + 1
-      const totalBatches = Math.ceil(uniqueNeeded.length / CONCURRENCY)
+    for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
+      // Check for cancellation at the start of each batch
+      if (currentWork.cancelled) {
+        logger.info(`[PROGRESS] Cancelled after ${currentWork.current}/${currentWork.total} items`)
+        break
+      }
+
+      const batch = uniqueNeeded.slice(i, i + concurrencyToUse)
+      const batchNum = Math.floor(i / concurrencyToUse) + 1
+      const totalBatches = Math.ceil(uniqueNeeded.length / concurrencyToUse)
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
@@ -602,14 +726,16 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    const wasCancelled = currentWork.cancelled
     endWork()
 
     res.json({
-      status: 'completed',
+      status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
+      cancelled: wasCancelled,
       errors: results.errors.slice(0, 10)
     })
 
@@ -642,7 +768,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -835,6 +961,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     // Process in parallel batches
     for (let i = 0; i < audioToRegenerate.length; i += CONCURRENCY) {
+      // Check for cancellation at the start of each batch
+      if (currentWork.cancelled) {
+        logger.info(`[PROGRESS] Cancelled after ${currentWork.current}/${currentWork.total} items`)
+        break
+      }
+
       const batch = audioToRegenerate.slice(i, i + CONCURRENCY)
       const batchNum = Math.floor(i / CONCURRENCY) + 1
       const totalBatches = Math.ceil(audioToRegenerate.length / CONCURRENCY)
@@ -884,16 +1016,18 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`Incremented regen_count for ${regeneratedIds.length} flagged items`)
     }
 
+    const wasCancelled = currentWork.cancelled
     endWork()
 
     res.json({
-      status: 'completed',
+      status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       role,
       voiceId,
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
+      cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       regeneratedItems: regeneratedItems.slice(0, 50) // Return up to 50 for review
     })
@@ -990,7 +1124,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses')
       .select('*')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
@@ -1136,7 +1270,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       role: 'presentation',
       voice_id: presentationVoiceId,
       origin: 'tts',
-      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`
+      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`,
+      lego_id: pres.lego_id  // Store directly - no regex parsing needed later
     }))
 
     // Bulk upsert - ignore conflicts (existing records stay as-is)
@@ -1154,6 +1289,56 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
+    // Populate lego_introductions: link each LEGO to its presentation audio
+    // Query back the audio IDs by matching presentation text
+    const presTextsNormalized = presentations.map(p => p.presentation_text.toLowerCase().trim())
+    const { data: audioData, error: queryError } = await supabase
+      .from('course_audio')
+      .select('id, text_normalized')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .in('text_normalized', presTextsNormalized)
+
+    if (queryError) {
+      logger.warn('Could not query presentation audio for lego_introductions:', queryError.message)
+    } else if (audioData?.length > 0) {
+      // Build text -> audio_id map
+      const textToAudioId = new Map()
+      for (const audio of audioData) {
+        textToAudioId.set(audio.text_normalized, audio.id)
+      }
+
+      // Build lego_introductions records
+      const introRecords = []
+      for (const pres of presentations) {
+        const audioId = textToAudioId.get(pres.presentation_text.toLowerCase().trim())
+        if (audioId) {
+          introRecords.push({
+            course_code: courseCode,
+            lego_id: pres.lego_id,
+            presentation_audio_id: audioId,
+            audio_uuid: audioId
+          })
+        }
+      }
+
+      // Upsert to lego_introductions (update if exists)
+      if (introRecords.length > 0) {
+        const { error: introError } = await supabase
+          .from('lego_introductions')
+          .upsert(introRecords, {
+            onConflict: 'course_code,lego_id',
+            ignoreDuplicates: false  // Update existing records
+          })
+
+        if (introError) {
+          logger.warn('Could not upsert lego_introductions:', introError.message)
+        } else {
+          logger.info(`Populated ${introRecords.length} lego_introductions records`)
+        }
+      }
+    }
+
     res.json({
       success: true,
       dryRun: false,
@@ -1166,6 +1351,153 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
   } catch (error) {
     logger.error('Regenerate presentations error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST LINK-AUDIO-IDS - Link audio IDs directly to phrases/legos/seeds
+// =============================================================================
+// After audio generation, this populates the *_audio_id columns for direct joins
+// This eliminates text-matching fragility in the cycle views
+// =============================================================================
+
+app.post('/link-audio-ids/:courseCode', async (req, res) => {
+  const { courseCode } = req.params
+  const { dryRun = false } = req.body
+
+  logger.info(`Link audio IDs request for: ${courseCode} (dryRun: ${dryRun})`)
+
+  try {
+    // Get course info
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('course_code, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+
+    const results = {
+      practice_phrases: { known: 0, target1: 0, target2: 0 },
+      legos: { known: 0, target1: 0, target2: 0 },
+      seeds: { known: 0, target1: 0, target2: 0 }
+    }
+
+    if (dryRun) {
+      // Just count what would be updated
+      const { count: ppKnown } = await supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('known_audio_id', null)
+
+      const { count: ppTarget1 } = await supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('target1_audio_id', null)
+
+      const { count: legoKnown } = await supabase
+        .from('course_legos')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+        .is('known_audio_id', null)
+
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        wouldUpdate: {
+          practice_phrases_missing_known: ppKnown || 0,
+          practice_phrases_missing_target1: ppTarget1 || 0,
+          legos_missing_known: legoKnown || 0
+        },
+        message: 'Use dryRun: false to execute'
+      })
+    }
+
+    // Link practice phrases - known audio
+    const { data: ppKnownResult } = await supabase.rpc('link_practice_phrase_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.practice_phrases.known = ppKnownResult || 0
+
+    // Link practice phrases - target1 audio
+    const { data: ppT1Result } = await supabase.rpc('link_practice_phrase_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.practice_phrases.target1 = ppT1Result || 0
+
+    // Link practice phrases - target2 audio
+    const { data: ppT2Result } = await supabase.rpc('link_practice_phrase_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.practice_phrases.target2 = ppT2Result || 0
+
+    // Link legos - known audio
+    const { data: legoKnownResult } = await supabase.rpc('link_lego_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.legos.known = legoKnownResult || 0
+
+    // Link legos - target1 audio
+    const { data: legoT1Result } = await supabase.rpc('link_lego_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.legos.target1 = legoT1Result || 0
+
+    // Link legos - target2 audio
+    const { data: legoT2Result } = await supabase.rpc('link_lego_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.legos.target2 = legoT2Result || 0
+
+    // Link seeds - known audio
+    const { data: seedKnownResult } = await supabase.rpc('link_seed_known_audio', {
+      p_course_code: courseCode,
+      p_known_lang: course.known_lang
+    })
+    results.seeds.known = seedKnownResult || 0
+
+    // Link seeds - target1 audio
+    const { data: seedT1Result } = await supabase.rpc('link_seed_target1_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.seeds.target1 = seedT1Result || 0
+
+    // Link seeds - target2 audio
+    const { data: seedT2Result } = await supabase.rpc('link_seed_target2_audio', {
+      p_course_code: courseCode,
+      p_target_lang: course.target_lang
+    })
+    results.seeds.target2 = seedT2Result || 0
+
+    const totalLinked = Object.values(results).reduce((sum, cat) =>
+      sum + Object.values(cat).reduce((s, v) => s + v, 0), 0)
+
+    logger.info(`Linked ${totalLinked} audio IDs for ${courseCode}`)
+
+    res.json({
+      success: true,
+      dryRun: false,
+      courseCode,
+      results,
+      totalLinked,
+      message: `Linked ${totalLinked} audio IDs`
+    })
+
+  } catch (error) {
+    logger.error('Link audio IDs error:', error)
     res.status(500).json({ error: error.message })
   }
 })

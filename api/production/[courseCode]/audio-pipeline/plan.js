@@ -34,8 +34,8 @@ export default async function handler(req, res) {
     // Get course config (v13: voice_config is JSONB)
     const { data: course, error: courseError } = await db
       .from('courses')
-      .select('code, display_name, known_lang, target_lang, voice_config, status')
-      .eq('code', courseCode)
+      .select('course_code, display_name, known_lang, target_lang, voice_config, status')
+      .eq('course_code', courseCode)
       .single();
 
     if (courseError || !course) {

@@ -320,6 +320,11 @@ const previewPhrases = {
     "Ich möchte so viel wie möglich lernen",
     "Das funktioniert wirklich gut für mich"
   ],
+  nld: [
+    "Ik probeer elke dag te oefenen",
+    "Ik wil zoveel mogelijk leren",
+    "Dit werkt echt goed voor mij"
+  ],
   ita: [
     "Cerco di praticare ogni giorno",
     "Voglio imparare il più possibile",
@@ -344,6 +349,36 @@ const previewPhrases = {
     "أحاول التدرب كل يوم",
     "أريد أن أتعلم قدر الإمكان",
     "هذا يعمل بشكل جيد جداً"
+  ],
+  gle: [
+    "Táim ag iarraidh cleachtadh gach lá",
+    "Ba mhaith liom oiread agus is féidir a fhoghlaim",
+    "Tá sé seo ag obair go han-mhaith dom"
+  ],
+  swe: [
+    "Jag försöker öva varje dag",
+    "Jag vill lära mig så mycket som möjligt",
+    "Det här fungerar verkligen bra för mig"
+  ],
+  fin: [
+    "Yritän harjoitella joka päivä",
+    "Haluan oppia niin paljon kuin mahdollista",
+    "Tämä toimii todella hyvin minulle"
+  ],
+  tur: [
+    "Her gün pratik yapmaya çalışıyorum",
+    "Mümkün olduğunca çok şey öğrenmek istiyorum",
+    "Bu benim için gerçekten iyi çalışıyor"
+  ],
+  eus: [
+    "Egunero praktikatzeko saiatzen naiz",
+    "Ahalik eta gehien ikasi nahi dut",
+    "Hau oso ondo funtzionatzen du niretzat"
+  ],
+  bre: [
+    "Klaskoù a ran pratiñ bemdez",
+    "C'hoant am eus da zeskiñ kement ha ma c'hallan",
+    "Labourat a ra mat-tre evidon"
   ],
   default: [
     "I'm trying to practice every day",

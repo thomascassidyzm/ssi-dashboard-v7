@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     const { data: course } = await supabase
       .from('courses')
       .select('seed_count')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single();
 
     const targetSeedCount = course?.seed_count || 668;

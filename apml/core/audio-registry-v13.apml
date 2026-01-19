@@ -321,6 +321,15 @@ architecture AudioRegistry:
             Automatically extracted during mastering for TTS audio.
             Used by learning app for timing and progress tracking.
 
+        lego_id:
+          type: "TEXT"
+          nullable: true
+          description: |
+            For presentation audio: the LEGO this introduces.
+            Stored directly to avoid regex parsing of presentation text.
+            NULL for non-presentation roles (known, target1, target2, etc.)
+            Example: 'S0001L01'
+
         file_size_bytes:
           type: "INTEGER"
           nullable: true
@@ -340,6 +349,10 @@ architecture AudioRegistry:
           columns: ["course_code"]
         idx_course_audio_lookup:
           columns: ["course_code", "text_normalized", "language", "role"]
+        idx_course_audio_lego:
+          columns: ["course_code", "lego_id"]
+          where: "lego_id IS NOT NULL"
+          description: "Fast lookup of presentation audio by LEGO"
 
       triggers:
         normalize_text:

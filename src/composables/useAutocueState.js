@@ -526,17 +526,18 @@ export function useAutocueState() {
         state.phrases = []
       }
 
-      // Get course info
+      // Get course info from database (not manifest)
       const courseRes = await fetch(
-        `${baseUrl}/api/production/${courseCode}/manifest`,
+        `${baseUrl}/api/production/${courseCode}/info`,
         { headers: { 'ngrok-skip-browser-warning': 'true' } }
       )
 
       if (courseRes.ok) {
         const courseData = await courseRes.json()
-        state.courseName = courseData.course_name || courseCode
-        state.knownLanguage = courseData.known_language || 'English'
-        state.targetLanguage = courseData.target_language || 'Unknown'
+        const course = courseData.course || courseData
+        state.courseName = course.display_name || course.name || courseCode
+        state.knownLanguage = course.known_lang || 'English'
+        state.targetLanguage = course.target_lang || 'Unknown'
       }
 
     } catch (err) {

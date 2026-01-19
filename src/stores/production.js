@@ -273,41 +273,21 @@ export const useProductionStore = defineStore('production', () => {
       const headers = getApiHeaders()
 
       // Fetch course data - all requests are optional, we'll use what we get
-      const [manifestRes, flagsRes, audioFlagsRes, metadataRes] = await Promise.all([
-        fetch(`${baseUrl}/api/production/${courseCode}/manifest`, { headers }).catch(() => null),
+      // NOTE: Manifest is NOT fetched here - it's only for legacy app export
+      const [flagsRes, audioFlagsRes, metadataRes] = await Promise.all([
         fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }).catch(() => null),
         fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers }).catch(() => null),
         fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null)
       ])
 
-      // Parse responses, using defaults for failures
-      let manifestData = null
-      if (manifestRes?.ok) {
-        manifestData = await manifestRes.json()
-      } else if (manifestRes) {
-        // Try to get error message
-        try {
-          const errData = await manifestRes.json()
-          console.warn('[Production] Manifest warning:', errData.error || errData.message)
-        } catch (e) {
-          console.warn('[Production] Manifest returned:', manifestRes.status)
-        }
+      // Manifest is legacy - only generated on-demand for export
+      courseManifest.value = {
+        _stub: true,
+        _source: 'database',
+        courseCode,
+        title: courseCode.replace(/_/g, ' '),
+        slices: [{ seeds: [], samples: {} }]
       }
-
-      // Even without manifest, we can show basic info from the course list
-      // Create a minimal stub if no manifest
-      if (!manifestData) {
-        manifestData = {
-          _stub: true,
-          _source: 'none',
-          courseCode,
-          title: courseCode.replace(/_/g, ' '),
-          stats: { seeds: 0, legos: 0, phrases: 0 },
-          slices: [{ seeds: [], samples: {} }]
-        }
-      }
-
-      courseManifest.value = manifestData
       sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} } // Legacy
       audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
@@ -670,13 +650,13 @@ export const useProductionStore = defineStore('production', () => {
   }
 
   // Audio Pipeline actions
-  async function startGeneration(courseCode) {
+  async function startGeneration(courseCode, options = {}) {
     try {
       const baseUrl = getApiBaseUrl()
       const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
         method: 'POST',
         headers: getApiHeaders(),
-        body: JSON.stringify({ approved: true })
+        body: JSON.stringify({ approved: true, options })
       })
 
       if (!response.ok) throw new Error('Failed to start generation')

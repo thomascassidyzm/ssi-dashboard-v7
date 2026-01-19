@@ -127,7 +127,7 @@ export default {
             })
             if (coursesRes.ok) {
               const coursesData = await coursesRes.json()
-              const courseRecord = coursesData.courses?.find(c => c.code === courseCode)
+              const courseRecord = coursesData.courses?.find(c => (c.code || c.course_code) === courseCode)
 
               if (courseRecord) {
                 // Course exists but no seeds in database - let CourseEditor try JSON files
@@ -433,11 +433,12 @@ export default {
         // Transform API response to expected format
         // Stats: { seeds, completedSeeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
-          const stats = contentStats[course.code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+          const code = course.code || course.course_code
+          const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
           return {
-            course_code: course.code,
-            source_language: course.code?.split('_for_')[1]?.toUpperCase() || 'UNK',
-            target_language: course.code?.split('_for_')[0]?.toUpperCase() || 'UNK',
+            course_code: code,
+            source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
+            target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
             total_seeds: stats.seeds || 668,
             version: '1.0',
             created_at: new Date().toISOString(),

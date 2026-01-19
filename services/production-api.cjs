@@ -16,6 +16,7 @@ const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
+const audioProcessor = require('./audio-processor.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -177,7 +178,7 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
     res.json({
       success: true,
       course: {
-        code: course.code,
+        code: course.course_code,
         displayName: course.display_name,
         knownLang: course.known_lang,
         targetLang: course.target_lang,
@@ -229,7 +230,7 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     res.json({
       success: true,
       course: {
-        code: updatedCourse.code,
+        code: updatedCourse.course_code,
         status: updatedCourse.status,
         updatedAt: updatedCourse.updated_at
       }
@@ -1071,7 +1072,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       uuid,
       audioData,
       metadata = {},
-      provenance = {}
+      provenance = {},
+      mimeType = 'audio/webm'
     } = req.body
 
     if (!uuid || !audioData) {
@@ -1079,13 +1081,40 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     }
 
     // Decode base64 audio data
-    const audioBuffer = Buffer.from(audioData, 'base64')
+    const rawBuffer = Buffer.from(audioData, 'base64')
+    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${uuid}`)
 
-    // Upload to S3
-    const result = await s3Service.uploadRecording(courseCode, uuid, audioBuffer, {
+    // Determine input format from MIME type
+    let inputFormat = 'webm'
+    if (mimeType.includes('mp3')) inputFormat = 'mp3'
+    else if (mimeType.includes('wav')) inputFormat = 'wav'
+    else if (mimeType.includes('m4a') || mimeType.includes('mp4')) inputFormat = 'm4a'
+    else if (mimeType.includes('ogg')) inputFormat = 'ogg'
+
+    // Process audio: convert to MP3, normalize, trim silence
+    logger.log(`[Upload] Processing audio (format: ${inputFormat})...`)
+    const { buffer: processedBuffer, metadata: audioMeta } = await audioProcessor.processRecordingBuffer(
+      rawBuffer,
+      {
+        inputFormat,
+        trimSilence: true,
+        normalize: true,
+        targetLUFS: -16
+      }
+    )
+
+    if (audioMeta.processed) {
+      logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
+    } else {
+      logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
+    }
+
+    // Upload processed audio to S3
+    const result = await s3Service.uploadRecording(courseCode, uuid, processedBuffer, {
       ...metadata,
       recordedBy: 'human',
-      source: 'recording'
+      source: 'recording',
+      audioProcessing: audioMeta
     })
 
     // Update the sample flag in Supabase to mark as recorded
@@ -1140,7 +1169,16 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       }
     })
 
-    res.json({ success: true, uuid, uploaded: true })
+    res.json({
+      success: true,
+      uuid,
+      uploaded: true,
+      audioProcessing: audioMeta.processed ? {
+        durationMs: audioMeta.durationMs,
+        format: audioMeta.format,
+        sizeReduction: audioMeta.inputSize - audioMeta.outputSize
+      } : null
+    })
   } catch (error) {
     logger.error('Error uploading recording:', error)
     res.status(500).json({ error: error.message })
@@ -1519,33 +1557,30 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
     const totalProcessed = roleResults.reduce((sum, r) => sum + (r.data?.success || 0), 0)
     const totalFailed = roleResults.reduce((sum, r) => sum + (r.data?.failed || 0), 0)
 
+    // Aggregate regeneratedItems from all roles for inline preview
+    const allRegeneratedItems = roleResults.flatMap(r => r.data?.regeneratedItems || [])
+
+    // NOTE: Don't auto-resolve flags here - let user review and mark done manually
+    // Flags stay at 'flagged' until user clicks "Done" after reviewing audio
+
     if (allSuccess) {
-      // Mark flags as resolved after successful regeneration
-      await supabaseClient.bulkResolveAudioFlags(uuids, courseCode)
       res.json({
         success: true,
         count: uuids.length,
         processed: totalProcessed,
         failed: totalFailed,
+        regeneratedItems: allRegeneratedItems,
         byRole: roleResults.map(r => ({ role: r.role, ...r.data }))
       })
     } else {
-      // Some roles failed - resolve successful ones, leave failed ones flagged
-      const failedRoles = roleResults.filter(r => !r.success)
-      const failedUuids = failedRoles.flatMap(r => byRole[r.role] || [])
-      const successUuids = uuids.filter(u => !failedUuids.includes(u))
-
-      if (successUuids.length > 0) {
-        await supabaseClient.bulkResolveAudioFlags(successUuids, courseCode)
-      }
-      // Failed flags stay as 'flagged' for retry
-
+      // Some roles failed
       res.json({
         success: false,
         partial: true,
         count: uuids.length,
         processed: totalProcessed,
         failed: totalFailed,
+        regeneratedItems: allRegeneratedItems,
         byRole: roleResults.map(r => ({ role: r.role, success: r.success, ...r.data, error: r.error }))
       })
     }
@@ -2233,7 +2268,12 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
       // For presentation audio, extract the KNOWN word for matching
       // Presentation text format: "The Spanish for 'known_text', is:" or "The Spanish for 'known_text', as in '...', is:"
+      // IMPORTANT: Only count as existing if s3_key is mastered/ (not pending/)
       if (role === 'presentation' && normalizedText) {
+        // Skip pending presentations - they have placeholder s3_key but no actual audio
+        if (ca.s3_key?.startsWith('pending/')) {
+          continue
+        }
         const matches = normalizedText.match(/'([^']+)'/g)
         if (matches && matches.length >= 1) {
           // First quoted word is the known text being introduced
@@ -2375,11 +2415,11 @@ app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) 
     // Step 1: Get ALL audio needs directly from database (not limited like Phase 8 plan)
     const supabase = supabaseClient.getClient()
 
-    // Get course voices (v13: voice_config JSONB column, courses.code is PK)
+    // Get course voices (voice_config JSONB column, courses.course_code is PK)
     const { data: courseData } = await supabase
       .from('courses')
       .select('voice_config')
-      .eq('code', courseCode)
+      .eq('course_code', courseCode)
       .single()
 
     const voiceConfig = courseData?.voice_config || {}
@@ -2880,12 +2920,26 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       .select('audio_uuid, status, reason, flagged_by, created_at, regen_count')
       .eq('course_code', courseCode)
 
+    // Query lego_cycles to get LEGO debut audio (the LEGO itself as a playable/flaggable item)
+    let legoCyclesQuery = supabase
+      .from('lego_cycles')
+      .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_uuid, target1_audio_uuid, target2_audio_uuid, known_duration_ms, target1_duration_ms, target2_duration_ms')
+      .eq('course_code', courseCode)
+
+    if (startNum !== null) {
+      legoCyclesQuery = legoCyclesQuery.gte('seed_number', startNum)
+    }
+    if (endNum !== null) {
+      legoCyclesQuery = legoCyclesQuery.lte('seed_number', endNum)
+    }
+
     // Run all queries in parallel
-    const [cyclesResult, seedsResult, legosResult, flagsResult] = await Promise.all([
+    const [cyclesResult, seedsResult, legosResult, flagsResult, legoCyclesResult] = await Promise.all([
       cyclesQuery,
       seedsQuery,
       legosQuery,
-      flagsQuery
+      flagsQuery,
+      legoCyclesQuery
     ])
 
     if (cyclesResult.error) {
@@ -2897,6 +2951,14 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
     const seedsData = seedsResult.data || []
     const legosData = legosResult.data || []
     const flagsData = flagsResult.data || []
+    const legoCyclesData = legoCyclesResult.data || []
+
+    // Build LEGO debut lookup: "seed_number:lego_index" -> lego cycle with audio
+    const legoDebutMap = new Map()
+    for (const lc of legoCyclesData) {
+      const key = `${lc.seed_number}:${lc.lego_index}`
+      legoDebutMap.set(key, lc)
+    }
 
     // Build flags lookup map: audio_uuid -> { status, notes, flagged_by, flagged_at, regen_count }
     const flagsMap = new Map()
@@ -3027,6 +3089,42 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
               const legoKey = `${seed.seed_number}:${lego.lego_index}`
               const legoData = legoTextMap.get(legoKey) || {}
 
+              // Get LEGO debut (the LEGO itself as a phrase at position 0)
+              const legoDebut = legoDebutMap.get(legoKey)
+              const allPhrases = [...lego.phrases]
+
+              // Insert LEGO debut as position 0 if it has audio
+              if (legoDebut && (legoDebut.known_audio_uuid || legoDebut.target1_audio_uuid || legoDebut.target2_audio_uuid)) {
+                const buildS3Key = (uuid) => uuid ? `mastered/${uuid.toUpperCase()}.mp3` : null
+                const knownFlag = legoDebut.known_audio_uuid ? flagsMap.get(legoDebut.known_audio_uuid) : null
+                const target1Flag = legoDebut.target1_audio_uuid ? flagsMap.get(legoDebut.target1_audio_uuid) : null
+                const target2Flag = legoDebut.target2_audio_uuid ? flagsMap.get(legoDebut.target2_audio_uuid) : null
+                const isFlagged = (flag) => flag?.status === 'flagged'
+
+                allPhrases.unshift({
+                  id: legoDebut.id,
+                  position: 0,
+                  known_text: legoDebut.known_text,
+                  target_text: legoDebut.target_text,
+                  type: 'lego_debut',
+                  word_count: 1,
+                  lego_count: 1,
+                  known_audio_uuid: legoDebut.known_audio_uuid || null,
+                  target1_audio_uuid: legoDebut.target1_audio_uuid || null,
+                  target2_audio_uuid: legoDebut.target2_audio_uuid || null,
+                  known_s3_key: buildS3Key(legoDebut.known_audio_uuid),
+                  target1_s3_key: buildS3Key(legoDebut.target1_audio_uuid),
+                  target2_s3_key: buildS3Key(legoDebut.target2_audio_uuid),
+                  known_duration_ms: legoDebut.known_duration_ms || null,
+                  target1_duration_ms: legoDebut.target1_duration_ms || null,
+                  target2_duration_ms: legoDebut.target2_duration_ms || null,
+                  is_flagged: isFlagged(knownFlag) || isFlagged(target1Flag) || isFlagged(target2Flag),
+                  known_flag: knownFlag || null,
+                  target1_flag: target1Flag || null,
+                  target2_flag: target2Flag || null
+                })
+              }
+
               return {
                 lego_id: lego.lego_id,
                 lego_index: lego.lego_index,
@@ -3034,7 +3132,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
                 known_text: legoData.known_text || null,
                 target_text: legoData.target_text || null,
                 is_new: legoData.is_new ?? null,
-                phrases: lego.phrases.sort((a, b) => a.position - b.position)
+                phrases: allPhrases.sort((a, b) => a.position - b.position)
               }
             })
         }
@@ -3225,6 +3323,142 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
     })
   } catch (error) {
     logger.error(`Error updating phrase ${phraseId}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// RECORDING OPTIMIZER ENDPOINTS
+// =============================================================================
+
+// Import the recording optimizer algorithm
+const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+
+// GET /api/production/:courseCode/recording-optimizer
+// Runs the GuaranteedCoverage algorithm to find minimum recording set
+app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    logger.log(`[Recording Optimizer] Generating script for ${courseCode}`)
+
+    // Run the algorithm (suppress console output by redirecting)
+    const originalLog = console.log
+    const logs = []
+    console.log = (...args) => logs.push(args.join(' '))
+
+    const result = await generateRecordingScript(courseCode, { verbose: false })
+
+    console.log = originalLog
+
+    if (!result) {
+      return res.status(404).json({ error: 'No LEGOs found for course. Run Course Builder first.' })
+    }
+
+    // Format response for dashboard
+    res.json({
+      courseCode,
+      generatedAt: result.generatedAt,
+      statistics: {
+        totalLegos: result.statistics.totalLegos,
+        phrasesToRecord: result.recordingScript.phrases.length,
+        directRecord: result.directRecord.items.length,
+        totalRecordings: result.statistics.totalRecordings,
+        coveragePercent: result.statistics.coveragePercent,
+        reductionPercent: result.statistics.reductionPercent,
+        estimatedMinutes: result.statistics.estimatedMinutes,
+        totalPhrases: result.statistics.totalLegos * 10 // Approx phrases generatable
+      },
+      recordingScript: result.recordingScript.phrases.slice(0, 50), // First 50 for preview
+      directRecord: result.directRecord.items.slice(0, 20), // First 20 for preview
+      fullScript: result // Full data if needed
+    })
+  } catch (error) {
+    logger.error('Error running recording optimizer:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/frankenstein-demo
+// Returns audio URLs for the frankenstein demo (Seeds 1, 6, 11, and synthesized results)
+app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Demo splice S3 keys (pre-generated spliced audio stored in S3)
+    // V2: Generated with deterministic silence detection, 44.1kHz/128k CBR
+    const demoSplices = {
+      // demo1: "dw i ddim isio siarad Cymraeg rŵan" - built from seeds 1, 6, 11
+      60: { s3Key: 'demo-splices/demo1.mp3', duration: 8934 },
+      // demo2: "fedra i ddim siarad Cymraeg" - built from seed 6
+      61: { s3Key: 'demo-splices/demo2.mp3', duration: 7105 },
+      // demo3: "dw i isio ymarfer siarad Cymraeg" - built from seeds 1, 11
+      62: { s3Key: 'demo-splices/demo3.mp3', duration: 7105 }
+    }
+
+    // The demo phrases for Welsh North
+    // Source phrases (seeds 1, 6, 11) - fetched from database
+    // Synthesized phrases (seeds 60, 61, 62) - use pre-spliced demo files
+    const demoPhrases = [
+      { seed: 1, text: 'dw i isio siarad Cymraeg', role: 'target1', isSynthesized: false },
+      { seed: 6, text: 'fedra i ddim cofio sut i siarad Cymraeg', role: 'target1', isSynthesized: false },
+      { seed: 11, text: 'ond well i mi ymarfer siarad Cymraeg rŵan', role: 'target1', isSynthesized: false },
+      { seed: 60, text: 'dw i ddim isio siarad Cymraeg rŵan', english: "I don't want to speak Welsh now", role: 'target1', isSynthesized: true },
+      { seed: 61, text: 'fedra i ddim siarad Cymraeg', english: "I can't speak Welsh", role: 'target1', isSynthesized: true },
+      { seed: 62, text: 'dw i isio ymarfer siarad Cymraeg', english: "I want to practice speaking Welsh", role: 'target1', isSynthesized: true }
+    ]
+
+    const results = []
+
+    for (const phrase of demoPhrases) {
+      // For synthesized phrases, use the pre-spliced demo files with signed URLs
+      if (phrase.isSynthesized && demoSplices[phrase.seed]) {
+        const splice = demoSplices[phrase.seed]
+        const url = await s3Service.getAudioSignedUrl(`demo-splice-${phrase.seed}`, 3600, { s3Key: splice.s3Key })
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          english: phrase.english,
+          audioId: `demo-splice-${phrase.seed}`,
+          url,
+          duration: splice.duration,
+          isSynthesized: true
+        })
+        continue
+      }
+
+      // For source phrases, find audio in the database
+      const audio = await supabaseClient.findCourseAudio(courseCode, phrase.text, 'cym', phrase.role)
+
+      if (audio) {
+        // Get signed URL
+        const url = await s3Service.getAudioSignedUrl(audio.id, 3600, { s3Key: audio.s3_key })
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          audioId: audio.id,
+          url,
+          duration: audio.duration_ms,
+          isSynthesized: false
+        })
+      } else {
+        results.push({
+          seed: phrase.seed,
+          text: phrase.text,
+          audioId: null,
+          url: null,
+          duration: null,
+          isSynthesized: false
+        })
+      }
+    }
+
+    res.json({
+      courseCode,
+      phrases: results
+    })
+  } catch (error) {
+    logger.error('Error fetching frankenstein demo audio:', error)
     res.status(500).json({ error: error.message })
   }
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="audio-pipeline text-slate-100">
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-6">
+    <main class="max-w-7xl mx-auto px-6 py-6">
       <!-- Loading State -->
       <div v-if="loading" class="flex flex-col items-center justify-center py-20">
         <div class="relative">
@@ -477,24 +477,43 @@
             :estimated-time="estimatedTime"
           />
 
+          <!-- Concurrency Control -->
+          <div class="mt-4 flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-slate-700/30">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              <span class="text-sm text-slate-400">Concurrency</span>
+            </div>
+            <input
+              type="range"
+              :value="concurrency"
+              @input="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
+              min="1"
+              max="20"
+              class="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+            />
+            <div class="flex items-center gap-2">
+              <input
+                type="number"
+                :value="concurrency"
+                @change="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
+                min="1"
+                max="20"
+                class="w-14 px-2 py-1 bg-slate-900/50 text-slate-100 text-center rounded border border-slate-600/50 text-sm"
+              />
+              <span class="text-xs text-slate-500">/ 20</span>
+            </div>
+          </div>
+
           <!-- Action Buttons -->
           <div class="mt-4 flex flex-wrap gap-3">
             <button
-              @click="showPlan"
-              :disabled="isGenerating || loadingPlan"
-              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 rounded-lg font-medium transition-colors text-sm flex items-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-              </svg>
-              {{ loadingPlan ? 'Loading...' : 'Plan (Dry Run)' }}
-            </button>
-            <button
               @click="startGeneration"
-              :disabled="!canStartGeneration || isGenerating"
+              :disabled="!canStartGeneration || isGenerating || startingGeneration"
               class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:text-slate-500 rounded-lg font-medium transition-all text-sm flex items-center gap-2"
             >
-              <svg v-if="isGenerating" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+              <svg v-if="isGenerating || startingGeneration" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -502,7 +521,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {{ isGenerating ? 'Generating...' : 'Start Generation' }}
+              {{ isGenerating ? 'Generating...' : startingGeneration ? 'Starting...' : 'Start Generation' }}
             </button>
             <button
               v-if="isGenerating"
@@ -650,10 +669,16 @@ const loadingAllFlaggedQueue = ref(false)
 const regeneratingAll = ref(false)
 const allFlaggedResult = ref<any>(null)
 
-// Plan/dry run state
+// Plan/dry run state (kept for plan panel compatibility)
 const planResult = ref<any>(null)
 const showingPlan = ref(false)
 const loadingPlan = ref(false)
+
+// Generation state for immediate button feedback
+const startingGeneration = ref(false)
+
+// Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
+const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
 
 // Voice config update key to trigger MissingAudio refresh
 const missingAudioKey = ref(0)
@@ -728,9 +753,20 @@ const canStartGeneration = computed(() =>
 const estimatedCost = computed(() => productionStore.costEstimate.estimated)
 const estimatedTime = computed(() => productionStore.costEstimate.estimatedTime)
 
+// Concurrency update (save to localStorage)
+const updateConcurrency = (value: number) => {
+  concurrency.value = Math.max(1, Math.min(20, value))
+  localStorage.setItem('audio_concurrency', String(concurrency.value))
+}
+
 // Actions
 const startGeneration = async () => {
-  await productionStore.startGeneration(courseCode.value)
+  startingGeneration.value = true
+  try {
+    await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+  } finally {
+    startingGeneration.value = false
+  }
 }
 
 const cancelGeneration = async () => {
@@ -1110,9 +1146,22 @@ const executeAllFlagged = async () => {
       allFlaggedResult.value = {
         success: true,
         count: data.count,
-        jobId: data.jobId
+        processed: data.processed,
+        failed: data.failed
       }
-      // Clear the queue preview since items are now in progress
+      // Populate regenerateResult with items for the review panel
+      if (data.regeneratedItems?.length > 0) {
+        regenerateResult.value = {
+          dryRun: false,
+          flaggedOnly: true,
+          status: 'completed',
+          total: data.count,
+          success: data.processed,
+          failed: data.failed,
+          regeneratedItems: data.regeneratedItems
+        }
+      }
+      // Clear the queue preview since items have been regenerated
       allFlaggedQueue.value = null
       // Reload pipeline stats
       await productionStore.loadCourse(courseCode.value)

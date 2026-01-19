@@ -6,6 +6,25 @@
         <h1 class="studio-title">Recording Studio</h1>
         <p class="studio-subtitle">{{ courseCode }}</p>
       </div>
+
+      <!-- Flow Mode Toggle -->
+      <div class="flow-mode-toggle">
+        <button
+          @click="toggleFlowMode"
+          :class="['flow-btn', { active: isFlowMode, recording: flowRecorder.isCapturing.value }]"
+        >
+          <span v-if="!isFlowMode" class="flow-icon">▶</span>
+          <span v-else-if="flowRecorder.isCapturing.value" class="flow-icon pulse">●</span>
+          <span v-else class="flow-icon">◉</span>
+          <span class="flow-label">
+            {{ isFlowMode ? (flowRecorder.isCapturing.value ? 'Recording...' : 'Listening...') : 'Start Flow Mode' }}
+          </span>
+        </button>
+        <p class="flow-hint" v-if="!isFlowMode">
+          Just talk — auto-detects speech, uploads, advances
+        </p>
+      </div>
+
       <div class="header-stats">
         <div class="stat-item">
           <span class="stat-label">Queue</span>
@@ -16,6 +35,12 @@
           <span class="stat-value">{{ queueStats.percentage }}%</span>
         </div>
       </div>
+    </div>
+
+    <!-- Flow Mode Audio Level Indicator -->
+    <div v-if="isFlowMode" class="flow-level-bar">
+      <div class="level-fill" :style="{ width: (flowRecorder.currentLevel.value * 100) + '%' }"></div>
+      <div class="level-threshold" :style="{ left: '2%' }"></div>
     </div>
 
     <!-- Main Layout: Autocue + Queue Panel -->
@@ -73,6 +98,7 @@ import { useRoute } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import { useRecorder } from '@/composables/useRecorder'
 import { useAudioUpload } from '@/composables/useAudioUpload'
+import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 
 import AutocueDisplay from './components/AutocueDisplay.vue'
 import RecordingControls from './components/RecordingControls.vue'
@@ -87,6 +113,14 @@ const courseCode = computed(() => route.params.courseCode as string)
 // Composables
 const recorder = useRecorder()
 const uploader = useAudioUpload()
+const flowRecorder = useContinuousRecorder({
+  silenceThreshold: 0.02,
+  silenceDuration: 800,
+  minSpeechDuration: 300
+})
+
+// Flow mode state
+const isFlowMode = computed(() => flowRecorder.isFlowMode.value)
 
 // State
 const slowMode = ref(false)
@@ -227,6 +261,74 @@ function updateFilters(filters: any) {
   queueFilters.value = { ...queueFilters.value, ...filters }
   loadQueue()
 }
+
+// ============================================================================
+// FLOW MODE (Continuous Recording)
+// ============================================================================
+
+async function toggleFlowMode() {
+  if (isFlowMode.value) {
+    flowRecorder.stopFlow()
+  } else {
+    await flowRecorder.startFlow()
+  }
+}
+
+// Handle captured segment in flow mode
+flowRecorder.onSegmentCaptured(async (segment) => {
+  if (!currentPhrase.value) return
+
+  try {
+    // Upload the segment
+    const metadata = {
+      uuid: currentPhrase.value.uuid,
+      text: currentPhrase.value.text,
+      language: currentPhrase.value.language,
+      role: currentPhrase.value.role,
+      cadence: slowMode.value ? 'slow' : 'natural',
+      voiceId: `human_${courseCode.value}`,
+      courseCode: courseCode.value
+    }
+
+    await store.uploadRecording(segment.blob, metadata)
+
+    uploadStatus.value = {
+      message: `✓ Uploaded (${Math.round(segment.durationMs / 100) / 10}s)`,
+      type: 'success'
+    }
+
+    // Clear status after 2 seconds (faster in flow mode)
+    setTimeout(() => {
+      uploadStatus.value = null
+    }, 2000)
+
+    // Auto-advance to next phrase
+    const currentIdx = queue.value.findIndex(item => item.uuid === currentPhrase.value?.uuid)
+    if (currentIdx < queue.value.length - 1) {
+      selectPhrase(queue.value[currentIdx + 1])
+    } else {
+      // Queue complete!
+      flowRecorder.stopFlow()
+      uploadStatus.value = {
+        message: '🎉 All phrases recorded!',
+        type: 'success'
+      }
+    }
+
+  } catch (err: any) {
+    uploadStatus.value = {
+      message: `Upload failed: ${err.message}`,
+      type: 'error'
+    }
+  }
+})
+
+flowRecorder.onError((error) => {
+  uploadStatus.value = {
+    message: `Flow mode error: ${error}`,
+    type: 'error'
+  }
+})
 
 // Lifecycle
 onMounted(() => {
@@ -382,5 +484,100 @@ watch(courseCode, () => {
     order: -1;
     max-height: 300px;
   }
+}
+
+/* Flow Mode Styles */
+.flow-mode-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-slate, #334155);
+  border: 2px solid var(--color-graphite, #475569);
+  border-radius: 50px;
+  color: var(--color-paper, #f7f7f2);
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flow-btn:hover {
+  background: var(--color-graphite, #475569);
+  border-color: var(--color-emerald, #06ffa5);
+}
+
+.flow-btn.active {
+  background: var(--color-emerald, #06ffa5);
+  border-color: var(--color-emerald, #06ffa5);
+  color: var(--color-void, #0f172a);
+  box-shadow: 0 0 20px rgba(6, 255, 165, 0.3);
+}
+
+.flow-btn.active.recording {
+  background: var(--color-film-red, #e63946);
+  border-color: var(--color-film-red, #e63946);
+  color: white;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+  animation: recordPulse 1.5s ease-in-out infinite;
+}
+
+.flow-icon {
+  font-size: 1.25rem;
+}
+
+.flow-icon.pulse {
+  animation: iconPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(230, 57, 70, 0.7); }
+}
+
+.flow-hint {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  margin: 0;
+  opacity: 0.7;
+}
+
+.flow-level-bar {
+  height: 4px;
+  background: var(--color-slate, #334155);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-emerald, #06ffa5), var(--color-tungsten, #ffa630));
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+.level-threshold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-film-red, #e63946);
+  opacity: 0.5;
 }
 </style>

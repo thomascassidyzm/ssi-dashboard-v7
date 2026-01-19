@@ -95,6 +95,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
+import { getCourseStats as getSupabaseStats, isConfigured as isSupabaseConfigured } from '@/services/supabase'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
@@ -154,21 +155,37 @@ const ratioClass = computed(() => {
   return 'text-red-400'
 })
 
-// Fetch course stats from Course Builder API
+// Fetch course stats directly from Supabase (database-first)
 async function fetchCourseStats() {
   try {
-    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
+    if (isSupabaseConfigured()) {
+      // Direct database query - no orchestrator needed
+      const stats = await getSupabaseStats(props.courseCode)
+      const legos = stats.legos || 0
+      const phrases = stats.practicePhrases || 0
       courseStats.value = {
-        seeds: data.seeds || 0,
-        legos: data.legos || 0,
-        phrases: data.phrases || 0,
-        ratio: data.ratio || '0.0'
+        seeds: stats.seeds || 0,
+        legos: legos,
+        phrases: phrases,
+        ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
+      }
+    } else {
+      // Fallback to API if Supabase not configured
+      const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || ''
+      const response = await fetch(`${apiBase}/api/courses/${props.courseCode}`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+      if (response.ok) {
+        const data = await response.json()
+        const stats = data.stats || {}
+        const legos = stats.legos || 0
+        const phrases = stats.practicePhrases || 0
+        courseStats.value = {
+          seeds: stats.seeds || 0,
+          legos: legos,
+          phrases: phrases,
+          ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
+        }
       }
     }
   } catch (err) {
@@ -201,6 +218,14 @@ const quickActions = computed(() => {
       icon: '🚀',
       label: 'Launch Learning App',
       description: 'Open course in learning app with QA access',
+      badge: null,
+      disabled: false
+    },
+    {
+      id: 'recording_optimizer',
+      icon: '🎙️',
+      label: 'Recording Optimizer',
+      description: 'Plan human recordings with minimum phrases',
       badge: null,
       disabled: false
     },

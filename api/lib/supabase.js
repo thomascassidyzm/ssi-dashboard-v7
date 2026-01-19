@@ -56,7 +56,7 @@ export async function listCoursesFromDatabase() {
 
   const { data, error } = await supabase
     .from('courses')
-    .select('code, known_lang, target_lang, display_name, status, course_type, voice_config')
+    .select('course_code, known_lang, target_lang, display_name, status, course_type, voice_config')
     .order('display_name');
 
   if (error) {
@@ -66,7 +66,7 @@ export async function listCoursesFromDatabase() {
 
   // Transform to match expected format
   return data?.map(c => ({
-    code: c.code,
+    code: c.course_code,
     name: c.display_name || `${c.known_lang.toUpperCase()} → ${c.target_lang.toUpperCase()}`,
     known_lang: c.known_lang,
     target_lang: c.target_lang,
@@ -86,7 +86,7 @@ export async function getCourse(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('*')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (error && error.code !== 'PGRST116') throw error;
@@ -103,7 +103,7 @@ export async function getCourseVoices(courseCode) {
   const { data, error } = await supabase
     .from('courses')
     .select('voice_config')
-    .eq('code', courseCode)
+    .eq('course_code', courseCode)
     .single();
 
   if (error && error.code !== 'PGRST116') throw error;

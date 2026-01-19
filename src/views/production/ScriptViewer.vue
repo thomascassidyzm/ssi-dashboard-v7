@@ -358,6 +358,7 @@
           <AudioPlayer
             :audio-url="currentPlayingSample.url"
             :show-waveform="false"
+            :auto-play="true"
             @ended="onPlaybackEnded"
             @error="onPlaybackError"
           />
@@ -1013,12 +1014,14 @@ const playFlaggedItem = async (item: FlaggedItem) => {
   console.log('[playFlaggedItem] Called with item:', item);
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const response = await fetch(
-      `${apiBaseUrl}/api/production/${courseCode.value}/audio/${item.uuid}/url`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
-    );
-    if (!response.ok) throw new Error('Failed to get audio URL');
+    const url = `${apiBaseUrl}/api/production/${courseCode.value}/audio/${item.uuid}/url`;
+    console.log('[playFlaggedItem] Fetching audio URL from:', url);
+
+    const response = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } });
+    if (!response.ok) throw new Error(`Failed to get audio URL: ${response.status}`);
     const data = await response.json();
+
+    console.log('[playFlaggedItem] Got audio URL:', data.url?.substring(0, 100) + '...');
 
     currentPlayingSample.value = {
       uuid: item.uuid,
@@ -1029,7 +1032,7 @@ const playFlaggedItem = async (item: FlaggedItem) => {
       url: data.url,
     };
   } catch (err) {
-    console.error('Error playing flagged item:', err);
+    console.error('[playFlaggedItem] Error:', err);
   }
 };
 

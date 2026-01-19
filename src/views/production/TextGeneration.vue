@@ -442,7 +442,7 @@ async function startBuilder() {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
       },
-      body: JSON.stringify({ terminal })
+      body: JSON.stringify({ terminal, targetSeeds: seedCount.value })
     })
 
     const result = await response.json()
@@ -484,6 +484,9 @@ async function stopBuilder() {
 }
 
 function resetBuilder() {
+  // Just reset local UI state to unlock Start button
+  // Does NOT delete data from database
+  stopPolling()  // Stop polling so it doesn't immediately restore 'complete' status
   progress.value = {
     status: 'idle',
     currentSeed: 0,
@@ -491,7 +494,7 @@ function resetBuilder() {
     legosInserted: 0,
     phrasesInserted: 0
   }
-  addEvent('Progress reset')
+  addEvent('UI reset - Start button unlocked (polling stopped)')
 }
 
 // Polling

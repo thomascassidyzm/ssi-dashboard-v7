@@ -111,6 +111,120 @@
             </div>
           </section>
 
+          <!-- LEGO Audio Synthesis Demo -->
+          <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
+            <div class="px-6 py-4 border-b border-violet-500/20">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🧬</span>
+                <div>
+                  <h2 class="text-lg font-semibold text-violet-300">LEGO Audio Synthesis</h2>
+                  <p class="text-sm text-slate-400">Building new phrases from recorded components</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-6">
+              <!-- Target phrase with audio -->
+              <div class="text-center">
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Synthesized Phrase</p>
+                <p class="text-xl text-slate-100 font-medium">{{ currentExample.welsh }}</p>
+                <p class="text-sm text-slate-400 mt-1">"{{ currentExample.english }}"</p>
+                <!-- Play button for target -->
+                <div class="mt-3 flex justify-center">
+                  <button v-if="demoAudio[currentExample.seed]"
+                          @click="playDemoAudio(currentExample.seed)"
+                          :class="[
+                            'flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors',
+                            currentlyPlaying === currentExample.seed
+                              ? 'bg-violet-700 ring-2 ring-violet-400'
+                              : 'bg-violet-600 hover:bg-violet-500'
+                          ]">
+                    <svg v-if="currentlyPlaying !== currentExample.seed" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
+                    </svg>
+                    <svg v-else class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                      <rect x="5" y="4" width="3" height="12" rx="1"/>
+                      <rect x="12" y="4" width="3" height="12" rx="1"/>
+                    </svg>
+                    {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play Spliced Result' }}
+                  </button>
+                  <span v-else class="text-sm text-slate-500 italic">Loading audio...</span>
+                </div>
+              </div>
+
+              <!-- Build visualization -->
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
+                <p class="text-xs text-slate-500 uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                  <span v-for="(word, idx) in currentExample.buildOrder" :key="idx"
+                        :class="[
+                          'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all cursor-pointer hover:scale-105',
+                          word.sourceColor
+                        ]"
+                        @click="playDemoAudio(word.from)">
+                    {{ word.text }}
+                    <span class="text-xs opacity-60 ml-1">S{{ word.from }}</span>
+                  </span>
+                </div>
+
+                <!-- Source phrases with play buttons -->
+                <div class="space-y-3 mt-6">
+                  <div v-for="source in usedSources" :key="source.seed"
+                       :class="['p-3 rounded-lg border', source.borderClass]">
+                    <div class="flex items-center justify-between">
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span :class="['text-xs font-semibold uppercase tracking-wider', source.textClass]">
+                            Seed {{ source.seed }}
+                          </span>
+                          <!-- Play button -->
+                          <button v-if="demoAudio[source.seed]"
+                                  @click="playDemoAudio(source.seed)"
+                                  :class="[
+                                    'w-6 h-6 rounded-full flex items-center justify-center transition-colors',
+                                    currentlyPlaying === source.seed ? 'ring-2 ring-white/50' : '',
+                                    source.playBtnClass
+                                  ]">
+                            <svg class="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <p class="text-sm text-slate-200 mt-1">{{ source.welsh }}</p>
+                        <p class="text-xs text-slate-500">"{{ source.english }}"</p>
+                      </div>
+                      <div class="flex flex-wrap gap-1 ml-4">
+                        <span v-for="lego in sourceProvides[source.seed]" :key="lego"
+                              :class="['text-xs px-2 py-0.5 rounded', source.badgeClass]">
+                          {{ lego }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key insight -->
+              <div class="bg-gradient-to-r from-violet-500/10 to-emerald-500/10 rounded-lg p-4 border border-violet-500/20">
+                <div class="flex items-start gap-3">
+                  <span class="text-xl">💡</span>
+                  <div>
+                    <p class="text-sm text-slate-200 font-medium">The Magic</p>
+                    <p class="text-sm text-slate-400 mt-1">
+                      By recording just <span class="text-emerald-400 font-semibold">{{ totalRecordings }} phrases</span>,
+                      we can synthesize audio for all <span class="text-violet-400 font-semibold">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
+                      That's a <span class="text-amber-400 font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden audio element for playback -->
+            <audio ref="demoAudioPlayer" @ended="currentlyPlaying = null"></audio>
+          </section>
+
           <!-- Recording Script Preview -->
           <section class="rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
@@ -285,61 +399,233 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')
 
-// Algorithm state
+// API base URL
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470'
+
+// Loading & error state
 const isCalculating = ref(false)
+const isLoading = ref(true)
+const error = ref(null)
+
+// Algorithm results
 const stats = ref({
-  totalLegos: 627,
-  phrasesToRecord: 199,
-  directRecord: 55,
-  estimatedMinutes: 66,
-  reductionPercent: 97.8,
-  totalPhrases: 11818
+  totalLegos: 0,
+  phrasesToRecord: 0,
+  directRecord: 0,
+  estimatedMinutes: 0,
+  reductionPercent: 0,
+  totalPhrases: 0,
+  coveragePercent: 0
 })
 
-// Coverage stats
+// Recording script phrases
+const filteredPhrases = ref([])
+const directRecordItems = ref([])
+
+// Coverage stats (will be computed from actual recordings later)
 const totalRecordings = computed(() => stats.value.phrasesToRecord + stats.value.directRecord)
-const recordedCount = ref(142)
-const splicedCount = ref(847)
-const pendingCount = ref(112)
-const recordedPercent = computed(() => Math.round((recordedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
-const splicedPercent = computed(() => Math.round((splicedCount.value / (recordedCount.value + splicedCount.value + pendingCount.value)) * 100))
-const totalCoverage = computed(() => recordedPercent.value + splicedPercent.value)
+const recordedCount = ref(0) // TODO: fetch from audio inventory
+const splicedCount = ref(0)
+const pendingCount = computed(() => totalRecordings.value - recordedCount.value)
+const recordedPercent = computed(() => {
+  const total = recordedCount.value + splicedCount.value + pendingCount.value
+  return total > 0 ? Math.round((recordedCount.value / total) * 100) : 0
+})
+const splicedPercent = computed(() => {
+  const total = recordedCount.value + splicedCount.value + pendingCount.value
+  return total > 0 ? Math.round((splicedCount.value / total) * 100) : 0
+})
+const totalCoverage = computed(() => stats.value.coveragePercent || 0)
 
-// Recording script
-const filteredPhrases = ref([
-  { id: 1, target: "mae'n fyd mawr ond dydy hynna ddim yn meddwl na fedra i ddysgu", source: "it's a big world but that doesn't mean I can't learn", legoCount: 11 },
-  { id: 2, target: "dw i'n cofio pan oeddan nhw newydd ddechrau yn yr ysgol", source: "I remember when they had just started at school", legoCount: 10 },
-  { id: 3, target: "os na wnei di banad o goffi i mi rŵan hyn fydda i ddim yn hapus", source: "if you don't make me a cup of coffee right now I won't be happy", legoCount: 10 },
-  { id: 4, target: "dw i isio ffeindio siop yn agos at y gwesty lle medra i brynu", source: "I want to find a shop close to the hotel where I can buy", legoCount: 9 },
-  { id: 5, target: "a deud y gwir, efallai dylen ni agor y drws a chau'r ffenest", source: "to tell the truth, maybe we should open the door and close the window", legoCount: 9 },
-  { id: 6, target: "stopio siarad Cymraeg", source: "stop speaking Welsh", legoCount: 3 },
-  { id: 7, target: "dw i isio dysgu siarad Cymraeg", source: "I want to learn to speak Welsh", legoCount: 5 },
-])
+// Flagged phrases (to be fetged from flags system)
+const flaggedPhrases = ref([])
 
-// Flagged phrases
-const flaggedPhrases = ref([
-  { id: 1, phrase: "mae gen i gar coch", reason: "sounds_robotic", score: 95, priority: 'high' },
-  { id: 2, phrase: "ble mae'r tŷ bach", reason: "timing_off", score: 82, priority: 'medium' },
-  { id: 3, phrase: "dw i'n hoffi coffi", reason: "sounds_robotic", score: 78, priority: 'medium' },
-  { id: 4, phrase: "bore da", reason: "wrong_pronunciation", score: 65, priority: 'low' },
-])
+// Styling constants for LEGO word sources
+const sourceStyles = {
+  1: { sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
+  6: { sourceColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300' },
+  11: { sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
+}
 
-// Methods
+// Synthesized example demonstrating LEGO audio splicing
+const synthesizedExample = {
+  seed: 60,
+  welsh: "dw i ddim isio siarad Cymraeg rŵan",
+  english: "I don't want to speak Welsh now",
+  buildOrder: [
+    { text: 'dw', from: 1 },
+    { text: 'i', from: 1 },
+    { text: 'ddim', from: 6 },
+    { text: 'isio', from: 1 },
+    { text: 'siarad', from: 1 },
+    { text: 'Cymraeg', from: 1 },
+    { text: 'rŵan', from: 11 }
+  ]
+}
+
+// Computed: synthesized example with styling applied
+const currentExample = computed(() => {
+  return {
+    ...synthesizedExample,
+    buildOrder: synthesizedExample.buildOrder.map(word => ({
+      ...word,
+      sourceColor: sourceStyles[word.from].sourceColor
+    }))
+  }
+})
+
+// Source phrases that provide the LEGOs
+const sourcePhrases = [
+  {
+    seed: 1,
+    welsh: "dw i isio siarad Cymraeg",
+    english: "I want to speak Welsh",
+    provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
+    borderClass: 'border-emerald-500/30 bg-emerald-500/5',
+    textClass: 'text-emerald-400',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300',
+    playBtnClass: 'bg-emerald-600 hover:bg-emerald-500'
+  },
+  {
+    seed: 6,
+    welsh: "fedra i ddim cofio sut i siarad Cymraeg",
+    english: "I can't remember how to speak Welsh",
+    provides: ['fedra', 'ddim', 'cofio', 'sut'],
+    borderClass: 'border-amber-500/30 bg-amber-500/5',
+    textClass: 'text-amber-400',
+    badgeClass: 'bg-amber-500/20 text-amber-300',
+    playBtnClass: 'bg-amber-600 hover:bg-amber-500'
+  },
+  {
+    seed: 11,
+    welsh: "ond well i mi ymarfer siarad Cymraeg rŵan",
+    english: "but I'd better practice speaking Welsh now",
+    provides: ['ond', 'well', 'mi', 'ymarfer', 'rŵan'],
+    borderClass: 'border-violet-500/30 bg-violet-500/5',
+    textClass: 'text-violet-400',
+    badgeClass: 'bg-violet-500/20 text-violet-300',
+    playBtnClass: 'bg-violet-600 hover:bg-violet-500'
+  }
+]
+
+// Computed: which sources are used by the current example
+const usedSources = computed(() => {
+  const usedSeeds = new Set(currentExample.value.buildOrder.map(w => w.from))
+  return sourcePhrases.filter(s => usedSeeds.has(s.seed))
+})
+
+// Computed: which LEGOs each source provides for the current example
+const sourceProvides = computed(() => {
+  const example = currentExample.value
+  const provides = {}
+  for (const source of sourcePhrases) {
+    provides[source.seed] = example.buildOrder
+      .filter(w => w.from === source.seed)
+      .map(w => w.text)
+  }
+  return provides
+})
+
+// Demo audio URLs (fetched from API)
+const demoAudio = ref({})
+const demoAudioPlayer = ref(null)
+const currentlyPlaying = ref(null)
+
+// Fetch demo audio URLs
+async function fetchDemoAudio() {
+  try {
+    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/frankenstein-demo`)
+    if (response.ok) {
+      const data = await response.json()
+      // Map by seed number for easy lookup
+      const audioMap = {}
+      for (const phrase of data.phrases) {
+        if (phrase.url) {
+          audioMap[phrase.seed] = phrase.url
+        }
+      }
+      demoAudio.value = audioMap
+    }
+  } catch (err) {
+    console.error('Failed to fetch demo audio:', err)
+  }
+}
+
+// Play demo audio for a specific seed
+function playDemoAudio(seedNumber) {
+  const url = demoAudio.value[seedNumber]
+  if (!url || !demoAudioPlayer.value) return
+
+  // Stop current playback
+  demoAudioPlayer.value.pause()
+
+  // Play new audio
+  demoAudioPlayer.value.src = url
+  demoAudioPlayer.value.play()
+  currentlyPlaying.value = seedNumber
+}
+
+// Fetch algorithm results from API
 async function runAlgorithm() {
   isCalculating.value = true
-  // TODO: Call actual API
-  await new Promise(resolve => setTimeout(resolve, 1500))
-  isCalculating.value = false
+  error.value = null
+
+  try {
+    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/recording-optimizer`)
+
+    if (!response.ok) {
+      const data = await response.json()
+      throw new Error(data.error || 'Failed to run algorithm')
+    }
+
+    const data = await response.json()
+
+    // Update stats
+    stats.value = {
+      totalLegos: data.statistics.totalLegos,
+      phrasesToRecord: data.statistics.phrasesToRecord,
+      directRecord: data.statistics.directRecord,
+      estimatedMinutes: data.statistics.estimatedMinutes,
+      reductionPercent: data.statistics.reductionPercent,
+      totalPhrases: data.statistics.totalPhrases,
+      coveragePercent: data.statistics.coveragePercent
+    }
+
+    // Update recording script
+    filteredPhrases.value = data.recordingScript.map((p, i) => ({
+      id: i + 1,
+      target: p.target,
+      wordCount: p.wordCount,
+      legoCount: p.coversLegos
+    }))
+
+    // Update direct record items
+    directRecordItems.value = data.directRecord || []
+
+  } catch (err) {
+    error.value = err.message
+    console.error('Recording optimizer error:', err)
+  } finally {
+    isCalculating.value = false
+    isLoading.value = false
+  }
 }
 
 function exportPDF() {
   // TODO: Generate PDF of recording script
   console.log('Exporting PDF...')
+  alert('PDF export coming soon!')
 }
+
+// Load data on mount
+onMounted(() => {
+  runAlgorithm()
+  fetchDemoAudio()
+})
 </script>
