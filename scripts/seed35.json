@@ -1,0 +1,68 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 35,
+  "known_text": "She doesn't want to read anything this afternoon.",
+  "target_text": "Zij wil vanmiddag niets lezen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "to read",
+      "target": "lezen",
+      "phrases": [
+        {"known": "to read", "target": "lezen"},
+        {"known": "read now", "target": "nu lezen"},
+        {"known": "read here", "target": "hier lezen"},
+        {"known": "I want to read", "target": "ik wil lezen"},
+        {"known": "do you want to read", "target": "wil je lezen"},
+        {"known": "learn to read", "target": "leren lezen"},
+        {"known": "I can read Dutch", "target": "ik kan Nederlands lezen"},
+        {"known": "do you want to read today", "target": "wil je vandaag lezen"},
+        {"known": "I wanted to read yesterday", "target": "ik wilde gisteren lezen"},
+        {"known": "I wanted to read something yesterday", "target": "ik wilde gisteren iets lezen"},
+        {"known": "how long have you been learning to read Dutch", "target": "hoe lang leer je al Nederlands lezen"},
+        {"known": "I am looking forward to reading Dutch better with everyone", "target": "ik kijk ernaar uit om beter Nederlands te lezen met iedereen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "nothing",
+      "target": "niets",
+      "phrases": [
+        {"known": "nothing", "target": "niets"},
+        {"known": "not nothing", "target": "niet niets"},
+        {"known": "nothing now", "target": "nu niets"},
+        {"known": "nothing here", "target": "niets hier"},
+        {"known": "I want nothing", "target": "ik wil niets"},
+        {"known": "do you want nothing", "target": "wil je niets"},
+        {"known": "nothing to read", "target": "niets lezen"},
+        {"known": "I wanted nothing yesterday", "target": "ik wilde gisteren niets"},
+        {"known": "do you want nothing today", "target": "wil je vandaag niets"},
+        {"known": "I wanted to read nothing yesterday", "target": "ik wilde gisteren niets lezen"},
+        {"known": "I wanted to read nothing with her yesterday", "target": "ik wilde gisteren niets met haar lezen"},
+        {"known": "how long have you wanted nothing from everyone else", "target": "hoe lang wilde je niets van iedereen anders"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "this afternoon",
+      "target": "vanmiddag",
+      "phrases": [
+        {"known": "this afternoon", "target": "vanmiddag"},
+        {"known": "not this afternoon", "target": "niet vanmiddag"},
+        {"known": "this afternoon here", "target": "vanmiddag hier"},
+        {"known": "read this afternoon", "target": "vanmiddag lezen"},
+        {"known": "go this afternoon", "target": "vanmiddag gaan"},
+        {"known": "I want to go this afternoon", "target": "ik wil vanmiddag gaan"},
+        {"known": "can you read this afternoon", "target": "kan je vanmiddag lezen"},
+        {"known": "do you want nothing this afternoon", "target": "wil je vanmiddag niets"},
+        {"known": "I wanted to read something this afternoon", "target": "ik wilde vanmiddag iets lezen"},
+        {"known": "I wanted to read nothing this afternoon", "target": "ik wilde vanmiddag niets lezen"},
+        {"known": "how long do you want to read Dutch this afternoon with me", "target": "hoe lang wil je vanmiddag Nederlands met mij lezen"},
+        {"known": "I am looking forward to reading nothing this afternoon with everyone else", "target": "ik kijk ernaar uit om vanmiddag niets te lezen met iedereen anders"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 24,
+  "known_text": "I'm not going to be able to remember easily.",
+  "target_text": "Ik ga niet makkelijk kunnen onthouden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm not going to",
+      "target": "ik ga niet",
+      "components": [
+        {"known": "I'm going to", "target": "ik ga"},
+        {"known": "not", "target": "niet"}
+      ],
+      "phrases": [
+        {"known": "I'm going to", "target": "ik ga"},
+        {"known": "not", "target": "niet"},
+        {"known": "I'm not going to", "target": "ik ga niet"},
+        {"known": "I'm not going to learn", "target": "ik ga niet leren"},
+        {"known": "I'm not going to start", "target": "ik ga niet beginnen"},
+        {"known": "because I'm not going to", "target": "omdat ik niet ga"},
+        {"known": "I'm not going to start soon", "target": "ik ga niet binnenkort beginnen"},
+        {"known": "why I'm not going to learn more", "target": "waarom ik niet meer ga leren"},
+        {"known": "I'm not going to start talking more soon", "target": "ik ga niet binnenkort meer beginnen te praten"},
+        {"known": "because I'm not going to learn with her later on", "target": "omdat ik later niet met haar ga leren"},
+        {"known": "but why I'm not going to start learning more with everyone soon", "target": "maar waarom ik niet binnenkort meer met iedereen ga beginnen te leren"},
+        {"known": "because I'm not going to stop learning with her even later on", "target": "omdat ik later niet met haar ga stoppen met leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "be able",
+      "target": "kunnen",
+      "phrases": [
+        {"known": "be able", "target": "kunnen"},
+        {"known": "I want to be able", "target": "ik wil kunnen"},
+        {"known": "we want to be able", "target": "we willen kunnen"},
+        {"known": "he wants to be able", "target": "hij wil kunnen"},
+        {"known": "I'm going to be able", "target": "ik ga kunnen"},
+        {"known": "I'm not going to be able", "target": "ik ga niet kunnen"},
+        {"known": "because I want to be able", "target": "omdat ik wil kunnen"},
+        {"known": "I'm going to be able to learn soon", "target": "ik ga binnenkort kunnen leren"},
+        {"known": "because I'm not going to be able to start", "target": "omdat ik niet ga kunnen beginnen"},
+        {"known": "but why are you not going to be able to learn more soon", "target": "maar waarom ga je niet binnenkort meer kunnen leren"},
+        {"known": "because I'm not going to be able to start learning with her later", "target": "omdat ik later niet met haar ga kunnen beginnen te leren"},
+        {"known": "but why is she not going to be able to start learning more with everyone soon", "target": "maar waarom gaat zij niet binnenkort met iedereen meer kunnen beginnen te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "remember",
+      "target": "onthouden",
+      "phrases": [
+        {"known": "remember", "target": "onthouden"},
+        {"known": "I want to remember", "target": "ik wil onthouden"},
+        {"known": "we want to remember", "target": "we willen onthouden"},
+        {"known": "I'm going to remember", "target": "ik ga onthouden"},
+        {"known": "I'm not going to remember", "target": "ik ga niet onthouden"},
+        {"known": "I want to be able to remember", "target": "ik wil kunnen onthouden"},
+        {"known": "I'm going to be able to remember", "target": "ik ga kunnen onthouden"},
+        {"known": "I'm not going to be able to remember", "target": "ik ga niet kunnen onthouden"},
+        {"known": "because I want to be able to remember", "target": "omdat ik wil kunnen onthouden"},
+        {"known": "but why are you not going to be able to remember soon", "target": "maar waarom ga je niet binnenkort kunnen onthouden"},
+        {"known": "because I'm not going to be able to remember it with her later", "target": "omdat ik later niet met haar ga kunnen onthouden"},
+        {"known": "but why is she not going to be able to remember her name with everyone else", "target": "maar waarom gaat zij niet met iedereen anders haar naam kunnen onthouden"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "easily",
+      "target": "makkelijk",
+      "phrases": [
+        {"known": "easily", "target": "makkelijk"},
+        {"known": "not easily", "target": "niet makkelijk"},
+        {"known": "but easily", "target": "maar makkelijk"},
+        {"known": "to learn easily", "target": "makkelijk leren"},
+        {"known": "to remember easily", "target": "makkelijk onthouden"},
+        {"known": "I want to learn easily", "target": "ik wil makkelijk leren"},
+        {"known": "I'm not going to remember easily", "target": "ik ga niet makkelijk onthouden"},
+        {"known": "I'm not going to be able to remember easily", "target": "ik ga niet makkelijk kunnen onthouden"},
+        {"known": "because I want to be able to learn easily", "target": "omdat ik makkelijk wil kunnen leren"},
+        {"known": "but why are you not going to be able to remember easily", "target": "maar waarom ga je niet makkelijk kunnen onthouden"},
+        {"known": "because I'm not going to be able to learn it easily with her later", "target": "omdat ik later niet met haar makkelijk ga kunnen leren"},
+        {"known": "but why is she not going to be able to remember her name easily with everyone", "target": "maar waarom gaat zij niet met iedereen haar naam makkelijk kunnen onthouden"}
+      ]
+    }
+  ]
+}

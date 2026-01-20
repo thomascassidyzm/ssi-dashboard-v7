@@ -1,0 +1,120 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 34,
+  "known_text": "He doesn't want to be quiet when other people are here.",
+  "target_text": "Hij wil niet stil zijn als andere mensen hier zijn.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he doesn't want",
+      "target": "hij wil niet",
+      "components": [
+        {"known": "he", "target": "hij"},
+        {"known": "doesn't want", "target": "wil niet"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "hij"},
+        {"known": "doesn't want", "target": "wil niet"},
+        {"known": "he doesn't want", "target": "hij wil niet"},
+        {"known": "he doesn't want to learn", "target": "hij wil niet leren"},
+        {"known": "he doesn't want to speak", "target": "hij wil niet spreken"},
+        {"known": "he doesn't want something", "target": "hij wil niet iets"},
+        {"known": "he doesn't want to practise today", "target": "hij wil niet vandaag oefenen"},
+        {"known": "he doesn't want to speak Dutch with me", "target": "hij wil niet Nederlands met mij spreken"},
+        {"known": "he doesn't want to learn how to speak better", "target": "hij wil niet leren hoe hij beter kan spreken"},
+        {"known": "he doesn't want to show me something today", "target": "hij wil niet mij vandaag iets laten zien"},
+        {"known": "he doesn't want to practise Dutch with me as soon as possible", "target": "hij wil niet zo snel mogelijk Nederlands met mij oefenen"},
+        {"known": "he doesn't want to show me how long he has been learning Dutch", "target": "hij wil niet mij laten zien hoe lang hij al Nederlands leer"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to be quiet",
+      "target": "stil zijn",
+      "components": [
+        {"known": "quiet", "target": "stil"},
+        {"known": "to be", "target": "zijn"}
+      ],
+      "phrases": [
+        {"known": "quiet", "target": "stil"},
+        {"known": "to be", "target": "zijn"},
+        {"known": "to be quiet", "target": "stil zijn"},
+        {"known": "I want to be quiet", "target": "ik wil stil zijn"},
+        {"known": "he wants to be quiet", "target": "hij wil stil zijn"},
+        {"known": "I don't want to be quiet", "target": "ik wil niet stil zijn"},
+        {"known": "he doesn't want to be quiet", "target": "hij wil niet stil zijn"},
+        {"known": "I wanted to be quiet yesterday", "target": "ik wilde gisteren stil zijn"},
+        {"known": "he doesn't want to be quiet tonight", "target": "hij wil niet vanavond stil zijn"},
+        {"known": "I am looking forward to be quiet as soon as possible", "target": "ik kijk ernaar uit om zo snel mogelijk stil te zijn"},
+        {"known": "he doesn't want to be quiet when I am speaking Dutch", "target": "hij wil niet stil zijn als ik Nederlands spreek"},
+        {"known": "I wanted to show you that I can be quiet when you are learning", "target": "ik wilde je laten zien dat ik stil kan zijn als je leer"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "when",
+      "target": "als",
+      "phrases": [
+        {"known": "when", "target": "als"},
+        {"known": "when I learn", "target": "als ik leer"},
+        {"known": "when you speak", "target": "als je spreekt"},
+        {"known": "when he is quiet", "target": "als hij stil is"},
+        {"known": "when I want to learn", "target": "als ik wil leren"},
+        {"known": "when you are speaking Dutch", "target": "als je Nederlands spreekt"},
+        {"known": "he is quiet when I am learning", "target": "hij is stil als ik leer"},
+        {"known": "when I have already been learning", "target": "als ik al leer"},
+        {"known": "he doesn't want to be quiet when I speak", "target": "hij wil niet stil zijn als ik spreek"},
+        {"known": "I want to be quiet when he is speaking Dutch", "target": "ik wil stil zijn als hij Nederlands spreekt"},
+        {"known": "when you want to show me something in Dutch", "target": "als je mij iets in het Nederlands wil laten zien"},
+        {"known": "he doesn't want to be quiet when I am learning Dutch with you", "target": "hij wil niet stil zijn als ik Nederlands met je leer"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "other people",
+      "target": "andere mensen",
+      "components": [
+        {"known": "other", "target": "andere"},
+        {"known": "people", "target": "mensen"}
+      ],
+      "phrases": [
+        {"known": "other", "target": "andere"},
+        {"known": "people", "target": "mensen"},
+        {"known": "other people", "target": "andere mensen"},
+        {"known": "other people want", "target": "andere mensen willen"},
+        {"known": "other people are learning", "target": "andere mensen leren"},
+        {"known": "when other people learn", "target": "als andere mensen leren"},
+        {"known": "other people want to learn Dutch", "target": "andere mensen willen Nederlands leren"},
+        {"known": "he is quiet when other people speak", "target": "hij is stil als andere mensen spreken"},
+        {"known": "when other people are speaking Dutch", "target": "als andere mensen Nederlands spreken"},
+        {"known": "I want to be quiet when other people are speaking", "target": "ik wil stil zijn als andere mensen spreken"},
+        {"known": "he doesn't want to be quiet when other people are speaking Dutch", "target": "hij wil niet stil zijn als andere mensen Nederlands spreken"},
+        {"known": "other people want to show me how to speak Dutch better", "target": "andere mensen willen mij laten zien hoe ik beter Nederlands kan spreken"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "here",
+      "target": "hier",
+      "phrases": [
+        {"known": "here", "target": "hier"},
+        {"known": "I am here", "target": "ik ben hier"},
+        {"known": "he is here", "target": "hij is hier"},
+        {"known": "are you here", "target": "ben je hier"},
+        {"known": "other people are here", "target": "andere mensen zijn hier"},
+        {"known": "when I am here", "target": "als ik hier ben"},
+        {"known": "I want to learn Dutch here", "target": "ik wil hier Nederlands leren"},
+        {"known": "when other people are here", "target": "als andere mensen hier zijn"},
+        {"known": "he doesn't want to be quiet when I am here", "target": "hij wil niet stil zijn als ik hier ben"},
+        {"known": "I want to practise Dutch here as soon as possible", "target": "ik wil hier zo snel mogelijk Nederlands oefenen"},
+        {"known": "he doesn't want to be quiet when other people are here", "target": "hij wil niet stil zijn als andere mensen hier zijn"},
+        {"known": "I am looking forward to show other people here how to speak Dutch", "target": "ik kijk ernaar uit om andere mensen hier te laten zien hoe je Nederlands kan spreken"}
+      ]
+    }
+  ]
+}

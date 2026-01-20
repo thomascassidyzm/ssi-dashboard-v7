@@ -1,0 +1,56 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 79,
+  "known_text": "When did you start to learn?",
+  "target_text": "Wanneer ben je begonnen te leren?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "when did you",
+      "target": "wanneer ben je",
+      "components": [
+        {"known": "when", "target": "wanneer"},
+        {"known": "have you", "target": "ben je"}
+      ],
+      "phrases": [
+        {"known": "when", "target": "wanneer"},
+        {"known": "have you", "target": "ben je"},
+        {"known": "when did you", "target": "wanneer ben je"},
+        {"known": "when were you here", "target": "wanneer was je hier"},
+        {"known": "I don't know when", "target": "ik weet niet wanneer"},
+        {"known": "when did you want that", "target": "wanneer wilde je dat"},
+        {"known": "when did she want to do that", "target": "wanneer wilde ze dat doen"},
+        {"known": "I don't understand when you wanted to do that", "target": "ik begrijp niet wanneer je dat wilde doen"},
+        {"known": "do you know when everyone else wanted to start", "target": "weet je wanneer iedereen anders wilde beginnen"},
+        {"known": "I'm very surprised at when she wanted to tell me the truth", "target": "ik ben heel verrast wanneer ze me de waarheid wilde vertellen"},
+        {"known": "I think it's important to know when you want to learn", "target": "ik denk dat het belangrijk is om te weten wanneer je wilt leren"},
+        {"known": "I don't understand when everyone else wanted to help me learn Dutch", "target": "ik begrijp niet wanneer iedereen anders mij wilde helpen Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "started to learn",
+      "target": "begonnen te leren",
+      "components": [
+        {"known": "started", "target": "begonnen"},
+        {"known": "to learn", "target": "te leren"}
+      ],
+      "phrases": [
+        {"known": "started", "target": "begonnen"},
+        {"known": "to learn", "target": "te leren"},
+        {"known": "started to learn", "target": "begonnen te leren"},
+        {"known": "started to learn Dutch", "target": "begonnen Nederlands te leren"},
+        {"known": "I've started to learn", "target": "ik ben begonnen te leren"},
+        {"known": "when did you start to learn", "target": "wanneer ben je begonnen te leren"},
+        {"known": "she has started to learn more", "target": "ze is begonnen meer te leren"},
+        {"known": "I think it's important to start to learn", "target": "ik denk dat het belangrijk is om te beginnen te leren"},
+        {"known": "I'm very happy that I've started to learn Dutch", "target": "ik ben heel blij dat ik begonnen ben Nederlands te leren"},
+        {"known": "I don't understand why she hasn't started to learn yet", "target": "ik begrijp niet waarom ze nog niet begonnen is te leren"},
+        {"known": "do you know when everyone else started to learn the truth", "target": "weet je wanneer iedereen anders begonnen is de waarheid te leren"},
+        {"known": "I'm very surprised that he has started to learn Dutch so quickly", "target": "ik ben heel verrast dat hij zo snel begonnen is Nederlands te leren"}
+      ]
+    }
+  ]
+}

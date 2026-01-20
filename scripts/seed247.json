@@ -1,0 +1,81 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 247,
+  "known_text": "I thought that book was fairly good.",
+  "target_text": "Ik dacht dat dat boek best goed was.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I thought",
+      "target": "ik dacht",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "thought", "target": "dacht"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "thought", "target": "dacht"},
+        {"known": "I thought", "target": "ik dacht"},
+        {"known": "I thought so", "target": "ik dacht van wel"},
+        {"known": "I thought it was good", "target": "ik dacht dat het goed was"},
+        {"known": "I thought she was happy", "target": "ik dacht dat ze blij was"},
+        {"known": "I thought he wanted to help", "target": "ik dacht dat hij wilde helpen"},
+        {"known": "I thought my father was too busy", "target": "ik dacht dat mijn vader te druk was"},
+        {"known": "I thought she learnt a lot already", "target": "ik dacht dat ze al veel had geleerd"},
+        {"known": "I thought it was a good idea to give her more time", "target": "ik dacht dat het een goed idee was om haar meer tijd te geven"},
+        {"known": "I thought my mother was happy with how much I've done", "target": "ik dacht dat mijn moeder blij was met hoeveel ik heb gedaan"},
+        {"known": "I thought it was fairly good to ask for the same thing in a short time", "target": "ik dacht dat het best goed was om in een korte tijd hetzelfde te vragen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that that book",
+      "target": "dat dat boek",
+      "components": [
+        {"known": "that", "target": "dat"},
+        {"known": "that book", "target": "dat boek"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "dat"},
+        {"known": "that book", "target": "dat boek"},
+        {"known": "that that book", "target": "dat dat boek"},
+        {"known": "I thought that that book", "target": "ik dacht dat dat boek"},
+        {"known": "I think that that book is good", "target": "ik denk dat dat boek goed is"},
+        {"known": "she said that that book was good", "target": "ze zei dat dat boek goed was"},
+        {"known": "I wanted to read that book", "target": "ik wilde dat boek lezen"},
+        {"known": "my mother thought that that book was good", "target": "mijn moeder dacht dat dat boek goed was"},
+        {"known": "I've learnt a lot from that book already", "target": "ik heb al veel van dat boek geleerd"},
+        {"known": "I thought that that book was good so far", "target": "ik dacht dat dat boek tot nu toe goed was"},
+        {"known": "my father wanted to give her that book in a short time", "target": "mijn vader wilde haar dat boek in een korte tijd geven"},
+        {"known": "I'm happy with that book because I've learnt a lot from it already", "target": "ik ben blij met dat boek omdat ik er al veel van heb geleerd"},
+        {"known": "I thought that that book was good for my mother in a short time", "target": "ik dacht dat dat boek in een korte tijd goed was voor mijn moeder"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "was fairly good",
+      "target": "best goed was",
+      "components": [
+        {"known": "fairly good", "target": "best goed"},
+        {"known": "was", "target": "was"}
+      ],
+      "phrases": [
+        {"known": "fairly good", "target": "best goed"},
+        {"known": "was", "target": "was"},
+        {"known": "was fairly good", "target": "best goed was"},
+        {"known": "it was fairly good", "target": "het was best goed"},
+        {"known": "I thought it was fairly good", "target": "ik dacht dat het best goed was"},
+        {"known": "that book was fairly good", "target": "dat boek was best goed"},
+        {"known": "I thought that that book was fairly good", "target": "ik dacht dat dat boek best goed was"},
+        {"known": "she thought my work was fairly good", "target": "ze dacht dat mijn werk best goed was"},
+        {"known": "my father thought it was fairly good", "target": "mijn vader dacht dat het best goed was"},
+        {"known": "I thought the answer was fairly good so far", "target": "ik dacht dat het antwoord tot nu toe best goed was"},
+        {"known": "my mother thought it was fairly good to give him more time", "target": "mijn moeder dacht dat het best goed was om hem meer tijd te geven"},
+        {"known": "I'm happy with how fairly good my work was in a short time", "target": "ik ben blij met hoe best goed mijn werk in een korte tijd was"}
+      ]
+    }
+  ]
+}

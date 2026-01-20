@@ -380,6 +380,27 @@ async function planHandler(req, res) {
       }
     }
 
+    // Also include LEGO debut audio (the LEGO text itself needs known/target1/target2)
+    const { data: allLegos } = await supabase
+      .from('course_legos')
+      .select('lego_id, known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (allLegos?.length > 0) {
+      for (const lego of allLegos) {
+        const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        if (!existingSet.has(knownKey)) {
+          needed.push({ text: lego.known_text, language: course.known_lang, role: 'known' })
+        }
+        for (const role of ['target1', 'target2']) {
+          const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          if (!existingSet.has(targetKey)) {
+            needed.push({ text: lego.target_text, language: course.target_lang, role })
+          }
+        }
+      }
+    }
+
     // Get LEGOs that need presentation audio (is_new = true)
     // These are the LEGOs that require a presentation intro like "The Spanish for 'word', is:"
     const { data: newLegos, error: legosError } = await supabase
@@ -629,6 +650,53 @@ app.post('/generate/:courseCode', async (req, res) => {
             speed: getSpeedForRole(role)
           })
         }
+      }
+    }
+
+    // Also include LEGO debut audio (the LEGO text itself needs known/target1/target2)
+    // This ensures the LEGO debut cycle has audio, not just practice phrases
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, known_text, target_text')
+      .eq('course_code', courseCode)
+
+    if (legosError) {
+      logger.warn('Failed to fetch LEGOs for debut audio:', legosError.message)
+    } else if (legos?.length > 0) {
+      let legoAudioNeeded = 0
+      for (const lego of legos) {
+        // Known audio for LEGO text
+        const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        if (!existingSet.has(knownKey)) {
+          needed.push({
+            text: lego.known_text,
+            language: course.known_lang,
+            role: 'known',
+            voiceId: getVoiceForRole('known'),
+            speed: getSpeedForRole('known'),
+            lego_id: lego.lego_id  // Track source for debugging
+          })
+          legoAudioNeeded++
+        }
+
+        // Target audio for LEGO text (target1 and target2)
+        for (const role of ['target1', 'target2']) {
+          const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          if (!existingSet.has(targetKey)) {
+            needed.push({
+              text: lego.target_text,
+              language: course.target_lang,
+              role,
+              voiceId: getVoiceForRole(role),
+              speed: getSpeedForRole(role),
+              lego_id: lego.lego_id
+            })
+            legoAudioNeeded++
+          }
+        }
+      }
+      if (legoAudioNeeded > 0) {
+        logger.info(`Found ${legoAudioNeeded} LEGO debut audio items needed (from ${legos.length} LEGOs)`)
       }
     }
 

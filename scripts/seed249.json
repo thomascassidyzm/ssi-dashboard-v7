@@ -1,0 +1,81 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 249,
+  "known_text": "I want you to help me before you go.",
+  "target_text": "Ik wil dat je me helpt voordat je gaat.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I want you to",
+      "target": "ik wil dat je",
+      "components": [
+        {"known": "I want", "target": "ik wil"},
+        {"known": "that you", "target": "dat je"}
+      ],
+      "phrases": [
+        {"known": "I want", "target": "ik wil"},
+        {"known": "that you", "target": "dat je"},
+        {"known": "I want you to", "target": "ik wil dat je"},
+        {"known": "I want you to do", "target": "ik wil dat je doet"},
+        {"known": "I want you to learn", "target": "ik wil dat je leert"},
+        {"known": "I want you to work", "target": "ik wil dat je werkt"},
+        {"known": "I want you to try something new", "target": "ik wil dat je iets nieuws probeert"},
+        {"known": "my father said that I want you to work", "target": "mijn vader zei dat ik wil dat je werkt"},
+        {"known": "I want you to do that in a short time", "target": "ik wil dat je dat in een korte tijd doet"},
+        {"known": "I thought that I want you to learn but I was too busy", "target": "ik dacht dat ik wil dat je leert maar ik was te druk"},
+        {"known": "I'm happy with how much I want you to learn already in a short time", "target": "ik ben blij met hoeveel ik wil dat je al in een korte tijd leert"},
+        {"known": "my mother thought that I want you to do a lot", "target": "mijn moeder dacht dat ik wil dat je veel doet"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "help me",
+      "target": "me helpt",
+      "components": [
+        {"known": "me", "target": "me"},
+        {"known": "helps", "target": "helpt"}
+      ],
+      "phrases": [
+        {"known": "me", "target": "me"},
+        {"known": "helps", "target": "helpt"},
+        {"known": "help me", "target": "me helpt"},
+        {"known": "she helps me", "target": "ze helpt me"},
+        {"known": "he helps me", "target": "hij helpt me"},
+        {"known": "I want you to help me", "target": "ik wil dat je me helpt"},
+        {"known": "my father helps me a lot", "target": "mijn vader helpt me veel"},
+        {"known": "she wanted to help me yesterday", "target": "ze wilde me gisteren helpen"},
+        {"known": "I thought that she helps me a lot", "target": "ik dacht dat ze me veel helpt"},
+        {"known": "my father said that he helps me with the work already", "target": "mijn vader zei dat hij me al met het werk helpt"},
+        {"known": "I'm happy with how much she helps me already", "target": "ik ben blij met hoeveel ze me al helpt"},
+        {"known": "my mother wanted you to help me with the same thing already", "target": "mijn moeder wilde dat je me al met hetzelfde zou helpen"},
+        {"known": "I want you to help me give her more time in a short time", "target": "ik wil dat je me helpt haar in een korte tijd meer tijd te geven"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before you go",
+      "target": "voordat je gaat",
+      "components": [
+        {"known": "before", "target": "voordat"},
+        {"known": "you go", "target": "je gaat"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "voordat"},
+        {"known": "you go", "target": "je gaat"},
+        {"known": "before you go", "target": "voordat je gaat"},
+        {"known": "I want to see you before you go", "target": "ik wil je zien voordat je gaat"},
+        {"known": "help me before you go", "target": "help me voordat je gaat"},
+        {"known": "I want you to help me before you go", "target": "ik wil dat je me helpt voordat je gaat"},
+        {"known": "she wanted to speak with you before you go", "target": "ze wilde met je spreken voordat je gaat"},
+        {"known": "my father wanted to tell you something before you go", "target": "mijn vader wilde je iets vertellen voordat je gaat"},
+        {"known": "I thought you wanted to help me before you go", "target": "ik dacht dat je me wilde helpen voordat je gaat"},
+        {"known": "I'm happy with how much you've done before you go", "target": "ik ben blij met hoeveel je hebt gedaan voordat je gaat"},
+        {"known": "I want to give you my money back before you go", "target": "ik wil je mijn geld terug geven voordat je gaat"},
+        {"known": "my mother thought that was complete rubbish before you go", "target": "mijn moeder dacht dat dat complete onzin was voordat je gaat"}
+      ]
+    }
+  ]
+}

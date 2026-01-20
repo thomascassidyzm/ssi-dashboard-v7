@@ -1,0 +1,81 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 49,
+  "known_text": "It's like this, if you know what I mean.",
+  "target_text": "Het is zo, als je begrijpt wat ik bedoel.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's like this",
+      "target": "het is zo",
+      "components": [
+        {"known": "it", "target": "het"},
+        {"known": "is like this", "target": "is zo"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "het"},
+        {"known": "is like this", "target": "is zo"},
+        {"known": "it's like this", "target": "het is zo"},
+        {"known": "it's like this now", "target": "het is nu zo"},
+        {"known": "but it's like this", "target": "maar het is zo"},
+        {"known": "it's like this today", "target": "het is vandaag zo"},
+        {"known": "but it's like this today here", "target": "maar het is vandaag hier zo"},
+        {"known": "I think that it's like this", "target": "ik denk dat het zo is"},
+        {"known": "because it's like this today", "target": "omdat het vandaag zo is"},
+        {"known": "but I think that it's like this now", "target": "maar ik denk dat het nu zo is"},
+        {"known": "I think that it's like this when I learn Dutch with you", "target": "ik denk dat het zo is als ik Nederlands met je leer"},
+        {"known": "because I think that it's like this when I speak Dutch with her", "target": "omdat ik denk dat het zo is als ik Nederlands met haar spreek"},
+        {"known": "but I think that it's like this when I want to learn Dutch with you", "target": "maar ik denk dat het zo is als ik Nederlands met je wil leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "if you know",
+      "target": "als je begrijpt",
+      "components": [
+        {"known": "if", "target": "als"},
+        {"known": "you know", "target": "je begrijpt"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "als"},
+        {"known": "you know", "target": "je begrijpt"},
+        {"known": "if you know", "target": "als je begrijpt"},
+        {"known": "if you know it", "target": "als je het begrijpt"},
+        {"known": "if you know now", "target": "als je nu begrijpt"},
+        {"known": "if you know today", "target": "als je vandaag begrijpt"},
+        {"known": "it's like this if you know", "target": "het is zo als je begrijpt"},
+        {"known": "if you know how I speak Dutch", "target": "als je begrijpt hoe ik Nederlands spreek"},
+        {"known": "but if you know how it is", "target": "maar als je begrijpt hoe het is"},
+        {"known": "I think that if you know it today here", "target": "ik denk dat als je het vandaag hier begrijpt"},
+        {"known": "if you know how I want to read the story in Dutch today", "target": "als je begrijpt hoe ik vandaag het verhaal in het Nederlands wil lezen"},
+        {"known": "but I think that if you know how I want to learn Dutch with you today", "target": "maar ik denk dat als je begrijpt hoe ik vandaag Nederlands met je wil leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what I mean",
+      "target": "wat ik bedoel",
+      "components": [
+        {"known": "what", "target": "wat"},
+        {"known": "I mean", "target": "ik bedoel"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "wat"},
+        {"known": "I mean", "target": "ik bedoel"},
+        {"known": "what I mean", "target": "wat ik bedoel"},
+        {"known": "what I mean now", "target": "wat ik nu bedoel"},
+        {"known": "what I mean today", "target": "wat ik vandaag bedoel"},
+        {"known": "if you know what I mean", "target": "als je begrijpt wat ik bedoel"},
+        {"known": "it's like this if you know what I mean", "target": "het is zo als je begrijpt wat ik bedoel"},
+        {"known": "but if you know what I mean", "target": "maar als je begrijpt wat ik bedoel"},
+        {"known": "I think that you know what I mean", "target": "ik denk dat je begrijpt wat ik bedoel"},
+        {"known": "because I think that you know what I mean", "target": "omdat ik denk dat je begrijpt wat ik bedoel"},
+        {"known": "it's like this if you know what I mean when I speak Dutch", "target": "het is zo als je begrijpt wat ik bedoel als ik Nederlands spreek"},
+        {"known": "but I think that you know what I mean when I learn Dutch", "target": "maar ik denk dat je begrijpt wat ik bedoel als ik Nederlands leer"}
+      ]
+    }
+  ]
+}

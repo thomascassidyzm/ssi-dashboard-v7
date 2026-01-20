@@ -1,0 +1,57 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 85,
+  "known_text": "I don't know those people.",
+  "target_text": "Ik ken die mensen niet.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't know",
+      "target": "ik ken niet",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "know (person)", "target": "ken"},
+        {"known": "not", "target": "niet"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "know (person)", "target": "ken"},
+        {"known": "not", "target": "niet"},
+        {"known": "I know her", "target": "ik ken haar"},
+        {"known": "I don't know her", "target": "ik ken haar niet"},
+        {"known": "do you know my friend", "target": "ken je mijn vriend"},
+        {"known": "I don't know her very well", "target": "ik ken haar niet heel goed"},
+        {"known": "I'm not sure if you know my friend", "target": "ik weet niet zeker of je mijn vriend ken"},
+        {"known": "I don't agree with what she said but I don't know her", "target": "ik ben het niet eens met wat ze zei maar ik ken haar niet"},
+        {"known": "I'm very surprised that you don't know my friend very well", "target": "ik ben heel verrast dat je mijn vriend niet heel goed ken"},
+        {"known": "I don't understand why she doesn't know everyone else here", "target": "ik begrijp niet waarom ze iedereen anders hier niet ken"},
+        {"known": "I think it's important that you know my friend when you want to learn Dutch", "target": "ik denk dat het belangrijk is dat je mijn vriend ken wanneer je Nederlands wilt leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "those people",
+      "target": "die mensen",
+      "components": [
+        {"known": "those", "target": "die"},
+        {"known": "people", "target": "mensen"}
+      ],
+      "phrases": [
+        {"known": "those", "target": "die"},
+        {"known": "people", "target": "mensen"},
+        {"known": "those people", "target": "die mensen"},
+        {"known": "those people here", "target": "die mensen hier"},
+        {"known": "I don't know those people", "target": "ik ken die mensen niet"},
+        {"known": "do you know those people", "target": "ken je die mensen"},
+        {"known": "I agree with those people", "target": "ik ben het eens met die mensen"},
+        {"known": "I'm not sure if I know those people", "target": "ik weet niet zeker of ik die mensen ken"},
+        {"known": "do you know what those people said about that", "target": "weet je wat die mensen over dat zei"},
+        {"known": "I don't understand why those people don't agree with the truth", "target": "ik begrijp niet waarom die mensen het niet eens zijn met de waarheid"},
+        {"known": "I'm very surprised at what those people said about my friend", "target": "ik ben heel verrast over wat die mensen over mijn vriend zei"},
+        {"known": "I don't agree with what those people said about learning Dutch", "target": "ik ben het niet eens met wat die mensen over Nederlands leren zei"}
+      ]
+    }
+  ]
+}

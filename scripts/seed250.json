@@ -1,0 +1,81 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 250,
+  "known_text": "Can you tell me something else before I answer?",
+  "target_text": "Kun je me iets anders vertellen voordat ik antwoord?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "can you tell me",
+      "target": "kun je me vertellen",
+      "components": [
+        {"known": "can you", "target": "kun je"},
+        {"known": "tell me", "target": "me vertellen"}
+      ],
+      "phrases": [
+        {"known": "can you", "target": "kun je"},
+        {"known": "tell me", "target": "me vertellen"},
+        {"known": "can you tell me", "target": "kun je me vertellen"},
+        {"known": "can you tell me that", "target": "kun je me dat vertellen"},
+        {"known": "can you tell me about it", "target": "kun je me erover vertellen"},
+        {"known": "can you tell me something", "target": "kun je me iets vertellen"},
+        {"known": "can you tell me how much you've done", "target": "kun je me vertellen hoeveel je hebt gedaan"},
+        {"known": "can you tell me what you think", "target": "kun je me vertellen wat je denkt"},
+        {"known": "I want you to tell me before you go", "target": "ik wil dat je me vertelt voordat je gaat"},
+        {"known": "my father thought that you can tell me more about it", "target": "mijn vader dacht dat je me er meer over kunt vertellen"},
+        {"known": "I'm happy with how much you can tell me in a short time", "target": "ik ben blij met hoeveel je me in een korte tijd kunt vertellen"},
+        {"known": "can you tell me if the film was complete rubbish or not", "target": "kun je me vertellen of de film complete onzin was of niet"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "something else",
+      "target": "iets anders",
+      "components": [
+        {"known": "something", "target": "iets"},
+        {"known": "else", "target": "anders"}
+      ],
+      "phrases": [
+        {"known": "something", "target": "iets"},
+        {"known": "else", "target": "anders"},
+        {"known": "something else", "target": "iets anders"},
+        {"known": "I want something else", "target": "ik wil iets anders"},
+        {"known": "do you have something else", "target": "heb je iets anders"},
+        {"known": "can you tell me something else", "target": "kun je me iets anders vertellen"},
+        {"known": "I thought there was something else", "target": "ik dacht dat er iets anders was"},
+        {"known": "she wanted to try something else", "target": "ze wilde iets anders proberen"},
+        {"known": "my father said that he wanted something else", "target": "mijn vader zei dat hij iets anders wilde"},
+        {"known": "I'm happy with something else already", "target": "ik ben al blij met iets anders"},
+        {"known": "I want you to help me with something else before you go", "target": "ik wil dat je me met iets anders helpt voordat je gaat"},
+        {"known": "can you tell me something else about the film that was complete rubbish", "target": "kun je me iets anders vertellen over de film die complete onzin was"},
+        {"known": "my father wanted you to help me with something else in a short time", "target": "mijn vader wilde dat je me in een korte tijd met iets anders zou helpen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before I answer",
+      "target": "voordat ik antwoord",
+      "components": [
+        {"known": "before I", "target": "voordat ik"},
+        {"known": "answer", "target": "antwoord"}
+      ],
+      "phrases": [
+        {"known": "before I", "target": "voordat ik"},
+        {"known": "answer", "target": "antwoord"},
+        {"known": "before I answer", "target": "voordat ik antwoord"},
+        {"known": "before I go", "target": "voordat ik ga"},
+        {"known": "I need more time before I answer", "target": "ik heb meer tijd nodig voordat ik antwoord"},
+        {"known": "can you tell me something else before I answer", "target": "kun je me iets anders vertellen voordat ik antwoord"},
+        {"known": "I want to think before I answer", "target": "ik wil nadenken voordat ik antwoord"},
+        {"known": "she wanted to help me before I answer", "target": "ze wilde me helpen voordat ik antwoord"},
+        {"known": "my father thought I needed more time before I answer", "target": "mijn vader dacht dat ik meer tijd nodig had voordat ik antwoord"},
+        {"known": "I'm happy with how much you've done before I answer", "target": "ik ben blij met hoeveel je hebt gedaan voordat ik antwoord"},
+        {"known": "I want you to help me with something else before I answer that", "target": "ik wil dat je me met iets anders helpt voordat ik dat antwoord"},
+        {"known": "can you give me your money back before I answer about the film", "target": "kun je me je geld terug geven voordat ik over de film antwoord"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 46,
+  "known_text": "But I don't worry about making mistakes.",
+  "target_text": "Maar ik maak me geen zorgen om fouten te maken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "but I don't worry",
+      "target": "maar ik maak me geen zorgen",
+      "components": [
+        {"known": "but", "target": "maar"},
+        {"known": "I don't worry", "target": "ik maak me geen zorgen"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "maar"},
+        {"known": "I don't worry", "target": "ik maak me geen zorgen"},
+        {"known": "but I don't worry", "target": "maar ik maak me geen zorgen"},
+        {"known": "I don't worry now", "target": "ik maak me nu geen zorgen"},
+        {"known": "but I don't worry now", "target": "maar ik maak me nu geen zorgen"},
+        {"known": "I don't worry today", "target": "ik maak me vandaag geen zorgen"},
+        {"known": "I don't worry this morning", "target": "ik maak me vanochtend geen zorgen"},
+        {"known": "but I don't worry about it", "target": "maar ik maak me er geen zorgen over"},
+        {"known": "I don't worry about learning Dutch", "target": "ik maak me geen zorgen over Nederlands leren"},
+        {"known": "but I don't worry about it today", "target": "maar ik maak me er vandaag geen zorgen over"},
+        {"known": "I don't worry about learning Dutch with you", "target": "ik maak me geen zorgen over Nederlands met je leren"},
+        {"known": "but I don't worry about reading the story in Dutch", "target": "maar ik maak me geen zorgen over het verhaal in het Nederlands lezen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "about making mistakes",
+      "target": "om fouten te maken",
+      "components": [
+        {"known": "about", "target": "om"},
+        {"known": "mistakes", "target": "fouten"},
+        {"known": "making", "target": "te maken"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "om"},
+        {"known": "mistakes", "target": "fouten"},
+        {"known": "making", "target": "te maken"},
+        {"known": "about making mistakes", "target": "om fouten te maken"},
+        {"known": "making mistakes", "target": "fouten maken"},
+        {"known": "but I don't worry about making mistakes", "target": "maar ik maak me geen zorgen om fouten te maken"},
+        {"known": "I don't worry about making mistakes", "target": "ik maak me geen zorgen om fouten te maken"},
+        {"known": "about making mistakes today", "target": "om vandaag fouten te maken"},
+        {"known": "I don't worry about making mistakes in Dutch", "target": "ik maak me geen zorgen om fouten in het Nederlands te maken"},
+        {"known": "but I don't worry about making mistakes today", "target": "maar ik maak me vandaag geen zorgen om fouten te maken"},
+        {"known": "I don't worry about making mistakes when speaking Dutch", "target": "ik maak me geen zorgen om fouten te maken als ik Nederlands spreek"},
+        {"known": "but I don't worry about making mistakes when learning Dutch", "target": "maar ik maak me geen zorgen om fouten te maken als ik Nederlands leer"}
+      ]
+    }
+  ]
+}

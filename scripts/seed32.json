@@ -1,0 +1,97 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 32,
+  "known_text": "Did you want to show me something?",
+  "target_text": "Wilde je mij iets laten zien?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "did you want",
+      "target": "wilde je",
+      "components": [
+        {"known": "did want", "target": "wilde"},
+        {"known": "you", "target": "je"}
+      ],
+      "phrases": [
+        {"known": "did want", "target": "wilde"},
+        {"known": "you", "target": "je"},
+        {"known": "did you want", "target": "wilde je"},
+        {"known": "did you want to learn", "target": "wilde je leren"},
+        {"known": "did you want to go", "target": "wilde je gaan"},
+        {"known": "did you want to help her", "target": "wilde je haar helpen"},
+        {"known": "did you want to help her better", "target": "wilde je haar beter helpen"},
+        {"known": "did you want to talk with me", "target": "wilde je met mij praten"},
+        {"known": "did you want to go with me tonight", "target": "wilde je vanavond met mij gaan"},
+        {"known": "did you want to ask me something yesterday before you have to go", "target": "wilde je mij gisteren iets vragen voordat je moet gaan"},
+        {"known": "did you want to talk with her as soon as possible before you have to help everyone else", "target": "wilde je zo snel mogelijk met haar praten voordat je iedereen anders moet helpen"},
+        {"known": "but why did you want to talk with her yesterday before you have to help everyone else", "target": "maar waarom wilde je gisteren met haar praten voordat je iedereen anders moet helpen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to show",
+      "target": "laten zien",
+      "components": [
+        {"known": "let", "target": "laten"},
+        {"known": "see", "target": "zien"}
+      ],
+      "phrases": [
+        {"known": "let", "target": "laten"},
+        {"known": "see", "target": "zien"},
+        {"known": "to show", "target": "laten zien"},
+        {"known": "to show me", "target": "mij laten zien"},
+        {"known": "I want to show", "target": "ik wil laten zien"},
+        {"known": "did you want to show", "target": "wilde je laten zien"},
+        {"known": "to show something", "target": "iets laten zien"},
+        {"known": "did you want to show me", "target": "wilde je mij laten zien"},
+        {"known": "I wanted to show you something", "target": "ik wilde je iets laten zien"},
+        {"known": "did you want to show me something tonight", "target": "wilde je mij vanavond iets laten zien"},
+        {"known": "I am looking forward to showing you something as soon as possible", "target": "ik kijk ernaar uit om je zo snel mogelijk iets te laten zien"},
+        {"known": "but why did you want to show her something yesterday before you have to go with everyone else", "target": "maar waarom wilde je haar gisteren iets laten zien voordat je met iedereen anders moet gaan"},
+        {"known": "I wanted to show her something better before I have to go with everyone tonight", "target": "ik wilde haar iets beter laten zien voordat ik vanavond met iedereen moet gaan"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "me",
+      "target": "mij",
+      "phrases": [
+        {"known": "me", "target": "mij"},
+        {"known": "with me", "target": "met mij"},
+        {"known": "show me", "target": "mij laten zien"},
+        {"known": "to show me", "target": "mij laten zien"},
+        {"known": "ask me", "target": "mij vragen"},
+        {"known": "did you want me", "target": "wilde je mij"},
+        {"known": "did you want to show me", "target": "wilde je mij laten zien"},
+        {"known": "I wanted to ask me something", "target": "ik wilde mij iets vragen"},
+        {"known": "did you want to talk with me tonight", "target": "wilde je vanavond met mij praten"},
+        {"known": "I am looking forward to showing you me as soon as possible", "target": "ik kijk ernaar uit om je mij zo snel mogelijk te laten zien"},
+        {"known": "did you want to show me something before you have to go with everyone else", "target": "wilde je mij iets laten zien voordat je met iedereen anders moet gaan"},
+        {"known": "but why did you want to ask me something yesterday before you have to help her with everyone", "target": "maar waarom wilde je mij gisteren iets vragen voordat je haar met iedereen moet helpen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "something",
+      "target": "iets",
+      "phrases": [
+        {"known": "something", "target": "iets"},
+        {"known": "not something", "target": "niet iets"},
+        {"known": "something now", "target": "nu iets"},
+        {"known": "show something", "target": "iets laten zien"},
+        {"known": "to show something", "target": "iets laten zien"},
+        {"known": "did you want something", "target": "wilde je iets"},
+        {"known": "did you want to show something", "target": "wilde je iets laten zien"},
+        {"known": "did you want to show me something", "target": "wilde je mij iets laten zien"},
+        {"known": "I wanted to show you something", "target": "ik wilde je iets laten zien"},
+        {"known": "did you want to show me something tonight", "target": "wilde je mij vanavond iets laten zien"},
+        {"known": "I am looking forward to showing you something as soon as possible", "target": "ik kijk ernaar uit om je zo snel mogelijk iets te laten zien"},
+        {"known": "but why did you want to show her something yesterday before you have to go with everyone else", "target": "maar waarom wilde je haar gisteren iets laten zien voordat je met iedereen anders moet gaan"}
+      ]
+    }
+  ]
+}

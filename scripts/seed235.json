@@ -1,0 +1,104 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 235,
+  "known_text": "I met someone who said that he wanted to tell you something.",
+  "target_text": "Ik heb iemand ontmoet die zei dat hij je iets wilde vertellen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I met",
+      "target": "ik heb ontmoet",
+      "components": [
+        {"known": "I have", "target": "ik heb"},
+        {"known": "met", "target": "ontmoet"}
+      ],
+      "phrases": [
+        {"known": "I have", "target": "ik heb"},
+        {"known": "met", "target": "ontmoet"},
+        {"known": "I met", "target": "ik heb ontmoet"},
+        {"known": "I met someone", "target": "ik heb iemand ontmoet"},
+        {"known": "I met her yesterday", "target": "ik heb haar gisteren ontmoet"},
+        {"known": "I met him last week", "target": "ik heb hem vorige week ontmoet"},
+        {"known": "I met a young man", "target": "ik heb een jonge man ontmoet"},
+        {"known": "I met an old woman", "target": "ik heb een oude vrouw ontmoet"},
+        {"known": "I met someone who works there", "target": "ik heb iemand ontmoet die daar werkt"},
+        {"known": "I met your brother last night", "target": "ik heb gisteravond je broer ontmoet"},
+        {"known": "I met a young woman who knows your sister", "target": "ik heb een jonge vrouw ontmoet die je zus kent"},
+        {"known": "I think I met someone who can help us with that", "target": "ik denk dat ik iemand heb ontmoet die ons daarmee kan helpen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "someone who said",
+      "target": "iemand die zei",
+      "components": [
+        {"known": "someone", "target": "iemand"},
+        {"known": "who said", "target": "die zei"}
+      ],
+      "phrases": [
+        {"known": "someone", "target": "iemand"},
+        {"known": "who said", "target": "die zei"},
+        {"known": "someone who said", "target": "iemand die zei"},
+        {"known": "someone who said that", "target": "iemand die dat zei"},
+        {"known": "someone who said it was good", "target": "iemand die zei dat het goed was"},
+        {"known": "I met someone who said that", "target": "ik heb iemand ontmoet die dat zei"},
+        {"known": "someone who said that to us", "target": "iemand die dat aan ons zei"},
+        {"known": "I met someone who said that it was a good idea", "target": "ik heb iemand ontmoet die zei dat het een goed idee was"},
+        {"known": "someone who said that they told us about it", "target": "iemand die zei dat ze ons erover vertelden"},
+        {"known": "I met someone on Sunday morning who said that he can help", "target": "ik heb op zondagochtend iemand ontmoet die zei dat hij kan helpen"},
+        {"known": "I have not met someone who said that so far", "target": "ik heb tot nu toe niemand ontmoet die dat zei"},
+        {"known": "nobody was sure if someone said that or not", "target": "niemand wist zeker of iemand dat zei of niet"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that he wanted",
+      "target": "dat hij wilde",
+      "components": [
+        {"known": "that", "target": "dat"},
+        {"known": "he wanted", "target": "hij wilde"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "dat"},
+        {"known": "he wanted", "target": "hij wilde"},
+        {"known": "that he wanted", "target": "dat hij wilde"},
+        {"known": "he said that he wanted", "target": "hij zei dat hij wilde"},
+        {"known": "that he wanted to speak", "target": "dat hij wilde spreken"},
+        {"known": "she said that he wanted to help", "target": "ze zei dat hij wilde helpen"},
+        {"known": "I knew that he wanted to learn", "target": "ik wist dat hij wilde leren"},
+        {"known": "that he wanted to work with us", "target": "dat hij met ons wilde werken"},
+        {"known": "someone said that he wanted to come", "target": "iemand zei dat hij wilde komen"},
+        {"known": "I think that he wanted to try something new", "target": "ik denk dat hij iets nieuws wilde proberen"},
+        {"known": "they told us that he wanted to start on Sunday morning", "target": "ze vertelden ons dat hij op zondagochtend wilde beginnen"},
+        {"known": "nobody was sure that he wanted to do it so far", "target": "niemand wist zeker of hij het tot nu toe wilde doen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to tell you something",
+      "target": "je iets te vertellen",
+      "components": [
+        {"known": "to tell", "target": "te vertellen"},
+        {"known": "you something", "target": "je iets"}
+      ],
+      "phrases": [
+        {"known": "to tell", "target": "te vertellen"},
+        {"known": "you something", "target": "je iets"},
+        {"known": "to tell you something", "target": "je iets te vertellen"},
+        {"known": "I have something to tell you", "target": "ik heb je iets te vertellen"},
+        {"known": "he wanted to tell you something", "target": "hij wilde je iets vertellen"},
+        {"known": "there is something I need to tell you", "target": "er is iets dat ik je moet vertellen"},
+        {"known": "I can tell you something about it", "target": "ik kan je er iets over vertellen"},
+        {"known": "he said that he wanted to tell you something", "target": "hij zei dat hij je iets wilde vertellen"},
+        {"known": "someone told me that they want to tell you something", "target": "iemand zei me dat ze je iets willen vertellen"},
+        {"known": "they told us that he wanted to tell you something on Sunday", "target": "ze vertelden ons dat hij je op zondag iets wilde vertellen"},
+        {"known": "I met someone who said that he wanted to tell you something about it", "target": "ik heb iemand ontmoet die zei dat hij je er iets over wilde vertellen"},
+        {"known": "nobody was sure if someone wanted to tell you something about that so far", "target": "niemand wist zeker of iemand je daar tot nu toe iets over wilde vertellen"}
+      ]
+    }
+  ]
+}

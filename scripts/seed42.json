@@ -1,0 +1,97 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 42,
+  "known_text": "I was starting to feel better than last night.",
+  "target_text": "Ik begon me beter te voelen dan gisteravond.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I was starting",
+      "target": "ik begon",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "was starting", "target": "begon"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "was starting", "target": "begon"},
+        {"known": "I was starting", "target": "ik begon"},
+        {"known": "I was starting to learn", "target": "ik begon te leren"},
+        {"known": "I was starting to read", "target": "ik begon te lezen"},
+        {"known": "I was starting to speak", "target": "ik begon te spreken"},
+        {"known": "I was starting to learn Dutch", "target": "ik begon Nederlands te leren"},
+        {"known": "but I was starting to learn Dutch", "target": "maar ik begon Nederlands te leren"},
+        {"known": "I was starting to learn Dutch with you", "target": "ik begon Nederlands met je te leren"},
+        {"known": "I was starting to read the story in Dutch", "target": "ik begon het verhaal in het Nederlands te lezen"},
+        {"known": "I was starting to learn Dutch with other people here", "target": "ik begon Nederlands met andere mensen hier te leren"},
+        {"known": "I was starting to learn how to speak Dutch well with her", "target": "ik begon te leren hoe ik goed Nederlands met haar kan spreken"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to feel better",
+      "target": "me beter te voelen",
+      "components": [
+        {"known": "me", "target": "me"},
+        {"known": "better", "target": "beter"},
+        {"known": "to feel", "target": "te voelen"}
+      ],
+      "phrases": [
+        {"known": "me", "target": "me"},
+        {"known": "better", "target": "beter"},
+        {"known": "to feel", "target": "te voelen"},
+        {"known": "to feel better", "target": "me beter te voelen"},
+        {"known": "I was starting to feel better", "target": "ik begon me beter te voelen"},
+        {"known": "to feel better now", "target": "me nu beter te voelen"},
+        {"known": "I was starting to feel better today", "target": "ik begon me vandaag beter te voelen"},
+        {"known": "but I was starting to feel better", "target": "maar ik begon me beter te voelen"},
+        {"known": "I was starting to feel better this morning", "target": "ik begon me vanochtend beter te voelen"},
+        {"known": "I was starting to feel better after learning Dutch", "target": "ik begon me beter te voelen na Nederlands te leren"},
+        {"known": "I was starting to feel better after about a week", "target": "ik begon me beter te voelen na ongeveer een week"},
+        {"known": "I was starting to feel better after learning Dutch for about a week", "target": "ik begon me beter te voelen na ongeveer een week Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "than",
+      "target": "dan",
+      "phrases": [
+        {"known": "than", "target": "dan"},
+        {"known": "better than", "target": "beter dan"},
+        {"known": "than now", "target": "dan nu"},
+        {"known": "than today", "target": "dan vandaag"},
+        {"known": "better than today", "target": "beter dan vandaag"},
+        {"known": "I feel better than today", "target": "ik voel me beter dan vandaag"},
+        {"known": "better than this morning", "target": "beter dan vanochtend"},
+        {"known": "I was starting to feel better than today", "target": "ik begon me beter te voelen dan vandaag"},
+        {"known": "I feel better than this morning", "target": "ik voel me beter dan vanochtend"},
+        {"known": "I was starting to feel better than this morning", "target": "ik begon me beter te voelen dan vanochtend"},
+        {"known": "I feel better now than this morning after learning Dutch", "target": "ik voel me nu beter dan vanochtend na Nederlands te leren"},
+        {"known": "I was starting to feel better than this morning after about a week", "target": "ik begon me beter te voelen dan vanochtend na ongeveer een week"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "last night",
+      "target": "gisteravond",
+      "phrases": [
+        {"known": "last night", "target": "gisteravond"},
+        {"known": "not last night", "target": "niet gisteravond"},
+        {"known": "last night here", "target": "gisteravond hier"},
+        {"known": "better than last night", "target": "beter dan gisteravond"},
+        {"known": "I feel better than last night", "target": "ik voel me beter dan gisteravond"},
+        {"known": "I was starting to feel better than last night", "target": "ik begon me beter te voelen dan gisteravond"},
+        {"known": "but I feel better than last night", "target": "maar ik voel me beter dan gisteravond"},
+        {"known": "I was starting to learn Dutch last night", "target": "ik begon gisteravond Nederlands te leren"},
+        {"known": "I feel better now than last night after learning Dutch", "target": "ik voel me nu beter dan gisteravond na Nederlands te leren"},
+        {"known": "I was starting to feel better than last night after about a week", "target": "ik begon me beter te voelen dan gisteravond na ongeveer een week"},
+        {"known": "I was starting to feel better than last night this morning", "target": "ik begon me vanochtend beter te voelen dan gisteravond"},
+        {"known": "I was starting to feel better than last night after learning Dutch for about a week", "target": "ik begon me beter te voelen dan gisteravond na ongeveer een week Nederlands te leren"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 39,
+  "known_text": "But I'm a little tired this morning.",
+  "target_text": "Maar ik ben een beetje moe vanochtend.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "but",
+      "target": "maar",
+      "phrases": [
+        {"known": "but", "target": "maar"},
+        {"known": "but not", "target": "maar niet"},
+        {"known": "but now", "target": "maar nu"},
+        {"known": "but here", "target": "maar hier"},
+        {"known": "but today", "target": "maar vandaag"},
+        {"known": "but I want", "target": "maar ik wil"},
+        {"known": "but we want to learn", "target": "maar we willen leren"},
+        {"known": "but I have been learning", "target": "maar ik leer al"},
+        {"known": "but I started to read yesterday", "target": "maar ik begon gisteren te lezen"},
+        {"known": "but I have been learning Dutch for about a week", "target": "maar ik leer al ongeveer een week Nederlands"},
+        {"known": "but we don't want to interrupt the story tonight", "target": "maar we willen vanavond het verhaal niet onderbreken"},
+        {"known": "but how long have you been learning Dutch with everyone else", "target": "maar hoe lang leer je al Nederlands met iedereen anders"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I am",
+      "target": "ik ben",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "am", "target": "ben"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "am", "target": "ben"},
+        {"known": "I am", "target": "ik ben"},
+        {"known": "I am here", "target": "ik ben hier"},
+        {"known": "I am not", "target": "ik ben niet"},
+        {"known": "but I am here", "target": "maar ik ben hier"},
+        {"known": "I am learning Dutch", "target": "ik leer Nederlands"},
+        {"known": "but I am going to learn", "target": "maar ik ga leren"},
+        {"known": "but I am going to go tonight", "target": "maar ik ga vanavond gaan"},
+        {"known": "but I am going to read the story today", "target": "maar ik ga vandaag het verhaal lezen"},
+        {"known": "but I am going to learn Dutch with everyone else tonight", "target": "maar ik ga vanavond Nederlands met iedereen anders leren"},
+        {"known": "but I am looking forward to reading Dutch better with her", "target": "maar ik kijk ernaar uit om beter Nederlands met haar te lezen"},
+        {"known": "I am looking forward to learning Dutch as soon as possible with everyone", "target": "ik kijk ernaar uit om zo snel mogelijk met iedereen Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "tired",
+      "target": "moe",
+      "phrases": [
+        {"known": "tired", "target": "moe"},
+        {"known": "not tired", "target": "niet moe"},
+        {"known": "tired now", "target": "nu moe"},
+        {"known": "I am tired", "target": "ik ben moe"},
+        {"known": "a little tired", "target": "een beetje moe"},
+        {"known": "but I am tired", "target": "maar ik ben moe"},
+        {"known": "I am a little tired", "target": "ik ben een beetje moe"},
+        {"known": "but I am tired today", "target": "maar ik ben vandaag moe"},
+        {"known": "I am a little tired tonight", "target": "ik ben vanavond een beetje moe"},
+        {"known": "but I am a little tired today", "target": "maar ik ben vandaag een beetje moe"},
+        {"known": "but I am a little tired after reading the story", "target": "maar ik ben een beetje moe na het verhaal te lezen"},
+        {"known": "I am a little tired after learning Dutch with everyone tonight", "target": "ik ben een beetje moe na vanavond Nederlands met iedereen te leren"},
+        {"known": "but I am a little tired after learning Dutch for about a week", "target": "maar ik ben een beetje moe na ongeveer een week Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "this morning",
+      "target": "vanochtend",
+      "phrases": [
+        {"known": "this morning", "target": "vanochtend"},
+        {"known": "not this morning", "target": "niet vanochtend"},
+        {"known": "this morning here", "target": "vanochtend hier"},
+        {"known": "go this morning", "target": "vanochtend gaan"},
+        {"known": "I am tired this morning", "target": "ik ben vanochtend moe"},
+        {"known": "but I am here this morning", "target": "maar ik ben vanochtend hier"},
+        {"known": "I am a little tired this morning", "target": "ik ben vanochtend een beetje moe"},
+        {"known": "but I started to learn this morning", "target": "maar ik begon vanochtend te leren"},
+        {"known": "but I am a little tired this morning", "target": "maar ik ben vanochtend een beetje moe"},
+        {"known": "I have been learning Dutch this morning with her", "target": "ik leer vanochtend al Nederlands met haar"},
+        {"known": "but I am a little tired this morning after reading the story", "target": "maar ik ben vanochtend een beetje moe na het verhaal te lezen"},
+        {"known": "I started to learn Dutch this morning with everyone else", "target": "ik begon vanochtend Nederlands met iedereen anders te leren"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "a little",
+      "target": "een beetje",
+      "components": [
+        {"known": "a", "target": "een"},
+        {"known": "little", "target": "beetje"}
+      ],
+      "phrases": [
+        {"known": "a", "target": "een"},
+        {"known": "little", "target": "beetje"},
+        {"known": "a little", "target": "een beetje"},
+        {"known": "a little now", "target": "een beetje nu"},
+        {"known": "a little here", "target": "een beetje hier"},
+        {"known": "a little tired", "target": "een beetje moe"},
+        {"known": "a little today", "target": "een beetje vandaag"},
+        {"known": "I am a little tired", "target": "ik ben een beetje moe"},
+        {"known": "but I am a little tired this morning", "target": "maar ik ben vanochtend een beetje moe"},
+        {"known": "I am a little tired this morning after reading", "target": "ik ben vanochtend een beetje moe na te lezen"},
+        {"known": "but I am a little tired after learning Dutch for about a week", "target": "maar ik ben een beetje moe na ongeveer een week Nederlands te leren"},
+        {"known": "I am a little tired this morning after reading the story with her", "target": "ik ben vanochtend een beetje moe na het verhaal met haar te lezen"}
+      ]
+    }
+  ]
+}

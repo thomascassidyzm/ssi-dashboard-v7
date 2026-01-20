@@ -1,0 +1,96 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 36,
+  "known_text": "We don't want to interrupt the story.",
+  "target_text": "We willen het verhaal niet onderbreken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "not",
+      "target": "niet",
+      "phrases": [
+        {"known": "not", "target": "niet"},
+        {"known": "not now", "target": "niet nu"},
+        {"known": "not here", "target": "niet hier"},
+        {"known": "not today", "target": "niet vandaag"},
+        {"known": "not yesterday", "target": "niet gisteren"},
+        {"known": "not this afternoon", "target": "niet vanmiddag"},
+        {"known": "I don't want", "target": "ik wil niet"},
+        {"known": "I don't want to read", "target": "ik wil niet lezen"},
+        {"known": "I didn't want to go yesterday", "target": "ik wilde gisteren niet gaan"},
+        {"known": "I don't want to read nothing today", "target": "ik wil vandaag niet niets lezen"},
+        {"known": "I am looking forward to not speaking Dutch tonight", "target": "ik kijk ernaar uit om vanavond niet Nederlands te spreken"},
+        {"known": "how long did you not want to learn Dutch with everyone else", "target": "hoe lang wilde je niet Nederlands met iedereen anders leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we want",
+      "target": "we willen",
+      "components": [
+        {"known": "we", "target": "we"},
+        {"known": "want", "target": "willen"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "we"},
+        {"known": "want", "target": "willen"},
+        {"known": "we want", "target": "we willen"},
+        {"known": "we want now", "target": "we willen nu"},
+        {"known": "we want here", "target": "we willen hier"},
+        {"known": "we want to learn", "target": "we willen leren"},
+        {"known": "we want to read", "target": "we willen lezen"},
+        {"known": "we don't want to go", "target": "we willen niet gaan"},
+        {"known": "we want to learn Dutch today", "target": "we willen vandaag Nederlands leren"},
+        {"known": "we don't want to read nothing now", "target": "we willen nu niet niets lezen"},
+        {"known": "we want to learn Dutch as soon as possible with everyone", "target": "we willen zo snel mogelijk Nederlands met iedereen leren"},
+        {"known": "we don't want to go with everyone else this afternoon", "target": "we willen vanmiddag niet met iedereen anders gaan"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "the story",
+      "target": "het verhaal",
+      "components": [
+        {"known": "the", "target": "het"},
+        {"known": "story", "target": "verhaal"}
+      ],
+      "phrases": [
+        {"known": "the", "target": "het"},
+        {"known": "story", "target": "verhaal"},
+        {"known": "the story", "target": "het verhaal"},
+        {"known": "the story now", "target": "het verhaal nu"},
+        {"known": "the story here", "target": "het verhaal hier"},
+        {"known": "a story", "target": "een verhaal"},
+        {"known": "read the story", "target": "het verhaal lezen"},
+        {"known": "I want the story", "target": "ik wil het verhaal"},
+        {"known": "we want the story today", "target": "we willen vandaag het verhaal"},
+        {"known": "I don't want to read the story now", "target": "ik wil nu niet het verhaal lezen"},
+        {"known": "we don't want to read the story this afternoon with her", "target": "we willen vanmiddag niet het verhaal met haar lezen"},
+        {"known": "how long do you want to read the story with me tonight", "target": "hoe lang wil je vanavond het verhaal met mij lezen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to interrupt",
+      "target": "onderbreken",
+      "phrases": [
+        {"known": "to interrupt", "target": "onderbreken"},
+        {"known": "interrupt now", "target": "nu onderbreken"},
+        {"known": "not interrupt", "target": "niet onderbreken"},
+        {"known": "I want to interrupt", "target": "ik wil onderbreken"},
+        {"known": "we want to interrupt", "target": "we willen onderbreken"},
+        {"known": "do you want to interrupt", "target": "wil je onderbreken"},
+        {"known": "I didn't want to interrupt", "target": "ik wilde niet onderbreken"},
+        {"known": "we don't want to interrupt now", "target": "we willen nu niet onderbreken"},
+        {"known": "do you want to interrupt the story tonight", "target": "wil je vanavond het verhaal onderbreken"},
+        {"known": "we don't want to interrupt the story today", "target": "we willen vandaag het verhaal niet onderbreken"},
+        {"known": "I am looking forward to not interrupting the story tonight", "target": "ik kijk ernaar uit om vanavond het verhaal niet te onderbreken"},
+        {"known": "how long did you want to interrupt the story with everyone else", "target": "hoe lang wilde je het verhaal met iedereen anders onderbreken"}
+      ]
+    }
+  ]
+}

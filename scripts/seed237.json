@@ -1,0 +1,80 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 237,
+  "known_text": "He wanted me to tell you before the weekend.",
+  "target_text": "Hij wilde dat ik het je voor het weekend zou vertellen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he wanted",
+      "target": "hij wilde",
+      "components": [
+        {"known": "he", "target": "hij"},
+        {"known": "wanted", "target": "wilde"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "hij"},
+        {"known": "wanted", "target": "wilde"},
+        {"known": "he wanted", "target": "hij wilde"},
+        {"known": "he wanted to come", "target": "hij wilde komen"},
+        {"known": "he wanted to speak", "target": "hij wilde spreken"},
+        {"known": "he wanted to help us", "target": "hij wilde ons helpen"},
+        {"known": "he wanted to learn Dutch", "target": "hij wilde Nederlands leren"},
+        {"known": "he wanted to try something new", "target": "hij wilde iets nieuws proberen"},
+        {"known": "I met someone who said that he wanted to work", "target": "ik heb iemand ontmoet die zei dat hij wilde werken"},
+        {"known": "he wanted to tell you something about it", "target": "hij wilde je er iets over vertellen"},
+        {"known": "nobody was sure if he wanted to do that or not", "target": "niemand wist zeker of hij dat wilde doen of niet"},
+        {"known": "I know someone who said that he wanted to try to help on Sunday morning", "target": "ik ken iemand die zei dat hij op zondagochtend wilde proberen te helpen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that I would tell you",
+      "target": "dat ik het je zou vertellen",
+      "components": [
+        {"known": "that I", "target": "dat ik"},
+        {"known": "would tell you", "target": "het je zou vertellen"}
+      ],
+      "phrases": [
+        {"known": "that I", "target": "dat ik"},
+        {"known": "I would tell", "target": "ik zou vertellen"},
+        {"known": "would tell you", "target": "het je zou vertellen"},
+        {"known": "that I would tell you", "target": "dat ik het je zou vertellen"},
+        {"known": "he said that I would tell you", "target": "hij zei dat ik het je zou vertellen"},
+        {"known": "she wanted that I would tell you", "target": "ze wilde dat ik het je zou vertellen"},
+        {"known": "I knew that I would tell you", "target": "ik wist dat ik het je zou vertellen"},
+        {"known": "he wanted that I would tell you about it", "target": "hij wilde dat ik het je erover zou vertellen"},
+        {"known": "she said that I would tell you something new", "target": "ze zei dat ik je iets nieuws zou vertellen"},
+        {"known": "I knew that I would tell you about the answer", "target": "ik wist dat ik je over het antwoord zou vertellen"},
+        {"known": "someone said that I would tell you about it on Sunday afternoon", "target": "iemand zei dat ik het je er op zondagmiddag over zou vertellen"},
+        {"known": "I know someone who said that I would tell you something about that so far", "target": "ik ken iemand die zei dat ik je er tot nu toe iets over zou vertellen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before the weekend",
+      "target": "voor het weekend",
+      "components": [
+        {"known": "before", "target": "voor"},
+        {"known": "the weekend", "target": "het weekend"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "voor"},
+        {"known": "the weekend", "target": "het weekend"},
+        {"known": "before the weekend", "target": "voor het weekend"},
+        {"known": "I go before the weekend", "target": "ik ga voor het weekend"},
+        {"known": "we can do it before the weekend", "target": "we kunnen het voor het weekend doen"},
+        {"known": "he wanted to speak before the weekend", "target": "hij wilde voor het weekend spreken"},
+        {"known": "I think we should start before the weekend", "target": "ik denk dat we voor het weekend moeten beginnen"},
+        {"known": "she said that she was going to help before the weekend", "target": "ze zei dat ze voor het weekend zou helpen"},
+        {"known": "he wanted to tell me something before the weekend", "target": "hij wilde me voor het weekend iets vertellen"},
+        {"known": "I met someone who said that he would come before the weekend", "target": "ik heb iemand ontmoet die zei dat hij voor het weekend zou komen"},
+        {"known": "nobody was sure if he would finish it before the weekend or not", "target": "niemand wist zeker of hij het voor het weekend zou afmaken of niet"},
+        {"known": "I know a young man who wanted to try to help us before the weekend", "target": "ik ken een jonge man die ons voor het weekend wilde proberen te helpen"}
+      ]
+    }
+  ]
+}

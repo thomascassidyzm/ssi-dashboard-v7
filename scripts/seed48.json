@@ -1,0 +1,59 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 48,
+  "known_text": "I don't care about making mistakes.",
+  "target_text": "Het maakt me niet uit om fouten te maken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't care",
+      "target": "het maakt me niet uit",
+      "components": [
+        {"known": "it", "target": "het"},
+        {"known": "makes", "target": "maakt"},
+        {"known": "me", "target": "me"},
+        {"known": "not out", "target": "niet uit"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "het"},
+        {"known": "makes", "target": "maakt"},
+        {"known": "me", "target": "me"},
+        {"known": "not out", "target": "niet uit"},
+        {"known": "I don't care", "target": "het maakt me niet uit"},
+        {"known": "I don't care now", "target": "het maakt me nu niet uit"},
+        {"known": "I don't care today", "target": "het maakt me vandaag niet uit"},
+        {"known": "but I don't care", "target": "maar het maakt me niet uit"},
+        {"known": "I don't care if I want to", "target": "het maakt me niet uit als ik wil"},
+        {"known": "but I don't care about it today", "target": "maar het maakt me vandaag niet uit"},
+        {"known": "I don't care if I have to learn Dutch with you", "target": "het maakt me niet uit als ik Nederlands met je moet leren"},
+        {"known": "but I don't care if I have to read the story in Dutch today", "target": "maar het maakt me niet uit als ik vandaag het verhaal in het Nederlands moet lezen"},
+        {"known": "I don't care if I have to learn how to speak Dutch well with her", "target": "het maakt me niet uit als ik moet leren hoe ik goed Nederlands met haar kan spreken"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "about making mistakes",
+      "target": "om fouten te maken",
+      "components": [
+        {"known": "about", "target": "om"},
+        {"known": "making mistakes", "target": "fouten te maken"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "om"},
+        {"known": "making mistakes", "target": "fouten te maken"},
+        {"known": "about making mistakes", "target": "om fouten te maken"},
+        {"known": "about making mistakes now", "target": "om nu fouten te maken"},
+        {"known": "I don't care about making mistakes", "target": "het maakt me niet uit om fouten te maken"},
+        {"known": "about making mistakes today", "target": "om vandaag fouten te maken"},
+        {"known": "but I don't care about making mistakes", "target": "maar het maakt me niet uit om fouten te maken"},
+        {"known": "I don't care about making mistakes in Dutch", "target": "het maakt me niet uit om fouten in het Nederlands te maken"},
+        {"known": "but I don't care about making mistakes today", "target": "maar het maakt me vandaag niet uit om fouten te maken"},
+        {"known": "I don't care about making mistakes when speaking Dutch", "target": "het maakt me niet uit om fouten te maken als ik Nederlands spreek"},
+        {"known": "but I don't care about making mistakes when learning Dutch", "target": "maar het maakt me niet uit om fouten te maken als ik Nederlands leer"},
+        {"known": "I don't care about making mistakes when reading the story in Dutch", "target": "het maakt me niet uit om fouten te maken als ik het verhaal in het Nederlands lees"}
+      ]
+    }
+  ]
+}
