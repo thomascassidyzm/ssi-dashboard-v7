@@ -145,6 +145,13 @@
       @close="showImportModal = false"
       @imported="handleCourseImported"
     />
+
+    <!-- Legacy Export Dialog -->
+    <LegacyExportDialog
+      :visible="showLegacyExportDialog"
+      :course-code="selectedCourse"
+      @close="showLegacyExportDialog = false"
+    />
   </div>
 </template>
 
@@ -158,6 +165,7 @@ import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
 import ImportCourseModal from '@/components/ImportCourseModal.vue'
+import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
 // Get API base URL (same as other components)
 // On Vercel deployment, uses relative URLs (/api/...) which Vercel handles
@@ -190,6 +198,7 @@ const store = useProductionStore()
 const selectedCourse = ref('')
 const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
 const showImportModal = ref(false)
+const showLegacyExportDialog = ref(false)
 
 // Fetch available courses from API (database-first via orchestrator)
 async function loadCourses() {
@@ -430,7 +439,7 @@ function handleQuickAction(actionId: string) {
       })
       break
     case 'export_legacy':
-      exportLegacyManifest()
+      showLegacyExportDialog.value = true
       break
   }
 }
@@ -452,49 +461,6 @@ function launchLearningApp() {
   const url = `${learningAppUrl}?course=${selectedCourse.value}&qa_mode=true&token=${qaToken}`
 
   window.open(url, '_blank', 'noopener,noreferrer')
-}
-
-// Export legacy manifest for old learning app
-async function exportLegacyManifest() {
-  if (!selectedCourse.value) return
-
-  try {
-    const apiBase = getApiBaseUrl()
-    const response = await fetch(`${apiBase}/api/production/${selectedCourse.value}/export-legacy`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (!response.ok) {
-      const error = await response.json()
-      alert(`Export failed: ${error.error || 'Unknown error'}`)
-      return
-    }
-
-    const data = await response.json()
-
-    if (!data.success || !data.manifest) {
-      alert(`Export failed: ${data.error || 'No manifest data'}`)
-      return
-    }
-
-    // Create blob and trigger download
-    const blob = new Blob([JSON.stringify(data.manifest, null, 2)], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = data.filename || `${selectedCourse.value}_legacy.json`
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
-
-    // Show success with stats
-    const stats = data.stats || {}
-    alert(`Legacy manifest exported!\n\nSeeds: ${stats.seeds || 'N/A'}\nEncouragements: ${stats.orderedEncouragements + stats.pooledEncouragements || 'N/A'}`)
-  } catch (err) {
-    console.error('Export failed:', err)
-    alert(`Export failed: ${err instanceof Error ? err.message : 'Network error'}`)
-  }
 }
 
 // Handle course import completion

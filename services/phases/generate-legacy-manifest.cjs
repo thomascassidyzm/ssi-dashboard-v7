@@ -280,6 +280,339 @@ function getLanguageName(langCode) {
 }
 
 // =============================================================================
+// MANIFEST VALIDATION & CLEANUP
+// =============================================================================
+
+/**
+ * Generate a unique key for a node based on known and target text.
+ */
+function nodeKey(node) {
+  return `${node.known.text}|${node.target.text}`
+}
+
+/**
+ * Check for missing samples - any text referenced but not in samples dict.
+ * This is CRITICAL - if any are missing, the export is broken.
+ */
+function checkMissingSamples(seeds, samples) {
+  const missing = []
+
+  for (const seed of seeds) {
+    // Check seed node
+    const seedKnown = seed.node.known.text
+    const seedTarget = seed.node.target.text
+    if (!samples[seedKnown]) missing.push({ text: seedKnown, type: 'seed_known', seedId: seed.id })
+    if (!samples[seedTarget]) missing.push({ text: seedTarget, type: 'seed_target', seedId: seed.id })
+
+    // Check introduction items
+    for (const intro of seed.introduction_items || []) {
+      // Intro node
+      if (intro.node) {
+        if (!samples[intro.node.known.text]) missing.push({ text: intro.node.known.text, type: 'intro_known', introId: intro.id })
+        if (!samples[intro.node.target.text]) missing.push({ text: intro.node.target.text, type: 'intro_target', introId: intro.id })
+      }
+      // Child nodes
+      for (const node of intro.nodes || []) {
+        if (!samples[node.known.text]) missing.push({ text: node.known.text, type: 'node_known', introId: intro.id })
+        if (!samples[node.target.text]) missing.push({ text: node.target.text, type: 'node_target', introId: intro.id })
+      }
+      // Presentation (combined audio) - checked separately if --with-audio
+    }
+  }
+
+  return missing
+}
+
+/**
+ * Find duplicate nodes within introduction items.
+ * A node is duplicate if its (known, target) matches:
+ * - Any seed node
+ * - Any intro item node
+ * - Any earlier node in the manifest
+ */
+function findDuplicateNodes(seeds) {
+  const duplicates = []
+  const seedNodes = new Set()
+  const introItemNodes = new Set()
+  const allNodesSeen = new Set()
+
+  // First pass: collect all seed nodes and intro item nodes
+  for (const seed of seeds) {
+    if (seed.node) seedNodes.add(nodeKey(seed.node))
+    for (const intro of seed.introduction_items || []) {
+      if (intro.node) introItemNodes.add(nodeKey(intro.node))
+    }
+  }
+
+  // Second pass: find duplicates in child nodes
+  for (const seed of seeds) {
+    for (const intro of seed.introduction_items || []) {
+      // Check if intro item itself is duplicate of earlier intro
+      if (intro.node) {
+        const key = nodeKey(intro.node)
+        if (allNodesSeen.has(key)) {
+          duplicates.push({ type: 'intro_duplicate', introId: intro.id, key })
+        }
+        allNodesSeen.add(key)
+      }
+
+      // Check child nodes
+      for (const node of intro.nodes || []) {
+        const key = nodeKey(node)
+        if (seedNodes.has(key)) {
+          duplicates.push({ type: 'node_matches_seed', introId: intro.id, nodeId: node.id, key })
+        } else if (introItemNodes.has(key)) {
+          duplicates.push({ type: 'node_matches_intro', introId: intro.id, nodeId: node.id, key })
+        } else if (allNodesSeen.has(key)) {
+          duplicates.push({ type: 'node_matches_earlier', introId: intro.id, nodeId: node.id, key })
+        }
+        allNodesSeen.add(key)
+      }
+    }
+  }
+
+  return duplicates
+}
+
+/**
+ * Remove duplicate nodes from introduction items.
+ */
+function removeDuplicateNodes(seeds) {
+  const seedNodes = new Set()
+  const introItemNodes = new Set()
+  const allNodesSeen = new Set()
+  let removedCount = 0
+
+  // First pass: collect all seed nodes and intro item nodes
+  for (const seed of seeds) {
+    if (seed.node) seedNodes.add(nodeKey(seed.node))
+    for (const intro of seed.introduction_items || []) {
+      if (intro.node) introItemNodes.add(nodeKey(intro.node))
+    }
+  }
+
+  // Second pass: remove duplicates
+  for (const seed of seeds) {
+    for (const intro of seed.introduction_items || []) {
+      if (intro.node) allNodesSeen.add(nodeKey(intro.node))
+
+      if (intro.nodes) {
+        const filteredNodes = []
+        for (const node of intro.nodes) {
+          const key = nodeKey(node)
+          if (!seedNodes.has(key) && !introItemNodes.has(key) && !allNodesSeen.has(key)) {
+            filteredNodes.push(node)
+            allNodesSeen.add(key)
+          } else {
+            removedCount++
+          }
+        }
+        intro.nodes = filteredNodes
+      }
+    }
+  }
+
+  return removedCount
+}
+
+/**
+ * Find seeds with duplicate canonical text.
+ */
+function findDuplicateSeedCanonicals(seeds) {
+  const duplicates = []
+  const seenCanonicals = new Map() // canonical -> seedId
+
+  for (const seed of seeds) {
+    const canonical = seed.seed_sentence?.canonical
+    if (canonical) {
+      if (seenCanonicals.has(canonical)) {
+        duplicates.push({
+          originalId: seenCanonicals.get(canonical),
+          duplicateId: seed.id,
+          canonical
+        })
+      } else {
+        seenCanonicals.set(canonical, seed.id)
+      }
+    }
+  }
+
+  return duplicates
+}
+
+/**
+ * Remove seeds with duplicate canonical text (keeps first occurrence).
+ */
+function removeDuplicateSeedCanonicals(seeds) {
+  const seenCanonicals = new Set()
+  const filtered = []
+  let removedCount = 0
+
+  for (const seed of seeds) {
+    const canonical = seed.seed_sentence?.canonical
+    if (!canonical || !seenCanonicals.has(canonical)) {
+      if (canonical) seenCanonicals.add(canonical)
+      filtered.push(seed)
+    } else {
+      removedCount++
+    }
+  }
+
+  return { seeds: filtered, removedCount }
+}
+
+/**
+ * Find empty seeds (no introduction_items).
+ */
+function findEmptySeeds(seeds) {
+  return seeds.filter(s => !s.introduction_items || s.introduction_items.length === 0)
+    .map(s => ({ id: s.id, canonical: s.seed_sentence?.canonical }))
+}
+
+/**
+ * Remove empty seeds.
+ */
+function removeEmptySeeds(seeds) {
+  const filtered = seeds.filter(s => s.introduction_items && s.introduction_items.length > 0)
+  return { seeds: filtered, removedCount: seeds.length - filtered.length }
+}
+
+/**
+ * Find orphan samples (samples not referenced by any content).
+ */
+function findOrphanSamples(seeds, samples, encouragements) {
+  const referencedTexts = new Set()
+
+  // Collect all referenced texts from seeds
+  for (const seed of seeds) {
+    if (seed.node) {
+      referencedTexts.add(seed.node.known.text)
+      referencedTexts.add(seed.node.target.text)
+    }
+    for (const intro of seed.introduction_items || []) {
+      if (intro.node) {
+        referencedTexts.add(intro.node.known.text)
+        referencedTexts.add(intro.node.target.text)
+      }
+      for (const node of intro.nodes || []) {
+        referencedTexts.add(node.known.text)
+        referencedTexts.add(node.target.text)
+      }
+      if (intro.presentation) referencedTexts.add(intro.presentation)
+    }
+  }
+
+  // Add encouragements
+  for (const enc of encouragements || []) {
+    if (enc.text) referencedTexts.add(enc.text)
+  }
+
+  // Find orphans
+  const orphans = []
+  for (const text of Object.keys(samples)) {
+    if (!referencedTexts.has(text)) {
+      orphans.push(text)
+    }
+  }
+
+  return orphans
+}
+
+/**
+ * Remove orphan samples.
+ */
+function removeOrphanSamples(samples, orphans) {
+  for (const text of orphans) {
+    delete samples[text]
+  }
+  return orphans.length
+}
+
+/**
+ * Run all validations and cleanup. Returns stats object.
+ */
+function validateAndCleanManifest(seeds, samples, encouragements) {
+  const stats = { pass: 1 }
+
+  // Pass 1 (and potentially pass 2 for verification)
+  while (true) {
+    console.error(`\n  === Validation Pass ${stats.pass} ===`)
+    let hasIssues = false
+
+    // 1. Check missing samples (CRITICAL)
+    const missing = checkMissingSamples(seeds, samples)
+    if (missing.length > 0) {
+      console.error(`  CRITICAL: ${missing.length} missing samples!`)
+      missing.slice(0, 5).forEach(m => console.error(`    - ${m.type}: "${m.text.substring(0, 50)}..."`))
+      throw new Error(`Legacy export broken: ${missing.length} texts have no sample entry`)
+    }
+    console.error(`  ✓ No missing samples`)
+
+    // 2. Check/remove duplicate nodes
+    const dupNodes = findDuplicateNodes(seeds)
+    if (dupNodes.length > 0) {
+      console.error(`  Found ${dupNodes.length} duplicate nodes, removing...`)
+      const removed = removeDuplicateNodes(seeds)
+      console.error(`  ✓ Removed ${removed} duplicate nodes`)
+      hasIssues = true
+    } else {
+      console.error(`  ✓ No duplicate nodes`)
+    }
+
+    // 3. Check/remove duplicate seed canonicals
+    const dupSeeds = findDuplicateSeedCanonicals(seeds)
+    if (dupSeeds.length > 0) {
+      console.error(`  Found ${dupSeeds.length} duplicate seed canonicals, removing...`)
+      const result = removeDuplicateSeedCanonicals(seeds)
+      seeds.length = 0
+      seeds.push(...result.seeds)
+      console.error(`  ✓ Removed ${result.removedCount} duplicate seeds`)
+      hasIssues = true
+    } else {
+      console.error(`  ✓ No duplicate seed canonicals`)
+    }
+
+    // 4. Check/remove empty seeds
+    const emptySeeds = findEmptySeeds(seeds)
+    if (emptySeeds.length > 0) {
+      console.error(`  Found ${emptySeeds.length} empty seeds, removing...`)
+      const result = removeEmptySeeds(seeds)
+      seeds.length = 0
+      seeds.push(...result.seeds)
+      console.error(`  ✓ Removed ${result.removedCount} empty seeds`)
+      hasIssues = true
+    } else {
+      console.error(`  ✓ No empty seeds`)
+    }
+
+    // 5. Check/remove orphan samples (last)
+    const orphans = findOrphanSamples(seeds, samples, encouragements)
+    if (orphans.length > 0) {
+      console.error(`  Found ${orphans.length} orphan samples, removing...`)
+      const removed = removeOrphanSamples(samples, orphans)
+      console.error(`  ✓ Removed ${removed} orphan samples`)
+      hasIssues = true
+    } else {
+      console.error(`  ✓ No orphan samples`)
+    }
+
+    // If no issues found, we're done
+    if (!hasIssues) {
+      console.error(`  ✓ All validations passed!`)
+      break
+    }
+
+    // Otherwise, run another pass to verify fixes didn't create new issues
+    stats.pass++
+    if (stats.pass > 3) {
+      throw new Error('Validation loop: issues keep reappearing after 3 passes')
+    }
+  }
+
+  return stats
+}
+
+// =============================================================================
 // SAMPLES BUILDER
 // =============================================================================
 
@@ -319,19 +652,35 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
       const record = audioLookup.get(key)
 
       if (record) {
-        sampleEntries.push({
-          id: record.id.toUpperCase(),
-          role: legacyRole,
-          cadence,
-          duration: record.duration_ms ? record.duration_ms / 1000 : 0
-        })
+        // Use the UUID from s3_key, not the database id
+        const audioUuid = uuidFromS3Key(record.s3_key)
+        if (audioUuid) {
+          sampleEntries.push({
+            id: audioUuid.toUpperCase(),
+            role: legacyRole,
+            cadence,
+            duration: record.duration_ms ? record.duration_ms / 1000 : 0
+          })
+        }
       }
     }
 
     if (sampleEntries.length > 0) {
-      samples[text] = sampleEntries
+      // Merge with existing entries instead of overwriting
+      // This handles cases where known and target text are identical (e.g., "no", "in", "so")
+      if (samples[text]) {
+        samples[text] = [...samples[text], ...sampleEntries]
+      } else {
+        samples[text] = sampleEntries
+      }
+      // Also add without trailing period
       if (text.endsWith('.')) {
-        samples[text.slice(0, -1)] = sampleEntries
+        const textWithoutPeriod = text.slice(0, -1)
+        if (samples[textWithoutPeriod]) {
+          samples[textWithoutPeriod] = [...samples[textWithoutPeriod], ...sampleEntries]
+        } else {
+          samples[textWithoutPeriod] = sampleEntries
+        }
       }
     }
   }
@@ -406,7 +755,7 @@ async function concatenateWithPauses(audioPaths, outputPath, pauseMs = 1000) {
  * @returns {Promise<Map>} Map of legoId -> combined audio UUID
  */
 async function generateCombinedPresentations(courseCode, introItems, audioLookup, presentationByLegoId, targetLang, knownLang, options = {}) {
-  const { dryRun = false, limit = 0, concurrency = 2 } = options
+  const { dryRun = false, limit = 0, concurrency = 2, onProgress = null, shouldCancel = null } = options
   const results = new Map()
   const errors = []
   const skipped = []
@@ -531,6 +880,12 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
   // Process items with limited concurrency
   let processed = 0
   for (let i = 0; i < itemsToProcess.length; i += concurrency) {
+    // Check for cancellation
+    if (shouldCancel && shouldCancel()) {
+      console.error(`    Cancelled at ${processed}/${itemsToProcess.length}`)
+      break
+    }
+
     const batch = itemsToProcess.slice(i, i + concurrency)
     const batchResults = await Promise.all(batch.map(processOne))
 
@@ -543,6 +898,11 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
     processed += batch.length
     if (processed % 10 === 0 || processed === itemsToProcess.length) {
       console.error(`    Processed ${processed}/${itemsToProcess.length}...`)
+    }
+
+    // Call progress callback
+    if (onProgress) {
+      onProgress(processed, itemsToProcess.length)
     }
   }
 
@@ -742,10 +1102,77 @@ async function generateLegacyManifest(courseCode, options = {}) {
   const samples = buildSamplesDictionary(dbAudio, textsArray, knownLang, targetLang)
   console.error(`  Built samples dictionary with ${Object.keys(samples).length} entries`)
 
+  // 8.1. Add encouragement/instruction samples BEFORE validation
+  // This ensures they're included in the orphan check
+  for (const item of instructions) {
+    if (item.text && item.s3_key) {
+      samples[item.text] = [{
+        id: uuidFromS3Key(item.s3_key),
+        cadence: 'natural',
+        role: 'presentation',
+        duration: item.duration_ms ? item.duration_ms / 1000 : 0
+      }]
+    }
+  }
+  for (const item of encouragementsList) {
+    if (item.text && item.s3_key) {
+      samples[item.text] = [{
+        id: uuidFromS3Key(item.s3_key),
+        cadence: 'natural',
+        role: 'presentation',
+        duration: item.duration_ms ? item.duration_ms / 1000 : 0
+      }]
+    }
+  }
+  console.error(`  Added ${instructions.length + encouragementsList.length} encouragement samples`)
+
+  // 8.2. Add placeholder presentation samples BEFORE validation
+  // Uses deterministic UUIDs so they match what will be generated later
+  // This allows the manifest to be valid immediately (for download)
+  // while combined audio generation happens in background
+  for (const item of introItems) {
+    const combinedUuid = uuidService.generateSampleUUID(
+      item.presentation,
+      knownLang,
+      'presentation_combined',
+      'natural',
+      'combined'
+    )
+    samples[item.presentation] = [{
+      id: combinedUuid,
+      role: 'presentation',
+      cadence: 'natural',
+      duration: 0  // Unknown until generated
+    }]
+  }
+  console.error(`  Added ${introItems.length} placeholder presentation samples`)
+
+  // 8.3. Validate and clean manifest
+  // All samples (content + encouragements + presentations) are now in the dict
+  const allEncouragements = [...instructions, ...encouragementsList]
+  validateAndCleanManifest(seeds, samples, allEncouragements)
+
+  // 8.4. Filter introItems to only include items from remaining seeds
+  // (seeds may have been removed during validation)
+  const remainingSeedIntroIds = new Set()
+  for (const seed of seeds) {
+    for (const intro of seed.introduction_items || []) {
+      remainingSeedIntroIds.add(intro.id)
+    }
+  }
+  const originalIntroCount = introItems.length
+  const validIntroItems = introItems.filter(item => remainingSeedIntroIds.has(item.legoUUID))
+  if (validIntroItems.length < originalIntroCount) {
+    console.error(`  Filtered intro items: ${validIntroItems.length} (removed ${originalIntroCount - validIntroItems.length} from cleaned seeds)`)
+  }
+  introItems.length = 0
+  introItems.push(...validIntroItems)
+
   // 8.5. Generate combined presentation audio if requested
-  let combinedPresentationMap = new Map()
+  // This happens AFTER validation - manifest is already valid for download
+  // Combined audio generation can run in background with progress updates
   if (withAudio && introItems.length > 0) {
-    console.error(`  Collected ${introItems.length} introduction items for combined audio`)
+    console.error(`\n  Generating combined presentation audio (${introItems.length} items)...`)
 
     // Build audio lookup map: (text_normalized|language|role) -> record
     const audioLookup = new Map()
@@ -764,7 +1191,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
     }
     console.error(`  Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
 
-    combinedPresentationMap = await generateCombinedPresentations(
+    const combinedPresentationMap = await generateCombinedPresentations(
       courseCode,
       introItems,
       audioLookup,
@@ -774,23 +1201,20 @@ async function generateLegacyManifest(courseCode, options = {}) {
       { dryRun, limit, concurrency }
     )
 
-    // Add combined presentation audio to samples dictionary
-    // The legacy app looks these up by presentation text
+    // Update presentation samples with actual durations (UUIDs already match)
+    let updatedCount = 0
     for (const item of introItems) {
       const combinedUuid = combinedPresentationMap.get(item.legoId)
-      if (combinedUuid) {
-        // Add entry for this presentation text with role 'presentation'
-        // This is a combined file: narration + pause + target1 + pause + target2
-        samples[item.presentation] = [{
-          id: combinedUuid,
-          role: 'presentation',
-          cadence: 'natural',
-          duration: 0  // Could calculate from components but not essential
-        }]
+      if (combinedUuid && samples[item.presentation]) {
+        // UUID should already match, but verify
+        const existingUuid = samples[item.presentation][0]?.id
+        if (existingUuid !== combinedUuid) {
+          console.error(`  Warning: UUID mismatch for ${item.legoId}: expected ${existingUuid}, got ${combinedUuid}`)
+        }
+        updatedCount++
       }
     }
-
-    console.error(`  Added ${combinedPresentationMap.size} combined presentations to samples`)
+    console.error(`  Verified ${updatedCount} combined presentations`)
   }
 
   // 9. Build introduction from welcome audio
@@ -813,29 +1237,6 @@ async function generateLegacyManifest(courseCode, options = {}) {
     text: item.text,
     id: uuidFromS3Key(item.s3_key)
   })).filter(item => item.id) // Filter out any without valid s3_key
-
-  // 11. Add encouragement/instruction audio to samples dictionary
-  for (const item of instructions) {
-    if (item.text && item.s3_key) {
-      samples[item.text] = [{
-        id: uuidFromS3Key(item.s3_key),
-        cadence: 'natural',
-        role: 'presentation',
-        duration: item.duration_ms ? item.duration_ms / 1000 : 0
-      }]
-    }
-  }
-
-  for (const item of encouragementsList) {
-    if (item.text && item.s3_key) {
-      samples[item.text] = [{
-        id: uuidFromS3Key(item.s3_key),
-        cadence: 'natural',
-        role: 'presentation',
-        duration: item.duration_ms ? item.duration_ms / 1000 : 0
-      }]
-    }
-  }
 
   // 12. Build manifest
   const manifestId = `${LANG_MAP[knownLang] || knownLang}-${LANG_MAP[targetLang] || targetLang}`
@@ -863,6 +1264,132 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Encouragements: ${orderedEncouragements.length} ordered, ${pooledEncouragements.length} pooled`)
 
   return manifest
+}
+
+// =============================================================================
+// MANIFEST VALIDATION
+// =============================================================================
+
+/**
+ * Validate that a string is a valid UUID (v4 or v5 format)
+ */
+function isValidUUID(str) {
+  if (!str || typeof str !== 'string') return false
+  // UUID v4/v5 regex: 8-4-4-4-12 hex characters
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  return uuidRegex.test(str)
+}
+
+/**
+ * Recursively find all issues in the manifest:
+ * - Invalid UUIDs in `id` fields
+ * - Empty strings in text fields
+ *
+ * @param {any} data - The data to validate
+ * @param {string} path - Current path for error reporting
+ * @param {object} issues - Accumulator for found issues
+ * @returns {object} - { invalidUUIDs: [], emptyStrings: [] }
+ */
+function findManifestIssues(data, path = '', issues = null) {
+  if (!issues) {
+    issues = { invalidUUIDs: [], emptyStrings: [] }
+  }
+
+  if (data === null || data === undefined) {
+    return issues
+  }
+
+  if (typeof data === 'string') {
+    // Check for empty strings (but not in paths that are expected to be empty sometimes)
+    if (data === '' && !path.includes('lemma') && !path.includes('token')) {
+      issues.emptyStrings.push(path)
+    }
+    return issues
+  }
+
+  if (Array.isArray(data)) {
+    for (let i = 0; i < data.length; i++) {
+      findManifestIssues(data[i], `${path}[${i}]`, issues)
+    }
+    return issues
+  }
+
+  if (typeof data === 'object') {
+    for (const [key, value] of Object.entries(data)) {
+      const currentPath = path ? `${path}.${key}` : key
+
+      // Check ID fields for valid UUIDs
+      if (key === 'id' && typeof value === 'string') {
+        // Skip the root-level manifest ID (e.g., "en-it") - it's not a UUID
+        if (path === '' || currentPath === 'id') {
+          // This is the manifest ID, skip
+        } else if (!isValidUUID(value)) {
+          issues.invalidUUIDs.push({ path: currentPath, value })
+        }
+      }
+
+      // Check text fields for empty strings
+      if (key === 'text' && value === '') {
+        issues.emptyStrings.push(currentPath)
+      }
+
+      // Recurse into nested objects/arrays
+      findManifestIssues(value, currentPath, issues)
+    }
+  }
+
+  return issues
+}
+
+/**
+ * Validate the manifest for critical issues
+ *
+ * @param {object} manifest - The generated manifest
+ * @returns {object} - { valid: boolean, issues: { invalidUUIDs: [], emptyStrings: [] }, summary: string }
+ */
+function validateManifest(manifest) {
+  const issues = findManifestIssues(manifest)
+
+  const invalidCount = issues.invalidUUIDs.length
+  const emptyCount = issues.emptyStrings.length
+  const valid = invalidCount === 0 && emptyCount === 0
+
+  let summary = ''
+  if (valid) {
+    summary = 'Manifest validation passed'
+  } else {
+    const parts = []
+    if (invalidCount > 0) parts.push(`${invalidCount} invalid UUID(s)`)
+    if (emptyCount > 0) parts.push(`${emptyCount} empty string(s)`)
+    summary = `Manifest validation failed: ${parts.join(', ')}`
+  }
+
+  // Log to stderr for CLI usage
+  if (invalidCount > 0) {
+    console.error(`\n  ⚠️  Invalid UUIDs found (${invalidCount}):`)
+    for (const item of issues.invalidUUIDs.slice(0, 10)) {
+      console.error(`      ${item.path}: "${item.value}"`)
+    }
+    if (invalidCount > 10) {
+      console.error(`      ... and ${invalidCount - 10} more`)
+    }
+  }
+
+  if (emptyCount > 0) {
+    console.error(`\n  ⚠️  Empty strings found (${emptyCount}):`)
+    for (const path of issues.emptyStrings.slice(0, 10)) {
+      console.error(`      ${path}`)
+    }
+    if (emptyCount > 10) {
+      console.error(`      ... and ${emptyCount - 10} more`)
+    }
+  }
+
+  if (valid) {
+    console.error(`\n  ✓ Manifest validation passed`)
+  }
+
+  return { valid, issues, summary }
 }
 
 // =============================================================================
@@ -918,6 +1445,14 @@ async function main() {
 
   try {
     const manifest = await generateLegacyManifest(courseCode, { withAudio, dryRun, limit, concurrency })
+
+    // Validate the manifest
+    const validation = validateManifest(manifest)
+    if (!validation.valid) {
+      console.error(`\n  ❌ ${validation.summary}`)
+      // Don't fail - still output the manifest so user can inspect it
+    }
+
     const json = JSON.stringify(manifest, null, 2)
 
     if (outputFile) {
@@ -939,4 +1474,8 @@ if (require.main === module) {
   main()
 }
 
-module.exports = { generateLegacyManifest }
+module.exports = {
+  generateLegacyManifest,
+  generateCombinedPresentations,
+  validateManifest
+}

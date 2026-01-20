@@ -382,24 +382,56 @@ app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
   }
 })
 
+// =============================================================================
+// LEGACY MANIFEST EXPORT WITH COMBINED AUDIO
+// =============================================================================
+
+// Track active legacy audio jobs
+const legacyAudioJobs = new Map()
+
 // Export legacy manifest (for old learning app)
+// Query params:
+//   withAudio=true  - Start background job to generate combined presentation audio
 app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
   try {
     const { courseCode } = req.params
+    const withAudio = req.query.withAudio === 'true'
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
     // Import the legacy manifest generator
-    const { generateLegacyManifest } = require('./phases/generate-legacy-manifest.cjs')
+    const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
 
-    logger.info(`Generating legacy manifest for ${courseCode}`)
-    const manifest = await generateLegacyManifest(courseCode)
+    logger.info(`Generating legacy manifest for ${courseCode}${withAudio ? ' (with audio)' : ''}`)
+
+    // Generate manifest (always without audio for immediate response)
+    // The manifest already has placeholder presentation UUIDs
+    const manifest = await generateLegacyManifest(courseCode, { withAudio: false })
+
+    // Validate the manifest for critical issues
+    const validation = validateManifest(manifest)
+    if (!validation.valid) {
+      logger.warn(`Legacy manifest validation issues for ${courseCode}: ${validation.summary}`)
+    }
 
     // Generate filename with date
     const date = new Date().toISOString().slice(0, 10).replace(/-/g, '')
     const filename = `${manifest.id}_legacy_${date}.json`
+
+    // Count intro items for audio generation
+    let introCount = 0
+    for (const seed of manifest.slices[0].seeds) {
+      introCount += (seed.introduction_items || []).length
+    }
+
+    // Start background audio generation if requested
+    let audioJobId = null
+    if (withAudio && introCount > 0) {
+      audioJobId = `legacy-audio-${courseCode}-${Date.now()}`
+      startLegacyAudioGeneration(courseCode, audioJobId, manifest)
+    }
 
     res.json({
       success: true,
@@ -409,12 +441,191 @@ app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
         seeds: manifest.slices[0].seeds.length,
         orderedEncouragements: manifest.slices[0].orderedEncouragements.length,
         pooledEncouragements: manifest.slices[0].pooledEncouragements.length
-      }
+      },
+      validation: {
+        valid: validation.valid,
+        summary: validation.summary,
+        invalidUUIDs: validation.issues.invalidUUIDs.length,
+        emptyStrings: validation.issues.emptyStrings.length,
+        // Include first few details for display
+        invalidUUIDDetails: validation.issues.invalidUUIDs.slice(0, 5),
+        emptyStringDetails: validation.issues.emptyStrings.slice(0, 5)
+      },
+      audioJobId
     })
   } catch (error) {
     logger.error('Error generating legacy manifest:', error)
     res.status(500).json({ error: error.message })
   }
+})
+
+// Start background audio generation for legacy manifest
+async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
+  // Import the combined presentations generator
+  const { generateCombinedPresentations } = require('./phases/generate-legacy-manifest.cjs')
+
+  // Query database to get lego info with original lego_id
+  // We need this because the manifest only has generated UUIDs, not the S0001L01 format
+  const client = supabaseClient.getClient()
+  if (!client) {
+    logger.error(`[LegacyAudio] Supabase not initialized`)
+    return
+  }
+
+  // Get all new LEGOs with their lego_id
+  const { data: dbLegos } = await client
+    .from('course_legos')
+    .select('lego_id, seed_number, lego_index, known_text, target_text, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .order('seed_number')
+    .order('lego_index')
+
+  if (!dbLegos || dbLegos.length === 0) {
+    logger.info(`[LegacyAudio] No new LEGOs found for ${courseCode}`)
+    return
+  }
+
+  // Build intro items directly from database LEGOs (not manifest)
+  // This ensures we have the correct lego_id format for presentation lookup
+  const introItems = dbLegos.map(lego => ({
+    legoId: lego.lego_id,  // Original format: S0001L01
+    knownText: lego.known_text,
+    targetText: lego.target_text,
+    // Presentation text isn't needed for lookup since we use lego_id
+    presentation: `The ... for '${lego.known_text}', is: ... '${lego.target_text}' ... '${lego.target_text}'`
+  }))
+
+  logger.info(`[LegacyAudio] Built ${introItems.length} intro items from database LEGOs`)
+
+  // Create job record
+  legacyAudioJobs.set(jobId, {
+    courseCode,
+    status: 'running',
+    total: introItems.length,
+    completed: 0,
+    startedAt: Date.now(),
+    cancelled: false
+  })
+
+  logger.info(`[LegacyAudio] Starting job ${jobId} for ${courseCode}: ${introItems.length} items`)
+
+  // Emit start event
+  io.emit('legacyAudio:started', { jobId, courseCode, total: introItems.length })
+
+  try {
+    // Load audio data from database
+    const client = supabaseClient.getClient()
+    const course = await supabaseClient.getCourse(courseCode)
+    const targetLang = course.target_lang
+    const knownLang = course.known_lang
+
+    // Load audio records
+    const { data: dbAudio } = await client
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
+      .eq('course_code', courseCode)
+
+    // Build lookup maps
+    const audioLookup = new Map()
+    const presentationByLegoId = new Map()
+
+    if (dbAudio) {
+      for (const record of dbAudio) {
+        if (record.role === 'presentation' && record.lego_id) {
+          presentationByLegoId.set(record.lego_id, record)
+        }
+        const key = `${record.text_normalized}|${record.language}|${record.role}`
+        audioLookup.set(key, record)
+      }
+    }
+
+    logger.info(`[LegacyAudio] Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
+
+    // Generate combined presentations with progress callback
+    const job = legacyAudioJobs.get(jobId)
+
+    await generateCombinedPresentations(
+      courseCode,
+      introItems,
+      audioLookup,
+      presentationByLegoId,
+      targetLang,
+      knownLang,
+      {
+        dryRun: false,
+        concurrency: 4,
+        onProgress: (completed, total) => {
+          const currentJob = legacyAudioJobs.get(jobId)
+          if (currentJob) {
+            currentJob.completed = completed
+            io.emit('legacyAudio:progress', { jobId, completed, total })
+          }
+        },
+        shouldCancel: () => {
+          const currentJob = legacyAudioJobs.get(jobId)
+          return currentJob?.cancelled === true
+        }
+      }
+    )
+
+    // Check if cancelled
+    const finalJob = legacyAudioJobs.get(jobId)
+    if (finalJob?.cancelled) {
+      finalJob.status = 'cancelled'
+      io.emit('legacyAudio:cancelled', { jobId })
+      logger.info(`[LegacyAudio] Job ${jobId} cancelled`)
+    } else {
+      if (finalJob) finalJob.status = 'completed'
+      io.emit('legacyAudio:completed', { jobId })
+      logger.info(`[LegacyAudio] Job ${jobId} completed`)
+    }
+  } catch (err) {
+    const job = legacyAudioJobs.get(jobId)
+    if (job) job.status = 'failed'
+    io.emit('legacyAudio:failed', { jobId, error: err.message })
+    logger.error(`[LegacyAudio] Job ${jobId} failed:`, err)
+  }
+
+  // Clean up job after some time
+  setTimeout(() => {
+    legacyAudioJobs.delete(jobId)
+  }, 5 * 60 * 1000) // Keep for 5 minutes
+}
+
+// Cancel legacy audio generation
+app.post('/api/production/:courseCode/cancel-legacy-audio', (req, res) => {
+  const { courseCode } = req.params
+
+  // Find and cancel active job for this course
+  for (const [jobId, job] of legacyAudioJobs) {
+    if (job.courseCode === courseCode && job.status === 'running') {
+      job.cancelled = true
+      logger.info(`[LegacyAudio] Cancellation requested for job ${jobId}`)
+      return res.json({ success: true, jobId })
+    }
+  }
+
+  res.status(404).json({ error: 'No active audio job found for this course' })
+})
+
+// Get legacy audio job status
+app.get('/api/production/:courseCode/legacy-audio-status', (req, res) => {
+  const { courseCode } = req.params
+
+  for (const [jobId, job] of legacyAudioJobs) {
+    if (job.courseCode === courseCode) {
+      return res.json({
+        jobId,
+        status: job.status,
+        total: job.total,
+        completed: job.completed,
+        startedAt: job.startedAt
+      })
+    }
+  }
+
+  res.json({ status: 'none' })
 })
 
 // Get sample flags

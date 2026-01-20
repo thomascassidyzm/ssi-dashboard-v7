@@ -401,6 +401,29 @@ async function planHandler(req, res) {
       }
     }
 
+    // Also include seed sentence audio (full seed sentences need known/target1/target2)
+    // Only include released seeds (draft seeds have empty target_text)
+    const { data: allSeeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+
+    if (allSeeds?.length > 0) {
+      for (const seed of allSeeds) {
+        const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        if (!existingSet.has(knownKey)) {
+          needed.push({ text: seed.known_text, language: course.known_lang, role: 'known' })
+        }
+        for (const role of ['target1', 'target2']) {
+          const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          if (!existingSet.has(targetKey)) {
+            needed.push({ text: seed.target_text, language: course.target_lang, role })
+          }
+        }
+      }
+    }
+
     // Get LEGOs that need presentation audio (is_new = true)
     // These are the LEGOs that require a presentation intro like "The Spanish for 'word', is:"
     const { data: newLegos, error: legosError } = await supabase
@@ -697,6 +720,54 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
       if (legoAudioNeeded > 0) {
         logger.info(`Found ${legoAudioNeeded} LEGO debut audio items needed (from ${legos.length} LEGOs)`)
+      }
+    }
+
+    // Also include seed sentence audio (full seed sentences need known/target1/target2)
+    // Only include released seeds (draft seeds have empty target_text)
+    const { data: seeds, error: seedsError } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+
+    if (seedsError) {
+      logger.warn('Failed to fetch seeds for audio:', seedsError.message)
+    } else if (seeds?.length > 0) {
+      let seedAudioNeeded = 0
+      for (const seed of seeds) {
+        // Known audio for seed sentence
+        const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        if (!existingSet.has(knownKey)) {
+          needed.push({
+            text: seed.known_text,
+            language: course.known_lang,
+            role: 'known',
+            voiceId: getVoiceForRole('known'),
+            speed: getSpeedForRole('known'),
+            seed_number: seed.seed_number
+          })
+          seedAudioNeeded++
+        }
+
+        // Target audio for seed sentence (target1 and target2)
+        for (const role of ['target1', 'target2']) {
+          const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          if (!existingSet.has(targetKey)) {
+            needed.push({
+              text: seed.target_text,
+              language: course.target_lang,
+              role,
+              voiceId: getVoiceForRole(role),
+              speed: getSpeedForRole(role),
+              seed_number: seed.seed_number
+            })
+            seedAudioNeeded++
+          }
+        }
+      }
+      if (seedAudioNeeded > 0) {
+        logger.info(`Found ${seedAudioNeeded} seed sentence audio items needed (from ${seeds.length} seeds)`)
       }
     }
 

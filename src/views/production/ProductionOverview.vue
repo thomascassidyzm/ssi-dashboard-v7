@@ -94,6 +94,13 @@
       @close="showImportModal = false"
       @imported="handleCourseImported"
     />
+
+    <!-- Legacy Export Dialog -->
+    <LegacyExportDialog
+      :visible="showLegacyExportDialog"
+      :course-code="courseCode"
+      @close="showLegacyExportDialog = false"
+    />
   </div>
 </template>
 
@@ -106,6 +113,7 @@ import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
 import ImportCourseModal from '@/components/ImportCourseModal.vue'
+import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
 const props = defineProps({
   courseCode: {
@@ -117,6 +125,7 @@ const props = defineProps({
 const router = useRouter()
 const store = useProductionStore()
 const showImportModal = ref(false)
+const showLegacyExportDialog = ref(false)
 const isUpdatingStatus = ref(false)
 
 // Available status options
@@ -348,7 +357,7 @@ function handleQuickAction(actionId) {
       launchLearningApp()
       break
     case 'export_legacy':
-      exportLegacyManifest()
+      showLegacyExportDialog.value = true
       break
   }
 }
@@ -364,13 +373,6 @@ function handleCourseImported(courseCode) {
 function launchLearningApp() {
   const learningAppUrl = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
   window.open(`${learningAppUrl}/?course=${props.courseCode}`, '_blank')
-}
-
-function exportLegacyManifest() {
-  // Use relative URL for remote access (orchestrator handles the request)
-  const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-  const apiBase = isRemote ? '' : (localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
-  window.open(`${apiBase}/api/manifest/${props.courseCode}?format=legacy&download=true`, '_blank')
 }
 </script>
 

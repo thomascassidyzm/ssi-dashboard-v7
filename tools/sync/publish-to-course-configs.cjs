@@ -2,21 +2,28 @@
 /**
  * publish-to-course-configs.cjs
  *
- * Publishes course manifests from S3 to the saysomethingin/course-configs repo.
+ * Publishes legacy course manifests to the saysomethingin/course-configs repo.
  *
  * Usage:
- *   node tools/sync/publish-to-course-configs.cjs <course_code> [options]
+ *   node tools/sync/publish-to-course-configs.cjs --file <manifest_path> [options]
+ *
+ * Required:
+ *   --file PATH      Path to the legacy manifest JSON file
  *
  * Options:
- *   --version X.Y.Z  Set specific version (default: major bump)
- *   --status STATUS  Set status (alpha, beta, release) - default: preserve existing
+ *   --version X.Y.Z  Set specific version (default: major bump from existing)
+ *   --status STATUS  Set status (alpha, beta, release) - default: beta
  *   --dry-run        Show what would happen without writing
  *   --commit         Auto-commit to author branch after copying
+ *   --scp            Also upload to apidev server via SCP (requires VPN)
+ *
+ * course-configs filename: {course_id}.json (e.g., en-it.json)
+ * apidev SCP filename: {course_id}_{date}.json (e.g., en-it_20260120.json)
+ *   - If multiple uploads in same day, appends _2, _3, etc.
  *
  * Examples:
- *   node tools/sync/publish-to-course-configs.cjs spa_for_eng --dry-run
- *   node tools/sync/publish-to-course-configs.cjs cmn_for_eng --version 2.0.0
- *   node tools/sync/publish-to-course-configs.cjs spa_for_eng --version 3.0.1 --status beta --commit
+ *   node tools/sync/publish-to-course-configs.cjs --file ~/Downloads/ita_legacy_manifest.json --dry-run
+ *   node tools/sync/publish-to-course-configs.cjs --file ~/Downloads/spa_legacy.json --version 2.0.0 --commit --scp
  *
  * NOTE: Version auto-detection (MAJOR/MINOR/PATCH based on diff) is planned
  * for a future enhancement. Currently defaults to major version bump.
@@ -25,20 +32,10 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const langService = require('../../services/language-code-service.cjs');
 
 // Paths
-const SCRIPT_DIR = __dirname;
-const LANGUAGE_CODES_CSV = path.join(SCRIPT_DIR, 'reference', 'language_codes.csv');
 const COURSE_CONFIGS_REPO = path.join(process.env.HOME, 'Documents', 'GitHub', 'course-configs');
 const COURSE_CONFIGS_COURSES_DIR = path.join(COURSE_CONFIGS_REPO, 'Courses');
-
-// S3 config
-const S3_BUCKET = 'ssi-audio-stage';
-const S3_COURSES_PREFIX = 'courses';
-
-// Legacy mapping is now handled by language-code-service
-// See services/language-code-service.cjs for the centralized conversion logic
 
 // Canonical key order for JSON formatting (ensures clean diffs)
 const KEY_ORDER = {
@@ -113,11 +110,12 @@ function populateTokensAndLemmas(manifest) {
 function parseArgs() {
   const args = process.argv.slice(2);
   const result = {
-    courseCode: null,
+    filePath: null,
     version: null,
-    status: null,
+    status: 'beta',  // Default to beta
     dryRun: false,
     commit: false,
+    scp: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -126,12 +124,14 @@ function parseArgs() {
       result.dryRun = true;
     } else if (arg === '--commit') {
       result.commit = true;
+    } else if (arg === '--scp') {
+      result.scp = true;
+    } else if (arg === '--file' && args[i + 1]) {
+      result.filePath = args[++i];
     } else if (arg === '--version' && args[i + 1]) {
       result.version = args[++i];
     } else if (arg === '--status' && args[i + 1]) {
       result.status = args[++i];
-    } else if (!arg.startsWith('--')) {
-      result.courseCode = arg;
     }
   }
 
@@ -139,60 +139,23 @@ function parseArgs() {
 }
 
 /**
- * Load language codes from CSV
+ * Load manifest from local file
  */
-function loadLanguageCodes() {
-  const csv = fs.readFileSync(LANGUAGE_CODES_CSV, 'utf-8');
-  const lines = csv.trim().split('\n').slice(1); // Skip header
-  const codes = {};
+function loadManifestFromFile(filePath) {
+  // Expand ~ to home directory
+  const expandedPath = filePath.replace(/^~/, process.env.HOME);
 
-  for (const line of lines) {
-    const [code, name] = line.split(',');
-    if (code && name) {
-      codes[code.trim()] = name.trim().replace(/^"|"$/g, '');
-    }
+  if (!fs.existsSync(expandedPath)) {
+    throw new Error(`Manifest file not found: ${expandedPath}`);
   }
 
-  return codes;
-}
-
-/**
- * Convert our course code (e.g., spa_for_eng) to course-configs format (e.g., en-es)
- * Uses centralized language-code-service for conversions
- */
-function convertCourseCode(ourCode) {
-  const parsed = langService.parseCourseCode(ourCode);
-  if (!parsed) {
-    throw new Error(`Invalid course code format: ${ourCode}. Expected format: xxx_for_yyy`);
-  }
-
-  const targetCode = parsed.target;  // Already standard (es, en, cmn, etc.)
-  const knownCode = parsed.known;
-
-  // Special handling for Welsh - default to cy-north
-  if (targetCode === 'cy') {
-    return `${knownCode}-cy-north`;
-  }
-
-  // Format: {known}-{target} (opposite of our format)
-  return `${knownCode}-${targetCode}`;
-}
-
-/**
- * Fetch manifest from S3
- */
-function fetchManifestFromS3(courseCode) {
-  const s3Path = `s3://${S3_BUCKET}/${S3_COURSES_PREFIX}/${courseCode}/course_manifest.json`;
-  console.log(`Fetching manifest from ${s3Path}...`);
+  console.log(`Loading manifest from: ${expandedPath}`);
 
   try {
-    const result = execSync(`aws s3 cp ${s3Path} - --profile default`, {
-      encoding: 'utf-8',
-      maxBuffer: 100 * 1024 * 1024, // 100MB buffer for large manifests
-    });
-    return JSON.parse(result);
+    const content = fs.readFileSync(expandedPath, 'utf-8');
+    return JSON.parse(content);
   } catch (error) {
-    throw new Error(`Failed to fetch manifest from S3: ${error.message}`);
+    throw new Error(`Failed to parse manifest: ${error.message}`);
   }
 }
 
@@ -353,6 +316,86 @@ function writeManifest(manifest, courseConfigsFilename, dryRun) {
 }
 
 /**
+ * Generate dated filename for SCP upload
+ * Format: en-it_20260120.json, en-it_20260120_2.json, etc.
+ */
+function generateScpFilename(courseConfigsId) {
+  const today = new Date();
+  const dateStr = today.toISOString().slice(0, 10).replace(/-/g, '');
+  const baseFilename = `${courseConfigsId}_${dateStr}`;
+
+  // Check existing files on apidev server
+  let existingFiles = [];
+  try {
+    const result = execSync(`ssh ssi@apidev "ls kai/${baseFilename}*.json 2>/dev/null || true"`, {
+      encoding: 'utf-8',
+      timeout: 10000,
+    });
+    existingFiles = result.trim().split('\n')
+      .filter(f => f.length > 0)
+      .map(f => path.basename(f));
+  } catch (error) {
+    // If SSH fails, just use base filename (might overwrite, but that's ok)
+    console.log('  Note: Could not check existing files on apidev, using base filename');
+  }
+
+  if (existingFiles.length === 0) {
+    return `${baseFilename}.json`;
+  }
+
+  // Find the next available suffix
+  let suffix = 2;
+  while (existingFiles.includes(`${baseFilename}_${suffix}.json`)) {
+    suffix++;
+  }
+
+  // If base exists but no _2, use _2
+  if (existingFiles.includes(`${baseFilename}.json`)) {
+    return `${baseFilename}_${suffix}.json`;
+  }
+
+  return `${baseFilename}.json`;
+}
+
+/**
+ * Upload manifest to apidev server via SCP
+ */
+function uploadToApidev(manifest, courseConfigsId, dryRun) {
+  const scpFilename = generateScpFilename(courseConfigsId);
+  const remotePath = `ssi@apidev:kai/${scpFilename}`;
+
+  console.log(`\nSCP upload: ${scpFilename} → ${remotePath}`);
+
+  if (dryRun) {
+    console.log(`[DRY RUN] Would upload to: ${remotePath}`);
+    return scpFilename;
+  }
+
+  // Write to temp file first
+  const tempFile = path.join(require('os').tmpdir(), scpFilename);
+  const jsonContent = JSON.stringify(manifest, null, 2);
+  fs.writeFileSync(tempFile, jsonContent);
+
+  try {
+    execSync(`scp "${tempFile}" "${remotePath}"`, {
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    console.log(`✓ Uploaded to ${remotePath}`);
+
+    // Clean up temp file
+    fs.unlinkSync(tempFile);
+    return scpFilename;
+  } catch (error) {
+    console.error(`✗ SCP failed: ${error.message}`);
+    console.error('  Make sure VPN is connected and SSH key is configured.');
+    // Clean up temp file
+    if (fs.existsSync(tempFile)) fs.unlinkSync(tempFile);
+    return null;
+  }
+}
+
+/**
  * Commit changes to author branch
  */
 function commitChanges(courseConfigsFilename, version, dryRun) {
@@ -388,11 +431,20 @@ async function main() {
   console.log('=== Publish to course-configs ===\n');
 
   // Parse arguments
-  const { courseCode, version, status, dryRun, commit } = parseArgs();
+  const { filePath, version, status, dryRun, commit, scp } = parseArgs();
 
-  if (!courseCode) {
-    console.error('Usage: node publish-to-course-configs.cjs <course_code> [--version X.Y.Z] [--status STATUS] [--dry-run] [--commit]');
-    console.error('Example: node publish-to-course-configs.cjs spa_for_eng --version 3.0.1 --status beta --commit');
+  if (!filePath) {
+    console.error('Usage: node publish-to-course-configs.cjs --file <manifest_path> [options]');
+    console.error('');
+    console.error('Options:');
+    console.error('  --file PATH       Path to legacy manifest JSON (required)');
+    console.error('  --version X.Y.Z   Set specific version (default: major bump)');
+    console.error('  --status STATUS   Set status (default: beta)');
+    console.error('  --dry-run         Preview without making changes');
+    console.error('  --commit          Auto-commit to author branch');
+    console.error('  --scp             Upload to apidev server (requires VPN)');
+    console.error('');
+    console.error('Example: node publish-to-course-configs.cjs --file ~/Downloads/ita_legacy.json --commit --scp');
     process.exit(1);
   }
 
@@ -403,13 +455,18 @@ async function main() {
     process.exit(1);
   }
 
-  // Convert course code
-  const courseConfigsFilename = convertCourseCode(courseCode);
-  console.log(`Course code mapping: ${courseCode} → ${courseConfigsFilename}.json`);
+  // Load manifest from file
+  const manifest = loadManifestFromFile(filePath);
 
-  // Fetch manifest from S3
-  const manifest = fetchManifestFromS3(courseCode);
-  console.log(`Fetched manifest with ${manifest.slices?.[0]?.seeds?.length || 0} seeds`);
+  // Get course ID from manifest (e.g., "en-it")
+  const courseConfigsFilename = manifest.id;
+  if (!courseConfigsFilename) {
+    console.error('Error: Manifest is missing "id" field');
+    process.exit(1);
+  }
+
+  console.log(`Course ID: ${courseConfigsFilename}`);
+  console.log(`Seeds: ${manifest.slices?.[0]?.seeds?.length || 0}`);
 
   // Determine version
   const existingVersion = readExistingVersion(courseConfigsFilename);
@@ -424,22 +481,13 @@ async function main() {
     console.log(`Bumping major version: ${existingVersion} → ${newVersion}`);
   }
 
-  // Update manifest metadata for course-configs format
+  // Update manifest metadata
   manifest.version = newVersion;
-  manifest.id = courseConfigsFilename;  // e.g., "en-es" not "en-spa"
+  // manifest.id, manifest.known, manifest.target should already be set in the legacy manifest
 
-  // Convert language codes to ISO 2-letter format for course-configs
-  const parsed = langService.parseCourseCode(courseCode);
-  if (parsed) {
-    manifest.known = parsed.known;   // Already 2-letter (en, es, etc.)
-    manifest.target = parsed.target; // Already 2-letter (es, cmn, etc.)
-  }
-
-  // Apply status if specified
-  if (status) {
-    manifest.status = status;
-    console.log(`Setting status: ${status}`);
-  }
+  // Apply status (defaults to beta)
+  manifest.status = status;
+  console.log(`Setting status: ${status}`);
 
   // Populate tokens and lemmas for all nodes
   console.log('Populating tokens and lemmas...');
@@ -456,6 +504,11 @@ async function main() {
   // Commit if requested
   if (commit) {
     commitChanges(courseConfigsFilename, newVersion, dryRun);
+  }
+
+  // SCP upload to apidev if requested
+  if (scp) {
+    uploadToApidev(canonicalized, courseConfigsFilename, dryRun);
   }
 
   console.log('\nDone!');
