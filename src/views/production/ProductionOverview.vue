@@ -28,9 +28,15 @@
 
     <!-- Headline Stats -->
     <section class="headline-stats">
-      <div class="stat-card">
-        <div class="stat-value">{{ courseStats.seeds }}</div>
+      <div class="stat-card seeds">
+        <div class="stat-value">
+          {{ courseStats.completeSeeds.toLocaleString() }}
+          <span class="stat-total">/ 668</span>
+        </div>
         <div class="stat-label">Seeds</div>
+        <div class="stat-progress">
+          <div class="progress-bar" :style="{ width: `${seedProgressPercent}%` }"></div>
+        </div>
       </div>
       <div class="stat-card">
         <div class="stat-value">{{ courseStats.legos.toLocaleString() }}</div>
@@ -142,6 +148,7 @@ async function handleStatusChange(newStatus) {
 // Course stats from Course Builder API
 const courseStats = ref({
   seeds: 0,
+  completeSeeds: 0,
   legos: 0,
   phrases: 0,
   ratio: '0.0'
@@ -165,6 +172,7 @@ async function fetchCourseStats() {
       const phrases = stats.practicePhrases || 0
       courseStats.value = {
         seeds: stats.seeds || 0,
+        completeSeeds: stats.completeSeeds || 0,
         legos: legos,
         phrases: phrases,
         ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
@@ -182,6 +190,7 @@ async function fetchCourseStats() {
         const phrases = stats.practicePhrases || 0
         courseStats.value = {
           seeds: stats.seeds || 0,
+          completeSeeds: stats.completeSeeds || 0,
           legos: legos,
           phrases: phrases,
           ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
@@ -208,6 +217,12 @@ const audioProgressPercent = computed(() => {
   const audio = store.audioCourseStats
   if (!audio || audio.total === 0) return 0
   return Math.round((audio.existing / audio.total) * 100)
+})
+
+const seedProgressPercent = computed(() => {
+  const complete = courseStats.value.completeSeeds
+  const total = 668  // Full course target
+  return Math.round((complete / total) * 100)
 })
 
 // Trimmed quick actions - only essentials
@@ -497,6 +512,14 @@ function exportLegacyManifest() {
 
 .stat-card.audio .stat-value {
   color: var(--color-tungsten, #ffa630);
+}
+
+.stat-card.seeds .stat-value {
+  color: #34d399;
+}
+
+.stat-card.seeds .progress-bar {
+  background: #34d399;
 }
 
 .stat-progress {
