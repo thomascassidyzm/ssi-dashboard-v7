@@ -2367,6 +2367,58 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
+    // =============================================================================
+    // LEGO TARGET AUDIO CHECK - Added 2026-01-20
+    // =============================================================================
+    // Check LEGOs for missing target1/target2 audio, even if they have no practice
+    // phrases. This catches orphan LEGOs that slipped through without audio.
+    // We need to get ALL LEGOs (not just is_new=true) for this check.
+    // =============================================================================
+    let allLegos = []
+    let legoOffset = 0
+    const legoPageSize = 1000
+
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('course_legos')
+        .select('lego_id, seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .range(legoOffset, legoOffset + legoPageSize - 1)
+
+      if (error) throw error
+      if (!page || page.length === 0) break
+      allLegos = allLegos.concat(page)
+      if (page.length < legoPageSize) break
+      legoOffset += legoPageSize
+    }
+
+    for (const lego of allLegos) {
+      const targetNorm = lego.target_text?.toLowerCase().trim()
+      const seedId = `S${String(lego.seed_number).padStart(4, '0')}`
+
+      // Check target1 - only if not already found in phrases
+      if (targetNorm && !existingByRole.target1.has(targetNorm) && !seen.target1.has(targetNorm)) {
+        seen.target1.add(targetNorm)
+        missingByRole.target1.push({
+          text: lego.target_text,
+          seedId,
+          legoId: lego.lego_id,
+          source: 'lego'  // Distinguish from phrase-based missing
+        })
+      }
+
+      // Check target2 - only if not already found in phrases
+      if (targetNorm && !existingByRole.target2.has(targetNorm) && !seen.target2.has(targetNorm)) {
+        seen.target2.add(targetNorm)
+        missingByRole.target2.push({
+          text: lego.target_text,
+          seedId,
+          legoId: lego.lego_id,
+          source: 'lego'  // Distinguish from phrase-based missing
+        })
+      }
+    }
+
     // Generate signed URLs for sample audio (v13: flat S3 storage)
     for (const role of ['known', 'target1', 'target2', 'presentation']) {
       if (samplesByRole[role]) {
@@ -2401,6 +2453,190 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
   } catch (error) {
     logger.error(`Missing audio error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// ORPHAN LEGO CHECK - Added 2026-01-20
+// =============================================================================
+// Some LEGOs may not have a matching practice phrase. This means Phase 8 won't
+// generate target1/target2 audio for them. This endpoint checks for and optionally
+// fixes this by adding "debut" phrases (position=1) for orphan LEGOs.
+//
+// Context: This was discovered when the Italian course had 10 LEGOs with no audio.
+// The learning app needs target1/target2 audio to play LEGO introductions.
+// =============================================================================
+
+// GET /api/production/:courseCode/audio-pipeline/orphan-legos
+// Check for LEGOs that have no matching practice phrase
+app.get('/api/production/:courseCode/audio-pipeline/orphan-legos', async (req, res) => {
+  const { courseCode } = req.params
+  logger.info(`Checking for orphan LEGOs in ${courseCode}`)
+
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Get all LEGOs for the course
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, lego_type, is_new')
+      .eq('course_code', courseCode)
+      .order('seed_number')
+      .order('lego_index')
+
+    if (legosError) throw legosError
+
+    // Get all practice phrases
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) throw phrasesError
+
+    // Build set of target texts that have practice phrases
+    const phraseTargets = new Set()
+    for (const p of phrases || []) {
+      if (p.target_text) {
+        phraseTargets.add(p.target_text.toLowerCase().trim())
+      }
+    }
+
+    // Find LEGOs whose target_text doesn't appear in any practice phrase
+    const orphanLegos = []
+    for (const lego of legos || []) {
+      const targetNorm = lego.target_text?.toLowerCase().trim()
+      if (targetNorm && !phraseTargets.has(targetNorm)) {
+        orphanLegos.push({
+          lego_id: lego.lego_id,
+          seed_number: lego.seed_number,
+          lego_index: lego.lego_index,
+          known_text: lego.known_text,
+          target_text: lego.target_text,
+          lego_type: lego.lego_type,
+          is_new: lego.is_new
+        })
+      }
+    }
+
+    logger.info(`Found ${orphanLegos.length} orphan LEGOs in ${courseCode}`)
+
+    res.json({
+      success: true,
+      courseCode,
+      totalLegos: legos?.length || 0,
+      totalPhrases: phrases?.length || 0,
+      orphanCount: orphanLegos.length,
+      orphanLegos
+    })
+
+  } catch (error) {
+    logger.error(`Orphan LEGO check error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
+// Auto-add debut phrases for orphan LEGOs
+app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (req, res) => {
+  const { courseCode } = req.params
+  const { dryRun = false } = req.body
+  logger.info(`Fixing orphan LEGOs in ${courseCode} (dryRun=${dryRun})`)
+
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Get all LEGOs for the course
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, lego_type')
+      .eq('course_code', courseCode)
+
+    if (legosError) throw legosError
+
+    // Get all practice phrases
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index, target_text')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) throw phrasesError
+
+    // Build set of target texts that have practice phrases
+    const phraseTargets = new Set()
+    for (const p of phrases || []) {
+      if (p.target_text) {
+        phraseTargets.add(p.target_text.toLowerCase().trim())
+      }
+    }
+
+    // Find orphan LEGOs
+    const orphanLegos = []
+    for (const lego of legos || []) {
+      const targetNorm = lego.target_text?.toLowerCase().trim()
+      if (targetNorm && !phraseTargets.has(targetNorm)) {
+        orphanLegos.push(lego)
+      }
+    }
+
+    if (orphanLegos.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No orphan LEGOs found',
+        addedCount: 0
+      })
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        message: `Would add ${orphanLegos.length} debut phrases`,
+        orphanLegos: orphanLegos.map(l => ({
+          lego_id: l.lego_id,
+          known_text: l.known_text,
+          target_text: l.target_text
+        }))
+      })
+    }
+
+    // Insert debut phrases for each orphan LEGO
+    const debutPhrases = orphanLegos.map(lego => ({
+      course_code: courseCode,
+      seed_number: lego.seed_number,
+      lego_index: lego.lego_index,
+      known_text: lego.known_text,
+      target_text: lego.target_text,
+      position: 1,           // Debut position
+      phrase_role: 'debut',  // Explicit role marker
+      word_count: (lego.target_text?.split(/\s+/).length || 1),
+      created_at: new Date().toISOString()
+    }))
+
+    const { data: inserted, error: insertError } = await supabase
+      .from('course_practice_phrases')
+      .insert(debutPhrases)
+      .select()
+
+    if (insertError) throw insertError
+
+    logger.info(`Added ${debutPhrases.length} debut phrases for orphan LEGOs in ${courseCode}`)
+
+    res.json({
+      success: true,
+      message: `Added ${debutPhrases.length} debut phrases`,
+      addedCount: debutPhrases.length,
+      addedPhrases: debutPhrases.map(p => ({
+        seed_number: p.seed_number,
+        lego_index: p.lego_index,
+        known_text: p.known_text,
+        target_text: p.target_text
+      }))
+    })
+
+  } catch (error) {
+    logger.error(`Fix orphan LEGOs error for ${courseCode}:`, error.message)
     res.status(500).json({ error: error.message })
   }
 })
