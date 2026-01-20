@@ -4,30 +4,37 @@ import { ref, computed } from 'vue'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server
-// On Vercel deployment or remote access (ngrok), uses relative URLs
+// IMPORTANT: Always check localStorage first - EnvironmentSwitcher sets ngrok URL there
 function getApiBaseUrl() {
-  // 1. Check if accessed remotely (ngrok, etc) - use relative URLs
-  // (orchestrator proxies all APIs)
-  const isRemote = typeof window !== 'undefined' &&
-    window.location.hostname !== 'localhost' &&
-    window.location.hostname !== '127.0.0.1'
+  // 1. ALWAYS check localStorage first (user set via EnvironmentSwitcher)
+  // This is critical for Vercel deployments that need to route through ngrok
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
 
-  // 2. Check if we're on Vercel deployment (use relative URLs)
+  // 2. Check if accessed via ngrok (hostname contains ngrok) - use relative URLs
+  // (ngrok proxies to orchestrator which handles /api/* routes)
+  const isNgrok = typeof window !== 'undefined' &&
+    window.location.hostname.includes('ngrok')
+
+  if (isNgrok) {
+    // Use empty string = relative URLs, orchestrator handles /api/* routes
+    return ''
+  }
+
+  // 3. For Vercel or other remote access WITHOUT localStorage set,
+  // we can't route to local server - return empty and let calls fail gracefully
+  // (user needs to select a machine in EnvironmentSwitcher)
   const isVercel = typeof window !== 'undefined' && (
     window.location.hostname.includes('vercel.app') ||
     window.location.hostname === 'popty.app' ||
     window.location.hostname.endsWith('.popty.app')
   )
 
-  if (isVercel || isRemote) {
-    // Use empty string = relative URLs, orchestrator handles /api/* routes
-    return ''
-  }
-
-  // 3. Check localStorage override (user set via EnvironmentSwitcher)
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
+  if (isVercel) {
+    console.warn('[Production] On Vercel but no api_base_url set - select a machine in EnvironmentSwitcher')
+    return ''  // Will fail, but user will see the warning
   }
 
   // 4. Use env var or localhost for local development
@@ -291,6 +298,24 @@ export const useProductionStore = defineStore('production', () => {
       sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} } // Legacy
       audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
+
+      // Auto-fix orphan LEGOs before loading plan (adds debut phrases for LEGOs without practice phrases)
+      // This ensures Phase 8 plan includes all LEGOs that need audio
+      try {
+        const orphanRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/fix-orphan-legos`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({})
+        })
+        if (orphanRes.ok) {
+          const orphanData = await orphanRes.json()
+          if (orphanData.addedCount > 0) {
+            console.log(`[Production] Auto-fixed ${orphanData.addedCount} orphan LEGOs`)
+          }
+        }
+      } catch (orphanErr) {
+        console.warn('[Production] Could not check orphan LEGOs:', orphanErr.message)
+      }
 
       // Load accurate pipeline stats from /plan endpoint
       console.log('[Production] Loading pipeline plan for stats...')
