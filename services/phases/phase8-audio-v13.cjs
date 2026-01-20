@@ -31,6 +31,7 @@ const os = require('os')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
+const genderService = require('../gender-expansion-service.cjs')
 
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -379,24 +380,49 @@ async function planHandler(req, res) {
       }
     }
 
-    // Also include presentation audio that needs generation (pending/ s3_key)
-    const { data: pendingPresentations } = await supabase
+    // Get LEGOs that need presentation audio (is_new = true)
+    // These are the LEGOs that require a presentation intro like "The Spanish for 'word', is:"
+    const { data: newLegos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, known_text')
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+
+    if (legosError) throw legosError
+
+    // Get existing presentation audio (exclude pending/)
+    const { data: existingPresentations } = await supabase
       .from('course_audio')
-      .select('id, text, language')
+      .select('text_normalized, lego_id')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
-      .like('s3_key', 'pending/%')
+      .not('s3_key', 'like', 'pending/%')
 
-    if (pendingPresentations?.length > 0) {
-      for (const pres of pendingPresentations) {
-        needed.push({
-          text: pres.text,
-          language: pres.language || course.known_lang,
+    // Build set of LEGOs that already have presentation audio
+    // Prefer lego_id for matching (always populated since Jan 2026)
+    const legosWithPresentation = new Set()
+    for (const pres of existingPresentations || []) {
+      if (pres.lego_id) {
+        legosWithPresentation.add(pres.lego_id)
+      }
+    }
+
+    // Count missing presentations (only check lego_id match)
+    const missingPresentationLegos = []
+    for (const lego of newLegos || []) {
+      if (!legosWithPresentation.has(lego.lego_id)) {
+        missingPresentationLegos.push({
+          text: lego.known_text,  // Will be expanded to full presentation text during generation
+          language: course.known_lang,
           role: 'presentation',
-          existingId: pres.id  // Track existing record ID for update
+          lego_id: lego.lego_id
         })
       }
-      logger.info(`Including ${pendingPresentations.length} pending presentation audio items`)
+    }
+
+    if (missingPresentationLegos.length > 0) {
+      needed.push(...missingPresentationLegos)
+      logger.info(`Found ${missingPresentationLegos.length} LEGOs missing presentation audio`)
     }
 
     // Deduplicate
@@ -408,6 +434,29 @@ async function planHandler(req, res) {
     const totalChars = uniqueNeeded.reduce((sum, n) => sum + n.text.length, 0)
     const estimatedCost = (totalChars / 1000) * 0.016
 
+    // Count existing by role
+    // existingAudio has known/target1/target2 (presentation is filtered separately)
+    // existingPresentations has presentation audio
+    const existingByRole = {
+      known: 0,
+      target1: 0,
+      target2: 0,
+      presentation: legosWithPresentation.size  // Count unique LEGOs with presentation audio
+    }
+    for (const audio of existingAudio || []) {
+      // Only count known/target1/target2 here (presentation counted separately)
+      if (audio.role !== 'presentation' && existingByRole[audio.role] !== undefined) {
+        existingByRole[audio.role]++
+      }
+    }
+
+    // Total existing: count non-presentation from existingAudio + presentation count
+    // Note: existingAudio includes presentations, so we count non-presentation separately
+    const nonPresentationCount = existingByRole.known + existingByRole.target1 + existingByRole.target2
+    const totalExisting = nonPresentationCount + legosWithPresentation.size
+    // Total needed presentations (is_new LEGOs)
+    const totalPresentationsNeeded = newLegos?.length || 0
+
     res.json({
       courseCode,
       course: {
@@ -416,9 +465,10 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: existingAudio.length,
+      existing: totalExisting,
       missing: uniqueNeeded.length,
       totalPhrases: phrases.length,
+      totalPresentationsNeeded,
       estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedChars: totalChars,
       breakdown: {
@@ -426,7 +476,8 @@ async function planHandler(req, res) {
         target1: uniqueNeeded.filter(n => n.role === 'target1').length,
         target2: uniqueNeeded.filter(n => n.role === 'target2').length,
         presentation: uniqueNeeded.filter(n => n.role === 'presentation').length
-      }
+      },
+      existingByRole
     })
   } catch (error) {
     logger.error('Plan error:', error)
@@ -634,17 +685,29 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Use speed from voice config (everything is a parameter!)
       const speed = item.speed || 1.0
 
-      // Generate TTS audio
+      // Gender expansion for target language audio
+      // Analyzes unmarked text and expands to appropriate gender based on role
+      // target1 = female voice = feminine forms, target2 = male voice = masculine forms
+      let textForTTS = item.text
+      if (item.role === 'target1' || item.role === 'target2') {
+        const genderResult = genderService.analyzeAndExpand(item.text, item.language, item.role)
+        if (genderResult.wasModified) {
+          textForTTS = genderResult.expandedText
+          logger.info(`Gender expansion: "${item.text}" → "${textForTTS}" (${item.role})`)
+        }
+      }
+
+      // Generate TTS audio using gender-expanded text
       let rawAudioBuffer
       if (provider === 'azure') {
-        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceName,
           speed
         })
       } else if (provider === 'elevenlabs') {
-        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceName,
           speed
@@ -903,10 +966,22 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       // Get regeneration attempt count for this item (Azure determinism workaround)
       const regenerationAttempt = regenerationCounts[item.id] || 0
 
+      // Gender expansion for target language audio
+      // Analyzes unmarked text and expands to appropriate gender based on role
+      // target1 = female voice = feminine forms, target2 = male voice = masculine forms
+      let textForTTS = item.text
+      if (role === 'target1' || role === 'target2') {
+        const genderResult = genderService.analyzeAndExpand(item.text, language, role)
+        if (genderResult.wasModified) {
+          textForTTS = genderResult.expandedText
+          logger.info(`Gender expansion: "${item.text}" → "${textForTTS}" (${role})`)
+        }
+      }
+
       // Generate TTS audio using provider from voice config
       let rawAudioBuffer
       if (voiceProvider === 'azure') {
-        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'azure', {
+        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -914,7 +989,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           regenerationAttempt  // Pass to TTS for variation
         })
       } else if (voiceProvider === 'elevenlabs') {
-        rawAudioBuffer = await ttsService.generateWithRetry(item.text, 'elevenlabs', {
+        rawAudioBuffer = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed

@@ -2063,14 +2063,15 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
     const plan = response.data.plan || response.data || {}
     const voices = response.data.voices || plan.course?.voiceConfig || {}
 
-    // Calculate breakdown by role from samples if available
+    // Calculate breakdown by role from Phase 8 response
     const samples = plan.samples || []
     const breakdownFromPlan = plan.breakdown || {}
     const breakdown = {
       known: breakdownFromPlan.known || samples.filter(s => s.role === 'known').length,
       target1: breakdownFromPlan.target1 || samples.filter(s => s.role === 'target1').length,
       target2: breakdownFromPlan.target2 || samples.filter(s => s.role === 'target2').length,
-      introduction: plan.introNeeds || 0
+      // Phase 8 v13 returns presentation count in breakdown.presentation
+      introduction: breakdownFromPlan.presentation || plan.introNeeds || 0
     }
 
     // Estimate cost: ~$0.004 per TTS request (Azure average)
@@ -2234,7 +2235,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     while (true) {
       const { data: page, error } = await supabase
         .from('course_audio')
-        .select('id, text, text_normalized, role, voice_id, s3_key')
+        .select('id, text, text_normalized, role, voice_id, s3_key, lego_id')
         .eq('course_code', courseCode)
         .range(offset, offset + pageSize - 1)
 
@@ -2266,32 +2267,29 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       const normalizedText = ca.text_normalized || ca.text?.toLowerCase().trim()
       const role = ca.role
 
-      // For presentation audio, extract the KNOWN word for matching
-      // Presentation text format: "The Spanish for 'known_text', is:" or "The Spanish for 'known_text', as in '...', is:"
+      // For presentation audio, match by lego_id (always populated since Jan 2026)
       // IMPORTANT: Only count as existing if s3_key is mastered/ (not pending/)
-      if (role === 'presentation' && normalizedText) {
+      if (role === 'presentation') {
         // Skip pending presentations - they have placeholder s3_key but no actual audio
         if (ca.s3_key?.startsWith('pending/')) {
           continue
         }
-        const matches = normalizedText.match(/'([^']+)'/g)
-        if (matches && matches.length >= 1) {
-          // First quoted word is the known text being introduced
-          const knownWord = matches[0].replace(/'/g, '').toLowerCase().trim()
-          existingByRole.presentation.set(knownWord, {
+        // Use lego_id for matching (preferred, more reliable than regex extraction)
+        if (ca.lego_id) {
+          existingByRole.presentation.set(ca.lego_id, {
             audioId: ca.id,
             voiceId: ca.voice_id,
             s3Key: ca.s3_key,
             fullText: ca.text
           })
-          // Keep first audio as sample for voice matching
-          if (!samplesByRole.presentation) {
-            samplesByRole.presentation = {
-              text: ca.text,
-              audioId: ca.id,
-              voiceId: ca.voice_id,
-              s3Key: ca.s3_key
-            }
+        }
+        // Keep first audio as sample for voice matching
+        if (!samplesByRole.presentation) {
+          samplesByRole.presentation = {
+            text: ca.text,
+            audioId: ca.id,
+            voiceId: ca.voice_id,
+            s3Key: ca.s3_key
           }
         }
       } else if (normalizedText && existingByRole[role]) {
@@ -2353,11 +2351,10 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     }
 
     // Check LEGOs for missing presentation audio (only new LEGOs need intros)
-    // Match on known_text since presentation audio is "The [lang] for '[known_text]', is:"
+    // Match by lego_id (always populated since Jan 2026)
     for (const lego of legos) {
-      const knownNorm = lego.known_text?.toLowerCase().trim()
-      if (knownNorm && !existingByRole.presentation.has(knownNorm) && !seen.presentation.has(knownNorm)) {
-        seen.presentation.add(knownNorm)
+      if (lego.lego_id && !existingByRole.presentation.has(lego.lego_id) && !seen.presentation.has(lego.lego_id)) {
+        seen.presentation.add(lego.lego_id)
         missingByRole.presentation.push({
           text: lego.known_text,  // Show the known text (what's in the presentation)
           targetText: lego.target_text,
