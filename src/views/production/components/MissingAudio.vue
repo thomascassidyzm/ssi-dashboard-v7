@@ -67,39 +67,6 @@
           </div>
         </div>
 
-        <!-- Orphan LEGO Warning - Added 2026-01-20 -->
-        <div v-if="orphanLegoCount > 0" class="bg-amber-500/20 border border-amber-500 rounded-lg p-4">
-          <div class="flex items-start justify-between">
-            <div>
-              <p class="text-amber-400 font-semibold flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                </svg>
-                {{ orphanLegoCount }} LEGOs have no matching practice phrase
-              </p>
-              <p class="text-slate-300 text-sm mt-1">
-                These LEGOs won't have target audio generated. Click to auto-add debut phrases.
-              </p>
-              <ul v-if="orphanLegos.length > 0 && orphanLegos.length <= 5" class="text-slate-400 text-xs mt-2 space-y-1">
-                <li v-for="lego in orphanLegos" :key="lego.lego_id">
-                  {{ lego.lego_id }}: "{{ lego.target_text }}"
-                </li>
-              </ul>
-            </div>
-            <button
-              @click="fixOrphanLegos"
-              :disabled="fixingOrphans"
-              class="px-4 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-amber-800 disabled:cursor-wait rounded-lg transition-colors text-white text-sm font-medium flex items-center gap-2"
-            >
-              <svg v-if="fixingOrphans" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              {{ fixingOrphans ? 'Fixing...' : 'Fix Now' }}
-            </button>
-          </div>
-        </div>
-
         <!-- Role Tabs -->
         <div class="flex gap-2 border-b border-slate-700 pb-2">
           <button
@@ -207,8 +174,7 @@ const error = ref(null)
 const data = ref(null)
 
 // Orphan LEGO state - Added 2026-01-20
-const orphanLegos = ref([])
-const orphanLegoCount = computed(() => orphanLegos.value.length)
+// Auto-fixes happen silently, these are just for internal tracking
 const fixingOrphans = ref(false)
 
 const selectedRole = ref('target1')
@@ -288,7 +254,8 @@ function playSample(role) {
 }
 
 // Orphan LEGO functions - Added 2026-01-20
-async function fetchOrphanLegos() {
+// Auto-fixes orphan LEGOs by adding debut phrases, then refreshes missing audio data
+async function fetchAndFixOrphanLegos() {
   if (!props.courseCode) return
 
   try {
@@ -308,7 +275,12 @@ async function fetchOrphanLegos() {
     }
 
     const result = await response.json()
-    orphanLegos.value = result.orphanLegos || []
+
+    // Auto-fix if orphans found
+    if (result.orphanLegos && result.orphanLegos.length > 0) {
+      console.log(`Auto-fixing ${result.orphanLegos.length} orphan LEGOs...`)
+      await fixOrphanLegos()
+    }
   } catch (err) {
     console.warn('Error fetching orphan LEGOs:', err)
   }
@@ -339,12 +311,11 @@ async function fixOrphanLegos() {
 
     const result = await response.json()
 
-    if (result.success) {
-      // Clear orphans and refresh missing audio data
-      orphanLegos.value = []
+    if (result.success && result.addedCount > 0) {
+      console.log(`Added ${result.addedCount} debut phrases for orphan LEGOs`)
+      // Refresh missing audio data to show the new items
       data.value = null
       await fetchMissingAudio()
-      await fetchOrphanLegos()
     }
   } catch (err) {
     console.error('Failed to fix orphan LEGOs:', err)
@@ -358,7 +329,7 @@ async function fixOrphanLegos() {
 watch(expanded, (isExpanded) => {
   if (isExpanded && !data.value) {
     fetchMissingAudio()
-    fetchOrphanLegos()
+    fetchAndFixOrphanLegos()
   }
 })
 
@@ -367,9 +338,8 @@ watch(() => props.refreshTrigger, () => {
   if (expanded.value) {
     // Clear existing data and refetch with new voice config
     data.value = null
-    orphanLegos.value = []
     fetchMissingAudio()
-    fetchOrphanLegos()
+    fetchAndFixOrphanLegos()
   }
 })
 
@@ -377,7 +347,7 @@ watch(() => props.refreshTrigger, () => {
 onMounted(() => {
   if (expanded.value) {
     fetchMissingAudio()
-    fetchOrphanLegos()
+    fetchAndFixOrphanLegos()
   }
 })
 </script>
