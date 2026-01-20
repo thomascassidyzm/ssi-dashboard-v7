@@ -1,0 +1,80 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 248,
+  "known_text": "I thought the film was complete rubbish and I want my money back.",
+  "target_text": "Ik dacht dat de film complete onzin was en ik wil mijn geld terug.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I thought the film was",
+      "target": "ik dacht dat de film was",
+      "components": [
+        {"known": "I thought", "target": "ik dacht"},
+        {"known": "the film was", "target": "dat de film was"}
+      ],
+      "phrases": [
+        {"known": "I thought", "target": "ik dacht"},
+        {"known": "the film was", "target": "dat de film was"},
+        {"known": "I thought the film was", "target": "ik dacht dat de film was"},
+        {"known": "I thought the film was good", "target": "ik dacht dat de film goed was"},
+        {"known": "she thought the film was long", "target": "ze dacht dat de film lang was"},
+        {"known": "I thought the film was fairly good", "target": "ik dacht dat de film best goed was"},
+        {"known": "my father thought the film was too long", "target": "mijn vader dacht dat de film te lang was"},
+        {"known": "I thought the film was interesting", "target": "ik dacht dat de film interessant was"},
+        {"known": "she thought the film was good but I was too busy", "target": "ze dacht dat de film goed was maar ik was te druk"},
+        {"known": "I thought the film was fairly good in a short time", "target": "ik dacht dat de film in een korte tijd best goed was"},
+        {"known": "my mother thought the film was good but my father was too busy", "target": "mijn moeder dacht dat de film goed was maar mijn vader was te druk"},
+        {"known": "I'm happy with how much I thought the film was interesting already", "target": "ik ben blij met hoeveel ik al dacht dat de film interessant was"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "complete rubbish",
+      "target": "complete onzin",
+      "components": [
+        {"known": "complete", "target": "complete"},
+        {"known": "rubbish", "target": "onzin"}
+      ],
+      "phrases": [
+        {"known": "complete", "target": "complete"},
+        {"known": "rubbish", "target": "onzin"},
+        {"known": "complete rubbish", "target": "complete onzin"},
+        {"known": "it was rubbish", "target": "het was onzin"},
+        {"known": "that's complete rubbish", "target": "dat is complete onzin"},
+        {"known": "I thought it was complete rubbish", "target": "ik dacht dat het complete onzin was"},
+        {"known": "she said it was complete rubbish", "target": "ze zei dat het complete onzin was"},
+        {"known": "I thought the film was complete rubbish", "target": "ik dacht dat de film complete onzin was"},
+        {"known": "my father thought that book was complete rubbish", "target": "mijn vader dacht dat dat boek complete onzin was"},
+        {"known": "I thought it was complete rubbish but she was too busy to help", "target": "ik dacht dat het complete onzin was maar ze was te druk om te helpen"},
+        {"known": "my mother thought the answer was complete rubbish so far", "target": "mijn moeder dacht dat het antwoord tot nu toe complete onzin was"},
+        {"known": "I'm happy that I thought that book was complete rubbish in a short time", "target": "ik ben blij dat ik in een korte tijd dacht dat dat boek complete onzin was"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "and I want my money back",
+      "target": "en ik wil mijn geld terug",
+      "components": [
+        {"known": "and I want", "target": "en ik wil"},
+        {"known": "my money back", "target": "mijn geld terug"}
+      ],
+      "phrases": [
+        {"known": "and I want", "target": "en ik wil"},
+        {"known": "my money back", "target": "mijn geld terug"},
+        {"known": "and I want my money back", "target": "en ik wil mijn geld terug"},
+        {"known": "I want my money back", "target": "ik wil mijn geld terug"},
+        {"known": "I wanted my money back now", "target": "ik wilde nu mijn geld terug"},
+        {"known": "she wanted her money back", "target": "ze wilde haar geld terug"},
+        {"known": "I thought it was complete rubbish and I want my money back", "target": "ik dacht dat het complete onzin was en ik wil mijn geld terug"},
+        {"known": "my father wanted his money back", "target": "mijn vader wilde zijn geld terug"},
+        {"known": "I thought the film was complete rubbish and I want my money back", "target": "ik dacht dat de film complete onzin was en ik wil mijn geld terug"},
+        {"known": "she was too busy to give me my money back", "target": "ze was te druk om me mijn geld terug te geven"},
+        {"known": "my mother thought that was complete rubbish and she wanted her money back", "target": "mijn moeder dacht dat dat complete onzin was en ze wilde haar geld terug"},
+        {"known": "I'm happy with how much I've done but I want my money back", "target": "ik ben blij met hoeveel ik heb gedaan maar ik wil mijn geld terug"}
+      ]
+    }
+  ]
+}

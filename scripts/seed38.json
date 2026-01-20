@@ -1,0 +1,76 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 38,
+  "known_text": "I've been learning for about a week.",
+  "target_text": "Ik leer al ongeveer een week.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I've been learning",
+      "target": "ik leer al",
+      "components": [
+        {"known": "I learn", "target": "ik leer"},
+        {"known": "already", "target": "al"}
+      ],
+      "phrases": [
+        {"known": "I learn", "target": "ik leer"},
+        {"known": "already", "target": "al"},
+        {"known": "I've been learning", "target": "ik leer al"},
+        {"known": "I've been speaking", "target": "ik spreek al"},
+        {"known": "I learn Dutch", "target": "ik leer Nederlands"},
+        {"known": "I've been learning Dutch", "target": "ik leer al Nederlands"},
+        {"known": "I've been speaking Dutch well", "target": "ik spreek al goed Nederlands"},
+        {"known": "I've been learning Dutch with you", "target": "ik leer al Nederlands met je"},
+        {"known": "I've been learning how to speak Dutch well", "target": "ik leer al hoe ik goed Nederlands kan spreken"},
+        {"known": "I've been learning Dutch with other people here", "target": "ik leer al Nederlands met andere mensen hier"},
+        {"known": "I've been learning how to read the story in Dutch", "target": "ik leer al hoe ik het verhaal in het Nederlands kan lezen"},
+        {"known": "I've been learning Dutch with other people since last month", "target": "ik leer al Nederlands met andere mensen vorige maand"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "about",
+      "target": "ongeveer",
+      "phrases": [
+        {"known": "about", "target": "ongeveer"},
+        {"known": "about a month", "target": "ongeveer een maand"},
+        {"known": "I've been learning for about", "target": "ik leer al ongeveer"},
+        {"known": "I started about a month", "target": "ik begon ongeveer een maand"},
+        {"known": "I've been learning Dutch for about a month", "target": "ik leer al ongeveer een maand Nederlands"},
+        {"known": "I started to speak Dutch well about a month", "target": "ik begon ongeveer een maand goed Nederlands te spreken"},
+        {"known": "he wanted to learn Dutch with other people for about a month", "target": "hij wilde ongeveer een maand Nederlands met andere mensen leren"},
+        {"known": "I've been learning how to speak Dutch well for about a month", "target": "ik leer al ongeveer een maand hoe ik goed Nederlands kan spreken"},
+        {"known": "I started to think about it well about a month", "target": "ik begon ongeveer een maand goed erover na te denken"},
+        {"known": "I've been learning to read the story in Dutch for about a month", "target": "ik leer al ongeveer een maand om het verhaal in het Nederlands te lezen"},
+        {"known": "I've been speaking Dutch well with other people for about a month", "target": "ik spreek al ongeveer een maand goed Nederlands met andere mensen"},
+        {"known": "I started to show other people how to speak Dutch about a month", "target": "ik begon ongeveer een maand andere mensen te laten zien hoe ze Nederlands kunnen spreken"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "a week",
+      "target": "een week",
+      "components": [
+        {"known": "a", "target": "een"},
+        {"known": "week", "target": "week"}
+      ],
+      "phrases": [
+        {"known": "a", "target": "een"},
+        {"known": "week", "target": "week"},
+        {"known": "a week", "target": "een week"},
+        {"known": "about a week", "target": "ongeveer een week"},
+        {"known": "I've been learning for a week", "target": "ik leer al een week"},
+        {"known": "a week of learning Dutch", "target": "een week Nederlands leren"},
+        {"known": "I've been learning for about a week", "target": "ik leer al ongeveer een week"},
+        {"known": "I've been speaking Dutch for a week", "target": "ik spreek al een week Nederlands"},
+        {"known": "I've been learning Dutch with you for about a week", "target": "ik leer al ongeveer een week Nederlands met je"},
+        {"known": "he wanted to learn Dutch for about a week", "target": "hij wilde ongeveer een week Nederlands leren"},
+        {"known": "I've been learning how to read the story in Dutch for about a week", "target": "ik leer al ongeveer een week hoe ik het verhaal in het Nederlands kan lezen"},
+        {"known": "I've been learning Dutch with other people for about a week", "target": "ik leer al ongeveer een week Nederlands met andere mensen"}
+      ]
+    }
+  ]
+}

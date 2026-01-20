@@ -1,0 +1,61 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 80,
+  "known_text": "I'm not sure when I'll be ready.",
+  "target_text": "Ik weet niet zeker wanneer ik klaar zal zijn.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm not sure",
+      "target": "ik weet niet zeker",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "know", "target": "weet"},
+        {"known": "not", "target": "niet"},
+        {"known": "certain", "target": "zeker"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "know", "target": "weet"},
+        {"known": "not", "target": "niet"},
+        {"known": "certain", "target": "zeker"},
+        {"known": "I'm not sure", "target": "ik weet niet zeker"},
+        {"known": "I'm not sure about that", "target": "ik weet niet zeker over dat"},
+        {"known": "she isn't sure about the truth", "target": "ze weet niet zeker over de waarheid"},
+        {"known": "I'm not sure what you said", "target": "ik weet niet zeker wat je zei"},
+        {"known": "I'm not sure when everyone else started to learn", "target": "ik weet niet zeker wanneer iedereen anders begonnen is te leren"},
+        {"known": "I'm very surprised that she isn't sure about that", "target": "ik ben heel verrast dat ze niet zeker weet over dat"},
+        {"known": "I don't understand why he isn't sure about the truth", "target": "ik begrijp niet waarom hij niet zeker weet over de waarheid"},
+        {"known": "I think it's important to be sure about what you're doing", "target": "ik denk dat het belangrijk is om zeker te zijn over wat je doet"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "when I'll be ready",
+      "target": "wanneer ik klaar zal zijn",
+      "components": [
+        {"known": "when", "target": "wanneer"},
+        {"known": "I", "target": "ik"},
+        {"known": "ready", "target": "klaar"},
+        {"known": "will be", "target": "zal zijn"}
+      ],
+      "phrases": [
+        {"known": "when", "target": "wanneer"},
+        {"known": "I", "target": "ik"},
+        {"known": "ready", "target": "klaar"},
+        {"known": "will be", "target": "zal zijn"},
+        {"known": "when I'll be ready", "target": "wanneer ik klaar zal zijn"},
+        {"known": "she will be ready", "target": "ze zal klaar zijn"},
+        {"known": "he will be ready now", "target": "hij zal nu klaar zijn"},
+        {"known": "I'm not sure when I'll be ready", "target": "ik weet niet zeker wanneer ik klaar zal zijn"},
+        {"known": "do you know when he will be ready", "target": "weet je wanneer hij klaar zal zijn"},
+        {"known": "I think she will be ready very quickly", "target": "ik denk dat ze heel snel klaar zal zijn"},
+        {"known": "I'm not sure when everyone else will be ready to learn", "target": "ik weet niet zeker wanneer iedereen anders klaar zal zijn om te leren"},
+        {"known": "I don't understand when you will be ready to help me", "target": "ik begrijp niet wanneer je klaar zal zijn om mij te helpen"},
+        {"known": "I'm very surprised that she will be ready to learn Dutch so quickly", "target": "ik ben heel verrast dat ze zo snel klaar zal zijn om Nederlands te leren"}
+      ]
+    }
+  ]
+}

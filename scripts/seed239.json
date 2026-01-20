@@ -1,0 +1,56 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 239,
+  "known_text": "My mother likes to read.",
+  "target_text": "Mijn moeder leest graag.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my mother",
+      "target": "mijn moeder",
+      "components": [
+        {"known": "my", "target": "mijn"},
+        {"known": "mother", "target": "moeder"}
+      ],
+      "phrases": [
+        {"known": "my", "target": "mijn"},
+        {"known": "mother", "target": "moeder"},
+        {"known": "my mother", "target": "mijn moeder"},
+        {"known": "my mother is here", "target": "mijn moeder is hier"},
+        {"known": "my mother said that", "target": "mijn moeder zei dat"},
+        {"known": "my mother knows him", "target": "mijn moeder kent hem"},
+        {"known": "I met my mother yesterday", "target": "ik heb mijn moeder gisteren ontmoet"},
+        {"known": "my mother wanted to help us", "target": "mijn moeder wilde ons helpen"},
+        {"known": "my mother said that she was going to come", "target": "mijn moeder zei dat ze zou komen"},
+        {"known": "I know that my mother wanted to speak with you before the weekend", "target": "ik weet dat mijn moeder voor het weekend met je wilde spreken"},
+        {"known": "my mother said that it was a good idea to try something new", "target": "mijn moeder zei dat het een goed idee was om iets nieuws te proberen"},
+        {"known": "I met someone who said that my mother wanted to tell you something yesterday", "target": "ik heb iemand ontmoet die zei dat mijn moeder je gisteren iets wilde vertellen"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "likes to read",
+      "target": "leest graag",
+      "components": [
+        {"known": "reads", "target": "leest"},
+        {"known": "gladly", "target": "graag"}
+      ],
+      "phrases": [
+        {"known": "reads", "target": "leest"},
+        {"known": "gladly", "target": "graag"},
+        {"known": "likes to read", "target": "leest graag"},
+        {"known": "she likes to read", "target": "ze leest graag"},
+        {"known": "he likes to read", "target": "hij leest graag"},
+        {"known": "my mother likes to read", "target": "mijn moeder leest graag"},
+        {"known": "she likes to read something new", "target": "ze leest graag iets nieuws"},
+        {"known": "my mother likes to read before the weekend", "target": "mijn moeder leest graag voor het weekend"},
+        {"known": "I know someone who likes to read on Sunday morning", "target": "ik ken iemand die op zondagochtend graag leest"},
+        {"known": "she said that my mother likes to read about that", "target": "ze zei dat mijn moeder daar graag over leest"},
+        {"known": "I met a young woman yesterday who said that she likes to read", "target": "ik heb gisteren een jonge vrouw ontmoet die zei dat ze graag leest"},
+        {"known": "nobody was sure if my mother likes to read something about it so far", "target": "niemand wist zeker of mijn moeder daar tot nu toe graag iets over leest"}
+      ]
+    }
+  ]
+}

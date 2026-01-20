@@ -1,0 +1,137 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 22,
+  "known_text": "Because I want to meet people who speak Dutch.",
+  "target_text": "Omdat ik mensen wil ontmoeten die Nederlands spreken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "because",
+      "target": "omdat",
+      "phrases": [
+        {"known": "because", "target": "omdat"},
+        {"known": "because not", "target": "omdat niet"},
+        {"known": "because why", "target": "omdat waarom"},
+        {"known": "because but", "target": "omdat maar"},
+        {"known": "but because", "target": "maar omdat"},
+        {"known": "because we want to learn", "target": "omdat we willen leren"},
+        {"known": "because she wants to stop", "target": "omdat zij willen stoppen"},
+        {"known": "because we want to learn quickly", "target": "omdat we snel willen leren"},
+        {"known": "because we want to learn with her", "target": "omdat we met haar willen leren"},
+        {"known": "because we want to learn her name", "target": "omdat we haar naam willen leren"},
+        {"known": "but why because we want to learn her name", "target": "maar waarom omdat we haar naam willen leren"},
+        {"known": "but because I don't want to stop talking with her", "target": "maar omdat ik wil niet stoppen met praten met haar"},
+        {"known": "because we want to stop learning her name with him later on", "target": "omdat we later met zijn willen stoppen met haar naam leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I want",
+      "target": "ik wil",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "want", "target": "wil"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "want", "target": "wil"},
+        {"known": "I want", "target": "ik wil"},
+        {"known": "I want to learn", "target": "ik wil leren"},
+        {"known": "because I want", "target": "omdat ik wil"},
+        {"known": "I want to learn quickly", "target": "ik wil snel leren"},
+        {"known": "I want to learn her name", "target": "ik wil haar naam leren"},
+        {"known": "because I want to learn", "target": "omdat ik wil leren"},
+        {"known": "I want to learn her name quickly", "target": "ik wil snel haar naam leren"},
+        {"known": "because I want to learn with her now", "target": "omdat ik nu met haar wil leren"},
+        {"known": "I don't want to stop learning her name with everyone else later", "target": "ik wil niet stoppen met haar naam met iedereen anders te leren"},
+        {"known": "because I don't want to stop learning her name later on", "target": "omdat ik later niet wil stoppen met haar naam te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "to encounter",
+      "target": "ontmoeten",
+      "phrases": [
+        {"known": "to encounter", "target": "ontmoeten"},
+        {"known": "I want to encounter", "target": "ik wil ontmoeten"},
+        {"known": "he wants to encounter", "target": "hij wil ontmoeten"},
+        {"known": "she wants to encounter", "target": "zij wil ontmoeten"},
+        {"known": "we want to encounter", "target": "we willen ontmoeten"},
+        {"known": "you want to encounter her", "target": "je wilt haar ontmoeten"},
+        {"known": "because I want to encounter her", "target": "omdat ik haar wil ontmoeten"},
+        {"known": "why do you want to encounter her now", "target": "waarom wilt je haar nu ontmoeten"},
+        {"known": "because he wants to encounter her later on", "target": "omdat hij haar later wil ontmoeten"},
+        {"known": "because I don't want to stop trying to encounter her now", "target": "omdat ik nu niet wil stoppen met haar te proberen te ontmoeten"},
+        {"known": "but why does she not want to encounter her with everyone else later on", "target": "maar waarom wil zij haar later niet met iedereen anders ontmoeten"},
+        {"known": "because he doesn't want to stop trying to encounter her later on", "target": "omdat hij later niet wil stoppen met haar te proberen te ontmoeten"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "people",
+      "target": "mensen",
+      "phrases": [
+        {"known": "people", "target": "mensen"},
+        {"known": "with people", "target": "met mensen"},
+        {"known": "people now", "target": "mensen nu"},
+        {"known": "I want people", "target": "ik wil mensen"},
+        {"known": "I want to encounter people", "target": "ik wil mensen ontmoeten"},
+        {"known": "because I want to encounter people", "target": "omdat ik mensen wil ontmoeten"},
+        {"known": "he wants to encounter people", "target": "hij wil mensen ontmoeten"},
+        {"known": "why do you want to encounter people now", "target": "waarom wilt je nu mensen ontmoeten"},
+        {"known": "because we want to encounter people later on", "target": "omdat we later mensen willen ontmoeten"},
+        {"known": "because I don't want to stop encountering people with her", "target": "omdat ik niet wil stoppen met mensen met haar te ontmoeten"},
+        {"known": "because she doesn't want to stop encountering people later on", "target": "omdat zij later niet wil stoppen met mensen te ontmoeten"},
+        {"known": "but why do we not want to encounter people with everyone else later on", "target": "maar waarom willen we later niet met iedereen anders mensen ontmoeten"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "who",
+      "target": "die",
+      "phrases": [
+        {"known": "who", "target": "die"},
+        {"known": "who wants", "target": "die wil"},
+        {"known": "people who want", "target": "mensen die willen"},
+        {"known": "people who want to learn", "target": "mensen die willen leren"},
+        {"known": "people who want to learn her name", "target": "mensen die haar naam willen leren"},
+        {"known": "I want to encounter people who want to learn", "target": "ik wil mensen ontmoeten die willen leren"},
+        {"known": "because people who want to learn quickly", "target": "omdat mensen die snel willen leren"},
+        {"known": "why do you want to encounter people who want to learn", "target": "waarom wilt je mensen ontmoeten die willen leren"},
+        {"known": "he wants to encounter people who want to learn with her", "target": "hij wil mensen ontmoeten die met haar willen leren"},
+        {"known": "because I want to encounter people who want to learn later on", "target": "omdat ik mensen wil ontmoeten die later willen leren"},
+        {"known": "but why does she not want to encounter people who want to learn now", "target": "maar waarom wil zij nu niet mensen ontmoeten die willen leren"},
+        {"known": "because he doesn't want to encounter people who want to stop learning", "target": "omdat hij niet mensen wil ontmoeten die willen stoppen met leren"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "speak Dutch",
+      "target": "Nederlands spreken",
+      "components": [
+        {"known": "Dutch", "target": "Nederlands"},
+        {"known": "speak", "target": "spreken"}
+      ],
+      "phrases": [
+        {"known": "Dutch", "target": "Nederlands"},
+        {"known": "speak", "target": "spreken"},
+        {"known": "speak Dutch", "target": "Nederlands spreken"},
+        {"known": "I want to speak", "target": "ik wil spreken"},
+        {"known": "I want to speak Dutch", "target": "ik wil Nederlands spreken"},
+        {"known": "because I want to speak Dutch", "target": "omdat ik Nederlands wil spreken"},
+        {"known": "people who speak Dutch", "target": "mensen die Nederlands spreken"},
+        {"known": "I want to encounter people who speak Dutch", "target": "ik wil mensen ontmoeten die Nederlands spreken"},
+        {"known": "because I want to encounter people who speak Dutch", "target": "omdat ik mensen wil ontmoeten die Nederlands spreken"},
+        {"known": "he wants to encounter people who speak Dutch later on", "target": "hij wil later mensen ontmoeten die Nederlands spreken"},
+        {"known": "why do you want to encounter people who speak Dutch now", "target": "waarom wilt je nu mensen ontmoeten die Nederlands spreken"},
+        {"known": "because she wants to encounter people who speak Dutch with her", "target": "omdat zij mensen wil ontmoeten die met haar Nederlands spreken"}
+      ]
+    }
+  ]
+}

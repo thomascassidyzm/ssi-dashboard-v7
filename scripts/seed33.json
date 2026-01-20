@@ -1,0 +1,53 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 33,
+  "known_text": "How long have you been learning Dutch?",
+  "target_text": "Hoe lang leer je al Nederlands?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "how long",
+      "target": "hoe lang",
+      "components": [
+        {"known": "how", "target": "hoe"},
+        {"known": "long", "target": "lang"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "hoe"},
+        {"known": "long", "target": "lang"},
+        {"known": "how long", "target": "hoe lang"},
+        {"known": "how long here", "target": "hoe lang hier"},
+        {"known": "how long today", "target": "hoe lang vandaag"},
+        {"known": "how long with me", "target": "hoe lang met mij"},
+        {"known": "how long with her", "target": "hoe lang met haar"},
+        {"known": "how long did you want", "target": "hoe lang wilde je"},
+        {"known": "how long do you want to learn", "target": "hoe lang wil je leren"},
+        {"known": "how long did you want to go with me", "target": "hoe lang wilde je met mij gaan"},
+        {"known": "how long do you want to speak Dutch with me", "target": "hoe lang wil je Nederlands met mij spreken"},
+        {"known": "how long did you want to learn Dutch with everyone else", "target": "hoe lang wilde je Nederlands met iedereen anders leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "already",
+      "target": "al",
+      "phrases": [
+        {"known": "already", "target": "al"},
+        {"known": "not already", "target": "niet al"},
+        {"known": "already here", "target": "al hier"},
+        {"known": "I already learn", "target": "ik leer al"},
+        {"known": "learn already today", "target": "leer al vandaag"},
+        {"known": "already with everyone", "target": "al met iedereen"},
+        {"known": "I want to learn already", "target": "ik wil al leren"},
+        {"known": "how long already", "target": "hoe lang al"},
+        {"known": "how long have you been learning", "target": "hoe lang leer je al"},
+        {"known": "I already learn Dutch", "target": "ik leer al Nederlands"},
+        {"known": "do you already want to learn Dutch", "target": "wil je al Nederlands leren"},
+        {"known": "how long have you been learning Dutch with me", "target": "hoe lang leer je al Nederlands met mij"},
+        {"known": "I am looking forward to already speaking Dutch better", "target": "ik kijk ernaar uit om al beter Nederlands te spreken"}
+      ]
+    }
+  ]
+}

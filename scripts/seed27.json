@@ -1,0 +1,116 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 27,
+  "known_text": "I don't like taking too much time to answer.",
+  "target_text": "Ik vind het niet fijn om te veel tijd te nemen om te antwoorden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't like",
+      "target": "ik vind het niet fijn",
+      "components": [
+        {"known": "I like", "target": "ik vind het fijn"},
+        {"known": "not", "target": "niet"}
+      ],
+      "phrases": [
+        {"known": "I like", "target": "ik vind het fijn"},
+        {"known": "not", "target": "niet"},
+        {"known": "I don't like", "target": "ik vind het niet fijn"},
+        {"known": "I don't like to go", "target": "ik vind het niet fijn om te gaan"},
+        {"known": "I don't like to help", "target": "ik vind het niet fijn om te helpen"},
+        {"known": "why I don't like to learn", "target": "waarom ik het niet fijn vind om te leren"},
+        {"known": "I don't like feeling as if I have to go", "target": "ik vind het niet fijn om te voelen alsof ik moet gaan"},
+        {"known": "because I don't like to feel ready", "target": "omdat ik het niet fijn vind om klaar te voelen"},
+        {"known": "I don't like feeling as if I'm nearly ready to go", "target": "ik vind het niet fijn om te voelen alsof ik bijna klaar ben om te gaan"},
+        {"known": "but why do you not like to feel ready before you go", "target": "maar waarom vind je het niet fijn om klaar te voelen voordat je gaat"},
+        {"known": "because I don't like to feel as if I have to help everyone else", "target": "omdat ik het niet fijn vind om te voelen alsof ik iedereen anders moet helpen"},
+        {"known": "I don't like feeling as if I'm nearly ready to help her before I have to go", "target": "ik vind het niet fijn om te voelen alsof ik bijna klaar ben om haar te helpen voordat ik moet gaan"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "taking",
+      "target": "nemen",
+      "phrases": [
+        {"known": "taking", "target": "nemen"},
+        {"known": "to take", "target": "te nemen"},
+        {"known": "I want to take", "target": "ik wil nemen"},
+        {"known": "I don't like taking", "target": "ik vind het niet fijn om te nemen"},
+        {"known": "I like taking", "target": "ik vind het fijn om te nemen"},
+        {"known": "we want to take", "target": "we willen nemen"},
+        {"known": "why do you want to take", "target": "waarom wil je nemen"},
+        {"known": "I don't like to take before I go", "target": "ik vind het niet fijn om te nemen voordat ik ga"},
+        {"known": "because I don't like to take more", "target": "omdat ik het niet fijn vind om meer te nemen"},
+        {"known": "I'm nearly ready to take more before I have to go", "target": "ik ben bijna klaar om meer te nemen voordat ik moet gaan"},
+        {"known": "but why do you not like taking more before you feel ready to go", "target": "maar waarom vind je het niet fijn om meer te nemen voordat je klaar bent om te gaan"},
+        {"known": "because I don't like taking before I'm nearly ready to go with her", "target": "omdat ik het niet fijn vind om te nemen voordat ik bijna klaar ben om met haar te gaan"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "too much",
+      "target": "te veel",
+      "phrases": [
+        {"known": "too much", "target": "te veel"},
+        {"known": "not too much", "target": "niet te veel"},
+        {"known": "I don't like too much", "target": "ik vind te veel niet fijn"},
+        {"known": "I don't want too much", "target": "ik wil niet te veel"},
+        {"known": "I don't like taking too much", "target": "ik vind het niet fijn om te veel te nemen"},
+        {"known": "why do you not like too much", "target": "waarom vind je te veel niet fijn"},
+        {"known": "because I don't want to take too much", "target": "omdat ik niet te veel wil nemen"},
+        {"known": "I don't like taking too much before I have to go", "target": "ik vind het niet fijn om te veel te nemen voordat ik moet gaan"},
+        {"known": "but why do you not like taking too much before you go", "target": "maar waarom vind je het niet fijn om te veel te nemen voordat je gaat"},
+        {"known": "because I don't like taking too much before I'm nearly ready to go", "target": "omdat ik het niet fijn vind om te veel te nemen voordat ik bijna klaar ben om te gaan"},
+        {"known": "I don't like taking too much before I have to help everyone else", "target": "ik vind het niet fijn om te veel te nemen voordat ik iedereen anders moet helpen"},
+        {"known": "but why do you not like taking too much before you are nearly ready to help her", "target": "maar waarom vind je het niet fijn om te veel te nemen voordat je bijna klaar bent om haar te helpen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "time",
+      "target": "tijd",
+      "phrases": [
+        {"known": "time", "target": "tijd"},
+        {"known": "more time", "target": "meer tijd"},
+        {"known": "too much time", "target": "te veel tijd"},
+        {"known": "I want more time", "target": "ik wil meer tijd"},
+        {"known": "I don't like taking time", "target": "ik vind het niet fijn om tijd te nemen"},
+        {"known": "I don't like taking too much time", "target": "ik vind het niet fijn om te veel tijd te nemen"},
+        {"known": "why do you want more time", "target": "waarom wil je meer tijd"},
+        {"known": "because I don't want too much time", "target": "omdat ik niet te veel tijd wil"},
+        {"known": "I don't like taking too much time before I go", "target": "ik vind het niet fijn om te veel tijd te nemen voordat ik ga"},
+        {"known": "but why do you not like taking time before you are ready", "target": "maar waarom vind je het niet fijn om tijd te nemen voordat je klaar bent"},
+        {"known": "because I don't like taking too much time before I'm nearly ready", "target": "omdat ik het niet fijn vind om te veel tijd te nemen voordat ik bijna klaar ben"},
+        {"known": "I don't like taking too much time before I have to help everyone", "target": "ik vind het niet fijn om te veel tijd te nemen voordat ik iedereen moet helpen"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "to answer",
+      "target": "om te antwoorden",
+      "components": [
+        {"known": "in order to", "target": "om"},
+        {"known": "answer", "target": "te antwoorden"}
+      ],
+      "phrases": [
+        {"known": "in order to", "target": "om"},
+        {"known": "answer", "target": "te antwoorden"},
+        {"known": "to answer", "target": "om te antwoorden"},
+        {"known": "I want to answer", "target": "ik wil antwoorden"},
+        {"known": "we want to answer", "target": "we willen antwoorden"},
+        {"known": "I don't like to answer", "target": "ik vind het niet fijn om te antwoorden"},
+        {"known": "I like to answer quickly", "target": "ik vind het fijn om snel te antwoorden"},
+        {"known": "why do you not like to answer", "target": "waarom vind je het niet fijn om te antwoorden"},
+        {"known": "I don't like taking time to answer", "target": "ik vind het niet fijn om tijd te nemen om te antwoorden"},
+        {"known": "I don't like taking too much time to answer", "target": "ik vind het niet fijn om te veel tijd te nemen om te antwoorden"},
+        {"known": "because I don't like taking too much time to answer before I go", "target": "omdat ik het niet fijn vind om te veel tijd te nemen om te antwoorden voordat ik ga"},
+        {"known": "but why do you not like taking too much time to answer before you are ready", "target": "maar waarom vind je het niet fijn om te veel tijd te nemen om te antwoorden voordat je klaar bent"}
+      ]
+    }
+  ]
+}

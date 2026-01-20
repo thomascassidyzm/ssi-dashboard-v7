@@ -1,0 +1,376 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 25,
+  "known_text": "Are you going to help me before I have to go?",
+  "target_text": "Ga je mij helpen voordat ik moet gaan?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "are you going to",
+      "target": "ga je",
+      "components": [
+        {
+          "known": "going",
+          "target": "ga"
+        },
+        {
+          "known": "you",
+          "target": "je"
+        }
+      ],
+      "phrases": [
+        {
+          "known": "going",
+          "target": "ga"
+        },
+        {
+          "known": "you",
+          "target": "je"
+        },
+        {
+          "known": "are you going to",
+          "target": "ga je"
+        },
+        {
+          "known": "are you going to learn",
+          "target": "ga je leren"
+        },
+        {
+          "known": "are you going to start",
+          "target": "ga je beginnen"
+        },
+        {
+          "known": "why are you going to learn",
+          "target": "waarom ga je leren"
+        },
+        {
+          "known": "are you going to start soon",
+          "target": "ga je binnenkort beginnen"
+        },
+        {
+          "known": "are you going to learn more soon",
+          "target": "ga je binnenkort meer leren"
+        },
+        {
+          "known": "are you going to be able to remember",
+          "target": "ga je kunnen onthouden"
+        },
+        {
+          "known": "why are you going to start learning soon",
+          "target": "waarom ga je binnenkort beginnen te leren"
+        },
+        {
+          "known": "are you going to be able to remember easily with her",
+          "target": "ga je makkelijk met haar kunnen onthouden"
+        },
+        {
+          "known": "but why are you going to start learning more with everyone later",
+          "target": "maar waarom ga je later meer met iedereen beginnen te leren"
+        },
+        {
+          "known": "are you not going to be able to remember it easily with her soon",
+          "target": "ga je niet binnenkort makkelijk met haar kunnen onthouden"
+        }
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "help",
+      "target": "helpen",
+      "phrases": [
+        {
+          "known": "help",
+          "target": "helpen"
+        },
+        {
+          "known": "I want to help",
+          "target": "ik wil helpen"
+        },
+        {
+          "known": "we want to help",
+          "target": "we willen helpen"
+        },
+        {
+          "known": "are you going to help",
+          "target": "ga je helpen"
+        },
+        {
+          "known": "I'm going to help",
+          "target": "ik ga helpen"
+        },
+        {
+          "known": "I'm not going to help",
+          "target": "ik ga niet helpen"
+        },
+        {
+          "known": "why are you going to help",
+          "target": "waarom ga je helpen"
+        },
+        {
+          "known": "I want to be able to help",
+          "target": "ik wil kunnen helpen"
+        },
+        {
+          "known": "are you going to help her soon",
+          "target": "ga je haar binnenkort helpen"
+        },
+        {
+          "known": "I'm not going to be able to help easily",
+          "target": "ik ga niet makkelijk kunnen helpen"
+        },
+        {
+          "known": "but why are you going to help her with everyone else later",
+          "target": "maar waarom ga je later met iedereen anders haar helpen"
+        },
+        {
+          "known": "are you not going to be able to help her easily with everyone soon",
+          "target": "ga je niet binnenkort makkelijk met iedereen haar kunnen helpen"
+        },
+        {
+          "known": "I'm not going to be able to help with everyone else easily later on",
+          "target": "ik ga later niet makkelijk met iedereen anders kunnen helpen"
+        }
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "me",
+      "target": "mij",
+      "phrases": [
+        {
+          "known": "me",
+          "target": "mij"
+        },
+        {
+          "known": "with me",
+          "target": "met mij"
+        },
+        {
+          "known": "help me",
+          "target": "mij helpen"
+        },
+        {
+          "known": "are you going to help me",
+          "target": "ga je mij helpen"
+        },
+        {
+          "known": "I want to help me",
+          "target": "ik wil mij helpen"
+        },
+        {
+          "known": "are you going to help me soon",
+          "target": "ga je mij binnenkort helpen"
+        },
+        {
+          "known": "why are you going to help me",
+          "target": "waarom ga je mij helpen"
+        },
+        {
+          "known": "I'm not going to help me",
+          "target": "ik ga niet mij helpen"
+        },
+        {
+          "known": "are you going to help me learn more soon",
+          "target": "ga je mij binnenkort meer helpen te leren"
+        },
+        {
+          "known": "but why are you not going to help me with everyone else",
+          "target": "maar waarom ga je niet mij met iedereen anders helpen"
+        },
+        {
+          "known": "are you going to be able to help me easily with her later",
+          "target": "ga je later makkelijk met haar mij kunnen helpen"
+        },
+        {
+          "known": "but why are you not going to be able to help me remember easily",
+          "target": "maar waarom ga je niet makkelijk mij kunnen helpen onthouden"
+        }
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "before",
+      "target": "voordat",
+      "phrases": [
+        {
+          "known": "before",
+          "target": "voordat"
+        },
+        {
+          "known": "before not",
+          "target": "voordat niet"
+        },
+        {
+          "known": "but before",
+          "target": "maar voordat"
+        },
+        {
+          "known": "before I learn",
+          "target": "voordat ik leer"
+        },
+        {
+          "known": "before we start",
+          "target": "voordat we beginnen"
+        },
+        {
+          "known": "are you going to help me before",
+          "target": "ga je mij helpen voordat"
+        },
+        {
+          "known": "before I'm going to start",
+          "target": "voordat ik ga beginnen"
+        },
+        {
+          "known": "I want to learn more before",
+          "target": "ik wil meer leren voordat"
+        },
+        {
+          "known": "are you going to help me before I start",
+          "target": "ga je mij helpen voordat ik ga beginnen"
+        },
+        {
+          "known": "but why before I'm going to be able to remember",
+          "target": "maar waarom voordat ik ga kunnen onthouden"
+        },
+        {
+          "known": "are you going to help me learn more easily before we start",
+          "target": "ga je mij makkelijk meer helpen te leren voordat we beginnen"
+        },
+        {
+          "known": "I want to be able to remember before you start learning with her",
+          "target": "ik wil kunnen onthouden voordat je met haar ga beginnen te leren"
+        }
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I have to",
+      "target": "ik moet",
+      "components": [
+        {
+          "known": "I",
+          "target": "ik"
+        },
+        {
+          "known": "have to",
+          "target": "moet"
+        }
+      ],
+      "phrases": [
+        {
+          "known": "I",
+          "target": "ik"
+        },
+        {
+          "known": "have to",
+          "target": "moet"
+        },
+        {
+          "known": "I have to",
+          "target": "ik moet"
+        },
+        {
+          "known": "I have to learn",
+          "target": "ik moet leren"
+        },
+        {
+          "known": "I have to start",
+          "target": "ik moet beginnen"
+        },
+        {
+          "known": "I have to help",
+          "target": "ik moet helpen"
+        },
+        {
+          "known": "before I have to",
+          "target": "voordat ik moet"
+        },
+        {
+          "known": "I have to learn more",
+          "target": "ik moet meer leren"
+        },
+        {
+          "known": "I have to be able to remember",
+          "target": "ik moet kunnen onthouden"
+        },
+        {
+          "known": "are you going to help me before I have to",
+          "target": "ga je mij helpen voordat ik moet"
+        },
+        {
+          "known": "I have to start learning more with her before we start",
+          "target": "ik moet meer met haar beginnen te leren voordat we beginnen"
+        },
+        {
+          "known": "but why do I have to be able to remember easily before we start",
+          "target": "maar waarom moet ik makkelijk kunnen onthouden voordat we beginnen"
+        },
+        {
+          "known": "I have to be able to help her learn more before she wants to start",
+          "target": "ik moet haar kunnen helpen meer te leren voordat zij wil beginnen"
+        }
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "go",
+      "target": "gaan",
+      "phrases": [
+        {
+          "known": "go",
+          "target": "gaan"
+        },
+        {
+          "known": "I want to go",
+          "target": "ik wil gaan"
+        },
+        {
+          "known": "to go now",
+          "target": "nu gaan"
+        },
+        {
+          "known": "I have to go",
+          "target": "ik moet gaan"
+        },
+        {
+          "known": "I have to go soon",
+          "target": "ik moet binnenkort gaan"
+        },
+        {
+          "known": "before I have to go",
+          "target": "voordat ik moet gaan"
+        },
+        {
+          "known": "are you going to help me before I go",
+          "target": "ga je mij helpen voordat ik ga"
+        },
+        {
+          "known": "are you going to help me before I have to go",
+          "target": "ga je mij helpen voordat ik moet gaan"
+        },
+        {
+          "known": "I have to go before you start learning with her",
+          "target": "ik moet gaan voordat je met haar ga beginnen te leren"
+        },
+        {
+          "known": "but why do I have to go before she wants to help me learn",
+          "target": "maar waarom moet ik gaan voordat zij mij wil helpen te leren"
+        },
+        {
+          "known": "I do not want to go before you are going to help me easily",
+          "target": "ik wil niet gaan voordat je mij makkelijk ga helpen"
+        },
+        {
+          "known": "are you going to help me easily before I have to go with everyone else",
+          "target": "ga je mij makkelijk helpen voordat ik met iedereen anders moet gaan"
+        }
+      ]
+    }
+  ]
+}

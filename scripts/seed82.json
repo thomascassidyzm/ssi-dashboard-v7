@@ -1,0 +1,83 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 82,
+  "known_text": "I'm not going to wait for you. Why not?",
+  "target_text": "Ik ga niet op je wachten. Waarom niet?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm not going to wait",
+      "target": "ik ga niet wachten",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "am going", "target": "ga"},
+        {"known": "not", "target": "niet"},
+        {"known": "wait", "target": "wachten"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "am going", "target": "ga"},
+        {"known": "not", "target": "niet"},
+        {"known": "wait", "target": "wachten"},
+        {"known": "I'm going to wait", "target": "ik ga wachten"},
+        {"known": "I'm not going to wait", "target": "ik ga niet wachten"},
+        {"known": "she is going to wait", "target": "ze gaat wachten"},
+        {"known": "he is not going to wait now", "target": "hij gaat nu niet wachten"},
+        {"known": "I think she is going to wait", "target": "ik denk dat ze gaat wachten"},
+        {"known": "I'm not sure when I'm going to wait", "target": "ik weet niet zeker wanneer ik ga wachten"},
+        {"known": "I don't understand why he is going to wait here", "target": "ik begrijp niet waarom hij hier gaat wachten"},
+        {"known": "I'm very surprised that everyone else is not going to wait", "target": "ik ben heel verrast dat iedereen anders niet gaat wachten"},
+        {"known": "I think it's important to wait when you want to learn Dutch", "target": "ik denk dat het belangrijk is om te wachten wanneer je Nederlands wilt leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "for you",
+      "target": "op je",
+      "components": [
+        {"known": "for/on", "target": "op"},
+        {"known": "you", "target": "je"}
+      ],
+      "phrases": [
+        {"known": "for/on", "target": "op"},
+        {"known": "you", "target": "je"},
+        {"known": "for you", "target": "op je"},
+        {"known": "for her", "target": "op haar"},
+        {"known": "wait for you", "target": "op je wachten"},
+        {"known": "I'm not going to wait for you", "target": "ik ga niet op je wachten"},
+        {"known": "he is not going to wait for her", "target": "hij gaat niet op haar wachten"},
+        {"known": "I think she is going to wait for me", "target": "ik denk dat ze op mij gaat wachten"},
+        {"known": "I'm not sure when she is going to wait for me", "target": "ik weet niet zeker wanneer ze op mij gaat wachten"},
+        {"known": "I think it's important to wait for her when she wants to learn", "target": "ik denk dat het belangrijk is om op haar te wachten wanneer ze wil leren"},
+        {"known": "I'm very surprised that you're not going to wait for me to start", "target": "ik ben heel verrast dat je niet op mij gaat wachten om te beginnen"},
+        {"known": "I don't understand why everyone else is going to wait for the truth", "target": "ik begrijp niet waarom iedereen anders op de waarheid gaat wachten"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "why not",
+      "target": "waarom niet",
+      "components": [
+        {"known": "why", "target": "waarom"},
+        {"known": "not", "target": "niet"}
+      ],
+      "phrases": [
+        {"known": "why", "target": "waarom"},
+        {"known": "not", "target": "niet"},
+        {"known": "why not", "target": "waarom niet"},
+        {"known": "why not now", "target": "waarom niet nu"},
+        {"known": "I don't know why not", "target": "ik weet niet waarom niet"},
+        {"known": "why not wait for me", "target": "waarom niet op mij wachten"},
+        {"known": "I don't understand why not", "target": "ik begrijp niet waarom niet"},
+        {"known": "she wanted to know why not", "target": "ze wilde weten waarom niet"},
+        {"known": "I'm not sure why he doesn't want to wait", "target": "ik weet niet zeker waarom hij niet wil wachten"},
+        {"known": "why not start to learn Dutch now", "target": "waarom niet nu Nederlands beginnen te leren"},
+        {"known": "I don't understand why she is not going to wait for everyone else", "target": "ik begrijp niet waarom ze niet op iedereen anders gaat wachten"},
+        {"known": "I'm very surprised why everyone else is not ready to start yet", "target": "ik ben heel verrast waarom iedereen anders nog niet klaar is om te beginnen"}
+      ]
+    }
+  ]
+}

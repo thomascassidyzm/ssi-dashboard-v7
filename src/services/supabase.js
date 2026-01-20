@@ -20,7 +20,7 @@ export const isConfigured = () => !!supabase
 /**
  * Get course stats directly from database
  * @param {string} courseCode
- * @returns {Promise<{seeds: number, legos: number, practicePhrases: number, audio: number}>}
+ * @returns {Promise<{seeds: number, completeSeeds: number, legos: number, practicePhrases: number, audio: number}>}
  */
 export async function getCourseStats(courseCode) {
   if (!supabase) {
@@ -28,7 +28,7 @@ export async function getCourseStats(courseCode) {
   }
 
   // Run all count queries in parallel
-  const [seedsResult, legosResult, phrasesResult, audioResult] = await Promise.all([
+  const [seedsResult, legosResult, phrasesResult, audioResult, legoSeedsResult] = await Promise.all([
     supabase
       .from('course_seeds')
       .select('*', { count: 'exact', head: true })
@@ -44,11 +44,22 @@ export async function getCourseStats(courseCode) {
     supabase
       .from('course_audio')
       .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode),
+    // Get distinct seed_numbers that have LEGOs (complete seeds)
+    supabase
+      .from('course_legos')
+      .select('seed_number')
       .eq('course_code', courseCode)
   ])
 
+  // Count unique seed_numbers that have LEGOs
+  const completeSeeds = legoSeedsResult.data
+    ? new Set(legoSeedsResult.data.map(l => l.seed_number)).size
+    : 0
+
   return {
     seeds: seedsResult.count || 0,
+    completeSeeds,
     legos: legosResult.count || 0,
     practicePhrases: phrasesResult.count || 0,
     audio: audioResult.count || 0

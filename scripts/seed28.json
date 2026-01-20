@@ -1,0 +1,141 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 28,
+  "known_text": "It's useful to start talking as soon as you can.",
+  "target_text": "Het is nuttig om zo snel mogelijk te beginnen met praten.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's useful",
+      "target": "het is nuttig",
+      "components": [
+        {"known": "it", "target": "het"},
+        {"known": "is useful", "target": "is nuttig"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "het"},
+        {"known": "is useful", "target": "is nuttig"},
+        {"known": "it's useful", "target": "het is nuttig"},
+        {"known": "it's useful to learn", "target": "het is nuttig om te leren"},
+        {"known": "it's useful to help", "target": "het is nuttig om te helpen"},
+        {"known": "it's useful to go", "target": "het is nuttig om te gaan"},
+        {"known": "it's useful to start soon", "target": "het is nuttig om binnenkort te beginnen"},
+        {"known": "why it's useful to learn more", "target": "waarom het nuttig is om meer te leren"},
+        {"known": "because it's useful to feel ready", "target": "omdat het nuttig is om klaar te voelen"},
+        {"known": "it's useful to be nearly ready to go before you have to", "target": "het is nuttig om bijna klaar te zijn om te gaan voordat je moet"},
+        {"known": "because it's useful to be able to answer easily", "target": "omdat het nuttig is om makkelijk te kunnen antwoorden"},
+        {"known": "but why is it useful to start learning before you have to go", "target": "maar waarom is het nuttig om te beginnen te leren voordat je moet gaan"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "so",
+      "target": "zo",
+      "phrases": [
+        {"known": "so", "target": "zo"},
+        {"known": "so not", "target": "zo niet"},
+        {"known": "so useful", "target": "zo nuttig"},
+        {"known": "so fast", "target": "zo snel"},
+        {"known": "it's so useful", "target": "het is zo nuttig"},
+        {"known": "why is it so useful", "target": "waarom is het zo nuttig"},
+        {"known": "so useful to help", "target": "zo nuttig om te helpen"},
+        {"known": "so useful to learn more", "target": "zo nuttig om meer te leren"},
+        {"known": "I want to go so fast", "target": "ik wil zo snel gaan"},
+        {"known": "because it's so useful to go", "target": "omdat het zo nuttig is om te gaan"},
+        {"known": "it's so useful to start soon", "target": "het is zo nuttig om binnenkort te beginnen"},
+        {"known": "but why is it so useful to learn more before you go", "target": "maar waarom is het zo nuttig om meer te leren voordat je gaat"},
+        {"known": "because it's so useful to be nearly ready to help before you have to go", "target": "omdat het zo nuttig is om bijna klaar te zijn om te helpen voordat je moet gaan"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "fast",
+      "target": "snel",
+      "phrases": [
+        {"known": "fast", "target": "snel"},
+        {"known": "not fast", "target": "niet snel"},
+        {"known": "so fast", "target": "zo snel"},
+        {"known": "I want fast", "target": "ik wil snel"},
+        {"known": "to go so fast", "target": "zo snel gaan"},
+        {"known": "we want fast", "target": "we willen snel"},
+        {"known": "it's useful to go fast", "target": "het is nuttig om snel te gaan"},
+        {"known": "because it's so fast", "target": "omdat het zo snel is"},
+        {"known": "I want to start fast before I go", "target": "ik wil snel beginnen voordat ik ga"},
+        {"known": "but why is it so useful to go so fast", "target": "maar waarom is het zo nuttig om zo snel te gaan"},
+        {"known": "because it's useful to be able to answer fast before you go", "target": "omdat het nuttig is om snel te kunnen antwoorden voordat je gaat"},
+        {"known": "but why do you want to start learning so fast with everyone else", "target": "maar waarom wil je zo snel met iedereen anders beginnen te leren"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "possible",
+      "target": "mogelijk",
+      "phrases": [
+        {"known": "possible", "target": "mogelijk"},
+        {"known": "not possible", "target": "niet mogelijk"},
+        {"known": "it's possible", "target": "het is mogelijk"},
+        {"known": "it's not possible", "target": "het is niet mogelijk"},
+        {"known": "as soon as possible", "target": "zo snel mogelijk"},
+        {"known": "as fast as possible", "target": "zo snel mogelijk"},
+        {"known": "it's possible to go", "target": "het is mogelijk om te gaan"},
+        {"known": "I want to go as soon as possible", "target": "ik wil zo snel mogelijk gaan"},
+        {"known": "because it's useful to start as soon as possible", "target": "omdat het nuttig is om zo snel mogelijk te beginnen"},
+        {"known": "I want to learn as soon as possible before I have to go", "target": "ik wil zo snel mogelijk leren voordat ik moet gaan"},
+        {"known": "it's possible to start learning more before you have to go", "target": "het is mogelijk om meer te beginnen te leren voordat je moet gaan"},
+        {"known": "but why is it useful to start talking as soon as possible with her", "target": "maar waarom is het nuttig om zo snel mogelijk met haar te beginnen te praten"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "in order to start",
+      "target": "om te beginnen",
+      "components": [
+        {"known": "in order to", "target": "om"},
+        {"known": "to start", "target": "te beginnen"}
+      ],
+      "phrases": [
+        {"known": "in order to", "target": "om"},
+        {"known": "to start", "target": "te beginnen"},
+        {"known": "in order to start", "target": "om te beginnen"},
+        {"known": "to start now", "target": "nu te beginnen"},
+        {"known": "in order to start soon", "target": "om binnenkort te beginnen"},
+        {"known": "it's useful in order to start", "target": "het is nuttig om te beginnen"},
+        {"known": "in order to start as soon as possible", "target": "om zo snel mogelijk te beginnen"},
+        {"known": "I want to start soon", "target": "ik wil binnenkort beginnen"},
+        {"known": "it's useful in order to start as soon as possible", "target": "het is nuttig om zo snel mogelijk te beginnen"},
+        {"known": "because we want to start learning before we go", "target": "omdat we willen beginnen te leren voordat we gaan"},
+        {"known": "it's useful in order to start as soon as possible before you have to go", "target": "het is nuttig om zo snel mogelijk te beginnen voordat je moet gaan"},
+        {"known": "but why is it useful in order to start learning as soon as possible with everyone", "target": "maar waarom is het nuttig om zo snel mogelijk met iedereen te beginnen te leren"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "with talking",
+      "target": "met praten",
+      "components": [
+        {"known": "with", "target": "met"},
+        {"known": "talking", "target": "praten"}
+      ],
+      "phrases": [
+        {"known": "with", "target": "met"},
+        {"known": "talking", "target": "praten"},
+        {"known": "with talking", "target": "met praten"},
+        {"known": "with talking now", "target": "nu met praten"},
+        {"known": "to start with talking", "target": "beginnen met praten"},
+        {"known": "I want to start with talking", "target": "ik wil beginnen met praten"},
+        {"known": "it's useful with talking", "target": "het is nuttig met praten"},
+        {"known": "in order to start with talking", "target": "om te beginnen met praten"},
+        {"known": "it's useful in order to start with talking soon", "target": "het is nuttig om binnenkort te beginnen met praten"},
+        {"known": "it's useful in order to start with talking as soon as possible", "target": "het is nuttig om zo snel mogelijk te beginnen met praten"},
+        {"known": "but why is it useful in order to start with talking before you have to go", "target": "maar waarom is het nuttig om te beginnen met praten voordat je moet gaan"},
+        {"known": "because it's so useful in order to start with talking as soon as possible before you go with her", "target": "omdat het zo nuttig is om zo snel mogelijk te beginnen met praten voordat je met haar gaat"}
+      ]
+    }
+  ]
+}

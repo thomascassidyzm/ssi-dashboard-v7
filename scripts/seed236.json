@@ -1,0 +1,104 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 236,
+  "known_text": "I know someone who said that she was going to try to help.",
+  "target_text": "Ik ken iemand die zei dat ze zou proberen te helpen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I know",
+      "target": "ik ken",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "know", "target": "ken"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "know", "target": "ken"},
+        {"known": "I know", "target": "ik ken"},
+        {"known": "I know that", "target": "ik weet dat"},
+        {"known": "I know someone", "target": "ik ken iemand"},
+        {"known": "I know her", "target": "ik ken haar"},
+        {"known": "I know him well", "target": "ik ken hem goed"},
+        {"known": "I know a young woman", "target": "ik ken een jonge vrouw"},
+        {"known": "I know an old man who works there", "target": "ik ken een oude man die daar werkt"},
+        {"known": "I know someone who can help with that", "target": "ik ken iemand die daarmee kan helpen"},
+        {"known": "I know your brother and I met your sister yesterday", "target": "ik ken je broer en ik heb je zus gisteren ontmoet"},
+        {"known": "I know someone who said it was a good idea", "target": "ik ken iemand die zei dat het een goed idee was"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "someone who said",
+      "target": "iemand die zei",
+      "components": [
+        {"known": "someone", "target": "iemand"},
+        {"known": "who said", "target": "die zei"}
+      ],
+      "phrases": [
+        {"known": "someone", "target": "iemand"},
+        {"known": "who said", "target": "die zei"},
+        {"known": "someone who said", "target": "iemand die zei"},
+        {"known": "someone who said that", "target": "iemand die dat zei"},
+        {"known": "I know someone who said that", "target": "ik ken iemand die dat zei"},
+        {"known": "someone who said it was good", "target": "iemand die zei dat het goed was"},
+        {"known": "I met someone who said that to us", "target": "ik heb iemand ontmoet die dat aan ons zei"},
+        {"known": "someone who said that it was a good idea", "target": "iemand die zei dat het een goed idee was"},
+        {"known": "I know someone who said that so far", "target": "ik ken iemand die dat tot nu toe zei"},
+        {"known": "I met someone who said that they told us about it yesterday", "target": "ik heb iemand ontmoet die zei dat ze ons er gisteren over vertelden"},
+        {"known": "someone who said that he wanted to tell you something about the answer", "target": "iemand die zei dat hij je iets over het antwoord wilde vertellen"},
+        {"known": "nobody was sure if someone said that or not so far", "target": "niemand wist zeker of iemand dat tot nu toe zei of niet"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that she was going to",
+      "target": "dat ze zou",
+      "components": [
+        {"known": "that", "target": "dat"},
+        {"known": "she was going to", "target": "ze zou"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "dat"},
+        {"known": "she was going to", "target": "ze zou"},
+        {"known": "that she was going to", "target": "dat ze zou"},
+        {"known": "she said that she was going to", "target": "ze zei dat ze zou"},
+        {"known": "that she was going to come", "target": "dat ze zou komen"},
+        {"known": "I knew that she was going to help", "target": "ik wist dat ze zou helpen"},
+        {"known": "someone said that she was going to learn", "target": "iemand zei dat ze zou leren"},
+        {"known": "I met someone who said that she was going to work", "target": "ik heb iemand ontmoet die zei dat ze zou werken"},
+        {"known": "I think that she was going to speak with us", "target": "ik denk dat ze met ons zou spreken"},
+        {"known": "someone told me that she was going to start on Sunday morning", "target": "iemand zei me dat ze op zondagochtend zou beginnen"},
+        {"known": "I know a young woman who said that she was going to do it", "target": "ik ken een jonge vrouw die zei dat ze het zou doen"},
+        {"known": "nobody was sure that she was going to do something about that so far", "target": "niemand wist zeker of ze daar tot nu toe iets aan zou doen"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "to try to help",
+      "target": "proberen te helpen",
+      "components": [
+        {"known": "to try", "target": "proberen"},
+        {"known": "to help", "target": "te helpen"}
+      ],
+      "phrases": [
+        {"known": "to try", "target": "proberen"},
+        {"known": "to help", "target": "te helpen"},
+        {"known": "try to help", "target": "proberen te helpen"},
+        {"known": "I try to help", "target": "ik probeer te helpen"},
+        {"known": "I want to try to help", "target": "ik wil proberen te helpen"},
+        {"known": "she was going to try to help", "target": "ze zou proberen te helpen"},
+        {"known": "he wanted to try to help us", "target": "hij wilde ons proberen te helpen"},
+        {"known": "I think I can try to help", "target": "ik denk dat ik kan proberen te helpen"},
+        {"known": "she said that she was going to try to help", "target": "ze zei dat ze zou proberen te helpen"},
+        {"known": "I know someone who wanted to try to help with that", "target": "ik ken iemand die wilde proberen te helpen"},
+        {"known": "they told us that she was going to try to help on Sunday", "target": "ze vertelden ons dat ze op zondag zou proberen te helpen"},
+        {"known": "I know someone who said that she was going to try to help with the answer", "target": "ik ken iemand die zei dat ze met het antwoord zou proberen te helpen"}
+      ]
+    }
+  ]
+}

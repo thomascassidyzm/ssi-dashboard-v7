@@ -1,0 +1,81 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 77,
+  "known_text": "I'm surprised at how quickly I'm starting to understand.",
+  "target_text": "Ik ben verrast hoe snel ik begin te begrijpen.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm surprised",
+      "target": "ik ben verrast",
+      "components": [
+        {"known": "I am", "target": "ik ben"},
+        {"known": "surprised", "target": "verrast"}
+      ],
+      "phrases": [
+        {"known": "I am", "target": "ik ben"},
+        {"known": "surprised", "target": "verrast"},
+        {"known": "I'm surprised", "target": "ik ben verrast"},
+        {"known": "I'm very surprised", "target": "ik ben heel verrast"},
+        {"known": "she is surprised", "target": "ze is verrast"},
+        {"known": "I'm surprised about that", "target": "ik ben verrast over dat"},
+        {"known": "he is surprised about the truth", "target": "hij is verrast over de waarheid"},
+        {"known": "I'm surprised that you wanted to help me", "target": "ik ben verrast dat je mij wilde helpen"},
+        {"known": "I'm very surprised with how much I've learnt", "target": "ik ben heel verrast met hoeveel ik geleerd heb"},
+        {"known": "I think everyone else is very surprised about that", "target": "ik denk dat iedereen anders heel verrast is over dat"},
+        {"known": "I'm very surprised that she wanted to tell me the truth", "target": "ik ben heel verrast dat ze me de waarheid wilde vertellen"},
+        {"known": "I'm very surprised and very happy with how much I've learnt", "target": "ik ben heel verrast en heel blij met hoeveel ik geleerd heb"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "how quickly",
+      "target": "hoe snel",
+      "components": [
+        {"known": "how", "target": "hoe"},
+        {"known": "quickly", "target": "snel"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "hoe"},
+        {"known": "quickly", "target": "snel"},
+        {"known": "how quickly", "target": "hoe snel"},
+        {"known": "very quickly", "target": "heel snel"},
+        {"known": "how quickly do you want", "target": "hoe snel wil je"},
+        {"known": "I don't know how quickly", "target": "ik weet niet hoe snel"},
+        {"known": "I'm surprised at how quickly", "target": "ik ben verrast hoe snel"},
+        {"known": "I wanted to do that very quickly", "target": "ik wilde dat heel snel doen"},
+        {"known": "I'm very happy with how quickly I'm learning", "target": "ik ben heel blij met hoe snel ik leer"},
+        {"known": "I'm surprised at how quickly everyone else wanted to help", "target": "ik ben verrast hoe snel iedereen anders wilde helpen"},
+        {"known": "I think it's important to learn how quickly you can do that", "target": "ik denk dat het belangrijk is om te leren hoe snel je dat kunt doen"},
+        {"known": "I'm very surprised at how quickly she wanted to tell me the truth", "target": "ik ben heel verrast hoe snel ze me de waarheid wilde vertellen"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I'm starting to understand",
+      "target": "ik begin te begrijpen",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "begin/start", "target": "begin"},
+        {"known": "to understand", "target": "te begrijpen"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "begin/start", "target": "begin"},
+        {"known": "to understand", "target": "te begrijpen"},
+        {"known": "I'm starting", "target": "ik begin"},
+        {"known": "I'm starting to understand", "target": "ik begin te begrijpen"},
+        {"known": "I'm starting to understand now", "target": "ik begin nu te begrijpen"},
+        {"known": "I'm starting to understand that", "target": "ik begin dat te begrijpen"},
+        {"known": "I'm starting to understand the truth", "target": "ik begin de waarheid te begrijpen"},
+        {"known": "I'm very happy that I'm starting to understand", "target": "ik ben heel blij dat ik begin te begrijpen"},
+        {"known": "I'm surprised at how quickly I'm starting to understand", "target": "ik ben verrast hoe snel ik begin te begrijpen"},
+        {"known": "I'm starting to understand what everyone else wanted", "target": "ik begin te begrijpen wat iedereen anders wilde"},
+        {"known": "I'm very happy that I'm starting to understand how much I've learnt", "target": "ik ben heel blij dat ik begin te begrijpen hoeveel ik geleerd heb"}
+      ]
+    }
+  ]
+}

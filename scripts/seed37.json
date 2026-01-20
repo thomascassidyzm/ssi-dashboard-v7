@@ -1,0 +1,120 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 37,
+  "known_text": "I started to think about it carefully last month.",
+  "target_text": "Ik begon er vorige maand zorgvuldig over na te denken.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "it",
+      "target": "er",
+      "phrases": [
+        {"known": "it", "target": "er"},
+        {"known": "it here", "target": "er hier"},
+        {"known": "it now", "target": "er nu"},
+        {"known": "it not", "target": "er niet"},
+        {"known": "think about it", "target": "erover denken"},
+        {"known": "I think about it", "target": "ik denk erover"},
+        {"known": "I want to think about it", "target": "ik wil erover denken"},
+        {"known": "do you want to think about it today", "target": "wil je er vandaag over denken"},
+        {"known": "I wanted to think about it yesterday", "target": "ik wilde er gisteren over denken"},
+        {"known": "we don't want to think about it now", "target": "we willen er nu niet over denken"},
+        {"known": "I am looking forward to thinking about it tonight", "target": "ik kijk ernaar uit om er vanavond over te denken"},
+        {"known": "how long have you been thinking about it with everyone else", "target": "hoe lang denk je er al met iedereen anders over"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I started",
+      "target": "ik begon",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "started", "target": "begon"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "started", "target": "begon"},
+        {"known": "I started", "target": "ik begon"},
+        {"known": "I started here", "target": "ik begon hier"},
+        {"known": "I started today", "target": "ik begon vandaag"},
+        {"known": "I started to learn", "target": "ik begon te leren"},
+        {"known": "I started to read", "target": "ik begon te lezen"},
+        {"known": "I started to think about it", "target": "ik begon erover te denken"},
+        {"known": "I started to learn Dutch yesterday", "target": "ik begon gisteren Nederlands te leren"},
+        {"known": "I started to think about it this afternoon", "target": "ik begon er vanmiddag over te denken"},
+        {"known": "I started to read the story with everyone tonight", "target": "ik begon vanavond het verhaal met iedereen te lezen"},
+        {"known": "I started to learn Dutch as soon as possible with her", "target": "ik begon zo snel mogelijk met haar Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "carefully",
+      "target": "zorgvuldig",
+      "phrases": [
+        {"known": "carefully", "target": "zorgvuldig"},
+        {"known": "not carefully", "target": "niet zorgvuldig"},
+        {"known": "carefully now", "target": "nu zorgvuldig"},
+        {"known": "think carefully", "target": "zorgvuldig denken"},
+        {"known": "read carefully", "target": "zorgvuldig lezen"},
+        {"known": "learn carefully", "target": "zorgvuldig leren"},
+        {"known": "I started carefully", "target": "ik begon zorgvuldig"},
+        {"known": "I want to read carefully", "target": "ik wil zorgvuldig lezen"},
+        {"known": "I started to think about it carefully", "target": "ik begon er zorgvuldig over te denken"},
+        {"known": "do you want to read the story carefully today", "target": "wil je vandaag het verhaal zorgvuldig lezen"},
+        {"known": "I started to learn Dutch carefully with everyone else", "target": "ik begon zorgvuldig Nederlands met iedereen anders te leren"},
+        {"known": "how long have you been thinking about it carefully with her", "target": "hoe lang denk je er al zorgvuldig met haar over"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "last month",
+      "target": "vorige maand",
+      "components": [
+        {"known": "last", "target": "vorige"},
+        {"known": "month", "target": "maand"}
+      ],
+      "phrases": [
+        {"known": "last", "target": "vorige"},
+        {"known": "month", "target": "maand"},
+        {"known": "last month", "target": "vorige maand"},
+        {"known": "not last month", "target": "niet vorige maand"},
+        {"known": "last month here", "target": "vorige maand hier"},
+        {"known": "I started last month", "target": "ik begon vorige maand"},
+        {"known": "I learned last month", "target": "ik leerde vorige maand"},
+        {"known": "I started to read last month", "target": "ik begon vorige maand te lezen"},
+        {"known": "I started to think about it last month", "target": "ik begon er vorige maand over te denken"},
+        {"known": "I started to read the story carefully last month", "target": "ik begon vorige maand het verhaal zorgvuldig te lezen"},
+        {"known": "I started to think about it carefully last month with her", "target": "ik begon er vorige maand zorgvuldig met haar over te denken"},
+        {"known": "how long did you start to learn Dutch last month with everyone else", "target": "hoe lang begon je vorige maand Nederlands met iedereen anders te leren"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "to think about",
+      "target": "over na te denken",
+      "components": [
+        {"known": "about", "target": "over"},
+        {"known": "to think", "target": "na te denken"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "over"},
+        {"known": "to think", "target": "na te denken"},
+        {"known": "to think about", "target": "over na te denken"},
+        {"known": "to think about now", "target": "nu over na te denken"},
+        {"known": "I want to think about", "target": "ik wil over nadenken"},
+        {"known": "I started to think about", "target": "ik begon over na te denken"},
+        {"known": "I started to think about it", "target": "ik begon erover na te denken"},
+        {"known": "I want to think about it carefully", "target": "ik wil er zorgvuldig over nadenken"},
+        {"known": "I started to think about it last month", "target": "ik begon er vorige maand over na te denken"},
+        {"known": "I started to think about it carefully last month", "target": "ik begon er vorige maand zorgvuldig over na te denken"},
+        {"known": "do you want to think about the story carefully tonight", "target": "wil je vanavond zorgvuldig over het verhaal nadenken"},
+        {"known": "I am looking forward to thinking about the story carefully with everyone", "target": "ik kijk ernaar uit om zorgvuldig met iedereen over het verhaal na te denken"}
+      ]
+    }
+  ]
+}

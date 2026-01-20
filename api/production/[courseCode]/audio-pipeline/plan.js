@@ -52,6 +52,15 @@ export default async function handler(req, res) {
 
     if (phrasesError) throw phrasesError;
 
+    // Get LEGOs that need presentation audio (is_new = true)
+    const { data: newLegos, error: legosError } = await db
+      .from('course_legos')
+      .select('lego_id, known_text')
+      .eq('course_code', courseCode)
+      .eq('is_new', true);
+
+    if (legosError) throw legosError;
+
     // Collect unique normalized texts
     const knownTexts = new Set();
     const targetTexts = new Set();
@@ -60,13 +69,19 @@ export default async function handler(req, res) {
       if (p.target) targetTexts.add(p.target.toLowerCase().trim());
     }
 
-    // Total needed: known texts need 1 audio, target texts need 2 (target1 + target2)
-    const totalAudioNeeded = knownTexts.size + (targetTexts.size * 2);
+    // Collect LEGOs needing presentation audio (keyed by known_text)
+    const presentationTexts = new Set();
+    for (const lego of (newLegos || [])) {
+      if (lego.known_text) presentationTexts.add(lego.known_text.toLowerCase().trim());
+    }
+
+    // Total needed: known texts need 1 audio, target texts need 2 (target1 + target2), new LEGOs need 1 presentation
+    const totalAudioNeeded = knownTexts.size + (targetTexts.size * 2) + presentationTexts.size;
 
     // Get existing audio from course_audio (v13: flat table)
     const { data: existingAudio, error: audioError } = await db
       .from('course_audio')
-      .select('text_normalized, role')
+      .select('text_normalized, text, role, s3_key')
       .eq('course_code', courseCode);
 
     if (audioError) throw audioError;
@@ -75,11 +90,23 @@ export default async function handler(req, res) {
     const existingByRole = {
       known: new Set(),
       target1: new Set(),
-      target2: new Set()
+      target2: new Set(),
+      presentation: new Set()
     };
 
     for (const audio of (existingAudio || [])) {
-      if (existingByRole[audio.role]) {
+      // For presentation, extract the known word from the text
+      // Format: "The Spanish for 'known_text', is:" or "The Spanish for 'known_text', as in '...', is:"
+      // Also skip pending presentations (no actual audio yet)
+      if (audio.role === 'presentation') {
+        if (audio.s3_key?.startsWith('pending/')) continue;
+        const text = audio.text_normalized || audio.text?.toLowerCase().trim();
+        const matches = text?.match(/'([^']+)'/g);
+        if (matches && matches.length >= 1) {
+          const knownWord = matches[0].replace(/'/g, '').toLowerCase().trim();
+          existingByRole.presentation.add(knownWord);
+        }
+      } else if (existingByRole[audio.role]) {
         existingByRole[audio.role].add(audio.text_normalized);
       }
     }
@@ -88,6 +115,7 @@ export default async function handler(req, res) {
     let missingKnown = 0;
     let missingTarget1 = 0;
     let missingTarget2 = 0;
+    let missingPresentation = 0;
 
     for (const text of knownTexts) {
       if (!existingByRole.known.has(text)) missingKnown++;
@@ -96,9 +124,12 @@ export default async function handler(req, res) {
       if (!existingByRole.target1.has(text)) missingTarget1++;
       if (!existingByRole.target2.has(text)) missingTarget2++;
     }
+    for (const text of presentationTexts) {
+      if (!existingByRole.presentation.has(text)) missingPresentation++;
+    }
 
-    const existingCount = existingByRole.known.size + existingByRole.target1.size + existingByRole.target2.size;
-    const missing = missingKnown + missingTarget1 + missingTarget2;
+    const existingCount = existingByRole.known.size + existingByRole.target1.size + existingByRole.target2.size + existingByRole.presentation.size;
+    const missing = missingKnown + missingTarget1 + missingTarget2 + missingPresentation;
     const percentComplete = totalAudioNeeded > 0
       ? Math.round((existingCount / totalAudioNeeded) * 100)
       : 0;
@@ -117,6 +148,7 @@ export default async function handler(req, res) {
       percentComplete,
       uniqueKnownTexts: knownTexts.size,
       uniqueTargetTexts: targetTexts.size,
+      uniquePresentationTexts: presentationTexts.size,
       breakdown: {
         known: {
           needed: knownTexts.size,
@@ -135,6 +167,12 @@ export default async function handler(req, res) {
           existing: existingByRole.target2.size,
           missing: missingTarget2,
           voice: voiceConfig.target2 || 'not configured'
+        },
+        presentation: {
+          needed: presentationTexts.size,
+          existing: existingByRole.presentation.size,
+          missing: missingPresentation,
+          voice: voiceConfig.presentation || 'not configured'
         }
       },
       languages: {

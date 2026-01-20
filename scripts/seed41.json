@@ -1,0 +1,120 @@
+{
+  "course_code": "nld_for_eng",
+  "seed_number": 41,
+  "known_text": "I feel okay, but I'm starting to feel tired.",
+  "target_text": "Ik voel me oké, maar ik begin moe te worden.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I feel",
+      "target": "ik voel me",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "feel", "target": "voel me"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "feel", "target": "voel me"},
+        {"known": "I feel", "target": "ik voel me"},
+        {"known": "I feel tired", "target": "ik voel me moe"},
+        {"known": "I feel good", "target": "ik voel me goed"},
+        {"known": "I feel a little tired", "target": "ik voel me een beetje moe"},
+        {"known": "I feel okay this morning", "target": "ik voel me goed vanochtend"},
+        {"known": "but I feel a little tired", "target": "maar ik voel me een beetje moe"},
+        {"known": "I feel okay at the moment", "target": "ik voel me goed op dit moment"},
+        {"known": "I feel okay but I'm a little tired this morning", "target": "ik voel me goed maar ik ben een beetje moe vanochtend"},
+        {"known": "I feel okay at the moment but I'm a little tired this morning", "target": "ik voel me goed op dit moment maar ik ben een beetje moe vanochtend"},
+        {"known": "I feel okay after learning Dutch for about a week", "target": "ik voel me goed na ongeveer een week Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "okay",
+      "target": "oké",
+      "phrases": [
+        {"known": "okay", "target": "oké"},
+        {"known": "I feel okay", "target": "ik voel me oké"},
+        {"known": "that is okay", "target": "dat is oké"},
+        {"known": "it is okay", "target": "het is oké"},
+        {"known": "is it okay", "target": "is het oké"},
+        {"known": "I feel okay now", "target": "ik voel me nu oké"},
+        {"known": "I feel okay this morning", "target": "ik voel me oké vanochtend"},
+        {"known": "I feel okay but I'm a little tired", "target": "ik voel me oké maar ik ben een beetje moe"},
+        {"known": "is it okay if I learn Dutch with you", "target": "is het oké als ik Nederlands met je leer"},
+        {"known": "I feel okay at the moment after learning Dutch for about a week", "target": "ik voel me oké op dit moment na ongeveer een week Nederlands te leren"},
+        {"known": "is it okay if I don't want to interrupt the story this morning", "target": "is het oké als ik het verhaal vanochtend niet wil onderbreken"},
+        {"known": "I feel okay at the moment but I'm a little tired after learning Dutch", "target": "ik voel me oké op dit moment maar ik ben een beetje moe na Nederlands te leren"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "but",
+      "target": "maar",
+      "phrases": [
+        {"known": "but", "target": "maar"},
+        {"known": "but I", "target": "maar ik"},
+        {"known": "but I feel", "target": "maar ik voel me"},
+        {"known": "but I feel okay", "target": "maar ik voel me oké"},
+        {"known": "but I'm a little tired", "target": "maar ik ben een beetje moe"},
+        {"known": "I feel okay but I'm tired", "target": "ik voel me oké maar ik ben moe"},
+        {"known": "but I don't want to interrupt", "target": "maar ik wil niet onderbreken"},
+        {"known": "I feel okay but I'm a little tired this morning", "target": "ik voel me oké maar ik ben een beetje moe vanochtend"},
+        {"known": "but I don't want to interrupt when other people are here", "target": "maar ik wil niet onderbreken als andere mensen hier zijn"},
+        {"known": "but I've been learning Dutch for about a week", "target": "maar ik leer al ongeveer een week Nederlands"},
+        {"known": "I feel okay at the moment but I'm a little tired this morning", "target": "ik voel me oké op dit moment maar ik ben een beetje moe vanochtend"},
+        {"known": "I feel okay but I started to think about it well last month", "target": "ik voel me oké maar ik begon vorige maand goed erover na te denken"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I'm starting",
+      "target": "ik begin",
+      "components": [
+        {"known": "I", "target": "ik"},
+        {"known": "am starting", "target": "begin"}
+      ],
+      "phrases": [
+        {"known": "I", "target": "ik"},
+        {"known": "am starting", "target": "begin"},
+        {"known": "I'm starting", "target": "ik begin"},
+        {"known": "I'm starting to learn", "target": "ik begin te leren"},
+        {"known": "I'm starting to speak", "target": "ik begin te spreken"},
+        {"known": "I'm starting to read", "target": "ik begin te lezen"},
+        {"known": "I'm starting to learn Dutch", "target": "ik begin Nederlands te leren"},
+        {"known": "but I'm starting to learn Dutch", "target": "maar ik begin Nederlands te leren"},
+        {"known": "I feel okay but I'm starting to learn Dutch", "target": "ik voel me oké maar ik begin Nederlands te leren"},
+        {"known": "I'm starting to learn how to read the story in Dutch", "target": "ik begin te leren hoe ik het verhaal in het Nederlands kan lezen"},
+        {"known": "I feel okay at the moment but I'm starting to learn Dutch", "target": "ik voel me oké op dit moment maar ik begin Nederlands te leren"},
+        {"known": "I'm starting to read the story in Dutch with other people here", "target": "ik begin het verhaal in het Nederlands te lezen met andere mensen hier"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "to become tired",
+      "target": "moe te worden",
+      "components": [
+        {"known": "tired", "target": "moe"},
+        {"known": "to become", "target": "te worden"}
+      ],
+      "phrases": [
+        {"known": "tired", "target": "moe"},
+        {"known": "to become", "target": "te worden"},
+        {"known": "to become tired", "target": "moe te worden"},
+        {"known": "I'm starting to become tired", "target": "ik begin moe te worden"},
+        {"known": "to become better", "target": "beter te worden"},
+        {"known": "I'm starting to become better", "target": "ik begin beter te worden"},
+        {"known": "I feel okay but I'm starting to become tired", "target": "ik voel me oké maar ik begin moe te worden"},
+        {"known": "I'm starting to become tired this morning", "target": "ik begin vanochtend moe te worden"},
+        {"known": "I feel okay at the moment but I'm starting to become tired", "target": "ik voel me oké op dit moment maar ik begin moe te worden"},
+        {"known": "I feel okay but I'm starting to become a little tired", "target": "ik voel me oké maar ik begin een beetje moe te worden"},
+        {"known": "I'm starting to become better at speaking Dutch", "target": "ik begin beter te worden in Nederlands spreken"},
+        {"known": "I feel okay but I'm starting to become tired after about a week", "target": "ik voel me oké maar ik begin moe te worden na ongeveer een week"}
+      ]
+    }
+  ]
+}
