@@ -5,29 +5,39 @@ import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
-// Default API URL - Tom's Machine via ngrok (matches EnvironmentSwitcher default)
-// IMPORTANT: Do NOT use VITE_API_BASE_URL - Vercel may have old value cached
-const DEFAULT_REMOTE_URL = 'https://popty.ngrok.app'
+// Default API URL for local development
+// IMPORTANT: NO hardcoded ngrok URLs - different machines have different tunnels!
+// Use EnvironmentSwitcher to set the API URL for remote access.
 const DEFAULT_LOCAL_URL = 'http://localhost:3456'
 
 /**
  * Get the API base URL - central helper for all API calls
- * Priority: localStorage > hostname check > default
+ * Priority: localStorage > localhost default > ngrok relative > empty (requires EnvironmentSwitcher)
  *
- * NEVER uses VITE_API_BASE_URL to avoid Vercel env var issues
+ * NO HARDCODING of ngrok URLs - each machine has its own tunnel.
+ * For Vercel/static hosting, user MUST use EnvironmentSwitcher to set the backend URL.
  */
 export function getApiUrl() {
-  // 1. Check localStorage (set by EnvironmentSwitcher)
+  // 1. Check localStorage (set by EnvironmentSwitcher) - works everywhere
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
+
   // 2. Local dev uses localhost
   if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
     return DEFAULT_LOCAL_URL
   }
-  // 3. Remote access uses ngrok
-  return DEFAULT_REMOTE_URL
+
+  // 3. ngrok - use relative URL (same origin proxies to backend)
+  if (typeof window !== 'undefined' && window.location.hostname.includes('ngrok')) {
+    return ''  // Relative URL - ngrok tunnel handles it
+  }
+
+  // 4. Vercel/other static hosting - requires EnvironmentSwitcher
+  // Return empty string which will use relative URLs (will fail on static hosting)
+  console.warn('[API] No API URL configured. Use Environment Switcher to set the backend URL.')
+  return ''
 }
 
 // Aliases for backwards compatibility
