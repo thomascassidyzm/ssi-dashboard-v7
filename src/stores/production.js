@@ -23,9 +23,7 @@ function getApiBaseUrl() {
     return ''
   }
 
-  // 3. For Vercel or other remote access WITHOUT localStorage set,
-  // we can't route to local server - return empty and let calls fail gracefully
-  // (user needs to select a machine in EnvironmentSwitcher)
+  // 3. For Vercel/popty.app - default to Tom's ngrok tunnel
   const isVercel = typeof window !== 'undefined' && (
     window.location.hostname.includes('vercel.app') ||
     window.location.hostname === 'popty.app' ||
@@ -33,8 +31,8 @@ function getApiBaseUrl() {
   )
 
   if (isVercel) {
-    console.warn('[Production] On Vercel but no api_base_url set - select a machine in EnvironmentSwitcher')
-    return ''  // Will fail, but user will see the warning
+    // Default to Tom's dedicated ngrok domain for remote access
+    return 'https://popty.ngrok.app'
   }
 
   // 4. Use env var or localhost for local development
