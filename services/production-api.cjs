@@ -215,6 +215,38 @@ app.get('/api/stats/:courseCode', async (req, res) => {
   }
 })
 
+// Proxy /api/build/* to course-builder-api (port 3471)
+// Course Builder runs on a separate service that handles osascript/iTerm launch
+const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471'
+
+app.all('/api/build/*', async (req, res) => {
+  try {
+    const targetUrl = `${COURSE_BUILDER_URL}${req.originalUrl}`
+    logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
+
+    const fetchOptions = {
+      method: req.method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...req.headers
+      }
+    }
+
+    // Forward body for POST/PUT/PATCH
+    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
+      fetchOptions.body = JSON.stringify(req.body)
+    }
+
+    const response = await fetch(targetUrl, fetchOptions)
+    const data = await response.json()
+
+    res.status(response.status).json(data)
+  } catch (err) {
+    logger.error(`[Proxy] Failed to proxy ${req.originalUrl}:`, err.message)
+    res.status(502).json({ error: 'Course Builder service unavailable', details: err.message })
+  }
+})
+
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
 // Database-only: no local JSON fallback (remote users can't access local files)
