@@ -153,14 +153,15 @@ async function loadStats(courseCode) {
     }
 
     const data = await response.json()
-    console.log(`[ProductionOverview] Loaded course info: status=${data.status}`)
+    console.log(`[ProductionOverview] Loaded stats:`, data)
 
+    // API returns snake_case: completed_seeds, seeds_with_legos, total_seeds
     localStats.value = {
-      seeds: data.totalSeeds || data.seeds || 0,
-      completeSeeds: data.completedSeeds || data.completeSeeds || 0,
-      legos: data.newLegos || data.legos || 0,
+      seeds: data.total_seeds || data.totalSeeds || 0,
+      completeSeeds: data.seeds_with_legos || data.completed_seeds || data.completedSeeds || 0,
+      legos: data.legos || 0,
       phrases: data.phrases || 0,
-      total_seeds: data.seedCount || data.totalSeeds || 668
+      total_seeds: data.total_seeds || data.totalSeeds || 668
     }
   } catch (err) {
     console.warn('[ProductionOverview] Could not load stats from API:', err.message)
