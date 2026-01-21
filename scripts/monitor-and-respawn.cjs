@@ -12,23 +12,63 @@
  *   DRY_RUN - Set to 'true' to log without spawning (default: false)
  */
 
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 require('dotenv').config();
 
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471';
 const POLL_INTERVAL_MS = parseInt(process.env.POLL_INTERVAL_MS) || 60000;
 const DRY_RUN = process.env.DRY_RUN === 'true';
+const PROJECT_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean';
 
 // Track which courses have active respawn attempts
 const respawnInProgress = new Set();
+
+/**
+ * Check how many headless Claude agents are already running in the project directory.
+ * Returns count of background agents (excludes terminal-attached sessions).
+ */
+function getRunningAgentCount() {
+  try {
+    // Get all claude PIDs
+    const psOutput = execSync('ps aux | grep -i "claude" | grep -v grep | grep -v chrome-native', { encoding: 'utf8' });
+    const lines = psOutput.trim().split('\n').filter(Boolean);
+
+    let headlessCount = 0;
+    for (const line of lines) {
+      const parts = line.split(/\s+/);
+      const pid = parts[1];
+      const tty = parts[6];
+
+      // Skip terminal-attached sessions (tty like s000, s001, etc.)
+      if (tty && tty.match(/^s\d+$/)) continue;
+
+      // Check if this process is working in our project directory
+      try {
+        const lsofOutput = execSync(`lsof -p ${pid} 2>/dev/null | grep cwd`, { encoding: 'utf8' });
+        if (lsofOutput.includes(PROJECT_DIR)) {
+          headlessCount++;
+        }
+      } catch (e) {
+        // Process may have exited, skip it
+      }
+    }
+
+    return headlessCount;
+  } catch (e) {
+    // No claude processes found
+    return 0;
+  }
+}
 
 async function checkActivity() {
   try {
     const response = await fetch(`${COURSE_BUILDER_URL}/api/activity`);
     const data = await response.json();
 
+    const runningAgents = getRunningAgentCount();
     console.log(`\n[${new Date().toISOString()}] Activity check`);
     console.log(`  Active courses: ${Object.keys(data.courses).length}`);
+    console.log(`  Headless agents running: ${runningAgents}`);
     console.log(`  Stalled: ${data.stalled_count}`);
 
     if (data.stalled.length > 0) {
@@ -62,6 +102,13 @@ async function checkActivity() {
 async function spawnAgent(courseCode) {
   if (DRY_RUN) {
     console.log(`  [DRY RUN] Would spawn agent for ${courseCode}`);
+    return;
+  }
+
+  // CRITICAL: Only allow ONE agent at a time to avoid wasting tokens
+  const runningAgents = getRunningAgentCount();
+  if (runningAgents > 0) {
+    console.log(`  [${courseCode}] BLOCKED: ${runningAgents} agent(s) already running - skipping spawn`);
     return;
   }
 
@@ -100,14 +147,34 @@ Your goal is to complete all 668 seeds for this course.`;
     detached: true
   });
 
+  // Register agent with the course-builder API for tracking
+  const pid = agent.pid;
+  console.log(`  Agent PID: ${pid}`);
+  try {
+    await fetch(`${COURSE_BUILDER_URL}/api/agents/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pid, course_code: courseCode })
+    });
+    console.log(`  Registered agent ${pid} with course-builder API`);
+  } catch (err) {
+    console.log(`  Warning: Could not register agent: ${err.message}`);
+  }
+
   agent.on('error', (err) => {
     console.error(`  [${courseCode}] Spawn error:`, err.message);
     respawnInProgress.delete(courseCode);
   });
 
-  agent.on('exit', (code) => {
-    console.log(`  [${courseCode}] Agent exited with code ${code}`);
+  agent.on('exit', async (code) => {
+    console.log(`  [${courseCode}] Agent ${pid} exited with code ${code}`);
     respawnInProgress.delete(courseCode);
+    // Mark agent as complete in the API
+    try {
+      await fetch(`${COURSE_BUILDER_URL}/api/agents/${pid}/complete`, { method: 'POST' });
+    } catch (err) {
+      // Ignore - agent may have already been cleaned up
+    }
   });
 
   // Don't wait for agent to finish

@@ -153,6 +153,36 @@
             <div class="text-xs text-slate-500">Ratio</div>
           </div>
         </div>
+
+        <!-- Active Agents -->
+        <div v-if="agents.running_count > 0" class="mt-4 border-t border-slate-700/50 pt-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs text-slate-500 uppercase tracking-wide">Active Agents</span>
+            <span class="text-xs text-cyan-400">{{ agents.running_count }} running</span>
+          </div>
+          <div class="space-y-2">
+            <div
+              v-for="agent in agents.running"
+              :key="agent.pid"
+              class="flex items-center justify-between bg-slate-700/20 rounded-lg px-3 py-2"
+            >
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-mono text-slate-400">PID {{ agent.pid }}</span>
+                <span class="text-xs text-slate-500">{{ agent.seedCount }} seeds</span>
+                <span class="text-xs text-slate-500">{{ agent.runningMinutes }}m</span>
+              </div>
+              <button
+                @click="killAgent(agent.pid)"
+                class="text-xs px-2 py-1 rounded bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors"
+              >
+                Kill
+              </button>
+            </div>
+          </div>
+        </div>
+        <div v-else class="mt-4 border-t border-slate-700/50 pt-4">
+          <div class="text-xs text-slate-500 text-center py-2">No active agents</div>
+        </div>
       </section>
 
       <!-- Controls -->
@@ -289,6 +319,13 @@ const progress = ref({
   phrasesInserted: 0
 })
 
+// Agent tracking state
+const agents = ref({
+  running: [],
+  running_count: 0,
+  total_tracked: 0
+})
+
 // UI state
 const logExpanded = ref(false)
 const isPolling = ref(false)
@@ -343,15 +380,26 @@ async function fetchProgress() {
     // Orchestrator proxies /api/stats/* and /api/build/* to Course Builder API
     const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
-    // Fetch both stats and build status in parallel
-    const [statsResponse, buildResponse] = await Promise.all([
+    // Fetch stats, build status, and agent activity in parallel
+    const [statsResponse, buildResponse, activityResponse] = await Promise.all([
       fetch(`${apiBase}/api/stats/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       }),
       fetch(`${apiBase}/api/build/status/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
+      }),
+      fetch(`${apiBase}/api/activity`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
       })
     ])
+
+    // Update agent tracking
+    if (activityResponse.ok) {
+      const activityData = await activityResponse.json()
+      if (activityData.agents) {
+        agents.value = activityData.agents
+      }
+    }
 
     if (statsResponse.ok) {
       const data = await statsResponse.json()
@@ -495,6 +543,27 @@ function resetBuilder() {
     phrasesInserted: 0
   }
   addEvent('UI reset - Start button unlocked (polling stopped)')
+}
+
+async function killAgent(pid) {
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/agents/${pid}`, {
+      method: 'DELETE',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    const result = await response.json()
+    if (result.ok) {
+      addEvent(`Killed agent ${pid}`)
+      // Refresh agent list
+      fetchProgress()
+    } else {
+      addEvent(`Failed to kill agent ${pid}: ${result.error}`)
+    }
+  } catch (error) {
+    console.error('Failed to kill agent:', error)
+    addEvent(`Error killing agent: ${error.message}`)
+  }
 }
 
 // Polling

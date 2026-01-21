@@ -47,8 +47,51 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // ACTIVITY TRACKING FOR STALL DETECTION
 // Dashboard can poll /api/activity to detect stalled courses and respawn agents
 // =============================================================================
-const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
+const STALL_THRESHOLD_MS = 3 * 60 * 1000;  // 3 minutes without submission = stalled
 const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, status: 'active'|'stalled' }
+
+// =============================================================================
+// AGENT TRACKING - Track spawned agents and their submissions
+// =============================================================================
+const activeAgents = new Map();  // pid -> { courseCode, spawnedAt, submissions: [{seed, timestamp}], status }
+
+function registerAgent(pid, courseCode) {
+  activeAgents.set(pid, {
+    pid,
+    courseCode,
+    spawnedAt: Date.now(),
+    submissions: [],
+    status: 'running'
+  });
+}
+
+function recordAgentSubmission(pid, seedNumber) {
+  const agent = activeAgents.get(pid);
+  if (agent) {
+    agent.submissions.push({ seed: seedNumber, timestamp: Date.now() });
+    agent.lastActivity = Date.now();
+  }
+}
+
+function markAgentComplete(pid) {
+  const agent = activeAgents.get(pid);
+  if (agent) {
+    agent.status = 'completed';
+    agent.completedAt = Date.now();
+  }
+}
+
+function getActiveAgents() {
+  const result = [];
+  for (const [pid, agent] of activeAgents.entries()) {
+    result.push({
+      ...agent,
+      seedCount: agent.submissions.length,
+      runningMinutes: ((Date.now() - agent.spawnedAt) / 60000).toFixed(1)
+    });
+  }
+  return result.sort((a, b) => b.spawnedAt - a.spawnedAt);  // Most recent first
+}
 
 /**
  * Record activity for a course (called after successful seed submission)
@@ -2754,11 +2797,19 @@ app.get('/api/activity', (req, res) => {
     .filter(([_, status]) => status.stalled)
     .map(([code, _]) => code);
 
+  const agents = getActiveAgents();
+  const runningAgents = agents.filter(a => a.status === 'running');
+
   res.json({
     courses: activity,
     stalled: stalledCourses,
     stalled_count: stalledCourses.length,
     threshold_minutes: STALL_THRESHOLD_MS / 60000,
+    agents: {
+      running: runningAgents,
+      running_count: runningAgents.length,
+      total_tracked: agents.length
+    },
     message: stalledCourses.length > 0
       ? `${stalledCourses.length} course(s) stalled - spawn new agents with /course-resume`
       : 'All active courses are progressing normally'
@@ -2781,6 +2832,65 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
     course_code: courseCode,
     message: 'Activity recorded - stall timer reset'
   });
+});
+
+// =============================================================================
+// AGENT MANAGEMENT ENDPOINTS
+// =============================================================================
+
+/**
+ * POST /api/agents/register - Register a new agent (called by monitor when spawning)
+ */
+app.post('/api/agents/register', (req, res) => {
+  const { pid, course_code } = req.body;
+  if (!pid || !course_code) {
+    return res.status(400).json({ ok: false, error: 'pid and course_code required' });
+  }
+  registerAgent(Number(pid), course_code);
+  res.json({ ok: true, message: `Agent ${pid} registered for ${course_code}` });
+});
+
+/**
+ * POST /api/agents/:pid/submission - Record a submission from an agent
+ */
+app.post('/api/agents/:pid/submission', (req, res) => {
+  const pid = Number(req.params.pid);
+  const { seed_number } = req.body;
+  recordAgentSubmission(pid, seed_number);
+  res.json({ ok: true });
+});
+
+/**
+ * POST /api/agents/:pid/complete - Mark an agent as completed
+ */
+app.post('/api/agents/:pid/complete', (req, res) => {
+  const pid = Number(req.params.pid);
+  markAgentComplete(pid);
+  res.json({ ok: true, message: `Agent ${pid} marked complete` });
+});
+
+/**
+ * GET /api/agents - List all tracked agents
+ */
+app.get('/api/agents', (req, res) => {
+  res.json({
+    agents: getActiveAgents(),
+    total: activeAgents.size
+  });
+});
+
+/**
+ * DELETE /api/agents/:pid - Kill an agent by PID
+ */
+app.delete('/api/agents/:pid', (req, res) => {
+  const pid = Number(req.params.pid);
+  try {
+    process.kill(pid, 'SIGTERM');
+    markAgentComplete(pid);
+    res.json({ ok: true, message: `Sent SIGTERM to agent ${pid}` });
+  } catch (err) {
+    res.status(400).json({ ok: false, error: `Failed to kill ${pid}: ${err.message}` });
+  }
 });
 
 // =============================================================================
