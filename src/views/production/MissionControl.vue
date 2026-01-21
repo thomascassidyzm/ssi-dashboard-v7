@@ -5,6 +5,7 @@
       <div class="header-content">
         <router-link to="/" class="back-link">← Back to Dashboard</router-link>
         <h1 class="page-title">Production Suite</h1>
+        <EnvironmentSwitcher class="env-switcher" />
         <div class="course-selector">
           <label for="course-select">Course:</label>
           <select
@@ -23,7 +24,6 @@
             </option>
           </select>
         </div>
-        <EnvironmentSwitcher />
       </div>
     </header>
 
@@ -558,6 +558,10 @@ onUnmounted(() => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.env-switcher {
+  margin-left: auto;
 }
 
 .course-selector {

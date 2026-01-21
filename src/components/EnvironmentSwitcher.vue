@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-3">
+  <div class="env-switcher-compact">
     <!-- Environment Selector -->
     <div class="relative">
       <select
@@ -18,17 +18,17 @@
       </div>
     </div>
 
-    <!-- Connection Status -->
-    <div class="flex items-center gap-2 text-xs">
+    <!-- Connection Status (below dropdown) -->
+    <div class="flex items-center gap-1.5 text-xs mt-1">
       <div
-        class="w-2 h-2 rounded-full"
+        class="w-2 h-2 rounded-full flex-shrink-0"
         :class="connectionStatus.connected ? 'bg-green-500' : 'bg-red-500'"
       ></div>
-      <span class="text-slate-400">{{ connectionStatus.message }}</span>
+      <span class="text-slate-500 truncate">{{ connectionStatus.connected ? 'Connected' : 'Disconnected' }}</span>
     </div>
 
     <!-- Current URL (dev only) -->
-    <div v-if="showDebug" class="text-xs text-slate-500 max-w-xs truncate">
+    <div v-if="showDebug" class="text-xs text-slate-500 max-w-xs truncate mt-0.5">
       {{ currentApiUrl }}
     </div>
   </div>

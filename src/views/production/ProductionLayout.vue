@@ -49,6 +49,9 @@
           </router-link>
         </nav>
 
+        <!-- Environment Switcher -->
+        <EnvironmentSwitcher class="env-switcher" />
+
         <!-- Course Switcher Dropdown -->
         <div class="course-switcher" ref="dropdownRef">
           <button
@@ -126,6 +129,7 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import { getApiUrl } from '@/services/api'
+import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
 
 const props = defineProps({
   courseCode: {
@@ -361,9 +365,13 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   background: var(--color-slate, #334155);
 }
 
+/* Environment Switcher */
+.env-switcher {
+  margin-left: auto;
+}
+
 /* Course Switcher */
 .course-switcher {
-  margin-left: auto;
   position: relative;
 }
 
