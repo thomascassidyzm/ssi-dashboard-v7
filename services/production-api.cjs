@@ -114,6 +114,107 @@ app.get('/api/production/schema/validate', async (req, res) => {
   }
 })
 
+// List all courses (simplified endpoint for frontend)
+// Replaces orchestrator's /api/courses endpoint
+app.get('/api/courses', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const courses = await supabaseClient.getCourses()
+    const stats = await supabaseClient.getAllCourseContentStats()
+
+    // Merge course info with stats
+    const result = courses.map(c => ({
+      code: c.course_code,
+      course_code: c.course_code,
+      known_lang: c.known_lang,
+      target_lang: c.target_lang,
+      display_name: c.display_name,
+      status: c.status,
+      stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
+    }))
+
+    logger.info(`Returning ${result.length} courses from database`)
+    res.json({ courses: result })
+  } catch (err) {
+    logger.error('Failed to get courses:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Stats endpoint - mirrors course-builder-api's /api/stats/:courseCode
+// So TextGeneration.vue and ProductionOverview.vue can use the same endpoint via ngrok
+app.get('/api/stats/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Count LEGOs
+    const { count: legos } = await supabase
+      .from('course_legos')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    // Count only NEW legos (unique introductions)
+    const { count: newLegos } = await supabase
+      .from('course_legos')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+
+    // Count phrases
+    const { count: phrases } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    // Count total seeds
+    const { count: totalSeeds } = await supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    // Count completed seeds (those with non-empty target_text)
+    const { count: completedSeeds } = await supabase
+      .from('course_seeds')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .neq('target_text', '')
+
+    // Count DISTINCT seed numbers from LEGOs (seeds with decomposition done)
+    const { data: seedData } = await supabase
+      .from('course_legos')
+      .select('seed_number')
+      .eq('course_code', courseCode)
+    const seedsWithLegos = new Set(seedData?.map(r => r.seed_number)).size
+
+    // Ratio based on NEW legos only
+    const effectiveLegos = newLegos || 0
+    const ratio = effectiveLegos > 0 ? (phrases / effectiveLegos) : 0
+
+    res.json({
+      course_code: courseCode,
+      total_seeds: totalSeeds || 668,
+      completed_seeds: completedSeeds || 0,
+      seeds_with_legos: seedsWithLegos || 0,
+      seeds: seedsWithLegos || 0,
+      legos: effectiveLegos,
+      legos_total: legos || 0,
+      phrases: phrases || 0,
+      ratio: ratio.toFixed(1)
+    })
+  } catch (err) {
+    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
 // Database-only: no local JSON fallback (remote users can't access local files)
