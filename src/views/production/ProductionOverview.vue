@@ -108,7 +108,6 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
-import { getCourseStats as getSupabaseStats, isConfigured as isSupabaseConfigured } from '@/services/supabase'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
@@ -154,13 +153,18 @@ async function handleStatusChange(newStatus) {
   }
 }
 
-// Course stats from Course Builder API
-const courseStats = ref({
-  seeds: 0,
-  completeSeeds: 0,
-  legos: 0,
-  phrases: 0,
-  ratio: '0.0'
+// Course stats - computed from store.courseInfo.stats (populated by /api/production/:code/info)
+const courseStats = computed(() => {
+  const stats = store.courseInfo?.stats || {}
+  const legos = stats.legos || 0
+  const phrases = stats.phrases || 0
+  return {
+    seeds: stats.seeds || 0,
+    completeSeeds: stats.completedSeeds || 0,
+    legos: legos,
+    phrases: phrases,
+    ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
+  }
 })
 
 // Ratio color class based on quality threshold
@@ -171,53 +175,11 @@ const ratioClass = computed(() => {
   return 'text-red-400'
 })
 
-// Fetch course stats directly from Supabase (database-first)
-async function fetchCourseStats() {
-  try {
-    if (isSupabaseConfigured()) {
-      // Direct database query - no orchestrator needed
-      const stats = await getSupabaseStats(props.courseCode)
-      const legos = stats.legos || 0
-      const phrases = stats.practicePhrases || 0
-      courseStats.value = {
-        seeds: stats.seeds || 0,
-        completeSeeds: stats.completeSeeds || 0,
-        legos: legos,
-        phrases: phrases,
-        ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
-      }
-    } else {
-      // Fallback to API if Supabase not configured
-      const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || ''
-      const response = await fetch(`${apiBase}/api/courses/${props.courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
-      })
-      if (response.ok) {
-        const data = await response.json()
-        const stats = data.stats || {}
-        const legos = stats.legos || 0
-        const phrases = stats.practicePhrases || 0
-        courseStats.value = {
-          seeds: stats.seeds || 0,
-          completeSeeds: stats.completeSeeds || 0,
-          legos: legos,
-          phrases: phrases,
-          ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
-        }
-      }
-    }
-  } catch (err) {
-    console.error('Failed to fetch course stats:', err)
-  }
-}
-
 onMounted(() => {
-  fetchCourseStats()
   store.loadCourseInfo(props.courseCode)
 })
 
 watch(() => props.courseCode, () => {
-  fetchCourseStats()
   store.loadCourseInfo(props.courseCode)
 })
 

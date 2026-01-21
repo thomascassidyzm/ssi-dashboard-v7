@@ -168,12 +168,17 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    const course = await supabaseClient.getCourse(courseCode)
+    // Fetch course and stats in parallel
+    const [course, stats] = await Promise.all([
+      supabaseClient.getCourse(courseCode),
+      supabaseClient.getCourseContentStats(courseCode)
+    ])
+
     if (!course) {
       return res.status(404).json({ error: `Course ${courseCode} not found` })
     }
 
-    logger.info(`Returning info for ${courseCode}: status=${course.status}`)
+    logger.info(`Returning info for ${courseCode}: status=${course.status}, completedSeeds=${stats.completedSeeds}`)
 
     res.json({
       success: true,
@@ -187,7 +192,15 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
         creatorEmail: course.creator_email,
         createdAt: course.created_at,
         updatedAt: course.updated_at,
-        seed_count: course.seed_count  // Release target for decomposition
+        seed_count: course.seed_count,  // Release target for decomposition
+        // Include stats so frontend doesn't need separate Supabase queries
+        stats: {
+          seeds: stats.seeds,
+          completedSeeds: stats.completedSeeds,
+          legos: stats.legos,
+          phrases: stats.phrases,
+          audio: stats.audio
+        }
       }
     })
   } catch (err) {
