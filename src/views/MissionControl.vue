@@ -142,6 +142,35 @@
             </div>
           </button>
 
+          <!-- New Course Card -->
+          <router-link to="/production/new/text" class="action-card card-create">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v8M8 12h8"/>
+                  </svg>
+                </div>
+                <div class="card-badge new">
+                  <span class="badge-pulse"></span>
+                  <span class="badge-label">wizard</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">New Course</h2>
+                <p class="card-description">Initialize a new language course with guided configuration</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Start Wizard</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
             <div class="card-glow"></div>
