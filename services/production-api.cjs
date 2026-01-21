@@ -289,6 +289,14 @@ app.get('/api/courses', proxyOrchestrator)
 app.get('/api/stats/*', proxyOrchestrator)
 app.get('/health', proxyOrchestrator)
 
+// Proxy audio routes to orchestrator (which proxies to phase8-audio service)
+app.all('/api/audio/*', proxyOrchestrator)
+app.get('/api/audio/status', proxyOrchestrator)
+
+// Proxy voice config routes to orchestrator
+app.all('/api/courses/:courseCode/voice-config', proxyOrchestrator)
+app.all('/api/voices/*', proxyOrchestrator)
+
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
 // Database-only: no local JSON fallback (remote users can't access local files)
