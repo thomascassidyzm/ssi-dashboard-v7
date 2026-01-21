@@ -108,6 +108,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
+import { getCourseStats, getCourseInfo, isConfigured as isSupabaseConfigured } from '@/services/supabase'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
@@ -127,31 +128,35 @@ const showImportModal = ref(false)
 const showLegacyExportDialog = ref(false)
 const isUpdatingStatus = ref(false)
 
-// Local stats from /api/stats/:courseCode (same endpoint TextGeneration uses)
+// Local stats from direct Supabase query
 const localStats = ref({
   seeds: 0,
-  seeds_with_legos: 0,
+  completeSeeds: 0,
   legos: 0,
   phrases: 0,
   total_seeds: 668
 })
 
-// Load stats from /api/stats/:courseCode - same as TextGeneration.vue
+// Load stats directly from Supabase - no tunnel needed
 async function loadStats(courseCode) {
   try {
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/stats/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      localStats.value = {
-        seeds: data.total_seeds || 668,
-        seeds_with_legos: data.seeds_with_legos || 0,
-        legos: data.legos || 0,
-        phrases: data.phrases || 0,
-        total_seeds: data.total_seeds || 668
-      }
+    if (!isSupabaseConfigured()) {
+      console.warn('[ProductionOverview] Supabase not configured')
+      return
+    }
+
+    // Get stats and course info in parallel
+    const [stats, courseInfo] = await Promise.all([
+      getCourseStats(courseCode),
+      getCourseInfo(courseCode)
+    ])
+
+    localStats.value = {
+      seeds: stats.seeds || 0,
+      completeSeeds: stats.completeSeeds || 0,
+      legos: stats.legos || 0,
+      phrases: stats.practicePhrases || 0,
+      total_seeds: courseInfo?.seed_count || stats.seeds || 668
     }
   } catch (err) {
     console.warn('[ProductionOverview] Could not load stats:', err.message)
@@ -184,13 +189,13 @@ async function handleStatusChange(newStatus) {
   }
 }
 
-// Course stats - computed from localStats (populated by /api/stats/:courseCode)
+// Course stats - computed from localStats (direct Supabase query)
 const courseStats = computed(() => {
   const legos = localStats.value.legos || 0
   const phrases = localStats.value.phrases || 0
   return {
     seeds: localStats.value.seeds || 0,
-    completeSeeds: localStats.value.seeds_with_legos || 0,
+    completeSeeds: localStats.value.completeSeeds || 0,
     legos: legos,
     phrases: phrases,
     ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
