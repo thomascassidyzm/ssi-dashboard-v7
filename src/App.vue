@@ -23,8 +23,8 @@ console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 <style scoped>
 .env-switcher-bar {
   position: fixed;
-  top: 12px;
-  right: 12px;
+  bottom: 12px;
+  left: 12px;
   z-index: 9999;
   background: rgba(15, 23, 42, 0.9);
   padding: 8px 12px;
