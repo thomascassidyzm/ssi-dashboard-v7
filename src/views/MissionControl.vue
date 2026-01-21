@@ -428,7 +428,7 @@ onUnmounted(() => {
 /* Header */
 .mc-header {
   position: relative;
-  z-index: 10;
+  z-index: 100;
   border-bottom: 1px solid var(--mc-border);
   background: linear-gradient(180deg, var(--mc-deep) 0%, transparent 100%);
 }
@@ -485,6 +485,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 9999;
 }
 
 /* Course Switcher */
