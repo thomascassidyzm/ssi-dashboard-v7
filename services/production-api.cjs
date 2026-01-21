@@ -186,7 +186,8 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
         courseType: course.course_type,
         creatorEmail: course.creator_email,
         createdAt: course.created_at,
-        updatedAt: course.updated_at
+        updatedAt: course.updated_at,
+        seed_count: course.seed_count  // Release target for decomposition
       }
     })
   } catch (err) {
