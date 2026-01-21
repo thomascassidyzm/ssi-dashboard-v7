@@ -49,10 +49,11 @@
           </router-link>
         </nav>
 
-        <!-- Environment Switcher -->
-        <EnvironmentSwitcher />
+        <!-- Right-aligned controls -->
+        <div class="header-controls">
+          <EnvironmentSwitcher />
 
-        <!-- Course Switcher Dropdown -->
+          <!-- Course Switcher Dropdown -->
         <div class="course-switcher" ref="dropdownRef">
           <button class="course-button" @click="toggleDropdown">
             <span class="course-code" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? '+ New' : courseCode }}</span>
@@ -93,6 +94,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </header>
@@ -365,6 +367,16 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 .tab-item.active {
   color: var(--color-tungsten, #ffa630);
   background: var(--color-slate, #334155);
+}
+
+/* Header Controls - right aligned */
+.header-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 100;
 }
 
 /* Course Switcher */
