@@ -501,6 +501,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 
 const router = useRouter()
 const route = useRoute()

@@ -588,6 +588,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { io } from 'socket.io-client'
 import { LanguageBriefEditor } from '../components/generation'
+import { getApiUrl } from '@/services/api'
 
 const route = useRoute()
 const router = useRouter()

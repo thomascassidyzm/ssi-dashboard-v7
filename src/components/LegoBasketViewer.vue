@@ -475,7 +475,7 @@
 </template>
 
 <script>
-import api from '@/services/api'
+import api, { getApiUrl } from '@/services/api'
 import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
 import { useToast } from 'vue-toastification'
 import AudioPreviewPlayer from './AudioPreviewPlayer.vue'

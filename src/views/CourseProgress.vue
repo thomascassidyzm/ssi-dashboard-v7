@@ -160,6 +160,7 @@ import { useRoute } from 'vue-router'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import PipelineProgress from '../components/PipelineProgress.vue'
 import { SeedProgressGrid } from '../components/generation'
+import { getApiUrl } from '@/services/api'
 
 const route = useRoute()
 const courseCode = ref(route.params.code)

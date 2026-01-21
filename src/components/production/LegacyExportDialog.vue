@@ -190,6 +190,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { io, Socket } from 'socket.io-client'
+import { getApiUrl } from '@/services/api'
 
 // Props
 const props = defineProps<{

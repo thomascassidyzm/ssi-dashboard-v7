@@ -282,6 +282,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   courseCode: {

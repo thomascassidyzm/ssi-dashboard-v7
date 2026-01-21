@@ -88,6 +88,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   courseCode: {

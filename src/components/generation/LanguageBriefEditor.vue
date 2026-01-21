@@ -287,6 +287,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   knownCode: { type: String, required: true },

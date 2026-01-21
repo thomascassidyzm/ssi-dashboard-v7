@@ -138,6 +138,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onUnmounted } from 'vue';
 import type { LegoRowData, PhraseRowData } from '@/types/production';
+import { getApiUrl } from '@/services/api';
 
 interface Props {
   visible: boolean;

@@ -401,6 +401,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 
 const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')

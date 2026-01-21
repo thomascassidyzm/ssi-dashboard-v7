@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getApiUrl } from '@/services/api'
 
 // API Base URL - set this to your ngrok URL when running locally
 const API_BASE_URL = getApiUrl()

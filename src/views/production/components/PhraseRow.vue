@@ -176,6 +176,7 @@
 <script setup lang="ts">
 import { ref, computed, defineComponent, h } from 'vue';
 import type { PhraseRowData, AudioSample, SampleStatus } from '@/types/production';
+import { getApiUrl } from '@/services/api';
 
 // Audio track type
 type AudioTrack = 'known' | 'target1' | 'target2';

@@ -1,6 +1,7 @@
 // src/stores/production.js
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 // This allows routing through ngrok tunnel to local automation server

@@ -222,6 +222,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
+import { getApiUrl } from '@/services/api'
 
 // API base URL - check localStorage FIRST (EnvironmentSwitcher override)
 function getApiBaseUrl() {

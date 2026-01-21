@@ -342,6 +342,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 // Props
 const props = defineProps({

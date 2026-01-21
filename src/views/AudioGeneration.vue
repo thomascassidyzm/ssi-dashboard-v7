@@ -516,6 +516,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
+import { getApiUrl } from '@/services/api'
 
 const apiBaseUrl = getApiUrl()
 

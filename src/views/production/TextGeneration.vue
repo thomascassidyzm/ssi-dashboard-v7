@@ -262,6 +262,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 
 const router = useRouter()
 

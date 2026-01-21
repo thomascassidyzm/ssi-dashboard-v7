@@ -434,6 +434,7 @@ import FlagModal from './components/FlagModal.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import FlaggedItemRow from './components/FlaggedItemRow.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
+import { getApiUrl } from '@/services/api';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,

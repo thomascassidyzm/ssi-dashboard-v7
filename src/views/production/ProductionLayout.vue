@@ -125,6 +125,7 @@
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
+import { getApiUrl } from '@/services/api'
 
 const props = defineProps({
   courseCode: {

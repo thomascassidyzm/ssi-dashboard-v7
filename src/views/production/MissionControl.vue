@@ -166,6 +166,7 @@ import QuickActions from './components/QuickActions.vue'
 import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
 import ImportCourseModal from '@/components/ImportCourseModal.vue'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
+import { getApiUrl } from '@/services/api'
 
 // Get API base URL (same as other components)
 // On Vercel deployment, uses relative URLs (/api/...) which Vercel handles

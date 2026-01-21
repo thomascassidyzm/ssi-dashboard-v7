@@ -8,6 +8,8 @@
  *   import { listCourses, readCourseFile, writeCourseFile } from '@/services/vfs'
  */
 
+import { getApiUrl } from '@/services/api'
+
 const API_BASE = getApiUrl()
 
 /**

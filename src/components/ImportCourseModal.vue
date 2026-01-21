@@ -367,6 +367,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { getApiUrl } from '@/services/api';
 
 // Props
 const props = defineProps<{

@@ -1,4 +1,5 @@
 import { ref, computed, onUnmounted } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 /**
  * Script Player Composable
