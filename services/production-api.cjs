@@ -219,7 +219,8 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 // Course Builder runs on a separate service that handles osascript/iTerm launch
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471'
 
-app.all('/api/build/*', async (req, res) => {
+// Generic proxy function for course-builder routes
+async function proxyCourseBuilder(req, res) {
   try {
     const targetUrl = `${COURSE_BUILDER_URL}${req.originalUrl}`
     logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
@@ -245,7 +246,13 @@ app.all('/api/build/*', async (req, res) => {
     logger.error(`[Proxy] Failed to proxy ${req.originalUrl}:`, err.message)
     res.status(502).json({ error: 'Course Builder service unavailable', details: err.message })
   }
-})
+}
+
+app.all('/api/build/*', proxyCourseBuilder)
+app.all('/api/activity', proxyCourseBuilder)
+app.all('/api/activity/*', proxyCourseBuilder)
+app.all('/api/agents', proxyCourseBuilder)
+app.all('/api/agents/*', proxyCourseBuilder)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
