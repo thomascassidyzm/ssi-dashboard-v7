@@ -442,26 +442,36 @@ async function planHandler(req, res) {
       .eq('role', 'presentation')
       .not('s3_key', 'like', 'pending/%')
 
-    // Build set of LEGOs that already have presentation audio
-    // Prefer lego_id for matching (always populated since Jan 2026)
-    const legosWithPresentation = new Set()
+    // Build set of known_text values that have presentation audio
+    // Multiple LEGOs can share the same known_text, so check by text not lego_id
+    // Extract known_text from presentation: "The French for 'KNOWN_TEXT', as in ..." or "... for 'KNOWN_TEXT', is:"
+    // Note: known_text may contain apostrophes (e.g., "I'm going to"), so we match until ', as in' or ', is:'
+    const knownTextsWithPresentation = new Set()
     for (const pres of existingPresentations || []) {
-      if (pres.lego_id) {
-        legosWithPresentation.add(pres.lego_id)
+      // Match "for 'X', as in" or "for 'X', is:" where X can contain apostrophes
+      const match = pres.text_normalized?.match(/for '(.+?)'(?:, as in|, is:)/)
+      if (match) {
+        knownTextsWithPresentation.add(match[1].toLowerCase().trim())
       }
     }
 
-    // Count missing presentations (only check lego_id match)
+    // Count missing presentations by unique known_text (not by lego_id)
+    // Multiple LEGOs with same known_text share ONE presentation
+    const seenKnownTexts = new Set()
     const missingPresentationLegos = []
     for (const lego of newLegos || []) {
-      if (!legosWithPresentation.has(lego.lego_id)) {
-        missingPresentationLegos.push({
-          text: lego.known_text,  // Will be expanded to full presentation text during generation
-          language: course.known_lang,
-          role: 'presentation',
-          lego_id: lego.lego_id
-        })
+      const knownKey = lego.known_text.toLowerCase().trim()
+      // Skip if we've already counted this known_text or it has presentation
+      if (seenKnownTexts.has(knownKey) || knownTextsWithPresentation.has(knownKey)) {
+        continue
       }
+      seenKnownTexts.add(knownKey)
+      missingPresentationLegos.push({
+        text: lego.known_text,  // Will be expanded to full presentation text during generation
+        language: course.known_lang,
+        role: 'presentation',
+        lego_id: lego.lego_id
+      })
     }
 
     if (missingPresentationLegos.length > 0) {
@@ -485,7 +495,7 @@ async function planHandler(req, res) {
       known: 0,
       target1: 0,
       target2: 0,
-      presentation: legosWithPresentation.size  // Count unique LEGOs with presentation audio
+      presentation: (existingPresentations || []).length  // Count presentation audio records
     }
     for (const audio of existingAudio || []) {
       // Only count known/target1/target2 here (presentation counted separately)
@@ -497,7 +507,7 @@ async function planHandler(req, res) {
     // Total existing: count non-presentation from existingAudio + presentation count
     // Note: existingAudio includes presentations, so we count non-presentation separately
     const nonPresentationCount = existingByRole.known + existingByRole.target1 + existingByRole.target2
-    const totalExisting = nonPresentationCount + legosWithPresentation.size
+    const totalExisting = nonPresentationCount + (existingPresentations || []).length
     // Total needed presentations (is_new LEGOs)
     const totalPresentationsNeeded = newLegos?.length || 0
 
