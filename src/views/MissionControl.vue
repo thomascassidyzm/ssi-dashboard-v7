@@ -83,61 +83,29 @@
         </div>
 
         <div class="actions-grid">
-          <!-- Course Library Card -->
-          <router-link to="/courses" class="action-card card-library">
+          <!-- Active Jobs Card -->
+          <router-link to="/jobs" class="action-card card-jobs">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
                 <div class="card-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    <path d="M8 7h8M8 11h6"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 21V9"/>
+                    <path d="M13 13h4M13 17h2"/>
                   </svg>
                 </div>
-                <div class="card-badge" v-if="!loadingCourses">
-                  <span class="badge-value">{{ courseCount }}</span>
-                  <span class="badge-label">courses</span>
-                </div>
-                <div class="card-badge loading" v-else>
-                  <span class="badge-skeleton"></span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Course Library</h2>
-                <p class="card-description">Browse, edit, and manage existing courses at any production stage</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">Open Library</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-
-          <!-- New Course Card -->
-          <router-link to="/courses/new" class="action-card card-create">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 8v8M8 12h8"/>
-                  </svg>
-                </div>
-                <div class="card-badge new">
+                <div class="card-badge jobs">
                   <span class="badge-pulse"></span>
-                  <span class="badge-label">wizard</span>
+                  <span class="badge-label">live</span>
                 </div>
               </div>
               <div class="card-body">
-                <h2 class="card-title">New Course</h2>
-                <p class="card-description">Initialize a new language course with guided configuration</p>
+                <h2 class="card-title">Active Jobs</h2>
+                <p class="card-description">Monitor running builds, audio generation, and pipelines</p>
               </div>
               <div class="card-footer">
-                <span class="card-action">Start Wizard</span>
+                <span class="card-action">View Jobs</span>
                 <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -173,36 +141,6 @@
               </div>
             </div>
           </button>
-
-          <!-- Active Jobs Card -->
-          <router-link to="/jobs" class="action-card card-jobs">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <path d="M3 9h18M9 21V9"/>
-                    <path d="M13 13h4M13 17h2"/>
-                  </svg>
-                </div>
-                <div class="card-badge jobs">
-                  <span class="badge-pulse"></span>
-                  <span class="badge-label">live</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h2 class="card-title">Active Jobs</h2>
-                <p class="card-description">Monitor and control all running builds, audio generation, and pipelines</p>
-              </div>
-              <div class="card-footer">
-                <span class="card-action">View Jobs</span>
-                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-          </router-link>
 
           <!-- Documentation Card -->
           <router-link to="/docs" class="action-card card-docs">
