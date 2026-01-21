@@ -1,11 +1,19 @@
 <template>
+  <!-- Global Environment Switcher - always visible -->
+  <div class="env-switcher-bar">
+    <EnvironmentSwitcher />
+  </div>
+
   <router-view />
+
   <div class="build-label">
     {{ gitCommit }}
   </div>
 </template>
 
 <script setup>
+import EnvironmentSwitcher from './components/EnvironmentSwitcher.vue'
+
 const gitCommit = __GIT_COMMIT__
 
 // Clean v7.0 build with Vue Router
@@ -13,6 +21,18 @@ console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 </script>
 
 <style scoped>
+.env-switcher-bar {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+  backdrop-filter: blur(8px);
+}
+
 .build-label {
   position: fixed;
   bottom: 12px;
