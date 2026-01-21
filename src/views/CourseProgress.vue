@@ -214,7 +214,7 @@ const totalSeeds = computed(() => {
 
 // API config
 const apiUrl = computed(() => {
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  return getApiUrl()
 })
 
 // Fetch progress

@@ -140,7 +140,7 @@ const localStats = ref({
 async function loadStats(courseCode) {
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
 
     console.log(`[ProductionOverview] Loading stats for ${courseCode} from ${apiBase}`)
 

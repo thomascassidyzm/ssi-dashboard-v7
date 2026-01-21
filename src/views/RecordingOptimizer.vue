@@ -406,7 +406,7 @@ const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')
 
 // API base URL
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3470'
+const API_BASE = getApiUrl()
 
 // Loading & error state
 const isCalculating = ref(false)

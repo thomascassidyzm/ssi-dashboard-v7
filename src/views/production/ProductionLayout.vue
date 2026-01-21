@@ -230,7 +230,7 @@ function handleClickOutside(event) {
 async function loadCourses() {
   try {
     const isRemote = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    const apiBase = isRemote ? '' : (localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456')
+    const apiBase = isRemote ? '' : (localStorage.getItem('api_base_url') || getApiUrl())
     const response = await fetch(`${apiBase}/api/courses`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })

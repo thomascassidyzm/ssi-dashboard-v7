@@ -7,6 +7,7 @@
  */
 
 import { ref, computed, reactive, watch } from 'vue'
+import { getApiUrl } from '@/services/api'
 
 // Singleton state for the entire autocue session
 const state = reactive({
@@ -383,9 +384,7 @@ export function useAutocueState() {
     state.isUploading = true
     state.uploadProgress = 0
 
-    const baseUrl = localStorage.getItem('api_base_url') ||
-                    import.meta.env.VITE_API_BASE_URL ||
-                    'http://localhost:3456'
+    const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
     let uploaded = 0
     const total = approvedSegments.length
@@ -496,9 +495,7 @@ export function useAutocueState() {
 
     try {
       // Get API base URL
-      const baseUrl = localStorage.getItem('api_base_url') ||
-                      import.meta.env.VITE_API_BASE_URL ||
-                      'http://localhost:3456'
+      const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
       // Fetch recording queue (phrases needing human recording)
       const queueRes = await fetch(

@@ -36,7 +36,7 @@ function getApiBaseUrl() {
   }
 
   // 4. Use env var or localhost for local development
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  return getApiUrl()
 }
 
 // Common headers for API requests (ngrok tunnel compatibility)

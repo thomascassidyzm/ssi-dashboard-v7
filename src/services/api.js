@@ -6,43 +6,41 @@ import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
 // Default API URL - Tom's Machine via ngrok (matches EnvironmentSwitcher default)
-const DEFAULT_API_URL = 'https://popty.ngrok.app'
+// IMPORTANT: Do NOT use VITE_API_BASE_URL - Vercel may have old value cached
+const DEFAULT_REMOTE_URL = 'https://popty.ngrok.app'
+const DEFAULT_LOCAL_URL = 'http://localhost:3456'
 
-// API Base URL - use EnvironmentSwitcher's localStorage value
-// EnvironmentSwitcher sets 'api_base_url' on page load (defaults to Tom's Machine)
+/**
+ * Get the API base URL - central helper for all API calls
+ * Priority: localStorage > hostname check > default
+ *
+ * NEVER uses VITE_API_BASE_URL to avoid Vercel env var issues
+ */
+export function getApiUrl() {
+  // 1. Check localStorage (set by EnvironmentSwitcher)
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
+  // 2. Local dev uses localhost
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return DEFAULT_LOCAL_URL
+  }
+  // 3. Remote access uses ngrok
+  return DEFAULT_REMOTE_URL
+}
+
+// Aliases for backwards compatibility
 function getApiBaseUrl() {
-  // ALWAYS check localStorage first - EnvironmentSwitcher sets this before API calls
-  // This ensures the correct ngrok URL is used even when accessed from popty.app (Vercel)
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
-  }
-  // For localhost dev, use localhost; otherwise use default ngrok URL
-  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-  }
-  // Remote access: use default ngrok URL (EnvironmentSwitcher will set this in localStorage on first interaction)
-  return DEFAULT_API_URL
+  return getApiUrl()
 }
 
-// Production API URL for database-backed endpoints (APML v11.2.0)
-// NOTE: Production API runs on port 3470, but orchestrator (3456) proxies /api/production/* to it
-// Always use orchestrator URL so everything works through ngrok tunnel
 function getProductionApiUrl() {
-  // ALWAYS check localStorage first - EnvironmentSwitcher sets this before API calls
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
-  }
-  // For localhost dev, use localhost; otherwise use default ngrok URL
-  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-  }
-  return DEFAULT_API_URL
+  return getApiUrl()
 }
 
-// Export production API URL for direct access
-export { getProductionApiUrl }
+// Export for direct access
+export { getProductionApiUrl, getApiBaseUrl }
 
 const API_BASE_URL = getApiBaseUrl()
 
@@ -126,7 +124,7 @@ export default {
           console.log(`[API] No seeds in database for ${courseCode}`)
 
           // Check if course record exists via orchestrator
-          const orchestratorUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+          const orchestratorUrl = getApiUrl()
           try {
             const coursesRes = await fetch(`${orchestratorUrl}/api/courses`, {
               headers: { 'ngrok-skip-browser-warning': 'true' }

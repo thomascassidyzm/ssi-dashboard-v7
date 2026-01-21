@@ -981,7 +981,7 @@ export default {
       this.recompilingManifest = true
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${this.selectedCourseCode}/regenerate/manifest`, {
+        const response = await fetch(`${getApiUrl()}/api/courses/${this.selectedCourseCode}/regenerate/manifest`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

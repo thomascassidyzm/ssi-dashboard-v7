@@ -242,7 +242,7 @@ const props = defineProps({
   },
   apiBaseUrl: {
     type: String,
-    default: () => localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    default: () => localStorage.getItem('api_base_url') || getApiUrl()
   }
 })
 

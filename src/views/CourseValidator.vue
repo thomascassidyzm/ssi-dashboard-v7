@@ -562,7 +562,7 @@ async function loadData() {
   error.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/validate/all`)
 
     if (!response.ok) {
@@ -585,7 +585,7 @@ async function loadData() {
 
 async function loadCourseReport(courseCode) {
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${courseCode}/validate`)
 
     if (!response.ok) {
@@ -601,7 +601,7 @@ async function loadCourseReport(courseCode) {
 
 async function loadDeepValidation(courseCode) {
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${courseCode}/validate/deep`)
 
     if (!response.ok) {
@@ -638,7 +638,7 @@ async function triggerPhase(phase) {
   if (!confirmed) return
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(
       `${apiBase}/api/courses/${courseReport.value.courseCode}/rerun/${phase}`,
       { method: 'POST' }
@@ -675,7 +675,7 @@ async function runLUTCheck() {
   lutCheckResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     console.log(`[LUT Check] Calling: ${apiBase}/api/courses/${selectedCourse.value}/phase/3/validate`)
 
     const response = await fetch(
@@ -709,7 +709,7 @@ async function runBasketGapAnalysis() {
   gapAnalysisResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     console.log(`[Gap Analysis] Calling: ${apiBase}/api/courses/${selectedCourse.value}/baskets/gaps`)
 
     const response = await fetch(
@@ -757,7 +757,7 @@ async function regenerateBaskets() {
   regenerationResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
 
     // Get course metadata for target/known languages
     const courseResponse = await fetch(`${apiBase}/api/courses/${selectedCourse.value}`)

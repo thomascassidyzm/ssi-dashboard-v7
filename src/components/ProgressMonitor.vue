@@ -152,7 +152,7 @@ function formatRelativeTime(timestamp) {
 
 async function fetchProgress() {
   try {
-    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBaseUrl = getApiUrl()
     const response = await axios.get(`${apiBaseUrl}/api/courses/${props.courseCode}/progress`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })

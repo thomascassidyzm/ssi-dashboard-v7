@@ -413,7 +413,7 @@ function removeConflictPattern(idx) {
 async function loadBrief() {
   isLoading.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/language-brief/${props.knownCode}/${props.targetCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -437,7 +437,7 @@ async function loadBrief() {
 async function generateBrief() {
   isGenerating.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/language-brief/generate`, {
       method: 'POST',
       headers: {
@@ -489,7 +489,7 @@ async function pasteJson() {
     }
 
     // Save to API
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/language-brief`, {
       method: 'POST',
       headers: {
@@ -527,7 +527,7 @@ async function pasteJson() {
 async function saveBrief() {
   isSaving.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/language-brief/${props.knownCode}/${props.targetCode}`, {
       method: 'PUT',
       headers: {

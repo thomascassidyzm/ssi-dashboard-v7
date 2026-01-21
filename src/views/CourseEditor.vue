@@ -1541,7 +1541,7 @@ async function generateBaskets() {
   showProgressMonitor.value = true // Show progress monitor
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/baskets/generate`, {
+    const response = await fetch(`${getApiUrl()}/api/courses/${courseCode}/baskets/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1848,7 +1848,7 @@ async function runLUTCheck() {
   lutCheckResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/3/validate`, {
       method: 'POST'
     })
@@ -1878,7 +1878,7 @@ async function runInfinitiveCheck() {
   infinitiveCheckResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/3/infinitive-check`, {
       method: 'POST'
     })
@@ -1902,7 +1902,7 @@ async function runBasketGapAnalysis() {
   gapAnalysisResult.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${courseCode}/baskets/gaps`)
 
     if (!response.ok) {
@@ -1943,7 +1943,7 @@ async function regenerateBaskets() {
 async function confirmRegeneration() {
   regenerationLoading.value = true
   const missing = regenerationResult.value.missing
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  const apiBase = getApiUrl()
 
   try {
     // Call orchestrator which proxies to Phase 5 server

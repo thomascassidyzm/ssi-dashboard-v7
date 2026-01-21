@@ -494,7 +494,7 @@ onUnmounted(() => {
 async function loadModes() {
   modesLoading.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/modes`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -541,7 +541,7 @@ function formatPatternNums(pattern) {
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/languages`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -593,7 +593,7 @@ async function analyzeCourseState(code) {
   courseState.value = null
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/courses/${code}/analyze`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -618,7 +618,7 @@ async function stopCurrentJob() {
 
   isStopping.value = true
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
 
     // Cancel on Phase 1 server
     await fetch(`${apiBase}/api/phase1/${courseCode.value}/cancel`, {
@@ -652,7 +652,7 @@ async function startGeneration() {
   phases.value[0].status = 'active'
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = getApiUrl()
 
     // Start generation with mode parameter
     const res = await fetch(`${apiBase}/api/courses/generate`, {
@@ -689,7 +689,7 @@ async function startGeneration() {
  * Connect to WebSocket for real-time progress updates
  */
 function connectWebSocket() {
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  const apiBase = getApiUrl()
 
   // Create Socket.IO connection
   socket = io(apiBase, {
@@ -784,7 +784,7 @@ function handleProgressUpdate(progress) {
  * Fallback to polling if WebSocket fails
  */
 async function fallbackToPollStatus() {
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  const apiBase = getApiUrl()
   console.log('[Progress] Falling back to polling...')
 
   while (isGenerating.value) {

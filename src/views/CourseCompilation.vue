@@ -454,7 +454,7 @@ async function compileCourseJSON() {
 
   try {
     // Call API to compile the course VFS data into final JSON structure
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/compile`, {
+    const response = await fetch(`${getApiUrl()}/api/courses/${courseCode}/compile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -495,7 +495,7 @@ async function checkAudioStatus() {
     })
 
     // Check S3 status
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/check-s3`, {
+    const response = await fetch(`${getApiUrl()}/api/audio/check-s3`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -535,7 +535,7 @@ async function generateMissingAudio() {
   }
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/generate-missing`, {
+    const response = await fetch(`${getApiUrl()}/api/audio/generate-missing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -571,7 +571,7 @@ async function generateMissingAudio() {
 async function pollGenerationProgress(jobId) {
   const pollInterval = setInterval(async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/generation-status/${jobId}`, {
+      const response = await fetch(`${getApiUrl()}/api/audio/generation-status/${jobId}`, {
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
@@ -622,7 +622,7 @@ function downloadCourseJSON() {
 
 async function deployToProduction() {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/deploy`, {
+    const response = await fetch(`${getApiUrl()}/api/courses/${courseCode}/deploy`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

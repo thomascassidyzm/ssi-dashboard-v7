@@ -247,7 +247,7 @@ function getApiBaseUrl() {
   }
 
   // 3. Local development fallback
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  return getApiUrl()
 }
 
 // State

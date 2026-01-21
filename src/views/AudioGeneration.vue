@@ -517,7 +517,7 @@
 import { ref, computed, onMounted } from 'vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+const apiBaseUrl = getApiUrl()
 
 // Voice configuration state
 const useNewVoiceConfig = ref(true)  // Toggle to use new parameterized system
@@ -678,7 +678,7 @@ onMounted(async () => {
 
 async function loadAvailableCourses() {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/list`, {
+    const response = await fetch(`${getApiUrl()}/api/courses/list`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
       }
@@ -699,7 +699,7 @@ async function loadCourseManifest() {
   loadingManifest.value = true
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${selectedCourse.value}/manifest`, {
+    const response = await fetch(`${getApiUrl()}/api/courses/${selectedCourse.value}/manifest`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
       }
@@ -740,7 +740,7 @@ async function checkS3Status() {
       }
     })
 
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/check-s3`, {
+    const response = await fetch(`${getApiUrl()}/api/audio/check-s3`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -784,7 +784,7 @@ async function startGeneration() {
   }
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/generate`, {
+    const response = await fetch(`${getApiUrl()}/api/audio/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -820,7 +820,7 @@ async function startGeneration() {
 async function pollGenerationProgress(jobId) {
   const pollInterval = setInterval(async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/audio/generation-status/${jobId}`, {
+      const response = await fetch(`${getApiUrl()}/api/audio/generation-status/${jobId}`, {
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }

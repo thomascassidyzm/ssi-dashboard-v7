@@ -377,8 +377,9 @@ async function fetchProgress() {
 
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    // Orchestrator proxies /api/stats/* and /api/build/* to Course Builder API
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    // Default to popty.ngrok.app for remote access (NOT env var - Vercel may have old value)
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
 
     // Fetch stats, build status, and agent activity in parallel
     const [statsResponse, buildResponse, activityResponse] = await Promise.all([
@@ -449,8 +450,9 @@ async function startBuilder() {
 
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    // Orchestrator proxies /api/stats/* and /api/build/* to Course Builder API
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    // Default to popty.ngrok.app for remote access (NOT env var - Vercel may have old value)
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
 
     // If in create mode, create the course first
     if (isCreateMode.value) {
@@ -515,7 +517,7 @@ async function startBuilder() {
 async function stopBuilder() {
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     const response = await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -547,7 +549,7 @@ function resetBuilder() {
 
 async function killAgent(pid) {
   try {
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     const response = await fetch(`${apiBase}/api/agents/${pid}`, {
       method: 'DELETE',
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -589,7 +591,7 @@ async function loadLanguages() {
   languagesLoading.value = true
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     const response = await fetch(`${apiBase}/api/languages`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
