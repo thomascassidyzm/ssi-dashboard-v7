@@ -402,78 +402,71 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Few-shot prompt v3 - language-agnostic with multi-language examples
-  // Principle: same LEGO structure works for ALL languages
-  const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}, build ${BATCH_SIZE} seeds.
+  // Two-Pass workflow prompt v4 - agent discovers language rules via translation
+  // Pass 1: Translate all seeds, discover patterns → save analysis
+  // Pass 2: Decompose seeds with full analysis context
+  const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}.
 
-## WHAT THE LEARNER EXPERIENCES (copy this structure!)
+## FIRST: Determine Which Pass
 
-ROUND 9: LEGO "as often as possible" → 尽量多
+curl http://localhost:3471/api/resume/${courseCode}
 
-INTRO       as often as possible           →  尽量多
-COMPONENT   as much as possible            →  尽量          ← M-LEGO parts first
-COMPONENT   often                          →  多
-LEGO        as often as possible           →  尽量多        ← now they build it!
-DEBUT-1     speak as often as possible     →  尽量多说      ← 7 SHORTEST phrases
-DEBUT-2     I want to speak as often as possible → 我想尽量多说
-...
-DEBUT-7     I want to speak Chinese as often as possible → 我想尽量多说中文
-ETERNAL-1   now I want to speak Chinese as often as possible → 我现在想尽量多说中文  ← 5 LONGEST
-ETERNAL-2   I am trying to learn how to speak as often as possible → 我在试着学怎么尽量多说
+Check the response:
+- If \`translation_analysis\` is null → You are in **Pass 1**
+- If \`translation_analysis\` has data → You are in **Pass 2**
+- Check \`pass_status\` for exact state
 
-**DEBUT/ETERNAL are computed:** 7 shortest = DEBUT, 5 longest = ETERNAL. Just order SHORT→LONG.
+## PASS 1: Translation Analysis (if translation_analysis is null)
 
-## SAME PATTERN, ANY LANGUAGE
+Translate ALL remaining seeds. Track patterns as you translate:
 
-CHINESE (Sinitic):
-  M-LEGO "as often as possible" → 尽量多
-  components: [as much as possible→尽量, often→多]
-  phrases: 尽量多说, 我想尽量多说, 我想尽量多说中文...
+1. GET seeds: curl "http://localhost:3471/api/course/${courseCode}/translate?limit=260"
+2. For each seed, translate naturally and PATCH:
+   curl -X PATCH http://localhost:3471/api/seed/${courseCode}/{num} -d '{"target_text": "..."}'
+3. **Track as you go:**
+   - Problem verbs: Same English → different target forms (e.g., "remember" has 2+ translations)
+   - Golden keys: Patterns appearing 10+ times (e.g., "want to V")
+   - ZUT concerns: Ambiguous English that needs rewording
+   - Register: Pick one (casual, polite, formal) and stick to it
+4. After ALL seeds translated, save your analysis:
+   curl -X POST http://localhost:3471/api/course/${courseCode}/analysis -d '{...}'
 
-PORTUGUESE (Romance):
-  M-LEGO "I have been learning" → tenho aprendido
-  components: [I have→tenho, learning→aprendido]
-  phrases: tenho aprendido, tenho aprendido português, eu tenho aprendido a falar...
+**Invoke /translation-analysis for detailed guidance on what to track.**
 
-GERMAN (Germanic):
-  M-LEGO "I would like to" → ich möchte
-  components: [I→ich, would like→möchte]
-  phrases: ich möchte, ich möchte sprechen, ich möchte Deutsch sprechen...
+## PASS 2: Decomposition (if translation_analysis exists)
 
-**The principle is universal:** chunk meaningful phrases as M-LEGOs, not isolated words.
+Build ${BATCH_SIZE} seeds. Your analysis tells you which English words need disambiguation.
 
-## BASKET FORMAT
+For each seed:
+1. Check \`translation_analysis\` for any problem verbs in this seed
+2. Decompose into 3-5 LEGOs (prefer M-LEGOs for meaningful chunks)
+3. Generate 10-12 phrases per LEGO, SHORT→LONG
+4. POST to http://localhost:3471/api/seed/complete
+5. Fix errors inline, retry max 3x
 
+## LEGO STRUCTURE (same for all languages)
+
+M-LEGO "as often as possible" → 尽量多
 \`\`\`json
 {"idx": 2, "type": "M", "known": "as often as possible", "target": "尽量多",
  "components": [{"known": "as much as possible", "target": "尽量"}, {"known": "often", "target": "多"}],
  "phrases": [
    {"known": "often", "target": "多"},
-   {"known": "as much as possible", "target": "尽量"},
    {"known": "as often as possible", "target": "尽量多"},
+   {"known": "speak as often as possible", "target": "尽量多说"},
    ... (10-12 total, SHORT→LONG)
  ]}
 \`\`\`
 
-## M-LEGO COMPONENTS = REAL WORDS ONLY
-✓ Chinese: do → 做, then done → 做了 (learner infers 了 from contrast)
-✓ Portuguese: to speak → falar, I speak → falo (learner infers conjugation)
-✓ German: to want → wollen, I want → ich will (learner sees pattern)
-✗ NEVER teach grammar labels: "completed action marker", "subjunctive", "dative case"
-
-## ERROR FIXES (don't read external files)
+## ERROR FIXES
 • ZUT VIOLATION: Use existing mapping OR upchunk to disambiguate
-• VOCAB VIOLATION: Remove phrase - that vocabulary not introduced yet
-• PHRASE TIERS need 3+ LONG: Add phrases with 10+ words/characters
-• M-LEGO MISSING COMPONENTS: Add the component breakdown
+• VOCAB VIOLATION: Remove phrase - vocabulary not introduced yet
+• PHRASE TIERS need 3+ LONG: Add phrases with 10+ words
 
-## WORKFLOW
-1. curl http://localhost:3471/api/resume/${courseCode} → get next seed
-2. Translate, break into 3-5 LEGOs (prefer M-LEGOs for meaningful chunks)
-3. Generate 10-12 phrases per LEGO, components first then SHORT→LONG
-4. POST to http://localhost:3471/api/seed/complete
-5. Fix errors inline (see above), retry max 3x
-6. After ${BATCH_SIZE} seeds: "BATCH COMPLETE"`;
+## AUTONOMY
+- Do NOT stop to ask "should I continue?" - just keep going
+- Only stop for ERRORS you cannot resolve
+- After ${BATCH_SIZE} seeds: "BATCH COMPLETE"`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
@@ -513,6 +506,8 @@ end tell`;
     console.error(`[BUILD] Agent #${agentNumber} osascript error:`, err.message);
     const build = activeBuilds.get(courseCode);
     if (build) {
+      console.log(`[BUILD-DEBUG] >>> AGENT SET TO NULL - REASON: osascript error (${err.message})`);
+      console.log(`[BUILD-DEBUG]     Previous status: ${build.status}, agentCount: ${build.agentCount}`);
       build.agent = null;
       build.status = 'agent_error';
     }
@@ -541,6 +536,13 @@ async function checkBuilds() {
       const progress = await getBuildProgress(courseCode);
       const now = Date.now();
 
+      // [BUILD-DEBUG] Log full build state at start of each check
+      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} ===`);
+      console.log(`[BUILD-DEBUG] Build state: status=${build.status}, agentCount=${build.agentCount}, agent=${build.agent ? 'EXISTS' : 'NULL'}`);
+      console.log(`[BUILD-DEBUG] Progress: completed=${progress.completed}, total=${progress.total}, targetSeeds=${build.targetSeeds || progress.total}`);
+      console.log(`[BUILD-DEBUG] Batch tracking: batchStartSeed=${build.batchStartSeed}, lastSeenSeed=${build.lastSeenSeed}`);
+      console.log(`[BUILD-DEBUG] Timing: lastProgressTime=${new Date(build.lastProgressTime).toISOString()}, elapsed=${Math.round((now - build.lastProgressTime) / 1000)}s`);
+
       // Course complete? Use build.targetSeeds if set, otherwise progress.total
       const targetSeeds = build.targetSeeds || progress.total;
       const isComplete = progress.completed >= targetSeeds;
@@ -557,8 +559,11 @@ async function checkBuilds() {
 
       // No agent running - spawn one
       if (!build.agent) {
-        console.log(`[BUILD] No agent for ${courseCode}, spawning...`);
-        console.log(`[BUILD]   Progress: ${progress.completed}/${progress.total}`);
+        console.log(`[BUILD] No agent for ${courseCode}, spawning... (previous status: ${build.status})`);
+        console.log(`[BUILD]   Progress: ${progress.completed}/${progress.total}, batchStartSeed: ${build.batchStartSeed}, agentCount: ${build.agentCount}`);
+        console.log(`[BUILD-DEBUG] >>> SPAWNING NEW AGENT - REASON: build.agent is NULL`);
+        console.log(`[BUILD-DEBUG]     Previous status that caused NULL: ${build.status}`);
+        console.log(`[BUILD-DEBUG]     Will be agent #${build.agentCount + 1}, resetting batchStartSeed from ${build.batchStartSeed} to ${progress.completed}`);
 
         build.agentCount++;
         build.batchStartSeed = progress.completed;
@@ -577,6 +582,10 @@ async function checkBuilds() {
       const seedsThisBatch = progress.completed - build.batchStartSeed;
       const timeSinceProgress = now - build.lastProgressTime;
 
+      // [BUILD-DEBUG] Log batch and stall calculation values
+      console.log(`[BUILD-DEBUG] Batch check: seedsThisBatch=${seedsThisBatch} (completed ${progress.completed} - batchStart ${build.batchStartSeed}), BATCH_SIZE=${BATCH_SIZE}, needsNewAgent=${seedsThisBatch >= BATCH_SIZE}`);
+      console.log(`[BUILD-DEBUG] Stall check: timeSinceProgress=${Math.round(timeSinceProgress / 1000)}s, STALL_THRESHOLD=${Math.round(STALL_THRESHOLD_MS / 1000)}s, isStalled=${timeSinceProgress > STALL_THRESHOLD_MS}`);
+
       // Progress made?
       if (progress.completed > build.lastSeenSeed) {
         console.log(`[BUILD] ${courseCode}: ${progress.completed}/${progress.total} (+${progress.completed - build.lastSeenSeed})`);
@@ -584,27 +593,29 @@ async function checkBuilds() {
         build.lastProgressTime = now;
       }
 
-      // Batch complete?
+      // Batch complete? Just log milestone - DON'T spawn new agent yet
+      // The current agent will stop itself, then stall detection will spawn the next one
       if (seedsThisBatch >= BATCH_SIZE) {
-        console.log(`[BUILD] Batch complete for ${courseCode} (${seedsThisBatch} seeds)`);
-        // Clear agent reference so next check spawns a new one
-        build.agent = null;
-        build.status = 'batch_complete';
-        // Will spawn new agent on next check
-        continue;
+        console.log(`[BUILD] Batch milestone: ${courseCode} (${seedsThisBatch} seeds this batch)`);
+        // Reset batch counter but keep agent reference - wait for stall to confirm agent stopped
+        build.batchStartSeed = progress.completed;
+        // Don't touch build.agent - let stall detection handle the spawn
       }
 
-      // Stalled?
+      // Stalled? Agent has stopped - spawn the next one SEQUENTIALLY
       if (timeSinceProgress > STALL_THRESHOLD_MS) {
-        console.log(`[BUILD] STALL: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
-        console.log(`[BUILD]   Killing agent and spawning fresh one...`);
+        console.log(`[BUILD] Agent stopped: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
+        console.log(`[BUILD]   Spawning next agent sequentially...`);
 
-        if (build.agent && build.agent.pid) {
-          try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
-        }
+        // Clear agent and spawn fresh one
         build.agent = null;
-        build.status = 'stalled';
-        // Will spawn new agent on next check
+        build.agentCount++;
+        build.batchStartSeed = progress.completed;
+        build.lastProgressTime = Date.now();
+        build.status = 'spawning';
+        build.agent = spawnBuildAgent(courseCode, build.agentCount, build.terminal);
+
+        console.log(`[BUILD]   Agent #${build.agentCount} spawned for ${courseCode}`);
       }
 
     } catch (err) {
