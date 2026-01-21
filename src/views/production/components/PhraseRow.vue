@@ -250,14 +250,8 @@ const isLoading = ref(false);
 const audioElement = ref<HTMLAudioElement | null>(null);
 const currentlyPlayingTrack = ref<AudioTrack | null>(null);
 
-// API Base URL - use relative URLs when accessed remotely (not localhost)
+// API Base URL - always use the central getApiUrl() which handles all environments
 const getApiBaseUrl = (): string => {
-  // If accessed via ngrok or other remote URL, use relative paths (orchestrator proxies)
-  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return '';  // Relative URL - goes through same origin
-  }
-  const storedUrl = localStorage.getItem('api_base_url');
-  if (storedUrl) return storedUrl;
   return getApiUrl();
 };
 
