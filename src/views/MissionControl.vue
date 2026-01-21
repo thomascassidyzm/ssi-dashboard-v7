@@ -31,7 +31,8 @@
           <!-- Course Switcher Dropdown -->
           <div class="course-switcher" ref="dropdownRef">
             <button class="course-button" @click="toggleDropdown">
-              <span class="course-label">Select Course</span>
+              <span class="course-code">{{ selectedCourse?.code || 'Select' }}</span>
+              <span class="course-name">{{ selectedCourse?.name || 'Choose course...' }}</span>
               <svg class="dropdown-arrow" :class="{ open: dropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -283,6 +284,7 @@ const router = useRouter()
 const courseCount = ref(0)
 const courses = ref([])
 const loadingCourses = ref(true)
+const selectedCourse = ref(null)
 
 // Dropdown state
 const dropdownOpen = ref(false)
@@ -333,6 +335,8 @@ function closeDropdown() {
 }
 
 function selectCourse(code) {
+  const course = courses.value.find(c => c.code === code)
+  selectedCourse.value = course || { code, name: getCourseName(code) }
   closeDropdown()
   router.push(`/production/${code}`)
 }
@@ -554,22 +558,27 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.375rem 0.75rem;
   background: var(--mc-elevated);
   border: 1px solid var(--mc-border);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
-  color: var(--mc-text-dim);
 }
 
 .course-button:hover {
-  border-color: var(--mc-accent);
-  color: var(--mc-text);
+  border-color: #ffa630;
 }
 
-.course-label {
+.course-code {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8125rem;
+  color: #ffa630;
+}
+
+.course-name {
+  font-size: 0.8125rem;
+  color: var(--mc-text-dim);
 }
 
 .dropdown-arrow {
@@ -635,7 +644,7 @@ onUnmounted(() => {
 .option-code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8125rem;
-  color: var(--mc-accent);
+  color: #ffa630;
 }
 
 .option-name {
