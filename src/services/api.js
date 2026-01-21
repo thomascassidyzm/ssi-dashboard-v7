@@ -5,34 +5,40 @@ import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
-// API Base URL - use relative URLs when accessed remotely (via ngrok, etc.)
+// Default API URL - Tom's Machine via ngrok (matches EnvironmentSwitcher default)
+const DEFAULT_API_URL = 'https://popty.ngrok.app'
+
+// API Base URL - use EnvironmentSwitcher's localStorage value
+// EnvironmentSwitcher sets 'api_base_url' on page load (defaults to Tom's Machine)
 function getApiBaseUrl() {
-  // If accessed via ngrok or other remote URL, use relative paths (orchestrator proxies all APIs)
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return ''  // Relative URL - goes through same origin
-  }
-  // Check localStorage for user-selected environment
+  // ALWAYS check localStorage first - EnvironmentSwitcher sets this before API calls
+  // This ensures the correct ngrok URL is used even when accessed from popty.app (Vercel)
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
-  // Fall back to environment variable or default
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  // For localhost dev, use localhost; otherwise use default ngrok URL
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  }
+  // Remote access: use default ngrok URL (EnvironmentSwitcher will set this in localStorage on first interaction)
+  return DEFAULT_API_URL
 }
 
 // Production API URL for database-backed endpoints (APML v11.2.0)
 // NOTE: Production API runs on port 3470, but orchestrator (3456) proxies /api/production/* to it
 // Always use orchestrator URL so everything works through ngrok tunnel
 function getProductionApiUrl() {
-  // If accessed via ngrok or other remote URL, use relative paths
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return ''  // Relative URL - goes through same origin
-  }
+  // ALWAYS check localStorage first - EnvironmentSwitcher sets this before API calls
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  // For localhost dev, use localhost; otherwise use default ngrok URL
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  }
+  return DEFAULT_API_URL
 }
 
 // Export production API URL for direct access

@@ -2802,6 +2802,141 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
   }
 })
 
+// GET /api/production/:courseCode/audio-pipeline/orphan-legos
+// Find NEW LEGOs that don't have any phrases (position=0 is the debut phrase)
+// Phrase table uses seed_number + lego_index to identify the LEGO, not lego_id
+app.get('/api/production/:courseCode/audio-pipeline/orphan-legos', async (req, res) => {
+  const { courseCode } = req.params
+  logger.info(`Finding orphan LEGOs for ${courseCode}`)
+
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Get all NEW LEGOs (only new LEGOs need debut phrases)
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, type')
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+
+    if (legosError) throw legosError
+
+    // Get all practice phrases (any phrase, position 0 is debut)
+    // Use seed_number + lego_index to identify which LEGO has phrases
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) throw phrasesError
+
+    // Build set of LEGOs that have at least one phrase
+    const legosWithPhrases = new Set(
+      (phrases || []).map(p => `${p.seed_number}-${p.lego_index}`)
+    )
+
+    // Find LEGOs without any phrases
+    const orphanLegos = (legos || []).filter(l =>
+      !legosWithPhrases.has(`${l.seed_number}-${l.lego_index}`)
+    )
+
+    logger.info(`Found ${orphanLegos.length} orphan LEGOs (LEGOs without any phrases)`)
+
+    res.json({
+      success: true,
+      orphanLegos,
+      total: orphanLegos.length
+    })
+  } catch (error) {
+    logger.error(`Orphan LEGOs error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
+// Add debut phrases (position=0) for LEGOs that don't have any phrases
+app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (req, res) => {
+  const { courseCode } = req.params
+  const { dryRun = false } = req.body
+  logger.info(`Fixing orphan LEGOs for ${courseCode} (dryRun: ${dryRun})`)
+
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Get all NEW LEGOs
+    const { data: legos, error: legosError } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, lego_index, known_text, target_text, type')
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+
+    if (legosError) throw legosError
+
+    // Get all practice phrases
+    const { data: phrases, error: phrasesError } = await supabase
+      .from('course_practice_phrases')
+      .select('seed_number, lego_index')
+      .eq('course_code', courseCode)
+
+    if (phrasesError) throw phrasesError
+
+    // Build set of LEGOs that have at least one phrase
+    const legosWithPhrases = new Set(
+      (phrases || []).map(p => `${p.seed_number}-${p.lego_index}`)
+    )
+
+    // Find LEGOs without any phrases
+    const orphanLegos = (legos || []).filter(l =>
+      !legosWithPhrases.has(`${l.seed_number}-${l.lego_index}`)
+    )
+
+    if (orphanLegos.length === 0) {
+      return res.json({ success: true, addedCount: 0, message: 'No orphan LEGOs found' })
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        wouldAdd: orphanLegos.length,
+        orphanLegos: orphanLegos.map(l => ({
+          lego_id: l.lego_id,
+          known_text: l.known_text,
+          target_text: l.target_text
+        }))
+      })
+    }
+
+    // Create debut phrases for orphan LEGOs
+    // Position 0 is the debut phrase (shows the LEGO itself)
+    const debutPhrases = orphanLegos.map(lego => ({
+      course_code: courseCode,
+      seed_number: lego.seed_number,
+      lego_index: lego.lego_index,
+      position: 0,
+      known_text: lego.known_text,
+      target_text: lego.target_text
+    }))
+
+    const { error: insertError } = await supabase
+      .from('course_practice_phrases')
+      .insert(debutPhrases)
+
+    if (insertError) throw insertError
+
+    logger.info(`Added ${debutPhrases.length} debut phrases for orphan LEGOs in ${courseCode}`)
+
+    res.json({
+      success: true,
+      addedCount: debutPhrases.length,
+      message: `Added ${debutPhrases.length} debut phrases`
+    })
+  } catch (error) {
+    logger.error(`Fix orphan LEGOs error for ${courseCode}:`, error.message)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // POST /api/production/:courseCode/audio-pipeline/sync-s3
 // Sync existing S3 audio files to Supabase (import existing audio)
 app.post('/api/production/:courseCode/audio-pipeline/sync-s3', async (req, res) => {

@@ -108,7 +108,6 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
-import { getCourseStats, getCourseInfo, isConfigured as isSupabaseConfigured } from '@/services/supabase'
 import StageCard from './components/StageCard.vue'
 import BlockerList from './components/BlockerList.vue'
 import QuickActions from './components/QuickActions.vue'
@@ -137,29 +136,34 @@ const localStats = ref({
   total_seeds: 668
 })
 
-// Load stats directly from Supabase - no tunnel needed
+// Load stats via API (uses ngrok tunnel to production-api)
 async function loadStats(courseCode) {
   try {
-    if (!isSupabaseConfigured()) {
-      console.warn('[ProductionOverview] Supabase not configured')
-      return
+    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+    console.log(`[ProductionOverview] Loading stats for ${courseCode} from ${apiBase}`)
+
+    const response = await fetch(`${apiBase}/api/stats/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`)
     }
 
-    // Get stats and course info in parallel
-    const [stats, courseInfo] = await Promise.all([
-      getCourseStats(courseCode),
-      getCourseInfo(courseCode)
-    ])
+    const data = await response.json()
+    console.log(`[ProductionOverview] Loaded course info: status=${data.status}`)
 
     localStats.value = {
-      seeds: stats.seeds || 0,
-      completeSeeds: stats.completeSeeds || 0,
-      legos: stats.legos || 0,
-      phrases: stats.practicePhrases || 0,
-      total_seeds: courseInfo?.seed_count || stats.seeds || 668
+      seeds: data.totalSeeds || data.seeds || 0,
+      completeSeeds: data.completedSeeds || data.completeSeeds || 0,
+      legos: data.newLegos || data.legos || 0,
+      phrases: data.phrases || 0,
+      total_seeds: data.seedCount || data.totalSeeds || 668
     }
   } catch (err) {
-    console.warn('[ProductionOverview] Could not load stats:', err.message)
+    console.warn('[ProductionOverview] Could not load stats from API:', err.message)
   }
 }
 
