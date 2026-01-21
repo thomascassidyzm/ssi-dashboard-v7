@@ -180,7 +180,8 @@ async function upsertCourse({
   voiceConfig = {},
   status = 'draft',
   courseType = 'official',
-  creatorEmail = null
+  creatorEmail = null,
+  seedCount = 260  // Default release target for MVP
 }) {
   if (!supabase) throw new Error('Supabase not initialized')
 
@@ -194,7 +195,8 @@ async function upsertCourse({
       voice_config: voiceConfig,
       status,
       course_type: courseType,
-      creator_email: creatorEmail
+      creator_email: creatorEmail,
+      seed_count: seedCount
     }, {
       onConflict: 'course_code'
     })
