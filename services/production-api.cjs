@@ -284,6 +284,9 @@ async function proxyOrchestrator(req, res) {
 }
 
 app.all('/api/mission-control/*', proxyOrchestrator)
+app.get('/api/languages', proxyOrchestrator)
+app.get('/api/courses', proxyOrchestrator)
+app.get('/api/stats/*', proxyOrchestrator)
 app.get('/health', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
