@@ -5,25 +5,7 @@
       <div class="header-content">
         <router-link to="/" class="back-link">← Back to Dashboard</router-link>
         <h1 class="page-title">Production Suite</h1>
-        <EnvironmentSwitcher class="env-switcher" />
-        <div class="course-selector">
-          <label for="course-select">Course:</label>
-          <select
-            id="course-select"
-            v-model="selectedCourse"
-            class="course-select"
-            @change="handleCourseChange"
-          >
-            <option value="">Select a course...</option>
-            <option
-              v-for="course in availableCourses"
-              :key="course.code"
-              :value="course.code"
-            >
-              {{ course.name }}
-            </option>
-          </select>
-        </div>
+        <!-- Course selector is now global in App.vue -->
       </div>
     </header>
 
