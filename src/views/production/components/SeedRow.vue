@@ -90,6 +90,7 @@
               :flag-notes="getFlagNotes(phrase)"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
+              @phrase-delete="onPhraseDelete"
               @audio-flag="onAudioFlag"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
@@ -115,6 +116,7 @@
               @toggle="onLegoToggle"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
+              @phrase-delete="onPhraseDelete"
               @audio-flag="onAudioFlag"
               @phrase-play="onPhrasePlay"
               @phrase-pause="onPhrasePause"
@@ -155,6 +157,7 @@ const emit = defineEmits<{
   legoToggle: [legoId: string];
   phraseFlag: [phrase: PhraseRowData];
   phraseEdit: [phrase: PhraseRowData];
+  phraseDelete: [phrase: PhraseRowData];
   audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
@@ -195,6 +198,10 @@ const onPhraseFlag = (phrase: PhraseRowData) => {
 
 const onPhraseEdit = (phrase: PhraseRowData) => {
   emit('phraseEdit', phrase);
+};
+
+const onPhraseDelete = (phrase: PhraseRowData) => {
+  emit('phraseDelete', phrase);
 };
 
 const onAudioFlag = (phrase: PhraseRowData, track: AudioTrack, uuid: string) => {

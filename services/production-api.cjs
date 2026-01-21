@@ -262,12 +262,23 @@ async function proxyOrchestrator(req, res) {
     const targetUrl = `${ORCHESTRATOR_URL}${req.originalUrl}`
     logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
 
+    // Only pass safe headers - exclude hop-by-hop headers that break proxying
+    const safeHeaders = {
+      'Content-Type': 'application/json',
+      'Accept': req.headers.accept || 'application/json'
+    }
+    // Pass through ngrok-skip-browser-warning if present
+    if (req.headers['ngrok-skip-browser-warning']) {
+      safeHeaders['ngrok-skip-browser-warning'] = req.headers['ngrok-skip-browser-warning']
+    }
+    // Pass through authorization if present
+    if (req.headers.authorization) {
+      safeHeaders['Authorization'] = req.headers.authorization
+    }
+
     const fetchOptions = {
       method: req.method,
-      headers: {
-        'Content-Type': 'application/json',
-        ...req.headers
-      }
+      headers: safeHeaders
     }
 
     if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
@@ -289,9 +300,8 @@ app.get('/api/courses', proxyOrchestrator)
 app.get('/api/stats/*', proxyOrchestrator)
 app.get('/health', proxyOrchestrator)
 
-// Proxy audio routes to orchestrator (which proxies to phase8-audio service)
-app.all('/api/audio/*', proxyOrchestrator)
-app.get('/api/audio/status', proxyOrchestrator)
+// Audio routes are handled directly by production-api (lines 2019+, 2149+)
+// which proxy directly to Phase 8 (port 3465) - no need to go through orchestrator
 
 // Proxy voice config routes to orchestrator
 app.all('/api/courses/:courseCode/voice-config', proxyOrchestrator)
@@ -1018,6 +1028,48 @@ app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res
     res.json({ success: true })
   } catch (error) {
     logger.error('Error deleting audio flag:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// PHRASE MANAGEMENT
+// =============================================================================
+
+// Delete a practice phrase
+app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => {
+  try {
+    const { courseCode, phraseId } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Delete the phrase from course_practice_phrases
+    const { error } = await supabase
+      .from('course_practice_phrases')
+      .delete()
+      .eq('course_code', courseCode)
+      .eq('id', phraseId)
+
+    if (error) {
+      logger.error(`Error deleting phrase ${phraseId}:`, error)
+      throw error
+    }
+
+    logger.info(`Phrase deleted: ${phraseId} from ${courseCode}`)
+
+    // Broadcast deletion via WebSocket
+    io.to(`course:${courseCode}`).emit('phrase_deleted', {
+      courseCode,
+      phraseId
+    })
+
+    res.json({ success: true })
+  } catch (error) {
+    logger.error('Error deleting phrase:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -2001,6 +2053,17 @@ app.post('/api/production/:courseCode/regeneration/trigger-all', async (req, res
 // =============================================================================
 // ROLE-BASED REGENERATION ENDPOINTS
 // =============================================================================
+
+// GET /api/audio/status - Get audio generation status (proxies to Phase 8)
+app.get('/api/audio/status', async (req, res) => {
+  try {
+    const response = await proxyToPhase8('GET', '/status')
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    // If Phase 8 is not running, return inactive status
+    res.json({ active: false, error: 'Audio server not running' })
+  }
+})
 
 // Regenerate audio by role (known, target1, target2)
 // POST /api/audio/regenerate-role/:courseCode

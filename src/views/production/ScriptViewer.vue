@@ -324,6 +324,7 @@
           @lego-toggle="toggleLego"
           @phrase-flag="openFlagModal"
           @phrase-edit="openPhraseEditModal"
+          @phrase-delete="handlePhraseDelete"
           @audio-flag="handleAudioFlag"
           @phrase-play="playAudioSample"
           @phrase-pause="pauseAudio"
@@ -1198,6 +1199,35 @@ const openPhraseEditModal = (phrase: PhraseRowData) => {
 const closePhraseEditModal = () => {
   phraseEditModalVisible.value = false;
   phraseToEdit.value = null;
+};
+
+// Handle phrase deletion
+const handlePhraseDelete = async (phrase: PhraseRowData) => {
+  // Confirm deletion
+  if (!confirm(`Delete phrase: "${phrase.known_text}" / "${phrase.target_text}"?\n\nThis will remove the phrase from the course. Audio files will NOT be deleted.`)) {
+    return;
+  }
+
+  try {
+    const apiBaseUrl = getApiBaseUrl();
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrases/${phrase.phrase_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete phrase: ${response.statusText}`);
+    }
+
+    // Reload data to reflect the deletion
+    await loadScriptViewData();
+  } catch (err) {
+    console.error('Error deleting phrase:', err);
+    alert('Failed to delete phrase. Please try again.');
+  }
 };
 
 // RegenFlags type for per-audio regeneration
