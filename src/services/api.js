@@ -434,12 +434,13 @@ export default {
         // Stats: { seeds, completedSeeds, legos, baskets, phrases, introductions, audio }
         const courses = (data.courses || []).map(course => {
           const code = course.code || course.course_code
-          const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0 }
+          const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0, seed_count: null }
           return {
             course_code: code,
             source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
             target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
             total_seeds: stats.seeds || 668,
+            seed_count: stats.seed_count || null,  // Release target from courses table
             version: '1.0',
             created_at: new Date().toISOString(),
             status: course.complete ? 'complete' : 'in_progress',

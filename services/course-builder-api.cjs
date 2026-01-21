@@ -2896,10 +2896,10 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const targetLangName = getLanguageName(courseCode);
   const chinese = isChinese(courseCode);
 
-  // Get course info including translation_analysis (Two-Pass workflow)
+  // Get course info including translation_analysis and seed_count (Two-Pass workflow)
   const { data: courseInfo } = await supabase
     .from('courses')
-    .select('display_name, translation_analysis')
+    .select('display_name, translation_analysis, seed_count')
     .eq('course_code', courseCode)
     .single();
 
@@ -2960,6 +2960,17 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const completedCount = completedSeeds.size;
   const progress = totalSeeds > 0 ? ((completedCount / totalSeeds) * 100).toFixed(1) : 0;
 
+  // Two-Pass workflow: Calculate pass status
+  // Pass 1: Translate ALL seeds (regardless of seed_count) + save analysis
+  // Pass 2: Decompose up to seed_count (release target)
+  const seedCount = courseInfo?.seed_count || 260;  // Release target for decomposition
+  const seedsTranslated = allSeeds?.filter(s => s.target_text && s.target_text.trim() !== '').length || 0;
+  const seedsDecomposed = completedSeeds.size;
+  const analysisSaved = !!courseInfo?.translation_analysis;
+  const pass1Complete = seedsTranslated >= totalSeeds && totalSeeds > 0 && analysisSaved;
+  const pass2Complete = seedsDecomposed >= seedCount;
+  const currentPass = pass1Complete ? 2 : 1;
+
   // Get recency analysis for pattern/vocab distribution guidance
   const [patternAnalysis, vocabAnalysis] = await Promise.all([
     analyzePatternRecency(courseCode),
@@ -2972,6 +2983,20 @@ app.get('/api/resume/:courseCode', async (req, res) => {
 
     // Two-Pass Workflow: Translation analysis from Pass 1 (if completed)
     translation_analysis: courseInfo?.translation_analysis || null,
+
+    // Two-Pass Workflow: Pass status for agent to determine current phase
+    // Pass 1: Translate ALL seeds + save analysis
+    // Pass 2: Decompose up to seed_count (release target)
+    pass_status: {
+      current_pass: currentPass,
+      total_seeds: totalSeeds,           // All seeds available (translate all in Pass 1)
+      seed_count: seedCount,             // Release target (decompose up to this in Pass 2)
+      seeds_translated: seedsTranslated,
+      seeds_decomposed: seedsDecomposed,
+      pass1_complete: pass1Complete,
+      pass2_complete: pass2Complete,
+      analysis_saved: analysisSaved
+    },
 
     // Resume point
     next_seed: incompleteSeed ? {

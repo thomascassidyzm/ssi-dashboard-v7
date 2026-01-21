@@ -31,7 +31,7 @@
       <div class="stat-card seeds">
         <div class="stat-value">
           {{ courseStats.completeSeeds.toLocaleString() }}
-          <span class="stat-total">/ 668</span>
+          <span class="stat-total">/ {{ seedTarget.toLocaleString() }}</span>
         </div>
         <div class="stat-label">Seeds</div>
         <div class="stat-progress">
@@ -228,9 +228,14 @@ const audioProgressPercent = computed(() => {
   return Math.round((audio.existing / audio.total) * 100)
 })
 
+// Seed target from course info (seed_count) or default to 668
+const seedTarget = computed(() => {
+  return store.courseInfo?.seed_count || 668
+})
+
 const seedProgressPercent = computed(() => {
   const complete = courseStats.value.completeSeeds
-  const total = 668  // Full course target
+  const total = seedTarget.value
   return Math.round((complete / total) * 100)
 })
 

@@ -1048,10 +1048,10 @@ async function getCourseContentStats(courseCode) {
 async function getAllCourseContentStats() {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  // Get all courses first
+  // Get all courses with seed_count (release target)
   const { data: courses, error: courseError } = await supabase
     .from('courses')
-    .select('course_code')
+    .select('course_code, seed_count')
 
   if (courseError) throw courseError
 
@@ -1075,7 +1075,8 @@ async function getAllCourseContentStats() {
       legos: legosResult.count || 0,
       baskets: legosResult.count || 0,  // 1 basket per lego
       phrases: phrasesResult.count || 0,
-      audio: audioResult.count || 0
+      audio: audioResult.count || 0,
+      seed_count: course.seed_count || null  // Release target from courses table
     }
   }))
 
