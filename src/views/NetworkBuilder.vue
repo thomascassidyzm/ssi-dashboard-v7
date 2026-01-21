@@ -181,10 +181,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-// Use ngrok tunnel for production, localhost for dev
-const API_BASE = window.location.hostname === 'localhost'
-  ? 'http://localhost:3480/api/network-builder'
-  : 'https://popty.ngrok.app/api/network-builder'
+// Use api_base_url from localStorage (set by EnvironmentSwitcher)
+const getApiBase = () => {
+  const baseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3456'
+  return `${baseUrl}/api/network-builder`
+}
+const API_BASE = getApiBase()
 
 const currentNetwork = ref('default')
 const networkList = ref([])
