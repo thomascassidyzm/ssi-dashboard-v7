@@ -815,7 +815,9 @@ function getLanguageName(courseCode) {
  * Canonical seeds are in English. Depending on the course:
  * - X_for_eng (known=eng): known_text = canonical (instant), target_text = agent provides
  * - eng_for_X (target=eng): target_text = canonical (instant), known_text = agent provides
- * - X_for_Y (neither eng): both known_text and target_text = agent provides
+ * - X_for_Y (neither eng): check canonical_seed_translations for known language
+ *   - If translations exist: known_text = translation, target_text = agent provides
+ *   - If no translations: both = agent provides (will translate from English first)
  *
  * For instant cases, the text is pre-populated. For agent cases, left empty.
  */
@@ -852,16 +854,40 @@ async function initializeCourseSeeds(courseCode) {
   // Get target language name for {target} substitution
   const targetLangName = getLanguageName(courseCode);
 
+  // For non-English known languages, check for canonical translations
+  let knownTranslations = new Map();
+  if (!knownIsEng && !targetIsEng) {
+    const { data: translations } = await supabase
+      .from('canonical_seed_translations')
+      .select('seed_number, translated_text')
+      .eq('language_code', knownLang);
+
+    if (translations && translations.length > 0) {
+      translations.forEach(t => knownTranslations.set(t.seed_number, t.translated_text));
+      console.log(`Found ${translations.length} canonical translations for ${knownLang}`);
+    }
+  }
+
   // Create course seeds based on which language is English
   const courseSeeds = canonical.map(c => {
     const canonicalText = c.source_text.replace(/\{target\}/g, targetLangName);
+    let knownText = '';
+    let targetText = '';
+
+    if (knownIsEng) {
+      knownText = canonicalText;
+    } else if (targetIsEng) {
+      targetText = canonicalText;
+    } else if (knownTranslations.has(c.seed_number)) {
+      // Use canonical translation for known language
+      knownText = knownTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
+    }
+
     return {
       course_code: courseCode,
       seed_number: c.seed_number,
-      // known_text: instant if known=eng, otherwise agent provides
-      known_text: knownIsEng ? canonicalText : '',
-      // target_text: instant if target=eng, otherwise agent provides
-      target_text: targetIsEng ? canonicalText : ''
+      known_text: knownText,
+      target_text: targetText
     };
   });
 
@@ -876,9 +902,10 @@ async function initializeCourseSeeds(courseCode) {
 
   const mode = knownIsEng ? 'known=eng (instant known_text)' :
                targetIsEng ? 'target=eng (instant target_text)' :
+               knownTranslations.size > 0 ? `known=${knownLang} (${knownTranslations.size} from canonical translations)` :
                'neither eng (agent provides both)';
   console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
-  return { initialized: true, count: courseSeeds.length, mode, targetLangName };
+  return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size };
 }
 
 /**
@@ -2869,6 +2896,13 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const targetLangName = getLanguageName(courseCode);
   const chinese = isChinese(courseCode);
 
+  // Get course info including translation_analysis (Two-Pass workflow)
+  const { data: courseInfo } = await supabase
+    .from('courses')
+    .select('display_name, translation_analysis')
+    .eq('course_code', courseCode)
+    .single();
+
   // Get all seeds with their completion status
   const { data: allSeeds } = await supabase
     .from('course_seeds')
@@ -2935,6 +2969,9 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   res.json({
     course_code: courseCode,
     target_language: targetLangName,
+
+    // Two-Pass Workflow: Translation analysis from Pass 1 (if completed)
+    translation_analysis: courseInfo?.translation_analysis || null,
 
     // Resume point
     next_seed: incompleteSeed ? {
@@ -3302,6 +3339,116 @@ app.post('/api/course/:courseCode/translate', async (req, res) => {
     updated,
     errors: errors.length > 0 ? errors : undefined,
     message: `${updated} seeds translated successfully`
+  });
+});
+
+// =============================================================================
+// TWO-PASS WORKFLOW: TRANSLATION ANALYSIS ENDPOINTS
+// Pass 1: Translate all seeds, discover language-specific issues
+// Pass 2: Build LEGOs and phrases with full knowledge of pitfalls
+// =============================================================================
+
+/**
+ * POST /api/course/:courseCode/analysis - Save translation analysis after Pass 1
+ *
+ * Body: {
+ *   analysis: {
+ *     generated_at: "ISO timestamp",
+ *     seeds_analyzed: 260,
+ *     register: { choice: "casual-polite", markers: ["です", "ます"] },
+ *     problem_verbs: [...],
+ *     golden_keys: [...],
+ *     zut_concerns: [...]
+ *   }
+ * }
+ */
+app.post('/api/course/:courseCode/analysis', async (req, res) => {
+  const { courseCode } = req.params;
+  const { analysis } = req.body;
+
+  if (!analysis || typeof analysis !== 'object') {
+    return res.status(400).json({
+      error: 'Required: analysis object with translation analysis data'
+    });
+  }
+
+  // Validate required fields
+  const requiredFields = ['generated_at', 'seeds_analyzed'];
+  const missingFields = requiredFields.filter(f => !analysis[f]);
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      error: `Missing required fields in analysis: ${missingFields.join(', ')}`
+    });
+  }
+
+  // Check course exists
+  const { data: course, error: courseErr } = await supabase
+    .from('courses')
+    .select('course_code, display_name')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (courseErr || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  // Save analysis to course record
+  const { error: updateErr } = await supabase
+    .from('courses')
+    .update({
+      translation_analysis: analysis,
+      updated_at: new Date().toISOString()
+    })
+    .eq('course_code', courseCode);
+
+  if (updateErr) {
+    console.error(`Error saving analysis for ${courseCode}:`, updateErr);
+    return res.status(500).json({ error: updateErr.message });
+  }
+
+  console.log(`[ANALYSIS] Saved translation analysis for ${courseCode}: ${analysis.seeds_analyzed} seeds analyzed`);
+
+  res.json({
+    success: true,
+    course_code: courseCode,
+    message: `Translation analysis saved for ${analysis.seeds_analyzed} seeds`,
+    summary: {
+      problem_verbs: (analysis.problem_verbs || []).length,
+      golden_keys: (analysis.golden_keys || []).length,
+      zut_concerns: (analysis.zut_concerns || []).length,
+      register: analysis.register?.choice || 'not specified'
+    }
+  });
+});
+
+/**
+ * GET /api/course/:courseCode/analysis - Retrieve translation analysis
+ */
+app.get('/api/course/:courseCode/analysis', async (req, res) => {
+  const { courseCode } = req.params;
+
+  const { data: course, error } = await supabase
+    .from('courses')
+    .select('course_code, display_name, translation_analysis')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (error || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  if (!course.translation_analysis) {
+    return res.status(404).json({
+      error: 'No translation analysis found',
+      hint: 'Complete Pass 1 (translate all seeds) and POST analysis to /api/course/:code/analysis',
+      course_code: courseCode
+    });
+  }
+
+  res.json({
+    course_code: courseCode,
+    display_name: course.display_name,
+    analysis: course.translation_analysis
   });
 });
 

@@ -4,7 +4,35 @@
 
 Build a language course for **[TARGET_LANGUAGE]** for English speakers.
 
-Work through ALL 260 seed sentences. For each, add LEGOs and phrases using your language knowledge.
+Work through ALL 260 seed sentences using the **Two-Pass Workflow** below.
+
+---
+
+## Two-Pass Workflow
+
+Course building happens in two passes. The agent discovers language-specific rules during translation - no pre-written language rules needed.
+
+### Pass 1: Translation Analysis (Seeds 1-260)
+
+1. `GET /api/course/{code}/translate?limit=260` - Get all seeds to translate
+2. Translate each seed naturally to the target language
+3. `PATCH /api/seed/{code}/{num}` - Save each translation
+4. **Track patterns as you translate:**
+   - **Problem verbs**: One English → multiple target forms (e.g., "remember" → 覚える/思い出す)
+   - **Golden keys**: High-frequency patterns appearing 10+ times (e.g., "want to V")
+   - **ZUT concerns**: Ambiguous English needing rewording
+   - **Register**: Choose one register (e.g., casual-polite) and stick to it
+5. After seed 260: `POST /api/course/{code}/analysis` with your findings
+
+**Invoke `/translation-analysis` for detailed guidance on what to track.**
+
+### Pass 2: Decomposition (Seeds 1-260)
+
+1. `GET /api/resume/{code}` - Response includes your `translation_analysis`
+2. For each seed: Decompose into LEGOs, generate phrases
+3. Apply your problem verb disambiguation rules
+4. Use suggested rewordings for ZUT concerns
+5. Submit via `POST /api/seed/complete`
 
 ---
 
@@ -220,7 +248,11 @@ This returns EVERYTHING you need to continue:
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| /api/resume/:code | GET | **Recovery after compaction** |
+| /api/resume/:code | GET | **Recovery after compaction** (includes analysis) |
+| /api/course/:code/translate | GET | Get seeds for Pass 1 translation |
+| /api/course/:code/translate | POST | Batch save translations |
+| /api/course/:code/analysis | POST | **Save analysis after Pass 1** |
+| /api/course/:code/analysis | GET | Retrieve analysis |
 | /api/seed/complete | POST | Submit complete seed (golden path) |
 | /api/lego | POST | Insert single LEGO with phrases |
 | /api/batch | POST | Insert multiple LEGOs |

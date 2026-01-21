@@ -243,6 +243,28 @@ architecture AudioRegistry:
           type: "TIMESTAMPTZ"
           default: "NOW()"
 
+        translation_analysis:
+          type: "JSONB"
+          nullable: true
+          description: |
+            Two-pass workflow analysis data discovered during Pass 1 (translation).
+            Structure:
+            {
+              "generated_at": "ISO timestamp",
+              "seeds_analyzed": 260,
+              "register": {"choice": "casual-polite", "markers": ["です", "ます"]},
+              "problem_verbs": [
+                {"english": "remember", "target_forms": [...], "disambiguation_rule": "..."}
+              ],
+              "golden_keys": [
+                {"pattern": "want to V", "target_form": "V-stem + たい", "frequency": 58}
+              ],
+              "zut_concerns": [
+                {"seed": 45, "original_english": "...", "suggested_reword": "..."}
+              ]
+            }
+            Survives context compaction via /api/resume response.
+
     ## ------------------------------------------------------------------------
     ## COURSE_AUDIO TABLE - Audio owned by a specific course
     ## ------------------------------------------------------------------------

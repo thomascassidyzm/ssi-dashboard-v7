@@ -85,8 +85,37 @@ Read the error message carefully - it tells you exactly what's wrong:
 - `PHRASE TIERS`: Need more SHORT/MEDIUM/LONG phrases
 - `Vocabulary violation`: Using words not yet introduced
 
+## Translation Analysis Recovery
+
+The `/api/resume` response includes your `translation_analysis` if Pass 1 is complete:
+
+```json
+{
+  "translation_analysis": {
+    "problem_verbs": [...],   // Disambiguation rules you discovered
+    "golden_keys": [...],     // High-frequency patterns
+    "zut_concerns": [...],    // Seeds needing English rewording
+    "register": {...}         // Your chosen register
+  }
+}
+```
+
+**If `translation_analysis` is null:**
+- Pass 1 is not complete - finish translating all 260 seeds first
+- After translations are done, POST your analysis to `/api/course/{code}/analysis`
+- See `/translation-analysis` for guidance on what to track
+
+**If `translation_analysis` exists:**
+- You're in Pass 2 - use the disambiguation rules for problem verbs
+- Apply suggested rewordings for ZUT concerns
+- Continue decomposing seeds into LEGOs
+
+---
+
 ## Other Useful Skills
 
+- `/translation-analysis` - Two-pass workflow guide
+- `/jpn-analysis-example` - Example analysis output (Japanese)
 - `/ssi-decompose-seed` - How to break seeds into LEGOs
 - `/ssi-build-phrases` - How to generate practice phrases
 - `/ssi-phrase-variety` - Phrase tier requirements
