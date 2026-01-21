@@ -1,10 +1,4 @@
 <template>
-  <!-- Global Nav Bar -->
-  <div class="global-nav">
-    <EnvironmentSwitcher />
-    <CourseSelector />
-  </div>
-
   <router-view />
 
   <div class="build-label">
@@ -13,9 +7,6 @@
 </template>
 
 <script setup>
-import EnvironmentSwitcher from './components/EnvironmentSwitcher.vue'
-import CourseSelector from './components/CourseSelector.vue'
-
 const gitCommit = __GIT_COMMIT__
 
 // Clean v7.0 build with Vue Router
@@ -23,21 +14,6 @@ console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 </script>
 
 <style scoped>
-.global-nav {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 9999;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.95);
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(100, 116, 139, 0.3);
-  backdrop-filter: blur(12px);
-}
-
 .build-label {
   position: fixed;
   bottom: 12px;

@@ -1,35 +1,27 @@
 <template>
-  <div class="env-switcher-compact">
-    <!-- Environment Selector -->
-    <div class="relative">
+  <div class="env-switcher-inline">
+    <!-- Environment Selector with inline status dot -->
+    <div class="selector-wrapper">
       <select
         v-model="selectedEnv"
         @change="switchEnvironment"
-        class="bg-slate-800 border border-slate-600 text-slate-300 text-sm rounded px-3 py-1.5 pr-8 appearance-none cursor-pointer hover:border-slate-500 transition-colors"
+        class="env-select"
       >
         <option value="tom">Tom's Machine</option>
         <option value="kai">Kai's Machine</option>
         <option value="api">API Server</option>
       </select>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+      <div class="select-arrow">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
       </div>
-    </div>
-
-    <!-- Connection Status (below dropdown) -->
-    <div class="flex items-center gap-1.5 text-xs mt-1">
+      <!-- Status dot inside the select area -->
       <div
-        class="w-2 h-2 rounded-full flex-shrink-0"
-        :class="connectionStatus.connected ? 'bg-green-500' : 'bg-red-500'"
+        class="status-dot"
+        :class="connectionStatus.connected ? 'connected' : 'disconnected'"
+        :title="connectionStatus.connected ? 'Connected' : 'Disconnected'"
       ></div>
-      <span class="text-slate-500 truncate">{{ connectionStatus.connected ? 'Connected' : 'Disconnected' }}</span>
-    </div>
-
-    <!-- Current URL (dev only) -->
-    <div v-if="showDebug" class="text-xs text-slate-500 max-w-xs truncate mt-0.5">
-      {{ currentApiUrl }}
     </div>
   </div>
 </template>
@@ -164,3 +156,58 @@ defineExpose({
   currentApiUrl
 })
 </script>
+
+<style scoped>
+.env-switcher-inline {
+  display: flex;
+  align-items: center;
+}
+
+.selector-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.env-select {
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.8125rem;
+  padding: 0.375rem 2.5rem 0.375rem 0.75rem;
+  border-radius: 6px;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.env-select:hover {
+  border-color: var(--color-tungsten, #ffa630);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1.75rem;
+  pointer-events: none;
+  color: var(--color-paper-dim, #c1c1bb);
+}
+
+.status-dot {
+  position: absolute;
+  right: 0.625rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.status-dot.connected {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.status-dot.disconnected {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+}
+</style>

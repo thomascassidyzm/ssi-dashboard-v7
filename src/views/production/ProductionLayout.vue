@@ -3,7 +3,7 @@
     <!-- Single Header Row with Tabs -->
     <header class="production-header">
       <div class="header-content">
-        <router-link to="/courses" class="back-link">← Course Library</router-link>
+        <router-link to="/" class="back-link">← Mission Control</router-link>
         <h1 class="page-title">Production Suite</h1>
 
         <!-- Tabs inline in header -->
@@ -49,10 +49,50 @@
           </router-link>
         </nav>
 
-        <!-- Course name display (selector is now global in App.vue) -->
-        <div class="current-course">
-          <span class="course-code" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? '+ New' : courseCode }}</span>
-          <span class="course-name-label" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? 'Create Course' : courseName }}</span>
+        <!-- Environment Switcher -->
+        <EnvironmentSwitcher />
+
+        <!-- Course Switcher Dropdown -->
+        <div class="course-switcher" ref="dropdownRef">
+          <button class="course-button" @click="toggleDropdown">
+            <span class="course-code" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? '+ New' : courseCode }}</span>
+            <span class="course-name" :class="{ 'text-emerald-400': isCreateMode }">{{ isCreateMode ? 'Create Course' : courseName }}</span>
+            <svg class="dropdown-arrow" :class="{ open: dropdownOpen }" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div v-if="dropdownOpen" class="dropdown-menu">
+            <input
+              ref="searchInput"
+              v-model="searchQuery"
+              type="text"
+              placeholder="Search courses..."
+              class="search-input"
+              @keydown.escape="closeDropdown"
+            />
+            <div class="course-list">
+              <!-- New Course Option -->
+              <button class="course-option new-course-option" @click="createNewCourse">
+                <span class="option-code text-emerald-400">+ New</span>
+                <span class="option-name text-emerald-400">Create Course</span>
+              </button>
+              <div class="course-list-divider"></div>
+              <button
+                v-for="course in filteredCourses"
+                :key="course.code"
+                class="course-option"
+                :class="{ current: course.code === courseCode }"
+                @click="switchCourse(course.code)"
+              >
+                <span class="option-code">{{ course.code }}</span>
+                <span class="option-name">{{ course.name }}</span>
+              </button>
+              <div v-if="filteredCourses.length === 0" class="no-results">
+                No courses found
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -79,10 +119,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
 import { getApiUrl } from '@/services/api'
+import EnvironmentSwitcher from '@/components/EnvironmentSwitcher.vue'
 
 const props = defineProps({
   courseCode: {
@@ -98,9 +139,16 @@ const store = useProductionStore()
 const loading = ref(false)
 const error = ref(null)
 const courseName = ref('')
+const courses = ref([])
 
 // Create mode detection
 const isCreateMode = computed(() => props.courseCode === 'new')
+
+// Dropdown state
+const dropdownOpen = ref(false)
+const dropdownRef = ref(null)
+const searchInput = ref(null)
+const searchQuery = ref('')
 
 // Language name mapping
 const languageNames = {
@@ -132,6 +180,80 @@ function isActiveRoute(routeName) {
   return route.name === routeName
 }
 
+// Filtered courses based on search
+const filteredCourses = computed(() => {
+  if (!searchQuery.value) return courses.value
+  const q = searchQuery.value.toLowerCase()
+  return courses.value.filter(c =>
+    c.code.toLowerCase().includes(q) ||
+    c.name.toLowerCase().includes(q)
+  )
+})
+
+// Toggle dropdown
+function toggleDropdown() {
+  dropdownOpen.value = !dropdownOpen.value
+  if (dropdownOpen.value) {
+    searchQuery.value = ''
+    nextTick(() => searchInput.value?.focus())
+  }
+}
+
+function closeDropdown() {
+  dropdownOpen.value = false
+  searchQuery.value = ''
+}
+
+// Switch to different course
+function switchCourse(newCode) {
+  closeDropdown()
+  if (newCode !== props.courseCode) {
+    router.push(`/production/${newCode}`)
+  }
+}
+
+// Create new course - go to TextGeneration in create mode
+function createNewCourse() {
+  closeDropdown()
+  router.push('/production/new/text')
+}
+
+// Close dropdown when clicking outside
+function handleClickOutside(event) {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+    closeDropdown()
+  }
+}
+
+// Load available courses
+async function loadCourses() {
+  try {
+    const hostname = window.location.hostname
+    let apiBase = ''
+    const storedUrl = localStorage.getItem('api_base_url')
+    if (storedUrl) {
+      apiBase = storedUrl
+    } else if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      apiBase = 'http://localhost:3456'
+    } else if (hostname.includes('ngrok')) {
+      apiBase = ''
+    }
+    const response = await fetch(`${apiBase}/api/courses`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      const courseList = Array.isArray(data) ? data : data.courses || []
+      courses.value = courseList.map(c => ({
+        code: c.code || c.course_code || c.id,
+        name: getCourseName(c.code || c.course_code || c.id)
+      }))
+    }
+  } catch (err) {
+    console.error('Failed to load courses:', err)
+  }
+}
+
 // Load course data
 async function loadCourseData() {
   if (!props.courseCode || isCreateMode.value) return
@@ -157,6 +279,12 @@ function retryLoad() {
 // Lifecycle
 onMounted(() => {
   loadCourseData()
+  loadCourses()
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
 })
 
 // Reload when course changes
@@ -239,9 +367,12 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   background: var(--color-slate, #334155);
 }
 
-/* Current Course Display */
-.current-course {
-  margin-left: auto;
+/* Course Switcher */
+.course-switcher {
+  position: relative;
+}
+
+.course-button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -249,6 +380,12 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   background: var(--color-slate, #334155);
   border: 1px solid var(--color-graphite, #475569);
   border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.course-button:hover {
+  border-color: var(--color-tungsten, #ffa630);
 }
 
 .course-code {
@@ -257,9 +394,101 @@ watch(() => props.courseCode, (newCode, oldCode) => {
   color: var(--color-tungsten, #ffa630);
 }
 
-.course-name-label {
+.course-name {
   font-size: 0.8125rem;
   color: var(--color-paper-dim, #c1c1bb);
+}
+
+.dropdown-arrow {
+  color: var(--color-paper-dim, #c1c1bb);
+  transition: transform 0.2s;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 300px;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--color-shadow, #1e293b);
+  border: none;
+  border-bottom: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper, #f7f7f2);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--color-paper-dim, #c1c1bb);
+}
+
+.course-list {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.course-option {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.course-option:hover {
+  background: var(--color-shadow, #1e293b);
+}
+
+.course-option.current {
+  background: var(--color-shadow, #1e293b);
+}
+
+.option-code {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8125rem;
+  color: var(--color-tungsten, #ffa630);
+}
+
+.option-name {
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, #c1c1bb);
+}
+
+.no-results {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-paper-dim, #c1c1bb);
+  font-size: 0.875rem;
+}
+
+.course-list-divider {
+  height: 1px;
+  background: var(--color-shadow, #1e293b);
+  margin: 0.25rem 0;
+}
+
+.new-course-option:hover {
+  background: rgba(16, 185, 129, 0.1);
 }
 
 /* Content */
