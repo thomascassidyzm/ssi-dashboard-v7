@@ -254,6 +254,38 @@ app.all('/api/activity/*', proxyCourseBuilder)
 app.all('/api/agents', proxyCourseBuilder)
 app.all('/api/agents/*', proxyCourseBuilder)
 
+// Proxy to orchestrator (port 3456) for mission-control and health endpoints
+const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
+
+async function proxyOrchestrator(req, res) {
+  try {
+    const targetUrl = `${ORCHESTRATOR_URL}${req.originalUrl}`
+    logger.info(`[Proxy] ${req.method} ${req.originalUrl} -> ${targetUrl}`)
+
+    const fetchOptions = {
+      method: req.method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...req.headers
+      }
+    }
+
+    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
+      fetchOptions.body = JSON.stringify(req.body)
+    }
+
+    const response = await fetch(targetUrl, fetchOptions)
+    const data = await response.json()
+    res.status(response.status).json(data)
+  } catch (err) {
+    logger.error(`[Proxy] Failed to proxy ${req.originalUrl}:`, err.message)
+    res.status(502).json({ error: 'Orchestrator service unavailable', details: err.message })
+  }
+}
+
+app.all('/api/mission-control/*', proxyOrchestrator)
+app.get('/health', proxyOrchestrator)
+
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
 // Database-only: no local JSON fallback (remote users can't access local files)
