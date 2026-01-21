@@ -1,0 +1,72 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 76,
+  "known_text": "I'm very happy with how much I've learnt already.",
+  "target_text": "もう学んだことにとても満足しています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "already",
+      "target": "もう",
+      "phrases": [
+        {"known": "already", "target": "もう"},
+        {"known": "already done", "target": "もうやった"},
+        {"known": "already said", "target": "もう言った"},
+        {"known": "already learned", "target": "もう学んだ"},
+        {"known": "I already know", "target": "もう知っています"},
+        {"known": "she already understood", "target": "彼女はもう理解しました"},
+        {"known": "have you already done it?", "target": "もうやりましたか？"},
+        {"known": "he said he already learned it", "target": "彼はもう学んだと言いました"},
+        {"known": "I think she already knows the truth", "target": "彼女はもう本当のことを知っていると思います"},
+        {"known": "we have already looked for the dog all afternoon", "target": "私たちはもう午後ずっと犬を探しました"},
+        {"known": "he already told me where the young dog is", "target": "彼はもう若い犬がどこにいるか言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "with what I learned",
+      "target": "学んだことに",
+      "components": [
+        {"known": "thing learned", "target": "学んだこと"},
+        {"known": "(target particle)", "target": "に"}
+      ],
+      "phrases": [
+        {"known": "learned", "target": "学んだ"},
+        {"known": "thing learned", "target": "学んだこと"},
+        {"known": "with what I learned", "target": "学んだことに"},
+        {"known": "what she learned", "target": "彼女が学んだこと"},
+        {"known": "what he learned today", "target": "彼が今日学んだこと"},
+        {"known": "he said what he learned", "target": "彼は学んだことを言いました"},
+        {"known": "she told me what she learned", "target": "彼女は学んだことを教えてくれました"},
+        {"known": "I think what she learned is important", "target": "彼女が学んだことは大切だと思います"},
+        {"known": "what we learned all afternoon is very important", "target": "私たちが午後ずっと学んだことはとても大切です"},
+        {"known": "he said what he learned today is important", "target": "彼は今日学んだことは大切だと言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "am very satisfied",
+      "target": "とても満足しています",
+      "components": [
+        {"known": "very", "target": "とても"},
+        {"known": "am satisfied (continuous)", "target": "満足しています"}
+      ],
+      "phrases": [
+        {"known": "very", "target": "とても"},
+        {"known": "satisfied", "target": "満足"},
+        {"known": "am satisfied", "target": "満足しています"},
+        {"known": "am very satisfied", "target": "とても満足しています"},
+        {"known": "she is satisfied", "target": "彼女は満足しています"},
+        {"known": "he is very satisfied", "target": "彼はとても満足しています"},
+        {"known": "I was satisfied", "target": "満足しました"},
+        {"known": "are you satisfied?", "target": "満足していますか？"},
+        {"known": "she said she is satisfied", "target": "彼女は満足していると言いました"},
+        {"known": "I think he is very satisfied with the answer", "target": "彼は答えにとても満足していると思います"},
+        {"known": "we are very satisfied with what we learned today", "target": "私たちは今日学んだことにとても満足しています"}
+      ]
+    }
+  ]
+}

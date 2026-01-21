@@ -1,0 +1,157 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 58,
+  "known_text": "It's interesting when you understand enough words.",
+  "target_text": "十分な言葉がわかると面白いです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "adjective connector",
+      "target": "な",
+      "phrases": [
+        {"known": "Connector.", "target": "な。"},
+        {"known": "This kind of.", "target": "こんな。"},
+        {"known": "That kind of thing.", "target": "そんなこと。"},
+        {"known": "Enough things.", "target": "十分なこと。"},
+        {"known": "That kind of word.", "target": "そんな言葉。"},
+        {"known": "So this kind of thing is.", "target": "だからこんなことは。"},
+        {"known": "He thinks about that kind of thing.", "target": "彼はそんなことを考えます。"},
+        {"known": "So she said that kind of thing to him.", "target": "だから彼女は彼にそんなことを言いました。"},
+        {"known": "He wanted to know that kind of thing yesterday.", "target": "彼は昨日そんなことを知りたかったです。"},
+        {"known": "So I want to understand that kind of word.", "target": "だからそんな言葉がわかりたいです。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "subject marker",
+      "target": "が",
+      "phrases": [
+        {"known": "Is.", "target": "が。"},
+        {"known": "I am.", "target": "私が。"},
+        {"known": "He is.", "target": "彼が。"},
+        {"known": "That is good.", "target": "それがいい。"},
+        {"known": "Words are good.", "target": "言葉がいい。"},
+        {"known": "That thing is good.", "target": "そのことがいいです。"},
+        {"known": "Her words are good.", "target": "彼女の言葉がいいです。"},
+        {"known": "So I understand that thing well.", "target": "だからそのことがよくわかります。"},
+        {"known": "His way of saying is good.", "target": "彼の言い方がいいです。"},
+        {"known": "So what she wanted to say is good.", "target": "だから彼女の言いたかったことがいいです。"},
+        {"known": "So her words that kind of thing are interesting.", "target": "だからそんなことの彼女の言葉が面白いです。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "if/when",
+      "target": "と",
+      "phrases": [
+        {"known": "When.", "target": "と。"},
+        {"known": "If I go.", "target": "行くと。"},
+        {"known": "If I do.", "target": "すると。"},
+        {"known": "When I understand.", "target": "わかると。"},
+        {"known": "So if I think.", "target": "考えると。"},
+        {"known": "When he sees her.", "target": "彼が彼女を見ると。"},
+        {"known": "If good then.", "target": "いいと思う。"},
+        {"known": "When I understand that.", "target": "そのことがわかると。"},
+        {"known": "When she thinks about it, he says it's interesting.", "target": "彼女がそれを考えると彼は面白いと言います。"},
+        {"known": "So when I understand enough words.", "target": "だから十分な言葉がわかると。"},
+        {"known": "When she understands what he wanted to say.", "target": "彼女が彼の言いたかったことがわかると。"},
+        {"known": "So when he understands enough of her words, it is interesting.", "target": "だから彼が彼女の言葉が十分わかると面白いです。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "enough",
+      "target": "十分",
+      "phrases": [
+        {"known": "Enough.", "target": "十分。"},
+        {"known": "Enough of.", "target": "十分な。"},
+        {"known": "It's enough.", "target": "十分です。"},
+        {"known": "So it's enough.", "target": "だから十分です。"},
+        {"known": "Enough words.", "target": "十分な言葉。"},
+        {"known": "I know enough.", "target": "十分知っています。"},
+        {"known": "So he understands enough.", "target": "だから彼は十分わかります。"},
+        {"known": "So I think that is enough.", "target": "だからそれが十分だと思います。"},
+        {"known": "She understands enough of his words.", "target": "彼女は彼の言葉が十分わかります。"},
+        {"known": "So he understands enough of her words well.", "target": "だから彼は彼女の言葉が十分よくわかります。"},
+        {"known": "So when I understand enough words, it is interesting.", "target": "だから十分な言葉がわかると面白いです。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "words",
+      "target": "言葉",
+      "phrases": [
+        {"known": "Words.", "target": "言葉。"},
+        {"known": "His words.", "target": "彼の言葉。"},
+        {"known": "Her words.", "target": "彼女の言葉。"},
+        {"known": "Enough words.", "target": "十分な言葉。"},
+        {"known": "Those words.", "target": "その言葉。"},
+        {"known": "So those words.", "target": "だからその言葉。"},
+        {"known": "I know those words.", "target": "その言葉を知っています。"},
+        {"known": "Her words are interesting.", "target": "彼女の言葉が面白いです。"},
+        {"known": "So I understand enough words.", "target": "だから十分な言葉がわかります。"},
+        {"known": "He thinks about those words well.", "target": "彼はその言葉をよく考えます。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "understand",
+      "target": "わかる",
+      "phrases": [
+        {"known": "Understand.", "target": "わかる。"},
+        {"known": "I understand.", "target": "わかります。"},
+        {"known": "He understands.", "target": "彼はわかります。"},
+        {"known": "So I understand.", "target": "だからわかります。"},
+        {"known": "I understand that.", "target": "それがわかります。"},
+        {"known": "I understand enough.", "target": "十分わかります。"},
+        {"known": "When I understand.", "target": "わかると。"},
+        {"known": "He understands enough words.", "target": "彼は十分な言葉がわかります。"},
+        {"known": "So she understands what he wanted to say.", "target": "だから彼女は彼の言いたかったことがわかります。"},
+        {"known": "When I understand enough of her words.", "target": "彼女の言葉が十分わかると。"}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "interesting",
+      "target": "面白い",
+      "phrases": [
+        {"known": "Interesting.", "target": "面白い。"},
+        {"known": "It's interesting.", "target": "面白いです。"},
+        {"known": "That's interesting.", "target": "それは面白い。"},
+        {"known": "So it's interesting.", "target": "だから面白いです。"},
+        {"known": "His words are interesting.", "target": "彼の言葉は面白いです。"},
+        {"known": "That kind of thing is interesting.", "target": "そんなことは面白いです。"},
+        {"known": "When I understand, it's interesting.", "target": "わかると面白いです。"},
+        {"known": "So her way of saying is interesting.", "target": "だから彼女の言い方は面白いです。"},
+        {"known": "It's interesting when I understand enough words.", "target": "十分な言葉がわかると面白いです。"},
+        {"known": "What she wanted to say is very interesting.", "target": "彼女の言いたかったことはとても面白いです。"}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "polite copula",
+      "target": "です",
+      "phrases": [
+        {"known": "It is.", "target": "です。"},
+        {"known": "This is.", "target": "これです。"},
+        {"known": "That is.", "target": "それです。"},
+        {"known": "It's good.", "target": "いいです。"},
+        {"known": "It's interesting.", "target": "面白いです。"},
+        {"known": "So it is enough.", "target": "だから十分です。"},
+        {"known": "His words are interesting.", "target": "彼の言葉は面白いです。"},
+        {"known": "So that kind of thing is good.", "target": "だからそんなことはいいです。"},
+        {"known": "It's interesting when I understand enough words.", "target": "十分な言葉がわかると面白いです。"},
+        {"known": "What she wanted to say is very interesting.", "target": "彼女の言いたかったことはとても面白いです。"},
+        {"known": "So his words are very interesting.", "target": "だから彼の言葉はとても面白いです。"}
+      ]
+    }
+  ]
+}

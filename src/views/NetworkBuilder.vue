@@ -184,7 +184,7 @@ import { ref, computed, onMounted } from 'vue'
 // Use ngrok tunnel for production, localhost for dev
 const API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:3480/api/network-builder'
-  : 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/network-builder'
+  : 'https://popty.ngrok.app/api/network-builder'
 
 const currentNetwork = ref('default')
 const networkList = ref([])

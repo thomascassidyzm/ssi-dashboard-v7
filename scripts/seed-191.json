@@ -1,0 +1,51 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 191,
+  "known_text": "No I don't mind at all.",
+  "target_text": "いいえ、全然構いません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "no",
+      "target": "いいえ、",
+      "phrases": [
+        {"known": "no", "target": "いいえ、"},
+        {"known": "no I don't", "target": "いいえ、しません"},
+        {"known": "no it's not", "target": "いいえ、違います"},
+        {"known": "no I haven't", "target": "いいえ、していません"},
+        {"known": "no I don't think so", "target": "いいえ、そう思いません"},
+        {"known": "no she didn't say that", "target": "いいえ、彼女はそう言いませんでした"},
+        {"known": "no I didn't go there yesterday", "target": "いいえ、昨日そこに行きませんでした"},
+        {"known": "no I haven't seen them anywhere", "target": "いいえ、どこかで見ていません"},
+        {"known": "no I didn't understand what he said", "target": "いいえ、彼が言ったことが分かりませんでした"},
+        {"known": "no I wasn't satisfied with how things turned out", "target": "いいえ、どうなったか満足していませんでした"},
+        {"known": "no I don't think that's a good idea at all", "target": "いいえ、それは全然いい考えだと思いません"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I don't mind at all",
+      "target": "全然構いません",
+      "components": [
+        {"known": "at all/not at all", "target": "全然"},
+        {"known": "I don't mind", "target": "構いません"}
+      ],
+      "phrases": [
+        {"known": "at all", "target": "全然"},
+        {"known": "I don't mind", "target": "構いません"},
+        {"known": "not at all", "target": "全然ないです"},
+        {"known": "I don't mind at all", "target": "全然構いません"},
+        {"known": "he doesn't mind at all", "target": "彼は全然構いません"},
+        {"known": "she said she doesn't mind", "target": "彼女は構わないと言いました"},
+        {"known": "it doesn't matter at all", "target": "全然問題ありません"},
+        {"known": "I don't understand at all", "target": "全然分かりません"},
+        {"known": "I didn't know that at all", "target": "それを全然知りませんでした"},
+        {"known": "she told me she doesn't mind waiting", "target": "彼女は待っても構わないと言いました"},
+        {"known": "he doesn't mind if we go there tomorrow instead", "target": "彼は明日そこに行っても構わないと言いました"},
+        {"known": "he told me it doesn't matter at all if I come tomorrow", "target": "彼は明日来ても全然問題ないと言いました"}
+      ]
+    }
+  ]
+}

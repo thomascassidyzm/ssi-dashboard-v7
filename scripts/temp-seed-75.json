@@ -1,0 +1,53 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 75,
+  "known_text": "Have you got more to learn?",
+  "target_text": "もっと学ぶことがありますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "more",
+      "target": "もっと",
+      "phrases": [
+        {"known": "more", "target": "もっと"},
+        {"known": "more fun", "target": "もっと楽しい"},
+        {"known": "more difficult", "target": "もっと難しい"},
+        {"known": "more important", "target": "もっと大切"},
+        {"known": "want more", "target": "もっとほしい"},
+        {"known": "learn more", "target": "もっと学ぶ"},
+        {"known": "do it more", "target": "もっとやる"},
+        {"known": "understand it more", "target": "もっと理解する"},
+        {"known": "I want to know more", "target": "もっと知りたいです"},
+        {"known": "he wants to learn more", "target": "彼はもっと学びたいです"},
+        {"known": "she said she wants more", "target": "彼女はもっとほしいと言いました"},
+        {"known": "I think we need more time", "target": "もっと時間が必要だと思います"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you have things to learn?",
+      "target": "学ぶことがありますか？",
+      "components": [
+        {"known": "thing to learn", "target": "学ぶこと"},
+        {"known": "is there? (question)", "target": "がありますか？"}
+      ],
+      "phrases": [
+        {"known": "learn", "target": "学ぶ"},
+        {"known": "thing to learn", "target": "学ぶこと"},
+        {"known": "is there?", "target": "ありますか？"},
+        {"known": "do you have?", "target": "がありますか？"},
+        {"known": "things to do", "target": "やることがある"},
+        {"known": "do you have things to learn?", "target": "学ぶことがありますか？"},
+        {"known": "she has things to do", "target": "彼女はやることがあります"},
+        {"known": "is there something to say?", "target": "言うことがありますか？"},
+        {"known": "he said there are things to learn", "target": "彼は学ぶことがあると言いました"},
+        {"known": "I think there are things to understand", "target": "理解することがあると思います"},
+        {"known": "she thinks there are more things to do", "target": "彼女はもっとやることがあると思います"},
+        {"known": "we think there are things to understand", "target": "私たちは理解することがあると思います"},
+        {"known": "she wanted to know if there are things to learn", "target": "彼女は学ぶことがあるか知りたかったです"}
+      ]
+    }
+  ]
+}

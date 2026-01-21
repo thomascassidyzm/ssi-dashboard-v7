@@ -1,0 +1,54 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 203,
+  "known_text": "What would you do if I asked you to help me?",
+  "target_text": "手伝ってと頼んだら何をしますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if I asked you to help",
+      "target": "手伝ってと頼んだら",
+      "components": [
+        {"known": "help", "target": "手伝って"},
+        {"known": "if I asked", "target": "と頼んだら"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "手伝って"},
+        {"known": "if asked", "target": "頼んだら"},
+        {"known": "please help", "target": "手伝ってください"},
+        {"known": "help with this", "target": "これを手伝って"},
+        {"known": "if I asked you to help", "target": "手伝ってと頼んだら"},
+        {"known": "can you help me", "target": "手伝ってくれますか"},
+        {"known": "I asked for help", "target": "手伝ってと頼みました"},
+        {"known": "if you asked me I would help", "target": "頼まれたら手伝います"},
+        {"known": "I asked him to help but he was too busy yesterday", "target": "手伝ってと頼みましたが、昨日は忙しすぎました"},
+        {"known": "if I asked you to come to the office tomorrow would you come", "target": "明日オフィスに来てと頼んだら、来ますか"},
+        {"known": "I'm going to ask her to help us with the work tomorrow morning", "target": "明日の朝仕事を手伝ってと彼女に頼むつもりです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what would you do",
+      "target": "何をしますか",
+      "components": [
+        {"known": "what (object)", "target": "何を"},
+        {"known": "would you do", "target": "しますか"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "何を"},
+        {"known": "would do", "target": "しますか"},
+        {"known": "what will you do", "target": "何をしますか"},
+        {"known": "what did you do", "target": "何をしましたか"},
+        {"known": "what are you doing", "target": "何をしていますか"},
+        {"known": "what should I do", "target": "何をすればいいですか"},
+        {"known": "I don't know what to do", "target": "何をすればいいかわかりません"},
+        {"known": "what will you do tomorrow morning at the office", "target": "明日の朝オフィスで何をしますか"},
+        {"known": "what would you do if she asked you to help with the work", "target": "彼女に仕事を手伝ってと頼まれたら何をしますか"},
+        {"known": "what did you do yesterday when you went to see her", "target": "昨日彼女に会いに行った時何をしましたか"},
+        {"known": "I don't know what to do about this problem so please help me", "target": "この問題についてどうすればいいかわからないので、手伝ってください"}
+      ]
+    }
+  ]
+}

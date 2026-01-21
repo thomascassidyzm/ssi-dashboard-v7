@@ -1,0 +1,50 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 199,
+  "known_text": "My friend used to work in an office.",
+  "target_text": "友達は以前オフィスで働いていました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "my friend",
+      "target": "友達は",
+      "phrases": [
+        {"known": "friend", "target": "友達"},
+        {"known": "my friend", "target": "友達は"},
+        {"known": "my friend came", "target": "友達が来ました"},
+        {"known": "my friend is here", "target": "友達はここにいます"},
+        {"known": "I met my friend", "target": "友達に会いました"},
+        {"known": "my friend is busy", "target": "友達は忙しいです"},
+        {"known": "my friend works here", "target": "友達はここで働いています"},
+        {"known": "my friend told me about it", "target": "友達がそれについて教えてくれました"},
+        {"known": "I'm going to meet my friend at the office tomorrow", "target": "明日オフィスで友達に会いに行きます"},
+        {"known": "my friend said she's doing well at her new job", "target": "友達は新しい仕事でうまくやっていると言いました"},
+        {"known": "my friend is going to come to the office tomorrow morning", "target": "友達は明日の朝オフィスに来るつもりです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "used to work in an office",
+      "target": "以前オフィスで働いていました",
+      "components": [
+        {"known": "before/formerly", "target": "以前"},
+        {"known": "worked in an office", "target": "オフィスで働いていました"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "以前"},
+        {"known": "I worked", "target": "働いていました"},
+        {"known": "in an office", "target": "オフィスで"},
+        {"known": "used to work in an office", "target": "以前オフィスで働いていました"},
+        {"known": "I used to work here", "target": "以前ここで働いていました"},
+        {"known": "I used to think that", "target": "以前そう思っていました"},
+        {"known": "he used to come here a lot", "target": "以前よくここに来ていました"},
+        {"known": "she used to work for the council", "target": "以前市役所で働いていました"},
+        {"known": "I used to work at that office before I came here", "target": "ここに来る前そのオフィスで働いていました"},
+        {"known": "my friend used to work there but now she works here", "target": "友達は以前そこで働いていましたが、今はここで働いています"},
+        {"known": "I used to work in an office but now I like to work at home", "target": "以前はオフィスで働いていましたが、今は家で働くのが好きです"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 80,
+  "known_text": "I'm not sure when I'll be ready.",
+  "target_text": "いつ準備ができるかわかりません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "when (question)",
+      "target": "いつ",
+      "phrases": [
+        {"known": "when?", "target": "いつ？"},
+        {"known": "when is it?", "target": "いつですか？"},
+        {"known": "when did you come?", "target": "いつ来ましたか？"},
+        {"known": "when did she say it?", "target": "彼女はいつ言いましたか？"},
+        {"known": "when did he start?", "target": "彼はいつ始めましたか？"},
+        {"known": "I do not know when", "target": "いつかわかりません"},
+        {"known": "when did you understand?", "target": "いつわかりましたか？"},
+        {"known": "she asked when he did it", "target": "彼女は彼がいつやったか聞きました"},
+        {"known": "I do not know when she will be done", "target": "彼女がいつ終わるかわかりません"},
+        {"known": "he wanted to know when we would start", "target": "彼は私たちがいつ始めるか知りたかったです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "will be ready (question)",
+      "target": "準備ができるか",
+      "components": [
+        {"known": "preparation/ready", "target": "準備が"},
+        {"known": "can do (question)", "target": "できるか"}
+      ],
+      "phrases": [
+        {"known": "can do", "target": "できる"},
+        {"known": "ready", "target": "準備"},
+        {"known": "is ready", "target": "準備ができた"},
+        {"known": "will be ready", "target": "準備ができる"},
+        {"known": "not ready yet", "target": "まだ準備ができていない"},
+        {"known": "are you ready?", "target": "準備ができましたか？"},
+        {"known": "she is ready", "target": "彼女は準備ができています"},
+        {"known": "he asked if I was ready", "target": "彼は準備ができたか聞きました"},
+        {"known": "I do not know if she will be ready", "target": "彼女が準備ができるかわかりません"},
+        {"known": "we asked when he would be ready", "target": "私たちは彼がいつ準備ができるか聞きました"},
+        {"known": "she said she is not ready yet", "target": "彼女はまだ準備ができていないと言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "don't know/not sure",
+      "target": "わかりません",
+      "phrases": [
+        {"known": "I know", "target": "わかる"},
+        {"known": "I understand", "target": "わかります"},
+        {"known": "not sure", "target": "わかりません"},
+        {"known": "I understood", "target": "わかりました"},
+        {"known": "do you know?", "target": "わかりますか？"},
+        {"known": "I did not know", "target": "わかりませんでした"},
+        {"known": "she is not sure", "target": "彼女はわかりません"},
+        {"known": "he did not know it", "target": "彼はわかりませんでした"},
+        {"known": "I am not sure when I will be ready", "target": "いつ準備ができるかわかりません"},
+        {"known": "she is not sure what he said", "target": "彼女は彼が何を言ったかわかりません"},
+        {"known": "we are not sure when they will start", "target": "私たちは彼らがいつ始めるかわかりません"}
+      ]
+    }
+  ]
+}

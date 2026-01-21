@@ -1,0 +1,61 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 214,
+  "known_text": "Did you have a good time at the weekend?",
+  "target_text": "週末は楽しかったですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "at the weekend",
+      "target": "週末は",
+      "components": [
+        {"known": "weekend", "target": "週末"},
+        {"known": "topic marker", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "week", "target": "週"},
+        {"known": "end", "target": "末"},
+        {"known": "weekend", "target": "週末"},
+        {"known": "at the weekend", "target": "週末は"},
+        {"known": "on the weekend", "target": "週末に"},
+        {"known": "this weekend", "target": "この週末"},
+        {"known": "last weekend", "target": "先週末"},
+        {"known": "on weekends", "target": "週末には"},
+        {"known": "at the weekend I went", "target": "週末に行きました"},
+        {"known": "what are you doing this weekend", "target": "この週末何をしますか"},
+        {"known": "I worked all weekend", "target": "週末ずっと働きました"},
+        {"known": "the weekend was really enjoyable", "target": "週末は本当に楽しかったです"},
+        {"known": "next weekend", "target": "来週末"},
+        {"known": "weekends are nice", "target": "週末はいいです"},
+        {"known": "I always look forward to the weekend", "target": "いつも週末を楽しみにしています"},
+        {"known": "did you do anything fun at the weekend", "target": "週末に何か楽しいことをしましたか"},
+        {"known": "I spent the whole weekend working on it", "target": "週末ずっとそれに取り組んでいました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "did you have a good time",
+      "target": "楽しかったですか",
+      "components": [
+        {"known": "was fun/enjoyable", "target": "楽しかった"},
+        {"known": "is it (question)", "target": "ですか"}
+      ],
+      "phrases": [
+        {"known": "fun", "target": "楽しい"},
+        {"known": "was fun", "target": "楽しかった"},
+        {"known": "was it fun", "target": "楽しかったですか"},
+        {"known": "it was fun", "target": "楽しかったです"},
+        {"known": "did you enjoy it", "target": "楽しかったですか"},
+        {"known": "yes it was fun", "target": "はい、楽しかったです"},
+        {"known": "was it difficult", "target": "難しかったですか"},
+        {"known": "the work was not fun", "target": "仕事は楽しくなかったです"},
+        {"known": "did you have a good time yesterday", "target": "昨日楽しかったですか"},
+        {"known": "meeting everyone was really fun", "target": "みんなに会うのは本当に楽しかったです"},
+        {"known": "was it fun gathering with the group", "target": "グループで集まるのは楽しかったですか"},
+        {"known": "spending time with them was very enjoyable", "target": "彼らと時間を過ごすのは本当に楽しかったです"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 192,
+  "known_text": "I'm busy tomorrow night.",
+  "target_text": "明日の夜は忙しいです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "tomorrow night (as topic)",
+      "target": "明日の夜は",
+      "components": [
+        {"known": "tomorrow", "target": "明日"},
+        {"known": "night (topic)", "target": "の夜は"}
+      ],
+      "phrases": [
+        {"known": "tomorrow", "target": "明日"},
+        {"known": "night", "target": "夜"},
+        {"known": "tomorrow night", "target": "明日の夜"},
+        {"known": "tomorrow night (topic)", "target": "明日の夜は"},
+        {"known": "at tomorrow night", "target": "明日の夜に"},
+        {"known": "tomorrow night is good", "target": "明日の夜はいいです"},
+        {"known": "I can go tomorrow night", "target": "明日の夜に行けます"},
+        {"known": "tomorrow night I have time", "target": "明日の夜は時間があります"},
+        {"known": "tomorrow night would be better", "target": "明日の夜の方がいいです"},
+        {"known": "what are you doing tomorrow night", "target": "明日の夜は何をしますか"},
+        {"known": "she said tomorrow night works for her", "target": "彼女は明日の夜がいいと言いました"},
+        {"known": "I think tomorrow night would be a good time to meet", "target": "明日の夜は会うのにいい時間だと思います"},
+        {"known": "I don't know yet what I'll do tomorrow night", "target": "明日の夜は何をするかまだ分かりません"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm busy",
+      "target": "忙しいです",
+      "components": [
+        {"known": "busy", "target": "忙しい"},
+        {"known": "is (polite)", "target": "です"}
+      ],
+      "phrases": [
+        {"known": "busy", "target": "忙しい"},
+        {"known": "I'm busy", "target": "忙しいです"},
+        {"known": "very busy", "target": "とても忙しい"},
+        {"known": "I'm very busy", "target": "とても忙しいです"},
+        {"known": "are you busy", "target": "忙しいですか"},
+        {"known": "she's busy today", "target": "彼女は今日忙しいです"},
+        {"known": "he said he's busy", "target": "彼は忙しいと言いました"},
+        {"known": "I was busy yesterday", "target": "昨日忙しかったです"},
+        {"known": "I've been busy this week", "target": "今週忙しかったです"},
+        {"known": "she's always busy so it's hard to meet her", "target": "彼女はいつも忙しいので会うのが難しいです"},
+        {"known": "he said he was too busy to come yesterday", "target": "彼は忙しすぎて昨日来られなかったと言いました"},
+        {"known": "I'm busy tomorrow night so I can't go to the meeting", "target": "明日の夜は忙しいので会いに行けません"}
+      ]
+    }
+  ]
+}

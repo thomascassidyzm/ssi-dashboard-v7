@@ -1,0 +1,53 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 216,
+  "known_text": "I saw a few friends.",
+  "target_text": "何人かの友達に会いました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a few friends",
+      "target": "何人かの友達に",
+      "components": [
+        {"known": "a few people", "target": "何人か"},
+        {"known": "'s (possessive)", "target": "の"},
+        {"known": "friend (to)", "target": "友達に"}
+      ],
+      "phrases": [
+        {"known": "friend", "target": "友達"},
+        {"known": "a few", "target": "何人か"},
+        {"known": "to a friend", "target": "友達に"},
+        {"known": "with friends", "target": "友達と"},
+        {"known": "a few friends", "target": "何人かの友達"},
+        {"known": "a few people came", "target": "何人か来ました"},
+        {"known": "I met a few people", "target": "何人かに会いました"},
+        {"known": "I saw a friend yesterday", "target": "昨日友達に会いました"},
+        {"known": "a few of my friends were there", "target": "何人かの友達がそこにいました"},
+        {"known": "I talked with a few friends about it", "target": "何人かの友達とそれについて話しました"},
+        {"known": "I went out with a few friends on Saturday", "target": "土曜日に何人かの友達と出かけました"},
+        {"known": "a few friends said they wanted to come too", "target": "何人かの友達も来たいと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "I saw",
+      "target": "会いました",
+      "phrases": [
+        {"known": "meet", "target": "会う"},
+        {"known": "I met", "target": "会いました"},
+        {"known": "I saw", "target": "会いました"},
+        {"known": "I'll meet", "target": "会います"},
+        {"known": "I met them", "target": "彼らに会いました"},
+        {"known": "I met him there", "target": "そこで彼に会いました"},
+        {"known": "I want to meet you", "target": "あなたに会いたいです"},
+        {"known": "I met her yesterday", "target": "昨日彼女に会いました"},
+        {"known": "I saw them at the weekend", "target": "週末に彼らに会いました"},
+        {"known": "I met a few friends on Saturday night", "target": "土曜日の夜に何人かの友達に会いました"},
+        {"known": "I was glad when I met them at the meeting", "target": "会いで彼らに会った時嬉しかったです"},
+        {"known": "I wanted to meet you but didn't have time", "target": "あなたに会いたかったですが時間がありませんでした"}
+      ]
+    }
+  ]
+}

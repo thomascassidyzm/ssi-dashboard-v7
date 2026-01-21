@@ -1,0 +1,101 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 209,
+  "known_text": "They want to spend more time meeting as a group.",
+  "target_text": "彼らはグループとして集まってもっと時間を過ごしたいです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "they (topic)",
+      "target": "彼らは",
+      "phrases": [
+        {"known": "they", "target": "彼ら"},
+        {"known": "they (topic)", "target": "彼らは"},
+        {"known": "to them", "target": "彼らに"},
+        {"known": "they came", "target": "彼らは来ました"},
+        {"known": "they are here", "target": "彼らはいます"},
+        {"known": "they want to go", "target": "彼らは行きたいです"},
+        {"known": "they said yes", "target": "彼らはそうと言いました"},
+        {"known": "they helped me yesterday", "target": "彼らは昨日手伝いました"},
+        {"known": "they wanted to come too", "target": "彼らも来たかったです"},
+        {"known": "they didn't understand what I said", "target": "彼らは私が言ったことがわかりませんでした"},
+        {"known": "they said they want to help us with the work", "target": "彼らは私たちの仕事を手伝いたいと言いました"},
+        {"known": "they told me they want to meet here tomorrow", "target": "彼らは明日ここで会いたいと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "as a group",
+      "target": "グループとして",
+      "components": [
+        {"known": "group", "target": "グループ"},
+        {"known": "as (role)", "target": "として"}
+      ],
+      "phrases": [
+        {"known": "group", "target": "グループ"},
+        {"known": "as", "target": "として"},
+        {"known": "as a group", "target": "グループとして"},
+        {"known": "as a friend", "target": "友達として"},
+        {"known": "work as a group", "target": "グループとして働く"},
+        {"known": "meet as a group", "target": "グループとして会う"},
+        {"known": "I came here as a friend", "target": "友達としてここに来ました"},
+        {"known": "working as a group is fun", "target": "グループとして働くのは楽しいです"},
+        {"known": "meeting as a group is a good idea", "target": "グループとして会うのはいい考えです"},
+        {"known": "they want to work together as a group", "target": "彼らはグループとして一緒に働きたいです"},
+        {"known": "I like spending time with them as a group", "target": "グループとして彼らと一緒にいるのが好きです"},
+        {"known": "she said we should meet more often as a group", "target": "彼女はグループとしてもっと会うべきだと言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "gathering",
+      "target": "集まって",
+      "components": [
+        {"known": "to gather", "target": "集まる"},
+        {"known": "and (te-form)", "target": "て"}
+      ],
+      "phrases": [
+        {"known": "gather", "target": "集まる"},
+        {"known": "gathering", "target": "集まって"},
+        {"known": "let's gather", "target": "集まりましょう"},
+        {"known": "we gathered", "target": "集まりました"},
+        {"known": "gathering together", "target": "一緒に集まって"},
+        {"known": "they gathered yesterday", "target": "彼らは昨日集まりました"},
+        {"known": "everyone gathered here", "target": "みんなここに集まりました"},
+        {"known": "I want everyone to gather", "target": "みんなに集まってほしいです"},
+        {"known": "they gathered and talked about it", "target": "彼らは集まってそれについて話しました"},
+        {"known": "we gathered as a group and had fun", "target": "グループとして集まって楽しかったです"},
+        {"known": "everyone gathered at the place yesterday", "target": "昨日みんながそのところに集まりました"},
+        {"known": "I heard they gathered and talked about the work", "target": "彼らは集まって仕事について話したと聞きました"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "want to spend more time",
+      "target": "もっと時間を過ごしたいです",
+      "components": [
+        {"known": "more", "target": "もっと"},
+        {"known": "time (object)", "target": "時間を"},
+        {"known": "want to spend", "target": "過ごしたいです"}
+      ],
+      "phrases": [
+        {"known": "more", "target": "もっと"},
+        {"known": "time", "target": "時間"},
+        {"known": "spend", "target": "過ごす"},
+        {"known": "more time", "target": "もっと時間"},
+        {"known": "spend time", "target": "時間を過ごす"},
+        {"known": "want to spend time", "target": "時間を過ごしたい"},
+        {"known": "want to spend more", "target": "もっと過ごしたいです"},
+        {"known": "I spent time there", "target": "そこで時間を過ごしました"},
+        {"known": "I want to spend more time here", "target": "ここでもっと時間を過ごしたいです"},
+        {"known": "spending time together is nice", "target": "一緒に時間を過ごすのはいいです"},
+        {"known": "I want to spend more time with you", "target": "あなたともっと時間を過ごしたいです"},
+        {"known": "they want to spend more time together as a group", "target": "彼らはグループとしてもっと時間を過ごしたいです"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 162,
+  "known_text": "What do you think about that?",
+  "target_text": "それについてどう思いますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "about that",
+      "target": "それについて",
+      "components": [
+        {"known": "that", "target": "それ"},
+        {"known": "about", "target": "について"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それ"},
+        {"known": "about", "target": "について"},
+        {"known": "about that", "target": "それについて"},
+        {"known": "about this", "target": "これについて"},
+        {"known": "about that book", "target": "その本について"},
+        {"known": "about that word", "target": "その言葉について"},
+        {"known": "Let's talk about that", "target": "それについて話しましょう"},
+        {"known": "about something else", "target": "何か他のことについて"},
+        {"known": "Can you tell me about that?", "target": "それについて教えていただけますか？"},
+        {"known": "I think we should talk about that tomorrow morning", "target": "それについて明日の朝話すべきだと思います"},
+        {"known": "She said something else about that when we met last time", "target": "前に会った時、彼女はそれについて何か他のことを言った"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "What do you think",
+      "target": "どう思いますか？",
+      "components": [
+        {"known": "how / what", "target": "どう"},
+        {"known": "do you think", "target": "思いますか"}
+      ],
+      "phrases": [
+        {"known": "think", "target": "思う"},
+        {"known": "how / what", "target": "どう"},
+        {"known": "do you think", "target": "思いますか"},
+        {"known": "What do you think", "target": "どう思いますか"},
+        {"known": "I think so", "target": "そう思います"},
+        {"known": "What do you think about this?", "target": "これについてどう思いますか？"},
+        {"known": "What do you think we should do?", "target": "何をするべきだと思いますか？"},
+        {"known": "I think it's good", "target": "いいと思います"},
+        {"known": "What do you think about what happened last Sunday?", "target": "前の日曜日に起こったことについてどう思いますか？"},
+        {"known": "She asked me what I think about going to a restaurant tonight", "target": "今夜レストランに行くことについてどう思うか彼女は聞いた"},
+        {"known": "What do you think about learning Japanese in exactly the same way?", "target": "全く同じ言い方で日本語を学ぶことについてどう思いますか？"}
+      ]
+    }
+  ]
+}

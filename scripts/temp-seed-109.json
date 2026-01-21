@@ -1,0 +1,78 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 109,
+  "known_text": "We must work hard to learn a lot of new words.",
+  "target_text": "たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a lot of new words (object)",
+      "target": "たくさんの新しい言葉を",
+      "components": [
+        {"known": "a lot of", "target": "たくさんの"},
+        {"known": "new", "target": "新しい"},
+        {"known": "words (object)", "target": "言葉を"}
+      ],
+      "phrases": [
+        {"known": "a lot", "target": "たくさん"},
+        {"known": "a lot of", "target": "たくさんの"},
+        {"known": "new words", "target": "新しい言葉"},
+        {"known": "new words (object)", "target": "新しい言葉を"},
+        {"known": "a lot of words", "target": "たくさんの言葉"},
+        {"known": "a lot of words (object)", "target": "たくさんの言葉を"},
+        {"known": "a lot of new words", "target": "たくさんの新しい言葉"},
+        {"known": "a lot of new words (object)", "target": "たくさんの新しい言葉を"},
+        {"known": "I learned a lot of new words", "target": "たくさんの新しい言葉を学びました"},
+        {"known": "she knows a lot of new words", "target": "彼女はたくさんの新しい言葉を知っています"},
+        {"known": "my friend wants to learn a lot of new words", "target": "友達はたくさんの新しい言葉を学びたいです"},
+        {"known": "he said he learned a lot of new words last week", "target": "彼は先週たくさんの新しい言葉を学んだと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "in order to learn",
+      "target": "学ぶために",
+      "components": [
+        {"known": "learn", "target": "学ぶ"},
+        {"known": "in order to", "target": "ために"}
+      ],
+      "phrases": [
+        {"known": "learn", "target": "学ぶ"},
+        {"known": "in order to", "target": "ために"},
+        {"known": "in order to learn", "target": "学ぶために"},
+        {"known": "in order to understand", "target": "分かるために"},
+        {"known": "in order to learn this", "target": "これを学ぶために"},
+        {"known": "in order to learn this language", "target": "この言語を学ぶために"},
+        {"known": "I wake up early in order to learn", "target": "学ぶために早く起きます"},
+        {"known": "she reads a lot in order to learn new words", "target": "彼女は新しい言葉を学ぶためにたくさん読みます"},
+        {"known": "my friend wakes early in order to learn more", "target": "友達はもっと学ぶために早く起きます"},
+        {"known": "we need to work hard in order to learn this language well", "target": "この言語をよく学ぶために一生懸命働く必要があります"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "must work hard",
+      "target": "一生懸命働かなければなりません",
+      "components": [
+        {"known": "work hard", "target": "一生懸命働か"},
+        {"known": "must (negative conditional)", "target": "なければなりません"}
+      ],
+      "phrases": [
+        {"known": "work", "target": "働く"},
+        {"known": "work hard", "target": "一生懸命働く"},
+        {"known": "I work hard", "target": "一生懸命働きます"},
+        {"known": "must (do)", "target": "なければなりません"},
+        {"known": "I must work", "target": "働かなければなりません"},
+        {"known": "must work hard", "target": "一生懸命働かなければなりません"},
+        {"known": "she must work hard", "target": "彼女は一生懸命働かなければなりません"},
+        {"known": "we must work hard here", "target": "ここで一生懸命働かなければなりません"},
+        {"known": "he said he must work hard", "target": "彼は一生懸命働かなければならないと言いました"},
+        {"known": "my friend must work hard to finish this early", "target": "友達はこれを早く終わらせるために一生懸命働かなければなりません"},
+        {"known": "I think we must work hard in order to learn a lot", "target": "たくさん学ぶために一生懸命働かなければならないと思います"}
+      ]
+    }
+  ]
+}

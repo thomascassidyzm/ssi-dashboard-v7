@@ -1,0 +1,53 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 212,
+  "known_text": "They wanted to ask for help.",
+  "target_text": "彼らは助けを求めたかったです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "they (topic)",
+      "target": "彼らは",
+      "phrases": [
+        {"known": "they", "target": "彼ら"},
+        {"known": "they (topic)", "target": "彼らは"},
+        {"known": "to them", "target": "彼らに"},
+        {"known": "they came", "target": "彼らは来ました"},
+        {"known": "they wanted to", "target": "彼らはしたかった"},
+        {"known": "they were busy", "target": "彼らは忙しかったです"},
+        {"known": "they explained it to me", "target": "彼らは私に説明しました"},
+        {"known": "they gathered here yesterday", "target": "彼らは昨日ここに集まりました"},
+        {"known": "they told us what happened", "target": "彼らは何があったか私たちに言いました"},
+        {"known": "they needed more time to do it", "target": "彼らはそれをするのにもっと時間が必要でした"},
+        {"known": "they wanted to discuss the problem with us", "target": "彼らは私たちとその問題を話し合いたかったです"},
+        {"known": "they said the work was more difficult than they thought", "target": "彼らは仕事が思ったより難しかったと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wanted to ask for help",
+      "target": "助けを求めたかったです",
+      "components": [
+        {"known": "help (object)", "target": "助けを"},
+        {"known": "wanted to ask for", "target": "求めたかったです"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "助け"},
+        {"known": "ask for", "target": "求める"},
+        {"known": "wanted to", "target": "たかった"},
+        {"known": "ask for help", "target": "助けを求める"},
+        {"known": "wanted to ask for", "target": "求めたかった"},
+        {"known": "I asked for help", "target": "助けを求めました"},
+        {"known": "help from friends", "target": "友達からの助け"},
+        {"known": "I needed to ask for help", "target": "助けを求める必要がありました"},
+        {"known": "she asked for my help", "target": "彼女は私の助けを求めました"},
+        {"known": "I wanted to ask for help yesterday", "target": "昨日助けを求めたかったです"},
+        {"known": "asking for help is not difficult", "target": "助けを求めるのは難しくないです"},
+        {"known": "I didn't know who to ask for help from", "target": "誰に助けを求めたらいいかわかりませんでした"},
+        {"known": "I wanted to ask for help but didn't know how", "target": "助けを求めたかったですがどうするかわかりませんでした"}
+      ]
+    }
+  ]
+}

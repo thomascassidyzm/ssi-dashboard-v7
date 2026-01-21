@@ -1,0 +1,50 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 81,
+  "known_text": "When do you want to start?",
+  "target_text": "いつ始めたいですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "when (question)",
+      "target": "いつ",
+      "phrases": [
+        {"known": "when?", "target": "いつ？"},
+        {"known": "when is it?", "target": "いつですか？"},
+        {"known": "when did you come?", "target": "いつ来ましたか？"},
+        {"known": "when did she say it?", "target": "彼女はいつ言いましたか？"},
+        {"known": "when did he start?", "target": "彼はいつ始めましたか？"},
+        {"known": "I do not know when", "target": "いつかわかりません"},
+        {"known": "when will you be ready?", "target": "いつ準備ができますか？"},
+        {"known": "she asked when he did it", "target": "彼女は彼がいつやったか聞きました"},
+        {"known": "I do not know when she will be done", "target": "彼女がいつ終わるかわかりません"},
+        {"known": "he wanted to know when we would start", "target": "彼は私たちがいつ始めるか知りたかったです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you want to start?",
+      "target": "始めたいですか？",
+      "components": [
+        {"known": "start (stem)", "target": "始め"},
+        {"known": "want to? (polite question)", "target": "たいですか？"}
+      ],
+      "phrases": [
+        {"known": "start", "target": "始める"},
+        {"known": "started", "target": "始めました"},
+        {"known": "want to start", "target": "始めたい"},
+        {"known": "do you want to?", "target": "したいですか？"},
+        {"known": "do you want to start?", "target": "始めたいですか？"},
+        {"known": "she wants to start", "target": "彼女は始めたいです"},
+        {"known": "he wanted to start today", "target": "彼は今日始めたかったです"},
+        {"known": "do you want to start now?", "target": "今始めたいですか？"},
+        {"known": "she asked if I wanted to start", "target": "彼女は始めたいか聞きました"},
+        {"known": "I asked when he wanted to start learning", "target": "彼がいつ学び始めたいか聞きました"},
+        {"known": "we wanted to know if she wanted to start today", "target": "私たちは彼女が今日始めたいか知りたかったです"},
+        {"known": "he asked when I wanted to start learning Japanese", "target": "彼は私がいつ日本語を学び始めたいか聞きました"}
+      ]
+    }
+  ]
+}

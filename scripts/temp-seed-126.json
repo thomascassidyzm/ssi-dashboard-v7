@@ -1,0 +1,82 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 126,
+  "known_text": "This work is changing the shape of my brain.",
+  "target_text": "この仕事が脳の形を変えています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this work (subject)",
+      "target": "この仕事が",
+      "components": [
+        {"known": "this", "target": "この"},
+        {"known": "work (subject)", "target": "仕事が"}
+      ],
+      "phrases": [
+        {"known": "this", "target": "この"},
+        {"known": "work", "target": "仕事"},
+        {"known": "this work", "target": "この仕事"},
+        {"known": "work (subject)", "target": "仕事が"},
+        {"known": "this work is", "target": "この仕事が"},
+        {"known": "this work is good", "target": "この仕事がいい"},
+        {"known": "this work is interesting", "target": "この仕事が面白いです"},
+        {"known": "this work went well yesterday", "target": "この仕事が昨日うまくいきました"},
+        {"known": "this work is more interesting than before", "target": "この仕事が前より面白いです"},
+        {"known": "this work is becoming easier to do now", "target": "この仕事が今簡単になってきています"},
+        {"known": "this work was a very good idea to start", "target": "この仕事を始めるのはとてもいい考えでした"},
+        {"known": "this work is helping me understand things better", "target": "この仕事が分かるのに役立っています"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the shape of the brain",
+      "target": "脳の形を",
+      "components": [
+        {"known": "brain's", "target": "脳の"},
+        {"known": "shape (object)", "target": "形を"}
+      ],
+      "phrases": [
+        {"known": "brain", "target": "脳"},
+        {"known": "shape", "target": "形"},
+        {"known": "brain's", "target": "脳の"},
+        {"known": "shape of", "target": "形を"},
+        {"known": "brain's shape", "target": "脳の形"},
+        {"known": "the brain's shape", "target": "脳の形を"},
+        {"known": "her brain's shape", "target": "彼女の脳の形"},
+        {"known": "the shape of our brains", "target": "私たちの脳の形"},
+        {"known": "her brain's shape changed", "target": "彼女の脳の形が変わりました"},
+        {"known": "the shape of our brains is interesting", "target": "私たちの脳の形は面白いです"},
+        {"known": "conversations change the shape of our brains", "target": "会話は脳の形を変えます"},
+        {"known": "I believe the shape of my brain changed yesterday", "target": "昨日私の脳の形が変わったと信じています"},
+        {"known": "my friend said the shape of her brain changed from learning", "target": "友達は学ぶことから脳の形が変わったと言いました"},
+        {"known": "the shape of the brain can change when we learn something new", "target": "新しいことを学ぶと脳の形が変わることができます"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "is changing",
+      "target": "変えています",
+      "components": [
+        {"known": "change", "target": "変え"},
+        {"known": "is doing (continuous)", "target": "ています"}
+      ],
+      "phrases": [
+        {"known": "change", "target": "変える"},
+        {"known": "changing", "target": "変えて"},
+        {"known": "is changing", "target": "変えています"},
+        {"known": "was changing", "target": "変えていました"},
+        {"known": "not changing", "target": "変えていない"},
+        {"known": "is not changing", "target": "変えていません"},
+        {"known": "it is changing my idea", "target": "私の考えを変えています"},
+        {"known": "this is changing things", "target": "これが変えています"},
+        {"known": "this conversation is changing my brain", "target": "この会話は脳を変えています"},
+        {"known": "learning is changing how we think", "target": "学ぶことは考え方を変えています"},
+        {"known": "the work we did yesterday is changing everything", "target": "昨日した仕事は全てを変えています"},
+        {"known": "what we learned today is definitely changing our brains", "target": "今日学んだことは確実に脳を変えています"}
+      ]
+    }
+  ]
+}

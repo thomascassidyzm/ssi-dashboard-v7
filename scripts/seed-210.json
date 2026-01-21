@@ -1,0 +1,88 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 210,
+  "known_text": "They think that we need to discuss the problem.",
+  "target_text": "彼らは私たちがその問題について話し合う必要があると思っています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "they think that",
+      "target": "彼らは...と思っています",
+      "components": [
+        {"known": "they (topic)", "target": "彼らは"},
+        {"known": "that (quotation)", "target": "と"},
+        {"known": "are thinking", "target": "思っています"}
+      ],
+      "phrases": [
+        {"known": "they", "target": "彼ら"},
+        {"known": "think", "target": "思う"},
+        {"known": "thinking", "target": "思っている"},
+        {"known": "that", "target": "と"},
+        {"known": "I think so", "target": "そう思います"},
+        {"known": "they think", "target": "彼らは思っています"},
+        {"known": "they think it's good", "target": "彼らはいいと思っています"},
+        {"known": "they think we should go", "target": "彼らは行くべきだと思っています"},
+        {"known": "they think it's difficult", "target": "彼らは難しいと思っています"},
+        {"known": "they think we can do it", "target": "彼らはできると思っています"},
+        {"known": "they think we need more time", "target": "彼らはもっと時間が必要だと思っています"},
+        {"known": "they think we should meet tomorrow", "target": "彼らは明日会うべきだと思っています"},
+        {"known": "they think we should work together on this", "target": "彼らはこれを一緒にやるべきだと思っています"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we need to discuss",
+      "target": "私たちが話し合う必要がある",
+      "components": [
+        {"known": "we (subject)", "target": "私たちが"},
+        {"known": "discuss", "target": "話し合う"},
+        {"known": "there is a need", "target": "必要がある"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "we (subject)", "target": "私たちが"},
+        {"known": "discuss", "target": "話し合う"},
+        {"known": "need", "target": "必要"},
+        {"known": "I need it", "target": "必要です"},
+        {"known": "we talked", "target": "話し合った"},
+        {"known": "we talked about", "target": "話し合いました"},
+        {"known": "we need to", "target": "私たちは必要がある"},
+        {"known": "need to discuss", "target": "話し合う必要がある"},
+        {"known": "we need to talk", "target": "私たちは話す必要があります"},
+        {"known": "I think we need to discuss it", "target": "話し合う必要があると思います"},
+        {"known": "we discussed it yesterday", "target": "私たちは昨日話し合いました"},
+        {"known": "I think we need to discuss this problem", "target": "私たちはこの問題を話し合う必要があると思います"},
+        {"known": "they said we need to discuss it more", "target": "彼らはもっと話し合う必要があると言いました"},
+        {"known": "she said we need to discuss what to do next", "target": "彼女は次に何をするか話し合う必要があると言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "the problem",
+      "target": "その問題について",
+      "components": [
+        {"known": "that", "target": "その"},
+        {"known": "problem", "target": "問題"},
+        {"known": "about", "target": "について"}
+      ],
+      "phrases": [
+        {"known": "problem", "target": "問題"},
+        {"known": "that", "target": "その"},
+        {"known": "about", "target": "について"},
+        {"known": "the problem", "target": "その問題"},
+        {"known": "about the problem", "target": "問題について"},
+        {"known": "there is a problem", "target": "問題があります"},
+        {"known": "about that problem", "target": "その問題について"},
+        {"known": "I heard about the problem", "target": "その問題について聞きました"},
+        {"known": "we talked about the problem", "target": "その問題について話しました"},
+        {"known": "there's a problem with the work", "target": "仕事に問題があります"},
+        {"known": "I didn't know about that problem before", "target": "以前その問題について知りませんでした"},
+        {"known": "they want to talk about the problem with us", "target": "彼らは私たちとその問題について話したいです"},
+        {"known": "she asked me to explain the problem to her", "target": "彼女はその問題について説明してと頼みました"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 215,
+  "known_text": "I went out on Saturday night.",
+  "target_text": "土曜日の夜に出かけました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "on that Saturday night",
+      "target": "土曜日の夜に",
+      "components": [
+        {"known": "Saturday", "target": "土曜日"},
+        {"known": "'s (possessive)", "target": "の"},
+        {"known": "night (at)", "target": "夜に"}
+      ],
+      "phrases": [
+        {"known": "night", "target": "夜"},
+        {"known": "Saturday", "target": "土曜日"},
+        {"known": "at night", "target": "夜に"},
+        {"known": "on Saturday", "target": "土曜日に"},
+        {"known": "Saturday night", "target": "土曜日の夜"},
+        {"known": "on Saturday night", "target": "土曜日の夜に"},
+        {"known": "last Saturday", "target": "先週の土曜日"},
+        {"known": "tomorrow is Saturday", "target": "明日は土曜日です"},
+        {"known": "I work on Saturdays", "target": "土曜日に働きます"},
+        {"known": "on Saturday night we met", "target": "土曜日の夜に会いました"},
+        {"known": "what did you do on Saturday night", "target": "土曜日の夜に何をしましたか"},
+        {"known": "I was busy on Saturday so I couldn't come", "target": "土曜日は忙しかったので来られませんでした"},
+        {"known": "we went out together on Saturday night", "target": "土曜日の夜に一緒に出かけました"},
+        {"known": "I wanted to go out on Saturday night but was too busy", "target": "土曜日の夜に出かけたかったですが忙しすぎました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I went out",
+      "target": "出かけました",
+      "components": [
+        {"known": "go out", "target": "出かける"},
+        {"known": "past (polite)", "target": "ました"}
+      ],
+      "phrases": [
+        {"known": "go out", "target": "出かける"},
+        {"known": "I went out", "target": "出かけました"},
+        {"known": "going out", "target": "出かけている"},
+        {"known": "I'll go out", "target": "出かけます"},
+        {"known": "let's go out", "target": "出かけましょう"},
+        {"known": "I want to go out", "target": "出かけたいです"},
+        {"known": "I went out with her", "target": "彼女と出かけました"},
+        {"known": "I went out yesterday", "target": "昨日出かけました"},
+        {"known": "are you going out tonight", "target": "今夜出かけますか"},
+        {"known": "I went out with my friend", "target": "友達と出かけました"},
+        {"known": "she said she went out on the weekend", "target": "彼女は週末に出かけたと言いました"},
+        {"known": "I couldn't go out because I was busy", "target": "忙しかったので出かけられませんでした"},
+        {"known": "I went out on Saturday night and had a good time", "target": "土曜日の夜に出かけて楽しかったです"}
+      ]
+    }
+  ]
+}

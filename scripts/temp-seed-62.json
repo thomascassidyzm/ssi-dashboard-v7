@@ -1,0 +1,116 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 62,
+  "known_text": "I'm not sure if I can help you at the same time.",
+  "target_text": "同時にあなたを手伝えるかどうかわかりません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "at the same time",
+      "target": "同時に",
+      "phrases": [
+        {"known": "At the same time.", "target": "同時に。"},
+        {"known": "Do it at the same time.", "target": "同時にする。"},
+        {"known": "I'll do it at the same time.", "target": "同時にします。"},
+        {"known": "So at the same time.", "target": "だから同時に。"},
+        {"known": "He said it at the same time.", "target": "彼は同時に言いました。"},
+        {"known": "She wants to do it at the same time.", "target": "彼女は同時にしたいです。"},
+        {"known": "So I want to see him at the same time.", "target": "だから同時に彼に会いたいです。"},
+        {"known": "She can't do that thing at the same time.", "target": "彼女は同時にそのことができません。"},
+        {"known": "I'm not sure if I can do it at the same time.", "target": "同時にできるかどうかわかりません。"},
+        {"known": "She said she can't help at the same time.", "target": "彼女は同時に手伝えないと言いました。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "you",
+      "target": "あなた",
+      "phrases": [
+        {"known": "You.", "target": "あなた。"},
+        {"known": "To you.", "target": "あなたに。"},
+        {"known": "Your thing.", "target": "あなたのこと。"},
+        {"known": "I see you.", "target": "あなたを見ます。"},
+        {"known": "So for you.", "target": "だからあなたに。"},
+        {"known": "I want to help you.", "target": "あなたを手伝いたいです。"},
+        {"known": "She said it to you.", "target": "彼女はあなたに言いました。"},
+        {"known": "He wants to see you.", "target": "彼はあなたに会いたいです。"},
+        {"known": "So I want to say it to you slowly.", "target": "だからあなたにゆっくり言いたいです。"},
+        {"known": "I can help you if you want.", "target": "あなたがしたいならあなたを手伝えます。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "object marker",
+      "target": "を",
+      "phrases": [
+        {"known": "It.", "target": "を。"},
+        {"known": "Do it.", "target": "それをする。"},
+        {"known": "I do it.", "target": "それをします。"},
+        {"known": "So I do that.", "target": "だからそれをします。"},
+        {"known": "I know that.", "target": "それを知っています。"},
+        {"known": "She sees his words.", "target": "彼女は彼の言葉を見ます。"},
+        {"known": "I help her.", "target": "彼女を手伝います。"},
+        {"known": "So he thought about that thing.", "target": "だから彼はそのことを考えました。"},
+        {"known": "She wanted to know his words.", "target": "彼女は彼の言葉を知りたかったです。"},
+        {"known": "So I want to help you at the same time.", "target": "だから同時にあなたを手伝いたいです。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "can help",
+      "target": "手伝える",
+      "phrases": [
+        {"known": "Can help.", "target": "手伝える。"},
+        {"known": "I can help.", "target": "手伝えます。"},
+        {"known": "He can help.", "target": "彼は手伝えます。"},
+        {"known": "So I can help.", "target": "だから手伝えます。"},
+        {"known": "She can help him.", "target": "彼女は彼を手伝えます。"},
+        {"known": "I can help you.", "target": "あなたを手伝えます。"},
+        {"known": "So he can help her with that.", "target": "だから彼は彼女をそれで手伝えます。"},
+        {"known": "I'm not sure if I can help.", "target": "手伝えるかどうかわかりません。"},
+        {"known": "She said she can help him next week.", "target": "彼女は来週彼を手伝えると言いました。"},
+        {"known": "So I can help you at the same time.", "target": "だから同時にあなたを手伝えます。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "whether or not",
+      "target": "かどうか",
+      "phrases": [
+        {"known": "Whether or not.", "target": "かどうか。"},
+        {"known": "If I can.", "target": "できるかどうか。"},
+        {"known": "Whether it's good.", "target": "いいかどうか。"},
+        {"known": "I don't know if.", "target": "かどうかわかりません。"},
+        {"known": "He's not sure if.", "target": "彼はかどうかわかりません。"},
+        {"known": "I'm not sure if I can.", "target": "できるかどうかわかりません。"},
+        {"known": "She doesn't know if it's enough.", "target": "十分かどうか彼女はわかりません。"},
+        {"known": "I'm not sure if I can help.", "target": "手伝えるかどうかわかりません。"},
+        {"known": "He's not sure if she can come next week.", "target": "彼女が来週来れるかどうか彼はわかりません。"},
+        {"known": "I'm not sure if I can help you at the same time.", "target": "同時にあなたを手伝えるかどうかわかりません。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "not sure",
+      "target": "わかりません",
+      "phrases": [
+        {"known": "Not sure.", "target": "わからない。"},
+        {"known": "I'm not sure.", "target": "わかりません。"},
+        {"known": "He's not sure.", "target": "彼はわかりません。"},
+        {"known": "So I'm not sure.", "target": "だからわかりません。"},
+        {"known": "She's not sure about that.", "target": "彼女はそのことがわかりません。"},
+        {"known": "I'm not sure if I can.", "target": "できるかどうかわかりません。"},
+        {"known": "So he's not sure about her words.", "target": "だから彼は彼女の言葉がわかりません。"},
+        {"known": "She's not sure what she should do.", "target": "彼女はやるべきことがわかりません。"},
+        {"known": "I'm not sure if I can help you.", "target": "あなたを手伝えるかどうかわかりません。"},
+        {"known": "So I'm not sure if I can help you at the same time.", "target": "だから同時にあなたを手伝えるかどうかわかりません。"}
+      ]
+    }
+  ]
+}

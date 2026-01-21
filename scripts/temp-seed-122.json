@@ -1,0 +1,56 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 122,
+  "known_text": "It's starting to feel easier and I'm excited about how it's going.",
+  "target_text": "簡単に感じ始めていて、どう進んでいるかにワクワクしています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "it's starting to feel easier",
+      "target": "簡単に感じ始めていて",
+      "components": [
+        {"known": "easy/simple", "target": "簡単に"},
+        {"known": "starting to feel", "target": "感じ始めていて"}
+      ],
+      "phrases": [
+        {"known": "easy", "target": "簡単"},
+        {"known": "feel", "target": "感じる"},
+        {"known": "easily", "target": "簡単に"},
+        {"known": "starting", "target": "始めて"},
+        {"known": "to feel easy", "target": "簡単に感じる"},
+        {"known": "starting to feel", "target": "感じ始めていて"},
+        {"known": "starting to feel easier", "target": "簡単に感じ始めていて"},
+        {"known": "it became easier to feel", "target": "簡単に感じるようになりました"},
+        {"known": "learning is starting to feel easier", "target": "学ぶのが簡単に感じ始めています"},
+        {"known": "she said it's starting to feel easier", "target": "彼女は簡単に感じ始めていると言いました"},
+        {"known": "conversations are starting to feel easier now", "target": "今会話が簡単に感じ始めています"},
+        {"known": "understanding is starting to feel easier than before", "target": "前より分かるのが簡単に感じ始めています"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm excited about how it's going",
+      "target": "どう進んでいるかにワクワクしています",
+      "components": [
+        {"known": "how it's progressing", "target": "どう進んでいるかに"},
+        {"known": "excited", "target": "ワクワクしています"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "どう"},
+        {"known": "progress", "target": "進む"},
+        {"known": "excited", "target": "ワクワク"},
+        {"known": "progressing", "target": "進んでいる"},
+        {"known": "how is it", "target": "どうですか"},
+        {"known": "I'm excited", "target": "ワクワクしている"},
+        {"known": "how it's going", "target": "どう進んでいるか"},
+        {"known": "about how it's going", "target": "どう進んでいるかに"},
+        {"known": "I'm excited (polite)", "target": "ワクワクしています"},
+        {"known": "I'm excited about how it's going", "target": "どう進んでいるかにワクワクしています"},
+        {"known": "she is excited about how the conversation went", "target": "会話がどう進んだかにワクワクしています"},
+        {"known": "I'm excited about how much we are learning", "target": "どれだけ学んでいるかにワクワクしています"}
+      ]
+    }
+  ]
+}

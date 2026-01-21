@@ -1,0 +1,74 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 200,
+  "known_text": "They say they want to make sure that we finish everything in time.",
+  "target_text": "彼らは私たちが全部間に合うように終わらせたいと言っています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "they (topic)",
+      "target": "彼らは",
+      "phrases": [
+        {"known": "they", "target": "彼ら"},
+        {"known": "they (topic)", "target": "彼らは"},
+        {"known": "to them", "target": "彼らに"},
+        {"known": "they came", "target": "彼らは来ました"},
+        {"known": "they are busy", "target": "彼らは忙しいです"},
+        {"known": "they don't understand", "target": "彼らは分かりません"},
+        {"known": "they said they want to go", "target": "彼らは行きたいと言いました"},
+        {"known": "they are trying to find it", "target": "彼らはそれを探そうとしています"},
+        {"known": "they work at the city office", "target": "彼らは市役所で働いています"},
+        {"known": "they said they were too busy to come yesterday", "target": "彼らは昨日忙しすぎて来られなかったと言いました"},
+        {"known": "I heard they used to work in an office before", "target": "彼らは以前オフィスで働いていたと聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "want to make sure we finish everything in time",
+      "target": "私たちが全部間に合うように終わらせたい",
+      "components": [
+        {"known": "we (subject)", "target": "私たちが"},
+        {"known": "everything in time", "target": "全部間に合う"},
+        {"known": "so that/want to make finish", "target": "ように終わらせたい"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "everything", "target": "全部"},
+        {"known": "in time", "target": "間に合う"},
+        {"known": "so that", "target": "ように"},
+        {"known": "want to finish", "target": "終わらせたい"},
+        {"known": "we finish everything", "target": "私たちが全部終わる"},
+        {"known": "make it in time", "target": "間に合うようにする"},
+        {"known": "want to make sure we finish", "target": "私たちが終わるようにしたい"},
+        {"known": "make sure everything is done in time", "target": "全部間に合うように終わらせる"},
+        {"known": "I want to make sure everything finishes in time", "target": "全部間に合うように終わらせたい"},
+        {"known": "she said she wants to make sure we finish in time", "target": "彼女は私たちが間に合うように終わらせたいと言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "they say that",
+      "target": "と言っています",
+      "components": [
+        {"known": "that (quotation)", "target": "と"},
+        {"known": "are saying", "target": "言っています"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "と"},
+        {"known": "saying", "target": "言っています"},
+        {"known": "they say that", "target": "と言っています"},
+        {"known": "he said that", "target": "と言いました"},
+        {"known": "she is saying that", "target": "と言っています"},
+        {"known": "saying it's good", "target": "いいと言っています"},
+        {"known": "she's saying she wants to go", "target": "行きたいと言っています"},
+        {"known": "he was saying it was difficult", "target": "難しいと言っていました"},
+        {"known": "they're saying they can't come tomorrow", "target": "明日来られないと言っています"},
+        {"known": "I heard she's saying she's too busy", "target": "彼女は忙しすぎると言っていると聞きました"},
+        {"known": "he's saying he wants to make sure everything is done in time", "target": "彼は全部間に合うように終わらせたいと言っています"}
+      ]
+    }
+  ]
+}

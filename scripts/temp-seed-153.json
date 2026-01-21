@@ -1,0 +1,53 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 153,
+  "known_text": "I wouldn't have said it in exactly the same way.",
+  "target_text": "全く同じ言い方はしなかったでしょう。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "in exactly the same way",
+      "target": "全く同じ言い方は",
+      "components": [
+        {"known": "exactly", "target": "全く"},
+        {"known": "the same way of saying", "target": "同じ言い方は"}
+      ],
+      "phrases": [
+        {"known": "exactly", "target": "全く"},
+        {"known": "the same", "target": "同じ"},
+        {"known": "way of saying", "target": "言い方"},
+        {"known": "the same way", "target": "同じ言い方"},
+        {"known": "exactly the same", "target": "全く同じ"},
+        {"known": "in exactly the same way", "target": "全く同じ言い方は"},
+        {"known": "It is exactly the same", "target": "それは全く同じです"},
+        {"known": "It is exactly the same as before", "target": "それは前と全く同じです"},
+        {"known": "I think we should say it in exactly the same way", "target": "全く同じ言い方で言うべきだと思います"},
+        {"known": "She said she would do it in exactly the same way as last time", "target": "彼女は前回と全く同じやり方でやると言った"},
+        {"known": "I hope you understand that it is not exactly the same thing", "target": "それが全く同じことではないことを分かるといいですね"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I wouldn't have said it",
+      "target": "しなかったでしょう。",
+      "components": [
+        {"known": "not do / didn't do", "target": "しなかった"},
+        {"known": "probably", "target": "でしょう"}
+      ],
+      "phrases": [
+        {"known": "do", "target": "する"},
+        {"known": "didn't do", "target": "しなかった"},
+        {"known": "would have done", "target": "したでしょう"},
+        {"known": "wouldn't have done", "target": "しなかったでしょう"},
+        {"known": "I wouldn't have done it", "target": "しなかったでしょう"},
+        {"known": "She wouldn't have done that", "target": "彼女はそれをしなかったでしょう"},
+        {"known": "I wouldn't have done it that way", "target": "そのようにはしなかったでしょう"},
+        {"known": "If I had known, I wouldn't have done it", "target": "知っていたら、しなかったでしょう"},
+        {"known": "I think she wouldn't have done it if she knew what I wanted", "target": "私が望んでいたことを知っていたら、彼女はしなかったでしょうと思います"},
+        {"known": "They said I wouldn't have done it if I had understood better", "target": "もっと分かっていたら、しなかったでしょうと彼らは言った"}
+      ]
+    }
+  ]
+}

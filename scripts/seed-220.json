@@ -1,0 +1,54 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 220,
+  "known_text": "Did you watch a bit of television?",
+  "target_text": "テレビを少し見ましたか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a bit of television",
+      "target": "テレビを少し",
+      "components": [
+        {"known": "television (object)", "target": "テレビを"},
+        {"known": "a bit", "target": "少し"}
+      ],
+      "phrases": [
+        {"known": "TV", "target": "テレビ"},
+        {"known": "a bit", "target": "少し"},
+        {"known": "watch TV", "target": "テレビを見る"},
+        {"known": "a bit of TV", "target": "テレビを少し"},
+        {"known": "wait a bit", "target": "少し待って"},
+        {"known": "a little water", "target": "水を少し"},
+        {"known": "I watch a bit of TV", "target": "テレビを少し見ます"},
+        {"known": "I watched TV yesterday", "target": "昨日テレビを見ました"},
+        {"known": "I want to watch a bit of TV", "target": "テレビを少し見たいです"},
+        {"known": "do you watch TV on weekends", "target": "週末にテレビを見ますか"},
+        {"known": "I watched a bit of TV on Sunday night", "target": "日曜日の夜にテレビを少し見ました"},
+        {"known": "I didn't have time to watch TV because I was busy", "target": "忙しかったのでテレビを見る時間がありませんでした"},
+        {"known": "I watched a bit of TV and then went out", "target": "テレビを少し見てから出かけました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "did you watch",
+      "target": "見ましたか",
+      "phrases": [
+        {"known": "watch", "target": "見る"},
+        {"known": "watched", "target": "見ました"},
+        {"known": "did you see", "target": "見ましたか"},
+        {"known": "I watched it", "target": "見ました"},
+        {"known": "I want to watch", "target": "見たいです"},
+        {"known": "did you watch it", "target": "見ましたか"},
+        {"known": "I watched something", "target": "何か見ました"},
+        {"known": "did you watch TV yesterday", "target": "昨日テレビを見ましたか"},
+        {"known": "I saw my friends on the weekend", "target": "週末に友達に会いました"},
+        {"known": "what did you watch last night", "target": "昨夜何を見ましたか"},
+        {"known": "did you watch TV or go out on Saturday", "target": "土曜日はテレビを見ましたか、出かけましたか"},
+        {"known": "I watched TV for a while and then relaxed", "target": "しばらくテレビを見てからリラックスしました"},
+        {"known": "I watched TV for a bit before going out with friends", "target": "友達と出かける前にテレビを少し見ました"}
+      ]
+    }
+  ]
+}

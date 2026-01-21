@@ -1,0 +1,120 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 55,
+  "known_text": "I don't enjoy waking up when I didn't sleep very well.",
+  "target_text": "よく眠れなかった時に起きるのは楽しくありません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "well",
+      "target": "よく",
+      "phrases": [
+        {"known": "Well.", "target": "よく。"},
+        {"known": "Very well.", "target": "とてもよく。"},
+        {"known": "I know well.", "target": "よく分かります。"},
+        {"known": "He knows her well.", "target": "彼は彼女をよく知っています。"},
+        {"known": "I know that thing very well.", "target": "そのことをよく知っています。"},
+        {"known": "She did it well because she wanted to.", "target": "彼女はそうしたかったからよくやりました。"},
+        {"known": "He thought about that thing well.", "target": "彼はそのことをよく考えました。"},
+        {"known": "I think he did that thing very well.", "target": "彼はそのことをよくやったと思います。"},
+        {"known": "I think she knows him very well.", "target": "彼女は彼のことをよく知っていると思います。"},
+        {"known": "Because I know that thing well, I understand.", "target": "そのことをよく知っているから分かります。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "when",
+      "target": "時に",
+      "phrases": [
+        {"known": "When.", "target": "時に。"},
+        {"known": "When I think.", "target": "考える時に。"},
+        {"known": "When I see him.", "target": "彼に会う時に。"},
+        {"known": "When I do that.", "target": "そうする時に。"},
+        {"known": "When she said that.", "target": "彼女がそう言った時に。"},
+        {"known": "When I want to see her.", "target": "彼女に会いたい時に。"},
+        {"known": "When I think about it, I want to see her.", "target": "そのことを考える時に彼女に会いたいです。"},
+        {"known": "When he wanted to do that, she said this.", "target": "彼がそうしたかった時に彼女はこう言いました。"},
+        {"known": "When he thought about that, he met her.", "target": "彼がそのことを考える時に彼女に会いました。"},
+        {"known": "When she wanted to see him, he was thinking.", "target": "彼女が彼に会いたかった時に彼は考えていました。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "the thing of",
+      "target": "のは",
+      "phrases": [
+        {"known": "Doing is.", "target": "するのは。"},
+        {"known": "Going is.", "target": "行くのは。"},
+        {"known": "Thinking is.", "target": "考えるのは。"},
+        {"known": "Doing it is good.", "target": "するのはいいです。"},
+        {"known": "Seeing him is good.", "target": "彼に会うのはいいです。"},
+        {"known": "Doing that is not good.", "target": "それをするのはよくないです。"},
+        {"known": "Thinking about it well is good.", "target": "よく考えるのはいいことです。"},
+        {"known": "Doing that thing is good for him.", "target": "そのことをするのは彼にいいです。"},
+        {"known": "Wanting to see her is a good thing.", "target": "彼女に会いたいのはいいことです。"},
+        {"known": "Doing that thing with him is not good.", "target": "彼とそれをするのはよくないです。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "wake up",
+      "target": "起きる",
+      "phrases": [
+        {"known": "Wake up.", "target": "起きる。"},
+        {"known": "I wake up.", "target": "起きます。"},
+        {"known": "I woke up.", "target": "起きました。"},
+        {"known": "I want to wake up.", "target": "起きたいです。"},
+        {"known": "When I wake up.", "target": "起きる時に。"},
+        {"known": "Waking up is good.", "target": "起きるのはいいです。"},
+        {"known": "Waking up when I want to is good.", "target": "起きたい時に起きるのはいいです。"},
+        {"known": "When I wake up, I think about that.", "target": "起きる時にそのことを考えます。"},
+        {"known": "I wanted to wake up when she said that.", "target": "彼女がそう言った時に起きたかったです。"},
+        {"known": "I want to wake up well when I see her.", "target": "彼女に会う時によく起きたいです。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "couldn't sleep",
+      "target": "眠れなかった",
+      "components": [
+        {"known": "can sleep", "target": "眠れ"},
+        {"known": "wasn't", "target": "なかった"}
+      ],
+      "phrases": [
+        {"known": "Couldn't sleep.", "target": "眠れなかった。"},
+        {"known": "I couldn't sleep.", "target": "眠れなかったです。"},
+        {"known": "He couldn't sleep.", "target": "彼は眠れなかった。"},
+        {"known": "She couldn't sleep.", "target": "彼女は眠れなかった。"},
+        {"known": "Because I couldn't sleep.", "target": "眠れなかったからです。"},
+        {"known": "When I couldn't sleep.", "target": "眠れなかった時に。"},
+        {"known": "Because he couldn't sleep.", "target": "彼は眠れなかったから。"},
+        {"known": "Waking up when I couldn't sleep is not good.", "target": "眠れなかった時に起きるのはよくないです。"},
+        {"known": "When she couldn't sleep, she thought about that.", "target": "彼女は眠れなかった時にそれを考えました。"},
+        {"known": "Because I couldn't sleep well, waking up was not good.", "target": "よく眠れなかったから起きるのはよくなかったです。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "is not fun",
+      "target": "楽しくありません",
+      "phrases": [
+        {"known": "Not fun.", "target": "楽しくない。"},
+        {"known": "Is not fun.", "target": "楽しくありません。"},
+        {"known": "This is not fun.", "target": "これは楽しくありません。"},
+        {"known": "That is not fun.", "target": "それは楽しくありません。"},
+        {"known": "Doing it is not fun.", "target": "するのは楽しくありません。"},
+        {"known": "Waking up is not fun.", "target": "起きるのは楽しくありません。"},
+        {"known": "Doing that thing is not fun.", "target": "そのことをするのは楽しくありません。"},
+        {"known": "Waking up when I couldn't sleep is not fun.", "target": "眠れなかった時に起きるのは楽しくありません。"},
+        {"known": "Thinking about that thing is not fun.", "target": "そのことを考えるのは楽しくありません。"},
+        {"known": "Waking up when I couldn't sleep well is not fun.", "target": "よく眠れなかった時に起きるのは楽しくありません。"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 197,
+  "known_text": "My son works as a teacher.",
+  "target_text": "息子は教師として働いています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "my son",
+      "target": "息子は",
+      "phrases": [
+        {"known": "son", "target": "息子"},
+        {"known": "my son", "target": "息子は"},
+        {"known": "my son is here", "target": "息子はここにいます"},
+        {"known": "my son is young", "target": "息子は若いです"},
+        {"known": "I talked to my son", "target": "息子と話しました"},
+        {"known": "my son came yesterday", "target": "息子は昨日来ました"},
+        {"known": "my son likes to read books", "target": "息子は本を読むのが好きです"},
+        {"known": "I'm going to see my son at the office tomorrow", "target": "明日オフィスで息子に会いに行きます"},
+        {"known": "my son is busy today but he said he can come tomorrow", "target": "息子は今日忙しいですが、明日は来られると言いました"},
+        {"known": "I heard from my son that he's doing well at his new job", "target": "息子から新しい仕事でうまくやっていると聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "works as a teacher",
+      "target": "教師として働いています",
+      "components": [
+        {"known": "as a teacher", "target": "教師として"},
+        {"known": "works/is working", "target": "働いています"}
+      ],
+      "phrases": [
+        {"known": "teacher", "target": "教師"},
+        {"known": "as", "target": "として"},
+        {"known": "works", "target": "働いています"},
+        {"known": "as a teacher", "target": "教師として"},
+        {"known": "works as a teacher", "target": "教師として働いています"},
+        {"known": "she works here", "target": "彼女はここで働いています"},
+        {"known": "I used to work there", "target": "私はそこで働いていました"},
+        {"known": "he works at the office", "target": "彼はオフィスで働いています"},
+        {"known": "my friend has been working there for a few years now", "target": "友達は何年もそこで働いています"},
+        {"known": "I've been working as a teacher since I came here", "target": "ここに来てから教師として働いています"},
+        {"known": "she told me she works there but I didn't know that before", "target": "彼女はそこで働いていると言いましたが、前は知りませんでした"}
+      ]
+    }
+  ]
+}

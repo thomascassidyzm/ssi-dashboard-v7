@@ -1,0 +1,56 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 124,
+  "known_text": "I thought that was a good idea.",
+  "target_text": "それはいい考えだと思いました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that was a good idea",
+      "target": "それはいい考えだ",
+      "components": [
+        {"known": "that (topic)", "target": "それは"},
+        {"known": "good idea (copula)", "target": "いい考えだ"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それ"},
+        {"known": "idea", "target": "考え"},
+        {"known": "good", "target": "いい"},
+        {"known": "that is", "target": "それは"},
+        {"known": "good idea", "target": "いい考え"},
+        {"known": "that was a good idea", "target": "それはいい考えだ"},
+        {"known": "is it a good idea", "target": "いい考えですか"},
+        {"known": "that was a good idea (polite)", "target": "それはいい考えでした"},
+        {"known": "going by bus was a good idea", "target": "バスで行くのはいい考えでした"},
+        {"known": "my friend had a good idea yesterday", "target": "友達は昨日いい考えがありました"},
+        {"known": "learning something new is always a good idea", "target": "新しいことを学ぶのはいつもいい考えです"},
+        {"known": "having a conversation before leaving was a good idea", "target": "帰る前に会話をしたのはいい考えでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I thought",
+      "target": "と思いました",
+      "components": [
+        {"known": "quotation", "target": "と"},
+        {"known": "thought (polite past)", "target": "思いました"}
+      ],
+      "phrases": [
+        {"known": "thought", "target": "思った"},
+        {"known": "I thought", "target": "思いました"},
+        {"known": "that (quote)", "target": "と"},
+        {"known": "I thought that", "target": "と思いました"},
+        {"known": "she thought so", "target": "彼女はそう思いました"},
+        {"known": "did you think so", "target": "そう思いましたか"},
+        {"known": "I thought it went well", "target": "うまくいったと思いました"},
+        {"known": "I thought we learned a lot", "target": "たくさん学んだと思いました"},
+        {"known": "my friend thought it was interesting", "target": "友達は面白いと思いました"},
+        {"known": "I thought going by bus was easier", "target": "バスで行く方が簡単だと思いました"},
+        {"known": "I thought the conversation was very good", "target": "会話はとてもよかったと思いました"},
+        {"known": "I thought it was starting to feel easier yesterday", "target": "昨日簡単に感じ始めていると思いました"}
+      ]
+    }
+  ]
+}

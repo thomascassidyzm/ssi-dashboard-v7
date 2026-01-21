@@ -1,0 +1,119 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 70,
+  "known_text": "She didn't want to tell me where it was.",
+  "target_text": "彼女はそれがどこにあるか教えたくありませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "she (topic)",
+      "target": "彼女は",
+      "components": [
+        {"known": "she", "target": "彼女"},
+        {"known": "(topic)", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "彼女"},
+        {"known": "she (topic)", "target": "彼女は"},
+        {"known": "she thinks", "target": "彼女は思います"},
+        {"known": "she says", "target": "彼女は言います"},
+        {"known": "she understands", "target": "彼女は分かります"},
+        {"known": "she is searching", "target": "彼女は探しています"},
+        {"known": "she speaks Japanese", "target": "彼女は日本語を話します"},
+        {"known": "she wants to try hard today", "target": "彼女は今日頑張りたいです"},
+        {"known": "she said it is important", "target": "彼女は大切だと言いました"},
+        {"known": "she thinks learning Japanese is fun", "target": "彼女は日本語を学ぶのは楽しいと思います"},
+        {"known": "she is looking for the young dog", "target": "彼女は若い犬を探しています"},
+        {"known": "she was looking after the dog all afternoon", "target": "彼女は午後ずっと犬の世話をしていました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "it (subject)",
+      "target": "それが",
+      "phrases": [
+        {"known": "it", "target": "それ"},
+        {"known": "it (subject)", "target": "それが"},
+        {"known": "that is", "target": "それは"},
+        {"known": "it is fun", "target": "それは楽しいです"},
+        {"known": "it is important", "target": "それは大切です"},
+        {"known": "it is not easy", "target": "それは簡単ではありません"},
+        {"known": "I think it is difficult", "target": "それは難しいと思います"},
+        {"known": "she said it is not easy", "target": "彼女はそれは簡単ではないと言いました"},
+        {"known": "I did not understand it", "target": "それが分かりませんでした"},
+        {"known": "he thinks it is a good thing", "target": "彼はそれはいいことだと思います"},
+        {"known": "do you understand what it is?", "target": "それが何か分かりますか？"},
+        {"known": "I think it is important to memorize that", "target": "それを覚えることは大切だと思います"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "where it is",
+      "target": "どこにあるか",
+      "components": [
+        {"known": "where", "target": "どこに"},
+        {"known": "exists (question)", "target": "あるか"}
+      ],
+      "phrases": [
+        {"known": "where", "target": "どこ"},
+        {"known": "where (location)", "target": "どこに"},
+        {"known": "exists", "target": "ある"},
+        {"known": "where is it", "target": "どこにあるか"},
+        {"known": "where is it?", "target": "どこにありますか？"},
+        {"known": "where is the dog?", "target": "犬はどこにいますか？"},
+        {"known": "I do not know where it is", "target": "どこにあるか分かりません"},
+        {"known": "she is searching for where it is", "target": "彼女はどこにあるか探しています"},
+        {"known": "do you know where the answer is?", "target": "答えがどこにあるか分かりますか？"},
+        {"known": "he did not say where the dog is", "target": "彼は犬がどこにいるか言いませんでした"},
+        {"known": "I want to know where the young dog is", "target": "若い犬がどこにいるか知りたいです"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "want to tell/teach",
+      "target": "教えたく",
+      "components": [
+        {"known": "teach/tell", "target": "教え"},
+        {"known": "want to (stem)", "target": "たく"}
+      ],
+      "phrases": [
+        {"known": "teach", "target": "教える"},
+        {"known": "teaches", "target": "教えます"},
+        {"known": "taught", "target": "教えました"},
+        {"known": "want to teach", "target": "教えたい"},
+        {"known": "teaching now", "target": "教えている"},
+        {"known": "want to tell (stem)", "target": "教えたく"},
+        {"known": "I want to teach Japanese", "target": "日本語を教えたいです"},
+        {"known": "she teaches Japanese", "target": "彼女は日本語を教えます"},
+        {"known": "he taught me the answer", "target": "彼は私に答えを教えました"},
+        {"known": "I did not want to teach all afternoon", "target": "午後ずっと教えたくありませんでした"},
+        {"known": "she wanted to teach the young person", "target": "彼女は若い人に教えたかったです"},
+        {"known": "it is important to teach words", "target": "言葉を教えることは大切です"},
+        {"known": "he was teaching Japanese all afternoon", "target": "彼は午後ずっと日本語を教えていました"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "was not (past polite negative)",
+      "target": "ありませんでした",
+      "phrases": [
+        {"known": "is not", "target": "ありません"},
+        {"known": "was not", "target": "ありませんでした"},
+        {"known": "there is not", "target": "ありません"},
+        {"known": "there was not", "target": "ありませんでした"},
+        {"known": "it was not easy", "target": "簡単ではありませんでした"},
+        {"known": "it was not difficult", "target": "難しくありませんでした"},
+        {"known": "the answer was not there", "target": "答えはありませんでした"},
+        {"known": "he did not want to go", "target": "彼は行きたくありませんでした"},
+        {"known": "she did not want to speak Japanese", "target": "彼女は日本語を話したくありませんでした"},
+        {"known": "I did not want to look after the dog all afternoon", "target": "午後ずっと犬の世話をしたくありませんでした"},
+        {"known": "she did not want to explain the whole sentence", "target": "彼女は文全体を説明したくありませんでした"}
+      ]
+    }
+  ]
+}

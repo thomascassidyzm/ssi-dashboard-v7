@@ -1,0 +1,49 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 198,
+  "known_text": "My daughter works for the council.",
+  "target_text": "娘は市役所で働いています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "my daughter",
+      "target": "娘は",
+      "phrases": [
+        {"known": "daughter", "target": "娘"},
+        {"known": "my daughter", "target": "娘は"},
+        {"known": "my daughter is here", "target": "娘はここにいます"},
+        {"known": "my daughter came", "target": "娘が来ました"},
+        {"known": "I talked to my daughter", "target": "娘と話しました"},
+        {"known": "my daughter is busy today", "target": "娘は今日忙しいです"},
+        {"known": "my daughter likes reading books", "target": "娘は本を読むのが好きです"},
+        {"known": "I'm going to see my daughter at the office tomorrow", "target": "明日オフィスで娘に会いに行きます"},
+        {"known": "my daughter told me about her new work yesterday morning", "target": "娘が昨日の朝新しい仕事について教えてくれました"},
+        {"known": "my daughter said she can't come this week but she'll try next week", "target": "娘は今週来られないけど、来週は来てみると言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "works for the council",
+      "target": "市役所で働いています",
+      "components": [
+        {"known": "at the council/city office", "target": "市役所で"},
+        {"known": "works/is working", "target": "働いています"}
+      ],
+      "phrases": [
+        {"known": "council", "target": "市役所"},
+        {"known": "at the council", "target": "市役所で"},
+        {"known": "works", "target": "働いています"},
+        {"known": "working here", "target": "ここで働いて"},
+        {"known": "works for the council", "target": "市役所で働いています"},
+        {"known": "she works at the council", "target": "彼女は市役所で働いています"},
+        {"known": "I used to work at the council", "target": "前は市役所で働いていました"},
+        {"known": "my friend works at the council", "target": "友達は市役所で働いています"},
+        {"known": "I heard that he works at the council now", "target": "彼は今市役所で働いていると聞きました"},
+        {"known": "I went to the council yesterday to ask about something", "target": "昨日何かを聞きに市役所に行きました"},
+        {"known": "she told me she started working at the council last month", "target": "先月から市役所で働き始めたと言いました"}
+      ]
+    }
+  ]
+}

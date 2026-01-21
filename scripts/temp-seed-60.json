@@ -1,0 +1,179 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 60,
+  "known_text": "I don't know how to say enough different words yet.",
+  "target_text": "まだ十分な違う言葉の言い方を知りません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "yet",
+      "target": "まだ",
+      "phrases": [
+        {"known": "Yet.", "target": "まだ。"},
+        {"known": "Not yet.", "target": "まだです。"},
+        {"known": "Still not.", "target": "まだない。"},
+        {"known": "I don't know yet.", "target": "まだ知りません。"},
+        {"known": "He can't do it yet.", "target": "彼はまだできません。"},
+        {"known": "So I don't understand yet.", "target": "だからまだわかりません。"},
+        {"known": "She doesn't know enough yet.", "target": "彼女はまだ十分知りません。"},
+        {"known": "I don't know how to say it yet.", "target": "まだ言い方を知りません。"},
+        {"known": "So he doesn't understand enough words yet.", "target": "だから彼はまだ十分な言葉がわかりません。"},
+        {"known": "I don't know how to say enough different words yet.", "target": "まだ十分な違う言葉の言い方を知りません。"},
+        {"known": "That's still good.", "target": "まだいいです。"},
+        {"known": "She doesn't know his way of saying it yet.", "target": "彼女はまだ彼の言い方を知りません。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "adjective connector",
+      "target": "な",
+      "phrases": [
+        {"known": "Connector.", "target": "な。"},
+        {"known": "This kind of.", "target": "こんな。"},
+        {"known": "That kind of thing.", "target": "そんなこと。"},
+        {"known": "Enough things.", "target": "十分なこと。"},
+        {"known": "That kind of word.", "target": "そんな言葉。"},
+        {"known": "So this kind of thing is.", "target": "だからこんなことは。"},
+        {"known": "He thinks about that kind of thing.", "target": "彼はそんなことを考えます。"},
+        {"known": "So she said that kind of thing to him.", "target": "だから彼女は彼にそんなことを言いました。"},
+        {"known": "He wanted to know that kind of thing yesterday.", "target": "彼は昨日そんなことを知りたかったです。"},
+        {"known": "So I don't know that kind of way of saying yet.", "target": "だからまだそんな言い方を知りません。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "different",
+      "target": "違う",
+      "phrases": [
+        {"known": "Different.", "target": "違う。"},
+        {"known": "It's different.", "target": "違います。"},
+        {"known": "That's different.", "target": "それは違います。"},
+        {"known": "Different words.", "target": "違う言葉。"},
+        {"known": "His way is different.", "target": "彼のやり方は違います。"},
+        {"known": "So that's different.", "target": "だからそれは違います。"},
+        {"known": "She said that's different.", "target": "彼女はそれが違うと言いました。"},
+        {"known": "I think his words are different.", "target": "彼の言葉は違うと思います。"},
+        {"known": "So her way of saying it is different.", "target": "だから彼女の言い方は違います。"},
+        {"known": "I don't know enough different words yet.", "target": "まだ十分な違う言葉を知りません。"},
+        {"known": "Different way.", "target": "違う言い方。"},
+        {"known": "So he doesn't know different words yet.", "target": "だから彼はまだ違う言葉を知りません。"},
+        {"known": "She understands the way of saying different words.", "target": "彼女は違う言葉の言い方がわかります。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "words",
+      "target": "言葉",
+      "phrases": [
+        {"known": "Words.", "target": "言葉。"},
+        {"known": "His words.", "target": "彼の言葉。"},
+        {"known": "Her words.", "target": "彼女の言葉。"},
+        {"known": "Enough words.", "target": "十分な言葉。"},
+        {"known": "Different words.", "target": "違う言葉。"},
+        {"known": "So those words.", "target": "だからその言葉。"},
+        {"known": "I know those words.", "target": "その言葉を知っています。"},
+        {"known": "Her words are interesting.", "target": "彼女の言葉が面白いです。"},
+        {"known": "So I understand enough words.", "target": "だから十分な言葉がわかります。"},
+        {"known": "I don't know different words yet.", "target": "まだ違う言葉を知りません。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "of",
+      "target": "の",
+      "phrases": [
+        {"known": "Of.", "target": "の。"},
+        {"known": "His.", "target": "彼の。"},
+        {"known": "Hers.", "target": "彼女の。"},
+        {"known": "Of that thing.", "target": "そのことの。"},
+        {"known": "So his words.", "target": "だから彼の言葉。"},
+        {"known": "Her way of saying.", "target": "彼女の言い方。"},
+        {"known": "I understand his thing.", "target": "彼のことがわかります。"},
+        {"known": "So she knows his way of saying it.", "target": "だから彼女は彼の言い方を知っています。"},
+        {"known": "He thought about her thing yesterday.", "target": "彼は昨日彼女のことを考えました。"},
+        {"known": "So I know the way of saying different words.", "target": "だから違う言葉の言い方を知っています。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "way of saying",
+      "target": "言い方",
+      "components": [
+        {"known": "say", "target": "言い"},
+        {"known": "way", "target": "方"}
+      ],
+      "phrases": [
+        {"known": "Way of saying.", "target": "言い方。"},
+        {"known": "This way of saying.", "target": "この言い方。"},
+        {"known": "His way of saying.", "target": "彼の言い方。"},
+        {"known": "So that way of saying.", "target": "だからその言い方。"},
+        {"known": "I know the way of saying.", "target": "言い方を知っています。"},
+        {"known": "The way of saying those words.", "target": "その言葉の言い方。"},
+        {"known": "So I know the way of saying it.", "target": "だから言い方を知っています。"},
+        {"known": "He understands her way of saying it.", "target": "彼は彼女の言い方がわかります。"},
+        {"known": "So she knows a few ways of saying it.", "target": "だから彼女はいくつかの言い方を知っています。"},
+        {"known": "I don't know the way of saying different words yet.", "target": "まだ違う言葉の言い方を知りません。"}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "object marker",
+      "target": "を",
+      "phrases": [
+        {"known": "It.", "target": "を。"},
+        {"known": "Do it.", "target": "それをする。"},
+        {"known": "I do it.", "target": "それをします。"},
+        {"known": "So I do that.", "target": "だからそれをします。"},
+        {"known": "I know that.", "target": "それを知っています。"},
+        {"known": "She sees his words.", "target": "彼女は彼の言葉を見ます。"},
+        {"known": "I know the way of saying.", "target": "言い方を知っています。"},
+        {"known": "So he thought about that thing.", "target": "だから彼はそのことを考えました。"},
+        {"known": "She wanted to know his words.", "target": "彼女は彼の言葉を知りたかったです。"},
+        {"known": "So I know the way of saying different words.", "target": "だから違う言葉の言い方を知っています。"}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "enough",
+      "target": "十分",
+      "phrases": [
+        {"known": "Enough.", "target": "十分。"},
+        {"known": "Enough of.", "target": "十分な。"},
+        {"known": "It's enough.", "target": "十分です。"},
+        {"known": "So it's enough.", "target": "だから十分です。"},
+        {"known": "Enough words.", "target": "十分な言葉。"},
+        {"known": "I know enough.", "target": "十分知っています。"},
+        {"known": "So he understands enough.", "target": "だから彼は十分わかります。"},
+        {"known": "So I think that is enough.", "target": "だからそれが十分だと思います。"},
+        {"known": "She understands enough of his words.", "target": "彼女は彼の言葉が十分わかります。"},
+        {"known": "I don't know enough different words yet.", "target": "まだ十分な違う言葉を知りません。"}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "don't know",
+      "target": "知りません",
+      "phrases": [
+        {"known": "Don't know.", "target": "知らない。"},
+        {"known": "I don't know.", "target": "知りません。"},
+        {"known": "He doesn't know.", "target": "彼は知りません。"},
+        {"known": "So I don't know.", "target": "だから知りません。"},
+        {"known": "She doesn't know that.", "target": "彼女はそれを知りません。"},
+        {"known": "I don't know how to say it.", "target": "言い方を知りません。"},
+        {"known": "So he doesn't know those words.", "target": "だから彼はその言葉を知りません。"},
+        {"known": "She doesn't know what she should do.", "target": "彼女はやるべきことを知りません。"},
+        {"known": "I don't know how to say different words.", "target": "違う言葉の言い方を知りません。"},
+        {"known": "So I don't know how to say enough different words yet.", "target": "だからまだ十分な違う言葉の言い方を知りません。"}
+      ]
+    }
+  ]
+}

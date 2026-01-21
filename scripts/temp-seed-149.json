@@ -1,0 +1,53 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 149,
+  "known_text": "This isn't very difficult, so I hope you'll finish soon.",
+  "target_text": "これはあまり難しくないので、すぐ終わるといいですね。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "This isn't very difficult, so",
+      "target": "これはあまり難しくないので、",
+      "components": [
+        {"known": "this", "target": "これは"},
+        {"known": "isn't very difficult, so", "target": "あまり難しくないので"}
+      ],
+      "phrases": [
+        {"known": "difficult", "target": "難しい"},
+        {"known": "not difficult", "target": "難しくない"},
+        {"known": "this", "target": "これは"},
+        {"known": "not very difficult", "target": "あまり難しくない"},
+        {"known": "This isn't difficult", "target": "これは難しくない"},
+        {"known": "This isn't very difficult", "target": "これはあまり難しくない"},
+        {"known": "This isn't difficult, so", "target": "これは難しくないので"},
+        {"known": "That wasn't very difficult for me", "target": "それは私にあまり難しくなかった"},
+        {"known": "I think this isn't very difficult for us", "target": "これは私たちにあまり難しくないと思います"},
+        {"known": "She said this isn't difficult, so we can do it today", "target": "これは難しくないと言ったので、今日できます"},
+        {"known": "Learning this isn't difficult if you practice a lot", "target": "たくさん練習すれば、これを学ぶのは難しくないです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I hope you'll finish soon",
+      "target": "すぐ終わるといいですね。",
+      "components": [
+        {"known": "finish soon", "target": "すぐ終わる"},
+        {"known": "I hope", "target": "といいですね"}
+      ],
+      "phrases": [
+        {"known": "soon", "target": "すぐ"},
+        {"known": "finish", "target": "終わる"},
+        {"known": "finish soon", "target": "すぐ終わる"},
+        {"known": "I hope", "target": "といいですね"},
+        {"known": "I hope you'll finish", "target": "終わるといいですね"},
+        {"known": "I hope you'll finish soon", "target": "すぐ終わるといいですね"},
+        {"known": "I hope we can finish this today", "target": "今日これを終わるといいですね"},
+        {"known": "I hope she finishes soon so we can go", "target": "彼女がすぐ終わって、私たちが行けるといいですね"},
+        {"known": "I hope you can understand what I am trying to say", "target": "私が言おうとしていることを分かるといいですね"},
+        {"known": "They hope we finish before tomorrow because they want to see it", "target": "明日までに終わるといいですね、彼らは見たいから"}
+      ]
+    }
+  ]
+}

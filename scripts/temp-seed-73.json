@@ -1,0 +1,74 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 73,
+  "known_text": "Thank you very much, but I've got more to learn.",
+  "target_text": "どうもありがとうございます、でももっと学ぶことがあります。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "thank you very much",
+      "target": "どうもありがとうございます、",
+      "components": [
+        {"known": "very much (informal)", "target": "どうも"},
+        {"known": "thank you (polite with comma)", "target": "ありがとうございます、"}
+      ],
+      "phrases": [
+        {"known": "thanks", "target": "どうも"},
+        {"known": "thank you", "target": "ありがとう"},
+        {"known": "many thanks", "target": "どうもありがとう"},
+        {"known": "thank you (polite)", "target": "ありがとうございます"},
+        {"known": "thank you very much", "target": "どうもありがとうございます"},
+        {"known": "thank you for today", "target": "今日はありがとうございます"},
+        {"known": "thank you for teaching", "target": "教えてくれてありがとう"},
+        {"known": "thank you for helping me", "target": "手伝ってくれてありがとう"},
+        {"known": "she said thank you very much", "target": "彼女はどうもありがとうと言いました"},
+        {"known": "thank you for explaining the whole sentence", "target": "文全体を説明してくれてありがとうございます"},
+        {"known": "he said thank you for looking after the dog", "target": "彼は犬の世話をしてくれてありがとうと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "but",
+      "target": "でも",
+      "phrases": [
+        {"known": "but", "target": "でも"},
+        {"known": "but however", "target": "でもしかし"},
+        {"known": "but I think", "target": "でも思います"},
+        {"known": "but it is difficult", "target": "でも難しいです"},
+        {"known": "but it is fun", "target": "でも楽しいです"},
+        {"known": "but I do not understand", "target": "でも分かりません"},
+        {"known": "but I want to try hard", "target": "でも頑張りたいです"},
+        {"known": "but she did it very well", "target": "でも彼女はとても上手にやりました"},
+        {"known": "but I did not want to say that", "target": "でもそう言いたくありませんでした"},
+        {"known": "but I think it is important to learn", "target": "でも学ぶことは大切だと思います"},
+        {"known": "but he thinks it is not easy to do", "target": "でも彼はやるのは簡単ではないと思います"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "more to learn",
+      "target": "もっと学ぶことがあります",
+      "components": [
+        {"known": "more", "target": "もっと"},
+        {"known": "things to learn exist", "target": "学ぶことがあります"}
+      ],
+      "phrases": [
+        {"known": "more", "target": "もっと"},
+        {"known": "to learn", "target": "学ぶ"},
+        {"known": "more learning", "target": "もっと学ぶ"},
+        {"known": "learn more", "target": "もっと学ぶこと"},
+        {"known": "things to learn", "target": "学ぶこと"},
+        {"known": "there is more to learn", "target": "学ぶことがあります"},
+        {"known": "I have more to learn", "target": "もっと学ぶことがあります"},
+        {"known": "I want to learn more Japanese", "target": "もっと日本語を学ぶことがあります"},
+        {"known": "she said she has more to learn", "target": "彼女はもっと学ぶことがあると言いました"},
+        {"known": "he thinks there is more to learn", "target": "彼はもっと学ぶことがあると思います"},
+        {"known": "I think there is more Japanese to learn", "target": "もっと日本語を学ぶことがあると思います"},
+        {"known": "it is important to know there is more to learn", "target": "もっと学ぶことがあることを知ることは大切です"}
+      ]
+    }
+  ]
+}

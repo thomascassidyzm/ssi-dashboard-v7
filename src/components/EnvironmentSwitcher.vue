@@ -40,7 +40,7 @@ import { ref, onMounted, computed } from 'vue'
 const ENVIRONMENTS = {
   tom: {
     name: "Tom's Machine",
-    url: 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev',
+    url: 'https://popty.ngrok.app',
     machineProfile: 'tom'
   },
   kai: {

@@ -1,0 +1,50 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 190,
+  "known_text": "Do you mind if I ask you some questions?",
+  "target_text": "いくつか質問してもいいですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "some/several",
+      "target": "いくつか",
+      "phrases": [
+        {"known": "some/several", "target": "いくつか"},
+        {"known": "some things", "target": "いくつかのこと"},
+        {"known": "there are some", "target": "いくつかあります"},
+        {"known": "I did some", "target": "いくつかしました"},
+        {"known": "she has some ideas", "target": "彼女はいくつか考えがあります"},
+        {"known": "there are some problems", "target": "いくつかの問題があります"},
+        {"known": "I saw some interesting things yesterday", "target": "昨日いくつか面白いことを見ました"},
+        {"known": "he said there are some things we need to do", "target": "彼はする必要があることがいくつかあると言いました"},
+        {"known": "she mentioned some good ideas during the meeting", "target": "彼女は会いで、いくつかいい考えを言いました"},
+        {"known": "I think there are some things we should think about first", "target": "まずいくつか考えるべきことがあると思います"},
+        {"known": "he told me about some places he wants to go this year", "target": "彼は今年行きたいところをいくつか言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do you mind if I ask questions",
+      "target": "質問してもいいですか",
+      "components": [
+        {"known": "question", "target": "質問"},
+        {"known": "is it OK if I do", "target": "してもいいですか"}
+      ],
+      "phrases": [
+        {"known": "question", "target": "質問"},
+        {"known": "is it OK", "target": "いいですか"},
+        {"known": "is it OK if I do", "target": "してもいいですか"},
+        {"known": "is it OK if I ask", "target": "聞いてもいいですか"},
+        {"known": "is it OK if I go", "target": "行ってもいいですか"},
+        {"known": "is it OK if I come tomorrow", "target": "明日来てもいいですか"},
+        {"known": "is it OK if I start now", "target": "今始めてもいいですか"},
+        {"known": "is it OK if I ask a question", "target": "質問してもいいですか"},
+        {"known": "is it OK if I go home a little early today", "target": "今日少し早く帰ってもいいですか"},
+        {"known": "she asked if it was OK to leave early", "target": "彼女は早く帰ってもいいか聞きました"},
+        {"known": "I wasn't sure if it was OK to ask so I waited", "target": "聞いてもいいか分からなかったので待ちました"}
+      ]
+    }
+  ]
+}

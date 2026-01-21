@@ -1,0 +1,59 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 208,
+  "known_text": "I didn't want to ask you how to say it.",
+  "target_text": "どう言うかあなたに聞きたくありませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "how to say it",
+      "target": "どう言うか",
+      "components": [
+        {"known": "how", "target": "どう"},
+        {"known": "to say", "target": "言う"},
+        {"known": "whether/how (embedded)", "target": "か"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "どう"},
+        {"known": "say", "target": "言う"},
+        {"known": "how to say", "target": "どう言う"},
+        {"known": "how to say it", "target": "どう言うか"},
+        {"known": "how to do it", "target": "どうするか"},
+        {"known": "how to write it", "target": "どう書くか"},
+        {"known": "tell me how to say it", "target": "どう言うか教えて"},
+        {"known": "how to say this word", "target": "この言葉をどう言うか"},
+        {"known": "I don't know how to say it", "target": "どう言うかわかりません"},
+        {"known": "she asked me how to say it", "target": "彼女はどう言うか聞きました"},
+        {"known": "I was trying to learn how to say it", "target": "どう言うか学ぼうとしていました"},
+        {"known": "I didn't understand how to say that word", "target": "その言葉をどう言うかわかりませんでした"},
+        {"known": "he explained to me how to say it in Japanese", "target": "彼はそれをどう言うか説明しました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I didn't want to ask you",
+      "target": "あなたに聞きたくありませんでした",
+      "components": [
+        {"known": "you (indirect)", "target": "あなたに"},
+        {"known": "didn't want to ask", "target": "聞きたくありませんでした"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "あなた"},
+        {"known": "to you", "target": "あなたに"},
+        {"known": "to ask", "target": "聞く"},
+        {"known": "I asked", "target": "聞きました"},
+        {"known": "want to ask", "target": "聞きたい"},
+        {"known": "didn't want to ask", "target": "聞きたくなかった"},
+        {"known": "I want to ask you", "target": "あなたに聞きたいです"},
+        {"known": "I asked her about it", "target": "彼女にそれを聞きました"},
+        {"known": "didn't want to ask you", "target": "あなたに聞きたくありませんでした"},
+        {"known": "I wanted to ask her about it", "target": "彼女にそれについて聞きたかったです"},
+        {"known": "I didn't want to ask him yesterday", "target": "昨日彼に聞きたくありませんでした"},
+        {"known": "she said she didn't want to ask me about it", "target": "彼女はそれについて私に聞きたくなかったと言いました"},
+        {"known": "I didn't want to ask you because it was difficult", "target": "難しかったのであなたに聞きたくありませんでした"}
+      ]
+    }
+  ]
+}

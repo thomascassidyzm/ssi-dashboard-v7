@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 151,
+  "known_text": "That wasn't what I was hoping would happen.",
+  "target_text": "それは私が起こると期待していたことではありませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what I was hoping would happen",
+      "target": "私が起こると期待していたこと",
+      "components": [
+        {"known": "would happen", "target": "起こると"},
+        {"known": "I was hoping", "target": "私が期待していた"},
+        {"known": "what / that", "target": "こと"}
+      ],
+      "phrases": [
+        {"known": "happen", "target": "起こる"},
+        {"known": "I expect", "target": "期待する"},
+        {"known": "would happen", "target": "起こると"},
+        {"known": "what happens", "target": "起こること"},
+        {"known": "I was hoping", "target": "私が期待していた"},
+        {"known": "She was hoping too", "target": "彼女も期待していた"},
+        {"known": "what I was hoping", "target": "私が期待していたこと"},
+        {"known": "I was hoping it would happen", "target": "起こると期待していた"},
+        {"known": "We were hoping it would happen soon", "target": "すぐ起こると期待していた"},
+        {"known": "I was hoping she would understand what I said", "target": "私が言ったことを分かることを期待していた"},
+        {"known": "They were hoping we could finish this before tomorrow", "target": "明日までにこれを終わることを彼らは期待していました"},
+        {"known": "I was hoping that what she said would happen today", "target": "彼女が言ったことが今日起こると期待していました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "That wasn't",
+      "target": "それはではありませんでした。",
+      "components": [
+        {"known": "that", "target": "それは"},
+        {"known": "wasn't", "target": "ではありませんでした"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それは"},
+        {"known": "wasn't", "target": "ではない"},
+        {"known": "That wasn't", "target": "それではない"},
+        {"known": "That is different", "target": "それは違う"},
+        {"known": "That wasn't so", "target": "それはそうではない"},
+        {"known": "It wasn't good", "target": "それは良くなかった"},
+        {"known": "That wasn't difficult", "target": "それは難しくなかった"},
+        {"known": "That wasn't what she said", "target": "それは彼女が言ったことではなかった"},
+        {"known": "That wasn't what I wanted to do", "target": "それは私がしたかったことではなかった"},
+        {"known": "That wasn't the same as before", "target": "それは前と同じではありませんでした"},
+        {"known": "I think that wasn't what we were hoping for yesterday", "target": "それは昨日私たちが期待していたことではなかったと思います"},
+        {"known": "That wasn't very kind because she is usually patient with me", "target": "彼女はいつも私に辛抱強いのに、それはあまり親切ではなかった"}
+      ]
+    }
+  ]
+}

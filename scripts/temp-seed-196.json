@@ -1,0 +1,55 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 196,
+  "known_text": "Have you heard the latest idea?",
+  "target_text": "最新のアイデアを聞きましたか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the latest idea",
+      "target": "最新のアイデアを",
+      "components": [
+        {"known": "latest/newest", "target": "最新の"},
+        {"known": "idea", "target": "アイデア"}
+      ],
+      "phrases": [
+        {"known": "idea", "target": "アイデア"},
+        {"known": "newest", "target": "最新の"},
+        {"known": "the latest idea", "target": "最新のアイデアを"},
+        {"known": "that's a good idea", "target": "いい考えですね"},
+        {"known": "this is the latest one", "target": "これが最新のです"},
+        {"known": "do you have any ideas", "target": "何かアイデアがありますか"},
+        {"known": "I like that idea very much", "target": "そのアイデアがとても好きです"},
+        {"known": "I have an idea I'd like to share with you", "target": "あなたと分かち合いたいアイデアがあります"},
+        {"known": "have you seen the latest one that came out today", "target": "今日出てきた最新のを見ましたか"},
+        {"known": "this is the latest idea but I'm not sure about it yet", "target": "これは最新のアイデアですが、まだよく分かりません"},
+        {"known": "do you think the latest idea is better than the one before", "target": "最新のアイデアは前のより良いと思いますか"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "have you heard",
+      "target": "聞きましたか",
+      "components": [
+        {"known": "heard/asked", "target": "聞き"},
+        {"known": "did you (polite)", "target": "ましたか"}
+      ],
+      "phrases": [
+        {"known": "heard", "target": "聞き"},
+        {"known": "did you", "target": "ましたか"},
+        {"known": "have you heard", "target": "聞きましたか"},
+        {"known": "I heard it", "target": "聞きました"},
+        {"known": "did you hear that", "target": "それを聞きましたか"},
+        {"known": "I haven't heard anything", "target": "何も聞いていません"},
+        {"known": "have you heard from her", "target": "彼女から聞きましたか"},
+        {"known": "I heard she's coming tomorrow", "target": "彼女が明日来ると聞きました"},
+        {"known": "have you heard what happened yesterday", "target": "昨日何があったか聞きましたか"},
+        {"known": "I heard that there's a good place over there", "target": "あそこにいい場所があると聞きました"},
+        {"known": "have you heard what she said about the plan for tomorrow", "target": "明日の計画について彼女が何を言ったか聞きましたか"},
+        {"known": "I heard that he wants to meet us at the office tomorrow morning", "target": "彼が明日の朝オフィスで私たちに会いたいと聞きました"}
+      ]
+    }
+  ]
+}

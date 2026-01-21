@@ -1,0 +1,67 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 86,
+  "known_text": "It wasn't possible, unfortunately.",
+  "target_text": "残念ながら、それは不可能でした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "unfortunately (with comma)",
+      "target": "残念ながら、",
+      "phrases": [
+        {"known": "regret", "target": "残念"},
+        {"known": "unfortunately", "target": "残念ながら"},
+        {"known": "that's a pity", "target": "残念です"},
+        {"known": "it is unfortunate", "target": "残念なことです"},
+        {"known": "unfortunately I don't know", "target": "残念ながら知りません"},
+        {"known": "she said unfortunately", "target": "彼女は残念と言いました"},
+        {"known": "unfortunately he was not ready", "target": "残念ながら彼は準備ができていませんでした"},
+        {"known": "it is unfortunate but I don't agree", "target": "残念ですが同意しません"},
+        {"known": "unfortunately I did not understand what he said", "target": "残念ながら彼が言ったことがわかりませんでした"},
+        {"known": "she said unfortunately she did not know those people", "target": "彼女は残念ながらあの人たちを知らないと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "it (topic)",
+      "target": "それは",
+      "components": [
+        {"known": "it/that", "target": "それ"},
+        {"known": "(topic marker)", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それ"},
+        {"known": "it (topic)", "target": "それは"},
+        {"known": "it is fun", "target": "それは楽しい"},
+        {"known": "it is difficult", "target": "それは難しい"},
+        {"known": "it is important", "target": "それは大切です"},
+        {"known": "it was not easy", "target": "それは簡単ではありませんでした"},
+        {"known": "she said it is true", "target": "彼女はそれは本当だと言いました"},
+        {"known": "it is very fun", "target": "それはとても楽しいです"},
+        {"known": "I think it is very difficult", "target": "それはとても難しいと思います"},
+        {"known": "she thinks it is important to understand", "target": "彼女はそれを理解することは大切だと思います"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "was impossible",
+      "target": "不可能でした",
+      "phrases": [
+        {"known": "impossible", "target": "不可能"},
+        {"known": "is impossible", "target": "不可能です"},
+        {"known": "was impossible", "target": "不可能でした"},
+        {"known": "not impossible", "target": "不可能ではありません"},
+        {"known": "it is impossible", "target": "それは不可能です"},
+        {"known": "she said it was impossible", "target": "彼女は不可能だと言いました"},
+        {"known": "it was impossible to do", "target": "やるのは不可能でした"},
+        {"known": "he said it was not impossible", "target": "彼は不可能ではないと言いました"},
+        {"known": "unfortunately it was impossible", "target": "残念ながら、それは不可能でした"},
+        {"known": "I think it is impossible to understand everything", "target": "全てを理解するのは不可能だと思います"},
+        {"known": "she said it was impossible to wait all afternoon", "target": "彼女は午後ずっと待つのは不可能だと言いました"}
+      ]
+    }
+  ]
+}

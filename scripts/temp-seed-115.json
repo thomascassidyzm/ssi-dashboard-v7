@@ -1,0 +1,76 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 115,
+  "known_text": "I don't feel as if I'm ready to have a conversation.",
+  "target_text": "会話をする準備ができているようには感じません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "to have a conversation",
+      "target": "会話をする",
+      "components": [
+        {"known": "conversation (object)", "target": "会話を"},
+        {"known": "do/have", "target": "する"}
+      ],
+      "phrases": [
+        {"known": "conversation", "target": "会話"},
+        {"known": "do/have", "target": "する"},
+        {"known": "conversation (object)", "target": "会話を"},
+        {"known": "to have a conversation", "target": "会話をする"},
+        {"known": "I had a conversation", "target": "会話をしました"},
+        {"known": "she has a conversation", "target": "彼女は会話をします"},
+        {"known": "we want to have a conversation", "target": "会話をしたいです"},
+        {"known": "it's interesting to have a conversation", "target": "会話をするのは面白いです"},
+        {"known": "I had a conversation with my friend yesterday", "target": "昨日友達と会話をしました"},
+        {"known": "when we learn something new we can have a better conversation", "target": "新しいことを学ぶともっといい会話ができます"},
+        {"known": "I feel as if I'm ready to have a conversation now", "target": "今会話をする準備ができているように感じます"},
+        {"known": "I remember having a very interesting conversation about learning", "target": "学ぶことについてとても面白い会話をしたことを覚えています"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "ready/prepared",
+      "target": "準備ができている",
+      "components": [
+        {"known": "preparation", "target": "準備"},
+        {"known": "is done/ready", "target": "ができている"}
+      ],
+      "phrases": [
+        {"known": "preparation", "target": "準備"},
+        {"known": "is done/able", "target": "ができている"},
+        {"known": "ready", "target": "準備ができている"},
+        {"known": "not ready", "target": "準備ができていない"},
+        {"known": "she is ready", "target": "彼女は準備ができています"},
+        {"known": "I'm not ready yet", "target": "まだ準備ができていません"},
+        {"known": "are you ready to learn", "target": "学ぶ準備ができていますか"},
+        {"known": "he said he is ready to go", "target": "彼は行く準備ができていると言いました"},
+        {"known": "my friend is not ready to have a conversation", "target": "友達は会話をする準備ができていません"},
+        {"known": "when are you going to be ready to learn something new", "target": "いつ新しいことを学ぶ準備ができますか"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I don't feel as if (contrastive)",
+      "target": "ようには感じません",
+      "components": [
+        {"known": "as if/like (contrastive)", "target": "ようには"},
+        {"known": "don't feel", "target": "感じません"}
+      ],
+      "phrases": [
+        {"known": "feel", "target": "感じる"},
+        {"known": "don't feel", "target": "感じません"},
+        {"known": "am feeling", "target": "感じている"},
+        {"known": "as if (contrastive)", "target": "ようには"},
+        {"known": "I don't feel as if", "target": "ようには感じません"},
+        {"known": "I don't feel as if I understand", "target": "分かるようには感じません"},
+        {"known": "she doesn't feel as if she's ready", "target": "彼女は準備ができているようには感じません"},
+        {"known": "I don't feel as if it's going well", "target": "うまくいっているようには感じません"},
+        {"known": "he doesn't feel as if he learned something new", "target": "彼は新しいことを学んだようには感じません"},
+        {"known": "my friend doesn't feel as if today is better than yesterday", "target": "友達は昨日より今日の方がいいようには感じません"}
+      ]
+    }
+  ]
+}

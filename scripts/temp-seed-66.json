@@ -1,0 +1,101 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 66,
+  "known_text": "It's not difficult to find the answer.",
+  "target_text": "答えを見つけるのは難しくありません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "answer",
+      "target": "答え",
+      "phrases": [
+        {"known": "Answer.", "target": "答え。"},
+        {"known": "The answer.", "target": "答えを。"},
+        {"known": "That answer.", "target": "その答え。"},
+        {"known": "Find the answer.", "target": "答えを見つける。"},
+        {"known": "I know the answer.", "target": "答えを知っています。"},
+        {"known": "So the answer.", "target": "だから答え。"},
+        {"known": "She found the answer.", "target": "彼女は答えを見つけました。"},
+        {"known": "He said he knows the answer.", "target": "彼は答えを知っていると言いました。"},
+        {"known": "So I want to find the answer.", "target": "だから答えを見つけたいです。"},
+        {"known": "She said it's not difficult to find the answer.", "target": "彼女は答えを見つけるのは難しくないと言いました。"},
+        {"known": "It's not difficult to find the answer.", "target": "答えを見つけるのは難しくありません。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "object marker",
+      "target": "を",
+      "phrases": [
+        {"known": "It.", "target": "を。"},
+        {"known": "Do it.", "target": "それをする。"},
+        {"known": "I do it.", "target": "それをします。"},
+        {"known": "So I do that.", "target": "だからそれをします。"},
+        {"known": "I know that.", "target": "それを知っています。"},
+        {"known": "Find the answer.", "target": "答えを見つける。"},
+        {"known": "She sees his words.", "target": "彼女は彼の言葉を見ます。"},
+        {"known": "So he found the answer.", "target": "だから彼は答えを見つけました。"},
+        {"known": "She wants to find the answer.", "target": "彼女は答えを見つけたいです。"},
+        {"known": "So I want to find the answer now.", "target": "だから今答えを見つけたいです。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "find",
+      "target": "見つける",
+      "phrases": [
+        {"known": "Find.", "target": "見つける。"},
+        {"known": "I find.", "target": "見つけます。"},
+        {"known": "Find it.", "target": "それを見つける。"},
+        {"known": "He finds.", "target": "彼は見つけます。"},
+        {"known": "So I find.", "target": "だから見つけます。"},
+        {"known": "Find the answer.", "target": "答えを見つけます。"},
+        {"known": "She wants to find it.", "target": "彼女はそれを見つけたいです。"},
+        {"known": "Finding is important.", "target": "見つけるのは大切です。"},
+        {"known": "He said he found the answer.", "target": "彼は答えを見つけたと言いました。"},
+        {"known": "So she wants to find the answer now.", "target": "だから彼女は今答えを見つけたいです。"},
+        {"known": "Finding the answer is really important.", "target": "答えを見つけるのは本当に大切です。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "the thing of",
+      "target": "のは",
+      "phrases": [
+        {"known": "Doing is.", "target": "するのは。"},
+        {"known": "Going is.", "target": "行くのは。"},
+        {"known": "Finding is.", "target": "見つけるのは。"},
+        {"known": "Doing it is good.", "target": "するのはいいです。"},
+        {"known": "Seeing him is good.", "target": "彼に会うのはいいです。"},
+        {"known": "Finding is not difficult.", "target": "見つけるのは難しくないです。"},
+        {"known": "Finding the answer is not difficult.", "target": "答えを見つけるのは難しくないです。"},
+        {"known": "Learning Japanese is important.", "target": "日本語を学ぶのは大切です。"},
+        {"known": "So finding the answer is not difficult.", "target": "だから答えを見つけるのは難しくないです。"},
+        {"known": "It's not difficult to find the answer.", "target": "答えを見つけるのは難しくありません。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "is not difficult",
+      "target": "難しくありません",
+      "phrases": [
+        {"known": "Not difficult.", "target": "難しくない。"},
+        {"known": "It's not difficult.", "target": "難しくありません。"},
+        {"known": "That's not difficult.", "target": "それは難しくありません。"},
+        {"known": "So it's not difficult.", "target": "だから難しくありません。"},
+        {"known": "He said it's not difficult.", "target": "彼は難しくないと言いました。"},
+        {"known": "Finding is not difficult.", "target": "見つけるのは難しくありません。"},
+        {"known": "Finding the answer is not difficult.", "target": "答えを見つけるのは難しくありません。"},
+        {"known": "So she said it's not difficult.", "target": "だから彼女は難しくないと言いました。"},
+        {"known": "Learning Japanese is not difficult.", "target": "日本語を学ぶのは難しくありません。"},
+        {"known": "So finding the answer is not difficult.", "target": "だから答えを見つけるのは難しくありません。"},
+        {"known": "He said finding the answer is not difficult.", "target": "彼は答えを見つけるのは難しくないと言いました。"}
+      ]
+    }
+  ]
+}

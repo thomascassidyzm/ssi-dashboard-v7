@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 201,
+  "known_text": "We wanted to know what was going to happen.",
+  "target_text": "私たちは何が起こるか知りたかったです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what was going to happen",
+      "target": "何が起こるか",
+      "components": [
+        {"known": "what (subject)", "target": "何が"},
+        {"known": "will happen", "target": "起こる"},
+        {"known": "whether/if", "target": "か"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "何"},
+        {"known": "happen", "target": "起こる"},
+        {"known": "what will happen", "target": "何が起こる"},
+        {"known": "what was going to happen", "target": "何が起こるか"},
+        {"known": "something happened", "target": "何かが起こりました"},
+        {"known": "what happened yesterday", "target": "昨日何が起こったか"},
+        {"known": "I don't know what will happen", "target": "何が起こるか分かりません"},
+        {"known": "do you know what happened", "target": "何が起こったか知っていますか"},
+        {"known": "she asked what was going to happen", "target": "彼女は何が起こるか聞きました"},
+        {"known": "I heard what happened at the meeting yesterday", "target": "昨日の会いで何が起こったか聞きました"},
+        {"known": "they said they want to know what's going to happen tomorrow", "target": "彼らは明日何が起こるか知りたいと言いました"},
+        {"known": "he wanted to know what happened while he was working", "target": "彼は働いている間に何が起こったか知りたかったです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we wanted to know",
+      "target": "私たちは知りたかったです",
+      "components": [
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "wanted to know", "target": "知りたかったです"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "wanted to know", "target": "知りたかったです"},
+        {"known": "I want to know", "target": "知りたいです"},
+        {"known": "we wanted to", "target": "私たちはしたかったです"},
+        {"known": "we wanted to know", "target": "私たちは知りたかったです"},
+        {"known": "I wanted to know what happened", "target": "何が起こったか知りたかったです"},
+        {"known": "she said she wanted to know", "target": "彼女は知りたかったと言いました"},
+        {"known": "we wanted to know if it was true", "target": "私たちはそれが本当か知りたかったです"},
+        {"known": "I wanted to know why he was so busy", "target": "彼がなぜ忙しいか知りたかったです"},
+        {"known": "they said they wanted to know what was happening", "target": "彼らは何が起こっているか知りたかったと言いました"},
+        {"known": "we wanted to know what they were trying to do", "target": "私たちは彼らが何をしようとしているか知りたかったです"}
+      ]
+    }
+  ]
+}

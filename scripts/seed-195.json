@@ -1,0 +1,55 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 195,
+  "known_text": "I'm trying to find the money I left on the table.",
+  "target_text": "テーブルに置いたお金を探そうとしています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the money I left on the table",
+      "target": "テーブルに置いたお金を",
+      "components": [
+        {"known": "on the table", "target": "テーブルに"},
+        {"known": "money I left", "target": "置いたお金を"}
+      ],
+      "phrases": [
+        {"known": "table", "target": "テーブル"},
+        {"known": "on the table", "target": "テーブルに"},
+        {"known": "money", "target": "お金"},
+        {"known": "I left it", "target": "置きました"},
+        {"known": "the money I left", "target": "置いたお金"},
+        {"known": "the money I left on the table", "target": "テーブルに置いたお金を"},
+        {"known": "I put it on the table", "target": "テーブルに置きました"},
+        {"known": "did you see the keys I left on the table", "target": "テーブルに置いた鍵を見ましたか"},
+        {"known": "the thing I left on the table yesterday", "target": "昨日テーブルに置いたもの"},
+        {"known": "I left the keys on the table but now I can't find them", "target": "鍵をテーブルに置いたのに今見つけられません"},
+        {"known": "she said she left something important on the table", "target": "彼女は大事なものをテーブルに置いたと言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm trying to find",
+      "target": "探そうとしています",
+      "components": [
+        {"known": "let's search/intend to search", "target": "探そう"},
+        {"known": "trying to (progressive)", "target": "としています"}
+      ],
+      "phrases": [
+        {"known": "search", "target": "探す"},
+        {"known": "let's search", "target": "探そう"},
+        {"known": "trying to", "target": "としています"},
+        {"known": "try to go", "target": "行こうとする"},
+        {"known": "I'm trying to find", "target": "探そうとしています"},
+        {"known": "I'm trying to go", "target": "行こうとしています"},
+        {"known": "I'm trying to do it", "target": "しようとしています"},
+        {"known": "she's trying to understand", "target": "彼女は分かろうとしています"},
+        {"known": "I was trying to find my keys", "target": "鍵を探そうとしていました"},
+        {"known": "he said he was trying to come", "target": "彼は来ようとしていると言いました"},
+        {"known": "I've been trying to understand what she said", "target": "彼女が言ったことを分かろうとしています"},
+        {"known": "she was trying to find the thing she left yesterday", "target": "彼女は昨日置いたものを探そうとしていました"}
+      ]
+    }
+  ]
+}

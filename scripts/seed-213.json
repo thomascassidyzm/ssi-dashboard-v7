@@ -1,0 +1,60 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 213,
+  "known_text": "We don't know what they're trying to achieve.",
+  "target_text": "私たちは彼らが何を達成しようとしているかわかりません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what they're trying to achieve",
+      "target": "彼らが何を達成しようとしているか",
+      "components": [
+        {"known": "they (subject)", "target": "彼らが"},
+        {"known": "what (object)", "target": "何を"},
+        {"known": "trying to achieve", "target": "達成しようとしている"},
+        {"known": "whether/what (embedded)", "target": "か"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "何"},
+        {"known": "achieve", "target": "達成する"},
+        {"known": "trying to", "target": "しようとしている"},
+        {"known": "achieved it", "target": "達成しました"},
+        {"known": "what are they doing", "target": "彼らは何をしている"},
+        {"known": "trying to achieve", "target": "達成しようとしている"},
+        {"known": "what they want to achieve", "target": "彼らが達成したいこと"},
+        {"known": "I achieved it yesterday", "target": "昨日それを達成しました"},
+        {"known": "what are they trying to do", "target": "彼らは何をしようとしていますか"},
+        {"known": "do you know what they're trying to do", "target": "彼らが何をしようとしているか知っていますか"},
+        {"known": "I asked what they were trying to achieve", "target": "彼らが何を達成しようとしているか聞きました"},
+        {"known": "nobody knew what they were trying to achieve", "target": "彼らが何を達成しようとしているか誰もわかりませんでした"},
+        {"known": "tell me what you're trying to achieve with this", "target": "これで何を達成しようとしているか教えて"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we don't know",
+      "target": "私たちはわかりません",
+      "components": [
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "don't know/understand", "target": "わかりません"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "don't know", "target": "わかりません"},
+        {"known": "we don't know", "target": "私たちはわかりません"},
+        {"known": "I don't understand", "target": "わかりません"},
+        {"known": "we don't know yet", "target": "まだわかりません"},
+        {"known": "we don't know why", "target": "なぜかわかりません"},
+        {"known": "we didn't know that", "target": "私たちはそれを知りませんでした"},
+        {"known": "we don't know what to do", "target": "私たちは何をするかわかりません"},
+        {"known": "we don't know what happened", "target": "私たちは何があったかわかりません"},
+        {"known": "we didn't know about the problem", "target": "私たちはその問題についてわかりませんでした"},
+        {"known": "we don't know how to explain it to them", "target": "私たちは彼らにどう説明するかわかりません"},
+        {"known": "we didn't know what to say when they asked", "target": "彼らが聞いた時何を言うかわかりませんでした"}
+      ]
+    }
+  ]
+}

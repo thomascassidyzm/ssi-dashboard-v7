@@ -1,0 +1,51 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 189,
+  "known_text": "Yes that's a good idea.",
+  "target_text": "はい、それはいい考えですね。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "yes",
+      "target": "はい、",
+      "phrases": [
+        {"known": "yes", "target": "はい、"},
+        {"known": "yes that's right", "target": "はい、そうです"},
+        {"known": "yes it's good", "target": "はい、いいです"},
+        {"known": "yes I understand", "target": "はい、分かります"},
+        {"known": "yes I came yesterday", "target": "はい、昨日来ました"},
+        {"known": "yes she said that", "target": "はい、彼女はそう言いました"},
+        {"known": "yes I think we should go tomorrow", "target": "はい、明日行った方がいいと思います"},
+        {"known": "yes I thought it was very good", "target": "はい、とてもいいと思いました"},
+        {"known": "yes I think that would be much better", "target": "はい、その方がずっといいと思います"},
+        {"known": "yes I think so too but I'm not completely sure", "target": "はい、私もそう思いますが、よく分かりません"},
+        {"known": "yes I was satisfied with what we did yesterday", "target": "はい、昨日したことに満足していました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that's a good idea, isn't it",
+      "target": "それはいい考えですね",
+      "components": [
+        {"known": "that", "target": "それ"},
+        {"known": "is a good idea, isn't it", "target": "はいい考えですね"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それ"},
+        {"known": "idea", "target": "考え"},
+        {"known": "good idea", "target": "いい考え"},
+        {"known": "good idea, right", "target": "いい考えね"},
+        {"known": "a good idea, isn't it", "target": "いい考えですね"},
+        {"known": "that's a good idea, isn't it", "target": "それはいい考えですね"},
+        {"known": "this is a good idea, isn't it", "target": "これはいい考えですね"},
+        {"known": "I think that's a good idea, you know", "target": "それはいい考えだと思いますね"},
+        {"known": "that's a really good idea, isn't it", "target": "それはとてもいい考えですね"},
+        {"known": "she said it was a good idea, and I agreed", "target": "彼女はいい考えだと言ったので、私も同じと思いました"},
+        {"known": "so I thought that was a really good idea, you know", "target": "だからそれはとてもいい考えだと思いましたね"},
+        {"known": "it was a good idea to go there yesterday, wasn't it", "target": "昨日そこに行ったのはいい考えでしたね"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 82,
+  "known_text": "I'm not going to wait for you. Why not?",
+  "target_text": "あなたを待つつもりはありません。なぜですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you (object)",
+      "target": "あなたを",
+      "components": [
+        {"known": "you", "target": "あなた"},
+        {"known": "(object marker)", "target": "を"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "あなた"},
+        {"known": "you (object)", "target": "あなたを"},
+        {"known": "I see you", "target": "あなたを見る"},
+        {"known": "I helped you", "target": "あなたを手伝った"},
+        {"known": "she understands you", "target": "彼女はあなたを理解します"},
+        {"known": "I am looking for you", "target": "あなたを探しています"},
+        {"known": "I told you the truth", "target": "あなたに本当のことを言いました"},
+        {"known": "she said she understands you", "target": "彼女はあなたを理解すると言いました"},
+        {"known": "I did not want to tell you the truth", "target": "あなたに本当のことを言いたくありませんでした"},
+        {"known": "he asked if I understood you", "target": "彼は私があなたを理解したか聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "don't intend to wait",
+      "target": "待つつもりはありません",
+      "components": [
+        {"known": "intend to wait", "target": "待つつもり"},
+        {"known": "don't have (polite negative)", "target": "はありません"}
+      ],
+      "phrases": [
+        {"known": "wait", "target": "待つ"},
+        {"known": "intend to", "target": "つもり"},
+        {"known": "intend to wait", "target": "待つつもり"},
+        {"known": "don't intend to wait", "target": "待つつもりはありません"},
+        {"known": "intend to do", "target": "やるつもり"},
+        {"known": "I don't intend to", "target": "つもりはありません"},
+        {"known": "she intends to start", "target": "彼女は始めるつもりです"},
+        {"known": "I do not intend to wait for you", "target": "あなたを待つつもりはありません"},
+        {"known": "he said he intends to start tomorrow", "target": "彼は明日始めるつもりだと言いました"},
+        {"known": "she does not intend to wait all afternoon", "target": "彼女は午後ずっと待つつもりはありません"},
+        {"known": "I asked if he intended to start learning today", "target": "彼が今日学び始めるつもりか聞きました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "why? (polite)",
+      "target": "なぜですか？",
+      "phrases": [
+        {"known": "why", "target": "なぜ"},
+        {"known": "why? (polite)", "target": "なぜですか？"},
+        {"known": "why is that?", "target": "なぜそうですか？"},
+        {"known": "why did you say that?", "target": "なぜそう言いましたか？"},
+        {"known": "why did she do it?", "target": "なぜ彼女はやりましたか？"},
+        {"known": "I do not know why", "target": "なぜかわかりません"},
+        {"known": "why is it difficult?", "target": "なぜ難しいですか？"},
+        {"known": "she asked why I did not wait", "target": "彼女はなぜ待たなかったか聞きました"},
+        {"known": "he wanted to know why she was not ready", "target": "彼はなぜ彼女が準備ができていないか知りたかったです"},
+        {"known": "I asked why he did not intend to start", "target": "私はなぜ彼が始めるつもりがないか聞きました"}
+      ]
+    }
+  ]
+}

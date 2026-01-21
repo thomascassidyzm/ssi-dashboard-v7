@@ -1,0 +1,54 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 193,
+  "known_text": "I'm sorry but I'm too busy today.",
+  "target_text": "すみませんが、今日は忙しすぎます。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm sorry but",
+      "target": "すみませんが、",
+      "components": [
+        {"known": "sorry", "target": "すみません"},
+        {"known": "but", "target": "が、"}
+      ],
+      "phrases": [
+        {"known": "sorry", "target": "すみません"},
+        {"known": "but", "target": "が、"},
+        {"known": "I'm sorry but", "target": "すみませんが、"},
+        {"known": "I'm sorry but I can't", "target": "すみませんが、できません"},
+        {"known": "I'm sorry but I don't know", "target": "すみませんが、分かりません"},
+        {"known": "I'm sorry but I can't go", "target": "すみませんが、行けません"},
+        {"known": "I'm sorry but I don't have time", "target": "すみませんが、時間がありません"},
+        {"known": "I'm sorry but I don't understand", "target": "すみませんが、分かりません"},
+        {"known": "I'm sorry but I have something to do", "target": "すみませんが、することがあります"},
+        {"known": "I'm sorry but I won't be able to come tomorrow", "target": "すみませんが、明日は来られません"},
+        {"known": "I'm sorry but I didn't hear what you said", "target": "すみませんが、言ったことが聞こえませんでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm too busy today",
+      "target": "今日は忙しすぎます",
+      "components": [
+        {"known": "today (topic)", "target": "今日は"},
+        {"known": "too busy", "target": "忙しすぎます"}
+      ],
+      "phrases": [
+        {"known": "today", "target": "今日"},
+        {"known": "today (topic)", "target": "今日は"},
+        {"known": "too busy", "target": "忙しすぎます"},
+        {"known": "I'm too busy today", "target": "今日は忙しすぎます"},
+        {"known": "it's too difficult", "target": "難しすぎます"},
+        {"known": "it's too early", "target": "早すぎます"},
+        {"known": "she said she's too busy today", "target": "彼女は今日忙しすぎると言いました"},
+        {"known": "he said it was too difficult", "target": "彼は難しすぎると言いました"},
+        {"known": "I was too busy yesterday so I couldn't come", "target": "昨日忙しすぎて来られませんでした"},
+        {"known": "today I'm too busy to meet anyone", "target": "今日は忙しすぎて誰にも会えません"},
+        {"known": "she was too busy to go to the meeting yesterday", "target": "彼女は昨日忙しすぎて会いに行けませんでした"}
+      ]
+    }
+  ]
+}

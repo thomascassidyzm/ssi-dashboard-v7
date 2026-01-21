@@ -1,0 +1,72 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 219,
+  "known_text": "It was nice to relax for a while.",
+  "target_text": "しばらくリラックスするのは良かったです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "for a while",
+      "target": "しばらく",
+      "phrases": [
+        {"known": "a while", "target": "しばらく"},
+        {"known": "for a while", "target": "しばらく"},
+        {"known": "wait a while", "target": "しばらく待つ"},
+        {"known": "after a while", "target": "しばらくして"},
+        {"known": "I waited for a while", "target": "しばらく待ちました"},
+        {"known": "it's been a while", "target": "しばらくですね"},
+        {"known": "I stayed for a while", "target": "しばらくいました"},
+        {"known": "I was there for a while", "target": "しばらくそこにいました"},
+        {"known": "I haven't seen you for a while", "target": "しばらく会っていませんね"},
+        {"known": "I was busy for a while but now I'm free", "target": "しばらく忙しかったですが今は大丈夫です"},
+        {"known": "for a while I didn't know what to do about it", "target": "しばらくそれについて何をしたらいいかわかりませんでした"},
+        {"known": "I didn't go out for a while because I was too busy", "target": "しばらく忙しすぎて出かけませんでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "relaxing is",
+      "target": "リラックスするのは",
+      "components": [
+        {"known": "relax", "target": "リラックスする"},
+        {"known": "the act of (topic)", "target": "のは"}
+      ],
+      "phrases": [
+        {"known": "relax", "target": "リラックス"},
+        {"known": "to relax", "target": "リラックスする"},
+        {"known": "relaxing", "target": "リラックスして"},
+        {"known": "relaxing is", "target": "リラックスするのは"},
+        {"known": "I want to relax", "target": "リラックスしたいです"},
+        {"known": "relaxing is important", "target": "リラックスするのは大切です"},
+        {"known": "I relaxed at home", "target": "家でリラックスしました"},
+        {"known": "relaxing is fun", "target": "リラックスするのは楽しいです"},
+        {"known": "I try to relax on weekends", "target": "週末にリラックスしようとしています"},
+        {"known": "relaxing at home is the best", "target": "家でリラックスするのがいいです"},
+        {"known": "I couldn't relax because I was too busy", "target": "忙しすぎてリラックスできませんでした"},
+        {"known": "relaxing for a while after work is very nice", "target": "仕事の後しばらくリラックスするのはとてもいいです"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "it was nice",
+      "target": "良かったです",
+      "phrases": [
+        {"known": "good", "target": "良い"},
+        {"known": "was good", "target": "良かった"},
+        {"known": "it was nice", "target": "良かったです"},
+        {"known": "that's good", "target": "良かったですね"},
+        {"known": "it was really nice", "target": "本当に良かったです"},
+        {"known": "meeting you was nice", "target": "会えて良かったです"},
+        {"known": "that was really nice", "target": "それは本当に良かったです"},
+        {"known": "it was nice to be able to go", "target": "行けて良かったです"},
+        {"known": "it was nice that we could meet", "target": "会えて良かったです"},
+        {"known": "it was nice to take time to relax", "target": "リラックスする時間があって良かったです"},
+        {"known": "it was really nice to see everyone together", "target": "みんなに会えて本当に良かったです"},
+        {"known": "it was nice to spend time with friends on the weekend", "target": "週末に友達と時間を過ごせて良かったです"}
+      ]
+    }
+  ]
+}

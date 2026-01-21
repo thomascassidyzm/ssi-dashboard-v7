@@ -1,0 +1,74 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 201,
+  "known_text": "We wanted to know what was going to happen.",
+  "target_text": "私たちは何が起こるのか知りたかったです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we (topic)",
+      "target": "私たちは",
+      "components": [
+        {"known": "we", "target": "私たち"},
+        {"known": "(topic marker)", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "we can go", "target": "私たちは行けます"},
+        {"known": "we all came", "target": "私たちは来ました"},
+        {"known": "we want to help", "target": "私たちは手伝いたいです"},
+        {"known": "we finished everything", "target": "私たちは全部終わりました"},
+        {"known": "we can meet tomorrow", "target": "私たちは明日会えます"},
+        {"known": "we talked about it yesterday", "target": "私たちは昨日それについて話しました"},
+        {"known": "we want to finish everything before she comes", "target": "私たちは彼女が来る前に全部終わりたいです"},
+        {"known": "we hope we can make it in time for the meeting tomorrow", "target": "私たちは明日の会いに間に合うといいです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what was going to happen",
+      "target": "何が起こるのか",
+      "components": [
+        {"known": "what (subject)", "target": "何が"},
+        {"known": "going to happen", "target": "起こるのか"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "何が"},
+        {"known": "will happen", "target": "起こる"},
+        {"known": "what was going to happen", "target": "何が起こるのか"},
+        {"known": "what happened", "target": "何が起きましたか"},
+        {"known": "something happened", "target": "何かが起こりました"},
+        {"known": "I don't know what's happening", "target": "何が起きているか分かりません"},
+        {"known": "what do you think will happen", "target": "何が起こると思いますか"},
+        {"known": "I want to know what happened yesterday at the office", "target": "昨日オフィスで何が起きたか知りたいです"},
+        {"known": "do you know what's going to happen tomorrow morning", "target": "明日の朝何が起こるか知っていますか"},
+        {"known": "I'm not sure what will happen next but I hope it goes well", "target": "何が起こるか分かりませんが、うまくいくといいです"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "wanted to know",
+      "target": "知りたかったです",
+      "components": [
+        {"known": "want to know", "target": "知りたい"},
+        {"known": "wanted (past)", "target": "かったです"}
+      ],
+      "phrases": [
+        {"known": "want to know", "target": "知りたい"},
+        {"known": "wanted", "target": "かったです"},
+        {"known": "wanted to know", "target": "知りたかったです"},
+        {"known": "I want to know", "target": "知りたいです"},
+        {"known": "I wanted to go", "target": "行きたかったです"},
+        {"known": "I wanted to see her", "target": "彼女に会いたかったです"},
+        {"known": "I wanted to finish the work", "target": "仕事を終わらせたかったです"},
+        {"known": "I wanted to know but no one told me", "target": "知りたかったですが、誰も教えてくれませんでした"},
+        {"known": "we wanted to know what she said about it", "target": "彼女がそれについて何を言ったか知りたかったです"},
+        {"known": "I wanted to know what was going to happen tomorrow", "target": "明日何が起こるのか知りたかったです"}
+      ]
+    }
+  ]
+}

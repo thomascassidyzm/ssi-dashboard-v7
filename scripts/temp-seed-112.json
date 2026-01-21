@@ -1,0 +1,72 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 112,
+  "known_text": "That was very interesting, and I wasn't expecting it.",
+  "target_text": "それはとても面白かったです、そして予想していませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that was very interesting,",
+      "target": "それはとても面白かったです、",
+      "components": [
+        {"known": "that (topic)", "target": "それは"},
+        {"known": "very", "target": "とても"},
+        {"known": "was interesting,", "target": "面白かったです、"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それ"},
+        {"known": "very", "target": "とても"},
+        {"known": "that (topic)", "target": "それは"},
+        {"known": "interesting", "target": "面白い"},
+        {"known": "was interesting", "target": "面白かったです"},
+        {"known": "very interesting", "target": "とても面白い"},
+        {"known": "that was very interesting", "target": "それはとても面白かったです"},
+        {"known": "this was very interesting", "target": "これはとても面白かったです"},
+        {"known": "my friend said that was very interesting", "target": "友達はそれはとても面白かったと言いました"},
+        {"known": "learning something new is very interesting", "target": "新しいことを学ぶのはとても面白いです"},
+        {"known": "I remember that the letter was very interesting", "target": "手紙がとても面白かったことを覚えています"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "and",
+      "target": "そして",
+      "phrases": [
+        {"known": "and", "target": "そして"},
+        {"known": "and then I", "target": "そして私は"},
+        {"known": "and we", "target": "そして私たちは"},
+        {"known": "and she went", "target": "そして彼女は行きました"},
+        {"known": "and he learned", "target": "そして彼は学びました"},
+        {"known": "and we relaxed", "target": "そしてリラックスしました"},
+        {"known": "and after that I understood", "target": "そしてその後分かりました"},
+        {"known": "and my friend wanted to see it", "target": "そして友達はそれを見たかったです"},
+        {"known": "and when we finished we wanted to relax", "target": "そして終わったらリラックスしたかったです"},
+        {"known": "and after learning something new our brain changed", "target": "そして新しいことを学んだら脳が変わりました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I wasn't expecting it",
+      "target": "予想していませんでした",
+      "components": [
+        {"known": "expect", "target": "予想"},
+        {"known": "wasn't doing", "target": "していませんでした"}
+      ],
+      "phrases": [
+        {"known": "expect", "target": "予想"},
+        {"known": "expecting", "target": "予想している"},
+        {"known": "was expecting", "target": "予想していました"},
+        {"known": "wasn't expecting", "target": "予想していませんでした"},
+        {"known": "she wasn't expecting it", "target": "彼女は予想していませんでした"},
+        {"known": "he wasn't expecting that", "target": "彼はそれを予想していませんでした"},
+        {"known": "I wasn't expecting to see him", "target": "彼に会うことを予想していませんでした"},
+        {"known": "we weren't expecting it to change", "target": "それが変わることを予想していませんでした"},
+        {"known": "my friend said she wasn't expecting to learn so much", "target": "友達はそんなに学ぶことを予想していなかったと言いました"},
+        {"known": "I wasn't expecting our brain to change when we learn something new", "target": "新しいことを学ぶと脳が変わることを予想していませんでした"}
+      ]
+    }
+  ]
+}

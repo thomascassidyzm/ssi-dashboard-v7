@@ -1,0 +1,52 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 202,
+  "known_text": "Nobody was sure how to answer the question.",
+  "target_text": "誰も質問にどう答えるかわかりませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "nobody",
+      "target": "誰も",
+      "phrases": [
+        {"known": "who", "target": "誰"},
+        {"known": "nobody", "target": "誰も"},
+        {"known": "nobody came", "target": "誰も来ませんでした"},
+        {"known": "nobody knows", "target": "誰も知りません"},
+        {"known": "nobody was there", "target": "誰もいませんでした"},
+        {"known": "nobody understands", "target": "誰もわかりません"},
+        {"known": "nobody said anything", "target": "誰も何も言いませんでした"},
+        {"known": "nobody wanted to go", "target": "誰も行きたくありませんでした"},
+        {"known": "nobody was able to come yesterday", "target": "誰も昨日来られませんでした"},
+        {"known": "nobody knew what was going to happen", "target": "誰も何が起こるか知りませんでした"},
+        {"known": "nobody was satisfied with how things turned out", "target": "誰もどうなったか満足していませんでした"},
+        {"known": "nobody understood what she was trying to say yesterday", "target": "誰も彼女が昨日言おうとしていたことがわかりませんでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "was sure how to answer the question",
+      "target": "質問にどう答えるかわかりませんでした",
+      "components": [
+        {"known": "to the question", "target": "質問に"},
+        {"known": "how to answer", "target": "どう答えるか"},
+        {"known": "did not understand", "target": "わかりませんでした"}
+      ],
+      "phrases": [
+        {"known": "question", "target": "質問"},
+        {"known": "to the question", "target": "質問に"},
+        {"known": "how to answer", "target": "どう答えるか"},
+        {"known": "didn't understand", "target": "わかりませんでした"},
+        {"known": "answer the question", "target": "質問に答える"},
+        {"known": "how to do it", "target": "どうするか"},
+        {"known": "I didn't know how to answer", "target": "どう答えるかわかりませんでした"},
+        {"known": "she asked how to answer", "target": "彼女はどう答えるか聞きました"},
+        {"known": "I wasn't sure how to answer the question", "target": "質問にどう答えるかわかりませんでした"},
+        {"known": "he said he didn't know how to answer", "target": "彼はどう答えるかわからなかったと言いました"},
+        {"known": "I didn't understand how to answer the question she asked", "target": "彼女が聞いた質問にどう答えるかわかりませんでした"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 69,
+  "known_text": "He didn't want to look after the young dog all afternoon.",
+  "target_text": "彼は午後ずっと若い犬の世話をしたくありませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he (topic)",
+      "target": "彼は",
+      "components": [
+        {"known": "he", "target": "彼"},
+        {"known": "(topic)", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "彼"},
+        {"known": "he (topic)", "target": "彼は"},
+        {"known": "he thinks", "target": "彼は思います"},
+        {"known": "he says", "target": "彼は言います"},
+        {"known": "he understands", "target": "彼は分かります"},
+        {"known": "he is searching", "target": "彼は探しています"},
+        {"known": "he speaks Japanese", "target": "彼は日本語を話します"},
+        {"known": "he wants to try hard today", "target": "彼は今日頑張りたいです"},
+        {"known": "he said it is important", "target": "彼は大切だと言いました"},
+        {"known": "he thinks learning Japanese is fun", "target": "彼は日本語を学ぶのは楽しいと思います"},
+        {"known": "he is looking for the answer today", "target": "彼は今日答えを探しています"},
+        {"known": "he thinks it is not difficult to memorize words", "target": "彼は言葉を覚えるのは難しくないと思います"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "all afternoon",
+      "target": "午後ずっと",
+      "components": [
+        {"known": "afternoon", "target": "午後"},
+        {"known": "the whole time", "target": "ずっと"}
+      ],
+      "phrases": [
+        {"known": "afternoon", "target": "午後"},
+        {"known": "the whole time", "target": "ずっと"},
+        {"known": "all afternoon", "target": "午後ずっと"},
+        {"known": "this afternoon", "target": "今日の午後"},
+        {"known": "always thinking", "target": "ずっと思っている"},
+        {"known": "all afternoon studying", "target": "午後ずっと学んでいる"},
+        {"known": "the whole time today", "target": "今日ずっと"},
+        {"known": "I was searching all afternoon", "target": "午後ずっと探していました"},
+        {"known": "She was speaking Japanese all afternoon", "target": "彼女は午後ずっと日本語を話していました"},
+        {"known": "He was trying hard all afternoon today", "target": "彼は今日午後ずっと頑張っていました"},
+        {"known": "I was thinking about it the whole time", "target": "ずっとそのことを考えていました"},
+        {"known": "It is not easy to try hard all afternoon", "target": "午後ずっと頑張るのは簡単ではありません"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "young",
+      "target": "若い",
+      "phrases": [
+        {"known": "young", "target": "若い"},
+        {"known": "young person", "target": "若い人"},
+        {"known": "still young", "target": "まだ若い"},
+        {"known": "young and fun", "target": "若くて楽しい"},
+        {"known": "I am young", "target": "私は若いです"},
+        {"known": "she is young", "target": "彼女は若いです"},
+        {"known": "young but important", "target": "若いですが大切です"},
+        {"known": "he said he is still young", "target": "彼はまだ若いと言いました"},
+        {"known": "I think young people are important", "target": "若い人は大切だと思います"},
+        {"known": "she thinks being young is a good thing", "target": "彼女は若いのはいいことだと思います"},
+        {"known": "it is fun to be young and speak Japanese", "target": "若くて日本語を話すのは楽しいです"},
+        {"known": "he thinks it is important to help young people", "target": "彼は若い人を手伝うことは大切だと思います"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "the dog's",
+      "target": "犬の",
+      "components": [
+        {"known": "dog", "target": "犬"},
+        {"known": "(possessive)", "target": "の"}
+      ],
+      "phrases": [
+        {"known": "dog", "target": "犬"},
+        {"known": "dog's", "target": "犬の"},
+        {"known": "the dog", "target": "その犬"},
+        {"known": "young dog", "target": "若い犬"},
+        {"known": "I have a dog", "target": "犬がいます"},
+        {"known": "the dog is fun", "target": "犬は楽しいです"},
+        {"known": "he likes the dog", "target": "彼は犬が好きです"},
+        {"known": "the young dog is here", "target": "若い犬はここにいます"},
+        {"known": "she is looking for the dog", "target": "彼女は犬を探しています"},
+        {"known": "he said he is looking for the young dog", "target": "彼は若い犬を探していると言いました"},
+        {"known": "I think dogs are fun to be with", "target": "犬と一緒にいるのは楽しいと思います"},
+        {"known": "she thinks the young dog is very important", "target": "彼女は若い犬はとても大切だと思います"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "want to look after",
+      "target": "世話をしたく",
+      "components": [
+        {"known": "care/looking after", "target": "世話"},
+        {"known": "want to do", "target": "をしたく"}
+      ],
+      "phrases": [
+        {"known": "care", "target": "世話"},
+        {"known": "to look after", "target": "世話をする"},
+        {"known": "looking after", "target": "世話をして"},
+        {"known": "I look after", "target": "世話をします"},
+        {"known": "want to look after", "target": "世話をしたい"},
+        {"known": "I looked after the dog", "target": "犬の世話をしました"},
+        {"known": "she is looking after the dog", "target": "彼女は犬の世話をしています"},
+        {"known": "he looked after the dog all afternoon", "target": "彼は午後ずっと犬の世話をしました"},
+        {"known": "it is important to look after the dog", "target": "犬の世話をすることは大切です"},
+        {"known": "I think looking after a young dog is fun", "target": "若い犬の世話をするのは楽しいと思います"},
+        {"known": "she said she will look after the dog tomorrow", "target": "彼女は明日犬の世話をすると言いました"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "was not (past polite)",
+      "target": "ありませんでした",
+      "phrases": [
+        {"known": "is not", "target": "ありません"},
+        {"known": "was not", "target": "ありませんでした"},
+        {"known": "there is not", "target": "ありません"},
+        {"known": "there was not", "target": "ありませんでした"},
+        {"known": "it was not easy", "target": "簡単ではありませんでした"},
+        {"known": "it was not difficult", "target": "難しくありませんでした"},
+        {"known": "the answer was not there", "target": "答えはありませんでした"},
+        {"known": "he did not want to go", "target": "彼は行きたくありませんでした"},
+        {"known": "she did not want to speak Japanese", "target": "彼女は日本語を話したくありませんでした"},
+        {"known": "it was not a good thing to do all afternoon", "target": "午後ずっとするのはいいことではありませんでした"},
+        {"known": "I did not want to explain the whole sentence", "target": "文全体を説明したくありませんでした"}
+      ]
+    }
+  ]
+}

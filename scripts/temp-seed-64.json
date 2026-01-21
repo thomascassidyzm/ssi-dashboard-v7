@@ -1,0 +1,177 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 64,
+  "known_text": "Learning Japanese isn't easy but it is fun.",
+  "target_text": "日本語を学ぶのは簡単ではありませんが楽しいです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "Japanese",
+      "target": "日本語",
+      "phrases": [
+        {"known": "Japanese.", "target": "日本語。"},
+        {"known": "In Japanese.", "target": "日本語で。"},
+        {"known": "Japanese words.", "target": "日本語の言葉。"},
+        {"known": "I learn Japanese.", "target": "日本語を学びます。"},
+        {"known": "So Japanese.", "target": "だから日本語。"},
+        {"known": "She knows Japanese.", "target": "彼女は日本語を知っています。"},
+        {"known": "He says it in Japanese.", "target": "彼は日本語で言います。"},
+        {"known": "Learning Japanese is fun.", "target": "日本語を学ぶのは楽しいです。"},
+        {"known": "So I want to learn Japanese.", "target": "だから日本語を学びたいです。"},
+        {"known": "She said she wants to learn Japanese.", "target": "彼女は日本語を学びたいと言いました。"},
+        {"known": "Learning Japanese isn't easy but it is fun.", "target": "日本語を学ぶのは簡単ではありませんが楽しいです。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "object marker",
+      "target": "を",
+      "phrases": [
+        {"known": "It.", "target": "を。"},
+        {"known": "Do it.", "target": "それをする。"},
+        {"known": "I do it.", "target": "それをします。"},
+        {"known": "So I do that.", "target": "だからそれをします。"},
+        {"known": "I know that.", "target": "それを知っています。"},
+        {"known": "She sees his words.", "target": "彼女は彼の言葉を見ます。"},
+        {"known": "I learn Japanese.", "target": "日本語を学びます。"},
+        {"known": "So he thought about that thing.", "target": "だから彼はそのことを考えました。"},
+        {"known": "She wants to learn Japanese.", "target": "彼女は日本語を学びたいです。"},
+        {"known": "So I want to learn Japanese well.", "target": "だから日本語をよく学びたいです。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "learn",
+      "target": "学ぶ",
+      "phrases": [
+        {"known": "Learn.", "target": "学ぶ。"},
+        {"known": "I learn.", "target": "学びます。"},
+        {"known": "He learns.", "target": "彼は学びます。"},
+        {"known": "I learn Japanese.", "target": "日本語を学びます。"},
+        {"known": "So I learn.", "target": "だから学びます。"},
+        {"known": "She wants to learn.", "target": "彼女は学びたいです。"},
+        {"known": "Learning is good.", "target": "学ぶのはいいです。"},
+        {"known": "He said he wants to learn.", "target": "彼は学びたいと言いました。"},
+        {"known": "Learning Japanese is fun.", "target": "日本語を学ぶのは楽しいです。"},
+        {"known": "So she wants to learn a little more.", "target": "だから彼女はもう少し学びたいです。"},
+        {"known": "He said learning Japanese is really good.", "target": "彼は日本語を学ぶのは本当にいいと言いました。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "the thing of",
+      "target": "のは",
+      "phrases": [
+        {"known": "Doing is.", "target": "するのは。"},
+        {"known": "Going is.", "target": "行くのは。"},
+        {"known": "Learning is.", "target": "学ぶのは。"},
+        {"known": "Doing it is good.", "target": "するのはいいです。"},
+        {"known": "Seeing him is good.", "target": "彼に会うのはいいです。"},
+        {"known": "Learning is fun.", "target": "学ぶのは楽しいです。"},
+        {"known": "Learning Japanese is fun.", "target": "日本語を学ぶのは楽しいです。"},
+        {"known": "Doing that thing is not easy.", "target": "そのことをするのは簡単ではありません。"},
+        {"known": "So learning Japanese is good.", "target": "だから日本語を学ぶのはいいです。"},
+        {"known": "Learning Japanese isn't easy.", "target": "日本語を学ぶのは簡単ではありません。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "easy",
+      "target": "簡単",
+      "phrases": [
+        {"known": "Easy.", "target": "簡単。"},
+        {"known": "It's easy.", "target": "簡単です。"},
+        {"known": "That's easy.", "target": "それは簡単です。"},
+        {"known": "So it's easy.", "target": "だから簡単です。"},
+        {"known": "Japanese is easy.", "target": "日本語は簡単です。"},
+        {"known": "It isn't easy.", "target": "簡単ではありません。"},
+        {"known": "He said it's easy.", "target": "彼は簡単と言いました。"},
+        {"known": "Learning isn't easy.", "target": "学ぶのは簡単ではありません。"},
+        {"known": "So she said it isn't easy.", "target": "だから彼女は簡単ではないと言いました。"},
+        {"known": "Learning Japanese isn't easy.", "target": "日本語を学ぶのは簡単ではありません。"},
+        {"known": "He said learning Japanese isn't easy.", "target": "彼は日本語を学ぶのは簡単ではないと言いました。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "is not (formal)",
+      "target": "ではありません",
+      "phrases": [
+        {"known": "Is not.", "target": "ではありません。"},
+        {"known": "It is not.", "target": "ではありません。"},
+        {"known": "That is not.", "target": "それではありません。"},
+        {"known": "It is not good.", "target": "よくありません。"},
+        {"known": "It is not easy.", "target": "簡単ではありません。"},
+        {"known": "So it is not.", "target": "だからではありません。"},
+        {"known": "Learning is not easy.", "target": "学ぶのは簡単ではありません。"},
+        {"known": "She said it is not good.", "target": "彼女はよくないと言いました。"},
+        {"known": "Learning Japanese is not easy.", "target": "日本語を学ぶのは簡単ではありません。"},
+        {"known": "So he said it is not easy but it is fun.", "target": "だから彼は簡単ではありませんが楽しいと言いました。"},
+        {"known": "Learning Japanese is not easy but it is really fun.", "target": "日本語を学ぶのは簡単ではありませんが本当に楽しいです。"}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "but (contrast)",
+      "target": "が",
+      "phrases": [
+        {"known": "But.", "target": "が。"},
+        {"known": "It's good but.", "target": "いいですが。"},
+        {"known": "I want to but.", "target": "したいですが。"},
+        {"known": "It's easy but.", "target": "簡単ですが。"},
+        {"known": "I know but.", "target": "知っていますが。"},
+        {"known": "So it's good but.", "target": "だからいいですが。"},
+        {"known": "That's okay but.", "target": "それは大丈夫ですが。"},
+        {"known": "She wants to but she can't.", "target": "彼女はしたいですができません。"},
+        {"known": "It isn't easy but it's fun.", "target": "簡単ではありませんが楽しいです。"},
+        {"known": "He said it's good but not easy.", "target": "彼はいいですが簡単ではないと言いました。"},
+        {"known": "Learning Japanese isn't easy but it is fun.", "target": "日本語を学ぶのは簡単ではありませんが楽しいです。"},
+        {"known": "So she said learning Japanese isn't easy but it's fun.", "target": "だから彼女は日本語を学ぶのは簡単ではありませんが楽しいと言いました。"}
+      ]
+    },
+    {
+      "idx": 8,
+      "type": "A",
+      "known": "fun",
+      "target": "楽しい",
+      "phrases": [
+        {"known": "Fun.", "target": "楽しい。"},
+        {"known": "It's fun.", "target": "楽しいです。"},
+        {"known": "That's fun.", "target": "それは楽しいです。"},
+        {"known": "So it's fun.", "target": "だから楽しいです。"},
+        {"known": "Learning is fun.", "target": "学ぶのは楽しいです。"},
+        {"known": "He said it's fun.", "target": "彼は楽しいと言いました。"},
+        {"known": "It isn't easy but it's fun.", "target": "簡単ではありませんが楽しいです。"},
+        {"known": "Learning Japanese is fun.", "target": "日本語を学ぶのは楽しいです。"},
+        {"known": "So she said learning is really fun.", "target": "だから彼女は学ぶのは本当に楽しいと言いました。"},
+        {"known": "Learning Japanese isn't easy but it is fun.", "target": "日本語を学ぶのは簡単ではありませんが楽しいです。"},
+        {"known": "He said learning Japanese is not easy but really fun.", "target": "彼は日本語を学ぶのは簡単ではないが本当に楽しいと言いました。"}
+      ]
+    },
+    {
+      "idx": 9,
+      "type": "A",
+      "known": "polite copula",
+      "target": "です",
+      "phrases": [
+        {"known": "It is.", "target": "です。"},
+        {"known": "This is.", "target": "これです。"},
+        {"known": "That is.", "target": "それです。"},
+        {"known": "It's good.", "target": "いいです。"},
+        {"known": "It's fun.", "target": "楽しいです。"},
+        {"known": "So it is easy.", "target": "だから簡単です。"},
+        {"known": "Japanese is fun.", "target": "日本語は楽しいです。"},
+        {"known": "So that thing is good.", "target": "だからそのことはいいです。"},
+        {"known": "It isn't easy but it is fun.", "target": "簡単ではありませんが楽しいです。"},
+        {"known": "Learning Japanese is really fun.", "target": "日本語を学ぶのは本当に楽しいです。"}
+      ]
+    }
+  ]
+}

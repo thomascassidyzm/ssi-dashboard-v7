@@ -1,0 +1,56 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 197,
+  "known_text": "My son works as a teacher.",
+  "target_text": "息子は教師として働いています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my son (topic)",
+      "target": "息子は",
+      "components": [
+        {"known": "son", "target": "息子"},
+        {"known": "topic marker", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "son", "target": "息子"},
+        {"known": "my son", "target": "息子"},
+        {"known": "with my son", "target": "息子と"},
+        {"known": "my son is here", "target": "息子がいます"},
+        {"known": "meet my son", "target": "息子に会う"},
+        {"known": "my son (topic)", "target": "息子は"},
+        {"known": "from my son", "target": "息子から"},
+        {"known": "my son came yesterday", "target": "息子は昨日来ました"},
+        {"known": "my son is busy today", "target": "息子は今日忙しいです"},
+        {"known": "my son said he wants to go", "target": "息子は行きたいと言いました"},
+        {"known": "my son is trying to find a new place", "target": "息子は新しいところを探そうとしています"},
+        {"known": "my son told me he's too busy to come tomorrow", "target": "息子は明日忙しすぎて来られないと言いました"},
+        {"known": "I heard from my son that he wants to go there", "target": "息子から、そこに行きたいと聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "works as a teacher",
+      "target": "教師として働いています",
+      "components": [
+        {"known": "as a teacher", "target": "教師として"},
+        {"known": "is working", "target": "働いています"}
+      ],
+      "phrases": [
+        {"known": "teacher", "target": "教師"},
+        {"known": "as a teacher", "target": "教師として"},
+        {"known": "working", "target": "働いています"},
+        {"known": "works as a teacher", "target": "教師として働いています"},
+        {"known": "I work here", "target": "ここで働いています"},
+        {"known": "she works there", "target": "彼女はそこで働いています"},
+        {"known": "he started working", "target": "彼は働き始めました"},
+        {"known": "I've been working here", "target": "ここで働いています"},
+        {"known": "she said she's working as a teacher now", "target": "彼女は今教師として働いていると言いました"},
+        {"known": "my friend works as a teacher and really enjoys it", "target": "友達は教師として働いていてとても楽しんでいます"},
+        {"known": "I heard he started working somewhere else now", "target": "彼は今他のところで働き始めたと聞きました"}
+      ]
+    }
+  ]
+}

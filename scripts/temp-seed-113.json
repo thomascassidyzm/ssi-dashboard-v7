@@ -1,0 +1,72 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 113,
+  "known_text": "Why can't I remember what you said?",
+  "target_text": "なぜあなたが言ったことを思い出せないのですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "why",
+      "target": "なぜ",
+      "phrases": [
+        {"known": "why", "target": "なぜ"},
+        {"known": "why not", "target": "なぜだめ"},
+        {"known": "why is that", "target": "なぜですか"},
+        {"known": "why did she go", "target": "なぜ彼女は行きましたか"},
+        {"known": "why is it interesting", "target": "なぜ面白いですか"},
+        {"known": "why did our brain change", "target": "なぜ脳が変わりましたか"},
+        {"known": "why wasn't he expecting it", "target": "なぜ彼は予想していませんでしたか"},
+        {"known": "why can't we understand this", "target": "なぜこれを分からないのですか"},
+        {"known": "why do we want to learn something new", "target": "なぜ新しいことを学びたいのですか"},
+        {"known": "why is it very important to work hard", "target": "なぜ一生懸命働くのがとても大切ですか"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what you said (object)",
+      "target": "あなたが言ったことを",
+      "components": [
+        {"known": "you (subject)", "target": "あなたが"},
+        {"known": "said", "target": "言った"},
+        {"known": "thing/what (object)", "target": "ことを"}
+      ],
+      "phrases": [
+        {"known": "said", "target": "言った"},
+        {"known": "said (polite)", "target": "言いました"},
+        {"known": "you said", "target": "あなたが言った"},
+        {"known": "what you said", "target": "あなたが言ったこと"},
+        {"known": "what you said (object)", "target": "あなたが言ったことを"},
+        {"known": "I understood what you said", "target": "あなたが言ったことを分かりました"},
+        {"known": "she knows what you said", "target": "彼女はあなたが言ったことを知っています"},
+        {"known": "what you said was very interesting", "target": "あなたが言ったことはとても面白かったです"},
+        {"known": "I wasn't expecting what you said", "target": "あなたが言ったことを予想していませんでした"},
+        {"known": "my friend remembered what you said last week", "target": "友達は先週あなたが言ったことを思い出しました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "can't remember (explanatory)",
+      "target": "思い出せないのですか",
+      "components": [
+        {"known": "can't remember", "target": "思い出せない"},
+        {"known": "is it that (question)", "target": "のですか"}
+      ],
+      "phrases": [
+        {"known": "remember", "target": "思い出す"},
+        {"known": "can remember", "target": "思い出せる"},
+        {"known": "can't remember", "target": "思い出せない"},
+        {"known": "is it that (question)", "target": "のですか"},
+        {"known": "can't remember (explanatory)", "target": "思い出せないのですか"},
+        {"known": "she can't remember", "target": "彼女は思い出せません"},
+        {"known": "why can't you remember", "target": "なぜ思い出せないのですか"},
+        {"known": "he can't remember what he learned yesterday", "target": "彼は昨日学んだことを思い出せません"},
+        {"known": "I can't remember why our brain changes when we learn", "target": "なぜ学ぶと脳が変わるか思い出せません"},
+        {"known": "my friend can't remember what the interesting letter said", "target": "友達は面白い手紙が何を言ったか思い出せません"},
+        {"known": "why can't I remember what you said about learning something new", "target": "新しいことを学ぶことについてあなたが言ったことをなぜ思い出せないのですか"}
+      ]
+    }
+  ]
+}

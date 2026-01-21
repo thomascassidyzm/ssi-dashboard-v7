@@ -1,0 +1,51 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 159,
+  "known_text": "That isn't what I'm trying to say.",
+  "target_text": "それは私が言おうとしていることではありません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what I'm trying to say",
+      "target": "私が言おうとしていること",
+      "components": [
+        {"known": "I'm trying to say", "target": "私が言おうとしている"},
+        {"known": "what (nominalizer)", "target": "こと"}
+      ],
+      "phrases": [
+        {"known": "say", "target": "言う"},
+        {"known": "trying to", "target": "しようとしている"},
+        {"known": "trying to say", "target": "言おうとしている"},
+        {"known": "I'm trying to say", "target": "私が言おうとしている"},
+        {"known": "what I'm trying to say", "target": "私が言おうとしていること"},
+        {"known": "That's what I'm trying to say", "target": "それは私が言おうとしていることです"},
+        {"known": "Can you understand what I'm trying to say?", "target": "私が言おうとしていることが分かりますか？"},
+        {"known": "I hope you can understand what I'm trying to say to you", "target": "私があなたに言おうとしていることを分かってくれるといいですね"},
+        {"known": "She couldn't understand what he was trying to say about something else", "target": "彼が何か他のことについて言おうとしていることを彼女は分からなかった"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "That isn't",
+      "target": "それはではありません。",
+      "components": [
+        {"known": "that", "target": "それは"},
+        {"known": "isn't", "target": "ではありません"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "それは"},
+        {"known": "isn't", "target": "ではない"},
+        {"known": "That isn't", "target": "それではない"},
+        {"known": "That isn't so", "target": "それは違います"},
+        {"known": "That isn't it", "target": "それではありません"},
+        {"known": "That isn't true", "target": "それは本当ではありません"},
+        {"known": "That isn't what I said", "target": "それは私が言ったことではありません"},
+        {"known": "That isn't what I expected would happen", "target": "それは私が起こると期待していたことではありません"},
+        {"known": "I think that isn't the best way to do it differently", "target": "それは違うやり方でやるのに良いやり方ではないと思います"},
+        {"known": "That isn't the same thing as what we talked about last month", "target": "それは来月話したこととは同じではありません"}
+      ]
+    }
+  ]
+}

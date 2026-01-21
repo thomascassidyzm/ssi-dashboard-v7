@@ -1,0 +1,122 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 71,
+  "known_text": "We didn't want to let anyone hear the truth.",
+  "target_text": "私たちは誰にも本当のことを聞かせたくありませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we (topic)",
+      "target": "私たちは",
+      "components": [
+        {"known": "we", "target": "私たち"},
+        {"known": "(topic)", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "we (topic)", "target": "私たちは"},
+        {"known": "we think", "target": "私たちは思います"},
+        {"known": "we speak", "target": "私たちは話します"},
+        {"known": "we understand", "target": "私たちは分かります"},
+        {"known": "we are searching", "target": "私たちは探しています"},
+        {"known": "we speak Japanese", "target": "私たちは日本語を話します"},
+        {"known": "we want to try hard today", "target": "私たちは今日頑張りたいです"},
+        {"known": "we think it is important", "target": "私たちは大切だと思います"},
+        {"known": "we were looking for the answer all afternoon", "target": "私たちは午後ずっと答えを探していました"},
+        {"known": "we did not want to stop looking for the dog", "target": "私たちは犬を探すのを止まりたくありませんでした"},
+        {"known": "we think learning Japanese is a good thing", "target": "私たちは日本語を学ぶのはいいことだと思います"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to anyone",
+      "target": "誰にも",
+      "components": [
+        {"known": "who/anyone", "target": "誰"},
+        {"known": "(to + emphasis)", "target": "にも"}
+      ],
+      "phrases": [
+        {"known": "who", "target": "誰"},
+        {"known": "anyone", "target": "誰も"},
+        {"known": "to anyone", "target": "誰にも"},
+        {"known": "who is it?", "target": "誰ですか？"},
+        {"known": "to whom?", "target": "誰にですか？"},
+        {"known": "who said that?", "target": "誰が言いましたか？"},
+        {"known": "I did not tell anyone", "target": "誰にも言いませんでした"},
+        {"known": "she did not teach anyone", "target": "彼女は誰にも教えませんでした"},
+        {"known": "he did not show it to anyone", "target": "彼は誰にもそれを見せませんでした"},
+        {"known": "I do not want to tell anyone", "target": "誰にも言いたくありません"},
+        {"known": "she did not want to explain it to anyone", "target": "彼女は誰にもそれを説明したくありませんでした"},
+        {"known": "we did not teach Japanese to anyone", "target": "私たちは誰にも日本語を教えませんでした"},
+        {"known": "he did not want to show the answer to anyone", "target": "彼は誰にも答えを見せたくありませんでした"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "the truth (object)",
+      "target": "本当のことを",
+      "components": [
+        {"known": "truth/real", "target": "本当の"},
+        {"known": "thing (object)", "target": "ことを"}
+      ],
+      "phrases": [
+        {"known": "truth", "target": "本当"},
+        {"known": "the truth", "target": "本当のこと"},
+        {"known": "the truth (object)", "target": "本当のことを"},
+        {"known": "really", "target": "本当に"},
+        {"known": "is it true?", "target": "本当ですか？"},
+        {"known": "I want to know the truth", "target": "本当のことを知りたいです"},
+        {"known": "she said the truth", "target": "彼女は本当のことを言いました"},
+        {"known": "he did not tell the truth", "target": "彼は本当のことを言いませんでした"},
+        {"known": "it is important to know the truth", "target": "本当のことを知ることは大切です"},
+        {"known": "I did not want to say the truth", "target": "本当のことを言いたくありませんでした"},
+        {"known": "she thinks knowing the truth is a good thing", "target": "彼女は本当のことを知るのはいいことだと思います"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "let hear (causative)",
+      "target": "聞かせたく",
+      "components": [
+        {"known": "hear (causative stem)", "target": "聞かせ"},
+        {"known": "want to (stem)", "target": "たく"}
+      ],
+      "phrases": [
+        {"known": "hear", "target": "聞く"},
+        {"known": "let hear", "target": "聞かせる"},
+        {"known": "let heard", "target": "聞かせました"},
+        {"known": "want to let hear", "target": "聞かせたい"},
+        {"known": "letting hear", "target": "聞かせている"},
+        {"known": "I let her hear the answer", "target": "彼女に答えを聞かせました"},
+        {"known": "she let me hear the word", "target": "彼女は私に言葉を聞かせました"},
+        {"known": "I want to let him hear Japanese", "target": "彼に日本語を聞かせたいです"},
+        {"known": "he did not want to let anyone hear", "target": "彼は誰にも聞かせたくありませんでした"},
+        {"known": "it is important to let young people hear", "target": "若い人に聞かせることは大切です"},
+        {"known": "she wanted to let me hear the whole sentence", "target": "彼女は私に文全体を聞かせたかったです"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "was not (past polite negative)",
+      "target": "ありませんでした",
+      "phrases": [
+        {"known": "is not", "target": "ありません"},
+        {"known": "was not", "target": "ありませんでした"},
+        {"known": "there is not", "target": "ありません"},
+        {"known": "there was not", "target": "ありませんでした"},
+        {"known": "it was not easy", "target": "簡単ではありませんでした"},
+        {"known": "it was not difficult", "target": "難しくありませんでした"},
+        {"known": "the answer was not there", "target": "答えはありませんでした"},
+        {"known": "he did not want to go", "target": "彼は行きたくありませんでした"},
+        {"known": "she did not want to speak Japanese", "target": "彼女は日本語を話したくありませんでした"},
+        {"known": "we did not want to teach all afternoon", "target": "私たちは午後ずっと教えたくありませんでした"},
+        {"known": "she did not want to tell anyone where it is", "target": "彼女は誰にもどこにあるか教えたくありませんでした"}
+      ]
+    }
+  ]
+}

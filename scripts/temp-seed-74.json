@@ -1,0 +1,78 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 74,
+  "known_text": "Thank you very much for helping me to understand.",
+  "target_text": "理解するのを手伝ってくれてどうもありがとうございます。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "to understand (object)",
+      "target": "理解するのを",
+      "components": [
+        {"known": "understand/comprehend", "target": "理解する"},
+        {"known": "(nominalizer + object)", "target": "のを"}
+      ],
+      "phrases": [
+        {"known": "understand", "target": "理解する"},
+        {"known": "I understand", "target": "理解します"},
+        {"known": "to understand", "target": "理解するの"},
+        {"known": "understanding it", "target": "理解するのを"},
+        {"known": "I understood", "target": "理解しました"},
+        {"known": "do you understand?", "target": "理解しますか？"},
+        {"known": "she understood", "target": "彼女は理解しました"},
+        {"known": "he understands Japanese", "target": "彼は日本語を理解する"},
+        {"known": "I want to understand Japanese", "target": "日本語を理解したいです"},
+        {"known": "she understands it very well", "target": "彼女はそれをとても上手に理解します"},
+        {"known": "it is important to understand the truth", "target": "本当のことを理解することは大切です"},
+        {"known": "he said he understands the whole sentence", "target": "彼は文全体を理解すると言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "helped me",
+      "target": "手伝ってくれて",
+      "components": [
+        {"known": "help (te-form)", "target": "手伝って"},
+        {"known": "did for me", "target": "くれて"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "手伝う"},
+        {"known": "please help", "target": "手伝って"},
+        {"known": "helped me", "target": "手伝ってくれた"},
+        {"known": "for helping me", "target": "手伝ってくれて"},
+        {"known": "she helped me", "target": "彼女は手伝ってくれました"},
+        {"known": "thank you for helping", "target": "手伝ってくれてありがとう"},
+        {"known": "he helped me understand", "target": "彼は理解するのを手伝ってくれました"},
+        {"known": "she helped me learn Japanese", "target": "彼女は日本語を学ぶのを手伝ってくれました"},
+        {"known": "I want someone to help me understand", "target": "誰かに理解するのを手伝ってほしいです"},
+        {"known": "he helped me look for the dog all afternoon", "target": "彼は午後ずっと犬を探すのを手伝ってくれました"},
+        {"known": "thank you for helping me understand the whole sentence", "target": "文全体を理解するのを手伝ってくれてありがとうございます"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "thank you very much (ending)",
+      "target": "どうもありがとうございます",
+      "components": [
+        {"known": "very much", "target": "どうも"},
+        {"known": "thank you (polite)", "target": "ありがとうございます"}
+      ],
+      "phrases": [
+        {"known": "thanks", "target": "どうも"},
+        {"known": "thank you", "target": "ありがとう"},
+        {"known": "thanks a lot", "target": "どうもありがとう"},
+        {"known": "thank you polite", "target": "ありがとうございます"},
+        {"known": "thank you very much (ending)", "target": "どうもありがとうございます"},
+        {"known": "thank you for today", "target": "今日はありがとうございます"},
+        {"known": "thank you for teaching me", "target": "教えてくれてありがとうございます"},
+        {"known": "she said thank you very much", "target": "彼女はどうもありがとうと言いました"},
+        {"known": "thank you for explaining that", "target": "それを説明してくれてありがとうございます"},
+        {"known": "thank you for looking after the young dog", "target": "若い犬の世話をしてくれてどうもありがとうございます"},
+        {"known": "he said thank you very much for helping all afternoon", "target": "彼は午後ずっと手伝ってくれてどうもありがとうと言いました"}
+      ]
+    }
+  ]
+}

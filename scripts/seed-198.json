@@ -1,0 +1,58 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 198,
+  "known_text": "My daughter works for the council.",
+  "target_text": "娘は市役所で働いています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my daughter (topic)",
+      "target": "娘は",
+      "components": [
+        {"known": "daughter", "target": "娘"},
+        {"known": "topic marker", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "daughter", "target": "娘"},
+        {"known": "my daughter", "target": "娘"},
+        {"known": "with my daughter", "target": "娘と"},
+        {"known": "my daughter is here", "target": "娘がいます"},
+        {"known": "meet my daughter", "target": "娘に会う"},
+        {"known": "my daughter (topic)", "target": "娘は"},
+        {"known": "from my daughter", "target": "娘から"},
+        {"known": "my daughter came yesterday", "target": "娘は昨日来ました"},
+        {"known": "my daughter is busy today", "target": "娘は今日忙しいです"},
+        {"known": "my daughter said she wants to go", "target": "娘は行きたいと言いました"},
+        {"known": "my daughter is trying to find a new place", "target": "娘は新しいところを探そうとしています"},
+        {"known": "my daughter told me she's too busy to come tomorrow", "target": "娘は明日忙しすぎて来られないと言いました"},
+        {"known": "I heard from my daughter that she wants to go there", "target": "娘から、そこに行きたいと聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "works for the council",
+      "target": "市役所で働いています",
+      "components": [
+        {"known": "at the city office", "target": "市役所で"},
+        {"known": "is working", "target": "働いています"}
+      ],
+      "phrases": [
+        {"known": "city office", "target": "市役所"},
+        {"known": "at the city office", "target": "市役所で"},
+        {"known": "to the city office", "target": "市役所に"},
+        {"known": "working", "target": "働いています"},
+        {"known": "work there", "target": "そこで働く"},
+        {"known": "works for the council", "target": "市役所で働いています"},
+        {"known": "I went to the city office", "target": "市役所に行きました"},
+        {"known": "she works for the council", "target": "彼女は市役所で働いています"},
+        {"known": "my friend works for the council", "target": "友達は市役所で働いています"},
+        {"known": "he started working at the city office", "target": "彼は市役所で働き始めました"},
+        {"known": "I heard she's been working for the council for a while", "target": "彼女はしばらく市役所で働いていると聞きました"},
+        {"known": "my son works as a teacher but my daughter works for the council", "target": "息子は教師として働いていますが娘は市役所で働いています"},
+        {"known": "she said she started working for the council last year", "target": "彼女は市役所で働き始めたと言いました"}
+      ]
+    }
+  ]
+}

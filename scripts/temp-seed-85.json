@@ -1,0 +1,51 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 85,
+  "known_text": "I don't know those people.",
+  "target_text": "あの人たちを知りません。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "those people (object)",
+      "target": "あの人たちを",
+      "components": [
+        {"known": "those people", "target": "あの人たち"},
+        {"known": "(object marker)", "target": "を"}
+      ],
+      "phrases": [
+        {"known": "people", "target": "人たち"},
+        {"known": "those people", "target": "あの人たち"},
+        {"known": "those people (object)", "target": "あの人たちを"},
+        {"known": "those young people", "target": "あの若い人たち"},
+        {"known": "I see those people", "target": "あの人たちを見る"},
+        {"known": "I helped those people", "target": "あの人たちを手伝った"},
+        {"known": "those people understand", "target": "あの人たちは理解します"},
+        {"known": "she is looking for those people", "target": "彼女はあの人たちを探しています"},
+        {"known": "he said something about those people", "target": "彼はあの人たちについて何か言いました"},
+        {"known": "I do not know those people very well", "target": "あの人たちをあまりよく知りません"},
+        {"known": "she asked if I knew those people", "target": "彼女はあの人たちを知っているか聞きました"},
+        {"known": "I think those people are very important", "target": "あの人たちはとても大切だと思います"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "don't know",
+      "target": "知りません",
+      "phrases": [
+        {"known": "know", "target": "知る"},
+        {"known": "I know", "target": "知っている"},
+        {"known": "I don't know", "target": "知りません"},
+        {"known": "knew", "target": "知りました"},
+        {"known": "do you know?", "target": "知っていますか？"},
+        {"known": "I did not know", "target": "知りませんでした"},
+        {"known": "she does not know", "target": "彼女は知りません"},
+        {"known": "he did not know it", "target": "彼は知りませんでした"},
+        {"known": "I do not know the truth", "target": "本当のことを知りません"},
+        {"known": "she said she did not know him", "target": "彼女は彼を知らないと言いました"},
+        {"known": "I did not know what he said about my friend", "target": "彼が私の友達について言ったことを知りませんでした"}
+      ]
+    }
+  ]
+}

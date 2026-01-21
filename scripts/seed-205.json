@@ -1,0 +1,59 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 205,
+  "known_text": "I've forgotten the word I was trying to say.",
+  "target_text": "言おうとしていた言葉を忘れてしまいました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the word I was trying to say",
+      "target": "言おうとしていた言葉を",
+      "components": [
+        {"known": "was trying to say", "target": "言おうとしていた"},
+        {"known": "word (object)", "target": "言葉を"}
+      ],
+      "phrases": [
+        {"known": "word", "target": "言葉"},
+        {"known": "words", "target": "言葉"},
+        {"known": "the word", "target": "言葉を"},
+        {"known": "to say", "target": "言う"},
+        {"known": "trying to say", "target": "言おうとしている"},
+        {"known": "was trying to say", "target": "言おうとしていた"},
+        {"known": "the word I wanted to say", "target": "言いたかった言葉"},
+        {"known": "what I was trying to say", "target": "言おうとしていたこと"},
+        {"known": "the thing I was trying to do", "target": "しようとしていたこと"},
+        {"known": "what were you trying to say", "target": "何を言おうとしていましたか"},
+        {"known": "the word I was looking for", "target": "探していた言葉を"},
+        {"known": "I couldn't find the word I was trying to say", "target": "言おうとしていた言葉が見つかりませんでした"},
+        {"known": "the word he was trying to say was difficult", "target": "彼が言おうとしていた言葉は難しかったです"},
+        {"known": "she asked what word I was trying to say", "target": "彼女は私が言おうとしていた言葉を聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I've forgotten",
+      "target": "忘れてしまいました",
+      "components": [
+        {"known": "forgot", "target": "忘れて"},
+        {"known": "completely (regret)", "target": "しまいました"}
+      ],
+      "phrases": [
+        {"known": "forget", "target": "忘れる"},
+        {"known": "forgot", "target": "忘れた"},
+        {"known": "I forgot", "target": "忘れました"},
+        {"known": "completely", "target": "しまう"},
+        {"known": "I've forgotten", "target": "忘れてしまいました"},
+        {"known": "I forgot it", "target": "それを忘れました"},
+        {"known": "I completely forgot", "target": "すっかり忘れてしまいました"},
+        {"known": "I forgot what to do", "target": "何をするか忘れました"},
+        {"known": "I've completely forgotten it", "target": "それを忘れてしまいました"},
+        {"known": "I forgot what I wanted to say", "target": "言いたかったことを忘れました"},
+        {"known": "I've forgotten the name of that place", "target": "そのところの名前を忘れてしまいました"},
+        {"known": "I completely forgot what she told me yesterday", "target": "彼女が昨日言ったことを忘れてしまいました"},
+        {"known": "I forgot what I was trying to say to him", "target": "彼に言おうとしていたことを忘れてしまいました"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 61,
+  "known_text": "Could you say that again a little more slowly?",
+  "target_text": "もう少しゆっくりもう一度言っていただけますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "a little more",
+      "target": "もう少し",
+      "phrases": [
+        {"known": "A little more.", "target": "もう少し。"},
+        {"known": "A bit more.", "target": "もう少し。"},
+        {"known": "Just a little.", "target": "もう少しだけ。"},
+        {"known": "A little more slowly.", "target": "もう少しゆっくり。"},
+        {"known": "I want a little more.", "target": "もう少しほしいです。"},
+        {"known": "So a little more.", "target": "だからもう少し。"},
+        {"known": "She said a little more.", "target": "彼女はもう少しと言いました。"},
+        {"known": "I want to know a little more.", "target": "もう少し知りたいです。"},
+        {"known": "So he wants to understand a little more.", "target": "だから彼はもう少しわかりたいです。"},
+        {"known": "Could you say it a little more slowly?", "target": "もう少しゆっくり言っていただけますか。"},
+        {"known": "Could you do it a little more slowly?", "target": "もう少しゆっくりしていただけますか。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "slowly",
+      "target": "ゆっくり",
+      "phrases": [
+        {"known": "Slowly.", "target": "ゆっくり。"},
+        {"known": "Do it slowly.", "target": "ゆっくりする。"},
+        {"known": "Say it slowly.", "target": "ゆっくり言う。"},
+        {"known": "So slowly.", "target": "だからゆっくり。"},
+        {"known": "I want to do it slowly.", "target": "ゆっくりしたいです。"},
+        {"known": "She said it slowly.", "target": "彼女はゆっくり言いました。"},
+        {"known": "A little more slowly.", "target": "もう少しゆっくり。"},
+        {"known": "He understands when she says it slowly.", "target": "彼女がゆっくり言うと彼はわかります。"},
+        {"known": "So I want to say it slowly.", "target": "だからゆっくり言いたいです。"},
+        {"known": "Could you say it slowly please?", "target": "ゆっくり言っていただけますか。"},
+        {"known": "She said it slowly so he could understand.", "target": "彼女は彼がわかるようにゆっくり言いました。"},
+        {"known": "So he said it a little more slowly to her.", "target": "だから彼は彼女にもう少しゆっくり言いました。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "again",
+      "target": "もう一度",
+      "phrases": [
+        {"known": "Again.", "target": "もう一度。"},
+        {"known": "One more time.", "target": "もう一度。"},
+        {"known": "Do it again.", "target": "もう一度する。"},
+        {"known": "Say it again.", "target": "もう一度言う。"},
+        {"known": "So once more.", "target": "だからもう一度。"},
+        {"known": "I want to see it again.", "target": "もう一度見たいです。"},
+        {"known": "She said it again.", "target": "彼女はもう一度言いました。"},
+        {"known": "So he wants to do it again.", "target": "だから彼はもう一度したいです。"},
+        {"known": "Could you say it again please?", "target": "もう一度言っていただけますか。"},
+        {"known": "I want to see her again next week.", "target": "来週彼女にもう一度会いたいです。"},
+        {"known": "Could you say that again a little more slowly?", "target": "もう少しゆっくりもう一度言っていただけますか。"},
+        {"known": "So she said those different words again.", "target": "だから彼女はその違う言葉をもう一度言いました。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "say (te-form)",
+      "target": "言って",
+      "components": [
+        {"known": "say", "target": "言"},
+        {"known": "connective", "target": "って"}
+      ],
+      "phrases": [
+        {"known": "Say.", "target": "言って。"},
+        {"known": "Say it.", "target": "それを言って。"},
+        {"known": "Say that.", "target": "そう言って。"},
+        {"known": "So say it.", "target": "だから言って。"},
+        {"known": "Say it slowly.", "target": "ゆっくり言って。"},
+        {"known": "She said it and understood.", "target": "彼女はそう言ってわかりました。"},
+        {"known": "He said it again.", "target": "彼はもう一度言って。"},
+        {"known": "Say it a little more slowly.", "target": "もう少しゆっくり言って。"},
+        {"known": "He said those words to her and left.", "target": "彼は彼女にその言葉を言って行きました。"},
+        {"known": "So say it again a little more slowly.", "target": "だからもう一度もう少しゆっくり言って。"},
+        {"known": "She said those different words to him slowly.", "target": "彼女は彼に違う言葉をゆっくり言って。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "could you please",
+      "target": "いただけますか",
+      "phrases": [
+        {"known": "Could you please?", "target": "いただけますか。"},
+        {"known": "Could you do it?", "target": "していただけますか。"},
+        {"known": "Could you say it?", "target": "言っていただけますか。"},
+        {"known": "So could you please?", "target": "だからいただけますか。"},
+        {"known": "Could you do it slowly?", "target": "ゆっくりしていただけますか。"},
+        {"known": "Could you say it again?", "target": "もう一度言っていただけますか。"},
+        {"known": "Could you say it slowly?", "target": "ゆっくり言っていただけますか。"},
+        {"known": "Could you say it a little more?", "target": "もう少し言っていただけますか。"},
+        {"known": "Could you say it a little more slowly?", "target": "もう少しゆっくり言っていただけますか。"},
+        {"known": "Could you say that again a little more slowly?", "target": "もう少しゆっくりもう一度言っていただけますか。"},
+        {"known": "Can you please?", "target": "いただけます。"},
+        {"known": "So could you say those different words again slowly?", "target": "だからその違う言葉をもう一度ゆっくり言っていただけますか。"}
+      ]
+    }
+  ]
+}

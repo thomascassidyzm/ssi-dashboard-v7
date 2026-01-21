@@ -1,0 +1,56 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 119,
+  "known_text": "Can I ask you something before you leave?",
+  "target_text": "帰る前に何か聞いてもいいですか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "before you leave",
+      "target": "帰る前に",
+      "components": [
+        {"known": "leave/return", "target": "帰る"},
+        {"known": "before", "target": "前に"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "前に"},
+        {"known": "return", "target": "帰る"},
+        {"known": "before leaving", "target": "帰る前に"},
+        {"known": "she left", "target": "彼女は帰った"},
+        {"known": "before you leave", "target": "帰る前に"},
+        {"known": "tell me before you leave", "target": "帰る前に言って"},
+        {"known": "we had a conversation before leaving", "target": "帰る前に会話をしました"},
+        {"known": "my friend asked me something before leaving yesterday", "target": "友達は昨日帰る前に何かを聞きました"},
+        {"known": "before leaving I want to say something important", "target": "帰る前に大切なことを言いたいです"},
+        {"known": "it would be good if we could talk before you leave", "target": "帰る前に話せたらいいです"},
+        {"known": "he said he wanted to ask me something before leaving", "target": "彼は帰る前に何かを聞きたいと言いました"},
+        {"known": "before you leave I feel as if I understand better", "target": "帰る前にもっと分かるように感じます"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "can I ask you something",
+      "target": "何か聞いてもいいですか",
+      "components": [
+        {"known": "something", "target": "何か"},
+        {"known": "may I ask", "target": "聞いてもいいですか"}
+      ],
+      "phrases": [
+        {"known": "ask", "target": "聞く"},
+        {"known": "something", "target": "何か"},
+        {"known": "may I", "target": "いいですか"},
+        {"known": "I ask", "target": "聞いている"},
+        {"known": "ask something", "target": "何か聞く"},
+        {"known": "she asked", "target": "彼女は聞いた"},
+        {"known": "may I ask", "target": "聞いてもいいですか"},
+        {"known": "can I ask you something", "target": "何か聞いてもいいですか"},
+        {"known": "may I ask what you said", "target": "何を言ったか聞いてもいいですか"},
+        {"known": "can I ask about your conversation", "target": "会話について聞いてもいいですか"},
+        {"known": "may I ask why you came here today", "target": "なぜ今日ここに来たか聞いてもいいですか"},
+        {"known": "can I ask you something about what we learned yesterday", "target": "昨日学んだことについて何か聞いてもいいですか"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 77,
+  "known_text": "I'm surprised at how quickly I'm starting to understand.",
+  "target_text": "こんなに早く理解し始めていることに驚いています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this quickly",
+      "target": "こんなに早く",
+      "components": [
+        {"known": "this much/like this", "target": "こんなに"},
+        {"known": "quickly", "target": "早く"}
+      ],
+      "phrases": [
+        {"known": "quickly", "target": "早く"},
+        {"known": "this much", "target": "こんなに"},
+        {"known": "this quickly", "target": "こんなに早く"},
+        {"known": "do it quickly", "target": "早くやる"},
+        {"known": "this difficult", "target": "こんなに難しい"},
+        {"known": "this important", "target": "こんなに大切"},
+        {"known": "she did it quickly", "target": "彼女は早くやりました"},
+        {"known": "he did it this quickly", "target": "彼はこんなに早くやった"},
+        {"known": "I did not know it was this difficult", "target": "こんなに難しいとは知りませんでした"},
+        {"known": "she thinks it is important to do it this quickly", "target": "彼女はこんなに早くやることは大切だと思います"},
+        {"known": "I think it is important to understand this quickly", "target": "こんなに早く理解することは大切だと思います"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "starting to understand",
+      "target": "理解し始めている",
+      "components": [
+        {"known": "understand (stem)", "target": "理解し"},
+        {"known": "starting to (progressive)", "target": "始めている"}
+      ],
+      "phrases": [
+        {"known": "understand", "target": "理解する"},
+        {"known": "begin", "target": "始める"},
+        {"known": "beginning", "target": "始めている"},
+        {"known": "starting to understand", "target": "理解し始めている"},
+        {"known": "started to understand", "target": "理解し始めた"},
+        {"known": "she is starting to understand", "target": "彼女は理解し始めています"},
+        {"known": "he started to do it", "target": "彼はやり始めました"},
+        {"known": "I am starting to understand the truth", "target": "本当のことを理解し始めています"},
+        {"known": "she said she is starting to understand it", "target": "彼女は理解し始めていると言いました"},
+        {"known": "I think he is starting to understand Japanese", "target": "彼は日本語を理解し始めていると思います"},
+        {"known": "we are starting to understand the whole sentence", "target": "私たちは文全体を理解し始めています"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "am surprised at (topic)",
+      "target": "ことに驚いています",
+      "components": [
+        {"known": "the fact that (topic)", "target": "ことに"},
+        {"known": "am surprised (continuous)", "target": "驚いています"}
+      ],
+      "phrases": [
+        {"known": "surprised", "target": "驚いた"},
+        {"known": "am surprised", "target": "驚いています"},
+        {"known": "surprising thing", "target": "驚くこと"},
+        {"known": "at the fact that", "target": "ことに"},
+        {"known": "am surprised at the fact", "target": "ことに驚いています"},
+        {"known": "she was surprised", "target": "彼女は驚きました"},
+        {"known": "he is surprised at this", "target": "彼はこれに驚いています"},
+        {"known": "I was surprised at what she said", "target": "彼女が言ったことに驚きました"},
+        {"known": "she is surprised at how quickly he understood", "target": "彼がこんなに早く理解したことに驚いています"},
+        {"known": "we are surprised at how well she understands", "target": "彼女がとても上手に理解することに驚いています"},
+        {"known": "he said he was surprised at how quickly she started", "target": "彼は彼女がこんなに早く始めたことに驚いたと言いました"}
+      ]
+    }
+  ]
+}

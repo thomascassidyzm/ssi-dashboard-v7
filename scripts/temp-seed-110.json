@@ -1,0 +1,92 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 110,
+  "known_text": "We're friends, and after we finish I'd like to relax.",
+  "target_text": "私たちは友達です、そして終わったらリラックスしたいです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we're friends,",
+      "target": "私たちは友達です、",
+      "components": [
+        {"known": "we", "target": "私たちは"},
+        {"known": "friends (polite),", "target": "友達です、"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "私たち"},
+        {"known": "friend", "target": "友達"},
+        {"known": "we are friends", "target": "私たちは友達です"},
+        {"known": "we're friends,", "target": "私たちは友達です、"},
+        {"known": "she is my friend", "target": "彼女は私の友達です"},
+        {"known": "he is also my friend", "target": "彼も私の友達です"},
+        {"known": "my interesting friends like to learn", "target": "私の面白い友達は学ぶのが好きです"},
+        {"known": "we're friends and we learn together", "target": "私たちは友達で一緒に学びます"},
+        {"known": "I remember when we became friends last week", "target": "先週私たちが友達になったことを覚えています"},
+        {"known": "we're friends, so we must work hard together", "target": "私たちは友達だから一緒に一生懸命働かなければなりません"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "and",
+      "target": "そして",
+      "phrases": [
+        {"known": "and", "target": "そして"},
+        {"known": "and then", "target": "そして"},
+        {"known": "and I want", "target": "そして私は"},
+        {"known": "and she said", "target": "そして彼女は言いました"},
+        {"known": "and he went", "target": "そして彼は行きました"},
+        {"known": "and we learned together", "target": "そして一緒に学びました"},
+        {"known": "and my friend wanted to go", "target": "そして友達は行きたかったです"},
+        {"known": "and after that I wanted to see him", "target": "そしてその後彼に会いたかったです"},
+        {"known": "and he said he must work hard", "target": "そして彼は一生懸命働かなければならないと言いました"},
+        {"known": "and after we finish learning a lot of new words we will understand", "target": "そしてたくさんの新しい言葉を学んだら分かります"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "after (we) finish",
+      "target": "終わったら",
+      "components": [
+        {"known": "finish (past)", "target": "終わった"},
+        {"known": "if/when", "target": "ら"}
+      ],
+      "phrases": [
+        {"known": "finish", "target": "終わる"},
+        {"known": "finished", "target": "終わった"},
+        {"known": "want to finish", "target": "終わりたい"},
+        {"known": "if (I) finish", "target": "終わったら"},
+        {"known": "after (I) finish, I go", "target": "終わったら行きます"},
+        {"known": "after (we) finish, she wants to go", "target": "終わったら彼女は行きたいです"},
+        {"known": "after (I) finish this, I will learn more", "target": "これを終わったらもっと学びます"},
+        {"known": "he said after he finishes he wants to see me", "target": "彼は終わったら私に会いたいと言いました"},
+        {"known": "after (we) finish learning we can understand well", "target": "学んで終わったらよく分かります"},
+        {"known": "after we finish working hard we want to see our friends", "target": "一生懸命働いて終わったら友達に会いたいです"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I'd like to relax",
+      "target": "リラックスしたいです",
+      "components": [
+        {"known": "relax", "target": "リラックス"},
+        {"known": "want to (polite)", "target": "したいです"}
+      ],
+      "phrases": [
+        {"known": "relax", "target": "リラックス"},
+        {"known": "to relax", "target": "リラックスする"},
+        {"known": "want to relax", "target": "リラックスしたい"},
+        {"known": "I'd like to relax", "target": "リラックスしたいです"},
+        {"known": "she wants to relax", "target": "彼女はリラックスしたいです"},
+        {"known": "I want to relax early", "target": "早くリラックスしたいです"},
+        {"known": "he said he wants to relax", "target": "彼はリラックスしたいと言いました"},
+        {"known": "my friend also wants to relax", "target": "友達もリラックスしたいです"},
+        {"known": "after working hard I want to relax", "target": "一生懸命働いたらリラックスしたいです"},
+        {"known": "I think we should relax after we learn a lot", "target": "たくさん学んだらリラックスした方がいいと思います"}
+      ]
+    }
+  ]
+}

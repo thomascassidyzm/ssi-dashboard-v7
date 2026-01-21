@@ -1,0 +1,84 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 206,
+  "known_text": "I enjoy the chance to practise speaking with you.",
+  "target_text": "あなたと話す練習をする機会を楽しんでいます。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "speaking with you",
+      "target": "あなたと話す",
+      "components": [
+        {"known": "with you", "target": "あなたと"},
+        {"known": "to speak", "target": "話す"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "あなた"},
+        {"known": "with you", "target": "あなたと"},
+        {"known": "speak", "target": "話す"},
+        {"known": "speaking", "target": "話している"},
+        {"known": "speak with you", "target": "あなたと話す"},
+        {"known": "I like speaking with you", "target": "あなたと話すのが好きです"},
+        {"known": "I want to speak with you", "target": "あなたと話したいです"},
+        {"known": "speaking with her is fun", "target": "彼女と話すのは楽しいです"},
+        {"known": "I was speaking with him yesterday", "target": "昨日彼と話していました"},
+        {"known": "speaking with you makes me happy", "target": "あなたと話すと嬉しいです"},
+        {"known": "I wanted to speak with you about that", "target": "それについてあなたと話したかったです"},
+        {"known": "when I was speaking with her about the work", "target": "彼女と仕事について話していた時"},
+        {"known": "speaking with you about this is really helpful", "target": "これについてあなたと話すのは本当に助かります"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the chance to practise",
+      "target": "練習をする機会を",
+      "components": [
+        {"known": "practice", "target": "練習を"},
+        {"known": "to do", "target": "する"},
+        {"known": "opportunity (object)", "target": "機会を"}
+      ],
+      "phrases": [
+        {"known": "practice", "target": "練習"},
+        {"known": "to do", "target": "する"},
+        {"known": "chance", "target": "機会"},
+        {"known": "to practice", "target": "練習する"},
+        {"known": "chance to", "target": "機会を"},
+        {"known": "practice speaking", "target": "話す練習をする"},
+        {"known": "the chance to do it", "target": "それをする機会を"},
+        {"known": "I want a chance to practice", "target": "練習する機会がほしいです"},
+        {"known": "there's a chance to practice", "target": "練習する機会があります"},
+        {"known": "I had the chance to practice yesterday", "target": "昨日練習する機会がありました"},
+        {"known": "she gave me the chance to practice", "target": "彼女は私に練習する機会をくれました"},
+        {"known": "I want more chances to practice speaking", "target": "話す練習をする機会がもっとほしいです"},
+        {"known": "he said he wanted a chance to practice with her", "target": "彼は彼女と練習する機会がほしいと言いました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I enjoy",
+      "target": "楽しんでいます",
+      "components": [
+        {"known": "enjoying", "target": "楽しんで"},
+        {"known": "is (ongoing)", "target": "います"}
+      ],
+      "phrases": [
+        {"known": "fun", "target": "楽しい"},
+        {"known": "enjoy", "target": "楽しむ"},
+        {"known": "enjoying", "target": "楽しんで"},
+        {"known": "I enjoy", "target": "楽しんでいます"},
+        {"known": "I enjoyed it", "target": "楽しみました"},
+        {"known": "I'm enjoying this", "target": "これを楽しんでいます"},
+        {"known": "I enjoy working here", "target": "ここで働くのを楽しんでいます"},
+        {"known": "I enjoyed the meeting", "target": "会いを楽しみました"},
+        {"known": "I enjoy speaking with friends", "target": "友達と話すのを楽しんでいます"},
+        {"known": "I always enjoy coming here", "target": "いつもここに来るのを楽しんでいます"},
+        {"known": "I really enjoy the chances I get to practice", "target": "練習する機会を本当に楽しんでいます"},
+        {"known": "I enjoy the time I spend speaking with you", "target": "あなたと話す時間を楽しんでいます"},
+        {"known": "I enjoy the opportunities I have to practice with her", "target": "彼女と練習する機会を楽しんでいます"}
+      ]
+    }
+  ]
+}

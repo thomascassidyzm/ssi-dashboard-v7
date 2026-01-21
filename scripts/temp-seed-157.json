@@ -1,0 +1,52 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 157,
+  "known_text": "I won't be able to be there next month.",
+  "target_text": "来月そこにいることができないでしょう。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "next month",
+      "target": "来月",
+      "phrases": [
+        {"known": "month", "target": "月"},
+        {"known": "next month", "target": "来月"},
+        {"known": "next month is", "target": "来月は"},
+        {"known": "I will go next month", "target": "来月行きます"},
+        {"known": "Next month is good for me", "target": "来月はいいです"},
+        {"known": "She said next month is better", "target": "来月がいいと彼女は言った"},
+        {"known": "We will meet next month at the restaurant", "target": "来月レストランで会います"},
+        {"known": "Can you come next month if you have time?", "target": "時間があれば、来月来られますか？"},
+        {"known": "I think next month is a good time for us to meet", "target": "来月は私たちが会うのに良い時間だと思います"},
+        {"known": "They said they want to finish this before next month if they can", "target": "できれば来月までにこれを終わりたいと彼らは言った"},
+        {"known": "Next month we will be able to do it in exactly the same way", "target": "来月は全く同じ言い方でできるでしょう"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I won't be able to be there",
+      "target": "そこにいることができないでしょう。",
+      "components": [
+        {"known": "there", "target": "そこに"},
+        {"known": "being (nominalizer)", "target": "いること"},
+        {"known": "won't be able (probably)", "target": "ができないでしょう"}
+      ],
+      "phrases": [
+        {"known": "there", "target": "そこに"},
+        {"known": "to be", "target": "いる"},
+        {"known": "being there", "target": "そこにいること"},
+        {"known": "can be able to", "target": "ができる"},
+        {"known": "won't be able (probably)", "target": "ができないでしょう"},
+        {"known": "I won't be able to", "target": "できないでしょう"},
+        {"known": "I won't be able to be there", "target": "そこにいることができないでしょう"},
+        {"known": "I will be there", "target": "そこにいます"},
+        {"known": "I can be there", "target": "そこにいることができます"},
+        {"known": "She won't be able to be there", "target": "彼女はそこにいることができないでしょう"},
+        {"known": "I hope I will be able to be there tomorrow morning", "target": "明日の朝そこにいることができるといいですね"},
+        {"known": "They said they won't be able to be there if it happens tonight", "target": "今夜起こったら、そこにいることができないでしょうと彼らは言った"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 211,
+  "known_text": "They told us that they didn't want to explain.",
+  "target_text": "彼らは私たちに説明したくないと言いました。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "they told us",
+      "target": "彼らは私たちに言いました",
+      "components": [
+        {"known": "they (topic)", "target": "彼らは"},
+        {"known": "to us", "target": "私たちに"},
+        {"known": "said", "target": "言いました"}
+      ],
+      "phrases": [
+        {"known": "they", "target": "彼ら"},
+        {"known": "us", "target": "私たち"},
+        {"known": "to us", "target": "私たちに"},
+        {"known": "said", "target": "言いました"},
+        {"known": "they said", "target": "彼らは言いました"},
+        {"known": "they told me", "target": "彼らは私に言いました"},
+        {"known": "they told us", "target": "彼らは私たちに言いました"},
+        {"known": "she told us yesterday", "target": "彼女は昨日私たちに言いました"},
+        {"known": "they told us about it", "target": "彼らはそれについて私たちに言いました"},
+        {"known": "they told us to come tomorrow", "target": "彼らは明日来てと私たちに言いました"},
+        {"known": "she told us that it was difficult", "target": "彼女は難しいと私たちに言いました"},
+        {"known": "they told us they wanted to meet as a group", "target": "彼らはグループとして会いたいと私たちに言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that they didn't want to explain",
+      "target": "説明したくないと",
+      "components": [
+        {"known": "didn't want to explain", "target": "説明したくない"},
+        {"known": "that (quotation)", "target": "と"}
+      ],
+      "phrases": [
+        {"known": "explain", "target": "説明する"},
+        {"known": "to explain", "target": "説明"},
+        {"known": "explained", "target": "説明しました"},
+        {"known": "want to explain", "target": "説明したい"},
+        {"known": "didn't want to", "target": "したくなかった"},
+        {"known": "don't want to explain", "target": "説明したくない"},
+        {"known": "I don't want to explain it", "target": "それを説明したくないです"},
+        {"known": "I explained it to her", "target": "彼女にそれを説明しました"},
+        {"known": "I didn't want to explain that", "target": "それを説明したくなかったです"},
+        {"known": "he didn't want to explain the problem", "target": "彼はその問題を説明したくなかったです"},
+        {"known": "she said she didn't want to explain it to me", "target": "彼女は私にそれを説明したくないと言いました"},
+        {"known": "I explained what we needed to do yesterday", "target": "昨日やる必要があることを説明しました"}
+      ]
+    }
+  ]
+}

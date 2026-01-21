@@ -1,0 +1,56 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 125,
+  "known_text": "I believe that your idea was very good.",
+  "target_text": "あなたの考えはとても良かったと信じています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "your idea was very good",
+      "target": "あなたの考えはとても良かった",
+      "components": [
+        {"known": "your idea (topic)", "target": "あなたの考えは"},
+        {"known": "was very good", "target": "とても良かった"}
+      ],
+      "phrases": [
+        {"known": "very", "target": "とても"},
+        {"known": "your", "target": "あなたの"},
+        {"known": "was good", "target": "良かった"},
+        {"known": "your idea", "target": "あなたの考え"},
+        {"known": "was very good", "target": "とても良かった"},
+        {"known": "your idea was", "target": "あなたの考えは"},
+        {"known": "your idea was good", "target": "あなたの考えは良かった"},
+        {"known": "your idea was very good", "target": "あなたの考えはとても良かった"},
+        {"known": "your conversation was very good", "target": "あなたの会話はとても良かった"},
+        {"known": "my idea wasn't very good yesterday", "target": "昨日私の考えはあまり良くなかった"},
+        {"known": "her idea to go by bus was very good", "target": "彼女のバスで行く考えはとても良かった"},
+        {"known": "the idea we had before the conversation was very good", "target": "会話の前にあった考えはとても良かった"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I believe that",
+      "target": "と信じています",
+      "components": [
+        {"known": "quotation", "target": "と"},
+        {"known": "believe", "target": "信じています"}
+      ],
+      "phrases": [
+        {"known": "believe", "target": "信じる"},
+        {"known": "I believe", "target": "信じています"},
+        {"known": "that (quote)", "target": "と"},
+        {"known": "I believe that", "target": "と信じています"},
+        {"known": "she believes that", "target": "彼女はと信じています"},
+        {"known": "I believed it", "target": "信じていました"},
+        {"known": "do you believe that", "target": "と信じていますか"},
+        {"known": "I believe it went well", "target": "うまくいったと信じています"},
+        {"known": "I believe we learned a lot today", "target": "今日たくさん学んだと信じています"},
+        {"known": "my friend believes it was a good idea", "target": "友達はいい考えだったと信じています"},
+        {"known": "I believe the conversation was interesting", "target": "会話は面白かったと信じています"},
+        {"known": "I believe it's starting to feel easier now", "target": "今簡単に感じ始めていると信じています"}
+      ]
+    }
+  ]
+}

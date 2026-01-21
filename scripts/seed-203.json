@@ -1,0 +1,58 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 203,
+  "known_text": "What would you do if I asked you to help me?",
+  "target_text": "手伝ってと頼んだら何をしますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if I asked you to help",
+      "target": "手伝ってと頼んだら",
+      "components": [
+        {"known": "help (request)", "target": "手伝って"},
+        {"known": "if asked", "target": "と頼んだら"}
+      ],
+      "phrases": [
+        {"known": "ask", "target": "頼む"},
+        {"known": "help", "target": "手伝う"},
+        {"known": "if asked", "target": "頼んだら"},
+        {"known": "help me", "target": "手伝って"},
+        {"known": "I asked", "target": "頼みました"},
+        {"known": "will help", "target": "手伝います"},
+        {"known": "am asking", "target": "頼んでいます"},
+        {"known": "if I asked to help", "target": "手伝ってと頼んだら"},
+        {"known": "she asked me to help", "target": "彼女は手伝ってと頼みました"},
+        {"known": "he asked her to come yesterday", "target": "彼は昨日彼女に来てと頼みました"},
+        {"known": "if I asked you to wait here", "target": "ここで待ってと頼んだら"},
+        {"known": "she said she asked him to help with the work", "target": "彼女は彼に仕事を手伝ってと頼んだと言いました"},
+        {"known": "if you asked me to help you tomorrow", "target": "明日手伝ってと頼んだら"},
+        {"known": "I heard that she asked him to help her yesterday", "target": "彼女が昨日彼に手伝ってと頼んだと聞きました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what would you do",
+      "target": "何をしますか",
+      "components": [
+        {"known": "what (object)", "target": "何を"},
+        {"known": "will do (question)", "target": "しますか"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "何"},
+        {"known": "do", "target": "します"},
+        {"known": "what (object)", "target": "何を"},
+        {"known": "what will you do", "target": "何をしますか"},
+        {"known": "what are you doing", "target": "何をしていますか"},
+        {"known": "what did you do", "target": "何をしましたか"},
+        {"known": "I don't know what to do", "target": "何をしたらいいかわかりません"},
+        {"known": "what did you do yesterday", "target": "昨日何をしましたか"},
+        {"known": "what are you going to do tomorrow", "target": "明日何をしますか"},
+        {"known": "she asked what she should do about it", "target": "彼女はそれについて何をしたらいいか聞きました"},
+        {"known": "I didn't know what to do when he asked", "target": "彼が聞いた時、何をしたらいいかわかりませんでした"},
+        {"known": "he said he didn't know what to do about the problem", "target": "彼はその問題について何をしたらいいかわからなかったと言いました"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 194,
+  "known_text": "What are you looking for?",
+  "target_text": "何を探していますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "what (object)",
+      "target": "何を",
+      "phrases": [
+        {"known": "what", "target": "何"},
+        {"known": "what (object)", "target": "何を"},
+        {"known": "what did you do", "target": "何をしましたか"},
+        {"known": "what do you think", "target": "何を思いますか"},
+        {"known": "what do you want", "target": "何がほしいですか"},
+        {"known": "what did you see", "target": "何を見ましたか"},
+        {"known": "what are you doing now", "target": "今何をしていますか"},
+        {"known": "I don't know what to do", "target": "何をするか分かりません"},
+        {"known": "what did she say to you yesterday", "target": "彼女は昨日あなたに何を言いましたか"},
+        {"known": "I asked him what he wanted to do about it", "target": "彼にそれについて何をしたいか聞きました"},
+        {"known": "she didn't tell me what happened at the meeting", "target": "彼女は会いで何があったか言いませんでした"},
+        {"known": "I didn't understand what they were trying to do", "target": "彼らが何をしようとしているか分かりませんでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "are you looking for",
+      "target": "探していますか",
+      "components": [
+        {"known": "to look for/search", "target": "探す"},
+        {"known": "are you doing", "target": "していますか"}
+      ],
+      "phrases": [
+        {"known": "to look for", "target": "探す"},
+        {"known": "I'm looking", "target": "探しています"},
+        {"known": "are you looking", "target": "探していますか"},
+        {"known": "are you looking for", "target": "探していますか"},
+        {"known": "I'm looking for my keys", "target": "鍵を探しています"},
+        {"known": "what are you looking for", "target": "何を探していますか"},
+        {"known": "I was looking for you", "target": "あなたを探していました"},
+        {"known": "she's looking for a new place", "target": "彼女は新しいところを探しています"},
+        {"known": "I've been looking for this all day", "target": "今日ずっとこれを探していました"},
+        {"known": "he said he was looking for someone to help him", "target": "彼は手伝ってくれる人を探していると言いました"},
+        {"known": "I was looking for you yesterday but I couldn't find you", "target": "昨日あなたを探していましたが見つけられませんでした"}
+      ]
+    }
+  ]
+}

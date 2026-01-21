@@ -1,0 +1,71 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 202,
+  "known_text": "Nobody was sure how to answer the question.",
+  "target_text": "誰も質問にどう答えるかわかりませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "nobody",
+      "target": "誰も",
+      "phrases": [
+        {"known": "nobody", "target": "誰も"},
+        {"known": "nobody knows", "target": "誰も知らない"},
+        {"known": "nobody came", "target": "誰も来ませんでした"},
+        {"known": "nobody was there", "target": "誰もいませんでした"},
+        {"known": "nobody told me", "target": "誰も教えてくれませんでした"},
+        {"known": "nobody can help", "target": "誰も手伝えません"},
+        {"known": "nobody understands", "target": "誰もわかりません"},
+        {"known": "nobody could finish the work in time", "target": "誰も時間内に仕事を終われませんでした"},
+        {"known": "nobody knew what was going to happen next", "target": "誰も何が起こるかわかりませんでした"},
+        {"known": "nobody told me that she was coming to the office today", "target": "彼女が今日オフィスに来ることを誰も教えてくれませんでした"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the question",
+      "target": "質問に",
+      "components": [
+        {"known": "question", "target": "質問"},
+        {"known": "to (particle)", "target": "に"}
+      ],
+      "phrases": [
+        {"known": "question", "target": "質問"},
+        {"known": "to the question", "target": "質問に"},
+        {"known": "I have a question", "target": "質問があります"},
+        {"known": "a difficult question", "target": "難しい質問"},
+        {"known": "can I ask a question", "target": "質問してもいいですか"},
+        {"known": "the question was hard", "target": "質問は難しかったです"},
+        {"known": "I thought about the question", "target": "質問について考えました"},
+        {"known": "do you have any questions about what we talked about", "target": "話したことについて質問がありますか"},
+        {"known": "I'm trying to think of a good question to ask her", "target": "彼女に聞くいい質問を考えようとしています"},
+        {"known": "she asked me some questions about my work yesterday at the office", "target": "彼女は昨日オフィスで私の仕事についていくつか質問しました"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "was sure how to answer",
+      "target": "どう答えるかわかりませんでした",
+      "components": [
+        {"known": "how to answer", "target": "どう答えるか"},
+        {"known": "didn't know", "target": "わかりませんでした"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "どう"},
+        {"known": "answer", "target": "答える"},
+        {"known": "didn't know", "target": "わかりませんでした"},
+        {"known": "how to answer", "target": "どう答えるか"},
+        {"known": "what to say", "target": "何を言えば"},
+        {"known": "I don't know how", "target": "どうすればわかりません"},
+        {"known": "I wasn't sure what to say", "target": "何を言えばいいかわかりませんでした"},
+        {"known": "I don't know how to help her", "target": "彼女をどう手伝えばいいかわかりません"},
+        {"known": "I wasn't sure how to answer the question", "target": "質問にどう答えるかわかりませんでした"},
+        {"known": "nobody knows how to finish the work in time", "target": "誰も時間内に仕事をどう終わらせればいいかわかりません"},
+        {"known": "I wasn't sure how to answer so I asked her to help me", "target": "どう答えればいいかわからなかったので、彼女に手伝ってもらいました"}
+      ]
+    }
+  ]
+}

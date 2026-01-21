@@ -1,0 +1,49 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 194,
+  "known_text": "What are you looking for?",
+  "target_text": "何を探していますか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "what (object)",
+      "target": "何を",
+      "phrases": [
+        {"known": "what (object)", "target": "何を"},
+        {"known": "what to do", "target": "何をするか"},
+        {"known": "what do you want", "target": "何がほしいですか"},
+        {"known": "what are you doing", "target": "何をしていますか"},
+        {"known": "what did you say", "target": "何と言いましたか"},
+        {"known": "what do you think about it", "target": "それについて何と思いますか"},
+        {"known": "I don't know what to say", "target": "何と言っていいか分かりません"},
+        {"known": "I'm not sure what I should do about this problem", "target": "この問題について何をすればいいか分かりません"},
+        {"known": "what did you want to talk about with me today", "target": "今日私と何について話したかったですか"},
+        {"known": "I don't know what you want me to do about that", "target": "それについて何をしてほしいのか分かりません"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "are you looking for",
+      "target": "探していますか",
+      "components": [
+        {"known": "looking for/searching", "target": "探して"},
+        {"known": "are you (doing)", "target": "いますか"}
+      ],
+      "phrases": [
+        {"known": "searching", "target": "探して"},
+        {"known": "are you", "target": "いますか"},
+        {"known": "are you looking for", "target": "探していますか"},
+        {"known": "I'm looking for it", "target": "探しています"},
+        {"known": "I was looking for you", "target": "あなたを探していました"},
+        {"known": "what are you looking for", "target": "何を探していますか"},
+        {"known": "I'm looking for my keys", "target": "鍵を探しています"},
+        {"known": "are you still looking for it", "target": "まだ探していますか"},
+        {"known": "I've been looking for this book for a while now", "target": "この本をしばらく探していました"},
+        {"known": "I'm looking for a good place to meet my friend tomorrow", "target": "明日友達と会ういい場所を探しています"},
+        {"known": "I was looking for you because I wanted to ask you something important", "target": "大事なことを聞きたかったのであなたを探していました"}
+      ]
+    }
+  ]
+}

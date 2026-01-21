@@ -1,0 +1,61 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 207,
+  "known_text": "You've done what you needed to do.",
+  "target_text": "やる必要があったことをやりましたね。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what you needed to do",
+      "target": "やる必要があったことを",
+      "components": [
+        {"known": "to do", "target": "やる"},
+        {"known": "there was a need", "target": "必要があった"},
+        {"known": "thing (object)", "target": "ことを"}
+      ],
+      "phrases": [
+        {"known": "do", "target": "やる"},
+        {"known": "thing", "target": "こと"},
+        {"known": "need", "target": "必要"},
+        {"known": "I'll do it", "target": "やります"},
+        {"known": "there is a need", "target": "必要がある"},
+        {"known": "what to do", "target": "やること"},
+        {"known": "I need to do this", "target": "これをやる必要がある"},
+        {"known": "needed to do", "target": "やる必要があった"},
+        {"known": "what I need to do", "target": "やる必要があること"},
+        {"known": "I did what I needed to do", "target": "やる必要があったことをやりました"},
+        {"known": "the thing I needed to do was difficult", "target": "やる必要があったことは難しかったです"},
+        {"known": "I didn't know what I needed to do there", "target": "そこでやる必要があったことがわかりませんでした"},
+        {"known": "she told me what I needed to do yesterday", "target": "彼女は昨日やる必要があったことを言いました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "you've done, haven't you",
+      "target": "やりましたね",
+      "components": [
+        {"known": "did", "target": "やりました"},
+        {"known": "right? (confirmation)", "target": "ね"}
+      ],
+      "phrases": [
+        {"known": "did", "target": "やった"},
+        {"known": "done", "target": "やりました"},
+        {"known": "right?", "target": "ね"},
+        {"known": "did it", "target": "やりましたね"},
+        {"known": "you did it", "target": "やりましたね"},
+        {"known": "that's good, isn't it", "target": "いいですね"},
+        {"known": "it was difficult, wasn't it", "target": "難しかったですね"},
+        {"known": "you finished, didn't you", "target": "終わりましたね"},
+        {"known": "you've done well, haven't you", "target": "よくやりましたね"},
+        {"known": "you did what you could, didn't you", "target": "できることをやりましたね"},
+        {"known": "you've finished everything, haven't you", "target": "全部終わりましたね"},
+        {"known": "you've done what was needed, haven't you", "target": "必要なことをやりましたね"},
+        {"known": "you've done everything you needed to do, right", "target": "やる必要があったこと全部やりましたね"},
+        {"known": "you finished what you were supposed to do, didn't you", "target": "やる必要があったことを終わりましたね"},
+        {"known": "you've already done what you needed to do, haven't you", "target": "やる必要があったことをもうやりましたね"}
+      ]
+    }
+  ]
+}

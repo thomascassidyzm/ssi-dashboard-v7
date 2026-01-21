@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 121,
+  "known_text": "It's unusual that you don't like to use your car.",
+  "target_text": "車を使うのが好きじゃないのは珍しいですね。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you don't like to use your car",
+      "target": "車を使うのが好きじゃない",
+      "components": [
+        {"known": "car (object)", "target": "車を"},
+        {"known": "use", "target": "使う"},
+        {"known": "don't like", "target": "のが好きじゃない"}
+      ],
+      "phrases": [
+        {"known": "car", "target": "車"},
+        {"known": "use", "target": "使う"},
+        {"known": "the car", "target": "車を"},
+        {"known": "use car", "target": "車を使う"},
+        {"known": "don't like", "target": "好きじゃない"},
+        {"known": "using the car", "target": "車を使うの"},
+        {"known": "don't like to use", "target": "使うのが好きじゃない"},
+        {"known": "I don't like using the car", "target": "車を使うのが好きじゃない"},
+        {"known": "she likes using the car", "target": "彼女は車を使うのが好きです"},
+        {"known": "my friend doesn't like to use the car", "target": "友達は車を使うのが好きじゃない"},
+        {"known": "do you like to use the car or go by bus", "target": "車を使うのとバスで行くのどっちが好きですか"},
+        {"known": "going by bus is more relaxing than using the car", "target": "バスで行く方が車を使うよりリラックスできます"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "it's unusual that (right?)",
+      "target": "のは珍しいですね",
+      "components": [
+        {"known": "(nominalizer) is", "target": "のは"},
+        {"known": "unusual isn't it", "target": "珍しいですね"}
+      ],
+      "phrases": [
+        {"known": "right?", "target": "ね"},
+        {"known": "unusual", "target": "珍しい"},
+        {"known": "is unusual", "target": "珍しいです"},
+        {"known": "that is unusual", "target": "のは珍しい"},
+        {"known": "unusual right?", "target": "珍しいですね"},
+        {"known": "it's unusual that", "target": "のは珍しいですね"},
+        {"known": "that she went is unusual", "target": "行ったのは珍しいですね"},
+        {"known": "that you came is unusual", "target": "来たのは珍しいですね"},
+        {"known": "it's unusual that it's today", "target": "今日なのは珍しいですね"},
+        {"known": "it's unusual that we talked so much", "target": "たくさん話したのは珍しいですね"},
+        {"known": "it's unusual that she feels this way", "target": "彼女がこう感じるのは珍しいですね"},
+        {"known": "it's unusual that he doesn't like to have conversations", "target": "彼が会話をするのが好きじゃないのは珍しいですね"}
+      ]
+    }
+  ]
+}

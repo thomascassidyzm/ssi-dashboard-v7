@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 218,
+  "known_text": "I didn't do much on Sunday.",
+  "target_text": "日曜日はあまり何もしませんでした。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "on Sunday",
+      "target": "日曜日は",
+      "components": [
+        {"known": "Sunday", "target": "日曜日"},
+        {"known": "topic marker", "target": "は"}
+      ],
+      "phrases": [
+        {"known": "Sunday", "target": "日曜日"},
+        {"known": "on Sunday", "target": "日曜日は"},
+        {"known": "every Sunday", "target": "日曜日に"},
+        {"known": "this Sunday", "target": "今週の日曜日"},
+        {"known": "last Sunday", "target": "先週の日曜日"},
+        {"known": "next Sunday", "target": "来週の日曜日"},
+        {"known": "Sunday was nice", "target": "日曜日はよかったです"},
+        {"known": "on Sunday I went out", "target": "日曜日に出かけました"},
+        {"known": "I met friends on Sunday", "target": "日曜日に友達に会いました"},
+        {"known": "on Sunday I saw some friends", "target": "日曜日に何人かの友達に会いました"},
+        {"known": "on Sunday we gathered together as a group", "target": "日曜日にグループとして集まりました"},
+        {"known": "I went out on Saturday but stayed home on Sunday", "target": "土曜日は出かけましたが日曜日は家にいました"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I didn't do much",
+      "target": "あまり何もしませんでした",
+      "components": [
+        {"known": "not much", "target": "あまり"},
+        {"known": "nothing/anything", "target": "何も"},
+        {"known": "didn't do", "target": "しませんでした"}
+      ],
+      "phrases": [
+        {"known": "much", "target": "あまり"},
+        {"known": "nothing", "target": "何も"},
+        {"known": "didn't do", "target": "しなかった"},
+        {"known": "nothing happened", "target": "何もなかった"},
+        {"known": "I didn't do", "target": "しませんでした"},
+        {"known": "I didn't do much", "target": "あまり何もしませんでした"},
+        {"known": "not much happened", "target": "あまり何もなかったです"},
+        {"known": "I didn't talk much", "target": "あまり話しませんでした"},
+        {"known": "I didn't do much yesterday", "target": "昨日あまり何もしませんでした"},
+        {"known": "I didn't do much at the weekend", "target": "週末はあまり何もしませんでした"},
+        {"known": "I didn't do much because I was tired", "target": "疲れていたのであまり何もしませんでした"},
+        {"known": "we didn't do much on Sunday because it was difficult", "target": "難しかったので日曜日はあまり何もしませんでした"}
+      ]
+    }
+  ]
+}

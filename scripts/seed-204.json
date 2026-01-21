@@ -1,0 +1,59 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 204,
+  "known_text": "I wanted her to help you to deal with the arrangements.",
+  "target_text": "彼女にあなたが準備を手伝うのを手伝ってほしかったです。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you dealing with the arrangements",
+      "target": "あなたが準備を手伝うのを",
+      "components": [
+        {"known": "you (subject)", "target": "あなたが"},
+        {"known": "help with arrangements", "target": "準備を手伝う"},
+        {"known": "the act of (object)", "target": "のを"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "あなた"},
+        {"known": "you (subject)", "target": "あなたが"},
+        {"known": "arrangements", "target": "準備"},
+        {"known": "the act of", "target": "のを"},
+        {"known": "help with", "target": "手伝う"},
+        {"known": "you helping", "target": "あなたが手伝う"},
+        {"known": "with the arrangements", "target": "準備を"},
+        {"known": "help with arrangements", "target": "準備を手伝う"},
+        {"known": "I want you to help", "target": "あなたに手伝ってほしい"},
+        {"known": "you helping me with this", "target": "あなたがこれを手伝うのを"},
+        {"known": "I saw you helping her yesterday", "target": "あなたが彼女を手伝うのを見ました"},
+        {"known": "she said you were helping with the work", "target": "あなたが仕事を手伝っていると言いました"},
+        {"known": "he wanted you to help with the arrangements", "target": "彼はあなたが準備を手伝うのをほしかったです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I wanted her to help",
+      "target": "彼女に手伝ってほしかったです",
+      "components": [
+        {"known": "her (indirect)", "target": "彼女に"},
+        {"known": "help (te-form)", "target": "手伝って"},
+        {"known": "wanted (someone to)", "target": "ほしかったです"}
+      ],
+      "phrases": [
+        {"known": "her", "target": "彼女"},
+        {"known": "to her", "target": "彼女に"},
+        {"known": "help me", "target": "手伝って"},
+        {"known": "wanted", "target": "ほしかった"},
+        {"known": "I want to", "target": "ほしいです"},
+        {"known": "I wanted her to", "target": "彼女にほしかったです"},
+        {"known": "I want you to help", "target": "手伝ってほしいです"},
+        {"known": "I wanted him to come", "target": "彼に来てほしかったです"},
+        {"known": "I wanted her to help me", "target": "彼女に手伝ってほしかったです"},
+        {"known": "she wanted me to wait for her", "target": "彼女は私に待ってほしかったです"},
+        {"known": "he said he wanted her to help him", "target": "彼は彼女に手伝ってほしかったと言いました"},
+        {"known": "I wanted her to come and help me with the work", "target": "彼女に来て仕事を手伝ってほしかったです"}
+      ]
+    }
+  ]
+}

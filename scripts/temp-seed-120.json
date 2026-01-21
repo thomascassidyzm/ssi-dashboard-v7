@@ -1,0 +1,57 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 120,
+  "known_text": "It's interesting that you like to go by bus.",
+  "target_text": "バスで行くのが好きなのは面白いですね。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "you like to go by bus",
+      "target": "バスで行くのが好きな",
+      "components": [
+        {"known": "by bus", "target": "バスで"},
+        {"known": "to go", "target": "行く"},
+        {"known": "like (adj)", "target": "のが好きな"}
+      ],
+      "phrases": [
+        {"known": "bus", "target": "バス"},
+        {"known": "by bus", "target": "バスで"},
+        {"known": "to go", "target": "行く"},
+        {"known": "like it", "target": "好きです"},
+        {"known": "go by bus", "target": "バスで行く"},
+        {"known": "likes to go", "target": "行くのが好き"},
+        {"known": "like going by bus", "target": "バスで行くのが好き"},
+        {"known": "we went by bus yesterday", "target": "昨日バスで行きました"},
+        {"known": "does she like to go by bus", "target": "彼女はバスで行くのが好きですか"},
+        {"known": "my friend likes going by bus", "target": "友達はバスで行くのが好きです"},
+        {"known": "I learned that going by bus is good", "target": "バスで行くのがいいと学びました"},
+        {"known": "going by bus gives us time to talk", "target": "バスで行くと話す時間があります"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "it's interesting that (right?)",
+      "target": "のは面白いですね",
+      "components": [
+        {"known": "(nominalizer) is", "target": "のは"},
+        {"known": "interesting isn't it", "target": "面白いですね"}
+      ],
+      "phrases": [
+        {"known": "right?", "target": "ね"},
+        {"known": "interesting", "target": "面白い"},
+        {"known": "isn't it", "target": "ですね"},
+        {"known": "is interesting", "target": "面白いです"},
+        {"known": "interesting right?", "target": "面白いですね"},
+        {"known": "that is interesting", "target": "のは面白いですね"},
+        {"known": "that you said that is interesting", "target": "言ったのは面白いですね"},
+        {"known": "that you came is interesting right?", "target": "来たのは面白いですね"},
+        {"known": "it's interesting that we learned so much", "target": "たくさん学んだのは面白いですね"},
+        {"known": "it's interesting that the conversation went well", "target": "会話がうまくいったのは面白いですね"},
+        {"known": "it's interesting that my brain changed after learning", "target": "学んだ後脳が変わったのは面白いですね"},
+        {"known": "it's interesting that she feels better than yesterday right", "target": "彼女が昨日より気分がいいのは面白いですね"}
+      ]
+    }
+  ]
+}

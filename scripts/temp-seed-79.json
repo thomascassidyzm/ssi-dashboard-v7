@@ -1,0 +1,49 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 79,
+  "known_text": "When did you start to learn?",
+  "target_text": "いつ学び始めましたか？",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "when (question)",
+      "target": "いつ",
+      "phrases": [
+        {"known": "when?", "target": "いつ？"},
+        {"known": "when is it?", "target": "いつですか？"},
+        {"known": "when did you come?", "target": "いつ来ましたか？"},
+        {"known": "when did she say it?", "target": "彼女はいつ言いましたか？"},
+        {"known": "when did he start?", "target": "彼はいつ始めましたか？"},
+        {"known": "I do not know when", "target": "いつかわかりません"},
+        {"known": "when did you understand?", "target": "いつわかりましたか？"},
+        {"known": "she asked when he did it", "target": "彼女は彼がいつやったか聞きました"},
+        {"known": "I do not know when she started to understand", "target": "彼女がいつ理解し始めたかわかりません"},
+        {"known": "he wanted to know when we would be done", "target": "彼は私たちがいつ終わるか知りたかったです"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "did you start to learn?",
+      "target": "学び始めましたか？",
+      "components": [
+        {"known": "learn (stem)", "target": "学び"},
+        {"known": "did you start? (question)", "target": "始めましたか？"}
+      ],
+      "phrases": [
+        {"known": "learn", "target": "学ぶ"},
+        {"known": "learning", "target": "学び"},
+        {"known": "started", "target": "始めました"},
+        {"known": "did you start?", "target": "始めましたか？"},
+        {"known": "started to learn", "target": "学び始めた"},
+        {"known": "did you start to learn?", "target": "学び始めましたか？"},
+        {"known": "she started to learn Japanese", "target": "彼女は日本語を学び始めました"},
+        {"known": "he asked when I started to learn", "target": "彼はいつ学び始めたか聞きました"},
+        {"known": "I started to learn Japanese today", "target": "今日日本語を学び始めました"},
+        {"known": "she said she started to learn it all afternoon", "target": "彼女は午後ずっとそれを学び始めたと言いました"},
+        {"known": "we asked when he started to learn Japanese", "target": "私たちは彼がいつ日本語を学び始めたか聞きました"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "course_code": "jpn_for_eng",
+  "seed_number": 59,
+  "known_text": "I know how to do what I need to do next week.",
+  "target_text": "来週やるべきことのやり方を知っています。",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "of",
+      "target": "の",
+      "phrases": [
+        {"known": "Of.", "target": "の。"},
+        {"known": "His.", "target": "彼の。"},
+        {"known": "Hers.", "target": "彼女の。"},
+        {"known": "Of that thing.", "target": "そのことの。"},
+        {"known": "So his words.", "target": "だから彼の言葉。"},
+        {"known": "Her way of doing.", "target": "彼女のやり方。"},
+        {"known": "I understand his thing.", "target": "彼のことがわかります。"},
+        {"known": "So she knows his way of doing it.", "target": "だから彼女は彼のやり方を知っています。"},
+        {"known": "He thought about her thing yesterday.", "target": "彼は昨日彼女のことを考えました。"},
+        {"known": "So I know the way of doing that thing.", "target": "だからそのことのやり方を知っています。"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "object marker",
+      "target": "を",
+      "phrases": [
+        {"known": "It.", "target": "を。"},
+        {"known": "Do it.", "target": "それをする。"},
+        {"known": "I do it.", "target": "それをします。"},
+        {"known": "So I do that.", "target": "だからそれをします。"},
+        {"known": "I know that.", "target": "それを知っています。"},
+        {"known": "She sees his words.", "target": "彼女は彼の言葉を見ます。"},
+        {"known": "I know the way of doing.", "target": "やり方を知っています。"},
+        {"known": "So he thought about that thing.", "target": "だから彼はそのことを考えました。"},
+        {"known": "She wanted to know his words.", "target": "彼女は彼の言葉を知りたかったです。"},
+        {"known": "So I know the way of doing what I should do.", "target": "だからやるべきことのやり方を知っています。"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "next week",
+      "target": "来週",
+      "phrases": [
+        {"known": "Next week.", "target": "来週。"},
+        {"known": "So next week.", "target": "だから来週。"},
+        {"known": "He does it next week.", "target": "彼は来週します。"},
+        {"known": "She comes next week.", "target": "彼女は来週来ます。"},
+        {"known": "So I see her next week.", "target": "だから来週彼女に会います。"},
+        {"known": "She wants to do it next week.", "target": "彼女は来週したいです。"},
+        {"known": "I think about that next week.", "target": "来週そのことを考えます。"},
+        {"known": "So he understands enough next week.", "target": "だから彼は来週十分わかります。"},
+        {"known": "She said she wants to see him next week.", "target": "彼女は来週彼に会いたいと言いました。"},
+        {"known": "So I know what I should do next week.", "target": "だから来週やるべきことを知っています。"},
+        {"known": "So he knows how to do what he should do next week.", "target": "だから彼は来週やるべきことのやり方を知っています。"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "should do",
+      "target": "やるべき",
+      "components": [
+        {"known": "do", "target": "やる"},
+        {"known": "should", "target": "べき"}
+      ],
+      "phrases": [
+        {"known": "Should do.", "target": "やるべき。"},
+        {"known": "Thing I should do.", "target": "やるべきこと。"},
+        {"known": "He should do it.", "target": "彼はやるべきです。"},
+        {"known": "What I should do.", "target": "やるべきこと。"},
+        {"known": "So I should do it.", "target": "だからやるべきです。"},
+        {"known": "What she should do next week.", "target": "彼女が来週やるべきこと。"},
+        {"known": "He knows what he should do.", "target": "彼はやるべきことを知っています。"},
+        {"known": "So she knows what she should do.", "target": "だから彼女はやるべきことを知っています。"},
+        {"known": "I know the way of doing what I should do.", "target": "やるべきことのやり方を知っています。"},
+        {"known": "So he knows how to do what he should do next week.", "target": "だから彼は来週やるべきことのやり方を知っています。"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "thing",
+      "target": "こと",
+      "phrases": [
+        {"known": "Thing.", "target": "こと。"},
+        {"known": "That thing.", "target": "そのこと。"},
+        {"known": "His thing.", "target": "彼のこと。"},
+        {"known": "So that thing.", "target": "だからそのこと。"},
+        {"known": "Good thing.", "target": "いいこと。"},
+        {"known": "What I should do.", "target": "やるべきこと。"},
+        {"known": "What she should do.", "target": "彼女のやるべきこと。"},
+        {"known": "So that thing is interesting.", "target": "だからそのことは面白いです。"},
+        {"known": "What I should do next week.", "target": "来週やるべきこと。"},
+        {"known": "I know what I should do next week.", "target": "来週やるべきことを知っています。"},
+        {"known": "So she knows what she should do.", "target": "だから彼女はやるべきことを知っています。"},
+        {"known": "He thought about her thing yesterday.", "target": "彼は昨日彼女のことを考えました。"}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "M",
+      "known": "how to do it",
+      "target": "やり方",
+      "components": [
+        {"known": "do", "target": "やり"},
+        {"known": "way", "target": "方"}
+      ],
+      "phrases": [
+        {"known": "How to do it.", "target": "やり方。"},
+        {"known": "That way.", "target": "そのやり方。"},
+        {"known": "This way of doing.", "target": "このやり方。"},
+        {"known": "His way of doing.", "target": "彼のやり方。"},
+        {"known": "I know how to do it.", "target": "やり方を知っています。"},
+        {"known": "So that's the way of doing it.", "target": "だからそのやり方です。"},
+        {"known": "She understands how to do it.", "target": "彼女はやり方がわかります。"},
+        {"known": "His way of doing it is interesting.", "target": "彼のやり方は面白いです。"},
+        {"known": "So I want to know how to do it.", "target": "だからやり方を知りたいです。"},
+        {"known": "I know how to do what I should do next week.", "target": "来週やるべきことのやり方を知っています。"},
+        {"known": "So she knows his way of doing it.", "target": "だから彼女は彼のやり方を知っています。"},
+        {"known": "I know how to do what I should do.", "target": "やるべきことのやり方を知っています。"}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "know",
+      "target": "知っています",
+      "phrases": [
+        {"known": "Know.", "target": "知っている。"},
+        {"known": "I know.", "target": "知っています。"},
+        {"known": "He knows.", "target": "彼は知っています。"},
+        {"known": "So I know.", "target": "だから知っています。"},
+        {"known": "She knows that.", "target": "彼女はそれを知っています。"},
+        {"known": "I know how to do it.", "target": "やり方を知っています。"},
+        {"known": "So he knows those words.", "target": "だから彼はその言葉を知っています。"},
+        {"known": "She knows what she should do.", "target": "彼女はやるべきことを知っています。"},
+        {"known": "I know how to do what I should do.", "target": "やるべきことのやり方を知っています。"},
+        {"known": "So I know how to do what I should do next week.", "target": "だから来週やるべきことのやり方を知っています。"}
+      ]
+    }
+  ]
+}
