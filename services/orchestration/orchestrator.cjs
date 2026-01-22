@@ -24,6 +24,7 @@ const axios = require('axios');
 const { execSync, spawn } = require('child_process');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const os = require('os');
 
 // Load centralized course mode configuration
 const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes, getMachinePattern, getAllMachineProfiles } = require('../config/course-mode-loader.cjs');
@@ -10690,6 +10691,144 @@ app.get('/api/mission-control/services', async (req, res) => {
     services: [courseBuilder, phase8, phase9],
     timestamp: new Date().toISOString()
   });
+});
+
+// =============================================================================
+// SERVICES API - Dynamic PM2 and ngrok status with remote control
+// =============================================================================
+
+/**
+ * GET /api/services
+ *
+ * Returns dynamic list of running services:
+ * - PM2 processes with status, uptime, memory
+ * - ngrok tunnel info (if running)
+ */
+app.get('/api/services', async (req, res) => {
+  const services = [];
+
+  // 1. Get PM2 processes
+  try {
+    const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
+    const pm2Processes = JSON.parse(pm2Output);
+
+    for (const proc of pm2Processes) {
+      services.push({
+        type: 'pm2',
+        name: proc.name,
+        status: proc.pm2_env?.status || 'unknown',
+        pid: proc.pid,
+        pm_id: proc.pm_id,
+        uptime: proc.pm2_env?.pm_uptime ? Date.now() - proc.pm2_env.pm_uptime : null,
+        memory: proc.monit?.memory || null,
+        cpu: proc.monit?.cpu || null,
+        restarts: proc.pm2_env?.restart_time || 0,
+        canRestart: true
+      });
+    }
+  } catch (err) {
+    console.warn('[Services API] PM2 not available:', err.message);
+  }
+
+  // 2. Get ngrok tunnel info
+  try {
+    const ngrokResponse = await axios.get('http://localhost:4040/api/tunnels', { timeout: 2000 });
+    const tunnels = ngrokResponse.data?.tunnels || [];
+
+    for (const tunnel of tunnels) {
+      services.push({
+        type: 'ngrok',
+        name: tunnel.name || 'ngrok',
+        status: 'online',
+        url: tunnel.public_url,
+        proto: tunnel.proto,
+        localAddr: tunnel.config?.addr,
+        canRestart: false
+      });
+    }
+  } catch (err) {
+    // ngrok not running or API not available - that's fine
+    if (err.code !== 'ECONNREFUSED') {
+      console.warn('[Services API] ngrok API error:', err.message);
+    }
+  }
+
+  res.json({
+    services,
+    machine: process.env.MACHINE_NAME || os.hostname(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+/**
+ * POST /api/services/:name/restart
+ *
+ * Restarts a PM2 process by name
+ */
+app.post('/api/services/:name/restart', async (req, res) => {
+  const { name } = req.params;
+
+  try {
+    // Validate the process exists first
+    const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
+    const pm2Processes = JSON.parse(pm2Output);
+    const process = pm2Processes.find(p => p.name === name);
+
+    if (!process) {
+      return res.status(404).json({
+        success: false,
+        error: `Process "${name}" not found in PM2`
+      });
+    }
+
+    // Restart the process
+    execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
+
+    console.log(`[Services API] Restarted PM2 process: ${name}`);
+
+    res.json({
+      success: true,
+      message: `Process "${name}" restarted successfully`,
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error(`[Services API] Failed to restart ${name}:`, err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/services/:name/logs
+ *
+ * Gets recent logs for a PM2 process
+ */
+app.get('/api/services/:name/logs', async (req, res) => {
+  const { name } = req.params;
+  const lines = parseInt(req.query.lines) || 50;
+
+  try {
+    // Get last N lines of logs
+    const logs = execSync(`pm2 logs ${name} --lines ${lines} --nostream`, {
+      encoding: 'utf-8',
+      timeout: 5000
+    });
+
+    res.json({
+      success: true,
+      name,
+      logs: logs.split('\n').filter(line => line.trim()),
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error(`[Services API] Failed to get logs for ${name}:`, err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
 });
 
 /**

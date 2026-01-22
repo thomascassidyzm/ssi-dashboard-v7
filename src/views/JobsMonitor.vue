@@ -39,16 +39,48 @@
       <div class="health-inner">
         <span class="health-label">Services:</span>
         <div class="health-indicators">
+          <!-- ngrok tunnels -->
           <div
-            v-for="(service, key) in services"
-            :key="key"
-            class="health-indicator"
-            :class="{ healthy: service.healthy, unhealthy: !service.healthy }"
+            v-for="service in ngrokServices"
+            :key="service.name"
+            class="health-indicator healthy ngrok-service"
           >
             <span class="health-dot"></span>
-            <span class="health-name">{{ formatServiceName(key) }}</span>
-            <span class="health-port" v-if="service.port">:{{ service.port }}</span>
+            <span class="health-name">ngrok</span>
+            <a :href="service.url" target="_blank" class="ngrok-url">{{ formatNgrokUrl(service.url) }}</a>
           </div>
+          <!-- PM2 services -->
+          <div
+            v-for="service in pm2Services"
+            :key="service.name"
+            class="health-indicator"
+            :class="{ healthy: service.status === 'online', unhealthy: service.status !== 'online' }"
+          >
+            <span class="health-dot"></span>
+            <span class="health-name">{{ service.name }}</span>
+            <span class="health-status" v-if="service.status !== 'online'">{{ service.status }}</span>
+            <button
+              v-if="service.canRestart"
+              @click="restartService(service.name)"
+              class="restart-btn"
+              :disabled="restarting[service.name]"
+              :title="`Restart ${service.name}`"
+            >
+              <svg v-if="!restarting[service.name]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 4v6h6M23 20v-6h-6"/>
+                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+              </svg>
+              <span v-else class="restart-spinner"></span>
+            </button>
+          </div>
+          <!-- No services message -->
+          <div v-if="services.length === 0 && !servicesLoading" class="no-services">
+            No services detected
+          </div>
+        </div>
+        <div class="machine-name" v-if="machineName">
+          <span class="machine-icon">💻</span>
+          <span>{{ machineName }}</span>
         </div>
         <div class="poll-status">
           <span class="poll-label">Auto-refresh:</span>
@@ -220,7 +252,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import { getApiUrl } from '@/services/api'
 
@@ -253,16 +285,49 @@ function getApiBaseUrl() {
 
 // State
 const jobs = ref([])
-const services = ref({})
+const services = ref([])
+const machineName = ref('')
 const loading = ref(true)
+const servicesLoading = ref(true)
 const error = ref(null)
 const lastUpdate = ref(null)
 const polling = ref(true)
 const expandedErrors = ref({})
 const stopping = ref({})
+const restarting = ref({})
 
 let pollInterval = null
 const POLL_INTERVAL_MS = 5000
+
+// Computed: filter services by type
+const ngrokServices = computed(() => services.value.filter(s => s.type === 'ngrok'))
+const pm2Services = computed(() => services.value.filter(s => s.type === 'pm2'))
+
+// Fetch services (PM2 + ngrok) from API
+async function fetchServices() {
+  try {
+    const baseUrl = getApiBaseUrl()
+    const response = await fetch(`${baseUrl}/api/services`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+
+    if (!response.ok) {
+      console.warn('[JobsMonitor] Services API not available')
+      return
+    }
+
+    const data = await response.json()
+    services.value = data.services || []
+    machineName.value = data.machine || ''
+  } catch (err) {
+    console.warn('[JobsMonitor] Failed to fetch services:', err.message)
+  } finally {
+    servicesLoading.value = false
+  }
+}
 
 // Fetch jobs from API
 async function fetchJobs() {
@@ -281,7 +346,6 @@ async function fetchJobs() {
 
     const data = await response.json()
     jobs.value = data.jobs || []
-    services.value = data.services || {}
     lastUpdate.value = data.timestamp || new Date().toISOString()
     error.value = null
   } catch (err) {
@@ -292,10 +356,47 @@ async function fetchJobs() {
   }
 }
 
+// Restart a PM2 service
+async function restartService(name) {
+  if (restarting.value[name]) return
+
+  restarting.value[name] = true
+
+  try {
+    const baseUrl = getApiBaseUrl()
+    const response = await fetch(`${baseUrl}/api/services/${name}/restart`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(`Failed to restart ${name}: ${data.error || 'Unknown error'}`)
+    } else {
+      // Refresh services to see updated state
+      await fetchServices()
+    }
+  } catch (err) {
+    console.error(`[JobsMonitor] Failed to restart ${name}:`, err)
+    alert(`Failed to restart ${name}: ${err.message}`)
+  } finally {
+    restarting.value[name] = false
+  }
+}
+
 // Refresh data
 async function refresh() {
   loading.value = true
-  await fetchJobs()
+  await Promise.all([fetchJobs(), fetchServices()])
+}
+
+// Fetch all data (jobs + services)
+async function fetchAll() {
+  await Promise.all([fetchJobs(), fetchServices()])
 }
 
 // Toggle polling
@@ -310,7 +411,7 @@ function togglePolling() {
 
 function startPolling() {
   if (pollInterval) return
-  pollInterval = setInterval(fetchJobs, POLL_INTERVAL_MS)
+  pollInterval = setInterval(fetchAll, POLL_INTERVAL_MS)
 }
 
 function stopPolling() {
@@ -427,9 +528,20 @@ function getJobLink(job) {
   }
 }
 
+// Format ngrok URL to show just the domain
+function formatNgrokUrl(url) {
+  if (!url) return ''
+  try {
+    const parsed = new URL(url)
+    return parsed.hostname
+  } catch {
+    return url
+  }
+}
+
 // Lifecycle
 onMounted(() => {
-  fetchJobs()
+  fetchAll()
   if (polling.value) {
     startPolling()
   }
@@ -690,6 +802,89 @@ onUnmounted(() => {
   color: var(--jm-text-muted);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
+}
+
+.health-status {
+  color: var(--jm-warning);
+  font-size: 0.6875rem;
+  padding: 0.125rem 0.375rem;
+  background: rgba(245, 158, 11, 0.15);
+  border-radius: 3px;
+}
+
+.ngrok-url {
+  color: var(--jm-accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ngrok-url:hover {
+  color: var(--jm-text);
+  text-decoration: underline;
+}
+
+.restart-btn {
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  background: transparent;
+  border: 1px solid var(--jm-border);
+  border-radius: 4px;
+  color: var(--jm-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-left: 0.25rem;
+}
+
+.restart-btn:hover:not(:disabled) {
+  background: var(--jm-elevated);
+  border-color: var(--jm-accent);
+  color: var(--jm-accent);
+}
+
+.restart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.restart-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.restart-spinner {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--jm-border);
+  border-top-color: var(--jm-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.machine-name {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--jm-text-muted);
+  padding: 0.25rem 0.5rem;
+  background: var(--jm-elevated);
+  border-radius: 4px;
+}
+
+.machine-icon {
+  font-size: 0.875rem;
+}
+
+.no-services {
+  color: var(--jm-text-muted);
+  font-size: 0.8125rem;
+  font-style: italic;
 }
 
 .poll-status {
