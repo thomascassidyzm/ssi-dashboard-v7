@@ -10781,16 +10781,23 @@ app.post('/api/services/:name/restart', async (req, res) => {
       });
     }
 
-    // Restart the process
-    execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
-
-    console.log(`[Services API] Restarted PM2 process: ${name}`);
-
+    // Send response FIRST, then restart after a short delay
+    // This prevents "Failed to fetch" when restarting self or proxy
     res.json({
       success: true,
-      message: `Process "${name}" restarted successfully`,
+      message: `Process "${name}" restart initiated`,
       timestamp: new Date().toISOString()
     });
+
+    // Delay restart to allow response to be sent
+    setTimeout(() => {
+      console.log(`[Services API] Restarting PM2 process: ${name}`);
+      spawn('pm2', ['restart', name], {
+        detached: true,
+        stdio: 'ignore'
+      }).unref();
+    }, 500);
+
   } catch (err) {
     console.error(`[Services API] Failed to restart ${name}:`, err.message);
     res.status(500).json({

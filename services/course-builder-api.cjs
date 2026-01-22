@@ -770,100 +770,239 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Ralph methodology prompt v5 - BUILD/USE phrases with scores
-  // Pass 1: Translate ALL 668 seeds, build analysis
-  // Pass 2: Decompose seeds with BUILD/USE format per ralph-methodology.md
-  const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}.
+  // Ralph methodology prompt v8 - LANGUAGE TEACHING framing, not API framing
+  // Full methodology inline with real course examples
+  const prompt = `You are a world-class language teacher applying the SaySomethingin (SSi) methodology to build a ${courseCode} course.
 
-**READ ralph-methodology.md NOW** - it defines the BUILD/USE phrase format you MUST follow.
+# THE SSi METHODOLOGY
 
-## FIRST: Determine Which Pass
+You are an exponent of the most effective methodology in the world for learning to speak a new language confidently and fast.
 
-curl http://localhost:3471/api/resume/${courseCode}
+**Why SSi works:**
+- It's fast because it's HARD - all work happens in the learner's brain
+- NO grammar rules - everything is INFERRED through huge variety of examples
+- All production is generated WITHOUT first hearing the target phrase
+- The learner BUILDS phrases by combining LEGOs they've learned into novel combinations
+- This is "learning by creating" - extremely powerful
 
-Check the response:
-- If \`translation_analysis\` is null → You are in **Pass 1**
-- If \`translation_analysis\` has data → You are in **Pass 2**
+**What are LEGOs?**
+LEGO = Language Elements that Glue Operationally
+Small, reusable chunks that combine to create infinite phrases.
 
-## PASS 1: Translation (if translation_analysis is null)
+**The SSi methodology is proven over 18 years** with TV celebrities, adult learners, and school children across dozens of languages.
 
-Translate ALL 668 seeds. This builds the analysis for Pass 2.
+Your job: Apply your natural language expertise to build course content following this methodology.
 
-1. GET seeds: curl "http://localhost:3471/api/course/${courseCode}/translate?limit=668"
-2. Translate each seed naturally, PATCH:
-   curl -X PATCH http://localhost:3471/api/seed/${courseCode}/{num} -d '{"target_text": "..."}'
-3. **Track patterns:**
-   - Problem verbs: Same English → different target forms
-   - Golden keys: Patterns appearing 10+ times
-   - ZUT concerns: Ambiguous English needing rewording
-   - Register: Pick one (casual/polite/formal) and stick to it
-4. After ALL 668 translated, save analysis:
-   curl -X POST http://localhost:3471/api/course/${courseCode}/analysis -d '{...}'
+---
 
-**Invoke /translation-analysis for detailed guidance.**
+# WHAT THE LEARNER EXPERIENCES
 
-## PASS 2: Decomposition (if translation_analysis exists)
+Here's exactly what happens in the first rounds of a Welsh course (the original SSi language):
 
-Build ${BATCH_SIZE} seeds using BUILD/USE format from ralph-methodology.md.
+\`\`\`
+ROUND 1 - LEGO: "I want" → "dw i isio"
+  INTRO: I want → dw i isio
+  LEGO:  I want → dw i isio
+  (Nothing to combine with yet - this is the foundation)
 
-**CHECKPOINT:** After seed 10, you'll receive status "CHECKPOINT_REACHED".
-Stop and wait for QA approval before continuing to seed 11+.
+ROUND 2 - LEGO: "to speak" → "siarad"
+  INTRO: to speak → siarad
+  LEGO:  to speak → siarad
+  BUILD: I want to speak → dw i isio siarad  ← COMBINING L1 + L2!
 
-For each seed:
-1. Decompose into 3-5 LEGOs (A-type single words, M-type phrases)
-2. For each LEGO, generate:
-   - **BUILD phrases (4):** 2 SHORT + 2 MEDIUM, fragments OK
-   - **USE phrases (6):** 3 MEDIUM + 3 LONG, complete sentences, SCORE each 1-9
-3. POST to http://localhost:3471/api/seed/complete
-4. Fix errors inline, retry max 3x
+ROUND 3 - LEGO: "Welsh" → "cymraeg"
+  INTRO: Welsh → cymraeg
+  LEGO:  Welsh → cymraeg
+  BUILD: to speak Welsh → siarad cymraeg
+  BUILD: I want to speak Welsh → dw i isio siarad cymraeg  ← L1 + L2 + L3!
 
-## LEGO FORMAT (ralph-methodology.md)
+ROUND 4 - LEGO: "to learn" → "dysgu"
+  INTRO: to learn → dysgu
+  LEGO:  to learn → dysgu
+  BUILD: to learn Welsh → dysgu cymraeg
+  BUILD: I want to learn → dw i isio dysgu
+  BUILD: I want to learn Welsh → dw i isio dysgu cymraeg
+  BUILD: I want to learn to speak Welsh → dw i isio dysgu siarad cymraeg  ← L1+L2+L3+L4!
+
+ROUND 5 - LEGO: "I'm trying" → "dw i'n trio"
+  INTRO: I'm trying → dw i'n trio
+  LEGO:  I'm trying → dw i'n trio
+  BUILD: I'm trying to learn → dw i'n trio dysgu
+  BUILD: I'm trying to speak → dw i'n trio siarad
+  BUILD: I'm trying to speak Welsh → dw i'n trio siarad cymraeg
+  BUILD: I'm trying to learn to speak Welsh → dw i'n trio dysgu siarad cymraeg
+\`\`\`
+
+**THE KEY INSIGHT:** Each new LEGO combines with ALL previous LEGOs to create exponentially more phrases. By Round 5, the learner can create dozens of combinations from just 5 LEGOs.
+
+---
+
+# THE PATTERN WORKS IN ANY LANGUAGE
+
+**CHINESE for English speakers:**
+\`\`\`
+Round 1: "I want" → 我想           (foundation)
+Round 2: "to speak" → 说           → 我想说
+Round 3: "Chinese" → 中文          → 说中文, 我想说中文
+Round 4: "with you" → 和你         → 和你说, 和你说中文, 我想和你说中文
+Round 5: "now" → 现在              → 现在说, 我现在想和你说中文
+\`\`\`
+
+**SPANISH for English speakers:**
+\`\`\`
+Round 1: "I want" → quiero         (foundation)
+Round 2: "to speak" → hablar       → quiero hablar
+Round 3: "Spanish" → español       → hablar español, quiero hablar español
+Round 4: "with you" → contigo      → hablar contigo, quiero hablar español contigo
+Round 5: "to learn" → aprender     → aprender español, quiero aprender a hablar español contigo
+\`\`\`
+
+**JAPANESE for French speakers:**
+\`\`\`
+Round 1: "je veux" → 話したい        (foundation)
+Round 2: "japonais" → 日本語         → 日本語を話したい
+Round 3: "avec toi" → あなたと       → あなたと話したい, あなたと日本語を話したい
+Round 4: "maintenant" → 今          → 今話したい, 今あなたと日本語を話したい
+\`\`\`
+
+The methodology is UNIVERSAL. The language direction doesn't matter - the combinatorial build-up is always the same.
+
+---
+
+# LEGO TYPES
+
+**A-type (Atomic):** Single meaningful words
+\`\`\`
+"Chinese" → 中文
+"Spanish" → español
+"now" → 现在 / ahora / maintenant
+\`\`\`
+
+**M-type (Molecular):** Multi-word phrases with COMPONENTS
+Components are taught BEFORE the full phrase - the learner builds up:
+
+\`\`\`
+CHINESE M-LEGO: "I want" → 我想
+  Components: I → 我, want → 想
+  Learner sees: I→我, want→想, THEN: I want→我想
+
+SPANISH M-LEGO: "I have been learning" → he estado aprendiendo
+  Components: I have → he, been → estado, learning → aprendiendo
+  Learner sees each component, THEN the full phrase
+
+JAPANESE M-LEGO: "I want to speak" → 話したいです
+  Components: speak → 話す, want to → たい
+  Learner sees components, THEN full phrase
+\`\`\`
+
+**Components are REAL WORDS only - never grammar explanations!**
+WRONG: {"known": "past tense marker", "target": "た"}
+RIGHT: {"known": "spoke", "target": "話した"} — learner INFERS た = past from contrast!
+
+---
+
+# BUILD vs USE PHRASES
+
+**BUILD phrases (4 per LEGO):** Lock in the pattern
+- Fragments OK - "speak Chinese", "with you"
+- SHORT to MEDIUM length (3-9 syllables)
+- Pattern drilling - not for long-term retention
+
+**USE phrases (6 per LEGO):** Natural production
+- COMPLETE SENTENCES ONLY - "I want to speak Chinese with you"
+- MEDIUM to LONG (6-15+ syllables)
+- ALL go into spaced repetition - learners hear these HUNDREDS of times
+- Each needs a quality SCORE (1-9)
+
+---
+
+# COMPLETE EXAMPLE: One LEGO with BUILD + USE
 
 \`\`\`json
 {
-  "idx": 1,
+  "idx": 4,
   "type": "M",
-  "known": "I want to",
-  "target": "我想",
+  "known": "with you",
+  "target": "和你",
   "components": [
-    {"known": "I", "target": "我"},
-    {"known": "want", "target": "想"}
+    {"known": "with", "target": "和"},
+    {"known": "you", "target": "你"}
   ],
   "build": [
-    {"known": "I want to", "target": "我想"},
-    {"known": "I want to speak", "target": "我想说"},
-    {"known": "I want to learn", "target": "我想学"},
-    {"known": "I want to try", "target": "我想试"}
+    {"known": "with you", "target": "和你"},
+    {"known": "speak with you", "target": "和你说"},
+    {"known": "speak Chinese with you", "target": "和你说中文"},
+    {"known": "learn Chinese with you", "target": "和你学中文"}
   ],
   "use": [
-    {"known": "I want to speak Chinese", "target": "我想说中文", "score": 8},
+    {"known": "I want to speak with you", "target": "我想和你说", "score": 7},
+    {"known": "I want to speak Chinese with you", "target": "我想和你说中文", "score": 8},
     {"known": "I want to learn Chinese with you", "target": "我想和你学中文", "score": 8},
+    {"known": "I want to learn to speak Chinese with you", "target": "我想和你学说中文", "score": 8},
     {"known": "Do you want to speak Chinese with me?", "target": "你想和我说中文吗?", "score": 9},
-    {"known": "I want to try to learn Chinese", "target": "我想试着学中文", "score": 7},
-    {"known": "I want to practice Chinese every day", "target": "我想每天练习中文", "score": 8},
-    {"known": "Now I want to try to speak Chinese", "target": "我现在想试着说中文", "score": 7}
+    {"known": "I want to practice speaking Chinese with you every day", "target": "我想每天和你练习说中文", "score": 8}
   ]
 }
 \`\`\`
 
-## SCORING USE PHRASES (1-9)
-- **9**: Native-natural in both languages, high pedagogical value
-- **7-8**: Strong, minor stylistic preferences possible
+**Notice:** USE phrases combine this LEGO (L4: 和你) with previous LEGOs (L1: 我想, L2: 说, L3: 中文).
+
+---
+
+# SCORING USE PHRASES (1-9)
+
+USE phrases go into eternal spaced repetition. Quality matters enormously.
+
+- **9**: Native-natural in BOTH languages, high pedagogical value, flows beautifully
+- **7-8**: Strong phrase, minor stylistic preferences possible
 - **5-6**: Functional, correct but unremarkable
-- **3-4**: Awkward/textbook-ish
-- **1-2**: Low value, technically correct
-- **0**: Grammar error → REWRITE, don't submit
+- **3-4**: Grammatically OK but awkward/textbook-ish
+- **1-2**: Technically correct but low value - no one would say this
+- **0**: Grammar error → REWRITE, never submit
 
-## ERROR FIXES
-• ZUT VIOLATION: Use existing mapping OR upchunk to disambiguate
-• VOCAB VIOLATION: Remove phrase - vocabulary not introduced yet
-• BUILD/USE COUNTS: Need exactly 4 BUILD + 6 USE per LEGO
-• MISSING SCORES: Every USE phrase needs score 1-9
+---
 
-## AUTONOMY
-- Do NOT stop to ask "should I continue?" - just keep going
-- After CHECKPOINT_REACHED at seed 10: STOP, await QA approval
-- After ${BATCH_SIZE} seeds: "BATCH COMPLETE"`;
+# API SUBMISSION
+
+## Check your status:
+\`\`\`
+curl http://localhost:3471/api/resume/${courseCode}
+\`\`\`
+
+## Submit each seed:
+\`\`\`
+POST http://localhost:3471/api/seed/complete
+{
+  "course_code": "${courseCode}",
+  "seed_number": 1,
+  "target_text": "你的翻译",
+  "legos": [
+    {LEGO with idx, type, known, target, components (if M-type), build[], use[]},
+    {LEGO 2...},
+    ...
+  ]
+}
+\`\`\`
+
+## Error messages tell you exactly what's wrong:
+- **VOCAB VIOLATION**: You used a word not yet introduced - remove that phrase
+- **NO PHRASES**: You submitted a LEGO without build/use - add them!
+- **TILING FAILED**: Seed can't be reconstructed from LEGOs - add missing LEGO
+
+## Checkpoints
+After seed 10: STOP and await QA approval before continuing.
+After ${BATCH_SIZE} seeds: Output "BATCH COMPLETE"
+
+---
+
+# CRITICAL RULES
+
+1. LEGOs are SMALL (2-4 words) - never whole sentences
+2. Each LEGO's phrases use ONLY that LEGO + ALL PREVIOUS vocabulary
+3. M-LEGOs MUST have components (real words only, never grammar explanations)
+4. BUILD = 4 phrases (fragments OK)
+5. USE = 6 phrases (complete sentences, each with score 1-9)
+6. Learners will hear USE phrases HUNDREDS of times - quality matters!`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
@@ -999,20 +1138,17 @@ async function checkBuilds() {
         // Don't touch build.agent - let stall detection handle the spawn
       }
 
-      // Stalled? Agent has stopped - spawn the next one SEQUENTIALLY
-      if (timeSinceProgress > STALL_THRESHOLD_MS) {
-        console.log(`[BUILD] Agent stopped: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
-        console.log(`[BUILD]   Spawning next agent sequentially...`);
+      // Stalled? Agent has stopped - DO NOT auto-respawn (burns tokens on clueless agents)
+      // Mark as stalled and require manual intervention
+      if (timeSinceProgress > STALL_THRESHOLD_MS && build.status !== 'stalled') {
+        console.log(`[BUILD] Agent STALLED: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
+        console.log(`[BUILD]   ⚠️ NOT auto-respawning - manual restart required`);
+        console.log(`[BUILD]   Use dashboard or POST /api/build/start/${courseCode} to restart`);
 
-        // Clear agent and spawn fresh one
-        build.agent = null;
-        build.agentCount++;
-        build.batchStartSeed = progress.completed;
-        build.lastProgressTime = Date.now();
-        build.status = 'spawning';
-        build.agent = spawnBuildAgent(courseCode, build.agentCount, build.terminal);
-
-        console.log(`[BUILD]   Agent #${build.agentCount} spawned for ${courseCode}`);
+        // Mark as stalled but don't spawn
+        build.status = 'stalled';
+        build.stalledAt = Date.now();
+        // Keep build.agent reference for debugging
       }
 
     } catch (err) {
@@ -2783,6 +2919,17 @@ app.post('/api/seed/complete', async (req, res) => {
             methodology: METHODOLOGY_HINTS.phrases
           });
         }
+      } else if (!SKIP_VALIDATION) {
+        // NO PHRASES AT ALL - HARD REJECT
+        // Agent submitted LEGO with no build[], no use[], and no phrases[]
+        errors.push({
+          type: 'no_phrases',
+          message: `${legoId}: LEGO has NO PHRASES! Must include build[] + use[] arrays (see ralph-methodology.md)`,
+          lego_id: legoId,
+          hint: 'Each LEGO needs: build (4 phrases) + use (6 phrases with scores 1-9)',
+          methodology: METHODOLOGY_HINTS.build_use
+        });
+        console.log(`✗ ${legoId}: NO PHRASES - LEGO submitted without build/use/phrases arrays`);
       }
     }
 
@@ -3727,39 +3874,70 @@ app.get('/api/resume/:courseCode', async (req, res) => {
         : 'Pattern distribution looks healthy. Continue with varied sentence structures.'
     },
 
-    // Full methodology for self-recovery after compaction
+    // Full methodology for self-recovery after compaction - INLINE EXAMPLES, no external refs
     methodology: {
-      workflow: [
-        '1. READ ralph-methodology.md for BUILD/USE phrase format',
-        '2. Use next_seed.known_text exactly (do NOT invent or guess seeds)',
-        `3. Translate naturally to ${targetLangName}`,
-        '4. Decompose into LEGOs: A-type (single words), M-type (phrases with components)',
-        '5. Generate BUILD (4) + USE (6) phrases per LEGO with scores 1-9',
-        '6. POST to /api/seed/complete with {course_code, seed_number, target_text, legos}',
-        `7. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA approval`,
-        '8. If checkpoint.calibration_feedback exists, READ IT and adjust your scoring',
-        '9. Continue autonomously until all seeds complete',
-        '10. CHECK recency.patterns_to_avoid - do NOT use overused patterns!'
-      ],
-      lego_types: {
-        'A-type': 'Single meaningful word: {"type":"A","known":"speak","target":"说"}',
-        'M-type': 'Multi-word phrase with components + BUILD/USE arrays per ralph-methodology.md'
+      critical_concept: 'You are building a LEARNING EXPERIENCE. Each LEGO combines with PREVIOUS vocabulary to form phrases. LEGOs are SMALL pieces (2-4 words), not whole sentences.',
+      seed_decomposition_example: {
+        seed: 'I want to speak Chinese with you now',
+        legos: [
+          'L1 [M]: "I want" → "我想" (components: I→我, want→想)',
+          'L2 [A]: "to speak" → "说"',
+          'L3 [A]: "Chinese" → "中文"',
+          'L4 [M]: "with you" → "和你" (components: with→和, you→你)',
+          'L5 [A]: "now" → "现在"'
+        ],
+        note: 'Each LEGO generates BUILD + USE phrases using ONLY vocabulary from previous LEGOs'
       },
+      complete_lego_example: {
+        idx: 4,
+        type: 'M',
+        known: 'with you',
+        target: '和你',
+        components: [
+          { known: 'with', target: '和' },
+          { known: 'you', target: '你' }
+        ],
+        build: [
+          { known: 'with you', target: '和你' },
+          { known: 'speak with you', target: '和你说' },
+          { known: 'learn with you', target: '和你学' },
+          { known: 'speak Chinese with you', target: '和你说中文' }
+        ],
+        use: [
+          { known: 'I want to speak with you', target: '我想和你说', score: 7 },
+          { known: 'I want to learn Chinese with you', target: '我想和你学中文', score: 8 },
+          { known: 'I want to speak Chinese with you', target: '我想和你说中文', score: 8 },
+          { known: 'I want to speak Chinese with you now', target: '我现在想和你说中文', score: 8 },
+          { known: 'Do you want to speak Chinese with me?', target: '你想和我说中文吗?', score: 9 },
+          { known: 'I want to learn to speak Chinese with you', target: '我想和你学说中文', score: 8 }
+        ]
+      },
+      workflow: [
+        '1. Decompose next_seed into 3-6 SMALL LEGOs (not whole sentences!)',
+        '2. For EACH LEGO: generate BUILD (4) + USE (6) phrases',
+        '3. USE phrases must be complete sentences with scores 1-9',
+        '4. Phrases can only use THIS LEGO + vocabulary from PREVIOUS LEGOs',
+        '5. POST to /api/seed/complete with all legos',
+        `6. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA`,
+        '7. Continue autonomously until done'
+      ],
       phrase_requirements: {
-        format: 'BUILD/USE (see ralph-methodology.md)',
         build: '4 phrases: 2 SHORT (3-5 syl) + 2 MEDIUM (6-9 syl), fragments OK',
-        use: '6 phrases: 3 MEDIUM + 3 LONG (10+ syl), complete sentences, scored 1-9',
-        target: '10-13 phrases per LEGO',
-        tiers: 'Mix of SHORT (3-5 words), MEDIUM (6-9 words), LONG (10+ words)',
-        variety: 'CRITICAL: Avoid repetitive patterns. Each phrase should have unique structure.'
+        use: '6 phrases: 3 MEDIUM + 3 LONG (10+ syl), COMPLETE SENTENCES, scored 1-9'
+      },
+      scoring: {
+        '9': 'Native-natural both languages, high pedagogical value',
+        '7-8': 'Strong, minor stylistic preferences',
+        '5-6': 'Functional, correct but unremarkable',
+        '3-4': 'Awkward/textbook-ish',
+        '1-2': 'Low value',
+        '0': 'Grammar error - REWRITE'
       },
       rules: [
-        'ZUT: Phrases can only use vocabulary already introduced',
-        'Tiling: Seed must be reconstructable from LEGO targets',
+        'LEGOs are SMALL pieces (2-4 words) - never whole sentences',
+        'Phrases use ONLY this LEGO + previous vocabulary',
         'M-LEGOs MUST have components array',
-        'Trust API validation errors - they tell you exactly what to fix',
-        'PATTERN VARIETY: Do NOT repeat same sentence structures across phrases',
-        'REINFORCEMENT: Include vocabulary from recency.vocab_to_reinforce when possible'
+        'Trust API validation errors - they tell you exactly what to fix'
       ]
     }
   });
