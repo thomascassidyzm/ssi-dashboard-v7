@@ -295,6 +295,9 @@ async function proxyOrchestrator(req, res) {
 }
 
 app.all('/api/mission-control/*', proxyOrchestrator)
+app.get('/api/services', proxyOrchestrator)
+app.post('/api/services/:name/restart', proxyOrchestrator)
+app.get('/api/services/:name/logs', proxyOrchestrator)
 app.get('/api/languages', proxyOrchestrator)
 app.get('/api/courses', proxyOrchestrator)
 app.get('/api/stats/*', proxyOrchestrator)
