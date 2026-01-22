@@ -1,0 +1,99 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 301,
+  "known_text": "He said that he wants to show you something.",
+  "target_text": "그가 뭔가 보여주고 싶다고 말했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "something (casual)",
+      "target": "뭔가",
+      "phrases": [
+        {"known": "something", "target": "뭔가요"},
+        {"known": "something is", "target": "뭔가 있어요"},
+        {"known": "I need something", "target": "뭔가 필요해요"},
+        {"known": "something happened", "target": "뭔가 생겼어요"},
+        {"known": "I want to eat something", "target": "뭔가 먹고 싶어요"},
+        {"known": "something is different", "target": "뭔가 달라요"},
+        {"known": "I heard something strange", "target": "뭔가 이상한 것을 들었어요"},
+        {"known": "can you bring me something?", "target": "뭔가 가져다 줄 수 있어요?"},
+        {"known": "there's something I want to tell you", "target": "뭔가 말하고 싶은 것이 있어요"},
+        {"known": "I felt like something was wrong", "target": "뭔가 잘못된 것 같았어요"},
+        {"known": "I'm looking for something special for her", "target": "그녀를 위해 뭔가 특별한 것을 찾고 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "show (someone)",
+      "target": "보여주다",
+      "components": [
+        {"known": "see/show", "target": "보이다"},
+        {"known": "give", "target": "주다"}
+      ],
+      "phrases": [
+        {"known": "show", "target": "보여줘요"},
+        {"known": "I'll show you", "target": "보여줄게요"},
+        {"known": "show me", "target": "보여 주세요"},
+        {"known": "please show me", "target": "보여 주세요"},
+        {"known": "can you show me?", "target": "보여줄 수 있어요?"},
+        {"known": "I showed him the picture", "target": "그에게 사진을 보여줬어요"},
+        {"known": "let me show you something", "target": "뭔가 보여줄게요"},
+        {"known": "she showed me her new dress", "target": "그녀가 새 옷 보여줬어요"},
+        {"known": "I want to show you my work", "target": "제 작품 보여주고 싶어요"},
+        {"known": "can you show me how to do this?", "target": "어떻게 하는지 보여줄 수 있어요?"},
+        {"known": "he showed me around the office", "target": "그가 사무실을 보여줬어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "wants to show you something",
+      "target": "뭔가 보여주고 싶다",
+      "components": [
+        {"known": "something (casual)", "target": "뭔가"},
+        {"known": "show (someone)", "target": "보여주다"},
+        {"known": "want to", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "wants to", "target": "싶어해요"},
+        {"known": "show you", "target": "보여줄게요"},
+        {"known": "wants to show", "target": "보여주고 싶어요"},
+        {"known": "I want to show you", "target": "보여주고 싶어요"},
+        {"known": "I want to show you this", "target": "이거 보여주고 싶어요"},
+        {"known": "she wants to show me her photos", "target": "그녀가 사진 보여주고 싶어해요"},
+        {"known": "he wanted to show us his new car", "target": "그가 새 차 보여주고 싶어했어요"},
+        {"known": "I really want to show you my hometown", "target": "정말 제 고향 보여주고 싶어요"},
+        {"known": "my friend wants to show me something special", "target": "제 친구가 뭔가 특별한 것 보여주고 싶어해요"},
+        {"known": "I've been wanting to show you this place", "target": "이 장소 보여주고 싶었어요"},
+        {"known": "she wanted to show everyone her achievement", "target": "그녀가 모두에게 성과를 보여주고 싶어했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "he said that he wants to show you something",
+      "target": "그가 뭔가 보여주고 싶다고 말했어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "wants to show you something", "target": "뭔가 보여주고 싶다"},
+        {"known": "I said that", "target": "다고 말하다"}
+      ],
+      "phrases": [
+        {"known": "he said", "target": "그가 말했어요"},
+        {"known": "said that", "target": "다고 했어요"},
+        {"known": "he wants", "target": "그가 원해요"},
+        {"known": "wants to show", "target": "보여주고 싶어요"},
+        {"known": "he told me", "target": "그가 말해줬어요"},
+        {"known": "he said he wants to", "target": "그가 하고 싶다고 했어요"},
+        {"known": "she told me she wants to show me", "target": "그녀가 보여주고 싶다고 말했어요"},
+        {"known": "he mentioned he has something to show", "target": "그가 보여줄 것이 있다고 말했어요"},
+        {"known": "my friend said he wanted to show us his house", "target": "제 친구가 집 보여주고 싶다고 했어요"},
+        {"known": "she said she has something important to show me", "target": "그녀가 중요한 것 보여줄 게 있다고 했어요"},
+        {"known": "he explained that he wanted to demonstrate something", "target": "그가 뭔가 보여주고 싶다고 설명했어요"},
+        {"known": "my colleague told me he wants to show me the project", "target": "동료가 프로젝트 보여주고 싶다고 말했어요"}
+      ]
+    }
+  ]
+}

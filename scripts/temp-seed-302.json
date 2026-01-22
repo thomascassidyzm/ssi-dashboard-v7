@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 302,
+  "known_text": "She said that she doesn't want to live in a city.",
+  "target_text": "그녀가 도시에서 살고 싶지 않다고 말했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "in a city",
+      "target": "도시에서",
+      "components": [
+        {"known": "city", "target": "도시"},
+        {"known": "in/at (location)", "target": "에서"}
+      ],
+      "phrases": [
+        {"known": "city", "target": "도시요"},
+        {"known": "in the city", "target": "도시에서"},
+        {"known": "big city", "target": "큰 도시"},
+        {"known": "city life", "target": "도시 생활"},
+        {"known": "to the city", "target": "도시로요"},
+        {"known": "I live in a city", "target": "도시에서 살아요"},
+        {"known": "I work in the city", "target": "도시에서 일해요"},
+        {"known": "cities are busy", "target": "도시는 바빠요"},
+        {"known": "which city do you live in?", "target": "어느 도시에서 살아요?"},
+        {"known": "I grew up in a small city", "target": "작은 도시에서 자랐어요"},
+        {"known": "living in a big city is expensive", "target": "큰 도시에서 사는 것이 비싸요"},
+        {"known": "I prefer living in a quiet city", "target": "조용한 도시에서 사는 것을 더 좋아해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "doesn't want to live",
+      "target": "살고 싶지 않다",
+      "components": [
+        {"known": "live", "target": "살다"},
+        {"known": "not want to", "target": "고 싶지 않다"}
+      ],
+      "phrases": [
+        {"known": "live", "target": "살아요"},
+        {"known": "doesn't want", "target": "싶지 않아요"},
+        {"known": "want to live", "target": "살고 싶어요"},
+        {"known": "don't want to live", "target": "살고 싶지 않아요"},
+        {"known": "I don't want to live alone", "target": "혼자 살고 싶지 않아요"},
+        {"known": "I want to live in Korea", "target": "한국에서 살고 싶어요"},
+        {"known": "he doesn't want to live here", "target": "그가 여기 살고 싶지 않아요"},
+        {"known": "I want to live by the sea", "target": "바다 근처에서 살고 싶어요"},
+        {"known": "I don't want to live far from my parents", "target": "부모님에게서 멀리 살고 싶지 않아요"},
+        {"known": "my sister wants to live abroad", "target": "제 언니가 해외에서 살고 싶어해요"},
+        {"known": "I've always wanted to live in a quiet place", "target": "항상 조용한 곳에서 살고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she said that she doesn't want to live in a city",
+      "target": "그녀가 도시에서 살고 싶지 않다고 말했어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "in a city", "target": "도시에서"},
+        {"known": "doesn't want to live", "target": "살고 싶지 않다"},
+        {"known": "I said that", "target": "다고 말하다"}
+      ],
+      "phrases": [
+        {"known": "she said", "target": "말했어요"},
+        {"known": "she did", "target": "그녀가 했어요"},
+        {"known": "doesn't want", "target": "싶지 않다고"},
+        {"known": "she told me", "target": "그녀가 말해줬어요"},
+        {"known": "she mentioned", "target": "그녀가 언급했어요"},
+        {"known": "she doesn't want to", "target": "그녀가 하고 싶지 않아요"},
+        {"known": "she told me she prefers the countryside", "target": "그녀가 시골을 더 좋아한다고 말했어요"},
+        {"known": "he explained why he doesn't want to move", "target": "그가 왜 이사하고 싶지 않은지 설명했어요"},
+        {"known": "my friend mentioned she wants to live abroad", "target": "제 친구가 해외에서 살고 싶다고 말했어요"},
+        {"known": "my mother once told me she wanted to live by the ocean", "target": "어머니가 바다 근처에서 살고 싶다고 말한 적 있어요"},
+        {"known": "he explained that city life is too stressful", "target": "그가 도시 생활이 너무 힘들다고 설명했어요"},
+        {"known": "she admitted that she doesn't enjoy city life", "target": "그녀가 도시 생활을 즐기지 않는다고 인정했어요"}
+      ]
+    }
+  ]
+}

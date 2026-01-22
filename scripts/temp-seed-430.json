@@ -1,0 +1,56 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 430,
+  "known_text": "No that wouldn't be possible.",
+  "target_text": "아니요, 그건 불가능해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that wouldn't be possible",
+      "target": "그건 불가능하다",
+      "components": [
+        {"known": "that (topic)", "target": "그건"},
+        {"known": "impossible", "target": "불가능하다"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "그건요"},
+        {"known": "impossible", "target": "불가능해요"},
+        {"known": "it's not possible", "target": "불가능해요"},
+        {"known": "that's impossible", "target": "그건 불가능해요"},
+        {"known": "it seems impossible", "target": "불가능해 보여요"},
+        {"known": "nothing is impossible", "target": "불가능한 게 없어요"},
+        {"known": "she thought it was impossible", "target": "그녀가 불가능하다고 생각했어요"},
+        {"known": "that would be difficult to do", "target": "그건 하기 어려울 거예요"},
+        {"known": "he said it was impossible to finish", "target": "그가 끝내기 불가능하다고 했어요"},
+        {"known": "I didn't think it was possible before", "target": "전에는 가능하다고 생각 안 했어요"},
+        {"known": "achieving that goal seemed impossible", "target": "그 목표를 달성하는 게 불가능해 보였어요"},
+        {"known": "she proved that it wasn't impossible after all", "target": "그녀가 결국 불가능하지 않다는 걸 증명했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "no that wouldn't be possible",
+      "target": "아니요 그건 불가능해요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "that wouldn't be possible", "target": "그건 불가능하다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "no way", "target": "안 돼요"},
+        {"known": "not possible", "target": "안 될 거예요"},
+        {"known": "no that's not right", "target": "아니요 안 맞아요"},
+        {"known": "no we can't do that", "target": "아니요 못 해요"},
+        {"known": "no she can't come today", "target": "아니요 그녀가 오늘 못 와요"},
+        {"known": "no that option won't work", "target": "아니요 그건 안 될 거예요"},
+        {"known": "no he couldn't finish in time", "target": "아니요 그가 제시간에 못 끝냈어요"},
+        {"known": "no that schedule isn't feasible", "target": "아니요 그 일정은 무리예요"},
+        {"known": "no unfortunately that won't be possible", "target": "아니요 안타깝지만 안 될 거예요"},
+        {"known": "no I don't think we can manage that", "target": "아니요 그건 못할 것 같아요"},
+        {"known": "no that request is beyond what we can do", "target": "아니요 그 요청은 우리가 할 수 있는 거 이상이에요"}
+      ]
+    }
+  ]
+}

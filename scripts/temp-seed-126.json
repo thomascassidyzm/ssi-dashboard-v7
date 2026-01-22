@@ -1,81 +1,107 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 126,
   "known_text": "This work is changing the shape of my brain.",
-  "target_text": "この仕事が脳の形を変えています。",
+  "target_text": "이 작업이 제 뇌의 모양을 바꾸고 있어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "this work (subject)",
-      "target": "この仕事が",
-      "components": [
-        {"known": "this", "target": "この"},
-        {"known": "work (subject)", "target": "仕事が"}
-      ],
+      "type": "A",
+      "known": "work/task",
+      "target": "작업",
       "phrases": [
-        {"known": "this", "target": "この"},
-        {"known": "work", "target": "仕事"},
-        {"known": "this work", "target": "この仕事"},
-        {"known": "work (subject)", "target": "仕事が"},
-        {"known": "this work is", "target": "この仕事が"},
-        {"known": "this work is good", "target": "この仕事がいい"},
-        {"known": "this work is interesting", "target": "この仕事が面白いです"},
-        {"known": "this work went well yesterday", "target": "この仕事が昨日うまくいきました"},
-        {"known": "this work is more interesting than before", "target": "この仕事が前より面白いです"},
-        {"known": "this work is becoming easier to do now", "target": "この仕事が今簡単になってきています"},
-        {"known": "this work was a very good idea to start", "target": "この仕事を始めるのはとてもいい考えでした"},
-        {"known": "this work is helping me understand things better", "target": "この仕事が分かるのに役立っています"}
+        {"known": "work", "target": "작업"},
+        {"known": "a task", "target": "작업이"},
+        {"known": "this work", "target": "이 작업"},
+        {"known": "the work", "target": "그 작업"},
+        {"known": "this work is good", "target": "이 작업이 좋아요"},
+        {"known": "I have work to do", "target": "할 작업이 있어요"},
+        {"known": "work is okay now", "target": "이제 작업이 괜찮아요"},
+        {"known": "the work is really short again", "target": "다시 작업이 정말 짧아요"},
+        {"known": "this work is already okay and I agree", "target": "이 작업이 이미 괜찮고 동의해요"},
+        {"known": "unfortunately the work is not going well yet", "target": "안타깝게도 아직 작업이 잘 되지 않아요"}
       ]
     },
     {
       "idx": 2,
-      "type": "M",
-      "known": "the shape of the brain",
-      "target": "脳の形を",
-      "components": [
-        {"known": "brain's", "target": "脳の"},
-        {"known": "shape (object)", "target": "形を"}
-      ],
+      "type": "A",
+      "known": "shape",
+      "target": "모양",
       "phrases": [
-        {"known": "brain", "target": "脳"},
-        {"known": "shape", "target": "形"},
-        {"known": "brain's", "target": "脳の"},
-        {"known": "shape of", "target": "形を"},
-        {"known": "brain's shape", "target": "脳の形"},
-        {"known": "the brain's shape", "target": "脳の形を"},
-        {"known": "her brain's shape", "target": "彼女の脳の形"},
-        {"known": "the shape of our brains", "target": "私たちの脳の形"},
-        {"known": "her brain's shape changed", "target": "彼女の脳の形が変わりました"},
-        {"known": "the shape of our brains is interesting", "target": "私たちの脳の形は面白いです"},
-        {"known": "conversations change the shape of our brains", "target": "会話は脳の形を変えます"},
-        {"known": "I believe the shape of my brain changed yesterday", "target": "昨日私の脳の形が変わったと信じています"},
-        {"known": "my friend said the shape of her brain changed from learning", "target": "友達は学ぶことから脳の形が変わったと言いました"},
-        {"known": "the shape of the brain can change when we learn something new", "target": "新しいことを学ぶと脳の形が変わることができます"}
+        {"known": "shape", "target": "모양"},
+        {"known": "the shape", "target": "그 모양"},
+        {"known": "this shape", "target": "이 모양"},
+        {"known": "a good shape", "target": "좋은 모양"},
+        {"known": "the shape is good", "target": "모양이 좋아요"},
+        {"known": "I like the shape now", "target": "이제 모양을 좋아해요"},
+        {"known": "this shape is really good", "target": "이 모양이 정말 좋아요"},
+        {"known": "do you already understand the shape clearly?", "target": "이미 모양을 확실히 이해해요?"},
+        {"known": "unfortunately I don't like that shape at all", "target": "안타깝게도 그 모양을 전혀 좋아하지 않아요"},
+        {"known": "I believe the shape is slowly changing again now", "target": "모양이 다시 이제 천천히 바뀌고 있다고 믿어요"}
       ]
     },
     {
       "idx": 3,
+      "type": "A",
+      "known": "brain",
+      "target": "뇌",
+      "phrases": [
+        {"known": "brain", "target": "뇌"},
+        {"known": "my brain", "target": "제 뇌"},
+        {"known": "the brain", "target": "그 뇌"},
+        {"known": "your brain", "target": "당신의 뇌"},
+        {"known": "my brain is okay", "target": "제 뇌가 괜찮아요"},
+        {"known": "the brain is good now", "target": "이제 뇌가 좋아요"},
+        {"known": "I understand my brain now", "target": "이제 제 뇌를 이해해요"},
+        {"known": "the shape of my brain is really good", "target": "제 뇌의 모양이 정말 좋아요"},
+        {"known": "my brain is already changing slowly again now", "target": "다시 이제 제 뇌가 이미 천천히 바뀌고 있어요"},
+        {"known": "unfortunately I don't understand my brain yet at all", "target": "안타깝게도 아직 제 뇌를 전혀 이해하지 못해요"}
+      ]
+    },
+    {
+      "idx": 4,
       "type": "M",
       "known": "is changing",
-      "target": "変えています",
+      "target": "바꾸고 있다",
       "components": [
-        {"known": "change", "target": "変え"},
-        {"known": "is doing (continuous)", "target": "ています"}
+        {"known": "change", "target": "바꾸다"},
+        {"known": "is ~ing (progressive)", "target": "-고 있다"}
       ],
       "phrases": [
-        {"known": "change", "target": "変える"},
-        {"known": "changing", "target": "変えて"},
-        {"known": "is changing", "target": "変えています"},
-        {"known": "was changing", "target": "変えていました"},
-        {"known": "not changing", "target": "変えていない"},
-        {"known": "is not changing", "target": "変えていません"},
-        {"known": "it is changing my idea", "target": "私の考えを変えています"},
-        {"known": "this is changing things", "target": "これが変えています"},
-        {"known": "this conversation is changing my brain", "target": "この会話は脳を変えています"},
-        {"known": "learning is changing how we think", "target": "学ぶことは考え方を変えています"},
-        {"known": "the work we did yesterday is changing everything", "target": "昨日した仕事は全てを変えています"},
-        {"known": "what we learned today is definitely changing our brains", "target": "今日学んだことは確実に脳を変えています"}
+        {"known": "change", "target": "바꾸다"},
+        {"known": "changing", "target": "바꾸고"},
+        {"known": "is changing", "target": "바꾸고 있어요"},
+        {"known": "I'm changing it", "target": "바꾸고 있어요"},
+        {"known": "it's changing", "target": "바뀌고 있어요"},
+        {"known": "it's not changing yet", "target": "아직 바뀌지 않아요"},
+        {"known": "I'm changing it again slowly", "target": "다시 천천히 바꾸고 있어요"},
+        {"known": "this is already changing slowly", "target": "이미 이게 천천히 바뀌고 있어요"},
+        {"known": "I believe it's really changing now again", "target": "다시 이제 정말 바뀌고 있다고 믿어요"},
+        {"known": "unfortunately it's still not changing at all yet", "target": "안타깝게도 아직도 아직 전혀 바뀌지 않아요"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "This work is changing the shape of my brain",
+      "target": "이 작업이 제 뇌의 모양을 바꾸고 있어요",
+      "components": [
+        {"known": "this work", "target": "이 작업이"},
+        {"known": "my brain's", "target": "제 뇌의"},
+        {"known": "shape", "target": "모양을"},
+        {"known": "is changing", "target": "바꾸고 있다"}
+      ],
+      "phrases": [
+        {"known": "this work", "target": "이 작업이"},
+        {"known": "my brain", "target": "제 뇌의"},
+        {"known": "the shape", "target": "모양을"},
+        {"known": "is changing now", "target": "바꾸고 있어요"},
+        {"known": "this work is good", "target": "이 작업이 좋아요"},
+        {"known": "this work is changing it", "target": "이 작업이 그걸 바꾸고 있어요"},
+        {"known": "this work is changing the shape", "target": "이 작업이 모양을 바꾸고 있어요"},
+        {"known": "this work is changing the shape of my brain", "target": "이 작업이 제 뇌의 모양을 바꾸고 있어요"},
+        {"known": "I believe this work is changing my brain slowly", "target": "이 작업이 천천히 제 뇌를 바꾸고 있다고 믿어요"},
+        {"known": "I believe this work is really changing the shape of my brain", "target": "이 작업이 정말 제 뇌의 모양을 바꾸고 있다고 믿어요"}
       ]
     }
   ]

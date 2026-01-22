@@ -1,56 +1,74 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 218,
   "known_text": "I didn't do much on Sunday.",
-  "target_text": "日曜日はあまり何もしませんでした。",
+  "target_text": "일요일에는 별로 안 했어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "on Sunday",
-      "target": "日曜日は",
-      "components": [
-        {"known": "Sunday", "target": "日曜日"},
-        {"known": "topic marker", "target": "は"}
-      ],
+      "type": "A",
+      "known": "Sunday",
+      "target": "일요일",
       "phrases": [
-        {"known": "Sunday", "target": "日曜日"},
-        {"known": "on Sunday", "target": "日曜日は"},
-        {"known": "every Sunday", "target": "日曜日に"},
-        {"known": "this Sunday", "target": "今週の日曜日"},
-        {"known": "last Sunday", "target": "先週の日曜日"},
-        {"known": "next Sunday", "target": "来週の日曜日"},
-        {"known": "Sunday was nice", "target": "日曜日はよかったです"},
-        {"known": "on Sunday I went out", "target": "日曜日に出かけました"},
-        {"known": "I met friends on Sunday", "target": "日曜日に友達に会いました"},
-        {"known": "on Sunday I saw some friends", "target": "日曜日に何人かの友達に会いました"},
-        {"known": "on Sunday we gathered together as a group", "target": "日曜日にグループとして集まりました"},
-        {"known": "I went out on Saturday but stayed home on Sunday", "target": "土曜日は出かけましたが日曜日は家にいました"}
+        {"known": "Sunday", "target": "일요일"},
+        {"known": "on Sunday", "target": "일요일에"},
+        {"known": "this Sunday", "target": "이번 일요일"},
+        {"known": "last Sunday", "target": "지난 일요일"},
+        {"known": "next Sunday", "target": "다음 일요일"},
+        {"known": "every Sunday", "target": "매주 일요일"},
+        {"known": "as for Sunday", "target": "일요일에는"},
+        {"known": "Sunday morning", "target": "일요일 아침"},
+        {"known": "Are you free on Sunday?", "target": "일요일에 시간 있어요?"},
+        {"known": "We went to the park last Sunday", "target": "지난 일요일에 공원에 갔어요"},
+        {"known": "She usually rests on Sunday morning", "target": "그녀는 보통 일요일 아침에 쉬어요"},
+        {"known": "As for this Sunday, we have plans", "target": "이번 일요일에는 계획이 있어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "I didn't do much",
-      "target": "あまり何もしませんでした",
+      "known": "didn't do much",
+      "target": "별로 안 하다",
       "components": [
-        {"known": "not much", "target": "あまり"},
-        {"known": "nothing/anything", "target": "何も"},
-        {"known": "didn't do", "target": "しませんでした"}
+        {"known": "not much / not really", "target": "별로"},
+        {"known": "not", "target": "안"},
+        {"known": "do", "target": "하다"}
       ],
       "phrases": [
-        {"known": "much", "target": "あまり"},
-        {"known": "nothing", "target": "何も"},
-        {"known": "didn't do", "target": "しなかった"},
-        {"known": "nothing happened", "target": "何もなかった"},
-        {"known": "I didn't do", "target": "しませんでした"},
-        {"known": "I didn't do much", "target": "あまり何もしませんでした"},
-        {"known": "not much happened", "target": "あまり何もなかったです"},
-        {"known": "I didn't talk much", "target": "あまり話しませんでした"},
-        {"known": "I didn't do much yesterday", "target": "昨日あまり何もしませんでした"},
-        {"known": "I didn't do much at the weekend", "target": "週末はあまり何もしませんでした"},
-        {"known": "I didn't do much because I was tired", "target": "疲れていたのであまり何もしませんでした"},
-        {"known": "we didn't do much on Sunday because it was difficult", "target": "難しかったので日曜日はあまり何もしませんでした"}
+        {"known": "not much", "target": "별로"},
+        {"known": "not", "target": "안"},
+        {"known": "do", "target": "하다"},
+        {"known": "didn't do", "target": "안 했어요"},
+        {"known": "not really", "target": "별로요"},
+        {"known": "not much done", "target": "별로 안 했어요"},
+        {"known": "didn't eat much", "target": "별로 안 먹었어요"},
+        {"known": "didn't sleep much", "target": "별로 안 잤어요"},
+        {"known": "She didn't talk much", "target": "그녀는 별로 안 말했어요"},
+        {"known": "He didn't drink much water today", "target": "오늘 물을 별로 안 마셨어요"},
+        {"known": "We didn't do much work this week", "target": "이번 주에 일을 별로 안 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I didn't do much on Sunday",
+      "target": "일요일에는 별로 안 했어요",
+      "components": [
+        {"known": "as for Sunday", "target": "일요일에는"},
+        {"known": "not much", "target": "별로"},
+        {"known": "didn't do", "target": "안 했어요"}
+      ],
+      "phrases": [
+        {"known": "as for Sunday", "target": "일요일에는"},
+        {"known": "not much", "target": "별로"},
+        {"known": "didn't do", "target": "안 했어요"},
+        {"known": "on Sunday morning", "target": "일요일 아침에"},
+        {"known": "didn't do much", "target": "별로 안 했어요"},
+        {"known": "I didn't do much on Sunday", "target": "일요일에는 별로 안 했어요"},
+        {"known": "I didn't do much on Saturday", "target": "토요일에는 별로 안 했어요"},
+        {"known": "As for the office, I didn't do much", "target": "사무실에서는 별로 안 했어요"},
+        {"known": "We didn't do much on Sunday morning", "target": "일요일 아침에는 별로 안 했어요"},
+        {"known": "As for last weekend, he didn't do much at home", "target": "지난 주말에는 집에서 별로 안 했어요"}
       ]
     }
   ]

@@ -1,0 +1,75 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 290,
+  "known_text": "I wonder if he knows the answer.",
+  "target_text": "그가 답을 아는지 궁금해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "answer",
+      "target": "답",
+      "phrases": [
+        {"known": "answer", "target": "답이요"},
+        {"known": "the answer", "target": "답이에요"},
+        {"known": "wrong answer", "target": "틀린 답"},
+        {"known": "right answer", "target": "맞는 답"},
+        {"known": "I know the answer", "target": "답 알아요"},
+        {"known": "what's the answer?", "target": "답이 뭐예요?"},
+        {"known": "the answer is simple", "target": "답이 간단해요"},
+        {"known": "I don't know the answer yet", "target": "아직 답 몰라요"},
+        {"known": "please tell me the answer", "target": "답 말해 주세요"},
+        {"known": "the answer was surprising", "target": "답이 놀라웠어요"},
+        {"known": "I finally figured out the answer", "target": "드디어 답을 알았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "know the answer",
+      "target": "답을 알다",
+      "components": [
+        {"known": "answer (object)", "target": "답을"},
+        {"known": "know", "target": "알다"}
+      ],
+      "phrases": [
+        {"known": "know", "target": "알아요"},
+        {"known": "knows it", "target": "알아요"},
+        {"known": "knows the answer", "target": "답을 알아요"},
+        {"known": "I know the answer", "target": "답 알아요"},
+        {"known": "he knows it", "target": "그가 알아요"},
+        {"known": "do you know the answer?", "target": "답 알아요?"},
+        {"known": "who knows the answer?", "target": "누가 답 알아요?"},
+        {"known": "she knew the answer immediately", "target": "그녀가 바로 답을 알았어요"},
+        {"known": "I didn't know the correct answer", "target": "정확한 답을 몰랐어요"},
+        {"known": "nobody knows the answer yet", "target": "아직 아무도 답 몰라요"},
+        {"known": "my teacher always knows the answers", "target": "제 선생님이 항상 답을 알아요"},
+        {"known": "he finally figured out the correct answer", "target": "그가 드디어 정확한 답을 알았어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I wonder if he knows the answer",
+      "target": "그가 답을 아는지 궁금해요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "know the answer", "target": "답을 알다"},
+        {"known": "I wonder if", "target": "지 궁금하다"}
+      ],
+      "phrases": [
+        {"known": "he?", "target": "그가요?"},
+        {"known": "I wonder", "target": "궁금해요"},
+        {"known": "does he know?", "target": "그가 알아요?"},
+        {"known": "I wonder if he knows", "target": "그가 아는지 궁금해요"},
+        {"known": "I wonder who knows", "target": "누가 아는지 궁금해요"},
+        {"known": "I was curious if you knew", "target": "아는지 궁금했어요"},
+        {"known": "I wonder if she found out", "target": "그녀가 알았는지 궁금해요"},
+        {"known": "I'm curious if anyone knows the truth", "target": "누가 진실을 아는지 궁금해요"},
+        {"known": "I wonder if my friend knows about this", "target": "제 친구가 이것에 대해 아는지 궁금해요"},
+        {"known": "I was wondering if the teacher knew", "target": "선생님이 아시는지 궁금했어요"},
+        {"known": "I'm curious whether they figured it out", "target": "그들이 알았는지 궁금해요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 242,
+  "known_text": "I want to give her more time.",
+  "target_text": "그녀에게 시간을 더 주고 싶어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "more",
+      "target": "더",
+      "phrases": [
+        {"known": "more", "target": "더"},
+        {"known": "more please", "target": "더 주세요"},
+        {"known": "a little more", "target": "조금 더"},
+        {"known": "I want more", "target": "더 원해요"},
+        {"known": "learn more", "target": "더 배워요"},
+        {"known": "she needs more", "target": "그녀가 더 필요해요"},
+        {"known": "can you do more?", "target": "더 할 수 있어요?"},
+        {"known": "I studied more yesterday", "target": "어제 더 공부했어요"},
+        {"known": "my friend wants to learn more Korean", "target": "제 친구가 한국어를 더 배우고 싶어해요"},
+        {"known": "he helped me more than she did", "target": "그가 그녀보다 더 도와줬어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "more time",
+      "target": "시간을 더",
+      "components": [
+        {"known": "time", "target": "시간"},
+        {"known": "more", "target": "더"}
+      ],
+      "phrases": [
+        {"known": "time", "target": "시간이"},
+        {"known": "a bit more", "target": "조금 더"},
+        {"known": "more time", "target": "시간을 더"},
+        {"known": "need time", "target": "시간이 필요해요"},
+        {"known": "have time", "target": "시간이 있어요"},
+        {"known": "give more time", "target": "시간을 더 줘요"},
+        {"known": "I need more time", "target": "시간이 더 필요해요"},
+        {"known": "she doesn't have time", "target": "그녀가 시간이 없어요"},
+        {"known": "do you have more time?", "target": "시간이 더 있어요?"},
+        {"known": "I want to spend more time here", "target": "여기서 시간을 더 보내고 싶어요"},
+        {"known": "my friend needs more time to learn", "target": "제 친구가 배우는 데 시간이 더 필요해요"},
+        {"known": "she said she needs more time to think", "target": "그녀가 생각하는 데 시간이 더 필요하다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "give her",
+      "target": "그녀에게 주다",
+      "components": [
+        {"known": "to her", "target": "그녀에게"},
+        {"known": "give", "target": "주다"}
+      ],
+      "phrases": [
+        {"known": "give", "target": "줘요"},
+        {"known": "to her", "target": "그녀에게"},
+        {"known": "gave", "target": "줬어요"},
+        {"known": "give her", "target": "그녀에게 줘요"},
+        {"known": "gave her", "target": "그녀에게 줬어요"},
+        {"known": "give her this", "target": "그녀에게 이것을 줘요"},
+        {"known": "I gave her money", "target": "그녀에게 돈을 줬어요"},
+        {"known": "she gave me help", "target": "그녀가 저에게 도움을 줬어요"},
+        {"known": "my friend gave her a book", "target": "제 친구가 그녀에게 책을 줬어요"},
+        {"known": "I want to give her something good", "target": "그녀에게 좋은 것을 주고 싶어요"},
+        {"known": "he didn't want to give her the answer", "target": "그가 그녀에게 답을 주고 싶지 않았어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I want to give her more time",
+      "target": "그녀에게 시간을 더 주고 싶어요",
+      "components": [
+        {"known": "more time", "target": "시간을 더"},
+        {"known": "give her", "target": "그녀에게 주다"}
+      ],
+      "phrases": [
+        {"known": "to her", "target": "그녀에게"},
+        {"known": "more time", "target": "시간을 더"},
+        {"known": "give time", "target": "시간을 줘요"},
+        {"known": "want to give", "target": "주고 싶어요"},
+        {"known": "give her time", "target": "그녀에게 시간을 줘요"},
+        {"known": "I want to give more", "target": "더 주고 싶어요"},
+        {"known": "she wants more time", "target": "그녀가 시간을 더 원해요"},
+        {"known": "he gave her more time yesterday", "target": "그가 어제 그녀에게 시간을 더 줬어요"},
+        {"known": "I don't want to give her more time", "target": "그녀에게 시간을 더 주고 싶지 않아요"},
+        {"known": "my friend wants to give her more help", "target": "제 친구가 그녀에게 도움을 더 주고 싶어해요"}
+      ]
+    }
+  ]
+}

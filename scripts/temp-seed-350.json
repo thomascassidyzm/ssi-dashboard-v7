@@ -1,0 +1,62 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 350,
+  "known_text": "Yes he wanted to see some old friends.",
+  "target_text": "네, 그가 옛 친구들을 보고 싶어했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "some old friends",
+      "target": "옛 친구들",
+      "components": [
+        {"known": "old/former", "target": "옛"},
+        {"known": "friends", "target": "친구들"}
+      ],
+      "phrases": [
+        {"known": "friends", "target": "친구들이요"},
+        {"known": "old", "target": "옛날이요"},
+        {"known": "old friend", "target": "옛 친구요"},
+        {"known": "old friends", "target": "옛 친구들"},
+        {"known": "with friends", "target": "친구들이랑요"},
+        {"known": "good old friends", "target": "좋은 옛 친구들"},
+        {"known": "my old friends", "target": "제 옛 친구들"},
+        {"known": "I miss my old friends", "target": "옛 친구들이 보고 싶어요"},
+        {"known": "she met some old friends", "target": "그녀가 옛 친구들을 만났어요"},
+        {"known": "we're meeting old friends today", "target": "오늘 옛 친구들을 만나요"},
+        {"known": "I haven't seen my old friends in years", "target": "몇 년 동안 옛 친구들을 못 봤어요"},
+        {"known": "he was happy to see his old friends", "target": "그가 옛 친구들을 봐서 기뻤어요"},
+        {"known": "we talked about the old days with old friends", "target": "옛 친구들과 옛날 이야기를 했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes he wanted to see some old friends",
+      "target": "네 그가 옛 친구들을 보고 싶어했어요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "he", "target": "그가"},
+        {"known": "some old friends", "target": "옛 친구들"},
+        {"known": "object marker", "target": "을"},
+        {"known": "wanted to see", "target": "보고 싶어하다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "wanted to", "target": "싶었어요"},
+        {"known": "to see", "target": "보고요"},
+        {"known": "he wanted", "target": "그가 원했어요"},
+        {"known": "wanted to see", "target": "보고 싶었어요"},
+        {"known": "yes he wanted to", "target": "네 그가 원했어요"},
+        {"known": "he wanted to see them", "target": "그가 그들을 보고 싶어했어요"},
+        {"known": "yes she wanted to meet", "target": "네 그녀가 만나고 싶어했어요"},
+        {"known": "yes he wanted to visit his parents", "target": "네 그가 부모님을 보고 싶어했어요"},
+        {"known": "she wanted to see her family again", "target": "그녀가 가족을 다시 보고 싶어했어요"},
+        {"known": "yes I wanted to talk to him", "target": "네 그한테 말하고 싶었어요"},
+        {"known": "yes he really wanted to see his old teacher", "target": "네 그가 정말 옛 선생님을 보고 싶어했어요"},
+        {"known": "he wanted to see everyone from school", "target": "그가 학교에서 다 보고 싶어했어요"},
+        {"known": "yes he wanted to catch up with his old colleagues", "target": "네 그가 옛 동료들과 얘기하고 싶어했어요"}
+      ]
+    }
+  ]
+}

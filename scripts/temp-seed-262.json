@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 262,
+  "known_text": "Who was that man you were talking to yesterday?",
+  "target_text": "어제 얘기하고 있던 그 남자가 누구예요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "was talking",
+      "target": "얘기하고 있던",
+      "components": [
+        {"known": "talk", "target": "얘기하다"},
+        {"known": "progressive past", "target": "고 있던"}
+      ],
+      "phrases": [
+        {"known": "talk", "target": "얘기해요"},
+        {"known": "talking", "target": "얘기 중"},
+        {"known": "I'm talking", "target": "얘기하고 있어요"},
+        {"known": "was talking", "target": "얘기하고 있었어요"},
+        {"known": "I was talking", "target": "얘기하고 있었어요"},
+        {"known": "the person who was talking", "target": "얘기하고 있던 사람"},
+        {"known": "while talking", "target": "얘기하고 있을 때"},
+        {"known": "she was talking to him", "target": "그녀가 그와 얘기하고 있었어요"},
+        {"known": "who were you talking to?", "target": "누구랑 얘기하고 있었어요?"},
+        {"known": "I saw someone who was talking", "target": "얘기하고 있던 사람을 봤어요"},
+        {"known": "the person I was talking to left", "target": "얘기하고 있던 사람이 갔어요"},
+        {"known": "I was talking to my friend yesterday", "target": "어제 친구랑 얘기하고 있었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that man you were talking to",
+      "target": "얘기하고 있던 그 남자",
+      "components": [
+        {"known": "was talking", "target": "얘기하고 있던"},
+        {"known": "that", "target": "그"},
+        {"known": "man", "target": "남자"}
+      ],
+      "phrases": [
+        {"known": "man", "target": "남자요"},
+        {"known": "that man", "target": "그 남자요"},
+        {"known": "the man", "target": "그 남자예요"},
+        {"known": "a man", "target": "남자 한 명"},
+        {"known": "that person", "target": "그 사람이요"},
+        {"known": "the man over there", "target": "저기 그 남자요"},
+        {"known": "the man I saw", "target": "본 남자예요"},
+        {"known": "that man is my friend", "target": "그 남자가 제 친구예요"},
+        {"known": "who is that man?", "target": "그 남자가 누구예요?"},
+        {"known": "the man who was talking to her", "target": "그녀랑 얘기하고 있던 남자"},
+        {"known": "do you know that man?", "target": "그 남자를 알아요?"},
+        {"known": "that man came to see me yesterday", "target": "그 남자가 어제 저를 보러 왔어요"},
+        {"known": "I want to meet that man again", "target": "그 남자를 다시 만나고 싶어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "who was that man you were talking to yesterday",
+      "target": "어제 얘기하고 있던 그 남자가 누구예요",
+      "components": [
+        {"known": "yesterday", "target": "어제"},
+        {"known": "that man you were talking to", "target": "얘기하고 있던 그 남자"},
+        {"known": "who", "target": "누구"}
+      ],
+      "phrases": [
+        {"known": "who?", "target": "누구요?"},
+        {"known": "yesterday", "target": "어제요"},
+        {"known": "who is it?", "target": "누구예요?"},
+        {"known": "who is that?", "target": "저게 누구예요?"},
+        {"known": "who did you meet?", "target": "누구 만났어요?"},
+        {"known": "who's that man?", "target": "그 남자가 누구예요?"},
+        {"known": "who came yesterday?", "target": "어제 누가 왔어요?"},
+        {"known": "the person from yesterday", "target": "어제 그 사람이요"},
+        {"known": "who did you talk to yesterday?", "target": "어제 누구랑 얘기했어요?"},
+        {"known": "the man from yesterday was here again", "target": "어제 그 남자가 또 왔어요"},
+        {"known": "who was the man she was talking to?", "target": "그녀가 얘기하고 있던 남자가 누구예요?"}
+      ]
+    }
+  ]
+}

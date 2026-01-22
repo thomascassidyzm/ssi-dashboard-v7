@@ -1,0 +1,95 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 205,
+  "known_text": "I've forgotten the word I was trying to say.",
+  "target_text": "말하려고 했던 단어를 잊어버렸어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "word",
+      "target": "단어",
+      "phrases": [
+        {"known": "a word", "target": "단어"},
+        {"known": "this word", "target": "이 단어"},
+        {"known": "that word", "target": "그 단어"},
+        {"known": "Korean word", "target": "한국어 단어"},
+        {"known": "new word", "target": "새 단어"},
+        {"known": "difficult word", "target": "어려운 단어"},
+        {"known": "what is that word?", "target": "그 단어가 뭐예요?"},
+        {"known": "I learned a new word", "target": "새 단어를 배웠어요"},
+        {"known": "the teacher taught us a word", "target": "선생님이 단어를 가르쳐줬어요"},
+        {"known": "my daughter asked about that word", "target": "제 딸이 그 단어에 대해 물었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I was trying to say",
+      "target": "말하려고 했던",
+      "components": [
+        {"known": "say/speak", "target": "말하다"},
+        {"known": "was trying to", "target": "려고 했던"}
+      ],
+      "phrases": [
+        {"known": "say it", "target": "말해요"},
+        {"known": "I said", "target": "말했어요"},
+        {"known": "trying to say", "target": "말하려고"},
+        {"known": "what I was trying to say", "target": "말하려고 했던 것"},
+        {"known": "I was trying to speak", "target": "말하려고 했어요"},
+        {"known": "the thing she was trying to say", "target": "그녀가 말하려고 했던 것"},
+        {"known": "I was trying to say something", "target": "뭔가 말하려고 했어요"},
+        {"known": "what were you trying to say?", "target": "뭐 말하려고 했어요?"},
+        {"known": "the question I was trying to ask", "target": "질문하려고 했던 것"},
+        {"known": "what my son was trying to say was important", "target": "제 아들이 말하려고 했던 것은 중요했어요"},
+        {"known": "the word she was trying to say at the office", "target": "그녀가 사무실에서 말하려고 했던 단어"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "have forgotten",
+      "target": "잊어버렸다",
+      "components": [
+        {"known": "forget", "target": "잊다"},
+        {"known": "completely (past)", "target": "어버렸다"}
+      ],
+      "phrases": [
+        {"known": "forgot", "target": "잊었어요"},
+        {"known": "forgotten", "target": "잊었어"},
+        {"known": "I forgot", "target": "잊어버렸어요"},
+        {"known": "forgotten", "target": "잊어버렸어요"},
+        {"known": "she forgot", "target": "그녀가 잊었어요"},
+        {"known": "completely forgot", "target": "완전히 잊어버렸어요"},
+        {"known": "I forgot the question", "target": "질문을 잊어버렸어요"},
+        {"known": "my friend forgot the time", "target": "제 친구가 시간을 잊어버렸어요"},
+        {"known": "have you forgotten?", "target": "잊어버렸어요?"},
+        {"known": "the teacher forgot what happened", "target": "선생님이 무슨 일이 있었는지 잊어버렸어요"},
+        {"known": "I completely forgot what she said", "target": "그녀가 말한 것을 완전히 잊어버렸어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I've forgotten the word I was trying to say",
+      "target": "말하려고 했던 단어를 잊어버렸어요",
+      "components": [
+        {"known": "word", "target": "단어"},
+        {"known": "I was trying to say", "target": "말하려고 했던"},
+        {"known": "have forgotten", "target": "잊어버렸다"}
+      ],
+      "phrases": [
+        {"known": "forgot", "target": "잊어버렸어요"},
+        {"known": "the word", "target": "단어를"},
+        {"known": "trying to say", "target": "말하려고"},
+        {"known": "I forgot a word", "target": "단어를 잊어버렸어요"},
+        {"known": "I forgot what I was trying to say", "target": "말하려고 했던 것을 잊어버렸어요"},
+        {"known": "she forgot the Korean word", "target": "그녀가 한국어 단어를 잊어버렸어요"},
+        {"known": "have you forgotten the word?", "target": "단어를 잊어버렸어요?"},
+        {"known": "my daughter forgot the word she wanted to say", "target": "제 딸이 말하려고 했던 단어를 잊어버렸어요"},
+        {"known": "the teacher forgot the word too", "target": "선생님도 단어를 잊어버렸어요"},
+        {"known": "I completely forgot the difficult word I was trying to say", "target": "말하려고 했던 어려운 단어를 완전히 잊어버렸어요"}
+      ]
+    }
+  ]
+}

@@ -1,55 +1,110 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 123,
   "known_text": "I think that's a good idea.",
-  "target_text": "それはいい考えだと思います。",
+  "target_text": "좋은 생각인 것 같아요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "that's a good idea",
-      "target": "それはいい考えだ",
-      "components": [
-        {"known": "that (topic)", "target": "それは"},
-        {"known": "good idea (copula)", "target": "いい考えだ"}
-      ],
+      "type": "A",
+      "known": "good",
+      "target": "좋은",
       "phrases": [
-        {"known": "that", "target": "それ"},
-        {"known": "idea", "target": "考え"},
-        {"known": "good", "target": "いい"},
-        {"known": "that is", "target": "それは"},
-        {"known": "good idea", "target": "いい考え"},
-        {"known": "that's a good idea", "target": "それはいい考えだ"},
-        {"known": "is it a good idea", "target": "いい考えですか"},
-        {"known": "that was a good idea", "target": "それはいい考えでした"},
-        {"known": "going by bus is a good idea", "target": "バスで行くのはいい考えです"},
-        {"known": "my friend had a good idea yesterday", "target": "友達は昨日いい考えがありました"},
-        {"known": "learning something new is always a good idea", "target": "新しいことを学ぶのはいつもいい考えです"},
-        {"known": "having a conversation before leaving is a good idea", "target": "帰る前に会話をするのはいい考えです"}
+        {"known": "good", "target": "좋은"},
+        {"known": "it's good", "target": "좋아요"},
+        {"known": "this is good", "target": "이게 좋아요"},
+        {"known": "that's good", "target": "그게 좋아요"},
+        {"known": "it's not good yet", "target": "아직 좋지 않아요"},
+        {"known": "it's already good", "target": "이미 좋아요"},
+        {"known": "a good puppy", "target": "좋은 강아지"},
+        {"known": "good afternoon", "target": "좋은 오후"},
+        {"known": "I think that's good", "target": "그게 좋다고 생각해요"},
+        {"known": "do you think it's good again?", "target": "다시 좋다고 생각해요?"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "idea/thought",
+      "target": "생각",
+      "phrases": [
+        {"known": "idea", "target": "생각"},
+        {"known": "my idea", "target": "제 생각"},
+        {"known": "your idea", "target": "당신 생각"},
+        {"known": "that idea", "target": "그 생각"},
+        {"known": "I have an idea", "target": "생각이 있어요"},
+        {"known": "it's a short idea", "target": "짧은 생각이에요"},
+        {"known": "it's okay if you don't have an idea", "target": "생각이 없어도 괜찮아요"},
+        {"known": "I understand your idea", "target": "당신 생각을 이해해요"},
+        {"known": "I don't agree with that idea", "target": "그 생각에 동의하지 않아요"},
+        {"known": "unfortunately I don't have an idea yet", "target": "안타깝게도 아직 생각이 없어요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "I think",
-      "target": "と思います",
+      "known": "I think (opinion)",
+      "target": "~것 같다",
       "components": [
-        {"known": "quotation", "target": "と"},
-        {"known": "think (polite)", "target": "思います"}
+        {"known": "thing/fact", "target": "것"},
+        {"known": "seems like", "target": "같다"}
       ],
       "phrases": [
-        {"known": "think", "target": "思う"},
-        {"known": "I think", "target": "思います"},
-        {"known": "that (quote)", "target": "と"},
-        {"known": "I think that", "target": "と思います"},
-        {"known": "I thought", "target": "思いました"},
-        {"known": "she thinks that", "target": "彼女はと思っています"},
-        {"known": "do you think so too", "target": "あなたもそう思いますか"},
-        {"known": "I think it went well", "target": "うまくいったと思います"},
-        {"known": "I think we learned a lot today", "target": "今日たくさん学んだと思います"},
-        {"known": "my friend thinks we should go by bus", "target": "友達はバスで行くべきだと思っています"},
-        {"known": "I think it's starting to feel easier now", "target": "今簡単に感じ始めていると思います"},
-        {"known": "I think the conversation was very interesting today", "target": "今日の会話はとても面白かったと思います"}
+        {"known": "seems like", "target": "같다"},
+        {"known": "I think", "target": "~것 같아요"},
+        {"known": "I think so", "target": "그런 것 같아요"},
+        {"known": "I think it's good", "target": "좋은 것 같아요"},
+        {"known": "I think it's okay", "target": "괜찮은 것 같아요"},
+        {"known": "I think I understand", "target": "이해하는 것 같아요"},
+        {"known": "I don't think so yet", "target": "아직 그런 것 같지 않아요"},
+        {"known": "I think I already know", "target": "이미 아는 것 같아요"},
+        {"known": "I think I need to wait again", "target": "다시 기다려야 하는 것 같아요"},
+        {"known": "unfortunately I think it won't work", "target": "안타깝게도 안 될 것 같아요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "a good idea",
+      "target": "좋은 생각",
+      "components": [
+        {"known": "good", "target": "좋은"},
+        {"known": "idea", "target": "생각"}
+      ],
+      "phrases": [
+        {"known": "good", "target": "좋은"},
+        {"known": "idea", "target": "생각"},
+        {"known": "a good idea", "target": "좋은 생각"},
+        {"known": "that's a good idea", "target": "그건 좋은 생각이에요"},
+        {"known": "this is a good idea", "target": "이건 좋은 생각이에요"},
+        {"known": "it's not a good idea yet", "target": "아직 좋은 생각이 아니에요"},
+        {"known": "I already have a good idea", "target": "이미 좋은 생각이 있어요"},
+        {"known": "do you have a good idea?", "target": "좋은 생각이 있어요?"},
+        {"known": "I agree that's a good idea", "target": "그게 좋은 생각이라고 동의해요"},
+        {"known": "unfortunately I don't have a good idea yet", "target": "안타깝게도 아직 좋은 생각이 없어요"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I think that's a good idea",
+      "target": "좋은 생각인 것 같아요",
+      "components": [
+        {"known": "a good idea", "target": "좋은 생각"},
+        {"known": "is (copula)", "target": "이다"},
+        {"known": "I think", "target": "~것 같다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "~것 같아요"},
+        {"known": "a good idea", "target": "좋은 생각"},
+        {"known": "that's a good idea", "target": "그건 좋은 생각이에요"},
+        {"known": "I think that's a good idea", "target": "좋은 생각인 것 같아요"},
+        {"known": "I already think that's a good idea", "target": "이미 좋은 생각인 것 같아요"},
+        {"known": "I still think that's a good idea", "target": "아직도 좋은 생각인 것 같아요"},
+        {"known": "I think that's a good idea again", "target": "다시 좋은 생각인 것 같아요"},
+        {"known": "I think I understand your idea slowly", "target": "천천히 당신 생각을 이해하는 것 같아요"},
+        {"known": "I don't think that's a good idea anymore", "target": "더 이상 좋은 생각인 것 같지 않아요"},
+        {"known": "unfortunately I don't think that's a good idea yet", "target": "안타깝게도 아직 좋은 생각인 것 같지 않아요"}
       ]
     }
   ]

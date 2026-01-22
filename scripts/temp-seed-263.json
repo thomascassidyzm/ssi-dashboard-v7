@@ -1,0 +1,56 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 263,
+  "known_text": "I don't know who you mean.",
+  "target_text": "누구를 말하는지 모르겠어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "who you mean",
+      "target": "누구를 말하는지",
+      "components": [
+        {"known": "who", "target": "누구"},
+        {"known": "object marker", "target": "를"},
+        {"known": "saying/meaning", "target": "말하다"},
+        {"known": "whether (indirect)", "target": "는지"}
+      ],
+      "phrases": [
+        {"known": "who?", "target": "누구요?"},
+        {"known": "saying", "target": "말해요"},
+        {"known": "who is it?", "target": "누구예요?"},
+        {"known": "meaning what?", "target": "뭘 말해요?"},
+        {"known": "who are you talking about?", "target": "누구를 말해요?"},
+        {"known": "I don't know who", "target": "누구인지 몰라요"},
+        {"known": "who do you mean?", "target": "누구를 말하는 거예요?"},
+        {"known": "tell me who", "target": "누구인지 말해요"},
+        {"known": "I know who you mean", "target": "누구를 말하는지 알아요"},
+        {"known": "do you know who she means?", "target": "그녀가 누구를 말하는지 알아요?"},
+        {"known": "tell me who you're talking about", "target": "누구를 말하는지 말해 주세요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I don't know who you mean",
+      "target": "누구를 말하는지 모르겠어요",
+      "components": [
+        {"known": "who you mean", "target": "누구를 말하는지"},
+        {"known": "don't know", "target": "모르다"}
+      ],
+      "phrases": [
+        {"known": "I don't know", "target": "몰라요"},
+        {"known": "don't know", "target": "모르겠어요"},
+        {"known": "I'm not sure", "target": "잘 몰라요"},
+        {"known": "who is that?", "target": "누구예요?"},
+        {"known": "who do you mean?", "target": "누구 말이에요?"},
+        {"known": "I don't know who", "target": "누구인지 몰라요"},
+        {"known": "I don't understand who", "target": "누구인지 이해 안 돼요"},
+        {"known": "she doesn't know who he means", "target": "그녀가 누구를 말하는지 몰라요"},
+        {"known": "I really don't know who you mean", "target": "누구를 말하는지 정말 모르겠어요"},
+        {"known": "do you know who I'm talking about?", "target": "제가 누구를 말하는지 알아요?"},
+        {"known": "tell me again because I don't know who", "target": "누구인지 모르니까 다시 말해 주세요"}
+      ]
+    }
+  ]
+}

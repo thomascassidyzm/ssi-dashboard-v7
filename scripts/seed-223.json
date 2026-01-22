@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 223,
+  "known_text": "He's going to ask you tomorrow.",
+  "target_text": "내일 그가 당신에게 물어볼 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "to ask",
+      "target": "물어보다",
+      "phrases": [
+        {"known": "ask", "target": "물어보다"},
+        {"known": "asked", "target": "물어봤어요"},
+        {"known": "will ask", "target": "물어볼 거예요"},
+        {"known": "asking", "target": "물어보고 있어요"},
+        {"known": "please ask", "target": "물어봐 주세요"},
+        {"known": "want to ask", "target": "물어보고 싶어요"},
+        {"known": "I asked her yesterday", "target": "어제 그녀에게 물어봤어요"},
+        {"known": "She asked me about the meeting", "target": "그녀가 회의에 대해 물어봤어요"},
+        {"known": "He wants to ask a question", "target": "그는 질문하고 싶어해요"},
+        {"known": "We asked them what they wanted", "target": "그들에게 뭘 원하는지 물어봤어요"},
+        {"known": "They are going to ask about the plan", "target": "그들이 계획에 대해 물어볼 거예요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "He's going to ask you tomorrow",
+      "target": "내일 그가 당신에게 물어볼 거예요",
+      "components": [
+        {"known": "tomorrow", "target": "내일"},
+        {"known": "he", "target": "그가"},
+        {"known": "to you", "target": "당신에게"},
+        {"known": "will ask", "target": "물어볼 거예요"}
+      ],
+      "phrases": [
+        {"known": "tomorrow", "target": "내일"},
+        {"known": "he", "target": "그가"},
+        {"known": "to you", "target": "당신에게"},
+        {"known": "will ask", "target": "물어볼 거예요"},
+        {"known": "he will", "target": "그가 거예요"},
+        {"known": "tomorrow he", "target": "내일 그가"},
+        {"known": "ask tomorrow", "target": "내일 물어봐요"},
+        {"known": "He's going to ask you tomorrow", "target": "내일 그가 당신에게 물어볼 거예요"},
+        {"known": "She will ask me tomorrow", "target": "내일 그녀가 나에게 물어볼 거예요"},
+        {"known": "They are going to ask us next week", "target": "다음 주에 그들이 우리에게 물어볼 거예요"},
+        {"known": "I will ask him about it tomorrow", "target": "내일 그에게 그것에 대해 물어볼 거예요"}
+      ]
+    }
+  ]
+}

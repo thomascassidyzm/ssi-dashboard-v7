@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 533,
+  "known_text": "She won't listen to every word you say.",
+  "target_text": "그녀가 네가 하는 말 다 안 들을 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "every word you say",
+      "target": "네가 하는 말 다",
+      "components": [
+        {"known": "you (informal)", "target": "네가"},
+        {"known": "saying/do", "target": "하는"},
+        {"known": "word/words", "target": "말"},
+        {"known": "all/every", "target": "다"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "네가요"},
+        {"known": "words", "target": "말이요"},
+        {"known": "all", "target": "다요"},
+        {"known": "your words", "target": "네 말이요"},
+        {"known": "everything", "target": "다 해요"},
+        {"known": "what you say", "target": "네가 하는 말이요"},
+        {"known": "I heard everything", "target": "다 들었어요"},
+        {"known": "every word matters", "target": "말 하나하나 중요해요"},
+        {"known": "she remembers what you said", "target": "그녀가 네가 한 말 기억해요"},
+        {"known": "I understood everything he said", "target": "그가 한 말 다 이해했어요"},
+        {"known": "pay attention to every word she says", "target": "그녀가 하는 말 다 잘 들어요"},
+        {"known": "he repeated every word I told him", "target": "그가 내가 한 말 다 따라했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "won't listen to every word you say",
+      "target": "네가 하는 말 다 안 들을 거예요",
+      "components": [
+        {"known": "every word you say", "target": "네가 하는 말 다"},
+        {"known": "won't listen", "target": "안 듣다"},
+        {"known": "will", "target": "거예요"}
+      ],
+      "phrases": [
+        {"known": "listen", "target": "들어요"},
+        {"known": "won't", "target": "안 할 거예요"},
+        {"known": "won't do", "target": "안 해요"},
+        {"known": "she won't", "target": "그녀가 안 할 거예요"},
+        {"known": "I'm listening", "target": "듣고 있어요"},
+        {"known": "won't listen", "target": "안 들을 거예요"},
+        {"known": "please listen carefully", "target": "잘 들어 주세요"},
+        {"known": "he won't listen to advice", "target": "그가 조언 안 들을 거예요"},
+        {"known": "she refused to listen", "target": "그녀가 듣기 싫다고 했어요"},
+        {"known": "I told him but he won't listen", "target": "말했는데 안 들을 거예요"},
+        {"known": "they never listen to what I say", "target": "그들이 내 말 안 들어요"},
+        {"known": "she said she won't listen to complaints", "target": "그녀가 불평 안 듣겠다고 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she won't listen to every word you say",
+      "target": "그녀가 네가 하는 말 다 안 들을 거예요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "won't listen to every word you say", "target": "네가 하는 말 다 안 들을 거예요"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "그녀가요"},
+        {"known": "she is", "target": "그녀요"},
+        {"known": "she will", "target": "그녀가 할 거예요"},
+        {"known": "she said", "target": "그녀가 말했어요"},
+        {"known": "she knows", "target": "그녀가 알아요"},
+        {"known": "she's coming", "target": "그녀가 올 거예요"},
+        {"known": "she won't believe you", "target": "그녀가 안 믿을 거예요"},
+        {"known": "she won't accept the offer", "target": "그녀가 제안 안 받을 거예요"},
+        {"known": "she already told me she won't go", "target": "그녀가 안 간다고 말했어요"},
+        {"known": "she doesn't care what others think", "target": "그녀가 남들 생각 신경 안 써요"},
+        {"known": "she won't change her mind about this", "target": "그녀가 이것에 대해 생각 안 바꿀 거예요"},
+        {"known": "she promised she would listen next time", "target": "그녀가 다음에 들을 거라고 약속했어요"},
+        {"known": "she tends to ignore advice from people", "target": "그녀가 사람들 조언 무시하는 경향 있어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 464,
+  "known_text": "I told her my room number once but she forgot it.",
+  "target_text": "제가 제 방 번호를 한 번 말했는데 그녀가 잊어버렸어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I told her once",
+      "target": "한 번 말했다",
+      "components": [
+        {"known": "once", "target": "한 번"},
+        {"known": "told", "target": "말했다"}
+      ],
+      "phrases": [
+        {"known": "once", "target": "한 번요"},
+        {"known": "told", "target": "말했어요"},
+        {"known": "just once", "target": "딱 한 번이요"},
+        {"known": "I said it", "target": "말했어요"},
+        {"known": "I told him once", "target": "그에게 한 번 말했어요"},
+        {"known": "she explained it once", "target": "그녀가 한 번 설명했어요"},
+        {"known": "I mentioned it briefly", "target": "잠깐 말했어요"},
+        {"known": "he told me just once before", "target": "그가 전에 딱 한 번 말했어요"},
+        {"known": "I only said it one time", "target": "한 번만 말했어요"},
+        {"known": "she told me about it once last week", "target": "그녀가 지난주에 한 번 말해줬어요"},
+        {"known": "I've explained this to him many times", "target": "그에게 여러 번 설명했어요"},
+        {"known": "he mentioned it in passing just once", "target": "그가 지나가며 한 번 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "she forgot it",
+      "target": "그녀가 잊어버렸다",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "forgot", "target": "잊어버렸다"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "그녀요"},
+        {"known": "did", "target": "했어요"},
+        {"known": "forgot", "target": "잊어버렸어요"},
+        {"known": "she did", "target": "그녀가 했어요"},
+        {"known": "I forgot", "target": "잊어버렸어요"},
+        {"known": "he forgot too", "target": "그도 잊어버렸어요"},
+        {"known": "did you forget", "target": "잊어버렸어요?"},
+        {"known": "I forgot the password", "target": "비밀번호 잊어버렸어요"},
+        {"known": "she forgot our anniversary", "target": "그녀가 기념일 잊어버렸어요"},
+        {"known": "he forgot to call me back", "target": "그가 다시 전화하는 거 잊어버렸어요"},
+        {"known": "I completely forgot about the meeting", "target": "회의를 완전히 잊어버렸어요"},
+        {"known": "she always forgets important dates", "target": "그녀가 항상 중요한 날짜 잊어버려요"},
+        {"known": "I forgot what I was going to say", "target": "뭐 말하려고 했는지 잊어버렸어요"},
+        {"known": "he forgot where he put his keys", "target": "그가 열쇠 어디 뒀는지 잊어버렸어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I told her my room number once but she forgot it",
+      "target": "제가 제 방 번호를 한 번 말했는데 그녀가 잊어버렸어요",
+      "components": [
+        {"known": "I", "target": "제가"},
+        {"known": "my room number", "target": "제 방 번호"},
+        {"known": "object marker", "target": "를"},
+        {"known": "I told her once", "target": "한 번 말했다"},
+        {"known": "but", "target": "는데"},
+        {"known": "she forgot it", "target": "그녀가 잊어버렸다"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "는데요"},
+        {"known": "I told her", "target": "말했어요"},
+        {"known": "she forgot", "target": "잊어버렸어요"},
+        {"known": "but she forgot", "target": "근데 잊어버렸어요"},
+        {"known": "I explained but he didn't listen", "target": "설명했는데 안 들었어요"},
+        {"known": "I told her once but she forgot", "target": "한 번 말했는데 잊어버렸어요"},
+        {"known": "he gave me his number but I lost it", "target": "그가 번호 줬는데 잃어버렸어요"},
+        {"known": "I mentioned it but she wasn't paying attention", "target": "말했는데 그녀가 집중 안 했어요"},
+        {"known": "she told me her name once but I can't remember", "target": "그녀가 이름 한 번 말했는데 기억 안 나요"},
+        {"known": "I said it clearly but he still forgot", "target": "분명히 말했는데 그가 그래도 잊어버렸어요"},
+        {"known": "we discussed it before but she completely forgot", "target": "전에 얘기했는데 그녀가 완전히 잊어버렸어요"},
+        {"known": "I told him the address twice but he still got lost", "target": "주소 두 번 말했는데 그래도 길 잃었어요"}
+      ]
+    }
+  ]
+}

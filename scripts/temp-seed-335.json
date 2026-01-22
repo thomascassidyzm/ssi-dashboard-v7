@@ -1,0 +1,86 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 335,
+  "known_text": "I think that he can add some valuable ideas.",
+  "target_text": "그가 가치 있는 아이디어를 추가할 수 있다고 생각해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "valuable",
+      "target": "가치 있다",
+      "components": [
+        {"known": "value/worth", "target": "가치"},
+        {"known": "to exist/have", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "value", "target": "가치요"},
+        {"known": "exists", "target": "있어요"},
+        {"known": "valuable", "target": "가치 있어요"},
+        {"known": "worth it", "target": "가치 있어요"},
+        {"known": "it's valuable", "target": "가치가 있어요"},
+        {"known": "valuable things", "target": "가치 있는 것들"},
+        {"known": "very valuable", "target": "아주 가치 있어요"},
+        {"known": "this is valuable to me", "target": "이거 저한테 가치 있어요"},
+        {"known": "valuable information", "target": "가치 있는 정보예요"},
+        {"known": "he has valuable experience", "target": "그가 가치 있는 경험이 있어요"},
+        {"known": "nothing is more valuable than time", "target": "시간보다 더 가치 있는 것은 없어요"},
+        {"known": "she shared something valuable with us", "target": "그녀가 가치 있는 것을 나눠 줬어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "add some ideas",
+      "target": "아이디어를 추가하다",
+      "components": [
+        {"known": "idea", "target": "아이디어"},
+        {"known": "object marker", "target": "를"},
+        {"known": "add", "target": "추가하다"}
+      ],
+      "phrases": [
+        {"known": "idea", "target": "아이디어요"},
+        {"known": "add", "target": "추가해요"},
+        {"known": "add it", "target": "추가해요"},
+        {"known": "good idea", "target": "좋은 아이디어"},
+        {"known": "add an idea", "target": "아이디어를 추가해요"},
+        {"known": "I have an idea", "target": "아이디어가 있어요"},
+        {"known": "please add more", "target": "더 추가해 주세요"},
+        {"known": "he added a new idea", "target": "그가 새 아이디어를 추가했어요"},
+        {"known": "she has many ideas", "target": "그녀가 아이디어가 많아요"},
+        {"known": "we can add that later", "target": "나중에 그거 추가할 수 있어요"},
+        {"known": "the team added several ideas", "target": "팀이 아이디어를 여러 개 추가했어요"},
+        {"known": "I want to add my ideas to the project", "target": "프로젝트에 제 아이디어를 추가하고 싶어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I think that he can add some valuable ideas",
+      "target": "그가 가치 있는 아이디어를 추가할 수 있다고 생각해요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "valuable", "target": "가치 있다"},
+        {"known": "modifier form", "target": "는"},
+        {"known": "add some ideas", "target": "아이디어를 추가하다"},
+        {"known": "can (ability)", "target": "ㄹ 수 있다"},
+        {"known": "I think that (quote)", "target": "고 생각하다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "생각해요"},
+        {"known": "he can", "target": "할 수 있어요"},
+        {"known": "I think so", "target": "그런 것 같아요"},
+        {"known": "can add", "target": "추가할 수 있어요"},
+        {"known": "I think he can", "target": "그가 할 수 있다고 생각해요"},
+        {"known": "I think she can help", "target": "그녀가 도와줄 수 있다고 생각해요"},
+        {"known": "I think he can contribute", "target": "그가 기여할 수 있다고 생각해요"},
+        {"known": "he can add more", "target": "그가 더 추가할 수 있어요"},
+        {"known": "I think she can add something", "target": "그녀가 뭔가 추가할 수 있다고 생각해요"},
+        {"known": "I believe he has good ideas", "target": "그가 좋은 아이디어가 있다고 믿어요"},
+        {"known": "I think the team can add valuable input", "target": "팀이 가치 있는 의견을 추가할 수 있다고 생각해요"},
+        {"known": "I think he can bring new perspectives", "target": "그가 새로운 관점을 가져올 수 있다고 생각해요"},
+        {"known": "I believe she can add more useful suggestions", "target": "그녀가 더 유용한 제안을 추가할 수 있다고 믿어요"}
+      ]
+    }
+  ]
+}

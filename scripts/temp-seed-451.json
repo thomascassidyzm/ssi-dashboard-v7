@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 451,
+  "known_text": "They said what they wanted to do.",
+  "target_text": "그들이 하고 싶은 거 말했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what they wanted to do",
+      "target": "하고 싶은 거",
+      "components": [
+        {"known": "do", "target": "하다"},
+        {"known": "want to (modifier)", "target": "고 싶은"},
+        {"known": "thing", "target": "거"}
+      ],
+      "phrases": [
+        {"known": "thing", "target": "거요"},
+        {"known": "want to do", "target": "하고 싶어요"},
+        {"known": "what I want", "target": "원하는 거요"},
+        {"known": "what she wants", "target": "그녀가 원하는 거요"},
+        {"known": "I know what I want", "target": "원하는 거 알아요"},
+        {"known": "he told me what he wants", "target": "그가 원하는 거 말했어요"},
+        {"known": "she showed me what she likes", "target": "그녀가 좋아하는 거 보여줬어요"},
+        {"known": "do you know what you want", "target": "원하는 거 알아요?"},
+        {"known": "they explained what they needed", "target": "그들이 필요한 거 설명했어요"},
+        {"known": "I finally decided what I want to try", "target": "해 보고 싶은 거 드디어 결정했어요"},
+        {"known": "she asked what I wanted to eat", "target": "그녀가 먹고 싶은 거 물었어요"},
+        {"known": "he always knows what he wants from life", "target": "그가 항상 인생에서 원하는 거 알아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they said what they wanted to do",
+      "target": "그들이 하고 싶은 거 말했어요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "what they wanted to do", "target": "하고 싶은 거"},
+        {"known": "said", "target": "말했다"}
+      ],
+      "phrases": [
+        {"known": "said", "target": "말했어요"},
+        {"known": "they did", "target": "그랬어요"},
+        {"known": "they told", "target": "그들이 말했어요"},
+        {"known": "she mentioned", "target": "그녀가 말했어요"},
+        {"known": "he expressed his opinion", "target": "그가 의견을 말했어요"},
+        {"known": "she shared what she thought", "target": "그녀가 생각하는 거 말했어요"},
+        {"known": "they voiced their concerns", "target": "그들이 걱정을 말했어요"},
+        {"known": "he stated his preferences clearly", "target": "그가 선호하는 거 분명히 말했어요"},
+        {"known": "she finally said what was on her mind", "target": "그녀가 마음에 있는 거 드디어 말했어요"},
+        {"known": "they told us what they were planning", "target": "그들이 계획하는 거 말해 줬어요"},
+        {"known": "he mentioned what he hopes to achieve", "target": "그가 달성하고 싶은 거 말했어요"},
+        {"known": "she explained what she was looking for", "target": "그녀가 찾고 있는 거 설명했어요"},
+        {"known": "they communicated their ideas effectively", "target": "그들이 아이디어를 효과적으로 전달했어요"}
+      ]
+    }
+  ]
+}

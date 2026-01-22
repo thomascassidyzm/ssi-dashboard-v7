@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 258,
+  "known_text": "What's that blue thing over there?",
+  "target_text": "저기 있는 저 파란 것이 뭐예요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that is over there",
+      "target": "저기 있는",
+      "components": [
+        {"known": "over there", "target": "저기"},
+        {"known": "existing", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "there is", "target": "있어요"},
+        {"known": "over there", "target": "저기요"},
+        {"known": "it's there", "target": "저기 있어요"},
+        {"known": "over there is", "target": "저기에 있어요"},
+        {"known": "the one there", "target": "저기 있는 거"},
+        {"known": "look over there", "target": "저기 봐요"},
+        {"known": "what's there?", "target": "저기 뭐가 있어요?"},
+        {"known": "the thing that's there", "target": "저기 있는 것"},
+        {"known": "she's over there", "target": "그녀가 저기 있어요"},
+        {"known": "the person over there is my friend", "target": "저기 있는 사람이 제 친구예요"},
+        {"known": "do you see what's over there?", "target": "저기 있는 거 보여요?"},
+        {"known": "what's the thing that's over there?", "target": "저기 있는 것이 뭐예요?"},
+        {"known": "the book over there is mine", "target": "저기 있는 책이 제 거예요"},
+        {"known": "I want to see what's over there", "target": "저기 있는 것을 보고 싶어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that blue thing over there",
+      "target": "저기 있는 저 파란 것",
+      "components": [
+        {"known": "that is over there", "target": "저기 있는"},
+        {"known": "that blue thing", "target": "저 파란 것"}
+      ],
+      "phrases": [
+        {"known": "that thing", "target": "저거요"},
+        {"known": "blue thing", "target": "파란 것"},
+        {"known": "the one there", "target": "저기 있는 거"},
+        {"known": "that blue one", "target": "저 파란 거요"},
+        {"known": "that one over there", "target": "저기 있는 것"},
+        {"known": "look at that", "target": "저거 봐요"},
+        {"known": "that thing over there", "target": "저기 있는 저것"},
+        {"known": "the blue one over there", "target": "저기 있는 파란 것"},
+        {"known": "I want that blue thing over there", "target": "저기 있는 저 파란 것 원해요"},
+        {"known": "she's looking at that blue thing", "target": "그녀가 저 파란 것을 보고 있어요"},
+        {"known": "I bought that blue thing over there", "target": "저기 있는 저 파란 것을 샀어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what's that blue thing over there",
+      "target": "저기 있는 저 파란 것이 뭐예요",
+      "components": [
+        {"known": "that blue thing over there", "target": "저기 있는 저 파란 것"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "what", "target": "뭐"}
+      ],
+      "phrases": [
+        {"known": "what?", "target": "뭐예요?"},
+        {"known": "what is it?", "target": "뭐예요?"},
+        {"known": "what's that?", "target": "저게 뭐예요?"},
+        {"known": "what is it?", "target": "그게 뭐예요?"},
+        {"known": "what's over there?", "target": "저기 뭐예요?"},
+        {"known": "what's that thing?", "target": "저것이 뭐예요?"},
+        {"known": "what is that one?", "target": "저거 뭐예요?"},
+        {"known": "what's the blue thing?", "target": "파란 것이 뭐예요?"},
+        {"known": "she asked what that blue thing is", "target": "그녀가 저 파란 것이 뭐냐고 물었어요"},
+        {"known": "I don't know what that blue thing is", "target": "저 파란 것이 뭔지 몰라요"},
+        {"known": "do you know what that thing over there is?", "target": "저기 있는 것이 뭔지 알아요?"}
+      ]
+    }
+  ]
+}

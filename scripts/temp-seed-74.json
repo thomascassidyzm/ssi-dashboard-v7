@@ -1,77 +1,114 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 74,
   "known_text": "Thank you very much for helping me to understand.",
-  "target_text": "理解するのを手伝ってくれてどうもありがとうございます。",
+  "target_text": "이해하는 것을 도와주셔서 정말 감사해요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "to understand (object)",
-      "target": "理解するのを",
+      "known": "understanding (attributive)",
+      "target": "이해하는",
       "components": [
-        {"known": "understand/comprehend", "target": "理解する"},
-        {"known": "(nominalizer + object)", "target": "のを"}
+        {"known": "understand", "target": "이해하다"},
+        {"known": "(present attributive)", "target": "-는"}
       ],
       "phrases": [
-        {"known": "understand", "target": "理解する"},
-        {"known": "I understand", "target": "理解します"},
-        {"known": "to understand", "target": "理解するの"},
-        {"known": "understanding it", "target": "理解するのを"},
-        {"known": "I understood", "target": "理解しました"},
-        {"known": "do you understand?", "target": "理解しますか？"},
-        {"known": "she understood", "target": "彼女は理解しました"},
-        {"known": "he understands Japanese", "target": "彼は日本語を理解する"},
-        {"known": "I want to understand Japanese", "target": "日本語を理解したいです"},
-        {"known": "she understands it very well", "target": "彼女はそれをとても上手に理解します"},
-        {"known": "it is important to understand the truth", "target": "本当のことを理解することは大切です"},
-        {"known": "he said he understands the whole sentence", "target": "彼は文全体を理解すると言いました"}
+        {"known": "Understand.", "target": "이해해요."},
+        {"known": "Understood.", "target": "이해했어요."},
+        {"known": "Understanding it.", "target": "이해하는 것."},
+        {"known": "I understood.", "target": "나는 이해했어요."},
+        {"known": "She understood well.", "target": "그녀는 잘 이해했어요."},
+        {"known": "The thing I'm understanding.", "target": "내가 이해하는 것이에요."},
+        {"known": "What he's understanding now.", "target": "그가 지금 이해하는 것이에요."},
+        {"known": "She helped me with understanding.", "target": "그녀는 내가 이해하는 것을 도와줬어요."},
+        {"known": "We are understanding it together.", "target": "우리는 함께 이해하는 중이에요."},
+        {"known": "Thank you for helping me with understanding.", "target": "이해하는 것을 도와줘서 감사해요."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "helped me",
-      "target": "手伝ってくれて",
+      "known": "the thing (object)",
+      "target": "것을",
       "components": [
-        {"known": "help (te-form)", "target": "手伝って"},
-        {"known": "did for me", "target": "くれて"}
+        {"known": "thing", "target": "것"},
+        {"known": "(object marker)", "target": "을"}
       ],
       "phrases": [
-        {"known": "help", "target": "手伝う"},
-        {"known": "please help", "target": "手伝って"},
-        {"known": "helped me", "target": "手伝ってくれた"},
-        {"known": "for helping me", "target": "手伝ってくれて"},
-        {"known": "she helped me", "target": "彼女は手伝ってくれました"},
-        {"known": "thank you for helping", "target": "手伝ってくれてありがとう"},
-        {"known": "he helped me understand", "target": "彼は理解するのを手伝ってくれました"},
-        {"known": "she helped me learn Japanese", "target": "彼女は日本語を学ぶのを手伝ってくれました"},
-        {"known": "I want someone to help me understand", "target": "誰かに理解するのを手伝ってほしいです"},
-        {"known": "he helped me look for the dog all afternoon", "target": "彼は午後ずっと犬を探すのを手伝ってくれました"},
-        {"known": "thank you for helping me understand the whole sentence", "target": "文全体を理解するのを手伝ってくれてありがとうございます"}
+        {"known": "The thing.", "target": "것."},
+        {"known": "This thing.", "target": "이것을."},
+        {"known": "That thing.", "target": "그것을."},
+        {"known": "I saw it.", "target": "나는 그것을 봤어요."},
+        {"known": "She did it.", "target": "그녀는 그것을 했어요."},
+        {"known": "He learned the thing.", "target": "그는 그것을 배웠어요."},
+        {"known": "I helped with the thing.", "target": "나는 그것을 도와줬어요."},
+        {"known": "She understood the thing.", "target": "그녀는 그것을 이해했어요."},
+        {"known": "The thing to understand.", "target": "이해하는 것을."},
+        {"known": "He helped with the thing I was understanding.", "target": "그는 내가 이해하는 것을 도와줬어요."}
       ]
     },
     {
       "idx": 3,
       "type": "M",
-      "known": "thank you very much (ending)",
-      "target": "どうもありがとうございます",
+      "known": "for helping (honorific)",
+      "target": "도와주셔서",
       "components": [
-        {"known": "very much", "target": "どうも"},
-        {"known": "thank you (polite)", "target": "ありがとうございます"}
+        {"known": "help (for someone)", "target": "도와주다"},
+        {"known": "(honorific)", "target": "-시-"},
+        {"known": "because/for", "target": "-어서"}
       ],
       "phrases": [
-        {"known": "thanks", "target": "どうも"},
-        {"known": "thank you", "target": "ありがとう"},
-        {"known": "thanks a lot", "target": "どうもありがとう"},
-        {"known": "thank you polite", "target": "ありがとうございます"},
-        {"known": "thank you very much (ending)", "target": "どうもありがとうございます"},
-        {"known": "thank you for today", "target": "今日はありがとうございます"},
-        {"known": "thank you for teaching me", "target": "教えてくれてありがとうございます"},
-        {"known": "she said thank you very much", "target": "彼女はどうもありがとうと言いました"},
-        {"known": "thank you for explaining that", "target": "それを説明してくれてありがとうございます"},
-        {"known": "thank you for looking after the young dog", "target": "若い犬の世話をしてくれてどうもありがとうございます"},
-        {"known": "he said thank you very much for helping all afternoon", "target": "彼は午後ずっと手伝ってくれてどうもありがとうと言いました"}
+        {"known": "Help.", "target": "도와주세요."},
+        {"known": "Helped.", "target": "도와주셨어요."},
+        {"known": "For helping.", "target": "도와주셔서."},
+        {"known": "He helped me.", "target": "그분이 도와주셨어요."},
+        {"known": "Thanks for helping.", "target": "도와주셔서 감사해요."},
+        {"known": "She helped all afternoon.", "target": "그녀는 오후 내내 도와주셨어요."},
+        {"known": "Thank you for really helping.", "target": "정말 도와주셔서 감사해요."},
+        {"known": "Thanks for helping me learn.", "target": "배우는 것을 도와주셔서 감사해요."},
+        {"known": "Thank you for helping with that.", "target": "그것을 도와주셔서 감사해요."},
+        {"known": "Thank you very much for helping me understand.", "target": "이해하는 것을 도와주셔서 정말 감사해요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "really",
+      "target": "정말",
+      "phrases": [
+        {"known": "Really.", "target": "정말."},
+        {"known": "Really?", "target": "정말?"},
+        {"known": "Is it real?", "target": "정말이야?"},
+        {"known": "Really good.", "target": "정말 좋아요."},
+        {"known": "Really grateful.", "target": "정말 감사해요."},
+        {"known": "I really helped.", "target": "나는 정말 도와줬어요."},
+        {"known": "She really understood.", "target": "그녀는 정말 이해했어요."},
+        {"known": "It was really important.", "target": "정말 중요했어요."},
+        {"known": "Really thank you for helping.", "target": "도와주셔서 정말 감사해요."},
+        {"known": "Thank you really for helping me understand.", "target": "이해하는 것을 도와주셔서 정말 감사해요."}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "thank you (polite)",
+      "target": "감사해요",
+      "components": [
+        {"known": "gratitude", "target": "감사"},
+        {"known": "(polite ending)", "target": "해요"}
+      ],
+      "phrases": [
+        {"known": "Thanks.", "target": "감사해요."},
+        {"known": "Grateful.", "target": "감사해요."},
+        {"known": "Really thanks.", "target": "정말 감사해요."},
+        {"known": "I'm grateful.", "target": "감사해요."},
+        {"known": "She said thanks.", "target": "그녀는 감사하다고 말했어요."},
+        {"known": "Thank you for coming.", "target": "와주셔서 감사해요."},
+        {"known": "Thank you for helping.", "target": "도와주셔서 감사해요."},
+        {"known": "We are really grateful.", "target": "우리는 정말 감사해요."},
+        {"known": "Thank you for understanding.", "target": "이해해주셔서 감사해요."},
+        {"known": "Thank you very much for helping me understand.", "target": "이해하는 것을 도와주셔서 정말 감사해요."}
       ]
     }
   ]

@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 540,
+  "known_text": "I don't mind if you want to leave without the car.",
+  "target_text": "차 없이 가고 싶으면 괜찮아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "leave without the car",
+      "target": "차 없이 가다",
+      "components": [
+        {"known": "car", "target": "차"},
+        {"known": "without", "target": "없이"},
+        {"known": "leave/go", "target": "가다"}
+      ],
+      "phrases": [
+        {"known": "car", "target": "차요"},
+        {"known": "without", "target": "없이요"},
+        {"known": "go", "target": "가요"},
+        {"known": "my car", "target": "제 차요"},
+        {"known": "without it", "target": "그거 없이요"},
+        {"known": "leave now", "target": "지금 가요"},
+        {"known": "without me", "target": "저 없이요"},
+        {"known": "she left early", "target": "그녀가 일찍 갔어요"},
+        {"known": "the car is outside", "target": "차가 밖에 있어요"},
+        {"known": "go without saying", "target": "말 없이 가요"},
+        {"known": "he went without his phone", "target": "그가 휴대폰 없이 갔어요"},
+        {"known": "we can leave without waiting", "target": "기다리지 않고 갈 수 있어요"},
+        {"known": "she went to work without breakfast", "target": "그녀가 아침 없이 출근했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "if you want to leave without the car",
+      "target": "차 없이 가고 싶으면",
+      "components": [
+        {"known": "leave without the car", "target": "차 없이 가다"},
+        {"known": "if you want to", "target": "고 싶으면"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "면요"},
+        {"known": "if you want", "target": "원하면요"},
+        {"known": "you want", "target": "원해요"},
+        {"known": "if you want to", "target": "하고 싶으면요"},
+        {"known": "if you want to go", "target": "가고 싶으면요"},
+        {"known": "if she wants to stay", "target": "그녀가 있고 싶으면요"},
+        {"known": "if you want to rest", "target": "쉬고 싶으면요"},
+        {"known": "tell me if you want to talk", "target": "말하고 싶으면 말해요"},
+        {"known": "let me know if you want to come", "target": "오고 싶으면 알려 줘요"},
+        {"known": "if he wants to try something new", "target": "그가 새로운 거 해 보고 싶으면요"},
+        {"known": "if you want to learn more about it", "target": "그것에 대해 더 알고 싶으면요"},
+        {"known": "she said if I want to join just call her", "target": "그녀가 참여하고 싶으면 전화하라고 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I don't mind if you want to leave without the car",
+      "target": "차 없이 가고 싶으면 괜찮아요",
+      "components": [
+        {"known": "if you want to leave without the car", "target": "차 없이 가고 싶으면"},
+        {"known": "I don't mind/it's okay", "target": "괜찮다"}
+      ],
+      "phrases": [
+        {"known": "okay", "target": "괜찮아요"},
+        {"known": "I don't mind", "target": "괜찮아요"},
+        {"known": "it's fine", "target": "괜찮아요"},
+        {"known": "are you okay", "target": "괜찮아요?"},
+        {"known": "that's fine", "target": "그거 괜찮아요"},
+        {"known": "I'm okay with it", "target": "그거 괜찮아요"},
+        {"known": "it's okay if you're late", "target": "늦어도 괜찮아요"},
+        {"known": "I don't mind waiting here", "target": "여기서 기다려도 괜찮아요"},
+        {"known": "she said it's okay to cancel", "target": "그녀가 취소해도 괜찮다고 했어요"},
+        {"known": "I don't mind if you bring a friend", "target": "친구 데려와도 괜찮아요"},
+        {"known": "he told me it's fine to leave early", "target": "그가 일찍 가도 괜찮다고 했어요"},
+        {"known": "she doesn't mind if we change the plan", "target": "그녀가 계획 바꿔도 괜찮다고 해요"}
+      ]
+    }
+  ]
+}

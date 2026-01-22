@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 497,
+  "known_text": "That sounds as though you need to get some sleep.",
+  "target_text": "잠 좀 자야 할 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "need to get some sleep",
+      "target": "잠 좀 자야 하다",
+      "components": [
+        {"known": "sleep", "target": "잠"},
+        {"known": "a little", "target": "좀"},
+        {"known": "need to sleep", "target": "자야 하다"}
+      ],
+      "phrases": [
+        {"known": "sleep", "target": "잠이요"},
+        {"known": "a little", "target": "좀요"},
+        {"known": "I need to", "target": "해야 해요"},
+        {"known": "I sleep early", "target": "일찍 자요"},
+        {"known": "she needs rest", "target": "그녀가 쉬어야 해요"},
+        {"known": "I should sleep more", "target": "더 자야 해요"},
+        {"known": "just a little bit", "target": "조금만요"},
+        {"known": "he sleeps a lot on weekends", "target": "그가 주말에 많이 자요"},
+        {"known": "she really needs to rest tonight", "target": "그녀가 오늘 밤 정말 쉬어야 해요"},
+        {"known": "I couldn't sleep at all last night", "target": "어젯밤에 전혀 못 잤어요"},
+        {"known": "you should get more sleep before the exam", "target": "시험 전에 잠 더 자야 해요"},
+        {"known": "she always tells me I need to sleep earlier", "target": "그녀가 항상 더 일찍 자라고 해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "sounds as though you need to get some sleep",
+      "target": "잠 좀 자야 할 것 같아요",
+      "components": [
+        {"known": "need to get some sleep", "target": "잠 좀 자야 하다"},
+        {"known": "seems like", "target": "것 같다"}
+      ],
+      "phrases": [
+        {"known": "seems like", "target": "것 같아요"},
+        {"known": "I think", "target": "같아요"},
+        {"known": "I think so", "target": "그런 것 같아요"},
+        {"known": "it looks like", "target": "그런 거 같아요"},
+        {"known": "seems tired", "target": "피곤한 것 같아요"},
+        {"known": "it sounds like rain", "target": "비 올 것 같아요"},
+        {"known": "she seems sleepy", "target": "그녀가 졸린 것 같아요"},
+        {"known": "you look like you need a break", "target": "쉬어야 할 것 같아요"},
+        {"known": "it sounds like you're exhausted", "target": "지쳐 있는 것 같아요"},
+        {"known": "she seems like she needs some time off", "target": "그녀가 휴가 필요한 것 같아요"},
+        {"known": "it looks like he hasn't slept in days", "target": "그가 며칠 못 잔 것 같아요"},
+        {"known": "you sound like you could use some rest", "target": "쉬어야 할 것 같아요"},
+        {"known": "she looks like she hasn't been sleeping well", "target": "그녀가 잘 못 자는 것 같아요"}
+      ]
+    }
+  ]
+}

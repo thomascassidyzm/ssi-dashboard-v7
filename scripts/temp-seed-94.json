@@ -1,0 +1,99 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 94,
+  "known_text": "This is the only way it will work.",
+  "target_text": "이것이 유일하게 효과가 있는 방법이에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this (subject)",
+      "target": "이것이",
+      "components": [
+        {"known": "this", "target": "이것"},
+        {"known": "(subject marker)", "target": "이"}
+      ],
+      "phrases": [
+        {"known": "This.", "target": "이것."},
+        {"known": "This is.", "target": "이것이요."},
+        {"known": "Is this it?", "target": "이것이요?"},
+        {"known": "This is good.", "target": "이것이 좋아요."},
+        {"known": "This is the way.", "target": "이것이 방법이에요."},
+        {"known": "This is the problem.", "target": "이것이 문제예요."},
+        {"known": "She said this is the only one.", "target": "그녀는 이것이 유일하다고 말했어요."},
+        {"known": "He thinks this is possible.", "target": "그는 이것이 가능하다고 생각해요."},
+        {"known": "This is the answer she was looking for.", "target": "이것이 그녀가 찾던 답이에요."},
+        {"known": "This is the time to continue.", "target": "이것이 계속할 시간이에요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "only/uniquely",
+      "target": "유일하게",
+      "phrases": [
+        {"known": "Only.", "target": "유일하게."},
+        {"known": "The only.", "target": "유일한."},
+        {"known": "Only one.", "target": "유일해요."},
+        {"known": "The only way.", "target": "유일한 방법."},
+        {"known": "The only time.", "target": "유일한 시간."},
+        {"known": "The only thing.", "target": "유일한 것이에요."},
+        {"known": "The only answer.", "target": "유일한 답이에요."},
+        {"known": "The only person.", "target": "유일한 사람."},
+        {"known": "This is the only answer.", "target": "이것이 유일한 답이에요."},
+        {"known": "She is the only one who understands.", "target": "그녀가 유일하게 이해하는 사람이에요."},
+        {"known": "He is the only one who can help.", "target": "그가 유일하게 도와줄 수 있는 사람이에요."},
+        {"known": "This is the only way it will work.", "target": "이것이 유일하게 효과가 있는 방법이에요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "has effect (attributive)",
+      "target": "효과가 있는",
+      "components": [
+        {"known": "effect", "target": "효과"},
+        {"known": "(subject marker)", "target": "가"},
+        {"known": "exists/has", "target": "있다"},
+        {"known": "(attributive)", "target": "-는"}
+      ],
+      "phrases": [
+        {"known": "Effect.", "target": "효과."},
+        {"known": "Good effect.", "target": "좋은 효과."},
+        {"known": "Some effect.", "target": "약간 효과."},
+        {"known": "Has effect.", "target": "효과가 있어요."},
+        {"known": "Is effective.", "target": "효과가 있어요."},
+        {"known": "No effect.", "target": "효과가 없어요."},
+        {"known": "Effective method.", "target": "효과가 있는 방법."},
+        {"known": "It was effective.", "target": "효과가 있었어요."},
+        {"known": "Something effective.", "target": "효과가 있는 것."},
+        {"known": "The method that is effective.", "target": "효과가 있는 방법이에요."},
+        {"known": "She found an effective way.", "target": "그녀는 효과가 있는 방법을 찾았어요."},
+        {"known": "He said the method is effective.", "target": "그는 그 방법이 효과가 있다고 말했어요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "is the way/method",
+      "target": "방법이에요",
+      "components": [
+        {"known": "way/method", "target": "방법"},
+        {"known": "is (copula)", "target": "이에요"}
+      ],
+      "phrases": [
+        {"known": "Way.", "target": "방법."},
+        {"known": "Method.", "target": "방법."},
+        {"known": "The way.", "target": "그 방법."},
+        {"known": "A good way.", "target": "좋은 방법."},
+        {"known": "Is this way.", "target": "이 방법이에요."},
+        {"known": "This is the way.", "target": "이것이 방법이에요."},
+        {"known": "The best way.", "target": "가장 좋은 방법이에요."},
+        {"known": "An easy way.", "target": "쉬운 방법이에요."},
+        {"known": "She found a new way.", "target": "그녀는 새로운 방법을 찾았어요."},
+        {"known": "He said this is the only effective way.", "target": "그는 이것이 유일하게 효과가 있는 방법이라고 말했어요."},
+        {"known": "They asked what the best way is.", "target": "그들은 가장 좋은 방법이 뭔지 물었어요."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 445,
+  "known_text": "They will be able to carry that suitcase.",
+  "target_text": "그들이 그 여행 가방을 들 수 있을 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "carry that suitcase",
+      "target": "그 여행 가방을 들다",
+      "components": [
+        {"known": "that", "target": "그"},
+        {"known": "suitcase", "target": "여행 가방"},
+        {"known": "object marker", "target": "을"},
+        {"known": "carry/lift", "target": "들다"}
+      ],
+      "phrases": [
+        {"known": "carry", "target": "들어요"},
+        {"known": "suitcase", "target": "가방이요"},
+        {"known": "that bag", "target": "그 가방이요"},
+        {"known": "lift this", "target": "이거 들어요"},
+        {"known": "carry the box", "target": "상자 들어요"},
+        {"known": "he lifts it", "target": "그가 그걸 들어요"},
+        {"known": "she carried her bag", "target": "그녀가 가방을 들었어요"},
+        {"known": "he is carrying a heavy box", "target": "그가 무거운 상자를 들고 있어요"},
+        {"known": "can you carry this for me", "target": "이거 들어 줄래요?"},
+        {"known": "the suitcase is too heavy to lift", "target": "여행 가방이 너무 무거워서 못 들어요"},
+        {"known": "she helped him carry the luggage", "target": "그녀가 짐 드는 거 도와줬어요"},
+        {"known": "he struggled to carry all the bags alone", "target": "그가 혼자 모든 가방을 들기 힘들어했어요"},
+        {"known": "they needed help to carry the furniture", "target": "그들이 가구 들려면 도움이 필요했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they will be able to carry that suitcase",
+      "target": "그들이 그 여행 가방을 들 수 있을 거예요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "carry that suitcase", "target": "그 여행 가방을 들다"},
+        {"known": "will be able to", "target": "수 있을 거예요"}
+      ],
+      "phrases": [
+        {"known": "they will", "target": "할 거예요"},
+        {"known": "will be able", "target": "수 있을 거예요"},
+        {"known": "can do it", "target": "할 수 있어요"},
+        {"known": "she will manage", "target": "그녀가 할 거예요"},
+        {"known": "he can do it himself", "target": "그가 혼자 할 수 있어요"},
+        {"known": "they will be able to finish", "target": "그들이 끝낼 수 있을 거예요"},
+        {"known": "she will be able to help you", "target": "그녀가 도와줄 수 있을 거예요"},
+        {"known": "he will be able to come tomorrow", "target": "그가 내일 올 수 있을 거예요"},
+        {"known": "we will be able to handle this", "target": "우리가 이거 감당할 수 있을 거예요"},
+        {"known": "they will be able to complete the task", "target": "그들이 과제를 완료할 수 있을 거예요"},
+        {"known": "she will be able to reach the goal", "target": "그녀가 목표에 도달할 수 있을 거예요"},
+        {"known": "he will be strong enough to lift it", "target": "그가 그거 들 만큼 힘이 될 거예요"}
+      ]
+    }
+  ]
+}

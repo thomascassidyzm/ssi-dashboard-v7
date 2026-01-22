@@ -1,0 +1,29 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 259,
+  "known_text": "An idea.",
+  "target_text": "아이디어예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "idea (concept)",
+      "target": "아이디어",
+      "phrases": [
+        {"known": "idea", "target": "아이디어"},
+        {"known": "an idea", "target": "아이디어요"},
+        {"known": "good idea", "target": "좋은 아이디어"},
+        {"known": "new idea", "target": "새 아이디어예요"},
+        {"known": "my idea", "target": "제 아이디어예요"},
+        {"known": "what idea?", "target": "무슨 아이디어예요?"},
+        {"known": "that's a good idea", "target": "좋은 아이디어예요"},
+        {"known": "I have an idea", "target": "아이디어가 있어요"},
+        {"known": "she has a good idea", "target": "그녀가 좋은 아이디어가 있어요"},
+        {"known": "do you have an idea?", "target": "아이디어가 있어요?"},
+        {"known": "that idea is interesting", "target": "그 아이디어가 재미있어요"},
+        {"known": "I think that's a great idea", "target": "그 아이디어가 좋은 것 같아요"},
+        {"known": "what do you think of this idea?", "target": "이 아이디어가 어때요?"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 102,
+  "known_text": "We're trying to say that it's not like that.",
+  "target_text": "그렇지 않다고 말하려고 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "like that (negative form)",
+      "target": "그렇지",
+      "phrases": [
+        {"known": "Like that.", "target": "그렇지."},
+        {"known": "Not so.", "target": "그렇지요."},
+        {"known": "Like this.", "target": "이렇지."},
+        {"known": "It's like that.", "target": "그렇지요."},
+        {"known": "Is it like that?", "target": "그렇지요?"},
+        {"known": "Not like that.", "target": "그렇지 않아요."},
+        {"known": "If it's like that.", "target": "그렇지 않으면."},
+        {"known": "She said it's like that.", "target": "그녀는 그렇지요라고 말했어요."},
+        {"known": "He thinks it's not like that.", "target": "그는 그렇지 않다고 생각해요."},
+        {"known": "They said it's not like that.", "target": "그들은 그렇지 않다고 말했어요."},
+        {"known": "I'm trying to say it's not like that.", "target": "그렇지 않다고 말하려고 해요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "not (quotative)",
+      "target": "않다고",
+      "components": [
+        {"known": "not", "target": "않다"},
+        {"known": "(quotative)", "target": "고"}
+      ],
+      "phrases": [
+        {"known": "Not.", "target": "않아요."},
+        {"known": "Said.", "target": "다고요."},
+        {"known": "Is not.", "target": "않아요."},
+        {"known": "Said not.", "target": "않다고요."},
+        {"known": "Not doing.", "target": "하지 않아요."},
+        {"known": "She said not.", "target": "그녀는 않다고 했어요."},
+        {"known": "He said it's not.", "target": "그는 않다고 말했어요."},
+        {"known": "They heard it's not.", "target": "그들은 않다고 들었어요."},
+        {"known": "I'm trying to say it's not.", "target": "않다고 말하려고 해요."},
+        {"known": "She wants to say it's not like that.", "target": "그녀는 그렇지 않다고 말하고 싶어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "trying to say",
+      "target": "말하려고 해요",
+      "components": [
+        {"known": "say/speak", "target": "말하다"},
+        {"known": "(intending to)", "target": "-려고"},
+        {"known": "do (polite)", "target": "해요"}
+      ],
+      "phrases": [
+        {"known": "Say.", "target": "말해요."},
+        {"known": "Said.", "target": "말했어요."},
+        {"known": "Will say.", "target": "말할 거예요."},
+        {"known": "Trying to.", "target": "하려고 해요."},
+        {"known": "Trying to say.", "target": "말하려고 해요."},
+        {"known": "Trying to speak.", "target": "말하려고 해요."},
+        {"known": "She's trying to say.", "target": "그녀는 말하려고 해요."},
+        {"known": "He's trying to explain.", "target": "그는 설명하려고 해요."},
+        {"known": "They're trying to say something.", "target": "그들은 뭔가 말하려고 해요."},
+        {"known": "I'm trying to say it's different.", "target": "다르다고 말하려고 해요."},
+        {"known": "We're trying to say that it's not like that.", "target": "그렇지 않다고 말하려고 해요."}
+      ]
+    }
+  ]
+}

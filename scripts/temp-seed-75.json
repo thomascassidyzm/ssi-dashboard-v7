@@ -1,52 +1,65 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 75,
   "known_text": "Have you got more to learn?",
-  "target_text": "もっと学ぶことがありますか？",
+  "target_text": "배울 게 더 있어요?",
   "legos": [
     {
       "idx": 1,
-      "type": "A",
-      "known": "more",
-      "target": "もっと",
+      "type": "M",
+      "known": "thing to learn (casual)",
+      "target": "배울 게",
+      "components": [
+        {"known": "learn", "target": "배우다"},
+        {"known": "thing (casual)", "target": "게"}
+      ],
       "phrases": [
-        {"known": "more", "target": "もっと"},
-        {"known": "more fun", "target": "もっと楽しい"},
-        {"known": "more difficult", "target": "もっと難しい"},
-        {"known": "more important", "target": "もっと大切"},
-        {"known": "want more", "target": "もっとほしい"},
-        {"known": "learn more", "target": "もっと学ぶ"},
-        {"known": "do it more", "target": "もっとやる"},
-        {"known": "understand it more", "target": "もっと理解する"},
-        {"known": "I want to know more", "target": "もっと知りたいです"},
-        {"known": "he wants to learn more", "target": "彼はもっと学びたいです"},
-        {"known": "she said she wants more", "target": "彼女はもっとほしいと言いました"},
-        {"known": "I think we need more time", "target": "もっと時間が必要だと思います"}
+        {"known": "To learn.", "target": "배울 거."},
+        {"known": "Thing to do.", "target": "할 게."},
+        {"known": "Learn more.", "target": "더 배워요."},
+        {"known": "I learned.", "target": "나는 배웠어요."},
+        {"known": "She learned Korean.", "target": "그녀는 한국어를 배웠어요."},
+        {"known": "There is something to learn.", "target": "배울 게 있어요."},
+        {"known": "He has more to learn.", "target": "그는 배울 게 더 있어요."},
+        {"known": "We have much to learn.", "target": "우리는 배울 게 많아요."},
+        {"known": "I still have things to learn.", "target": "나는 아직 배울 게 있어요."},
+        {"known": "She said there's more to learn.", "target": "그녀는 배울 게 더 있다고 말했어요."}
       ]
     },
     {
       "idx": 2,
-      "type": "M",
-      "known": "do you have things to learn?",
-      "target": "学ぶことがありますか？",
-      "components": [
-        {"known": "thing to learn", "target": "学ぶこと"},
-        {"known": "is there? (question)", "target": "がありますか？"}
-      ],
+      "type": "A",
+      "known": "more",
+      "target": "더",
       "phrases": [
-        {"known": "learn", "target": "学ぶ"},
-        {"known": "thing to learn", "target": "学ぶこと"},
-        {"known": "is there?", "target": "ありますか？"},
-        {"known": "do you have?", "target": "がありますか？"},
-        {"known": "things to do", "target": "やることがある"},
-        {"known": "do you have things to learn?", "target": "学ぶことがありますか？"},
-        {"known": "she has things to do", "target": "彼女はやることがあります"},
-        {"known": "is there something to say?", "target": "言うことがありますか？"},
-        {"known": "he said there are things to learn", "target": "彼は学ぶことがあると言いました"},
-        {"known": "I think there are things to understand", "target": "理解することがあると思います"},
-        {"known": "she thinks there are more things to do", "target": "彼女はもっとやることがあると思います"},
-        {"known": "we think there are things to understand", "target": "私たちは理解することがあると思います"},
-        {"known": "she wanted to know if there are things to learn", "target": "彼女は学ぶことがあるか知りたかったです"}
+        {"known": "More.", "target": "더."},
+        {"known": "More please.", "target": "더 주세요."},
+        {"known": "Want more.", "target": "더 원해요."},
+        {"known": "I need more.", "target": "더 필요해요."},
+        {"known": "Learn more.", "target": "더 배워요."},
+        {"known": "She wants more.", "target": "그녀는 더 원해요."},
+        {"known": "There is more.", "target": "더 있어요."},
+        {"known": "He worked more.", "target": "그는 더 일했어요."},
+        {"known": "We need to learn more.", "target": "우리는 더 배워야 해요."},
+        {"known": "Have you got more to understand?", "target": "이해할 게 더 있어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "is there / have (question)",
+      "target": "있어요?",
+      "phrases": [
+        {"known": "Is there?", "target": "있어요?"},
+        {"known": "Do you have?", "target": "있어요?"},
+        {"known": "Is there more?", "target": "더 있어요?"},
+        {"known": "Is he there?", "target": "그는 있어요?"},
+        {"known": "Do you have time?", "target": "시간 있어요?"},
+        {"known": "Is there something?", "target": "뭔가 있어요?"},
+        {"known": "Is there something to learn?", "target": "배울 게 있어요?"},
+        {"known": "Have you got something to understand?", "target": "이해할 게 있어요?"},
+        {"known": "Do you have more things to do today?", "target": "오늘 할 게 더 있어요?"},
+        {"known": "Have you got more things to learn this afternoon?", "target": "오늘 오후에 배울 게 더 있어요?"}
       ]
     }
   ]

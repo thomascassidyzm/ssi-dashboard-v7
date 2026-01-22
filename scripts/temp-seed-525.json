@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 525,
+  "known_text": "To check if you've been able to finish.",
+  "target_text": "끝낼 수 있었는지 확인하려고요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "been able to finish",
+      "target": "끝낼 수 있었다",
+      "components": [
+        {"known": "finish", "target": "끝내다"},
+        {"known": "was able to", "target": "수 있었다"}
+      ],
+      "phrases": [
+        {"known": "finish", "target": "끝내요"},
+        {"known": "could", "target": "할 수 있었어요"},
+        {"known": "I finished", "target": "끝냈어요"},
+        {"known": "did you finish", "target": "끝냈어요?"},
+        {"known": "I was able to", "target": "할 수 있었어요"},
+        {"known": "she finished early", "target": "그녀가 일찍 끝냈어요"},
+        {"known": "were you able to do it", "target": "할 수 있었어요?"},
+        {"known": "he was able to finish on time", "target": "그가 제시간에 끝낼 수 있었어요"},
+        {"known": "I finally managed to complete it", "target": "드디어 끝낼 수 있었어요"},
+        {"known": "she wasn't able to finish everything", "target": "그녀가 다 끝내지 못 했어요"},
+        {"known": "we were lucky to be able to finish early", "target": "일찍 끝낼 수 있어서 운 좋았어요"},
+        {"known": "thanks to her help I was able to finish the project", "target": "그녀 도움 덕분에 프로젝트 끝낼 수 있었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "if you've been able to finish",
+      "target": "끝낼 수 있었는지",
+      "components": [
+        {"known": "been able to finish", "target": "끝낼 수 있었다"},
+        {"known": "whether/if", "target": "는지"}
+      ],
+      "phrases": [
+        {"known": "whether", "target": "는지요"},
+        {"known": "if so", "target": "그렇다면요"},
+        {"known": "or not", "target": "인지 아닌지요"},
+        {"known": "I wonder if", "target": "는지 궁금해요"},
+        {"known": "did you check if", "target": "는지 확인했어요?"},
+        {"known": "she asked if he finished", "target": "그녀가 끝냈는지 물었어요"},
+        {"known": "tell me if you're done", "target": "끝났는지 말해 줘요"},
+        {"known": "I'm curious if she made it", "target": "그녀가 됐는지 궁금해요"},
+        {"known": "let me know if you completed it", "target": "끝냈는지 알려 줘요"},
+        {"known": "can you tell me if it's possible", "target": "가능한지 말해 줄 수 있어요?"},
+        {"known": "she wanted to know if he could come", "target": "그녀가 그가 올 수 있는지 알고 싶었어요"},
+        {"known": "he was checking whether everyone was ready", "target": "그가 다 준비됐는지 확인하고 있었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "to check if you've been able to finish",
+      "target": "끝낼 수 있었는지 확인하려고요",
+      "components": [
+        {"known": "if you've been able to finish", "target": "끝낼 수 있었는지"},
+        {"known": "check", "target": "확인하다"},
+        {"known": "in order to", "target": "려고"}
+      ],
+      "phrases": [
+        {"known": "check", "target": "확인해요"},
+        {"known": "to check", "target": "확인하려고요"},
+        {"known": "let me check", "target": "확인할게요"},
+        {"known": "in order to", "target": "하려고요"},
+        {"known": "I called to confirm", "target": "확인하려고 전화했어요"},
+        {"known": "she came to verify", "target": "그녀가 확인하러 왔어요"},
+        {"known": "I'll check on the status", "target": "상태 확인할게요"},
+        {"known": "he messaged to see if it was done", "target": "그가 됐는지 확인하려고 연락했어요"},
+        {"known": "she stopped by to confirm the details", "target": "그녀가 세부사항 확인하러 들렀어요"},
+        {"known": "I'm calling to make sure everything is okay", "target": "다 괜찮은지 확인하려고 전화해요"},
+        {"known": "he reached out to verify the information", "target": "그가 정보 확인하려고 연락했어요"},
+        {"known": "she wanted to check in and see how things were going", "target": "그녀가 어떻게 되고 있는지 확인하고 싶었어요"}
+      ]
+    }
+  ]
+}

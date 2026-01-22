@@ -1,52 +1,49 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 212,
   "known_text": "They wanted to ask for help.",
-  "target_text": "彼らは助けを求めたかったです。",
+  "target_text": "그들은 도움을 요청하고 싶었어요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "they (topic)",
-      "target": "彼らは",
+      "known": "to request / ask for",
+      "target": "요청하다",
       "phrases": [
-        {"known": "they", "target": "彼ら"},
-        {"known": "they (topic)", "target": "彼らは"},
-        {"known": "to them", "target": "彼らに"},
-        {"known": "they came", "target": "彼らは来ました"},
-        {"known": "they wanted to", "target": "彼らはしたかった"},
-        {"known": "they were busy", "target": "彼らは忙しかったです"},
-        {"known": "they explained it to me", "target": "彼らは私に説明しました"},
-        {"known": "they gathered here yesterday", "target": "彼らは昨日ここに集まりました"},
-        {"known": "they told us what happened", "target": "彼らは何があったか私たちに言いました"},
-        {"known": "they needed more time to do it", "target": "彼らはそれをするのにもっと時間が必要でした"},
-        {"known": "they wanted to discuss the problem with us", "target": "彼らは私たちとその問題を話し合いたかったです"},
-        {"known": "they said the work was more difficult than they thought", "target": "彼らは仕事が思ったより難しかったと言いました"}
+        {"known": "request", "target": "요청하다"},
+        {"known": "to ask for", "target": "요청하다"},
+        {"known": "requested", "target": "요청했어요"},
+        {"known": "a request", "target": "요청"},
+        {"known": "will request", "target": "요청할 거예요"},
+        {"known": "Please make a request", "target": "요청해 주세요"},
+        {"known": "She requested some time off", "target": "그녀가 시간을 요청했어요"},
+        {"known": "He requested help from his friend", "target": "그가 친구에게 도움을 요청했어요"},
+        {"known": "We requested a meeting with the manager", "target": "매니저와 회의를 요청했어요"},
+        {"known": "They requested more information about the project today", "target": "오늘 그들은 그 일에 대해 더 많은 정보를 요청했어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "wanted to ask for help",
-      "target": "助けを求めたかったです",
+      "known": "They wanted to ask for help",
+      "target": "그들은 도움을 요청하고 싶었어요",
       "components": [
-        {"known": "help (object)", "target": "助けを"},
-        {"known": "wanted to ask for", "target": "求めたかったです"}
+        {"known": "they", "target": "그들은"},
+        {"known": "help", "target": "도움을"},
+        {"known": "ask for", "target": "요청하고"},
+        {"known": "wanted to", "target": "싶었어요"}
       ],
       "phrases": [
-        {"known": "help", "target": "助け"},
-        {"known": "ask for", "target": "求める"},
-        {"known": "wanted to", "target": "たかった"},
-        {"known": "ask for help", "target": "助けを求める"},
-        {"known": "wanted to ask for", "target": "求めたかった"},
-        {"known": "I asked for help", "target": "助けを求めました"},
-        {"known": "help from friends", "target": "友達からの助け"},
-        {"known": "I needed to ask for help", "target": "助けを求める必要がありました"},
-        {"known": "she asked for my help", "target": "彼女は私の助けを求めました"},
-        {"known": "I wanted to ask for help yesterday", "target": "昨日助けを求めたかったです"},
-        {"known": "asking for help is not difficult", "target": "助けを求めるのは難しくないです"},
-        {"known": "I didn't know who to ask for help from", "target": "誰に助けを求めたらいいかわかりませんでした"},
-        {"known": "I wanted to ask for help but didn't know how", "target": "助けを求めたかったですがどうするかわかりませんでした"}
+        {"known": "they", "target": "그들은"},
+        {"known": "help", "target": "도움을"},
+        {"known": "ask for", "target": "요청하고"},
+        {"known": "wanted to", "target": "싶었어요"},
+        {"known": "ask for help", "target": "도움을 요청하다"},
+        {"known": "wanted to ask for", "target": "요청하고 싶었어요"},
+        {"known": "They wanted to ask for help", "target": "그들은 도움을 요청하고 싶었어요"},
+        {"known": "She wanted to ask for more time", "target": "그녀는 더 많은 시간을 요청하고 싶었어요"},
+        {"known": "He wanted to ask his friend for advice", "target": "그가 친구에게 조언을 요청하고 싶었어요"},
+        {"known": "We wanted to ask for help but were too nervous to do it", "target": "도움을 요청하고 싶었지만 너무 긴장해서 못 했어요"}
       ]
     }
   ]

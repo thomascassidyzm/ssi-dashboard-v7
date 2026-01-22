@@ -1,52 +1,54 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 216,
   "known_text": "I saw a few friends.",
-  "target_text": "何人かの友達に会いました。",
+  "target_text": "친구 몇 명을 만났어요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "a few friends",
-      "target": "何人かの友達に",
+      "known": "a few (people)",
+      "target": "몇 명",
       "components": [
-        {"known": "a few people", "target": "何人か"},
-        {"known": "'s (possessive)", "target": "の"},
-        {"known": "friend (to)", "target": "友達に"}
+        {"known": "how many / a few", "target": "몇"},
+        {"known": "person counter", "target": "명"}
       ],
       "phrases": [
-        {"known": "friend", "target": "友達"},
-        {"known": "a few", "target": "何人か"},
-        {"known": "to a friend", "target": "友達に"},
-        {"known": "with friends", "target": "友達と"},
-        {"known": "a few friends", "target": "何人かの友達"},
-        {"known": "a few people came", "target": "何人か来ました"},
-        {"known": "I met a few people", "target": "何人かに会いました"},
-        {"known": "I saw a friend yesterday", "target": "昨日友達に会いました"},
-        {"known": "a few of my friends were there", "target": "何人かの友達がそこにいました"},
-        {"known": "I talked with a few friends about it", "target": "何人かの友達とそれについて話しました"},
-        {"known": "I went out with a few friends on Saturday", "target": "土曜日に何人かの友達と出かけました"},
-        {"known": "a few friends said they wanted to come too", "target": "何人かの友達も来たいと言いました"}
+        {"known": "a few", "target": "몇"},
+        {"known": "person", "target": "명"},
+        {"known": "a few people", "target": "몇 명"},
+        {"known": "how many", "target": "몇 명이"},
+        {"known": "a few came", "target": "몇 명 왔어요"},
+        {"known": "how many people", "target": "몇 명이요?"},
+        {"known": "there were a few people", "target": "몇 명이 있었어요"},
+        {"known": "A few people came today", "target": "오늘 몇 명이 왔어요"},
+        {"known": "I met a few people there", "target": "거기서 몇 명을 만났어요"},
+        {"known": "How many people will come to the meeting?", "target": "회의에 몇 명이 올 거예요?"},
+        {"known": "A few people helped with the project", "target": "몇 명이 그 일을 도와줬어요"},
+        {"known": "Only a few people knew about the party last night", "target": "어젯밤 파티를 몇 명만 알았어요"}
       ]
     },
     {
       "idx": 2,
-      "type": "A",
-      "known": "I saw",
-      "target": "会いました",
+      "type": "M",
+      "known": "I saw a few friends",
+      "target": "친구 몇 명을 만났어요",
+      "components": [
+        {"known": "friend", "target": "친구"},
+        {"known": "a few people", "target": "몇 명을"},
+        {"known": "met/saw", "target": "만났어요"}
+      ],
       "phrases": [
-        {"known": "meet", "target": "会う"},
-        {"known": "I met", "target": "会いました"},
-        {"known": "I saw", "target": "会いました"},
-        {"known": "I'll meet", "target": "会います"},
-        {"known": "I met them", "target": "彼らに会いました"},
-        {"known": "I met him there", "target": "そこで彼に会いました"},
-        {"known": "I want to meet you", "target": "あなたに会いたいです"},
-        {"known": "I met her yesterday", "target": "昨日彼女に会いました"},
-        {"known": "I saw them at the weekend", "target": "週末に彼らに会いました"},
-        {"known": "I met a few friends on Saturday night", "target": "土曜日の夜に何人かの友達に会いました"},
-        {"known": "I was glad when I met them at the meeting", "target": "会いで彼らに会った時嬉しかったです"},
-        {"known": "I wanted to meet you but didn't have time", "target": "あなたに会いたかったですが時間がありませんでした"}
+        {"known": "friend", "target": "친구"},
+        {"known": "a few people", "target": "몇 명을"},
+        {"known": "met", "target": "만났어요"},
+        {"known": "a few friends", "target": "친구 몇 명"},
+        {"known": "met some friends", "target": "친구들을 만났어요"},
+        {"known": "saw a few people", "target": "몇 명을 만났어요"},
+        {"known": "I saw a few friends", "target": "친구 몇 명을 만났어요"},
+        {"known": "I saw a few friends from school yesterday", "target": "어제 학교 친구 몇 명을 만났어요"},
+        {"known": "She met a few people at the restaurant", "target": "식당에서 몇 명을 만났어요"},
+        {"known": "We saw a few friends at the park last weekend", "target": "지난 주말에 공원에서 친구 몇 명을 만났어요"}
       ]
     }
   ]

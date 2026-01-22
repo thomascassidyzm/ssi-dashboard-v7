@@ -1,0 +1,55 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 275,
+  "known_text": "Longer.",
+  "target_text": "더 길어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "long (length)",
+      "target": "길다",
+      "phrases": [
+        {"known": "long", "target": "길어요"},
+        {"known": "it's long", "target": "길어요"},
+        {"known": "long hair", "target": "긴 머리"},
+        {"known": "long road", "target": "긴 길이에요"},
+        {"known": "how long?", "target": "얼마나 길어요?"},
+        {"known": "this is long", "target": "이거 길어요"},
+        {"known": "that's too long", "target": "그거 너무 길어요"},
+        {"known": "a long movie", "target": "긴 영화예요"},
+        {"known": "the meeting was long", "target": "모임이 길었어요"},
+        {"known": "my hair is getting long", "target": "머리가 길어지고 있어요"},
+        {"known": "the line is too long today", "target": "오늘 줄이 너무 길어요"},
+        {"known": "she has very long hair", "target": "그녀가 머리가 아주 길어요"},
+        {"known": "the road to the store is long", "target": "가게까지 길이 길어요"},
+        {"known": "the flight from here is really long", "target": "여기서부터 비행이 정말 길어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "longer",
+      "target": "더 길어요",
+      "components": [
+        {"known": "more", "target": "더"},
+        {"known": "long (length)", "target": "길다"}
+      ],
+      "phrases": [
+        {"known": "more", "target": "더요"},
+        {"known": "longer", "target": "더 길어요"},
+        {"known": "even longer", "target": "더 길어요"},
+        {"known": "a bit longer", "target": "좀 더 길어요"},
+        {"known": "much longer", "target": "훨씬 더 길어요"},
+        {"known": "this is longer", "target": "이게 더 길어요"},
+        {"known": "that one is longer", "target": "저게 더 길어요"},
+        {"known": "I need it longer", "target": "더 길게 필요해요"},
+        {"known": "can you make it longer?", "target": "더 길게 할 수 있어요?"},
+        {"known": "the wait was longer than expected", "target": "기다리는 게 생각보다 더 길었어요"},
+        {"known": "the second movie was longer", "target": "두 번째 영화가 더 길었어요"},
+        {"known": "I need it to be a bit longer", "target": "좀 더 길어야 해요"},
+        {"known": "this movie is longer than the first one", "target": "이 영화가 첫 번째보다 더 길어요"}
+      ]
+    }
+  ]
+}

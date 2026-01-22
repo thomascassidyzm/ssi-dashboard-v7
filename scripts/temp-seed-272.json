@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 272,
+  "known_text": "Yes that sounds like a great idea.",
+  "target_text": "네 그거 좋은 생각인 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "good idea",
+      "target": "좋은 생각",
+      "components": [
+        {"known": "good", "target": "좋다"},
+        {"known": "idea", "target": "생각"}
+      ],
+      "phrases": [
+        {"known": "good", "target": "좋아요"},
+        {"known": "thought", "target": "생각이요"},
+        {"known": "good idea", "target": "좋은 생각"},
+        {"known": "bad idea", "target": "나쁜 생각"},
+        {"known": "my thought", "target": "제 생각이에요"},
+        {"known": "great idea", "target": "좋은 생각이에요"},
+        {"known": "that's a good idea", "target": "좋은 생각이에요"},
+        {"known": "I have a good idea", "target": "좋은 생각이 있어요"},
+        {"known": "what do you think?", "target": "어떻게 생각해요?"},
+        {"known": "that was a good idea", "target": "좋은 생각이었어요"},
+        {"known": "I think that's a good idea", "target": "좋은 생각인 것 같아요"},
+        {"known": "she had a good idea yesterday", "target": "그녀가 어제 좋은 생각이 있었어요"},
+        {"known": "I had a good idea this morning", "target": "오늘 아침에 좋은 생각이 났어요"},
+        {"known": "that was such a good idea", "target": "그게 정말 좋은 생각이었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "sounds like a good idea",
+      "target": "좋은 생각인 것 같다",
+      "components": [
+        {"known": "good idea", "target": "좋은 생각"},
+        {"known": "being (noun)", "target": "인"},
+        {"known": "seems like", "target": "것 같다"}
+      ],
+      "phrases": [
+        {"known": "seems like", "target": "것 같아요"},
+        {"known": "seems good", "target": "좋은 것 같아요"},
+        {"known": "I think so", "target": "그런 것 같아요"},
+        {"known": "sounds like", "target": "인 것 같아요"},
+        {"known": "it seems like a good idea", "target": "좋은 생각인 것 같아요"},
+        {"known": "seems interesting", "target": "재미있는 것 같아요"},
+        {"known": "that sounds like fun", "target": "재미있을 것 같아요"},
+        {"known": "she thinks it's a good idea", "target": "그녀가 좋은 생각인 것 같다고 해요"},
+        {"known": "it seems like a great plan", "target": "좋은 계획인 것 같아요"},
+        {"known": "he thinks that's a good idea", "target": "그가 좋은 생각인 것 같다고 해요"},
+        {"known": "that sounds like an interesting idea", "target": "재미있는 생각인 것 같아요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "yes that sounds like a great idea",
+      "target": "네 그거 좋은 생각인 것 같아요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "that", "target": "그거"},
+        {"known": "sounds like a good idea", "target": "좋은 생각인 것 같다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "that one", "target": "그거요"},
+        {"known": "yes that's good", "target": "네 좋아요"},
+        {"known": "yes I think so", "target": "네 그런 것 같아요"},
+        {"known": "that sounds good", "target": "그거 좋은 것 같아요"},
+        {"known": "yes it seems so", "target": "네 그런 것 같아요"},
+        {"known": "that sounds like a great idea", "target": "그거 좋은 생각인 것 같아요"},
+        {"known": "yes I agree with that", "target": "네 저도 그렇게 생각해요"},
+        {"known": "yes that seems interesting", "target": "네 그거 재미있는 것 같아요"},
+        {"known": "she said yes that sounds good", "target": "그녀가 네 좋은 것 같다고 말했어요"},
+        {"known": "yes I think that's a great idea", "target": "네 그거 좋은 생각인 것 같아요"}
+      ]
+    }
+  ]
+}

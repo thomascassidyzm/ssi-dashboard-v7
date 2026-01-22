@@ -1,0 +1,80 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 277,
+  "known_text": "Yes I've got an important meeting early next week.",
+  "target_text": "네 다음 주 초에 중요한 모임이 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "early next week",
+      "target": "다음 주 초에",
+      "components": [
+        {"known": "next week", "target": "다음 주"},
+        {"known": "beginning/early", "target": "초"},
+        {"known": "at/in", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "next week", "target": "다음 주요"},
+        {"known": "early", "target": "초에요"},
+        {"known": "at the beginning", "target": "초에요"},
+        {"known": "early next week", "target": "다음 주 초에"},
+        {"known": "beginning of the month", "target": "이번 달 초에"},
+        {"known": "see you next week", "target": "다음 주에 봐요"},
+        {"known": "early next month", "target": "다음 달 초에"},
+        {"known": "I'll do it early next week", "target": "다음 주 초에 할 거예요"},
+        {"known": "she's coming early next week", "target": "그녀가 다음 주 초에 와요"},
+        {"known": "the meeting is early next week", "target": "모임이 다음 주 초에 있어요"},
+        {"known": "we planned it for early next week", "target": "다음 주 초로 계획했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "important meeting",
+      "target": "중요한 모임",
+      "components": [
+        {"known": "important", "target": "중요하다"},
+        {"known": "meeting", "target": "모임"}
+      ],
+      "phrases": [
+        {"known": "meeting", "target": "모임이요"},
+        {"known": "important", "target": "중요해요"},
+        {"known": "a meeting", "target": "모임이에요"},
+        {"known": "important meeting", "target": "중요한 모임"},
+        {"known": "today's meeting", "target": "오늘 모임이에요"},
+        {"known": "an important event", "target": "중요한 일이에요"},
+        {"known": "I have a meeting", "target": "모임이 있어요"},
+        {"known": "the important meeting is tomorrow", "target": "중요한 모임이 내일 있어요"},
+        {"known": "she has an important meeting", "target": "그녀가 중요한 모임이 있어요"},
+        {"known": "I can't miss this important meeting", "target": "이 중요한 모임을 놓칠 수 없어요"},
+        {"known": "he told me about the important meeting", "target": "그가 중요한 모임에 대해 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "yes I've got an important meeting early next week",
+      "target": "네 다음 주 초에 중요한 모임이 있어요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "early next week", "target": "다음 주 초에"},
+        {"known": "important meeting", "target": "중요한 모임"},
+        {"known": "have/exist", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "I have", "target": "있어요"},
+        {"known": "yes I do", "target": "네 그래요"},
+        {"known": "I have a meeting", "target": "모임이 있어요"},
+        {"known": "yes next week", "target": "네 다음 주에요"},
+        {"known": "yes I have something", "target": "네 뭔가 있어요"},
+        {"known": "yes I'm busy that day", "target": "네 그날 바빠요"},
+        {"known": "yes I have work next week", "target": "네 다음 주에 일 있어요"},
+        {"known": "yes I've got plans early next week", "target": "네 다음 주 초에 계획 있어요"},
+        {"known": "she said yes she has a meeting then", "target": "그녀가 네 그때 모임이 있다고 말했어요"},
+        {"known": "yes I've got something important next week", "target": "네 다음 주에 중요한 것이 있어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 310,
+  "known_text": "She could write a story about that man.",
+  "target_text": "그녀가 저 남자에 대한 이야기를 쓸 수 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "write a story",
+      "target": "이야기를 쓰다",
+      "components": [
+        {"known": "story", "target": "이야기"},
+        {"known": "object marker", "target": "를"},
+        {"known": "write", "target": "쓰다"}
+      ],
+      "phrases": [
+        {"known": "story", "target": "이야기요"},
+        {"known": "write", "target": "써요"},
+        {"known": "a story", "target": "이야기예요"},
+        {"known": "write it", "target": "써요"},
+        {"known": "wrote a story", "target": "이야기를 썼어요"},
+        {"known": "writing a story", "target": "이야기를 쓰고 있어요"},
+        {"known": "a short story", "target": "짧은 이야기"},
+        {"known": "write me a story", "target": "이야기를 써 주세요"},
+        {"known": "I want to write a story", "target": "이야기를 쓰고 싶어요"},
+        {"known": "she wrote a beautiful story", "target": "그녀가 아름다운 이야기를 썼어요"},
+        {"known": "my friend is writing a story about Korea", "target": "제 친구가 한국에 대한 이야기를 쓰고 있어요"},
+        {"known": "he finished writing the story yesterday", "target": "그가 어제 이야기를 다 썼어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "about that man",
+      "target": "저 남자에 대한",
+      "components": [
+        {"known": "that (over there)", "target": "저"},
+        {"known": "man", "target": "남자"},
+        {"known": "about (concerning)", "target": "에 대한"}
+      ],
+      "phrases": [
+        {"known": "that man", "target": "저 남자요"},
+        {"known": "about", "target": "대해요"},
+        {"known": "about him", "target": "그에 대해"},
+        {"known": "about that", "target": "그거에 대해"},
+        {"known": "about that man", "target": "저 남자에 대해"},
+        {"known": "a story about him", "target": "그에 대한 이야기"},
+        {"known": "talking about that man", "target": "저 남자에 대해 얘기해요"},
+        {"known": "a book about that person", "target": "그 사람에 대한 책이에요"},
+        {"known": "telling me about that man", "target": "저 남자에 대해 말해 줬어요"},
+        {"known": "I heard about him from my friend", "target": "친구한테 그에 대해 들었어요"},
+        {"known": "there's a rumor about that man", "target": "저 남자에 대한 소문이 있어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she could write a story about that man",
+      "target": "그녀가 저 남자에 대한 이야기를 쓸 수 있어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "about that man", "target": "저 남자에 대한"},
+        {"known": "write a story", "target": "이야기를 쓰다"},
+        {"known": "can/could (ability)", "target": "ㄹ 수 있다"}
+      ],
+      "phrases": [
+        {"known": "she could", "target": "그녀가 할 수 있어요"},
+        {"known": "she can", "target": "할 수 있어요"},
+        {"known": "could write", "target": "쓸 수 있어요"},
+        {"known": "write a story", "target": "이야기를 써요"},
+        {"known": "she can write", "target": "그녀가 쓸 수 있어요"},
+        {"known": "she could write it", "target": "그녀가 그거 쓸 수 있어요"},
+        {"known": "he could write a book", "target": "그가 책을 쓸 수 있어요"},
+        {"known": "she could tell that story", "target": "그녀가 그 이야기를 할 수 있어요"},
+        {"known": "my friend could write about Korea", "target": "제 친구가 한국에 대해 쓸 수 있어요"},
+        {"known": "he could write an interesting story", "target": "그가 재미있는 이야기를 쓸 수 있어요"},
+        {"known": "she could write a story about her life", "target": "그녀가 인생에 대한 이야기를 쓸 수 있어요"},
+        {"known": "my mother could write a story about our family", "target": "어머니가 가족에 대한 이야기를 쓸 수 있어요"},
+        {"known": "anyone could write a story about that interesting man", "target": "누구나 그 재미있는 남자에 대한 이야기를 쓸 수 있어요"}
+      ]
+    }
+  ]
+}

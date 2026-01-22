@@ -1,0 +1,61 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 104,
+  "known_text": "We need to change what we're doing.",
+  "target_text": "하고 있는 것을 바꿔야 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what (we're) doing (object)",
+      "target": "하고 있는 것을",
+      "components": [
+        {"known": "do", "target": "하다"},
+        {"known": "(progressive)", "target": "-고 있"},
+        {"known": "(attributive)", "target": "-는"},
+        {"known": "thing (object)", "target": "것을"}
+      ],
+      "phrases": [
+        {"known": "Doing.", "target": "해요."},
+        {"known": "Am doing.", "target": "하고 있어요."},
+        {"known": "Did.", "target": "했어요."},
+        {"known": "What is.", "target": "뭐예요."},
+        {"known": "What doing.", "target": "하고 있는 것."},
+        {"known": "What I'm doing.", "target": "하고 있는 것."},
+        {"known": "Doing that.", "target": "그걸 하고 있어요."},
+        {"known": "What are you doing?", "target": "뭘 하고 있어요?"},
+        {"known": "She likes what he's doing.", "target": "그녀는 그가 하고 있는 것을 좋아해요."},
+        {"known": "He changed what she's doing.", "target": "그는 그녀가 하고 있는 것을 바꿨어요."},
+        {"known": "They see what we're doing.", "target": "그들은 우리가 하고 있는 것을 봐요."},
+        {"known": "I want to change what I'm doing.", "target": "하고 있는 것을 바꾸고 싶어요."},
+        {"known": "We need to change what we're doing.", "target": "하고 있는 것을 바꿔야 해요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "need to change",
+      "target": "바꿔야 해요",
+      "components": [
+        {"known": "change", "target": "바꾸다"},
+        {"known": "(must)", "target": "-어야"},
+        {"known": "do (polite)", "target": "해요"}
+      ],
+      "phrases": [
+        {"known": "Change.", "target": "바꿔요."},
+        {"known": "Changed.", "target": "바꿨어요."},
+        {"known": "Will change.", "target": "바꿀 거예요."},
+        {"known": "Must do.", "target": "해야 해요."},
+        {"known": "Need to change.", "target": "바꿔야 해요."},
+        {"known": "Should change.", "target": "바꿔야 해요."},
+        {"known": "Must change all.", "target": "다 바꿔야 해요."},
+        {"known": "Must change now.", "target": "지금 바꿔야 해요."},
+        {"known": "She needs to change it.", "target": "그녀는 그것을 바꿔야 해요."},
+        {"known": "He needs to change the method.", "target": "그는 방법을 바꿔야 해요."},
+        {"known": "They need to change direction.", "target": "그들은 방향을 바꿔야 해요."},
+        {"known": "I need to change what I'm doing.", "target": "하고 있는 것을 바꿔야 해요."},
+        {"known": "We should change the time.", "target": "시간을 바꿔야 해요."}
+      ]
+    }
+  ]
+}

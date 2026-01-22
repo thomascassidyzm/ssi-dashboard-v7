@@ -1,0 +1,105 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 320,
+  "known_text": "He doesn't need to buy another television this year.",
+  "target_text": "그가 올해 다른 텔레비전을 살 필요가 없어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "this year",
+      "target": "올해",
+      "phrases": [
+        {"known": "this year", "target": "올해요"},
+        {"known": "this year is", "target": "올해는요"},
+        {"known": "this year too", "target": "올해도요"},
+        {"known": "since this year", "target": "올해부터"},
+        {"known": "until this year", "target": "올해까지"},
+        {"known": "this year I'm busy", "target": "올해 바빠요"},
+        {"known": "I learned a lot this year", "target": "올해 많이 배웠어요"},
+        {"known": "we're traveling this year", "target": "올해 여행 가요"},
+        {"known": "this year has been good", "target": "올해 좋았어요"},
+        {"known": "I hope this year goes well", "target": "올해 잘 됐으면 좋겠어요"},
+        {"known": "this year I plan to read more", "target": "올해 책을 더 읽을 계획이에요"},
+        {"known": "my friend got married this year", "target": "제 친구가 올해 결혼했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "another television",
+      "target": "다른 텔레비전",
+      "components": [
+        {"known": "another/different", "target": "다른"},
+        {"known": "television", "target": "텔레비전"}
+      ],
+      "phrases": [
+        {"known": "television", "target": "텔레비전이요"},
+        {"known": "the TV", "target": "그 텔레비전"},
+        {"known": "another one", "target": "다른 거요"},
+        {"known": "another TV", "target": "다른 텔레비전"},
+        {"known": "a new television", "target": "새 텔레비전"},
+        {"known": "the bigger television", "target": "더 큰 텔레비전"},
+        {"known": "I need another television", "target": "다른 텔레비전이 필요해요"},
+        {"known": "she bought another television", "target": "그녀가 다른 텔레비전을 샀어요"},
+        {"known": "we should get another television", "target": "다른 텔레비전을 사야 해요"},
+        {"known": "the other television is in the bedroom", "target": "다른 텔레비전이 방에 있어요"},
+        {"known": "I don't want another television", "target": "다른 텔레비전 안 원해요"},
+        {"known": "he's looking for another television on sale", "target": "그가 세일하는 다른 텔레비전을 찾고 있어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "doesn't need to buy",
+      "target": "살 필요가 없다",
+      "components": [
+        {"known": "buy", "target": "사다"},
+        {"known": "need", "target": "필요"},
+        {"known": "subject marker", "target": "가"},
+        {"known": "not exist", "target": "없다"}
+      ],
+      "phrases": [
+        {"known": "buy", "target": "사요"},
+        {"known": "need", "target": "필요해요"},
+        {"known": "no need", "target": "필요 없어요"},
+        {"known": "don't need to", "target": "필요가 없어요"},
+        {"known": "doesn't need to buy", "target": "살 필요가 없어요"},
+        {"known": "I don't need to buy it", "target": "그거 살 필요가 없어요"},
+        {"known": "you don't need to do that", "target": "그거 할 필요가 없어요"},
+        {"known": "she doesn't need to come early", "target": "그녀가 일찍 올 필요가 없어요"},
+        {"known": "we don't need to buy more", "target": "더 살 필요가 없어요"},
+        {"known": "he said he doesn't need to buy anything", "target": "그가 아무것도 살 필요가 없다고 했어요"},
+        {"known": "you don't need to bring anything", "target": "아무것도 가져올 필요가 없어요"},
+        {"known": "there's no need to worry about that", "target": "그것에 대해 걱정할 필요가 없어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "he doesn't need to buy another television this year",
+      "target": "그가 올해 다른 텔레비전을 살 필요가 없어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "this year", "target": "올해"},
+        {"known": "another television", "target": "다른 텔레비전"},
+        {"known": "object marker", "target": "을"},
+        {"known": "doesn't need to buy", "target": "살 필요가 없다"}
+      ],
+      "phrases": [
+        {"known": "he doesn't", "target": "그가 안 해요"},
+        {"known": "doesn't need", "target": "필요 없어요"},
+        {"known": "no need to buy", "target": "살 필요가 없어요"},
+        {"known": "he doesn't need to", "target": "그가 할 필요가 없어요"},
+        {"known": "no need to buy it this year", "target": "올해 그거 살 필요가 없어요"},
+        {"known": "she doesn't need to buy a new car", "target": "그녀가 새 차를 살 필요가 없어요"},
+        {"known": "I don't need to buy anything else this year", "target": "올해 다른 거 살 필요가 없어요"},
+        {"known": "he mentioned he doesn't need to buy one now", "target": "그가 지금 살 필요가 없다고 했어요"},
+        {"known": "my parents don't need to buy any more furniture", "target": "부모님이 더 가구를 살 필요가 없어요"},
+        {"known": "she said she doesn't need to get another phone", "target": "그녀가 다른 전화를 살 필요가 없다고 했어요"},
+        {"known": "we decided we don't need to buy a new one this year", "target": "올해 새 거 살 필요가 없다고 결정했어요"},
+        {"known": "he realized he doesn't need to spend money on that", "target": "그가 그거에 돈을 쓸 필요가 없다고 깨달았어요"}
+      ]
+    }
+  ]
+}

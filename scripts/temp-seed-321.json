@@ -1,0 +1,28 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 321,
+  "known_text": "A book.",
+  "target_text": "책.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "book",
+      "target": "책",
+      "phrases": [
+        {"known": "book", "target": "책이요"},
+        {"known": "a book", "target": "책이에요"},
+        {"known": "the book", "target": "그 책이요"},
+        {"known": "this book", "target": "이 책이요"},
+        {"known": "that book", "target": "저 책이요"},
+        {"known": "reading a book", "target": "책 읽고 있어요"},
+        {"known": "I bought a book", "target": "책 샀어요"},
+        {"known": "the book is interesting", "target": "그 책이 재미있어요"},
+        {"known": "I love reading books", "target": "책 읽는 것 좋아해요"},
+        {"known": "she gave me a book", "target": "그녀가 책을 줬어요"},
+        {"known": "this is a really good book", "target": "이거 정말 좋은 책이에요"},
+        {"known": "can you recommend a good book?", "target": "좋은 책 추천해 줄 수 있어요?"}
+      ]
+    }
+  ]
+}

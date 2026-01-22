@@ -1,55 +1,103 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 125,
   "known_text": "I believe that your idea was very good.",
-  "target_text": "あなたの考えはとても良かったと信じています。",
+  "target_text": "당신의 아이디어가 정말 좋았다고 믿어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "your idea was very good",
-      "target": "あなたの考えはとても良かった",
-      "components": [
-        {"known": "your idea (topic)", "target": "あなたの考えは"},
-        {"known": "was very good", "target": "とても良かった"}
-      ],
+      "type": "A",
+      "known": "believe",
+      "target": "믿다",
       "phrases": [
-        {"known": "very", "target": "とても"},
-        {"known": "your", "target": "あなたの"},
-        {"known": "was good", "target": "良かった"},
-        {"known": "your idea", "target": "あなたの考え"},
-        {"known": "was very good", "target": "とても良かった"},
-        {"known": "your idea was", "target": "あなたの考えは"},
-        {"known": "your idea was good", "target": "あなたの考えは良かった"},
-        {"known": "your idea was very good", "target": "あなたの考えはとても良かった"},
-        {"known": "your conversation was very good", "target": "あなたの会話はとても良かった"},
-        {"known": "my idea wasn't very good yesterday", "target": "昨日私の考えはあまり良くなかった"},
-        {"known": "her idea to go by bus was very good", "target": "彼女のバスで行く考えはとても良かった"},
-        {"known": "the idea we had before the conversation was very good", "target": "会話の前にあった考えはとても良かった"}
+        {"known": "believe", "target": "믿다"},
+        {"known": "I believe", "target": "믿어요"},
+        {"known": "I believe you", "target": "믿어요"},
+        {"known": "I believe it", "target": "그걸 믿어요"},
+        {"known": "I don't believe it", "target": "그걸 믿지 않아요"},
+        {"known": "do you believe it?", "target": "그걸 믿어요?"},
+        {"known": "I already believe you", "target": "이미 당신을 믿어요"},
+        {"known": "I still believe it again", "target": "다시 아직도 그걸 믿어요"},
+        {"known": "unfortunately I don't believe it yet", "target": "안타깝게도 아직 그걸 믿지 않아요"},
+        {"known": "I believe that's okay and I agree", "target": "그게 괜찮다고 믿고 동의해요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "really/very",
+      "target": "정말",
+      "phrases": [
+        {"known": "really", "target": "정말"},
+        {"known": "really good", "target": "정말 좋아요"},
+        {"known": "it's really short", "target": "정말 짧아요"},
+        {"known": "I really like it", "target": "정말 좋아해요"},
+        {"known": "it's not really good yet", "target": "아직 정말 좋지 않아요"},
+        {"known": "the puppy is really good", "target": "강아지가 정말 좋아요"},
+        {"known": "I really understand it slowly again", "target": "다시 천천히 정말 이해해요"},
+        {"known": "the afternoon was really short unfortunately", "target": "안타깝게도 오후가 정말 짧았어요"},
+        {"known": "unfortunately it's not really good at all", "target": "안타깝게도 정말 전혀 좋지 않아요"},
+        {"known": "I really believe that you already understand it well", "target": "이미 잘 이해한다고 정말 믿어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "idea (loanword)",
+      "target": "아이디어",
+      "phrases": [
+        {"known": "idea", "target": "아이디어"},
+        {"known": "my idea", "target": "제 아이디어"},
+        {"known": "an idea", "target": "아이디어가"},
+        {"known": "your idea", "target": "당신의 아이디어"},
+        {"known": "this idea", "target": "이 아이디어"},
+        {"known": "I have an idea", "target": "아이디어가 있어요"},
+        {"known": "your idea is good", "target": "당신의 아이디어가 좋아요"},
+        {"known": "the idea was really short", "target": "아이디어가 정말 짧았어요"},
+        {"known": "I don't have an idea yet", "target": "아직 아이디어가 없어요"},
+        {"known": "unfortunately I don't agree with that idea", "target": "안타깝게도 그 아이디어에 동의하지 않아요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "'s (possessive)",
+      "target": "의",
+      "phrases": [
+        {"known": "'s", "target": "의"},
+        {"known": "your", "target": "당신의"},
+        {"known": "my", "target": "저의"},
+        {"known": "your idea", "target": "당신의 아이디어"},
+        {"known": "my idea", "target": "저의 아이디어"},
+        {"known": "your understanding", "target": "당신의 이해"},
+        {"known": "your puppy is good", "target": "당신의 강아지가 좋아요"},
+        {"known": "my afternoon was really short", "target": "저의 오후가 정말 짧았어요"},
+        {"known": "I already have your idea again", "target": "다시 당신의 아이디어가 이미 있어요"},
+        {"known": "unfortunately your idea is not very good yet", "target": "안타깝게도 아직 당신의 아이디어가 별로 좋지 않아요"}
+      ]
+    },
+    {
+      "idx": 5,
       "type": "M",
-      "known": "I believe that",
-      "target": "と信じています",
+      "known": "I believe that your idea was very good",
+      "target": "당신의 아이디어가 정말 좋았다고 믿어요",
       "components": [
-        {"known": "quotation", "target": "と"},
-        {"known": "believe", "target": "信じています"}
+        {"known": "your", "target": "당신의"},
+        {"known": "idea", "target": "아이디어가"},
+        {"known": "was really good", "target": "정말 좋았다"},
+        {"known": "I believe that", "target": "~다고 믿다"}
       ],
       "phrases": [
-        {"known": "believe", "target": "信じる"},
-        {"known": "I believe", "target": "信じています"},
-        {"known": "that (quote)", "target": "と"},
-        {"known": "I believe that", "target": "と信じています"},
-        {"known": "she believes that", "target": "彼女はと信じています"},
-        {"known": "I believed it", "target": "信じていました"},
-        {"known": "do you believe that", "target": "と信じていますか"},
-        {"known": "I believe it went well", "target": "うまくいったと信じています"},
-        {"known": "I believe we learned a lot today", "target": "今日たくさん学んだと信じています"},
-        {"known": "my friend believes it was a good idea", "target": "友達はいい考えだったと信じています"},
-        {"known": "I believe the conversation was interesting", "target": "会話は面白かったと信じています"},
-        {"known": "I believe it's starting to feel easier now", "target": "今簡単に感じ始めていると信じています"}
+        {"known": "your", "target": "당신의"},
+        {"known": "I believe", "target": "믿어요"},
+        {"known": "your idea", "target": "당신의 아이디어"},
+        {"known": "was really good", "target": "정말 좋았어요"},
+        {"known": "I believe that your idea was good", "target": "당신의 아이디어가 좋았다고 믿어요"},
+        {"known": "I believe that your idea was really good", "target": "당신의 아이디어가 정말 좋았다고 믿어요"},
+        {"known": "I already believe that your idea was really good", "target": "이미 당신의 아이디어가 정말 좋았다고 믿어요"},
+        {"known": "I still believe that your idea was really good", "target": "아직도 당신의 아이디어가 정말 좋았다고 믿어요"},
+        {"known": "I don't believe that your idea was very good yet", "target": "아직 당신의 아이디어가 정말 좋았다고 믿지 않아요"},
+        {"known": "unfortunately I don't believe that your idea was very good", "target": "안타깝게도 당신의 아이디어가 정말 좋았다고 믿지 않아요"}
       ]
     }
   ]

@@ -1,0 +1,34 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 539,
+  "known_text": "But it's getting late.",
+  "target_text": "근데 늦어지고 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "but it's getting late",
+      "target": "근데 늦어지고 있어요",
+      "components": [
+        {"known": "but", "target": "근데"},
+        {"known": "getting late", "target": "늦어지다"},
+        {"known": "is -ing", "target": "고 있다"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "근데요"},
+        {"known": "late", "target": "늦어요"},
+        {"known": "is doing", "target": "하고 있어요"},
+        {"known": "too late", "target": "너무 늦었어요"},
+        {"known": "I'm waiting", "target": "기다리고 있어요"},
+        {"known": "it's getting cold", "target": "추워지고 있어요"},
+        {"known": "I'm late", "target": "늦었어요"},
+        {"known": "she's getting better", "target": "그녀가 나아지고 있어요"},
+        {"known": "it's getting dark outside", "target": "어두워지고 있어요"},
+        {"known": "the situation is getting worse", "target": "상황 나빠지고 있어요"},
+        {"known": "but we need to leave soon", "target": "근데 우리 곧 가야 해요"},
+        {"known": "it's getting harder to focus these days", "target": "요즘 집중하기 어려워지고 있어요"},
+        {"known": "it's getting late so let's wrap up", "target": "늦어지고 있으니까 마무리해요"}
+      ]
+    }
+  ]
+}

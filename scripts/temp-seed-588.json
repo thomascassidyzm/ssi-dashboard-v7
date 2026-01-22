@@ -1,0 +1,53 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 588,
+  "target_text": "그래서 빨리 커서 집을 떠나고 싶었어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "grow up and leave home",
+      "target": "커서 집을 떠나다",
+      "components": [
+        {"known": "grow up", "target": "크다"},
+        {"known": "leave home", "target": "집을 떠나다"}
+      ],
+      "phrases": [
+        {"known": "grow", "target": "크다"},
+        {"known": "leave", "target": "떠나다"},
+        {"known": "home", "target": "집"},
+        {"known": "leave home", "target": "집을 떠나다"},
+        {"known": "when you grow up", "target": "커서"},
+        {"known": "grow up and leave home", "target": "커서 집을 떠나다"},
+        {"known": "when did you leave home", "target": "언제 집을 떠났어요?"},
+        {"known": "I left home when I was young", "target": "저는 어릴 때 집을 떠났어요"},
+        {"known": "many young people want to leave home", "target": "많은 젊은 사람들이 집을 떠나고 싶어해요"},
+        {"known": "my sister left home to study abroad", "target": "언니가 유학하러 집을 떠났어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "so I wanted to grow up and leave home",
+      "target": "그래서 빨리 커서 집을 떠나고 싶었어요",
+      "components": [
+        {"known": "so", "target": "그래서"},
+        {"known": "I wanted to", "target": "싶었어요"},
+        {"known": "grow up and leave home", "target": "커서 집을 떠나다"}
+      ],
+      "phrases": [
+        {"known": "so", "target": "그래서"},
+        {"known": "quickly", "target": "빨리"},
+        {"known": "I wanted to", "target": "싶었어요"},
+        {"known": "so I wanted to", "target": "그래서 싶었어요"},
+        {"known": "I wanted to quickly", "target": "빨리 하고 싶었어요"},
+        {"known": "so I wanted to grow up and leave home", "target": "그래서 빨리 커서 집을 떠나고 싶었어요"},
+        {"known": "that is why I wanted to grow up quickly", "target": "그래서 빨리 크고 싶었어요"},
+        {"known": "so she wanted to grow up and travel the world", "target": "그래서 커서 세계 여행을 하고 싶었어요"},
+        {"known": "when I was a child I wanted to grow up and be independent", "target": "어릴 때 빨리 커서 독립하고 싶었어요"},
+        {"known": "so my brother wanted to grow up and become a teacher", "target": "그래서 남동생은 커서 선생님이 되고 싶었어요"},
+        {"known": "we all wanted to grow up quickly and do what we wanted", "target": "우리 모두 빨리 커서 하고 싶은 걸 하고 싶었어요"}
+      ]
+    }
+  ]
+}

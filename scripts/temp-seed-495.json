@@ -1,0 +1,32 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 495,
+  "known_text": "When it matters.",
+  "target_text": "중요할 때요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "when it matters",
+      "target": "중요할 때",
+      "components": [
+        {"known": "to matter/be important", "target": "중요하다"},
+        {"known": "when", "target": "때"}
+      ],
+      "phrases": [
+        {"known": "when", "target": "때요"},
+        {"known": "important", "target": "중요해요"},
+        {"known": "it matters", "target": "중요해요"},
+        {"known": "that's important", "target": "그게 중요해요"},
+        {"known": "when you need it", "target": "필요할 때요"},
+        {"known": "when it's urgent", "target": "급할 때요"},
+        {"known": "this matters a lot", "target": "이게 정말 중요해요"},
+        {"known": "when it really counts", "target": "정말 중요할 때요"},
+        {"known": "she knows when it matters", "target": "그녀가 중요할 때 알아요"},
+        {"known": "he always shows up when it counts", "target": "그가 중요할 때 항상 나타나요"},
+        {"known": "the decision matters more than anything", "target": "결정이 뭐보다 중요해요"},
+        {"known": "she speaks up when it's important", "target": "그녀가 중요할 때 말해요"}
+      ]
+    }
+  ]
+}

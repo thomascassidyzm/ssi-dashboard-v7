@@ -1,0 +1,76 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 273,
+  "known_text": "No unfortunately I've got too much work.",
+  "target_text": "아니요 아쉽게도 일이 너무 많아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "sadly (regret)",
+      "target": "아쉽게도",
+      "phrases": [
+        {"known": "sadly", "target": "아쉽게도"},
+        {"known": "regrettably", "target": "아쉽게도요"},
+        {"known": "sadly no", "target": "아쉽게도 아니에요"},
+        {"known": "sadly yes", "target": "아쉽게도 네요"},
+        {"known": "sadly I can't", "target": "아쉽게도 못 해요"},
+        {"known": "sadly it's closed", "target": "아쉽게도 닫혔어요"},
+        {"known": "sadly she left already", "target": "아쉽게도 그녀가 이미 갔어요"},
+        {"known": "sadly I don't have time", "target": "아쉽게도 시간이 없어요"},
+        {"known": "sadly I won't be able to go", "target": "아쉽게도 못 갈 것 같아요"},
+        {"known": "sadly he's not here today", "target": "아쉽게도 그가 오늘 여기 없어요"},
+        {"known": "sadly I couldn't meet her yesterday", "target": "아쉽게도 어제 그녀를 못 만났어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "too much work",
+      "target": "일이 너무 많다",
+      "components": [
+        {"known": "work", "target": "일"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "too much", "target": "너무"},
+        {"known": "many/much", "target": "많다"}
+      ],
+      "phrases": [
+        {"known": "work", "target": "일이요"},
+        {"known": "too much", "target": "너무 많아요"},
+        {"known": "lots of work", "target": "일이 많아요"},
+        {"known": "too much work", "target": "일이 너무 많아요"},
+        {"known": "there's a lot to do", "target": "할 일이 많아요"},
+        {"known": "I have so much work", "target": "일이 너무 많아요"},
+        {"known": "not too much work", "target": "일이 별로 안 많아요"},
+        {"known": "she has too much work", "target": "그녀가 일이 너무 많아요"},
+        {"known": "I had too much work today", "target": "오늘 일이 너무 많았어요"},
+        {"known": "there's too much work this week", "target": "이번 주에 일이 너무 많아요"},
+        {"known": "he said he has too much work", "target": "그가 일이 너무 많다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "no sadly I've got too much work",
+      "target": "아니요 아쉽게도 일이 너무 많아요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "sadly (regret)", "target": "아쉽게도"},
+        {"known": "too much work", "target": "일이 너무 많다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "sadly", "target": "아쉽게도요"},
+        {"known": "no I can't", "target": "아니요 못 해요"},
+        {"known": "too much work", "target": "일이 너무 많아요"},
+        {"known": "no sadly", "target": "아니요 아쉽게도요"},
+        {"known": "no I'm busy", "target": "아니요 바빠요"},
+        {"known": "sadly I'm busy", "target": "아쉽게도 바빠요"},
+        {"known": "no I have too much to do", "target": "아니요 할 일이 너무 많아요"},
+        {"known": "no sadly I can't go", "target": "아니요 아쉽게도 못 가요"},
+        {"known": "she said no she's too busy", "target": "그녀가 아니요 너무 바쁘다고 말했어요"},
+        {"known": "no sadly I have work tomorrow", "target": "아니요 아쉽게도 내일 일 있어요"}
+      ]
+    }
+  ]
+}

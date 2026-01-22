@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 342,
+  "known_text": "I met someone who said something.",
+  "target_text": "무언가를 말한 사람을 만났어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "something",
+      "target": "무언가",
+      "phrases": [
+        {"known": "what", "target": "뭐요"},
+        {"known": "something", "target": "무언가요"},
+        {"known": "there's something", "target": "무언가 있어요"},
+        {"known": "I want something", "target": "무언가 원해요"},
+        {"known": "something happened", "target": "무언가 있었어요"},
+        {"known": "I need something", "target": "무언가 필요해요"},
+        {"known": "he said something", "target": "그가 무언가 말했어요"},
+        {"known": "I heard something", "target": "무언가 들었어요"},
+        {"known": "something is wrong", "target": "무언가 잘못됐어요"},
+        {"known": "I'm looking for something", "target": "무언가 찾고 있어요"},
+        {"known": "she wants to tell me something", "target": "그녀가 저한테 무언가 말하고 싶어해요"},
+        {"known": "I think I forgot something at home", "target": "집에서 무언가 잊어버린 것 같아요"},
+        {"known": "I'm trying to remember something from yesterday", "target": "어제에서 무언가 기억하려고 해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "someone who said something",
+      "target": "무언가를 말한 사람",
+      "components": [
+        {"known": "something", "target": "무언가"},
+        {"known": "object marker", "target": "를"},
+        {"known": "said (past modifier)", "target": "말한"},
+        {"known": "person", "target": "사람"}
+      ],
+      "phrases": [
+        {"known": "person", "target": "사람이요"},
+        {"known": "who said", "target": "말한 사람"},
+        {"known": "someone who", "target": "사람이요"},
+        {"known": "a person who said", "target": "말한 사람"},
+        {"known": "someone who spoke", "target": "말한 사람이요"},
+        {"known": "the person who said that", "target": "그거 말한 사람"},
+        {"known": "someone who told me", "target": "저한테 말한 사람"},
+        {"known": "the person who mentioned it", "target": "그거 말한 사람이요"},
+        {"known": "I know someone who said the same thing", "target": "같은 거 말한 사람 알아요"},
+        {"known": "the person who said something important", "target": "중요한 거 말한 사람이요"},
+        {"known": "someone who said something interesting", "target": "재미있는 거 말한 사람"},
+        {"known": "do you know someone who said something about this?", "target": "이거에 대해 무언가 말한 사람 알아요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I met someone who said something",
+      "target": "무언가를 말한 사람을 만났어요",
+      "components": [
+        {"known": "someone who said something", "target": "무언가를 말한 사람"},
+        {"known": "object marker", "target": "을"},
+        {"known": "met", "target": "만나다"}
+      ],
+      "phrases": [
+        {"known": "I met", "target": "만났어요"},
+        {"known": "met again", "target": "또 만났어요"},
+        {"known": "met someone", "target": "사람을 만났어요"},
+        {"known": "met a person", "target": "사람을 만났어요"},
+        {"known": "I met a person who", "target": "사람을 만났어요"},
+        {"known": "I met someone special", "target": "특별한 사람을 만났어요"},
+        {"known": "I met someone who knows you", "target": "당신을 아는 사람을 만났어요"},
+        {"known": "I met the person who said that", "target": "그거 말한 사람을 만났어요"},
+        {"known": "I met someone who mentioned your name", "target": "당신 이름을 말한 사람을 만났어요"},
+        {"known": "I met someone who told me about the job", "target": "일에 대해 말한 사람을 만났어요"},
+        {"known": "she met someone who said interesting things", "target": "그녀가 재미있는 거 말한 사람을 만났어요"},
+        {"known": "I met a person who said he could help", "target": "도와줄 수 있다고 한 사람을 만났어요"},
+        {"known": "he met someone who said something about the project", "target": "그가 프로젝트에 대해 무언가 말한 사람을 만났어요"}
+      ]
+    }
+  ]
+}

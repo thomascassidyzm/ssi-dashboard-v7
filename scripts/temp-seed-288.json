@@ -1,0 +1,102 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 288,
+  "known_text": "Most people I know like watching television.",
+  "target_text": "제가 아는 사람들 대부분 텔레비전 보는 것 좋아해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "most/majority",
+      "target": "대부분",
+      "phrases": [
+        {"known": "most", "target": "대부분"},
+        {"known": "mostly", "target": "대부분이요"},
+        {"known": "most people", "target": "대부분 사람들"},
+        {"known": "most of them", "target": "대부분이요"},
+        {"known": "most of the time", "target": "대부분 시간에"},
+        {"known": "most days", "target": "대부분 날들"},
+        {"known": "most of my friends", "target": "제 친구들 대부분"},
+        {"known": "most Korean food is spicy", "target": "한국 음식 대부분 매워요"},
+        {"known": "most students passed", "target": "학생들 대부분 합격했어요"},
+        {"known": "most of the work is done", "target": "일 대부분 끝났어요"},
+        {"known": "most of my family lives in Seoul", "target": "제 가족 대부분 서울에 살아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "people I know",
+      "target": "제가 아는 사람들",
+      "components": [
+        {"known": "I (subject)", "target": "제가"},
+        {"known": "know (modifier)", "target": "아는"},
+        {"known": "people", "target": "사람들"}
+      ],
+      "phrases": [
+        {"known": "I know", "target": "제가 알아요"},
+        {"known": "people I know", "target": "아는 사람들"},
+        {"known": "someone I know", "target": "아는 사람"},
+        {"known": "people I met", "target": "제가 만난 사람들"},
+        {"known": "friends I have", "target": "제가 있는 친구들"},
+        {"known": "everyone I know", "target": "제가 아는 모든 사람"},
+        {"known": "the teacher I know", "target": "제가 아는 선생님"},
+        {"known": "most people I know are busy", "target": "제가 아는 사람들 대부분 바빠요"},
+        {"known": "many people I know like coffee", "target": "제가 아는 사람들 많이 커피 좋아해요"},
+        {"known": "all the people I know work hard", "target": "제가 아는 사람들 다 열심히 일해요"},
+        {"known": "some people I know speak Korean", "target": "제가 아는 사람들 일부 한국어 해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "like watching television",
+      "target": "텔레비전 보는 것 좋아하다",
+      "components": [
+        {"known": "watching television", "target": "텔레비전 보는 것"},
+        {"known": "like", "target": "좋아하다"}
+      ],
+      "phrases": [
+        {"known": "like", "target": "좋아해요"},
+        {"known": "I like it", "target": "좋아해"},
+        {"known": "watching", "target": "보는 것"},
+        {"known": "like watching", "target": "보는 것 좋아해요"},
+        {"known": "like TV", "target": "텔레비전 좋아해요"},
+        {"known": "enjoy watching", "target": "보는 것 좋아해요"},
+        {"known": "like watching TV", "target": "텔레비전 보는 것 좋아해요"},
+        {"known": "like watching movies", "target": "영화 보는 것 좋아해요"},
+        {"known": "enjoy watching dramas", "target": "드라마 보는 것 좋아해요"},
+        {"known": "my father likes watching news", "target": "아버지가 뉴스 보는 것 좋아해요"},
+        {"known": "children like watching cartoons", "target": "아이들이 만화 보는 것 좋아해요"},
+        {"known": "she likes watching Korean shows", "target": "그녀가 한국 프로그램 보는 것 좋아해요"},
+        {"known": "I enjoy watching sports on television", "target": "텔레비전으로 스포츠 보는 것 좋아해요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "most people I know like watching television",
+      "target": "제가 아는 사람들 대부분 텔레비전 보는 것 좋아해요",
+      "components": [
+        {"known": "people I know", "target": "제가 아는 사람들"},
+        {"known": "most/majority", "target": "대부분"},
+        {"known": "like watching television", "target": "텔레비전 보는 것 좋아하다"}
+      ],
+      "phrases": [
+        {"known": "most", "target": "대부분"},
+        {"known": "they like", "target": "좋아해요"},
+        {"known": "most people", "target": "대부분 사람들"},
+        {"known": "like watching", "target": "보는 것 좋아해"},
+        {"known": "people like it", "target": "사람들 좋아해요"},
+        {"known": "most like TV", "target": "대부분 텔레비전 좋아해요"},
+        {"known": "most friends like movies", "target": "친구들 대부분 영화 좋아해요"},
+        {"known": "everyone I know likes music", "target": "제가 아는 모두 음악 좋아해요"},
+        {"known": "most colleagues enjoy Korean food", "target": "동료들 대부분 한국 음식 좋아해요"},
+        {"known": "most of my friends enjoy reading", "target": "제 친구들 대부분 책 읽는 것 좋아해요"},
+        {"known": "almost everyone I know likes traveling", "target": "제가 아는 사람들 거의 다 여행 좋아해요"},
+        {"known": "most people in my office like coffee", "target": "제 사무실 사람들 대부분 커피 좋아해요"},
+        {"known": "I noticed most of my friends like cooking", "target": "제 친구들 대부분 요리 좋아하는 걸 알았어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 293,
+  "known_text": "I have to find out where he's going to meet me.",
+  "target_text": "그가 어디서 저를 만날지 알아야 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "meet me",
+      "target": "저를 만나다",
+      "components": [
+        {"known": "me (object)", "target": "저를"},
+        {"known": "meet", "target": "만나다"}
+      ],
+      "phrases": [
+        {"known": "me", "target": "저를요"},
+        {"known": "meet", "target": "만나요"},
+        {"known": "meet me", "target": "저 만나요"},
+        {"known": "meet me there", "target": "거기서 만나요"},
+        {"known": "please meet me", "target": "저 만나 주세요"},
+        {"known": "he wants to meet me", "target": "그가 저 만나고 싶어해요"},
+        {"known": "when can you meet me?", "target": "언제 저 만날 수 있어요?"},
+        {"known": "can you meet me tomorrow?", "target": "내일 저 만날 수 있어요?"},
+        {"known": "she promised to meet me later", "target": "그녀가 나중에 저 만나기로 했어요"},
+        {"known": "my friend wants to meet me for lunch", "target": "제 친구가 점심에 저 만나고 싶어해요"},
+        {"known": "he called me to arrange a time to meet", "target": "그가 만날 시간 정하려고 전화했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "where he's going to meet me",
+      "target": "그가 어디서 저를 만날지",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "where", "target": "어디서"},
+        {"known": "meet me", "target": "저를 만나다"},
+        {"known": "whether/if (embedded)", "target": "ㄹ지"}
+      ],
+      "phrases": [
+        {"known": "where?", "target": "어디서요?"},
+        {"known": "where he", "target": "그가 어디서"},
+        {"known": "where to meet", "target": "어디서 만날지"},
+        {"known": "I don't know where", "target": "어디서인지 몰라요"},
+        {"known": "where should we meet?", "target": "어디서 만날까요?"},
+        {"known": "tell me where to go", "target": "어디로 가야 하는지 말해 주세요"},
+        {"known": "I need to know where she is", "target": "그녀가 어디 있는지 알아야 해요"},
+        {"known": "I'm not sure where to wait", "target": "어디서 기다릴지 모르겠어요"},
+        {"known": "he told me where to meet him", "target": "그가 어디서 만날지 말해줬어요"},
+        {"known": "I'm trying to figure out where he went", "target": "그가 어디 갔는지 알아내려고 해요"},
+        {"known": "I wonder where she's going to be tomorrow", "target": "내일 그녀가 어디 있을지 궁금해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "have to find out",
+      "target": "알아야 하다",
+      "components": [
+        {"known": "find out/know", "target": "알다"},
+        {"known": "have to", "target": "아야 하다"}
+      ],
+      "phrases": [
+        {"known": "have to", "target": "해야 해요"},
+        {"known": "need to know", "target": "알아야 해요"},
+        {"known": "have to find out", "target": "알아야 해요"},
+        {"known": "I must know", "target": "알아야 해요"},
+        {"known": "you have to know this", "target": "이거 알아야 해요"},
+        {"known": "I need to figure out the answer", "target": "답을 알아야 해요"},
+        {"known": "we have to find the way", "target": "길을 찾아야 해요"},
+        {"known": "she has to learn the truth", "target": "그녀가 진실을 알아야 해요"},
+        {"known": "I really need to understand this", "target": "이거 정말 이해해야 해요"},
+        {"known": "they need to know what happened", "target": "무슨 일인지 알아야 해요"},
+        {"known": "I have to find out before tomorrow", "target": "내일 전에 알아야 해요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I have to find out where he's going to meet me",
+      "target": "그가 어디서 저를 만날지 알아야 해요",
+      "components": [
+        {"known": "where he's going to meet me", "target": "그가 어디서 저를 만날지"},
+        {"known": "have to find out", "target": "알아야 하다"}
+      ],
+      "phrases": [
+        {"known": "I must know", "target": "알아야 해요"},
+        {"known": "find out where", "target": "어디인지 알아요"},
+        {"known": "I need to know", "target": "알아야 해요"},
+        {"known": "I have to confirm", "target": "확인해야 해요"},
+        {"known": "I need to check where", "target": "어디인지 확인해야 해요"},
+        {"known": "I must find out the location", "target": "장소를 알아야 해요"},
+        {"known": "I need to know what time she's coming", "target": "그녀가 몇 시에 오는지 알아야 해요"},
+        {"known": "I have to figure out where they went", "target": "그들이 어디 갔는지 알아야 해요"},
+        {"known": "I need to find out when the meeting starts", "target": "회의가 언제 시작하는지 알아야 해요"},
+        {"known": "I must confirm where we're supposed to go", "target": "어디로 가야 하는지 확인해야 해요"},
+        {"known": "I have to ask her where we should meet tomorrow", "target": "내일 어디서 만날지 그녀에게 물어봐야 해요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 269,
+  "known_text": "Why don't you want to wait for your father?",
+  "target_text": "왜 아버지를 기다리고 싶지 않아요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "wait",
+      "target": "기다리다",
+      "phrases": [
+        {"known": "wait", "target": "기다려요"},
+        {"known": "waiting", "target": "기다려요"},
+        {"known": "please wait", "target": "기다려 주세요"},
+        {"known": "I'm waiting", "target": "기다리고 있어요"},
+        {"known": "wait a moment", "target": "잠깐 기다려요"},
+        {"known": "I waited for him", "target": "그를 기다렸어요"},
+        {"known": "how long to wait?", "target": "얼마나 기다려요?"},
+        {"known": "keep waiting", "target": "계속 기다려요"},
+        {"known": "she's been waiting for a while", "target": "그녀가 한참 기다리고 있어요"},
+        {"known": "I don't want to wait any longer", "target": "더 기다리고 싶지 않아요"},
+        {"known": "please wait for me at home", "target": "집에서 저를 기다려 주세요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wait for father",
+      "target": "아버지를 기다리다",
+      "components": [
+        {"known": "father", "target": "아버지"},
+        {"known": "object marker", "target": "를"},
+        {"known": "wait", "target": "기다리다"}
+      ],
+      "phrases": [
+        {"known": "father", "target": "아버지요"},
+        {"known": "my father", "target": "제 아버지요"},
+        {"known": "wait for father", "target": "아버지 기다려요"},
+        {"known": "waiting for father", "target": "아버지를 기다려요"},
+        {"known": "I'm waiting for father", "target": "아버지를 기다리고 있어요"},
+        {"known": "wait for my father", "target": "제 아버지를 기다려요"},
+        {"known": "please wait for my father", "target": "아버지를 기다려 주세요"},
+        {"known": "she's waiting for her father", "target": "그녀가 아버지를 기다리고 있어요"},
+        {"known": "I waited for my father yesterday", "target": "어제 아버지를 기다렸어요"},
+        {"known": "we need to wait for father first", "target": "먼저 아버지를 기다려야 해요"},
+        {"known": "how long should I wait for father?", "target": "아버지를 얼마나 기다려야 해요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "don't want to wait for father",
+      "target": "아버지를 기다리고 싶지 않다",
+      "components": [
+        {"known": "wait for father", "target": "아버지를 기다리다"},
+        {"known": "don't want to", "target": "고 싶지 않다"}
+      ],
+      "phrases": [
+        {"known": "don't want to", "target": "싶지 않아요"},
+        {"known": "want to wait", "target": "기다리고 싶어요"},
+        {"known": "don't want", "target": "싶지 않아요"},
+        {"known": "don't want to wait", "target": "기다리고 싶지 않아요"},
+        {"known": "I don't want to wait", "target": "기다리고 싶지 않아요"},
+        {"known": "she doesn't want to wait", "target": "그녀가 기다리고 싶지 않아요"},
+        {"known": "doesn't want to wait for him", "target": "그를 기다리고 싶지 않아요"},
+        {"known": "I don't want to wait for father", "target": "아버지를 기다리고 싶지 않아요"},
+        {"known": "she said she doesn't want to wait", "target": "그녀가 기다리고 싶지 않다고 말했어요"},
+        {"known": "do you want to wait for him?", "target": "그를 기다리고 싶어요?"},
+        {"known": "he doesn't want to wait any longer", "target": "그가 더 기다리고 싶지 않아요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "why don't you want to wait for your father",
+      "target": "왜 아버지를 기다리고 싶지 않아요",
+      "components": [
+        {"known": "why", "target": "왜"},
+        {"known": "don't want to wait for father", "target": "아버지를 기다리고 싶지 않다"}
+      ],
+      "phrases": [
+        {"known": "why?", "target": "왜요?"},
+        {"known": "why not?", "target": "왜 안 해요?"},
+        {"known": "why don't you?", "target": "왜 안 해요?"},
+        {"known": "why not wait?", "target": "왜 안 기다려요?"},
+        {"known": "why don't you want?", "target": "왜 싶지 않아요?"},
+        {"known": "why don't you want to?", "target": "왜 하고 싶지 않아요?"},
+        {"known": "why not wait for him?", "target": "왜 그를 안 기다려요?"},
+        {"known": "why doesn't she want to wait?", "target": "그녀가 왜 기다리고 싶지 않아요?"},
+        {"known": "why don't you want to wait more?", "target": "왜 더 기다리고 싶지 않아요?"},
+        {"known": "I asked why she doesn't want to wait", "target": "그녀가 왜 기다리고 싶지 않냐고 물었어요"},
+        {"known": "she asked why I don't want to wait for father", "target": "그녀가 왜 아버지를 기다리고 싶지 않냐고 물었어요"}
+      ]
+    }
+  ]
+}

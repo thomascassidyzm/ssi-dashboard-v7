@@ -1,58 +1,95 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 204,
   "known_text": "I wanted her to help you to deal with the arrangements.",
-  "target_text": "彼女にあなたが準備を手伝うのを手伝ってほしかったです。",
+  "target_text": "그녀가 당신이 준비를 처리하는 것을 도와주기를 원했어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "you dealing with the arrangements",
-      "target": "あなたが準備を手伝うのを",
-      "components": [
-        {"known": "you (subject)", "target": "あなたが"},
-        {"known": "help with arrangements", "target": "準備を手伝う"},
-        {"known": "the act of (object)", "target": "のを"}
-      ],
+      "type": "A",
+      "known": "to deal with / handle",
+      "target": "처리하다",
       "phrases": [
-        {"known": "you", "target": "あなた"},
-        {"known": "you (subject)", "target": "あなたが"},
-        {"known": "arrangements", "target": "準備"},
-        {"known": "the act of", "target": "のを"},
-        {"known": "help with", "target": "手伝う"},
-        {"known": "you helping", "target": "あなたが手伝う"},
-        {"known": "with the arrangements", "target": "準備を"},
-        {"known": "help with arrangements", "target": "準備を手伝う"},
-        {"known": "I want you to help", "target": "あなたに手伝ってほしい"},
-        {"known": "you helping me with this", "target": "あなたがこれを手伝うのを"},
-        {"known": "I saw you helping her yesterday", "target": "あなたが彼女を手伝うのを見ました"},
-        {"known": "she said you were helping with the work", "target": "あなたが仕事を手伝っていると言いました"},
-        {"known": "he wanted you to help with the arrangements", "target": "彼はあなたが準備を手伝うのをほしかったです"}
+        {"known": "handle", "target": "처리하다"},
+        {"known": "to deal with", "target": "처리하다"},
+        {"known": "dealt with", "target": "처리했어요"},
+        {"known": "will handle", "target": "처리할 거예요"},
+        {"known": "I dealt with it", "target": "처리했어요"},
+        {"known": "Please deal with this", "target": "이것을 처리해 주세요"},
+        {"known": "I need to deal with this first", "target": "먼저 이것을 처리해야 해요"},
+        {"known": "She knows how to deal with problems", "target": "그녀는 문제를 처리하는 방법을 알아요"},
+        {"known": "We need to deal with this matter soon", "target": "이 일을 곧 처리해야 해요"},
+        {"known": "He is very good at dealing with difficult people", "target": "그는 어려운 사람들을 처리하는 것을 잘해요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "arrangements / preparations",
+      "target": "준비",
+      "phrases": [
+        {"known": "preparation", "target": "준비"},
+        {"known": "arrangements", "target": "준비"},
+        {"known": "to prepare", "target": "준비하다"},
+        {"known": "I am preparing", "target": "준비하고 있어요"},
+        {"known": "the preparations", "target": "준비를"},
+        {"known": "Are the preparations done?", "target": "준비가 됐어요?"},
+        {"known": "I am making preparations now", "target": "지금 준비하고 있어요"},
+        {"known": "The arrangements are almost ready", "target": "준비가 거의 됐어요"},
+        {"known": "She is helping with the wedding preparations", "target": "그녀가 결혼 준비를 도와주고 있어요"},
+        {"known": "I need more time to finish all the arrangements", "target": "모든 준비를 끝내려면 시간이 더 필요해요"},
+        {"known": "The preparations for the trip are not yet complete", "target": "여행 준비가 아직 끝나지 않았어요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "I wanted her to help",
-      "target": "彼女に手伝ってほしかったです",
+      "known": "wanted X to help",
+      "target": "~가 도와주기를 원하다",
       "components": [
-        {"known": "her (indirect)", "target": "彼女に"},
-        {"known": "help (te-form)", "target": "手伝って"},
-        {"known": "wanted (someone to)", "target": "ほしかったです"}
+        {"known": "to help", "target": "도와주다"},
+        {"known": "to V (nominalizer)", "target": "기를"},
+        {"known": "wanted", "target": "원하다"}
       ],
       "phrases": [
-        {"known": "her", "target": "彼女"},
-        {"known": "to her", "target": "彼女に"},
-        {"known": "help me", "target": "手伝って"},
-        {"known": "wanted", "target": "ほしかった"},
-        {"known": "I want to", "target": "ほしいです"},
-        {"known": "I wanted her to", "target": "彼女にほしかったです"},
-        {"known": "I want you to help", "target": "手伝ってほしいです"},
-        {"known": "I wanted him to come", "target": "彼に来てほしかったです"},
-        {"known": "I wanted her to help me", "target": "彼女に手伝ってほしかったです"},
-        {"known": "she wanted me to wait for her", "target": "彼女は私に待ってほしかったです"},
-        {"known": "he said he wanted her to help him", "target": "彼は彼女に手伝ってほしかったと言いました"},
-        {"known": "I wanted her to come and help me with the work", "target": "彼女に来て仕事を手伝ってほしかったです"}
+        {"known": "to help", "target": "도와주다"},
+        {"known": "help", "target": "도와주기"},
+        {"known": "wanted", "target": "원했어요"},
+        {"known": "want to help", "target": "도와주기를 원해요"},
+        {"known": "wanted to help", "target": "도와주기를 원했어요"},
+        {"known": "I want her help", "target": "그녀의 도움을 원해요"},
+        {"known": "I wanted her to help", "target": "그녀가 도와주기를 원했어요"},
+        {"known": "She wanted me to come", "target": "그녀가 제가 오기를 원했어요"},
+        {"known": "I wanted them to understand", "target": "그들이 이해하기를 원했어요"},
+        {"known": "He wanted her to call him back", "target": "그녀가 다시 전화하기를 원했어요"},
+        {"known": "We wanted them to help us with the work", "target": "그들이 일을 도와주기를 원했어요"},
+        {"known": "I wanted someone to help me finish the project", "target": "누군가가 일을 끝내는 것을 도와주기를 원했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I wanted her to help you to deal with the arrangements",
+      "target": "그녀가 당신이 준비를 처리하는 것을 도와주기를 원했어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "you", "target": "당신이"},
+        {"known": "preparations", "target": "준비를"},
+        {"known": "dealing with", "target": "처리하는 것을"},
+        {"known": "helping", "target": "도와주기를"},
+        {"known": "wanted", "target": "원했어요"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "you", "target": "당신이"},
+        {"known": "preparations", "target": "준비를"},
+        {"known": "to deal with", "target": "처리하는 것을"},
+        {"known": "wanted to help", "target": "도와주기를 원했어요"},
+        {"known": "deal with the arrangements", "target": "준비를 처리하다"},
+        {"known": "I wanted her to help you to deal with the arrangements", "target": "그녀가 당신이 준비를 처리하는 것을 도와주기를 원했어요"},
+        {"known": "I wanted him to help me deal with the problem", "target": "그가 문제를 처리하는 것을 도와주기를 원했어요"},
+        {"known": "She wanted someone to help with the preparations", "target": "누군가가 준비를 도와주기를 원했어요"},
+        {"known": "We wanted them to help us deal with all the work before the meeting", "target": "회의 전에 모든 일을 처리하는 것을 도와주기를 원했어요"}
       ]
     }
   ]

@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 527,
+  "known_text": "Guess who told me that funny story.",
+  "target_text": "누가 그 재미있는 이야기 했는지 맞혀 봐요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that funny story",
+      "target": "그 재미있는 이야기",
+      "components": [
+        {"known": "that", "target": "그"},
+        {"known": "funny/interesting", "target": "재미있는"},
+        {"known": "story", "target": "이야기"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "그거요"},
+        {"known": "funny", "target": "재미있어요"},
+        {"known": "story", "target": "이야기요"},
+        {"known": "that story", "target": "그 이야기요"},
+        {"known": "it's funny", "target": "재미있어요"},
+        {"known": "what a funny story", "target": "재미있는 이야기예요"},
+        {"known": "tell me a story", "target": "이야기해 줘요"},
+        {"known": "she told me a funny story", "target": "그녀가 재미있는 이야기 했어요"},
+        {"known": "the story was really funny", "target": "이야기가 정말 재미있었어요"},
+        {"known": "he always tells funny stories", "target": "그가 항상 재미있는 이야기 해요"},
+        {"known": "I heard that story before", "target": "그 이야기 전에 들었어요"},
+        {"known": "she laughed so hard at the funny story", "target": "그녀가 재미있는 이야기에 많이 웃었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "who told me that funny story",
+      "target": "누가 그 재미있는 이야기 했는지",
+      "components": [
+        {"known": "who", "target": "누가"},
+        {"known": "that funny story", "target": "그 재미있는 이야기"},
+        {"known": "told", "target": "했다"},
+        {"known": "whether/if", "target": "는지"}
+      ],
+      "phrases": [
+        {"known": "who", "target": "누가요?"},
+        {"known": "who did it", "target": "누가 했어요?"},
+        {"known": "who said that", "target": "누가 그랬어요?"},
+        {"known": "who told you", "target": "누가 말했어요?"},
+        {"known": "do you know who", "target": "누군지 알아요?"},
+        {"known": "I wonder who did it", "target": "누가 했는지 궁금해요"},
+        {"known": "she asked who was calling", "target": "그녀가 누가 전화하는지 물었어요"},
+        {"known": "can you guess who said it", "target": "누가 말했는지 맞힐 수 있어요?"},
+        {"known": "he wanted to know who was responsible", "target": "그가 누가 책임인지 알고 싶었어요"},
+        {"known": "I'm curious about who shared that information", "target": "누가 그 정보 공유했는지 궁금해요"},
+        {"known": "she told me who called earlier", "target": "그녀가 아까 누가 전화했는지 말했어요"},
+        {"known": "he asked if I knew who was coming to the party", "target": "그가 누가 파티에 오는지 아냐고 물었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "guess who told me that funny story",
+      "target": "누가 그 재미있는 이야기 했는지 맞혀 봐요",
+      "components": [
+        {"known": "who told me that funny story", "target": "누가 그 재미있는 이야기 했는지"},
+        {"known": "guess/try to guess", "target": "맞혀 보다"}
+      ],
+      "phrases": [
+        {"known": "guess", "target": "맞혀 봐요"},
+        {"known": "try", "target": "해 봐요"},
+        {"known": "try to guess", "target": "맞혀 봐요"},
+        {"known": "can you guess", "target": "맞힐 수 있어요?"},
+        {"known": "guess what happened", "target": "뭐 있었는지 맞혀 봐요"},
+        {"known": "guess who came by today", "target": "오늘 누가 왔는지 맞혀 봐요"},
+        {"known": "see if you can figure it out", "target": "알아낼 수 있는지 봐요"},
+        {"known": "guess what she told me yesterday", "target": "그녀가 어제 뭐 말했는지 맞혀 봐요"},
+        {"known": "try to guess the answer before I tell you", "target": "말하기 전에 정답 맞혀 봐요"},
+        {"known": "I bet you can't guess where I went", "target": "어디 갔는지 못 맞힐 거예요"},
+        {"known": "she asked me to guess who sent the gift", "target": "그녀가 누가 선물 보냈는지 맞혀 보라고 했어요"},
+        {"known": "he challenged me to guess what the surprise was", "target": "그가 뭐가 놀라움인지 맞혀 보라고 했어요"}
+      ]
+    }
+  ]
+}

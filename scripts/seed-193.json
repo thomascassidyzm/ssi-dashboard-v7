@@ -1,53 +1,52 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 193,
   "known_text": "I'm sorry but I'm too busy today.",
-  "target_text": "すみませんが、今日は忙しすぎます。",
+  "target_text": "죄송하지만 오늘 너무 바빠요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "I'm sorry but",
-      "target": "すみませんが、",
+      "known": "too busy",
+      "target": "너무 바빠요",
       "components": [
-        {"known": "sorry", "target": "すみません"},
-        {"known": "but", "target": "が、"}
+        {"known": "too/very", "target": "너무"},
+        {"known": "busy", "target": "바빠요"}
       ],
       "phrases": [
-        {"known": "sorry", "target": "すみません"},
-        {"known": "but", "target": "が、"},
-        {"known": "I'm sorry but", "target": "すみませんが、"},
-        {"known": "I'm sorry but I can't", "target": "すみませんが、できません"},
-        {"known": "I'm sorry but I don't know", "target": "すみませんが、分かりません"},
-        {"known": "I'm sorry but I can't go", "target": "すみませんが、行けません"},
-        {"known": "I'm sorry but I don't have time", "target": "すみませんが、時間がありません"},
-        {"known": "I'm sorry but I don't understand", "target": "すみませんが、分かりません"},
-        {"known": "I'm sorry but I have something to do", "target": "すみませんが、することがあります"},
-        {"known": "I'm sorry but I won't be able to come tomorrow", "target": "すみませんが、明日は来られません"},
-        {"known": "I'm sorry but I didn't hear what you said", "target": "すみませんが、言ったことが聞こえませんでした"}
+        {"known": "too", "target": "너무"},
+        {"known": "busy", "target": "바빠요"},
+        {"known": "very busy", "target": "아주 바빠요"},
+        {"known": "too busy", "target": "너무 바빠요"},
+        {"known": "I am too busy", "target": "너무 바빠요"},
+        {"known": "busy at work", "target": "직장에서 바빠요"},
+        {"known": "She is too busy today", "target": "그녀는 오늘 너무 바빠요"},
+        {"known": "I was too busy yesterday", "target": "어제 너무 바빴어요"},
+        {"known": "Are you too busy to help me now?", "target": "지금 도와주기에 너무 바빠요?"},
+        {"known": "I have been too busy at work this week to study Korean", "target": "이번 주에 직장에서 너무 바빠서 한국어 공부를 못 했어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "I'm too busy today",
-      "target": "今日は忙しすぎます",
+      "known": "I'm sorry but I'm too busy today",
+      "target": "죄송하지만 오늘 너무 바빠요",
       "components": [
-        {"known": "today (topic)", "target": "今日は"},
-        {"known": "too busy", "target": "忙しすぎます"}
+        {"known": "I'm sorry but", "target": "죄송하지만"},
+        {"known": "today", "target": "오늘"},
+        {"known": "too busy", "target": "너무 바빠요"}
       ],
       "phrases": [
-        {"known": "today", "target": "今日"},
-        {"known": "today (topic)", "target": "今日は"},
-        {"known": "too busy", "target": "忙しすぎます"},
-        {"known": "I'm too busy today", "target": "今日は忙しすぎます"},
-        {"known": "it's too difficult", "target": "難しすぎます"},
-        {"known": "it's too early", "target": "早すぎます"},
-        {"known": "she said she's too busy today", "target": "彼女は今日忙しすぎると言いました"},
-        {"known": "he said it was too difficult", "target": "彼は難しすぎると言いました"},
-        {"known": "I was too busy yesterday so I couldn't come", "target": "昨日忙しすぎて来られませんでした"},
-        {"known": "today I'm too busy to meet anyone", "target": "今日は忙しすぎて誰にも会えません"},
-        {"known": "she was too busy to go to the meeting yesterday", "target": "彼女は昨日忙しすぎて会いに行けませんでした"}
+        {"known": "sorry but", "target": "죄송하지만"},
+        {"known": "today", "target": "오늘"},
+        {"known": "too busy", "target": "너무 바빠요"},
+        {"known": "busy today", "target": "오늘 바빠요"},
+        {"known": "sorry but busy", "target": "죄송하지만 바빠요"},
+        {"known": "sorry today busy", "target": "죄송해요 오늘 바빠요"},
+        {"known": "I'm sorry but I'm too busy today", "target": "죄송하지만 오늘 너무 바빠요"},
+        {"known": "I'm sorry but I cannot come today", "target": "죄송하지만 오늘 못 와요"},
+        {"known": "I'm sorry but I don't have time to meet this afternoon", "target": "죄송하지만 오늘 오후에 만날 시간이 없어요"},
+        {"known": "I'm sorry but I'm too busy today so let's talk tomorrow instead", "target": "죄송하지만 오늘 너무 바빠서 내일 이야기해요"}
       ]
     }
   ]

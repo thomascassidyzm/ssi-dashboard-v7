@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 466,
+  "known_text": "Let me throw it over the wall.",
+  "target_text": "벽 너머로 던질게요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "over the wall",
+      "target": "벽 너머로",
+      "components": [
+        {"known": "wall", "target": "벽"},
+        {"known": "over/beyond", "target": "너머"},
+        {"known": "towards", "target": "로"}
+      ],
+      "phrases": [
+        {"known": "wall", "target": "벽이요"},
+        {"known": "beyond", "target": "너머요"},
+        {"known": "that way", "target": "그쪽으로요"},
+        {"known": "the wall is high", "target": "벽이 높아요"},
+        {"known": "over there", "target": "저쪽 너머요"},
+        {"known": "beyond the mountains", "target": "산 너머로요"},
+        {"known": "looked beyond", "target": "너머를 봤어요"},
+        {"known": "she looked over the fence", "target": "그녀가 울타리 너머 봤어요"},
+        {"known": "the ball went over the wall", "target": "공이 벽 너머로 갔어요"},
+        {"known": "I can see the river beyond the hill", "target": "언덕 너머로 강이 보여요"},
+        {"known": "she threw something over the fence", "target": "그녀가 뭔가 울타리 너머로 던졌어요"},
+        {"known": "the cat jumped over the wall to escape", "target": "고양이가 도망가려고 벽 너머로 뛰었어요"},
+        {"known": "there's a garden beyond the stone wall", "target": "돌담 너머로 정원이 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "throw it over the wall",
+      "target": "벽 너머로 던지다",
+      "components": [
+        {"known": "over the wall", "target": "벽 너머로"},
+        {"known": "throw", "target": "던지다"}
+      ],
+      "phrases": [
+        {"known": "throw", "target": "던져요"},
+        {"known": "throw it", "target": "던져요"},
+        {"known": "I threw", "target": "던졌어요"},
+        {"known": "she throws well", "target": "그녀가 잘 던져요"},
+        {"known": "throw the ball here", "target": "여기 공 던져요"},
+        {"known": "he threw it far away", "target": "그가 멀리 던졌어요"},
+        {"known": "I'll throw it to you", "target": "당신한테 던질게요"},
+        {"known": "she threw the trash away", "target": "그녀가 쓰레기 버렸어요"},
+        {"known": "he threw the ball over the fence", "target": "그가 공을 울타리 너머로 던졌어요"},
+        {"known": "don't throw things inside the house", "target": "집 안에서 물건 던지지 마세요"},
+        {"known": "she threw the paper into the bin", "target": "그녀가 종이를 쓰레기통에 던졌어요"},
+        {"known": "can you throw me the keys from there", "target": "거기서 열쇠 던져줄 수 있어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "let me throw it over the wall",
+      "target": "벽 너머로 던질게요",
+      "components": [
+        {"known": "throw it over the wall", "target": "벽 너머로 던지다"},
+        {"known": "let me", "target": "ㄹ게요"}
+      ],
+      "phrases": [
+        {"known": "let me", "target": "할게요"},
+        {"known": "I'll do it", "target": "할게요"},
+        {"known": "I'll throw", "target": "던질게요"},
+        {"known": "let me try", "target": "해볼게요"},
+        {"known": "let me help you", "target": "도와줄게요"},
+        {"known": "I'll open the door", "target": "문 열게요"},
+        {"known": "let me carry that for you", "target": "그거 들어줄게요"},
+        {"known": "I'll send it to you tomorrow", "target": "내일 보내줄게요"},
+        {"known": "let me show you how it works", "target": "어떻게 작동하는지 보여줄게요"},
+        {"known": "I'll pass it over to you", "target": "당신한테 넘겨줄게요"},
+        {"known": "let me take care of this problem", "target": "이 문제 제가 처리할게요"},
+        {"known": "I'll toss it over so you can catch it", "target": "잡을 수 있게 던져줄게요"}
+      ]
+    }
+  ]
+}

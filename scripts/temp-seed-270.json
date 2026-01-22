@@ -1,0 +1,78 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 270,
+  "known_text": "Because I'm worried that I'm going to be late.",
+  "target_text": "늦을까 봐 걱정되기 때문이에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "worried/anxious",
+      "target": "걱정되다",
+      "phrases": [
+        {"known": "worried", "target": "걱정돼요"},
+        {"known": "I'm worried", "target": "걱정돼요"},
+        {"known": "don't worry", "target": "걱정 마세요"},
+        {"known": "are you worried?", "target": "걱정돼요?"},
+        {"known": "I was worried", "target": "걱정됐어요"},
+        {"known": "a bit worried", "target": "좀 걱정돼요"},
+        {"known": "not worried at all", "target": "전혀 걱정 안 돼요"},
+        {"known": "she's also worried", "target": "그녀도 걱정돼요"},
+        {"known": "I'm worried about tomorrow", "target": "내일이 걱정돼요"},
+        {"known": "why are you so worried?", "target": "왜 그렇게 걱정돼요?"},
+        {"known": "I was really worried about you", "target": "당신이 정말 걱정됐어요"},
+        {"known": "she was worried about her friend", "target": "그녀가 친구가 걱정됐어요"},
+        {"known": "I'm worried about what will happen", "target": "무슨 일이 날지 걱정돼요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "worried about being late",
+      "target": "늦을까 봐 걱정되다",
+      "components": [
+        {"known": "be late", "target": "늦다"},
+        {"known": "afraid that (might)", "target": "을까 봐"},
+        {"known": "worried/anxious", "target": "걱정되다"}
+      ],
+      "phrases": [
+        {"known": "might be late", "target": "늦을까 봐"},
+        {"known": "worried about", "target": "걱정돼요"},
+        {"known": "afraid of being late", "target": "늦을까 봐요"},
+        {"known": "worried might be late", "target": "늦을까 봐 걱정돼요"},
+        {"known": "I'm worried I'll be late", "target": "늦을까 봐 걱정돼요"},
+        {"known": "might rain", "target": "비가 올까 봐요"},
+        {"known": "afraid it might rain", "target": "비가 올까 봐 걱정돼요"},
+        {"known": "she's afraid she'll be late", "target": "그녀가 늦을까 봐 걱정돼요"},
+        {"known": "I'm worried I might forget", "target": "잊을까 봐 걱정돼요"},
+        {"known": "he's worried about being late", "target": "그가 늦을까 봐 걱정돼요"},
+        {"known": "are you worried you'll be late?", "target": "늦을까 봐 걱정돼요?"},
+        {"known": "she's worried she might miss the bus", "target": "그녀가 버스를 놓칠까 봐 걱정돼요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "because I'm worried about being late",
+      "target": "늦을까 봐 걱정되기 때문이에요",
+      "components": [
+        {"known": "worried about being late", "target": "늦을까 봐 걱정되다"},
+        {"known": "because", "target": "기 때문이다"}
+      ],
+      "phrases": [
+        {"known": "because", "target": "때문이에요"},
+        {"known": "it's because", "target": "때문이에요"},
+        {"known": "because of this", "target": "이것 때문이에요"},
+        {"known": "because I'm worried", "target": "걱정되기 때문이에요"},
+        {"known": "because I might be late", "target": "늦을까 봐 때문이에요"},
+        {"known": "that's why I'm worried", "target": "그래서 걱정돼요"},
+        {"known": "because I'm anxious", "target": "걱정되기 때문이에요"},
+        {"known": "it's because of the rain", "target": "비 때문이에요"},
+        {"known": "I'm late because of traffic", "target": "차 때문에 늦었어요"},
+        {"known": "because I was worried I'd be late", "target": "늦을까 봐 걱정됐기 때문이에요"},
+        {"known": "she's nervous because she might be late", "target": "그녀가 늦을까 봐 걱정되기 때문이에요"},
+        {"known": "I hurried because I was worried about being late", "target": "늦을까 봐 걱정돼서 서둘렀어요"}
+      ]
+    }
+  ]
+}

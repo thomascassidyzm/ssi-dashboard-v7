@@ -1,0 +1,114 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 128,
+  "known_text": "You're like someone I used to know.",
+  "target_text": "당신은 제가 예전에 알던 사람 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "person/someone",
+      "target": "사람",
+      "phrases": [
+        {"known": "person", "target": "사람"},
+        {"known": "a person", "target": "사람이"},
+        {"known": "that person", "target": "그 사람"},
+        {"known": "this person", "target": "이 사람"},
+        {"known": "the person is good", "target": "사람이 좋아요"},
+        {"known": "I know that person", "target": "그 사람을 알아요"},
+        {"known": "that person is really good now", "target": "이제 그 사람이 정말 좋아요"},
+        {"known": "I don't know that person yet at all", "target": "아직 그 사람을 전혀 몰라요"},
+        {"known": "unfortunately I don't believe that person at all", "target": "안타깝게도 그 사람을 전혀 믿지 않아요"},
+        {"known": "I had already wanted to see that person again slowly", "target": "이미 천천히 그 사람을 다시 보고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "before/used to",
+      "target": "예전에",
+      "phrases": [
+        {"known": "before", "target": "예전에"},
+        {"known": "I knew", "target": "알았어요"},
+        {"known": "I knew before", "target": "예전에 알았어요"},
+        {"known": "I used to do it", "target": "예전에 했어요"},
+        {"known": "I used to go there", "target": "예전에 거기 갔어요"},
+        {"known": "before it was good", "target": "예전에 좋았어요"},
+        {"known": "I knew before already", "target": "이미 예전에 알았어요"},
+        {"known": "before it was really short", "target": "예전에 정말 짧았어요"},
+        {"known": "unfortunately it was not good before at all", "target": "안타깝게도 예전에 전혀 좋지 않았어요"},
+        {"known": "I believe I had wanted to see you before again", "target": "예전에 다시 당신을 보고 싶었다고 믿어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "used to know",
+      "target": "알던",
+      "components": [
+        {"known": "know", "target": "알다"},
+        {"known": "past modifier", "target": "-던"}
+      ],
+      "phrases": [
+        {"known": "know", "target": "알다"},
+        {"known": "knew (modifier)", "target": "알던"},
+        {"known": "used to know", "target": "알던"},
+        {"known": "person I knew", "target": "알던 사람"},
+        {"known": "thing I knew", "target": "알던 것"},
+        {"known": "I used to know that", "target": "그걸 알았어요"},
+        {"known": "person I used to know before", "target": "예전에 알던 사람"},
+        {"known": "I already used to know that before", "target": "예전에 이미 그걸 알았어요"},
+        {"known": "the person I used to know is really good", "target": "제가 알던 사람이 정말 좋아요"},
+        {"known": "unfortunately I don't know the person I used to know now", "target": "안타깝게도 이제 제가 알던 사람을 모르겠어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "you're like",
+      "target": "당신은 ~같다",
+      "components": [
+        {"known": "you (topic)", "target": "당신은"},
+        {"known": "like/similar to", "target": "같다"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "당신은"},
+        {"known": "like", "target": "같아요"},
+        {"known": "you're like", "target": "당신은 같아요"},
+        {"known": "you're like me", "target": "당신은 저 같아요"},
+        {"known": "you're like that person", "target": "당신은 그 사람 같아요"},
+        {"known": "you're really like that", "target": "당신은 정말 그런 것 같아요"},
+        {"known": "you're already like that person", "target": "당신은 이미 그 사람 같아요"},
+        {"known": "unfortunately you're not like that at all", "target": "안타깝게도 당신은 전혀 그렇지 않아요"},
+        {"known": "I believe you're like someone I know now", "target": "당신은 이제 제가 아는 사람 같다고 믿어요"},
+        {"known": "you're like someone I used to know before again", "target": "당신은 다시 예전에 제가 알던 사람 같아요"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "You're like someone I used to know",
+      "target": "당신은 제가 예전에 알던 사람 같아요",
+      "components": [
+        {"known": "you", "target": "당신은"},
+        {"known": "I (subject)", "target": "제가"},
+        {"known": "before", "target": "예전에"},
+        {"known": "used to know", "target": "알던"},
+        {"known": "person", "target": "사람"},
+        {"known": "like", "target": "같다"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "당신은"},
+        {"known": "before", "target": "예전에"},
+        {"known": "a person", "target": "사람"},
+        {"known": "I knew", "target": "알던"},
+        {"known": "you're like", "target": "당신은 같아요"},
+        {"known": "person I knew", "target": "제가 알던 사람"},
+        {"known": "you're like someone", "target": "당신은 사람 같아요"},
+        {"known": "you're like someone I used to know", "target": "당신은 제가 예전에 알던 사람 같아요"},
+        {"known": "I believe you're really like someone I knew before", "target": "당신은 정말 예전에 제가 알던 사람 같다고 믿어요"},
+        {"known": "unfortunately you're not like the person I used to know at all", "target": "안타깝게도 당신은 전혀 제가 예전에 알던 사람 같지 않아요"}
+      ]
+    }
+  ]
+}

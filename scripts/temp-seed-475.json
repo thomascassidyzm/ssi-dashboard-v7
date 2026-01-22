@@ -1,0 +1,60 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 475,
+  "known_text": "There are many reasons to consider waiting.",
+  "target_text": "기다리는 것을 고려할 이유가 많아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "to consider waiting",
+      "target": "기다리는 것을 고려하다",
+      "components": [
+        {"known": "wait", "target": "기다리다"},
+        {"known": "the thing of (nominalizer)", "target": "는 것"},
+        {"known": "object marker", "target": "을"},
+        {"known": "consider", "target": "고려하다"}
+      ],
+      "phrases": [
+        {"known": "wait", "target": "기다려요"},
+        {"known": "consider", "target": "고려해요"},
+        {"known": "I'm waiting", "target": "기다리고 있어요"},
+        {"known": "please consider", "target": "고려해 주세요"},
+        {"known": "I'll think about it", "target": "생각해볼게요"},
+        {"known": "she considered the options", "target": "그녀가 옵션을 고려했어요"},
+        {"known": "we should consider waiting", "target": "기다리는 걸 고려해야 해요"},
+        {"known": "he's thinking about it carefully", "target": "그가 신중히 생각하고 있어요"},
+        {"known": "have you considered that possibility", "target": "그 가능성 고려했어요?"},
+        {"known": "she suggested we wait a bit longer", "target": "그녀가 조금 더 기다리자고 했어요"},
+        {"known": "I'm considering whether to wait or go now", "target": "기다릴지 지금 갈지 고려하고 있어요"},
+        {"known": "they asked us to consider postponing the trip", "target": "그들이 여행 연기를 고려해달라고 했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "there are many reasons to consider waiting",
+      "target": "기다리는 것을 고려할 이유가 많아요",
+      "components": [
+        {"known": "to consider waiting", "target": "기다리는 것을 고려하다"},
+        {"known": "reasons", "target": "이유"},
+        {"known": "subject marker", "target": "가"},
+        {"known": "many", "target": "많다"}
+      ],
+      "phrases": [
+        {"known": "reasons", "target": "이유요"},
+        {"known": "many", "target": "많아요"},
+        {"known": "there are many", "target": "많아요"},
+        {"known": "what's the reason", "target": "이유가 뭐예요?"},
+        {"known": "there are several reasons", "target": "여러 이유가 있어요"},
+        {"known": "I have many reasons to stay", "target": "여기 있을 이유가 많아요"},
+        {"known": "she has good reasons to be careful", "target": "그녀가 조심할 이유가 있어요"},
+        {"known": "there are many things to think about", "target": "생각할 게 많아요"},
+        {"known": "he gave me several reasons to reconsider", "target": "그가 다시 생각할 이유를 여러 개 줬어요"},
+        {"known": "there are multiple reasons why this matters", "target": "이게 중요한 이유가 여러 가지예요"},
+        {"known": "she explained the reasons to wait patiently", "target": "그녀가 인내심 있게 기다릴 이유 설명했어요"},
+        {"known": "there are plenty of reasons to be optimistic", "target": "낙관적일 이유가 많아요"}
+      ]
+    }
+  ]
+}

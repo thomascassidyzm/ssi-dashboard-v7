@@ -1,0 +1,88 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 315,
+  "known_text": "I think that he couldn't afford the car that he wanted.",
+  "target_text": "그가 원하는 차를 살 여유가 없었던 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "afford (have means to buy)",
+      "target": "살 여유가 있다",
+      "components": [
+        {"known": "buy", "target": "사다"},
+        {"known": "means/room", "target": "여유"},
+        {"known": "subject marker", "target": "가"},
+        {"known": "exist", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "room", "target": "여유가요"},
+        {"known": "can buy", "target": "살 수 있어요"},
+        {"known": "afford", "target": "여유가 있어요"},
+        {"known": "can't afford", "target": "여유가 없어요"},
+        {"known": "can afford it", "target": "살 여유가 있어요"},
+        {"known": "couldn't afford", "target": "살 여유가 없었어요"},
+        {"known": "I can't afford this", "target": "이거 살 여유가 없어요"},
+        {"known": "can you afford it?", "target": "살 여유가 있어요?"},
+        {"known": "I couldn't afford to buy it", "target": "그거 살 여유가 없었어요"},
+        {"known": "she can afford a new house", "target": "그녀가 새 집을 살 여유가 있어요"},
+        {"known": "we can't afford to travel right now", "target": "지금 여행할 여유가 없어요"},
+        {"known": "he said he couldn't afford the rent", "target": "그가 집세를 낼 여유가 없다고 했어요"},
+        {"known": "I don't have the time to afford this luxury", "target": "이런 사치를 할 여유가 없어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the car that he wanted",
+      "target": "그가 원하는 차",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "want", "target": "원하다"},
+        {"known": "that (relative)", "target": "는"},
+        {"known": "car", "target": "차"}
+      ],
+      "phrases": [
+        {"known": "car", "target": "차요"},
+        {"known": "he wants", "target": "그가 원해요"},
+        {"known": "the car", "target": "그 차요"},
+        {"known": "that he wanted", "target": "그가 원하는"},
+        {"known": "the car he wanted", "target": "그가 원하는 차"},
+        {"known": "the thing she wanted", "target": "그녀가 원하는 거"},
+        {"known": "the house that I wanted", "target": "제가 원하는 집"},
+        {"known": "he finally got the car he wanted", "target": "그가 드디어 원하는 차를 샀어요"},
+        {"known": "that's not the one I wanted", "target": "그건 제가 원하는 게 아니에요"},
+        {"known": "the job that she always wanted", "target": "그녀가 항상 원하던 일"},
+        {"known": "he couldn't find the book he wanted", "target": "그가 원하는 책을 못 찾았어요"},
+        {"known": "she bought the dress that she wanted", "target": "그녀가 원하는 옷을 샀어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I think that he couldn't afford the car that he wanted",
+      "target": "그가 원하는 차를 살 여유가 없었던 것 같아요",
+      "components": [
+        {"known": "the car that he wanted", "target": "그가 원하는 차"},
+        {"known": "object marker", "target": "를"},
+        {"known": "afford (have means to buy)", "target": "살 여유가 있다"},
+        {"known": "didn't (past negative)", "target": "없었다"},
+        {"known": "I think/it seems", "target": "ㄴ 것 같다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "것 같아요"},
+        {"known": "couldn't afford", "target": "여유가 없었어요"},
+        {"known": "it seems like", "target": "것 같아요"},
+        {"known": "I think he couldn't", "target": "그가 못한 것 같아요"},
+        {"known": "it seems he didn't have", "target": "그가 없었던 것 같아요"},
+        {"known": "I think she couldn't afford it", "target": "그녀가 살 여유가 없었던 것 같아요"},
+        {"known": "I think they couldn't buy the house", "target": "그들이 집을 못 산 것 같아요"},
+        {"known": "it seems like he couldn't pay for it", "target": "그가 그거를 못 낸 것 같아요"},
+        {"known": "I think my friend couldn't afford the trip", "target": "제 친구가 여행할 여유가 없었던 것 같아요"},
+        {"known": "it seems she couldn't afford the new phone", "target": "그녀가 새 전화를 살 여유가 없었던 것 같아요"},
+        {"known": "I think he couldn't afford what he really wanted", "target": "그가 정말 원하는 거를 살 여유가 없었던 것 같아요"},
+        {"known": "it seems like they couldn't afford to go on vacation", "target": "그들이 휴가 갈 여유가 없었던 것 같아요"}
+      ]
+    }
+  ]
+}

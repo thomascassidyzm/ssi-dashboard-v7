@@ -1,66 +1,69 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 86,
   "known_text": "It wasn't possible, unfortunately.",
-  "target_text": "残念ながら、それは不可能でした。",
+  "target_text": "안타깝게도 가능하지 않았어요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "unfortunately (with comma)",
-      "target": "残念ながら、",
+      "known": "unfortunately",
+      "target": "안타깝게도",
       "phrases": [
-        {"known": "regret", "target": "残念"},
-        {"known": "unfortunately", "target": "残念ながら"},
-        {"known": "that's a pity", "target": "残念です"},
-        {"known": "it is unfortunate", "target": "残念なことです"},
-        {"known": "unfortunately I don't know", "target": "残念ながら知りません"},
-        {"known": "she said unfortunately", "target": "彼女は残念と言いました"},
-        {"known": "unfortunately he was not ready", "target": "残念ながら彼は準備ができていませんでした"},
-        {"known": "it is unfortunate but I don't agree", "target": "残念ですが同意しません"},
-        {"known": "unfortunately I did not understand what he said", "target": "残念ながら彼が言ったことがわかりませんでした"},
-        {"known": "she said unfortunately she did not know those people", "target": "彼女は残念ながらあの人たちを知らないと言いました"}
+        {"known": "Unfortunately.", "target": "안타깝게도."},
+        {"known": "Sadly.", "target": "안타깝게도."},
+        {"known": "Unfortunately, no.", "target": "안타깝게도 아니에요."},
+        {"known": "Unfortunately, he left.", "target": "안타깝게도 그는 떠났어요."},
+        {"known": "Unfortunately, she couldn't come.", "target": "안타깝게도 그녀는 오지 못했어요."},
+        {"known": "Unfortunately, I don't know.", "target": "안타깝게도 몰라요."},
+        {"known": "Unfortunately, I couldn't help.", "target": "안타깝게도 도와줄 수 없었어요."},
+        {"known": "Unfortunately, the meeting was canceled.", "target": "안타깝게도 회의가 취소됐어요."},
+        {"known": "Unfortunately, that wasn't possible.", "target": "안타깝게도 그건 가능하지 않았어요."},
+        {"known": "Unfortunately, he didn't respond easily.", "target": "안타깝게도 그는 쉽게 대답하지 않았어요."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "it (topic)",
-      "target": "それは",
+      "known": "possible (negative form)",
+      "target": "가능하지",
       "components": [
-        {"known": "it/that", "target": "それ"},
-        {"known": "(topic marker)", "target": "は"}
+        {"known": "possible", "target": "가능하다"},
+        {"known": "(negative form)", "target": "-지"}
       ],
       "phrases": [
-        {"known": "that", "target": "それ"},
-        {"known": "it (topic)", "target": "それは"},
-        {"known": "it is fun", "target": "それは楽しい"},
-        {"known": "it is difficult", "target": "それは難しい"},
-        {"known": "it is important", "target": "それは大切です"},
-        {"known": "it was not easy", "target": "それは簡単ではありませんでした"},
-        {"known": "she said it is true", "target": "彼女はそれは本当だと言いました"},
-        {"known": "it is very fun", "target": "それはとても楽しいです"},
-        {"known": "I think it is very difficult", "target": "それはとても難しいと思います"},
-        {"known": "she thinks it is important to understand", "target": "彼女はそれを理解することは大切だと思います"}
+        {"known": "Possible.", "target": "가능해요."},
+        {"known": "It's possible.", "target": "가능해요."},
+        {"known": "Was it possible?", "target": "가능했어요?"},
+        {"known": "It will be possible.", "target": "가능할 거예요."},
+        {"known": "Could it be possible?", "target": "가능했을까요?"},
+        {"known": "It wasn't possible.", "target": "가능하지 않았어요."},
+        {"known": "It's not possible now.", "target": "지금은 가능하지 않아요."},
+        {"known": "She said it was possible.", "target": "그녀는 가능하다고 말했어요."},
+        {"known": "I thought it wasn't possible.", "target": "가능하지 않다고 생각했어요."},
+        {"known": "Unfortunately, meeting tonight wasn't possible.", "target": "안타깝게도 오늘 밤 만나는 것은 가능하지 않았어요."}
       ]
     },
     {
       "idx": 3,
-      "type": "A",
-      "known": "was impossible",
-      "target": "不可能でした",
+      "type": "M",
+      "known": "wasn't (past negative polite)",
+      "target": "않았어요",
+      "components": [
+        {"known": "not", "target": "않다"},
+        {"known": "(past polite)", "target": "-았어요"}
+      ],
       "phrases": [
-        {"known": "impossible", "target": "不可能"},
-        {"known": "is impossible", "target": "不可能です"},
-        {"known": "was impossible", "target": "不可能でした"},
-        {"known": "not impossible", "target": "不可能ではありません"},
-        {"known": "it is impossible", "target": "それは不可能です"},
-        {"known": "she said it was impossible", "target": "彼女は不可能だと言いました"},
-        {"known": "it was impossible to do", "target": "やるのは不可能でした"},
-        {"known": "he said it was not impossible", "target": "彼は不可能ではないと言いました"},
-        {"known": "unfortunately it was impossible", "target": "残念ながら、それは不可能でした"},
-        {"known": "I think it is impossible to understand everything", "target": "全てを理解するのは不可能だと思います"},
-        {"known": "she said it was impossible to wait all afternoon", "target": "彼女は午後ずっと待つのは不可能だと言いました"}
+        {"known": "Wasn't.", "target": "않았어요."},
+        {"known": "Didn't.", "target": "않았어요."},
+        {"known": "Didn't go.", "target": "가지 않았어요."},
+        {"known": "Didn't come.", "target": "오지 않았어요."},
+        {"known": "She wasn't ready.", "target": "그녀는 준비되지 않았어요."},
+        {"known": "He didn't know.", "target": "그는 알지 않았어요."},
+        {"known": "I didn't read the story.", "target": "이야기를 읽지 않았어요."},
+        {"known": "She didn't show me anything.", "target": "그녀는 나에게 아무것도 보여주지 않았어요."},
+        {"known": "He didn't speak better than before.", "target": "그는 전보다 잘 말하지 않았어요."},
+        {"known": "Unfortunately, they didn't agree.", "target": "안타깝게도 그들은 동의하지 않았어요."}
       ]
     }
   ]

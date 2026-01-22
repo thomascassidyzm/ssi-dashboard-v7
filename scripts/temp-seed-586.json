@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 586,
+  "target_text": "삶은 달걀 스무 개요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "boiled eggs",
+      "target": "삶은 달걀",
+      "components": [
+        {"known": "boiled", "target": "삶은"},
+        {"known": "eggs", "target": "달걀"}
+      ],
+      "phrases": [
+        {"known": "eggs", "target": "달걀"},
+        {"known": "boiled", "target": "삶은"},
+        {"known": "the boiled one", "target": "삶은 거"},
+        {"known": "eggs please", "target": "달걀이요"},
+        {"known": "boiled eggs", "target": "삶은 달걀"},
+        {"known": "I like eggs", "target": "달걀 좋아해요"},
+        {"known": "two boiled eggs", "target": "삶은 달걀 두 개"},
+        {"known": "how many eggs do you want", "target": "달걀 몇 개 원해요?"},
+        {"known": "can you boil some eggs for me", "target": "달걀 좀 삶아 줄 수 있어요?"},
+        {"known": "my brother eats boiled eggs every morning", "target": "남동생이 매일 아침 삶은 달걀을 먹어요"},
+        {"known": "we bought many eggs at the market today", "target": "오늘 시장에서 달걀을 많이 샀어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I want twenty boiled eggs",
+      "target": "삶은 달걀 스무 개요",
+      "components": [
+        {"known": "boiled eggs", "target": "삶은 달걀"},
+        {"known": "twenty", "target": "스무 개"}
+      ],
+      "phrases": [
+        {"known": "twenty", "target": "스무 개"},
+        {"known": "please", "target": "주세요"},
+        {"known": "I want this", "target": "이거요"},
+        {"known": "how many do you want", "target": "몇 개요?"},
+        {"known": "I want twenty boiled eggs", "target": "삶은 달걀 스무 개요"},
+        {"known": "give me ten please", "target": "열 개 주세요"},
+        {"known": "can I have twenty of those", "target": "그거 스무 개 주세요"},
+        {"known": "I would like thirty boiled eggs for the party", "target": "파티에 삶은 달걀 서른 개 주세요"},
+        {"known": "how many boiled eggs do you need for the salad", "target": "샐러드에 삶은 달걀 몇 개 필요해요?"},
+        {"known": "my grandmother asked me to buy twenty eggs", "target": "할머니가 달걀 스무 개 사 오라고 했어요"}
+      ]
+    }
+  ]
+}

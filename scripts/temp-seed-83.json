@@ -1,71 +1,89 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 83,
   "known_text": "I agree with what you said about your friend.",
-  "target_text": "あなたの友達について言ったことに同意します。",
+  "target_text": "친구에 대해 말한 것에 동의해요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "about your friend",
-      "target": "あなたの友達について",
+      "known": "friend (about)",
+      "target": "친구에",
       "components": [
-        {"known": "your friend", "target": "あなたの友達"},
-        {"known": "about", "target": "について"}
+        {"known": "friend", "target": "친구"},
+        {"known": "(about marker)", "target": "에"}
       ],
       "phrases": [
-        {"known": "friend", "target": "友達"},
-        {"known": "about", "target": "について"},
-        {"known": "your friend", "target": "あなたの友達"},
-        {"known": "about your friend", "target": "あなたの友達について"},
-        {"known": "my friend", "target": "私の友達"},
-        {"known": "her friend", "target": "彼女の友達"},
-        {"known": "about that", "target": "それについて"},
-        {"known": "I talked about it", "target": "それについて話しました"},
-        {"known": "she asked about your friend", "target": "彼女はあなたの友達について聞きました"},
-        {"known": "he said something about his friend", "target": "彼は彼の友達について何か言いました"},
-        {"known": "I do not know much about your friend", "target": "あなたの友達についてあまり知りません"}
+        {"known": "Friend.", "target": "친구."},
+        {"known": "My friend.", "target": "내 친구."},
+        {"known": "Her friend.", "target": "그녀의 친구."},
+        {"known": "His friend came.", "target": "그의 친구가 왔어요."},
+        {"known": "About my friend.", "target": "내 친구에 대해."},
+        {"known": "She talked about her friend.", "target": "그녀는 친구에 대해 말했어요."},
+        {"known": "I met his friend yesterday.", "target": "어제 그의 친구를 만났어요."},
+        {"known": "He asked about my friend.", "target": "그는 내 친구에 대해 물었어요."},
+        {"known": "She said something about her friend.", "target": "그녀는 친구에 대해 뭔가 말했어요."},
+        {"known": "I agree with what was said about the friend.", "target": "친구에 대해 말한 것에 동의해요."}
       ]
     },
     {
       "idx": 2,
-      "type": "M",
-      "known": "with what was said",
-      "target": "言ったことに",
-      "components": [
-        {"known": "what was said", "target": "言ったこと"},
-        {"known": "(to/with particle)", "target": "に"}
-      ],
+      "type": "A",
+      "known": "about/regarding",
+      "target": "대해",
       "phrases": [
-        {"known": "said", "target": "言った"},
-        {"known": "what was said", "target": "言ったこと"},
-        {"known": "with what was said", "target": "言ったことに"},
-        {"known": "what she said", "target": "彼女が言ったこと"},
-        {"known": "what he said", "target": "彼が言ったこと"},
-        {"known": "he understood what was said", "target": "彼は言ったことを理解しました"},
-        {"known": "I was surprised at what was said", "target": "言ったことに驚きました"},
-        {"known": "I think what he said is true", "target": "彼が言ったことは本当だと思います"},
-        {"known": "she did not understand what was said about her", "target": "彼女について言ったことがわかりませんでした"},
-        {"known": "I asked about what he said yesterday", "target": "彼が昨日言ったことについて聞きました"}
+        {"known": "About.", "target": "대해."},
+        {"known": "Regarding.", "target": "대해서."},
+        {"known": "About that.", "target": "그것에 대해."},
+        {"known": "About what?", "target": "뭐에 대해?"},
+        {"known": "About learning.", "target": "배우는 것에 대해."},
+        {"known": "About her friend.", "target": "친구에 대해서."},
+        {"known": "She talked about it.", "target": "그녀는 그것에 대해 말했어요."},
+        {"known": "He asked about the meeting.", "target": "그는 회의에 대해 물었어요."},
+        {"known": "I don't know about that.", "target": "그것에 대해 모르겠어요."},
+        {"known": "She explained about the situation.", "target": "그녀는 상황에 대해 설명했어요."},
+        {"known": "He agreed with what was said about that.", "target": "그는 그것에 대해 말한 것에 동의했어요."}
       ]
     },
     {
       "idx": 3,
-      "type": "A",
-      "known": "I agree",
-      "target": "同意します",
+      "type": "M",
+      "known": "what was said (about)",
+      "target": "말한 것에",
+      "components": [
+        {"known": "say/speak", "target": "말하다"},
+        {"known": "past attributive", "target": "-한"},
+        {"known": "thing (about)", "target": "것에"}
+      ],
       "phrases": [
-        {"known": "agree", "target": "同意"},
-        {"known": "I agree", "target": "同意します"},
-        {"known": "agreed", "target": "同意しました"},
-        {"known": "do you agree?", "target": "同意しますか？"},
-        {"known": "I do not agree", "target": "同意しません"},
-        {"known": "she agrees", "target": "彼女は同意します"},
-        {"known": "he did not agree", "target": "彼は同意しませんでした"},
-        {"known": "I agree with what was said", "target": "言ったことに同意します"},
-        {"known": "she agreed with what he said about it", "target": "彼女は彼がそれについて言ったことに同意しました"},
-        {"known": "I do not agree with what she said about her friend", "target": "彼女が友達について言ったことに同意しません"},
-        {"known": "he asked if I agreed with what was said", "target": "彼は言ったことに同意するか聞きました"}
+        {"known": "What was said.", "target": "말한 것."},
+        {"known": "The thing said.", "target": "말한 것에."},
+        {"known": "About what she said.", "target": "그녀가 말한 것에 대해."},
+        {"known": "What I said.", "target": "내가 말한 것."},
+        {"known": "What he said.", "target": "그가 말한 것."},
+        {"known": "I understood what was said.", "target": "말한 것을 이해했어요."},
+        {"known": "She agrees with what was said.", "target": "그녀는 말한 것에 동의해요."},
+        {"known": "He didn't understand what was said.", "target": "그는 말한 것을 이해 못 했어요."},
+        {"known": "I agree with what you said about learning.", "target": "배우는 것에 대해 말한 것에 동의해요."},
+        {"known": "She didn't agree with what was said about that.", "target": "그녀는 그것에 대해 말한 것에 동의하지 않았어요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "agree",
+      "target": "동의해요",
+      "phrases": [
+        {"known": "Agree.", "target": "동의해요."},
+        {"known": "I agree.", "target": "동의해요."},
+        {"known": "She agrees.", "target": "그녀는 동의해요."},
+        {"known": "He agreed.", "target": "그는 동의했어요."},
+        {"known": "Do you agree?", "target": "동의해요?"},
+        {"known": "I don't agree.", "target": "동의 안 해요."},
+        {"known": "She agreed with him.", "target": "그녀는 그에게 동의했어요."},
+        {"known": "He agreed with what I said.", "target": "그는 내가 말한 것에 동의했어요."},
+        {"known": "I agree with what you said.", "target": "말한 것에 동의해요."},
+        {"known": "She doesn't agree with what was said about the friend.", "target": "그녀는 친구에 대해 말한 것에 동의하지 않아요."}
       ]
     }
   ]

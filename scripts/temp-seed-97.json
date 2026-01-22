@@ -1,0 +1,114 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 97,
+  "known_text": "Yes I'm ready to go as soon as you want.",
+  "target_text": "네 원하실 때 바로 갈 준비가 됐어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "yes",
+      "target": "네",
+      "phrases": [
+        {"known": "Yes.", "target": "네."},
+        {"known": "Yes, I understand.", "target": "네, 이해해요."},
+        {"known": "Yes, that's right.", "target": "네, 맞아요."},
+        {"known": "Yes, I'm ready.", "target": "네, 준비됐어요."},
+        {"known": "Yes, I'll go.", "target": "네, 갈게요."},
+        {"known": "Yes, I can do it.", "target": "네, 할 수 있어요."},
+        {"known": "Yes, she's at home.", "target": "네, 그녀는 집에 있어요."},
+        {"known": "Yes, the next bus is coming.", "target": "네, 다음 버스가 와요."},
+        {"known": "Yes, I need a little more time.", "target": "네, 시간이 조금 더 필요해요."},
+        {"known": "Yes, I'm ready to go as soon as you want.", "target": "네, 원하실 때 바로 갈 준비가 됐어요."},
+        {"known": "Yes, I understand the method is effective.", "target": "네, 그 방법이 효과가 있다는 것을 이해해요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "when you want (honorific)",
+      "target": "원하실 때",
+      "components": [
+        {"known": "want", "target": "원하다"},
+        {"known": "(honorific)", "target": "-시-"},
+        {"known": "when/time", "target": "때"}
+      ],
+      "phrases": [
+        {"known": "When.", "target": "때."},
+        {"known": "Want.", "target": "원해요."},
+        {"known": "That time.", "target": "그때."},
+        {"known": "When you want.", "target": "원하실 때."},
+        {"known": "When she wants.", "target": "그녀가 원할 때."},
+        {"known": "Whenever you want.", "target": "원하실 때마다."},
+        {"known": "I'll go when you want.", "target": "원하실 때 갈게요."},
+        {"known": "She can come when you want.", "target": "원하실 때 그녀가 올 수 있어요."},
+        {"known": "He's ready when you want.", "target": "원하실 때 그는 준비됐어요."},
+        {"known": "Let's start when you want.", "target": "원하실 때 시작해요."},
+        {"known": "They can leave when you want.", "target": "원하실 때 그들은 떠날 수 있어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "immediately/right away",
+      "target": "바로",
+      "phrases": [
+        {"known": "Right away.", "target": "바로."},
+        {"known": "Immediately.", "target": "바로."},
+        {"known": "Right now.", "target": "바로 지금."},
+        {"known": "Go right away.", "target": "바로 가요."},
+        {"known": "Start immediately.", "target": "바로 시작해요."},
+        {"known": "She came right away.", "target": "그녀는 바로 왔어요."},
+        {"known": "He understood immediately.", "target": "그는 바로 이해했어요."},
+        {"known": "They left right away.", "target": "그들은 바로 떠났어요."},
+        {"known": "I'm ready to go right away.", "target": "바로 갈 준비가 됐어요."},
+        {"known": "She said she can help immediately.", "target": "그녀는 바로 도와줄 수 있다고 말했어요."},
+        {"known": "He went home right away after the meeting.", "target": "그는 회의 후에 바로 집에 갔어요."},
+        {"known": "They started immediately when she arrived.", "target": "그녀가 도착하자마자 바로 시작했어요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "to go (attributive)",
+      "target": "갈",
+      "phrases": [
+        {"known": "Go.", "target": "가요."},
+        {"known": "Went.", "target": "갔어요."},
+        {"known": "Will go.", "target": "갈 거예요."},
+        {"known": "Time to go.", "target": "갈 시간."},
+        {"known": "Place to go.", "target": "갈 곳."},
+        {"known": "Ready to go.", "target": "갈 준비가 됐어요."},
+        {"known": "The bus to go home.", "target": "집에 갈 버스."},
+        {"known": "She has somewhere to go.", "target": "그녀는 갈 곳이 있어요."},
+        {"known": "Is it time to go now?", "target": "이제 갈 시간이에요?"},
+        {"known": "He asked if there's a bus to go.", "target": "그는 갈 버스가 있는지 물었어요."}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I'm ready",
+      "target": "준비가 됐어요",
+      "components": [
+        {"known": "preparation", "target": "준비"},
+        {"known": "(subject marker)", "target": "가"},
+        {"known": "became", "target": "됐어요"}
+      ],
+      "phrases": [
+        {"known": "Ready.", "target": "준비됐어요."},
+        {"known": "Prepared.", "target": "준비가요."},
+        {"known": "All ready.", "target": "다 준비됐어요."},
+        {"known": "I'm ready.", "target": "준비가 됐어요."},
+        {"known": "She's ready.", "target": "그녀는 준비가 됐어요."},
+        {"known": "He's ready.", "target": "그는 준비가 됐어요."},
+        {"known": "Are you ready?", "target": "준비가 됐어요?"},
+        {"known": "I'm ready to go.", "target": "갈 준비가 됐어요."},
+        {"known": "She's ready to start.", "target": "그녀는 시작할 준비가 됐어요."},
+        {"known": "They're ready for the next bus.", "target": "그들은 다음 버스에 준비가 됐어요."},
+        {"known": "Yes, I'm ready to go home.", "target": "네, 집에 갈 준비가 됐어요."},
+        {"known": "I'm ready to go as soon as you want.", "target": "원하실 때 바로 갈 준비가 됐어요."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 463,
+  "known_text": "My room number.",
+  "target_text": "제 방 번호요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my room number",
+      "target": "제 방 번호요",
+      "components": [
+        {"known": "my", "target": "제"},
+        {"known": "room", "target": "방"},
+        {"known": "number", "target": "번호"},
+        {"known": "polite ending", "target": "요"}
+      ],
+      "phrases": [
+        {"known": "my", "target": "제요"},
+        {"known": "room", "target": "방이요"},
+        {"known": "number", "target": "번호요"},
+        {"known": "your room", "target": "당신 방이요"},
+        {"known": "the phone number", "target": "전화번호요"},
+        {"known": "what's your number", "target": "번호가 뭐예요?"},
+        {"known": "my room is small", "target": "제 방이 작아요"},
+        {"known": "what's the room number", "target": "방 번호가 뭐예요?"},
+        {"known": "I forgot my phone number", "target": "전화번호 잊어버렸어요"},
+        {"known": "she asked for his room number", "target": "그녀가 그의 방 번호 물었어요"},
+        {"known": "the hotel room number is on the key", "target": "호텔 방 번호가 열쇠에 있어요"},
+        {"known": "I need to find out my room number at the hotel", "target": "호텔에서 제 방 번호 알아야 해요"}
+      ]
+    }
+  ]
+}

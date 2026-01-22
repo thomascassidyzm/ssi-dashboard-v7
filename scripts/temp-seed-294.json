@@ -1,0 +1,102 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 294,
+  "known_text": "I don't have enough time to call you tonight.",
+  "target_text": "오늘 밤에 전화할 시간이 충분하지 않아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "tonight (time marker)",
+      "target": "오늘 밤에",
+      "components": [
+        {"known": "today", "target": "오늘"},
+        {"known": "night", "target": "밤"},
+        {"known": "at/in", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "tonight", "target": "오늘 밤에"},
+        {"known": "night", "target": "밤이요"},
+        {"known": "at night", "target": "밤에요"},
+        {"known": "tonight is special", "target": "오늘 밤 특별해요"},
+        {"known": "I'm busy tonight", "target": "오늘 밤 바빠요"},
+        {"known": "let's meet tonight", "target": "오늘 밤에 만나요"},
+        {"known": "what are you doing tonight?", "target": "오늘 밤에 뭐 해요?"},
+        {"known": "I have plans tonight", "target": "오늘 밤에 계획 있어요"},
+        {"known": "the concert is tonight", "target": "콘서트가 오늘 밤이에요"},
+        {"known": "I'll call you tonight", "target": "오늘 밤에 전화할게요"},
+        {"known": "tonight we're having dinner together", "target": "오늘 밤에 같이 저녁 먹어요"},
+        {"known": "I'll be home late tonight", "target": "오늘 밤에 늦게 집에 갈 거예요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "enough/sufficient",
+      "target": "충분하다",
+      "phrases": [
+        {"known": "enough", "target": "충분해요"},
+        {"known": "sufficient", "target": "충분해요"},
+        {"known": "that's enough", "target": "충분해요"},
+        {"known": "not enough", "target": "충분하지 않아요"},
+        {"known": "is this enough?", "target": "이거 충분해요?"},
+        {"known": "we have enough", "target": "충분해요"},
+        {"known": "that's not sufficient", "target": "그건 충분하지 않아요"},
+        {"known": "I don't have enough money", "target": "돈이 충분하지 않아요"},
+        {"known": "there's enough food for everyone", "target": "모두에게 음식이 충분해요"},
+        {"known": "I slept enough last night", "target": "어젯밤에 충분히 잤어요"},
+        {"known": "the explanation wasn't sufficient", "target": "설명이 충분하지 않았어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "don't have enough time to call",
+      "target": "전화할 시간이 충분하지 않다",
+      "components": [
+        {"known": "call (phone)", "target": "전화하다"},
+        {"known": "time", "target": "시간"},
+        {"known": "enough/sufficient", "target": "충분하다"},
+        {"known": "not", "target": "지 않다"}
+      ],
+      "phrases": [
+        {"known": "call", "target": "전화해요"},
+        {"known": "no time", "target": "시간 없어요"},
+        {"known": "not enough", "target": "충분하지 않아요"},
+        {"known": "not enough time", "target": "시간이 충분하지 않아요"},
+        {"known": "I don't have time to call", "target": "전화할 시간 없어요"},
+        {"known": "we don't have enough time", "target": "시간이 충분하지 않아요"},
+        {"known": "there's not enough time to finish", "target": "끝낼 시간이 충분하지 않아요"},
+        {"known": "I didn't have time to eat breakfast", "target": "아침 먹을 시간이 없었어요"},
+        {"known": "we didn't have sufficient time to prepare", "target": "준비할 시간이 충분하지 않았어요"},
+        {"known": "she never has enough time to rest", "target": "그녀가 쉴 시간이 항상 충분하지 않아요"},
+        {"known": "I have enough time to help you", "target": "도와줄 시간이 충분해요"},
+        {"known": "there wasn't enough time to read everything", "target": "다 읽을 시간이 충분하지 않았어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I don't have enough time to call you tonight",
+      "target": "오늘 밤에 전화할 시간이 충분하지 않아요",
+      "components": [
+        {"known": "tonight (time marker)", "target": "오늘 밤에"},
+        {"known": "don't have enough time to call", "target": "전화할 시간이 충분하지 않다"}
+      ],
+      "phrases": [
+        {"known": "no time", "target": "시간 없어요"},
+        {"known": "too busy", "target": "너무 바빠요"},
+        {"known": "not tonight", "target": "오늘 밤 안 돼요"},
+        {"known": "I can't tonight", "target": "오늘 밤 못 해요"},
+        {"known": "I'm too busy tonight", "target": "오늘 밤 너무 바빠요"},
+        {"known": "can we talk tomorrow?", "target": "내일 얘기할까요?"},
+        {"known": "I don't have time right now", "target": "지금 시간이 없어요"},
+        {"known": "I won't have time to meet you today", "target": "오늘 만날 시간 없을 거예요"},
+        {"known": "I'm sorry but I can't call tonight", "target": "죄송하지만 오늘 밤 전화 못 해요"},
+        {"known": "I don't have enough time to explain right now", "target": "지금 설명할 시간이 충분하지 않아요"},
+        {"known": "tonight I won't have time to go shopping", "target": "오늘 밤에 쇼핑할 시간이 없을 거예요"},
+        {"known": "I didn't have time to reply to your message yesterday", "target": "어제 메시지 답장할 시간이 없었어요"}
+      ]
+    }
+  ]
+}

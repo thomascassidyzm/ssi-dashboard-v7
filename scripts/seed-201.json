@@ -1,56 +1,71 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 201,
   "known_text": "We wanted to know what was going to happen.",
-  "target_text": "私たちは何が起こるか知りたかったです。",
+  "target_text": "우리는 무슨 일이 일어날지 알고 싶었어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "what was going to happen",
-      "target": "何が起こるか",
-      "components": [
-        {"known": "what (subject)", "target": "何が"},
-        {"known": "will happen", "target": "起こる"},
-        {"known": "whether/if", "target": "か"}
-      ],
+      "type": "A",
+      "known": "to happen / to occur",
+      "target": "일어나다",
       "phrases": [
-        {"known": "what", "target": "何"},
-        {"known": "happen", "target": "起こる"},
-        {"known": "what will happen", "target": "何が起こる"},
-        {"known": "what was going to happen", "target": "何が起こるか"},
-        {"known": "something happened", "target": "何かが起こりました"},
-        {"known": "what happened yesterday", "target": "昨日何が起こったか"},
-        {"known": "I don't know what will happen", "target": "何が起こるか分かりません"},
-        {"known": "do you know what happened", "target": "何が起こったか知っていますか"},
-        {"known": "she asked what was going to happen", "target": "彼女は何が起こるか聞きました"},
-        {"known": "I heard what happened at the meeting yesterday", "target": "昨日の会いで何が起こったか聞きました"},
-        {"known": "they said they want to know what's going to happen tomorrow", "target": "彼らは明日何が起こるか知りたいと言いました"},
-        {"known": "he wanted to know what happened while he was working", "target": "彼は働いている間に何が起こったか知りたかったです"}
+        {"known": "happen", "target": "일어나다"},
+        {"known": "it happened", "target": "일어났어요"},
+        {"known": "what happened", "target": "무슨 일이 일어났어요"},
+        {"known": "something happened", "target": "무슨 일이 일어났어요"},
+        {"known": "What happened yesterday?", "target": "어제 무슨 일이 일어났어요?"},
+        {"known": "Nothing happened", "target": "아무 일도 안 일어났어요"},
+        {"known": "Something bad happened", "target": "나쁜 일이 일어났어요"},
+        {"known": "I heard something happened at work", "target": "직장에서 무슨 일이 일어났다고 들었어요"},
+        {"known": "I do not know what happened there", "target": "거기서 무슨 일이 일어났는지 몰라요"},
+        {"known": "Please tell me what happened at the meeting", "target": "회의에서 무슨 일이 일어났는지 말해 주세요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "we wanted to know",
-      "target": "私たちは知りたかったです",
+      "known": "whether / what will",
+      "target": "~(으)ㄹ지",
       "components": [
-        {"known": "we (topic)", "target": "私たちは"},
-        {"known": "wanted to know", "target": "知りたかったです"}
+        {"known": "future/uncertain", "target": "(으)ㄹ"},
+        {"known": "whether/if", "target": "지"}
       ],
       "phrases": [
-        {"known": "we", "target": "私たち"},
-        {"known": "we (topic)", "target": "私たちは"},
-        {"known": "wanted to know", "target": "知りたかったです"},
-        {"known": "I want to know", "target": "知りたいです"},
-        {"known": "we wanted to", "target": "私たちはしたかったです"},
-        {"known": "we wanted to know", "target": "私たちは知りたかったです"},
-        {"known": "I wanted to know what happened", "target": "何が起こったか知りたかったです"},
-        {"known": "she said she wanted to know", "target": "彼女は知りたかったと言いました"},
-        {"known": "we wanted to know if it was true", "target": "私たちはそれが本当か知りたかったです"},
-        {"known": "I wanted to know why he was so busy", "target": "彼がなぜ忙しいか知りたかったです"},
-        {"known": "they said they wanted to know what was happening", "target": "彼らは何が起こっているか知りたかったと言いました"},
-        {"known": "we wanted to know what they were trying to do", "target": "私たちは彼らが何をしようとしているか知りたかったです"}
+        {"known": "whether", "target": "~ㄹ지"},
+        {"known": "if it will", "target": "~ㄹ지"},
+        {"known": "whether or not", "target": "~ㄹ지"},
+        {"known": "I wonder if", "target": "~ㄹ지"},
+        {"known": "will it rain", "target": "비가 올지"},
+        {"known": "I do not know if she will come", "target": "그녀가 올지 몰라요"},
+        {"known": "I wonder if he will be there", "target": "그가 거기 있을지 모르겠어요"},
+        {"known": "I am not sure what will happen", "target": "무슨 일이 일어날지 모르겠어요"},
+        {"known": "We do not know if it will be possible", "target": "가능할지 몰라요"},
+        {"known": "She asked me if I could help her tomorrow", "target": "내일 도와줄 수 있을지 물어봤어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "We wanted to know what was going to happen",
+      "target": "우리는 무슨 일이 일어날지 알고 싶었어요",
+      "components": [
+        {"known": "we", "target": "우리는"},
+        {"known": "what", "target": "무슨 일이"},
+        {"known": "will happen", "target": "일어날지"},
+        {"known": "wanted to know", "target": "알고 싶었어요"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "우리는"},
+        {"known": "what thing", "target": "무슨 일이"},
+        {"known": "will happen", "target": "일어날지"},
+        {"known": "wanted to know", "target": "알고 싶었어요"},
+        {"known": "what will happen", "target": "무슨 일이 일어날지"},
+        {"known": "we wanted to know", "target": "우리는 알고 싶었어요"},
+        {"known": "We wanted to know what was going to happen", "target": "우리는 무슨 일이 일어날지 알고 싶었어요"},
+        {"known": "I wanted to know if she was coming", "target": "그녀가 오는지 알고 싶었어요"},
+        {"known": "They wanted to know what happened yesterday", "target": "어제 무슨 일이 일어났는지 알고 싶어 했어요"},
+        {"known": "We wanted to know if the meeting was still happening tomorrow", "target": "내일 회의가 있을지 알고 싶었어요"}
       ]
     }
   ]

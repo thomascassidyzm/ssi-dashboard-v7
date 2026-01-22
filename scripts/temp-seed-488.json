@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 488,
+  "known_text": "It's on the other side of that yellow line.",
+  "target_text": "그 노란 줄 반대편에 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that yellow line",
+      "target": "그 노란 줄",
+      "components": [
+        {"known": "that", "target": "그"},
+        {"known": "yellow", "target": "노란"},
+        {"known": "line", "target": "줄"}
+      ],
+      "phrases": [
+        {"known": "line", "target": "줄이요"},
+        {"known": "yellow", "target": "노란색이요"},
+        {"known": "that one", "target": "그거요"},
+        {"known": "the yellow one", "target": "노란 거요"},
+        {"known": "don't cross the line", "target": "줄 넘지 마세요"},
+        {"known": "the yellow flower is pretty", "target": "노란 꽃이 예뻐요"},
+        {"known": "stay behind the line", "target": "줄 뒤에 있으세요"},
+        {"known": "she pointed at that yellow sign", "target": "그녀가 그 노란 표지판 가리켰어요"},
+        {"known": "the line separates two areas", "target": "줄이 두 구역 나눠요"},
+        {"known": "he wore a yellow jacket", "target": "그가 노란 재킷 입었어요"},
+        {"known": "please stand behind the yellow line", "target": "노란 줄 뒤에 서 주세요"},
+        {"known": "the yellow line marks the boundary", "target": "노란 줄이 경계를 표시해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "on the other side",
+      "target": "반대편에",
+      "components": [
+        {"known": "other side", "target": "반대편"},
+        {"known": "on/at", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "other side", "target": "반대편이요"},
+        {"known": "over there", "target": "저쪽에요"},
+        {"known": "across", "target": "건너편이요"},
+        {"known": "the opposite", "target": "반대요"},
+        {"known": "on the other side", "target": "반대편에요"},
+        {"known": "go to the other side", "target": "반대편에 가요"},
+        {"known": "it's across there", "target": "건너편에 있어요"},
+        {"known": "she's on the opposite side", "target": "그녀가 반대편에 있어요"},
+        {"known": "the store is across the street", "target": "가게가 길 건너편에 있어요"},
+        {"known": "he lives on the other side of town", "target": "그가 마을 반대편에 살아요"},
+        {"known": "the exit is on the opposite side", "target": "출구가 반대편에 있어요"},
+        {"known": "we met on the other side of the park", "target": "공원 반대편에서 만났어요"},
+        {"known": "the restaurant is on the other side of the building", "target": "식당이 건물 반대편에 있어요"},
+        {"known": "she waved at me from the other side of the room", "target": "그녀가 방 반대편에서 손 흔들었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "it's on the other side of that yellow line",
+      "target": "그 노란 줄 반대편에 있어요",
+      "components": [
+        {"known": "that yellow line", "target": "그 노란 줄"},
+        {"known": "on the other side", "target": "반대편에"},
+        {"known": "is/exists", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "it's there", "target": "거기 있어요"},
+        {"known": "on that side", "target": "그쪽에요"},
+        {"known": "over on that side", "target": "그쪽에 있어요"},
+        {"known": "it's across", "target": "건너편에 있어요"},
+        {"known": "it's right across the line", "target": "줄 바로 건너편에 있어요"},
+        {"known": "the entrance is on the other side", "target": "입구가 반대편에 있어요"},
+        {"known": "you need to go to the opposite side", "target": "반대편으로 가야 해요"},
+        {"known": "the exit is past that red line", "target": "출구가 그 빨간 줄 지나서 있어요"},
+        {"known": "the parking is on the other side of the road", "target": "주차장이 길 반대편에 있어요"},
+        {"known": "the meeting room is across the hallway", "target": "회의실이 복도 건너편에 있어요"},
+        {"known": "he said it's located past the yellow markers", "target": "그가 노란 표시 지나서 있다고 했어요"},
+        {"known": "the platform is on the other side of the yellow line", "target": "승강장이 노란 줄 반대편에 있어요"}
+      ]
+    }
+  ]
+}

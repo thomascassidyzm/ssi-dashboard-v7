@@ -1,0 +1,56 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 516,
+  "known_text": "They both came on their own.",
+  "target_text": "둘 다 혼자 왔어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "came on their own",
+      "target": "혼자 오다",
+      "components": [
+        {"known": "on one's own/alone", "target": "혼자"},
+        {"known": "come", "target": "오다"}
+      ],
+      "phrases": [
+        {"known": "alone", "target": "혼자요"},
+        {"known": "come", "target": "와요"},
+        {"known": "by myself", "target": "혼자서요"},
+        {"known": "come here", "target": "여기 와요"},
+        {"known": "she came alone", "target": "그녀가 혼자 왔어요"},
+        {"known": "did you come alone", "target": "혼자 왔어요?"},
+        {"known": "he came by himself", "target": "그가 혼자서 왔어요"},
+        {"known": "I came here on my own", "target": "혼자 여기 왔어요"},
+        {"known": "she arrived without anyone else", "target": "그녀가 다른 사람 없이 왔어요"},
+        {"known": "he traveled there all alone", "target": "그가 거기 완전 혼자 갔어요"},
+        {"known": "I decided to come on my own", "target": "혼자 오기로 했어요"},
+        {"known": "she bravely came by herself for the first time", "target": "그녀가 처음으로 용감하게 혼자 왔어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they both came on their own",
+      "target": "둘 다 혼자 왔어요",
+      "components": [
+        {"known": "they both", "target": "둘 다"},
+        {"known": "came on their own", "target": "혼자 오다"}
+      ],
+      "phrases": [
+        {"known": "both", "target": "둘 다요"},
+        {"known": "the two", "target": "둘이요"},
+        {"known": "both of them", "target": "둘 다요"},
+        {"known": "both are good", "target": "둘 다 좋아요"},
+        {"known": "they both agreed", "target": "둘 다 동의했어요"},
+        {"known": "she and I both came", "target": "그녀랑 저 둘 다 왔어요"},
+        {"known": "they both arrived separately", "target": "둘 다 따로 도착했어요"},
+        {"known": "both of them showed up alone", "target": "둘 다 혼자 나타났어요"},
+        {"known": "we both made the same choice", "target": "우리 둘 다 같은 선택 했어요"},
+        {"known": "they both decided to go on their own", "target": "둘 다 혼자 가기로 했어요"},
+        {"known": "interestingly they both came without telling each other", "target": "신기하게도 둘 다 서로 말 안 하고 왔어요"},
+        {"known": "both friends arrived independently at the same time", "target": "두 친구 다 동시에 따로 도착했어요"}
+      ]
+    }
+  ]
+}

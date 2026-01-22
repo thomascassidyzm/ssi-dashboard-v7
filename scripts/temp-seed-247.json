@@ -1,0 +1,96 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 247,
+  "known_text": "I thought that book was fairly good.",
+  "target_text": "그 책이 꽤 좋다고 생각했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "fairly/quite",
+      "target": "꽤",
+      "phrases": [
+        {"known": "fairly", "target": "꽤"},
+        {"known": "quite", "target": "꽤요"},
+        {"known": "fairly good", "target": "꽤 좋아요"},
+        {"known": "quite well", "target": "꽤 잘"},
+        {"known": "fairly much", "target": "꽤 많이"},
+        {"known": "she did fairly well", "target": "그녀가 꽤 잘 했어요"},
+        {"known": "I learned quite a lot", "target": "꽤 많이 배웠어요"},
+        {"known": "that's fairly interesting", "target": "그것이 꽤 재미있어요"},
+        {"known": "he speaks Korean quite well now", "target": "그가 지금 한국어를 꽤 잘 해요"},
+        {"known": "my friend finished it fairly quickly", "target": "제 친구가 꽤 빨리 끝냈어요"},
+        {"known": "she said it was quite good yesterday", "target": "그녀가 어제 꽤 좋았다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "fairly good",
+      "target": "꽤 좋다",
+      "components": [
+        {"known": "fairly/quite", "target": "꽤"},
+        {"known": "good", "target": "좋다"}
+      ],
+      "phrases": [
+        {"known": "good", "target": "좋아요"},
+        {"known": "fairly", "target": "꽤요"},
+        {"known": "fairly good", "target": "꽤 좋아요"},
+        {"known": "was quite good", "target": "꽤 좋았어요"},
+        {"known": "it's fairly nice", "target": "꽤 좋은데요"},
+        {"known": "that was quite good", "target": "그것이 꽤 좋았어요"},
+        {"known": "fairly good today", "target": "오늘 꽤 좋아요"},
+        {"known": "she said it was fairly good", "target": "그녀가 꽤 좋다고 말했어요"},
+        {"known": "the food was fairly good yesterday", "target": "어제 음식이 꽤 좋았어요"},
+        {"known": "I thought the movie was quite good", "target": "영화가 꽤 좋다고 생각했어요"},
+        {"known": "he said the restaurant was fairly good", "target": "그가 식당이 꽤 좋다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I thought (quote)",
+      "target": "라고 생각하다",
+      "components": [
+        {"known": "that (quote)", "target": "라고"},
+        {"known": "think", "target": "생각하다"}
+      ],
+      "phrases": [
+        {"known": "think", "target": "생각해요"},
+        {"known": "that", "target": "라고요"},
+        {"known": "thought", "target": "생각했어요"},
+        {"known": "I think", "target": "라고 생각해요"},
+        {"known": "I thought", "target": "라고 생각했어요"},
+        {"known": "I think so", "target": "그렇다고 생각해요"},
+        {"known": "she thought that", "target": "그녀가 라고 생각했어요"},
+        {"known": "I think it's good", "target": "좋다고 생각해요"},
+        {"known": "he thought she was coming", "target": "그가 그녀가 온다고 생각했어요"},
+        {"known": "I thought it was interesting", "target": "재미있다고 생각했어요"},
+        {"known": "my friend thinks it will be helpful", "target": "제 친구가 도움이 될 거라고 생각해요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I thought that book was fairly good",
+      "target": "그 책이 꽤 좋다고 생각했어요",
+      "components": [
+        {"known": "that book", "target": "그 책"},
+        {"known": "fairly good", "target": "꽤 좋다"},
+        {"known": "I thought (quote)", "target": "라고 생각하다"}
+      ],
+      "phrases": [
+        {"known": "that book", "target": "그 책이"},
+        {"known": "was good", "target": "좋았어요"},
+        {"known": "fairly good", "target": "꽤 좋다고"},
+        {"known": "I thought it", "target": "라고 생각했어요"},
+        {"known": "the book was good", "target": "그 책이 좋았어요"},
+        {"known": "I thought it was good", "target": "좋다고 생각했어요"},
+        {"known": "she thought that book was fairly interesting", "target": "그녀가 그 책이 꽤 재미있다고 생각했어요"},
+        {"known": "I thought that movie was quite good too", "target": "그 영화도 꽤 좋다고 생각했어요"},
+        {"known": "he thought the food was fairly good yesterday", "target": "그가 어제 음식이 꽤 좋다고 생각했어요"},
+        {"known": "my friend thought that place was quite nice", "target": "제 친구가 그 곳이 꽤 좋다고 생각했어요"}
+      ]
+    }
+  ]
+}

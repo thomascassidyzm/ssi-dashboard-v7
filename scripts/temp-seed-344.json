@@ -1,0 +1,62 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 344,
+  "known_text": "Who said that he's happy to help you.",
+  "target_text": "누가 그가 당신을 도와주는 게 기쁘다고 말했어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "happy to help",
+      "target": "도와주는 게 기쁘다",
+      "components": [
+        {"known": "help (giving)", "target": "도와주다"},
+        {"known": "the fact that (nominalizer)", "target": "는 게"},
+        {"known": "happy/glad", "target": "기쁘다"}
+      ],
+      "phrases": [
+        {"known": "happy", "target": "기뻐요"},
+        {"known": "help you", "target": "도와줘요"},
+        {"known": "glad to help", "target": "도와줘요"},
+        {"known": "I'm glad to help", "target": "도와줘서 기뻐요"},
+        {"known": "happy to help you", "target": "도와주게 되어 기뻐요"},
+        {"known": "he's happy to help", "target": "그가 도와줘서 기뻐해요"},
+        {"known": "I'm always happy to help", "target": "항상 도와줘서 기뻐요"},
+        {"known": "she said she's happy to help", "target": "그녀가 도와줘서 기쁘다고 했어요"},
+        {"known": "we're glad to be able to help", "target": "도와줄 수 있어서 기뻐요"},
+        {"known": "he seems happy to help others", "target": "그가 다른 사람들을 도와줘서 기뻐하는 것 같아요"},
+        {"known": "I'm really happy I could help with this", "target": "이거 도와줄 수 있어서 정말 기뻐요"},
+        {"known": "she's always happy to help her friends", "target": "그녀가 항상 친구들을 도와줘서 기뻐해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "who said that he's happy to help you",
+      "target": "누가 그가 당신을 도와주는 게 기쁘다고 말했어요",
+      "components": [
+        {"known": "who", "target": "누가"},
+        {"known": "he", "target": "그가"},
+        {"known": "you (polite)", "target": "당신"},
+        {"known": "object marker", "target": "을"},
+        {"known": "happy to help", "target": "도와주는 게 기쁘다"},
+        {"known": "said that (quote)", "target": "고 말하다"}
+      ],
+      "phrases": [
+        {"known": "who", "target": "누가요"},
+        {"known": "who is it", "target": "누구예요?"},
+        {"known": "who said", "target": "누가 말했어요?"},
+        {"known": "he's happy", "target": "그가 기뻐해요"},
+        {"known": "who told you", "target": "누가 말했어요?"},
+        {"known": "who said that?", "target": "누가 그렇게 말했어요?"},
+        {"known": "who said he's happy?", "target": "누가 그가 기쁘다고 했어요?"},
+        {"known": "who mentioned that he wants to help?", "target": "누가 그가 돕고 싶다고 말했어요?"},
+        {"known": "who said he's glad about it?", "target": "누가 그가 그거 기쁘다고 말했어요?"},
+        {"known": "who told you he's happy to help?", "target": "누가 그가 도와줘서 기쁘다고 했어요?"},
+        {"known": "who said that he's willing to help you?", "target": "누가 그가 당신을 도와주고 싶다고 말했어요?"},
+        {"known": "who mentioned that he's glad to assist?", "target": "누가 그가 도와주게 되어 기쁘다고 말했어요?"},
+        {"known": "who said that he's really happy to help with this?", "target": "누가 그가 이거 도와줘서 정말 기쁘다고 말했어요?"}
+      ]
+    }
+  ]
+}

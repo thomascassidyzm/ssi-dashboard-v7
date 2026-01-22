@@ -1,0 +1,54 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 585,
+  "target_text": "제 방 창문에서 산이 보여요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "my bedroom window",
+      "target": "제 방 창문",
+      "components": [
+        {"known": "my room", "target": "제 방"},
+        {"known": "window", "target": "창문"}
+      ],
+      "phrases": [
+        {"known": "room", "target": "방"},
+        {"known": "window", "target": "창문"},
+        {"known": "my room", "target": "제 방"},
+        {"known": "my bedroom window", "target": "제 방 창문"},
+        {"known": "from my window", "target": "제 창문에서"},
+        {"known": "open the window", "target": "창문을 열어요"},
+        {"known": "it is a big window", "target": "큰 창문이에요"},
+        {"known": "from the bedroom window", "target": "방 창문에서"},
+        {"known": "please close the bedroom window", "target": "제 방 창문 좀 닫아 주세요"},
+        {"known": "I like to sit by the window in my room", "target": "제 방 창문 옆에 앉는 걸 좋아해요"},
+        {"known": "there is a big window in my bedroom", "target": "제 방에 큰 창문이 있어요"},
+        {"known": "when you come to my room you can see the window", "target": "제 방에 오면 창문이 보여요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I can see the mountains out of my bedroom window",
+      "target": "제 방 창문에서 산이 보여요",
+      "components": [
+        {"known": "my bedroom window", "target": "제 방 창문"},
+        {"known": "the mountains can be seen", "target": "산이 보이다"}
+      ],
+      "phrases": [
+        {"known": "can see", "target": "보여요"},
+        {"known": "is visible", "target": "보이다"},
+        {"known": "visible from here", "target": "여기서 보여요"},
+        {"known": "mountains are visible", "target": "산이 보여요"},
+        {"known": "the view from here", "target": "여기서 보이는 것"},
+        {"known": "I can see the mountains out of my bedroom window", "target": "제 방 창문에서 산이 보여요"},
+        {"known": "you can see the ocean from this window", "target": "이 창문에서 바다가 보여요"},
+        {"known": "my sister can see the park from her room", "target": "언니는 방에서 공원이 보여요"},
+        {"known": "what can you see from your bedroom window", "target": "방 창문에서 뭐가 보여요?"},
+        {"known": "on a clear day you can see the mountains from here", "target": "맑은 날에는 여기서 산이 보여요"},
+        {"known": "it is wonderful that we can see the mountains every morning", "target": "매일 아침 산이 보이는 게 정말 좋아요"}
+      ]
+    }
+  ]
+}

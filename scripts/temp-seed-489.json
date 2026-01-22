@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 489,
+  "known_text": "If you don't make me a strong cup of coffee right now.",
+  "target_text": "지금 당장 진한 커피 한 잔 안 만들어 주면.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a strong cup of coffee",
+      "target": "진한 커피 한 잔",
+      "components": [
+        {"known": "strong", "target": "진한"},
+        {"known": "coffee", "target": "커피"},
+        {"known": "one cup", "target": "한 잔"}
+      ],
+      "phrases": [
+        {"known": "coffee", "target": "커피요"},
+        {"known": "one cup", "target": "한 잔이요"},
+        {"known": "strong tea", "target": "진한 차요"},
+        {"known": "a cup of tea", "target": "차 한 잔이요"},
+        {"known": "I love strong coffee", "target": "진한 커피 좋아해요"},
+        {"known": "can I have a cup of water", "target": "물 한 잔 주세요"},
+        {"known": "she ordered two cups of coffee", "target": "그녀가 커피 두 잔 주문했어요"},
+        {"known": "the coffee here is quite strong", "target": "여기 커피가 꽤 진해요"},
+        {"known": "he always drinks strong black coffee", "target": "그가 항상 진한 블랙커피 마셔요"},
+        {"known": "would you like a cup of coffee or tea", "target": "커피 한 잔 아니면 차 드실래요?"},
+        {"known": "I need a strong cup of coffee to wake up", "target": "깨려면 진한 커피 한 잔 필요해요"},
+        {"known": "she prefers weak coffee over strong coffee", "target": "그녀가 진한 커피보다 연한 커피 선호해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "make me a strong cup of coffee",
+      "target": "진한 커피 한 잔 만들어 주다",
+      "components": [
+        {"known": "a strong cup of coffee", "target": "진한 커피 한 잔"},
+        {"known": "make for (me)", "target": "만들어 주다"}
+      ],
+      "phrases": [
+        {"known": "make for me", "target": "만들어 줘요"},
+        {"known": "do it for me", "target": "해줘요"},
+        {"known": "please make", "target": "만들어 주세요"},
+        {"known": "can you make me", "target": "만들어 줄래요?"},
+        {"known": "she made me breakfast", "target": "그녀가 아침 만들어 줬어요"},
+        {"known": "please make me a sandwich", "target": "샌드위치 만들어 주세요"},
+        {"known": "he made her a cup of tea", "target": "그가 그녀한테 차 한 잔 만들어 줬어요"},
+        {"known": "can you make me some food", "target": "음식 좀 만들어 줄 수 있어요?"},
+        {"known": "she asked him to make her a salad", "target": "그녀가 샐러드 만들어 달라고 했어요"},
+        {"known": "would you mind making me a drink", "target": "음료 만들어 주실래요?"},
+        {"known": "he promised to make me a special dinner", "target": "그가 특별한 저녁 만들어 주기로 했어요"},
+        {"known": "she always makes me coffee in the morning", "target": "그녀가 항상 아침에 커피 만들어 줘요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "if you don't make me a strong cup of coffee right now",
+      "target": "지금 당장 진한 커피 한 잔 안 만들어 주면",
+      "components": [
+        {"known": "right now", "target": "지금 당장"},
+        {"known": "make me a strong cup of coffee", "target": "진한 커피 한 잔 만들어 주다"},
+        {"known": "not", "target": "안"},
+        {"known": "if", "target": "면"}
+      ],
+      "phrases": [
+        {"known": "right now", "target": "지금 당장요"},
+        {"known": "if not", "target": "안 하면요"},
+        {"known": "immediately", "target": "바로 지금요"},
+        {"known": "if you don't", "target": "안 하면요"},
+        {"known": "if you don't come now", "target": "지금 안 오면요"},
+        {"known": "if she doesn't help me", "target": "그녀가 안 도와주면요"},
+        {"known": "if you don't hurry we'll be late", "target": "지금 서두르지 않으면 늦을 거예요"},
+        {"known": "if he doesn't call me soon", "target": "그가 곧 전화 안 하면요"},
+        {"known": "if you don't finish this right now", "target": "지금 당장 이거 안 끝내면요"},
+        {"known": "if she doesn't bring the documents immediately", "target": "그녀가 당장 서류 안 가져오면요"},
+        {"known": "if you don't give me an answer right now", "target": "지금 당장 대답 안 해주면요"},
+        {"known": "if they don't respond to my message soon", "target": "그들이 곧 내 메시지에 답 안 하면요"}
+      ]
+    }
+  ]
+}

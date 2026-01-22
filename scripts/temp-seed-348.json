@@ -1,0 +1,88 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 348,
+  "known_text": "She didn't want to know what was going to happen.",
+  "target_text": "그녀가 무슨 일이 일어날지 알고 싶어하지 않았어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what was going to happen",
+      "target": "무슨 일이 일어날 거다",
+      "components": [
+        {"known": "what/which", "target": "무슨"},
+        {"known": "matter/thing", "target": "일"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "happen", "target": "일어나다"},
+        {"known": "going to (future)", "target": "ㄹ 거다"}
+      ],
+      "phrases": [
+        {"known": "happen", "target": "일어나요"},
+        {"known": "happens now", "target": "지금 일어나요"},
+        {"known": "what is it", "target": "뭐예요?"},
+        {"known": "going to", "target": "일어날 거예요"},
+        {"known": "what will happen", "target": "무슨 일이 일어날 거예요"},
+        {"known": "something will happen", "target": "무슨 일이 일어날 거예요"},
+        {"known": "what's going to happen?", "target": "무슨 일이 일어날 거예요?"},
+        {"known": "I wonder what will happen", "target": "무슨 일이 일어날지 궁금해요"},
+        {"known": "we don't know what will happen", "target": "무슨 일이 일어날지 몰라요"},
+        {"known": "do you know what's going to happen?", "target": "무슨 일이 일어날지 알아요?"},
+        {"known": "she asked what was going to happen", "target": "그녀가 무슨 일이 일어날지 물어봤어요"},
+        {"known": "nobody knows what will happen next", "target": "아무도 다음에 무슨 일이 일어날지 몰라요"},
+        {"known": "I'm worried about what's going to happen", "target": "무슨 일이 일어날지 걱정돼요"},
+        {"known": "she was curious about what was going to happen", "target": "그녀가 무슨 일이 일어날지 궁금해했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "she didn't want to know",
+      "target": "알고 싶어하지 않았다",
+      "components": [
+        {"known": "know", "target": "알다"},
+        {"known": "want (to do)", "target": "고 싶어하다"},
+        {"known": "not (negative)", "target": "지 않다"}
+      ],
+      "phrases": [
+        {"known": "didn't want", "target": "싶어하지 않았어요"},
+        {"known": "she didn't", "target": "안 했어요"},
+        {"known": "didn't know", "target": "몰랐어요"},
+        {"known": "didn't want to", "target": "싶어하지 않았어요"},
+        {"known": "she didn't want to", "target": "그녀가 싶어하지 않았어요"},
+        {"known": "I didn't want to know", "target": "알고 싶어하지 않았어요"},
+        {"known": "he didn't want to hear it", "target": "그가 듣고 싶어하지 않았어요"},
+        {"known": "she didn't want to find out", "target": "그녀가 알아내고 싶어하지 않았어요"},
+        {"known": "I didn't want to know the truth", "target": "진실을 알고 싶어하지 않았어요"},
+        {"known": "he said he didn't want to know", "target": "그가 알고 싶어하지 않는다고 했어요"},
+        {"known": "she didn't want to know what happened", "target": "그녀가 무슨 일이 있었는지 알고 싶어하지 않았어요"},
+        {"known": "I didn't want to know the details at first", "target": "처음에 세부 사항을 알고 싶어하지 않았어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she didn't want to know what was going to happen",
+      "target": "그녀가 무슨 일이 일어날지 알고 싶어하지 않았어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "what was going to happen", "target": "무슨 일이 일어날 거다"},
+        {"known": "whether (indirect question)", "target": "ㄹ지"},
+        {"known": "she didn't want to know", "target": "알고 싶어하지 않았다"}
+      ],
+      "phrases": [
+        {"known": "she didn't", "target": "안 했어요"},
+        {"known": "didn't want to", "target": "안 원했어요"},
+        {"known": "what will happen", "target": "무슨 일이 일어날지"},
+        {"known": "she didn't want to", "target": "그녀가 안 원했어요"},
+        {"known": "she didn't want to know", "target": "그녀가 알고 싶어하지 않았어요"},
+        {"known": "I didn't want to know what was going on", "target": "무슨 일인지 알고 싶어하지 않았어요"},
+        {"known": "he didn't want to know the outcome", "target": "그가 결과를 알고 싶어하지 않았어요"},
+        {"known": "she didn't want to know what he was going to say", "target": "그녀가 그가 무슨 말을 할지 알고 싶어하지 않았어요"},
+        {"known": "I didn't want to know what was going to happen next", "target": "다음에 무슨 일이 일어날지 알고 싶어하지 않았어요"},
+        {"known": "she preferred not to know what the results would be", "target": "그녀가 결과가 어떨지 알고 싶어하지 않았어요"},
+        {"known": "he said he didn't want to know what was going to happen", "target": "그가 무슨 일이 일어날지 알고 싶지 않다고 했어요"},
+        {"known": "she decided she didn't want to know the future", "target": "그녀가 미래를 알고 싶어하지 않기로 했어요"}
+      ]
+    }
+  ]
+}

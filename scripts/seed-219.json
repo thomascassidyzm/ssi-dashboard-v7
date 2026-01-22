@@ -1,71 +1,66 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 219,
   "known_text": "It was nice to relax for a while.",
-  "target_text": "しばらくリラックスするのは良かったです。",
+  "target_text": "잠시 쉬는 게 좋았어요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "for a while",
-      "target": "しばらく",
+      "known": "for a while / moment",
+      "target": "잠시",
       "phrases": [
-        {"known": "a while", "target": "しばらく"},
-        {"known": "for a while", "target": "しばらく"},
-        {"known": "wait a while", "target": "しばらく待つ"},
-        {"known": "after a while", "target": "しばらくして"},
-        {"known": "I waited for a while", "target": "しばらく待ちました"},
-        {"known": "it's been a while", "target": "しばらくですね"},
-        {"known": "I stayed for a while", "target": "しばらくいました"},
-        {"known": "I was there for a while", "target": "しばらくそこにいました"},
-        {"known": "I haven't seen you for a while", "target": "しばらく会っていませんね"},
-        {"known": "I was busy for a while but now I'm free", "target": "しばらく忙しかったですが今は大丈夫です"},
-        {"known": "for a while I didn't know what to do about it", "target": "しばらくそれについて何をしたらいいかわかりませんでした"},
-        {"known": "I didn't go out for a while because I was too busy", "target": "しばらく忙しすぎて出かけませんでした"}
+        {"known": "a moment", "target": "잠시"},
+        {"known": "for a while", "target": "잠시"},
+        {"known": "wait a moment", "target": "잠시요"},
+        {"known": "just a moment", "target": "잠시만요"},
+        {"known": "I rested for a while", "target": "잠시 쉬었어요"},
+        {"known": "Please wait a moment", "target": "잠시만 기다려 주세요"},
+        {"known": "We talked for a while at the park", "target": "공원에서 잠시 이야기했어요"},
+        {"known": "She waited for a while at the office", "target": "그녀는 사무실에서 잠시 기다렸어요"},
+        {"known": "He stopped for a while to rest yesterday", "target": "어제 잠시 쉬려고 멈췄어요"}
       ]
     },
     {
       "idx": 2,
-      "type": "M",
-      "known": "relaxing is",
-      "target": "リラックスするのは",
-      "components": [
-        {"known": "relax", "target": "リラックスする"},
-        {"known": "the act of (topic)", "target": "のは"}
-      ],
+      "type": "A",
+      "known": "to relax / rest",
+      "target": "쉬다",
       "phrases": [
-        {"known": "relax", "target": "リラックス"},
-        {"known": "to relax", "target": "リラックスする"},
-        {"known": "relaxing", "target": "リラックスして"},
-        {"known": "relaxing is", "target": "リラックスするのは"},
-        {"known": "I want to relax", "target": "リラックスしたいです"},
-        {"known": "relaxing is important", "target": "リラックスするのは大切です"},
-        {"known": "I relaxed at home", "target": "家でリラックスしました"},
-        {"known": "relaxing is fun", "target": "リラックスするのは楽しいです"},
-        {"known": "I try to relax on weekends", "target": "週末にリラックスしようとしています"},
-        {"known": "relaxing at home is the best", "target": "家でリラックスするのがいいです"},
-        {"known": "I couldn't relax because I was too busy", "target": "忙しすぎてリラックスできませんでした"},
-        {"known": "relaxing for a while after work is very nice", "target": "仕事の後しばらくリラックスするのはとてもいいです"}
+        {"known": "rest", "target": "쉬다"},
+        {"known": "rested", "target": "쉬었어요"},
+        {"known": "let's rest", "target": "쉬어요"},
+        {"known": "please rest", "target": "쉬세요"},
+        {"known": "resting", "target": "쉬고 있어요"},
+        {"known": "want to rest", "target": "쉬고 싶어요"},
+        {"known": "I usually rest on weekends", "target": "보통 주말에 쉬어요"},
+        {"known": "She needs to rest today", "target": "오늘 쉬어야 해요"},
+        {"known": "We rested at home last Sunday", "target": "지난 일요일에 집에서 쉬었어요"},
+        {"known": "He wants to rest for a while after work", "target": "일 후에 잠시 쉬고 싶어해요"},
+        {"known": "She usually rests at home on the weekend", "target": "그녀는 보통 주말에 집에서 쉬어요"}
       ]
     },
     {
       "idx": 3,
-      "type": "A",
-      "known": "it was nice",
-      "target": "良かったです",
+      "type": "M",
+      "known": "It was nice to relax for a while",
+      "target": "잠시 쉬는 게 좋았어요",
+      "components": [
+        {"known": "for a while", "target": "잠시"},
+        {"known": "V-ing (the thing)", "target": "쉬는 게"},
+        {"known": "was nice/good", "target": "좋았어요"}
+      ],
       "phrases": [
-        {"known": "good", "target": "良い"},
-        {"known": "was good", "target": "良かった"},
-        {"known": "it was nice", "target": "良かったです"},
-        {"known": "that's good", "target": "良かったですね"},
-        {"known": "it was really nice", "target": "本当に良かったです"},
-        {"known": "meeting you was nice", "target": "会えて良かったです"},
-        {"known": "that was really nice", "target": "それは本当に良かったです"},
-        {"known": "it was nice to be able to go", "target": "行けて良かったです"},
-        {"known": "it was nice that we could meet", "target": "会えて良かったです"},
-        {"known": "it was nice to take time to relax", "target": "リラックスする時間があって良かったです"},
-        {"known": "it was really nice to see everyone together", "target": "みんなに会えて本当に良かったです"},
-        {"known": "it was nice to spend time with friends on the weekend", "target": "週末に友達と時間を過ごせて良かったです"}
+        {"known": "for a while", "target": "잠시"},
+        {"known": "resting", "target": "쉬는 게"},
+        {"known": "was nice", "target": "좋았어요"},
+        {"known": "resting is nice", "target": "쉬는 게 좋아요"},
+        {"known": "It was nice to rest", "target": "쉬는 게 좋았어요"},
+        {"known": "It was nice to relax for a while", "target": "잠시 쉬는 게 좋았어요"},
+        {"known": "It was nice to rest at home", "target": "집에서 쉬는 게 좋았어요"},
+        {"known": "It was nice to relax on the weekend", "target": "주말에 쉬는 게 좋았어요"},
+        {"known": "It was nice to rest for a while yesterday", "target": "어제 잠시 쉬는 게 좋았어요"},
+        {"known": "It was nice to relax at the park for a while", "target": "공원에서 잠시 쉬는 게 좋았어요"}
       ]
     }
   ]

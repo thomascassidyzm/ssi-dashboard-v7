@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 446,
+  "known_text": "They won't be able to break that window.",
+  "target_text": "그들이 그 창문을 깨지 못할 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "break that window",
+      "target": "그 창문을 깨다",
+      "components": [
+        {"known": "that", "target": "그"},
+        {"known": "window", "target": "창문"},
+        {"known": "object marker", "target": "을"},
+        {"known": "break", "target": "깨다"}
+      ],
+      "phrases": [
+        {"known": "window", "target": "창문이요"},
+        {"known": "break", "target": "깨요"},
+        {"known": "that window", "target": "그 창문이요"},
+        {"known": "it broke", "target": "깨졌어요"},
+        {"known": "don't break it", "target": "깨지 마요"},
+        {"known": "the glass broke", "target": "유리가 깨졌어요"},
+        {"known": "he broke the plate", "target": "그가 접시를 깼어요"},
+        {"known": "she accidentally broke it", "target": "그녀가 실수로 깼어요"},
+        {"known": "the window was already broken", "target": "창문이 이미 깨져 있었어요"},
+        {"known": "be careful not to break anything", "target": "아무것도 안 깨게 조심해요"},
+        {"known": "the children broke the vase while playing", "target": "아이들이 놀다가 꽃병을 깼어요"},
+        {"known": "someone threw a rock and broke the window", "target": "누군가 돌을 던져서 창문을 깼어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they won't be able to break that window",
+      "target": "그들이 그 창문을 깨지 못할 거예요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "break that window", "target": "그 창문을 깨다"},
+        {"known": "won't be able to", "target": "지 못할 거예요"}
+      ],
+      "phrases": [
+        {"known": "they won't", "target": "못할 거예요"},
+        {"known": "can't do it", "target": "못해요"},
+        {"known": "won't be able to", "target": "못할 거예요"},
+        {"known": "she won't succeed", "target": "그녀가 못할 거예요"},
+        {"known": "he won't be able to come", "target": "그가 못 올 거예요"},
+        {"known": "they won't manage to finish", "target": "그들이 못 끝낼 거예요"},
+        {"known": "she won't be able to reach him", "target": "그녀가 그에게 연락 못할 거예요"},
+        {"known": "he won't be able to solve that problem", "target": "그가 그 문제를 못 풀 거예요"},
+        {"known": "they won't be able to get through the door", "target": "그들이 문을 통과하지 못할 거예요"},
+        {"known": "she won't be able to lift that by herself", "target": "그녀가 혼자 그걸 들지 못할 거예요"},
+        {"known": "they won't be able to open it without the key", "target": "그들이 열쇠 없이 열지 못할 거예요"},
+        {"known": "he won't be strong enough to move that heavy furniture", "target": "그가 그 무거운 가구를 옮길 힘이 안 될 거예요"}
+      ]
+    }
+  ]
+}

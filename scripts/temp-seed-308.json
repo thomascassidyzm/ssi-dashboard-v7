@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 308,
+  "known_text": "Yes she's a friend of my mother.",
+  "target_text": "네 그녀가 제 어머니의 친구예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "friend of (possessive)",
+      "target": "의 친구",
+      "components": [
+        {"known": "possessive marker", "target": "의"},
+        {"known": "friend", "target": "친구"}
+      ],
+      "phrases": [
+        {"known": "friend", "target": "친구요"},
+        {"known": "my friend", "target": "제 친구"},
+        {"known": "your friend", "target": "당신 친구"},
+        {"known": "his friend", "target": "그의 친구"},
+        {"known": "a friend of mine", "target": "제 친구예요"},
+        {"known": "a friend of hers", "target": "그녀의 친구예요"},
+        {"known": "my sister's friend", "target": "제 언니의 친구"},
+        {"known": "a friend of the family", "target": "가족의 친구예요"},
+        {"known": "he's a friend of my brother", "target": "그가 제 형의 친구예요"},
+        {"known": "they're friends of my parents", "target": "그들이 부모님의 친구예요"},
+        {"known": "a friend of a friend introduced us", "target": "친구의 친구가 소개해 줬어요"},
+        {"known": "a close friend of my older sister", "target": "제 언니의 가까운 친구예요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "a friend of my mother",
+      "target": "제 어머니의 친구",
+      "components": [
+        {"known": "my mother", "target": "제 어머니"},
+        {"known": "friend of (possessive)", "target": "의 친구"}
+      ],
+      "phrases": [
+        {"known": "my mother", "target": "어머니요"},
+        {"known": "my mother's", "target": "어머니의"},
+        {"known": "mother's friend", "target": "어머니의 친구"},
+        {"known": "a friend of my mother", "target": "제 어머니의 친구"},
+        {"known": "my mother's best friend", "target": "어머니의 가장 친한 친구"},
+        {"known": "a friend of my father", "target": "제 아버지의 친구"},
+        {"known": "my mother's friends are kind", "target": "어머니의 친구들이 친절해요"},
+        {"known": "she's been a friend of my mother for years", "target": "그녀가 어머니의 친구로 오래됐어요"},
+        {"known": "I met a friend of my mother yesterday", "target": "어제 어머니의 친구를 만났어요"},
+        {"known": "my mother's friend lives in Seoul", "target": "어머니의 친구가 서울에 살아요"},
+        {"known": "we visited a friend of my grandmother", "target": "할머니의 친구를 방문했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "yes she's a friend of my mother",
+      "target": "네 그녀가 제 어머니의 친구예요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "she", "target": "그녀가"},
+        {"known": "a friend of my mother", "target": "제 어머니의 친구"},
+        {"known": "is (copula)", "target": "예요"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "she is", "target": "그녀가요"},
+        {"known": "yes she is", "target": "네 그녀가요"},
+        {"known": "a friend", "target": "친구예요"},
+        {"known": "yes that's right", "target": "네 맞아요"},
+        {"known": "she's my friend", "target": "그녀가 제 친구예요"},
+        {"known": "yes she's my colleague", "target": "네 그녀가 제 동료예요"},
+        {"known": "yes he's a friend of my father", "target": "네 그가 아버지의 친구예요"},
+        {"known": "yes she's someone I know from school", "target": "네 그녀가 학교에서 아는 사람이에요"},
+        {"known": "yes that woman is a friend of the family", "target": "네 저 여자가 가족의 친구예요"},
+        {"known": "yes he's someone my sister introduced me to", "target": "네 그가 언니가 소개해 준 사람이에요"},
+        {"known": "yes she's been a friend of my mother's for many years", "target": "네 그녀가 어머니의 친구로 오래됐어요"}
+      ]
+    }
+  ]
+}

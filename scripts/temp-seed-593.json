@@ -1,0 +1,51 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 593,
+  "target_text": "아무리 말해도 그래도 나눠야 했어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "however much I argued",
+      "target": "아무리 말해도",
+      "components": [
+        {"known": "however much", "target": "아무리"},
+        {"known": "argued", "target": "말해도"}
+      ],
+      "phrases": [
+        {"known": "however", "target": "아무리"},
+        {"known": "argued", "target": "말했어요"},
+        {"known": "even if", "target": "해도"},
+        {"known": "however much", "target": "아무리 해도"},
+        {"known": "however much I argued", "target": "아무리 말해도"},
+        {"known": "however much I tried", "target": "아무리 노력해도"},
+        {"known": "however hard I worked", "target": "아무리 열심히 해도"},
+        {"known": "however much I explained they did not listen", "target": "아무리 설명해도 듣지 않았어요"},
+        {"known": "however much I argued it made no difference", "target": "아무리 말해도 소용이 없었어요"},
+        {"known": "however many times I asked she would not tell me", "target": "아무리 물어봐도 말해 주지 않았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "however much I argued I still had to share",
+      "target": "아무리 말해도 그래도 나눠야 했어요",
+      "components": [
+        {"known": "however much I argued", "target": "아무리 말해도"},
+        {"known": "I still had to share", "target": "그래도 나눠야 했다"}
+      ],
+      "phrases": [
+        {"known": "still", "target": "그래도"},
+        {"known": "had to share", "target": "나눠야 했다"},
+        {"known": "I had to share", "target": "나눠야 했어요"},
+        {"known": "still had to do it", "target": "그래도 해야 했어요"},
+        {"known": "however much I argued I still had to share", "target": "아무리 말해도 그래도 나눠야 했어요"},
+        {"known": "I still had to go even though I was tired", "target": "피곤해도 그래도 가야 했어요"},
+        {"known": "however much he complained he still had to finish", "target": "아무리 불평해도 그래도 끝내야 했어요"},
+        {"known": "she did not want to but she still had to share with her brother", "target": "싫어도 그래도 남동생이랑 나눠야 했어요"},
+        {"known": "however hard it was we still had to share everything", "target": "아무리 힘들어도 그래도 다 나눠야 했어요"},
+        {"known": "even though I tried to keep it all I still had to share in the end", "target": "다 갖고 싶었지만 결국 나눠야 했어요"}
+      ]
+    }
+  ]
+}

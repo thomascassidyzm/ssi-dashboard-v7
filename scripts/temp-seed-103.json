@@ -1,0 +1,94 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 103,
+  "known_text": "We're not trying to hear many more words.",
+  "target_text": "더 많은 단어를 들으려고 하는 게 아니에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "more",
+      "target": "더",
+      "phrases": [
+        {"known": "More.", "target": "더."},
+        {"known": "More please.", "target": "더 주세요."},
+        {"known": "More slowly.", "target": "더 천천히."},
+        {"known": "A bit more.", "target": "조금 더."},
+        {"known": "More time.", "target": "더 많은 시간."},
+        {"known": "Learn more.", "target": "더 배워요."},
+        {"known": "She needs more time.", "target": "그녀는 시간이 더 필요해요."},
+        {"known": "He studied more than before.", "target": "그는 전보다 더 공부했어요."},
+        {"known": "They waited a bit more.", "target": "그들은 조금 더 기다렸어요."},
+        {"known": "I want to learn more words.", "target": "더 많은 단어를 배우고 싶어요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "many words (object)",
+      "target": "많은 단어를",
+      "components": [
+        {"known": "many", "target": "많은"},
+        {"known": "word", "target": "단어"},
+        {"known": "(object marker)", "target": "를"}
+      ],
+      "phrases": [
+        {"known": "Many.", "target": "많아요."},
+        {"known": "Word.", "target": "단어."},
+        {"known": "Words.", "target": "단어들."},
+        {"known": "Many words.", "target": "많은 단어."},
+        {"known": "New words.", "target": "새 단어들."},
+        {"known": "Many things.", "target": "많은 것들."},
+        {"known": "She learned many words.", "target": "그녀는 많은 단어를 배웠어요."},
+        {"known": "He knows many words.", "target": "그는 많은 단어를 알아요."},
+        {"known": "They heard many words.", "target": "그들은 많은 단어를 들었어요."},
+        {"known": "I want to learn many more words.", "target": "더 많은 단어를 배우고 싶어요."},
+        {"known": "She's not trying to hear many words.", "target": "그녀는 많은 단어를 들으려고 하는 게 아니에요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "trying to hear (nominalized subject)",
+      "target": "들으려고 하는 게",
+      "components": [
+        {"known": "hear/listen", "target": "듣다"},
+        {"known": "(intending to)", "target": "-으려고"},
+        {"known": "do (attributive)", "target": "하는"},
+        {"known": "thing (subject)", "target": "게"}
+      ],
+      "phrases": [
+        {"known": "Hear.", "target": "들어요."},
+        {"known": "Heard.", "target": "들었어요."},
+        {"known": "Doing.", "target": "하는 거."},
+        {"known": "Trying to.", "target": "하려고 해요."},
+        {"known": "Trying to hear.", "target": "들으려고 해요."},
+        {"known": "Trying to listen.", "target": "들으려고 해요."},
+        {"known": "The trying to hear.", "target": "들으려고 하는 게."},
+        {"known": "She's trying to hear.", "target": "그녀는 들으려고 해요."},
+        {"known": "He's trying to listen to that.", "target": "그는 그것을 들으려고 해요."},
+        {"known": "They're trying to hear more.", "target": "그들은 더 들으려고 해요."},
+        {"known": "I'm not trying to hear that.", "target": "그것을 들으려고 하는 게 아니에요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "A",
+      "known": "is not",
+      "target": "아니에요",
+      "phrases": [
+        {"known": "No.", "target": "아니요."},
+        {"known": "Is not.", "target": "아니에요."},
+        {"known": "Not that.", "target": "그게 아니에요."},
+        {"known": "It's not.", "target": "아니에요."},
+        {"known": "That's not it.", "target": "그게 아니에요."},
+        {"known": "It's not like that.", "target": "그렇지 않아요."},
+        {"known": "She said it's not.", "target": "그녀는 아니라고 말했어요."},
+        {"known": "He thinks it's not that.", "target": "그는 그게 아니라고 생각해요."},
+        {"known": "They said it's not the time.", "target": "그들은 시간이 아니라고 말했어요."},
+        {"known": "I'm not trying to do that.", "target": "그것을 하려고 하는 게 아니에요."},
+        {"known": "We're not trying to hear many more words.", "target": "더 많은 단어를 들으려고 하는 게 아니에요."}
+      ]
+    }
+  ]
+}

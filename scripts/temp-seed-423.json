@@ -1,0 +1,61 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 423,
+  "known_text": "Do they need to ask such an obvious question?",
+  "target_text": "그들이 그렇게 뻔한 질문을 해야 해요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "such an obvious question",
+      "target": "그렇게 뻔한 질문",
+      "components": [
+        {"known": "such/like that", "target": "그렇게"},
+        {"known": "obvious", "target": "뻔하다"},
+        {"known": "question", "target": "질문"}
+      ],
+      "phrases": [
+        {"known": "obvious", "target": "뻔해요"},
+        {"known": "like that", "target": "그렇게요"},
+        {"known": "so obvious", "target": "너무 뻔해요"},
+        {"known": "such a question", "target": "그런 질문이요"},
+        {"known": "it's too obvious", "target": "너무 뻔해요"},
+        {"known": "the answer is obvious", "target": "답이 뻔해요"},
+        {"known": "that's such an easy question", "target": "그건 쉬운 질문이에요"},
+        {"known": "the result was obvious", "target": "결과가 뻔했어요"},
+        {"known": "everyone knows the obvious answer", "target": "모두가 뻔한 답을 알아요"},
+        {"known": "she asked such a simple question", "target": "그녀가 그런 간단한 질문을 했어요"},
+        {"known": "the ending of the movie was obvious", "target": "영화 결말이 뻔했어요"},
+        {"known": "he always asks such unnecessary questions", "target": "그가 항상 그런 불필요한 질문을 해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "do they need to ask such an obvious question",
+      "target": "그들이 그렇게 뻔한 질문을 해야 해요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "such an obvious question", "target": "그렇게 뻔한 질문"},
+        {"known": "object marker", "target": "을"},
+        {"known": "ask (do)", "target": "하다"},
+        {"known": "need to", "target": "야 하다"}
+      ],
+      "phrases": [
+        {"known": "do they", "target": "그들이요?"},
+        {"known": "must do", "target": "해야 해요"},
+        {"known": "need to ask", "target": "물어봐야 해요"},
+        {"known": "must they", "target": "그들이 해야 해요?"},
+        {"known": "do I need to ask", "target": "물어봐야 해요?"},
+        {"known": "does she need to know", "target": "그녀가 알아야 해요?"},
+        {"known": "do they really need to", "target": "그들이 정말 해야 해요?"},
+        {"known": "why do they need to ask that", "target": "왜 그걸 물어봐야 해요?"},
+        {"known": "does he need to explain again", "target": "그가 다시 설명해야 해요?"},
+        {"known": "do we need to discuss this now", "target": "지금 이거 얘기해야 해요?"},
+        {"known": "does she need to repeat the question", "target": "그녀가 질문을 반복해야 해요?"},
+        {"known": "do they need to confirm everything twice", "target": "그들이 모든 걸 두 번 확인해야 해요?"},
+        {"known": "why do they always ask the same question", "target": "왜 항상 같은 질문을 해요?"}
+      ]
+    }
+  ]
+}

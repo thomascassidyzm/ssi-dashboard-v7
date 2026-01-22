@@ -1,0 +1,32 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 530,
+  "known_text": "So I can count them",
+  "target_text": "세려고요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "so I can count them",
+      "target": "세려고요",
+      "components": [
+        {"known": "count", "target": "세다"},
+        {"known": "in order to", "target": "려고"}
+      ],
+      "phrases": [
+        {"known": "count", "target": "세요"},
+        {"known": "to do", "target": "하려고요"},
+        {"known": "I count", "target": "세요"},
+        {"known": "I counted", "target": "셌어요"},
+        {"known": "in order to", "target": "하려고요"},
+        {"known": "to check", "target": "확인하려고요"},
+        {"known": "let me count", "target": "세 볼게요"},
+        {"known": "I'm counting now", "target": "지금 세고 있어요"},
+        {"known": "I went there to buy it", "target": "사려고 거기 갔어요"},
+        {"known": "she came to help", "target": "그녀가 도와주려고 왔어요"},
+        {"known": "he's studying to pass the test", "target": "그가 시험 합격하려고 공부해요"},
+        {"known": "I'm saving money to travel", "target": "여행하려고 돈 모으고 있어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 228,
+  "known_text": "That man has just started to practise speaking.",
+  "target_text": "그 남자는 막 말하기 연습을 시작했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "speaking practice (noun)",
+      "target": "말하기 연습",
+      "components": [
+        {"known": "speaking", "target": "말하기"},
+        {"known": "practice", "target": "연습"}
+      ],
+      "phrases": [
+        {"known": "practice", "target": "연습"},
+        {"known": "speaking", "target": "말하기"},
+        {"known": "do practice", "target": "연습해요"},
+        {"known": "speaking practice", "target": "말하기 연습"},
+        {"known": "I did practice", "target": "연습했어요"},
+        {"known": "do speaking practice", "target": "말하기 연습해요"},
+        {"known": "the speaking practice", "target": "말하기 연습을"},
+        {"known": "we did speaking practice together", "target": "함께 말하기 연습했어요"},
+        {"known": "the teacher helped with speaking practice", "target": "선생님이 말하기 연습을 도와줬어요"},
+        {"known": "I do speaking practice every Sunday", "target": "매주 일요일에 말하기 연습해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "has just started",
+      "target": "막 시작했다",
+      "components": [
+        {"known": "just (recently)", "target": "막"},
+        {"known": "started", "target": "시작했다"}
+      ],
+      "phrases": [
+        {"known": "start", "target": "시작해요"},
+        {"known": "started", "target": "시작했어요"},
+        {"known": "just started", "target": "막 시작했어요"},
+        {"known": "just began", "target": "막 시작했어요"},
+        {"known": "she just started", "target": "그녀가 막 시작했어요"},
+        {"known": "he just started learning", "target": "그는 막 배우기 시작했어요"},
+        {"known": "I just started working", "target": "막 일하기 시작했어요"},
+        {"known": "we just started meeting", "target": "막 만나기 시작했어요"},
+        {"known": "they just started on Sunday", "target": "그들은 일요일에 막 시작했어요"},
+        {"known": "my friend just started to learn", "target": "제 친구가 막 배우기 시작했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that man has just started to practise speaking",
+      "target": "그 남자는 막 말하기 연습을 시작했어요",
+      "components": [
+        {"known": "speaking practice (noun)", "target": "말하기 연습"},
+        {"known": "has just started", "target": "막 시작했다"}
+      ],
+      "phrases": [
+        {"known": "that man", "target": "그 남자는"},
+        {"known": "just started", "target": "막 시작했어요"},
+        {"known": "practice", "target": "연습을"},
+        {"known": "speaking practice", "target": "말하기 연습을"},
+        {"known": "he just started practice", "target": "그는 막 연습을 시작했어요"},
+        {"known": "I just started speaking practice", "target": "막 말하기 연습을 시작했어요"},
+        {"known": "she just started to practice on Sunday", "target": "그녀는 일요일에 막 연습을 시작했어요"},
+        {"known": "my friend just started speaking practice", "target": "제 친구가 막 말하기 연습을 시작했어요"},
+        {"known": "they just started practicing together", "target": "그들은 막 함께 연습을 시작했어요"},
+        {"known": "the new student just started speaking practice", "target": "새 학생이 막 말하기 연습을 시작했어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 281,
+  "known_text": "Do you mind if I finish my coffee before you start?",
+  "target_text": "시작하시기 전에 제가 커피 다 마셔도 될까요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "before you start",
+      "target": "시작하시기 전에",
+      "components": [
+        {"known": "start", "target": "시작하다"},
+        {"known": "before", "target": "기 전에"}
+      ],
+      "phrases": [
+        {"known": "start", "target": "시작해요"},
+        {"known": "before", "target": "전에요"},
+        {"known": "before starting", "target": "시작하기 전에"},
+        {"known": "before you go", "target": "가시기 전에"},
+        {"known": "I'll start now", "target": "지금 시작할게요"},
+        {"known": "before eating", "target": "먹기 전에요"},
+        {"known": "please start first", "target": "먼저 시작하세요"},
+        {"known": "before I leave", "target": "제가 떠나기 전에"},
+        {"known": "she said to wait before starting", "target": "그녀가 시작하기 전에 기다리라고 말했어요"},
+        {"known": "I finished everything before going home", "target": "집에 가기 전에 다 끝냈어요"},
+        {"known": "he told me to call before coming", "target": "그가 오기 전에 전화하라고 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "finish my coffee",
+      "target": "커피 다 마시다",
+      "components": [
+        {"known": "coffee", "target": "커피"},
+        {"known": "all/completely", "target": "다"},
+        {"known": "drink", "target": "마시다"}
+      ],
+      "phrases": [
+        {"known": "coffee", "target": "커피요"},
+        {"known": "drink", "target": "마셔요"},
+        {"known": "all done", "target": "다 했어요"},
+        {"known": "I'm drinking coffee", "target": "커피 마셔요"},
+        {"known": "finish drinking", "target": "다 마셔요"},
+        {"known": "I finished my coffee", "target": "커피 다 마셨어요"},
+        {"known": "would you like some coffee?", "target": "커피 드실래요?"},
+        {"known": "I drink coffee every morning", "target": "매일 아침 커피 마셔요"},
+        {"known": "she already finished her coffee", "target": "그녀가 벌써 커피 다 마셨어요"},
+        {"known": "he asked if I want coffee", "target": "그가 커피 원하냐고 물었어요"},
+        {"known": "I can't finish all this coffee", "target": "이 커피 다 못 마셔요"},
+        {"known": "I drank all the coffee before leaving", "target": "떠나기 전에 커피 다 마셨어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "is it okay if I",
+      "target": "해도 될까요",
+      "components": [
+        {"known": "even if do", "target": "해도"},
+        {"known": "will it be okay", "target": "될까요"}
+      ],
+      "phrases": [
+        {"known": "okay", "target": "돼요"},
+        {"known": "is it okay?", "target": "될까요?"},
+        {"known": "even if", "target": "해도요"},
+        {"known": "is it okay if I go?", "target": "가도 될까요?"},
+        {"known": "can I do this?", "target": "이거 해도 돼요?"},
+        {"known": "is it okay if I stay here?", "target": "여기 있어도 될까요?"},
+        {"known": "can I ask a question?", "target": "질문해도 될까요?"},
+        {"known": "she asked if it's okay to come", "target": "그녀가 와도 되냐고 물었어요"},
+        {"known": "is it okay if I call you later?", "target": "나중에 전화해도 될까요?"},
+        {"known": "he asked if he could leave early", "target": "그가 일찍 가도 되냐고 물었어요"},
+        {"known": "I asked if it was okay to take a photo", "target": "사진 찍어도 되냐고 물었어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "do you mind if I finish my coffee before you start",
+      "target": "시작하시기 전에 제가 커피 다 마셔도 될까요",
+      "components": [
+        {"known": "before you start", "target": "시작하시기 전에"},
+        {"known": "I (humble)", "target": "제가"},
+        {"known": "finish my coffee", "target": "커피 다 마시다"},
+        {"known": "is it okay if I", "target": "해도 될까요"}
+      ],
+      "phrases": [
+        {"known": "me", "target": "제가요"},
+        {"known": "before that", "target": "그 전에요"},
+        {"known": "is it okay?", "target": "괜찮아요?"},
+        {"known": "before we start", "target": "시작 전에요"},
+        {"known": "can I go first?", "target": "먼저 가도 될까요?"},
+        {"known": "can I finish this first?", "target": "이거 먼저 끝내도 될까요?"},
+        {"known": "do you mind if I eat first?", "target": "먼저 먹어도 될까요?"},
+        {"known": "can I rest before we go?", "target": "가기 전에 쉬어도 될까요?"},
+        {"known": "is it okay if I finish this before then?", "target": "그 전에 이거 끝내도 될까요?"},
+        {"known": "she asked if she could have some water first", "target": "그녀가 먼저 물 마셔도 되냐고 물었어요"},
+        {"known": "do you mind if I make a quick call before we start?", "target": "시작하기 전에 잠깐 전화해도 될까요?"},
+        {"known": "he asked if he could read this before the meeting", "target": "그가 회의 전에 이거 읽어도 되냐고 물었어요"},
+        {"known": "I asked if I could finish my work before leaving", "target": "떠나기 전에 일 끝내도 되냐고 물었어요"}
+      ]
+    }
+  ]
+}

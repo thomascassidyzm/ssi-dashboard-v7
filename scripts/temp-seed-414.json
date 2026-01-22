@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 414,
+  "known_text": "Could we have a bottle of red wine please?",
+  "target_text": "레드 와인 한 병 주시겠어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a bottle of red wine",
+      "target": "레드 와인 한 병",
+      "components": [
+        {"known": "red wine", "target": "레드 와인"},
+        {"known": "one/a", "target": "한"},
+        {"known": "bottle (counter)", "target": "병"}
+      ],
+      "phrases": [
+        {"known": "wine", "target": "와인이요"},
+        {"known": "red wine", "target": "레드 와인이요"},
+        {"known": "one bottle", "target": "한 병이요"},
+        {"known": "a glass of wine", "target": "와인 한 잔이요"},
+        {"known": "red wine please", "target": "레드 와인 주세요"},
+        {"known": "I like red wine", "target": "레드 와인 좋아해요"},
+        {"known": "two bottles of wine", "target": "와인 두 병이요"},
+        {"known": "she ordered red wine", "target": "그녀가 레드 와인 시켰어요"},
+        {"known": "we need a bottle of water", "target": "물 한 병 필요해요"},
+        {"known": "he bought three bottles of wine", "target": "그가 와인 세 병 샀어요"},
+        {"known": "I want to try the red wine here", "target": "여기 레드 와인 마셔 보고 싶어요"},
+        {"known": "they finished two bottles of red wine", "target": "그들이 레드 와인 두 병 다 마셨어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "could we have a bottle of red wine please",
+      "target": "레드 와인 한 병 주시겠어요",
+      "components": [
+        {"known": "a bottle of red wine", "target": "레드 와인 한 병"},
+        {"known": "could we have... please (honorific)", "target": "주시겠어요"}
+      ],
+      "phrases": [
+        {"known": "please", "target": "주세요"},
+        {"known": "could you", "target": "주시겠어요"},
+        {"known": "give me please", "target": "주세요"},
+        {"known": "could we have water", "target": "물 주시겠어요"},
+        {"known": "could I have that", "target": "그거 주시겠어요"},
+        {"known": "could we have the menu", "target": "메뉴 주시겠어요"},
+        {"known": "could you give me the bill", "target": "계산서 주시겠어요"},
+        {"known": "could we have more bread please", "target": "빵 더 주시겠어요"},
+        {"known": "could you bring us some water", "target": "물 좀 가져다 주시겠어요"},
+        {"known": "could we have a table by the window", "target": "창가 자리 주시겠어요"},
+        {"known": "could you recommend something to drink", "target": "마실 거 추천해 주시겠어요"},
+        {"known": "could we have the dessert menu please", "target": "디저트 메뉴 주시겠어요"}
+      ]
+    }
+  ]
+}

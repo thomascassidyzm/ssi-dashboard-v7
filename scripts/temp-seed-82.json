@@ -1,70 +1,69 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 82,
   "known_text": "I'm not going to wait for you. Why not?",
-  "target_text": "あなたを待つつもりはありません。なぜですか？",
+  "target_text": "기다리지 않을 거예요. 왜요?",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "you (object)",
-      "target": "あなたを",
+      "known": "wait (negative)",
+      "target": "기다리지",
       "components": [
-        {"known": "you", "target": "あなた"},
-        {"known": "(object marker)", "target": "を"}
+        {"known": "wait", "target": "기다리다"},
+        {"known": "(negative form)", "target": "-지"}
       ],
       "phrases": [
-        {"known": "you", "target": "あなた"},
-        {"known": "you (object)", "target": "あなたを"},
-        {"known": "I see you", "target": "あなたを見る"},
-        {"known": "I helped you", "target": "あなたを手伝った"},
-        {"known": "she understands you", "target": "彼女はあなたを理解します"},
-        {"known": "I am looking for you", "target": "あなたを探しています"},
-        {"known": "I told you the truth", "target": "あなたに本当のことを言いました"},
-        {"known": "she said she understands you", "target": "彼女はあなたを理解すると言いました"},
-        {"known": "I did not want to tell you the truth", "target": "あなたに本当のことを言いたくありませんでした"},
-        {"known": "he asked if I understood you", "target": "彼は私があなたを理解したか聞きました"}
+        {"known": "Wait.", "target": "기다려요."},
+        {"known": "I waited.", "target": "기다렸어요."},
+        {"known": "Don't wait.", "target": "기다리지 마요."},
+        {"known": "I'm waiting.", "target": "기다리고 있어요."},
+        {"known": "She waited.", "target": "그녀는 기다렸어요."},
+        {"known": "He's not waiting.", "target": "그는 기다리지 않아요."},
+        {"known": "I waited all afternoon.", "target": "오후 내내 기다렸어요."},
+        {"known": "She didn't want to wait.", "target": "그녀는 기다리지 않고 싶었어요."},
+        {"known": "I'm not going to wait anymore.", "target": "더 이상 기다리지 않을 거예요."},
+        {"known": "He asked why she wasn't waiting.", "target": "그는 그녀가 왜 기다리지 않는지 물었어요."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "don't intend to wait",
-      "target": "待つつもりはありません",
+      "known": "won't (future negative)",
+      "target": "않을 거예요",
       "components": [
-        {"known": "intend to wait", "target": "待つつもり"},
-        {"known": "don't have (polite negative)", "target": "はありません"}
+        {"known": "not", "target": "않다"},
+        {"known": "will (future)", "target": "-ㄹ 거예요"}
       ],
       "phrases": [
-        {"known": "wait", "target": "待つ"},
-        {"known": "intend to", "target": "つもり"},
-        {"known": "intend to wait", "target": "待つつもり"},
-        {"known": "don't intend to wait", "target": "待つつもりはありません"},
-        {"known": "intend to do", "target": "やるつもり"},
-        {"known": "I don't intend to", "target": "つもりはありません"},
-        {"known": "she intends to start", "target": "彼女は始めるつもりです"},
-        {"known": "I do not intend to wait for you", "target": "あなたを待つつもりはありません"},
-        {"known": "he said he intends to start tomorrow", "target": "彼は明日始めるつもりだと言いました"},
-        {"known": "she does not intend to wait all afternoon", "target": "彼女は午後ずっと待つつもりはありません"},
-        {"known": "I asked if he intended to start learning today", "target": "彼が今日学び始めるつもりか聞きました"}
+        {"known": "Won't do.", "target": "안 할 거예요."},
+        {"known": "Won't go.", "target": "안 갈 거예요."},
+        {"known": "Won't come.", "target": "안 올 거예요."},
+        {"known": "She won't wait.", "target": "그녀는 기다리지 않을 거예요."},
+        {"known": "He won't understand.", "target": "그는 이해하지 않을 거예요."},
+        {"known": "I won't be late.", "target": "늦지 않을 거예요."},
+        {"known": "She said she won't wait.", "target": "그녀는 기다리지 않을 거라고 말했어요."},
+        {"known": "He won't start without her.", "target": "그는 그녀 없이 시작하지 않을 거예요."},
+        {"known": "I'm not going to wait for you.", "target": "기다리지 않을 거예요."},
+        {"known": "They said they won't wait any longer.", "target": "그들은 더 이상 기다리지 않을 거라고 말했어요."}
       ]
     },
     {
       "idx": 3,
       "type": "A",
-      "known": "why? (polite)",
-      "target": "なぜですか？",
+      "known": "why (polite)",
+      "target": "왜요?",
       "phrases": [
-        {"known": "why", "target": "なぜ"},
-        {"known": "why? (polite)", "target": "なぜですか？"},
-        {"known": "why is that?", "target": "なぜそうですか？"},
-        {"known": "why did you say that?", "target": "なぜそう言いましたか？"},
-        {"known": "why did she do it?", "target": "なぜ彼女はやりましたか？"},
-        {"known": "I do not know why", "target": "なぜかわかりません"},
-        {"known": "why is it difficult?", "target": "なぜ難しいですか？"},
-        {"known": "she asked why I did not wait", "target": "彼女はなぜ待たなかったか聞きました"},
-        {"known": "he wanted to know why she was not ready", "target": "彼はなぜ彼女が準備ができていないか知りたかったです"},
-        {"known": "I asked why he did not intend to start", "target": "私はなぜ彼が始めるつもりがないか聞きました"}
+        {"known": "Why?", "target": "왜요?"},
+        {"known": "Why not?", "target": "왜요?"},
+        {"known": "Why is it?", "target": "왜예요?"},
+        {"known": "Why him?", "target": "왜 그요?"},
+        {"known": "Why is that?", "target": "왜 그래요?"},
+        {"known": "Why did she go?", "target": "그녀는 왜 갔어요?"},
+        {"known": "Why is he waiting?", "target": "그는 왜 기다려요?"},
+        {"known": "Why won't you wait?", "target": "왜 기다리지 않을 거예요?"},
+        {"known": "She asked why I wouldn't wait.", "target": "그녀는 내가 왜 기다리지 않는지 물었어요."},
+        {"known": "He asked why she started learning.", "target": "그는 그녀가 왜 배우기 시작했는지 물었어요."}
       ]
     }
   ]

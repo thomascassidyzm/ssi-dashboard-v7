@@ -1,0 +1,79 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 297,
+  "known_text": "I don't know many people who speak Korean.",
+  "target_text": "한국어 하는 사람 많이 안 알아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "person who speaks Korean (singular)",
+      "target": "한국어 하는 사람",
+      "components": [
+        {"known": "Korean language", "target": "한국어"},
+        {"known": "speak (modifier)", "target": "하는"},
+        {"known": "person", "target": "사람"}
+      ],
+      "phrases": [
+        {"known": "person", "target": "사람이요"},
+        {"known": "who speaks", "target": "하는 사람"},
+        {"known": "Korean speaker", "target": "한국어 하는 사람"},
+        {"known": "a Korean person", "target": "한국 사람"},
+        {"known": "people who speak English", "target": "영어 하는 사람"},
+        {"known": "do you know anyone who speaks Korean?", "target": "한국어 하는 사람 알아요?"},
+        {"known": "people who speak Japanese", "target": "일본어 하는 사람"},
+        {"known": "I met someone who speaks Korean", "target": "한국어 하는 사람 만났어요"},
+        {"known": "many people here speak Korean", "target": "여기 한국어 하는 사람 많아요"},
+        {"known": "there aren't many people who speak Korean", "target": "한국어 하는 사람 많지 않아요"},
+        {"known": "my friend is someone who speaks Korean fluently", "target": "제 친구는 한국어 유창하게 하는 사람이에요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "don't know many",
+      "target": "많이 안 알다",
+      "components": [
+        {"known": "many/a lot", "target": "많이"},
+        {"known": "not", "target": "안"},
+        {"known": "know", "target": "알다"}
+      ],
+      "phrases": [
+        {"known": "a lot", "target": "많이요"},
+        {"known": "don't know", "target": "몰라요"},
+        {"known": "not many", "target": "많이 안"},
+        {"known": "I don't know many", "target": "많이 안 알아요"},
+        {"known": "I don't know much", "target": "잘 몰라요"},
+        {"known": "I don't know many places", "target": "장소 많이 안 알아요"},
+        {"known": "I don't know many words", "target": "단어 많이 안 알아요"},
+        {"known": "I don't know many restaurants here", "target": "여기 식당 많이 안 알아요"},
+        {"known": "I don't know a lot of people in this city", "target": "이 도시에 사람 많이 안 알아요"},
+        {"known": "I don't recognize many faces here", "target": "여기서 얼굴 많이 안 알아요"},
+        {"known": "honestly I don't know much about this topic", "target": "솔직히 이 주제에 대해 잘 몰라요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I don't know many people who speak Korean",
+      "target": "한국어 하는 사람 많이 안 알아요",
+      "components": [
+        {"known": "person who speaks Korean (singular)", "target": "한국어 하는 사람"},
+        {"known": "don't know many", "target": "많이 안 알다"}
+      ],
+      "phrases": [
+        {"known": "don't know", "target": "몰라요"},
+        {"known": "not many", "target": "많이 안요"},
+        {"known": "I don't know them", "target": "그들 몰라요"},
+        {"known": "not many people", "target": "사람 많이 안"},
+        {"known": "I don't know many", "target": "많이 안 알아요"},
+        {"known": "I don't know many foreigners", "target": "외국인 많이 안 알아요"},
+        {"known": "I don't know many Japanese speakers", "target": "일본어 하는 사람 많이 안 알아요"},
+        {"known": "I don't have many friends who cook well", "target": "요리 잘하는 친구 많이 없어요"},
+        {"known": "I don't know many people in my neighborhood", "target": "동네에 사람 많이 안 알아요"},
+        {"known": "I don't know many Koreans living abroad", "target": "해외에 사는 한국 사람 많이 안 알아요"},
+        {"known": "I don't know many people who can speak Chinese", "target": "중국어 할 수 있는 사람 많이 안 알아요"}
+      ]
+    }
+  ]
+}

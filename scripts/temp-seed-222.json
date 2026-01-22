@@ -1,0 +1,74 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 222,
+  "known_text": "He's trying to tell me what he wants",
+  "target_text": "그는 원하는 것을 말하려고 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "what one wants",
+      "target": "원하는 것",
+      "components": [
+        {"known": "want", "target": "원하다"},
+        {"known": "thing", "target": "것"}
+      ],
+      "phrases": [
+        {"known": "thing", "target": "것"},
+        {"known": "want", "target": "원해요"},
+        {"known": "wanted", "target": "원했어요"},
+        {"known": "what I want", "target": "원하는 것"},
+        {"known": "something wanted", "target": "원하는 거"},
+        {"known": "what she wants", "target": "그녀가 원하는 것"},
+        {"known": "tell me what you want", "target": "원하는 것을 말해요"},
+        {"known": "I know what he wants", "target": "그가 원하는 것을 알아요"},
+        {"known": "she explained what she wants", "target": "그녀가 원하는 것을 설명했어요"},
+        {"known": "my daughter knows what she wants", "target": "제 딸은 원하는 것을 알아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "trying to tell/say",
+      "target": "말하려고 하다",
+      "components": [
+        {"known": "tell/say", "target": "말하다"},
+        {"known": "trying to", "target": "려고 하다"}
+      ],
+      "phrases": [
+        {"known": "say", "target": "말해요"},
+        {"known": "said", "target": "말했어요"},
+        {"known": "trying to", "target": "려고 해요"},
+        {"known": "trying to say", "target": "말하려고 해요"},
+        {"known": "I'm trying to say", "target": "말하려고 해요"},
+        {"known": "she's trying to tell", "target": "그녀가 말하려고 해요"},
+        {"known": "he's trying to explain", "target": "그는 설명하려고 해요"},
+        {"known": "I'm trying to tell you something", "target": "뭔가 말하려고 해요"},
+        {"known": "my daughter is trying to say something", "target": "제 딸이 뭔가 말하려고 해요"},
+        {"known": "they're trying to tell us on Sunday", "target": "그들은 일요일에 우리에게 말하려고 해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he's trying to tell me what he wants",
+      "target": "그는 원하는 것을 말하려고 해요",
+      "components": [
+        {"known": "what one wants", "target": "원하는 것"},
+        {"known": "trying to tell/say", "target": "말하려고 하다"}
+      ],
+      "phrases": [
+        {"known": "he's trying", "target": "그는 려고 해요"},
+        {"known": "to tell me", "target": "말하려고"},
+        {"known": "what he wants", "target": "원하는 것을"},
+        {"known": "trying to say what", "target": "뭘 말하려고 해요"},
+        {"known": "he's trying to tell me", "target": "그는 말하려고 해요"},
+        {"known": "she's trying to tell me what she wants", "target": "그녀는 원하는 것을 말하려고 해요"},
+        {"known": "I'm trying to tell you what I want", "target": "원하는 것을 말하려고 해요"},
+        {"known": "my son is trying to tell me what he wants", "target": "제 아들은 원하는 것을 말하려고 해요"},
+        {"known": "they're trying to tell us what they want", "target": "그들은 원하는 것을 말하려고 해요"},
+        {"known": "my daughter is trying to tell me what she wants on Sunday", "target": "제 딸은 일요일에 원하는 것을 말하려고 해요"}
+      ]
+    }
+  ]
+}

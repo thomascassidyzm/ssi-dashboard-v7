@@ -1,104 +1,66 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 72,
   "known_text": "I think that you're doing very well.",
-  "target_text": "あなたはとても上手にやっていると思います。",
+  "target_text": "정말 잘하고 있다고 생각해요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "you (topic)",
-      "target": "あなたは",
-      "components": [
-        {"known": "you", "target": "あなた"},
-        {"known": "(topic)", "target": "は"}
-      ],
+      "type": "A",
+      "known": "really",
+      "target": "정말",
       "phrases": [
-        {"known": "you", "target": "あなた"},
-        {"known": "you (topic)", "target": "あなたは"},
-        {"known": "you think", "target": "あなたは思います"},
-        {"known": "you speak", "target": "あなたは話します"},
-        {"known": "you are doing", "target": "あなたはやっています"},
-        {"known": "are you searching?", "target": "あなたは探していますか？"},
-        {"known": "you speak Japanese", "target": "あなたは日本語を話します"},
-        {"known": "you want to try hard today", "target": "あなたは今日頑張りたいです"},
-        {"known": "you were looking for the answer all afternoon", "target": "あなたは午後ずっと答えを探していました"},
-        {"known": "I think you are doing well in Japanese", "target": "あなたは日本語がよくできると思います"},
-        {"known": "I did not want to tell you the truth about it", "target": "あなたに本当のことを言いたくありませんでした"}
+        {"known": "Really.", "target": "정말."},
+        {"known": "Really?", "target": "정말?"},
+        {"known": "Is it real?", "target": "정말이야?"},
+        {"known": "Really good.", "target": "정말 좋아요."},
+        {"known": "Really well.", "target": "정말 잘."},
+        {"known": "I really went.", "target": "나는 정말 갔어요."},
+        {"known": "She really came.", "target": "그녀는 정말 왔어요."},
+        {"known": "It was really important.", "target": "정말 중요했어요."},
+        {"known": "He really remembered it.", "target": "그는 정말 기억했어요."},
+        {"known": "We really worked all afternoon.", "target": "우리는 정말 오후 내내 일했어요."}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "very well",
-      "target": "とても上手に",
+      "known": "are doing well (that)",
+      "target": "잘하고 있다고",
       "components": [
-        {"known": "very", "target": "とても"},
-        {"known": "skillfully/well", "target": "上手に"}
+        {"known": "do well", "target": "잘하다"},
+        {"known": "is ~ing (progressive)", "target": "-고 있다"},
+        {"known": "(quotative)", "target": "-고"}
       ],
       "phrases": [
-        {"known": "very", "target": "とても"},
-        {"known": "skillfully", "target": "上手に"},
-        {"known": "very well", "target": "とても上手に"},
-        {"known": "very fun", "target": "とても楽しい"},
-        {"known": "very important", "target": "とても大切"},
-        {"known": "doing it well", "target": "上手にやっている"},
-        {"known": "very skillfully I think", "target": "とても上手だと思います"},
-        {"known": "she does it very well", "target": "彼女はとても上手にやります"},
-        {"known": "he speaks Japanese very well", "target": "彼は日本語をとても上手に話します"},
-        {"known": "you did it very well", "target": "あなたはとても上手にやりました"},
-        {"known": "I think she does it very skillfully", "target": "彼女はとても上手にやると思います"},
-        {"known": "it is very important to do it well", "target": "上手にやることはとても大切です"},
-        {"known": "he taught Japanese very skillfully", "target": "彼は日本語をとても上手に教えました"}
+        {"known": "Doing well.", "target": "잘해요."},
+        {"known": "Did well.", "target": "잘했어요."},
+        {"known": "Am doing well.", "target": "잘하고 있어요."},
+        {"known": "Is doing well.", "target": "잘하고 있어."},
+        {"known": "You did well.", "target": "잘했어요."},
+        {"known": "He is doing really well.", "target": "그는 정말 잘하고 있어요."},
+        {"known": "She said you're doing well.", "target": "그녀는 잘하고 있다고 말했어요."},
+        {"known": "I think he is doing well.", "target": "나는 그가 잘하고 있다고 생각해요."},
+        {"known": "They said she is doing really well.", "target": "그들은 그녀가 정말 잘하고 있다고 말했어요."},
+        {"known": "We think you are doing really well.", "target": "우리는 정말 잘하고 있다고 생각해요."}
       ]
     },
     {
       "idx": 3,
-      "type": "M",
-      "known": "doing (progressive)",
-      "target": "やっている",
-      "components": [
-        {"known": "do", "target": "やる"},
-        {"known": "(progressive)", "target": "ている"}
-      ],
+      "type": "A",
+      "known": "think",
+      "target": "생각해요",
       "phrases": [
-        {"known": "do", "target": "やる"},
-        {"known": "doing", "target": "やっている"},
-        {"known": "did", "target": "やりました"},
-        {"known": "want to do", "target": "やりたい"},
-        {"known": "are you doing?", "target": "やっていますか？"},
-        {"known": "I am doing well", "target": "よくやっています"},
-        {"known": "she is doing it very well", "target": "彼女はとても上手にやっています"},
-        {"known": "he was doing it all afternoon", "target": "彼は午後ずっとやっていました"},
-        {"known": "I think you are doing great", "target": "あなたはよくやっていると思います"},
-        {"known": "what are you doing?", "target": "何をやっていますか？"},
-        {"known": "she wanted to do it very well", "target": "彼女はとても上手にやりたかったです"}
-      ]
-    },
-    {
-      "idx": 4,
-      "type": "M",
-      "known": "I think that (polite)",
-      "target": "と思います",
-      "components": [
-        {"known": "(quotation)", "target": "と"},
-        {"known": "think (polite)", "target": "思います"}
-      ],
-      "phrases": [
-        {"known": "think", "target": "思う"},
-        {"known": "I think (polite)", "target": "思います"},
-        {"known": "I think that (polite)", "target": "と思います"},
-        {"known": "I thought", "target": "思いました"},
-        {"known": "fun I think", "target": "楽しいと思います"},
-        {"known": "good I think so", "target": "いいと思います"},
-        {"known": "I think the dog is fun", "target": "犬は楽しいと思います"},
-        {"known": "she thought it was true", "target": "彼女は本当だと思いました"},
-        {"known": "I think it is important", "target": "大切だと思います"},
-        {"known": "I think it is very fun", "target": "とても楽しいと思います"},
-        {"known": "she thinks it is difficult", "target": "彼女は難しいと思います"},
-        {"known": "he thinks you are doing well", "target": "彼はあなたはよくやっていると思います"},
-        {"known": "I think learning Japanese is fun", "target": "日本語を学ぶのは楽しいと思います"},
-        {"known": "we think it is important to know the truth", "target": "私たちは本当のことを知ることは大切だと思います"}
+        {"known": "Think.", "target": "생각해."},
+        {"known": "I think.", "target": "생각해요."},
+        {"known": "Thought.", "target": "생각했어요."},
+        {"known": "He thinks.", "target": "그는 생각해요."},
+        {"known": "She thought.", "target": "그녀는 생각했어요."},
+        {"known": "I think so.", "target": "그렇게 생각해요."},
+        {"known": "What do you think?", "target": "어떻게 생각해요?"},
+        {"known": "I thought it was good.", "target": "나는 좋다고 생각했어요."},
+        {"known": "She thinks he is doing well.", "target": "그녀는 그가 잘하고 있다고 생각해요."},
+        {"known": "I think you're doing really well.", "target": "정말 잘하고 있다고 생각해요."}
       ]
     }
   ]

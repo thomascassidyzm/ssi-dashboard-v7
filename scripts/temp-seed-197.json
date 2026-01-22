@@ -1,48 +1,88 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 197,
   "known_text": "My son works as a teacher.",
-  "target_text": "息子は教師として働いています。",
+  "target_text": "제 아들은 선생님으로 일해요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "my son",
-      "target": "息子は",
+      "known": "son",
+      "target": "아들",
       "phrases": [
-        {"known": "son", "target": "息子"},
-        {"known": "my son", "target": "息子は"},
-        {"known": "my son is here", "target": "息子はここにいます"},
-        {"known": "my son is young", "target": "息子は若いです"},
-        {"known": "I talked to my son", "target": "息子と話しました"},
-        {"known": "my son came yesterday", "target": "息子は昨日来ました"},
-        {"known": "my son likes to read books", "target": "息子は本を読むのが好きです"},
-        {"known": "I'm going to see my son at the office tomorrow", "target": "明日オフィスで息子に会いに行きます"},
-        {"known": "my son is busy today but he said he can come tomorrow", "target": "息子は今日忙しいですが、明日は来られると言いました"},
-        {"known": "I heard from my son that he's doing well at his new job", "target": "息子から新しい仕事でうまくやっていると聞きました"}
+        {"known": "my son", "target": "제 아들"},
+        {"known": "your son", "target": "당신 아들"},
+        {"known": "her son", "target": "그녀 아들"},
+        {"known": "his son", "target": "그 아들"},
+        {"known": "one son", "target": "아들 한 명"},
+        {"known": "my son is kind", "target": "제 아들은 친절해요"},
+        {"known": "my son woke up early", "target": "제 아들은 일찍 일어났어요"},
+        {"known": "I saw my son yesterday", "target": "어제 제 아들을 봤어요"},
+        {"known": "my son is very patient", "target": "제 아들은 참을성이 있어요"},
+        {"known": "my son lives in Seoul", "target": "제 아들은 서울에 살아요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "teacher",
+      "target": "선생님",
+      "phrases": [
+        {"known": "the teacher", "target": "선생님"},
+        {"known": "good teacher", "target": "좋은 선생님"},
+        {"known": "my teacher", "target": "제 선생님"},
+        {"known": "Korean teacher", "target": "한국어 선생님"},
+        {"known": "her teacher", "target": "그녀 선생님"},
+        {"known": "the teacher is kind", "target": "선생님이 친절해요"},
+        {"known": "I want to be a teacher", "target": "선생님이 되고 싶어요"},
+        {"known": "the teacher helped me", "target": "선생님이 도와주셨어요"},
+        {"known": "I am grateful to the teacher", "target": "선생님께 감사해요"},
+        {"known": "the teacher speaks Korean well", "target": "선생님은 한국어를 잘 해요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "works as a teacher",
-      "target": "教師として働いています",
+      "known": "works as",
+      "target": "으로 일하다",
       "components": [
-        {"known": "as a teacher", "target": "教師として"},
-        {"known": "works/is working", "target": "働いています"}
+        {"known": "as (role)", "target": "으로"},
+        {"known": "work", "target": "일하다"}
       ],
       "phrases": [
-        {"known": "teacher", "target": "教師"},
-        {"known": "as", "target": "として"},
-        {"known": "works", "target": "働いています"},
-        {"known": "as a teacher", "target": "教師として"},
-        {"known": "works as a teacher", "target": "教師として働いています"},
-        {"known": "she works here", "target": "彼女はここで働いています"},
-        {"known": "I used to work there", "target": "私はそこで働いていました"},
-        {"known": "he works at the office", "target": "彼はオフィスで働いています"},
-        {"known": "my friend has been working there for a few years now", "target": "友達は何年もそこで働いています"},
-        {"known": "I've been working as a teacher since I came here", "target": "ここに来てから教師として働いています"},
-        {"known": "she told me she works there but I didn't know that before", "target": "彼女はそこで働いていると言いましたが、前は知りませんでした"}
+        {"known": "works", "target": "일해요"},
+        {"known": "as a doctor", "target": "의사로"},
+        {"known": "works hard", "target": "열심히 일해요"},
+        {"known": "works on Saturday", "target": "토요일에 일해요"},
+        {"known": "she works as a nurse", "target": "그녀는 간호사로 일해요"},
+        {"known": "he works as a chef", "target": "그는 요리사로 일해요"},
+        {"known": "I want to work as a teacher", "target": "선생님으로 일하고 싶어요"},
+        {"known": "she works at the hospital", "target": "그녀는 병원에서 일해요"},
+        {"known": "do you work on Sunday?", "target": "일요일에 일해요?"},
+        {"known": "I work early in the morning", "target": "아침 일찍 일해요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "my son works as a teacher",
+      "target": "제 아들은 선생님으로 일해요",
+      "components": [
+        {"known": "son", "target": "아들"},
+        {"known": "teacher", "target": "선생님"},
+        {"known": "works as", "target": "으로 일하다"}
+      ],
+      "phrases": [
+        {"known": "my son", "target": "제 아들"},
+        {"known": "a teacher", "target": "선생님"},
+        {"known": "works here", "target": "여기서 일해요"},
+        {"known": "he is a teacher", "target": "그는 선생님이에요"},
+        {"known": "my son is a teacher", "target": "제 아들은 선생님이에요"},
+        {"known": "she works as a teacher", "target": "그녀는 선생님으로 일해요"},
+        {"known": "does your son work here?", "target": "당신 아들이 여기서 일해요?"},
+        {"known": "my son works at the school", "target": "제 아들은 학교에서 일해요"},
+        {"known": "I heard my son is a good teacher", "target": "제 아들이 좋은 선생님이라고 들었어요"},
+        {"known": "my son has been working as a teacher for years", "target": "제 아들은 수년간 선생님으로 일해왔어요"}
       ]
     }
   ]

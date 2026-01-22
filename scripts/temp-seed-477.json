@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 477,
+  "known_text": "He's been sick since the second day of the holidays.",
+  "target_text": "그가 휴일 둘째 날부터 아팠어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the second day of the holidays",
+      "target": "휴일 둘째 날",
+      "components": [
+        {"known": "holidays", "target": "휴일"},
+        {"known": "second", "target": "둘째"},
+        {"known": "day", "target": "날"}
+      ],
+      "phrases": [
+        {"known": "holiday", "target": "휴일이요"},
+        {"known": "the day", "target": "날이요"},
+        {"known": "second day", "target": "둘째 날이요"},
+        {"known": "first day", "target": "첫째 날이요"},
+        {"known": "it's a holiday today", "target": "오늘 휴일이에요"},
+        {"known": "the third day of the trip", "target": "여행 셋째 날이요"},
+        {"known": "what day is the holiday", "target": "휴일이 무슨 날이에요?"},
+        {"known": "the second day was the best", "target": "둘째 날이 제일 좋았어요"},
+        {"known": "we relaxed on the first day", "target": "첫째 날에 쉬었어요"},
+        {"known": "she arrived on the second day of the event", "target": "그녀가 행사 둘째 날에 왔어요"},
+        {"known": "the holidays are almost over", "target": "휴일이 거의 끝났어요"},
+        {"known": "he slept all day on the first day of vacation", "target": "그가 방학 첫째 날에 하루 종일 잤어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "since the second day of the holidays",
+      "target": "휴일 둘째 날부터",
+      "components": [
+        {"known": "the second day of the holidays", "target": "휴일 둘째 날"},
+        {"known": "since", "target": "부터"}
+      ],
+      "phrases": [
+        {"known": "since", "target": "부터요"},
+        {"known": "from today", "target": "오늘부터요"},
+        {"known": "since yesterday", "target": "어제부터요"},
+        {"known": "from that day", "target": "그날부터요"},
+        {"known": "since last week", "target": "지난주부터요"},
+        {"known": "from Monday", "target": "월요일부터요"},
+        {"known": "she's been working since morning", "target": "그녀가 아침부터 일하고 있어요"},
+        {"known": "I've been here since noon", "target": "정오부터 여기 있었어요"},
+        {"known": "he started learning from day one", "target": "그가 첫날부터 배우기 시작했어요"},
+        {"known": "we've been planning since the beginning", "target": "처음부터 계획하고 있었어요"},
+        {"known": "she's been tired since the second day", "target": "그녀가 둘째 날부터 피곤했어요"},
+        {"known": "the problems started from the first day", "target": "문제가 첫날부터 시작됐어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he's been sick since the second day of the holidays",
+      "target": "그가 휴일 둘째 날부터 아팠어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "since the second day of the holidays", "target": "휴일 둘째 날부터"},
+        {"known": "has been sick", "target": "아팠다"}
+      ],
+      "phrases": [
+        {"known": "he's sick", "target": "그가 아파요"},
+        {"known": "was sick", "target": "아팠어요"},
+        {"known": "he's been ill", "target": "그가 아팠어요"},
+        {"known": "since then", "target": "그때부터요"},
+        {"known": "she got sick yesterday", "target": "그녀가 어제 아팠어요"},
+        {"known": "I've been unwell all week", "target": "일주일 내내 아팠어요"},
+        {"known": "he caught a cold last Monday", "target": "그가 지난 월요일에 감기 걸렸어요"},
+        {"known": "she's been feeling ill since Tuesday", "target": "그녀가 화요일부터 아팠어요"},
+        {"known": "I've had a headache since this morning", "target": "오늘 아침부터 두통이 있었어요"},
+        {"known": "he's been tired and sick since the trip", "target": "그가 여행 후로 피곤하고 아팠어요"},
+        {"known": "she hasn't felt well since the party", "target": "그녀가 파티 후로 안 좋았어요"},
+        {"known": "I've been dealing with this cold since the weekend", "target": "주말부터 이 감기랑 싸우고 있어요"}
+      ]
+    }
+  ]
+}

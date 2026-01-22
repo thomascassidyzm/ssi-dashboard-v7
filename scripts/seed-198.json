@@ -1,57 +1,71 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 198,
   "known_text": "My daughter works for the council.",
-  "target_text": "娘は市役所で働いています。",
+  "target_text": "제 딸은 시청에서 일해요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "my daughter (topic)",
-      "target": "娘は",
-      "components": [
-        {"known": "daughter", "target": "娘"},
-        {"known": "topic marker", "target": "は"}
-      ],
+      "type": "A",
+      "known": "daughter",
+      "target": "딸",
       "phrases": [
-        {"known": "daughter", "target": "娘"},
-        {"known": "my daughter", "target": "娘"},
-        {"known": "with my daughter", "target": "娘と"},
-        {"known": "my daughter is here", "target": "娘がいます"},
-        {"known": "meet my daughter", "target": "娘に会う"},
-        {"known": "my daughter (topic)", "target": "娘は"},
-        {"known": "from my daughter", "target": "娘から"},
-        {"known": "my daughter came yesterday", "target": "娘は昨日来ました"},
-        {"known": "my daughter is busy today", "target": "娘は今日忙しいです"},
-        {"known": "my daughter said she wants to go", "target": "娘は行きたいと言いました"},
-        {"known": "my daughter is trying to find a new place", "target": "娘は新しいところを探そうとしています"},
-        {"known": "my daughter told me she's too busy to come tomorrow", "target": "娘は明日忙しすぎて来られないと言いました"},
-        {"known": "I heard from my daughter that she wants to go there", "target": "娘から、そこに行きたいと聞きました"}
+        {"known": "daughter", "target": "딸"},
+        {"known": "my daughter", "target": "제 딸"},
+        {"known": "I have a daughter", "target": "딸이 있어요"},
+        {"known": "no daughter", "target": "딸이 없어요"},
+        {"known": "your daughter", "target": "딸"},
+        {"known": "My daughter is here", "target": "제 딸이 여기 있어요"},
+        {"known": "My daughter is at school", "target": "제 딸은 학교에 있어요"},
+        {"known": "My daughter is learning Korean these days at home", "target": "요즘 제 딸이 집에서 한국어를 배우고 있어요"},
+        {"known": "I am proud of my daughter because she works hard", "target": "딸이 열심히 일해서 자랑스러워요"},
+        {"known": "My daughter is going to visit me next week from the city", "target": "제 딸이 다음 주에 도시에서 저를 보러 올 거예요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "works for the council",
-      "target": "市役所で働いています",
+      "known": "city hall / council",
+      "target": "시청에서",
       "components": [
-        {"known": "at the city office", "target": "市役所で"},
-        {"known": "is working", "target": "働いています"}
+        {"known": "city hall", "target": "시청"},
+        {"known": "at (place)", "target": "에서"}
       ],
       "phrases": [
-        {"known": "city office", "target": "市役所"},
-        {"known": "at the city office", "target": "市役所で"},
-        {"known": "to the city office", "target": "市役所に"},
-        {"known": "working", "target": "働いています"},
-        {"known": "work there", "target": "そこで働く"},
-        {"known": "works for the council", "target": "市役所で働いています"},
-        {"known": "I went to the city office", "target": "市役所に行きました"},
-        {"known": "she works for the council", "target": "彼女は市役所で働いています"},
-        {"known": "my friend works for the council", "target": "友達は市役所で働いています"},
-        {"known": "he started working at the city office", "target": "彼は市役所で働き始めました"},
-        {"known": "I heard she's been working for the council for a while", "target": "彼女はしばらく市役所で働いていると聞きました"},
-        {"known": "my son works as a teacher but my daughter works for the council", "target": "息子は教師として働いていますが娘は市役所で働いています"},
-        {"known": "she said she started working for the council last year", "target": "彼女は市役所で働き始めたと言いました"}
+        {"known": "city hall", "target": "시청"},
+        {"known": "at", "target": "에서"},
+        {"known": "at city hall", "target": "시청에서"},
+        {"known": "for the council", "target": "시청에서"},
+        {"known": "I went to city hall", "target": "시청에 갔어요"},
+        {"known": "She works at city hall", "target": "시청에서 일해요"},
+        {"known": "I need to go to city hall tomorrow", "target": "내일 시청에 가야 해요"},
+        {"known": "My friend works at city hall downtown", "target": "제 친구는 시내 시청에서 일해요"},
+        {"known": "I have a meeting at city hall this afternoon", "target": "오늘 오후에 시청에서 회의가 있어요"},
+        {"known": "I need to get some documents from city hall next week", "target": "다음 주에 시청에서 서류를 받아야 해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "My daughter works for the council",
+      "target": "제 딸은 시청에서 일해요",
+      "components": [
+        {"known": "my", "target": "제"},
+        {"known": "daughter", "target": "딸"},
+        {"known": "city hall", "target": "시청에서"},
+        {"known": "works", "target": "일해요"}
+      ],
+      "phrases": [
+        {"known": "my daughter", "target": "제 딸은"},
+        {"known": "city hall", "target": "시청에서"},
+        {"known": "works", "target": "일해요"},
+        {"known": "at city hall", "target": "시청에서"},
+        {"known": "daughter works", "target": "딸이 일해요"},
+        {"known": "she works there", "target": "거기서 일해요"},
+        {"known": "works at city hall", "target": "시청에서 일해요"},
+        {"known": "My daughter works for the council", "target": "제 딸은 시청에서 일해요"},
+        {"known": "My daughter has worked at city hall for a long time", "target": "제 딸은 오랫동안 시청에서 일하고 있어요"},
+        {"known": "My daughter works at city hall and she likes her job very much", "target": "제 딸은 시청에서 일하고 일을 아주 좋아해요"}
       ]
     }
   ]

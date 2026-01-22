@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 317,
+  "known_text": "Yes I think she could if she wanted to.",
+  "target_text": "네, 그녀가 원하면 할 수 있다고 생각해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if she wanted to",
+      "target": "그녀가 원하면",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "want", "target": "원하다"},
+        {"known": "if (conditional)", "target": "면"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "면요"},
+        {"known": "she wants", "target": "그녀가 원해요"},
+        {"known": "if she wants", "target": "그녀가 원하면"},
+        {"known": "if he wanted", "target": "그가 원하면"},
+        {"known": "if you want to", "target": "원하시면요"},
+        {"known": "if I wanted to", "target": "제가 원하면"},
+        {"known": "if they wanted to help", "target": "그들이 돕고 싶으면"},
+        {"known": "she could do it if she wanted", "target": "그녀가 원하면 할 수 있어요"},
+        {"known": "if she wanted to stay longer", "target": "그녀가 더 있고 싶으면"},
+        {"known": "he could come if he wanted to", "target": "그가 원하면 올 수 있어요"},
+        {"known": "you can leave early if you want to", "target": "원하시면 일찍 가도 돼요"},
+        {"known": "she could learn it easily if she wanted to", "target": "그녀가 원하면 쉽게 배울 수 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes I think she could if she wanted to",
+      "target": "네 그녀가 원하면 할 수 있다고 생각해요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "if she wanted to", "target": "그녀가 원하면"},
+        {"known": "can do", "target": "할 수 있다"},
+        {"known": "I think (quote)", "target": "고 생각하다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "I think", "target": "생각해요"},
+        {"known": "she could", "target": "할 수 있어요"},
+        {"known": "yes I think so", "target": "네 그렇게 생각해요"},
+        {"known": "I think she could", "target": "그녀가 할 수 있다고 생각해요"},
+        {"known": "yes if she wants to", "target": "네 원하시면요"},
+        {"known": "yes I think he could do it", "target": "네 그가 할 수 있다고 생각해요"},
+        {"known": "yes she could help if she wanted", "target": "네 그녀가 원하면 도울 수 있어요"},
+        {"known": "yes I think they could come if they tried", "target": "네 그들이 노력하면 올 수 있다고 생각해요"},
+        {"known": "yes I think it's possible if she really wanted", "target": "네 정말 원하면 가능하다고 생각해요"},
+        {"known": "yes I believe he could finish if he put in the effort", "target": "네 노력하면 끝낼 수 있다고 믿어요"},
+        {"known": "yes I think my friend could join us if she wanted to", "target": "네 제 친구가 원하면 같이 할 수 있다고 생각해요"}
+      ]
+    }
+  ]
+}

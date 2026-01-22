@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 487,
+  "known_text": "It's under the bridge.",
+  "target_text": "다리 아래에 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "under the bridge",
+      "target": "다리 아래에",
+      "components": [
+        {"known": "bridge", "target": "다리"},
+        {"known": "under", "target": "아래"},
+        {"known": "at/in", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "bridge", "target": "다리요"},
+        {"known": "under", "target": "아래요"},
+        {"known": "below", "target": "밑에요"},
+        {"known": "under here", "target": "여기 아래요"},
+        {"known": "cross the bridge", "target": "다리 건너요"},
+        {"known": "look under there", "target": "저기 아래 봐요"},
+        {"known": "the cat is under the table", "target": "고양이가 테이블 아래 있어요"},
+        {"known": "there's a river under the bridge", "target": "다리 아래 강이 있어요"},
+        {"known": "she hid under the bed", "target": "그녀가 침대 밑에 숨었어요"},
+        {"known": "the ball rolled under the car", "target": "공이 차 밑으로 굴러갔어요"},
+        {"known": "we walked under the old stone bridge", "target": "옛날 돌다리 아래로 걸었어요"},
+        {"known": "the shelter is located under the overpass", "target": "쉼터가 고가도로 아래에 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "it's under the bridge",
+      "target": "다리 아래에 있어요",
+      "components": [
+        {"known": "under the bridge", "target": "다리 아래에"},
+        {"known": "is/exists", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "it's there", "target": "거기 있어요"},
+        {"known": "is here", "target": "여기 있어요"},
+        {"known": "it's below", "target": "아래 있어요"},
+        {"known": "down below there", "target": "아래에 있어요"},
+        {"known": "right under", "target": "바로 아래요"},
+        {"known": "the shop is under the office", "target": "가게가 사무실 아래 있어요"},
+        {"known": "there's a path under the trees", "target": "나무 아래 길이 있어요"},
+        {"known": "the parking is under the building", "target": "주차장이 건물 아래 있어요"},
+        {"known": "she said it's right under the stairs", "target": "그녀가 계단 바로 아래 있다고 했어요"},
+        {"known": "the treasure was hidden under the floor", "target": "보물이 바닥 아래 숨겨져 있었어요"},
+        {"known": "there's a nice spot under the big tree", "target": "큰 나무 아래 좋은 자리 있어요"},
+        {"known": "the restaurant is located under the hotel", "target": "식당이 호텔 아래 있어요"},
+        {"known": "we found a secret passage under the castle", "target": "성 아래 비밀 통로 찾았어요"}
+      ]
+    }
+  ]
+}

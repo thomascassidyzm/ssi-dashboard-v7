@@ -1,71 +1,119 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 76,
   "known_text": "I'm very happy with how much I've learnt already.",
-  "target_text": "もう学んだことにとても満足しています。",
+  "target_text": "이미 얼마나 많이 배웠는지 정말 기뻐요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
       "known": "already",
-      "target": "もう",
+      "target": "이미",
       "phrases": [
-        {"known": "already", "target": "もう"},
-        {"known": "already done", "target": "もうやった"},
-        {"known": "already said", "target": "もう言った"},
-        {"known": "already learned", "target": "もう学んだ"},
-        {"known": "I already know", "target": "もう知っています"},
-        {"known": "she already understood", "target": "彼女はもう理解しました"},
-        {"known": "have you already done it?", "target": "もうやりましたか？"},
-        {"known": "he said he already learned it", "target": "彼はもう学んだと言いました"},
-        {"known": "I think she already knows the truth", "target": "彼女はもう本当のことを知っていると思います"},
-        {"known": "we have already looked for the dog all afternoon", "target": "私たちはもう午後ずっと犬を探しました"},
-        {"known": "he already told me where the young dog is", "target": "彼はもう若い犬がどこにいるか言いました"}
+        {"known": "Already.", "target": "이미."},
+        {"known": "Already done.", "target": "이미 했어요."},
+        {"known": "Already went.", "target": "이미 갔어요."},
+        {"known": "Already came.", "target": "이미 왔어요."},
+        {"known": "Already learned.", "target": "이미 배웠어요."},
+        {"known": "She already knows.", "target": "그녀는 이미 알아요."},
+        {"known": "He already understood.", "target": "그는 이미 이해했어요."},
+        {"known": "We already met in the evening.", "target": "우리는 저녁에 이미 만났어요."},
+        {"known": "I already learned a lot of Korean.", "target": "나는 이미 한국어를 많이 배웠어요."},
+        {"known": "She already helped him all afternoon.", "target": "그녀는 오후 내내 이미 그를 도와줬어요."}
       ]
     },
     {
       "idx": 2,
-      "type": "M",
-      "known": "with what I learned",
-      "target": "学んだことに",
-      "components": [
-        {"known": "thing learned", "target": "学んだこと"},
-        {"known": "(target particle)", "target": "に"}
-      ],
+      "type": "A",
+      "known": "how much",
+      "target": "얼마나",
       "phrases": [
-        {"known": "learned", "target": "学んだ"},
-        {"known": "thing learned", "target": "学んだこと"},
-        {"known": "with what I learned", "target": "学んだことに"},
-        {"known": "what she learned", "target": "彼女が学んだこと"},
-        {"known": "what he learned today", "target": "彼が今日学んだこと"},
-        {"known": "he said what he learned", "target": "彼は学んだことを言いました"},
-        {"known": "she told me what she learned", "target": "彼女は学んだことを教えてくれました"},
-        {"known": "I think what she learned is important", "target": "彼女が学んだことは大切だと思います"},
-        {"known": "what we learned all afternoon is very important", "target": "私たちが午後ずっと学んだことはとても大切です"},
-        {"known": "he said what he learned today is important", "target": "彼は今日学んだことは大切だと言いました"}
+        {"known": "How much?", "target": "얼마나?"},
+        {"known": "How much is it?", "target": "얼마나요?"},
+        {"known": "How much time?", "target": "얼마나 시간?"},
+        {"known": "How much did you learn?", "target": "얼마나 배웠어요?"},
+        {"known": "How much does she know?", "target": "그녀는 얼마나 알아요?"},
+        {"known": "How much did he help?", "target": "그가 얼마나 도와줬어요?"},
+        {"known": "Do you know how much?", "target": "얼마나인지 알아요?"},
+        {"known": "I wonder how much she learned.", "target": "그녀가 얼마나 배웠는지 궁금해요."},
+        {"known": "He asked how much I understood.", "target": "그는 내가 얼마나 이해했는지 물었어요."},
+        {"known": "She didn't say how much she learned.", "target": "그녀는 얼마나 배웠는지 말 안 했어요."}
       ]
     },
     {
       "idx": 3,
+      "type": "A",
+      "known": "a lot / much",
+      "target": "많이",
+      "phrases": [
+        {"known": "A lot.", "target": "많이."},
+        {"known": "Much.", "target": "많이요."},
+        {"known": "A lot more.", "target": "더 많이."},
+        {"known": "Learned a lot.", "target": "많이 배웠어요."},
+        {"known": "She helped a lot.", "target": "그녀는 많이 도와줬어요."},
+        {"known": "He worked a lot.", "target": "그는 많이 일했어요."},
+        {"known": "I studied Korean a lot.", "target": "나는 한국어를 많이 공부했어요."},
+        {"known": "She already understood a lot.", "target": "그녀는 이미 많이 이해했어요."},
+        {"known": "He learned a lot all afternoon.", "target": "그는 오후 내내 많이 배웠어요."},
+        {"known": "We already learned a lot of Korean.", "target": "우리는 이미 한국어를 많이 배웠어요."}
+      ]
+    },
+    {
+      "idx": 4,
       "type": "M",
-      "known": "am very satisfied",
-      "target": "とても満足しています",
+      "known": "whether/how learned (past)",
+      "target": "배웠는지",
       "components": [
-        {"known": "very", "target": "とても"},
-        {"known": "am satisfied (continuous)", "target": "満足しています"}
+        {"known": "learn", "target": "배우다"},
+        {"known": "whether/if (past)", "target": "-었는지"}
       ],
       "phrases": [
-        {"known": "very", "target": "とても"},
-        {"known": "satisfied", "target": "満足"},
-        {"known": "am satisfied", "target": "満足しています"},
-        {"known": "am very satisfied", "target": "とても満足しています"},
-        {"known": "she is satisfied", "target": "彼女は満足しています"},
-        {"known": "he is very satisfied", "target": "彼はとても満足しています"},
-        {"known": "I was satisfied", "target": "満足しました"},
-        {"known": "are you satisfied?", "target": "満足していますか？"},
-        {"known": "she said she is satisfied", "target": "彼女は満足していると言いました"},
-        {"known": "I think he is very satisfied with the answer", "target": "彼は答えにとても満足していると思います"},
-        {"known": "we are very satisfied with what we learned today", "target": "私たちは今日学んだことにとても満足しています"}
+        {"known": "Learned.", "target": "배웠어요."},
+        {"known": "Did learn.", "target": "배웠지."},
+        {"known": "Whether learned.", "target": "배웠는지."},
+        {"known": "I wonder if learned.", "target": "배웠는지 궁금해요."},
+        {"known": "Did she learn?", "target": "그녀가 배웠는지?"},
+        {"known": "He asked if I learned.", "target": "그는 내가 배웠는지 물었어요."},
+        {"known": "I don't know if she learned.", "target": "그녀가 배웠는지 몰라요."},
+        {"known": "Do you know how much I learned?", "target": "내가 얼마나 배웠는지 알아요?"},
+        {"known": "She asked how much he had learned.", "target": "그녀는 그가 얼마나 배웠는지 물었어요."},
+        {"known": "I'm happy with how much I've learned already.", "target": "이미 얼마나 많이 배웠는지 기뻐요."}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "really",
+      "target": "정말",
+      "phrases": [
+        {"known": "Really.", "target": "정말."},
+        {"known": "Really?", "target": "정말?"},
+        {"known": "Really happy.", "target": "정말 기뻐요."},
+        {"known": "Really good.", "target": "정말 좋아요."},
+        {"known": "Really grateful.", "target": "정말 감사해요."},
+        {"known": "I really learned a lot.", "target": "정말 많이 배웠어요."},
+        {"known": "She really understood.", "target": "그녀는 정말 이해했어요."},
+        {"known": "He's really happy about learning.", "target": "그는 배워서 정말 기뻐요."},
+        {"known": "I'm really happy with how much I learned.", "target": "얼마나 많이 배웠는지 정말 기뻐요."},
+        {"known": "She's really grateful for learning a lot already.", "target": "그녀는 이미 많이 배워서 정말 감사해요."}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "happy",
+      "target": "기뻐요",
+      "phrases": [
+        {"known": "Happy.", "target": "기뻐요."},
+        {"known": "I'm happy.", "target": "기뻐요."},
+        {"known": "Very happy.", "target": "아주 기뻐요."},
+        {"known": "She's happy.", "target": "그녀는 기뻐요."},
+        {"known": "He was happy.", "target": "그는 기뻤어요."},
+        {"known": "Really happy.", "target": "정말 기뻐요."},
+        {"known": "She's happy because she learned.", "target": "그녀는 배워서 기뻐요."},
+        {"known": "He's happy because he learned a lot.", "target": "그는 많이 배워서 기뻐요."},
+        {"known": "I'm very happy with how much I learned.", "target": "얼마나 많이 배웠는지 정말 기뻐요."},
+        {"known": "I'm really happy with how much I've learnt already.", "target": "이미 얼마나 많이 배웠는지 정말 기뻐요."}
       ]
     }
   ]

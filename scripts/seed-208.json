@@ -1,58 +1,73 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 208,
   "known_text": "I didn't want to ask you how to say it.",
-  "target_text": "どう言うかあなたに聞きたくありませんでした。",
+  "target_text": "그것을 어떻게 말해야 하는지 물어보고 싶지 않았어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "how to say it",
-      "target": "どう言うか",
-      "components": [
-        {"known": "how", "target": "どう"},
-        {"known": "to say", "target": "言う"},
-        {"known": "whether/how (embedded)", "target": "か"}
-      ],
+      "type": "A",
+      "known": "to ask",
+      "target": "물어보다",
       "phrases": [
-        {"known": "how", "target": "どう"},
-        {"known": "say", "target": "言う"},
-        {"known": "how to say", "target": "どう言う"},
-        {"known": "how to say it", "target": "どう言うか"},
-        {"known": "how to do it", "target": "どうするか"},
-        {"known": "how to write it", "target": "どう書くか"},
-        {"known": "tell me how to say it", "target": "どう言うか教えて"},
-        {"known": "how to say this word", "target": "この言葉をどう言うか"},
-        {"known": "I don't know how to say it", "target": "どう言うかわかりません"},
-        {"known": "she asked me how to say it", "target": "彼女はどう言うか聞きました"},
-        {"known": "I was trying to learn how to say it", "target": "どう言うか学ぼうとしていました"},
-        {"known": "I didn't understand how to say that word", "target": "その言葉をどう言うかわかりませんでした"},
-        {"known": "he explained to me how to say it in Japanese", "target": "彼はそれをどう言うか説明しました"}
+        {"known": "ask", "target": "물어보다"},
+        {"known": "to ask", "target": "물어보다"},
+        {"known": "asked", "target": "물어봤어요"},
+        {"known": "ask a question", "target": "질문하다"},
+        {"known": "May I ask?", "target": "물어봐도 돼요?"},
+        {"known": "She asked about him", "target": "그에 대해 물어봤어요"},
+        {"known": "He asked me something", "target": "그가 저에게 뭔가 물어봤어요"},
+        {"known": "Can you ask the teacher tomorrow?", "target": "내일 선생님에게 물어볼 수 있어요?"},
+        {"known": "Please ask your friend about it later", "target": "나중에 친구에게 그것에 대해 물어봐 주세요"},
+        {"known": "She asked me where the restaurant was yesterday", "target": "어제 그녀가 식당이 어디 있는지 물어봤어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "I didn't want to ask you",
-      "target": "あなたに聞きたくありませんでした",
+      "known": "how one should say",
+      "target": "어떻게 말해야 하는지",
       "components": [
-        {"known": "you (indirect)", "target": "あなたに"},
-        {"known": "didn't want to ask", "target": "聞きたくありませんでした"}
+        {"known": "how", "target": "어떻게"},
+        {"known": "should say", "target": "말해야"},
+        {"known": "whether/if", "target": "하는지"}
       ],
       "phrases": [
-        {"known": "you", "target": "あなた"},
-        {"known": "to you", "target": "あなたに"},
-        {"known": "to ask", "target": "聞く"},
-        {"known": "I asked", "target": "聞きました"},
-        {"known": "want to ask", "target": "聞きたい"},
-        {"known": "didn't want to ask", "target": "聞きたくなかった"},
-        {"known": "I want to ask you", "target": "あなたに聞きたいです"},
-        {"known": "I asked her about it", "target": "彼女にそれを聞きました"},
-        {"known": "didn't want to ask you", "target": "あなたに聞きたくありませんでした"},
-        {"known": "I wanted to ask her about it", "target": "彼女にそれについて聞きたかったです"},
-        {"known": "I didn't want to ask him yesterday", "target": "昨日彼に聞きたくありませんでした"},
-        {"known": "she said she didn't want to ask me about it", "target": "彼女はそれについて私に聞きたくなかったと言いました"},
-        {"known": "I didn't want to ask you because it was difficult", "target": "難しかったのであなたに聞きたくありませんでした"}
+        {"known": "how", "target": "어떻게"},
+        {"known": "should say", "target": "말해야"},
+        {"known": "whether", "target": "하는지"},
+        {"known": "how should I say", "target": "어떻게 말해야"},
+        {"known": "how to do properly", "target": "어떻게 해야 하는지"},
+        {"known": "how one should say this", "target": "이것을 어떻게 말해야 하는지"},
+        {"known": "how to explain properly", "target": "어떻게 설명해야 하는지"},
+        {"known": "She knows how one should say it in Korean", "target": "그녀는 한국어로 어떻게 말해야 하는지 알아요"},
+        {"known": "He taught me how one should say it properly", "target": "그가 어떻게 말해야 하는지 가르쳐 줬어요"},
+        {"known": "We learned how one should say many things in class today", "target": "오늘 수업에서 많은 것을 어떻게 말해야 하는지 배웠어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I didn't want to ask you how to say it",
+      "target": "그것을 어떻게 말해야 하는지 물어보고 싶지 않았어요",
+      "components": [
+        {"known": "it", "target": "그것을"},
+        {"known": "how should say", "target": "어떻게 말해야 하는지"},
+        {"known": "to ask", "target": "물어보고"},
+        {"known": "didn't want to", "target": "싶지 않았어요"}
+      ],
+      "phrases": [
+        {"known": "it", "target": "그것을"},
+        {"known": "to ask", "target": "물어보고"},
+        {"known": "didn't want", "target": "싶지 않았어요"},
+        {"known": "want to ask", "target": "물어보고 싶다"},
+        {"known": "didn't want to ask", "target": "물어보고 싶지 않았어요"},
+        {"known": "how should say it", "target": "어떻게 말해야 하는지"},
+        {"known": "I didn't want to ask you how to say it", "target": "그것을 어떻게 말해야 하는지 물어보고 싶지 않았어요"},
+        {"known": "She didn't want to bother her teacher with questions", "target": "선생님에게 질문으로 귀찮게 하고 싶지 않았어요"},
+        {"known": "He didn't want to ask for help again", "target": "다시 도움을 요청하고 싶지 않았어요"},
+        {"known": "We didn't want to interrupt the meeting", "target": "회의를 방해하고 싶지 않았어요"},
+        {"known": "They didn't want to admit they were wrong about it", "target": "그들은 그것에 대해 틀렸다고 인정하고 싶지 않았어요"}
       ]
     }
   ]

@@ -1,0 +1,78 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 249,
+  "known_text": "I want you to help me before you go.",
+  "target_text": "가시기 전에 도와주셨으면 좋겠어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "before you go (hon.)",
+      "target": "가시기 전에",
+      "components": [
+        {"known": "go (honorific)", "target": "가시다"},
+        {"known": "before", "target": "전에"}
+      ],
+      "phrases": [
+        {"known": "go", "target": "가요"},
+        {"known": "before", "target": "전에"},
+        {"known": "go (hon.)", "target": "가세요"},
+        {"known": "before going", "target": "가기 전에"},
+        {"known": "before you go", "target": "가시기 전에"},
+        {"known": "you went (hon.)", "target": "가셨어요"},
+        {"known": "please come before leaving", "target": "가시기 전에 오세요"},
+        {"known": "she asked before you went", "target": "가시기 전에 물었어요"},
+        {"known": "I called before you left yesterday", "target": "어제 가시기 전에 전화했어요"},
+        {"known": "please finish this before you go", "target": "가시기 전에 이것을 끝내세요"},
+        {"known": "she wanted to meet before you left", "target": "그녀가 가시기 전에 만나고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I wish you would help (hon.)",
+      "target": "도와주셨으면 좋겠다",
+      "components": [
+        {"known": "help (hon. conditional)", "target": "도와주셨으면"},
+        {"known": "would be good", "target": "좋겠다"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "도와줘요"},
+        {"known": "good", "target": "좋겠어요"},
+        {"known": "help (hon.)", "target": "도와주세요"},
+        {"known": "if helped", "target": "도와주셨으면"},
+        {"known": "would be nice", "target": "좋겠어요"},
+        {"known": "I wish you would help", "target": "도와주셨으면 좋겠어요"},
+        {"known": "it would be nice if", "target": "면 좋겠어요"},
+        {"known": "I wish you could come", "target": "오셨으면 좋겠어요"},
+        {"known": "she wishes you would call her", "target": "전화해 주셨으면 좋겠어요"},
+        {"known": "I hope you can help me tomorrow", "target": "내일 도와주셨으면 좋겠어요"},
+        {"known": "we wish you could come to the meeting", "target": "모임에 오셨으면 좋겠어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I want you to help me before you go",
+      "target": "가시기 전에 도와주셨으면 좋겠어요",
+      "components": [
+        {"known": "before you go (hon.)", "target": "가시기 전에"},
+        {"known": "I wish you would help (hon.)", "target": "도와주셨으면 좋겠다"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "전에"},
+        {"known": "would be nice", "target": "좋겠어요"},
+        {"known": "help please", "target": "도와주세요"},
+        {"known": "before you leave", "target": "가시기 전에요"},
+        {"known": "going (hon.)", "target": "가시기 전에"},
+        {"known": "I wish for help", "target": "도와주셨으면 좋겠어요"},
+        {"known": "wish you'd help", "target": "도와주셨으면요"},
+        {"known": "please help before going", "target": "가시기 전에 도와주세요"},
+        {"known": "I wish you'd call before leaving", "target": "가시기 전에 전화해 주셨으면 좋겠어요"},
+        {"known": "she wishes you'd help tomorrow", "target": "내일 도와주셨으면 좋겠다고 했어요"},
+        {"known": "I hope you can finish before you go", "target": "가시기 전에 끝내셨으면 좋겠어요"},
+        {"known": "he wishes you could come before the meeting", "target": "모임 전에 오셨으면 좋겠다고 했어요"}
+      ]
+    }
+  ]
+}

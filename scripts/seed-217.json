@@ -1,57 +1,73 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 217,
   "known_text": "I had a glass or two of water.",
-  "target_text": "水を一杯か二杯飲みました。",
+  "target_text": "물 한두 잔 마셨어요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "a glass or two of water",
-      "target": "水を一杯か二杯",
+      "known": "one or two",
+      "target": "한두",
       "components": [
-        {"known": "water (object)", "target": "水を"},
-        {"known": "one glass or two glasses", "target": "一杯か二杯"}
+        {"known": "one", "target": "한"},
+        {"known": "two", "target": "두"}
       ],
       "phrases": [
-        {"known": "water", "target": "水"},
-        {"known": "one glass", "target": "一杯"},
-        {"known": "two glasses", "target": "二杯"},
-        {"known": "a glass of water", "target": "水一杯"},
-        {"known": "one or two", "target": "一つか二つ"},
-        {"known": "a glass or two", "target": "一杯か二杯"},
-        {"known": "please give me water", "target": "水をください"},
-        {"known": "I need a glass of water", "target": "水が一杯必要です"},
-        {"known": "I want some water please", "target": "水がほしいです"},
-        {"known": "can I have a glass of water please", "target": "水を一杯ください"},
-        {"known": "there is a glass or two of water here", "target": "ここに水が一杯か二杯あります"},
-        {"known": "I wanted a glass or two of water", "target": "水を一杯か二杯ほしかったです"},
-        {"known": "a glass or two of water is enough for me", "target": "私には水が一杯か二杯で十分です"},
-        {"known": "she asked for a glass or two of water for everyone", "target": "彼女はみんなに水を一杯か二杯頼みました"},
-        {"known": "I need a glass or two of water before we go", "target": "出かける前に水が一杯か二杯必要です"}
+        {"known": "one", "target": "한"},
+        {"known": "two", "target": "두"},
+        {"known": "one or two", "target": "한두"},
+        {"known": "one or two times", "target": "한두 번"},
+        {"known": "one or two people", "target": "한두 명"},
+        {"known": "I waited one or two hours", "target": "한두 시간 기다렸어요"},
+        {"known": "She ate one or two pieces", "target": "한두 개 먹었어요"},
+        {"known": "We went there one or two times last month", "target": "지난달에 거기 한두 번 갔어요"},
+        {"known": "I need one or two more days to finish", "target": "끝내려면 한두 날 더 필요해요"},
+        {"known": "He usually drinks one or two cups of tea every morning", "target": "그는 보통 매일 아침 차를 한두 잔 마셔요"}
       ]
     },
     {
       "idx": 2,
       "type": "A",
-      "known": "I had (drank)",
-      "target": "飲みました",
+      "known": "glass / cup (counter)",
+      "target": "잔",
       "phrases": [
-        {"known": "drink", "target": "飲む"},
-        {"known": "drinking", "target": "飲んで"},
-        {"known": "I drank", "target": "飲みました"},
-        {"known": "I'll drink", "target": "飲みます"},
-        {"known": "I want to drink", "target": "飲みたいです"},
-        {"known": "I drank it all", "target": "全部飲みました"},
-        {"known": "I drank water", "target": "水を飲みました"},
-        {"known": "I drank some water yesterday", "target": "昨日水を飲みました"},
-        {"known": "I want to drink something", "target": "何か飲みたいです"},
-        {"known": "I drank too much last night", "target": "昨夜飲みすぎました"},
-        {"known": "I usually have water in the morning", "target": "いつも朝に水を飲みます"},
-        {"known": "I had a glass of water before the meeting", "target": "会いの前に水を一杯飲みました"},
-        {"known": "she said she had too much to drink at the weekend", "target": "彼女は週末に飲みすぎたと言いました"},
-        {"known": "I always have a glass or two of water before going out", "target": "出かける前にいつも水を一杯か二杯飲みます"},
-        {"known": "I had a glass or two of water with my friends on Saturday", "target": "土曜日に友達と水を一杯か二杯飲みました"}
+        {"known": "glass", "target": "잔"},
+        {"known": "cup", "target": "잔"},
+        {"known": "a cup of", "target": "한 잔"},
+        {"known": "one glass", "target": "한 잔"},
+        {"known": "two glasses", "target": "두 잔"},
+        {"known": "a glass of water", "target": "물 한 잔"},
+        {"known": "How many glasses?", "target": "몇 잔이요?"},
+        {"known": "Would you like a cup of tea?", "target": "차 한 잔 하실래요?"},
+        {"known": "I drank three glasses of water today", "target": "오늘 물 세 잔 마셨어요"},
+        {"known": "She usually drinks one or two glasses of water after work", "target": "그녀는 보통 일 후에 물 한두 잔 마셔요"},
+        {"known": "He had several glasses of water during the meeting yesterday", "target": "어제 회의 동안 물 여러 잔 마셨어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I had a glass or two of water",
+      "target": "물 한두 잔 마셨어요",
+      "components": [
+        {"known": "water", "target": "물"},
+        {"known": "one or two", "target": "한두"},
+        {"known": "glass", "target": "잔"},
+        {"known": "drank", "target": "마셨어요"}
+      ],
+      "phrases": [
+        {"known": "water", "target": "물"},
+        {"known": "one or two", "target": "한두"},
+        {"known": "glass", "target": "잔"},
+        {"known": "drank", "target": "마셨어요"},
+        {"known": "one or two glasses", "target": "한두 잔"},
+        {"known": "water glass", "target": "물 한 잔"},
+        {"known": "drank some water", "target": "물을 마셨어요"},
+        {"known": "I had a glass or two of water", "target": "물 한두 잔 마셨어요"},
+        {"known": "I had a glass or two of tea yesterday", "target": "어제 차 한두 잔 마셨어요"},
+        {"known": "She had one or two glasses of water after exercise", "target": "운동 후에 물 한두 잔 마셨어요"},
+        {"known": "We had a few glasses of water during the meeting", "target": "회의 동안 물 몇 잔 마셨어요"}
       ]
     }
   ]

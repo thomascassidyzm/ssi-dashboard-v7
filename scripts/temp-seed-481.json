@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 481,
+  "known_text": "It's the only real hope we have left.",
+  "target_text": "그게 우리에게 남은 유일한 진짜 희망이에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the only real hope",
+      "target": "유일한 진짜 희망",
+      "components": [
+        {"known": "only", "target": "유일한"},
+        {"known": "real", "target": "진짜"},
+        {"known": "hope", "target": "희망"}
+      ],
+      "phrases": [
+        {"known": "hope", "target": "희망이요"},
+        {"known": "real", "target": "진짜요"},
+        {"known": "only one", "target": "유일해요"},
+        {"known": "the only thing", "target": "유일한 거요"},
+        {"known": "there's still hope", "target": "아직 희망이 있어요"},
+        {"known": "that's our only chance", "target": "그게 유일한 기회예요"},
+        {"known": "she's the only one who knows", "target": "그녀만 유일하게 알아요"},
+        {"known": "this is the only option left", "target": "이게 남은 유일한 옵션이에요"},
+        {"known": "the only real solution is time", "target": "유일한 진짜 해결책은 시간이에요"},
+        {"known": "that was their only true opportunity", "target": "그게 그들의 유일한 진짜 기회였어요"},
+        {"known": "there's always hope even in dark times", "target": "어두운 때도 항상 희망이 있어요"},
+        {"known": "this is the only real answer to the problem", "target": "이게 문제에 대한 유일한 진짜 답이에요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we have left",
+      "target": "우리에게 남은",
+      "components": [
+        {"known": "we", "target": "우리"},
+        {"known": "to us", "target": "에게"},
+        {"known": "remaining", "target": "남다"}
+      ],
+      "phrases": [
+        {"known": "to us", "target": "우리에게요"},
+        {"known": "remaining", "target": "남았어요"},
+        {"known": "left over", "target": "남은 거요"},
+        {"known": "what's left", "target": "뭐가 남았어요?"},
+        {"known": "we still have time", "target": "시간이 아직 남았어요"},
+        {"known": "she gave it to me", "target": "그녀가 저한테 줬어요"},
+        {"known": "there's not much remaining", "target": "많이 안 남았어요"},
+        {"known": "what options do we have left", "target": "우리에게 뭐가 남았어요?"},
+        {"known": "the only thing left is to wait", "target": "남은 건 기다리는 거예요"},
+        {"known": "she has little energy remaining", "target": "그녀에게 에너지가 별로 안 남았어요"},
+        {"known": "there's just one chance left for us", "target": "우리에게 기회가 딱 하나 남았어요"},
+        {"known": "the remaining time is very short", "target": "남은 시간이 아주 짧아요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "it's the only real hope we have left",
+      "target": "그게 우리에게 남은 유일한 진짜 희망이에요",
+      "components": [
+        {"known": "that", "target": "그게"},
+        {"known": "we have left", "target": "우리에게 남은"},
+        {"known": "the only real hope", "target": "유일한 진짜 희망"},
+        {"known": "is", "target": "이다"}
+      ],
+      "phrases": [
+        {"known": "that's it", "target": "그거예요"},
+        {"known": "this is all", "target": "이게 다예요"},
+        {"known": "it's our hope", "target": "우리 희망이에요"},
+        {"known": "that's all we have", "target": "그게 다 있는 거예요"},
+        {"known": "this is what remains", "target": "이게 남은 거예요"},
+        {"known": "it's our last chance", "target": "마지막 기회예요"},
+        {"known": "that's the only thing left", "target": "그게 남은 유일한 거예요"},
+        {"known": "this is the only path forward", "target": "이게 앞으로 가는 유일한 길이에요"},
+        {"known": "that's the only option remaining for us", "target": "그게 우리에게 남은 유일한 옵션이에요"},
+        {"known": "it's the final chance we have to succeed", "target": "성공할 마지막 기회예요"},
+        {"known": "this is the only thing keeping us going", "target": "이게 우리가 계속할 수 있게 하는 유일한 거예요"},
+        {"known": "that's the only real possibility we have at this point", "target": "그게 이 시점에 우리에게 있는 유일한 진짜 가능성이에요"}
+      ]
+    }
+  ]
+}

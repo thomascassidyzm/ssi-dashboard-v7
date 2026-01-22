@@ -1,73 +1,114 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 200,
   "known_text": "They say they want to make sure that we finish everything in time.",
-  "target_text": "彼らは私たちが全部間に合うように終わらせたいと言っています。",
+  "target_text": "모든 것을 제시간에 끝내도록 하고 싶다고 해요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "they (subject)",
-      "target": "彼らは私たちが",
+      "known": "they say (want) / says they want",
+      "target": "싶다고 해요",
       "components": [
-        {"known": "they", "target": "彼らは"},
-        {"known": "we (subject)", "target": "私たちが"}
+        {"known": "want (quoting)", "target": "싶다고"},
+        {"known": "says (polite)", "target": "해요"}
       ],
       "phrases": [
-        {"known": "they", "target": "彼らは"},
-        {"known": "we", "target": "私たちが"},
-        {"known": "they said", "target": "彼らは言いました"},
-        {"known": "we all came", "target": "私たちは来ました"},
-        {"known": "they want to help", "target": "彼らは手伝いたいです"},
-        {"known": "we can go together", "target": "私たちは一緒に行けます"},
-        {"known": "they told us about it yesterday", "target": "彼らは昨日それについて教えてくれました"},
-        {"known": "we all want to finish before tomorrow", "target": "私たちは明日までに終わりたいです"},
-        {"known": "they said they want to meet us at the office tomorrow morning", "target": "彼らは明日の朝オフィスで私たちに会いたいと言いました"}
+        {"known": "says", "target": "해요"},
+        {"known": "they say", "target": "라고 해요"},
+        {"known": "says they want", "target": "싶다고 해요"},
+        {"known": "she says she wants to go", "target": "가고 싶다고 해요"},
+        {"known": "he says he wants to eat", "target": "먹고 싶다고 해요"},
+        {"known": "they say they want to know", "target": "알고 싶다고 해요"},
+        {"known": "my friend says she wants to help", "target": "제 친구가 도와주고 싶다고 해요"},
+        {"known": "the teacher says students want to learn", "target": "선생님이 학생들이 배우고 싶다고 해요"},
+        {"known": "they say they want to come on Saturday", "target": "토요일에 오고 싶다고 해요"},
+        {"known": "she says she wants to finish all of it early", "target": "일찍 모든 것을 끝내고 싶다고 해요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "everything in time",
-      "target": "全部間に合うように",
+      "known": "want to make sure / ensure",
+      "target": "도록 하고 싶다",
       "components": [
-        {"known": "everything", "target": "全部"},
-        {"known": "in time/make it", "target": "間に合うように"}
+        {"known": "so that / in order to", "target": "도록"},
+        {"known": "want to do", "target": "하고 싶다"}
       ],
       "phrases": [
-        {"known": "everything", "target": "全部"},
-        {"known": "in time", "target": "間に合う"},
-        {"known": "everything in time", "target": "全部間に合うように"},
-        {"known": "I finished everything", "target": "全部終わりました"},
-        {"known": "did you make it in time", "target": "間に合いましたか"},
-        {"known": "I think we can make it", "target": "間に合うと思います"},
-        {"known": "I hope everything works out", "target": "全部うまくいくといいです"},
-        {"known": "I don't think we'll make it in time", "target": "間に合わないと思います"},
-        {"known": "I want to make sure everything is done in time for tomorrow", "target": "明日のために全部間に合うようにしたいです"},
-        {"known": "I hope we can finish everything before she comes to the office", "target": "彼女がオフィスに来る前に全部終わるといいですね"},
-        {"known": "I'm not sure if we can make everything in time but I'll try", "target": "全部間に合うか分かりませんが、やってみます"}
+        {"known": "want to", "target": "하고 싶다"},
+        {"known": "so that", "target": "도록"},
+        {"known": "want it", "target": "하고 싶어"},
+        {"known": "want to ensure", "target": "도록 하고 싶어요"},
+        {"known": "I want to make sure", "target": "도록 하고 싶어요"},
+        {"known": "want to make sure it is ready", "target": "준비되도록 하고 싶어요"},
+        {"known": "I want to ensure we arrive on time", "target": "제시간에 도착하도록 하고 싶어요"},
+        {"known": "I want to make sure all of it is good", "target": "모든 것이 좋도록 하고 싶어요"},
+        {"known": "she wants to ensure the work is finished", "target": "그녀는 일이 끝나도록 하고 싶어해요"},
+        {"known": "I want to make sure my daughter is happy", "target": "제 딸이 행복하도록 하고 싶어요"}
       ]
     },
     {
       "idx": 3,
+      "type": "A",
+      "known": "finish/complete",
+      "target": "끝내다",
+      "phrases": [
+        {"known": "finish", "target": "끝내요"},
+        {"known": "I finish", "target": "끝내요"},
+        {"known": "finish it", "target": "끝내"},
+        {"known": "finish early", "target": "일찍 끝내요"},
+        {"known": "can you finish?", "target": "끝낼 수 있어요?"},
+        {"known": "I finished it yesterday", "target": "어제 끝냈어요"},
+        {"known": "when will you finish?", "target": "언제 끝낼 거예요?"},
+        {"known": "I need to finish the work", "target": "일을 끝내야 해요"},
+        {"known": "she finished all of it on Saturday", "target": "그녀는 토요일에 다 끝냈어요"},
+        {"known": "I want to finish before going home", "target": "집에 가기 전에 끝내고 싶어요"},
+        {"known": "my son finished all of his work early today", "target": "제 아들은 오늘 일찍 모든 일을 끝냈어요"}
+      ]
+    },
+    {
+      "idx": 4,
       "type": "M",
-      "known": "want to finish, they say",
-      "target": "終わらせたいと言っています",
+      "known": "everything (object)",
+      "target": "모든 것을",
       "components": [
-        {"known": "want to finish", "target": "終わらせたい"},
-        {"known": "they say", "target": "と言っています"}
+        {"known": "all/every", "target": "모든"},
+        {"known": "thing (object)", "target": "것을"}
       ],
       "phrases": [
-        {"known": "want to finish", "target": "終わらせたい"},
-        {"known": "they say", "target": "と言っています"},
-        {"known": "want to finish, they say", "target": "終わらせたいと言っています"},
-        {"known": "she says it's good", "target": "いいと言っています"},
-        {"known": "I want to finish this", "target": "これを終わらせたいです"},
-        {"known": "he says he's coming tomorrow", "target": "明日来ると言っています"},
-        {"known": "I want to finish before I go home", "target": "家に帰る前に終わらせたいです"},
-        {"known": "they say they want to help with the work", "target": "仕事を手伝いたいと言っています"},
-        {"known": "she says she wants to finish everything before tomorrow", "target": "明日までに全部終わらせたいと言っています"},
-        {"known": "they say they want to make sure we can finish in time", "target": "私たちが間に合うように終わらせたいと言っています"}
+        {"known": "all of it", "target": "모든 것을"},
+        {"known": "all things", "target": "모든 것을"},
+        {"known": "I saw all of it", "target": "모든 것을 봤어요"},
+        {"known": "I understand all of it", "target": "모든 것을 이해해요"},
+        {"known": "I finished all of it", "target": "모든 것을 끝냈어요"},
+        {"known": "I want to know all of it", "target": "모든 것을 알고 싶어요"},
+        {"known": "she told me all of it", "target": "그녀가 모든 것을 말해줬어요"},
+        {"known": "I want to learn all of it before Saturday", "target": "토요일 전에 모든 것을 배우고 싶어요"},
+        {"known": "my friend knows all of it about that", "target": "제 친구는 그것에 대해 모든 것을 알아요"},
+        {"known": "please finish all of it before you leave", "target": "떠나기 전에 모든 것을 끝내 주세요"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "in time / on time",
+      "target": "제시간에",
+      "components": [
+        {"known": "proper time", "target": "제시간"},
+        {"known": "at (time)", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "in time", "target": "제시간에"},
+        {"known": "on time", "target": "제시간에"},
+        {"known": "arrived on time", "target": "제시간에 도착했어요"},
+        {"known": "finish in time", "target": "제시간에 끝내요"},
+        {"known": "I came in time", "target": "제시간에 왔어요"},
+        {"known": "can you arrive on time?", "target": "제시간에 도착할 수 있어요?"},
+        {"known": "please come in time", "target": "제시간에 와 주세요"},
+        {"known": "she always arrives on time", "target": "그녀는 항상 제시간에 도착해요"},
+        {"known": "I need to leave to arrive in time", "target": "제시간에 도착하려면 떠나야 해요"},
+        {"known": "all of it was finished in time", "target": "모든 것이 제시간에 끝났어요"}
       ]
     }
   ]

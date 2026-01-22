@@ -1,0 +1,60 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 428,
+  "known_text": "Would they like to visit us on Tuesday?",
+  "target_text": "그들이 화요일에 우리를 방문하고 싶어해요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "visit us on Tuesday",
+      "target": "화요일에 우리를 방문하다",
+      "components": [
+        {"known": "Tuesday", "target": "화요일"},
+        {"known": "on (time)", "target": "에"},
+        {"known": "us", "target": "우리를"},
+        {"known": "visit", "target": "방문하다"}
+      ],
+      "phrases": [
+        {"known": "Tuesday", "target": "화요일이요"},
+        {"known": "visit", "target": "방문해요"},
+        {"known": "visit us", "target": "우리를 방문해요"},
+        {"known": "on Tuesday", "target": "화요일에요"},
+        {"known": "she visited yesterday", "target": "그녀가 어제 방문했어요"},
+        {"known": "he will visit next week", "target": "그가 다음 주에 방문해요"},
+        {"known": "can you visit tomorrow", "target": "내일 방문할 수 있어요?"},
+        {"known": "they came to visit on Monday", "target": "그들이 월요일에 방문했어요"},
+        {"known": "I want to visit my grandmother", "target": "할머니를 방문하고 싶어요"},
+        {"known": "she plans to visit her friend soon", "target": "그녀가 곧 친구를 방문할 계획이에요"},
+        {"known": "we visited the museum on Wednesday", "target": "우리가 수요일에 박물관을 방문했어요"},
+        {"known": "they asked if they could visit us today", "target": "그들이 오늘 우리를 방문해도 되는지 물었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "would they like to visit us on Tuesday",
+      "target": "그들이 화요일에 우리를 방문하고 싶어해요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "visit us on Tuesday", "target": "화요일에 우리를 방문하다"},
+        {"known": "would like to (third person)", "target": "고 싶어하다"}
+      ],
+      "phrases": [
+        {"known": "they would", "target": "그들이요"},
+        {"known": "they do", "target": "그래요"},
+        {"known": "would like to", "target": "하고 싶어해요"},
+        {"known": "they would like", "target": "그들이 원해요"},
+        {"known": "does she want to come", "target": "그녀가 오고 싶어해요?"},
+        {"known": "would he like to stay", "target": "그가 있고 싶어해요?"},
+        {"known": "would they prefer to wait", "target": "그들이 기다리고 싶어해요?"},
+        {"known": "does she want to join us later", "target": "그녀가 나중에 합류하고 싶어해요?"},
+        {"known": "would they like to try something new", "target": "그들이 새로운 거 해 보고 싶어해요?"},
+        {"known": "does he want to meet us tomorrow morning", "target": "그가 내일 아침에 만나고 싶어해요?"},
+        {"known": "would they like to have dinner with us", "target": "그들이 우리랑 저녁 먹고 싶어해요?"},
+        {"known": "does she want to travel with the group", "target": "그녀가 그룹이랑 여행하고 싶어해요?"},
+        {"known": "would they prefer to reschedule the meeting", "target": "그들이 회의를 다시 잡고 싶어해요?"}
+      ]
+    }
+  ]
+}

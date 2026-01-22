@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 480,
+  "known_text": "Whatever he says it's not far ahead now.",
+  "target_text": "그가 뭐라고 해도 이제 멀지 않아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "whatever he says",
+      "target": "그가 뭐라고 해도",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "whatever", "target": "뭐라고"},
+        {"known": "even if says", "target": "해도"}
+      ],
+      "phrases": [
+        {"known": "he says", "target": "그가 말해요"},
+        {"known": "whatever", "target": "뭐라고요"},
+        {"known": "even if", "target": "해도요"},
+        {"known": "no matter what", "target": "뭐가 됐든요"},
+        {"known": "she says so", "target": "그녀가 그렇게 말해요"},
+        {"known": "whatever she thinks", "target": "그녀가 뭐라고 생각해도요"},
+        {"known": "no matter what he tells you", "target": "그가 뭐라고 해도요"},
+        {"known": "whatever they decide is fine", "target": "그들이 뭘 결정해도 괜찮아요"},
+        {"known": "no matter what people say I'll do it", "target": "사람들이 뭐라고 해도 할 거예요"},
+        {"known": "whatever the outcome I'm ready", "target": "결과가 어떻든 준비됐어요"},
+        {"known": "she won't change her mind whatever he says", "target": "그가 뭐라고 해도 그녀가 마음 안 바꿔요"},
+        {"known": "no matter what anyone thinks I believe in myself", "target": "누가 뭐라고 생각해도 저를 믿어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "not far ahead now",
+      "target": "이제 멀지 않다",
+      "components": [
+        {"known": "now", "target": "이제"},
+        {"known": "far", "target": "멀다"},
+        {"known": "not", "target": "지 않다"}
+      ],
+      "phrases": [
+        {"known": "now", "target": "이제요"},
+        {"known": "not far", "target": "멀지 않아요"},
+        {"known": "it's close", "target": "가까워요"},
+        {"known": "almost there", "target": "거의 다 왔어요"},
+        {"known": "we're nearly there", "target": "이제 거의 다 왔어요"},
+        {"known": "it's not much further", "target": "이제 멀지 않아요"},
+        {"known": "the destination isn't far", "target": "목적지가 멀지 않아요"},
+        {"known": "we're getting close now", "target": "이제 가까워지고 있어요"},
+        {"known": "the end is near", "target": "끝이 이제 가까워요"},
+        {"known": "the station isn't far from here", "target": "역이 여기서 멀지 않아요"},
+        {"known": "we don't have much further to go", "target": "이제 많이 안 남았어요"},
+        {"known": "the finish line is just ahead of us", "target": "결승선이 바로 앞에 있어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "whatever he says it's not far ahead now",
+      "target": "그가 뭐라고 해도 이제 멀지 않아요",
+      "components": [
+        {"known": "whatever he says", "target": "그가 뭐라고 해도"},
+        {"known": "not far ahead now", "target": "이제 멀지 않다"}
+      ],
+      "phrases": [
+        {"known": "anyway", "target": "어쨌든요"},
+        {"known": "in any case", "target": "어쨌든요"},
+        {"known": "we're close now", "target": "이제 가까워요"},
+        {"known": "regardless of that", "target": "그거랑 상관없이요"},
+        {"known": "no matter what we're almost there", "target": "어쨌든 거의 다 왔어요"},
+        {"known": "despite what she says it's nearby", "target": "그녀가 뭐라고 해도 가까워요"},
+        {"known": "whatever happens we're nearly done", "target": "무슨 일이 있어도 거의 끝났어요"},
+        {"known": "no matter what they claim it's not far", "target": "그들이 뭐라고 해도 멀지 않아요"},
+        {"known": "regardless of his opinion we're getting close", "target": "그의 의견이랑 상관없이 가까워지고 있어요"},
+        {"known": "whatever he believes the destination is near", "target": "그가 뭘 믿든 목적지가 가까워요"},
+        {"known": "no matter what he thinks we're almost at the end", "target": "그가 뭘 생각해도 거의 끝났어요"},
+        {"known": "even if he disagrees we're not far from finishing", "target": "그가 동의 안 해도 끝내기 멀지 않아요"}
+      ]
+    }
+  ]
+}

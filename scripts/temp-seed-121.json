@@ -1,56 +1,109 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 121,
   "known_text": "It's unusual that you don't like to use your car.",
-  "target_text": "車を使うのが好きじゃないのは珍しいですね。",
+  "target_text": "차를 쓰는 것을 좋아하지 않는다니 이상하네요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "you don't like to use your car",
-      "target": "車を使うのが好きじゃない",
-      "components": [
-        {"known": "car (object)", "target": "車を"},
-        {"known": "use", "target": "使う"},
-        {"known": "don't like", "target": "のが好きじゃない"}
-      ],
+      "type": "A",
+      "known": "unusual",
+      "target": "이상하다",
       "phrases": [
-        {"known": "car", "target": "車"},
-        {"known": "use", "target": "使う"},
-        {"known": "the car", "target": "車を"},
-        {"known": "use car", "target": "車を使う"},
-        {"known": "don't like", "target": "好きじゃない"},
-        {"known": "using the car", "target": "車を使うの"},
-        {"known": "don't like to use", "target": "使うのが好きじゃない"},
-        {"known": "I don't like using the car", "target": "車を使うのが好きじゃない"},
-        {"known": "she likes using the car", "target": "彼女は車を使うのが好きです"},
-        {"known": "my friend doesn't like to use the car", "target": "友達は車を使うのが好きじゃない"},
-        {"known": "do you like to use the car or go by bus", "target": "車を使うのとバスで行くのどっちが好きですか"},
-        {"known": "going by bus is more relaxing than using the car", "target": "バスで行く方が車を使うよりリラックスできます"}
+        {"known": "unusual", "target": "이상하다"},
+        {"known": "it's unusual", "target": "이상해요"},
+        {"known": "that's unusual", "target": "그건 이상해요"},
+        {"known": "this is unusual", "target": "이건 이상해요"},
+        {"known": "it's not unusual", "target": "이상하지 않아요"},
+        {"known": "it seems unusual", "target": "이상해 보여요"},
+        {"known": "do you think it's unusual?", "target": "이상하다고 생각해요?"},
+        {"known": "it's already unusual", "target": "이미 이상해요"},
+        {"known": "that sounds unusual to me", "target": "그건 저한테 이상하게 들려요"},
+        {"known": "I don't think it's unusual anymore", "target": "더 이상 이상하다고 생각하지 않아요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "car",
+      "target": "차",
+      "phrases": [
+        {"known": "car", "target": "차"},
+        {"known": "my car", "target": "제 차"},
+        {"known": "your car", "target": "당신 차"},
+        {"known": "this car", "target": "이 차"},
+        {"known": "I use the car", "target": "차를 써요"},
+        {"known": "I like the car", "target": "차를 좋아해요"},
+        {"known": "the car is good", "target": "차가 좋아요"},
+        {"known": "I want to use the car", "target": "차를 쓰고 싶어요"},
+        {"known": "do you like your car?", "target": "당신 차를 좋아해요?"},
+        {"known": "I don't think I need a car yet", "target": "아직 차가 필요하다고 생각하지 않아요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "it's unusual that (right?)",
-      "target": "のは珍しいですね",
+      "known": "to use",
+      "target": "쓰는 것을",
       "components": [
-        {"known": "(nominalizer) is", "target": "のは"},
-        {"known": "unusual isn't it", "target": "珍しいですね"}
+        {"known": "use", "target": "쓰다"},
+        {"known": "thing (nominalizer)", "target": "것"}
       ],
       "phrases": [
-        {"known": "right?", "target": "ね"},
-        {"known": "unusual", "target": "珍しい"},
-        {"known": "is unusual", "target": "珍しいです"},
-        {"known": "that is unusual", "target": "のは珍しい"},
-        {"known": "unusual right?", "target": "珍しいですね"},
-        {"known": "it's unusual that", "target": "のは珍しいですね"},
-        {"known": "that she went is unusual", "target": "行ったのは珍しいですね"},
-        {"known": "that you came is unusual", "target": "来たのは珍しいですね"},
-        {"known": "it's unusual that it's today", "target": "今日なのは珍しいですね"},
-        {"known": "it's unusual that we talked so much", "target": "たくさん話したのは珍しいですね"},
-        {"known": "it's unusual that she feels this way", "target": "彼女がこう感じるのは珍しいですね"},
-        {"known": "it's unusual that he doesn't like to have conversations", "target": "彼が会話をするのが好きじゃないのは珍しいですね"}
+        {"known": "use", "target": "쓰다"},
+        {"known": "to use", "target": "쓰는 것을"},
+        {"known": "I use it", "target": "그걸 써요"},
+        {"known": "I want to use it", "target": "그걸 쓰고 싶어요"},
+        {"known": "I like to use it", "target": "그걸 쓰는 것을 좋아해요"},
+        {"known": "I don't want to use it", "target": "그걸 쓰고 싶지 않아요"},
+        {"known": "can I use it again?", "target": "다시 써도 돼요?"},
+        {"known": "I already use it slowly", "target": "이미 천천히 써요"},
+        {"known": "I don't like to use it often", "target": "자주 쓰는 것을 좋아하지 않아요"},
+        {"known": "unfortunately I cannot use it yet", "target": "안타깝게도 아직 그걸 쓸 수 없어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "don't like to",
+      "target": "좋아하지 않다",
+      "components": [
+        {"known": "like", "target": "좋아하다"},
+        {"known": "not (negation)", "target": "-지 않다"}
+      ],
+      "phrases": [
+        {"known": "like", "target": "좋아하다"},
+        {"known": "don't like", "target": "좋아하지 않다"},
+        {"known": "I don't like it", "target": "좋아하지 않아요"},
+        {"known": "you don't like it", "target": "좋아하지 않으세요"},
+        {"known": "I don't like to go", "target": "가는 것을 좋아하지 않아요"},
+        {"known": "she doesn't like to wait", "target": "기다리는 것을 좋아하지 않아요"},
+        {"known": "I don't like to use it again", "target": "다시 쓰는 것을 좋아하지 않아요"},
+        {"known": "do you think she doesn't like it?", "target": "그녀가 좋아하지 않는다고 생각해요?"},
+        {"known": "I already know you don't like that", "target": "이미 당신이 그걸 좋아하지 않는다는 걸 알아요"},
+        {"known": "unfortunately I don't like to do it slowly", "target": "안타깝게도 천천히 하는 것을 좋아하지 않아요"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "It's unusual that",
+      "target": "~다니 이상하네요",
+      "components": [
+        {"known": "that (quotative surprise)", "target": "-다니"},
+        {"known": "unusual (exclamatory)", "target": "이상하네요"}
+      ],
+      "phrases": [
+        {"known": "that (quotative)", "target": "-다니"},
+        {"known": "it's unusual that", "target": "~다니 이상하네요"},
+        {"known": "it's unusual that you go", "target": "간다니 이상하네요"},
+        {"known": "it's unusual that you like it", "target": "좋아한다니 이상하네요"},
+        {"known": "it's unusual that you don't want it", "target": "원하지 않는다니 이상하네요"},
+        {"known": "it's unusual that you already know", "target": "이미 안다니 이상하네요"},
+        {"known": "it's unusual that you don't agree", "target": "동의하지 않는다니 이상하네요"},
+        {"known": "it's unusual that you still don't understand", "target": "아직 이해하지 못한다니 이상하네요"},
+        {"known": "it's unusual that you don't want to wait again", "target": "다시 기다리고 싶지 않다니 이상하네요"},
+        {"known": "it's unusual that you don't like to use your car", "target": "차를 쓰는 것을 좋아하지 않는다니 이상하네요"}
       ]
     }
   ]

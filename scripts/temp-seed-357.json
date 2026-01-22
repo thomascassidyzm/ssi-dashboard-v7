@@ -1,0 +1,62 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 357,
+  "known_text": "No she just wanted to send her a message.",
+  "target_text": "아니요, 그녀가 그냥 그녀한테 메시지를 보내고 싶었어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "send her a message",
+      "target": "그녀한테 메시지를 보내다",
+      "components": [
+        {"known": "to her", "target": "그녀한테"},
+        {"known": "message", "target": "메시지"},
+        {"known": "object marker", "target": "를"},
+        {"known": "send", "target": "보내다"}
+      ],
+      "phrases": [
+        {"known": "send", "target": "보내요"},
+        {"known": "message", "target": "메시지요"},
+        {"known": "send it", "target": "보내요"},
+        {"known": "send a message", "target": "메시지를 보내요"},
+        {"known": "I sent a message", "target": "메시지를 보냈어요"},
+        {"known": "send her a text", "target": "그녀한테 문자 보내요"},
+        {"known": "please send her a message", "target": "그녀한테 메시지 보내주세요"},
+        {"known": "I want to send a message", "target": "메시지를 보내고 싶어요"},
+        {"known": "did you send her the message?", "target": "그녀한테 메시지 보냈어요?"},
+        {"known": "she sent me a message yesterday", "target": "그녀가 어제 저한테 메시지 보냈어요"},
+        {"known": "I need to send him a message about it", "target": "그거에 대해 그한테 메시지 보내야 해요"},
+        {"known": "she wanted to send her friend a message", "target": "그녀가 친구한테 메시지를 보내고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "no she just wanted to send her a message",
+      "target": "아니요 그녀가 그냥 그녀한테 메시지를 보내고 싶었어요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "she", "target": "그녀가"},
+        {"known": "just", "target": "그냥"},
+        {"known": "send her a message", "target": "그녀한테 메시지를 보내다"},
+        {"known": "wanted to", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "just", "target": "그냥요"},
+        {"known": "she just", "target": "그냥 그녀가"},
+        {"known": "no she didn't", "target": "아니요 안 했어요"},
+        {"known": "she just wanted to", "target": "그녀가 그냥 하고 싶었어요"},
+        {"known": "no not that", "target": "아니요 그거 아니에요"},
+        {"known": "no she just wanted to say hi", "target": "아니요 그녀가 그냥 인사하고 싶었어요"},
+        {"known": "she just wanted to check", "target": "그녀가 그냥 확인하고 싶었어요"},
+        {"known": "no she just wanted to ask", "target": "아니요 그녀가 그냥 물어보고 싶었어요"},
+        {"known": "she just wanted to send a quick note", "target": "그녀가 그냥 간단하게 연락하고 싶었어요"},
+        {"known": "no she just wanted to let you know", "target": "아니요 그녀가 그냥 알려주고 싶었어요"},
+        {"known": "no she just wanted to tell her something", "target": "아니요 그녀가 그냥 뭔가 말하고 싶었어요"},
+        {"known": "no she just wanted to send a message to say thank you", "target": "아니요 그녀가 그냥 감사하다고 메시지를 보내고 싶었어요"}
+      ]
+    }
+  ]
+}

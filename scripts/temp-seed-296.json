@@ -1,0 +1,102 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 296,
+  "known_text": "I said that I needed a little more time.",
+  "target_text": "시간이 조금 더 필요하다고 말했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "need (requirement)",
+      "target": "필요하다",
+      "phrases": [
+        {"known": "need", "target": "필요해요"},
+        {"known": "I need", "target": "필요해요"},
+        {"known": "needed", "target": "필요했어요"},
+        {"known": "you need", "target": "필요해요"},
+        {"known": "I need this", "target": "이게 필요해요"},
+        {"known": "is it needed?", "target": "필요해요?"},
+        {"known": "I need your help", "target": "당신 도움이 필요해요"},
+        {"known": "we don't need that", "target": "그건 필요 없어요"},
+        {"known": "she said she needed rest", "target": "휴식이 필요하다고 했어요"},
+        {"known": "I need to check something", "target": "확인할 것이 필요해요"},
+        {"known": "this project needs more work", "target": "이 프로젝트는 작업이 더 필요해요"},
+        {"known": "I realized I needed more preparation", "target": "준비가 더 필요하다는 것을 알았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "a little more time",
+      "target": "시간이 조금 더",
+      "components": [
+        {"known": "time", "target": "시간"},
+        {"known": "a little", "target": "조금"},
+        {"known": "more", "target": "더"}
+      ],
+      "phrases": [
+        {"known": "time", "target": "시간이요"},
+        {"known": "a little", "target": "조금요"},
+        {"known": "more time", "target": "시간이 더"},
+        {"known": "a little more", "target": "조금 더요"},
+        {"known": "a bit more time", "target": "시간 조금 더"},
+        {"known": "I need a little more", "target": "조금 더 필요해요"},
+        {"known": "just a little more time", "target": "시간 조금만 더요"},
+        {"known": "please give me more time", "target": "시간을 더 주세요"},
+        {"known": "I need a few more days", "target": "며칠 더 필요해요"},
+        {"known": "she asked for a little more time", "target": "시간을 조금 더 달라고 했어요"},
+        {"known": "we only need a bit more time to finish", "target": "끝내려면 시간이 조금 더 필요해요"},
+        {"known": "could you give me just a little more time?", "target": "시간을 조금만 더 줄 수 있어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I said that",
+      "target": "다고 말하다",
+      "components": [
+        {"known": "that (quotation)", "target": "다고"},
+        {"known": "say", "target": "말하다"}
+      ],
+      "phrases": [
+        {"known": "I said", "target": "말했어요"},
+        {"known": "said that", "target": "다고 했어요"},
+        {"known": "I told you", "target": "말했어요"},
+        {"known": "I said yes", "target": "네라고 했어요"},
+        {"known": "I said okay", "target": "괜찮다고 했어요"},
+        {"known": "I told him I'd come", "target": "온다고 말했어요"},
+        {"known": "I said I was busy", "target": "바쁘다고 말했어요"},
+        {"known": "I told her I was tired", "target": "피곤하다고 말했어요"},
+        {"known": "I said I would help later", "target": "나중에 돕겠다고 말했어요"},
+        {"known": "I told them the meeting was tomorrow", "target": "회의가 내일이라고 말했어요"},
+        {"known": "I clearly said I couldn't come today", "target": "오늘 못 온다고 분명히 말했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I said that I needed a little more time",
+      "target": "시간이 조금 더 필요하다고 말했어요",
+      "components": [
+        {"known": "a little more time", "target": "시간이 조금 더"},
+        {"known": "need (requirement)", "target": "필요하다"},
+        {"known": "I said that", "target": "다고 말하다"}
+      ],
+      "phrases": [
+        {"known": "I said", "target": "말했어요"},
+        {"known": "more time", "target": "시간 더요"},
+        {"known": "I needed", "target": "필요했어요"},
+        {"known": "I said that", "target": "그렇게 말했어요"},
+        {"known": "time needed", "target": "시간이 필요했어요"},
+        {"known": "I told them I needed help", "target": "도움이 필요하다고 말했어요"},
+        {"known": "I said I wanted more time", "target": "시간이 더 필요하다고 말했어요"},
+        {"known": "I mentioned I needed a break", "target": "휴식이 필요하다고 말했어요"},
+        {"known": "I explained I needed more information", "target": "정보가 더 필요하다고 설명했어요"},
+        {"known": "I told my boss I needed time off", "target": "상사에게 휴가가 필요하다고 말했어요"},
+        {"known": "I clearly stated that I needed more time", "target": "시간이 더 필요하다고 분명히 말했어요"},
+        {"known": "I said I needed a few more days to think", "target": "생각할 시간이 며칠 더 필요하다고 말했어요"},
+        {"known": "I told her that I still needed more practice", "target": "연습이 아직 더 필요하다고 말했어요"}
+      ]
+    }
+  ]
+}

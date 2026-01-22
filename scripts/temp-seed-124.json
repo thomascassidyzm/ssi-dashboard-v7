@@ -1,55 +1,74 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 124,
   "known_text": "I thought that was a good idea.",
-  "target_text": "それはいい考えだと思いました。",
+  "target_text": "좋은 생각인 것 같았어요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "that was a good idea",
-      "target": "それはいい考えだ",
+      "known": "I thought (past opinion)",
+      "target": "~것 같았다",
       "components": [
-        {"known": "that (topic)", "target": "それは"},
-        {"known": "good idea (copula)", "target": "いい考えだ"}
+        {"known": "thing/fact", "target": "것"},
+        {"known": "seemed like (past)", "target": "같았다"}
       ],
       "phrases": [
-        {"known": "that", "target": "それ"},
-        {"known": "idea", "target": "考え"},
-        {"known": "good", "target": "いい"},
-        {"known": "that is", "target": "それは"},
-        {"known": "good idea", "target": "いい考え"},
-        {"known": "that was a good idea", "target": "それはいい考えだ"},
-        {"known": "is it a good idea", "target": "いい考えですか"},
-        {"known": "that was a good idea (polite)", "target": "それはいい考えでした"},
-        {"known": "going by bus was a good idea", "target": "バスで行くのはいい考えでした"},
-        {"known": "my friend had a good idea yesterday", "target": "友達は昨日いい考えがありました"},
-        {"known": "learning something new is always a good idea", "target": "新しいことを学ぶのはいつもいい考えです"},
-        {"known": "having a conversation before leaving was a good idea", "target": "帰る前に会話をしたのはいい考えでした"}
+        {"known": "seemed like", "target": "같았다"},
+        {"known": "I thought", "target": "~것 같았어요"},
+        {"known": "I thought so", "target": "그런 것 같았어요"},
+        {"known": "I thought it was good", "target": "좋은 것 같았어요"},
+        {"known": "I thought it was okay", "target": "괜찮은 것 같았어요"},
+        {"known": "I thought I understood", "target": "이해하는 것 같았어요"},
+        {"known": "I thought it was already good", "target": "이미 좋은 것 같았어요"},
+        {"known": "I thought I needed to wait again", "target": "다시 기다려야 하는 것 같았어요"},
+        {"known": "unfortunately I thought it was short", "target": "안타깝게도 짧은 것 같았어요"},
+        {"known": "I thought the puppy was good", "target": "강아지가 좋은 것 같았어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "I thought",
-      "target": "と思いました",
+      "known": "was (past copula)",
+      "target": "이었다",
       "components": [
-        {"known": "quotation", "target": "と"},
-        {"known": "thought (polite past)", "target": "思いました"}
+        {"known": "is (copula)", "target": "이다"},
+        {"known": "past marker", "target": "-었-"}
       ],
       "phrases": [
-        {"known": "thought", "target": "思った"},
-        {"known": "I thought", "target": "思いました"},
-        {"known": "that (quote)", "target": "と"},
-        {"known": "I thought that", "target": "と思いました"},
-        {"known": "she thought so", "target": "彼女はそう思いました"},
-        {"known": "did you think so", "target": "そう思いましたか"},
-        {"known": "I thought it went well", "target": "うまくいったと思いました"},
-        {"known": "I thought we learned a lot", "target": "たくさん学んだと思いました"},
-        {"known": "my friend thought it was interesting", "target": "友達は面白いと思いました"},
-        {"known": "I thought going by bus was easier", "target": "バスで行く方が簡単だと思いました"},
-        {"known": "I thought the conversation was very good", "target": "会話はとてもよかったと思いました"},
-        {"known": "I thought it was starting to feel easier yesterday", "target": "昨日簡単に感じ始めていると思いました"}
+        {"known": "is", "target": "이다"},
+        {"known": "was", "target": "이었다"},
+        {"known": "it was", "target": "이었어요"},
+        {"known": "that was", "target": "그건 이었어요"},
+        {"known": "it was good", "target": "좋았어요"},
+        {"known": "it was a good idea", "target": "좋은 생각이었어요"},
+        {"known": "it was okay yesterday", "target": "어제 괜찮았어요"},
+        {"known": "the afternoon was short", "target": "오후가 짧았어요"},
+        {"known": "the puppy was already good", "target": "강아지가 이미 좋았어요"},
+        {"known": "unfortunately it was not good yet", "target": "안타깝게도 아직 좋지 않았어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I thought that was a good idea",
+      "target": "좋은 생각인 것 같았어요",
+      "components": [
+        {"known": "a good idea", "target": "좋은 생각"},
+        {"known": "is (copula)", "target": "이다"},
+        {"known": "I thought", "target": "~것 같았다"}
+      ],
+      "phrases": [
+        {"known": "I thought", "target": "~것 같았어요"},
+        {"known": "it was a good idea", "target": "좋은 생각이었어요"},
+        {"known": "I thought that was a good idea", "target": "좋은 생각인 것 같았어요"},
+        {"known": "I already thought that was a good idea", "target": "이미 좋은 생각인 것 같았어요"},
+        {"known": "I still thought that was a good idea", "target": "아직도 좋은 생각인 것 같았어요"},
+        {"known": "I thought that was a good idea again", "target": "다시 좋은 생각인 것 같았어요"},
+        {"known": "I thought your idea was good", "target": "당신 생각이 좋은 것 같았어요"},
+        {"known": "I thought it was okay to wait slowly", "target": "천천히 기다려도 괜찮은 것 같았어요"},
+        {"known": "I didn't think that was a good idea", "target": "좋은 생각인 것 같지 않았어요"},
+        {"known": "unfortunately I thought it was not a good idea", "target": "안타깝게도 좋은 생각이 아닌 것 같았어요"}
       ]
     }
   ]

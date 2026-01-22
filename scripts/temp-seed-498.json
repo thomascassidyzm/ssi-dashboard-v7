@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 498,
+  "known_text": "He's standing alone over there inside the entrance.",
+  "target_text": "그가 입구 안에 혼자 서 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "inside the entrance",
+      "target": "입구 안에",
+      "components": [
+        {"known": "entrance", "target": "입구"},
+        {"known": "inside", "target": "안에"}
+      ],
+      "phrases": [
+        {"known": "entrance", "target": "입구요"},
+        {"known": "inside", "target": "안에요"},
+        {"known": "the main entrance", "target": "정문이요"},
+        {"known": "inside the room", "target": "방 안에요"},
+        {"known": "through the entrance", "target": "입구로요"},
+        {"known": "she waited at the entrance", "target": "그녀가 입구에서 기다렸어요"},
+        {"known": "the entrance is over there", "target": "입구가 저기 있어요"},
+        {"known": "go inside the building", "target": "건물 안에 들어가요"},
+        {"known": "they met inside the station", "target": "그들이 역 안에서 만났어요"},
+        {"known": "the entrance was hard to find", "target": "입구 찾기 어려웠어요"},
+        {"known": "she stood right inside the door", "target": "그녀가 문 안에 바로 서 있었어요"},
+        {"known": "we gathered inside the lobby of the hotel", "target": "우리가 호텔 로비 안에 모였어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "standing alone",
+      "target": "혼자 서 있다",
+      "components": [
+        {"known": "alone", "target": "혼자"},
+        {"known": "standing", "target": "서 있다"}
+      ],
+      "phrases": [
+        {"known": "alone", "target": "혼자요"},
+        {"known": "standing", "target": "서 있어요"},
+        {"known": "by myself", "target": "혼자서요"},
+        {"known": "she's standing", "target": "그녀가 서 있어요"},
+        {"known": "I ate alone", "target": "혼자 먹었어요"},
+        {"known": "he lives alone", "target": "그가 혼자 살아요"},
+        {"known": "standing in line", "target": "줄 서 있어요"},
+        {"known": "she was standing by herself", "target": "그녀가 혼자 서 있었어요"},
+        {"known": "I prefer working alone", "target": "혼자 일하는 게 좋아요"},
+        {"known": "he stood there for a long time", "target": "그가 거기 오래 서 있었어요"},
+        {"known": "she was standing alone in the corner", "target": "그녀가 구석에 혼자 서 있었어요"},
+        {"known": "they stood together waiting for the bus", "target": "그들이 같이 서서 버스 기다렸어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he's standing alone over there inside the entrance",
+      "target": "그가 입구 안에 혼자 서 있어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "inside the entrance", "target": "입구 안에"},
+        {"known": "standing alone", "target": "혼자 서 있다"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "그가요"},
+        {"known": "over there", "target": "저기요"},
+        {"known": "he's there", "target": "그가 있어요"},
+        {"known": "that person", "target": "그 사람이요"},
+        {"known": "he's standing over there", "target": "그가 저기 서 있어요"},
+        {"known": "she's alone at the entrance", "target": "그녀가 입구에 혼자 있어요"},
+        {"known": "someone is standing by the door", "target": "누가 문 옆에 서 있어요"},
+        {"known": "he looked lonely standing there", "target": "그가 거기 서 있는 게 외로워 보였어요"},
+        {"known": "she saw him standing inside the gate", "target": "그녀가 그를 문 안에 서 있는 거 봤어요"},
+        {"known": "I noticed someone standing alone near the entrance", "target": "입구 근처에 누가 혼자 서 있는 거 봤어요"},
+        {"known": "he was waiting for someone inside the building", "target": "그가 건물 안에서 누구 기다리고 있었어요"},
+        {"known": "she found him standing quietly by himself in the lobby", "target": "그녀가 그를 로비에서 혼자 조용히 서 있는 거 찾았어요"}
+      ]
+    }
+  ]
+}

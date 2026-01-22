@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 494,
+  "known_text": "What happens after the first part of the show?",
+  "target_text": "쇼 첫 번째 부분 다음에 뭐가 일어나요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the first part of the show",
+      "target": "쇼 첫 번째 부분",
+      "components": [
+        {"known": "show", "target": "쇼"},
+        {"known": "first", "target": "첫 번째"},
+        {"known": "part", "target": "부분"}
+      ],
+      "phrases": [
+        {"known": "show", "target": "쇼요"},
+        {"known": "first", "target": "첫 번째요"},
+        {"known": "part", "target": "부분이요"},
+        {"known": "the first one", "target": "첫 번째 거요"},
+        {"known": "the show starts soon", "target": "쇼가 곧 시작해요"},
+        {"known": "this is the best part", "target": "이게 제일 좋은 부분이에요"},
+        {"known": "the first episode was great", "target": "첫 번째 에피소드가 좋았어요"},
+        {"known": "she missed the first part of the movie", "target": "그녀가 영화 첫 부분 놓쳤어요"},
+        {"known": "it's the first part of the show", "target": "쇼 첫 부분이에요"},
+        {"known": "the show was divided into three parts", "target": "쇼가 세 부분으로 나뉘어요"},
+        {"known": "my favorite part is at the beginning", "target": "제일 좋아하는 부분은 처음에 있어요"},
+        {"known": "the first segment of the presentation was long", "target": "발표 첫 부분이 길었어요"},
+        {"known": "she asked me about the first part of the story", "target": "그녀가 이야기 첫 부분에 대해 물었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "after the first part of the show",
+      "target": "쇼 첫 번째 부분 다음에",
+      "components": [
+        {"known": "the first part of the show", "target": "쇼 첫 번째 부분"},
+        {"known": "after", "target": "다음에"}
+      ],
+      "phrases": [
+        {"known": "after", "target": "다음에요"},
+        {"known": "after that", "target": "그 다음에요"},
+        {"known": "after this", "target": "이 다음에요"},
+        {"known": "after the break", "target": "쉬는 시간 다음에요"},
+        {"known": "after the first song", "target": "첫 노래 다음에요"},
+        {"known": "we'll talk after the meeting", "target": "회의 다음에 얘기해요"},
+        {"known": "what comes after the intro", "target": "서론 다음에 뭐가 있어요?"},
+        {"known": "the best part is after the intermission", "target": "제일 좋은 부분은 휴식 다음에 있어요"},
+        {"known": "after the opening act we had a short break", "target": "오프닝 다음에 잠깐 쉬었어요"},
+        {"known": "she performs after the first performer", "target": "그녀가 첫 공연자 다음에 해요"},
+        {"known": "the main event happens after the preliminary rounds", "target": "메인 이벤트가 예선 다음에 있어요"},
+        {"known": "after the first half we discussed our strategy", "target": "전반전 다음에 전략 의논했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what happens after the first part of the show",
+      "target": "쇼 첫 번째 부분 다음에 뭐가 일어나요",
+      "components": [
+        {"known": "what", "target": "뭐가"},
+        {"known": "after the first part of the show", "target": "쇼 첫 번째 부분 다음에"},
+        {"known": "happens", "target": "일어나다"}
+      ],
+      "phrases": [
+        {"known": "happens", "target": "일어나요"},
+        {"known": "what happens", "target": "뭐가 일어나요?"},
+        {"known": "then what", "target": "그 다음 뭐요?"},
+        {"known": "something happens", "target": "뭔가 일어나요"},
+        {"known": "what happens next", "target": "다음에 뭐가 일어나요?"},
+        {"known": "do you know what happens", "target": "뭐가 일어나는지 알아요?"},
+        {"known": "she asked what happens after lunch", "target": "그녀가 점심 후에 뭐가 있는지 물었어요"},
+        {"known": "what happens if we miss the train", "target": "기차 놓치면 어떻게 돼요?"},
+        {"known": "I'm curious what happens in the next scene", "target": "다음 장면에 뭐가 일어나는지 궁금해요"},
+        {"known": "do you know what happens after the credits", "target": "엔딩 크레딧 후에 뭐가 있는지 알아요?"},
+        {"known": "what happens after the concert is over", "target": "콘서트 끝나고 뭐가 일어나요?"},
+        {"known": "she wanted to know what happens next in the story", "target": "그녀가 이야기에서 다음에 뭐가 일어나는지 알고 싶어했어요"}
+      ]
+    }
+  ]
+}

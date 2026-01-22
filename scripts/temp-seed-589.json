@@ -1,0 +1,53 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 589,
+  "target_text": "마지막 버스를 방금 봤다고 했어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the last bus",
+      "target": "마지막 버스",
+      "components": [
+        {"known": "last", "target": "마지막"},
+        {"known": "bus", "target": "버스"}
+      ],
+      "phrases": [
+        {"known": "bus", "target": "버스"},
+        {"known": "last", "target": "마지막"},
+        {"known": "the last one", "target": "마지막 거"},
+        {"known": "the last bus", "target": "마지막 버스"},
+        {"known": "it is the last bus", "target": "마지막 버스예요"},
+        {"known": "the bus has come", "target": "버스가 왔어요"},
+        {"known": "when is the last bus", "target": "마지막 버스가 언제예요?"},
+        {"known": "I missed the last bus", "target": "마지막 버스를 놓쳤어요"},
+        {"known": "did you catch the last bus", "target": "마지막 버스 탔어요?"},
+        {"known": "we need to hurry to catch the last bus", "target": "마지막 버스 타려면 서둘러야 해요"},
+        {"known": "the last bus has already left so we need a taxi", "target": "마지막 버스가 이미 떠나서 택시가 필요해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "she told me she had just seen the last bus",
+      "target": "마지막 버스를 방금 봤다고 했어요",
+      "components": [
+        {"known": "the last bus", "target": "마지막 버스"},
+        {"known": "she told me she had just seen", "target": "방금 봤다고 했다"}
+      ],
+      "phrases": [
+        {"known": "just now", "target": "방금"},
+        {"known": "she said", "target": "했어요"},
+        {"known": "I just saw it", "target": "방금 봤어요"},
+        {"known": "she told me that", "target": "그렇다고 했어요"},
+        {"known": "she said she saw it", "target": "봤다고 그랬어요"},
+        {"known": "she told me she had just seen the last bus", "target": "마지막 버스를 방금 봤다고 했어요"},
+        {"known": "he told me he had just seen his friend", "target": "친구를 방금 봤다고 했어요"},
+        {"known": "my sister told me she had just seen the movie", "target": "언니가 그 영화를 방금 봤다고 했어요"},
+        {"known": "they told us they had just seen the news", "target": "그들이 뉴스를 방금 봤다고 했어요"},
+        {"known": "she told me she had just seen the doctor about it", "target": "그것에 대해 방금 의사를 봤다고 했어요"},
+        {"known": "he said he had just seen the last train leaving the station", "target": "마지막 기차가 역을 떠나는 걸 방금 봤다고 했어요"}
+      ]
+    }
+  ]
+}

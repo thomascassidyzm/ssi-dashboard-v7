@@ -64,7 +64,7 @@
               @click="restartService(service.name)"
               class="restart-btn"
               :disabled="restarting[service.name]"
-              :title="`Restart ${service.name}`"
+              :title="`⟲ Restart ${service.name} (will interrupt service briefly)`"
             >
               <svg v-if="!restarting[service.name]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M1 4v6h6M23 20v-6h-6"/>
@@ -77,10 +77,6 @@
           <div v-if="services.length === 0 && !servicesLoading" class="no-services">
             No services detected
           </div>
-        </div>
-        <div class="machine-name" v-if="machineName">
-          <span class="machine-icon">💻</span>
-          <span>{{ machineName }}</span>
         </div>
         <div class="poll-status">
           <span class="poll-label">Auto-refresh:</span>
@@ -370,6 +366,11 @@ async function fetchJobs() {
 // Restart a PM2 service
 async function restartService(name) {
   if (restarting.value[name]) return
+
+  // Confirm before restarting
+  if (!confirm(`Restart ${name}? This will briefly interrupt the service.`)) {
+    return
+  }
 
   restarting.value[name] = true
 
@@ -875,21 +876,6 @@ onUnmounted(() => {
   border-top-color: var(--jm-accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
-}
-
-.machine-name {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.75rem;
-  color: var(--jm-text-muted);
-  padding: 0.25rem 0.5rem;
-  background: var(--jm-elevated);
-  border-radius: 4px;
-}
-
-.machine-icon {
-  font-size: 0.875rem;
 }
 
 .no-services {

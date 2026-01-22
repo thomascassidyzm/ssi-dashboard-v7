@@ -1,0 +1,94 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 250,
+  "known_text": "Can you tell me something else before I answer?",
+  "target_text": "대답하기 전에 다른 것을 말해 줄 수 있어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "other/different",
+      "target": "다른",
+      "phrases": [
+        {"known": "other", "target": "다른"},
+        {"known": "different", "target": "다른"},
+        {"known": "another", "target": "다른"},
+        {"known": "other one", "target": "다른 것"},
+        {"known": "different time", "target": "다른 시간"},
+        {"known": "a different person", "target": "다른 사람"},
+        {"known": "different place", "target": "다른 곳이에요"},
+        {"known": "something different", "target": "다른 것이에요"},
+        {"known": "she wants something different", "target": "그녀가 다른 것을 원해요"},
+        {"known": "I learned something different yesterday", "target": "어제 다른 것을 배웠어요"},
+        {"known": "he said it was completely different", "target": "그가 완전 다르다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "something else",
+      "target": "다른 것",
+      "components": [
+        {"known": "other/different", "target": "다른"},
+        {"known": "thing", "target": "것"}
+      ],
+      "phrases": [
+        {"known": "thing", "target": "것"},
+        {"known": "else", "target": "다른"},
+        {"known": "other one", "target": "다른 것"},
+        {"known": "something else", "target": "다른 것을"},
+        {"known": "another thing", "target": "다른 것이에요"},
+        {"known": "I want something else", "target": "다른 것을 원해요"},
+        {"known": "she ate something else", "target": "그녀가 다른 것을 먹었어요"},
+        {"known": "tell me something else", "target": "다른 것을 말해요"},
+        {"known": "he wants to try something different", "target": "그가 다른 것을 해보고 싶어해요"},
+        {"known": "she learned something else at school", "target": "그녀가 학교에서 다른 것을 배웠어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "before I answer",
+      "target": "대답하기 전에",
+      "components": [
+        {"known": "answer", "target": "대답하다"},
+        {"known": "before", "target": "전에"}
+      ],
+      "phrases": [
+        {"known": "answer", "target": "대답해요"},
+        {"known": "before", "target": "전에"},
+        {"known": "answering", "target": "대답하기"},
+        {"known": "before answering", "target": "대답하기 전에"},
+        {"known": "I answered", "target": "대답했어요"},
+        {"known": "before I answer", "target": "대답하기 전에요"},
+        {"known": "she answered quickly", "target": "그녀가 빨리 대답했어요"},
+        {"known": "wait before answering", "target": "대답하기 전에 기다려요"},
+        {"known": "think before you answer", "target": "대답하기 전에 생각해요"},
+        {"known": "he wanted to know before he answered", "target": "그가 대답하기 전에 알고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "can you tell me something else before I answer",
+      "target": "대답하기 전에 다른 것을 말해 줄 수 있어요",
+      "components": [
+        {"known": "something else", "target": "다른 것"},
+        {"known": "before I answer", "target": "대답하기 전에"},
+        {"known": "can you tell", "target": "말해 줄 수 있다"}
+      ],
+      "phrases": [
+        {"known": "can you", "target": "줄 수 있어요"},
+        {"known": "tell me", "target": "말해 줘요"},
+        {"known": "before answering", "target": "대답하기 전에"},
+        {"known": "can you tell me", "target": "말해 줄 수 있어요?"},
+        {"known": "something else please", "target": "다른 것을요"},
+        {"known": "tell me something", "target": "뭔가 말해 줘요"},
+        {"known": "can you help me before that", "target": "그 전에 도와줄 수 있어요?"},
+        {"known": "tell me something else first", "target": "먼저 다른 것을 말해 줘요"},
+        {"known": "she asked me something before answering", "target": "그녀가 대답하기 전에 뭔가 물었어요"},
+        {"known": "he wanted to know more before he decided", "target": "그가 결정하기 전에 더 알고 싶었어요"}
+      ]
+    }
+  ]
+}

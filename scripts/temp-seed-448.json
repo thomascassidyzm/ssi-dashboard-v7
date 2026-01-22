@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 448,
+  "known_text": "Yes they'll be happy to help.",
+  "target_text": "네, 그들이 기꺼이 도와줄 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "be happy to help",
+      "target": "기꺼이 도와주다",
+      "components": [
+        {"known": "happily/gladly", "target": "기꺼이"},
+        {"known": "help (give help)", "target": "도와주다"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "도와줘요"},
+        {"known": "gladly", "target": "기꺼이요"},
+        {"known": "I'll help", "target": "도와줄게요"},
+        {"known": "she'll help", "target": "그녀가 도와줄 거예요"},
+        {"known": "happy to do it", "target": "기꺼이 해요"},
+        {"known": "he's glad to assist", "target": "그가 기꺼이 도와요"},
+        {"known": "she gladly accepted", "target": "그녀가 기꺼이 받았어요"},
+        {"known": "I would be happy to help you", "target": "기꺼이 도와드릴게요"},
+        {"known": "they always help with a smile", "target": "그들이 항상 웃으며 도와요"},
+        {"known": "he is always willing to lend a hand", "target": "그가 항상 기꺼이 도와줘요"},
+        {"known": "she was more than happy to assist", "target": "그녀가 정말 기꺼이 도와줬어요"},
+        {"known": "we are happy to support the community", "target": "지역 사회를 기꺼이 도와요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes they'll be happy to help",
+      "target": "네 그들이 기꺼이 도와줄 거예요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "they", "target": "그들이"},
+        {"known": "be happy to help", "target": "기꺼이 도와주다"},
+        {"known": "will", "target": "을 거예요"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "they will", "target": "할 거예요"},
+        {"known": "yes of course", "target": "네 물론이요"},
+        {"known": "she'll do it", "target": "그녀가 할 거예요"},
+        {"known": "yes she'll come", "target": "네 그녀가 올 거예요"},
+        {"known": "they'll be there for you", "target": "그들이 거기 있을 거예요"},
+        {"known": "yes he'll take care of it", "target": "네 그가 처리할 거예요"},
+        {"known": "she'll gladly join the team", "target": "그녀가 기꺼이 팀에 합류할 거예요"},
+        {"known": "yes they'll definitely support us", "target": "네 그들이 확실히 도와줄 거예요"},
+        {"known": "he'll be more than happy to explain", "target": "그가 기꺼이 설명해 줄 거예요"},
+        {"known": "yes she'll always be there to help", "target": "네 그녀가 항상 도와줄 거예요"},
+        {"known": "they'll be delighted to participate in the event", "target": "그들이 행사에 기꺼이 참여할 거예요"}
+      ]
+    }
+  ]
+}

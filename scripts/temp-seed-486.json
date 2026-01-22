@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 486,
+  "known_text": "I think your eyes are beautiful.",
+  "target_text": "당신 눈이 예쁘다고 생각해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "your eyes are beautiful",
+      "target": "당신 눈이 예쁘다",
+      "components": [
+        {"known": "your", "target": "당신"},
+        {"known": "eyes", "target": "눈"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "beautiful", "target": "예쁘다"}
+      ],
+      "phrases": [
+        {"known": "eyes", "target": "눈이요"},
+        {"known": "beautiful", "target": "예뻐요"},
+        {"known": "your eyes", "target": "당신 눈이요"},
+        {"known": "it's pretty", "target": "예뻐요"},
+        {"known": "she's beautiful", "target": "그녀가 예뻐요"},
+        {"known": "his eyes are blue", "target": "그의 눈이 파란색이에요"},
+        {"known": "the flowers are pretty", "target": "꽃이 예뻐요"},
+        {"known": "your smile is beautiful", "target": "당신 미소가 예뻐요"},
+        {"known": "she has beautiful eyes", "target": "그녀가 눈이 예뻐요"},
+        {"known": "the sunset is so beautiful", "target": "노을이 정말 예뻐요"},
+        {"known": "everyone said her dress was pretty", "target": "모두가 그녀 드레스가 예쁘다고 했어요"},
+        {"known": "the view from here is absolutely beautiful", "target": "여기서 보는 경치가 정말 예뻐요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I think your eyes are beautiful",
+      "target": "당신 눈이 예쁘다고 생각해요",
+      "components": [
+        {"known": "your eyes are beautiful", "target": "당신 눈이 예쁘다"},
+        {"known": "quotation", "target": "고"},
+        {"known": "think", "target": "생각하다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "생각해요"},
+        {"known": "that's what I think", "target": "그렇게 생각해요"},
+        {"known": "I believe so", "target": "그렇다고 생각해요"},
+        {"known": "in my opinion", "target": "제 생각엔요"},
+        {"known": "I think it's good", "target": "좋다고 생각해요"},
+        {"known": "she thinks so too", "target": "그녀도 그렇게 생각해요"},
+        {"known": "I think he's talented", "target": "그가 재능 있다고 생각해요"},
+        {"known": "do you think it looks nice", "target": "예쁘다고 생각해요?"},
+        {"known": "I think this color suits you", "target": "이 색이 어울린다고 생각해요"},
+        {"known": "she told me she thinks you're kind", "target": "그녀가 당신이 친절하다고 생각한다고 했어요"},
+        {"known": "I've always thought you have beautiful eyes", "target": "항상 당신 눈이 예쁘다고 생각했어요"},
+        {"known": "everyone thinks the artwork is stunning", "target": "모두가 그 작품이 멋지다고 생각해요"}
+      ]
+    }
+  ]
+}

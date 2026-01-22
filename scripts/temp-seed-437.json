@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 437,
+  "known_text": "They wanted to raise as much as possible for charity.",
+  "target_text": "그들이 자선 단체를 위해 최대한 많이 모금하고 싶었어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "as much as possible for charity",
+      "target": "자선 단체를 위해 최대한 많이",
+      "components": [
+        {"known": "charity", "target": "자선 단체"},
+        {"known": "for", "target": "를 위해"},
+        {"known": "as much as possible", "target": "최대한 많이"}
+      ],
+      "phrases": [
+        {"known": "for", "target": "위해요"},
+        {"known": "charity", "target": "자선이요"},
+        {"known": "as much as", "target": "최대한요"},
+        {"known": "for charity", "target": "자선을 위해요"},
+        {"known": "as much as possible", "target": "최대한 많이요"},
+        {"known": "I donate to charity", "target": "자선 단체에 기부해요"},
+        {"known": "try as hard as possible", "target": "최대한 노력해요"},
+        {"known": "she gave as much as she could", "target": "그녀가 최대한 많이 줬어요"},
+        {"known": "do your best for the team", "target": "팀을 위해 최선을 다해요"},
+        {"known": "we collected money for the hospital", "target": "병원을 위해 돈을 모았어요"},
+        {"known": "he works as efficiently as possible", "target": "그가 최대한 효율적으로 일해요"},
+        {"known": "they raised funds for the local community", "target": "그들이 지역 사회를 위해 기금을 모았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they wanted to raise as much as possible for charity",
+      "target": "그들이 자선 단체를 위해 최대한 많이 모금하고 싶었어요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "as much as possible for charity", "target": "자선 단체를 위해 최대한 많이"},
+        {"known": "raise/fundraise", "target": "모금하다"},
+        {"known": "wanted to", "target": "고 싶었다"}
+      ],
+      "phrases": [
+        {"known": "wanted to", "target": "싶었어요"},
+        {"known": "they hoped", "target": "그들이 바랐어요"},
+        {"known": "raise money", "target": "돈을 모아요"},
+        {"known": "he wanted to help", "target": "그가 돕고 싶었어요"},
+        {"known": "she wanted to contribute", "target": "그녀가 기여하고 싶었어요"},
+        {"known": "they planned to donate", "target": "그들이 기부할 계획이었어요"},
+        {"known": "we wanted to collect more funds", "target": "더 많은 기금을 모으고 싶었어요"},
+        {"known": "he hoped to gather enough support", "target": "그가 충분한 지지를 모으길 바랐어요"},
+        {"known": "she wanted to make a big donation", "target": "그녀가 큰 기부를 하고 싶었어요"},
+        {"known": "they aimed to raise a million won", "target": "그들이 백만 원을 모금하려고 했어요"},
+        {"known": "we hoped to exceed our fundraising goal", "target": "모금 목표를 초과하길 바랐어요"},
+        {"known": "the organization wanted to help as many people as possible", "target": "그 단체가 최대한 많은 사람을 돕고 싶었어요"}
+      ]
+    }
+  ]
+}

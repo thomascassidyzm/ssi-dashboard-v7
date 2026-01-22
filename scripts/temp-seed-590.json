@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 590,
+  "target_text": "마지막 버스가 역을 떠나는 걸 봤어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "leaving the station",
+      "target": "역을 떠나다",
+      "components": [
+        {"known": "the station", "target": "역"},
+        {"known": "leaving", "target": "떠나다"}
+      ],
+      "phrases": [
+        {"known": "station", "target": "역"},
+        {"known": "leaving", "target": "떠나다"},
+        {"known": "left already", "target": "이미 떠났어요"},
+        {"known": "leaving the station", "target": "역을 떠나다"},
+        {"known": "leaving from here", "target": "여기서 떠나요"},
+        {"known": "the train left the station", "target": "기차가 역을 떠났어요"},
+        {"known": "what time does it leave the station", "target": "몇 시에 역을 떠나요?"},
+        {"known": "we saw the train leaving the station", "target": "기차가 역을 떠나는 걸 봤어요"},
+        {"known": "the bus was just leaving when we arrived", "target": "우리가 도착했을 때 버스가 막 떠나고 있었어요"},
+        {"known": "I watched the last train leaving the station slowly", "target": "마지막 기차가 역을 천천히 떠나는 걸 봤어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I saw the last bus leaving the station",
+      "target": "마지막 버스가 역을 떠나는 걸 봤어요",
+      "components": [
+        {"known": "the last bus", "target": "마지막 버스"},
+        {"known": "leaving the station", "target": "역을 떠나다"},
+        {"known": "I saw", "target": "봤어요"}
+      ],
+      "phrases": [
+        {"known": "I saw", "target": "봤어요"},
+        {"known": "I saw it", "target": "그거 봤어요"},
+        {"known": "saw it leaving", "target": "떠나는 걸 봤어요"},
+        {"known": "I saw the last bus leaving the station", "target": "마지막 버스가 역을 떠나는 걸 봤어요"},
+        {"known": "did you see the bus leaving", "target": "버스 떠나는 거 봤어요?"},
+        {"known": "she saw the last train leaving without her", "target": "그녀는 마지막 기차가 떠나는 걸 봤어요"},
+        {"known": "I watched the last bus leave from the window", "target": "창문에서 마지막 버스가 떠나는 걸 봤어요"},
+        {"known": "when I arrived at the station I saw the bus was already leaving", "target": "역에 도착했을 때 버스가 이미 떠나고 있었어요"},
+        {"known": "my friend said he saw the last bus leaving early today", "target": "친구가 오늘 마지막 버스가 일찍 떠나는 걸 봤다고 했어요"},
+        {"known": "we were sad because we saw the last bus leaving before we could get on", "target": "우리가 타기 전에 마지막 버스가 떠나는 걸 봐서 슬펐어요"}
+      ]
+    }
+  ]
+}

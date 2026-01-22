@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 582,
+  "target_text": "여기서 자라는 게 어때요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "to grow up here",
+      "target": "여기서 자라다",
+      "components": [
+        {"known": "here", "target": "여기서"},
+        {"known": "to grow up", "target": "자라다"}
+      ],
+      "phrases": [
+        {"known": "here", "target": "여기서"},
+        {"known": "grow up", "target": "자라다"},
+        {"known": "grew up", "target": "자랐어요"},
+        {"known": "grow up here", "target": "여기서 자라다"},
+        {"known": "I grew up here", "target": "저는 여기서 자랐어요"},
+        {"known": "they grew up together", "target": "그들은 같이 자랐어요"},
+        {"known": "where did you grow up", "target": "어디서 자랐어요?"},
+        {"known": "my children are growing up here", "target": "제 아이들은 여기서 자라고 있어요"},
+        {"known": "it would be nice to grow up here", "target": "여기서 자라면 좋겠어요"},
+        {"known": "many people who grew up here have moved away", "target": "여기서 자란 사람들이 많이 이사 갔어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what is it like to grow up here",
+      "target": "여기서 자라는 게 어때요?",
+      "components": [
+        {"known": "to grow up here", "target": "여기서 자라다"},
+        {"known": "what is it like", "target": "어때요"}
+      ],
+      "phrases": [
+        {"known": "like", "target": "어때요"},
+        {"known": "how was it", "target": "어땠어요?"},
+        {"known": "if you grow up here", "target": "여기서 자라면"},
+        {"known": "growing up here", "target": "여기서 자라는 것"},
+        {"known": "growing up is good", "target": "자라는 게 좋아요"},
+        {"known": "what is it like to grow up here", "target": "여기서 자라는 게 어때요?"},
+        {"known": "what was it like to grow up in that city", "target": "그 도시에서 자라는 게 어땠어요?"},
+        {"known": "do you know what it is like to grow up without parents", "target": "부모 없이 자라는 게 어떤지 알아요?"},
+        {"known": "my friend asked me what it was like to grow up here", "target": "친구가 여기서 자라는 게 어땠냐고 물어봤어요"},
+        {"known": "it must have been hard to grow up in such a small town", "target": "그렇게 작은 마을에서 자라는 게 힘들었을 거예요"},
+        {"known": "she told me what it was like to grow up in a big family", "target": "대가족에서 자라는 게 어땠는지 말해 줬어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 264,
+  "known_text": "An old man.",
+  "target_text": "늙은 남자예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "old (aged)",
+      "target": "늙다",
+      "phrases": [
+        {"known": "old", "target": "늙었어요"},
+        {"known": "aged", "target": "늙었어요"},
+        {"known": "old man", "target": "늙은 남자"},
+        {"known": "old woman", "target": "늙은 여자"},
+        {"known": "getting old", "target": "늙어 가요"},
+        {"known": "he got old", "target": "그가 늙었어요"},
+        {"known": "the old person", "target": "늙은 사람이에요"},
+        {"known": "an old dog", "target": "늙은 개예요"},
+        {"known": "my grandfather is old", "target": "제 할아버지가 늙으셨어요"},
+        {"known": "she doesn't want to get old", "target": "그녀가 늙고 싶지 않아요"},
+        {"known": "the tree looks old", "target": "그 나무가 늙어 보여요"},
+        {"known": "everyone gets old eventually", "target": "모든 사람이 결국 늙어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "an old man",
+      "target": "늙은 남자예요",
+      "components": [
+        {"known": "old (aged)", "target": "늙다"},
+        {"known": "man", "target": "남자"}
+      ],
+      "phrases": [
+        {"known": "man", "target": "남자요"},
+        {"known": "old man", "target": "늙은 남자"},
+        {"known": "the man", "target": "남자예요"},
+        {"known": "an old man", "target": "늙은 남자예요"},
+        {"known": "this old man", "target": "이 늙은 남자"},
+        {"known": "that old man", "target": "그 늙은 남자요"},
+        {"known": "an old man came", "target": "늙은 남자가 왔어요"},
+        {"known": "I saw an old man", "target": "늙은 남자를 봤어요"},
+        {"known": "the old man is kind", "target": "늙은 남자가 친절해요"},
+        {"known": "do you know that old man?", "target": "그 늙은 남자를 알아요?"},
+        {"known": "the old man was there yesterday", "target": "늙은 남자가 어제 거기 있었어요"},
+        {"known": "that old man is my neighbor", "target": "그 늙은 남자가 제 이웃이에요"},
+        {"known": "I talked to the old man today", "target": "오늘 늙은 남자랑 얘기했어요"}
+      ]
+    }
+  ]
+}

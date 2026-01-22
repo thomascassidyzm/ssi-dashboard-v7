@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 319,
+  "known_text": "She needs to move to a different country.",
+  "target_text": "그녀가 다른 나라로 이사해야 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "move (residence)",
+      "target": "이사하다",
+      "phrases": [
+        {"known": "move", "target": "이사해요"},
+        {"known": "I moved", "target": "이사했어요"},
+        {"known": "moving", "target": "이사하고 있어요"},
+        {"known": "will move", "target": "이사할 거예요"},
+        {"known": "moved here", "target": "여기로 이사했어요"},
+        {"known": "moving soon", "target": "곧 이사해요"},
+        {"known": "I need to move", "target": "이사해야 해요"},
+        {"known": "when are you moving?", "target": "언제 이사해요?"},
+        {"known": "I moved to Seoul last year", "target": "작년에 서울로 이사했어요"},
+        {"known": "she's planning to move next month", "target": "그녀가 다음 달에 이사할 계획이에요"},
+        {"known": "we moved to a bigger apartment", "target": "더 큰 아파트로 이사했어요"},
+        {"known": "my friend is moving to Japan for work", "target": "제 친구가 일 때문에 일본으로 이사해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "a different country",
+      "target": "다른 나라",
+      "components": [
+        {"known": "different/other", "target": "다른"},
+        {"known": "country", "target": "나라"}
+      ],
+      "phrases": [
+        {"known": "country", "target": "나라요"},
+        {"known": "different", "target": "다른 거요"},
+        {"known": "a country", "target": "나라예요"},
+        {"known": "other country", "target": "다른 나라"},
+        {"known": "different country", "target": "다른 나라요"},
+        {"known": "which country?", "target": "어느 나라요?"},
+        {"known": "to a different country", "target": "다른 나라로요"},
+        {"known": "in other countries", "target": "다른 나라에서요"},
+        {"known": "I lived in a different country", "target": "다른 나라에서 살았어요"},
+        {"known": "she wants to visit other countries", "target": "그녀가 다른 나라에 가고 싶어해요"},
+        {"known": "I've been to many different countries", "target": "많은 다른 나라에 가 봤어요"},
+        {"known": "moving to a different country is not easy", "target": "다른 나라로 이사하는 것은 쉽지 않아요"},
+        {"known": "have you ever lived in a different country?", "target": "다른 나라에서 살아 본 적 있어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she needs to move to a different country",
+      "target": "그녀가 다른 나라로 이사해야 해요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "a different country", "target": "다른 나라"},
+        {"known": "to (direction)", "target": "로"},
+        {"known": "move (residence)", "target": "이사하다"},
+        {"known": "must/need to", "target": "아야 하다"}
+      ],
+      "phrases": [
+        {"known": "must", "target": "해야 해요"},
+        {"known": "she needs", "target": "필요해요"},
+        {"known": "needs to move", "target": "이사해야 해요"},
+        {"known": "must move", "target": "이사해야 해요"},
+        {"known": "she needs to go", "target": "그녀가 가야 해요"},
+        {"known": "she has to move", "target": "그녀가 이사해야 해요"},
+        {"known": "he needs to leave soon", "target": "그가 빨리 떠나야 해요"},
+        {"known": "she needs to find a new place", "target": "그녀가 새 곳을 찾아야 해요"},
+        {"known": "they need to move by next month", "target": "그들이 다음 달까지 이사해야 해요"},
+        {"known": "she needs to move because of her job", "target": "그녀가 일 때문에 이사해야 해요"},
+        {"known": "he has to move to a new apartment", "target": "그가 새 아파트로 이사해야 해요"},
+        {"known": "my sister needs to move to Seoul for school", "target": "제 언니가 학교 때문에 서울로 이사해야 해요"},
+        {"known": "she'll have to move to another city", "target": "그녀가 다른 도시로 이사해야 할 거예요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 476,
+  "known_text": "I'm waiting for the end of the second half.",
+  "target_text": "후반전 끝을 기다리고 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the end of the second half",
+      "target": "후반전 끝",
+      "components": [
+        {"known": "second half", "target": "후반전"},
+        {"known": "end", "target": "끝"}
+      ],
+      "phrases": [
+        {"known": "the end", "target": "끝이요"},
+        {"known": "second half", "target": "후반전이요"},
+        {"known": "it's over", "target": "끝났어요"},
+        {"known": "first half", "target": "전반전이요"},
+        {"known": "the game ended", "target": "경기가 끝났어요"},
+        {"known": "the movie is ending", "target": "영화가 끝나고 있어요"},
+        {"known": "when does it end", "target": "언제 끝나요?"},
+        {"known": "the second half just started", "target": "후반전이 막 시작했어요"},
+        {"known": "we scored in the second half", "target": "후반전에 득점했어요"},
+        {"known": "the first half was boring", "target": "전반전이 지루했어요"},
+        {"known": "the meeting is almost at the end", "target": "회의가 거의 끝나가요"},
+        {"known": "they played better in the second half", "target": "그들이 후반전에 더 잘했어요"},
+        {"known": "we reversed the game in the second half", "target": "경기 후반전에서 역전했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I'm waiting for the end of the second half",
+      "target": "후반전 끝을 기다리고 있어요",
+      "components": [
+        {"known": "the end of the second half", "target": "후반전 끝"},
+        {"known": "object marker", "target": "을"},
+        {"known": "waiting", "target": "기다리고 있다"}
+      ],
+      "phrases": [
+        {"known": "wait", "target": "기다려요"},
+        {"known": "I'm waiting", "target": "기다리고 있어요"},
+        {"known": "for the end", "target": "끝을요"},
+        {"known": "still waiting", "target": "아직 기다려요"},
+        {"known": "waiting for you", "target": "당신을 기다려요"},
+        {"known": "I'm waiting for lunch", "target": "점심 기다리고 있어요"},
+        {"known": "she's waiting for the bus", "target": "그녀가 버스 기다리고 있어요"},
+        {"known": "he's waiting for the results", "target": "그가 결과 기다리고 있어요"},
+        {"known": "we're waiting for the movie to end", "target": "영화 끝나기를 기다리고 있어요"},
+        {"known": "I've been waiting for this moment", "target": "이 순간을 기다려왔어요"},
+        {"known": "she's waiting for her turn to speak", "target": "그녀가 말할 차례 기다리고 있어요"},
+        {"known": "they're waiting for the second half to finish", "target": "그들이 후반전 끝나길 기다리고 있어요"},
+        {"known": "I'm waiting until the show is over", "target": "쇼 끝날 때까지 기다리고 있어요"}
+      ]
+    }
+  ]
+}

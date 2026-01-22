@@ -1,0 +1,106 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 503,
+  "known_text": "I hate making trouble but that one's mine.",
+  "target_text": "문제 일으키는 거 싫지만 그건 제 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "making trouble",
+      "target": "문제 일으키다",
+      "components": [
+        {"known": "trouble/problem", "target": "문제"},
+        {"known": "cause/make", "target": "일으키다"}
+      ],
+      "phrases": [
+        {"known": "trouble", "target": "문제요"},
+        {"known": "cause", "target": "일으켜요"},
+        {"known": "problem", "target": "문제 있어요"},
+        {"known": "no problem", "target": "문제 없어요"},
+        {"known": "there's a problem", "target": "문제가 생겼어요"},
+        {"known": "don't cause trouble", "target": "문제 일으키지 마요"},
+        {"known": "she caused a big problem", "target": "그녀가 큰 문제 일으켰어요"},
+        {"known": "I don't want to make trouble", "target": "문제 일으키고 싶지 않아요"},
+        {"known": "he always causes problems at work", "target": "그가 회사에서 항상 문제 일으켜요"},
+        {"known": "the issue was resolved quickly", "target": "문제가 빨리 해결됐어요"},
+        {"known": "making trouble is not worth it", "target": "문제 일으키는 거 가치 없어요"},
+        {"known": "she apologized for causing the misunderstanding", "target": "그녀가 오해 일으킨 거 사과했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "hate making trouble",
+      "target": "문제 일으키는 거 싫다",
+      "components": [
+        {"known": "making trouble", "target": "문제 일으키다"},
+        {"known": "gerund marker", "target": "는 거"},
+        {"known": "hate", "target": "싫다"}
+      ],
+      "phrases": [
+        {"known": "hate", "target": "싫어요"},
+        {"known": "doing that", "target": "그거 하는 거요"},
+        {"known": "I don't like it", "target": "싫어요"},
+        {"known": "I hate waiting", "target": "기다리는 거 싫어요"},
+        {"known": "she hates being late", "target": "그녀가 늦는 거 싫어해요"},
+        {"known": "I hate waking up early", "target": "일찍 일어나는 거 싫어요"},
+        {"known": "he dislikes arguing with people", "target": "그가 사람들이랑 싸우는 거 싫어해요"},
+        {"known": "I really hate making mistakes", "target": "실수하는 거 정말 싫어요"},
+        {"known": "she hates being the center of attention", "target": "그녀가 주목받는 거 싫어해요"},
+        {"known": "I don't like causing any inconvenience", "target": "불편 끼치는 거 싫어요"},
+        {"known": "he hates having to explain himself repeatedly", "target": "그가 반복해서 설명하는 거 싫어해요"},
+        {"known": "I really dislike bothering people with my problems", "target": "내 문제로 사람들 귀찮게 하는 거 싫어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "that one's mine",
+      "target": "그건 제 거다",
+      "components": [
+        {"known": "that one", "target": "그건"},
+        {"known": "mine", "target": "제 거다"}
+      ],
+      "phrases": [
+        {"known": "that one", "target": "그거요"},
+        {"known": "mine", "target": "제 거예요"},
+        {"known": "this is mine", "target": "이거 제 거예요"},
+        {"known": "it's not yours", "target": "네 거 아니에요"},
+        {"known": "that belongs to me", "target": "그건 제 거예요"},
+        {"known": "is this yours", "target": "이거 네 거예요?"},
+        {"known": "the blue one is mine", "target": "파란 게 제 거예요"},
+        {"known": "that seat is mine", "target": "그 자리 제 거예요"},
+        {"known": "I think that one belongs to her", "target": "그건 그녀 거인 것 같아요"},
+        {"known": "she said the bigger one was hers", "target": "그녀가 큰 게 자기 거라고 했어요"},
+        {"known": "the one on the table is mine not yours", "target": "테이블 위에 거 제 거지 네 거 아니에요"},
+        {"known": "he claimed that book was his but I knew it was mine", "target": "그가 그 책 자기 거라고 했지만 제 거인 거 알았어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I hate making trouble but that one's mine",
+      "target": "문제 일으키는 거 싫지만 그건 제 거예요",
+      "components": [
+        {"known": "hate making trouble", "target": "문제 일으키는 거 싫다"},
+        {"known": "but", "target": "지만"},
+        {"known": "that one's mine", "target": "그건 제 거다"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "하지만요"},
+        {"known": "however", "target": "그런데요"},
+        {"known": "but still", "target": "그래도요"},
+        {"known": "I hate to say it but", "target": "말하기 싫지만요"},
+        {"known": "it's uncomfortable but necessary", "target": "불편하지만 필요해요"},
+        {"known": "I don't like arguing but I have to", "target": "싸우기 싫지만 해야 해요"},
+        {"known": "I hate complaining but this is wrong", "target": "불평하기 싫지만 이건 틀려요"},
+        {"known": "I don't want to be difficult but I disagree", "target": "어렵게 하기 싫지만 동의 안 해요"},
+        {"known": "I hate to bring this up but we need to talk", "target": "말하기 싫지만 얘기해야 해요"},
+        {"known": "she hates confrontation but stood her ground", "target": "그녀가 대립 싫어하지만 입장 지켰어요"},
+        {"known": "I really don't want to fight but this belongs to me", "target": "싸우기 정말 싫지만 이건 제 거예요"},
+        {"known": "he dislikes making a fuss but couldn't stay silent", "target": "그가 소란 피우는 거 싫어하지만 조용히 못 있었어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 454,
+  "known_text": "Our friends came round at about six o'clock.",
+  "target_text": "우리 친구들이 여섯 시쯤에 왔어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "our friends",
+      "target": "우리 친구들",
+      "components": [
+        {"known": "our", "target": "우리"},
+        {"known": "friends", "target": "친구들"}
+      ],
+      "phrases": [
+        {"known": "our", "target": "우리요"},
+        {"known": "friends", "target": "친구들이요"},
+        {"known": "my friend", "target": "내 친구요"},
+        {"known": "our family", "target": "우리 가족이요"},
+        {"known": "she's my friend", "target": "그녀가 내 친구예요"},
+        {"known": "our house is big", "target": "우리 집이 커요"},
+        {"known": "I met my friends today", "target": "오늘 친구들 만났어요"},
+        {"known": "our parents are coming", "target": "우리 부모님이 오고 있어요"},
+        {"known": "she invited her friends to the party", "target": "그녀가 친구들 파티에 초대했어요"},
+        {"known": "we love spending time with our friends", "target": "우리 친구들이랑 시간 보내는 거 좋아해요"},
+        {"known": "my friends and I went to the movies yesterday", "target": "어제 친구들이랑 영화 보러 갔어요"},
+        {"known": "our neighbors are very friendly", "target": "우리 이웃들이 아주 친절해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "at about six o'clock",
+      "target": "여섯 시쯤에",
+      "components": [
+        {"known": "six", "target": "여섯"},
+        {"known": "o'clock", "target": "시"},
+        {"known": "about/around", "target": "쯤"},
+        {"known": "at (time)", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "six", "target": "여섯이요"},
+        {"known": "o'clock", "target": "시요"},
+        {"known": "at five", "target": "다섯 시에요"},
+        {"known": "around noon", "target": "정오쯤에요"},
+        {"known": "he arrived at seven", "target": "그가 일곱 시에 왔어요"},
+        {"known": "we eat at about eight", "target": "여덟 시쯤에 먹어요"},
+        {"known": "the meeting starts at three", "target": "회의가 세 시에 시작해요"},
+        {"known": "she usually wakes up around six", "target": "그녀가 보통 여섯 시쯤에 일어나요"},
+        {"known": "we need to leave at about nine", "target": "아홉 시쯤에 떠나야 해요"},
+        {"known": "the store opens at ten o'clock", "target": "가게가 열 시에 열어요"},
+        {"known": "I'll call you around seven thirty", "target": "일곱 시 반쯤에 전화할게요"},
+        {"known": "they promised to be there by six o'clock", "target": "그들이 여섯 시까지 거기 있기로 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "our friends came round at about six o'clock",
+      "target": "우리 친구들이 여섯 시쯤에 왔어요",
+      "components": [
+        {"known": "our friends", "target": "우리 친구들"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "at about six o'clock", "target": "여섯 시쯤에"},
+        {"known": "came", "target": "왔다"}
+      ],
+      "phrases": [
+        {"known": "came", "target": "왔어요"},
+        {"known": "they did", "target": "그랬어요"},
+        {"known": "they came", "target": "그들이 왔어요"},
+        {"known": "she arrived early", "target": "그녀가 일찍 왔어요"},
+        {"known": "my family visited last week", "target": "우리 가족이 지난주에 왔어요"},
+        {"known": "he stopped by around noon", "target": "그가 정오쯤에 들렀어요"},
+        {"known": "the guests came at about seven", "target": "손님들이 일곱 시쯤에 왔어요"},
+        {"known": "she came to see us on Sunday", "target": "그녀가 일요일에 우리 보러 왔어요"},
+        {"known": "my parents came round for dinner", "target": "우리 부모님이 저녁 먹으러 오셨어요"},
+        {"known": "they arrived right on time yesterday", "target": "그들이 어제 정확히 시간 맞춰 왔어요"},
+        {"known": "our neighbors stopped by at around five", "target": "우리 이웃들이 다섯 시쯤에 들렀어요"},
+        {"known": "my old friends came to visit us at the weekend", "target": "옛날 친구들이 주말에 우리 보러 왔어요"}
+      ]
+    }
+  ]
+}

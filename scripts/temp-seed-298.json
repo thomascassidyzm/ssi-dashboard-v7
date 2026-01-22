@@ -1,0 +1,79 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 298,
+  "known_text": "I've got nothing left to say.",
+  "target_text": "더 이상 할 말이 없어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "anymore/no longer",
+      "target": "더 이상",
+      "components": [
+        {"known": "more", "target": "더"},
+        {"known": "beyond", "target": "이상"}
+      ],
+      "phrases": [
+        {"known": "more", "target": "더요"},
+        {"known": "no more", "target": "더 이상"},
+        {"known": "anymore", "target": "더 이상요"},
+        {"known": "not anymore", "target": "더 이상 안"},
+        {"known": "no longer needed", "target": "더 이상 필요 없어요"},
+        {"known": "I can't do it anymore", "target": "더 이상 못 해요"},
+        {"known": "I don't want to anymore", "target": "더 이상 하고 싶지 않아요"},
+        {"known": "there's nothing more to do", "target": "더 이상 할 것이 없어요"},
+        {"known": "I can't wait anymore", "target": "더 이상 기다릴 수 없어요"},
+        {"known": "I won't say anything more", "target": "더 이상 아무 말도 안 할 거예요"},
+        {"known": "I don't have any more questions", "target": "더 이상 질문이 없어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "words/things to say",
+      "target": "할 말",
+      "components": [
+        {"known": "to do/say (modifier)", "target": "할"},
+        {"known": "words/speech", "target": "말"}
+      ],
+      "phrases": [
+        {"known": "words", "target": "말이요"},
+        {"known": "to say", "target": "할 말"},
+        {"known": "something to say", "target": "할 말 있어요"},
+        {"known": "nothing to say", "target": "할 말 없어요"},
+        {"known": "I have something to say", "target": "할 말이 있어요"},
+        {"known": "do you have anything to say?", "target": "할 말 있어요?"},
+        {"known": "there's nothing more to say", "target": "더 할 말 없어요"},
+        {"known": "I don't know what to say", "target": "뭐라고 할지 모르겠어요"},
+        {"known": "I wanted to say something but I forgot", "target": "뭔가 말하고 싶었는데 잊었어요"},
+        {"known": "what else is there to say?", "target": "또 뭐 할 말이 있어요?"},
+        {"known": "I've run out of things to say", "target": "할 말이 다 떨어졌어요"},
+        {"known": "I thought about what I wanted to say", "target": "뭐라고 말할지 생각했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I've got nothing left to say",
+      "target": "더 이상 할 말이 없어요",
+      "components": [
+        {"known": "anymore/no longer", "target": "더 이상"},
+        {"known": "words/things to say", "target": "할 말"},
+        {"known": "not exist/have none", "target": "이 없다"}
+      ],
+      "phrases": [
+        {"known": "nothing", "target": "없어요"},
+        {"known": "no more words", "target": "말이 없어요"},
+        {"known": "I have nothing", "target": "아무것도 없어요"},
+        {"known": "nothing to say", "target": "할 말 없어요"},
+        {"known": "I'm done talking", "target": "말 끝났어요"},
+        {"known": "there's nothing more", "target": "더 이상 없어요"},
+        {"known": "I have nothing else to add", "target": "더 이상 추가할 것 없어요"},
+        {"known": "I have no more excuses", "target": "더 이상 변명할 것 없어요"},
+        {"known": "there's nothing left to discuss", "target": "더 이상 논의할 것 없어요"},
+        {"known": "I've said everything I needed to say", "target": "할 말은 다 했어요"},
+        {"known": "I don't have any more comments on this", "target": "이것에 대해 더 이상 할 말 없어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 493,
+  "known_text": "What's going to come next?",
+  "target_text": "다음에 뭐가 올 거예요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "come next",
+      "target": "다음에 오다",
+      "components": [
+        {"known": "next", "target": "다음에"},
+        {"known": "come", "target": "오다"}
+      ],
+      "phrases": [
+        {"known": "next", "target": "다음에요"},
+        {"known": "come", "target": "와요"},
+        {"known": "coming", "target": "오고 있어요"},
+        {"known": "next time", "target": "다음에요"},
+        {"known": "she's coming soon", "target": "그녀가 곧 와요"},
+        {"known": "what comes after this", "target": "이 다음에 뭐가 있어요?"},
+        {"known": "the next step is easy", "target": "다음 단계는 쉬워요"},
+        {"known": "he'll come next week", "target": "그가 다음 주에 올 거예요"},
+        {"known": "summer comes after spring", "target": "봄 다음에 여름이 와요"},
+        {"known": "I wonder what happens next", "target": "다음에 뭐가 일어날지 궁금해요"},
+        {"known": "the best part is coming next", "target": "제일 좋은 부분이 다음에 와요"},
+        {"known": "she asked me what comes after this chapter", "target": "그녀가 이 장 다음에 뭐가 있는지 물었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what's going to come next",
+      "target": "다음에 뭐가 올 거예요",
+      "components": [
+        {"known": "what", "target": "뭐가"},
+        {"known": "come next", "target": "다음에 오다"},
+        {"known": "going to", "target": "ㄹ 거다"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "뭐가요?"},
+        {"known": "going to", "target": "할 거예요"},
+        {"known": "what will", "target": "뭐가 될 거예요?"},
+        {"known": "what's next", "target": "다음은 뭐예요?"},
+        {"known": "what's coming up", "target": "뭐가 올 거예요?"},
+        {"known": "what will happen", "target": "뭐가 일어날 거예요?"},
+        {"known": "what do you think comes next", "target": "다음에 뭐가 온다고 생각해요?"},
+        {"known": "I can't wait to see what's next", "target": "다음에 뭐가 있을지 기대돼요"},
+        {"known": "she wondered what would come after that", "target": "그녀가 그 다음에 뭐가 올지 궁금해했어요"},
+        {"known": "what's going to happen in the next episode", "target": "다음 회에 뭐가 일어날 거예요?"},
+        {"known": "nobody knows what the future will bring", "target": "아무도 미래에 뭐가 올지 몰라요"},
+        {"known": "what's next on the schedule for today", "target": "오늘 일정에서 다음은 뭐예요?"}
+      ]
+    }
+  ]
+}

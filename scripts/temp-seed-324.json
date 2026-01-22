@@ -1,0 +1,111 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 324,
+  "known_text": "That student has both of her hands up.",
+  "target_text": "저 학생이 두 손을 다 들고 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "that student",
+      "target": "저 학생",
+      "components": [
+        {"known": "that (over there)", "target": "저"},
+        {"known": "student", "target": "학생"}
+      ],
+      "phrases": [
+        {"known": "student", "target": "학생이요"},
+        {"known": "that one", "target": "저거요"},
+        {"known": "that person", "target": "저 사람"},
+        {"known": "that student", "target": "저 학생이요"},
+        {"known": "that student is", "target": "저 학생이요"},
+        {"known": "new student", "target": "새 학생이에요"},
+        {"known": "that student is smart", "target": "저 학생이 똑똑해요"},
+        {"known": "I know that student", "target": "저 학생을 알아요"},
+        {"known": "that student raised a hand", "target": "저 학생이 손을 들었어요"},
+        {"known": "that student studies hard", "target": "저 학생이 열심히 공부해요"},
+        {"known": "the teacher called on that student", "target": "선생님이 저 학생을 불렀어요"},
+        {"known": "that student answered the question correctly", "target": "저 학생이 질문에 맞게 대답했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "both of her hands",
+      "target": "두 손을 다",
+      "components": [
+        {"known": "two", "target": "두"},
+        {"known": "hand", "target": "손"},
+        {"known": "object marker", "target": "을"},
+        {"known": "all/both", "target": "다"}
+      ],
+      "phrases": [
+        {"known": "hand", "target": "손이요"},
+        {"known": "two", "target": "두 개요"},
+        {"known": "both", "target": "둘 다요"},
+        {"known": "two hands", "target": "두 손이요"},
+        {"known": "both hands", "target": "두 손 다요"},
+        {"known": "use both hands", "target": "두 손 다 써요"},
+        {"known": "with both hands", "target": "두 손으로요"},
+        {"known": "I washed both hands", "target": "두 손 다 씻었어요"},
+        {"known": "hold it with both hands", "target": "두 손으로 잡으세요"},
+        {"known": "she raised both of her hands", "target": "그녀가 두 손을 다 들었어요"},
+        {"known": "clap your hands together", "target": "두 손을 같이 쳐요"},
+        {"known": "my hands are full with groceries", "target": "두 손에 장보기 물건이 다 있어요"},
+        {"known": "please hold this cup with both hands", "target": "이 컵을 두 손으로 잡으세요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "has her hands up",
+      "target": "손을 들고 있다",
+      "components": [
+        {"known": "hand", "target": "손"},
+        {"known": "object marker", "target": "을"},
+        {"known": "raise/hold up", "target": "들다"},
+        {"known": "is doing (progressive)", "target": "고 있다"}
+      ],
+      "phrases": [
+        {"known": "raise", "target": "들어요"},
+        {"known": "hand up", "target": "손 들어요"},
+        {"known": "raising hand", "target": "손 들고 있어요"},
+        {"known": "has hand up", "target": "손을 들고 있어요"},
+        {"known": "raised a hand", "target": "손을 들었어요"},
+        {"known": "I raised my hand", "target": "손을 들었어요"},
+        {"known": "she has her hand up", "target": "그녀가 손을 들고 있어요"},
+        {"known": "please raise your hand", "target": "손을 드세요"},
+        {"known": "he kept his hand up for a long time", "target": "그가 오래 손을 들고 있었어요"},
+        {"known": "the child has her hand raised", "target": "아이가 손을 들고 있어요"},
+        {"known": "everyone who agrees raise your hand", "target": "동의하시는 분들 손 드세요"},
+        {"known": "I saw someone with their hand up", "target": "누군가 손을 들고 있는 것을 봤어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "that student has both of her hands up",
+      "target": "저 학생이 두 손을 다 들고 있어요",
+      "components": [
+        {"known": "that student", "target": "저 학생"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "both of her hands", "target": "두 손을 다"},
+        {"known": "has her hands up", "target": "손을 들고 있다"}
+      ],
+      "phrases": [
+        {"known": "that student", "target": "저 학생이요"},
+        {"known": "hands up", "target": "손 들어요"},
+        {"known": "both hands up", "target": "두 손 다 들어요"},
+        {"known": "is raising", "target": "들고 있어요"},
+        {"known": "that student is raising", "target": "저 학생이 들고 있어요"},
+        {"known": "she has both hands raised", "target": "그녀가 두 손을 다 들고 있어요"},
+        {"known": "the child has her hand up", "target": "그 아이가 손을 들고 있어요"},
+        {"known": "look at that student with hands raised", "target": "손 들고 있는 저 학생을 보세요"},
+        {"known": "the teacher noticed that student has hands up", "target": "선생님이 저 학생이 손을 들고 있는 것을 봤어요"},
+        {"known": "that student has been waiting with hand raised", "target": "저 학생이 손을 들고 기다리고 있었어요"},
+        {"known": "I saw a student in the back with both hands up", "target": "뒤에서 두 손을 다 들고 있는 학생을 봤어요"},
+        {"known": "the excited student raised both hands high", "target": "신난 학생이 두 손을 높이 들었어요"}
+      ]
+    }
+  ]
+}

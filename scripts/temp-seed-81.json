@@ -1,49 +1,65 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 81,
   "known_text": "When do you want to start?",
-  "target_text": "いつ始めたいですか？",
+  "target_text": "언제 시작하고 싶어요?",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "when (question)",
-      "target": "いつ",
+      "known": "when",
+      "target": "언제",
       "phrases": [
-        {"known": "when?", "target": "いつ？"},
-        {"known": "when is it?", "target": "いつですか？"},
-        {"known": "when did you come?", "target": "いつ来ましたか？"},
-        {"known": "when did she say it?", "target": "彼女はいつ言いましたか？"},
-        {"known": "when did he start?", "target": "彼はいつ始めましたか？"},
-        {"known": "I do not know when", "target": "いつかわかりません"},
-        {"known": "when will you be ready?", "target": "いつ準備ができますか？"},
-        {"known": "she asked when he did it", "target": "彼女は彼がいつやったか聞きました"},
-        {"known": "I do not know when she will be done", "target": "彼女がいつ終わるかわかりません"},
-        {"known": "he wanted to know when we would start", "target": "彼は私たちがいつ始めるか知りたかったです"}
+        {"known": "When?", "target": "언제?"},
+        {"known": "When is it?", "target": "언제예요?"},
+        {"known": "Since when?", "target": "언제부터?"},
+        {"known": "When did she come?", "target": "그녀는 언제 왔어요?"},
+        {"known": "When will he go?", "target": "그는 언제 갈 거예요?"},
+        {"known": "When did they meet?", "target": "그들은 언제 만났어요?"},
+        {"known": "She asked when I would arrive.", "target": "그녀는 내가 언제 도착할지 물었어요."},
+        {"known": "When does the meeting start?", "target": "회의가 언제 시작해요?"},
+        {"known": "He doesn't know when it finished.", "target": "그는 언제 끝났는지 몰라요."},
+        {"known": "When are you going to be ready?", "target": "언제 준비될 거예요?"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "do you want to start?",
-      "target": "始めたいですか？",
+      "known": "start (connective)",
+      "target": "시작하고",
       "components": [
-        {"known": "start (stem)", "target": "始め"},
-        {"known": "want to? (polite question)", "target": "たいですか？"}
+        {"known": "start", "target": "시작하다"},
+        {"known": "(connective)", "target": "-고"}
       ],
       "phrases": [
-        {"known": "start", "target": "始める"},
-        {"known": "started", "target": "始めました"},
-        {"known": "want to start", "target": "始めたい"},
-        {"known": "do you want to?", "target": "したいですか？"},
-        {"known": "do you want to start?", "target": "始めたいですか？"},
-        {"known": "she wants to start", "target": "彼女は始めたいです"},
-        {"known": "he wanted to start today", "target": "彼は今日始めたかったです"},
-        {"known": "do you want to start now?", "target": "今始めたいですか？"},
-        {"known": "she asked if I wanted to start", "target": "彼女は始めたいか聞きました"},
-        {"known": "I asked when he wanted to start learning", "target": "彼がいつ学び始めたいか聞きました"},
-        {"known": "we wanted to know if she wanted to start today", "target": "私たちは彼女が今日始めたいか知りたかったです"},
-        {"known": "he asked when I wanted to start learning Japanese", "target": "彼は私がいつ日本語を学び始めたいか聞きました"}
+        {"known": "Start.", "target": "시작해요."},
+        {"known": "Started.", "target": "시작했어요."},
+        {"known": "Will start.", "target": "시작할 거예요."},
+        {"known": "I started.", "target": "나는 시작했어요."},
+        {"known": "She started.", "target": "그녀는 시작했어요."},
+        {"known": "He wants to start.", "target": "그는 시작하고 싶어요."},
+        {"known": "When do they start?", "target": "그들은 언제 시작해요?"},
+        {"known": "I want to start learning.", "target": "배우기 시작하고 싶어요."},
+        {"known": "She asked when he wants to start.", "target": "그녀는 그가 언제 시작하고 싶은지 물었어요."},
+        {"known": "When do you want to start learning Korean?", "target": "언제 한국어 배우기 시작하고 싶어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "want to (question)",
+      "target": "싶어요?",
+      "phrases": [
+        {"known": "Want to?", "target": "싶어요?"},
+        {"known": "Do you want?", "target": "싶어요?"},
+        {"known": "Do you want to go?", "target": "가고 싶어요?"},
+        {"known": "Do you want to come?", "target": "오고 싶어요?"},
+        {"known": "Do you want to learn?", "target": "배우고 싶어요?"},
+        {"known": "When do you want to meet?", "target": "언제 만나고 싶어요?"},
+        {"known": "Do you want to start now?", "target": "지금 시작하고 싶어요?"},
+        {"known": "When do you want to start learning?", "target": "언제 배우기 시작하고 싶어요?"},
+        {"known": "Does she want to understand everything quickly?", "target": "그녀는 모든 것을 빨리 이해하고 싶어요?"},
+        {"known": "When do you want to start understanding Korean?", "target": "언제 한국어를 이해하기 시작하고 싶어요?"}
       ]
     }
   ]

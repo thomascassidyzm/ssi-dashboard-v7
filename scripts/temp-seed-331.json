@@ -1,0 +1,80 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 331,
+  "known_text": "She can't provide all the answers.",
+  "target_text": "그녀가 모든 답을 제공할 수 없어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "provide",
+      "target": "제공하다",
+      "phrases": [
+        {"known": "provide", "target": "제공해요"},
+        {"known": "provided", "target": "제공했어요"},
+        {"known": "providing", "target": "제공하고 있어요"},
+        {"known": "will provide", "target": "제공할 거예요"},
+        {"known": "can provide", "target": "제공할 수 있어요"},
+        {"known": "I can provide help", "target": "도움을 제공할 수 있어요"},
+        {"known": "please provide information", "target": "정보를 제공해 주세요"},
+        {"known": "they provided everything we needed", "target": "그들이 필요한 것 다 제공했어요"},
+        {"known": "the company provides good service", "target": "회사가 좋은 서비스를 제공해요"},
+        {"known": "she can't provide a solution right now", "target": "그녀가 지금 해결책을 제공할 수 없어요"},
+        {"known": "I'll provide the materials tomorrow", "target": "내일 자료를 제공할게요"},
+        {"known": "the government provides support for families", "target": "정부가 가족들을 위한 지원을 제공해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "all the answers",
+      "target": "모든 답",
+      "components": [
+        {"known": "all/every", "target": "모든"},
+        {"known": "answer", "target": "답"}
+      ],
+      "phrases": [
+        {"known": "answer", "target": "답이요"},
+        {"known": "all", "target": "모든 거요"},
+        {"known": "the answer", "target": "그 답이요"},
+        {"known": "all the answers", "target": "모든 답이요"},
+        {"known": "correct answer", "target": "맞는 답이에요"},
+        {"known": "I know the answer", "target": "답 알아요"},
+        {"known": "she gave me all the answers", "target": "그녀가 모든 답을 줬어요"},
+        {"known": "do you have all the answers?", "target": "모든 답 있어요?"},
+        {"known": "I don't have all the answers", "target": "모든 답을 몰라요"},
+        {"known": "nobody knows all the answers", "target": "아무도 모든 답을 몰라요"},
+        {"known": "she found all the answers to the test", "target": "그녀가 시험 답을 다 찾았어요"},
+        {"known": "getting all the answers right is difficult", "target": "모든 답을 맞히는 것은 어려워요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "she can't provide all the answers",
+      "target": "그녀가 모든 답을 제공할 수 없어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "all the answers", "target": "모든 답"},
+        {"known": "object marker", "target": "을"},
+        {"known": "provide", "target": "제공하다"},
+        {"known": "cannot", "target": "ㄹ 수 없다"}
+      ],
+      "phrases": [
+        {"known": "she can't", "target": "못해요"},
+        {"known": "can't do", "target": "못 해요"},
+        {"known": "can't provide", "target": "제공할 수 없어요"},
+        {"known": "she can't do it", "target": "그녀가 못해요"},
+        {"known": "she can't provide", "target": "그녀가 제공할 수 없어요"},
+        {"known": "he can't give all the help", "target": "그가 모든 도움을 줄 수 없어요"},
+        {"known": "she can't answer everything", "target": "그녀가 모든 것에 답할 수 없어요"},
+        {"known": "nobody can provide a perfect solution", "target": "아무도 완벽한 해결책을 제공할 수 없어요"},
+        {"known": "I can't offer all the support you need", "target": "필요한 모든 지원을 제공할 수 없어요"},
+        {"known": "he admitted that he can't provide everything", "target": "그가 모든 것을 제공할 수 없다고 인정했어요"},
+        {"known": "the teacher can't give all the answers", "target": "선생님이 모든 답을 줄 수 없어요"},
+        {"known": "she can't provide all the information you want", "target": "그녀가 원하는 모든 정보를 제공할 수 없어요"},
+        {"known": "one person can't solve all the problems alone", "target": "한 사람이 혼자 모든 문제를 해결할 수 없어요"}
+      ]
+    }
+  ]
+}

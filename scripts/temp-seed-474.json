@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 474,
+  "known_text": "I don't even want it as a free offer.",
+  "target_text": "무료로 줘도 안 원해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "as a free offer",
+      "target": "무료로 줘도",
+      "components": [
+        {"known": "free", "target": "무료"},
+        {"known": "as", "target": "로"},
+        {"known": "even if give", "target": "줘도"}
+      ],
+      "phrases": [
+        {"known": "free", "target": "무료요"},
+        {"known": "give me", "target": "줘요"},
+        {"known": "it's free", "target": "무료예요"},
+        {"known": "even if I try", "target": "해도요"},
+        {"known": "she gave it for free", "target": "그녀가 무료로 줬어요"},
+        {"known": "even if you go there", "target": "거기 가도요"},
+        {"known": "is this really free", "target": "이거 정말 무료예요?"},
+        {"known": "even if he comes he won't help", "target": "그가 와도 안 도와줄 거예요"},
+        {"known": "I got it for free at the event", "target": "행사에서 무료로 받았어요"},
+        {"known": "even if they offer it for free I'm not interested", "target": "무료로 줘도 관심 없어요"},
+        {"known": "she said it's completely free of charge", "target": "그녀가 완전 무료라고 했어요"},
+        {"known": "even if you explain it again I won't understand", "target": "다시 설명해도 이해 못할 거예요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I don't even want it as a free offer",
+      "target": "무료로 줘도 안 원해요",
+      "components": [
+        {"known": "as a free offer", "target": "무료로 줘도"},
+        {"known": "don't want", "target": "안 원해요"}
+      ],
+      "phrases": [
+        {"known": "don't want", "target": "안 원해요"},
+        {"known": "not even", "target": "도 안요"},
+        {"known": "I don't need it", "target": "필요 없어요"},
+        {"known": "even so I don't", "target": "그래도 안 해요"},
+        {"known": "I wouldn't take it even for free", "target": "무료라도 안 받아요"},
+        {"known": "even if they pay me I won't do it", "target": "돈 줘도 안 할 거예요"},
+        {"known": "she wouldn't accept it even as a gift", "target": "선물로 줘도 안 받아요"},
+        {"known": "I wouldn't want it no matter what", "target": "뭐가 됐든 안 원해요"},
+        {"known": "he said he wouldn't take it even if free", "target": "그가 무료라도 안 받겠다고 했어요"},
+        {"known": "I'm not interested even if it's a great deal", "target": "좋은 조건이어도 관심 없어요"},
+        {"known": "she told me she wouldn't want it at any price", "target": "그녀가 어떤 가격이어도 안 원한다고 했어요"},
+        {"known": "we don't need it even if they're giving it away", "target": "공짜로 줘도 필요 없어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 266,
+  "known_text": "He was an old friend of my father.",
+  "target_text": "그가 아버지의 오랜 친구였어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "long-time",
+      "target": "오래",
+      "phrases": [
+        {"known": "long", "target": "오래요"},
+        {"known": "a long time", "target": "오래예요"},
+        {"known": "for a long time", "target": "오래 동안"},
+        {"known": "long-time friend", "target": "오랜 친구"},
+        {"known": "I waited a long time", "target": "오래 기다렸어요"},
+        {"known": "it's been a while", "target": "오래됐어요"},
+        {"known": "how long?", "target": "얼마나 오래요?"},
+        {"known": "I've known her for a long time", "target": "그녀를 오래 알았어요"},
+        {"known": "we talked for a long time", "target": "오래 얘기했어요"},
+        {"known": "it took a long time to finish", "target": "끝내는 데 오래 걸렸어요"},
+        {"known": "I haven't seen him for a long time", "target": "오래 동안 그를 못 봤어요"},
+        {"known": "have you been waiting for a long time?", "target": "오래 기다리고 있었어요?"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "old friend",
+      "target": "오랜 친구",
+      "components": [
+        {"known": "long-time", "target": "오래"},
+        {"known": "friend", "target": "친구"}
+      ],
+      "phrases": [
+        {"known": "friend", "target": "친구요"},
+        {"known": "old friend", "target": "오랜 친구"},
+        {"known": "my old friend", "target": "제 오랜 친구"},
+        {"known": "an old friend", "target": "오랜 친구예요"},
+        {"known": "we're old friends", "target": "오랜 친구예요"},
+        {"known": "he's an old friend", "target": "그가 오랜 친구예요"},
+        {"known": "I met an old friend", "target": "오랜 친구를 만났어요"},
+        {"known": "she's my old friend", "target": "그녀가 제 오랜 친구예요"},
+        {"known": "I went with an old friend", "target": "오랜 친구랑 같이 갔어요"},
+        {"known": "my old friend came to visit", "target": "제 오랜 친구가 놀러 왔어요"},
+        {"known": "that person is an old friend of mine", "target": "그 사람이 제 오랜 친구예요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "my father's old friend",
+      "target": "아버지의 오랜 친구",
+      "components": [
+        {"known": "father", "target": "아버지"},
+        {"known": "possession marker", "target": "의"},
+        {"known": "old friend", "target": "오랜 친구"}
+      ],
+      "phrases": [
+        {"known": "my father", "target": "아버지요"},
+        {"known": "father's", "target": "아버지의"},
+        {"known": "my father's friend", "target": "아버지 친구"},
+        {"known": "my father's thing", "target": "아버지의 것"},
+        {"known": "my father's old friend", "target": "아버지의 오랜 친구"},
+        {"known": "my father's car", "target": "아버지의 차예요"},
+        {"known": "my father's old friend called", "target": "아버지의 오랜 친구가 전화했어요"},
+        {"known": "I know my father's friend", "target": "아버지 친구를 알아요"},
+        {"known": "my father's old friend is kind", "target": "아버지의 오랜 친구가 친절해요"},
+        {"known": "I met my father's old friend yesterday", "target": "어제 아버지의 오랜 친구를 만났어요"},
+        {"known": "my father's old friend came to our house", "target": "아버지의 오랜 친구가 우리 집에 왔어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "he was an old friend of my father",
+      "target": "그가 아버지의 오랜 친구였어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "my father's old friend", "target": "아버지의 오랜 친구"},
+        {"known": "was", "target": "였어요"}
+      ],
+      "phrases": [
+        {"known": "he was", "target": "그가 였어요"},
+        {"known": "he is", "target": "그가 이에요"},
+        {"known": "my father's friend", "target": "아버지 친구요"},
+        {"known": "he was a friend", "target": "그가 친구였어요"},
+        {"known": "that was my father", "target": "그게 아버지였어요"},
+        {"known": "he was a good person", "target": "그가 좋은 사람이었어요"},
+        {"known": "he was my friend before", "target": "그가 전에 제 친구였어요"},
+        {"known": "she said he was my father's friend", "target": "그녀가 아버지 친구였다고 말했어요"},
+        {"known": "I found out he was an old friend", "target": "그가 오랜 친구였다는 걸 알았어요"},
+        {"known": "he was my father's coworker before", "target": "그가 전에 아버지 동료였어요"},
+        {"known": "I didn't know he was my father's old friend", "target": "그가 아버지의 오랜 친구인 줄 몰랐어요"}
+      ]
+    }
+  ]
+}

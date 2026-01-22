@@ -1,0 +1,144 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 96,
+  "known_text": "No I'm not ready yet, I need a little more time.",
+  "target_text": "아니요 아직 준비 안 됐어요, 시간이 조금 더 필요해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "no",
+      "target": "아니요",
+      "phrases": [
+        {"known": "No.", "target": "아니요."},
+        {"known": "It's not.", "target": "아니에요."},
+        {"known": "No thanks.", "target": "아니요 괜찮아요."},
+        {"known": "No, not yet.", "target": "아니요, 아직요."},
+        {"known": "No, I don't think so.", "target": "아니요, 그렇지 않아요."},
+        {"known": "No, I'm not ready.", "target": "아니요, 준비 안 됐어요."},
+        {"known": "No, she didn't come.", "target": "아니요, 그녀는 안 왔어요."},
+        {"known": "No, that's not the way.", "target": "아니요, 그건 방법이 아니에요."},
+        {"known": "No, he's not at home.", "target": "아니요, 그는 집에 없어요."},
+        {"known": "No, the next bus isn't coming.", "target": "아니요, 다음 버스가 안 와요."},
+        {"known": "No, I can't go by bus today.", "target": "아니요, 오늘 버스로 갈 수 없어요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "yet/still",
+      "target": "아직",
+      "phrases": [
+        {"known": "Yet.", "target": "아직."},
+        {"known": "Still.", "target": "아직."},
+        {"known": "Not yet.", "target": "아직요."},
+        {"known": "Still here.", "target": "아직 여기."},
+        {"known": "Still waiting.", "target": "아직 기다려요."},
+        {"known": "Not ready yet.", "target": "아직 준비 안 됐어요."},
+        {"known": "He hasn't come yet.", "target": "그는 아직 안 왔어요."},
+        {"known": "She still doesn't know.", "target": "그녀는 아직 몰라요."},
+        {"known": "They haven't finished yet.", "target": "그들은 아직 끝내지 않았어요."},
+        {"known": "I'm still not ready to go home.", "target": "아직 집에 갈 준비가 안 됐어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "not ready",
+      "target": "준비 안 됐어요",
+      "components": [
+        {"known": "preparation", "target": "준비"},
+        {"known": "not", "target": "안"},
+        {"known": "became", "target": "됐어요"}
+      ],
+      "phrases": [
+        {"known": "Ready.", "target": "준비됐어요."},
+        {"known": "Not ready.", "target": "준비 안 됐어요."},
+        {"known": "I'm ready.", "target": "준비됐어요."},
+        {"known": "Not ready yet.", "target": "아직 준비 안 됐어요."},
+        {"known": "She's not ready.", "target": "그녀는 준비 안 됐어요."},
+        {"known": "He's not ready to go.", "target": "그는 갈 준비 안 됐어요."},
+        {"known": "They're not ready for next time.", "target": "그들은 다음에 준비 안 됐어요."},
+        {"known": "She said she's not ready yet.", "target": "그녀는 아직 준비 안 됐다고 말했어요."},
+        {"known": "He's not ready to take the bus home.", "target": "그는 버스로 집에 갈 준비 안 됐어요."},
+        {"known": "No, I'm not ready to go home yet.", "target": "아니요, 아직 집에 갈 준비 안 됐어요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "time (subject)",
+      "target": "시간이",
+      "components": [
+        {"known": "time", "target": "시간"},
+        {"known": "(subject marker)", "target": "이"}
+      ],
+      "phrases": [
+        {"known": "Time.", "target": "시간."},
+        {"known": "Time is.", "target": "시간이요."},
+        {"known": "The time.", "target": "그 시간."},
+        {"known": "More time.", "target": "더 많은 시간."},
+        {"known": "Time is needed.", "target": "시간이 필요해요."},
+        {"known": "There's no time.", "target": "시간이 없어요."},
+        {"known": "How much time is left?", "target": "시간이 얼마나 남았어요?"},
+        {"known": "She said time is needed.", "target": "그녀는 시간이 필요하다고 말했어요."},
+        {"known": "He asked if there's enough time.", "target": "그는 시간이 충분한지 물었어요."},
+        {"known": "There isn't enough time to continue.", "target": "계속할 시간이 충분하지 않아요."}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "a little",
+      "target": "조금",
+      "phrases": [
+        {"known": "A little.", "target": "조금."},
+        {"known": "Just a little.", "target": "조금만."},
+        {"known": "A little bit.", "target": "조금요."},
+        {"known": "A little more.", "target": "조금 더."},
+        {"known": "Wait a little.", "target": "조금 기다려요."},
+        {"known": "A little more time.", "target": "조금 더 시간."},
+        {"known": "She needs a little more time.", "target": "그녀는 시간이 조금 더 필요해요."},
+        {"known": "He spoke a little more slowly.", "target": "그는 조금 더 천천히 말했어요."},
+        {"known": "They waited a little longer.", "target": "그들은 조금 더 오래 기다렸어요."},
+        {"known": "I need to rest a little before continuing.", "target": "계속하기 전에 조금 쉬어야 해요."}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "more",
+      "target": "더",
+      "phrases": [
+        {"known": "More.", "target": "더."},
+        {"known": "More please.", "target": "더 주세요."},
+        {"known": "More slowly.", "target": "더 천천히."},
+        {"known": "A bit more.", "target": "조금 더."},
+        {"known": "More time.", "target": "더 많은 시간."},
+        {"known": "Speak more slowly.", "target": "더 천천히 말해요."},
+        {"known": "She needs more time.", "target": "그녀는 시간이 더 필요해요."},
+        {"known": "He studied more than before.", "target": "그는 전보다 더 공부했어요."},
+        {"known": "They waited a bit more.", "target": "그들은 조금 더 기다렸어요."},
+        {"known": "I need a little more time to get ready.", "target": "준비하려면 시간이 조금 더 필요해요."}
+      ]
+    },
+    {
+      "idx": 7,
+      "type": "A",
+      "known": "need",
+      "target": "필요해요",
+      "phrases": [
+        {"known": "Need.", "target": "필요해요."},
+        {"known": "I need.", "target": "필요해요."},
+        {"known": "She needs.", "target": "그녀는 필요해요."},
+        {"known": "Need help.", "target": "도움이 필요해요."},
+        {"known": "Need time.", "target": "시간이 필요해요."},
+        {"known": "He needs more time.", "target": "그는 시간이 더 필요해요."},
+        {"known": "They need to rest.", "target": "그들은 쉬어야 해요."},
+        {"known": "She said she needs help.", "target": "그녀는 도움이 필요하다고 말했어요."},
+        {"known": "I need a little more time to get ready.", "target": "준비하려면 시간이 조금 더 필요해요."},
+        {"known": "He said he needs more time before the next meeting.", "target": "그는 다음 회의 전에 시간이 더 필요하다고 말했어요."}
+      ]
+    }
+  ]
+}

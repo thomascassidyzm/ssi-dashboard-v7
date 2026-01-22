@@ -1,0 +1,93 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 179,
+  "known_text": "What are you going to do on Sunday afternoon?",
+  "target_text": "일요일 오후에 뭘 할 거예요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "afternoon",
+      "target": "오후",
+      "phrases": [
+        {"known": "afternoon", "target": "오후"},
+        {"known": "this afternoon", "target": "오늘 오후"},
+        {"known": "tomorrow afternoon", "target": "내일 오후"},
+        {"known": "in the afternoon", "target": "오후에"},
+        {"known": "I am busy this afternoon", "target": "오늘 오후에 바빠요"},
+        {"known": "Let us meet in the afternoon", "target": "오후에 만나요"},
+        {"known": "I have time tomorrow afternoon", "target": "내일 오후에 시간이 있어요"},
+        {"known": "She is coming this afternoon", "target": "그녀가 오늘 오후에 와요"},
+        {"known": "The class starts in the afternoon", "target": "수업이 오후에 시작해요"},
+        {"known": "I usually study Korean in the afternoon after work", "target": "보통 일 끝나고 오후에 한국어를 공부해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "Sunday afternoon",
+      "target": "일요일 오후",
+      "components": [
+        {"known": "Sunday", "target": "일요일"},
+        {"known": "afternoon", "target": "오후"}
+      ],
+      "phrases": [
+        {"known": "Sunday", "target": "일요일"},
+        {"known": "afternoon", "target": "오후"},
+        {"known": "Sunday afternoon", "target": "일요일 오후"},
+        {"known": "on Sunday afternoon", "target": "일요일 오후에"},
+        {"known": "I am free on Sunday afternoon", "target": "일요일 오후에 시간이 있어요"},
+        {"known": "We can meet on Sunday afternoon", "target": "일요일 오후에 만날 수 있어요"},
+        {"known": "Are you busy on Sunday afternoon?", "target": "일요일 오후에 바빠요?"},
+        {"known": "I want to rest on Sunday afternoon", "target": "일요일 오후에 쉬고 싶어요"},
+        {"known": "My friend is coming on Sunday afternoon", "target": "친구가 일요일 오후에 와요"},
+        {"known": "I usually go to the park on Sunday afternoon", "target": "보통 일요일 오후에 공원에 가요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "going to do",
+      "target": "할 거예요",
+      "components": [
+        {"known": "to do", "target": "하다"},
+        {"known": "will/going to", "target": "ㄹ 거예요"}
+      ],
+      "phrases": [
+        {"known": "to do", "target": "하다"},
+        {"known": "going to do", "target": "할 거예요"},
+        {"known": "What are you going to do?", "target": "뭘 할 거예요?"},
+        {"known": "I am going to study", "target": "공부할 거예요"},
+        {"known": "We are going to eat", "target": "먹을 거예요"},
+        {"known": "She is going to come tomorrow", "target": "내일 올 거예요"},
+        {"known": "I am going to learn Korean", "target": "한국어를 배울 거예요"},
+        {"known": "Are you going to go to the restaurant?", "target": "식당에 갈 거예요?"},
+        {"known": "I am going to meet my friend this evening", "target": "오늘 저녁에 친구를 만날 거예요"},
+        {"known": "I am going to practice speaking Korean every day", "target": "매일 한국어 말하기를 연습할 거예요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "What are you going to do on Sunday afternoon?",
+      "target": "일요일 오후에 뭘 할 거예요?",
+      "components": [
+        {"known": "Sunday afternoon", "target": "일요일 오후"},
+        {"known": "what", "target": "뭘"},
+        {"known": "going to do", "target": "할 거예요"}
+      ],
+      "phrases": [
+        {"known": "Sunday afternoon", "target": "일요일 오후"},
+        {"known": "what", "target": "뭘"},
+        {"known": "going to do", "target": "할 거예요"},
+        {"known": "What are you going to do on Sunday afternoon?", "target": "일요일 오후에 뭘 할 거예요?"},
+        {"known": "What are you going to eat for lunch?", "target": "점심에 뭘 먹을 거예요?"},
+        {"known": "What are you going to do tomorrow?", "target": "내일 뭘 할 거예요?"},
+        {"known": "Where are you going to go next week?", "target": "다음 주에 어디 갈 거예요?"},
+        {"known": "Who are you going to meet this afternoon?", "target": "오늘 오후에 누구를 만날 거예요?"},
+        {"known": "What are you going to study after this?", "target": "이거 끝나고 뭘 공부할 거예요?"},
+        {"known": "What are you going to do after you finish work tomorrow?", "target": "내일 일 끝나고 뭘 할 거예요?"}
+      ]
+    }
+  ]
+}

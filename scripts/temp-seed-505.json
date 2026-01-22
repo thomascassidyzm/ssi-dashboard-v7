@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 505,
+  "known_text": "So that I don't get left behind.",
+  "target_text": "뒤처지지 않으려고요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "get left behind",
+      "target": "뒤처지다",
+      "components": [
+        {"known": "behind", "target": "뒤"},
+        {"known": "fall behind", "target": "처지다"}
+      ],
+      "phrases": [
+        {"known": "behind", "target": "뒤에요"},
+        {"known": "fall behind", "target": "처져요"},
+        {"known": "at the back", "target": "뒤쪽에요"},
+        {"known": "look behind", "target": "뒤 봐요"},
+        {"known": "don't fall behind", "target": "뒤처지지 마요"},
+        {"known": "she fell behind the group", "target": "그녀가 그룹에서 뒤처졌어요"},
+        {"known": "I don't want to be left behind", "target": "뒤처지고 싶지 않아요"},
+        {"known": "he's falling behind in class", "target": "그가 수업에서 뒤처지고 있어요"},
+        {"known": "try not to lag behind the others", "target": "다른 사람들보다 뒤처지지 않게 해 봐요"},
+        {"known": "she worked hard not to fall behind", "target": "그녀가 뒤처지지 않으려고 열심히 했어요"},
+        {"known": "I'm worried about getting left behind", "target": "뒤처지는 거 걱정돼요"},
+        {"known": "they trained every day so they wouldn't fall behind", "target": "그들이 뒤처지지 않으려고 매일 훈련했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "so that I don't get left behind",
+      "target": "뒤처지지 않으려고요",
+      "components": [
+        {"known": "get left behind", "target": "뒤처지다"},
+        {"known": "not", "target": "지 않다"},
+        {"known": "in order to", "target": "려고"}
+      ],
+      "phrases": [
+        {"known": "in order to", "target": "하려고요"},
+        {"known": "so that", "target": "그러려고요"},
+        {"known": "not to", "target": "안 하려고요"},
+        {"known": "to avoid", "target": "피하려고요"},
+        {"known": "so that I don't forget", "target": "잊지 않으려고요"},
+        {"known": "in order not to be late", "target": "늦지 않으려고요"},
+        {"known": "she studied hard to pass", "target": "그녀가 통과하려고 열심히 했어요"},
+        {"known": "I woke up early so I wouldn't miss it", "target": "놓치지 않으려고 일찍 일어났어요"},
+        {"known": "he exercised to stay healthy", "target": "그가 건강하려고 운동했어요"},
+        {"known": "I saved money so that I could travel", "target": "여행하려고 돈 모았어요"},
+        {"known": "she prepared well so she wouldn't make mistakes", "target": "그녀가 실수하지 않으려고 잘 준비했어요"},
+        {"known": "we left early so that we wouldn't get stuck in traffic", "target": "교통 체증 피하려고 일찍 나왔어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 529,
+  "known_text": "Can you all put your hands up?",
+  "target_text": "다들 손 들어 줄 수 있어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "put your hands up",
+      "target": "손 들다",
+      "components": [
+        {"known": "hands", "target": "손"},
+        {"known": "raise/put up", "target": "들다"}
+      ],
+      "phrases": [
+        {"known": "hands", "target": "손이요"},
+        {"known": "raise", "target": "들어요"},
+        {"known": "my hand", "target": "제 손이요"},
+        {"known": "raise it", "target": "들어요"},
+        {"known": "both hands", "target": "양손이요"},
+        {"known": "raise your hand", "target": "손 들어요"},
+        {"known": "she raised her hand", "target": "그녀가 손 들었어요"},
+        {"known": "put your hand up if you know", "target": "알면 손 들어요"},
+        {"known": "he raised both hands in surprise", "target": "그가 놀라서 양손 들었어요"},
+        {"known": "please raise your hand to ask a question", "target": "질문하려면 손 들어요"},
+        {"known": "everyone raised their hands at the same time", "target": "다들 동시에 손 들었어요"},
+        {"known": "she keeps raising her hand to answer", "target": "그녀가 대답하려고 계속 손 들어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "can you all put your hands up",
+      "target": "다들 손 들어 줄 수 있어요",
+      "components": [
+        {"known": "all (of you)", "target": "다들"},
+        {"known": "put your hands up", "target": "손 들다"},
+        {"known": "can you", "target": "줄 수 있다"}
+      ],
+      "phrases": [
+        {"known": "everyone", "target": "다들요"},
+        {"known": "can you", "target": "줄 수 있어요?"},
+        {"known": "all of you", "target": "다들이요"},
+        {"known": "can you do it", "target": "할 수 있어요?"},
+        {"known": "everyone came", "target": "다들 왔어요"},
+        {"known": "can you help me", "target": "도와줄 수 있어요?"},
+        {"known": "everyone is ready", "target": "다들 준비됐어요"},
+        {"known": "can you all hear me", "target": "다들 들을 수 있어요?"},
+        {"known": "everyone please stand up", "target": "다들 일어나 주세요"},
+        {"known": "can you all see the screen", "target": "다들 화면 볼 수 있어요?"},
+        {"known": "everyone did a great job today", "target": "다들 오늘 정말 잘 했어요"},
+        {"known": "can you all come to the meeting tomorrow", "target": "다들 내일 회의에 올 수 있어요?"},
+        {"known": "can you all wait here for a moment", "target": "다들 잠깐 여기서 기다릴 수 있어요?"}
+      ]
+    }
+  ]
+}

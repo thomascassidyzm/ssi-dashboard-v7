@@ -1,54 +1,70 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 187,
   "known_text": "I'm happy so far.",
-  "target_text": "今のところ満足しています。",
+  "target_text": "지금까지는 행복해요.",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "so far",
-      "target": "今のところ",
+      "known": "so far (topic)",
+      "target": "지금까지는",
       "components": [
-        {"known": "now", "target": "今"},
-        {"known": "at the point of", "target": "のところ"}
+        {"known": "now", "target": "지금"},
+        {"known": "until", "target": "까지"},
+        {"known": "topic marker", "target": "는"}
       ],
       "phrases": [
-        {"known": "now", "target": "今"},
-        {"known": "so far", "target": "今のところ"},
-        {"known": "so far it is", "target": "今のところは"},
-        {"known": "so far it's good", "target": "今のところいいです"},
-        {"known": "so far I understand", "target": "今のところ分かります"},
-        {"known": "so far no problem", "target": "今のところ問題ありません"},
-        {"known": "so far everything is fine", "target": "今のところ全部大丈夫です"},
-        {"known": "so far we are doing well", "target": "今のところうまくいっています"},
-        {"known": "I woke up early today and so far I feel great", "target": "今日早く起きましたが今のところ気分がいいです"},
-        {"known": "so far it hasn't been difficult", "target": "今のところ難しくありませんでした"},
-        {"known": "so far I haven't had any trouble", "target": "今のところ問題がありませんでした"}
+        {"known": "now", "target": "지금"},
+        {"known": "until", "target": "까지"},
+        {"known": "so far", "target": "지금까지"},
+        {"known": "so far (topic)", "target": "지금까지는"},
+        {"known": "So far it's good", "target": "지금까지는 좋아요"},
+        {"known": "So far so good", "target": "지금까지는 괜찮아요"},
+        {"known": "I have learned a lot so far", "target": "지금까지 많이 배웠어요"},
+        {"known": "We have not had problems so far", "target": "지금까지는 문제가 없었어요"},
+        {"known": "Everything has been good so far at work", "target": "지금까지는 직장에서 모든 것이 좋았어요"},
+        {"known": "I have been studying Korean for two months so far", "target": "지금까지 두 달 동안 한국어를 공부하고 있어요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "feeling content/blissful",
+      "target": "행복하다",
+      "phrases": [
+        {"known": "blissful", "target": "행복하다"},
+        {"known": "I feel content", "target": "행복해요"},
+        {"known": "very content", "target": "아주 행복하다"},
+        {"known": "Are you content?", "target": "행복해요?"},
+        {"known": "I feel so content today", "target": "오늘 너무 행복해요"},
+        {"known": "She looks very content", "target": "그녀는 아주 행복해 보여요"},
+        {"known": "I felt content meeting you", "target": "만나서 행복했어요"},
+        {"known": "I feel more content than before", "target": "전보다 더 행복해요"},
+        {"known": "I feel content when I speak Korean well", "target": "한국어로 잘 말할 때 행복해요"},
+        {"known": "Learning Korean makes me feel content every day", "target": "한국어를 배우면 매일 행복해요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "I'm happy/satisfied",
-      "target": "満足しています",
+      "known": "I'm happy so far",
+      "target": "지금까지는 행복해요",
       "components": [
-        {"known": "satisfaction", "target": "満足"},
-        {"known": "am doing", "target": "しています"}
+        {"known": "so far (topic)", "target": "지금까지는"},
+        {"known": "content", "target": "행복해요"}
       ],
       "phrases": [
-        {"known": "satisfaction", "target": "満足"},
-        {"known": "very satisfied", "target": "とても満足"},
-        {"known": "I'm satisfied", "target": "満足しています"},
-        {"known": "I'm very satisfied", "target": "とても満足しています"},
-        {"known": "I'm satisfied with this", "target": "これに満足しています"},
-        {"known": "I'm satisfied with my work", "target": "仕事に満足しています"},
-        {"known": "she said she is satisfied", "target": "彼女は満足していると言いました"},
-        {"known": "I'm satisfied with what we did today", "target": "今日したことに満足しています"},
-        {"known": "I'm satisfied because everything went well", "target": "全部うまくいったので満足しています"},
-        {"known": "are you satisfied with how it turned out", "target": "どうなったか満足していますか"},
-        {"known": "I'm very satisfied with what we did yesterday", "target": "昨日したことにとても満足しています"},
-        {"known": "she was saying she is satisfied with her work", "target": "彼女は仕事に満足していると言っていました"}
+        {"known": "so far", "target": "지금까지는"},
+        {"known": "I feel content", "target": "행복해요"},
+        {"known": "content so far", "target": "지금까지는 행복하다"},
+        {"known": "I'm happy so far", "target": "지금까지는 행복해요"},
+        {"known": "I'm satisfied so far", "target": "지금까지는 만족해요"},
+        {"known": "I'm good so far", "target": "지금까지는 괜찮아요"},
+        {"known": "I'm doing well so far", "target": "지금까지는 잘하고 있어요"},
+        {"known": "I'm feeling good about my progress so far", "target": "지금까지는 제 진전에 기분이 좋아요"},
+        {"known": "I'm content with the results so far", "target": "지금까지는 결과에 행복해요"},
+        {"known": "I'm happy so far but there is still more to learn", "target": "지금까지는 행복하지만 아직 배울 것이 더 있어요"}
       ]
     }
   ]

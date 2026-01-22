@@ -1,0 +1,97 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 222,
+  "known_text": "He's trying to tell me what he wants",
+  "target_text": "그는 나에게 뭘 원하는지 말하려고 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "to tell",
+      "target": "말하다",
+      "phrases": [
+        {"known": "tell", "target": "말하다"},
+        {"known": "told", "target": "말했어요"},
+        {"known": "to tell", "target": "말하다"},
+        {"known": "telling", "target": "말하고 있어요"},
+        {"known": "please tell me", "target": "말해 주세요"},
+        {"known": "don't tell", "target": "말하지 마세요"},
+        {"known": "I told her yesterday", "target": "어제 그녀에게 말했어요"},
+        {"known": "She told me the truth", "target": "그녀는 나에게 사실을 말했어요"},
+        {"known": "He told us about the meeting", "target": "그는 우리에게 회의에 대해 말했어요"},
+        {"known": "We told them what happened last night", "target": "어젯밤에 무슨 일이 있었는지 그들에게 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what he wants",
+      "target": "뭘 원하는지",
+      "components": [
+        {"known": "what", "target": "뭘"},
+        {"known": "wants (question form)", "target": "원하는지"}
+      ],
+      "phrases": [
+        {"known": "what", "target": "뭘"},
+        {"known": "wants", "target": "원하는지"},
+        {"known": "what she wants", "target": "뭘 원하는지"},
+        {"known": "what they want", "target": "뭘 원하는지"},
+        {"known": "what he wants", "target": "그가 뭘 원해요"},
+        {"known": "what do you want", "target": "뭘 원하는지요?"},
+        {"known": "I know what he wants", "target": "그가 뭘 원하는지 알아요"},
+        {"known": "She asked what I wanted", "target": "나에게 뭘 원하는지 물어봤어요"},
+        {"known": "I don't know what she wants", "target": "그녀가 뭘 원하는지 몰라요"},
+        {"known": "We asked them what they wanted", "target": "그들에게 뭘 원하는지 물어봤어요"},
+        {"known": "He doesn't know what he wants to do", "target": "그는 뭘 하고 싶은지 몰라요"},
+        {"known": "She told me what she wanted yesterday", "target": "어제 그녀가 뭘 원하는지 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "trying to tell",
+      "target": "말하려고 하다",
+      "components": [
+        {"known": "tell", "target": "말하려고"},
+        {"known": "trying to", "target": "하다"}
+      ],
+      "phrases": [
+        {"known": "to tell", "target": "말하려고"},
+        {"known": "trying to", "target": "하려고"},
+        {"known": "trying to tell", "target": "말하려고 해요"},
+        {"known": "trying to say", "target": "말하려고 해요"},
+        {"known": "was trying to tell", "target": "말하려고 했어요"},
+        {"known": "I'm trying to tell you", "target": "말하려고 해요"},
+        {"known": "She was trying to tell me", "target": "나에게 말하려고 했어요"},
+        {"known": "What are you trying to tell me?", "target": "나에게 뭘 말하려고 해요?"},
+        {"known": "He was trying to tell the truth", "target": "사실을 말하려고 했어요"},
+        {"known": "I was trying to explain what happened", "target": "무슨 일이 있었는지 말하려고 했어요"},
+        {"known": "She was trying to tell us about the meeting", "target": "우리에게 회의에 대해 말하려고 했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "He's trying to tell me what he wants",
+      "target": "그는 나에게 뭘 원하는지 말하려고 해요",
+      "components": [
+        {"known": "he", "target": "그는"},
+        {"known": "to me", "target": "나에게"},
+        {"known": "what he wants", "target": "뭘 원하는지"},
+        {"known": "trying to tell", "target": "말하려고 해요"}
+      ],
+      "phrases": [
+        {"known": "he", "target": "그는"},
+        {"known": "to me", "target": "나에게"},
+        {"known": "what he wants", "target": "뭘 원하는지"},
+        {"known": "trying to tell", "target": "말하려고 해요"},
+        {"known": "to me what", "target": "나에게 뭘"},
+        {"known": "He's trying to tell", "target": "그는 말하려고 해요"},
+        {"known": "He's trying to tell me what he wants", "target": "그는 나에게 뭘 원하는지 말하려고 해요"},
+        {"known": "She was trying to tell us what she saw", "target": "그녀는 우리에게 뭘 봤는지 말하려고 했어요"},
+        {"known": "They're trying to tell me what happened", "target": "그들은 나에게 무슨 일이 있었는지 말하려고 해요"},
+        {"known": "I was trying to tell him what I wanted", "target": "나는 그에게 뭘 원하는지 말하려고 했어요"}
+      ]
+    }
+  ]
+}

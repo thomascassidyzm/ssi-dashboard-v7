@@ -1,0 +1,94 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 181,
+  "known_text": "But I have to take my mother to the doctor.",
+  "target_text": "하지만 어머니를 병원에 모셔다 드려야 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "but/however",
+      "target": "하지만",
+      "phrases": [
+        {"known": "but", "target": "하지만"},
+        {"known": "but now", "target": "하지만 지금"},
+        {"known": "but today", "target": "하지만 오늘"},
+        {"known": "But I am busy", "target": "하지만 바빠요"},
+        {"known": "But I cannot go", "target": "하지만 갈 수 없어요"},
+        {"known": "But that is not right", "target": "하지만 그건 맞지 않아요"},
+        {"known": "But I already ate", "target": "하지만 이미 먹었어요"},
+        {"known": "But she is not here today", "target": "하지만 그녀는 오늘 여기 없어요"},
+        {"known": "But I wanted to meet you yesterday", "target": "하지만 어제 만나고 싶었어요"},
+        {"known": "But I already told you about this idea", "target": "하지만 이 생각에 대해 이미 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to the doctor/hospital",
+      "target": "병원에",
+      "components": [
+        {"known": "hospital/doctor", "target": "병원"},
+        {"known": "to (location)", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "hospital", "target": "병원"},
+        {"known": "to hospital", "target": "병원에"},
+        {"known": "at hospital", "target": "병원에서"},
+        {"known": "I went to the hospital", "target": "병원에 갔어요"},
+        {"known": "I need to go to hospital", "target": "병원에 가야 해요"},
+        {"known": "The hospital is far", "target": "병원이 멀어요"},
+        {"known": "She works at the hospital", "target": "그녀는 병원에서 일해요"},
+        {"known": "I have to take him to hospital tomorrow", "target": "내일 그를 병원에 데려가야 해요"},
+        {"known": "My mother went to hospital this morning", "target": "어머니가 오늘 아침에 병원에 갔어요"},
+        {"known": "I was surprised when I heard she was at hospital", "target": "그녀가 병원에 있다고 들었을 때 놀랐어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "have to take (someone respectfully)",
+      "target": "모셔다 드려야 하다",
+      "components": [
+        {"known": "to accompany/escort (honorific)", "target": "모시다"},
+        {"known": "have to", "target": "아야/어야 하다"}
+      ],
+      "phrases": [
+        {"known": "to escort", "target": "모시다"},
+        {"known": "have to do", "target": "해야 해요"},
+        {"known": "to escort there", "target": "모셔다 드리다"},
+        {"known": "have to take", "target": "모셔다 드려야 해요"},
+        {"known": "I have to escort mother", "target": "어머니를 모셔야 해요"},
+        {"known": "I have to take my mother", "target": "어머니를 모셔다 드려야 해요"},
+        {"known": "I have to go with grandmother", "target": "할머니를 모시고 가야 해요"},
+        {"known": "I took parents to the restaurant", "target": "부모님을 식당에 모셔다 드렸어요"},
+        {"known": "I need to take mother home", "target": "어머니를 집에 모셔다 드려야 해요"},
+        {"known": "I promised to take my parents somewhere nice this weekend", "target": "이번 주말에 부모님을 좋은 곳에 모셔다 드리기로 했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "But I have to take my mother to the doctor",
+      "target": "하지만 어머니를 병원에 모셔다 드려야 해요",
+      "components": [
+        {"known": "but", "target": "하지만"},
+        {"known": "mother", "target": "어머니"},
+        {"known": "to the hospital", "target": "병원에"},
+        {"known": "have to take (respectfully)", "target": "모셔다 드려야 해요"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "하지만"},
+        {"known": "mother", "target": "어머니"},
+        {"known": "to hospital", "target": "병원에"},
+        {"known": "have to take mother", "target": "어머니를 모셔야 해요"},
+        {"known": "but have to work", "target": "하지만 일해야 해요"},
+        {"known": "But I have to take my mother to the doctor", "target": "하지만 어머니를 병원에 모셔다 드려야 해요"},
+        {"known": "But I have to help my father today", "target": "하지만 오늘 아버지를 도와드려야 해요"},
+        {"known": "But I need to take grandmother home first", "target": "하지만 먼저 할머니를 집에 모셔다 드려야 해요"},
+        {"known": "But I have to work this afternoon", "target": "하지만 오늘 오후에 일해야 해요"},
+        {"known": "But I cannot go because I have to take parents to hospital this morning", "target": "하지만 오늘 아침에 부모님을 병원에 모셔다 드려야 해서 갈 수 없어요"}
+      ]
+    }
+  ]
+}

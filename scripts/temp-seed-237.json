@@ -1,0 +1,74 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 237,
+  "known_text": "He wanted me to tell you before the weekend.",
+  "target_text": "그는 주말 전에 말해달라고 했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "before the weekend",
+      "target": "주말 전에",
+      "components": [
+        {"known": "weekend", "target": "주말"},
+        {"known": "before", "target": "전에"}
+      ],
+      "phrases": [
+        {"known": "weekend", "target": "주말"},
+        {"known": "before", "target": "전에"},
+        {"known": "the weekend", "target": "주말에"},
+        {"known": "before the weekend", "target": "주말 전에"},
+        {"known": "before Sunday", "target": "일요일 전에"},
+        {"known": "call before the weekend", "target": "주말 전에 전화해요"},
+        {"known": "tell before tomorrow", "target": "내일 전에 말해요"},
+        {"known": "I want to finish before the weekend", "target": "주말 전에 끝내고 싶어요"},
+        {"known": "she called me before the meeting", "target": "그녀가 모임 전에 전화했어요"},
+        {"known": "my friend came to help before Sunday", "target": "제 친구가 일요일 전에 도와주러 왔어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wanted me to tell",
+      "target": "말해달라고 하다",
+      "components": [
+        {"known": "tell (request)", "target": "말해달라"},
+        {"known": "said/asked", "target": "고 하다"}
+      ],
+      "phrases": [
+        {"known": "tell", "target": "말해요"},
+        {"known": "asked", "target": "달라고 했어요"},
+        {"known": "please tell", "target": "말해 주세요"},
+        {"known": "wanted me to tell", "target": "말해달라고 했어요"},
+        {"known": "she asked me to tell", "target": "그녀가 말해달라고 했어요"},
+        {"known": "he wanted me to come", "target": "그는 와달라고 했어요"},
+        {"known": "my friend asked me to help", "target": "제 친구가 도와달라고 했어요"},
+        {"known": "she wanted me to tell the truth", "target": "그녀가 진실을 말해달라고 했어요"},
+        {"known": "the teacher asked me to explain", "target": "선생님이 설명해달라고 했어요"},
+        {"known": "he wanted me to call yesterday", "target": "그가 어제 전화해달라고 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he wanted me to tell you before the weekend",
+      "target": "그는 주말 전에 말해달라고 했어요",
+      "components": [
+        {"known": "before the weekend", "target": "주말 전에"},
+        {"known": "wanted me to tell", "target": "말해달라고 하다"}
+      ],
+      "phrases": [
+        {"known": "he said", "target": "그는 말했어요"},
+        {"known": "before", "target": "전에"},
+        {"known": "the weekend", "target": "주말에"},
+        {"known": "he asked", "target": "그는 했어요"},
+        {"known": "wanted me to tell", "target": "말해달라고 했어요"},
+        {"known": "he asked me to tell", "target": "그는 말해달라고 했어요"},
+        {"known": "she wanted me to tell before Sunday", "target": "그녀가 일요일 전에 말해달라고 했어요"},
+        {"known": "my friend wanted me to call yesterday", "target": "제 친구가 어제 전화해달라고 했어요"},
+        {"known": "he asked me to come before the meeting", "target": "그는 모임 전에 와달라고 했어요"},
+        {"known": "he wanted me to tell her something important", "target": "그는 중요한 것을 말해달라고 했어요"}
+      ]
+    }
+  ]
+}

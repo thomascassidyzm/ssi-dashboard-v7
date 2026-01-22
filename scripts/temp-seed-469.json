@@ -1,0 +1,84 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 469,
+  "known_text": "But that doesn't mean we can't change it.",
+  "target_text": "하지만 그건 우리가 바꿀 수 없다는 뜻이 아니에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "we can't change it",
+      "target": "우리가 바꿀 수 없다",
+      "components": [
+        {"known": "we", "target": "우리가"},
+        {"known": "change", "target": "바꾸다"},
+        {"known": "can't", "target": "ㄹ 수 없다"}
+      ],
+      "phrases": [
+        {"known": "we", "target": "우리가요"},
+        {"known": "can't", "target": "못해요"},
+        {"known": "change it", "target": "바꿔요"},
+        {"known": "I can't do it", "target": "못해요"},
+        {"known": "we can't go there", "target": "우리가 거기 못 가요"},
+        {"known": "she can't change it", "target": "그녀가 바꿀 수 없어요"},
+        {"known": "I couldn't find it", "target": "찾을 수 없었어요"},
+        {"known": "they can't change the rules", "target": "그들이 규칙 바꿀 수 없어요"},
+        {"known": "we can't do anything about it", "target": "우리가 아무것도 못해요"},
+        {"known": "he couldn't change her mind", "target": "그가 그녀 마음 바꿀 수 없었어요"},
+        {"known": "I can't change the past", "target": "과거를 바꿀 수 없어요"},
+        {"known": "they said we can't change the schedule", "target": "그들이 일정 바꿀 수 없다고 했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that doesn't mean",
+      "target": "그건 뜻이 아니다",
+      "components": [
+        {"known": "that", "target": "그건"},
+        {"known": "meaning", "target": "뜻"},
+        {"known": "isn't", "target": "이 아니다"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "그건요"},
+        {"known": "meaning", "target": "뜻이요"},
+        {"known": "it isn't", "target": "아니에요"},
+        {"known": "that's not", "target": "그건 아니에요"},
+        {"known": "what does it mean", "target": "뜻이 뭐예요?"},
+        {"known": "it doesn't mean that", "target": "그런 뜻이 아니에요"},
+        {"known": "that's not what I meant", "target": "그런 뜻이 아니었어요"},
+        {"known": "she didn't mean it that way", "target": "그녀가 그런 뜻으로 안 했어요"},
+        {"known": "just because that's not the meaning", "target": "그건 뜻이 아니니까요"},
+        {"known": "I understand what you mean", "target": "무슨 뜻인지 알아요"},
+        {"known": "that doesn't mean I don't care", "target": "그건 신경 안 쓴다는 뜻이 아니에요"},
+        {"known": "it doesn't mean we should give up", "target": "포기해야 한다는 뜻이 아니에요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "but that doesn't mean we can't change it",
+      "target": "하지만 그건 우리가 바꿀 수 없다는 뜻이 아니에요",
+      "components": [
+        {"known": "but", "target": "하지만"},
+        {"known": "that doesn't mean", "target": "그건 뜻이 아니다"},
+        {"known": "we can't change it", "target": "우리가 바꿀 수 없다"},
+        {"known": "quotation", "target": "는"}
+      ],
+      "phrases": [
+        {"known": "but", "target": "하지만요"},
+        {"known": "however", "target": "그렇지만요"},
+        {"known": "but still", "target": "그래도요"},
+        {"known": "that doesn't mean", "target": "뜻이 아니에요"},
+        {"known": "but we can still try", "target": "하지만 해볼 수 있어요"},
+        {"known": "but it doesn't mean we failed", "target": "하지만 실패한 건 아니에요"},
+        {"known": "but that doesn't mean I agree", "target": "하지만 동의한다는 뜻 아니에요"},
+        {"known": "it's difficult but not impossible", "target": "어렵지만 불가능하진 않아요"},
+        {"known": "but that doesn't mean we should stop", "target": "하지만 멈춰야 한다는 뜻 아니에요"},
+        {"known": "she's busy but that doesn't mean she can't help", "target": "그녀가 바쁘지만 도울 수 없단 뜻 아니에요"},
+        {"known": "it's hard but we can make a difference", "target": "어렵지만 변화 만들 수 있어요"},
+        {"known": "but that doesn't mean there's no hope", "target": "하지만 희망이 없다는 뜻 아니에요"}
+      ]
+    }
+  ]
+}

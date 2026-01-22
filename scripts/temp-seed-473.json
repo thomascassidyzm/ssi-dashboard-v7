@@ -1,0 +1,32 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 473,
+  "known_text": "I don't want it.",
+  "target_text": "안 원해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "don't want",
+      "target": "안 원해요",
+      "components": [
+        {"known": "not", "target": "안"},
+        {"known": "want", "target": "원하다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "don't", "target": "안 해요"},
+        {"known": "I want", "target": "원해요"},
+        {"known": "don't want", "target": "안 원해요"},
+        {"known": "I don't like it", "target": "싫어요"},
+        {"known": "she doesn't want any", "target": "그녀가 안 원해요"},
+        {"known": "he said he doesn't want it", "target": "그가 안 원한다고 했어요"},
+        {"known": "I don't want to go there", "target": "거기 가고 싶지 않아요"},
+        {"known": "she doesn't want to eat now", "target": "그녀가 지금 안 먹고 싶어해요"},
+        {"known": "he told me he doesn't want help", "target": "그가 도움 안 원한다고 했어요"},
+        {"known": "I really don't want to do this", "target": "정말 이거 하고 싶지 않아요"},
+        {"known": "they said they don't want any more", "target": "그들이 더 안 원한다고 했어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 255,
+  "known_text": "When do you think you'll be ready to leave?",
+  "target_text": "언제 떠날 준비가 될 것 같아요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "leave/depart",
+      "target": "떠나다",
+      "phrases": [
+        {"known": "leave", "target": "떠나요"},
+        {"known": "depart", "target": "떠나요"},
+        {"known": "I'm leaving", "target": "떠날 거예요"},
+        {"known": "she left", "target": "그녀가 떠났어요"},
+        {"known": "when did you leave?", "target": "언제 떠났어요?"},
+        {"known": "I don't want to leave", "target": "떠나고 싶지 않아요"},
+        {"known": "he's leaving tomorrow", "target": "그가 내일 떠날 거예요"},
+        {"known": "she said she's leaving soon", "target": "그녀가 곧 떠난다고 말했어요"},
+        {"known": "I left early in the morning", "target": "아침 일찍 떠났어요"},
+        {"known": "my friend left before the meeting ended", "target": "제 친구가 모임이 끝나기 전에 떠났어요"},
+        {"known": "she said she'll leave after lunch today", "target": "그녀가 오늘 점심 후에 떠난다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "ready to leave",
+      "target": "떠날 준비",
+      "components": [
+        {"known": "leave/depart", "target": "떠나다"},
+        {"known": "preparation", "target": "준비"}
+      ],
+      "phrases": [
+        {"known": "ready", "target": "준비"},
+        {"known": "to leave", "target": "떠날"},
+        {"known": "ready to go", "target": "갈 준비"},
+        {"known": "ready to leave", "target": "떠날 준비"},
+        {"known": "leaving preparation", "target": "떠날 준비가"},
+        {"known": "I'm ready to leave", "target": "떠날 준비가 됐어요"},
+        {"known": "not ready to leave yet", "target": "아직 떠날 준비가 안 됐어요"},
+        {"known": "she's ready to go now", "target": "그녀가 지금 갈 준비가 됐어요"},
+        {"known": "are you ready to leave?", "target": "떠날 준비가 됐어요?"},
+        {"known": "he said he's ready to leave tomorrow", "target": "그가 내일 떠날 준비가 됐다고 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "seems like it will be",
+      "target": "될 것 같다",
+      "components": [
+        {"known": "become", "target": "되다"},
+        {"known": "seems like", "target": "것 같다"}
+      ],
+      "phrases": [
+        {"known": "will be", "target": "될 거예요"},
+        {"known": "seems", "target": "것 같아요"},
+        {"known": "seems ready", "target": "될 것 같아요"},
+        {"known": "I think so", "target": "그런 것 같아요"},
+        {"known": "it seems like", "target": "것 같아요"},
+        {"known": "she seems ready", "target": "그녀가 준비된 것 같아요"},
+        {"known": "it will probably be good", "target": "좋을 것 같아요"},
+        {"known": "I think it will be ready", "target": "준비될 것 같아요"},
+        {"known": "he said it seems like it will work", "target": "그가 될 것 같다고 말했어요"},
+        {"known": "she thinks it will be ready soon", "target": "그녀가 곧 될 것 같다고 생각해요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "when do you think you'll be ready to leave",
+      "target": "언제 떠날 준비가 될 것 같아요",
+      "components": [
+        {"known": "when", "target": "언제"},
+        {"known": "ready to leave", "target": "떠날 준비"},
+        {"known": "seems like it will be", "target": "될 것 같다"}
+      ],
+      "phrases": [
+        {"known": "when", "target": "언제"},
+        {"known": "seems", "target": "것 같아요"},
+        {"known": "ready to", "target": "준비가"},
+        {"known": "will be ready", "target": "될 것 같아요"},
+        {"known": "when will you leave?", "target": "언제 떠날 거예요?"},
+        {"known": "when do you think?", "target": "언제 될 것 같아요?"},
+        {"known": "when seems ready", "target": "언제 준비될 것 같아요?"},
+        {"known": "she asked when I think I'll be ready", "target": "그녀가 언제 준비될 것 같냐고 물었어요"},
+        {"known": "when do you think she'll be ready to go?", "target": "그녀가 언제 갈 준비가 될 것 같아요?"},
+        {"known": "he asked when we think we'll be ready to leave", "target": "그가 언제 떠날 준비가 될 것 같냐고 물었어요"}
+      ]
+    }
+  ]
+}

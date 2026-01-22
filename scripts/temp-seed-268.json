@@ -1,0 +1,102 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 268,
+  "known_text": "Yes she sent me two emails last week.",
+  "target_text": "네 그녀가 지난주에 저한테 이메일 두 개 보냈어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "email",
+      "target": "이메일",
+      "phrases": [
+        {"known": "email", "target": "이메일"},
+        {"known": "an email", "target": "이메일이요"},
+        {"known": "send email", "target": "이메일 보내요"},
+        {"known": "got an email", "target": "이메일 받았어요"},
+        {"known": "my email", "target": "제 이메일이에요"},
+        {"known": "check email", "target": "이메일 확인해요"},
+        {"known": "I'll send an email", "target": "이메일 보낼게요"},
+        {"known": "email address", "target": "이메일 주소예요"},
+        {"known": "did you get my email?", "target": "제 이메일 받았어요?"},
+        {"known": "I need to send an email now", "target": "지금 이메일 보내야 해요"},
+        {"known": "please check your email later", "target": "나중에 이메일 확인해 주세요"},
+        {"known": "I got an email from my friend today", "target": "오늘 친구한테 이메일 받았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "two emails",
+      "target": "이메일 두 개",
+      "components": [
+        {"known": "email", "target": "이메일"},
+        {"known": "two", "target": "두"},
+        {"known": "counter (things)", "target": "개"}
+      ],
+      "phrases": [
+        {"known": "two", "target": "두 개요"},
+        {"known": "two things", "target": "두 개예요"},
+        {"known": "one email", "target": "이메일 한 개"},
+        {"known": "two emails", "target": "이메일 두 개"},
+        {"known": "three emails", "target": "이메일 세 개"},
+        {"known": "how many emails?", "target": "이메일 몇 개요?"},
+        {"known": "I got two emails", "target": "이메일 두 개 받았어요"},
+        {"known": "send me two emails", "target": "이메일 두 개 보내 주세요"},
+        {"known": "I need two more", "target": "두 개 더 필요해요"},
+        {"known": "I wrote two emails today", "target": "오늘 이메일 두 개 썼어요"},
+        {"known": "she asked for two things", "target": "그녀가 두 개 달라고 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "sent me two emails",
+      "target": "저한테 이메일 두 개 보냈어요",
+      "components": [
+        {"known": "to me", "target": "저한테"},
+        {"known": "two emails", "target": "이메일 두 개"},
+        {"known": "sent", "target": "보내다"}
+      ],
+      "phrases": [
+        {"known": "sent", "target": "보냈어요"},
+        {"known": "to me", "target": "저한테요"},
+        {"known": "send to me", "target": "저한테 보내요"},
+        {"known": "sent an email", "target": "이메일 보냈어요"},
+        {"known": "sent me something", "target": "저한테 뭔가 보냈어요"},
+        {"known": "sent it to me", "target": "저한테 보냈어요"},
+        {"known": "sent two things", "target": "두 개 보냈어요"},
+        {"known": "she sent me a message", "target": "그녀가 저한테 메시지 보냈어요"},
+        {"known": "he sent me many emails", "target": "그가 저한테 이메일 많이 보냈어요"},
+        {"known": "please send me two of them", "target": "저한테 두 개 보내 주세요"},
+        {"known": "she sent me an email yesterday", "target": "그녀가 어제 저한테 이메일 보냈어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "yes she sent me two emails last week",
+      "target": "네 그녀가 지난주에 저한테 이메일 두 개 보냈어요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "she", "target": "그녀가"},
+        {"known": "last week", "target": "지난주에"},
+        {"known": "sent me two emails", "target": "저한테 이메일 두 개 보냈어요"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "she did", "target": "그녀가요"},
+        {"known": "last week", "target": "지난주에"},
+        {"known": "she sent it", "target": "그녀가 보냈어요"},
+        {"known": "yes she did", "target": "네 그녀가 했어요"},
+        {"known": "she sent it last week", "target": "그녀가 지난주에 보냈어요"},
+        {"known": "I got two last week", "target": "지난주에 두 개 받았어요"},
+        {"known": "yes I got emails from her", "target": "네 그녀한테 이메일 받았어요"},
+        {"known": "she contacted me last week", "target": "그녀가 지난주에 연락했어요"},
+        {"known": "I received an email from her last week", "target": "지난주에 그녀한테 이메일 받았어요"},
+        {"known": "yes she sent me many messages last week", "target": "네 그녀가 지난주에 메시지 많이 보냈어요"},
+        {"known": "she told me she sent two emails last week", "target": "그녀가 지난주에 이메일 두 개 보냈다고 말했어요"}
+      ]
+    }
+  ]
+}

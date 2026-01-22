@@ -1,0 +1,53 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 591,
+  "target_text": "그녀가 가게까지 저를 따라왔어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "followed me",
+      "target": "저를 따라오다",
+      "components": [
+        {"known": "me", "target": "저를"},
+        {"known": "followed", "target": "따라오다"}
+      ],
+      "phrases": [
+        {"known": "me", "target": "저를"},
+        {"known": "follow", "target": "따라오다"},
+        {"known": "followed", "target": "따라왔어요"},
+        {"known": "followed me", "target": "저를 따라왔어요"},
+        {"known": "follow me please", "target": "저를 따라오세요"},
+        {"known": "he followed me home", "target": "그가 집까지 따라왔어요"},
+        {"known": "why are you following me", "target": "왜 저를 따라오세요?"},
+        {"known": "the dog followed me everywhere", "target": "개가 어디든 저를 따라왔어요"},
+        {"known": "she asked me if she could follow me", "target": "저를 따라가도 되냐고 물었어요"},
+        {"known": "I noticed someone was following me on the way home", "target": "집에 가는 길에 누군가 저를 따라오는 걸 알았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "she followed me down to the shops",
+      "target": "그녀가 가게까지 저를 따라왔어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "followed me", "target": "저를 따라오다"},
+        {"known": "to the shops", "target": "가게까지"}
+      ],
+      "phrases": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "the shops", "target": "가게"},
+        {"known": "to the shops", "target": "가게까지"},
+        {"known": "she came along", "target": "그녀가 같이 왔어요"},
+        {"known": "went to the shops together", "target": "같이 가게에 갔어요"},
+        {"known": "she followed me down to the shops", "target": "그녀가 가게까지 저를 따라왔어요"},
+        {"known": "my friend followed me to the station", "target": "친구가 역까지 저를 따라왔어요"},
+        {"known": "the children followed us to the park", "target": "아이들이 공원까지 우리를 따라왔어요"},
+        {"known": "she said she would follow me wherever I went", "target": "어디를 가든 저를 따라오겠다고 했어요"},
+        {"known": "he followed his sister down to the beach", "target": "그가 해변까지 누나를 따라갔어요"},
+        {"known": "I did not realize she had followed me all the way here", "target": "여기까지 저를 따라온 줄 몰랐어요"}
+      ]
+    }
+  ]
+}

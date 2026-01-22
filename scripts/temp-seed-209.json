@@ -1,0 +1,96 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 209,
+  "known_text": "They want to spend more time meeting as a group.",
+  "target_text": "그들은 그룹으로 만나는 데 더 많은 시간을 보내고 싶어해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "as a group",
+      "target": "그룹으로",
+      "components": [
+        {"known": "group", "target": "그룹"},
+        {"known": "as", "target": "으로"}
+      ],
+      "phrases": [
+        {"known": "group", "target": "그룹"},
+        {"known": "a group", "target": "그룹"},
+        {"known": "as a group", "target": "그룹으로"},
+        {"known": "in a group", "target": "그룹으로"},
+        {"known": "our group", "target": "우리 그룹"},
+        {"known": "the group meets", "target": "그룹이 만나요"},
+        {"known": "as a group we practice", "target": "그룹으로 연습해요"},
+        {"known": "my daughter is in a group", "target": "제 딸은 그룹에 있어요"},
+        {"known": "the teacher formed a group", "target": "선생님이 그룹을 만들었어요"},
+        {"known": "we study Korean as a group on Saturday", "target": "토요일에 그룹으로 한국어를 공부해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "meeting / getting together",
+      "target": "만나는 데",
+      "components": [
+        {"known": "meet", "target": "만나다"},
+        {"known": "in doing (gerund)", "target": "는 데"}
+      ],
+      "phrases": [
+        {"known": "meet", "target": "만나요"},
+        {"known": "meeting", "target": "만나는"},
+        {"known": "in meeting", "target": "만나는 데"},
+        {"known": "I met them", "target": "그들을 만났어요"},
+        {"known": "where shall we meet?", "target": "어디서 만날까요?"},
+        {"known": "I enjoy meeting friends", "target": "친구 만나는 것이 좋아요"},
+        {"known": "she spends time meeting people", "target": "그녀는 사람 만나는 데 시간을 보내요"},
+        {"known": "the teacher likes meeting students", "target": "선생님은 학생 만나는 것이 좋아요"},
+        {"known": "I spend time meeting my son on Saturday", "target": "토요일에 제 아들 만나는 데 시간을 보내요"},
+        {"known": "meeting as a group is enjoyable", "target": "그룹으로 만나는 것이 즐거워요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "more time",
+      "target": "더 많은 시간을",
+      "components": [
+        {"known": "more", "target": "더"},
+        {"known": "a lot of time (object)", "target": "많은 시간을"}
+      ],
+      "phrases": [
+        {"known": "more", "target": "더"},
+        {"known": "time", "target": "시간"},
+        {"known": "more time", "target": "더 많은 시간"},
+        {"known": "a lot of time", "target": "많은 시간"},
+        {"known": "spend more time", "target": "더 많은 시간을 보내요"},
+        {"known": "I need more time", "target": "더 많은 시간이 필요해요"},
+        {"known": "she has more time now", "target": "그녀는 이제 더 많은 시간이 있어요"},
+        {"known": "I spend more time practicing speaking", "target": "말하기 연습하는 데 더 많은 시간을 보내요"},
+        {"known": "my daughter needs more time to prepare", "target": "제 딸은 준비하는 데 더 많은 시간이 필요해요"},
+        {"known": "the teacher gave us more time to finish", "target": "선생님이 끝내는 데 더 많은 시간을 주셨어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "want to spend",
+      "target": "보내고 싶어하다",
+      "components": [
+        {"known": "spend", "target": "보내다"},
+        {"known": "want to (third person)", "target": "고 싶어하다"}
+      ],
+      "phrases": [
+        {"known": "spend", "target": "보내요"},
+        {"known": "want to spend", "target": "보내고 싶어해요"},
+        {"known": "spent time", "target": "시간을 보냈어요"},
+        {"known": "they want to", "target": "그들은 싶어해요"},
+        {"known": "she wants to spend time", "target": "그녀는 시간을 보내고 싶어해요"},
+        {"known": "they want to spend time together", "target": "그들은 함께 시간을 보내고 싶어해요"},
+        {"known": "I spent a good time on Saturday", "target": "토요일에 좋은 시간을 보냈어요"},
+        {"known": "my son wants to spend time with friends", "target": "제 아들은 친구와 시간을 보내고 싶어해요"},
+        {"known": "the teacher wants to spend more time practicing", "target": "선생님은 연습하는 데 더 많은 시간을 보내고 싶어해요"},
+        {"known": "they want to spend time at the office together", "target": "그들은 사무실에서 함께 시간을 보내고 싶어해요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 244,
+  "known_text": "I've learnt a lot already",
+  "target_text": "이미 많이 배웠어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "already",
+      "target": "이미",
+      "phrases": [
+        {"known": "already", "target": "이미"},
+        {"known": "already done", "target": "이미 했어요"},
+        {"known": "already here", "target": "이미 여기 있어요"},
+        {"known": "she already came", "target": "그녀가 이미 왔어요"},
+        {"known": "I already know", "target": "이미 알아요"},
+        {"known": "he already left", "target": "그가 이미 갔어요"},
+        {"known": "already finished", "target": "이미 끝났어요"},
+        {"known": "I've already eaten", "target": "이미 먹었어요"},
+        {"known": "she said she already understood", "target": "그녀가 이미 이해했다고 말했어요"},
+        {"known": "my friend already learned that yesterday", "target": "제 친구가 어제 이미 그것을 배웠어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "a lot/many",
+      "target": "많이",
+      "phrases": [
+        {"known": "a lot", "target": "많이"},
+        {"known": "many", "target": "많이"},
+        {"known": "a lot of", "target": "많이"},
+        {"known": "learned a lot", "target": "많이 배웠어요"},
+        {"known": "helped a lot", "target": "많이 도와줬어요"},
+        {"known": "I ate a lot", "target": "많이 먹었어요"},
+        {"known": "she knows a lot", "target": "그녀가 많이 알아요"},
+        {"known": "he worked a lot yesterday", "target": "그가 어제 많이 일했어요"},
+        {"known": "my friend studies Korean a lot", "target": "제 친구가 한국어를 많이 공부해요"},
+        {"known": "I talked a lot with her last night", "target": "어젯밤에 그녀와 많이 얘기했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I've learnt a lot already",
+      "target": "이미 많이 배웠어요",
+      "components": [
+        {"known": "already", "target": "이미"},
+        {"known": "a lot/many", "target": "많이"},
+        {"known": "learned", "target": "배웠어요"}
+      ],
+      "phrases": [
+        {"known": "learned", "target": "배웠어요"},
+        {"known": "already", "target": "이미요"},
+        {"known": "a lot", "target": "많이요"},
+        {"known": "learned a lot", "target": "많이 배웠어요"},
+        {"known": "already learned", "target": "이미 배웠어요"},
+        {"known": "he learned a lot", "target": "그가 많이 배웠어요"},
+        {"known": "already learned a lot", "target": "이미 많이 배웠어요"},
+        {"known": "she said she learned a lot", "target": "그녀가 많이 배웠다고 말했어요"},
+        {"known": "my friend has already learned Korean", "target": "제 친구가 이미 한국어를 배웠어요"},
+        {"known": "I've already learned a lot from her", "target": "그녀에게서 이미 많이 배웠어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 535,
+  "known_text": "He made a promise that he wouldn't choose the wrong job.",
+  "target_text": "그가 잘못된 직업 안 고르겠다고 약속했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the wrong job",
+      "target": "잘못된 직업",
+      "components": [
+        {"known": "wrong", "target": "잘못된"},
+        {"known": "job", "target": "직업"}
+      ],
+      "phrases": [
+        {"known": "wrong", "target": "잘못됐어요"},
+        {"known": "job", "target": "직업이요"},
+        {"known": "my job", "target": "제 직업이요"},
+        {"known": "that's wrong", "target": "잘못됐어요"},
+        {"known": "new job", "target": "새 직업이요"},
+        {"known": "you chose wrong", "target": "잘못 골랐어요"},
+        {"known": "wrong answer", "target": "잘못된 답이요"},
+        {"known": "she has a good job", "target": "그녀가 좋은 직업 있어요"},
+        {"known": "I made the wrong decision", "target": "잘못된 결정 했어요"},
+        {"known": "he's looking for a new job", "target": "그가 새 직업 찾고 있어요"},
+        {"known": "this was the wrong choice from the start", "target": "처음부터 잘못된 선택이었어요"},
+        {"known": "she realized she took the wrong path", "target": "그녀가 잘못된 길 갔다는 걸 알았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wouldn't choose the wrong job",
+      "target": "잘못된 직업 안 고르겠다",
+      "components": [
+        {"known": "the wrong job", "target": "잘못된 직업"},
+        {"known": "wouldn't choose", "target": "안 고르겠다"}
+      ],
+      "phrases": [
+        {"known": "choose", "target": "골라요"},
+        {"known": "wouldn't", "target": "안 할 거예요"},
+        {"known": "I chose", "target": "골랐어요"},
+        {"known": "which one", "target": "어느 거요?"},
+        {"known": "I'll choose", "target": "고를게요"},
+        {"known": "pick one", "target": "하나 골라요"},
+        {"known": "choose wisely", "target": "잘 골라요"},
+        {"known": "I won't choose", "target": "안 고를 거예요"},
+        {"known": "she wouldn't agree", "target": "그녀가 동의 안 하겠대요"},
+        {"known": "he chose the red one", "target": "그가 빨간 거 골랐어요"},
+        {"known": "I wouldn't do that if I were you", "target": "나라면 그거 안 할 거예요"},
+        {"known": "she said she wouldn't come tomorrow", "target": "그녀가 내일 안 오겠다고 했어요"},
+        {"known": "he wouldn't pick that option again", "target": "그가 그 선택 다시 안 고르겠대요"},
+        {"known": "they decided they wouldn't choose sides", "target": "그들이 편 안 들기로 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he made a promise that he wouldn't choose the wrong job",
+      "target": "그가 잘못된 직업 안 고르겠다고 약속했어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "wouldn't choose the wrong job", "target": "잘못된 직업 안 고르겠다"},
+        {"known": "made a promise that", "target": "고 약속하다"}
+      ],
+      "phrases": [
+        {"known": "promise", "target": "약속해요"},
+        {"known": "he did", "target": "그가 했어요"},
+        {"known": "I promise", "target": "약속해요"},
+        {"known": "he said", "target": "그가 그랬어요"},
+        {"known": "she promised", "target": "그녀가 약속했어요"},
+        {"known": "keep your promise", "target": "약속 지켜요"},
+        {"known": "he promised to help", "target": "그가 도와주겠다고 약속했어요"},
+        {"known": "she promised to call later", "target": "그녀가 나중에 전화하겠다고 약속했어요"},
+        {"known": "I promised myself I would do better", "target": "더 잘하겠다고 스스로 약속했어요"},
+        {"known": "he made a promise to his parents", "target": "그가 부모님께 약속했어요"},
+        {"known": "she promised she would never lie again", "target": "그녀가 다시 거짓말 안 하겠다고 약속했어요"},
+        {"known": "they promised to support each other always", "target": "그들이 항상 서로 돕겠다고 약속했어요"}
+      ]
+    }
+  ]
+}

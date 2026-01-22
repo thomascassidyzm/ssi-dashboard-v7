@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 524,
+  "known_text": "I'll call you back in three or four minutes.",
+  "target_text": "삼사 분 후에 다시 전화할게요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "in three or four minutes",
+      "target": "삼사 분 후에",
+      "components": [
+        {"known": "three or four", "target": "삼사"},
+        {"known": "minutes", "target": "분"},
+        {"known": "after/in", "target": "후에"}
+      ],
+      "phrases": [
+        {"known": "minutes", "target": "분이요"},
+        {"known": "after", "target": "후에요"},
+        {"known": "a few", "target": "몇 개요"},
+        {"known": "in a minute", "target": "일 분 후에요"},
+        {"known": "after five minutes", "target": "오 분 후에요"},
+        {"known": "three or four things", "target": "삼사 개요"},
+        {"known": "just a few minutes", "target": "몇 분만요"},
+        {"known": "I'll be there in ten minutes", "target": "십 분 후에 갈게요"},
+        {"known": "she arrived after a few minutes", "target": "그녀가 몇 분 후에 도착했어요"},
+        {"known": "wait for me for five minutes", "target": "오 분만 기다려 줘요"},
+        {"known": "the meeting starts in three minutes", "target": "회의가 삼 분 후에 시작해요"},
+        {"known": "I'll finish this task in about three or four minutes", "target": "이 일 삼사 분 안에 끝낼게요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "call you back",
+      "target": "다시 전화하다",
+      "components": [
+        {"known": "again", "target": "다시"},
+        {"known": "call/phone", "target": "전화하다"}
+      ],
+      "phrases": [
+        {"known": "again", "target": "다시요"},
+        {"known": "call", "target": "전화해요"},
+        {"known": "phone call", "target": "전화요"},
+        {"known": "call me", "target": "전화해요"},
+        {"known": "I'll call you", "target": "전화할게요"},
+        {"known": "try again", "target": "다시 해 봐요"},
+        {"known": "call again", "target": "다시 전화해요"},
+        {"known": "she called me again", "target": "그녀가 다시 전화했어요"},
+        {"known": "I'll call you back later", "target": "나중에 다시 전화할게요"},
+        {"known": "can I call you tomorrow", "target": "내일 전화해도 돼요?"},
+        {"known": "he called back right away", "target": "그가 바로 다시 전화했어요"},
+        {"known": "please call me when you have time", "target": "시간 있을 때 전화해 줘요"},
+        {"known": "I missed the call so I'll call back", "target": "전화 놓쳐서 다시 할게요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I'll call you back in three or four minutes",
+      "target": "삼사 분 후에 다시 전화할게요",
+      "components": [
+        {"known": "in three or four minutes", "target": "삼사 분 후에"},
+        {"known": "call you back", "target": "다시 전화하다"},
+        {"known": "I will", "target": "ㄹ게요"}
+      ],
+      "phrases": [
+        {"known": "I will", "target": "할게요"},
+        {"known": "I'll do it", "target": "할게요"},
+        {"known": "I promise", "target": "약속해요"},
+        {"known": "let me call", "target": "전화할게요"},
+        {"known": "I'll be right back", "target": "금방 올게요"},
+        {"known": "I'll get back to you", "target": "다시 연락할게요"},
+        {"known": "give me just a moment", "target": "잠깐만요"},
+        {"known": "I'll contact you shortly", "target": "곧 연락할게요"},
+        {"known": "she said she'd call back soon", "target": "그녀가 곧 다시 전화한다고 했어요"},
+        {"known": "I'm busy now but I'll call you right back", "target": "지금 바빠서 바로 다시 전화할게요"},
+        {"known": "he promised to return the call in a few minutes", "target": "그가 몇 분 후에 다시 전화한다고 했어요"},
+        {"known": "I need to handle something quickly and I'll call you back", "target": "빨리 처리하고 다시 전화할게요"}
+      ]
+    }
+  ]
+}

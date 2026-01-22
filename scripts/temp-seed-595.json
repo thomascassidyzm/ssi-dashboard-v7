@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 595,
+  "target_text": "정원에서 누워야겠어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "lie down in the garden",
+      "target": "정원에서 눕다",
+      "components": [
+        {"known": "in the garden", "target": "정원에서"},
+        {"known": "lie down", "target": "눕다"}
+      ],
+      "phrases": [
+        {"known": "garden", "target": "정원"},
+        {"known": "lie down", "target": "눕다"},
+        {"known": "lie down please", "target": "누우세요"},
+        {"known": "in the garden", "target": "정원에서"},
+        {"known": "I want to lie down", "target": "눕고 싶어요"},
+        {"known": "lie down in the garden", "target": "정원에서 눕다"},
+        {"known": "the children are lying in the garden", "target": "아이들이 정원에 누워 있어요"},
+        {"known": "it is nice to lie down on the grass", "target": "잔디에 누우면 좋아요"},
+        {"known": "we have a beautiful garden behind the house", "target": "집 뒤에 예쁜 정원이 있어요"},
+        {"known": "my grandfather likes to lie down in the garden after lunch", "target": "할아버지는 점심 후에 정원에서 눕는 걸 좋아해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I need to lie down in the garden",
+      "target": "정원에서 누워야겠어요",
+      "components": [
+        {"known": "lie down in the garden", "target": "정원에서 눕다"},
+        {"known": "I need to", "target": "~해야겠다"}
+      ],
+      "phrases": [
+        {"known": "lying", "target": "누워요"},
+        {"known": "I must", "target": "해야 해요"},
+        {"known": "I need to", "target": "해야겠어요"},
+        {"known": "need to rest", "target": "쉬어야겠어요"},
+        {"known": "I need to lie down", "target": "누워야겠어요"},
+        {"known": "I need to lie down in the garden", "target": "정원에서 누워야겠어요"},
+        {"known": "she said she needed to rest for a while", "target": "잠깐 쉬어야겠다고 했어요"},
+        {"known": "I feel tired so I need to lie down", "target": "피곤해서 누워야겠어요"},
+        {"known": "after lunch I need to lie down in the garden", "target": "점심 후에 정원에서 누워야겠어요"},
+        {"known": "my mother needs to lie down because she has a headache", "target": "엄마가 머리가 아파서 누워야 해요"},
+        {"known": "when I am stressed I need to go outside and lie down", "target": "스트레스 받으면 밖에 나가서 누워야겠어요"}
+      ]
+    }
+  ]
+}

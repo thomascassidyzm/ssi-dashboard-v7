@@ -1,0 +1,79 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 98,
+  "known_text": "I should consider playing something else.",
+  "target_text": "다른 것을 연주하는 것을 고려해야 해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "something else (object)",
+      "target": "다른 것을",
+      "components": [
+        {"known": "different/else", "target": "다른"},
+        {"known": "thing", "target": "것"},
+        {"known": "(object marker)", "target": "을"}
+      ],
+      "phrases": [
+        {"known": "Different.", "target": "다른."},
+        {"known": "Something.", "target": "뭔가."},
+        {"known": "Something else.", "target": "다른 것."},
+        {"known": "Another thing.", "target": "다른 것."},
+        {"known": "Try something else.", "target": "다른 것을 해요."},
+        {"known": "She wants something else.", "target": "그녀는 다른 것을 원해요."},
+        {"known": "He needs something different.", "target": "그는 다른 것이 필요해요."},
+        {"known": "They considered something else.", "target": "그들은 다른 것을 고려했어요."},
+        {"known": "I should try something different.", "target": "다른 것을 해봐야 해요."},
+        {"known": "She asked if there's something else.", "target": "그녀는 다른 것이 있는지 물었어요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "playing (nominalized object)",
+      "target": "연주하는 것을",
+      "components": [
+        {"known": "play (instrument)", "target": "연주하다"},
+        {"known": "(present attributive)", "target": "-는"},
+        {"known": "thing (object)", "target": "것을"}
+      ],
+      "phrases": [
+        {"known": "Play.", "target": "연주해요."},
+        {"known": "Played.", "target": "연주했어요."},
+        {"known": "Playing.", "target": "연주하는 것."},
+        {"known": "Playing well.", "target": "잘 연주하는 것."},
+        {"known": "The playing is.", "target": "연주하는 것이요."},
+        {"known": "Like to play.", "target": "연주하는 것을 좋아해요."},
+        {"known": "She likes playing.", "target": "그녀는 연주하는 것을 좋아해요."},
+        {"known": "He enjoys playing.", "target": "그는 연주하는 것을 즐겨요."},
+        {"known": "I want to try playing.", "target": "연주하는 것을 해보고 싶어요."},
+        {"known": "They considered playing together.", "target": "그들은 함께 연주하는 것을 고려했어요."},
+        {"known": "She said she loves playing.", "target": "그녀는 연주하는 것을 사랑한다고 말했어요."},
+        {"known": "I should consider playing something different.", "target": "다른 것을 연주하는 것을 고려해야 해요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "should consider",
+      "target": "고려해야 해요",
+      "components": [
+        {"known": "consider", "target": "고려하다"},
+        {"known": "(must)", "target": "-해야"},
+        {"known": "(polite)", "target": "해요"}
+      ],
+      "phrases": [
+        {"known": "Consider.", "target": "고려해요."},
+        {"known": "Considered.", "target": "고려했어요."},
+        {"known": "Should.", "target": "해야 해요."},
+        {"known": "Must consider.", "target": "고려해야 해요."},
+        {"known": "Should consider.", "target": "고려해야 해요."},
+        {"known": "I should consider it.", "target": "그것을 고려해야 해요."},
+        {"known": "She should consider waiting.", "target": "그녀는 기다리는 것을 고려해야 해요."},
+        {"known": "He should consider going home.", "target": "그는 집에 가는 것을 고려해야 해요."},
+        {"known": "They should consider the next step.", "target": "그들은 다음 단계를 고려해야 해요."},
+        {"known": "I should consider playing something else.", "target": "다른 것을 연주하는 것을 고려해야 해요."}
+      ]
+    }
+  ]
+}

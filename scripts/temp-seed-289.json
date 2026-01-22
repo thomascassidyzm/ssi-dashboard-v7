@@ -1,0 +1,105 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 289,
+  "known_text": "I wonder if she's going to be there this afternoon.",
+  "target_text": "오늘 오후에 그녀가 거기 있을지 궁금해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "this afternoon (time marker)",
+      "target": "오늘 오후에",
+      "components": [
+        {"known": "today", "target": "오늘"},
+        {"known": "afternoon", "target": "오후"},
+        {"known": "at/in", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "today", "target": "오늘이요"},
+        {"known": "afternoon", "target": "오후요"},
+        {"known": "this afternoon", "target": "오늘 오후에"},
+        {"known": "in the afternoon", "target": "오후에요"},
+        {"known": "tomorrow afternoon", "target": "내일 오후에"},
+        {"known": "I'm busy this afternoon", "target": "오늘 오후에 바빠요"},
+        {"known": "let's meet this afternoon", "target": "오늘 오후에 만나요"},
+        {"known": "what are you doing this afternoon?", "target": "오늘 오후에 뭐 해요?"},
+        {"known": "the meeting is this afternoon", "target": "회의가 오늘 오후에 있어요"},
+        {"known": "I have time this afternoon", "target": "오늘 오후에 시간 있어요"},
+        {"known": "it will rain this afternoon", "target": "오늘 오후에 비 올 거예요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "be there",
+      "target": "거기 있다",
+      "components": [
+        {"known": "there", "target": "거기"},
+        {"known": "be/exist", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "there", "target": "거기요"},
+        {"known": "be there", "target": "거기 있어요"},
+        {"known": "I'll be there", "target": "거기 있을게요"},
+        {"known": "she's there", "target": "그녀가 거기 있어요"},
+        {"known": "are you there?", "target": "거기 있어요?"},
+        {"known": "was he there?", "target": "그가 거기 있었어요?"},
+        {"known": "I was there yesterday", "target": "어제 거기 있었어요"},
+        {"known": "please be there on time", "target": "시간 맞춰 거기 있어 주세요"},
+        {"known": "I'm not sure if I'll be there", "target": "거기 있을지 모르겠어요"},
+        {"known": "my friend will be there too", "target": "제 친구도 거기 있을 거예요"},
+        {"known": "everyone was already there when I arrived", "target": "제가 도착했을 때 다 거기 있었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I wonder if",
+      "target": "지 궁금하다",
+      "components": [
+        {"known": "whether/if", "target": "지"},
+        {"known": "be curious", "target": "궁금하다"}
+      ],
+      "phrases": [
+        {"known": "curious", "target": "궁금해요"},
+        {"known": "I wonder", "target": "궁금해요"},
+        {"known": "if/whether", "target": "인지요"},
+        {"known": "I'm curious", "target": "궁금해요"},
+        {"known": "I wonder if", "target": "인지 궁금해요"},
+        {"known": "I wonder why", "target": "왜인지 궁금해요"},
+        {"known": "I wonder what happened", "target": "무슨 일인지 궁금해요"},
+        {"known": "I'm curious about the result", "target": "결과가 궁금해요"},
+        {"known": "I wonder if he knows", "target": "그가 아는지 궁금해요"},
+        {"known": "I was curious if you were free", "target": "시간 있는지 궁금했어요"},
+        {"known": "I wonder if the store is open today", "target": "오늘 가게 열었는지 궁금해요"},
+        {"known": "I was wondering if they received my message", "target": "제 메시지 받았는지 궁금했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "I wonder if she's going to be there this afternoon",
+      "target": "오늘 오후에 그녀가 거기 있을지 궁금해요",
+      "components": [
+        {"known": "this afternoon (time marker)", "target": "오늘 오후에"},
+        {"known": "she", "target": "그녀가"},
+        {"known": "be there", "target": "거기 있다"},
+        {"known": "I wonder if", "target": "지 궁금하다"}
+      ],
+      "phrases": [
+        {"known": "I wonder", "target": "궁금해요"},
+        {"known": "is she?", "target": "그녀가요?"},
+        {"known": "will she be?", "target": "그녀가 있을까요?"},
+        {"known": "I wonder if", "target": "인지 궁금해요"},
+        {"known": "this afternoon?", "target": "오늘 오후에요?"},
+        {"known": "will she be there?", "target": "그녀가 거기 있을까요?"},
+        {"known": "I wonder if he's coming", "target": "그가 오는지 궁금해요"},
+        {"known": "I wonder if the weather will be nice", "target": "날씨가 좋을지 궁금해요"},
+        {"known": "I was curious if they arrived safely", "target": "잘 도착했는지 궁금했어요"},
+        {"known": "I wonder if everyone will come tomorrow", "target": "내일 다 오는지 궁금해요"},
+        {"known": "I was wondering if you'll be free tonight", "target": "오늘 밤 시간 있을지 궁금했어요"},
+        {"known": "I wonder if my parents will be home this evening", "target": "오늘 저녁에 부모님이 집에 계실지 궁금해요"}
+      ]
+    }
+  ]
+}

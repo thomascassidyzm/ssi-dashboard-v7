@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 327,
+  "known_text": "Do you think that she needs to offer another way?",
+  "target_text": "그녀가 다른 방법을 제안해야 한다고 생각해요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "offer/propose",
+      "target": "제안하다",
+      "phrases": [
+        {"known": "offer", "target": "제안해요"},
+        {"known": "propose", "target": "제안해요"},
+        {"known": "offered", "target": "제안했어요"},
+        {"known": "proposing", "target": "제안하고 있어요"},
+        {"known": "I'll offer", "target": "제안할게요"},
+        {"known": "can I offer?", "target": "제안해도 돼요?"},
+        {"known": "she offered to help", "target": "그녀가 도와준다고 제안했어요"},
+        {"known": "he proposed an idea", "target": "그가 아이디어를 제안했어요"},
+        {"known": "can you offer a solution?", "target": "해결 방법을 제안할 수 있어요?"},
+        {"known": "I want to propose something", "target": "뭔가 제안하고 싶어요"},
+        {"known": "she offered me a different option", "target": "그녀가 다른 선택을 제안했어요"},
+        {"known": "the company proposed a new plan to us", "target": "회사가 새 계획을 제안했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "another way",
+      "target": "다른 방법",
+      "components": [
+        {"known": "another/different", "target": "다른"},
+        {"known": "way/method", "target": "방법"}
+      ],
+      "phrases": [
+        {"known": "way", "target": "방법이요"},
+        {"known": "method", "target": "방법이요"},
+        {"known": "another", "target": "다른 거요"},
+        {"known": "another way", "target": "다른 방법"},
+        {"known": "a different way", "target": "다른 방법요"},
+        {"known": "there's another way", "target": "다른 방법이 있어요"},
+        {"known": "try a different method", "target": "다른 방법으로 해 봐요"},
+        {"known": "is there another way?", "target": "다른 방법이 있어요?"},
+        {"known": "we found another way to do it", "target": "다른 방법을 찾았어요"},
+        {"known": "maybe there's a better way", "target": "더 좋은 방법이 있을 수도 있어요"},
+        {"known": "let's think of another way to solve this", "target": "이거 해결할 다른 방법을 생각해요"},
+        {"known": "she suggested a different approach to the problem", "target": "그녀가 문제에 대한 다른 방법을 제안했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "do you think that she needs to offer another way",
+      "target": "그녀가 다른 방법을 제안해야 한다고 생각해요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "another way", "target": "다른 방법"},
+        {"known": "object marker", "target": "을"},
+        {"known": "offer/propose", "target": "제안하다"},
+        {"known": "must/need to", "target": "아야 하다"},
+        {"known": "do you think (quote)", "target": "고 생각하다"}
+      ],
+      "phrases": [
+        {"known": "do you think", "target": "생각해요?"},
+        {"known": "think so?", "target": "그래요?"},
+        {"known": "she needs to", "target": "그녀가 해야 해요"},
+        {"known": "needs to offer", "target": "제안해야 해요"},
+        {"known": "do you think so?", "target": "그렇게 생각해요?"},
+        {"known": "do you think she should?", "target": "그녀가 해야 한다고 생각해요?"},
+        {"known": "do you think he needs to try again?", "target": "그가 다시 해야 한다고 생각해요?"},
+        {"known": "do you think they should propose it?", "target": "그들이 그거 제안해야 한다고 생각해요?"},
+        {"known": "do you think she needs to change her approach?", "target": "그녀가 방법을 바꿔야 한다고 생각해요?"},
+        {"known": "do you think we need to offer something different?", "target": "다른 거 제안해야 한다고 생각해요?"},
+        {"known": "do you believe that he needs to apologize?", "target": "그가 사과해야 한다고 생각해요?"},
+        {"known": "do you think my friend needs to reconsider?", "target": "제 친구가 다시 생각해야 한다고 생각해요?"},
+        {"known": "do you think the manager needs to suggest a new plan?", "target": "부장님이 새 계획을 제안해야 한다고 생각해요?"}
+      ]
+    }
+  ]
+}

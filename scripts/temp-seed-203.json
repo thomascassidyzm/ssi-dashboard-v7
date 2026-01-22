@@ -1,53 +1,97 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 203,
   "known_text": "What would you do if I asked you to help me?",
-  "target_text": "手伝ってと頼んだら何をしますか？",
+  "target_text": "제가 도와달라고 부탁하면 어떻게 하실 거예요?",
   "legos": [
     {
       "idx": 1,
       "type": "M",
-      "known": "if I asked you to help",
-      "target": "手伝ってと頼んだら",
+      "known": "to help (request)",
+      "target": "도와달라고",
       "components": [
-        {"known": "help", "target": "手伝って"},
-        {"known": "if I asked", "target": "と頼んだら"}
+        {"known": "help", "target": "도와주다"},
+        {"known": "(requesting)", "target": "달라고"}
       ],
       "phrases": [
-        {"known": "help", "target": "手伝って"},
-        {"known": "if asked", "target": "頼んだら"},
-        {"known": "please help", "target": "手伝ってください"},
-        {"known": "help with this", "target": "これを手伝って"},
-        {"known": "if I asked you to help", "target": "手伝ってと頼んだら"},
-        {"known": "can you help me", "target": "手伝ってくれますか"},
-        {"known": "I asked for help", "target": "手伝ってと頼みました"},
-        {"known": "if you asked me I would help", "target": "頼まれたら手伝います"},
-        {"known": "I asked him to help but he was too busy yesterday", "target": "手伝ってと頼みましたが、昨日は忙しすぎました"},
-        {"known": "if I asked you to come to the office tomorrow would you come", "target": "明日オフィスに来てと頼んだら、来ますか"},
-        {"known": "I'm going to ask her to help us with the work tomorrow morning", "target": "明日の朝仕事を手伝ってと彼女に頼むつもりです"}
+        {"known": "help me", "target": "도와주세요"},
+        {"known": "asking for help", "target": "도와달라고"},
+        {"known": "please help", "target": "도와주세요"},
+        {"known": "can you help?", "target": "도와줄 수 있어요?"},
+        {"known": "I asked for help", "target": "도와달라고 했어요"},
+        {"known": "she asked me to help", "target": "그녀가 도와달라고 했어요"},
+        {"known": "my friend asked for help yesterday", "target": "어제 제 친구가 도와달라고 했어요"},
+        {"known": "the teacher asked the students to help", "target": "선생님이 학생들에게 도와달라고 했어요"},
+        {"known": "I wanted to ask my daughter to help", "target": "제 딸에게 도와달라고 하고 싶었어요"},
+        {"known": "she asked me to help her at the office", "target": "그녀가 사무실에서 도와달라고 했어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "what would you do",
-      "target": "何をしますか",
+      "known": "if I asked / if I request",
+      "target": "부탁하면",
       "components": [
-        {"known": "what (object)", "target": "何を"},
-        {"known": "would you do", "target": "しますか"}
+        {"known": "request/ask", "target": "부탁하다"},
+        {"known": "if", "target": "면"}
       ],
       "phrases": [
-        {"known": "what", "target": "何を"},
-        {"known": "would do", "target": "しますか"},
-        {"known": "what will you do", "target": "何をしますか"},
-        {"known": "what did you do", "target": "何をしましたか"},
-        {"known": "what are you doing", "target": "何をしていますか"},
-        {"known": "what should I do", "target": "何をすればいいですか"},
-        {"known": "I don't know what to do", "target": "何をすればいいかわかりません"},
-        {"known": "what will you do tomorrow morning at the office", "target": "明日の朝オフィスで何をしますか"},
-        {"known": "what would you do if she asked you to help with the work", "target": "彼女に仕事を手伝ってと頼まれたら何をしますか"},
-        {"known": "what did you do yesterday when you went to see her", "target": "昨日彼女に会いに行った時何をしましたか"},
-        {"known": "I don't know what to do about this problem so please help me", "target": "この問題についてどうすればいいかわからないので、手伝ってください"}
+        {"known": "request", "target": "부탁해요"},
+        {"known": "if I ask", "target": "부탁하면"},
+        {"known": "I requested", "target": "부탁했어요"},
+        {"known": "I have a request", "target": "부탁이 있어요"},
+        {"known": "may I request?", "target": "부탁해도 돼요?"},
+        {"known": "if I ask you", "target": "부탁하면"},
+        {"known": "she requested help", "target": "그녀가 도움을 부탁했어요"},
+        {"known": "I wanted to make a request", "target": "부탁하고 싶었어요"},
+        {"known": "if I request on Saturday", "target": "토요일에 부탁하면"},
+        {"known": "I asked the teacher for help", "target": "선생님에게 도움을 부탁했어요"},
+        {"known": "if I asked my friend to help me at the office", "target": "제 친구에게 사무실에서 도와달라고 부탁하면"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "what would you do",
+      "target": "어떻게 하실 거예요",
+      "components": [
+        {"known": "how/what", "target": "어떻게"},
+        {"known": "will do (honorific)", "target": "하실 거예요"}
+      ],
+      "phrases": [
+        {"known": "how", "target": "어떻게"},
+        {"known": "will do", "target": "할 거예요"},
+        {"known": "what will you do?", "target": "어떻게 할 거예요?"},
+        {"known": "what would you do?", "target": "어떻게 하실 거예요?"},
+        {"known": "what will you do tomorrow?", "target": "내일 어떻게 할 거예요?"},
+        {"known": "what will she do?", "target": "그녀는 어떻게 할 거예요?"},
+        {"known": "what would you do on Saturday?", "target": "토요일에 어떻게 하실 거예요?"},
+        {"known": "what would you do if nobody helped?", "target": "아무도 안 도와주면 어떻게 하실 거예요?"},
+        {"known": "what would the teacher do?", "target": "선생님은 어떻게 하실 거예요?"},
+        {"known": "what would you do if that happened at the office?", "target": "사무실에서 그런 일이 생기면 어떻게 하실 거예요?"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "what would you do if I asked you to help me",
+      "target": "제가 도와달라고 부탁하면 어떻게 하실 거예요",
+      "components": [
+        {"known": "to help (request)", "target": "도와달라고"},
+        {"known": "if I asked / if I request", "target": "부탁하면"},
+        {"known": "what would you do", "target": "어떻게 하실 거예요"}
+      ],
+      "phrases": [
+        {"known": "I asked", "target": "부탁했어요"},
+        {"known": "help me", "target": "도와주세요"},
+        {"known": "what would you do?", "target": "어떻게 하실 거예요?"},
+        {"known": "if I asked", "target": "부탁하면"},
+        {"known": "if I asked you to help", "target": "도와달라고 부탁하면"},
+        {"known": "what would you do if I asked?", "target": "제가 부탁하면 어떻게 하실 거예요?"},
+        {"known": "what would my daughter do if I asked?", "target": "제가 부탁하면 제 딸은 어떻게 할 거예요?"},
+        {"known": "what would you do if the teacher asked for help?", "target": "선생님이 도움을 부탁하면 어떻게 하실 거예요?"},
+        {"known": "what would your son do if I asked him to help?", "target": "제가 도와달라고 부탁하면 당신 아들은 어떻게 할 거예요?"},
+        {"known": "what would nobody do if nobody asked?", "target": "아무도 부탁 안 하면 아무도 어떻게 안 해요"}
       ]
     }
   ]

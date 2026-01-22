@@ -1,53 +1,68 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 220,
   "known_text": "Did you watch a bit of television?",
-  "target_text": "テレビを少し見ましたか？",
+  "target_text": "텔레비전 좀 봤어요?",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "a bit of television",
-      "target": "テレビを少し",
-      "components": [
-        {"known": "television (object)", "target": "テレビを"},
-        {"known": "a bit", "target": "少し"}
-      ],
+      "type": "A",
+      "known": "a bit / a little",
+      "target": "좀",
       "phrases": [
-        {"known": "TV", "target": "テレビ"},
-        {"known": "a bit", "target": "少し"},
-        {"known": "watch TV", "target": "テレビを見る"},
-        {"known": "a bit of TV", "target": "テレビを少し"},
-        {"known": "wait a bit", "target": "少し待って"},
-        {"known": "a little water", "target": "水を少し"},
-        {"known": "I watch a bit of TV", "target": "テレビを少し見ます"},
-        {"known": "I watched TV yesterday", "target": "昨日テレビを見ました"},
-        {"known": "I want to watch a bit of TV", "target": "テレビを少し見たいです"},
-        {"known": "do you watch TV on weekends", "target": "週末にテレビを見ますか"},
-        {"known": "I watched a bit of TV on Sunday night", "target": "日曜日の夜にテレビを少し見ました"},
-        {"known": "I didn't have time to watch TV because I was busy", "target": "忙しかったのでテレビを見る時間がありませんでした"},
-        {"known": "I watched a bit of TV and then went out", "target": "テレビを少し見てから出かけました"}
+        {"known": "a bit", "target": "좀"},
+        {"known": "a little", "target": "좀"},
+        {"known": "please (softener)", "target": "좀요"},
+        {"known": "a little more", "target": "좀 더"},
+        {"known": "wait a bit", "target": "좀 기다려요"},
+        {"known": "I ate a bit", "target": "좀 먹었어요"},
+        {"known": "Please help a bit", "target": "좀 도와주세요"},
+        {"known": "She rested a bit yesterday", "target": "어제 좀 쉬었어요"},
+        {"known": "We talked a bit at the office", "target": "사무실에서 좀 이야기했어요"},
+        {"known": "He waited a bit for his friend", "target": "친구를 좀 기다렸어요"},
+        {"known": "I rested a bit at home last weekend", "target": "지난 주말에 집에서 좀 쉬었어요"},
+        {"known": "She read a bit of the book yesterday", "target": "어제 그 책을 좀 읽었어요"}
       ]
     },
     {
       "idx": 2,
       "type": "A",
-      "known": "did you watch",
-      "target": "見ましたか",
+      "known": "television / TV",
+      "target": "텔레비전",
       "phrases": [
-        {"known": "watch", "target": "見る"},
-        {"known": "watched", "target": "見ました"},
-        {"known": "did you see", "target": "見ましたか"},
-        {"known": "I watched it", "target": "見ました"},
-        {"known": "I want to watch", "target": "見たいです"},
-        {"known": "did you watch it", "target": "見ましたか"},
-        {"known": "I watched something", "target": "何か見ました"},
-        {"known": "did you watch TV yesterday", "target": "昨日テレビを見ましたか"},
-        {"known": "I saw my friends on the weekend", "target": "週末に友達に会いました"},
-        {"known": "what did you watch last night", "target": "昨夜何を見ましたか"},
-        {"known": "did you watch TV or go out on Saturday", "target": "土曜日はテレビを見ましたか、出かけましたか"},
-        {"known": "I watched TV for a while and then relaxed", "target": "しばらくテレビを見てからリラックスしました"},
-        {"known": "I watched TV for a bit before going out with friends", "target": "友達と出かける前にテレビを少し見ました"}
+        {"known": "TV", "target": "텔레비전"},
+        {"known": "television", "target": "텔레비전"},
+        {"known": "the TV", "target": "텔레비전이"},
+        {"known": "on TV", "target": "텔레비전에서"},
+        {"known": "watch TV", "target": "텔레비전을 보다"},
+        {"known": "watched TV", "target": "텔레비전을 봤어요"},
+        {"known": "I watched TV yesterday", "target": "어제 텔레비전을 봤어요"},
+        {"known": "She usually watches TV at night", "target": "그녀는 보통 밤에 텔레비전을 봐요"},
+        {"known": "We watched TV together last weekend", "target": "지난 주말에 같이 텔레비전을 봤어요"},
+        {"known": "He is watching television in the room now", "target": "지금 방에서 텔레비전을 보고 있어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "Did you watch a bit of television",
+      "target": "텔레비전 좀 봤어요",
+      "components": [
+        {"known": "TV", "target": "텔레비전"},
+        {"known": "a bit", "target": "좀"},
+        {"known": "watched", "target": "봤어요"}
+      ],
+      "phrases": [
+        {"known": "TV", "target": "텔레비전"},
+        {"known": "a bit", "target": "좀"},
+        {"known": "watched", "target": "봤어요"},
+        {"known": "watched a bit", "target": "좀 봤어요"},
+        {"known": "watched TV", "target": "텔레비전 봤어요"},
+        {"known": "Did you watch a bit of television?", "target": "텔레비전 좀 봤어요?"},
+        {"known": "Did you watch TV yesterday?", "target": "어제 텔레비전 봤어요?"},
+        {"known": "I watched a bit of television at home", "target": "집에서 텔레비전 좀 봤어요"},
+        {"known": "She watched a bit of TV last night", "target": "어젯밤에 텔레비전 좀 봤어요"},
+        {"known": "We watched television for a while after dinner", "target": "저녁 후에 잠시 텔레비전 봤어요"}
       ]
     }
   ]

@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 470,
+  "known_text": "How high do you want to climb before we stop?",
+  "target_text": "우리가 멈추기 전에 얼마나 높이 오르고 싶어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "how high",
+      "target": "얼마나 높이",
+      "components": [
+        {"known": "how much/how", "target": "얼마나"},
+        {"known": "high", "target": "높이"}
+      ],
+      "phrases": [
+        {"known": "how much", "target": "얼마나요"},
+        {"known": "high", "target": "높이요"},
+        {"known": "how tall", "target": "얼마나 커요?"},
+        {"known": "this high", "target": "이만큼 높이요"},
+        {"known": "how high is it", "target": "얼마나 높아요?"},
+        {"known": "jump as high as you can", "target": "최대한 높이 뛰어요"},
+        {"known": "the mountain is very high", "target": "산이 아주 높아요"},
+        {"known": "how high can you jump", "target": "얼마나 높이 뛸 수 있어요?"},
+        {"known": "she can climb very high", "target": "그녀가 아주 높이 오를 수 있어요"},
+        {"known": "I wonder how high the building is", "target": "건물이 얼마나 높은지 궁금해요"},
+        {"known": "he threw the ball really high", "target": "그가 공을 정말 높이 던졌어요"},
+        {"known": "how high should I hang this picture", "target": "이 그림 얼마나 높이 걸어야 해요?"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "before we stop",
+      "target": "우리가 멈추기 전에",
+      "components": [
+        {"known": "we", "target": "우리가"},
+        {"known": "stop", "target": "멈추다"},
+        {"known": "before", "target": "기 전에"}
+      ],
+      "phrases": [
+        {"known": "before", "target": "전에요"},
+        {"known": "we stop", "target": "멈춰요"},
+        {"known": "before that", "target": "그 전에요"},
+        {"known": "stop here", "target": "여기서 멈춰요"},
+        {"known": "before I go", "target": "가기 전에요"},
+        {"known": "let's rest before we continue", "target": "계속하기 전에 쉬어요"},
+        {"known": "finish this before we leave", "target": "떠나기 전에 이거 끝내요"},
+        {"known": "she always checks before stopping", "target": "그녀가 멈추기 전에 항상 확인해요"},
+        {"known": "think carefully before you decide", "target": "결정하기 전에 잘 생각해요"},
+        {"known": "we should eat before we start", "target": "시작하기 전에 먹어야 해요"},
+        {"known": "call me before you arrive", "target": "도착하기 전에 전화해요"},
+        {"known": "we need to prepare before the meeting begins", "target": "회의 시작하기 전에 준비해야 해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "how high do you want to climb before we stop",
+      "target": "우리가 멈추기 전에 얼마나 높이 오르고 싶어요",
+      "components": [
+        {"known": "before we stop", "target": "우리가 멈추기 전에"},
+        {"known": "how high", "target": "얼마나 높이"},
+        {"known": "want to climb", "target": "오르고 싶다"}
+      ],
+      "phrases": [
+        {"known": "want to climb", "target": "오르고 싶어요"},
+        {"known": "I want to try", "target": "해보고 싶어요"},
+        {"known": "climb up", "target": "올라가요"},
+        {"known": "let's climb more", "target": "더 오르자요"},
+        {"known": "how far do you want to go", "target": "얼마나 멀리 가고 싶어요?"},
+        {"known": "how much do you want to achieve", "target": "얼마나 달성하고 싶어요?"},
+        {"known": "do you want to climb higher", "target": "더 높이 오르고 싶어요?"},
+        {"known": "let me know when you want to stop", "target": "멈추고 싶을 때 알려줘요"},
+        {"known": "how far should we run before taking a break", "target": "쉬기 전에 얼마나 멀리 뛰어야 해요?"},
+        {"known": "she asked how long we should walk before resting", "target": "그녀가 쉬기 전에 얼마나 오래 걸어야 하는지 물었어요"},
+        {"known": "tell me when you want to stop climbing", "target": "오르기 멈추고 싶을 때 말해줘요"},
+        {"known": "we can stop whenever you feel tired", "target": "피곤할 때 언제든 멈출 수 있어요"}
+      ]
+    }
+  ]
+}

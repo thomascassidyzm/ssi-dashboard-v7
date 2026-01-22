@@ -1,48 +1,69 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 79,
   "known_text": "When did you start to learn?",
-  "target_text": "いつ学び始めましたか？",
+  "target_text": "언제 배우기 시작했어요?",
   "legos": [
     {
       "idx": 1,
       "type": "A",
-      "known": "when (question)",
-      "target": "いつ",
+      "known": "when",
+      "target": "언제",
       "phrases": [
-        {"known": "when?", "target": "いつ？"},
-        {"known": "when is it?", "target": "いつですか？"},
-        {"known": "when did you come?", "target": "いつ来ましたか？"},
-        {"known": "when did she say it?", "target": "彼女はいつ言いましたか？"},
-        {"known": "when did he start?", "target": "彼はいつ始めましたか？"},
-        {"known": "I do not know when", "target": "いつかわかりません"},
-        {"known": "when did you understand?", "target": "いつわかりましたか？"},
-        {"known": "she asked when he did it", "target": "彼女は彼がいつやったか聞きました"},
-        {"known": "I do not know when she started to understand", "target": "彼女がいつ理解し始めたかわかりません"},
-        {"known": "he wanted to know when we would be done", "target": "彼は私たちがいつ終わるか知りたかったです"}
+        {"known": "When?", "target": "언제?"},
+        {"known": "When is it?", "target": "언제예요?"},
+        {"known": "Since when?", "target": "언제부터?"},
+        {"known": "When did she come?", "target": "그녀는 언제 왔어요?"},
+        {"known": "When did he go?", "target": "그는 언제 갔어요?"},
+        {"known": "When did they meet?", "target": "그들은 언제 만났어요?"},
+        {"known": "When did you start?", "target": "언제 시작했어요?"},
+        {"known": "She asked when I arrived.", "target": "그녀는 내가 언제 도착했는지 물었어요."},
+        {"known": "He doesn't know when it started.", "target": "그는 언제 시작했는지 몰라요."},
+        {"known": "When did you start to learn Korean?", "target": "언제 한국어를 배우기 시작했어요?"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "did you start to learn?",
-      "target": "学び始めましたか？",
+      "known": "learning (nominalized)",
+      "target": "배우기",
       "components": [
-        {"known": "learn (stem)", "target": "学び"},
-        {"known": "did you start? (question)", "target": "始めましたか？"}
+        {"known": "learn", "target": "배우다"},
+        {"known": "(nominalization)", "target": "-기"}
       ],
       "phrases": [
-        {"known": "learn", "target": "学ぶ"},
-        {"known": "learning", "target": "学び"},
-        {"known": "started", "target": "始めました"},
-        {"known": "did you start?", "target": "始めましたか？"},
-        {"known": "started to learn", "target": "学び始めた"},
-        {"known": "did you start to learn?", "target": "学び始めましたか？"},
-        {"known": "she started to learn Japanese", "target": "彼女は日本語を学び始めました"},
-        {"known": "he asked when I started to learn", "target": "彼はいつ学び始めたか聞きました"},
-        {"known": "I started to learn Japanese today", "target": "今日日本語を学び始めました"},
-        {"known": "she said she started to learn it all afternoon", "target": "彼女は午後ずっとそれを学び始めたと言いました"},
-        {"known": "we asked when he started to learn Japanese", "target": "私たちは彼がいつ日本語を学び始めたか聞きました"}
+        {"known": "Learning.", "target": "배우기."},
+        {"known": "To learn.", "target": "배우기요."},
+        {"known": "Start learning.", "target": "배우기 시작해요."},
+        {"known": "I started learning.", "target": "배우기 시작했어요."},
+        {"known": "She began learning.", "target": "그녀는 배우기 시작했어요."},
+        {"known": "Learning Korean.", "target": "한국어 배우기."},
+        {"known": "He started learning quickly.", "target": "그는 빨리 배우기 시작했어요."},
+        {"known": "When did you start learning?", "target": "언제 배우기 시작했어요?"},
+        {"known": "She's surprised at how quickly he's learning.", "target": "그녀는 그가 얼마나 빨리 배우는지 놀라워요."},
+        {"known": "I started learning Korean last year.", "target": "작년에 한국어 배우기 시작했어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "started (polite question)",
+      "target": "시작했어요?",
+      "components": [
+        {"known": "start", "target": "시작하다"},
+        {"known": "past (polite question)", "target": "-었어요?"}
+      ],
+      "phrases": [
+        {"known": "Started?", "target": "시작했어요?"},
+        {"known": "Did you start?", "target": "시작했어요?"},
+        {"known": "When started?", "target": "언제 시작했어요?"},
+        {"known": "Did she start?", "target": "그녀는 시작했어요?"},
+        {"known": "He started yesterday.", "target": "그는 어제 시작했어요."},
+        {"known": "I already started.", "target": "이미 시작했어요."},
+        {"known": "When did you start learning?", "target": "언제 배우기 시작했어요?"},
+        {"known": "She asked when I started.", "target": "그녀는 내가 언제 시작했는지 물었어요."},
+        {"known": "He started learning Korean last month.", "target": "그는 지난달에 한국어 배우기 시작했어요."},
+        {"known": "When did you start understanding Korean?", "target": "언제 한국어를 이해하기 시작했어요?"}
       ]
     }
   ]

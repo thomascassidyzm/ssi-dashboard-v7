@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 330,
+  "known_text": "No I don't think it's very important.",
+  "target_text": "아니요, 아주 중요하다고 생각하지 않아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "very important",
+      "target": "아주 중요하다",
+      "components": [
+        {"known": "very", "target": "아주"},
+        {"known": "important", "target": "중요하다"}
+      ],
+      "phrases": [
+        {"known": "very", "target": "아주요"},
+        {"known": "important", "target": "중요해요"},
+        {"known": "very important", "target": "아주 중요해요"},
+        {"known": "it's very important", "target": "아주 중요해요"},
+        {"known": "really important", "target": "정말 중요해요"},
+        {"known": "not very important", "target": "별로 중요하지 않아요"},
+        {"known": "this is very important to me", "target": "이거 저한테 아주 중요해요"},
+        {"known": "is it very important?", "target": "아주 중요해요?"},
+        {"known": "she said it's very important", "target": "그녀가 아주 중요하다고 했어요"},
+        {"known": "it's a very important decision", "target": "아주 중요한 결정이에요"},
+        {"known": "this meeting is very important", "target": "이 회의가 아주 중요해요"},
+        {"known": "understanding this is very important", "target": "이거 이해하는 것이 아주 중요해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "no I don't think it's very important",
+      "target": "아니요 아주 중요하다고 생각하지 않아요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "very important", "target": "아주 중요하다"},
+        {"known": "I don't think (negative)", "target": "고 생각하지 않다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "not at all", "target": "안 그래요"},
+        {"known": "I don't think", "target": "생각하지 않아요"},
+        {"known": "not really", "target": "별로 아니에요"},
+        {"known": "no I don't think so", "target": "아니요 안 그래요"},
+        {"known": "I don't think it matters", "target": "중요하다고 생각 안 해요"},
+        {"known": "no I don't believe that", "target": "아니요 그거 안 믿어요"},
+        {"known": "no I don't think it's necessary", "target": "아니요 필요하다고 생각 안 해요"},
+        {"known": "no I don't think he's correct", "target": "아니요 그가 맞다고 생각 안 해요"},
+        {"known": "no I don't think that's a problem", "target": "아니요 그게 문제라고 생각 안 해요"},
+        {"known": "no I don't think it's urgent", "target": "아니요 급하다고 생각하지 않아요"},
+        {"known": "no I don't think we need to worry", "target": "아니요 걱정해야 한다고 생각 안 해요"},
+        {"known": "no I don't think the situation is that serious", "target": "아니요 상황이 그렇게 심각하다고 생각 안 해요"}
+      ]
+    }
+  ]
+}

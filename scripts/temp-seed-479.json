@@ -1,0 +1,35 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 479,
+  "known_text": "It's the least I could do.",
+  "target_text": "이 정도는 당연하죠.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the least I could do",
+      "target": "이 정도는 당연하죠",
+      "components": [
+        {"known": "this much", "target": "이 정도"},
+        {"known": "topic marker", "target": "는"},
+        {"known": "natural/obvious", "target": "당연하다"},
+        {"known": "right? (confirmation)", "target": "죠"}
+      ],
+      "phrases": [
+        {"known": "this much", "target": "이 정도요"},
+        {"known": "of course", "target": "당연하죠"},
+        {"known": "it's obvious", "target": "당연해요"},
+        {"known": "naturally", "target": "당연히요"},
+        {"known": "it's nothing", "target": "별거 아니에요"},
+        {"known": "that's the minimum", "target": "그건 최소예요"},
+        {"known": "I should at least do this", "target": "이 정도는 해야죠"},
+        {"known": "this much is expected", "target": "이 정도는 당연해요"},
+        {"known": "of course I would help", "target": "당연히 도와드리죠"},
+        {"known": "it's only natural to do this", "target": "이거 하는 건 당연해요"},
+        {"known": "she said it was nothing special", "target": "그녀가 별거 아니라고 했어요"},
+        {"known": "he told me it was the minimum he could do", "target": "그가 최소한 할 수 있는 거라고 했어요"},
+        {"known": "it was only natural for me to help my friend", "target": "친구 도와주는 건 당연한 거죠"}
+      ]
+    }
+  ]
+}

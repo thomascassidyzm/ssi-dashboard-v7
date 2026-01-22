@@ -1,0 +1,61 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 356,
+  "known_text": "Yes they had something important to discuss.",
+  "target_text": "네, 그들이 상의할 중요한 것이 있었어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "something important to discuss",
+      "target": "상의할 중요한 것",
+      "components": [
+        {"known": "discuss (future modifier)", "target": "상의할"},
+        {"known": "important", "target": "중요한"},
+        {"known": "thing", "target": "것"}
+      ],
+      "phrases": [
+        {"known": "thing", "target": "것이요"},
+        {"known": "discuss", "target": "상의해요"},
+        {"known": "important", "target": "중요해요"},
+        {"known": "to discuss", "target": "상의할 거"},
+        {"known": "something important", "target": "중요한 것"},
+        {"known": "we need to discuss", "target": "상의해야 해요"},
+        {"known": "there's something to discuss", "target": "상의할 게 있어요"},
+        {"known": "an important thing to discuss", "target": "상의할 중요한 것"},
+        {"known": "I have something to discuss with you", "target": "당신이랑 상의할 게 있어요"},
+        {"known": "they have important matters to discuss", "target": "그들이 상의할 중요한 일이 있어요"},
+        {"known": "is there something important to talk about?", "target": "상의할 중요한 것 있어요?"},
+        {"known": "we have several important things to discuss", "target": "상의할 중요한 것들이 여러 개 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes they had something important to discuss",
+      "target": "네 그들이 상의할 중요한 것이 있었어요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "they", "target": "그들이"},
+        {"known": "something important to discuss", "target": "상의할 중요한 것"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "had/existed", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "they had", "target": "있었어요"},
+        {"known": "yes they did", "target": "네 그랬어요"},
+        {"known": "they had something", "target": "그들이 뭔가 있었어요"},
+        {"known": "yes there was", "target": "네 있었어요"},
+        {"known": "they discussed it", "target": "그들이 상의했어요"},
+        {"known": "yes they had a lot to discuss", "target": "네 그들이 상의할 게 많았어요"},
+        {"known": "they had something important", "target": "그들이 중요한 게 있었어요"},
+        {"known": "yes they needed to talk about something", "target": "네 그들이 뭔가에 대해 얘기해야 했어요"},
+        {"known": "yes they had an urgent matter to discuss", "target": "네 그들이 상의할 급한 일이 있었어요"},
+        {"known": "they had important business to discuss", "target": "그들이 상의할 중요한 일이 있었어요"},
+        {"known": "yes they had several things they needed to discuss", "target": "네 그들이 상의해야 할 것이 여러 개 있었어요"},
+        {"known": "yes they had something very important to talk about together", "target": "네 그들이 함께 얘기할 아주 중요한 것이 있었어요"}
+      ]
+    }
+  ]
+}

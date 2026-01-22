@@ -1,70 +1,95 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 202,
   "known_text": "Nobody was sure how to answer the question.",
-  "target_text": "誰も質問にどう答えるかわかりませんでした。",
+  "target_text": "아무도 질문에 어떻게 대답해야 할지 확신하지 못했어요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
       "known": "nobody",
-      "target": "誰も",
+      "target": "아무도",
       "phrases": [
-        {"known": "nobody", "target": "誰も"},
-        {"known": "nobody knows", "target": "誰も知らない"},
-        {"known": "nobody came", "target": "誰も来ませんでした"},
-        {"known": "nobody was there", "target": "誰もいませんでした"},
-        {"known": "nobody told me", "target": "誰も教えてくれませんでした"},
-        {"known": "nobody can help", "target": "誰も手伝えません"},
-        {"known": "nobody understands", "target": "誰もわかりません"},
-        {"known": "nobody could finish the work in time", "target": "誰も時間内に仕事を終われませんでした"},
-        {"known": "nobody knew what was going to happen next", "target": "誰も何が起こるかわかりませんでした"},
-        {"known": "nobody told me that she was coming to the office today", "target": "彼女が今日オフィスに来ることを誰も教えてくれませんでした"}
+        {"known": "nobody", "target": "아무도"},
+        {"known": "no one", "target": "아무도"},
+        {"known": "nobody came", "target": "아무도 안 왔어요"},
+        {"known": "nobody knows", "target": "아무도 몰라요"},
+        {"known": "nobody was there", "target": "아무도 없었어요"},
+        {"known": "nobody told me", "target": "아무도 말 안 했어요"},
+        {"known": "nobody saw it", "target": "아무도 안 봤어요"},
+        {"known": "nobody wanted to go", "target": "아무도 가고 싶지 않았어요"},
+        {"known": "nobody understands", "target": "아무도 이해 안 해요"},
+        {"known": "nobody worked at the office on Saturday", "target": "토요일에 아무도 사무실에서 일 안 했어요"},
+        {"known": "nobody heard what happened", "target": "아무도 무슨 일이 있었는지 안 들었어요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "the question",
-      "target": "質問に",
+      "known": "to the question",
+      "target": "질문에",
       "components": [
-        {"known": "question", "target": "質問"},
-        {"known": "to (particle)", "target": "に"}
+        {"known": "question", "target": "질문"},
+        {"known": "to (direction)", "target": "에"}
       ],
       "phrases": [
-        {"known": "question", "target": "質問"},
-        {"known": "to the question", "target": "質問に"},
-        {"known": "I have a question", "target": "質問があります"},
-        {"known": "a difficult question", "target": "難しい質問"},
-        {"known": "can I ask a question", "target": "質問してもいいですか"},
-        {"known": "the question was hard", "target": "質問は難しかったです"},
-        {"known": "I thought about the question", "target": "質問について考えました"},
-        {"known": "do you have any questions about what we talked about", "target": "話したことについて質問がありますか"},
-        {"known": "I'm trying to think of a good question to ask her", "target": "彼女に聞くいい質問を考えようとしています"},
-        {"known": "she asked me some questions about my work yesterday at the office", "target": "彼女は昨日オフィスで私の仕事についていくつか質問しました"}
+        {"known": "a question", "target": "질문"},
+        {"known": "this question", "target": "이 질문"},
+        {"known": "my question", "target": "제 질문"},
+        {"known": "one question", "target": "질문 하나"},
+        {"known": "good question", "target": "좋은 질문"},
+        {"known": "I have a question", "target": "질문이 있어요"},
+        {"known": "can I ask a question?", "target": "질문해도 돼요?"},
+        {"known": "the teacher asked a question", "target": "선생님이 질문했어요"},
+        {"known": "please answer the question", "target": "질문에 대답해 주세요"},
+        {"known": "I want to ask my friend a question", "target": "제 친구에게 질문하고 싶어요"},
+        {"known": "I answered the question in the office", "target": "사무실에서 질문에 대답했어요"},
+        {"known": "my daughter had a question about the council", "target": "제 딸이 구청에 대한 질문이 있었어요"}
       ]
     },
     {
       "idx": 3,
       "type": "M",
-      "known": "was sure how to answer",
-      "target": "どう答えるかわかりませんでした",
+      "known": "how to answer",
+      "target": "어떻게 대답해야 할지",
       "components": [
-        {"known": "how to answer", "target": "どう答えるか"},
-        {"known": "didn't know", "target": "わかりませんでした"}
+        {"known": "how", "target": "어떻게"},
+        {"known": "should answer", "target": "대답해야"},
+        {"known": "whether to", "target": "할지"}
       ],
       "phrases": [
-        {"known": "how", "target": "どう"},
-        {"known": "answer", "target": "答える"},
-        {"known": "didn't know", "target": "わかりませんでした"},
-        {"known": "how to answer", "target": "どう答えるか"},
-        {"known": "what to say", "target": "何を言えば"},
-        {"known": "I don't know how", "target": "どうすればわかりません"},
-        {"known": "I wasn't sure what to say", "target": "何を言えばいいかわかりませんでした"},
-        {"known": "I don't know how to help her", "target": "彼女をどう手伝えばいいかわかりません"},
-        {"known": "I wasn't sure how to answer the question", "target": "質問にどう答えるかわかりませんでした"},
-        {"known": "nobody knows how to finish the work in time", "target": "誰も時間内に仕事をどう終わらせればいいかわかりません"},
-        {"known": "I wasn't sure how to answer so I asked her to help me", "target": "どう答えればいいかわからなかったので、彼女に手伝ってもらいました"}
+        {"known": "how", "target": "어떻게"},
+        {"known": "answer", "target": "대답해요"},
+        {"known": "should answer", "target": "대답해야 해요"},
+        {"known": "how to answer", "target": "어떻게 대답할지"},
+        {"known": "I answered", "target": "대답했어요"},
+        {"known": "how should I answer?", "target": "어떻게 대답해야 해요?"},
+        {"known": "I want to know how to answer", "target": "어떻게 대답할지 알고 싶어요"},
+        {"known": "she knew how to answer the question", "target": "그녀는 질문에 어떻게 대답할지 알았어요"},
+        {"known": "the teacher showed me how to answer", "target": "선생님이 어떻게 대답할지 알려줬어요"},
+        {"known": "my son was unsure how to answer his friend", "target": "제 아들은 친구에게 어떻게 대답할지 몰랐어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "was not sure / couldn't be certain",
+      "target": "확신하지 못했어요",
+      "components": [
+        {"known": "be certain/sure", "target": "확신하다"},
+        {"known": "could not (past polite)", "target": "지 못했어요"}
+      ],
+      "phrases": [
+        {"known": "not sure", "target": "확신 못해요"},
+        {"known": "couldn't be sure", "target": "확신 못해"},
+        {"known": "was not sure", "target": "확신하지 못했어요"},
+        {"known": "I am not certain", "target": "확신하지 못해요"},
+        {"known": "she was not sure", "target": "그녀는 확신하지 못했어요"},
+        {"known": "I was not sure about it", "target": "그것에 대해 확신하지 못했어요"},
+        {"known": "we were not sure what to do", "target": "뭘 해야 할지 확신하지 못했어요"},
+        {"known": "my friend was not sure if it was true", "target": "제 친구는 그게 사실인지 확신하지 못했어요"},
+        {"known": "the teacher was not sure what happened", "target": "선생님은 무슨 일이 있었는지 확신하지 못했어요"},
+        {"known": "nobody was sure what would happen next", "target": "아무도 다음에 무슨 일이 일어날지 확신하지 못했어요"}
       ]
     }
   ]

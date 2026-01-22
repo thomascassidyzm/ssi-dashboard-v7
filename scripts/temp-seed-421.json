@@ -1,0 +1,61 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 421,
+  "known_text": "Because they already know he's getting weak.",
+  "target_text": "그들이 이미 그가 약해지고 있다는 걸 알거든요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he's getting weak",
+      "target": "그가 약해지고 있다",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "weak", "target": "약하다"},
+        {"known": "become (progressive)", "target": "지고 있다"}
+      ],
+      "phrases": [
+        {"known": "weak", "target": "약해요"},
+        {"known": "he is", "target": "그가요"},
+        {"known": "getting weak", "target": "약해져요"},
+        {"known": "he feels weak", "target": "그가 약해요"},
+        {"known": "she's getting tired", "target": "그녀가 피곤해져요"},
+        {"known": "the signal is weak", "target": "신호가 약해요"},
+        {"known": "my body is getting weak", "target": "몸이 약해지고 있어요"},
+        {"known": "his voice is getting weaker", "target": "그의 목소리가 약해지고 있어요"},
+        {"known": "the coffee is getting cold", "target": "커피가 차가워지고 있어요"},
+        {"known": "she noticed he was getting weaker", "target": "그녀가 그가 약해지는 걸 알았어요"},
+        {"known": "the economy has been getting weaker", "target": "경제가 약해지고 있어요"},
+        {"known": "his condition is getting worse each day", "target": "그의 상태가 매일 나빠지고 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "because they already know he's getting weak",
+      "target": "그들이 이미 그가 약해지고 있다는 걸 알거든요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "already", "target": "이미"},
+        {"known": "he's getting weak", "target": "그가 약해지고 있다"},
+        {"known": "the fact that (nominalizer)", "target": "는 걸"},
+        {"known": "know", "target": "알다"},
+        {"known": "because (reason)", "target": "거든요"}
+      ],
+      "phrases": [
+        {"known": "because", "target": "거든요"},
+        {"known": "already", "target": "이미요"},
+        {"known": "I know", "target": "알아요"},
+        {"known": "they know", "target": "그들이 알아요"},
+        {"known": "because I know", "target": "알거든요"},
+        {"known": "because she already saw it", "target": "그녀가 이미 봤거든요"},
+        {"known": "they already understood", "target": "그들이 이미 이해했어요"},
+        {"known": "because everyone knows", "target": "모두가 알거든요"},
+        {"known": "because he already told me", "target": "그가 이미 말했거든요"},
+        {"known": "because we already made a decision", "target": "우리가 이미 결정했거든요"},
+        {"known": "they already knew what was happening", "target": "그들이 무슨 일인지 이미 알았어요"},
+        {"known": "because she already noticed the changes", "target": "그녀가 이미 변화를 알았거든요"}
+      ]
+    }
+  ]
+}

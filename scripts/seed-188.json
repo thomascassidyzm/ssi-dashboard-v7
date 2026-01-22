@@ -1,49 +1,89 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 188,
   "known_text": "So I don't need to change.",
-  "target_text": "だから変える必要はありません。",
+  "target_text": "그래서 바꿀 필요가 없어요.",
   "legos": [
     {
       "idx": 1,
       "type": "A",
       "known": "so/therefore",
-      "target": "だから",
+      "target": "그래서",
       "phrases": [
-        {"known": "so/therefore", "target": "だから"},
-        {"known": "so it's OK", "target": "だからいいです"},
-        {"known": "so I came", "target": "だから来ました"},
-        {"known": "so I understand", "target": "だから分かります"},
-        {"known": "so I went", "target": "だから行きました"},
-        {"known": "so I want to go", "target": "だから行きたいです"},
-        {"known": "so I went there", "target": "だからそこに行きました"},
-        {"known": "so I decided to go there", "target": "だからそこに行くことにしました"},
-        {"known": "so I think it would be better to go tomorrow", "target": "だから明日行った方がいいと思います"},
-        {"known": "so I thought it would be better to wait", "target": "だから待った方がよかったと思います"},
-        {"known": "so I think she wanted to meet him yesterday", "target": "だから彼女は昨日彼に会いたかったと思います"}
+        {"known": "so", "target": "그래서"},
+        {"known": "therefore", "target": "그래서"},
+        {"known": "that is why", "target": "그래서"},
+        {"known": "So I went", "target": "그래서 갔어요"},
+        {"known": "So I stayed home", "target": "그래서 집에 있었어요"},
+        {"known": "So I decided to learn", "target": "그래서 배우기로 했어요"},
+        {"known": "So I called my friend", "target": "그래서 친구에게 전화했어요"},
+        {"known": "So that is why I came here today", "target": "그래서 오늘 여기에 왔어요"},
+        {"known": "So I need to practice more every day", "target": "그래서 매일 더 연습해야 해요"},
+        {"known": "So I am going to try a different approach this time", "target": "그래서 이번에는 다른 방법을 해 볼 거예요"}
       ]
     },
     {
       "idx": 2,
+      "type": "A",
+      "known": "to change",
+      "target": "바꾸다",
+      "phrases": [
+        {"known": "change", "target": "바꾸다"},
+        {"known": "to change", "target": "바꾸다"},
+        {"known": "to change it", "target": "바꾸다"},
+        {"known": "I will change", "target": "바꿀 거예요"},
+        {"known": "Did you change it?", "target": "바꿨어요?"},
+        {"known": "I changed my mind", "target": "생각을 바꿨어요"},
+        {"known": "I need to change my plan", "target": "계획을 바꿔야 해요"},
+        {"known": "Can we change the time tomorrow?", "target": "내일 시간을 바꿀 수 있어요?"},
+        {"known": "She changed her schedule for the meeting", "target": "그녀는 회의 때문에 일정을 바꿨어요"},
+        {"known": "I decided to change my approach after thinking about it", "target": "생각한 후에 방법을 바꾸기로 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
       "type": "M",
-      "known": "I don't need to change",
-      "target": "変える必要はありません",
+      "known": "don't need to",
+      "target": "필요는 없다",
       "components": [
-        {"known": "to change (trans.)", "target": "変える"},
-        {"known": "there is no need", "target": "必要はありません"}
+        {"known": "need/necessity", "target": "필요"},
+        {"known": "topic marker", "target": "는"},
+        {"known": "doesn't exist", "target": "없다"}
       ],
       "phrases": [
-        {"known": "to change", "target": "変える"},
-        {"known": "there is a need", "target": "必要はあります"},
-        {"known": "there is no need", "target": "必要はありません"},
-        {"known": "I don't need to change it", "target": "変える必要はありません"},
-        {"known": "I don't need to go", "target": "行く必要はありません"},
-        {"known": "you don't need to come", "target": "来る必要はありません"},
-        {"known": "she said she doesn't need to change it", "target": "彼女は変える必要はないと言いました"},
-        {"known": "there is no need to wait", "target": "待つ必要はありません"},
-        {"known": "I don't think there is any need to worry", "target": "心配する必要はないと思います"},
-        {"known": "he said he doesn't need to do anything today", "target": "彼は今日何もする必要はないと言いました"},
-        {"known": "she thought there was no need to go there yesterday", "target": "彼女は昨日そこに行く必要はなかったと思いました"}
+        {"known": "need", "target": "필요"},
+        {"known": "don't have", "target": "없어요"},
+        {"known": "no need", "target": "필요 없어요"},
+        {"known": "don't need to", "target": "필요는 없어요"},
+        {"known": "There is no need", "target": "필요는 없어요"},
+        {"known": "I don't need to go", "target": "갈 필요는 없어요"},
+        {"known": "You don't need to worry", "target": "걱정할 필요는 없어요"},
+        {"known": "We don't need to hurry today", "target": "오늘 서두를 필요는 없어요"},
+        {"known": "You don't need to come early tomorrow", "target": "내일 일찍 올 필요는 없어요"},
+        {"known": "I don't need to explain everything again do I?", "target": "다 다시 설명할 필요는 없죠?"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "So I don't need to change",
+      "target": "그래서 바꿀 필요가 없어요",
+      "components": [
+        {"known": "so", "target": "그래서"},
+        {"known": "to change", "target": "바꾸다"},
+        {"known": "don't need to", "target": "필요가 없어요"}
+      ],
+      "phrases": [
+        {"known": "so", "target": "그래서"},
+        {"known": "to change", "target": "바꾸다"},
+        {"known": "don't need", "target": "필요가 없어요"},
+        {"known": "need to change", "target": "바꿀 필요가 있다"},
+        {"known": "don't need to change", "target": "바꿀 필요가 없어요"},
+        {"known": "So I don't need to change", "target": "그래서 바꿀 필요가 없어요"},
+        {"known": "So I don't need to worry anymore", "target": "그래서 더 이상 걱정할 필요가 없어요"},
+        {"known": "So we don't need to meet tomorrow", "target": "그래서 내일 만날 필요가 없어요"},
+        {"known": "So I don't need to come early", "target": "그래서 일찍 올 필요가 없어요"},
+        {"known": "So I don't need to change my plan for the weekend", "target": "그래서 주말 계획을 바꿀 필요가 없어요"}
       ]
     }
   ]

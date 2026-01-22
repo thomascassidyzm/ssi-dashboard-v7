@@ -1,0 +1,73 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 93,
+  "known_text": "It's time to go now.",
+  "target_text": "이제 갈 시간이에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "now (at this point)",
+      "target": "이제",
+      "phrases": [
+        {"known": "Now (at this point).", "target": "이제."},
+        {"known": "Now then.", "target": "이제요."},
+        {"known": "From now on.", "target": "이제부터."},
+        {"known": "At this point, ready.", "target": "이제 준비됐어요."},
+        {"known": "Now finished.", "target": "이제 끝났어요."},
+        {"known": "At this point, it's time.", "target": "이제 시간이에요."},
+        {"known": "She understands at this point.", "target": "그녀는 이제 이해해요."},
+        {"known": "He is ready to go at this point.", "target": "그는 이제 갈 준비가 됐어요."},
+        {"known": "They can continue at this point.", "target": "그들은 이제 계속할 수 있어요."},
+        {"known": "At this point it's possible to speak more slowly.", "target": "이제 더 천천히 말할 수 있어요."},
+        {"known": "She thinks it's time to go at this point.", "target": "그녀는 이제 갈 시간이라고 생각해요."}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "to go (attributive)",
+      "target": "갈",
+      "components": [
+        {"known": "go", "target": "가다"},
+        {"known": "(future attributive)", "target": "-ㄹ"}
+      ],
+      "phrases": [
+        {"known": "Go.", "target": "가요."},
+        {"known": "Went.", "target": "갔어요."},
+        {"known": "Will go.", "target": "갈 거예요."},
+        {"known": "Can go.", "target": "갈 수 있어요."},
+        {"known": "Can't go.", "target": "갈 수 없어요."},
+        {"known": "Time to go.", "target": "갈 시간."},
+        {"known": "A place to go.", "target": "갈 곳."},
+        {"known": "She wants to go.", "target": "그녀는 가고 싶어요."},
+        {"known": "He has somewhere to go.", "target": "그는 갈 곳이 있어요."},
+        {"known": "It's time to go to the meeting now.", "target": "이제 회의에 갈 시간이에요."},
+        {"known": "She said she has nowhere to go.", "target": "그녀는 갈 곳이 없다고 말했어요."},
+        {"known": "They asked if there was a place to go.", "target": "그들은 갈 곳이 있는지 물었어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "it's time",
+      "target": "시간이에요",
+      "components": [
+        {"known": "time", "target": "시간"},
+        {"known": "is (copula)", "target": "이에요"}
+      ],
+      "phrases": [
+        {"known": "Time.", "target": "시간."},
+        {"known": "It's time.", "target": "시간이에요."},
+        {"known": "What time?", "target": "몇 시예요?"},
+        {"known": "Time to start.", "target": "시작할 시간이에요."},
+        {"known": "It's time to eat.", "target": "먹을 시간이에요."},
+        {"known": "Is it time already?", "target": "벌써 시간이에요?"},
+        {"known": "She said it's time.", "target": "그녀는 시간이라고 말했어요."},
+        {"known": "He thinks it's time to continue.", "target": "그는 계속할 시간이라고 생각해요."},
+        {"known": "It's time to rest for a while.", "target": "잠시 동안 쉴 시간이에요."},
+        {"known": "She said it's time to go home now.", "target": "그녀는 이제 집에 갈 시간이라고 말했어요."}
+      ]
+    }
+  ]
+}

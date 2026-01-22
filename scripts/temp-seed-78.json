@@ -1,50 +1,87 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 78,
   "known_text": "I don't understand what you said.",
-  "target_text": "あなたが言ったことがわかりません。",
+  "target_text": "무슨 말씀인지 이해 못 했어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "what you said",
-      "target": "あなたが言ったことが",
-      "components": [
-        {"known": "you (subject)", "target": "あなたが"},
-        {"known": "what was said (subject)", "target": "言ったことが"}
-      ],
+      "type": "A",
+      "known": "what (kind of)",
+      "target": "무슨",
       "phrases": [
-        {"known": "you", "target": "あなた"},
-        {"known": "you (subject)", "target": "あなたが"},
-        {"known": "what was said", "target": "言ったこと"},
-        {"known": "what you said", "target": "あなたが言ったこと"},
-        {"known": "what she said", "target": "彼女が言ったこと"},
-        {"known": "what he said (subject)", "target": "彼が言ったことが"},
-        {"known": "what you said is important", "target": "あなたが言ったことは大切です"},
-        {"known": "I think what she said is true", "target": "彼女が言ったことは本当だと思います"},
-        {"known": "he did not understand what she said", "target": "彼は彼女が言ったことがわかりませんでした"},
-        {"known": "I was surprised at what you said", "target": "あなたが言ったことに驚きました"},
-        {"known": "we think what he said is very important", "target": "私たちは彼が言ったことはとても大切だと思います"}
+        {"known": "What?", "target": "무슨?"},
+        {"known": "What is it?", "target": "무슨 거예요?"},
+        {"known": "What thing?", "target": "무슨 것?"},
+        {"known": "What words?", "target": "무슨 말이에요?"},
+        {"known": "What did you say?", "target": "무슨 말씀이에요?"},
+        {"known": "What are you talking about?", "target": "무슨 말 하는 거예요?"},
+        {"known": "What happened?", "target": "무슨 일이에요?"},
+        {"known": "She asked what I said.", "target": "그녀는 내가 무슨 말을 했는지 물었어요."},
+        {"known": "I don't know what he's saying.", "target": "그가 무슨 말을 하는지 몰라요."},
+        {"known": "He asked what kind of work she does.", "target": "그는 그녀가 무슨 일을 하는지 물었어요."}
       ]
     },
     {
       "idx": 2,
-      "type": "A",
-      "known": "don't understand",
-      "target": "わかりません",
+      "type": "M",
+      "known": "whether (it's) what was said",
+      "target": "말씀인지",
+      "components": [
+        {"known": "speech/words (honorific)", "target": "말씀"},
+        {"known": "whether", "target": "-인지"}
+      ],
       "phrases": [
-        {"known": "understand", "target": "わかる"},
-        {"known": "I understand", "target": "わかります"},
-        {"known": "don't understand", "target": "わかりません"},
-        {"known": "I understood", "target": "わかりました"},
-        {"known": "do you understand?", "target": "わかりますか？"},
-        {"known": "I did not understand", "target": "わかりませんでした"},
-        {"known": "she does not understand", "target": "彼女はわかりません"},
-        {"known": "he did not understand it", "target": "彼はわかりませんでした"},
-        {"known": "I do not understand Japanese very well", "target": "日本語があまりわかりません"},
-        {"known": "she said she does not understand the truth", "target": "彼女は本当のことがわからないと言いました"},
-        {"known": "he did not understand what she wanted to say", "target": "彼は彼女が言いたかったことがわかりませんでした"},
-        {"known": "I did not understand what he said about the dog", "target": "彼が犬について言ったことがわかりませんでした"}
+        {"known": "Words.", "target": "말씀."},
+        {"known": "Your words.", "target": "말씀이요."},
+        {"known": "What you said.", "target": "말씀하신 것."},
+        {"known": "What did you say?", "target": "무슨 말씀이에요?"},
+        {"known": "I heard what you said.", "target": "말씀을 들었어요."},
+        {"known": "I don't know what you said.", "target": "무슨 말씀인지 몰라요."},
+        {"known": "She didn't understand what was said.", "target": "그녀는 무슨 말씀인지 이해 못 했어요."},
+        {"known": "He asked what kind of words they were.", "target": "그는 무슨 말씀인지 물었어요."},
+        {"known": "I couldn't hear what you said.", "target": "무슨 말씀인지 못 들었어요."},
+        {"known": "We didn't understand what was being said.", "target": "우리는 무슨 말씀인지 이해 못 했어요."}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "A",
+      "known": "understanding",
+      "target": "이해",
+      "phrases": [
+        {"known": "Understanding.", "target": "이해."},
+        {"known": "Understand.", "target": "이해해요."},
+        {"known": "Can understand.", "target": "이해할 수 있어요."},
+        {"known": "I understand.", "target": "이해해요."},
+        {"known": "She understood.", "target": "그녀는 이해했어요."},
+        {"known": "He can't understand.", "target": "그는 이해 못 해요."},
+        {"known": "I understood what you said.", "target": "말씀을 이해했어요."},
+        {"known": "She understood what was being said.", "target": "그녀는 무슨 말씀인지 이해했어요."},
+        {"known": "He finally understood everything.", "target": "그는 마침내 모든 것을 이해했어요."},
+        {"known": "We all understood what was being said.", "target": "우리 모두 무슨 말씀인지 이해했어요."}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "couldn't (do)",
+      "target": "못 했어요",
+      "components": [
+        {"known": "cannot", "target": "못"},
+        {"known": "did (polite)", "target": "했어요"}
+      ],
+      "phrases": [
+        {"known": "Couldn't do.", "target": "못 했어요."},
+        {"known": "Couldn't go.", "target": "못 갔어요."},
+        {"known": "Couldn't come.", "target": "못 왔어요."},
+        {"known": "I couldn't do it.", "target": "나는 못 했어요."},
+        {"known": "She couldn't learn.", "target": "그녀는 배우지 못 했어요."},
+        {"known": "He couldn't understand.", "target": "그는 이해 못 했어요."},
+        {"known": "We couldn't meet.", "target": "우리는 만나지 못 했어요."},
+        {"known": "I couldn't understand what was said.", "target": "말씀을 이해 못 했어요."},
+        {"known": "She couldn't hear what he said.", "target": "그녀는 그가 말한 것을 못 들었어요."},
+        {"known": "I don't understand what you said.", "target": "무슨 말씀인지 이해 못 했어요."}
       ]
     }
   ]

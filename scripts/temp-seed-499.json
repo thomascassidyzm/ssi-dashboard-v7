@@ -1,0 +1,105 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 499,
+  "known_text": "Maybe we should open the door and close the window.",
+  "target_text": "문 열고 창문 닫는 게 좋을 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "opening the door",
+      "target": "문 열다",
+      "components": [
+        {"known": "door", "target": "문"},
+        {"known": "open", "target": "열다"}
+      ],
+      "phrases": [
+        {"known": "door", "target": "문이요"},
+        {"known": "open", "target": "열어요"},
+        {"known": "it's open", "target": "열려 있어요"},
+        {"known": "opening the door", "target": "문 열어요"},
+        {"known": "close the door", "target": "문 닫아요"},
+        {"known": "the door is locked", "target": "문 잠겼어요"},
+        {"known": "please open it", "target": "열어 주세요"},
+        {"known": "she opened the window", "target": "그녀가 창문 열었어요"},
+        {"known": "can you open the door for me", "target": "문 열어 줄 수 있어요?"},
+        {"known": "he forgot to close the door", "target": "그가 문 닫는 거 잊었어요"},
+        {"known": "the store opens at nine", "target": "가게가 아홉 시에 열어요"},
+        {"known": "she opened the door and walked in", "target": "그녀가 문 열고 들어왔어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "close the window",
+      "target": "창문 닫다",
+      "components": [
+        {"known": "window", "target": "창문"},
+        {"known": "close", "target": "닫다"}
+      ],
+      "phrases": [
+        {"known": "window", "target": "창문이요"},
+        {"known": "close", "target": "닫아요"},
+        {"known": "it's closed", "target": "닫혀 있어요"},
+        {"known": "close the window", "target": "창문 닫아요"},
+        {"known": "the window is open", "target": "창문 열려 있어요"},
+        {"known": "please close it", "target": "닫아 주세요"},
+        {"known": "she closed her eyes", "target": "그녀가 눈 감았어요"},
+        {"known": "I'll close the window", "target": "창문 닫을게요"},
+        {"known": "can you close the door please", "target": "문 닫아 줄 수 있어요?"},
+        {"known": "she always closes the window at night", "target": "그녀가 밤에 항상 창문 닫아요"},
+        {"known": "don't forget to close the window", "target": "창문 닫는 거 잊지 마세요"},
+        {"known": "he closed the laptop and left the room", "target": "그가 노트북 닫고 방 나갔어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "opening the door and closing the window",
+      "target": "문 열고 창문 닫다",
+      "components": [
+        {"known": "opening the door", "target": "문 열다"},
+        {"known": "and then", "target": "고"},
+        {"known": "close the window", "target": "창문 닫다"}
+      ],
+      "phrases": [
+        {"known": "and then", "target": "그리고요"},
+        {"known": "do this and that", "target": "이거 하고 저거요"},
+        {"known": "open it and close it", "target": "열고 닫아요"},
+        {"known": "eat and drink", "target": "먹고 마셔요"},
+        {"known": "read and write", "target": "읽고 써요"},
+        {"known": "come in and sit down", "target": "들어와서 앉아요"},
+        {"known": "I opened the window and let fresh air in", "target": "창문 열고 신선한 공기 들였어요"},
+        {"known": "she turned off the light and closed the door", "target": "그녀가 불 끄고 문 닫았어요"},
+        {"known": "he finished work and went home", "target": "그가 일 끝내고 집에 갔어요"},
+        {"known": "please open the door and come inside", "target": "문 열고 안에 들어오세요"},
+        {"known": "she closed the window and turned on the heater", "target": "그녀가 창문 닫고 히터 켰어요"},
+        {"known": "I opened the fridge and grabbed something to eat", "target": "냉장고 열고 먹을 거 가져왔어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "maybe we should open the door and close the window",
+      "target": "문 열고 창문 닫는 게 좋을 것 같아요",
+      "components": [
+        {"known": "opening the door and closing the window", "target": "문 열고 창문 닫다"},
+        {"known": "maybe we should", "target": "는 게 좋을 것 같다"}
+      ],
+      "phrases": [
+        {"known": "maybe", "target": "아마요"},
+        {"known": "should", "target": "해야 해요"},
+        {"known": "we should go", "target": "가는 게 좋아요"},
+        {"known": "maybe it's better", "target": "그게 나을 것 같아요"},
+        {"known": "it would be good to rest", "target": "쉬는 게 좋을 것 같아요"},
+        {"known": "maybe we should eat first", "target": "먼저 먹는 게 좋을 것 같아요"},
+        {"known": "I think we should wait here", "target": "여기서 기다리는 게 좋을 것 같아요"},
+        {"known": "maybe you should call her", "target": "그녀에게 전화하는 게 좋을 것 같아요"},
+        {"known": "perhaps we should leave early", "target": "일찍 나가는 게 좋을 것 같아요"},
+        {"known": "maybe it would be better to try again", "target": "다시 해 보는 게 좋을 것 같아요"},
+        {"known": "I think we should discuss this more", "target": "이거 더 얘기하는 게 좋을 것 같아요"},
+        {"known": "maybe we should take a break and come back later", "target": "쉬고 나중에 오는 게 좋을 것 같아요"}
+      ]
+    }
+  ]
+}

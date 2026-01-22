@@ -1,0 +1,103 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 280,
+  "known_text": "No I only had to do the most important job.",
+  "target_text": "아니요 가장 중요한 일만 하면 됐어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the most important",
+      "target": "가장 중요한",
+      "components": [
+        {"known": "most", "target": "가장"},
+        {"known": "important", "target": "중요하다"}
+      ],
+      "phrases": [
+        {"known": "most", "target": "가장이요"},
+        {"known": "important", "target": "중요해요"},
+        {"known": "the most", "target": "가장이요"},
+        {"known": "most important", "target": "가장 중요해요"},
+        {"known": "the most important thing", "target": "가장 중요한 것"},
+        {"known": "this is the most important", "target": "이게 가장 중요해요"},
+        {"known": "that's the most important part", "target": "그게 가장 중요한 부분이에요"},
+        {"known": "what's the most important?", "target": "뭐가 가장 중요해요?"},
+        {"known": "the most important thing is health", "target": "가장 중요한 것은 건강이에요"},
+        {"known": "she said this is the most important task", "target": "그녀가 이게 가장 중요한 일이라고 말했어요"},
+        {"known": "the most important meeting is tomorrow", "target": "가장 중요한 모임이 내일 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "only had to do",
+      "target": "만 하면 되다",
+      "components": [
+        {"known": "only", "target": "만"},
+        {"known": "do", "target": "하다"},
+        {"known": "if then becomes OK", "target": "면 되다"}
+      ],
+      "phrases": [
+        {"known": "only", "target": "만요"},
+        {"known": "just do it", "target": "하면 돼요"},
+        {"known": "you only need to", "target": "만 하면 돼요"},
+        {"known": "if you do this", "target": "이거 하면 돼요"},
+        {"known": "you just have to", "target": "하기만 하면 돼요"},
+        {"known": "only this is needed", "target": "이것만 하면 돼요"},
+        {"known": "you only had to do this", "target": "이것만 하면 됐어요"},
+        {"known": "I only had to wait", "target": "기다리기만 하면 됐어요"},
+        {"known": "she said you only need to call", "target": "그녀가 전화만 하면 된다고 말했어요"},
+        {"known": "you just need to finish this part", "target": "이 부분만 끝내면 돼요"},
+        {"known": "I only had to sign the document", "target": "서류에 사인만 하면 됐어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "only had to do the most important job",
+      "target": "가장 중요한 일만 하면 됐어요",
+      "components": [
+        {"known": "the most important", "target": "가장 중요한"},
+        {"known": "work/job", "target": "일"},
+        {"known": "only had to do", "target": "만 하면 되다"}
+      ],
+      "phrases": [
+        {"known": "the job", "target": "일이요"},
+        {"known": "important job", "target": "중요한 일"},
+        {"known": "just do the job", "target": "일만 하면 돼요"},
+        {"known": "I only had to work", "target": "일만 하면 됐어요"},
+        {"known": "just do the important thing", "target": "중요한 것만 하면 돼요"},
+        {"known": "she only had to do the main job", "target": "그녀가 주요 일만 하면 됐어요"},
+        {"known": "I only had to do the urgent work", "target": "급한 일만 하면 됐어요"},
+        {"known": "he only had to finish the important part", "target": "그가 중요한 부분만 끝내면 됐어요"},
+        {"known": "you just need to do the most important task", "target": "가장 중요한 일만 하면 돼요"},
+        {"known": "she said she only had to do the main work", "target": "그녀가 주요 일만 하면 됐다고 말했어요"},
+        {"known": "I realized I only had to do the essential job", "target": "필요한 일만 하면 됐다는 걸 알았어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "no I only had to do the most important job",
+      "target": "아니요 가장 중요한 일만 하면 됐어요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "only had to do the most important job", "target": "가장 중요한 일만 하면 됐어요"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "not all", "target": "다 아니요"},
+        {"known": "no just this", "target": "아니요 이것만"},
+        {"known": "no not everything", "target": "아니요 다 아니에요"},
+        {"known": "no I didn't need to", "target": "아니요 안 해도 됐어요"},
+        {"known": "no only that one", "target": "아니요 그것만이요"},
+        {"known": "no just the important parts", "target": "아니요 중요한 것만이요"},
+        {"known": "no I only did the main work", "target": "아니요 주요 일만 했어요"},
+        {"known": "no I just had to focus on this", "target": "아니요 이것에만 집중하면 됐어요"},
+        {"known": "no she said she only had to do that", "target": "아니요 그녀가 그것만 하면 됐다고 말했어요"},
+        {"known": "no I only needed to finish the important job", "target": "아니요 중요한 일만 끝내면 됐어요"},
+        {"known": "no he explained he only had to do the priority tasks", "target": "아니요 그가 우선 일만 하면 됐다고 설명했어요"}
+      ]
+    }
+  ]
+}

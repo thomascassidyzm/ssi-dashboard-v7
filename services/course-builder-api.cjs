@@ -143,6 +143,187 @@ const RECENCY_WINDOW = 50;  // Look at last 50 seeds for pattern analysis
 const PATTERN_FATIGUE_THRESHOLD = 5;  // Max times a 3-gram can appear in window
 const REINFORCEMENT_ZONE = { min: 20, max: 60 };  // Seeds ago when vocab needs practice
 
+// =============================================================================
+// CHECKPOINT SYSTEM - Multiple QA gates during build with drift tracking
+// =============================================================================
+const CHECKPOINT_SEEDS = [10, 50, 150];  // QA checkpoints at these seeds
+
+// courseCode -> {
+//   checkpoints: { seed -> { approved, approvedAt, approvedBy, qa_report } },
+//   drift_history: [{ checkpoint, seed, agent_avg, qa_avg, drift }],
+//   calibration_feedback: { last_checkpoint, your_avg, qa_avg, drift, drift_trend, message }
+// }
+const checkpointState = new Map();
+
+/**
+ * Initialize checkpoint state for a course if not exists
+ */
+function initCheckpointState(courseCode) {
+  if (!checkpointState.has(courseCode)) {
+    checkpointState.set(courseCode, {
+      checkpoints: {},  // seed -> checkpoint data
+      drift_history: [],
+      calibration_feedback: null
+    });
+  }
+  return checkpointState.get(courseCode);
+}
+
+/**
+ * Get the next unapproved checkpoint seed (if any) that blocks this seed
+ */
+function getBlockingCheckpoint(courseCode, requestedSeed) {
+  const state = initCheckpointState(courseCode);
+
+  for (const checkpointSeed of CHECKPOINT_SEEDS) {
+    if (requestedSeed > checkpointSeed) {
+      // We're past this checkpoint - is it approved?
+      const cp = state.checkpoints[checkpointSeed];
+      if (!cp || !cp.approved) {
+        return checkpointSeed;  // This checkpoint blocks us
+      }
+    }
+  }
+  return null;  // No blocking checkpoint
+}
+
+/**
+ * Check if checkpoint is required (just completed a checkpoint seed, not yet approved)
+ */
+function isCheckpointRequired(courseCode, completedSeed) {
+  if (!CHECKPOINT_SEEDS.includes(completedSeed)) return false;  // Not a checkpoint seed
+
+  const state = initCheckpointState(courseCode);
+  const cp = state.checkpoints[completedSeed];
+  if (cp && cp.approved) return false;  // Already approved
+
+  return true;
+}
+
+/**
+ * Check if course is blocked by checkpoint (past a checkpoint seed, not approved)
+ */
+function isBlockedByCheckpoint(courseCode, requestedSeed) {
+  const blockingCheckpoint = getBlockingCheckpoint(courseCode, requestedSeed);
+  return blockingCheckpoint !== null;
+}
+
+/**
+ * Approve checkpoint for course with QA report
+ */
+function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaReport = null) {
+  const state = initCheckpointState(courseCode);
+
+  state.checkpoints[checkpointSeed] = {
+    approved: true,
+    approvedAt: new Date().toISOString(),
+    approvedBy,
+    qa_report: qaReport
+  };
+
+  // If QA report includes drift data, add to drift history
+  if (qaReport && qaReport.quality_gates?.gate_4_drift) {
+    const driftData = qaReport.quality_gates.gate_4_drift;
+    const checkpointNumber = CHECKPOINT_SEEDS.indexOf(checkpointSeed) + 1;
+
+    state.drift_history.push({
+      checkpoint: checkpointNumber,
+      seed: checkpointSeed,
+      agent_avg: driftData.avg_agent_score,
+      qa_avg: driftData.avg_qa_score,
+      drift: Math.abs((driftData.avg_agent_score || 0) - (driftData.avg_qa_score || 0)),
+      timestamp: new Date().toISOString()
+    });
+
+    // Update calibration feedback for build agent
+    state.calibration_feedback = generateCalibrationFeedback(state.drift_history);
+  }
+
+  console.log(`✓ Checkpoint ${checkpointSeed} approved for ${courseCode} by ${approvedBy}`);
+}
+
+/**
+ * Generate calibration feedback message based on drift history
+ */
+function generateCalibrationFeedback(driftHistory) {
+  if (!driftHistory || driftHistory.length === 0) return null;
+
+  const latest = driftHistory[driftHistory.length - 1];
+
+  // Determine drift trend
+  let driftTrend = 'stable';
+  if (driftHistory.length >= 2) {
+    const prev = driftHistory[driftHistory.length - 2];
+    if (latest.drift > prev.drift + 0.2) {
+      driftTrend = 'increasing';
+    } else if (latest.drift < prev.drift - 0.2) {
+      driftTrend = 'decreasing';
+    }
+  }
+
+  // Generate message
+  let message = '';
+  if (latest.drift < 0.3) {
+    message = 'Excellent calibration - your scores align well with QA.';
+  } else if (latest.drift < 0.7) {
+    message = `Your scores are ${latest.drift.toFixed(1)} higher than QA. Minor adjustment may help.`;
+  } else if (latest.drift < 1.2) {
+    message = `Your scores are ${latest.drift.toFixed(1)} higher than QA. Be more critical of USE phrases.`;
+  } else {
+    message = `WARNING: Drift of ${latest.drift.toFixed(1)} is high. Review QA feedback carefully.`;
+  }
+
+  if (driftTrend === 'increasing') {
+    message += ' Drift is INCREASING - quality may be declining.';
+  }
+
+  return {
+    last_checkpoint: latest.seed,
+    checkpoint_number: latest.checkpoint,
+    your_avg_score: latest.agent_avg,
+    qa_avg_score: latest.qa_avg,
+    drift: latest.drift,
+    drift_trend: driftTrend,
+    message
+  };
+}
+
+/**
+ * Get checkpoint status for course (all checkpoints)
+ */
+function getCheckpointStatus(courseCode) {
+  const state = initCheckpointState(courseCode);
+
+  // Find next required checkpoint
+  let nextCheckpoint = null;
+  for (const seed of CHECKPOINT_SEEDS) {
+    const cp = state.checkpoints[seed];
+    if (!cp || !cp.approved) {
+      nextCheckpoint = seed;
+      break;
+    }
+  }
+
+  // Build per-checkpoint status
+  const checkpointDetails = {};
+  for (const seed of CHECKPOINT_SEEDS) {
+    const cp = state.checkpoints[seed];
+    checkpointDetails[seed] = {
+      approved: cp?.approved || false,
+      approvedAt: cp?.approvedAt || null,
+      approvedBy: cp?.approvedBy || null
+    };
+  }
+
+  return {
+    checkpoint_seeds: CHECKPOINT_SEEDS,
+    next_checkpoint: nextCheckpoint,
+    checkpoints: checkpointDetails,
+    drift_history: state.drift_history,
+    calibration_feedback: state.calibration_feedback
+  };
+}
+
 /**
  * Extract n-grams from text (for pattern detection)
  */
@@ -165,14 +346,158 @@ function extractNgrams(text, n = 3) {
 // =============================================================================
 
 /**
- * Compute phrase_role from position value
+ * Compute phrase_role from position value (LEGACY - for backward compatibility)
  * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = eternal)
  * @returns {'component' | 'practice' | 'eternal_eligible'}
+ * @deprecated Use explicit 'build'/'use' roles from ralph-methodology.md
  */
 function computePhraseRole(position) {
   if (position === 0) return 'component';
   if (position >= 8) return 'eternal_eligible';
   return 'practice';
+}
+
+/**
+ * Validate BUILD/USE phrase structure per ralph-methodology.md
+ *
+ * BUILD (4 required): Lock in the pattern, fragments OK
+ *   - 2 SHORT (3-5 syllables)
+ *   - 2 MEDIUM (6-9 syllables)
+ *
+ * USE (6 required): Natural production, complete sentences
+ *   - 3 MEDIUM (6-9 syllables)
+ *   - 3 LONG (10+ syllables)
+ *   - ALL are eternal-eligible
+ *   - Each must have a score (1-9) for quality tracking
+ *
+ * @param {Object} lego - LEGO with build/use arrays
+ * @param {string} courseCode - Course code for language-specific thresholds
+ * @param {number} seedNumber - For relaxed requirements on early seeds
+ * @returns {{ valid: boolean, error?: string, details?: Object }}
+ */
+function checkBuildUsePhrases(lego, courseCode, seedNumber) {
+  const thresholds = getCharThresholds(courseCode);
+
+  // Relaxed requirements for early seeds (per methodology)
+  // Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE
+  // Seed 1, LEGO 2+: 2 BUILD, 2 USE
+  // Seeds 2-5: 3 BUILD, 4 USE
+  // Seeds 6+: Full requirements (4 BUILD, 6 USE)
+
+  const globalPosition = (seedNumber - 1) * 3 + (lego.idx || 1);
+
+  let minBuild = 4;
+  let minUse = 6;
+
+  if (seedNumber === 1 && lego.idx === 1) {
+    minBuild = 0;
+    minUse = 0;
+  } else if (seedNumber === 1) {
+    minBuild = 2;
+    minUse = 2;
+  } else if (seedNumber <= 5) {
+    minBuild = 3;
+    minUse = 4;
+  }
+
+  const build = lego.build || [];
+  const use = lego.use || [];
+
+  // Count validation
+  if (build.length < minBuild) {
+    return {
+      valid: false,
+      error: `BUILD: need ${minBuild}+, got ${build.length}`,
+      details: { build: build.length, use: use.length, minBuild, minUse }
+    };
+  }
+
+  if (use.length < minUse) {
+    return {
+      valid: false,
+      error: `USE: need ${minUse}+, got ${use.length}`,
+      details: { build: build.length, use: use.length, minBuild, minUse }
+    };
+  }
+
+  // USE phrase score validation (1-9 required for each)
+  // Score 0 = grammatical error, agent should rewrite not submit
+  const missingScores = use.filter(p => typeof p.score !== 'number');
+  if (missingScores.length > 0) {
+    return {
+      valid: false,
+      error: `USE phrases must have scores (1-9). Missing scores on ${missingScores.length} phrase(s)`,
+      details: { missingScores: missingScores.map(p => p.known?.substring(0, 30)) }
+    };
+  }
+
+  const invalidScores = use.filter(p => p.score < 1 || p.score > 9);
+  if (invalidScores.length > 0) {
+    return {
+      valid: false,
+      error: `USE phrase scores must be 1-9. Score 0 = rewrite, don't submit. Invalid: ${invalidScores.map(p => p.score).join(', ')}`,
+      details: { invalidScores: invalidScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score })) }
+    };
+  }
+
+  // Calculate average score for reporting
+  const avgScore = use.length > 0 ? (use.reduce((sum, p) => sum + p.score, 0) / use.length).toFixed(1) : 0;
+
+  // If full requirements, check length tiers
+  if (seedNumber >= 6) {
+    // BUILD should have SHORT→MEDIUM mix (2 SHORT, 2 MEDIUM)
+    const buildShort = build.filter(p => p.target.length <= thresholds.SHORT.max);
+    const buildMedium = build.filter(p =>
+      p.target.length > thresholds.SHORT.max && p.target.length <= thresholds.MEDIUM.max
+    );
+
+    if (buildShort.length < 2) {
+      return {
+        valid: false,
+        error: `BUILD needs 2+ SHORT phrases (≤${thresholds.SHORT.max} chars), got ${buildShort.length}`,
+        details: { buildShort: buildShort.length, buildMedium: buildMedium.length }
+      };
+    }
+
+    if (buildMedium.length < 2) {
+      return {
+        valid: false,
+        error: `BUILD needs 2+ MEDIUM phrases (${thresholds.MEDIUM.min}-${thresholds.MEDIUM.max} chars), got ${buildMedium.length}`,
+        details: { buildShort: buildShort.length, buildMedium: buildMedium.length }
+      };
+    }
+
+    // USE should have MEDIUM→LONG mix (3 MEDIUM, 3 LONG)
+    const useMedium = use.filter(p =>
+      p.target.length >= thresholds.MEDIUM.min && p.target.length <= thresholds.MEDIUM.max
+    );
+    const useLong = use.filter(p => p.target.length >= thresholds.LONG.min);
+
+    if (useMedium.length < 3) {
+      return {
+        valid: false,
+        error: `USE needs 3+ MEDIUM phrases (${thresholds.MEDIUM.min}-${thresholds.MEDIUM.max} chars), got ${useMedium.length}`,
+        details: { useMedium: useMedium.length, useLong: useLong.length }
+      };
+    }
+
+    if (useLong.length < 3) {
+      return {
+        valid: false,
+        error: `USE needs 3+ LONG phrases (${thresholds.LONG.min}+ chars), got ${useLong.length}`,
+        details: { useMedium: useMedium.length, useLong: useLong.length }
+      };
+    }
+  }
+
+  return { valid: true, details: { build: build.length, use: use.length, avgScore: parseFloat(avgScore) } };
+}
+
+/**
+ * Check if LEGO uses new BUILD/USE format (ralph-methodology.md)
+ */
+function usesBuildUseFormat(lego) {
+  return Array.isArray(lego.build) || Array.isArray(lego.use);
 }
 
 /**
@@ -445,10 +770,12 @@ function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
     }
   }
 
-  // Two-Pass workflow prompt v4 - agent discovers language rules via translation
-  // Pass 1: Translate all seeds, discover patterns → save analysis
-  // Pass 2: Decompose seeds with full analysis context
+  // Ralph methodology prompt v5 - BUILD/USE phrases with scores
+  // Pass 1: Translate ALL 668 seeds, build analysis
+  // Pass 2: Decompose seeds with BUILD/USE format per ralph-methodology.md
   const prompt = `You build course content for ${courseCode}. Agent #${agentNumber}.
+
+**READ ralph-methodology.md NOW** - it defines the BUILD/USE phrase format you MUST follow.
 
 ## FIRST: Determine Which Pass
 
@@ -457,58 +784,85 @@ curl http://localhost:3471/api/resume/${courseCode}
 Check the response:
 - If \`translation_analysis\` is null → You are in **Pass 1**
 - If \`translation_analysis\` has data → You are in **Pass 2**
-- Check \`pass_status\` for exact state
 
-## PASS 1: Translation Analysis (if translation_analysis is null)
+## PASS 1: Translation (if translation_analysis is null)
 
-Translate ALL remaining seeds. Track patterns as you translate:
+Translate ALL 668 seeds. This builds the analysis for Pass 2.
 
-1. GET seeds: curl "http://localhost:3471/api/course/${courseCode}/translate?limit=260"
-2. For each seed, translate naturally and PATCH:
+1. GET seeds: curl "http://localhost:3471/api/course/${courseCode}/translate?limit=668"
+2. Translate each seed naturally, PATCH:
    curl -X PATCH http://localhost:3471/api/seed/${courseCode}/{num} -d '{"target_text": "..."}'
-3. **Track as you go:**
-   - Problem verbs: Same English → different target forms (e.g., "remember" has 2+ translations)
-   - Golden keys: Patterns appearing 10+ times (e.g., "want to V")
-   - ZUT concerns: Ambiguous English that needs rewording
-   - Register: Pick one (casual, polite, formal) and stick to it
-4. After ALL seeds translated, save your analysis:
+3. **Track patterns:**
+   - Problem verbs: Same English → different target forms
+   - Golden keys: Patterns appearing 10+ times
+   - ZUT concerns: Ambiguous English needing rewording
+   - Register: Pick one (casual/polite/formal) and stick to it
+4. After ALL 668 translated, save analysis:
    curl -X POST http://localhost:3471/api/course/${courseCode}/analysis -d '{...}'
 
-**Invoke /translation-analysis for detailed guidance on what to track.**
+**Invoke /translation-analysis for detailed guidance.**
 
 ## PASS 2: Decomposition (if translation_analysis exists)
 
-Build ${BATCH_SIZE} seeds. Your analysis tells you which English words need disambiguation.
+Build ${BATCH_SIZE} seeds using BUILD/USE format from ralph-methodology.md.
+
+**CHECKPOINT:** After seed 10, you'll receive status "CHECKPOINT_REACHED".
+Stop and wait for QA approval before continuing to seed 11+.
 
 For each seed:
-1. Check \`translation_analysis\` for any problem verbs in this seed
-2. Decompose into 3-5 LEGOs (prefer M-LEGOs for meaningful chunks)
-3. Generate 10-12 phrases per LEGO, SHORT→LONG
-4. POST to http://localhost:3471/api/seed/complete
-5. Fix errors inline, retry max 3x
+1. Decompose into 3-5 LEGOs (A-type single words, M-type phrases)
+2. For each LEGO, generate:
+   - **BUILD phrases (4):** 2 SHORT + 2 MEDIUM, fragments OK
+   - **USE phrases (6):** 3 MEDIUM + 3 LONG, complete sentences, SCORE each 1-9
+3. POST to http://localhost:3471/api/seed/complete
+4. Fix errors inline, retry max 3x
 
-## LEGO STRUCTURE (same for all languages)
+## LEGO FORMAT (ralph-methodology.md)
 
-M-LEGO "as often as possible" → 尽量多
 \`\`\`json
-{"idx": 2, "type": "M", "known": "as often as possible", "target": "尽量多",
- "components": [{"known": "as much as possible", "target": "尽量"}, {"known": "often", "target": "多"}],
- "phrases": [
-   {"known": "often", "target": "多"},
-   {"known": "as often as possible", "target": "尽量多"},
-   {"known": "speak as often as possible", "target": "尽量多说"},
-   ... (10-12 total, SHORT→LONG)
- ]}
+{
+  "idx": 1,
+  "type": "M",
+  "known": "I want to",
+  "target": "我想",
+  "components": [
+    {"known": "I", "target": "我"},
+    {"known": "want", "target": "想"}
+  ],
+  "build": [
+    {"known": "I want to", "target": "我想"},
+    {"known": "I want to speak", "target": "我想说"},
+    {"known": "I want to learn", "target": "我想学"},
+    {"known": "I want to try", "target": "我想试"}
+  ],
+  "use": [
+    {"known": "I want to speak Chinese", "target": "我想说中文", "score": 8},
+    {"known": "I want to learn Chinese with you", "target": "我想和你学中文", "score": 8},
+    {"known": "Do you want to speak Chinese with me?", "target": "你想和我说中文吗?", "score": 9},
+    {"known": "I want to try to learn Chinese", "target": "我想试着学中文", "score": 7},
+    {"known": "I want to practice Chinese every day", "target": "我想每天练习中文", "score": 8},
+    {"known": "Now I want to try to speak Chinese", "target": "我现在想试着说中文", "score": 7}
+  ]
+}
 \`\`\`
+
+## SCORING USE PHRASES (1-9)
+- **9**: Native-natural in both languages, high pedagogical value
+- **7-8**: Strong, minor stylistic preferences possible
+- **5-6**: Functional, correct but unremarkable
+- **3-4**: Awkward/textbook-ish
+- **1-2**: Low value, technically correct
+- **0**: Grammar error → REWRITE, don't submit
 
 ## ERROR FIXES
 • ZUT VIOLATION: Use existing mapping OR upchunk to disambiguate
 • VOCAB VIOLATION: Remove phrase - vocabulary not introduced yet
-• PHRASE TIERS need 3+ LONG: Add phrases with 10+ words
+• BUILD/USE COUNTS: Need exactly 4 BUILD + 6 USE per LEGO
+• MISSING SCORES: Every USE phrase needs score 1-9
 
 ## AUTONOMY
 - Do NOT stop to ask "should I continue?" - just keep going
-- Only stop for ERRORS you cannot resolve
+- After CHECKPOINT_REACHED at seed 10: STOP, await QA approval
 - After ${BATCH_SIZE} seeds: "BATCH COMPLETE"`;
 
   // Write prompt to temp file to avoid escaping nightmares
@@ -1602,12 +1956,40 @@ const METHODOLOGY_HINTS = {
    - Use M-LEGOs for multi-word chunks`,
 
   phrases: `
-📚 See /ssi-build-phrases for phrase tier requirements:
-   - SHORT (3-5 chars): quick recall
-   - MEDIUM (6-9 chars): building complexity
-   - LONG (10+ chars): full sentences for retention
-   - Must have 2+ phrases in 5-10 char range (smooth progression)
+📚 See ralph-methodology.md for phrase requirements:
+   BUILD (4 phrases): Lock in the pattern, fragments OK
+   - 2 SHORT (3-5 syllables)
+   - 2 MEDIUM (6-9 syllables)
+
+   USE (6 phrases): Natural production, complete sentences ONLY
+   - 3 MEDIUM (6-9 syllables)
+   - 3 LONG (10+ syllables)
+   - ALL are eternal-eligible (go into spaced repetition)
+
    Graduated: relaxed (seeds 1-5), softened (6-20), hard (21+)`,
+
+  build_use: `
+📚 See ralph-methodology.md for BUILD/USE phrase structure:
+   BUILD phrases (4 required):
+   - Lock in the pattern, get the LEGO "in"
+   - Fragments OK (don't need complete sentences)
+   - 2 SHORT (3-5 syllables) + 2 MEDIUM (6-9 syllables)
+   - NOT eternal-eligible
+
+   USE phrases (6 required):
+   - Natural production, put the LEGO "out"
+   - MUST be complete sentences (subject + verb)
+   - 3 MEDIUM (6-9 syllables) + 3 LONG (10+ syllables)
+   - ALL eternal-eligible (go into spaced repetition)
+   - Each USE phrase MUST have a score (1-9)
+
+   SCORING (1-9) - self-assess each USE phrase:
+   9 = grammatically perfect, semantically excellent, high value in both languages
+   7-8 = strong phrase, minor stylistic preferences possible
+   5-6 = solid, functional, no issues but not remarkable
+   3-4 = grammatically OK, but awkward/textbook-ish
+   1-2 = grammatically OK, semantically questionable, low value
+   0 = grammatical error → REWRITE, don't submit`,
 
   vocab: `
 📚 See /ssi-learner-pattern for how vocabulary builds:
@@ -1623,9 +2005,9 @@ const METHODOLOGY_HINTS = {
   components: `
 📚 See /ssi-decompose-seed for M-LEGO component requirements:
    - ALL M-type LEGOs MUST have component breakdown
-   - Components teach the building blocks BEFORE the assembled phrase
-   - Long M-LEGOs (4+ chars) need 2+ meaningful components
-   - Components enable the learner to construct the M-LEGO mentally`,
+   - Components are for DISPLAY only (never practiced as audio)
+   - Components help learner see internal structure
+   - Long M-LEGOs (4+ chars) need 2+ meaningful components`,
 
   balance: `
 📚 See /ssi-phrase-variety for balance requirements:
@@ -2110,6 +2492,21 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
+    // CHECKPOINT GATE: Block seeds past checkpoint until approved
+    if (isBlockedByCheckpoint(course_code, seed_number)) {
+      const checkpoint = getCheckpointStatus(course_code);
+      return res.status(403).json({
+        error: 'CHECKPOINT_REQUIRED',
+        message: `Seed ${seed_number} blocked - checkpoint at seed ${checkpoint.checkpointSeed} requires approval`,
+        seed: seedId,
+        checkpoint: {
+          checkpoint_seed: checkpoint.checkpointSeed,
+          approved: false,
+          action: 'Run QA agent, then POST /api/checkpoint/approve/' + course_code
+        }
+      });
+    }
+
     // CANONICAL SEED LOOKUP: Get known_text/target_text from pre-populated database seeds
     // Do this BEFORE translation validation - seeds may already have translations (target-first workflow)
     let { data: canonicalSeed, error: seedLookupError } = await supabase
@@ -2313,13 +2710,23 @@ app.post('/api/seed/complete', async (req, res) => {
       addToCourseVocab(course_code, { target: lego.target, type: lego.type, components: lego.components });
 
       // THEN check phrases (can use this LEGO + all prior vocab)
-      if (!isDuplicate && lego.phrases && lego.phrases.length > 0) {
-        const violations = checkVocabViolations(lego.phrases, vocabSet, course_code);
-        if (violations.length > 0 && !SKIP_VALIDATION) {
-          vocabViolations.push({
-            lego_id: legoId,
-            violations: violations.slice(0, 3)  // First 3
-          });
+      if (!isDuplicate) {
+        // Get all phrases (supports both BUILD/USE and legacy format)
+        let allPhrases = [];
+        if (usesBuildUseFormat(lego)) {
+          allPhrases = [...(lego.build || []), ...(lego.use || [])];
+        } else if (lego.phrases) {
+          allPhrases = lego.phrases;
+        }
+
+        if (allPhrases.length > 0) {
+          const violations = checkVocabViolations(allPhrases, vocabSet, course_code);
+          if (violations.length > 0 && !SKIP_VALIDATION) {
+            vocabViolations.push({
+              lego_id: legoId,
+              violations: violations.slice(0, 3)  // First 3
+            });
+          }
         }
       }
     }
@@ -2335,39 +2742,60 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // 4. PHRASE COUNT VALIDATION
+    // 4. PHRASE VALIDATION (supports both BUILD/USE and legacy format)
     const globalPosition = (seed_number - 1) * 3;  // Rough estimate
+
     for (const lego of legos) {
       const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
       const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
       if (isDuplicate) continue;
 
-      const phraseCount = lego.phrases?.length || 0;
-      const legoPosition = globalPosition + lego.idx;
+      // Check if using new BUILD/USE format (ralph-methodology.md)
+      if (usesBuildUseFormat(lego)) {
+        // NEW FORMAT: Validate BUILD/USE structure
+        const buildUseResult = checkBuildUsePhrases(lego, course_code, seed_number);
+        if (!buildUseResult.valid && !SKIP_VALIDATION) {
+          errors.push({
+            type: 'build_use',
+            message: `${legoId}: ${buildUseResult.error}`,
+            lego_id: legoId,
+            details: buildUseResult.details,
+            methodology: METHODOLOGY_HINTS.build_use
+          });
+          console.log(`✗ ${legoId}: BUILD/USE - ${buildUseResult.error}`);
+        }
+      } else if (lego.phrases) {
+        // LEGACY FORMAT: Validate flat phrases array
+        const phraseCount = lego.phrases.length;
+        const legoPosition = globalPosition + lego.idx;
 
-      let minRequired = MIN_PHRASES_PER_LEGO;
-      if (legoPosition === 1) minRequired = 0;        // Very first LEGO - nothing to combine with!
-      else if (legoPosition <= 3) minRequired = 1;
-      else if (legoPosition <= 6) minRequired = 2;
-      else if (legoPosition <= 10) minRequired = 3;
+        let minRequired = MIN_PHRASES_PER_LEGO;
+        if (legoPosition === 1) minRequired = 0;
+        else if (legoPosition <= 3) minRequired = 1;
+        else if (legoPosition <= 6) minRequired = 2;
+        else if (legoPosition <= 10) minRequired = 3;
 
-      if (phraseCount < minRequired && !SKIP_VALIDATION) {
-        errors.push({
-          type: 'phrases',
-          message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ at position ~${legoPosition})`,
-          lego_id: legoId,
-          methodology: METHODOLOGY_HINTS.phrases
-        });
+        if (phraseCount < minRequired && !SKIP_VALIDATION) {
+          errors.push({
+            type: 'phrases',
+            message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ at position ~${legoPosition})`,
+            lego_id: legoId,
+            methodology: METHODOLOGY_HINTS.phrases
+          });
+        }
       }
     }
 
-    // 5. PHRASE COMPLEXITY VALIDATION (tier balance for progression)
-    // Graduated: relaxed (seeds 1-5), softened (6-20), hard (21+)
+    // 5. PHRASE COMPLEXITY VALIDATION (only for legacy format)
+    // BUILD/USE format already validates tiers in step 4
     if (!SKIP_VALIDATION) {
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
         if (isDuplicate) continue;
+
+        // Skip if using BUILD/USE format (already validated)
+        if (usesBuildUseFormat(lego)) continue;
 
         if (lego.phrases && lego.phrases.length > 0) {
           const complexityResult = checkPhraseComplexity(lego.phrases, course_code, seed_number);
@@ -2431,12 +2859,16 @@ app.post('/api/seed/complete', async (req, res) => {
     // 7. LEGO BALANCE VALIDATION (three-strike escalation)
     // Ensure phrases don't over-rely on common vocabulary while neglecting underused LEGOs
     if (!SKIP_VALIDATION && seed_number > 20) {  // Only check after enough vocabulary exists
-      // Gather all phrases from this submission
+      // Gather all phrases from this submission (supports both BUILD/USE and legacy format)
       const allNewPhrases = [];
       for (const lego of legos) {
         const isDuplicate = duplicateLegos.some(d => d.lego_id === `${seedId}L${String(lego.idx).padStart(2, '0')}`);
-        if (!isDuplicate && lego.phrases) {
-          allNewPhrases.push(...lego.phrases);
+        if (!isDuplicate) {
+          if (usesBuildUseFormat(lego)) {
+            allNewPhrases.push(...(lego.build || []), ...(lego.use || []));
+          } else if (lego.phrases) {
+            allNewPhrases.push(...lego.phrases);
+          }
         }
       }
 
@@ -2551,12 +2983,13 @@ app.post('/api/seed/complete', async (req, res) => {
         continue;
       }
 
-      // Generate phrases (with M-LEGO build-up)
+      // Generate phrases (with M-LEGO build-up for components)
       let allPhraseRows = [];
       let buildupCount = 0;
       let practiceStartPosition = 1;
 
-      // M-TYPE BUILD-UP
+      // M-TYPE BUILD-UP (components for display)
+      // Components are ALWAYS generated for M-LEGOs, regardless of format
       if (lego.type === 'M' && lego.components && lego.components.length > 0) {
         const { buildupPhrases, startPosition } = generateBuildupPhrases(
           { seed: seed_number, idx: lego.idx, known: lego.known, target: lego.target, components: lego.components },
@@ -2568,8 +3001,62 @@ app.post('/api/seed/complete', async (req, res) => {
         totalBuildupPhrases += buildupCount;
       }
 
-      // Practice phrases
-      if (lego.phrases && lego.phrases.length > 0) {
+      // Check if using new BUILD/USE format (ralph-methodology.md)
+      if (usesBuildUseFormat(lego)) {
+        // NEW FORMAT: Process BUILD and USE arrays with explicit roles
+        const buildPhrases = lego.build || [];
+        const usePhrases = lego.use || [];
+
+        // BUILD phrases (role='build', NOT eternal-eligible)
+        const buildRows = buildPhrases.map((p, i) => ({
+          course_code,
+          seed_number,
+          lego_index: lego.idx,
+          position: practiceStartPosition + i,
+          known_text: p.known,
+          target_text: p.target,
+          word_count: p.target.length,
+          lego_count: (p.known.match(/\s+/g) || []).length + 1,
+          phrase_role: 'build',  // Explicit role
+          connected_lego_ids: [],
+          lego_position: computeLegoPosition(p.target, lego.target),
+          metadata: { format: 'build_use' },
+          status: 'draft',
+          version: 1
+        }));
+
+        // USE phrases (role='use', ALL eternal-eligible, with quality score)
+        const useRows = usePhrases.map((p, i) => ({
+          course_code,
+          seed_number,
+          lego_index: lego.idx,
+          position: practiceStartPosition + buildPhrases.length + i,
+          known_text: p.known,
+          target_text: p.target,
+          word_count: p.target.length,
+          lego_count: (p.known.match(/\s+/g) || []).length + 1,
+          phrase_role: 'use',  // Explicit role (eternal-eligible)
+          connected_lego_ids: [],
+          lego_position: computeLegoPosition(p.target, lego.target),
+          metadata: {
+            format: 'build_use',
+            score: p.score,  // Agent self-assessed quality (1-9)
+            scored_at: new Date().toISOString()
+          },
+          status: 'draft',
+          version: 1
+        }));
+
+        // Calculate average score for logging
+        const avgScore = usePhrases.length > 0
+          ? (usePhrases.reduce((sum, p) => sum + p.score, 0) / usePhrases.length).toFixed(1)
+          : 0;
+
+        allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows];
+        console.log(`    BUILD/USE format: ${buildRows.length} build + ${useRows.length} use phrases (avg score: ${avgScore})`);
+
+      } else if (lego.phrases && lego.phrases.length > 0) {
+        // LEGACY FORMAT: Process flat phrases array
         // DEDUPLICATION: Filter out agent phrases that duplicate build-up phrases
         const buildupTargets = new Set(allPhraseRows.map(p => p.target_text));
         const dedupedPhrases = lego.phrases.filter(p => !buildupTargets.has(p.target));
@@ -2591,9 +3078,9 @@ app.post('/api/seed/complete', async (req, res) => {
             target_text: p.target,
             word_count: p.target.length,
             lego_count: (p.known.match(/\s+/g) || []).length + 1,
-            // New coverage columns (January 2026)
+            // Legacy: compute role from position
             phrase_role: computePhraseRole(position),
-            connected_lego_ids: [],  // Could be enhanced to compute from same-seed LEGOs
+            connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target, lego.target),
             metadata: {},
             status: 'draft',
@@ -2642,6 +3129,76 @@ app.post('/api/seed/complete', async (req, res) => {
 
     // Record activity for stall detection
     recordActivity(course_code, seed_number);
+
+    // CHECK FOR CHECKPOINT - if seed 10 just completed, require QA review
+    if (isCheckpointRequired(course_code, seed_number)) {
+      console.log(`\n${'='.repeat(60)}`);
+      console.log(`CHECKPOINT REACHED: Seed ${seed_number} complete`);
+      console.log(`Run QA agent to verify quality before continuing`);
+      console.log(`${'='.repeat(60)}\n`);
+
+      // Get summary stats for QA
+      const { count: legoCount } = await supabase
+        .from('course_legos')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', course_code);
+
+      const { count: phraseCount } = await supabase
+        .from('course_practice_phrases')
+        .select('*', { count: 'exact', head: true })
+        .eq('course_code', course_code);
+
+      // Get USE phrase scores for summary
+      const { data: usePhrases } = await supabase
+        .from('course_practice_phrases')
+        .select('metadata')
+        .eq('course_code', course_code)
+        .eq('phrase_role', 'use');
+
+      const scores = (usePhrases || [])
+        .map(p => p.metadata?.score)
+        .filter(s => typeof s === 'number');
+      const avgScore = scores.length > 0
+        ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)
+        : 'N/A';
+
+      return res.json({
+        ok: true,
+        seed: seedId,
+        status: 'CHECKPOINT_REACHED',
+        action: 'AWAIT_QA_APPROVAL',
+        known_text,
+        target_text,
+        legos: legos.length,
+        phrases: totalPhrases,
+
+        checkpoint: {
+          checkpoint_seed: seed_number,  // The checkpoint we just reached
+          checkpoint_number: CHECKPOINT_SEEDS.indexOf(seed_number) + 1,
+          all_checkpoints: CHECKPOINT_SEEDS,
+          message: 'QA review required before continuing',
+          summary: {
+            seeds_complete: seed_number,
+            total_legos: legoCount,
+            total_phrases: phraseCount,
+            use_phrase_avg_score: avgScore,
+            scores_distribution: scores.length > 0 ? {
+              count: scores.length,
+              high_9: scores.filter(s => s === 9).length,
+              good_7_8: scores.filter(s => s >= 7 && s < 9).length,
+              ok_5_6: scores.filter(s => s >= 5 && s < 7).length,
+              low_1_4: scores.filter(s => s < 5).length
+            } : null
+          },
+          next_steps: [
+            '1. Run QA agent: GET /api/checkpoint/summary/' + course_code,
+            '2. QA agent samples and re-scores USE phrases',
+            '3. If alignment good: POST /api/checkpoint/approve/' + course_code,
+            '4. Build agent resumes with seed ' + (seed_number + 1)
+          ]
+        }
+      });
+    }
 
     // Get recency hints for next iteration (avoid pattern fatigue)
     let recencyHints = null;
@@ -3119,6 +3676,9 @@ app.get('/api/resume/:courseCode', async (req, res) => {
       analysis_saved: analysisSaved
     },
 
+    // Checkpoint status (QA gate at seed 10)
+    checkpoint: getCheckpointStatus(courseCode),
+
     // Resume point
     next_seed: incompleteSeed ? {
       seed_number: incompleteSeed.seed_number,
@@ -3170,22 +3730,25 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     // Full methodology for self-recovery after compaction
     methodology: {
       workflow: [
-        '1. Use next_seed.known_text exactly (do NOT invent or guess seeds)',
-        `2. Translate naturally to ${targetLangName}`,
-        '3. Decompose into LEGOs: A-type (single words), M-type (phrases with components)',
-        '4. Generate 10+ practice phrases per LEGO',
-        '5. POST to /api/seed/complete with {course_code, seed_number, target_text, legos}',
-        '6. Use next_seed from response for next iteration',
-        '7. Continue autonomously until all seeds complete - do NOT stop to ask',
-        '8. CHECK recency.patterns_to_avoid - do NOT use overused patterns!',
-        '9. TRY TO USE recency.vocab_to_reinforce items in your phrases'
+        '1. READ ralph-methodology.md for BUILD/USE phrase format',
+        '2. Use next_seed.known_text exactly (do NOT invent or guess seeds)',
+        `3. Translate naturally to ${targetLangName}`,
+        '4. Decompose into LEGOs: A-type (single words), M-type (phrases with components)',
+        '5. Generate BUILD (4) + USE (6) phrases per LEGO with scores 1-9',
+        '6. POST to /api/seed/complete with {course_code, seed_number, target_text, legos}',
+        `7. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA approval`,
+        '8. If checkpoint.calibration_feedback exists, READ IT and adjust your scoring',
+        '9. Continue autonomously until all seeds complete',
+        '10. CHECK recency.patterns_to_avoid - do NOT use overused patterns!'
       ],
       lego_types: {
         'A-type': 'Single meaningful word: {"type":"A","known":"speak","target":"说"}',
-        'M-type': 'Multi-word phrase with components: {"type":"M","known":"I want","target":"我想","components":[{"known":"I","target":"我"},{"known":"want","target":"想"}]}'
+        'M-type': 'Multi-word phrase with components + BUILD/USE arrays per ralph-methodology.md'
       },
       phrase_requirements: {
-        minimum: '7 phrases per LEGO (for seeds 21+)',
+        format: 'BUILD/USE (see ralph-methodology.md)',
+        build: '4 phrases: 2 SHORT (3-5 syl) + 2 MEDIUM (6-9 syl), fragments OK',
+        use: '6 phrases: 3 MEDIUM + 3 LONG (10+ syl), complete sentences, scored 1-9',
         target: '10-13 phrases per LEGO',
         tiers: 'Mix of SHORT (3-5 words), MEDIUM (6-9 words), LONG (10+ words)',
         variety: 'CRITICAL: Avoid repetitive patterns. Each phrase should have unique structure.'
@@ -3721,6 +4284,211 @@ app.delete('/api/course/:courseCode', async (req, res) => {
   res.json({ ok: true, cleared: courseCode });
 });
 
+// =============================================================================
+// CHECKPOINT ENDPOINTS - QA gate for build verification
+// =============================================================================
+
+/**
+ * GET /api/checkpoint/summary/:courseCode - Get checkpoint summary for QA
+ *
+ * Returns:
+ * - Completion stats (seeds, LEGOs, phrases)
+ * - Sample of ~50 USE phrases with scores for QA re-scoring
+ * - Score distribution
+ * - Approval status
+ */
+app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const checkpoint = getCheckpointStatus(courseCode);
+
+  // Get completed seeds count
+  const { data: seedData } = await supabase
+    .from('course_legos')
+    .select('seed_number')
+    .eq('course_code', courseCode);
+
+  const completedSeeds = new Set(seedData?.map(r => r.seed_number) || []).size;
+
+  // Get LEGO and phrase counts
+  const { count: legoCount } = await supabase
+    .from('course_legos')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  const { count: phraseCount } = await supabase
+    .from('course_practice_phrases')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode);
+
+  // Get USE phrases with scores (sample ~50 for QA)
+  const { data: usePhrases } = await supabase
+    .from('course_practice_phrases')
+    .select('id, seed_number, lego_index, known_text, target_text, phrase_role, metadata')
+    .eq('course_code', courseCode)
+    .eq('phrase_role', 'use')
+    .order('seed_number', { ascending: true })
+    .limit(100);  // Get 100, then sample
+
+  // Sample ~50 evenly distributed
+  const sampleSize = Math.min(50, usePhrases?.length || 0);
+  const step = Math.max(1, Math.floor((usePhrases?.length || 1) / sampleSize));
+  const sampledPhrases = [];
+  for (let i = 0; i < (usePhrases?.length || 0) && sampledPhrases.length < sampleSize; i += step) {
+    const p = usePhrases[i];
+    sampledPhrases.push({
+      id: p.id,
+      seed: p.seed_number,
+      lego: p.lego_index,
+      known: p.known_text,
+      target: p.target_text,
+      agent_score: p.metadata?.score || null,
+      scored_at: p.metadata?.scored_at || null
+    });
+  }
+
+  // Calculate score distribution
+  const allScores = (usePhrases || [])
+    .map(p => p.metadata?.score)
+    .filter(s => typeof s === 'number');
+  const scoreDistribution = {};
+  for (let s = 1; s <= 9; s++) {
+    scoreDistribution[s] = allScores.filter(score => score === s).length;
+  }
+  const avgScore = allScores.length > 0
+    ? (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(2)
+    : null;
+
+  res.json({
+    course_code: courseCode,
+    checkpoint: {
+      checkpoint_seeds: checkpoint.checkpoint_seeds,
+      next_checkpoint: checkpoint.next_checkpoint,
+      checkpoints: checkpoint.checkpoints,
+      drift_history: checkpoint.drift_history,
+      calibration_feedback: checkpoint.calibration_feedback
+    },
+    summary: {
+      seeds_complete: completedSeeds,
+      total_legos: legoCount || 0,
+      total_phrases: phraseCount || 0,
+      use_phrases_count: usePhrases?.length || 0,
+      avg_score: avgScore,
+      score_distribution: scoreDistribution
+    },
+    sample_for_qa: {
+      count: sampledPhrases.length,
+      phrases: sampledPhrases,
+      instructions: [
+        'QA agent should independently re-score each phrase (1-9)',
+        'Gate 1: QA avg must be >= 7.0 (absolute quality)',
+        'Gate 2: USE phrases must outscore BUILD phrases',
+        'Gate 3: Check for vocabulary violations (words not yet introduced)',
+        'Gate 4: Compare QA scores vs agent scores for drift',
+        'If any gate fails, REJECT - do not approve'
+      ]
+    },
+    actions: checkpoint.next_checkpoint === null
+      ? { status: 'ALL_APPROVED', message: 'All checkpoints approved, build can continue to completion' }
+      : {
+          status: 'AWAITING_APPROVAL',
+          approve_url: `POST /api/checkpoint/approve/${courseCode}?seed=${checkpoint.next_checkpoint}`,
+          message: `Run QA review, then approve checkpoint at seed ${checkpoint.next_checkpoint}`
+        }
+  });
+});
+
+/**
+ * POST /api/checkpoint/approve/:courseCode - Approve checkpoint to unblock build
+ *
+ * Query params:
+ * - seed: number (which checkpoint seed to approve, default: next unapproved)
+ *
+ * Body (optional):
+ * - approved_by: string (default: 'human')
+ * - qa_report: object (optional QA summary for audit trail)
+ */
+app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { approved_by = 'human', qa_report = null } = req.body || {};
+
+  const currentStatus = getCheckpointStatus(courseCode);
+
+  // Determine which checkpoint to approve
+  let checkpointSeed = req.query.seed ? parseInt(req.query.seed, 10) : currentStatus.next_checkpoint;
+
+  if (!checkpointSeed || !CHECKPOINT_SEEDS.includes(checkpointSeed)) {
+    return res.status(400).json({
+      ok: false,
+      error: 'Invalid checkpoint seed',
+      valid_checkpoints: CHECKPOINT_SEEDS,
+      next_checkpoint: currentStatus.next_checkpoint
+    });
+  }
+
+  // Check if already approved
+  if (currentStatus.checkpoints[checkpointSeed]?.approved) {
+    return res.json({
+      ok: true,
+      status: 'ALREADY_APPROVED',
+      course_code: courseCode,
+      checkpoint_seed: checkpointSeed,
+      approved_at: currentStatus.checkpoints[checkpointSeed].approvedAt,
+      approved_by: currentStatus.checkpoints[checkpointSeed].approvedBy
+    });
+  }
+
+  // Approve the checkpoint
+  approveCheckpoint(courseCode, checkpointSeed, approved_by, qa_report);
+
+  // Log QA report if provided
+  if (qa_report) {
+    console.log(`[CHECKPOINT] QA report for ${courseCode} seed ${checkpointSeed}:`, JSON.stringify(qa_report, null, 2));
+  }
+
+  // Get updated status
+  const newStatus = getCheckpointStatus(courseCode);
+
+  res.json({
+    ok: true,
+    status: 'APPROVED',
+    course_code: courseCode,
+    checkpoint_seed: checkpointSeed,
+    checkpoint_number: CHECKPOINT_SEEDS.indexOf(checkpointSeed) + 1,
+    message: `Checkpoint ${checkpointSeed} approved. ${newStatus.next_checkpoint ? 'Next checkpoint at seed ' + newStatus.next_checkpoint : 'All checkpoints complete!'}`,
+    approved_by,
+    approved_at: new Date().toISOString(),
+    calibration_feedback: newStatus.calibration_feedback,
+    next_checkpoint: newStatus.next_checkpoint,
+    next_action: `Resume build with POST /api/build/start/${courseCode} or agent /course-resume`
+  });
+});
+
+/**
+ * GET /api/checkpoint/status/:courseCode - Get checkpoint status
+ */
+app.get('/api/checkpoint/status/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const status = getCheckpointStatus(courseCode);
+
+  // Count approved checkpoints
+  const approvedCount = Object.values(status.checkpoints).filter(cp => cp.approved).length;
+
+  res.json({
+    course_code: courseCode,
+    checkpoint_enabled: CHECKPOINT_SEEDS.length > 0,
+    checkpoint_seeds: CHECKPOINT_SEEDS,
+    ...status,
+    summary: {
+      total_checkpoints: CHECKPOINT_SEEDS.length,
+      approved_count: approvedCount,
+      all_approved: status.next_checkpoint === null
+    },
+    message: status.next_checkpoint === null
+      ? `All ${CHECKPOINT_SEEDS.length} checkpoints approved`
+      : `Checkpoint ${status.next_checkpoint} awaiting approval (${approvedCount}/${CHECKPOINT_SEEDS.length} complete)`
+  });
+});
+
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
@@ -3757,6 +4525,11 @@ app.listen(PORT, () => {
   console.log(`║  GET  /api/stats/:code - Quality metrics + vocab size        ║`);
   console.log(`║  GET  /api/vocab/:code - Current vocabulary set              ║`);
   console.log(`║  DELETE /api/course/:code - Clear course + vocab cache       ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  CHECKPOINT SYSTEM (QA gates at seeds ${CHECKPOINT_SEEDS.join(', ')}):          ║`);
+  console.log(`║  GET  /api/checkpoint/summary/:code - Sample phrases for QA  ║`);
+  console.log(`║  POST /api/checkpoint/approve/:code - Approve to continue    ║`);
+  console.log(`║  GET  /api/checkpoint/status/:code - Check approval status   ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  STALL DETECTION: Dashboard polls /api/activity every 60s    ║`);
   console.log(`║  Threshold: ${STALL_THRESHOLD_MS/60000} minutes without submission = STALLED           ║`);

@@ -1,0 +1,111 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 502,
+  "known_text": "She almost got lost because she turned left instead of right.",
+  "target_text": "그녀가 오른쪽 대신 왼쪽으로 돌아서 거의 길 잃을 뻔했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "left instead of right",
+      "target": "오른쪽 대신 왼쪽",
+      "components": [
+        {"known": "right", "target": "오른쪽"},
+        {"known": "instead of", "target": "대신"},
+        {"known": "left", "target": "왼쪽"}
+      ],
+      "phrases": [
+        {"known": "right", "target": "오른쪽이요"},
+        {"known": "instead", "target": "대신이요"},
+        {"known": "left", "target": "왼쪽이요"},
+        {"known": "turn right", "target": "오른쪽으로요"},
+        {"known": "on the left side", "target": "왼쪽에요"},
+        {"known": "instead of this", "target": "이거 대신이요"},
+        {"known": "I'll go instead", "target": "대신 갈게요"},
+        {"known": "turn left here", "target": "여기서 왼쪽으로요"},
+        {"known": "she went right instead of left", "target": "그녀가 왼쪽 대신 오른쪽으로 갔어요"},
+        {"known": "use this instead of that", "target": "그거 대신 이거 써요"},
+        {"known": "he chose coffee instead of tea", "target": "그가 차 대신 커피 골랐어요"},
+        {"known": "she decided to take the train instead of driving", "target": "그녀가 운전 대신 기차 타기로 했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "turned left instead of right",
+      "target": "오른쪽 대신 왼쪽으로 돌다",
+      "components": [
+        {"known": "left instead of right", "target": "오른쪽 대신 왼쪽"},
+        {"known": "direction marker", "target": "으로"},
+        {"known": "turn", "target": "돌다"}
+      ],
+      "phrases": [
+        {"known": "turn", "target": "돌아요"},
+        {"known": "turn around", "target": "돌아요"},
+        {"known": "turned", "target": "돌았어요"},
+        {"known": "turn this way", "target": "이쪽으로요"},
+        {"known": "she turned left", "target": "그녀가 왼쪽으로 돌았어요"},
+        {"known": "turn left there", "target": "거기서 왼쪽으로요"},
+        {"known": "turn right at the corner", "target": "모퉁이에서 오른쪽으로 도세요"},
+        {"known": "he turned the wrong way", "target": "그가 잘못된 방향으로 돌았어요"},
+        {"known": "I turned around quickly", "target": "빨리 돌았어요"},
+        {"known": "she should have turned right there", "target": "그녀가 거기서 오른쪽으로 돌았어야 했어요"},
+        {"known": "he accidentally turned left when he meant to go right", "target": "그가 실수로 오른쪽 가려다 왼쪽으로 돌았어요"},
+        {"known": "I realized I turned the wrong direction", "target": "잘못된 방향으로 돈 거 알았어요"},
+        {"known": "she turned left and immediately knew it was wrong", "target": "그녀가 왼쪽으로 돌고 바로 틀린 거 알았어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "almost got lost",
+      "target": "거의 길 잃을 뻔하다",
+      "components": [
+        {"known": "almost", "target": "거의"},
+        {"known": "way/road", "target": "길"},
+        {"known": "almost did", "target": "뻔하다"}
+      ],
+      "phrases": [
+        {"known": "almost", "target": "거의요"},
+        {"known": "way", "target": "길이요"},
+        {"known": "nearly", "target": "거의요"},
+        {"known": "I almost fell", "target": "넘어질 뻔했어요"},
+        {"known": "she nearly missed it", "target": "그녀가 거의 놓쳤어요"},
+        {"known": "the road is blocked", "target": "길이 막혔어요"},
+        {"known": "I almost forgot", "target": "거의 잊을 뻔했어요"},
+        {"known": "he almost got hurt", "target": "그가 다칠 뻔했어요"},
+        {"known": "we nearly got lost in the city", "target": "우리가 도시에서 길 잃을 뻔했어요"},
+        {"known": "she almost missed her flight", "target": "그녀가 비행기 놓칠 뻔했어요"},
+        {"known": "I nearly made a big mistake", "target": "큰 실수할 뻔했어요"},
+        {"known": "they almost gave up before reaching the top", "target": "그들이 정상 도착 전에 포기할 뻔했어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "she almost got lost because she turned left instead of right",
+      "target": "그녀가 오른쪽 대신 왼쪽으로 돌아서 거의 길 잃을 뻔했어요",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "turned left instead of right", "target": "오른쪽 대신 왼쪽으로 돌다"},
+        {"known": "because", "target": "서"},
+        {"known": "almost got lost", "target": "거의 길 잃을 뻔하다"}
+      ],
+      "phrases": [
+        {"known": "because", "target": "그래서요"},
+        {"known": "that's why", "target": "그래서요"},
+        {"known": "so then", "target": "그러니까요"},
+        {"known": "she got lost", "target": "그녀가 길 잃었어요"},
+        {"known": "got lost on the way", "target": "가다가 길 잃었어요"},
+        {"known": "because of that", "target": "그 때문에요"},
+        {"known": "she got confused and got lost", "target": "그녀가 헷갈려서 길 잃었어요"},
+        {"known": "he took the wrong path and got lost", "target": "그가 잘못된 길 가서 길 잃었어요"},
+        {"known": "I got lost because I wasn't paying attention", "target": "집중 안 해서 길 잃었어요"},
+        {"known": "she almost missed her stop because she was distracted", "target": "그녀가 딴 생각해서 정류장 놓칠 뻔했어요"},
+        {"known": "he made a wrong turn and ended up completely lost", "target": "그가 잘못 돌아서 완전히 길 잃었어요"},
+        {"known": "because she wasn't following directions she got lost", "target": "그녀가 길 안내 안 따라서 길 잃었어요"},
+        {"known": "she took a wrong turn and spent an hour finding her way back", "target": "그녀가 잘못 돌아서 돌아오는 데 한 시간 걸렸어요"}
+      ]
+    }
+  ]
+}

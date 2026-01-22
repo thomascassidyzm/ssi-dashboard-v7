@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 311,
+  "known_text": "He couldn't believe the three most important facts.",
+  "target_text": "그가 가장 중요한 세 가지 사실을 믿을 수 없었어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "believe",
+      "target": "믿다",
+      "phrases": [
+        {"known": "believe", "target": "믿어요"},
+        {"known": "I believe", "target": "믿어요"},
+        {"known": "believed", "target": "믿었어요"},
+        {"known": "I believe you", "target": "믿어요"},
+        {"known": "hard to believe", "target": "믿기 어려워요"},
+        {"known": "can't believe it", "target": "믿을 수 없어요"},
+        {"known": "do you believe me?", "target": "저를 믿어요?"},
+        {"known": "I didn't believe him", "target": "그를 안 믿었어요"},
+        {"known": "I can't believe this happened", "target": "이런 일이 믿기지 않아요"},
+        {"known": "she believed everything he said", "target": "그녀가 그가 한 말 다 믿었어요"},
+        {"known": "I believe that's the right thing to do", "target": "그게 맞는 거라고 믿어요"},
+        {"known": "my parents always believed in me", "target": "부모님이 항상 저를 믿어줬어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the three most important facts",
+      "target": "가장 중요한 세 가지 사실",
+      "components": [
+        {"known": "most", "target": "가장"},
+        {"known": "important", "target": "중요한"},
+        {"known": "three things", "target": "세 가지"},
+        {"known": "fact", "target": "사실"}
+      ],
+      "phrases": [
+        {"known": "fact", "target": "사실이에요"},
+        {"known": "three things", "target": "세 가지요"},
+        {"known": "most important", "target": "가장 중요해요"},
+        {"known": "important fact", "target": "중요한 사실"},
+        {"known": "three facts", "target": "세 가지 사실"},
+        {"known": "the most important", "target": "가장 중요한 거예요"},
+        {"known": "three important things", "target": "중요한 세 가지"},
+        {"known": "there are three important facts", "target": "중요한 사실이 세 가지 있어요"},
+        {"known": "the most important thing is this", "target": "가장 중요한 것은 이거예요"},
+        {"known": "I learned three important facts today", "target": "오늘 중요한 사실을 세 가지 배웠어요"},
+        {"known": "the three most important things in life", "target": "인생에서 가장 중요한 세 가지"},
+        {"known": "she told me three interesting facts about Korea", "target": "그녀가 한국에 대한 재미있는 사실 세 가지를 말해 줬어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "he couldn't believe the three most important facts",
+      "target": "그가 가장 중요한 세 가지 사실을 믿을 수 없었어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "the three most important facts", "target": "가장 중요한 세 가지 사실"},
+        {"known": "object marker", "target": "을"},
+        {"known": "believe", "target": "믿다"},
+        {"known": "couldn't (past inability)", "target": "ㄹ 수 없었다"}
+      ],
+      "phrases": [
+        {"known": "believe", "target": "믿어요"},
+        {"known": "I can't", "target": "못해요"},
+        {"known": "he couldn't", "target": "그가 못했어요"},
+        {"known": "couldn't believe", "target": "믿을 수 없었어요"},
+        {"known": "he couldn't believe", "target": "그가 믿을 수 없었어요"},
+        {"known": "he couldn't believe it", "target": "그가 그거 믿을 수 없었어요"},
+        {"known": "I couldn't believe what I saw", "target": "본 것을 믿을 수 없었어요"},
+        {"known": "she couldn't believe the news", "target": "그녀가 그 소식을 믿을 수 없었어요"},
+        {"known": "he couldn't believe his eyes", "target": "그가 자기 눈을 믿을 수 없었어요"},
+        {"known": "I couldn't believe how big it was", "target": "얼마나 큰지 믿을 수 없었어요"},
+        {"known": "we couldn't believe what happened", "target": "무슨 일이 있었는지 믿을 수 없었어요"},
+        {"known": "he couldn't believe how much it cost", "target": "그가 얼마나 비싼지 믿을 수 없었어요"},
+        {"known": "she couldn't believe that he forgot her birthday", "target": "그녀가 그가 생일을 잊은 것을 믿을 수 없었어요"},
+        {"known": "they couldn't believe how quickly time passed", "target": "그들이 시간이 얼마나 빨리 갔는지 믿을 수 없었어요"}
+      ]
+    }
+  ]
+}

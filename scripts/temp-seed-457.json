@@ -1,0 +1,85 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 457,
+  "known_text": "Part of the problem is the number of different areas.",
+  "target_text": "문제의 일부는 다른 분야 수예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "part of the problem",
+      "target": "문제의 일부",
+      "components": [
+        {"known": "problem", "target": "문제"},
+        {"known": "'s (possessive)", "target": "의"},
+        {"known": "part", "target": "일부"}
+      ],
+      "phrases": [
+        {"known": "problem", "target": "문제요"},
+        {"known": "a part", "target": "일부요"},
+        {"known": "part of it", "target": "그것의 일부요"},
+        {"known": "part of this", "target": "이것의 일부요"},
+        {"known": "it's the main issue", "target": "주요 문제예요"},
+        {"known": "that's part of the answer", "target": "그게 답의 일부예요"},
+        {"known": "this is only part of the story", "target": "이건 이야기의 일부예요"},
+        {"known": "the problem is quite serious", "target": "문제가 꽤 심각해요"},
+        {"known": "she solved part of the puzzle", "target": "그녀가 퍼즐의 일부 풀었어요"},
+        {"known": "that's a big part of why I'm here", "target": "그게 제가 여기 있는 이유의 큰 부분이에요"},
+        {"known": "he only understood part of the explanation", "target": "그가 설명의 일부만 이해했어요"},
+        {"known": "the first part of the book was boring", "target": "책의 첫 부분이 지루했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "the number of different areas",
+      "target": "다른 분야 수",
+      "components": [
+        {"known": "different", "target": "다른"},
+        {"known": "areas/fields", "target": "분야"},
+        {"known": "number/count", "target": "수"}
+      ],
+      "phrases": [
+        {"known": "different", "target": "다른요"},
+        {"known": "field", "target": "분야요"},
+        {"known": "the number", "target": "수요"},
+        {"known": "many different", "target": "여러 다른요"},
+        {"known": "there are many areas", "target": "분야가 많아요"},
+        {"known": "the field is different", "target": "분야가 달라요"},
+        {"known": "she works in a different field", "target": "그녀가 다른 분야에서 일해요"},
+        {"known": "the number of students", "target": "학생 수요"},
+        {"known": "there are various topics to cover", "target": "다룰 주제가 여러 가지예요"},
+        {"known": "he's an expert in that field", "target": "그가 그 분야 전문가예요"},
+        {"known": "the number of options is limited", "target": "옵션 수가 제한되어 있어요"},
+        {"known": "they study different subjects at school", "target": "그들이 학교에서 다른 과목 공부해요"},
+        {"known": "we need to explore several different areas", "target": "우리가 여러 다른 분야 탐구해야 해요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "part of the problem is the number of different areas",
+      "target": "문제의 일부는 다른 분야 수예요",
+      "components": [
+        {"known": "part of the problem", "target": "문제의 일부"},
+        {"known": "topic marker", "target": "는"},
+        {"known": "the number of different areas", "target": "다른 분야 수"},
+        {"known": "is", "target": "이다"}
+      ],
+      "phrases": [
+        {"known": "is", "target": "이에요"},
+        {"known": "that is", "target": "그거예요"},
+        {"known": "this is it", "target": "이거예요"},
+        {"known": "part of it is", "target": "일부는요"},
+        {"known": "the issue is the cost", "target": "문제는 비용이에요"},
+        {"known": "part of the reason is timing", "target": "이유의 일부는 타이밍이에요"},
+        {"known": "the difficulty is the complexity", "target": "어려운 점은 복잡성이에요"},
+        {"known": "one problem is the lack of resources", "target": "한 가지 문제는 자원 부족이에요"},
+        {"known": "part of what makes it hard is the size", "target": "어렵게 만드는 일부는 크기예요"},
+        {"known": "the challenge is the number of variables", "target": "도전은 변수 수예요"},
+        {"known": "one part of the explanation is simple", "target": "설명의 한 부분은 간단해요"},
+        {"known": "the main issue is that there are too many factors", "target": "주요 문제는 요인이 너무 많다는 거예요"}
+      ]
+    }
+  ]
+}

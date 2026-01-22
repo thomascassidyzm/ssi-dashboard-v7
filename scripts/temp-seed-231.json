@@ -1,0 +1,70 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 231,
+  "known_text": "I know an old man who wanted to ask for help.",
+  "target_text": "도움을 요청하고 싶어했던 노인을 알아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "old man/elder",
+      "target": "노인",
+      "phrases": [
+        {"known": "elder", "target": "노인"},
+        {"known": "old man", "target": "노인"},
+        {"known": "the elder", "target": "그 노인"},
+        {"known": "an old man", "target": "노인이"},
+        {"known": "old man came", "target": "노인이 왔어요"},
+        {"known": "I met an old man", "target": "노인을 만났어요"},
+        {"known": "the old man helped me", "target": "노인이 도와줬어요"},
+        {"known": "that old man is learning Korean", "target": "그 노인이 한국어를 배우고 있어요"},
+        {"known": "the old man wanted to rest on Sunday", "target": "노인이 일요일에 쉬고 싶었어요"},
+        {"known": "my daughter met an old man on the weekend", "target": "제 딸은 주말에 노인을 만났어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wanted to ask for help",
+      "target": "도움을 요청하고 싶어했다",
+      "components": [
+        {"known": "ask for help", "target": "도움을 요청하다"},
+        {"known": "wanted to (third person)", "target": "고 싶어했다"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "도움"},
+        {"known": "wanted", "target": "싶어했어요"},
+        {"known": "wanted to", "target": "싶어했어요"},
+        {"known": "ask for help", "target": "도움을 요청해요"},
+        {"known": "asked for help", "target": "도움을 요청했어요"},
+        {"known": "she wanted to ask for help", "target": "그녀는 도움을 요청하고 싶어했어요"},
+        {"known": "he wanted to ask for help", "target": "그는 도움을 요청하고 싶어했어요"},
+        {"known": "I wanted to ask for help on Sunday", "target": "일요일에 도움을 요청하고 싶었어요"},
+        {"known": "my friend wanted to ask for help", "target": "제 친구가 도움을 요청하고 싶어했어요"},
+        {"known": "they wanted to ask the teacher for help", "target": "그들은 선생님에게 도움을 요청하고 싶어했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I know an old man who wanted to ask for help",
+      "target": "도움을 요청하고 싶어했던 노인을 알아요",
+      "components": [
+        {"known": "old man/elder", "target": "노인"},
+        {"known": "wanted to ask for help", "target": "도움을 요청하고 싶어했다"}
+      ],
+      "phrases": [
+        {"known": "I know", "target": "알아요"},
+        {"known": "old man", "target": "노인을"},
+        {"known": "for help", "target": "도움을"},
+        {"known": "wanted to ask", "target": "요청하고 싶어했어요"},
+        {"known": "I know an old man", "target": "노인을 알아요"},
+        {"known": "the old man who wanted help", "target": "도움을 원했던 노인"},
+        {"known": "I know someone who wanted to ask for help", "target": "도움을 요청하고 싶어했던 사람을 알아요"},
+        {"known": "she knows an old man who needed help", "target": "그녀는 도움이 필요했던 노인을 알아요"},
+        {"known": "I know an old woman who wanted help", "target": "도움을 원했던 노인 여자를 알아요"},
+        {"known": "my daughter knows an old man who wanted to learn", "target": "제 딸은 배우고 싶어했던 노인을 알아요"}
+      ]
+    }
+  ]
+}

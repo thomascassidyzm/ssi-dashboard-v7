@@ -1,0 +1,75 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 303,
+  "known_text": "I think that he wants to sit down.",
+  "target_text": "그가 앉고 싶어하는 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "sit/sit down",
+      "target": "앉다",
+      "phrases": [
+        {"known": "sit", "target": "앉아요"},
+        {"known": "sit down", "target": "앉아요"},
+        {"known": "please sit", "target": "앉으세요"},
+        {"known": "I sat down", "target": "앉았어요"},
+        {"known": "where should I sit?", "target": "어디 앉을까요?"},
+        {"known": "sit here please", "target": "여기 앉으세요"},
+        {"known": "I want to sit down", "target": "앉고 싶어요"},
+        {"known": "can I sit next to you?", "target": "옆에 앉아도 돼요?"},
+        {"known": "let's sit and talk", "target": "앉아서 얘기해요"},
+        {"known": "I've been standing so I want to sit", "target": "서 있었으니까 앉고 싶어요"},
+        {"known": "the children are sitting quietly", "target": "아이들이 조용히 앉아 있어요"},
+        {"known": "I sat down and waited for the bus", "target": "앉아서 버스를 기다렸어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "wants to sit down",
+      "target": "앉고 싶다",
+      "components": [
+        {"known": "sit/sit down", "target": "앉다"},
+        {"known": "want to", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "wants to", "target": "싶어요"},
+        {"known": "wants to sit", "target": "앉고 싶어요"},
+        {"known": "I want to sit", "target": "앉고 싶어요"},
+        {"known": "do you want to sit?", "target": "앉고 싶어요?"},
+        {"known": "he wants to sit down", "target": "그가 앉고 싶어해요"},
+        {"known": "I just want to sit and rest", "target": "앉아서 쉬고 싶어요"},
+        {"known": "my legs are tired so I want to sit", "target": "다리가 피곤해서 앉고 싶어요"},
+        {"known": "she said she wanted to sit by the window", "target": "창문 옆에 앉고 싶다고 했어요"},
+        {"known": "I didn't want to sit in the back", "target": "뒤에 앉고 싶지 않았어요"},
+        {"known": "everyone wanted to sit in the front row", "target": "모두 앞줄에 앉고 싶어했어요"},
+        {"known": "after walking all day I just wanted to sit down", "target": "하루 종일 걸은 후 앉고 싶었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I think that he wants to sit down",
+      "target": "그가 앉고 싶어하는 것 같아요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "wants to sit down", "target": "앉고 싶다"},
+        {"known": "I think/it seems", "target": "것 같다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "것 같아요"},
+        {"known": "he wants", "target": "그가 원해요"},
+        {"known": "it seems", "target": "같아요"},
+        {"known": "it seems like", "target": "것 같아요"},
+        {"known": "I think he's tired", "target": "그가 피곤한 것 같아요"},
+        {"known": "she seems hungry", "target": "그녀가 배고픈 것 같아요"},
+        {"known": "I think they want to leave", "target": "그들이 떠나고 싶어하는 것 같아요"},
+        {"known": "it looks like it's going to rain", "target": "비가 올 것 같아요"},
+        {"known": "I think my friend needs help", "target": "제 친구가 도움이 필요한 것 같아요"},
+        {"known": "it seems like everyone is busy today", "target": "오늘 모두 바쁜 것 같아요"},
+        {"known": "I think she wants to say something", "target": "그녀가 뭔가 말하고 싶어하는 것 같아요"}
+      ]
+    }
+  ]
+}

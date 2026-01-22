@@ -1,0 +1,33 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 361,
+  "known_text": "He was quiet.",
+  "target_text": "그가 조용했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "he was quiet",
+      "target": "그가 조용했어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "quiet (adverb)", "target": "조용히"},
+        {"known": "was (past)", "target": "했어요"}
+      ],
+      "phrases": [
+        {"known": "quiet", "target": "조용히요"},
+        {"known": "he was", "target": "그가 그랬어요"},
+        {"known": "it's quiet", "target": "조용해요"},
+        {"known": "be quiet", "target": "조용히 해요"},
+        {"known": "he was quiet", "target": "그가 조용했어요"},
+        {"known": "please be quiet", "target": "조용히 해주세요"},
+        {"known": "she was really quiet", "target": "그녀가 정말 조용했어요"},
+        {"known": "he sat quietly", "target": "그가 조용히 앉았어요"},
+        {"known": "the room was quiet", "target": "방이 조용했어요"},
+        {"known": "they were very quiet today", "target": "그들이 오늘 아주 조용했어요"},
+        {"known": "he was quiet the whole time", "target": "그가 내내 조용했어요"},
+        {"known": "she was quiet during the meeting", "target": "그녀가 회의 동안 조용했어요"}
+      ]
+    }
+  ]
+}

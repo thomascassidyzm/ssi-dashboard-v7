@@ -1,57 +1,49 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 199,
   "known_text": "My friend used to work in an office.",
-  "target_text": "友達は以前オフィスで働いていました。",
+  "target_text": "제 친구는 예전에 사무실에서 일했어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "my friend (topic)",
-      "target": "友達は",
-      "components": [
-        {"known": "friend", "target": "友達"},
-        {"known": "topic marker", "target": "は"}
-      ],
+      "type": "A",
+      "known": "before / in the past",
+      "target": "예전에",
       "phrases": [
-        {"known": "friend", "target": "友達"},
-        {"known": "my friend", "target": "友達"},
-        {"known": "with my friend", "target": "友達と"},
-        {"known": "my friend (topic)", "target": "友達は"},
-        {"known": "from my friend", "target": "友達から"},
-        {"known": "my friend is here", "target": "友達がいます"},
-        {"known": "meet my friend", "target": "友達に会う"},
-        {"known": "my friend came yesterday", "target": "友達は昨日来ました"},
-        {"known": "my friend is busy today", "target": "友達は今日忙しいです"},
-        {"known": "my friend said he wants to go", "target": "友達は行きたいと言いました"},
-        {"known": "my friend is trying to find a new place", "target": "友達は新しいところを探そうとしています"},
-        {"known": "my friend told me he's too busy to come tomorrow", "target": "友達は明日忙しすぎて来られないと言いました"},
-        {"known": "I heard from my friend that she started working at the council", "target": "友達から、彼女が市役所で働き始めたと聞きました"}
+        {"known": "before", "target": "예전에"},
+        {"known": "in the past", "target": "예전에"},
+        {"known": "used to", "target": "예전에"},
+        {"known": "before here", "target": "예전에 여기"},
+        {"known": "before I did", "target": "예전에 했어요"},
+        {"known": "I used to live here", "target": "예전에 여기 살았어요"},
+        {"known": "She used to work here", "target": "예전에 여기서 일했어요"},
+        {"known": "I used to study Korean", "target": "예전에 한국어를 공부했어요"},
+        {"known": "I used to come here often with my family", "target": "예전에 가족과 여기 자주 왔어요"},
+        {"known": "We used to meet every week but now we are too busy", "target": "예전에 매주 만났는데 지금은 너무 바빠요"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "used to work in an office",
-      "target": "以前オフィスで働いていました",
+      "known": "My friend used to work in an office",
+      "target": "제 친구는 예전에 사무실에서 일했어요",
       "components": [
-        {"known": "before/used to", "target": "以前"},
-        {"known": "was working in an office", "target": "オフィスで働いていました"}
+        {"known": "my friend", "target": "제 친구는"},
+        {"known": "before", "target": "예전에"},
+        {"known": "in an office", "target": "사무실에서"},
+        {"known": "worked", "target": "일했어요"}
       ],
       "phrases": [
-        {"known": "before", "target": "以前"},
-        {"known": "office", "target": "オフィス"},
-        {"known": "in an office", "target": "オフィスで"},
-        {"known": "before that", "target": "以前は"},
-        {"known": "in an office before", "target": "以前オフィスで"},
-        {"known": "I was here before", "target": "以前ここにいました"},
-        {"known": "used to work in an office", "target": "以前オフィスで働いていました"},
-        {"known": "she used to work here", "target": "彼女は以前ここで働いていました"},
-        {"known": "he used to come here often", "target": "彼は以前よくここに来ていました"},
-        {"known": "I used to think it was too difficult", "target": "以前は難しすぎると思っていました"},
-        {"known": "he said he used to work in an office before", "target": "彼は以前オフィスで働いていたと言いました"},
-        {"known": "she used to work for the council but now she's a teacher", "target": "彼女は以前市役所で働いていましたが今は教師です"},
-        {"known": "I used to think he was too busy but now I understand", "target": "以前は彼が忙しすぎると思っていましたが今は分かります"}
+        {"known": "my friend", "target": "제 친구는"},
+        {"known": "before", "target": "예전에"},
+        {"known": "in office", "target": "사무실에서"},
+        {"known": "worked", "target": "일했어요"},
+        {"known": "used to work", "target": "예전에 일했어요"},
+        {"known": "in an office before", "target": "예전에 사무실에서"},
+        {"known": "My friend used to work in an office", "target": "제 친구는 예전에 사무실에서 일했어요"},
+        {"known": "My friend used to live near the park", "target": "제 친구는 예전에 공원 근처에 살았어요"},
+        {"known": "My father used to work at city hall for many years", "target": "아버지는 예전에 여러 해 동안 시청에서 일했어요"},
+        {"known": "My friend used to work in an office but now she is a teacher", "target": "제 친구는 예전에 사무실에서 일했는데 지금은 선생님이에요"}
       ]
     }
   ]

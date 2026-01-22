@@ -1,0 +1,54 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 256,
+  "known_text": "I think I'll be ready in less than an hour.",
+  "target_text": "한 시간도 안 되어 준비될 것 같아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "less than an hour",
+      "target": "한 시간도 안 되다",
+      "components": [
+        {"known": "one hour", "target": "한 시간"},
+        {"known": "even", "target": "도"},
+        {"known": "not become", "target": "안 되다"}
+      ],
+      "phrases": [
+        {"known": "hour", "target": "시간"},
+        {"known": "one hour", "target": "한 시간"},
+        {"known": "not even", "target": "도 안"},
+        {"known": "less than an hour", "target": "한 시간도 안 돼요"},
+        {"known": "won't even take", "target": "도 안 걸려요"},
+        {"known": "not even one hour", "target": "한 시간도 안 돼요"},
+        {"known": "it won't even take an hour", "target": "한 시간도 안 걸려요"},
+        {"known": "she did it in less than an hour", "target": "그녀가 한 시간도 안 되어 했어요"},
+        {"known": "I finished in less than two hours", "target": "두 시간도 안 되어 끝냈어요"},
+        {"known": "he said it won't even take thirty minutes", "target": "그가 삼십 분도 안 걸릴 거라고 말했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I think I'll be ready in less than an hour",
+      "target": "한 시간도 안 되어 준비될 것 같아요",
+      "components": [
+        {"known": "less than an hour", "target": "한 시간도 안 되다"},
+        {"known": "be ready", "target": "준비가 되다"},
+        {"known": "seems like", "target": "것 같다"}
+      ],
+      "phrases": [
+        {"known": "I think", "target": "것 같아요"},
+        {"known": "will be ready", "target": "준비될 거예요"},
+        {"known": "less than", "target": "도 안 되어"},
+        {"known": "seems ready", "target": "될 것 같아요"},
+        {"known": "I'll be ready soon", "target": "곧 준비될 거예요"},
+        {"known": "not even an hour", "target": "한 시간도 안 돼요"},
+        {"known": "ready in less time", "target": "더 빨리 준비될 것 같아요"},
+        {"known": "I think I'll be ready before then", "target": "그 전에 준비될 것 같아요"},
+        {"known": "she said she'll be ready in less than an hour", "target": "그녀가 한 시간도 안 되어 준비될 거라고 말했어요"},
+        {"known": "he thinks he can finish in less than two hours", "target": "그가 두 시간도 안 되어 끝낼 수 있을 것 같다고 생각해요"}
+      ]
+    }
+  ]
+}

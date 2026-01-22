@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 455,
+  "known_text": "We had to leave because the children were tired.",
+  "target_text": "아이들이 피곤해서 우리가 떠나야 했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the children were tired",
+      "target": "아이들이 피곤했다",
+      "components": [
+        {"known": "children", "target": "아이들"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "were tired", "target": "피곤했다"}
+      ],
+      "phrases": [
+        {"known": "children", "target": "아이들이요"},
+        {"known": "tired", "target": "피곤해요"},
+        {"known": "I'm tired", "target": "피곤해요"},
+        {"known": "she's tired", "target": "그녀가 피곤해요"},
+        {"known": "the kids are sleepy", "target": "아이들이 졸려요"},
+        {"known": "he was exhausted", "target": "그가 지쳤어요"},
+        {"known": "I was really tired yesterday", "target": "어제 정말 피곤했어요"},
+        {"known": "the children look tired today", "target": "오늘 아이들이 피곤해 보여요"},
+        {"known": "she said she was very tired", "target": "그녀가 아주 피곤하다고 했어요"},
+        {"known": "they were tired after the long trip", "target": "긴 여행 후에 그들이 피곤했어요"},
+        {"known": "the little ones got tired quickly", "target": "어린 아이들이 빨리 피곤해졌어요"},
+        {"known": "everyone was tired from working all day", "target": "하루 종일 일해서 다 피곤했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "we had to leave because the children were tired",
+      "target": "아이들이 피곤해서 우리가 떠나야 했어요",
+      "components": [
+        {"known": "the children were tired", "target": "아이들이 피곤했다"},
+        {"known": "because", "target": "서"},
+        {"known": "we", "target": "우리가"},
+        {"known": "had to leave", "target": "떠나야 했다"}
+      ],
+      "phrases": [
+        {"known": "we had to", "target": "해야 했어요"},
+        {"known": "we left", "target": "우리가 떠났어요"},
+        {"known": "because of that", "target": "그래서요"},
+        {"known": "had to go home", "target": "집에 가야 했어요"},
+        {"known": "she had to leave early", "target": "그녀가 일찍 떠나야 했어요"},
+        {"known": "we left because it was late", "target": "늦어서 우리가 떠났어요"},
+        {"known": "he had to go because of work", "target": "일 때문에 그가 가야 했어요"},
+        {"known": "they left early because of the rain", "target": "비가 와서 그들이 일찍 떠났어요"},
+        {"known": "we had to cancel because she was sick", "target": "그녀가 아파서 우리가 취소해야 했어요"},
+        {"known": "I had to leave the meeting because of an emergency", "target": "급한 일이 있어서 회의에서 나와야 했어요"},
+        {"known": "they had to go home early because the baby was crying", "target": "아기가 울어서 그들이 일찍 집에 가야 했어요"},
+        {"known": "we decided to leave because everyone was getting tired", "target": "다 피곤해져서 우리가 떠나기로 했어요"}
+      ]
+    }
+  ]
+}

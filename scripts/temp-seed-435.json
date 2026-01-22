@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 435,
+  "known_text": "Yes they could if they wanted to.",
+  "target_text": "네, 원하면 할 수 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "if they wanted to",
+      "target": "원하면",
+      "components": [
+        {"known": "want", "target": "원하다"},
+        {"known": "if (conditional)", "target": "면"}
+      ],
+      "phrases": [
+        {"known": "if", "target": "면이요"},
+        {"known": "if you want", "target": "원하면요"},
+        {"known": "I want to", "target": "원해요"},
+        {"known": "if you try", "target": "하면요"},
+        {"known": "if she agrees", "target": "그녀가 동의하면요"},
+        {"known": "if you really want", "target": "정말 원하면요"},
+        {"known": "if he decides to come", "target": "그가 오기로 하면"},
+        {"known": "if they choose to participate", "target": "그들이 참여하기로 하면"},
+        {"known": "if you want I can help", "target": "원하면 도와줄 수 있어요"},
+        {"known": "if she wanted she could do it", "target": "그녀가 원하면 할 수 있어요"},
+        {"known": "if they really wanted they would try harder", "target": "정말 원하면 더 열심히 할 거예요"},
+        {"known": "if you want to succeed you must work hard", "target": "성공하고 싶으면 열심히 해야 해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes they could if they wanted to",
+      "target": "네 원하면 할 수 있어요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "if they wanted to", "target": "원하면"},
+        {"known": "could do", "target": "할 수 있다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "they could", "target": "할 수 있어요"},
+        {"known": "yes of course", "target": "네 물론이요"},
+        {"known": "yes she could try", "target": "네 그녀가 해 볼 수 있어요"},
+        {"known": "yes if he really tried", "target": "네 정말 노력하면요"},
+        {"known": "yes it's possible if you want", "target": "네 원하면 가능해요"},
+        {"known": "yes they could manage it somehow", "target": "네 어떻게든 할 수 있어요"},
+        {"known": "yes she can do it if she decides to", "target": "네 결심하면 그녀가 할 수 있어요"},
+        {"known": "yes they are capable of doing it", "target": "네 그들이 그거 할 수 있어요"},
+        {"known": "yes it would be possible with some effort", "target": "네 노력하면 가능할 거예요"},
+        {"known": "yes they could achieve that goal if motivated", "target": "네 동기가 있으면 그 목표를 달성할 수 있어요"},
+        {"known": "yes anything is possible if you put your mind to it", "target": "네 마음먹으면 뭐든지 가능해요"}
+      ]
+    }
+  ]
+}

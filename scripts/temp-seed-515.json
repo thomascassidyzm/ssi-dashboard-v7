@@ -1,0 +1,56 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 515,
+  "known_text": "On the first day of the new year.",
+  "target_text": "새해 첫날에요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the first day of the new year",
+      "target": "새해 첫날",
+      "components": [
+        {"known": "new year", "target": "새해"},
+        {"known": "first day", "target": "첫날"}
+      ],
+      "phrases": [
+        {"known": "new year", "target": "새해요"},
+        {"known": "first day", "target": "첫날이요"},
+        {"known": "happy new year", "target": "새해 복 많이 받으세요"},
+        {"known": "the first of January", "target": "일월 일일이요"},
+        {"known": "new year's day", "target": "새해 첫날이요"},
+        {"known": "the year just started", "target": "올해 막 시작했어요"},
+        {"known": "we celebrate the new year", "target": "새해 축하해요"},
+        {"known": "last year was difficult", "target": "작년은 힘들었어요"},
+        {"known": "I have plans for new year's day", "target": "새해 첫날 계획 있어요"},
+        {"known": "she always visits her family on new year's", "target": "그녀가 새해에 항상 가족 만나요"},
+        {"known": "we usually stay home on the first day", "target": "첫날에 보통 집에 있어요"},
+        {"known": "the whole city celebrates the start of the new year", "target": "도시 전체가 새해 시작 축하해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "on the first day of the new year",
+      "target": "새해 첫날에요",
+      "components": [
+        {"known": "the first day of the new year", "target": "새해 첫날"},
+        {"known": "on/it is", "target": "에요"}
+      ],
+      "phrases": [
+        {"known": "it is", "target": "이에요"},
+        {"known": "that day", "target": "그날이에요"},
+        {"known": "today is", "target": "오늘이에요"},
+        {"known": "on that date", "target": "그 날짜에요"},
+        {"known": "it's on Monday", "target": "월요일이에요"},
+        {"known": "it's on January first", "target": "일월 일일이에요"},
+        {"known": "we start fresh on new year's", "target": "새해에 새로 시작해요"},
+        {"known": "it's the beginning of something new", "target": "새로운 거 시작이에요"},
+        {"known": "on that special day we gather together", "target": "그 특별한 날에 다 같이 모여요"},
+        {"known": "the first morning of the year is always quiet", "target": "새해 첫 아침은 항상 조용해요"},
+        {"known": "we make resolutions on the first day", "target": "첫날에 결심해요"},
+        {"known": "there's always hope on the first day of a new year", "target": "새해 첫날에 항상 희망이 있어요"}
+      ]
+    }
+  ]
+}

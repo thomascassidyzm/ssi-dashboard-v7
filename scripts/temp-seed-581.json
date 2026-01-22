@@ -1,0 +1,54 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 581,
+  "target_text": "그는 어떤지 조금 더 알고 싶어해요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a little more about what it is like",
+      "target": "어떤지 조금 더",
+      "components": [
+        {"known": "a little more", "target": "조금 더"},
+        {"known": "what it is like", "target": "어떤지"}
+      ],
+      "phrases": [
+        {"known": "a little", "target": "조금"},
+        {"known": "more", "target": "더"},
+        {"known": "a little more", "target": "조금 더"},
+        {"known": "what it is like", "target": "어떤지"},
+        {"known": "a little more about what it is like", "target": "어떤지 조금 더"},
+        {"known": "tell me a little more", "target": "조금 더 말해 주세요"},
+        {"known": "do you know what it is like", "target": "어떤지 알아요?"},
+        {"known": "can you explain what it is like there", "target": "거기 어떤지 설명해 줄 수 있어요?"},
+        {"known": "we need to learn a little more about what it is like", "target": "우리는 어떤지 조금 더 배워야 해요"},
+        {"known": "my friend asked me to find out what it is like", "target": "친구가 어떤지 알아봐 달라고 했어요"},
+        {"known": "nobody knows what it is like to be there alone", "target": "거기 혼자 있는 게 어떤지 아무도 몰라요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "he would like to know a little more about what it is like",
+      "target": "그는 어떤지 조금 더 알고 싶어해요",
+      "components": [
+        {"known": "he would like to know", "target": "그는 알고 싶어해요"},
+        {"known": "a little more about what it is like", "target": "어떤지 조금 더"}
+      ],
+      "phrases": [
+        {"known": "know", "target": "알아요"},
+        {"known": "want to", "target": "싶어요"},
+        {"known": "want to know", "target": "알고 싶어요"},
+        {"known": "he wants to know", "target": "그가 알고 싶다"},
+        {"known": "what we want to know", "target": "뭘 알고 싶은지"},
+        {"known": "he would like to know", "target": "그는 알고 싶어해요"},
+        {"known": "he would like to know a little more about what it is like", "target": "그는 어떤지 조금 더 알고 싶어해요"},
+        {"known": "my brother would like to know what it is like to live abroad", "target": "제 남동생은 해외에서 사는 게 어떤지 알고 싶어해요"},
+        {"known": "our teacher would like to know a little more about our plans", "target": "선생님이 우리 계획에 대해 조금 더 알고 싶어하세요"},
+        {"known": "he told me he would like to know more about the job before deciding", "target": "결정하기 전에 그 일에 대해 더 알고 싶다고 했어요"},
+        {"known": "would you like to know a little more about what we do here", "target": "우리가 여기서 뭘 하는지 조금 더 알고 싶으세요?"},
+        {"known": "the manager would like to know what it is like working in our office", "target": "매니저가 우리 사무실에서 일하는 게 어떤지 알고 싶어해요"}
+      ]
+    }
+  ]
+}

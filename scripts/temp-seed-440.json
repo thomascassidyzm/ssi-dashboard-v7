@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 440,
+  "known_text": "They want to travel while they're still young.",
+  "target_text": "그들이 아직 젊을 때 여행하고 싶어해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "while they're still young",
+      "target": "아직 젊을 때",
+      "components": [
+        {"known": "still/yet", "target": "아직"},
+        {"known": "young", "target": "젊다"},
+        {"known": "when/while", "target": "을 때"}
+      ],
+      "phrases": [
+        {"known": "young", "target": "젊어요"},
+        {"known": "still", "target": "아직이요"},
+        {"known": "when", "target": "때요"},
+        {"known": "while young", "target": "젊을 때요"},
+        {"known": "she is still young", "target": "그녀가 아직 젊어요"},
+        {"known": "when I was young", "target": "제가 젊을 때요"},
+        {"known": "while you're healthy", "target": "건강할 때요"},
+        {"known": "he looks young for his age", "target": "그가 나이에 비해 젊어 보여요"},
+        {"known": "when she was still in school", "target": "그녀가 아직 학교 다닐 때"},
+        {"known": "while they still have energy", "target": "아직 에너지가 있을 때"},
+        {"known": "do it while you have the chance", "target": "기회가 있을 때 해요"},
+        {"known": "he started his business while young", "target": "그가 젊을 때 사업을 시작했어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "they want to travel while they're still young",
+      "target": "그들이 아직 젊을 때 여행하고 싶어해요",
+      "components": [
+        {"known": "they", "target": "그들이"},
+        {"known": "while they're still young", "target": "아직 젊을 때"},
+        {"known": "travel", "target": "여행하다"},
+        {"known": "want to (third person)", "target": "고 싶어하다"}
+      ],
+      "phrases": [
+        {"known": "travel", "target": "여행해요"},
+        {"known": "they hope", "target": "바라요"},
+        {"known": "they want to go", "target": "가고 싶어해요"},
+        {"known": "she enjoys traveling", "target": "그녀가 여행 좋아해요"},
+        {"known": "he dreams of traveling", "target": "그가 여행 꿈꿔요"},
+        {"known": "we love to explore new places", "target": "새로운 곳 탐험하는 거 좋아해요"},
+        {"known": "they hope to see the world", "target": "그들이 세계를 보고 싶어해요"},
+        {"known": "she wants to visit many countries", "target": "그녀가 많은 나라 방문하고 싶어해요"},
+        {"known": "he plans to travel before settling down", "target": "그가 정착하기 전에 여행할 계획이에요"},
+        {"known": "they want to make memories together", "target": "그들이 같이 추억 만들고 싶어해요"},
+        {"known": "we hope to experience different cultures", "target": "다른 문화를 경험하고 싶어요"},
+        {"known": "she dreams of traveling the world someday", "target": "그녀가 언젠가 세계 여행하는 거 꿈꿔요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 491,
+  "known_text": "I love the way you try to help.",
+  "target_text": "도와주려고 하는 모습이 좋아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "the way you try to help",
+      "target": "도와주려고 하는 모습",
+      "components": [
+        {"known": "try to help", "target": "도와주려고 하다"},
+        {"known": "the way/appearance", "target": "모습"}
+      ],
+      "phrases": [
+        {"known": "help", "target": "도와줘요"},
+        {"known": "try to", "target": "하려고 해요"},
+        {"known": "the way you", "target": "모습이요"},
+        {"known": "trying to help", "target": "도와주려고요"},
+        {"known": "your appearance", "target": "당신 모습이요"},
+        {"known": "she tries to be kind", "target": "그녀가 친절하려고 해요"},
+        {"known": "the way she smiles", "target": "그녀가 웃는 모습이요"},
+        {"known": "I like how you listen", "target": "듣는 모습이 좋아요"},
+        {"known": "the way he talks is charming", "target": "그가 말하는 모습이 매력적이에요"},
+        {"known": "I love how she always tries", "target": "그녀가 항상 노력하는 모습이 좋아요"},
+        {"known": "the way you work so hard inspires me", "target": "열심히 일하는 모습이 영감을 줘요"},
+        {"known": "I appreciate the way she tries to understand", "target": "그녀가 이해하려고 하는 모습 감사해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I love the way you try to help",
+      "target": "도와주려고 하는 모습이 좋아요",
+      "components": [
+        {"known": "the way you try to help", "target": "도와주려고 하는 모습"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "love/like", "target": "좋다"}
+      ],
+      "phrases": [
+        {"known": "I love it", "target": "좋아요"},
+        {"known": "I like it", "target": "마음에 들어요"},
+        {"known": "that's nice", "target": "좋아요"},
+        {"known": "I love that", "target": "그거 좋아요"},
+        {"known": "I love how you think", "target": "생각하는 거 좋아요"},
+        {"known": "I like the way she dances", "target": "그녀가 춤추는 모습 좋아요"},
+        {"known": "I love how he cares about others", "target": "그가 남을 챙기는 게 좋아요"},
+        {"known": "the way she explains things is great", "target": "그녀가 설명하는 방식이 좋아요"},
+        {"known": "I love how they always support each other", "target": "그들이 항상 서로 돕는 게 좋아요"},
+        {"known": "I really appreciate the effort she puts in", "target": "그녀가 노력하는 게 정말 감사해요"},
+        {"known": "I love the way you always make me laugh", "target": "항상 웃게 해주는 게 좋아요"},
+        {"known": "what I love most is how they never give up", "target": "제일 좋은 건 그들이 절대 포기 안 하는 거예요"}
+      ]
+    }
+  ]
+}

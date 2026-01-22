@@ -1,56 +1,73 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 211,
   "known_text": "They told us that they didn't want to explain.",
-  "target_text": "彼らは私たちに説明したくないと言いました。",
+  "target_text": "그들은 설명하고 싶지 않다고 우리에게 말했어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "they told us",
-      "target": "彼らは私たちに言いました",
-      "components": [
-        {"known": "they (topic)", "target": "彼らは"},
-        {"known": "to us", "target": "私たちに"},
-        {"known": "said", "target": "言いました"}
-      ],
+      "type": "A",
+      "known": "to explain",
+      "target": "설명하다",
       "phrases": [
-        {"known": "they", "target": "彼ら"},
-        {"known": "us", "target": "私たち"},
-        {"known": "to us", "target": "私たちに"},
-        {"known": "said", "target": "言いました"},
-        {"known": "they said", "target": "彼らは言いました"},
-        {"known": "they told me", "target": "彼らは私に言いました"},
-        {"known": "they told us", "target": "彼らは私たちに言いました"},
-        {"known": "she told us yesterday", "target": "彼女は昨日私たちに言いました"},
-        {"known": "they told us about it", "target": "彼らはそれについて私たちに言いました"},
-        {"known": "they told us to come tomorrow", "target": "彼らは明日来てと私たちに言いました"},
-        {"known": "she told us that it was difficult", "target": "彼女は難しいと私たちに言いました"},
-        {"known": "they told us they wanted to meet as a group", "target": "彼らはグループとして会いたいと私たちに言いました"}
+        {"known": "explain", "target": "설명하다"},
+        {"known": "to explain", "target": "설명하다"},
+        {"known": "explained", "target": "설명했어요"},
+        {"known": "I will explain", "target": "설명할게요"},
+        {"known": "can you explain", "target": "설명해 줄 수 있어요?"},
+        {"known": "Please explain this to me", "target": "이것을 설명해 주세요"},
+        {"known": "She explained it clearly", "target": "그녀가 그것을 잘 설명했어요"},
+        {"known": "Let me explain what happened", "target": "무슨 일이 있었는지 설명할게요"},
+        {"known": "He explained the process to the new worker", "target": "그가 새 직원에게 과정을 설명했어요"},
+        {"known": "Can you explain why you were late to work today?", "target": "오늘 왜 직장에 늦었는지 설명해 줄 수 있어요?"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
-      "known": "that they didn't want to explain",
-      "target": "説明したくないと",
+      "known": "told us that",
+      "target": "우리에게 말했다",
       "components": [
-        {"known": "didn't want to explain", "target": "説明したくない"},
-        {"known": "that (quotation)", "target": "と"}
+        {"known": "to us", "target": "우리에게"},
+        {"known": "said", "target": "말했다"}
       ],
       "phrases": [
-        {"known": "explain", "target": "説明する"},
-        {"known": "to explain", "target": "説明"},
-        {"known": "explained", "target": "説明しました"},
-        {"known": "want to explain", "target": "説明したい"},
-        {"known": "didn't want to", "target": "したくなかった"},
-        {"known": "don't want to explain", "target": "説明したくない"},
-        {"known": "I don't want to explain it", "target": "それを説明したくないです"},
-        {"known": "I explained it to her", "target": "彼女にそれを説明しました"},
-        {"known": "I didn't want to explain that", "target": "それを説明したくなかったです"},
-        {"known": "he didn't want to explain the problem", "target": "彼はその問題を説明したくなかったです"},
-        {"known": "she said she didn't want to explain it to me", "target": "彼女は私にそれを説明したくないと言いました"},
-        {"known": "I explained what we needed to do yesterday", "target": "昨日やる必要があることを説明しました"}
+        {"known": "to us", "target": "우리에게"},
+        {"known": "said", "target": "말했다"},
+        {"known": "told us", "target": "우리에게 말했어요"},
+        {"known": "said to us", "target": "우리에게 말했어요"},
+        {"known": "they told us", "target": "그들이 우리에게 말했어요"},
+        {"known": "He told us to wait here", "target": "그가 우리에게 여기서 기다리라고 말했어요"},
+        {"known": "She told us about the meeting", "target": "그녀가 우리에게 회의에 대해 말했어요"},
+        {"known": "They told us that they would come soon", "target": "그들은 곧 온다고 우리에게 말했어요"},
+        {"known": "He told us everything about what happened yesterday", "target": "그가 어제 무슨 일이 있었는지 우리에게 다 말했어요"},
+        {"known": "My friend told us that she was getting married next month", "target": "친구가 다음 달에 결혼한다고 우리에게 말했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "They told us that they didn't want to explain",
+      "target": "그들은 설명하고 싶지 않다고 우리에게 말했어요",
+      "components": [
+        {"known": "they", "target": "그들은"},
+        {"known": "to explain", "target": "설명하고"},
+        {"known": "didn't want to", "target": "싶지 않다고"},
+        {"known": "to us", "target": "우리에게"},
+        {"known": "said", "target": "말했어요"}
+      ],
+      "phrases": [
+        {"known": "they", "target": "그들은"},
+        {"known": "to explain", "target": "설명하고"},
+        {"known": "to us", "target": "우리에게"},
+        {"known": "didn't want to", "target": "싶지 않다고"},
+        {"known": "told us that", "target": "우리에게 말했어요"},
+        {"known": "didn't want to explain", "target": "설명하고 싶지 않다"},
+        {"known": "They told us that they didn't want to explain", "target": "그들은 설명하고 싶지 않다고 우리에게 말했어요"},
+        {"known": "She told me that she didn't want to go", "target": "그녀가 가고 싶지 않다고 저에게 말했어요"},
+        {"known": "He told us that he didn't want to discuss it anymore", "target": "그는 더 이상 논의하고 싶지 않다고 우리에게 말했어요"},
+        {"known": "They told everyone that they didn't want to wait", "target": "그들은 기다리고 싶지 않다고 모두에게 말했어요"},
+        {"known": "My friend told us that she didn't want to explain what happened", "target": "친구가 무슨 일이 있었는지 설명하고 싶지 않다고 우리에게 말했어요"}
       ]
     }
   ]

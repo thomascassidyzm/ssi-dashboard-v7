@@ -1,0 +1,54 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 584,
+  "target_text": "매일 아침 일어나서 산을 보는 게 어때요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "wake up every morning and see the mountains",
+      "target": "매일 아침 일어나서 산을 보다",
+      "components": [
+        {"known": "every morning", "target": "매일 아침"},
+        {"known": "wake up and see", "target": "일어나서 보다"},
+        {"known": "the mountains", "target": "산"}
+      ],
+      "phrases": [
+        {"known": "morning", "target": "아침"},
+        {"known": "mountains", "target": "산"},
+        {"known": "wake up", "target": "일어나다"},
+        {"known": "every morning", "target": "매일 아침"},
+        {"known": "see the mountains", "target": "산을 보다"},
+        {"known": "wake up every morning", "target": "매일 아침 일어나다"},
+        {"known": "I wake up early", "target": "저는 일찍 일어나요"},
+        {"known": "wake up every morning and see the mountains", "target": "매일 아침 일어나서 산을 보다"},
+        {"known": "when I wake up I like to see the mountains", "target": "일어나면 산 보는 걸 좋아해요"},
+        {"known": "every morning we can see the mountains from our window", "target": "매일 아침 창문에서 산을 볼 수 있어요"},
+        {"known": "my parents wake up every morning and walk in the mountains", "target": "부모님은 매일 아침 일어나서 산에서 걸어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "what is it like to wake up every morning and see the mountains",
+      "target": "매일 아침 일어나서 산을 보는 게 어때요?",
+      "components": [
+        {"known": "wake up every morning and see the mountains", "target": "매일 아침 일어나서 산을 보다"},
+        {"known": "what is it like", "target": "어때요"}
+      ],
+      "phrases": [
+        {"known": "how is it", "target": "어때요"},
+        {"known": "seeing mountains", "target": "산을 보는 것"},
+        {"known": "seeing them is nice", "target": "그거 보면 좋아요"},
+        {"known": "what is it like here", "target": "여기 어떤지"},
+        {"known": "I wonder what it is like", "target": "어떤지 궁금해요"},
+        {"known": "what is it like to wake up every morning and see the mountains", "target": "매일 아침 일어나서 산을 보는 게 어때요?"},
+        {"known": "what would it be like to wake up and see the ocean", "target": "일어나서 바다를 보면 어떨까요?"},
+        {"known": "is it nice to wake up early and see the sunrise", "target": "일찍 일어나서 해돋이 보는 게 좋아요?"},
+        {"known": "my friend asked what it was like to live near the mountains", "target": "친구가 산 근처에 사는 게 어떤지 물어봤어요"},
+        {"known": "people who live here say waking up to the mountains is wonderful", "target": "여기 사는 사람들이 산 보며 일어나는 게 좋다고 해요"},
+        {"known": "it must be beautiful to wake up every morning and see the snow", "target": "매일 아침 일어나서 눈을 보면 정말 예쁘겠어요"}
+      ]
+    }
+  ]
+}

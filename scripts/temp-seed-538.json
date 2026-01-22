@@ -1,0 +1,82 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 538,
+  "known_text": "I don't want to seem as though I don't care.",
+  "target_text": "신경 안 쓰는 것처럼 보이고 싶지 않아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I don't care",
+      "target": "신경 안 쓰다",
+      "components": [
+        {"known": "attention/care", "target": "신경"},
+        {"known": "don't use/pay", "target": "안 쓰다"}
+      ],
+      "phrases": [
+        {"known": "care", "target": "신경 써요"},
+        {"known": "I don't", "target": "안 해요"},
+        {"known": "attention", "target": "신경이요"},
+        {"known": "don't care", "target": "신경 안 써요"},
+        {"known": "I don't care", "target": "신경 안 써요"},
+        {"known": "she doesn't care", "target": "그녀가 신경 안 써요"},
+        {"known": "don't worry about it", "target": "신경 쓰지 마세요"},
+        {"known": "he cares a lot about details", "target": "그가 세부사항 많이 신경 써요"},
+        {"known": "I try not to care what others think", "target": "남들 생각 신경 안 쓰려고 해요"},
+        {"known": "she said she doesn't care about money", "target": "그녀가 돈 신경 안 쓴다고 했어요"},
+        {"known": "he acts like he doesn't care at all", "target": "그가 전혀 신경 안 쓰는 것처럼 해요"},
+        {"known": "why do you care so much about this", "target": "왜 이것에 그렇게 신경 써요?"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "seem as though I don't care",
+      "target": "신경 안 쓰는 것처럼 보이다",
+      "components": [
+        {"known": "I don't care", "target": "신경 안 쓰다"},
+        {"known": "as though", "target": "것처럼"},
+        {"known": "seem/look", "target": "보이다"}
+      ],
+      "phrases": [
+        {"known": "seems", "target": "보여요"},
+        {"known": "looks like", "target": "처럼 보여요"},
+        {"known": "it seems", "target": "그래 보여요"},
+        {"known": "looks good", "target": "좋아 보여요"},
+        {"known": "she looks tired", "target": "그녀가 피곤해 보여요"},
+        {"known": "as if/as though", "target": "것처럼요"},
+        {"known": "it looks like rain", "target": "비 올 것 같아요"},
+        {"known": "she seems happy today", "target": "그녀가 오늘 행복해 보여요"},
+        {"known": "he seems like he's tired", "target": "그가 피곤한 것처럼 보여요"},
+        {"known": "it looks as though she's busy", "target": "그녀가 바쁜 것처럼 보여요"},
+        {"known": "don't act as though nothing happened", "target": "아무 일 없는 것처럼 하지 마세요"},
+        {"known": "he talked as if he knew everything", "target": "그가 다 아는 것처럼 말했어요"},
+        {"known": "she made it seem like it was easy", "target": "그녀가 쉬운 것처럼 보이게 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I don't want to seem as though I don't care",
+      "target": "신경 안 쓰는 것처럼 보이고 싶지 않아요",
+      "components": [
+        {"known": "seem as though I don't care", "target": "신경 안 쓰는 것처럼 보이다"},
+        {"known": "don't want to", "target": "고 싶지 않다"}
+      ],
+      "phrases": [
+        {"known": "I want", "target": "싶어요"},
+        {"known": "don't want", "target": "싶지 않아요"},
+        {"known": "I don't want", "target": "안 하고 싶어요"},
+        {"known": "want to go", "target": "가고 싶어요"},
+        {"known": "I don't want to", "target": "하고 싶지 않아요"},
+        {"known": "she doesn't want to go", "target": "그녀가 가고 싶지 않아요"},
+        {"known": "I don't want to bother you", "target": "방해하고 싶지 않아요"},
+        {"known": "he said he doesn't want to wait", "target": "그가 기다리고 싶지 않다고 했어요"},
+        {"known": "I don't want to seem rude", "target": "무례하게 보이고 싶지 않아요"},
+        {"known": "she doesn't want to appear weak", "target": "그녀가 약해 보이고 싶지 않아요"},
+        {"known": "I don't want to make him feel bad", "target": "그가 기분 나쁘게 하고 싶지 않아요"},
+        {"known": "he said he doesn't want to look unprepared", "target": "그가 준비 안 된 것처럼 보이고 싶지 않다고 했어요"}
+      ]
+    }
+  ]
+}

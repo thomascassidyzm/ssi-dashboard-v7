@@ -1,0 +1,53 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 597,
+  "target_text": "그가 그것에 대해 수없이 이야기를 들었을 거예요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a hundred stories about it",
+      "target": "그것에 대해 수많은 이야기",
+      "components": [
+        {"known": "about it", "target": "그것에 대해"},
+        {"known": "many stories", "target": "수많은 이야기"}
+      ],
+      "phrases": [
+        {"known": "story", "target": "이야기"},
+        {"known": "about it", "target": "그것에 대해"},
+        {"known": "many stories", "target": "많은 이야기"},
+        {"known": "a hundred stories", "target": "수많은 이야기"},
+        {"known": "about it", "target": "그것에 대해서"},
+        {"known": "a hundred stories about it", "target": "그것에 대해 수많은 이야기"},
+        {"known": "I have heard many stories", "target": "많은 이야기를 들었어요"},
+        {"known": "there are many stories about that place", "target": "그 장소에 대한 이야기가 많아요"},
+        {"known": "she told me a hundred stories about her travels", "target": "여행에 대해 수많은 이야기를 해 줬어요"},
+        {"known": "we have heard so many stories about what happened there", "target": "거기서 무슨 일이 있었는지 이야기를 정말 많이 들었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "I suspect that he has heard a hundred stories about it",
+      "target": "그가 그것에 대해 수없이 이야기를 들었을 거예요",
+      "components": [
+        {"known": "I suspect that", "target": "~을 거예요"},
+        {"known": "he has heard", "target": "그가 들었다"},
+        {"known": "a hundred stories about it", "target": "그것에 대해 수많은 이야기"}
+      ],
+      "phrases": [
+        {"known": "probably", "target": "아마요"},
+        {"known": "heard", "target": "들었어요"},
+        {"known": "about that", "target": "그거요"},
+        {"known": "probably heard", "target": "들었을 거예요"},
+        {"known": "heard the story", "target": "이야기 들었어요"},
+        {"known": "I suspect that he has heard a hundred stories about it", "target": "그가 그것에 대해 수없이 이야기를 들었을 거예요"},
+        {"known": "I suspect she has already heard the news", "target": "아마 그녀가 이미 소식을 들었을 거예요"},
+        {"known": "he probably has heard many stories from his friends", "target": "친구들한테 이야기를 많이 들었을 거예요"},
+        {"known": "I suspect they have heard everything about what happened", "target": "무슨 일이 있었는지 다 들었을 거예요"},
+        {"known": "she has probably heard a hundred different versions of that story", "target": "그 이야기의 다른 버전을 수없이 들었을 거예요"},
+        {"known": "I suspect my parents have heard about it from the neighbors", "target": "부모님이 이웃한테 그것에 대해 들었을 거예요"}
+      ]
+    }
+  ]
+}

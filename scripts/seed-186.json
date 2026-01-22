@@ -1,0 +1,72 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 186,
+  "known_text": "Do you want to talk about something different next week?",
+  "target_text": "다음 주에 다른 것에 대해 이야기하고 싶어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "different/other",
+      "target": "다른",
+      "phrases": [
+        {"known": "different", "target": "다른"},
+        {"known": "other", "target": "다른"},
+        {"known": "something else", "target": "다른 것"},
+        {"known": "another one", "target": "다른 거"},
+        {"known": "a different thing", "target": "다른 것"},
+        {"known": "I want something different", "target": "다른 것을 원해요"},
+        {"known": "Let us try a different way", "target": "다른 방법을 해 봐요"},
+        {"known": "Do you have a different idea for this?", "target": "이것에 대해 다른 생각이 있어요?"},
+        {"known": "I want to go to a different place tomorrow", "target": "내일 다른 곳에 가고 싶어요"},
+        {"known": "Can we discuss something different instead please?", "target": "대신 다른 것에 대해 이야기할 수 있어요?"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "talk about",
+      "target": "~에 대해 이야기하다",
+      "components": [
+        {"known": "about", "target": "에 대해"},
+        {"known": "to talk", "target": "이야기하다"}
+      ],
+      "phrases": [
+        {"known": "about", "target": "에 대해"},
+        {"known": "to talk", "target": "이야기하다"},
+        {"known": "about this", "target": "이것에 대해"},
+        {"known": "talk about", "target": "~에 대해 이야기하다"},
+        {"known": "let us talk about it", "target": "그것에 대해 이야기해요"},
+        {"known": "I want to talk about this topic", "target": "이 주제에 대해 이야기하고 싶어요"},
+        {"known": "Can we talk about this later please?", "target": "나중에 이것에 대해 이야기할 수 있어요?"},
+        {"known": "I talked about it with my friend yesterday", "target": "어제 친구와 그것에 대해 이야기했어요"},
+        {"known": "We need to talk about what happened at work today", "target": "오늘 직장에서 있었던 일에 대해 이야기해야 해요"},
+        {"known": "I think we should talk about this more before we decide", "target": "결정하기 전에 이것에 대해 더 이야기해야 할 것 같아요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "Do you want to talk about something different next week?",
+      "target": "다음 주에 다른 것에 대해 이야기하고 싶어요?",
+      "components": [
+        {"known": "next week", "target": "다음 주에"},
+        {"known": "different thing", "target": "다른 것"},
+        {"known": "talk about", "target": "에 대해 이야기하다"},
+        {"known": "want to", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "next week", "target": "다음 주에"},
+        {"known": "different", "target": "다른 것"},
+        {"known": "want to talk", "target": "이야기하고 싶다"},
+        {"known": "Do you want to talk?", "target": "이야기하고 싶어요?"},
+        {"known": "about something", "target": "무언가에 대해"},
+        {"known": "Do you want to talk about something different next week?", "target": "다음 주에 다른 것에 대해 이야기하고 싶어요?"},
+        {"known": "Do you want to learn something different today?", "target": "오늘 다른 것을 배우고 싶어요?"},
+        {"known": "Do you want to try something different for dinner tonight?", "target": "오늘 저녁에 다른 것을 먹어 보고 싶어요?"},
+        {"known": "Do you want to talk about what happened yesterday?", "target": "어제 있었던 일에 대해 이야기하고 싶어요?"},
+        {"known": "Do you want to talk about something different or continue with this?", "target": "다른 것에 대해 이야기하고 싶어요 아니면 이거 계속할까요?"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 218,
+  "known_text": "I didn't do much on Sunday.",
+  "target_text": "일요일에는 별로 안 했어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "on Sunday (topic)",
+      "target": "일요일에는",
+      "components": [
+        {"known": "Sunday", "target": "일요일"},
+        {"known": "on (topic)", "target": "에는"}
+      ],
+      "phrases": [
+        {"known": "Sunday", "target": "일요일"},
+        {"known": "on Sunday", "target": "일요일에"},
+        {"known": "as for Sunday", "target": "일요일에는"},
+        {"known": "this Sunday", "target": "이번 일요일"},
+        {"known": "on this Sunday", "target": "이번 일요일에"},
+        {"known": "on next Sunday", "target": "다음 일요일에"},
+        {"known": "on Sunday we rest", "target": "일요일에는 쉬어요"},
+        {"known": "she came on Sunday", "target": "그녀는 일요일에 왔어요"},
+        {"known": "my daughter read on Sunday", "target": "제 딸은 일요일에 책을 읽었어요"},
+        {"known": "on Sunday afternoon we met briefly", "target": "일요일 오후에 잠깐 만났어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "didn't do much",
+      "target": "별로 안 했다",
+      "components": [
+        {"known": "not much / not really", "target": "별로"},
+        {"known": "didn't do", "target": "안 했다"}
+      ],
+      "phrases": [
+        {"known": "not much", "target": "별로"},
+        {"known": "not really", "target": "별로요"},
+        {"known": "didn't do", "target": "안 했어요"},
+        {"known": "not much happened", "target": "별로 없었어요"},
+        {"known": "I didn't do much", "target": "별로 안 했어요"},
+        {"known": "there wasn't much", "target": "별로 없었어요"},
+        {"known": "she didn't do much today", "target": "그녀는 오늘 별로 안 했어요"},
+        {"known": "he didn't do much on the weekend", "target": "그는 주말에 별로 안 했어요"},
+        {"known": "my son didn't do much on Saturday night", "target": "제 아들은 토요일 밤에 별로 안 했어요"},
+        {"known": "we didn't do much together on Sunday afternoon", "target": "일요일 오후에 함께 별로 안 했어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I didn't do much on Sunday",
+      "target": "일요일에는 별로 안 했어요",
+      "components": [
+        {"known": "on Sunday (topic)", "target": "일요일에는"},
+        {"known": "didn't do much", "target": "별로 안 했다"}
+      ],
+      "phrases": [
+        {"known": "on Sunday", "target": "일요일에"},
+        {"known": "not much", "target": "별로요"},
+        {"known": "I didn't", "target": "안 했어요"},
+        {"known": "as for Sunday", "target": "일요일에는"},
+        {"known": "not much on Sunday", "target": "일요일에 별로"},
+        {"known": "on Sunday I didn't", "target": "일요일에는 안 했어요"},
+        {"known": "she didn't do much on Sunday", "target": "그녀는 일요일에는 별로 안 했어요"},
+        {"known": "he didn't do much last Sunday", "target": "그는 지난 일요일에는 별로 안 했어요"},
+        {"known": "my daughter didn't do much on Sunday afternoon", "target": "제 딸은 일요일 오후에는 별로 안 했어요"},
+        {"known": "we didn't do much on Sunday together", "target": "일요일에는 함께 별로 안 했어요"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 257,
+  "known_text": "I like that blue thing.",
+  "target_text": "저 파란 것이 좋아요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "blue",
+      "target": "파랗다",
+      "phrases": [
+        {"known": "blue", "target": "파래요"},
+        {"known": "it's blue", "target": "파래요"},
+        {"known": "blue sky", "target": "파란 하늘"},
+        {"known": "blue color", "target": "파란색이에요"},
+        {"known": "blue one", "target": "파란 것이에요"},
+        {"known": "the sky is blue", "target": "하늘이 파래요"},
+        {"known": "I like blue", "target": "파란색이 좋아요"},
+        {"known": "that's blue", "target": "그거 파래요"},
+        {"known": "the ocean is blue", "target": "바다가 파래요"},
+        {"known": "she likes blue things", "target": "그녀가 파란 것을 좋아해요"},
+        {"known": "I bought a blue shirt yesterday", "target": "어제 파란 옷을 샀어요"},
+        {"known": "he said the car is blue", "target": "그가 차가 파랗다고 말했어요"},
+        {"known": "the blue ocean is beautiful", "target": "파란 바다가 아름다워요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "that blue thing",
+      "target": "저 파란 것",
+      "components": [
+        {"known": "that (over there)", "target": "저"},
+        {"known": "blue", "target": "파랗다"},
+        {"known": "thing", "target": "것"}
+      ],
+      "phrases": [
+        {"known": "that", "target": "저거요"},
+        {"known": "thing", "target": "것이요"},
+        {"known": "blue thing", "target": "파란 것"},
+        {"known": "that one", "target": "저것이에요"},
+        {"known": "that thing", "target": "저거 좋아요"},
+        {"known": "I want that", "target": "저거 원해요"},
+        {"known": "that blue one", "target": "저 파란 것이에요"},
+        {"known": "give me that thing", "target": "저것 주세요"},
+        {"known": "that blue one", "target": "저 파란 거예요"},
+        {"known": "I want that one", "target": "저것을 원해요"},
+        {"known": "she wants that blue one", "target": "그녀가 저 파란 것을 원해요"},
+        {"known": "I bought that blue thing yesterday", "target": "어제 저 파란 것을 샀어요"},
+        {"known": "he asked about that blue thing over there", "target": "그가 저 파란 것에 대해 물었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I like that blue thing",
+      "target": "저 파란 것이 좋아요",
+      "components": [
+        {"known": "that blue thing", "target": "저 파란 것"},
+        {"known": "subject marker", "target": "이"},
+        {"known": "like/good", "target": "좋다"}
+      ],
+      "phrases": [
+        {"known": "I like", "target": "좋아요"},
+        {"known": "like it", "target": "좋아요"},
+        {"known": "I like that", "target": "저거 좋아요"},
+        {"known": "that's good", "target": "좋아요"},
+        {"known": "I like this one", "target": "이거 좋아요"},
+        {"known": "that thing is good", "target": "저것이 좋아요"},
+        {"known": "she likes that", "target": "그녀가 저거 좋아해요"},
+        {"known": "do you like that thing?", "target": "저거 좋아요?"},
+        {"known": "he said he likes that blue thing", "target": "그가 저 파란 것이 좋다고 말했어요"},
+        {"known": "I like that blue shirt over there", "target": "저 파란 옷이 좋아요"},
+        {"known": "she asked if I like that blue thing", "target": "그녀가 저 파란 것이 좋냐고 물었어요"},
+        {"known": "I really like that blue one over there", "target": "저 파란 것이 정말 좋아요"}
+      ]
+    }
+  ]
+}

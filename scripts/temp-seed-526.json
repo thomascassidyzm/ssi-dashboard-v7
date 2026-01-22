@@ -1,0 +1,81 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 526,
+  "known_text": "I'm finding it hard to believe that you can't guess.",
+  "target_text": "못 맞히는 거 믿기 어려워요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "can't guess",
+      "target": "못 맞히다",
+      "components": [
+        {"known": "can't", "target": "못"},
+        {"known": "guess/get right", "target": "맞히다"}
+      ],
+      "phrases": [
+        {"known": "can't", "target": "못 해요"},
+        {"known": "guess", "target": "맞혀요"},
+        {"known": "I guessed", "target": "맞혔어요"},
+        {"known": "correct answer", "target": "정답이요"},
+        {"known": "try to guess", "target": "맞혀 봐요"},
+        {"known": "she guessed correctly", "target": "그녀가 맞혔어요"},
+        {"known": "did you guess right", "target": "맞혔어요?"},
+        {"known": "I couldn't figure it out", "target": "못 알아냈어요"},
+        {"known": "he couldn't guess the answer", "target": "그가 정답 못 맞혔어요"},
+        {"known": "can you guess what happened", "target": "뭐가 일어났는지 맞힐 수 있어요?"},
+        {"known": "she guessed the secret on the first try", "target": "그녀가 첫 시도에 비밀 맞혔어요"},
+        {"known": "I've been trying to guess but I can't figure it out", "target": "맞히려고 하는데 모르겠어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "hard to believe that you can't guess",
+      "target": "못 맞히는 거 믿기 어렵다",
+      "components": [
+        {"known": "can't guess", "target": "못 맞히다"},
+        {"known": "that", "target": "는 거"},
+        {"known": "hard to believe", "target": "믿기 어렵다"}
+      ],
+      "phrases": [
+        {"known": "hard to", "target": "어려워요"},
+        {"known": "believe", "target": "믿어요"},
+        {"known": "difficult", "target": "어려워요"},
+        {"known": "it's hard to", "target": "하기 어려워요"},
+        {"known": "that's hard to believe", "target": "믿기 어려워요"},
+        {"known": "I can't believe it", "target": "믿을 수 없어요"},
+        {"known": "it's unbelievable", "target": "믿기 어려워요"},
+        {"known": "she found it hard to accept", "target": "그녀가 받아들이기 어려웠어요"},
+        {"known": "he said it was hard to understand", "target": "그가 이해하기 어렵다고 했어요"},
+        {"known": "that's difficult to comprehend", "target": "이해하기 어려워요"},
+        {"known": "I find it hard to trust what he says", "target": "그가 말하는 거 믿기 어려워요"},
+        {"known": "it's hard to believe she didn't know about it", "target": "그녀가 그거 몰랐다는 거 믿기 어려워요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I'm finding it hard to believe that you can't guess",
+      "target": "못 맞히는 거 믿기 어려워요",
+      "components": [
+        {"known": "hard to believe that you can't guess", "target": "못 맞히는 거 믿기 어렵다"},
+        {"known": "is/am", "target": "이다"}
+      ],
+      "phrases": [
+        {"known": "I'm finding", "target": "그래요"},
+        {"known": "surprisingly", "target": "놀랍게도요"},
+        {"known": "honestly", "target": "솔직히요"},
+        {"known": "I'm surprised", "target": "놀라워요"},
+        {"known": "it seems strange", "target": "이상해 보여요"},
+        {"known": "I find that odd", "target": "그게 이상해요"},
+        {"known": "I'm having trouble understanding this", "target": "이거 이해하기 어려워요"},
+        {"known": "she couldn't wrap her head around it", "target": "그녀가 이해하기 어려웠어요"},
+        {"known": "it strikes me as strange that he didn't notice", "target": "그가 못 봤다는 게 이상해요"},
+        {"known": "I have a hard time believing that excuse", "target": "그 변명 믿기 어려워요"},
+        {"known": "she said she finds it surprising you didn't know", "target": "그녀가 네가 몰랐다는 게 놀랍다고 했어요"},
+        {"known": "it's hard for me to accept that nobody saw it coming", "target": "아무도 못 봤다는 거 받아들이기 어려워요"}
+      ]
+    }
+  ]
+}

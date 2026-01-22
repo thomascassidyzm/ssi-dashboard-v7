@@ -1,73 +1,119 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 73,
   "known_text": "Thank you very much, but I've got more to learn.",
-  "target_text": "どうもありがとうございます、でももっと学ぶことがあります。",
+  "target_text": "정말 감사해요, 하지만 배울 것이 더 있어요.",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "thank you very much",
-      "target": "どうもありがとうございます、",
-      "components": [
-        {"known": "very much (informal)", "target": "どうも"},
-        {"known": "thank you (polite with comma)", "target": "ありがとうございます、"}
-      ],
+      "type": "A",
+      "known": "really",
+      "target": "정말",
       "phrases": [
-        {"known": "thanks", "target": "どうも"},
-        {"known": "thank you", "target": "ありがとう"},
-        {"known": "many thanks", "target": "どうもありがとう"},
-        {"known": "thank you (polite)", "target": "ありがとうございます"},
-        {"known": "thank you very much", "target": "どうもありがとうございます"},
-        {"known": "thank you for today", "target": "今日はありがとうございます"},
-        {"known": "thank you for teaching", "target": "教えてくれてありがとう"},
-        {"known": "thank you for helping me", "target": "手伝ってくれてありがとう"},
-        {"known": "she said thank you very much", "target": "彼女はどうもありがとうと言いました"},
-        {"known": "thank you for explaining the whole sentence", "target": "文全体を説明してくれてありがとうございます"},
-        {"known": "he said thank you for looking after the dog", "target": "彼は犬の世話をしてくれてありがとうと言いました"}
+        {"known": "Really.", "target": "정말."},
+        {"known": "Really?", "target": "정말?"},
+        {"known": "Is it real?", "target": "정말이야?"},
+        {"known": "Really good.", "target": "정말 좋아요."},
+        {"known": "Really well.", "target": "정말 잘."},
+        {"known": "I'm really grateful.", "target": "정말 감사해요."},
+        {"known": "It was really important.", "target": "정말 중요했어요."},
+        {"known": "He really remembered it.", "target": "그는 정말 기억했어요."},
+        {"known": "She really did well.", "target": "그녀는 정말 잘했어요."},
+        {"known": "We really worked all afternoon.", "target": "우리는 정말 오후 내내 일했어요."}
       ]
     },
     {
       "idx": 2,
       "type": "A",
-      "known": "but",
-      "target": "でも",
+      "known": "thank you",
+      "target": "감사해요",
       "phrases": [
-        {"known": "but", "target": "でも"},
-        {"known": "but however", "target": "でもしかし"},
-        {"known": "but I think", "target": "でも思います"},
-        {"known": "but it is difficult", "target": "でも難しいです"},
-        {"known": "but it is fun", "target": "でも楽しいです"},
-        {"known": "but I do not understand", "target": "でも分かりません"},
-        {"known": "but I want to try hard", "target": "でも頑張りたいです"},
-        {"known": "but she did it very well", "target": "でも彼女はとても上手にやりました"},
-        {"known": "but I did not want to say that", "target": "でもそう言いたくありませんでした"},
-        {"known": "but I think it is important to learn", "target": "でも学ぶことは大切だと思います"},
-        {"known": "but he thinks it is not easy to do", "target": "でも彼はやるのは簡単ではないと思います"}
+        {"known": "Thanks.", "target": "감사해요."},
+        {"known": "Thank you.", "target": "감사합니다."},
+        {"known": "Really thanks.", "target": "정말 감사해요."},
+        {"known": "Thank you so much.", "target": "정말 감사해요."},
+        {"known": "I am grateful.", "target": "감사해요."},
+        {"known": "She said thank you.", "target": "그녀는 감사하다고 말했어요."},
+        {"known": "He thanked me.", "target": "그는 나에게 감사했어요."},
+        {"known": "We are really grateful.", "target": "우리는 정말 감사해요."},
+        {"known": "Thank you for meeting me.", "target": "만나서 감사해요."},
+        {"known": "Thank you for helping all afternoon.", "target": "오후 내내 도와줘서 감사해요."}
       ]
     },
     {
       "idx": 3,
+      "type": "A",
+      "known": "but",
+      "target": "하지만",
+      "phrases": [
+        {"known": "But.", "target": "하지만."},
+        {"known": "But still.", "target": "하지만요."},
+        {"known": "But really.", "target": "하지만 정말."},
+        {"known": "But I went.", "target": "하지만 갔어요."},
+        {"known": "But she came.", "target": "하지만 그녀는 왔어요."},
+        {"known": "But I'm grateful.", "target": "하지만 감사해요."},
+        {"known": "But it was difficult.", "target": "하지만 어려웠어요."},
+        {"known": "But he remembered.", "target": "하지만 그는 기억했어요."},
+        {"known": "But we worked all afternoon.", "target": "하지만 우리는 오후 내내 일했어요."},
+        {"known": "Thank you, but I have more.", "target": "감사해요, 하지만 더 있어요."}
+      ]
+    },
+    {
+      "idx": 4,
       "type": "M",
-      "known": "more to learn",
-      "target": "もっと学ぶことがあります",
+      "known": "thing to learn",
+      "target": "배울 것이",
       "components": [
-        {"known": "more", "target": "もっと"},
-        {"known": "things to learn exist", "target": "学ぶことがあります"}
+        {"known": "learn", "target": "배우다"},
+        {"known": "thing to (future modifier)", "target": "-ㄹ 것"}
       ],
       "phrases": [
-        {"known": "more", "target": "もっと"},
-        {"known": "to learn", "target": "学ぶ"},
-        {"known": "more learning", "target": "もっと学ぶ"},
-        {"known": "learn more", "target": "もっと学ぶこと"},
-        {"known": "things to learn", "target": "学ぶこと"},
-        {"known": "there is more to learn", "target": "学ぶことがあります"},
-        {"known": "I have more to learn", "target": "もっと学ぶことがあります"},
-        {"known": "I want to learn more Japanese", "target": "もっと日本語を学ぶことがあります"},
-        {"known": "she said she has more to learn", "target": "彼女はもっと学ぶことがあると言いました"},
-        {"known": "he thinks there is more to learn", "target": "彼はもっと学ぶことがあると思います"},
-        {"known": "I think there is more Japanese to learn", "target": "もっと日本語を学ぶことがあると思います"},
-        {"known": "it is important to know there is more to learn", "target": "もっと学ぶことがあることを知ることは大切です"}
+        {"known": "To learn.", "target": "배울 것."},
+        {"known": "Thing to do.", "target": "할 것이."},
+        {"known": "Learn more.", "target": "더 배워요."},
+        {"known": "I learned.", "target": "나는 배웠어요."},
+        {"known": "She learned Korean.", "target": "그녀는 한국어를 배웠어요."},
+        {"known": "There is something to learn.", "target": "배울 것이 있어요."},
+        {"known": "He has more to learn.", "target": "그는 배울 것이 더 있어요."},
+        {"known": "We have much to learn.", "target": "우리는 배울 것이 많아요."},
+        {"known": "I still have things to learn.", "target": "나는 아직 배울 것이 있어요."},
+        {"known": "She said there's more to learn.", "target": "그녀는 배울 것이 더 있다고 말했어요."}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "A",
+      "known": "more",
+      "target": "더",
+      "phrases": [
+        {"known": "More.", "target": "더."},
+        {"known": "More please.", "target": "더 주세요."},
+        {"known": "Want more.", "target": "더 원해요."},
+        {"known": "I need more.", "target": "더 필요해요."},
+        {"known": "Learn more.", "target": "더 배워요."},
+        {"known": "She wants more.", "target": "그녀는 더 원해요."},
+        {"known": "There is more.", "target": "더 있어요."},
+        {"known": "He worked more.", "target": "그는 더 일했어요."},
+        {"known": "We need to learn more.", "target": "우리는 더 배워야 해요."},
+        {"known": "I have more things to learn.", "target": "나는 배울 것이 더 있어요."}
+      ]
+    },
+    {
+      "idx": 6,
+      "type": "A",
+      "known": "there is / have",
+      "target": "있어요",
+      "phrases": [
+        {"known": "There is.", "target": "있어요."},
+        {"known": "I have.", "target": "있어요."},
+        {"known": "Is there?", "target": "있어요?"},
+        {"known": "He is there.", "target": "그는 거기 있어요."},
+        {"known": "She has it.", "target": "그녀는 그것이 있어요."},
+        {"known": "I have time.", "target": "시간이 있어요."},
+        {"known": "There is more.", "target": "더 있어요."},
+        {"known": "We have more to do.", "target": "우리는 할 것이 더 있어요."},
+        {"known": "He has something to learn.", "target": "그는 배울 것이 있어요."},
+        {"known": "Thank you, but I have more to learn.", "target": "감사해요, 하지만 배울 것이 더 있어요."}
       ]
     }
   ]

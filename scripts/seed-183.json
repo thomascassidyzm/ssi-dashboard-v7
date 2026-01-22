@@ -1,0 +1,75 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 183,
+  "known_text": "No I'm afraid I haven't seen them.",
+  "target_text": "아니요, 죄송하지만 못 봤어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "I'm afraid / sorry but",
+      "target": "죄송하지만",
+      "components": [
+        {"known": "sorry", "target": "죄송하다"},
+        {"known": "but", "target": "지만"}
+      ],
+      "phrases": [
+        {"known": "sorry", "target": "죄송해요"},
+        {"known": "but sorry", "target": "죄송하지만"},
+        {"known": "I am sorry but", "target": "죄송하지만"},
+        {"known": "I'm afraid not", "target": "죄송하지만 아니에요"},
+        {"known": "I'm afraid I cannot", "target": "죄송하지만 못 해요"},
+        {"known": "I'm afraid I don't know", "target": "죄송하지만 몰라요"},
+        {"known": "I'm sorry but I am busy", "target": "죄송하지만 바빠요"},
+        {"known": "I'm afraid I cannot help today", "target": "죄송하지만 오늘 도와드릴 수 없어요"},
+        {"known": "I'm sorry but I have to go now", "target": "죄송하지만 지금 가야 해요"},
+        {"known": "I'm afraid I will not be able to come tomorrow afternoon", "target": "죄송하지만 내일 오후에 올 수 없을 것 같아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "haven't seen / couldn't see",
+      "target": "못 봤어요",
+      "components": [
+        {"known": "couldn't/unable to", "target": "못"},
+        {"known": "saw", "target": "봤어요"}
+      ],
+      "phrases": [
+        {"known": "couldn't", "target": "못"},
+        {"known": "saw", "target": "봤어요"},
+        {"known": "couldn't see", "target": "못 봤어요"},
+        {"known": "I haven't seen", "target": "못 봤어요"},
+        {"known": "I couldn't see it", "target": "그거 못 봤어요"},
+        {"known": "I haven't seen him today", "target": "오늘 그를 못 봤어요"},
+        {"known": "I couldn't see clearly", "target": "잘 못 봤어요"},
+        {"known": "I haven't seen her anywhere", "target": "그녀를 어디서도 못 봤어요"},
+        {"known": "I couldn't see it because it was too dark", "target": "너무 어두워서 못 봤어요"},
+        {"known": "I haven't seen my friend at the park since last month", "target": "지난달부터 공원에서 친구를 못 봤어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "No I'm afraid I haven't seen them",
+      "target": "아니요, 죄송하지만 못 봤어요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "I'm afraid / sorry but", "target": "죄송하지만"},
+        {"known": "haven't seen", "target": "못 봤어요"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "sorry but", "target": "죄송하지만"},
+        {"known": "haven't seen", "target": "못 봤어요"},
+        {"known": "No, sorry", "target": "아니요, 죄송해요"},
+        {"known": "No I haven't", "target": "아니요, 못 봤어요"},
+        {"known": "No I'm afraid I haven't seen them", "target": "아니요, 죄송하지만 못 봤어요"},
+        {"known": "No I'm afraid I cannot help", "target": "아니요, 죄송하지만 도와드릴 수 없어요"},
+        {"known": "No I'm afraid I don't know where it is", "target": "아니요, 죄송하지만 어디 있는지 몰라요"},
+        {"known": "No I'm sorry but I haven't seen her today", "target": "아니요, 죄송하지만 오늘 그녀를 못 봤어요"},
+        {"known": "No I'm afraid I haven't seen your keys anywhere at all", "target": "아니요, 죄송하지만 열쇠를 어디서도 못 봤어요"}
+      ]
+    }
+  ]
+}

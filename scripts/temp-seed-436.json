@@ -1,0 +1,59 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 436,
+  "known_text": "No there's a minimum number they need.",
+  "target_text": "아니요, 그들이 필요한 최소 인원이 있어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "a minimum number they need",
+      "target": "필요한 최소 인원",
+      "components": [
+        {"known": "need (adjective)", "target": "필요하다"},
+        {"known": "minimum", "target": "최소"},
+        {"known": "number of people", "target": "인원"}
+      ],
+      "phrases": [
+        {"known": "minimum", "target": "최소요"},
+        {"known": "needed", "target": "필요해요"},
+        {"known": "how many people", "target": "몇 명이요?"},
+        {"known": "the minimum number", "target": "최소 인원이요"},
+        {"known": "how many people do you need", "target": "몇 명 필요해요?"},
+        {"known": "the minimum is five", "target": "최소가 다섯이에요"},
+        {"known": "we need at least ten people", "target": "적어도 열 명 필요해요"},
+        {"known": "what is the minimum requirement", "target": "최소 요건이 뭐예요?"},
+        {"known": "the number of participants must be ten", "target": "참가자 수가 열 명이어야 해요"},
+        {"known": "she asked about the minimum amount needed", "target": "그녀가 필요한 최소 금액을 물었어요"},
+        {"known": "the company requires a minimum of fifty employees", "target": "회사가 최소 오십 명의 직원이 필요해요"},
+        {"known": "there is a minimum number of attendees required", "target": "필요한 최소 참석자 수가 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "no there's a minimum number they need",
+      "target": "아니요 그들이 필요한 최소 인원이 있어요",
+      "components": [
+        {"known": "no", "target": "아니요"},
+        {"known": "they", "target": "그들이"},
+        {"known": "a minimum number they need", "target": "필요한 최소 인원"},
+        {"known": "there is", "target": "있다"}
+      ],
+      "phrases": [
+        {"known": "no", "target": "아니요"},
+        {"known": "there is", "target": "있어요"},
+        {"known": "no actually", "target": "아니요 사실"},
+        {"known": "there's a limit", "target": "제한이 있어요"},
+        {"known": "no there's a rule", "target": "아니요 규칙이 있어요"},
+        {"known": "there's a requirement", "target": "요건이 있어요"},
+        {"known": "no they have conditions", "target": "아니요 조건이 있어요"},
+        {"known": "there's a specific number needed", "target": "필요한 특정 수가 있어요"},
+        {"known": "no there are restrictions on that", "target": "아니요 그것에 제한이 있어요"},
+        {"known": "there's a minimum age requirement", "target": "최소 연령 요건이 있어요"},
+        {"known": "no there's a quota they must meet", "target": "아니요 충족해야 하는 할당량이 있어요"},
+        {"known": "unfortunately there's a limit on the number allowed", "target": "안타깝게도 허용되는 수에 제한이 있어요"}
+      ]
+    }
+  ]
+}

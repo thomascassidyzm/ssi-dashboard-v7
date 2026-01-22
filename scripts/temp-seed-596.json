@@ -1,0 +1,54 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 596,
+  "target_text": "그리고 잠깐 눈을 감아야겠어요",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "close my eyes for a while",
+      "target": "잠깐 눈을 감다",
+      "components": [
+        {"known": "for a while", "target": "잠깐"},
+        {"known": "close my eyes", "target": "눈을 감다"}
+      ],
+      "phrases": [
+        {"known": "eyes", "target": "눈"},
+        {"known": "for a while", "target": "잠깐"},
+        {"known": "close", "target": "감다"},
+        {"known": "close your eyes", "target": "눈을 감아요"},
+        {"known": "for a while please", "target": "잠깐요"},
+        {"known": "close my eyes for a while", "target": "잠깐 눈을 감다"},
+        {"known": "please close your eyes", "target": "눈 좀 감아 주세요"},
+        {"known": "I closed my eyes and thought about it", "target": "눈을 감고 생각해 봤어요"},
+        {"known": "the children close their eyes when they sleep", "target": "아이들이 잘 때 눈을 감아요"},
+        {"known": "she asked me to close my eyes for a moment", "target": "잠깐 눈을 감아 달라고 했어요"},
+        {"known": "when I close my eyes I can imagine being there", "target": "눈을 감으면 거기 있는 것 같아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "and I need to close my eyes for a while",
+      "target": "그리고 잠깐 눈을 감아야겠어요",
+      "components": [
+        {"known": "and", "target": "그리고"},
+        {"known": "close my eyes for a while", "target": "잠깐 눈을 감다"},
+        {"known": "I need to", "target": "~해야겠다"}
+      ],
+      "phrases": [
+        {"known": "and", "target": "그리고"},
+        {"known": "close now", "target": "이제 감아요"},
+        {"known": "I need to close", "target": "감아야겠어요"},
+        {"known": "and I need to rest", "target": "그리고 쉬어야겠어요"},
+        {"known": "and I need to close my eyes for a while", "target": "그리고 잠깐 눈을 감아야겠어요"},
+        {"known": "I am tired and I need to rest my eyes", "target": "피곤해서 눈 좀 쉬어야겠어요"},
+        {"known": "he said he needed to close his eyes for a moment", "target": "잠깐 눈을 감아야겠다고 했어요"},
+        {"known": "after working all day I need to close my eyes", "target": "하루 종일 일한 후에 눈을 감아야겠어요"},
+        {"known": "I need to rest for a while because I am so tired", "target": "너무 피곤해서 잠깐 쉬어야겠어요"},
+        {"known": "the doctor said I need to rest my eyes for a while", "target": "의사가 잠깐 눈을 쉬어야 한다고 했어요"},
+        {"known": "and I need to think about it so let me close my eyes", "target": "그리고 생각해 봐야겠어서 눈 좀 감을게요"}
+      ]
+    }
+  ]
+}

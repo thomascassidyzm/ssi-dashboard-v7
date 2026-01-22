@@ -1,0 +1,52 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 592,
+  "target_text": "그리고 큰 길을 따라",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "along the main road",
+      "target": "큰 길을 따라",
+      "components": [
+        {"known": "the main road", "target": "큰 길"},
+        {"known": "along", "target": "따라"}
+      ],
+      "phrases": [
+        {"known": "road", "target": "길"},
+        {"known": "big", "target": "큰"},
+        {"known": "along", "target": "따라"},
+        {"known": "the main road", "target": "큰 길"},
+        {"known": "along the road", "target": "길을 따라"},
+        {"known": "along the main road", "target": "큰 길을 따라"},
+        {"known": "walk along the road", "target": "길을 따라 걸어요"},
+        {"known": "go straight along the main road", "target": "큰 길을 따라 쭉 가세요"},
+        {"known": "there are many shops along the main road", "target": "큰 길을 따라 가게가 많아요"},
+        {"known": "we walked along the main road for an hour", "target": "한 시간 동안 큰 길을 따라 걸었어요"},
+        {"known": "the restaurant is somewhere along the main road", "target": "식당이 큰 길을 따라 어딘가에 있어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "and along the main road",
+      "target": "그리고 큰 길을 따라",
+      "components": [
+        {"known": "and", "target": "그리고"},
+        {"known": "along the main road", "target": "큰 길을 따라"}
+      ],
+      "phrases": [
+        {"known": "and", "target": "그리고"},
+        {"known": "and then", "target": "그리고 나서"},
+        {"known": "and also", "target": "그리고 또"},
+        {"known": "and the road too", "target": "그리고 길도요"},
+        {"known": "and along the main road", "target": "그리고 큰 길을 따라"},
+        {"known": "and then along the river", "target": "그리고 강을 따라"},
+        {"known": "cross the bridge and then along the main road", "target": "다리를 건너고 큰 길을 따라"},
+        {"known": "turn left and then go along the main road", "target": "왼쪽으로 돌고 큰 길을 따라 가세요"},
+        {"known": "we walked through the park and along the main road", "target": "공원을 지나서 큰 길을 따라 걸었어요"},
+        {"known": "the bus goes through the center and along the main road", "target": "버스가 시내를 지나 큰 길을 따라 가요"}
+      ]
+    }
+  ]
+}

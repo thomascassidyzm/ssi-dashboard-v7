@@ -1,0 +1,83 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 460,
+  "known_text": "I want to find a shop near the hotel.",
+  "target_text": "호텔 근처에 가게 찾고 싶어요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "near the hotel",
+      "target": "호텔 근처에",
+      "components": [
+        {"known": "hotel", "target": "호텔"},
+        {"known": "near", "target": "근처"},
+        {"known": "at/in", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "hotel", "target": "호텔이요"},
+        {"known": "nearby", "target": "근처에요"},
+        {"known": "near here", "target": "여기 근처요"},
+        {"known": "close to me", "target": "제 근처에요"},
+        {"known": "is there a hotel nearby", "target": "근처에 호텔 있어요?"},
+        {"known": "it's nearby", "target": "근처에 있어요"},
+        {"known": "the park is near my house", "target": "공원이 집 근처에 있어요"},
+        {"known": "she lives near the station", "target": "그녀가 역 근처에 살아요"},
+        {"known": "there's a cafe near the office", "target": "사무실 근처에 카페 있어요"},
+        {"known": "I stayed at a hotel near the airport", "target": "공항 근처 호텔에서 묵었어요"},
+        {"known": "they opened a new restaurant near us", "target": "우리 근처에 새 식당 열었어요"},
+        {"known": "is there anything interesting near here", "target": "여기 근처에 재미있는 거 있어요?"},
+        {"known": "we found a nice place near the beach", "target": "해변 근처에 좋은 곳 찾았어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "find a shop near the hotel",
+      "target": "호텔 근처에 가게 찾다",
+      "components": [
+        {"known": "near the hotel", "target": "호텔 근처에"},
+        {"known": "shop", "target": "가게"},
+        {"known": "find", "target": "찾다"}
+      ],
+      "phrases": [
+        {"known": "shop", "target": "가게요"},
+        {"known": "find it", "target": "찾아요"},
+        {"known": "find a shop", "target": "가게 찾아요"},
+        {"known": "I'm looking for", "target": "찾고 있어요"},
+        {"known": "can you find it", "target": "찾을 수 있어요?"},
+        {"known": "she found a good store", "target": "그녀가 좋은 가게 찾았어요"},
+        {"known": "I need to find a pharmacy", "target": "약국 찾아야 해요"},
+        {"known": "he found a bakery near the station", "target": "그가 역 근처에 빵집 찾았어요"},
+        {"known": "did you find a place to eat", "target": "먹을 곳 찾았어요?"},
+        {"known": "we're looking for a gift shop nearby", "target": "근처에 선물 가게 찾고 있어요"},
+        {"known": "she found a nice boutique near the hotel", "target": "그녀가 호텔 근처에 좋은 부티크 찾았어요"},
+        {"known": "can you help me find a convenience store", "target": "편의점 찾는 거 도와줄 수 있어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I want to find a shop near the hotel",
+      "target": "호텔 근처에 가게 찾고 싶어요",
+      "components": [
+        {"known": "find a shop near the hotel", "target": "호텔 근처에 가게 찾다"},
+        {"known": "want to", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "I want to", "target": "하고 싶어요"},
+        {"known": "want to find", "target": "찾고 싶어요"},
+        {"known": "I'd like to go", "target": "가고 싶어요"},
+        {"known": "I want to see it", "target": "보고 싶어요"},
+        {"known": "she wants to buy something", "target": "그녀가 뭔가 사고 싶어해요"},
+        {"known": "I want to find a restaurant", "target": "식당 찾고 싶어요"},
+        {"known": "he wants to visit the museum", "target": "그가 박물관 가고 싶어해요"},
+        {"known": "I'd like to find somewhere quiet", "target": "조용한 곳 찾고 싶어요"},
+        {"known": "she wants to explore the area near the hotel", "target": "그녀가 호텔 근처 탐험하고 싶어해요"},
+        {"known": "we want to find a good coffee shop nearby", "target": "근처에 좋은 커피숍 찾고 싶어요"},
+        {"known": "I'd like to find somewhere to buy souvenirs", "target": "기념품 살 곳 찾고 싶어요"},
+        {"known": "he wants to find a bookstore near the station", "target": "그가 역 근처에 서점 찾고 싶어해요"}
+      ]
+    }
+  ]
+}

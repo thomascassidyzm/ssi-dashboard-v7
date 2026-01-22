@@ -1,0 +1,80 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 504,
+  "known_text": "I'm going to run across the grass.",
+  "target_text": "잔디 가로질러 뛸 거예요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "across the grass",
+      "target": "잔디 가로질러",
+      "components": [
+        {"known": "grass", "target": "잔디"},
+        {"known": "across", "target": "가로질러"}
+      ],
+      "phrases": [
+        {"known": "grass", "target": "잔디요"},
+        {"known": "across", "target": "가로질러요"},
+        {"known": "on the lawn", "target": "잔디 위에요"},
+        {"known": "green grass", "target": "초록 잔디요"},
+        {"known": "across the street", "target": "길 가로질러요"},
+        {"known": "walk across the park", "target": "공원 가로질러 걸어요"},
+        {"known": "the grass is wet", "target": "잔디가 젖었어요"},
+        {"known": "don't step on the grass", "target": "잔디 밟지 마요"},
+        {"known": "she ran across the field", "target": "그녀가 들판 가로질러 뛰었어요"},
+        {"known": "we walked across the bridge", "target": "우리가 다리 가로질러 걸었어요"},
+        {"known": "the kids were playing on the lawn", "target": "아이들이 잔디에서 놀고 있었어요"},
+        {"known": "he sprinted across the yard to catch the ball", "target": "그가 공 잡으려고 마당 가로질러 뛰었어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "run across the grass",
+      "target": "잔디 가로질러 뛰다",
+      "components": [
+        {"known": "across the grass", "target": "잔디 가로질러"},
+        {"known": "run", "target": "뛰다"}
+      ],
+      "phrases": [
+        {"known": "run", "target": "뛰어요"},
+        {"known": "running", "target": "뛰고 있어요"},
+        {"known": "I'm running", "target": "뛰고 있어요"},
+        {"known": "she runs fast", "target": "그녀가 빨리 뛰어요"},
+        {"known": "don't run here", "target": "여기서 뛰지 마요"},
+        {"known": "he ran to school", "target": "그가 학교로 뛰었어요"},
+        {"known": "I like to run in the morning", "target": "아침에 뛰는 거 좋아해요"},
+        {"known": "she ran all the way home", "target": "그녀가 집까지 쭉 뛰었어요"},
+        {"known": "the dog ran across the park", "target": "개가 공원 가로질러 뛰었어요"},
+        {"known": "I need to run to catch the bus", "target": "버스 타려고 뛰어야 해요"},
+        {"known": "he loves running in the rain", "target": "그가 비 올 때 뛰는 거 좋아해요"},
+        {"known": "she was running late so she sprinted", "target": "그녀가 늦어서 빨리 뛰었어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "I'm going to run across the grass",
+      "target": "잔디 가로질러 뛸 거예요",
+      "components": [
+        {"known": "run across the grass", "target": "잔디 가로질러 뛰다"},
+        {"known": "going to", "target": "ㄹ 거다"}
+      ],
+      "phrases": [
+        {"known": "I will", "target": "할 거예요"},
+        {"known": "going to", "target": "할 거예요"},
+        {"known": "I'm going to go", "target": "갈 거예요"},
+        {"known": "she will run", "target": "그녀가 뛸 거예요"},
+        {"known": "are you going to run", "target": "뛸 거예요?"},
+        {"known": "I'm going to try", "target": "해 볼 거예요"},
+        {"known": "he's going to leave soon", "target": "그가 곧 떠날 거예요"},
+        {"known": "I'm going to walk there instead", "target": "대신 거기 걸어갈 거예요"},
+        {"known": "she's going to run in the race tomorrow", "target": "그녀가 내일 경주에서 뛸 거예요"},
+        {"known": "I'm planning to exercise more this year", "target": "올해 운동 더 할 거예요"},
+        {"known": "he's going to practice running every day", "target": "그가 매일 뛰기 연습할 거예요"},
+        {"known": "I'm going to jog through the neighborhood", "target": "동네 가로질러 조깅할 거예요"}
+      ]
+    }
+  ]
+}

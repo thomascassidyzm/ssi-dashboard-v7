@@ -1,0 +1,80 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 349,
+  "known_text": "Did he want to go out on Friday night?",
+  "target_text": "그가 금요일 밤에 나가고 싶었어요?",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "go out",
+      "target": "나가다",
+      "phrases": [
+        {"known": "go out", "target": "나가요"},
+        {"known": "went out", "target": "나갔어요"},
+        {"known": "let's go out", "target": "나가요"},
+        {"known": "I want to go out", "target": "나가고 싶어요"},
+        {"known": "we're going out", "target": "나가고 있어요"},
+        {"known": "are you going out?", "target": "나가요?"},
+        {"known": "I went out yesterday", "target": "어제 나갔어요"},
+        {"known": "she doesn't want to go out", "target": "그녀가 나가고 싶어하지 않아요"},
+        {"known": "do you want to go out tonight?", "target": "오늘 밤에 나가고 싶어요?"},
+        {"known": "we went out for dinner", "target": "저녁 먹으러 나갔어요"},
+        {"known": "he goes out every weekend", "target": "그가 매주 주말에 나가요"},
+        {"known": "I don't feel like going out today", "target": "오늘 나가고 싶지 않아요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "on Friday night",
+      "target": "금요일 밤에",
+      "components": [
+        {"known": "Friday", "target": "금요일"},
+        {"known": "night", "target": "밤"},
+        {"known": "on (time)", "target": "에"}
+      ],
+      "phrases": [
+        {"known": "Friday", "target": "금요일이요"},
+        {"known": "night", "target": "밤이요"},
+        {"known": "at night", "target": "밤에요"},
+        {"known": "on Friday", "target": "금요일에요"},
+        {"known": "Friday night", "target": "금요일 밤"},
+        {"known": "on Friday night", "target": "금요일 밤에요"},
+        {"known": "this Friday night", "target": "이번 금요일 밤에요"},
+        {"known": "what are you doing on Friday night?", "target": "금요일 밤에 뭐 해요?"},
+        {"known": "I'm free on Friday night", "target": "금요일 밤에 시간 있어요"},
+        {"known": "we're having a party on Friday night", "target": "금요일 밤에 파티 해요"},
+        {"known": "she has plans for Friday night", "target": "그녀가 금요일 밤에 계획이 있어요"},
+        {"known": "do you want to meet on Friday night?", "target": "금요일 밤에 만날래요?"},
+        {"known": "I'm planning to rest at home on Friday night", "target": "금요일 밤에 집에서 쉴 계획이에요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "did he want to go out on Friday night",
+      "target": "그가 금요일 밤에 나가고 싶었어요",
+      "components": [
+        {"known": "he", "target": "그가"},
+        {"known": "on Friday night", "target": "금요일 밤에"},
+        {"known": "go out", "target": "나가다"},
+        {"known": "wanted to (past desire)", "target": "고 싶다"}
+      ],
+      "phrases": [
+        {"known": "he wanted", "target": "그가 원했어요"},
+        {"known": "wanted to", "target": "싶었어요"},
+        {"known": "did he want?", "target": "원했어요?"},
+        {"known": "did he want to", "target": "싶었어요?"},
+        {"known": "did he want to go?", "target": "가고 싶었어요?"},
+        {"known": "did she want to come?", "target": "오고 싶었어요?"},
+        {"known": "did he want to go out?", "target": "나가고 싶었어요?"},
+        {"known": "did he ask to go out?", "target": "그가 나가자고 했어요?"},
+        {"known": "did she want to go out with friends?", "target": "그녀가 친구들과 나가고 싶었어요?"},
+        {"known": "did he want to go somewhere on the weekend?", "target": "그가 주말에 어디 가고 싶었어요?"},
+        {"known": "did he want to go out for dinner on Friday?", "target": "그가 금요일에 저녁 먹으러 나가고 싶었어요?"},
+        {"known": "did he say he wanted to go out on Friday night?", "target": "그가 금요일 밤에 나가고 싶다고 했어요?"}
+      ]
+    }
+  ]
+}

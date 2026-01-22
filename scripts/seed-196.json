@@ -1,54 +1,71 @@
 {
-  "course_code": "jpn_for_eng",
+  "course_code": "kor_for_eng",
   "seed_number": 196,
   "known_text": "Have you heard the latest idea?",
-  "target_text": "最新のアイデアを聞きましたか？",
+  "target_text": "최신 아이디어를 들었어요?",
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "the latest idea",
-      "target": "最新のアイデアを",
-      "components": [
-        {"known": "latest/newest", "target": "最新の"},
-        {"known": "idea (object)", "target": "アイデアを"}
-      ],
+      "type": "A",
+      "known": "latest/newest",
+      "target": "최신",
       "phrases": [
-        {"known": "newest", "target": "最新"},
-        {"known": "idea", "target": "アイデア"},
-        {"known": "the latest", "target": "最新の"},
-        {"known": "good idea", "target": "いいアイデア"},
-        {"known": "the latest idea", "target": "最新のアイデアを"},
-        {"known": "a new idea", "target": "新しいアイデア"},
-        {"known": "his idea is interesting", "target": "彼のアイデアは面白いです"},
-        {"known": "do you have an idea", "target": "アイデアがありますか"},
-        {"known": "that was a good idea", "target": "それはいいアイデアでした"},
-        {"known": "she had the latest idea about what to do", "target": "彼女は何をするかについて最新のアイデアがありました"},
-        {"known": "the latest idea she mentioned sounded really good", "target": "彼女が言った最新のアイデアはとてもよかったです"},
-        {"known": "I don't have any ideas about what to do next", "target": "次に何をするかアイデアが全然ありません"}
+        {"known": "newest", "target": "최신"},
+        {"known": "latest", "target": "최신"},
+        {"known": "the latest", "target": "최신"},
+        {"known": "latest news", "target": "최신 뉴스"},
+        {"known": "the newest one", "target": "최신 것"},
+        {"known": "I bought the latest phone", "target": "최신 전화를 샀어요"},
+        {"known": "Do you have the latest version?", "target": "최신 버전 있어요?"},
+        {"known": "I heard the latest news this morning at home", "target": "오늘 아침에 집에서 최신 뉴스를 들었어요"},
+        {"known": "This is the latest model that came out recently", "target": "이것이 최근에 나온 최신 모델이에요"},
+        {"known": "Have you read the latest book by that author yet?", "target": "그 작가의 최신 책을 읽었어요?"}
       ]
     },
     {
       "idx": 2,
       "type": "M",
       "known": "have you heard",
-      "target": "聞きましたか",
+      "target": "들었어요",
       "components": [
-        {"known": "to hear/listen", "target": "聞く"},
-        {"known": "did you (polite question)", "target": "きましたか"}
+        {"known": "to hear", "target": "듣다"},
+        {"known": "past tense", "target": "었어요"}
       ],
       "phrases": [
-        {"known": "to hear", "target": "聞く"},
-        {"known": "I heard", "target": "聞きました"},
-        {"known": "did you hear", "target": "聞きましたか"},
-        {"known": "have you heard", "target": "聞きましたか"},
-        {"known": "have you heard about it", "target": "それを聞きましたか"},
-        {"known": "I heard about it yesterday", "target": "昨日それを聞きました"},
-        {"known": "have you heard what happened", "target": "何があったか聞きましたか"},
-        {"known": "I heard what she said", "target": "彼女が言ったことを聞きました"},
-        {"known": "have you heard about what happened at the meeting", "target": "会いで何があったか聞きましたか"},
-        {"known": "I heard from him that he can't come tomorrow", "target": "彼から明日来られないと聞きました"},
-        {"known": "did you hear about what they were trying to do yesterday", "target": "昨日彼らが何をしようとしていたか聞きましたか"}
+        {"known": "to hear", "target": "듣다"},
+        {"known": "heard", "target": "들었어요"},
+        {"known": "I heard", "target": "들었어요"},
+        {"known": "Did you hear?", "target": "들었어요?"},
+        {"known": "I heard the news", "target": "뉴스를 들었어요"},
+        {"known": "Did you hear about it?", "target": "그것에 대해 들었어요?"},
+        {"known": "I heard she is coming tomorrow", "target": "그녀가 내일 온다고 들었어요"},
+        {"known": "Have you heard about what happened?", "target": "무슨 일이 있었는지 들었어요?"},
+        {"known": "I heard from my friend that you are looking for a job", "target": "친구한테 일을 찾고 있다고 들었어요"},
+        {"known": "Have you heard anything about the meeting tomorrow yet?", "target": "내일 회의에 대해 뭐 들었어요?"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "Have you heard the latest idea?",
+      "target": "최신 아이디어를 들었어요?",
+      "components": [
+        {"known": "latest", "target": "최신"},
+        {"known": "idea", "target": "아이디어"},
+        {"known": "object marker", "target": "를"},
+        {"known": "have you heard", "target": "들었어요"}
+      ],
+      "phrases": [
+        {"known": "latest", "target": "최신"},
+        {"known": "idea", "target": "아이디어"},
+        {"known": "heard", "target": "들었어요"},
+        {"known": "latest idea", "target": "최신 아이디어"},
+        {"known": "the new idea", "target": "새 아이디어를"},
+        {"known": "Have you heard the latest idea?", "target": "최신 아이디어를 들었어요?"},
+        {"known": "Have you heard the latest news today?", "target": "오늘 최신 뉴스를 들었어요?"},
+        {"known": "Have you heard about the new plan yet?", "target": "새 계획에 대해 들었어요?"},
+        {"known": "Have you heard what she said yesterday?", "target": "어제 그녀가 뭐라고 했는지 들었어요?"},
+        {"known": "Have you heard the latest idea from the team at work?", "target": "직장 팀에서 나온 최신 아이디어를 들었어요?"}
       ]
     }
   ]

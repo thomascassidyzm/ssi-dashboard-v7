@@ -1,0 +1,58 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 328,
+  "known_text": "Yes I think she ought to.",
+  "target_text": "네, 그녀가 해야 한다고 생각해요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "M",
+      "known": "she ought to",
+      "target": "그녀가 해야 하다",
+      "components": [
+        {"known": "she", "target": "그녀가"},
+        {"known": "do", "target": "하다"},
+        {"known": "ought to/should", "target": "아야 하다"}
+      ],
+      "phrases": [
+        {"known": "she should", "target": "그녀가 해야 해요"},
+        {"known": "ought to", "target": "해야 해요"},
+        {"known": "she ought to", "target": "그녀가 해야 해요"},
+        {"known": "he ought to", "target": "그가 해야 해요"},
+        {"known": "you ought to try", "target": "해 봐야 해요"},
+        {"known": "she ought to go", "target": "그녀가 가야 해요"},
+        {"known": "I think she ought to", "target": "그녀가 해야 한다고 생각해요"},
+        {"known": "he ought to apologize", "target": "그가 사과해야 해요"},
+        {"known": "she ought to call her mother", "target": "그녀가 어머니한테 전화해야 해요"},
+        {"known": "you ought to rest more", "target": "더 쉬어야 해요"},
+        {"known": "I think they ought to be more careful", "target": "그들이 더 조심해야 한다고 생각해요"},
+        {"known": "she ought to consider all the options first", "target": "그녀가 먼저 모든 선택을 고려해야 해요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "M",
+      "known": "yes I think she ought to",
+      "target": "네 그녀가 해야 한다고 생각해요",
+      "components": [
+        {"known": "yes", "target": "네"},
+        {"known": "she ought to", "target": "그녀가 해야 하다"},
+        {"known": "I think (quote)", "target": "고 생각하다"}
+      ],
+      "phrases": [
+        {"known": "yes", "target": "네요"},
+        {"known": "I think", "target": "생각해요"},
+        {"known": "yes I think", "target": "네 생각해요"},
+        {"known": "I think so", "target": "그렇게 생각해요"},
+        {"known": "yes I agree", "target": "네 동의해요"},
+        {"known": "yes she should", "target": "네 그녀가 해야 해요"},
+        {"known": "yes I think that's right", "target": "네 그게 맞다고 생각해요"},
+        {"known": "yes I believe he should go", "target": "네 그가 가야 한다고 생각해요"},
+        {"known": "yes I think they ought to try", "target": "네 그들이 해 봐야 한다고 생각해요"},
+        {"known": "yes I think we ought to help", "target": "네 도와야 한다고 생각해요"},
+        {"known": "yes I believe she should reconsider", "target": "네 그녀가 다시 생각해야 한다고 생각해요"},
+        {"known": "yes I think everyone ought to participate", "target": "네 모두 참여해야 한다고 생각해요"}
+      ]
+    }
+  ]
+}

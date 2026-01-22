@@ -1,0 +1,112 @@
+{
+  "course_code": "kor_for_eng",
+  "seed_number": 129,
+  "known_text": "I'm so happy that you're doing so well.",
+  "target_text": "당신이 정말 잘하고 있어서 너무 기뻐요.",
+  "legos": [
+    {
+      "idx": 1,
+      "type": "A",
+      "known": "happy/glad",
+      "target": "기쁘다",
+      "phrases": [
+        {"known": "happy", "target": "기쁘다"},
+        {"known": "I'm happy", "target": "기뻐요"},
+        {"known": "I'm glad", "target": "기뻐요"},
+        {"known": "are you happy?", "target": "기뻐요?"},
+        {"known": "I'm so happy", "target": "너무 기뻐요"},
+        {"known": "I'm really happy", "target": "정말 기뻐요"},
+        {"known": "I'm not happy yet", "target": "아직 기쁘지 않아요"},
+        {"known": "I'm already happy again", "target": "다시 이미 기뻐요"},
+        {"known": "unfortunately I'm not happy at all now", "target": "안타깝게도 이제 전혀 기쁘지 않아요"},
+        {"known": "I believe you're really happy about that person", "target": "그 사람 때문에 정말 기쁘다고 믿어요"}
+      ]
+    },
+    {
+      "idx": 2,
+      "type": "A",
+      "known": "so/very",
+      "target": "너무",
+      "phrases": [
+        {"known": "so", "target": "너무"},
+        {"known": "so good", "target": "너무 좋아요"},
+        {"known": "so happy", "target": "너무 기뻐요"},
+        {"known": "so short", "target": "너무 짧아요"},
+        {"known": "it's so good", "target": "너무 좋아요"},
+        {"known": "I like it so much", "target": "너무 좋아해요"},
+        {"known": "that person is so good", "target": "그 사람이 너무 좋아요"},
+        {"known": "I'm so happy already again", "target": "다시 이미 너무 기뻐요"},
+        {"known": "unfortunately it's so short now", "target": "안타깝게도 이제 너무 짧아요"},
+        {"known": "I believe you're doing so well already now", "target": "이미 이제 너무 잘하고 있다고 믿어요"}
+      ]
+    },
+    {
+      "idx": 3,
+      "type": "M",
+      "known": "doing well",
+      "target": "잘하고 있다",
+      "components": [
+        {"known": "well/good", "target": "잘"},
+        {"known": "doing (progressive)", "target": "하고 있다"}
+      ],
+      "phrases": [
+        {"known": "well", "target": "잘"},
+        {"known": "doing", "target": "하고 있다"},
+        {"known": "doing well", "target": "잘하고 있어요"},
+        {"known": "you're doing well", "target": "잘하고 있어요"},
+        {"known": "I'm doing well", "target": "잘하고 있어요"},
+        {"known": "you're doing so well", "target": "정말 잘하고 있어요"},
+        {"known": "you're not doing well yet", "target": "아직 잘 못하고 있어요"},
+        {"known": "I believe you're already doing well again", "target": "다시 이미 잘하고 있다고 믿어요"},
+        {"known": "unfortunately I'm not doing well at all now", "target": "안타깝게도 이제 전혀 잘 못하고 있어요"},
+        {"known": "that person I used to know is doing really well now", "target": "제가 예전에 알던 그 사람이 이제 정말 잘하고 있어요"}
+      ]
+    },
+    {
+      "idx": 4,
+      "type": "M",
+      "known": "that/because",
+      "target": "-어서",
+      "components": [
+        {"known": "so/because connector", "target": "-어서"}
+      ],
+      "phrases": [
+        {"known": "so", "target": "-어서"},
+        {"known": "because", "target": "-어서"},
+        {"known": "because it's good", "target": "좋아서"},
+        {"known": "because I'm happy", "target": "기뻐서"},
+        {"known": "because you're doing well", "target": "잘하고 있어서"},
+        {"known": "because it's so short", "target": "너무 짧아서"},
+        {"known": "because I understood slowly", "target": "천천히 이해해서"},
+        {"known": "because that person is really good now", "target": "그 사람이 이제 정말 좋아서"},
+        {"known": "because I already know that person again", "target": "다시 이미 그 사람을 알아서"},
+        {"known": "because you're doing so well unfortunately", "target": "안타깝게도 너무 잘하고 있어서"}
+      ]
+    },
+    {
+      "idx": 5,
+      "type": "M",
+      "known": "I'm so happy that you're doing so well",
+      "target": "당신이 정말 잘하고 있어서 너무 기뻐요",
+      "components": [
+        {"known": "you (subject)", "target": "당신이"},
+        {"known": "really", "target": "정말"},
+        {"known": "doing well", "target": "잘하고 있다"},
+        {"known": "because", "target": "-어서"},
+        {"known": "so happy", "target": "너무 기쁘다"}
+      ],
+      "phrases": [
+        {"known": "you", "target": "당신이"},
+        {"known": "so happy", "target": "너무 기뻐요"},
+        {"known": "doing well", "target": "잘하고 있어요"},
+        {"known": "because you're doing well", "target": "잘하고 있어서"},
+        {"known": "I'm happy because", "target": "~어서 기뻐요"},
+        {"known": "I'm happy because you're doing well", "target": "당신이 잘하고 있어서 기뻐요"},
+        {"known": "I'm so happy that you're doing so well", "target": "당신이 정말 잘하고 있어서 너무 기뻐요"},
+        {"known": "I'm really happy that you're doing well already", "target": "당신이 이미 잘하고 있어서 정말 기뻐요"},
+        {"known": "I believe I'm so happy that you're doing well again", "target": "당신이 다시 잘하고 있어서 너무 기쁘다고 믿어요"},
+        {"known": "unfortunately I'm not happy that you're not doing well yet", "target": "안타깝게도 당신이 아직 잘 못하고 있어서 기쁘지 않아요"}
+      ]
+    }
+  ]
+}
