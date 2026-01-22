@@ -84,7 +84,7 @@ module.exports = {
     {
       name: 'ngrok',
       script: 'ngrok',
-      args: 'http --url=popty.ngrok.app 3470 --log=stdout',
+      args: 'http --url=popty.ngrok.app 3470 --log=stdout --pooling-enabled',
       interpreter: 'none',
       autorestart: true,
       max_restarts: 10,
