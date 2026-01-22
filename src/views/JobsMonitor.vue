@@ -64,11 +64,11 @@
               @click="restartService(service.name)"
               class="restart-btn"
               :disabled="restarting[service.name]"
-              :title="`⟲ Restart ${service.name} (will interrupt service briefly)`"
+              :title="`⏻ Restart ${service.name} (will interrupt service briefly)`"
             >
-              <svg v-if="!restarting[service.name]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 4v6h6M23 20v-6h-6"/>
-                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+              <svg v-if="!restarting[service.name]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2v6"/>
+                <path d="M18.4 6.6a9 9 0 1 1-12.8 0"/>
               </svg>
               <span v-else class="restart-spinner"></span>
             </button>
