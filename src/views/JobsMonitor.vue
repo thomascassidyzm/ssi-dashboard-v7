@@ -299,9 +299,20 @@ const restarting = ref({})
 let pollInterval = null
 const POLL_INTERVAL_MS = 5000
 
+// Services to hide from display (deprecated or utility)
+const HIDDEN_SERVICES = [
+  'phase1-translation',
+  'phase2-conflict',
+  'phase3-basket',
+  'keep-awake',
+  'caffeinate-overnight'
+]
+
 // Computed: filter services by type
 const ngrokServices = computed(() => services.value.filter(s => s.type === 'ngrok'))
-const pm2Services = computed(() => services.value.filter(s => s.type === 'pm2'))
+const pm2Services = computed(() =>
+  services.value.filter(s => s.type === 'pm2' && !HIDDEN_SERVICES.includes(s.name))
+)
 
 // Fetch services (PM2 + ngrok) from API
 async function fetchServices() {
