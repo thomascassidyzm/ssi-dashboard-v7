@@ -539,23 +539,22 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 5: CONSOLIDATE ×2 - USE phrases for current LEGO
-    // v3.1: Must contain all LEGO characters
-    const validUsePhrases = currentUsePhrases.filter(p =>
-      phraseContainsLegoChars(p.target_text, legoTarget)
-    )
+    // Phase 5: CONSOLIDATE ×2 - Practice phrases for current LEGO
+    // v3.2: CAN reuse BUILD phrases (REVIEW gap makes this OK)
+    // Only avoid duplicates within CONSOLIDATE itself and avoid the LEGO debut
     const usedInConsolidation = new Set()
+    const legoNormalized = normalizePhrase(currentLego.lego.target_text)
 
     for (let c = 0; c < CONSOLIDATE_COUNT; c++) {
-      const availableForConsolidation = validUsePhrases.filter(
-        p => !usedPhrasesInRound.has(normalizePhrase(p.target_text)) &&
+      // Can reuse BUILD phrases, just avoid: CONSOLIDATE duplicates, LEGO itself
+      const availableForConsolidation = validPracticePhrases.filter(
+        p => normalizePhrase(p.target_text) !== legoNormalized &&
              !usedInConsolidation.has(normalizePhrase(p.target_text))
       )
 
       if (availableForConsolidation.length === 0) {
-        // Fall back to LEGO if no valid USE phrases available
-        const baseNormalized = normalizePhrase(currentLego.lego.target_text)
-        if (!usedPhrasesInRound.has(baseNormalized) && !usedInConsolidation.has(baseNormalized)) {
+        // Fall back to LEGO if no phrases available
+        if (!usedInConsolidation.has(legoNormalized)) {
           roundItems.push({
             ...baseItem,
             type: 'consolidate',
@@ -567,7 +566,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             target2_audio_uuid: currentLego.lego.target2_audio_uuid,
             hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
           })
-          usedInConsolidation.add(baseNormalized)
+          usedInConsolidation.add(legoNormalized)
         }
         continue
       }
