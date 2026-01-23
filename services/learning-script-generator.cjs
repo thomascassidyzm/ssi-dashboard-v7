@@ -1,25 +1,29 @@
 /**
- * Learning Script Generator v3.1 - Learner Experience View
+ * Learning Script Generator v3.2 - Learner Experience View
  *
  * Generates exactly what the learner will experience on their journey.
  * Components are NOT shown (they're internal build-up, not played).
  *
- * ROUND Structure (v3.1):
+ * ROUND Structure (v3.2):
  * 1. INTRO - Introduction audio ("The Japanese for X is...")
  * 2. LEGO - The LEGO itself (debut)
- * 3. BUILD ×7 - Up to 7 BUILD phrases, must contain ALL LEGO characters
- * 4. REVIEW - Fibonacci-based reviews using USE phrases from older LEGOs
+ * 3. BUILD ×7 - Up to 7 practice phrases from CURRENT LEGO
+ *    - Draws from BOTH build AND use roles (both are practice for current LEGO)
+ *    - Must contain ALL LEGO characters
+ *    - Sorted by length (shortest first)
+ * 4. REVIEW - Fibonacci-based reviews using USE phrases from OLDER LEGOs
  *    - N-1 gets 3× phrases, others get 1×
  *    - Maximum 12 review phrases per round
- * 5. CONSOLIDATE ×2 - 2 USE phrases for current LEGO
+ *    - Each REVIEW item shows R## badge for which round being reviewed
+ * 5. CONSOLIDATE ×2 - 2 USE phrases for CURRENT LEGO (not used in BUILD)
  *
  * Display labels (for QA view):
- * - 'build' → BUILD-1, BUILD-2...
- * - 'spaced_rep' → REVIEW (R## badge shows which round)
+ * - 'build' → BUILD-1, BUILD-2... (practice phrases)
+ * - 'review' → REVIEW + R## badge (spaced rep from older LEGOs)
  * - 'consolidate' → CONSOLIDATE-1, CONSOLIDATE-2
  *
  * Validation:
- * - BUILD/USE phrases MUST contain all characters from LEGO target
+ * - All practice phrases MUST contain all characters from LEGO target
  * - Phrases missing LEGO characters are filtered out
  */
 
@@ -432,18 +436,25 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     })
     usedPhrasesInRound.add(normalizePhrase(currentLego.lego.target_text))
 
-    // Phase 3: BUILD ×7 - up to 7 BUILD phrases
-    // v3.1: Must contain ALL LEGO characters, sorted by length (shortest first)
+    // Phase 3: BUILD ×7 - up to 7 practice phrases for current LEGO
+    // v3.2: Combine BOTH build AND use phrases (both are practice for current LEGO)
+    // Must contain ALL LEGO characters, sorted by length (shortest first)
     const legoTarget = currentLego.lego.target_text
-    const validBuildPhrases = currentBuildPhrases.filter(p =>
+
+    // Combine build + use phrases, filter for LEGO char validation
+    const allCurrentPhrases = [...currentBuildPhrases, ...currentUsePhrases]
+    const validPracticePhrases = allCurrentPhrases.filter(p =>
       phraseContainsLegoChars(p.target_text, legoTarget)
     )
-    const sortedBuildPhrases = [...validBuildPhrases].sort((a, b) =>
+    const sortedPracticePhrases = [...validPracticePhrases].sort((a, b) =>
       (a.target_text?.length || 0) - (b.target_text?.length || 0)
     )
+
     let buildCount = 0
-    for (let i = 0; i < sortedBuildPhrases.length && buildCount < MAX_BUILD_PHRASES; i++) {
-      const phrase = sortedBuildPhrases[i]
+    const usedInBuildPhase = new Set()  // Track phrases used in BUILD to exclude from CONSOLIDATE
+
+    for (let i = 0; i < sortedPracticePhrases.length && buildCount < MAX_BUILD_PHRASES; i++) {
+      const phrase = sortedPracticePhrases[i]
       if (usedPhrasesInRound.has(normalizePhrase(phrase.target_text))) continue
 
       roundItems.push({
@@ -458,6 +469,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
       usedPhrasesInRound.add(normalizePhrase(phrase.target_text))
+      usedInBuildPhase.add(normalizePhrase(phrase.target_text))
       buildCount++
     }
 

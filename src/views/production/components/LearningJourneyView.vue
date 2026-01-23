@@ -151,7 +151,7 @@
               <!-- Review Badge - shows which round is being reviewed -->
               <div
                 v-if="item.type === 'review'"
-                class="review-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
+                class="review-badge px-2 py-1 bg-amber-600 text-white text-xs rounded font-mono font-bold"
                 :title="`Reviewing Round ${item.reviewOf}`"
               >
                 R{{ item.reviewOf }}
@@ -317,11 +317,11 @@ const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?
 
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
-    case 'intro': return 'bg-purple-500 bg-opacity-20 text-purple-400'
-    case 'debut': return 'bg-emerald-500 bg-opacity-20 text-emerald-400'
-    case 'build': return 'bg-blue-500 bg-opacity-20 text-blue-400'
-    case 'review': return 'bg-amber-500 bg-opacity-20 text-amber-400'
-    case 'consolidate': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'
+    case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
+    case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
+    case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
+    case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'  // Orange/amber for REVIEW
+    case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'  // Cyan for CONSOLIDATE
     default: return 'bg-slate-600 text-slate-400'
   }
 }
