@@ -278,11 +278,17 @@ export default {
 
     getTypeLabel(type) {
       const labels = {
-        introduction: 'INTRO',
+        intro: 'INTRO',           // LEGO introduction/presentation
+        debut: 'DEBUT',           // LEGO itself (known → target)
+        build: 'BUILD',           // BUILD phrases (drilling, SHORT→MEDIUM)
+        spaced_rep: 'USE',        // USE phrases from older LEGOs (spaced rep)
+        use: 'USE',               // USE phrases for current LEGO (consolidation)
+        // Legacy types
+        debut_phrase: 'BUILD',
+        consolidation: 'USE',
         component: 'COMP',
-        debut: 'DEBUT',
-        practice: 'PRAC',
-        review: 'REV'
+        practice: 'BUILD',
+        review: 'USE'
       }
       return labels[type] || type?.toUpperCase() || '—'
     },
@@ -1002,9 +1008,17 @@ export default {
   letter-spacing: 1px;
 }
 
+/* Script item types (v3.0) */
+.meta-type.intro { background: #7c3aed20; color: #a78bfa; }        /* Purple - INTRO */
+.meta-type.debut { background: #f59e0b20; color: #fbbf24; }        /* Yellow - DEBUT */
+.meta-type.build { background: var(--accent-soft); color: var(--accent); }  /* Cyan - BUILD */
+.meta-type.spaced_rep { background: #06b6d420; color: #22d3ee; }   /* Teal - USE (spaced rep) */
+.meta-type.use { background: #06b6d420; color: #22d3ee; }          /* Teal - USE (consolidation) */
+/* Legacy types */
 .meta-type.introduction { background: #7c3aed20; color: #a78bfa; }
+.meta-type.debut_phrase { background: var(--accent-soft); color: var(--accent); }
+.meta-type.consolidation { background: #06b6d420; color: #22d3ee; }
 .meta-type.component { background: #3b82f620; color: #60a5fa; }
-.meta-type.debut { background: #f59e0b20; color: #fbbf24; }
 .meta-type.practice { background: var(--accent-soft); color: var(--accent); }
 .meta-type.review { background: #06b6d420; color: #22d3ee; }
 

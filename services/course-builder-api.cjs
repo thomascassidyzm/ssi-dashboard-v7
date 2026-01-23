@@ -209,11 +209,26 @@ function isBlockedByCheckpoint(courseCode, requestedSeed) {
 }
 
 /**
- * Approve checkpoint for course with QA report
+ * Approve checkpoint for course with QA report (persists to database)
  */
-function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaReport = null) {
-  const state = initCheckpointState(courseCode);
+async function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaReport = null) {
+  // Persist to database (survives restarts)
+  const { error } = await supabase
+    .from('checkpoint_approvals')
+    .upsert({
+      course_code: courseCode,
+      checkpoint_seed: checkpointSeed,
+      approved_by: approvedBy,
+      qa_report: qaReport,
+      approved_at: new Date().toISOString()
+    }, { onConflict: 'course_code,checkpoint_seed' });
 
+  if (error) {
+    console.error(`[CHECKPOINT] DB error: ${error.message}`);
+  }
+
+  // Also update in-memory cache
+  const state = initCheckpointState(courseCode);
   state.checkpoints[checkpointSeed] = {
     approved: true,
     approvedAt: new Date().toISOString(),
@@ -239,7 +254,7 @@ function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaR
     state.calibration_feedback = generateCalibrationFeedback(state.drift_history);
   }
 
-  console.log(`✓ Checkpoint ${checkpointSeed} approved for ${courseCode} by ${approvedBy}`);
+  console.log(`✓ Checkpoint ${checkpointSeed} approved for ${courseCode} by ${approvedBy} (persisted to DB)`);
 }
 
 /**
@@ -289,10 +304,32 @@ function generateCalibrationFeedback(driftHistory) {
 }
 
 /**
- * Get checkpoint status for course (all checkpoints)
+ * Get checkpoint status for course (all checkpoints) - reads from database
  */
-function getCheckpointStatus(courseCode) {
+async function getCheckpointStatus(courseCode) {
   const state = initCheckpointState(courseCode);
+
+  // Load approvals from database (persisted state)
+  try {
+    const { data: approvals } = await supabase
+      .from('checkpoint_approvals')
+      .select('checkpoint_seed, approved_at, approved_by, qa_report')
+      .eq('course_code', courseCode);
+
+    // Merge DB state into in-memory cache
+    if (approvals) {
+      for (const approval of approvals) {
+        state.checkpoints[approval.checkpoint_seed] = {
+          approved: true,
+          approvedAt: approval.approved_at,
+          approvedBy: approval.approved_by,
+          qa_report: approval.qa_report
+        };
+      }
+    }
+  } catch (e) {
+    console.error(`[CHECKPOINT] DB read error: ${e.message}`);
+  }
 
   // Find next required checkpoint
   let nextCheckpoint = null;
@@ -755,7 +792,37 @@ async function getBuildProgress(courseCode) {
  * Spawn a new Claude agent for a course using osascript
  * Opens a new terminal window (iTerm or Terminal) and runs claude there
  */
-function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  // Query build_lessons for this language family (Ralph loop methodology improvement)
+  const langCode = courseCode.split('_')[0]; // e.g., 'jpn' from 'jpn_for_eng'
+  const langFamilyMap = {
+    jpn: 'japanese', kor: 'korean', zho: 'cjk', cmn: 'cjk',
+    deu: 'germanic', nld: 'germanic', swe: 'germanic',
+    spa: 'romance', fra: 'romance', ita: 'romance', por: 'romance'
+  };
+  const langFamily = langFamilyMap[langCode] || 'other';
+
+  let lessonsSection = '';
+  try {
+    const { data: lessons } = await supabase
+      .from('build_lessons')
+      .select('lesson_type, lesson, example_wrong, example_right')
+      .or(`language_family.eq.${langFamily},language_family.eq.*`)
+      .eq('active', true);
+
+    if (lessons && lessons.length > 0) {
+      lessonsSection = `\n\n# LESSONS LEARNED (from previous builds)\n\n` +
+        lessons.map(l =>
+          `**${l.lesson_type.toUpperCase()}**: ${l.lesson}` +
+          (l.example_wrong ? `\n  ✗ Wrong: ${l.example_wrong}` : '') +
+          (l.example_right ? `\n  ✓ Right: ${l.example_right}` : '')
+        ).join('\n\n');
+      console.log(`[BUILD] Loaded ${lessons.length} lessons for ${langFamily}/${courseCode}`);
+    }
+  } catch (e) {
+    console.log(`[BUILD] Could not load lessons: ${e.message}`);
+  }
+
   // Close any previous agent windows for this course (cleanup for RAM)
   if (agentNumber > 1) {
     const closeScript = terminal === 'iTerm2'
@@ -1002,7 +1069,10 @@ After ${BATCH_SIZE} seeds: Output "BATCH COMPLETE"
 3. M-LEGOs MUST have components (real words only, never grammar explanations)
 4. BUILD = 4 phrases (fragments OK)
 5. USE = 6 phrases (complete sentences, each with score 1-9)
-6. Learners will hear USE phrases HUNDREDS of times - quality matters!`;
+6. Learners will hear USE phrases HUNDREDS of times - quality matters!
+7. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
+   - If tiling fails, you're missing a word/particle - add it to a LEGO!
+${lessonsSection}`;
 
   // Write prompt to temp file to avoid escaping nightmares
   const tmpFile = `/tmp/claude_build_${courseCode}_${agentNumber}_${Date.now()}.txt`;
@@ -1107,7 +1177,7 @@ async function checkBuilds() {
         build.lastSeenSeed = progress.completed;
         build.lastProgressTime = now;
         build.status = 'running';
-        build.agent = spawnBuildAgent(courseCode, build.agentCount, build.terminal);
+        build.agent = await spawnBuildAgent(courseCode, build.agentCount, build.terminal);
 
         // Ping activity to reset stall timer
         recordActivity(courseCode, progress.completed);
@@ -2630,7 +2700,7 @@ app.post('/api/seed/complete', async (req, res) => {
 
     // CHECKPOINT GATE: Block seeds past checkpoint until approved
     if (isBlockedByCheckpoint(course_code, seed_number)) {
-      const checkpoint = getCheckpointStatus(course_code);
+      const checkpoint = await getCheckpointStatus(course_code);
       return res.status(403).json({
         error: 'CHECKPOINT_REQUIRED',
         message: `Seed ${seed_number} blocked - checkpoint at seed ${checkpoint.checkpointSeed} requires approval`,
@@ -3164,7 +3234,7 @@ app.post('/api/seed/complete', async (req, res) => {
           target_text: p.target,
           word_count: p.target.length,
           lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          phrase_role: 'build',  // Explicit role
+          phrase_role: 'build',  // BUILD phrases - pattern drilling, not eternal
           connected_lego_ids: [],
           lego_position: computeLegoPosition(p.target, lego.target),
           metadata: { format: 'build_use' },
@@ -3182,7 +3252,7 @@ app.post('/api/seed/complete', async (req, res) => {
           target_text: p.target,
           word_count: p.target.length,
           lego_count: (p.known.match(/\s+/g) || []).length + 1,
-          phrase_role: 'use',  // Explicit role (eternal-eligible)
+          phrase_role: 'use',  // USE phrases - eternal eligible, spaced repetition
           connected_lego_ids: [],
           lego_position: computeLegoPosition(p.target, lego.target),
           metadata: {
@@ -3824,7 +3894,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     },
 
     // Checkpoint status (QA gate at seed 10)
-    checkpoint: getCheckpointStatus(courseCode),
+    checkpoint: await getCheckpointStatus(courseCode),
 
     // Resume point
     next_seed: incompleteSeed ? {
@@ -4477,7 +4547,7 @@ app.delete('/api/course/:courseCode', async (req, res) => {
  */
 app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const checkpoint = getCheckpointStatus(courseCode);
+  const checkpoint = await getCheckpointStatus(courseCode);
 
   // Get completed seeds count
   const { data: seedData } = await supabase
@@ -4589,7 +4659,7 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   const { approved_by = 'human', qa_report = null } = req.body || {};
 
-  const currentStatus = getCheckpointStatus(courseCode);
+  const currentStatus = await getCheckpointStatus(courseCode);
 
   // Determine which checkpoint to approve
   let checkpointSeed = req.query.seed ? parseInt(req.query.seed, 10) : currentStatus.next_checkpoint;
@@ -4616,15 +4686,45 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
   }
 
   // Approve the checkpoint
-  approveCheckpoint(courseCode, checkpointSeed, approved_by, qa_report);
+  await approveCheckpoint(courseCode, checkpointSeed, approved_by, qa_report);
 
   // Log QA report if provided
   if (qa_report) {
     console.log(`[CHECKPOINT] QA report for ${courseCode} seed ${checkpointSeed}:`, JSON.stringify(qa_report, null, 2));
   }
 
+  // AUTO-SPAWN FRESH AGENT after checkpoint approval (Ralph loop pattern)
+  // Fresh spawn ensures: full methodology prompt + latest build_lessons + no context rot
+  const build = activeBuilds.get(courseCode);
+  if (build) {
+    console.log(`[CHECKPOINT] Spawning fresh agent for ${courseCode} after checkpoint ${checkpointSeed} approval`);
+
+    // Kill existing agent if any
+    if (build.agent) {
+      try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+      build.agent = null;
+    }
+
+    // Reset for fresh spawn
+    build.agentCount++;
+    build.status = 'checkpoint_approved';
+    build.lastProgressTime = Date.now();
+
+    // Spawn fresh agent with full methodology + lessons
+    spawnBuildAgent(courseCode, build.agentCount, build.terminal || 'iTerm2')
+      .then(agent => {
+        build.agent = agent;
+        build.status = 'agent_running';
+        console.log(`[CHECKPOINT] Fresh agent #${build.agentCount} spawned for ${courseCode}`);
+      })
+      .catch(err => {
+        console.error(`[CHECKPOINT] Failed to spawn agent: ${err.message}`);
+        build.status = 'spawn_failed';
+      });
+  }
+
   // Get updated status
-  const newStatus = getCheckpointStatus(courseCode);
+  const newStatus = await getCheckpointStatus(courseCode);
 
   res.json({
     ok: true,
@@ -4637,16 +4737,17 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
     approved_at: new Date().toISOString(),
     calibration_feedback: newStatus.calibration_feedback,
     next_checkpoint: newStatus.next_checkpoint,
-    next_action: `Resume build with POST /api/build/start/${courseCode} or agent /course-resume`
+    auto_spawn: build ? true : false,
+    next_action: build ? 'Fresh agent spawned automatically' : `Start build with POST /api/build/start/${courseCode}`
   });
 });
 
 /**
  * GET /api/checkpoint/status/:courseCode - Get checkpoint status
  */
-app.get('/api/checkpoint/status/:courseCode', (req, res) => {
+app.get('/api/checkpoint/status/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const status = getCheckpointStatus(courseCode);
+  const status = await getCheckpointStatus(courseCode);
 
   // Count approved checkpoints
   const approvedCount = Object.values(status.checkpoints).filter(cp => cp.approved).length;
