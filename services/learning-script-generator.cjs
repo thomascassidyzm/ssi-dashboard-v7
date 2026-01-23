@@ -1,27 +1,26 @@
 /**
- * Learning Script Generator v3.0 - BUILD/USE Phrase Roles
+ * Learning Script Generator v3.1 - Learner Experience View
  *
- * Generates a complete learning journey with ROUNDs and spaced repetition
- * showing exactly what the learner will experience.
+ * Generates exactly what the learner will experience on their journey.
+ * Components are NOT shown (they're internal build-up, not played).
  *
- * ROUND Structure (v3.0):
+ * ROUND Structure (v3.1):
  * 1. INTRO - Introduction audio ("The Japanese for X is...")
- * 2. COMPONENTS - For M-type LEGOs only (build-up before LEGO)
- * 3. DEBUT - The LEGO itself
- * 4. BUILD ×7 - Up to 7 BUILD phrases (phrase_role='build'), drilling
- * 5. SPACED REP - Fibonacci-based reviews using USE phrases only:
- *    - N-1 (first revisit) gets 3× USE phrases
- *    - N-2, N-3, N-5, N-8, etc. get 1× each
- *    - Maximum 12 spaced rep phrases per round
- * 6. USE ×2 - Exactly 2 USE phrases for consolidation
+ * 2. LEGO - The LEGO itself (debut)
+ * 3. BUILD ×7 - Up to 7 BUILD phrases, must contain ALL LEGO characters
+ * 4. REVIEW - Fibonacci-based reviews using USE phrases from older LEGOs
+ *    - N-1 gets 3× phrases, others get 1×
+ *    - Maximum 12 review phrases per round
+ * 5. CONSOLIDATE ×2 - 2 USE phrases for current LEGO
  *
- * For A-type LEGOs: INTRO -> DEBUT -> BUILD×7 -> SPACED REP -> USE×2
- * For M-type LEGOs: INTRO -> COMPONENTS -> DEBUT -> BUILD×7 -> SPACED REP -> USE×2
+ * Display labels (for QA view):
+ * - 'build' → BUILD-1, BUILD-2...
+ * - 'spaced_rep' → REVIEW (R## badge shows which round)
+ * - 'consolidate' → CONSOLIDATE-1, CONSOLIDATE-2
  *
- * Phrase roles (from phrase_role column):
- * - 'build' = drilling phrases, played during BUILD phase
- * - 'use' = consolidation phrases, used for spaced rep & final USE phase
- * - 'component' = M-LEGO build-up phrases
+ * Validation:
+ * - BUILD/USE phrases MUST contain all characters from LEGO target
+ * - Phrases missing LEGO characters are filtered out
  */
 
 const createLogger = require('./shared/logger.cjs')
@@ -30,11 +29,34 @@ const logger = createLogger('LearningScriptGenerator')
 // Fibonacci-based skip numbers for spaced repetition
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
-// v3.0 Constants
+// v3.1 Constants
 const MAX_BUILD_PHRASES = 7       // Maximum BUILD phrases per round
-const USE_CONSOLIDATION_COUNT = 2 // Exactly 2 USE phrases at end
+const CONSOLIDATE_COUNT = 2       // Exactly 2 CONSOLIDATE phrases at end
 const MAX_SPACED_REP_PHRASES = 12 // Cap spaced rep at 12 total
-const N1_PHRASE_COUNT = 3         // N-1 gets 3 USE phrases
+const N1_PHRASE_COUNT = 3         // N-1 gets 3 phrases in review
+
+/**
+ * Check if a phrase contains ALL characters from the LEGO target.
+ * This validates that the phrase actually uses the LEGO being taught.
+ *
+ * @param {string} phraseTarget - The phrase's target text
+ * @param {string} legoTarget - The LEGO's target text
+ * @returns {boolean} - True if phrase contains all LEGO characters
+ */
+function phraseContainsLegoChars(phraseTarget, legoTarget) {
+  if (!phraseTarget || !legoTarget) return false
+
+  // Get unique characters from LEGO target (excluding spaces/punctuation)
+  const legoChars = new Set(legoTarget.replace(/[\s\p{P}]/gu, '').split(''))
+
+  // Check if phrase contains each LEGO character
+  for (const char of legoChars) {
+    if (!phraseTarget.includes(char)) {
+      return false
+    }
+  }
+  return true
+}
 
 /**
  * Calculate which previous LEGOs to review during ROUND N
@@ -395,25 +417,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       hasAudio: !!introAudio,
     })
 
-    // Phase 2: COMPONENTS (for M-type LEGOs - build-up before the LEGO)
-    if (currentLego.lego.type === 'M') {
-      const components = componentMap.get(currentLego.lego.id) || []
-      for (const component of components) {
-        roundItems.push({
-          ...baseItem,
-          type: 'component',
-          known_text: component.known_text,
-          target_text: component.target_text,
-          known_audio_uuid: component.known_audio_uuid,
-          target1_audio_uuid: component.target1_audio_uuid,
-          target2_audio_uuid: component.target2_audio_uuid,
-          hasAudio: !!(component.known_audio_uuid && component.target1_audio_uuid),
-        })
-        usedPhrasesInRound.add(normalizePhrase(component.target_text))
-      }
-    }
+    // v3.1: Components removed - they're internal build-up, not played to learner
 
-    // Phase 3: LEGO DEBUT
+    // Phase 2: LEGO (debut)
     roundItems.push({
       ...baseItem,
       type: 'debut',
@@ -426,9 +432,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     })
     usedPhrasesInRound.add(normalizePhrase(currentLego.lego.target_text))
 
-    // Phase 4: BUILD ×7 - up to 7 BUILD phrases, sorted by target text character count (shortest first)
-    // This ensures simpler phrases come before more complex ones
-    const sortedBuildPhrases = [...currentBuildPhrases].sort((a, b) =>
+    // Phase 3: BUILD ×7 - up to 7 BUILD phrases
+    // v3.1: Must contain ALL LEGO characters, sorted by length (shortest first)
+    const legoTarget = currentLego.lego.target_text
+    const validBuildPhrases = currentBuildPhrases.filter(p =>
+      phraseContainsLegoChars(p.target_text, legoTarget)
+    )
+    const sortedBuildPhrases = [...validBuildPhrases].sort((a, b) =>
       (a.target_text?.length || 0) - (b.target_text?.length || 0)
     )
     let buildCount = 0
@@ -451,30 +461,38 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       buildCount++
     }
 
-    // Phase 5: SPACED REP - Interleaved reviews using USE phrases only
-    // Reviews are based on round numbers, which now only include NEW LEGOs
-    // v3.0: Only USE phrases, max 12 total, N-1 gets 3, others get 1
+    // Phase 4: REVIEW - Spaced repetition using USE phrases from older LEGOs
+    // v3.1: Display as "REVIEW", max 12 total, N-1 gets 3×, others get 1×
+    // v3.1: Must contain all characters from the LEGO being reviewed
     const reviews = calculateSpacedRepReviews(n)
     const reviewIndices = []
-    let spacedRepCount = 0
+    let reviewCount = 0
 
     for (const review of reviews) {
-      if (spacedRepCount >= MAX_SPACED_REP_PHRASES) break
+      if (reviewCount >= MAX_SPACED_REP_PHRASES) break
 
       const reviewLego = roundToLegoMap.get(review.legoIndex)
       if (!reviewLego) continue
 
-      reviewIndices.push(review.legoIndex)
+      const reviewLegoTarget = reviewLego.lego.target_text
       const reviewUsePhrases = useMap.get(reviewLego.lego.id) || []
 
-      // N-1 gets 3× USE phrases, others get 1×
+      // Filter to phrases that contain all LEGO characters
+      const validReviewPhrases = reviewUsePhrases.filter(p =>
+        phraseContainsLegoChars(p.target_text, reviewLegoTarget)
+      )
+
+      // N-1 gets 3× phrases, others get 1×
       const isFirstRevisit = review.legoIndex === n - 1
       const targetPhraseCount = isFirstRevisit ? N1_PHRASE_COUNT : 1
-      const remainingSlots = MAX_SPACED_REP_PHRASES - spacedRepCount
+      const remainingSlots = MAX_SPACED_REP_PHRASES - reviewCount
 
-      const availablePhrases = reviewUsePhrases.filter(
+      const availablePhrases = validReviewPhrases.filter(
         p => !usedPhrasesInRound.has(normalizePhrase(p.target_text))
       )
+
+      if (availablePhrases.length === 0) continue
+      reviewIndices.push(review.legoIndex)
 
       const phrasesToAdd = Math.min(targetPhraseCount, availablePhrases.length, remainingSlots)
 
@@ -493,7 +511,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           legoIndex: review.legoIndex,
           seedId: reviewLego.seed.seed_id,
           seedNumber: reviewLego.seed.seed_number,
-          type: 'spaced_rep',
+          type: 'review',  // v3.1: Changed from 'spaced_rep' for display clarity
           reviewOf: review.legoIndex,
           fibonacciPosition: review.fibPosition,
           isFirstRevisit,
@@ -505,27 +523,31 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           hasAudio: !!(selectedPhrase.known_audio_uuid && selectedPhrase.target1_audio_uuid),
         })
         usedPhrasesInRound.add(normalizePhrase(selectedPhrase.target_text))
-        spacedRepCount++
+        reviewCount++
       }
     }
 
-    // Phase 6: USE ×2 - Exactly 2 USE phrases for consolidation
+    // Phase 5: CONSOLIDATE ×2 - USE phrases for current LEGO
+    // v3.1: Must contain all LEGO characters
+    const validUsePhrases = currentUsePhrases.filter(p =>
+      phraseContainsLegoChars(p.target_text, legoTarget)
+    )
     const usedInConsolidation = new Set()
 
-    for (let c = 0; c < USE_CONSOLIDATION_COUNT; c++) {
-      const availableForConsolidation = currentUsePhrases.filter(
+    for (let c = 0; c < CONSOLIDATE_COUNT; c++) {
+      const availableForConsolidation = validUsePhrases.filter(
         p => !usedPhrasesInRound.has(normalizePhrase(p.target_text)) &&
              !usedInConsolidation.has(normalizePhrase(p.target_text))
       )
 
       if (availableForConsolidation.length === 0) {
-        // Fall back to LEGO if no USE phrases available
+        // Fall back to LEGO if no valid USE phrases available
         const baseNormalized = normalizePhrase(currentLego.lego.target_text)
         if (!usedPhrasesInRound.has(baseNormalized) && !usedInConsolidation.has(baseNormalized)) {
           roundItems.push({
             ...baseItem,
-            type: 'use',
-            useIndex: c + 1,
+            type: 'consolidate',
+            consolidateIndex: c + 1,
             known_text: currentLego.lego.known_text,
             target_text: currentLego.lego.target_text,
             known_audio_uuid: currentLego.lego.known_audio_uuid,
@@ -539,20 +561,20 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
 
       const idx = Math.floor(Math.random() * availableForConsolidation.length)
-      const usePhrase = availableForConsolidation[idx]
+      const consolidatePhrase = availableForConsolidation[idx]
 
       roundItems.push({
         ...baseItem,
-        type: 'use',
-        useIndex: c + 1,
-        known_text: usePhrase.known_text,
-        target_text: usePhrase.target_text,
-        known_audio_uuid: usePhrase.known_audio_uuid,
-        target1_audio_uuid: usePhrase.target1_audio_uuid,
-        target2_audio_uuid: usePhrase.target2_audio_uuid,
-        hasAudio: !!(usePhrase.known_audio_uuid && usePhrase.target1_audio_uuid),
+        type: 'consolidate',
+        consolidateIndex: c + 1,
+        known_text: consolidatePhrase.known_text,
+        target_text: consolidatePhrase.target_text,
+        known_audio_uuid: consolidatePhrase.known_audio_uuid,
+        target1_audio_uuid: consolidatePhrase.target1_audio_uuid,
+        target2_audio_uuid: consolidatePhrase.target2_audio_uuid,
+        hasAudio: !!(consolidatePhrase.known_audio_uuid && consolidatePhrase.target1_audio_uuid),
       })
-      usedInConsolidation.add(normalizePhrase(usePhrase.target_text))
+      usedInConsolidation.add(normalizePhrase(consolidatePhrase.target_text))
     }
 
     // Remove consecutive duplicates
@@ -600,11 +622,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     totalItems: allItems.length,
     itemsByType: {
       intro: allItems.filter(i => i.type === 'intro').length,
-      component: allItems.filter(i => i.type === 'component').length,
       debut: allItems.filter(i => i.type === 'debut').length,
       build: allItems.filter(i => i.type === 'build').length,
-      spaced_rep: allItems.filter(i => i.type === 'spaced_rep').length,
-      use: allItems.filter(i => i.type === 'use').length,
+      review: allItems.filter(i => i.type === 'review').length,
+      consolidate: allItems.filter(i => i.type === 'consolidate').length,
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,

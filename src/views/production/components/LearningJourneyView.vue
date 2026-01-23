@@ -35,10 +35,6 @@
           <span class="text-slate-300">Intro</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-pink-500"></span>
-          <span class="text-slate-300">Component</span>
-        </div>
-        <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
           <span class="text-slate-300">LEGO</span>
         </div>
@@ -47,8 +43,12 @@
           <span class="text-slate-300">BUILD</span>
         </div>
         <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+          <span class="text-slate-300">REVIEW</span>
+        </div>
+        <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">USE</span>
+          <span class="text-slate-300">CONSOLIDATE</span>
         </div>
       </div>
 
@@ -145,12 +145,12 @@
                 class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center"
                 :class="getTypeBadgeClass(item.type)"
               >
-                {{ formatItemType(item.type, item.phrasePosition, item.useIndex) }}
+                {{ formatItemType(item.type, item.phrasePosition, item.consolidateIndex) }}
               </div>
 
-              <!-- Review Badge (for spaced rep) - shows which round is being reviewed -->
+              <!-- Review Badge - shows which round is being reviewed -->
               <div
-                v-if="item.type === 'spaced_rep'"
+                v-if="item.type === 'review'"
                 class="review-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
                 :title="`Reviewing Round ${item.reviewOf}`"
               >
@@ -188,9 +188,9 @@
                 </span>
               </div>
 
-              <!-- LEGO Badge (for spaced rep showing which LEGO) -->
+              <!-- LEGO Badge (for review items showing which LEGO) -->
               <div
-                v-if="item.type === 'spaced_rep' && item.legoId !== round.legoId"
+                v-if="item.type === 'review' && item.legoId !== round.legoId"
                 class="lego-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
               >
                 {{ item.legoId }}
@@ -220,7 +220,7 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'component' | 'debut' | 'build' | 'spaced_rep' | 'use'
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
   known_text: string
   target_text: string
   hasAudio: boolean
@@ -228,7 +228,7 @@ interface ScriptItem {
   isFirstRevisit?: boolean
   fibonacciPosition?: number
   phrasePosition?: number
-  useIndex?: number
+  consolidateIndex?: number
 }
 
 interface RoundData {
@@ -304,14 +304,13 @@ const getLegoTargetText = (round: RoundData): string => {
   return debutItem?.target_text || ''
 }
 
-const formatItemType = (type: string, phrasePosition?: number, useIndex?: number): string => {
+const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
-    case 'component': return 'Component'
     case 'debut': return 'LEGO'
     case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
-    case 'spaced_rep': return 'USE'  // Spaced rep uses USE phrases
-    case 'use': return useIndex ? `USE-${useIndex}` : 'USE'
+    case 'review': return 'REVIEW'
+    case 'consolidate': return consolidateIndex ? `CONSOLIDATE-${consolidateIndex}` : 'CONSOLIDATE'
     default: return type
   }
 }
@@ -319,11 +318,10 @@ const formatItemType = (type: string, phrasePosition?: number, useIndex?: number
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
     case 'intro': return 'bg-purple-500 bg-opacity-20 text-purple-400'
-    case 'component': return 'bg-pink-500 bg-opacity-20 text-pink-400'
     case 'debut': return 'bg-emerald-500 bg-opacity-20 text-emerald-400'
     case 'build': return 'bg-blue-500 bg-opacity-20 text-blue-400'
-    case 'spaced_rep': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'  // USE color for spaced rep
-    case 'use': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'
+    case 'review': return 'bg-amber-500 bg-opacity-20 text-amber-400'
+    case 'consolidate': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'
     default: return 'bg-slate-600 text-slate-400'
   }
 }
