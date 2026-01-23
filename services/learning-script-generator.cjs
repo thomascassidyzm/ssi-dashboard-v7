@@ -1,23 +1,27 @@
 /**
- * Learning Script Generator - Port from SSi Learning App
+ * Learning Script Generator v3.0 - BUILD/USE Phrase Roles
  *
  * Generates a complete learning journey with ROUNDs and spaced repetition
  * showing exactly what the learner will experience.
  *
- * ROUND Structure (per APML spec):
- * 1. INTRO - Introduction audio ("The Chinese for X is...")
+ * ROUND Structure (v3.0):
+ * 1. INTRO - Introduction audio ("The Japanese for X is...")
  * 2. COMPONENTS - For M-type LEGOs only (build-up before LEGO)
- * 3. LEGO - The LEGO phrase itself (formerly "DEBUT")
- * 4. DEBUT-1 to DEBUT-7 - Practice phrases using the new LEGO
- * 5. SPACED REP - Fibonacci-based reviews:
- *    - N-1 (first revisit) gets 3x eternal phrases
- *    - N-2, N-3, N-5, N-8, etc. get 1x each
- * 6. CONSOLIDATION - 2 eternal phrases for the new LEGO
+ * 3. DEBUT - The LEGO itself
+ * 4. BUILD ×7 - Up to 7 BUILD phrases (phrase_role='build'), drilling
+ * 5. SPACED REP - Fibonacci-based reviews using USE phrases only:
+ *    - N-1 (first revisit) gets 3× USE phrases
+ *    - N-2, N-3, N-5, N-8, etc. get 1× each
+ *    - Maximum 12 spaced rep phrases per round
+ * 6. USE ×2 - Exactly 2 USE phrases for consolidation
  *
- * For A-type LEGOs: INTRO -> LEGO -> DEBUT-1..7 -> SPACED REP -> CONSOLIDATION
- * For M-type LEGOs: INTRO -> COMPONENTS -> LEGO -> DEBUT-1..7 -> SPACED REP -> CONSOLIDATION
+ * For A-type LEGOs: INTRO -> DEBUT -> BUILD×7 -> SPACED REP -> USE×2
+ * For M-type LEGOs: INTRO -> COMPONENTS -> DEBUT -> BUILD×7 -> SPACED REP -> USE×2
  *
- * Ported from: ssi-learning-app/packages/player-vue/src/providers/CourseDataProvider.ts
+ * Phrase roles (from phrase_role column):
+ * - 'build' = drilling phrases, played during BUILD phase
+ * - 'use' = consolidation phrases, used for spaced rep & final USE phase
+ * - 'component' = M-LEGO build-up phrases
  */
 
 const createLogger = require('./shared/logger.cjs')
@@ -25,6 +29,12 @@ const logger = createLogger('LearningScriptGenerator')
 
 // Fibonacci-based skip numbers for spaced repetition
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+// v3.0 Constants
+const MAX_BUILD_PHRASES = 7       // Maximum BUILD phrases per round
+const USE_CONSOLIDATION_COUNT = 2 // Exactly 2 USE phrases at end
+const MAX_SPACED_REP_PHRASES = 12 // Cap spaced rep at 12 total
+const N1_PHRASE_COUNT = 3         // N-1 gets 3 USE phrases
 
 /**
  * Calculate which previous LEGOs to review during ROUND N
@@ -121,14 +131,16 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 
 /**
  * Load ALL practice phrases grouped by LEGO
- * Returns debut (shortest 7), eternal (longest 5), and component maps
+ * Returns buildMap (phrase_role='build'), useMap (phrase_role='use'), and componentMap
+ *
+ * v3.0: Uses phrase_role column instead of position-based logic
  */
 async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
-  const debutMap = new Map()  // lego_id -> phrases[]
-  const eternalMap = new Map()
-  const componentMap = new Map()  // lego_id -> component phrases[]
+  const buildMap = new Map()      // lego_id -> BUILD phrases (drilling)
+  const useMap = new Map()        // lego_id -> USE phrases (spaced rep eligible)
+  const componentMap = new Map()  // lego_id -> component phrases (M-LEGO build-up)
 
-  if (!supabase) return { debutMap, eternalMap, componentMap }
+  if (!supabase) return { buildMap, useMap, componentMap }
 
   try {
     // Paginate to handle large courses
@@ -143,12 +155,12 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         .eq('course_code', courseCode)
         .gte('position', 1)
         .order('lego_id', { ascending: true })
-        .order('target1_duration_ms', { ascending: true, nullsFirst: false })
+        .order('position', { ascending: true })  // Sort by position for consistent ordering
         .range(offset, offset + pageSize - 1)
 
       if (error) {
         logger.error('Query error:', error)
-        return { debutMap, eternalMap }
+        return { buildMap, useMap, componentMap }
       }
 
       if (!page || page.length === 0) break
@@ -158,7 +170,7 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       offset += pageSize
     }
 
-    if (allData.length === 0) return { debutMap, eternalMap, componentMap }
+    if (allData.length === 0) return { buildMap, useMap, componentMap }
 
     logger.info(`Loaded ${allData.length} practice phrases from practice_cycles`)
 
@@ -170,14 +182,14 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
       grouped.get(legoId).push(row)
     }
 
-    // Transform and split into components, debut (first 7), and eternal (last 5)
+    // Transform and split by phrase_role
     for (const [legoId, rows] of grouped) {
       const allPhrases = rows.map(row => ({
         id: row.id,
         known_text: row.known_text,
         target_text: row.target_text,
         position: row.position,
-        phrase_type: row.phrase_type,
+        phrase_role: row.phrase_role,  // v3.0: use phrase_role
         known_audio_uuid: row.known_audio_uuid,
         target1_audio_uuid: row.target1_audio_uuid,
         target2_audio_uuid: row.target2_audio_uuid,
@@ -186,33 +198,30 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         target2_duration_ms: row.target2_duration_ms,
       }))
 
-      // Components = phrases marked as component in metadata (for M-type LEGO build-up)
-      const componentPhrases = allPhrases.filter(p => p.phrase_type === 'component')
+      // Components = phrase_role 'component' (for M-type LEGO build-up)
+      const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
       if (componentPhrases.length > 0) {
         componentMap.set(legoId, componentPhrases)
       }
 
-      // Practice phrases only (exclude components AND the LEGO debut itself)
-      const practicePhrases = allPhrases.filter(p => p.phrase_type === 'practice')
-
-      // Debut = shortest 7 practice phrases (already sorted by duration)
-      const debutPhrases = practicePhrases.slice(0, 7)
-      if (debutPhrases.length > 0) {
-        debutMap.set(legoId, debutPhrases)
+      // BUILD phrases = phrase_role 'build' (drilling, up to 7 used)
+      const buildPhrases = allPhrases.filter(p => p.phrase_role === 'build')
+      if (buildPhrases.length > 0) {
+        buildMap.set(legoId, buildPhrases)
       }
 
-      // Eternal = longest 5 practice phrases (take from end, reverse so longest first)
-      const eternalPhrases = practicePhrases.slice(-5).reverse()
-      if (eternalPhrases.length > 0) {
-        eternalMap.set(legoId, eternalPhrases)
+      // USE phrases = phrase_role 'use' (spaced rep & consolidation)
+      const usePhrases = allPhrases.filter(p => p.phrase_role === 'use')
+      if (usePhrases.length > 0) {
+        useMap.set(legoId, usePhrases)
       }
     }
 
-    logger.info(`Grouped into ${debutMap.size} LEGOs with debut phrases, ${eternalMap.size} with eternal, ${componentMap.size} with components`)
-    return { debutMap, eternalMap, componentMap }
+    logger.info(`Grouped into ${buildMap.size} LEGOs with BUILD phrases, ${useMap.size} with USE phrases, ${componentMap.size} with components`)
+    return { buildMap, useMap, componentMap }
   } catch (err) {
     logger.error('Error loading practice phrases:', err)
-    return { debutMap, eternalMap, componentMap }
+    return { buildMap, useMap, componentMap }
   }
 }
 
@@ -318,8 +327,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
-  // Load ALL practice phrases split into components, debut and eternal
-  const { debutMap, eternalMap, componentMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
+  // Load ALL practice phrases split by phrase_role: build, use, component
+  const { buildMap, useMap, componentMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
   // Load introduction audio for all LEGOs
   const legoIds = legos.map(l => l.lego.id)
@@ -358,8 +367,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Map this round to its LEGO for spaced rep
     roundToLegoMap.set(n, currentLego)
 
-    const currentDebuts = debutMap.get(currentLego.lego.id) || []
-    const currentEternals = eternalMap.get(currentLego.lego.id) || []
+    const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
+    const currentUsePhrases = useMap.get(currentLego.lego.id) || []
     const roundItems = []
 
     // Track phrases used in this round (no duplicates)
@@ -417,19 +426,20 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     })
     usedPhrasesInRound.add(normalizePhrase(currentLego.lego.target_text))
 
-    // Phase 4: DEBUT PHRASES - up to 7 phrases, sorted by target text character count (shortest first)
+    // Phase 4: BUILD ×7 - up to 7 BUILD phrases, sorted by target text character count (shortest first)
     // This ensures simpler phrases come before more complex ones
-    const sortedDebuts = [...currentDebuts].sort((a, b) =>
+    const sortedBuildPhrases = [...currentBuildPhrases].sort((a, b) =>
       (a.target_text?.length || 0) - (b.target_text?.length || 0)
     )
-    for (let i = 0; i < Math.min(sortedDebuts.length, 7); i++) {
-      const phrase = sortedDebuts[i]
+    let buildCount = 0
+    for (let i = 0; i < sortedBuildPhrases.length && buildCount < MAX_BUILD_PHRASES; i++) {
+      const phrase = sortedBuildPhrases[i]
       if (usedPhrasesInRound.has(normalizePhrase(phrase.target_text))) continue
 
       roundItems.push({
         ...baseItem,
-        type: 'debut_phrase',
-        phrasePosition: i + 1,
+        type: 'build',
+        phrasePosition: buildCount + 1,
         known_text: phrase.known_text,
         target_text: phrase.target_text,
         known_audio_uuid: phrase.known_audio_uuid,
@@ -438,29 +448,35 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
       usedPhrasesInRound.add(normalizePhrase(phrase.target_text))
+      buildCount++
     }
 
-    // Phase 5: SPACED REP - Interleaved reviews from eternal phrases
+    // Phase 5: SPACED REP - Interleaved reviews using USE phrases only
     // Reviews are based on round numbers, which now only include NEW LEGOs
+    // v3.0: Only USE phrases, max 12 total, N-1 gets 3, others get 1
     const reviews = calculateSpacedRepReviews(n)
     const reviewIndices = []
+    let spacedRepCount = 0
 
     for (const review of reviews) {
+      if (spacedRepCount >= MAX_SPACED_REP_PHRASES) break
+
       const reviewLego = roundToLegoMap.get(review.legoIndex)
       if (!reviewLego) continue
 
       reviewIndices.push(review.legoIndex)
-      const reviewEternals = eternalMap.get(reviewLego.lego.id) || []
+      const reviewUsePhrases = useMap.get(reviewLego.lego.id) || []
 
-      // N-1 gets 3x phrases, others get 1x
+      // N-1 gets 3× USE phrases, others get 1×
       const isFirstRevisit = review.legoIndex === n - 1
-      const targetPhraseCount = isFirstRevisit ? 3 : 1
+      const targetPhraseCount = isFirstRevisit ? N1_PHRASE_COUNT : 1
+      const remainingSlots = MAX_SPACED_REP_PHRASES - spacedRepCount
 
-      const availablePhrases = reviewEternals.filter(
+      const availablePhrases = reviewUsePhrases.filter(
         p => !usedPhrasesInRound.has(normalizePhrase(p.target_text))
       )
 
-      const phrasesToAdd = Math.min(targetPhraseCount, availablePhrases.length)
+      const phrasesToAdd = Math.min(targetPhraseCount, availablePhrases.length, remainingSlots)
 
       for (let p = 0; p < phrasesToAdd; p++) {
         const remainingAvailable = availablePhrases.filter(
@@ -489,26 +505,27 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           hasAudio: !!(selectedPhrase.known_audio_uuid && selectedPhrase.target1_audio_uuid),
         })
         usedPhrasesInRound.add(normalizePhrase(selectedPhrase.target_text))
+        spacedRepCount++
       }
     }
 
-    // Phase 6: CONSOLIDATION - 2 eternal phrases for the new LEGO
-    const usedConsolidation = new Set()
+    // Phase 6: USE ×2 - Exactly 2 USE phrases for consolidation
+    const usedInConsolidation = new Set()
 
-    for (let c = 0; c < 2; c++) {
-      const availableForConsolidation = currentEternals.filter(
+    for (let c = 0; c < USE_CONSOLIDATION_COUNT; c++) {
+      const availableForConsolidation = currentUsePhrases.filter(
         p => !usedPhrasesInRound.has(normalizePhrase(p.target_text)) &&
-             !usedConsolidation.has(normalizePhrase(p.target_text))
+             !usedInConsolidation.has(normalizePhrase(p.target_text))
       )
 
       if (availableForConsolidation.length === 0) {
-        // Fall back to debut if no eternals
+        // Fall back to LEGO if no USE phrases available
         const baseNormalized = normalizePhrase(currentLego.lego.target_text)
-        if (!usedPhrasesInRound.has(baseNormalized) && !usedConsolidation.has(baseNormalized)) {
+        if (!usedPhrasesInRound.has(baseNormalized) && !usedInConsolidation.has(baseNormalized)) {
           roundItems.push({
             ...baseItem,
-            type: 'consolidation',
-            consolidationIndex: c + 1,
+            type: 'use',
+            useIndex: c + 1,
             known_text: currentLego.lego.known_text,
             target_text: currentLego.lego.target_text,
             known_audio_uuid: currentLego.lego.known_audio_uuid,
@@ -516,26 +533,26 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
             target2_audio_uuid: currentLego.lego.target2_audio_uuid,
             hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
           })
-          usedConsolidation.add(baseNormalized)
+          usedInConsolidation.add(baseNormalized)
         }
         continue
       }
 
       const idx = Math.floor(Math.random() * availableForConsolidation.length)
-      const consolidation = availableForConsolidation[idx]
+      const usePhrase = availableForConsolidation[idx]
 
       roundItems.push({
         ...baseItem,
-        type: 'consolidation',
-        consolidationIndex: c + 1,
-        known_text: consolidation.known_text,
-        target_text: consolidation.target_text,
-        known_audio_uuid: consolidation.known_audio_uuid,
-        target1_audio_uuid: consolidation.target1_audio_uuid,
-        target2_audio_uuid: consolidation.target2_audio_uuid,
-        hasAudio: !!(consolidation.known_audio_uuid && consolidation.target1_audio_uuid),
+        type: 'use',
+        useIndex: c + 1,
+        known_text: usePhrase.known_text,
+        target_text: usePhrase.target_text,
+        known_audio_uuid: usePhrase.known_audio_uuid,
+        target1_audio_uuid: usePhrase.target1_audio_uuid,
+        target2_audio_uuid: usePhrase.target2_audio_uuid,
+        hasAudio: !!(usePhrase.known_audio_uuid && usePhrase.target1_audio_uuid),
       })
-      usedConsolidation.add(normalizePhrase(consolidation.target_text))
+      usedInConsolidation.add(normalizePhrase(usePhrase.target_text))
     }
 
     // Remove consecutive duplicates
@@ -585,9 +602,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       intro: allItems.filter(i => i.type === 'intro').length,
       component: allItems.filter(i => i.type === 'component').length,
       debut: allItems.filter(i => i.type === 'debut').length,
-      debut_phrase: allItems.filter(i => i.type === 'debut_phrase').length,
+      build: allItems.filter(i => i.type === 'build').length,
       spaced_rep: allItems.filter(i => i.type === 'spaced_rep').length,
-      consolidation: allItems.filter(i => i.type === 'consolidation').length,
+      use: allItems.filter(i => i.type === 'use').length,
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,

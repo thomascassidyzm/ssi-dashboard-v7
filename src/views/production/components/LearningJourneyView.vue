@@ -44,15 +44,11 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-          <span class="text-slate-300">Debut</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-          <span class="text-slate-300">Spaced Rep</span>
+          <span class="text-slate-300">BUILD</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">Eternal</span>
+          <span class="text-slate-300">USE</span>
         </div>
       </div>
 
@@ -149,7 +145,7 @@
                 class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center"
                 :class="getTypeBadgeClass(item.type)"
               >
-                {{ formatItemType(item.type, item.phrasePosition, item.consolidationIndex) }}
+                {{ formatItemType(item.type, item.phrasePosition, item.useIndex) }}
               </div>
 
               <!-- Review Badge (for spaced rep) - shows which round is being reviewed -->
@@ -224,7 +220,7 @@ interface ScriptItem {
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'component' | 'debut' | 'debut_phrase' | 'spaced_rep' | 'consolidation'
+  type: 'intro' | 'component' | 'debut' | 'build' | 'spaced_rep' | 'use'
   known_text: string
   target_text: string
   hasAudio: boolean
@@ -232,7 +228,7 @@ interface ScriptItem {
   isFirstRevisit?: boolean
   fibonacciPosition?: number
   phrasePosition?: number
-  consolidationIndex?: number
+  useIndex?: number
 }
 
 interface RoundData {
@@ -308,14 +304,14 @@ const getLegoTargetText = (round: RoundData): string => {
   return debutItem?.target_text || ''
 }
 
-const formatItemType = (type: string, phrasePosition?: number, consolidationIndex?: number): string => {
+const formatItemType = (type: string, phrasePosition?: number, useIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
     case 'component': return 'Component'
     case 'debut': return 'LEGO'
-    case 'debut_phrase': return phrasePosition ? `Debut-${phrasePosition}` : 'Debut'
-    case 'spaced_rep': return 'Review'
-    case 'consolidation': return consolidationIndex ? `Eternal-${consolidationIndex}` : 'Eternal'
+    case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
+    case 'spaced_rep': return 'USE'  // Spaced rep uses USE phrases
+    case 'use': return useIndex ? `USE-${useIndex}` : 'USE'
     default: return type
   }
 }
@@ -325,9 +321,9 @@ const getTypeBadgeClass = (type: string): string => {
     case 'intro': return 'bg-purple-500 bg-opacity-20 text-purple-400'
     case 'component': return 'bg-pink-500 bg-opacity-20 text-pink-400'
     case 'debut': return 'bg-emerald-500 bg-opacity-20 text-emerald-400'
-    case 'debut_phrase': return 'bg-blue-500 bg-opacity-20 text-blue-400'
-    case 'spaced_rep': return 'bg-amber-500 bg-opacity-20 text-amber-400'
-    case 'consolidation': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'
+    case 'build': return 'bg-blue-500 bg-opacity-20 text-blue-400'
+    case 'spaced_rep': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'  // USE color for spaced rep
+    case 'use': return 'bg-cyan-500 bg-opacity-20 text-cyan-400'
     default: return 'bg-slate-600 text-slate-400'
   }
 }
