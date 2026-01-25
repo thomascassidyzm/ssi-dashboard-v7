@@ -1586,8 +1586,9 @@ async function initializeCourseSeeds(courseCode) {
   const targetLangName = getLanguageName(courseCode);
 
   // For non-English known languages, check for canonical translations
+  // This applies to BOTH eng_for_X (type 2) AND X_for_Y (type 3) courses
   let knownTranslations = new Map();
-  if (!knownIsEng && !targetIsEng) {
+  if (!knownIsEng) {
     const { data: translations } = await supabase
       .from('canonical_seed_translations')
       .select('seed_number, translated_text')
@@ -1600,17 +1601,25 @@ async function initializeCourseSeeds(courseCode) {
   }
 
   // Create course seeds based on which language is English
+  // These are NOT mutually exclusive - eng_for_zho needs BOTH target from canonical AND known from translations
   const courseSeeds = canonical.map(c => {
     const canonicalText = c.source_text.replace(/\{target\}/g, targetLangName);
     let knownText = '';
     let targetText = '';
 
+    // If known language is English, use canonical for known_text
     if (knownIsEng) {
       knownText = canonicalText;
-    } else if (targetIsEng) {
+    }
+
+    // If target language is English, use canonical for target_text
+    if (targetIsEng) {
       targetText = canonicalText;
-    } else if (knownTranslations.has(c.seed_number)) {
-      // Use canonical translation for known language
+    }
+
+    // If known language is NOT English, check for pre-existing translations
+    // This applies to BOTH eng_for_X and X_for_Y courses
+    if (!knownIsEng && knownTranslations.has(c.seed_number)) {
       knownText = knownTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
     }
 
@@ -1631,10 +1640,14 @@ async function initializeCourseSeeds(courseCode) {
     throw new Error('Failed to initialize course seeds: ' + insertError.message);
   }
 
-  const mode = knownIsEng ? 'known=eng (instant known_text)' :
-               targetIsEng ? 'target=eng (instant target_text)' :
-               knownTranslations.size > 0 ? `known=${knownLang} (${knownTranslations.size} from canonical translations)` :
-               'neither eng (agent provides both)';
+  // Build mode description for logging
+  const modeParts = [];
+  if (knownIsEng) modeParts.push('known=eng (instant)');
+  if (targetIsEng) modeParts.push('target=eng (instant)');
+  if (!knownIsEng && knownTranslations.size > 0) modeParts.push(`known=${knownLang} (${knownTranslations.size} from translations)`);
+  if (!knownIsEng && knownTranslations.size === 0) modeParts.push(`known=${knownLang} (agent translates)`);
+  if (!targetIsEng) modeParts.push(`target=${targetLang} (agent translates)`);
+  const mode = modeParts.join(', ');
   console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
   return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size };
 }
