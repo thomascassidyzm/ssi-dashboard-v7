@@ -10257,6 +10257,38 @@ app.use('/api/build', async (req, res) => {
   }
 });
 
+// Proxy /api/checkpoint/* to course builder API (QA checkpoint system)
+app.use('/api/checkpoint', async (req, res) => {
+  const targetUrl = `${COURSE_BUILDER_API_URL}/api/checkpoint${req.url}`;
+
+  try {
+    const response = await axios({
+      method: req.method,
+      url: targetUrl,
+      data: req.body,
+      headers: {
+        'Content-Type': 'application/json',
+        ...req.headers.authorization && { 'Authorization': req.headers.authorization }
+      },
+      timeout: 30000
+    });
+
+    res.status(response.status).json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        success: false,
+        error: 'Course Builder API not running',
+        message: 'Start course-builder-api with: pm2 start services/course-builder-api.cjs --name course-builder'
+      });
+    }
+
+    const status = error.response?.status || 500;
+    const data = error.response?.data || { success: false, error: error.message };
+    res.status(status).json(data);
+  }
+});
+
 // =============================================================================
 // LEGACY COURSE IMPORT
 // =============================================================================

@@ -185,6 +185,145 @@
         </div>
       </section>
 
+      <!-- QA Checkpoints -->
+      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <div class="text-xs text-slate-500 uppercase tracking-wide">Quality Assurance</div>
+            <div class="text-sm font-medium text-slate-200">Checkpoint Gates</div>
+          </div>
+          <span
+            v-if="checkpointStatus.nextCheckpoint"
+            class="text-xs text-slate-400"
+          >
+            Next checkpoint at seed {{ checkpointStatus.nextCheckpoint }}
+          </span>
+        </div>
+
+        <!-- Checkpoint Track -->
+        <div class="relative mb-6">
+          <!-- Progress line -->
+          <div class="absolute top-3 left-0 right-0 h-1 bg-slate-700/50 rounded-full"></div>
+          <div
+            class="absolute top-3 left-0 h-1 bg-cyan-500 rounded-full transition-all duration-500"
+            :style="{ width: `${checkpointProgressPercent}%` }"
+          ></div>
+
+          <!-- Checkpoint markers -->
+          <div class="relative flex justify-between">
+            <div
+              v-for="cp in checkpoints"
+              :key="cp.seed"
+              class="flex flex-col items-center"
+              :style="{ width: '60px' }"
+            >
+              <!-- Marker dot -->
+              <div
+                class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-mono transition-all cursor-pointer"
+                :class="getCheckpointMarkerClass(cp)"
+                @click="openCheckpointReview(cp)"
+                :title="getCheckpointTooltip(cp)"
+              >
+                <span v-if="cp.status === 'approved'">✓</span>
+                <span v-else-if="cp.status === 'pending_human'">!</span>
+                <span v-else-if="cp.status === 'rejected'">✗</span>
+              </div>
+              <!-- Label -->
+              <span class="mt-2 text-xs text-slate-500">{{ cp.seed }}</span>
+              <!-- Status badge -->
+              <span
+                class="mt-1 text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded"
+                :class="getCheckpointBadgeClass(cp)"
+              >
+                {{ cp.status === 'pending_human' ? 'review' : cp.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkpoint Review Panel (shown when a checkpoint needs human review) -->
+        <div
+          v-if="activeCheckpointReview"
+          class="border border-amber-500/30 bg-amber-500/5 rounded-lg p-4 mt-4"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400 text-lg">⚠️</span>
+              <span class="text-sm font-medium text-amber-300">
+                Checkpoint {{ activeCheckpointReview.seed }} requires review
+              </span>
+            </div>
+            <button
+              @click="activeCheckpointReview = null"
+              class="text-slate-500 hover:text-slate-300"
+            >✕</button>
+          </div>
+
+          <!-- QA Metrics -->
+          <div class="grid grid-cols-4 gap-3 mb-4">
+            <div class="bg-slate-800/50 rounded p-2 text-center">
+              <div class="text-lg font-mono" :class="activeCheckpointReview.qa_avg >= 7 ? 'text-emerald-400' : 'text-red-400'">
+                {{ activeCheckpointReview.qa_avg?.toFixed(1) || '—' }}
+              </div>
+              <div class="text-[10px] text-slate-500 uppercase">Quality</div>
+            </div>
+            <div class="bg-slate-800/50 rounded p-2 text-center">
+              <div class="text-lg font-mono text-slate-300">
+                {{ activeCheckpointReview.use_avg?.toFixed(1) || '—' }}
+              </div>
+              <div class="text-[10px] text-slate-500 uppercase">USE Avg</div>
+            </div>
+            <div class="bg-slate-800/50 rounded p-2 text-center">
+              <div class="text-lg font-mono text-slate-300">
+                {{ activeCheckpointReview.build_avg?.toFixed(1) || '—' }}
+              </div>
+              <div class="text-[10px] text-slate-500 uppercase">BUILD Avg</div>
+            </div>
+            <div class="bg-slate-800/50 rounded p-2 text-center">
+              <div class="text-lg font-mono" :class="(activeCheckpointReview.drift || 0) <= 0.7 ? 'text-emerald-400' : 'text-amber-400'">
+                {{ activeCheckpointReview.drift?.toFixed(2) || '—' }}
+              </div>
+              <div class="text-[10px] text-slate-500 uppercase">Drift</div>
+            </div>
+          </div>
+
+          <!-- Review Actions -->
+          <div class="flex gap-3">
+            <button
+              @click="approveCheckpoint(activeCheckpointReview.seed)"
+              class="flex-1 px-4 py-2 bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 rounded-lg hover:bg-emerald-600/30 transition-colors text-sm font-medium"
+            >
+              Approve & Continue
+            </button>
+            <button
+              @click="rejectCheckpoint(activeCheckpointReview.seed)"
+              class="px-4 py-2 bg-red-600/20 border border-red-500/30 text-red-400 rounded-lg hover:bg-red-600/30 transition-colors text-sm font-medium"
+            >
+              Reject
+            </button>
+          </div>
+        </div>
+
+        <!-- Checkpoint Config Toggle -->
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/30">
+          <div class="text-xs text-slate-500">
+            Auto-approve when quality ≥ 7.0 and drift ≤ 0.7
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400">Mode:</span>
+            <select
+              v-model="checkpointMode"
+              @change="updateCheckpointMode"
+              class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-xs text-slate-300 focus:ring-1 focus:ring-cyan-500"
+            >
+              <option value="human">Human Review</option>
+              <option value="auto">Auto-Approve</option>
+              <option value="auto_with_flag">Auto + Flag</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
       <!-- Controls -->
       <section class="flex justify-end gap-3">
         <button
@@ -320,6 +459,24 @@ const progress = ref({
   phrasesInserted: 0
 })
 
+// Checkpoint state
+const CHECKPOINT_SEEDS = [10, 50, 150, 260]
+const checkpoints = ref(CHECKPOINT_SEEDS.map(seed => ({
+  seed,
+  status: 'pending',  // pending, approved, pending_human, rejected
+  review_mode: 'human',
+  qa_avg: null,
+  use_avg: null,
+  build_avg: null,
+  drift: null
+})))
+const checkpointStatus = ref({
+  nextCheckpoint: 10,
+  lastApproved: null
+})
+const activeCheckpointReview = ref(null)
+const checkpointMode = ref('human')
+
 // Agent tracking state
 const agents = ref({
   running: [],
@@ -358,6 +515,15 @@ const statusClass = computed(() => {
   }
 })
 
+// Checkpoint progress (position on track based on current seed)
+const checkpointProgressPercent = computed(() => {
+  const currentSeed = progress.value.currentSeed
+  if (currentSeed <= 0) return 0
+  // Map current seed to 0-100% across the checkpoint track (0 to 260)
+  const maxSeed = CHECKPOINT_SEEDS[CHECKPOINT_SEEDS.length - 1]
+  return Math.min(100, (currentSeed / maxSeed) * 100)
+})
+
 // Methods
 function addEvent(message) {
   const now = new Date()
@@ -369,6 +535,242 @@ function addEvent(message) {
   })
   if (events.value.length > 100) {
     events.value = events.value.slice(0, 100)
+  }
+}
+
+// Checkpoint helper functions
+function getCheckpointMarkerClass(cp) {
+  const currentSeed = progress.value.currentSeed
+  const isPast = currentSeed >= cp.seed
+
+  switch (cp.status) {
+    case 'approved':
+      return 'bg-emerald-500 border-emerald-400 text-white'
+    case 'pending_human':
+      return 'bg-amber-500 border-amber-400 text-white animate-pulse'
+    case 'rejected':
+      return 'bg-red-500 border-red-400 text-white'
+    default:
+      return isPast
+        ? 'bg-cyan-500 border-cyan-400 text-white'
+        : 'bg-slate-700 border-slate-600 text-slate-500'
+  }
+}
+
+function getCheckpointBadgeClass(cp) {
+  switch (cp.status) {
+    case 'approved':
+      return 'bg-emerald-500/20 text-emerald-400'
+    case 'pending_human':
+      return 'bg-amber-500/20 text-amber-400'
+    case 'rejected':
+      return 'bg-red-500/20 text-red-400'
+    default:
+      return 'bg-slate-700/50 text-slate-500'
+  }
+}
+
+function getCheckpointTooltip(cp) {
+  if (cp.status === 'approved') {
+    return `Checkpoint ${cp.seed}: Approved (Quality: ${cp.qa_avg?.toFixed(1) || '?'}, Drift: ${cp.drift?.toFixed(2) || '?'})`
+  }
+  if (cp.status === 'pending_human') {
+    return `Checkpoint ${cp.seed}: Needs human review`
+  }
+  if (cp.status === 'rejected') {
+    return `Checkpoint ${cp.seed}: Rejected - review needed`
+  }
+  return `Checkpoint ${cp.seed}: Pending (triggers at seed ${cp.seed})`
+}
+
+function openCheckpointReview(cp) {
+  if (cp.status === 'pending_human' || cp.status === 'rejected') {
+    activeCheckpointReview.value = { ...cp }
+  }
+}
+
+async function fetchCheckpoints() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+
+    const response = await fetch(`${apiBase}/api/checkpoint/summary/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+
+      // Update checkpoints with results from database
+      // Backend returns checkpoint.checkpoints as object { 10: {...}, 50: {...} }
+      const cpData = data.checkpoint?.checkpoints || {}
+
+      checkpoints.value = CHECKPOINT_SEEDS.map(seed => {
+        const result = cpData[seed]
+        // Map backend format to UI format
+        let status = 'pending'
+        if (result?.approved) {
+          status = 'approved'
+        } else if (result?.status === 'pending_human') {
+          status = 'pending_human'
+        } else if (result?.status === 'rejected') {
+          status = 'rejected'
+        }
+
+        return {
+          seed,
+          status,
+          review_mode: result?.review_mode_used || 'human',
+          qa_avg: result?.quality_avg || data.summary?.avg_score,
+          use_avg: null, // Not yet tracked separately
+          build_avg: null, // Not yet tracked separately
+          drift: result?.drift_rate
+        }
+      })
+
+      // Update next checkpoint info
+      if (data.checkpoint?.next_checkpoint) {
+        checkpointStatus.value.nextCheckpoint = data.checkpoint.next_checkpoint
+      }
+
+      // Find last approved checkpoint
+      const approvedSeeds = CHECKPOINT_SEEDS.filter(seed => cpData[seed]?.approved)
+      if (approvedSeeds.length > 0) {
+        checkpointStatus.value.lastApproved = Math.max(...approvedSeeds)
+      }
+
+      // Check if any checkpoint needs review
+      const needsReview = checkpoints.value.find(cp => cp.status === 'pending_human')
+      if (needsReview && !activeCheckpointReview.value) {
+        activeCheckpointReview.value = { ...needsReview }
+        addEvent(`Checkpoint ${needsReview.seed} flagged for human review`)
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch checkpoints:', error)
+  }
+}
+
+async function approveCheckpoint(checkpointSeed) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+
+    const response = await fetch(`${apiBase}/api/checkpoint/approve/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        checkpoint_seed: checkpointSeed,
+        approved_by: 'dashboard_user',
+        force_approve: true
+      })
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      addEvent(`Checkpoint ${checkpointSeed} approved`)
+
+      // Update local state
+      const cp = checkpoints.value.find(c => c.seed === checkpointSeed)
+      if (cp) {
+        cp.status = 'approved'
+      }
+      activeCheckpointReview.value = null
+
+      // Refresh checkpoints
+      await fetchCheckpoints()
+    } else {
+      const err = await response.json()
+      addEvent(`Failed to approve checkpoint: ${err.error}`)
+    }
+  } catch (error) {
+    console.error('Failed to approve checkpoint:', error)
+    addEvent(`Error: ${error.message}`)
+  }
+}
+
+async function rejectCheckpoint(checkpointSeed) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+
+    const response = await fetch(`${apiBase}/api/checkpoint/reject/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        checkpoint_seed: checkpointSeed,
+        rejection_reason: 'Rejected by human reviewer'
+      })
+    })
+
+    if (response.ok) {
+      addEvent(`Checkpoint ${checkpointSeed} rejected - course builder paused`)
+
+      // Update local state
+      const cp = checkpoints.value.find(c => c.seed === checkpointSeed)
+      if (cp) {
+        cp.status = 'rejected'
+      }
+      activeCheckpointReview.value = null
+
+      // Stop the builder since checkpoint was rejected
+      if (progress.value.status === 'running') {
+        await stopBuilder()
+      }
+    } else {
+      const err = await response.json()
+      addEvent(`Failed to reject checkpoint: ${err.error}`)
+    }
+  } catch (error) {
+    console.error('Failed to reject checkpoint:', error)
+    addEvent(`Error: ${error.message}`)
+  }
+}
+
+async function updateCheckpointMode() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+
+    // Update mode for all checkpoints of this course
+    const response = await fetch(`${apiBase}/api/checkpoint/config/${courseCode}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        review_mode: checkpointMode.value
+      })
+    })
+
+    if (response.ok) {
+      addEvent(`Checkpoint mode updated to: ${checkpointMode.value}`)
+    } else {
+      const err = await response.json()
+      addEvent(`Failed to update mode: ${err.error}`)
+    }
+  } catch (error) {
+    console.error('Failed to update checkpoint mode:', error)
+    addEvent(`Error: ${error.message}`)
   }
 }
 
@@ -435,6 +837,9 @@ async function fetchProgress() {
         progress.value.status = 'idle'
       }
     }
+
+    // Also fetch checkpoint status
+    await fetchCheckpoints()
   } catch (error) {
     console.error('Failed to fetch progress:', error)
   }
