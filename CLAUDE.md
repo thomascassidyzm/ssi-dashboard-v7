@@ -42,11 +42,11 @@ Before writing any code that touches the database, you MUST read:
 Before writing new code or adding new services, ALWAYS check what already exists:
 
 1. **Read the APML specs** in `apml/` directory - they define how services work
-2. **Check existing services** - the orchestrator (port 3456) already proxies many routes
+2. **Check existing services** - the production-api (port 3470) is the main entry point
 3. **Read CLAUDE.md and SYSTEM.md** - architecture is documented
 4. **Test existing endpoints** before assuming they don't exist
 
-**Why:** Avoid adding unnecessary complexity. Example: The orchestrator already proxies `/api/production/*` to the production API - no need for a separate proxy layer.
+**Why:** Avoid adding unnecessary complexity. Example: Production API already proxies routes to other services - no need for separate proxy layers.
 
 **Pattern:**
 ```
@@ -94,6 +94,29 @@ Solve problems autonomously and proceed to the next workflow step without human 
 - Consequences (what would need to be regenerated, at what cost)
 
 **Why:** Generated audio/video represents significant API costs (Azure TTS, ElevenLabs) and generation time. Deleting 1000+ files without permission wastes hours of work and money.
+
+---
+
+## 🔄 RECENT ARCHITECTURE CHANGE (January 2026)
+
+**Orchestrator Consolidated into Production API**
+
+As of January 25, 2026, the orchestrator (port 3456) has been consolidated into the production-api (port 3470):
+
+**What changed:**
+- Port 3470 (production-api) is now the **main entry point** for all API calls
+- All frontend code uses `localhost:3470` (not 3456)
+- ngrok tunnels should point to port 3470
+- Routes like `/health`, `/api/languages`, `/api/courses` are now served directly by production-api
+- Checkpoint routes (`/api/checkpoint/*`) are proxied to course-builder (3471)
+
+**For Kai's local setup:**
+1. `git pull` to get the latest code
+2. Restart production-api: `pm2 restart production-api`
+3. Restart course-builder: `pm2 restart course-builder`
+4. Orchestrator (3456) is now optional - only needed for PM2 management UI
+
+**Why:** Simplifies the architecture. The orchestrator was originally a proxy hub, but with Course Builder handling content creation atomically, production-api can serve as the single entry point.
 
 ---
 
@@ -231,19 +254,17 @@ React/Vite dashboard for course visualization and management.
 Express API for course data access and validation.
 
 #### `services/` - Background Services
-Orchestration, automation, and processing services.
+API servers, automation, and processing services.
 ```
 services/
-├── orchestration/       # Multi-agent coordination (Port 3456)
+├── production-api.cjs   # Main entry point (Port 3470) - QA, WebSocket, proxies
+├── course-builder-api.cjs # Course Builder (Port 3471) - seed submission + checkpoints
+├── orchestration/       # Multi-agent coordination (Port 3456, optional)
 ├── phases/             # Phase 8-9 servers + legacy (APML v14)
-│   ├── phase1-translation/       # Port 3457: Translation + LEGO Extraction
-│   ├── phase1-lego-extraction/   # Port 3458: Conflict Resolution (Phase 2)
-│   ├── phase3-basket-generation/ # Port 3459: Basket Generation (Phase 3)
-│   ├── manifest-compilation/     # Port 3464: Legacy Manifest (deprecated)
 │   ├── phase8-audio-supabase.cjs # Port 3465: Audio Generation (Supabase)
 │   └── phase9-manifest-supabase.cjs # Port 3466: Manifest Compilation (Supabase)
 ├── supabase-client.cjs  # Shared Supabase client configuration
-└── web/                # Web services
+└── shared/             # Shared utilities
 ```
 
 **Phase 8 Audio Generation** (`services/phases/phase8-audio-generator.cjs`)
@@ -321,18 +342,20 @@ Language is broken into reusable "LEGO" pieces:
 - **LUT** (Look-Up Tables): Higher-order patterns
 - **Recombination**: LEGOs combine to form new phrases
 
-### **Services (v14)**
+### **Services (v14.1 - Consolidated January 2026)**
 
 | Port | Service | Status | Endpoints |
 |------|---------|--------|-----------|
-| 3456 | Orchestrator | Active | Proxy hub for all services |
-| **3471** | **Course Builder** | **Active** | **POST /api/seed/complete, GET /api/stats/:courseCode** |
+| **3470** | **Production API** | **Main Entry Point** | **/health, /api/languages, /api/courses, QA workflow, WebSocket** |
+| **3471** | **Course Builder** | **Active** | **POST /api/seed/complete, GET /api/stats/:courseCode, /api/checkpoint/*** |
 | 3465 | Audio Generator | Active | POST /generate, POST /plan, GET /status/:courseCode |
 | 3466 | Manifest Compiler | Active | POST /compile, GET /validate/:courseCode |
-| 3470 | Production API | Active | QA workflow + WebSocket |
+| ~~3456~~ | ~~Orchestrator~~ | Optional | PM2 management only (most routes consolidated into 3470) |
 | ~~3457~~ | ~~Translation~~ | Deprecated | Replaced by Course Builder |
 | ~~3458~~ | ~~Conflict Resolution~~ | Deprecated | Replaced by Course Builder |
 | ~~3459~~ | ~~Basket Generation~~ | Deprecated | Replaced by Course Builder |
+
+**Note:** Port 3470 (Production API) is the main entry point. All frontend code and ngrok tunnels should use port 3470. The orchestrator (3456) is now optional - only needed for PM2 process management features.
 
 ### **Environment Variables**
 
@@ -356,13 +379,12 @@ AWS_REGION=eu-west-1
 
 Services discover each other via environment variables:
 
-- `ORCHESTRATOR_URL` - Main orchestrator (port 3456)
+- `PRODUCTION_API_URL` - **Main entry point** (port 3470) - ngrok tunnels point here
 - `COURSE_BUILDER_URL` - Course Builder API (port 3471)
 - `PHASE8_URL` - Audio generation (port 3465)
 - `PHASE9_URL` - Manifest compilation (port 3466)
-- `PRODUCTION_API_URL` - QA workflow API (port 3470)
 
-**Deprecated:** `PHASE1_TRANSLATION_URL`, `PHASE1_LEGO_URL`, `PHASE3_URL` - use Course Builder instead
+**Deprecated:** `ORCHESTRATOR_URL` (port 3456), `PHASE1_TRANSLATION_URL`, `PHASE1_LEGO_URL`, `PHASE3_URL`
 
 **Default:** All services run on localhost. Override for ngrok tunnels or remote services.
 
@@ -805,6 +827,6 @@ You're doing well if:
 
 ---
 
-*Last updated: 2026-01-15*
-*APML: v14.0 | Pipeline: v3.0 (Course Builder + Supabase)*
-*Status: DATABASE-ONLY - All course data in Supabase (JSON files deprecated)*
+*Last updated: 2026-01-25*
+*APML: v14.1 | Pipeline: v3.1 (Production API consolidated)*
+*Status: DATABASE-ONLY - All course data in Supabase | Port 3470 is main entry point*
