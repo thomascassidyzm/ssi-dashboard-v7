@@ -240,15 +240,15 @@
               <!-- Mode toggle -->
               <button
                 @click.stop="toggleCheckpointMode(cp)"
-                class="mt-1.5 text-[10px] px-2 py-0.5 rounded transition-colors"
+                class="mt-1.5 text-[10px] font-medium px-2 py-0.5 rounded transition-colors uppercase tracking-wide"
                 :class="cp.review_mode === 'human'
-                  ? 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30'
+                  ? 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/30'
                   : cp.review_mode === 'auto'
-                    ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30'
-                    : 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30'"
+                    ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30'
+                    : 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 border border-cyan-500/30'"
                 :title="`Click to toggle mode (current: ${cp.review_mode})`"
               >
-                {{ cp.review_mode === 'human' ? '👤' : cp.review_mode === 'auto' ? '🤖' : '🚩' }}
+                {{ cp.review_mode === 'human' ? 'H' : cp.review_mode === 'auto' ? 'A' : 'A+F' }}
               </button>
             </div>
           </div>
@@ -320,18 +320,18 @@
         <!-- Legend -->
         <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-slate-700/30">
           <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
-            <span class="bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">👤</span>
-            <span>Human</span>
+            <span class="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-1.5 py-0.5 rounded font-medium">H</span>
+            <span>Human review</span>
           </div>
           <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
-            <span class="bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🤖</span>
-            <span>Auto</span>
+            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-1.5 py-0.5 rounded font-medium">A</span>
+            <span>Auto-approve</span>
           </div>
           <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
-            <span class="bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded">🚩</span>
-            <span>Auto+Flag</span>
+            <span class="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-1.5 py-0.5 rounded font-medium">A+F</span>
+            <span>Auto + flag</span>
           </div>
-          <span class="text-[10px] text-slate-600 ml-4">Click icons to toggle</span>
+          <span class="text-[10px] text-slate-600 ml-4">Click to cycle</span>
         </div>
       </section>
 
@@ -599,6 +599,36 @@ function openCheckpointReview(cp) {
   }
 }
 
+// Fetch checkpoint config (persisted modes) from database
+async function fetchCheckpointConfig() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+
+  try {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
+
+    const response = await fetch(`${apiBase}/api/checkpoint/config/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      // data.checkpoints is an object { 10: { review_mode: 'auto' }, ... }
+      if (data.checkpoints) {
+        checkpoints.value.forEach(cp => {
+          const config = data.checkpoints[cp.seed]
+          if (config?.review_mode) {
+            cp.review_mode = config.review_mode
+          }
+        })
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch checkpoint config:', error)
+  }
+}
+
 async function fetchCheckpoints() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
@@ -618,6 +648,12 @@ async function fetchCheckpoints() {
       // Backend returns checkpoint.checkpoints as object { 10: {...}, 50: {...} }
       const cpData = data.checkpoint?.checkpoints || {}
 
+      // Preserve existing local modes when refreshing
+      const existingModes = {}
+      checkpoints.value.forEach(cp => {
+        existingModes[cp.seed] = cp.review_mode
+      })
+
       checkpoints.value = CHECKPOINT_SEEDS.map(seed => {
         const result = cpData[seed]
         // Map backend format to UI format
@@ -633,7 +669,8 @@ async function fetchCheckpoints() {
         return {
           seed,
           status,
-          review_mode: result?.review_mode_used || 'human',
+          // Preserve local mode, fall back to result mode, then default to 'human'
+          review_mode: existingModes[seed] || result?.review_mode_used || 'human',
           qa_avg: result?.quality_avg || data.summary?.avg_score,
           use_avg: null, // Not yet tracked separately
           build_avg: null, // Not yet tracked separately
@@ -1051,6 +1088,9 @@ onMounted(() => {
   addEvent('Text Generation view loaded')
   if (isCreateMode.value) {
     loadLanguages()
+  } else {
+    // Load persisted checkpoint config for existing course
+    fetchCheckpointConfig()
   }
 })
 
