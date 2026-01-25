@@ -215,7 +215,7 @@
               v-for="cp in checkpoints"
               :key="cp.seed"
               class="flex flex-col items-center"
-              :style="{ width: '60px' }"
+              :style="{ width: '80px' }"
             >
               <!-- Marker dot -->
               <div
@@ -237,6 +237,19 @@
               >
                 {{ cp.status === 'pending_human' ? 'review' : cp.status }}
               </span>
+              <!-- Mode toggle -->
+              <button
+                @click.stop="toggleCheckpointMode(cp)"
+                class="mt-1.5 text-[10px] px-2 py-0.5 rounded transition-colors"
+                :class="cp.review_mode === 'human'
+                  ? 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30'
+                  : cp.review_mode === 'auto'
+                    ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30'
+                    : 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30'"
+                :title="`Click to toggle mode (current: ${cp.review_mode})`"
+              >
+                {{ cp.review_mode === 'human' ? '👤' : cp.review_mode === 'auto' ? '🤖' : '🚩' }}
+              </button>
             </div>
           </div>
         </div>
@@ -304,23 +317,21 @@
           </div>
         </div>
 
-        <!-- Checkpoint Config Toggle -->
-        <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/30">
-          <div class="text-xs text-slate-500">
-            Auto-approve when quality ≥ 7.0 and drift ≤ 0.7
+        <!-- Legend -->
+        <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-slate-700/30">
+          <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
+            <span class="bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">👤</span>
+            <span>Human</span>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-slate-400">Mode:</span>
-            <select
-              v-model="checkpointMode"
-              @change="updateCheckpointMode"
-              class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-xs text-slate-300 focus:ring-1 focus:ring-cyan-500"
-            >
-              <option value="human">Human Review</option>
-              <option value="auto">Auto-Approve</option>
-              <option value="auto_with_flag">Auto + Flag</option>
-            </select>
+          <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
+            <span class="bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🤖</span>
+            <span>Auto</span>
           </div>
+          <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
+            <span class="bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded">🚩</span>
+            <span>Auto+Flag</span>
+          </div>
+          <span class="text-[10px] text-slate-600 ml-4">Click icons to toggle</span>
         </div>
       </section>
 
@@ -475,7 +486,6 @@ const checkpointStatus = ref({
   lastApproved: null
 })
 const activeCheckpointReview = ref(null)
-const checkpointMode = ref('human')
 
 // Agent tracking state
 const agents = ref({
@@ -742,7 +752,21 @@ async function rejectCheckpoint(checkpointSeed) {
   }
 }
 
-async function updateCheckpointMode() {
+// Cycle through modes: human -> auto -> auto_with_flag -> human
+function toggleCheckpointMode(cp) {
+  const modes = ['human', 'auto', 'auto_with_flag']
+  const currentIndex = modes.indexOf(cp.review_mode)
+  const nextIndex = (currentIndex + 1) % modes.length
+  const newMode = modes[nextIndex]
+
+  // Update local state immediately for responsive UI
+  cp.review_mode = newMode
+
+  // Persist to backend
+  updateCheckpointMode(cp.seed, newMode)
+}
+
+async function updateCheckpointMode(checkpointSeed, newMode) {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
 
@@ -750,7 +774,7 @@ async function updateCheckpointMode() {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
-    // Update mode for all checkpoints of this course
+    // Update mode for specific checkpoint
     const response = await fetch(`${apiBase}/api/checkpoint/config/${courseCode}`, {
       method: 'PUT',
       headers: {
@@ -758,12 +782,13 @@ async function updateCheckpointMode() {
         'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
-        review_mode: checkpointMode.value
+        checkpoint_seed: checkpointSeed,
+        review_mode: newMode
       })
     })
 
     if (response.ok) {
-      addEvent(`Checkpoint mode updated to: ${checkpointMode.value}`)
+      addEvent(`Checkpoint ${checkpointSeed} mode set to: ${newMode}`)
     } else {
       const err = await response.json()
       addEvent(`Failed to update mode: ${err.error}`)
