@@ -47,7 +47,7 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // ACTIVITY TRACKING FOR STALL DETECTION
 // Dashboard can poll /api/activity to detect stalled courses and respawn agents
 // =============================================================================
-const STALL_THRESHOLD_MS = 3 * 60 * 1000;  // 3 minutes without submission = stalled
+const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
 const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, status: 'active'|'stalled' }
 
 // =============================================================================
@@ -131,10 +131,51 @@ function getActivityStatus() {
 // =============================================================================
 // BUILD MANAGER - Sequential 30-seed batch agent spawning
 // =============================================================================
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
+
+const PROJECT_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean';
+
+/**
+ * Check how many headless Claude agents are already running in the project directory.
+ * Returns count of background agents (excludes terminal-attached sessions).
+ */
+function getRunningAgentCount() {
+  try {
+    // Get all claude PIDs
+    const psOutput = execSync('ps aux | grep -i "claude" | grep -v grep | grep -v chrome-native', { encoding: 'utf8' });
+    const lines = psOutput.trim().split('\n').filter(Boolean);
+
+    let headlessCount = 0;
+    for (const line of lines) {
+      const parts = line.split(/\s+/);
+      const pid = parts[1];
+      const tty = parts[6];
+
+      // Skip terminal-attached sessions (tty like s000, s001, etc.)
+      if (tty && tty.match(/^s\d+$/)) continue;
+
+      // Check if this process is working in our project directory
+      try {
+        const lsofOutput = execSync(`lsof -p ${pid} 2>/dev/null | grep cwd`, { encoding: 'utf8' });
+        if (lsofOutput.includes(PROJECT_DIR)) {
+          headlessCount++;
+        }
+      } catch (e) {
+        // Process may have exited, skip it
+      }
+    }
+
+    return headlessCount;
+  } catch (e) {
+    // No claude processes found
+    return 0;
+  }
+}
 
 const BATCH_SIZE = 20;  // Seeds per agent (20 for Chinese, safer context margin)
 const BUILD_CHECK_INTERVAL_MS = 30000;  // Check progress every 30s
+const MAX_RESPAWNS = 3;  // Maximum auto-respawns before requiring manual intervention
+const STALL_THRESHOLD_MS_EXTENDED = 10 * 60 * 1000;  // 10 minutes for auto-respawn consideration
 
 // =============================================================================
 // RECENCY TRACKING - Pattern fatigue & vocabulary reinforcement
@@ -145,8 +186,38 @@ const REINFORCEMENT_ZONE = { min: 20, max: 60 };  // Seeds ago when vocab needs 
 
 // =============================================================================
 // CHECKPOINT SYSTEM - Multiple QA gates during build with drift tracking
+// Config-driven: reads review_mode from course_checkpoint_config table
 // =============================================================================
-const CHECKPOINT_SEEDS = [10, 50, 150];  // QA checkpoints at these seeds
+const CHECKPOINT_SEEDS = [10, 50, 150, 260];  // QA checkpoints at these seeds (260 = final before audio)
+
+/**
+ * Get checkpoint config from database (course-specific or _default fallback)
+ * Returns: { review_mode: 'human'|'auto'|'auto_with_flag', min_quality_score, max_drift_rate }
+ */
+async function getCheckpointConfig(courseCode, checkpointSeed) {
+  // Try course-specific config first
+  const { data: specific } = await supabase
+    .from('course_checkpoint_config')
+    .select('review_mode, min_quality_score, max_drift_rate')
+    .eq('course_code', courseCode)
+    .eq('checkpoint_seed', checkpointSeed)
+    .single();
+
+  if (specific) return specific;
+
+  // Fall back to _default config
+  const { data: defaultConfig } = await supabase
+    .from('course_checkpoint_config')
+    .select('review_mode, min_quality_score, max_drift_rate')
+    .eq('course_code', '_default')
+    .eq('checkpoint_seed', checkpointSeed)
+    .single();
+
+  if (defaultConfig) return defaultConfig;
+
+  // Ultimate fallback if no config exists
+  return { review_mode: 'human', min_quality_score: 7.0, max_drift_rate: 0.20 };
+}
 
 // courseCode -> {
 //   checkpoints: { seed -> { approved, approvedAt, approvedBy, qa_report } },
@@ -211,20 +282,30 @@ function isBlockedByCheckpoint(courseCode, requestedSeed) {
 /**
  * Approve checkpoint for course with QA report (persists to database)
  */
-async function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaReport = null) {
-  // Persist to database (survives restarts)
+async function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human', qaReport = null, status = 'approved') {
+  // Extract gate data from QA report if present
+  const gateData = qaReport?.quality_gates || {};
+
+  // Persist to course_checkpoint_results table
   const { error } = await supabase
-    .from('checkpoint_approvals')
+    .from('course_checkpoint_results')
     .upsert({
       course_code: courseCode,
       checkpoint_seed: checkpointSeed,
+      status: status,
       approved_by: approvedBy,
+      review_mode_used: qaReport?.review_mode_used || (approvedBy === 'auto' ? 'auto' : 'human'),
+      gate_1_quality_avg: gateData.gate_1_absolute_quality?.qa_avg_score || null,
+      gate_2_use_avg: gateData.gate_2_use_exceeds_build?.use_avg || null,
+      gate_2_build_avg: gateData.gate_2_use_exceeds_build?.build_avg || null,
+      gate_3_vocab_violations: gateData.gate_3_vocabulary?.violations_found || 0,
+      gate_4_drift_rate: gateData.gate_4_drift?.drift_rate ? parseFloat(gateData.gate_4_drift.drift_rate) : null,
       qa_report: qaReport,
-      approved_at: new Date().toISOString()
+      created_at: new Date().toISOString()
     }, { onConflict: 'course_code,checkpoint_seed' });
 
   if (error) {
-    console.error(`[CHECKPOINT] DB error: ${error.message}`);
+    console.error(`[CHECKPOINT] DB error writing to course_checkpoint_results: ${error.message}`);
   }
 
   // Also update in-memory cache
@@ -309,21 +390,25 @@ function generateCalibrationFeedback(driftHistory) {
 async function getCheckpointStatus(courseCode) {
   const state = initCheckpointState(courseCode);
 
-  // Load approvals from database (persisted state)
+  // Load results from database (persisted state)
   try {
-    const { data: approvals } = await supabase
-      .from('checkpoint_approvals')
-      .select('checkpoint_seed, approved_at, approved_by, qa_report')
+    const { data: results } = await supabase
+      .from('course_checkpoint_results')
+      .select('checkpoint_seed, status, created_at, approved_by, review_mode_used, qa_report, gate_1_quality_avg, gate_4_drift_rate')
       .eq('course_code', courseCode);
 
     // Merge DB state into in-memory cache
-    if (approvals) {
-      for (const approval of approvals) {
-        state.checkpoints[approval.checkpoint_seed] = {
-          approved: true,
-          approvedAt: approval.approved_at,
-          approvedBy: approval.approved_by,
-          qa_report: approval.qa_report
+    if (results) {
+      for (const result of results) {
+        state.checkpoints[result.checkpoint_seed] = {
+          approved: result.status === 'approved',
+          status: result.status,
+          approvedAt: result.created_at,
+          approvedBy: result.approved_by,
+          review_mode_used: result.review_mode_used,
+          qa_report: result.qa_report,
+          quality_avg: result.gate_1_quality_avg,
+          drift_rate: result.gate_4_drift_rate
         };
       }
     }
@@ -1057,8 +1142,16 @@ POST http://localhost:3471/api/seed/complete
 - **TILING FAILED**: Seed can't be reconstructed from LEGOs - add missing LEGO
 
 ## Checkpoints
-After seed 10: STOP and await QA approval before continuing.
+Checkpoints at seeds 10, 50, 150 are AUTO-APPROVED. Just continue building - do NOT stop.
 After ${BATCH_SIZE} seeds: Output "BATCH COMPLETE"
+
+## AUTONOMY - CRITICAL
+You are running AFK (away from keyboard). The human is NOT watching.
+- NEVER ask questions or wait for confirmation
+- NEVER stop to ask "should I continue?" or "is this correct?"
+- If you encounter an error, fix it yourself and continue
+- If unsure about something, make your best judgment and proceed
+- Your job is to build seeds continuously until complete
 
 ---
 
@@ -1197,6 +1290,11 @@ async function checkBuilds() {
         console.log(`[BUILD] ${courseCode}: ${progress.completed}/${progress.total} (+${progress.completed - build.lastSeenSeed})`);
         build.lastSeenSeed = progress.completed;
         build.lastProgressTime = now;
+        // Reset respawn count when progress is made (agent is working)
+        if (build.respawnCount > 0) {
+          console.log(`[BUILD]   Respawn count reset (was ${build.respawnCount})`);
+          build.respawnCount = 0;
+        }
       }
 
       // Batch complete? Just log milestone - DON'T spawn new agent yet
@@ -1208,17 +1306,35 @@ async function checkBuilds() {
         // Don't touch build.agent - let stall detection handle the spawn
       }
 
-      // Stalled? Agent has stopped - DO NOT auto-respawn (burns tokens on clueless agents)
-      // Mark as stalled and require manual intervention
+      // Stalled? Agent has stopped - auto-respawn if under limit AND no agent already running
       if (timeSinceProgress > STALL_THRESHOLD_MS && build.status !== 'stalled') {
         console.log(`[BUILD] Agent STALLED: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
-        console.log(`[BUILD]   ⚠️ NOT auto-respawning - manual restart required`);
-        console.log(`[BUILD]   Use dashboard or POST /api/build/start/${courseCode} to restart`);
 
-        // Mark as stalled but don't spawn
-        build.status = 'stalled';
-        build.stalledAt = Date.now();
-        // Keep build.agent reference for debugging
+        // CRITICAL: Check if an agent is already running before spawning
+        const runningAgents = getRunningAgentCount();
+        if (runningAgents > 0) {
+          console.log(`[BUILD]   Skipping respawn - ${runningAgents} agent(s) already running`);
+          build.lastProgressTime = Date.now();  // Reset stall timer to avoid repeated logs
+        } else if (build.respawnCount < MAX_RESPAWNS) {
+          console.log(`[BUILD]   🔄 Auto-respawning (attempt ${build.respawnCount + 1}/${MAX_RESPAWNS})...`);
+
+          // Increment respawn count and spawn new agent
+          build.respawnCount++;
+          build.agentCount++;
+          build.status = 'running';
+          build.lastProgressTime = Date.now();  // Reset stall timer
+          build.agent = await spawnBuildAgent(courseCode, build.agentCount, build.terminal);
+
+          // Ping activity to reset stall detection
+          recordActivity(courseCode, progress.completed);
+        } else {
+          console.log(`[BUILD]   ⚠️ MAX RESPAWNS REACHED (${MAX_RESPAWNS}) - manual restart required`);
+          console.log(`[BUILD]   Use dashboard or POST /api/build/start/${courseCode} to restart`);
+
+          // Mark as stalled - requires manual intervention
+          build.status = 'stalled';
+          build.stalledAt = Date.now();
+        }
       }
 
     } catch (err) {
@@ -1274,7 +1390,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
     lastProgressTime: Date.now(),
     status: 'starting',
     terminal: terminal,  // Store terminal preference
-    targetSeeds: effectiveTarget  // Store target for completion check
+    targetSeeds: effectiveTarget,  // Store target for completion check
+    respawnCount: 0  // Track auto-respawns to prevent infinite loops
   });
 
   // Ensure build manager is running
@@ -3347,74 +3464,99 @@ app.post('/api/seed/complete', async (req, res) => {
     // Record activity for stall detection
     recordActivity(course_code, seed_number);
 
-    // CHECK FOR CHECKPOINT - if seed 10 just completed, require QA review
+    // CHECK FOR CHECKPOINT - if seed 10/50/150/260 just completed
     if (isCheckpointRequired(course_code, seed_number)) {
+      const checkpointNum = CHECKPOINT_SEEDS.indexOf(seed_number) + 1;
+      const checkpointConfig = await getCheckpointConfig(course_code, seed_number);
+
       console.log(`\n${'='.repeat(60)}`);
-      console.log(`CHECKPOINT REACHED: Seed ${seed_number} complete`);
-      console.log(`Run QA agent to verify quality before continuing`);
+      console.log(`CHECKPOINT ${checkpointNum} REACHED: Seed ${seed_number} complete`);
+      console.log(`Review mode: ${checkpointConfig.review_mode} (from database config)`);
       console.log(`${'='.repeat(60)}\n`);
 
-      // Get summary stats for QA
-      const { count: legoCount } = await supabase
-        .from('course_legos')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', course_code);
+      if (checkpointConfig.review_mode === 'auto' || checkpointConfig.review_mode === 'auto_with_flag') {
+        // AUTO-APPROVE: Log checkpoint, auto-approve, and continue without stopping
+        const status = checkpointConfig.review_mode === 'auto_with_flag' ? 'flagged' : 'approved';
+        await approveCheckpoint(course_code, seed_number, 'auto', {
+          auto_approved: true,
+          review_mode_used: checkpointConfig.review_mode
+        }, status);
 
-      const { count: phraseCount } = await supabase
-        .from('course_practice_phrases')
-        .select('*', { count: 'exact', head: true })
-        .eq('course_code', course_code);
+        console.log(`Auto-${status} checkpoint ${seed_number} - agent continues...`);
+        // Don't return here - fall through to normal response so agent continues
+      } else {
+        // HUMAN REVIEW REQUIRED: Stop and wait for human approval
+        console.log(`Human review required - agent must wait for approval`);
 
-      // Get USE phrase scores for summary
-      const { data: usePhrases } = await supabase
-        .from('course_practice_phrases')
-        .select('metadata')
-        .eq('course_code', course_code)
-        .eq('phrase_role', 'use');
+        // Get summary stats for QA
+        const { count: legoCount } = await supabase
+          .from('course_legos')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', course_code);
 
-      const scores = (usePhrases || [])
-        .map(p => p.metadata?.score)
-        .filter(s => typeof s === 'number');
-      const avgScore = scores.length > 0
-        ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)
-        : 'N/A';
+        const { count: phraseCount } = await supabase
+          .from('course_practice_phrases')
+          .select('*', { count: 'exact', head: true })
+          .eq('course_code', course_code);
 
-      return res.json({
-        ok: true,
-        seed: seedId,
-        status: 'CHECKPOINT_REACHED',
-        action: 'AWAIT_QA_APPROVAL',
-        known_text,
-        target_text,
-        legos: legos.length,
-        phrases: totalPhrases,
+        // Get USE phrase scores for summary
+        const { data: usePhrases } = await supabase
+          .from('course_practice_phrases')
+          .select('metadata')
+          .eq('course_code', course_code)
+          .eq('phrase_role', 'use');
 
-        checkpoint: {
-          checkpoint_seed: seed_number,  // The checkpoint we just reached
-          checkpoint_number: CHECKPOINT_SEEDS.indexOf(seed_number) + 1,
-          all_checkpoints: CHECKPOINT_SEEDS,
-          message: 'QA review required before continuing',
-          summary: {
-            seeds_complete: seed_number,
-            total_legos: legoCount,
-            total_phrases: phraseCount,
-            use_phrase_avg_score: avgScore,
-            scores_distribution: scores.length > 0 ? {
-              count: scores.length,
-              high_9: scores.filter(s => s === 9).length,
-              good_7_8: scores.filter(s => s >= 7 && s < 9).length,
-              ok_5_6: scores.filter(s => s >= 5 && s < 7).length,
-              low_1_4: scores.filter(s => s < 5).length
-            } : null
-          },
-          next_steps: [
-            '1. Run QA agent: GET /api/checkpoint/summary/' + course_code,
-            '2. QA agent samples and re-scores USE phrases',
-            '3. If alignment good: POST /api/checkpoint/approve/' + course_code,
-            '4. Build agent resumes with seed ' + (seed_number + 1)
-          ]
-        }
-      });
+        const scores = (usePhrases || [])
+          .map(p => p.metadata?.score)
+          .filter(s => typeof s === 'number');
+        const avgScore = scores.length > 0
+          ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)
+          : 'N/A';
+
+        // Record pending status in database
+        await approveCheckpoint(course_code, seed_number, null, {
+          review_mode_used: 'human',
+          awaiting_approval: true
+        }, 'pending_human');
+
+        return res.json({
+          ok: true,
+          seed: seedId,
+          status: 'CHECKPOINT_REACHED',
+          action: 'AWAIT_QA_APPROVAL',
+          known_text,
+          target_text,
+          legos: legos.length,
+          phrases: totalPhrases,
+
+          checkpoint: {
+            checkpoint_seed: seed_number,
+            checkpoint_number: checkpointNum,
+            all_checkpoints: CHECKPOINT_SEEDS,
+            review_mode: checkpointConfig.review_mode,
+            message: 'Human QA review required before continuing',
+            summary: {
+              seeds_complete: seed_number,
+              total_legos: legoCount,
+              total_phrases: phraseCount,
+              use_phrase_avg_score: avgScore,
+              scores_distribution: scores.length > 0 ? {
+                count: scores.length,
+                high_9: scores.filter(s => s === 9).length,
+                good_7_8: scores.filter(s => s >= 7 && s < 9).length,
+                ok_5_6: scores.filter(s => s >= 5 && s < 7).length,
+                low_1_4: scores.filter(s => s < 5).length
+              } : null
+            },
+            next_steps: [
+              '1. Run QA agent: GET /api/checkpoint/summary/' + course_code,
+              '2. QA agent samples and re-scores USE phrases',
+              '3. If alignment good: POST /api/checkpoint/approve/' + course_code,
+              '4. Build agent resumes with seed ' + (seed_number + 1)
+            ]
+          }
+        });
+      }
     }
 
     // Get recency hints for next iteration (avoid pattern fatigue)
@@ -4685,8 +4827,65 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
     });
   }
 
-  // Approve the checkpoint
-  await approveCheckpoint(courseCode, checkpointSeed, approved_by, qa_report);
+  // Get checkpoint config for threshold comparison
+  const config = await getCheckpointConfig(courseCode, checkpointSeed);
+
+  // Extract QA metrics from report (if provided)
+  const qaQuality = qa_report?.quality_gates?.gate_1_absolute_quality?.qa_avg_score
+                 || qa_report?.qa_avg_score
+                 || null;
+  const qaDrift = qa_report?.quality_gates?.gate_4_drift?.drift
+               || qa_report?.drift
+               || null;
+
+  // Determine approval status based on thresholds
+  let finalStatus = 'approved';
+  let rejectionReason = null;
+
+  if (qa_report && qaQuality !== null && qaDrift !== null) {
+    // QA report provided - check against thresholds
+    const qualityPass = qaQuality >= config.min_quality_score;
+    const driftPass = qaDrift <= config.max_drift_rate;
+
+    if (!qualityPass || !driftPass) {
+      finalStatus = 'pending_human';
+      rejectionReason = [];
+      if (!qualityPass) {
+        rejectionReason.push(`Quality ${qaQuality.toFixed(2)} < threshold ${config.min_quality_score}`);
+      }
+      if (!driftPass) {
+        rejectionReason.push(`Drift ${qaDrift.toFixed(2)} > threshold ${config.max_drift_rate}`);
+      }
+      rejectionReason = rejectionReason.join('; ');
+
+      console.log(`[CHECKPOINT] QA FLAGGED for human review: ${rejectionReason}`);
+    } else {
+      console.log(`[CHECKPOINT] QA PASSED: quality=${qaQuality.toFixed(2)} (>=${config.min_quality_score}), drift=${qaDrift.toFixed(2)} (<=${config.max_drift_rate})`);
+    }
+  } else if (approved_by === 'human') {
+    // Human override - always approve
+    finalStatus = 'approved';
+    console.log(`[CHECKPOINT] Human override - approving without QA check`);
+  }
+
+  // Record the checkpoint result
+  await approveCheckpoint(courseCode, checkpointSeed, approved_by, qa_report, finalStatus);
+
+  // If flagged for human review, return early without spawning agent
+  if (finalStatus === 'pending_human') {
+    return res.json({
+      ok: true,
+      status: 'FLAGGED_FOR_HUMAN',
+      course_code: courseCode,
+      checkpoint_seed: checkpointSeed,
+      checkpoint_number: CHECKPOINT_SEEDS.indexOf(checkpointSeed) + 1,
+      reason: rejectionReason,
+      qa_metrics: { quality: qaQuality, drift: qaDrift },
+      thresholds: { min_quality: config.min_quality_score, max_drift: config.max_drift_rate },
+      message: 'QA check outside tolerance - flagged for human review',
+      action: 'Human must review and manually approve via POST /api/checkpoint/approve with approved_by=human'
+    });
+  }
 
   // Log QA report if provided
   if (qa_report) {
@@ -4695,32 +4894,43 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
 
   // AUTO-SPAWN FRESH AGENT after checkpoint approval (Ralph loop pattern)
   // Fresh spawn ensures: full methodology prompt + latest build_lessons + no context rot
+  // CRITICAL: Only spawn if no agent is already running (prevents duplicate agents)
   const build = activeBuilds.get(courseCode);
+  const runningAgents = getRunningAgentCount();
+  let didSpawn = false;
+
   if (build) {
-    console.log(`[CHECKPOINT] Spawning fresh agent for ${courseCode} after checkpoint ${checkpointSeed} approval`);
+    if (runningAgents > 0) {
+      console.log(`[CHECKPOINT] Skipping spawn - ${runningAgents} agent(s) already running for ${courseCode}`);
+      build.status = 'checkpoint_approved';
+      build.lastProgressTime = Date.now();
+    } else {
+      console.log(`[CHECKPOINT] Spawning fresh agent for ${courseCode} after checkpoint ${checkpointSeed} approval`);
 
-    // Kill existing agent if any
-    if (build.agent) {
-      try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
-      build.agent = null;
+      // Kill existing tracked agent if any (shouldn't happen since runningAgents is 0)
+      if (build.agent) {
+        try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+        build.agent = null;
+      }
+
+      // Reset for fresh spawn
+      build.agentCount++;
+      build.status = 'checkpoint_approved';
+      build.lastProgressTime = Date.now();
+      didSpawn = true;
+
+      // Spawn fresh agent with full methodology + lessons
+      spawnBuildAgent(courseCode, build.agentCount, build.terminal || 'iTerm2')
+        .then(agent => {
+          build.agent = agent;
+          build.status = 'agent_running';
+          console.log(`[CHECKPOINT] Fresh agent #${build.agentCount} spawned for ${courseCode}`);
+        })
+        .catch(err => {
+          console.error(`[CHECKPOINT] Failed to spawn agent: ${err.message}`);
+          build.status = 'spawn_failed';
+        });
     }
-
-    // Reset for fresh spawn
-    build.agentCount++;
-    build.status = 'checkpoint_approved';
-    build.lastProgressTime = Date.now();
-
-    // Spawn fresh agent with full methodology + lessons
-    spawnBuildAgent(courseCode, build.agentCount, build.terminal || 'iTerm2')
-      .then(agent => {
-        build.agent = agent;
-        build.status = 'agent_running';
-        console.log(`[CHECKPOINT] Fresh agent #${build.agentCount} spawned for ${courseCode}`);
-      })
-      .catch(err => {
-        console.error(`[CHECKPOINT] Failed to spawn agent: ${err.message}`);
-        build.status = 'spawn_failed';
-      });
   }
 
   // Get updated status
@@ -4737,8 +4947,9 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
     approved_at: new Date().toISOString(),
     calibration_feedback: newStatus.calibration_feedback,
     next_checkpoint: newStatus.next_checkpoint,
-    auto_spawn: build ? true : false,
-    next_action: build ? 'Fresh agent spawned automatically' : `Start build with POST /api/build/start/${courseCode}`
+    auto_spawn: didSpawn,
+    agents_running: runningAgents,
+    next_action: didSpawn ? 'Fresh agent spawned automatically' : (runningAgents > 0 ? `Agent already running (${runningAgents} active)` : `Start build with POST /api/build/start/${courseCode}`)
   });
 });
 
@@ -4765,6 +4976,101 @@ app.get('/api/checkpoint/status/:courseCode', async (req, res) => {
     message: status.next_checkpoint === null
       ? `All ${CHECKPOINT_SEEDS.length} checkpoints approved`
       : `Checkpoint ${status.next_checkpoint} awaiting approval (${approvedCount}/${CHECKPOINT_SEEDS.length} complete)`
+  });
+});
+
+/**
+ * GET /api/checkpoint/config/:courseCode - Get checkpoint config for course
+ */
+app.get('/api/checkpoint/config/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  // Get course-specific config
+  const { data: courseConfig } = await supabase
+    .from('course_checkpoint_config')
+    .select('checkpoint_seed, review_mode, min_quality_score, max_drift_rate')
+    .eq('course_code', courseCode)
+    .order('checkpoint_seed');
+
+  // Get default config
+  const { data: defaultConfig } = await supabase
+    .from('course_checkpoint_config')
+    .select('checkpoint_seed, review_mode, min_quality_score, max_drift_rate')
+    .eq('course_code', '_default')
+    .order('checkpoint_seed');
+
+  // Merge: course-specific overrides defaults
+  const configMap = {};
+  for (const cfg of (defaultConfig || [])) {
+    configMap[cfg.checkpoint_seed] = { ...cfg, source: '_default' };
+  }
+  for (const cfg of (courseConfig || [])) {
+    configMap[cfg.checkpoint_seed] = { ...cfg, source: courseCode };
+  }
+
+  res.json({
+    course_code: courseCode,
+    checkpoint_seeds: CHECKPOINT_SEEDS,
+    config: CHECKPOINT_SEEDS.map(seed => configMap[seed] || {
+      checkpoint_seed: seed,
+      review_mode: 'human',
+      min_quality_score: 7.0,
+      max_drift_rate: 0.20,
+      source: 'fallback'
+    }),
+    usage: {
+      human: 'Build stops, waits for human approval',
+      auto: 'QA agent auto-approves if gates pass',
+      auto_with_flag: 'Auto-approve but flag for later human spot-check'
+    }
+  });
+});
+
+/**
+ * PUT /api/checkpoint/config/:courseCode - Update checkpoint config
+ * Body: { checkpoint_seed: number, review_mode: 'human'|'auto'|'auto_with_flag' }
+ */
+app.put('/api/checkpoint/config/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { checkpoint_seed, review_mode, min_quality_score, max_drift_rate } = req.body;
+
+  if (!checkpoint_seed || !CHECKPOINT_SEEDS.includes(checkpoint_seed)) {
+    return res.status(400).json({
+      error: 'Invalid checkpoint_seed',
+      valid_seeds: CHECKPOINT_SEEDS
+    });
+  }
+
+  if (!review_mode || !['human', 'auto', 'auto_with_flag'].includes(review_mode)) {
+    return res.status(400).json({
+      error: 'Invalid review_mode',
+      valid_modes: ['human', 'auto', 'auto_with_flag']
+    });
+  }
+
+  const { error } = await supabase
+    .from('course_checkpoint_config')
+    .upsert({
+      course_code: courseCode,
+      checkpoint_seed,
+      review_mode,
+      min_quality_score: min_quality_score || 7.0,
+      max_drift_rate: max_drift_rate || 0.20,
+      updated_at: new Date().toISOString()
+    }, { onConflict: 'course_code,checkpoint_seed' });
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  console.log(`[CONFIG] Updated ${courseCode} checkpoint ${checkpoint_seed} → ${review_mode}`);
+
+  res.json({
+    ok: true,
+    course_code: courseCode,
+    checkpoint_seed,
+    review_mode,
+    message: `Checkpoint ${checkpoint_seed} now uses '${review_mode}' review mode`
   });
 });
 
