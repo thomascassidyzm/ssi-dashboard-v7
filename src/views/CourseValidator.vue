@@ -694,7 +694,7 @@ async function runLUTCheck() {
     }
   } catch (err) {
     console.error('Error running LUT check:', err)
-    alert(`Error running LUT check:\n\n${err.message}\n\nMake sure the orchestrator is running on port 3456`)
+    alert(`Error running LUT check:\n\n${err.message}\n\nMake sure the production-api is running on port 3470`)
   } finally {
     lutCheckLoading.value = false
   }
@@ -727,7 +727,7 @@ async function runBasketGapAnalysis() {
     gapAnalysisResult.value = result
   } catch (err) {
     console.error('Error running gap analysis:', err)
-    alert(`Error running gap analysis:\n\n${err.message}\n\nMake sure the orchestrator is running on port 3456`)
+    alert(`Error running gap analysis:\n\n${err.message}\n\nMake sure the production-api is running on port 3470`)
   } finally {
     gapAnalysisLoading.value = false
   }

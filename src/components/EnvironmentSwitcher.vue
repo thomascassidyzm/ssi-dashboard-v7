@@ -42,7 +42,7 @@ const ENVIRONMENTS = {
   },
   api: {
     name: 'API Server',
-    url: 'http://localhost:3456',  // Or deployed API URL
+    url: 'http://localhost:3470',  // Production API (consolidated Jan 2026)
     machineProfile: 'default'  // API mode will use default until we add API-specific profiles
   }
 }

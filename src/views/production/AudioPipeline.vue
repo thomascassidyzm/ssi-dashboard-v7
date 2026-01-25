@@ -688,7 +688,7 @@ const audioProgress = ref<any>({ active: false })
 let progressPollInterval: ReturnType<typeof setInterval> | null = null
 
 // API Base URL - use localStorage (set by EnvironmentSwitcher)
-const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3456'
+const apiBaseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3470'
 
 // Poll for audio generation progress
 const pollAudioProgress = async () => {

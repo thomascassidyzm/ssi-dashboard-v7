@@ -183,7 +183,7 @@ import { ref, computed, onMounted } from 'vue'
 
 // Use api_base_url from localStorage (set by EnvironmentSwitcher)
 const getApiBase = () => {
-  const baseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3456'
+  const baseUrl = localStorage.getItem('api_base_url') || 'http://localhost:3470'
   return `${baseUrl}/api/network-builder`
 }
 const API_BASE = getApiBase()

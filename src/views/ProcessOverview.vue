@@ -63,7 +63,7 @@
               <h4 class="text-lg font-semibold text-slate-200 mb-3">Environment Switcher</h4>
               <p class="text-slate-400">Use the environment switcher (top right) to connect to different local machines:</p>
               <ul class="text-sm text-slate-400 mt-2 space-y-1">
-                <li>• <span class="text-emerald-400">Local Development</span> - Direct connection to localhost:3456</li>
+                <li>• <span class="text-emerald-400">Local Development</span> - Direct connection to localhost:3470 (Production API)</li>
                 <li>• <span class="text-emerald-400">Team Member's Machine</span> - Connect via their ngrok tunnel</li>
               </ul>
             </div>

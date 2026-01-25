@@ -154,7 +154,7 @@ function getApiBaseUrl() {
   const savedUrl = localStorage.getItem('api_base_url')
   if (savedUrl) return savedUrl
   // Fallback for local development
-  return import.meta.env.VITE_API_URL || 'http://localhost:3456'
+  return import.meta.env.VITE_API_URL || 'http://localhost:3470'
 }
 
 const props = defineProps({

@@ -260,7 +260,7 @@ const getApiBaseUrl = (): string => {
 
   // 2. Localhost - use default local URL
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return 'http://localhost:3456';
+    return 'http://localhost:3470';
   }
 
   // 3. ngrok - use relative URL (same origin proxies to backend)

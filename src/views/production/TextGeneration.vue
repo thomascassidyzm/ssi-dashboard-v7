@@ -595,7 +595,7 @@ async function fetchCheckpoints() {
 
   try {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     const response = await fetch(`${apiBase}/api/checkpoint/summary/${courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
@@ -660,7 +660,7 @@ async function approveCheckpoint(checkpointSeed) {
 
   try {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     const response = await fetch(`${apiBase}/api/checkpoint/approve/${courseCode}`, {
       method: 'POST',
@@ -704,7 +704,7 @@ async function rejectCheckpoint(checkpointSeed) {
 
   try {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     const response = await fetch(`${apiBase}/api/checkpoint/reject/${courseCode}`, {
       method: 'POST',
@@ -748,7 +748,7 @@ async function updateCheckpointMode() {
 
   try {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     // Update mode for all checkpoints of this course
     const response = await fetch(`${apiBase}/api/checkpoint/config/${courseCode}`, {
@@ -782,7 +782,7 @@ async function fetchProgress() {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
     // Default to popty.ngrok.app for remote access (NOT env var - Vercel may have old value)
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     // Fetch stats, build status, and agent activity in parallel
     const [statsResponse, buildResponse, activityResponse] = await Promise.all([
@@ -858,7 +858,7 @@ async function startBuilder() {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
     // Default to popty.ngrok.app for remote access (NOT env var - Vercel may have old value)
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3456' : 'https://popty.ngrok.app')
+    const apiBase = localStorage.getItem('api_base_url') || (isLocal ? 'http://localhost:3470' : 'https://popty.ngrok.app')
 
     // If in create mode, create the course first
     if (isCreateMode.value) {

@@ -236,7 +236,7 @@ async function loadCourses() {
     if (storedUrl) {
       apiBase = storedUrl
     } else if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      apiBase = 'http://localhost:3456'
+      apiBase = 'http://localhost:3470'
     } else if (hostname.includes('ngrok')) {
       apiBase = ''
     }

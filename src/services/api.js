@@ -8,7 +8,7 @@ export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMI
 // Default API URL for local development
 // IMPORTANT: NO hardcoded ngrok URLs - different machines have different tunnels!
 // Use EnvironmentSwitcher to set the API URL for remote access.
-const DEFAULT_LOCAL_URL = 'http://localhost:3456'
+const DEFAULT_LOCAL_URL = 'http://localhost:3470'
 
 /**
  * Get the API base URL - central helper for all API calls

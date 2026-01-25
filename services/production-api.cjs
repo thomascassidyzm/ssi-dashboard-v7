@@ -294,21 +294,106 @@ async function proxyOrchestrator(req, res) {
   }
 }
 
+// =============================================================================
+// DIRECT ROUTES (replacing orchestrator - consolidation Jan 2026)
+// =============================================================================
+
+// Health check - production-api's own health
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Production API',
+    port: PORT || 3470,
+    timestamp: new Date().toISOString(),
+    supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized'
+  })
+})
+
+// Languages endpoint - ISO 639 language codes
+app.get('/api/languages', async (req, res) => {
+  try {
+    // Common languages for course creation
+    const languages = [
+      { code: 'eng', name: 'English' },
+      { code: 'spa', name: 'Spanish' },
+      { code: 'fra', name: 'French' },
+      { code: 'deu', name: 'German' },
+      { code: 'ita', name: 'Italian' },
+      { code: 'por', name: 'Portuguese' },
+      { code: 'zho', name: 'Chinese' },
+      { code: 'jpn', name: 'Japanese' },
+      { code: 'kor', name: 'Korean' },
+      { code: 'ara', name: 'Arabic' },
+      { code: 'rus', name: 'Russian' },
+      { code: 'hin', name: 'Hindi' },
+      { code: 'cym', name: 'Welsh' },
+      { code: 'gle', name: 'Irish' },
+      { code: 'nld', name: 'Dutch' },
+      { code: 'swe', name: 'Swedish' },
+      { code: 'pol', name: 'Polish' },
+      { code: 'tur', name: 'Turkish' },
+      { code: 'vie', name: 'Vietnamese' },
+      { code: 'tha', name: 'Thai' }
+    ]
+    res.json(languages)
+  } catch (error) {
+    logger.error('Error serving languages:', error)
+    res.status(500).json({ error: 'Failed to load languages' })
+  }
+})
+
+// Courses list endpoint - query Supabase directly
+app.get('/api/courses', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Get courses from database
+    const { data: dbCourses, error } = await supabase
+      .from('courses')
+      .select('course_code, known_lang, target_lang, display_name, status')
+      .order('course_code')
+
+    if (error) throw error
+
+    // Get content stats for each course
+    const contentStats = await supabaseClient.getAllCourseContentStats()
+
+    const courses = (dbCourses || []).map(c => {
+      const stats = contentStats[c.course_code] || { seeds: 0, legos: 0, baskets: 0 }
+      return {
+        code: c.course_code,
+        course_code: c.course_code,
+        known_lang: c.known_lang,
+        target_lang: c.target_lang,
+        display_name: c.display_name,
+        status: c.status || 'draft',
+        seeds: stats.seeds,
+        legos: stats.legos,
+        phrases: stats.phrases || stats.baskets
+      }
+    })
+
+    res.json(courses)
+  } catch (error) {
+    logger.error('Error fetching courses:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Voice config routes - proxy to course-builder
+app.all('/api/courses/:courseCode/voice-config', proxyCourseBuilder)
+app.all('/api/voices/*', proxyCourseBuilder)
+
+// PM2 service management routes - keep proxying to orchestrator for now
+// These are admin-only and rarely used; can be migrated later
 app.all('/api/mission-control/*', proxyOrchestrator)
 app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)
-app.get('/api/languages', proxyOrchestrator)
-app.get('/api/courses', proxyOrchestrator)
-app.get('/api/stats/*', proxyOrchestrator)
-app.get('/health', proxyOrchestrator)
-
-// Audio routes are handled directly by production-api (lines 2019+, 2149+)
-// which proxy directly to Phase 8 (port 3465) - no need to go through orchestrator
-
-// Proxy voice config routes to orchestrator
-app.all('/api/courses/:courseCode/voice-config', proxyOrchestrator)
-app.all('/api/voices/*', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
