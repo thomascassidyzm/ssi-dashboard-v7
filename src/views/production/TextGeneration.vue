@@ -614,10 +614,10 @@ async function fetchCheckpointConfig() {
 
     if (response.ok) {
       const data = await response.json()
-      // data.checkpoints is an object { 10: { review_mode: 'auto' }, ... }
-      if (data.checkpoints) {
+      // data.config is an array: [{ checkpoint_seed: 10, review_mode: 'auto' }, ...]
+      if (data.config && Array.isArray(data.config)) {
         checkpoints.value.forEach(cp => {
-          const config = data.checkpoints[cp.seed]
+          const config = data.config.find(c => c.checkpoint_seed === cp.seed)
           if (config?.review_mode) {
             cp.review_mode = config.review_mode
           }
