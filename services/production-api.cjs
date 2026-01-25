@@ -4069,6 +4069,43 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
   }
 })
 
+// =============================================================================
+// CHECKPOINT PROXY ROUTES (to Course Builder API)
+// =============================================================================
+
+const COURSE_BUILDER_API_URL = process.env.COURSE_BUILDER_API_URL || 'http://localhost:3471'
+
+// Proxy /api/checkpoint/* to Course Builder API
+app.use('/api/checkpoint', async (req, res) => {
+  const targetUrl = `${COURSE_BUILDER_API_URL}/api/checkpoint${req.url}`
+  logger.info(`[Checkpoint Proxy] ${req.method} ${targetUrl}`)
+
+  try {
+    const response = await axios({
+      method: req.method,
+      url: targetUrl,
+      data: req.body,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      timeout: 30000
+    })
+
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        error: 'Course Builder API not running',
+        message: 'Start with: pm2 start services/course-builder-api.cjs --name course-builder'
+      })
+    }
+
+    const status = error.response?.status || 500
+    const data = error.response?.data || { error: error.message }
+    res.status(status).json(data)
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
