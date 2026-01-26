@@ -3131,6 +3131,19 @@ app.post('/api/seed/complete', async (req, res) => {
             });
             console.log(`✗ ${legoId}: MISSING SCORES - ${missingScores.length} USE phrases without scores`);
           }
+
+          // Reject low-quality USE phrases - if agent scores <5, rewrite don't submit
+          const lowScores = usePhrases.filter(p => typeof p.score === 'number' && p.score < 5);
+          if (lowScores.length > 0) {
+            errors.push({
+              type: 'low_scores',
+              message: `${legoId}: USE phrases scored <5 should be rewritten, not submitted. Found: ${lowScores.length}`,
+              lego_id: legoId,
+              hint: 'Rewrite low-scoring phrases to improve quality. Only submit USE phrases you\'d score 5+',
+              details: lowScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score }))
+            });
+            console.log(`✗ ${legoId}: LOW SCORES - ${lowScores.length} USE phrases scored <5`);
+          }
         }
       } else if (!SKIP_VALIDATION) {
         // NO PHRASES AT ALL - HARD REJECT
