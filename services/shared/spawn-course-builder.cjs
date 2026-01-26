@@ -383,9 +383,15 @@ The response includes \`pass_status\`:
 
 **Purpose:** Translate ALL ${seedCount} seeds AND discover language patterns.
 
+**BEFORE STARTING:** Read \`/ssi-translation-methodology\` - this skill explains:
+- ZERO VARIATION: Same English → same target (always)
+- TWO ABSOLUTE RULES: Never change meaning, prefer cognates
+- Register decision: Pick one (du/Sie, tú/usted) and maintain throughout
+- How to track patterns and lock vocabulary choices
+
 **Workflow:**
 1. \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\` - Get all seeds
-2. Translate EVERY seed naturally - focus on GOOD translation, not LEGOs yet
+2. Translate EVERY seed following the methodology - consistency over naturalness
 3. Save each translation: \`PATCH ${builderApiUrl}/api/seed/${courseCode}/{seed_number}\`
    \`\`\`bash
    curl -X PATCH ${builderApiUrl}/api/seed/${courseCode}/1 \\
