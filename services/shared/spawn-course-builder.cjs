@@ -367,12 +367,72 @@ For Chinese particles (吗, 呢, 了, etc.), include them in M-LEGOs:
 
 Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner infers 吗 from context.
 
-## Workflow
+## CRITICAL: TWO-PASS WORKFLOW
 
-1. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - check progress
-2. \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\` - get seeds with English text
-3. For each seed in the response: translate, decompose, generate phrases, submit via curl
-4. On error: read the message, fix, resubmit
+Building a course requires TWO passes. Check your progress:
+\`GET ${builderApiUrl}/api/resume/${courseCode}\`
+
+The response includes \`pass_status\`:
+- \`pass1_complete: false\` → Do Pass 1 (translations)
+- \`pass1_complete: true, pass2_complete: false\` → Do Pass 2 (decomposition)
+- Both true → Course complete!
+
+---
+
+### PASS 1: Translate ALL Seeds First
+
+**Purpose:** Translate ALL ${seedCount} seeds AND discover language patterns.
+
+**Workflow:**
+1. \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\` - Get all seeds
+2. Translate EVERY seed naturally - focus on GOOD translation, not LEGOs yet
+3. Save each translation: \`PATCH ${builderApiUrl}/api/seed/${courseCode}/{seed_number}\`
+   \`\`\`bash
+   curl -X PATCH ${builderApiUrl}/api/seed/${courseCode}/1 \\
+     -H "Content-Type: application/json" \\
+     -d '{"target_text": "Ich will jetzt Deutsch mit dir sprechen."}'
+   \`\`\`
+4. **Track patterns as you translate:**
+   - Same English → different target? → Problem verb
+   - Pattern appears 10+ times? → Golden key
+   - You hesitated? → ZUT concern
+5. After ALL translations: Save analysis
+   \`\`\`bash
+   curl -X POST ${builderApiUrl}/api/course/${courseCode}/analysis \\
+     -H "Content-Type: application/json" \\
+     -d '{
+       "register": {"choice": "informal", "markers": ["du"]},
+       "problem_verbs": [...],
+       "golden_keys": [...],
+       "zut_concerns": [...]
+     }'
+   \`\`\`
+
+**DO NOT decompose or generate phrases in Pass 1!** Just translate.
+
+---
+
+### PASS 2: Decompose Into LEGOs
+
+**Purpose:** Break each translated seed into LEGOs with practice phrases.
+
+**Workflow:**
+1. \`GET ${builderApiUrl}/api/resume/${courseCode}\` - Get current state + your analysis
+2. The \`translation_analysis\` field contains your Pass 1 patterns - USE IT
+3. For each incomplete seed: decompose, generate phrases, submit:
+   \`\`\`bash
+   curl -X POST ${builderApiUrl}/api/seed/complete \\
+     -H "Content-Type: application/json" \\
+     -d '{...}'  # Full seed submission with LEGOs
+   \`\`\`
+4. The API validates vocabulary, tiling, phrase counts - fix errors and retry
+
+**Use your analysis:**
+- Problem verbs → Use your disambiguation rules
+- Golden keys → Introduce these patterns early as M-LEGOs
+- ZUT concerns → Use suggested rewordings in known_text
+
+---
 
 **The /translate endpoint returns:**
 - \`canonical_english\`: The English seed text (with language name substituted)
@@ -409,10 +469,11 @@ ${languageBrief ? `## Language Brief\n\n${languageBrief}` : ''}
 ## Recovery (Context Compaction)
 
 If interrupted or context compacts:
-1. Invoke \`/ssi-learner-pattern\` to refresh the methodology
-2. \`GET ${builderApiUrl}/api/stats/${courseCode}\` - see current progress
-3. Continue from next incomplete seed
-4. **Database is the state** - no external tracking needed
+1. \`GET ${builderApiUrl}/api/resume/${courseCode}\` - Check pass_status
+2. If \`pass1_complete: false\` → Continue translating (Pass 1)
+3. If \`pass1_complete: true, pass2_complete: false\` → Continue decomposing (Pass 2)
+4. Invoke \`/translation-analysis\` or \`/ssi-learner-pattern\` for methodology refresh
+5. **Database is the state** - no external tracking needed
 
 ---
 
@@ -434,12 +495,17 @@ You are running UNATTENDED. The user may be AFK (away from keyboard).
 - If you're unsure → MAKE A DECISION AND CONTINUE
 
 **STOPPING CONDITIONS (ONLY THESE):**
-- All ${seedCount} seeds are complete
+- Both passes complete (pass1_complete AND pass2_complete both true)
 - Unrecoverable error after 3 retries on same seed (skip and continue)
 
 ---
 
-**BEGIN**: Build the course now. Process all ${seedCount} seeds. DO NOT STOP UNTIL DONE.
+**BEGIN**:
+1. First run \`GET ${builderApiUrl}/api/resume/${courseCode}\` to check pass_status
+2. If pass1_complete is false → Do Pass 1: Translate ALL ${seedCount} seeds, then save analysis
+3. If pass1_complete is true but pass2_complete is false → Do Pass 2: Decompose seeds into LEGOs
+
+DO NOT STOP UNTIL BOTH PASSES ARE COMPLETE.
 `;
 
   return brief;
