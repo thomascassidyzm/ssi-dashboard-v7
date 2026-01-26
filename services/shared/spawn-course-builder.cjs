@@ -390,14 +390,20 @@ The response includes \`pass_status\`:
 - How to track patterns and lock vocabulary choices
 
 **Workflow:**
-1. \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\` - Get all seeds
-2. Translate EVERY seed following the methodology - consistency over naturalness
-3. Save each translation: \`PATCH ${builderApiUrl}/api/seed/${courseCode}/{seed_number}\`
-   \`\`\`bash
-   curl -X PATCH ${builderApiUrl}/api/seed/${courseCode}/1 \\
-     -H "Content-Type: application/json" \\
-     -d '{"target_text": "Ich will jetzt Deutsch mit dir sprechen."}'
-   \`\`\`
+
+**Step 1 - Get seeds to translate (COPY THIS EXACTLY):**
+\`\`\`bash
+curl -s "${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}" | jq '.seeds'
+\`\`\`
+
+**Step 2 - Translate each seed following the methodology (consistency over naturalness)**
+
+**Step 3 - Save each translation:**
+\`\`\`bash
+curl -X PATCH ${builderApiUrl}/api/seed/${courseCode}/1 \\
+  -H "Content-Type: application/json" \\
+  -d '{"target_text": "Ich will jetzt Deutsch mit dir sprechen."}'
+\`\`\`
 4. **Track patterns as you translate:**
    - Same English → different target? → Problem verb
    - Pattern appears 10+ times? → Golden key
