@@ -4038,23 +4038,23 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   // Build action instruction based on pass status
   let actionInstruction;
   if (!pass1Complete) {
-    const remaining = totalSeeds - seedsTranslated;
     actionInstruction = {
       current_pass: 1,
       action: 'TRANSLATE ONLY - DO NOT CREATE LEGOs',
-      FIRST: 'Run /ssi-translation-methodology - covers ZERO VARIATION, cognates, register consistency',
       description: `Translate all seeds to ${targetLangName}. ${seedsTranslated}/${totalSeeds} done.`,
       next_seed: nextToTranslate?.seed_number || null,
       endpoint: `PATCH /api/seed/${courseCode}/{seed_number}`,
       body: '{"target_text": "your translation"}',
       when_done: `POST /api/course/${courseCode}/analysis`
     };
+    // Only show FIRST if just starting pass 1
+    if (seedsTranslated === 0) {
+      actionInstruction.FIRST = 'Run /ssi-translation-methodology - covers ZERO VARIATION, cognates, register consistency';
+    }
   } else if (!pass2Complete) {
-    const remaining = seedCount - seedsDecomposed;
     actionInstruction = {
       current_pass: 2,
       action: 'DECOMPOSE INTO LEGOs',
-      FIRST: 'Run /ssi-decompose-seed and /ssi-build-phrases for methodology',
       description: `Break seeds into LEGOs. ${seedsDecomposed}/${seedCount} done.`,
       next_seed: nextToDecompose ? {
         seed_number: nextToDecompose.seed_number,
@@ -4063,6 +4063,10 @@ app.get('/api/resume/:courseCode', async (req, res) => {
       } : null,
       endpoint: `POST /api/seed/complete`
     };
+    // Only show FIRST if just starting pass 2
+    if (seedsDecomposed === 0) {
+      actionInstruction.FIRST = 'Run /ssi-decompose-seed and /ssi-build-phrases for methodology';
+    }
   } else {
     actionInstruction = {
       current_pass: 'COMPLETE',
