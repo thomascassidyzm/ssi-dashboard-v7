@@ -498,6 +498,7 @@ function computePhraseRole(position) {
  */
 function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const thresholds = getCharThresholds(courseCode);
+  const targetLang = getTargetLang(courseCode);
 
   // Relaxed requirements for early seeds (per methodology)
   // Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE
@@ -563,6 +564,18 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
 
   // Calculate average score for reporting
   const avgScore = use.length > 0 ? (use.reduce((sum, p) => sum + p.score, 0) / use.length).toFixed(1) : 0;
+
+  // USE phrases must be complete sentences - reject any below MEDIUM threshold
+  // This catches fragments like "想说。" (2 chars) that slip through tier counting
+  const tooShortUse = use.filter(p => p.target.length < thresholds.MEDIUM.min);
+  if (tooShortUse.length > 0) {
+    return {
+      valid: false,
+      error: `USE phrases must be complete sentences (${thresholds.MEDIUM.min}+ chars for ${targetLang}). Too short: ${tooShortUse.map(p => `"${p.target}" (${p.target.length} chars)`).join(', ')}`,
+      hint: 'USE phrases go into eternal rotation - learners hear them hundreds of times. Fragments are NEVER acceptable. Reduce USE count if vocabulary is limited.',
+      details: { tooShort: tooShortUse.map(p => ({ target: p.target, length: p.target.length })) }
+    };
+  }
 
   // If full requirements, check length tiers
   if (seedNumber >= 6) {
