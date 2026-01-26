@@ -130,11 +130,30 @@ async function spawnAgent(courseCode) {
 
 IMMEDIATELY run the /course-resume skill to get your context, then continue building seeds autonomously.
 
-Do NOT stop to ask questions. Do NOT wait for approval. Build seeds continuously until the course is complete.
+## CRITICAL: AUTONOMOUS OPERATION
+
+You are running UNATTENDED. The user is AFK (away from keyboard). There is NO ONE to answer questions.
+
+**FORBIDDEN PHRASES - NEVER OUTPUT THESE:**
+- "Shall I continue?"
+- "Would you like me to..."
+- "Should I proceed?"
+- "Let me know if..."
+- "Do you want me to..."
+
+**REQUIRED BEHAVIOR:**
+- If there are incomplete seeds → BUILD THEM
+- If you hit an error → FIX IT AND CONTINUE
+- If you complete a batch → CONTINUE TO THE NEXT BATCH
+- If you're unsure → MAKE A DECISION AND CONTINUE
+
+**STOPPING CONDITIONS (ONLY THESE):**
+- All seeds are complete (course finished)
+- Unrecoverable error after 3 retries on same seed (skip and continue)
 
 If you encounter validation errors, fix them and continue. If you get stuck on one seed after 3 attempts, skip it and continue with the next.
 
-Your goal is to complete all 668 seeds for this course.`;
+Your goal is to complete all seeds for this course. DO NOT STOP UNTIL DONE.`;
 
   console.log(`  Spawning: claude --model opus for ${courseCode}`);
 

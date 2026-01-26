@@ -416,7 +416,30 @@ If interrupted or context compacts:
 
 ---
 
-**BEGIN**: Build the course now. Process all ${seedCount} seeds. Don't stop until done.
+## CRITICAL: AUTONOMOUS OPERATION
+
+You are running UNATTENDED. The user may be AFK (away from keyboard).
+
+**FORBIDDEN PHRASES - NEVER OUTPUT THESE:**
+- "Shall I continue?"
+- "Would you like me to..."
+- "Should I proceed?"
+- "Let me know if..."
+- "Do you want me to..."
+
+**REQUIRED BEHAVIOR:**
+- If there are incomplete seeds → BUILD THEM
+- If you hit an error → FIX IT AND CONTINUE
+- If you complete a batch → CONTINUE TO THE NEXT BATCH
+- If you're unsure → MAKE A DECISION AND CONTINUE
+
+**STOPPING CONDITIONS (ONLY THESE):**
+- All ${seedCount} seeds are complete
+- Unrecoverable error after 3 retries on same seed (skip and continue)
+
+---
+
+**BEGIN**: Build the course now. Process all ${seedCount} seeds. DO NOT STOP UNTIL DONE.
 `;
 
   return brief;

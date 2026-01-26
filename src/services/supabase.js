@@ -112,11 +112,27 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
   }
 
   // Constants
-  const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]  // 10 positions (removed duplicate 1)
+  // Spaced rep sequence: N-1 gets 3 phrases, then N-2, N-3, N-5, N-8... (Fibonacci-like)
+  const SPACED_REP_OFFSETS = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
   const MAX_BUILD_PHRASES = 7
   const USE_CONSOLIDATION_COUNT = 2
   const MAX_SPACED_REP_PHRASES = 12
-  const N1_PHRASE_COUNT = 3  // Most recent LEGO gets 3 phrases in spaced rep
+  const N1_PHRASE_COUNT = 3  // Most recent LEGO (N-1) gets 3 phrases in spaced rep
+
+  // Normalize text for duplicate detection (same audio file = same normalized text)
+  // Strips case, whitespace, and trailing punctuation that TTS ignores
+  const normalizeText = (text) => {
+    if (!text) return ''
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/[.!?。！？]+$/g, '')  // Remove trailing punctuation (EN + JP)
+  }
+
+  // Create a unique phrase ID using normalized text
+  const getPhraseId = (knownText, targetText) => {
+    return `${normalizeText(knownText)}|${normalizeText(targetText)}`
+  }
 
   const countTargetSyllables = (targetText) => {
     if (!targetText) return 0
@@ -282,11 +298,17 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
         isNew: true
       })
 
-      // Phase 3: BUILD × up to 7 (drilling phrases)
-      const buildPhrases = phrases.build.slice(0, MAX_BUILD_PHRASES)
-      for (const phrase of buildPhrases) {
+      // Phase 3: PRACTICE PHRASES up to 7 (all BUILD + fill with USE)
+      // Take ALL build phrases first, then fill remaining slots with USE phrases
+      let practiceCount = 0
+      const usedForPractice = new Set()  // Track USE phrases used in practice (exclude from consolidate)
+
+      // First: Add ALL BUILD phrases (up to max)
+      for (const phrase of phrases.build) {
+        if (practiceCount >= MAX_BUILD_PHRASES) break
         cycleNum++
-        const phraseId = `${phrase.known_text}|${phrase.target_text}`
+        practiceCount++
+        const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
         usedPhrasesThisRound.add(phraseId)
         const audio = getAudioForPhrase(seedNum, lego.lego_index, phrase.known_text, phrase.target_text)
         items.push({
@@ -294,6 +316,37 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
           cycleNum, roundNumber, seedId, legoKey,
           seedCode: seedId, legoCode: legoNum,
           type: 'build',
+          knownText: phrase.known_text,
+          targetText: phrase.target_text,
+          sourceId: audio.known_audio_uuid,
+          target1Id: audio.target1_audio_uuid,
+          target2Id: audio.target2_audio_uuid,
+          hasAudio: !!(audio.known_audio_uuid && audio.target1_audio_uuid),
+          isNew: true,
+          syllableCount: phrase.target_syllable_count || countTargetSyllables(phrase.target_text)
+        })
+      }
+
+      // Second: Fill remaining practice slots with USE phrases (sorted by syllable count)
+      const sortedUsePhrases = [...phrases.use].sort((a, b) =>
+        (a.target_syllable_count || countTargetSyllables(a.target_text)) -
+        (b.target_syllable_count || countTargetSyllables(b.target_text))
+      )
+      for (const phrase of sortedUsePhrases) {
+        if (practiceCount >= MAX_BUILD_PHRASES) break
+        const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+        if (usedPhrasesThisRound.has(phraseId)) continue  // Skip duplicates
+
+        cycleNum++
+        practiceCount++
+        usedPhrasesThisRound.add(phraseId)
+        usedForPractice.add(phraseId)  // Track so we don't use in consolidate
+        const audio = getAudioForPhrase(seedNum, lego.lego_index, phrase.known_text, phrase.target_text)
+        items.push({
+          uuid: `${legoKey}_build_${cycleNum}`,
+          cycleNum, roundNumber, seedId, legoKey,
+          seedCode: seedId, legoCode: legoNum,
+          type: 'build',  // Still labeled as build for UI consistency
           knownText: phrase.known_text,
           targetText: phrase.target_text,
           sourceId: audio.known_audio_uuid,
@@ -314,21 +367,23 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
       })
 
       // Phase 4: SPACED REP - USE phrases from older LEGOs (max 12 total)
+      // Sequence: N-1 (3 phrases), N-2 (1), N-3 (1), N-5 (1), N-8 (1), N-13 (1)...
       const dueForReview = []
       const seenLegos = new Set()
 
-      // Find LEGOs due for review based on Fibonacci timing
-      for (let fibIdx = 0; fibIdx < FIBONACCI.length; fibIdx++) {
-        const reviewRound = roundNumber - FIBONACCI[fibIdx]
+      // Find LEGOs due for review based on spaced rep offsets
+      for (let offsetIdx = 0; offsetIdx < SPACED_REP_OFFSETS.length; offsetIdx++) {
+        const offset = SPACED_REP_OFFSETS[offsetIdx]
+        const reviewRound = roundNumber - offset
         if (reviewRound < 1) break
 
         for (const [prevKey, state] of legoState.entries()) {
           if (prevKey === legoKey || seenLegos.has(prevKey)) continue
           if (state.lastRound === reviewRound) {
-            // N-1 (most recent) gets 3 phrases, others get 1
-            const isN1 = FIBONACCI[fibIdx] === 1
+            // N-1 (offset=1, most recent) gets 3 phrases, all others get 1
+            const isN1 = offset === 1
             const phraseCount = isN1 ? N1_PHRASE_COUNT : 1
-            dueForReview.push({ key: prevKey, state, fibPosition: fibIdx, phraseCount })
+            dueForReview.push({ key: prevKey, state, fibPosition: offsetIdx, phraseCount })
             seenLegos.add(prevKey)
           }
         }
@@ -351,8 +406,8 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
           const phrase = state.usePhrases[state.useIndex % state.usePhrases.length]
           state.useIndex++
 
-          const phraseId = `${phrase.known_text}|${phrase.target_text}`
-          if (usedPhrasesThisRound.has(phraseId)) continue  // No repeats in same ROUND
+          const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+          if (usedPhrasesThisRound.has(phraseId)) continue  // No repeats in same ROUND (normalized)
           usedPhrasesThisRound.add(phraseId)
 
           cycleNum++
@@ -376,11 +431,14 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
         }
       }
 
-      // Phase 5: USE × 2 (consolidation for current LEGO)
-      const usePhrases = phrases.use.slice(0, USE_CONSOLIDATION_COUNT)
-      for (const phrase of usePhrases) {
-        const phraseId = `${phrase.known_text}|${phrase.target_text}`
-        if (usedPhrasesThisRound.has(phraseId)) continue  // No repeats in same ROUND
+      // Phase 5: CONSOLIDATE × 2 (USE phrases not already used in practice)
+      let consolidateCount = 0
+      for (const phrase of phrases.use) {
+        if (consolidateCount >= USE_CONSOLIDATION_COUNT) break
+        const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
+        if (usedPhrasesThisRound.has(phraseId)) continue  // No repeats in same ROUND (normalized)
+        if (usedForPractice.has(phraseId)) continue  // Skip phrases already used in practice
+        consolidateCount++
         usedPhrasesThisRound.add(phraseId)
 
         cycleNum++
