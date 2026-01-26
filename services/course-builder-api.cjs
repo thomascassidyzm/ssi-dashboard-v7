@@ -4027,20 +4027,49 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     analyzeVocabRecency(courseCode)
   ]);
 
+  // Build action instruction based on pass status
+  let actionInstruction;
+  if (!pass1Complete) {
+    const remaining = totalSeeds - seedsTranslated;
+    actionInstruction = {
+      current_pass: 1,
+      action: 'TRANSLATE ONLY - DO NOT CREATE LEGOs',
+      description: `Translate all ${totalSeeds} seeds to ${targetLangName}. You have ${seedsTranslated} done, ${remaining} remaining.`,
+      endpoint: `PATCH /api/seed/${courseCode}/{seed_number} with {"target_text": "..."}`,
+      when_done: `After ALL translations, POST /api/course/${courseCode}/analysis with your language analysis`
+    };
+  } else if (!pass2Complete) {
+    const remaining = seedCount - seedsDecomposed;
+    actionInstruction = {
+      current_pass: 2,
+      action: 'DECOMPOSE INTO LEGOs',
+      description: `Break seeds into LEGOs with practice phrases. You have ${seedsDecomposed} done, ${remaining} remaining to reach ${seedCount}.`,
+      endpoint: `POST /api/seed/complete with full seed + LEGOs`,
+      next_seed: incompleteSeed?.seed_number || null
+    };
+  } else {
+    actionInstruction = {
+      current_pass: 'COMPLETE',
+      action: 'COURSE COMPLETE',
+      description: `All ${seedCount} seeds have been translated and decomposed.`
+    };
+  }
+
   res.json({
+    // ⚠️ ACTION REQUIRED - READ THIS FIRST
+    ACTION: actionInstruction,
+
     course_code: courseCode,
     target_language: targetLangName,
 
     // Two-Pass Workflow: Translation analysis from Pass 1 (if completed)
     translation_analysis: courseInfo?.translation_analysis || null,
 
-    // Two-Pass Workflow: Pass status for agent to determine current phase
-    // Pass 1: Translate ALL seeds + save analysis
-    // Pass 2: Decompose up to seed_count (release target)
+    // Two-Pass Workflow: Pass status
     pass_status: {
       current_pass: currentPass,
-      total_seeds: totalSeeds,           // All seeds available (translate all in Pass 1)
-      seed_count: seedCount,             // Release target (decompose up to this in Pass 2)
+      total_seeds: totalSeeds,
+      seed_count: seedCount,
       seeds_translated: seedsTranslated,
       seeds_decomposed: seedsDecomposed,
       pass1_complete: pass1Complete,
@@ -4051,11 +4080,11 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     // Checkpoint status (QA gate at seed 10)
     checkpoint: await getCheckpointStatus(courseCode),
 
-    // Resume point
+    // Resume point (only relevant in Pass 2)
     next_seed: incompleteSeed ? {
       seed_number: incompleteSeed.seed_number,
       known_text: incompleteSeed.known_text,
-      hint: `Translate to ${targetLangName}, decompose into LEGOs, generate phrases`
+      target_text: incompleteSeed.target_text || null
     } : null,
 
     // Context from recent work
