@@ -945,10 +945,15 @@ async function startBuilder() {
 
       if (!createResponse.ok) {
         const err = await createResponse.json()
-        throw new Error(err.error || 'Failed to create course')
+        // 409 = course already exists, that's fine - just proceed to start builder
+        if (createResponse.status === 409) {
+          addEvent(`Course ${courseCode} already exists - starting builder`)
+        } else {
+          throw new Error(err.error || 'Failed to create course')
+        }
+      } else {
+        addEvent(`Course ${courseCode} created`)
       }
-
-      addEvent(`Course ${courseCode} created`)
     }
 
     // Map engine selection to terminal name
