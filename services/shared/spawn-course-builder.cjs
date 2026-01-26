@@ -367,91 +367,100 @@ For Chinese particles (吗, 呢, 了, etc.), include them in M-LEGOs:
 
 Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner infers 吗 from context.
 
-## CRITICAL: TWO-PASS WORKFLOW
+## ⚠️ CRITICAL: TWO-PASS WORKFLOW - READ THIS FIRST ⚠️
 
-Building a course requires TWO passes. Check your progress:
-\`GET ${builderApiUrl}/api/resume/${courseCode}\`
+**STEP ZERO - Check which pass you're on:**
+\`\`\`bash
+curl -s "${builderApiUrl}/api/resume/${courseCode}" | jq '.pass_status'
+\`\`\`
 
-The response includes \`pass_status\`:
-- \`pass1_complete: false\` → Do Pass 1 (translations)
-- \`pass1_complete: true, pass2_complete: false\` → Do Pass 2 (decomposition)
-- Both true → Course complete!
+**Look at the response:**
+- \`pass1_complete: false\` → You are in **PASS 1** (translations only)
+- \`pass1_complete: true, pass2_complete: false\` → You are in **PASS 2** (LEGOs)
 
 ---
 
-### PASS 1: Translate ALL Seeds First
+## ═══════════════════════════════════════════════════════════════
+## PASS 1: TRANSLATIONS ONLY (NO LEGOs!)
+## ═══════════════════════════════════════════════════════════════
 
-**Purpose:** Translate ALL ${seedCount} seeds AND discover language patterns.
+**IF pass1_complete is FALSE, you are in PASS 1.**
 
-**BEFORE STARTING:** Read \`/ssi-translation-methodology\` - this skill explains:
-- ZERO VARIATION: Same English → same target (always)
-- TWO ABSOLUTE RULES: Never change meaning, prefer cognates
-- Register decision: Pick one (du/Sie, tú/usted) and maintain throughout
-- How to track patterns and lock vocabulary choices
+**In Pass 1 you ONLY translate. You do NOT create LEGOs or phrases.**
 
-**Workflow:**
+### Where are the English seeds?
 
-**Step 1 - Get seeds to translate (COPY THIS EXACTLY):**
+The canonical English seeds are returned by the translate endpoint:
 \`\`\`bash
 curl -s "${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}" | jq '.seeds'
 \`\`\`
 
-**Step 2 - Translate each seed following the methodology (consistency over naturalness)**
+This returns seeds like:
+\`\`\`json
+{
+  "seed_number": 1,
+  "canonical_english": "I want to speak German with you now.",
+  "needs_target": true
+}
+\`\`\`
 
-**Step 3 - Save each translation:**
+### How to save a translation
+
+Use PATCH (not POST) to save ONLY the target_text:
 \`\`\`bash
-curl -X PATCH ${builderApiUrl}/api/seed/${courseCode}/1 \\
+curl -X PATCH "${builderApiUrl}/api/seed/${courseCode}/1" \\
   -H "Content-Type: application/json" \\
   -d '{"target_text": "Ich will jetzt Deutsch mit dir sprechen."}'
 \`\`\`
-4. **Track patterns as you translate:**
-   - Same English → different target? → Problem verb
-   - Pattern appears 10+ times? → Golden key
-   - You hesitated? → ZUT concern
-5. After ALL translations: Save analysis
+
+### Pass 1 Workflow
+
+1. Read \`/ssi-translation-methodology\` skill for translation rules
+2. Get all seeds: \`curl -s "${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}"\`
+3. Translate ALL ${seedCount} seeds using PATCH for each one
+4. Track patterns (problem verbs, golden keys, ZUT concerns)
+5. After ALL translations done, save your analysis:
    \`\`\`bash
-   curl -X POST ${builderApiUrl}/api/course/${courseCode}/analysis \\
+   curl -X POST "${builderApiUrl}/api/course/${courseCode}/analysis" \\
      -H "Content-Type: application/json" \\
-     -d '{
-       "register": {"choice": "informal", "markers": ["du"]},
-       "problem_verbs": [...],
-       "golden_keys": [...],
-       "zut_concerns": [...]
-     }'
+     -d '{"register": {"choice": "informal", "markers": ["du"]}, "problem_verbs": [], "golden_keys": [], "zut_concerns": []}'
    \`\`\`
 
-**DO NOT decompose or generate phrases in Pass 1!** Just translate.
+### ⛔ STOP - DO NOT PROCEED TO PASS 2 UNTIL ALL TRANSLATIONS ARE DONE
 
 ---
 
-### PASS 2: Decompose Into LEGOs
+## ═══════════════════════════════════════════════════════════════
+## PASS 2: DECOMPOSE INTO LEGOs (ONLY AFTER PASS 1 COMPLETE)
+## ═══════════════════════════════════════════════════════════════
 
-**Purpose:** Break each translated seed into LEGOs with practice phrases.
+**IF pass1_complete is TRUE and pass2_complete is FALSE, you are in PASS 2.**
 
-**Workflow:**
-1. \`GET ${builderApiUrl}/api/resume/${courseCode}\` - Get current state + your analysis
-2. The \`translation_analysis\` field contains your Pass 1 patterns - USE IT
-3. For each incomplete seed: decompose, generate phrases, submit:
-   \`\`\`bash
-   curl -X POST ${builderApiUrl}/api/seed/complete \\
-     -H "Content-Type: application/json" \\
-     -d '{...}'  # Full seed submission with LEGOs
-   \`\`\`
-4. The API validates vocabulary, tiling, phrase counts - fix errors and retry
+**Only now do you create LEGOs and practice phrases.**
 
-**Use your analysis:**
-- Problem verbs → Use your disambiguation rules
-- Golden keys → Introduce these patterns early as M-LEGOs
-- ZUT concerns → Use suggested rewordings in known_text
+### How to submit a complete seed with LEGOs
+
+Use POST to /api/seed/complete:
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/seed/complete" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "course_code": "${courseCode}",
+    "seed_number": 1,
+    "known_text": "I want to speak German with you now.",
+    "target_text": "Ich will jetzt Deutsch mit dir sprechen.",
+    "legos": [...]
+  }'
+\`\`\`
+
+### Pass 2 Workflow
+
+1. Check resume: \`curl -s "${builderApiUrl}/api/resume/${courseCode}"\`
+2. The \`translation_analysis\` field contains your Pass 1 patterns
+3. For each seed: decompose into LEGOs, generate phrases, submit
+4. API validates vocabulary, tiling, phrase counts - fix errors and retry
 
 ---
-
-**The /translate endpoint returns:**
-- \`canonical_english\`: The English seed text (with language name substituted)
-- \`needs_target\`: true if you need to provide target language translation
-- Seeds are pre-initialized in the database
-
-**NEVER write scripts or batch processors. Do the linguistic work directly via curl.**
 
 ## Quality Validation
 
