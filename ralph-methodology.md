@@ -85,10 +85,13 @@ BUILD examples for "after you finish" → "despues de que termines":
 ### USE Phrases (6 required)
 **Purpose:** Natural production. Put the LEGO "out."
 
-- MUST be complete sentences (complete thought, subject + verb)
-- MEDIUM → LONG length
+- **MUST be complete, natural sentences** - NEVER fragments
+- A USE phrase is something a learner would ACTUALLY SAY in conversation
+- MEDIUM → LONG length (Chinese: 4+ chars, other languages: 3+ words minimum)
 - Must contain the LEGO (exact character match)
 - ALL are eternal-eligible (go into spaced repetition)
+
+> ⚠️ **CRITICAL**: Even with limited vocabulary in early seeds, a USE phrase must be a complete sentence. If you can't form enough complete sentences with available vocabulary, **reduce the USE count** rather than submitting fragments. "想说。" or "Speak." is NEVER acceptable as a USE phrase.
 
 ```
 USE examples for "after you finish" → "despues de que termines":
@@ -554,3 +557,27 @@ Seeds 1-5 have limited vocabulary. Requirements are relaxed:
 ---
 
 *Output `<promise>COURSE_BUILD_COMPLETE</promise>` when all seeds pass.*
+
+---
+
+## Lessons Learned (Ralph Loop)
+
+This section captures hard-won insights from QA checkpoints and production issues. **Read before each build.**
+
+### 2026-01-26: USE Phrases Must Be Complete Sentences
+
+**Issue:** QA found USE phrases like "想说。" (2 chars) and "Speak." scoring 5 - these are fragments, not sentences.
+
+**Root Cause:** Early seed vocabulary constraints led to accepting incomplete phrases rather than reducing count.
+
+**Fix:**
+- USE phrases must ALWAYS be complete sentences regardless of seed position
+- If vocabulary limits prevent complete sentences, reduce USE count
+- Minimum practical lengths: Chinese 4+ chars, other languages 3+ words
+- Score 5 or below = rewrite, don't submit
+
+**Validation Added:** Agent self-check before submission - if USE phrase would score ≤5, rewrite it.
+
+---
+
+*Add new lessons above this line. Format: Date, Issue, Root Cause, Fix.*
