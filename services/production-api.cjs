@@ -384,6 +384,83 @@ app.get('/api/courses', async (req, res) => {
   }
 })
 
+// Create new course - DATABASE-FIRST (APML v14)
+app.post('/api/courses/create', async (req, res) => {
+  const { courseCode, displayName, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+
+  logger.info(`Creating course: ${courseCode}`)
+
+  if (!courseCode || !sourceLanguage || !targetLanguage) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      required: ['courseCode', 'sourceLanguage', 'targetLanguage']
+    })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({
+        error: 'Database not available',
+        message: 'Supabase is not configured. Course creation requires database.'
+      })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Check if course already exists
+    const { data: existing } = await supabase
+      .from('courses')
+      .select('course_code')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (existing) {
+      return res.status(409).json({
+        error: 'Course already exists',
+        courseCode
+      })
+    }
+
+    // Insert into Supabase courses table
+    const { error: dbError } = await supabase
+      .from('courses')
+      .insert({
+        course_code: courseCode,
+        known_lang: sourceLanguage,
+        target_lang: targetLanguage,
+        display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+        status: 'draft'
+      })
+
+    if (dbError) {
+      logger.error(`Failed to insert course into database:`, dbError)
+      return res.status(500).json({
+        error: 'Failed to create course in database',
+        message: dbError.message
+      })
+    }
+
+    logger.info(`Course created in Supabase: ${courseCode}`)
+
+    res.json({
+      success: true,
+      courseCode,
+      displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+      sourceLanguage,
+      targetLanguage,
+      seedRange: { start: seedStart || 1, end: seedEnd || 668 },
+      message: 'Course created. Use Course Builder to add content.'
+    })
+
+  } catch (error) {
+    logger.error(`Failed to create course ${courseCode}:`, error)
+    res.status(500).json({
+      error: 'Failed to create course',
+      message: error.message
+    })
+  }
+})
+
 // Voice config routes - proxy to course-builder
 app.all('/api/courses/:courseCode/voice-config', proxyCourseBuilder)
 app.all('/api/voices/*', proxyCourseBuilder)
