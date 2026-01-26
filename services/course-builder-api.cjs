@@ -4312,6 +4312,9 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 
+  // Record activity for stall detection (Pass 1 translations count as progress)
+  recordActivity(courseCode, seedNum);
+
   console.log(`✓ S${String(seedNum).padStart(4,'0')} translation: ${target_text}`);
   res.json({ ok: true, seed: seedNum, target_text });
 });
