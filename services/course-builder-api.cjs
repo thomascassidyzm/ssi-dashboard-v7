@@ -3115,6 +3115,23 @@ app.post('/api/seed/complete', async (req, res) => {
             methodology: METHODOLOGY_HINTS.phrases
           });
         }
+
+        // LEGACY FORMAT: Validate scores on USE phrases (position >= 8 = eternal_eligible)
+        // These need scores 1-9 for QA drift calculation
+        if (!SKIP_VALIDATION && seed_number >= 6) {
+          const usePhrases = lego.phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
+          const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
+          if (missingScores.length > 0) {
+            errors.push({
+              type: 'missing_scores',
+              message: `${legoId}: USE phrases (position 8+) must have scores 1-9. Missing: ${missingScores.length}`,
+              lego_id: legoId,
+              hint: 'Add "score": 7 (or 1-9) to each USE phrase for QA tracking',
+              methodology: 'USE phrases are eternal-eligible and need quality scores for drift analysis'
+            });
+            console.log(`✗ ${legoId}: MISSING SCORES - ${missingScores.length} USE phrases without scores`);
+          }
+        }
       } else if (!SKIP_VALIDATION) {
         // NO PHRASES AT ALL - HARD REJECT
         // Agent submitted LEGO with no build[], no use[], and no phrases[]
