@@ -306,10 +306,12 @@ async function approveCheckpoint(courseCode, checkpointSeed, approvedBy = 'human
 
   // Also update in-memory cache
   const state = initCheckpointState(courseCode);
+  const isApproved = status === 'approved' || status === 'flagged';
   state.checkpoints[checkpointSeed] = {
-    approved: true,
-    approvedAt: new Date().toISOString(),
-    approvedBy,
+    approved: isApproved,
+    approvedAt: isApproved ? new Date().toISOString() : null,
+    approvedBy: isApproved ? approvedBy : null,
+    status: status,
     qa_report: qaReport
   };
 
@@ -464,14 +466,15 @@ function extractNgrams(text, n = 3) {
 // =============================================================================
 
 /**
- * Compute phrase_role from position value (LEGACY - for backward compatibility)
- * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = eternal)
- * @returns {'component' | 'practice' | 'eternal_eligible'}
- * @deprecated Use explicit 'build'/'use' roles from ralph-methodology.md
+ * Compute phrase_role from position value
+ * @param {number} position - The phrase position (0 = component, 1-7 = practice, 8+ = use)
+ * @returns {'component' | 'practice' | 'use'}
+ * BUILD = component + practice (heard once during build-up)
+ * USE = position 8+ (spaced repetition, consolidation)
  */
 function computePhraseRole(position) {
   if (position === 0) return 'component';
-  if (position >= 8) return 'eternal_eligible';
+  if (position >= 8) return 'use';
   return 'practice';
 }
 
@@ -1501,16 +1504,18 @@ function setCacheEntry(courseCode, vocabSet) {
 /**
  * Detect if course uses character-level vocab (Chinese, Japanese, Korean)
  * These languages don't use spaces between words, so vocabulary is character-based
+ *
+ * IMPORTANT: This checks the TARGET language (what learner produces), not the known language.
+ * For eng_for_zho (English for Chinese speakers), target=eng, so vocab is word-based.
+ * For zho_for_eng (Chinese for English speakers), target=zho, so vocab is character-based.
  */
 function isChinese(courseCode) {
-  // Check for Chinese, Japanese, or Korean (all use character-based vocab)
+  // Check if TARGET language is CJK (character-based vocab)
+  // Course code format: {target}_for_{known} (e.g., zho_for_eng, eng_for_zho)
+  const parts = courseCode.split('_for_');
+  const targetLang = parts[0] || '';  // Target language is the first part
   const characterBasedLangs = ['zho', 'jpn', 'kor'];
-  for (const lang of characterBasedLangs) {
-    if (courseCode.startsWith(lang) || courseCode.includes(`_${lang}`)) {
-      return true;
-    }
-  }
-  return false;
+  return characterBasedLangs.includes(targetLang);
 }
 
 /**
@@ -2465,6 +2470,31 @@ app.post('/api/lego', async (req, res) => {
       }
     }
 
+    // SCORE VALIDATION: USE phrases (position 8+) must have scores 1-9
+    if (phrases && phrases.length > 0 && seed >= 6 && !allowValidationBypass(req.body)) {
+      const usePhrases = phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
+      const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
+      if (missingScores.length > 0) {
+        console.log(`✗ ${legoId}: REJECTED - ${missingScores.length} USE phrases missing scores`);
+        return res.status(400).json({
+          error: 'USE phrases must have scores',
+          lego_id: legoId,
+          missing_count: missingScores.length,
+          hint: 'Add "score": 7 (or 1-9) to each USE phrase (position 8+) for QA tracking'
+        });
+      }
+      const lowScores = usePhrases.filter(p => typeof p.score === 'number' && p.score < 5);
+      if (lowScores.length > 0) {
+        console.log(`✗ ${legoId}: REJECTED - ${lowScores.length} USE phrases with score < 5`);
+        return res.status(400).json({
+          error: 'USE phrases scored < 5 should be rewritten',
+          lego_id: legoId,
+          low_count: lowScores.length,
+          hint: 'Rewrite low-scoring phrases. Only submit USE phrases you would score 5+'
+        });
+      }
+    }
+
     // Insert LEGO
     const { error: legoError } = await supabase
       .from('course_legos')
@@ -3116,8 +3146,8 @@ app.post('/api/seed/complete', async (req, res) => {
           });
         }
 
-        // LEGACY FORMAT: Validate scores on USE phrases (position >= 8 = eternal_eligible)
-        // These need scores 1-9 for QA drift calculation
+        // Validate scores on USE phrases (position 8+ = 'use' role)
+        // USE phrases need scores 1-9 for QA drift calculation
         if (!SKIP_VALIDATION && seed_number >= 6) {
           const usePhrases = lego.phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
           const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
@@ -4692,6 +4722,19 @@ app.post('/api/phrases', async (req, res) => {
     }
   }
 
+  // SCORE VALIDATION: Phrases at position 8+ must have scores
+  if (seed_number >= 6) {
+    const usePhrases = phrases.filter((p, idx) => (nextPosition - phrases.length + idx) >= 8);
+    const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
+    if (missingScores.length > 0) {
+      return res.status(400).json({
+        error: 'USE phrases (position 8+) must have scores 1-9',
+        missing_count: missingScores.length,
+        hint: 'Add "score": 7 (or 1-9) to each phrase that will be at position 8+'
+      });
+    }
+  }
+
   if (violations.length > 0) {
     return res.status(400).json({
       error: 'Vocabulary violations detected',
@@ -4777,6 +4820,7 @@ app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
     .eq('course_code', courseCode);
 
   // Get USE phrases with scores (sample ~50 for QA)
+  // phrase_role: 'component'/'practice' = BUILD, 'use' = USE (spaced repetition)
   const { data: usePhrases } = await supabase
     .from('course_practice_phrases')
     .select('id, seed_number, lego_index, known_text, target_text, phrase_role, metadata')
