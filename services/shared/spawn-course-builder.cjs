@@ -367,98 +367,38 @@ For Chinese particles (吗, 呢, 了, etc.), include them in M-LEGOs:
 
 Build-up teaches: "good" → "好", then "Is it good?" → "好吗". Learner infers 吗 from context.
 
-## ⚠️ CRITICAL: TWO-PASS WORKFLOW - READ THIS FIRST ⚠️
+## ⚠️ TWO-PASS WORKFLOW ⚠️
 
-**STEP ZERO - Check which pass you're on:**
+**First, check which pass you're on:**
 \`\`\`bash
 curl -s "${builderApiUrl}/api/resume/${courseCode}" | jq '.pass_status'
 \`\`\`
 
-**Look at the response:**
-- \`pass1_complete: false\` → You are in **PASS 1** (translations only)
-- \`pass1_complete: true, pass2_complete: false\` → You are in **PASS 2** (LEGOs)
+- \`pass1_complete: false\` → Do PASS 1
+- \`pass1_complete: true, pass2_complete: false\` → Do PASS 2
 
 ---
 
-## ═══════════════════════════════════════════════════════════════
-## PASS 1: TRANSLATIONS ONLY (NO LEGOs!)
-## ═══════════════════════════════════════════════════════════════
+## PASS 1: TRANSLATIONS ONLY
 
-**IF pass1_complete is FALSE, you are in PASS 1.**
+**You ONLY translate. No LEGOs. No phrases.**
 
-**In Pass 1 you ONLY translate. You do NOT create LEGOs or phrases.**
+1. Read \`/ssi-translation-methodology\` skill first
+2. Get seeds: \`GET ${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}\`
+3. For each seed, save translation: \`PATCH ${builderApiUrl}/api/seed/${courseCode}/{seed_number}\` with \`{"target_text": "..."}\`
+4. After ALL translations, save analysis: \`POST ${builderApiUrl}/api/course/${courseCode}/analysis\`
 
-### Where are the English seeds?
-
-The canonical English seeds are returned by the translate endpoint:
-\`\`\`bash
-curl -s "${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}" | jq '.seeds'
-\`\`\`
-
-This returns seeds like:
-\`\`\`json
-{
-  "seed_number": 1,
-  "canonical_english": "I want to speak German with you now.",
-  "needs_target": true
-}
-\`\`\`
-
-### How to save a translation
-
-Use PATCH (not POST) to save ONLY the target_text:
-\`\`\`bash
-curl -X PATCH "${builderApiUrl}/api/seed/${courseCode}/1" \\
-  -H "Content-Type: application/json" \\
-  -d '{"target_text": "Ich will jetzt Deutsch mit dir sprechen."}'
-\`\`\`
-
-### Pass 1 Workflow
-
-1. Read \`/ssi-translation-methodology\` skill for translation rules
-2. Get all seeds: \`curl -s "${builderApiUrl}/api/course/${courseCode}/translate?limit=${seedCount}"\`
-3. Translate ALL ${seedCount} seeds using PATCH for each one
-4. Track patterns (problem verbs, golden keys, ZUT concerns)
-5. After ALL translations done, save your analysis:
-   \`\`\`bash
-   curl -X POST "${builderApiUrl}/api/course/${courseCode}/analysis" \\
-     -H "Content-Type: application/json" \\
-     -d '{"register": {"choice": "informal", "markers": ["du"]}, "problem_verbs": [], "golden_keys": [], "zut_concerns": []}'
-   \`\`\`
-
-### ⛔ STOP - DO NOT PROCEED TO PASS 2 UNTIL ALL TRANSLATIONS ARE DONE
+**⛔ Do not proceed to Pass 2 until all ${seedCount} translations are saved.**
 
 ---
 
-## ═══════════════════════════════════════════════════════════════
-## PASS 2: DECOMPOSE INTO LEGOs (ONLY AFTER PASS 1 COMPLETE)
-## ═══════════════════════════════════════════════════════════════
+## PASS 2: DECOMPOSE INTO LEGOs
 
-**IF pass1_complete is TRUE and pass2_complete is FALSE, you are in PASS 2.**
+**Now create LEGOs and practice phrases.**
 
-**Only now do you create LEGOs and practice phrases.**
-
-### How to submit a complete seed with LEGOs
-
-Use POST to /api/seed/complete:
-\`\`\`bash
-curl -X POST "${builderApiUrl}/api/seed/complete" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "course_code": "${courseCode}",
-    "seed_number": 1,
-    "known_text": "I want to speak German with you now.",
-    "target_text": "Ich will jetzt Deutsch mit dir sprechen.",
-    "legos": [...]
-  }'
-\`\`\`
-
-### Pass 2 Workflow
-
-1. Check resume: \`curl -s "${builderApiUrl}/api/resume/${courseCode}"\`
-2. The \`translation_analysis\` field contains your Pass 1 patterns
-3. For each seed: decompose into LEGOs, generate phrases, submit
-4. API validates vocabulary, tiling, phrase counts - fix errors and retry
+1. Get resume: \`GET ${builderApiUrl}/api/resume/${courseCode}\` (includes your analysis)
+2. For each seed: \`POST ${builderApiUrl}/api/seed/complete\` with full seed + LEGOs
+3. API validates - fix errors and retry
 
 ---
 
