@@ -136,36 +136,32 @@ const { spawn, execSync } = require('child_process');
 const PROJECT_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean';
 
 /**
- * Check how many headless Claude agents are already running in the project directory.
- * Returns count of background agents (excludes terminal-attached sessions).
+ * Check how many Claude agents are running in the project directory.
+ * Counts ALL agents - both terminal-attached and headless.
  */
 function getRunningAgentCount() {
   try {
-    // Get all claude PIDs
+    // Get all claude PIDs (exclude chrome helper)
     const psOutput = execSync('ps aux | grep -i "claude" | grep -v grep | grep -v chrome-native', { encoding: 'utf8' });
     const lines = psOutput.trim().split('\n').filter(Boolean);
 
-    let headlessCount = 0;
+    let agentCount = 0;
     for (const line of lines) {
       const parts = line.split(/\s+/);
       const pid = parts[1];
-      const tty = parts[6];
-
-      // Skip terminal-attached sessions (tty like s000, s001, etc.)
-      if (tty && tty.match(/^s\d+$/)) continue;
 
       // Check if this process is working in our project directory
       try {
         const lsofOutput = execSync(`lsof -p ${pid} 2>/dev/null | grep cwd`, { encoding: 'utf8' });
         if (lsofOutput.includes(PROJECT_DIR)) {
-          headlessCount++;
+          agentCount++;
         }
       } catch (e) {
         // Process may have exited, skip it
       }
     }
 
-    return headlessCount;
+    return agentCount;
   } catch (e) {
     // No claude processes found
     return 0;
