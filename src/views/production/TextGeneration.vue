@@ -582,7 +582,9 @@ function getCheckpointBadgeClass(cp) {
 
 function getCheckpointTooltip(cp) {
   if (cp.status === 'approved') {
-    return `Checkpoint ${cp.seed}: Approved (Quality: ${cp.qa_avg?.toFixed(1) || '?'}, Drift: ${cp.drift?.toFixed(2) || '?'})`
+    const qaDisplay = typeof cp.qa_avg === 'number' ? cp.qa_avg.toFixed(1) : (cp.qa_avg ? Number(cp.qa_avg).toFixed(1) : '?')
+    const driftDisplay = typeof cp.drift === 'number' ? cp.drift.toFixed(2) : (cp.drift ? Number(cp.drift).toFixed(2) : '?')
+    return `Checkpoint ${cp.seed}: Approved (Quality: ${qaDisplay}, Drift: ${driftDisplay})`
   }
   if (cp.status === 'pending_human') {
     return `Checkpoint ${cp.seed}: Needs human review`
