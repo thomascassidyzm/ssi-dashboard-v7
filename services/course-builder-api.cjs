@@ -2533,7 +2533,7 @@ app.post('/api/lego', async (req, res) => {
             phrase_role: computePhraseRole(position),
             connected_lego_ids: [],  // Populated by backfill for single-LEGO endpoint
             lego_position: computeLegoPosition(p.target, target),
-            metadata: {},
+            metadata: p.score ? { score: p.score } : {},
             status: 'draft',
             version: 1
           };
@@ -2711,7 +2711,7 @@ app.post('/api/batch', async (req, res) => {
               phrase_role: computePhraseRole(position),
               connected_lego_ids: [],  // Populated by backfill for batch endpoint
               lego_position: computeLegoPosition(p.target, lego.target),
-              metadata: {},
+              metadata: p.score ? { score: p.score } : {},
               status: 'draft',
               version: 1
             };
@@ -3455,7 +3455,7 @@ app.post('/api/seed/complete', async (req, res) => {
             phrase_role: computePhraseRole(position),
             connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target, lego.target),
-            metadata: {},
+            metadata: p.score ? { score: p.score } : {},
             status: 'draft',
             version: 1
           };
