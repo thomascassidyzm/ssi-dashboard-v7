@@ -567,14 +567,17 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
 
   // USE phrases must be complete sentences - reject any below MEDIUM threshold
   // This catches fragments like "想说。" (2 chars) that slip through tier counting
-  const tooShortUse = use.filter(p => p.target.length < thresholds.MEDIUM.min);
-  if (tooShortUse.length > 0) {
-    return {
-      valid: false,
-      error: `USE phrases must be complete sentences (${thresholds.MEDIUM.min}+ chars for ${targetLang}). Too short: ${tooShortUse.map(p => `"${p.target}" (${p.target.length} chars)`).join(', ')}`,
-      hint: 'USE phrases go into eternal rotation - learners hear them hundreds of times. Fragments are NEVER acceptable. Reduce USE count if vocabulary is limited.',
-      details: { tooShort: tooShortUse.map(p => ({ target: p.target, length: p.target.length })) }
-    };
+  // EXCEPTION: Seeds 1-5 have limited vocab, so we relax this requirement
+  if (seedNumber >= 6) {
+    const tooShortUse = use.filter(p => p.target.length < thresholds.MEDIUM.min);
+    if (tooShortUse.length > 0) {
+      return {
+        valid: false,
+        error: `USE phrases must be complete sentences (${thresholds.MEDIUM.min}+ chars for ${targetLang}). Too short: ${tooShortUse.map(p => `"${p.target}" (${p.target.length} chars)`).join(', ')}`,
+        hint: 'USE phrases go into eternal rotation - learners hear them hundreds of times. Fragments are NEVER acceptable. Reduce USE count if vocabulary is limited.',
+        details: { tooShort: tooShortUse.map(p => ({ target: p.target, length: p.target.length })) }
+      };
+    }
   }
 
   // If full requirements, check length tiers
