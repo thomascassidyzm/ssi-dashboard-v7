@@ -4042,6 +4042,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     actionInstruction = {
       current_pass: 1,
       action: 'TRANSLATE ONLY - DO NOT CREATE LEGOs',
+      FIRST: 'Run /ssi-translation-methodology - covers ZERO VARIATION, cognates, register consistency',
       description: `Translate all seeds to ${targetLangName}. ${seedsTranslated}/${totalSeeds} done.`,
       next_seed: nextToTranslate?.seed_number || null,
       endpoint: `PATCH /api/seed/${courseCode}/{seed_number}`,
@@ -4053,6 +4054,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     actionInstruction = {
       current_pass: 2,
       action: 'DECOMPOSE INTO LEGOs',
+      FIRST: 'Run /ssi-decompose-seed and /ssi-build-phrases for methodology',
       description: `Break seeds into LEGOs. ${seedsDecomposed}/${seedCount} done.`,
       next_seed: nextToDecompose ? {
         seed_number: nextToDecompose.seed_number,
