@@ -1941,12 +1941,12 @@ const MAX_PHRASES_PER_LEGO = 13;      // Cap at 13 (diminishing returns)
 const TARGET_PHRASES_PER_LEGO = 10;   // Ideal target
 const MIN_BATCH_PHRASE_RATIO = 7.0;   // Batch must have ≥7.0 phrases per LEGO
 
-// Phrase length tiers in SYLLABLES (language-agnostic target)
-// We convert to characters using language-specific ratios
+// SYLLABLES = cognitive load. Characters are a proxy based on target language orthography.
+// Max ~20 syllables is the cognitive ceiling for a single phrase.
 const SYLLABLE_TIERS = {
-  SHORT: { min: 3, max: 5 },     // 3-5 syllables: quick recall
-  MEDIUM: { min: 6, max: 9 },    // 6-9 syllables: building complexity
-  LONG: { min: 10, max: 999 }    // 10+ syllables: full sentences (spaced repetition)
+  SHORT: { min: 3, max: 5 },     // 3-5 syllables: quick recall, pattern lock-in
+  MEDIUM: { min: 6, max: 11 },   // 6-11 syllables: building complexity
+  LONG: { min: 12, max: 20 }     // 12-20 syllables: full sentences (eternal rotation)
 };
 
 // Average characters per syllable by target language
