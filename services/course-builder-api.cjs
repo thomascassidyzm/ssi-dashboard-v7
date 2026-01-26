@@ -4027,6 +4027,14 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     analyzeVocabRecency(courseCode)
   ]);
 
+  // Find next seed based on current pass
+  // Pass 1: First seed without target_text
+  const nextToTranslate = allSeeds?.find(s => !s.target_text || s.target_text.trim() === '');
+  // Pass 2: First seed with translation but no LEGOs
+  const nextToDecompose = allSeeds?.find(s =>
+    s.target_text && s.target_text.trim() !== '' && !completedSeeds.has(s.seed_number)
+  );
+
   // Build action instruction based on pass status
   let actionInstruction;
   if (!pass1Complete) {
@@ -4034,58 +4042,39 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     actionInstruction = {
       current_pass: 1,
       action: 'TRANSLATE ONLY - DO NOT CREATE LEGOs',
-      description: `Translate all ${totalSeeds} seeds to ${targetLangName}. You have ${seedsTranslated} done, ${remaining} remaining.`,
-      endpoint: `PATCH /api/seed/${courseCode}/{seed_number} with {"target_text": "..."}`,
-      when_done: `After ALL translations, POST /api/course/${courseCode}/analysis with your language analysis`
+      description: `Translate all seeds to ${targetLangName}. ${seedsTranslated}/${totalSeeds} done.`,
+      next_seed: nextToTranslate?.seed_number || null,
+      endpoint: `PATCH /api/seed/${courseCode}/{seed_number}`,
+      body: '{"target_text": "your translation"}',
+      when_done: `POST /api/course/${courseCode}/analysis`
     };
   } else if (!pass2Complete) {
     const remaining = seedCount - seedsDecomposed;
     actionInstruction = {
       current_pass: 2,
       action: 'DECOMPOSE INTO LEGOs',
-      description: `Break seeds into LEGOs with practice phrases. You have ${seedsDecomposed} done, ${remaining} remaining to reach ${seedCount}.`,
-      endpoint: `POST /api/seed/complete with full seed + LEGOs`,
-      next_seed: incompleteSeed?.seed_number || null
+      description: `Break seeds into LEGOs. ${seedsDecomposed}/${seedCount} done.`,
+      next_seed: nextToDecompose ? {
+        seed_number: nextToDecompose.seed_number,
+        known_text: nextToDecompose.known_text,
+        target_text: nextToDecompose.target_text
+      } : null,
+      endpoint: `POST /api/seed/complete`
     };
   } else {
     actionInstruction = {
       current_pass: 'COMPLETE',
       action: 'COURSE COMPLETE',
-      description: `All ${seedCount} seeds have been translated and decomposed.`
+      description: `All ${seedCount} seeds translated and decomposed.`
     };
   }
 
   res.json({
-    // ⚠️ ACTION REQUIRED - READ THIS FIRST
     ACTION: actionInstruction,
-
     course_code: courseCode,
     target_language: targetLangName,
-
-    // Two-Pass Workflow: Translation analysis from Pass 1 (if completed)
     translation_analysis: courseInfo?.translation_analysis || null,
-
-    // Two-Pass Workflow: Pass status
-    pass_status: {
-      current_pass: currentPass,
-      total_seeds: totalSeeds,
-      seed_count: seedCount,
-      seeds_translated: seedsTranslated,
-      seeds_decomposed: seedsDecomposed,
-      pass1_complete: pass1Complete,
-      pass2_complete: pass2Complete,
-      analysis_saved: analysisSaved
-    },
-
-    // Checkpoint status (QA gate at seed 10)
     checkpoint: await getCheckpointStatus(courseCode),
-
-    // Resume point (only relevant in Pass 2)
-    next_seed: incompleteSeed ? {
-      seed_number: incompleteSeed.seed_number,
-      known_text: incompleteSeed.known_text,
-      target_text: incompleteSeed.target_text || null
-    } : null,
 
     // Context from recent work
     recent_seeds: recentCompleted || [],
