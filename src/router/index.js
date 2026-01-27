@@ -466,7 +466,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
-    : 'Popty v8.2.2 - SSi Course Production Dashboard'
+    : 'Popty v14.0.0 - SSi Course Production Dashboard'
   next()
 })
 
