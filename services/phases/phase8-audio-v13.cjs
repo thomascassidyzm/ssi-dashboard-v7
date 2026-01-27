@@ -310,6 +310,9 @@ async function planHandler(req, res) {
       return res.status(404).json({ error: 'Course not found' })
     }
 
+    // Release target - only count audio needs up to this seed number (MVP = 260)
+    const releaseTarget = course.seed_count || 260
+
     // Get what audio we have (paginated)
     // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
     const existingAudio = []
@@ -336,6 +339,7 @@ async function planHandler(req, res) {
     }
 
     // Get what phrases we need (from practice phrases, paginated)
+    // Only include phrases up to the release target
     const phrases = []
     let phrasesOffset = 0
     let hasMorePhrases = true
@@ -343,8 +347,9 @@ async function planHandler(req, res) {
     while (hasMorePhrases) {
       const { data: phrasesBatch, error: phrasesError } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text')
+        .select('known_text, target_text, seed_number')
         .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
         .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
 
       if (phrasesError) throw phrasesError
@@ -381,10 +386,12 @@ async function planHandler(req, res) {
     }
 
     // Also include LEGO debut audio (the LEGO text itself needs known/target1/target2)
+    // Only include LEGOs up to the release target
     const { data: allLegos } = await supabase
       .from('course_legos')
-      .select('lego_id, known_text, target_text')
+      .select('lego_id, seed_number, known_text, target_text')
       .eq('course_code', courseCode)
+      .lte('seed_number', releaseTarget)
 
     if (allLegos?.length > 0) {
       for (const lego of allLegos) {
@@ -402,12 +409,13 @@ async function planHandler(req, res) {
     }
 
     // Also include seed sentence audio (full seed sentences need known/target1/target2)
-    // Only include released seeds (draft seeds have empty target_text)
+    // Only include released seeds up to the release target
     const { data: allSeeds } = await supabase
       .from('course_seeds')
       .select('seed_number, known_text, target_text')
       .eq('course_code', courseCode)
       .eq('status', 'released')
+      .lte('seed_number', releaseTarget)
 
     if (allSeeds?.length > 0) {
       for (const seed of allSeeds) {
@@ -426,46 +434,37 @@ async function planHandler(req, res) {
 
     // Get LEGOs that need presentation audio (is_new = true)
     // These are the LEGOs that require a presentation intro like "The Spanish for 'word', is:"
+    // Only include LEGOs up to the release target
     const { data: newLegos, error: legosError } = await supabase
       .from('course_legos')
-      .select('lego_id, known_text')
+      .select('lego_id, seed_number, known_text')
       .eq('course_code', courseCode)
       .eq('is_new', true)
+      .lte('seed_number', releaseTarget)
 
     if (legosError) throw legosError
 
     // Get existing presentation audio (exclude pending/)
+    // Use lego_id for reliable matching (text parsing is error-prone)
     const { data: existingPresentations } = await supabase
       .from('course_audio')
-      .select('text_normalized, lego_id')
+      .select('lego_id')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
       .not('s3_key', 'like', 'pending/%')
 
-    // Build set of known_text values that have presentation audio
-    // Multiple LEGOs can share the same known_text, so check by text not lego_id
-    // Extract known_text from presentation: "The French for 'KNOWN_TEXT', as in ..." or "... for 'KNOWN_TEXT', is:"
-    // Note: known_text may contain apostrophes (e.g., "I'm going to"), so we match until ', as in' or ', is:'
-    const knownTextsWithPresentation = new Set()
-    for (const pres of existingPresentations || []) {
-      // Match "for 'X', as in" or "for 'X', is:" where X can contain apostrophes
-      const match = pres.text_normalized?.match(/for '(.+?)'(?:, as in|, is:)/)
-      if (match) {
-        knownTextsWithPresentation.add(match[1].toLowerCase().trim())
-      }
-    }
+    // Build set of lego_ids that have presentation audio
+    const legoIdsWithPresentation = new Set(
+      (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
+    )
 
-    // Count missing presentations by unique known_text (not by lego_id)
-    // Multiple LEGOs with same known_text share ONE presentation
-    const seenKnownTexts = new Set()
+    // Count missing presentations by lego_id
     const missingPresentationLegos = []
     for (const lego of newLegos || []) {
-      const knownKey = lego.known_text.toLowerCase().trim()
-      // Skip if we've already counted this known_text or it has presentation
-      if (seenKnownTexts.has(knownKey) || knownTextsWithPresentation.has(knownKey)) {
+      // Skip if this LEGO already has presentation audio
+      if (legoIdsWithPresentation.has(lego.lego_id)) {
         continue
       }
-      seenKnownTexts.add(knownKey)
       missingPresentationLegos.push({
         text: lego.known_text,  // Will be expanded to full presentation text during generation
         language: course.known_lang,
@@ -513,6 +512,7 @@ async function planHandler(req, res) {
 
     res.json({
       courseCode,
+      releaseTarget,
       course: {
         displayName: course.display_name,
         knownLang: course.known_lang,
