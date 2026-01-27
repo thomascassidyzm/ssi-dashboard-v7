@@ -79,6 +79,23 @@ const LANG_NAMES = {
 }
 
 // =============================================================================
+// TEXT NORMALIZATION (for audio matching)
+// =============================================================================
+
+// Punctuation to strip when comparing text for audio matching
+const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
+
+/**
+ * Normalize text for audio matching comparison
+ * Strips punctuation, lowercases, and trims - used when comparing
+ * phrase text against existing audio records
+ */
+function normalizeText(text) {
+  if (!text) return ''
+  return text.toLowerCase().replace(PUNCT_REGEX, '').trim()
+}
+
+// =============================================================================
 // CONCURRENCY SETTINGS
 // =============================================================================
 
@@ -388,20 +405,21 @@ async function planHandler(req, res) {
 
     // Build needed list
     const needed = []
+    // Use normalizeText on both sides for punctuation-insensitive matching
     const existingSet = new Set(
-      (existingAudio || []).map(a => `${a.text_normalized}|${a.language}|${a.role}`)
+      (existingAudio || []).map(a => `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`)
     )
 
     for (const phrase of phrases || []) {
       // Known language audio
-      const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+      const knownKey = `${normalizeText(phrase.known_text)}|${course.known_lang}|known`
       if (!existingSet.has(knownKey)) {
         needed.push({ text: phrase.known_text, language: course.known_lang, role: 'known' })
       }
 
       // Target language audio (target1 and target2)
       for (const role of ['target1', 'target2']) {
-        const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+        const targetKey = `${normalizeText(phrase.target_text)}|${course.target_lang}|${role}`
         if (!existingSet.has(targetKey)) {
           needed.push({ text: phrase.target_text, language: course.target_lang, role })
         }
@@ -418,12 +436,12 @@ async function planHandler(req, res) {
 
     if (allLegos?.length > 0) {
       for (const lego of allLegos) {
-        const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        const knownKey = `${normalizeText(lego.known_text)}|${course.known_lang}|known`
         if (!existingSet.has(knownKey)) {
           needed.push({ text: lego.known_text, language: course.known_lang, role: 'known' })
         }
         for (const role of ['target1', 'target2']) {
-          const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          const targetKey = `${normalizeText(lego.target_text)}|${course.target_lang}|${role}`
           if (!existingSet.has(targetKey)) {
             needed.push({ text: lego.target_text, language: course.target_lang, role })
           }
@@ -442,12 +460,12 @@ async function planHandler(req, res) {
 
     if (allSeeds?.length > 0) {
       for (const seed of allSeeds) {
-        const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        const knownKey = `${normalizeText(seed.known_text)}|${course.known_lang}|known`
         if (!existingSet.has(knownKey)) {
           needed.push({ text: seed.known_text, language: course.known_lang, role: 'known' })
         }
         for (const role of ['target1', 'target2']) {
-          const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          const targetKey = `${normalizeText(seed.target_text)}|${course.target_lang}|${role}`
           if (!existingSet.has(targetKey)) {
             needed.push({ text: seed.target_text, language: course.target_lang, role })
           }
@@ -673,8 +691,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    // Use normalizeText on both sides for punctuation-insensitive matching
     const existingSet = new Set(
-      existingAudio.map(a => `${a.text_normalized}|${a.language}|${a.role}`)
+      existingAudio.map(a => `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`)
     )
 
     const needed = []
@@ -701,7 +720,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     for (const phrase of phrases) {
       // Skip punctuation-only known text
       if (!isPunctuationOnly(phrase.known_text)) {
-        const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        const knownKey = `${normalizeText(phrase.known_text)}|${course.known_lang}|known`
         if (!existingSet.has(knownKey)) {
           needed.push({
             text: phrase.known_text,
@@ -716,7 +735,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Skip punctuation-only target text
       if (!isPunctuationOnly(phrase.target_text)) {
         for (const role of ['target1', 'target2']) {
-          const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          const targetKey = `${normalizeText(phrase.target_text)}|${course.target_lang}|${role}`
           if (!existingSet.has(targetKey)) {
             needed.push({
               text: phrase.target_text,
@@ -746,7 +765,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       for (const lego of legos) {
         // Skip punctuation-only LEGO text
         if (!isPunctuationOnly(lego.known_text)) {
-          const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+          const knownKey = `${normalizeText(lego.known_text)}|${course.known_lang}|known`
           if (!existingSet.has(knownKey)) {
             needed.push({
               text: lego.known_text,
@@ -763,7 +782,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         // Skip punctuation-only target text
         if (!isPunctuationOnly(lego.target_text)) {
           for (const role of ['target1', 'target2']) {
-            const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+            const targetKey = `${normalizeText(lego.target_text)}|${course.target_lang}|${role}`
             if (!existingSet.has(targetKey)) {
               needed.push({
                 text: lego.target_text,
@@ -800,7 +819,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       for (const seed of seeds) {
         // Skip punctuation-only seed text (unlikely for full sentences, but be safe)
         if (!isPunctuationOnly(seed.known_text)) {
-          const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+          const knownKey = `${normalizeText(seed.known_text)}|${course.known_lang}|known`
           if (!existingSet.has(knownKey)) {
             needed.push({
               text: seed.known_text,
@@ -817,7 +836,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         // Skip punctuation-only target text
         if (!isPunctuationOnly(seed.target_text)) {
           for (const role of ['target1', 'target2']) {
-            const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+            const targetKey = `${normalizeText(seed.target_text)}|${course.target_lang}|${role}`
             if (!existingSet.has(targetKey)) {
               needed.push({
                 text: seed.target_text,
