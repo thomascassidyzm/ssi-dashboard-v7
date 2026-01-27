@@ -596,7 +596,11 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // Get practice phrases (paginated)
+    // Release target - only generate audio for seeds up to this number (MVP = 260)
+    // This must match the /plan endpoint logic for consistent results
+    const releaseTarget = course.seed_count || 260
+
+    // Get practice phrases (paginated) - filtered by release target
     const PAGE_SIZE = 1000
     const phrases = []
     let phrasesOffset = 0
@@ -605,8 +609,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     while (hasMorePhrases) {
       const { data: phrasesBatch, error: phrasesError } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text')
+        .select('known_text, target_text, seed_number')
         .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
         .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
 
       if (phrasesError) throw phrasesError
@@ -688,10 +693,12 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Also include LEGO debut audio (the LEGO text itself needs known/target1/target2)
     // This ensures the LEGO debut cycle has audio, not just practice phrases
+    // Filter by release target to match /plan endpoint logic
     const { data: legos, error: legosError } = await supabase
       .from('course_legos')
-      .select('lego_id, known_text, target_text')
+      .select('lego_id, seed_number, known_text, target_text')
       .eq('course_code', courseCode)
+      .lte('seed_number', releaseTarget)
 
     if (legosError) {
       logger.warn('Failed to fetch LEGOs for debut audio:', legosError.message)
@@ -734,12 +741,14 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Also include seed sentence audio (full seed sentences need known/target1/target2)
-    // Only include released seeds (draft seeds have empty target_text)
+    // Only include released seeds up to release target (draft seeds have empty target_text)
+    // Filter by release target to match /plan endpoint logic
     const { data: seeds, error: seedsError } = await supabase
       .from('course_seeds')
       .select('seed_number, known_text, target_text')
       .eq('course_code', courseCode)
       .eq('status', 'released')
+      .lte('seed_number', releaseTarget)
 
     if (seedsError) {
       logger.warn('Failed to fetch seeds for audio:', seedsError.message)

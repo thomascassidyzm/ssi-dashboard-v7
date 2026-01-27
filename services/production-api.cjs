@@ -126,7 +126,16 @@ app.get('/api/courses', async (req, res) => {
     const courses = await supabaseClient.getCourses()
     const stats = await supabaseClient.getAllCourseContentStats()
 
-    // Merge course info with stats
+    // Helper to compute days since beta started
+    function computeBetaDays(betaStartedAt) {
+      if (!betaStartedAt) return null
+      const start = new Date(betaStartedAt)
+      const now = new Date()
+      const diffMs = now - start
+      return Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    }
+
+    // Merge course info with stats and platform status
     const result = courses.map(c => ({
       code: c.course_code,
       course_code: c.course_code,
@@ -134,6 +143,14 @@ app.get('/api/courses', async (req, res) => {
       target_lang: c.target_lang,
       display_name: c.display_name,
       status: c.status,
+      // Platform deployment status
+      new_app_status: c.new_app_status || 'not_available',
+      legacy_app_status: c.legacy_app_status || 'not_available',
+      new_app_beta_started_at: c.new_app_beta_started_at,
+      legacy_app_beta_started_at: c.legacy_app_beta_started_at,
+      new_app_beta_days: computeBetaDays(c.new_app_beta_started_at),
+      legacy_app_beta_days: computeBetaDays(c.legacy_app_beta_started_at),
+      content_status: c.content_status || 'empty',
       stats: stats[c.course_code] || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0 }
     }))
 
@@ -141,6 +158,83 @@ app.get('/api/courses', async (req, res) => {
     res.json({ courses: result })
   } catch (err) {
     logger.error('Failed to get courses:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Update platform deployment status for a course
+app.patch('/api/courses/:courseCode/platform-status', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { platform, status } = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Validate platform
+    if (!['new_app', 'legacy_app'].includes(platform)) {
+      return res.status(400).json({ error: 'Invalid platform. Must be "new_app" or "legacy_app"' })
+    }
+
+    // Validate status
+    const validStatuses = ['not_available', 'draft', 'testing', 'beta', 'released', 'deprecated']
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ error: `Invalid status. Must be one of: ${validStatuses.join(', ')}` })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Get current course to check previous status
+    const { data: current, error: fetchError } = await supabase
+      .from('courses')
+      .select(`${platform}_status, ${platform}_beta_started_at`)
+      .eq('course_code', courseCode)
+      .single()
+
+    if (fetchError) {
+      if (fetchError.code === 'PGRST116') {
+        return res.status(404).json({ error: 'Course not found' })
+      }
+      throw fetchError
+    }
+
+    // Prepare update object
+    const statusColumn = `${platform}_status`
+    const betaColumn = `${platform}_beta_started_at`
+    const updateData = { [statusColumn]: status }
+
+    // Auto-set beta_started_at when entering beta
+    const previousStatus = current[statusColumn]
+    if (status === 'beta' && previousStatus !== 'beta') {
+      updateData[betaColumn] = new Date().toISOString()
+    }
+    // Clear beta_started_at when leaving beta
+    if (status !== 'beta' && previousStatus === 'beta') {
+      updateData[betaColumn] = null
+    }
+
+    // Update the course
+    const { data, error } = await supabase
+      .from('courses')
+      .update(updateData)
+      .eq('course_code', courseCode)
+      .select()
+      .single()
+
+    if (error) throw error
+
+    logger.info(`Updated ${platform} status for ${courseCode}: ${previousStatus} -> ${status}`)
+
+    res.json({
+      success: true,
+      course_code: courseCode,
+      platform,
+      status,
+      beta_started_at: data[betaColumn]
+    })
+  } catch (err) {
+    logger.error(`Failed to update platform status for ${req.params.courseCode}:`, err)
     res.status(500).json({ error: err.message })
   }
 })
@@ -2831,8 +2925,37 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
 app.get('/api/production/:courseCode/audio-pipeline/status', async (req, res) => {
   const { courseCode } = req.params
   try {
-    const response = await axios.get(`${PHASE8_URL}/status/${courseCode}`)
-    res.json(response.data)
+    // Phase8 /status returns global state (no courseCode in URL)
+    const response = await axios.get(`${PHASE8_URL}/status`)
+    const status = response.data
+
+    // Check if the active job is for the requested course
+    if (status.active && status.courseCode !== courseCode) {
+      // Job is for a different course
+      return res.json({ success: true, job: null, message: 'No active job for this course' })
+    }
+
+    // Wrap in job object for frontend compatibility
+    if (status.active) {
+      res.json({
+        success: true,
+        job: {
+          status: 'running',
+          courseCode: status.courseCode,
+          operation: status.operation,
+          progress: {
+            current: status.current,
+            total: status.total,
+            generated: status.success,
+            failed: status.failed
+          },
+          lastItem: status.lastItem,
+          startedAt: status.startedAt
+        }
+      })
+    } else {
+      res.json({ success: true, job: null, message: 'No active job' })
+    }
   } catch (error) {
     if (error.response?.status === 404) {
       return res.json({ success: true, job: null, message: 'No active job' })
