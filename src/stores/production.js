@@ -683,7 +683,11 @@ export const useProductionStore = defineStore('production', () => {
         body: JSON.stringify({ approved: true, options })
       })
 
-      if (!response.ok) throw new Error('Failed to start generation')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        const errorMessage = errorData.message || errorData.error || 'Failed to start generation'
+        throw new Error(errorMessage)
+      }
 
       const data = await response.json()
       jobStatus.value = 'running'

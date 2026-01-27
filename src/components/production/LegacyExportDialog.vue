@@ -6,180 +6,136 @@
         class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
         @click.self="close"
       >
-        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-lg w-full">
+        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
-          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
-            <h3 class="text-lg font-semibold text-white">Export Legacy Manifest</h3>
-            <button
-              @click="close"
-              class="text-slate-400 hover:text-white transition-colors"
-              title="Close (Esc)"
-              :disabled="isExporting"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700 sticky top-0 bg-slate-800 z-10">
+            <h3 class="text-lg font-semibold text-white">Export & Publish Workflow</h3>
+            <div class="flex items-center gap-2">
+              <!-- Reset button -->
+              <button
+                @click="handleReset"
+                class="text-slate-400 hover:text-white transition-colors p-1"
+                title="Reset workflow"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </button>
+              <!-- Close button -->
+              <button
+                @click="close"
+                class="text-slate-400 hover:text-white transition-colors"
+                title="Close (Esc)"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <!-- Body -->
-          <div class="modal-body px-6 py-6">
-            <!-- Options (when not exporting) -->
-            <div v-if="!isExporting && !exportComplete" class="options-section space-y-4">
-              <p class="text-slate-300 text-sm">
-                Export a legacy-format manifest for the old learning app.
-              </p>
+          <div class="modal-body px-6 py-6 space-y-6">
+            <!-- Loading state -->
+            <div v-if="isLoadingState" class="flex items-center justify-center py-8">
+              <div class="spinner w-8 h-8 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
+            </div>
 
-              <!-- Combined audio option -->
-              <label class="option-item flex items-start gap-3 p-4 bg-slate-700 rounded-lg cursor-pointer hover:bg-slate-600 transition-colors">
-                <input
-                  v-model="withAudio"
-                  type="checkbox"
-                  class="mt-1 w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+            <template v-else>
+              <!-- Step Indicator -->
+              <ExportStepIndicator
+                :current-step="workflow.currentStep.value"
+                :completed-steps="workflow.completedSteps.value"
+              />
+
+              <!-- Error message -->
+              <div v-if="workflow.error.value" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
+                <p class="text-red-400 text-sm">{{ workflow.error.value }}</p>
+              </div>
+
+              <!-- Step 1: Generate Manifest -->
+              <div v-show="activeStep === 1" class="step-panel">
+                <Step1Generate
+                  :state="workflow.state.value"
+                  :stats="workflow.stats.value"
+                  :validation="workflow.validation.value"
+                  :is-loading="workflow.isLoading.value"
+                  :format-date="workflow.formatDate"
+                  @generate="handleGenerate"
+                  @redownload="handleRedownload"
+                  @regenerate="handleRegenerate"
                 />
-                <div>
-                  <div class="text-white font-medium">Generate combined presentation audio</div>
-                  <div class="text-sm text-slate-400 mt-1">
-                    Creates narration + target1 + target2 combined files for each LEGO introduction.
-                    This runs in the background after the manifest downloads.
-                  </div>
-                </div>
-              </label>
-
-              <!-- Info box -->
-              <div class="info-box p-3 bg-slate-900 rounded-lg border border-slate-700">
-                <p class="text-slate-400 text-sm">
-                  <span class="text-amber-400 mr-1">Note:</span>
-                  The manifest will download immediately with placeholder presentation UUIDs.
-                  If you enable combined audio, it will be generated in the background.
-                </p>
-              </div>
-            </div>
-
-            <!-- Progress Section (when exporting) -->
-            <div v-if="isExporting" class="progress-section space-y-4">
-              <div class="text-center">
-                <div class="spinner w-12 h-12 mx-auto mb-4 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
-                <p class="text-lg font-medium text-white">{{ statusMessage }}</p>
-                <p class="text-sm text-slate-400 mt-1" v-if="audioJobId">
-                  Job ID: {{ audioJobId }}
-                </p>
               </div>
 
-              <!-- Progress bar (for audio generation) -->
-              <div v-if="audioTotal > 0" class="progress-bar-section">
-                <div class="flex justify-between text-sm text-slate-400 mb-2">
-                  <span>Generating combined audio...</span>
-                  <span>{{ audioCompleted }} / {{ audioTotal }}</span>
-                </div>
-                <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
-                  <div
-                    class="progress-bar bg-emerald-500 h-full transition-all duration-300"
-                    :style="{ width: `${progressPercent}%` }"
-                  ></div>
-                </div>
-                <p class="text-center text-xs text-slate-500 mt-2">
-                  {{ progressPercent }}% complete
-                </p>
-              </div>
-            </div>
-
-            <!-- Export Complete -->
-            <div v-if="exportComplete && !isExporting" class="complete-section space-y-4">
-              <div class="text-center">
-                <div class="success-icon text-5xl">{{ exportError ? '❌' : '✅' }}</div>
-                <p class="text-lg font-medium" :class="exportError ? 'text-red-400' : 'text-emerald-400'">
-                  {{ exportError ? 'Export Failed' : 'Export Complete!' }}
-                </p>
+              <!-- Step 2: Verify S3 -->
+              <div v-show="activeStep === 2" class="step-panel">
+                <Step2Verify
+                  :state="workflow.state.value"
+                  :verification="workflow.state.value.s3Verification"
+                  :is-loading="workflow.isLoading.value"
+                  :is-verifying="isVerifying"
+                  :progress="workflow.s3VerifyProgress.value"
+                  :format-date="workflow.formatDate"
+                  @verify="handleVerify"
+                />
               </div>
 
-              <!-- Validation Error Details -->
-              <div v-if="validation && !validation.valid" class="validation-errors space-y-3">
-                <!-- Invalid UUIDs -->
-                <div v-if="validation.invalidUUIDs > 0" class="error-section p-3 bg-red-900/30 border border-red-700 rounded-lg">
-                  <p class="text-red-400 font-medium text-sm mb-2">
-                    Invalid UUIDs ({{ validation.invalidUUIDs }}):
-                  </p>
-                  <ul class="text-xs text-red-300 space-y-1 font-mono">
-                    <li v-for="(item, idx) in validation.invalidUUIDDetails" :key="idx">
-                      {{ item.path }}: "{{ item.value }}"
-                    </li>
-                    <li v-if="validation.invalidUUIDs > 5" class="text-red-400">
-                      ... and {{ validation.invalidUUIDs - 5 }} more
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Empty Strings -->
-                <div v-if="validation.emptyStrings > 0" class="error-section p-3 bg-red-900/30 border border-red-700 rounded-lg">
-                  <p class="text-red-400 font-medium text-sm mb-2">
-                    Empty Strings ({{ validation.emptyStrings }}):
-                  </p>
-                  <ul class="text-xs text-red-300 space-y-1 font-mono">
-                    <li v-for="(path, idx) in validation.emptyStringDetails" :key="idx">
-                      {{ path }}
-                    </li>
-                    <li v-if="validation.emptyStrings > 5" class="text-red-400">
-                      ... and {{ validation.emptyStrings - 5 }} more
-                    </li>
-                  </ul>
-                </div>
-
-                <p class="text-slate-400 text-xs text-center">
-                  Fix these issues in the source data before exporting.
-                </p>
+              <!-- Step 3: Publish Manifest -->
+              <div v-show="activeStep === 3" class="step-panel">
+                <Step3Publish
+                  :state="workflow.state.value"
+                  :version-info="workflow.versionInfo.value"
+                  :is-loading="workflow.isLoading.value"
+                  :format-date="workflow.formatDate"
+                  @publish="handlePublish"
+                  @load-version-info="handleLoadVersionInfo"
+                />
               </div>
 
-              <!-- Success Stats -->
-              <div v-if="exportStats && !exportError" class="stats-grid grid grid-cols-2 gap-3 text-sm">
-                <div class="stat-item flex justify-between p-2 bg-slate-700 rounded">
-                  <span class="text-slate-400">Seeds</span>
-                  <span class="text-emerald-400 font-medium">{{ exportStats.seeds?.toLocaleString() }}</span>
-                </div>
-                <div class="stat-item flex justify-between p-2 bg-slate-700 rounded">
-                  <span class="text-slate-400">Encouragements</span>
-                  <span class="text-emerald-400 font-medium">{{ (exportStats.orderedEncouragements || 0) + (exportStats.pooledEncouragements || 0) }}</span>
-                </div>
+              <!-- Step 4: Deploy Audio -->
+              <div v-show="activeStep === 4" class="step-panel">
+                <Step4Deploy
+                  :state="workflow.state.value"
+                  :deploy-plan="workflow.state.value.deployPlan"
+                  :is-loading="workflow.isLoading.value"
+                  :is-deploying="isDeploying"
+                  :progress="workflow.deployProgress.value"
+                  :format-date="workflow.formatDate"
+                  @check-plan="handleCheckPlan"
+                  @deploy="handleDeploy"
+                />
               </div>
-
-              <p v-if="audioJobId && withAudio && !exportError" class="text-sm text-slate-400 text-center">
-                Combined audio generation is running in the background.
-              </p>
-            </div>
+            </template>
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
-            <!-- Cancel button (when not complete) -->
-            <button
-              v-if="!exportComplete"
-              @click="isExporting ? cancelExport() : close()"
-              class="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
-              :class="isExporting ? 'bg-red-600 text-white hover:bg-red-700' : 'text-slate-300 hover:text-white'"
-            >
-              {{ isExporting ? 'Stop' : 'Cancel' }}
-            </button>
+          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700 sticky bottom-0 bg-slate-800">
+            <!-- Navigation buttons -->
+            <div class="flex items-center gap-2">
+              <button
+                v-if="activeStep > 1"
+                @click="previousStep"
+                class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              >
+                Previous
+              </button>
+            </div>
 
-            <!-- Export button (when not exporting and not complete) -->
-            <button
-              v-if="!isExporting && !exportComplete"
-              @click="startExport"
-              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors flex items-center gap-2"
-            >
-              <span>{{ withAudio ? 'Export & Generate Audio' : 'Export Manifest' }}</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            </button>
-
-            <!-- Done button (when complete) -->
-            <button
-              v-if="exportComplete"
-              @click="close"
-              class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
-            >
-              Done
-            </button>
+            <div class="flex items-center gap-2">
+              <button
+                v-if="activeStep < 4 && canProceedToNextStep"
+                @click="nextStep"
+                class="px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
+              >
+                Next Step
+              </button>
+              <button
+                @click="close"
+                class="px-4 py-2 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -189,8 +145,12 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
-import { io, Socket } from 'socket.io-client'
-import { getApiUrl } from '@/services/api'
+import { useExportWorkflow } from '@/composables/useExportWorkflow'
+import ExportStepIndicator from './export/ExportStepIndicator.vue'
+import Step1Generate from './export/Step1Generate.vue'
+import Step2Verify from './export/Step2Verify.vue'
+import Step3Publish from './export/Step3Publish.vue'
+import Step4Deploy from './export/Step4Deploy.vue'
 
 // Props
 const props = defineProps<{
@@ -203,132 +163,99 @@ const emit = defineEmits<{
   close: []
 }>()
 
-// Get API base URL
-function getApiBaseUrl(): string {
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) return storedUrl
+// Workflow composable
+const workflow = useExportWorkflow(props.courseCode)
 
-  const isVercel = typeof window !== 'undefined' && (
-    window.location.hostname.includes('vercel.app') ||
-    window.location.hostname === 'popty.app' ||
-    window.location.hostname.endsWith('.popty.app')
-  )
-  if (isVercel) return ''
-
-  return getApiUrl()
-}
-
-// State
-const withAudio = ref(false)
-const isExporting = ref(false)
-const exportComplete = ref(false)
-const exportError = ref<string | null>(null)
-const exportStats = ref<{ seeds?: number; orderedEncouragements?: number; pooledEncouragements?: number } | null>(null)
-
-// Validation state
-const validation = ref<{
-  valid: boolean
-  summary: string
-  invalidUUIDs: number
-  emptyStrings: number
-  invalidUUIDDetails: Array<{ path: string; value: string }>
-  emptyStringDetails: string[]
-} | null>(null)
-
-// Audio job progress
-const audioJobId = ref<string | null>(null)
-const audioTotal = ref(0)
-const audioCompleted = ref(0)
-const statusMessage = ref('Preparing export...')
-
-// WebSocket connection
-let socket: Socket | null = null
-let pollInterval: ReturnType<typeof setInterval> | null = null
+// Local state
+const isLoadingState = ref(true)
+const isVerifying = ref(false)
+const isDeploying = ref(false)
+const activeStep = ref(1)
 
 // Computed
-const progressPercent = computed(() => {
-  if (audioTotal.value === 0) return 0
-  return Math.round((audioCompleted.value / audioTotal.value) * 100)
+const canProceedToNextStep = computed(() => {
+  const state = workflow.state.value
+  switch (activeStep.value) {
+    case 1:
+      return state.manifestGenerated
+    case 2:
+      return state.s3Verified
+    case 3:
+      return state.manifestPublished
+    default:
+      return false
+  }
 })
 
 // Methods
 function close() {
-  if (!isExporting.value) {
-    emit('close')
-    // Reset state after close animation
-    setTimeout(resetState, 200)
+  emit('close')
+}
+
+async function loadInitialState() {
+  isLoadingState.value = true
+  try {
+    await workflow.loadState()
+    // Set active step based on current progress
+    const state = workflow.state.value
+    if (state.audioDeployed) {
+      activeStep.value = 4
+    } else if (state.manifestPublished) {
+      activeStep.value = 4
+    } else if (state.s3Verified) {
+      activeStep.value = 3
+    } else if (state.manifestGenerated) {
+      activeStep.value = 2
+    } else {
+      activeStep.value = 1
+    }
+  } finally {
+    isLoadingState.value = false
   }
 }
 
-function resetState() {
-  withAudio.value = false
-  isExporting.value = false
-  exportComplete.value = false
-  exportError.value = null
-  exportStats.value = null
-  validation.value = null
-  audioJobId.value = null
-  audioTotal.value = 0
-  audioCompleted.value = 0
-  statusMessage.value = 'Preparing export...'
+function nextStep() {
+  if (activeStep.value < 4) {
+    activeStep.value++
+  }
 }
 
-async function startExport() {
-  isExporting.value = true
-  exportError.value = null
-  statusMessage.value = 'Generating manifest...'
+function previousStep() {
+  if (activeStep.value > 1) {
+    activeStep.value--
+  }
+}
 
+// Step 1 handlers
+async function handleGenerate(withAudio: boolean) {
   try {
-    const apiBase = getApiBaseUrl()
-    const url = `${apiBase}/api/production/${props.courseCode}/export-legacy${withAudio.value ? '?withAudio=true' : ''}`
-
-    const response = await fetch(url, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error || 'Export failed')
-    }
-
-    const data = await response.json()
-
-    if (!data.success || !data.manifest) {
-      throw new Error(data.error || 'No manifest data')
-    }
-
-    // Store validation results
-    if (data.validation) {
-      validation.value = data.validation
-    }
-
-    // Check if validation failed - block export if critical issues
-    if (data.validation && !data.validation.valid) {
-      exportError.value = `Validation failed: ${data.validation.summary}`
-      exportComplete.value = true
-      isExporting.value = false
-      return // Don't download the manifest if validation fails
-    }
-
-    // Download the manifest immediately
-    downloadManifest(data.manifest, data.filename)
-    exportStats.value = data.stats
-
-    // If audio job was started, track it
-    if (data.audioJobId) {
-      audioJobId.value = data.audioJobId
-      statusMessage.value = 'Manifest downloaded. Generating combined audio...'
-      connectWebSocket()
-    } else {
-      // No audio job, we're done
-      exportComplete.value = true
-      isExporting.value = false
+    const data = await workflow.generateManifest(withAudio)
+    if (data.success && !data.validation?.valid === false) {
+      // Download the manifest
+      downloadManifest(data.manifest, data.filename)
     }
   } catch (err) {
-    exportError.value = err instanceof Error ? err.message : 'Export failed'
-    exportComplete.value = true
-    isExporting.value = false
+    // Error handled by workflow
   }
+}
+
+async function handleRedownload() {
+  try {
+    const data = await workflow.getCachedManifest()
+    if (data.manifest) {
+      const date = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+      const filename = `${data.manifest.id}_legacy_${date}.json`
+      downloadManifest(data.manifest, filename)
+    }
+  } catch (err) {
+    // Error handled by workflow
+  }
+}
+
+async function handleRegenerate() {
+  // Reset manifest state and regenerate
+  await workflow.resetState()
+  activeStep.value = 1
 }
 
 function downloadManifest(manifest: any, filename: string) {
@@ -336,151 +263,51 @@ function downloadManifest(manifest: any, filename: string) {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = filename || `${props.courseCode}_legacy.json`
+  a.download = filename
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
 }
 
-function connectWebSocket() {
-  const apiBase = getApiBaseUrl()
-  const wsUrl = apiBase || window.location.origin
-
-  socket = io(wsUrl, {
-    path: '/api/production/websocket',
-    transports: ['websocket', 'polling']
-  })
-
-  socket.on('connect', () => {
-    console.log('[LegacyExport] WebSocket connected')
-  })
-
-  // Start polling as fallback (every 2 seconds)
-  // This ensures we get status updates even if WebSocket events are missed
-  pollInterval = setInterval(pollJobStatus, 2000)
-  // Also poll immediately in case job already finished
-  setTimeout(pollJobStatus, 500)
-
-  socket.on('legacyAudio:started', (data: { jobId: string; courseCode: string; total: number }) => {
-    if (data.courseCode === props.courseCode) {
-      audioTotal.value = data.total
-      audioCompleted.value = 0
-      statusMessage.value = `Generating combined audio (0/${data.total})...`
-    }
-  })
-
-  socket.on('legacyAudio:progress', (data: { jobId: string; completed: number; total: number }) => {
-    audioCompleted.value = data.completed
-    audioTotal.value = data.total
-    statusMessage.value = `Generating combined audio (${data.completed}/${data.total})...`
-  })
-
-  socket.on('legacyAudio:completed', (data: { jobId: string }) => {
-    statusMessage.value = 'Audio generation complete!'
-    exportComplete.value = true
-    isExporting.value = false
-    disconnectWebSocket()
-  })
-
-  socket.on('legacyAudio:cancelled', (data: { jobId: string }) => {
-    statusMessage.value = 'Audio generation cancelled'
-    exportComplete.value = true
-    isExporting.value = false
-    disconnectWebSocket()
-  })
-
-  socket.on('legacyAudio:failed', (data: { jobId: string; error: string }) => {
-    exportError.value = `Audio generation failed: ${data.error}`
-    exportComplete.value = true
-    isExporting.value = false
-    disconnectWebSocket()
-  })
-
-  socket.on('disconnect', () => {
-    console.log('[LegacyExport] WebSocket disconnected')
-  })
-}
-
-function disconnectWebSocket() {
-  if (socket) {
-    socket.disconnect()
-    socket = null
-  }
-  if (pollInterval) {
-    clearInterval(pollInterval)
-    pollInterval = null
-  }
-}
-
-// Poll job status as fallback (in case WebSocket events are missed)
-async function pollJobStatus() {
-  if (!audioJobId.value) return
-
+// Step 2 handlers
+async function handleVerify() {
+  isVerifying.value = true
   try {
-    const apiBase = getApiBaseUrl()
-    const response = await fetch(`${apiBase}/api/production/${props.courseCode}/legacy-audio-status`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (!response.ok) return
-
-    const data = await response.json()
-
-    if (data.status === 'completed') {
-      statusMessage.value = 'Audio generation complete!'
-      exportComplete.value = true
-      isExporting.value = false
-      disconnectWebSocket()
-    } else if (data.status === 'cancelled') {
-      statusMessage.value = 'Audio generation cancelled'
-      exportComplete.value = true
-      isExporting.value = false
-      disconnectWebSocket()
-    } else if (data.status === 'failed') {
-      exportError.value = 'Audio generation failed'
-      exportComplete.value = true
-      isExporting.value = false
-      disconnectWebSocket()
-    } else if (data.status === 'running') {
-      // Update progress from poll
-      audioCompleted.value = data.completed || 0
-      audioTotal.value = data.total || 0
-      if (data.total > 0) {
-        statusMessage.value = `Generating combined audio (${data.completed}/${data.total})...`
-      }
-    }
-  } catch (err) {
-    console.error('[LegacyExport] Poll error:', err)
+    await workflow.verifyS3()
+  } finally {
+    isVerifying.value = false
   }
 }
 
-async function cancelExport() {
-  if (!audioJobId.value) {
-    // No audio job, just close
-    isExporting.value = false
-    exportComplete.value = true
-    return
-  }
+// Step 3 handlers
+async function handleLoadVersionInfo() {
+  await workflow.getVersionSuggestion()
+}
 
+async function handlePublish(options: { version: string; status: string; commitToCourseConfigs: boolean; scpToApidev: boolean }) {
+  await workflow.publishManifest(options as any)
+}
+
+// Step 4 handlers
+async function handleCheckPlan() {
+  await workflow.getDeployPlan()
+}
+
+async function handleDeploy(confirmation: string | undefined) {
+  isDeploying.value = true
   try {
-    const apiBase = getApiBaseUrl()
-    const response = await fetch(`${apiBase}/api/production/${props.courseCode}/cancel-legacy-audio`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
+    await workflow.deployAudio(confirmation)
+  } finally {
+    isDeploying.value = false
+  }
+}
 
-    if (!response.ok) {
-      console.error('Failed to cancel audio job')
-    }
-    // The WebSocket will receive the cancelled event
-  } catch (err) {
-    console.error('Error cancelling export:', err)
-    isExporting.value = false
-    exportComplete.value = true
+// Reset handler
+async function handleReset() {
+  if (confirm('Reset the entire export workflow? This will clear all progress.')) {
+    await workflow.resetState()
+    activeStep.value = 1
   }
 }
 
@@ -488,26 +315,38 @@ async function cancelExport() {
 function handleKeydown(event: KeyboardEvent) {
   if (!props.visible) return
 
-  if (event.key === 'Escape' && !isExporting.value) {
+  if (event.key === 'Escape') {
     event.preventDefault()
     close()
   }
 }
 
 // Watch for visibility changes
-watch(() => props.visible, (newValue) => {
-  if (!newValue) {
-    disconnectWebSocket()
+watch(() => props.visible, async (newValue) => {
+  if (newValue) {
+    await loadInitialState()
+  } else {
+    workflow.cleanup()
+  }
+})
+
+// Watch for course code changes
+watch(() => props.courseCode, async (newCode, oldCode) => {
+  if (newCode !== oldCode && props.visible) {
+    await loadInitialState()
   }
 })
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+  if (props.visible) {
+    loadInitialState()
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
-  disconnectWebSocket()
+  workflow.cleanup()
 })
 </script>
 
@@ -533,20 +372,6 @@ onUnmounted(() => {
   border-top-color: #334155;
 }
 
-/* Option item */
-.option-item {
-  border: 1px solid #475569;
-}
-
-.option-item:hover {
-  border-color: #64748b;
-}
-
-/* Checkbox styling */
-input[type="checkbox"] {
-  accent-color: #10b981;
-}
-
 /* Spinner */
 .spinner {
   animation: spin 1s linear infinite;
@@ -556,15 +381,6 @@ input[type="checkbox"] {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Progress bar */
-.progress-bar-container {
-  background: #334155;
-}
-
-.progress-bar {
-  background: linear-gradient(90deg, #10b981, #059669);
 }
 
 /* Modal Transitions */
@@ -589,14 +405,8 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
-/* Stat items */
-.stat-item {
-  background: #334155;
-  border: 1px solid #475569;
-}
-
-/* Info box */
-.info-box {
-  border-color: #475569;
+/* Step panel */
+.step-panel {
+  min-height: 200px;
 }
 </style>
