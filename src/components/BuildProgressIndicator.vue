@@ -133,13 +133,8 @@ function getSegmentClass(pct) {
   return 'empty'
 }
 
-// Determine status label from contentStatus or derive from stats
+// Always derive status from actual stats (not stale database contentStatus)
 const statusLabel = computed(() => {
-  if (props.contentStatus && statusLabels[props.contentStatus]) {
-    return statusLabels[props.contentStatus]
-  }
-
-  // Derive from stats
   const stats = props.stats || {}
   if (stats.audio > 0) return 'Ready'
   if (stats.phrases > 0) return 'Audio Pending'

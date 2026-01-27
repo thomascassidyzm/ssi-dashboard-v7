@@ -1,5 +1,25 @@
 <template>
   <div class="course-status-table">
+    <!-- Search bar -->
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search courses..."
+        class="search-input"
+      />
+      <span v-if="searchQuery" class="search-count">{{ filteredCourses.length }} of {{ courses.length }}</span>
+      <button v-if="searchQuery" class="search-clear" @click="searchQuery = ''">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
     <!-- Loading state -->
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
@@ -11,14 +31,39 @@
       <span>No courses found</span>
     </div>
 
+    <!-- No results state -->
+    <div v-else-if="filteredCourses.length === 0" class="empty-state">
+      <span>No courses match "{{ searchQuery }}"</span>
+    </div>
+
     <!-- Table -->
     <table v-else class="status-table">
       <thead>
         <tr>
-          <th class="col-course">Course</th>
-          <th class="col-build">Build</th>
-          <th class="col-platform">New App</th>
-          <th class="col-platform">Legacy App</th>
+          <th class="col-course sortable" @click="toggleSort('name')">
+            Course
+            <span class="sort-indicator" :class="{ active: sortColumn === 'name' }">
+              {{ sortColumn === 'name' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
+            </span>
+          </th>
+          <th class="col-build sortable" @click="toggleSort('build')">
+            Build
+            <span class="sort-indicator" :class="{ active: sortColumn === 'build' }">
+              {{ sortColumn === 'build' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
+            </span>
+          </th>
+          <th class="col-platform sortable" @click="toggleSort('newApp')">
+            New App
+            <span class="sort-indicator" :class="{ active: sortColumn === 'newApp' }">
+              {{ sortColumn === 'newApp' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
+            </span>
+          </th>
+          <th class="col-platform sortable" @click="toggleSort('legacyApp')">
+            Legacy App
+            <span class="sort-indicator" :class="{ active: sortColumn === 'legacyApp' }">
+              {{ sortColumn === 'legacyApp' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
+            </span>
+          </th>
           <th class="col-actions"></th>
         </tr>
       </thead>
@@ -132,33 +177,108 @@ const menuCourseCode = ref(null)
 const menuPosition = ref({ top: '0px', left: '0px' })
 const contextMenu = ref(null)
 
-// Sort courses: released first, then by name
+// Search and sort state
+const searchQuery = ref('')
+const sortColumn = ref('newApp') // Default sort by New App status
+const sortDirection = ref('asc')
+
+// Status order for sorting (best status first)
+const statusOrder = {
+  released: 0,
+  beta: 1,
+  testing: 2,
+  draft: 3,
+  not_available: 4,
+  deprecated: 5
+}
+
+// Build status order (most complete first)
+const buildStatusOrder = {
+  ready: 0,
+  audio_generating: 1,
+  audio_pending: 2,
+  building: 3,
+  seeds_only: 4,
+  empty: 5
+}
+
+// Get derived build status from stats
+function getBuildStatus(course) {
+  const stats = course.stats || {}
+  if (stats.audio > 0) return 'ready'
+  if (stats.phrases > 0) return 'audio_pending'
+  if (stats.legos > 0) return 'building'
+  if (stats.completedSeeds > 0) return 'seeds_only'
+  return 'empty'
+}
+
+// Toggle sort column/direction
+function toggleSort(column) {
+  if (sortColumn.value === column) {
+    sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortColumn.value = column
+    sortDirection.value = 'asc'
+  }
+}
+
+// Filter courses by search query
+const filteredCourses = computed(() => {
+  if (!searchQuery.value.trim()) return props.courses
+
+  const query = searchQuery.value.toLowerCase().trim()
+  return props.courses.filter(course => {
+    const name = (course.name || '').toLowerCase()
+    const code = (course.code || '').toLowerCase()
+    return name.includes(query) || code.includes(query)
+  })
+})
+
+// Sort filtered courses
 const sortedCourses = computed(() => {
-  return [...props.courses].sort((a, b) => {
-    // Priority order for display
-    const statusOrder = {
-      released: 0,
-      beta: 1,
-      testing: 2,
-      draft: 3,
-      not_available: 4,
-      deprecated: 5
+  const courses = [...filteredCourses.value]
+  const dir = sortDirection.value === 'asc' ? 1 : -1
+
+  return courses.sort((a, b) => {
+    let comparison = 0
+
+    switch (sortColumn.value) {
+      case 'name':
+        comparison = (a.name || '').localeCompare(b.name || '')
+        break
+
+      case 'build':
+        const aBuild = buildStatusOrder[getBuildStatus(a)] ?? 5
+        const bBuild = buildStatusOrder[getBuildStatus(b)] ?? 5
+        comparison = aBuild - bBuild
+        if (comparison === 0) {
+          comparison = (a.name || '').localeCompare(b.name || '')
+        }
+        break
+
+      case 'newApp':
+        const aNew = statusOrder[a.newAppStatus] ?? 4
+        const bNew = statusOrder[b.newAppStatus] ?? 4
+        comparison = aNew - bNew
+        if (comparison === 0) {
+          comparison = (a.name || '').localeCompare(b.name || '')
+        }
+        break
+
+      case 'legacyApp':
+        const aLegacy = statusOrder[a.legacyAppStatus] ?? 4
+        const bLegacy = statusOrder[b.legacyAppStatus] ?? 4
+        comparison = aLegacy - bLegacy
+        if (comparison === 0) {
+          comparison = (a.name || '').localeCompare(b.name || '')
+        }
+        break
+
+      default:
+        comparison = (a.name || '').localeCompare(b.name || '')
     }
 
-    // Sort by best platform status first
-    const aStatus = Math.min(
-      statusOrder[a.newAppStatus] ?? 4,
-      statusOrder[a.legacyAppStatus] ?? 4
-    )
-    const bStatus = Math.min(
-      statusOrder[b.newAppStatus] ?? 4,
-      statusOrder[b.legacyAppStatus] ?? 4
-    )
-
-    if (aStatus !== bStatus) return aStatus - bStatus
-
-    // Then alphabetically
-    return (a.name || '').localeCompare(b.name || '')
+    return comparison * dir
   })
 })
 
@@ -235,6 +355,60 @@ onUnmounted(() => {
   position: relative;
 }
 
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid #334155;
+}
+
+.search-icon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f1f5f9;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: #475569;
+}
+
+.search-count {
+  font-size: 0.75rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.15s;
+}
+
+.search-clear:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
 .loading-state,
 .empty-state {
   display: flex;
@@ -275,6 +449,28 @@ onUnmounted(() => {
   letter-spacing: 0.05em;
   color: #64748b;
   border-bottom: 1px solid #334155;
+}
+
+.status-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.status-table th.sortable:hover {
+  color: #94a3b8;
+}
+
+.sort-indicator {
+  margin-left: 0.25rem;
+  font-size: 0.625rem;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.sort-indicator.active {
+  opacity: 1;
+  color: #3b82f6;
 }
 
 .status-table td {
