@@ -56,6 +56,29 @@ const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 // =============================================================================
+// LANGUAGE NAMES (for presentation templates)
+// =============================================================================
+
+const LANG_NAMES = {
+  'eng': 'English',
+  'spa': 'Spanish',
+  'fra': 'French',
+  'deu': 'German',
+  'ita': 'Italian',
+  'por': 'Portuguese',
+  'cmn': 'Chinese',
+  'zho': 'Chinese',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'ara': 'Arabic',
+  'cym': 'Welsh',
+  'gle': 'Irish',
+  'gla': 'Scottish Gaelic',
+  'nld': 'Dutch',
+  'rus': 'Russian'
+}
+
+// =============================================================================
 // CONCURRENCY SETTINGS
 // =============================================================================
 
@@ -813,6 +836,91 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
     }
 
+    // Also include LEGOs that are MISSING presentation audio entirely (not just pending)
+    // This matches the /plan endpoint logic for counting missing presentations
+    const { data: newLegos } = await supabase
+      .from('course_legos')
+      .select('lego_id, seed_number, known_text')
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+      .lte('seed_number', releaseTarget)
+
+    if (newLegos?.length > 0) {
+      // Get existing presentation audio (exclude pending/ since we handled those above)
+      const { data: existingPresentations } = await supabase
+        .from('course_audio')
+        .select('lego_id')
+        .eq('course_code', courseCode)
+        .eq('role', 'presentation')
+        .not('s3_key', 'like', 'pending/%')
+
+      // Build set of lego_ids that have presentation audio
+      const legoIdsWithPresentation = new Set(
+        (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
+      )
+
+      // Also exclude LEGOs that have pending presentations (already added above)
+      const pendingLegoIds = new Set(
+        (pendingPresentations || []).map(p => {
+          // Extract lego_id from the pending record if available
+          // Pending presentations may have lego_id in their record
+          return p.lego_id
+        }).filter(Boolean)
+      )
+
+      // Get presentation template for this course
+      const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
+      const { data: templates } = await supabase
+        .from('presentation_templates')
+        .select('template')
+        .eq('known_lang', course.known_lang)
+        .eq('is_active', true)
+        .order('priority', { ascending: false })
+        .limit(1)
+
+      let presentationTemplate = templates?.[0]?.template
+      if (!presentationTemplate) {
+        presentationTemplate = "The {target_lang_name} for '{known}' is:"
+      }
+
+      // Remove "as in" clause from template BEFORE any replacements
+      // This avoids issues with seed text containing quotes
+      presentationTemplate = presentationTemplate
+        .replace(/, as in '\{seed\}'/g, '')
+        .replace(/，如"\{seed\}"/g, '')
+        .replace(/, fel yn '\{seed\}'/g, '')
+        .replace(/, como en '\{seed\}'/g, '')
+
+      // Find LEGOs missing presentation audio and generate the text
+      let missingPresentationCount = 0
+      for (const lego of newLegos) {
+        // Skip if LEGO already has presentation audio or pending presentation
+        if (legoIdsWithPresentation.has(lego.lego_id) || pendingLegoIds.has(lego.lego_id)) {
+          continue
+        }
+
+        // Generate presentation text from template
+        let presText = presentationTemplate
+          .replace('{target_lang_name}', targetLangName)
+          .replace('{known}', lego.known_text)
+
+        const presVoice = getVoiceForRole('presentation') || getVoiceForRole('known')
+        needed.push({
+          text: presText,
+          language: course.known_lang,
+          role: 'presentation',
+          voiceId: presVoice,
+          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
+          lego_id: lego.lego_id  // Include for linking to lego_introductions later
+        })
+        missingPresentationCount++
+      }
+
+      if (missingPresentationCount > 0) {
+        logger.info(`Found ${missingPresentationCount} LEGOs missing presentation audio`)
+      }
+    }
+
     // Deduplicate
     const uniqueNeeded = [...new Map(
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
@@ -1318,30 +1426,6 @@ app.post('/insert', async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 })
-
-// =============================================================================
-// LANGUAGE NAMES MAPPING
-// =============================================================================
-
-const LANG_NAMES = {
-  'eng': 'English',
-  'spa': 'Spanish',
-  'fra': 'French',
-  'deu': 'German',
-  'ita': 'Italian',
-  'por': 'Portuguese',
-  'cmn': 'Chinese',
-  'zho': 'Chinese',
-  'jpn': 'Japanese',
-  'kor': 'Korean',
-  'ara': 'Arabic',
-  'cym': 'Welsh',
-  'gle': 'Irish',
-  'gla': 'Scottish Gaelic',
-  'nld': 'Dutch',
-  'rus': 'Russian'
-}
-
 // =============================================================================
 // POST REGENERATE-PRESENTATIONS - Regenerate presentation text for a course
 // =============================================================================
