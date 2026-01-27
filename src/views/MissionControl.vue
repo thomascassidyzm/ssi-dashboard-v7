@@ -226,6 +226,22 @@
           </div>
         </div>
       </section>
+
+      <!-- Course Overview Table -->
+      <section class="courses-section">
+        <div class="section-header">
+          <span class="section-label">COURSE OVERVIEW</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="table-container">
+          <CourseStatusTable
+            :courses="coursesWithStatus"
+            :loading="loadingCourses"
+            @update-status="handlePlatformStatusUpdate"
+          />
+        </div>
+      </section>
     </main>
 
     <!-- Import Course Modal -->
@@ -244,6 +260,7 @@ import { useRouter } from 'vue-router'
 import api from '../services/api'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import ImportCourseModal from '../components/ImportCourseModal.vue'
+import CourseStatusTable from '../components/CourseStatusTable.vue'
 
 const router = useRouter()
 
@@ -287,6 +304,21 @@ const filteredCourses = computed(() => {
   )
 })
 
+// Courses with full status info for CourseStatusTable
+const coursesWithStatus = computed(() => {
+  return courses.value.map(c => ({
+    code: c.code,
+    name: c.name,
+    newAppStatus: c.new_app_status || 'not_available',
+    legacyAppStatus: c.legacy_app_status || 'not_available',
+    newAppBetaDays: c.new_app_beta_days || null,
+    legacyAppBetaDays: c.legacy_app_beta_days || null,
+    contentStatus: c.content_status || null,
+    targetSeeds: c.seed_count || 260,
+    stats: c.stats || {}
+  }))
+})
+
 // Dropdown functions
 function toggleDropdown() {
   dropdownOpen.value = !dropdownOpen.value
@@ -324,6 +356,17 @@ function handleImportComplete() {
   loadCourseCount()
 }
 
+// Handle platform status update from CourseStatusTable
+async function handlePlatformStatusUpdate({ courseCode, platform, status }) {
+  try {
+    await api.course.updatePlatformStatus(courseCode, platform, status)
+    // Refresh courses to get updated data
+    await loadCourseCount()
+  } catch (err) {
+    console.error('Failed to update platform status:', err)
+  }
+}
+
 // Load courses
 async function loadCourseCount() {
   loadingCourses.value = true
@@ -333,7 +376,22 @@ async function loadCourseCount() {
     courseCount.value = courseList.length
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
-      name: getCourseName(c.code || c.course_code || c.id)
+      name: c.display_name || getCourseName(c.code || c.course_code || c.id),
+      // Platform status fields
+      new_app_status: c.new_app_status,
+      legacy_app_status: c.legacy_app_status,
+      new_app_beta_days: c.new_app_beta_days,
+      legacy_app_beta_days: c.legacy_app_beta_days,
+      content_status: c.content_status,
+      seed_count: c.seed_count,
+      // Stats for build progress
+      stats: {
+        seeds: c.seed_pairs || c.total_seeds || 0,
+        completedSeeds: c.seed_pairs || 0,
+        legos: c.lego_pairs || 0,
+        phrases: c.phrases || 0,
+        audio: c.audio_files || 0
+      }
     }))
   } catch (err) {
     console.error('Failed to load courses:', err)
@@ -1079,6 +1137,18 @@ button.action-card {
 /* Stats Bar */
 .stats-section {
   margin-top: 2rem;
+}
+
+/* Courses Section */
+.courses-section {
+  margin-top: 2.5rem;
+}
+
+.table-container {
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .stats-bar {

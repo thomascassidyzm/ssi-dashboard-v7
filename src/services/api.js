@@ -450,7 +450,9 @@ export default {
           const code = course.code || course.course_code
           const stats = contentStats[code] || { seeds: 0, completedSeeds: 0, legos: 0, baskets: 0, phrases: 0, introductions: 0, audio: 0, seed_count: null }
           return {
+            code: code,  // Pass through code for consistent access
             course_code: code,
+            display_name: course.display_name,
             source_language: code?.split('_for_')[1]?.toUpperCase() || 'UNK',
             target_language: code?.split('_for_')[0]?.toUpperCase() || 'UNK',
             total_seeds: stats.seeds || 668,
@@ -458,6 +460,15 @@ export default {
             version: '1.0',
             created_at: new Date().toISOString(),
             status: course.complete ? 'complete' : 'in_progress',
+            // Platform deployment status (from production-api)
+            new_app_status: course.new_app_status || 'not_available',
+            legacy_app_status: course.legacy_app_status || 'not_available',
+            new_app_beta_started_at: course.new_app_beta_started_at,
+            legacy_app_beta_started_at: course.legacy_app_beta_started_at,
+            new_app_beta_days: course.new_app_beta_days,
+            legacy_app_beta_days: course.legacy_app_beta_days,
+            content_status: course.content_status || 'empty',
+            // Content stats
             seed_pairs: stats.completedSeeds,
             lego_pairs: stats.legos,
             lego_baskets: stats.baskets,
@@ -1274,6 +1285,25 @@ export default {
         return response.data
       } catch (error) {
         console.error(`[API] Failed to delete flag ${flagId} for ${courseCode}:`, error)
+        throw error
+      }
+    },
+
+    /**
+     * Update platform deployment status for a course
+     * @param {string} courseCode - Course code
+     * @param {string} platform - 'new_app' or 'legacy_app'
+     * @param {string} status - Status value
+     */
+    async updatePlatformStatus(courseCode, platform, status) {
+      try {
+        const response = await api.patch(`/api/courses/${courseCode}/platform-status`, {
+          platform,
+          status
+        })
+        return response.data
+      } catch (error) {
+        console.error(`[API] Failed to update platform status for ${courseCode}:`, error)
         throw error
       }
     }
