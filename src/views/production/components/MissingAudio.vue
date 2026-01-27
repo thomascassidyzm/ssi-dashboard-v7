@@ -366,13 +366,13 @@ const isPlaying = ref({
 const totalMissing = computed(() => data.value?.totalMissing || 0)
 const releaseTarget = computed(() => data.value?.releaseTarget || 260)
 
-// Phrase missing counts
-const missingCounts = computed(() => ({
-  known: data.value?.missing?.known?.length || 0,
-  target1: data.value?.missing?.target1?.length || 0,
-  target2: data.value?.missing?.target2?.length || 0,
-  presentation: data.value?.missing?.presentation?.length || 0
-}))
+// Phrase missing counts - from phase8 /plan (single source of truth)
+const missingCounts = computed(() => data.value?.missingCounts || {
+  known: 0,
+  target1: 0,
+  target2: 0,
+  presentation: 0
+})
 
 // Seed missing counts
 const seedMissingCounts = computed(() => ({

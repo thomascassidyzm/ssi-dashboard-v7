@@ -3006,193 +3006,32 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
 
 // GET /api/production/:courseCode/audio-pipeline/missing
 // Get detailed list of missing audio with sample playback URLs for voice matching
+// AZURE COUNTS: Delegated to Phase8 /plan (single source of truth)
+// ELEVENLABS COUNTS: Handled locally (shared audio, welcomes)
 app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) => {
   const { courseCode } = req.params
   logger.info(`Getting missing audio details for ${courseCode}`)
 
   try {
+    // =========================================================================
+    // AZURE TTS COUNTS: Get from Phase8 /plan (single source of truth)
+    // =========================================================================
+    let phase8Plan
+    try {
+      const response = await axios.get(`${PHASE8_URL}/plan/${courseCode}`)
+      phase8Plan = response.data
+    } catch (e) {
+      logger.error(`Phase8 /plan failed for ${courseCode}: ${e.message}`)
+      return res.status(503).json({
+        error: 'Phase 8 audio service not available',
+        details: e.message,
+        hint: 'Ensure phase8-audio-v13.cjs is running on port 3465'
+      })
+    }
+
     const supabase = supabaseClient.getClient()
 
-    // Paginate practice phrases (avoid 1000 row limit)
-    let phrases = []
-    let offset = 0
-    const pageSize = 1000
-
-    while (true) {
-      const { data: page, error } = await supabase
-        .from('course_practice_phrases')
-        .select('seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .range(offset, offset + pageSize - 1)
-
-      if (error) throw error
-      if (!page || page.length === 0) break
-      phrases = phrases.concat(page)
-      if (page.length < pageSize) break
-      offset += pageSize
-    }
-
-    // Also fetch LEGOs for presentation tracking (only new LEGOs need intros)
-    let legos = []
-    offset = 0
-
-    while (true) {
-      const { data: page, error } = await supabase
-        .from('course_legos')
-        .select('lego_id, seed_number, lego_index, known_text, target_text, is_new')
-        .eq('course_code', courseCode)
-        .eq('is_new', true)
-        .range(offset, offset + pageSize - 1)
-
-      if (error) throw error
-      if (!page || page.length === 0) break
-      legos = legos.concat(page)
-      if (page.length < pageSize) break
-      offset += pageSize
-    }
-
-    // Paginate existing audio (v13: course_audio is flat, no joins needed)
-    let existingAudio = []
-    offset = 0
-
-    while (true) {
-      const { data: page, error } = await supabase
-        .from('course_audio')
-        .select('id, text, text_normalized, role, voice_id, s3_key, lego_id')
-        .eq('course_code', courseCode)
-        .range(offset, offset + pageSize - 1)
-
-      if (error) throw error
-      if (!page || page.length === 0) break
-      existingAudio = existingAudio.concat(page)
-      if (page.length < pageSize) break
-      offset += pageSize
-    }
-
-    // Build lookup of existing texts by role
-    const existingByRole = {
-      known: new Map(),  // text -> { audioId, voiceId, s3Key }
-      target1: new Map(),
-      target2: new Map(),
-      presentation: new Map()  // For presentation, we match on embedded target text
-    }
-
-    // Also collect sample audio for each role (for voice matching)
-    const samplesByRole = {
-      known: null,
-      target1: null,
-      target2: null,
-      presentation: null
-    }
-
-    for (const ca of existingAudio) {
-      // Use text_normalized for matching (case-insensitive)
-      const normalizedText = ca.text_normalized || ca.text?.toLowerCase().trim()
-      const role = ca.role
-
-      // For presentation audio, match by lego_id (always populated since Jan 2026)
-      // IMPORTANT: Only count as existing if s3_key is mastered/ (not pending/)
-      if (role === 'presentation') {
-        // Skip pending presentations - they have placeholder s3_key but no actual audio
-        if (ca.s3_key?.startsWith('pending/')) {
-          continue
-        }
-        // Use lego_id for matching (preferred, more reliable than regex extraction)
-        if (ca.lego_id) {
-          existingByRole.presentation.set(ca.lego_id, {
-            audioId: ca.id,
-            voiceId: ca.voice_id,
-            s3Key: ca.s3_key,
-            fullText: ca.text
-          })
-        }
-        // Keep first audio as sample for voice matching
-        if (!samplesByRole.presentation) {
-          samplesByRole.presentation = {
-            text: ca.text,
-            audioId: ca.id,
-            voiceId: ca.voice_id,
-            s3Key: ca.s3_key
-          }
-        }
-      } else if (normalizedText && existingByRole[role]) {
-        // Standard roles: known, target1, target2
-        existingByRole[role].set(normalizedText, {
-          audioId: ca.id,
-          voiceId: ca.voice_id,
-          s3Key: ca.s3_key
-        })
-        // Keep first audio as sample for voice matching
-        if (!samplesByRole[role]) {
-          samplesByRole[role] = {
-            text: ca.text,
-            audioId: ca.id,
-            voiceId: ca.voice_id,
-            s3Key: ca.s3_key
-          }
-        }
-      }
-    }
-
-    // Find missing by role
-    const missingByRole = {
-      known: [],
-      target1: [],
-      target2: [],
-      presentation: []
-    }
-    const seen = {
-      known: new Set(),
-      target1: new Set(),
-      target2: new Set(),
-      presentation: new Set()
-    }
-
-    for (const p of phrases) {
-      const seedId = `S${String(p.seed_number).padStart(4, '0')}`
-      const legoId = `${seedId}L${String(p.lego_index).padStart(2, '0')}`
-
-      // Normalize texts for comparison
-      const knownNorm = p.known_text?.toLowerCase().trim()
-      const targetNorm = p.target_text?.toLowerCase().trim()
-
-      // Check known (use normalized for matching)
-      if (knownNorm && !existingByRole.known.has(knownNorm) && !seen.known.has(knownNorm)) {
-        seen.known.add(knownNorm)
-        missingByRole.known.push({ text: p.known_text, seedId, legoId })
-      }
-      // Check target1
-      if (targetNorm && !existingByRole.target1.has(targetNorm) && !seen.target1.has(targetNorm)) {
-        seen.target1.add(targetNorm)
-        missingByRole.target1.push({ text: p.target_text, seedId, legoId })
-      }
-      // Check target2
-      if (targetNorm && !existingByRole.target2.has(targetNorm) && !seen.target2.has(targetNorm)) {
-        seen.target2.add(targetNorm)
-        missingByRole.target2.push({ text: p.target_text, seedId, legoId })
-      }
-    }
-
-    // Check LEGOs for missing presentation audio (only new LEGOs need intros)
-    // Match by lego_id (always populated since Jan 2026)
-    for (const lego of legos) {
-      if (lego.lego_id && !existingByRole.presentation.has(lego.lego_id) && !seen.presentation.has(lego.lego_id)) {
-        seen.presentation.add(lego.lego_id)
-        missingByRole.presentation.push({
-          text: lego.known_text,  // Show the known text (what's in the presentation)
-          targetText: lego.target_text,
-          seedId: `S${String(lego.seed_number).padStart(4, '0')}`,
-          legoId: lego.lego_id
-        })
-      }
-    }
-
-    // =========================================================================
-    // ADDITIONAL CHECKS: Seeds, Shared Audio, Welcomes
-    // These are generated via different processes (ElevenLabs vs Azure)
-    // =========================================================================
-
-    // Get course info for language lookups and release target
+    // Get course info for ElevenLabs checks
     const { data: course, error: courseErr } = await supabase
       .from('courses')
       .select('known_lang, target_lang, seed_count')
@@ -3202,170 +3041,62 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     if (courseErr) throw courseErr
 
     const knownLang = course?.known_lang || 'eng'
-    const targetLang = course?.target_lang
     const releaseTarget = course?.seed_count || 260
 
-    // --- SEEDS: Check seed sentences have audio (up to release target) ---
-    const missingSeedAudio = {
-      known: [],
-      target1: [],
-      target2: []
-    }
-    const seedCounts = {
-      expected: { known: 0, target1: 0, target2: 0 },
-      existing: { known: 0, target1: 0, target2: 0 }
-    }
+    // =========================================================================
+    // SAMPLE AUDIO: Get one sample per role for voice matching UI
+    // =========================================================================
+    const samplesByRole = { known: null, target1: null, target2: null, presentation: null }
 
-    // Paginate seeds
-    let seedOffset = 0
-    while (true) {
-      const { data: seeds, error: seedErr } = await supabase
-        .from('course_seeds')
-        .select('seed_number, seed_id, known_text, target_text')
-        .eq('course_code', courseCode)
-        .lte('seed_number', releaseTarget)
-        .range(seedOffset, seedOffset + pageSize - 1)
+    const { data: sampleAudio } = await supabase
+      .from('course_audio')
+      .select('id, text, role, voice_id, s3_key')
+      .eq('course_code', courseCode)
+      .not('s3_key', 'like', 'pending/%')
+      .in('role', ['known', 'target1', 'target2', 'presentation'])
+      .limit(100)
 
-      if (seedErr) throw seedErr
-      if (!seeds || seeds.length === 0) break
-
-      for (const seed of seeds) {
-        const seedId = `S${String(seed.seed_number).padStart(4, '0')}`
-
-        // Check known (seed sentence in known language)
-        if (seed.known_text) {
-          seedCounts.expected.known++
-          const knownNorm = seed.known_text.toLowerCase().trim()
-          if (existingByRole.known.has(knownNorm)) {
-            seedCounts.existing.known++
-          } else {
-            missingSeedAudio.known.push({ text: seed.known_text, seedId, seedNumber: seed.seed_number })
-          }
-        }
-
-        // Check target1 and target2 (seed sentence in target language)
-        if (seed.target_text) {
-          const targetNorm = seed.target_text.toLowerCase().trim()
-
-          seedCounts.expected.target1++
-          if (existingByRole.target1.has(targetNorm)) {
-            seedCounts.existing.target1++
-          } else {
-            missingSeedAudio.target1.push({ text: seed.target_text, seedId, seedNumber: seed.seed_number })
-          }
-
-          seedCounts.expected.target2++
-          if (existingByRole.target2.has(targetNorm)) {
-            seedCounts.existing.target2++
-          } else {
-            missingSeedAudio.target2.push({ text: seed.target_text, seedId, seedNumber: seed.seed_number })
-          }
+    for (const sa of sampleAudio || []) {
+      if (!samplesByRole[sa.role]) {
+        samplesByRole[sa.role] = {
+          text: sa.text,
+          audioId: sa.id,
+          voiceId: sa.voice_id,
+          s3Key: sa.s3_key
         }
       }
-
-      seedOffset += pageSize
-      if (seeds.length < pageSize) break
     }
 
-    // --- LEGOS: Check LEGO texts have audio (up to release target) ---
-    // LEGOs should have their text covered by phrases, but we check explicitly
-    const missingLegoAudio = {
-      known: [],
-      target1: [],
-      target2: []
-    }
-    const legoCounts = {
-      expected: { known: 0, target1: 0, target2: 0 },
-      existing: { known: 0, target1: 0, target2: 0 }
-    }
-    const seenLegoTexts = {
-      known: new Set(),
-      target1: new Set(),
-      target2: new Set()
-    }
-
-    // Paginate all LEGOs (not just new ones - all LEGOs need audio)
-    let legoOffset = 0
-    while (true) {
-      const { data: allLegos, error: legoErr } = await supabase
-        .from('course_legos')
-        .select('lego_id, seed_number, lego_index, known_text, target_text, is_new')
-        .eq('course_code', courseCode)
-        .lte('seed_number', releaseTarget)
-        .range(legoOffset, legoOffset + pageSize - 1)
-
-      if (legoErr) throw legoErr
-      if (!allLegos || allLegos.length === 0) break
-
-      for (const lego of allLegos) {
-        const legoId = lego.lego_id || `S${String(lego.seed_number).padStart(4, '0')}L${String(lego.lego_index).padStart(2, '0')}`
-
-        // Check known (LEGO in known language) - dedupe by text
-        if (lego.known_text) {
-          const knownNorm = lego.known_text.toLowerCase().trim()
-          if (!seenLegoTexts.known.has(knownNorm)) {
-            seenLegoTexts.known.add(knownNorm)
-            legoCounts.expected.known++
-            if (existingByRole.known.has(knownNorm)) {
-              legoCounts.existing.known++
-            } else {
-              missingLegoAudio.known.push({ text: lego.known_text, legoId, seedNumber: lego.seed_number })
-            }
-          }
-        }
-
-        // Check target1 and target2 (LEGO in target language) - dedupe by text
-        if (lego.target_text) {
-          const targetNorm = lego.target_text.toLowerCase().trim()
-
-          if (!seenLegoTexts.target1.has(targetNorm)) {
-            seenLegoTexts.target1.add(targetNorm)
-            legoCounts.expected.target1++
-            if (existingByRole.target1.has(targetNorm)) {
-              legoCounts.existing.target1++
-            } else {
-              missingLegoAudio.target1.push({ text: lego.target_text, legoId, seedNumber: lego.seed_number })
-            }
-          }
-
-          if (!seenLegoTexts.target2.has(targetNorm)) {
-            seenLegoTexts.target2.add(targetNorm)
-            legoCounts.expected.target2++
-            if (existingByRole.target2.has(targetNorm)) {
-              legoCounts.existing.target2++
-            } else {
-              missingLegoAudio.target2.push({ text: lego.target_text, legoId, seedNumber: lego.seed_number })
-            }
-          }
+    // Generate signed URLs for samples
+    for (const role of ['known', 'target1', 'target2', 'presentation']) {
+      if (samplesByRole[role]) {
+        try {
+          const url = await s3Service.getAudioSignedUrl(samplesByRole[role].audioId, 3600, {
+            s3Key: samplesByRole[role].s3Key
+          })
+          samplesByRole[role].url = url
+        } catch (e) {
+          logger.warn(`Could not get signed URL for ${role} sample: ${e.message}`)
         }
       }
-
-      legoOffset += pageSize
-      if (allLegos.length < pageSize) break
     }
 
-    // --- SHARED AUDIO: Encouragements (26) + Instructions (48) per known language ---
-    // These are generated via ElevenLabs, not Azure
-    const SHARED_AUDIO_REQUIREMENTS = {
-      encouragement: 26,  // pooledEncouragements
-      instruction: 48     // orderedEncouragements
-    }
+    // =========================================================================
+    // ELEVENLABS: Shared audio (encouragements, instructions, welcome)
+    // =========================================================================
+    const SHARED_AUDIO_REQUIREMENTS = { encouragement: 26, instruction: 48 }
 
-    const { count: encCount, error: encErr } = await supabase
+    const { count: encCount } = await supabase
       .from('shared_audio')
       .select('*', { count: 'exact', head: true })
       .eq('language', knownLang)
       .eq('audio_type', 'encouragement')
 
-    if (encErr) throw encErr
-
-    const { count: instrCount, error: instrErr } = await supabase
+    const { count: instrCount } = await supabase
       .from('shared_audio')
       .select('*', { count: 'exact', head: true })
       .eq('language', knownLang)
       .eq('audio_type', 'instruction')
-
-    if (instrErr) throw instrErr
 
     const sharedAudio = {
       language: knownLang,
@@ -3381,7 +3112,7 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
-    // --- WELCOMES: Check welcomes.json canonical file ---
+    // Welcome audio check
     let welcomeStatus = { exists: false, hasAudio: false, details: null }
     try {
       const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
@@ -3401,75 +3132,56 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       logger.warn(`Could not read welcomes.json: ${e.message}`)
     }
 
-    // Generate signed URLs for sample audio (v13: flat S3 storage)
-    for (const role of ['known', 'target1', 'target2', 'presentation']) {
-      if (samplesByRole[role]) {
-        try {
-          const url = await s3Service.getAudioSignedUrl(samplesByRole[role].audioId, 3600, {
-            s3Key: samplesByRole[role].s3Key
-          })
-          samplesByRole[role].url = url
-        } catch (e) {
-          logger.warn(`Could not get signed URL for ${role} sample: ${e.message}`)
-        }
-      }
-    }
-
-    // Calculate totals
-    const phraseMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length + missingByRole.presentation.length
-    const seedMissing = missingSeedAudio.known.length + missingSeedAudio.target1.length + missingSeedAudio.target2.length
-    const legoMissing = missingLegoAudio.known.length + missingLegoAudio.target1.length + missingLegoAudio.target2.length
+    // =========================================================================
+    // BUILD RESPONSE: Phase8 data for Azure, local data for ElevenLabs
+    // =========================================================================
+    const breakdown = phase8Plan.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 }
+    const azureMissing = phase8Plan.missing || 0
     const sharedMissing = sharedAudio.encouragements.missing + sharedAudio.instructions.missing
     const welcomeMissing = welcomeStatus.hasAudio ? 0 : 1
+    const totalMissing = azureMissing + sharedMissing + welcomeMissing
 
-    const totalMissing = phraseMissing + seedMissing + legoMissing + sharedMissing + welcomeMissing
+    // Build missing arrays for UI (empty - UI uses counts, detail lists not needed)
+    const missingByRole = { known: [], target1: [], target2: [], presentation: [] }
 
     res.json({
       success: true,
       courseCode,
       releaseTarget,
       totalMissing,
-      totalPhrases: phrases.length,
-      totalLegos: legos.length,
-      existingCounts: {
-        known: existingByRole.known.size,
-        target1: existingByRole.target1.size,
-        target2: existingByRole.target2.size,
-        presentation: existingByRole.presentation.size
-      },
-      missing: missingByRole,
-      samples: samplesByRole,  // Sample audio for each role for voice matching
+      totalPhrases: phase8Plan.totalPhrases || 0,
+      totalLegos: phase8Plan.totalPresentationsNeeded || 0,
+      existingCounts: phase8Plan.existingByRole || { known: 0, target1: 0, target2: 0, presentation: 0 },
 
-      // Additional categories (different generation processes)
-      seeds: {
-        counts: seedCounts,
-        missing: missingSeedAudio,
-        totalMissing: seedMissing
-      },
-      legos: {
-        counts: legoCounts,
-        missing: missingLegoAudio,
-        totalMissing: legoMissing
-      },
-      sharedAudio,  // Encouragements + Instructions (ElevenLabs)
-      welcome: welcomeStatus,  // Welcome message (ElevenLabs)
+      // Phase8 breakdown for Azure (UI reads .length but we provide counts via byProcess)
+      missing: missingByRole,
+      missingCounts: breakdown,  // Direct counts for UI
+      samples: samplesByRole,
+
+      // Seeds/LEGOs included in phase8 counts (no separate tracking needed)
+      seeds: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
+      legos: { counts: {}, missing: { known: [], target1: [], target2: [] }, totalMissing: 0 },
+
+      // ElevenLabs (local)
+      sharedAudio,
+      welcome: welcomeStatus,
 
       // Summary by generation process
       byProcess: {
         azure: {
           label: 'Azure TTS (Phrases)',
-          missing: phraseMissing,
-          categories: ['known', 'target1', 'target2', 'presentation']
+          missing: breakdown.known + breakdown.target1 + breakdown.target2,
+          categories: ['known', 'target1', 'target2']
         },
         azureSeeds: {
           label: 'Azure TTS (Seeds)',
-          missing: seedMissing,
-          categories: ['seed_known', 'seed_target1', 'seed_target2']
+          missing: 0,  // Included in phase8 deduped counts
+          categories: []
         },
         azureLegos: {
           label: 'Azure TTS (LEGOs)',
-          missing: legoMissing,
-          categories: ['lego_known', 'lego_target1', 'lego_target2']
+          missing: breakdown.presentation,
+          categories: ['presentation']
         },
         elevenLabs: {
           label: 'ElevenLabs (UI Audio)',
