@@ -49,10 +49,12 @@ const ENVIRONMENTS = {
 
 // SYNCHRONOUS: Ensure localStorage is set BEFORE any async code runs
 // This prevents race conditions with production store loading
+// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, or api)
+const DEFAULT_ENV = import.meta.env.VITE_DEFAULT_ENVIRONMENT || 'tom'
 const savedEnv = localStorage.getItem('ssi_environment')
-const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : 'tom'
+const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : DEFAULT_ENV
 if (!savedEnv) {
-  localStorage.setItem('ssi_environment', 'tom')
+  localStorage.setItem('ssi_environment', DEFAULT_ENV)
 }
 const expectedUrl = ENVIRONMENTS[initialEnv].url
 const expectedProfile = ENVIRONMENTS[initialEnv].machineProfile
@@ -74,14 +76,14 @@ const currentApiUrl = computed(() => {
 })
 
 onMounted(() => {
-  // Load saved environment from localStorage, or default to 'tom'
+  // Load saved environment from localStorage, or default to configured environment
   const saved = localStorage.getItem('ssi_environment')
   if (saved && ENVIRONMENTS[saved]) {
     selectedEnv.value = saved
   } else {
-    // No saved environment - default to Tom's Machine and save it
-    selectedEnv.value = 'tom'
-    localStorage.setItem('ssi_environment', 'tom')
+    // No saved environment - default to configured machine and save it
+    selectedEnv.value = DEFAULT_ENV
+    localStorage.setItem('ssi_environment', DEFAULT_ENV)
   }
 
   // Always ensure api_base_url is synced with current environment

@@ -113,3 +113,9 @@ tests/
 public/vfs/courses_backup_*
 **/backups/
 **/*backup*
+
+# --------------------------
+# Bulk Audio Generation (side project)
+# --------------------------
+scripts/bulk-audio/data/
+scripts/bulk-audio/generated/

@@ -1,6 +1,11 @@
 const path = require('path');
+require('dotenv').config();
 
 const VFS_ROOT = path.join(__dirname, 'public/vfs/courses');
+
+// Each developer sets NGROK_DOMAIN in their local .env file
+// Falls back to popty.ngrok.app if not set
+const NGROK_DOMAIN = process.env.NGROK_DOMAIN || 'popty.ngrok.app';
 
 module.exports = {
   apps: [
@@ -84,7 +89,7 @@ module.exports = {
     {
       name: 'ngrok',
       script: 'ngrok',
-      args: 'http --url=popty.ngrok.app 3470 --log=stdout --pooling-enabled',
+      args: `http --url=${NGROK_DOMAIN} 3456 --log=stdout`,
       interpreter: 'none',
       autorestart: true,
       max_restarts: 10,
