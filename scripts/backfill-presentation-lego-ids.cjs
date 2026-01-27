@@ -62,13 +62,12 @@ async function backfillLegoIds(courseCode, dryRun = false) {
   console.log(`\n=== Backfilling lego_id for ${courseCode} presentations ===`);
   console.log(`Mode: ${dryRun ? 'DRY RUN' : 'EXECUTE'}\n`);
 
-  // 1. Get presentations WITHOUT lego_id
+  // 1. Get ALL presentations (we'll fix any with wrong lego_id)
   const { data: presentations, error: presError } = await supabase
     .from('course_audio')
-    .select('id, text')
+    .select('id, text, lego_id')
     .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .is('lego_id', null);
+    .eq('role', 'presentation');
 
   if (presError) {
     console.error('Error fetching presentations:', presError.message);
@@ -76,24 +75,26 @@ async function backfillLegoIds(courseCode, dryRun = false) {
   }
 
   if (!presentations?.length) {
-    console.log('No presentations missing lego_id. Nothing to do!');
+    console.log('No presentations found. Nothing to do!');
     return { updated: 0, failed: 0 };
   }
 
-  console.log(`Found ${presentations.length} presentations missing lego_id`);
+  console.log(`Found ${presentations.length} total presentations`);
 
-  // 2. Get all LEGOs for lookup
+  // 2. Get LEGOs with is_new=true (first occurrences only), ordered by seed_number
   const { data: legos, error: legoError } = await supabase
-    .from('lego_cycles')
-    .select('lego_id, known_text')
-    .eq('course_code', courseCode);
+    .from('course_legos')
+    .select('lego_id, known_text, seed_number')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .order('seed_number', { ascending: true });
 
   if (legoError) {
     console.error('Error fetching LEGOs:', legoError.message);
     return;
   }
 
-  // Build lookup: normalized known_text -> lego_id
+  // Build lookup: normalized known_text -> lego_id (only first occurrences)
   const legoMap = new Map();
   for (const lego of legos || []) {
     const normalized = lego.known_text.toLowerCase().trim();
@@ -101,10 +102,11 @@ async function backfillLegoIds(courseCode, dryRun = false) {
       legoMap.set(normalized, lego.lego_id);
     }
   }
-  console.log(`Loaded ${legoMap.size} unique LEGOs for matching\n`);
+  console.log(`Loaded ${legoMap.size} unique LEGOs (is_new=true only) for matching\n`);
 
-  // 3. Match and collect updates
+  // 3. Match and collect updates (only those needing change)
   const updates = [];
+  const alreadyCorrect = [];
   const failed = [];
 
   for (const pres of presentations) {
@@ -116,24 +118,35 @@ async function backfillLegoIds(courseCode, dryRun = false) {
     }
 
     const normalized = knownText.toLowerCase().trim();
-    const legoId = legoMap.get(normalized);
+    const correctLegoId = legoMap.get(normalized);
 
-    if (!legoId) {
+    if (!correctLegoId) {
       failed.push({ id: pres.id, text: pres.text, extracted: knownText, reason: 'no matching LEGO' });
       continue;
     }
 
-    updates.push({ id: pres.id, lego_id: legoId, known_text: knownText });
+    // Only update if lego_id is wrong or null
+    if (pres.lego_id !== correctLegoId) {
+      updates.push({
+        id: pres.id,
+        lego_id: correctLegoId,
+        known_text: knownText,
+        old_lego_id: pres.lego_id
+      });
+    } else {
+      alreadyCorrect.push({ id: pres.id, lego_id: correctLegoId });
+    }
   }
 
-  console.log(`Matched: ${updates.length}`);
-  console.log(`Failed: ${failed.length}`);
+  console.log(`Already correct: ${alreadyCorrect.length}`);
+  console.log(`Need update: ${updates.length}`);
+  console.log(`Failed to match: ${failed.length}`);
 
   // Show samples
   if (updates.length > 0) {
-    console.log('\nSample matches:');
-    for (const u of updates.slice(0, 5)) {
-      console.log(`  "${u.known_text}" -> ${u.lego_id}`);
+    console.log('\nSample corrections:');
+    for (const u of updates.slice(0, 10)) {
+      console.log(`  "${u.known_text}": ${u.old_lego_id || 'null'} -> ${u.lego_id}`);
     }
   }
 

@@ -762,8 +762,11 @@ const updateConcurrency = (value: number) => {
 // Actions
 const startGeneration = async () => {
   startingGeneration.value = true
+  error.value = null
   try {
     await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+  } catch (err: any) {
+    error.value = err.message || 'Failed to start generation'
   } finally {
     startingGeneration.value = false
   }
