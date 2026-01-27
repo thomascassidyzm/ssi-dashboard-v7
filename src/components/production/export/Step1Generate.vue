@@ -37,6 +37,78 @@
 
     <!-- Completed state -->
     <div v-else class="space-y-4">
+      <!-- Audio generation progress (if running) -->
+      <div v-if="audioProgress.status === 'running'" class="progress-box p-4 bg-blue-900/30 border border-blue-700 rounded-lg">
+        <div class="flex items-center gap-2 text-blue-400 font-medium mb-2">
+          <span class="spinner w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
+          <span>Generating combined presentation audio...</span>
+        </div>
+        <div class="progress-bar-container w-full bg-slate-700 rounded-full h-2 overflow-hidden">
+          <div
+            class="progress-bar-fill h-full bg-blue-500 transition-all duration-300"
+            :style="{ width: audioProgressPercent + '%' }"
+          ></div>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">
+          {{ audioProgress.completed }} / {{ audioProgress.total }} audio files
+        </div>
+      </div>
+
+      <!-- Audio generation completed -->
+      <div v-else-if="audioProgress.status === 'completed'" class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
+        <div class="flex items-center gap-2 text-emerald-400 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Combined audio generation complete</span>
+        </div>
+
+        <!-- Audio generation errors/warnings -->
+        <div v-if="audioProgress.skipped && audioProgress.skipped.length > 0" class="mt-3 p-3 bg-amber-900/30 border border-amber-700 rounded">
+          <div class="flex items-center gap-2 text-amber-400 font-medium mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>{{ audioProgress.skipped.length }} presentation{{ audioProgress.skipped.length > 1 ? 's' : '' }} skipped</span>
+          </div>
+          <div class="text-sm text-slate-300 space-y-1 max-h-48 overflow-y-auto">
+            <div v-for="skip in audioProgress.skipped.slice(0, 10)" :key="skip.legoId" class="font-mono text-xs">
+              <span class="text-amber-400">{{ skip.legoId }}</span>: missing <span class="text-red-400">{{ skip.missing.join(', ') }}</span>
+            </div>
+            <div v-if="audioProgress.skipped.length > 10" class="text-slate-400 italic">
+              ... and {{ audioProgress.skipped.length - 10 }} more
+            </div>
+          </div>
+        </div>
+
+        <div v-if="audioProgress.errors && audioProgress.errors.length > 0" class="mt-3 p-3 bg-red-900/30 border border-red-700 rounded">
+          <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <span>{{ audioProgress.errors.length }} concatenation error{{ audioProgress.errors.length > 1 ? 's' : '' }}</span>
+          </div>
+          <div class="text-sm text-slate-300 space-y-1 max-h-48 overflow-y-auto">
+            <div v-for="err in audioProgress.errors.slice(0, 5)" :key="err.legoId" class="font-mono text-xs">
+              <span class="text-red-400">{{ err.legoId }}</span>: {{ err.error }}
+            </div>
+            <div v-if="audioProgress.errors.length > 5" class="text-slate-400 italic">
+              ... and {{ audioProgress.errors.length - 5 }} more
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio generation failed -->
+      <div v-else-if="audioProgress.status === 'failed'" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
+        <div class="flex items-center gap-2 text-red-400 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          <span>Audio generation failed</span>
+        </div>
+      </div>
+
       <!-- Success message -->
       <div class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
         <div class="flex items-center gap-2 text-emerald-400 font-medium">
@@ -104,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { ExportState, ManifestStats, ValidationResult } from '@/composables/useExportWorkflow'
 
 const props = defineProps<{
@@ -112,6 +184,13 @@ const props = defineProps<{
   stats: ManifestStats | null
   validation: ValidationResult | null
   isLoading: boolean
+  audioProgress: {
+    completed: number
+    total: number
+    status: 'none' | 'running' | 'completed' | 'failed'
+    errors: Array<{ legoId: string, error: string }>
+    skipped: Array<{ legoId: string, missing: string[] }>
+  }
   formatDate: (date: string | null) => string
 }>()
 
@@ -121,7 +200,12 @@ const emit = defineEmits<{
   regenerate: []
 }>()
 
-const withAudio = ref(false)
+const withAudio = ref(true) // Default to true - always generate combined audio
+
+const audioProgressPercent = computed(() => {
+  if (props.audioProgress.total === 0) return 0
+  return Math.round((props.audioProgress.completed / props.audioProgress.total) * 100)
+})
 
 function handleGenerate() {
   emit('generate', withAudio.value)

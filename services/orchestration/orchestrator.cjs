@@ -5030,6 +5030,28 @@ app.get('/api/health', (req, res) => {
  * - pipeline:phase:start, pipeline:phase:complete
  * - pipeline:gap-fill:triggered, pipeline:gap-fill:complete, pipeline:gap-fill:failed
  */
+
+// IMPORTANT: Specific routes must come BEFORE parameterized routes
+// Allow other services (like production-api) to emit WebSocket events through this orchestrator
+app.post('/api/events/emit', (req, res) => {
+  const { courseCode, event, data } = req.body;
+
+  if (!event) {
+    return res.status(400).json({ error: 'event required' });
+  }
+
+  // Emit to all connected clients or to a specific course room
+  if (courseCode) {
+    io.to(`course:${courseCode}`).emit(event, { courseCode, ...data });
+    console.log(`[WebSocket Proxy] Emitted ${event} to course:${courseCode}`);
+  } else {
+    io.emit(event, data);
+    console.log(`[WebSocket Proxy] Emitted ${event} globally`);
+  }
+
+  res.json({ success: true, event, courseCode });
+});
+
 app.post('/api/events/:courseCode', (req, res) => {
   const { courseCode } = req.params;
   const eventData = req.body;
@@ -10159,6 +10181,13 @@ app.post('/api/briefs/:knownCode/:targetCode', async (req, res) => {
 app.use('/api/production', async (req, res) => {
   const targetUrl = `${PRODUCTION_API_URL}/api/production${req.url}`;
 
+  // Longer timeout for operations that may take a while
+  // - Manifest generation (especially with audio)
+  // - S3 verification (checking thousands of files)
+  // - Audio deployment
+  // 20 minutes to handle large courses (e.g., 1000+ seeds with combined audio generation)
+  const timeout = 1200000; // 20 minutes
+
   try {
     const response = await axios({
       method: req.method,
@@ -10168,7 +10197,7 @@ app.use('/api/production', async (req, res) => {
         'Content-Type': 'application/json',
         ...req.headers.authorization && { 'Authorization': req.headers.authorization }
       },
-      timeout: 30000
+      timeout
     });
 
     res.status(response.status).json(response.data);
@@ -10206,7 +10235,7 @@ app.use('/api/stats', async (req, res) => {
         'Content-Type': 'application/json',
         ...req.headers.authorization && { 'Authorization': req.headers.authorization }
       },
-      timeout: 30000
+      timeout: 60000 // 1 minute for stats queries
     });
 
     res.status(response.status).json(response.data);

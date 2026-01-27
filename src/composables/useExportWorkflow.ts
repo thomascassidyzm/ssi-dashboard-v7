@@ -19,10 +19,19 @@ export interface ExportState {
   publishApidevFilename: string | null
   deployPlan: DeployPlan | null
   deployExecutedAt: string | null
+  deployVerification: DeployVerification | null
   updatedAt: string | null
   // Local manifest storage tracking
   pendingManifestPath: string | null
   generatedOnMachine: string | null
+}
+
+export interface DeployVerification {
+  checked: number
+  matched: number
+  mismatched: number
+  errors: number
+  details: Array<{ uuid: string; issue: string; expected: number }>
 }
 
 export interface S3VerificationResult {
@@ -30,7 +39,25 @@ export interface S3VerificationResult {
   existing: number
   missing: number
   missingUuids: string[]
-  durationFixes?: number
+  durationChecked?: number
+  durationMatched?: number
+  durationMismatched?: number
+  durationErrors?: number
+  durationCheckFailed?: boolean
+  durationCheckError?: string
+  durationsFixed?: number
+  durationFixErrors?: number
+  durationMismatchDetails?: Array<{
+    uuid: string
+    expectedDuration: number
+    actualDuration: number
+    difference: number
+  }>
+  durationErrorDetails?: Array<{
+    uuid: string
+    error: string
+    stage: string
+  }>
 }
 
 export interface DeployPlan {
@@ -110,6 +137,7 @@ export function useExportWorkflow(courseCode: string) {
     publishApidevFilename: null,
     deployPlan: null,
     deployExecutedAt: null,
+    deployVerification: null,
     updatedAt: null,
     pendingManifestPath: null,
     generatedOnMachine: null
@@ -123,6 +151,14 @@ export function useExportWorkflow(courseCode: string) {
   const versionInfo = ref<VersionInfo | null>(null)
 
   // Progress tracking for long operations
+  const audioGenerationProgress = ref({
+    completed: 0,
+    total: 0,
+    status: 'none' as 'none' | 'running' | 'completed' | 'failed',
+    errors: [] as Array<{ legoId: string, error: string }>,
+    skipped: [] as Array<{ legoId: string, missing: string[] }>
+  })
+  const audioJobId = ref<string | null>(null)
   const s3VerifyProgress = ref({ checked: 0, total: 0 })
   const deployProgress = ref({ deployed: 0, total: 0 })
 
@@ -173,18 +209,130 @@ export function useExportWorkflow(courseCode: string) {
     const wsUrl = apiBase || window.location.origin
 
     socket = io(wsUrl, {
-      path: '/api/production/websocket',
+      path: '/api/orchestrator/websocket',
       transports: ['websocket', 'polling']
     })
 
     socket.on('connect', () => {
-      console.log('[ExportWorkflow] WebSocket connected')
+      console.log('[ExportWorkflow] WebSocket connected to:', wsUrl)
+      console.log('[ExportWorkflow] Socket ID:', socket?.id)
+
+      // Subscribe to course-specific events
+      socket.emit('subscribe', courseCode)
+      console.log('[ExportWorkflow] Subscribed to course:', courseCode)
     })
 
-    // S3 verification progress
-    socket.on('s3Verify:progress', (data: { courseCode: string; checked: number; total: number }) => {
+    socket.on('connect_error', (error) => {
+      console.error('[ExportWorkflow] WebSocket connection error:', error.message)
+    })
+
+    socket.on('disconnect', (reason) => {
+      console.log('[ExportWorkflow] WebSocket disconnected:', reason)
+    })
+
+    // Legacy audio generation progress
+    socket.on('legacyAudio:progress', (data: { jobId: string; completed: number; total: number }) => {
+      console.log('[ExportWorkflow] legacyAudio:progress received:', data)
+      console.log('[ExportWorkflow] Current audioJobId:', audioJobId.value)
+      if (data.jobId === audioJobId.value) {
+        audioGenerationProgress.value = {
+          completed: data.completed,
+          total: data.total,
+          status: 'running',
+          errors: [],
+          skipped: []
+        }
+        console.log('[ExportWorkflow] Progress updated:', audioGenerationProgress.value)
+      }
+    })
+
+    socket.on('legacyAudio:completed', (data: {
+      jobId: string
+      successful?: number
+      errorsCount?: number
+      skippedCount?: number
+      errors?: Array<{ legoId: string, error: string }>
+      skipped?: Array<{ legoId: string, missing: string[] }>
+    }) => {
+      console.log('[ExportWorkflow] legacyAudio:completed received:', data)
+      if (data.jobId === audioJobId.value) {
+        audioGenerationProgress.value.status = 'completed'
+        audioGenerationProgress.value.errors = data.errors || []
+        audioGenerationProgress.value.skipped = data.skipped || []
+        console.log('[ExportWorkflow] Status updated to completed', {
+          errors: audioGenerationProgress.value.errors.length,
+          skipped: audioGenerationProgress.value.skipped.length
+        })
+      }
+    })
+
+    socket.on('legacyAudio:failed', (data: { jobId: string; error: string }) => {
+      console.log('[ExportWorkflow] legacyAudio:failed received:', data)
+      if (data.jobId === audioJobId.value) {
+        audioGenerationProgress.value.status = 'failed'
+        error.value = `Audio generation failed: ${data.error}`
+        console.log('[ExportWorkflow] Status updated to failed')
+      }
+    })
+
+    // S3 verification progress (existence check phase)
+    socket.on('s3Verify:progress', (data: { courseCode: string; phase: string; checked: number; total: number }) => {
       if (data.courseCode === courseCode) {
-        s3VerifyProgress.value = { checked: data.checked, total: data.total }
+        s3VerifyProgress.value = { phase: data.phase || 'existence', checked: data.checked, total: data.total }
+      }
+    })
+
+    // S3 verification duration progress (duration check phase)
+    socket.on('s3Verify:durationProgress', (data: {
+      courseCode: string
+      phase: 'duration'
+      checked: number
+      total: number
+      matched: number
+      mismatched: number
+      errors: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        s3VerifyProgress.value = {
+          phase: 'duration',
+          checked: data.checked,
+          total: data.total,
+          matched: data.matched,
+          mismatched: data.mismatched,
+          errors: data.errors
+        }
+      }
+    })
+
+    // Auto-fix durations progress
+    socket.on('s3Verify:fixingDurations', (data: {
+      courseCode: string
+      total: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        s3VerifyProgress.value = {
+          phase: 'fixing',
+          checked: 0,
+          total: data.total
+        }
+      }
+    })
+
+    socket.on('s3Verify:fixProgress', (data: {
+      courseCode: string
+      checked: number
+      total: number
+      fixed: number
+      errors: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        s3VerifyProgress.value = {
+          phase: 'fixing',
+          checked: data.checked,
+          total: data.total,
+          fixed: data.fixed,
+          errors: data.errors
+        }
       }
     })
 
@@ -201,15 +349,113 @@ export function useExportWorkflow(courseCode: string) {
       }
     })
 
-    socket.on('audioDeploy:completed', (data: { courseCode: string }) => {
+    // Audio deploy verification progress (post-deploy duration check)
+    socket.on('audioDeploy:verifyProgress', (data: {
+      courseCode: string
+      checked: number
+      total: number
+      matched: number
+      mismatched: number
+      errors: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        deployProgress.value = {
+          ...deployProgress.value,
+          verifying: true,
+          verifyChecked: data.checked,
+          verifyTotal: data.total,
+          verifyMatched: data.matched,
+          verifyMismatched: data.mismatched,
+          verifyErrors: data.errors
+        }
+      }
+    })
+
+    socket.on('audioDeploy:completed', (data: {
+      courseCode: string
+      deployed: number
+      failed: number
+      verification?: {
+        checked: number
+        matched: number
+        mismatched: number
+        errors: number
+        details: Array<{ uuid: string; issue: string; expected: number }>
+      }
+    }) => {
       if (data.courseCode === courseCode) {
         deployProgress.value = { deployed: 0, total: 0 }
+        // Save verification results to state
+        if (data.verification) {
+          state.value.deployVerification = data.verification
+        }
+      }
+    })
+
+    // Production verification progress (standalone, no deployment)
+    socket.on('prodVerify:existenceProgress', (data: {
+      courseCode: string
+      phase: string
+      checked: number
+      total: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        deployProgress.value = {
+          deployed: 0,
+          total: data.total,
+          verifying: true,
+          verifyChecked: data.checked,
+          verifyTotal: data.total,
+          verifyPhase: 'existence'
+        }
+      }
+    })
+
+    socket.on('prodVerify:durationProgress', (data: {
+      courseCode: string
+      phase: string
+      checked: number
+      total: number
+      matched: number
+      mismatched: number
+      errors: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        deployProgress.value = {
+          deployed: 0,
+          total: data.total,
+          verifying: true,
+          verifyChecked: data.checked,
+          verifyTotal: data.total,
+          verifyMatched: data.matched,
+          verifyMismatched: data.mismatched,
+          verifyErrors: data.errors,
+          verifyPhase: 'duration'
+        }
+      }
+    })
+
+    socket.on('prodVerify:completed', (data: {
+      courseCode: string
+      total: number
+      existing: number
+      missing: number
+      durationChecked: number
+      durationMatched: number
+      durationMismatched: number
+      details: Array<{ uuid: string; issue: string; expected: number }>
+    }) => {
+      if (data.courseCode === courseCode) {
+        deployProgress.value = { deployed: 0, total: 0 }
+        // Save verification results to state
+        state.value.deployVerification = data
       }
     })
   }
 
   function disconnectWebSocket() {
     if (socket) {
+      socket.emit('unsubscribe', courseCode)
       socket.disconnect()
       socket = null
     }
@@ -239,6 +485,7 @@ export function useExportWorkflow(courseCode: string) {
         publishApidevFilename: data.publishApidevFilename || null,
         deployPlan: data.deployPlan || null,
         deployExecutedAt: data.deployExecutedAt || null,
+        deployVerification: data.deployVerification || null,
         updatedAt: data.updatedAt || null,
         pendingManifestPath: data.pendingManifestPath || null,
         generatedOnMachine: data.generatedOnMachine || null
@@ -276,6 +523,16 @@ export function useExportWorkflow(courseCode: string) {
       state.value.manifestGeneratedAt = new Date().toISOString()
       state.value.pendingManifestPath = data.pendingPath || null
       state.value.generatedOnMachine = data.generatedOnMachine || machineName
+
+      // Track audio generation job if started
+      if (data.audioJobId) {
+        audioJobId.value = data.audioJobId
+        audioGenerationProgress.value.status = 'running'
+        console.log('[ExportWorkflow] Audio job started:', audioJobId.value)
+        connectWebSocket() // Connect to listen for progress events
+      } else {
+        console.log('[ExportWorkflow] No audioJobId in response, withAudio may be false')
+      }
 
       return data
     } catch (err: any) {
@@ -382,6 +639,9 @@ export function useExportWorkflow(courseCode: string) {
     isLoading.value = true
     error.value = null
 
+    // Clear existing plan to show loading state
+    state.value.deployPlan = null
+
     try {
       const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/plan`, {
         method: 'POST'
@@ -430,6 +690,61 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
+  // Verify production durations without deploying
+  async function verifyProductionDurations() {
+    isLoading.value = true
+    error.value = null
+    deployProgress.value = { deployed: 0, total: 0 }
+
+    try {
+      connectWebSocket()
+
+      const data = await fetchApi(`/api/production/${courseCode}/verify-production-durations`, {
+        method: 'POST'
+      })
+
+      // Save verification results to state
+      state.value.deployVerification = data
+
+      return data
+    } catch (err: any) {
+      error.value = err.message
+      throw err
+    } finally {
+      isLoading.value = false
+      deployProgress.value = { deployed: 0, total: 0 }
+    }
+  }
+
+  // Deploy only missing files (no overwrites)
+  async function deployMissingOnly() {
+    isLoading.value = true
+    error.value = null
+    deployProgress.value = { deployed: 0, total: 0 }
+
+    try {
+      connectWebSocket()
+
+      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/missing-only`, {
+        method: 'POST'
+      })
+
+      if (data.success) {
+        state.value.audioDeployed = true
+        state.value.audioDeployedAt = new Date().toISOString()
+        state.value.deployExecutedAt = new Date().toISOString()
+      }
+
+      return data
+    } catch (err: any) {
+      error.value = err.message
+      throw err
+    } finally {
+      isLoading.value = false
+      deployProgress.value = { deployed: 0, total: 0 }
+    }
+  }
+
   // Reset workflow state
   async function resetState() {
     isLoading.value = true
@@ -458,6 +773,7 @@ export function useExportWorkflow(courseCode: string) {
         publishApidevFilename: null,
         deployPlan: null,
         deployExecutedAt: null,
+        deployVerification: null,
         updatedAt: null,
         pendingManifestPath: null,
         generatedOnMachine: null
@@ -505,6 +821,8 @@ export function useExportWorkflow(courseCode: string) {
     versionInfo,
 
     // Progress
+    audioGenerationProgress,
+    audioJobId,
     s3VerifyProgress,
     deployProgress,
 
@@ -521,6 +839,8 @@ export function useExportWorkflow(courseCode: string) {
     publishManifest,
     getDeployPlan,
     deployAudio,
+    verifyProductionDurations,
+    deployMissingOnly,
     resetState,
     cleanup,
 

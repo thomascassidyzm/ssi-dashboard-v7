@@ -8,6 +8,22 @@
         Publish the manifest to course-configs repo and apidev server.
       </p>
 
+      <!-- BLOCKER: Duration verification required -->
+      <div v-if="!durationsVerified" class="blocker-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
+        <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          <span>Publishing Blocked: Duration verification required</span>
+        </div>
+        <p class="text-sm text-slate-300">
+          Go back to Step 2 and verify that all audio durations match the manifest before publishing.
+        </p>
+        <p class="text-xs text-slate-400 mt-2">
+          This ensures the learning app receives accurate duration metadata.
+        </p>
+      </div>
+
       <!-- Version info -->
       <div v-if="versionInfo" class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
         <div class="flex justify-between items-center">
@@ -76,11 +92,12 @@
       <!-- Publish button -->
       <button
         @click="handlePublish"
-        :disabled="isLoading || !version"
+        :disabled="isLoading || !version || !durationsVerified"
         class="w-full px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        <span>{{ isLoading ? 'Publishing...' : 'Publish Manifest' }}</span>
+        <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
+        <span v-else>{{ isLoading ? 'Publishing...' : 'Publish Manifest' }}</span>
       </button>
     </div>
 
@@ -119,15 +136,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
-import type { ExportState, VersionInfo } from '@/composables/useExportWorkflow'
+import { ref, watch, onMounted, computed } from 'vue'
+import type { ExportState, VersionInfo, S3VerificationResult } from '@/composables/useExportWorkflow'
 
 const props = defineProps<{
   state: ExportState
   versionInfo: VersionInfo | null
   isLoading: boolean
+  verification: S3VerificationResult | null
   formatDate: (date: string | null) => string
 }>()
+
+// CRITICAL: Check that durations were actually verified
+// Publishing without duration verification can cause sync issues in the learning app
+const durationsVerified = computed(() => {
+  const verification = props.state.s3Verification || props.verification
+  if (!verification) return false
+
+  // Must have:
+  // 1. No missing files
+  // 2. Duration check ran successfully (durationChecked > 0)
+  // 3. Duration check didn't fail (durationCheckFailed !== true)
+  return verification.missing === 0 &&
+         (verification.durationChecked || 0) > 0 &&
+         !verification.durationCheckFailed
+})
 
 const emit = defineEmits<{
   publish: [options: { version: string; status: string; commitToCourseConfigs: boolean; scpToApidev: boolean }]

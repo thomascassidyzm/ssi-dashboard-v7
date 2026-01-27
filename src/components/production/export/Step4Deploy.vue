@@ -80,20 +80,53 @@
       </div>
 
       <!-- Deploy progress -->
-      <div v-if="isDeploying" class="progress-section">
-        <div class="flex justify-between text-sm text-slate-400 mb-2">
-          <span>Deploying to production...</span>
-          <span>{{ progress.deployed.toLocaleString() }} / {{ progress.total.toLocaleString() }}</span>
+      <div v-if="isDeploying" class="progress-section space-y-4">
+        <!-- Deployment phase -->
+        <div v-if="!progress.verifying">
+          <div class="flex justify-between text-sm text-slate-400 mb-2">
+            <span>Deploying to production...</span>
+            <span>{{ progress.deployed.toLocaleString() }} / {{ progress.total.toLocaleString() }}</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+            <div
+              class="progress-bar bg-amber-500 h-full transition-all duration-300"
+              :style="{ width: `${progressPercent}%` }"
+            />
+          </div>
+          <p class="text-center text-xs text-slate-500 mt-2">
+            {{ progressPercent }}% complete
+          </p>
         </div>
-        <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
-          <div
-            class="progress-bar bg-amber-500 h-full transition-all duration-300"
-            :style="{ width: `${progressPercent}%` }"
-          />
+
+        <!-- Verification phase -->
+        <div v-if="progress.verifying" class="verification-phase">
+          <div class="flex justify-between text-sm text-slate-400 mb-2">
+            <span>Verifying deployed durations...</span>
+            <span>{{ progress.verifyChecked || 0 }} / {{ progress.verifyTotal || 0 }}</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+            <div
+              class="progress-bar bg-purple-500 h-full transition-all duration-300"
+              :style="{ width: `${verifyProgressPercent}%` }"
+            />
+          </div>
+
+          <!-- Verification stats -->
+          <div class="mt-2 grid grid-cols-3 gap-2 text-xs">
+            <div class="text-center">
+              <div class="text-emerald-400 font-medium">{{ progress.verifyMatched || 0 }}</div>
+              <div class="text-slate-500">Matched</div>
+            </div>
+            <div class="text-center">
+              <div class="text-amber-400 font-medium">{{ progress.verifyMismatched || 0 }}</div>
+              <div class="text-slate-500">Mismatched</div>
+            </div>
+            <div class="text-center">
+              <div class="text-red-400 font-medium">{{ progress.verifyErrors || 0 }}</div>
+              <div class="text-slate-500">Errors</div>
+            </div>
+          </div>
         </div>
-        <p class="text-center text-xs text-slate-500 mt-2">
-          {{ progressPercent }}% complete
-        </p>
       </div>
 
       <!-- Deploy button -->
@@ -107,28 +140,144 @@
         <span>{{ isDeploying ? 'Deploying...' : 'Deploy Audio to Production' }}</span>
       </button>
 
+      <!-- Verify Production Durations button (independent of deployment) -->
+      <button
+        v-if="!isDeploying && !isVerifying"
+        @click="handleVerifyProduction"
+        :disabled="isLoading"
+        class="w-full px-4 py-2 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      >
+        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span>{{ isLoading ? 'Verifying...' : 'Verify Production Durations' }}</span>
+      </button>
+
       <!-- Refresh plan button -->
       <button
-        v-if="!isDeploying"
+        v-if="!isDeploying && !isVerifying"
         @click="handleCheckPlan"
         :disabled="isLoading"
-        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50"
+        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        Refresh Plan
+        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-slate-300 border-t-transparent rounded-full animate-spin"></span>
+        <span>{{ isLoading ? 'Checking...' : 'Refresh Plan' }}</span>
       </button>
+
+      <!-- Production verification results (standalone - before deployment) -->
+      <div v-if="state.deployVerification && !state.audioDeployed" class="verification-results space-y-3 mt-4">
+        <!-- Existence summary -->
+        <div class="stats-grid grid grid-cols-3 gap-3 text-sm">
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">Total Files</span>
+            <span class="text-white font-semibold text-lg">{{ state.deployVerification.total?.toLocaleString() || 0 }}</span>
+          </div>
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">In Production</span>
+            <span class="text-emerald-400 font-semibold text-lg">{{ state.deployVerification.existing?.toLocaleString() || 0 }}</span>
+          </div>
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">Missing</span>
+            <span :class="(state.deployVerification.missing || 0) > 0 ? 'text-amber-400' : 'text-emerald-400'" class="font-semibold text-lg">
+              {{ state.deployVerification.missing?.toLocaleString() || 0 }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Duration verification stats -->
+        <div v-if="state.deployVerification.durationChecked && state.deployVerification.durationChecked > 0" class="stats-grid grid grid-cols-3 gap-3 text-sm">
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">Durations Checked</span>
+            <span class="text-white font-semibold text-lg">{{ state.deployVerification.durationChecked?.toLocaleString() || 0 }}</span>
+          </div>
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">Matched</span>
+            <span class="text-emerald-400 font-semibold text-lg">{{ state.deployVerification.durationMatched?.toLocaleString() || 0 }}</span>
+          </div>
+          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
+            <span class="text-slate-400">Mismatched</span>
+            <span :class="(state.deployVerification.durationMismatched || 0) > 0 ? 'text-red-400' : 'text-emerald-400'" class="font-semibold text-lg">
+              {{ state.deployVerification.durationMismatched?.toLocaleString() || 0 }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Warning about duration mismatches -->
+        <div v-if="state.deployVerification.durationMismatched && state.deployVerification.durationMismatched > 0"
+             class="p-4 bg-red-900/30 border border-red-700 rounded-lg">
+          <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>Duration Mismatches Found</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            {{ state.deployVerification.durationMismatched }} files in production have different durations than the manifest.
+            DO NOT redeploy these - investigate why they differ.
+          </p>
+        </div>
+
+        <!-- Deploy missing files button -->
+        <button
+          v-if="state.deployVerification.missing && state.deployVerification.missing > 0 && !isDeploying"
+          @click="handleDeployMissingOnly"
+          :disabled="isLoading"
+          class="w-full px-4 py-3 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+          <span>Deploy {{ state.deployVerification.missing }} Missing Files</span>
+        </button>
+      </div>
     </div>
 
     <!-- Deployed success -->
-    <div v-if="state.audioDeployed" class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
+    <div v-if="state.audioDeployed" class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg space-y-2">
       <div class="flex items-center gap-2 text-emerald-400 font-medium">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
         <span>Audio deployed to production</span>
       </div>
-      <p class="text-sm text-slate-400 mt-1">
+      <p class="text-sm text-slate-400">
         Deployed: {{ formatDate(state.audioDeployedAt) }}
       </p>
+
+      <!-- Verification results -->
+      <div v-if="state.deployVerification" class="mt-3 space-y-2">
+        <div class="flex items-center gap-2 text-sm">
+          <svg v-if="state.deployVerification.errors === 0 && state.deployVerification.mismatched === 0" class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <svg v-else class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span class="text-slate-400">
+            Duration verification: {{ state.deployVerification.matched || 0 }} matched,
+            {{ state.deployVerification.mismatched || 0 }} mismatched,
+            {{ state.deployVerification.errors || 0 }} errors
+          </span>
+        </div>
+
+        <!-- Duration mismatch details -->
+        <div v-if="state.deployVerification.details && state.deployVerification.details.length > 0"
+             class="p-3 bg-amber-900/30 border border-amber-700 rounded text-xs">
+          <p class="text-amber-400 font-medium mb-1">Duration issues found:</p>
+          <div class="max-h-32 overflow-y-auto space-y-1 text-slate-400 font-mono">
+            <div v-for="detail in state.deployVerification.details.slice(0, 5)" :key="detail.uuid">
+              {{ detail.uuid }}: {{ detail.issue }}
+              <span v-if="detail.expected && detail.actual">
+                (expected {{ detail.expected.toFixed(3) }}s, actual {{ detail.actual.toFixed(3) }}s)
+              </span>
+            </div>
+            <p v-if="state.deployVerification.details.length > 5" class="text-slate-500 italic">
+              ...and {{ state.deployVerification.details.length - 5 }} more
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info about skipped encouragements -->
+      <div class="mt-2 text-xs text-slate-500 italic">
+        Note: Shared encouragements not re-deployed (already in production)
+      </div>
     </div>
   </div>
 </template>
@@ -142,13 +291,25 @@ const props = defineProps<{
   deployPlan: DeployPlan | null
   isLoading: boolean
   isDeploying: boolean
-  progress: { deployed: number; total: number }
+  isVerifying: boolean
+  progress: {
+    deployed: number
+    total: number
+    verifying?: boolean
+    verifyChecked?: number
+    verifyTotal?: number
+    verifyMatched?: number
+    verifyMismatched?: number
+    verifyErrors?: number
+  }
   formatDate: (date: string | null) => string
 }>()
 
 const emit = defineEmits<{
   checkPlan: []
   deploy: [confirmation: string | undefined]
+  verifyProduction: []
+  deployMissingOnly: []
 }>()
 
 const confirmationText = ref('')
@@ -158,6 +319,11 @@ const progressPercent = computed(() => {
   return Math.round((props.progress.deployed / props.progress.total) * 100)
 })
 
+const verifyProgressPercent = computed(() => {
+  if (!props.progress.verifyTotal || props.progress.verifyTotal === 0) return 0
+  return Math.round(((props.progress.verifyChecked || 0) / props.progress.verifyTotal) * 100)
+})
+
 function handleCheckPlan() {
   emit('checkPlan')
 }
@@ -165,6 +331,14 @@ function handleCheckPlan() {
 function handleDeploy() {
   const confirmation = props.deployPlan?.overwrites ? confirmationText.value : undefined
   emit('deploy', confirmation)
+}
+
+function handleVerifyProduction() {
+  emit('verifyProduction')
+}
+
+function handleDeployMissingOnly() {
+  emit('deployMissingOnly')
 }
 </script>
 

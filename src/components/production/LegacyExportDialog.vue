@@ -60,6 +60,7 @@
                   :stats="workflow.stats.value"
                   :validation="workflow.validation.value"
                   :is-loading="workflow.isLoading.value"
+                  :audio-progress="workflow.audioGenerationProgress.value"
                   :format-date="workflow.formatDate"
                   @generate="handleGenerate"
                   @redownload="handleRedownload"
@@ -75,8 +76,10 @@
                   :is-loading="workflow.isLoading.value"
                   :is-verifying="isVerifying"
                   :progress="workflow.s3VerifyProgress.value"
+                  :audio-progress="workflow.audioGenerationProgress.value"
                   :format-date="workflow.formatDate"
                   @verify="handleVerify"
+                  @stop="handleStopVerify"
                 />
               </div>
 
@@ -86,6 +89,7 @@
                   :state="workflow.state.value"
                   :version-info="workflow.versionInfo.value"
                   :is-loading="workflow.isLoading.value"
+                  :verification="workflow.state.value.s3Verification"
                   :format-date="workflow.formatDate"
                   @publish="handlePublish"
                   @load-version-info="handleLoadVersionInfo"
@@ -99,10 +103,13 @@
                   :deploy-plan="workflow.state.value.deployPlan"
                   :is-loading="workflow.isLoading.value"
                   :is-deploying="isDeploying"
+                  :is-verifying="isVerifyingProduction"
                   :progress="workflow.deployProgress.value"
                   :format-date="workflow.formatDate"
                   @check-plan="handleCheckPlan"
                   @deploy="handleDeploy"
+                  @verify-production="handleVerifyProduction"
+                  @deploy-missing-only="handleDeployMissingOnly"
                 />
               </div>
             </template>
@@ -170,6 +177,7 @@ const workflow = useExportWorkflow(props.courseCode)
 const isLoadingState = ref(true)
 const isVerifying = ref(false)
 const isDeploying = ref(false)
+const isVerifyingProduction = ref(false)
 const activeStep = ref(1)
 
 // Computed
@@ -280,6 +288,12 @@ async function handleVerify() {
   }
 }
 
+function handleStopVerify() {
+  // Reset UI state (backend will continue but UI is unblocked)
+  isVerifying.value = false
+  workflow.s3VerifyProgress.value = { checked: 0, total: 0 }
+}
+
 // Step 3 handlers
 async function handleLoadVersionInfo() {
   await workflow.getVersionSuggestion()
@@ -298,6 +312,24 @@ async function handleDeploy(confirmation: string | undefined) {
   isDeploying.value = true
   try {
     await workflow.deployAudio(confirmation)
+  } finally {
+    isDeploying.value = false
+  }
+}
+
+async function handleVerifyProduction() {
+  isVerifyingProduction.value = true
+  try {
+    await workflow.verifyProductionDurations()
+  } finally {
+    isVerifyingProduction.value = false
+  }
+}
+
+async function handleDeployMissingOnly() {
+  isDeploying.value = true
+  try {
+    await workflow.deployMissingOnly()
   } finally {
     isDeploying.value = false
   }

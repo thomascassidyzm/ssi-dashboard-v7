@@ -287,7 +287,8 @@ function getLanguageName(langCode) {
  * Generate a unique key for a node based on known and target text.
  */
 function nodeKey(node) {
-  return `${node.known.text}|${node.target.text}`
+  // Case-insensitive matching - normalize to lowercase for duplicate detection
+  return `${node.known.text.toLowerCase().trim()}|${node.target.text.toLowerCase().trim()}`
 }
 
 /**
@@ -391,11 +392,27 @@ function removeDuplicateNodes(seeds) {
     }
   }
 
-  // Second pass: remove duplicates
-  for (const seed of seeds) {
-    for (const intro of seed.introduction_items || []) {
-      if (intro.node) allNodesSeen.add(nodeKey(intro.node))
+  // Second pass: remove duplicate intro items and their child nodes
+  const allIntrosSeen = new Set() // Track intro items separately for intro-to-intro deduplication
 
+  for (const seed of seeds) {
+    const filteredIntros = []
+
+    for (const intro of seed.introduction_items || []) {
+      // Check if this intro item is a duplicate of an EARLIER intro item
+      if (intro.node) {
+        const key = nodeKey(intro.node)
+        if (allIntrosSeen.has(key)) {
+          // This intro duplicates an earlier intro - skip it entirely
+          removedCount++
+          continue
+        }
+        allIntrosSeen.add(key)
+        allNodesSeen.add(key) // Also track in allNodesSeen for child node checking
+      }
+
+      // Filter child nodes (practice phrases)
+      // Child nodes are removed if they match ANY seed, ANY intro, or an earlier child node
       if (intro.nodes) {
         const filteredNodes = []
         for (const node of intro.nodes) {
@@ -409,7 +426,13 @@ function removeDuplicateNodes(seeds) {
         }
         intro.nodes = filteredNodes
       }
+
+      // Keep this intro (it's not a duplicate of an earlier intro)
+      filteredIntros.push(intro)
     }
+
+    // Replace introduction_items with filtered list
+    seed.introduction_items = filteredIntros
   }
 
   return removedCount
@@ -420,19 +443,21 @@ function removeDuplicateNodes(seeds) {
  */
 function findDuplicateSeedCanonicals(seeds) {
   const duplicates = []
-  const seenCanonicals = new Map() // canonical -> seedId
+  const seenCanonicals = new Map() // canonical (normalized) -> seedId
 
   for (const seed of seeds) {
     const canonical = seed.seed_sentence?.canonical
     if (canonical) {
-      if (seenCanonicals.has(canonical)) {
+      // Case-insensitive matching
+      const normalizedCanonical = canonical.toLowerCase().trim()
+      if (seenCanonicals.has(normalizedCanonical)) {
         duplicates.push({
-          originalId: seenCanonicals.get(canonical),
+          originalId: seenCanonicals.get(normalizedCanonical),
           duplicateId: seed.id,
           canonical
         })
       } else {
-        seenCanonicals.set(canonical, seed.id)
+        seenCanonicals.set(normalizedCanonical, seed.id)
       }
     }
   }
@@ -444,14 +469,16 @@ function findDuplicateSeedCanonicals(seeds) {
  * Remove seeds with duplicate canonical text (keeps first occurrence).
  */
 function removeDuplicateSeedCanonicals(seeds) {
-  const seenCanonicals = new Set()
+  const seenCanonicals = new Set() // normalized canonicals
   const filtered = []
   let removedCount = 0
 
   for (const seed of seeds) {
     const canonical = seed.seed_sentence?.canonical
-    if (!canonical || !seenCanonicals.has(canonical)) {
-      if (canonical) seenCanonicals.add(canonical)
+    // Case-insensitive matching
+    const normalizedCanonical = canonical?.toLowerCase().trim()
+    if (!normalizedCanonical || !seenCanonicals.has(normalizedCanonical)) {
+      if (normalizedCanonical) seenCanonicals.add(normalizedCanonical)
       filtered.push(seed)
     } else {
       removedCount++
@@ -795,6 +822,9 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
   // Use S3_BUCKET from env for legacy manifest (course audio may be in different bucket)
   const audioBucket = process.env.S3_BUCKET || 'ssi-audio-stage'
 
+  // DEBUG: Track uploads
+  let uploadCount = 0
+
   /**
    * Download audio file from S3 (with caching)
    * Uses s3_key from database to get the correct file
@@ -825,7 +855,25 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
     const target1Key = `${item.targetText.toLowerCase().trim()}|${targetLang}|target1`
     const target2Key = `${item.targetText.toLowerCase().trim()}|${targetLang}|target2`
 
-    const presRecord = presentationByLegoId.get(item.legoId)
+    let presRecord = presentationByLegoId.get(item.legoId)
+
+    // Fallback: If lego_id lookup fails, try finding by known_text
+    // Presentation audio doesn't include target, so same known_text can be shared
+    if (!presRecord) {
+      const normalizedKnown = item.knownText.toLowerCase().trim()
+      // Search audioLookup for a presentation matching this known_text
+      for (const [key, record] of audioLookup) {
+        if (record.role === 'presentation') {
+          // Extract known_text from presentation: "The French for 'KNOWN', is:"
+          const match = record.text_normalized?.match(/for '(.+?)'(?:, as in|, is:)/)
+          if (match && match[1].toLowerCase().trim() === normalizedKnown) {
+            presRecord = record
+            break
+          }
+        }
+      }
+    }
+
     const target1Record = audioLookup.get(target1Key)
     const target2Record = audioLookup.get(target2Key)
 
@@ -866,6 +914,13 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
 
       // Upload to S3 (same bucket as source audio)
       const uploadResult = await s3Service.uploadAudioFile(combinedUuid, combinedPath, audioBucket)
+
+      // DEBUG: Log first few uploads
+      uploadCount++
+      if (uploadCount <= 3) {
+        console.error(`  [DEBUG] Combined upload #${uploadCount}: ${combinedUuid} → ${audioBucket}/mastered/${combinedUuid}.mp3`)
+        console.error(`         Presentation text: ${item.presentation.substring(0, 80)}...`)
+      }
 
       // Clean up combined file (keep cache files for reuse)
       fs.unlinkSync(combinedPath)
@@ -934,7 +989,7 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
     }
   }
 
-  return results
+  return { results, errors, skipped }
 }
 
 // =============================================================================
@@ -1477,5 +1532,7 @@ if (require.main === module) {
 module.exports = {
   generateLegacyManifest,
   generateCombinedPresentations,
-  validateManifest
+  validateManifest,
+  getLanguageName,
+  buildPresentation
 }
