@@ -17,6 +17,7 @@ const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
+const voiceConfigService = require('./voice-config-service.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -198,6 +199,18 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     const effectiveLegos = newLegos || 0
     const ratio = effectiveLegos > 0 ? (phrases / effectiveLegos) : 0
 
+    // Calculate average phrase quality score (USE phrases have scores 5-9)
+    const { data: scoreData } = await supabase
+      .from('course_practice_phrases')
+      .select('score')
+      .eq('course_code', courseCode)
+      .not('score', 'is', null)
+
+    const scoredPhrases = scoreData?.filter(p => typeof p.score === 'number') || []
+    const avgScore = scoredPhrases.length > 0
+      ? (scoredPhrases.reduce((sum, p) => sum + p.score, 0) / scoredPhrases.length)
+      : null
+
     res.json({
       course_code: courseCode,
       total_seeds: totalSeeds || 668,
@@ -207,7 +220,9 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       legos: effectiveLegos,
       legos_total: legos || 0,
       phrases: phrases || 0,
-      ratio: ratio.toFixed(1)
+      ratio: ratio.toFixed(1),
+      avg_phrase_score: avgScore ? avgScore.toFixed(1) : null,
+      scored_phrases: scoredPhrases.length
     })
   } catch (err) {
     logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
@@ -461,9 +476,58 @@ app.post('/api/courses/create', async (req, res) => {
   }
 })
 
-// Voice config routes - proxy to course-builder
-app.all('/api/courses/:courseCode/voice-config', proxyCourseBuilder)
-app.all('/api/voices/*', proxyCourseBuilder)
+// =============================================================================
+// VOICE CONFIGURATION ROUTES (consolidated from orchestrator)
+// =============================================================================
+
+// GET /api/courses/:courseCode/voice-config - Load voice configuration
+app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const config = await voiceConfigService.loadVoiceConfig(courseCode)
+    res.json({ success: true, config })
+  } catch (error) {
+    logger.error(`[VoiceConfig] Error loading config for ${courseCode}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// PUT /api/courses/:courseCode/voice-config - Save voice configuration
+app.put('/api/courses/:courseCode/voice-config', async (req, res) => {
+  const { courseCode } = req.params
+  const config = req.body
+  try {
+    const validation = voiceConfigService.validateVoiceConfig({
+      ...config,
+      courseCode
+    })
+    if (!validation.valid) {
+      return res.status(400).json({ success: false, errors: validation.errors })
+    }
+    const savedConfig = await voiceConfigService.saveVoiceConfig(courseCode, config)
+    res.json({ success: true, config: savedConfig })
+  } catch (error) {
+    logger.error(`[VoiceConfig] Error saving config for ${courseCode}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// PATCH /api/courses/:courseCode/voice-config/:role - Update single voice role
+app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
+  const { courseCode, role } = req.params
+  const voiceSettings = req.body
+  try {
+    const validRoles = ['target1', 'target2', 'known', 'presentation']
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ success: false, error: `Invalid role: ${role}` })
+    }
+    const updatedConfig = await voiceConfigService.updateVoiceRole(courseCode, role, voiceSettings)
+    res.json({ success: true, config: updatedConfig })
+  } catch (error) {
+    logger.error(`[VoiceConfig] Error updating ${role} for ${courseCode}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
 
 // PM2 service management routes - keep proxying to orchestrator for now
 // These are admin-only and rarely used; can be migrated later
@@ -3000,6 +3064,220 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
+    // =========================================================================
+    // ADDITIONAL CHECKS: Seeds, Shared Audio, Welcomes
+    // These are generated via different processes (ElevenLabs vs Azure)
+    // =========================================================================
+
+    // Get course info for language lookups and release target
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('known_lang, target_lang, seed_count')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseErr) throw courseErr
+
+    const knownLang = course?.known_lang || 'eng'
+    const targetLang = course?.target_lang
+    const releaseTarget = course?.seed_count || 260
+
+    // --- SEEDS: Check seed sentences have audio (up to release target) ---
+    const missingSeedAudio = {
+      known: [],
+      target1: [],
+      target2: []
+    }
+    const seedCounts = {
+      expected: { known: 0, target1: 0, target2: 0 },
+      existing: { known: 0, target1: 0, target2: 0 }
+    }
+
+    // Paginate seeds
+    let seedOffset = 0
+    while (true) {
+      const { data: seeds, error: seedErr } = await supabase
+        .from('course_seeds')
+        .select('seed_number, seed_id, known_text, target_text')
+        .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
+        .range(seedOffset, seedOffset + pageSize - 1)
+
+      if (seedErr) throw seedErr
+      if (!seeds || seeds.length === 0) break
+
+      for (const seed of seeds) {
+        const seedId = `S${String(seed.seed_number).padStart(4, '0')}`
+
+        // Check known (seed sentence in known language)
+        if (seed.known_text) {
+          seedCounts.expected.known++
+          const knownNorm = seed.known_text.toLowerCase().trim()
+          if (existingByRole.known.has(knownNorm)) {
+            seedCounts.existing.known++
+          } else {
+            missingSeedAudio.known.push({ text: seed.known_text, seedId, seedNumber: seed.seed_number })
+          }
+        }
+
+        // Check target1 and target2 (seed sentence in target language)
+        if (seed.target_text) {
+          const targetNorm = seed.target_text.toLowerCase().trim()
+
+          seedCounts.expected.target1++
+          if (existingByRole.target1.has(targetNorm)) {
+            seedCounts.existing.target1++
+          } else {
+            missingSeedAudio.target1.push({ text: seed.target_text, seedId, seedNumber: seed.seed_number })
+          }
+
+          seedCounts.expected.target2++
+          if (existingByRole.target2.has(targetNorm)) {
+            seedCounts.existing.target2++
+          } else {
+            missingSeedAudio.target2.push({ text: seed.target_text, seedId, seedNumber: seed.seed_number })
+          }
+        }
+      }
+
+      seedOffset += pageSize
+      if (seeds.length < pageSize) break
+    }
+
+    // --- LEGOS: Check LEGO texts have audio (up to release target) ---
+    // LEGOs should have their text covered by phrases, but we check explicitly
+    const missingLegoAudio = {
+      known: [],
+      target1: [],
+      target2: []
+    }
+    const legoCounts = {
+      expected: { known: 0, target1: 0, target2: 0 },
+      existing: { known: 0, target1: 0, target2: 0 }
+    }
+    const seenLegoTexts = {
+      known: new Set(),
+      target1: new Set(),
+      target2: new Set()
+    }
+
+    // Paginate all LEGOs (not just new ones - all LEGOs need audio)
+    let legoOffset = 0
+    while (true) {
+      const { data: allLegos, error: legoErr } = await supabase
+        .from('course_legos')
+        .select('lego_id, seed_number, lego_index, known_text, target_text, is_new')
+        .eq('course_code', courseCode)
+        .lte('seed_number', releaseTarget)
+        .range(legoOffset, legoOffset + pageSize - 1)
+
+      if (legoErr) throw legoErr
+      if (!allLegos || allLegos.length === 0) break
+
+      for (const lego of allLegos) {
+        const legoId = lego.lego_id || `S${String(lego.seed_number).padStart(4, '0')}L${String(lego.lego_index).padStart(2, '0')}`
+
+        // Check known (LEGO in known language) - dedupe by text
+        if (lego.known_text) {
+          const knownNorm = lego.known_text.toLowerCase().trim()
+          if (!seenLegoTexts.known.has(knownNorm)) {
+            seenLegoTexts.known.add(knownNorm)
+            legoCounts.expected.known++
+            if (existingByRole.known.has(knownNorm)) {
+              legoCounts.existing.known++
+            } else {
+              missingLegoAudio.known.push({ text: lego.known_text, legoId, seedNumber: lego.seed_number })
+            }
+          }
+        }
+
+        // Check target1 and target2 (LEGO in target language) - dedupe by text
+        if (lego.target_text) {
+          const targetNorm = lego.target_text.toLowerCase().trim()
+
+          if (!seenLegoTexts.target1.has(targetNorm)) {
+            seenLegoTexts.target1.add(targetNorm)
+            legoCounts.expected.target1++
+            if (existingByRole.target1.has(targetNorm)) {
+              legoCounts.existing.target1++
+            } else {
+              missingLegoAudio.target1.push({ text: lego.target_text, legoId, seedNumber: lego.seed_number })
+            }
+          }
+
+          if (!seenLegoTexts.target2.has(targetNorm)) {
+            seenLegoTexts.target2.add(targetNorm)
+            legoCounts.expected.target2++
+            if (existingByRole.target2.has(targetNorm)) {
+              legoCounts.existing.target2++
+            } else {
+              missingLegoAudio.target2.push({ text: lego.target_text, legoId, seedNumber: lego.seed_number })
+            }
+          }
+        }
+      }
+
+      legoOffset += pageSize
+      if (allLegos.length < pageSize) break
+    }
+
+    // --- SHARED AUDIO: Encouragements (26) + Instructions (48) per known language ---
+    // These are generated via ElevenLabs, not Azure
+    const SHARED_AUDIO_REQUIREMENTS = {
+      encouragement: 26,  // pooledEncouragements
+      instruction: 48     // orderedEncouragements
+    }
+
+    const { count: encCount, error: encErr } = await supabase
+      .from('shared_audio')
+      .select('*', { count: 'exact', head: true })
+      .eq('language', knownLang)
+      .eq('audio_type', 'encouragement')
+
+    if (encErr) throw encErr
+
+    const { count: instrCount, error: instrErr } = await supabase
+      .from('shared_audio')
+      .select('*', { count: 'exact', head: true })
+      .eq('language', knownLang)
+      .eq('audio_type', 'instruction')
+
+    if (instrErr) throw instrErr
+
+    const sharedAudio = {
+      language: knownLang,
+      encouragements: {
+        expected: SHARED_AUDIO_REQUIREMENTS.encouragement,
+        existing: encCount || 0,
+        missing: Math.max(0, SHARED_AUDIO_REQUIREMENTS.encouragement - (encCount || 0))
+      },
+      instructions: {
+        expected: SHARED_AUDIO_REQUIREMENTS.instruction,
+        existing: instrCount || 0,
+        missing: Math.max(0, SHARED_AUDIO_REQUIREMENTS.instruction - (instrCount || 0))
+      }
+    }
+
+    // --- WELCOMES: Check welcomes.json canonical file ---
+    let welcomeStatus = { exists: false, hasAudio: false, details: null }
+    try {
+      const welcomesPath = require('path').join(__dirname, '../public/vfs/canonical/welcomes.json')
+      if (require('fs').existsSync(welcomesPath)) {
+        const welcomes = JSON.parse(require('fs').readFileSync(welcomesPath, 'utf8'))
+        const welcome = welcomes.welcomes?.[courseCode]
+        if (welcome) {
+          welcomeStatus = {
+            exists: true,
+            hasAudio: !!welcome.id,
+            hasDuration: welcome.duration > 0,
+            details: { id: welcome.id, duration: welcome.duration, voice: welcome.voice }
+          }
+        }
+      }
+    } catch (e) {
+      logger.warn(`Could not read welcomes.json: ${e.message}`)
+    }
+
     // Generate signed URLs for sample audio (v13: flat S3 storage)
     for (const role of ['known', 'target1', 'target2', 'presentation']) {
       if (samplesByRole[role]) {
@@ -3014,11 +3292,19 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       }
     }
 
-    const totalMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length + missingByRole.presentation.length
+    // Calculate totals
+    const phraseMissing = missingByRole.known.length + missingByRole.target1.length + missingByRole.target2.length + missingByRole.presentation.length
+    const seedMissing = missingSeedAudio.known.length + missingSeedAudio.target1.length + missingSeedAudio.target2.length
+    const legoMissing = missingLegoAudio.known.length + missingLegoAudio.target1.length + missingLegoAudio.target2.length
+    const sharedMissing = sharedAudio.encouragements.missing + sharedAudio.instructions.missing
+    const welcomeMissing = welcomeStatus.hasAudio ? 0 : 1
+
+    const totalMissing = phraseMissing + seedMissing + legoMissing + sharedMissing + welcomeMissing
 
     res.json({
       success: true,
       courseCode,
+      releaseTarget,
       totalMissing,
       totalPhrases: phrases.length,
       totalLegos: legos.length,
@@ -3029,7 +3315,45 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
         presentation: existingByRole.presentation.size
       },
       missing: missingByRole,
-      samples: samplesByRole  // Sample audio for each role for voice matching
+      samples: samplesByRole,  // Sample audio for each role for voice matching
+
+      // Additional categories (different generation processes)
+      seeds: {
+        counts: seedCounts,
+        missing: missingSeedAudio,
+        totalMissing: seedMissing
+      },
+      legos: {
+        counts: legoCounts,
+        missing: missingLegoAudio,
+        totalMissing: legoMissing
+      },
+      sharedAudio,  // Encouragements + Instructions (ElevenLabs)
+      welcome: welcomeStatus,  // Welcome message (ElevenLabs)
+
+      // Summary by generation process
+      byProcess: {
+        azure: {
+          label: 'Azure TTS (Phrases)',
+          missing: phraseMissing,
+          categories: ['known', 'target1', 'target2', 'presentation']
+        },
+        azureSeeds: {
+          label: 'Azure TTS (Seeds)',
+          missing: seedMissing,
+          categories: ['seed_known', 'seed_target1', 'seed_target2']
+        },
+        azureLegos: {
+          label: 'Azure TTS (LEGOs)',
+          missing: legoMissing,
+          categories: ['lego_known', 'lego_target1', 'lego_target2']
+        },
+        elevenLabs: {
+          label: 'ElevenLabs (UI Audio)',
+          missing: sharedMissing + welcomeMissing,
+          categories: ['encouragements', 'instructions', 'welcome']
+        }
+      }
     })
 
   } catch (error) {

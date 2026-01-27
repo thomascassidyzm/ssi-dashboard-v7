@@ -43,48 +43,163 @@
 
       <!-- Content -->
       <div v-else class="space-y-6">
-        <!-- Summary -->
-        <div class="grid grid-cols-5 gap-4 text-center">
-          <div class="bg-slate-700/50 rounded-lg p-3">
-            <p class="text-2xl font-bold text-slate-100">{{ totalMissing }}</p>
-            <p class="text-xs text-slate-400">Total Missing</p>
+        <!-- Summary by Process -->
+        <div class="space-y-4">
+          <!-- Process Groups -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <!-- Azure TTS (Phrases) -->
+            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-blue-500">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-medium text-blue-400 uppercase tracking-wide">Azure</span>
+                <span class="text-xs text-slate-500">(Phrases)</span>
+              </div>
+              <p class="text-xl font-bold" :class="byProcess.azure?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
+                {{ byProcess.azure?.missing || 0 }}
+              </p>
+            </div>
+
+            <!-- Azure TTS (Seeds) -->
+            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-cyan-500">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-medium text-cyan-400 uppercase tracking-wide">Azure</span>
+                <span class="text-xs text-slate-500">(Seeds)</span>
+              </div>
+              <p class="text-xl font-bold" :class="byProcess.azureSeeds?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
+                {{ byProcess.azureSeeds?.missing || 0 }}
+              </p>
+            </div>
+
+            <!-- Azure TTS (LEGOs) -->
+            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-teal-500">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-medium text-teal-400 uppercase tracking-wide">Azure</span>
+                <span class="text-xs text-slate-500">(LEGOs)</span>
+              </div>
+              <p class="text-xl font-bold" :class="byProcess.azureLegos?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
+                {{ byProcess.azureLegos?.missing || 0 }}
+              </p>
+            </div>
+
+            <!-- ElevenLabs (UI Audio) -->
+            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-purple-500">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-medium text-purple-400 uppercase tracking-wide">ElevenLabs</span>
+                <span class="text-xs text-slate-500">(UI)</span>
+              </div>
+              <p class="text-xl font-bold" :class="byProcess.elevenLabs?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
+                {{ byProcess.elevenLabs?.missing || 0 }}
+              </p>
+            </div>
           </div>
-          <div class="bg-slate-700/50 rounded-lg p-3">
-            <p class="text-2xl font-bold text-blue-400">{{ missingCounts.known }}</p>
-            <p class="text-xs text-slate-400">Known</p>
-          </div>
-          <div class="bg-slate-700/50 rounded-lg p-3">
-            <p class="text-2xl font-bold text-emerald-400">{{ missingCounts.target1 }}</p>
-            <p class="text-xs text-slate-400">Target 1</p>
-          </div>
-          <div class="bg-slate-700/50 rounded-lg p-3">
-            <p class="text-2xl font-bold text-purple-400">{{ missingCounts.target2 }}</p>
-            <p class="text-xs text-slate-400">Target 2</p>
-          </div>
-          <div class="bg-slate-700/50 rounded-lg p-3">
-            <p class="text-2xl font-bold text-amber-400">{{ missingCounts.presentation }}</p>
-            <p class="text-xs text-slate-400">Presentation</p>
+
+          <!-- Total -->
+          <div class="flex items-center justify-between bg-slate-900/50 rounded-lg px-4 py-2">
+            <span class="text-slate-400 text-sm">Total Missing</span>
+            <span class="text-xl font-bold" :class="totalMissing > 0 ? 'text-amber-400' : 'text-emerald-400'">
+              {{ totalMissing }}
+            </span>
           </div>
         </div>
 
-        <!-- Role Tabs -->
-        <div class="flex gap-2 border-b border-slate-700 pb-2">
-          <button
-            v-for="role in roles"
-            :key="role.id"
-            @click="selectedRole = role.id"
-            class="px-4 py-2 rounded-t text-sm font-medium transition-colors"
-            :class="selectedRole === role.id
-              ? 'bg-slate-700 text-white'
-              : 'text-slate-400 hover:text-slate-200'"
-          >
-            {{ role.label }}
-            <span class="ml-1 text-xs opacity-70">({{ missingCounts[role.id] }})</span>
-          </button>
+        <!-- Category Tabs -->
+        <div class="border-b border-slate-700">
+          <!-- Azure Phrases -->
+          <div class="flex items-center gap-1 mb-2">
+            <span class="text-xs text-blue-400 font-medium px-2">Azure (Phrases)</span>
+          </div>
+          <div class="flex flex-wrap gap-2 pb-2">
+            <button
+              v-for="role in phraseRoles"
+              :key="role.id"
+              @click="selectCategory('phrase', role.id)"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'phrase' && selectedRole === role.id
+                ? 'bg-blue-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              {{ role.label }}
+              <span class="ml-1 text-xs opacity-70">({{ missingCounts[role.id] }})</span>
+            </button>
+          </div>
+
+          <!-- Azure Seeds -->
+          <div class="flex items-center gap-1 mb-2 mt-3">
+            <span class="text-xs text-cyan-400 font-medium px-2">Azure (Seeds)</span>
+          </div>
+          <div class="flex flex-wrap gap-2 pb-2">
+            <button
+              v-for="role in seedRoles"
+              :key="role.id"
+              @click="selectCategory('seed', role.id)"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'seed' && selectedRole === role.id
+                ? 'bg-cyan-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              {{ role.label }}
+              <span class="ml-1 text-xs opacity-70">({{ seedMissingCounts[role.id] }})</span>
+            </button>
+          </div>
+
+          <!-- Azure LEGOs -->
+          <div class="flex items-center gap-1 mb-2 mt-3">
+            <span class="text-xs text-teal-400 font-medium px-2">Azure (LEGOs)</span>
+          </div>
+          <div class="flex flex-wrap gap-2 pb-2">
+            <button
+              v-for="role in legoRoles"
+              :key="role.id"
+              @click="selectCategory('lego', role.id)"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'lego' && selectedRole === role.id
+                ? 'bg-teal-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              {{ role.label }}
+              <span class="ml-1 text-xs opacity-70">({{ legoMissingCounts[role.id] }})</span>
+            </button>
+          </div>
+
+          <!-- ElevenLabs UI Audio -->
+          <div class="flex items-center gap-1 mb-2 mt-3">
+            <span class="text-xs text-purple-400 font-medium px-2">ElevenLabs (UI Audio)</span>
+          </div>
+          <div class="flex flex-wrap gap-2 pb-3">
+            <button
+              @click="selectCategory('shared', 'encouragements')"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'shared' && selectedRole === 'encouragements'
+                ? 'bg-purple-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              Encouragements
+              <span class="ml-1 text-xs opacity-70">({{ sharedAudio?.encouragements?.missing || 0 }})</span>
+            </button>
+            <button
+              @click="selectCategory('shared', 'instructions')"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'shared' && selectedRole === 'instructions'
+                ? 'bg-purple-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              Instructions
+              <span class="ml-1 text-xs opacity-70">({{ sharedAudio?.instructions?.missing || 0 }})</span>
+            </button>
+            <button
+              @click="selectCategory('shared', 'welcome')"
+              class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
+              :class="selectedCategory === 'shared' && selectedRole === 'welcome'
+                ? 'bg-purple-600 text-white'
+                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+            >
+              Welcome
+              <span class="ml-1 text-xs opacity-70">({{ welcomeMissing }})</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Sample Audio Player for Voice Matching -->
-        <div v-if="samples[selectedRole]" class="bg-slate-700/30 rounded-lg p-4">
+        <!-- Sample Audio Player for Voice Matching (phrase roles only) -->
+        <div v-if="selectedCategory === 'phrase' && samples[selectedRole]" class="bg-slate-700/30 rounded-lg p-4">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm text-slate-400 mb-1">Sample audio for voice matching:</p>
@@ -111,8 +226,43 @@
             class="hidden"
           ></audio>
         </div>
-        <div v-else class="bg-slate-700/30 rounded-lg p-4 text-slate-400 text-center">
-          No sample audio available for {{ selectedRole }}
+
+        <!-- Shared Audio Info (ElevenLabs categories) -->
+        <div v-else-if="selectedCategory === 'shared'" class="bg-slate-700/30 rounded-lg p-4">
+          <div v-if="selectedRole === 'encouragements'" class="space-y-2">
+            <p class="text-slate-300">
+              <span class="text-purple-400 font-medium">Encouragements</span> are pooled feedback phrases played randomly during lessons.
+            </p>
+            <p class="text-sm text-slate-400">
+              Required: {{ sharedAudio?.encouragements?.expected || 26 }} |
+              Existing: {{ sharedAudio?.encouragements?.existing || 0 }} |
+              Missing: <span :class="sharedAudio?.encouragements?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">{{ sharedAudio?.encouragements?.missing || 0 }}</span>
+            </p>
+            <p class="text-xs text-slate-500">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
+          </div>
+          <div v-else-if="selectedRole === 'instructions'" class="space-y-2">
+            <p class="text-slate-300">
+              <span class="text-purple-400 font-medium">Instructions</span> are ordered prompts that guide learners through exercises.
+            </p>
+            <p class="text-sm text-slate-400">
+              Required: {{ sharedAudio?.instructions?.expected || 48 }} |
+              Existing: {{ sharedAudio?.instructions?.existing || 0 }} |
+              Missing: <span :class="sharedAudio?.instructions?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">{{ sharedAudio?.instructions?.missing || 0 }}</span>
+            </p>
+            <p class="text-xs text-slate-500">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
+          </div>
+          <div v-else-if="selectedRole === 'welcome'" class="space-y-2">
+            <p class="text-slate-300">
+              <span class="text-purple-400 font-medium">Welcome</span> is the introduction message played when starting the course.
+            </p>
+            <div v-if="welcome?.hasAudio" class="text-sm text-emerald-400">
+              Welcome audio exists ({{ welcome.details?.duration?.toFixed(1) }}s)
+            </div>
+            <div v-else class="text-sm text-amber-400">
+              Welcome audio missing
+            </div>
+            <p class="text-xs text-slate-500">Generated via ElevenLabs</p>
+          </div>
         </div>
 
         <!-- Missing Items List -->
@@ -126,16 +276,21 @@
             </thead>
             <tbody>
               <tr
-                v-for="(item, idx) in missingItems"
+                v-for="(item, idx) in currentMissingItems"
                 :key="idx"
                 class="border-b border-slate-700/50 hover:bg-slate-700/30"
               >
-                <td class="py-2 px-3 text-slate-500 font-mono text-xs">{{ item.legoId }}</td>
+                <td class="py-2 px-3 text-slate-500 font-mono text-xs">{{ item.legoId || item.seedId || '-' }}</td>
                 <td class="py-2 px-3 text-slate-200">{{ item.text }}</td>
               </tr>
-              <tr v-if="missingItems.length === 0">
+              <tr v-if="currentMissingItems.length === 0">
                 <td colspan="2" class="py-8 text-center text-slate-500">
-                  No missing audio for {{ selectedRole }}
+                  <span v-if="selectedCategory === 'shared'">
+                    {{ selectedRole === 'welcome' ? (welcome?.hasAudio ? 'Welcome audio exists' : 'Welcome audio needs to be generated in ElevenLabs') : `${selectedRole} need to be generated in ElevenLabs` }}
+                  </span>
+                  <span v-else>
+                    No missing audio for {{ selectedRole }}
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -177,12 +332,26 @@ const data = ref(null)
 // Auto-fixes happen silently, these are just for internal tracking
 const fixingOrphans = ref(false)
 
+// Category and role selection
+const selectedCategory = ref('phrase')  // 'phrase', 'seed', 'lego', 'shared'
 const selectedRole = ref('target1')
-const roles = [
+
+// Role definitions
+const phraseRoles = [
   { id: 'known', label: 'Known' },
   { id: 'target1', label: 'Target 1' },
   { id: 'target2', label: 'Target 2' },
   { id: 'presentation', label: 'Presentation' }
+]
+const seedRoles = [
+  { id: 'known', label: 'Known' },
+  { id: 'target1', label: 'Target 1' },
+  { id: 'target2', label: 'Target 2' }
+]
+const legoRoles = [
+  { id: 'known', label: 'Known' },
+  { id: 'target1', label: 'Target 1' },
+  { id: 'target2', label: 'Target 2' }
 ]
 
 const audioRefs = ref({})
@@ -193,15 +362,62 @@ const isPlaying = ref({
   presentation: false
 })
 
+// Computed properties
 const totalMissing = computed(() => data.value?.totalMissing || 0)
+const releaseTarget = computed(() => data.value?.releaseTarget || 260)
+
+// Phrase missing counts
 const missingCounts = computed(() => ({
   known: data.value?.missing?.known?.length || 0,
   target1: data.value?.missing?.target1?.length || 0,
   target2: data.value?.missing?.target2?.length || 0,
   presentation: data.value?.missing?.presentation?.length || 0
 }))
+
+// Seed missing counts
+const seedMissingCounts = computed(() => ({
+  known: data.value?.seeds?.missing?.known?.length || 0,
+  target1: data.value?.seeds?.missing?.target1?.length || 0,
+  target2: data.value?.seeds?.missing?.target2?.length || 0
+}))
+
+// LEGO missing counts
+const legoMissingCounts = computed(() => ({
+  known: data.value?.legos?.missing?.known?.length || 0,
+  target1: data.value?.legos?.missing?.target1?.length || 0,
+  target2: data.value?.legos?.missing?.target2?.length || 0
+}))
+
+// Shared audio data
+const sharedAudio = computed(() => data.value?.sharedAudio || null)
+const welcome = computed(() => data.value?.welcome || null)
+const welcomeMissing = computed(() => data.value?.welcome?.hasAudio ? 0 : 1)
+
+// By process summary
+const byProcess = computed(() => data.value?.byProcess || {})
+
 const samples = computed(() => data.value?.samples || {})
-const missingItems = computed(() => data.value?.missing?.[selectedRole.value] || [])
+
+// Current missing items based on selected category and role
+const currentMissingItems = computed(() => {
+  if (selectedCategory.value === 'phrase') {
+    return data.value?.missing?.[selectedRole.value] || []
+  } else if (selectedCategory.value === 'seed') {
+    return data.value?.seeds?.missing?.[selectedRole.value] || []
+  } else if (selectedCategory.value === 'lego') {
+    return data.value?.legos?.missing?.[selectedRole.value] || []
+  } else if (selectedCategory.value === 'shared') {
+    // Shared audio doesn't have individual items, just counts
+    return []
+  }
+  return []
+})
+
+// Category selection helper
+function selectCategory(category, role) {
+  selectedCategory.value = category
+  selectedRole.value = role
+}
 
 async function fetchMissingAudio() {
   if (!props.courseCode) return
@@ -242,7 +458,7 @@ function playSample(role) {
     isPlaying.value[role] = false
   } else {
     // Stop other playing audio
-    for (const r of roles) {
+    for (const r of phraseRoles) {
       if (audioRefs.value[r.id]) {
         audioRefs.value[r.id].pause()
         isPlaying.value[r.id] = false
