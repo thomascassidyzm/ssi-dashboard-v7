@@ -688,28 +688,44 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
+    // Helper to check if text is punctuation-only (TTS can't generate these)
+    // Punctuation should be taught contextually as part of M-LEGOs, not standalone
+    const isPunctuationOnly = (text) => {
+      if (!text) return true
+      const trimmed = text.trim()
+      if (!trimmed) return true
+      // Match common punctuation marks (Western and CJK)
+      return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】]+$/.test(trimmed)
+    }
+
     for (const phrase of phrases) {
-      const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
-      if (!existingSet.has(knownKey)) {
-        needed.push({
-          text: phrase.known_text,
-          language: course.known_lang,
-          role: 'known',
-          voiceId: getVoiceForRole('known'),
-          speed: getSpeedForRole('known')
-        })
+      // Skip punctuation-only known text
+      if (!isPunctuationOnly(phrase.known_text)) {
+        const knownKey = `${phrase.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+        if (!existingSet.has(knownKey)) {
+          needed.push({
+            text: phrase.known_text,
+            language: course.known_lang,
+            role: 'known',
+            voiceId: getVoiceForRole('known'),
+            speed: getSpeedForRole('known')
+          })
+        }
       }
 
-      for (const role of ['target1', 'target2']) {
-        const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
-        if (!existingSet.has(targetKey)) {
-          needed.push({
-            text: phrase.target_text,
-            language: course.target_lang,
-            role,
-            voiceId: getVoiceForRole(role),
-            speed: getSpeedForRole(role)
-          })
+      // Skip punctuation-only target text
+      if (!isPunctuationOnly(phrase.target_text)) {
+        for (const role of ['target1', 'target2']) {
+          const targetKey = `${phrase.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+          if (!existingSet.has(targetKey)) {
+            needed.push({
+              text: phrase.target_text,
+              language: course.target_lang,
+              role,
+              voiceId: getVoiceForRole(role),
+              speed: getSpeedForRole(role)
+            })
+          }
         }
       }
     }
@@ -728,33 +744,37 @@ app.post('/generate/:courseCode', async (req, res) => {
     } else if (legos?.length > 0) {
       let legoAudioNeeded = 0
       for (const lego of legos) {
-        // Known audio for LEGO text
-        const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
-        if (!existingSet.has(knownKey)) {
-          needed.push({
-            text: lego.known_text,
-            language: course.known_lang,
-            role: 'known',
-            voiceId: getVoiceForRole('known'),
-            speed: getSpeedForRole('known'),
-            lego_id: lego.lego_id  // Track source for debugging
-          })
-          legoAudioNeeded++
-        }
-
-        // Target audio for LEGO text (target1 and target2)
-        for (const role of ['target1', 'target2']) {
-          const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
-          if (!existingSet.has(targetKey)) {
+        // Skip punctuation-only LEGO text
+        if (!isPunctuationOnly(lego.known_text)) {
+          const knownKey = `${lego.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+          if (!existingSet.has(knownKey)) {
             needed.push({
-              text: lego.target_text,
-              language: course.target_lang,
-              role,
-              voiceId: getVoiceForRole(role),
-              speed: getSpeedForRole(role),
-              lego_id: lego.lego_id
+              text: lego.known_text,
+              language: course.known_lang,
+              role: 'known',
+              voiceId: getVoiceForRole('known'),
+              speed: getSpeedForRole('known'),
+              lego_id: lego.lego_id  // Track source for debugging
             })
             legoAudioNeeded++
+          }
+        }
+
+        // Skip punctuation-only target text
+        if (!isPunctuationOnly(lego.target_text)) {
+          for (const role of ['target1', 'target2']) {
+            const targetKey = `${lego.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+            if (!existingSet.has(targetKey)) {
+              needed.push({
+                text: lego.target_text,
+                language: course.target_lang,
+                role,
+                voiceId: getVoiceForRole(role),
+                speed: getSpeedForRole(role),
+                lego_id: lego.lego_id
+              })
+              legoAudioNeeded++
+            }
           }
         }
       }
@@ -778,33 +798,37 @@ app.post('/generate/:courseCode', async (req, res) => {
     } else if (seeds?.length > 0) {
       let seedAudioNeeded = 0
       for (const seed of seeds) {
-        // Known audio for seed sentence
-        const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
-        if (!existingSet.has(knownKey)) {
-          needed.push({
-            text: seed.known_text,
-            language: course.known_lang,
-            role: 'known',
-            voiceId: getVoiceForRole('known'),
-            speed: getSpeedForRole('known'),
-            seed_number: seed.seed_number
-          })
-          seedAudioNeeded++
-        }
-
-        // Target audio for seed sentence (target1 and target2)
-        for (const role of ['target1', 'target2']) {
-          const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
-          if (!existingSet.has(targetKey)) {
+        // Skip punctuation-only seed text (unlikely for full sentences, but be safe)
+        if (!isPunctuationOnly(seed.known_text)) {
+          const knownKey = `${seed.known_text.toLowerCase().trim()}|${course.known_lang}|known`
+          if (!existingSet.has(knownKey)) {
             needed.push({
-              text: seed.target_text,
-              language: course.target_lang,
-              role,
-              voiceId: getVoiceForRole(role),
-              speed: getSpeedForRole(role),
+              text: seed.known_text,
+              language: course.known_lang,
+              role: 'known',
+              voiceId: getVoiceForRole('known'),
+              speed: getSpeedForRole('known'),
               seed_number: seed.seed_number
             })
             seedAudioNeeded++
+          }
+        }
+
+        // Skip punctuation-only target text
+        if (!isPunctuationOnly(seed.target_text)) {
+          for (const role of ['target1', 'target2']) {
+            const targetKey = `${seed.target_text.toLowerCase().trim()}|${course.target_lang}|${role}`
+            if (!existingSet.has(targetKey)) {
+              needed.push({
+                text: seed.target_text,
+                language: course.target_lang,
+                role,
+                voiceId: getVoiceForRole(role),
+                speed: getSpeedForRole(role),
+                seed_number: seed.seed_number
+              })
+              seedAudioNeeded++
+            }
           }
         }
       }
