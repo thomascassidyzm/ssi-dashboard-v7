@@ -57,6 +57,7 @@
               :beta-days="course.legacyAppBetaDays"
               :editable="true"
               platform="legacy_app"
+              :new-app-status="course.newAppStatus"
               @update="handleStatusUpdate(course.code, $event)"
             />
           </td>

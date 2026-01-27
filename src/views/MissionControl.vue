@@ -279,19 +279,38 @@ const searchQuery = ref('')
 // Import modal
 const showImportModal = ref(false)
 
-// Language name mapping
+// Language name mapping (ISO 639-3 codes to full names)
 const languageNames = {
+  // Major European languages
   'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
-  'ita': 'Italian', 'por': 'Portuguese', 'zho': 'Chinese', 'jpn': 'Japanese',
-  'kor': 'Korean', 'ara': 'Arabic', 'cym': 'Welsh', 'gle': 'Irish'
+  'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
+  'rus': 'Russian', 'ukr': 'Ukrainian', 'ces': 'Czech', 'slk': 'Slovak',
+  'hun': 'Hungarian', 'ron': 'Romanian', 'bul': 'Bulgarian', 'hrv': 'Croatian',
+  'srp': 'Serbian', 'slv': 'Slovenian', 'ell': 'Greek', 'tur': 'Turkish',
+  'swe': 'Swedish', 'nor': 'Norwegian', 'dan': 'Danish', 'fin': 'Finnish',
+  // Celtic languages
+  'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic', 'glv': 'Manx',
+  'cor': 'Cornish', 'bre': 'Breton',
+  // Asian languages
+  'zho': 'Chinese', 'cmn': 'Mandarin', 'yue': 'Cantonese',
+  'jpn': 'Japanese', 'kor': 'Korean', 'vie': 'Vietnamese',
+  'tha': 'Thai', 'ind': 'Indonesian', 'msa': 'Malay', 'tgl': 'Tagalog',
+  'hin': 'Hindi', 'ben': 'Bengali', 'tam': 'Tamil', 'tel': 'Telugu',
+  // Middle Eastern languages
+  'ara': 'Arabic', 'heb': 'Hebrew', 'fas': 'Persian', 'urd': 'Urdu',
+  // African languages
+  'swa': 'Swahili', 'zul': 'Zulu', 'xho': 'Xhosa', 'afr': 'Afrikaans',
+  // Other languages
+  'cat': 'Catalan', 'eus': 'Basque', 'lat': 'Latin', 'epo': 'Esperanto'
 }
 
 function getCourseName(code) {
   if (!code || !code.includes('_for_')) return code
   const [target, , known] = code.split('_')
-  const targetName = languageNames[target] || target
-  const knownName = languageNames[known] || known
-  return `${targetName} for ${knownName}`
+  const targetName = languageNames[target] || target.toUpperCase()
+  const knownName = languageNames[known] || known.toUpperCase()
+  // Format: "Spanish for English Speakers"
+  return `${targetName} for ${knownName} Speakers`
 }
 
 // Filtered courses based on search
