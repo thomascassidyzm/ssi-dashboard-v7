@@ -1022,6 +1022,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       }))
 
       // Insert into course_audio with duration
+      // Include lego_id for presentation audio (needed for /plan matching)
       const { error: insertError } = await supabase
         .from('course_audio')
         .upsert({
@@ -1033,7 +1034,8 @@ app.post('/generate/:courseCode', async (req, res) => {
           voice_id: item.voiceId,
           origin: 'tts',
           s3_key: s3Key,
-          duration_ms: durationMs
+          duration_ms: durationMs,
+          lego_id: item.lego_id || null
         }, {
           onConflict: 'course_code,text_normalized,language,role'
         })
