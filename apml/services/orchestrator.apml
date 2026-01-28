@@ -5,32 +5,48 @@
 
 service Orchestrator:
   name: "SSi Automation Orchestrator"
-  purpose: "Coordinate course creation and service mesh"
-  version: "1.2.0"
+  purpose: "PM2 process management (OPTIONAL - main entry point is production-api port 3470)"
+  version: "1.3.0"
   port: 3456
   script: "services/orchestration/orchestrator.cjs"
+  status: "OPTIONAL"
+
+  ## ==========================================================================
+  ## STATUS: OPTIONAL (January 2026)
+  ## ==========================================================================
+  ##
+  ## The orchestrator is now OPTIONAL. Main entry point is production-api (port 3470).
+  ##
+  ## Use orchestrator ONLY for:
+  ## - PM2 process management features
+  ## - Legacy VFS file access (if needed)
+  ##
+  ## DO NOT USE for:
+  ## - Content creation (use Course Builder API port 3471)
+  ## - API routing (use production-api port 3470)
+  ## - Phase 1-3 operations (DEPRECATED - use Course Builder)
+  ##
+  ## ==========================================================================
 
   ## ==========================================================================
   ## OVERVIEW
   ## ==========================================================================
 
   overview: |
-    The Orchestrator is the central coordination service for the SSi
-    course production pipeline. It manages:
+    **STATUS: OPTIONAL (January 2026)**
 
-    1. Course creation (database-first - inserts into Supabase)
-    2. Service mesh coordination (proxying to phase servers)
-    3. Health monitoring for all services
-    4. Legacy VFS support for existing courses
+    The Orchestrator is now OPTIONAL. The main entry point for all API calls
+    is production-api (port 3470). The orchestrator is only needed for:
+    - PM2 process management UI
+    - Legacy VFS file access
 
-    **APML v14 Architecture (January 2026):**
-    - Course creation: Just inserts into Supabase `courses` table
-    - Content creation: Delegated to Course Builder API (port 3471)
+    **APML v14 Architecture:**
+    - Main entry point: production-api (port 3470)
+    - Content creation: Course Builder API (port 3471) via POST /api/seed/complete
     - Audio generation: Phase 8 (port 3465)
     - Manifest compilation: Phase 9 (port 3466)
 
-    The orchestrator does NOT handle content generation directly -
-    that's delegated to Course Builder API, Phase 8, and Phase 9.
+    Phase 0-3 endpoints below are DEPRECATED - Course Builder replaced them.
 
   ## ==========================================================================
   ## ENDPOINTS
@@ -110,95 +126,127 @@ service Orchestrator:
       path: "POST /phase-complete"
       description: "Mark a phase as complete (called by phase servers)"
 
-    ## Phase 1: Translation
+    ## ========================================================================
+    ## DEPRECATED: Phase 1-3 Endpoints (replaced by Course Builder API)
+    ## Use POST /api/seed/complete on port 3471 instead
+    ## ========================================================================
+
+    ## Phase 1: Translation - DEPRECATED
     phase1_submit:
       path: "POST /api/phase1/:courseCode/submit"
-      description: "Submit Phase 1 translation"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
+      replacement: "POST /api/seed/complete on port 3471"
 
     phase1_upload_batch:
       path: "POST /api/phase1/:courseCode/upload-batch"
-      description: "Upload batch of Phase 1 translations"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase1_master_complete:
       path: "POST /api/phase1/:courseCode/master-complete"
-      description: "Mark Phase 1 as complete"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase1_stop:
       path: "POST /phase1/stop/:courseCode"
-      description: "Stop Phase 1 processing"
+      description: "DEPRECATED - Phase 1 no longer exists"
+      deprecated: true
 
-    ## Phase 2: Conflict Resolution
+    ## Phase 2: Conflict Resolution - DEPRECATED
     phase2_draft:
       path: "GET /api/phase2/:courseCode/draft"
-      description: "Get Phase 2 draft LEGOs"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase2_seeds:
       path: "GET /api/phase2/:courseCode/seeds"
-      description: "Get Phase 2 seeds"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase2_upload:
       path: "POST /api/phase2/:courseCode/upload"
-      description: "Upload Phase 2 conflict resolution"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase2_upload_batch:
       path: "POST /api/phase2/:courseCode/upload-batch"
-      description: "Upload batch of Phase 2 resolutions"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase2_master_complete:
       path: "POST /api/phase2/:courseCode/master-complete"
-      description: "Mark Phase 2 as complete"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase2_stats:
       path: "GET /api/courses/:courseCode/phase2-stats"
-      description: "Get Phase 2 statistics"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
-    ## Phase 3: Basket Generation
+    ## Phase 3: Basket Generation - DEPRECATED
     phase3_submit:
       path: "POST /api/phase3/:courseCode/submit"
-      description: "Submit Phase 3 baskets"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
+      replacement: "POST /api/seed/complete on port 3471"
       aliases:
         - "POST /api/phase5/:courseCode/submit (legacy)"
 
     phase3_validate:
       path: "POST /api/courses/:courseCode/phase/3/validate"
-      description: "Validate Phase 3 baskets"
+      description: "DEPRECATED - Course Builder validates atomically"
+      deprecated: true
 
     phase3_infinitive_check:
       path: "POST /api/courses/:courseCode/phase/3/infinitive-check"
-      description: "Check infinitive forms in baskets"
+      description: "DEPRECATED - Course Builder validates atomically"
+      deprecated: true
 
     phase3_fix_collisions:
       path: "POST /api/courses/:courseCode/phase/3/fix-collisions"
-      description: "Fix FD/LUT collisions in baskets"
+      description: "DEPRECATED - Course Builder prevents collisions"
+      deprecated: true
 
     phase3_start:
       path: "POST /phase3/start"
-      description: "Start Phase 3 basket generation"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     phase3_stop:
       path: "POST /phase3/stop/:courseCode"
-      description: "Stop Phase 3 processing"
+      description: "DEPRECATED - Phase 3 no longer exists"
+      deprecated: true
 
     phase3_abort:
       path: "POST /phase5/abort/:courseCode"
-      description: "Abort Phase 3 processing (legacy route)"
+      description: "DEPRECATED - Phase 3 no longer exists"
+      deprecated: true
 
-    ## Basket Management
+    ## Basket Management - DEPRECATED
     baskets_gaps:
       path: "GET /api/courses/:courseCode/baskets/gaps"
-      description: "Get missing baskets"
+      description: "DEPRECATED - Use Course Builder checkpoint API"
+      deprecated: true
 
     baskets_cleanup:
       path: "POST /api/courses/:courseCode/baskets/cleanup"
-      description: "Cleanup baskets"
+      description: "DEPRECATED - Course Builder manages baskets"
+      deprecated: true
 
     baskets_regenerate:
       path: "POST /api/courses/:courseCode/baskets/regenerate"
-      description: "Regenerate baskets"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
 
     upload_basket:
       path: "POST /upload-basket"
-      description: "Upload a single basket"
+      description: "DEPRECATED - Use Course Builder API (port 3471)"
+      deprecated: true
+
+    ## ========================================================================
+    ## END DEPRECATED SECTION
+    ## ========================================================================
 
     ## Phase 8: Audio Generation (proxied to port 3465)
     audio_plan:
@@ -669,29 +717,48 @@ service Orchestrator:
 
     phase_servers:
       ## PHASE_SERVERS constant in orchestrator.cjs
+
+      ## ====================================================================
+      ## DEPRECATED: Phase 1-3 servers DO NOT EXIST anymore
+      ## Content creation is now handled by Course Builder API (port 3471)
+      ## These entries kept for historical reference only
+      ## ====================================================================
+
       1_translation:
         port: 3457
         env_var: "PHASE1_TRANSLATION_URL"
         default: "http://localhost:3457"
-        description: "Phase 1: Translation + LEGO Extraction"
+        description: "DEPRECATED - Server does not exist. Use Course Builder (3471)"
+        deprecated: true
+        status: "SERVER_REMOVED"
 
       1_lego:
         port: 3458
         env_var: "PHASE1_LEGO_URL"
         default: "http://localhost:3458"
-        description: "Phase 1 (LEGO extraction service)"
+        description: "DEPRECATED - Server does not exist. Use Course Builder (3471)"
+        deprecated: true
+        status: "SERVER_REMOVED"
 
       2:
         port: 3458
         env_var: "PHASE1_LEGO_URL"
         default: "http://localhost:3458"
-        description: "Phase 2: Conflict Resolution (shares server with 1_lego)"
+        description: "DEPRECATED - Server does not exist. Use Course Builder (3471)"
+        deprecated: true
+        status: "SERVER_REMOVED"
 
       3:
         port: 3459
         env_var: "PHASE3_URL"
         default: "http://localhost:3459"
-        description: "Phase 3: Basket Generation (APML v9.0)"
+        description: "DEPRECATED - Server does not exist. Use Course Builder (3471)"
+        deprecated: true
+        status: "SERVER_REMOVED"
+
+      ## ====================================================================
+      ## ACTIVE: These servers still exist
+      ## ====================================================================
 
       8:
         port: 3465
@@ -699,24 +766,28 @@ service Orchestrator:
         fallback_env: "AUDIO_URL"
         default: "http://localhost:3465"
         description: "Phase 8: Audio Generation (TTS)"
+        status: "ACTIVE"
 
       9:
         port: 3466
         env_var: "PHASE9_URL"
         default: "http://localhost:3466"
         description: "Phase 9: Manifest Compilation (Supabase-backed)"
+        status: "ACTIVE"
 
       manifest:
         port: 3464
         env_var: "MANIFEST_URL"
         default: "http://localhost:3464"
         description: "Legacy Phase 7 - DEPRECATED"
+        deprecated: true
 
       audio:
         port: 3465
         env_var: "AUDIO_URL"
         default: "http://localhost:3465"
         description: "Alias for Phase 8"
+        status: "ACTIVE"
 
     legacy_aliases:
       ## LEGACY_PHASE_ALIASES for backward compatibility

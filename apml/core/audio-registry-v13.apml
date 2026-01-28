@@ -1,12 +1,12 @@
 # APML: Audio Registry Architecture
-# Version: 13.2.0 (2026-01-05)
+# Version: 13.3.0 (2026-01-28)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
   purpose: "Simple, course-centric audio ownership with shared audio for reusables"
-  version: "13.2.0"
+  version: "13.3.0"
 
   ## ==========================================================================
   ## BREAKING CHANGE FROM v12
@@ -168,7 +168,7 @@ architecture AudioRegistry:
   ## ==========================================================================
 
   schema:
-    version: "13.2.0"
+    version: "13.3.0"
     database: "supabase"
     compiler_target: "postgresql"
 
@@ -556,6 +556,341 @@ architecture AudioRegistry:
         This avoids storing redundant target1_audio_id/target2_audio_id
         columns since the LEGO already knows its target_text.
 
+    ## ------------------------------------------------------------------------
+    ## BUILD_JOBS TABLE - Multi-pass Course Builder coordination
+    ## ------------------------------------------------------------------------
+
+    table build_jobs:
+      description: "Coordinates course builds between Dashboard and Course-Builder"
+      purpose: |
+        Database is the contract between Dashboard (Vercel) and Course-Builder (local).
+        No direct API calls between them - all coordination via this table.
+
+        Two-pass workflow:
+        - Pass 1: Translate 668 canonical seeds + generate analysis doc
+        - Pass 2: Decompose seeds -> LEGOs -> phrases (course_size configurable)
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(course_code)"
+          description: "Course being built"
+
+        pass:
+          type: "TEXT"
+          nullable: false
+          check: "pass IN ('pass_1', 'pass_2')"
+          description: |
+            Job type:
+            - pass_1: Translate 668 seeds + analysis
+            - pass_2: Decompose to LEGOs/phrases
+
+        status:
+          type: "TEXT"
+          nullable: false
+          default: "'pending'"
+          check: "status IN ('pending', 'running', 'stalled', 'stopped', 'complete', 'failed')"
+          description: "pending -> running -> complete/stopped/stalled/failed"
+
+        current_seed:
+          type: "INTEGER"
+          nullable: true
+          description: "Where agent is now"
+
+        seeds_completed:
+          type: "INTEGER"
+          default: 0
+          description: "How many seeds done"
+
+        total_seeds:
+          type: "INTEGER"
+          nullable: false
+          description: "668 for pass_1, course_size for pass_2"
+
+        analysis_complete:
+          type: "BOOLEAN"
+          default: false
+          description: "Pass 1 only: set true when language analysis doc generated"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+        started_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+          description: "When agent claimed job"
+
+        last_heartbeat:
+          type: "TIMESTAMPTZ"
+          nullable: true
+          description: "Last sign of life from agent"
+
+        completed_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+          description: "When finished"
+
+        requested_by:
+          type: "TEXT"
+          nullable: true
+          description: "'dashboard', 'cli', or email"
+
+        stop_requested:
+          type: "BOOLEAN"
+          default: false
+          description: "Dashboard sets true to signal agent to stop gracefully"
+
+        error_message:
+          type: "TEXT"
+          nullable: true
+          description: "Error details if failed"
+
+        resume_from_seed:
+          type: "INTEGER"
+          nullable: true
+          description: "When resuming a stopped/stalled job, start from this seed"
+
+      constraints:
+        pass_1_always_668:
+          type: "CHECK"
+          expression: "pass != 'pass_1' OR total_seeds = 668"
+          description: "Pass 1 must always process all 668 canonical seeds"
+
+      indexes:
+        idx_build_jobs_one_active:
+          type: "UNIQUE"
+          columns: ["course_code", "pass"]
+          where: "status IN ('pending', 'running')"
+          description: "Only one active job per course per pass"
+
+        idx_build_jobs_status:
+          columns: ["status"]
+
+        idx_build_jobs_course_pass:
+          columns: ["course_code", "pass"]
+
+        idx_build_jobs_stall_check:
+          columns: ["last_heartbeat"]
+          where: "status = 'running'"
+          description: "For detecting stalled agents"
+
+      triggers:
+        enforce_pass_order:
+          timing: "BEFORE INSERT"
+          description: "Prevents pass_2 from starting if pass_1 isn't complete"
+          function: "check_pass_1_complete()"
+          logic: |
+            IF NEW.pass = 'pass_2' AND NEW.status = 'pending' THEN
+              IF NOT EXISTS (
+                SELECT 1 FROM build_jobs
+                WHERE course_code = NEW.course_code
+                  AND pass = 'pass_1'
+                  AND status = 'complete'
+              ) THEN
+                RAISE EXCEPTION 'Cannot start pass_2: pass_1 not complete for course %', NEW.course_code;
+              END IF;
+            END IF;
+
+      rls_policies:
+        authenticated_read:
+          operation: "SELECT"
+          role: "authenticated"
+          using: "true"
+          description: "Dashboard (authenticated users) can read all jobs"
+
+        authenticated_insert:
+          operation: "INSERT"
+          role: "authenticated"
+          with_check: "true"
+          description: "Dashboard can create new jobs"
+
+        authenticated_update:
+          operation: "UPDATE"
+          role: "authenticated"
+          using: "true"
+          with_check: "true"
+          description: "Dashboard can update jobs (stop_requested, etc.)"
+
+        service_role_full:
+          operation: "ALL"
+          role: "service_role"
+          using: "true"
+          with_check: "true"
+          description: "Course-Builder (service role) has full access"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_EXPORT_STATES TABLE - 4-step export workflow state
+    ## ------------------------------------------------------------------------
+
+    table course_export_states:
+      description: "Tracks export workflow state for each course"
+      purpose: |
+        4-step export workflow:
+        1. Generate manifest (from database)
+        2. Verify S3 audio files exist
+        3. Publish manifest to course-configs
+        4. Deploy audio to production S3
+
+        Manifest is NOT stored in database (too much space over time).
+        Only stats/hash stored - regenerate on demand.
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          unique: true
+          references: "courses(course_code)"
+          on_delete: "CASCADE"
+          description: "Course this state belongs to"
+
+        # Step completion flags
+        manifest_generated:
+          type: "BOOLEAN"
+          default: false
+          description: "Step 1 complete"
+
+        s3_verified:
+          type: "BOOLEAN"
+          default: false
+          description: "Step 2 complete"
+
+        manifest_published:
+          type: "BOOLEAN"
+          default: false
+          description: "Step 3 complete"
+
+        audio_deployed:
+          type: "BOOLEAN"
+          default: false
+          description: "Step 4 complete"
+
+        # Timestamps for each step
+        manifest_generated_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        s3_verified_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        manifest_published_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        audio_deployed_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        # Manifest metadata (NOT stored - regenerated on demand)
+        manifest_version:
+          type: "TEXT"
+          nullable: true
+
+        manifest_hash:
+          type: "TEXT"
+          nullable: true
+          description: "SHA256 hash (first 16 chars) for change detection"
+
+        manifest_status:
+          type: "TEXT"
+          nullable: true
+          check: "manifest_status IN ('alpha', 'beta', 'release')"
+
+        manifest_seed_count:
+          type: "INTEGER"
+          nullable: true
+          description: "Number of seeds in manifest at generation time"
+
+        manifest_lego_count:
+          type: "INTEGER"
+          nullable: true
+          description: "Number of unique LEGOs in manifest at generation time"
+
+        manifest_audio_count:
+          type: "INTEGER"
+          nullable: true
+          description: "Number of unique audio UUIDs in manifest at generation time"
+
+        # Pending manifest location (stored locally on generating machine)
+        pending_manifest_path:
+          type: "TEXT"
+          nullable: true
+          description: "Relative path in course-configs repo: temp/pending/{id}.json"
+
+        generated_on_machine:
+          type: "TEXT"
+          nullable: true
+          description: "Human-readable machine name where manifest was generated"
+
+        # S3 verification results
+        s3_verification:
+          type: "JSONB"
+          nullable: true
+          description: |
+            JSON structure:
+            {
+              "total": 1234,
+              "existing": 1230,
+              "missing": 4,
+              "missingUuids": ["uuid1", "uuid2", ...],
+              "durationFixes": 10
+            }
+
+        # Publish results
+        publish_course_configs_path:
+          type: "TEXT"
+          nullable: true
+
+        publish_apidev_filename:
+          type: "TEXT"
+          nullable: true
+
+        # Deploy results
+        deploy_plan:
+          type: "JSONB"
+          nullable: true
+          description: |
+            JSON structure:
+            {
+              "total": 1234,
+              "newFiles": 100,
+              "overwrites": 5,
+              "overwriteUuids": ["uuid1", ...]
+            }
+
+        deploy_executed_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      indexes:
+        idx_export_states_course:
+          columns: ["course_code"]
+
+      triggers:
+        update_timestamp:
+          timing: "BEFORE UPDATE"
+          action: "SET updated_at = NOW()"
+
   ## ==========================================================================
   ## ROLES EXPLAINED
   ## ==========================================================================
@@ -768,16 +1103,24 @@ architecture AudioRegistry:
     voices_table: "Course voice_config JSONB is sufficient"
     texts_table: "No need for separate text identity"
     audio_files_table: "No indirection layer needed"
-    sample_flags: "QA workflow is separate concern"
+    sample_flags: "QA workflow is separate concern - see sample-flags.apml"
     recording_provenance: "Nice-to-have, add later if needed"
-    build_numbers: "Use updated_at timestamp"
 
 ## ============================================================================
-## GENERATED: 2026-01-04
-## APML v13.1.0 - Course-Owned Audio Architecture
+## GENERATED: 2026-01-28
+## APML v13.3.0 - Course-Owned Audio Architecture
 ## Supersedes: v12.0.0 (texts → audio_files → course_audio)
 ## Changes in v13.1:
 ##   - Added encouragement and instruction roles to course_audio
 ##   - Documented shared_audio workflow (template → copy to course)
 ##   - Mapped legacy terminology (orderedEncouragements, pooledEncouragements)
+## Changes in v13.2:
+##   - Added mastering pipeline (ffmpeg normalization)
+##   - Added duration_ms column to course_audio
+##   - Added lego_id column to course_audio for presentation audio
+## Changes in v13.3 (2026-01-28):
+##   - Added build_jobs table for multi-pass Course Builder coordination
+##   - Added course_export_states table for 4-step export workflow
+##   - Documented RLS policies for new tables
+##   - Documented trigger functions (check_pass_1_complete, update_timestamp)
 ## ============================================================================

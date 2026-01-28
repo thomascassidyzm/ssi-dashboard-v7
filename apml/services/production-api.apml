@@ -1,12 +1,12 @@
 # APML: Production API Service
-# Version: 1.0.0 (2026-01-03)
+# Version: 2.0.0 (2026-01-28)
 # Status: CANONICAL - This is the source of truth
 # Type: SERVICE SPECIFICATION
 
 service ProductionAPI:
   name: "SSi Production API"
-  purpose: "QA workflow, audio playback, recording, and real-time updates"
-  version: "1.0.0"
+  purpose: "Main entry point for SSi Dashboard - QA workflow, audio playback, recording, course management, and real-time updates"
+  version: "2.0.0"
   port: 3470
   script: "services/production-api.cjs"
 
@@ -15,41 +15,386 @@ service ProductionAPI:
   ## ==========================================================================
 
   overview: |
-    The Production API serves the Production Suite UI components.
+    The Production API is the MAIN ENTRY POINT for the SSi Dashboard (Popty).
+    As of January 2026, it consolidates many orchestrator routes.
+
     It handles:
 
-    1. Script viewing with audio playback
-    2. QA workflow (flagging, review, approval)
-    3. Human recording workflow (autocue, upload)
-    4. Real-time updates via WebSocket
-    5. Audio pipeline status and control
+    1. Health checks and schema validation
+    2. Course management (list, create, update status)
+    3. Voice configuration for TTS
+    4. Mission control and job management
+    5. Course statistics and info
+    6. Manifest generation and validation
+    7. Script viewing with audio playback
+    8. QA workflow (flagging, review, approval)
+    9. Human recording workflow (autocue, upload)
+    10. Audio pipeline status and control
+    11. Real-time updates via WebSocket
+    12. Proxy routes to Course Builder API (port 3471)
 
-    This is the backend for the excellent Vue production components.
+    This is the backend for the Vue production components and main API gateway.
 
   ## ==========================================================================
-  ## ENDPOINTS - COURSE DATA
+  ## ENDPOINTS - HEALTH & SCHEMA
   ## ==========================================================================
 
-  course_endpoints:
+  health_endpoints:
+    health:
+      path: "GET /api/production/health"
+      description: "Health check for production API"
+      response: |
+        {
+          "status": "ok",
+          "service": "Production API",
+          "port": 3470,
+          "timestamp": "2026-01-28T...",
+          "supabase": "connected"
+        }
+
+    health_root:
+      path: "GET /health"
+      description: "Root health check (alias)"
+      response: |
+        {
+          "status": "ok",
+          "service": "Production API",
+          "port": 3470,
+          "timestamp": "2026-01-28T...",
+          "supabase": "connected"
+        }
+
+    schema_validate:
+      path: "GET /api/production/schema/validate"
+      description: "Compare APML spec against live database schema"
+      notes: "Detects schema drift between spec and actual database"
+      response: |
+        {
+          "valid": true,
+          "drifts": [],
+          "tables": {...}
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - LANGUAGES
+  ## ==========================================================================
+
+  language_endpoints:
+    get_languages:
+      path: "GET /api/languages"
+      description: "Get list of supported ISO 639 language codes"
+      notes: "Common languages for course creation (eng, spa, fra, deu, cym, etc.)"
+      response: |
+        [
+          {"code": "eng", "name": "English"},
+          {"code": "spa", "name": "Spanish"},
+          {"code": "cym", "name": "Welsh"},
+          ...
+        ]
+
+  ## ==========================================================================
+  ## ENDPOINTS - COURSE MANAGEMENT
+  ## ==========================================================================
+
+  course_management_endpoints:
+    list_courses:
+      path: "GET /api/courses"
+      description: "List all courses from database with stats"
+      notes: "Queries Supabase directly, includes content stats and platform status"
+      response: |
+        {
+          "courses": [
+            {
+              "code": "spa_for_eng",
+              "course_code": "spa_for_eng",
+              "known_lang": "eng",
+              "target_lang": "spa",
+              "display_name": "Spanish for English Speakers",
+              "status": "beta",
+              "new_app_status": "beta",
+              "legacy_app_status": "released",
+              "new_app_beta_days": 14,
+              "content_status": "complete",
+              "export_ready": true,
+              "stats": {"seeds": 260, "completedSeeds": 260, "legos": 500, "phrases": 5000}
+            }
+          ]
+        }
+
+    create_course:
+      path: "POST /api/courses/create"
+      description: "Create a new course (DATABASE-FIRST)"
+      notes: "APML v14 - courses are created in Supabase, not JSON files"
+      body:
+        courseCode: "string (required) - e.g., 'zho_for_eng'"
+        displayName: "string (optional) - Human-readable name"
+        sourceLanguage: "string (required) - ISO 639 code"
+        targetLanguage: "string (required) - ISO 639 code"
+        seedStart: "number (optional, default: 1)"
+        seedEnd: "number (optional, default: 668)"
+      response: |
+        {
+          "success": true,
+          "courseCode": "zho_for_eng",
+          "displayName": "Chinese for English Speakers",
+          "sourceLanguage": "eng",
+          "targetLanguage": "zho",
+          "seedRange": {"start": 1, "end": 668},
+          "message": "Course created. Use Course Builder to add content."
+        }
+
+    update_platform_status:
+      path: "PATCH /api/courses/:courseCode/platform-status"
+      description: "Update platform deployment status for a course"
+      notes: "Controls new_app_status or legacy_app_status. Auto-sets beta_started_at."
+      body:
+        platform: "string - 'new_app' or 'legacy_app'"
+        status: "string - 'not_available' | 'draft' | 'testing' | 'beta' | 'released' | 'deprecated'"
+      response: |
+        {
+          "success": true,
+          "course_code": "spa_for_eng",
+          "platform": "new_app",
+          "status": "beta",
+          "beta_started_at": "2026-01-28T..."
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - VOICE CONFIGURATION
+  ## ==========================================================================
+
+  voice_config_endpoints:
+    get_voice_config:
+      path: "GET /api/courses/:courseCode/voice-config"
+      description: "Load voice configuration for a course"
+      notes: "Returns TTS voice settings for known, target1, target2, presentation roles"
+      response: |
+        {
+          "success": true,
+          "config": {
+            "known": {"voiceId": "...", "speed": 1.0, "pitch": 0},
+            "target1": {"voiceId": "...", "speed": 0.8, "pitch": 0},
+            "target2": {"voiceId": "...", "speed": 1.0, "pitch": 0},
+            "presentation": {"voiceId": "...", "speed": 1.0, "pitch": 0}
+          }
+        }
+
+    save_voice_config:
+      path: "PUT /api/courses/:courseCode/voice-config"
+      description: "Save complete voice configuration for a course"
+      notes: "Validates config before saving"
+      body:
+        known: "object - voice settings for known language"
+        target1: "object - voice settings for target language (slow)"
+        target2: "object - voice settings for target language (natural)"
+        presentation: "object - voice settings for LEGO presentations"
+      response: |
+        {
+          "success": true,
+          "config": {...}
+        }
+
+    update_voice_role:
+      path: "PATCH /api/courses/:courseCode/voice-config/:role"
+      description: "Update single voice role configuration"
+      params:
+        role: "target1 | target2 | known | presentation"
+      body:
+        voiceId: "string"
+        speed: "number"
+        pitch: "number"
+      response: |
+        {
+          "success": true,
+          "config": {...}
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - MISSION CONTROL & JOBS
+  ## ==========================================================================
+
+  mission_control_endpoints:
+    get_jobs:
+      path: "GET /api/mission-control/jobs"
+      description: "Get active build jobs from build_jobs database table"
+      notes: "Returns running, pending, or stalled jobs for Mission Control UI"
+      response: |
+        {
+          "jobs": [
+            {
+              "id": "spa_for_eng-build",
+              "courseCode": "spa_for_eng",
+              "service": "course-builder",
+              "type": "build",
+              "status": "running",
+              "startedAt": "2026-01-28T...",
+              "canStop": true,
+              "progress": {"current": 50, "total": 260, "percentage": 19},
+              "metadata": {
+                "pass": 1,
+                "currentSeed": 50,
+                "requestedBy": "agent",
+                "lastHeartbeat": "2026-01-28T..."
+              }
+            }
+          ],
+          "services": {},
+          "timestamp": "2026-01-28T..."
+        }
+
+    stop_job:
+      path: "POST /api/mission-control/jobs/:jobId/stop"
+      description: "Stop a running job"
+      notes: "Proxies to course-builder for build jobs"
+      params:
+        jobId: "string - Format: {courseCode}-{type} (e.g., 'spa_for_eng-build')"
+      response: |
+        {
+          "success": true,
+          "ok": true
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - COURSE STATISTICS & INFO
+  ## ==========================================================================
+
+  stats_endpoints:
+    get_course_stats:
+      path: "GET /api/stats/:courseCode"
+      description: "Get detailed stats for a single course"
+      notes: "Mirrors course-builder-api's endpoint for ngrok compatibility"
+      response: |
+        {
+          "course_code": "spa_for_eng",
+          "total_seeds": 668,
+          "completed_seeds": 260,
+          "seeds_with_legos": 260,
+          "seeds": 260,
+          "legos": 500,
+          "legos_total": 520,
+          "phrases": 5000,
+          "ratio": "10.0",
+          "avg_phrase_score": "7.2",
+          "scored_phrases": 4500
+        }
+
+    get_all_course_stats:
+      path: "GET /api/production/course-stats"
+      description: "Get content stats for ALL courses (seeds, legos, baskets counts)"
+      notes: "Database-only - used by dashboard course listings"
+      response: |
+        {
+          "success": true,
+          "stats": {
+            "spa_for_eng": {"seeds": 260, "completedSeeds": 260, "legos": 500, "phrases": 5000},
+            "zho_for_eng": {"seeds": 50, "completedSeeds": 50, "legos": 100, "phrases": 1000}
+          }
+        }
+
+    get_single_course_stats:
+      path: "GET /api/production/:courseCode/stats"
+      description: "Get content stats for a single course"
+      notes: "Used by Course Editor to show accurate counts"
+      response: |
+        {
+          "success": true,
+          "courseCode": "spa_for_eng",
+          "stats": {"seeds": 260, "completedSeeds": 260, "legos": 500, "phrases": 5000, "audio": 2500}
+        }
+
+    get_course_info:
+      path: "GET /api/production/:courseCode/info"
+      description: "Get course info including status and metadata"
+      notes: "Used by Production Suite to display course details"
+      response: |
+        {
+          "success": true,
+          "course": {
+            "code": "spa_for_eng",
+            "displayName": "Spanish for English Speakers",
+            "knownLang": "eng",
+            "targetLang": "spa",
+            "status": "beta",
+            "courseType": "official",
+            "creatorEmail": "...",
+            "createdAt": "2026-01-01T...",
+            "updatedAt": "2026-01-28T...",
+            "seed_count": 260,
+            "stats": {"seeds": 260, "completedSeeds": 260, "legos": 500, "phrases": 5000, "audio": 2500}
+          }
+        }
+
+    update_course_status:
+      path: "POST /api/production/:courseCode/status"
+      description: "Update course status (draft, beta, released)"
+      notes: "Emits WebSocket event course:statusChanged for real-time UI updates"
+      body:
+        status: "string - 'draft' | 'beta' | 'released'"
+      response: |
+        {
+          "success": true,
+          "course": {
+            "code": "spa_for_eng",
+            "status": "beta",
+            "updatedAt": "2026-01-28T..."
+          }
+        }
+
+    get_introductions:
+      path: "GET /api/production/:courseCode/introductions"
+      description: "Get LEGO introductions (presentations) for a course"
+      notes: "Used by Course Editor INTRODUCTIONS tab"
+      response: |
+        {
+          "success": true,
+          "count": 500,
+          "introductions": [...]
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - MANIFEST MANAGEMENT
+  ## ==========================================================================
+
+  manifest_endpoints:
     get_manifest:
       path: "GET /api/production/:courseCode/manifest"
       description: "Get compiled course manifest"
-      notes: "May query Supabase or fall back to JSON file"
-
-    get_script:
-      path: "GET /api/production/:courseCode/script"
-      description: "Get course script (seeds, LEGOs, phrases)"
+      notes: |
+        Priority: 1) Database (if course structure exists), 2) S3 static file, 3) Stub
+        Query param: source='db' or 's3' to force specific source
+      query:
+        source: "string (optional) - 'db' or 's3' to force specific source"
       response: |
         {
-          "seeds": [...],
-          "legos": [...],
-          "phrases": [...]
+          "slices": [...],
+          "samples": {...},
+          "_source": "database"
         }
 
-    get_script_view:
-      path: "GET /api/production/:courseCode/script-view"
-      description: "Hierarchical script with audio UUIDs"
-      notes: "Used by ScriptViewer.vue"
+    generate_manifest:
+      path: "POST /api/production/:courseCode/manifest/generate"
+      description: "Generate fresh manifest from database"
+      notes: "Bypasses and refreshes cache. Returns validation results."
+      response: |
+        {
+          "success": true,
+          "manifest": {...},
+          "validation": {"valid": true, "errors": []},
+          "generationTimeMs": 1500,
+          "stats": {"seeds": 260, "samples": 7500}
+        }
+
+    validate_manifest:
+      path: "GET /api/production/:courseCode/manifest/validate"
+      description: "Validate manifest audio coverage"
+      notes: "Checks all audio UUIDs are present and valid"
+      response: |
+        {
+          "valid": true,
+          "coverage": 100,
+          "missingAudio": [],
+          "invalidUUIDs": []
+        }
 
   ## ==========================================================================
   ## ENDPOINTS - AUDIO
@@ -59,6 +404,7 @@ service ProductionAPI:
     get_audio_url:
       path: "GET /api/production/:courseCode/audio/:uuid/url"
       description: "Get pre-signed S3 URL for audio playback"
+      notes: "Looks up s3_key from database for v13 audio, falls back to legacy path"
       response: '{"url": "https://...", "expires": 3600}'
 
     check_audio_exists:
@@ -70,64 +416,253 @@ service ProductionAPI:
       path: "GET /api/production/:courseCode/audio-metadata"
       description: "Get metadata for all course audio"
 
+    get_audio_by_text:
+      path: "GET /api/production/:courseCode/audio/by-text"
+      description: "Get audio URL by text lookup"
+      notes: "Used by CyclePlayer and ScriptViewer to find audio for phrases"
+      query:
+        text: "string (required) - text to lookup"
+        role: "string (default: 'target1') - audio role"
+      response: '{"url": "https://...", "uuid": "...", "role": "target1"}'
+
   ## ==========================================================================
   ## ENDPOINTS - AUDIO PIPELINE (v13)
   ## ==========================================================================
 
   pipeline_endpoints:
+    get_stats:
+      path: "GET /api/production/:courseCode/audio-pipeline/stats"
+      description: "Fast stats for dashboard loading - uses plan endpoint"
+      notes: "Alias: GET /api/production/:courseCode/audio-stats"
+      response: |
+        {
+          "success": true,
+          "estimatedCost": "$12.50",
+          "estimatedTime": "5 min",
+          "total": 3500,
+          "existing": 3200,
+          "missing": 300,
+          "dataSource": "database"
+        }
+
     get_plan:
       path: "GET /api/production/:courseCode/audio-pipeline/plan"
-      description: "Get audio generation plan (what's missing)"
-      v13_query: |
-        SELECT * FROM get_missing_audio($course_code, $needed)
-
-    get_inventory:
-      path: "GET /api/production/:courseCode/audio-pipeline/inventory"
-      description: "Get audio inventory summary"
-      v13_query: |
-        SELECT * FROM get_course_audio_summary($course_code)
+      description: "Get detailed audio generation plan with cost estimates"
+      notes: "Proxies to Phase 8 service (port 3465)"
+      response: |
+        {
+          "success": true,
+          "estimatedCost": "$12.50",
+          "estimatedTime": "5 min",
+          "total": 3500,
+          "existing": 3200,
+          "missing": 300,
+          "phraseNeeds": 1000,
+          "introNeeds": 50,
+          "breakdown": [
+            {"role": "known", "count": 100},
+            {"role": "target1", "count": 100},
+            {"role": "target2", "count": 100},
+            {"role": "introduction", "count": 50}
+          ],
+          "voices": {"known": "...", "target1": "...", "target2": "..."},
+          "dataSource": "database"
+        }
 
     start_generation:
-      path: "POST /api/production/:courseCode/audio-pipeline/generate"
+      path: "POST /api/production/:courseCode/audio-pipeline/start"
       description: "Start audio generation"
-      notes: "Requires user approval (costs money)"
+      notes: "Requires user approval (costs money). Proxies to Phase 8."
+      body:
+        options: "object (optional generation options)"
+      response: '{"success": true, "jobId": "..."}'
 
     get_status:
       path: "GET /api/production/:courseCode/audio-pipeline/status"
       description: "Get generation job status"
+      notes: "Proxies to Phase 8 /status endpoint"
+      response: |
+        {
+          "success": true,
+          "job": {
+            "status": "running",
+            "courseCode": "...",
+            "operation": "generate",
+            "progress": {"current": 50, "total": 100, "generated": 48, "failed": 2},
+            "lastItem": "...",
+            "startedAt": "2026-01-28T..."
+          }
+        }
 
-  ## ==========================================================================
-  ## ENDPOINTS - QA WORKFLOW
-  ## ==========================================================================
+    cancel_generation:
+      path: "POST /api/production/:courseCode/audio-pipeline/cancel"
+      description: "Cancel active audio generation job"
+      notes: "Proxies to Phase 8 DELETE /cancel/:courseCode"
+      response: '{"success": true}'
 
-  qa_endpoints:
-    description: |
-      QA workflow for reviewing and flagging audio samples.
-      Note: May need separate sample_flags table (not part of v13 audio schema).
-
-    get_flags:
-      path: "GET /api/production/:courseCode/flags"
-      description: "Get all sample flags for a course"
-      notes: "sample_flags table (QA-specific, not audio registry)"
-
-    update_flag:
-      path: "POST /api/production/:courseCode/flags/update"
-      description: "Update flag for a single sample"
+    retry_generation:
+      path: "POST /api/production/:courseCode/audio-pipeline/retry"
+      description: "Retry failed audio generation"
       body:
-        audioId: "uuid"
-        status: "approved | flagged | needs_review"
-        reason: "string"
+        options: "object (optional generation options)"
+      response: '{"success": true, "jobId": "..."}'
+
+    get_missing:
+      path: "GET /api/production/:courseCode/audio-pipeline/missing"
+      description: "Get detailed missing audio breakdown by role and process"
+      notes: |
+        Azure counts from Phase 8 /plan (single source of truth).
+        ElevenLabs counts handled locally (shared audio, welcomes).
+      response: |
+        {
+          "success": true,
+          "courseCode": "spa_for_eng",
+          "releaseTarget": 260,
+          "totalMissing": 350,
+          "totalPhrases": 1000,
+          "totalLegos": 50,
+          "existingCounts": {"known": 800, "target1": 800, "target2": 800, "presentation": 45},
+          "missingCounts": {"known": 100, "target1": 100, "target2": 100, "presentation": 5},
+          "samples": {
+            "known": {"text": "...", "audioId": "...", "url": "..."},
+            "target1": {"text": "...", "audioId": "...", "url": "..."}
+          },
+          "sharedAudio": {
+            "language": "eng",
+            "encouragements": {"expected": 26, "existing": 26, "missing": 0},
+            "instructions": {"expected": 48, "existing": 48, "missing": 0}
+          },
+          "welcome": {"exists": true, "hasAudio": true},
+          "byProcess": {
+            "azure": {"label": "Azure TTS (Phrases)", "missing": 300},
+            "azureLegos": {"label": "Azure TTS (LEGOs)", "missing": 5},
+            "elevenLabs": {"label": "ElevenLabs (UI Audio)", "missing": 1}
+          }
+        }
+
+    get_orphan_legos:
+      path: "GET /api/production/:courseCode/audio-pipeline/orphan-legos"
+      description: "Find NEW LEGOs that don't have any phrases (position=0 is debut)"
+      notes: "Uses seed_number + lego_index to identify LEGOs"
+      response: |
+        {
+          "success": true,
+          "orphanLegos": [
+            {"lego_id": "...", "seed_number": 1, "lego_index": 2, "known_text": "...", "target_text": "..."}
+          ],
+          "total": 5
+        }
+
+    fix_orphan_legos:
+      path: "POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos"
+      description: "Add debut phrases (position=0) for orphan LEGOs"
+      body:
+        dryRun: "boolean (default: false)"
+      response: |
+        {
+          "success": true,
+          "addedCount": 5,
+          "message": "Added 5 debut phrases"
+        }
+
+    sync_s3:
+      path: "POST /api/production/:courseCode/audio-pipeline/sync-s3"
+      description: "Sync existing S3 audio files to Supabase (import existing audio)"
+      notes: |
+        1. Gets all audio needs from database (practice phrases)
+        2. Batch checks which UUIDs exist in S3
+        3. Registers existing S3 files in course_audio table
+      response: |
+        {
+          "success": true,
+          "totalInPlan": 3000,
+          "foundInS3": 2800,
+          "synced": 2750,
+          "skipped": 50,
+          "errors": 0
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - AUDIO FLAGS (NEW SIMPLIFIED SYSTEM)
+  ## ==========================================================================
+
+  audio_flag_endpoints:
+    description: |
+      Audio flags for QA workflow - simplified system using audio_flags table.
+      Replaces legacy sample_flags system.
+
+    get_audio_flags:
+      path: "GET /api/production/:courseCode/audio-flags"
+      description: "Get all audio flags for a course with stats"
+      response: |
+        {
+          "flags": [
+            {
+              "audio_uuid": "...",
+              "course_code": "spa_for_eng",
+              "status": "flagged",
+              "reason": "pronunciation issue",
+              "flagged_by": "qa",
+              "created_at": "2026-01-28T...",
+              "regen_count": 0
+            }
+          ],
+          "stats": {
+            "total": 10,
+            "flagged": 5,
+            "resolved": 3,
+            "in_pipeline": 2
+          }
+        }
+
+    create_audio_flag:
+      path: "POST /api/production/:courseCode/audio-flags"
+      description: "Create or update an audio flag"
+      body:
+        audio_uuid: "uuid (required)"
+        status: "flagged | resolved | in_pipeline (default: flagged)"
+        reason: "string (optional)"
+        flagged_by: "string (default: qa)"
+      websocket_event: "audio_flagged"
+      response: '{"success": true, "flag": {...}}'
+
+    resolve_audio_flag:
+      path: "POST /api/production/:courseCode/audio-flags/:audioUuid/resolve"
+      description: "Resolve an audio flag (mark as fixed)"
+      websocket_event: "audio_flag_resolved"
+      response: '{"success": true, "flag": {...}}'
+
+    delete_audio_flag:
+      path: "DELETE /api/production/:courseCode/audio-flags/:audioUuid"
+      description: "Delete an audio flag"
+      websocket_event: "audio_flag_deleted"
+      response: '{"success": true}'
+
+  ## ==========================================================================
+  ## ENDPOINTS - LEGACY FLAGS (backwards compatibility)
+  ## ==========================================================================
+
+  legacy_flag_endpoints:
+    description: "Legacy sample_flags system - kept for backwards compatibility"
+
+    delete_flag:
+      path: "POST /api/production/:courseCode/flags/delete"
+      description: "Delete a sample flag (item is done, no longer needs regen)"
+      body:
+        uuid: "string (required)"
+      websocket_event: "sample_updated"
+      response: '{"success": true}'
 
     bulk_update_flags:
       path: "POST /api/production/:courseCode/flags/bulk-update"
-      description: "Bulk update multiple flags"
+      description: "Bulk update multiple sample flags"
       body:
-        audioIds: ["uuid1", "uuid2"]
-        status: "approved"
-
-    get_flagged_for_regeneration:
-      path: "GET /api/production/:courseCode/regeneration-queue"
-      description: "Get samples flagged for TTS regeneration"
+        updates: |
+          [
+            {"uuid": "...", "status": "...", "reason": "...", "notes": "...", "flaggedBy": "..."}
+          ]
+      websocket_event: "bulk_update"
+      response: '{"success": true, "updated": 5}'
 
   ## ==========================================================================
   ## ENDPOINTS - RECORDING WORKFLOW
@@ -159,6 +694,478 @@ service ProductionAPI:
       path: "POST /api/production/:courseCode/recording/:audioId/status"
       description: "Update recording status (review → approved)"
 
+    claim_recording:
+      path: "POST /api/production/:courseCode/recording/claim"
+      description: "Claim a sample for recording (prevents concurrent edits)"
+      body:
+        uuid: "string (required)"
+        claimedBy: "string (required - user identifier)"
+      notes: "Updates status from 'flagged_human_needed' to 'in_recording'"
+      websocket_event: "recording_claimed"
+      response: |
+        {
+          "success": true,
+          "sample": {...}
+        }
+
+    release_recording:
+      path: "POST /api/production/:courseCode/recording/release"
+      description: "Release a claimed sample (if user can't complete recording)"
+      body:
+        uuid: "string (required)"
+        releasedBy: "string (optional)"
+      notes: "Updates status from 'in_recording' back to 'flagged_human_needed'"
+      websocket_event: "recording_released"
+      response: |
+        {
+          "success": true,
+          "sample": {...}
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - REGENERATION QUEUE
+  ## ==========================================================================
+
+  regeneration_endpoints:
+    description: |
+      TTS audio regeneration workflow. Uses audio_flags table to track
+      samples needing regeneration. Proxies to Phase 8 for actual generation.
+
+    get_regeneration_queue:
+      path: "GET /api/production/:courseCode/regeneration/queue"
+      description: "Get samples flagged for regeneration"
+      notes: "Uses audio_flags table (new simplified system)"
+      response: |
+        {
+          "items": [
+            {
+              "uuid": "...",
+              "status": "flagged",
+              "notes": "pronunciation issue",
+              "flaggedBy": "qa",
+              "flaggedAt": "2026-01-28T...",
+              "regenCount": 0,
+              "audio": {"text": "...", "role": "target1", "language": "spa"}
+            }
+          ],
+          "total": 10,
+          "byRole": {"known": 2, "target1": 5, "target2": 3}
+        }
+
+    trigger_regeneration:
+      path: "POST /api/production/:courseCode/regeneration/trigger"
+      description: "Trigger TTS regeneration for specific samples"
+      body:
+        uuids: "string[] (required)"
+      notes: "Proxies to Phase 8 /generate endpoint"
+      websocket_event: "regeneration_started"
+      response: |
+        {
+          "success": true,
+          "count": 5,
+          "jobId": "..."
+        }
+
+    trigger_all_regeneration:
+      path: "POST /api/production/:courseCode/regeneration/trigger-all"
+      description: "Trigger TTS regeneration for ALL flagged samples"
+      notes: |
+        Groups samples by role and processes in parallel.
+        Does NOT auto-resolve flags - user must review and mark done manually.
+      websocket_event: "regeneration_started"
+      response: |
+        {
+          "success": true,
+          "count": 25,
+          "processed": 23,
+          "failed": 2,
+          "regeneratedItems": [...],
+          "byRole": [
+            {"role": "known", "success": 5, "failed": 0},
+            {"role": "target1", "success": 10, "failed": 1},
+            {"role": "target2", "success": 8, "failed": 1}
+          ]
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - ROLE-BASED AUDIO OPERATIONS
+  ## ==========================================================================
+
+  role_audio_endpoints:
+    description: "Audio operations by role (known, target1, target2)"
+
+    get_audio_status:
+      path: "GET /api/audio/status"
+      description: "Get audio generation status (proxies to Phase 8)"
+      response: '{"active": false, "error": null}'
+
+    regenerate_by_role:
+      path: "POST /api/audio/regenerate-role/:courseCode"
+      description: "Regenerate audio by role"
+      body:
+        role: "known | target1 | target2 (required)"
+        dryRun: "boolean (default: true)"
+        flaggedOnly: "boolean (default: false)"
+        limit: "number (default: 1000)"
+      notes: "Proxies to Phase 8 regeneration"
+
+  ## ==========================================================================
+  ## ENDPOINTS - USER FEEDBACK (Crowdsourced QA)
+  ## ==========================================================================
+
+  feedback_endpoints:
+    description: |
+      Crowdsourced QA - users flag issues from the learning app.
+      Feedback is aggregated by threshold before surfacing to QA team.
+
+    submit_feedback:
+      path: "POST /api/production/:courseCode/feedback"
+      description: "Submit user feedback on audio/content"
+      body:
+        audioId: "string (optional - for audio-specific feedback)"
+        feedbackType: "translation | audio_quality | pronunciation | too_fast | confusing | other (required)"
+        userId: "string (optional, default: anonymous)"
+        comment: "string (optional)"
+        sessionContext: "object (optional - learning session info)"
+      websocket_event: "feedback_submitted"
+      response: '{"success": true, "feedback": {...}}'
+
+    get_aggregated_feedback:
+      path: "GET /api/production/:courseCode/feedback/aggregated"
+      description: "Get aggregated feedback above threshold"
+      query_params:
+        threshold: "number (default: 3) - minimum flags to surface"
+        type: "string (optional) - filter by feedback type"
+        limit: "number (default: 50)"
+      response: |
+        {
+          "success": true,
+          "threshold": 3,
+          "total_issues": 15,
+          "issues": [
+            {
+              "audio_id": "...",
+              "feedback_type": "pronunciation",
+              "flag_count": 5,
+              "comments": ["sounds wrong", "mispronounced"],
+              "first_flagged": "2026-01-20T...",
+              "last_flagged": "2026-01-28T...",
+              "text": "hola mundo",
+              "language": "spa",
+              "voice_id": "es-ES-AlvaroNeural"
+            }
+          ]
+        }
+
+    resolve_feedback:
+      path: "POST /api/production/:courseCode/feedback/resolve"
+      description: "Resolve feedback (mark as addressed)"
+      body:
+        audioId: "string (optional - resolve all for this audio)"
+        feedbackType: "string (optional - resolve all of this type)"
+        resolvedBy: "string (required)"
+        resolutionNote: "string (optional)"
+      websocket_event: "feedback_resolved"
+      response: '{"success": true, "resolved": 5}'
+
+    get_feedback_stats:
+      path: "GET /api/production/:courseCode/feedback/stats"
+      description: "Get feedback stats for course"
+      response: |
+        {
+          "success": true,
+          "stats": {
+            "total": 100,
+            "unresolved": 25,
+            "resolved": 75,
+            "by_type": {
+              "pronunciation": 30,
+              "translation": 20,
+              "audio_quality": 15,
+              "too_fast": 20,
+              "confusing": 10,
+              "other": 5
+            }
+          }
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - CONTENT ACCESS (Seeds, LEGOs, Baskets)
+  ## ==========================================================================
+
+  content_endpoints:
+    description: |
+      Database-first content access endpoints.
+      All data from Supabase (course_seeds, course_legos, course_practice_phrases).
+
+    get_seeds:
+      path: "GET /api/production/:courseCode/seeds"
+      description: "Get seeds from database with nested LEGOs and phrases"
+      query_params:
+        status: "all | draft | released (default: all)"
+      notes: |
+        Transforms database format for frontend:
+        - course_legos -> legos
+        - course_practice_phrases -> basket_phrases
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "count": 260,
+          "seeds": [
+            {
+              "seed_number": 1,
+              "known_text": "I want to learn Spanish",
+              "target_text": "Quiero aprender español",
+              "status": "released",
+              "legos": [
+                {
+                  "lego_index": 1,
+                  "known_text": "I want",
+                  "target_text": "quiero",
+                  "type": "M",
+                  "is_new": true,
+                  "basket_phrases": [...]
+                }
+              ]
+            }
+          ]
+        }
+
+    get_legos:
+      path: "GET /api/production/:courseCode/legos"
+      description: "Get all LEGOs for a course"
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "count": 500,
+          "legos": [
+            {
+              "lego_id": "S0001L01",
+              "seed_number": 1,
+              "lego_index": 1,
+              "known_text": "I want",
+              "target_text": "quiero",
+              "type": "M",
+              "is_new": true,
+              "components": [...]
+            }
+          ]
+        }
+
+    get_seed_baskets:
+      path: "GET /api/production/:courseCode/seed/:seedId/baskets"
+      description: "Get all baskets (practice phrases) for a seed"
+      notes: "Used by LegoBasketViewer component"
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "seedId": "S0001",
+          "seed_pair": {"known": "...", "target": "..."},
+          "basketCount": 3,
+          "baskets": {
+            "S0001L01": {
+              "lego": {"known": "...", "target": "..."},
+              "type": "M",
+              "is_new": true,
+              "components": [...],
+              "practice_phrases": [
+                {"known": "...", "target": "...", "position": 0, "word_count": 2, "lego_count": 1}
+              ]
+            }
+          }
+        }
+
+    get_lego_basket:
+      path: "GET /api/production/:courseCode/lego/:legoId/basket"
+      description: "Get practice phrases for a specific LEGO"
+      notes: "legoId format: S0001L02 (seed_number + lego_index)"
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "legoId": "S0001L02",
+          "count": 10,
+          "phrases": [...]
+        }
+
+    get_course_progress:
+      path: "GET /api/production/:courseCode/progress"
+      description: "Get course progress statistics"
+
+    update_lego:
+      path: "PATCH /api/production/:courseCode/lego/:legoId"
+      description: "Update a LEGO in database"
+      notes: "legoId format: S0001L02"
+      body: "object with fields to update"
+      response: '{"success": true, "lego": {...}}'
+
+    delete_seed:
+      path: "DELETE /api/production/:courseCode/seed/:seedNumber"
+      description: "Delete a seed from database (soft delete)"
+      response: '{"success": true, "deleted": "S0001"}'
+
+    mark_lego_new:
+      path: "POST /api/production/:courseCode/lego/:legoId/mark-new"
+      description: "Mark LEGO as new/not-new"
+      body:
+        isNew: "boolean"
+      response: '{"success": true, "lego": {...}}'
+
+  ## ==========================================================================
+  ## ENDPOINTS - SCRIPT VIEW
+  ## ==========================================================================
+
+  script_view_endpoints:
+    description: |
+      Hierarchical script view for production UI.
+      Returns seeds -> legos -> phrases with audio UUIDs.
+
+    get_script_view:
+      path: "GET /api/production/:courseCode/script-view"
+      description: "Get hierarchical script with audio UUIDs and flags"
+      notes: |
+        Uses practice_cycles view (same as learning app).
+        Includes LEGO debut audio from lego_cycles view.
+        Supports pagination via seedStart/seedEnd query params.
+      query_params:
+        seedStart: "S0001 (optional)"
+        seedEnd: "S0030 (optional)"
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "seeds": [
+            {
+              "seed_id": "S0001",
+              "seed_number": 1,
+              "known_text": "...",
+              "target_text": "...",
+              "status": "released",
+              "legos": [
+                {
+                  "lego_id": "S0001L01",
+                  "lego_index": 1,
+                  "type": "M",
+                  "known_text": "...",
+                  "target_text": "...",
+                  "is_new": true,
+                  "phrases": [
+                    {
+                      "id": "uuid",
+                      "position": 0,
+                      "known_text": "...",
+                      "target_text": "...",
+                      "type": "lego_debut",
+                      "known_audio_uuid": "...",
+                      "target1_audio_uuid": "...",
+                      "target2_audio_uuid": "...",
+                      "known_s3_key": "mastered/UUID.mp3",
+                      "known_duration_ms": 1500,
+                      "is_flagged": false,
+                      "known_flag": null,
+                      "target1_flag": null,
+                      "target2_flag": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "pagination": {
+            "returned": 30,
+            "total": 260,
+            "seedStart": 1,
+            "seedEnd": 30
+          }
+        }
+
+    get_learning_journey:
+      path: "GET /api/production/:courseCode/learning-journey"
+      description: "Generate learning script showing how course looks to learner"
+      notes: |
+        Shows rounds with spaced repetition (Fibonacci-based reviews).
+        Ported from ssi-learning-app's generateLearningScript().
+      query_params:
+        maxLegos: "number (default: 50)"
+        offset: "number (default: 0)"
+      response: |
+        {
+          "courseCode": "spa_for_eng",
+          "rounds": [...],
+          "allItems": [...],
+          "stats": {...},
+          "pagination": {
+            "maxLegos": 50,
+            "offset": 0,
+            "returned": 25
+          }
+        }
+
+  ## ==========================================================================
+  ## ENDPOINTS - PHRASE EDITING
+  ## ==========================================================================
+
+  phrase_endpoints:
+    description: "Practice phrase management"
+
+    update_phrase:
+      path: "PATCH /api/production/:courseCode/phrase/:phraseId"
+      description: "Update a practice phrase (text editing with regeneration flagging)"
+      body:
+        known_text: "string (optional)"
+        target_text: "string (optional)"
+        flag_for_regeneration: "boolean (optional)"
+      websocket_event: "phrase_updated"
+      response: '{"success": true, "phrase": {...}}'
+
+    delete_phrase:
+      path: "DELETE /api/production/:courseCode/phrases/:phraseId"
+      description: "Delete a practice phrase"
+      websocket_event: "phrase_deleted"
+      response: '{"success": true}'
+
+  ## ==========================================================================
+  ## ENDPOINTS - RECORDING OPTIMIZER
+  ## ==========================================================================
+
+  recording_optimizer_endpoints:
+    description: |
+      Recording optimizer using GuaranteedCoverage algorithm.
+      Finds minimum recording set for human voice recording.
+
+    get_recording_script:
+      path: "GET /api/production/:courseCode/recording-optimizer"
+      description: "Run GuaranteedCoverage algorithm to find minimum recording set"
+      response: |
+        {
+          "courseCode": "cym_for_eng",
+          "generatedAt": "2026-01-28T...",
+          "statistics": {
+            "totalLegos": 500,
+            "phrasesToRecord": 150,
+            "directRecord": 25,
+            "totalRecordings": 175,
+            "coveragePercent": 100,
+            "reductionPercent": 65,
+            "estimatedMinutes": 45,
+            "totalPhrases": 5000
+          },
+          "recordingScript": [...],
+          "directRecord": [...],
+          "fullScript": {...}
+        }
+
+    get_frankenstein_demo:
+      path: "GET /api/production/:courseCode/frankenstein-demo"
+      description: "Get audio URLs for frankenstein splice demo"
+      notes: "Shows source phrases and synthesized spliced results"
+      response: |
+        {
+          "courseCode": "cym_for_eng",
+          "phrases": [
+            {"seed": 1, "text": "...", "audioId": "...", "url": "...", "isSynthesized": false},
+            {"seed": 60, "text": "...", "audioId": "...", "url": "...", "isSynthesized": true}
+          ]
+        }
+
   ## ==========================================================================
   ## WEBSOCKET - REAL-TIME UPDATES
   ## ==========================================================================
@@ -172,13 +1179,57 @@ service ProductionAPI:
         description: "New audio file generated"
         payload: '{"courseCode": "...", "audioId": "uuid", "text": "..."}'
 
-      flag_updated:
-        description: "Sample flag changed"
-        payload: '{"courseCode": "...", "audioId": "uuid", "status": "..."}'
+      audio_flagged:
+        description: "Audio sample flagged for review"
+        payload: '{"courseCode": "...", "audio_uuid": "...", "flag": {...}}'
+
+      audio_flag_resolved:
+        description: "Audio flag resolved"
+        payload: '{"courseCode": "...", "audio_uuid": "...", "flag": {...}}'
+
+      audio_flag_deleted:
+        description: "Audio flag deleted"
+        payload: '{"courseCode": "...", "audio_uuid": "..."}'
+
+      sample_updated:
+        description: "Sample flag updated (legacy)"
+        payload: '{"courseCode": "...", "uuid": "...", "update": {...}}'
+
+      bulk_update:
+        description: "Bulk flag update completed"
+        payload: '{"courseCode": "...", "count": 5}'
+
+      feedback_submitted:
+        description: "User feedback submitted"
+        payload: '{"courseCode": "...", "feedbackType": "...", "audioId": "..."}'
+
+      feedback_resolved:
+        description: "Feedback resolved"
+        payload: '{"courseCode": "...", "audioId": "...", "feedbackType": "...", "resolvedCount": 5}'
+
+      recording_claimed:
+        description: "Sample claimed for recording"
+        payload: '{"courseCode": "...", "uuid": "...", "claimedBy": "...", "timestamp": "..."}'
+
+      recording_released:
+        description: "Claimed sample released"
+        payload: '{"courseCode": "...", "uuid": "...", "releasedBy": "...", "timestamp": "..."}'
 
       recording_uploaded:
         description: "Human recording uploaded"
         payload: '{"courseCode": "...", "audioId": "uuid"}'
+
+      regeneration_started:
+        description: "Audio regeneration started"
+        payload: '{"courseCode": "...", "uuids": [...], "count": 5, "timestamp": "..."}'
+
+      phrase_updated:
+        description: "Practice phrase updated"
+        payload: '{"courseCode": "...", "phraseId": "...", "phrase": {...}}'
+
+      phrase_deleted:
+        description: "Practice phrase deleted"
+        payload: '{"courseCode": "...", "phraseId": "..."}'
 
       pipeline_progress:
         description: "Audio generation progress"
@@ -193,6 +1244,22 @@ service ProductionAPI:
         description: "Unsubscribe from course updates"
 
   ## ==========================================================================
+  ## CHECKPOINT PROXY ROUTES
+  ## ==========================================================================
+
+  checkpoint_proxy:
+    description: |
+      Proxies /api/checkpoint/* routes to Course Builder API (port 3471).
+      Enables checkpoint management through the main Production API entry point.
+
+    proxy_all:
+      path: "/api/checkpoint/*"
+      description: "All checkpoint routes proxied to Course Builder API"
+      target: "COURSE_BUILDER_API_URL (default: http://localhost:3471)"
+      methods: "GET, POST, PUT, DELETE"
+      notes: "See course-builder-api.apml for full checkpoint endpoint documentation"
+
+  ## ==========================================================================
   ## INTERNAL ENDPOINTS
   ## ==========================================================================
 
@@ -201,6 +1268,10 @@ service ProductionAPI:
       path: "POST /api/production/internal/emit"
       description: "Internal endpoint for other services to emit WebSocket events"
       auth: "Internal only (no external access)"
+      body:
+        event: "string (event name)"
+        courseCode: "string"
+        payload: "object (event data)"
 
   ## ==========================================================================
   ## DEPENDENCIES
@@ -292,6 +1363,31 @@ service ProductionAPI:
       - "src/views/production/components/AutocueDisplay.vue"
 
 ## ============================================================================
-## GENERATED: 2026-01-03
-## APML Production API v1.0.0
+## UPDATED: 2026-01-28
+## APML Production API v2.0.0
+##
+## Part 1 Coverage (this update):
+## - Health & Schema endpoints
+## - Languages endpoint
+## - Course Management (list, create, platform-status)
+## - Voice Configuration (GET/PUT/PATCH)
+## - Mission Control & Jobs (list, stop)
+## - Course Statistics & Info (stats, info, status, introductions)
+## - Manifest Management (get, generate, validate)
+## - Audio endpoints (url, exists, metadata, by-text)
+##
+## Part 2 Coverage (already documented):
+## - Audio Pipeline (stats, plan, start, status, cancel, retry, missing, orphan-legos, sync-s3)
+## - Audio Flags (new simplified system)
+## - Legacy Flags (backwards compatibility)
+## - Recording Workflow (queue, upload, claim, release)
+## - Regeneration Queue (trigger, trigger-all)
+## - Role-Based Audio Operations
+## - User Feedback (crowdsourced QA)
+## - Content Access (seeds, legos, baskets)
+## - Script View (script-view, learning-journey)
+## - Phrase Editing
+## - Recording Optimizer
+## - WebSocket events
+## - Checkpoint Proxy
 ## ============================================================================

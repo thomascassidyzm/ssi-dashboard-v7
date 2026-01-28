@@ -1,0 +1,1417 @@
+# APML: Frontend State Management
+# Version: 1.0.0 (2026-01-28)
+# Status: CANONICAL - This is the source of truth
+# Type: INTERFACE SPECIFICATION
+
+interface FrontendState:
+  name: "SSi Dashboard Vue Composables & Stores"
+  purpose: "Catalog of all Vue composables and Pinia stores"
+  version: "1.0.0"
+  framework: "Vue 3 Composition API"
+  composable_count: 9
+  store_count: 1
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  overview:
+    description: |
+      This specification documents the reactive state management layer of the
+      SSi Dashboard. It covers:
+      - 9 Vue composables for specific feature domains
+      - 1 Pinia store for central production state
+
+      Composables handle focused concerns (recording, auth, playback) while
+      the Pinia store provides global state for the production workflow.
+
+  ## ==========================================================================
+  ## COMPOSABLES (src/composables/)
+  ## ==========================================================================
+
+  ## --------------------------------------------------------------------------
+  ## useExportWorkflow - 4-Step Export Orchestration
+  ## --------------------------------------------------------------------------
+
+  composable use_export_workflow:
+    file: "src/composables/useExportWorkflow.ts"
+    purpose: "Orchestrates the 4-step course export process with 10+ API calls"
+    complexity: "HIGH"
+
+    state:
+      state:
+        type: "ExportState"
+        description: "Complete export workflow state including timestamps and verification results"
+        properties:
+          - "courseCode: String - Current course being exported"
+          - "manifestGenerated: Boolean - Step 1 complete"
+          - "manifestGeneratedAt: String|null - Timestamp"
+          - "s3Verified: Boolean - Step 2 complete"
+          - "s3VerifiedAt: String|null - Timestamp"
+          - "manifestPublished: Boolean - Step 3 complete"
+          - "manifestPublishedAt: String|null - Timestamp"
+          - "audioDeployed: Boolean - Step 4 complete"
+          - "audioDeployedAt: String|null - Timestamp"
+          - "manifestVersion: String|null - Published version number"
+          - "manifestStatus: String|null - alpha|beta|release"
+          - "s3Verification: S3VerificationResult|null - Verification details"
+          - "deployPlan: DeployPlan|null - Deployment plan details"
+          - "deployVerification: DeployVerification|null - Post-deploy verification"
+          - "pendingManifestPath: String|null - Local manifest file path"
+          - "generatedOnMachine: String|null - Machine that generated manifest"
+
+      isLoading:
+        type: Boolean
+        description: "Whether an API operation is in progress"
+
+      error:
+        type: "String|null"
+        description: "Current error message if any"
+
+      manifest:
+        type: "Object|null"
+        description: "Generated manifest content"
+
+      stats:
+        type: "ManifestStats|null"
+        description: "Manifest statistics (seeds, encouragements counts)"
+
+      validation:
+        type: "ValidationResult|null"
+        description: "Manifest validation results"
+
+      versionInfo:
+        type: "VersionInfo|null"
+        description: "Version suggestion from course-configs repo"
+
+      audioGenerationProgress:
+        type: Object
+        description: "Progress tracking for audio generation"
+        properties:
+          - "completed: Number - Items completed"
+          - "total: Number - Total items"
+          - "status: String - none|running|completed|failed"
+          - "errors: Array - Error details"
+          - "skipped: Array - Skipped items with reasons"
+
+      s3VerifyProgress:
+        type: Object
+        description: "S3 verification progress"
+        properties:
+          - "checked: Number - Files checked"
+          - "total: Number - Total files"
+
+      deployProgress:
+        type: Object
+        description: "Deployment progress"
+        properties:
+          - "deployed: Number - Files deployed"
+          - "total: Number - Total files"
+
+    computed:
+      currentStep:
+        type: Number
+        description: "Current workflow step (1-4)"
+
+      completedSteps:
+        type: "Number[]"
+        description: "Array of completed step numbers"
+
+    functions:
+      loadState:
+        params: ""
+        returns: "Promise<void>"
+        description: "Load export state from Supabase"
+
+      generateManifest:
+        params: "withAudio: Boolean = false"
+        returns: "Promise<Object>"
+        description: "Step 1: Generate manifest with optional legacy audio generation"
+
+      getCachedManifest:
+        params: ""
+        returns: "Promise<Object>"
+        description: "Retrieve cached manifest for re-download"
+
+      verifyS3:
+        params: ""
+        returns: "Promise<S3VerificationResult>"
+        description: "Step 2: Verify all audio exists in S3 staging bucket"
+
+      getVersionSuggestion:
+        params: ""
+        returns: "Promise<VersionInfo>"
+        description: "Get suggested version number from course-configs repo"
+
+      publishManifest:
+        params: "options: { version?, status?, commitToCourseConfigs?, scpToApidev? }"
+        returns: "Promise<Object>"
+        description: "Step 3: Publish manifest to course-configs and optionally SCP to apidev"
+
+      getDeployPlan:
+        params: ""
+        returns: "Promise<DeployPlan>"
+        description: "Get deployment plan showing new files vs overwrites"
+
+      deployAudio:
+        params: "confirmation?: String"
+        returns: "Promise<Object>"
+        description: "Step 4: Deploy audio from S3 staging to production bucket"
+
+      verifyProductionDurations:
+        params: ""
+        returns: "Promise<DeployVerification>"
+        description: "Verify production audio durations without deploying"
+
+      deployMissingOnly:
+        params: ""
+        returns: "Promise<Object>"
+        description: "Deploy only missing files (no overwrites)"
+
+      resetState:
+        params: ""
+        returns: "Promise<void>"
+        description: "Reset workflow state to initial values"
+
+      cleanup:
+        params: ""
+        returns: "void"
+        description: "Disconnect WebSocket and cleanup resources"
+
+      formatDate:
+        params: "dateString: String|null"
+        returns: "String"
+        description: "Format date string for display"
+
+    api_calls:
+      - method: GET
+        endpoint: "/api/production/{courseCode}/export-state"
+        purpose: "Load current export workflow state"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/export-legacy-with-state"
+        purpose: "Generate manifest (Step 1)"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/export-state/manifest"
+        purpose: "Retrieve cached manifest"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/verify-s3"
+        purpose: "Verify S3 audio (Step 2)"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/publish-manifest/version"
+        purpose: "Get version suggestion for Step 3"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/publish-manifest"
+        purpose: "Publish manifest (Step 3)"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/deploy-audio/plan"
+        purpose: "Get deployment plan for Step 4"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/deploy-audio/execute"
+        purpose: "Deploy audio (Step 4)"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/verify-production-durations"
+        purpose: "Verify production durations"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/deploy-audio/missing-only"
+        purpose: "Deploy only missing audio"
+
+      - method: DELETE
+        endpoint: "/api/production/{courseCode}/export-state"
+        purpose: "Reset workflow state"
+
+    websocket:
+      path: "/api/orchestrator/websocket"
+      events:
+        - "legacyAudio:progress - Audio generation progress updates"
+        - "legacyAudio:completed - Audio generation complete"
+        - "legacyAudio:failed - Audio generation failed"
+        - "s3Verify:progress - S3 existence check progress"
+        - "s3Verify:durationProgress - S3 duration check progress"
+        - "s3Verify:fixingDurations - Duration fix progress"
+        - "s3Verify:completed - S3 verification complete"
+        - "audioDeploy:progress - Deployment progress"
+        - "audioDeploy:verifyProgress - Post-deploy verification progress"
+        - "audioDeploy:completed - Deployment complete"
+        - "prodVerify:existenceProgress - Production existence check"
+        - "prodVerify:durationProgress - Production duration check"
+        - "prodVerify:completed - Production verification complete"
+
+  ## --------------------------------------------------------------------------
+  ## useAudioUpload - Audio Blob Upload
+  ## --------------------------------------------------------------------------
+
+  composable use_audio_upload:
+    file: "src/composables/useAudioUpload.ts"
+    purpose: "Upload recorded audio blobs to S3 via API"
+    complexity: "LOW"
+
+    state:
+      isUploading:
+        type: Boolean
+        description: "Whether upload is in progress"
+
+      progress:
+        type: "UploadProgress"
+        description: "Upload progress tracking"
+        properties:
+          - "loaded: Number - Bytes uploaded"
+          - "total: Number - Total bytes"
+          - "percentage: Number - 0-100"
+
+      error:
+        type: "String|null"
+        description: "Upload error message"
+
+      uploadedUrl:
+        type: "String|null"
+        description: "URL/key of uploaded audio"
+
+    functions:
+      uploadAudio:
+        params: "audioBlob: Blob, metadata: UploadMetadata"
+        returns: "Promise<Object>"
+        description: "Upload audio blob with metadata (uuid, text, language, role, cadence, voiceId, courseCode)"
+
+      reset:
+        params: ""
+        returns: "void"
+        description: "Reset all state to initial values"
+
+    api_calls:
+      - method: POST
+        endpoint: "/api/production/{courseCode}/recording/upload"
+        purpose: "Upload base64-encoded audio with metadata"
+
+  ## --------------------------------------------------------------------------
+  ## useContinuousRecorder - Teleprompt Mode Recording
+  ## --------------------------------------------------------------------------
+
+  composable use_continuous_recorder:
+    file: "src/composables/useContinuousRecorder.ts"
+    purpose: "Continuous flow recording for teleprompt mode with auto-segmentation"
+    complexity: "HIGH"
+    depends_on: "useVAD"
+
+    description: |
+      Enables teleprompt mode where creator:
+      1. Hits record once
+      2. Reads phrases as they appear on autocue
+      3. System auto-detects speech end, segments, uploads
+      4. Autocue advances to next phrase
+
+    config:
+      silenceThreshold:
+        type: Number
+        default: 0.02
+        description: "Energy threshold for silence detection (0-1)"
+
+      silenceDuration:
+        type: Number
+        default: 800
+        description: "Milliseconds of silence before end-of-speech"
+
+      minSpeechDuration:
+        type: Number
+        default: 300
+        description: "Minimum speech duration to be valid (ms)"
+
+      pollInterval:
+        type: Number
+        default: 50
+        description: "Audio level polling interval (ms)"
+
+      autoUpload:
+        type: Boolean
+        default: true
+        description: "Auto-upload after capturing segment"
+
+      autoAdvance:
+        type: Boolean
+        default: true
+        description: "Auto-advance to next phrase after upload"
+
+    state:
+      isFlowMode:
+        type: Boolean
+        description: "Whether continuous flow recording is active"
+
+      isCapturing:
+        type: Boolean
+        description: "Whether currently capturing audio"
+
+      isSpeaking:
+        type: Boolean
+        description: "Whether speech is detected (from VAD)"
+
+      currentLevel:
+        type: Number
+        description: "Current audio level (0-1)"
+
+      segmentCount:
+        type: Number
+        description: "Number of segments captured"
+
+      lastSegment:
+        type: "RecordedSegment|null"
+        description: "Last captured segment (blob, durationMs, timestamp)"
+
+      error:
+        type: "String|null"
+        description: "Error message if any"
+
+    functions:
+      startFlow:
+        params: ""
+        returns: "Promise<void>"
+        description: "Start continuous flow recording - gets mic access, initializes VAD and MediaRecorder"
+
+      stopFlow:
+        params: ""
+        returns: "void"
+        description: "Stop continuous flow recording and cleanup resources"
+
+      manualStop:
+        params: ""
+        returns: "void"
+        description: "Manually stop current segment capture (e.g., button press)"
+
+      updateConfig:
+        params: "newConfig: Partial<ContinuousRecorderConfig>"
+        returns: "void"
+        description: "Update configuration on the fly"
+
+      onSegmentCaptured:
+        params: "callback: (segment: RecordedSegment) => void"
+        returns: "void"
+        description: "Register callback for when segment is captured"
+
+      onSegmentUploaded:
+        params: "callback: (segment: RecordedSegment) => void"
+        returns: "void"
+        description: "Register callback for when segment is uploaded"
+
+      onError:
+        params: "callback: (error: string) => void"
+        returns: "void"
+        description: "Register error callback"
+
+  ## --------------------------------------------------------------------------
+  ## useVAD - Voice Activity Detection
+  ## --------------------------------------------------------------------------
+
+  composable use_vad:
+    file: "src/composables/useVAD.ts"
+    purpose: "Real-time voice activity detection for continuous recording"
+    complexity: "MEDIUM"
+
+    description: |
+      Detects speech vs silence in real-time using energy-based detection.
+      Configurable thresholds for different recording environments.
+
+    config:
+      silenceThreshold:
+        type: Number
+        default: 0.02
+        description: "Energy threshold (0-1) - below this is silence"
+
+      silenceDuration:
+        type: Number
+        default: 800
+        description: "How long silence must persist before end-of-speech (ms)"
+
+      minSpeechDuration:
+        type: Number
+        default: 300
+        description: "Minimum speech duration to be valid (ms)"
+
+      pollInterval:
+        type: Number
+        default: 50
+        description: "How often to check audio levels (ms)"
+
+    state:
+      isListening:
+        type: Boolean
+        description: "Whether VAD is actively listening"
+
+      isSpeaking:
+        type: Boolean
+        description: "Whether speech is currently detected"
+
+      currentLevel:
+        type: Number
+        description: "Current audio RMS energy level (0-1)"
+
+    functions:
+      startListening:
+        params: "mediaStream?: MediaStream"
+        returns: "Promise<void>"
+        description: "Start listening - uses provided stream or gets new microphone access"
+
+      stopListening:
+        params: ""
+        returns: "void"
+        description: "Stop listening and cleanup audio context"
+
+      updateConfig:
+        params: "newConfig: Partial<VADConfig>"
+        returns: "void"
+        description: "Update VAD configuration on the fly"
+
+      onSpeechStart:
+        params: "callback: () => void"
+        returns: "void"
+        description: "Register callback for speech start"
+
+      onSpeechEnd:
+        params: "callback: (durationMs: number) => void"
+        returns: "void"
+        description: "Register callback for speech end with duration"
+
+      onLevelChange:
+        params: "callback: (level: number) => void"
+        returns: "void"
+        description: "Register callback for audio level changes"
+
+  ## --------------------------------------------------------------------------
+  ## useRecorder - Standard Recording
+  ## --------------------------------------------------------------------------
+
+  composable use_recorder:
+    file: "src/composables/useRecorder.ts"
+    purpose: "Standard audio recording with pause/resume and level monitoring"
+    complexity: "MEDIUM"
+
+    state:
+      isRecording:
+        type: Boolean
+        description: "Whether actively recording"
+
+      isPaused:
+        type: Boolean
+        description: "Whether recording is paused"
+
+      duration:
+        type: Number
+        description: "Recording duration in seconds"
+
+      audioLevel:
+        type: Number
+        description: "Current audio level (0-1)"
+
+      error:
+        type: "String|null"
+        description: "Error message if any"
+
+    functions:
+      startRecording:
+        params: ""
+        returns: "Promise<void>"
+        description: "Start recording - gets microphone access and begins capture"
+
+      stopRecording:
+        params: ""
+        returns: "void"
+        description: "Stop recording and create audio blob"
+
+      pauseRecording:
+        params: ""
+        returns: "void"
+        description: "Pause current recording"
+
+      resumeRecording:
+        params: ""
+        returns: "void"
+        description: "Resume paused recording"
+
+      getAudioBlob:
+        params: ""
+        returns: "Blob|null"
+        description: "Get recorded audio as Blob"
+
+      getAudioUrl:
+        params: ""
+        returns: "String|null"
+        description: "Get object URL for recorded audio"
+
+      reset:
+        params: ""
+        returns: "void"
+        description: "Reset all state and revoke object URLs"
+
+  ## --------------------------------------------------------------------------
+  ## useAuth - Magic Link Authentication
+  ## --------------------------------------------------------------------------
+
+  composable use_auth:
+    file: "src/composables/useAuth.js"
+    purpose: "Magic link authentication with session persistence"
+    complexity: "MEDIUM"
+
+    state:
+      session:
+        type: "String|null"
+        description: "Current session token"
+        persistence: "localStorage (ssi_session)"
+
+      user:
+        type: "Object|null"
+        description: "Current user object"
+        persistence: "localStorage (ssi_user)"
+        properties:
+          - "email: String"
+          - "role: String - admin|user"
+          - "courses: String[]|'*' - Accessible courses"
+
+      loading:
+        type: Boolean
+        description: "Whether auth operation in progress"
+
+      error:
+        type: "String|null"
+        description: "Auth error message"
+
+    computed:
+      isAuthenticated:
+        type: Boolean
+        description: "Whether user is logged in (has session and user)"
+
+      isAdmin:
+        type: Boolean
+        description: "Whether user has admin role"
+
+    functions:
+      requestMagicLink:
+        params: "email: String"
+        returns: "Promise<Object>"
+        description: "Request magic link to be sent to email"
+
+      verifyToken:
+        params: "token: String"
+        returns: "Promise<Object>"
+        description: "Verify magic link token and create session"
+
+      checkSession:
+        params: ""
+        returns: "Promise<Object|null>"
+        description: "Check if current session is still valid"
+
+      logout:
+        params: ""
+        returns: "void"
+        description: "Clear session and user data"
+
+      devBypassLogin:
+        params: "email: String"
+        returns: "Promise<Object>"
+        description: "Development-only login bypass (not available in production)"
+
+      canAccessCourse:
+        params: "courseCode: String"
+        returns: "Boolean"
+        description: "Check if user can access a specific course"
+
+    api_calls:
+      - method: POST
+        endpoint: "/api/auth/request-link"
+        purpose: "Request magic link email"
+
+      - method: GET
+        endpoint: "/api/auth/verify"
+        purpose: "Verify magic link token"
+
+      - method: GET
+        endpoint: "/api/auth/me"
+        purpose: "Check current session validity"
+
+      - method: POST
+        endpoint: "/api/auth/dev-login"
+        purpose: "Development bypass login"
+
+  ## --------------------------------------------------------------------------
+  ## useAutocueState - Teleprompter Workflow
+  ## --------------------------------------------------------------------------
+
+  composable use_autocue_state:
+    file: "src/composables/useAutocueState.js"
+    purpose: "Two-mode teleprompter recording system state management"
+    complexity: "HIGH"
+
+    description: |
+      Manages the autocue/teleprompter recording workflow with phases:
+      mode-select -> role-select -> recording -> review
+
+      Singleton state shared across the entire autocue session.
+
+    state:
+      currentPhase:
+        type: String
+        description: "Current workflow phase"
+        values: "mode-select | role-select | recording | review"
+
+      selectedMode:
+        type: "String|null"
+        description: "Selected recording mode"
+        values: "new-course | regeneration"
+
+      selectedRole:
+        type: "String|null"
+        description: "Selected voice role"
+        values: "known | target1 | target2"
+
+      courseCode:
+        type: "String|null"
+        description: "Current course code"
+
+      courseName:
+        type: String
+        description: "Display name of current course"
+
+      knownLanguage:
+        type: String
+        description: "Known/source language name"
+
+      targetLanguage:
+        type: String
+        description: "Target language name"
+
+      currentPass:
+        type: Number
+        description: "Recording pass (1=Natural Speed, 2=Slow with Gaps)"
+
+      currentPhraseIndex:
+        type: Number
+        description: "Index of current phrase being recorded"
+
+      isRecording:
+        type: Boolean
+        description: "Whether actively recording"
+
+      isPaused:
+        type: Boolean
+        description: "Whether recording is paused"
+
+      scrollSpeed:
+        type: Number
+        description: "Autocue scroll speed (seconds per phrase)"
+
+      elapsedSeconds:
+        type: Number
+        description: "Recording session elapsed time"
+
+      phrases:
+        type: "Array"
+        description: "Array of phrases to record"
+
+      recordedSegments:
+        type: "Array"
+        description: "Recorded segments for review"
+
+      audioRecordings:
+        type: "Map<id, {blob, url}>"
+        description: "Map of phrase ID to recorded audio"
+
+      approvedSegments:
+        type: "Set<id>"
+        description: "Set of approved segment IDs"
+
+      rejectedSegments:
+        type: "Set<id>"
+        description: "Set of rejected segment IDs"
+
+      isLoading:
+        type: Boolean
+        description: "Whether loading course data"
+
+      isUploading:
+        type: Boolean
+        description: "Whether uploading recordings"
+
+      uploadProgress:
+        type: Number
+        description: "Upload progress percentage (0-100)"
+
+      error:
+        type: "String|null"
+        description: "Error message"
+
+    computed:
+      totalPhrases:
+        type: Number
+        description: "Total number of phrases to record"
+
+      recordedCount:
+        type: Number
+        description: "Number of recorded segments"
+
+      completionPercent:
+        type: Number
+        description: "Recording completion percentage"
+
+      currentPhrase:
+        type: Object
+        description: "Current phrase object"
+
+      sessionInfo:
+        type: String
+        description: "Session info string for display"
+
+      formattedTime:
+        type: String
+        description: "Formatted elapsed time (HH:MM:SS)"
+
+      estimatedTime:
+        type: Number
+        description: "Estimated session time in minutes"
+
+      reviewStats:
+        type: Object
+        description: "Review statistics (high, medium, low, approved, pending)"
+
+    functions:
+      setPhase:
+        params: "phase: String"
+        returns: "void"
+        description: "Set current workflow phase"
+
+      selectMode:
+        params: "mode: String"
+        returns: "void"
+        description: "Select recording mode and advance to role-select"
+
+      selectRole:
+        params: "role: String"
+        returns: "void"
+        description: "Select voice role"
+
+      beginSession:
+        params: "role: String, language: String"
+        returns: "void"
+        description: "Begin recording session with selected role"
+
+      initializeMicrophone:
+        params: ""
+        returns: "Promise<Boolean>"
+        description: "Initialize microphone access"
+
+      startRecording:
+        params: ""
+        returns: "void"
+        description: "Start recording session"
+
+      stopRecording:
+        params: ""
+        returns: "void"
+        description: "Stop recording and move to review phase"
+
+      toggleRecording:
+        params: ""
+        returns: "void"
+        description: "Toggle recording on/off"
+
+      togglePause:
+        params: ""
+        returns: "void"
+        description: "Toggle pause state"
+
+      navigatePhrase:
+        params: "direction: Number"
+        returns: "void"
+        description: "Navigate to previous/next phrase (+1 or -1)"
+
+      adjustSpeed:
+        params: "delta: Number"
+        returns: "void"
+        description: "Adjust scroll speed"
+
+      approveSegment:
+        params: "segment: Object"
+        returns: "void"
+        description: "Mark segment as approved"
+
+      rejectSegment:
+        params: "segment: Object"
+        returns: "void"
+        description: "Mark segment as rejected"
+
+      approveAllByConfidence:
+        params: "level: String"
+        returns: "void"
+        description: "Approve all segments at confidence level (high, medium)"
+
+      backToRecording:
+        params: ""
+        returns: "void"
+        description: "Return to recording phase from review"
+
+      finalizeSession:
+        params: ""
+        returns: "Promise<void>"
+        description: "Upload approved recordings and finalize session"
+
+      resetSession:
+        params: ""
+        returns: "void"
+        description: "Reset all session state"
+
+      loadCourse:
+        params: "courseCode: String"
+        returns: "Promise<void>"
+        description: "Load course data and recording queue"
+
+      cleanup:
+        params: ""
+        returns: "void"
+        description: "Cleanup timers and audio stream"
+
+    api_calls:
+      - method: GET
+        endpoint: "/api/production/{courseCode}/recording/queue"
+        purpose: "Fetch phrases needing human recording"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/info"
+        purpose: "Get course metadata"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/recording/upload"
+        purpose: "Upload recorded audio segment"
+
+  ## --------------------------------------------------------------------------
+  ## useScriptPlayer - 4-Phase Audio Playback
+  ## --------------------------------------------------------------------------
+
+  composable use_script_player:
+    file: "src/composables/useScriptPlayer.js"
+    purpose: "Continuous script playback with 4-phase learning cycle"
+    complexity: "HIGH"
+
+    description: |
+      Manages continuous playback through a 4-phase cycle per item:
+      1. PROMPT - Play source audio (known language)
+      2. PAUSE - Wait for learner response (2x target duration)
+      3. VOICE_1 - Play target1 audio
+      4. VOICE_2 - Play target2 audio
+
+    state:
+      isPlaying:
+        type: Boolean
+        description: "Whether playback is active"
+
+      isPaused:
+        type: Boolean
+        description: "Whether playback is paused"
+
+      currentItem:
+        type: "Object|null"
+        description: "Current script item being played"
+
+      currentPhase:
+        type: "String|null"
+        description: "Current playback phase"
+        values: "prompt | pause | voice1 | voice2"
+
+      currentIndex:
+        type: Number
+        description: "Index of current item in playlist"
+
+      progress:
+        type: Number
+        description: "Progress through current item (0-100)"
+
+    computed:
+      totalItems:
+        type: Number
+        description: "Total number of items in playlist"
+
+      hasNextItem:
+        type: Boolean
+        description: "Whether there is a next item"
+
+      hasPrevItem:
+        type: Boolean
+        description: "Whether there is a previous item"
+
+    functions:
+      playFrom:
+        params: "scriptItems: Array, startIndex: Number = 0"
+        returns: "Promise<void>"
+        description: "Start playback from specific index"
+
+      play:
+        params: ""
+        returns: "void"
+        description: "Resume playback if paused"
+
+      pause:
+        params: ""
+        returns: "void"
+        description: "Pause playback"
+
+      stop:
+        params: ""
+        returns: "void"
+        description: "Stop playback completely"
+
+      skip:
+        params: ""
+        returns: "void"
+        description: "Skip to next item"
+
+      seekTo:
+        params: "index: Number"
+        returns: "Promise<void>"
+        description: "Jump to specific item index"
+
+      onItemChange:
+        params: "callback: (item) => void"
+        returns: "() => void"
+        description: "Register callback for item changes - returns unsubscribe function"
+
+      onPhaseChange:
+        params: "callback: (phase) => void"
+        returns: "() => void"
+        description: "Register callback for phase changes - returns unsubscribe function"
+
+      onComplete:
+        params: "callback: () => void"
+        returns: "() => void"
+        description: "Register callback for playback complete - returns unsubscribe function"
+
+    audio_urls:
+      format: "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/{UUID}.mp3"
+      description: "Direct S3 access to mastered audio files"
+
+  ## --------------------------------------------------------------------------
+  ## usePromptManager - APML Prompt Editing
+  ## --------------------------------------------------------------------------
+
+  composable use_prompt_manager:
+    file: "src/composables/usePromptManager.js"
+    purpose: "Fetch and save APML prompts via API"
+    complexity: "LOW"
+
+    state:
+      prompt:
+        type: String
+        description: "Current prompt content"
+
+      loading:
+        type: Boolean
+        description: "Whether fetching prompt"
+
+      saving:
+        type: Boolean
+        description: "Whether saving prompt"
+
+      error:
+        type: "String|null"
+        description: "Error message"
+
+      promptMeta:
+        type: "Object|null"
+        description: "Prompt metadata"
+        properties:
+          - "phase: String - Phase ID"
+          - "name: String - Prompt name"
+          - "version: String - Version number"
+          - "lastModified: String - Timestamp"
+
+    functions:
+      fetchPrompt:
+        params: ""
+        returns: "Promise<void>"
+        description: "Fetch prompt from APML registry via API"
+
+      savePrompt:
+        params: "changelog: String = '', improvedBy: String = 'human'"
+        returns: "Promise<{ success: Boolean, message: String }>"
+        description: "Save updated prompt to APML file"
+
+    api_calls:
+      - method: GET
+        endpoint: "/api/prompts/{phaseId}"
+        purpose: "Fetch prompt content and metadata"
+
+      - method: PUT
+        endpoint: "/api/prompts/{phaseId}"
+        purpose: "Save updated prompt with changelog"
+
+    notes: |
+      Requires automation server to be running locally.
+      Will show error if server unavailable.
+
+  ## ==========================================================================
+  ## PINIA STORES (src/stores/)
+  ## ==========================================================================
+
+  ## --------------------------------------------------------------------------
+  ## production.js - Central Production State
+  ## --------------------------------------------------------------------------
+
+  store use_production_store:
+    file: "src/stores/production.js"
+    purpose: "Central Pinia store for production workflow state"
+    complexity: "VERY HIGH"
+    framework: "Pinia"
+
+    description: |
+      Global state store for the production suite. Manages:
+      - Course loading and caching
+      - Audio flags (QA workflow)
+      - Generation queue and progress
+      - Recording studio state
+      - Pipeline status polling
+
+    state:
+      currentCourseCode:
+        type: "String|null"
+        description: "Currently loaded course code"
+
+      courseManifest:
+        type: "Object|null"
+        description: "Course manifest (stub - manifests generated on-demand)"
+
+      courseInfo:
+        type: "Object|null"
+        description: "Course metadata including status"
+
+      sampleFlags:
+        type: Object
+        description: "LEGACY - deprecated sample flags"
+        deprecated: true
+
+      audioFlags:
+        type: Object
+        description: "NEW audio_flags system"
+        properties:
+          - "flags: Array - Individual flag records"
+          - "stats: Object - Aggregated statistics"
+
+      audioMetadata:
+        type: Object
+        description: "Audio metadata keyed by UUID"
+
+      isLoading:
+        type: Boolean
+        description: "Whether loading course data"
+
+      error:
+        type: "String|null"
+        description: "Error message"
+
+      pipelineStages:
+        type: "Array"
+        description: "Pipeline stage definitions"
+
+      generationProgress:
+        type: Object
+        description: "Audio generation progress"
+        properties:
+          - "current: Number - Current item"
+          - "total: Number - Total items"
+          - "status: String - idle|running|complete"
+
+      generationQueue:
+        type: "Array"
+        description: "Queue of items to generate"
+
+      jobStatus:
+        type: String
+        description: "Current job status"
+        values: "idle | running | complete | failed"
+
+      costEstimate:
+        type: Object
+        description: "TTS cost estimation"
+        properties:
+          - "estimated: String - Estimated cost"
+          - "actual: String - Actual cost"
+          - "estimatedTime: String - Time estimate"
+          - "breakdown: Array - Cost breakdown"
+
+      audioCourseStats:
+        type: Object
+        description: "Full course audio statistics"
+        properties:
+          - "total: Number - Total audio needs"
+          - "existing: Number - Already generated"
+          - "missing: Number - Still needed"
+          - "phraseNeeds: Number - Phrase audio"
+          - "introNeeds: Number - Introduction audio"
+
+      recordingState:
+        type: String
+        description: "Recording studio state"
+        values: "idle | recording | reviewing | uploading"
+
+      currentRecordingPhrase:
+        type: "Object|null"
+        description: "Current phrase being recorded"
+
+      recordingQueue:
+        type: "Array"
+        description: "Queue of phrases to record"
+
+      recordedAudio:
+        type: "Blob|null"
+        description: "Currently recorded audio blob"
+
+    computed:
+      samplesByStatus:
+        type: Object
+        description: "Samples grouped by status"
+
+      progressStats:
+        type: Object
+        description: "QA progress statistics"
+        properties:
+          - "total: Number"
+          - "approved: Number"
+          - "flagged: Number"
+          - "inProgress: Number"
+          - "pending: Number"
+          - "percentComplete: Number"
+
+      pipelineStats:
+        type: Object
+        description: "Pipeline generation statistics"
+        properties:
+          - "total: Number"
+          - "generated: Number"
+          - "failed: Number"
+          - "pending: Number"
+
+      blockers:
+        type: "Array"
+        description: "Issues blocking release"
+
+      pipelineStagesComputed:
+        type: "Array"
+        description: "Pipeline stages with computed progress"
+
+    actions:
+      loadCourse:
+        params: "courseCode: String, forceRefresh: Boolean = false"
+        returns: "Promise<void>"
+        description: "Load course data (flags, metadata, pipeline plan)"
+
+      loadCourseInfo:
+        params: "courseCode: String"
+        returns: "Promise<Object>"
+        description: "Load course metadata including status"
+
+      updateCourseStatus:
+        params: "status: String"
+        returns: "Promise<Object>"
+        description: "Update course status (draft, in_production, released)"
+
+      updateSampleFlag:
+        params: "uuid: String, flagData: Object"
+        returns: "Promise<Boolean>"
+        description: "Update single audio flag"
+
+      bulkUpdateFlags:
+        params: "updates: Array"
+        returns: "Promise<Boolean>"
+        description: "Bulk update multiple flags"
+
+      updateGenerationProgress:
+        params: "current: Number, total: Number, status: String"
+        returns: "void"
+        description: "Update generation progress state"
+
+      startGeneration:
+        params: "courseCode: String, options: Object = {}"
+        returns: "Promise<Object>"
+        description: "Start audio generation job"
+
+      cancelGeneration:
+        params: "courseCode: String"
+        returns: "Promise<Object>"
+        description: "Cancel active generation job"
+
+      retryFailed:
+        params: "courseCode: String"
+        returns: "Promise<Object>"
+        description: "Retry failed generation items"
+
+      generatePlan:
+        params: "courseCode: String"
+        returns: "Promise<Object>"
+        description: "Generate audio pipeline plan with cost estimate"
+
+      updatePipelineStats:
+        params: "total: Number, existing: Number, missing: Number"
+        returns: "void"
+        description: "Update pipeline stats from fresh plan data"
+
+      loadRecordingQueue:
+        params: "courseCode: String, filters: Object = {}"
+        returns: "Promise<Object>"
+        description: "Load phrases needing human recording"
+
+      startRecording:
+        params: "phrase: Object"
+        returns: "void"
+        description: "Start recording for a phrase"
+
+      stopRecording:
+        params: "audioBlob: Blob"
+        returns: "void"
+        description: "Stop recording and store blob"
+
+      uploadRecording:
+        params: "audioBlob: Blob, metadata: Object"
+        returns: "Promise<Object>"
+        description: "Upload recorded audio"
+
+      reset:
+        params: ""
+        returns: "void"
+        description: "Reset all store state"
+
+    api_calls:
+      - method: GET
+        endpoint: "/api/production/{courseCode}/flags"
+        purpose: "Load sample flags (legacy)"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/audio-flags"
+        purpose: "Load audio flags (new system)"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/audio-metadata"
+        purpose: "Load audio metadata"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/info"
+        purpose: "Load course info"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/status"
+        purpose: "Update course status"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/audio-flags"
+        purpose: "Update audio flag"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/flags/bulk-update"
+        purpose: "Bulk update flags"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/audio-pipeline/fix-orphan-legos"
+        purpose: "Auto-fix orphan LEGOs"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/audio-pipeline/plan"
+        purpose: "Get pipeline plan"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/audio-pipeline/status"
+        purpose: "Poll generation status"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/audio-pipeline/start"
+        purpose: "Start audio generation"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/audio-pipeline/cancel"
+        purpose: "Cancel generation"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/audio-pipeline/retry"
+        purpose: "Retry failed items"
+
+      - method: GET
+        endpoint: "/api/production/{courseCode}/recording/queue"
+        purpose: "Load recording queue"
+
+      - method: POST
+        endpoint: "/api/production/{courseCode}/recording/upload"
+        purpose: "Upload recording"
+
+  ## ==========================================================================
+  ## DEPENDENCY GRAPH
+  ## ==========================================================================
+
+  dependencies:
+    description: "How composables relate to each other"
+
+    graph:
+      useContinuousRecorder:
+        depends_on: ["useVAD"]
+        description: "Uses VAD for speech detection"
+
+      useAutocueState:
+        depends_on: []
+        optional: ["useContinuousRecorder", "useAudioUpload"]
+        description: "Can integrate with continuous recorder for teleprompt mode"
+
+      useScriptPlayer:
+        depends_on: []
+        description: "Standalone playback composable"
+
+      useProductionStore:
+        depends_on: []
+        consumes: ["useAuth"]
+        description: "Central store, may check auth for permissions"
+
+  ## ==========================================================================
+  ## USAGE EXAMPLES
+  ## ==========================================================================
+
+  examples:
+    export_workflow: |
+      // In a Vue component
+      import { useExportWorkflow } from '@/composables/useExportWorkflow'
+
+      const { state, generateManifest, verifyS3, publishManifest, deployAudio } =
+        useExportWorkflow('spa_for_eng')
+
+      // Execute 4-step workflow
+      await generateManifest()
+      await verifyS3()
+      await publishManifest({ version: '1.2.0', status: 'beta' })
+      await deployAudio()
+
+    continuous_recording: |
+      // Teleprompt mode recording
+      import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
+      import { useAudioUpload } from '@/composables/useAudioUpload'
+
+      const recorder = useContinuousRecorder()
+      const uploader = useAudioUpload()
+
+      recorder.onSegmentCaptured(async (segment) => {
+        await uploader.uploadAudio(segment.blob, metadata)
+      })
+
+      await recorder.startFlow()
+
+    production_store: |
+      // In a Vue component
+      import { useProductionStore } from '@/stores/production'
+
+      const store = useProductionStore()
+
+      await store.loadCourse('spa_for_eng')
+
+      // Start audio generation
+      await store.startGeneration('spa_for_eng')
+
+## ============================================================================
+## GENERATED: 2026-01-28
+## APML Frontend State v1.0.0
+## 9 composables + 1 Pinia store documented
+## ============================================================================

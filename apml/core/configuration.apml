@@ -29,50 +29,84 @@ configuration SSiDashboard:
     description: "All services auto-calculate from BASE_PORT"
     base_port: 3456
 
+    ## ========================================================================
+    ## IMPORTANT: Main entry point is production-api (port 3470)
+    ## Phase 1-3 servers DO NOT EXIST - use Course Builder API (port 3471)
+    ## ========================================================================
+
     assignments:
-      orchestrator:
-        port: 3456
-        offset: 0
-        description: "Main automation orchestrator"
+      ## MAIN ENTRY POINT
+      production_api:
+        port: 3470
+        offset: 14
+        description: "MAIN ENTRY POINT - Production API: QA, recording, WebSocket, routing"
+        status: "PRIMARY"
 
-      phase1_translation:
-        port: 3457
-        offset: 1
-        description: "Phase 1: Translation service"
+      course_builder:
+        port: 3471
+        offset: 15
+        description: "Course Builder API: POST /api/seed/complete for content creation"
+        status: "ACTIVE"
 
-      phase1_lego:
-        port: 3458
-        offset: 2
-        description: "Phase 1: LEGO extraction service"
-
-      phase3_basket:
-        port: 3459
-        offset: 3
-        description: "Phase 3: Basket generation service"
-
-      manifest_compilation:
-        port: 3464
-        offset: 8
-        description: "Legacy manifest compilation (deprecated)"
-
+      ## ACTIVE SERVICES
       phase8_audio:
         port: 3465
         offset: 9
         description: "Phase 8: Audio generation service"
+        status: "ACTIVE"
 
       phase9_manifest:
         port: 3466
         offset: 10
         description: "Phase 9: Manifest compilation from Supabase"
+        status: "ACTIVE"
 
-      production_api:
-        port: 3470
-        offset: 14
-        description: "Production API: QA, recording, WebSocket"
+      ## OPTIONAL/DEPRECATED
+      orchestrator:
+        port: 3456
+        offset: 0
+        description: "OPTIONAL - PM2 management only. Main entry is production-api (3470)"
+        status: "OPTIONAL"
 
+      ## ======================================================================
+      ## DEPRECATED: Phase 1-3 servers DO NOT EXIST anymore
+      ## Content creation handled by Course Builder API (port 3471)
+      ## These port assignments are historical artifacts only
+      ## ======================================================================
+
+      phase1_translation:
+        port: 3457
+        offset: 1
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      phase1_lego:
+        port: 3458
+        offset: 2
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      phase3_basket:
+        port: 3459
+        offset: 3
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      manifest_compilation:
+        port: 3464
+        offset: 8
+        description: "DEPRECATED - Legacy manifest compilation"
+        status: "REMOVED"
+        deprecated: true
+
+      ## DEVELOPMENT
       frontend_dev:
         port: 5173
         description: "Vite dev server (frontend)"
+        status: "DEV_ONLY"
 
   ## ==========================================================================
   ## SUPABASE CONFIGURATION
@@ -172,36 +206,71 @@ configuration SSiDashboard:
   ## ==========================================================================
 
   service_mesh:
-    description: "Inter-service communication URLs (auto-configured by start-automation.cjs)"
+    description: "Inter-service communication URLs"
+
+    ## ========================================================================
+    ## ACTIVE SERVICE URLs
+    ## ========================================================================
 
     variables:
-      ORCHESTRATOR_URL:
-        default: "http://localhost:3456"
+      PRODUCTION_API_URL:
+        default: "http://localhost:3470"
+        description: "MAIN ENTRY POINT - use this for all API calls"
+        status: "PRIMARY"
 
-      PHASE1_TRANSLATION_URL:
-        default: "http://localhost:3457"
-
-      PHASE1_LEGO_URL:
-        default: "http://localhost:3458"
-
-      PHASE3_URL:
-        default: "http://localhost:3459"
-
-      MANIFEST_URL:
-        default: "http://localhost:3464"
+      COURSE_BUILDER_URL:
+        default: "http://localhost:3471"
+        description: "Course Builder API - content creation via POST /api/seed/complete"
+        status: "ACTIVE"
 
       PHASE8_URL:
         default: "http://localhost:3465"
+        description: "Audio generation service"
+        status: "ACTIVE"
 
       PHASE9_URL:
         default: "http://localhost:3466"
+        description: "Manifest compilation service"
+        status: "ACTIVE"
 
       AUDIO_URL:
         default: "http://localhost:3465"
         alias_of: "PHASE8_URL"
+        status: "ACTIVE"
 
-      PRODUCTION_API_URL:
-        default: "http://localhost:3470"
+      ## ======================================================================
+      ## DEPRECATED: These services DO NOT EXIST anymore
+      ## ======================================================================
+
+      ORCHESTRATOR_URL:
+        default: "http://localhost:3456"
+        description: "OPTIONAL - PM2 management only"
+        status: "OPTIONAL"
+        deprecated: true
+
+      PHASE1_TRANSLATION_URL:
+        default: "http://localhost:3457"
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      PHASE1_LEGO_URL:
+        default: "http://localhost:3458"
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      PHASE3_URL:
+        default: "http://localhost:3459"
+        description: "DEPRECATED - SERVER REMOVED. Use Course Builder (3471)"
+        status: "REMOVED"
+        deprecated: true
+
+      MANIFEST_URL:
+        default: "http://localhost:3464"
+        description: "DEPRECATED - Use Phase 9 (3466) instead"
+        status: "REMOVED"
+        deprecated: true
 
   ## ==========================================================================
   ## ORCHESTRATION CONFIGURATION
@@ -327,29 +396,43 @@ configuration SSiDashboard:
       5. Monitors health endpoints
 
     pm2_processes:
-      - name: "ssi-orchestrator"
-        script: "services/orchestration/automation_server.cjs"
-        port: 3456
+      ## REQUIRED SERVICES
+      - name: "ssi-production-api"
+        script: "services/production-api.cjs"
+        port: 3470
+        status: "REQUIRED - Main entry point"
 
-      - name: "ssi-phase1-translation"
-        script: "services/phases/phase1-translation.cjs"
-        port: 3457
-
-      - name: "ssi-phase1-lego"
-        script: "services/phases/phase1-lego-extraction.cjs"
-        port: 3458
-
-      - name: "ssi-phase3"
-        script: "services/phases/phase3-basket-generation.cjs"
-        port: 3459
+      - name: "ssi-course-builder"
+        script: "services/course-builder-api.cjs"
+        port: 3471
+        status: "REQUIRED - Content creation"
 
       - name: "ssi-phase8-audio"
         script: "services/phases/phase8-audio-generator.cjs"
         port: 3465
+        status: "REQUIRED - Audio generation"
 
-      - name: "ssi-production-api"
-        script: "services/production-api.cjs"
-        port: 3470
+      ## OPTIONAL SERVICES
+      - name: "ssi-orchestrator"
+        script: "services/orchestration/automation_server.cjs"
+        port: 3456
+        status: "OPTIONAL - PM2 management only"
+
+      ## DEPRECATED - DO NOT START
+      # - name: "ssi-phase1-translation"
+      #   script: "services/phases/phase1-translation.cjs"
+      #   port: 3457
+      #   status: "REMOVED - Use Course Builder"
+
+      # - name: "ssi-phase1-lego"
+      #   script: "services/phases/phase1-lego-extraction.cjs"
+      #   port: 3458
+      #   status: "REMOVED - Use Course Builder"
+
+      # - name: "ssi-phase3"
+      #   script: "services/phases/phase3-basket-generation.cjs"
+      #   port: 3459
+      #   status: "REMOVED - Use Course Builder"
 
 ## ============================================================================
 ## GENERATED: 2026-01-03

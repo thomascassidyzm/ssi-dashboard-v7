@@ -1,6 +1,11 @@
-# APML v14.0.0 - Master Specification
+# APML v14.1.0 - Master Specification
 # SSI Course Production Dashboard (Popty)
 # Single Source of Truth (SSoT) for entire project
+#
+# v14.1 (2026-01-28): Port consolidation and skill documentation
+# - Production API (3470) is now main entry point
+# - Added missing skill references
+# - Marked implemented interfaces as extracted
 #
 # v14.0 (2026-01-15): Course Builder consolidation
 # - Phases 0-3 replaced by Course Builder API
@@ -9,7 +14,7 @@
 
 app SSiDashboard:
   title: "SSI Course Production Dashboard (Popty)"
-  version: "14.0.0"
+  version: "14.1.0"
   apml_version: "2.1.0"
 
   description: |
@@ -17,7 +22,7 @@ app SSiDashboard:
     Course Builder API handles content creation with atomic validation.
     Audio generation (Phase 8) and manifest compilation (Phase 9) unchanged.
 
-  last_updated: "2026-01-15"
+  last_updated: "2026-01-28"
 
   ## ==========================================================================
   ## CORE SPECIFICATIONS (Extracted - Complete)
@@ -70,6 +75,22 @@ app SSiDashboard:
     source: ".claude/commands/ssi-build-phrases.md"
     purpose: "How to generate practice phrases (build-up pattern)"
 
+  import skills/course-resume:
+    source: ".claude/commands/course-resume.md"
+    purpose: "Recovery after context compaction - resume course generation"
+
+  import skills/checkpoint-qa:
+    source: ".claude/commands/checkpoint-qa.md"
+    purpose: "Quality assurance checkpoints during course building"
+
+  import skills/audio-generation:
+    source: ".claude/commands/audio-generation.md"
+    purpose: "Phase 8 audio generation workflow and controls"
+
+  import skills/course-audit:
+    source: ".claude/commands/course-audit.md"
+    purpose: "Full course audit and validation reporting"
+
   ## ==========================================================================
   ## AUDIO PIPELINE (Unchanged from v13)
   ## ==========================================================================
@@ -95,28 +116,31 @@ app SSiDashboard:
   # - phase-3-basket-generation.apml (replaced by Course Builder)
 
   ## ==========================================================================
-  ## INTERFACES (To Be Extracted)
+  ## INTERFACES (Extracted)
   ## ==========================================================================
 
-  # import interfaces/dashboard-ui:
-  #   status: "to_be_extracted"
-  #   source: "src/views/Dashboard.vue"
-  #   includes: "Main navigation, course overview, quick actions"
+  import interfaces/dashboard-ui:
+    status: "extracted"
+    date: "2026-01-28"
+    source: "src/views/Dashboard.vue"
+    includes: "Main navigation, course overview, quick actions"
 
-  # import interfaces/course-generation-ui:
-  #   status: "to_be_extracted"
-  #   source: "src/views/CourseGeneration.vue"
-  #   includes: "Language selection, seed range, execution mode, progress monitor"
+  import interfaces/course-generation-ui:
+    status: "to_be_extracted"
+    source: "src/views/CourseGeneration.vue"
+    includes: "Language selection, seed range, execution mode, progress monitor"
 
-  # import interfaces/course-editor-ui:
-  #   status: "to_be_extracted"
-  #   source: "src/views/CourseEditor.vue"
-  #   includes: "Seed editing, LEGO editing, basket editing"
+  import interfaces/course-editor-ui:
+    status: "extracted"
+    date: "2026-01-28"
+    source: "src/views/CourseEditor.vue"
+    includes: "Seed editing, LEGO editing, basket editing"
 
-  # import interfaces/quality-review-ui:
-  #   status: "to_be_extracted"
-  #   source: "src/components/quality/*.vue"
-  #   includes: "GATE validation, pattern coverage, completeness"
+  import interfaces/quality-review-ui:
+    status: "extracted"
+    date: "2026-01-28"
+    source: "src/components/quality/*.vue"
+    includes: "GATE validation, pattern coverage, completeness"
 
   ## ==========================================================================
   ## SERVICES (To Be Extracted)
@@ -195,7 +219,7 @@ app SSiDashboard:
 
     backend:
       entry: "automation_server.cjs"
-      port: 3456
+      port: 3470
       vfs_root: "./public/vfs/courses"
 
     browser_automation:
@@ -286,6 +310,9 @@ app SSiDashboard:
       - "core/variable-registry.apml (100%)"
       - "core/course-structure.apml (100%)"
       - "core/execution-modes.apml (100%)"
+      - "interfaces/dashboard-ui.apml (100%)"
+      - "interfaces/course-editor-ui.apml (100%)"
+      - "interfaces/quality-review-ui.apml (100%)"
 
     pending_master_prompt:
       - "phases/phase-1-translation.apml"
@@ -294,10 +321,7 @@ app SSiDashboard:
       - "phases/phase-orchestration.apml"
 
     to_be_extracted:
-      - "interfaces/dashboard-ui.apml"
       - "interfaces/course-generation-ui.apml"
-      - "interfaces/course-editor-ui.apml"
-      - "interfaces/quality-review-ui.apml"
       - "services/automation-server.apml"
       - "services/browser-automation.apml"
       - "services/vfs-management.apml"
@@ -343,7 +367,7 @@ app SSiDashboard:
     deployment:
       production: "https://ssi-dashboard-v7.vercel.app"
       local: "http://localhost:5173" # Frontend
-      backend: "http://localhost:3456" # Automation server
+      backend: "http://localhost:3470" # Production API (main entry point)
 
     technology_stack:
       frontend:

@@ -1,0 +1,583 @@
+# APML: Dashboard Component Specifications
+# Version: 1.0.0 (2026-01-28)
+# Status: CANONICAL - Detailed component interface documentation
+# Type: INTERFACE SPECIFICATION
+# Purpose: Document props, events, and features for critical Vue components
+
+## ============================================================================
+## OVERVIEW
+## ============================================================================
+
+interface DashboardComponents:
+  name: "SSi Dashboard Component Specifications"
+  purpose: "Detailed props/events documentation for critical Vue components"
+  version: "1.0.0"
+  framework: "Vue 3 Composition API"
+  styling: "Tailwind CSS"
+  documented_count: 16
+
+## ============================================================================
+## DASHBOARD/STATUS COMPONENTS
+## ============================================================================
+
+interface SchemaHealth:
+  file: "src/components/SchemaHealth.vue"
+  purpose: "Database schema validation indicator with drift detection"
+
+  props:
+    # No external props - self-contained component
+
+  internal_state:
+    loading:
+      type: Boolean
+      description: "Whether validation is in progress"
+    error:
+      type: String
+      description: "Error message if validation failed"
+    validation:
+      type: Object
+      description: "Validation result with tables, summary, and status"
+    showDetails:
+      type: Boolean
+      description: "Whether dropdown details panel is visible"
+
+  events:
+    # Emits no external events - click toggles internal showDetails
+
+  features:
+    - "Compact status indicator (Schema OK / Schema Drift)"
+    - "Clickable dropdown with detailed table-by-table validation"
+    - "Color-coded status: green=OK, red=MISSING, yellow=column issues"
+    - "Refresh button to re-run validation on demand"
+    - "Shows schema version and last validated timestamp"
+    - "Auto-validates on component mount"
+
+  api_endpoint: "GET /api/production/schema/validate"
+
+## ----------------------------------------------------------------------------
+
+interface EnvironmentSwitcher:
+  file: "src/components/EnvironmentSwitcher.vue"
+  purpose: "Multi-machine coordination switcher (Tom/Kai/API)"
+
+  props:
+    # No external props - reads/writes localStorage
+
+  internal_state:
+    selectedEnv:
+      type: String
+      values: ["tom", "kai", "api"]
+      description: "Currently selected environment"
+    connectionStatus:
+      type: Object
+      properties:
+        connected: Boolean
+        message: String
+      description: "Connection health status"
+
+  features:
+    - "Three environments: Tom's Machine, Kai's Machine, API Server"
+    - "Inline status dot showing connection health (green/red)"
+    - "Auto-checks connection to selected environment on mount"
+    - "Persists selection in localStorage (ssi_environment)"
+    - "Sets api_base_url and ssi_machine_profile in localStorage"
+    - "Triggers page reload on environment switch to reinitialize API"
+    - "Default environment configurable via VITE_DEFAULT_ENVIRONMENT"
+
+  environments:
+    tom:
+      url: "https://popty.ngrok.app"
+      machineProfile: "tom"
+    kai:
+      url: "https://kai-lizard-function.ngrok-free.dev"
+      machineProfile: "kai"
+    api:
+      url: "http://localhost:3470"
+      machineProfile: "default"
+
+## ----------------------------------------------------------------------------
+
+interface ProgressMonitor:
+  file: "src/components/ProgressMonitor.vue"
+  purpose: "Real-time pipeline progress monitoring with phase tracking"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier for progress polling"
+    pollInterval:
+      type: Number
+      required: false
+      default: 5000
+      description: "Polling interval in milliseconds"
+    seedCount:
+      type: Number
+      required: false
+      description: "Optional total seed count for display"
+
+  internal_state:
+    liveProgress:
+      type: Object
+      description: "Current progress data from API"
+    executionMode:
+      type: String
+      values: ["web", "local", "hybrid"]
+      description: "Current execution mode"
+
+  features:
+    - "Live progress bar with percentage and seed counts"
+    - "Phase title display (Phase 1, Phase 3, Manifest, Audio)"
+    - "ETA estimation when available"
+    - "Recent activity log (last 5 events)"
+    - "Execution mode badge (Web/Local/Hybrid)"
+    - "Auto-polls API at configurable interval"
+    - "Graceful fallback when no active pipeline"
+
+  api_endpoint: "GET /api/courses/:courseCode/progress"
+
+## ----------------------------------------------------------------------------
+
+interface PipelineProgress:
+  file: "src/components/PipelineProgress.vue"
+  purpose: "4-segment progress bar for course creation (Translate/Extract/Practice/Build)"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+    currentPhase:
+      type: Number
+      required: false
+      default: 1
+      description: "Current phase number (1, 3, 5, or 7)"
+    seedsProcessed:
+      type: Number
+      required: false
+      default: 0
+      description: "Seeds completed in current phase"
+    totalSeeds:
+      type: Number
+      required: false
+      default: 30
+      description: "Total seeds to process"
+    startedAt:
+      type: String
+      required: false
+      description: "ISO timestamp when processing started"
+
+  computed:
+    progressPercent:
+      description: "Overall progress (each phase = 25%)"
+    progressText:
+      description: "Human-readable progress text"
+    timeEstimate:
+      description: "Estimated time remaining"
+
+  features:
+    - "4 phase indicators: Translate, Extract, Practice, Build"
+    - "Phase status: completed (checkmark), active (dots), pending (empty)"
+    - "Animated progress bar with pulse effect"
+    - "Dynamic status message per phase"
+    - "Time estimate calculation from elapsed time"
+    - "Emoji indicators per phase"
+
+## ============================================================================
+## QUALITY REVIEW COMPONENTS
+## ============================================================================
+
+interface QualityDashboard:
+  file: "src/components/quality/QualityDashboard.vue"
+  purpose: "Quality metrics dashboard with filtering, sorting, and bulk actions"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+
+  internal_state:
+    seeds:
+      type: Array
+      description: "List of seeds with quality scores"
+    selectedSeeds:
+      type: Array
+      description: "Selected seed IDs for bulk actions"
+    filters:
+      type: Object
+      properties:
+        search: String
+        status: String
+        qualityRange: String
+        concern: String
+        sortBy: String
+        sortDesc: Boolean
+
+  events:
+    # Internal navigation events
+
+  features:
+    - "5-column stats bar: Avg Quality, Flagged, Accepted, Avg Attempts, Pending"
+    - "Interactive quality distribution histogram (0-10 scale)"
+    - "Multi-filter system: search, status, quality range, concerns"
+    - "Sort options: Quality Score, Attempts, SEED ID, Status"
+    - "Bulk actions: Accept, Re-run, Remove selected"
+    - "Paginated seed list with 20 items per page"
+    - "Keyboard shortcuts: j/k navigate, a accept, r re-run, x toggle, ? help"
+    - "Quick action buttons per seed row"
+    - "Export to CSV/PDF functionality"
+
+  filter_options:
+    status: ["pending", "flagged", "accepted", "rejected"]
+    qualityRange: ["9-10", "8-9", "7-8", "0-7"]
+    concerns: ["boundary", "overlap", "missing", "semantic", "complex"]
+
+## ----------------------------------------------------------------------------
+
+interface CourseHealthReport:
+  file: "src/components/quality/CourseHealthReport.vue"
+  purpose: "Comprehensive course health metrics and recommendations"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+
+  features:
+    - "Circular overall health score (0-100) with color gradient"
+    - "6 health factors with progress bars: Extraction Quality, Coverage, Consistency, Boundary Accuracy, Semantic Coherence, System Efficiency"
+    - "30-day quality trend chart with interactive tooltips"
+    - "Phase completion status with progress bars"
+    - "Re-run statistics: attempts distribution, re-run reasons"
+    - "Common concerns section with recommended actions"
+    - "System configuration display (prompt version, model, thresholds)"
+    - "Performance metrics (API calls, success rate, cache hit rate)"
+    - "Prioritized recommendations with Apply button"
+    - "Export to PDF/CSV and scheduled reports"
+
+## ----------------------------------------------------------------------------
+
+interface SeedQualityReview:
+  file: "src/components/quality/SeedQualityReview.vue"
+  purpose: "Detailed seed-level quality review with attempt comparison"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+    seedId:
+      type: String
+      required: true
+      description: "SEED identifier to review"
+
+  internal_state:
+    attempts:
+      type: Array
+      description: "List of extraction attempts for this seed"
+    currentAttemptIndex:
+      type: Number
+      description: "Currently viewed attempt index"
+    compareWithIndex:
+      type: Number
+      description: "Index of attempt to compare with (or null)"
+
+  features:
+    - "Large quality score display with status badge"
+    - "Timeline navigation between attempts"
+    - "5-dimension quality breakdown: Boundaries, Coverage, Semantics, Overlap, Complexity"
+    - "Agent's self-assessment text and identified concerns"
+    - "Side-by-side LEGO extraction comparison (uses LegoVisualizer)"
+    - "Diff summary: added/removed/modified LEGOs"
+    - "LEGO details table with text, span, type, confidence"
+    - "Extraction context: prompt version, model, timestamp, processing time"
+    - "View full prompt toggle"
+    - "Action buttons: Accept, Reject, Re-run, Remove from Corpus"
+    - "Keyboard shortcuts: a accept, r re-run, arrows navigate attempts"
+
+## ============================================================================
+## PRODUCTION WORKFLOW COMPONENTS
+## ============================================================================
+
+interface StatusBadge:
+  file: "src/components/production/qa/StatusBadge.vue"
+  purpose: "Cinematic status indicator for audio samples"
+
+  props:
+    status:
+      type: String
+      required: false
+      default: "pending"
+      values: ["pending", "flagged_regen_tts", "flagged_human_needed", "in_pipeline", "in_recording", "needs_review", "approved", "rejected"]
+      description: "Sample status"
+    size:
+      type: String
+      required: false
+      default: "md"
+      values: ["sm", "md", "lg"]
+      description: "Badge size variant"
+
+  features:
+    - "Pill-shaped badge with status dot"
+    - "Cinematic color palette (amber, red, cyan, green)"
+    - "Animated pulse for in_progress status"
+    - "Glow effect for flagged and approved states"
+    - "Size variants: sm (0.65rem), md (0.75rem), lg (0.85rem)"
+    - "Monospace font (IBM Plex Mono)"
+    - "Uppercase with letter-spacing"
+
+## ----------------------------------------------------------------------------
+
+interface CourseSelector:
+  file: "src/components/production/CourseSelector.vue"
+  purpose: "Production suite course browser with phase completion display"
+
+  props:
+    # No external props - self-contained page
+
+  internal_state:
+    courses:
+      type: Array
+      description: "List of courses from API"
+    searchQuery:
+      type: String
+      description: "Search filter text"
+    loading:
+      type: Boolean
+      description: "Loading state"
+
+  features:
+    - "Course cards with code, name, status badge"
+    - "Search by course code, language name, or phase"
+    - "Stats display: SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS, INTRODUCTIONS"
+    - "Phase completion indicators: 1, 3, M (Manifest), A (Audio)"
+    - "Click navigates to /production/:courseCode"
+    - "Language name mapping for 14 languages"
+    - "Responsive grid layout (1-3 columns)"
+
+## ----------------------------------------------------------------------------
+
+interface MissionControl:
+  file: "src/views/production/MissionControl.vue"
+  purpose: "Central production dashboard with pipeline status and quick actions"
+
+  props:
+    courseCode:
+      type: String
+      required: false
+      description: "Course code from route params"
+
+  internal_state:
+    selectedCourse:
+      type: String
+      description: "Currently selected course"
+    showImportModal:
+      type: Boolean
+      description: "Import course modal visibility"
+    showLegacyExportDialog:
+      type: Boolean
+      description: "Legacy export dialog visibility"
+
+  events:
+    # Internal navigation and action handlers
+
+  features:
+    - "Overall progress section with ProgressRing"
+    - "Audio stats: NEEDED, GENERATED, PENDING, FLAGGED"
+    - "BlockerList component for release blockers"
+    - "Pipeline stage cards grid (StageCard component)"
+    - "Quick actions panel with 10 action buttons"
+    - "Import Course modal integration"
+    - "Legacy Export dialog integration"
+    - "Launch Learning App with QA token"
+    - "WebSocket status indicator"
+    - "Responsive layout with mobile support"
+
+  quick_actions:
+    - "import_course: Import Legacy Course"
+    - "generate_audio: Generate Audio (TTS)"
+    - "review_samples: Review Samples"
+    - "record_human: Record Human Voice"
+    - "recording_optimizer: LEGO Splice Engine"
+    - "compile_manifest: Compile Manifest"
+    - "user_feedback: User Feedback"
+    - "launch_learning_app: Open in Learning App"
+    - "agent_monitor: Agent Monitor"
+    - "export_legacy: Export Legacy Format"
+
+## ============================================================================
+## VISUALIZATION COMPONENTS
+## ============================================================================
+
+interface LegoVisualizer:
+  file: "src/components/LegoVisualizer.vue"
+  purpose: "LEGO amino acids browser with filtering, editing, and provenance"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+    editable:
+      type: Boolean
+      required: false
+      default: true
+      description: "Enable edit mode"
+    initialFilters:
+      type: Object
+      required: false
+      description: "Pre-set filter values"
+
+  events:
+    lego-edited:
+      payload: "Updated LEGO object"
+      description: "Emitted when LEGO text is saved"
+    show-provenance:
+      payload: "{ lego, provenance } or { lego, type: 'impact' }"
+      description: "Emitted when provenance or impact requested"
+
+  features:
+    - "LEGO cards with text, provenance chain, and 3 scores (FCFS, Utility, Pedagogical)"
+    - "Score bars with color-coded fills"
+    - "Search by LEGO text"
+    - "FCFS and Utility range sliders"
+    - "Sort by: FCFS (asc/desc), Utility (asc/desc), Alphabetical"
+    - "Pagination (20 items per page)"
+    - "Inline editing with Save/Cancel"
+    - "Provenance modal showing source SEED and translation UUIDs"
+    - "Show Impact button for downstream analysis"
+    - "Reset Filters button"
+    - "Responsive custom scrollbars"
+
+  api_endpoint: "GET /api/visualization/legos/:courseCode"
+
+## ----------------------------------------------------------------------------
+
+interface SeedProgressGrid:
+  file: "src/components/generation/SeedProgressGrid.vue"
+  purpose: "Mission Control aesthetic grid showing seed phase completion"
+
+  props:
+    courseCode:
+      type: String
+      required: true
+      description: "Course identifier"
+    targetSeedCount:
+      type: Number
+      required: false
+      default: 668
+      description: "Total seeds expected"
+    seedProgress:
+      type: Array
+      required: false
+      default: []
+      description: "Array of { seed, seedId, phase1, phase2, phase3 }"
+
+  events:
+    refresh:
+      payload: "none"
+      description: "Emitted when refresh button clicked"
+
+  features:
+    - "Dense grid of seed cells (dynamic columns based on count)"
+    - "3 colored phase bars per cell: P1 (blue), P2 (purple), P3 (green)"
+    - "Stats bar showing completion counts per phase"
+    - "Animated scan line effect on refresh"
+    - "Hover tooltip showing seed ID and phase status"
+    - "Legend for phase colors and pending/complete states"
+    - "Scrollable viewport with custom scrollbar"
+    - "JetBrains Mono font for mission control aesthetic"
+    - "Responsive layout for mobile"
+
+## ============================================================================
+## EXECUTION MODE COMPONENT
+## ============================================================================
+
+interface ExecutionModeSelector:
+  file: "src/components/ExecutionModeSelector.vue"
+  purpose: "Select execution mode for course generation (Web/Local/API)"
+
+  props:
+    modelValue:
+      type: String
+      required: false
+      default: "web"
+      values: ["web", "local", "api"]
+      description: "Currently selected mode (v-model)"
+
+  events:
+    update:modelValue:
+      payload: "String (web|local|api)"
+      description: "Emitted when mode selection changes"
+
+  features:
+    - "3 mode cards with detailed explanations"
+    - "Web Mode: Browser automation to claude.ai/code, uses Pro subscription"
+    - "Local Mode: iTerm2 windows + Claude CLI, parallel agents"
+    - "API Mode: Server-side Anthropic API calls"
+    - "Selected state highlight with emerald border"
+    - "Recommended badge on Web mode"
+    - "Pro/con list with checkmarks and warnings"
+    - "Requirements section per mode"
+    - "Info box explaining mode differences"
+    - "v-model compatible (modelValue/update:modelValue)"
+
+## ============================================================================
+## COMPONENT RELATIONSHIPS
+## ============================================================================
+
+relationships:
+  MissionControl:
+    uses:
+      - "ProgressRing"
+      - "StageCard"
+      - "BlockerList"
+      - "QuickActions"
+      - "EnvironmentSwitcher"
+      - "ImportCourseModal"
+      - "LegacyExportDialog"
+
+  QualityDashboard:
+    navigates_to: "SeedQualityReview"
+
+  SeedQualityReview:
+    uses: "LegoVisualizer"
+    navigates_to: "QualityDashboard"
+
+  Dashboard:
+    uses:
+      - "SchemaHealth"
+      - "EnvironmentSwitcher"
+
+## ============================================================================
+## DESIGN PATTERNS
+## ============================================================================
+
+patterns:
+  state_management:
+    - "Props for configuration, internal refs for UI state"
+    - "Computed for derived values (filtered lists, percentages)"
+    - "localStorage for persistence (environment, api_base_url)"
+    - "Pinia stores for complex shared state (useProductionStore)"
+
+  api_integration:
+    - "Axios for API calls with ngrok-skip-browser-warning header"
+    - "getApiUrl() helper for environment-aware base URL"
+    - "Polling with setInterval for real-time updates"
+    - "AbortSignal for timeout handling"
+
+  ui_patterns:
+    - "Card-based layouts with dark slate backgrounds"
+    - "Emerald accent color for success/active states"
+    - "Progress bars with animated fills"
+    - "Modal dialogs for detailed views"
+    - "Keyboard shortcuts for power users"
+    - "Responsive grid layouts"
+
+## ============================================================================
+## GENERATED: 2026-01-28
+## APML Dashboard Components v1.0.0
+## 16 critical components documented with full interface specifications
+## ============================================================================

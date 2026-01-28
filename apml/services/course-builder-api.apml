@@ -1,11 +1,11 @@
 # APML Service: Course Builder API
-# Version: 2.0.0 (2026-01-14)
+# Version: 3.0.0 (2026-01-28)
 # Status: Production-ready
 # Server Port: 3471
 
 service CourseBuilderAPI:
   name: "Course Builder API"
-  version: "2.0.0"
+  version: "3.0.0"
   port: 3471
   purpose: "Bulletproof API for LLM agents to insert course content"
 
@@ -370,6 +370,684 @@ service CourseBuilderAPI:
       warning: "Destructive - use with caution"
 
   ## ==========================================================================
+  ## ACTIVITY TRACKING ENDPOINTS (Stall Detection)
+  ## ==========================================================================
+
+  activity_tracking:
+    description: |
+      Activity tracking endpoints monitor agent progress and detect stalled builds.
+      The stall detection system identifies courses where no submissions have been
+      made within the threshold period (default 5 minutes).
+
+    get_api_activity:
+      path: "GET /api/activity"
+      purpose: "Get activity status for all courses with stall detection"
+      returns: |
+        {
+          "courses": { "courseCode": { "lastSubmission": timestamp, "stalled": bool, ... } },
+          "stalled": ["courseCode1", ...],
+          "stalled_count": 0,
+          "threshold_minutes": 5,
+          "agents": {
+            "running": [...],
+            "running_count": 0,
+            "total_tracked": 0
+          },
+          "message": "Status message"
+        }
+
+    post_api_activity_ping:
+      path: "POST /api/activity/:courseCode/ping"
+      purpose: "Mark a course as active (resets stall timer)"
+      use_case: "Call when spawning a new agent to reset the stall timer"
+      body:
+        seed_number: "integer (optional, current seed being worked on)"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "message": "Activity recorded - stall timer reset"
+        }
+
+    post_api_activity_reset_session:
+      path: "POST /api/activity/:courseCode/reset-session"
+      purpose: "Reset session counter for new agent"
+      use_case: "Call when spawning a new agent to reset seeds_this_session counter"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "seeds_this_session": 0,
+          "batch_size": 30,
+          "message": "Session counter reset - new agent can work for 30 seeds"
+        }
+
+  ## ==========================================================================
+  ## HEARTBEAT ENDPOINTS (Agent Liveness Tracking)
+  ## ==========================================================================
+
+  heartbeat_endpoints:
+    description: |
+      Heartbeat endpoints track agent liveness separately from seed submissions.
+      Agents should call POST /api/heartbeat/:courseCode every 60 seconds while working.
+      Used by stall watcher and /api/build/active to detect live agents.
+
+    post_api_heartbeat:
+      path: "POST /api/heartbeat/:courseCode"
+      purpose: "Send agent heartbeat"
+      interval: "Every 60 seconds while working"
+      body:
+        agent_id: "string (optional, agent identifier)"
+        status: "string (optional, e.g., 'working')"
+        current_seed: "integer (optional, current seed number)"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "heartbeat_interval_ms": 60000,
+          "timeout_ms": 180000,
+          "message": "Heartbeat received"
+        }
+
+    get_api_heartbeats:
+      path: "GET /api/heartbeats"
+      purpose: "Get all active heartbeats"
+      returns: |
+        {
+          "active_agents": 1,
+          "heartbeats": [
+            {
+              "course_code": "zho_for_eng",
+              "agent_id": "agent-1",
+              "status": "working",
+              "current_seed": 42,
+              "last_heartbeat": "ISO timestamp",
+              "elapsed_ms": 30000,
+              "is_alive": true,
+              "started_at": "ISO timestamp"
+            }
+          ]
+        }
+
+  ## ==========================================================================
+  ## AGENT MANAGEMENT ENDPOINTS
+  ## ==========================================================================
+
+  agent_management:
+    description: |
+      Agent management endpoints track and control build agents.
+      Used by the build monitor to register, track, and manage agent processes.
+
+    post_api_agents_register:
+      path: "POST /api/agents/register"
+      purpose: "Register a new agent (called by monitor when spawning)"
+      body:
+        pid: "integer (process ID) - required"
+        course_code: "string - required"
+      returns: |
+        {
+          "ok": true,
+          "message": "Agent {pid} registered for {course_code}"
+        }
+
+    post_api_agents_submission:
+      path: "POST /api/agents/:pid/submission"
+      purpose: "Record a submission from an agent"
+      body:
+        seed_number: "integer (optional)"
+      returns: |
+        { "ok": true }
+
+    post_api_agents_complete:
+      path: "POST /api/agents/:pid/complete"
+      purpose: "Mark an agent as completed"
+      returns: |
+        {
+          "ok": true,
+          "message": "Agent {pid} marked complete"
+        }
+
+    get_api_agents:
+      path: "GET /api/agents"
+      purpose: "List all tracked agents"
+      returns: |
+        {
+          "agents": [
+            {
+              "pid": 12345,
+              "course_code": "zho_for_eng",
+              "status": "running",
+              "started_at": "ISO timestamp",
+              "last_submission": "ISO timestamp",
+              "submissions": 5
+            }
+          ],
+          "total": 1
+        }
+
+    delete_api_agents:
+      path: "DELETE /api/agents/:pid"
+      purpose: "Kill an agent by PID"
+      action: "Sends SIGTERM to the process and marks agent complete"
+      returns: |
+        {
+          "ok": true,
+          "message": "Sent SIGTERM to agent {pid}"
+        }
+
+  ## ==========================================================================
+  ## BUILD MANAGEMENT ENDPOINTS
+  ## ==========================================================================
+
+  build_management:
+    description: |
+      Build management endpoints control the automated course building process.
+      Spawns Claude agents in sequential 30-seed batches.
+      Each agent exits after its batch, and a fresh agent picks up from there.
+
+    post_api_build_start:
+      path: "POST /api/build/start/:courseCode"
+      purpose: "Start a build with batch agent spawning"
+      body:
+        terminal: "string (default: 'iTerm2') - terminal app to use"
+        targetSeeds: "integer (default: 668) - total seeds to complete"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "status": "started",
+          "agent_count": 1,
+          "message": "Build started for courseCode"
+        }
+
+    post_api_build_stop:
+      path: "POST /api/build/stop/:courseCode"
+      purpose: "Stop an active build"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "status": "stopped",
+          "message": "Build stopped for courseCode"
+        }
+
+    get_api_build_status:
+      path: "GET /api/build/status/:courseCode"
+      purpose: "Get build status for a course"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "status": "agent_running",
+          "agent_count": 3,
+          "current_seed": 87,
+          "progress": "13%",
+          "last_activity": "ISO timestamp"
+        }
+
+    get_api_build_active:
+      path: "GET /api/build/active"
+      purpose: "List all active builds"
+      description: |
+        Returns builds from three sources:
+        1. Formally registered builds (activeBuilds Map)
+        2. Courses with recent activity (courseActivity Map)
+        3. Courses with active heartbeats
+      returns: |
+        {
+          "active_builds": 2,
+          "builds": [
+            {
+              "course_code": "zho_for_eng",
+              "status": "agent_running",
+              "agent_count": 1,
+              "progress": { "completed": 42, "total": 668, "percent": "6.3%" },
+              "source": "registered"
+            },
+            {
+              "course_code": "jpn_for_eng",
+              "status": "agent_running",
+              "source": "heartbeat",
+              "agent_id": "agent-1",
+              "current_seed": 15,
+              "last_heartbeat": "ISO timestamp"
+            }
+          ]
+        }
+
+  ## ==========================================================================
+  ## RECENCY AND BALANCE ENDPOINTS
+  ## ==========================================================================
+
+  recency_balance:
+    description: |
+      Endpoints for analyzing pattern distribution and vocabulary balance.
+      Helps detect pattern fatigue and vocabulary reinforcement needs.
+
+    get_api_recency:
+      path: "GET /api/recency/:courseCode"
+      purpose: "Analyze pattern and vocabulary recency"
+      query_params:
+        window: "integer (optional, default: 50) - window size for analysis"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "window_size": 50,
+          "pattern_fatigue_threshold": 0.3,
+          "reinforcement_zone": [5, 15],
+          "overused_patterns": ["pattern1", "pattern2"],
+          "overused_count": 2,
+          "needs_reinforcement": ["vocab1", "vocab2"],
+          "reinforcement_count": 2,
+          "health": "HEALTHY - Good pattern distribution"
+        }
+
+    get_api_balance:
+      path: "GET /api/balance/:courseCode"
+      purpose: "Get LEGO balance scores for vocabulary variety"
+      query_params:
+        seed: "integer (optional, default: 999) - current seed number"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "current_seed": 42,
+          "avg_practice_score": 5.2,
+          "thresholds": {
+            "underused": "< 3",
+            "overused": "> 8"
+          },
+          "underused_legos": ["S0001L01", "S0005L02"],
+          "overused_legos": ["S0003L01"],
+          "strikes": 0,
+          "hint": "Include underused LEGOs in your phrases to maintain balance"
+        }
+
+  ## ==========================================================================
+  ## TRANSLATION WORKFLOW ENDPOINTS
+  ## ==========================================================================
+
+  translation_workflow:
+    description: |
+      Two-pass workflow for course creation:
+      Pass 1: Translate all seeds, discover language-specific issues
+      Pass 2: Build LEGOs and phrases with full knowledge of pitfalls
+
+    get_api_course_translate:
+      path: "GET /api/course/:courseCode/translate"
+      purpose: "Get seeds needing translation with guidance"
+      query_params:
+        limit: "integer (optional, default: 260)"
+        offset: "integer (optional, default: 0)"
+      description: |
+        Returns canonical seeds that need translation along with SSi method guidance.
+        For X_for_eng: known is instant, needs target translations
+        For eng_for_X: target is instant, needs known translations
+        For X_for_Y: needs both translations
+      returns: |
+        {
+          "course_code": "zho_for_eng",
+          "target_language": "Chinese",
+          "known_language": "eng",
+          "mode": "translate_targets",
+          "total_seeds": 260,
+          "needs_translation": 260,
+          "seeds": [
+            {
+              "seed_number": 1,
+              "canonical_english": "I want to learn Chinese",
+              "current_known": "I want to learn Chinese",
+              "current_target": null,
+              "needs_known": false,
+              "needs_target": true
+            }
+          ],
+          "guidance": {
+            "principles": ["CONSISTENCY", "COGNATES", "PATTERNS", "SIMPLICITY", "ZUT"],
+            "tips": ["Translate all seeds together...", ...]
+          }
+        }
+
+    post_api_course_translate:
+      path: "POST /api/course/:courseCode/translate"
+      purpose: "Submit batch translations"
+      body:
+        translations: |
+          array of translation objects:
+          [{ "seed_number": 1, "target_text": "..." }, ...]
+          Optional: known_text for non-English known languages
+      returns: |
+        {
+          "course_code": "courseCode",
+          "submitted": 260,
+          "updated": 260,
+          "errors": null,
+          "message": "260 seeds translated successfully"
+        }
+
+    post_api_course_analysis:
+      path: "POST /api/course/:courseCode/analysis"
+      purpose: "Save translation analysis after Pass 1"
+      description: "Stores language-specific analysis discovered during translation"
+      body:
+        analysis: |
+          {
+            "generated_at": "ISO timestamp",
+            "seeds_analyzed": 260,
+            "register": { "choice": "casual-polite", "markers": ["です", "ます"] },
+            "problem_verbs": [...],
+            "golden_keys": [...],
+            "zut_concerns": [...]
+          }
+      returns: |
+        {
+          "success": true,
+          "course_code": "courseCode",
+          "message": "Translation analysis saved for 260 seeds",
+          "summary": {
+            "problem_verbs": 5,
+            "golden_keys": 10,
+            "zut_concerns": 3,
+            "register": "casual-polite"
+          }
+        }
+
+    get_api_course_analysis:
+      path: "GET /api/course/:courseCode/analysis"
+      purpose: "Retrieve translation analysis"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "display_name": "Chinese for English Speakers",
+          "analysis": { ... translation analysis object ... }
+        }
+      error_response: |
+        {
+          "error": "No translation analysis found",
+          "hint": "Complete Pass 1 (translate all seeds) and POST analysis to /api/course/:code/analysis",
+          "course_code": "courseCode"
+        }
+
+  ## ==========================================================================
+  ## PHRASES MANAGEMENT
+  ## ==========================================================================
+
+  phrases_management:
+    description: |
+      Endpoint for adding phrases to existing LEGO baskets.
+      Used for topping up baskets that need more phrases.
+
+    post_api_phrases:
+      path: "POST /api/phrases"
+      purpose: "Add phrases to an existing LEGO basket"
+      use_case: "Topping up baskets that need more phrases"
+      body:
+        course_code: "string - required"
+        seed_number: "integer - required"
+        lego_index: "integer - required"
+        phrases: |
+          array of phrase objects - required:
+          [{ "known": "I speak", "target": "我说", "score": 7 }, ...]
+          Note: USE phrases (position 8+) must have scores 1-9
+      validation:
+        - "LEGO must exist"
+        - "Vocabulary validation (phrases can only use introduced vocabulary)"
+        - "Score validation for USE phrases (position 8+)"
+      returns: |
+        {
+          "ok": true,
+          "lego": "S0042L01",
+          "added": 3,
+          "phrases": [
+            { "position": 11, "target": "我说中文" },
+            { "position": 12, "target": "我说英文" }
+          ]
+        }
+      error_response: |
+        {
+          "error": "Vocabulary violations detected",
+          "violations": [{ "phrase": "我喝水", "unknown": "喝水" }],
+          "message": "These phrases use characters not yet introduced"
+        }
+
+  ## ==========================================================================
+  ## CHECKPOINT/QA WORKFLOW ENDPOINTS
+  ## ==========================================================================
+
+  checkpoint_workflow:
+    description: |
+      Checkpoint system provides QA gates for build verification.
+      Builds pause at predefined seed numbers for quality review.
+      QA can be human-only, auto-approve, or auto with flagging.
+
+    checkpoint_seeds: [50, 100, 150, 200, 260, 350, 450, 550, 668]
+
+    get_api_checkpoint_summary:
+      path: "GET /api/checkpoint/summary/:courseCode"
+      purpose: "Get checkpoint summary for QA"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "checkpoint": {
+            "checkpoint_seeds": [50, 100, ...],
+            "next_checkpoint": 50,
+            "checkpoints": { "50": { "approved": false }, ... },
+            "drift_history": [...],
+            "calibration_feedback": "..."
+          },
+          "summary": {
+            "seeds_complete": 45,
+            "total_legos": 135,
+            "total_phrases": 1350,
+            "use_phrases_count": 800,
+            "avg_score": "7.50",
+            "score_distribution": { "1": 0, "2": 0, ..., "9": 50 }
+          },
+          "sample_for_qa": {
+            "count": 50,
+            "phrases": [...],
+            "instructions": [...]
+          },
+          "actions": {
+            "status": "AWAITING_APPROVAL",
+            "approve_url": "POST /api/checkpoint/approve/courseCode?seed=50",
+            "message": "Run QA review, then approve checkpoint at seed 50"
+          }
+        }
+
+    post_api_checkpoint_approve:
+      path: "POST /api/checkpoint/approve/:courseCode"
+      purpose: "Approve checkpoint to unblock build"
+      query_params:
+        seed: "integer (optional, which checkpoint seed to approve)"
+      body:
+        approved_by: "string (default: 'human')"
+        qa_report: "object (optional, QA summary for audit trail)"
+      description: |
+        Approves a checkpoint and optionally auto-spawns a fresh build agent.
+        If QA report provided, checks against quality thresholds.
+        Human override always approves.
+      returns: |
+        {
+          "ok": true,
+          "status": "APPROVED",
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "checkpoint_number": 1,
+          "message": "Checkpoint 50 approved. Next checkpoint at seed 100",
+          "approved_by": "human",
+          "approved_at": "ISO timestamp",
+          "calibration_feedback": "...",
+          "next_checkpoint": 100,
+          "auto_spawn": true,
+          "agents_running": 0,
+          "next_action": "Fresh agent spawned automatically"
+        }
+      flagged_response: |
+        {
+          "ok": true,
+          "status": "FLAGGED_FOR_HUMAN",
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "reason": "Quality 6.50 < threshold 7.0",
+          "qa_metrics": { "quality": 6.5, "drift": 0.15 },
+          "thresholds": { "min_quality": 7.0, "max_drift": 0.20 },
+          "message": "QA check outside tolerance - flagged for human review",
+          "action": "Human must review and manually approve"
+        }
+
+    get_api_checkpoint_status:
+      path: "GET /api/checkpoint/status/:courseCode"
+      purpose: "Get checkpoint status"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "checkpoint_enabled": true,
+          "checkpoint_seeds": [50, 100, ...],
+          "next_checkpoint": 50,
+          "checkpoints": { "50": { "approved": false }, ... },
+          "summary": {
+            "total_checkpoints": 9,
+            "approved_count": 0,
+            "all_approved": false
+          },
+          "message": "Checkpoint 50 awaiting approval (0/9 complete)"
+        }
+
+    get_api_checkpoint_config:
+      path: "GET /api/checkpoint/config/:courseCode"
+      purpose: "Get checkpoint configuration for course"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "checkpoint_seeds": [50, 100, ...],
+          "config": [
+            {
+              "checkpoint_seed": 50,
+              "review_mode": "human",
+              "min_quality_score": 7.0,
+              "max_drift_rate": 0.20,
+              "source": "_default"
+            },
+            ...
+          ],
+          "usage": {
+            "human": "Build stops, waits for human approval",
+            "auto": "QA agent auto-approves if gates pass",
+            "auto_with_flag": "Auto-approve but flag for later human spot-check"
+          }
+        }
+
+    put_api_checkpoint_config:
+      path: "PUT /api/checkpoint/config/:courseCode"
+      purpose: "Update checkpoint configuration"
+      body:
+        checkpoint_seed: "integer - required (must be valid checkpoint seed)"
+        review_mode: "string - required ('human', 'auto', or 'auto_with_flag')"
+        min_quality_score: "number (optional, default: 7.0)"
+        max_drift_rate: "number (optional, default: 0.20)"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "review_mode": "auto",
+          "message": "Checkpoint 50 now uses 'auto' review mode"
+        }
+
+    get_api_checkpoint_qa_sample:
+      path: "GET /api/checkpoint/qa-sample/:courseCode"
+      purpose: "Get sample phrases for QA scoring"
+      query_params:
+        checkpoint: "integer (optional, specific checkpoint seed)"
+        reveal_scores: "string ('true'/'false', default: 'false')"
+      description: |
+        Returns ~20 USE phrases from the checkpoint range.
+        Agent scores are hidden by default - QA should score first.
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "checkpoint_number": 1,
+          "range": { "start": 1, "end": 50 },
+          "sample_size": 20,
+          "agent_avg": "[HIDDEN]",
+          "drift_threshold": 0.5,
+          "phrases": [
+            {
+              "phrase_id": "uuid",
+              "known": "I speak Chinese",
+              "target": "我说中文",
+              "seed": 15,
+              "lego": 2,
+              "agent_score": "[HIDDEN - score first]"
+            },
+            ...
+          ],
+          "instructions": [...]
+        }
+
+    post_api_checkpoint_qa_result:
+      path: "POST /api/checkpoint/qa-result/:courseCode"
+      purpose: "Submit QA scoring results"
+      description: |
+        Automatically approves if drift is within threshold,
+        otherwise flags for human review.
+      body:
+        checkpoint_seed: "integer (optional if pending QA job exists)"
+        scores: |
+          array of scored phrases - required:
+          [{ "phrase_id": "uuid", "qa_score": 8 }, ...]
+        overall_assessment: "string (optional)"
+        recommendation: "string (optional)"
+      returns: |
+        {
+          "ok": true,
+          "status": "AUTO_APPROVED",
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "qa_avg": "7.80",
+          "agent_avg": "7.50",
+          "drift": "0.30",
+          "drift_threshold": 0.5,
+          "message": "Checkpoint 50 auto-approved. Drift 0.30 <= 0.5. Build agent can continue.",
+          "next_action": "Build agent will automatically continue to next seed"
+        }
+      flagged_response: |
+        {
+          "ok": true,
+          "status": "FLAGGED_FOR_HUMAN",
+          "course_code": "courseCode",
+          "checkpoint_seed": 50,
+          "qa_avg": "6.50",
+          "agent_avg": "7.50",
+          "drift": "1.00",
+          "drift_threshold": 0.5,
+          "reason": "Drift too high (1.00 > 0.5)",
+          "message": "Checkpoint 50 flagged for human review.",
+          "next_action": "Human must approve at POST /api/checkpoint/approve/courseCode"
+        }
+
+    get_api_checkpoint_qa_status:
+      path: "GET /api/checkpoint/qa-status/:courseCode"
+      purpose: "Check if QA is pending"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "qa_pending": false,
+          "job": null
+        }
+
+  ## ==========================================================================
+  ## HEALTH CHECK ENDPOINT
+  ## ==========================================================================
+
+  health_check:
+    path: "GET /health"
+    purpose: "Health check endpoint"
+    returns: |
+      { "ok": true }
+
+  ## ==========================================================================
   ## VALIDATION BYPASS
   ## ==========================================================================
 
@@ -397,7 +1075,7 @@ service CourseBuilderAPI:
 
   startup_banner: |
     ╔══════════════════════════════════════════════════════════════╗
-    ║  Course Builder API - Port 3471                              ║
+    ║  Course Builder API - Port 3471 (v3.0.0)                     ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  QUALITY GATES:                                              ║
     ║  • Phrases per LEGO: min 7, target 10, max 13                ║
@@ -409,14 +1087,58 @@ service CourseBuilderAPI:
     ║  GOLDEN PATH:                                                ║
     ║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║
     ╠══════════════════════════════════════════════════════════════╣
-    ║  Other Endpoints:                                            ║
+    ║  Content Endpoints:                                          ║
     ║  GET  /api/seeds/:code - Canonical seeds from database       ║
-    ║  POST /api/lego   - Insert single LEGO                       ║
-    ║  POST /api/batch  - Insert multiple LEGOs                    ║
+    ║  POST /api/lego - Insert single LEGO                         ║
+    ║  POST /api/batch - Insert multiple LEGOs                     ║
+    ║  POST /api/phrases - Add phrases to existing LEGO            ║
     ║  PATCH /api/seed/:code/:num - Update seed translation        ║
     ║  GET  /api/stats/:code - Quality metrics + vocab size        ║
     ║  GET  /api/vocab/:code - Current vocabulary set              ║
+    ║  GET  /api/resume/:code - Resume context after compaction    ║
     ║  DELETE /api/course/:code - Clear course + vocab cache       ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Translation Workflow:                                       ║
+    ║  GET  /api/course/:code/translate - Seeds needing translation║
+    ║  POST /api/course/:code/translate - Submit batch translations║
+    ║  POST /api/course/:code/analysis - Save translation analysis ║
+    ║  GET  /api/course/:code/analysis - Retrieve analysis         ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Activity & Heartbeat:                                       ║
+    ║  GET  /api/activity - Stall detection status                 ║
+    ║  POST /api/activity/:code/ping - Reset stall timer           ║
+    ║  POST /api/activity/:code/reset-session - Reset session      ║
+    ║  POST /api/heartbeat/:code - Agent heartbeat                 ║
+    ║  GET  /api/heartbeats - All active heartbeats                ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Agent Management:                                           ║
+    ║  POST /api/agents/register - Register new agent              ║
+    ║  POST /api/agents/:pid/submission - Record submission        ║
+    ║  POST /api/agents/:pid/complete - Mark agent complete        ║
+    ║  GET  /api/agents - List all tracked agents                  ║
+    ║  DELETE /api/agents/:pid - Kill agent by PID                 ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Build Management:                                           ║
+    ║  POST /api/build/start/:code - Start build                   ║
+    ║  POST /api/build/stop/:code - Stop build                     ║
+    ║  GET  /api/build/status/:code - Build status                 ║
+    ║  GET  /api/build/active - List all active builds             ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Quality & Balance:                                          ║
+    ║  GET  /api/recency/:code - Pattern/vocab recency analysis    ║
+    ║  GET  /api/balance/:code - LEGO balance scores               ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Checkpoint/QA Workflow:                                     ║
+    ║  GET  /api/checkpoint/summary/:code - Checkpoint summary     ║
+    ║  POST /api/checkpoint/approve/:code - Approve checkpoint     ║
+    ║  GET  /api/checkpoint/status/:code - Checkpoint status       ║
+    ║  GET  /api/checkpoint/config/:code - Get config              ║
+    ║  PUT  /api/checkpoint/config/:code - Update config           ║
+    ║  GET  /api/checkpoint/qa-sample/:code - QA sample phrases    ║
+    ║  POST /api/checkpoint/qa-result/:code - Submit QA results    ║
+    ║  GET  /api/checkpoint/qa-status/:code - QA pending status    ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Health: GET /health                                         ║
     ╚══════════════════════════════════════════════════════════════╝
 
   ## ==========================================================================
