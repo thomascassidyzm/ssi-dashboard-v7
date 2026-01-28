@@ -4,8 +4,9 @@
 
 ## ⚠️ CRITICAL RULES
 
-### **APML v14.0 - Course Builder Architecture**
+### **APML v14.1 - Course Builder Architecture**
 
+**v14.1 Update (January 28, 2026):** Major documentation sync - 13 parallel agents updated APML specs.
 **v14 Major Change (January 2026):** Phases 0-3 consolidated into Course Builder API.
 
 Content creation is now a single API endpoint: `POST /api/seed/complete` (port 3471)
@@ -312,6 +313,23 @@ If you're generating files, verify they're in gitignored directories.
 ## 🧬 APML Specification
 
 **Location**: `ssi-course-production.apml` (root) and `apml/` directory
+
+### **APML Directory Structure (v14.1)**
+```
+apml/
+├── core/
+│   ├── audio-registry-v13.apml   # Database schema (v13.3.0) - build_jobs, course_export_states
+│   └── configuration.apml         # Environment vars, service mesh
+├── services/
+│   ├── production-api.apml        # Main API (port 3470) - v2.0.0, 84 endpoints
+│   ├── course-builder-api.apml    # Course Builder (port 3471) - v3.0.0, 42 endpoints
+│   └── orchestrator.apml          # Legacy orchestrator (optional)
+├── interfaces/
+│   ├── dashboard-components.apml  # NEW: 16 Vue components documented
+│   └── frontend-state.apml        # NEW: 9 composables + Pinia store
+├── ssi-dashboard-master.apml      # Master spec (v14.1.0) - port 3470 is main entry
+└── ssi-production-suite.apml      # Production suite (deprecated sections removed)
+```
 
 APML is our custom format for language learning content. Key concepts:
 
@@ -740,7 +758,8 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 3. **docs/workflows/** - Process documentation
 4. **ssi-course-production.apml** - APML format spec
 5. **tools/README.md** - Tool usage reference
-6. **new_vision/** - Future architecture plans:
+6. **docs/APML_GAP_ANALYSIS_2026-01-28.md** - APML documentation coverage report
+7. **new_vision/** - Future architecture plans:
    - `COURSE_CREATION_MASTER_OVERVIEW.md` - Full system overview
    - `LEARNING_APP_DATA_FLOW.md` - Database-first architecture
    - `LEGO_SESSION_SPECIFICATION.md` - Session structure & parameters
@@ -827,6 +846,7 @@ You're doing well if:
 
 ---
 
-*Last updated: 2026-01-25*
+*Last updated: 2026-01-28*
 *APML: v14.1 | Pipeline: v3.1 (Production API consolidated)*
 *Status: DATABASE-ONLY - All course data in Supabase | Port 3470 is main entry point*
+*APML Sync: 13-agent audit complete - see docs/APML_GAP_ANALYSIS_2026-01-28.md*
