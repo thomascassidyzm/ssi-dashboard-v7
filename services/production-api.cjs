@@ -4704,6 +4704,377 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
 })
 
 // =============================================================================
+// EXPORT WORKFLOW ENDPOINTS (Legacy Manifest Publication)
+// =============================================================================
+
+const s3DeployService = require('./s3-deploy-service.cjs')
+
+// POST /api/production/:courseCode/verify-s3
+// Step 2: Verify stage audio exists and durations match manifest
+app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Load manifest from temp/course_export_states
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first.' })
+    }
+
+    const pendingManifest = await fs.readJson(manifestPath)
+
+    // Collect all UUIDs from manifest
+    const uuids = []
+
+    // Introduction
+    if (pendingManifest.introduction?.id) {
+      uuids.push(pendingManifest.introduction.id)
+    }
+
+    // Encouragements
+    for (const enc of pendingManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of pendingManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+
+    // Samples
+    const samples = pendingManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    logger.info(`Verifying ${uuids.length} audio files for ${courseCode}`)
+
+    // Phase 1: Existence check + Phase 2: Duration verification with auto-fix
+    const results = await s3DeployService.verifyStageAudio(
+      uuids,
+      pendingManifest,
+      (phase, checked, total, ...phaseData) => {
+        if (phase === 'existence') {
+          io.emit('s3Verify:progress', { courseCode, phase, checked, total })
+        } else if (phase === 'duration') {
+          const [matched, mismatched, errors] = phaseData
+          io.emit('s3Verify:durationProgress', {
+            courseCode, phase, checked, total, matched, mismatched, errors
+          })
+        } else if (phase === 'fixing') {
+          const [fixed, errors] = phaseData
+          io.emit('s3Verify:fixProgress', {
+            courseCode, phase, checked, total, fixed, errors
+          })
+        }
+      },
+      { checkDurations: true, durationTolerance: 0 }
+    )
+
+    // Save verification results to state
+    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
+    let state = {}
+    if (fs.existsSync(statePath)) {
+      state = await fs.readJson(statePath)
+    }
+    state.s3Verification = results
+    state.s3Verified = results.missing === 0 && !results.durationCheckFailed
+    await fs.writeJson(statePath, state, { spaces: 2 })
+
+    // Send immediate response
+    res.json(results)
+
+    // Auto-fix ALL mismatched durations asynchronously (runs AFTER response)
+    if (results.durationMismatched > 0) {
+      logger.info(`Auto-fixing ${results.durationMismatched} duration mismatches for ${courseCode}`)
+
+      s3DeployService.autoFixDurations(uuids, pendingManifest, (phase, checked, total, fixed, errors) => {
+        io.emit('s3Verify:fixProgress', {
+          courseCode, phase: 'fixing', checked, total, fixed, errors
+        })
+      }).then(async (fixResults) => {
+        // Save updated manifest
+        await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
+
+        // Update results with fix count
+        results.durationsFixed = fixResults.fixed
+        results.durationFixErrors = fixResults.errors
+
+        // Update state
+        state.s3Verification = results
+        await fs.writeJson(statePath, state, { spaces: 2 })
+
+        logger.info(`Auto-fix complete: ${fixResults.fixed} fixed, ${fixResults.errors} errors`)
+        io.emit('s3Verify:completed', { courseCode, ...results })
+      }).catch(err => {
+        logger.error(`Auto-fix error for ${courseCode}:`, err)
+        io.emit('s3Verify:error', { courseCode, error: err.message })
+      })
+    }
+
+  } catch (error) {
+    logger.error(`Verify S3 error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/deploy-audio/plan
+// Get deployment plan (what files need to be deployed)
+app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load published manifest
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No published manifest found. Publish manifest first.' })
+    }
+
+    const publishedManifest = await fs.readJson(manifestPath)
+
+    // Collect all UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    const plan = await s3DeployService.generateDeployPlan(uuids)
+
+    // Save to state
+    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
+    let state = {}
+    if (fs.existsSync(statePath)) {
+      state = await fs.readJson(statePath)
+    }
+    state.deployPlan = plan
+    await fs.writeJson(statePath, state, { spaces: 2 })
+
+    res.json(plan)
+  } catch (error) {
+    logger.error(`Deploy plan error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/deploy-audio/execute
+// Execute deployment (copy stage → production)
+app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { confirmation } = req.body
+
+    // Load published manifest
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No published manifest found' })
+    }
+
+    const publishedManifest = await fs.readJson(manifestPath)
+
+    // Collect UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    const result = await s3DeployService.deployToProduction(uuids, {
+      confirmOverwrite: confirmation,
+      onProgress: (copied, total) => {
+        io.emit('audioDeploy:progress', { courseCode, copied, total })
+      }
+    })
+
+    // Post-deployment verification
+    const verificationResult = await s3DeployService.verifyProductionDurations(
+      uuids,
+      publishedManifest,
+      (checked, matched, mismatched, errors) => {
+        io.emit('audioDeploy:verifyProgress', {
+          courseCode, checked, total: uuids.length, matched, mismatched, errors
+        })
+      }
+    )
+
+    result.verification = verificationResult
+
+    // Save to state
+    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
+    let state = {}
+    if (fs.existsSync(statePath)) {
+      state = await fs.readJson(statePath)
+    }
+    state.audioDeployed = true
+    state.deployVerification = verificationResult
+    await fs.writeJson(statePath, state, { spaces: 2 })
+
+    res.json(result)
+  } catch (error) {
+    logger.error(`Deploy error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/verify-production-durations
+// Step 4: Verify production audio durations WITHOUT deploying
+app.post('/api/production/:courseCode/verify-production-durations', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load published manifest
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No published manifest found' })
+    }
+
+    const publishedManifest = await fs.readJson(manifestPath)
+
+    // Collect UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    const verificationResult = await s3DeployService.verifyProductionDurations(
+      uuids,
+      publishedManifest,
+      (checked, matched, mismatched, errors) => {
+        io.emit('audioDeploy:verifyProgress', {
+          courseCode, checked, total: uuids.length, matched, mismatched, errors
+        })
+      }
+    )
+
+    // Save to state
+    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
+    let state = {}
+    if (fs.existsSync(statePath)) {
+      state = await fs.readJson(statePath)
+    }
+    state.deployVerification = verificationResult
+    await fs.writeJson(statePath, state, { spaces: 2 })
+
+    res.json(verificationResult)
+  } catch (error) {
+    logger.error(`Verify production error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/deploy-audio/missing-only
+// Deploy ONLY missing files (safe deployment after verification)
+app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load published manifest
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No published manifest found' })
+    }
+
+    const publishedManifest = await fs.readJson(manifestPath)
+
+    // Collect UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    // First verify production to get missing files
+    const verification = await s3DeployService.verifyProductionDurations(
+      uuids,
+      publishedManifest,
+      (checked, matched, mismatched, errors) => {
+        io.emit('audioDeploy:verifyProgress', {
+          courseCode, checked, total: uuids.length, matched, mismatched, errors
+        })
+      }
+    )
+
+    const missingUuids = verification.missingUuids || []
+
+    if (missingUuids.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No missing files to deploy',
+        copied: 0,
+        total: uuids.length,
+        missing: 0
+      })
+    }
+
+    // Deploy ONLY missing files (no overwrites, no confirmation needed)
+    const result = await s3DeployService.deployToProduction(missingUuids, {
+      confirmOverwrite: false, // Safe - no overwrites
+      onProgress: (copied, total) => {
+        io.emit('audioDeploy:progress', { courseCode, copied, total: missingUuids.length })
+      }
+    })
+
+    result.message = `Deployed ${result.copied} missing files`
+
+    // Update state
+    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
+    let state = {}
+    if (fs.existsSync(statePath)) {
+      state = await fs.readJson(statePath)
+    }
+    state.audioDeployed = verification.missing === 0 // Only mark complete if everything is there
+    state.deployVerification = verification
+    await fs.writeJson(statePath, state, { spaces: 2 })
+
+    res.json(result)
+  } catch (error) {
+    logger.error(`Deploy missing error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // CHECKPOINT PROXY ROUTES (to Course Builder API)
 // =============================================================================
 
