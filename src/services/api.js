@@ -477,6 +477,14 @@ export default {
             amino_acids: {
               introductions: stats.introductions
             },
+            // Pass through stats object for CourseStatusTable
+            stats: {
+              seeds: stats.seeds,
+              completedSeeds: stats.completedSeeds,
+              legos: stats.legos,
+              phrases: stats.phrases,
+              audio: stats.audio
+            },
             phases_completed: [
               ...(stats.completedSeeds > 0 ? ['1'] : []),
               ...(stats.legos > 0 ? ['3'] : []),

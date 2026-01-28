@@ -632,6 +632,14 @@ architecture AudioRegistry:
           nullable: true
           description: "Last sign of life from agent"
 
+        last_progress_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+          description: |
+            When last seed was successfully submitted. Used for stuck detection:
+            - last_heartbeat fresh + last_progress_at stale = agent stuck waiting for input
+            - Triggers auto-respawn after 5 minutes without progress
+
         completed_at:
           type: "TIMESTAMPTZ"
           nullable: true

@@ -1600,9 +1600,32 @@ async function checkBuilds() {
         continue;
       }
 
-      // Agent alive? Check heartbeat from DB
-      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS) {
-        // Agent is alive - just update progress if changed
+      // STUCK DETECTION: Check both heartbeat AND last_progress_at
+      // - Heartbeat fresh + progress fresh = agent is working normally
+      // - Heartbeat stale = agent is dead
+      // - Heartbeat fresh + progress stale = agent is STUCK waiting for input (asking questions)
+      const STUCK_THRESHOLD_MS = 5 * 60 * 1000; // 5 minutes without progress = stuck
+      const FIRST_SEED_GRACE_MS = 10 * 60 * 1000; // 10 minutes grace for first seed
+
+      // If last_progress_at is null (no seeds submitted yet), use started_at/last_spawn_at as baseline
+      // with a longer grace period for the first seed (agent needs time to load context, read instructions)
+      let progressAge;
+      if (job.last_progress_at) {
+        progressAge = now - new Date(job.last_progress_at).getTime();
+      } else {
+        // No progress yet - use job start time with extended grace period
+        const baseline = job.last_spawn_at || job.started_at || job.last_heartbeat;
+        const baselineTime = baseline ? new Date(baseline).getTime() : now;
+        progressAge = now - baselineTime;
+        // For first seed, use longer threshold (agent needs to warm up)
+        if (progressAge < FIRST_SEED_GRACE_MS) {
+          progressAge = 0; // Not stuck yet, still in grace period
+        }
+      }
+
+      // Agent alive AND making progress?
+      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS && progressAge < STUCK_THRESHOLD_MS) {
+        // Agent is alive and working - just update progress if changed
         if (progress.completed > (job.current_seed || 0)) {
           console.log(`[BUILD] ${courseCode}: ${progress.completed}/${targetSeeds} (+${progress.completed - (job.current_seed || 0)})`);
           await supabase.from('build_jobs').update({
@@ -1611,43 +1634,68 @@ async function checkBuilds() {
             respawn_count: 0  // Reset respawn count on progress
           }).eq('id', job.id);
         }
-        continue;  // Agent alive, no spawn needed
+        continue;  // Agent alive and working, no spawn needed
       }
 
-      // Heartbeat stale - agent may be dead, attempt respawn
-      console.log(`[BUILD] ${courseCode}: Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s)`);
+      // Determine why we need to respawn
+      let respawnReason = '';
+      if (heartbeatAge >= HEARTBEAT_TIMEOUT_MS) {
+        respawnReason = `Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s) - agent may be dead`;
+      } else if (progressAge >= STUCK_THRESHOLD_MS) {
+        respawnReason = `Progress stale (${(progressAge/1000).toFixed(0)}s) but heartbeat alive - agent stuck waiting for input`;
+      }
+
+      console.log(`[BUILD] ${courseCode}: ${respawnReason}`);
 
       // Check respawn limit
       if (respawnCount >= MAX_RESPAWNS) {
-        console.log(`[BUILD]   ⚠️ MAX RESPAWNS REACHED (${MAX_RESPAWNS}) - marking as stalled`);
+        console.log(`[BUILD]   ⚠️ MAX RESPAWNS (${MAX_RESPAWNS}) reached - marking stalled`);
         await supabase.from('build_jobs').update({
           status: 'stalled',
-          last_heartbeat: new Date().toISOString()
+          current_seed: progress.completed
         }).eq('id', job.id);
         continue;
       }
 
-      // Respawn agent
+      // SPAWN LOCK: Check last_spawn_at to prevent double-spawn
+      // Don't spawn if we spawned within the last 2 minutes
+      const lastSpawn = job.last_spawn_at ? new Date(job.last_spawn_at).getTime() : 0;
+      const spawnAge = now - lastSpawn;
+      const SPAWN_COOLDOWN_MS = 2 * 60 * 1000; // 2 minutes
+
+      if (spawnAge < SPAWN_COOLDOWN_MS) {
+        console.log(`[BUILD]   Spawn cooldown active (${(spawnAge/1000).toFixed(0)}s ago) - waiting`);
+        continue;
+      }
+
+      // Claim the spawn by updating last_spawn_at FIRST (atomic lock)
       const newAgentCount = agentCount + 1;
       const newRespawnCount = respawnCount + 1;
+
+      const { error: lockError } = await supabase.from('build_jobs').update({
+        last_spawn_at: new Date().toISOString(),
+        agent_count: newAgentCount,
+        respawn_count: newRespawnCount
+      }).eq('id', job.id).eq('agent_count', agentCount); // Only update if agent_count hasn't changed
+
+      if (lockError) {
+        console.log(`[BUILD]   Could not acquire spawn lock - another spawn in progress`);
+        continue;
+      }
+
       console.log(`[BUILD]   🔄 Auto-respawning (attempt ${newRespawnCount}/${MAX_RESPAWNS})...`);
 
       try {
-        // Update DB first to claim the spawn
-        await supabase.from('build_jobs').update({
-          agent_count: newAgentCount,
-          respawn_count: newRespawnCount,
-          batch_start_seed: progress.completed,
-          last_heartbeat: new Date().toISOString()
-        }).eq('id', job.id);
-
-        // Spawn the agent (will open terminal window)
         const terminal = job.terminal || 'iTerm2';
         await spawnBuildAgent(courseCode, newAgentCount, terminal);
         console.log(`[BUILD]   ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
+
+        // Update heartbeat after successful spawn
+        await supabase.from('build_jobs').update({
+          last_heartbeat: new Date().toISOString()
+        }).eq('id', job.id);
       } catch (spawnErr) {
         console.error(`[BUILD]   ✗ Spawn failed: ${spawnErr.message}`);
-        // Mark as stalled if spawn fails
         await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
       }
 
@@ -1683,125 +1731,110 @@ function stopBuildManager() {
  * @param {string} terminal - 'iTerm2' or 'Terminal'
  */
 async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
-  if (activeBuilds.has(courseCode)) {
-    return { ok: false, error: 'Build already active for this course (in memory)' };
-  }
-
-  // Check for existing jobs in DB (running or stalled)
-  try {
-    const { data: existingJob, error: findError } = await supabase
-      .from('build_jobs')
-      .select('id, status, respawn_count, agent_count')
-      .eq('course_code', courseCode)
-      .in('status', ['running', 'stalled', 'pending'])
-      .single();
-
-    if (!findError && existingJob) {
-      if (existingJob.status === 'running') {
-        return { ok: false, error: 'Build already running in database - wait or stop it first' };
-      }
-      // Stalled job exists - mark it as stopped before creating new one
-      console.log(`[BUILD] Found stalled job ${existingJob.id} for ${courseCode} - marking as stopped`);
-      await supabase.from('build_jobs').update({
-        status: 'stopped',
-        stopped_at: new Date().toISOString()
-      }).eq('id', existingJob.id);
-    }
-  } catch (dbErr) {
-    // Ignore - no existing job or DB error
-  }
-
   const progress = await getBuildProgress(courseCode);
-
-  // Use user-specified target, not total seeds in database
   const effectiveTarget = Math.min(targetSeeds, progress.total);
+
   if (progress.completed >= effectiveTarget) {
     return { ok: false, error: `Target reached (${progress.completed}/${effectiveTarget} seeds)` };
   }
 
-  activeBuilds.set(courseCode, {
-    agent: null,
-    agentCount: 0,
-    batchStartSeed: progress.completed,
-    batchStartTime: Date.now(),
-    lastSeenSeed: progress.completed,
-    lastProgressTime: Date.now(),
-    status: 'starting',
-    terminal: terminal,  // Store terminal preference
-    targetSeeds: effectiveTarget,  // Store target for completion check
-    respawnCount: 0,  // Track auto-respawns to prevent infinite loops
-    buildJobId: null,  // Will be set after DB insert
-    lastDbUpdate: Date.now()  // Track last DB heartbeat update
-  });
+  // DB-ONLY: Check for existing job for this course
+  let jobId = null;
+  let agentCount = 0;
 
-  // Insert build_jobs record (don't let DB errors block the build)
   try {
-    const { data: jobData, error: jobError } = await supabase
+    const { data: existingJob, error: findError } = await supabase
       .from('build_jobs')
-      .insert({
-        course_code: courseCode,
-        pass: 'pass_2',  // decomposition pass
-        status: 'running',
-        current_seed: progress.completed,
-        seeds_completed: progress.completed,
-        total_seeds: effectiveTarget,
-        started_at: new Date().toISOString(),
-        last_heartbeat: new Date().toISOString(),
-        requested_by: 'dashboard',
-        terminal: terminal,
-        agent_count: 0,
-        respawn_count: 0
-      })
-      .select('id')
+      .select('id, status, agent_count, respawn_count')
+      .eq('course_code', courseCode)
+      .in('status', ['running', 'stalled', 'pending'])
+      .order('started_at', { ascending: false })
+      .limit(1)
       .single();
 
-    if (jobError) {
-      console.error('[BUILD] Failed to insert build_jobs record:', jobError.message);
-    } else if (jobData) {
-      // Store job ID in activeBuilds for later updates
-      const buildEntry = activeBuilds.get(courseCode);
-      if (buildEntry) {
-        buildEntry.buildJobId = jobData.id;
+    if (!findError && existingJob) {
+      if (existingJob.status === 'running') {
+        return { ok: false, error: 'Build already running - wait or stop it first' };
       }
-      console.log(`[BUILD] Created build_jobs record: ${jobData.id} for ${courseCode}`);
+
+      // REUSE existing stalled/pending job - just update it to running
+      console.log(`[BUILD] Resuming existing job ${existingJob.id} for ${courseCode}`);
+      jobId = existingJob.id;
+      agentCount = existingJob.agent_count || 0;
+
+      await supabase.from('build_jobs').update({
+        status: 'running',
+        terminal: terminal,
+        current_seed: progress.completed,
+        last_heartbeat: new Date().toISOString()
+      }).eq('id', existingJob.id);
     }
   } catch (dbErr) {
-    console.error('[BUILD] Unexpected error inserting build_jobs:', dbErr.message);
+    // No existing job - will create new one
+  }
+
+  // No existing job - create new one
+  if (!jobId) {
+    try {
+      const { data: jobData, error: jobError } = await supabase
+        .from('build_jobs')
+        .insert({
+          course_code: courseCode,
+          pass: 'pass_2',
+          status: 'running',
+          current_seed: progress.completed,
+          seeds_completed: progress.completed,
+          total_seeds: effectiveTarget,
+          started_at: new Date().toISOString(),
+          last_heartbeat: new Date().toISOString(),
+          requested_by: 'dashboard',
+          terminal: terminal,
+          agent_count: 0,
+          respawn_count: 0
+        })
+        .select('id')
+        .single();
+
+      if (jobError) {
+        console.error('[BUILD] Failed to insert build_jobs record:', jobError.message);
+        return { ok: false, error: 'Failed to create build job: ' + jobError.message };
+      }
+      jobId = jobData.id;
+      console.log(`[BUILD] Created new build_jobs record: ${jobId} for ${courseCode}`);
+    } catch (dbErr) {
+      console.error('[BUILD] Unexpected error inserting build_jobs:', dbErr.message);
+      return { ok: false, error: 'Database error: ' + dbErr.message };
+    }
   }
 
   // Ensure build manager is running
   startBuildManager();
 
-  // Spawn initial agent immediately
+  // Spawn agent immediately
+  const newAgentCount = agentCount + 1;
   try {
-    console.log(`[BUILD] Spawning initial agent for ${courseCode}...`);
-    await spawnBuildAgent(courseCode, 1, terminal);
-    console.log(`[BUILD] ✓ Agent #1 spawned for ${courseCode}`);
+    console.log(`[BUILD] Spawning agent #${newAgentCount} for ${courseCode}...`);
+    await spawnBuildAgent(courseCode, newAgentCount, terminal);
+    console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
 
     // Update DB with agent count
-    const buildEntry = activeBuilds.get(courseCode);
-    if (buildEntry && buildEntry.buildJobId) {
-      await supabase.from('build_jobs').update({
-        agent_count: 1,
-        terminal: terminal
-      }).eq('id', buildEntry.buildJobId);
-    }
+    await supabase.from('build_jobs').update({
+      agent_count: newAgentCount,
+      last_heartbeat: new Date().toISOString()
+    }).eq('id', jobId);
   } catch (spawnErr) {
-    console.error(`[BUILD] ✗ Initial spawn failed: ${spawnErr.message}`);
-    // Clean up - mark job as failed
-    const buildEntry = activeBuilds.get(courseCode);
-    if (buildEntry && buildEntry.buildJobId) {
-      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', buildEntry.buildJobId);
-    }
-    activeBuilds.delete(courseCode);
+    console.error(`[BUILD] ✗ Spawn failed: ${spawnErr.message}`);
+    // Mark job as stalled
+    await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', jobId);
     return { ok: false, error: `Failed to spawn agent: ${spawnErr.message}` };
   }
 
   return {
     ok: true,
     course_code: courseCode,
+    job_id: jobId,
     progress: progress,
-    message: `Build started - agent spawned, will respawn in ${BATCH_SIZE}-seed batches`
+    message: `Build started - agent #${newAgentCount} spawned`
   };
 }
 
@@ -4196,11 +4229,17 @@ app.post('/api/seed/complete', async (req, res) => {
     const checkpointAutoApproved = res.locals.checkpointAutoApproved;
 
     // Update build_jobs with progress (fire-and-forget, don't block response)
+    // STUCK DETECTION: Track last_progress_at separately from heartbeat
+    // - last_heartbeat = agent is alive (updated by any activity)
+    // - last_progress_at = agent is making progress (updated only when seed submitted)
+    // If heartbeat fresh but progress stale = agent stuck waiting for input → respawn
+    const progressTimestamp = new Date().toISOString();
     supabase.from('build_jobs')
       .update({
         current_seed: seed_number,
         seeds_completed: seed_number,
-        last_heartbeat: new Date().toISOString()
+        last_heartbeat: progressTimestamp,
+        last_progress_at: progressTimestamp  // Track actual progress for stuck detection
       })
       .eq('course_code', course_code)
       .eq('status', 'running')

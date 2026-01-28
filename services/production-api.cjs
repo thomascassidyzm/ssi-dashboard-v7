@@ -773,6 +773,7 @@ app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
 
   if (jobType === 'build') {
     // Mark the stalled job as 'cleared' in the database
+    const supabase = supabaseClient.getClient()
     try {
       const { data: job, error: findError } = await supabase
         .from('build_jobs')
@@ -790,8 +791,8 @@ app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
       const { error: updateError } = await supabase
         .from('build_jobs')
         .update({
-          status: 'cleared',
-          cleared_at: new Date().toISOString()
+          status: 'stopped',
+          stop_requested: true
         })
         .eq('id', job.id)
 
