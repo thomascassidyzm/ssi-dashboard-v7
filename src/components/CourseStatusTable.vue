@@ -135,54 +135,66 @@
               <div
                 v-for="course in group.courses"
                 :key="course.code"
-                class="course-card"
+                class="course-row"
                 :class="{ attention: needsAttention(course) }"
                 @click="handleRowClick(course.code)"
               >
-                <div class="card-main">
-                  <div class="course-identity">
-                    <span class="course-name">{{ course.name }}</span>
-                    <span class="course-code">{{ course.code }}</span>
-                  </div>
+                <!-- Left: Course identity -->
+                <div class="row-identity">
+                  <span class="course-name">{{ course.name }}</span>
+                  <span class="course-code">{{ course.code }}</span>
+                </div>
 
-                  <div class="card-seeds">
-                    <span class="seed-count">{{ course.stats?.completedSeeds || 0 }}</span>
-                    <span class="seed-target">/{{ course.targetSeeds || 260 }}</span>
-                    <div class="seed-bar">
-                      <div class="seed-fill" :style="{ width: getSeedProgress(course) + '%' }"></div>
-                    </div>
+                <!-- Center: Progress + Status -->
+                <div class="row-progress">
+                  <div class="progress-metric">
+                    <span class="metric-value">{{ getCompletedSeeds(course) }}</span>
+                    <span class="metric-separator">/</span>
+                    <span class="metric-target">{{ course.targetSeeds || 260 }}</span>
+                    <span class="metric-label">seeds</span>
                   </div>
-
-                  <div class="card-status">
-                    <span class="status-badge" :class="getStatusClass(course)">{{ getStatusLabel(course) }}</span>
-                  </div>
-
-                  <div class="card-platforms">
-                    <div class="platform-column">
-                      <span class="platform-label">Beta</span>
-                      <PlatformStatusBadge
-                        :status="course.newAppStatus || 'not_available'"
-                        :beta-days="course.newAppBetaDays"
-                        :editable="true"
-                        platform="new_app"
-                        @update="handleStatusUpdate(course.code, $event)"
-                      />
-                    </div>
-                    <div class="platform-column">
-                      <span class="platform-label">Live</span>
-                      <PlatformStatusBadge
-                        :status="course.legacyAppStatus || 'not_available'"
-                        :beta-days="course.legacyAppBetaDays"
-                        :editable="true"
-                        platform="legacy_app"
-                        :new-app-status="course.newAppStatus"
-                        @update="handleStatusUpdate(course.code, $event)"
-                      />
-                    </div>
+                  <div class="progress-track">
+                    <div
+                      class="progress-fill"
+                      :class="getProgressColor(course)"
+                      :style="{ width: getSeedProgress(course) + '%' }"
+                    ></div>
                   </div>
                 </div>
 
-                <button class="card-actions" @click.stop="openMenu(course.code, $event)" title="More options">
+                <div class="row-status">
+                  <span class="status-pill" :class="getStatusClass(course)">
+                    {{ getStatusLabel(course) }}
+                  </span>
+                </div>
+
+                <!-- Right: Platform controls -->
+                <div class="row-platforms">
+                  <div class="platform-control">
+                    <span class="platform-header">Beta</span>
+                    <PlatformStatusBadge
+                      :status="course.newAppStatus || 'not_available'"
+                      :beta-days="course.newAppBetaDays"
+                      :editable="true"
+                      platform="new_app"
+                      @update="handleStatusUpdate(course.code, $event)"
+                    />
+                  </div>
+                  <div class="platform-control">
+                    <span class="platform-header">Live</span>
+                    <PlatformStatusBadge
+                      :status="course.legacyAppStatus || 'not_available'"
+                      :beta-days="course.legacyAppBetaDays"
+                      :editable="true"
+                      platform="legacy_app"
+                      :new-app-status="course.newAppStatus"
+                      @update="handleStatusUpdate(course.code, $event)"
+                    />
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <button class="row-menu" @click.stop="openMenu(course.code, $event)" title="More options">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
                     <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
@@ -201,54 +213,66 @@
           <div
             v-for="course in displayedCourses"
             :key="course.code"
-            class="course-card"
+            class="course-row"
             :class="{ attention: needsAttention(course) }"
             @click="handleRowClick(course.code)"
           >
-            <div class="card-main">
-              <div class="course-identity">
-                <span class="course-name">{{ course.name }}</span>
-                <span class="course-code">{{ course.code }}</span>
-              </div>
+            <!-- Left: Course identity -->
+            <div class="row-identity">
+              <span class="course-name">{{ course.name }}</span>
+              <span class="course-code">{{ course.code }}</span>
+            </div>
 
-              <div class="card-seeds">
-                <span class="seed-count">{{ course.stats?.completedSeeds || 0 }}</span>
-                <span class="seed-target">/{{ course.targetSeeds || 260 }}</span>
-                <div class="seed-bar">
-                  <div class="seed-fill" :style="{ width: getSeedProgress(course) + '%' }"></div>
-                </div>
+            <!-- Center: Progress + Status -->
+            <div class="row-progress">
+              <div class="progress-metric">
+                <span class="metric-value">{{ getCompletedSeeds(course) }}</span>
+                <span class="metric-separator">/</span>
+                <span class="metric-target">{{ course.targetSeeds || 260 }}</span>
+                <span class="metric-label">seeds</span>
               </div>
-
-              <div class="card-status">
-                <span class="status-badge" :class="getStatusClass(course)">{{ getStatusLabel(course) }}</span>
-              </div>
-
-              <div class="card-platforms">
-                <div class="platform-column">
-                  <span class="platform-label">Beta</span>
-                  <PlatformStatusBadge
-                    :status="course.newAppStatus || 'not_available'"
-                    :beta-days="course.newAppBetaDays"
-                    :editable="true"
-                    platform="new_app"
-                    @update="handleStatusUpdate(course.code, $event)"
-                  />
-                </div>
-                <div class="platform-column">
-                  <span class="platform-label">Live</span>
-                  <PlatformStatusBadge
-                    :status="course.legacyAppStatus || 'not_available'"
-                    :beta-days="course.legacyAppBetaDays"
-                    :editable="true"
-                    platform="legacy_app"
-                    :new-app-status="course.newAppStatus"
-                    @update="handleStatusUpdate(course.code, $event)"
-                  />
-                </div>
+              <div class="progress-track">
+                <div
+                  class="progress-fill"
+                  :class="getProgressColor(course)"
+                  :style="{ width: getSeedProgress(course) + '%' }"
+                ></div>
               </div>
             </div>
 
-            <button class="card-actions" @click.stop="openMenu(course.code, $event)" title="More options">
+            <div class="row-status">
+              <span class="status-pill" :class="getStatusClass(course)">
+                {{ getStatusLabel(course) }}
+              </span>
+            </div>
+
+            <!-- Right: Platform controls -->
+            <div class="row-platforms">
+              <div class="platform-control">
+                <span class="platform-header">Beta</span>
+                <PlatformStatusBadge
+                  :status="course.newAppStatus || 'not_available'"
+                  :beta-days="course.newAppBetaDays"
+                  :editable="true"
+                  platform="new_app"
+                  @update="handleStatusUpdate(course.code, $event)"
+                />
+              </div>
+              <div class="platform-control">
+                <span class="platform-header">Live</span>
+                <PlatformStatusBadge
+                  :status="course.legacyAppStatus || 'not_available'"
+                  :beta-days="course.legacyAppBetaDays"
+                  :editable="true"
+                  platform="legacy_app"
+                  :new-app-status="course.newAppStatus"
+                  @update="handleStatusUpdate(course.code, $event)"
+                />
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <button class="row-menu" @click.stop="openMenu(course.code, $event)" title="More options">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
                 <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
@@ -331,7 +355,6 @@ const sortColumn = ref('priority') // Smart default: priority sort
 function getBuildStatus(course) {
   const stats = course.stats || {}
   const targetSeeds = course.targetSeeds || 260
-  const completedSeeds = stats.completedSeeds || 0
   const legos = stats.legos || 0
   const phrases = stats.phrases || 0
   const audio = stats.audio || 0
@@ -341,6 +364,9 @@ function getBuildStatus(course) {
 
   // Ignore system audio (shared audio files that exist on all courses)
   const meaningfulAudio = audio > 100
+
+  // Calculate completed seeds (seeds with both LEGOs and phrases)
+  const completedSeeds = getCompletedSeeds(course)
 
   // Ready: Phase 9 validated - export_ready = true
   if (exportReady) {
@@ -368,20 +394,44 @@ function getBuildStatus(course) {
   return 'empty'
 }
 
-// Get decomposition progress as percentage
-function getDecomposeProgress(course) {
+// Get completed seeds count (seeds with LEGOs and phrases)
+// This estimates based on available stats
+function getCompletedSeeds(course) {
   const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 260
-  const completedSeeds = stats.completedSeeds || 0
-  return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
+  const legos = stats.legos || 0
+  const phrases = stats.phrases || 0
+
+  // If we have phrases, estimate completed seeds
+  // Average ~6 phrases per seed, ~2 LEGOs per seed
+  if (phrases > 0 && legos > 0) {
+    // Use the lower estimate to be conservative
+    const fromPhrases = Math.floor(phrases / 6)
+    const fromLegos = Math.floor(legos / 2)
+    return Math.min(fromPhrases, fromLegos)
+  }
+
+  // If only LEGOs, estimate from that
+  if (legos > 0) {
+    return Math.floor(legos / 2)
+  }
+
+  return 0
 }
 
 // Get seed progress percentage
 function getSeedProgress(course) {
-  const stats = course.stats || {}
   const targetSeeds = course.targetSeeds || 260
-  const completedSeeds = stats.completedSeeds || 0
+  const completedSeeds = getCompletedSeeds(course)
   return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
+}
+
+// Get progress bar color based on completion
+function getProgressColor(course) {
+  const pct = getSeedProgress(course)
+  if (pct >= 100) return 'fill-complete'
+  if (pct >= 75) return 'fill-high'
+  if (pct >= 25) return 'fill-mid'
+  return 'fill-low'
 }
 
 // Get status label for display
@@ -392,7 +442,7 @@ function getStatusLabel(course) {
     case 'needs_export': return 'Needs Export'
     case 'needs_audio': return 'Needs Audio'
     case 'decomposing':
-      const pct = getDecomposeProgress(course)
+      const pct = getSeedProgress(course)
       return `Building ${pct}%`
     default: return 'Not Started'
   }
@@ -754,32 +804,45 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* CSS Custom Properties */
+/* ============================================
+   COURSE COMMAND CENTER
+   Industrial Control Room Aesthetic
+   ============================================ */
+
 .course-command-center {
-  --cc-bg-deep: #0a0f1a;
-  --cc-bg-surface: #0f172a;
-  --cc-bg-elevated: #1e293b;
-  --cc-bg-hover: #334155;
+  --cc-void: #080c14;
+  --cc-deep: #0c1220;
+  --cc-surface: #111827;
+  --cc-elevated: #1f2937;
+  --cc-hover: #374151;
   --cc-border: #1e3a5f;
-  --cc-border-subtle: rgba(59, 130, 246, 0.15);
-  --cc-text-primary: #f1f5f9;
+  --cc-border-subtle: rgba(59, 130, 246, 0.12);
+
+  --cc-text: #f1f5f9;
   --cc-text-secondary: #94a3b8;
   --cc-text-muted: #64748b;
+
   --cc-accent: #3b82f6;
-  --cc-accent-glow: rgba(59, 130, 246, 0.3);
+  --cc-accent-glow: rgba(59, 130, 246, 0.25);
   --cc-success: #10b981;
   --cc-warning: #f59e0b;
   --cc-danger: #ef4444;
   --cc-purple: #8b5cf6;
+  --cc-orange: #f97316;
+  --cc-cyan: #06b6d4;
 
   width: 100%;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Pipeline Overview Section */
+/* ============================================
+   Pipeline Overview
+   ============================================ */
+
 .pipeline-overview {
   padding: 1.25rem 1rem 1rem;
-  background: linear-gradient(180deg, var(--cc-bg-deep) 0%, var(--cc-bg-surface) 100%);
+  background: linear-gradient(180deg, var(--cc-void) 0%, var(--cc-deep) 100%);
   border-bottom: 1px solid var(--cc-border-subtle);
 }
 
@@ -817,16 +880,16 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem 0.625rem;
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
   border: 1px solid transparent;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   font-family: inherit;
 }
 
 .status-chip:hover:not(.empty) {
-  background: var(--cc-bg-hover);
+  background: var(--cc-hover);
   border-color: var(--cc-border);
 }
 
@@ -853,7 +916,7 @@ onUnmounted(() => {
 }
 
 .status-chip.active .chip-label {
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
 }
 
 .chip-count {
@@ -861,7 +924,7 @@ onUnmounted(() => {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--cc-text-muted);
-  background: var(--cc-bg-surface);
+  background: var(--cc-surface);
   padding: 0.125rem 0.375rem;
   border-radius: 4px;
   min-width: 1.25rem;
@@ -875,15 +938,12 @@ onUnmounted(() => {
 
 /* Status indicator colors */
 .indicator-needs-audio { background: var(--cc-purple); }
-.indicator-needs-export { background: #f97316; } /* Orange for needs export */
+.indicator-needs-export { background: var(--cc-orange); }
 .indicator-decomposing { background: var(--cc-warning); }
 .indicator-empty { background: var(--cc-text-muted); }
 .indicator-ready { background: var(--cc-accent); }
-.indicator-beta { background: #06b6d4; }
+.indicator-beta { background: var(--cc-cyan); }
 .indicator-live { background: var(--cc-success); }
-.indicator-attention { background: var(--cc-purple); }
-.indicator-progress { background: var(--cc-accent); }
-.indicator-deployed { background: var(--cc-success); }
 
 /* Active Filter Bar */
 .active-filter-bar {
@@ -900,7 +960,7 @@ onUnmounted(() => {
 .filter-label {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
 }
 
 .clear-filter {
@@ -924,13 +984,16 @@ onUnmounted(() => {
   color: white;
 }
 
-/* Controls Bar */
+/* ============================================
+   Controls Bar
+   ============================================ */
+
 .controls-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  background: var(--cc-bg-surface);
+  background: var(--cc-surface);
   border-bottom: 1px solid var(--cc-border-subtle);
 }
 
@@ -941,10 +1004,10 @@ onUnmounted(() => {
   flex: 1;
   max-width: 320px;
   padding: 0.5rem 0.75rem;
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
   border: 1px solid transparent;
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: all 0.15s;
 }
 
 .search-field:focus-within {
@@ -962,7 +1025,7 @@ onUnmounted(() => {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
   font-size: 0.8125rem;
   font-family: inherit;
 }
@@ -988,7 +1051,7 @@ onUnmounted(() => {
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: var(--cc-bg-hover);
+  background: var(--cc-hover);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -1029,7 +1092,7 @@ onUnmounted(() => {
 
 .sort-btn:hover {
   color: var(--cc-text-secondary);
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
 }
 
 .sort-btn.active {
@@ -1038,7 +1101,10 @@ onUnmounted(() => {
   border-color: var(--cc-accent);
 }
 
-/* State Containers */
+/* ============================================
+   State Containers
+   ============================================ */
+
 .state-container {
   display: flex;
   flex-direction: column;
@@ -1062,23 +1128,12 @@ onUnmounted(() => {
   animation: loading-pulse 1s ease-in-out infinite;
 }
 
-.loading-bar:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.loading-bar:nth-child(3) {
-  animation-delay: 0.3s;
-}
+.loading-bar:nth-child(2) { animation-delay: 0.15s; }
+.loading-bar:nth-child(3) { animation-delay: 0.3s; }
 
 @keyframes loading-pulse {
-  0%, 100% {
-    transform: scaleY(0.5);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+  0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+  50% { transform: scaleY(1); opacity: 1; }
 }
 
 .empty-icon {
@@ -1092,7 +1147,7 @@ onUnmounted(() => {
 
 .reset-btn {
   padding: 0.5rem 1rem;
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
   border: 1px solid var(--cc-border);
   border-radius: 6px;
   cursor: pointer;
@@ -1104,11 +1159,14 @@ onUnmounted(() => {
 }
 
 .reset-btn:hover {
-  background: var(--cc-bg-hover);
-  color: var(--cc-text-primary);
+  background: var(--cc-hover);
+  color: var(--cc-text);
 }
 
-/* Course List */
+/* ============================================
+   Course List
+   ============================================ */
+
 .course-list {
   padding: 0.5rem;
 }
@@ -1149,24 +1207,16 @@ onUnmounted(() => {
   color: var(--cc-text-muted);
 }
 
-.group-header[data-priority="high"] .group-label {
-  color: var(--cc-purple);
-}
-
-.group-header[data-priority="medium"] .group-label {
-  color: var(--cc-warning);
-}
-
-.group-header[data-priority="ready"] .group-label {
-  color: var(--cc-accent);
-}
+.group-header[data-priority="high"] .group-label { color: var(--cc-purple); }
+.group-header[data-priority="medium"] .group-label { color: var(--cc-warning); }
+.group-header[data-priority="ready"] .group-label { color: var(--cc-accent); }
 
 .group-count {
   font-size: 0.625rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--cc-text-muted);
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
   padding: 0.125rem 0.375rem;
   border-radius: 4px;
 }
@@ -1184,108 +1234,127 @@ onUnmounted(() => {
   gap: 0.375rem;
 }
 
-/* Course Card */
-.course-card {
+/* ============================================
+   Course Row - Flexbox Layout (More Predictable)
+   ============================================ */
+
+.course-row {
   display: flex;
   align-items: center;
-  padding: 0.625rem 0.75rem;
-  background: var(--cc-bg-elevated);
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--cc-elevated);
   border: 1px solid transparent;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
 }
 
-.course-card:hover {
-  background: var(--cc-bg-hover);
+.course-row:hover {
+  background: var(--cc-hover);
   border-color: var(--cc-border);
-  transform: translateX(2px);
 }
 
-.course-card.attention {
+.course-row.attention {
   border-left: 3px solid var(--cc-purple);
 }
 
-.card-main {
-  display: grid;
-  grid-template-columns: minmax(200px, 1.5fr) 100px 120px minmax(180px, auto);
-  align-items: center;
-  flex: 1;
-  gap: 1.5rem;
-  min-width: 0;
-}
-
-.course-identity {
+/* Row Identity - Course Name & Code */
+.row-identity {
+  flex: 1 1 280px;
+  min-width: 180px;
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
-  min-width: 0;
 }
 
 .course-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .course-code {
-  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
   font-size: 0.6875rem;
   color: var(--cc-text-muted);
   letter-spacing: 0.02em;
 }
 
-/* Seed count column */
-.card-seeds {
+/* Row Progress - Seed Count + Bar */
+.row-progress {
+  flex: 0 0 130px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.25rem;
-  flex-wrap: wrap;
 }
 
-.seed-count {
-  font-family: 'JetBrains Mono', 'SF Mono', monospace;
-  font-size: 0.9375rem;
+.progress-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+}
+
+.metric-value {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
   font-variant-numeric: tabular-nums;
 }
 
-.seed-target {
-  font-family: 'JetBrains Mono', 'SF Mono', monospace;
-  font-size: 0.75rem;
+.metric-separator {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: 0.875rem;
+  color: var(--cc-text-muted);
+}
+
+.metric-target {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: 0.8125rem;
   color: var(--cc-text-muted);
   font-variant-numeric: tabular-nums;
 }
 
-.seed-bar {
-  width: 100%;
-  height: 3px;
-  background: var(--cc-bg-surface);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 0.25rem;
+.metric-label {
+  font-size: 0.625rem;
+  color: var(--cc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 0.375rem;
 }
 
-.seed-fill {
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--cc-surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
   height: 100%;
-  background: var(--cc-accent);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
 
-/* Status badge column */
-.card-status {
-  min-width: 100px;
+.progress-fill.fill-complete { background: var(--cc-success); }
+.progress-fill.fill-high { background: var(--cc-accent); }
+.progress-fill.fill-mid { background: var(--cc-warning); }
+.progress-fill.fill-low { background: var(--cc-orange); }
+
+/* Row Status - Pipeline Status Badge */
+.row-status {
+  flex: 0 0 110px;
 }
 
-.status-badge {
+.status-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.625rem;
+  padding: 0.3125rem 0.625rem;
   border-radius: 4px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -1294,46 +1363,47 @@ onUnmounted(() => {
   white-space: nowrap;
 }
 
-.status-badge.status-ready {
+.status-pill.status-ready {
   background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
+  color: var(--cc-success);
 }
 
-.status-badge.status-needs_export {
+.status-pill.status-needs_export {
   background: rgba(249, 115, 22, 0.15);
-  color: #f97316;
+  color: var(--cc-orange);
 }
 
-.status-badge.status-needs_audio {
+.status-pill.status-needs_audio {
   background: rgba(139, 92, 246, 0.15);
-  color: #8b5cf6;
+  color: var(--cc-purple);
 }
 
-.status-badge.status-decomposing {
+.status-pill.status-decomposing {
   background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
+  color: var(--cc-warning);
 }
 
-.status-badge.status-empty {
+.status-pill.status-empty {
   background: rgba(100, 116, 139, 0.15);
-  color: #64748b;
+  color: var(--cc-text-muted);
 }
 
-/* Platform columns */
-.card-platforms {
+/* Row Platforms - Beta/Live Controls */
+.row-platforms {
+  flex: 0 0 auto;
   display: flex;
   gap: 1rem;
 }
 
-.platform-column {
+.platform-control {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.125rem;
+  gap: 0.25rem;
   min-width: 80px;
 }
 
-.platform-label {
+.platform-header {
   font-size: 0.5625rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1341,7 +1411,9 @@ onUnmounted(() => {
   color: var(--cc-text-muted);
 }
 
-.card-actions {
+/* Row Menu Button */
+.row-menu {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1353,20 +1425,21 @@ onUnmounted(() => {
   cursor: pointer;
   color: var(--cc-text-muted);
   transition: all 0.15s;
-  flex-shrink: 0;
-  margin-left: 0.5rem;
 }
 
-.card-actions:hover {
-  background: var(--cc-bg-surface);
-  color: var(--cc-text-primary);
+.row-menu:hover {
+  background: var(--cc-surface);
+  color: var(--cc-text);
 }
 
-/* Context Menu */
+/* ============================================
+   Context Menu
+   ============================================ */
+
 .context-menu {
   position: fixed;
   min-width: 160px;
-  background: var(--cc-bg-elevated);
+  background: var(--cc-elevated);
   border: 1px solid var(--cc-border);
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -1384,7 +1457,7 @@ onUnmounted(() => {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--cc-text-primary);
+  color: var(--cc-text);
   font-size: 0.8125rem;
   font-family: inherit;
   text-align: left;
@@ -1392,7 +1465,7 @@ onUnmounted(() => {
 }
 
 .menu-item:hover {
-  background: var(--cc-bg-hover);
+  background: var(--cc-hover);
 }
 
 .menu-item.danger {
@@ -1409,7 +1482,10 @@ onUnmounted(() => {
   margin: 0.25rem 0;
 }
 
-/* Transitions */
+/* ============================================
+   Transitions
+   ============================================ */
+
 .filter-bar-enter-active,
 .filter-bar-leave-active {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1464,34 +1540,20 @@ onUnmounted(() => {
   transform: scale(0.95) translateY(-4px);
 }
 
-/* Responsive */
-@media (max-width: 1100px) {
-  .card-main {
-    grid-template-columns: minmax(160px, 1fr) 90px 100px minmax(150px, auto);
-    gap: 1rem;
-  }
-
-  .platform-column {
-    min-width: 70px;
-  }
-}
+/* ============================================
+   Responsive
+   ============================================ */
 
 @media (max-width: 900px) {
-  .card-main {
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
-  }
-
-  .card-seeds,
-  .card-status {
+  .row-status {
     display: none;
   }
 
-  .card-platforms {
-    gap: 0.5rem;
+  .row-progress {
+    flex: 0 0 100px;
   }
 
-  .platform-label {
+  .metric-label {
     display: none;
   }
 }
@@ -1509,6 +1571,29 @@ onUnmounted(() => {
 
   .view-controls {
     justify-content: center;
+  }
+
+  .course-row {
+    flex-wrap: wrap;
+  }
+
+  .row-identity {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .row-progress {
+    flex: 1 1 auto;
+  }
+
+  .row-platforms {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  .platform-header {
+    display: none;
   }
 }
 </style>
