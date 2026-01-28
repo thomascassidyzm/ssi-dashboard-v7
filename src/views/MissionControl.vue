@@ -333,7 +333,7 @@ const coursesWithStatus = computed(() => {
     newAppBetaDays: c.new_app_beta_days || null,
     legacyAppBetaDays: c.legacy_app_beta_days || null,
     contentStatus: c.content_status || null,
-    targetSeeds: c.seed_count || 260,
+    targetSeeds: c.stats?.seed_count || 260,
     stats: c.stats || {}
   }))
 })

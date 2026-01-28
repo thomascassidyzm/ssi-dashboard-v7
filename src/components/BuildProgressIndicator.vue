@@ -28,7 +28,7 @@
             <div class="tooltip-row">
               <span class="segment-indicator" :class="segments[0]?.class"></span>
               <span class="segment-name">Seeds</span>
-              <span class="segment-count">{{ stats.completedSeeds || 0 }}/{{ targetSeeds }}</span>
+              <span class="segment-count">{{ displayedSeeds }}/{{ targetSeeds }}</span>
               <span class="segment-pct">{{ seedPct }}%</span>
             </div>
             <div class="tooltip-row">
@@ -89,6 +89,14 @@ const statusLabels = {
   audio_generating: 'Generating',
   ready: 'Ready'
 }
+
+// Display seeds capped at target (for cleaner UI when seeds > target)
+const displayedSeeds = computed(() => {
+  const completed = props.stats?.completedSeeds || 0
+  const target = props.targetSeeds || 260
+  // If we have more seeds than the target, show target as complete
+  return Math.min(completed, target)
+})
 
 // Calculate completion percentages
 const seedPct = computed(() => {

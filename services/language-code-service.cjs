@@ -64,8 +64,17 @@ const LEGACY_TO_STANDARD = {
   'lit': 'lt',
   'slv': 'sl',
   'lav': 'lv',
-  'est': 'et'
-  // Note: cmn (Mandarin) stays as cmn - no 2-letter equivalent
+  'est': 'et',
+  // Additional language codes for courses
+  'zho': 'cmn',      // Chinese (maps to Mandarin entry in CSV)
+  'zh': 'cmn',       // Chinese 2-letter (maps to Mandarin entry in CSV)
+  'bre': 'br',       // Breton
+  'eus': 'eu',       // Basque
+  'cym': 'cy',       // Welsh
+  'gle': 'ga',       // Irish
+  'gla': 'gd',       // Scottish Gaelic
+  'glv': 'gv',       // Manx
+  'cor': 'kw'        // Cornish
 };
 
 // Reverse mapping: standard → legacy (for backward compatibility with directory names)
