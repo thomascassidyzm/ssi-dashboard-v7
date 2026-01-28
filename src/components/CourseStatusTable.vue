@@ -145,31 +145,40 @@
                     <span class="course-code">{{ course.code }}</span>
                   </div>
 
+                  <div class="card-seeds">
+                    <span class="seed-count">{{ course.stats?.completedSeeds || 0 }}</span>
+                    <span class="seed-target">/{{ course.targetSeeds || 260 }}</span>
+                    <div class="seed-bar">
+                      <div class="seed-fill" :style="{ width: getSeedProgress(course) + '%' }"></div>
+                    </div>
+                  </div>
+
                   <div class="card-status">
-                    <BuildProgressIndicator
-                      :stats="course.stats"
-                      :content-status="course.contentStatus"
-                      :export-ready="course.exportReady"
-                      :target-seeds="course.targetSeeds || 260"
-                    />
+                    <span class="status-badge" :class="getStatusClass(course)">{{ getStatusLabel(course) }}</span>
                   </div>
 
                   <div class="card-platforms">
-                    <PlatformStatusBadge
-                      :status="course.newAppStatus || 'not_available'"
-                      :beta-days="course.newAppBetaDays"
-                      :editable="true"
-                      platform="new_app"
-                      @update="handleStatusUpdate(course.code, $event)"
-                    />
-                    <PlatformStatusBadge
-                      :status="course.legacyAppStatus || 'not_available'"
-                      :beta-days="course.legacyAppBetaDays"
-                      :editable="true"
-                      platform="legacy_app"
-                      :new-app-status="course.newAppStatus"
-                      @update="handleStatusUpdate(course.code, $event)"
-                    />
+                    <div class="platform-column">
+                      <span class="platform-label">Beta</span>
+                      <PlatformStatusBadge
+                        :status="course.newAppStatus || 'not_available'"
+                        :beta-days="course.newAppBetaDays"
+                        :editable="true"
+                        platform="new_app"
+                        @update="handleStatusUpdate(course.code, $event)"
+                      />
+                    </div>
+                    <div class="platform-column">
+                      <span class="platform-label">Live</span>
+                      <PlatformStatusBadge
+                        :status="course.legacyAppStatus || 'not_available'"
+                        :beta-days="course.legacyAppBetaDays"
+                        :editable="true"
+                        platform="legacy_app"
+                        :new-app-status="course.newAppStatus"
+                        @update="handleStatusUpdate(course.code, $event)"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -202,30 +211,40 @@
                 <span class="course-code">{{ course.code }}</span>
               </div>
 
+              <div class="card-seeds">
+                <span class="seed-count">{{ course.stats?.completedSeeds || 0 }}</span>
+                <span class="seed-target">/{{ course.targetSeeds || 260 }}</span>
+                <div class="seed-bar">
+                  <div class="seed-fill" :style="{ width: getSeedProgress(course) + '%' }"></div>
+                </div>
+              </div>
+
               <div class="card-status">
-                <BuildProgressIndicator
-                  :stats="course.stats"
-                  :content-status="course.contentStatus"
-                  :target-seeds="course.targetSeeds || 260"
-                />
+                <span class="status-badge" :class="getStatusClass(course)">{{ getStatusLabel(course) }}</span>
               </div>
 
               <div class="card-platforms">
-                <PlatformStatusBadge
-                  :status="course.newAppStatus || 'not_available'"
-                  :beta-days="course.newAppBetaDays"
-                  :editable="true"
-                  platform="new_app"
-                  @update="handleStatusUpdate(course.code, $event)"
-                />
-                <PlatformStatusBadge
-                  :status="course.legacyAppStatus || 'not_available'"
-                  :beta-days="course.legacyAppBetaDays"
-                  :editable="true"
-                  platform="legacy_app"
-                  :new-app-status="course.newAppStatus"
-                  @update="handleStatusUpdate(course.code, $event)"
-                />
+                <div class="platform-column">
+                  <span class="platform-label">Beta</span>
+                  <PlatformStatusBadge
+                    :status="course.newAppStatus || 'not_available'"
+                    :beta-days="course.newAppBetaDays"
+                    :editable="true"
+                    platform="new_app"
+                    @update="handleStatusUpdate(course.code, $event)"
+                  />
+                </div>
+                <div class="platform-column">
+                  <span class="platform-label">Live</span>
+                  <PlatformStatusBadge
+                    :status="course.legacyAppStatus || 'not_available'"
+                    :beta-days="course.legacyAppBetaDays"
+                    :editable="true"
+                    platform="legacy_app"
+                    :new-app-status="course.newAppStatus"
+                    @update="handleStatusUpdate(course.code, $event)"
+                  />
+                </div>
               </div>
             </div>
 
@@ -282,7 +301,6 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import PlatformStatusBadge from './PlatformStatusBadge.vue'
-import BuildProgressIndicator from './BuildProgressIndicator.vue'
 
 const props = defineProps({
   courses: {
@@ -356,6 +374,34 @@ function getDecomposeProgress(course) {
   const targetSeeds = course.targetSeeds || 260
   const completedSeeds = stats.completedSeeds || 0
   return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
+}
+
+// Get seed progress percentage
+function getSeedProgress(course) {
+  const stats = course.stats || {}
+  const targetSeeds = course.targetSeeds || 260
+  const completedSeeds = stats.completedSeeds || 0
+  return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
+}
+
+// Get status label for display
+function getStatusLabel(course) {
+  const buildStatus = getBuildStatus(course)
+  switch (buildStatus) {
+    case 'ready': return 'Ready'
+    case 'needs_export': return 'Needs Export'
+    case 'needs_audio': return 'Needs Audio'
+    case 'decomposing':
+      const pct = getDecomposeProgress(course)
+      return `Building ${pct}%`
+    default: return 'Not Started'
+  }
+}
+
+// Get status class for styling
+function getStatusClass(course) {
+  const buildStatus = getBuildStatus(course)
+  return `status-${buildStatus}`
 }
 
 // Check if course needs attention (for visual emphasis)
@@ -1161,10 +1207,11 @@ onUnmounted(() => {
 }
 
 .card-main {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(200px, 1.5fr) 100px 120px minmax(180px, auto);
   align-items: center;
   flex: 1;
-  gap: 1rem;
+  gap: 1.5rem;
   min-width: 0;
 }
 
@@ -1172,12 +1219,11 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
-  min-width: 180px;
-  flex: 1;
+  min-width: 0;
 }
 
 .course-name {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--cc-text-primary);
   white-space: nowrap;
@@ -1187,19 +1233,112 @@ onUnmounted(() => {
 
 .course-code {
   font-family: 'JetBrains Mono', 'SF Mono', monospace;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--cc-text-muted);
   letter-spacing: 0.02em;
 }
 
-.card-status {
-  min-width: 140px;
+/* Seed count column */
+.card-seeds {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
 }
 
+.seed-count {
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.seed-target {
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--cc-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.seed-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--cc-bg-surface);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.seed-fill {
+  height: 100%;
+  background: var(--cc-accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Status badge column */
+.card-status {
+  min-width: 100px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.status-badge.status-ready {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.status-badge.status-needs_export {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+}
+
+.status-badge.status-needs_audio {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+
+.status-badge.status-decomposing {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.status-badge.status-empty {
+  background: rgba(100, 116, 139, 0.15);
+  color: #64748b;
+}
+
+/* Platform columns */
 .card-platforms {
   display: flex;
-  gap: 0.5rem;
-  min-width: 200px;
+  gap: 1rem;
+}
+
+.platform-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+  min-width: 80px;
+}
+
+.platform-label {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cc-text-muted);
 }
 
 .card-actions {
@@ -1326,15 +1465,34 @@ onUnmounted(() => {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .card-platforms {
-    flex-direction: column;
-    gap: 0.25rem;
-    min-width: auto;
+@media (max-width: 1100px) {
+  .card-main {
+    grid-template-columns: minmax(160px, 1fr) 90px 100px minmax(150px, auto);
+    gap: 1rem;
   }
 
+  .platform-column {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 900px) {
+  .card-main {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+  }
+
+  .card-seeds,
   .card-status {
-    min-width: auto;
+    display: none;
+  }
+
+  .card-platforms {
+    gap: 0.5rem;
+  }
+
+  .platform-label {
+    display: none;
   }
 }
 
@@ -1351,20 +1509,6 @@ onUnmounted(() => {
 
   .view-controls {
     justify-content: center;
-  }
-
-  .card-main {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .course-identity {
-    flex-basis: 100%;
-  }
-
-  .card-platforms {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 }
 </style>

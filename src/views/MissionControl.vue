@@ -403,6 +403,7 @@ async function loadCourseCount() {
       new_app_beta_days: c.new_app_beta_days,
       legacy_app_beta_days: c.legacy_app_beta_days,
       content_status: c.content_status,
+      export_ready: c.export_ready || false,
       seed_count: c.seed_count,
       // Stats for build progress
       stats: {
