@@ -249,8 +249,9 @@ function generateTextUUID(text) {
   return uuidv5(text, NAMESPACE).toUpperCase()
 }
 
-function generateSliceUUID() {
-  return uuidv4().toUpperCase()
+function generateSliceUUID(courseCode) {
+  // Deterministic slice UUID based on course code
+  return uuidv5(`${courseCode}-SLICE`, NAMESPACE).toUpperCase()
 }
 
 // =============================================================================
@@ -1310,7 +1311,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
     status: 'published',
     introduction,
     slices: [{
-      id: generateSliceUUID(),
+      id: generateSliceUUID(courseCode),
       version: '1.0.0',
       seeds,
       samples,
