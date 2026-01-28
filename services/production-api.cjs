@@ -4709,6 +4709,26 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
 
 const s3DeployService = require('./s3-deploy-service.cjs')
 
+// GET /api/production/:courseCode/pending-manifest
+// Download pending manifest for review before publishing
+app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load manifest from temp/course_export_states
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first (Step 1).' })
+    }
+
+    const manifest = await fs.readJson(manifestPath)
+    res.json(manifest)
+  } catch (error) {
+    logger.error(`Get pending manifest error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // POST /api/production/:courseCode/verify-s3
 // Step 2: Verify stage audio exists and durations match manifest
 app.post('/api/production/:courseCode/verify-s3', async (req, res) => {

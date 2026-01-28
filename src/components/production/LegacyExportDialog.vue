@@ -93,6 +93,7 @@
                   :format-date="workflow.formatDate"
                   @publish="handlePublish"
                   @load-version-info="handleLoadVersionInfo"
+                  @download-manifest="handleDownloadManifest"
                 />
               </div>
 
@@ -301,6 +302,10 @@ async function handleLoadVersionInfo() {
 
 async function handlePublish(options: { version: string; status: string; commitToCourseConfigs: boolean; scpToApidev: boolean }) {
   await workflow.publishManifest(options as any)
+}
+
+async function handleDownloadManifest() {
+  await workflow.downloadPendingManifest()
 }
 
 // Step 4 handlers

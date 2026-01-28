@@ -634,6 +634,32 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
+  // Download pending manifest for review
+  async function downloadPendingManifest() {
+    try {
+      const response = await fetch(`${API_BASE}/api/production/${courseCode}/pending-manifest`)
+      if (!response.ok) {
+        throw new Error('Failed to fetch pending manifest')
+      }
+
+      const manifest = await response.json()
+
+      // Create blob and trigger download
+      const blob = new Blob([JSON.stringify(manifest, null, 2)], { type: 'application/json' })
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${courseCode}_pending_manifest.json`
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+    } catch (err: any) {
+      error.value = err.message
+      throw err
+    }
+  }
+
   // Step 4: Get deploy plan
   async function getDeployPlan() {
     isLoading.value = true
@@ -837,6 +863,7 @@ export function useExportWorkflow(courseCode: string) {
     verifyS3,
     getVersionSuggestion,
     publishManifest,
+    downloadPendingManifest,
     getDeployPlan,
     deployAudio,
     verifyProductionDurations,
