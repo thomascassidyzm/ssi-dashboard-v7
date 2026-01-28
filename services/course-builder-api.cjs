@@ -1787,7 +1787,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
         pass: 'pass_2',  // decomposition pass
         status: 'running',
         current_seed: progress.completed,
-        seeds_completed: 0,
+        seeds_completed: progress.completed,
         total_seeds: effectiveTarget,
         started_at: new Date().toISOString(),
         last_heartbeat: new Date().toISOString(),
