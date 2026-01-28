@@ -48,7 +48,10 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // Dashboard can poll /api/activity to detect stalled courses and respawn agents
 // =============================================================================
 const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
-const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, status: 'active'|'stalled' }
+const BATCH_SIZE = 30;  // Suggest agent exit after this many seeds for fresh context
+const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, seedsThisSession: number, sessionStartSeed: number }
+const agentHeartbeats = new Map();  // course_code -> { lastHeartbeat: timestamp, agentId: string, status: string }
+const HEARTBEAT_TIMEOUT_MS = 3 * 60 * 1000;  // 3 minutes - agent considered dead if no heartbeat
 
 // =============================================================================
 // AGENT TRACKING - Track spawned agents and their submissions
@@ -95,13 +98,40 @@ function getActiveAgents() {
 
 /**
  * Record activity for a course (called after successful seed submission)
+ * Tracks seeds_this_session for batch limiting
  */
 function recordActivity(courseCode, seedNumber) {
+  const existing = courseActivity.get(courseCode);
+  const seedsThisSession = existing ? existing.seedsThisSession + 1 : 1;
+  const sessionStartSeed = existing?.sessionStartSeed ?? seedNumber;
+
   courseActivity.set(courseCode, {
     lastSubmission: Date.now(),
     lastSeed: seedNumber,
+    seedsThisSession,
+    sessionStartSeed,
     status: 'active'
   });
+}
+
+/**
+ * Reset session counter (called when new agent spawns)
+ */
+function resetSession(courseCode) {
+  const existing = courseActivity.get(courseCode);
+  if (existing) {
+    existing.seedsThisSession = 0;
+    existing.sessionStartSeed = existing.lastSeed;
+  }
+}
+
+/**
+ * Check if agent should exit for fresh context
+ */
+function shouldExitForFreshContext(courseCode) {
+  const activity = courseActivity.get(courseCode);
+  if (!activity) return false;
+  return activity.seedsThisSession >= BATCH_SIZE;
 }
 
 /**
@@ -114,18 +144,165 @@ function getActivityStatus() {
   for (const [courseCode, activity] of courseActivity.entries()) {
     const elapsed = now - activity.lastSubmission;
     const stalled = elapsed > STALL_THRESHOLD_MS;
+    const shouldExit = activity.seedsThisSession >= BATCH_SIZE;
 
     result[courseCode] = {
       lastSubmission: new Date(activity.lastSubmission).toISOString(),
       lastSeed: activity.lastSeed,
+      seedsThisSession: activity.seedsThisSession || 0,
+      sessionStartSeed: activity.sessionStartSeed,
       elapsedMs: elapsed,
       elapsedMinutes: (elapsed / 60000).toFixed(1),
       stalled,
-      status: stalled ? 'STALLED' : 'active'
+      shouldExit,
+      status: stalled ? 'STALLED' : (shouldExit ? 'BATCH_COMPLETE' : 'active')
     };
   }
 
   return result;
+}
+
+// =============================================================================
+// STALL WATCHER - Auto-respawn agents for stalled courses
+// =============================================================================
+let stallWatcherInterval = null;
+const STALL_WATCHER_INTERVAL_MS = 60000;  // Check every 60 seconds
+const MAX_AUTO_RESPAWNS = 5;  // Maximum respawns per course before giving up
+const courseRespawnCounts = new Map();  // courseCode -> { count, lastRespawn }
+
+/**
+ * Start the stall watcher (called on server start)
+ */
+function startStallWatcher() {
+  if (stallWatcherInterval) return;  // Already running
+
+  console.log('[STALL-WATCHER] Starting stall watcher (checks every 60s for stalled courses)');
+  stallWatcherInterval = setInterval(checkForStalledCourses, STALL_WATCHER_INTERVAL_MS);
+}
+
+/**
+ * Stop the stall watcher
+ */
+function stopStallWatcher() {
+  if (stallWatcherInterval) {
+    clearInterval(stallWatcherInterval);
+    stallWatcherInterval = null;
+    console.log('[STALL-WATCHER] Stopped');
+  }
+}
+
+/**
+ * Check for stalled courses and auto-respawn agents
+ */
+async function checkForStalledCourses() {
+  const now = Date.now();
+
+  for (const [courseCode, activity] of courseActivity.entries()) {
+    const elapsed = now - activity.lastSubmission;
+    const isStalled = elapsed > STALL_THRESHOLD_MS;  // 5 minutes
+
+    if (!isStalled) continue;  // Course is active, skip
+
+    // Check if agent has active heartbeat (alive but working on a seed)
+    const heartbeat = agentHeartbeats.get(courseCode);
+    if (heartbeat) {
+      const heartbeatAge = now - heartbeat.lastHeartbeat;
+      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS) {
+        // Agent is alive - don't respawn
+        console.log(`[STALL-WATCHER] ${courseCode}: Agent alive (heartbeat ${(heartbeatAge/1000).toFixed(0)}s ago), skipping respawn`);
+        continue;
+      }
+    }
+
+    // Check respawn limit
+    const respawnData = courseRespawnCounts.get(courseCode) || { count: 0, lastRespawn: 0 };
+    if (respawnData.count >= MAX_AUTO_RESPAWNS) {
+      // Only log once per hour when at limit
+      if (now - respawnData.lastRespawn > 3600000) {
+        console.log(`[STALL-WATCHER] ${courseCode}: Respawn limit reached (${MAX_AUTO_RESPAWNS}), requires manual intervention`);
+        respawnData.lastRespawn = now;
+        courseRespawnCounts.set(courseCode, respawnData);
+      }
+      continue;
+    }
+
+    // Check cooldown - don't respawn if we spawned within last 15 minutes
+    const RESPAWN_COOLDOWN_MS = 15 * 60 * 1000;  // 15 minutes
+    const timeSinceLastRespawn = now - respawnData.lastRespawn;
+    if (respawnData.lastRespawn > 0 && timeSinceLastRespawn < RESPAWN_COOLDOWN_MS) {
+      console.log(`[STALL-WATCHER] ${courseCode}: Cooldown active (${((RESPAWN_COOLDOWN_MS - timeSinceLastRespawn) / 60000).toFixed(1)} min remaining)`);
+      continue;
+    }
+
+    // Check if course is complete
+    try {
+      const progress = await getBuildProgress(courseCode);
+      const targetSeeds = 260;  // Default target for LEGO building phase
+
+      if (progress.completed >= targetSeeds) {
+        console.log(`[STALL-WATCHER] ${courseCode}: Course complete (${progress.completed}/${targetSeeds}), no respawn needed`);
+        courseActivity.delete(courseCode);  // Remove from tracking
+        continue;
+      }
+
+      // Course is stalled and incomplete - respawn agent
+      console.log(`[STALL-WATCHER] ${courseCode}: STALLED at seed ${activity.lastSeed} (${(elapsed/60000).toFixed(1)} min since last submission)`);
+      console.log(`[STALL-WATCHER] ${courseCode}: Auto-respawning agent (respawn #${respawnData.count + 1}/${MAX_AUTO_RESPAWNS})`);
+
+      // Spawn new agent
+      await spawnRespawnAgent(courseCode, activity.lastSeed);
+
+      // Update respawn count
+      respawnData.count++;
+      respawnData.lastRespawn = now;
+      courseRespawnCounts.set(courseCode, respawnData);
+
+      // Reset session counter
+      resetSession(courseCode);
+
+    } catch (err) {
+      console.error(`[STALL-WATCHER] ${courseCode}: Error checking progress:`, err.message);
+    }
+  }
+}
+
+/**
+ * Spawn a respawn agent for a stalled course
+ */
+async function spawnRespawnAgent(courseCode, lastSeed) {
+  const { exec } = require('child_process');
+  const projectDir = __dirname.replace('/services', '');
+
+  // Create prompt that tells agent to continue AUTONOMOUSLY without asking
+  const prompt = `/course-resume ${courseCode} -- IMPORTANT: You are an autonomous build agent. Do NOT ask for confirmation. Proceed immediately to decompose the next seed, generate LEGOs and phrases, and submit via POST /api/seed/complete. Continue processing seeds until you hit a checkpoint or complete 30 seeds, then exit cleanly.`;
+
+  // Use iTerm2 by default
+  const osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    write text "cd \\"${projectDir}\\" && claude --dangerously-skip-permissions \\"${prompt}\\""
+  end tell
+end tell`;
+
+  return new Promise((resolve, reject) => {
+    exec(`osascript -e '${osascript}'`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`[STALL-WATCHER] Failed to spawn agent for ${courseCode}:`, error.message);
+        reject(error);
+      } else {
+        console.log(`[STALL-WATCHER] ✓ Agent spawned for ${courseCode} (resuming from seed ${lastSeed})`);
+        resolve();
+      }
+    });
+  });
+}
+
+/**
+ * Reset respawn counter for a course (call when manually starting a build)
+ */
+function resetRespawnCount(courseCode) {
+  courseRespawnCounts.delete(courseCode);
 }
 
 // =============================================================================
@@ -168,7 +345,7 @@ function getRunningAgentCount() {
   }
 }
 
-const BATCH_SIZE = 20;  // Seeds per agent (20 for Chinese, safer context margin)
+// BATCH_SIZE defined at top of file (line ~51) - currently 30 seeds per agent
 const BUILD_CHECK_INTERVAL_MS = 30000;  // Check progress every 30s
 const MAX_RESPAWNS = 3;  // Maximum auto-respawns before requiring manual intervention
 const STALL_THRESHOLD_MS_EXTENDED = 10 * 60 * 1000;  // 10 minutes for auto-respawn consideration
@@ -185,6 +362,67 @@ const REINFORCEMENT_ZONE = { min: 20, max: 60 };  // Seeds ago when vocab needs 
 // Config-driven: reads review_mode from course_checkpoint_config table
 // =============================================================================
 const CHECKPOINT_SEEDS = [10, 50, 150, 260];  // QA checkpoints at these seeds (260 = final before audio)
+const QA_DRIFT_THRESHOLD = 0.7;  // Auto-approve if |QA_avg - agent_avg| <= 0.7
+
+// Track pending QA jobs: courseCode -> { checkpoint_seed, started_at, pid }
+const pendingQAJobs = new Map();
+
+/**
+ * Spawn a Checkpoint QA Agent in a new terminal window
+ * The QA agent will:
+ * 1. Fetch sample phrases from /api/checkpoint/qa-sample/:courseCode
+ * 2. Re-score them independently
+ * 3. POST results to /api/checkpoint/qa-result/:courseCode
+ */
+async function spawnCheckpointQAAgent(courseCode, checkpointSeed) {
+  const { exec } = require('child_process');
+  const projectDir = __dirname.replace('/services', '');
+
+  // Create the prompt for the QA agent - reference the skill, let it load methodology from there
+  const qaPrompt = `/checkpoint-qa ${courseCode} ${checkpointSeed}`;
+
+  // macOS: Open new iTerm2 window and run claude with the skill command
+  // The skill will load full instructions from .claude/commands/checkpoint-qa.md
+  // CRITICAL: Use --dangerously-skip-permissions for unattended/overnight operation
+  const osascript = `tell application "iTerm"
+  activate
+  set newWindow to (create window with default profile)
+  tell current session of newWindow
+    write text "cd \\"${projectDir}\\" && claude --dangerously-skip-permissions \\"${qaPrompt}\\""
+  end tell
+end tell`;
+  const command = `osascript -e '${osascript}'`;
+
+  console.log(`[CHECKPOINT QA] Spawning QA agent for ${courseCode} checkpoint ${checkpointSeed}`);
+
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`[CHECKPOINT QA] Failed to spawn: ${error.message}`);
+        reject(error);
+        return;
+      }
+
+      // Track the pending QA job
+      pendingQAJobs.set(courseCode, {
+        checkpoint_seed: checkpointSeed,
+        started_at: new Date().toISOString(),
+        status: 'running'
+      });
+
+      console.log(`[CHECKPOINT QA] Agent spawned for ${courseCode}`);
+      resolve({ spawned: true, checkpoint_seed: checkpointSeed });
+    });
+  });
+}
+
+/**
+ * Check if a QA job is pending for this course
+ */
+function isQAPending(courseCode) {
+  const job = pendingQAJobs.get(courseCode);
+  return job && job.status === 'running';
+}
 
 /**
  * Get checkpoint config from database (course-specific or _default fallback)
@@ -256,9 +494,13 @@ function getBlockingCheckpoint(courseCode, requestedSeed) {
 
 /**
  * Check if checkpoint is required (just completed a checkpoint seed, not yet approved)
+ * Now async - loads from database to ensure pre-approved checkpoints are respected
  */
-function isCheckpointRequired(courseCode, completedSeed) {
+async function isCheckpointRequired(courseCode, completedSeed) {
   if (!CHECKPOINT_SEEDS.includes(completedSeed)) return false;  // Not a checkpoint seed
+
+  // Load latest state from database (ensures pre-approved checkpoints are seen)
+  await getCheckpointStatus(courseCode);
 
   const state = initCheckpointState(courseCode);
   const cp = state.checkpoints[completedSeed];
@@ -482,14 +724,12 @@ function computePhraseRole(position) {
  * Validate BUILD/USE phrase structure per ralph-methodology.md
  *
  * BUILD (4 required): Lock in the pattern, fragments OK
- *   - 2 SHORT (3-5 syllables)
- *   - 2 MEDIUM (6-9 syllables)
+ *   - No length requirements (natural variation based on LEGO size)
  *
  * USE (6 required): Natural production, complete sentences
- *   - 3 MEDIUM (6-9 syllables)
- *   - 3 LONG (10+ syllables)
+ *   - Scores must be 5-9 (reject low quality - don't submit score <5)
+ *   - Average syllables > 12 (ensures substantial sentences)
  *   - ALL are eternal-eligible
- *   - Each must have a score (1-9) for quality tracking
  *
  * @param {Object} lego - LEGO with build/use arrays
  * @param {string} courseCode - Course code for language-specific thresholds
@@ -497,8 +737,8 @@ function computePhraseRole(position) {
  * @returns {{ valid: boolean, error?: string, details?: Object }}
  */
 function checkBuildUsePhrases(lego, courseCode, seedNumber) {
-  const thresholds = getCharThresholds(courseCode);
   const targetLang = getTargetLang(courseCode);
+  const charsPerSyllable = getCharsPerSyllable(courseCode);
 
   // Relaxed requirements for early seeds (per methodology)
   // Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE
@@ -506,20 +746,22 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   // Seeds 2-5: 3 BUILD, 4 USE
   // Seeds 6+: Full requirements (4 BUILD, 6 USE)
 
-  const globalPosition = (seedNumber - 1) * 3 + (lego.idx || 1);
-
   let minBuild = 4;
   let minUse = 6;
+  let minAvgSyllables = 12;  // Average syllables for USE phrases
 
   if (seedNumber === 1 && lego.idx === 1) {
     minBuild = 0;
     minUse = 0;
+    minAvgSyllables = 0;
   } else if (seedNumber === 1) {
     minBuild = 2;
     minUse = 2;
+    minAvgSyllables = 6;
   } else if (seedNumber <= 5) {
     minBuild = 3;
     minUse = 4;
+    minAvgSyllables = 8;
   }
 
   const build = lego.build || [];
@@ -542,22 +784,32 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  // USE phrase score validation (1-9 required for each)
-  // Score 0 = grammatical error, agent should rewrite not submit
+  // USE phrase score validation - must be 5-9 (quality floor)
+  // Scores <5 should be rewritten, not submitted
   const missingScores = use.filter(p => typeof p.score !== 'number');
   if (missingScores.length > 0) {
     return {
       valid: false,
-      error: `USE phrases must have scores (1-9). Missing scores on ${missingScores.length} phrase(s)`,
+      error: `USE phrases must have scores (5-9). Missing scores on ${missingScores.length} phrase(s)`,
       details: { missingScores: missingScores.map(p => p.known?.substring(0, 30)) }
     };
   }
 
-  const invalidScores = use.filter(p => p.score < 1 || p.score > 9);
+  const lowScores = use.filter(p => p.score < 5);
+  if (lowScores.length > 0) {
+    return {
+      valid: false,
+      error: `USE phrases must score 5-9. Scores <5 should be REWRITTEN, not submitted. Low: ${lowScores.map(p => `"${p.target?.substring(0, 20)}..." (${p.score})`).join(', ')}`,
+      hint: 'USE phrases are eternal-eligible. Learners hear them hundreds of times. Only submit quality phrases.',
+      details: { lowScores: lowScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score })) }
+    };
+  }
+
+  const invalidScores = use.filter(p => p.score > 9);
   if (invalidScores.length > 0) {
     return {
       valid: false,
-      error: `USE phrase scores must be 1-9. Score 0 = rewrite, don't submit. Invalid: ${invalidScores.map(p => p.score).join(', ')}`,
+      error: `USE phrase scores must be 5-9. Invalid: ${invalidScores.map(p => p.score).join(', ')}`,
       details: { invalidScores: invalidScores.map(p => ({ known: p.known?.substring(0, 30), score: p.score })) }
     };
   }
@@ -565,69 +817,58 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   // Calculate average score for reporting
   const avgScore = use.length > 0 ? (use.reduce((sum, p) => sum + p.score, 0) / use.length).toFixed(1) : 0;
 
-  // USE phrases must be complete sentences - reject any below MEDIUM threshold
-  // This catches fragments like "想说。" (2 chars) that slip through tier counting
-  // EXCEPTION: Seeds 1-5 have limited vocab, so we relax this requirement
-  if (seedNumber >= 6) {
-    const tooShortUse = use.filter(p => p.target.length < thresholds.MEDIUM.min);
-    if (tooShortUse.length > 0) {
+  // USE phrases: check average syllable count (ensures substantial sentences)
+  // Estimate syllables from character count using language-specific ratio
+  if (use.length > 0 && seedNumber >= 2) {
+    const totalSyllables = use.reduce((sum, p) => {
+      const chars = (p.target || '').length;
+      return sum + Math.round(chars / charsPerSyllable);
+    }, 0);
+    const avgSyllables = totalSyllables / use.length;
+
+    if (avgSyllables < minAvgSyllables) {
       return {
         valid: false,
-        error: `USE phrases must be complete sentences (${thresholds.MEDIUM.min}+ chars for ${targetLang}). Too short: ${tooShortUse.map(p => `"${p.target}" (${p.target.length} chars)`).join(', ')}`,
-        hint: 'USE phrases go into eternal rotation - learners hear them hundreds of times. Fragments are NEVER acceptable. Reduce USE count if vocabulary is limited.',
-        details: { tooShort: tooShortUse.map(p => ({ target: p.target, length: p.target.length })) }
+        error: `USE phrases avg ${avgSyllables.toFixed(1)} syllables, need ${minAvgSyllables}+. Add more substantial sentences.`,
+        hint: 'USE phrases should be complete, natural sentences. Short fragments belong in BUILD.',
+        details: { avgSyllables: avgSyllables.toFixed(1), minRequired: minAvgSyllables, charsPerSyllable }
       };
     }
   }
 
-  // If full requirements, check length tiers
-  if (seedNumber >= 6) {
-    // BUILD should have SHORT→MEDIUM mix (2 SHORT, 2 MEDIUM)
-    const buildShort = build.filter(p => p.target.length <= thresholds.SHORT.max);
-    const buildMedium = build.filter(p =>
-      p.target.length > thresholds.SHORT.max && p.target.length <= thresholds.MEDIUM.max
-    );
-
-    if (buildShort.length < 2) {
-      return {
-        valid: false,
-        error: `BUILD needs 2+ SHORT phrases (≤${thresholds.SHORT.max} chars), got ${buildShort.length}`,
-        details: { buildShort: buildShort.length, buildMedium: buildMedium.length }
-      };
+  return {
+    valid: true,
+    details: {
+      build: build.length,
+      use: use.length,
+      avgScore: parseFloat(avgScore),
+      avgSyllables: use.length > 0 ? (use.reduce((sum, p) => sum + Math.round((p.target || '').length / charsPerSyllable), 0) / use.length).toFixed(1) : 0
     }
+  };
+}
 
-    if (buildMedium.length < 2) {
-      return {
-        valid: false,
-        error: `BUILD needs 2+ MEDIUM phrases (${thresholds.MEDIUM.min}-${thresholds.MEDIUM.max} chars), got ${buildMedium.length}`,
-        details: { buildShort: buildShort.length, buildMedium: buildMedium.length }
-      };
-    }
-
-    // USE should have MEDIUM→LONG mix (3 MEDIUM, 3 LONG)
-    const useMedium = use.filter(p =>
-      p.target.length >= thresholds.MEDIUM.min && p.target.length <= thresholds.MEDIUM.max
-    );
-    const useLong = use.filter(p => p.target.length >= thresholds.LONG.min);
-
-    if (useMedium.length < 3) {
-      return {
-        valid: false,
-        error: `USE needs 3+ MEDIUM phrases (${thresholds.MEDIUM.min}-${thresholds.MEDIUM.max} chars), got ${useMedium.length}`,
-        details: { useMedium: useMedium.length, useLong: useLong.length }
-      };
-    }
-
-    if (useLong.length < 3) {
-      return {
-        valid: false,
-        error: `USE needs 3+ LONG phrases (${thresholds.LONG.min}+ chars), got ${useLong.length}`,
-        details: { useMedium: useMedium.length, useLong: useLong.length }
-      };
-    }
-  }
-
-  return { valid: true, details: { build: build.length, use: use.length, avgScore: parseFloat(avgScore) } };
+/**
+ * Get chars-per-syllable ratio for a language (for syllable estimation)
+ */
+function getCharsPerSyllable(courseCode) {
+  const targetLang = getTargetLang(courseCode);
+  // Approximate chars per syllable by language
+  const ratios = {
+    zho: 1.0,   // Chinese: 1 char ≈ 1 syllable
+    cmn: 1.0,
+    jpn: 1.5,   // Japanese: hiragana ~1, kanji ~1-2
+    kor: 1.0,   // Korean: 1 syllable block = 1 syllable
+    eng: 3.0,   // English: ~3 chars per syllable
+    spa: 2.5,   // Spanish: slightly more compact
+    deu: 3.2,   // German: longer words
+    fra: 2.8,   // French
+    ita: 2.3,   // Italian
+    por: 2.5,   // Portuguese
+    nld: 3.0,   // Dutch
+    swe: 3.0,   // Swedish
+    cym: 2.8,   // Welsh
+  };
+  return ratios[targetLang] || 3.0;  // Default to English-like
 }
 
 /**
@@ -869,10 +1110,14 @@ const activeBuilds = new Map();
  * Get current progress for a course (seeds with LEGOs = fully processed)
  */
 async function getBuildProgress(courseCode) {
-  const { count: totalSeeds } = await supabase
-    .from('course_seeds')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode);
+  // Get seed_count from courses table (the release target)
+  const { data: courseData } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('course_code', courseCode)
+    .single();
+
+  const totalSeeds = courseData?.seed_count || 260;  // Default to 260 if not set
 
   const { data: legoData } = await supabase
     .from('course_legos')
@@ -883,8 +1128,8 @@ async function getBuildProgress(courseCode) {
 
   return {
     completed: completedSeeds,
-    total: totalSeeds || 668,
-    isComplete: completedSeeds >= (totalSeeds || 668)
+    total: totalSeeds,
+    isComplete: completedSeeds >= totalSeeds
   };
 }
 
@@ -893,6 +1138,37 @@ async function getBuildProgress(courseCode) {
  * Opens a new terminal window (iTerm or Terminal) and runs claude there
  */
 async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  // Fetch checkpoint configs to generate dynamic instructions
+  const checkpointConfigs = {};
+  for (const seed of CHECKPOINT_SEEDS) {
+    checkpointConfigs[seed] = await getCheckpointConfig(courseCode, seed);
+  }
+
+  // Generate dynamic checkpoint instructions based on actual review_mode
+  const humanCheckpoints = [];
+  const autoCheckpoints = [];
+  for (const seed of CHECKPOINT_SEEDS) {
+    const config = checkpointConfigs[seed];
+    if (config.review_mode === 'human') {
+      humanCheckpoints.push(seed);
+    } else {
+      autoCheckpoints.push(seed);  // 'auto' or 'auto_with_flag'
+    }
+  }
+
+  let checkpointInstructions = '';
+  if (humanCheckpoints.length > 0) {
+    checkpointInstructions += `- **HUMAN REVIEW REQUIRED** at seeds ${humanCheckpoints.join(', ')}: STOP and output "CHECKPOINT REACHED - WAITING FOR HUMAN REVIEW". The API will block further submissions until approved.\n`;
+  }
+  if (autoCheckpoints.length > 0) {
+    checkpointInstructions += `- Seeds ${autoCheckpoints.join(', ')}: AUTO-APPROVED. Continue building without stopping.\n`;
+  }
+  if (humanCheckpoints.length === 0) {
+    checkpointInstructions = 'All checkpoints are AUTO-APPROVED. Just continue building - do NOT stop.';
+  }
+
+  console.log(`[BUILD] Checkpoint config for ${courseCode}: Human=${humanCheckpoints.join(',')}, Auto=${autoCheckpoints.join(',')}`);
+
   // Query build_lessons for this language family (Ralph loop methodology improvement)
   const langCode = courseCode.split('_')[0]; // e.g., 'jpn' from 'jpn_for_eng'
   const langFamilyMap = {
@@ -1072,14 +1348,14 @@ RIGHT: {"known": "spoke", "target": "話した"} — learner INFERS た = past f
 
 **BUILD phrases (4 per LEGO):** Lock in the pattern
 - Fragments OK - "speak Chinese", "with you"
-- SHORT to MEDIUM length (3-9 syllables)
+- Length varies naturally based on LEGO size
 - Pattern drilling - not for long-term retention
 
 **USE phrases (6 per LEGO):** Natural production
 - COMPLETE SENTENCES ONLY - "I want to speak Chinese with you"
-- MEDIUM to LONG (6-15+ syllables)
+- Average syllables must be > 12 (substantial sentences)
 - ALL go into spaced repetition - learners hear these HUNDREDS of times
-- Each needs a quality SCORE (1-9)
+- Each needs a quality SCORE (5-9) - scores <5 should be REWRITTEN not submitted
 
 ---
 
@@ -1116,16 +1392,15 @@ RIGHT: {"known": "spoke", "target": "話した"} — learner INFERS た = past f
 
 ---
 
-# SCORING USE PHRASES (1-9)
+# SCORING USE PHRASES (5-9 ONLY)
 
 USE phrases go into eternal spaced repetition. Quality matters enormously.
+**Only submit phrases scoring 5-9. Scores <5 = REWRITE, don't submit.**
 
 - **9**: Native-natural in BOTH languages, high pedagogical value, flows beautifully
 - **7-8**: Strong phrase, minor stylistic preferences possible
-- **5-6**: Functional, correct but unremarkable
-- **3-4**: Grammatically OK but awkward/textbook-ish
-- **1-2**: Technically correct but low value - no one would say this
-- **0**: Grammar error → REWRITE, never submit
+- **5-6**: Functional, correct but unremarkable - MINIMUM for submission
+- **<5**: REWRITE THIS. Do NOT submit. Awkward, textbook-ish, or low value phrases hurt learners.
 
 ---
 
@@ -1157,16 +1432,47 @@ POST http://localhost:3471/api/seed/complete
 - **TILING FAILED**: Seed can't be reconstructed from LEGOs - add missing LEGO
 
 ## Checkpoints
-Checkpoints at seeds 10, 50, 150 are AUTO-APPROVED. Just continue building - do NOT stop.
-After ${BATCH_SIZE} seeds: Output "BATCH COMPLETE"
+${checkpointInstructions}
 
-## AUTONOMY - CRITICAL
-You are running AFK (away from keyboard). The human is NOT watching.
-- NEVER ask questions or wait for confirmation
-- NEVER stop to ask "should I continue?" or "is this correct?"
-- If you encounter an error, fix it yourself and continue
-- If unsure about something, make your best judgment and proceed
-- Your job is to build seeds continuously until complete
+## AUTONOMY - ABSOLUTELY CRITICAL - READ THIS CAREFULLY
+
+**YOU ARE RUNNING OVERNIGHT. THE HUMAN IS ASLEEP. NOBODY WILL RESPOND.**
+
+⚠️ **FORBIDDEN BEHAVIORS** (doing ANY of these = FAILURE):
+- ❌ Asking "Should I continue?"
+- ❌ Asking "Is this correct?"
+- ❌ Asking "Do you want me to..."
+- ❌ Waiting for confirmation
+- ❌ Stopping to check in
+- ❌ ANY question directed at the user
+
+**REQUIRED BEHAVIOR:**
+- ✅ Make decisions yourself
+- ✅ Fix errors yourself and continue
+- ✅ If unsure, pick the best option and proceed
+- ✅ Build seeds continuously until done or blocked by checkpoint
+
+**IF YOU FEEL THE URGE TO ASK A QUESTION:**
+→ Don't. Make a decision and proceed.
+→ The human will review at checkpoints.
+→ Asking questions causes the build to stall for hours.
+
+**YOUR ONLY JOB:** Submit seeds via the API. Nothing else.
+
+---
+
+# WORKFLOW: ONE SEED AT A TIME, CONTINUOUSLY
+
+**How you work:**
+1. Check /api/resume/${courseCode} to see your next seed
+2. Build that ONE seed (translate, decompose into LEGOs, create BUILD/USE phrases)
+3. Submit via POST /api/seed/complete
+4. Immediately move to the next seed
+5. Repeat until course complete or checkpoint blocks you
+
+**There are NO batches. There is NO "batch complete".**
+You work on ONE seed, submit it, then immediately start the next.
+Keep going until you finish or get blocked.
 
 ---
 
@@ -1176,7 +1482,7 @@ You are running AFK (away from keyboard). The human is NOT watching.
 2. Each LEGO's phrases use ONLY that LEGO + ALL PREVIOUS vocabulary
 3. M-LEGOs MUST have components (real words only, never grammar explanations)
 4. BUILD = 4 phrases (fragments OK)
-5. USE = 6 phrases (complete sentences, each with score 1-9)
+5. USE = 6 phrases (complete sentences, each with score 5-9)
 6. Learners will hear USE phrases HUNDREDS of times - quality matters!
 7. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
    - If tiling fails, you're missing a word/particle - add it to a LEGO!
@@ -1244,6 +1550,25 @@ end tell`;
 /**
  * Check build progress and spawn new agents as needed
  */
+// Helper to update build_jobs table (fire-and-forget, never crashes)
+async function updateBuildJobDb(buildJobId, updates) {
+  if (!buildJobId) return;
+  try {
+    const { error } = await supabase
+      .from('build_jobs')
+      .update(updates)
+      .eq('id', buildJobId);
+    if (error) {
+      console.error(`[BUILD] DB update failed for job ${buildJobId}:`, error.message);
+    }
+  } catch (err) {
+    console.error(`[BUILD] Unexpected DB error for job ${buildJobId}:`, err.message);
+  }
+}
+
+// Heartbeat interval for DB updates (30 seconds)
+const DB_HEARTBEAT_INTERVAL_MS = 30 * 1000;
+
 async function checkBuilds() {
   for (const [courseCode, build] of activeBuilds.entries()) {
     try {
@@ -1266,6 +1591,17 @@ async function checkBuilds() {
         console.log(`[BUILD]   Total agents used: ${build.agentCount}`);
         if (build.agent && build.agent.pid) {
           try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+        }
+        // Update DB: mark job as complete
+        if (build.buildJobId) {
+          await updateBuildJobDb(build.buildJobId, {
+            status: 'complete',
+            current_seed: progress.completed,
+            seeds_completed: progress.completed,
+            last_heartbeat: new Date().toISOString(),
+            completed_at: new Date().toISOString()
+          });
+          console.log(`[BUILD] DB: marked job ${build.buildJobId} as complete`);
         }
         activeBuilds.delete(courseCode);
         continue;
@@ -1310,6 +1646,21 @@ async function checkBuilds() {
           console.log(`[BUILD]   Respawn count reset (was ${build.respawnCount})`);
           build.respawnCount = 0;
         }
+        // Update DB: progress changed
+        if (build.buildJobId) {
+          build.lastDbUpdate = now;
+          await updateBuildJobDb(build.buildJobId, {
+            current_seed: progress.completed,
+            seeds_completed: progress.completed,
+            last_heartbeat: new Date().toISOString()
+          });
+        }
+      } else if (build.buildJobId && (!build.lastDbUpdate || now - build.lastDbUpdate > DB_HEARTBEAT_INTERVAL_MS)) {
+        // No progress, but send heartbeat every 30 seconds
+        build.lastDbUpdate = now;
+        await updateBuildJobDb(build.buildJobId, {
+          last_heartbeat: new Date().toISOString()
+        });
       }
 
       // Batch complete? Just log milestone - DON'T spawn new agent yet
@@ -1321,16 +1672,24 @@ async function checkBuilds() {
         // Don't touch build.agent - let stall detection handle the spawn
       }
 
-      // Stalled? Agent has stopped - auto-respawn if under limit AND no agent already running
+      // Stalled? Agent has stopped - auto-respawn if under limit
+      // Extended stall (10+ min) = respawn anyway, even if other agents running (they may be stuck)
+      const EXTENDED_STALL_MS = 10 * 60 * 1000;  // 10 minutes
+      const isExtendedStall = timeSinceProgress > EXTENDED_STALL_MS;
+
       if (timeSinceProgress > STALL_THRESHOLD_MS && build.status !== 'stalled') {
         console.log(`[BUILD] Agent STALLED: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
 
-        // CRITICAL: Check if an agent is already running before spawning
         const runningAgents = getRunningAgentCount();
-        if (runningAgents > 0) {
-          console.log(`[BUILD]   Skipping respawn - ${runningAgents} agent(s) already running`);
-          build.lastProgressTime = Date.now();  // Reset stall timer to avoid repeated logs
+
+        // Respawn if: no agents running OR extended stall (agents may be stuck/rate-limited)
+        if (runningAgents > 0 && !isExtendedStall) {
+          console.log(`[BUILD]   Waiting - ${runningAgents} agent(s) running, will force respawn after 10min`);
+          // Don't reset timer - let it keep counting toward extended stall
         } else if (build.respawnCount < MAX_RESPAWNS) {
+          if (isExtendedStall && runningAgents > 0) {
+            console.log(`[BUILD]   ⚠️ Extended stall (${Math.round(timeSinceProgress/60000)}min) - forcing respawn despite ${runningAgents} agent(s) running`);
+          }
           console.log(`[BUILD]   🔄 Auto-respawning (attempt ${build.respawnCount + 1}/${MAX_RESPAWNS})...`);
 
           // Increment respawn count and spawn new agent
@@ -1349,6 +1708,14 @@ async function checkBuilds() {
           // Mark as stalled - requires manual intervention
           build.status = 'stalled';
           build.stalledAt = Date.now();
+          // Update DB: mark job as stalled
+          if (build.buildJobId) {
+            await updateBuildJobDb(build.buildJobId, {
+              status: 'stalled',
+              last_heartbeat: new Date().toISOString()
+            });
+            console.log(`[BUILD] DB: marked job ${build.buildJobId} as stalled`);
+          }
         }
       }
 
@@ -1406,8 +1773,45 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
     status: 'starting',
     terminal: terminal,  // Store terminal preference
     targetSeeds: effectiveTarget,  // Store target for completion check
-    respawnCount: 0  // Track auto-respawns to prevent infinite loops
+    respawnCount: 0,  // Track auto-respawns to prevent infinite loops
+    buildJobId: null,  // Will be set after DB insert
+    lastDbUpdate: Date.now()  // Track last DB heartbeat update
   });
+
+  // Insert build_jobs record (don't let DB errors block the build)
+  try {
+    const { data: jobData, error: jobError } = await supabase
+      .from('build_jobs')
+      .upsert({
+        course_code: courseCode,
+        pass: 'pass_2',  // decomposition pass
+        status: 'running',
+        current_seed: progress.completed,
+        seeds_completed: 0,
+        total_seeds: effectiveTarget,
+        started_at: new Date().toISOString(),
+        last_heartbeat: new Date().toISOString(),
+        requested_by: 'dashboard'
+      }, {
+        onConflict: 'course_code,pass',
+        ignoreDuplicates: false
+      })
+      .select('id')
+      .single();
+
+    if (jobError) {
+      console.error('[BUILD] Failed to insert build_jobs record:', jobError.message);
+    } else if (jobData) {
+      // Store job ID in activeBuilds for later updates
+      const buildEntry = activeBuilds.get(courseCode);
+      if (buildEntry) {
+        buildEntry.buildJobId = jobData.id;
+      }
+      console.log(`[BUILD] Created build_jobs record: ${jobData.id} for ${courseCode}`);
+    }
+  } catch (dbErr) {
+    console.error('[BUILD] Unexpected error inserting build_jobs:', dbErr.message);
+  }
 
   // Ensure build manager is running
   startBuildManager();
@@ -1426,7 +1830,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
 /**
  * Stop a build for a course
  */
-function stopBuild(courseCode) {
+async function stopBuild(courseCode) {
   const build = activeBuilds.get(courseCode);
 
   if (!build) {
@@ -1436,6 +1840,28 @@ function stopBuild(courseCode) {
   // Kill agent if running
   if (build.agent && build.agent.pid) {
     try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+  }
+
+  // Update build_jobs table in Supabase if we have a buildJobId
+  if (build.buildJobId) {
+    try {
+      const { error } = await supabase
+        .from('build_jobs')
+        .update({
+          status: 'stopped',
+          completed_at: new Date().toISOString()
+        })
+        .eq('id', build.buildJobId);
+
+      if (error) {
+        console.error(`[BUILD] Failed to update build_jobs for job ${build.buildJobId}:`, error.message);
+      } else {
+        console.log(`[BUILD] Updated build_jobs: job ${build.buildJobId} marked as stopped`);
+      }
+    } catch (dbError) {
+      // Don't let DB errors block the stop from completing
+      console.error(`[BUILD] DB error updating build_jobs for job ${build.buildJobId}:`, dbError.message);
+    }
   }
 
   activeBuilds.delete(courseCode);
@@ -1549,7 +1975,8 @@ function getLanguageName(courseCode) {
     'kor': 'Korean',
     'ara': 'Arabic',
     'rus': 'Russian',
-    'cym': 'Welsh'
+    'cym': 'Welsh',
+    'nld': 'Dutch'
   };
   // Extract target language code (first 3 chars before _for_)
   const targetLang = courseCode.split('_')[0];
@@ -3550,7 +3977,7 @@ app.post('/api/seed/complete', async (req, res) => {
     recordActivity(course_code, seed_number);
 
     // CHECK FOR CHECKPOINT - if seed 10/50/150/260 just completed
-    if (isCheckpointRequired(course_code, seed_number)) {
+    if (await isCheckpointRequired(course_code, seed_number)) {
       const checkpointNum = CHECKPOINT_SEEDS.indexOf(seed_number) + 1;
       const checkpointConfig = await getCheckpointConfig(course_code, seed_number);
 
@@ -3560,15 +3987,71 @@ app.post('/api/seed/complete', async (req, res) => {
       console.log(`${'='.repeat(60)}\n`);
 
       if (checkpointConfig.review_mode === 'auto' || checkpointConfig.review_mode === 'auto_with_flag') {
-        // AUTO-APPROVE: Log checkpoint, auto-approve, and continue without stopping
-        const status = checkpointConfig.review_mode === 'auto_with_flag' ? 'flagged' : 'approved';
-        await approveCheckpoint(course_code, seed_number, 'auto', {
-          auto_approved: true,
-          review_mode_used: checkpointConfig.review_mode
-        }, status);
+        // AUTOMATED QA: Spawn QA agent to verify quality before continuing
+        console.log(`Spawning automated QA agent for checkpoint ${seed_number}...`);
 
-        console.log(`Auto-${status} checkpoint ${seed_number} - agent continues...`);
-        // Don't return here - fall through to normal response so agent continues
+        // Mark as pending QA
+        await approveCheckpoint(course_code, seed_number, null, {
+          review_mode_used: checkpointConfig.review_mode,
+          awaiting_qa: true
+        }, 'pending_qa');
+
+        // Spawn the QA agent in a new terminal
+        try {
+          await spawnCheckpointQAAgent(course_code, seed_number);
+        } catch (spawnErr) {
+          console.error(`[CHECKPOINT] Failed to spawn QA agent: ${spawnErr.message}`);
+          // Fall back to auto-approve if spawn fails
+          await approveCheckpoint(course_code, seed_number, 'auto_fallback', {
+            spawn_failed: true,
+            error: spawnErr.message
+          }, 'approved');
+          console.log(`Fallback: Auto-approved checkpoint ${seed_number} (QA spawn failed)`);
+          // Continue to next seed
+          res.locals.checkpointAutoApproved = {
+            checkpoint_seed: seed_number,
+            checkpoint_number: checkpointNum,
+            status: 'AUTO_APPROVED_FALLBACK',
+            message: 'QA spawn failed - auto-approved as fallback. CONTINUE TO NEXT SEED.'
+          };
+          // Fall through to normal response
+        }
+
+        // If QA spawned successfully, tell build agent to wait
+        if (isQAPending(course_code)) {
+          return res.json({
+            ok: true,
+            seed: seedId,
+            status: 'CHECKPOINT_QA_PENDING',
+            action: 'WAIT_FOR_QA',
+            known_text,
+            target_text,
+            legos: legos.length,
+            phrases: totalPhrases,
+
+            checkpoint: {
+              checkpoint_seed: seed_number,
+              checkpoint_number: checkpointNum,
+              review_mode: checkpointConfig.review_mode,
+              message: 'QA agent spawned in separate terminal. WAIT for QA to complete.',
+              qa_status_url: `/api/checkpoint/qa-status/${course_code}`,
+              expected_duration: '1-2 minutes',
+              instructions: [
+                'QA agent is independently scoring sample phrases',
+                `Will auto-approve if drift <= ${QA_DRIFT_THRESHOLD} points`,
+                'Check QA status, then continue when approved',
+                'DO NOT resubmit this seed - it is saved'
+              ]
+            },
+
+            next_action: {
+              wait: 'Poll /api/checkpoint/qa-status/' + course_code + ' until qa_pending=false',
+              then: 'Check /api/checkpoint/status/' + course_code + ' for approval',
+              continue_url: `/api/resume/${course_code}`
+            }
+          });
+        }
+        // If we get here, QA was auto-approved via fallback - continue normally
       } else {
         // HUMAN REVIEW REQUIRED: Stop and wait for human approval
         console.log(`Human review required - agent must wait for approval`);
@@ -3660,6 +4143,9 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
+    // Check if a checkpoint was auto-approved
+    const checkpointAutoApproved = res.locals.checkpointAutoApproved;
+
     res.json({
       ok: true,
       seed: seedId,
@@ -3671,6 +4157,9 @@ app.post('/api/seed/complete', async (req, res) => {
       duplicates_skipped: skippedDuplicates,
       phrases: totalPhrases,
       buildup_phrases: totalBuildupPhrases,
+
+      // CHECKPOINT AUTO-APPROVED - explicit signal to NOT STOP
+      checkpoint_auto_approved: checkpointAutoApproved || undefined,
 
       // Warnings are for FUTURE improvement, NOT for resubmission
       warnings: warnings.length > 0 ? {
@@ -3690,7 +4179,22 @@ app.post('/api/seed/complete', async (req, res) => {
         mantra: 'If you catch yourself repeating a pattern, STOP and create something different.'
       },
 
-      // YOUR NEXT TASK - proceed immediately
+      // SESSION TRACKING - for batch efficiency
+      session: (() => {
+        const activity = courseActivity.get(course_code);
+        const seedsThisSession = activity?.seedsThisSession || 1;
+        const shouldExit = seedsThisSession >= BATCH_SIZE;
+        return {
+          seeds_this_session: seedsThisSession,
+          batch_size: BATCH_SIZE,
+          suggestion: shouldExit ? 'EXIT_FOR_FRESH_CONTEXT' : 'CONTINUE',
+          message: shouldExit
+            ? `You have completed ${seedsThisSession} seeds. Exit gracefully for fresh context - orchestrator will spawn a new agent.`
+            : `${BATCH_SIZE - seedsThisSession} seeds remaining in this batch.`
+        };
+      })(),
+
+      // YOUR NEXT TASK - proceed immediately (unless session suggests exit)
       next_seed: nextSeed ? {
         instruction: 'BUILD THIS SEED NOW - do not resubmit the previous one',
         seed_number: nextSeed.seed_number,
@@ -3730,11 +4234,13 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .select('*', { count: 'exact', head: true })
     .eq('course_code', courseCode);
 
-  // Count total seeds in course_seeds table
-  const { count: totalSeeds } = await supabase
-    .from('course_seeds')
-    .select('*', { count: 'exact', head: true })
-    .eq('course_code', courseCode);
+  // Get seed_count from courses table (the release target)
+  const { data: courseData } = await supabase
+    .from('courses')
+    .select('seed_count')
+    .eq('course_code', courseCode)
+    .single();
+  const totalSeeds = courseData?.seed_count || 260;
 
   // Count completed seeds (those with non-empty target_text)
   const { count: completedSeeds } = await supabase
@@ -3761,7 +4267,7 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 
   res.json({
     course_code: courseCode,
-    total_seeds: totalSeeds || 668,
+    total_seeds: totalSeeds,
     completed_seeds: completedSeeds || 0,
     seeds_with_legos: seedsWithLegos || 0,
     seeds: seedsWithLegos || 0,  // Legacy field, same as seeds_with_legos
@@ -3832,6 +4338,93 @@ app.post('/api/activity/:courseCode/ping', (req, res) => {
     ok: true,
     course_code: courseCode,
     message: 'Activity recorded - stall timer reset'
+  });
+});
+
+/**
+ * POST /api/activity/:courseCode/reset-session - Reset session counter for new agent
+ *
+ * Call this when spawning a new agent to reset the seeds_this_session counter.
+ * This allows the new agent to work for another BATCH_SIZE seeds before exiting.
+ */
+app.post('/api/activity/:courseCode/reset-session', (req, res) => {
+  const { courseCode } = req.params;
+
+  resetSession(courseCode);
+
+  const activity = courseActivity.get(courseCode);
+  res.json({
+    ok: true,
+    course_code: courseCode,
+    seeds_this_session: activity?.seedsThisSession || 0,
+    batch_size: BATCH_SIZE,
+    message: 'Session counter reset - new agent can work for ' + BATCH_SIZE + ' seeds'
+  });
+});
+
+// =============================================================================
+// HEARTBEAT ENDPOINT - Agent liveness tracking
+// =============================================================================
+
+/**
+ * POST /api/heartbeat/:courseCode - Agent heartbeat
+ *
+ * Agents should call this every 60 seconds while working.
+ * This tracks agent liveness separate from seed submissions.
+ * Used by stall watcher and /api/build/active to detect live agents.
+ */
+app.post('/api/heartbeat/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const { agent_id, status, current_seed } = req.body;
+
+  const now = Date.now();
+  const existing = agentHeartbeats.get(courseCode);
+
+  agentHeartbeats.set(courseCode, {
+    lastHeartbeat: now,
+    agentId: agent_id || existing?.agentId || 'unknown',
+    status: status || 'working',
+    currentSeed: current_seed || existing?.currentSeed || null,
+    startedAt: existing?.startedAt || now
+  });
+
+  console.log(`[HEARTBEAT] ${courseCode}: agent=${agent_id || 'unknown'} status=${status || 'working'} seed=${current_seed || '?'}`);
+
+  res.json({
+    ok: true,
+    course_code: courseCode,
+    heartbeat_interval_ms: 60000,
+    timeout_ms: HEARTBEAT_TIMEOUT_MS,
+    message: 'Heartbeat received'
+  });
+});
+
+/**
+ * GET /api/heartbeats - Get all active heartbeats
+ */
+app.get('/api/heartbeats', (req, res) => {
+  const now = Date.now();
+  const heartbeats = [];
+
+  for (const [courseCode, hb] of agentHeartbeats.entries()) {
+    const elapsed = now - hb.lastHeartbeat;
+    const isAlive = elapsed < HEARTBEAT_TIMEOUT_MS;
+
+    heartbeats.push({
+      course_code: courseCode,
+      agent_id: hb.agentId,
+      status: hb.status,
+      current_seed: hb.currentSeed,
+      last_heartbeat: new Date(hb.lastHeartbeat).toISOString(),
+      elapsed_ms: elapsed,
+      is_alive: isAlive,
+      started_at: new Date(hb.startedAt).toISOString()
+    });
+  }
+
+  res.json({
+    active_agents: heartbeats.filter(h => h.is_alive).length,
+    heartbeats
   });
 });
 
@@ -3919,9 +4512,9 @@ app.post('/api/build/start/:courseCode', async (req, res) => {
 /**
  * POST /api/build/stop/:courseCode - Stop an active build
  */
-app.post('/api/build/stop/:courseCode', (req, res) => {
+app.post('/api/build/stop/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const result = stopBuild(courseCode);
+  const result = await stopBuild(courseCode);
   res.json(result);
 });
 
@@ -3941,18 +4534,73 @@ app.get('/api/build/status/:courseCode', async (req, res) => {
 
 /**
  * GET /api/build/active - List all active builds
+ *
+ * Returns builds from two sources:
+ * 1. Formally registered builds (activeBuilds Map)
+ * 2. Courses with recent activity (courseActivity Map) - detected from API submissions
  */
 app.get('/api/build/active', async (req, res) => {
   const builds = [];
+  const seenCourses = new Set();
 
+  // 1. Formally registered builds
   for (const [courseCode, build] of activeBuilds.entries()) {
+    seenCourses.add(courseCode);
     const progress = await getBuildProgress(courseCode);
     builds.push({
       course_code: courseCode,
       status: build.status,
       agent_count: build.agentCount,
-      progress: progress
+      progress: progress,
+      source: 'registered'
     });
+  }
+
+  // 2. Courses with recent activity (not stalled, not already in activeBuilds)
+  const now = Date.now();
+  for (const [courseCode, activity] of courseActivity.entries()) {
+    if (seenCourses.has(courseCode)) continue;
+
+    const elapsed = now - activity.lastSubmission;
+    const isActive = elapsed < STALL_THRESHOLD_MS;  // Active if submission within 5 min
+
+    if (isActive) {
+      const progress = await getBuildProgress(courseCode);
+      builds.push({
+        course_code: courseCode,
+        status: activity.status === 'BATCH_COMPLETE' ? 'batch_complete' : 'agent_running',
+        agent_count: 1,  // Assume 1 agent if detected from activity
+        progress: progress,
+        source: 'activity',
+        last_seed: activity.lastSeed,
+        seeds_this_session: activity.seedsThisSession,
+        last_submission: new Date(activity.lastSubmission).toISOString()
+      });
+      seenCourses.add(courseCode);
+    }
+  }
+
+  // 3. Courses with active heartbeats (agent alive but may not have submitted yet)
+  for (const [courseCode, hb] of agentHeartbeats.entries()) {
+    if (seenCourses.has(courseCode)) continue;
+
+    const elapsed = now - hb.lastHeartbeat;
+    const isAlive = elapsed < HEARTBEAT_TIMEOUT_MS;  // Alive if heartbeat within 3 min
+
+    if (isAlive) {
+      const progress = await getBuildProgress(courseCode);
+      builds.push({
+        course_code: courseCode,
+        status: 'agent_running',
+        agent_count: 1,
+        progress: progress,
+        source: 'heartbeat',
+        agent_id: hb.agentId,
+        current_seed: hb.currentSeed,
+        last_heartbeat: new Date(hb.lastHeartbeat).toISOString()
+      });
+      seenCourses.add(courseCode);
+    }
   }
 
   res.json({
@@ -5200,6 +5848,222 @@ app.put('/api/checkpoint/config/:courseCode', async (req, res) => {
   });
 });
 
+// =============================================================================
+// AUTOMATED CHECKPOINT QA ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/checkpoint/qa-sample/:courseCode - Get sample phrases for QA scoring
+ * Returns ~20 USE phrases from the checkpoint range with agent scores hidden initially
+ */
+app.get('/api/checkpoint/qa-sample/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { reveal_scores = 'false', checkpoint } = req.query;
+
+  try {
+    // Get pending QA job info or use query param
+    const qaJob = pendingQAJobs.get(courseCode);
+    const checkpointSeed = checkpoint ? parseInt(checkpoint, 10)
+      : (qaJob?.checkpoint_seed || CHECKPOINT_SEEDS[0]);
+
+    // Find the previous checkpoint seed (range start)
+    const checkpointIndex = CHECKPOINT_SEEDS.indexOf(checkpointSeed);
+    const rangeStart = checkpointIndex > 0 ? CHECKPOINT_SEEDS[checkpointIndex - 1] + 1 : 1;
+    const rangeEnd = checkpointSeed;
+
+    // Get USE phrases from this checkpoint range (seed_number is a direct column)
+    const { data: phrases, error } = await supabase
+      .from('course_practice_phrases')
+      .select('id, seed_number, lego_index, known_text, target_text, metadata')
+      .eq('course_code', courseCode)
+      .eq('phrase_role', 'use')
+      .gte('seed_number', rangeStart)
+      .lte('seed_number', rangeEnd)
+      .order('seed_number', { ascending: true })
+      .limit(100);
+
+    if (error) throw error;
+
+    const inRangePhrases = phrases || [];
+
+    // Randomly sample ~20 phrases
+    const shuffled = inRangePhrases.sort(() => 0.5 - Math.random());
+    const sample = shuffled.slice(0, 20);
+
+    // Calculate agent's average score for comparison
+    const agentScores = sample.map(p => p.metadata?.score).filter(s => typeof s === 'number');
+    const agentAvg = agentScores.length > 0
+      ? (agentScores.reduce((a, b) => a + b, 0) / agentScores.length).toFixed(2)
+      : null;
+
+    // Format response
+    const formattedSample = sample.map(p => ({
+      phrase_id: p.id,
+      known: p.known_text,
+      target: p.target_text,
+      seed: p.seed_number,
+      lego: p.lego_index,
+      // Only reveal agent score if requested (QA should score first)
+      agent_score: reveal_scores === 'true' ? p.metadata?.score : '[HIDDEN - score first]'
+    }));
+
+    res.json({
+      ok: true,
+      course_code: courseCode,
+      checkpoint_seed: checkpointSeed,
+      checkpoint_number: checkpointIndex + 1,
+      range: { start: rangeStart, end: rangeEnd },
+      sample_size: sample.length,
+      agent_avg: reveal_scores === 'true' ? agentAvg : '[HIDDEN]',
+      drift_threshold: QA_DRIFT_THRESHOLD,
+      phrases: formattedSample,
+      instructions: [
+        'Score each phrase 1-9 based on quality (see /checkpoint-qa skill)',
+        'Do NOT look at agent scores until after you score',
+        `POST results to /api/checkpoint/qa-result/${courseCode}`,
+        `Auto-approve if |your_avg - agent_avg| <= ${QA_DRIFT_THRESHOLD}`
+      ]
+    });
+  } catch (err) {
+    console.error(`[QA SAMPLE] Error: ${err.message}`);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/checkpoint/qa-result/:courseCode - Submit QA scoring results
+ * Automatically approves if drift is within threshold, otherwise flags for human review
+ */
+app.post('/api/checkpoint/qa-result/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const { checkpoint_seed, scores, overall_assessment, recommendation } = req.body;
+
+  try {
+    if (!scores || !Array.isArray(scores) || scores.length === 0) {
+      return res.status(400).json({ error: 'Missing scores array' });
+    }
+
+    // Get the QA job info
+    const qaJob = pendingQAJobs.get(courseCode);
+    const actualCheckpointSeed = checkpoint_seed || qaJob?.checkpoint_seed;
+
+    if (!actualCheckpointSeed) {
+      return res.status(400).json({ error: 'No checkpoint_seed provided and no pending QA job' });
+    }
+
+    // Calculate QA average
+    const qaScores = scores.map(s => s.qa_score).filter(s => typeof s === 'number');
+    const qaAvg = qaScores.reduce((a, b) => a + b, 0) / qaScores.length;
+
+    // Get agent scores for the same phrases
+    const phraseIds = scores.map(s => s.phrase_id);
+    const { data: agentPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('id, metadata')
+      .in('id', phraseIds);
+
+    const agentScores = (agentPhrases || [])
+      .map(p => p.metadata?.score)
+      .filter(s => typeof s === 'number');
+    const agentAvg = agentScores.length > 0
+      ? agentScores.reduce((a, b) => a + b, 0) / agentScores.length
+      : qaAvg; // Fallback if no agent scores
+
+    // Calculate drift
+    const drift = Math.abs(qaAvg - agentAvg);
+    const driftOK = drift <= QA_DRIFT_THRESHOLD;
+
+    console.log(`[QA RESULT] ${courseCode} checkpoint ${actualCheckpointSeed}:`);
+    console.log(`  QA avg: ${qaAvg.toFixed(2)}, Agent avg: ${agentAvg.toFixed(2)}, Drift: ${drift.toFixed(2)}`);
+    console.log(`  Drift ${driftOK ? '<=' : '>'} ${QA_DRIFT_THRESHOLD} → ${driftOK ? 'AUTO-APPROVE' : 'FLAG FOR HUMAN'}`);
+
+    // Build QA report
+    const qaReport = {
+      qa_timestamp: new Date().toISOString(),
+      checkpoint_seed: actualCheckpointSeed,
+      sample_size: scores.length,
+      quality_gates: {
+        gate_1_absolute_quality: {
+          qa_avg_score: qaAvg,
+          threshold: 7.0,
+          status: qaAvg >= 7.0 ? 'PASS' : 'FAIL'
+        },
+        gate_4_drift: {
+          avg_agent_score: agentAvg,
+          avg_qa_score: qaAvg,
+          drift: drift,
+          drift_rate: `${(drift * 100 / agentAvg).toFixed(1)}%`,
+          threshold: QA_DRIFT_THRESHOLD,
+          status: driftOK ? 'PASS' : 'FAIL'
+        }
+      },
+      overall_assessment,
+      recommendation: driftOK ? 'approve' : 'flag_human',
+      scored_phrases: scores
+    };
+
+    // Clear pending QA job
+    pendingQAJobs.delete(courseCode);
+
+    // Determine final action
+    if (driftOK && qaAvg >= 7.0) {
+      // Auto-approve
+      await approveCheckpoint(courseCode, actualCheckpointSeed, 'qa_agent', qaReport, 'approved');
+
+      res.json({
+        ok: true,
+        status: 'AUTO_APPROVED',
+        course_code: courseCode,
+        checkpoint_seed: actualCheckpointSeed,
+        qa_avg: qaAvg.toFixed(2),
+        agent_avg: agentAvg.toFixed(2),
+        drift: drift.toFixed(2),
+        drift_threshold: QA_DRIFT_THRESHOLD,
+        message: `Checkpoint ${actualCheckpointSeed} auto-approved. Drift ${drift.toFixed(2)} <= ${QA_DRIFT_THRESHOLD}. Build agent can continue.`,
+        next_action: 'Build agent will automatically continue to next seed'
+      });
+    } else {
+      // Flag for human review
+      const reason = qaAvg < 7.0
+        ? `Quality too low (${qaAvg.toFixed(2)} < 7.0)`
+        : `Drift too high (${drift.toFixed(2)} > ${QA_DRIFT_THRESHOLD})`;
+
+      await approveCheckpoint(courseCode, actualCheckpointSeed, 'qa_agent', qaReport, 'pending_human');
+
+      res.json({
+        ok: true,
+        status: 'FLAGGED_FOR_HUMAN',
+        course_code: courseCode,
+        checkpoint_seed: actualCheckpointSeed,
+        qa_avg: qaAvg.toFixed(2),
+        agent_avg: agentAvg.toFixed(2),
+        drift: drift.toFixed(2),
+        drift_threshold: QA_DRIFT_THRESHOLD,
+        reason,
+        message: `Checkpoint ${actualCheckpointSeed} flagged for human review. ${reason}`,
+        next_action: 'Human must approve at POST /api/checkpoint/approve/' + courseCode
+      });
+    }
+  } catch (err) {
+    console.error(`[QA RESULT] Error: ${err.message}`);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/checkpoint/qa-status/:courseCode - Check if QA is pending
+ */
+app.get('/api/checkpoint/qa-status/:courseCode', (req, res) => {
+  const { courseCode } = req.params;
+  const job = pendingQAJobs.get(courseCode);
+
+  res.json({
+    course_code: courseCode,
+    qa_pending: !!job && job.status === 'running',
+    job: job || null
+  });
+});
+
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
@@ -5245,5 +6109,10 @@ app.listen(PORT, () => {
   console.log(`║  STALL DETECTION: Dashboard polls /api/activity every 60s    ║`);
   console.log(`║  Threshold: ${STALL_THRESHOLD_MS/60000} minutes without submission = STALLED           ║`);
   console.log(`║  On stall: Spawn new agent with /course-resume skill         ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  AUTO-RESPAWN: Enabled - checks every 60s, max ${MAX_AUTO_RESPAWNS} respawns     ║`);
   console.log(`╚══════════════════════════════════════════════════════════════╝\n`);
+
+  // Start the stall watcher for auto-respawning
+  startStallWatcher();
 });

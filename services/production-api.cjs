@@ -623,9 +623,106 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
   }
 })
 
+// =============================================================================
+// MISSION CONTROL - Active Jobs from build_jobs table
+// =============================================================================
+
+/**
+ * GET /api/mission-control/jobs
+ * Returns active build jobs from the build_jobs database table
+ */
+app.get('/api/mission-control/jobs', async (req, res) => {
+  const jobs = []
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.json({ jobs: [], services: {}, timestamp: new Date().toISOString() })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Query build_jobs for active jobs
+    const { data: buildJobs, error } = await supabase
+      .from('build_jobs')
+      .select('*')
+      .in('status', ['pending', 'running', 'stalled'])
+      .order('started_at', { ascending: false })
+
+    if (error) {
+      logger.warn('[Mission Control] Could not fetch build_jobs:', error.message)
+    } else if (buildJobs && buildJobs.length > 0) {
+      for (const row of buildJobs) {
+        const totalSeeds = row.total_seeds || 1
+        const seedsCompleted = row.seeds_completed || 0
+
+        jobs.push({
+          id: `${row.course_code}-build`,
+          courseCode: row.course_code,
+          service: 'course-builder',
+          type: 'build',
+          status: row.status,
+          startedAt: row.started_at,
+          canStop: row.status === 'running',
+          progress: {
+            current: seedsCompleted,
+            total: totalSeeds,
+            percentage: Math.round((seedsCompleted / totalSeeds) * 100)
+          },
+          metadata: {
+            pass: row.pass,
+            currentSeed: row.current_seed,
+            requestedBy: row.requested_by,
+            lastHeartbeat: row.last_heartbeat,
+            errorMessage: row.error_message
+          }
+        })
+      }
+    }
+  } catch (err) {
+    logger.error('[Mission Control] Error fetching jobs:', err.message)
+  }
+
+  res.json({
+    jobs,
+    services: {},
+    timestamp: new Date().toISOString()
+  })
+})
+
+/**
+ * POST /api/mission-control/jobs/:jobId/stop
+ * Stop a job - proxies to course-builder for build jobs
+ */
+app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
+  const { jobId } = req.params
+
+  // Parse job ID: {courseCode}-{type}
+  const match = jobId.match(/^(.+)-(build|audio)$/)
+  if (!match) {
+    return res.status(400).json({ success: false, error: 'Invalid job ID format' })
+  }
+
+  const [, courseCode, jobType] = match
+
+  if (jobType === 'build') {
+    // Proxy to course-builder
+    try {
+      const response = await fetch(`${COURSE_BUILDER_URL}/api/build/stop/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      const data = await response.json()
+      return res.json({ success: data.ok, ...data })
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message })
+    }
+  }
+
+  res.status(400).json({ success: false, error: `Unknown job type: ${jobType}` })
+})
+
 // PM2 service management routes - keep proxying to orchestrator for now
 // These are admin-only and rarely used; can be migrated later
-app.all('/api/mission-control/*', proxyOrchestrator)
 app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)

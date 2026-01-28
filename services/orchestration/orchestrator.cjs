@@ -9099,7 +9099,7 @@ app.get('/api/courses/:courseCode/script', async (req, res) => {
 
       if (phrase.phrase_role === 'practice') {
         group.practice.push(phrase);
-      } else if (phrase.phrase_role === 'eternal_eligible') {
+      } else if (phrase.phrase_role === 'use') {
         group.eternal.push(phrase);
       }
     }
@@ -10605,6 +10605,65 @@ app.get('/api/mission-control/jobs', async (req, res) => {
         canResume: false
       });
     }
+  }
+
+  // 4. Get persisted build jobs from Supabase build_jobs table
+  // This provides persistence - jobs survive service restarts
+  try {
+    const { supabase, isInitialized } = require('../supabase-client.cjs');
+    if (supabase && isInitialized()) {
+      const { data: buildJobsData, error: buildJobsError } = await supabase
+        .from('build_jobs')
+        .select('*')
+        .in('status', ['pending', 'running', 'stalled'])
+        .order('started_at', { ascending: false });
+
+      if (buildJobsError) {
+        console.warn('[Mission Control] Could not fetch build_jobs:', buildJobsError.message);
+      } else if (buildJobsData && buildJobsData.length > 0) {
+        // Track which course codes already have jobs from live services
+        const existingCourseCodes = new Set(
+          jobs.filter(j => j.type === 'build').map(j => j.courseCode)
+        );
+
+        for (const row of buildJobsData) {
+          // Skip if we already have a live job for this course from Course Builder
+          if (existingCourseCodes.has(row.course_code)) {
+            continue;
+          }
+
+          const totalSeeds = row.total_seeds || 1; // Avoid division by zero
+          const seedsCompleted = row.seeds_completed || 0;
+
+          jobs.push({
+            id: `${row.course_code}-build`,
+            courseCode: row.course_code,
+            service: 'course-builder',
+            type: 'build',
+            status: row.status,
+            startedAt: row.started_at,
+            canStop: row.status === 'running',
+            canPause: false,
+            canResume: false,
+            progress: {
+              current: seedsCompleted,
+              total: totalSeeds,
+              percentage: Math.round((seedsCompleted / totalSeeds) * 100)
+            },
+            metadata: {
+              pass: row.pass,
+              currentSeed: row.current_seed,
+              requestedBy: row.requested_by,
+              lastHeartbeat: row.last_heartbeat,
+              errorMessage: row.error_message,
+              source: 'database' // Indicates this came from persisted storage
+            }
+          });
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[Mission Control] Could not fetch build_jobs from database:', err.message);
   }
 
   res.json({
