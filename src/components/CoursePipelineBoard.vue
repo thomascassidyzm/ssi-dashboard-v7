@@ -7,6 +7,22 @@
         <span class="course-count">{{ courses.length }} courses</span>
       </div>
       <div class="header-actions">
+        <!-- Hidden courses toggle -->
+        <button
+          v-if="hiddenCourses.length > 0"
+          class="hidden-toggle"
+          :class="{ active: showHidden }"
+          @click="showHidden = !showHidden"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path v-if="showHidden" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle v-if="showHidden" cx="12" cy="12" r="3"/>
+            <path v-if="!showHidden" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+            <line v-if="!showHidden" x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+          <span>{{ hiddenCourses.length }} hidden</span>
+        </button>
+
         <div class="search-box" :class="{ focused: searchFocused }">
           <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="11" cy="11" r="8"/>
@@ -50,7 +66,7 @@
               v-for="course in lane.courses"
               :key="course.code"
               class="course-card"
-              :class="{ active: activeCourse === course.code }"
+              :class="{ active: activeCourse === course.code, hidden: isHidden(course.code) }"
               @click="handleCourseClick(course)"
               @mouseenter="activeCourse = course.code"
               @mouseleave="activeCourse = null"
@@ -62,7 +78,30 @@
                   <span class="card-arrow">for</span>
                   <span class="card-speakers">{{ getKnownLanguage(course.code) }}</span>
                 </div>
-                <span class="card-code">{{ course.code }}</span>
+                <div class="card-header-row">
+                  <span class="card-code">{{ course.code }}</span>
+                  <button
+                    v-if="!isHidden(course.code)"
+                    class="hide-btn"
+                    @click.stop="hideCourse(course.code)"
+                    title="Hide this course"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
+                  <button
+                    v-else
+                    class="unhide-btn"
+                    @click.stop="unhideCourse(course.code)"
+                    title="Show this course"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <!-- Progress Ring -->
@@ -192,6 +231,40 @@ const router = useRouter()
 const searchQuery = ref('')
 const searchFocused = ref(false)
 const activeCourse = ref(null)
+const showHidden = ref(false)
+
+// Hidden courses - persisted in localStorage
+const HIDDEN_STORAGE_KEY = 'ssi-pipeline-hidden-courses'
+const hiddenCourses = ref(loadHiddenCourses())
+
+function loadHiddenCourses() {
+  try {
+    const stored = localStorage.getItem(HIDDEN_STORAGE_KEY)
+    return stored ? JSON.parse(stored) : []
+  } catch {
+    return []
+  }
+}
+
+function saveHiddenCourses() {
+  localStorage.setItem(HIDDEN_STORAGE_KEY, JSON.stringify(hiddenCourses.value))
+}
+
+function hideCourse(code) {
+  if (!hiddenCourses.value.includes(code)) {
+    hiddenCourses.value.push(code)
+    saveHiddenCourses()
+  }
+}
+
+function unhideCourse(code) {
+  hiddenCourses.value = hiddenCourses.value.filter(c => c !== code)
+  saveHiddenCourses()
+}
+
+function isHidden(code) {
+  return hiddenCourses.value.includes(code)
+}
 
 // Language name mapping
 const languageNames = {
@@ -253,15 +326,26 @@ function getBuildStatus(course) {
   return 'not_started'
 }
 
-// Filter courses
+// Filter courses (exclude hidden unless showHidden is true)
 const filteredCourses = computed(() => {
-  if (!searchQuery.value.trim()) return props.courses
-  const q = searchQuery.value.toLowerCase()
-  return props.courses.filter(c => {
-    const name = (c.name || '').toLowerCase()
-    const code = (c.code || '').toLowerCase()
-    return name.includes(q) || code.includes(q)
-  })
+  let courses = props.courses
+
+  // Filter out hidden courses unless showing them
+  if (!showHidden.value) {
+    courses = courses.filter(c => !isHidden(c.code))
+  }
+
+  // Apply search filter
+  if (searchQuery.value.trim()) {
+    const q = searchQuery.value.toLowerCase()
+    courses = courses.filter(c => {
+      const name = (c.name || '').toLowerCase()
+      const code = (c.code || '').toLowerCase()
+      return name.includes(q) || code.includes(q)
+    })
+  }
+
+  return courses
 })
 
 // Pipeline lanes
@@ -438,6 +522,34 @@ function handleAction(course, action) {
   font-weight: 500;
 }
 
+/* Hidden toggle button */
+.hidden-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--pb-surface);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pb-text-muted);
+  transition: all 0.2s;
+}
+
+.hidden-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--pb-text-dim);
+}
+
+.hidden-toggle.active {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
 .search-box {
   display: flex;
   align-items: center;
@@ -587,6 +699,11 @@ function handleAction(course, action) {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
+.course-card.hidden {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
 .card-header {
   display: flex;
   flex-direction: column;
@@ -619,11 +736,53 @@ function handleAction(course, action) {
   color: var(--pb-text-dim);
 }
 
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
 .card-code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.625rem;
   color: var(--pb-text-muted);
   letter-spacing: 0.02em;
+}
+
+.hide-btn,
+.unhide-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--pb-text-muted);
+  opacity: 0;
+  transition: all 0.15s;
+}
+
+.course-card:hover .hide-btn,
+.course-card:hover .unhide-btn {
+  opacity: 1;
+}
+
+.hide-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.unhide-btn {
+  opacity: 1;
+  color: #8b5cf6;
+}
+
+.unhide-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
 }
 
 /* Progress Ring */
