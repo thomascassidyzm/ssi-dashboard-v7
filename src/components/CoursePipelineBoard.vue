@@ -15,7 +15,7 @@
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Filter..."
+            placeholder="Search..."
             @focus="searchFocused = true"
             @blur="searchFocused = false"
           />
