@@ -227,18 +227,18 @@
         </div>
       </section>
 
-      <!-- Course Overview Table -->
+      <!-- Course Pipeline Board -->
       <section class="courses-section">
         <div class="section-header">
-          <span class="section-label">COURSE OVERVIEW</span>
+          <span class="section-label">COURSE PIPELINE</span>
           <div class="section-line"></div>
         </div>
 
-        <div class="table-container">
-          <CourseStatusTable
+        <div class="pipeline-container">
+          <CoursePipelineBoard
             :courses="coursesWithStatus"
             :loading="loadingCourses"
-            @update-status="handlePlatformStatusUpdate"
+            @action="handlePipelineAction"
           />
         </div>
       </section>
@@ -260,7 +260,7 @@ import { useRouter } from 'vue-router'
 import api from '../services/api'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import ImportCourseModal from '../components/ImportCourseModal.vue'
-import CourseStatusTable from '../components/CourseStatusTable.vue'
+import CoursePipelineBoard from '../components/CoursePipelineBoard.vue'
 
 const router = useRouter()
 
@@ -385,6 +385,12 @@ async function handlePlatformStatusUpdate({ courseCode, platform, status }) {
   } catch (err) {
     console.error('Failed to update platform status:', err)
   }
+}
+
+// Handle pipeline board actions
+function handlePipelineAction({ course, action }) {
+  console.log('Pipeline action:', action, 'for course:', course.code)
+  // Actions are handled by the board component via router navigation
 }
 
 // Load courses
@@ -1159,7 +1165,7 @@ button.action-card {
   margin-top: 2.5rem;
 }
 
-.table-container {
+.pipeline-container {
   background: var(--mc-surface);
   border: 1px solid var(--mc-border);
   border-radius: 12px;
