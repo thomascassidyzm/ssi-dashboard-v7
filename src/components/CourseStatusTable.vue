@@ -1,154 +1,279 @@
 <template>
-  <div class="course-status-table">
-    <!-- Search bar -->
-    <div class="search-bar">
-      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/>
-        <path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search courses..."
-        class="search-input"
-      />
-      <span v-if="searchQuery" class="search-count">{{ filteredCourses.length }} of {{ courses.length }}</span>
-      <button v-if="searchQuery" class="search-clear" @click="searchQuery = ''">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6 6 18M6 6l12 12"/>
+  <div class="course-command-center">
+    <!-- Pipeline Status Overview -->
+    <div class="pipeline-overview">
+      <div class="pipeline-header">
+        <h3 class="pipeline-title">Pipeline Status</h3>
+        <span class="total-count">{{ courses.length }} courses</span>
+      </div>
+
+      <div class="status-rail">
+        <button
+          v-for="bucket in statusBuckets"
+          :key="bucket.key"
+          class="status-chip"
+          :class="{
+            active: activeFilter === bucket.key,
+            empty: bucket.count === 0
+          }"
+          :data-status="bucket.key"
+          @click="toggleFilter(bucket.key)"
+        >
+          <span class="chip-indicator" :class="bucket.indicatorClass"></span>
+          <span class="chip-label">{{ bucket.label }}</span>
+          <span class="chip-count">{{ bucket.count }}</span>
+        </button>
+      </div>
+
+      <!-- Active filter indicator -->
+      <Transition name="filter-bar">
+        <div v-if="activeFilter" class="active-filter-bar">
+          <span class="filter-label">Showing: {{ activeFilterLabel }}</span>
+          <button class="clear-filter" @click="clearFilter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+            Clear
+          </button>
+        </div>
+      </Transition>
+    </div>
+
+    <!-- Search and Controls -->
+    <div class="controls-bar">
+      <div class="search-field">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
         </svg>
-      </button>
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search courses..."
+          class="search-input"
+        />
+        <Transition name="fade">
+          <span v-if="searchQuery" class="search-meta">
+            {{ filteredCourses.length }}<span class="search-meta-dim">/{{ courses.length }}</span>
+          </span>
+        </Transition>
+        <Transition name="fade">
+          <button v-if="searchQuery" class="search-clear" @click="searchQuery = ''">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </Transition>
+      </div>
+
+      <div class="view-controls">
+        <span class="sort-label">Sort:</span>
+        <button
+          class="sort-btn"
+          :class="{ active: sortColumn === 'priority' }"
+          @click="setSort('priority')"
+        >
+          Priority
+        </button>
+        <button
+          class="sort-btn"
+          :class="{ active: sortColumn === 'name' }"
+          @click="setSort('name')"
+        >
+          A–Z
+        </button>
+        <button
+          class="sort-btn"
+          :class="{ active: sortColumn === 'build' }"
+          @click="setSort('build')"
+        >
+          Build
+        </button>
+      </div>
     </div>
 
     <!-- Loading state -->
-    <div v-if="loading" class="loading-state">
-      <div class="loading-spinner"></div>
-      <span>Loading courses...</span>
+    <div v-if="loading" class="state-container">
+      <div class="loading-animation">
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+      </div>
+      <span class="state-text">Loading courses...</span>
     </div>
 
     <!-- Empty state -->
-    <div v-else-if="!courses || courses.length === 0" class="empty-state">
-      <span>No courses found</span>
+    <div v-else-if="!courses || courses.length === 0" class="state-container">
+      <div class="empty-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+      </div>
+      <span class="state-text">No courses found</span>
     </div>
 
     <!-- No results state -->
-    <div v-else-if="filteredCourses.length === 0" class="empty-state">
-      <span>No courses match "{{ searchQuery }}"</span>
+    <div v-else-if="displayedCourses.length === 0" class="state-container">
+      <span class="state-text">No courses match your criteria</span>
+      <button class="reset-btn" @click="resetFilters">Reset filters</button>
     </div>
 
-    <!-- Table -->
-    <table v-else class="status-table">
-      <thead>
-        <tr>
-          <th class="col-course sortable" @click="toggleSort('name')">
-            Course
-            <span class="sort-indicator" :class="{ active: sortColumn === 'name' }">
-              {{ sortColumn === 'name' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
-            </span>
-          </th>
-          <th class="col-build sortable" @click="toggleSort('build')">
-            Build
-            <span class="sort-indicator" :class="{ active: sortColumn === 'build' }">
-              {{ sortColumn === 'build' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
-            </span>
-          </th>
-          <th class="col-platform sortable" @click="toggleSort('newApp')">
-            New App
-            <span class="sort-indicator" :class="{ active: sortColumn === 'newApp' }">
-              {{ sortColumn === 'newApp' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
-            </span>
-          </th>
-          <th class="col-platform sortable" @click="toggleSort('legacyApp')">
-            Legacy App
-            <span class="sort-indicator" :class="{ active: sortColumn === 'legacyApp' }">
-              {{ sortColumn === 'legacyApp' ? (sortDirection === 'asc' ? '↑' : '↓') : '↕' }}
-            </span>
-          </th>
-          <th class="col-actions"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="course in sortedCourses"
-          :key="course.code"
-          class="course-row"
-          @click="handleRowClick(course.code)"
-        >
-          <td class="col-course">
-            <div class="course-info">
-              <span class="course-name">{{ course.name }}</span>
-              <span class="course-code">{{ course.code }}</span>
+    <!-- Course List -->
+    <div v-else class="course-list">
+      <!-- Grouped display when filter is active -->
+      <template v-if="!activeFilter">
+        <template v-for="group in groupedCourses" :key="group.key">
+          <div v-if="group.courses.length > 0" class="course-group">
+            <div class="group-header" :data-priority="group.priority">
+              <span class="group-indicator" :class="group.indicatorClass"></span>
+              <span class="group-label">{{ group.label }}</span>
+              <span class="group-count">{{ group.courses.length }}</span>
+              <div class="group-line"></div>
             </div>
-          </td>
-          <td class="col-build">
-            <BuildProgressIndicator
-              :stats="course.stats"
-              :content-status="course.contentStatus"
-              :target-seeds="course.targetSeeds || 260"
-            />
-          </td>
-          <td class="col-platform">
-            <PlatformStatusBadge
-              :status="course.newAppStatus || 'not_available'"
-              :beta-days="course.newAppBetaDays"
-              :editable="true"
-              platform="new_app"
-              @update="handleStatusUpdate(course.code, $event)"
-            />
-          </td>
-          <td class="col-platform">
-            <PlatformStatusBadge
-              :status="course.legacyAppStatus || 'not_available'"
-              :beta-days="course.legacyAppBetaDays"
-              :editable="true"
-              platform="legacy_app"
-              :new-app-status="course.newAppStatus"
-              @update="handleStatusUpdate(course.code, $event)"
-            />
-          </td>
-          <td class="col-actions">
-            <button class="action-btn" @click.stop="openMenu(course.code, $event)" title="More options">
+            <TransitionGroup name="list" tag="div" class="group-courses">
+              <div
+                v-for="course in group.courses"
+                :key="course.code"
+                class="course-card"
+                :class="{ attention: needsAttention(course) }"
+                @click="handleRowClick(course.code)"
+              >
+                <div class="card-main">
+                  <div class="course-identity">
+                    <span class="course-name">{{ course.name }}</span>
+                    <span class="course-code">{{ course.code }}</span>
+                  </div>
+
+                  <div class="card-status">
+                    <BuildProgressIndicator
+                      :stats="course.stats"
+                      :content-status="course.contentStatus"
+                      :target-seeds="course.targetSeeds || 260"
+                    />
+                  </div>
+
+                  <div class="card-platforms">
+                    <PlatformStatusBadge
+                      :status="course.newAppStatus || 'not_available'"
+                      :beta-days="course.newAppBetaDays"
+                      :editable="true"
+                      platform="new_app"
+                      @update="handleStatusUpdate(course.code, $event)"
+                    />
+                    <PlatformStatusBadge
+                      :status="course.legacyAppStatus || 'not_available'"
+                      :beta-days="course.legacyAppBetaDays"
+                      :editable="true"
+                      platform="legacy_app"
+                      :new-app-status="course.newAppStatus"
+                      @update="handleStatusUpdate(course.code, $event)"
+                    />
+                  </div>
+                </div>
+
+                <button class="card-actions" @click.stop="openMenu(course.code, $event)" title="More options">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
+                    <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+                    <circle cx="8" cy="13" r="1.5" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </TransitionGroup>
+          </div>
+        </template>
+      </template>
+
+      <!-- Flat display when filter is active -->
+      <template v-else>
+        <TransitionGroup name="list" tag="div" class="flat-list">
+          <div
+            v-for="course in displayedCourses"
+            :key="course.code"
+            class="course-card"
+            :class="{ attention: needsAttention(course) }"
+            @click="handleRowClick(course.code)"
+          >
+            <div class="card-main">
+              <div class="course-identity">
+                <span class="course-name">{{ course.name }}</span>
+                <span class="course-code">{{ course.code }}</span>
+              </div>
+
+              <div class="card-status">
+                <BuildProgressIndicator
+                  :stats="course.stats"
+                  :content-status="course.contentStatus"
+                  :target-seeds="course.targetSeeds || 260"
+                />
+              </div>
+
+              <div class="card-platforms">
+                <PlatformStatusBadge
+                  :status="course.newAppStatus || 'not_available'"
+                  :beta-days="course.newAppBetaDays"
+                  :editable="true"
+                  platform="new_app"
+                  @update="handleStatusUpdate(course.code, $event)"
+                />
+                <PlatformStatusBadge
+                  :status="course.legacyAppStatus || 'not_available'"
+                  :beta-days="course.legacyAppBetaDays"
+                  :editable="true"
+                  platform="legacy_app"
+                  :new-app-status="course.newAppStatus"
+                  @update="handleStatusUpdate(course.code, $event)"
+                />
+              </div>
+            </div>
+
+            <button class="card-actions" @click.stop="openMenu(course.code, $event)" title="More options">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
                 <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
                 <circle cx="8" cy="13" r="1.5" fill="currentColor"/>
               </svg>
             </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </TransitionGroup>
+      </template>
+    </div>
 
     <!-- Context menu -->
-    <div
-      v-if="menuOpen"
-      class="context-menu"
-      :style="menuPosition"
-      ref="contextMenu"
-    >
-      <button class="menu-item" @click="viewCourse">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-        View Course
-      </button>
-      <button class="menu-item" @click="goToAudioPipeline">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-        </svg>
-        Audio Pipeline
-      </button>
-      <div class="menu-divider"></div>
-      <button class="menu-item danger" @click="deprecateCourse">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
-          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-        </svg>
-        Deprecate
-      </button>
-    </div>
+    <Teleport to="body">
+      <Transition name="menu">
+        <div
+          v-if="menuOpen"
+          class="context-menu"
+          :style="menuPosition"
+          ref="contextMenu"
+        >
+          <button class="menu-item" @click="viewCourse">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            View Course
+          </button>
+          <button class="menu-item" @click="goToAudioPipeline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+            Audio Pipeline
+          </button>
+          <div class="menu-divider"></div>
+          <button class="menu-item danger" @click="deprecateCourse">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+              <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+            Deprecate
+          </button>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -177,30 +302,10 @@ const menuCourseCode = ref(null)
 const menuPosition = ref({ top: '0px', left: '0px' })
 const contextMenu = ref(null)
 
-// Search and sort state
+// Search, filter, and sort state
 const searchQuery = ref('')
-const sortColumn = ref('newApp') // Default sort by New App status
-const sortDirection = ref('asc')
-
-// Status order for sorting (best status first)
-const statusOrder = {
-  released: 0,
-  beta: 1,
-  testing: 2,
-  draft: 3,
-  not_available: 4,
-  deprecated: 5
-}
-
-// Build status order (most complete first)
-const buildStatusOrder = {
-  ready: 0,
-  audio_generating: 1,
-  audio_pending: 2,
-  building: 3,
-  seeds_only: 4,
-  empty: 5
-}
+const activeFilter = ref(null)
+const sortColumn = ref('priority') // Smart default: priority sort
 
 // Get derived build status from stats
 function getBuildStatus(course) {
@@ -212,75 +317,250 @@ function getBuildStatus(course) {
   return 'empty'
 }
 
-// Toggle sort column/direction
-function toggleSort(column) {
-  if (sortColumn.value === column) {
-    sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
-  } else {
-    sortColumn.value = column
-    sortDirection.value = 'asc'
-  }
+// Check if course needs attention (for visual emphasis)
+function needsAttention(course) {
+  const buildStatus = getBuildStatus(course)
+  return buildStatus === 'audio_pending' || buildStatus === 'building'
 }
+
+// Priority score (lower = needs more attention)
+function getPriorityScore(course) {
+  const buildStatus = getBuildStatus(course)
+  const newApp = course.newAppStatus || 'not_available'
+  const legacyApp = course.legacyAppStatus || 'not_available'
+
+  // Highest priority: audio pending (ready for next step)
+  if (buildStatus === 'audio_pending') return 1
+
+  // High priority: building (active work)
+  if (buildStatus === 'building') return 2
+
+  // Medium priority: ready but not deployed
+  if (buildStatus === 'ready' && newApp === 'not_available') return 3
+
+  // Medium-low: ready, in beta (needs testing)
+  if (buildStatus === 'ready' && newApp === 'beta') return 4
+
+  // Lower: ready and live but legacy needs work
+  if (buildStatus === 'ready' && newApp === 'live' && legacyApp !== 'live') return 5
+
+  // Seeds only
+  if (buildStatus === 'seeds_only') return 6
+
+  // Empty courses
+  if (buildStatus === 'empty') return 7
+
+  // Fully deployed (lowest priority - done!)
+  return 8
+}
+
+// Status buckets for the filter rail
+const statusBuckets = computed(() => {
+  const courses = props.courses || []
+
+  const buckets = [
+    {
+      key: 'audio_pending',
+      label: 'Audio Pending',
+      indicatorClass: 'indicator-audio-pending',
+      count: 0
+    },
+    {
+      key: 'building',
+      label: 'Building',
+      indicatorClass: 'indicator-building',
+      count: 0
+    },
+    {
+      key: 'ready_not_deployed',
+      label: 'Ready',
+      indicatorClass: 'indicator-ready',
+      count: 0
+    },
+    {
+      key: 'in_beta',
+      label: 'Beta',
+      indicatorClass: 'indicator-beta',
+      count: 0
+    },
+    {
+      key: 'needs_legacy',
+      label: 'Legacy Testing',
+      indicatorClass: 'indicator-legacy',
+      count: 0
+    },
+    {
+      key: 'live',
+      label: 'Live',
+      indicatorClass: 'indicator-live',
+      count: 0
+    }
+  ]
+
+  courses.forEach(course => {
+    const buildStatus = getBuildStatus(course)
+    const newApp = course.newAppStatus || 'not_available'
+    const legacyApp = course.legacyAppStatus || 'not_available'
+
+    if (buildStatus === 'audio_pending') {
+      buckets[0].count++
+    } else if (buildStatus === 'building' || buildStatus === 'seeds_only') {
+      buckets[1].count++
+    } else if (buildStatus === 'ready') {
+      if (newApp === 'not_available' || newApp === 'draft') {
+        buckets[2].count++
+      } else if (newApp === 'beta') {
+        buckets[3].count++
+      } else if (newApp === 'live' && legacyApp !== 'live') {
+        buckets[4].count++
+      } else if (newApp === 'live' && legacyApp === 'live') {
+        buckets[5].count++
+      }
+    }
+  })
+
+  return buckets
+})
+
+// Active filter label
+const activeFilterLabel = computed(() => {
+  if (!activeFilter.value) return ''
+  const bucket = statusBuckets.value.find(b => b.key === activeFilter.value)
+  return bucket ? bucket.label : ''
+})
 
 // Filter courses by search query
 const filteredCourses = computed(() => {
-  if (!searchQuery.value.trim()) return props.courses
+  let courses = props.courses || []
 
-  const query = searchQuery.value.toLowerCase().trim()
-  return props.courses.filter(course => {
-    const name = (course.name || '').toLowerCase()
-    const code = (course.code || '').toLowerCase()
-    return name.includes(query) || code.includes(query)
-  })
+  // Apply search filter
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase().trim()
+    courses = courses.filter(course => {
+      const name = (course.name || '').toLowerCase()
+      const code = (course.code || '').toLowerCase()
+      return name.includes(query) || code.includes(query)
+    })
+  }
+
+  // Apply status filter
+  if (activeFilter.value) {
+    courses = courses.filter(course => {
+      const buildStatus = getBuildStatus(course)
+      const newApp = course.newAppStatus || 'not_available'
+      const legacyApp = course.legacyAppStatus || 'not_available'
+
+      switch (activeFilter.value) {
+        case 'audio_pending':
+          return buildStatus === 'audio_pending'
+        case 'building':
+          return buildStatus === 'building' || buildStatus === 'seeds_only'
+        case 'ready_not_deployed':
+          return buildStatus === 'ready' && (newApp === 'not_available' || newApp === 'draft')
+        case 'in_beta':
+          return buildStatus === 'ready' && newApp === 'beta'
+        case 'needs_legacy':
+          return buildStatus === 'ready' && newApp === 'live' && legacyApp !== 'live'
+        case 'live':
+          return buildStatus === 'ready' && newApp === 'live' && legacyApp === 'live'
+        default:
+          return true
+      }
+    })
+  }
+
+  return courses
 })
 
 // Sort filtered courses
 const sortedCourses = computed(() => {
   const courses = [...filteredCourses.value]
-  const dir = sortDirection.value === 'asc' ? 1 : -1
 
   return courses.sort((a, b) => {
-    let comparison = 0
-
     switch (sortColumn.value) {
+      case 'priority':
+        const aPriority = getPriorityScore(a)
+        const bPriority = getPriorityScore(b)
+        if (aPriority !== bPriority) return aPriority - bPriority
+        return (a.name || '').localeCompare(b.name || '')
+
       case 'name':
-        comparison = (a.name || '').localeCompare(b.name || '')
-        break
+        return (a.name || '').localeCompare(b.name || '')
 
       case 'build':
-        const aBuild = buildStatusOrder[getBuildStatus(a)] ?? 5
-        const bBuild = buildStatusOrder[getBuildStatus(b)] ?? 5
-        comparison = aBuild - bBuild
-        if (comparison === 0) {
-          comparison = (a.name || '').localeCompare(b.name || '')
-        }
-        break
-
-      case 'newApp':
-        const aNew = statusOrder[a.newAppStatus] ?? 4
-        const bNew = statusOrder[b.newAppStatus] ?? 4
-        comparison = aNew - bNew
-        if (comparison === 0) {
-          comparison = (a.name || '').localeCompare(b.name || '')
-        }
-        break
-
-      case 'legacyApp':
-        const aLegacy = statusOrder[a.legacyAppStatus] ?? 4
-        const bLegacy = statusOrder[b.legacyAppStatus] ?? 4
-        comparison = aLegacy - bLegacy
-        if (comparison === 0) {
-          comparison = (a.name || '').localeCompare(b.name || '')
-        }
-        break
+        const buildOrder = { ready: 0, audio_pending: 1, building: 2, seeds_only: 3, empty: 4 }
+        const aBuild = buildOrder[getBuildStatus(a)] ?? 4
+        const bBuild = buildOrder[getBuildStatus(b)] ?? 4
+        if (aBuild !== bBuild) return aBuild - bBuild
+        return (a.name || '').localeCompare(b.name || '')
 
       default:
-        comparison = (a.name || '').localeCompare(b.name || '')
+        return (a.name || '').localeCompare(b.name || '')
     }
-
-    return comparison * dir
   })
 })
+
+// Displayed courses (final output)
+const displayedCourses = computed(() => sortedCourses.value)
+
+// Grouped courses for default view
+const groupedCourses = computed(() => {
+  const courses = sortedCourses.value
+
+  const groups = [
+    {
+      key: 'attention',
+      label: 'Needs Attention',
+      priority: 'high',
+      indicatorClass: 'indicator-attention',
+      courses: []
+    },
+    {
+      key: 'in_progress',
+      label: 'In Progress',
+      priority: 'medium',
+      indicatorClass: 'indicator-progress',
+      courses: []
+    },
+    {
+      key: 'deployed',
+      label: 'Deployed',
+      priority: 'low',
+      indicatorClass: 'indicator-deployed',
+      courses: []
+    }
+  ]
+
+  courses.forEach(course => {
+    const score = getPriorityScore(course)
+    if (score <= 2) {
+      groups[0].courses.push(course)
+    } else if (score <= 5) {
+      groups[1].courses.push(course)
+    } else {
+      groups[2].courses.push(course)
+    }
+  })
+
+  return groups
+})
+
+function toggleFilter(key) {
+  activeFilter.value = activeFilter.value === key ? null : key
+}
+
+function clearFilter() {
+  activeFilter.value = null
+}
+
+function resetFilters() {
+  activeFilter.value = null
+  searchQuery.value = ''
+}
+
+function setSort(column) {
+  sortColumn.value = column
+}
 
 function handleRowClick(code) {
   router.push(`/production/${code}`)
@@ -292,9 +572,10 @@ function handleStatusUpdate(courseCode, { platform, status }) {
 
 function openMenu(courseCode, event) {
   menuCourseCode.value = courseCode
+  const rect = event.target.getBoundingClientRect()
   menuPosition.value = {
-    top: `${event.clientY}px`,
-    left: `${event.clientX}px`
+    top: `${rect.bottom + 4}px`,
+    left: `${rect.left - 140}px`
   }
   menuOpen.value = true
 }
@@ -335,38 +616,228 @@ function deprecateCourse() {
 }
 
 function handleClickOutside(event) {
-  if (contextMenu.value && !contextMenu.value.contains(event.target)) {
+  if (menuOpen.value && contextMenu.value && !contextMenu.value.contains(event.target)) {
+    closeMenu()
+  }
+}
+
+function handleEscape(event) {
+  if (event.key === 'Escape') {
     closeMenu()
   }
 }
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
+  document.addEventListener('keydown', handleEscape)
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
+  document.removeEventListener('keydown', handleEscape)
 })
 </script>
 
 <style scoped>
-.course-status-table {
+/* CSS Custom Properties */
+.course-command-center {
+  --cc-bg-deep: #0a0f1a;
+  --cc-bg-surface: #0f172a;
+  --cc-bg-elevated: #1e293b;
+  --cc-bg-hover: #334155;
+  --cc-border: #1e3a5f;
+  --cc-border-subtle: rgba(59, 130, 246, 0.15);
+  --cc-text-primary: #f1f5f9;
+  --cc-text-secondary: #94a3b8;
+  --cc-text-muted: #64748b;
+  --cc-accent: #3b82f6;
+  --cc-accent-glow: rgba(59, 130, 246, 0.3);
+  --cc-success: #10b981;
+  --cc-warning: #f59e0b;
+  --cc-danger: #ef4444;
+  --cc-purple: #8b5cf6;
+
   width: 100%;
-  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Search bar */
-.search-bar {
+/* Pipeline Overview Section */
+.pipeline-overview {
+  padding: 1.25rem 1rem 1rem;
+  background: linear-gradient(180deg, var(--cc-bg-deep) 0%, var(--cc-bg-surface) 100%);
+  border-bottom: 1px solid var(--cc-border-subtle);
+}
+
+.pipeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+}
+
+.pipeline-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cc-text-muted);
+  margin: 0;
+}
+
+.total-count {
+  font-size: 0.6875rem;
+  color: var(--cc-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status Rail */
+.status-rail {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: var(--cc-bg-elevated);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.status-chip:hover:not(.empty) {
+  background: var(--cc-bg-hover);
+  border-color: var(--cc-border);
+}
+
+.status-chip.active {
+  background: var(--cc-accent-glow);
+  border-color: var(--cc-accent);
+}
+
+.status-chip.empty {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.chip-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.chip-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cc-text-secondary);
+}
+
+.status-chip.active .chip-label {
+  color: var(--cc-text-primary);
+}
+
+.chip-count {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--cc-text-muted);
+  background: var(--cc-bg-surface);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.status-chip.active .chip-count {
+  background: var(--cc-accent);
+  color: white;
+}
+
+/* Status indicator colors */
+.indicator-audio-pending { background: var(--cc-purple); }
+.indicator-building { background: var(--cc-warning); }
+.indicator-ready { background: var(--cc-accent); }
+.indicator-beta { background: #06b6d4; }
+.indicator-legacy { background: #f97316; }
+.indicator-live { background: var(--cc-success); }
+.indicator-attention { background: var(--cc-purple); }
+.indicator-progress { background: var(--cc-accent); }
+.indicator-deployed { background: var(--cc-success); }
+
+/* Active Filter Bar */
+.active-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--cc-accent-glow);
+  border: 1px solid var(--cc-accent);
+  border-radius: 6px;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cc-text-primary);
+}
+
+.clear-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: 1px solid var(--cc-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--cc-accent);
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.clear-filter:hover {
+  background: var(--cc-accent);
+  color: white;
+}
+
+/* Controls Bar */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--cc-bg-surface);
+  border-bottom: 1px solid var(--cc-border-subtle);
+}
+
+.search-field {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem;
-  background: rgba(15, 23, 42, 0.5);
-  border-bottom: 1px solid #334155;
+  flex: 1;
+  max-width: 320px;
+  padding: 0.5rem 0.75rem;
+  background: var(--cc-bg-elevated);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.search-field:focus-within {
+  border-color: var(--cc-accent);
+  box-shadow: 0 0 0 3px var(--cc-accent-glow);
 }
 
 .search-icon {
-  color: #64748b;
+  color: var(--cc-text-muted);
   flex-shrink: 0;
 }
 
@@ -375,157 +846,289 @@ onUnmounted(() => {
   background: transparent;
   border: none;
   outline: none;
-  color: #f1f5f9;
-  font-size: 0.875rem;
+  color: var(--cc-text-primary);
+  font-size: 0.8125rem;
   font-family: inherit;
 }
 
 .search-input::placeholder {
-  color: #475569;
+  color: var(--cc-text-muted);
 }
 
-.search-count {
-  font-size: 0.75rem;
-  color: #64748b;
-  white-space: nowrap;
+.search-meta {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--cc-text-secondary);
+}
+
+.search-meta-dim {
+  color: var(--cc-text-muted);
 }
 
 .search-clear {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: transparent;
+  width: 20px;
+  height: 20px;
+  background: var(--cc-bg-hover);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  color: #64748b;
+  color: var(--cc-text-muted);
   transition: all 0.15s;
 }
 
 .search-clear:hover {
-  background: #334155;
-  color: #f1f5f9;
+  background: var(--cc-danger);
+  color: white;
 }
 
-.loading-state,
-.empty-state {
+.view-controls {
   display: flex;
   align-items: center;
+  gap: 0.375rem;
+}
+
+.sort-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--cc-text-muted);
+  margin-right: 0.25rem;
+}
+
+.sort-btn {
+  padding: 0.375rem 0.625rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cc-text-muted);
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sort-btn:hover {
+  color: var(--cc-text-secondary);
+  background: var(--cc-bg-elevated);
+}
+
+.sort-btn.active {
+  color: var(--cc-accent);
+  background: var(--cc-accent-glow);
+  border-color: var(--cc-accent);
+}
+
+/* State Containers */
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 2rem;
-  color: #64748b;
+  gap: 1rem;
+  padding: 3rem 1rem;
+  color: var(--cc-text-muted);
+}
+
+.loading-animation {
+  display: flex;
+  gap: 4px;
+}
+
+.loading-bar {
+  width: 4px;
+  height: 20px;
+  background: var(--cc-accent);
+  border-radius: 2px;
+  animation: loading-pulse 1s ease-in-out infinite;
+}
+
+.loading-bar:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loading-bar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.empty-icon {
+  color: var(--cc-text-muted);
+  opacity: 0.5;
+}
+
+.state-text {
   font-size: 0.875rem;
 }
 
-.loading-spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #334155;
-  border-top-color: #3b82f6;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Table */
-.status-table {
-  width: 100%;
-  border-collapse: collapse;
+.reset-btn {
+  padding: 0.5rem 1rem;
+  background: var(--cc-bg-elevated);
+  border: 1px solid var(--cc-border);
+  border-radius: 6px;
+  cursor: pointer;
   font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--cc-text-secondary);
+  font-family: inherit;
+  transition: all 0.15s;
 }
 
-.status-table th {
-  text-align: left;
-  padding: 0.625rem 0.75rem;
-  font-weight: 600;
+.reset-btn:hover {
+  background: var(--cc-bg-hover);
+  color: var(--cc-text-primary);
+}
+
+/* Course List */
+.course-list {
+  padding: 0.5rem;
+}
+
+.flat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Course Groups */
+.course-group {
+  margin-bottom: 1rem;
+}
+
+.course-group:last-child {
+  margin-bottom: 0;
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0.375rem;
+}
+
+.group-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.group-label {
   font-size: 0.6875rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748b;
-  border-bottom: 1px solid #334155;
+  letter-spacing: 0.06em;
+  color: var(--cc-text-muted);
 }
 
-.status-table th.sortable {
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.15s;
+.group-header[data-priority="high"] .group-label {
+  color: var(--cc-purple);
 }
 
-.status-table th.sortable:hover {
-  color: #94a3b8;
+.group-header[data-priority="medium"] .group-label {
+  color: var(--cc-accent);
 }
 
-.sort-indicator {
-  margin-left: 0.25rem;
+.group-count {
   font-size: 0.625rem;
-  opacity: 0.4;
-  transition: opacity 0.15s;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--cc-text-muted);
+  background: var(--cc-bg-elevated);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
 }
 
-.sort-indicator.active {
-  opacity: 1;
-  color: #3b82f6;
+.group-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cc-border-subtle), transparent);
+  margin-left: 0.5rem;
 }
 
-.status-table td {
+.group-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Course Card */
+.course-card {
+  display: flex;
+  align-items: center;
   padding: 0.625rem 0.75rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-  vertical-align: middle;
-}
-
-.course-row {
+  background: var(--cc-bg-elevated);
+  border: 1px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.course-row:hover {
-  background: rgba(59, 130, 246, 0.05);
+.course-card:hover {
+  background: var(--cc-bg-hover);
+  border-color: var(--cc-border);
+  transform: translateX(2px);
 }
 
-/* Column widths */
-.col-course {
-  width: 35%;
+.course-card.attention {
+  border-left: 3px solid var(--cc-purple);
 }
 
-.col-build {
-  width: 20%;
+.card-main {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
+  min-width: 0;
 }
 
-.col-platform {
-  width: 18%;
-}
-
-.col-actions {
-  width: 40px;
-  text-align: center;
-}
-
-/* Course info cell */
-.course-info {
+.course-identity {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
+  min-width: 180px;
+  flex: 1;
 }
 
 .course-name {
-  color: #f1f5f9;
+  font-size: 0.8125rem;
   font-weight: 500;
+  color: var(--cc-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .course-code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6875rem;
-  color: #64748b;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--cc-text-muted);
+  letter-spacing: 0.02em;
 }
 
-/* Actions button */
-.action-btn {
+.card-status {
+  min-width: 140px;
+}
+
+.card-platforms {
+  display: flex;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.card-actions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -533,74 +1136,161 @@ onUnmounted(() => {
   height: 28px;
   background: transparent;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  color: #64748b;
+  color: var(--cc-text-muted);
   transition: all 0.15s;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
-.action-btn:hover {
-  background: #334155;
-  color: #f1f5f9;
+.card-actions:hover {
+  background: var(--cc-bg-surface);
+  color: var(--cc-text-primary);
 }
 
-/* Context menu */
+/* Context Menu */
 .context-menu {
   position: fixed;
   min-width: 160px;
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  background: var(--cc-bg-elevated);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 10000;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   width: 100%;
   padding: 0.625rem 0.875rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #f1f5f9;
+  color: var(--cc-text-primary);
   font-size: 0.8125rem;
+  font-family: inherit;
   text-align: left;
   transition: background 0.15s;
 }
 
 .menu-item:hover {
-  background: #334155;
+  background: var(--cc-bg-hover);
 }
 
 .menu-item.danger {
-  color: #ef4444;
+  color: var(--cc-danger);
 }
 
 .menu-item.danger:hover {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .menu-divider {
   height: 1px;
-  background: #334155;
+  background: var(--cc-border);
   margin: 0.25rem 0;
 }
 
+/* Transitions */
+.filter-bar-enter-active,
+.filter-bar-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-bar-enter-from,
+.filter-bar-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.list-enter-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-leave-active {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-enter-from {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(12px);
+}
+
+.list-move {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-enter-active,
+.menu-leave-active {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
+  transform: scale(0.95) translateY(-4px);
+}
+
 /* Responsive */
+@media (max-width: 900px) {
+  .card-platforms {
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: auto;
+  }
+
+  .card-status {
+    min-width: auto;
+  }
+}
+
 @media (max-width: 768px) {
-  .col-platform {
-    display: none;
+  .controls-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
   }
 
-  .col-course {
-    width: 50%;
+  .search-field {
+    max-width: none;
   }
 
-  .col-build {
-    width: 40%;
+  .view-controls {
+    justify-content: center;
+  }
+
+  .card-main {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .course-identity {
+    flex-basis: 100%;
+  }
+
+  .card-platforms {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 </style>
