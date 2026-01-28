@@ -3218,7 +3218,9 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   const { courseCode } = req.params
   const { options } = req.body
   try {
-    const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {})
+    const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {}, {
+      timeout: 600000 // 10 minutes - audio generation can take a long time for large courses
+    })
     res.json(response.data)
   } catch (error) {
     logger.error(`Audio start error for ${courseCode}:`, error.message)
@@ -3302,6 +3304,8 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
     const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, {
       retry: true,
       ...options
+    }, {
+      timeout: 600000 // 10 minutes - audio generation can take a long time for large courses
     })
     res.json(response.data)
   } catch (error) {
