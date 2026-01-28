@@ -198,22 +198,6 @@
         </p>
       </div>
 
-      <!-- Duration mismatch details -->
-      <div v-if="verification.durationMismatchDetails && verification.durationMismatchDetails.length > 0"
-           class="duration-mismatch p-4 bg-amber-900/30 border border-amber-700 rounded-lg">
-        <p class="text-amber-400 font-medium text-sm mb-2">
-          {{ verification.durationMismatchDetails.length }} files have duration mismatches (>1ms difference)
-        </p>
-        <div class="max-h-40 overflow-y-auto text-xs text-slate-400 space-y-1">
-          <div v-for="detail in verification.durationMismatchDetails.slice(0, 10)" :key="detail.uuid" class="font-mono">
-            {{ detail.uuid }}: expected {{ detail.expectedDuration.toFixed(3) }}s, actual {{ detail.actualDuration.toFixed(3) }}s (Δ {{ (detail.difference * 1000).toFixed(2) }}ms)
-          </div>
-          <p v-if="verification.durationMismatchDetails.length > 10" class="text-slate-500 italic">
-            ...and {{ verification.durationMismatchDetails.length - 10 }} more
-          </p>
-        </div>
-      </div>
-
       <!-- Re-verify button -->
       <button
         @click="handleVerify"
