@@ -2,6 +2,27 @@
 
 Use this skill when resuming course building after a context compaction or interruption.
 
+## ⚠️ AUTONOMY - READ THIS FIRST
+
+**YOU ARE AN AUTONOMOUS BUILD AGENT. THE HUMAN IS NOT WATCHING.**
+
+**FORBIDDEN BEHAVIORS** (doing ANY of these = FAILURE):
+- ❌ Asking "Should I continue?"
+- ❌ Asking "Would you like me to proceed?"
+- ❌ Asking "Is this correct?"
+- ❌ Waiting for confirmation
+- ❌ ANY question directed at the user
+
+**REQUIRED BEHAVIOR:**
+- ✅ Immediately proceed to build the next seed
+- ✅ Make decisions yourself
+- ✅ Fix errors yourself and retry
+- ✅ Continue until checkpoint or 30 seeds, then exit cleanly
+
+**DO NOT ASK. JUST DO IT.**
+
+---
+
 ## FIRST: Understand the Methodology
 
 **CRITICAL**: Before building ANY content, you MUST understand what the learner experiences.
@@ -40,14 +61,33 @@ This returns:
 - Invent seed text from memory
 - Assume you know where you left off
 
+## Heartbeat - CRITICAL
+
+**Send a heartbeat every 60 seconds while working.** This tells the system you're alive.
+
+```bash
+curl -X POST http://localhost:3471/api/heartbeat/{course_code} \
+  -H "Content-Type: application/json" \
+  -d '{"status": "working", "current_seed": 42}'
+```
+
+**When to send heartbeats:**
+- Immediately when you start working on a course
+- Before starting each new seed
+- Every 60 seconds during long operations (decomposition, phrase generation)
+
+**If you don't send heartbeats**, the system may spawn a duplicate agent thinking you're dead.
+
 ## Workflow After Resume
 
-1. **Call /api/resume** - get exact next seed
-2. **Translate** the known_text to target language
-3. **Decompose** into LEGOs (see /ssi-decompose-seed)
-4. **Generate phrases** for each LEGO (see /ssi-build-phrases)
-5. **Submit** via POST /api/seed/complete
-6. **Repeat** until done
+1. **Send heartbeat** - announce you're alive
+2. **Call /api/resume** - get exact next seed
+3. **Send heartbeat** with current_seed
+4. **Translate** the known_text to target language
+5. **Decompose** into LEGOs (see /ssi-decompose-seed)
+6. **Generate phrases** for each LEGO (see /ssi-build-phrases)
+7. **Submit** via POST /api/seed/complete
+8. **Repeat** from step 2 until done
 
 ## Golden Path Submission
 

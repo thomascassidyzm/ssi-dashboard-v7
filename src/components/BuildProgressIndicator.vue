@@ -71,6 +71,10 @@ const props = defineProps({
     type: String,
     default: null
   },
+  exportReady: {
+    type: Boolean,
+    default: false
+  },
   targetSeeds: {
     type: Number,
     default: 260
@@ -85,6 +89,7 @@ const statusLabels = {
   empty: 'Empty',
   decomposing: 'Decomposing',
   needs_audio: 'Needs Audio',
+  needs_export: 'Needs Export',
   ready: 'Ready'
 }
 
@@ -148,12 +153,20 @@ const statusLabel = computed(() => {
   const phrases = stats.phrases || 0
   const audio = stats.audio || 0
 
+  // Export ready is the source of truth from Phase 9
+  const exportReady = props.exportReady || false
+
   // Ignore system audio (shared audio files < 100)
   const meaningfulAudio = audio > 100
 
-  // Ready: Audio is substantially complete (audio >= phrases * 2)
-  if (meaningfulAudio && phrases > 0 && audio >= phrases * 2) {
+  // Ready: Phase 9 validated (export_ready = true)
+  if (exportReady) {
     return 'Ready'
+  }
+
+  // Needs Export: Audio looks complete but Phase 9 hasn't validated
+  if (meaningfulAudio && phrases > 0 && audio >= phrases * 2) {
+    return 'Needs Export'
   }
 
   // Needs Audio: Content complete but audio not generated
@@ -175,6 +188,7 @@ const statusClass = computed(() => {
   // Handle "Decomposing X%" by extracting just "decomposing"
   if (label.startsWith('decomposing')) return 'status-decomposing'
   if (label === 'needs audio') return 'status-needs-audio'
+  if (label === 'needs export') return 'status-needs-export'
   return `status-${label}`
 })
 
@@ -355,6 +369,11 @@ onUnmounted(() => {
 .build-tooltip .status-badge.status-needs-audio {
   background: rgba(139, 92, 246, 0.2);
   color: #8b5cf6;
+}
+
+.build-tooltip .status-badge.status-needs-export {
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
 }
 
 .build-tooltip .status-badge.status-ready {

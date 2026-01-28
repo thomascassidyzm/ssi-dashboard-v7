@@ -461,6 +461,18 @@ app.get('/validate/:courseCode', async (req, res) => {
     const valid = missing === 0
     const coverage = total > 0 ? Math.round((existing / total) * 100) : 0
 
+    // Update export_ready flag in database based on validation result
+    try {
+      const supabase = db.getClient()
+      await supabase
+        .from('courses')
+        .update({ export_ready: valid })
+        .eq('course_code', courseCode)
+      logger.log(`Updated export_ready=${valid} for ${courseCode}`)
+    } catch (updateErr) {
+      logger.warn(`Failed to update export_ready flag: ${updateErr.message}`)
+    }
+
     res.json({
       valid,
       courseCode,
@@ -470,7 +482,8 @@ app.get('/validate/:courseCode', async (req, res) => {
       missing,
       coverage: `${coverage}%`,
       voices,
-      message: valid ? 'All audio samples exist' : `Missing ${missing} samples`
+      export_ready: valid,
+      message: valid ? 'All audio samples exist - export ready!' : `Missing ${missing} samples`
     })
 
   } catch (err) {

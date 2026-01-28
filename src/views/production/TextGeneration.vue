@@ -127,7 +127,7 @@
         </div>
 
         <!-- Stats Grid -->
-        <div class="grid grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-5 gap-4 text-center">
           <div class="bg-slate-700/30 rounded-lg p-3">
             <div class="text-2xl font-mono font-semibold text-slate-200">
               {{ progress.currentSeed }}
@@ -151,6 +151,12 @@
               {{ ratio }}
             </div>
             <div class="text-xs text-slate-500">Ratio</div>
+          </div>
+          <div class="bg-slate-700/30 rounded-lg p-3">
+            <div class="text-2xl font-mono font-semibold" :class="qualityScoreClass">
+              {{ progress.avgPhraseScore || '—' }}
+            </div>
+            <div class="text-xs text-slate-500">Quality</div>
           </div>
         </div>
 
@@ -352,6 +358,14 @@
           Stop
         </button>
         <button
+          v-if="progress.status === 'running' && agents.running_count === 0"
+          @click="forceResetBuilder"
+          class="px-6 py-2.5 bg-orange-600/80 hover:bg-orange-500 text-white font-medium rounded-lg transition-colors"
+          title="Force reset when Stop button fails (no agents running)"
+        >
+          Force Reset
+        </button>
+        <button
           v-if="progress.status === 'complete'"
           @click="resetBuilder"
           class="px-6 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium rounded-lg transition-colors"
@@ -515,6 +529,15 @@ const ratioClass = computed(() => {
   if (r >= 7) return 'text-emerald-400'
   if (r >= 5) return 'text-yellow-400'
   return 'text-slate-200'
+})
+
+const qualityScoreClass = computed(() => {
+  const score = parseFloat(progress.value.avgPhraseScore)
+  if (isNaN(score)) return 'text-slate-400'
+  if (score >= 7.5) return 'text-emerald-400'
+  if (score >= 6.5) return 'text-cyan-400'
+  if (score >= 5.5) return 'text-yellow-400'
+  return 'text-orange-400'
 })
 
 const statusClass = computed(() => {
@@ -878,7 +901,9 @@ async function fetchProgress() {
         currentSeed: data.seeds_with_legos || data.seeds || 0,
         totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
-        phrasesInserted: data.phrases || 0
+        phrasesInserted: data.phrases || 0,
+        avgPhraseScore: data.avg_phrase_score || null,
+        scoredPhrases: data.scored_phrases || 0
       }
 
       // Check build status for running state
@@ -1020,6 +1045,39 @@ function resetBuilder() {
     phrasesInserted: 0
   }
   addEvent('UI reset - Start button unlocked (polling stopped)')
+}
+
+async function forceResetBuilder() {
+  // Force reset when build is stuck (running but no agents)
+  // Attempts to call stop API but resets UI regardless
+  addEvent('Force resetting stuck build...')
+
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
+    await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
+      method: 'POST',
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+  } catch (error) {
+    // Ignore errors - we're force resetting anyway
+    console.warn('Stop API call failed during force reset:', error)
+  }
+
+  // Always reset UI state
+  stopPolling()
+  progress.value = {
+    status: 'idle',
+    currentSeed: progress.value.currentSeed,  // Keep current progress
+    totalSeeds: progress.value.totalSeeds,
+    legosInserted: progress.value.legosInserted,
+    phrasesInserted: progress.value.phrasesInserted,
+    avgPhraseScore: progress.value.avgPhraseScore,
+    scoredPhrases: progress.value.scoredPhrases
+  }
+  addEvent('Force reset complete - UI unlocked')
+
+  // Restart polling to sync state
+  startPolling()
 }
 
 async function killAgent(pid) {

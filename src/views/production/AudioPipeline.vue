@@ -764,6 +764,24 @@ const startGeneration = async () => {
   startingGeneration.value = true
   error.value = null
   try {
+    // First fetch fresh plan to get accurate counts and sync dashboard
+    const planData = await productionStore.generatePlan(courseCode.value)
+
+    // Update dashboard stats to match fresh data
+    if (planData.total !== undefined && planData.existing !== undefined) {
+      productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
+    }
+
+    // Check if there's actually work to do
+    if (!planData.missing || planData.missing === 0) {
+      console.log('[AudioPipeline] No audio to generate - all complete')
+      // Show a message to the user
+      planResult.value = planData
+      showingPlan.value = true
+      return
+    }
+
+    // Proceed with generation
     await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
   } catch (err: any) {
     error.value = err.message || 'Failed to start generation'
@@ -787,6 +805,11 @@ const showPlan = async () => {
     const data = await productionStore.generatePlan(courseCode.value)
     planResult.value = data
     showingPlan.value = true
+    // Also update the dashboard stats to match the fresh plan data
+    // This ensures the Progress Dashboard shows the same numbers as the plan
+    if (data.total !== undefined && data.existing !== undefined) {
+      productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
+    }
   } catch (err: any) {
     planResult.value = { error: err.message }
     showingPlan.value = true

@@ -126,13 +126,15 @@ function formatLegoId(seedId, legoIndex) {
 
 /**
  * Compute phrase_role from position value
+ * BUILD = component + practice (heard once during build-up)
+ * USE = position 8+ (spaced repetition, consolidation)
  *
  * @param {number} position - The phrase position
- * @returns {'component' | 'practice' | 'eternal_eligible'}
+ * @returns {'component' | 'practice' | 'use'}
  */
 function computePhraseRole(position) {
   if (position === 0) return 'component';
-  if (position >= 8) return 'eternal_eligible';
+  if (position >= 8) return 'use';
   return 'practice';
 }
 
@@ -568,7 +570,7 @@ async function updateLego(courseCode, seedNumber, legoIndex, updates) {
  * @param {number} phraseData.legoCount - LEGO count for classification
  * @param {string} [phraseData.difficulty] - 'easy', 'medium', 'hard'
  * @param {string} [phraseData.register] - 'casual', 'formal'
- * @param {string} [phraseData.phraseRole] - 'component'|'practice'|'eternal_eligible' (auto-computed from position)
+ * @param {string} [phraseData.phraseRole] - 'component'|'practice'|'use' (auto-computed from position)
  * @param {string[]} [phraseData.connectedLegoIds] - Other LEGO IDs in phrase (auto-computed if options provided)
  * @param {string} [phraseData.legoPosition] - 'start'|'middle'|'end' (auto-computed if options provided)
  * @param {Object} [phraseData.metadata] - Additional metadata as JSONB

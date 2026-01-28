@@ -1267,26 +1267,48 @@ async function stopJob() {
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
 
-    // Send cancel to orchestrator
-    await fetch(`${apiBase}/api/cancel/${code}`, {
-      method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
+    if (buildMode.value === 'builder') {
+      // Course Builder mode: use Mission Control job stop endpoint
+      // This routes through production-api -> orchestrator -> course-builder-api
+      const response = await fetch(`${apiBase}/api/mission-control/jobs/${code}-build/stop`, {
+        method: 'POST',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
 
-    addEvent('Stop request sent')
+      if (response.ok) {
+        addEvent('Course Builder job stopped')
+      } else {
+        const data = await response.json().catch(() => ({}))
+        addEvent(`Stop response: ${data.error || response.statusText}`)
+      }
 
-    // Also call force-kill to clear any phantom state on phase servers
-    await fetch(`${apiBase}/api/force-kill/${code}`, {
-      method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
+      // Update builder progress state
+      builderProgress.value = {
+        ...builderProgress.value,
+        status: 'idle'
+      }
+    } else {
+      // Legacy Phases 1-3 mode: use orchestrator cancel endpoints
+      await fetch(`${apiBase}/api/cancel/${code}`, {
+        method: 'POST',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+
+      addEvent('Stop request sent')
+
+      // Also call force-kill to clear any phantom state on phase servers
+      await fetch(`${apiBase}/api/force-kill/${code}`, {
+        method: 'POST',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+
+      addEvent('Job stopped')
+    }
 
     // Reset to idle - the job is stopped (or was never running)
     jobStatus.value = 'idle'
     jobStartTime.value = null
     stopRequestedAt.value = null
-
-    addEvent('Job stopped')
 
   } catch (error) {
     console.error('Failed to stop job:', error)

@@ -765,6 +765,23 @@ export const useProductionStore = defineStore('production', () => {
     }
   }
 
+  // Update pipeline stats from fresh plan data
+  // This syncs the Progress Dashboard with the plan results
+  function updatePipelineStats(total, existing, missing) {
+    console.log(`[Production] Updating pipeline stats: ${total} total, ${existing} existing, ${missing} missing`)
+    generationQueue.value = Array.from({ length: total || 0 }, (_, i) => ({
+      id: `pending-${i}`,
+      status: i < (existing || 0) ? 'complete' : 'queued'
+    }))
+    // Also update audioCourseStats for consistency
+    audioCourseStats.value = {
+      ...audioCourseStats.value,
+      total: total || 0,
+      existing: existing || 0,
+      missing: missing || 0
+    }
+  }
+
   return {
     // State
     currentCourseCode,
@@ -804,6 +821,7 @@ export const useProductionStore = defineStore('production', () => {
     cancelGeneration,
     retryFailed,
     generatePlan,
+    updatePipelineStats,
     reset,
     // Recording actions
     loadRecordingQueue,

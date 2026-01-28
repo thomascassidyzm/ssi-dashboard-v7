@@ -50,6 +50,10 @@
         <div class="stat-value" :class="ratioClass">{{ courseStats.ratio }}</div>
         <div class="stat-label">Ratio</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-value" :class="qualityScoreClass">{{ courseStats.avgPhraseScore || '—' }}</div>
+        <div class="stat-label">Quality</div>
+      </div>
       <div class="stat-card audio">
         <div class="stat-value">
           {{ store.audioCourseStats.existing.toLocaleString() }}
@@ -161,7 +165,9 @@ async function loadStats(courseCode) {
       completeSeeds: data.seeds_with_legos || data.completed_seeds || data.completedSeeds || 0,
       legos: data.legos || 0,
       phrases: data.phrases || 0,
-      total_seeds: data.total_seeds || data.totalSeeds || 668
+      total_seeds: data.total_seeds || data.totalSeeds || 668,
+      avgPhraseScore: data.avg_phrase_score || null,
+      scoredPhrases: data.scored_phrases || 0
     }
   } catch (err) {
     console.warn('[ProductionOverview] Could not load stats from API:', err.message)
@@ -203,7 +209,8 @@ const courseStats = computed(() => {
     completeSeeds: localStats.value.completeSeeds || 0,
     legos: legos,
     phrases: phrases,
-    ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0'
+    ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0',
+    avgPhraseScore: localStats.value.avgPhraseScore || null
   }
 })
 
@@ -213,6 +220,16 @@ const ratioClass = computed(() => {
   if (r >= 10) return 'text-emerald-400'
   if (r >= 7) return 'text-yellow-400'
   return 'text-red-400'
+})
+
+// Quality score color class
+const qualityScoreClass = computed(() => {
+  const score = parseFloat(courseStats.value.avgPhraseScore)
+  if (isNaN(score)) return 'text-slate-400'
+  if (score >= 7.5) return 'text-emerald-400'
+  if (score >= 6.5) return 'text-cyan-400'
+  if (score >= 5.5) return 'text-yellow-400'
+  return 'text-orange-400'
 })
 
 onMounted(() => {
