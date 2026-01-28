@@ -1280,6 +1280,12 @@ async function generateLegacyManifest(courseCode, options = {}) {
     duration: welcome.duration_ms ? welcome.duration_ms / 1000 : 0
   } : PLACEHOLDER_INTRO
 
+  if (!welcome || !welcome.s3_key) {
+    console.error(`\n⚠️  WARNING: No welcome audio found for ${courseCode}`)
+    console.error(`   Using placeholder introduction UUID: ${PLACEHOLDER_INTRO.id}`)
+    console.error(`   To fix: Import welcome audio with role='welcome' to course_audio table\n`)
+  }
+
   // 10. Format encouragements for legacy manifest
   // orderedEncouragements = instructions (played in sequence)
   // pooledEncouragements = encouragements (played randomly)
