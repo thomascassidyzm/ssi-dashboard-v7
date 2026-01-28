@@ -97,6 +97,16 @@ function getActiveAgents() {
 }
 
 /**
+ * Normalize phrase text for deduplication comparison
+ * Strips trailing punctuation and lowercases for pedagogically-equivalent matching
+ * e.g., "I want" == "I want." == "i want" == "I want,"
+ */
+function normalizePhrase(text) {
+  if (!text) return '';
+  return text.replace(/[.,!?;:]+$/, '').toLowerCase().trim();
+}
+
+/**
  * Record activity for a course (called after successful seed submission)
  * Tracks seeds_this_session for batch limiting
  */
@@ -740,11 +750,16 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const targetLang = getTargetLang(courseCode);
   const charsPerSyllable = getCharsPerSyllable(courseCode);
 
-  // Relaxed requirements for early seeds (per methodology)
-  // Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE
-  // Seed 1, LEGO 2+: 2 BUILD, 2 USE
-  // Seeds 2-5: 3 BUILD, 4 USE
-  // Seeds 6+: Full requirements (4 BUILD, 6 USE)
+  // Graduated requirements - vocabulary grows with each seed
+  // Early seeds have limited vocab to combine, so USE minimums are lower
+  // BUILD stays stricter (fragments from components)
+  //
+  // S1 L1:  0 BUILD, 0 USE  (nothing to combine yet)
+  // S1 L2+: 2 BUILD, 0 USE  (limited vocab)
+  // S2-3:   3 BUILD, 2 USE  (small vocab pool)
+  // S4-5:   3 BUILD, 3 USE  (growing vocab)
+  // S6-10:  4 BUILD, 4 USE  (moderate vocab)
+  // S11+:   4 BUILD, 6 USE  (full requirements)
 
   let minBuild = 4;
   let minUse = 6;
@@ -756,12 +771,20 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minAvgSyllables = 0;
   } else if (seedNumber === 1) {
     minBuild = 2;
+    minUse = 0;  // No USE required - limited vocab
+    minAvgSyllables = 0;
+  } else if (seedNumber <= 3) {
+    minBuild = 3;
     minUse = 2;
     minAvgSyllables = 6;
   } else if (seedNumber <= 5) {
     minBuild = 3;
-    minUse = 4;
+    minUse = 3;
     minAvgSyllables = 8;
+  } else if (seedNumber <= 10) {
+    minBuild = 4;
+    minUse = 4;
+    minAvgSyllables = 10;
   }
 
   const build = lego.build || [];
@@ -2856,15 +2879,14 @@ app.post('/api/lego', async (req, res) => {
     const phraseCount = phrases?.length || 0;
     const legoId = `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`;
 
-    // Calculate global position (approximate) - seed 1 LEGOs are first ~5, etc.
-    const globalPosition = (seed - 1) * 3 + idx; // Rough estimate
-
-    // Graduated minimum: early LEGOs can have fewer phrases
+    // Graduated minimum based on seed number (vocabulary grows with each seed)
+    // S1: 0-2, S2-3: 5, S4-5: 6, S6-10: 8, S11+: 10 (BUILD + USE combined)
     let minRequired = MIN_PHRASES_PER_LEGO;
-    if (globalPosition === 1) minRequired = 0;      // Very first LEGO - nothing to combine with!
-    else if (globalPosition <= 3) minRequired = 1;  // First 3 LEGOs
-    else if (globalPosition <= 6) minRequired = 2;  // LEGOs 4-6
-    else if (globalPosition <= 10) minRequired = 3; // LEGOs 7-10
+    if (seed === 1 && idx === 1) minRequired = 0;      // Very first LEGO
+    else if (seed === 1) minRequired = 2;              // S1 L2+: BUILD only
+    else if (seed <= 3) minRequired = 5;               // S2-3: 3 BUILD + 2 USE
+    else if (seed <= 5) minRequired = 6;               // S4-5: 3 BUILD + 3 USE
+    else if (seed <= 10) minRequired = 8;              // S6-10: 4 BUILD + 4 USE
 
     if (phraseCount < minRequired && !allowValidationBypass(req.body)) {
       console.log(`✗ ${legoId}: REJECTED - Only ${phraseCount} phrases (need ${minRequired}+ at position ~${globalPosition})`);
@@ -3007,12 +3029,21 @@ app.post('/api/lego', async (req, res) => {
 
       // Add agent's practice phrases after build-up
       if (phrases && phrases.length > 0) {
-        // DEDUPLICATION: Filter out agent phrases that duplicate build-up phrases
-        const buildupTargets = new Set(allPhraseRows.map(p => p.target_text));
-        const dedupedPhrases = phrases.filter(p => !buildupTargets.has(p.target));
+        // DEDUPLICATION: Filter out phrases that duplicate build-up (normalized comparison)
+        // "I want" == "I want." == "i want" pedagogically
+        const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+        const seenNormalized = new Set();  // Track within this batch too
+        const dedupedPhrases = phrases.filter(p => {
+          const norm = normalizePhrase(p.target);
+          if (buildupNormalized.has(norm) || seenNormalized.has(norm)) {
+            return false;
+          }
+          seenNormalized.add(norm);
+          return true;
+        });
         const dedupedCount = phrases.length - dedupedPhrases.length;
         if (dedupedCount > 0) {
-          console.log(`    Deduped ${dedupedCount} phrases that duplicated build-up`);
+          console.log(`    Deduped ${dedupedCount} phrases (normalized: case/punctuation insensitive)`);
         }
 
         // Sort by target syllable count (Chinese characters = syllables roughly)
@@ -3324,6 +3355,16 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
+    // AUTO-HEARTBEAT: Update heartbeat on every submission (agents may not send manual heartbeats)
+    const now = Date.now();
+    agentHeartbeats.set(course_code, {
+      lastHeartbeat: now,
+      agentId: 'submission',
+      status: 'submitting',
+      currentSeed: seed_number,
+      startedAt: agentHeartbeats.get(course_code)?.startedAt || now
+    });
+
     // CHECKPOINT GATE: Block seeds past checkpoint until approved
     if (isBlockedByCheckpoint(course_code, seed_number)) {
       const checkpoint = await getCheckpointStatus(course_code);
@@ -3599,18 +3640,19 @@ app.post('/api/seed/complete', async (req, res) => {
       } else if (lego.phrases) {
         // LEGACY FORMAT: Validate flat phrases array
         const phraseCount = lego.phrases.length;
-        const legoPosition = globalPosition + lego.idx;
 
+        // Graduated minimum based on seed (vocabulary grows with each seed)
         let minRequired = MIN_PHRASES_PER_LEGO;
-        if (legoPosition === 1) minRequired = 0;
-        else if (legoPosition <= 3) minRequired = 1;
-        else if (legoPosition <= 6) minRequired = 2;
-        else if (legoPosition <= 10) minRequired = 3;
+        if (seed_number === 1 && lego.idx === 1) minRequired = 0;
+        else if (seed_number === 1) minRequired = 2;     // S1 L2+: BUILD only
+        else if (seed_number <= 3) minRequired = 5;      // S2-3: 3 BUILD + 2 USE
+        else if (seed_number <= 5) minRequired = 6;      // S4-5: 3 BUILD + 3 USE
+        else if (seed_number <= 10) minRequired = 8;     // S6-10: 4 BUILD + 4 USE
 
         if (phraseCount < minRequired && !SKIP_VALIDATION) {
           errors.push({
             type: 'phrases',
-            message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ at position ~${legoPosition})`,
+            message: `${legoId}: Only ${phraseCount} phrases (need ${minRequired}+ for seed ${seed_number})`,
             lego_id: legoId,
             methodology: METHODOLOGY_HINTS.phrases
           });
@@ -3930,12 +3972,21 @@ app.post('/api/seed/complete', async (req, res) => {
 
       } else if (lego.phrases && lego.phrases.length > 0) {
         // LEGACY FORMAT: Process flat phrases array
-        // DEDUPLICATION: Filter out agent phrases that duplicate build-up phrases
-        const buildupTargets = new Set(allPhraseRows.map(p => p.target_text));
-        const dedupedPhrases = lego.phrases.filter(p => !buildupTargets.has(p.target));
+        // DEDUPLICATION: Filter out phrases that duplicate build-up (normalized comparison)
+        // "I want" == "I want." == "i want" pedagogically
+        const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
+        const seenNormalized = new Set();  // Track within this batch too
+        const dedupedPhrases = lego.phrases.filter(p => {
+          const norm = normalizePhrase(p.target);
+          if (buildupNormalized.has(norm) || seenNormalized.has(norm)) {
+            return false;
+          }
+          seenNormalized.add(norm);
+          return true;
+        });
         const dedupedCount = lego.phrases.length - dedupedPhrases.length;
         if (dedupedCount > 0) {
-          console.log(`    Deduped ${dedupedCount} phrases that duplicated build-up`);
+          console.log(`    Deduped ${dedupedCount} phrases (normalized: case/punctuation insensitive)`);
         }
 
         const sorted = [...dedupedPhrases].sort((a, b) => a.target.length - b.target.length);
@@ -4705,6 +4756,16 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   const targetLangName = getLanguageName(courseCode);
   const chinese = isChinese(courseCode);
+
+  // AUTO-HEARTBEAT: Agent is alive and checking for work
+  const now = Date.now();
+  agentHeartbeats.set(courseCode, {
+    lastHeartbeat: now,
+    agentId: 'resume',
+    status: 'checking',
+    currentSeed: null,
+    startedAt: agentHeartbeats.get(courseCode)?.startedAt || now
+  });
 
   // Get course info including translation_analysis and seed_count (Two-Pass workflow)
   const { data: courseInfo } = await supabase
@@ -6114,14 +6175,14 @@ app.listen(PORT, () => {
   console.log(`║  1. TILING: Seed target must be tileable from LEGO targets   ║`);
   console.log(`║  2. ZUT: Same known → same target (or reject)                ║`);
   console.log(`║  3. VOCAB: Phrases only use introduced vocabulary            ║`);
-  console.log(`║  4. COUNT: min ${MIN_PHRASES_PER_LEGO}, target ${TARGET_PHRASES_PER_LEGO}, max ${MAX_PHRASES_PER_LEGO} phrases/LEGO           ║`);
+  console.log(`║  4. COUNT: Graduated USE: S1=0, S2-3=2, S4-5=3, S6-10=4, S11+=6 ║`);
   console.log(`║  5. TIERS: ${MIN_SHORT_PHRASES}+ SHORT(3-5), ${MIN_MEDIUM_PHRASES}+ MEDIUM(6-9), ${MIN_LONG_PHRASES}+ LONG(10+)   ║`);
   console.log(`║  6. COMPONENTS: M-LEGOs MUST have component breakdown        ║`);
   console.log(`║  7. BALANCE: 3-strike vocab variety (soft→soft→hard reject) ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  AUTO-FEATURES:                                              ║`);
   console.log(`║  • M-LEGO build-up: auto-generates component→LEGO phrases    ║`);
-  console.log(`║  • Deduplication: removes agent phrases that match build-up  ║`);
+  console.log(`║  • Deduplication: normalized (case/punctuation insensitive)  ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  METHODOLOGY COMMANDS (shown on rejection):                  ║`);
   console.log(`║  • /ssi-decompose-seed - LEGO decomposition, tiling, comps   ║`);
