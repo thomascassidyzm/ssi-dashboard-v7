@@ -1828,52 +1828,61 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
  * Stop a build for a course
  */
 async function stopBuild(courseCode) {
-  const build = activeBuilds.get(courseCode);
+  // Database is source of truth - update build_jobs directly
+  try {
+    const { data: job, error: findError } = await supabase
+      .from('build_jobs')
+      .select('id, status')
+      .eq('course_code', courseCode)
+      .in('status', ['pending', 'running', 'stalled'])
+      .single();
 
-  if (!build) {
-    return { ok: false, error: 'No active build for this course' };
-  }
-
-  // Kill agent if running
-  if (build.agent && build.agent.pid) {
-    try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
-  }
-
-  // Update build_jobs table in Supabase if we have a buildJobId
-  if (build.buildJobId) {
-    try {
-      const { error } = await supabase
-        .from('build_jobs')
-        .update({
-          status: 'stopped',
-          completed_at: new Date().toISOString()
-        })
-        .eq('id', build.buildJobId);
-
-      if (error) {
-        console.error(`[BUILD] Failed to update build_jobs for job ${build.buildJobId}:`, error.message);
-      } else {
-        console.log(`[BUILD] Updated build_jobs: job ${build.buildJobId} marked as stopped`);
-      }
-    } catch (dbError) {
-      // Don't let DB errors block the stop from completing
-      console.error(`[BUILD] DB error updating build_jobs for job ${build.buildJobId}:`, dbError.message);
+    if (findError || !job) {
+      return { ok: false, error: 'No active build for this course' };
     }
+
+    const { error: updateError } = await supabase
+      .from('build_jobs')
+      .update({
+        status: 'stopped',
+        stop_requested: true,
+        completed_at: new Date().toISOString()
+      })
+      .eq('id', job.id);
+
+    if (updateError) {
+      console.error(`[BUILD] Failed to stop job ${job.id}:`, updateError.message);
+      return { ok: false, error: updateError.message };
+    }
+
+    console.log(`[BUILD] Stopped job ${job.id} for ${courseCode}`);
+
+    // Also clear from in-memory if present
+    const build = activeBuilds.get(courseCode);
+    if (build) {
+      if (build.agent && build.agent.pid) {
+        try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
+      }
+      activeBuilds.delete(courseCode);
+    }
+
+    // Stop manager if no more in-memory builds
+    if (activeBuilds.size === 0) {
+      stopBuildManager();
+    }
+
+    return {
+      ok: true,
+      success: true,
+      course_code: courseCode,
+      job_id: job.id,
+      message: 'Build stopped'
+    };
+
+  } catch (err) {
+    console.error(`[BUILD] Error stopping build for ${courseCode}:`, err.message);
+    return { ok: false, error: err.message };
   }
-
-  activeBuilds.delete(courseCode);
-
-  // Stop manager if no more builds
-  if (activeBuilds.size === 0) {
-    stopBuildManager();
-  }
-
-  return {
-    ok: true,
-    course_code: courseCode,
-    agents_used: build.agentCount,
-    message: 'Build stopped'
-  };
 }
 
 /**
