@@ -2041,6 +2041,21 @@ async function initializeCourseSeeds(courseCode) {
     }
   }
 
+  // For non-English target languages, check for canonical translations
+  // If e.g. por_for_eng already built, por translations exist — reuse them for por_for_fra
+  let targetTranslations = new Map();
+  if (!targetIsEng) {
+    const { data: translations } = await supabase
+      .from('canonical_seed_translations')
+      .select('seed_number, translated_text')
+      .eq('language_code', targetLang);
+
+    if (translations && translations.length > 0) {
+      translations.forEach(t => targetTranslations.set(t.seed_number, t.translated_text));
+      console.log(`Found ${translations.length} canonical translations for ${targetLang}`);
+    }
+  }
+
   // Create course seeds based on which language is English
   // These are NOT mutually exclusive - eng_for_zho needs BOTH target from canonical AND known from translations
   const courseSeeds = canonical.map(c => {
@@ -2062,6 +2077,11 @@ async function initializeCourseSeeds(courseCode) {
     // This applies to BOTH eng_for_X and X_for_Y courses
     if (!knownIsEng && knownTranslations.has(c.seed_number)) {
       knownText = knownTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
+    }
+
+    // If target language is NOT English, check for pre-existing translations
+    if (!targetIsEng && targetTranslations.has(c.seed_number)) {
+      targetText = targetTranslations.get(c.seed_number).replace(/\{target\}/g, targetLangName);
     }
 
     return {
@@ -2087,10 +2107,11 @@ async function initializeCourseSeeds(courseCode) {
   if (targetIsEng) modeParts.push('target=eng (instant)');
   if (!knownIsEng && knownTranslations.size > 0) modeParts.push(`known=${knownLang} (${knownTranslations.size} from translations)`);
   if (!knownIsEng && knownTranslations.size === 0) modeParts.push(`known=${knownLang} (agent translates)`);
-  if (!targetIsEng) modeParts.push(`target=${targetLang} (agent translates)`);
+  if (!targetIsEng && targetTranslations.size > 0) modeParts.push(`target=${targetLang} (${targetTranslations.size} from translations)`);
+  if (!targetIsEng && targetTranslations.size === 0) modeParts.push(`target=${targetLang} (agent translates)`);
   const mode = modeParts.join(', ');
   console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
-  return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size };
+  return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size, targetTranslations: targetTranslations.size };
 }
 
 /**

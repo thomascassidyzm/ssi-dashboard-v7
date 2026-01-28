@@ -12,7 +12,8 @@
  *   DRY_RUN - Set to 'true' to log without spawning (default: false)
  */
 
-const { spawn, execSync } = require('child_process');
+const { execSync } = require('child_process');
+const { spawnClaudeCliAgent } = require('../services/shared/spawn-agent-cli.cjs');
 require('dotenv').config();
 
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471';
@@ -24,36 +25,32 @@ const PROJECT_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean';
 const respawnInProgress = new Set();
 
 /**
- * Check how many headless Claude agents are already running in the project directory.
- * Returns count of background agents (excludes terminal-attached sessions).
+ * Check how many Claude agents are running in the project directory.
+ * Counts ALL agents - both terminal-attached and headless.
  */
 function getRunningAgentCount() {
   try {
-    // Get all claude PIDs
+    // Get all claude PIDs (exclude chrome helper)
     const psOutput = execSync('ps aux | grep -i "claude" | grep -v grep | grep -v chrome-native', { encoding: 'utf8' });
     const lines = psOutput.trim().split('\n').filter(Boolean);
 
-    let headlessCount = 0;
+    let agentCount = 0;
     for (const line of lines) {
       const parts = line.split(/\s+/);
       const pid = parts[1];
-      const tty = parts[6];
-
-      // Skip terminal-attached sessions (tty like s000, s001, etc.)
-      if (tty && tty.match(/^s\d+$/)) continue;
 
       // Check if this process is working in our project directory
       try {
         const lsofOutput = execSync(`lsof -p ${pid} 2>/dev/null | grep cwd`, { encoding: 'utf8' });
         if (lsofOutput.includes(PROJECT_DIR)) {
-          headlessCount++;
+          agentCount++;
         }
       } catch (e) {
         // Process may have exited, skip it
       }
     }
 
-    return headlessCount;
+    return agentCount;
   } catch (e) {
     // No claude processes found
     return 0;
@@ -68,7 +65,7 @@ async function checkActivity() {
     const runningAgents = getRunningAgentCount();
     console.log(`\n[${new Date().toISOString()}] Activity check`);
     console.log(`  Active courses: ${Object.keys(data.courses).length}`);
-    console.log(`  Headless agents running: ${runningAgents}`);
+    console.log(`  Claude agents running: ${runningAgents}`);
     console.log(`  Stalled: ${data.stalled_count}`);
 
     if (data.stalled.length > 0) {
@@ -81,8 +78,12 @@ async function checkActivity() {
           continue;
         }
 
-        console.log(`  [${courseCode}] STALLED - spawning new agent...`);
-        await spawnAgent(courseCode);
+        // Get stall duration for this course
+        const courseData = data.courses[courseCode];
+        const stallMinutes = parseFloat(courseData?.elapsedMinutes) || 5;
+
+        console.log(`  [${courseCode}] STALLED (${stallMinutes.toFixed(1)}m) - attempting spawn...`);
+        await spawnAgent(courseCode, stallMinutes);
       }
     } else {
       console.log(`  All courses progressing normally`);
@@ -99,17 +100,23 @@ async function checkActivity() {
   }
 }
 
-async function spawnAgent(courseCode) {
+async function spawnAgent(courseCode, stallMinutes = 5) {
   if (DRY_RUN) {
     console.log(`  [DRY RUN] Would spawn agent for ${courseCode}`);
     return;
   }
 
-  // CRITICAL: Only allow ONE agent at a time to avoid wasting tokens
+  // Check running agents, but allow override if stalled too long
   const runningAgents = getRunningAgentCount();
-  if (runningAgents > 0) {
-    console.log(`  [${courseCode}] BLOCKED: ${runningAgents} agent(s) already running - skipping spawn`);
+  const FORCE_SPAWN_AFTER_MINUTES = 10; // If stalled this long, spawn anyway
+
+  if (runningAgents > 0 && stallMinutes < FORCE_SPAWN_AFTER_MINUTES) {
+    console.log(`  [${courseCode}] BLOCKED: ${runningAgents} agent(s) running, stalled only ${stallMinutes}m (need ${FORCE_SPAWN_AFTER_MINUTES}m to force)`);
     return;
+  }
+
+  if (runningAgents > 0) {
+    console.log(`  [${courseCode}] FORCE SPAWN: Stalled ${stallMinutes}m despite ${runningAgents} agent(s) - they must be idle`);
   }
 
   respawnInProgress.add(courseCode);
@@ -125,7 +132,7 @@ async function spawnAgent(courseCode) {
     console.log(`  Warning: Could not ping activity endpoint: ${err.message}`);
   }
 
-  // Spawn Claude Code agent
+  // Spawn Claude Code agent in iTerm2 window
   const prompt = `You are resuming the ${courseCode} course build.
 
 IMMEDIATELY run the /course-resume skill to get your context, then continue building seeds autonomously.
@@ -155,49 +162,27 @@ If you encounter validation errors, fix them and continue. If you get stuck on o
 
 Your goal is to complete all seeds for this course. DO NOT STOP UNTIL DONE.`;
 
-  console.log(`  Spawning: claude --model opus for ${courseCode}`);
+  console.log(`  Spawning iTerm2 window: claude --model opus for ${courseCode}`);
 
-  const agent = spawn('claude', [
-    '--model', 'opus',
-    '--dangerously-skip-permissions',
-    '-p', prompt
-  ], {
-    stdio: 'inherit',
-    detached: true
-  });
-
-  // Register agent with the course-builder API for tracking
-  const pid = agent.pid;
-  console.log(`  Agent PID: ${pid}`);
   try {
-    await fetch(`${COURSE_BUILDER_URL}/api/agents/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pid, course_code: courseCode })
+    // Use iTerm2 spawner for visible windows
+    const result = await spawnClaudeCliAgent(prompt, Date.now() % 1000, {
+      model: 'opus',
+      workingDir: PROJECT_DIR,
+      skipPermissions: true
     });
-    console.log(`  Registered agent ${pid} with course-builder API`);
-  } catch (err) {
-    console.log(`  Warning: Could not register agent: ${err.message}`);
-  }
 
-  agent.on('error', (err) => {
+    console.log(`  [${courseCode}] iTerm2 window opened: ${result.windowId}`);
+
+    // Clear respawn lock after a delay (give agent time to start)
+    setTimeout(() => {
+      respawnInProgress.delete(courseCode);
+    }, 60000); // 1 minute cooldown
+
+  } catch (err) {
     console.error(`  [${courseCode}] Spawn error:`, err.message);
     respawnInProgress.delete(courseCode);
-  });
-
-  agent.on('exit', async (code) => {
-    console.log(`  [${courseCode}] Agent ${pid} exited with code ${code}`);
-    respawnInProgress.delete(courseCode);
-    // Mark agent as complete in the API
-    try {
-      await fetch(`${COURSE_BUILDER_URL}/api/agents/${pid}/complete`, { method: 'POST' });
-    } catch (err) {
-      // Ignore - agent may have already been cleaned up
-    }
-  });
-
-  // Don't wait for agent to finish
-  agent.unref();
+  }
 }
 
 async function main() {
