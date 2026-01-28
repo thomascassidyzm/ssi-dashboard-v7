@@ -203,43 +203,63 @@ function stopStallWatcher() {
 
 /**
  * Check for stalled courses and auto-respawn agents
+ * DATABASE-ONLY: All state comes from build_jobs table, not memory
  */
 async function checkForStalledCourses() {
   const now = Date.now();
+  const RESPAWN_COOLDOWN_MS = 15 * 60 * 1000;  // 15 minutes
 
-  for (const [courseCode, activity] of courseActivity.entries()) {
-    const elapsed = now - activity.lastSubmission;
-    const isStalled = elapsed > STALL_THRESHOLD_MS;  // 5 minutes
+  // Query DB for all running jobs - this is the ONLY source of truth
+  let runningJobs = [];
+  try {
+    const { data, error } = await supabase
+      .from('build_jobs')
+      .select('*')
+      .eq('status', 'running');
 
-    if (!isStalled) continue;  // Course is active, skip
-
-    // Check if agent has active heartbeat (alive but working on a seed)
-    const heartbeat = agentHeartbeats.get(courseCode);
-    if (heartbeat) {
-      const heartbeatAge = now - heartbeat.lastHeartbeat;
-      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS) {
-        // Agent is alive - don't respawn
-        console.log(`[STALL-WATCHER] ${courseCode}: Agent alive (heartbeat ${(heartbeatAge/1000).toFixed(0)}s ago), skipping respawn`);
-        continue;
-      }
+    if (error) {
+      console.error('[STALL-WATCHER] DB query failed:', error.message);
+      return;
     }
+    runningJobs = data || [];
+  } catch (err) {
+    console.error('[STALL-WATCHER] DB error:', err.message);
+    return;
+  }
 
-    // Check respawn limit
-    const respawnData = courseRespawnCounts.get(courseCode) || { count: 0, lastRespawn: 0 };
-    if (respawnData.count >= MAX_AUTO_RESPAWNS) {
-      // Only log once per hour when at limit
-      if (now - respawnData.lastRespawn > 3600000) {
-        console.log(`[STALL-WATCHER] ${courseCode}: Respawn limit reached (${MAX_AUTO_RESPAWNS}), requires manual intervention`);
-        respawnData.lastRespawn = now;
-        courseRespawnCounts.set(courseCode, respawnData);
-      }
+  if (runningJobs.length === 0) {
+    return;  // No running jobs, nothing to check
+  }
+
+  console.log(`[STALL-WATCHER] Checking ${runningJobs.length} running job(s) from DB`);
+
+  for (const job of runningJobs) {
+    const courseCode = job.course_code;
+    const lastHeartbeat = job.last_heartbeat ? new Date(job.last_heartbeat).getTime() : 0;
+    const heartbeatAge = now - lastHeartbeat;
+    const respawnCount = job.respawn_count || 0;
+    const lastRespawnAt = job.last_respawn_at ? new Date(job.last_respawn_at).getTime() : 0;
+
+    // Agent alive? Check heartbeat from DB
+    if (heartbeatAge < HEARTBEAT_TIMEOUT_MS) {
+      console.log(`[STALL-WATCHER] ${courseCode}: Agent alive (heartbeat ${(heartbeatAge/1000).toFixed(0)}s ago), skipping`);
       continue;
     }
 
-    // Check cooldown - don't respawn if we spawned within last 15 minutes
-    const RESPAWN_COOLDOWN_MS = 15 * 60 * 1000;  // 15 minutes
-    const timeSinceLastRespawn = now - respawnData.lastRespawn;
-    if (respawnData.lastRespawn > 0 && timeSinceLastRespawn < RESPAWN_COOLDOWN_MS) {
+    // Heartbeat stale - agent may be dead
+    console.log(`[STALL-WATCHER] ${courseCode}: Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s ago)`);
+
+    // Check respawn limit (from DB)
+    if (respawnCount >= MAX_AUTO_RESPAWNS) {
+      console.log(`[STALL-WATCHER] ${courseCode}: Respawn limit reached (${respawnCount}/${MAX_AUTO_RESPAWNS}), requires manual intervention`);
+      // Mark job as stalled in DB
+      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
+      continue;
+    }
+
+    // Check cooldown (from DB)
+    const timeSinceLastRespawn = now - lastRespawnAt;
+    if (lastRespawnAt > 0 && timeSinceLastRespawn < RESPAWN_COOLDOWN_MS) {
       console.log(`[STALL-WATCHER] ${courseCode}: Cooldown active (${((RESPAWN_COOLDOWN_MS - timeSinceLastRespawn) / 60000).toFixed(1)} min remaining)`);
       continue;
     }
@@ -247,65 +267,35 @@ async function checkForStalledCourses() {
     // Check if course is complete
     try {
       const progress = await getBuildProgress(courseCode);
-      const targetSeeds = 260;  // Default target for LEGO building phase
+      const targetSeeds = job.total_seeds || 260;
 
       if (progress.completed >= targetSeeds) {
-        console.log(`[STALL-WATCHER] ${courseCode}: Course complete (${progress.completed}/${targetSeeds}), no respawn needed`);
-        courseActivity.delete(courseCode);  // Remove from tracking
+        console.log(`[STALL-WATCHER] ${courseCode}: Course complete (${progress.completed}/${targetSeeds}), marking job complete`);
+        await supabase.from('build_jobs').update({
+          status: 'complete',
+          completed_at: new Date().toISOString()
+        }).eq('id', job.id);
         continue;
       }
 
-      // Course is stalled and incomplete - respawn agent
-      console.log(`[STALL-WATCHER] ${courseCode}: STALLED at seed ${activity.lastSeed} (${(elapsed/60000).toFixed(1)} min since last submission)`);
-      console.log(`[STALL-WATCHER] ${courseCode}: Auto-respawning agent (respawn #${respawnData.count + 1}/${MAX_AUTO_RESPAWNS})`);
-
-      // Spawn new agent
-      await spawnRespawnAgent(courseCode, activity.lastSeed);
-
-      // Update respawn count
-      respawnData.count++;
-      respawnData.lastRespawn = now;
-      courseRespawnCounts.set(courseCode, respawnData);
-
-      // Reset session counter
-      resetSession(courseCode);
+      // Course is stalled and incomplete - mark as stalled
+      // NO AUTO-SPAWN: User controls spawning from dashboard
+      console.log(`[STALL-WATCHER] ${courseCode}: STALLED at seed ${job.current_seed || progress.completed} - marking as stalled`);
+      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
 
     } catch (err) {
-      console.error(`[STALL-WATCHER] ${courseCode}: Error checking progress:`, err.message);
+      console.error(`[STALL-WATCHER] ${courseCode}: Error:`, err.message);
     }
   }
 }
 
 /**
- * Spawn a respawn agent for a stalled course
+ * DISABLED: Spawn a respawn agent for a stalled course
+ * NO AUTO-SPAWN: Dashboard controls all agent spawning
  */
 async function spawnRespawnAgent(courseCode, lastSeed) {
-  const { exec } = require('child_process');
-  const projectDir = __dirname.replace('/services', '');
-
-  // Create prompt that tells agent to continue AUTONOMOUSLY without asking
-  const prompt = `/course-resume ${courseCode} -- IMPORTANT: You are an autonomous build agent. Do NOT ask for confirmation. Proceed immediately to decompose the next seed, generate LEGOs and phrases, and submit via POST /api/seed/complete. Continue processing seeds until you hit a checkpoint or complete 30 seeds, then exit cleanly.`;
-
-  // Use iTerm2 by default
-  const osascript = `tell application "iTerm"
-  activate
-  set newWindow to (create window with default profile)
-  tell current session of newWindow
-    write text "cd \\"${projectDir}\\" && claude --dangerously-skip-permissions \\"${prompt}\\""
-  end tell
-end tell`;
-
-  return new Promise((resolve, reject) => {
-    exec(`osascript -e '${osascript}'`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`[STALL-WATCHER] Failed to spawn agent for ${courseCode}:`, error.message);
-        reject(error);
-      } else {
-        console.log(`[STALL-WATCHER] ✓ Agent spawned for ${courseCode} (resuming from seed ${lastSeed})`);
-        resolve();
-      }
-    });
-  });
+  console.log(`[SPAWN-DISABLED] spawnRespawnAgent called for ${courseCode} - NO ACTION (dashboard controls spawning)`);
+  return Promise.resolve();
 }
 
 /**
@@ -378,52 +368,12 @@ const QA_DRIFT_THRESHOLD = 0.7;  // Auto-approve if |QA_avg - agent_avg| <= 0.7
 const pendingQAJobs = new Map();
 
 /**
- * Spawn a Checkpoint QA Agent in a new terminal window
- * The QA agent will:
- * 1. Fetch sample phrases from /api/checkpoint/qa-sample/:courseCode
- * 2. Re-score them independently
- * 3. POST results to /api/checkpoint/qa-result/:courseCode
+ * DISABLED: Spawn a Checkpoint QA Agent in a new terminal window
+ * NO AUTO-SPAWN: Dashboard controls all agent spawning
  */
 async function spawnCheckpointQAAgent(courseCode, checkpointSeed) {
-  const { exec } = require('child_process');
-  const projectDir = __dirname.replace('/services', '');
-
-  // Create the prompt for the QA agent - reference the skill, let it load methodology from there
-  const qaPrompt = `/checkpoint-qa ${courseCode} ${checkpointSeed}`;
-
-  // macOS: Open new iTerm2 window and run claude with the skill command
-  // The skill will load full instructions from .claude/commands/checkpoint-qa.md
-  // CRITICAL: Use --dangerously-skip-permissions for unattended/overnight operation
-  const osascript = `tell application "iTerm"
-  activate
-  set newWindow to (create window with default profile)
-  tell current session of newWindow
-    write text "cd \\"${projectDir}\\" && claude --dangerously-skip-permissions \\"${qaPrompt}\\""
-  end tell
-end tell`;
-  const command = `osascript -e '${osascript}'`;
-
-  console.log(`[CHECKPOINT QA] Spawning QA agent for ${courseCode} checkpoint ${checkpointSeed}`);
-
-  return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`[CHECKPOINT QA] Failed to spawn: ${error.message}`);
-        reject(error);
-        return;
-      }
-
-      // Track the pending QA job
-      pendingQAJobs.set(courseCode, {
-        checkpoint_seed: checkpointSeed,
-        started_at: new Date().toISOString(),
-        status: 'running'
-      });
-
-      console.log(`[CHECKPOINT QA] Agent spawned for ${courseCode}`);
-      resolve({ spawned: true, checkpoint_seed: checkpointSeed });
-    });
-  });
+  console.log(`[SPAWN-DISABLED] spawnCheckpointQAAgent called for ${courseCode} checkpoint ${checkpointSeed} - NO ACTION (dashboard controls spawning)`);
+  return Promise.resolve({ spawned: false, checkpoint_seed: checkpointSeed, reason: 'auto-spawn disabled' });
 }
 
 /**
@@ -521,8 +471,11 @@ async function isCheckpointRequired(courseCode, completedSeed) {
 
 /**
  * Check if course is blocked by checkpoint (past a checkpoint seed, not approved)
+ * Now async - loads from database first to ensure pre-approved checkpoints are respected
  */
-function isBlockedByCheckpoint(courseCode, requestedSeed) {
+async function isBlockedByCheckpoint(courseCode, requestedSeed) {
+  // Load latest state from database first (ensures pre-approved checkpoints are seen)
+  await getCheckpointStatus(courseCode);
   const blockingCheckpoint = getBlockingCheckpoint(courseCode, requestedSeed);
   return blockingCheckpoint !== null;
 }
@@ -1157,10 +1110,19 @@ async function getBuildProgress(courseCode) {
 }
 
 /**
- * Spawn a new Claude agent for a course using osascript
- * Opens a new terminal window (iTerm or Terminal) and runs claude there
+ * DISABLED: Spawn a new Claude agent for a course using osascript
+ * NO AUTO-SPAWN: Dashboard controls all agent spawning
  */
 async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
+  console.log(`[SPAWN-DISABLED] spawnBuildAgent called for ${courseCode} agent #${agentNumber} - NO ACTION (dashboard controls spawning)`);
+  return Promise.resolve({ pid: null, spawned: false, reason: 'auto-spawn disabled' });
+}
+
+// ============================================================================
+// LEGACY: Original spawnBuildAgent code preserved for reference (DO NOT USE)
+// Dashboard handles all agent spawning - this code is never executed
+// ============================================================================
+async function _LEGACY_spawnBuildAgent_DO_NOT_USE(courseCode, agentNumber, terminal = 'iTerm2') {
   // Fetch checkpoint configs to generate dynamic instructions
   const checkpointConfigs = {};
   for (const seed of CHECKPOINT_SEEDS) {
@@ -1593,154 +1555,78 @@ async function updateBuildJobDb(buildJobId, updates) {
 const DB_HEARTBEAT_INTERVAL_MS = 30 * 1000;
 
 async function checkBuilds() {
-  for (const [courseCode, build] of activeBuilds.entries()) {
+  // DATABASE-ONLY: Query running jobs from DB, not memory
+  let runningJobs = [];
+  try {
+    const { data, error } = await supabase
+      .from('build_jobs')
+      .select('*')
+      .eq('status', 'running');
+
+    if (error) {
+      console.error('[BUILD] DB query failed:', error.message);
+      return;
+    }
+    runningJobs = data || [];
+  } catch (err) {
+    console.error('[BUILD] DB error:', err.message);
+    return;
+  }
+
+  if (runningJobs.length === 0) {
+    return;  // No running jobs
+  }
+
+  const now = Date.now();
+
+  for (const job of runningJobs) {
+    const courseCode = job.course_code;
+
     try {
       const progress = await getBuildProgress(courseCode);
-      const now = Date.now();
+      const targetSeeds = job.total_seeds || 260;
+      const lastHeartbeat = job.last_heartbeat ? new Date(job.last_heartbeat).getTime() : 0;
+      const heartbeatAge = now - lastHeartbeat;
+      const respawnCount = job.respawn_count || 0;
+      const agentCount = job.agent_count || 1;
+      const batchStartSeed = job.batch_start_seed || 0;
 
-      // [BUILD-DEBUG] Log full build state at start of each check
-      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} ===`);
-      console.log(`[BUILD-DEBUG] Build state: status=${build.status}, agentCount=${build.agentCount}, agent=${build.agent ? 'EXISTS' : 'NULL'}`);
-      console.log(`[BUILD-DEBUG] Progress: completed=${progress.completed}, total=${progress.total}, targetSeeds=${build.targetSeeds || progress.total}`);
-      console.log(`[BUILD-DEBUG] Batch tracking: batchStartSeed=${build.batchStartSeed}, lastSeenSeed=${build.lastSeenSeed}`);
-      console.log(`[BUILD-DEBUG] Timing: lastProgressTime=${new Date(build.lastProgressTime).toISOString()}, elapsed=${Math.round((now - build.lastProgressTime) / 1000)}s`);
+      // [BUILD-DEBUG] Log state from DB
+      console.log(`[BUILD-DEBUG] === CHECK ${courseCode} (from DB) ===`);
+      console.log(`[BUILD-DEBUG] DB job: id=${job.id}, agentCount=${agentCount}, respawnCount=${respawnCount}`);
+      console.log(`[BUILD-DEBUG] Progress: completed=${progress.completed}, target=${targetSeeds}`);
+      console.log(`[BUILD-DEBUG] Heartbeat age: ${(heartbeatAge/1000).toFixed(0)}s`);
 
-      // Course complete? Use build.targetSeeds if set, otherwise progress.total
-      const targetSeeds = build.targetSeeds || progress.total;
-      const isComplete = progress.completed >= targetSeeds;
-
-      if (isComplete) {
+      // Course complete?
+      if (progress.completed >= targetSeeds) {
         console.log(`[BUILD] ✓ COMPLETE: ${courseCode} (${progress.completed}/${targetSeeds} seeds)`);
-        console.log(`[BUILD]   Total agents used: ${build.agentCount}`);
-        if (build.agent && build.agent.pid) {
-          try { process.kill(build.agent.pid, 'SIGTERM'); } catch (e) {}
-        }
-        // Update DB: mark job as complete
-        if (build.buildJobId) {
-          await updateBuildJobDb(build.buildJobId, {
-            status: 'complete',
-            current_seed: progress.completed,
-            seeds_completed: progress.completed,
-            last_heartbeat: new Date().toISOString(),
-            completed_at: new Date().toISOString()
-          });
-          console.log(`[BUILD] DB: marked job ${build.buildJobId} as complete`);
-        }
-        activeBuilds.delete(courseCode);
+        await supabase.from('build_jobs').update({
+          status: 'complete',
+          current_seed: progress.completed,
+          seeds_completed: progress.completed,
+          completed_at: new Date().toISOString()
+        }).eq('id', job.id);
         continue;
       }
 
-      // No agent running - spawn one
-      if (!build.agent) {
-        console.log(`[BUILD] No agent for ${courseCode}, spawning... (previous status: ${build.status})`);
-        console.log(`[BUILD]   Progress: ${progress.completed}/${progress.total}, batchStartSeed: ${build.batchStartSeed}, agentCount: ${build.agentCount}`);
-        console.log(`[BUILD-DEBUG] >>> SPAWNING NEW AGENT - REASON: build.agent is NULL`);
-        console.log(`[BUILD-DEBUG]     Previous status that caused NULL: ${build.status}`);
-        console.log(`[BUILD-DEBUG]     Will be agent #${build.agentCount + 1}, resetting batchStartSeed from ${build.batchStartSeed} to ${progress.completed}`);
-
-        build.agentCount++;
-        build.batchStartSeed = progress.completed;
-        build.batchStartTime = now;
-        build.lastSeenSeed = progress.completed;
-        build.lastProgressTime = now;
-        build.status = 'running';
-        build.agent = await spawnBuildAgent(courseCode, build.agentCount, build.terminal);
-
-        // Ping activity to reset stall timer
-        recordActivity(courseCode, progress.completed);
-        continue;
-      }
-
-      // Agent running - check progress
-      const seedsThisBatch = progress.completed - build.batchStartSeed;
-      const timeSinceProgress = now - build.lastProgressTime;
-
-      // [BUILD-DEBUG] Log batch and stall calculation values
-      console.log(`[BUILD-DEBUG] Batch check: seedsThisBatch=${seedsThisBatch} (completed ${progress.completed} - batchStart ${build.batchStartSeed}), BATCH_SIZE=${BATCH_SIZE}, needsNewAgent=${seedsThisBatch >= BATCH_SIZE}`);
-      console.log(`[BUILD-DEBUG] Stall check: timeSinceProgress=${Math.round(timeSinceProgress / 1000)}s, STALL_THRESHOLD=${Math.round(STALL_THRESHOLD_MS / 1000)}s, isStalled=${timeSinceProgress > STALL_THRESHOLD_MS}`);
-
-      // Progress made?
-      if (progress.completed > build.lastSeenSeed) {
-        console.log(`[BUILD] ${courseCode}: ${progress.completed}/${progress.total} (+${progress.completed - build.lastSeenSeed})`);
-        build.lastSeenSeed = progress.completed;
-        build.lastProgressTime = now;
-        // Reset respawn count when progress is made (agent is working)
-        if (build.respawnCount > 0) {
-          console.log(`[BUILD]   Respawn count reset (was ${build.respawnCount})`);
-          build.respawnCount = 0;
-        }
-        // Update DB: progress changed
-        if (build.buildJobId) {
-          build.lastDbUpdate = now;
-          await updateBuildJobDb(build.buildJobId, {
+      // Agent alive? Check heartbeat from DB
+      if (heartbeatAge < HEARTBEAT_TIMEOUT_MS) {
+        // Agent is alive - just update progress if changed
+        if (progress.completed > (job.current_seed || 0)) {
+          console.log(`[BUILD] ${courseCode}: ${progress.completed}/${targetSeeds} (+${progress.completed - (job.current_seed || 0)})`);
+          await supabase.from('build_jobs').update({
             current_seed: progress.completed,
             seeds_completed: progress.completed,
-            last_heartbeat: new Date().toISOString()
-          });
+            respawn_count: 0  // Reset respawn count on progress
+          }).eq('id', job.id);
         }
-      } else if (build.buildJobId && (!build.lastDbUpdate || now - build.lastDbUpdate > DB_HEARTBEAT_INTERVAL_MS)) {
-        // No progress, but send heartbeat every 30 seconds
-        build.lastDbUpdate = now;
-        await updateBuildJobDb(build.buildJobId, {
-          last_heartbeat: new Date().toISOString()
-        });
+        continue;  // Agent alive, no spawn needed
       }
 
-      // Batch complete? Just log milestone - DON'T spawn new agent yet
-      // The current agent will stop itself, then stall detection will spawn the next one
-      if (seedsThisBatch >= BATCH_SIZE) {
-        console.log(`[BUILD] Batch milestone: ${courseCode} (${seedsThisBatch} seeds this batch)`);
-        // Reset batch counter but keep agent reference - wait for stall to confirm agent stopped
-        build.batchStartSeed = progress.completed;
-        // Don't touch build.agent - let stall detection handle the spawn
-      }
-
-      // Stalled? Agent has stopped - auto-respawn if under limit
-      // Extended stall (10+ min) = respawn anyway, even if other agents running (they may be stuck)
-      const EXTENDED_STALL_MS = 10 * 60 * 1000;  // 10 minutes
-      const isExtendedStall = timeSinceProgress > EXTENDED_STALL_MS;
-
-      if (timeSinceProgress > STALL_THRESHOLD_MS && build.status !== 'stalled') {
-        console.log(`[BUILD] Agent STALLED: ${courseCode} - no progress for ${Math.round(timeSinceProgress / 1000)}s`);
-
-        const runningAgents = getRunningAgentCount();
-
-        // Respawn if: no agents running OR extended stall (agents may be stuck/rate-limited)
-        if (runningAgents > 0 && !isExtendedStall) {
-          console.log(`[BUILD]   Waiting - ${runningAgents} agent(s) running, will force respawn after 10min`);
-          // Don't reset timer - let it keep counting toward extended stall
-        } else if (build.respawnCount < MAX_RESPAWNS) {
-          if (isExtendedStall && runningAgents > 0) {
-            console.log(`[BUILD]   ⚠️ Extended stall (${Math.round(timeSinceProgress/60000)}min) - forcing respawn despite ${runningAgents} agent(s) running`);
-          }
-          console.log(`[BUILD]   🔄 Auto-respawning (attempt ${build.respawnCount + 1}/${MAX_RESPAWNS})...`);
-
-          // Increment respawn count and spawn new agent
-          build.respawnCount++;
-          build.agentCount++;
-          build.status = 'running';
-          build.lastProgressTime = Date.now();  // Reset stall timer
-          build.agent = await spawnBuildAgent(courseCode, build.agentCount, build.terminal);
-
-          // Ping activity to reset stall detection
-          recordActivity(courseCode, progress.completed);
-        } else {
-          console.log(`[BUILD]   ⚠️ MAX RESPAWNS REACHED (${MAX_RESPAWNS}) - manual restart required`);
-          console.log(`[BUILD]   Use dashboard or POST /api/build/start/${courseCode} to restart`);
-
-          // Mark as stalled - requires manual intervention
-          build.status = 'stalled';
-          build.stalledAt = Date.now();
-          // Update DB: mark job as stalled
-          if (build.buildJobId) {
-            await updateBuildJobDb(build.buildJobId, {
-              status: 'stalled',
-              last_heartbeat: new Date().toISOString()
-            });
-            console.log(`[BUILD] DB: marked job ${build.buildJobId} as stalled`);
-          }
-        }
-      }
+      // Heartbeat stale - agent may be dead, mark as stalled
+      // NO AUTO-SPAWN: User controls spawning from dashboard
+      console.log(`[BUILD] ${courseCode}: Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s) - marking as stalled`);
+      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
 
     } catch (err) {
       console.error(`[BUILD] Error checking ${courseCode}:`, err.message);
@@ -3389,7 +3275,7 @@ app.post('/api/seed/complete', async (req, res) => {
     });
 
     // CHECKPOINT GATE: Block seeds past checkpoint until approved
-    if (isBlockedByCheckpoint(course_code, seed_number)) {
+    if (await isBlockedByCheckpoint(course_code, seed_number)) {
       const checkpoint = await getCheckpointStatus(course_code);
       return res.status(403).json({
         error: 'CHECKPOINT_REQUIRED',
@@ -4097,28 +3983,18 @@ app.post('/api/seed/complete', async (req, res) => {
           awaiting_qa: true
         }, 'pending_qa');
 
-        // Spawn the QA agent in a new terminal
-        try {
-          await spawnCheckpointQAAgent(course_code, seed_number);
-        } catch (spawnErr) {
-          console.error(`[CHECKPOINT] Failed to spawn QA agent: ${spawnErr.message}`);
-          // Fall back to auto-approve if spawn fails
-          await approveCheckpoint(course_code, seed_number, 'auto_fallback', {
-            spawn_failed: true,
-            error: spawnErr.message
-          }, 'approved');
-          console.log(`Fallback: Auto-approved checkpoint ${seed_number} (QA spawn failed)`);
-          // Continue to next seed
-          res.locals.checkpointAutoApproved = {
-            checkpoint_seed: seed_number,
-            checkpoint_number: checkpointNum,
-            status: 'AUTO_APPROVED_FALLBACK',
-            message: 'QA spawn failed - auto-approved as fallback. CONTINUE TO NEXT SEED.'
-          };
-          // Fall through to normal response
-        }
+        // NO AUTO-SPAWN: Dashboard controls agent spawning
+        // Just log that checkpoint needs QA - dashboard will spawn agent
+        console.log(`[CHECKPOINT] ${course_code}: Checkpoint ${seed_number} awaiting QA (spawn from dashboard)`);
+        res.locals.checkpointAwaitingQA = {
+          checkpoint_seed: seed_number,
+          checkpoint_number: checkpointNum,
+          status: 'AWAITING_QA',
+          message: 'Checkpoint reached. Dashboard will spawn QA agent when ready.'
+        };
+        // Fall through to normal response - don't block the build agent
 
-        // If QA spawned successfully, tell build agent to wait
+        // Check if QA is pending (will be false since we don't auto-spawn anymore)
         if (isQAPending(course_code)) {
           return res.json({
             ok: true,
@@ -5811,23 +5687,11 @@ app.post('/api/checkpoint/approve/:courseCode', async (req, res) => {
         build.agent = null;
       }
 
-      // Reset for fresh spawn
-      build.agentCount++;
+      // NO AUTO-SPAWN: Dashboard controls agent spawning
+      // Just update status - dashboard will spawn agent when ready
       build.status = 'checkpoint_approved';
       build.lastProgressTime = Date.now();
-      didSpawn = true;
-
-      // Spawn fresh agent with full methodology + lessons
-      spawnBuildAgent(courseCode, build.agentCount, build.terminal || 'iTerm2')
-        .then(agent => {
-          build.agent = agent;
-          build.status = 'agent_running';
-          console.log(`[CHECKPOINT] Fresh agent #${build.agentCount} spawned for ${courseCode}`);
-        })
-        .catch(err => {
-          console.error(`[CHECKPOINT] Failed to spawn agent: ${err.message}`);
-          build.status = 'spawn_failed';
-        });
+      console.log(`[CHECKPOINT] ${courseCode}: Checkpoint approved, ready for agent spawn from dashboard`);
     }
   }
 
@@ -6237,6 +6101,10 @@ app.listen(PORT, () => {
   console.log(`║  AUTO-RESPAWN: Enabled - checks every 60s, max ${MAX_AUTO_RESPAWNS} respawns     ║`);
   console.log(`╚══════════════════════════════════════════════════════════════╝\n`);
 
-  // Start the stall watcher for auto-respawning
-  startStallWatcher();
+  // DISABLED: Stall watcher - BUILD MANAGER now handles stall detection from DB
+  // startStallWatcher();
+
+  // Start build manager on startup to monitor running jobs from DB
+  startBuildManager();
+  console.log('[BUILD] Build manager started - monitoring running jobs from DB');
 });
