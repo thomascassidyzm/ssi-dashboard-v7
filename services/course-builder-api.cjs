@@ -1782,7 +1782,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   try {
     const { data: jobData, error: jobError } = await supabase
       .from('build_jobs')
-      .upsert({
+      .insert({
         course_code: courseCode,
         pass: 'pass_2',  // decomposition pass
         status: 'running',
@@ -1792,9 +1792,6 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
         started_at: new Date().toISOString(),
         last_heartbeat: new Date().toISOString(),
         requested_by: 'dashboard'
-      }, {
-        onConflict: 'course_code,pass',
-        ignoreDuplicates: false
       })
       .select('id')
       .single();
