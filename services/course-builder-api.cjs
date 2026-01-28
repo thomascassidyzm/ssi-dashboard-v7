@@ -1915,15 +1915,38 @@ async function getBuildStatus(courseCode) {
   const build = activeBuilds.get(courseCode);
   const progress = await getBuildProgress(courseCode);
 
+  // Check DB for running job (SSoT)
+  let dbJob = null;
+  try {
+    const { data } = await supabase
+      .from('build_jobs')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('status', 'running')
+      .order('started_at', { ascending: false })
+      .limit(1)
+      .single();
+    dbJob = data;
+  } catch (e) { /* no running job */ }
+
+  // Check heartbeat
+  const heartbeat = agentHeartbeats.get(courseCode);
+  const heartbeatAlive = heartbeat && (Date.now() - heartbeat.lastHeartbeat) < HEARTBEAT_TIMEOUT_MS;
+
+  // Active if: DB says running OR heartbeat alive OR in-memory build
+  const isActive = !!dbJob || heartbeatAlive || !!build;
+
   return {
     course_code: courseCode,
-    active: !!build,
+    active: isActive,
     progress: progress,
-    build: build ? {
-      status: build.status,
-      agent_count: build.agentCount,
-      current_batch_seeds: progress.completed - build.batchStartSeed,
-      batch_size: BATCH_SIZE
+    source: dbJob ? 'database' : (heartbeatAlive ? 'heartbeat' : (build ? 'memory' : null)),
+    build: isActive ? {
+      status: dbJob?.status || build?.status || 'running',
+      agent_count: build?.agentCount || 1,
+      current_batch_seeds: progress.completed - (build?.batchStartSeed || 0),
+      batch_size: BATCH_SIZE,
+      job_id: dbJob?.id || null
     } : null
   };
 }
