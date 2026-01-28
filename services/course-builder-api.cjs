@@ -1110,19 +1110,10 @@ async function getBuildProgress(courseCode) {
 }
 
 /**
- * DISABLED: Spawn a new Claude agent for a course using osascript
- * NO AUTO-SPAWN: Dashboard controls all agent spawning
+ * Spawn a new Claude agent for a course using osascript
+ * Called by dashboard when user clicks Start/Resume - NOT auto-triggered
  */
 async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
-  console.log(`[SPAWN-DISABLED] spawnBuildAgent called for ${courseCode} agent #${agentNumber} - NO ACTION (dashboard controls spawning)`);
-  return Promise.resolve({ pid: null, spawned: false, reason: 'auto-spawn disabled' });
-}
-
-// ============================================================================
-// LEGACY: Original spawnBuildAgent code preserved for reference (DO NOT USE)
-// Dashboard handles all agent spawning - this code is never executed
-// ============================================================================
-async function _LEGACY_spawnBuildAgent_DO_NOT_USE(courseCode, agentNumber, terminal = 'iTerm2') {
   // Fetch checkpoint configs to generate dynamic instructions
   const checkpointConfigs = {};
   for (const seed of CHECKPOINT_SEEDS) {
