@@ -405,14 +405,8 @@ async function loadCourseCount() {
       content_status: c.content_status,
       export_ready: c.export_ready || false,
       seed_count: c.seed_count,
-      // Stats for build progress
-      stats: {
-        seeds: c.seed_pairs || c.total_seeds || 0,
-        completedSeeds: c.seed_pairs || 0,
-        legos: c.lego_pairs || 0,
-        phrases: c.phrases || 0,
-        audio: c.audio_files || 0
-      }
+      // Stats from API - completedSeeds = seeds with LEGOs (fully decomposed)
+      stats: c.stats || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
     }))
   } catch (err) {
     console.error('Failed to load courses:', err)
