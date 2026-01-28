@@ -224,6 +224,28 @@
               </svg>
               <span>{{ stopping[job.id] ? 'Stopping...' : 'Stop' }}</span>
             </button>
+            <button
+              v-if="job.status === 'stalled'"
+              @click="resumeJob(job)"
+              class="job-action resume"
+              :disabled="resuming[job.id]"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>{{ resuming[job.id] ? 'Resuming...' : 'Resume' }}</span>
+            </button>
+            <button
+              v-if="job.status === 'stalled'"
+              @click="clearJob(job)"
+              class="job-action clear"
+              :disabled="clearing[job.id]"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+              <span>{{ clearing[job.id] ? 'Clearing...' : 'Clear' }}</span>
+            </button>
             <router-link
               :to="getJobLink(job)"
               class="job-action view"
@@ -290,6 +312,8 @@ const lastUpdate = ref(null)
 const polling = ref(true)
 const expandedErrors = ref({})
 const stopping = ref({})
+const resuming = ref({})
+const clearing = ref({})
 const restarting = ref({})
 
 let pollInterval = null
@@ -462,6 +486,75 @@ async function stopJob(job) {
     alert(`Failed to stop job: ${err.message}`)
   } finally {
     stopping.value[job.id] = false
+  }
+}
+
+// Resume a stalled job (spawn new agent)
+async function resumeJob(job) {
+  if (resuming.value[job.id]) return
+
+  resuming.value[job.id] = true
+
+  try {
+    const baseUrl = getApiBaseUrl()
+    const response = await fetch(`${baseUrl}/api/mission-control/jobs/${job.id}/resume`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({ terminal: 'iTerm2' })
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(`Failed to resume job: ${data.error || 'Unknown error'}`)
+    } else {
+      // Refresh immediately to see updated state
+      await fetchJobs()
+    }
+  } catch (err) {
+    console.error('[JobsMonitor] Failed to resume job:', err)
+    alert(`Failed to resume job: ${err.message}`)
+  } finally {
+    resuming.value[job.id] = false
+  }
+}
+
+// Clear/dismiss a stalled job
+async function clearJob(job) {
+  if (clearing.value[job.id]) return
+
+  if (!confirm(`Clear stalled job for ${job.courseCode}? This removes it from the list but doesn't delete data.`)) {
+    return
+  }
+
+  clearing.value[job.id] = true
+
+  try {
+    const baseUrl = getApiBaseUrl()
+    const response = await fetch(`${baseUrl}/api/mission-control/jobs/${job.id}/clear`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(`Failed to clear job: ${data.error || 'Unknown error'}`)
+    } else {
+      // Refresh immediately to see updated state
+      await fetchJobs()
+    }
+  } catch (err) {
+    console.error('[JobsMonitor] Failed to clear job:', err)
+    alert(`Failed to clear job: ${err.message}`)
+  } finally {
+    clearing.value[job.id] = false
   }
 }
 
@@ -1318,6 +1411,38 @@ onUnmounted(() => {
 }
 
 .job-action.stop:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.job-action.resume {
+  background: transparent;
+  border: 1px solid var(--jm-success);
+  color: var(--jm-success);
+}
+
+.job-action.resume:hover:not(:disabled) {
+  background: var(--jm-success);
+  color: white;
+}
+
+.job-action.resume:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.job-action.clear {
+  background: transparent;
+  border: 1px solid var(--jm-text-dim);
+  color: var(--jm-text-dim);
+}
+
+.job-action.clear:hover:not(:disabled) {
+  background: var(--jm-text-dim);
+  color: var(--jm-bg);
+}
+
+.job-action.clear:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

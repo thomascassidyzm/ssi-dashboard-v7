@@ -1614,10 +1614,42 @@ async function checkBuilds() {
         continue;  // Agent alive, no spawn needed
       }
 
-      // Heartbeat stale - agent may be dead, mark as stalled
-      // NO AUTO-SPAWN: User controls spawning from dashboard
-      console.log(`[BUILD] ${courseCode}: Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s) - marking as stalled`);
-      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
+      // Heartbeat stale - agent may be dead, attempt respawn
+      console.log(`[BUILD] ${courseCode}: Heartbeat stale (${(heartbeatAge/1000).toFixed(0)}s)`);
+
+      // Check respawn limit
+      if (respawnCount >= MAX_RESPAWNS) {
+        console.log(`[BUILD]   ⚠️ MAX RESPAWNS REACHED (${MAX_RESPAWNS}) - marking as stalled`);
+        await supabase.from('build_jobs').update({
+          status: 'stalled',
+          last_heartbeat: new Date().toISOString()
+        }).eq('id', job.id);
+        continue;
+      }
+
+      // Respawn agent
+      const newAgentCount = agentCount + 1;
+      const newRespawnCount = respawnCount + 1;
+      console.log(`[BUILD]   🔄 Auto-respawning (attempt ${newRespawnCount}/${MAX_RESPAWNS})...`);
+
+      try {
+        // Update DB first to claim the spawn
+        await supabase.from('build_jobs').update({
+          agent_count: newAgentCount,
+          respawn_count: newRespawnCount,
+          batch_start_seed: progress.completed,
+          last_heartbeat: new Date().toISOString()
+        }).eq('id', job.id);
+
+        // Spawn the agent (will open terminal window)
+        const terminal = job.terminal || 'iTerm2';
+        await spawnBuildAgent(courseCode, newAgentCount, terminal);
+        console.log(`[BUILD]   ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
+      } catch (spawnErr) {
+        console.error(`[BUILD]   ✗ Spawn failed: ${spawnErr.message}`);
+        // Mark as stalled if spawn fails
+        await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', job.id);
+      }
 
     } catch (err) {
       console.error(`[BUILD] Error checking ${courseCode}:`, err.message);
@@ -1652,7 +1684,31 @@ function stopBuildManager() {
  */
 async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   if (activeBuilds.has(courseCode)) {
-    return { ok: false, error: 'Build already active for this course' };
+    return { ok: false, error: 'Build already active for this course (in memory)' };
+  }
+
+  // Check for existing jobs in DB (running or stalled)
+  try {
+    const { data: existingJob, error: findError } = await supabase
+      .from('build_jobs')
+      .select('id, status, respawn_count, agent_count')
+      .eq('course_code', courseCode)
+      .in('status', ['running', 'stalled', 'pending'])
+      .single();
+
+    if (!findError && existingJob) {
+      if (existingJob.status === 'running') {
+        return { ok: false, error: 'Build already running in database - wait or stop it first' };
+      }
+      // Stalled job exists - mark it as stopped before creating new one
+      console.log(`[BUILD] Found stalled job ${existingJob.id} for ${courseCode} - marking as stopped`);
+      await supabase.from('build_jobs').update({
+        status: 'stopped',
+        stopped_at: new Date().toISOString()
+      }).eq('id', existingJob.id);
+    }
+  } catch (dbErr) {
+    // Ignore - no existing job or DB error
   }
 
   const progress = await getBuildProgress(courseCode);
@@ -1691,7 +1747,10 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
         total_seeds: effectiveTarget,
         started_at: new Date().toISOString(),
         last_heartbeat: new Date().toISOString(),
-        requested_by: 'dashboard'
+        requested_by: 'dashboard',
+        terminal: terminal,
+        agent_count: 0,
+        respawn_count: 0
       })
       .select('id')
       .single();
@@ -1713,14 +1772,36 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
   // Ensure build manager is running
   startBuildManager();
 
-  // Trigger immediate check to spawn first agent
-  setTimeout(() => checkBuilds(), 100);
+  // Spawn initial agent immediately
+  try {
+    console.log(`[BUILD] Spawning initial agent for ${courseCode}...`);
+    await spawnBuildAgent(courseCode, 1, terminal);
+    console.log(`[BUILD] ✓ Agent #1 spawned for ${courseCode}`);
+
+    // Update DB with agent count
+    const buildEntry = activeBuilds.get(courseCode);
+    if (buildEntry && buildEntry.buildJobId) {
+      await supabase.from('build_jobs').update({
+        agent_count: 1,
+        terminal: terminal
+      }).eq('id', buildEntry.buildJobId);
+    }
+  } catch (spawnErr) {
+    console.error(`[BUILD] ✗ Initial spawn failed: ${spawnErr.message}`);
+    // Clean up - mark job as failed
+    const buildEntry = activeBuilds.get(courseCode);
+    if (buildEntry && buildEntry.buildJobId) {
+      await supabase.from('build_jobs').update({ status: 'stalled' }).eq('id', buildEntry.buildJobId);
+    }
+    activeBuilds.delete(courseCode);
+    return { ok: false, error: `Failed to spawn agent: ${spawnErr.message}` };
+  }
 
   return {
     ok: true,
     course_code: courseCode,
     progress: progress,
-    message: `Build started - will spawn agents in ${BATCH_SIZE}-seed batches`
+    message: `Build started - agent spawned, will respawn in ${BATCH_SIZE}-seed batches`
   };
 }
 

@@ -398,8 +398,9 @@ function getBuildStatus(course) {
 // Seeds in database via Course Builder have LEGOs+phrases by definition
 function getCompletedSeeds(course) {
   const stats = course.stats || {}
-  // seed_pairs is the actual count of seeds in course_seeds table
-  return stats.seeds || stats.completedSeeds || 0
+  // completedSeeds = seeds that have LEGOs decomposed (from course-stats API)
+  // stats.seeds is the TOTAL seed count (668), we want completedSeeds (e.g., 304)
+  return stats.completedSeeds || 0
 }
 
 // Get seed progress percentage

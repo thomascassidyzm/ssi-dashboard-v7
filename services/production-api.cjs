@@ -722,6 +722,93 @@ app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
   res.status(400).json({ success: false, error: `Unknown job type: ${jobType}` })
 })
 
+/**
+ * POST /api/mission-control/jobs/:jobId/resume
+ * Resume a stalled job - spawns a new agent to continue the build
+ */
+app.post('/api/mission-control/jobs/:jobId/resume', async (req, res) => {
+  const { jobId } = req.params
+  const { terminal = 'iTerm2' } = req.body || {}
+
+  // Parse job ID: {courseCode}-{type}
+  const match = jobId.match(/^(.+)-(build|audio)$/)
+  if (!match) {
+    return res.status(400).json({ success: false, error: 'Invalid job ID format' })
+  }
+
+  const [, courseCode, jobType] = match
+
+  if (jobType === 'build') {
+    // Proxy to course-builder's start endpoint (handles existing stalled jobs)
+    try {
+      const response = await fetch(`${COURSE_BUILDER_URL}/api/build/start/${courseCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ terminal, targetSeeds: 260 })
+      })
+      const data = await response.json()
+      return res.json({ success: data.ok, ...data })
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message })
+    }
+  }
+
+  res.status(400).json({ success: false, error: `Resume not supported for job type: ${jobType}` })
+})
+
+/**
+ * POST /api/mission-control/jobs/:jobId/clear
+ * Clear/dismiss a stalled job from the active jobs list
+ */
+app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
+  const { jobId } = req.params
+
+  // Parse job ID: {courseCode}-{type}
+  const match = jobId.match(/^(.+)-(build|audio)$/)
+  if (!match) {
+    return res.status(400).json({ success: false, error: 'Invalid job ID format' })
+  }
+
+  const [, courseCode, jobType] = match
+
+  if (jobType === 'build') {
+    // Mark the stalled job as 'cleared' in the database
+    try {
+      const { data: job, error: findError } = await supabase
+        .from('build_jobs')
+        .select('id, status')
+        .eq('course_code', courseCode)
+        .eq('status', 'stalled')
+        .order('started_at', { ascending: false })
+        .limit(1)
+        .single()
+
+      if (findError || !job) {
+        return res.status(404).json({ success: false, error: 'No stalled job found for this course' })
+      }
+
+      const { error: updateError } = await supabase
+        .from('build_jobs')
+        .update({
+          status: 'cleared',
+          cleared_at: new Date().toISOString()
+        })
+        .eq('id', job.id)
+
+      if (updateError) {
+        return res.status(500).json({ success: false, error: updateError.message })
+      }
+
+      logger.info(`[Mission Control] Cleared stalled job ${job.id} for ${courseCode}`)
+      return res.json({ success: true, jobId: job.id, message: 'Job cleared' })
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message })
+    }
+  }
+
+  res.status(400).json({ success: false, error: `Clear not supported for job type: ${jobType}` })
+})
+
 // PM2 service management routes - keep proxying to orchestrator for now
 // These are admin-only and rarely used; can be migrated later
 app.get('/api/services', proxyOrchestrator)
