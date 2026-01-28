@@ -4143,6 +4143,19 @@ app.post('/api/seed/complete', async (req, res) => {
     // Check if a checkpoint was auto-approved
     const checkpointAutoApproved = res.locals.checkpointAutoApproved;
 
+    // Update build_jobs with progress (fire-and-forget, don't block response)
+    supabase.from('build_jobs')
+      .update({
+        current_seed: seed_number,
+        seeds_completed: seed_number,
+        last_heartbeat: new Date().toISOString()
+      })
+      .eq('course_code', course_code)
+      .eq('status', 'running')
+      .then(({ error }) => {
+        if (error) console.error(`[BUILD] build_jobs update failed:`, error.message);
+      });
+
     res.json({
       ok: true,
       seed: seedId,
