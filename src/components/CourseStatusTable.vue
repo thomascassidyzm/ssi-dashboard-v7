@@ -395,27 +395,11 @@ function getBuildStatus(course) {
 }
 
 // Get completed seeds count (seeds with LEGOs and phrases)
-// This estimates based on available stats
+// Seeds in database via Course Builder have LEGOs+phrases by definition
 function getCompletedSeeds(course) {
   const stats = course.stats || {}
-  const legos = stats.legos || 0
-  const phrases = stats.phrases || 0
-
-  // If we have phrases, estimate completed seeds
-  // Average ~6 phrases per seed, ~2 LEGOs per seed
-  if (phrases > 0 && legos > 0) {
-    // Use the lower estimate to be conservative
-    const fromPhrases = Math.floor(phrases / 6)
-    const fromLegos = Math.floor(legos / 2)
-    return Math.min(fromPhrases, fromLegos)
-  }
-
-  // If only LEGOs, estimate from that
-  if (legos > 0) {
-    return Math.floor(legos / 2)
-  }
-
-  return 0
+  // seed_pairs is the actual count of seeds in course_seeds table
+  return stats.seeds || stats.completedSeeds || 0
 }
 
 // Get seed progress percentage
