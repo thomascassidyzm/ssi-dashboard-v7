@@ -308,19 +308,51 @@ const activeFilter = ref(null)
 const sortColumn = ref('priority') // Smart default: priority sort
 
 // Get derived build status from stats
+// Pipeline: Empty → Decomposing → Needs Audio → Ready
 function getBuildStatus(course) {
   const stats = course.stats || {}
-  if (stats.audio > 0) return 'ready'
-  if (stats.phrases > 0) return 'audio_pending'
-  if (stats.legos > 0) return 'building'
-  if (stats.completedSeeds > 0) return 'seeds_only'
+  const targetSeeds = course.targetSeeds || 260
+  const completedSeeds = stats.completedSeeds || 0
+  const legos = stats.legos || 0
+  const phrases = stats.phrases || 0
+  const audio = stats.audio || 0
+
+  // Ignore system audio (shared audio files that exist on all courses)
+  const meaningfulAudio = audio > 100
+
+  // Ready: Audio is substantially complete (audio >= phrases * 2)
+  if (meaningfulAudio && phrases > 0 && audio >= phrases * 2) {
+    return 'ready'
+  }
+
+  // Needs Audio: Content complete but audio not generated
+  // Content complete = completedSeeds >= targetSeeds AND has phrases
+  if (completedSeeds >= targetSeeds && phrases > 0) {
+    return 'needs_audio'
+  }
+
+  // Decomposing: LEGOs exist but not yet at target seed count
+  if (legos > 0 || (completedSeeds > 0 && completedSeeds < targetSeeds)) {
+    return 'decomposing'
+  }
+
+  // Empty: Nothing meaningful started
   return 'empty'
+}
+
+// Get decomposition progress as percentage
+function getDecomposeProgress(course) {
+  const stats = course.stats || {}
+  const targetSeeds = course.targetSeeds || 260
+  const completedSeeds = stats.completedSeeds || 0
+  return Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
 }
 
 // Check if course needs attention (for visual emphasis)
 function needsAttention(course) {
   const buildStatus = getBuildStatus(course)
-  return buildStatus === 'audio_pending' || buildStatus === 'building'
+  // Needs audio = ready for next pipeline step
+  return buildStatus === 'needs_audio'
 }
 
 // Priority score (lower = needs more attention)
@@ -329,11 +361,11 @@ function getPriorityScore(course) {
   const newApp = course.newAppStatus || 'not_available'
   const legacyApp = course.legacyAppStatus || 'not_available'
 
-  // Highest priority: audio pending (ready for next step)
-  if (buildStatus === 'audio_pending') return 1
+  // Highest priority: needs audio (content complete, ready for audio generation)
+  if (buildStatus === 'needs_audio') return 1
 
-  // High priority: building (active work)
-  if (buildStatus === 'building') return 2
+  // High priority: decomposing (active content work)
+  if (buildStatus === 'decomposing') return 2
 
   // Medium priority: ready but not deployed
   if (buildStatus === 'ready' && newApp === 'not_available') return 3
@@ -344,14 +376,11 @@ function getPriorityScore(course) {
   // Lower: ready and live but legacy needs work
   if (buildStatus === 'ready' && newApp === 'live' && legacyApp !== 'live') return 5
 
-  // Seeds only
-  if (buildStatus === 'seeds_only') return 6
-
-  // Empty courses
-  if (buildStatus === 'empty') return 7
+  // Empty courses (not started)
+  if (buildStatus === 'empty') return 6
 
   // Fully deployed (lowest priority - done!)
-  return 8
+  return 7
 }
 
 // Status buckets for the filter rail
@@ -360,33 +389,33 @@ const statusBuckets = computed(() => {
 
   const buckets = [
     {
-      key: 'audio_pending',
-      label: 'Audio Pending',
-      indicatorClass: 'indicator-audio-pending',
+      key: 'needs_audio',
+      label: 'Needs Audio',
+      indicatorClass: 'indicator-needs-audio',
       count: 0
     },
     {
-      key: 'building',
-      label: 'Building',
-      indicatorClass: 'indicator-building',
+      key: 'decomposing',
+      label: 'Decomposing',
+      indicatorClass: 'indicator-decomposing',
       count: 0
     },
     {
-      key: 'ready_not_deployed',
+      key: 'empty',
+      label: 'Empty',
+      indicatorClass: 'indicator-empty',
+      count: 0
+    },
+    {
+      key: 'ready',
       label: 'Ready',
       indicatorClass: 'indicator-ready',
       count: 0
     },
     {
-      key: 'in_beta',
+      key: 'beta',
       label: 'Beta',
       indicatorClass: 'indicator-beta',
-      count: 0
-    },
-    {
-      key: 'needs_legacy',
-      label: 'Legacy Testing',
-      indicatorClass: 'indicator-legacy',
       count: 0
     },
     {
@@ -400,21 +429,20 @@ const statusBuckets = computed(() => {
   courses.forEach(course => {
     const buildStatus = getBuildStatus(course)
     const newApp = course.newAppStatus || 'not_available'
-    const legacyApp = course.legacyAppStatus || 'not_available'
 
-    if (buildStatus === 'audio_pending') {
+    if (buildStatus === 'needs_audio') {
       buckets[0].count++
-    } else if (buildStatus === 'building' || buildStatus === 'seeds_only') {
+    } else if (buildStatus === 'decomposing') {
       buckets[1].count++
+    } else if (buildStatus === 'empty') {
+      buckets[2].count++
     } else if (buildStatus === 'ready') {
-      if (newApp === 'not_available' || newApp === 'draft') {
-        buckets[2].count++
-      } else if (newApp === 'beta') {
-        buckets[3].count++
-      } else if (newApp === 'live' && legacyApp !== 'live') {
+      if (newApp === 'beta') {
         buckets[4].count++
-      } else if (newApp === 'live' && legacyApp === 'live') {
+      } else if (newApp === 'live') {
         buckets[5].count++
+      } else {
+        buckets[3].count++
       }
     }
   })
@@ -448,21 +476,20 @@ const filteredCourses = computed(() => {
     courses = courses.filter(course => {
       const buildStatus = getBuildStatus(course)
       const newApp = course.newAppStatus || 'not_available'
-      const legacyApp = course.legacyAppStatus || 'not_available'
 
       switch (activeFilter.value) {
-        case 'audio_pending':
-          return buildStatus === 'audio_pending'
-        case 'building':
-          return buildStatus === 'building' || buildStatus === 'seeds_only'
-        case 'ready_not_deployed':
-          return buildStatus === 'ready' && (newApp === 'not_available' || newApp === 'draft')
-        case 'in_beta':
+        case 'needs_audio':
+          return buildStatus === 'needs_audio'
+        case 'decomposing':
+          return buildStatus === 'decomposing'
+        case 'empty':
+          return buildStatus === 'empty'
+        case 'ready':
+          return buildStatus === 'ready' && newApp !== 'beta' && newApp !== 'live'
+        case 'beta':
           return buildStatus === 'ready' && newApp === 'beta'
-        case 'needs_legacy':
-          return buildStatus === 'ready' && newApp === 'live' && legacyApp !== 'live'
         case 'live':
-          return buildStatus === 'ready' && newApp === 'live' && legacyApp === 'live'
+          return buildStatus === 'ready' && newApp === 'live'
         default:
           return true
       }
@@ -488,7 +515,7 @@ const sortedCourses = computed(() => {
         return (a.name || '').localeCompare(b.name || '')
 
       case 'build':
-        const buildOrder = { ready: 0, audio_pending: 1, building: 2, seeds_only: 3, empty: 4 }
+        const buildOrder = { ready: 0, needs_audio: 1, decomposing: 2, empty: 3 }
         const aBuild = buildOrder[getBuildStatus(a)] ?? 4
         const bBuild = buildOrder[getBuildStatus(b)] ?? 4
         if (aBuild !== bBuild) return aBuild - bBuild
@@ -509,36 +536,54 @@ const groupedCourses = computed(() => {
 
   const groups = [
     {
-      key: 'attention',
-      label: 'Needs Attention',
+      key: 'needs_work',
+      label: 'Needs Work',
       priority: 'high',
-      indicatorClass: 'indicator-attention',
+      indicatorClass: 'indicator-needs-audio',
       courses: []
     },
     {
-      key: 'in_progress',
-      label: 'In Progress',
+      key: 'ready_to_release',
+      label: 'Ready to Release',
       priority: 'medium',
-      indicatorClass: 'indicator-progress',
+      indicatorClass: 'indicator-ready',
       courses: []
     },
     {
-      key: 'deployed',
-      label: 'Deployed',
+      key: 'released',
+      label: 'Released',
       priority: 'low',
-      indicatorClass: 'indicator-deployed',
+      indicatorClass: 'indicator-live',
+      courses: []
+    },
+    {
+      key: 'not_started',
+      label: 'Not Started',
+      priority: 'none',
+      indicatorClass: 'indicator-empty',
       courses: []
     }
   ]
 
   courses.forEach(course => {
-    const score = getPriorityScore(course)
-    if (score <= 2) {
+    const buildStatus = getBuildStatus(course)
+    const newApp = course.newAppStatus || 'not_available'
+
+    // Not Started: empty courses
+    if (buildStatus === 'empty') {
+      groups[3].courses.push(course)
+    }
+    // Needs Work: decomposing or needs audio
+    else if (buildStatus === 'decomposing' || buildStatus === 'needs_audio') {
       groups[0].courses.push(course)
-    } else if (score <= 5) {
-      groups[1].courses.push(course)
-    } else {
+    }
+    // Released: beta or live
+    else if (buildStatus === 'ready' && (newApp === 'beta' || newApp === 'live')) {
       groups[2].courses.push(course)
+    }
+    // Ready to Release: ready but not deployed
+    else if (buildStatus === 'ready') {
+      groups[1].courses.push(course)
     }
   })
 
@@ -759,11 +804,11 @@ onUnmounted(() => {
 }
 
 /* Status indicator colors */
-.indicator-audio-pending { background: var(--cc-purple); }
-.indicator-building { background: var(--cc-warning); }
+.indicator-needs-audio { background: var(--cc-purple); }
+.indicator-decomposing { background: var(--cc-warning); }
+.indicator-empty { background: var(--cc-text-muted); }
 .indicator-ready { background: var(--cc-accent); }
 .indicator-beta { background: #06b6d4; }
-.indicator-legacy { background: #f97316; }
 .indicator-live { background: var(--cc-success); }
 .indicator-attention { background: var(--cc-purple); }
 .indicator-progress { background: var(--cc-accent); }

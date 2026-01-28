@@ -80,13 +80,11 @@ const props = defineProps({
 const showTooltip = ref(false)
 const mousePos = ref({ x: 0, y: 0 })
 
-// Status labels matching the database enum
+// Status labels for the pipeline stages
 const statusLabels = {
   empty: 'Empty',
-  seeds_only: 'Seeds',
-  building: 'Building',
-  audio_pending: 'Audio Pending',
-  audio_generating: 'Generating',
+  decomposing: 'Decomposing',
+  needs_audio: 'Needs Audio',
   ready: 'Ready'
 }
 
@@ -141,18 +139,42 @@ function getSegmentClass(pct) {
   return 'empty'
 }
 
-// Always derive status from actual stats (not stale database contentStatus)
+// Derive status from actual stats using correct pipeline logic
 const statusLabel = computed(() => {
   const stats = props.stats || {}
-  if (stats.audio > 0) return 'Ready'
-  if (stats.phrases > 0) return 'Audio Pending'
-  if (stats.legos > 0) return 'Building'
-  if (stats.completedSeeds > 0) return 'Seeds'
+  const targetSeeds = props.targetSeeds || 260
+  const completedSeeds = stats.completedSeeds || 0
+  const legos = stats.legos || 0
+  const phrases = stats.phrases || 0
+  const audio = stats.audio || 0
+
+  // Ignore system audio (shared audio files < 100)
+  const meaningfulAudio = audio > 100
+
+  // Ready: Audio is substantially complete (audio >= phrases * 2)
+  if (meaningfulAudio && phrases > 0 && audio >= phrases * 2) {
+    return 'Ready'
+  }
+
+  // Needs Audio: Content complete but audio not generated
+  if (completedSeeds >= targetSeeds && phrases > 0) {
+    return 'Needs Audio'
+  }
+
+  // Decomposing: LEGOs exist or working toward target
+  if (legos > 0 || (completedSeeds > 0 && completedSeeds < targetSeeds)) {
+    const pct = Math.min(100, Math.round((completedSeeds / targetSeeds) * 100))
+    return `Decomposing ${pct}%`
+  }
+
   return 'Empty'
 })
 
 const statusClass = computed(() => {
-  const label = statusLabel.value.toLowerCase().replace(' ', '-')
+  const label = statusLabel.value.toLowerCase()
+  // Handle "Decomposing X%" by extracting just "decomposing"
+  if (label.startsWith('decomposing')) return 'status-decomposing'
+  if (label === 'needs audio') return 'status-needs-audio'
   return `status-${label}`
 })
 
@@ -325,24 +347,14 @@ onUnmounted(() => {
   color: #64748b;
 }
 
-.build-tooltip .status-badge.status-seeds {
+.build-tooltip .status-badge.status-decomposing {
   background: rgba(245, 158, 11, 0.2);
   color: #f59e0b;
 }
 
-.build-tooltip .status-badge.status-building {
-  background: rgba(59, 130, 246, 0.2);
-  color: #3b82f6;
-}
-
-.build-tooltip .status-badge.status-audio-pending {
+.build-tooltip .status-badge.status-needs-audio {
   background: rgba(139, 92, 246, 0.2);
   color: #8b5cf6;
-}
-
-.build-tooltip .status-badge.status-generating {
-  background: rgba(236, 72, 153, 0.2);
-  color: #ec4899;
 }
 
 .build-tooltip .status-badge.status-ready {
