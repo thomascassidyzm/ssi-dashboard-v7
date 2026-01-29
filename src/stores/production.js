@@ -150,17 +150,25 @@ export const useProductionStore = defineStore('production', () => {
   })
 
   // Computed: pipeline stats (for audio generation)
+  // Uses audioCourseStats from database when not actively generating
+  // Uses generationQueue for live progress during active generation
   const pipelineStats = computed(() => {
-    const total = generationQueue.value.length
-    const generated = generationQueue.value.filter(item => item.status === 'complete').length
-    const failed = generationQueue.value.filter(item => item.status === 'failed').length
-    const pending = generationQueue.value.filter(item => item.status === 'queued').length
+    // If we have active generation, show live progress from queue
+    if (generationQueue.value.length > 0) {
+      const total = generationQueue.value.length
+      const generated = generationQueue.value.filter(item => item.status === 'complete').length
+      const failed = generationQueue.value.filter(item => item.status === 'failed').length
+      const pending = generationQueue.value.filter(item => item.status === 'queued').length
+      return { total, generated, failed, pending }
+    }
 
+    // Otherwise use database counts from audioCourseStats
+    const stats = audioCourseStats.value
     return {
-      total,
-      generated,
-      failed,
-      pending
+      total: stats.total || 0,
+      generated: stats.existing || 0,
+      pending: stats.missing || 0,
+      failed: 0  // Not tracked in simple stats
     }
   })
 
@@ -280,10 +288,12 @@ export const useProductionStore = defineStore('production', () => {
 
       // Fetch course data - all requests are optional, we'll use what we get
       // NOTE: Manifest is NOT fetched here - it's only for legacy app export
-      const [flagsRes, audioFlagsRes, metadataRes] = await Promise.all([
+      // NOTE: audio-stats is FAST (simple COUNT queries), unlike audio-pipeline/plan
+      const [flagsRes, audioFlagsRes, metadataRes, audioStatsRes] = await Promise.all([
         fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }).catch(() => null),
         fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers }).catch(() => null),
-        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null)
+        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null),
+        fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers }).catch(() => null)
       ])
 
       // Manifest is legacy - only generated on-demand for export
@@ -298,9 +308,15 @@ export const useProductionStore = defineStore('production', () => {
       audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
-      // NOTE: Audio pipeline plan removed from automatic load - takes 40+ seconds!
-      // Plan is only needed when viewing Audio tab or starting generation
-      // Use loadAudioPlan() explicitly when needed
+      // Fast audio stats for Progress Dashboard (simple COUNT queries)
+      if (audioStatsRes?.ok) {
+        const stats = await audioStatsRes.json()
+        audioCourseStats.value = {
+          total: stats.total || 0,
+          existing: stats.existing || 0,
+          missing: stats.missing || 0
+        }
+      }
 
       // Mark this course data as fresh
       lastLoadTime.value[courseCode] = Date.now()

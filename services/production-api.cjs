@@ -2127,6 +2127,68 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
   }
 })
 
+// FAST audio stats endpoint - just COUNT queries, no scanning
+// Returns total needed vs existing audio for Progress Dashboard
+app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Count existing audio records for this course (fast COUNT query)
+    const { count: existingAudio, error: audioErr } = await supabase
+      .from('course_audio')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    if (audioErr) throw audioErr
+
+    // Count total unique phrases (each needs known + target1 + target2 = 3 audio files)
+    const { count: phraseCount, error: phraseErr } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+
+    if (phraseErr) throw phraseErr
+
+    // Count LEGOs that need presentation audio
+    const { count: legoCount, error: legoErr } = await supabase
+      .from('course_legos')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('is_new', true)  // Only new LEGOs need presentation
+
+    if (legoErr) throw legoErr
+
+    // Total audio needed:
+    // - Each phrase needs 3 audio files (known, target1, target2)
+    // - Each new LEGO needs 1 presentation audio
+    const totalNeeded = (phraseCount * 3) + legoCount
+    const existing = existingAudio || 0
+    const missing = Math.max(0, totalNeeded - existing)
+
+    res.json({
+      success: true,
+      total: totalNeeded,
+      existing,
+      missing,
+      breakdown: {
+        phrases: phraseCount,
+        phrasesAudio: phraseCount * 3,
+        legos: legoCount,
+        presentationAudio: legoCount
+      }
+    })
+  } catch (error) {
+    logger.error('Error fetching audio stats:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
