@@ -178,11 +178,13 @@ app.patch('/api/courses/:courseCode/platform-status', async (req, res) => {
       return res.status(400).json({ error: 'Invalid platform. Must be "new_app" or "legacy_app"' })
     }
 
-    // Validate status
-    const validStatuses = ['not_available', 'draft', 'testing', 'beta', 'released', 'deprecated']
+    // Validate status ('live' is an alias for 'released')
+    const validStatuses = ['not_available', 'draft', 'testing', 'beta', 'released', 'live', 'deprecated']
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ error: `Invalid status. Must be one of: ${validStatuses.join(', ')}` })
     }
+    // Normalize 'live' to 'released' for database storage
+    const normalizedStatus = status === 'live' ? 'released' : status
 
     const supabase = supabaseClient.getClient()
 
@@ -203,15 +205,15 @@ app.patch('/api/courses/:courseCode/platform-status', async (req, res) => {
     // Prepare update object
     const statusColumn = `${platform}_status`
     const betaColumn = `${platform}_beta_started_at`
-    const updateData = { [statusColumn]: status }
+    const updateData = { [statusColumn]: normalizedStatus }
 
     // Auto-set beta_started_at when entering beta
     const previousStatus = current[statusColumn]
-    if (status === 'beta' && previousStatus !== 'beta') {
+    if (normalizedStatus === 'beta' && previousStatus !== 'beta') {
       updateData[betaColumn] = new Date().toISOString()
     }
     // Clear beta_started_at when leaving beta
-    if (status !== 'beta' && previousStatus === 'beta') {
+    if (normalizedStatus !== 'beta' && previousStatus === 'beta') {
       updateData[betaColumn] = null
     }
 

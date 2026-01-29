@@ -215,12 +215,17 @@
                       {{ course.inNewApp ? course.newAppStatus : '—' }}
                     </span>
                   </div>
-                  <div class="deploy-badge legacy-app" :class="{ active: course.inLegacyApp }">
+                  <button
+                    class="deploy-badge legacy-app clickable"
+                    :class="{ active: course.inLegacyApp || true }"
+                    @click.stop="cycleLegacyStatus(course)"
+                    title="Click to change Legacy App status"
+                  >
                     <span class="deploy-label">Legacy</span>
                     <span class="deploy-status" :class="course.legacyAppStatus">
-                      {{ course.inLegacyApp ? course.legacyAppStatus : '—' }}
+                      {{ course.legacyAppStatus !== 'not_available' ? course.legacyAppStatus : '—' }}
                     </span>
-                  </div>
+                  </button>
                 </div>
               </template>
             </div>
@@ -280,7 +285,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['action'])
+const emit = defineEmits(['action', 'updateLegacyStatus'])
 const router = useRouter()
 
 const searchQuery = ref('')
@@ -543,6 +548,23 @@ function handleAction(course, action) {
   } else if (action.type === 'audio') {
     router.push(`/production/${course.code}/audio`)
   }
+}
+
+// Cycle legacy app status: — → testing → beta → live → —
+const legacyStatusCycle = ['not_available', 'testing', 'beta', 'live']
+
+async function cycleLegacyStatus(course) {
+  const currentStatus = course.legacyAppStatus || 'not_available'
+  const currentIndex = legacyStatusCycle.indexOf(currentStatus)
+  const nextIndex = (currentIndex + 1) % legacyStatusCycle.length
+  const nextStatus = legacyStatusCycle[nextIndex]
+
+  // Optimistically update UI
+  course.legacyAppStatus = nextStatus
+  course.inLegacyApp = nextStatus !== 'not_available'
+
+  // Emit event for parent to handle API call
+  emit('updateLegacyStatus', { courseCode: course.code, status: nextStatus })
 }
 </script>
 
@@ -951,6 +973,17 @@ function handleAction(course, action) {
 .deploy-badge.legacy-app.active {
   background: rgba(6, 182, 212, 0.1);
   border-color: rgba(6, 182, 212, 0.5);
+}
+
+.deploy-badge.clickable {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.deploy-badge.clickable:hover {
+  transform: scale(1.02);
+  border-color: rgba(6, 182, 212, 0.8);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
 }
 
 .deploy-label {

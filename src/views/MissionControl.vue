@@ -239,6 +239,7 @@
             :courses="coursesWithStatus"
             :loading="loadingCourses"
             @action="handlePipelineAction"
+            @updateLegacyStatus="handleLegacyStatusUpdate"
           />
         </div>
       </section>
@@ -391,6 +392,23 @@ async function handlePlatformStatusUpdate({ courseCode, platform, status }) {
 function handlePipelineAction({ course, action }) {
   console.log('Pipeline action:', action, 'for course:', course.code)
   // Actions are handled by the board component via router navigation
+}
+
+// Handle legacy app status update from pipeline board
+async function handleLegacyStatusUpdate({ courseCode, status }) {
+  try {
+    console.log(`Updating legacy app status for ${courseCode} to ${status}`)
+    await api.course.updatePlatformStatus(courseCode, 'legacy_app', status)
+    // Update local state
+    const course = courses.value.find(c => c.code === courseCode)
+    if (course) {
+      course.legacy_app_status = status
+    }
+  } catch (err) {
+    console.error('Failed to update legacy app status:', err)
+    // Refresh to revert optimistic update
+    await loadCourseCount()
+  }
 }
 
 // Load courses
