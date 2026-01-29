@@ -6892,6 +6892,32 @@ app.post('/api/qa/spawn-monitor/:courseCode', async (req, res) => {
 });
 
 /**
+ * POST /api/qa/spawn-fixer/:courseCode - Spawn Opus phrase fixer agent
+ */
+app.post('/api/qa/spawn-fixer/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { spawnPhraseFixer } = require('./shared/spawn-course-builder.cjs');
+
+    console.log(`[QA] Spawning phrase fixer for ${courseCode}...`);
+
+    // Spawn in background - don't wait for completion
+    spawnPhraseFixer({ courseCode, terminal: 'iterm' }, 1)
+      .then(() => console.log(`[QA] Fixer spawned for ${courseCode}`))
+      .catch(err => console.error(`[QA] Fixer spawn failed: ${err.message}`));
+
+    res.json({
+      success: true,
+      message: `Phrase fixer spawning for ${courseCode}`,
+      course_code: courseCode
+    });
+  } catch (err) {
+    console.error('[QA] Error spawning fixer:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * DELETE /api/qa/phrase/:phraseId - Delete a flagged phrase
  */
 app.delete('/api/qa/phrase/:phraseId', async (req, res) => {
