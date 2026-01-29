@@ -490,10 +490,11 @@ async function planHandler(req, res) {
     if (legosError) throw legosError
 
     // Get existing presentation audio (exclude pending/)
-    // Use lego_id for reliable matching (text parsing is error-prone)
+    // Match by text_normalized since multiple LEGOs can share the same presentation
+    // (e.g., "And then" and "and then" both generate "The Arabic for 'and then', is:")
     const { data: existingPresentations } = await supabase
       .from('course_audio')
-      .select('lego_id')
+      .select('lego_id, text_normalized')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
       .not('s3_key', 'like', 'pending/%')
@@ -503,11 +504,27 @@ async function planHandler(req, res) {
       (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
     )
 
-    // Count missing presentations by lego_id
+    // Also build set of known_texts that have presentation audio
+    // Presentation text format: "The {lang} for '{known}', is:" - extract the known text
+    const knownTextsWithPresentation = new Set()
+    for (const pres of existingPresentations || []) {
+      // Extract known_text from presentation text (case-insensitive)
+      // Format: "The Arabic for 'X', is:" -> X
+      const match = pres.text_normalized?.match(/for '([^']+)',/i)
+      if (match) {
+        knownTextsWithPresentation.add(match[1].toLowerCase().trim())
+      }
+    }
+
+    // Count missing presentations - check BOTH lego_id AND text match
     const missingPresentationLegos = []
     for (const lego of newLegos || []) {
-      // Skip if this LEGO already has presentation audio
+      // Skip if this LEGO already has presentation audio by lego_id
       if (legoIdsWithPresentation.has(lego.lego_id)) {
+        continue
+      }
+      // Also skip if a presentation exists for this known_text (shared audio)
+      if (knownTextsWithPresentation.has(lego.known_text.toLowerCase().trim())) {
         continue
       }
       missingPresentationLegos.push({
@@ -926,9 +943,10 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     if (newLegos?.length > 0) {
       // Get existing presentation audio (exclude pending/ since we handled those above)
+      // Include text_normalized for text-based matching (multiple LEGOs can share presentation)
       const { data: existingPresentations } = await supabase
         .from('course_audio')
-        .select('lego_id')
+        .select('lego_id, text_normalized')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .not('s3_key', 'like', 'pending/%')
@@ -937,6 +955,16 @@ app.post('/generate/:courseCode', async (req, res) => {
       const legoIdsWithPresentation = new Set(
         (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
       )
+
+      // Also build set of known_texts that have presentation audio
+      // Presentation text format: "The {lang} for '{known}', is:" - extract the known text
+      const knownTextsWithPresentation = new Set()
+      for (const pres of existingPresentations || []) {
+        const match = pres.text_normalized?.match(/for '([^']+)',/i)
+        if (match) {
+          knownTextsWithPresentation.add(match[1].toLowerCase().trim())
+        }
+      }
 
       // Also exclude LEGOs that have pending presentations (already added above)
       const pendingLegoIds = new Set(
@@ -973,8 +1001,12 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Find LEGOs missing presentation audio and generate the text
       let missingPresentationCount = 0
       for (const lego of newLegos) {
-        // Skip if LEGO already has presentation audio or pending presentation
+        // Skip if LEGO already has presentation audio by lego_id or pending presentation
         if (legoIdsWithPresentation.has(lego.lego_id) || pendingLegoIds.has(lego.lego_id)) {
+          continue
+        }
+        // Also skip if presentation exists for this known_text (shared audio)
+        if (knownTextsWithPresentation.has(lego.known_text.toLowerCase().trim())) {
           continue
         }
 
