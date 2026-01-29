@@ -298,42 +298,9 @@ export const useProductionStore = defineStore('production', () => {
       audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
       audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
 
-      // NOTE: Orphan LEGO fix removed from automatic load (was slow and caused errors)
-      // Orphan LEGOs are LEGOs without any practice phrases - they need a "debut phrase"
-      // This is now only run when starting audio generation (see startGeneration)
-      // Manual fix available via: POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
-
-      // Load accurate pipeline stats from /plan endpoint
-      console.log('[Production] Loading pipeline plan for stats...')
-      try {
-        const planRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/plan`, { headers })
-        if (planRes.ok) {
-          const planData = await planRes.json()
-          // Populate full course stats
-          audioCourseStats.value = {
-            total: planData.total || 0,
-            existing: planData.existing || 0,
-            // Use ?? to handle 0 correctly (|| treats 0 as falsy)
-            missing: planData.missing ?? (planData.total - planData.existing) ?? 0,
-            phraseNeeds: planData.phraseNeeds || 0,
-            introNeeds: planData.introNeeds || 0
-          }
-          // Populate pipeline stats from plan
-          costEstimate.value = {
-            estimated: planData.estimatedCost || '$0.00',
-            estimatedTime: planData.estimatedTime || '0 min',
-            breakdown: planData.breakdown || []
-          }
-          // Create generation queue items from plan counts (use total for full visibility)
-          generationQueue.value = Array.from({ length: planData.total || 0 }, (_, i) => ({
-            id: `pending-${i}`,
-            status: i < (planData.existing || 0) ? 'complete' : 'queued'
-          }))
-          console.log(`[Production] Loaded plan: ${planData.total} total, ${planData.existing} existing, ${planData.missing} to generate`)
-        }
-      } catch (planErr) {
-        console.warn('[Production] Could not load pipeline plan:', planErr.message)
-      }
+      // NOTE: Audio pipeline plan removed from automatic load - takes 40+ seconds!
+      // Plan is only needed when viewing Audio tab or starting generation
+      // Use loadAudioPlan() explicitly when needed
 
       // Mark this course data as fresh
       lastLoadTime.value[courseCode] = Date.now()
