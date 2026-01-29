@@ -212,7 +212,8 @@ async function verifyStageAudio(uuids, manifest = null, onProgress = null, optio
         durationMismatched: durationResults.mismatched,
         durationErrors: durationResults.errors,
         durationMismatchDetails: durationResults.mismatchDetails,
-        durationErrorDetails: durationResults.errorDetails
+        durationErrorDetails: durationResults.errorDetails,
+        extractedDurations: durationResults.extractedDurations // Map of uuid -> actual S3 duration
       })
 
       logger.info(`[VERIFY] Phase 2 complete: ${durationResults.matched} matched, ${durationResults.mismatched} mismatched, ${durationResults.errors} errors`)
@@ -578,8 +579,20 @@ async function verifyProductionDurations(uuids, manifest, onProgress = null) {
  * @param {Function} onProgress - Progress callback (checked, fixed, errors)
  * @returns {Promise<Object>} { fixed, errors, updatedManifest }
  */
-async function autoFixDurations(uuids, manifest, onProgress = null) {
-  logger.info(`[AUTO-FIX] Extracting exact durations for ${uuids.length} files`)
+/**
+ * Auto-fix manifest durations to match S3
+ * @param {Array<string>} uuids - Array of audio UUIDs
+ * @param {Object} manifest - Course manifest to update
+ * @param {Function} onProgress - Progress callback
+ * @param {Map<string, number>} extractedDurations - Optional pre-extracted S3 durations (for instant fix)
+ * @returns {Promise<Object>} Fix results with updated manifest
+ */
+async function autoFixDurations(uuids, manifest, onProgress = null, extractedDurations = null) {
+  if (extractedDurations) {
+    logger.info(`[AUTO-FIX] Using pre-extracted S3 durations for instant fix (${extractedDurations.size} durations available)`)
+  } else {
+    logger.info(`[AUTO-FIX] Extracting exact durations from S3 for ${uuids.length} files`)
+  }
 
   const results = {
     fixed: 0,
@@ -614,33 +627,55 @@ async function autoFixDurations(uuids, manifest, onProgress = null) {
     }
   }
 
-  // Extract durations from S3 (20 concurrent workers)
-  for (const uuid of uuids) {
-    const location = uuidToLocation.get(uuid)
-    if (!location) {
-      logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
-      continue
-    }
-
-    try {
-      // Extract actual duration from S3
-      const result = await audioDurationService.extractS3Duration(uuid, STAGE_BUCKET, 0, 0)
-
-      if (result === null) {
-        results.errors++
-        results.errorDetails.push({ uuid, error: 'Failed to extract duration' })
-      } else {
-        // Update manifest with EXACT duration from sox
-        location.ref.duration = result.actualDuration
-        results.fixed++
-
-        if (results.fixed % 100 === 0 && onProgress) {
-          onProgress(results.fixed + results.errors, results.fixed, results.errors)
-        }
+  // Fix durations - either from pre-extracted or by extracting from S3
+  if (extractedDurations) {
+    // INSTANT FIX: Use pre-extracted durations
+    for (const uuid of uuids) {
+      const location = uuidToLocation.get(uuid)
+      if (!location) {
+        logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
+        continue
       }
-    } catch (error) {
-      results.errors++
-      results.errorDetails.push({ uuid, error: error.message })
+
+      const s3Duration = extractedDurations.get(uuid)
+      if (s3Duration === undefined) {
+        results.errors++
+        results.errorDetails.push({ uuid, error: 'S3 duration not found in extracted data' })
+      } else {
+        // Update manifest with S3 duration
+        location.ref.duration = s3Duration
+        results.fixed++
+      }
+    }
+  } else {
+    // SLOW FIX: Extract durations from S3 (original behavior)
+    for (const uuid of uuids) {
+      const location = uuidToLocation.get(uuid)
+      if (!location) {
+        logger.warn(`[AUTO-FIX] UUID ${uuid} not found in manifest`)
+        continue
+      }
+
+      try {
+        // Extract actual duration from S3
+        const result = await audioDurationService.extractS3Duration(uuid, STAGE_BUCKET, 0, 0)
+
+        if (result === null) {
+          results.errors++
+          results.errorDetails.push({ uuid, error: 'Failed to extract duration' })
+        } else {
+          // Update manifest with EXACT duration from sox
+          location.ref.duration = result.actualDuration
+          results.fixed++
+
+          if (results.fixed % 100 === 0 && onProgress) {
+            onProgress(results.fixed + results.errors, results.fixed, results.errors)
+          }
+        }
+      } catch (error) {
+        results.errors++
+        results.errorDetails.push({ uuid, error: error.message })
+      }
     }
   }
 

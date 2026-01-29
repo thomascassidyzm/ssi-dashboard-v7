@@ -90,7 +90,8 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
     mismatched: 0,
     errors: 0,
     mismatchDetails: [],
-    errorDetails: []
+    errorDetails: [],
+    extractedDurations: new Map() // Store extracted S3 durations for later use
   }
 
   // Create work queue
@@ -120,16 +121,21 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
           error: 'Failed to extract duration',
           stage: 'download_or_extract'
         })
-      } else if (result.matched) {
-        results.matched++
       } else {
-        results.mismatched++
-        results.mismatchDetails.push({
-          uuid: result.uuid,
-          expectedDuration: result.expectedDuration,
-          actualDuration: result.actualDuration,
-          difference: result.difference
-        })
+        // Store extracted S3 duration for later use (auto-fix, re-verification)
+        results.extractedDurations.set(result.uuid, result.actualDuration)
+
+        if (result.matched) {
+          results.matched++
+        } else {
+          results.mismatched++
+          results.mismatchDetails.push({
+            uuid: result.uuid,
+            expectedDuration: result.expectedDuration,
+            actualDuration: result.actualDuration,
+            difference: result.difference
+          })
+        }
       }
 
       // Progress updates every 100 files
@@ -159,8 +165,64 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
   return results
 }
 
+/**
+ * Verify durations against pre-extracted S3 durations (instant - no S3 download)
+ * Used for re-verification after auto-fix
+ *
+ * @param {Array<Object>} samples - Array of { uuid, expectedDuration }
+ * @param {Map<string, number>} s3Durations - Map of UUID → duration in seconds
+ * @returns {Object} Verification results
+ */
+function verifyAgainstExtractedDurations(samples, s3Durations) {
+  const results = {
+    checked: 0,
+    matched: 0,
+    mismatched: 0,
+    errors: 0,
+    mismatchDetails: [],
+    errorDetails: []
+  }
+
+  for (const sample of samples) {
+    results.checked++
+
+    const s3Duration = s3Durations.get(sample.uuid)
+
+    if (s3Duration === undefined) {
+      // S3 duration not found (shouldn't happen if we extracted properly)
+      results.errors++
+      results.errorDetails.push({
+        uuid: sample.uuid,
+        error: 'S3 duration not found in extracted data',
+        stage: 'lookup'
+      })
+      continue
+    }
+
+    const difference = Math.abs(s3Duration - sample.expectedDuration)
+    const matched = difference <= DURATION_TOLERANCE
+
+    if (matched) {
+      results.matched++
+    } else {
+      results.mismatched++
+      results.mismatchDetails.push({
+        uuid: sample.uuid,
+        expectedDuration: sample.expectedDuration,
+        actualDuration: s3Duration,
+        difference
+      })
+    }
+  }
+
+  logger.info(`Instant verification complete: ${results.matched} matched, ${results.mismatched} mismatched, ${results.errors} errors`)
+
+  return results
+}
+
 module.exports = {
   extractS3Duration,
   batchVerifyDurations,
+  verifyAgainstExtractedDurations,
   DURATION_TOLERANCE
 }

@@ -174,11 +174,11 @@ async function loadAudioFromDB(courseCode) {
 /**
  * Load welcome, instructions, and encouragements from database
  */
-async function loadWelcomeAndEncouragements(courseCode) {
+async function loadWelcomeAndEncouragements(courseCode, knownLang) {
   const client = supabaseClient.getClient()
   if (!client) return { welcome: null, instructions: [], encouragements: [] }
 
-  // Load welcome
+  // Load welcome (course-specific, stored in course_audio)
   const { data: welcomeData } = await client
     .from('course_audio')
     .select('id, text, s3_key, duration_ms')
@@ -186,20 +186,22 @@ async function loadWelcomeAndEncouragements(courseCode) {
     .eq('role', 'welcome')
     .limit(1)
 
-  // Load instructions (orderedEncouragements)
+  // Load instructions (orderedEncouragements) from shared_audio
+  // Instructions are shared across courses with the same known language
   const { data: instructionsData } = await client
-    .from('course_audio')
+    .from('shared_audio')
     .select('id, text, s3_key, duration_ms')
-    .eq('course_code', courseCode)
-    .eq('role', 'instruction')
+    .eq('language', knownLang)
+    .eq('audio_type', 'instruction')
     .order('text')  // Consistent ordering
 
-  // Load encouragements (pooledEncouragements)
+  // Load encouragements (pooledEncouragements) from shared_audio
+  // Encouragements are shared across courses with the same known language
   const { data: encouragementsData } = await client
-    .from('course_audio')
+    .from('shared_audio')
     .select('id, text, s3_key, duration_ms')
-    .eq('course_code', courseCode)
-    .eq('role', 'encouragement')
+    .eq('language', knownLang)
+    .eq('audio_type', 'encouragement')
 
   return {
     welcome: welcomeData?.[0] || null,
@@ -1027,7 +1029,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
 
   // 3. Load welcome and encouragements from database
-  const { welcome, instructions, encouragements: encouragementsList } = await loadWelcomeAndEncouragements(courseCode)
+  const { welcome, instructions, encouragements: encouragementsList } = await loadWelcomeAndEncouragements(courseCode, knownLang)
   console.error(`  Welcome: ${welcome ? 'found' : 'missing'}, Instructions: ${instructions.length}, Encouragements: ${encouragementsList.length}`)
 
   // 5. Build lookup maps from database
