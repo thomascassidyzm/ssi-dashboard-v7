@@ -2012,7 +2012,7 @@ async function stopBuild(courseCode) {
 
     console.log(`[BUILD] Stopped job ${job.id} for ${courseCode}`);
 
-    // Also clear from in-memory if present
+    // Clear ALL in-memory state for this course
     const build = activeBuilds.get(courseCode);
     if (build) {
       if (build.agent && build.agent.pid) {
@@ -2020,6 +2020,11 @@ async function stopBuild(courseCode) {
       }
       activeBuilds.delete(courseCode);
     }
+
+    // Clear activity tracking (prevents stall detector from seeing this course)
+    courseActivity.delete(courseCode);
+    agentHeartbeats.delete(courseCode);
+    console.log(`[BUILD] Cleared in-memory state for ${courseCode}`);
 
     // Stop manager if no more in-memory builds
     if (activeBuilds.size === 0) {
@@ -2042,39 +2047,51 @@ async function stopBuild(courseCode) {
 
 /**
  * Get build status for a course
+ * DATABASE IS SINGLE SOURCE OF TRUTH for job status.
+ * Heartbeat and in-memory are only for additional info, not for determining active state.
  */
 async function getBuildStatus(courseCode) {
   const build = activeBuilds.get(courseCode);
   const progress = await getBuildProgress(courseCode);
 
-  // Check DB for running job (SSoT)
+  // Check DB for active job (SSoT) - includes pending, running, stalled
   let dbJob = null;
   try {
     const { data } = await supabase
       .from('build_jobs')
       .select('*')
       .eq('course_code', courseCode)
-      .eq('status', 'running')
+      .in('status', ['pending', 'running', 'stalled'])
       .order('started_at', { ascending: false })
       .limit(1)
       .single();
     dbJob = data;
-  } catch (e) { /* no running job */ }
+  } catch (e) { /* no active job */ }
 
-  // Check heartbeat
+  // DATABASE is the single source of truth for whether a build is active
+  // If database doesn't have an active job, the build is NOT active
+  const isActive = !!dbJob;
+
+  // Clean up stale in-memory state if DB says job is not active
+  if (!isActive && (build || courseActivity.has(courseCode) || agentHeartbeats.has(courseCode))) {
+    activeBuilds.delete(courseCode);
+    courseActivity.delete(courseCode);
+    agentHeartbeats.delete(courseCode);
+    console.log(`[BUILD] Cleaned up stale in-memory state for ${courseCode} (no active DB job)`);
+  }
+
+  // Check heartbeat for additional info (but doesn't affect isActive)
   const heartbeat = agentHeartbeats.get(courseCode);
   const heartbeatAlive = heartbeat && (Date.now() - heartbeat.lastHeartbeat) < HEARTBEAT_TIMEOUT_MS;
-
-  // Active if: DB says running OR heartbeat alive OR in-memory build
-  const isActive = !!dbJob || heartbeatAlive || !!build;
 
   return {
     course_code: courseCode,
     active: isActive,
     progress: progress,
-    source: dbJob ? 'database' : (heartbeatAlive ? 'heartbeat' : (build ? 'memory' : null)),
+    source: isActive ? 'database' : null,
+    heartbeat_alive: heartbeatAlive,
     build: isActive ? {
-      status: dbJob?.status || build?.status || 'running',
+      status: dbJob?.status || 'running',
       agent_count: build?.agentCount || 1,
       current_batch_seeds: progress.completed - (build?.batchStartSeed || 0),
       batch_size: BATCH_SIZE,
@@ -4546,9 +4563,39 @@ app.get('/api/stats/:courseCode', async (req, res) => {
  * - stalled: Array of course codes that need respawning
  * - threshold_minutes: Current stall threshold
  */
-app.get('/api/activity', (req, res) => {
+app.get('/api/activity', async (req, res) => {
   const activity = getActivityStatus();
-  const stalledCourses = Object.entries(activity)
+
+  // Cross-check with database: only include courses with active jobs
+  // This prevents showing stalled courses that have been intentionally stopped
+  let activeCourseCodes = new Set();
+  try {
+    const { data: activeJobs } = await supabase
+      .from('build_jobs')
+      .select('course_code')
+      .in('status', ['pending', 'running', 'stalled']);
+    if (activeJobs) {
+      activeCourseCodes = new Set(activeJobs.map(j => j.course_code));
+    }
+  } catch (err) {
+    console.error('[ACTIVITY] Failed to check active jobs in DB:', err.message);
+    // If DB check fails, fall back to in-memory only
+    activeCourseCodes = new Set(Object.keys(activity));
+  }
+
+  // Filter activity to only include courses with active jobs in database
+  const filteredActivity = {};
+  for (const [code, status] of Object.entries(activity)) {
+    if (activeCourseCodes.has(code)) {
+      filteredActivity[code] = status;
+    } else {
+      // Clean up stale in-memory entry
+      courseActivity.delete(code);
+      agentHeartbeats.delete(code);
+    }
+  }
+
+  const stalledCourses = Object.entries(filteredActivity)
     .filter(([_, status]) => status.stalled)
     .map(([code, _]) => code);
 
@@ -4556,7 +4603,7 @@ app.get('/api/activity', (req, res) => {
   const runningAgents = agents.filter(a => a.status === 'running');
 
   res.json({
-    courses: activity,
+    courses: filteredActivity,
     stalled: stalledCourses,
     stalled_count: stalledCourses.length,
     threshold_minutes: STALL_THRESHOLD_MS / 60000,
@@ -6628,18 +6675,36 @@ app.patch('/api/qa/flag/:flagId', async (req, res) => {
 
 /**
  * GET /api/qa/flagged-phrases/:courseCode - Get phrases with their flags for UI
+ * Supports pagination: ?limit=50&offset=0&severity=error
  */
 app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params;
     const severity = req.query.severity;
+    const limit = Math.min(parseInt(req.query.limit) || 50, 200);
+    const offset = parseInt(req.query.offset) || 0;
 
-    // Get flags
+    // First get total count for pagination
+    let countQuery = supabase
+      .from('course_qa_flags')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('status', 'open');
+
+    if (severity) {
+      countQuery = countQuery.eq('severity', severity);
+    }
+
+    const { count: total } = await countQuery;
+
+    // Get flags with pagination
     let query = supabase
       .from('course_qa_flags')
       .select('*')
       .eq('course_code', courseCode)
-      .eq('status', 'open');
+      .eq('status', 'open')
+      .order('flagged_at', { ascending: false })
+      .range(offset, offset + limit - 1);
 
     if (severity) {
       query = query.eq('severity', severity);
@@ -6651,24 +6716,25 @@ app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
       throw flagError;
     }
 
-    // Get phrase details one by one (avoiding .in() which seems problematic)
+    // Get unique phrase IDs from this page only
     const phraseIds = [...new Set(flags.filter(f => f.phrase_id).map(f => f.phrase_id))];
     const phraseMap = new Map();
 
-    // Fetch phrases in small batches
-    for (let i = 0; i < phraseIds.length; i += 10) {
-      const batch = phraseIds.slice(i, i + 10);
-      for (const id of batch) {
-        const { data: phrase } = await supabase
+    // Batch fetch phrases (max 100 at a time for Supabase)
+    if (phraseIds.length > 0) {
+      for (let i = 0; i < phraseIds.length; i += 100) {
+        const batch = phraseIds.slice(i, i + 100);
+        const { data: phrases } = await supabase
           .from('course_practice_phrases')
           .select('id, known_text, target_text, seed_number, phrase_role')
-          .eq('id', id)
-          .single();
-        if (phrase) phraseMap.set(id, phrase);
+          .in('id', batch);
+        if (phrases) {
+          phrases.forEach(p => phraseMap.set(p.id, p));
+        }
       }
     }
 
-    // Merge
+    // Merge flags with phrase data
     const result = flags.map(f => ({
       id: f.id,
       phrase_id: f.phrase_id,
@@ -6687,7 +6753,10 @@ app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
 
     res.json({
       course_code: courseCode,
-      total: result.length,
+      total,
+      limit,
+      offset,
+      has_more: offset + flags.length < total,
       flags: result
     });
   } catch (err) {
