@@ -231,11 +231,15 @@ async function updateCourseVoices(courseCode, voiceConfig) {
 /**
  * Update course status
  *
+ * Updates both `status` (internal) and `new_app_status` (for learning app visibility).
+ * Learning app filters by new_app_status IN ('released', 'beta') to show courses.
+ *
  * @param {string} courseCode
  * @param {string} status - 'draft', 'beta', or 'released'
+ * @param {string} [newAppStatus] - Optional override for new_app_status (defaults to same as status)
  * @returns {Promise<Object>}
  */
-async function updateCourseStatus(courseCode, status) {
+async function updateCourseStatus(courseCode, status, newAppStatus = null) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   // Validate status
@@ -244,9 +248,15 @@ async function updateCourseStatus(courseCode, status) {
     throw new Error(`Invalid status: ${status}. Must be one of: ${validStatuses.join(', ')}`)
   }
 
+  // Build update object
+  const updateData = {
+    status,
+    new_app_status: newAppStatus || status
+  }
+
   const { data, error } = await supabase
     .from('courses')
-    .update({ status })
+    .update(updateData)
     .eq('course_code', courseCode)
     .select()
     .single()
