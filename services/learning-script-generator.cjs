@@ -230,8 +230,9 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         componentMap.set(legoId, componentPhrases)
       }
 
-      // BUILD phrases = phrase_role 'build' (drilling, up to 7 used)
-      const buildPhrases = allPhrases.filter(p => p.phrase_role === 'build')
+      // BUILD phrases = phrase_role 'build' or 'practice' (drilling, up to 7 used)
+      // Note: Legacy courses use 'practice', newer courses use 'build'
+      const buildPhrases = allPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'practice')
       if (buildPhrases.length > 0) {
         buildMap.set(legoId, buildPhrases)
       }
