@@ -720,21 +720,14 @@ function handleAction(course, action) {
 /* Lanes Container */
 .lanes-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   flex: 1;
   background: var(--pb-border);
   overflow-x: auto;
 }
 
-@media (max-width: 1400px) {
-  .lanes-container {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-  }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .lanes-container {
     grid-template-columns: repeat(2, 1fr);
   }
