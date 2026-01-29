@@ -704,8 +704,9 @@ const pollAudioProgress = async () => {
   }
 }
 
-// Refresh plan stats to keep Progress Dashboard in sync
-let planStatsInterval: ReturnType<typeof setInterval> | null = null
+// NOTE: Plan stats refresh removed from automatic polling - takes 40+ seconds!
+// Plan is only loaded when user explicitly clicks "Start Generation" or views the plan.
+// Use refreshPlanStats() manually when needed (e.g., after generation completes).
 
 const refreshPlanStats = async () => {
   try {
@@ -727,22 +728,13 @@ const startProgressPolling = () => {
   if (progressPollInterval) return
   pollAudioProgress() // Poll immediately
   progressPollInterval = setInterval(pollAudioProgress, 1000) // Then every second
-
-  // Also start plan stats refresh (every 30 seconds)
-  if (!planStatsInterval) {
-    refreshPlanStats() // Refresh immediately
-    planStatsInterval = setInterval(refreshPlanStats, 30000) // Then every 30 seconds
-  }
+  // NOTE: No automatic plan refresh - user must explicitly request it
 }
 
 const stopProgressPolling = () => {
   if (progressPollInterval) {
     clearInterval(progressPollInterval)
     progressPollInterval = null
-  }
-  if (planStatsInterval) {
-    clearInterval(planStatsInterval)
-    planStatsInterval = null
   }
 }
 
