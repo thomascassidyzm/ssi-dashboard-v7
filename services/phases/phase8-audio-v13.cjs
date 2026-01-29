@@ -737,8 +737,12 @@ app.post('/generate/:courseCode', async (req, res) => {
       if (!text) return true
       const trimmed = text.trim()
       if (!trimmed) return true
-      // Match common punctuation marks (Western and CJK)
-      return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】]+$/.test(trimmed)
+      // Match common punctuation marks:
+      // - Western: .,;:!?-()[]{}
+      // - CJK: 。、？！；：…—–「」『』（）【】
+      // - Arabic/RTL: ؟،؛ (U+061F, U+060C, U+061B)
+      // - Hebrew: ־ (U+05BE maqaf)
+      return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
     }
 
     for (const phrase of phrases) {

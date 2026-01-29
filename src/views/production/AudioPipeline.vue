@@ -704,16 +704,46 @@ const pollAudioProgress = async () => {
   }
 }
 
+// Refresh plan stats to keep Progress Dashboard in sync
+let planStatsInterval: ReturnType<typeof setInterval> | null = null
+
+const refreshPlanStats = async () => {
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-pipeline/plan`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      if (data.total !== undefined && data.existing !== undefined) {
+        productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
+        console.log(`[AudioPipeline] Refreshed plan stats: ${data.total} total, ${data.existing} existing, ${data.missing || 0} missing`)
+      }
+    }
+  } catch (err) {
+    // Silently fail
+  }
+}
+
 const startProgressPolling = () => {
   if (progressPollInterval) return
   pollAudioProgress() // Poll immediately
   progressPollInterval = setInterval(pollAudioProgress, 1000) // Then every second
+
+  // Also start plan stats refresh (every 10 seconds)
+  if (!planStatsInterval) {
+    refreshPlanStats() // Refresh immediately
+    planStatsInterval = setInterval(refreshPlanStats, 10000) // Then every 10 seconds
+  }
 }
 
 const stopProgressPolling = () => {
   if (progressPollInterval) {
     clearInterval(progressPollInterval)
     progressPollInterval = null
+  }
+  if (planStatsInterval) {
+    clearInterval(planStatsInterval)
+    planStatsInterval = null
   }
 }
 
