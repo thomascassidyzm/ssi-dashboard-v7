@@ -89,7 +89,7 @@ module.exports = {
     {
       name: 'ngrok',
       script: 'ngrok',
-      args: `http --url=${NGROK_DOMAIN} 3456 --log=stdout`,
+      args: `http --url=${NGROK_DOMAIN} 3470 --log=stdout`,  // Production API main entry point (was 3456)
       interpreter: 'none',
       autorestart: true,
       max_restarts: 10,
