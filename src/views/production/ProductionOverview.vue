@@ -1,109 +1,137 @@
 <template>
   <div class="production-overview">
-    <!-- Course Status Control -->
-    <section class="status-control">
-      <div class="status-row">
-        <div class="status-label">Course Status</div>
-        <div class="status-selector">
-          <button
-            v-for="status in availableStatuses"
-            :key="status.value"
-            @click="handleStatusChange(status.value)"
-            class="status-btn"
-            :class="{
-              'active': currentStatus === status.value,
-              [status.colorClass]: true
-            }"
-            :disabled="isUpdatingStatus"
-          >
-            <span class="status-icon">{{ status.icon }}</span>
-            <span class="status-text">{{ status.label }}</span>
-          </button>
+    <!-- Header: Status + Stats in one row -->
+    <header class="overview-header">
+      <div class="status-pills">
+        <button
+          v-for="status in statuses"
+          :key="status.value"
+          @click="setStatus(status.value)"
+          class="status-pill"
+          :class="{ active: currentStatus === status.value, [status.value]: true }"
+          :disabled="isUpdating"
+        >
+          {{ status.label }}
+        </button>
+      </div>
+
+      <div class="header-stats">
+        <div class="mini-stat primary">
+          <span class="mini-value">{{ stats.completeSeeds }}</span>
+          <span class="mini-total">/{{ stats.totalSeeds }}</span>
+          <span class="mini-label">seeds</span>
         </div>
-        <div v-if="isUpdatingStatus" class="status-updating">
-          Updating...
+        <div class="mini-stat">
+          <span class="mini-value">{{ stats.legos.toLocaleString() }}</span>
+          <span class="mini-label">LEGOs</span>
         </div>
+        <div class="mini-stat">
+          <span class="mini-value">{{ stats.phrases.toLocaleString() }}</span>
+          <span class="mini-label">phrases</span>
+        </div>
+        <div class="mini-stat" :class="ratioClass">
+          <span class="mini-value">{{ stats.ratio }}</span>
+          <span class="mini-label">ratio</span>
+        </div>
+        <div class="mini-stat accent">
+          <span class="mini-value">{{ audioStats.existing.toLocaleString() }}</span>
+          <span class="mini-total">/{{ audioStats.total.toLocaleString() }}</span>
+          <span class="mini-label">audio</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Blockers (if any) -->
+    <section v-if="store.blockers.length > 0" class="blockers-section">
+      <div v-for="blocker in store.blockers" :key="blocker.id" class="blocker-card">
+        <span class="blocker-icon">!</span>
+        <span class="blocker-text">{{ blocker.title }}</span>
+        <button @click="handleBlocker(blocker)" class="btn-resolve">Fix</button>
       </div>
     </section>
 
-    <!-- Headline Stats -->
-    <section class="headline-stats">
-      <div class="stat-card seeds">
-        <div class="stat-value">
-          {{ courseStats.completeSeeds.toLocaleString() }}
-          <span class="stat-total">/ {{ seedTarget.toLocaleString() }}</span>
+    <!-- Main Workflow Cards -->
+    <section class="workflow-grid">
+      <!-- Text Generation -->
+      <router-link :to="`/production/${courseCode}/text`" class="workflow-card">
+        <div class="card-icon text">T</div>
+        <div class="card-content">
+          <h3>Text Generation</h3>
+          <p>Build seeds, LEGOs, and phrases</p>
         </div>
-        <div class="stat-label">Seeds</div>
-        <div class="stat-progress">
-          <div class="progress-bar" :style="{ width: `${seedProgressPercent}%` }"></div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
+      <!-- Phrase QA -->
+      <router-link :to="`/production/${courseCode}/phrase-qa`" class="workflow-card" :class="{ 'has-badge': qaStats.flags > 0 }">
+        <div class="card-icon qa">Q</div>
+        <div class="card-content">
+          <h3>Phrase QA</h3>
+          <p>Review grammar and naturalness</p>
         </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">{{ courseStats.legos.toLocaleString() }}</div>
-        <div class="stat-label">LEGOs</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">{{ courseStats.phrases.toLocaleString() }}</div>
-        <div class="stat-label">Phrases</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" :class="ratioClass">{{ courseStats.ratio }}</div>
-        <div class="stat-label">Ratio</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" :class="qualityScoreClass">{{ courseStats.avgPhraseScore || '—' }}</div>
-        <div class="stat-label">Quality</div>
-      </div>
-      <div class="stat-card audio">
-        <div class="stat-value">
-          {{ store.audioCourseStats.existing.toLocaleString() }}
-          <span class="stat-total">/ {{ store.audioCourseStats.total.toLocaleString() }}</span>
+        <span v-if="qaStats.flags > 0" class="card-badge error">{{ qaStats.flags }}</span>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
+      <!-- Audio Pipeline -->
+      <router-link :to="`/production/${courseCode}/pipeline`" class="workflow-card">
+        <div class="card-icon audio">A</div>
+        <div class="card-content">
+          <h3>Audio Generation</h3>
+          <p>TTS synthesis and processing</p>
         </div>
-        <div class="stat-label">Audio</div>
-        <div class="stat-progress">
-          <div class="progress-bar" :style="{ width: `${audioProgressPercent}%` }"></div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
+      <!-- Audio QA -->
+      <router-link
+        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
+        class="workflow-card"
+      >
+        <div class="card-icon review">R</div>
+        <div class="card-content">
+          <h3>Audio QA</h3>
+          <p>Review flagged TTS samples</p>
         </div>
-      </div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
+      <!-- Recording (combined) -->
+      <router-link :to="`/production/${courseCode}/recording`" class="workflow-card">
+        <div class="card-icon record">H</div>
+        <div class="card-content">
+          <h3>Human Recording</h3>
+          <p>Record and optimize takes</p>
+        </div>
+        <span class="card-arrow">&rarr;</span>
+      </router-link>
+
+      <!-- Launch Learning App -->
+      <button @click="launchLearningApp" class="workflow-card action">
+        <div class="card-icon launch">L</div>
+        <div class="card-content">
+          <h3>Open Learning App</h3>
+          <p>Preview course in app</p>
+        </div>
+        <span class="card-arrow">&nearr;</span>
+      </button>
     </section>
 
-    <!-- Blockers -->
-    <BlockerList
-      :blockers="store.blockers"
-      @resolve="handleResolveBlocker"
-    />
-
-    <!-- Pipeline Stages -->
-    <section class="pipeline-stages">
-      <h2 class="section-title">Pipeline Status</h2>
-      <div class="stage-grid">
-        <StageCard
-          v-for="stage in store.pipelineStagesComputed"
-          :key="stage.id"
-          :stage="stage"
-          :blocker-count="getBlockerCountForStage(stage.id)"
-          @navigate="handleNavigate"
-        />
-      </div>
+    <!-- Secondary Tools -->
+    <section class="secondary-tools">
+      <router-link :to="`/production/${courseCode}/recording-optimizer`" class="tool-link">
+        Recording Optimizer
+      </router-link>
+      <button @click="showExportDialog = true" class="tool-link">
+        Export Legacy
+      </button>
     </section>
 
-    <!-- Quick Actions -->
-    <QuickActions
-      :actions="quickActions"
-      @execute="handleQuickAction"
-    />
-
-    <!-- Import Course Modal -->
-    <ImportCourseModal
-      :visible="showImportModal"
-      @close="showImportModal = false"
-      @imported="handleCourseImported"
-    />
-
-    <!-- Legacy Export Dialog -->
+    <!-- Export Dialog -->
     <LegacyExportDialog
-      :visible="showLegacyExportDialog"
+      :visible="showExportDialog"
       :course-code="courseCode"
-      @close="showLegacyExportDialog = false"
+      @close="showExportDialog = false"
     />
   </div>
 </template>
@@ -112,491 +140,359 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductionStore } from '@/stores/production'
-import StageCard from './components/StageCard.vue'
-import BlockerList from './components/BlockerList.vue'
-import QuickActions from './components/QuickActions.vue'
-import ImportCourseModal from '@/components/ImportCourseModal.vue'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
 const props = defineProps({
-  courseCode: {
-    type: String,
-    required: true
-  }
+  courseCode: { type: String, required: true }
 })
 
 const router = useRouter()
 const store = useProductionStore()
-const showImportModal = ref(false)
-const showLegacyExportDialog = ref(false)
-const isUpdatingStatus = ref(false)
+const showExportDialog = ref(false)
+const isUpdating = ref(false)
 
-// Local stats from direct Supabase query
-const localStats = ref({
-  seeds: 0,
-  completeSeeds: 0,
-  legos: 0,
-  phrases: 0,
-  total_seeds: 668
-})
-
-// Load stats via API (uses ngrok tunnel to production-api)
-async function loadStats(courseCode) {
-  try {
-    // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
-    const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-
-    console.log(`[ProductionOverview] Loading stats for ${courseCode} from ${apiBase}`)
-
-    const response = await fetch(`${apiBase}/api/stats/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`)
-    }
-
-    const data = await response.json()
-    console.log(`[ProductionOverview] Loaded stats:`, data)
-
-    // API returns snake_case: completed_seeds, seeds_with_legos, total_seeds
-    localStats.value = {
-      seeds: data.total_seeds || data.totalSeeds || 0,
-      completeSeeds: data.seeds_with_legos || data.completed_seeds || data.completedSeeds || 0,
-      legos: data.legos || 0,
-      phrases: data.phrases || 0,
-      total_seeds: data.total_seeds || data.totalSeeds || 668,
-      avgPhraseScore: data.avg_phrase_score || null,
-      scoredPhrases: data.scored_phrases || 0
-    }
-  } catch (err) {
-    console.warn('[ProductionOverview] Could not load stats from API:', err.message)
-  }
-}
-
-// Available status options
-const availableStatuses = [
-  { value: 'testing', label: 'Testing', icon: '🔬', colorClass: 'status-testing' },
-  { value: 'beta', label: 'Beta', icon: '🧪', colorClass: 'status-beta' },
-  { value: 'live', label: 'Live', icon: '🚀', colorClass: 'status-live' }
+const statuses = [
+  { value: 'testing', label: 'Testing' },
+  { value: 'beta', label: 'Beta' },
+  { value: 'live', label: 'Live' }
 ]
 
-// Current course status from store
-// Map legacy 'draft' to 'testing' and 'released' to 'live' for display
-const currentStatus = computed(() => {
-  const dbStatus = store.courseInfo?.status || 'testing'
-  // Backwards compatibility mapping
-  if (dbStatus === 'draft') return 'testing'
-  if (dbStatus === 'released') return 'live'
-  return dbStatus
-})
+const localStats = ref({ completeSeeds: 0, totalSeeds: 668, legos: 0, phrases: 0 })
+const qaStats = ref({ flags: 0, checked: 0 })
 
-// Handle status change
-async function handleStatusChange(newStatus) {
-  if (newStatus === currentStatus.value || isUpdatingStatus.value) return
-
-  isUpdatingStatus.value = true
-  try {
-    await store.updateCourseStatus(newStatus)
-  } catch (err) {
-    console.error('Failed to update status:', err)
-  } finally {
-    isUpdatingStatus.value = false
-  }
-}
-
-// Course stats - computed from localStats (direct Supabase query)
-const courseStats = computed(() => {
+const stats = computed(() => {
   const legos = localStats.value.legos || 0
   const phrases = localStats.value.phrases || 0
   return {
-    seeds: localStats.value.seeds || 0,
     completeSeeds: localStats.value.completeSeeds || 0,
-    legos: legos,
-    phrases: phrases,
-    ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0.0',
-    avgPhraseScore: localStats.value.avgPhraseScore || null
+    totalSeeds: localStats.value.totalSeeds || 668,
+    legos,
+    phrases,
+    ratio: legos > 0 ? (phrases / legos).toFixed(1) : '0'
   }
 })
 
-// Ratio color class based on quality threshold
+const audioStats = computed(() => store.audioCourseStats || { existing: 0, total: 0 })
+
 const ratioClass = computed(() => {
-  const r = parseFloat(courseStats.value.ratio)
-  if (r >= 10) return 'text-emerald-400'
-  if (r >= 7) return 'text-yellow-400'
-  return 'text-red-400'
+  const r = parseFloat(stats.value.ratio)
+  if (r >= 10) return 'good'
+  if (r >= 7) return 'ok'
+  return 'low'
 })
 
-// Quality score color class
-const qualityScoreClass = computed(() => {
-  const score = parseFloat(courseStats.value.avgPhraseScore)
-  if (isNaN(score)) return 'text-slate-400'
-  if (score >= 7.5) return 'text-emerald-400'
-  if (score >= 6.5) return 'text-cyan-400'
-  if (score >= 5.5) return 'text-yellow-400'
-  return 'text-orange-400'
+const currentStatus = computed(() => {
+  const s = store.courseInfo?.status || 'testing'
+  if (s === 'draft') return 'testing'
+  if (s === 'released') return 'live'
+  return s
 })
+
+async function loadStats() {
+  try {
+    const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_URL || 'http://localhost:3470'
+    const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (res.ok) {
+      const data = await res.json()
+      localStats.value = {
+        completeSeeds: data.seeds_with_legos || data.completed_seeds || 0,
+        totalSeeds: data.total_seeds || 668,
+        legos: data.legos || 0,
+        phrases: data.phrases || 0
+      }
+    }
+  } catch (err) {
+    console.warn('Could not load stats:', err.message)
+  }
+}
+
+async function loadQAStats() {
+  try {
+    const apiBase = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:3471'
+    const res = await fetch(`${apiBase}/api/qa/summary/${props.courseCode}`)
+    if (res.ok) {
+      const data = await res.json()
+      qaStats.value = {
+        flags: data.flags?.total || 0,
+        checked: data.phrases?.checked || 0
+      }
+    }
+  } catch (err) {
+    // QA stats optional
+  }
+}
+
+async function setStatus(status) {
+  if (status === currentStatus.value || isUpdating.value) return
+  isUpdating.value = true
+  try {
+    await store.updateCourseStatus(status)
+  } finally {
+    isUpdating.value = false
+  }
+}
+
+function handleBlocker(blocker) {
+  const routes = {
+    createRecordingQueue: { name: 'RecordingStudioProduction', query: { autoCreateQueue: 'true' } },
+    sendToAudioPipeline: { name: 'AudioPipelineProduction', query: { autoQueue: 'flagged' } },
+    reviewSamples: { name: 'ScriptViewer', query: { filter: 'flagged' } },
+    reviewFlaggedAudio: { name: 'ScriptViewer', query: { filter: 'flagged' } }
+  }
+  const route = routes[blocker.action]
+  if (route) router.push({ ...route, params: { courseCode: props.courseCode } })
+}
+
+function launchLearningApp() {
+  const url = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
+  window.open(`${url}/?course=${props.courseCode}`, '_blank')
+}
 
 onMounted(() => {
   store.loadCourseInfo(props.courseCode)
-  loadStats(props.courseCode)
+  loadStats()
+  loadQAStats()
 })
 
 watch(() => props.courseCode, () => {
   store.loadCourseInfo(props.courseCode)
-  loadStats(props.courseCode)
+  loadStats()
+  loadQAStats()
 })
-
-// Computed
-const audioProgressPercent = computed(() => {
-  const audio = store.audioCourseStats
-  if (!audio || audio.total === 0) return 0
-  return Math.round((audio.existing / audio.total) * 100)
-})
-
-// Seed target from localStats or default to 668
-const seedTarget = computed(() => {
-  return localStats.value.total_seeds || 668
-})
-
-const seedProgressPercent = computed(() => {
-  const complete = courseStats.value.completeSeeds
-  const total = seedTarget.value
-  return Math.round((complete / total) * 100)
-})
-
-// Trimmed quick actions - only essentials
-const quickActions = computed(() => {
-  return [
-    {
-      id: 'launch_learning_app',
-      icon: '🚀',
-      label: 'Launch Learning App',
-      description: 'Open course in learning app with QA access',
-      badge: null,
-      disabled: false
-    },
-    {
-      id: 'recording_optimizer',
-      icon: '🎙️',
-      label: 'Recording Optimizer',
-      description: 'Plan human recordings with minimum phrases',
-      badge: null,
-      disabled: false
-    },
-    {
-      id: 'import_course',
-      icon: '📥',
-      label: 'Import Legacy Course',
-      description: 'Upload a legacy course manifest JSON',
-      badge: null,
-      disabled: false
-    },
-    {
-      id: 'export_legacy',
-      icon: '📜',
-      label: 'Export Legacy',
-      description: 'Download manifest for old learning app',
-      badge: null,
-      disabled: false
-    }
-  ]
-})
-
-// Methods
-function getBlockerCountForStage(stageId) {
-  return store.blockers.filter(b => b.stage === stageId).length
-}
-
-function handleNavigate(route) {
-  router.push({
-    name: route,
-    params: { courseCode: props.courseCode }
-  })
-}
-
-function handleResolveBlocker(blocker) {
-  switch (blocker.action) {
-    case 'createRecordingQueue':
-      router.push({
-        name: 'RecordingStudioProduction',
-        params: { courseCode: props.courseCode },
-        query: { autoCreateQueue: 'true' }
-      })
-      break
-    case 'sendToAudioPipeline':
-      router.push({
-        name: 'AudioPipelineProduction',
-        params: { courseCode: props.courseCode },
-        query: { autoQueue: 'flagged' }
-      })
-      break
-    case 'reviewSamples':
-    case 'reviewFlaggedAudio':
-      router.push({
-        name: 'ScriptViewer',
-        params: { courseCode: props.courseCode },
-        query: { filter: 'flagged' }
-      })
-      break
-  }
-}
-
-function handleQuickAction(actionId) {
-  switch (actionId) {
-    case 'import_course':
-      showImportModal.value = true
-      break
-    case 'generate_audio':
-      router.push({
-        name: 'AudioPipelineProduction',
-        params: { courseCode: props.courseCode }
-      })
-      break
-    case 'review_samples':
-      router.push({
-        name: 'ScriptViewer',
-        params: { courseCode: props.courseCode },
-        query: { filter: 'flagged' }
-      })
-      break
-    case 'record_human':
-      router.push({
-        name: 'RecordingStudioProduction',
-        params: { courseCode: props.courseCode }
-      })
-      break
-    case 'recording_optimizer':
-      router.push({
-        name: 'RecordingOptimizer',
-        params: { courseCode: props.courseCode }
-      })
-      break
-    case 'compile_manifest':
-      router.push({
-        name: 'CourseCompilation',
-        params: { courseCode: props.courseCode }
-      })
-      break
-    case 'user_feedback':
-      router.push({
-        name: 'UserFeedback',
-        params: { courseCode: props.courseCode }
-      })
-      break
-    case 'launch_learning_app':
-      launchLearningApp()
-      break
-    case 'export_legacy':
-      showLegacyExportDialog.value = true
-      break
-  }
-}
-
-function handleCourseImported(courseCode) {
-  showImportModal.value = false
-  router.push({
-    name: 'ProductionDashboard',
-    params: { courseCode }
-  })
-}
-
-function launchLearningApp() {
-  const learningAppUrl = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
-  window.open(`${learningAppUrl}/?course=${props.courseCode}`, '_blank')
-}
 </script>
 
 <style scoped>
 .production-overview {
   padding: 1.5rem;
+  max-width: 1000px;
 }
 
-/* Status Control */
-.status-control {
-  margin-bottom: 1.5rem;
-}
-
-.status-row {
+/* Header */
+.overview-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.status-label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-paper-dim, #c1c1bb);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.status-selector {
+.status-pills {
   display: flex;
   gap: 0.5rem;
 }
 
-.status-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  background: var(--color-slate, #334155);
-  color: var(--color-paper-dim, #c1c1bb);
-  font-size: 0.875rem;
+.status-pill {
+  padding: 0.4rem 0.875rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #94a3b8);
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s;
+}
+.status-pill:hover:not(:disabled) { border-color: var(--color-paper-dim, #94a3b8); }
+.status-pill:disabled { opacity: 0.5; cursor: not-allowed; }
+.status-pill.active.testing { background: rgba(148,163,184,0.2); border-color: #94a3b8; color: #94a3b8; }
+.status-pill.active.beta { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
+.status-pill.active.live { background: rgba(52,211,153,0.15); border-color: #34d399; color: #34d399; }
+
+/* Header Stats */
+.header-stats {
+  display: flex;
+  gap: 1.25rem;
 }
 
-.status-btn:hover:not(:disabled) {
-  background: var(--color-graphite, #475569);
+.mini-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-family: var(--font-mono, monospace);
 }
 
-.status-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.status-btn.active {
-  border-color: currentColor;
-}
-
-.status-btn.status-testing {
-  color: #94a3b8;
-}
-
-.status-btn.status-testing.active {
-  background: rgba(148, 163, 184, 0.2);
-  border-color: #94a3b8;
-}
-
-.status-btn.status-beta {
-  color: #fbbf24;
-}
-
-.status-btn.status-beta.active {
-  background: rgba(251, 191, 36, 0.15);
-  border-color: #fbbf24;
-}
-
-.status-btn.status-live {
-  color: #34d399;
-}
-
-.status-btn.status-live.active {
-  background: rgba(52, 211, 153, 0.15);
-  border-color: #34d399;
-}
-
-.status-icon {
-  font-size: 1rem;
-}
-
-.status-updating {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Headline Stats Grid */
-.headline-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.stat-card {
-  background: var(--color-slate, #334155);
-  border-radius: 12px;
-  padding: 1.25rem;
-  text-align: center;
-}
-
-.stat-card .stat-value {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 2rem;
+.mini-value {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-paper, #f7f7f2);
-  line-height: 1.2;
 }
-
-.stat-card .stat-total {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-paper-dim, #c1c1bb);
+.mini-total {
+  font-size: 0.8rem;
+  color: var(--color-paper-dim, #64748b);
 }
-
-.stat-card .stat-label {
-  font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+.mini-label {
+  font-size: 0.65rem;
+  color: var(--color-paper-dim, #64748b);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0.25rem;
+  margin-left: 0.125rem;
 }
 
-.stat-card.audio .stat-value {
-  color: var(--color-tungsten, #ffa630);
+.mini-stat.primary .mini-value { color: #34d399; }
+.mini-stat.accent .mini-value { color: var(--color-tungsten, #ffa630); }
+.mini-stat.good .mini-value { color: #34d399; }
+.mini-stat.ok .mini-value { color: #fbbf24; }
+.mini-stat.low .mini-value { color: #f87171; }
+
+/* Blockers */
+.blockers-section {
+  margin-bottom: 1rem;
 }
 
-.stat-card.seeds .stat-value {
-  color: #34d399;
+.blocker-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(248,113,113,0.1);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
-.stat-card.seeds .progress-bar {
-  background: #34d399;
+.blocker-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f87171;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
-.stat-progress {
-  margin-top: 0.75rem;
-  height: 4px;
-  background: var(--color-graphite, #475569);
-  border-radius: 2px;
-  overflow: hidden;
+.blocker-text {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--color-paper, #f7f7f2);
 }
 
-.stat-progress .progress-bar {
-  height: 100%;
-  background: var(--color-tungsten, #ffa630);
-  border-radius: 2px;
-  transition: width 0.3s ease;
+.btn-resolve {
+  padding: 0.25rem 0.5rem;
+  background: #f87171;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
 }
 
-.pipeline-stages {
+/* Workflow Grid */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
-.section-title {
-  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+.workflow-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.workflow-card:hover {
+  background: var(--color-graphite, #475569);
+  border-color: var(--color-paper-dim, #64748b);
+}
+
+.workflow-card.action {
+  background: transparent;
+  border-style: dashed;
+}
+
+.card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
   font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.card-icon.text { background: #3b82f6; color: white; }
+.card-icon.qa { background: #f59e0b; color: white; }
+.card-icon.audio { background: #8b5cf6; color: white; }
+.card-icon.review { background: #ec4899; color: white; }
+.card-icon.record { background: #10b981; color: white; }
+.card-icon.launch { background: var(--color-graphite, #475569); color: var(--color-tungsten, #ffa630); }
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-content h3 {
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-paper-dim, #c1c1bb);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 1rem;
+  color: var(--color-paper, #f7f7f2);
+  margin: 0 0 0.125rem;
 }
 
-.stage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+.card-content p {
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, #64748b);
+  margin: 0;
+}
+
+.card-badge {
+  padding: 0.125rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.card-badge.error {
+  background: #f87171;
+  color: white;
+}
+
+.card-arrow {
+  color: var(--color-paper-dim, #64748b);
+  font-size: 1rem;
+}
+
+/* Secondary Tools */
+.secondary-tools {
+  display: flex;
   gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-graphite, #334155);
 }
 
-@media (max-width: 768px) {
-  .headline-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.tool-link {
+  font-size: 0.8rem;
+  color: var(--color-paper-dim, #64748b);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.tool-link:hover {
+  color: var(--color-paper, #f7f7f2);
+  text-decoration: underline;
+}
 
-  .stat-card .stat-value {
-    font-size: 1.5rem;
-  }
+@media (max-width: 800px) {
+  .workflow-grid { grid-template-columns: repeat(2, 1fr); }
+  .overview-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 500px) {
+  .workflow-grid { grid-template-columns: 1fr; }
+  .header-stats { flex-wrap: wrap; }
 }
 </style>

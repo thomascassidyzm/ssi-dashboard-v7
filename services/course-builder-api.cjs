@@ -1876,7 +1876,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
       .from('build_jobs')
       .select('id, status, agent_count, respawn_count')
       .eq('course_code', courseCode)
-      .in('status', ['running', 'stalled', 'pending'])
+      .in('status', ['running', 'stalled'])
       .order('started_at', { ascending: false })
       .limit(1)
       .single();
@@ -1989,7 +1989,7 @@ async function stopBuild(courseCode) {
       .from('build_jobs')
       .select('id, status')
       .eq('course_code', courseCode)
-      .in('status', ['pending', 'running', 'stalled'])
+      .in('status', ['running', 'stalled'])
       .single();
 
     if (findError || !job) {
@@ -2061,7 +2061,7 @@ async function getBuildStatus(courseCode) {
       .from('build_jobs')
       .select('*')
       .eq('course_code', courseCode)
-      .in('status', ['pending', 'running', 'stalled'])
+      .in('status', ['running', 'stalled'])
       .order('started_at', { ascending: false })
       .limit(1)
       .single();
@@ -4573,7 +4573,7 @@ app.get('/api/activity', async (req, res) => {
     const { data: activeJobs } = await supabase
       .from('build_jobs')
       .select('course_code')
-      .in('status', ['pending', 'running', 'stalled']);
+      .in('status', ['running', 'stalled']);
     if (activeJobs) {
       activeCourseCodes = new Set(activeJobs.map(j => j.course_code));
     }
