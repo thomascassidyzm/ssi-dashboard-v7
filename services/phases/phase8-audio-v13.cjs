@@ -355,6 +355,7 @@ async function planHandler(req, res) {
 
     // Get what audio we have (paginated)
     // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
+    // IMPORTANT: Must use ORDER BY for consistent pagination results
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -365,6 +366,7 @@ async function planHandler(req, res) {
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
         .not('s3_key', 'like', 'pending/%')
+        .order('id')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
@@ -380,6 +382,7 @@ async function planHandler(req, res) {
 
     // Get what phrases we need (from practice phrases, paginated)
     // Only include phrases up to the release target
+    // IMPORTANT: Must use ORDER BY for consistent pagination results
     const phrases = []
     let phrasesOffset = 0
     let hasMorePhrases = true
@@ -390,6 +393,7 @@ async function planHandler(req, res) {
         .select('known_text, target_text, seed_number')
         .eq('course_code', courseCode)
         .lte('seed_number', releaseTarget)
+        .order('id')
         .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
 
       if (phrasesError) throw phrasesError
@@ -666,6 +670,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     const releaseTarget = course.seed_count || 260
 
     // Get practice phrases (paginated) - filtered by release target
+    // IMPORTANT: Must use ORDER BY for consistent pagination results
     const PAGE_SIZE = 1000
     const phrases = []
     let phrasesOffset = 0
@@ -677,6 +682,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .select('known_text, target_text, seed_number')
         .eq('course_code', courseCode)
         .lte('seed_number', releaseTarget)
+        .order('id')
         .range(phrasesOffset, phrasesOffset + PAGE_SIZE - 1)
 
       if (phrasesError) throw phrasesError
@@ -692,6 +698,7 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Get existing audio (paginated)
     // IMPORTANT: Exclude pending/ s3_keys - those are placeholders, not real audio
+    // IMPORTANT: Must use ORDER BY for consistent pagination results
     const existingAudio = []
     let audioOffset = 0
     let hasMoreAudio = true
@@ -702,6 +709,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         .select('text_normalized, language, role')
         .eq('course_code', courseCode)
         .not('s3_key', 'like', 'pending/%')
+        .order('id')
         .range(audioOffset, audioOffset + PAGE_SIZE - 1)
 
       if (audioError) throw audioError
