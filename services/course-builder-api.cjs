@@ -6393,6 +6393,85 @@ app.get('/api/qa/unchecked/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/qa/sample/:courseCode - Get random sample of phrases for AUDIT mode
+ * Unlike /unchecked, this returns ANY phrases regardless of qa_checked status
+ */
+app.get('/api/qa/sample/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const limit = Math.min(parseInt(req.query.limit) || 100, 500);
+    const seedMin = parseInt(req.query.seed_min) || 1;
+    const seedMax = parseInt(req.query.seed_max) || 999;
+
+    // Get random sample using Supabase's built-in random ordering
+    // Note: For true randomness on large tables, we fetch more and shuffle
+    const { data, error } = await supabase
+      .from('course_practice_phrases')
+      .select('id, lego_index, known_text, target_text, phrase_role, seed_number, created_at, qa_checked')
+      .eq('course_code', courseCode)
+      .gte('seed_number', seedMin)
+      .lte('seed_number', seedMax)
+      .limit(limit * 2);  // Fetch extra for shuffling
+
+    if (error) throw error;
+
+    // Shuffle and take limit
+    const shuffled = data.sort(() => Math.random() - 0.5).slice(0, limit);
+
+    res.json({
+      course_code: courseCode,
+      sample_size: shuffled.length,
+      seed_range: { min: seedMin, max: seedMax },
+      phrases: shuffled
+    });
+  } catch (err) {
+    console.error('[QA] Error getting phrase sample:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/phrases/:courseCode - Get phrases with filters (for QA audit)
+ */
+app.get('/api/phrases/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const limit = Math.min(parseInt(req.query.limit) || 100, 500);
+    const offset = parseInt(req.query.offset) || 0;
+    const seedMin = parseInt(req.query.seed_min) || null;
+    const seedMax = parseInt(req.query.seed_max) || null;
+    const role = req.query.role || null;  // 'build', 'use', 'practice', 'component'
+
+    let query = supabase
+      .from('course_practice_phrases')
+      .select('id, lego_index, known_text, target_text, phrase_role, seed_number, created_at, qa_checked')
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true });
+
+    if (seedMin) query = query.gte('seed_number', seedMin);
+    if (seedMax) query = query.lte('seed_number', seedMax);
+    if (role) query = query.eq('phrase_role', role);
+
+    query = query.range(offset, offset + limit - 1);
+
+    const { data, error } = await query;
+    if (error) throw error;
+
+    res.json({
+      course_code: courseCode,
+      count: data.length,
+      offset,
+      limit,
+      phrases: data
+    });
+  } catch (err) {
+    console.error('[QA] Error getting phrases:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * POST /api/qa/flag - Insert a QA flag for a phrase
  */
 app.post('/api/qa/flag', async (req, res) => {
@@ -6481,6 +6560,209 @@ app.post('/api/qa/mark-checked', async (req, res) => {
     });
   } catch (err) {
     console.error('[QA] Error marking phrases checked:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/qa/flags/:courseCode/pending - Get open flags needing review (for Fixer agent)
+ */
+app.get('/api/qa/flags/:courseCode/pending', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+    const severity = req.query.severity;
+
+    let query = supabase
+      .from('course_qa_flags')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('status', 'open')
+      .order('severity', { ascending: true })  // errors first
+      .order('flagged_at', { ascending: true })
+      .limit(limit);
+
+    if (severity) {
+      query = query.eq('severity', severity);
+    }
+
+    const { data: flags, error } = await query;
+    if (error) throw error;
+
+    res.json({
+      course_code: courseCode,
+      pending_count: flags.length,
+      flags
+    });
+  } catch (err) {
+    console.error('[QA] Error getting pending flags:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * PATCH /api/phrases/:id - Update a phrase (for Fixer agent)
+ */
+app.patch('/api/phrases/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { known_text, target_text } = req.body;
+
+    if (!known_text && !target_text) {
+      return res.status(400).json({
+        error: 'Must provide known_text and/or target_text to update'
+      });
+    }
+
+    // Get current phrase for logging
+    const { data: current } = await supabase
+      .from('course_practice_phrases')
+      .select('known_text, target_text, course_code, seed_number')
+      .eq('id', id)
+      .single();
+
+    if (!current) {
+      return res.status(404).json({ error: 'Phrase not found' });
+    }
+
+    // Build update object
+    const updates = {};
+    if (known_text && known_text !== current.known_text) {
+      updates.known_text = known_text;
+    }
+    if (target_text && target_text !== current.target_text) {
+      updates.target_text = target_text;
+    }
+
+    if (Object.keys(updates).length === 0) {
+      return res.json({ success: true, message: 'No changes needed', phrase_id: id });
+    }
+
+    updates.updated_at = new Date().toISOString();
+
+    const { data, error } = await supabase
+      .from('course_practice_phrases')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    console.log(`[QA-FIX] Updated phrase ${id} in ${current.course_code} S${current.seed_number}:`);
+    if (updates.known_text) console.log(`  known: "${current.known_text}" → "${updates.known_text}"`);
+    if (updates.target_text) console.log(`  target: "${current.target_text}" → "${updates.target_text}"`);
+
+    res.json({
+      success: true,
+      phrase_id: id,
+      changes: updates,
+      phrase: data
+    });
+  } catch (err) {
+    console.error('[QA] Error updating phrase:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/flag/:id/resolve - Mark flag as resolved with fix applied
+ */
+app.post('/api/qa/flag/:id/resolve', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { resolution, fix_applied, reasoning } = req.body;
+
+    const { data, error } = await supabase
+      .from('course_qa_flags')
+      .update({
+        status: 'resolved',
+        resolved_at: new Date().toISOString(),
+        resolution: resolution || 'fixed',
+        details: supabase.sql`details || ${JSON.stringify({ fix_applied, reasoning })}`
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    // Fallback if sql doesn't work - just update without merging details
+    if (error && error.message.includes('sql')) {
+      const { data: flag } = await supabase
+        .from('course_qa_flags')
+        .select('details')
+        .eq('id', id)
+        .single();
+
+      const mergedDetails = {
+        ...(flag?.details || {}),
+        fix_applied,
+        reasoning
+      };
+
+      const { data: updated, error: updateError } = await supabase
+        .from('course_qa_flags')
+        .update({
+          status: 'resolved',
+          resolved_at: new Date().toISOString(),
+          details: mergedDetails
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (updateError) throw updateError;
+
+      console.log(`[QA-FIX] Resolved flag ${id}: ${resolution || 'fixed'}`);
+      return res.json({ success: true, flag: updated });
+    }
+
+    if (error) throw error;
+
+    console.log(`[QA-FIX] Resolved flag ${id}: ${resolution || 'fixed'}`);
+    res.json({ success: true, flag: data });
+  } catch (err) {
+    console.error('[QA] Error resolving flag:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/flag/:id/dismiss - Dismiss flag as false positive
+ */
+app.post('/api/qa/flag/:id/dismiss', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { reasoning } = req.body;
+
+    // Get current details
+    const { data: flag } = await supabase
+      .from('course_qa_flags')
+      .select('details')
+      .eq('id', id)
+      .single();
+
+    const mergedDetails = {
+      ...(flag?.details || {}),
+      dismissal_reasoning: reasoning
+    };
+
+    const { data, error } = await supabase
+      .from('course_qa_flags')
+      .update({
+        status: 'false_positive',
+        resolved_at: new Date().toISOString(),
+        details: mergedDetails
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    console.log(`[QA-FIX] Dismissed flag ${id} as false positive`);
+    res.json({ success: true, flag: data });
+  } catch (err) {
+    console.error('[QA] Error dismissing flag:', err);
     res.status(500).json({ error: err.message });
   }
 });
