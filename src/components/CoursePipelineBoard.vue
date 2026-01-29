@@ -291,6 +291,17 @@
         <span class="footer-label">In Production</span>
       </div>
     </div>
+
+    <!-- Toast Notification -->
+    <Transition name="toast">
+      <div v-if="toastVisible" class="toast-notification">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span>{{ toastMessage }}</span>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -317,6 +328,16 @@ const searchFocused = ref(false)
 const activeCourse = ref(null)
 const showHidden = ref(false)
 const compactMode = ref(false)
+const toastMessage = ref('')
+const toastVisible = ref(false)
+
+function showToast(message) {
+  toastMessage.value = message
+  toastVisible.value = true
+  setTimeout(() => {
+    toastVisible.value = false
+  }, 2500)
+}
 
 // Count of not-started courses (shown in header, not in lanes)
 const notStartedCount = computed(() => {
@@ -588,6 +609,7 @@ async function cycleNewAppStatus(course) {
   const nextStatus = statusCycle[nextIndex]
 
   console.log(`[New App Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
+  showToast(`New App: ${getTargetLanguage(course.code)} → ${nextStatus === 'not_available' ? 'removed' : nextStatus}`)
 
   // Emit event for parent to handle API call and refresh
   emit('updateNewAppStatus', { courseCode: course.code, status: nextStatus })
@@ -604,6 +626,7 @@ async function cycleLegacyStatus(course) {
   const nextStatus = statusCycle[nextIndex]
 
   console.log(`[Legacy Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
+  showToast(`Legacy App: ${getTargetLanguage(course.code)} → ${nextStatus === 'not_available' ? 'removed' : nextStatus}`)
 
   // Emit event for parent to handle API call and refresh
   emit('updateLegacyStatus', { courseCode: course.code, status: nextStatus })
@@ -611,7 +634,9 @@ async function cycleLegacyStatus(course) {
 
 // Deploy course from Polishing to Production (starts at 'testing' status)
 function handleDeploy(course, platform) {
+  const platformLabel = platform === 'new_app' ? 'New App' : 'Legacy App'
   console.log(`[Deploy] ${course.code} to ${platform} with status: testing`)
+  showToast(`Deploying ${getTargetLanguage(course.code)} to ${platformLabel}...`)
   emit('deployToProduction', { courseCode: course.code, platform, status: 'testing' })
 }
 </script>
@@ -1453,5 +1478,39 @@ function handleDeploy(course, platform) {
   .footer-stat {
     flex: 1 1 45%;
   }
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(16, 185, 129, 0.95);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-10px);
 }
 </style>

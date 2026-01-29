@@ -178,13 +178,15 @@ app.patch('/api/courses/:courseCode/platform-status', async (req, res) => {
       return res.status(400).json({ error: 'Invalid platform. Must be "new_app" or "legacy_app"' })
     }
 
-    // Validate status ('live' is an alias for 'released')
+    // Validate status (UI uses 'testing'/'live', DB uses 'draft'/'released')
     const validStatuses = ['not_available', 'draft', 'testing', 'beta', 'released', 'live', 'deprecated']
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ error: `Invalid status. Must be one of: ${validStatuses.join(', ')}` })
     }
-    // Normalize 'live' to 'released' for database storage
-    const normalizedStatus = status === 'live' ? 'released' : status
+    // Normalize UI terms to DB terms: testing→draft, live→released
+    let normalizedStatus = status
+    if (status === 'testing') normalizedStatus = 'draft'
+    if (status === 'live') normalizedStatus = 'released'
 
     const supabase = supabaseClient.getClient()
 
