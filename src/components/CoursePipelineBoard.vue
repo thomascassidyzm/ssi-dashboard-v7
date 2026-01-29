@@ -554,16 +554,18 @@ function handleAction(course, action) {
 const legacyStatusCycle = ['not_available', 'testing', 'beta', 'live']
 
 async function cycleLegacyStatus(course) {
-  const currentStatus = course.legacyAppStatus || 'not_available'
+  // Normalize current status (handle case variations and 'released' → 'live')
+  let currentStatus = (course.legacyAppStatus || 'not_available').toLowerCase()
+  if (currentStatus === 'released') currentStatus = 'live'
+  if (!legacyStatusCycle.includes(currentStatus)) currentStatus = 'not_available'
+
   const currentIndex = legacyStatusCycle.indexOf(currentStatus)
   const nextIndex = (currentIndex + 1) % legacyStatusCycle.length
   const nextStatus = legacyStatusCycle[nextIndex]
 
-  // Optimistically update UI
-  course.legacyAppStatus = nextStatus
-  course.inLegacyApp = nextStatus !== 'not_available'
+  console.log(`[Legacy Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
 
-  // Emit event for parent to handle API call
+  // Emit event for parent to handle API call and refresh
   emit('updateLegacyStatus', { courseCode: course.code, status: nextStatus })
 }
 </script>

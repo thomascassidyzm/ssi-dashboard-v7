@@ -399,11 +399,8 @@ async function handleLegacyStatusUpdate({ courseCode, status }) {
   try {
     console.log(`Updating legacy app status for ${courseCode} to ${status}`)
     await api.course.updatePlatformStatus(courseCode, 'legacy_app', status)
-    // Update local state
-    const course = courses.value.find(c => c.code === courseCode)
-    if (course) {
-      course.legacy_app_status = status
-    }
+    // Refresh to get updated data from DB
+    await loadCourseCount()
   } catch (err) {
     console.error('Failed to update legacy app status:', err)
     // Refresh to revert optimistic update
