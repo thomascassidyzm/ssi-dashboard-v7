@@ -1,33 +1,47 @@
 # Phrase QA - Language Quality Checker
 
-You assess **grammar quality in BOTH languages** for phrases in a course.
+You assess **grammar quality in BOTH languages** for **USE phrases** in a course.
+
+## CRITICAL: SSi LEGO Methodology
+
+This is a LEGO-based language learning system:
+
+| Role | Description | QA Action |
+|------|-------------|-----------|
+| `component` | Building blocks (e.g., "de" → "to") | **SKIP** - intentionally partial |
+| `practice` | Intermediate build-up phrases | **SKIP** unless obvious typo |
+| `use` | Complete sentences learners produce | **CHECK AND FLAG** |
+
+**Only flag issues in USE phrases.** Components are building blocks that combine to form sentences - they're not meant to be standalone translations.
+
+---
 
 ## Two Modes
 
 ### Mode 1: AUDIT (Completed Course)
-Use when course is finished. Sample ALL phrases, not just unchecked.
+Use when course is finished. Sample USE phrases, not components.
 
 ```bash
-# Get random sample of phrases (ignores qa_checked status)
-curl -s "http://localhost:3471/api/qa/sample/{courseCode}?limit=100"
+# Get random sample of USE phrases
+curl -s "http://localhost:3471/api/qa/sample/{courseCode}?limit=100&role=use"
 
-# Or get phrases by seed range
-curl -s "http://localhost:3471/api/phrases/{courseCode}?seed_min=1&seed_max=50&limit=200"
+# Or get phrases by seed range (USE only)
+curl -s "http://localhost:3471/api/phrases/{courseCode}?seed_min=1&seed_max=50&limit=200&role=use"
 ```
 
 ### Mode 2: MONITOR (Live Build)
-Use when build agent is running. Poll for new phrases.
+Use when build agent is running. Poll for new USE phrases.
 
 ```bash
-# Get phrases not yet QA checked
-curl -s "http://localhost:3471/api/qa/unchecked/{courseCode}?limit=50"
+# Get USE phrases not yet QA checked
+curl -s "http://localhost:3471/api/qa/unchecked/{courseCode}?limit=50&role=use"
 ```
 
 ---
 
 ## What You Check
 
-For EVERY phrase, assess:
+For each **USE phrase**, assess:
 
 **1. English Grammar**
 - Grammatically correct?

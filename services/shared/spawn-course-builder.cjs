@@ -539,13 +539,13 @@ Options:
   --model <name>        Claude model for builder (default: opus)
   --known <lang>        Known language name (e.g., English)
   --target <lang>       Target language name (e.g., Chinese)
-  --with-monitor        Also spawn Haiku phrase monitor (in second tab)
+  --with-monitor        Also spawn Sonnet phrase monitor (in second tab)
 
 Examples:
   # Build Chinese course in iTerm2
   node spawn-course-builder.cjs --course zho_for_eng --seeds 30 --terminal iterm
 
-  # Build with QA monitor (Opus in tab 1, Haiku in tab 2)
+  # Build with QA monitor (Opus in tab 1, Sonnet in tab 2)
   node spawn-course-builder.cjs --course zho_for_eng --seeds 30 --with-monitor
 
   # Build French course in Terminal.app (second Pro Max account)
@@ -579,7 +579,7 @@ Examples:
 
   const spawnFn = withMonitor ? spawnBuildWithMonitor : spawnCourseBuilder;
   const successMsg = withMonitor
-    ? '\n✓ Course Builder (Opus) + Phrase Monitor (Haiku) spawned'
+    ? '\n✓ Course Builder (Opus) + Phrase Monitor (Sonnet) spawned'
     : '\n✓ Course Builder agent spawned';
 
   spawnFn(options)
@@ -591,7 +591,8 @@ Examples:
 }
 
 /**
- * Generate the Phrase Monitor brief for Haiku QA agent
+ * Generate the Phrase Monitor brief for Sonnet QA agent
+ * Updated: Now uses Sonnet (not Haiku) and only flags USE phrases
  */
 function generatePhraseMonitorBrief(options) {
   const {
@@ -601,7 +602,7 @@ function generatePhraseMonitorBrief(options) {
 
   return `# Phrase Monitor - Language Quality Watchdog
 
-You are a QA monitor running alongside the Course Builder. Your PRIMARY job is to assess **grammar quality in BOTH languages** for every phrase.
+You are a QA monitor running alongside the Course Builder. Your job is to assess grammar quality for **USE phrases only**.
 
 ## Course: ${courseCode}
 
@@ -611,21 +612,38 @@ You do NOT block the build. You observe and flag issues. Humans review at checkp
 
 ---
 
-## PRIMARY TASK: Check Every Phrase
+## CRITICAL: SSi LEGO Methodology
 
-Poll for unchecked phrases and assess each one:
+This is a LEGO-based language learning system where phrases are built from components:
+
+- **component** phrases: Building blocks (e.g., "de" for "to", "essaie" for "am trying") - these combine with other LEGOs to form sentences. **DO NOT FLAG THESE** - they are intentionally partial.
+- **practice** phrases: Intermediate build-up steps - may be fragments. **DO NOT FLAG THESE** unless there's a clear typo.
+- **USE** phrases: Complete sentences learners will produce. **FLAG ISSUES IN THESE ONLY**.
+
+Examples of VALID component mappings (DO NOT FLAG):
+- "de" → "to" (used in "essayer de" = "try to")
+- "que" → "as" (used in "aussi...que" = "as...as")
+- "me" → "myself" (used in reflexive verbs like "je me souviens")
+
+---
+
+## PRIMARY TASK: Check USE Phrases Only
+
+Poll for unchecked phrases:
 
 \`\`\`bash
-# Get unchecked phrases
-curl -s "${builderApiUrl}/api/qa/unchecked/${courseCode}?limit=50"
+# Get unchecked phrases (filter to USE role)
+curl -s "${builderApiUrl}/api/qa/unchecked/${courseCode}?limit=50&role=use"
 \`\`\`
 
-### For Each Phrase, Assess:
+### For Each USE Phrase, Assess:
 
 1. **Known Language Grammar** - Is the English correct and natural?
 2. **Target Language Grammar** - Is the translation grammatically correct?
 3. **Semantic Match** - Does the target actually mean what the known says?
 4. **Naturalness** - Would a native speaker say this?
+
+### SKIP if phrase_role is "component" or "practice"
 
 ### Flag Any Issues Found:
 
@@ -716,7 +734,8 @@ You are running UNATTENDED alongside the build agent.
 }
 
 /**
- * Spawn Phrase Monitor agent (Haiku)
+ * Spawn Phrase Monitor agent (Sonnet)
+ * Uses Sonnet for better understanding of SSi LEGO methodology - only flags USE phrases
  * @param {number} agentId - Agent ID for window/tab management (default: 2 since builder is 1)
  */
 async function spawnPhraseMonitor(options, agentId = 2) {
@@ -726,10 +745,10 @@ async function spawnPhraseMonitor(options, agentId = 2) {
     workingDir = DASHBOARD_ROOT
   } = options;
 
-  console.log(`\n👁️  Spawning Phrase Monitor Agent (Haiku)`);
+  console.log(`\n👁️  Spawning Phrase Monitor Agent (Sonnet)`);
   console.log(`   Course: ${courseCode}`);
   console.log(`   Terminal: ${terminal}`);
-  console.log(`   Model: haiku`);
+  console.log(`   Model: sonnet`);
 
   const brief = generatePhraseMonitorBrief({ courseCode });
 
@@ -742,13 +761,13 @@ async function spawnPhraseMonitor(options, agentId = 2) {
   // Use same terminal as builder - agentId 2 creates a new tab
   if (terminal === 'terminal') {
     return await spawnClaudeTerminalAgent(brief, agentId, {
-      model: 'haiku',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });
   } else {
     return await spawnClaudeCliAgent(brief, agentId, {
-      model: 'haiku',
+      model: 'sonnet',
       workingDir,
       skipPermissions: true
     });
@@ -756,7 +775,7 @@ async function spawnPhraseMonitor(options, agentId = 2) {
 }
 
 /**
- * Spawn both Course Builder (Opus) and Phrase Monitor (Haiku)
+ * Spawn both Course Builder (Opus) and Phrase Monitor (Sonnet)
  * Builder opens in new window (agent 1), Monitor opens in new tab (agent 2)
  */
 async function spawnBuildWithMonitor(options) {
@@ -765,7 +784,7 @@ async function spawnBuildWithMonitor(options) {
   console.log(`\n🚀 Spawning Course Builder + Phrase Monitor`);
   console.log(`   Terminal: ${terminal === 'iterm' ? 'iTerm2' : 'Terminal.app'}`);
   console.log(`   Builder (Opus): Window 1`);
-  console.log(`   Monitor (Haiku): Tab 2`);
+  console.log(`   Monitor (Sonnet): Tab 2`);
 
   // Spawn builder first (creates window), then monitor (creates tab)
   const builderResult = await spawnCourseBuilder(options);
@@ -817,7 +836,7 @@ curl -s "${builderApiUrl}/api/qa/flags/${courseCode}/pending?limit=20"
 Read the \`issue\`, \`details.known_text\`, \`details.target_text\`, and \`details.suggestion\`.
 
 **Decision:**
-- **Is Haiku's assessment correct?**
+- **Is Sonnet's assessment correct?**
   - NO → Dismiss as false positive
   - YES → Is there a clear fix?
     - YES (high confidence) → Auto-fix
@@ -855,7 +874,7 @@ curl -X POST "${builderApiUrl}/api/qa/flag/{flag_id}/resolve" \\
 \`\`\`bash
 curl -X POST "${builderApiUrl}/api/qa/flag/{flag_id}/dismiss" \\
   -H "Content-Type: application/json" \\
-  -d '{"reasoning": "Why Haiku was wrong"}'
+  -d '{"reasoning": "Why the flag was incorrect"}'
 \`\`\`
 
 ---

@@ -1946,8 +1946,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
     await spawnBuildAgent(courseCode, newAgentCount, terminal);
     console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
 
-    // Also spawn Haiku phrase monitor in second tab
-    console.log(`[BUILD] Spawning Phrase Monitor (Haiku) for ${courseCode}...`);
+    // Also spawn Sonnet phrase monitor in second tab (USE phrases only)
+    console.log(`[BUILD] Spawning Phrase Monitor (Sonnet) for ${courseCode}...`);
     try {
       const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
       await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
@@ -6360,22 +6360,33 @@ app.get('/api/checkpoint/qa-status/:courseCode', (req, res) => {
 
 // =============================================================================
 // PHRASE MONITOR QA ENDPOINTS
-// Used by Haiku monitor agent to check phrases and flag issues
+// Used by Sonnet monitor agent (USE phrases only) to check phrases and flag issues
 // =============================================================================
 
 /**
  * GET /api/qa/unchecked/:courseCode - Get phrases not yet QA checked
+ * Query params:
+ *   ?limit=50 - Max phrases to return
+ *   ?role=use - Filter by phrase_role (use, practice, component)
  */
 app.get('/api/qa/unchecked/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params;
     const limit = parseInt(req.query.limit) || 50;
+    const role = req.query.role; // Optional: 'use', 'practice', 'component'
 
-    const { data, error } = await supabase
+    let query = supabase
       .from('course_practice_phrases')
       .select('id, lego_index, known_text, target_text, phrase_role, seed_number, created_at')
       .eq('course_code', courseCode)
-      .is('qa_checked', null)
+      .is('qa_checked', null);
+
+    // Filter by role if specified (recommended: use 'use' for QA)
+    if (role) {
+      query = query.eq('phrase_role', role);
+    }
+
+    const { data, error } = await query
       .order('created_at', { ascending: true })
       .limit(limit);
 
@@ -6383,6 +6394,7 @@ app.get('/api/qa/unchecked/:courseCode', async (req, res) => {
 
     res.json({
       course_code: courseCode,
+      role_filter: role || 'all',
       unchecked_count: data.length,
       phrases: data
     });
@@ -6673,53 +6685,35 @@ app.post('/api/qa/flag/:id/resolve', async (req, res) => {
     const { id } = req.params;
     const { resolution, fix_applied, reasoning } = req.body;
 
-    const { data, error } = await supabase
+    // Get current details first
+    const { data: flag } = await supabase
+      .from('course_qa_flags')
+      .select('details')
+      .eq('id', id)
+      .single();
+
+    const mergedDetails = {
+      ...(flag?.details || {}),
+      fix_applied,
+      reasoning
+    };
+
+    const { data: updated, error: updateError } = await supabase
       .from('course_qa_flags')
       .update({
         status: 'resolved',
         resolved_at: new Date().toISOString(),
-        resolution: resolution || 'fixed',
-        details: supabase.sql`details || ${JSON.stringify({ fix_applied, reasoning })}`
+        resolution_notes: resolution || 'fixed',
+        details: mergedDetails
       })
       .eq('id', id)
       .select()
       .single();
 
-    // Fallback if sql doesn't work - just update without merging details
-    if (error && error.message.includes('sql')) {
-      const { data: flag } = await supabase
-        .from('course_qa_flags')
-        .select('details')
-        .eq('id', id)
-        .single();
-
-      const mergedDetails = {
-        ...(flag?.details || {}),
-        fix_applied,
-        reasoning
-      };
-
-      const { data: updated, error: updateError } = await supabase
-        .from('course_qa_flags')
-        .update({
-          status: 'resolved',
-          resolved_at: new Date().toISOString(),
-          details: mergedDetails
-        })
-        .eq('id', id)
-        .select()
-        .single();
-
-      if (updateError) throw updateError;
-
-      console.log(`[QA-FIX] Resolved flag ${id}: ${resolution || 'fixed'}`);
-      return res.json({ success: true, flag: updated });
-    }
-
-    if (error) throw error;
+    if (updateError) throw updateError;
 
     console.log(`[QA-FIX] Resolved flag ${id}: ${resolution || 'fixed'}`);
-    res.json({ success: true, flag: data });
+    res.json({ success: true, flag: updated });
   } catch (err) {
     console.error('[QA] Error resolving flag:', err);
     res.status(500).json({ error: err.message });
@@ -6866,7 +6860,7 @@ app.get('/api/qa/summary/:courseCode', async (req, res) => {
 });
 
 /**
- * POST /api/qa/spawn-monitor/:courseCode - Spawn Haiku phrase monitor agent
+ * POST /api/qa/spawn-monitor/:courseCode - Spawn Sonnet phrase monitor agent
  */
 app.post('/api/qa/spawn-monitor/:courseCode', async (req, res) => {
   try {
@@ -7115,7 +7109,7 @@ app.listen(PORT, () => {
   console.log(`║  POST /api/checkpoint/approve/:code - Approve to continue    ║`);
   console.log(`║  GET  /api/checkpoint/status/:code - Check approval status   ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  PHRASE MONITOR QA (Haiku watchdog):                         ║`);
+  console.log(`║  PHRASE MONITOR QA (Sonnet QA agent):                         ║`);
   console.log(`║  GET  /api/qa/unchecked/:code - Phrases pending QA check     ║`);
   console.log(`║  POST /api/qa/flag - Insert a QA flag                        ║`);
   console.log(`║  POST /api/qa/mark-checked - Mark phrases as checked         ║`);

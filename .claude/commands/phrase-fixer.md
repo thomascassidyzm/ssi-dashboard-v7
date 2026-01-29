@@ -36,7 +36,7 @@ Read the flag's `issue`, `details.known_text`, `details.target_text`, and `detai
 **Decision Tree:**
 
 ```
-Is Haiku's assessment correct?
+Is the QA flag correct?
 ├── NO → Dismiss as false positive
 │         POST /api/qa/flag/{id}/dismiss
 │
@@ -81,7 +81,7 @@ curl -X POST "http://localhost:3471/api/qa/flag/{flag_id}/resolve" \
 curl -X POST "http://localhost:3471/api/qa/flag/{flag_id}/dismiss" \
   -H "Content-Type: application/json" \
   -d '{
-    "reasoning": "Haiku incorrectly flagged - this is valid colloquial usage"
+    "reasoning": "False positive - this is valid colloquial usage"
   }'
 ```
 
