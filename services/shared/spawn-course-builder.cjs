@@ -778,10 +778,180 @@ async function spawnBuildWithMonitor(options) {
   return { builder: builderResult, monitor: monitorResult };
 }
 
+/**
+ * Generate the Phrase Fixer brief for Opus correction agent
+ */
+function generatePhraseFixerBrief(options) {
+  const {
+    courseCode,
+    builderApiUrl = COURSE_BUILDER_API
+  } = options;
+
+  return `# Phrase Fixer - Opus Correction Agent
+
+You review QA flags and fix phrase issues. You are the linguistic expert - humans trust your judgment.
+
+## Course: ${courseCode}
+
+---
+
+## Your Task
+
+1. Get pending flags
+2. For each flag, decide: FIX, DISMISS, or SKIP
+3. Apply fixes to the database
+4. Mark flags as resolved
+
+---
+
+## Workflow
+
+### 1. Get Pending Flags
+
+\`\`\`bash
+curl -s "${builderApiUrl}/api/qa/flags/${courseCode}/pending?limit=20"
+\`\`\`
+
+### 2. For Each Flag
+
+Read the \`issue\`, \`details.known_text\`, \`details.target_text\`, and \`details.suggestion\`.
+
+**Decision:**
+- **Is Haiku's assessment correct?**
+  - NO → Dismiss as false positive
+  - YES → Is there a clear fix?
+    - YES (high confidence) → Auto-fix
+    - NO (uncertain) → Skip for human
+
+### 3. Apply Fix
+
+\`\`\`bash
+curl -X PATCH "${builderApiUrl}/api/phrases/{phrase_id}" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "known_text": "corrected English",
+    "target_text": "corrected target"
+  }'
+\`\`\`
+
+### 4. Mark Resolved
+
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/qa/flag/{flag_id}/resolve" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "resolution": "fixed",
+    "fix_applied": {
+      "field": "target_text",
+      "old_value": "wrong",
+      "new_value": "correct"
+    },
+    "reasoning": "Why this fix is correct"
+  }'
+\`\`\`
+
+### 5. Dismiss False Positive
+
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/qa/flag/{flag_id}/dismiss" \\
+  -H "Content-Type: application/json" \\
+  -d '{"reasoning": "Why Haiku was wrong"}'
+\`\`\`
+
+---
+
+## Confidence Levels
+
+**HIGH - Auto-fix:**
+- Clear grammar errors (wrong conjugation, missing article)
+- Obvious typos
+- Wrong word form
+
+**MEDIUM - Fix with note:**
+- Naturalness improvements
+- Minor semantic adjustments
+
+**LOW - Skip:**
+- Ambiguous translations
+- Multiple valid options
+- Needs human judgment
+
+---
+
+## Batch Processing
+
+Process in batches of 20:
+1. Fetch pending flags
+2. Categorize by confidence
+3. Auto-fix HIGH confidence
+4. Fix MEDIUM if clear
+5. Skip LOW (leave for human)
+6. Report: "Fixed X, dismissed Y, skipped Z"
+
+---
+
+## CRITICAL: AUTONOMOUS OPERATION
+
+**FORBIDDEN:**
+- "Shall I continue?"
+- "Would you like me to..."
+- Any question asking for permission
+
+**REQUIRED:**
+- Process all pending flags
+- Make decisions and act
+- Report summary when done
+
+---
+
+**BEGIN:** Get pending flags and start fixing.
+`;
+}
+
+/**
+ * Spawn Phrase Fixer agent (Opus)
+ */
+async function spawnPhraseFixer(options, agentId = 1) {
+  const {
+    courseCode,
+    terminal = 'iterm',
+    workingDir = DASHBOARD_ROOT
+  } = options;
+
+  console.log(`\n🔧 Spawning Phrase Fixer Agent (Opus)`);
+  console.log(`   Course: ${courseCode}`);
+  console.log(`   Terminal: ${terminal}`);
+  console.log(`   Model: opus`);
+
+  const brief = generatePhraseFixerBrief({ courseCode });
+
+  // Save brief for reference
+  const briefPath = path.join(workingDir, 'temp', `phrase-fixer-brief-${courseCode}.md`);
+  await fs.ensureDir(path.dirname(briefPath));
+  await fs.writeFile(briefPath, brief, 'utf8');
+  console.log(`   Brief saved: ${briefPath}`);
+
+  if (terminal === 'terminal') {
+    return await spawnClaudeTerminalAgent(brief, agentId, {
+      model: 'opus',
+      workingDir,
+      skipPermissions: true
+    });
+  } else {
+    return await spawnClaudeCliAgent(brief, agentId, {
+      model: 'opus',
+      workingDir,
+      skipPermissions: true
+    });
+  }
+}
+
 module.exports = {
   spawnCourseBuilder,
   generateCourseBuilderBrief,
   spawnPhraseMonitor,
   generatePhraseMonitorBrief,
-  spawnBuildWithMonitor
+  spawnBuildWithMonitor,
+  spawnPhraseFixer,
+  generatePhraseFixerBrief
 };

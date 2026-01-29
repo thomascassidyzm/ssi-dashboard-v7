@@ -37,9 +37,13 @@
           <option value="error">Errors</option>
           <option value="warning">Warnings</option>
         </select>
-        <button @click="spawnMonitor" :disabled="spawning" class="btn-primary">
+        <button @click="spawnMonitor" :disabled="spawning" class="btn-secondary">
           <span v-if="spawning" class="spinner"></span>
           {{ spawning ? 'Starting...' : 'Run Check' }}
+        </button>
+        <button @click="spawnFixer" :disabled="fixing || total === 0" class="btn-primary">
+          <span v-if="fixing" class="spinner"></span>
+          {{ fixing ? 'Starting...' : 'Fix Issues' }}
         </button>
       </div>
     </header>
@@ -132,6 +136,7 @@ const API_BASE = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:34
 
 const loading = ref(true)
 const spawning = ref(false)
+const fixing = ref(false)
 const summary = ref(null)
 const flags = ref([])
 const severityFilter = ref('')
@@ -196,6 +201,22 @@ async function spawnMonitor() {
     console.error('Failed to spawn monitor:', err)
   } finally {
     spawning.value = false
+  }
+}
+
+async function spawnFixer() {
+  fixing.value = true
+  try {
+    await fetch(`${API_BASE}/api/qa/spawn-fixer/${props.courseCode}`, { method: 'POST' })
+    // Fixer will process in background - refresh after a delay
+    setTimeout(() => {
+      fetchSummary()
+      fetchFlags()
+    }, 5000)
+  } catch (err) {
+    console.error('Failed to spawn fixer:', err)
+  } finally {
+    fixing.value = false
   }
 }
 
