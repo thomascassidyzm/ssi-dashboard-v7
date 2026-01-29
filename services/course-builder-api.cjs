@@ -552,8 +552,9 @@ function initCheckpointState(courseCode) {
 
 /**
  * Get the next unapproved checkpoint seed (if any) that blocks this seed
+ * Now async - checks config for auto-approve mode
  */
-function getBlockingCheckpoint(courseCode, requestedSeed) {
+async function getBlockingCheckpoint(courseCode, requestedSeed) {
   const state = initCheckpointState(courseCode);
 
   for (const checkpointSeed of CHECKPOINT_SEEDS) {
@@ -561,7 +562,18 @@ function getBlockingCheckpoint(courseCode, requestedSeed) {
       // We're past this checkpoint - is it approved?
       const cp = state.checkpoints[checkpointSeed];
       if (!cp || !cp.approved) {
-        return checkpointSeed;  // This checkpoint blocks us
+        // Check if this checkpoint is configured for auto-approve
+        const config = await getCheckpointConfig(courseCode, checkpointSeed);
+        if (config.review_mode === 'auto' || config.review_mode === 'auto_with_flag') {
+          // Auto-approve mode - don't block, just auto-approve it now
+          console.log(`[CHECKPOINT] Auto-approving checkpoint ${checkpointSeed} for ${courseCode} (review_mode: ${config.review_mode})`);
+          await approveCheckpoint(courseCode, checkpointSeed, 'auto', {
+            review_mode_used: config.review_mode,
+            auto_approved_reason: 'Checkpoint configured for auto-approve'
+          }, 'approved');
+          continue;  // Don't block on this checkpoint
+        }
+        return checkpointSeed;  // This checkpoint blocks us (human review required)
       }
     }
   }
@@ -588,11 +600,12 @@ async function isCheckpointRequired(courseCode, completedSeed) {
 /**
  * Check if course is blocked by checkpoint (past a checkpoint seed, not approved)
  * Now async - loads from database first to ensure pre-approved checkpoints are respected
+ * Also checks auto-approve config and auto-approves if configured
  */
 async function isBlockedByCheckpoint(courseCode, requestedSeed) {
   // Load latest state from database first (ensures pre-approved checkpoints are seen)
   await getCheckpointStatus(courseCode);
-  const blockingCheckpoint = getBlockingCheckpoint(courseCode, requestedSeed);
+  const blockingCheckpoint = await getBlockingCheckpoint(courseCode, requestedSeed);
   return blockingCheckpoint !== null;
 }
 
@@ -1932,6 +1945,18 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
     console.log(`[BUILD] Spawning agent #${newAgentCount} for ${courseCode}...`);
     await spawnBuildAgent(courseCode, newAgentCount, terminal);
     console.log(`[BUILD] ✓ Agent #${newAgentCount} spawned for ${courseCode}`);
+
+    // Also spawn Haiku phrase monitor in second tab
+    console.log(`[BUILD] Spawning Phrase Monitor (Haiku) for ${courseCode}...`);
+    try {
+      const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
+      await spawnPhraseMonitor({ courseCode, terminal: terminal.toLowerCase().includes('iterm') ? 'iterm' : 'terminal' }, 2);
+      console.log(`[BUILD] ✓ Phrase Monitor spawned for ${courseCode}`);
+    } catch (monitorErr) {
+      console.warn(`[BUILD] ⚠ Phrase Monitor spawn failed: ${monitorErr.message}`);
+      // Don't fail the whole build - builder is more important
+    }
 
     // Update DB with agent count
     await supabase.from('build_jobs').update({

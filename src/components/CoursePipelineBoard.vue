@@ -207,17 +207,41 @@
                   </button>
                 </div>
 
-                <!-- Production: Dual App Status Badges -->
+                <!-- Deploy to Production (Polishing lane only) -->
+                <div class="card-deploy-actions" v-if="lane.key === 'polishing'">
+                  <span class="deploy-label-text">Deploy to:</span>
+                  <button
+                    class="deploy-action-btn new-app"
+                    @click.stop="handleDeploy(course, 'new_app')"
+                    title="Deploy to New App (testing)"
+                  >
+                    New App
+                  </button>
+                  <button
+                    class="deploy-action-btn legacy-app"
+                    @click.stop="handleDeploy(course, 'legacy_app')"
+                    title="Deploy to Legacy App (testing)"
+                  >
+                    Legacy
+                  </button>
+                </div>
+
+                <!-- Production: Dual App Status Badges (both clickable) -->
                 <div class="card-deploy-status" v-if="lane.isProductionColumn">
-                  <div class="deploy-badge new-app" :class="{ active: course.inNewApp }">
+                  <button
+                    class="deploy-badge new-app clickable"
+                    :class="{ active: course.inNewApp }"
+                    @click.stop="cycleNewAppStatus(course)"
+                    title="Click to change New App status"
+                  >
                     <span class="deploy-label">New App</span>
                     <span class="deploy-status" :class="course.newAppStatus">
-                      {{ course.inNewApp ? course.newAppStatus : '—' }}
+                      {{ course.newAppStatus !== 'not_available' ? course.newAppStatus : '—' }}
                     </span>
-                  </div>
+                  </button>
                   <button
                     class="deploy-badge legacy-app clickable"
-                    :class="{ active: course.inLegacyApp || true }"
+                    :class="{ active: course.inLegacyApp }"
                     @click.stop="cycleLegacyStatus(course)"
                     title="Click to change Legacy App status"
                   >
@@ -285,7 +309,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['action', 'updateLegacyStatus'])
+const emit = defineEmits(['action', 'updateLegacyStatus', 'updateNewAppStatus', 'deployToProduction'])
 const router = useRouter()
 
 const searchQuery = ref('')
@@ -550,23 +574,45 @@ function handleAction(course, action) {
   }
 }
 
-// Cycle legacy app status: — → testing → beta → live → —
-const legacyStatusCycle = ['not_available', 'testing', 'beta', 'live']
+// Cycle app statuses: — → testing → beta → live → —
+const statusCycle = ['not_available', 'testing', 'beta', 'live']
+
+async function cycleNewAppStatus(course) {
+  // Normalize current status (handle case variations and 'released' → 'live')
+  let currentStatus = (course.newAppStatus || 'not_available').toLowerCase()
+  if (currentStatus === 'released') currentStatus = 'live'
+  if (!statusCycle.includes(currentStatus)) currentStatus = 'not_available'
+
+  const currentIndex = statusCycle.indexOf(currentStatus)
+  const nextIndex = (currentIndex + 1) % statusCycle.length
+  const nextStatus = statusCycle[nextIndex]
+
+  console.log(`[New App Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
+
+  // Emit event for parent to handle API call and refresh
+  emit('updateNewAppStatus', { courseCode: course.code, status: nextStatus })
+}
 
 async function cycleLegacyStatus(course) {
   // Normalize current status (handle case variations and 'released' → 'live')
   let currentStatus = (course.legacyAppStatus || 'not_available').toLowerCase()
   if (currentStatus === 'released') currentStatus = 'live'
-  if (!legacyStatusCycle.includes(currentStatus)) currentStatus = 'not_available'
+  if (!statusCycle.includes(currentStatus)) currentStatus = 'not_available'
 
-  const currentIndex = legacyStatusCycle.indexOf(currentStatus)
-  const nextIndex = (currentIndex + 1) % legacyStatusCycle.length
-  const nextStatus = legacyStatusCycle[nextIndex]
+  const currentIndex = statusCycle.indexOf(currentStatus)
+  const nextIndex = (currentIndex + 1) % statusCycle.length
+  const nextStatus = statusCycle[nextIndex]
 
   console.log(`[Legacy Status] ${course.code}: ${currentStatus} → ${nextStatus}`)
 
   // Emit event for parent to handle API call and refresh
   emit('updateLegacyStatus', { courseCode: course.code, status: nextStatus })
+}
+
+// Deploy course from Polishing to Production (starts at 'testing' status)
+function handleDeploy(course, platform) {
+  console.log(`[Deploy] ${course.code} to ${platform} with status: testing`)
+  emit('deployToProduction', { courseCode: course.code, platform, status: 'testing' })
 }
 </script>
 
@@ -982,7 +1028,13 @@ async function cycleLegacyStatus(course) {
   transition: all 0.15s;
 }
 
-.deploy-badge.clickable:hover {
+.deploy-badge.new-app.clickable:hover {
+  transform: scale(1.02);
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.deploy-badge.legacy-app.clickable:hover {
   transform: scale(1.02);
   border-color: rgba(6, 182, 212, 0.8);
   box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
@@ -1014,6 +1066,61 @@ async function cycleLegacyStatus(course) {
 
 .deploy-status.live {
   color: #10b981;
+}
+
+/* Deploy Actions (Polishing lane) */
+.card-deploy-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--pb-border);
+}
+
+.deploy-label-text {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--pb-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.deploy-action-btn {
+  flex: 1;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--pb-border);
+  border-radius: 5px;
+  background: var(--pb-surface);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: all 0.15s;
+}
+
+.deploy-action-btn.new-app {
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.deploy-action-btn.new-app:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.deploy-action-btn.legacy-app {
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.deploy-action-btn.legacy-app:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: #06b6d4;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
 }
 
 /* Compact mode legacy badge */

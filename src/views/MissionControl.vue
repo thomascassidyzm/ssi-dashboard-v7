@@ -240,6 +240,8 @@
             :loading="loadingCourses"
             @action="handlePipelineAction"
             @updateLegacyStatus="handleLegacyStatusUpdate"
+            @updateNewAppStatus="handleNewAppStatusUpdate"
+            @deployToProduction="handleDeployToProduction"
           />
         </div>
       </section>
@@ -414,6 +416,33 @@ async function handleLegacyStatusUpdate({ courseCode, status }) {
   } catch (err) {
     console.error('Failed to update legacy app status:', err)
     // Refresh to revert optimistic update
+    await loadCourseCount()
+  }
+}
+
+// Handle new app status update from pipeline board
+async function handleNewAppStatusUpdate({ courseCode, status }) {
+  try {
+    console.log(`Updating new app status for ${courseCode} to ${status}`)
+    await api.course.updatePlatformStatus(courseCode, 'new_app', status)
+    // Refresh to get updated data from DB
+    await loadCourseCount()
+  } catch (err) {
+    console.error('Failed to update new app status:', err)
+    // Refresh to revert optimistic update
+    await loadCourseCount()
+  }
+}
+
+// Handle deploy to production from polishing lane
+async function handleDeployToProduction({ courseCode, platform, status }) {
+  try {
+    console.log(`Deploying ${courseCode} to ${platform} with status ${status}`)
+    await api.course.updatePlatformStatus(courseCode, platform, status)
+    // Refresh to get updated data from DB
+    await loadCourseCount()
+  } catch (err) {
+    console.error('Failed to deploy to production:', err)
     await loadCourseCount()
   }
 }
