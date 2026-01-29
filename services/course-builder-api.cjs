@@ -33,6 +33,122 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const PORT = process.env.COURSE_BUILDER_PORT || 3471;
 
 // =============================================================================
+// RALPH LOOP: AUTO-LEARN FROM VALIDATION FAILURES
+// When agents make mistakes, record them as lessons for future builds
+// =============================================================================
+
+/**
+ * Record a validation failure as a lesson in build_lessons table
+ * This completes the Ralph loop - agents learn from their mistakes
+ */
+async function recordLessonFromError(courseCode, errorType, errorDetails) {
+  try {
+    // Map course to language family
+    const langCode = courseCode.split('_')[0];
+    const langFamilyMap = {
+      jpn: 'japanese', kor: 'korean', zho: 'cjk', cmn: 'cjk',
+      deu: 'germanic', nld: 'germanic', swe: 'germanic',
+      spa: 'romance', fra: 'romance', ita: 'romance', por: 'romance',
+      ara: 'semitic', heb: 'semitic',
+      cym: 'celtic', gle: 'celtic', gla: 'celtic'
+    };
+    const langFamily = langFamilyMap[langCode] || '*';  // Default to universal lesson
+
+    // Generate lesson content based on error type
+    let lesson = '';
+    let exampleWrong = '';
+    let exampleRight = '';
+
+    switch (errorType) {
+      case 'zut':
+        lesson = `ZUT conflict: Same known text "${errorDetails.known}" already maps to "${errorDetails.existing}". Use consistent translations.`;
+        exampleWrong = `known: "${errorDetails.known}" → target: "${errorDetails.new_target}"`;
+        exampleRight = `known: "${errorDetails.known}" → target: "${errorDetails.existing}" (existing)`;
+        break;
+
+      case 'tiling':
+        lesson = `Tiling error: Seed target must be constructable from LEGO targets. Missing: [${errorDetails.untiled}]`;
+        exampleWrong = `seed_target not covered by LEGO targets`;
+        exampleRight = `Every character in seed target appears in at least one LEGO target`;
+        break;
+
+      case 'vocab':
+        lesson = `Vocabulary violation: Phrases used unknown words. Only use vocabulary from prior seeds and current LEGOs.`;
+        exampleWrong = errorDetails.violations?.[0]?.phrase?.substring(0, 50) || 'phrase with unknown vocab';
+        exampleRight = `Use only introduced vocabulary in phrases`;
+        break;
+
+      case 'phrases':
+      case 'no_phrases':
+        lesson = `Phrase count error: Each LEGO needs sufficient phrases. Use build[] (4 phrases) + use[] (6 phrases with scores).`;
+        exampleWrong = `phrases: [] or missing build/use arrays`;
+        exampleRight = `build: [{known, target}, ...], use: [{known, target, score}, ...]`;
+        break;
+
+      case 'build_use':
+        lesson = `BUILD/USE format error: ${errorDetails.error || 'Invalid structure'}`;
+        exampleWrong = errorDetails.details || 'malformed build/use arrays';
+        exampleRight = `build: [4 phrases], use: [6+ phrases with score 1-9]`;
+        break;
+
+      case 'components':
+        lesson = `M-LEGO component error: Multi-word LEGOs must have meaningful component breakdown.`;
+        exampleWrong = `M-LEGO "${errorDetails.target}" with ${errorDetails.meaningful_components || 0} components`;
+        exampleRight = `Long M-LEGOs (4+ chars) need 2+ meaningful components`;
+        break;
+
+      case 'balance':
+        lesson = `Balance violation: Phrases over-rely on common vocabulary. Include underused LEGOs in practice phrases.`;
+        exampleWrong = `Overused: ${errorDetails.overused_in_phrases?.join(', ') || 'common words'}`;
+        exampleRight = `Include underused LEGOs: ${errorDetails.underused_available?.slice(0, 3).join(', ') || 'varied vocabulary'}`;
+        break;
+
+      default:
+        // Unknown error type - still record it
+        lesson = `Validation error (${errorType}): ${errorDetails.message || JSON.stringify(errorDetails).substring(0, 100)}`;
+        exampleWrong = errorDetails.message || 'See error details';
+        exampleRight = 'Fix the validation error and resubmit';
+    }
+
+    // Check if similar lesson already exists (avoid duplicates)
+    const { data: existing } = await supabase
+      .from('build_lessons')
+      .select('id')
+      .eq('lesson_type', errorType)
+      .eq('language_family', langFamily)
+      .ilike('lesson', `%${errorDetails.known || errorDetails.untiled || errorType}%`)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      console.log(`[RALPH] Lesson already exists for ${errorType} in ${langFamily}`);
+      return;
+    }
+
+    // Insert new lesson
+    const { error: insertError } = await supabase
+      .from('build_lessons')
+      .insert({
+        lesson_type: errorType,
+        lesson,
+        example_wrong: exampleWrong.substring(0, 500),
+        example_right: exampleRight.substring(0, 500),
+        language_family: langFamily,
+        active: true,
+        created_at: new Date().toISOString(),
+        source_course: courseCode
+      });
+
+    if (insertError) {
+      console.log(`[RALPH] Failed to record lesson: ${insertError.message}`);
+    } else {
+      console.log(`[RALPH] ✓ Recorded lesson: ${errorType} for ${langFamily}`);
+    }
+  } catch (e) {
+    console.log(`[RALPH] Error recording lesson: ${e.message}`);
+  }
+}
+
+// =============================================================================
 // PER-COURSE VOCABULARY TRACKING
 // Each course has its own vocab set built from LEGOs in insertion order
 // =============================================================================
@@ -3848,6 +3964,12 @@ app.post('/api/seed/complete', async (req, res) => {
     // If any errors, reject everything
     if (errors.length > 0) {
       console.log(`✗ ${seedId}: REJECTED - ${errors.length} validation error(s)`);
+
+      // RALPH LOOP: Record lessons from each error type (async, don't block response)
+      for (const err of errors) {
+        recordLessonFromError(course_code, err.type, err).catch(() => {});
+      }
+
       return res.status(400).json({
         error: 'Validation failed',
         seed: seedId,
@@ -4825,13 +4947,14 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     .limit(20);
 
   // Get ALL LEGOs for full vocabulary access (essential for phrase generation)
+  // RECENT FIRST: Nudges agent attention toward recently introduced LEGOs
   const { data: allLegos } = await supabase
     .from('course_legos')
-    .select('known_text, target_text, type, components')
+    .select('seed_number, lego_index, known_text, target_text, type, components')
     .eq('course_code', courseCode)
     .eq('is_new', true)  // Only canonical LEGOs, not re-uses
-    .order('seed_number')
-    .order('lego_index');
+    .order('seed_number', { ascending: false })  // Recent first - subtle attention nudge
+    .order('lego_index', { ascending: false });
 
   // Get vocab stats
   const vocabSet = await loadCourseVocab(courseCode);
@@ -6163,6 +6286,391 @@ app.get('/api/checkpoint/qa-status/:courseCode', (req, res) => {
   });
 });
 
+// =============================================================================
+// PHRASE MONITOR QA ENDPOINTS
+// Used by Haiku monitor agent to check phrases and flag issues
+// =============================================================================
+
+/**
+ * GET /api/qa/unchecked/:courseCode - Get phrases not yet QA checked
+ */
+app.get('/api/qa/unchecked/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const limit = parseInt(req.query.limit) || 50;
+
+    const { data, error } = await supabase
+      .from('course_practice_phrases')
+      .select('id, lego_index, known_text, target_text, phrase_role, seed_number, created_at')
+      .eq('course_code', courseCode)
+      .is('qa_checked', null)
+      .order('created_at', { ascending: true })
+      .limit(limit);
+
+    if (error) throw error;
+
+    res.json({
+      course_code: courseCode,
+      unchecked_count: data.length,
+      phrases: data
+    });
+  } catch (err) {
+    console.error('[QA] Error getting unchecked phrases:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/flag - Insert a QA flag for a phrase
+ */
+app.post('/api/qa/flag', async (req, res) => {
+  try {
+    const { course_code, phrase_id, seed_number, lego_id, check_type, severity, issue, details } = req.body;
+
+    if (!course_code || !check_type || !issue) {
+      return res.status(400).json({
+        error: 'Missing required fields: course_code, check_type, issue'
+      });
+    }
+
+    // Valid check types from migration
+    const validTypes = ['grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary'];
+    if (!validTypes.includes(check_type)) {
+      return res.status(400).json({
+        error: `Invalid check_type. Must be one of: ${validTypes.join(', ')}`
+      });
+    }
+
+    const validSeverities = ['error', 'warning', 'info'];
+    if (severity && !validSeverities.includes(severity)) {
+      return res.status(400).json({
+        error: `Invalid severity. Must be one of: ${validSeverities.join(', ')}`
+      });
+    }
+
+    const { data, error } = await supabase
+      .from('course_qa_flags')
+      .upsert({
+        course_code,
+        phrase_id: phrase_id || null,
+        seed_number: seed_number || null,
+        lego_id: lego_id || null,
+        check_type,
+        severity: severity || 'warning',
+        issue,
+        details: details || {},
+        status: 'open',
+        flagged_at: new Date().toISOString()
+      }, {
+        onConflict: 'phrase_id,check_type'
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    console.log(`[QA] Flag created: ${check_type}/${severity} - ${issue.substring(0, 50)}...`);
+
+    res.json({
+      success: true,
+      flag: data
+    });
+  } catch (err) {
+    console.error('[QA] Error inserting flag:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/mark-checked - Mark phrases as QA checked
+ */
+app.post('/api/qa/mark-checked', async (req, res) => {
+  try {
+    const { phrase_ids } = req.body;
+
+    if (!phrase_ids || !Array.isArray(phrase_ids) || phrase_ids.length === 0) {
+      return res.status(400).json({
+        error: 'phrase_ids must be a non-empty array'
+      });
+    }
+
+    const { error } = await supabase
+      .from('course_practice_phrases')
+      .update({ qa_checked: new Date().toISOString() })
+      .in('id', phrase_ids);
+
+    if (error) throw error;
+
+    console.log(`[QA] Marked ${phrase_ids.length} phrases as checked`);
+
+    res.json({
+      success: true,
+      checked_count: phrase_ids.length
+    });
+  } catch (err) {
+    console.error('[QA] Error marking phrases checked:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/qa/flags/:courseCode - Get all QA flags for a course
+ */
+app.get('/api/qa/flags/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const status = req.query.status || 'open';
+
+    let query = supabase
+      .from('course_qa_flags')
+      .select('*')
+      .eq('course_code', courseCode)
+      .order('flagged_at', { ascending: false });
+
+    if (status !== 'all') {
+      query = query.eq('status', status);
+    }
+
+    const { data, error } = await query;
+
+    if (error) throw error;
+
+    // Group by check_type for summary
+    const bySeverity = { error: 0, warning: 0, info: 0 };
+    const byType = {};
+    data.forEach(f => {
+      bySeverity[f.severity] = (bySeverity[f.severity] || 0) + 1;
+      byType[f.check_type] = (byType[f.check_type] || 0) + 1;
+    });
+
+    res.json({
+      course_code: courseCode,
+      total: data.length,
+      by_severity: bySeverity,
+      by_type: byType,
+      flags: data
+    });
+  } catch (err) {
+    console.error('[QA] Error getting flags:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/qa/summary/:courseCode - QA summary for dashboard
+ */
+app.get('/api/qa/summary/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+
+    // Get flag counts
+    const { data: flags, error: flagError } = await supabase
+      .from('course_qa_flags')
+      .select('severity, status')
+      .eq('course_code', courseCode);
+
+    if (flagError) throw flagError;
+
+    // Get phrase check progress
+    const { count: totalPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode);
+
+    const { count: checkedPhrases } = await supabase
+      .from('course_practice_phrases')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .not('qa_checked', 'is', null);
+
+    const openFlags = flags.filter(f => f.status === 'open');
+    const bySeverity = { error: 0, warning: 0, info: 0 };
+    openFlags.forEach(f => {
+      bySeverity[f.severity] = (bySeverity[f.severity] || 0) + 1;
+    });
+
+    res.json({
+      course_code: courseCode,
+      phrases: {
+        total: totalPhrases || 0,
+        checked: checkedPhrases || 0,
+        unchecked: (totalPhrases || 0) - (checkedPhrases || 0),
+        progress_percent: totalPhrases ? Math.round((checkedPhrases / totalPhrases) * 100) : 0
+      },
+      flags: {
+        total: flags.length,
+        open: openFlags.length,
+        errors: bySeverity.error,
+        warnings: bySeverity.warning,
+        info: bySeverity.info
+      }
+    });
+  } catch (err) {
+    console.error('[QA] Error getting summary:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/spawn-monitor/:courseCode - Spawn Haiku phrase monitor agent
+ */
+app.post('/api/qa/spawn-monitor/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { spawnPhraseMonitor } = require('./shared/spawn-course-builder.cjs');
+
+    console.log(`[QA] Spawning phrase monitor for ${courseCode}...`);
+
+    // Spawn in background - don't wait for completion
+    spawnPhraseMonitor({ courseCode, terminal: 'iterm' }, 1)
+      .then(() => console.log(`[QA] Monitor spawned for ${courseCode}`))
+      .catch(err => console.error(`[QA] Monitor spawn failed: ${err.message}`));
+
+    res.json({
+      success: true,
+      message: `Phrase monitor spawning for ${courseCode}`,
+      course_code: courseCode
+    });
+  } catch (err) {
+    console.error('[QA] Error spawning monitor:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/qa/phrase/:phraseId - Delete a flagged phrase
+ */
+app.delete('/api/qa/phrase/:phraseId', async (req, res) => {
+  try {
+    const { phraseId } = req.params;
+
+    // Delete the phrase
+    const { error: phraseError } = await supabase
+      .from('course_practice_phrases')
+      .delete()
+      .eq('id', phraseId);
+
+    if (phraseError) throw phraseError;
+
+    // Also resolve any flags for this phrase
+    await supabase
+      .from('course_qa_flags')
+      .update({ status: 'resolved', resolved_at: new Date().toISOString(), resolution_notes: 'Phrase deleted' })
+      .eq('phrase_id', phraseId);
+
+    console.log(`[QA] Deleted phrase ${phraseId}`);
+
+    res.json({ success: true, deleted: phraseId });
+  } catch (err) {
+    console.error('[QA] Error deleting phrase:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * PATCH /api/qa/flag/:flagId - Update a flag (resolve, dismiss, etc.)
+ */
+app.patch('/api/qa/flag/:flagId', async (req, res) => {
+  try {
+    const { flagId } = req.params;
+    const { status, resolution_notes } = req.body;
+
+    const updates = { status };
+    if (status === 'resolved' || status === 'ignored' || status === 'false_positive') {
+      updates.resolved_at = new Date().toISOString();
+    }
+    if (resolution_notes) {
+      updates.resolution_notes = resolution_notes;
+    }
+
+    const { data, error } = await supabase
+      .from('course_qa_flags')
+      .update(updates)
+      .eq('id', flagId)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    console.log(`[QA] Flag ${flagId} updated to ${status}`);
+
+    res.json({ success: true, flag: data });
+  } catch (err) {
+    console.error('[QA] Error updating flag:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/qa/flagged-phrases/:courseCode - Get phrases with their flags for UI
+ */
+app.get('/api/qa/flagged-phrases/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const severity = req.query.severity;
+
+    // Get flags
+    let query = supabase
+      .from('course_qa_flags')
+      .select('*')
+      .eq('course_code', courseCode)
+      .eq('status', 'open');
+
+    if (severity) {
+      query = query.eq('severity', severity);
+    }
+
+    const { data: flags, error: flagError } = await query;
+    if (flagError) {
+      console.error('[QA] Flag query error:', flagError);
+      throw flagError;
+    }
+
+    // Get phrase details one by one (avoiding .in() which seems problematic)
+    const phraseIds = [...new Set(flags.filter(f => f.phrase_id).map(f => f.phrase_id))];
+    const phraseMap = new Map();
+
+    // Fetch phrases in small batches
+    for (let i = 0; i < phraseIds.length; i += 10) {
+      const batch = phraseIds.slice(i, i + 10);
+      for (const id of batch) {
+        const { data: phrase } = await supabase
+          .from('course_practice_phrases')
+          .select('id, known_text, target_text, seed_number, phrase_role')
+          .eq('id', id)
+          .single();
+        if (phrase) phraseMap.set(id, phrase);
+      }
+    }
+
+    // Merge
+    const result = flags.map(f => ({
+      id: f.id,
+      phrase_id: f.phrase_id,
+      seed_number: f.seed_number || f.details?.seed_number,
+      check_type: f.check_type,
+      severity: f.severity,
+      issue: f.issue,
+      details: f.details,
+      flagged_at: f.flagged_at,
+      phrase: f.phrase_id ? (phraseMap.get(f.phrase_id) || {
+        known_text: f.details?.known_text,
+        target_text: f.details?.target_text,
+        phrase_role: f.details?.phrase_role
+      }) : null
+    }));
+
+    res.json({
+      course_code: courseCode,
+      total: result.length,
+      flags: result
+    });
+  } catch (err) {
+    console.error('[QA] Error getting flagged phrases:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
@@ -6204,6 +6712,13 @@ app.listen(PORT, () => {
   console.log(`║  GET  /api/checkpoint/summary/:code - Sample phrases for QA  ║`);
   console.log(`║  POST /api/checkpoint/approve/:code - Approve to continue    ║`);
   console.log(`║  GET  /api/checkpoint/status/:code - Check approval status   ║`);
+  console.log(`╠══════════════════════════════════════════════════════════════╣`);
+  console.log(`║  PHRASE MONITOR QA (Haiku watchdog):                         ║`);
+  console.log(`║  GET  /api/qa/unchecked/:code - Phrases pending QA check     ║`);
+  console.log(`║  POST /api/qa/flag - Insert a QA flag                        ║`);
+  console.log(`║  POST /api/qa/mark-checked - Mark phrases as checked         ║`);
+  console.log(`║  GET  /api/qa/flags/:code - List all flags                   ║`);
+  console.log(`║  GET  /api/qa/summary/:code - QA progress summary            ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  STALL DETECTION: Dashboard polls /api/activity every 60s    ║`);
   console.log(`║  Threshold: ${STALL_THRESHOLD_MS/60000} minutes without submission = STALLED           ║`);
