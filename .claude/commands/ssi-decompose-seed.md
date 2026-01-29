@@ -84,6 +84,38 @@ Seed: "我现在想和你说中文"
 
 **If any part is missing, add a LEGO for it!**
 
+## Punctuation - AUTOMATICALLY STRIPPED
+
+**NEVER create standalone punctuation LEGOs.** Punctuation is automatically stripped during tiling validation.
+
+| Character | Type | Create LEGO? |
+|-----------|------|--------------|
+| 。？！、 | CJK punctuation | ❌ NO |
+| . ? ! , | Western punctuation | ❌ NO |
+| ؟ ، ؛ | Arabic punctuation | ❌ NO |
+
+**Example - WRONG:**
+```
+Seed: "你好吗？" (How are you?)
+L1 [A] "you" → 你
+L2 [A] "good" → 好
+L3 [A] "?" → ？  ← ❌ NEVER DO THIS!
+```
+
+**Example - CORRECT:**
+```
+Seed: "你好吗？" (How are you?)
+L1 [A] "you" → 你
+L2 [M] "good?" → 好吗 [good→好]  ← Punctuation attached to final LEGO
+```
+
+Or simply omit punctuation - tiling will pass either way because `？` is stripped during validation.
+
+**Why this matters:**
+- TTS cannot generate audio for standalone punctuation
+- Learners don't need to "learn" punctuation as vocabulary
+- Creates orphaned audio requirements that can never be fulfilled
+
 ## Reusing Existing LEGOs
 
 Later seeds will reuse vocabulary. Check what's already available:
