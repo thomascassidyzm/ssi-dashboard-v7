@@ -90,6 +90,80 @@
         @resolve="handleResolveBlocker"
       />
 
+      <!-- Active Jobs -->
+      <section v-if="activeJobs.length > 0" class="active-jobs">
+        <h2 class="section-title">Active Jobs</h2>
+        <div class="jobs-grid">
+          <div v-for="job in activeJobs" :key="job.id" class="job-card" :class="`job-${job.type}`">
+            <div class="job-header">
+              <div class="job-type-badge" :class="`badge-${job.type}`">
+                {{ job.type === 'audio' ? '🔊 Audio' : '🔨 Build' }}
+              </div>
+              <div class="job-status">
+                <span class="status-indicator" :class="`status-${job.status}`"></span>
+                <span class="status-text">{{ job.status === 'running' ? 'LIVE' : job.status.toUpperCase() }}</span>
+              </div>
+            </div>
+
+            <div class="job-content">
+              <!-- Progress Ring -->
+              <div class="job-progress-ring">
+                <svg class="progress-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" fill="none" class="progress-bg"/>
+                  <circle
+                    cx="50" cy="50" r="42"
+                    stroke="currentColor"
+                    stroke-width="8"
+                    fill="none"
+                    class="progress-fill"
+                    :class="`fill-${job.type}`"
+                    :stroke-dasharray="264"
+                    :stroke-dashoffset="264 - (job.progress.percentage / 100) * 264"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <div class="progress-text">
+                  <span class="progress-percent">{{ job.progress.percentage }}%</span>
+                </div>
+              </div>
+
+              <!-- Stats -->
+              <div class="job-stats">
+                <div class="job-course">{{ job.courseCode }}</div>
+                <div class="job-operation" v-if="job.metadata?.operation">
+                  {{ job.metadata.operation === 'regenerate-role' ? `Regenerating ${job.metadata.role}` : 'Generating' }}
+                </div>
+                <div class="stats-row">
+                  <div class="stat-item">
+                    <span class="stat-value">{{ job.progress.current }}</span>
+                    <span class="stat-label">PROCESSED</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-value">{{ job.progress.total }}</span>
+                    <span class="stat-label">TOTAL</span>
+                  </div>
+                  <div v-if="job.progress.success !== undefined" class="stat-item">
+                    <span class="stat-value success">{{ job.progress.success }}</span>
+                    <span class="stat-label">SUCCESS</span>
+                  </div>
+                  <div v-if="job.progress.failed !== undefined" class="stat-item">
+                    <span class="stat-value" :class="{ 'failed': job.progress.failed > 0 }">{{ job.progress.failed }}</span>
+                    <span class="stat-label">FAILED</span>
+                  </div>
+                </div>
+                <div v-if="job.metadata?.lastItem" class="job-current-item">
+                  Processing: <span class="item-text">{{ job.metadata.lastItem }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="job-actions" v-if="job.canStop">
+              <button @click="stopJob(job.id)" class="btn-stop">Stop</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Pipeline Stages -->
       <section class="pipeline-stages">
         <h2 class="section-title">Pipeline Status</h2>
@@ -182,6 +256,61 @@ const selectedCourse = ref('')
 const courses = ref<Array<{ code: string; name: string; status?: string }>>([])
 const showImportModal = ref(false)
 const showLegacyExportDialog = ref(false)
+
+// Active jobs (build and audio generation)
+const activeJobs = ref<any[]>([])
+let jobsPollInterval: ReturnType<typeof setInterval> | null = null
+
+// Poll for active jobs
+async function pollActiveJobs() {
+  try {
+    const apiBase = getApiBaseUrl()
+    const response = await fetch(`${apiBase}/api/mission-control/jobs`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      activeJobs.value = data.jobs || []
+    }
+  } catch (err) {
+    // Silently fail - server might not be running
+  }
+}
+
+// Start job polling
+function startJobPolling() {
+  if (jobsPollInterval) return
+  pollActiveJobs() // Poll immediately
+  jobsPollInterval = setInterval(pollActiveJobs, 2000) // Then every 2 seconds
+}
+
+// Stop job polling
+function stopJobPolling() {
+  if (jobsPollInterval) {
+    clearInterval(jobsPollInterval)
+    jobsPollInterval = null
+  }
+}
+
+// Stop a job
+async function stopJob(jobId: string) {
+  try {
+    const apiBase = getApiBaseUrl()
+    const response = await fetch(`${apiBase}/api/mission-control/jobs/${jobId}/stop`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    if (response.ok) {
+      // Immediately refresh jobs list
+      await pollActiveJobs()
+    }
+  } catch (err) {
+    console.error('Failed to stop job:', err)
+  }
+}
 
 // Fetch available courses from API (database-first via orchestrator)
 async function loadCourses() {
@@ -481,6 +610,9 @@ onMounted(async () => {
     selectedCourse.value = courseCode
     handleCourseChange()
   }
+
+  // Start polling for active jobs
+  startJobPolling()
 })
 
 // Watch for prop changes (navigation between courses)
@@ -492,7 +624,8 @@ watch(() => props.courseCode, (newCode) => {
 })
 
 onUnmounted(() => {
-  // Cleanup if needed
+  // Stop job polling
+  stopJobPolling()
 })
 </script>
 
@@ -836,6 +969,235 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+}
+
+/* Active Jobs */
+.active-jobs {
+  margin-bottom: 2rem;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.job-card {
+  background: rgb(15 23 42 / 0.8);
+  border: 1px solid rgb(51 65 85);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.job-card.job-audio {
+  border-color: rgb(16 185 129 / 0.4);
+  background: linear-gradient(135deg, rgb(15 23 42 / 0.9), rgb(16 185 129 / 0.1));
+}
+
+.job-card.job-build {
+  border-color: rgb(99 102 241 / 0.4);
+  background: linear-gradient(135deg, rgb(15 23 42 / 0.9), rgb(99 102 241 / 0.1));
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.job-type-badge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-audio {
+  background: rgb(16 185 129 / 0.2);
+  color: #10b981;
+}
+
+.badge-build {
+  background: rgb(99 102 241 / 0.2);
+  color: #6366f1;
+}
+
+.job-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background: rgb(16 185 129 / 0.2);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #10b981;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.status-running {
+  background: #10b981;
+}
+
+.status-indicator.status-stalled {
+  background: #f59e0b;
+  animation: none;
+}
+
+.status-indicator.status-pending {
+  background: #94a3b8;
+  animation: none;
+}
+
+.status-text {
+  color: #10b981;
+}
+
+.job-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.job-progress-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.progress-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  color: rgb(51 65 85);
+}
+
+.progress-fill {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-fill.fill-audio {
+  color: #10b981;
+}
+
+.progress-fill.fill-build {
+  color: #6366f1;
+}
+
+.progress-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-percent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.job-stats {
+  flex: 1;
+}
+
+.job-course {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.25rem;
+}
+
+.job-operation {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+
+.stats-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item .stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.stat-item .stat-value.success {
+  color: #10b981;
+}
+
+.stat-item .stat-value.failed {
+  color: #ef4444;
+}
+
+.stat-item .stat-label {
+  font-size: 0.625rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.job-current-item {
+  font-size: 0.75rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.job-current-item .item-text {
+  color: #94a3b8;
+}
+
+.job-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(51 65 85);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-stop {
+  padding: 0.5rem 1rem;
+  background: rgb(239 68 68 / 0.2);
+  color: #ef4444;
+  border: 1px solid rgb(239 68 68 / 0.4);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-stop:hover {
+  background: rgb(239 68 68 / 0.3);
+  border-color: rgb(239 68 68 / 0.6);
 }
 
 /* Responsive */

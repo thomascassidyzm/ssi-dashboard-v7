@@ -755,6 +755,7 @@ function escapeXml(text) {
 /**
  * GET /api/mission-control/jobs
  * Returns active build jobs from the build_jobs database table
+ * AND active audio generation jobs from Phase 8
  */
 app.get('/api/mission-control/jobs', async (req, res) => {
   const jobs = []
@@ -803,6 +804,42 @@ app.get('/api/mission-control/jobs', async (req, res) => {
         })
       }
     }
+
+    // Also check for active audio generation jobs from Phase 8
+    try {
+      const audioStatusResponse = await proxyToPhase8('GET', '/status')
+      if (audioStatusResponse.status === 200 && audioStatusResponse.data?.active) {
+        const audio = audioStatusResponse.data
+        const current = audio.current || 0
+        const total = audio.total || 1
+        const percentage = total > 0 ? Math.round((current / total) * 100) : 0
+
+        jobs.push({
+          id: `${audio.courseCode || 'unknown'}-audio`,
+          courseCode: audio.courseCode || 'unknown',
+          service: 'phase8-audio',
+          type: 'audio',
+          status: 'running',
+          startedAt: audio.startedAt || null,
+          canStop: true,
+          progress: {
+            current,
+            total,
+            percentage,
+            success: audio.success || 0,
+            failed: audio.failed || 0
+          },
+          metadata: {
+            operation: audio.operation || 'generate',
+            role: audio.role || null,
+            lastItem: audio.lastItem || null
+          }
+        })
+      }
+    } catch (audioErr) {
+      // Phase 8 not running or no active job - that's fine
+      logger.debug('[Mission Control] No active audio job (Phase 8 not running or idle)')
+    }
   } catch (err) {
     logger.error('[Mission Control] Error fetching jobs:', err.message)
   }
@@ -816,7 +853,7 @@ app.get('/api/mission-control/jobs', async (req, res) => {
 
 /**
  * POST /api/mission-control/jobs/:jobId/stop
- * Stop a job - proxies to course-builder for build jobs
+ * Stop a job - proxies to course-builder for build jobs, Phase 8 for audio jobs
  */
 app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
   const { jobId } = req.params
@@ -838,6 +875,16 @@ app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
       })
       const data = await response.json()
       return res.json({ success: data.ok, ...data })
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message })
+    }
+  }
+
+  if (jobType === 'audio') {
+    // Proxy to Phase 8 audio generator cancel endpoint
+    try {
+      const response = await proxyToPhase8('POST', '/cancel')
+      return res.json({ success: response.data?.success || true, ...response.data })
     } catch (err) {
       return res.status(500).json({ success: false, error: err.message })
     }
