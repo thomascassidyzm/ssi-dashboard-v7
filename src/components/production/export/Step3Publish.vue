@@ -2,6 +2,17 @@
   <div class="step-content space-y-4">
     <h4 class="text-lg font-semibold text-white">Step 3: Publish Manifest</h4>
 
+    <!-- Download manifest button (always visible) -->
+    <button
+      @click="handleDownloadManifest"
+      class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      Download Manifest (Review Before Publishing)
+    </button>
+
     <!-- Not yet published -->
     <div v-if="!state.manifestPublished" class="space-y-4">
       <p class="text-slate-300 text-sm">
@@ -11,12 +22,23 @@
       <!-- BLOCKER: Duration verification required -->
       <div v-if="!durationsVerified" class="blocker-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
         <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg v-if="verification?.durationsFixed && !verification?.fixVerification?.passed" class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
-          <span>Publishing Blocked: Duration verification required</span>
+          <span v-if="verification?.durationsFixed && !verification?.fixVerification?.passed">
+            Auto-fix in progress...
+          </span>
+          <span v-else>
+            Publishing Blocked: Duration verification required
+          </span>
         </div>
-        <p class="text-sm text-slate-300">
+        <p v-if="verification?.durationsFixed && !verification?.fixVerification?.passed" class="text-sm text-slate-300">
+          Step 2 is currently auto-fixing {{ verification.durationsFixed }} duration mismatches. Please wait for it to complete and verify.
+        </p>
+        <p v-else class="text-sm text-slate-300">
           Go back to Step 2 and verify that all audio durations match the manifest before publishing.
         </p>
         <p class="text-xs text-slate-400 mt-2">
@@ -39,7 +61,7 @@
             placeholder="e.g., 3.0.1"
             class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
           />
-          <span class="text-slate-500 text-xs">(suggested: {{ versionInfo.suggestedVersion }})</span>
+          <span class="text-slate-500 text-xs">(current: {{ versionInfo.existingVersion }})</span>
         </div>
 
         <div class="flex items-center gap-3">
@@ -61,17 +83,6 @@
           {{ versionInfo.repoError }}
         </p>
       </div>
-
-      <!-- Download manifest button -->
-      <button
-        @click="handleDownloadManifest"
-        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        Download Manifest (Review Before Publishing)
-      </button>
 
       <!-- Publish options -->
       <div class="options space-y-2">
@@ -114,6 +125,7 @@
 
     <!-- Published state -->
     <div v-else class="space-y-4">
+      <!-- Success box -->
       <div class="success-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg space-y-2">
         <div class="flex items-center gap-2 text-emerald-400 font-medium">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,13 +147,108 @@
         </p>
       </div>
 
-      <!-- Re-publish button -->
-      <button
-        @click="showRepublish = true"
-        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors"
-      >
-        Publish New Version
-      </button>
+      <!-- Re-publish workflow (COLLAPSED by default) -->
+      <div v-if="!showRepublish">
+        <button
+          @click="showRepublish = true"
+          class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors"
+        >
+          Publish New Version
+        </button>
+      </div>
+
+      <!-- Re-publish workflow (EXPANDED when showRepublish = true) -->
+      <div v-else class="space-y-4">
+        <!-- Version info -->
+        <div v-if="versionInfo" class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-400 text-sm">Course ID</span>
+            <span class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-slate-400 text-sm flex-shrink-0">New Version</span>
+            <input
+              v-model="republishVersion"
+              type="text"
+              placeholder="e.g., 3.0.2"
+              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+            />
+            <span class="text-slate-500 text-xs">(current: {{ versionInfo.existingVersion }})</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-slate-400 text-sm flex-shrink-0">Status</span>
+            <select
+              v-model="republishStatus"
+              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white focus:outline-none focus:border-blue-500"
+            >
+              <option value="alpha">alpha</option>
+              <option value="beta">beta</option>
+              <option value="release">release</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Duration verification requirement -->
+        <div v-if="!durationsVerified" class="blocker-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
+          <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <span>Publishing Blocked: Re-verify durations first</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Go back to Step 2 and re-verify S3 to ensure durations match before publishing.
+          </p>
+        </div>
+
+        <!-- Publish options -->
+        <div class="options space-y-2">
+          <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+            <input
+              v-model="republishToCourseConfigs"
+              type="checkbox"
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+            />
+            <div>
+              <span class="text-white text-sm">Commit to course-configs</span>
+              <span class="text-slate-400 text-xs ml-2">(author branch)</span>
+            </div>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 bg-slate-700 rounded-lg cursor-pointer border border-slate-600">
+            <input
+              v-model="republishToApidev"
+              type="checkbox"
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-800 rounded"
+            />
+            <div>
+              <span class="text-white text-sm">Upload to apidev via SCP</span>
+              <span class="text-slate-400 text-xs ml-2">(requires VPN)</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex gap-2">
+          <button
+            @click="showRepublish = false"
+            class="flex-1 px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            @click="handleRepublish"
+            :disabled="isLoading || !republishVersion || !durationsVerified"
+            class="flex-1 px-4 py-3 text-sm font-medium bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
+            <span v-if="!durationsVerified">Blocked: Verify Durations First</span>
+            <span v-else>{{ isLoading ? 'Publishing...' : 'Publish New Version' }}</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -168,9 +275,17 @@ const durationsVerified = computed(() => {
   // 1. No missing files
   // 2. Duration check ran successfully (durationChecked > 0)
   // 3. Duration check didn't fail (durationCheckFailed !== true)
-  return verification.missing === 0 &&
+  // 4. If durations were auto-fixed, re-verification must have passed
+  const basicVerification = verification.missing === 0 &&
          (verification.durationChecked || 0) > 0 &&
          !verification.durationCheckFailed
+
+  // If durations were fixed, must also pass re-verification
+  if (verification.durationsFixed && verification.durationsFixed > 0) {
+    return basicVerification && verification.fixVerification?.passed === true
+  }
+
+  return basicVerification
 })
 
 const emit = defineEmits<{
@@ -185,6 +300,12 @@ const commitToCourseConfigs = ref(true)
 const scpToApidev = ref(true)
 const showRepublish = ref(false)
 
+// Re-publish form variables
+const republishVersion = ref('')
+const republishStatus = ref('beta')
+const republishToCourseConfigs = ref(true)
+const republishToApidev = ref(true)
+
 // Load version info when component mounts
 onMounted(() => {
   emit('loadVersionInfo')
@@ -197,6 +318,15 @@ watch(() => props.versionInfo, (info) => {
   }
 })
 
+// Watch for showRepublish to load version suggestion
+watch(showRepublish, (isShowing) => {
+  if (isShowing && props.versionInfo) {
+    // Pre-fill with suggested next version
+    republishVersion.value = props.versionInfo.suggestedVersion
+    republishStatus.value = props.state.manifestStatus || 'beta'
+  }
+})
+
 function handlePublish() {
   emit('publish', {
     version: version.value,
@@ -204,6 +334,18 @@ function handlePublish() {
     commitToCourseConfigs: commitToCourseConfigs.value,
     scpToApidev: scpToApidev.value
   })
+}
+
+function handleRepublish() {
+  emit('publish', {
+    version: republishVersion.value,
+    status: republishStatus.value,
+    commitToCourseConfigs: republishToCourseConfigs.value,
+    scpToApidev: republishToApidev.value
+  })
+
+  // Reset form after publish starts
+  showRepublish.value = false
 }
 
 function handleDownloadManifest() {

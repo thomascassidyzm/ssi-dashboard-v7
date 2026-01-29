@@ -188,7 +188,20 @@ const canProceedToNextStep = computed(() => {
     case 1:
       return state.manifestGenerated
     case 2:
-      return state.s3Verified
+      // Can only proceed to Step 3 if:
+      // 1. S3 verified
+      // 2. AND either no auto-fix was needed OR auto-fix passed verification
+      if (!state.s3Verified) return false
+      const verification = state.s3Verification
+      if (!verification) return false
+
+      // If durations were fixed, must pass re-verification
+      if (verification.durationsFixed && verification.durationsFixed > 0) {
+        return verification.fixVerification?.passed === true
+      }
+
+      // If no fix was needed, can proceed
+      return true
     case 3:
       return state.manifestPublished
     default:
@@ -378,6 +391,26 @@ onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
   if (props.visible) {
     loadInitialState()
+  }
+
+  // Auto-transition from Step 1 to Step 2 after manifest generation completes
+  const socket = workflow.getSocket()
+  if (socket) {
+    socket.on('legacyAudio:completed', (data: { jobId: string; courseCode?: string }) => {
+      // Only auto-advance if user is still on Step 1
+      if (activeStep.value === 1) {
+        console.log('Manifest generation complete - auto-starting S3 verification')
+
+        // Small delay for UX smoothness (let user see completion message)
+        setTimeout(() => {
+          // Move to Step 2
+          activeStep.value = 2
+
+          // Automatically start S3 verification
+          handleVerify()
+        }, 1000)
+      }
+    })
   }
 })
 

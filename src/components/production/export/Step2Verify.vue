@@ -43,61 +43,139 @@
         <span>Stop</span>
       </button>
 
-      <!-- Progress bar - Two-phase verification -->
-      <div v-if="progress.total > 0" class="mt-4">
-        <!-- Phase indicator with icon -->
-        <div class="flex justify-between text-sm mb-2">
-          <div class="flex items-center gap-2">
-            <span class="spinner w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
-            <span :class="currentPhase === 'duration' ? 'text-purple-400' : 'text-blue-400'" class="font-medium">
-              {{ currentPhaseText }}
+      <!-- Multi-stage progress indicator -->
+      <div v-if="progress.total > 0 || verification" class="mt-4 space-y-3">
+        <!-- Stage 1: Checking existence - ONLY show when actively running -->
+        <div v-if="currentStage === 'existence'" class="stage-progress">
+          <div class="flex justify-between text-sm mb-2">
+            <div class="flex items-center gap-2">
+              <span class="spinner w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
+              <span class="text-blue-400 font-medium">Stage 1: Checking file existence</span>
+            </div>
+            <span class="text-slate-400 text-xs">{{ stage1Percent }}%</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="progress-bar h-full transition-all duration-300 bg-blue-500" :style="{ width: `${stage1Percent}%` }" />
+          </div>
+        </div>
+
+        <!-- Stage 2: Extracting S3 durations - ONLY show when actively running -->
+        <div v-if="currentStage === 'duration'" class="stage-progress">
+          <div class="flex justify-between text-sm mb-2">
+            <div class="flex items-center gap-2">
+              <span class="spinner w-3 h-3 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></span>
+              <span class="text-purple-400 font-medium">Stage 2: Extracting S3 durations with sox</span>
+            </div>
+            <span class="text-slate-400 text-xs">{{ stage2Percent }}%</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="progress-bar h-full transition-all duration-300 bg-purple-500" :style="{ width: `${stage2Percent}%` }" />
+          </div>
+          <!-- Duration stats -->
+          <div v-if="progress.matched !== undefined" class="mt-2 grid grid-cols-3 gap-2 text-xs">
+            <div class="text-center">
+              <div class="text-emerald-400 font-medium">{{ progress.matched }}</div>
+              <div class="text-slate-500">Matched</div>
+            </div>
+            <div class="text-center">
+              <div class="text-amber-400 font-medium">{{ progress.mismatched }}</div>
+              <div class="text-slate-500">Mismatched</div>
+            </div>
+            <div class="text-center">
+              <div class="text-red-400 font-medium">{{ progress.errors }}</div>
+              <div class="text-slate-500">Errors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 3: Auto-fixing durations - ONLY show when actively running -->
+        <div v-if="currentStage === 'fixing'" class="stage-progress">
+          <div class="flex justify-between text-sm mb-2">
+            <div class="flex items-center gap-2">
+              <span class="spinner w-3 h-3 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></span>
+              <span class="text-amber-400 font-medium">Stage 3: Auto-fixing durations in manifest</span>
+            </div>
+            <span class="text-slate-400 text-xs">{{ stage3Percent }}%</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="progress-bar h-full transition-all duration-300 bg-amber-500" :style="{ width: `${stage3Percent}%` }" />
+          </div>
+          <!-- Fix stats -->
+          <div v-if="progress.fixed !== undefined" class="mt-2 grid grid-cols-2 gap-2 text-xs">
+            <div class="text-center">
+              <div class="text-emerald-400 font-medium">{{ progress.fixed }}</div>
+              <div class="text-slate-500">Fixed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-red-400 font-medium">{{ progress.errors || 0 }}</div>
+              <div class="text-slate-500">Errors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 4: Verifying fixed durations - ONLY show when actively running -->
+        <div v-if="currentStage === 'verifying'" class="stage-progress">
+          <div class="flex justify-between text-sm mb-2">
+            <div class="flex items-center gap-2">
+              <span class="spinner w-3 h-3 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></span>
+              <span class="text-cyan-400 font-medium">Stage 4: Verifying fixed durations</span>
+            </div>
+            <span class="text-slate-400 text-xs">{{ stage4Percent }}%</span>
+          </div>
+          <div class="progress-bar-container bg-slate-700 rounded-full h-2 overflow-hidden">
+            <div class="progress-bar h-full transition-all duration-300 bg-cyan-500" :style="{ width: `${stage4Percent}%` }" />
+          </div>
+          <!-- Verification stats -->
+          <div v-if="progress.matched !== undefined" class="mt-2 grid grid-cols-2 gap-2 text-xs">
+            <div class="text-center">
+              <div class="text-emerald-400 font-medium">{{ progress.matched }}</div>
+              <div class="text-slate-500">Matched</div>
+            </div>
+            <div class="text-center">
+              <div class="text-amber-400 font-medium">{{ progress.mismatched || 0 }}</div>
+              <div class="text-slate-500">Mismatched</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed stages summary - shown after verification complete -->
+        <div v-if="verification && currentStage === 'complete'" class="space-y-2">
+          <div class="flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-emerald-400">Stage 1: File existence check complete</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-emerald-400">Stage 2: Duration extraction complete</span>
+          </div>
+
+          <!-- Stage 3: Auto-fix (if it happened) -->
+          <div v-if="verification.durationsFixed && verification.durationsFixed > 0" class="flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-emerald-400">Stage 3: Auto-fixed {{ verification.durationsFixed }} durations</span>
+          </div>
+
+          <!-- Stage 4: Re-verification (if auto-fix happened) -->
+          <div v-if="verification.verifyFixed" class="flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4" :class="verification.verifyFixed.mismatched === 0 ? 'text-emerald-400' : 'text-red-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <span :class="verification.verifyFixed.mismatched === 0 ? 'text-emerald-400' : 'text-red-400'">
+              Stage 4: {{ verification.verifyFixed.mismatched === 0 ? 'Verification passed' : `Verification failed (${verification.verifyFixed.mismatched} mismatches)` }}
             </span>
           </div>
-          <span class="text-slate-400">{{ progress.checked.toLocaleString() }} / {{ progress.total.toLocaleString() }}</span>
-        </div>
-        <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
-          <div
-            class="progress-bar h-full transition-all duration-300"
-            :class="{
-              'bg-purple-500': currentPhase === 'duration',
-              'bg-amber-500': currentPhase === 'fixing',
-              'bg-blue-500': currentPhase === 'existence'
-            }"
-            :style="{ width: `${progressPercent}%` }"
-          />
         </div>
 
-        <!-- Duration phase stats -->
-        <div v-if="currentPhase === 'duration' && progress.matched !== undefined" class="mt-2 grid grid-cols-3 gap-2 text-xs">
-          <div class="text-center">
-            <div class="text-emerald-400 font-medium">{{ progress.matched }}</div>
-            <div class="text-slate-500">Matched</div>
-          </div>
-          <div class="text-center">
-            <div class="text-amber-400 font-medium">{{ progress.mismatched }}</div>
-            <div class="text-slate-500">Mismatched</div>
-          </div>
-          <div class="text-center">
-            <div class="text-red-400 font-medium">{{ progress.errors }}</div>
-            <div class="text-slate-500">Errors</div>
-          </div>
+        <!-- Overall summary -->
+        <div class="text-center text-xs text-slate-400 pt-2 border-t border-slate-700">
+          {{ overallStatusText }}
         </div>
-
-        <!-- Fixing phase stats -->
-        <div v-if="currentPhase === 'fixing' && progress.fixed !== undefined" class="mt-2 grid grid-cols-2 gap-2 text-xs">
-          <div class="text-center">
-            <div class="text-emerald-400 font-medium">{{ progress.fixed }}</div>
-            <div class="text-slate-500">Fixed</div>
-          </div>
-          <div class="text-center">
-            <div class="text-red-400 font-medium">{{ progress.errors || 0 }}</div>
-            <div class="text-slate-500">Errors</div>
-          </div>
-        </div>
-
-        <p class="text-center text-xs text-slate-500 mt-2">
-          {{ progressPercent }}% complete
-        </p>
       </div>
     </div>
 
@@ -176,26 +254,42 @@
         </template>
       </div>
 
-      <!-- Auto-fixed durations info -->
-      <div v-if="verification.durationsFixed && verification.durationsFixed > 0"
-           class="auto-fixed p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
-        <p class="text-emerald-400 font-medium text-sm">
-          ✓ Auto-fixed {{ verification.durationsFixed }} durations to match S3 exactly
-        </p>
-        <p class="text-slate-300 text-xs mt-1">
-          Manifest updated with exact durations extracted from S3 audio files using sox.
-        </p>
-      </div>
+      <!-- Auto-fix results summary -->
+      <div v-if="verification.durationsFixed && verification.durationsFixed > 0">
+        <!-- Success: Durations verified after auto-fix -->
+        <div v-if="verification.fixVerification?.passed"
+             class="auto-fixed p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
+          <p class="text-emerald-400 font-medium text-sm">
+            ✓ Auto-fixed {{ verification.durationsFixed }} durations
+          </p>
+          <p class="text-slate-300 text-xs mt-1">
+            Manifest updated with exact durations from S3. Re-verified {{ verification.fixVerification.reVerifyTotal }} files - all match.
+          </p>
+        </div>
 
-      <!-- Duration mismatches (being auto-fixed) -->
-      <div v-if="verification.durationMismatched && verification.durationMismatched > 0 && !verification.durationsFixed"
-           class="duration-warning p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg">
-        <p class="text-emerald-400 font-medium text-sm mb-2">
-          {{ verification.durationMismatched }} files auto-fixed
-        </p>
-        <p class="text-slate-300 text-xs">
-          Durations updated to match exact S3 values.
-        </p>
+        <!-- Error: Durations still don't match after auto-fix (should be rare) -->
+        <div v-else-if="verification.fixVerification?.passed === false"
+             class="error-box p-4 bg-red-900/30 border-2 border-red-700 rounded-lg">
+          <div class="flex items-center gap-2 text-red-400 font-medium mb-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Auto-fix verification FAILED</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-2">
+            {{ verification.fixVerification.message }}
+          </p>
+          <p class="text-xs text-slate-400">
+            {{ verification.fixVerification.stillMismatched }} durations still don't match S3 after auto-fix.
+            This may indicate corrupt audio files.
+          </p>
+          <button
+            @click="handleVerify"
+            class="mt-3 px-4 py-2 text-sm font-medium bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+          >
+            Retry Verification
+          </button>
+        </div>
       </div>
 
       <!-- Re-verify button -->
@@ -250,6 +344,7 @@ const emit = defineEmits<{
 const verification = computed(() => props.state.s3Verification || props.verification)
 
 const progressPercent = computed(() => {
+  console.log('[Step2Verify] Progress:', props.progress)
   if (props.progress.total === 0) return 0
   return Math.round((props.progress.checked / props.progress.total) * 100)
 })
@@ -270,6 +365,80 @@ const currentPhaseText = computed(() => {
     default:
       return 'Phase 1: Checking file existence...'
   }
+})
+
+// Multi-stage progress tracking
+const currentStage = computed(() => {
+  // If verification complete, no active stage
+  if (verification.value && verification.value.durationChecked > 0 && props.progress.total === 0) {
+    return 'complete'
+  }
+
+  // Active stages based on current phase
+  return currentPhase.value
+})
+
+const stage1Percent = computed(() => {
+  if (currentStage.value === 'existence') {
+    // Currently running
+    return progressPercent.value
+  } else if (currentStage.value !== 'existence' && props.progress.checked > 0) {
+    // Completed
+    return 100
+  }
+  return 0
+})
+
+const stage2Percent = computed(() => {
+  if (currentStage.value === 'duration') {
+    // Currently running
+    return progressPercent.value
+  } else if (stage2Complete.value) {
+    // Completed
+    return 100
+  }
+  return 0
+})
+
+const stage2Complete = computed(() => {
+  return verification.value && verification.value.durationChecked > 0
+})
+
+const stage3Percent = computed(() => {
+  if (currentStage.value === 'fixing') {
+    // Currently running
+    return progressPercent.value
+  }
+  return 0
+})
+
+const stage4Percent = computed(() => {
+  if (currentStage.value === 'verifying') {
+    // Currently running
+    return progressPercent.value
+  }
+  return 0
+})
+
+const overallStatusText = computed(() => {
+  if (currentStage.value === 'existence') {
+    return `Checking ${props.progress.checked.toLocaleString()} of ${props.progress.total.toLocaleString()} files...`
+  } else if (currentStage.value === 'duration') {
+    return `Extracting durations: ${props.progress.checked.toLocaleString()} of ${props.progress.total.toLocaleString()} files...`
+  } else if (currentStage.value === 'fixing') {
+    return `Auto-fixing durations: ${props.progress.fixed || 0} fixed, ${props.progress.errors || 0} errors`
+  } else if (currentStage.value === 'verifying') {
+    return `Verifying fixed durations: ${props.progress.checked.toLocaleString()} of ${props.progress.total.toLocaleString()} checked...`
+  } else if (verification.value?.verifyFixed?.mismatched === 0) {
+    return 'All stages complete - verification passed ✓'
+  } else if (verification.value?.verifyFixed?.mismatched > 0) {
+    return `Verification failed - ${verification.value.verifyFixed.mismatched} mismatches`
+  } else if (verification.value?.durationsFixed && !verification.value?.verifyFixed) {
+    return 'Auto-fixing manifest and re-verifying...'
+  } else if (stage2Complete.value) {
+    return 'Verification complete'
+  }
+  return 'Preparing verification...'
 })
 
 function handleVerify() {

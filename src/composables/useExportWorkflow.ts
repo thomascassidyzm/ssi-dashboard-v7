@@ -58,6 +58,17 @@ export interface S3VerificationResult {
     error: string
     stage: string
   }>
+  verifyFixed?: {
+    checked: number
+    matched: number
+    mismatched: number
+    mismatchDetails: Array<{
+      uuid: string
+      manifestDuration: number
+      s3Duration: number
+      difference: number
+    }>
+  }
 }
 
 export interface DeployPlan {
@@ -209,7 +220,7 @@ export function useExportWorkflow(courseCode: string) {
     const wsUrl = apiBase || window.location.origin
 
     socket = io(wsUrl, {
-      path: '/api/orchestrator/websocket',
+      path: '/api/production/websocket',
       transports: ['websocket', 'polling']
     })
 
@@ -217,9 +228,9 @@ export function useExportWorkflow(courseCode: string) {
       console.log('[ExportWorkflow] WebSocket connected to:', wsUrl)
       console.log('[ExportWorkflow] Socket ID:', socket?.id)
 
-      // Subscribe to course-specific events
-      socket.emit('subscribe', courseCode)
-      console.log('[ExportWorkflow] Subscribed to course:', courseCode)
+      // Join course-specific room
+      socket.emit('join_course', { courseCode })
+      console.log('[ExportWorkflow] Joined course room:', courseCode)
     })
 
     socket.on('connect_error', (error) => {
@@ -275,63 +286,26 @@ export function useExportWorkflow(courseCode: string) {
       }
     })
 
-    // S3 verification progress (existence check phase)
-    socket.on('s3Verify:progress', (data: { courseCode: string; phase: string; checked: number; total: number }) => {
-      if (data.courseCode === courseCode) {
-        s3VerifyProgress.value = { phase: data.phase || 'existence', checked: data.checked, total: data.total }
-      }
-    })
-
-    // S3 verification duration progress (duration check phase)
-    socket.on('s3Verify:durationProgress', (data: {
+    // S3 verification progress - handles all phases (existence, duration, fixing, verifying)
+    socket.on('s3Verify:progress', (data: {
       courseCode: string
-      phase: 'duration'
+      phase: string
       checked: number
       total: number
-      matched: number
-      mismatched: number
-      errors: number
+      matched?: number
+      mismatched?: number
+      errors?: number
+      fixed?: number
     }) => {
       if (data.courseCode === courseCode) {
         s3VerifyProgress.value = {
-          phase: 'duration',
+          phase: data.phase || 'existence',
           checked: data.checked,
           total: data.total,
           matched: data.matched,
           mismatched: data.mismatched,
-          errors: data.errors
-        }
-      }
-    })
-
-    // Auto-fix durations progress
-    socket.on('s3Verify:fixingDurations', (data: {
-      courseCode: string
-      total: number
-    }) => {
-      if (data.courseCode === courseCode) {
-        s3VerifyProgress.value = {
-          phase: 'fixing',
-          checked: 0,
-          total: data.total
-        }
-      }
-    })
-
-    socket.on('s3Verify:fixProgress', (data: {
-      courseCode: string
-      checked: number
-      total: number
-      fixed: number
-      errors: number
-    }) => {
-      if (data.courseCode === courseCode) {
-        s3VerifyProgress.value = {
-          phase: 'fixing',
-          checked: data.checked,
-          total: data.total,
-          fixed: data.fixed,
-          errors: data.errors
+          errors: data.errors,
+          fixed: data.fixed
         }
       }
     })
@@ -637,7 +611,8 @@ export function useExportWorkflow(courseCode: string) {
   // Download pending manifest for review
   async function downloadPendingManifest() {
     try {
-      const response = await fetch(`${API_BASE}/api/production/${courseCode}/pending-manifest`)
+      const apiBase = getApiBaseUrl()
+      const response = await fetch(`${apiBase}/api/production/${courseCode}/pending-manifest`)
       if (!response.ok) {
         throw new Error('Failed to fetch pending manifest')
       }
@@ -836,6 +811,11 @@ export function useExportWorkflow(courseCode: string) {
     disconnectWebSocket()
   }
 
+  // Get socket instance for external use (e.g., auto-transition)
+  function getSocket() {
+    return socket
+  }
+
   return {
     // State
     state,
@@ -872,6 +852,7 @@ export function useExportWorkflow(courseCode: string) {
     cleanup,
 
     // Utilities
-    formatDate
+    formatDate,
+    getSocket
   }
 }
