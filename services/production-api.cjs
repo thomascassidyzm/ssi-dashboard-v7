@@ -2127,7 +2127,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
   }
 })
 
-// FAST audio stats endpoint - just COUNT queries, no scanning
+// FAST audio stats endpoint - counts audio matching CURRENT course content
 // Returns total needed vs existing audio for Progress Dashboard
 app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
   try {
@@ -2139,48 +2139,92 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
 
     const supabase = supabaseClient.getClient()
 
-    // Count existing audio records for this course (fast COUNT query)
-    const { count: existingAudio, error: audioErr } = await supabase
-      .from('course_audio')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode)
+    // Fetch current course content in parallel
+    const [phrasesRes, legosRes, audioRes, presentationAudioRes] = await Promise.all([
+      // Get unique texts from phrases (known_text and target_text)
+      supabase
+        .from('course_practice_phrases')
+        .select('known_text, target_text')
+        .eq('course_code', courseCode),
+      // Get LEGOs that need presentation audio (new LEGOs only)
+      supabase
+        .from('course_legos')
+        .select('id')
+        .eq('course_code', courseCode)
+        .eq('is_new', true),
+      // Get existing phrase audio (text + role for known/target1/target2)
+      supabase
+        .from('course_audio')
+        .select('text, role')
+        .eq('course_code', courseCode)
+        .in('role', ['known', 'target1', 'target2']),
+      // Count presentation audio that has lego_id set (linked to LEGOs)
+      supabase
+        .from('course_audio')
+        .select('lego_id')
+        .eq('course_code', courseCode)
+        .eq('role', 'presentation')
+        .not('lego_id', 'is', null)
+    ])
 
-    if (audioErr) throw audioErr
+    if (phrasesRes.error) throw phrasesRes.error
+    if (legosRes.error) throw legosRes.error
+    if (audioRes.error) throw audioRes.error
+    if (presentationAudioRes.error) throw presentationAudioRes.error
 
-    // Count total unique phrases (each needs known + target1 + target2 = 3 audio files)
-    const { count: phraseCount, error: phraseErr } = await supabase
-      .from('course_practice_phrases')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode)
+    const phrases = phrasesRes.data || []
+    const legos = legosRes.data || []
+    const existingAudio = audioRes.data || []
+    const presentationAudio = presentationAudioRes.data || []
 
-    if (phraseErr) throw phraseErr
+    // Build set of existing audio keys: "text|role"
+    const existingSet = new Set(
+      existingAudio.map(a => `${a.text}|${a.role}`)
+    )
 
-    // Count LEGOs that need presentation audio
-    const { count: legoCount, error: legoErr } = await supabase
-      .from('course_legos')
-      .select('*', { count: 'exact', head: true })
-      .eq('course_code', courseCode)
-      .eq('is_new', true)  // Only new LEGOs need presentation
+    // Build set of lego_ids that have presentation audio
+    const legosWithPresentation = new Set(
+      presentationAudio.map(a => a.lego_id)
+    )
 
-    if (legoErr) throw legoErr
+    // Count what we need from current content
+    let totalNeeded = 0
+    let existingCount = 0
 
-    // Total audio needed:
-    // - Each phrase needs 3 audio files (known, target1, target2)
-    // - Each new LEGO needs 1 presentation audio
-    const totalNeeded = (phraseCount * 3) + legoCount
-    const existing = existingAudio || 0
-    const missing = Math.max(0, totalNeeded - existing)
+    // Each phrase needs: known, target1, target2
+    for (const phrase of phrases) {
+      // Known audio
+      totalNeeded++
+      if (existingSet.has(`${phrase.known_text}|known`)) existingCount++
+
+      // Target1 audio
+      totalNeeded++
+      if (existingSet.has(`${phrase.target_text}|target1`)) existingCount++
+
+      // Target2 audio
+      totalNeeded++
+      if (existingSet.has(`${phrase.target_text}|target2`)) existingCount++
+    }
+
+    // Each new LEGO needs presentation audio
+    for (const lego of legos) {
+      totalNeeded++
+      if (legosWithPresentation.has(lego.id)) existingCount++
+    }
+
+    const missing = totalNeeded - existingCount
 
     res.json({
       success: true,
       total: totalNeeded,
-      existing,
+      existing: existingCount,
       missing,
       breakdown: {
-        phrases: phraseCount,
-        phrasesAudio: phraseCount * 3,
-        legos: legoCount,
-        presentationAudio: legoCount
+        phrases: phrases.length,
+        phrasesAudio: phrases.length * 3,
+        legos: legos.length,
+        presentationAudio: legos.length,
+        presentationsExisting: legosWithPresentation.size
       }
     })
   } catch (error) {
