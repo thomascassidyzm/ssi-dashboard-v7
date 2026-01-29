@@ -45,6 +45,10 @@
           <span v-if="fixing" class="spinner"></span>
           {{ fixing ? 'Starting...' : 'Fix Issues' }}
         </button>
+        <button @click="spawnPolisher" :disabled="polishing" class="btn-opus">
+          <span v-if="polishing" class="spinner"></span>
+          {{ polishing ? 'Polishing...' : 'Opus Polish' }}
+        </button>
       </div>
     </header>
 
@@ -137,6 +141,7 @@ const API_BASE = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:34
 const loading = ref(true)
 const spawning = ref(false)
 const fixing = ref(false)
+const polishing = ref(false)
 const summary = ref(null)
 const flags = ref([])
 const severityFilter = ref('')
@@ -217,6 +222,22 @@ async function spawnFixer() {
     console.error('Failed to spawn fixer:', err)
   } finally {
     fixing.value = false
+  }
+}
+
+async function spawnPolisher() {
+  polishing.value = true
+  try {
+    await fetch(`${API_BASE}/api/qa/spawn-polisher/${props.courseCode}`, { method: 'POST' })
+    // Opus polisher runs on first 50 rounds - takes longer
+    setTimeout(() => {
+      fetchSummary()
+      fetchFlags()
+    }, 10000)
+  } catch (err) {
+    console.error('Failed to spawn polisher:', err)
+  } finally {
+    polishing.value = false
   }
 }
 
@@ -333,6 +354,23 @@ onMounted(() => {
   font-size: 0.875rem;
 }
 
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-slate, #334155);
+  color: var(--color-paper, #f7f7f2);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-secondary:hover { background: var(--color-graphite, #475569); }
+.btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
 .btn-primary {
   display: flex;
   align-items: center;
@@ -349,6 +387,23 @@ onMounted(() => {
 }
 .btn-primary:hover { opacity: 0.9; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-opus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-opus:hover { opacity: 0.9; }
+.btn-opus:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Progress Strip */
 .progress-strip {

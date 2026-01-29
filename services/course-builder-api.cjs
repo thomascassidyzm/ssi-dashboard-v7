@@ -6912,6 +6912,62 @@ app.post('/api/qa/spawn-fixer/:courseCode', async (req, res) => {
 });
 
 /**
+ * POST /api/qa/spawn-polisher/:courseCode - Spawn Opus phrase polisher (high-quality pass on first 50 rounds)
+ */
+app.post('/api/qa/spawn-polisher/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const roundLimit = parseInt(req.body.round_limit) || 50;
+    const { spawnPhrasePolisher } = require('./shared/spawn-course-builder.cjs');
+
+    console.log(`[QA] Spawning phrase polisher for ${courseCode} (first ${roundLimit} rounds)...`);
+
+    // Spawn in background - don't wait for completion
+    spawnPhrasePolisher({ courseCode, roundLimit, terminal: 'iterm' }, 1)
+      .then(() => console.log(`[QA] Polisher spawned for ${courseCode}`))
+      .catch(err => console.error(`[QA] Polisher spawn failed: ${err.message}`));
+
+    res.json({
+      success: true,
+      message: `Opus polisher spawning for ${courseCode} - first ${roundLimit} rounds`,
+      course_code: courseCode,
+      round_limit: roundLimit
+    });
+  } catch (err) {
+    console.error('[QA] Error spawning polisher:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/qa/spawn-audit/:courseCode - Spawn Sonnet phrase auditor agent (random sample)
+ */
+app.post('/api/qa/spawn-audit/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const sampleSize = parseInt(req.body.sample_size) || 100;
+    const { spawnPhraseAuditor } = require('./shared/spawn-course-builder.cjs');
+
+    console.log(`[QA] Spawning phrase auditor for ${courseCode} (sample: ${sampleSize})...`);
+
+    // Spawn in background - don't wait for completion
+    spawnPhraseAuditor({ courseCode, sampleSize, terminal: 'iterm' }, 1)
+      .then(() => console.log(`[QA] Auditor spawned for ${courseCode}`))
+      .catch(err => console.error(`[QA] Auditor spawn failed: ${err.message}`));
+
+    res.json({
+      success: true,
+      message: `Phrase auditor spawning for ${courseCode}`,
+      course_code: courseCode,
+      sample_size: sampleSize
+    });
+  } catch (err) {
+    console.error('[QA] Error spawning auditor:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * DELETE /api/qa/phrase/:phraseId - Delete a flagged phrase
  */
 app.delete('/api/qa/phrase/:phraseId', async (req, res) => {

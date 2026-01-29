@@ -798,6 +798,160 @@ async function spawnBuildWithMonitor(options) {
 }
 
 /**
+ * Generate the Phrase Auditor brief for Sonnet audit agent
+ * Unlike Monitor (which checks unchecked phrases), Auditor samples ANY phrases for quality verification
+ */
+function generatePhraseAuditorBrief(options) {
+  const {
+    courseCode,
+    sampleSize = 100,
+    builderApiUrl = COURSE_BUILDER_API
+  } = options;
+
+  return `# Phrase Auditor - Quality Verification Agent
+
+You are a QA auditor performing a **random quality check** on phrases that may have already passed initial review.
+
+## Course: ${courseCode}
+
+## Your Role
+
+You verify quality by sampling phrases at random - including ones marked as "checked". This catches issues that slipped through initial review.
+
+---
+
+## CRITICAL: SSi LEGO Methodology
+
+This is a LEGO-based language learning system where phrases are built from components:
+
+- **component** phrases: Building blocks (e.g., "de" for "to") - these combine with other LEGOs. **DO NOT FLAG THESE** - they are intentionally partial.
+- **practice** phrases: Intermediate build-up steps - may be fragments. **DO NOT FLAG THESE** unless there's a clear typo.
+- **USE** phrases: Complete sentences learners will produce. **FLAG ISSUES IN THESE ONLY**.
+
+---
+
+## AUDIT TASK: Random Sample Check
+
+Get a random sample of phrases:
+
+\`\`\`bash
+curl -s "${builderApiUrl}/api/qa/sample/${courseCode}?limit=${sampleSize}"
+\`\`\`
+
+### For Each USE Phrase, Assess:
+
+1. **Known Language Grammar** - Is the English correct and natural?
+2. **Target Language Grammar** - Is the translation grammatically correct?
+3. **Semantic Match** - Does the target actually mean what the known says?
+4. **Naturalness** - Would a native speaker say this?
+
+### SKIP if phrase_role is "component" or "practice"
+
+### Flag Any Issues Found:
+
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/qa/flag" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "course_code": "${courseCode}",
+    "phrase_id": "uuid-here",
+    "check_type": "grammar",
+    "severity": "warning",
+    "issue": "Brief description of the problem",
+    "details": {
+      "known_text": "the phrase",
+      "target_text": "the translation",
+      "suggestion": "what it should be"
+    }
+  }'
+\`\`\`
+
+### Check Types:
+- \`grammar\` - Grammar error in either language
+- \`semantic\` - Translation meaning is wrong
+- \`naturalness\` - Sounds weird even if grammatically ok
+
+### Severity:
+- \`error\` - Definitely wrong, must fix
+- \`warning\` - Probably wrong, should review
+- \`info\` - Noticed something, optional review
+
+---
+
+## Audit Summary
+
+After reviewing the sample, report:
+- Total phrases sampled
+- USE phrases reviewed (skip component/practice)
+- Issues found by severity (error/warning/info)
+- Common patterns (if any)
+
+---
+
+## CRITICAL: AUTONOMOUS OPERATION
+
+You are running UNATTENDED.
+
+**FORBIDDEN:**
+- "Shall I continue?"
+- "Would you like me to..."
+- Any question asking for permission
+
+**REQUIRED:**
+- Fetch the sample
+- Review all USE phrases
+- Flag issues
+- Report summary
+- Exit when done
+
+---
+
+**BEGIN:** Fetch the random sample and audit each USE phrase.
+`;
+}
+
+/**
+ * Spawn Phrase Auditor agent (Sonnet)
+ * Uses Sonnet for quality verification via random sampling
+ */
+async function spawnPhraseAuditor(options, agentId = 1) {
+  const {
+    courseCode,
+    sampleSize = 100,
+    terminal = 'iterm',
+    workingDir = DASHBOARD_ROOT
+  } = options;
+
+  console.log(`\n🔍 Spawning Phrase Auditor Agent (Sonnet)`);
+  console.log(`   Course: ${courseCode}`);
+  console.log(`   Sample size: ${sampleSize}`);
+  console.log(`   Terminal: ${terminal}`);
+  console.log(`   Model: sonnet`);
+
+  const brief = generatePhraseAuditorBrief({ courseCode, sampleSize });
+
+  // Save brief for reference
+  const briefPath = path.join(workingDir, 'temp', `phrase-auditor-brief-${courseCode}.md`);
+  await fs.ensureDir(path.dirname(briefPath));
+  await fs.writeFile(briefPath, brief, 'utf8');
+  console.log(`   Brief saved: ${briefPath}`);
+
+  if (terminal === 'terminal') {
+    return await spawnClaudeTerminalAgent(brief, agentId, {
+      model: 'sonnet',
+      workingDir,
+      skipPermissions: true
+    });
+  } else {
+    return await spawnClaudeCliAgent(brief, agentId, {
+      model: 'sonnet',
+      workingDir,
+      skipPermissions: true
+    });
+  }
+}
+
+/**
  * Generate the Phrase Fixer brief for Opus correction agent
  */
 function generatePhraseFixerBrief(options) {
@@ -965,12 +1119,219 @@ async function spawnPhraseFixer(options, agentId = 1) {
   }
 }
 
+/**
+ * Generate the Phrase Polisher brief for Opus high-quality pass
+ */
+function generatePhrasePolisherBrief(options) {
+  const {
+    courseCode,
+    roundLimit = 50,
+    builderApiUrl = COURSE_BUILDER_API
+  } = options;
+
+  return `# Phrase Polisher - Opus Elegance Pass
+
+You perform a high-quality polish of the first ${roundLimit} rounds. Your goal: make the content **smooth as a badger** - elegant, natural, error-free.
+
+## Course: ${courseCode}
+
+---
+
+## Your Mission
+
+The first ${roundLimit} LEGOs/rounds are the learner's first impression. They MUST be flawless:
+- Perfect grammar in BOTH languages
+- Natural, native-sounding phrases
+- Smooth flow for audio playback
+- Consistent vocabulary (no new words introduced)
+
+---
+
+## CRITICAL CONSTRAINTS
+
+**CORRECTIONS ONLY:**
+- Fix errors, don't add content
+- No new vocabulary - use only words already introduced
+- No elaboration or expansion
+- If a fix requires new words, SKIP IT
+
+**FOCUS ON:**
+- BUILD phrases (practice drilling)
+- USE phrases (complete sentences)
+- LEGOs themselves (the canonical forms)
+- Seeds (the source translations)
+
+---
+
+## Workflow
+
+### 1. Get Phrases for First ${roundLimit} LEGOs
+
+\`\`\`bash
+# Get all BUILD and USE phrases from the first ~20 seeds (≈ ${roundLimit} LEGOs)
+curl -s "${builderApiUrl}/api/phrases/${courseCode}?seed_min=1&seed_max=20&limit=2000" | jq '.phrases[] | select(.phrase_role == "use" or .phrase_role == "practice") | {id, seed: .seed_number, role: .phrase_role, en: .known_text, fr: .target_text}'
+\`\`\`
+
+### 2. Review Each Phrase
+
+For each phrase, check:
+
+**English:**
+- Grammar correct?
+- Natural phrasing?
+- No awkward constructions?
+
+**Target Language:**
+- Conjugations correct?
+- Word order natural?
+- Prepositions/articles correct?
+- Elisions applied? (parce que + vowel → parce qu')
+
+**Translation:**
+- Meaning preserved?
+- Nothing lost or added?
+
+### 3. Apply Fixes
+
+\`\`\`bash
+curl -X PATCH "${builderApiUrl}/api/phrases/{phrase_id}" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "known_text": "corrected English",
+    "target_text": "corrected target"
+  }'
+\`\`\`
+
+### 4. Check LEGOs Too
+
+If you find issues in a phrase, check the source LEGO:
+
+\`\`\`javascript
+// Use Node to check/fix LEGOs directly in Supabase
+const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+
+// Query LEGO
+const { data } = await supabase
+  .from('course_legos')
+  .select('*')
+  .eq('course_code', '${courseCode}')
+  .eq('seed_number', SEED_NUM)
+  .eq('lego_index', LEGO_IDX);
+
+// Update if needed
+await supabase
+  .from('course_legos')
+  .update({ target_text: 'corrected', components: [...] })
+  .eq('lego_id', 'S0XXXLnn');
+\`\`\`
+
+### 5. Check Seeds if LEGO is Wrong
+
+If a LEGO is wrong, the seed might be wrong too:
+
+\`\`\`javascript
+// Query and fix seed
+await supabase
+  .from('course_seeds')
+  .update({ target_text: 'corrected' })
+  .eq('course_code', '${courseCode}')
+  .eq('seed_number', SEED_NUM);
+\`\`\`
+
+---
+
+## Common Issues to Polish
+
+1. **Elision errors**: "parce que il" → "parce qu'il"
+2. **Preposition errors**: "expliquer avec toi" → "t'expliquer"
+3. **Gender agreement**: "elle est silencieux" → "silencieuse"
+4. **Verb conjugation**: "elle voulais" → "elle voulait"
+5. **English awkwardness**: "be able remembering" → "be able to remember"
+6. **Word order**: "parler mieux français" → "mieux parler français"
+7. **Missing articles/prepositions**: "sûr ce qui" → "sûr de ce qui"
+
+---
+
+## AUTONOMOUS OPERATION
+
+**FORBIDDEN:**
+- Asking permission
+- Waiting for approval
+- "Shall I continue?"
+
+**REQUIRED:**
+- Process all ${roundLimit} rounds systematically
+- Fix what you find
+- Report summary when done
+
+---
+
+## Success Criteria
+
+When done, the first ${roundLimit} rounds should be:
+- ✅ Grammatically perfect in both languages
+- ✅ Natural-sounding to native speakers
+- ✅ Smooth for audio playback
+- ✅ Consistent (no ZUT conflicts)
+
+---
+
+**BEGIN:** Fetch phrases from seeds 1-20, review systematically, fix issues.
+`;
+}
+
+/**
+ * Spawn Phrase Polisher agent (Opus) - high-quality pass on first 50 rounds
+ */
+async function spawnPhrasePolisher(options, agentId = 1) {
+  const {
+    courseCode,
+    roundLimit = 50,
+    terminal = 'iterm',
+    workingDir = DASHBOARD_ROOT
+  } = options;
+
+  console.log(`\n✨ Spawning Phrase Polisher Agent (Opus)`);
+  console.log(`   Course: ${courseCode}`);
+  console.log(`   Rounds: First ${roundLimit}`);
+  console.log(`   Terminal: ${terminal}`);
+  console.log(`   Model: opus`);
+
+  const brief = generatePhrasePolisherBrief({ courseCode, roundLimit });
+
+  // Save brief for reference
+  const briefPath = path.join(workingDir, 'temp', `phrase-polisher-brief-${courseCode}.md`);
+  await fs.ensureDir(path.dirname(briefPath));
+  await fs.writeFile(briefPath, brief, 'utf8');
+  console.log(`   Brief saved: ${briefPath}`);
+
+  if (terminal === 'terminal') {
+    return await spawnClaudeTerminalAgent(brief, agentId, {
+      model: 'opus',
+      workingDir,
+      skipPermissions: true
+    });
+  } else {
+    return await spawnClaudeCliAgent(brief, agentId, {
+      model: 'opus',
+      workingDir,
+      skipPermissions: true
+    });
+  }
+}
+
 module.exports = {
   spawnCourseBuilder,
   generateCourseBuilderBrief,
   spawnPhraseMonitor,
   generatePhraseMonitorBrief,
   spawnBuildWithMonitor,
+  spawnPhraseAuditor,
+  generatePhraseAuditorBrief,
   spawnPhraseFixer,
-  generatePhraseFixerBrief
+  generatePhraseFixerBrief,
+  spawnPhrasePolisher,
+  generatePhrasePolisherBrief
 };
