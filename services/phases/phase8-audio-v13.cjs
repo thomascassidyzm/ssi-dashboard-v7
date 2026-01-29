@@ -95,6 +95,24 @@ function normalizeText(text) {
   return text.toLowerCase().replace(PUNCT_REGEX, '').trim()
 }
 
+/**
+ * Check if text is punctuation-only (TTS can't generate these)
+ * Punctuation should be taught contextually as part of M-LEGOs, not standalone
+ * @param {string} text - Text to check
+ * @returns {boolean} True if text is empty or punctuation-only
+ */
+function isPunctuationOnly(text) {
+  if (!text) return true
+  const trimmed = text.trim()
+  if (!trimmed) return true
+  // Match common punctuation marks:
+  // - Western: .,;:!?-()[]{}
+  // - CJK: 。、？！；：…—–「」『』（）【】
+  // - Arabic/RTL: ؟،؛ (U+061F, U+060C, U+061B)
+  // - Hebrew: ־ (U+05BE maqaf)
+  return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
+}
+
 // =============================================================================
 // CONCURRENCY SETTINGS
 // =============================================================================
@@ -541,9 +559,13 @@ async function planHandler(req, res) {
     }
 
     // Deduplicate
-    const uniqueNeeded = [...new Map(
+    const uniqueNeededRaw = [...new Map(
       needed.map(n => [`${n.text}|${n.language}|${n.role}`, n])
     ).values()]
+
+    // Filter out punctuation-only items (TTS can't generate these)
+    // This matches what the generate endpoint does, so plan and generate counts align
+    const uniqueNeeded = uniqueNeededRaw.filter(n => !isPunctuationOnly(n.text))
 
     // Cost estimate (rough: $0.016 per 1000 chars for Azure Neural)
     const totalChars = uniqueNeeded.reduce((sum, n) => sum + n.text.length, 0)
@@ -567,20 +589,33 @@ async function planHandler(req, res) {
 
     // Calculate TOTAL REQUIRED based on current course content (not orphaned audio)
     // Unique texts that need audio: phrases + legos + seeds
+    // Exclude punctuation-only items (TTS can't generate these)
     const uniqueTextsForAudio = new Set()
 
-    // Count unique known texts
+    // Count unique known/target texts (excluding punctuation-only)
     for (const phrase of phrases || []) {
-      uniqueTextsForAudio.add(`known|${normalizeText(phrase.known_text)}`)
-      uniqueTextsForAudio.add(`target|${normalizeText(phrase.target_text)}`)
+      if (!isPunctuationOnly(phrase.known_text)) {
+        uniqueTextsForAudio.add(`known|${normalizeText(phrase.known_text)}`)
+      }
+      if (!isPunctuationOnly(phrase.target_text)) {
+        uniqueTextsForAudio.add(`target|${normalizeText(phrase.target_text)}`)
+      }
     }
     for (const lego of allLegos || []) {
-      uniqueTextsForAudio.add(`known|${normalizeText(lego.known_text)}`)
-      uniqueTextsForAudio.add(`target|${normalizeText(lego.target_text)}`)
+      if (!isPunctuationOnly(lego.known_text)) {
+        uniqueTextsForAudio.add(`known|${normalizeText(lego.known_text)}`)
+      }
+      if (!isPunctuationOnly(lego.target_text)) {
+        uniqueTextsForAudio.add(`target|${normalizeText(lego.target_text)}`)
+      }
     }
     for (const seed of allSeeds || []) {
-      uniqueTextsForAudio.add(`known|${normalizeText(seed.known_text)}`)
-      uniqueTextsForAudio.add(`target|${normalizeText(seed.target_text)}`)
+      if (!isPunctuationOnly(seed.known_text)) {
+        uniqueTextsForAudio.add(`known|${normalizeText(seed.known_text)}`)
+      }
+      if (!isPunctuationOnly(seed.target_text)) {
+        uniqueTextsForAudio.add(`target|${normalizeText(seed.target_text)}`)
+      }
     }
 
     // Total required: unique known texts + unique target texts × 2 (target1, target2) + presentations
@@ -755,20 +790,6 @@ app.post('/generate/:courseCode', async (req, res) => {
       return v.voiceId || v
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
-
-    // Helper to check if text is punctuation-only (TTS can't generate these)
-    // Punctuation should be taught contextually as part of M-LEGOs, not standalone
-    const isPunctuationOnly = (text) => {
-      if (!text) return true
-      const trimmed = text.trim()
-      if (!trimmed) return true
-      // Match common punctuation marks:
-      // - Western: .,;:!?-()[]{}
-      // - CJK: 。、？！；：…—–「」『』（）【】
-      // - Arabic/RTL: ؟،؛ (U+061F, U+060C, U+061B)
-      // - Hebrew: ־ (U+05BE maqaf)
-      return /^[.,;:!?。、？！；：…—–\-()[\]{}「」『』（）【】؟،؛־]+$/.test(trimmed)
-    }
 
     for (const phrase of phrases) {
       // Skip punctuation-only known text
