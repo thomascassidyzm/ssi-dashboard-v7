@@ -107,14 +107,15 @@
                   <span class="compact-language">{{ getTargetLanguage(course.code) }}</span>
                   <span class="compact-for">for</span>
                   <span class="compact-speakers">{{ getKnownLanguage(course.code) }}</span>
-                  <!-- App status badge in compact mode -->
-                  <span
-                    v-if="lane.isAppColumn && course.appStatus"
-                    class="compact-status-badge"
-                    :class="course.appStatus"
-                  >
-                    {{ course.appStatus }}
-                  </span>
+                  <!-- Dual app status badges in compact mode for Production -->
+                  <template v-if="lane.isProductionColumn">
+                    <span v-if="course.inNewApp" class="compact-status-badge" :class="course.newAppStatus">
+                      New: {{ course.newAppStatus }}
+                    </span>
+                    <span v-if="course.inLegacyApp" class="compact-status-badge legacy" :class="course.legacyAppStatus">
+                      Legacy: {{ course.legacyAppStatus }}
+                    </span>
+                  </template>
                 </div>
               </template>
 
@@ -129,14 +130,6 @@
                   </div>
                   <div class="card-header-row">
                     <span class="card-code">{{ course.code }}</span>
-                    <!-- App Status Badge -->
-                    <span
-                      v-if="lane.isAppColumn && course.appStatus"
-                      class="app-status-badge"
-                      :class="course.appStatus"
-                    >
-                      {{ course.appStatus }}
-                    </span>
                     <button
                       v-if="!isHidden(course.code)"
                       class="hide-btn"
@@ -213,6 +206,22 @@
                     </svg>
                   </button>
                 </div>
+
+                <!-- Production: Dual App Status Badges -->
+                <div class="card-deploy-status" v-if="lane.isProductionColumn">
+                  <div class="deploy-badge new-app" :class="{ active: course.inNewApp }">
+                    <span class="deploy-label">New App</span>
+                    <span class="deploy-status" :class="course.newAppStatus">
+                      {{ course.inNewApp ? course.newAppStatus : '—' }}
+                    </span>
+                  </div>
+                  <div class="deploy-badge legacy-app" :class="{ active: course.inLegacyApp }">
+                    <span class="deploy-label">Legacy</span>
+                    <span class="deploy-status" :class="course.legacyAppStatus">
+                      {{ course.inLegacyApp ? course.legacyAppStatus : '—' }}
+                    </span>
+                  </div>
+                </div>
               </template>
             </div>
           </TransitionGroup>
@@ -249,8 +258,8 @@
       </div>
       <div class="footer-divider"></div>
       <div class="footer-stat highlight">
-        <span class="footer-value">{{ readyCount }}</span>
-        <span class="footer-label">In New App</span>
+        <span class="footer-value">{{ productionCount }}</span>
+        <span class="footer-label">In Production</span>
       </div>
     </div>
   </div>
@@ -411,46 +420,37 @@ const pipelineLanes = computed(() => {
     {
       key: 'building',
       title: 'Building',
-      description: 'Seeds being decomposed',
+      description: 'Translations, LEGOs, phrases',
       color: '#f59e0b',
       emptyText: 'No active builds',
       action: { label: 'View Progress', type: 'view' },
       courses: []
     },
     {
-      key: 'needs_audio',
-      title: 'Needs Audio',
-      description: 'Content ready for TTS',
+      key: 'audio',
+      title: 'Audio',
+      description: 'TTS generation pipeline',
       color: '#8b5cf6',
-      emptyText: 'None pending audio',
+      emptyText: 'None generating',
       action: { label: 'Generate Audio', type: 'audio' },
       courses: []
     },
     {
-      key: 'needs_export',
-      title: 'Needs Export',
-      description: 'Run Phase 9 manifest',
+      key: 'polishing',
+      title: 'Polishing',
+      description: 'Validation & QA',
       color: '#f97316',
-      emptyText: 'None pending export',
-      action: { label: 'Export Now', type: 'export' },
+      emptyText: 'None in QA',
+      action: { label: 'Review', type: 'review' },
       courses: []
     },
     {
-      key: 'new_app',
-      title: 'New App',
-      description: 'ssi-learning-app deployment',
-      color: '#3b82f6',
+      key: 'production',
+      title: 'Production',
+      description: 'Deployed to apps',
+      color: '#10b981',
       emptyText: 'None deployed',
-      isAppColumn: true,
-      courses: []
-    },
-    {
-      key: 'exported',
-      title: 'Exported',
-      description: 'JSON manifest for legacy app',
-      color: '#06b6d4',
-      emptyText: 'None exported',
-      isAppColumn: true,
+      isProductionColumn: true,
       courses: []
     }
   ]
@@ -465,39 +465,47 @@ const pipelineLanes = computed(() => {
     if (legacyAppStatus === 'draft') legacyAppStatus = 'testing'
     if (legacyAppStatus === 'released') legacyAppStatus = 'live'
 
-    // App columns are for courses explicitly deployed there (manual placement)
-    // A course can appear in BOTH app columns if deployed to both
+    // Check if deployed to either app
     const inNewApp = newAppStatus === 'testing' || newAppStatus === 'beta' || newAppStatus === 'live'
     const inLegacyApp = legacyAppStatus === 'testing' || legacyAppStatus === 'beta' || legacyAppStatus === 'live'
+    const inProduction = inNewApp || inLegacyApp
 
-    if (inNewApp) {
-      lanes[3].courses.push({ ...course, appStatus: newAppStatus, originalStatus: course.newAppStatus })
-    }
-    if (inLegacyApp) {
-      lanes[4].courses.push({ ...course, appStatus: legacyAppStatus, originalStatus: course.legacyAppStatus })
-    }
+    // Skip not_started courses (they show in header count and search)
+    if (status === 'not_started') return
 
-    // Only show in pipeline columns if NOT deployed to any app yet
-    // (or if status is not_started, skip entirely - they'll show in search)
-    if (!inNewApp && !inLegacyApp && status !== 'not_started') {
+    if (inProduction) {
+      // Production column - show both app statuses as badges
+      lanes[3].courses.push({
+        ...course,
+        newAppStatus,
+        legacyAppStatus,
+        inNewApp,
+        inLegacyApp
+      })
+    } else {
+      // Pipeline columns based on build status
       if (status === 'building') {
         lanes[0].courses.push(course)
       } else if (status === 'needs_audio') {
         lanes[1].courses.push(course)
-      } else if (status === 'needs_export') {
+      } else if (status === 'needs_export' || status === 'ready') {
         lanes[2].courses.push(course)
       }
-      // Note: 'ready' status courses without app deployment stay in needs_export
-      // (they need to be deployed to an app to move forward)
     }
   })
 
   // Sort by progress within each lane
   lanes.forEach(lane => {
-    if (lane.isAppColumn) {
-      // Sort app columns by status: live > beta > testing
-      const statusOrder = { live: 0, beta: 1, testing: 2 }
-      lane.courses.sort((a, b) => (statusOrder[a.appStatus] || 3) - (statusOrder[b.appStatus] || 3))
+    if (lane.isProductionColumn) {
+      // Sort production by: both apps > new app only > legacy only, then by status
+      lane.courses.sort((a, b) => {
+        const aScore = (a.inNewApp ? 2 : 0) + (a.inLegacyApp ? 1 : 0)
+        const bScore = (b.inNewApp ? 2 : 0) + (b.inLegacyApp ? 1 : 0)
+        if (bScore !== aScore) return bScore - aScore
+        // Then by new app status
+        const statusOrder = { live: 0, beta: 1, testing: 2, not_available: 3 }
+        return (statusOrder[a.newAppStatus] || 3) - (statusOrder[b.newAppStatus] || 3)
+      })
     } else {
       lane.courses.sort((a, b) => getCompletedSeeds(b) - getCompletedSeeds(a))
     }
@@ -519,9 +527,9 @@ const totalAudio = computed(() => {
   return props.courses.reduce((sum, c) => sum + (c.stats?.audio || 0), 0)
 })
 
-const readyCount = computed(() => {
-  // Count courses deployed to new app (testing/beta/live)
-  return pipelineLanes.value.find(l => l.key === 'new_app')?.courses.length || 0
+const productionCount = computed(() => {
+  // Count courses in production (deployed to any app)
+  return pipelineLanes.value.find(l => l.key === 'production')?.courses.length || 0
 })
 
 function handleCourseClick(course) {
@@ -906,6 +914,84 @@ function handleAction(course, action) {
 .app-status-badge.live {
   background: rgba(16, 185, 129, 0.2);
   color: #10b981;
+}
+
+/* Production Column: Dual Deploy Status */
+.card-deploy-status {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--pb-border);
+}
+
+.deploy-badge {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: var(--pb-surface);
+  border-radius: 6px;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.deploy-badge.active {
+  opacity: 1;
+}
+
+.deploy-badge.new-app {
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.deploy-badge.new-app.active {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.deploy-badge.legacy-app {
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.deploy-badge.legacy-app.active {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.5);
+}
+
+.deploy-label {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pb-text-muted);
+}
+
+.deploy-status {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--pb-text-muted);
+}
+
+.deploy-status.testing {
+  color: #94a3b8;
+}
+
+.deploy-status.beta {
+  color: #fbbf24;
+}
+
+.deploy-status.live {
+  color: #10b981;
+}
+
+/* Compact mode legacy badge */
+.compact-status-badge.legacy {
+  background: rgba(6, 182, 212, 0.2);
+  border-left: 2px solid #06b6d4;
 }
 
 .card-header {
