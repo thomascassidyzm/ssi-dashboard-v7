@@ -3637,12 +3637,27 @@ app.get('/api/production/:courseCode/audio-pipeline/orphan-legos', async (req, r
 app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (req, res) => {
   const { courseCode } = req.params
   const { dryRun = false } = req.body
-  logger.info(`Fixing orphan LEGOs for ${courseCode} (dryRun: ${dryRun})`)
 
   try {
     const supabase = supabaseClient.getClient()
 
-    // Get all NEW LEGOs
+    // OPTIMIZATION: Quick count of new LEGOs first - most courses have none
+    const { count: newLegoCount, error: countError } = await supabase
+      .from('course_legos')
+      .select('*', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('is_new', true)
+
+    if (countError) throw countError
+
+    // Fast path: no new LEGOs means no orphans possible
+    if (!newLegoCount || newLegoCount === 0) {
+      return res.json({ success: true, addedCount: 0, message: 'No new LEGOs to check' })
+    }
+
+    logger.info(`Fixing orphan LEGOs for ${courseCode} (${newLegoCount} new LEGOs, dryRun: ${dryRun})`)
+
+    // Get all NEW LEGOs (we know there are some)
     const { data: legos, error: legosError } = await supabase
       .from('course_legos')
       .select('lego_id, seed_number, lego_index, known_text, target_text, type')
@@ -3651,11 +3666,13 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
 
     if (legosError) throw legosError
 
-    // Get all practice phrases
+    // Only get phrases for the seeds that have new LEGOs (much smaller query)
+    const seedNumbers = [...new Set(legos.map(l => l.seed_number))]
     const { data: phrases, error: phrasesError } = await supabase
       .from('course_practice_phrases')
       .select('seed_number, lego_index')
       .eq('course_code', courseCode)
+      .in('seed_number', seedNumbers)
 
     if (phrasesError) throw phrasesError
 

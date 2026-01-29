@@ -664,30 +664,12 @@ export const useProductionStore = defineStore('production', () => {
   async function startGeneration(courseCode, options = {}) {
     try {
       const baseUrl = getApiBaseUrl()
-      const headers = getApiHeaders()
-
-      // Fix orphan LEGOs before starting (creates debut phrases for LEGOs without any phrases)
-      // This ensures the audio plan includes all LEGOs that need audio
-      try {
-        const orphanRes = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/fix-orphan-legos`, {
-          method: 'POST',
-          headers: { ...headers, 'Content-Type': 'application/json' },
-          body: JSON.stringify({})
-        })
-        if (orphanRes.ok) {
-          const orphanData = await orphanRes.json()
-          if (orphanData.addedCount > 0) {
-            console.log(`[Production] Fixed ${orphanData.addedCount} orphan LEGOs before generation`)
-          }
-        }
-      } catch (orphanErr) {
-        console.warn('[Production] Could not fix orphan LEGOs:', orphanErr.message)
-        // Continue anyway - not critical for generation
-      }
+      // NOTE: Orphan LEGO fix removed - our methodology always creates debut phrases during course building
+      // Manual fix still available via: POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
 
       const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
         method: 'POST',
-        headers,
+        headers: getApiHeaders(),
         body: JSON.stringify({ approved: true, options })
       })
 
