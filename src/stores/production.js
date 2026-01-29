@@ -378,7 +378,7 @@ export const useProductionStore = defineStore('production', () => {
         courseInfo.value = {
           code: courseCode,
           displayName: courseCode.replace(/_/g, ' '),
-          status: 'draft'
+          status: 'testing'
         }
         return courseInfo.value
       }
@@ -393,7 +393,7 @@ export const useProductionStore = defineStore('production', () => {
       courseInfo.value = {
         code: courseCode,
         displayName: courseCode.replace(/_/g, ' '),
-        status: 'draft'
+        status: 'testing'
       }
       return courseInfo.value
     }

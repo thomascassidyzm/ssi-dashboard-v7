@@ -176,14 +176,19 @@ async function loadStats(courseCode) {
 
 // Available status options
 const availableStatuses = [
-  { value: 'draft', label: 'Draft', icon: '📝', colorClass: 'status-draft' },
+  { value: 'testing', label: 'Testing', icon: '🔬', colorClass: 'status-testing' },
   { value: 'beta', label: 'Beta', icon: '🧪', colorClass: 'status-beta' },
-  { value: 'released', label: 'Released', icon: '🚀', colorClass: 'status-released' }
+  { value: 'live', label: 'Live', icon: '🚀', colorClass: 'status-live' }
 ]
 
 // Current course status from store
+// Map legacy 'draft' to 'testing' and 'released' to 'live' for display
 const currentStatus = computed(() => {
-  return store.courseInfo?.status || 'draft'
+  const dbStatus = store.courseInfo?.status || 'testing'
+  // Backwards compatibility mapping
+  if (dbStatus === 'draft') return 'testing'
+  if (dbStatus === 'released') return 'live'
+  return dbStatus
 })
 
 // Handle status change
@@ -459,11 +464,11 @@ function launchLearningApp() {
   border-color: currentColor;
 }
 
-.status-btn.status-draft {
-  color: var(--color-paper-dim, #c1c1bb);
+.status-btn.status-testing {
+  color: #94a3b8;
 }
 
-.status-btn.status-draft.active {
+.status-btn.status-testing.active {
   background: rgba(148, 163, 184, 0.2);
   border-color: #94a3b8;
 }
@@ -477,11 +482,11 @@ function launchLearningApp() {
   border-color: #fbbf24;
 }
 
-.status-btn.status-released {
+.status-btn.status-live {
   color: #34d399;
 }
 
-.status-btn.status-released.active {
+.status-btn.status-live.active {
   background: rgba(52, 211, 153, 0.15);
   border-color: #34d399;
 }

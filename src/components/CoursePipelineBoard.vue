@@ -7,6 +7,32 @@
         <span class="course-count">{{ courses.length }} courses</span>
       </div>
       <div class="header-actions">
+        <!-- Not started indicator -->
+        <div v-if="notStartedCount > 0" class="not-started-indicator" title="Courses with no content yet (visible in search)">
+          <span class="indicator-dot"></span>
+          <span>{{ notStartedCount }} not started</span>
+        </div>
+
+        <!-- Compact mode toggle -->
+        <button
+          class="compact-toggle"
+          :class="{ active: compactMode }"
+          @click="compactMode = !compactMode"
+          title="Toggle compact view"
+        >
+          <svg v-if="!compactMode" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+          </svg>
+          <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
         <!-- Hidden courses toggle -->
         <button
           v-if="hiddenCourses.length > 0"
@@ -66,108 +92,128 @@
               v-for="course in lane.courses"
               :key="course.code"
               class="course-card"
-              :class="{ active: activeCourse === course.code, hidden: isHidden(course.code) }"
+              :class="{
+                active: activeCourse === course.code,
+                hidden: isHidden(course.code),
+                compact: compactMode
+              }"
               @click="handleCourseClick(course)"
               @mouseenter="activeCourse = course.code"
               @mouseleave="activeCourse = null"
             >
-              <!-- Card Header -->
-              <div class="card-header">
-                <div class="card-title">
-                  <span class="card-language">{{ getTargetLanguage(course.code) }}</span>
-                  <span class="card-arrow">for</span>
-                  <span class="card-speakers">{{ getKnownLanguage(course.code) }}</span>
-                </div>
-                <div class="card-header-row">
-                  <span class="card-code">{{ course.code }}</span>
-                  <button
-                    v-if="!isHidden(course.code)"
-                    class="hide-btn"
-                    @click.stop="hideCourse(course.code)"
-                    title="Hide this course"
+              <!-- Compact Mode: Just the name -->
+              <template v-if="compactMode">
+                <div class="compact-content">
+                  <span class="compact-language">{{ getTargetLanguage(course.code) }}</span>
+                  <span class="compact-for">for</span>
+                  <span class="compact-speakers">{{ getKnownLanguage(course.code) }}</span>
+                  <!-- App status badge in compact mode -->
+                  <span
+                    v-if="lane.isAppColumn && course.appStatus"
+                    class="compact-status-badge"
+                    :class="course.appStatus"
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M18 6 6 18M6 6l12 12"/>
-                    </svg>
-                  </button>
-                  <button
-                    v-else
-                    class="unhide-btn"
-                    @click.stop="unhideCourse(course.code)"
-                    title="Show this course"
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                    {{ course.appStatus }}
+                  </span>
                 </div>
-              </div>
+              </template>
 
-              <!-- Progress Ring -->
-              <div class="card-progress">
-                <svg class="progress-ring" viewBox="0 0 36 36">
-                  <circle
-                    class="ring-bg"
-                    cx="18" cy="18" r="15.5"
-                    fill="none"
-                    stroke-width="3"
-                  />
-                  <circle
-                    class="ring-fill"
-                    :style="{
-                      stroke: lane.color,
-                      strokeDasharray: `${getProgress(course)} 100`
-                    }"
-                    cx="18" cy="18" r="15.5"
-                    fill="none"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                <div class="progress-value">
-                  <span class="progress-number">{{ getCompletedSeeds(course) }}</span>
-                  <span class="progress-label">seeds</span>
+              <!-- Full Card Mode -->
+              <template v-else>
+                <!-- Card Header -->
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="card-language">{{ getTargetLanguage(course.code) }}</span>
+                    <span class="card-arrow">for</span>
+                    <span class="card-speakers">{{ getKnownLanguage(course.code) }}</span>
+                  </div>
+                  <div class="card-header-row">
+                    <span class="card-code">{{ course.code }}</span>
+                    <!-- App Status Badge -->
+                    <span
+                      v-if="lane.isAppColumn && course.appStatus"
+                      class="app-status-badge"
+                      :class="course.appStatus"
+                    >
+                      {{ course.appStatus }}
+                    </span>
+                    <button
+                      v-if="!isHidden(course.code)"
+                      class="hide-btn"
+                      @click.stop="hideCourse(course.code)"
+                      title="Hide this course"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6 6 18M6 6l12 12"/>
+                      </svg>
+                    </button>
+                    <button
+                      v-else
+                      class="unhide-btn"
+                      @click.stop="unhideCourse(course.code)"
+                      title="Show this course"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Card Stats -->
-              <div class="card-stats">
-                <div class="stat">
-                  <span class="stat-value">{{ formatNumber(course.stats?.legos || 0) }}</span>
-                  <span class="stat-label">LEGOs</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-value">{{ formatNumber(course.stats?.phrases || 0) }}</span>
-                  <span class="stat-label">Phrases</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-value">{{ formatNumber(course.stats?.audio || 0) }}</span>
-                  <span class="stat-label">Audio</span>
-                </div>
-              </div>
-
-              <!-- Card Action -->
-              <div class="card-action" v-if="lane.action">
-                <button class="action-btn" :style="{ background: lane.color + '20', color: lane.color }" @click.stop="handleAction(course, lane.action)">
-                  {{ lane.action.label }}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                <!-- Progress Ring -->
+                <div class="card-progress">
+                  <svg class="progress-ring" viewBox="0 0 36 36">
+                    <circle
+                      class="ring-bg"
+                      cx="18" cy="18" r="15.5"
+                      fill="none"
+                      stroke-width="3"
+                    />
+                    <circle
+                      class="ring-fill"
+                      :style="{
+                        stroke: lane.color,
+                        strokeDasharray: `${getProgress(course)} 100`
+                      }"
+                      cx="18" cy="18" r="15.5"
+                      fill="none"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    />
                   </svg>
-                </button>
-              </div>
+                  <div class="progress-value">
+                    <span class="progress-number">{{ getCompletedSeeds(course) }}</span>
+                    <span class="progress-label">seeds</span>
+                  </div>
+                </div>
 
-              <!-- Deployment Status -->
-              <div class="card-deploy" v-if="lane.key === 'ready' || lane.key === 'live'">
-                <div class="deploy-item" :class="{ active: course.newAppStatus === 'beta' || course.newAppStatus === 'live' }">
-                  <span class="deploy-dot"></span>
-                  <span class="deploy-label">Beta</span>
+                <!-- Card Stats -->
+                <div class="card-stats">
+                  <div class="stat">
+                    <span class="stat-value">{{ formatNumber(course.stats?.legos || 0) }}</span>
+                    <span class="stat-label">LEGOs</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">{{ formatNumber(course.stats?.phrases || 0) }}</span>
+                    <span class="stat-label">Phrases</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">{{ formatNumber(course.stats?.audio || 0) }}</span>
+                    <span class="stat-label">Audio</span>
+                  </div>
                 </div>
-                <div class="deploy-item" :class="{ active: course.legacyAppStatus === 'live' }">
-                  <span class="deploy-dot"></span>
-                  <span class="deploy-label">Live</span>
+
+                <!-- Card Action -->
+                <div class="card-action" v-if="lane.action">
+                  <button class="action-btn" :style="{ background: lane.color + '20', color: lane.color }" @click.stop="handleAction(course, lane.action)">
+                    {{ lane.action.label }}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
                 </div>
-              </div>
+              </template>
             </div>
           </TransitionGroup>
         </div>
@@ -232,6 +278,15 @@ const searchQuery = ref('')
 const searchFocused = ref(false)
 const activeCourse = ref(null)
 const showHidden = ref(false)
+const compactMode = ref(false)
+
+// Count of not-started courses (shown in header, not in lanes)
+const notStartedCount = computed(() => {
+  return props.courses.filter(c => {
+    const status = getBuildStatus(c)
+    return status === 'not_started' && !isHidden(c.code)
+  }).length
+})
 
 // Hidden courses - persisted in localStorage
 const HIDDEN_STORAGE_KEY = 'ssi-pipeline-hidden-courses'
@@ -354,14 +409,6 @@ const pipelineLanes = computed(() => {
 
   const lanes = [
     {
-      key: 'not_started',
-      title: 'Not Started',
-      description: 'Awaiting content creation',
-      color: '#64748b',
-      emptyText: 'All courses have begun',
-      courses: []
-    },
-    {
       key: 'building',
       title: 'Building',
       description: 'Seeds being decomposed',
@@ -391,46 +438,78 @@ const pipelineLanes = computed(() => {
     {
       key: 'ready',
       title: 'Ready',
-      description: 'Deploy to Beta or Live',
+      description: 'Content complete, ready for apps',
       color: '#10b981',
       emptyText: 'None ready to deploy',
       action: { label: 'Deploy', type: 'deploy' },
       courses: []
     },
     {
-      key: 'live',
-      title: 'Live',
-      description: 'In production',
+      key: 'new_app',
+      title: 'New App',
+      description: 'ssi-learning-app deployment',
+      color: '#3b82f6',
+      emptyText: 'None deployed',
+      isAppColumn: true,
+      courses: []
+    },
+    {
+      key: 'legacy_app',
+      title: 'Legacy App',
+      description: 'Original SSi app deployment',
       color: '#06b6d4',
-      emptyText: 'None deployed yet',
+      emptyText: 'None deployed',
+      isAppColumn: true,
       courses: []
     }
   ]
 
   courses.forEach(course => {
     const status = getBuildStatus(course)
-    const newApp = course.newAppStatus || 'not_available'
+    // Normalize status values (backwards compatibility: draft→testing, released→live)
+    let newAppStatus = course.newAppStatus || 'not_available'
+    let legacyAppStatus = course.legacyAppStatus || 'not_available'
+    if (newAppStatus === 'draft') newAppStatus = 'testing'
+    if (newAppStatus === 'released') newAppStatus = 'live'
+    if (legacyAppStatus === 'draft') legacyAppStatus = 'testing'
+    if (legacyAppStatus === 'released') legacyAppStatus = 'live'
 
-    if (status === 'not_started') {
-      lanes[0].courses.push(course)
-    } else if (status === 'building') {
-      lanes[1].courses.push(course)
-    } else if (status === 'needs_audio') {
-      lanes[2].courses.push(course)
-    } else if (status === 'needs_export') {
-      lanes[3].courses.push(course)
-    } else if (status === 'ready') {
-      if (newApp === 'beta' || newApp === 'live') {
-        lanes[5].courses.push(course)
-      } else {
-        lanes[4].courses.push(course)
+    // App columns are for courses explicitly deployed there (manual placement)
+    // A course can appear in BOTH app columns if deployed to both
+    const inNewApp = newAppStatus === 'testing' || newAppStatus === 'beta' || newAppStatus === 'live'
+    const inLegacyApp = legacyAppStatus === 'testing' || legacyAppStatus === 'beta' || legacyAppStatus === 'live'
+
+    if (inNewApp) {
+      lanes[4].courses.push({ ...course, appStatus: newAppStatus, originalStatus: course.newAppStatus })
+    }
+    if (inLegacyApp) {
+      lanes[5].courses.push({ ...course, appStatus: legacyAppStatus, originalStatus: course.legacyAppStatus })
+    }
+
+    // Only show in pipeline columns if NOT deployed to any app yet
+    // (or if status is not_started, skip entirely - they'll show in search)
+    if (!inNewApp && !inLegacyApp && status !== 'not_started') {
+      if (status === 'building') {
+        lanes[0].courses.push(course)
+      } else if (status === 'needs_audio') {
+        lanes[1].courses.push(course)
+      } else if (status === 'needs_export') {
+        lanes[2].courses.push(course)
+      } else if (status === 'ready') {
+        lanes[3].courses.push(course)
       }
     }
   })
 
   // Sort by progress within each lane
   lanes.forEach(lane => {
-    lane.courses.sort((a, b) => getCompletedSeeds(b) - getCompletedSeeds(a))
+    if (lane.isAppColumn) {
+      // Sort app columns by status: live > beta > testing
+      const statusOrder = { live: 0, beta: 1, testing: 2 }
+      lane.courses.sort((a, b) => (statusOrder[a.appStatus] || 3) - (statusOrder[b.appStatus] || 3))
+    } else {
+      lane.courses.sort((a, b) => getCompletedSeeds(b) - getCompletedSeeds(a))
+    }
   })
 
   return lanes
@@ -522,6 +601,12 @@ function handleAction(course, action) {
   font-weight: 500;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Hidden toggle button */
 .hidden-toggle {
   display: flex;
@@ -548,6 +633,53 @@ function handleAction(course, action) {
   background: rgba(139, 92, 246, 0.15);
   border-color: #8b5cf6;
   color: #8b5cf6;
+}
+
+/* Not started indicator */
+.not-started-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--pb-surface);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pb-text-muted);
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  background: #64748b;
+  border-radius: 50%;
+}
+
+/* Compact mode toggle */
+.compact-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--pb-surface);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--pb-text-muted);
+  transition: all 0.2s;
+}
+
+.compact-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--pb-text-dim);
+}
+
+.compact-toggle.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+  color: #3b82f6;
 }
 
 .search-box {
@@ -702,6 +834,86 @@ function handleAction(course, action) {
 .course-card.hidden {
   opacity: 0.5;
   border-style: dashed;
+}
+
+/* Compact Card Mode */
+.course-card.compact {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-content {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.compact-language {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--pb-text);
+}
+
+.compact-for {
+  font-size: 0.625rem;
+  color: var(--pb-text-muted);
+  font-style: italic;
+}
+
+.compact-speakers {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pb-text-dim);
+}
+
+.compact-status-badge {
+  margin-left: auto;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+}
+
+.compact-status-badge.testing {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
+
+.compact-status-badge.beta {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.compact-status-badge.live {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+/* App Status Badge (full card mode) */
+.app-status-badge {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 4px;
+}
+
+.app-status-badge.testing {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
+
+.app-status-badge.beta {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.app-status-badge.live {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
 }
 
 .card-header {
