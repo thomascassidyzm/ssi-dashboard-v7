@@ -326,18 +326,32 @@ const filteredCourses = computed(() => {
 
 // Courses with full status info for CourseStatusTable
 const coursesWithStatus = computed(() => {
-  return courses.value.map(c => ({
-    code: c.code,
-    name: c.name,
-    newAppStatus: c.new_app_status || 'not_available',
-    legacyAppStatus: c.legacy_app_status || 'not_available',
-    newAppBetaDays: c.new_app_beta_days || null,
-    legacyAppBetaDays: c.legacy_app_beta_days || null,
-    contentStatus: c.content_status || null,
-    exportReady: c.export_ready || false,
-    targetSeeds: c.stats?.seed_count || 260,
-    stats: c.stats || {}
-  }))
+  return courses.value.map(c => {
+    // New App status: use new_app_status if set, otherwise fall back to general status
+    // (Overview page sets 'status', which represents the course's New App deployment)
+    let newAppStatus = c.new_app_status || c.status || 'not_available'
+    // Normalize: draft→testing, released→live
+    if (newAppStatus === 'draft') newAppStatus = 'testing'
+    if (newAppStatus === 'released') newAppStatus = 'live'
+
+    // Legacy app status is separate (manually set via pipeline board)
+    let legacyAppStatus = c.legacy_app_status || 'not_available'
+    if (legacyAppStatus === 'draft') legacyAppStatus = 'testing'
+    if (legacyAppStatus === 'released') legacyAppStatus = 'live'
+
+    return {
+      code: c.code,
+      name: c.name,
+      newAppStatus,
+      legacyAppStatus,
+      newAppBetaDays: c.new_app_beta_days || null,
+      legacyAppBetaDays: c.legacy_app_beta_days || null,
+      contentStatus: c.content_status || null,
+      exportReady: c.export_ready || false,
+      targetSeeds: c.stats?.seed_count || 260,
+      stats: c.stats || {}
+    }
+  })
 })
 
 // Dropdown functions
@@ -418,7 +432,9 @@ async function loadCourseCount() {
     courses.value = courseList.map(c => ({
       code: c.code || c.course_code || c.id,
       name: c.display_name || getCourseName(c.code || c.course_code || c.id),
-      // Platform status fields
+      // General status (set by Overview page - represents New App deployment)
+      status: c.status,
+      // Platform status fields (explicit overrides)
       new_app_status: c.new_app_status,
       legacy_app_status: c.legacy_app_status,
       new_app_beta_days: c.new_app_beta_days,
