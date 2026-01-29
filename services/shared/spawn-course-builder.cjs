@@ -536,13 +536,17 @@ Options:
   --course <code>       Course code (e.g., zho_for_eng)
   --seeds <n>           Number of seeds to build (default: 30)
   --terminal <type>     Terminal to use: iterm or terminal (default: iterm)
-  --model <name>        Claude model (default: opus)
+  --model <name>        Claude model for builder (default: opus)
   --known <lang>        Known language name (e.g., English)
   --target <lang>       Target language name (e.g., Chinese)
+  --with-monitor        Also spawn Haiku phrase monitor (in second tab)
 
 Examples:
   # Build Chinese course in iTerm2
   node spawn-course-builder.cjs --course zho_for_eng --seeds 30 --terminal iterm
+
+  # Build with QA monitor (Opus in tab 1, Haiku in tab 2)
+  node spawn-course-builder.cjs --course zho_for_eng --seeds 30 --with-monitor
 
   # Build French course in Terminal.app (second Pro Max account)
   node spawn-course-builder.cjs --course fra_for_eng --seeds 260 --terminal terminal
@@ -557,28 +561,227 @@ Examples:
   const model = getArg('--model') || 'opus';
   const knownLang = getArg('--known');
   const targetLang = getArg('--target');
+  const withMonitor = args.includes('--with-monitor');
 
   if (!courseCode) {
     console.error('Error: --course required');
     process.exit(1);
   }
 
-  spawnCourseBuilder({
+  const options = {
     courseCode,
     seedCount,
     terminal,
     model,
     knownLang,
     targetLang
-  })
-    .then(() => console.log('\n✓ Course Builder agent spawned'))
+  };
+
+  const spawnFn = withMonitor ? spawnBuildWithMonitor : spawnCourseBuilder;
+  const successMsg = withMonitor
+    ? '\n✓ Course Builder (Opus) + Phrase Monitor (Haiku) spawned'
+    : '\n✓ Course Builder agent spawned';
+
+  spawnFn(options)
+    .then(() => console.log(successMsg))
     .catch(err => {
       console.error('Error:', err.message);
       process.exit(1);
     });
 }
 
+/**
+ * Generate the Phrase Monitor brief for Haiku QA agent
+ */
+function generatePhraseMonitorBrief(options) {
+  const {
+    courseCode,
+    builderApiUrl = COURSE_BUILDER_API
+  } = options;
+
+  return `# Phrase Monitor - Language Quality Watchdog
+
+You are a QA monitor running alongside the Course Builder. Your PRIMARY job is to assess **grammar quality in BOTH languages** for every phrase.
+
+## Course: ${courseCode}
+
+## Your Role
+
+You do NOT block the build. You observe and flag issues. Humans review at checkpoints.
+
+---
+
+## PRIMARY TASK: Check Every Phrase
+
+Poll for unchecked phrases and assess each one:
+
+\`\`\`bash
+# Get unchecked phrases
+curl -s "${builderApiUrl}/api/qa/unchecked/${courseCode}?limit=50"
+\`\`\`
+
+### For Each Phrase, Assess:
+
+1. **Known Language Grammar** - Is the English correct and natural?
+2. **Target Language Grammar** - Is the translation grammatically correct?
+3. **Semantic Match** - Does the target actually mean what the known says?
+4. **Naturalness** - Would a native speaker say this?
+
+### Flag Any Issues Found:
+
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/qa/flag" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "course_code": "${courseCode}",
+    "phrase_id": "uuid-here",
+    "check_type": "grammar",
+    "severity": "warning",
+    "issue": "Brief description of the problem",
+    "details": {
+      "known_text": "the phrase",
+      "target_text": "the translation",
+      "suggestion": "what it should be"
+    }
+  }'
+\`\`\`
+
+### Check Types:
+- \`grammar\` - Grammar error in either language
+- \`semantic\` - Translation meaning is wrong
+- \`naturalness\` - Sounds weird even if grammatically ok
+- \`vocabulary\` - Uses words not yet introduced
+
+### Severity:
+- \`error\` - Definitely wrong, must fix
+- \`warning\` - Probably wrong, should review
+- \`info\` - Noticed something, optional review
+
+### After Checking, Mark as Checked:
+
+\`\`\`bash
+curl -X POST "${builderApiUrl}/api/qa/mark-checked" \\
+  -H "Content-Type: application/json" \\
+  -d '{"phrase_ids": ["uuid1", "uuid2", ...]}'
+\`\`\`
+
+---
+
+## SECONDARY: Run Statistical Analysis
+
+Periodically run the tally script:
+
+\`\`\`bash
+node services/phrase-monitor.cjs --course ${courseCode} --analyze
+\`\`\`
+
+This flags statistical patterns like workhorse LEGOs or repetitive structures.
+
+---
+
+## Monitoring Loop
+
+\`\`\`
+WHILE build is running:
+  1. Poll for unchecked phrases (every 30s)
+  2. For each phrase:
+     - Assess grammar in BOTH languages
+     - Assess semantic accuracy
+     - Assess naturalness
+     - Flag any issues
+  3. Mark phrases as checked
+  4. Every 5 minutes, run statistical analysis
+\`\`\`
+
+---
+
+## CRITICAL: AUTONOMOUS OPERATION
+
+You are running UNATTENDED alongside the build agent.
+
+**FORBIDDEN:**
+- "Shall I continue?"
+- "Would you like me to..."
+- Any question asking for permission
+
+**REQUIRED:**
+- Keep polling for new phrases
+- Keep checking and flagging
+- Run until no more unchecked phrases appear for 5 minutes after build completes
+
+---
+
+**BEGIN:** Start polling for unchecked phrases and assess each one.
+`;
+}
+
+/**
+ * Spawn Phrase Monitor agent (Haiku)
+ * @param {number} agentId - Agent ID for window/tab management (default: 2 since builder is 1)
+ */
+async function spawnPhraseMonitor(options, agentId = 2) {
+  const {
+    courseCode,
+    terminal = 'iterm',
+    workingDir = DASHBOARD_ROOT
+  } = options;
+
+  console.log(`\n👁️  Spawning Phrase Monitor Agent (Haiku)`);
+  console.log(`   Course: ${courseCode}`);
+  console.log(`   Terminal: ${terminal}`);
+  console.log(`   Model: haiku`);
+
+  const brief = generatePhraseMonitorBrief({ courseCode });
+
+  // Save brief for reference
+  const briefPath = path.join(workingDir, 'temp', `phrase-monitor-brief-${courseCode}.md`);
+  await fs.ensureDir(path.dirname(briefPath));
+  await fs.writeFile(briefPath, brief, 'utf8');
+  console.log(`   Brief saved: ${briefPath}`);
+
+  // Use same terminal as builder - agentId 2 creates a new tab
+  if (terminal === 'terminal') {
+    return await spawnClaudeTerminalAgent(brief, agentId, {
+      model: 'haiku',
+      workingDir,
+      skipPermissions: true
+    });
+  } else {
+    return await spawnClaudeCliAgent(brief, agentId, {
+      model: 'haiku',
+      workingDir,
+      skipPermissions: true
+    });
+  }
+}
+
+/**
+ * Spawn both Course Builder (Opus) and Phrase Monitor (Haiku)
+ * Builder opens in new window (agent 1), Monitor opens in new tab (agent 2)
+ */
+async function spawnBuildWithMonitor(options) {
+  const { courseCode, terminal = 'iterm' } = options;
+
+  console.log(`\n🚀 Spawning Course Builder + Phrase Monitor`);
+  console.log(`   Terminal: ${terminal === 'iterm' ? 'iTerm2' : 'Terminal.app'}`);
+  console.log(`   Builder (Opus): Window 1`);
+  console.log(`   Monitor (Haiku): Tab 2`);
+
+  // Spawn builder first (creates window), then monitor (creates tab)
+  const builderResult = await spawnCourseBuilder(options);
+
+  // Small delay to let the window open
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  const monitorResult = await spawnPhraseMonitor(options, 2);
+
+  return { builder: builderResult, monitor: monitorResult };
+}
+
 module.exports = {
   spawnCourseBuilder,
-  generateCourseBuilderBrief
+  generateCourseBuilderBrief,
+  spawnPhraseMonitor,
+  generatePhraseMonitorBrief,
+  spawnBuildWithMonitor
 };

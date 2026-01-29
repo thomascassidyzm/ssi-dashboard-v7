@@ -33,7 +33,7 @@ const { getModeConfig, getPatternForSeeds, SEED_COUNTS, MODES, getAllModes, getM
 const courseDataService = require('../course-data-service.cjs');
 
 // Course Builder spawner (for single-agent sequential course building)
-const { spawnCourseBuilder } = require('../shared/spawn-course-builder.cjs');
+const { spawnCourseBuilder, spawnPhraseMonitor } = require('../shared/spawn-course-builder.cjs');
 
 // Load .env file for AWS credentials etc.
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
@@ -4219,6 +4219,22 @@ app.post('/api/courses/generate', async (req, res) => {
           workingDir: path.join(__dirname, '../..')
         });
 
+        // Also spawn Haiku phrase monitor in a second tab
+        console.log(`[Orchestrator] Spawning Phrase Monitor (Haiku) for ${builderCourseCode}...`);
+        let monitorResult = null;
+        try {
+          await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for builder window
+          monitorResult = await spawnPhraseMonitor({
+            courseCode: builderCourseCode,
+            terminal: terminalType,
+            workingDir: path.join(__dirname, '../..')
+          }, 2); // Agent ID 2 = new tab
+          console.log(`[Orchestrator] Phrase Monitor spawned for ${builderCourseCode}`);
+        } catch (monitorErr) {
+          console.warn(`[Orchestrator] Failed to spawn Phrase Monitor: ${monitorErr.message}`);
+          // Don't fail the whole request - builder is more important
+        }
+
         return res.json({
           success: true,
           mode: 'course-builder',
@@ -4228,7 +4244,8 @@ app.post('/api/courses/generate', async (req, res) => {
           model,
           builderApiUrl,
           spawnResult,
-          message: `Course Builder agent spawned in ${terminalType === 'iterm' ? 'iTerm2' : 'Terminal.app'} for ${builderCourseCode}.`,
+          monitorResult,
+          message: `Course Builder + Phrase Monitor spawned in ${terminalType === 'iterm' ? 'iTerm2' : 'Terminal.app'} for ${builderCourseCode}.`,
           statusUrl: `${builderApiUrl}/api/stats/${builderCourseCode}`
         });
       } catch (spawnErr) {

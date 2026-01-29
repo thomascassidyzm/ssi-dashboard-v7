@@ -1676,6 +1676,247 @@ async function insertRecordingProvenance(provenance) {
 }
 
 // =============================================================================
+// COURSE QA FLAGS (Phrase Monitor)
+// =============================================================================
+
+/**
+ * Get QA flags for a course
+ * @param {string} courseCode
+ * @param {Object} filters - Optional filters
+ * @param {string} filters.status - Filter by status (open, resolved, ignored)
+ * @param {string} filters.severity - Filter by severity (error, warning, info)
+ * @param {string} filters.checkType - Filter by check type
+ * @returns {Promise<Array>}
+ */
+async function getQAFlags(courseCode, filters = {}) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  let query = supabase
+    .from('course_qa_flags')
+    .select('*')
+    .eq('course_code', courseCode)
+    .order('flagged_at', { ascending: false })
+
+  if (filters.status) {
+    query = query.eq('status', filters.status)
+  }
+  if (filters.severity) {
+    query = query.eq('severity', filters.severity)
+  }
+  if (filters.checkType) {
+    query = query.eq('check_type', filters.checkType)
+  }
+
+  const { data, error } = await query
+
+  if (error) {
+    if (error.code === '42P01') {
+      // Table doesn't exist yet
+      return []
+    }
+    throw error
+  }
+  return data || []
+}
+
+/**
+ * Insert a QA flag
+ * @param {Object} flag
+ * @returns {Promise<Object>}
+ */
+async function insertQAFlag(flag) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('course_qa_flags')
+    .insert({
+      course_code: flag.courseCode,
+      phrase_id: flag.phraseId || null,
+      seed_number: flag.seedNumber || null,
+      lego_id: flag.legoId || null,
+      check_type: flag.checkType,
+      severity: flag.severity || 'warning',
+      issue: flag.issue,
+      details: flag.details || {}
+    })
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Resolve a QA flag
+ * @param {string} flagId
+ * @param {string} resolvedBy
+ * @param {string} notes
+ * @returns {Promise<Object>}
+ */
+async function resolveQAFlag(flagId, resolvedBy, notes = '') {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('course_qa_flags')
+    .update({
+      status: 'resolved',
+      resolved_at: new Date().toISOString(),
+      resolved_by: resolvedBy,
+      resolution_notes: notes
+    })
+    .eq('id', flagId)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Mark a QA flag as false positive
+ * @param {string} flagId
+ * @param {string} resolvedBy
+ * @param {string} notes
+ * @returns {Promise<Object>}
+ */
+async function markQAFlagFalsePositive(flagId, resolvedBy, notes = '') {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('course_qa_flags')
+    .update({
+      status: 'false_positive',
+      resolved_at: new Date().toISOString(),
+      resolved_by: resolvedBy,
+      resolution_notes: notes
+    })
+    .eq('id', flagId)
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
+
+/**
+ * Get QA summary for a course
+ * @param {string} courseCode
+ * @returns {Promise<Object>}
+ */
+async function getQASummary(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .rpc('get_qa_summary', { p_course_code: courseCode })
+
+  if (error) {
+    if (error.code === '42883') {
+      // Function doesn't exist - return empty summary
+      return { total_flags: 0, error_count: 0, warning_count: 0, info_count: 0, open_count: 0, resolved_count: 0 }
+    }
+    throw error
+  }
+
+  return data?.[0] || { total_flags: 0, error_count: 0, warning_count: 0, info_count: 0, open_count: 0, resolved_count: 0 }
+}
+
+/**
+ * Get QA flags grouped by type
+ * @param {string} courseCode
+ * @returns {Promise<Array>}
+ */
+async function getQAFlagsByType(courseCode) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .rpc('get_qa_flags_by_type', { p_course_code: courseCode })
+
+  if (error) {
+    if (error.code === '42883') {
+      // Function doesn't exist
+      return []
+    }
+    throw error
+  }
+
+  return data || []
+}
+
+/**
+ * Bulk resolve QA flags
+ * @param {Array<string>} flagIds
+ * @param {string} resolvedBy
+ * @returns {Promise<number>}
+ */
+async function bulkResolveQAFlags(flagIds, resolvedBy) {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!flagIds || flagIds.length === 0) return 0
+
+  const { data, error } = await supabase
+    .from('course_qa_flags')
+    .update({
+      status: 'resolved',
+      resolved_at: new Date().toISOString(),
+      resolved_by: resolvedBy
+    })
+    .in('id', flagIds)
+    .select()
+
+  if (error) throw error
+  return data?.length || 0
+}
+
+/**
+ * Get unchecked phrases for monitor
+ * @param {string} courseCode
+ * @param {number} limit
+ * @returns {Promise<Array>}
+ */
+async function getUncheckedPhrases(courseCode, limit = 50) {
+  if (!supabase) throw new Error('Supabase not initialized')
+
+  const { data, error } = await supabase
+    .from('course_practice_phrases')
+    .select('id, course_code, seed_number, lego_id, known_text, target_text, phrase_role, created_at')
+    .eq('course_code', courseCode)
+    .is('qa_checked', null)
+    .order('created_at', { ascending: true })
+    .limit(limit)
+
+  if (error) {
+    // qa_checked column might not exist
+    if (error.code === '42703') {
+      return []
+    }
+    throw error
+  }
+  return data || []
+}
+
+/**
+ * Mark phrases as QA checked
+ * @param {Array<string>} phraseIds
+ * @returns {Promise<void>}
+ */
+async function markPhrasesChecked(phraseIds) {
+  if (!supabase) throw new Error('Supabase not initialized')
+  if (!phraseIds || phraseIds.length === 0) return
+
+  const { error } = await supabase
+    .from('course_practice_phrases')
+    .update({ qa_checked: new Date().toISOString() })
+    .in('id', phraseIds)
+
+  if (error) {
+    // qa_checked column might not exist
+    if (error.code === '42703') {
+      return
+    }
+    throw error
+  }
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -1750,5 +1991,16 @@ module.exports = {
   getDocumentation,
   getDocumentationList,
   upsertDocumentation,
-  upsertDocumentationSection
+  upsertDocumentationSection,
+
+  // Course QA flags (Phrase Monitor)
+  getQAFlags,
+  insertQAFlag,
+  resolveQAFlag,
+  markQAFlagFalsePositive,
+  getQASummary,
+  getQAFlagsByType,
+  bulkResolveQAFlags,
+  getUncheckedPhrases,
+  markPhrasesChecked
 }

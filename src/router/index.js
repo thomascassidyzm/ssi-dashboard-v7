@@ -385,6 +385,13 @@ const routes = [
         meta: { title: 'Text Generation - Production Suite' }
       },
       {
+        path: 'phrase-qa',
+        name: 'PhraseQA',
+        component: () => import('../views/production/PhraseQA.vue'),
+        props: true,
+        meta: { title: 'Phrase QA - Production Suite' }
+      },
+      {
         path: 'pipeline',
         name: 'AudioPipelineProduction',
         component: AudioPipeline,

@@ -15,6 +15,13 @@
       Text
     </router-link>
     <router-link
+      :to="`/production/${courseCode}/phrase-qa`"
+      class="nav-item"
+      :class="{ active: isActive('PhraseQA') }"
+    >
+      Phrase QA
+    </router-link>
+    <router-link
       :to="`/production/${courseCode}/pipeline`"
       class="nav-item"
       :class="{ active: isActive('AudioPipelineProduction') }"
@@ -22,18 +29,18 @@
       Audio
     </router-link>
     <router-link
+      :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
+      class="nav-item"
+      :class="{ active: isActive('ScriptViewer') && route.query.filter === 'flagged' }"
+    >
+      Audio QA
+    </router-link>
+    <router-link
       :to="`/production/${courseCode}/recording`"
       class="nav-item"
       :class="{ active: isActive('AutocueStudioCourse') }"
     >
       Recording
-    </router-link>
-    <router-link
-      :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
-      class="nav-item"
-      :class="{ active: isActive('ScriptViewer') && route.query.filter === 'flagged' }"
-    >
-      QA
     </router-link>
   </nav>
 </template>
