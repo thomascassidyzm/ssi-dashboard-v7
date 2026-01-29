@@ -1084,28 +1084,50 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
 
 // Update course status
 // Used by Production Suite to mark courses as draft, beta, or released
+// UI sends: testing, beta, live → mapped to DB: draft, beta, released
 app.post('/api/production/:courseCode/status', async (req, res) => {
   const { courseCode } = req.params
-  const { status } = req.body
+  const { status: uiStatus } = req.body
 
   try {
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    if (!status) {
+    if (!uiStatus) {
       return res.status(400).json({ error: 'Status is required' })
     }
 
-    const validStatuses = ['draft', 'beta', 'released']
-    if (!validStatuses.includes(status)) {
+    // Map UI status to database status
+    // UI uses: testing, beta, live (user-friendly)
+    // DB uses: draft, beta, released (canonical)
+    const statusMap = {
+      'testing': 'draft',
+      'beta': 'beta',
+      'live': 'released',
+      // Also accept DB values directly for backwards compatibility
+      'draft': 'draft',
+      'released': 'released'
+    }
+
+    const dbStatus = statusMap[uiStatus]
+    if (!dbStatus) {
       return res.status(400).json({
-        error: `Invalid status: ${status}. Must be one of: ${validStatuses.join(', ')}`
+        error: `Invalid status: ${uiStatus}. Must be one of: testing, beta, live`
       })
     }
 
-    const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, status)
-    logger.info(`Updated ${courseCode} status to ${status}`)
+    // Map to new_app_status for learning app
+    // not_available = not deployed, draft = testing, beta = beta, released = live
+    const appStatusMap = {
+      'draft': 'draft',
+      'beta': 'beta',
+      'released': 'released'
+    }
+    const newAppStatus = appStatusMap[dbStatus]
+
+    const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, dbStatus, newAppStatus)
+    logger.info(`Updated ${courseCode} status to ${dbStatus} (new_app_status: ${newAppStatus})`)
 
     // Emit WebSocket event for real-time UI updates
     io.emit('course:statusChanged', {
@@ -3666,13 +3688,16 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
 
     // Create debut phrases for orphan LEGOs
     // Position 0 is the debut phrase (shows the LEGO itself)
+    // word_count is required by database schema - count words in target_text
     const debutPhrases = orphanLegos.map(lego => ({
       course_code: courseCode,
       seed_number: lego.seed_number,
       lego_index: lego.lego_index,
       position: 0,
       known_text: lego.known_text,
-      target_text: lego.target_text
+      target_text: lego.target_text,
+      word_count: (lego.target_text || '').split(/\s+/).filter(w => w.length > 0).length || 1,
+      is_debut: true
     }))
 
     const { error: insertError } = await supabase

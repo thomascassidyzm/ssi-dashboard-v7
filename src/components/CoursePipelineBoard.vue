@@ -49,6 +49,19 @@
           <span>{{ hiddenCourses.length }} hidden</span>
         </button>
 
+        <!-- Sort selector -->
+        <div class="sort-selector">
+          <select v-model="sortBy" class="sort-select">
+            <option value="alpha">A-Z</option>
+            <option value="progress">Progress</option>
+            <option value="seeds">Seeds</option>
+            <option value="audio">Audio</option>
+          </select>
+          <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+
         <div class="search-box" :class="{ focused: searchFocused }">
           <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="11" cy="11" r="8"/>
@@ -306,7 +319,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
@@ -328,6 +341,15 @@ const searchFocused = ref(false)
 const activeCourse = ref(null)
 const showHidden = ref(false)
 const compactMode = ref(false)
+// Sort preference - persisted in localStorage
+const SORT_STORAGE_KEY = 'ssi-pipeline-sort'
+const sortBy = ref(localStorage.getItem(SORT_STORAGE_KEY) || 'alpha')  // Default to alphabetical
+
+// Persist sort preference when changed
+watch(sortBy, (newValue) => {
+  localStorage.setItem(SORT_STORAGE_KEY, newValue)
+})
+
 const toastMessage = ref('')
 const toastVisible = ref(false)
 
@@ -406,6 +428,10 @@ function getTargetLanguage(code) {
 function getKnownLanguage(code) {
   const known = code?.split('_for_')[1]
   return languageNames[known] || known?.toUpperCase() || '?'
+}
+
+function getFullCourseName(code) {
+  return `${getTargetLanguage(code)} for ${getKnownLanguage(code)}`
 }
 
 function getCompletedSeeds(course) {
@@ -544,21 +570,26 @@ const pipelineLanes = computed(() => {
     }
   })
 
-  // Sort by progress within each lane
+  // Sort courses in each lane based on selected sort option
   lanes.forEach(lane => {
-    if (lane.isProductionColumn) {
-      // Sort production by: both apps > new app only > legacy only, then by status
-      lane.courses.sort((a, b) => {
-        const aScore = (a.inNewApp ? 2 : 0) + (a.inLegacyApp ? 1 : 0)
-        const bScore = (b.inNewApp ? 2 : 0) + (b.inLegacyApp ? 1 : 0)
-        if (bScore !== aScore) return bScore - aScore
-        // Then by new app status
-        const statusOrder = { live: 0, beta: 1, testing: 2, not_available: 3 }
-        return (statusOrder[a.newAppStatus] || 3) - (statusOrder[b.newAppStatus] || 3)
-      })
-    } else {
-      lane.courses.sort((a, b) => getCompletedSeeds(b) - getCompletedSeeds(a))
-    }
+    lane.courses.sort((a, b) => {
+      switch (sortBy.value) {
+        case 'alpha':
+          // Alphabetical by full course name (e.g., "English for Portuguese")
+          return getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+        case 'progress':
+          // By progress percentage (descending)
+          return getProgress(b) - getProgress(a)
+        case 'seeds':
+          // By completed seeds (descending)
+          return getCompletedSeeds(b) - getCompletedSeeds(a)
+        case 'audio':
+          // By audio count (descending)
+          return (b.stats?.audio || 0) - (a.stats?.audio || 0)
+        default:
+          return getFullCourseName(a.code).localeCompare(getFullCourseName(b.code))
+      }
+    })
   })
 
   return lanes
@@ -775,6 +806,45 @@ function handleDeploy(course, platform) {
   background: rgba(59, 130, 246, 0.15);
   border-color: #3b82f6;
   color: #3b82f6;
+}
+
+/* Sort selector */
+.sort-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sort-select {
+  appearance: none;
+  background: var(--pb-surface);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pb-text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sort-select:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--pb-text);
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.sort-icon {
+  position: absolute;
+  right: 0.625rem;
+  pointer-events: none;
+  color: var(--pb-text-muted);
 }
 
 .search-box {
