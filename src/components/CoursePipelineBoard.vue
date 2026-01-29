@@ -250,7 +250,7 @@
       <div class="footer-divider"></div>
       <div class="footer-stat highlight">
         <span class="footer-value">{{ readyCount }}</span>
-        <span class="footer-label">Ready to Ship</span>
+        <span class="footer-label">In New App</span>
       </div>
     </div>
   </div>
@@ -436,15 +436,6 @@ const pipelineLanes = computed(() => {
       courses: []
     },
     {
-      key: 'ready',
-      title: 'Ready',
-      description: 'Content complete, ready for apps',
-      color: '#10b981',
-      emptyText: 'None ready to deploy',
-      action: { label: 'Deploy', type: 'deploy' },
-      courses: []
-    },
-    {
       key: 'new_app',
       title: 'New App',
       description: 'ssi-learning-app deployment',
@@ -454,11 +445,11 @@ const pipelineLanes = computed(() => {
       courses: []
     },
     {
-      key: 'legacy_app',
-      title: 'Legacy App',
-      description: 'Original SSi app deployment',
+      key: 'exported',
+      title: 'Exported',
+      description: 'JSON manifest for legacy app',
       color: '#06b6d4',
-      emptyText: 'None deployed',
+      emptyText: 'None exported',
       isAppColumn: true,
       courses: []
     }
@@ -480,10 +471,10 @@ const pipelineLanes = computed(() => {
     const inLegacyApp = legacyAppStatus === 'testing' || legacyAppStatus === 'beta' || legacyAppStatus === 'live'
 
     if (inNewApp) {
-      lanes[4].courses.push({ ...course, appStatus: newAppStatus, originalStatus: course.newAppStatus })
+      lanes[3].courses.push({ ...course, appStatus: newAppStatus, originalStatus: course.newAppStatus })
     }
     if (inLegacyApp) {
-      lanes[5].courses.push({ ...course, appStatus: legacyAppStatus, originalStatus: course.legacyAppStatus })
+      lanes[4].courses.push({ ...course, appStatus: legacyAppStatus, originalStatus: course.legacyAppStatus })
     }
 
     // Only show in pipeline columns if NOT deployed to any app yet
@@ -495,9 +486,9 @@ const pipelineLanes = computed(() => {
         lanes[1].courses.push(course)
       } else if (status === 'needs_export') {
         lanes[2].courses.push(course)
-      } else if (status === 'ready') {
-        lanes[3].courses.push(course)
       }
+      // Note: 'ready' status courses without app deployment stay in needs_export
+      // (they need to be deployed to an app to move forward)
     }
   })
 
@@ -529,7 +520,8 @@ const totalAudio = computed(() => {
 })
 
 const readyCount = computed(() => {
-  return pipelineLanes.value.find(l => l.key === 'ready')?.courses.length || 0
+  // Count courses deployed to new app (testing/beta/live)
+  return pipelineLanes.value.find(l => l.key === 'new_app')?.courses.length || 0
 })
 
 function handleCourseClick(course) {
