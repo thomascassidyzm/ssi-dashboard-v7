@@ -716,7 +716,6 @@ const refreshPlanStats = async () => {
       const data = await response.json()
       if (data.total !== undefined && data.existing !== undefined) {
         productionStore.updatePipelineStats(data.total, data.existing, data.missing || 0)
-        console.log(`[AudioPipeline] Refreshed plan stats: ${data.total} total, ${data.existing} existing, ${data.missing || 0} missing`)
       }
     }
   } catch (err) {
@@ -729,10 +728,10 @@ const startProgressPolling = () => {
   pollAudioProgress() // Poll immediately
   progressPollInterval = setInterval(pollAudioProgress, 1000) // Then every second
 
-  // Also start plan stats refresh (every 10 seconds)
+  // Also start plan stats refresh (every 30 seconds)
   if (!planStatsInterval) {
     refreshPlanStats() // Refresh immediately
-    planStatsInterval = setInterval(refreshPlanStats, 10000) // Then every 10 seconds
+    planStatsInterval = setInterval(refreshPlanStats, 30000) // Then every 30 seconds
   }
 }
 
