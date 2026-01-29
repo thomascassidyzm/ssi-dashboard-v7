@@ -3180,8 +3180,9 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
     const toGenerate = plan.missing || plan.toGenerate || 0
     const estimatedCostUSD = (toGenerate * 0.004).toFixed(2)
 
-    // Total should be existing + missing, or totalPhrases * 3 (for known, target1, target2)
-    const total = (plan.existing || 0) + toGenerate
+    // Use total from Phase 8 (based on current course content, not orphaned audio)
+    // Fallback to existing + missing for backwards compatibility
+    const total = plan.total || ((plan.existing || 0) + toGenerate)
 
     res.json({
       success: true,

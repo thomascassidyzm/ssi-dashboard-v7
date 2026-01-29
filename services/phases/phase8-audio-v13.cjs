@@ -544,12 +544,34 @@ async function planHandler(req, res) {
       }
     }
 
-    // Total existing: count non-presentation from existingAudio + presentation count
-    // Note: existingAudio includes presentations, so we count non-presentation separately
-    const nonPresentationCount = existingByRole.known + existingByRole.target1 + existingByRole.target2
-    const totalExisting = nonPresentationCount + (existingPresentations || []).length
-    // Total needed presentations (is_new LEGOs)
+    // Calculate TOTAL REQUIRED based on current course content (not orphaned audio)
+    // Unique texts that need audio: phrases + legos + seeds
+    const uniqueTextsForAudio = new Set()
+
+    // Count unique known texts
+    for (const phrase of phrases || []) {
+      uniqueTextsForAudio.add(`known|${normalizeText(phrase.known_text)}`)
+      uniqueTextsForAudio.add(`target|${normalizeText(phrase.target_text)}`)
+    }
+    for (const lego of allLegos || []) {
+      uniqueTextsForAudio.add(`known|${normalizeText(lego.known_text)}`)
+      uniqueTextsForAudio.add(`target|${normalizeText(lego.target_text)}`)
+    }
+    for (const seed of allSeeds || []) {
+      uniqueTextsForAudio.add(`known|${normalizeText(seed.known_text)}`)
+      uniqueTextsForAudio.add(`target|${normalizeText(seed.target_text)}`)
+    }
+
+    // Total required: unique known texts + unique target texts × 2 (target1, target2) + presentations
+    const uniqueKnownTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('known|')).length
+    const uniqueTargetTexts = [...uniqueTextsForAudio].filter(k => k.startsWith('target|')).length
     const totalPresentationsNeeded = newLegos?.length || 0
+
+    // Total required audio files = known + target1 + target2 + presentations
+    const totalRequired = uniqueKnownTexts + (uniqueTargetTexts * 2) + totalPresentationsNeeded
+
+    // Existing that match requirements = totalRequired - missing
+    const existingMatched = totalRequired - uniqueNeeded.length
 
     res.json({
       courseCode,
@@ -560,10 +582,13 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      existing: totalExisting,
+      existing: existingMatched,  // Only count audio that matches current requirements
       missing: uniqueNeeded.length,
+      total: totalRequired,  // Total based on current course content
       totalPhrases: phrases.length,
       totalPresentationsNeeded,
+      uniqueKnownTexts,
+      uniqueTargetTexts,
       estimatedCost: `$${estimatedCost.toFixed(2)}`,
       estimatedChars: totalChars,
       breakdown: {
@@ -571,8 +596,7 @@ async function planHandler(req, res) {
         target1: uniqueNeeded.filter(n => n.role === 'target1').length,
         target2: uniqueNeeded.filter(n => n.role === 'target2').length,
         presentation: uniqueNeeded.filter(n => n.role === 'presentation').length
-      },
-      existingByRole
+      }
     })
   } catch (error) {
     logger.error('Plan error:', error)
