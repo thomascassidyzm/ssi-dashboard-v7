@@ -19,6 +19,8 @@ const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
 const voiceDiscoveryService = require('./voice-discovery-service.cjs')
+const publishManifestService = require('./publish-manifest-service.cjs')
+const languageCodeService = require('./language-code-service.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -4709,6 +4711,271 @@ app.get('/api/production/:courseCode/frankenstein-demo', async (req, res) => {
 
 const s3DeployService = require('./s3-deploy-service.cjs')
 
+// GET /api/production/:courseCode/export-state
+// Get current export workflow state for a course
+app.get('/api/production/:courseCode/export-state', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+    const { data, error } = await supabase
+      .from('course_export_states')
+      .select('*')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (error && error.code !== 'PGRST116') {
+      throw error
+    }
+
+    // Return empty state if not found
+    if (!data) {
+      return res.json({
+        courseCode,
+        manifestGenerated: false,
+        s3Verified: false,
+        manifestPublished: false,
+        audioDeployed: false
+      })
+    }
+
+    res.json({
+      courseCode: data.course_code,
+      manifestGenerated: data.manifest_generated,
+      manifestGeneratedAt: data.manifest_generated_at,
+      s3Verified: data.s3_verified,
+      s3VerifiedAt: data.s3_verified_at,
+      manifestPublished: data.manifest_published,
+      manifestPublishedAt: data.manifest_published_at,
+      audioDeployed: data.audio_deployed,
+      audioDeployedAt: data.audio_deployed_at,
+      manifestVersion: data.manifest_version,
+      manifestStatus: data.manifest_status,
+      s3Verification: data.s3_verification,
+      publishCourseConfigsPath: data.publish_course_configs_path,
+      publishApidevFilename: data.publish_apidev_filename,
+      deployPlan: data.deploy_plan,
+      deployExecutedAt: data.deploy_executed_at,
+      updatedAt: data.updated_at,
+      pendingManifestPath: data.pending_manifest_path,
+      generatedOnMachine: data.generated_on_machine
+    })
+  } catch (error) {
+    logger.error('Error getting export state:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/export-state
+// Update export workflow state for a course
+app.post('/api/production/:courseCode/export-state', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const updates = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Build update object with snake_case keys
+    const updateData = { course_code: courseCode }
+
+    if ('manifestGenerated' in updates) updateData.manifest_generated = updates.manifestGenerated
+    if ('manifestGeneratedAt' in updates) updateData.manifest_generated_at = updates.manifestGeneratedAt
+    if ('s3Verified' in updates) updateData.s3_verified = updates.s3Verified
+    if ('s3VerifiedAt' in updates) updateData.s3_verified_at = updates.s3VerifiedAt
+    if ('manifestPublished' in updates) updateData.manifest_published = updates.manifestPublished
+    if ('manifestPublishedAt' in updates) updateData.manifest_published_at = updates.manifestPublishedAt
+    if ('audioDeployed' in updates) updateData.audio_deployed = updates.audioDeployed
+    if ('audioDeployedAt' in updates) updateData.audio_deployed_at = updates.audioDeployedAt
+    if ('manifestVersion' in updates) updateData.manifest_version = updates.manifestVersion
+    if ('manifestStatus' in updates) updateData.manifest_status = updates.manifestStatus
+    if ('manifestHash' in updates) updateData.manifest_hash = updates.manifestHash
+    if ('manifestSeedCount' in updates) updateData.manifest_seed_count = updates.manifestSeedCount
+    if ('manifestLegoCount' in updates) updateData.manifest_lego_count = updates.manifestLegoCount
+    if ('manifestAudioCount' in updates) updateData.manifest_audio_count = updates.manifestAudioCount
+    if ('s3Verification' in updates) updateData.s3_verification = updates.s3Verification
+    if ('publishCourseConfigsPath' in updates) updateData.publish_course_configs_path = updates.publishCourseConfigsPath
+    if ('publishApidevFilename' in updates) updateData.publish_apidev_filename = updates.publishApidevFilename
+    if ('deployPlan' in updates) updateData.deploy_plan = updates.deployPlan
+    if ('deployExecutedAt' in updates) updateData.deploy_executed_at = updates.deployExecutedAt
+    if ('pendingManifestPath' in updates) updateData.pending_manifest_path = updates.pendingManifestPath
+    if ('generatedOnMachine' in updates) updateData.generated_on_machine = updates.generatedOnMachine
+
+    const { data, error } = await supabase
+      .from('course_export_states')
+      .upsert(updateData, { onConflict: 'course_code' })
+      .select()
+      .single()
+
+    if (error) throw error
+
+    logger.info(`Export state updated for ${courseCode}`)
+    res.json({ success: true, state: data })
+  } catch (error) {
+    logger.error('Error updating export state:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/export-legacy-with-state
+// Step 1: Generate legacy manifest and save to temp with state tracking
+app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { withAudio = false } = req.body
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Get course metadata
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` })
+    }
+
+    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
+    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
+    const courseConfigsId = `${knownCode}-${targetCode}`
+
+    // Import the legacy manifest generator
+    const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
+
+    logger.info(`Generating legacy manifest for ${courseCode} (courseConfigsId: ${courseConfigsId})`)
+
+    // Generate manifest (without audio - Step 2 will verify S3)
+    const manifest = await generateLegacyManifest(courseCode, { withAudio: false })
+
+    // Validate the manifest
+    const validation = validateManifest(manifest)
+
+    // Compute stats
+    const seedCount = manifest.slices?.[0]?.seeds?.length || 0
+    const orderedEnc = manifest.slices?.[0]?.orderedEncouragements?.length || 0
+    const pooledEnc = manifest.slices?.[0]?.pooledEncouragements?.length || 0
+
+    // Count LEGOs (unique LEGO IDs)
+    const legoIds = new Set()
+    for (const seed of manifest.slices[0]?.seeds || []) {
+      for (const item of seed.introduction_items || []) {
+        if (item.node?.id) legoIds.add(item.node.id)
+      }
+    }
+    const legoCount = legoIds.size
+
+    // Count audio (all UUIDs in samples)
+    const audioIds = new Set()
+    for (const variants of Object.values(manifest.slices[0]?.samples || {})) {
+      for (const audio of variants) {
+        if (audio.id) audioIds.add(audio.id)
+      }
+    }
+    const audioCount = audioIds.size
+
+    // Save manifest to temp/course_export_states
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    await fs.ensureDir(path.dirname(manifestPath))
+    await fs.writeJson(manifestPath, manifest, { spaces: 2 })
+    logger.info(`Saved pending manifest to: ${manifestPath}`)
+
+    // Save to Supabase export state
+    const supabase = supabaseClient.getClient()
+    await supabase
+      .from('course_export_states')
+      .upsert({
+        course_code: courseCode,
+        manifest_generated: true,
+        manifest_generated_at: new Date().toISOString(),
+        manifest_seed_count: seedCount,
+        manifest_lego_count: legoCount,
+        manifest_audio_count: audioCount,
+        pending_manifest_path: manifestPath,
+        generated_on_machine: require('os').hostname(),
+        // Clear previous verification state
+        s3_verified: false,
+        s3_verified_at: null,
+        s3_verification: null,
+        manifest_published: false,
+        manifest_published_at: null
+      }, { onConflict: 'course_code' })
+
+    logger.info(`Export state saved for ${courseCode}`)
+
+    res.json({
+      success: true,
+      courseCode,
+      courseConfigsId,
+      stats: {
+        seeds: seedCount,
+        legos: legoCount,
+        audio: audioCount,
+        orderedEncouragements: orderedEnc,
+        pooledEncouragements: pooledEnc
+      },
+      validation: {
+        valid: validation.valid,
+        summary: validation.summary
+      },
+      savedToState: true,
+      pendingPath: manifestPath
+    })
+  } catch (error) {
+    logger.error(`Error generating legacy manifest for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// DELETE /api/production/:courseCode/export-state
+// Reset export workflow state for a course
+app.delete('/api/production/:courseCode/export-state', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Delete local temp files (manifest and durations only)
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    const durationsPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_extracted_durations.json`)
+
+    if (fs.existsSync(manifestPath)) {
+      await fs.remove(manifestPath)
+      logger.info(`Deleted pending manifest for ${courseCode}`)
+    }
+
+    if (fs.existsSync(durationsPath)) {
+      await fs.remove(durationsPath)
+      logger.info(`Deleted extracted durations for ${courseCode}`)
+    }
+
+    // Delete from Supabase
+    const supabase = supabaseClient.getClient()
+    const { error } = await supabase
+      .from('course_export_states')
+      .delete()
+      .eq('course_code', courseCode)
+
+    if (error && error.code !== 'PGRST116') {
+      // Ignore "not found" error
+      throw error
+    }
+
+    logger.info(`Export state reset for ${courseCode}`)
+    res.json({ success: true, message: 'Export state reset successfully' })
+  } catch (error) {
+    logger.error('Error resetting export state:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // GET /api/production/:courseCode/pending-manifest
 // Download pending manifest for review before publishing
 app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
@@ -4725,6 +4992,139 @@ app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
     res.json(manifest)
   } catch (error) {
     logger.error(`Get pending manifest error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/export-state/manifest
+// Re-download manifest (Step 1 - Redownload button)
+app.get('/api/production/:courseCode/export-state/manifest', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Check if manifest exists in temp folder
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first (Step 1).' })
+    }
+
+    const manifest = await fs.readJson(manifestPath)
+
+    // Get generation info from Supabase
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      const { data: exportState } = await supabase
+        .from('course_export_states')
+        .select('manifest_generated_at, manifest_hash')
+        .eq('course_code', courseCode)
+        .single()
+
+      res.json({
+        manifest,
+        generatedAt: exportState?.manifest_generated_at || null,
+        hash: exportState?.manifest_hash || null
+      })
+    } else {
+      res.json({ manifest })
+    }
+  } catch (error) {
+    logger.error('Error getting cached manifest:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/publish-manifest
+// Step 3: Publish manifest to course-configs repo and/or apidev
+app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const {
+      version,
+      status = 'beta',
+      commitToCourseConfigs = true,
+      scpToApidev = false
+    } = req.body
+
+    if (!version) {
+      return res.status(400).json({ error: 'Version is required' })
+    }
+
+    // Check if manifest exists
+    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    if (!fs.existsSync(manifestPath)) {
+      return res.status(404).json({ error: 'No pending manifest found. Generate and verify first.' })
+    }
+
+    const manifest = await fs.readJson(manifestPath)
+
+    logger.info(`Publishing manifest for ${courseCode}: v${version}, status=${status}`)
+
+    // Use publish manifest service
+    const result = await publishManifestService.publishManifest(manifest, {
+      version,
+      status,
+      commitToCourseConfigs,
+      scpToApidev
+    })
+
+    if (result.success) {
+      // Update export state
+      if (supabaseClient.isInitialized()) {
+        const supabase = supabaseClient.getClient()
+        await supabase
+          .from('course_export_states')
+          .upsert({
+            course_code: courseCode,
+            manifest_published: true,
+            manifest_published_at: new Date().toISOString(),
+            manifest_version: version,
+            manifest_status: status,
+            publish_course_configs_path: result.courseConfigs?.filePath || null,
+            publish_apidev_filename: result.apidev?.filename || null
+          }, { onConflict: 'course_code' })
+      }
+
+      logger.info(`Manifest published for ${courseCode}: v${version}`)
+    }
+
+    res.json(result)
+  } catch (error) {
+    logger.error('Error publishing manifest:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/publish-manifest/version
+// Step 3: Check course-configs repo and suggest next version
+app.get('/api/production/:courseCode/publish-manifest/version', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` })
+    }
+
+    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
+    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
+    const courseConfigsId = `${knownCode}-${targetCode}`
+
+    const repoCheck = publishManifestService.checkCourseConfigsRepo()
+    const versionInfo = publishManifestService.suggestVersion(courseConfigsId)
+
+    res.json({
+      courseCode,
+      courseConfigsId,
+      repoAvailable: repoCheck.exists,
+      repoError: repoCheck.error,
+      ...versionInfo
+    })
+  } catch (error) {
+    logger.error('Error getting version suggestion:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -4773,67 +5173,188 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
 
     logger.info(`Verifying ${uuids.length} audio files for ${courseCode}`)
 
-    // Phase 1: Existence check + Phase 2: Duration verification with auto-fix
-    const results = await s3DeployService.verifyStageAudio(
+    // Stage 1: Existence check + Stage 2: Duration verification
+    const verifyResults = await s3DeployService.verifyStageAudio(
       uuids,
       pendingManifest,
       (phase, checked, total, ...phaseData) => {
         if (phase === 'existence') {
-          io.emit('s3Verify:progress', { courseCode, phase, checked, total })
+          io.emit('s3Verify:progress', { courseCode, phase: 'existence', checked, total })
         } else if (phase === 'duration') {
           const [matched, mismatched, errors] = phaseData
-          io.emit('s3Verify:durationProgress', {
-            courseCode, phase, checked, total, matched, mismatched, errors
-          })
-        } else if (phase === 'fixing') {
-          const [fixed, errors] = phaseData
-          io.emit('s3Verify:fixProgress', {
-            courseCode, phase, checked, total, fixed, errors
+          io.emit('s3Verify:progress', {
+            courseCode, phase: 'duration', checked, total, matched, mismatched, errors
           })
         }
       },
       { checkDurations: true, durationTolerance: 0 }
     )
 
-    // Save verification results to state
-    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
-    let state = {}
-    if (fs.existsSync(statePath)) {
-      state = await fs.readJson(statePath)
-    }
-    state.s3Verification = results
-    state.s3Verified = results.missing === 0 && !results.durationCheckFailed
-    await fs.writeJson(statePath, state, { spaces: 2 })
+    const results = { ...verifyResults }
 
-    // Send immediate response
+    // Save state after Stage 2 (database-first)
+    const supabase = supabaseClient.getClient()
+    await supabase
+      .from('course_export_states')
+      .upsert({
+        course_code: courseCode,
+        s3_verification: results,
+        s3_verified: false, // Not verified yet until auto-fix completes
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'course_code' })
+
+    // Send immediate response after Stage 2 - don't block the UI
+    logger.info(`[VERIFY-S3] Stages 1-2 complete, starting auto-fix in background`)
     res.json(results)
 
-    // Auto-fix ALL mismatched durations asynchronously (runs AFTER response)
+    // Stage 3 & 4: Auto-fix and verify in BACKGROUND (async, non-blocking)
     if (results.durationMismatched > 0) {
-      logger.info(`Auto-fixing ${results.durationMismatched} duration mismatches for ${courseCode}`)
+      setImmediate(async () => {
+        try {
+          logger.info(`[AUTO-FIX] Starting background auto-fix for ${results.durationMismatched} duration mismatches`)
+          io.emit('s3Verify:progress', { courseCode, phase: 'fixing', checked: 0, total: results.durationMismatched })
 
-      s3DeployService.autoFixDurations(uuids, pendingManifest, (phase, checked, total, fixed, errors) => {
-        io.emit('s3Verify:fixProgress', {
-          courseCode, phase: 'fixing', checked, total, fixed, errors
-        })
-      }).then(async (fixResults) => {
-        // Save updated manifest
-        await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
+          // Save extracted S3 durations to temp file
+          const durationsPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_extracted_durations.json`)
+          const durationsObj = Object.fromEntries(verifyResults.extractedDurations || new Map())
+          await fs.writeJson(durationsPath, durationsObj, { spaces: 2 })
+          logger.info(`[AUTO-FIX] Saved ${Object.keys(durationsObj).length} extracted durations`)
 
-        // Update results with fix count
-        results.durationsFixed = fixResults.fixed
-        results.durationFixErrors = fixResults.errors
+          // Run auto-fix with pre-extracted durations (should be instant)
+          const fixResults = await s3DeployService.autoFixDurations(
+            uuids,
+            pendingManifest,
+            (phase, checked, total, fixed, errors) => {
+              io.emit('s3Verify:progress', {
+                courseCode, phase: 'fixing', checked, total, fixed, errors
+              })
+            },
+            verifyResults.extractedDurations
+          )
 
-        // Update state
-        state.s3Verification = results
-        await fs.writeJson(statePath, state, { spaces: 2 })
+          logger.info(`[AUTO-FIX] Fixed ${fixResults.fixed} durations, ${fixResults.errors} errors`)
 
-        logger.info(`Auto-fix complete: ${fixResults.fixed} fixed, ${fixResults.errors} errors`)
-        io.emit('s3Verify:completed', { courseCode, ...results })
-      }).catch(err => {
-        logger.error(`Auto-fix error for ${courseCode}:`, err)
-        io.emit('s3Verify:error', { courseCode, error: err.message })
+          // Save updated manifest
+          await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
+          results.durationsFixed = fixResults.fixed
+          results.durationFixErrors = fixResults.errors
+
+          // Stage 4: Verify fixed durations
+          logger.info(`[VERIFY-FIX] Verifying ${fixResults.fixed} fixed durations`)
+          io.emit('s3Verify:progress', { courseCode, phase: 'verifying', checked: 0, total: fixResults.fixed })
+
+          const fixedManifest = fixResults.updatedManifest
+          const extractedDurations = await fs.readJson(durationsPath)
+
+          let verifyChecked = 0
+          let verifyMatched = 0
+          let verifyMismatched = 0
+          const verifyMismatchDetails = []
+          let progressCounter = 0
+
+          // Check all fixed durations with progress updates
+          const checkSample = (uuid, manifestDuration) => {
+            verifyChecked++
+            progressCounter++
+            const s3Duration = extractedDurations[uuid]
+
+            if (s3Duration !== undefined) {
+              const diff = Math.abs(manifestDuration - s3Duration)
+              if (diff < 0.001) {
+                verifyMatched++
+              } else {
+                verifyMismatched++
+                verifyMismatchDetails.push({
+                  uuid,
+                  manifestDuration,
+                  s3Duration,
+                  difference: diff
+                })
+              }
+            }
+
+            // Send progress update every 100 samples
+            if (progressCounter % 100 === 0) {
+              io.emit('s3Verify:progress', {
+                courseCode, phase: 'verifying', checked: verifyChecked, total: fixResults.fixed,
+                matched: verifyMatched, mismatched: verifyMismatched
+              })
+            }
+          }
+
+          // Check introduction
+          if (fixedManifest.introduction?.id && fixedManifest.introduction?.duration) {
+            checkSample(fixedManifest.introduction.id, fixedManifest.introduction.duration)
+          }
+
+          // Check encouragements
+          for (const enc of fixedManifest.slices[0]?.orderedEncouragements || []) {
+            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
+          }
+          for (const enc of fixedManifest.slices[0]?.pooledEncouragements || []) {
+            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
+          }
+
+          // Check samples
+          for (const audioArray of Object.values(fixedManifest.slices[0]?.samples || {})) {
+            for (const audio of audioArray) {
+              if (audio.id && audio.duration) checkSample(audio.id, audio.duration)
+            }
+          }
+
+          // Final progress update
+          io.emit('s3Verify:progress', {
+            courseCode, phase: 'verifying', checked: verifyChecked, total: verifyChecked,
+            matched: verifyMatched, mismatched: verifyMismatched
+          })
+
+          logger.info(`[VERIFY-FIX] Verification complete: ${verifyMatched} matched, ${verifyMismatched} mismatched`)
+
+          results.verifyFixed = {
+            checked: verifyChecked,
+            matched: verifyMatched,
+            mismatched: verifyMismatched,
+            mismatchDetails: verifyMismatchDetails
+          }
+
+          // Clean up temp durations file
+          await fs.remove(durationsPath)
+
+          // Update final state (database-first)
+          const s3Verified = results.missing === 0 && verifyMismatched === 0
+          await supabase
+            .from('course_export_states')
+            .update({
+              s3_verification: results,
+              s3_verified: s3Verified,
+              s3_verified_at: s3Verified ? new Date().toISOString() : null,
+              updated_at: new Date().toISOString()
+            })
+            .eq('course_code', courseCode)
+
+          // Notify completion
+          logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
+          io.emit('s3Verify:completed', { courseCode, ...results })
+
+        } catch (err) {
+          logger.error(`[AUTO-FIX] Background error for ${courseCode}:`, err)
+          io.emit('s3Verify:error', { courseCode, error: err.message })
+        }
       })
+    } else {
+      // No mismatches, mark as verified immediately (database-first)
+      const s3Verified = results.missing === 0
+      await supabase
+        .from('course_export_states')
+        .update({
+          s3_verification: results,
+          s3_verified: s3Verified,
+          s3_verified_at: s3Verified ? new Date().toISOString() : null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
+
+      io.emit('s3Verify:completed', { courseCode, ...results })
     }
 
   } catch (error) {
@@ -4874,14 +5395,17 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
 
     const plan = await s3DeployService.generateDeployPlan(uuids)
 
-    // Save to state
-    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
-    let state = {}
-    if (fs.existsSync(statePath)) {
-      state = await fs.readJson(statePath)
+    // Save to state (database-first)
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      await supabase
+        .from('course_export_states')
+        .update({
+          deploy_plan: plan,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
     }
-    state.deployPlan = plan
-    await fs.writeJson(statePath, state, { spaces: 2 })
 
     res.json(plan)
   } catch (error) {
@@ -4941,15 +5465,19 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
 
     result.verification = verificationResult
 
-    // Save to state
-    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
-    let state = {}
-    if (fs.existsSync(statePath)) {
-      state = await fs.readJson(statePath)
+    // Save to state (database-first)
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      await supabase
+        .from('course_export_states')
+        .update({
+          audio_deployed: true,
+          audio_deployed_at: new Date().toISOString(),
+          deploy_plan: verificationResult,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
     }
-    state.audioDeployed = true
-    state.deployVerification = verificationResult
-    await fs.writeJson(statePath, state, { spaces: 2 })
 
     res.json(result)
   } catch (error) {
@@ -4998,14 +5526,17 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
       }
     )
 
-    // Save to state
-    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
-    let state = {}
-    if (fs.existsSync(statePath)) {
-      state = await fs.readJson(statePath)
+    // Save to state (database-first)
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      await supabase
+        .from('course_export_states')
+        .update({
+          deploy_plan: verificationResult,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
     }
-    state.deployVerification = verificationResult
-    await fs.writeJson(statePath, state, { spaces: 2 })
 
     res.json(verificationResult)
   } catch (error) {
@@ -5077,15 +5608,20 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
 
     result.message = `Deployed ${result.copied} missing files`
 
-    // Update state
-    const statePath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_state.json`)
-    let state = {}
-    if (fs.existsSync(statePath)) {
-      state = await fs.readJson(statePath)
+    // Update state (database-first)
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      const audioDeployed = verification.missing === 0 // Only mark complete if everything is there
+      await supabase
+        .from('course_export_states')
+        .update({
+          audio_deployed: audioDeployed,
+          audio_deployed_at: audioDeployed ? new Date().toISOString() : null,
+          deploy_plan: verification,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
     }
-    state.audioDeployed = verification.missing === 0 // Only mark complete if everything is there
-    state.deployVerification = verification
-    await fs.writeJson(statePath, state, { spaces: 2 })
 
     res.json(result)
   } catch (error) {
