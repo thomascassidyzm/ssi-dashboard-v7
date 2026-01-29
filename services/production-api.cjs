@@ -18,6 +18,7 @@ const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
 const voiceConfigService = require('./voice-config-service.cjs')
+const voiceDiscoveryService = require('./voice-discovery-service.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -627,6 +628,123 @@ app.patch('/api/courses/:courseCode/voice-config/:role', async (req, res) => {
     res.status(500).json({ success: false, error: error.message })
   }
 })
+
+// =============================================================================
+// VOICE DISCOVERY & PREVIEW ROUTES (for VoiceConfiguration component)
+// =============================================================================
+
+// GET /api/voices/discover/:language - Discover available Azure voices for a language
+app.get('/api/voices/discover/:language', async (req, res) => {
+  const { language } = req.params
+  try {
+    logger.info(`[VoiceDiscovery] Discovering voices for language: ${language}`)
+
+    const voices = await voiceDiscoveryService.discoverAzureVoices(language)
+
+    logger.info(`[VoiceDiscovery] Found ${voices.length} voices for ${language}`)
+    res.json({ success: true, voices })
+  } catch (error) {
+    logger.error(`[VoiceDiscovery] Error discovering voices for ${language}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// POST /api/voices/preview - Generate a voice preview audio sample
+app.post('/api/voices/preview', async (req, res) => {
+  const { voiceId, text, speed, provider } = req.body
+
+  // Validation
+  if (!voiceId) {
+    return res.status(400).json({ success: false, error: 'voiceId is required' })
+  }
+  if (!text) {
+    return res.status(400).json({ success: false, error: 'text is required' })
+  }
+  if (text.length > 1000) {
+    return res.status(400).json({ success: false, error: 'Text too long (max 1000 characters for preview)' })
+  }
+
+  try {
+    const azureKey = process.env.AZURE_SPEECH_KEY
+    const azureRegion = process.env.AZURE_SPEECH_REGION || 'westeurope'
+
+    if (!azureKey) {
+      return res.status(500).json({
+        success: false,
+        error: 'Azure Speech not configured (AZURE_SPEECH_KEY not set)'
+      })
+    }
+
+    logger.info(`[VoicePreview] Generating preview: ${voiceId}, text length: ${text.length}`)
+
+    // Extract locale from voiceId (e.g., 'es-ES' from 'es-ES-ElviraNeural')
+    const locale = voiceId.split('-').slice(0, 2).join('-')
+
+    // Build SSML with optional speed adjustment
+    const rate = speed && speed !== 1.0 ? speed : null
+    let ssml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${locale}'>`
+    ssml += `<voice name='${voiceId}'>`
+    if (rate) {
+      ssml += `<prosody rate='${rate}'>`
+    }
+    ssml += escapeXml(text)
+    if (rate) {
+      ssml += `</prosody>`
+    }
+    ssml += `</voice></speak>`
+
+    // Call Azure TTS API
+    const response = await fetch(
+      `https://${azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
+      {
+        method: 'POST',
+        headers: {
+          'Ocp-Apim-Subscription-Key': azureKey,
+          'Content-Type': 'application/ssml+xml',
+          'X-Microsoft-OutputFormat': 'audio-24khz-96kbitrate-mono-mp3',
+          'User-Agent': 'SSi-Dashboard-Voice-Preview'
+        },
+        body: ssml
+      }
+    )
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      logger.error(`[VoicePreview] Azure TTS error: ${response.status} ${errorText}`)
+      return res.status(response.status).json({
+        success: false,
+        error: `Azure TTS error: ${response.status}`,
+        message: errorText
+      })
+    }
+
+    // Convert audio to base64 data URI for frontend playback
+    const audioBuffer = await response.arrayBuffer()
+    const base64Audio = Buffer.from(audioBuffer).toString('base64')
+    const dataUri = `data:audio/mpeg;base64,${base64Audio}`
+
+    logger.info(`[VoicePreview] Generated ${audioBuffer.byteLength} bytes of audio`)
+
+    res.json({
+      success: true,
+      audio: dataUri,
+      byteLength: audioBuffer.byteLength
+    })
+  } catch (error) {
+    logger.error('[VoicePreview] Error generating preview:', error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// Helper: Escape special XML characters for SSML
+function escapeXml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
 
 // =============================================================================
 // MISSION CONTROL - Active Jobs from build_jobs table
