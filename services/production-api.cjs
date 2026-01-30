@@ -1132,7 +1132,7 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     // Emit WebSocket event for real-time UI updates
     io.emit('course:statusChanged', {
       courseCode,
-      status,
+      status: dbStatus,
       updatedAt: updatedCourse.updated_at
     })
 
