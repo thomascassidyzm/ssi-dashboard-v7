@@ -71,6 +71,26 @@ const PLACEHOLDER_INTRO = {
   duration: 45.0
 }
 
+// =============================================================================
+// TEXT NORMALIZATION (for audio matching)
+// Must match phase8-audio-v13.cjs normalization for consistent audio lookup
+// =============================================================================
+
+// Punctuation to strip when comparing text for audio matching
+const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
+
+/**
+ * Normalize text for audio matching comparison
+ * Strips punctuation, lowercases, and trims - used when comparing
+ * phrase text against existing audio records.
+ *
+ * MUST match the normalizeText() function in phase8-audio-v13.cjs
+ */
+function normalizeTextForAudio(text) {
+  if (!text) return ''
+  return text.toLowerCase().replace(PUNCT_REGEX, '').trim()
+}
+
 /**
  * Extract UUID from s3_key (e.g., "mastered/ABC123.mp3" -> "ABC123")
  */
@@ -655,9 +675,12 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
   }
 
   // Build lookup by normalized text + language + role
+  // Use punctuation-stripped normalization to match phase 8 audio generation
   const audioLookup = new Map()
   for (const record of audioRecords) {
-    const key = `${record.text_normalized}|${record.language}|${record.role}`
+    // Normalize the stored text_normalized to strip punctuation (matching phase8 logic)
+    const normalizedKey = normalizeTextForAudio(record.text_normalized)
+    const key = `${normalizedKey}|${record.language}|${record.role}`
     audioLookup.set(key, record)
   }
 
@@ -665,7 +688,8 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
   for (const { text, isKnown } of allTexts) {
     if (!text) continue
 
-    const normalizedText = text.toLowerCase().trim()
+    // Use punctuation-stripped normalization to match the lookup keys
+    const normalizedText = normalizeTextForAudio(text)
     const lang = isKnown ? knownLang : targetLang
 
     // Old manifest uses "source" instead of "known"
