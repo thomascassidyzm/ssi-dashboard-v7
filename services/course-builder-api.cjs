@@ -2327,7 +2327,7 @@ function normalizeText(text, chinese = false) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')  // Remove diacritics
-    .replace(/[¿¡.,;:!?'"«»""''。，！？、：；""'']/g, '')  // Punctuation
+    .replace(/[¿¡.,;:!?«»""。，！？、：；""]/g, '')  // Punctuation (preserves apostrophes)
     .trim();
   if (!chinese) {
     normalized = normalized.replace(/\s+/g, ' ');
