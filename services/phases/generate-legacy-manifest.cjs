@@ -178,17 +178,34 @@ async function loadAudioFromDB(courseCode) {
   const client = supabaseClient.getClient()
   if (!client) return null
 
-  const { data, error } = await client
-    .from('course_audio')
-    .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
-    .eq('course_code', courseCode)
+  // Paginate to get ALL audio records (Supabase default limit is 1000-50000)
+  const PAGE_SIZE = 10000
+  let allData = []
+  let offset = 0
+  let hasMore = true
 
-  if (error) {
-    console.error('  Warning: Could not load audio from DB:', error.message)
-    return null
+  while (hasMore) {
+    const { data, error } = await client
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
+      .eq('course_code', courseCode)
+      .range(offset, offset + PAGE_SIZE - 1)
+
+    if (error) {
+      console.error('  Warning: Could not load audio from DB:', error.message)
+      return allData.length > 0 ? allData : null
+    }
+
+    if (data && data.length > 0) {
+      allData = allData.concat(data)
+      offset += PAGE_SIZE
+      hasMore = data.length === PAGE_SIZE
+    } else {
+      hasMore = false
+    }
   }
 
-  return data
+  return allData
 }
 
 /**
