@@ -179,7 +179,7 @@ async function loadAudioFromDB(courseCode) {
   if (!client) return null
 
   // Paginate to get ALL audio records (Supabase default limit is 1000-50000)
-  const PAGE_SIZE = 10000
+  const PAGE_SIZE = 50000
   let allData = []
   let offset = 0
   let hasMore = true
