@@ -700,27 +700,8 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
     const key = `${normalizedKey}|${record.language}|${record.role}`
     audioLookup.set(key, record)
   }
-  console.error(`  [DEBUG] Audio lookup map size: ${audioLookup.size} (from ${audioRecords.length} records)`)
-
-  // Debug: Show sample keys from the audio lookup
-  const sampleKeys = Array.from(audioLookup.keys()).slice(0, 5)
-  console.error(`  [DEBUG] Sample audio lookup keys:`)
-  for (const k of sampleKeys) {
-    console.error(`          - "${k}"`)
-  }
-
-  // Debug: Count by language|role
-  const langRoleCounts = {}
-  for (const key of audioLookup.keys()) {
-    const [, lang, role] = key.split('|')
-    const lr = `${lang}|${role}`
-    langRoleCounts[lr] = (langRoleCounts[lr] || 0) + 1
-  }
-  console.error(`  [DEBUG] Audio by lang|role: ${JSON.stringify(langRoleCounts)}`)
 
   // Process each unique text
-  let debugMissCount = 0
-  let debugHitCount = 0
   for (const { text, isKnown } of allTexts) {
     if (!text) continue
 
@@ -756,10 +737,6 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
     }
 
     if (sampleEntries.length > 0) {
-      debugHitCount++
-      if (debugHitCount <= 3) {
-        console.error(`  [DEBUG] HIT: text="${text.substring(0, 50)}" normalized="${normalizedText.substring(0, 50)}" lang=${lang} entries=${sampleEntries.length}`)
-      }
       // Merge with existing entries instead of overwriting
       // This handles cases where known and target text are identical (e.g., "no", "in", "so")
       if (samples[text]) {
@@ -776,28 +753,8 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
           samples[textWithoutPeriod] = sampleEntries
         }
       }
-    } else if (debugMissCount < 10) {
-      // Debug: show what's not matching
-      const role0 = isKnown ? 'known' : 'target1'
-      const key0 = `${normalizedText}|${lang}|${role0}`
-      console.error(`  [DEBUG] MISS #${debugMissCount + 1}: text="${text.substring(0, 60)}"`)
-      console.error(`          normalized="${normalizedText.substring(0, 60)}" isKnown=${isKnown}`)
-      console.error(`          looking for key="${key0}"`)
-      // Check if any key starts with similar text
-      const similarKeys = Array.from(audioLookup.keys()).filter(k => k.startsWith(normalizedText.substring(0, 15))).slice(0, 3)
-      if (similarKeys.length > 0) {
-        console.error(`          similar keys found: ${similarKeys.map(k => `"${k}"`).join(', ')}`)
-      } else {
-        console.error(`          no similar keys found starting with "${normalizedText.substring(0, 15)}"`)
-      }
-      debugMissCount++
     }
   }
-
-  // Summary
-  const totalTexts = allTexts.length
-  const totalMisses = totalTexts - debugHitCount
-  console.error(`  [DEBUG] Sample building summary: ${debugHitCount} hits, ${totalMisses} misses out of ${totalTexts} texts`)
 
   return samples
 }
