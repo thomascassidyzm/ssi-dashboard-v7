@@ -657,12 +657,13 @@ const handleBatchDelete = async () => {
   if (selectedPhraseIds.value.size === 0) return;
 
   isDeleting.value = true;
+  const apiBaseUrl = getApiBaseUrl();
 
   try {
     const phraseIdsToDelete = Array.from(selectedPhraseIds.value);
 
     // Call the batch delete API
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode}/phrases/batch-delete`, {
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/phrases/batch-delete`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phraseIds: phraseIdsToDelete }),
