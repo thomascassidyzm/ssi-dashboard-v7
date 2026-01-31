@@ -9,6 +9,7 @@
       >
         <option value="tom">Tom's Machine</option>
         <option value="kai">Kai's Machine</option>
+        <option value="ssi">SSi Machine</option>
         <option value="api">API Server</option>
       </select>
       <div class="select-arrow">
@@ -39,6 +40,11 @@ const ENVIRONMENTS = {
     name: "Kai's Machine",
     url: 'https://kai-lizard-function.ngrok-free.dev',
     machineProfile: 'kai'
+  },
+  ssi: {
+    name: "SSi Machine",
+    url: 'https://ssi-machine.ngrok.app',
+    machineProfile: 'kai'  // Similar specs to Kai's machine (8GB RAM)
   },
   api: {
     name: 'API Server',
