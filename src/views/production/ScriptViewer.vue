@@ -1223,7 +1223,7 @@ const handlePhraseDelete = async (phrase: PhraseRowData) => {
     }
 
     // Reload data to reflect the deletion
-    await loadScriptViewData();
+    await loadCourseData();
   } catch (err) {
     console.error('Error deleting phrase:', err);
     alert('Failed to delete phrase. Please try again.');
