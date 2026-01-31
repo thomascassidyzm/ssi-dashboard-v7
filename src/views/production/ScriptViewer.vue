@@ -95,6 +95,19 @@
                 </svg>
               </button>
             </div>
+
+            <!-- Select Phrases Button -->
+            <button
+              v-if="!selectionMode"
+              @click="toggleSelectionMode"
+              class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors flex items-center gap-1"
+              title="Select phrases for batch delete"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+              Select Phrases
+            </button>
           </template>
 
           <!-- Pagination for journey mode -->
@@ -314,18 +327,55 @@
           </div>
         </div>
 
+        <!-- Selection Toolbar -->
+        <div v-if="selectionMode" class="selection-toolbar sticky top-0 z-20 bg-slate-900 border-b border-slate-700 px-4 py-3 mb-4 rounded-lg flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="text-slate-300">
+              <span class="font-medium text-white">{{ selectedCount }}</span> phrase{{ selectedCount !== 1 ? 's' : '' }} selected
+            </span>
+            <button
+              v-if="selectedCount > 0"
+              @click="clearSelection"
+              class="text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Clear selection
+            </button>
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              v-if="selectedCount > 0"
+              @click="showDeleteConfirmModal = true"
+              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              Delete {{ selectedCount }} phrase{{ selectedCount !== 1 ? 's' : '' }}
+            </button>
+            <button
+              @click="toggleSelectionMode"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Exit Selection
+            </button>
+          </div>
+        </div>
+
         <!-- Seed Rows -->
         <SeedRow
           v-for="seed in visibleSeeds"
           :key="seed.seed_id"
           :seed="seed"
           :course-code="courseCode"
+          :selection-mode="selectionMode"
+          :selected-phrase-ids="selectedPhraseIds"
           @toggle="toggleSeed"
           @lego-toggle="toggleLego"
           @phrase-flag="openFlagModal"
           @phrase-edit="openPhraseEditModal"
           @phrase-delete="handlePhraseDelete"
           @audio-flag="handleAudioFlag"
+          @toggle-selection="togglePhraseSelection"
           @phrase-play="playAudioSample"
           @phrase-pause="pauseAudio"
         />
@@ -393,6 +443,72 @@
       @save="savePhraseEdit"
     />
 
+    <!-- Batch Delete Confirmation Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="showDeleteConfirmModal"
+          class="delete-confirm-modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+          @click.self="showDeleteConfirmModal = false"
+        >
+          <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-md w-full">
+            <!-- Header -->
+            <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700">
+              <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Confirm Deletion
+              </h3>
+              <button
+                @click="showDeleteConfirmModal = false"
+                class="text-slate-400 hover:text-white transition-colors"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body px-6 py-5">
+              <p class="text-slate-300 mb-4">
+                You are about to permanently delete
+                <span class="font-semibold text-white">{{ selectedCount }}</span>
+                phrase{{ selectedCount !== 1 ? 's' : '' }} from this course.
+              </p>
+              <div class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-4 text-sm text-red-300">
+                <strong>Warning:</strong> This action cannot be undone. The phrases will be removed from the database.
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-700">
+              <button
+                @click="showDeleteConfirmModal = false"
+                class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                @click="handleBatchDelete"
+                :disabled="isDeleting"
+                class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+              >
+                <svg v-if="isDeleting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                {{ isDeleting ? 'Deleting...' : 'Delete Phrases' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 
     <!-- Keyboard Shortcuts Help Modal -->
     <Teleport to="body">
@@ -507,6 +623,85 @@ const journeyError = ref<string | null>(null);
 // Pagination for journey view (50 rounds per page)
 const journeyPage = ref(1);
 const journeyPageSize = 50;
+
+// Batch Selection State
+const selectionMode = ref(false);
+const selectedPhraseIds = ref<Set<string>>(new Set());
+const showDeleteConfirmModal = ref(false);
+
+// Selection methods
+const toggleSelectionMode = () => {
+  selectionMode.value = !selectionMode.value;
+  if (!selectionMode.value) {
+    selectedPhraseIds.value = new Set(); // Clear selection when exiting mode
+  }
+};
+
+const togglePhraseSelection = (phraseId: string) => {
+  const newSet = new Set(selectedPhraseIds.value);
+  if (newSet.has(phraseId)) {
+    newSet.delete(phraseId);
+  } else {
+    newSet.add(phraseId);
+  }
+  selectedPhraseIds.value = newSet;
+};
+
+const clearSelection = () => {
+  selectedPhraseIds.value = new Set();
+};
+
+const isDeleting = ref(false);
+
+const handleBatchDelete = async () => {
+  if (selectedPhraseIds.value.size === 0) return;
+
+  isDeleting.value = true;
+
+  try {
+    const phraseIdsToDelete = Array.from(selectedPhraseIds.value);
+
+    // Call the batch delete API
+    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode}/phrases/batch-delete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phraseIds: phraseIdsToDelete }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to delete phrases');
+    }
+
+    // Remove phrases from local state (optimistic update already done by API success)
+    const idsToDelete = new Set(phraseIdsToDelete);
+
+    seeds.value = seeds.value.map(seed => ({
+      ...seed,
+      introduction_phrases: seed.introduction_phrases.filter(
+        phrase => !idsToDelete.has(phrase.phrase_id)
+      ),
+      legos: seed.legos.map(lego => ({
+        ...lego,
+        phrases: lego.phrases.filter(phrase => !idsToDelete.has(phrase.phrase_id)),
+      })),
+    }));
+
+    // Close modal and exit selection mode
+    showDeleteConfirmModal.value = false;
+    selectedPhraseIds.value = new Set();
+    selectionMode.value = false;
+
+    console.log(`Successfully deleted ${phraseIdsToDelete.length} phrases`);
+  } catch (err) {
+    console.error('Failed to delete phrases:', err);
+    error.value = err instanceof Error ? err.message : 'Failed to delete phrases';
+  } finally {
+    isDeleting.value = false;
+  }
+};
+
+const selectedCount = computed(() => selectedPhraseIds.value.size);
 const learningJourneyRef = ref<any>(null);
 
 // Computed for pagination
@@ -697,7 +892,7 @@ const flatFlaggedItems = computed((): FlaggedItem[] => {
 const keyboardShortcuts: KeyboardShortcut[] = [
   { key: 'Space', description: 'Play/Pause audio', action: () => {/* handled by audio player */} },
   { key: 'F', description: 'Flag selected sample', action: () => {/* TODO: implement */} },
-  { key: 'Esc', description: 'Close modals', action: () => { closeFlagModal(); closePhraseEditModal(); showShortcutsHelp.value = false; } },
+  { key: 'Esc', description: 'Close modals', action: () => { closeFlagModal(); closePhraseEditModal(); showShortcutsHelp.value = false; showDeleteConfirmModal.value = false; } },
   { key: '?', description: 'Show keyboard shortcuts', action: () => { showShortcutsHelp.value = !showShortcutsHelp.value; } },
 ];
 

@@ -1776,6 +1776,50 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
   }
 })
 
+// Batch delete practice phrases
+app.post('/api/production/:courseCode/phrases/batch-delete', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { phraseIds } = req.body
+
+    if (!phraseIds || !Array.isArray(phraseIds) || phraseIds.length === 0) {
+      return res.status(400).json({ error: 'phraseIds array required' })
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const supabase = supabaseClient.getClient()
+
+    // Delete all phrases in the batch
+    const { error, count } = await supabase
+      .from('course_practice_phrases')
+      .delete()
+      .eq('course_code', courseCode)
+      .in('id', phraseIds)
+
+    if (error) {
+      logger.error(`Error batch deleting phrases:`, error)
+      throw error
+    }
+
+    logger.info(`Batch deleted ${phraseIds.length} phrases from ${courseCode}`)
+
+    // Broadcast deletion via WebSocket
+    io.to(`course:${courseCode}`).emit('phrases_batch_deleted', {
+      courseCode,
+      phraseIds,
+      count: phraseIds.length
+    })
+
+    res.json({ success: true, deleted: phraseIds.length })
+  } catch (error) {
+    logger.error('Error batch deleting phrases:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // =============================================================================
 // LEGACY FLAGS (old sample_flags table - keep for backwards compat)
 // =============================================================================

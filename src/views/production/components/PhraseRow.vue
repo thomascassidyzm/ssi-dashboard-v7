@@ -1,12 +1,25 @@
 <template>
   <div
     class="phrase-row bg-slate-800 border-l-4 rounded-lg p-4 transition-all"
-    :class="borderClass"
+    :class="[borderClass, { 'bg-red-900 bg-opacity-30': isSelected }]"
   >
     <!-- Header -->
     <div class="phrase-header flex items-start justify-between gap-4 mb-3">
       <div class="phrase-info flex-1">
         <div class="flex items-center gap-2 mb-1">
+          <!-- Selection checkbox -->
+          <label
+            v-if="selectionMode"
+            class="selection-checkbox flex items-center cursor-pointer"
+            @click.stop
+          >
+            <input
+              type="checkbox"
+              :checked="isSelected"
+              @change="toggleSelection"
+              class="w-4 h-4 rounded border-slate-500 bg-slate-700 text-red-500 focus:ring-red-500 focus:ring-offset-0 cursor-pointer"
+            />
+          </label>
           <span class="position-badge px-2 py-0.5 text-xs font-medium bg-slate-600 text-slate-200 rounded">
             {{ position }}
           </span>
@@ -233,6 +246,8 @@ const props = defineProps<{
   position: number;
   flagNotes?: string;
   courseCode?: string;
+  selectionMode?: boolean;
+  isSelected?: boolean;
 }>();
 
 // Emits
@@ -242,7 +257,13 @@ const emit = defineEmits<{
   audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
   play: [sample: AudioSample];
   pause: [];
+  toggleSelection: [phraseId: string];
 }>();
+
+// Selection toggle
+const toggleSelection = () => {
+  emit('toggleSelection', props.phrase.phrase_id);
+};
 
 // Inline audio playback state
 const isPlaying = ref(false);

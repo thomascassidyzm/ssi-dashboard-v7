@@ -67,10 +67,13 @@
           :position="index + 1"
           :course-code="courseCode"
           :flag-notes="getFlagNotes(phrase)"
+          :selection-mode="selectionMode"
+          :is-selected="selectedPhraseIds?.has(phrase.phrase_id)"
           @phrase-flag="onPhraseFlag"
           @phrase-edit="onPhraseEdit"
           @phrase-delete="onPhraseDelete"
           @audio-flag="onAudioFlag"
+          @toggle-selection="onToggleSelection"
           @play="onPhrasePlay"
           @pause="onPhrasePause"
         />
@@ -95,6 +98,8 @@ type AudioTrack = 'known' | 'target1' | 'target2';
 const props = defineProps<{
   lego: LegoRowData;
   courseCode?: string;
+  selectionMode?: boolean;
+  selectedPhraseIds?: Set<string>;
 }>();
 
 // Emits
@@ -104,9 +109,14 @@ const emit = defineEmits<{
   phraseEdit: [phrase: PhraseRowData];
   phraseDelete: [phrase: PhraseRowData];
   audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
+  toggleSelection: [phraseId: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
 }>();
+
+const onToggleSelection = (phraseId: string) => {
+  emit('toggleSelection', phraseId);
+};
 
 // Computed
 const typeBadgeClass = computed(() => {

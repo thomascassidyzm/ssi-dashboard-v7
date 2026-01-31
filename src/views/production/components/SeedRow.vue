@@ -88,10 +88,13 @@
               :position="index + 1"
               :course-code="courseCode"
               :flag-notes="getFlagNotes(phrase)"
+              :selection-mode="selectionMode"
+              :is-selected="selectedPhraseIds?.has(phrase.phrase_id)"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-delete="onPhraseDelete"
               @audio-flag="onAudioFlag"
+              @toggle-selection="onToggleSelection"
               @play="onPhrasePlay"
               @pause="onPhrasePause"
             />
@@ -113,11 +116,14 @@
               :key="lego.lego_id"
               :lego="lego"
               :course-code="courseCode"
+              :selection-mode="selectionMode"
+              :selected-phrase-ids="selectedPhraseIds"
               @toggle="onLegoToggle"
               @phrase-flag="onPhraseFlag"
               @phrase-edit="onPhraseEdit"
               @phrase-delete="onPhraseDelete"
               @audio-flag="onAudioFlag"
+              @toggle-selection="onToggleSelection"
               @phrase-play="onPhrasePlay"
               @phrase-pause="onPhrasePause"
             />
@@ -146,6 +152,8 @@ import type { SeedRowData, LegoRowData, PhraseRowData, AudioSample } from '@/typ
 const props = defineProps<{
   seed: SeedRowData;
   courseCode?: string;
+  selectionMode?: boolean;
+  selectedPhraseIds?: Set<string>;
 }>();
 
 // Audio track type (matches PhraseRow)
@@ -159,9 +167,14 @@ const emit = defineEmits<{
   phraseEdit: [phrase: PhraseRowData];
   phraseDelete: [phrase: PhraseRowData];
   audioFlag: [phrase: PhraseRowData, track: AudioTrack, uuid: string];
+  toggleSelection: [phraseId: string];
   phrasePlay: [sample: AudioSample];
   phrasePause: [];
 }>();
+
+const onToggleSelection = (phraseId: string) => {
+  emit('toggleSelection', phraseId);
+};
 
 // Computed
 const totalPhraseCount = computed(() => {
