@@ -502,14 +502,17 @@ app.get('/api/courses', async (req, res) => {
 
 // Create new course - DATABASE-FIRST (APML v14)
 app.post('/api/courses/create', async (req, res) => {
-  const { courseCode, displayName, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+  const { courseCode, displayName, knownLanguage, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+
+  // Accept both knownLanguage (new) and sourceLanguage (legacy)
+  const known = knownLanguage || sourceLanguage
 
   logger.info(`Creating course: ${courseCode}`)
 
-  if (!courseCode || !sourceLanguage || !targetLanguage) {
+  if (!courseCode || !known || !targetLanguage) {
     return res.status(400).json({
       error: 'Missing required fields',
-      required: ['courseCode', 'sourceLanguage', 'targetLanguage']
+      required: ['courseCode', 'knownLanguage', 'targetLanguage']
     })
   }
 
@@ -542,9 +545,9 @@ app.post('/api/courses/create', async (req, res) => {
       .from('courses')
       .insert({
         course_code: courseCode,
-        known_lang: sourceLanguage,
+        known_lang: known,
         target_lang: targetLanguage,
-        display_name: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+        display_name: displayName || `${targetLanguage} for ${known} speakers`,
         status: 'draft'
       })
 
