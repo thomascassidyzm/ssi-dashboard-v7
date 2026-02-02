@@ -86,7 +86,7 @@
                   :class="{ 'border-red-500': errors.sourceLanguage }"
                   @change="onLanguageChange"
                 >
-                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
+                  <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select known language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
@@ -115,7 +115,7 @@
                   :class="{ 'border-red-500': errors.targetLanguage }"
                   @change="onLanguageChange"
                 >
-                  <option value="" disabled>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
+                  <option value="" disabled selected>{{ languagesLoading ? 'Loading languages...' : 'Select target language' }}</option>
                   <option
                     v-for="lang in languages"
                     :key="lang.code"
