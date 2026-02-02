@@ -15,7 +15,7 @@
           <div>
             <label class="block text-xs text-slate-500 mb-2">Known Language (Learning FROM)</label>
             <select
-              v-model="sourceLanguage"
+              v-model="knownLanguage"
               class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             >
               <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
@@ -441,15 +441,15 @@ const props = defineProps({
 const isCreateMode = computed(() => props.courseCode === 'new')
 
 // Language selection state
-const sourceLanguage = ref('')  // User must select known language
+const knownLanguage = ref('')  // User must select known language
 const targetLanguage = ref('')
 const languages = ref([])
 const languagesLoading = ref(true)
 
 // Computed course code from language selection
 const computedCourseCode = computed(() => {
-  if (!sourceLanguage.value || !targetLanguage.value) return ''
-  return `${targetLanguage.value}_for_${sourceLanguage.value}`
+  if (!knownLanguage.value || !targetLanguage.value) return ''
+  return `${targetLanguage.value}_for_${knownLanguage.value}`
 })
 
 // Effective course code (from prop or computed)
@@ -961,7 +961,7 @@ async function startBuilder() {
         },
         body: JSON.stringify({
           courseCode,
-          sourceLanguage: sourceLanguage.value,
+          knownLanguage: knownLanguage.value,
           targetLanguage: targetLanguage.value,
           seedStart: 1,
           seedEnd: seedCount.value
