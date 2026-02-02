@@ -16,8 +16,12 @@
 
 const express = require('express');
 const cors = require('cors');
+const os = require('os');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
+
+const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
+const SPAWN_MODE = process.env.SPAWN_MODE || 'iTerm2';  // 'headless' for remote servers, 'iTerm2'/'Terminal' for interactive
 
 const app = express();
 
@@ -1239,8 +1243,10 @@ async function getBuildProgress(courseCode) {
 }
 
 /**
- * Spawn a new Claude agent for a course using osascript
- * Called by dashboard when user clicks Start/Resume - NOT auto-triggered
+ * Spawn a new Claude agent for a course.
+ * In headless mode (SPAWN_MODE=headless): background process with log output.
+ * In terminal mode: opens iTerm2/Terminal window via osascript.
+ * Called by dashboard when user clicks Start/Resume - NOT auto-triggered.
  */
 async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
   // Fetch checkpoint configs to generate dynamic instructions
@@ -1305,7 +1311,8 @@ async function spawnBuildAgent(courseCode, agentNumber, terminal = 'iTerm2') {
   }
 
   // Close any previous agent windows for this course (cleanup for RAM)
-  if (agentNumber > 1) {
+  // Skip in headless mode - no windows to close
+  if (agentNumber > 1 && SPAWN_MODE !== 'headless') {
     const closeScript = terminal === 'iTerm2'
       ? `tell application "iTerm" to close (every window whose name contains "${courseCode}")`
       : `tell application "Terminal" to close (every window whose name contains "${courseCode}")`;
@@ -1591,6 +1598,10 @@ Keep going until you finish or get blocked.
 6. Learners will hear USE phrases HUNDREDS of times - quality matters!
 7. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
    - If tiling fails, you're missing a word/particle - add it to a LEGO!
+8. **OVERLAPPING LEGOs**: When word order differs, use BOTH atomic AND chunk LEGOs!
+   - Example: "blue thing" → "cosa azul" (Spanish reverses order)
+   - Create: "blue"→"azul", "thing"→"cosa", AND "blue thing"→"cosa azul"
+   - The chunk M-LEGO handles the transformation when words combine
 ${lessonsSection}`;
 
   // Write prompt to temp file to avoid escaping nightmares
@@ -1600,54 +1611,100 @@ ${lessonsSection}`;
   // cd to project dir so skills work, then run claude
   const projectDir = __dirname.replace('/services', '');
   const claudeCmd = `cd "${projectDir}" && claude --dangerously-skip-permissions "$(cat ${tmpFile})"`;
-  // Escape for AppleScript string
-  const escapedCmd = claudeCmd.replace(/"/g, '\\"');
 
-  console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode} in ${terminal}`);
+  // SPAWN_MODE env var overrides terminal param (set 'headless' on remote servers)
+  const effectiveTerminal = SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-  let osascript;
-  if (terminal === 'iTerm2') {
-    // Note: "iTerm" not "iTerm2" in AppleScript
-    osascript = `tell application "iTerm"
+  console.log(`[BUILD] Spawning Agent #${agentNumber} for ${courseCode} in ${effectiveTerminal}`);
+
+  let agent;
+
+  if (effectiveTerminal === 'headless') {
+    // ── Headless mode: background process with log files (no GUI) ──
+    // Ideal for remote servers where nobody watches terminal windows.
+    // Stall watcher handles stuck agents via respawn.
+    const fs = require('fs');
+    const logsDir = require('path').join(projectDir, 'logs');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+
+    const logFile = `${logsDir}/agent-${courseCode}-${agentNumber}.log`;
+    const out = fs.openSync(logFile, 'a');
+    const err = fs.openSync(logFile, 'a');
+
+    agent = spawn('bash', ['-c', claudeCmd], {
+      stdio: ['ignore', out, err],
+      detached: true
+    });
+
+    // Let the agent run independently of this process
+    agent.unref();
+
+    console.log(`[BUILD] Agent #${agentNumber} launched headless (pid: ${agent.pid}, log: ${logFile})`);
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[BUILD] Agent #${agentNumber} headless spawn error:`, spawnErr.message);
+      const build = activeBuilds.get(courseCode);
+      if (build) {
+        build.agent = null;
+        build.status = 'agent_error';
+      }
+    });
+
+    agent.on('exit', (code) => {
+      console.log(`[BUILD] Agent #${agentNumber} headless process exited (code: ${code})`);
+      const build = activeBuilds.get(courseCode);
+      if (build) {
+        build.status = code === 0 ? 'agent_exited' : 'agent_error';
+      }
+    });
+  } else {
+    // ── Terminal mode: open iTerm2/Terminal window (interactive) ──
+    const escapedCmd = claudeCmd.replace(/"/g, '\\"');
+
+    let osascript;
+    if (effectiveTerminal === 'iTerm2') {
+      // Note: "iTerm" not "iTerm2" in AppleScript
+      osascript = `tell application "iTerm"
   activate
   set newWindow to (create window with default profile)
   tell current session of newWindow
     write text "${escapedCmd}"
   end tell
 end tell`;
-  } else {
-    osascript = `tell application "Terminal"
+    } else {
+      osascript = `tell application "Terminal"
   activate
   do script "${escapedCmd}"
 end tell`;
+    }
+
+    agent = spawn('osascript', ['-e', osascript], {
+      stdio: 'pipe',
+      detached: true
+    });
+
+    agent.on('error', (spawnErr) => {
+      console.error(`[BUILD] Agent #${agentNumber} osascript error:`, spawnErr.message);
+      const build = activeBuilds.get(courseCode);
+      if (build) {
+        console.log(`[BUILD-DEBUG] >>> AGENT SET TO NULL - REASON: osascript error (${spawnErr.message})`);
+        console.log(`[BUILD-DEBUG]     Previous status: ${build.status}, agentCount: ${build.agentCount}`);
+        build.agent = null;
+        build.status = 'agent_error';
+      }
+    });
+
+    agent.on('exit', (code) => {
+      // osascript exits immediately after launching the terminal window
+      // The actual claude process runs independently in the terminal
+      console.log(`[BUILD] Agent #${agentNumber} terminal launched (osascript exit code: ${code})`);
+      const build = activeBuilds.get(courseCode);
+      if (build) {
+        // Don't set agent to null - we track via progress, not process
+        build.status = 'agent_running';
+      }
+    });
   }
-
-  const agent = spawn('osascript', ['-e', osascript], {
-    stdio: 'pipe',
-    detached: true
-  });
-
-  agent.on('error', (err) => {
-    console.error(`[BUILD] Agent #${agentNumber} osascript error:`, err.message);
-    const build = activeBuilds.get(courseCode);
-    if (build) {
-      console.log(`[BUILD-DEBUG] >>> AGENT SET TO NULL - REASON: osascript error (${err.message})`);
-      console.log(`[BUILD-DEBUG]     Previous status: ${build.status}, agentCount: ${build.agentCount}`);
-      build.agent = null;
-      build.status = 'agent_error';
-    }
-  });
-
-  agent.on('exit', (code) => {
-    // osascript exits immediately after launching the terminal window
-    // The actual claude process runs independently in the terminal
-    console.log(`[BUILD] Agent #${agentNumber} terminal launched (osascript exit code: ${code})`);
-    const build = activeBuilds.get(courseCode);
-    if (build) {
-      // Don't set agent to null - we track via progress, not process
-      build.status = 'agent_running';
-    }
-  });
 
   return agent;
 }
@@ -1895,7 +1952,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
         status: 'running',
         terminal: terminal,
         current_seed: progress.completed,
-        last_heartbeat: new Date().toISOString()
+        last_heartbeat: new Date().toISOString(),
+        machine_name: MACHINE_NAME
       }).eq('id', existingJob.id);
     }
   } catch (dbErr) {
@@ -1919,7 +1977,8 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
           requested_by: 'dashboard',
           terminal: terminal,
           agent_count: 0,
-          respawn_count: 0
+          respawn_count: 0,
+          machine_name: MACHINE_NAME
         })
         .select('id')
         .single();
@@ -2523,7 +2582,7 @@ function generateBuildupPhrases(lego, courseCode) {
 }
 
 // =============================================================================
-// LEGO CONFLICT DETECTION (ZUT Violations)
+// LEGO CONFLICT DETECTION (ZUT Violations) + OVERLAP DETECTION
 // =============================================================================
 
 /**
@@ -2533,12 +2592,22 @@ function generateBuildupPhrases(lego, courseCode) {
  * - { conflict: false } - No conflict, proceed with is_new: true
  * - { conflict: 'duplicate', existing } - Same known+target exists, use is_new: false
  * - { conflict: 'zut', existing, error } - Same known, different target = ZUT violation
+ *
+ * OVERLAP SUPPORT (January 2026):
+ * When word order differs between languages, you need BOTH atomic LEGOs AND chunk M-LEGOs.
+ * Example: "blue thing" = "cosa azul" in Spanish (reversed order)
+ *   - A-LEGO: "blue" → "azul"
+ *   - A-LEGO: "thing" → "cosa"
+ *   - M-LEGO: "blue thing" → "cosa azul" (chunk for the word-order difference)
+ *
+ * This is NOT a ZUT conflict because the known_texts are different ("blue" ≠ "blue thing").
+ * The ZUT check only triggers for EXACT known_text matches.
  */
 async function checkLegoConflict(courseCode, knownText, targetText) {
   // Find any existing LEGOs with the same known_text
   const { data: existing, error } = await supabase
     .from('course_legos')
-    .select('seed_number, lego_index, known_text, target_text')
+    .select('seed_number, lego_index, known_text, target_text, type')
     .eq('course_code', courseCode)
     .eq('known_text', knownText);
 
@@ -2577,8 +2646,66 @@ async function checkLegoConflict(courseCode, knownText, targetText) {
       `  - "${knownText}" → "${existing[0].target_text}" (existing)`,
       `  - "[more specific phrase]" → "${targetText}" (new)`,
       `SYNONYM: Use different known text`,
-      `  - Find a synonym or variant for "${knownText}"`
+      `  - Find a synonym or variant for "${knownText}"`,
+      `OVERLAP: If word order differs in target language, you may need BOTH atomic and chunk LEGOs`,
+      `  - Example: "blue" + "thing" (atoms) AND "blue thing" (chunk) when order reverses`
     ]
+  };
+}
+
+/**
+ * Check if a LEGO represents an "overlapping" chunk - where an M-LEGO contains A-LEGOs.
+ * This is VALID and ENCOURAGED when word order differs between languages.
+ *
+ * Example: Spanish "blue thing" = "cosa azul" (reversed order)
+ *   - Having "blue" → "azul" AND "thing" → "cosa" AND "blue thing" → "cosa azul" is CORRECT
+ *   - The M-LEGO "blue thing" handles the word-order transformation
+ *
+ * Returns: { isOverlap: boolean, containedLegos: [...] }
+ */
+async function checkLegoOverlap(courseCode, knownText, targetText) {
+  // Find existing LEGOs whose known_text is contained within the new LEGO's known_text
+  const { data: allLegos, error } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text, type')
+    .eq('course_code', courseCode);
+
+  if (error || !allLegos) {
+    return { isOverlap: false, containedLegos: [] };
+  }
+
+  const knownLower = knownText.toLowerCase();
+  const targetLower = targetText.toLowerCase();
+
+  // Find A-LEGOs whose known_text is a word in the new LEGO's known_text
+  const knownWords = knownLower.split(/\s+/);
+  const containedLegos = [];
+
+  for (const lego of allLegos) {
+    const legoKnown = lego.known_text.toLowerCase();
+    const legoTarget = lego.target_text.toLowerCase();
+
+    // Check if this LEGO's known is a word in our known
+    if (knownWords.includes(legoKnown)) {
+      // And if its target appears somewhere in our target (possibly reordered)
+      const targetWords = targetLower.split(/\s+/).concat([...targetLower]); // words + chars for CJK
+      if (targetWords.some(w => w.includes(legoTarget) || legoTarget.includes(w))) {
+        containedLegos.push({
+          legoId: `S${String(lego.seed_number).padStart(4,'0')}L${String(lego.lego_index).padStart(2,'0')}`,
+          known: lego.known_text,
+          target: lego.target_text,
+          type: lego.type
+        });
+      }
+    }
+  }
+
+  return {
+    isOverlap: containedLegos.length > 0,
+    containedLegos,
+    note: containedLegos.length > 0
+      ? `This M-LEGO contains ${containedLegos.length} existing A-LEGO(s). This is VALID for word-order differences.`
+      : null
   };
 }
 
@@ -3004,6 +3131,25 @@ const METHODOLOGY_HINTS = {
    - UPCHUNK: Add context to disambiguate
    - Or use a synonym for the known text`,
 
+  overlap: `
+📚 OVERLAPPING LEGOs - For Word Order Differences:
+   When word order differs between languages, use BOTH atomic LEGOs AND a chunk M-LEGO.
+
+   Example: "blue thing" = "cosa azul" in Spanish (reversed order)
+   - A-LEGO: "blue" → "azul"
+   - A-LEGO: "thing" → "cosa"
+   - M-LEGO: "blue thing" → "cosa azul" (chunk handles the transformation)
+
+   This is NOT a ZUT conflict because the known_texts are different.
+   The chunk M-LEGO handles cases where simple word-by-word tiling doesn't work.
+
+   When to use overlapping LEGOs:
+   - Adjective/noun order reversal (English→Spanish, English→French)
+   - Verb position differences (English→German, English→Japanese)
+   - Particle placement differences (many Asian languages)
+
+   The learner benefits from knowing BOTH the atomic pieces AND the combined chunk.`,
+
   components: `
 📚 See /ssi-decompose-seed for M-LEGO component requirements:
    - ALL M-type LEGOs MUST have component breakdown
@@ -3016,7 +3162,24 @@ const METHODOLOGY_HINTS = {
    - Prioritize recent, underused LEGOs in new phrases
    - Avoid over-relying on common vocabulary (>1.5x avg usage)
    - Include underused LEGOs (<0.3x avg usage) in your phrases
-   - Each LEGO needs balanced practice exposure`
+   - Each LEGO needs balanced practice exposure`,
+
+  length_mismatch: `
+📚 PHRASE LENGTH MISMATCH - Translation Fidelity Issue:
+   - known_text and target_text must express the SAME meaning
+   - If one is much longer, you likely added extra content
+   - DO NOT pad phrases with available vocabulary to hit length targets
+   - If you need longer phrases, make BOTH languages longer together
+
+   Example of WRONG:
+     known:  "明日会いたい" (7 chars)
+     target: "I want to meet at six o'clock this evening" (42 chars)
+     → "at six o'clock this evening" was ADDED, not translated!
+
+   Example of RIGHT:
+     known:  "明日6時に会いたい" (9 chars)
+     target: "I want to meet at six o'clock tomorrow" (38 chars)
+     → Both express the same meaning`
 };
 
 /**
@@ -3068,7 +3231,8 @@ app.post('/api/lego', async (req, res) => {
         got: phraseCount,
         required: minRequired,
         global_position: globalPosition,
-        hint: `LEGO at position ~${globalPosition} needs at least ${minRequired} phrases.`
+        skills: ['/ssi-build-phrases', '/ssi-phrase-variety'],
+        hint: `LEGO at position ~${globalPosition} needs at least ${minRequired} phrases. Review /ssi-build-phrases for phrase generation guidance.`
       });
     }
 
@@ -3094,7 +3258,8 @@ app.post('/api/lego', async (req, res) => {
           new_target: target,
           existing: conflictResult.existing,
           suggestions: conflictResult.suggestions,
-          hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym.'
+          skills: ['/ssi-decompose-seed', '/ssi-add-overlapping-legos'],
+          hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym. Review /ssi-add-overlapping-legos for overlap patterns.'
         });
       }
 
@@ -3129,7 +3294,8 @@ app.post('/api/lego', async (req, res) => {
           violations: violations.slice(0, 5),  // Show first 5
           total_violations: violations.length,
           vocab_size: vocabSet.size,
-          hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}`
+          skills: ['/ssi-build-phrases'],
+          hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review /ssi-build-phrases for available vocabulary rules.`
         });
       }
     }
@@ -3447,7 +3613,8 @@ app.post('/api/batch', async (req, res) => {
         error: 'ZUT violations detected',
         zut_violations: zutViolations,
         processed_before_error: totalPhrases,
-        hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms.'
+        skills: ['/ssi-decompose-seed', '/ssi-add-overlapping-legos'],
+        hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms. Review /ssi-add-overlapping-legos for overlap patterns.'
       });
     }
 
@@ -3475,11 +3642,19 @@ app.post('/api/batch', async (req, res) => {
  * IMPORTANT: known_text comes from the CANONICAL SEEDS already in the database.
  * Agent only provides the target language translation and LEGOs.
  *
+ * REQUIRED: Semantic Attestation (January 2026)
+ * Agent MUST include attestation.semantic_match_verified: true to confirm
+ * that ALL phrase pairs (known_text ↔ target_text) express the SAME meaning.
+ * This catches the failure mode where one language gets "padded" with extra content.
+ *
  * Body:
  * {
  *   "course_code": "zho_for_eng",
  *   "seed_number": 42,
  *   "target_text": "我想学中文",
+ *   "attestation": {
+ *     "semantic_match_verified": true
+ *   },
  *   "legos": [
  *     {
  *       "idx": 1,
@@ -3524,6 +3699,34 @@ app.post('/api/seed/complete', async (req, res) => {
       return res.status(400).json({
         error: 'legos must be a non-empty array',
         seed: seedId
+      });
+    }
+
+    // =========================================================================
+    // SEMANTIC ATTESTATION GATE (January 2026)
+    // Agent must explicitly confirm that all phrase pairs are semantically equivalent.
+    // This catches the failure mode where English phrases get "padded" with extra
+    // vocabulary that doesn't exist in the known language text.
+    // =========================================================================
+    const { attestation } = req.body;
+    if (!attestation?.semantic_match_verified) {
+      return res.status(400).json({
+        error: 'SEMANTIC_ATTESTATION_REQUIRED',
+        message: 'You must confirm that all phrase pairs are semantically equivalent',
+        required: {
+          attestation: {
+            semantic_match_verified: true
+          }
+        },
+        hint: 'Before submitting, verify that EVERY phrase known_text means EXACTLY the same as its target_text. No additions, no omissions. Add attestation.semantic_match_verified: true to confirm.',
+        example: {
+          course_code: 'eng_for_jpn',
+          seed_number: 42,
+          attestation: {
+            semantic_match_verified: true
+          },
+          legos: ['...']
+        }
       });
     }
 
@@ -3659,7 +3862,8 @@ app.post('/api/seed/complete', async (req, res) => {
           you_sent: agent_known_text,
           canonical: canonicalSeed.known_text,
           action_required: `GET /api/resume/${course_code} to get the correct next seed and context`,
-          hint: 'After context compaction, ALWAYS call /api/resume first. Do NOT guess seed text.'
+          skills: ['/course-resume'],
+          hint: 'After context compaction, ALWAYS call /api/resume first. Do NOT guess seed text. Review /course-resume for recovery guidance.'
         });
       }
     }
@@ -3785,6 +3989,57 @@ app.post('/api/seed/complete', async (req, res) => {
         legos_with_violations: vocabViolations,
         methodology: METHODOLOGY_HINTS.vocab
       });
+    }
+
+    // 3b. PHRASE LENGTH RATIO VALIDATION (January 2026)
+    // Catches asymmetric padding: if known_text and target_text have very different lengths,
+    // it suggests one side was "padded" with extra content not in the other language.
+    // Ratio tolerance: 2.5x allows for natural language length differences, catches obvious padding.
+    const LENGTH_RATIO_THRESHOLD = 2.5;
+    const lengthMismatches = [];
+
+    for (const lego of legos) {
+      const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+      const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+      if (isDuplicate) continue;
+
+      let allPhrases = [];
+      if (usesBuildUseFormat(lego)) {
+        allPhrases = [...(lego.build || []), ...(lego.use || [])];
+      } else if (lego.phrases) {
+        allPhrases = lego.phrases;
+      }
+
+      for (const phrase of allPhrases) {
+        if (!phrase.known || !phrase.target) continue;
+        const knownLen = phrase.known.length;
+        const targetLen = phrase.target.length;
+        if (knownLen === 0 || targetLen === 0) continue;
+
+        const ratio = Math.max(knownLen, targetLen) / Math.min(knownLen, targetLen);
+        if (ratio > LENGTH_RATIO_THRESHOLD) {
+          lengthMismatches.push({
+            lego_id: legoId,
+            known: phrase.known.substring(0, 50),
+            target: phrase.target.substring(0, 50),
+            known_len: knownLen,
+            target_len: targetLen,
+            ratio: Math.round(ratio * 10) / 10
+          });
+        }
+      }
+    }
+
+    if (lengthMismatches.length > 0 && !SKIP_VALIDATION) {
+      errors.push({
+        type: 'length_mismatch',
+        message: `Phrase length mismatch - known and target should express same content (ratio > ${LENGTH_RATIO_THRESHOLD}x)`,
+        mismatches: lengthMismatches.slice(0, 5),  // First 5
+        total_mismatches: lengthMismatches.length,
+        hint: 'If target is much longer than known (or vice versa), you may have added extra content. Both languages must express the SAME meaning.',
+        methodology: 'Each phrase pair is a translation. known_text and target_text must be semantically equivalent - no additions, no omissions.'
+      });
+      console.log(`✗ ${seedId}: LENGTH MISMATCH - ${lengthMismatches.length} phrases with ratio > ${LENGTH_RATIO_THRESHOLD}x`);
     }
 
     // 4. PHRASE VALIDATION (supports both BUILD/USE and legacy format)
@@ -4017,7 +4272,8 @@ app.post('/api/seed/complete', async (req, res) => {
         seed: seedId,
         errors,
         warnings,
-        hint: 'Fix all errors and resubmit. Nothing was inserted.'
+        skills: ['/ssi-learner-pattern', '/ssi-decompose-seed', '/ssi-build-phrases'],
+        hint: 'Fix all errors and resubmit. Nothing was inserted. Review listed skills for methodology guidance.'
       });
     }
 
@@ -4403,7 +4659,8 @@ app.post('/api/seed/complete', async (req, res) => {
         current_seed: seed_number,
         seeds_completed: seed_number,
         last_heartbeat: progressTimestamp,
-        last_progress_at: progressTimestamp  // Track actual progress for stuck detection
+        last_progress_at: progressTimestamp,  // Track actual progress for stuck detection
+        machine_name: MACHINE_NAME
       })
       .eq('course_code', course_code)
       .eq('status', 'running')
@@ -4445,13 +4702,15 @@ app.post('/api/seed/complete', async (req, res) => {
       },
 
       // SESSION TRACKING - for batch efficiency
+      // In headless mode, never suggest exiting - agent should keep going until done.
+      // Stall watcher handles stuck agents; no need for voluntary batch exits.
       session: (() => {
         const activity = courseActivity.get(course_code);
         const seedsThisSession = activity?.seedsThisSession || 1;
-        const shouldExit = seedsThisSession >= BATCH_SIZE;
+        const shouldExit = SPAWN_MODE !== 'headless' && seedsThisSession >= BATCH_SIZE;
         return {
           seeds_this_session: seedsThisSession,
-          batch_size: BATCH_SIZE,
+          batch_size: SPAWN_MODE === 'headless' ? null : BATCH_SIZE,
           suggestion: shouldExit ? 'EXIT_FOR_FRESH_CONTEXT' : 'CONTINUE',
           message: shouldExit
             ? `You have completed ${seedsThisSession} seeds. Exit gracefully for fresh context - orchestrator will spawn a new agent.`
@@ -4971,10 +5230,10 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     startedAt: agentHeartbeats.get(courseCode)?.startedAt || now
   });
 
-  // Get course info including translation_analysis and seed_count (Two-Pass workflow)
+  // Get course info including translation_analysis, quality_rules, and seed_count (Two-Pass workflow)
   const { data: courseInfo } = await supabase
     .from('courses')
-    .select('display_name, translation_analysis, seed_count')
+    .select('display_name, translation_analysis, quality_rules, seed_count')
     .eq('course_code', courseCode)
     .single();
 
@@ -5106,6 +5365,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     course_code: courseCode,
     target_language: targetLangName,
     translation_analysis: courseInfo?.translation_analysis || null,
+    quality_rules: courseInfo?.quality_rules || null,
     checkpoint: await getCheckpointStatus(courseCode),
 
     // Context from recent work
@@ -5618,6 +5878,114 @@ app.get('/api/course/:courseCode/analysis', async (req, res) => {
 });
 
 /**
+ * POST /api/course/:courseCode/quality-rules - Save methodology guidance after Pass 1
+ *
+ * Body: {
+ *   quality_rules: {
+ *     course_code: "ara_for_eng",
+ *     known_language: "eng",
+ *     target_language: "ara",
+ *     analysis_date: "2026-01-29",
+ *     known_language_guidance: { quality_bar, avoid_patterns, trust_test },
+ *     target_language_guidance: { quality_bar, structural_notes },
+ *     zut_direction: "eng → ara",
+ *     early_seed_guidance: { applies_to_seeds, phrase_tips },
+ *     methodology_insights: [...]
+ *   }
+ * }
+ */
+app.post('/api/course/:courseCode/quality-rules', async (req, res) => {
+  const { courseCode } = req.params;
+  const { quality_rules } = req.body;
+
+  if (!quality_rules || typeof quality_rules !== 'object') {
+    return res.status(400).json({
+      error: 'Required: quality_rules object with methodology guidance'
+    });
+  }
+
+  // Validate required fields
+  const requiredFields = ['analysis_date', 'known_language', 'target_language'];
+  const missingFields = requiredFields.filter(f => !quality_rules[f]);
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      error: `Missing required fields in quality_rules: ${missingFields.join(', ')}`
+    });
+  }
+
+  // Check course exists
+  const { data: course, error: courseErr } = await supabase
+    .from('courses')
+    .select('course_code, display_name')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (courseErr || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  // Save quality_rules to course record
+  const { error: updateErr } = await supabase
+    .from('courses')
+    .update({
+      quality_rules: quality_rules,
+      updated_at: new Date().toISOString()
+    })
+    .eq('course_code', courseCode);
+
+  if (updateErr) {
+    console.error(`Error saving quality_rules for ${courseCode}:`, updateErr);
+    return res.status(500).json({ error: updateErr.message });
+  }
+
+  console.log(`[QUALITY_RULES] Saved methodology guidance for ${courseCode}`);
+
+  res.json({
+    success: true,
+    course_code: courseCode,
+    message: 'Quality rules saved - methodology guidance now available for future agents',
+    summary: {
+      known_language: quality_rules.known_language,
+      target_language: quality_rules.target_language,
+      avoid_patterns_count: (quality_rules.known_language_guidance?.avoid_patterns || []).length,
+      methodology_insights_count: (quality_rules.methodology_insights || []).length,
+      zut_direction: quality_rules.zut_direction || 'not specified'
+    }
+  });
+});
+
+/**
+ * GET /api/course/:courseCode/quality-rules - Retrieve methodology guidance
+ */
+app.get('/api/course/:courseCode/quality-rules', async (req, res) => {
+  const { courseCode } = req.params;
+
+  const { data: course, error } = await supabase
+    .from('courses')
+    .select('course_code, display_name, quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (error || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  if (!course.quality_rules) {
+    return res.status(404).json({
+      error: 'No quality rules found',
+      hint: 'Run /course-methodology-analysis after Pass 1 to generate guidance',
+      course_code: courseCode
+    });
+  }
+
+  res.json({
+    course_code: courseCode,
+    display_name: course.display_name,
+    quality_rules: course.quality_rules
+  });
+});
+
+/**
  * POST /api/phrases - Add phrases to an existing LEGO basket
  * Used for topping up baskets that need more phrases
  */
@@ -5681,13 +6049,20 @@ app.post('/api/phrases', async (req, res) => {
         unknown: chinese ? unknown.join('') : unknown.join(', ')
       });
     } else {
+      const position = nextPosition++;
       validPhrases.push({
         course_code,
         seed_number,
         lego_index,
-        position: nextPosition++,
+        position,
         known_text: known,
-        target_text: target
+        target_text: target,
+        word_count: target.length,
+        lego_count: (known.match(/\s+/g) || []).length + 1,
+        phrase_role: phrase.role || 'practice',  // Allow specifying role, default to practice
+        connected_lego_ids: [],
+        lego_position: null,  // Will be computed if needed
+        metadata: phrase.score ? { score: phrase.score } : {}
       });
     }
   }
@@ -5709,7 +6084,9 @@ app.post('/api/phrases', async (req, res) => {
     return res.status(400).json({
       error: 'Vocabulary violations detected',
       violations,
-      message: 'These phrases use characters not yet introduced'
+      message: 'These phrases use characters not yet introduced',
+      skills: ['/ssi-build-phrases'],
+      hint: 'Review /ssi-build-phrases for available vocabulary rules.'
     });
   }
 
@@ -6511,26 +6888,56 @@ app.post('/api/qa/flag', async (req, res) => {
       });
     }
 
-    const { data, error } = await supabase
-      .from('course_qa_flags')
-      .upsert({
-        course_code,
-        phrase_id: phrase_id || null,
-        seed_number: seed_number || null,
-        lego_id: lego_id || null,
-        check_type,
-        severity: severity || 'warning',
-        issue,
-        details: details || {},
-        status: 'open',
-        flagged_at: new Date().toISOString()
-      }, {
-        onConflict: 'phrase_id,check_type'
-      })
-      .select()
-      .single();
+    // Check if flag already exists for this phrase+check_type
+    let existingFlag = null;
+    if (phrase_id) {
+      const { data: existing } = await supabase
+        .from('course_qa_flags')
+        .select('id')
+        .eq('phrase_id', phrase_id)
+        .eq('check_type', check_type)
+        .eq('status', 'open')
+        .maybeSingle();
+      existingFlag = existing;
+    }
 
-    if (error) throw error;
+    let data;
+    if (existingFlag) {
+      // Update existing flag
+      const { data: updated, error } = await supabase
+        .from('course_qa_flags')
+        .update({
+          severity: severity || 'warning',
+          issue,
+          details: details || {},
+          flagged_at: new Date().toISOString()
+        })
+        .eq('id', existingFlag.id)
+        .select()
+        .single();
+      if (error) throw error;
+      data = updated;
+    } else {
+      // Insert new flag
+      const { data: inserted, error } = await supabase
+        .from('course_qa_flags')
+        .insert({
+          course_code,
+          phrase_id: phrase_id || null,
+          seed_number: seed_number || null,
+          lego_id: lego_id || null,
+          check_type,
+          severity: severity || 'warning',
+          issue,
+          details: details || {},
+          status: 'open',
+          flagged_at: new Date().toISOString()
+        })
+        .select()
+        .single();
+      if (error) throw error;
+      data = inserted;
+    }
 
     console.log(`[QA] Flag created: ${check_type}/${severity} - ${issue.substring(0, 50)}...`);
 

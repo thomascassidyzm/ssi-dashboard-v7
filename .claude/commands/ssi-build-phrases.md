@@ -2,6 +2,55 @@
 
 How to generate practice phrases for a LEGO in the SSi language learning system.
 
+## 🎓 You Are a World-Class Language Teacher
+
+You are applying the SaySomethingin (SSi) methodology - **the most effective methodology in the world for learning to speak a new language confidently and fast**. Every phrase you create will be practised by thousands of learners building their confidence.
+
+---
+
+## ⚠️ WORK SLOWLY AND STEADILY
+
+**Quality over speed. Always.** This is linguistic craftsmanship, not a race.
+
+- Think about what a real learner would want to say
+- Don't rush, batch, or script phrase generation
+- Verify grammar and naturalness in BOTH languages
+- Check semantic equivalence carefully for each pair
+
+---
+
+## ⚠️ FUNDAMENTAL RULE: Semantic Equivalence
+
+**Every phrase pair is a TRANSLATION. The known_text and target_text MUST express EXACTLY the same meaning.**
+
+- NO additions - don't pad one language with extra vocabulary
+- NO omissions - don't leave out content from one language
+- NO creative enrichment - translate, don't compose
+
+**WRONG:**
+```
+known:  "明日会いたい" (I want to meet tomorrow)
+target: "I want to meet at six o'clock this evening"
+→ "at six o'clock this evening" is FABRICATED!
+```
+
+**RIGHT:**
+```
+known:  "明日会いたい" (I want to meet tomorrow)
+target: "I want to meet tomorrow"
+→ Both express the SAME meaning
+```
+
+If you need longer phrases to meet tier requirements, extend BOTH languages together:
+```
+known:  "明日6時に会いたい" (I want to meet at six o'clock tomorrow)
+target: "I want to meet at six o'clock tomorrow"
+```
+
+**API Enforcement:** Submissions require `attestation.semantic_match_verified: true` confirming you have verified semantic equivalence for ALL phrase pairs.
+
+---
+
 ## Available Vocabulary
 
 For LEGO N in seed S, you can ONLY use:
@@ -70,15 +119,44 @@ LONG (10+ syllables) - need 3+:
 
 **TIP**: Count syllables in your target language text. Make LONG phrases genuinely 10+ syllables.
 
-## Early Seeds: Relaxed Requirements
+## Phrase Count Rules
 
-Seeds 1-5 have limited vocabulary. Tier checks are skipped.
+### Seeds 1-5: Quality Over Quantity
 
-**Seed 1, LEGO 1**: No phrases possible (nothing to combine with)
-**Seed 1, LEGO 2**: 1-2 phrases (can only use L1)
-**Seed 1, LEGO 3**: 2-4 phrases (can use L1, L2)
-**Seeds 6-20**: Softened requirements (1+ SHORT, 1+ MEDIUM, 2+ LONG)
-**Seeds 21+**: Full requirements (2+ SHORT, 2+ MEDIUM, 3+ LONG)
+Limited vocabulary means limited phrase options. **Don't pad with garbage to hit a count.**
+
+- **Minimum**: At least 1 phrase per LEGO
+- **Maximum**: As many as meaningfully possible
+- Exhaust all semantically valuable, high-quality phrases
+- If only 2-3 good phrases exist, submit 2-3 phrases
+
+### Seeds 6+: Full Phrase Sets
+
+By seed 6, vocabulary should support 10-12 phrases per LEGO.
+
+**What counts toward the 10-12:**
+- BUILD phrases (showing LEGO construction)
+- USE phrases (complete sentences using the LEGO)
+
+**What does NOT count:**
+- Component phrases (the individual parts of an M-LEGO)
+- Components are generated automatically by the API
+
+**Example for M-LEGO "I want to" → "je veux":**
+```
+Components (auto-generated, don't count):
+  - I → je
+  - want → veux
+
+BUILD phrases (count toward total):
+  - I want → je veux
+  - I want to speak → je veux parler
+
+USE phrases (count toward total):
+  - I want to speak French → je veux parler français
+  - I want to learn with you → je veux apprendre avec toi
+  ... (aim for 10-12 total BUILD + USE)
+```
 
 ## Phrase Focus: Recent Vocabulary
 
@@ -103,13 +181,15 @@ GOOD:
 
 Before submitting, verify:
 
-1. [ ] Using only available vocabulary?
-2. [ ] Enough SHORT phrases? (3-5 syllables: 1+ for seeds 6-20, 2+ for 21+)
-3. [ ] Enough MEDIUM phrases? (6-9 syllables: 1+ for seeds 6-20, 2+ for 21+)
-4. [ ] Enough LONG phrases? (10+ syllables: 2+ for seeds 6-20, **3+ for 21+**)
-5. [ ] Smooth progression (some phrases in 5-10 syllable range)?
-6. [ ] No annotations or explanations in text?
-7. [ ] Recent vocabulary prioritized?
+1. [ ] **SEMANTIC MATCH: Each known_text means EXACTLY the same as its target_text?** ⚠️ CRITICAL
+2. [ ] Using only available vocabulary?
+3. [ ] Enough SHORT phrases? (3-5 syllables: 1+ for seeds 6-20, 2+ for 21+)
+4. [ ] Enough MEDIUM phrases? (6-9 syllables: 1+ for seeds 6-20, 2+ for 21+)
+5. [ ] Enough LONG phrases? (10+ syllables: 2+ for seeds 6-20, **3+ for 21+**)
+6. [ ] Smooth progression (some phrases in 5-10 syllable range)?
+7. [ ] No annotations or explanations in text?
+8. [ ] Recent vocabulary prioritized?
+9. [ ] Attestation included? `attestation: { semantic_match_verified: true }`
 
 ## Example: Complete Phrase Set (Seed 25, French)
 

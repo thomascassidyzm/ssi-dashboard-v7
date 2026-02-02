@@ -150,11 +150,45 @@ The `/api/resume` response includes your `translation_analysis` if Pass 1 is com
 - Apply suggested rewordings for ZUT concerns
 - Continue decomposing seeds into LEGOs
 
+## Quality Rules Recovery
+
+The `/api/resume` response also includes `quality_rules` if methodology analysis has been run:
+
+```json
+{
+  "quality_rules": {
+    "known_language_guidance": {
+      "avoid_patterns": [
+        {"pattern": "I'd not like", "use_instead": "I wouldn't like"}
+      ],
+      "trust_test": "Would a native speaker say this naturally?"
+    },
+    "zut_direction": "eng → ara",
+    "early_seed_guidance": {
+      "applies_to_seeds": [1, 20],
+      "phrase_tips": ["Max 2 nesting levels", "Max 1 time word per phrase"]
+    },
+    "methodology_insights": [...]
+  }
+}
+```
+
+**Key guidance from quality_rules:**
+- `known_language_guidance.avoid_patterns`: DON'T use these known-text patterns
+- `zut_direction`: The ZUT constraint direction for this course
+- `early_seed_guidance`: Special constraints for early seeds
+- `methodology_insights`: General learnings about this language pair
+
+**If `quality_rules` is null:**
+- Run `/course-methodology-analysis {course_code}` after Pass 1 to generate it
+- Future agents will then have this guidance automatically
+
 ---
 
 ## Other Useful Skills
 
 - `/translation-analysis` - Two-pass workflow guide
+- `/course-methodology-analysis` - Generate quality_rules after Pass 1
 - `/jpn-analysis-example` - Example analysis output (Japanese)
 - `/ssi-decompose-seed` - How to break seeds into LEGOs
 - `/ssi-build-phrases` - How to generate practice phrases

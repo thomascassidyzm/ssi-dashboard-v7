@@ -2,6 +2,43 @@
 
 How to break a seed sentence into LEGOs for the SSi language learning system.
 
+## 🎓 You Are a World-Class Language Teacher
+
+You are applying the SaySomethingin (SSi) methodology - **the most effective methodology in the world for learning to speak a new language confidently and fast**. Your decomposition decisions shape how thousands of learners will acquire this language.
+
+---
+
+## ⚠️ WORK SLOWLY AND STEADILY
+
+**Quality over speed. Always.** This is linguistic craftsmanship, not a race.
+
+- Think carefully about each decomposition
+- Don't rush to "get through" seeds quickly
+- Verify each LEGO tiles correctly before moving on
+- One poorly decomposed seed creates cascading problems
+
+---
+
+## ⚠️ ZERO EXPLANATIONS - CRITICAL
+
+**ALL text becomes TTS audio. The learner HEARS everything.**
+
+The known_text must be **natural English that a learner would want to say**. NEVER include:
+- Grammar labels: ❌ "negation wrap", "verb-final", "complement marker"
+- Linguistic terms: ❌ "subordinate", "reflexive", "aspect"
+- Pattern descriptions: ❌ "A-not-A question", "time before verb"
+- Parenthetical notes: ❌ "speak (verb)", "I want (modal)"
+
+**WRONG:** `"not (negation wrap)"` → `"ne...pas"`
+**RIGHT:** `"I don't want"` → `"je ne veux pas"`
+
+**WRONG:** `"verb-得-result pattern"` → `"V得+result"`
+**RIGHT:** `"speak well"` → `"说得好"`
+
+Grammar is INFERRED through pattern recognition, never explicitly taught.
+
+---
+
 ## Core Principle
 
 Every seed must be FULLY TILEABLE from its LEGOs. No part of the sentence can be skipped.
@@ -257,11 +294,51 @@ Or as part of an M-LEGO: "I have eaten" → "ich habe gegessen" [I have→ich ha
 
 **Rule: If you can't translate it to a single English WORD (not an explanation), don't make it a component.**
 
+## Overlapping LEGOs - For Word Order Differences
+
+When word order differs between languages, use **BOTH** atomic LEGOs AND a chunk M-LEGO.
+
+**Example: "blue thing" = "cosa azul" in Spanish (reversed order)**
+```
+A-LEGO: "blue" → "azul"
+A-LEGO: "thing" → "cosa"
+M-LEGO: "blue thing" → "cosa azul" [blue→azul, thing→cosa]
+```
+
+This is NOT a ZUT conflict because the known_texts are different ("blue" ≠ "blue thing").
+
+**Why use overlapping LEGOs?**
+- Simple word-by-word tiling produces wrong word order: "azul cosa" ≠ "cosa azul"
+- The M-LEGO handles the transformation that occurs when words combine
+- Learners benefit from knowing BOTH the atoms AND how they transform when combined
+
+**When to use overlapping LEGOs:**
+- Adjective/noun order reversal (English→Spanish, English→French)
+- Verb position differences (English→German final verbs)
+- Particle placement differences (Asian languages)
+- Compound formations that don't follow simple concatenation
+
+**Example decomposition with overlap:**
+```
+Seed: "I want a blue thing" → "Quiero una cosa azul"
+
+L1 [M] "I want" → "quiero" [I→yo, want→quiero]
+L2 [A] "a" → "una"
+L3 [A] "blue" → "azul"
+L4 [A] "thing" → "cosa"
+L5 [M] "blue thing" → "cosa azul" [blue→azul, thing→cosa]  ← OVERLAP!
+```
+
+The overlap at L5 ensures proper word order when "blue" + "thing" combine in Spanish.
+
+---
+
 ## Decomposition Checklist
 
 1. [ ] Translate seed naturally
 2. [ ] Identify meaningful chunks (not whole sentence!)
 3. [ ] Order pedagogically (grammar markers last)
 4. [ ] Create M-LEGOs with components where needed
-5. [ ] Verify full seed tiles from LEGOs
-6. [ ] Check for vocabulary reuse from prior seeds
+5. [ ] **Check for word-order differences - add overlapping M-LEGOs if needed**
+6. [ ] Verify full seed tiles from LEGOs
+7. [ ] Check for vocabulary reuse from prior seeds

@@ -131,10 +131,12 @@ service CourseBuilderAPI:
           {
             "type": "zut",
             "message": "ZUT violation - same known text maps to different targets",
-            "violations": [...]
+            "violations": [...],
+            "skills": ["/ssi-decompose-seed", "/ssi-add-overlapping-legos"]
           }
         ],
-        "hint": "Fix all errors and resubmit. Nothing was inserted."
+        "skills": ["/ssi-learner-pattern", "/ssi-decompose-seed", "/ssi-build-phrases"],
+        "hint": "Fix all errors and resubmit. Nothing was inserted. Review listed skills for guidance."
       }
 
   ## ==========================================================================
@@ -150,6 +152,42 @@ service CourseBuilderAPI:
       - LEGOs can be introduced in one seed and reused in later seeds (is_new=false)
       - LEGOs can overlap to handle different word orders
       - Seeds are conceptual guides, not real course content
+
+    ## =========================================================================
+    ## SKILL REFERENCES - Error → Guidance Mapping
+    ## =========================================================================
+    ##
+    ## When validation fails, error responses include relevant skills for agents
+    ## to review. Skills are Claude Code commands in .claude/commands/
+    ##
+    skill_mapping:
+      canonical_mismatch:
+        skills: ["/course-resume"]
+        rationale: "Agent likely lost context - resume skill explains recovery"
+
+      zut_violation:
+        skills: ["/ssi-decompose-seed", "/ssi-add-overlapping-legos"]
+        rationale: "Agent needs to understand upchunking and overlap patterns"
+
+      vocabulary_violation:
+        skills: ["/ssi-build-phrases"]
+        rationale: "Agent needs to understand available vocabulary rules"
+
+      phrase_count:
+        skills: ["/ssi-build-phrases", "/ssi-phrase-variety"]
+        rationale: "Agent needs phrase count rules and distribution guidance"
+
+      phrase_tier:
+        skills: ["/ssi-build-phrases", "/ssi-phrase-variety"]
+        rationale: "Agent needs SHORT/MEDIUM/LONG distribution guidance"
+
+      grammar_explanation:
+        skills: ["/ssi-decompose-seed", "/ssi-learner-pattern"]
+        rationale: "Agent included grammar labels in known_text (zero explanations rule)"
+
+      general_methodology:
+        skills: ["/ssi-learner-pattern", "/ssi-decompose-seed", "/ssi-build-phrases"]
+        rationale: "Core methodology skills for any confusion"
 
     gate_0_canonical_mismatch:
       name: "Canonical Seed Validation"
@@ -169,7 +207,8 @@ service CourseBuilderAPI:
           "seed": "S0105",
           "you_sent": "[hallucinated seed text]",
           "canonical": "[actual seed from database]",
-          "hint": "Use the EXACT canonical seed text. Fetch from GET /api/seeds if unsure."
+          "skills": ["/course-resume"],
+          "hint": "Use the EXACT canonical seed text. Fetch from GET /api/seeds if unsure. Review /course-resume for context recovery."
         }
 
       resolution: "Agent must fetch correct seed via GET /api/seeds and resubmit"
@@ -199,12 +238,14 @@ service CourseBuilderAPI:
               "known_text": "to learn",
               "new_target": "学习",
               "existing": [{"target": "学", "legoId": "S0002L02"}],
+              "skills": ["/ssi-decompose-seed", "/ssi-add-overlapping-legos"],
               "suggestions": [
                 "UPCHUNK: Add context to disambiguate (recommended)",
                 "  - 'to learn' → '学' (existing)",
                 "  - '[more specific phrase]' → '学习' (new)",
                 "SYNONYM: Use different known text",
-                "  - Find a synonym or variant for 'to learn'"
+                "  - Find a synonym or variant for 'to learn'",
+                "Review /ssi-add-overlapping-legos for overlap patterns"
               ]
             }
 
@@ -242,6 +283,15 @@ service CourseBuilderAPI:
         phrase: {known: "I drink", target: "我喝"}
         error: "Vocabulary violation: '喝' not yet introduced"
 
+      error_format: |
+        {
+          "error": "Vocabulary violation",
+          "phrase": "我喝",
+          "unknown_words": ["喝"],
+          "skills": ["/ssi-build-phrases"],
+          "hint": "Phrases can only use vocabulary already introduced. Review /ssi-build-phrases for available vocabulary rules."
+        }
+
     gate_3_phrase_count:
       name: "Minimum Phrase Count"
       description: |
@@ -256,6 +306,105 @@ service CourseBuilderAPI:
 
       target: "10 phrases per LEGO"
       maximum: "13 phrases (diminishing returns)"
+
+      error_format: |
+        {
+          "error": "Insufficient phrases",
+          "lego_id": "S0042L03",
+          "position": 42,
+          "submitted": 3,
+          "minimum_required": 7,
+          "skills": ["/ssi-build-phrases", "/ssi-phrase-variety"],
+          "hint": "Position 42 requires minimum 7 phrases. Review /ssi-build-phrases for phrase generation guidance."
+        }
+
+    gate_4_phrase_tier_distribution:
+      name: "Phrase Length Tier Distribution"
+      description: |
+        Phrases must have smooth SHORT → MEDIUM → LONG progression.
+        Common failure: jumping directly from SHORT to LONG, skipping MEDIUM.
+
+      tiers:
+        SHORT: "3-5 syllables (or 3-5 Chinese characters)"
+        MEDIUM: "6-9 syllables (or 6-9 Chinese characters)"
+        LONG: "10+ syllables (or 10+ Chinese characters)"
+
+      minimums_by_seed:
+        seeds_1_5: "Relaxed - quality over quantity with limited vocab"
+        seeds_6_20: "1+ SHORT, 1+ MEDIUM, 2+ LONG"
+        seeds_21_plus: "2+ SHORT, 2+ MEDIUM, 3+ LONG"
+
+      error_format: |
+        {
+          "error": "Phrase tier distribution violation",
+          "lego_id": "S0042L03",
+          "distribution": {"SHORT": 3, "MEDIUM": 0, "LONG": 4},
+          "issue": "Missing MEDIUM phrases - gap between SHORT and LONG",
+          "skills": ["/ssi-build-phrases", "/ssi-phrase-variety"],
+          "hint": "Ensure smooth progression. Add phrases in 6-9 syllable range. Review /ssi-phrase-variety."
+        }
+
+    gate_5_zero_explanations:
+      name: "Zero Explanations Validation"
+      description: |
+        ALL known_text becomes TTS audio. The learner HEARS everything.
+        Grammar is INFERRED through pattern recognition, never explicitly taught.
+
+        known_text must be NATURAL ENGLISH that a learner would want to say.
+        NEVER include grammar labels, linguistic terms, or parenthetical notes.
+
+      forbidden_patterns:
+        grammar_labels:
+          - "negation wrap"
+          - "verb-final"
+          - "complement marker"
+          - "aspect marker"
+          - "completed action"
+        linguistic_terms:
+          - "subordinate"
+          - "reflexive"
+          - "infinitive"
+          - "gerund"
+          - "participle"
+        pattern_descriptions:
+          - "A-not-A"
+          - "V-not-V"
+          - "time before verb"
+          - "SOV pattern"
+        parenthetical_notes:
+          - "(verb)"
+          - "(noun)"
+          - "(modal)"
+          - "(particle)"
+
+      examples:
+        wrong:
+          - known: "not (negation wrap)"
+            target: "ne...pas"
+            issue: "Grammar label in parentheses"
+          - known: "verb-得-result pattern"
+            target: "V得+result"
+            issue: "Pattern description, not natural language"
+          - known: "whether I can (verb-final)"
+            target: "ob ich kann"
+            issue: "Grammar annotation in parentheses"
+
+        correct:
+          - known: "I don't want"
+            target: "je ne veux pas"
+          - known: "speak well"
+            target: "说得好"
+          - known: "whether I can"
+            target: "ob ich kann"
+
+      error_format: |
+        {
+          "error": "Zero explanations violation",
+          "known_text": "not (negation wrap)",
+          "detected_pattern": "parenthetical grammar label",
+          "skills": ["/ssi-decompose-seed", "/ssi-learner-pattern"],
+          "hint": "known_text becomes TTS audio. Use natural English only. No grammar labels, no linguistic terms, no parenthetical notes. Review /ssi-learner-pattern for methodology."
+        }
 
   ## ==========================================================================
   ## M-LEGO BUILD-UP AUTO-GENERATION
