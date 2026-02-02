@@ -464,11 +464,130 @@ function fromLanguagePair(pair) {
 // EXPORTS
 // ============================================================================
 
+/**
+ * Get all languages from the CSV
+ * Returns array of { code, name, native, hasAzure, hasElevenLabs, hasGoogle, legacyCode }
+ *
+ * @param {object} options - Filter options
+ * @param {boolean} options.ttsOnly - Only return languages with TTS configured
+ * @param {boolean} options.withLegacy - Include legacy code in response
+ * @returns {Array} Array of language objects
+ */
+function getAllLanguages(options = {}) {
+  const { ttsOnly = false, withLegacy = true } = options;
+
+  const languages = [];
+
+  for (const [code, name] of Object.entries(codeToName)) {
+    // Skip if TTS-only filter is on and no TTS configured
+    if (ttsOnly && !codeToAzure[code] && !codeToElevenLabs[code] && !codeToGoogle[code]) {
+      continue;
+    }
+
+    const lang = {
+      code,
+      name,
+      native: getNativeName(code), // Will need to add native names
+      hasAzure: !!codeToAzure[code],
+      hasElevenLabs: !!codeToElevenLabs[code],
+      hasGoogle: !!codeToGoogle[code]
+    };
+
+    if (withLegacy && codeToLegacy[code]) {
+      lang.legacyCode = codeToLegacy[code];
+    }
+
+    languages.push(lang);
+  }
+
+  // Sort by name
+  languages.sort((a, b) => a.name.localeCompare(b.name));
+
+  return languages;
+}
+
+// Native name lookup (commonly used languages)
+const NATIVE_NAMES = {
+  'en': 'English',
+  'es': 'Español',
+  'fr': 'Français',
+  'de': 'Deutsch',
+  'it': 'Italiano',
+  'pt': 'Português',
+  'nl': 'Nederlands',
+  'pl': 'Polski',
+  'ru': 'Русский',
+  'uk': 'Українська',
+  'ja': '日本語',
+  'ko': '한국어',
+  'cmn': '中文 (普通话)',
+  'yue': '粵語',
+  'ar': 'العربية',
+  'he': 'עברית',
+  'hi': 'हिन्दी',
+  'th': 'ไทย',
+  'vi': 'Tiếng Việt',
+  'tr': 'Türkçe',
+  'el': 'Ελληνικά',
+  'cs': 'Čeština',
+  'sk': 'Slovenčina',
+  'hu': 'Magyar',
+  'ro': 'Română',
+  'bg': 'Български',
+  'hr': 'Hrvatski',
+  'sr': 'Српски',
+  'sl': 'Slovenščina',
+  'lt': 'Lietuvių',
+  'lv': 'Latviešu',
+  'et': 'Eesti',
+  'fi': 'Suomi',
+  'sv': 'Svenska',
+  'da': 'Dansk',
+  'nb': 'Norsk',
+  'no': 'Norsk',
+  'is': 'Íslenska',
+  'cy': 'Cymraeg',
+  'ga': 'Gaeilge',
+  'gd': 'Gàidhlig',
+  'br': 'Brezhoneg',
+  'eu': 'Euskara',
+  'ca': 'Català',
+  'gl': 'Galego',
+  'af': 'Afrikaans',
+  'sw': 'Kiswahili',
+  'id': 'Bahasa Indonesia',
+  'ms': 'Bahasa Melayu',
+  'fil': 'Filipino',
+  'ta': 'தமிழ்',
+  'te': 'తెలుగు',
+  'ml': 'മലയാളം',
+  'kn': 'ಕನ್ನಡ',
+  'mr': 'मराठी',
+  'gu': 'ગુજરાતી',
+  'bn': 'বাংলা',
+  'pa': 'ਪੰਜਾਬੀ',
+  'ur': 'اردو',
+  'fa': 'فارسی'
+};
+
+/**
+ * Get the native name for a language
+ * @param {string} code - Language code
+ * @returns {string} Native name or empty string
+ */
+function getNativeName(code) {
+  if (!code) return '';
+  const normalized = code.toLowerCase();
+  return NATIVE_NAMES[normalized] || '';
+}
+
 module.exports = {
   // Core lookups
   getCode,
   getName,
+  getNativeName,
   isValidCode,
+  getAllLanguages,
 
   // Provider lookups (throw if not configured)
   getAzureLocale,

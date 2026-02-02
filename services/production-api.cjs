@@ -426,32 +426,31 @@ app.get('/health', (req, res) => {
   })
 })
 
-// Languages endpoint - ISO 639 language codes
+// Languages endpoint - ISO 639 language codes from CSV
+// Query params:
+//   ?tts=true - Only languages with TTS configured (Azure, ElevenLabs, or Google)
+//   ?format=legacy - Return legacy 3-letter codes (spa, fra) instead of ISO standard (es, fr)
 app.get('/api/languages', async (req, res) => {
   try {
-    // Common languages for course creation
-    const languages = [
-      { code: 'eng', name: 'English' },
-      { code: 'spa', name: 'Spanish' },
-      { code: 'fra', name: 'French' },
-      { code: 'deu', name: 'German' },
-      { code: 'ita', name: 'Italian' },
-      { code: 'por', name: 'Portuguese' },
-      { code: 'zho', name: 'Chinese' },
-      { code: 'jpn', name: 'Japanese' },
-      { code: 'kor', name: 'Korean' },
-      { code: 'ara', name: 'Arabic' },
-      { code: 'rus', name: 'Russian' },
-      { code: 'hin', name: 'Hindi' },
-      { code: 'cym', name: 'Welsh' },
-      { code: 'gle', name: 'Irish' },
-      { code: 'nld', name: 'Dutch' },
-      { code: 'swe', name: 'Swedish' },
-      { code: 'pol', name: 'Polish' },
-      { code: 'tur', name: 'Turkish' },
-      { code: 'vie', name: 'Vietnamese' },
-      { code: 'tha', name: 'Thai' }
-    ]
+    const ttsOnly = req.query.tts === 'true'
+    const useLegacy = req.query.format === 'legacy'
+
+    // Get all languages from the CSV via language-code-service
+    const allLanguages = languageCodeService.getAllLanguages({ ttsOnly, withLegacy: true })
+
+    // Format response based on requested format
+    const languages = allLanguages.map(lang => ({
+      code: useLegacy && lang.legacyCode ? lang.legacyCode : lang.code,
+      name: lang.name,
+      native: lang.native || '',
+      tts: {
+        azure: lang.hasAzure,
+        elevenlabs: lang.hasElevenLabs,
+        google: lang.hasGoogle
+      }
+    }))
+
+    logger.info(`[Languages] Returning ${languages.length} languages (ttsOnly=${ttsOnly}, format=${useLegacy ? 'legacy' : 'standard'})`)
     res.json(languages)
   } catch (error) {
     logger.error('Error serving languages:', error)
@@ -789,6 +788,7 @@ app.get('/api/mission-control/jobs', async (req, res) => {
           status: row.status,
           startedAt: row.started_at,
           canStop: row.status === 'running',
+          machine: row.machine_name || null,
           progress: {
             current: seedsCompleted,
             total: totalSeeds,

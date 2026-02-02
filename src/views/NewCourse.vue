@@ -471,7 +471,9 @@ onMounted(async () => {
 async function loadLanguages() {
   languagesLoading.value = true
   try {
-    const response = await apiClient.get('/api/languages')
+    // Request TTS-capable languages with legacy 3-letter codes (spa, fra, deu)
+    // to match existing course code conventions (spa_for_eng)
+    const response = await apiClient.get('/api/languages?tts=true&format=legacy')
     languages.value = response.data
   } catch (error) {
     console.error('Failed to load languages:', error)
