@@ -1125,7 +1125,7 @@ async function loadLanguages() {
   try {
     // Use localStorage api_base_url (set by EnvironmentSwitcher) to route to correct machine
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const response = await fetch(`${apiBase}/api/languages`, {
+    const response = await fetch(`${apiBase}/api/languages?tts=true&format=legacy`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     if (response.ok) {
