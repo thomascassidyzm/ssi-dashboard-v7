@@ -18,7 +18,7 @@
               v-model="knownLanguage"
               class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             >
-              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select known language' }}</option>
               <option v-for="lang in languages" :key="lang.code" :value="lang.code">
                 {{ lang.name }} ({{ lang.code }})
               </option>
@@ -32,7 +32,7 @@
               v-model="targetLanguage"
               class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             >
-              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select language' }}</option>
+              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select target language' }}</option>
               <option v-for="lang in languages" :key="lang.code" :value="lang.code">
                 {{ lang.name }} ({{ lang.code }})
               </option>
