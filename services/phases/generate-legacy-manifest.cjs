@@ -52,12 +52,68 @@ const uuidService = require('../uuid-service.cjs')
 // CONSTANTS
 // =============================================================================
 
-// Language code mapping (ISO 639-3 → ISO 639-1)
-const LANG_MAP = {
-  'eng': 'en', 'spa': 'es', 'fra': 'fr', 'deu': 'de',
-  'ita': 'it', 'por': 'pt', 'zho': 'zh', 'jpn': 'ja',
-  'cym': 'cy', 'ara': 'ar', 'kor': 'ko', 'nld': 'nl',
-  'rus': 'ru', 'hin': 'hi', 'ben': 'bn', 'vie': 'vi'
+// Load language code mappings from CSV
+// This maps database codes (ISO 639-3) to legacy manifest codes (ISO 639-1)
+// e.g., 'eng' -> 'en', 'nld' -> 'nl'
+const LANG_MAP = loadLanguageCodeMap()
+
+function loadLanguageCodeMap() {
+  const csvPath = path.join(__dirname, '../../tools/sync/reference/language_codes.csv')
+  const map = {}
+
+  try {
+    const csvContent = fs.readFileSync(csvPath, 'utf8')
+    const lines = csvContent.trim().split('\n')
+
+    // Skip header line
+    // CSV format: language_code,language_name,azure_locale,elevenlabs_code,legacy_code,google_locale
+    // We need to map legacy_code (col 4, e.g., 'eng') -> language_code (col 0, e.g., 'en')
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim()
+      if (!line) continue
+
+      const cols = line.split(',')
+      const iso639_1 = cols[0]   // 2-letter code (en, nl, es, etc.)
+      const iso639_3 = cols[4]   // 3-letter code (eng, nld, spa, etc.)
+
+      // Map 3-letter to 2-letter for legacy manifest IDs
+      if (iso639_3 && iso639_1 && iso639_1.length === 2) {
+        map[iso639_3] = iso639_1
+      }
+    }
+
+    console.error(`[Language Codes] Loaded ${Object.keys(map).length} mappings from CSV`)
+    return map
+  } catch (err) {
+    console.error(`[Language Codes] Warning: Could not load CSV (${err.message}), using fallback map`)
+    // Fallback to minimal hardcoded map (ISO 639-3 -> ISO 639-1)
+    return {
+      'eng': 'en', 'spa': 'es', 'fra': 'fr', 'deu': 'de',
+      'ita': 'it', 'por': 'pt', 'zho': 'zh', 'cmn': 'zh', 'jpn': 'ja',
+      'cym': 'cy', 'ara': 'ar', 'kor': 'ko', 'nld': 'nl',
+      'rus': 'ru', 'hin': 'hi', 'ben': 'bn', 'vie': 'vi'
+    }
+  }
+}
+
+/**
+ * Get legacy language code from database language code
+ * Warns if no mapping is found and falls back to original code
+ */
+function getLegacyCode(langCode, context = '') {
+  if (!langCode) {
+    console.error(`[Language Code] Warning: Empty language code provided${context ? ' for ' + context : ''}`)
+    return langCode
+  }
+
+  const legacyCode = LANG_MAP[langCode]
+
+  if (!legacyCode) {
+    console.error(`[Language Code] Warning: No mapping found for '${langCode}'${context ? ' (' + context + ')' : ''} - using original code`)
+    return langCode
+  }
+
+  return legacyCode
 }
 
 // UUID namespace for deterministic IDs
@@ -104,9 +160,11 @@ function uuidFromS3Key(s3Key) {
 // =============================================================================
 
 /**
- * Load seeds from database (only released seeds for legacy manifest)
+ * Load seeds from database (only released seeds up to release target for legacy manifest)
+ * @param {string} courseCode - Course identifier
+ * @param {number} releaseTarget - Maximum seed number to include (from course.seed_count)
  */
-async function loadSeedsFromDB(courseCode) {
+async function loadSeedsFromDB(courseCode, releaseTarget = 260) {
   const client = supabaseClient.getClient()
   if (!client) return null
 
@@ -115,6 +173,7 @@ async function loadSeedsFromDB(courseCode) {
     .select('seed_number, seed_id, known_text, target_text')
     .eq('course_code', courseCode)
     .eq('status', 'released')
+    .lte('seed_number', releaseTarget)
     .order('seed_number')
 
   if (error) {
@@ -126,9 +185,11 @@ async function loadSeedsFromDB(courseCode) {
 }
 
 /**
- * Load LEGOs from database
+ * Load LEGOs from database (only LEGOs up to release target)
+ * @param {string} courseCode - Course identifier
+ * @param {number} releaseTarget - Maximum seed number to include (from course.seed_count)
  */
-async function loadLegosFromDB(courseCode) {
+async function loadLegosFromDB(courseCode, releaseTarget = 260) {
   const client = supabaseClient.getClient()
   if (!client) return null
 
@@ -136,6 +197,7 @@ async function loadLegosFromDB(courseCode) {
     .from('course_legos')
     .select('seed_number, lego_index, lego_id, type, is_new, known_text, target_text')
     .eq('course_code', courseCode)
+    .lte('seed_number', releaseTarget)
     .order('seed_number')
     .order('lego_index')
 
@@ -148,9 +210,11 @@ async function loadLegosFromDB(courseCode) {
 }
 
 /**
- * Load practice phrases from database
+ * Load practice phrases from database (only phrases up to release target)
+ * @param {string} courseCode - Course identifier
+ * @param {number} releaseTarget - Maximum seed number to include (from course.seed_count)
  */
-async function loadPracticePhrasesFromDB(courseCode) {
+async function loadPracticePhrasesFromDB(courseCode, releaseTarget = 260) {
   const client = supabaseClient.getClient()
   if (!client) return null
 
@@ -158,6 +222,7 @@ async function loadPracticePhrasesFromDB(courseCode) {
     .from('course_practice_phrases')
     .select('seed_number, lego_index, word_count, known_text, target_text, position, phrase_role')
     .eq('course_code', courseCode)
+    .lte('seed_number', releaseTarget)
     .order('seed_number')
     .order('lego_index')
     .order('word_count')
@@ -896,8 +961,10 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
   async function processOne(item) {
     // Look up the three component audio files
     // Presentation is looked up by lego_id, targets by text
-    const target1Key = `${item.targetText.toLowerCase().trim()}|${targetLang}|target1`
-    const target2Key = `${item.targetText.toLowerCase().trim()}|${targetLang}|target2`
+    // Use normalizeTextForAudio to strip punctuation for consistent matching with audioLookup
+    const normalizedTarget = normalizeTextForAudio(item.targetText)
+    const target1Key = `${normalizedTarget}|${targetLang}|target1`
+    const target2Key = `${normalizedTarget}|${targetLang}|target2`
 
     let presRecord = presentationByLegoId.get(item.legoId)
 
@@ -1041,7 +1108,7 @@ async function generateCombinedPresentations(courseCode, introItems, audioLookup
 // =============================================================================
 
 async function generateLegacyManifest(courseCode, options = {}) {
-  const { withAudio = false, dryRun = false, limit = 0, concurrency = 8 } = options
+  const { withAudio = false, dryRun = false, limit = 0, concurrency = 8, onAudioProgress = null } = options
   console.error(`Generating legacy manifest for ${courseCode}...`)
   if (withAudio) {
     console.error(`  (with combined presentation audio generation, dryRun=${dryRun}, limit=${limit || 'all'})`)
@@ -1056,14 +1123,16 @@ async function generateLegacyManifest(courseCode, options = {}) {
   const targetLang = course.target_lang
   const knownLang = course.known_lang
   const targetLangName = getLanguageName(targetLang)
+  const releaseTarget = course.seed_count || 260
 
   console.error(`  Target: ${targetLang} (${targetLangName}), Known: ${knownLang}`)
+  console.error(`  Release target: ${releaseTarget} seeds`)
 
-  // 2. Load data from database
+  // 2. Load data from database (limited to release target)
   const [dbSeeds, dbLegos, dbPhrases, dbAudio] = await Promise.all([
-    loadSeedsFromDB(courseCode),
-    loadLegosFromDB(courseCode),
-    loadPracticePhrasesFromDB(courseCode),
+    loadSeedsFromDB(courseCode, releaseTarget),
+    loadLegosFromDB(courseCode, releaseTarget),
+    loadPracticePhrasesFromDB(courseCode, releaseTarget),
     loadAudioFromDB(courseCode)
   ])
 
@@ -1270,34 +1339,43 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 8.5. Generate combined presentation audio if requested
   // This happens AFTER validation - manifest is already valid for download
   // Combined audio generation can run in background with progress updates
+  let audioGenerationWarnings = null
   if (withAudio && introItems.length > 0) {
     console.error(`\n  Generating combined presentation audio (${introItems.length} items)...`)
 
     // Build audio lookup map: (text_normalized|language|role) -> record
     const audioLookup = new Map()
     // Build presentation lookup map: lego_id -> record (presentation audio uses lego_id)
+    // IMPORTANT: Only include mastered audio, not pending placeholders
     const presentationByLegoId = new Map()
     if (dbAudio) {
       for (const record of dbAudio) {
-        // For presentation role, index by lego_id
-        if (record.role === 'presentation' && record.lego_id) {
+        // Skip pending audio - these are placeholders without real files
+        const isPending = record.s3_key?.startsWith('pending/')
+
+        // For presentation role, index by lego_id (only mastered)
+        if (record.role === 'presentation' && record.lego_id && !isPending) {
           presentationByLegoId.set(record.lego_id, record)
         }
-        // Also index by text for target1/target2 lookup
-        const key = `${record.text_normalized}|${record.language}|${record.role}`
-        audioLookup.set(key, record)
+        // Also index by text for target1/target2 lookup (only mastered)
+        // Use normalizeTextForAudio to strip punctuation for consistent matching
+        if (!isPending) {
+          const normalizedText = normalizeTextForAudio(record.text_normalized)
+          const key = `${normalizedText}|${record.language}|${record.role}`
+          audioLookup.set(key, record)
+        }
       }
     }
     console.error(`  Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
 
-    const combinedPresentationMap = await generateCombinedPresentations(
+    const { results: combinedPresentationMap, errors: combErrors, skipped: combSkipped } = await generateCombinedPresentations(
       courseCode,
       introItems,
       audioLookup,
       presentationByLegoId,
       targetLang,
       knownLang,
-      { dryRun, limit, concurrency }
+      { dryRun, limit, concurrency, onProgress: onAudioProgress }
     )
 
     // Update presentation samples with actual durations (UUIDs already match)
@@ -1314,6 +1392,16 @@ async function generateLegacyManifest(courseCode, options = {}) {
       }
     }
     console.error(`  Verified ${updatedCount} combined presentations`)
+
+    // Warn if many presentations were skipped
+    if (combSkipped.length > 0) {
+      console.error(`  ⚠️  WARNING: ${combSkipped.length} combined presentations skipped due to missing audio`)
+      audioGenerationWarnings = {
+        skippedCount: combSkipped.length,
+        skippedItems: combSkipped.slice(0, 10), // First 10 for debugging
+        message: `${combSkipped.length} combined presentations could not be generated due to missing component audio`
+      }
+    }
   }
 
   // 9. Build introduction from welcome audio
@@ -1324,7 +1412,9 @@ async function generateLegacyManifest(courseCode, options = {}) {
     duration: welcome.duration_ms ? welcome.duration_ms / 1000 : 0
   } : PLACEHOLDER_INTRO
 
-  if (!welcome || !welcome.s3_key) {
+  // Track if welcome is missing for warning
+  const welcomeMissing = !welcome || !welcome.s3_key
+  if (welcomeMissing) {
     console.error(`\n⚠️  WARNING: No welcome audio found for ${courseCode}`)
     console.error(`   Using placeholder introduction UUID: ${PLACEHOLDER_INTRO.id}`)
     console.error(`   To fix: Import welcome audio with role='welcome' to course_audio table\n`)
@@ -1344,12 +1434,14 @@ async function generateLegacyManifest(courseCode, options = {}) {
   })).filter(item => item.id) // Filter out any without valid s3_key
 
   // 12. Build manifest
-  const manifestId = `${LANG_MAP[knownLang] || knownLang}-${LANG_MAP[targetLang] || targetLang}`
+  const knownLegacy = getLegacyCode(knownLang, 'known language')
+  const targetLegacy = getLegacyCode(targetLang, 'target language')
+  const manifestId = `${knownLegacy}-${targetLegacy}`
 
   const manifest = {
     id: manifestId,
-    known: LANG_MAP[knownLang] || knownLang,
-    target: LANG_MAP[targetLang] || targetLang,
+    known: knownLegacy,
+    target: targetLegacy,
     version: '5.0.0',
     status: 'published',
     introduction,
@@ -1368,7 +1460,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Samples: ${Object.keys(samples).length}`)
   console.error(`  Encouragements: ${orderedEncouragements.length} ordered, ${pooledEncouragements.length} pooled`)
 
-  return manifest
+  return { manifest, audioGenerationWarnings, welcomeMissing }
 }
 
 // =============================================================================
@@ -1549,7 +1641,12 @@ async function main() {
   }
 
   try {
-    const manifest = await generateLegacyManifest(courseCode, { withAudio, dryRun, limit, concurrency })
+    const { manifest, audioGenerationWarnings } = await generateLegacyManifest(courseCode, { withAudio, dryRun, limit, concurrency })
+
+    // Display audio generation warnings if any
+    if (audioGenerationWarnings) {
+      console.error(`\n⚠️  ${audioGenerationWarnings.message}`)
+    }
 
     // Validate the manifest
     const validation = validateManifest(manifest)

@@ -159,6 +159,7 @@ export function useExportWorkflow(courseCode: string) {
   const manifest = ref<any>(null)
   const stats = ref<ManifestStats | null>(null)
   const validation = ref<ValidationResult | null>(null)
+  const warnings = ref<string[]>([])
   const versionInfo = ref<VersionInfo | null>(null)
 
   // Progress tracking for long operations
@@ -195,23 +196,39 @@ export function useExportWorkflow(courseCode: string) {
   })
 
   // API helpers
-  async function fetchApi(endpoint: string, options: RequestInit = {}) {
+  async function fetchApi(endpoint: string, options: RequestInit = {}, timeoutMs: number = 1200000) {
     const apiBase = getApiBaseUrl()
-    const response = await fetch(`${apiBase}${endpoint}`, {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true',
-        ...options.headers
+
+    // Create AbortController for timeout
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+
+    try {
+      const response = await fetch(`${apiBase}${endpoint}`, {
+        ...options,
+        signal: controller.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true',
+          ...options.headers
+        }
+      })
+
+      clearTimeout(timeoutId)
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Request failed' }))
+        throw new Error(errorData.error || 'Request failed')
       }
-    })
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ error: 'Request failed' }))
-      throw new Error(errorData.error || 'Request failed')
+      return response.json()
+    } catch (err: any) {
+      clearTimeout(timeoutId)
+      if (err.name === 'AbortError') {
+        throw new Error(`Request timeout after ${timeoutMs / 1000}s`)
+      }
+      throw err
     }
-
-    return response.json()
   }
 
   // Connect WebSocket for real-time progress updates
@@ -480,17 +497,20 @@ export function useExportWorkflow(courseCode: string) {
       const machineName = getMachineName()
 
       // Changed to POST to send machineName in body
+      // Use 20-minute timeout for manifest generation (can take time with audio)
       const data = await fetchApi(
         `/api/production/${courseCode}/export-legacy-with-state`,
         {
           method: 'POST',
           body: JSON.stringify({ withAudio, machineName })
-        }
+        },
+        1200000 // 20 minutes
       )
 
       manifest.value = data.manifest
       stats.value = data.stats
       validation.value = data.validation
+      warnings.value = data.warnings || []
 
       // Update local state including pending manifest info
       state.value.manifestGenerated = true
@@ -537,10 +557,11 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
+      // Use 20-minute timeout for verify-s3 (large courses need more time)
       const data = await fetchApi(`/api/production/${courseCode}/verify-s3`, {
         method: 'POST',
         body: JSON.stringify({ fixDurations: true })
-      })
+      }, 1200000) // 20 minutes
 
       // Update local state
       state.value.s3Verified = data.missing === 0
@@ -597,6 +618,20 @@ export function useExportWorkflow(courseCode: string) {
         state.value.manifestStatus = options.status || 'beta'
         state.value.publishCourseConfigsPath = data.courseConfigs?.filePath
         state.value.publishApidevFilename = data.apidev?.filename
+      } else {
+        // Handle partial success (course-configs worked but SCP failed)
+        if (data.courseConfigs?.written) {
+          state.value.manifestPublished = true
+          state.value.manifestPublishedAt = new Date().toISOString()
+          state.value.manifestVersion = data.version
+          state.value.manifestStatus = options.status || 'beta'
+          state.value.publishCourseConfigsPath = data.courseConfigs?.filePath
+          // Set error to notify user about SCP failure
+          error.value = data.error || 'Publish partially failed'
+        } else {
+          // Complete failure
+          error.value = data.error || 'Publish failed'
+        }
       }
 
       return data
@@ -667,13 +702,14 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
+      // Use 20-minute timeout for audio deployment (large courses have many files)
       const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/execute`, {
         method: 'POST',
         body: JSON.stringify({
           confirmOverwrite: !!confirmation,
           confirmation
         })
-      })
+      }, 1200000) // 20 minutes
 
       if (data.success) {
         state.value.audioDeployed = true
@@ -700,9 +736,10 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
+      // Use 20-minute timeout for production verification (large courses need time)
       const data = await fetchApi(`/api/production/${courseCode}/verify-production-durations`, {
         method: 'POST'
-      })
+      }, 1200000) // 20 minutes
 
       // Save verification results to state
       state.value.deployVerification = data
@@ -726,9 +763,10 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
+      // Use 20-minute timeout for deployment (large courses need time)
       const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/missing-only`, {
         method: 'POST'
-      })
+      }, 1200000) // 20 minutes
 
       if (data.success) {
         state.value.audioDeployed = true
@@ -824,6 +862,7 @@ export function useExportWorkflow(courseCode: string) {
     manifest,
     stats,
     validation,
+    warnings,
     versionInfo,
 
     // Progress

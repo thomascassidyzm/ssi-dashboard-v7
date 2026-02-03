@@ -2173,109 +2173,6 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
 
 // FAST audio stats endpoint - counts audio matching CURRENT course content
 // Returns total needed vs existing audio for Progress Dashboard
-app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
-  try {
-    const { courseCode } = req.params
-
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
-    }
-
-    const supabase = supabaseClient.getClient()
-
-    // Fetch current course content in parallel
-    const [phrasesRes, legosRes, audioRes, presentationAudioRes] = await Promise.all([
-      // Get unique texts from phrases (known_text and target_text)
-      supabase
-        .from('course_practice_phrases')
-        .select('known_text, target_text')
-        .eq('course_code', courseCode),
-      // Get LEGOs that need presentation audio (new LEGOs only)
-      supabase
-        .from('course_legos')
-        .select('id')
-        .eq('course_code', courseCode)
-        .eq('is_new', true),
-      // Get existing phrase audio (text + role for known/target1/target2)
-      supabase
-        .from('course_audio')
-        .select('text, role')
-        .eq('course_code', courseCode)
-        .in('role', ['known', 'target1', 'target2']),
-      // Count presentation audio that has lego_id set (linked to LEGOs)
-      supabase
-        .from('course_audio')
-        .select('lego_id')
-        .eq('course_code', courseCode)
-        .eq('role', 'presentation')
-        .not('lego_id', 'is', null)
-    ])
-
-    if (phrasesRes.error) throw phrasesRes.error
-    if (legosRes.error) throw legosRes.error
-    if (audioRes.error) throw audioRes.error
-    if (presentationAudioRes.error) throw presentationAudioRes.error
-
-    const phrases = phrasesRes.data || []
-    const legos = legosRes.data || []
-    const existingAudio = audioRes.data || []
-    const presentationAudio = presentationAudioRes.data || []
-
-    // Build set of existing audio keys: "text|role"
-    const existingSet = new Set(
-      existingAudio.map(a => `${a.text}|${a.role}`)
-    )
-
-    // Build set of lego_ids that have presentation audio
-    const legosWithPresentation = new Set(
-      presentationAudio.map(a => a.lego_id)
-    )
-
-    // Count what we need from current content
-    let totalNeeded = 0
-    let existingCount = 0
-
-    // Each phrase needs: known, target1, target2
-    for (const phrase of phrases) {
-      // Known audio
-      totalNeeded++
-      if (existingSet.has(`${phrase.known_text}|known`)) existingCount++
-
-      // Target1 audio
-      totalNeeded++
-      if (existingSet.has(`${phrase.target_text}|target1`)) existingCount++
-
-      // Target2 audio
-      totalNeeded++
-      if (existingSet.has(`${phrase.target_text}|target2`)) existingCount++
-    }
-
-    // Each new LEGO needs presentation audio
-    for (const lego of legos) {
-      totalNeeded++
-      if (legosWithPresentation.has(lego.id)) existingCount++
-    }
-
-    const missing = totalNeeded - existingCount
-
-    res.json({
-      success: true,
-      total: totalNeeded,
-      existing: existingCount,
-      missing,
-      breakdown: {
-        phrases: phrases.length,
-        phrasesAudio: phrases.length * 3,
-        legos: legos.length,
-        presentationAudio: legos.length,
-        presentationsExisting: legosWithPresentation.size
-      }
-    })
-  } catch (error) {
-    logger.error('Error fetching audio stats:', error)
-    res.status(500).json({ error: error.message })
-  }
-})
 
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
@@ -5066,8 +4963,8 @@ app.post('/api/production/:courseCode/export-state', async (req, res) => {
 // POST /api/production/:courseCode/export-legacy-with-state
 // Step 1: Generate legacy manifest and save to temp with state tracking
 app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res) => {
+  const { courseCode } = req.params
   try {
-    const { courseCode } = req.params
     const { withAudio = false } = req.body
 
     if (!supabaseClient.isInitialized()) {
@@ -5087,10 +4984,121 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
     // Import the legacy manifest generator
     const { generateLegacyManifest, validateManifest } = require('./phases/generate-legacy-manifest.cjs')
 
-    logger.info(`Generating legacy manifest for ${courseCode} (courseConfigsId: ${courseConfigsId})`)
+    logger.info(`Generating legacy manifest for ${courseCode} (courseConfigsId: ${courseConfigsId}, withAudio: ${withAudio})`)
 
-    // Generate manifest (without audio - Step 2 will verify S3)
-    const manifest = await generateLegacyManifest(courseCode, { withAudio: false })
+    // Generate a job ID for audio generation tracking
+    const audioJobId = withAudio ? `legacy-audio-${courseCode}-${Date.now()}` : null
+
+    // If withAudio, run audio generation in background and return response immediately
+    if (withAudio && audioJobId) {
+      // Generate manifest WITHOUT audio first (fast)
+      const { manifest, audioGenerationWarnings: noAudioWarnings } = await generateLegacyManifest(courseCode, { withAudio: false })
+
+      // Validate and save manifest
+      const validation = validateManifest(manifest)
+      const seedCount = manifest.slices?.[0]?.seeds?.length || 0
+      const orderedEnc = manifest.slices?.[0]?.orderedEncouragements?.length || 0
+      const pooledEnc = manifest.slices?.[0]?.pooledEncouragements?.length || 0
+
+      const legoIds = new Set()
+      for (const seed of manifest.slices[0]?.seeds || []) {
+        for (const item of seed.introduction_items || []) {
+          if (item.node?.id) legoIds.add(item.node.id)
+        }
+      }
+      const legoCount = legoIds.size
+
+      const audioIds = new Set()
+      for (const variants of Object.values(manifest.slices[0]?.samples || {})) {
+        for (const audio of variants) {
+          if (audio.id) audioIds.add(audio.id)
+        }
+      }
+      const audioCount = audioIds.size
+
+      // Save manifest
+      const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+      await fs.ensureDir(path.dirname(manifestPath))
+      await fs.writeJson(manifestPath, manifest, { spaces: 2 })
+      logger.info(`Saved pending manifest to: ${manifestPath}`)
+
+      // Save to Supabase
+      const supabase = supabaseClient.getClient()
+      await supabase
+        .from('course_export_states')
+        .upsert({
+          course_code: courseCode,
+          manifest_generated: true,
+          manifest_generated_at: new Date().toISOString(),
+          manifest_seed_count: seedCount,
+          manifest_lego_count: legoCount,
+          manifest_audio_count: audioCount,
+          pending_manifest_path: manifestPath,
+          generated_on_machine: require('os').hostname(),
+          s3_verified: false,
+          s3_verified_at: null,
+          s3_verification: null,
+          manifest_published: false,
+          manifest_published_at: null
+        }, { onConflict: 'course_code' })
+
+      logger.info(`Export state saved for ${courseCode}`)
+
+      // Return response IMMEDIATELY so frontend can connect WebSocket
+      res.json({
+        success: true,
+        courseCode,
+        courseConfigsId,
+        stats: {
+          seeds: seedCount,
+          legos: legoCount,
+          audio: audioCount,
+          orderedEncouragements: orderedEnc,
+          pooledEncouragements: pooledEnc
+        },
+        validation: {
+          valid: validation.valid,
+          summary: validation.summary
+        },
+        savedToState: true,
+        pendingPath: manifestPath,
+        warnings: [],
+        audioJobId: audioJobId
+      })
+
+      // NOW generate combined audio in background
+      logger.info(`[AudioProgress] Starting background audio generation for job ${audioJobId}`)
+
+      // Re-generate manifest with audio (will use the existing one and just add combined audio)
+      const { manifest: finalManifest, audioGenerationWarnings } = await generateLegacyManifest(courseCode, {
+        withAudio: true,
+        onAudioProgress: (completed, total) => {
+          logger.info(`[AudioProgress] Emitting progress: ${completed}/${total} for job ${audioJobId}`)
+          io.emit('legacyAudio:progress', { jobId: audioJobId, completed, total, courseCode })
+        }
+      })
+
+      // Update manifest with combined audio
+      await fs.writeJson(manifestPath, finalManifest, { spaces: 2 })
+      logger.info(`Updated manifest with combined presentations: ${manifestPath}`)
+
+      // Emit completion event
+      const skippedCount = audioGenerationWarnings?.skippedCount || 0
+      const skippedItems = audioGenerationWarnings?.skippedItems || []
+      logger.info(`[AudioProgress] Emitting completion for job ${audioJobId}, skipped: ${skippedCount}`)
+      io.emit('legacyAudio:completed', {
+        jobId: audioJobId,
+        courseCode,
+        successful: 704 - skippedCount,
+        skippedCount,
+        skipped: skippedItems
+      })
+
+      return // Already sent response
+    }
+
+    // Normal path (withAudio: false)
+    const { manifest, audioGenerationWarnings, welcomeMissing } = await generateLegacyManifest(courseCode, { withAudio: false })
 
     // Validate the manifest
     const validation = validateManifest(manifest)
@@ -5163,7 +5171,12 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
         summary: validation.summary
       },
       savedToState: true,
-      pendingPath: manifestPath
+      pendingPath: manifestPath,
+      warnings: [
+        ...(audioGenerationWarnings ? [audioGenerationWarnings.message] : []),
+        ...(welcomeMissing ? ['Welcome audio missing - course will use placeholder introduction'] : [])
+      ],
+      audioJobId: audioJobId // Will be null if withAudio=false
     })
   } catch (error) {
     logger.error(`Error generating legacy manifest for ${courseCode}:`, error)
@@ -5602,19 +5615,53 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
   }
 })
 
+/**
+ * Load published manifest from course-configs repo or local fallback
+ * @param {string} courseCode - Course code (e.g., 'fra_for_eng')
+ * @returns {Object} { manifest, source } - manifest object and source location
+ */
+async function loadPublishedManifest(courseCode) {
+  // Get course to find courseConfigsId
+  const course = await supabaseClient.getCourse(courseCode)
+  if (!course) {
+    throw new Error(`Course ${courseCode} not found`)
+  }
+
+  const courseConfigsId = course.course_configs_id
+  if (!courseConfigsId) {
+    throw new Error(`Course ${courseCode} has no course_configs_id`)
+  }
+
+  // Try course-configs repo first (canonical published location)
+  const courseConfigsRepo = process.env.COURSE_CONFIGS_REPO || path.join(os.homedir(), 'Documents', 'GitHub', 'course-configs')
+  const courseConfigsPath = path.join(courseConfigsRepo, 'Courses', `${courseConfigsId}.json`)
+
+  if (fs.existsSync(courseConfigsPath)) {
+    logger.info(`Loading published manifest from course-configs: ${courseConfigsPath}`)
+    const manifest = await fs.readJson(courseConfigsPath)
+    return { manifest, source: 'course-configs' }
+  }
+
+  // Fallback to local published manifest
+  const localPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
+  if (fs.existsSync(localPath)) {
+    logger.info(`Loading published manifest from local: ${localPath}`)
+    const manifest = await fs.readJson(localPath)
+    return { manifest, source: 'local' }
+  }
+
+  throw new Error('No published manifest found. Publish manifest first (Step 3).')
+}
+
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan (what files need to be deployed)
 app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
   try {
     const { courseCode } = req.params
 
-    // Load published manifest
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No published manifest found. Publish manifest first.' })
-    }
-
-    const publishedManifest = await fs.readJson(manifestPath)
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest, source } = await loadPublishedManifest(courseCode)
+    logger.info(`Loaded manifest from ${source}`)
 
     // Collect all UUIDs
     const uuids = []
@@ -5660,13 +5707,8 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
     const { courseCode } = req.params
     const { confirmation } = req.body
 
-    // Load published manifest
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No published manifest found' })
-    }
-
-    const publishedManifest = await fs.readJson(manifestPath)
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
 
     // Collect UUIDs
     const uuids = []
@@ -5731,13 +5773,8 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
   try {
     const { courseCode } = req.params
 
-    // Load published manifest
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No published manifest found' })
-    }
-
-    const publishedManifest = await fs.readJson(manifestPath)
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
 
     // Collect UUIDs
     const uuids = []
@@ -5790,13 +5827,8 @@ app.post('/api/production/:courseCode/deploy-audio/missing-only', async (req, re
   try {
     const { courseCode } = req.params
 
-    // Load published manifest
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_published_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No published manifest found' })
-    }
-
-    const publishedManifest = await fs.readJson(manifestPath)
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
 
     // Collect UUIDs
     const uuids = []

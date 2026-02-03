@@ -59,6 +59,7 @@
                   :state="workflow.state.value"
                   :stats="workflow.stats.value"
                   :validation="workflow.validation.value"
+                  :warnings="workflow.warnings.value"
                   :is-loading="workflow.isLoading.value"
                   :audio-progress="workflow.audioGenerationProgress.value"
                   :format-date="workflow.formatDate"
@@ -196,8 +197,9 @@ const canProceedToNextStep = computed(() => {
       if (!verification) return false
 
       // If durations were fixed, must pass re-verification
+      // If durations were fixed, must also pass re-verification (verifyFixed.mismatched === 0)
       if (verification.durationsFixed && verification.durationsFixed > 0) {
-        return verification.fixVerification?.passed === true
+        return verification.verifyFixed?.mismatched === 0
       }
 
       // If no fix was needed, can proceed
