@@ -33,7 +33,7 @@ Each phrase will be heard by thousands of learners. A rushed, low-quality phrase
 Content creation is now a single API endpoint: `POST /api/seed/complete` (port 3471)
 - Agent learns methodology from examples (Welsh/Spanish patterns)
 - API validates atomically: tiling, ZUT, vocabulary, phrase counts
-- See skills: `.claude/commands/ssi-learner-pattern.md`, `ssi-decompose-seed.md`
+- See: `ralph-methodology.md` - Complete course building methodology
 
 ### **READ THE SCHEMA BEFORE MODIFYING DATABASE CODE**
 
@@ -662,9 +662,7 @@ POST /api/seed/complete
 
 **Related Skills:**
 - `/course-resume` - Full recovery guide after compaction
-- `/ssi-decompose-seed` - How to break seeds into LEGOs
-- `/ssi-build-phrases` - How to generate practice phrases
-- `/ssi-phrase-variety` - Phrase tier requirements
+- `ralph-methodology.md` - Complete course building methodology (decomposition, phrases, tiers)
 
 ---
 

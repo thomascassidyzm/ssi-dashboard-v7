@@ -25,10 +25,9 @@ How to ensure balanced vocabulary practice across all LEGOs.
 - MEDIUM phrases reinforce the LEGO before full sentences
 
 **Distribution targets (seeds 6+):**
-- SHORT: 2-3 phrases
-- MEDIUM: 3-4 phrases
-- LONG: 3-4 phrases
-- Total: 10-12 phrases
+- **BUILD phrases**: Flexible count - whatever is needed to teach the LEGO
+- **USE phrases**: Minimum 5 per LEGO (spread across SHORT/MEDIUM/LONG tiers)
+- See `ralph-methodology.md` for complete BUILD/USE mechanics
 
 **Seeds 1-5:** Flexible - at least 1 phrase, as many as meaningful with limited vocabulary.
 

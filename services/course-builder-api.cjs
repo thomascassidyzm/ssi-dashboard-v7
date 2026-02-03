@@ -84,7 +84,7 @@ async function recordLessonFromError(courseCode, errorType, errorDetails) {
 
       case 'phrases':
       case 'no_phrases':
-        lesson = `Phrase count error: Each LEGO needs sufficient phrases. Use build[] (4 phrases) + use[] (6 phrases with scores).`;
+        lesson = `Phrase count error: Each LEGO needs sufficient phrases. Use build[] (flexible) + use[] (min 5 phrases with scores).`;
         exampleWrong = `phrases: [] or missing build/use arrays`;
         exampleRight = `build: [{known, target}, ...], use: [{known, target, score}, ...]`;
         break;
@@ -92,13 +92,13 @@ async function recordLessonFromError(courseCode, errorType, errorDetails) {
       case 'build_use':
         lesson = `BUILD/USE format error: ${errorDetails.error || 'Invalid structure'}`;
         exampleWrong = errorDetails.details || 'malformed build/use arrays';
-        exampleRight = `build: [4 phrases], use: [6+ phrases with score 1-9]`;
+        exampleRight = `build: [flexible], use: [min 5 phrases with score 5-9]`;
         break;
 
-      case 'components':
-        lesson = `M-LEGO component error: Multi-word LEGOs must have meaningful component breakdown.`;
-        exampleWrong = `M-LEGO "${errorDetails.target}" with ${errorDetails.meaningful_components || 0} components`;
-        exampleRight = `Long M-LEGOs (4+ chars) need 2+ meaningful components`;
+      case 'overlap':
+        lesson = `Use overlapping LEGOs when word order differs between languages.`;
+        exampleWrong = `Single M-LEGO without atomic components`;
+        exampleRight = `Both A-LEGOs for atoms AND M-LEGO for the combined chunk`;
         break;
 
       case 'balance':
@@ -819,12 +819,14 @@ function computePhraseRole(position) {
 /**
  * Validate BUILD/USE phrase structure per ralph-methodology.md
  *
- * BUILD (4 required): Lock in the pattern, fragments OK
- *   - No length requirements (natural variation based on LEGO size)
+ * BUILD (flexible): Lock in the pattern, fragments OK
+ *   - Quantity depends on LEGO complexity (LEGO + 1-5 syllables)
+ *   - Debut only, NOT eternal-eligible
  *
- * USE (6 required): Natural production, complete sentences
+ * USE (minimum 5): Natural production, complete sentences
  *   - Scores must be 5-9 (reject low quality - don't submit score <5)
- *   - Average syllables > 12 (ensures substantial sentences)
+ *   - LEGO + 5-10 syllables
+ *   - Reused in consolidate/review phases
  *   - ALL are eternal-eligible
  *
  * @param {Object} lego - LEGO with build/use arrays
@@ -837,18 +839,18 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const charsPerSyllable = getCharsPerSyllable(courseCode);
 
   // Graduated requirements - vocabulary grows with each seed
-  // Early seeds have limited vocab to combine, so USE minimums are lower
-  // BUILD stays stricter (fragments from components)
+  // BUILD is flexible (based on LEGO complexity)
+  // USE has minimum 5 (full requirements)
   //
   // S1 L1:  0 BUILD, 0 USE  (nothing to combine yet)
-  // S1 L2+: 2 BUILD, 0 USE  (limited vocab)
-  // S2-3:   3 BUILD, 2 USE  (small vocab pool)
-  // S4-5:   3 BUILD, 3 USE  (growing vocab)
-  // S6-10:  4 BUILD, 4 USE  (moderate vocab)
-  // S11+:   4 BUILD, 6 USE  (full requirements)
+  // S1 L2+: 1 BUILD, 0 USE  (limited vocab)
+  // S2-3:   1 BUILD, 2 USE  (small vocab pool)
+  // S4-5:   1 BUILD, 3 USE  (growing vocab)
+  // S6-10:  1 BUILD, 4 USE  (moderate vocab)
+  // S11+:   1 BUILD, 5 USE  (full requirements - min 5 USE)
 
-  let minBuild = 4;
-  let minUse = 6;
+  let minBuild = 1;  // Flexible - just need at least 1
+  let minUse = 5;    // Minimum 5 USE phrases
   let minAvgSyllables = 12;  // Average syllables for USE phrases
 
   if (seedNumber === 1 && lego.idx === 1) {
@@ -856,19 +858,19 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     minUse = 0;
     minAvgSyllables = 0;
   } else if (seedNumber === 1) {
-    minBuild = 2;
+    minBuild = 1;
     minUse = 0;  // No USE required - limited vocab
     minAvgSyllables = 0;
   } else if (seedNumber <= 3) {
-    minBuild = 3;
+    minBuild = 1;
     minUse = 2;
     minAvgSyllables = 6;
   } else if (seedNumber <= 5) {
-    minBuild = 3;
+    minBuild = 1;
     minUse = 3;
     minAvgSyllables = 8;
   } else if (seedNumber <= 10) {
-    minBuild = 4;
+    minBuild = 1;
     minUse = 4;
     minAvgSyllables = 10;
   }
@@ -1592,16 +1594,16 @@ Keep going until you finish or get blocked.
 
 1. LEGOs are SMALL (2-4 words) - never whole sentences
 2. Each LEGO's phrases use ONLY that LEGO + ALL PREVIOUS vocabulary
-3. M-LEGOs MUST have components (real words only, never grammar explanations)
-4. BUILD = 4 phrases (fragments OK)
-5. USE = 6 phrases (complete sentences, each with score 5-9)
-6. Learners will hear USE phrases HUNDREDS of times - quality matters!
-7. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
+3. BUILD = flexible quantity (LEGO + 1-5 syllables), fragments OK, debut only
+4. USE = minimum 5 phrases (LEGO + 5-10 syllables), complete sentences, scored 5-9
+5. Learners will hear USE phrases HUNDREDS of times - quality matters!
+6. **TILING**: EVERY character/word in the seed target MUST appear in at least one LEGO target!
    - If tiling fails, you're missing a word/particle - add it to a LEGO!
-8. **OVERLAPPING LEGOs**: When word order differs, use BOTH atomic AND chunk LEGOs!
+7. **OVERLAPPING LEGOs**: When word order differs, use BOTH atomic AND chunk LEGOs!
    - Example: "blue thing" → "cosa azul" (Spanish reverses order)
    - Create: "blue"→"azul", "thing"→"cosa", AND "blue thing"→"cosa azul"
    - The chunk M-LEGO handles the transformation when words combine
+8. See ralph-methodology.md for the complete methodology reference
 ${lessonsSection}`;
 
   // Write prompt to temp file to avoid escaping nightmares
@@ -3079,60 +3081,59 @@ function checkPhraseBalance(phrases, balanceData, courseCode) {
 
 const METHODOLOGY_HINTS = {
   tiling: `
-📚 See /ssi-decompose-seed for how to break seeds into LEGOs:
+📚 See ralph-methodology.md for how to break seeds into LEGOs:
    - Every word/character in seed must appear in a LEGO target
    - Order LEGOs SHORT→LONG (by target length)
    - Use M-LEGOs for multi-word chunks`,
 
   phrases: `
 📚 See ralph-methodology.md for phrase requirements:
-   BUILD (4 phrases): Lock in the pattern, fragments OK
-   - 2 SHORT (3-5 syllables)
-   - 2 MEDIUM (6-9 syllables)
+   BUILD: flexible quantity based on LEGO length (LEGO + 1-5 syllables)
+   - Fragments OK, debut only
+   - Quantity depends on LEGO complexity
 
-   USE (6 phrases): Natural production, complete sentences ONLY
-   - 3 MEDIUM (6-9 syllables)
-   - 3 LONG (10+ syllables)
+   USE: minimum 5 per LEGO (LEGO + 5-10 syllables)
+   - Complete sentences ONLY
+   - Reused in consolidate/review phases
    - ALL are eternal-eligible (go into spaced repetition)
 
    Graduated: relaxed (seeds 1-5), softened (6-20), hard (21+)`,
 
   build_use: `
 📚 See ralph-methodology.md for BUILD/USE phrase structure:
-   BUILD phrases (4 required):
+   BUILD phrases (flexible quantity):
    - Lock in the pattern, get the LEGO "in"
    - Fragments OK (don't need complete sentences)
-   - 2 SHORT (3-5 syllables) + 2 MEDIUM (6-9 syllables)
-   - NOT eternal-eligible
+   - LEGO + 1-5 syllables
+   - Debut only, NOT eternal-eligible
 
-   USE phrases (6 required):
+   USE phrases (minimum 5):
    - Natural production, put the LEGO "out"
    - MUST be complete sentences (subject + verb)
-   - 3 MEDIUM (6-9 syllables) + 3 LONG (10+ syllables)
+   - LEGO + 5-10 syllables
    - ALL eternal-eligible (go into spaced repetition)
-   - Each USE phrase MUST have a score (1-9)
+   - Reused in consolidate/review phases
+   - Each USE phrase MUST have a score (5-9)
 
-   SCORING (1-9) - self-assess each USE phrase:
+   SCORING (5-9) - self-assess each USE phrase:
    9 = grammatically perfect, semantically excellent, high value in both languages
    7-8 = strong phrase, minor stylistic preferences possible
    5-6 = solid, functional, no issues but not remarkable
-   3-4 = grammatically OK, but awkward/textbook-ish
-   1-2 = grammatically OK, semantically questionable, low value
-   0 = grammatical error → REWRITE, don't submit`,
+   4 or below = hard reject, REWRITE before submitting`,
 
   vocab: `
-📚 See /ssi-learner-pattern for how vocabulary builds:
+📚 See ralph-methodology.md for how vocabulary builds:
    - Phrases can only use vocabulary from prior LEGOs
    - LEGO N can use: (all prior seeds) + (LEGOs 1..N of current seed)`,
 
   zut: `
-📚 See /ssi-decompose-seed for handling ZUT conflicts:
+📚 See ralph-methodology.md for handling ZUT conflicts:
    - Same known text cannot map to different targets
    - UPCHUNK: Add context to disambiguate
    - Or use a synonym for the known text`,
 
   overlap: `
-📚 OVERLAPPING LEGOs - For Word Order Differences:
+📚 See ralph-methodology.md for overlapping LEGOs guidance:
    When word order differs between languages, use BOTH atomic LEGOs AND a chunk M-LEGO.
 
    Example: "blue thing" = "cosa azul" in Spanish (reversed order)
@@ -3141,24 +3142,15 @@ const METHODOLOGY_HINTS = {
    - M-LEGO: "blue thing" → "cosa azul" (chunk handles the transformation)
 
    This is NOT a ZUT conflict because the known_texts are different.
-   The chunk M-LEGO handles cases where simple word-by-word tiling doesn't work.
+   The methodology no longer requires component breakdown - use overlapping LEGOs instead.
 
    When to use overlapping LEGOs:
    - Adjective/noun order reversal (English→Spanish, English→French)
    - Verb position differences (English→German, English→Japanese)
-   - Particle placement differences (many Asian languages)
-
-   The learner benefits from knowing BOTH the atomic pieces AND the combined chunk.`,
-
-  components: `
-📚 See /ssi-decompose-seed for M-LEGO component requirements:
-   - ALL M-type LEGOs MUST have component breakdown
-   - Components are for DISPLAY only (never practiced as audio)
-   - Components help learner see internal structure
-   - Long M-LEGOs (4+ chars) need 2+ meaningful components`,
+   - Particle placement differences (many Asian languages)`,
 
   balance: `
-📚 See /ssi-phrase-variety for balance requirements:
+📚 See ralph-methodology.md for balance requirements:
    - Prioritize recent, underused LEGOs in new phrases
    - Avoid over-relying on common vocabulary (>1.5x avg usage)
    - Include underused LEGOs (<0.3x avg usage) in your phrases
@@ -3215,13 +3207,14 @@ app.post('/api/lego', async (req, res) => {
     const legoId = `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`;
 
     // Graduated minimum based on seed number (vocabulary grows with each seed)
-    // S1: 0-2, S2-3: 5, S4-5: 6, S6-10: 8, S11+: 10 (BUILD + USE combined)
+    // S1: 0-1, S2-3: 3, S4-5: 4, S6-10: 5, S11+: 6 (BUILD flexible + min 5 USE)
     let minRequired = MIN_PHRASES_PER_LEGO;
     if (seed === 1 && idx === 1) minRequired = 0;      // Very first LEGO
-    else if (seed === 1) minRequired = 2;              // S1 L2+: BUILD only
-    else if (seed <= 3) minRequired = 5;               // S2-3: 3 BUILD + 2 USE
-    else if (seed <= 5) minRequired = 6;               // S4-5: 3 BUILD + 3 USE
-    else if (seed <= 10) minRequired = 8;              // S6-10: 4 BUILD + 4 USE
+    else if (seed === 1) minRequired = 1;              // S1 L2+: flexible BUILD
+    else if (seed <= 3) minRequired = 3;               // S2-3: 1 BUILD + 2 USE
+    else if (seed <= 5) minRequired = 4;               // S4-5: 1 BUILD + 3 USE
+    else if (seed <= 10) minRequired = 5;              // S6-10: 1 BUILD + 4 USE
+    // S11+: uses MIN_PHRASES_PER_LEGO (1 BUILD + 5 USE = 6)
 
     if (phraseCount < minRequired && !allowValidationBypass(req.body)) {
       console.log(`✗ ${legoId}: REJECTED - Only ${phraseCount} phrases (need ${minRequired}+ at position ~${globalPosition})`);
@@ -3231,8 +3224,8 @@ app.post('/api/lego', async (req, res) => {
         got: phraseCount,
         required: minRequired,
         global_position: globalPosition,
-        skills: ['/ssi-build-phrases', '/ssi-phrase-variety'],
-        hint: `LEGO at position ~${globalPosition} needs at least ${minRequired} phrases. Review /ssi-build-phrases for phrase generation guidance.`
+        skills: ['ralph-methodology.md'],
+        hint: `LEGO at position ~${globalPosition} needs at least ${minRequired} phrases. Review ralph-methodology.md for phrase generation guidance.`
       });
     }
 
@@ -3258,8 +3251,8 @@ app.post('/api/lego', async (req, res) => {
           new_target: target,
           existing: conflictResult.existing,
           suggestions: conflictResult.suggestions,
-          skills: ['/ssi-decompose-seed', '/ssi-add-overlapping-legos'],
-          hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym. Review /ssi-add-overlapping-legos for overlap patterns.'
+          skills: ['ralph-methodology.md'],
+          hint: 'Same known text cannot map to different targets. Upchunk with context or use synonym. See ralph-methodology.md for overlap patterns.'
         });
       }
 
@@ -3294,13 +3287,13 @@ app.post('/api/lego', async (req, res) => {
           violations: violations.slice(0, 5),  // Show first 5
           total_violations: violations.length,
           vocab_size: vocabSet.size,
-          skills: ['/ssi-build-phrases'],
-          hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review /ssi-build-phrases for available vocabulary rules.`
+          skills: ['ralph-methodology.md'],
+          hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review ralph-methodology.md for vocabulary rules.`
         });
       }
     }
 
-    // SCORE VALIDATION: USE phrases (position 8+) must have scores 1-9
+    // SCORE VALIDATION: USE phrases (position 8+) must have scores 5-9
     if (phrases && phrases.length > 0 && seed >= 6 && !allowValidationBypass(req.body)) {
       const usePhrases = phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
       const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
@@ -3310,7 +3303,7 @@ app.post('/api/lego', async (req, res) => {
           error: 'USE phrases must have scores',
           lego_id: legoId,
           missing_count: missingScores.length,
-          hint: 'Add "score": 7 (or 1-9) to each USE phrase (position 8+) for QA tracking'
+          hint: 'Add "score": 7 (or 5-9) to each USE phrase (position 8+) for QA tracking'
         });
       }
       const lowScores = usePhrases.filter(p => typeof p.score === 'number' && p.score < 5);
@@ -3613,8 +3606,8 @@ app.post('/api/batch', async (req, res) => {
         error: 'ZUT violations detected',
         zut_violations: zutViolations,
         processed_before_error: totalPhrases,
-        skills: ['/ssi-decompose-seed', '/ssi-add-overlapping-legos'],
-        hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms. Review /ssi-add-overlapping-legos for overlap patterns.'
+        skills: ['ralph-methodology.md'],
+        hint: 'Some LEGOs have same known text mapping to different targets. Upchunk or use synonyms. See ralph-methodology.md for overlap patterns.'
       });
     }
 
@@ -4069,12 +4062,14 @@ app.post('/api/seed/complete', async (req, res) => {
         const phraseCount = lego.phrases.length;
 
         // Graduated minimum based on seed (vocabulary grows with each seed)
+        // BUILD is flexible (1+), USE minimum 5 at full requirements
         let minRequired = MIN_PHRASES_PER_LEGO;
         if (seed_number === 1 && lego.idx === 1) minRequired = 0;
-        else if (seed_number === 1) minRequired = 2;     // S1 L2+: BUILD only
-        else if (seed_number <= 3) minRequired = 5;      // S2-3: 3 BUILD + 2 USE
-        else if (seed_number <= 5) minRequired = 6;      // S4-5: 3 BUILD + 3 USE
-        else if (seed_number <= 10) minRequired = 8;     // S6-10: 4 BUILD + 4 USE
+        else if (seed_number === 1) minRequired = 1;     // S1 L2+: flexible BUILD
+        else if (seed_number <= 3) minRequired = 3;      // S2-3: 1 BUILD + 2 USE
+        else if (seed_number <= 5) minRequired = 4;      // S4-5: 1 BUILD + 3 USE
+        else if (seed_number <= 10) minRequired = 5;     // S6-10: 1 BUILD + 4 USE
+        // S11+: uses MIN_PHRASES_PER_LEGO (1 BUILD + 5 USE = 6)
 
         if (phraseCount < minRequired && !SKIP_VALIDATION) {
           errors.push({
@@ -4086,16 +4081,16 @@ app.post('/api/seed/complete', async (req, res) => {
         }
 
         // Validate scores on USE phrases (position 8+ = 'use' role)
-        // USE phrases need scores 1-9 for QA drift calculation
+        // USE phrases need scores 5-9 for QA drift calculation
         if (!SKIP_VALIDATION && seed_number >= 6) {
           const usePhrases = lego.phrases.filter((p, idx) => idx >= 7);  // position 8+ (0-indexed: 7+)
           const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
           if (missingScores.length > 0) {
             errors.push({
               type: 'missing_scores',
-              message: `${legoId}: USE phrases (position 8+) must have scores 1-9. Missing: ${missingScores.length}`,
+              message: `${legoId}: USE phrases (position 8+) must have scores 5-9. Missing: ${missingScores.length}`,
               lego_id: legoId,
-              hint: 'Add "score": 7 (or 1-9) to each USE phrase for QA tracking',
+              hint: 'Add "score": 7 (or 5-9) to each USE phrase for QA tracking',
               methodology: 'USE phrases are eternal-eligible and need quality scores for drift analysis'
             });
             console.log(`✗ ${legoId}: MISSING SCORES - ${missingScores.length} USE phrases without scores`);
@@ -4121,7 +4116,7 @@ app.post('/api/seed/complete', async (req, res) => {
           type: 'no_phrases',
           message: `${legoId}: LEGO has NO PHRASES! Must include build[] + use[] arrays (see ralph-methodology.md)`,
           lego_id: legoId,
-          hint: 'Each LEGO needs: build (4 phrases) + use (6 phrases with scores 1-9)',
+          hint: 'Each LEGO needs: build (flexible) + use (min 5 phrases with scores 5-9)',
           methodology: METHODOLOGY_HINTS.build_use
         });
         console.log(`✗ ${legoId}: NO PHRASES - LEGO submitted without build/use/phrases arrays`);
@@ -4156,49 +4151,8 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
-    // 6. M-LEGO COMPONENT ADEQUACY VALIDATION
-    // All M-type LEGOs MUST have component breakdown - this is fundamental to the methodology
-    if (!SKIP_VALIDATION) {
-      for (const lego of legos) {
-        if (lego.type !== 'M') continue;
-
-        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
-        const targetLen = lego.target.length;
-        const meaningfulComps = getMeaningfulComponents(lego.components, lego.target);
-        const compCount = meaningfulComps.length;
-
-        // ALL M-LEGOs must have at least 1 component
-        if (compCount === 0) {
-          errors.push({
-            type: 'components',
-            message: `${legoId}: M-LEGO "${lego.known}" has NO components - M-LEGOs MUST have component breakdown`,
-            lego_id: legoId,
-            target: lego.target,
-            target_length: targetLen,
-            components_provided: lego.components?.length || 0,
-            meaningful_components: compCount,
-            methodology: METHODOLOGY_HINTS.components
-          });
-          console.log(`✗ ${legoId}: M-LEGO MISSING COMPONENTS - "${lego.known}" → "${lego.target}"`);
-        }
-        // Long M-LEGOs (4+ chars) need 2+ meaningful components
-        else if (targetLen >= 4 && compCount < 2) {
-          errors.push({
-            type: 'components',
-            message: `${legoId}: Long M-LEGO "${lego.known}" (${targetLen} chars) needs 2+ components, got ${compCount}`,
-            lego_id: legoId,
-            target: lego.target,
-            target_length: targetLen,
-            components_provided: lego.components?.length || 0,
-            meaningful_components: compCount,
-            methodology: METHODOLOGY_HINTS.components
-          });
-          console.log(`✗ ${legoId}: M-LEGO TOO CHUNKY - "${lego.known}" → "${lego.target}" (${compCount} comps for ${targetLen} chars)`);
-        }
-      }
-    }
-
-    // 7. LEGO BALANCE VALIDATION (three-strike escalation)
+    // 6. LEGO BALANCE VALIDATION (three-strike escalation)
+    // NOTE: M-LEGO component validation removed - methodology now uses overlapping LEGOs instead
     // Ensure phrases don't over-rely on common vocabulary while neglecting underused LEGOs
     if (!SKIP_VALIDATION && seed_number > 20) {  // Only check after enough vocabulary exists
       // Gather all phrases from this submission (supports both BUILD/USE and legacy format)
@@ -4272,8 +4226,8 @@ app.post('/api/seed/complete', async (req, res) => {
         seed: seedId,
         errors,
         warnings,
-        skills: ['/ssi-learner-pattern', '/ssi-decompose-seed', '/ssi-build-phrases'],
-        hint: 'Fix all errors and resubmit. Nothing was inserted. Review listed skills for methodology guidance.'
+        skills: ['ralph-methodology.md'],
+        hint: 'Fix all errors and resubmit. Nothing was inserted. Review ralph-methodology.md for methodology guidance.'
       });
     }
 
@@ -4389,7 +4343,7 @@ app.post('/api/seed/complete', async (req, res) => {
           lego_position: computeLegoPosition(p.target, lego.target),
           metadata: {
             format: 'build_use',
-            score: p.score,  // Agent self-assessed quality (1-9)
+            score: p.score,  // Agent self-assessed quality (5-9)
             scored_at: new Date().toISOString()
           },
           status: 'draft',
@@ -5334,7 +5288,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     };
     // Only show FIRST if just starting pass 1
     if (seedsTranslated === 0) {
-      actionInstruction.FIRST = 'Run /ssi-translation-methodology - covers ZERO VARIATION, cognates, register consistency';
+      actionInstruction.FIRST = 'Read ralph-methodology.md - covers ZERO VARIATION, cognates, register consistency';
     }
   } else if (!pass2Complete) {
     actionInstruction = {
@@ -5350,7 +5304,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     };
     // Only show FIRST if just starting pass 2
     if (seedsDecomposed === 0) {
-      actionInstruction.FIRST = 'Run /ssi-decompose-seed and /ssi-build-phrases for methodology';
+      actionInstruction.FIRST = 'Read ralph-methodology.md for methodology guidance';
     }
   } else {
     actionInstruction = {
@@ -5449,29 +5403,27 @@ app.get('/api/resume/:courseCode', async (req, res) => {
       },
       workflow: [
         '1. Decompose next_seed into 3-6 SMALL LEGOs (not whole sentences!)',
-        '2. For EACH LEGO: generate BUILD (4) + USE (6) phrases',
-        '3. USE phrases must be complete sentences with scores 1-9',
+        '2. For EACH LEGO: generate BUILD (flexible) + USE (min 5) phrases',
+        '3. USE phrases must be complete sentences with scores 5-9',
         '4. Phrases can only use THIS LEGO + vocabulary from PREVIOUS LEGOs',
         '5. POST to /api/seed/complete with all legos',
         `6. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA`,
         '7. Continue autonomously until done'
       ],
       phrase_requirements: {
-        build: '4 phrases: 2 SHORT (3-5 syl) + 2 MEDIUM (6-9 syl), fragments OK',
-        use: '6 phrases: 3 MEDIUM + 3 LONG (10+ syl), COMPLETE SENTENCES, scored 1-9'
+        build: 'Flexible: LEGO + 1-5 syllables, fragments OK, debut only',
+        use: 'Minimum 5: LEGO + 5-10 syllables, COMPLETE SENTENCES, scored 5-9, reused in consolidate/review'
       },
       scoring: {
         '9': 'Native-natural both languages, high pedagogical value',
         '7-8': 'Strong, minor stylistic preferences',
         '5-6': 'Functional, correct but unremarkable',
-        '3-4': 'Awkward/textbook-ish',
-        '1-2': 'Low value',
-        '0': 'Grammar error - REWRITE'
+        '4 or below': 'Hard reject - REWRITE before submitting'
       },
       rules: [
         'LEGOs are SMALL pieces (2-4 words) - never whole sentences',
         'Phrases use ONLY this LEGO + previous vocabulary',
-        'M-LEGOs MUST have components array',
+        'Use overlapping LEGOs when word order differs between languages',
         'Trust API validation errors - they tell you exactly what to fix'
       ]
     }
@@ -6073,9 +6025,9 @@ app.post('/api/phrases', async (req, res) => {
     const missingScores = usePhrases.filter(p => typeof p.score !== 'number');
     if (missingScores.length > 0) {
       return res.status(400).json({
-        error: 'USE phrases (position 8+) must have scores 1-9',
+        error: 'USE phrases (position 8+) must have scores 5-9',
         missing_count: missingScores.length,
-        hint: 'Add "score": 7 (or 1-9) to each phrase that will be at position 8+'
+        hint: 'Add "score": 7 (or 5-9) to each phrase that will be at position 8+'
       });
     }
   }
@@ -6085,8 +6037,8 @@ app.post('/api/phrases', async (req, res) => {
       error: 'Vocabulary violations detected',
       violations,
       message: 'These phrases use characters not yet introduced',
-      skills: ['/ssi-build-phrases'],
-      hint: 'Review /ssi-build-phrases for available vocabulary rules.'
+      skills: ['ralph-methodology.md'],
+      hint: 'Review ralph-methodology.md for vocabulary rules.'
     });
   }
 
@@ -6226,7 +6178,7 @@ app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
       count: sampledPhrases.length,
       phrases: sampledPhrases,
       instructions: [
-        'QA agent should independently re-score each phrase (1-9)',
+        'QA agent should independently re-score each phrase (5-9)',
         'Gate 1: QA avg must be >= 7.0 (absolute quality)',
         'Gate 2: USE phrases must outscore BUILD phrases',
         'Gate 3: Check for vocabulary violations (words not yet introduced)',
@@ -6589,7 +6541,7 @@ app.get('/api/checkpoint/qa-sample/:courseCode', async (req, res) => {
       drift_threshold: QA_DRIFT_THRESHOLD,
       phrases: formattedSample,
       instructions: [
-        'Score each phrase 1-9 based on quality (see /checkpoint-qa skill)',
+        'Score each phrase 5-9 based on quality (see ralph-methodology.md)',
         'Do NOT look at agent scores until after you score',
         `POST results to /api/checkpoint/qa-result/${courseCode}`,
         `Auto-approve if |your_avg - agent_avg| <= ${QA_DRIFT_THRESHOLD}`
@@ -7549,11 +7501,11 @@ app.listen(PORT, () => {
   console.log(`║  • M-LEGO build-up: auto-generates component→LEGO phrases    ║`);
   console.log(`║  • Deduplication: normalized (case/punctuation insensitive)  ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
-  console.log(`║  METHODOLOGY COMMANDS (shown on rejection):                  ║`);
-  console.log(`║  • /ssi-decompose-seed - LEGO decomposition, tiling, comps   ║`);
-  console.log(`║  • /ssi-build-phrases  - Phrase requirements & progression   ║`);
-  console.log(`║  • /ssi-learner-pattern - What the learner experiences       ║`);
-  console.log(`║  • /ssi-phrase-variety - Vocabulary balance requirements     ║`);
+  console.log(`║  METHODOLOGY REFERENCE (shown on rejection):                 ║`);
+  console.log(`║  • ralph-methodology.md - Complete methodology guide         ║`);
+  console.log(`║    - LEGO decomposition, tiling, overlapping LEGOs           ║`);
+  console.log(`║    - BUILD (flexible) + USE (min 5) phrase structure         ║`);
+  console.log(`║    - Scoring: 5-9 scale, 4 or below = hard reject            ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);
   console.log(`║  GOLDEN PATH:                                                ║`);
   console.log(`║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║`);

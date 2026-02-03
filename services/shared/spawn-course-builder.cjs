@@ -415,9 +415,7 @@ Fix errors and resubmit. The database is the state - check /api/stats to see pro
 
 You have access to these commands for guidance. **USE THEM** when unsure or after errors:
 
-- \`/ssi-decompose-seed\` - How to break a seed into LEGOs (tiling, ordering, M-LEGOs)
-- \`/ssi-build-phrases\` - How to generate phrases (progression, counts, ETERNAL)
-- \`/ssi-learner-pattern\` - What the learner experiences (the full pedagogical pattern)
+- \`ralph-methodology.md\` - Complete course building methodology (decomposition, phrases, learner pattern)
 
 **Invoke these commands:**
 - Before starting if you need a refresher
@@ -433,7 +431,7 @@ If interrupted or context compacts:
 1. \`GET ${builderApiUrl}/api/resume/${courseCode}\` - Check pass_status
 2. If \`pass1_complete: false\` → Continue translating (Pass 1)
 3. If \`pass1_complete: true, pass2_complete: false\` → Continue decomposing (Pass 2)
-4. Invoke \`/translation-analysis\` or \`/ssi-learner-pattern\` for methodology refresh
+4. Read \`ralph-methodology.md\` for methodology refresh
 5. **Database is the state** - no external tracking needed
 
 ---

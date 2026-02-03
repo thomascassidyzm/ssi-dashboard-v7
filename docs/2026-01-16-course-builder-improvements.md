@@ -40,7 +40,7 @@ Major improvements to the course builder agent spawning system, remote dashboard
 ### 6. Agent Resume Improvements
 
 - `/api/resume` now returns `available_vocabulary` - full list of all LEGOs
-- Agent spawn prompt updated to load `/ssi-learner-pattern` first
+- Agent spawn prompt updated to load `ralph-methodology.md` first
 - `/course-resume` skill updated to emphasize methodology loading
 - Success response now says `status: INSERTED`, `action: PROCEED TO NEXT SEED`
 - Warnings clearly marked as "for your NEXT seed - do NOT resubmit"

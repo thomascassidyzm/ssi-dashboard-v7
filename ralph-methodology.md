@@ -10,7 +10,7 @@
 
 ### Grammar is INFERRED, Never Taught
 
-Learners infer grammar from seeing pairs in contrast. Components are NEVER grammatical explanations.
+Learners infer grammar from seeing pairs in contrast. Grammar is NEVER explained.
 
 ```
 WRONG: "了 is a completed action marker"
@@ -20,19 +20,17 @@ WRONG: "-o is first person conjugation"
 RIGHT: to speak → falar, I speak → eu falo (learner INFERS conjugation)
 ```
 
-**Rule: If you can't translate it to a single English WORD, don't make it a component.**
-
 ### The Unit of Communication is the LEGO
 
-Components break down M-LEGOs for DISPLAY ONLY - they show internal structure.
-Components are NEVER practiced as audio. Only LEGOs (A or M) are practiced.
+LEGOs are the building blocks of learning. Every LEGO (A or M) is practiced as audio.
+Patterns are inferred through **overlapping LEGOs** - the learner sees a word alone, then sees it inside a phrase.
 
 ---
 
 ## LEGO Types
 
 ### A-LEGO (Atomic)
-Single meaningful word. No components needed.
+Single meaningful word. These often appear inside M-LEGOs to create overlaps.
 
 ```json
 {
@@ -43,93 +41,115 @@ Single meaningful word. No components needed.
 ```
 
 ### M-LEGO (Molecular)
-Multi-word phrase. MUST have components for display.
+Multi-word phrase. Patterns are inferred through overlap with related A-LEGOs.
 
 ```json
 {
   "type": "M",
-  "known": "after you finish",
-  "target": "despues de que termines",
-  "components": [
-    {"known": "after", "target": "despues de"},
-    {"known": "that", "target": "que"},
-    {"known": "you finish", "target": "termines"}
-  ]
+  "known": "it's important",
+  "target": "es importante"
 }
 ```
 
-**Component translations can be literal** - they help learners see internal structure.
-They're for comprehension, not production.
+### Overlapping LEGOs (The Teaching Mechanism)
+
+LEGOs do NOT have to tile perfectly to make the SEED. Instead, create **overlapping LEGOs** where A-LEGOs also appear as parts of M-LEGOs. The overlap IS the teaching.
+
+```
+SEED: "it's important to practice speaking as often as possible"
+      "es importante practicar hablar lo más frecuentemente posible"
+
+LEGOs (with overlaps allowed):
+- importante = important           (A-LEGO)
+- es importante = it's important   (M-LEGO, overlaps with "importante")
+- practicar = to practice          (A-LEGO)
+- hablar = to speak                (A-LEGO)
+- practicar hablar = to practise speaking (M-LEGO, overlaps with practicar and hablar)
+- frecuentemente = often           (A-LEGO)
+- posible = possible               (A-LEGO)
+- lo más frecuentemente posible = as often as possible (M-LEGO)
+```
+
+The learner sees "importante" alone, then sees it inside "es importante" - the overlap lets them infer the pattern without explanation.
 
 ---
 
 ## Phrase Roles: BUILD vs USE
 
-### BUILD Phrases (4 required)
+### BUILD Phrases (flexible quantity)
 **Purpose:** Lock in the pattern. Get the LEGO "in."
 
+- **LEGO + 1-5 extra syllables** (cognitive load consideration)
+- Used ONLY in the **debut round** for that LEGO
+- Never seen again - not in CONSOLIDATE, not in REVIEW
 - Fragments OK (don't need to be complete sentences)
-- SHORT → MEDIUM length
 - Must contain the LEGO (exact character match)
 - NOT eternal-eligible
 
+**Quantity is flexible based on LEGO length.** If the LEGO itself is already long (high syllable count), you add almost nothing. The constraint is cognitive load, not an arbitrary phrase count.
+
 ```
 BUILD examples for "after you finish" → "despues de que termines":
+(LEGO is already 7 syllables, so BUILD phrases add minimal extra)
 
 1. after you finish                    → despues de que termines
 2. after you finish working            → despues de que termines de trabajar
 3. after you finish eating             → despues de que termines de comer
-4. come over after you finish          → ven despues de que termines
 ```
 
-### USE Phrases (6 required)
+### USE Phrases (minimum 5)
 **Purpose:** Natural production. Put the LEGO "out."
 
+- **LEGO + 5-10 extra syllables** (can go longer, but no forced run-on sentences)
+- **Minimum 5 per LEGO** - these get reused in CONSOLIDATE, REVIEW, and listening exercises
 - **MUST be complete, natural sentences** - NEVER fragments
 - A USE phrase is something a learner would ACTUALLY SAY in conversation
-- MEDIUM → LONG length (Chinese: 4+ chars, other languages: 3+ words minimum)
 - Must contain the LEGO (exact character match)
 - ALL are eternal-eligible (go into spaced repetition)
+
+These are the "eternal" phrases that come back throughout the course. Quality matters more than quantity.
 
 > ⚠️ **CRITICAL**: Even with limited vocabulary in early seeds, a USE phrase must be a complete sentence. If you can't form enough complete sentences with available vocabulary, **reduce the USE count** rather than submitting fragments. "想说。" or "Speak." is NEVER acceptable as a USE phrase.
 
 ```
 USE examples for "after you finish" → "despues de que termines":
 
-5. Do you want to come over after you finish?
+1. Do you want to come over after you finish?
    → ¿Quieres venir despues de que termines?
 
-6. Please come over after you finish
+2. Please come over after you finish
    → Por favor ven despues de que termines
 
-7. It would be good to see you after you finish
+3. It would be good to see you after you finish
    → Sería bueno verte despues de que termines
 
-8. I want to practice Spanish with you after you finish working
+4. I want to practice Spanish with you after you finish working
    → Quiero practicar español contigo despues de que termines de trabajar
 
-9. Can you help me after you finish eating?
+5. Can you help me after you finish eating?
    → ¿Puedes ayudarme despues de que termines de comer?
-
-10. I'm going to call you after you finish
-    → Voy a llamarte despues de que termines
 ```
 
-### Length Requirements
+### Round Structure for a New LEGO
 
-| Role | Count | Length | Complete Sentence? | Eternal? |
-|------|-------|--------|-------------------|----------|
-| BUILD | 4 | 2 SHORT, 2 MEDIUM | No (fragments OK) | No |
-| USE | 6 | 3 MEDIUM, 3 LONG | Yes (required) | Yes |
+1. **Intro** - LEGO introduced
+2. **Debut** - the LEGO itself
+3. **Practice** - ~7 phrases total (all BUILD + enough USE to reach ~7)
+4. **Review** - USE phrases from previous LEGOs (spaced repetition)
+5. **Consolidate** - 2x USE phrases from this LEGO
 
-**Length definitions (by syllables):**
-- SHORT: 3-5 syllables
-- MEDIUM: 6-9 syllables
-- LONG: 10+ syllables
+### Syllable Guidelines
+
+| Role | Syllables | Complete Sentence? | Reused? | Eternal? |
+|------|-----------|-------------------|---------|----------|
+| BUILD | LEGO + 1-5 | No (fragments OK) | No (debut only) | No |
+| USE | LEGO + 5-10 | Yes (required) | Yes (consolidate, review) | Yes |
+
+**Key principle:** Syllable count is the proxy for cognitive load. The constraint is cognitive load, not arbitrary phrase counts.
 
 ---
 
-## USE Phrase Scoring (1-9)
+## USE Phrase Scoring (5-9)
 
 Every USE phrase MUST have a self-assessed quality score. USE phrases go into eternal rotation - learners hear them hundreds of times. Quality matters.
 
@@ -137,16 +157,14 @@ Every USE phrase MUST have a self-assessed quality score. USE phrases go into et
 
 | Score | Meaning |
 |-------|---------|
-| **9** | Grammatically perfect, semantically excellent, high value in both languages |
-| **7-8** | Strong phrase, minor stylistic preferences possible |
-| **5-6** | Solid, functional, no issues but not remarkable |
-| **3-4** | Grammatically OK, but awkward/textbook-ish |
-| **1-2** | Grammatically OK, semantically questionable, low value |
-| **0** | Grammatical error → **REWRITE, don't submit** |
+| **9** | Excellent - native speakers would actually say this in both languages, high pedagogical value |
+| **7-8** | Strong - minor stylistic preferences possible |
+| **5-6** | Functional - grammatically correct, gets the job done |
+| **4 or below** | Hard reject - rewrite, don't submit |
 
 ### Scoring Rules
 
-1. **Score 0 = Rewrite**: If you assess a phrase as 0, don't submit it. Fix the grammar and resubmit.
+1. **4 or below = Rewrite**: If you assess a phrase as 4 or below, don't submit it. Rewrite and resubmit.
 2. **Be honest**: Your scores will be sampled by QA. Consistent over-rating will be flagged.
 3. **Score before submitting**: Rate each USE phrase immediately after writing it.
 
@@ -162,50 +180,81 @@ Every USE phrase MUST have a self-assessed quality score. USE phrases go into et
 - Makes sense but might sound slightly formal/textbook
 - Gets the job done
 
-**1-2 (Marginal):**
-- Technically correct but no one would say this
-- Awkward in one or both languages
-- Low pedagogical value
-
 ---
 
 ## Complete LEGO Submission Format
 
+Below shows how overlapping LEGOs work in practice. Note that "importante" appears both as its own A-LEGO and inside the M-LEGO "es importante":
+
 ```json
-{
-  "idx": 1,
-  "type": "M",
-  "known": "after you finish",
-  "target": "despues de que termines",
-  "components": [
-    {"known": "after", "target": "despues de"},
-    {"known": "that", "target": "que"},
-    {"known": "you finish", "target": "termines"}
-  ],
-  "build": [
-    {"known": "after you finish", "target": "despues de que termines"},
-    {"known": "after you finish working", "target": "despues de que termines de trabajar"},
-    {"known": "after you finish eating", "target": "despues de que termines de comer"},
-    {"known": "come over after you finish", "target": "ven despues de que termines"}
-  ],
-  "use": [
-    {"known": "Do you want to come over after you finish?", "target": "¿Quieres venir despues de que termines?", "score": 8},
-    {"known": "Please come over after you finish", "target": "Por favor ven despues de que termines", "score": 7},
-    {"known": "It would be good to see you after you finish", "target": "Sería bueno verte despues de que termines", "score": 7},
-    {"known": "I want to practice Spanish with you after you finish working", "target": "Quiero practicar español contigo despues de que termines de trabajar", "score": 8},
-    {"known": "Can you help me after you finish eating?", "target": "¿Puedes ayudarme despues de que termines de comer?", "score": 8},
-    {"known": "I'm going to call you after you finish", "target": "Voy a llamarte despues de que termines", "score": 7}
-  ]
-}
+[
+  {
+    "idx": 1,
+    "type": "A",
+    "known": "important",
+    "target": "importante",
+    "build": [
+      {"known": "important", "target": "importante"},
+      {"known": "very important", "target": "muy importante"},
+      {"known": "more important", "target": "más importante"},
+      {"known": "not important", "target": "no importante"}
+    ],
+    "use": [
+      {"known": "This is important", "target": "Esto es importante", "score": 8},
+      {"known": "It's very important to me", "target": "Es muy importante para mí", "score": 8},
+      {"known": "Is it important?", "target": "¿Es importante?", "score": 7},
+      {"known": "That isn't important now", "target": "Eso no es importante ahora", "score": 7},
+      {"known": "I think it's important", "target": "Creo que es importante", "score": 8},
+      {"known": "Why is it important?", "target": "¿Por qué es importante?", "score": 7}
+    ]
+  },
+  {
+    "idx": 2,
+    "type": "M",
+    "known": "it's important",
+    "target": "es importante",
+    "build": [
+      {"known": "it's important", "target": "es importante"},
+      {"known": "it's important to practice", "target": "es importante practicar"},
+      {"known": "it's important to speak", "target": "es importante hablar"},
+      {"known": "it's important to learn", "target": "es importante aprender"}
+    ],
+    "use": [
+      {"known": "It's important to practice every day", "target": "Es importante practicar cada día", "score": 8},
+      {"known": "It's important to speak Spanish with you", "target": "Es importante hablar español contigo", "score": 8},
+      {"known": "I think it's important to learn this", "target": "Creo que es importante aprender esto", "score": 8},
+      {"known": "It's important to try", "target": "Es importante intentar", "score": 7},
+      {"known": "Why is it important to practice?", "target": "¿Por qué es importante practicar?", "score": 8},
+      {"known": "It's important to me", "target": "Es importante para mí", "score": 7}
+    ]
+  }
+]
 ```
+
+**Key insight:** The learner first sees "importante" alone (A-LEGO), then sees it inside "es importante" (M-LEGO). The overlap lets them infer the pattern without any explanation.
 
 ---
 
 ## Seed Decomposition
 
-### Tiling Requirement
+### Seeds Are Vehicles for LEGOs
 
-Every seed must be FULLY TILEABLE from its LEGOs. No part can be missing.
+**Seeds are NOT first-class citizens.** The seed is just a vehicle for delivering LEGOs to the learner. LEGOs are the real value - they're the building blocks learners use for skilful recombination.
+
+When you decompose a seed, you're asking: "What LEGOs does this seed let me teach?" The seed exists to provide context for introducing those LEGOs.
+
+### Tiling Requirement (Sanity Check)
+
+Tiling is a **sanity check**, not a rigid constraint. It means: the seed CAN be recomposed from its LEGOs - at least one valid way.
+
+**What tiling checks:**
+- No words missed (every part of the seed is covered)
+- No words added (LEGOs don't introduce unrelated vocabulary)
+
+**What tiling allows:**
+- Multiple valid tilings when using overlapping LEGOs (different combinations might work)
+- Overlaps between LEGOs are expected and encouraged
+- Late-course seeds can be very short (as few as 2-3 LEGOs)
 
 ```
 Seed: "I want to speak Chinese with you now"
@@ -219,35 +268,53 @@ LEGOs must cover:
 - 现在 (now) ✓
 
 Full reconstruction: 我 + 现在 + 想 + 和 + 你 + 说 + 中文 ✓
+
+Note: If you also had A-LEGOs for 我 (I) and 想 (want) that overlap
+with the M-LEGO 我想 (I want), there would be multiple valid tilings.
+That's fine - overlapping LEGOs are the teaching mechanism!
 ```
 
 **If any part is missing, add a LEGO for it.**
 
 ### Pedagogical Ordering (NOT Sentence Order)
 
-Order LEGOs so phrases build naturally. Temporal markers and particles come LAST.
+**Principle: Order LEGOs to maximize useful phrases at each stage.**
 
-**BAD** (follows sentence order):
+The goal is combinability - each new LEGO should combine meaningfully with what came before. This matters more early in the course when vocabulary is sparse.
+
+**Early seeds (1-10):** Ordering matters more because there's limited prior vocabulary to combine with. Be thoughtful about which LEGOs come first - prioritize high-utility items that combine well.
+
+**After ~10 seeds:** There's enough accumulated material that almost any LEGO order works. You have a rich pool of prior vocabulary, so new LEGOs can combine with many existing items regardless of introduction order.
+
+**Non-greedy introduction:** If an A-LEGO is contained within an M-LEGO, introduce the A-LEGO first. When the M-LEGO arrives, the learner already knows part of it - reducing uncertainty and cognitive load.
+
 ```
-1. I → 我
-2. now → 现在  ← TOO EARLY! Nothing to combine with
-3. want → 想
+1. importante = important (A-LEGO) ← introduce first
+2. es importante = it's important (M-LEGO) ← learner recognizes "importante"
 ```
 
-**GOOD** (pedagogical):
+The learner only processes "es" as new. This is how overlapping LEGOs reduce cognitive load.
+
+**Use good judgment, not rigid rules.** Be skilful - don't be arbitrary, but also don't over-constrain yourself.
+
+**Example (illustrative, not prescriptive):**
+
+Early in a course, this ordering maximizes useful combinations:
 ```
 1. I want → 我想 [M-LEGO, immediately useful]
 2. to speak → 说
 3. Chinese → 中文
 4. with you → 和你
-5. now → 现在  ← LAST! Now combines with everything
+5. now → 现在  [combines with everything above]
 ```
+
+Introducing "now" (现在) early when there's nothing to combine with would be less effective. But in seed 50? It wouldn't matter - there's plenty of existing vocabulary to pair it with.
 
 ---
 
 ## ZUT (Zero Uncertainty Test)
 
-Same English → same target. Always.
+Same KNOWN → same TARGET. Always.
 
 ### Violation Example
 ```
@@ -255,20 +322,23 @@ Seed 10: "know" → 알다
 Seed 45: "know" → 알고 있다  ← REJECTED! Conflicts with seed 10
 ```
 
-### Fix: Upchunk to Disambiguate
+### Fix: Use Different Natural Phrases
 ```
-Seed 10: "know (fact)" → 알다
-Seed 45: "know (state)" → 알고 있다  ✓ Different English = OK
+Seed 10: "I know" → 알아요
+Seed 45: "I know about it" → 알고 있어요  ✓ Different KNOWN = OK
 ```
 
-Or use synonyms: "know" vs "be aware of" vs "understand"
+The context disambiguates - no explanations needed. The learner infers the distinction.
 
-### Common Problem Verbs (check your translation analysis)
-- remember (retain vs recall)
-- know (fact vs state vs skill)
-- think (opinion vs deliberate)
-- see (visual vs meet)
-- feel (physical vs intuition)
+Other options: use synonyms like "understand" or "be aware of" for one meaning.
+
+### Problem Verbs to Watch
+These verbs often have multiple translations. Disambiguate through natural phrasing:
+- remember / recall / keep in mind
+- know / understand / be aware of
+- think / believe / consider
+- see / meet / notice
+- feel / sense / seem
 
 ---
 
@@ -278,26 +348,35 @@ For LEGO N in seed S, phrases can ONLY use:
 - This LEGO (N) itself
 - All LEGOs from seeds 1 through S-1
 - LEGOs 1 through N-1 from current seed S
-- M-LEGO components from above
+- Overlapping A-LEGOs that appear within M-LEGOs above
 
 **You CANNOT use vocabulary not yet introduced!**
 
 ---
 
-## Multi-Language Examples
+## Multi-Language Examples (Overlapping LEGOs)
 
 ### Chinese (Sinitic)
 ```
-M-LEGO: "I want" → "我想"
-Components: [I→我, want→想]
+SEED: "I want to speak Chinese" → "我想说中文"
 
-BUILD:
+Overlapping LEGOs:
+- 我 = I                    (A-LEGO)
+- 想 = want                 (A-LEGO)
+- 我想 = I want             (M-LEGO, overlaps with 我 and 想)
+- 说 = speak                (A-LEGO)
+- 中文 = Chinese            (A-LEGO)
+
+The learner sees 我 alone, then 想 alone, then sees them combined in 我想.
+The pattern is inferred from the overlap, never explained.
+
+BUILD for 我想:
 - I want → 我想
 - I want to speak → 我想说
 - I want to learn → 我想学
 - I want to try → 我想试
 
-USE:
+USE for 我想:
 - I want to speak Chinese → 我想说中文
 - I want to learn Chinese with you → 我想和你学中文
 - Now I want to try to speak Chinese → 我现在想试着说中文
@@ -308,16 +387,24 @@ USE:
 
 ### Portuguese (Romance)
 ```
-M-LEGO: "I have been learning" → "tenho aprendido"
-Components: [I have→tenho, learned→aprendido]
+SEED: "I have been learning Portuguese" → "tenho aprendido português"
 
-BUILD:
+Overlapping LEGOs:
+- aprender = to learn                (A-LEGO - infinitive)
+- aprendido = learned               (A-LEGO - past participle)
+- tenho aprendido = I have been learning  (M-LEGO, overlaps with aprendido)
+- português = Portuguese            (A-LEGO)
+
+The learner sees "aprendido" alone, then sees it inside "tenho aprendido".
+The pattern is inferred from the overlap.
+
+BUILD for tenho aprendido:
 - I have been learning → tenho aprendido
 - I have been learning Portuguese → tenho aprendido português
 - I have been learning to speak → tenho aprendido a falar
 - I have been learning with you → tenho aprendido contigo
 
-USE:
+USE for tenho aprendido:
 - I have been learning Portuguese with you → tenho aprendido português contigo
 - I have been learning to speak Portuguese → tenho aprendido a falar português
 - I have been learning how to speak Portuguese well → tenho aprendido a falar português bem
@@ -328,16 +415,25 @@ USE:
 
 ### German (Germanic)
 ```
-M-LEGO: "I would like to" → "ich möchte"
-Components: [I→ich, would like→möchte]
+SEED: "I would like to speak German" → "ich möchte Deutsch sprechen"
 
-BUILD:
+Overlapping LEGOs:
+- ich = I                   (A-LEGO)
+- möchte = would like       (A-LEGO)
+- ich möchte = I would like (M-LEGO, overlaps with ich and möchte)
+- sprechen = to speak       (A-LEGO)
+- Deutsch = German          (A-LEGO)
+
+The learner sees "ich" alone, then "möchte" alone, then sees "ich möchte".
+The pattern is inferred from seeing the combinations.
+
+BUILD for ich möchte:
 - I would like to → ich möchte
 - I would like to speak → ich möchte sprechen
 - I would like to learn → ich möchte lernen
 - I would like to try → ich möchte versuchen
 
-USE:
+USE for ich möchte:
 - I would like to speak German → ich möchte Deutsch sprechen
 - I would like to learn German with you → ich möchte Deutsch mit dir lernen
 - I would like to try to speak German → ich möchte versuchen Deutsch zu sprechen
@@ -348,16 +444,24 @@ USE:
 
 ### Korean (Koreanic)
 ```
-M-LEGO: "I want to" → "하고 싶어요"
-Components: [do→하다, want→싶다]
+SEED: "I want to speak Korean" → "한국어를 말하고 싶어요"
 
-BUILD:
+Overlapping LEGOs:
+- 말하다 = to speak         (A-LEGO - dictionary form)
+- 싶다 = to want            (A-LEGO - dictionary form)
+- 하고 싶어요 = I want to   (M-LEGO, overlaps with 싶다)
+- 한국어 = Korean           (A-LEGO)
+
+The learner sees 싶다 alone, then sees it inside 하고 싶어요.
+The pattern is inferred from observing these overlaps.
+
+BUILD for 하고 싶어요:
 - I want to → 하고 싶어요
 - I want to speak → 말하고 싶어요
 - I want to learn → 배우고 싶어요
 - I want to try → 해보고 싶어요
 
-USE:
+USE for 하고 싶어요:
 - I want to speak Korean → 한국어를 말하고 싶어요
 - I want to learn Korean with you → 당신과 한국어를 배우고 싶어요
 - I want to try to speak Korean → 한국어를 말해보고 싶어요
@@ -376,13 +480,13 @@ When the API rejects your submission, the error message tells you EXACTLY what t
 
 ```
 Error: "ZUT violation: 'know' already maps to '알다'"
-Action: Upchunk to "know (state)" or use synonym "be aware of"
+Action: Use a different natural phrase like "I know about it" or synonym "be aware of"
 
 Error: "Vocabulary violation: '내일' not yet introduced"
 Action: Remove phrase using '내일' or reorder LEGOs
 
-Error: "USE phrases need 6, got 4"
-Action: Add 2 more complete sentences
+Error: "USE phrases need minimum 5, got 3"
+Action: Add more complete sentences
 
 Error: "BUILD phrase 'I want' missing LEGO target '하고 싶어요'"
 Action: Ensure phrase contains exact LEGO target text
@@ -480,6 +584,8 @@ The build will HALT if:
 
 ### Submitting a Seed
 
+Note: LEGOs overlap - the A-LEGO "싶다" (want) also appears inside the M-LEGO "하고 싶어요" (I want to).
+
 ```
 POST /api/seed/complete
 {
@@ -490,15 +596,22 @@ POST /api/seed/complete
   "legos": [
     {
       "idx": 1,
-      "type": "M",
-      "known": "I want to",
-      "target": "하고 싶어요",
-      "components": [...],
-      "build": [...],  // 4 phrases
-      "use": [...]     // 6 phrases
+      "type": "A",
+      "known": "want",
+      "target": "싶다",
+      "build": [...],  // flexible quantity
+      "use": [...]     // minimum 5
     },
     {
       "idx": 2,
+      "type": "M",
+      "known": "I want to",
+      "target": "하고 싶어요",
+      "build": [...],  // flexible - learner sees 싶다 inside 하고 싶어요
+      "use": [...]     // minimum 5
+    },
+    {
+      "idx": 3,
       "type": "A",
       "known": "to speak",
       "target": "말하다",
@@ -522,14 +635,15 @@ When all seeds pass validation:
 
 ## Checklist Before Submitting Each Seed
 
-- [ ] Seed fully tiles from LEGOs (no missing parts)
-- [ ] LEGOs in pedagogical order (temporal/particles LAST)
-- [ ] M-LEGOs have components (real words only, no grammar explanations)
-- [ ] Each LEGO has 4 BUILD phrases (fragments OK, SHORT→MEDIUM)
-- [ ] Each LEGO has 6 USE phrases (complete sentences, MEDIUM→LONG)
+- [ ] Seed can be reconstructed from LEGOs (sanity check: no words missed, no words added)
+- [ ] LEGOs in pedagogical order (maximize combinability, especially in early seeds)
+- [ ] M-LEGOs have corresponding A-LEGOs for key vocabulary (overlapping LEGOs)
+- [ ] Overlaps let patterns be inferred - learner sees word alone, then inside phrase
+- [ ] Each LEGO has BUILD phrases (LEGO + 1-5 syllables, fragments OK, debut only)
+- [ ] Each LEGO has minimum 5 USE phrases (LEGO + 5-10 syllables, complete sentences)
 - [ ] All phrases contain LEGO target (exact match)
 - [ ] All phrases use only introduced vocabulary
-- [ ] No ZUT violations (same English → same target)
+- [ ] No ZUT violations (same KNOWN → same TARGET)
 
 ---
 
@@ -539,15 +653,17 @@ Seeds 1-5 have limited vocabulary. Requirements are relaxed:
 
 - Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE (almost nothing to combine)
 - Seed 1, LEGO 2: 2 BUILD, 2 USE (can use L1)
-- Seeds 2-5: 3 BUILD, 4 USE minimum
-- Seeds 6+: Full requirements (4 BUILD, 6 USE)
+- Seeds 2-5: BUILD as needed (flexible), minimum 3 USE
+- Seeds 6+: BUILD as needed (flexible), minimum 5 USE
+
+The BUILD quantity is always flexible based on LEGO length and cognitive load. USE minimums ensure enough eternal phrases for spaced repetition.
 
 ---
 
 ## Remember
 
 1. **You are not translating** - you are building a pedagogical structure
-2. **Components are for display** - never practiced as audio
+2. **Overlapping LEGOs enable inference** - word alone, then word inside phrase
 3. **Grammar is inferred** - from contrast, never explained
 4. **BUILD locks it in** - fragments OK, get the pattern in
 5. **USE produces naturally** - complete sentences, eternal-eligible
@@ -574,9 +690,9 @@ This section captures hard-won insights from QA checkpoints and production issue
 - USE phrases must ALWAYS be complete sentences regardless of seed position
 - If vocabulary limits prevent complete sentences, reduce USE count
 - Minimum practical lengths: Chinese 4+ chars, other languages 3+ words
-- Score 5 or below = rewrite, don't submit
+- Score 4 or below = rewrite, don't submit
 
-**Validation Added:** Agent self-check before submission - if USE phrase would score ≤5, rewrite it.
+**Validation Added:** Agent self-check before submission - if USE phrase would score 4 or below, rewrite it.
 
 ---
 

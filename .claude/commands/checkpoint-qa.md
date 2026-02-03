@@ -331,5 +331,4 @@ Action: Rebuild with focus on high-quality complete sentences for USE
 ## Related Skills
 
 - `/course-resume` - Resume building after checkpoint approval
-- `/ssi-build-phrases` - Phrase generation requirements
-- `/ssi-learner-pattern` - The SSi methodology
+- `ralph-methodology.md` - Complete course building methodology

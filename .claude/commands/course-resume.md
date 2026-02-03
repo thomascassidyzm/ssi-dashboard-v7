@@ -27,7 +27,7 @@ Use this skill when resuming course building after a context compaction or inter
 
 **CRITICAL**: Before building ANY content, you MUST understand what the learner experiences.
 
-Run `/ssi-learner-pattern` NOW to load the full methodology brief. This is non-negotiable - without understanding how learners experience the content, you'll create unusable material.
+Read `ralph-methodology.md` NOW to load the full methodology brief. This is non-negotiable - without understanding how learners experience the content, you'll create unusable material.
 
 Key principles you MUST internalize:
 - **Learners only know what's been introduced** - never use vocabulary they haven't seen
@@ -84,8 +84,8 @@ curl -X POST http://localhost:3471/api/heartbeat/{course_code} \
 2. **Call /api/resume** - get exact next seed
 3. **Send heartbeat** with current_seed
 4. **Translate** the known_text to target language
-5. **Decompose** into LEGOs (see /ssi-decompose-seed)
-6. **Generate phrases** for each LEGO (see /ssi-build-phrases)
+5. **Decompose** into LEGOs (see ralph-methodology.md)
+6. **Generate phrases** for each LEGO (see ralph-methodology.md)
 7. **Submit** via POST /api/seed/complete
 8. **Repeat** from step 2 until done
 
@@ -190,7 +190,4 @@ The `/api/resume` response also includes `quality_rules` if methodology analysis
 - `/translation-analysis` - Two-pass workflow guide
 - `/course-methodology-analysis` - Generate quality_rules after Pass 1
 - `/jpn-analysis-example` - Example analysis output (Japanese)
-- `/ssi-decompose-seed` - How to break seeds into LEGOs
-- `/ssi-build-phrases` - How to generate practice phrases
-- `/ssi-phrase-variety` - Phrase tier requirements
-- `/ssi-learner-pattern` - The SSi methodology
+- `ralph-methodology.md` - Complete course building methodology (decomposition, phrases, learner pattern)
