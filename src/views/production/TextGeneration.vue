@@ -933,6 +933,10 @@ async function fetchProgress() {
           progress.value.status = 'running'
           progress.value.agentCount = buildData.build?.agent_count || 0
           progress.value.batchSeeds = buildData.build?.current_batch_seeds || 0
+          // Sync seedCount from active job's target
+          if (buildData.build?.total_seeds) {
+            seedCount.value = buildData.build.total_seeds
+          }
         } else if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
           progress.value.status = 'complete'
         } else if (progress.value.status === 'running') {

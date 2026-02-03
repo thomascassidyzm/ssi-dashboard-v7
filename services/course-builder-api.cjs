@@ -2157,7 +2157,8 @@ async function getBuildStatus(courseCode) {
       agent_count: build?.agentCount || 1,
       current_batch_seeds: progress.completed - (build?.batchStartSeed || 0),
       batch_size: BATCH_SIZE,
-      job_id: dbJob?.id || null
+      job_id: dbJob?.id || null,
+      total_seeds: dbJob?.total_seeds || progress.total  // Job target for UI sync
     } : null
   };
 }
