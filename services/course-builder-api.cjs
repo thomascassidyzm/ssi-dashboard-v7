@@ -1946,7 +1946,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
       }
 
       // REUSE existing stalled/pending job - just update it to running
-      console.log(`[BUILD] Resuming existing job ${existingJob.id} for ${courseCode}`);
+      console.log(`[BUILD] Resuming existing job ${existingJob.id} for ${courseCode} with target ${effectiveTarget}`);
       jobId = existingJob.id;
       agentCount = existingJob.agent_count || 0;
 
@@ -1954,6 +1954,7 @@ async function startBuild(courseCode, terminal = 'iTerm2', targetSeeds = 668) {
         status: 'running',
         terminal: terminal,
         current_seed: progress.completed,
+        total_seeds: effectiveTarget,  // Update target on resume
         last_heartbeat: new Date().toISOString(),
         machine_name: MACHINE_NAME
       }).eq('id', existingJob.id);
@@ -2605,13 +2606,22 @@ function generateBuildupPhrases(lego, courseCode) {
  * This is NOT a ZUT conflict because the known_texts are different ("blue" ≠ "blue thing").
  * The ZUT check only triggers for EXACT known_text matches.
  */
-async function checkLegoConflict(courseCode, knownText, targetText) {
+async function checkLegoConflict(courseCode, knownText, targetText, currentSeedNumber = null) {
   // Find any existing LEGOs with the same known_text
-  const { data: existing, error } = await supabase
+  // IMPORTANT: Only check against LEGOs from EARLIER seeds (seed_number < current)
+  // This allows rebuilding seeds without false-positive duplicates from later seeds
+  let query = supabase
     .from('course_legos')
     .select('seed_number, lego_index, known_text, target_text, type')
     .eq('course_code', courseCode)
     .eq('known_text', knownText);
+
+  // If currentSeedNumber provided, only check against earlier seeds
+  if (currentSeedNumber !== null) {
+    query = query.lt('seed_number', currentSeedNumber);
+  }
+
+  const { data: existing, error } = await query;
 
   if (error) {
     throw new Error(`Conflict check failed: ${error.message}`);
@@ -3988,6 +3998,9 @@ app.post('/api/seed/complete', async (req, res) => {
     // Catches asymmetric padding: if known_text and target_text have very different lengths,
     // it suggests one side was "padded" with extra content not in the other language.
     // Ratio tolerance: 2.5x allows for natural language length differences, catches obvious padding.
+    // SKIP for logographic languages (Chinese, Japanese, Korean) - character count comparison is meaningless
+    const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor'];
+    const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);
     const LENGTH_RATIO_THRESHOLD = 2.5;
     const lengthMismatches = [];
 
@@ -4023,7 +4036,7 @@ app.post('/api/seed/complete', async (req, res) => {
       }
     }
 
-    if (lengthMismatches.length > 0 && !SKIP_VALIDATION) {
+    if (lengthMismatches.length > 0 && !SKIP_VALIDATION && !isLogographic) {
       errors.push({
         type: 'length_mismatch',
         message: `Phrase length mismatch - known and target should express same content (ratio > ${LENGTH_RATIO_THRESHOLD}x)`,
@@ -4033,6 +4046,8 @@ app.post('/api/seed/complete', async (req, res) => {
         methodology: 'Each phrase pair is a translation. known_text and target_text must be semantically equivalent - no additions, no omissions.'
       });
       console.log(`✗ ${seedId}: LENGTH MISMATCH - ${lengthMismatches.length} phrases with ratio > ${LENGTH_RATIO_THRESHOLD}x`);
+    } else if (isLogographic && lengthMismatches.length > 0) {
+      console.log(`ℹ ${seedId}: Skipping length check for logographic language (${lengthMismatches.length} would have flagged)`);
     }
 
     // 4. PHRASE VALIDATION (supports both BUILD/USE and legacy format)

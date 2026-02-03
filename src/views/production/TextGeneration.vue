@@ -54,22 +54,32 @@
         <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide mb-4">Configuration</h2>
 
         <div class="grid grid-cols-2 gap-6">
-          <!-- Seed Count -->
+          <!-- Job Target -->
           <div>
-            <label class="block text-xs text-slate-500 mb-2">Course Size</label>
-            <div class="flex gap-2">
+            <label class="block text-xs text-slate-500 mb-2">Job Target</label>
+            <div class="flex gap-2 items-center">
               <button
                 v-for="size in courseSizes"
                 :key="size.seeds"
                 @click="seedCount = size.seeds"
-                class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
+                class="px-3 py-2 rounded-lg border transition-all text-sm"
                 :class="seedCount === size.seeds
                   ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
                   : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
               >
                 <div class="font-medium">{{ size.label }}</div>
-                <div class="text-xs opacity-70">{{ size.seeds }} seeds</div>
+                <div class="text-xs opacity-70">{{ size.seeds }}</div>
               </button>
+              <div class="flex items-center gap-2 ml-2">
+                <span class="text-xs text-slate-500">Run to:</span>
+                <input
+                  v-model.number="seedCount"
+                  type="number"
+                  min="1"
+                  max="1000"
+                  class="w-20 px-2 py-2 rounded-lg border bg-slate-700/50 border-slate-600/50 text-slate-200 text-sm text-center"
+                />
+              </div>
             </div>
           </div>
 
@@ -127,12 +137,22 @@
         </div>
 
         <!-- Stats Grid -->
-        <div class="grid grid-cols-5 gap-4 text-center">
-          <div class="bg-slate-700/30 rounded-lg p-3">
-            <div class="text-2xl font-mono font-semibold text-slate-200">
+        <div class="grid grid-cols-6 gap-4 text-center">
+          <!-- Pass 1: Translated Seeds -->
+          <div class="bg-slate-700/30 rounded-lg p-3 relative">
+            <div class="absolute top-1 left-1 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">Pass 1</div>
+            <div class="text-2xl font-mono font-semibold text-slate-200 mt-2">
+              {{ progress.seedsTranslated || 0 }}
+            </div>
+            <div class="text-xs text-slate-500">/ {{ progress.totalSeeds || seedCount }} translated</div>
+          </div>
+          <!-- Pass 2: Decomposed Seeds -->
+          <div class="bg-slate-700/30 rounded-lg p-3 relative">
+            <div class="absolute top-1 left-1 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Pass 2</div>
+            <div class="text-2xl font-mono font-semibold text-slate-200 mt-2">
               {{ progress.currentSeed }}
             </div>
-            <div class="text-xs text-slate-500">/ {{ progress.totalSeeds || seedCount }} seeds</div>
+            <div class="text-xs text-slate-500">/ {{ progress.totalSeeds || seedCount }} decomposed</div>
           </div>
           <div class="bg-slate-700/30 rounded-lg p-3">
             <div class="text-2xl font-mono font-semibold text-slate-200">
@@ -478,7 +498,8 @@ const engines = [
 // Progress state
 const progress = ref({
   status: 'idle',
-  currentSeed: 0,
+  currentSeed: 0,        // Pass 2: seeds with LEGOs (decomposed)
+  seedsTranslated: 0,    // Pass 1: seeds with translations
   totalSeeds: 0,
   legosInserted: 0,
   phrasesInserted: 0
@@ -898,7 +919,8 @@ async function fetchProgress() {
 
       progress.value = {
         ...progress.value,
-        currentSeed: data.seeds_with_legos || data.seeds || 0,
+        currentSeed: data.seeds_with_legos || data.seeds || 0,  // Pass 2: decomposed
+        seedsTranslated: data.completed_seeds || data.seeds_translated || 0,  // Pass 1: translated
         totalSeeds: totalSeeds,
         legosInserted: data.legos || 0,
         phrasesInserted: data.phrases || 0,
