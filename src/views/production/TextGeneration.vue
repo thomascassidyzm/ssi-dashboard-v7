@@ -482,15 +482,13 @@ const seedCount = ref(260)
 const agentEngine = ref('cli')
 
 const courseSizes = [
-  { seeds: 30, label: 'Test' },
   { seeds: 260, label: 'MVP' },
   { seeds: 668, label: 'Full' }
 ]
 
 const engines = [
   { id: 'cli', label: 'iTerm2', description: 'Pro Max #1' },
-  { id: 'terminal', label: 'Terminal', description: 'Pro Max #2' },
-  { id: 'browser', label: 'Safari', description: 'Browser' }
+  { id: 'terminal', label: 'Terminal', description: 'Pro Max #2' }
 ]
 
 // Model is always Opus 4.5 (Sonnet produces poor quality - formulaic, repetitive patterns)
