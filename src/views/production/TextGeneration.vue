@@ -937,11 +937,17 @@ async function fetchProgress() {
           if (buildData.build?.total_seeds) {
             seedCount.value = buildData.build.total_seeds
           }
-        } else if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
-          progress.value.status = 'complete'
-        } else if (progress.value.status === 'running') {
-          // Build finished or was stopped
-          progress.value.status = 'idle'
+        } else {
+          // No active job - use last job's target or course default
+          if (buildData.last_job_target) {
+            seedCount.value = buildData.last_job_target
+          }
+          if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
+            progress.value.status = 'complete'
+          } else if (progress.value.status === 'running') {
+            // Build finished or was stopped
+            progress.value.status = 'idle'
+          }
         }
       }
 

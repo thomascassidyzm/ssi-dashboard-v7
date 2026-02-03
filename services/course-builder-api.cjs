@@ -2118,6 +2118,7 @@ async function getBuildStatus(courseCode) {
 
   // Check DB for active job (SSoT) - includes pending, running, stalled
   let dbJob = null;
+  let lastJobTarget = null;
   try {
     const { data } = await supabase
       .from('build_jobs')
@@ -2129,6 +2130,20 @@ async function getBuildStatus(courseCode) {
       .single();
     dbJob = data;
   } catch (e) { /* no active job */ }
+
+  // Also fetch last job's target (for UI when no active job)
+  if (!dbJob) {
+    try {
+      const { data } = await supabase
+        .from('build_jobs')
+        .select('total_seeds')
+        .eq('course_code', courseCode)
+        .order('started_at', { ascending: false })
+        .limit(1)
+        .single();
+      lastJobTarget = data?.total_seeds;
+    } catch (e) { /* no previous job */ }
+  }
 
   // DATABASE is the single source of truth for whether a build is active
   // If database doesn't have an active job, the build is NOT active
@@ -2152,6 +2167,7 @@ async function getBuildStatus(courseCode) {
     progress: progress,
     source: isActive ? 'database' : null,
     heartbeat_alive: heartbeatAlive,
+    last_job_target: lastJobTarget || progress.total,  // For UI when no active job
     build: isActive ? {
       status: dbJob?.status || 'running',
       agent_count: build?.agentCount || 1,
