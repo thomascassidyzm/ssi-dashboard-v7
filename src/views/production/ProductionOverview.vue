@@ -41,6 +41,23 @@
       </div>
     </header>
 
+    <!-- Language-Pair Learnings (collapsible) -->
+    <section v-if="learnings.length > 0" class="learnings-section">
+      <button class="learnings-header" @click="showLearnings = !showLearnings">
+        <span class="learnings-icon">L</span>
+        <span class="learnings-title">{{ learnings.length }} Language-Pair Learning{{ learnings.length > 1 ? 's' : '' }}</span>
+        <span class="learnings-toggle">{{ showLearnings ? '−' : '+' }}</span>
+      </button>
+      <div v-if="showLearnings" class="learnings-content">
+        <div v-for="(items, category) in learningsByCategory" :key="category" class="learning-category">
+          <span class="category-label">{{ category }}</span>
+          <ul class="learning-list">
+            <li v-for="(item, idx) in items" :key="idx" class="learning-item">{{ item.learning }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- Blockers (if any) -->
     <section v-if="store.blockers.length > 0" class="blockers-section">
       <div v-for="blocker in store.blockers" :key="blocker.id" class="blocker-card">
@@ -122,6 +139,9 @@
       <router-link :to="`/production/${courseCode}/recording-optimizer`" class="tool-link">
         Recording Optimizer
       </router-link>
+      <button @click="runAudit" :disabled="auditing" class="tool-link">
+        {{ auditing ? 'Starting Audit...' : 'Run QA Audit' }}
+      </button>
       <button @click="showExportDialog = true" class="tool-link">
         Export Legacy
       </button>
@@ -150,6 +170,20 @@ const router = useRouter()
 const store = useProductionStore()
 const showExportDialog = ref(false)
 const isUpdating = ref(false)
+const auditing = ref(false)
+const showLearnings = ref(false)
+
+// Learnings from course info
+const learnings = computed(() => store.courseInfo?.learnings || [])
+const learningsByCategory = computed(() => {
+  const grouped = {}
+  learnings.value.forEach(l => {
+    const cat = l.category || 'general'
+    if (!grouped[cat]) grouped[cat] = []
+    grouped[cat].push(l)
+  })
+  return grouped
+})
 
 const statuses = [
   { value: 'testing', label: 'Testing' },
@@ -250,6 +284,22 @@ function launchLearningApp() {
   window.open(`${url}/?course=${props.courseCode}`, '_blank')
 }
 
+async function runAudit() {
+  auditing.value = true
+  try {
+    const apiBase = import.meta.env.VITE_COURSE_BUILDER_URL || 'http://localhost:3471'
+    await fetch(`${apiBase}/api/qa/spawn-audit/${props.courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sample_size: 100 })
+    })
+  } catch (err) {
+    console.error('Failed to spawn auditor:', err)
+  } finally {
+    auditing.value = false
+  }
+}
+
 onMounted(() => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
@@ -335,6 +385,104 @@ watch(() => props.courseCode, () => {
 .mini-stat.good .mini-value { color: #34d399; }
 .mini-stat.ok .mini-value { color: #fbbf24; }
 .mini-stat.low .mini-value { color: #f87171; }
+
+/* Language-Pair Learnings */
+.learnings-section {
+  margin-bottom: 1rem;
+  background: var(--color-slate, #334155);
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.learnings-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.learnings-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.learnings-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #8b5cf6;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.learnings-title {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-paper, #f7f7f2);
+}
+
+.learnings-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-paper-dim, #94a3b8);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.learnings-content {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--color-graphite, #475569);
+}
+
+.learning-category {
+  margin-top: 0.75rem;
+}
+
+.category-label {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  margin-bottom: 0.375rem;
+}
+
+.learning-list {
+  margin: 0;
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.learning-item {
+  position: relative;
+  padding: 0.25rem 0;
+  font-size: 0.8rem;
+  color: var(--color-paper-dim, #94a3b8);
+  line-height: 1.4;
+}
+.learning-item::before {
+  content: "•";
+  position: absolute;
+  left: -0.75rem;
+  color: var(--color-graphite, #475569);
+}
 
 /* Blockers */
 .blockers-section {

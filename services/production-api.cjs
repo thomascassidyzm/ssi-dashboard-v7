@@ -780,8 +780,30 @@ app.get('/api/mission-control/jobs', async (req, res) => {
       logger.warn('[Mission Control] Could not fetch build_jobs:', error.message)
     } else if (buildJobs && buildJobs.length > 0) {
       for (const row of buildJobs) {
-        const totalSeeds = row.total_seeds || 1
-        const seedsCompleted = row.seeds_completed || 0
+        const totalSeeds = row.total_seeds || 260
+        const seedsDecomposed = row.seeds_completed || 0  // Pass 2: seeds with LEGOs
+
+        // Query Pass 1 progress: count seeds with target_text (translated)
+        let seedsTranslated = 0
+        try {
+          const { count, error: countError } = await supabase
+            .from('course_seeds')
+            .select('*', { count: 'exact', head: true })
+            .eq('course_code', row.course_code)
+            .not('target_text', 'is', null)
+            .neq('target_text', '')
+
+          if (!countError && count !== null) {
+            seedsTranslated = count
+          }
+        } catch (err) {
+          logger.warn(`[Mission Control] Could not count translated seeds for ${row.course_code}:`, err.message)
+        }
+
+        // Determine current pass and appropriate progress to show
+        const currentPass = row.pass || (seedsTranslated < totalSeeds ? 1 : 2)
+        const currentProgress = currentPass === 1 ? seedsTranslated : seedsDecomposed
+        const percentage = Math.round((currentProgress / totalSeeds) * 100)
 
         jobs.push({
           id: `${row.course_code}-build`,
@@ -793,12 +815,16 @@ app.get('/api/mission-control/jobs', async (req, res) => {
           canStop: row.status === 'running',
           machine: row.machine_name || null,
           progress: {
-            current: seedsCompleted,
+            current: currentProgress,
             total: totalSeeds,
-            percentage: Math.round((seedsCompleted / totalSeeds) * 100)
+            percentage,
+            // Include both pass metrics for detailed display
+            seedsTranslated,      // Pass 1: seeds with target_text
+            seedsDecomposed,      // Pass 2: seeds with LEGOs
+            currentPass
           },
           metadata: {
-            pass: row.pass,
+            pass: currentPass,
             currentSeed: row.current_seed,
             requestedBy: row.requested_by,
             lastHeartbeat: row.last_heartbeat,
@@ -1056,6 +1082,9 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
 
     logger.info(`Returning info for ${courseCode}: status=${course.status}, completedSeeds=${stats.completedSeeds}`)
 
+    // Extract learnings from quality_rules for easy frontend access
+    const learnings = course.quality_rules?.learnings || []
+
     res.json({
       success: true,
       course: {
@@ -1076,7 +1105,10 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
           legos: stats.legos,
           phrases: stats.phrases,
           audio: stats.audio
-        }
+        },
+        // Language-pair learnings from QA and course building
+        learnings: learnings,
+        learningsCount: learnings.length
       }
     })
   } catch (err) {
@@ -2928,8 +2960,8 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     const { role, dryRun = true, flaggedOnly = false, limit = 1000 } = req.body
 
-    if (!role || !['known', 'target1', 'target2'].includes(role)) {
-      return res.status(400).json({ error: 'Invalid role. Must be known, target1, or target2' })
+    if (!role || !['known', 'target1', 'target2', 'presentation'].includes(role)) {
+      return res.status(400).json({ error: 'Invalid role. Must be known, target1, target2, or presentation' })
     }
 
     if (!supabaseClient.isInitialized()) {
@@ -3052,92 +3084,35 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
-// Body: { dryRun, limit }
+// Body: { dryRun, regenerateAudio }
+// This endpoint generates presentation TEXT for all LEGOs (e.g., "The Chinese for 'hello' is:")
+// It proxies to phase8's /regenerate-presentations which handles the actual logic
 app.post('/api/audio/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = true, limit = 1000 } = req.body
-
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
-    }
+    const { dryRun = true, regenerateAudio = false } = req.body
 
     logger.log(`[Regenerate Presentations] ${dryRun ? 'Preview' : 'Execute'} for ${courseCode}`)
 
-    // Get course info
-    const course = await supabaseClient.getCourse(courseCode)
-    if (!course) {
-      return res.status(404).json({ error: `Course not found: ${courseCode}` })
-    }
-
-    // Query presentation audio
-    const { data: presentations, error } = await supabaseClient.getClient()
-      .from('course_audio')
-      .select('id, text, text_normalized, language, role, voice_id, duration_ms')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .limit(limit)
-
-    if (error) {
-      return res.status(500).json({ error: error.message })
-    }
-
-    const samplesToRegenerate = presentations || []
-
-    if (dryRun) {
-      return res.json({
-        dryRun: true,
-        count: samplesToRegenerate.length,
-        sample: samplesToRegenerate[0] || null
-      })
-    }
-
-    if (samplesToRegenerate.length === 0) {
-      return res.json({
-        dryRun: false,
-        total: 0,
-        success: 0,
-        failed: 0,
-        regeneratedItems: [],
-        message: 'No presentation audio to regenerate'
-      })
-    }
-
-    const uuids = samplesToRegenerate.map(s => s.id)
-
-    // Call Phase 8 to regenerate presentation audio
-    const response = await proxyToPhase8('POST', `/regenerate-role/${courseCode}`, {
-      role: 'presentation',
-      dryRun: false,
-      limit
+    // Proxy to phase8's /regenerate-presentations endpoint which:
+    // 1. Gets all LEGOs for the course
+    // 2. Generates presentation text using template
+    // 3. Upserts to course_audio
+    // 4. Updates lego_introductions and course_legos.presentation_audio_id
+    const response = await proxyToPhase8('POST', `/regenerate-presentations/${courseCode}`, {
+      dryRun,
+      regenerateAudio
     })
 
-    io.to(`course:${courseCode}`).emit('regeneration_started', {
-      courseCode,
-      uuids,
-      role: 'presentation',
-      count: uuids.length,
-      timestamp: new Date().toISOString()
-    })
-
-    if (response.status === 200) {
-      res.json({
-        dryRun: false,
-        total: uuids.length,
-        success: response.data.success || uuids.length,
-        failed: response.data.failed || 0,
-        regeneratedItems: samplesToRegenerate.map(s => ({
-          id: s.id,
-          text: s.text.substring(0, 50) + '...'
-        })),
-        jobId: response.data.jobId
-      })
-    } else {
-      res.status(response.status).json({
-        error: response.data.error || 'Regeneration failed',
-        ...response.data
+    if (!dryRun && response.status === 200) {
+      io.to(`course:${courseCode}`).emit('presentations_generated', {
+        courseCode,
+        count: response.data.total || response.data.count || 0,
+        timestamp: new Date().toISOString()
       })
     }
+
+    res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Error in regenerate-presentations:', error)
     res.status(500).json({ error: error.message })
