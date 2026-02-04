@@ -150,6 +150,32 @@ The `/api/resume` response includes your `translation_analysis` if Pass 1 is com
 - Apply suggested rewordings for ZUT concerns
 - Continue decomposing seeds into LEGOs
 
+## Language-Pair Learnings (CRITICAL)
+
+The `/api/resume` response includes a `LEARNINGS` section with insights discovered from previous course builds and QA. **YOU MUST APPLY THESE.**
+
+```json
+{
+  "LEARNINGS": {
+    "_WARNING": "APPLY THESE 3 LEARNINGS - they were discovered from previous QA",
+    "components": [
+      "Arabic definite 'al-' should never map to English indefinite 'a'",
+      "Never list components that don't actually exist in the phrase text"
+    ],
+    "grammar": [
+      "Chinese aspect marker 着 is NOT equivalent to English 'to'"
+    ]
+  }
+}
+```
+
+**These are hard-won insights.** Previous agents made these mistakes and QA caught them. Don't repeat them.
+
+- If `LEARNINGS` is null: No language-specific learnings recorded yet
+- If `LEARNINGS` has content: **Read each one. Apply them to your work.**
+
+---
+
 ## Quality Rules Recovery
 
 The `/api/resume` response also includes `quality_rules` if methodology analysis has been run:

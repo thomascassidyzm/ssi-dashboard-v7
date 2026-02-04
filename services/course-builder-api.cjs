@@ -5223,20 +5223,30 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     .eq('course_code', courseCode)
     .single();
 
-  // Get all seeds with their completion status
-  const { data: allSeeds } = await supabase
+  // Get target seed count (defaults to 260 if not set)
+  const targetSeedCount = courseInfo?.seed_count || 260;
+
+  // Get all seeds with their completion status - FILTERED to target range
+  const { data: allSeedsRaw } = await supabase
     .from('course_seeds')
     .select('seed_number, known_text, target_text')
     .eq('course_code', courseCode)
     .order('seed_number');
 
-  // Get seeds that have LEGOs (completed)
+  // Filter to only seeds within target range (1 to seed_count)
+  const allSeeds = allSeedsRaw?.filter(s => s.seed_number <= targetSeedCount) || [];
+
+  // Get seeds that have LEGOs (completed) - also filtered to range
   const { data: completedData } = await supabase
     .from('course_legos')
     .select('seed_number')
     .eq('course_code', courseCode);
 
-  const completedSeeds = new Set(completedData?.map(l => l.seed_number) || []);
+  const completedSeeds = new Set(
+    (completedData || [])
+      .filter(l => l.seed_number <= targetSeedCount)
+      .map(l => l.seed_number)
+  );
 
   // Find next incomplete seed
   const incompleteSeed = allSeeds?.find(s =>
@@ -5282,14 +5292,18 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   const progress = totalSeeds > 0 ? ((completedCount / totalSeeds) * 100).toFixed(1) : 0;
 
   // Two-Pass workflow: Calculate pass status
-  // Pass 1: Translate ALL seeds (regardless of seed_count) + save analysis
-  // Pass 2: Decompose up to seed_count (release target)
-  const seedCount = courseInfo?.seed_count || 260;  // Release target for decomposition
-  const seedsTranslated = allSeeds?.filter(s => s.target_text && s.target_text.trim() !== '').length || 0;
+  // Pass 1: Translate all seeds in range (1 to seed_count) + save analysis
+  // Pass 2: Decompose all seeds in range into LEGOs
+  // targetSeedCount is defined above from courseInfo?.seed_count || 260
+  const seedsInRange = allSeeds.length;  // Seeds 1 to targetSeedCount
+  const seedsTranslated = allSeeds.filter(s => s.target_text && s.target_text.trim() !== '').length;
   const seedsDecomposed = completedSeeds.size;
   const analysisSaved = !!courseInfo?.translation_analysis;
-  const pass1Complete = seedsTranslated >= totalSeeds && totalSeeds > 0 && analysisSaved;
-  const pass2Complete = seedsDecomposed >= seedCount;
+
+  // Pass 1 complete when ALL seeds in range are translated AND analysis saved
+  const pass1Complete = seedsTranslated >= seedsInRange && seedsInRange > 0 && analysisSaved;
+  // Pass 2 complete when ALL seeds in range have LEGOs (no gaps!)
+  const pass2Complete = seedsDecomposed >= seedsInRange;
   const currentPass = pass1Complete ? 2 : 1;
 
   // Get recency analysis for pattern/vocab distribution guidance
@@ -5326,7 +5340,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     actionInstruction = {
       current_pass: 2,
       action: 'DECOMPOSE INTO LEGOs',
-      description: `Break seeds into LEGOs. ${seedsDecomposed}/${seedCount} done.`,
+      description: `Break seeds into LEGOs. ${seedsDecomposed}/${seedsInRange} done (target: seeds 1-${targetSeedCount}).`,
       next_seed: nextToDecompose ? {
         seed_number: nextToDecompose.seed_number,
         known_text: nextToDecompose.known_text,
@@ -5342,7 +5356,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     actionInstruction = {
       current_pass: 'COMPLETE',
       action: 'COURSE COMPLETE',
-      description: `All ${seedCount} seeds translated and decomposed.`
+      description: `All ${seedsInRange} seeds (1-${targetSeedCount}) translated and decomposed.`
     };
   }
 
@@ -5352,16 +5366,44 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     target_language: targetLangName,
     translation_analysis: courseInfo?.translation_analysis || null,
     quality_rules: courseInfo?.quality_rules || null,
+
+    // LEARNINGS - Language-pair specific insights from previous builds (APPLY THESE!)
+    LEARNINGS: (() => {
+      const learnings = courseInfo?.quality_rules?.learnings || [];
+      if (learnings.length === 0) return null;
+
+      // Group by category for easy scanning
+      const byCategory = {};
+      learnings.forEach(l => {
+        if (!byCategory[l.category]) byCategory[l.category] = [];
+        byCategory[l.category].push(l.learning);
+      });
+
+      return {
+        _WARNING: `APPLY THESE ${learnings.length} LEARNINGS - they were discovered from previous QA`,
+        ...byCategory
+      };
+    })(),
+
     checkpoint: await getCheckpointStatus(courseCode),
 
     // Context from recent work
     recent_seeds: recentCompleted || [],
     recent_legos: recentLegos?.reverse() || [],
 
+    // Seed Range - only work on seeds within this range
+    seed_range: {
+      target: targetSeedCount,
+      seeds_in_range: allSeeds.length,
+      completed_in_range: completedCount,
+      remaining: allSeeds.length - completedCount,
+      note: `Only working on seeds 1-${targetSeedCount}. Seeds ${targetSeedCount + 1}+ are ignored until seed_count is increased.`
+    },
+
     // Stats
     progress: `${progress}%`,
     completed_seeds: completedCount,
-    total_seeds: totalSeeds,
+    total_seeds: allSeeds.length,  // Now reflects filtered range, not all seeds in DB
     vocab_size: vocabSet.size,
     vocab_mode: chinese ? 'characters' : 'words',
 
