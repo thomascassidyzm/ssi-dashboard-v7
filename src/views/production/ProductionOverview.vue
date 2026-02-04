@@ -79,14 +79,16 @@
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
-      <!-- Phrase QA -->
-      <router-link :to="`/production/${courseCode}/phrase-qa`" class="workflow-card" :class="{ 'has-badge': qaStats.flags > 0 }">
-        <div class="card-icon qa">Q</div>
+      <!-- Script View (rounds-based phrase review) -->
+      <router-link
+        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { view: 'journey' } }"
+        class="workflow-card"
+      >
+        <div class="card-icon script">S</div>
         <div class="card-content">
-          <h3>Phrase QA</h3>
-          <p>Review grammar and naturalness</p>
+          <h3>Script View</h3>
+          <p>Review phrases in learning order</p>
         </div>
-        <span v-if="qaStats.flags > 0" class="card-badge error">{{ qaStats.flags }}</span>
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
@@ -100,15 +102,15 @@
         <span class="card-arrow">&rarr;</span>
       </router-link>
 
-      <!-- Audio QA -->
+      <!-- Seed View (audio QA by seed) -->
       <router-link
-        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { filter: 'flagged' } }"
+        :to="{ name: 'ScriptViewer', params: { courseCode }, query: { view: 'seed' } }"
         class="workflow-card"
       >
         <div class="card-icon review">R</div>
         <div class="card-content">
-          <h3>Audio QA</h3>
-          <p>Review flagged TTS samples</p>
+          <h3>Seed View</h3>
+          <p>Review audio by seed</p>
         </div>
         <span class="card-arrow">&rarr;</span>
       </router-link>
@@ -572,7 +574,7 @@ watch(() => props.courseCode, () => {
 }
 
 .card-icon.text { background: #3b82f6; color: white; }
-.card-icon.qa { background: #f59e0b; color: white; }
+.card-icon.script { background: #f59e0b; color: white; }
 .card-icon.audio { background: #8b5cf6; color: white; }
 .card-icon.review { background: #ec4899; color: white; }
 .card-icon.record { background: #10b981; color: white; }

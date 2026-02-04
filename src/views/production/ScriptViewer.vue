@@ -1586,6 +1586,13 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 // Lifecycle
 onMounted(() => {
+  // Check for view query param (journey = Script View, seed = Seed View)
+  if (route.query.view === 'journey' || route.query.view === 'script-view') {
+    viewMode.value = 'journey';
+    loadLearningJourney();
+  } else if (route.query.view === 'seed' || route.query.view === 'seed-view') {
+    viewMode.value = 'script';
+  }
   // Check for filter query param (from QA link)
   if (route.query.filter === 'flagged') {
     filterFlaggedOnly.value = true;
