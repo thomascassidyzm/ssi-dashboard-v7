@@ -77,35 +77,60 @@ The learner sees "importante" alone, then sees it inside "es importante" - the o
 ## Phrase Roles: BUILD vs USE
 
 ### BUILD Phrases (flexible quantity)
-**Purpose:** Lock in the pattern. Get the LEGO "in."
+**Purpose:** Show how the new LEGO "plugs in" to what the learner already knows.
 
-- **LEGO + 1-5 extra syllables** (cognitive load consideration)
+BUILD phrases combine the **new LEGO** with **previously introduced LEGOs**. This is how the learner sees the new piece connecting to their existing vocabulary. Each BUILD phrase must contain the **entire LEGO** plus content from LEGOs the learner already knows.
+
+- **The new LEGO + previously introduced LEGOs** (keep it tight, minimal cognitive load)
 - Used ONLY in the **debut round** for that LEGO
 - Never seen again - not in CONSOLIDATE, not in REVIEW
 - Fragments OK (don't need to be complete sentences)
-- Must contain the LEGO (exact character match)
+- Must contain the **entire LEGO** (exact character match)
 - NOT eternal-eligible
 
 **Quantity is flexible based on LEGO length.** If the LEGO itself is already long (high syllable count), you add almost nothing. The constraint is cognitive load, not an arbitrary phrase count.
 
 ```
-BUILD examples for "after you finish" → "despues de que termines":
-(LEGO is already 7 syllables, so BUILD phrases add minimal extra)
+Welsh example - Seed 1, LEGO 2: "to speak" → "siarad"
+(Learner already knows L1: "I want" → "dw i isio")
 
-1. after you finish                    → despues de que termines
-2. after you finish working            → despues de que termines de trabajar
-3. after you finish eating             → despues de que termines de comer
+BUILD:
+1. I want to speak → dw i isio siarad    ← new LEGO "siarad" + known L1 "dw i isio"
+
+Welsh example - Seed 1, LEGO 3: "Welsh" → "cymraeg"
+(Learner already knows L1: "I want" → "dw i isio", L2: "to speak" → "siarad")
+
+BUILD:
+1. to speak Welsh → siarad cymraeg       ← new LEGO "cymraeg" + known L2 "siarad"
+
+Spanish example - "after you finish" → "despues de que termines":
+(Learner already knows "working" and "eating" from earlier seeds)
+
+BUILD:
+1. after you finish working → despues de que termines de trabajar
+2. after you finish eating  → despues de que termines de comer
 ```
+
+**Key point:** BUILD phrases are NOT random extensions. They show the learner how their new LEGO combines with LEGOs they already know. This is what makes each new piece immediately useful.
 
 ### USE Phrases (minimum 5)
 **Purpose:** Natural production. Put the LEGO "out."
 
-- **LEGO + 5-10 extra syllables** (can go longer, but no forced run-on sentences)
+- **Mix of lengths required** to create smooth progression:
+  - **MEDIUM (2-3 phrases):** LEGO + 4-6 syllables - shorter complete sentences
+  - **LONG (2-3 phrases):** LEGO + 7-10 syllables - fuller, richer sentences
 - **Minimum 5 per LEGO** - these get reused in CONSOLIDATE, REVIEW, and listening exercises
 - **MUST be complete, natural sentences** - NEVER fragments
 - A USE phrase is something a learner would ACTUALLY SAY in conversation
 - Must contain the LEGO (exact character match)
 - ALL are eternal-eligible (go into spaced repetition)
+
+**Why the mix matters:** The ~7 practice phrases per LEGO should form a progression:
+1. **BUILD (short):** LEGO + 1-3 syllables - lock in the pattern (fragments OK)
+2. **USE medium:** LEGO + 4-6 syllables - bridge to production (complete sentences)
+3. **USE long:** LEGO + 7-10 syllables - natural, fluent production
+
+Without MEDIUM phrases, learners jump from short fragments to long sentences - a cognitive cliff. The medium phrases are the bridge.
 
 These are the "eternal" phrases that come back throughout the course. Quality matters more than quantity.
 
@@ -142,10 +167,11 @@ USE examples for "after you finish" → "despues de que termines":
 
 | Role | Syllables | Complete Sentence? | Reused? | Eternal? |
 |------|-----------|-------------------|---------|----------|
-| BUILD | LEGO + 1-5 | No (fragments OK) | No (debut only) | No |
-| USE | LEGO + 5-10 | Yes (required) | Yes (consolidate, review) | Yes |
+| BUILD | LEGO + 1-3 | No (fragments OK) | No (debut only) | No |
+| USE (medium) | LEGO + 4-6 | Yes (required) | Yes (consolidate, review) | Yes |
+| USE (long) | LEGO + 7-10 | Yes (required) | Yes (consolidate, review) | Yes |
 
-**Key principle:** Syllable count is the proxy for cognitive load. The constraint is cognitive load, not arbitrary phrase counts.
+**Key principle:** Syllable count is the proxy for cognitive load. The progression SHORT → MEDIUM → LONG creates a smooth ramp, not a cliff.
 
 ---
 
@@ -639,8 +665,8 @@ When all seeds pass validation:
 - [ ] LEGOs in pedagogical order (maximize combinability, especially in early seeds)
 - [ ] M-LEGOs have corresponding A-LEGOs for key vocabulary (overlapping LEGOs)
 - [ ] Overlaps let patterns be inferred - learner sees word alone, then inside phrase
-- [ ] Each LEGO has BUILD phrases (LEGO + 1-5 syllables, fragments OK, debut only)
-- [ ] Each LEGO has minimum 5 USE phrases (LEGO + 5-10 syllables, complete sentences)
+- [ ] Each LEGO has BUILD phrases (LEGO + 1-3 syllables, fragments OK, debut only)
+- [ ] Each LEGO has minimum 5 USE phrases with a mix of lengths (2-3 medium at LEGO + 4-6 syl, 2-3 long at LEGO + 7-10 syl)
 - [ ] All phrases contain LEGO target (exact match)
 - [ ] All phrases use only introduced vocabulary
 - [ ] No ZUT violations (same KNOWN → same TARGET)
@@ -665,7 +691,7 @@ The BUILD quantity is always flexible based on LEGO length and cognitive load. U
 1. **You are not translating** - you are building a pedagogical structure
 2. **Overlapping LEGOs enable inference** - word alone, then word inside phrase
 3. **Grammar is inferred** - from contrast, never explained
-4. **BUILD locks it in** - fragments OK, get the pattern in
+4. **BUILD plugs the new LEGO into prior vocabulary** - fragments OK, shows connections
 5. **USE produces naturally** - complete sentences, eternal-eligible
 6. **Errors are information** - they tell you exactly what to fix
 7. **The database is truth** - query it to see your progress
@@ -693,6 +719,34 @@ This section captures hard-won insights from QA checkpoints and production issue
 - Score 4 or below = rewrite, don't submit
 
 **Validation Added:** Agent self-check before submission - if USE phrase would score 4 or below, rewrite it.
+
+### 2026-02-05: BUILD Phrases Must Show LEGO Plugging Into Prior Vocabulary
+
+**Issue:** Agent repeatedly confused BUILD phrases with: (a) listing the LEGO by itself, (b) M-LEGO component build-up, (c) random word extensions. Produced BUILD phrases like "how → hoe" or "to speak → 说" which are just the LEGO in isolation — not BUILD phrases at all.
+
+**Root Cause:** Guidance said "LEGO + 1-3 extra syllables" without making clear that the extra content must be **previously introduced LEGOs**. The purpose of BUILD is to show the learner how the new piece connects to what they already know.
+
+**Fix:**
+- BUILD = the **entire new LEGO** combined with **LEGOs the learner already knows**
+- BUILD shows "plugging in" — e.g., for new LEGO "Chinese" → "中文", a BUILD phrase is "speak Chinese → 说中文" because the learner already knows "说" (to speak)
+- BUILD is NOT the LEGO by itself, NOT component build-up, NOT random extensions
+- If there's nothing to combine with yet (L1 of Seed 1), that's OK — early seeds are honestly sparse
+
+**Updated:** ralph-methodology.md, calibrate.md, spawn-course-builder.cjs all clarified.
+
+---
+
+### 2026-02-05: Decomposition Should Be Driven by Phrase Quality
+
+**Issue:** Agent decomposed Dutch "how to speak as often as possible" → "hoe je zo vaak mogelijk spreekt" into separate A-LEGO "how" → "hoe" — but standalone "hoe" can't make useful BUILD phrases because Dutch subordinate clauses require conjugated verbs that haven't been introduced yet.
+
+**Root Cause:** Decomposition was driven by tiling logic ("what pieces cover the target?") rather than by asking "what LEGOs produce good BUILD and USE phrases?"
+
+**Fix:**
+- Always check: can this LEGO make meaningful BUILD phrases with existing vocabulary?
+- If not, the decomposition is wrong — try bundling differently
+- Order LEGOs by combination richness: put LEGOs that combine well with existing vocab first
+- Structural mismatches between languages get absorbed into M-LEGOs (e.g., English "how to speak" → Dutch "hoe je spreekt" bundles the subordinate clause structure)
 
 ---
 

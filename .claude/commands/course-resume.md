@@ -89,26 +89,54 @@ curl -X POST http://localhost:3471/api/heartbeat/{course_code} \
 7. **Submit** via POST /api/seed/complete
 8. **Repeat** from step 2 until done
 
-## Golden Path Submission
+## Golden Path Submission (MARKDOWN FORMAT)
 
-```json
-POST http://localhost:3471/api/seed/complete
-{
-  "course_code": "zho_for_eng",
-  "seed_number": 107,
-  "known_text": "We hoped to see what you were doing.",
-  "target_text": "[your translation]",
-  "legos": [
-    {
-      "idx": 1,
-      "type": "A",
-      "known": "...",
-      "target": "...",
-      "phrases": [{"known": "...", "target": "..."}, ...]
-    }
-  ]
-}
+Submit in **markdown format** - it's cleaner and uses fewer tokens:
+
+```bash
+curl -X POST "http://localhost:3471/api/seed/complete?course=zho_for_eng" \
+  -H "Content-Type: text/markdown" \
+  -d '# Seed 107
+Known: We hoped to see what you were doing.
+Target: 我们希望看到你在做什么。
+
+## L1 [M] "we hoped" → "我们希望"
+Components: we → 我们, hoped → 希望
+
+BUILD:
+- we hoped → 我们希望
+
+USE:
+- we hoped to see → 我们希望看到 [7]
+
+## L2 [A] "to see" → "看到"
+
+BUILD:
+- to see → 看到
+
+USE:
+- we hoped to see you → 我们希望看到你 [7]
+- I hoped to see → 我希望看到 [6]
+
+## L3 [M] "what you were doing" → "你在做什么"
+Components: what → 什么, you → 你, doing → 做
+
+BUILD:
+- what → 什么
+- you were doing → 你在做
+- what you were doing → 你在做什么
+
+USE:
+- we hoped to see what you were doing → 我们希望看到你在做什么 [8]
+- I want to see what you are doing → 我想看你在做什么 [7]
+'
 ```
+
+**Format notes:**
+- `## L1 [M]` or `## L2 [A]` - LEGO header with type
+- `Components:` line for M-type LEGOs
+- `BUILD:` phrases for drilling (flexible)
+- `USE:` complete sentences with scores [5-9]
 
 ## Quality Requirements
 

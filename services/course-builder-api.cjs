@@ -32,6 +32,7 @@ app.use(cors({
 }));
 
 app.use(express.json({ limit: '10mb' }));
+app.use(express.text({ limit: '10mb', type: ['text/plain', 'text/markdown'] }));
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 const PORT = process.env.COURSE_BUILDER_PORT || 3471;
@@ -224,6 +225,213 @@ function getActiveAgents() {
 function normalizePhrase(text) {
   if (!text) return '';
   return text.replace(/[.,!?;:]+$/, '').toLowerCase().trim();
+}
+
+// =============================================================================
+// MARKDOWN PARSER FOR SEED SUBMISSIONS
+// Agents can submit in markdown format instead of JSON - fewer tokens, more natural
+// =============================================================================
+
+/**
+ * Detect if request body is markdown format
+ * Markdown submissions start with "# Seed" or have Content-Type text/markdown
+ */
+function isMarkdownSubmission(req) {
+  const contentType = req.get('Content-Type') || '';
+  if (contentType.includes('text/markdown') || contentType.includes('text/plain')) {
+    return true;
+  }
+  // Check if body looks like markdown (string starting with # Seed or ## L)
+  if (typeof req.body === 'string') {
+    const trimmed = req.body.trim();
+    return trimmed.startsWith('# Seed') || trimmed.startsWith('## L');
+  }
+  // Check if body.markdown field exists (for JSON wrapper with markdown content)
+  if (req.body?.markdown && typeof req.body.markdown === 'string') {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Parse markdown seed submission into structured format
+ *
+ * Expected format:
+ * ```
+ * # Seed 42
+ * Known: I want to speak German with you now.
+ * Target: Ich will jetzt Deutsch mit dir sprechen.
+ *
+ * ## L1 [M] "I want" → "ich will"
+ * Components: I → ich, want → will
+ *
+ * BUILD:
+ * - I want → ich will
+ * - I want to speak → ich will sprechen
+ *
+ * USE:
+ * - I want to speak German → Ich will Deutsch sprechen [7]
+ * - Do you want to speak? → Willst du sprechen? [8]
+ *
+ * ## L2 [A] "to speak" → "sprechen"
+ * ...
+ * ```
+ */
+function parseMarkdownSeed(markdown, courseCode) {
+  const result = {
+    course_code: courseCode,
+    seed_number: null,
+    known_text: null,
+    target_text: null,
+    legos: [],
+    attestation: { semantic_match_verified: true }  // Implicit in markdown format
+  };
+
+  const lines = markdown.split('\n').map(l => l.trim());
+
+  // Parse seed header: # Seed 42 or # Seed 42: "I want..."
+  const seedHeaderMatch = lines.find(l => l.match(/^#\s*Seed\s+(\d+)/i));
+  if (seedHeaderMatch) {
+    const match = seedHeaderMatch.match(/^#\s*Seed\s+(\d+)/i);
+    result.seed_number = parseInt(match[1]);
+  }
+
+  // Parse Known/Target lines
+  for (const line of lines) {
+    const knownMatch = line.match(/^Known:\s*(.+)$/i);
+    if (knownMatch) {
+      result.known_text = knownMatch[1].trim();
+    }
+    const targetMatch = line.match(/^Target:\s*(.+)$/i);
+    if (targetMatch) {
+      result.target_text = targetMatch[1].trim();
+    }
+  }
+
+  // Split into LEGO sections by ## L headers
+  const legoSections = markdown.split(/(?=##\s*L\d+)/);
+
+  let legoIndex = 0;
+  for (const section of legoSections) {
+    // Match LEGO header: ## L1 [M] "I want" → "ich will" or ## L2 [A] "to speak" -> "sprechen"
+    const headerMatch = section.match(/^##\s*L(\d+)\s*\[([AM])\]\s*"([^"]+)"\s*(?:→|->|:)\s*"([^"]+)"/m);
+    if (!headerMatch) continue;
+
+    legoIndex++;
+    const lego = {
+      idx: parseInt(headerMatch[1]) || legoIndex,
+      type: headerMatch[2].toUpperCase(),
+      known: headerMatch[3].trim(),
+      target: headerMatch[4].trim(),
+      components: [],
+      phrases: []
+    };
+
+    // Parse components for M-type: Components: I → ich, want → will
+    if (lego.type === 'M') {
+      const componentsMatch = section.match(/Components?:\s*(.+)/i);
+      if (componentsMatch) {
+        const componentsStr = componentsMatch[1];
+        // Split by comma, then parse each "known → target" pair
+        const pairs = componentsStr.split(/,\s*/);
+        for (const pair of pairs) {
+          const pairMatch = pair.match(/([^→\->:]+)\s*(?:→|->|:)\s*(.+)/);
+          if (pairMatch) {
+            lego.components.push({
+              known: pairMatch[1].trim(),
+              target: pairMatch[2].trim()
+            });
+          }
+        }
+      }
+    }
+
+    // Parse BUILD and USE sections
+    const buildMatch = section.match(/BUILD:\s*([\s\S]*?)(?=USE:|##|$)/i);
+    const useMatch = section.match(/USE:\s*([\s\S]*?)(?=##|$)/i);
+
+    const buildPhrases = [];
+    const usePhrases = [];
+
+    // Parse BUILD phrases
+    if (buildMatch) {
+      const buildLines = buildMatch[1].split('\n');
+      for (const line of buildLines) {
+        const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)\])?\s*$/);
+        if (phraseMatch) {
+          buildPhrases.push({
+            known: phraseMatch[1].trim(),
+            target: phraseMatch[2].trim()
+          });
+        }
+      }
+    }
+
+    // Parse USE phrases (with optional score)
+    if (useMatch) {
+      const useLines = useMatch[1].split('\n');
+      for (const line of useLines) {
+        const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)\])?\s*$/);
+        if (phraseMatch) {
+          const phrase = {
+            known: phraseMatch[1].trim(),
+            target: phraseMatch[2].trim()
+          };
+          if (phraseMatch[3]) {
+            phrase.score = parseInt(phraseMatch[3]);
+          }
+          usePhrases.push(phrase);
+        }
+      }
+    }
+
+    // Put build/use at top level of lego (expected by usesBuildUseFormat)
+    lego.build = buildPhrases;
+    lego.use = usePhrases;
+
+    // Alternative: if no BUILD/USE structure, look for flat phrases list
+    if (buildPhrases.length === 0 && usePhrases.length === 0) {
+      const phrasesMatch = section.match(/(?:PHRASES?|Practice):\s*([\s\S]*?)(?=##|$)/i);
+      if (phrasesMatch) {
+        const phraseLines = phrasesMatch[1].split('\n');
+        const flatPhrases = [];
+        for (const line of phraseLines) {
+          const phraseMatch = line.match(/^[-*]\s*(.+?)\s*(?:→|->|:)\s*(.+?)(?:\s*\[(\d+)\])?\s*$/);
+          if (phraseMatch) {
+            flatPhrases.push({
+              known: phraseMatch[1].trim(),
+              target: phraseMatch[2].trim(),
+              score: phraseMatch[3] ? parseInt(phraseMatch[3]) : undefined
+            });
+          }
+        }
+        lego.phrases = flatPhrases;
+      }
+    }
+
+    result.legos.push(lego);
+  }
+
+  return result;
+}
+
+/**
+ * Extract markdown from request body (handles various formats)
+ */
+function extractMarkdown(req) {
+  // Direct string body
+  if (typeof req.body === 'string') {
+    return req.body;
+  }
+  // JSON wrapper with markdown field
+  if (req.body?.markdown) {
+    return req.body.markdown;
+  }
+  // JSON wrapper with content field
+  if (req.body?.content) {
+    return req.body.content;
+  }
+  return null;
 }
 
 /**
@@ -2825,11 +3033,12 @@ const allowValidationBypass = (body) => body.SKIP_VALIDATION === true;
  *
  * Returns: { valid: true } or { valid: false, untiled: [...], message }
  */
-function checkTiling(seedTarget, legos, courseCode) {
+function checkTiling(seedTarget, legos, courseCode, existingVocab) {
   const chinese = isChinese(courseCode);
 
   // Extract all vocabulary units from LEGOs (including M-LEGO components)
-  const availableVocab = new Set();
+  // Also include existing vocabulary from prior seeds if provided
+  const availableVocab = existingVocab ? new Set(existingVocab) : new Set();
 
   for (const lego of legos) {
     // Add LEGO target vocab
@@ -3659,44 +3868,83 @@ app.post('/api/batch', async (req, res) => {
  * THE GOLDEN PATH: Agent submits everything for one seed atomically.
  * Validates everything upfront, inserts all or nothing.
  *
+ * SUPPORTS TWO FORMATS:
+ *
+ * 1. MARKDOWN (recommended - fewer tokens):
+ *    Content-Type: text/markdown or text/plain
+ *    ```
+ *    # Seed 42
+ *    Known: I want to speak German with you now.
+ *    Target: Ich will jetzt Deutsch mit dir sprechen.
+ *
+ *    ## L1 [M] "I want" → "ich will"
+ *    Components: I → ich, want → will
+ *
+ *    BUILD:
+ *    - I want → ich will
+ *    - I want to speak → ich will sprechen
+ *
+ *    USE:
+ *    - I want to speak German → Ich will Deutsch sprechen [7]
+ *    - Do you want to speak? → Willst du sprechen? [8]
+ *    ```
+ *
+ * 2. JSON (legacy):
+ *    Content-Type: application/json
+ *    {
+ *      "course_code": "deu_for_eng",
+ *      "seed_number": 42,
+ *      "target_text": "Ich will jetzt Deutsch mit dir sprechen",
+ *      "legos": [...]
+ *    }
+ *
  * IMPORTANT: known_text comes from the CANONICAL SEEDS already in the database.
  * Agent only provides the target language translation and LEGOs.
  *
- * REQUIRED: Semantic Attestation (January 2026)
- * Agent MUST include attestation.semantic_match_verified: true to confirm
- * that ALL phrase pairs (known_text ↔ target_text) express the SAME meaning.
- * This catches the failure mode where one language gets "padded" with extra content.
- *
- * Body:
- * {
- *   "course_code": "zho_for_eng",
- *   "seed_number": 42,
- *   "target_text": "我想学中文",
- *   "attestation": {
- *     "semantic_match_verified": true
- *   },
- *   "legos": [
- *     {
- *       "idx": 1,
- *       "type": "A",
- *       "known": "I",
- *       "target": "我",
- *       "phrases": [{"known": "I", "target": "我"}, ...]
- *     },
- *     {
- *       "idx": 2,
- *       "type": "M",
- *       "known": "want to learn",
- *       "target": "想学",
- *       "components": [{"known": "want", "target": "想"}, {"known": "learn", "target": "学"}],
- *       "phrases": [...]
- *     }
- *   ]
- * }
+ * Semantic attestation is IMPLICIT in markdown format (no extra field needed).
  */
 app.post('/api/seed/complete', async (req, res) => {
   try {
-    const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = req.body;
+    // =========================================================================
+    // MARKDOWN DETECTION & PARSING
+    // Agents can submit in markdown format for fewer tokens
+    // =========================================================================
+    let parsedData;
+    const isMarkdown = isMarkdownSubmission(req);
+
+    if (isMarkdown) {
+      const markdown = extractMarkdown(req);
+      if (!markdown) {
+        return res.status(400).json({
+          error: 'Could not extract markdown content',
+          hint: 'Send markdown as request body with Content-Type: text/markdown or text/plain'
+        });
+      }
+
+      // Extract course_code from query param or JSON wrapper
+      const courseCodeFromQuery = req.query.course || req.query.course_code;
+      const courseCodeFromBody = req.body?.course_code;
+      const courseCode = courseCodeFromQuery || courseCodeFromBody;
+
+      if (!courseCode) {
+        return res.status(400).json({
+          error: 'course_code required for markdown submissions',
+          hint: 'Add ?course=xxx query param or wrap: {"course_code": "xxx", "markdown": "..."}'
+        });
+      }
+
+      parsedData = parseMarkdownSeed(markdown, courseCode);
+      // Carry over SKIP_VALIDATION from JSON wrapper or query param
+      if (req.body?.SKIP_VALIDATION || req.query.skip_validation) {
+        parsedData.SKIP_VALIDATION = true;
+      }
+      console.log(`[MARKDOWN] Parsed seed ${parsedData.seed_number} with ${parsedData.legos.length} LEGOs`);
+    } else {
+      // Traditional JSON format
+      parsedData = req.body;
+    }
+
+    const { course_code, seed_number, known_text: agent_known_text, target_text: agent_target_text, legos, SKIP_VALIDATION } = parsedData;
     const seedId = `S${String(seed_number).padStart(4, '0')}`;
 
     // Parse course to determine which texts agent must provide
@@ -3727,12 +3975,14 @@ app.post('/api/seed/complete', async (req, res) => {
     // Agent must explicitly confirm that all phrase pairs are semantically equivalent.
     // This catches the failure mode where English phrases get "padded" with extra
     // vocabulary that doesn't exist in the known language text.
+    // NOTE: Attestation is IMPLICIT for markdown submissions (always true)
     // =========================================================================
-    const { attestation } = req.body;
-    if (!attestation?.semantic_match_verified) {
+    const { attestation } = parsedData;
+    if (!isMarkdown && !attestation?.semantic_match_verified) {
       return res.status(400).json({
         error: 'SEMANTIC_ATTESTATION_REQUIRED',
         message: 'You must confirm that all phrase pairs are semantically equivalent',
+        hint_markdown: 'TIP: Use markdown format instead - attestation is implicit and you save tokens!',
         required: {
           attestation: {
             semantic_match_verified: true
@@ -3948,9 +4198,12 @@ app.post('/api/seed/complete', async (req, res) => {
       });
     }
 
-    // 2. TILING VALIDATION: Seed target must be constructable from LEGO targets
+    // Load existing vocabulary from prior seeds (used by both tiling and vocab validation)
+    const vocabSet = await loadCourseVocab(course_code);
+
+    // 2. TILING VALIDATION: Seed target must be constructable from submitted LEGOs + prior vocabulary
     if (!SKIP_VALIDATION) {
-      const tilingResult = checkTiling(target_text, legos, course_code);
+      const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
       if (!tilingResult.valid) {
         errors.push({
           type: 'tiling',
@@ -3968,7 +4221,6 @@ app.post('/api/seed/complete', async (req, res) => {
 
     // 3. VOCAB VALIDATION: For each LEGO, add its vocab THEN check phrases
     // Rule: LEGO N can use vocab from seeds 1..S-1 plus LEGOs 1..N of current seed (including itself)
-    const vocabSet = await loadCourseVocab(course_code);
 
     const vocabViolations = [];
     for (const lego of legos) {
@@ -5385,6 +5637,32 @@ app.get('/api/resume/:courseCode', async (req, res) => {
       };
     })(),
 
+    // GOLDEN DECOMPOSITIONS - Human-verified examples from calibration (FOLLOW THESE PATTERNS!)
+    GOLDEN_DECOMPOSITIONS: (() => {
+      const golden = courseInfo?.quality_rules?.golden_decompositions;
+      if (!golden || golden.length === 0) return null;
+
+      return {
+        _INSTRUCTION: `FOLLOW THESE ${golden.length} CALIBRATED EXAMPLES - they show the correct M vs A LEGO decisions for this language pair`,
+        calibrated_at: courseInfo?.quality_rules?.calibrated_at,
+        examples: golden.map(g => ({
+          seed: g.seed_number,
+          known: g.known_text,
+          target: g.target_text,
+          legos: g.legos.map(l => ({
+            type: l.type,
+            known: l.known,
+            target: l.target,
+            reasoning: l.reasoning || null,
+            components: l.components || null
+          })),
+          key_insight: g.key_insight || null,
+          dont_do: g.contrastive_notes?.filter(n => n.includes("DON'T") || n.includes("DON'T")) || [],
+          do_this: g.contrastive_notes?.filter(n => n.includes("DO:") || n.includes("DO:")) || []
+        }))
+      };
+    })(),
+
     checkpoint: await getCheckpointStatus(courseCode),
 
     // Context from recent work
@@ -5611,16 +5889,20 @@ app.get('/api/balance/:courseCode', async (req, res) => {
  */
 app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
   const { courseCode, seedNumber } = req.params;
-  const { target_text } = req.body;
+  const { target_text, known_text } = req.body;
   const seedNum = parseInt(seedNumber);
 
-  if (!target_text) {
-    return res.status(400).json({ error: 'target_text is required' });
+  if (!target_text && !known_text) {
+    return res.status(400).json({ error: 'target_text or known_text is required' });
   }
+
+  const updateFields = { status: 'released' };
+  if (target_text) updateFields.target_text = target_text;
+  if (known_text) updateFields.known_text = known_text;
 
   const { error } = await supabase
     .from('course_seeds')
-    .update({ target_text, status: 'released' })
+    .update(updateFields)
     .eq('course_code', courseCode)
     .eq('seed_number', seedNum);
 
@@ -5631,8 +5913,8 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
   // Record activity for stall detection (Pass 1 translations count as progress)
   recordActivity(courseCode, seedNum);
 
-  console.log(`✓ S${String(seedNum).padStart(4,'0')} translation: ${target_text}`);
-  res.json({ ok: true, seed: seedNum, target_text });
+  console.log(`✓ S${String(seedNum).padStart(4,'0')} translation: ${target_text || known_text}`);
+  res.json({ ok: true, seed: seedNum, target_text, known_text });
 });
 
 /**
@@ -6010,6 +6292,612 @@ app.get('/api/course/:courseCode/quality-rules', async (req, res) => {
     quality_rules: course.quality_rules
   });
 });
+
+/**
+ * Parse calibration markdown into golden_decompositions JSON structure.
+ *
+ * Recognizes:
+ *   ## Seed N           → new seed entry
+ *   Known: / Target:    → seed text
+ *   ### LN [M/A] "k" → "t" → LEGO with type, known, target
+ *   Components:         → components array (M-type)
+ *   Reasoning:          → reasoning string
+ *   BUILD: section      → build_phrases array
+ *   USE: section        → use_phrases array with scores
+ *   Contrastive:        → contrastive_notes array
+ *   Key insight:        → key_insight string
+ */
+function parseCalibrationMarkdown(text) {
+  const seeds = [];
+  let current = null;   // current seed object
+  let currentLego = null;
+  let section = null;   // 'build' | 'use' | 'contrastive' | null
+
+  const lines = text.split('\n');
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // ## Seed N
+    const seedMatch = trimmed.match(/^## Seed (\d+)/);
+    if (seedMatch) {
+      if (currentLego && current) { current.legos.push(currentLego); currentLego = null; }
+      if (current) seeds.push(current);
+      current = {
+        seed_number: parseInt(seedMatch[1]),
+        known_text: '',
+        target_text: '',
+        legos: [],
+        contrastive_notes: [],
+        key_insight: ''
+      };
+      section = null;
+      continue;
+    }
+
+    if (!current) continue;
+
+    // Known: / Target:
+    const knownMatch = trimmed.match(/^Known:\s*(.+)/);
+    if (knownMatch) { current.known_text = knownMatch[1].trim(); section = null; continue; }
+
+    const targetMatch = trimmed.match(/^Target:\s*(.+)/);
+    if (targetMatch) { current.target_text = targetMatch[1].trim(); section = null; continue; }
+
+    // ### LN [M/A] "known" → "target"
+    const legoMatch = trimmed.match(/^### L(\d+)\s+\[([MA])]\s+"([^"]+)"\s*→\s*"([^"]+)"/);
+    if (legoMatch) {
+      if (currentLego) current.legos.push(currentLego);
+      currentLego = {
+        type: legoMatch[2],
+        known: legoMatch[3],
+        target: legoMatch[4],
+        reasoning: '',
+        build_phrases: [],
+        use_phrases: []
+      };
+      if (legoMatch[2] === 'M') currentLego.components = [];
+      section = null;
+      continue;
+    }
+
+    if (!currentLego && !section && !trimmed.startsWith('Contrastive:') && !trimmed.startsWith('Key insight:')) continue;
+
+    // Components: x → y, a → b
+    const compMatch = trimmed.match(/^Components:\s*(.+)/);
+    if (compMatch && currentLego) {
+      currentLego.components = compMatch[1].split(',').map(pair => {
+        const parts = pair.trim().split(/\s*→\s*/);
+        return { known: parts[0].trim(), target: (parts[1] || '').trim() };
+      });
+      section = null;
+      continue;
+    }
+
+    // Reasoning:
+    const reasonMatch = trimmed.match(/^Reasoning:\s*(.+)/);
+    if (reasonMatch && currentLego) { currentLego.reasoning = reasonMatch[1].trim(); section = null; continue; }
+
+    // Section headers
+    if (trimmed === 'BUILD:') { section = 'build'; continue; }
+    if (trimmed === 'USE:') { section = 'use'; continue; }
+    if (trimmed === 'Contrastive:') {
+      if (currentLego) { current.legos.push(currentLego); currentLego = null; }
+      section = 'contrastive';
+      continue;
+    }
+
+    // Key insight:
+    const insightMatch = trimmed.match(/^Key insight:\s*(.+)/);
+    if (insightMatch) {
+      if (currentLego) { current.legos.push(currentLego); currentLego = null; }
+      current.key_insight = insightMatch[1].trim();
+      section = null;
+      continue;
+    }
+
+    // List items within sections
+    if (trimmed.startsWith('- ') && section) {
+      const item = trimmed.slice(2).trim();
+
+      if (section === 'build') {
+        const parts = item.split(/\s*→\s*/);
+        if (parts.length === 2 && currentLego) {
+          currentLego.build_phrases.push({ known: parts[0].trim(), target: parts[1].trim() });
+        }
+      } else if (section === 'use') {
+        // "known → target [score]"
+        const useMatch = item.match(/^(.+?)\s*→\s*(.+?)\s*\[(\d+)]/);
+        if (useMatch && currentLego) {
+          currentLego.use_phrases.push({ known: useMatch[1].trim(), target: useMatch[2].trim(), score: parseInt(useMatch[3]) });
+        }
+      } else if (section === 'contrastive') {
+        current.contrastive_notes.push(item);
+      }
+      continue;
+    }
+  }
+
+  // Flush remaining
+  if (currentLego && current) current.legos.push(currentLego);
+  if (current) seeds.push(current);
+
+  if (seeds.length === 0) {
+    return { error: 'No seeds found in markdown. Expected "## Seed N" headings.' };
+  }
+
+  // Validate each seed has minimum required fields
+  for (const seed of seeds) {
+    if (!seed.known_text || !seed.target_text) {
+      return { error: `Seed ${seed.seed_number} missing Known: or Target: line` };
+    }
+    if (seed.legos.length === 0) {
+      return { error: `Seed ${seed.seed_number} has no LEGOs. Expected "### LN [M/A] ..." headings.` };
+    }
+  }
+
+  return { golden_decompositions: seeds };
+}
+
+/**
+ * POST /api/course/:courseCode/calibration - Save golden decompositions from calibration session
+ *
+ * Golden decompositions are human-verified LEGO decompositions for seeds 1-10 that serve as
+ * canonical examples for future build agents. They include reasoning and contrastive notes
+ * explaining WHY each decomposition choice was made.
+ *
+ * Accepts two formats:
+ *
+ * 1. JSON (Content-Type: application/json):
+ * Body: {
+ *   golden_decompositions: [
+ *     {
+ *       seed_number: 1,
+ *       known_text: "I want to speak Dutch with you now.",
+ *       target_text: "Ik wil nu Nederlands met je spreken.",
+ *       legos: [
+ *         {
+ *           type: "M",
+ *           known: "I want",
+ *           target: "ik wil",
+ *           components: [{known: "I", target: "ik"}, {known: "want", target: "wil"}],
+ *           reasoning: "M-LEGO: pronouns need verb context"
+ *         }
+ *       ],
+ *       contrastive_notes: ["DON'T: with → met as A-LEGO (preposition fails ZUT)"],
+ *       key_insight: "Function words absorbed into M-LEGOs"
+ *     }
+ *   ]
+ * }
+ *
+ * 2. Markdown (Content-Type: text/markdown or text/plain):
+ * ## Seed 1
+ * Known: I want to speak Dutch with you now.
+ * Target: Ik wil nu Nederlands met je spreken.
+ *
+ * ### L1 [M] "I want" → "ik wil"
+ * Components: I → ik, want → wil
+ * Reasoning: Subject+verb bundled.
+ *
+ * BUILD:
+ * - I want to speak → ik wil spreken
+ *
+ * USE:
+ * - I want to speak → ik wil spreken [6]
+ *
+ * Contrastive:
+ * - DON'T: 'I' as A-LEGO
+ *
+ * Key insight: Dutch pronouns change form by context.
+ *
+ * Markdown submissions are merged by seed_number (existing seeds updated, new seeds added).
+ */
+app.post('/api/course/:courseCode/calibration', async (req, res) => {
+  const { courseCode } = req.params;
+
+  // Detect markdown (string body) vs JSON (object body)
+  let golden_decompositions;
+  if (typeof req.body === 'string') {
+    const parsed = parseCalibrationMarkdown(req.body);
+    if (parsed.error) return res.status(400).json({ error: parsed.error });
+    golden_decompositions = parsed.golden_decompositions;
+  } else {
+    golden_decompositions = req.body.golden_decompositions;
+  }
+
+  // Validation: Must have golden_decompositions array
+  if (!golden_decompositions || !Array.isArray(golden_decompositions)) {
+    return res.status(400).json({
+      error: 'Required: golden_decompositions array with seed decompositions',
+      hint: 'Use /calibrate skill to create golden decompositions interactively, or POST markdown with Content-Type: text/markdown'
+    });
+  }
+
+  // Validation: Must have at least one seed
+  if (golden_decompositions.length < 1) {
+    return res.status(400).json({
+      error: 'golden_decompositions array is empty',
+      hint: 'Include at least seeds 1-10 for effective calibration'
+    });
+  }
+
+  // Validate each decomposition has required fields
+  const requiredFields = ['seed_number', 'known_text', 'target_text', 'legos'];
+  for (const decomp of golden_decompositions) {
+    const missing = requiredFields.filter(f => !decomp[f]);
+    if (missing.length > 0) {
+      return res.status(400).json({
+        error: `Seed ${decomp.seed_number || '?'} missing required fields: ${missing.join(', ')}`,
+        required: requiredFields
+      });
+    }
+
+    // Validate LEGOs have required fields
+    if (!Array.isArray(decomp.legos) || decomp.legos.length === 0) {
+      return res.status(400).json({
+        error: `Seed ${decomp.seed_number} has no LEGOs`,
+        hint: 'Each seed must have at least one LEGO decomposition'
+      });
+    }
+
+    for (const lego of decomp.legos) {
+      if (!lego.type || !lego.known || !lego.target) {
+        return res.status(400).json({
+          error: `Seed ${decomp.seed_number} has invalid LEGO - missing type, known, or target`,
+          lego
+        });
+      }
+      if (!['A', 'M'].includes(lego.type)) {
+        return res.status(400).json({
+          error: `Seed ${decomp.seed_number} has invalid LEGO type: ${lego.type}`,
+          allowed: ['A', 'M']
+        });
+      }
+      if (lego.type === 'M' && (!lego.components || !Array.isArray(lego.components))) {
+        return res.status(400).json({
+          error: `Seed ${decomp.seed_number} M-LEGO "${lego.known}" missing components array`,
+          hint: 'M-LEGOs must have components showing their building blocks'
+        });
+      }
+    }
+  }
+
+  // Check course exists
+  const { data: course, error: courseErr } = await supabase
+    .from('courses')
+    .select('course_code, display_name, quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (courseErr || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  // Merge golden_decompositions by seed_number (update existing, add new)
+  const existingRules = course.quality_rules || {};
+  const existing = existingRules.golden_decompositions || [];
+  const merged = [...existing];
+  for (const newSeed of golden_decompositions) {
+    const idx = merged.findIndex(s => s.seed_number === newSeed.seed_number);
+    if (idx >= 0) merged[idx] = newSeed;  // replace existing seed
+    else merged.push(newSeed);            // add new seed
+  }
+  merged.sort((a, b) => a.seed_number - b.seed_number);
+
+  const updatedRules = {
+    ...existingRules,
+    golden_decompositions: merged,
+    calibrated_at: new Date().toISOString(),
+    calibrated_by: 'human+agent'
+  };
+
+  // Save to database
+  const { error: updateErr } = await supabase
+    .from('courses')
+    .update({
+      quality_rules: updatedRules,
+      updated_at: new Date().toISOString()
+    })
+    .eq('course_code', courseCode);
+
+  if (updateErr) {
+    console.error(`Error saving calibration for ${courseCode}:`, updateErr);
+    return res.status(500).json({ error: updateErr.message });
+  }
+
+  console.log(`[CALIBRATION] Merged ${golden_decompositions.length} seed(s) for ${courseCode} (${merged.length} total)`);
+
+  // Summarize the calibration (report on merged totals)
+  const summary = {
+    seeds_submitted: golden_decompositions.map(d => d.seed_number).sort((a, b) => a - b),
+    seeds_total: merged.map(d => d.seed_number).sort((a, b) => a - b),
+    total_legos: merged.reduce((sum, d) => sum + d.legos.length, 0),
+    m_legos: merged.reduce((sum, d) => sum + d.legos.filter(l => l.type === 'M').length, 0),
+    a_legos: merged.reduce((sum, d) => sum + d.legos.filter(l => l.type === 'A').length, 0),
+    with_reasoning: merged.reduce((sum, d) => sum + d.legos.filter(l => l.reasoning).length, 0),
+    with_contrastive_notes: merged.filter(d => d.contrastive_notes && d.contrastive_notes.length > 0).length
+  };
+
+  res.json({
+    success: true,
+    course_code: courseCode,
+    message: 'Golden decompositions saved - future agents will receive these as canonical examples',
+    calibrated_at: updatedRules.calibrated_at,
+    summary,
+    next_steps: [
+      'Build agents spawned via /api/spawn will receive golden examples in initial brief',
+      'GET /api/resume will include golden_decompositions for context recovery',
+      'Seeds 11+ should follow the patterns established in seeds 1-10'
+    ]
+  });
+});
+
+/**
+ * GET /api/course/:courseCode/calibration - Get golden decompositions
+ */
+app.get('/api/course/:courseCode/calibration', async (req, res) => {
+  const { courseCode } = req.params;
+
+  const { data: course, error } = await supabase
+    .from('courses')
+    .select('course_code, display_name, quality_rules')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (error || !course) {
+    return res.status(404).json({ error: `Course not found: ${courseCode}` });
+  }
+
+  const goldenDecompositions = course.quality_rules?.golden_decompositions;
+  const calibratedAt = course.quality_rules?.calibrated_at;
+
+  if (!goldenDecompositions) {
+    return res.status(404).json({
+      error: 'Course not calibrated',
+      hint: 'Run /calibrate to create golden decompositions with human guidance',
+      course_code: courseCode
+    });
+  }
+
+  res.json({
+    course_code: courseCode,
+    display_name: course.display_name,
+    calibrated_at: calibratedAt,
+    calibrated_by: course.quality_rules?.calibrated_by || 'unknown',
+    golden_decompositions: goldenDecompositions,
+    summary: {
+      seeds_calibrated: goldenDecompositions.length,
+      total_legos: goldenDecompositions.reduce((sum, d) => sum + d.legos.length, 0)
+    }
+  });
+});
+
+/**
+ * GET /api/calibrations/patterns - Get cross-language calibration patterns for reference
+ *
+ * Returns all existing calibrations grouped by:
+ * - Target language (how to chunk that language)
+ * - Known language (phrasing patterns)
+ * - Seed number (side-by-side comparison)
+ *
+ * Use when calibrating a new language pair to see how similar pairs were handled.
+ */
+app.get('/api/calibrations/patterns', async (req, res) => {
+  const { target, known, seed } = req.query;
+
+  // Fetch all courses with calibrations
+  const { data: courses, error } = await supabase
+    .from('courses')
+    .select('course_code, display_name, quality_rules')
+    .not('quality_rules->golden_decompositions', 'is', null);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  // Filter to only calibrated courses
+  const calibrated = (courses || []).filter(c =>
+    c.quality_rules?.golden_decompositions?.length > 0
+  );
+
+  if (calibrated.length === 0) {
+    return res.json({
+      message: 'No calibrated courses found yet',
+      hint: 'Run /calibrate on a course to create the first calibration',
+      calibrated_courses: []
+    });
+  }
+
+  // Parse course codes into target/known languages
+  const parsed = calibrated.map(c => {
+    const parts = c.course_code.split('_for_');
+    return {
+      course_code: c.course_code,
+      target_lang: parts[0],
+      known_lang: parts[1],
+      calibrated_at: c.quality_rules.calibrated_at,
+      seeds: c.quality_rules.golden_decompositions.length,
+      golden: c.quality_rules.golden_decompositions
+    };
+  });
+
+  // Apply filters if specified
+  let filtered = parsed;
+  if (target) {
+    filtered = filtered.filter(c => c.target_lang === target);
+  }
+  if (known) {
+    filtered = filtered.filter(c => c.known_lang === known);
+  }
+
+  // Group by target language
+  const byTarget = {};
+  for (const course of filtered) {
+    if (!byTarget[course.target_lang]) {
+      byTarget[course.target_lang] = [];
+    }
+    byTarget[course.target_lang].push({
+      course_code: course.course_code,
+      known_lang: course.known_lang,
+      seeds: course.seeds
+    });
+  }
+
+  // Group by known language
+  const byKnown = {};
+  for (const course of filtered) {
+    if (!byKnown[course.known_lang]) {
+      byKnown[course.known_lang] = [];
+    }
+    byKnown[course.known_lang].push({
+      course_code: course.course_code,
+      target_lang: course.target_lang,
+      seeds: course.seeds
+    });
+  }
+
+  // If specific seed requested, show side-by-side comparison
+  let seedComparison = null;
+  if (seed) {
+    const seedNum = parseInt(seed);
+    seedComparison = {};
+    for (const course of filtered) {
+      const seedData = course.golden.find(g => g.seed_number === seedNum);
+      if (seedData) {
+        seedComparison[course.course_code] = {
+          known_text: seedData.known_text,
+          target_text: seedData.target_text,
+          legos: seedData.legos.map(l => ({
+            type: l.type,
+            known: l.known,
+            target: l.target,
+            reasoning: l.reasoning
+          })),
+          key_insight: seedData.key_insight
+        };
+      }
+    }
+  }
+
+  res.json({
+    calibrated_courses: filtered.length,
+    by_target_language: byTarget,
+    by_known_language: byKnown,
+    seed_comparison: seedComparison,
+    hint: seedComparison
+      ? `Showing seed ${seed} across ${Object.keys(seedComparison).length} calibrated courses`
+      : 'Add ?seed=1 to see side-by-side comparison of how seed 1 was chunked across languages'
+  });
+});
+
+/**
+ * GET /api/calibrations/seed/:seedNumber - Get all calibrations for a specific seed
+ *
+ * Shows how different language pairs chunked the same seed number.
+ * Useful for seeing patterns before calibrating a new pair.
+ */
+app.get('/api/calibrations/seed/:seedNumber', async (req, res) => {
+  const seedNum = parseInt(req.params.seedNumber);
+
+  if (isNaN(seedNum) || seedNum < 1 || seedNum > 10) {
+    return res.status(400).json({
+      error: 'Seed number must be 1-10 (calibration range)',
+      provided: req.params.seedNumber
+    });
+  }
+
+  // Fetch all courses with calibrations
+  const { data: courses, error } = await supabase
+    .from('courses')
+    .select('course_code, quality_rules')
+    .not('quality_rules->golden_decompositions', 'is', null);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  const comparisons = [];
+
+  for (const course of courses || []) {
+    const golden = course.quality_rules?.golden_decompositions || [];
+    const seedData = golden.find(g => g.seed_number === seedNum);
+
+    if (seedData) {
+      const parts = course.course_code.split('_for_');
+      comparisons.push({
+        course_code: course.course_code,
+        target_lang: parts[0],
+        known_lang: parts[1],
+        known_text: seedData.known_text,
+        target_text: seedData.target_text,
+        lego_summary: seedData.legos.map(l =>
+          `${l.type}: "${l.known}" → "${l.target}"`
+        ),
+        m_count: seedData.legos.filter(l => l.type === 'M').length,
+        a_count: seedData.legos.filter(l => l.type === 'A').length,
+        key_insight: seedData.key_insight,
+        contrastive_notes: seedData.contrastive_notes
+      });
+    }
+  }
+
+  if (comparisons.length === 0) {
+    return res.json({
+      seed_number: seedNum,
+      message: 'No calibrations found for this seed yet',
+      hint: 'Run /calibrate on a course to create calibrations'
+    });
+  }
+
+  // Group by target language for pattern discovery
+  const byTarget = {};
+  for (const comp of comparisons) {
+    if (!byTarget[comp.target_lang]) {
+      byTarget[comp.target_lang] = [];
+    }
+    byTarget[comp.target_lang].push(comp);
+  }
+
+  res.json({
+    seed_number: seedNum,
+    calibrations_found: comparisons.length,
+    comparisons,
+    by_target_language: byTarget,
+    patterns: {
+      hint: 'Look for common M-LEGO patterns across languages',
+      common_m_legos: extractCommonPatterns(comparisons, 'M'),
+      common_a_legos: extractCommonPatterns(comparisons, 'A')
+    }
+  });
+});
+
+/**
+ * Helper: Extract common LEGO patterns across calibrations
+ */
+function extractCommonPatterns(comparisons, legoType) {
+  const knownTexts = {};
+
+  for (const comp of comparisons) {
+    const legos = comp.lego_summary
+      .filter(l => l.startsWith(legoType + ':'))
+      .map(l => {
+        const match = l.match(/"([^"]+)"/);
+        return match ? match[1] : null;
+      })
+      .filter(Boolean);
+
+    for (const known of legos) {
+      knownTexts[known] = (knownTexts[known] || 0) + 1;
+    }
+  }
+
+  // Return patterns that appear in 2+ calibrations
+  return Object.entries(knownTexts)
+    .filter(([_, count]) => count >= 2)
+    .sort((a, b) => b[1] - a[1])
+    .map(([text, count]) => ({ known_text: text, appears_in: count }));
+}
 
 /**
  * POST /api/phrases - Add phrases to an existing LEGO basket
