@@ -1681,36 +1681,69 @@ RIGHT: {"known": "spoke", "target": "話した"} — learner INFERS た = past f
 
 ---
 
-# COMPLETE EXAMPLE: One LEGO with BUILD + USE
+# COMPLETE EXAMPLE: Full seed in markdown format
 
-\`\`\`json
-{
-  "idx": 4,
-  "type": "M",
-  "known": "with you",
-  "target": "和你",
-  "components": [
-    {"known": "with", "target": "和"},
-    {"known": "you", "target": "你"}
-  ],
-  "build": [
-    {"known": "with you", "target": "和你"},
-    {"known": "speak with you", "target": "和你说"},
-    {"known": "speak Chinese with you", "target": "和你说中文"},
-    {"known": "learn Chinese with you", "target": "和你学中文"}
-  ],
-  "use": [
-    {"known": "I want to speak with you", "target": "我想和你说", "score": 7},
-    {"known": "I want to speak Chinese with you", "target": "我想和你说中文", "score": 8},
-    {"known": "I want to learn Chinese with you", "target": "我想和你学中文", "score": 8},
-    {"known": "I want to learn to speak Chinese with you", "target": "我想和你学说中文", "score": 8},
-    {"known": "Do you want to speak Chinese with me?", "target": "你想和我说中文吗?", "score": 9},
-    {"known": "I want to practice speaking Chinese with you every day", "target": "我想每天和你练习说中文", "score": 8}
-  ]
-}
+\`\`\`markdown
+# Seed 1
+Known: I want to speak Chinese with you now.
+Target: 我现在想和你说中文。
+
+## L1 [M] "I want" → "我想"
+Components: I → 我, want → 想
+
+BUILD:
+- I want → 我想
+
+USE:
+- I want to learn → 我想学 [6]
+- I want to speak → 我想说 [6]
+
+## L2 [A] "to speak" → "说"
+
+BUILD:
+- I want to speak → 我想说
+- speak Chinese → 说中文
+
+USE:
+- I want to speak Chinese → 我想说中文 [7]
+- I want to learn to speak Chinese → 我想学说中文 [8]
+
+## L3 [A] "Chinese" → "中文"
+
+BUILD:
+- speak Chinese → 说中文
+- learn Chinese → 学中文
+
+USE:
+- I want to speak Chinese → 我想说中文 [7]
+- I want to learn Chinese → 我想学中文 [7]
+
+## L4 [M] "with you" → "和你"
+Components: with → 和, you → 你
+
+BUILD:
+- with you → 和你
+- speak with you → 和你说
+- speak Chinese with you → 和你说中文
+
+USE:
+- I want to speak with you → 我想和你说 [7]
+- I want to speak Chinese with you → 我想和你说中文 [8]
+- I want to learn Chinese with you → 我想和你学中文 [8]
+- Do you want to speak Chinese with me? → 你想和我说中文吗? [9]
+
+## L5 [A] "now" → "现在"
+
+BUILD:
+- now speak → 现在说
+- now with you → 现在和你
+
+USE:
+- I want to speak Chinese with you now → 我现在想和你说中文 [8]
+- I want to learn Chinese now → 我现在想学中文 [7]
 \`\`\`
 
-**Notice:** USE phrases combine this LEGO (L4: 和你) with previous LEGOs (L1: 我想, L2: 说, L3: 中文).
+**Notice:** Each LEGO's phrases combine it with ALL previous LEGOs. L4's USE phrases use L1 (我想), L2 (说), L3 (中文).
 
 ---
 
@@ -1726,26 +1759,39 @@ USE phrases go into eternal spaced repetition. Quality matters enormously.
 
 ---
 
-# API SUBMISSION
+# API SUBMISSION (Markdown format)
 
 ## Check your status:
 \`\`\`
 curl http://localhost:3471/api/resume/${courseCode}
 \`\`\`
 
-## Submit each seed:
+## Submit each seed as markdown:
 \`\`\`
-POST http://localhost:3471/api/seed/complete
-{
-  "course_code": "${courseCode}",
-  "seed_number": 1,
-  "target_text": "你的翻译",
-  "legos": [
-    {LEGO with idx, type, known, target, components (if M-type), build[], use[]},
-    {LEGO 2...},
-    ...
-  ]
-}
+curl -X POST 'http://localhost:3471/api/seed/complete?course=${courseCode}' \\
+  -H 'Content-Type: text/markdown' \\
+  --data-binary @- <<'SEED'
+# Seed N
+Known: English sentence here
+Target: Target language sentence here
+
+## L1 [M] "known phrase" → "target phrase"
+Components: word1 → target1, word2 → target2
+
+BUILD:
+- known fragment → target fragment
+
+USE:
+- known sentence → target sentence [score]
+
+## L2 [A] "known word" → "target word"
+
+BUILD:
+- known fragment → target fragment
+
+USE:
+- known sentence → target sentence [score]
+SEED
 \`\`\`
 
 ## Error messages tell you exactly what's wrong:
@@ -5617,7 +5663,12 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     course_code: courseCode,
     target_language: targetLangName,
     translation_analysis: courseInfo?.translation_analysis || null,
-    quality_rules: courseInfo?.quality_rules || null,
+    // Strip golden_decompositions from quality_rules (sent separately as GOLDEN_DECOMPOSITIONS in curated form)
+    quality_rules: (() => {
+      const rules = { ...(courseInfo?.quality_rules || {}) };
+      delete rules.golden_decompositions;
+      return Object.keys(rules).length > 0 ? rules : null;
+    })(),
 
     // LEARNINGS - Language-pair specific insights from previous builds (APPLY THESE!)
     LEARNINGS: (() => {
@@ -5729,36 +5780,25 @@ app.get('/api/resume/:courseCode', async (req, res) => {
         ],
         note: 'Each LEGO generates BUILD + USE phrases using ONLY vocabulary from previous LEGOs'
       },
-      complete_lego_example: {
-        idx: 4,
-        type: 'M',
-        known: 'with you',
-        target: '和你',
-        components: [
-          { known: 'with', target: '和' },
-          { known: 'you', target: '你' }
-        ],
-        build: [
-          { known: 'with you', target: '和你' },
-          { known: 'speak with you', target: '和你说' },
-          { known: 'learn with you', target: '和你学' },
-          { known: 'speak Chinese with you', target: '和你说中文' }
-        ],
-        use: [
-          { known: 'I want to speak with you', target: '我想和你说', score: 7 },
-          { known: 'I want to learn Chinese with you', target: '我想和你学中文', score: 8 },
-          { known: 'I want to speak Chinese with you', target: '我想和你说中文', score: 8 },
-          { known: 'I want to speak Chinese with you now', target: '我现在想和你说中文', score: 8 },
-          { known: 'Do you want to speak Chinese with me?', target: '你想和我说中文吗?', score: 9 },
-          { known: 'I want to learn to speak Chinese with you', target: '我想和你学说中文', score: 8 }
-        ]
-      },
+      complete_lego_example_markdown: `## L4 [M] "with you" → "和你"
+Components: with → 和, you → 你
+
+BUILD:
+- with you → 和你
+- speak with you → 和你说
+- speak Chinese with you → 和你说中文
+
+USE:
+- I want to speak with you → 我想和你说 [7]
+- I want to speak Chinese with you → 我想和你说中文 [8]
+- I want to learn Chinese with you → 我想和你学中文 [8]
+- Do you want to speak Chinese with me? → 你想和我说中文吗? [9]`,
       workflow: [
         '1. Decompose next_seed into 3-6 SMALL LEGOs (not whole sentences!)',
         '2. For EACH LEGO: generate BUILD (flexible) + USE (min 5) phrases',
         '3. USE phrases must be complete sentences with scores 5-9',
         '4. Phrases can only use THIS LEGO + vocabulary from PREVIOUS LEGOs',
-        '5. POST to /api/seed/complete with all legos',
+        `5. Submit as markdown: POST /api/seed/complete?course=${courseCode} with Content-Type: text/markdown`,
         `6. CHECKPOINTS at seeds ${CHECKPOINT_SEEDS.join(', ')} - stop and await QA`,
         '7. Continue autonomously until done'
       ],
