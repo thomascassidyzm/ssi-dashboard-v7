@@ -34,20 +34,31 @@
         </button>
 
         <!-- Hidden courses toggle -->
-        <button
-          v-if="hiddenCourses.length > 0"
-          class="hidden-toggle"
-          :class="{ active: showHidden }"
-          @click="showHidden = !showHidden"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path v-if="showHidden" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle v-if="showHidden" cx="12" cy="12" r="3"/>
-            <path v-if="!showHidden" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-            <line v-if="!showHidden" x1="1" y1="1" x2="23" y2="23"/>
-          </svg>
-          <span>{{ hiddenCourses.length }} hidden</span>
-        </button>
+        <div v-if="hiddenCourses.length > 0" class="hidden-toggle-group">
+          <button
+            class="hidden-toggle"
+            :class="{ active: showHidden }"
+            @click="showHidden = !showHidden"
+            :title="'Hidden: ' + hiddenCourses.join(', ')"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path v-if="showHidden" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle v-if="showHidden" cx="12" cy="12" r="3"/>
+              <path v-if="!showHidden" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+              <line v-if="!showHidden" x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+            <span>{{ showHidden ? 'Hide' : 'Show' }} {{ hiddenCourses.length }} hidden</span>
+          </button>
+          <!-- Unhide all button -->
+          <button
+            v-if="!showHidden"
+            class="unhide-all-btn"
+            @click="unhideAll"
+            title="Unhide all courses"
+          >
+            Unhide all
+          </button>
+        </div>
 
         <!-- Sort selector -->
         <div class="sort-selector">
@@ -398,6 +409,12 @@ function unhideCourse(code) {
   saveHiddenCourses()
 }
 
+function unhideAll() {
+  hiddenCourses.value = []
+  saveHiddenCourses()
+  showHidden.value = false
+}
+
 function isHidden(code) {
   return hiddenCourses.value.includes(code)
 }
@@ -731,6 +748,31 @@ function handleDeploy(course, platform) {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Hidden toggle group */
+.hidden-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.unhide-all-btn {
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #8b5cf6;
+  transition: all 0.2s;
+}
+
+.unhide-all-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: #8b5cf6;
 }
 
 /* Hidden toggle button */

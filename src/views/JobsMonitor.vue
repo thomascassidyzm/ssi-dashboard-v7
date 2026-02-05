@@ -160,6 +160,18 @@
                 <span class="progress-label">{{ getProgressLabel(job.type) }}</span>
                 <span class="progress-percent">({{ job.progress.percentage || 0 }}%)</span>
               </div>
+              <!-- Pass indicator for build jobs -->
+              <div v-if="job.type === 'build' && job.progress.currentPass" class="pass-indicator">
+                <span class="pass-badge" :class="'pass-' + job.progress.currentPass">
+                  Pass {{ job.progress.currentPass }}
+                </span>
+                <span class="pass-detail" v-if="job.progress.currentPass === 1">
+                  {{ job.progress.seedsTranslated || 0 }} translated
+                </span>
+                <span class="pass-detail" v-else-if="job.progress.currentPass === 2">
+                  {{ job.progress.seedsTranslated || 0 }} translated, {{ job.progress.seedsDecomposed || 0 }} decomposed
+                </span>
+              </div>
               <!-- Failed count for audio -->
               <div v-if="job.progress.failed > 0" class="progress-failed">
                 <span class="failed-icon">!</span>
@@ -174,6 +186,13 @@
 
             <!-- Job metadata -->
             <div class="job-details">
+              <div v-if="job.machine" class="detail-item machine-item">
+                <svg class="machine-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+                <span class="detail-value machine-name">{{ job.machine }}</span>
+              </div>
               <div v-if="job.startedAt" class="detail-item">
                 <span class="detail-label">Started:</span>
                 <span class="detail-value">{{ formatTime(job.startedAt) }}</span>
@@ -1249,6 +1268,36 @@ onUnmounted(() => {
   font-weight: 600;
 }
 
+.pass-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.pass-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+}
+
+.pass-badge.pass-1 {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--jm-info);
+}
+
+.pass-badge.pass-2 {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--jm-accent);
+}
+
+.pass-detail {
+  color: var(--jm-text-muted);
+}
+
 .progress-failed {
   display: flex;
   align-items: center;
@@ -1303,6 +1352,29 @@ onUnmounted(() => {
 
 .detail-value {
   color: var(--jm-text-dim);
+}
+
+.detail-item.machine-item {
+  flex-basis: 100%;
+  gap: 0.5rem;
+  padding: 0.375rem 0.625rem;
+  background: var(--jm-elevated);
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+}
+
+.machine-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--jm-info);
+  flex-shrink: 0;
+}
+
+.machine-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--jm-info);
+  font-weight: 600;
 }
 
 .detail-item.last-item {
