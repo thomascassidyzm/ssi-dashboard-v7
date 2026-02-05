@@ -7,6 +7,14 @@ const VFS_ROOT = path.join(__dirname, 'public/vfs/courses');
 // Falls back to popty.ngrok.app if not set
 const NGROK_DOMAIN = process.env.NGROK_DOMAIN || 'popty.ngrok.app';
 
+// Machine-aware memory limits based on available RAM
+// Tom's machine (24GB) can run 2-3 courses in parallel; SSi/Kai (8GB) need tight limits
+const TOTAL_RAM_GB = parseInt(process.env.MACHINE_RAM_GB || '8', 10);
+const isLargeMachine = TOTAL_RAM_GB >= 16;
+const MEM_LIGHT  = isLargeMachine ? '4G' : '2G';   // orchestrator, production-api, course-builder
+const MEM_HEAVY  = isLargeMachine ? '6G' : '3G';   // phase8-audio, phase9-manifest
+const HEAP_LIMIT = isLargeMachine ? '8192' : '4096'; // V8 max-old-space-size
+
 module.exports = {
   apps: [
     {
@@ -19,7 +27,7 @@ module.exports = {
       watch: false,
       autorestart: true,
       max_restarts: 3,
-      max_memory_restart: '2G'
+      max_memory_restart: MEM_LIGHT
     },
     // DEPRECATED in v14 - Replaced by course-builder (port 3471)
     // {
@@ -50,7 +58,7 @@ module.exports = {
       watch: false,
       autorestart: true,
       max_restarts: 3,
-      max_memory_restart: '2G'
+      max_memory_restart: MEM_LIGHT
     },
     {
       name: 'phase8-audio',
@@ -59,11 +67,11 @@ module.exports = {
         PORT: 3465,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=4096',
+      node_args: `--max-old-space-size=${HEAP_LIMIT}`,
       watch: false,
       autorestart: true,
       max_restarts: 3,
-      max_memory_restart: '3G'
+      max_memory_restart: MEM_HEAVY
     },
     {
       name: 'phase9-manifest',
@@ -72,11 +80,11 @@ module.exports = {
         PORT: 3466,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=4096',
+      node_args: `--max-old-space-size=${HEAP_LIMIT}`,
       watch: false,
       autorestart: true,
       max_restarts: 3,
-      max_memory_restart: '3G'
+      max_memory_restart: MEM_HEAVY
     },
     {
       name: 'course-builder',
@@ -85,11 +93,11 @@ module.exports = {
         PORT: 3471,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=4096',
+      node_args: `--max-old-space-size=${HEAP_LIMIT}`,
       watch: false,
       autorestart: true,
       max_restarts: 3,
-      max_memory_restart: '2G'
+      max_memory_restart: MEM_LIGHT
     },
     {
       name: 'ngrok',
