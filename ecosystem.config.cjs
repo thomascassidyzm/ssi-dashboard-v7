@@ -18,7 +18,8 @@ module.exports = {
       },
       watch: false,
       autorestart: true,
-      max_restarts: 3
+      max_restarts: 3,
+      max_memory_restart: '2G'
     },
     // DEPRECATED in v14 - Replaced by course-builder (port 3471)
     // {
@@ -48,7 +49,8 @@ module.exports = {
       },
       watch: false,
       autorestart: true,
-      max_restarts: 3
+      max_restarts: 3,
+      max_memory_restart: '2G'
     },
     {
       name: 'phase8-audio',
@@ -57,10 +59,11 @@ module.exports = {
         PORT: 3465,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=8192',
+      node_args: '--max-old-space-size=4096',
       watch: false,
       autorestart: true,
-      max_restarts: 3
+      max_restarts: 3,
+      max_memory_restart: '3G'
     },
     {
       name: 'phase9-manifest',
@@ -69,10 +72,11 @@ module.exports = {
         PORT: 3466,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=8192',
+      node_args: '--max-old-space-size=4096',
       watch: false,
       autorestart: true,
-      max_restarts: 3
+      max_restarts: 3,
+      max_memory_restart: '3G'
     },
     {
       name: 'course-builder',
@@ -81,10 +85,11 @@ module.exports = {
         PORT: 3471,
         VFS_ROOT
       },
-      node_args: '--max-old-space-size=8192',
+      node_args: '--max-old-space-size=4096',
       watch: false,
       autorestart: true,
-      max_restarts: 3
+      max_restarts: 3,
+      max_memory_restart: '2G'
     },
     {
       name: 'ngrok',
@@ -102,6 +107,14 @@ module.exports = {
       interpreter: 'bash',
       autorestart: true,
       max_restarts: 3
+    },
+    {
+      name: 'cleanup-terminals',
+      script: 'scripts/cleanup-terminals.sh',
+      interpreter: 'bash',
+      cron_restart: '*/10 * * * *',  // Run every 10 minutes
+      autorestart: false,            // Don't restart between crons
+      watch: false
     }
   ]
 };
