@@ -169,7 +169,7 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // Dashboard can poll /api/activity to detect stalled courses and respawn agents
 // =============================================================================
 const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
-const BATCH_SIZE = 30;  // Suggest agent exit after this many seeds for fresh context
+const BATCH_SIZE = 260;  // Full course in one window (1M context on Pro Max)
 const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, seedsThisSession: number, sessionStartSeed: number }
 const agentHeartbeats = new Map();  // course_code -> { lastHeartbeat: timestamp, agentId: string, status: string }
 const HEARTBEAT_TIMEOUT_MS = 3 * 60 * 1000;  // 3 minutes - agent considered dead if no heartbeat
@@ -4985,20 +4985,14 @@ app.post('/api/seed/complete', async (req, res) => {
         mantra: 'If you catch yourself repeating a pattern, STOP and create something different.'
       },
 
-      // SESSION TRACKING - for batch efficiency
-      // In headless mode, never suggest exiting - agent should keep going until done.
-      // Stall watcher handles stuck agents; no need for voluntary batch exits.
+      // SESSION TRACKING
       session: (() => {
         const activity = courseActivity.get(course_code);
         const seedsThisSession = activity?.seedsThisSession || 1;
-        const shouldExit = SPAWN_MODE !== 'headless' && seedsThisSession >= BATCH_SIZE;
         return {
           seeds_this_session: seedsThisSession,
-          batch_size: SPAWN_MODE === 'headless' ? null : BATCH_SIZE,
-          suggestion: shouldExit ? 'EXIT_FOR_FRESH_CONTEXT' : 'CONTINUE',
-          message: shouldExit
-            ? `You have completed ${seedsThisSession} seeds. Exit gracefully for fresh context - orchestrator will spawn a new agent.`
-            : `${BATCH_SIZE - seedsThisSession} seeds remaining in this batch.`
+          suggestion: 'CONTINUE',
+          message: 'Keep building. Full course in one context window.'
         };
       })(),
 
