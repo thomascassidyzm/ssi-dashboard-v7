@@ -1131,7 +1131,8 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       // Insert into course_audio with duration
       // Include lego_id for presentation audio (needed for /plan matching)
-      const { error: insertError } = await supabase
+      // Use .select('id') to get the ID back directly for linking
+      const { data: insertedAudio, error: insertError } = await supabase
         .from('course_audio')
         .upsert({
           course_code: courseCode,
@@ -1147,15 +1148,14 @@ app.post('/generate/:courseCode', async (req, res) => {
         }, {
           onConflict: 'course_code,text_normalized,language,role'
         })
+        .select('id')
+        .single()
 
       if (insertError) throw insertError
 
-      // For presentation audio, also update course_legos.presentation_audio_id
-      // This provides a direct lookup without needing course_audio/lego_introductions joins
-      if (item.role === 'presentation' && item.lego_id) {
-        // Extract UUID from s3_key (handles both "mastered/{uuid}.mp3" and "{uuid}.mp3")
-        const audioUuid = s3Key.replace(/^mastered\//, '').replace(/\.mp3$/, '')
-
+      // For presentation audio, immediately link to course_legos using the ID we just got
+      // NO separate query needed - use insertedAudio.id directly
+      if (item.role === 'presentation' && item.lego_id && insertedAudio?.id) {
         // Parse lego_id (e.g., "S0001L03") to get seed_number and lego_index
         const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
         if (legoMatch) {
@@ -1164,13 +1164,15 @@ app.post('/generate/:courseCode', async (req, res) => {
 
           const { error: updateError } = await supabase
             .from('course_legos')
-            .update({ presentation_audio_id: audioUuid })
+            .update({ presentation_audio_id: insertedAudio.id })
             .eq('course_code', courseCode)
             .eq('seed_number', seedNumber)
             .eq('lego_index', legoIndex)
 
           if (updateError) {
             logger.warn(`Could not update course_legos.presentation_audio_id for ${item.lego_id}: ${updateError.message}`)
+          } else {
+            logger.info(`Linked presentation audio ${insertedAudio.id} to ${item.lego_id}`)
           }
         }
       }
@@ -1516,6 +1518,42 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`Incremented regen_count for ${regeneratedIds.length} flagged items`)
     }
 
+    // For presentation audio: bind presentation_audio_id to course_legos
+    // This is the authoritative binding - the learning app uses this ID directly
+    if (role === 'presentation' && regeneratedItems.length > 0) {
+      logger.info(`Binding presentation_audio_id for ${regeneratedItems.length} LEGOs...`)
+
+      // Get the lego_id for each regenerated audio
+      const audioIds = regeneratedItems.map(r => r.id)
+      const { data: audioRecords } = await supabase
+        .from('course_audio')
+        .select('id, lego_id')
+        .in('id', audioIds)
+
+      let boundCount = 0
+      for (const audio of audioRecords || []) {
+        if (!audio.lego_id) continue
+
+        // Parse lego_id (e.g., "S0001L03") to get seed_number and lego_index
+        const match = audio.lego_id.match(/S(\d+)L(\d+)/)
+        if (!match) continue
+
+        const seedNumber = parseInt(match[1], 10)
+        const legoIndex = parseInt(match[2], 10)
+
+        const { error: updateError } = await supabase
+          .from('course_legos')
+          .update({ presentation_audio_id: audio.id })
+          .eq('course_code', courseCode)
+          .eq('seed_number', seedNumber)
+          .eq('lego_index', legoIndex)
+
+        if (!updateError) boundCount++
+      }
+
+      logger.info(`Bound presentation_audio_id for ${boundCount} LEGOs`)
+    }
+
     const wasCancelled = currentWork.cancelled
     endWork()
 
@@ -1631,7 +1669,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Using template: ${template}`)
 
-    // Get all LEGOs for this course (paginated)
+    // Get LEGOs where is_new=true (only new introductions need presentation audio)
     const PAGE_SIZE = 1000
     const legos = []
     let legosOffset = 0
@@ -1642,6 +1680,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         .from('course_legos')
         .select('lego_id, known_text, target_text, seed_number')
         .eq('course_code', courseCode)
+        .eq('is_new', true)
         .range(legosOffset, legosOffset + PAGE_SIZE - 1)
 
       if (legosError) throw legosError
@@ -1821,10 +1860,12 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       }
 
       // Also update course_legos.presentation_audio_id for direct lookup
+      // IMPORTANT: Use textToAudioId (course_audio.id), NOT textToAudioUuid (S3 filename UUID)
+      // The learning app looks up audio by course_audio.id, not by S3 key
       let legoUpdates = 0
       for (const pres of presentations) {
-        const audioUuid = textToAudioUuid.get(pres.presentation_text.toLowerCase().trim())
-        if (audioUuid) {
+        const audioId = textToAudioId.get(pres.presentation_text.toLowerCase().trim())
+        if (audioId) {
           // Parse lego_id (e.g., "S0001L03") to get seed_number and lego_index
           const legoMatch = pres.lego_id.match(/S(\d+)L(\d+)/)
           if (legoMatch) {
@@ -1833,7 +1874,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
             const { error: updateError } = await supabase
               .from('course_legos')
-              .update({ presentation_audio_id: audioUuid })
+              .update({ presentation_audio_id: audioId })
               .eq('course_code', courseCode)
               .eq('seed_number', seedNumber)
               .eq('lego_index', legoIndex)
