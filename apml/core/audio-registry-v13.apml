@@ -1,12 +1,12 @@
 # APML: Audio Registry Architecture
-# Version: 13.3.0 (2026-01-28)
+# Version: 13.4.0 (2026-01-29)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
   purpose: "Simple, course-centric audio ownership with shared audio for reusables"
-  version: "13.3.0"
+  version: "13.4.0"
 
   ## ==========================================================================
   ## BREAKING CHANGE FROM v12
@@ -168,7 +168,7 @@ architecture AudioRegistry:
   ## ==========================================================================
 
   schema:
-    version: "13.3.0"
+    version: "13.4.0"
     database: "supabase"
     compiler_target: "postgresql"
 
@@ -262,6 +262,39 @@ architecture AudioRegistry:
               "zut_concerns": [
                 {"seed": 45, "original_english": "...", "suggested_reword": "..."}
               ]
+            }
+            Survives context compaction via /api/resume response.
+
+        quality_rules:
+          type: "JSONB"
+          nullable: true
+          description: |
+            Language-pair specific methodology guidance discovered after Pass 1.
+            Populated by /course-methodology-analysis skill.
+            Structure:
+            {
+              "course_code": "ara_for_eng",
+              "known_language": "eng",
+              "target_language": "ara",
+              "analysis_date": "2026-01-29",
+              "known_language_guidance": {
+                "quality_bar": "Natural, idiomatic - learner knows this language",
+                "avoid_patterns": [{"pattern": "...", "use_instead": "...", "reason": "..."}],
+                "trust_test": "Would a native speaker say this naturally?"
+              },
+              "target_language_guidance": {
+                "quality_bar": "Correct, can have learning structure",
+                "structural_notes": ["..."],
+                "common_patterns": [{"english_pattern": "...", "target_form": "...", "frequency_rank": 1}]
+              },
+              "zut_direction": "eng → ara",
+              "zut_note": "Same known must always produce same target",
+              "early_seed_guidance": {
+                "applies_to_seeds": [1, 20],
+                "phrase_tips": ["..."]
+              },
+              "methodology_insights": ["BUILD phrases must be speakable in isolation", "..."],
+              "opus_polish_guidance": ["Priority: fix unnatural known language", "..."]
             }
             Survives context compaction via /api/resume response.
 
@@ -386,11 +419,12 @@ architecture AudioRegistry:
     ## ------------------------------------------------------------------------
 
     table shared_audio:
-      description: "Audio reused across courses (encouragements, instructions)"
+      description: "Audio reused across courses (encouragements, instructions, paywall)"
       purpose: |
         Only for genuinely shared content:
         - Encouragements ("Da iawn!", "Excellent!")
         - Instructions ("Listen and repeat", "Now try saying...")
+        - Paywall messages (subscription prompts, trial limits)
 
         NOT for course content (phrases, LEGOs) - those go in course_audio.
 
@@ -416,7 +450,7 @@ architecture AudioRegistry:
         audio_type:
           type: "TEXT"
           nullable: false
-          check: "audio_type IN ('encouragement', 'instruction')"
+          check: "audio_type IN ('encouragement', 'instruction', 'paywall')"
 
         voice_id:
           type: "TEXT"
@@ -1115,8 +1149,8 @@ architecture AudioRegistry:
     recording_provenance: "Nice-to-have, add later if needed"
 
 ## ============================================================================
-## GENERATED: 2026-01-28
-## APML v13.3.0 - Course-Owned Audio Architecture
+## GENERATED: 2026-01-29
+## APML v13.4.0 - Course-Owned Audio Architecture
 ## Supersedes: v12.0.0 (texts → audio_files → course_audio)
 ## Changes in v13.1:
 ##   - Added encouragement and instruction roles to course_audio
@@ -1131,4 +1165,8 @@ architecture AudioRegistry:
 ##   - Added course_export_states table for 4-step export workflow
 ##   - Documented RLS policies for new tables
 ##   - Documented trigger functions (check_pass_1_complete, update_timestamp)
+## Changes in v13.4 (2026-01-29):
+##   - Added quality_rules JSONB column to courses table
+##   - Captures language-pair specific methodology guidance
+##   - Populated by /course-methodology-analysis skill
 ## ============================================================================
