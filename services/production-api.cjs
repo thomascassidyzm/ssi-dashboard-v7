@@ -5890,50 +5890,24 @@ app.post('/api/production/:courseCode/deploy-audio/new-only', async (req, res) =
 
 // POST /api/production/:courseCode/deploy-audio/new-and-mismatched
 // Deploy new files AND mismatched overwrites (skip identical overwrites)
+// Accepts UUIDs directly from request body to avoid regenerating the plan
 app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (req, res) => {
   try {
     const { courseCode } = req.params
+    const { newUuids = [], mismatchedUuids = [] } = req.body
 
-    // Load published manifest from course-configs or local
-    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
-
-    // Collect all UUIDs
-    const uuids = []
-    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
-    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
-      if (enc.id) uuids.push(enc.id)
-    }
-    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
-      if (enc.id) uuids.push(enc.id)
-    }
-    const samples = publishedManifest.slices[0]?.samples || {}
-    for (const [text, audioArray] of Object.entries(samples)) {
-      for (const audio of audioArray) {
-        if (audio.id) uuids.push(audio.id)
-      }
-    }
-
-    // Get the full plan with duration checking
-    const plan = await s3DeployService.generateDeployPlanWithDurations(uuids, publishedManifest, (phase, checked, total, matched, mismatched, errors) => {
-      // Emit progress via WebSocket
-      io.emit('deployPlan:progress', { courseCode, phase, checked, total, matched, mismatched, errors })
-    })
-
-    // Collect UUIDs to deploy: new files + mismatched overwrites
-    const mismatchedUuids = (plan.overwriteDurations?.mismatchDetails || []).map(d => d.uuid)
-    const uuidsToDeploy = [...plan.newUuids, ...mismatchedUuids]
+    const uuidsToDeploy = [...newUuids, ...mismatchedUuids]
 
     if (uuidsToDeploy.length === 0) {
       return res.json({
         success: true,
-        message: 'No files to deploy (all files are identical)',
+        message: 'No UUIDs provided to deploy',
         deployed: 0,
-        failed: 0,
-        skippedIdentical: plan.overwriteDurations?.matched || 0
+        failed: 0
       })
     }
 
-    logger.info(`[DEPLOY] Deploying ${plan.newUuids.length} new + ${mismatchedUuids.length} mismatched files`)
+    logger.info(`[DEPLOY] Deploying ${newUuids.length} new + ${mismatchedUuids.length} mismatched files`)
 
     // Deploy the combined list
     const result = await s3DeployService.deployToProduction(uuidsToDeploy, {
@@ -5961,10 +5935,9 @@ app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (r
       success: result.success,
       deployed: result.deployed,
       failed: result.failed,
-      newDeployed: plan.newUuids.length,
+      newDeployed: newUuids.length,
       mismatchedDeployed: mismatchedUuids.length,
-      skippedIdentical: plan.overwriteDurations?.matched || 0,
-      message: `Deployed ${result.deployed} files (${plan.newUuids.length} new + ${mismatchedUuids.length} mismatched), skipped ${plan.overwriteDurations?.matched || 0} identical`
+      message: `Deployed ${result.deployed} files (${newUuids.length} new + ${mismatchedUuids.length} mismatched)`
     })
   } catch (error) {
     logger.error(`Deploy new-and-mismatched error for ${req.params.courseCode}:`, error)

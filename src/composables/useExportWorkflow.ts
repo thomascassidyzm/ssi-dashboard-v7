@@ -912,12 +912,25 @@ export function useExportWorkflow(courseCode: string) {
     // Reset plan progress so it doesn't show during deployment
     deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
 
+    // Get UUIDs from current plan
+    const plan = state.value.deployPlan
+    if (!plan) {
+      error.value = 'No deploy plan available. Please check production status first.'
+      isLoading.value = false
+      return
+    }
+
+    const newUuids = plan.newUuids || []
+    const mismatchedUuids = (plan.overwriteDurations?.mismatchDetails || []).map(d => d.uuid)
+
     try {
       connectWebSocket()
 
       // Use 20-minute timeout for deployment (large courses need time)
       const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/new-and-mismatched`, {
-        method: 'POST'
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ newUuids, mismatchedUuids })
       }, 1200000) // 20 minutes
 
       // Mark as deployed if we deployed files (even if some failed)
