@@ -73,8 +73,11 @@ export const useProductionStore = defineStore('production', () => {
   const audioFlags = ref({ flags: [], stats: {} }) // NEW audio_flags system
   const audioMetadata = ref({})
 
-  // Loading states
-  const isLoading = ref(false)
+  // Loading states - granular for progressive loading
+  const isLoading = ref(false)  // Overall loading (for backwards compat)
+  const isLoadingInfo = ref(false)  // Course info (slow ~700ms)
+  const isLoadingFlags = ref(false)  // Audio flags (medium ~200ms)
+  const isLoadingMetadata = ref(false)  // Audio metadata (medium ~150ms)
   const error = ref(null)
 
   // Pipeline state
@@ -294,64 +297,83 @@ export const useProductionStore = defineStore('production', () => {
       return
     }
 
-    isLoading.value = true
     error.value = null
     currentCourseCode.value = courseCode
 
-    try {
-      const baseUrl = getApiBaseUrl()
-      const headers = getApiHeaders()
-
-      // Fetch course data - all requests are optional, we'll use what we get
-      // NOTE: Manifest is NOT fetched here - it's only for legacy app export
-      // NOTE: audio-stats is FAST (simple COUNT queries), unlike audio-pipeline/plan
-      const [flagsRes, audioFlagsRes, metadataRes, audioStatsRes] = await Promise.all([
-        fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers }).catch(() => null),
-        fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers }).catch(() => null),
-        fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers }).catch(() => null),
-        fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers }).catch(() => null)
-      ])
-
-      // Manifest is legacy - only generated on-demand for export
-      courseManifest.value = {
-        _stub: true,
-        _source: 'database',
-        courseCode,
-        title: courseCode.replace(/_/g, ' '),
-        slices: [{ seeds: [], samples: {} }]
-      }
-      sampleFlags.value = flagsRes?.ok ? await flagsRes.json() : { samples: {} } // Legacy
-      audioFlags.value = audioFlagsRes?.ok ? await audioFlagsRes.json() : { flags: [], stats: {} }
-      audioMetadata.value = metadataRes?.ok ? await metadataRes.json() : { audio: {} }
-
-      // Fast audio stats for Progress Dashboard (simple COUNT queries)
-      if (audioStatsRes?.ok) {
-        const stats = await audioStatsRes.json()
-        audioCourseStats.value = {
-          total: stats.total || 0,
-          existing: stats.existing || 0,
-          missing: stats.missing || 0
-        }
-      }
-
-      // Mark this course data as fresh
-      lastLoadTime.value[courseCode] = Date.now()
-
-    } catch (err) {
-      // Network errors indicate Production API is not running
-      if (err.name === 'TypeError' && err.message.includes('fetch')) {
-        error.value = 'Production API not available. Start the production-api service (port 3470) to use the Production Suite.'
-      } else {
-        error.value = err.message
-      }
-      console.error('Failed to load course:', err)
-    } finally {
-      isLoading.value = false
+    // Set up stub manifest immediately (no loading state needed)
+    courseManifest.value = {
+      _stub: true,
+      _source: 'database',
+      courseCode,
+      title: courseCode.replace(/_/g, ' '),
+      slices: [{ seeds: [], samples: {} }]
     }
+
+    const baseUrl = getApiBaseUrl()
+    const headers = getApiHeaders()
+
+    // PROGRESSIVE LOADING: Fire all requests but don't block on them
+    // Each updates the UI as it completes - fast endpoints show data first
+
+    // 1. Audio stats - FAST (~5ms) - load first for quick stats display
+    fetch(`${baseUrl}/api/production/${courseCode}/audio-stats`, { headers })
+      .then(res => res.ok ? res.json() : null)
+      .then(stats => {
+        if (stats) {
+          audioCourseStats.value = {
+            total: stats.total || 0,
+            existing: stats.existing || 0,
+            missing: stats.missing || 0
+          }
+        }
+      })
+      .catch(() => {})
+
+    // 2. Audio metadata - MEDIUM (~150ms)
+    isLoadingMetadata.value = true
+    fetch(`${baseUrl}/api/production/${courseCode}/audio-metadata`, { headers })
+      .then(res => res.ok ? res.json() : { audio: {} })
+      .then(data => {
+        audioMetadata.value = data
+      })
+      .catch(() => {
+        audioMetadata.value = { audio: {} }
+      })
+      .finally(() => {
+        isLoadingMetadata.value = false
+      })
+
+    // 3. Flags - MEDIUM (~150ms)
+    fetch(`${baseUrl}/api/production/${courseCode}/flags`, { headers })
+      .then(res => res.ok ? res.json() : { samples: {} })
+      .then(data => {
+        sampleFlags.value = data
+      })
+      .catch(() => {
+        sampleFlags.value = { samples: {} }
+      })
+
+    // 4. Audio flags - MEDIUM (~200ms)
+    isLoadingFlags.value = true
+    fetch(`${baseUrl}/api/production/${courseCode}/audio-flags`, { headers })
+      .then(res => res.ok ? res.json() : { flags: [], stats: {} })
+      .then(data => {
+        audioFlags.value = data
+      })
+      .catch(() => {
+        audioFlags.value = { flags: [], stats: {} }
+      })
+      .finally(() => {
+        isLoadingFlags.value = false
+      })
+
+    // Mark data as loaded (individual sections have their own loading states)
+    lastLoadTime.value[courseCode] = Date.now()
   }
 
-  // Load course info including status
+  // Load course info including status (SLOW ~700ms)
   async function loadCourseInfo(courseCode) {
+    isLoadingInfo.value = true
     try {
       const baseUrl = getApiBaseUrl()
       const response = await fetch(`${baseUrl}/api/production/${courseCode}/info`, {
@@ -382,6 +404,8 @@ export const useProductionStore = defineStore('production', () => {
         status: 'testing'
       }
       return courseInfo.value
+    } finally {
+      isLoadingInfo.value = false
     }
   }
 
@@ -784,6 +808,9 @@ export const useProductionStore = defineStore('production', () => {
     costEstimate,
     audioCourseStats,
     isLoading,
+    isLoadingInfo,
+    isLoadingFlags,
+    isLoadingMetadata,
     error,
     pipelineStages,
     generationProgress,
