@@ -110,7 +110,11 @@ function parseCSVLine(line) {
 
 /**
  * Load and parse the CSV file
- * CSV format: language_code,language_name,azure_locale,elevenlabs_code,legacy_code,google_locale
+ * CSV format: manifest_code,language_name,azure_locale,elevenlabs_code,database_code,google_locale
+ *
+ * Column naming:
+ * - manifest_code (col 0): Code used in legacy manifests (en, es, cmn) - mixed 2/3 letter
+ * - database_code (col 4): Code used in database/course_codes (eng, spa, zho) - 3 letter ISO 639-3
  */
 function loadCSV() {
   try {
@@ -123,34 +127,35 @@ function loadCSV() {
       if (!line) continue;
 
       const parts = parseCSVLine(line);
-      const code = (parts[0] || '').toLowerCase();
+      const manifestCode = (parts[0] || '').toLowerCase();  // What legacy manifest uses
       const name = parts[1] || '';
       const azureLocale = parts[2] || '';
       const elevenLabsCode = parts[3] || '';
-      const legacyCode = parts[4] || '';
+      const databaseCode = parts[4] || '';  // What database/course_codes use
       const googleLocale = parts[5] || '';
 
-      if (code && name) {
-        codeToName[code] = name;
-        nameToCode[name.toLowerCase()] = code;
+      if (manifestCode && name) {
+        codeToName[manifestCode] = name;
+        nameToCode[name.toLowerCase()] = manifestCode;
 
         // Store provider codes if configured
         if (azureLocale) {
-          codeToAzure[code] = azureLocale;
+          codeToAzure[manifestCode] = azureLocale;
         }
         if (elevenLabsCode) {
-          codeToElevenLabs[code] = elevenLabsCode;
+          codeToElevenLabs[manifestCode] = elevenLabsCode;
         }
-        if (legacyCode) {
-          codeToLegacy[code] = legacyCode;
-          // Also populate reverse mapping: legacyCode → code (for legacyToStandard)
+        if (databaseCode) {
+          codeToLegacy[manifestCode] = databaseCode;
+          // Also populate reverse mapping: databaseCode → manifestCode
+          // This is the key mapping for legacy manifest generation
           // Only add if not already in hardcoded LEGACY_TO_STANDARD
-          if (!LEGACY_TO_STANDARD[legacyCode]) {
-            LEGACY_TO_STANDARD[legacyCode] = code;
+          if (!LEGACY_TO_STANDARD[databaseCode]) {
+            LEGACY_TO_STANDARD[databaseCode] = manifestCode;
           }
         }
         if (googleLocale) {
-          codeToGoogle[code] = googleLocale;
+          codeToGoogle[manifestCode] = googleLocale;
         }
       }
     }
@@ -355,11 +360,21 @@ function hasGoogle(code) {
  * @param {string} code - Legacy or standard code
  * @returns {string} ISO standard code
  */
-function legacyToStandard(code) {
+/**
+ * Convert database code to manifest code
+ * e.g., 'eng' → 'en', 'zho' → 'cmn', 'spa' → 'es'
+ *
+ * @param {string} code - Database code (3-letter ISO 639-3 from course_codes)
+ * @returns {string} Manifest code (mixed 2/3 letter for legacy manifest)
+ */
+function databaseToManifest(code) {
   if (!code) return code;
   const normalized = code.toLowerCase().trim();
   return LEGACY_TO_STANDARD[normalized] || normalized;
 }
+
+// Alias for backwards compatibility
+const legacyToStandard = databaseToManifest;
 
 /**
  * Convert a standard ISO code to the legacy format used in directory names
@@ -478,8 +493,9 @@ module.exports = {
   hasElevenLabs,
   hasGoogle,
 
-  // Legacy conversions
-  legacyToStandard,
+  // Code conversions (database ↔ manifest)
+  databaseToManifest,
+  legacyToStandard,  // Alias for backwards compatibility
   standardToLegacy,
 
   // Course code utilities

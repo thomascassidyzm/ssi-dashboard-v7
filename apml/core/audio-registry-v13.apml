@@ -311,6 +311,7 @@ architecture AudioRegistry:
             - presentation: LEGO introduction narration (course-specific)
             - encouragement: Motivational messages (from shared_audio)
             - instruction: Meta-learning content (from shared_audio)
+            - paywall: Subscription prompts for free tier users (from shared_audio, paid courses only)
 
         voice_id:
           type: "TEXT"
@@ -416,7 +417,7 @@ architecture AudioRegistry:
         audio_type:
           type: "TEXT"
           nullable: false
-          check: "audio_type IN ('encouragement', 'instruction')"
+          check: "audio_type IN ('encouragement', 'instruction', 'paywall')"
 
         voice_id:
           type: "TEXT"
@@ -984,6 +985,7 @@ architecture AudioRegistry:
     terminology_mapping:
       legacy_orderedEncouragements: "instruction"   # Played in sequence
       legacy_pooledEncouragements: "encouragement"  # Randomly selected
+      legacy_paywallEncouragements: "paywall"       # Sequential prompts for free tier users (paid courses only)
 
     how_it_works: |
       ┌─────────────────────────────────────────────────────────────────────┐
@@ -993,6 +995,7 @@ architecture AudioRegistry:
       │     └─► shared_audio table (template)                               │
       │         • 48 instructions (orderedEncouragements)                   │
       │         • 26 encouragements (pooledEncouragements)                  │
+      │         • 101 paywall messages (paywallEncouragements, paid only)   │
       │         • Each row has s3_key pointing to audio file                │
       │                                                                     │
       │  2. COPY TO COURSE (on course import)                               │

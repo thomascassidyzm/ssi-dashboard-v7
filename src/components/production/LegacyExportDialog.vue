@@ -90,11 +90,14 @@
                   :state="workflow.state.value"
                   :version-info="workflow.versionInfo.value"
                   :is-loading="workflow.isLoading.value"
+                  :is-pushing="isPushing"
+                  :push-result="pushResult"
                   :verification="workflow.state.value.s3Verification"
                   :format-date="workflow.formatDate"
                   @publish="handlePublish"
                   @load-version-info="handleLoadVersionInfo"
                   @download-manifest="handleDownloadManifest"
+                  @push-to-remote="handlePushToRemote"
                 />
               </div>
 
@@ -180,6 +183,8 @@ const isLoadingState = ref(true)
 const isVerifying = ref(false)
 const isDeploying = ref(false)
 const isVerifyingProduction = ref(false)
+const isPushing = ref(false)
+const pushResult = ref<{ success: boolean; message?: string; error?: string } | null>(null)
 const activeStep = ref(1)
 
 // Computed
@@ -253,11 +258,8 @@ function previousStep() {
 // Step 1 handlers
 async function handleGenerate(withAudio: boolean) {
   try {
-    const data = await workflow.generateManifest(withAudio)
-    if (data.success && !data.validation?.valid === false) {
-      // Download the manifest
-      downloadManifest(data.manifest, data.filename)
-    }
+    await workflow.generateManifest(withAudio)
+    // Manifest is saved as pending file - download available at Step 3
   } catch (err) {
     // Error handled by workflow
   }
@@ -321,6 +323,25 @@ async function handlePublish(options: { version: string; status: string; commitT
 
 async function handleDownloadManifest() {
   await workflow.downloadPendingManifest()
+}
+
+async function handlePushToRemote() {
+  isPushing.value = true
+  pushResult.value = null
+  try {
+    // Get API base URL from localStorage (consistent with useExportWorkflow)
+    const apiBase = localStorage.getItem('api_base_url') || ''
+    const response = await fetch(`${apiBase}/api/production/course-configs/push`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    const result = await response.json()
+    pushResult.value = result
+  } catch (err) {
+    pushResult.value = { success: false, error: (err as Error).message }
+  } finally {
+    isPushing.value = false
+  }
 }
 
 // Step 4 handlers

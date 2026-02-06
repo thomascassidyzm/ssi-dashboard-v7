@@ -147,6 +147,30 @@
         </p>
       </div>
 
+      <!-- Push to Remote button -->
+      <div v-if="state.publishCourseConfigsPath" class="push-remote-box p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-white text-sm font-medium">Push to Remote</p>
+            <p class="text-slate-400 text-xs">Push course-configs commits to GitHub</p>
+          </div>
+          <button
+            @click="handlePushToRemote"
+            :disabled="props.isPushing"
+            class="px-4 py-2 text-sm font-medium bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            <span v-if="props.isPushing" class="spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
+            <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <span>{{ props.isPushing ? 'Pushing...' : 'Push' }}</span>
+          </button>
+        </div>
+        <div v-if="props.pushResult" class="text-sm" :class="props.pushResult.success ? 'text-emerald-400' : 'text-red-400'">
+          {{ props.pushResult.message || props.pushResult.error }}
+        </div>
+      </div>
+
       <!-- Re-publish workflow (COLLAPSED by default) -->
       <div v-if="!showRepublish">
         <button
@@ -261,6 +285,8 @@ const props = defineProps<{
   state: ExportState
   versionInfo: VersionInfo | null
   isLoading: boolean
+  isPushing?: boolean
+  pushResult?: { success: boolean; message?: string; error?: string } | null
   verification: S3VerificationResult | null
   formatDate: (date: string | null) => string
 }>()
@@ -292,19 +318,20 @@ const emit = defineEmits<{
   publish: [options: { version: string; status: string; commitToCourseConfigs: boolean; scpToApidev: boolean }]
   loadVersionInfo: []
   downloadManifest: []
+  pushToRemote: []
 }>()
 
 const version = ref('')
 const status = ref('beta')
 const commitToCourseConfigs = ref(true)
-const scpToApidev = ref(true)
+const scpToApidev = ref(false)  // Off by default - course-configs is the primary method
 const showRepublish = ref(false)
 
 // Re-publish form variables
 const republishVersion = ref('')
 const republishStatus = ref('beta')
 const republishToCourseConfigs = ref(true)
-const republishToApidev = ref(true)
+const republishToApidev = ref(false)  // Off by default
 
 // Load version info when component mounts
 onMounted(() => {
@@ -350,6 +377,10 @@ function handleRepublish() {
 
 function handleDownloadManifest() {
   emit('downloadManifest')
+}
+
+function handlePushToRemote() {
+  emit('pushToRemote')
 }
 </script>
 

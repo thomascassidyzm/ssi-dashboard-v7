@@ -324,6 +324,102 @@ function commitToGit(courseConfigsId, version) {
 }
 
 /**
+ * Push author branch to remote
+ * @returns {Object} { success, message, error }
+ */
+function pushToRemote() {
+  try {
+    // Check repo exists
+    const repoCheck = checkCourseConfigsRepo()
+    if (!repoCheck.exists) {
+      return { success: false, error: repoCheck.error }
+    }
+
+    // Ensure we're on author branch
+    execSync('git checkout author', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+
+    // Check if there are commits to push
+    const status = execSync('git status -sb', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+    const behindAhead = status.match(/\[.*ahead (\d+).*\]/)
+    const commitsAhead = behindAhead ? parseInt(behindAhead[1], 10) : 0
+
+    if (commitsAhead === 0) {
+      // Check if remote tracking exists
+      try {
+        execSync('git rev-parse --abbrev-ref --symbolic-full-name @{u}', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+        return {
+          success: true,
+          message: 'Already up to date with remote',
+          commitsPushed: 0
+        }
+      } catch {
+        // No upstream set, will push with -u
+      }
+    }
+
+    // Push to origin
+    execSync('git push -u origin author', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+
+    logger.info(`Pushed author branch to remote (${commitsAhead} commit${commitsAhead !== 1 ? 's' : ''})`)
+
+    return {
+      success: true,
+      message: `Pushed ${commitsAhead} commit${commitsAhead !== 1 ? 's' : ''} to origin/author`,
+      commitsPushed: commitsAhead
+    }
+  } catch (error) {
+    logger.error(`Failed to push: ${error.message}`)
+    return {
+      success: false,
+      error: error.message
+    }
+  }
+}
+
+/**
+ * Get status of course-configs repo (commits ahead, current branch, etc.)
+ * @returns {Object} { success, branch, commitsAhead, lastCommit, error }
+ */
+function getRepoStatus() {
+  try {
+    const repoCheck = checkCourseConfigsRepo()
+    if (!repoCheck.exists) {
+      return { success: false, error: repoCheck.error }
+    }
+
+    // Get current branch
+    const branch = execSync('git branch --show-current', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' }).trim()
+
+    // Get status with tracking info
+    const status = execSync('git status -sb', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' })
+    const behindAhead = status.match(/\[.*ahead (\d+).*\]/)
+    const commitsAhead = behindAhead ? parseInt(behindAhead[1], 10) : 0
+
+    // Get last commit info
+    let lastCommit = null
+    try {
+      const logOutput = execSync('git log -1 --format="%h|%s|%ar"', { cwd: COURSE_CONFIGS_REPO, encoding: 'utf-8', stdio: 'pipe' }).trim()
+      const [hash, subject, relativeTime] = logOutput.split('|')
+      lastCommit = { hash, subject, relativeTime }
+    } catch {
+      // No commits yet
+    }
+
+    return {
+      success: true,
+      branch,
+      commitsAhead,
+      lastCommit
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message
+    }
+  }
+}
+
+/**
  * Generate dated filename for SCP upload
  * Format: en-it_20260120.json, en-it_20260120_2.json, etc.
  * @param {string} courseConfigsId - Course ID
@@ -507,6 +603,8 @@ module.exports = {
   checkCourseConfigsRepo,
   writeToRepo,
   commitToGit,
+  pushToRemote,
+  getRepoStatus,
 
   // Apidev operations
   generateScpFilename,

@@ -3337,7 +3337,7 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   const { options } = req.body
   try {
     const response = await axios.post(`${PHASE8_URL}/generate/${courseCode}`, options || {}, {
-      timeout: 600000 // 10 minutes - audio generation can take a long time for large courses
+      timeout: 3600000 // 1 hour - audio generation can take a very long time for large courses
     })
     res.json(response.data)
   } catch (error) {
@@ -3423,7 +3423,7 @@ app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) =>
       retry: true,
       ...options
     }, {
-      timeout: 600000 // 10 minutes - audio generation can take a long time for large courses
+      timeout: 3600000 // 1 hour - audio generation can take a very long time for large courses
     })
     res.json(response.data)
   } catch (error) {
@@ -5381,6 +5381,36 @@ app.get('/api/production/:courseCode/publish-manifest/version', async (req, res)
   }
 })
 
+// GET /api/production/course-configs/status
+// Get status of course-configs repo (commits ahead, branch, etc.)
+app.get('/api/production/course-configs/status', async (req, res) => {
+  try {
+    const status = publishManifestService.getRepoStatus()
+    res.json(status)
+  } catch (error) {
+    logger.error('Error getting repo status:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/course-configs/push
+// Push course-configs commits to remote
+app.post('/api/production/course-configs/push', async (req, res) => {
+  try {
+    logger.info('Pushing course-configs to remote...')
+    const result = publishManifestService.pushToRemote()
+
+    if (result.success) {
+      res.json(result)
+    } else {
+      res.status(500).json(result)
+    }
+  } catch (error) {
+    logger.error('Error pushing to remote:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // POST /api/production/:courseCode/verify-s3
 // Step 2: Verify stage audio exists and durations match manifest
 app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
@@ -5621,19 +5651,19 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
  * @returns {Object} { manifest, source } - manifest object and source location
  */
 async function loadPublishedManifest(courseCode) {
-  // Get course to find courseConfigsId
+  // Get course to compute courseConfigsId from language codes
   const course = await supabaseClient.getCourse(courseCode)
   if (!course) {
     throw new Error(`Course ${courseCode} not found`)
   }
 
-  const courseConfigsId = course.course_configs_id
-  if (!courseConfigsId) {
-    throw new Error(`Course ${courseCode} has no course_configs_id`)
-  }
+  // Compute courseConfigsId dynamically from language codes (e.g., "en-cmn" for zho_for_eng)
+  const knownCode = languageCodeService.databaseToManifest(course.known_lang)
+  const targetCode = languageCodeService.databaseToManifest(course.target_lang)
+  const courseConfigsId = `${knownCode}-${targetCode}`
 
   // Try course-configs repo first (canonical published location)
-  const courseConfigsRepo = process.env.COURSE_CONFIGS_REPO || path.join(os.homedir(), 'Documents', 'GitHub', 'course-configs')
+  const courseConfigsRepo = process.env.COURSE_CONFIGS_REPO || path.join(require('os').homedir(), 'Documents', 'GitHub', 'course-configs')
   const courseConfigsPath = path.join(courseConfigsRepo, 'Courses', `${courseConfigsId}.json`)
 
   if (fs.existsSync(courseConfigsPath)) {
@@ -5656,12 +5686,11 @@ async function loadPublishedManifest(courseCode) {
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan (what files need to be deployed)
 app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
+  const { courseCode } = req.params
   try {
-    const { courseCode } = req.params
-
     // Load published manifest from course-configs or local
     const { manifest: publishedManifest, source } = await loadPublishedManifest(courseCode)
-    logger.info(`Loaded manifest from ${source}`)
+    logger.info(`[Deploy Plan] Loaded manifest for ${courseCode} from ${source}`)
 
     // Collect all UUIDs
     const uuids = []
@@ -5678,8 +5707,10 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
         if (audio.id) uuids.push(audio.id)
       }
     }
+    logger.info(`[Deploy Plan] Collected ${uuids.length} UUIDs for ${courseCode}`)
 
     const plan = await s3DeployService.generateDeployPlan(uuids)
+    logger.info(`[Deploy Plan] Complete for ${courseCode}: ${plan.newFiles} new, ${plan.overwrites} overwrites`)
 
     // Save to state (database-first)
     if (supabaseClient.isInitialized()) {
@@ -5695,7 +5726,7 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
 
     res.json(plan)
   } catch (error) {
-    logger.error(`Deploy plan error for ${courseCode}:`, error)
+    logger.error(`[Deploy Plan] Error for ${courseCode}:`, error)
     res.status(500).json({ error: error.message })
   }
 })

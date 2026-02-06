@@ -47,58 +47,16 @@ require('dotenv').config({ path: path.join(__dirname, '../../.env') })
 const supabaseClient = require('../supabase-client.cjs')
 const s3Service = require('../s3-service.cjs')
 const uuidService = require('../uuid-service.cjs')
+const languageCodeService = require('../language-code-service.cjs')
 
 // =============================================================================
 // CONSTANTS
 // =============================================================================
 
-// Load language code mappings from CSV
-// This maps database codes (ISO 639-3) to legacy manifest codes (ISO 639-1)
-// e.g., 'eng' -> 'en', 'nld' -> 'nl'
-const LANG_MAP = loadLanguageCodeMap()
-
-function loadLanguageCodeMap() {
-  const csvPath = path.join(__dirname, '../../tools/sync/reference/language_codes.csv')
-  const map = {}
-
-  try {
-    const csvContent = fs.readFileSync(csvPath, 'utf8')
-    const lines = csvContent.trim().split('\n')
-
-    // Skip header line
-    // CSV format: language_code,language_name,azure_locale,elevenlabs_code,legacy_code,google_locale
-    // We need to map legacy_code (col 4, e.g., 'eng') -> language_code (col 0, e.g., 'en')
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i].trim()
-      if (!line) continue
-
-      const cols = line.split(',')
-      const iso639_1 = cols[0]   // 2-letter code (en, nl, es, etc.)
-      const iso639_3 = cols[4]   // 3-letter code (eng, nld, spa, etc.)
-
-      // Map 3-letter to 2-letter for legacy manifest IDs
-      if (iso639_3 && iso639_1 && iso639_1.length === 2) {
-        map[iso639_3] = iso639_1
-      }
-    }
-
-    console.error(`[Language Codes] Loaded ${Object.keys(map).length} mappings from CSV`)
-    return map
-  } catch (err) {
-    console.error(`[Language Codes] Warning: Could not load CSV (${err.message}), using fallback map`)
-    // Fallback to minimal hardcoded map (ISO 639-3 -> ISO 639-1)
-    return {
-      'eng': 'en', 'spa': 'es', 'fra': 'fr', 'deu': 'de',
-      'ita': 'it', 'por': 'pt', 'zho': 'zh', 'cmn': 'zh', 'jpn': 'ja',
-      'cym': 'cy', 'ara': 'ar', 'kor': 'ko', 'nld': 'nl',
-      'rus': 'ru', 'hin': 'hi', 'ben': 'bn', 'vie': 'vi'
-    }
-  }
-}
-
 /**
- * Get legacy language code from database language code
- * Warns if no mapping is found and falls back to original code
+ * Get legacy manifest code from database language code
+ * Uses centralized language-code-service for mapping
+ * e.g., 'eng' -> 'en', 'zho' -> 'cmn'
  */
 function getLegacyCode(langCode, context = '') {
   if (!langCode) {
@@ -106,14 +64,9 @@ function getLegacyCode(langCode, context = '') {
     return langCode
   }
 
-  const legacyCode = LANG_MAP[langCode]
-
-  if (!legacyCode) {
-    console.error(`[Language Code] Warning: No mapping found for '${langCode}'${context ? ' (' + context + ')' : ''} - using original code`)
-    return langCode
-  }
-
-  return legacyCode
+  // Use centralized language-code-service for mapping
+  // databaseToManifest converts database codes (eng, zho) to manifest codes (en, cmn)
+  return languageCodeService.databaseToManifest(langCode)
 }
 
 // UUID namespace for deterministic IDs
@@ -274,11 +227,27 @@ async function loadAudioFromDB(courseCode) {
 }
 
 /**
+ * Paid courses that should include paywall encouragements
+ * All other courses get an empty paywallEncouragements array
+ */
+const PAID_COURSE_CODES = [
+  'ara_for_eng',  // Arabic
+  'zho_for_eng',  // Chinese
+  'jpn_for_eng',  // Japanese
+  'kor_for_eng',  // Korean
+  'spa_for_eng',  // Spanish
+  'por_for_eng',  // Portuguese
+  'ita_for_eng',  // Italian
+  'deu_for_eng',  // German
+  'fra_for_eng'   // French
+]
+
+/**
  * Load welcome, instructions, and encouragements from database
  */
 async function loadWelcomeAndEncouragements(courseCode, knownLang) {
   const client = supabaseClient.getClient()
-  if (!client) return { welcome: null, instructions: [], encouragements: [] }
+  if (!client) return { welcome: null, instructions: [], encouragements: [], paywallEncouragements: [] }
 
   // Load welcome (course-specific, stored in course_audio)
   const { data: welcomeData } = await client
@@ -305,10 +274,24 @@ async function loadWelcomeAndEncouragements(courseCode, knownLang) {
     .eq('language', knownLang)
     .eq('audio_type', 'encouragement')
 
+  // Load paywall encouragements from shared_audio (only for paid courses)
+  // These are sequential messages shown to free users after they complete free content
+  let paywallData = []
+  if (PAID_COURSE_CODES.includes(courseCode)) {
+    const { data } = await client
+      .from('shared_audio')
+      .select('id, text, s3_key, duration_ms')
+      .eq('language', knownLang)
+      .eq('audio_type', 'paywall')
+      .order('text')  // Consistent ordering
+    paywallData = data || []
+  }
+
   return {
     welcome: welcomeData?.[0] || null,
     instructions: instructionsData || [],
-    encouragements: encouragementsData || []
+    encouragements: encouragementsData || [],
+    paywallEncouragements: paywallData
   }
 }
 
@@ -1139,8 +1122,8 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
 
   // 3. Load welcome and encouragements from database
-  const { welcome, instructions, encouragements: encouragementsList } = await loadWelcomeAndEncouragements(courseCode, knownLang)
-  console.error(`  Welcome: ${welcome ? 'found' : 'missing'}, Instructions: ${instructions.length}, Encouragements: ${encouragementsList.length}`)
+  const { welcome, instructions, encouragements: encouragementsList, paywallEncouragements: paywallList } = await loadWelcomeAndEncouragements(courseCode, knownLang)
+  console.error(`  Welcome: ${welcome ? 'found' : 'missing'}, Instructions: ${instructions.length}, Encouragements: ${encouragementsList.length}, Paywall: ${paywallList.length}`)
 
   // 5. Build lookup maps from database
   const legoMap = new Map() // seed_number -> legos[]
@@ -1423,12 +1406,20 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 10. Format encouragements for legacy manifest
   // orderedEncouragements = instructions (played in sequence)
   // pooledEncouragements = encouragements (played randomly)
+  // paywallEncouragements = paywall messages (played sequentially for free users after free content ends)
   const orderedEncouragements = instructions.map(item => ({
     text: item.text,
     id: uuidFromS3Key(item.s3_key)
   })).filter(item => item.id) // Filter out any without valid s3_key
 
   const pooledEncouragements = encouragementsList.map(item => ({
+    text: item.text,
+    id: uuidFromS3Key(item.s3_key)
+  })).filter(item => item.id) // Filter out any without valid s3_key
+
+  // Paywall encouragements - sequential messages for free tier users
+  // Empty array for non-paid courses (key must exist in all manifests)
+  const paywallEncouragements = paywallList.map(item => ({
     text: item.text,
     id: uuidFromS3Key(item.s3_key)
   })).filter(item => item.id) // Filter out any without valid s3_key
@@ -1451,14 +1442,15 @@ async function generateLegacyManifest(courseCode, options = {}) {
       seeds,
       samples,
       orderedEncouragements,
-      pooledEncouragements
+      pooledEncouragements,
+      paywallEncouragements
     }]
   }
 
   console.error(`  Generated manifest: ${manifestId}`)
   console.error(`  Total seeds: ${seeds.length}`)
   console.error(`  Samples: ${Object.keys(samples).length}`)
-  console.error(`  Encouragements: ${orderedEncouragements.length} ordered, ${pooledEncouragements.length} pooled`)
+  console.error(`  Encouragements: ${orderedEncouragements.length} ordered, ${pooledEncouragements.length} pooled, ${paywallEncouragements.length} paywall`)
 
   return { manifest, audioGenerationWarnings, welcomeMissing }
 }
