@@ -206,8 +206,8 @@ function readExistingVersion(courseConfigsId) {
   const filePath = path.join(COURSE_CONFIGS_COURSES_DIR, `${courseConfigsId}.json`)
 
   if (!fs.existsSync(filePath)) {
-    logger.info(`No existing file found at ${filePath}, will use version 1.0.0 as base`)
-    return '1.0.0'
+    logger.info(`No existing file found at ${filePath}, this is a new course`)
+    return null // Return null for new courses so frontend knows to show 1.0.0
   }
 
   try {
@@ -237,8 +237,9 @@ function bumpMajorVersion(currentVersion) {
  */
 function suggestVersion(courseConfigsId) {
   const existingVersion = readExistingVersion(courseConfigsId)
-  const suggestedVersion = bumpMajorVersion(existingVersion)
-  return { existingVersion, suggestedVersion }
+  // For new courses (null), suggest 1.0.0; otherwise bump major
+  const suggestedVersion = existingVersion ? bumpMajorVersion(existingVersion) : '1.0.0'
+  return { existingVersion, suggestedVersion, isNewCourse: !existingVersion }
 }
 
 /**
@@ -538,7 +539,7 @@ async function publishManifest(manifest, options = {}) {
   const { existingVersion, suggestedVersion } = suggestVersion(courseConfigsId)
   const newVersion = version || suggestedVersion
 
-  logger.info(`Publishing ${courseConfigsId}: v${existingVersion} → v${newVersion}`)
+  logger.info(`Publishing ${courseConfigsId}: ${existingVersion ? `v${existingVersion}` : '(new)'} → v${newVersion}`)
 
   // Update manifest metadata
   manifest.version = newVersion
