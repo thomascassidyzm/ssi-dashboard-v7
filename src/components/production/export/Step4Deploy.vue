@@ -83,16 +83,23 @@
       </div>
 
       <!-- SCENARIO B: Overwrites exist, all match durations -->
-      <div v-else-if="deployPlan.scenario === 'overwrites_identical'" class="scenario-box p-4 bg-slate-700 border border-slate-600 rounded-lg space-y-4">
+      <div v-else-if="deployPlan.scenario === 'overwrites_identical'" class="scenario-box p-4 bg-emerald-900/30 border border-emerald-700 rounded-lg space-y-4">
         <div class="flex items-center gap-2 text-emerald-400">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
-          <span class="font-medium">{{ deployPlan.overwrites.toLocaleString() }} files already in production are identical</span>
+          <span class="font-medium">
+            <template v-if="deployPlan.newFiles === 0">
+              All {{ deployPlan.total.toLocaleString() }} files are already in production
+            </template>
+            <template v-else>
+              {{ deployPlan.overwrites.toLocaleString() }} files already in production are identical
+            </template>
+          </span>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-grid grid grid-cols-2 gap-3 text-sm">
+        <!-- Stats (only show if there are new files) -->
+        <div v-if="deployPlan.newFiles > 0" class="stats-grid grid grid-cols-2 gap-3 text-sm">
           <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
             <span class="text-slate-400">New Files</span>
             <span class="text-emerald-400 font-semibold text-lg">{{ deployPlan.newFiles.toLocaleString() }}</span>
@@ -103,8 +110,9 @@
           </div>
         </div>
 
+        <!-- Deploy button only if there are new files -->
         <button
-          v-if="!state.audioDeployed"
+          v-if="!state.audioDeployed && deployPlan.newFiles > 0"
           @click="handleDeployNewOnly"
           :disabled="isDeploying"
           class="w-full px-4 py-3 text-sm font-bold bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -113,8 +121,13 @@
           <span>{{ isDeploying ? 'Deploying...' : `Deploy ${deployPlan.newFiles.toLocaleString()} New Files` }}</span>
         </button>
 
+        <!-- No action needed message when 0 new files -->
+        <p v-if="deployPlan.newFiles === 0" class="text-sm text-emerald-300">
+          No deployment needed - production is up to date.
+        </p>
+
         <!-- Secondary option -->
-        <p v-if="!state.audioDeployed" class="text-center text-xs text-slate-500">
+        <p v-if="!state.audioDeployed && deployPlan.newFiles > 0" class="text-center text-xs text-slate-500">
           or
           <button @click="handleDeploy('overwrite')" class="text-slate-400 hover:text-white underline">
             deploy all {{ deployPlan.total.toLocaleString() }} files anyway
