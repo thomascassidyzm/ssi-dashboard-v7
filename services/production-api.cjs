@@ -5946,6 +5946,7 @@ app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (r
     // Update export state
     const audioDeployed = result.success || result.deployed > 0
     if (audioDeployed) {
+      const supabase = supabaseClient.getClient()
       await supabase
         .from('course_export_states')
         .update({
