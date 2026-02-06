@@ -48,6 +48,22 @@ function getApiHeaders() {
   }
 }
 
+// Fetch with timeout support (1 hour default for long-running audio operations)
+async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    })
+    return response
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
+
 export const useProductionStore = defineStore('production', () => {
   // Course state
   const currentCourseCode = ref(null)
@@ -650,7 +666,7 @@ export const useProductionStore = defineStore('production', () => {
       // NOTE: Orphan LEGO fix removed - our methodology always creates debut phrases during course building
       // Manual fix still available via: POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
 
-      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
+      const response = await fetchWithTimeout(`${baseUrl}/api/production/${courseCode}/audio-pipeline/start`, {
         method: 'POST',
         headers: getApiHeaders(),
         body: JSON.stringify({ approved: true, options })
@@ -701,7 +717,7 @@ export const useProductionStore = defineStore('production', () => {
         .filter(item => item.status === 'failed')
         .map(item => item.uuid)
 
-      const response = await fetch(`${baseUrl}/api/production/${courseCode}/audio-pipeline/retry`, {
+      const response = await fetchWithTimeout(`${baseUrl}/api/production/${courseCode}/audio-pipeline/retry`, {
         method: 'POST',
         headers: getApiHeaders(),
         body: JSON.stringify({ uuids: failedItems })

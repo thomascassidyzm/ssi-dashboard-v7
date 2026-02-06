@@ -340,7 +340,23 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import api from '../services/api'
+import api, { getApiUrl } from '../services/api'
+
+// Fetch with timeout support (1 hour default for long-running audio operations)
+async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    })
+    return response
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -535,7 +551,7 @@ async function generateMissingAudio() {
   }
 
   try {
-    const response = await fetch(`${getApiUrl()}/api/audio/generate-missing`, {
+    const response = await fetchWithTimeout(`${getApiUrl()}/api/audio/generate-missing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

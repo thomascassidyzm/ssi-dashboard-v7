@@ -56,6 +56,7 @@ const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 3600000, // 1 hour - audio generation can take a very long time
   headers: {
     'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': 'true'

@@ -520,6 +520,22 @@ import { getApiUrl } from '@/services/api'
 
 const apiBaseUrl = getApiUrl()
 
+// Fetch with timeout support (1 hour default for long-running audio operations)
+async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    })
+    return response
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
+
 // Voice configuration state
 const useNewVoiceConfig = ref(true)  // Toggle to use new parameterized system
 const savedVoiceConfig = ref(null)
@@ -785,7 +801,7 @@ async function startGeneration() {
   }
 
   try {
-    const response = await fetch(`${getApiUrl()}/api/audio/generate`, {
+    const response = await fetchWithTimeout(`${getApiUrl()}/api/audio/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -940,7 +956,7 @@ async function executeRegenerateRole() {
   regeneratePreview.value = null
 
   try {
-    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${selectedCourse.value}`, {
+    const response = await fetchWithTimeout(`${apiBaseUrl}/api/audio/regenerate-role/${selectedCourse.value}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
