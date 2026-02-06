@@ -77,6 +77,67 @@ async function checkFileInProd(uuid) {
 }
 
 /**
+ * Build UUID to text map from manifest
+ * @param {Object} manifest - Course manifest
+ * @returns {Map<string, Object>} Map of UUID -> { text, role, type }
+ */
+function buildUuidToTextMap(manifest) {
+  const uuidToText = new Map()
+
+  // 1. Introduction/welcome
+  if (manifest.introduction?.id) {
+    uuidToText.set(manifest.introduction.id, {
+      text: manifest.introduction.text || '[introduction]',
+      role: 'introduction',
+      type: 'intro'
+    })
+  }
+
+  // 2. Encouragements in slices[0]
+  const orderedEnc = manifest.slices?.[0]?.orderedEncouragements || []
+  const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || []
+  for (const enc of [...orderedEnc, ...pooledEnc]) {
+    if (enc.id) {
+      uuidToText.set(enc.id, {
+        text: enc.text || '[encouragement]',
+        role: 'encouragement',
+        type: 'encouragement'
+      })
+    }
+  }
+
+  // 3. Legacy top-level encouragements (backwards compatibility)
+  if (manifest.encouragements) {
+    for (const enc of manifest.encouragements) {
+      const id = enc.id || enc.uuid
+      if (id) {
+        uuidToText.set(id, {
+          text: enc.text || '[encouragement]',
+          role: 'encouragement',
+          type: 'encouragement'
+        })
+      }
+    }
+  }
+
+  // 4. Samples from slices[0].samples
+  const manifestSamples = manifest.slices?.[0]?.samples || {}
+  for (const [sampleKey, variants] of Object.entries(manifestSamples)) {
+    for (const variant of variants) {
+      if (variant.id) {
+        uuidToText.set(variant.id, {
+          text: variant.text || sampleKey,
+          role: variant.role || 'unknown',
+          type: 'sample'
+        })
+      }
+    }
+  }
+
+  return uuidToText
+}
+
+/**
  * Build sample list for duration verification
  * @param {Array<string>} uuids - Array of audio UUIDs
  * @param {Object} manifest - Course manifest
@@ -302,6 +363,98 @@ async function generateDeployPlan(uuids, onProgress = null) {
 }
 
 /**
+ * Generate deployment plan with automatic duration checking for overwrites
+ * @param {Array<string>} uuids - Array of audio UUIDs to deploy
+ * @param {Object} manifest - Course manifest (for duration verification)
+ * @param {Function} onProgress - Progress callback (phase, checked, total, ...phaseData)
+ * @returns {Promise<Object>} Enhanced plan with scenario field
+ */
+async function generateDeployPlanWithDurations(uuids, manifest, onProgress = null) {
+  // Phase 1: Existence check
+  logger.info(`[PLAN+DUR] Phase 1: Checking ${uuids.length} files against production bucket`)
+
+  const basePlan = await generateDeployPlan(uuids, (checked, total) => {
+    if (onProgress) {
+      onProgress('existence', checked, total)
+    }
+  })
+
+  // If no overwrites, we're done - all files are new
+  if (basePlan.overwrites === 0) {
+    logger.info(`[PLAN+DUR] Scenario: all_new - no overwrites detected`)
+    return {
+      ...basePlan,
+      scenario: 'all_new',
+      overwriteDurations: null
+    }
+  }
+
+  // Phase 2: Duration check for overwrites only
+  logger.info(`[PLAN+DUR] Phase 2: Checking durations for ${basePlan.overwrites} overwrites`)
+
+  // Build sample list for overwrite UUIDs only
+  const overwriteSamples = buildSampleList(basePlan.overwriteUuids, manifest, [])
+
+  if (overwriteSamples.length === 0) {
+    logger.warn(`[PLAN+DUR] No samples with durations found for overwrites - treating as different`)
+    return {
+      ...basePlan,
+      scenario: 'overwrites_different',
+      overwriteDurations: {
+        checked: 0,
+        matched: 0,
+        mismatched: 0,
+        errors: 0,
+        mismatchDetails: [],
+        warning: 'No duration metadata in manifest for overwrite files'
+      }
+    }
+  }
+
+  const durationResults = await audioDurationService.batchVerifyDurations(
+    overwriteSamples,
+    PROD_BUCKET,
+    20, // 20 concurrent workers
+    (checked, matched, mismatched, errors) => {
+      if (onProgress) {
+        onProgress('duration', checked, overwriteSamples.length, matched, mismatched, errors)
+      }
+    }
+  )
+
+  // Determine scenario based on duration results
+  const scenario = (durationResults.mismatched === 0 && durationResults.errors === 0)
+    ? 'overwrites_identical'
+    : 'overwrites_different'
+
+  logger.info(`[PLAN+DUR] Scenario: ${scenario} - ${durationResults.matched} matched, ${durationResults.mismatched} mismatched, ${durationResults.errors} errors`)
+
+  // Enrich mismatch details with text from manifest
+  const uuidToText = buildUuidToTextMap(manifest)
+  const enrichedMismatchDetails = (durationResults.mismatchDetails || []).map(detail => {
+    const textInfo = uuidToText.get(detail.uuid) || { text: '[unknown]', role: 'unknown', type: 'unknown' }
+    return {
+      ...detail,
+      text: textInfo.text,
+      role: textInfo.role,
+      sampleType: textInfo.type
+    }
+  })
+
+  return {
+    ...basePlan,
+    scenario,
+    overwriteDurations: {
+      checked: durationResults.checked,
+      matched: durationResults.matched,
+      mismatched: durationResults.mismatched,
+      errors: durationResults.errors,
+      mismatchDetails: enrichedMismatchDetails
+    }
+  }
+}
+
+/**
  * Copy a single file from stage to production
  * @param {string} uuid - Audio UUID
  * @returns {Promise<boolean>} Success
@@ -475,24 +628,16 @@ async function verifyProductionDurations(uuids, manifest, onProgress = null) {
   for (let i = 0; i < uuids.length; i += batchSize) {
     const batch = uuids.slice(i, i + batchSize)
     const checks = batch.map(async (uuid) => {
-      const key = `mastered/${uuid}.mp3`
-      try {
-        await s3.headObject({ Bucket: PROD_BUCKET, Key: key }).promise()
-        return { uuid, exists: true }
-      } catch (err) {
-        return { uuid, exists: false }
-      }
-    })
-
-    const batchResults = await Promise.all(checks)
-    for (const result of batchResults) {
-      if (result.exists) {
+      const result = await checkFileInProd(uuid)
+      if (result) {
         results.existing++
       } else {
         results.missing++
-        results.missingUuids.push(result.uuid)
+        results.missingUuids.push(uuid)
       }
-    }
+    })
+
+    await Promise.all(checks)
 
     checked += batch.length
     if (onProgress) {
@@ -701,6 +846,7 @@ module.exports = {
   // Production bucket operations
   checkFileInProd,
   generateDeployPlan,
+  generateDeployPlanWithDurations,
   deployToProduction,
   verifyProductionDurations,
 

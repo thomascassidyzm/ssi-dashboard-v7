@@ -32,6 +32,8 @@ export interface DeployVerification {
   mismatched: number
   errors: number
   details: Array<{ uuid: string; issue: string; expected: number }>
+  message?: string
+  skippedOverwrites?: number
 }
 
 export interface S3VerificationResult {
@@ -71,12 +73,31 @@ export interface S3VerificationResult {
   }
 }
 
+export interface OverwriteDurations {
+  checked: number
+  matched: number
+  mismatched: number
+  errors: number
+  mismatchDetails: Array<{
+    uuid: string
+    expectedDuration: number
+    actualDuration: number
+    difference: number
+    text?: string
+    role?: string
+    sampleType?: string
+  }>
+  warning?: string
+}
+
 export interface DeployPlan {
   total: number
   newFiles: number
   overwrites: number
   overwriteUuids: string[]
   newUuids: string[]
+  scenario?: 'all_new' | 'overwrites_identical' | 'overwrites_different'
+  overwriteDurations?: OverwriteDurations | null
 }
 
 export interface VersionInfo {
@@ -173,6 +194,14 @@ export function useExportWorkflow(courseCode: string) {
   const audioJobId = ref<string | null>(null)
   const s3VerifyProgress = ref({ checked: 0, total: 0 })
   const deployProgress = ref({ deployed: 0, total: 0 })
+  const deployPlanProgress = ref({
+    phase: 'idle' as 'idle' | 'existence' | 'duration',
+    checked: 0,
+    total: 0,
+    matched: 0,
+    mismatched: 0,
+    errors: 0
+  })
 
   // WebSocket for real-time updates
   let socket: Socket | null = null
@@ -330,6 +359,28 @@ export function useExportWorkflow(courseCode: string) {
     socket.on('s3Verify:completed', (data: { courseCode: string }) => {
       if (data.courseCode === courseCode) {
         s3VerifyProgress.value = { checked: 0, total: 0 }
+      }
+    })
+
+    // Deploy plan progress (existence + duration checking phases)
+    socket.on('deployPlan:progress', (data: {
+      courseCode: string
+      phase: string
+      checked: number
+      total: number
+      matched?: number
+      mismatched?: number
+      errors?: number
+    }) => {
+      if (data.courseCode === courseCode) {
+        deployPlanProgress.value = {
+          phase: data.phase as 'existence' | 'duration',
+          checked: data.checked,
+          total: data.total,
+          matched: data.matched || 0,
+          mismatched: data.mismatched || 0,
+          errors: data.errors || 0
+        }
       }
     })
 
@@ -670,18 +721,28 @@ export function useExportWorkflow(courseCode: string) {
     }
   }
 
-  // Step 4: Get deploy plan
+  // Step 4: Get deploy plan with duration checking
   async function getDeployPlan() {
     isLoading.value = true
     error.value = null
 
-    // Clear existing plan to show loading state
+    // Clear existing plan and reset progress
     state.value.deployPlan = null
+    deployPlanProgress.value = {
+      phase: 'existence',
+      checked: 0,
+      total: 0,
+      matched: 0,
+      mismatched: 0,
+      errors: 0
+    }
 
     try {
+      connectWebSocket()
+
       const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/plan`, {
         method: 'POST'
-      })
+      }, 1200000) // 20 minutes for large courses
 
       state.value.deployPlan = data
       return data
@@ -690,6 +751,14 @@ export function useExportWorkflow(courseCode: string) {
       throw err
     } finally {
       isLoading.value = false
+      deployPlanProgress.value = {
+        phase: 'idle',
+        checked: 0,
+        total: 0,
+        matched: 0,
+        mismatched: 0,
+        errors: 0
+      }
     }
   }
 
@@ -698,6 +767,8 @@ export function useExportWorkflow(courseCode: string) {
     isLoading.value = true
     error.value = null
     deployProgress.value = { deployed: 0, total: 0 }
+    // Reset plan progress so it doesn't show during deployment
+    deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
 
     try {
       connectWebSocket()
@@ -772,6 +843,104 @@ export function useExportWorkflow(courseCode: string) {
         state.value.audioDeployed = true
         state.value.audioDeployedAt = new Date().toISOString()
         state.value.deployExecutedAt = new Date().toISOString()
+      }
+
+      return data
+    } catch (err: any) {
+      error.value = err.message
+      throw err
+    } finally {
+      isLoading.value = false
+      deployProgress.value = { deployed: 0, total: 0 }
+    }
+  }
+
+  // Deploy only new files from plan (skip overwrites)
+  async function deployNewOnly() {
+    isLoading.value = true
+    error.value = null
+    deployProgress.value = { deployed: 0, total: 0 }
+    // Reset plan progress so it doesn't show during deployment
+    deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
+
+    try {
+      connectWebSocket()
+
+      // Use 20-minute timeout for deployment (large courses need time)
+      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/new-only`, {
+        method: 'POST'
+      }, 1200000) // 20 minutes
+
+      // Mark as deployed if we deployed files (even if some failed)
+      if (data.deployed > 0) {
+        state.value.audioDeployed = true
+        state.value.audioDeployedAt = new Date().toISOString()
+        state.value.deployExecutedAt = new Date().toISOString()
+      }
+
+      // Store deployment result for UI display
+      state.value.deployVerification = {
+        checked: data.deployed + (data.failed || 0),
+        matched: data.deployed,
+        mismatched: data.failed || 0,
+        errors: data.failed || 0,
+        details: [],
+        message: data.message,
+        skippedOverwrites: data.skippedOverwrites
+      }
+
+      // Show error if some files failed
+      if (data.failed > 0) {
+        error.value = `Deployed ${data.deployed} files, but ${data.failed} failed`
+      }
+
+      return data
+    } catch (err: any) {
+      error.value = err.message
+      throw err
+    } finally {
+      isLoading.value = false
+      deployProgress.value = { deployed: 0, total: 0 }
+    }
+  }
+
+  // Deploy new files + mismatched overwrites (skip identical)
+  async function deployNewAndMismatched() {
+    isLoading.value = true
+    error.value = null
+    deployProgress.value = { deployed: 0, total: 0 }
+    // Reset plan progress so it doesn't show during deployment
+    deployPlanProgress.value = { phase: 'idle', checked: 0, total: 0, matched: 0, mismatched: 0, errors: 0 }
+
+    try {
+      connectWebSocket()
+
+      // Use 20-minute timeout for deployment (large courses need time)
+      const data = await fetchApi(`/api/production/${courseCode}/deploy-audio/new-and-mismatched`, {
+        method: 'POST'
+      }, 1200000) // 20 minutes
+
+      // Mark as deployed if we deployed files (even if some failed)
+      if (data.deployed > 0) {
+        state.value.audioDeployed = true
+        state.value.audioDeployedAt = new Date().toISOString()
+        state.value.deployExecutedAt = new Date().toISOString()
+      }
+
+      // Store deployment result for UI display
+      state.value.deployVerification = {
+        checked: data.deployed + (data.failed || 0),
+        matched: data.deployed,
+        mismatched: data.failed || 0,
+        errors: data.failed || 0,
+        details: [],
+        message: data.message,
+        skippedOverwrites: data.skippedIdentical
+      }
+
+      // Show error if some files failed
+      if (data.failed > 0) {
+        error.value = `Deployed ${data.deployed} files, but ${data.failed} failed`
       }
 
       return data
@@ -870,6 +1039,7 @@ export function useExportWorkflow(courseCode: string) {
     audioJobId,
     s3VerifyProgress,
     deployProgress,
+    deployPlanProgress,
 
     // Computed
     currentStep,
@@ -887,6 +1057,8 @@ export function useExportWorkflow(courseCode: string) {
     deployAudio,
     verifyProductionDurations,
     deployMissingOnly,
+    deployNewOnly,
+    deployNewAndMismatched,
     resetState,
     cleanup,
 

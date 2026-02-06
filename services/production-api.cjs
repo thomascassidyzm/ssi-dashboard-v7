@@ -5684,7 +5684,7 @@ async function loadPublishedManifest(courseCode) {
 }
 
 // POST /api/production/:courseCode/deploy-audio/plan
-// Get deployment plan (what files need to be deployed)
+// Get deployment plan with automatic duration checking for overwrites
 app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
   const { courseCode } = req.params
   try {
@@ -5709,8 +5709,23 @@ app.post('/api/production/:courseCode/deploy-audio/plan', async (req, res) => {
     }
     logger.info(`[Deploy Plan] Collected ${uuids.length} UUIDs for ${courseCode}`)
 
-    const plan = await s3DeployService.generateDeployPlan(uuids)
-    logger.info(`[Deploy Plan] Complete for ${courseCode}: ${plan.newFiles} new, ${plan.overwrites} overwrites`)
+    // Use enhanced plan that automatically checks durations for overwrites
+    const plan = await s3DeployService.generateDeployPlanWithDurations(
+      uuids,
+      publishedManifest,
+      (phase, checked, total, matched, mismatched, errors) => {
+        io.emit('deployPlan:progress', {
+          courseCode,
+          phase,
+          checked,
+          total,
+          matched,
+          mismatched,
+          errors
+        })
+      }
+    )
+    logger.info(`[Deploy Plan] Complete for ${courseCode}: ${plan.newFiles} new, ${plan.overwrites} overwrites, scenario: ${plan.scenario}`)
 
     // Save to state (database-first)
     if (supabaseClient.isInitialized()) {
@@ -5759,8 +5774,8 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
 
     const result = await s3DeployService.deployToProduction(uuids, {
       confirmOverwrite: confirmation,
-      onProgress: (copied, total) => {
-        io.emit('audioDeploy:progress', { courseCode, copied, total })
+      onProgress: (deployed, total) => {
+        io.emit('audioDeploy:progress', { courseCode, deployed, total })
       }
     })
 
@@ -5795,6 +5810,215 @@ app.post('/api/production/:courseCode/deploy-audio/execute', async (req, res) =>
   } catch (error) {
     logger.error(`Deploy error for ${courseCode}:`, error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/deploy-audio/new-only
+// Deploy ONLY new files from the plan (no overwrites, no verification needed)
+app.post('/api/production/:courseCode/deploy-audio/new-only', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
+
+    // Collect all UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    // Get the plan to extract new UUIDs
+    const plan = await s3DeployService.generateDeployPlan(uuids)
+
+    if (plan.newUuids.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No new files to deploy',
+        deployed: 0,
+        skippedOverwrites: plan.overwrites
+      })
+    }
+
+    // Deploy the files we identified as "new"
+    // Use confirmOverwrite: true because deployToProduction re-checks and some files
+    // might have been deployed between plan generation and now (race condition)
+    const result = await s3DeployService.deployToProduction(plan.newUuids, {
+      confirmOverwrite: true, // Trust the plan - we already verified these are new
+      onProgress: (deployed, total) => {
+        io.emit('audioDeploy:progress', { courseCode, deployed, total: plan.newUuids.length })
+      }
+    })
+
+    // Update state (database-first)
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      // Only mark as deployed if all new files were successfully deployed
+      const audioDeployed = result.deployed === plan.newUuids.length
+      await supabase
+        .from('course_export_states')
+        .update({
+          audio_deployed: audioDeployed,
+          audio_deployed_at: audioDeployed ? new Date().toISOString() : null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
+    }
+
+    res.json({
+      success: result.success,
+      deployed: result.deployed,
+      failed: result.failed,
+      skippedOverwrites: plan.overwrites,
+      message: `Deployed ${result.deployed} new files, skipped ${plan.overwrites} existing files`
+    })
+  } catch (error) {
+    logger.error(`Deploy new-only error for ${courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// POST /api/production/:courseCode/deploy-audio/new-and-mismatched
+// Deploy new files AND mismatched overwrites (skip identical overwrites)
+app.post('/api/production/:courseCode/deploy-audio/new-and-mismatched', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    // Load published manifest from course-configs or local
+    const { manifest: publishedManifest } = await loadPublishedManifest(courseCode)
+
+    // Collect all UUIDs
+    const uuids = []
+    if (publishedManifest.introduction?.id) uuids.push(publishedManifest.introduction.id)
+    for (const enc of publishedManifest.slices[0]?.orderedEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    for (const enc of publishedManifest.slices[0]?.pooledEncouragements || []) {
+      if (enc.id) uuids.push(enc.id)
+    }
+    const samples = publishedManifest.slices[0]?.samples || {}
+    for (const [text, audioArray] of Object.entries(samples)) {
+      for (const audio of audioArray) {
+        if (audio.id) uuids.push(audio.id)
+      }
+    }
+
+    // Get the full plan with duration checking
+    const plan = await s3DeployService.generateDeployPlanWithDurations(uuids, publishedManifest, (phase, checked, total, matched, mismatched, errors) => {
+      // Emit progress via WebSocket
+      io.emit('deployPlan:progress', { courseCode, phase, checked, total, matched, mismatched, errors })
+    })
+
+    // Collect UUIDs to deploy: new files + mismatched overwrites
+    const mismatchedUuids = (plan.overwriteDurations?.mismatchDetails || []).map(d => d.uuid)
+    const uuidsToDeploy = [...plan.newUuids, ...mismatchedUuids]
+
+    if (uuidsToDeploy.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No files to deploy (all files are identical)',
+        deployed: 0,
+        failed: 0,
+        skippedIdentical: plan.overwriteDurations?.matched || 0
+      })
+    }
+
+    logger.info(`[DEPLOY] Deploying ${plan.newUuids.length} new + ${mismatchedUuids.length} mismatched files`)
+
+    // Deploy the combined list
+    const result = await s3DeployService.deployToProduction(uuidsToDeploy, {
+      confirmOverwrite: true, // Trust our plan - these are the files we want to deploy
+      onProgress: (deployed, total) => {
+        io.emit('deploy:progress', { courseCode, deployed, total })
+      }
+    })
+
+    // Update export state
+    const audioDeployed = result.success || result.deployed > 0
+    if (audioDeployed) {
+      await supabase
+        .from('course_export_states')
+        .update({
+          audio_deployed: audioDeployed,
+          audio_deployed_at: audioDeployed ? new Date().toISOString() : null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('course_code', courseCode)
+    }
+
+    res.json({
+      success: result.success,
+      deployed: result.deployed,
+      failed: result.failed,
+      newDeployed: plan.newUuids.length,
+      mismatchedDeployed: mismatchedUuids.length,
+      skippedIdentical: plan.overwriteDurations?.matched || 0,
+      message: `Deployed ${result.deployed} files (${plan.newUuids.length} new + ${mismatchedUuids.length} mismatched), skipped ${plan.overwriteDurations?.matched || 0} identical`
+    })
+  } catch (error) {
+    logger.error(`Deploy new-and-mismatched error for ${req.params.courseCode}:`, error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/audio/:uuid/download/:bucket
+// Proxy download audio file from stage or production bucket (avoids CORS issues)
+app.get('/api/production/audio/:uuid/download/:bucket', async (req, res) => {
+  try {
+    const { uuid, bucket } = req.params
+    const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3')
+
+    const STAGE_BUCKET = 'ssi-audio-stage'
+    const PROD_BUCKET = 'ssiborg-assets'
+    const REGION = process.env.S3_REGION || 'eu-west-1'
+
+    // Validate bucket parameter
+    let targetBucket
+    let filename
+    if (bucket === 'stage') {
+      targetBucket = STAGE_BUCKET
+      filename = `${uuid}_stage.mp3`
+    } else if (bucket === 'production' || bucket === 'prod') {
+      targetBucket = PROD_BUCKET
+      filename = `${uuid}_production.mp3`
+    } else {
+      return res.status(400).json({ error: 'Invalid bucket. Use "stage" or "production".' })
+    }
+
+    const s3Client = new S3Client({ region: REGION })
+    const command = new GetObjectCommand({
+      Bucket: targetBucket,
+      Key: `mastered/${uuid}.mp3`
+    })
+
+    const response = await s3Client.send(command)
+
+    // Set headers for download
+    res.setHeader('Content-Type', 'audio/mpeg')
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`)
+    if (response.ContentLength) {
+      res.setHeader('Content-Length', response.ContentLength)
+    }
+
+    // Stream the file to the response
+    response.Body.pipe(res)
+  } catch (error) {
+    logger.error(`Error downloading audio ${req.params.uuid} from ${req.params.bucket}:`, error)
+    if (error.name === 'NoSuchKey') {
+      res.status(404).json({ error: 'Audio file not found' })
+    } else {
+      res.status(500).json({ error: error.message })
+    }
   }
 })
 

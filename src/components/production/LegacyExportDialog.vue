@@ -110,11 +110,12 @@
                   :is-deploying="isDeploying"
                   :is-verifying="isVerifyingProduction"
                   :progress="workflow.deployProgress.value"
+                  :plan-progress="workflow.deployPlanProgress.value"
                   :format-date="workflow.formatDate"
                   @check-plan="handleCheckPlan"
                   @deploy="handleDeploy"
-                  @verify-production="handleVerifyProduction"
-                  @deploy-missing-only="handleDeployMissingOnly"
+                  @deploy-new-only="handleDeployNewOnly"
+                  @deploy-new-and-mismatched="handleDeployNewAndMismatched"
                 />
               </div>
             </template>
@@ -371,6 +372,24 @@ async function handleDeployMissingOnly() {
   isDeploying.value = true
   try {
     await workflow.deployMissingOnly()
+  } finally {
+    isDeploying.value = false
+  }
+}
+
+async function handleDeployNewOnly() {
+  isDeploying.value = true
+  try {
+    await workflow.deployNewOnly()
+  } finally {
+    isDeploying.value = false
+  }
+}
+
+async function handleDeployNewAndMismatched() {
+  isDeploying.value = true
+  try {
+    await workflow.deployNewAndMismatched()
   } finally {
     isDeploying.value = false
   }
