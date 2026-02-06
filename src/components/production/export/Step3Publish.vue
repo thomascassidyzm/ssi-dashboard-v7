@@ -53,15 +53,59 @@
           <span class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
         </div>
 
-        <div class="flex items-center gap-3">
-          <span class="text-slate-400 text-sm flex-shrink-0">Version</span>
-          <input
-            v-model="version"
-            type="text"
-            placeholder="e.g., 3.0.1"
-            class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-          />
-          <span class="text-slate-500 text-xs">(current: {{ versionInfo.existingVersion }})</span>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-sm">Version</span>
+            <span class="text-slate-500 text-xs">current: {{ versionInfo.existingVersion }}</span>
+          </div>
+
+          <!-- Version bump buttons -->
+          <div v-if="!showCustomVersion" class="flex gap-2">
+            <button
+              @click="version = nextVersions.patch"
+              :class="version === nextVersions.patch ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+            >
+              <div class="text-slate-400 text-xs">Patch</div>
+              <div class="text-white font-mono">{{ nextVersions.patch }}</div>
+            </button>
+            <button
+              @click="version = nextVersions.minor"
+              :class="version === nextVersions.minor ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+            >
+              <div class="text-slate-400 text-xs">Minor</div>
+              <div class="text-white font-mono">{{ nextVersions.minor }}</div>
+            </button>
+            <button
+              @click="version = nextVersions.major"
+              :class="version === nextVersions.major ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+            >
+              <div class="text-slate-400 text-xs">Major</div>
+              <div class="text-white font-mono">{{ nextVersions.major }}</div>
+            </button>
+          </div>
+
+          <!-- Custom version input (hidden by default) -->
+          <div v-if="showCustomVersion" class="flex items-center gap-2">
+            <input
+              v-model="version"
+              type="text"
+              placeholder="e.g., 3.0.1"
+              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+            />
+            <button @click="showCustomVersion = false" class="text-slate-400 hover:text-white text-xs">
+              cancel
+            </button>
+          </div>
+
+          <!-- Toggle custom input -->
+          <div v-if="!showCustomVersion" class="text-center">
+            <button @click="showCustomVersion = true" class="text-slate-500 hover:text-slate-300 text-xs">
+              or enter custom version
+            </button>
+          </div>
         </div>
 
         <div class="flex items-center gap-3">
@@ -190,15 +234,59 @@
             <span class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
           </div>
 
-          <div class="flex items-center gap-3">
-            <span class="text-slate-400 text-sm flex-shrink-0">New Version</span>
-            <input
-              v-model="republishVersion"
-              type="text"
-              placeholder="e.g., 3.0.2"
-              class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-            />
-            <span class="text-slate-500 text-xs">(current: {{ versionInfo.existingVersion }})</span>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-400 text-sm">New Version</span>
+              <span class="text-slate-500 text-xs">current: {{ versionInfo.existingVersion }}</span>
+            </div>
+
+            <!-- Version bump buttons -->
+            <div v-if="!showCustomRepublishVersion" class="flex gap-2">
+              <button
+                @click="republishVersion = nextVersions.patch"
+                :class="republishVersion === nextVersions.patch ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+              >
+                <div class="text-slate-400 text-xs">Patch</div>
+                <div class="text-white font-mono">{{ nextVersions.patch }}</div>
+              </button>
+              <button
+                @click="republishVersion = nextVersions.minor"
+                :class="republishVersion === nextVersions.minor ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+              >
+                <div class="text-slate-400 text-xs">Minor</div>
+                <div class="text-white font-mono">{{ nextVersions.minor }}</div>
+              </button>
+              <button
+                @click="republishVersion = nextVersions.major"
+                :class="republishVersion === nextVersions.major ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+                class="flex-1 px-3 py-2 text-sm border rounded transition-colors"
+              >
+                <div class="text-slate-400 text-xs">Major</div>
+                <div class="text-white font-mono">{{ nextVersions.major }}</div>
+              </button>
+            </div>
+
+            <!-- Custom version input (hidden by default) -->
+            <div v-if="showCustomRepublishVersion" class="flex items-center gap-2">
+              <input
+                v-model="republishVersion"
+                type="text"
+                placeholder="e.g., 3.0.2"
+                class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              />
+              <button @click="showCustomRepublishVersion = false" class="text-slate-400 hover:text-white text-xs">
+                cancel
+              </button>
+            </div>
+
+            <!-- Toggle custom input -->
+            <div v-if="!showCustomRepublishVersion" class="text-center">
+              <button @click="showCustomRepublishVersion = true" class="text-slate-500 hover:text-slate-300 text-xs">
+                or enter custom version
+              </button>
+            </div>
           </div>
 
           <div class="flex items-center gap-3">
@@ -326,31 +414,52 @@ const status = ref('beta')
 const commitToCourseConfigs = ref(true)
 const scpToApidev = ref(false)  // Off by default - course-configs is the primary method
 const showRepublish = ref(false)
+const showCustomVersion = ref(false)
 
 // Re-publish form variables
 const republishVersion = ref('')
 const republishStatus = ref('beta')
 const republishToCourseConfigs = ref(true)
 const republishToApidev = ref(false)  // Off by default
+const showCustomRepublishVersion = ref(false)
+
+// Calculate next versions (patch, minor, major) from existing version
+const nextVersions = computed(() => {
+  const existing = props.versionInfo?.existingVersion || '0.0.0'
+  const parts = existing.split('.').map(Number)
+  const major = parts[0] || 0
+  const minor = parts[1] || 0
+  const patch = parts[2] || 0
+
+  return {
+    patch: `${major}.${minor}.${patch + 1}`,
+    minor: `${major}.${minor + 1}.0`,
+    major: `${major + 1}.0.0`
+  }
+})
 
 // Load version info when component mounts
 onMounted(() => {
   emit('loadVersionInfo')
 })
 
-// Update version when version info is loaded
+// Update version when version info is loaded - default to patch
 watch(() => props.versionInfo, (info) => {
   if (info && !version.value) {
-    version.value = info.suggestedVersion
+    // Default to patch version (most common case)
+    const parts = info.existingVersion.split('.').map(Number)
+    version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
   }
 })
 
 // Watch for showRepublish to load version suggestion
 watch(showRepublish, (isShowing) => {
   if (isShowing && props.versionInfo) {
-    // Pre-fill with suggested next version
-    republishVersion.value = props.versionInfo.suggestedVersion
+    // Default to patch version (most common case)
+    const parts = props.versionInfo.existingVersion.split('.').map(Number)
+    republishVersion.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
     republishStatus.value = props.state.manifestStatus || 'beta'
+    showCustomRepublishVersion.value = false
   }
 })
 
