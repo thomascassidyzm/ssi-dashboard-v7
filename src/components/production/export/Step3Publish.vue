@@ -46,17 +46,22 @@
         </p>
       </div>
 
-      <!-- Version info -->
-      <div v-if="versionInfo" class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-3">
+      <!-- Version and Status picker (always visible) -->
+      <div class="version-info p-4 bg-slate-700 rounded-lg border border-slate-600 space-y-4">
+        <!-- Course ID -->
         <div class="flex justify-between items-center">
           <span class="text-slate-400 text-sm">Course ID</span>
-          <span class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
+          <span v-if="versionInfo" class="text-white font-mono">{{ versionInfo.courseConfigsId }}</span>
+          <span v-else class="text-amber-400 font-mono text-sm">New Course</span>
         </div>
 
+        <!-- Version section -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-slate-400 text-sm">Version</span>
-            <span class="text-slate-500 text-xs">current: {{ versionInfo.existingVersion }}</span>
+            <span class="text-slate-500 text-xs">
+              current: {{ versionInfo?.existingVersion || '(none)' }}
+            </span>
           </div>
 
           <!-- Version bump buttons -->
@@ -108,16 +113,32 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-3">
-          <span class="text-slate-400 text-sm flex-shrink-0">Status</span>
-          <select
-            v-model="status"
-            class="flex-1 px-3 py-1.5 text-sm bg-slate-800 border border-slate-600 rounded text-white focus:outline-none focus:border-blue-500"
-          >
-            <option value="alpha">alpha</option>
-            <option value="beta">beta</option>
-            <option value="release">release</option>
-          </select>
+        <!-- Status section with buttons -->
+        <div class="space-y-2">
+          <span class="text-slate-400 text-sm">Status</span>
+          <div class="flex gap-2">
+            <button
+              @click="status = 'alpha'"
+              :class="status === 'alpha' ? 'bg-amber-600 border-amber-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+            >
+              alpha
+            </button>
+            <button
+              @click="status = 'beta'"
+              :class="status === 'beta' ? 'bg-blue-600 border-blue-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+            >
+              beta
+            </button>
+            <button
+              @click="status = 'release'"
+              :class="status === 'release' ? 'bg-emerald-600 border-emerald-500' : 'bg-slate-800 border-slate-600 hover:border-slate-500'"
+              class="flex-1 px-3 py-2 text-sm border rounded transition-colors text-white"
+            >
+              published
+            </button>
+          </div>
         </div>
       </div>
 
@@ -424,8 +445,14 @@ const republishToApidev = ref(false)  // Off by default
 const showCustomRepublishVersion = ref(false)
 
 // Calculate next versions (patch, minor, major) from existing version
+// For new courses (no existing version), default to 1.0.0
+const isNewCourse = computed(() => !props.versionInfo?.existingVersion || props.versionInfo.existingVersion === '1.0.0')
 const nextVersions = computed(() => {
-  const existing = props.versionInfo?.existingVersion || '0.0.0'
+  // For truly new courses (no version info), start at 1.0.0
+  if (!props.versionInfo?.existingVersion) {
+    return { patch: '1.0.0', minor: '1.0.0', major: '1.0.0' }
+  }
+  const existing = props.versionInfo.existingVersion
   const parts = existing.split('.').map(Number)
   const major = parts[0] || 0
   const minor = parts[1] || 0
@@ -441,12 +468,16 @@ const nextVersions = computed(() => {
 // Load version info when component mounts
 onMounted(() => {
   emit('loadVersionInfo')
+  // Set default version for new courses (will be overwritten if versionInfo loads)
+  if (!version.value) {
+    version.value = '1.0.0'
+  }
 })
 
 // Update version when version info is loaded - default to patch
 watch(() => props.versionInfo, (info) => {
-  if (info && !version.value) {
-    // Default to patch version (most common case)
+  if (info) {
+    // Update to patch version of existing course
     const parts = info.existingVersion.split('.').map(Number)
     version.value = `${parts[0] || 0}.${parts[1] || 0}.${(parts[2] || 0) + 1}`
   }
