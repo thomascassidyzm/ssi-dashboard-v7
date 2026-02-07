@@ -332,7 +332,7 @@ const isAnyPhaseRunning = computed(() => {
 const courseModeName = computed(() => {
   const modeNames = {
     'quick_test': 'Quick Test (10 seeds)',
-    'mvp_course': 'MVP Course (260 seeds)',
+    'mvp_course': 'MVP Course (300 seeds)',
     'full_course': 'Full Course (668 seeds)'
   }
   return modeNames[courseMode.value] || courseMode.value

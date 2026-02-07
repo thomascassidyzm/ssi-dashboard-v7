@@ -612,7 +612,7 @@ const isPolling = ref(false)
 // Config state
 const knownLang = ref('')
 const targetLang = ref('')
-const seedCount = ref(260)
+const seedCount = ref(300)
 const agentEngine = ref('browser')
 
 // Progress state
@@ -668,7 +668,7 @@ const languages = ref([
 
 const courseSizes = [
   { seeds: 30, label: 'Test' },
-  { seeds: 260, label: 'MVP' },
+  { seeds: 300, label: 'MVP' },
   { seeds: 668, label: 'Full' }
 ]
 
@@ -1141,7 +1141,7 @@ async function fetchPreview() {
 
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
-    const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+    const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
     const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
@@ -1197,7 +1197,7 @@ async function startPhase() {
         phaseSelection: `phase${targetPhase.number}`,
         spawnerMode: agentEngine.value,
         machineProfile: selectedMachineProfile.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
       })
     })
 
@@ -1233,7 +1233,7 @@ async function startCourseBuilder() {
         spawnerMode: agentEngine.value,
         machineProfile: selectedMachineProfile.value,
         seedCount: seedCount.value,
-        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 260 ? 'mvp_course' : 'full_course'
+        mode: seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
       })
     })
 

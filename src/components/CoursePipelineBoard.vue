@@ -456,7 +456,7 @@ function getCompletedSeeds(course) {
 }
 
 function getProgress(course) {
-  const target = course.targetSeeds || 260
+  const target = course.targetSeeds || 300
   const completed = getCompletedSeeds(course)
   return Math.min(100, Math.round((completed / target) * 100))
 }
@@ -468,7 +468,7 @@ function formatNumber(n) {
 
 function getBuildStatus(course) {
   const stats = course.stats || {}
-  const targetSeeds = course.targetSeeds || 260
+  const targetSeeds = course.targetSeeds || 300
   const legos = stats.legos || 0
   const phrases = stats.phrases || 0
   const audio = stats.audio || 0

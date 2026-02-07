@@ -77,7 +77,7 @@ const props = defineProps({
   },
   targetSeeds: {
     type: Number,
-    default: 260
+    default: 300
   }
 })
 
@@ -96,33 +96,33 @@ const statusLabels = {
 // Display seeds capped at target (for cleaner UI when seeds > target)
 const displayedSeeds = computed(() => {
   const completed = props.stats?.completedSeeds || 0
-  const target = props.targetSeeds || 260
+  const target = props.targetSeeds || 300
   // If we have more seeds than the target, show target as complete
   return Math.min(completed, target)
 })
 
 // Calculate completion percentages
 const seedPct = computed(() => {
-  const target = props.targetSeeds || 260
+  const target = props.targetSeeds || 300
   return Math.min(100, Math.round(((props.stats?.completedSeeds || 0) / target) * 100))
 })
 
 const legoPct = computed(() => {
   if (!props.stats?.legos) return 0
-  const target = props.targetSeeds || 260
+  const target = props.targetSeeds || 300
   // LEGOs typically ~2x seeds
   return Math.min(100, Math.round(((props.stats?.completedSeeds || 0) / target) * 100))
 })
 
 const phrasePct = computed(() => {
   if (!props.stats?.phrases) return 0
-  const target = props.targetSeeds || 260
+  const target = props.targetSeeds || 300
   return Math.min(100, Math.round(((props.stats?.completedSeeds || 0) / target) * 100))
 })
 
 const audioPct = computed(() => {
   if (!props.stats?.audio) return 0
-  const target = props.targetSeeds || 260
+  const target = props.targetSeeds || 300
   // Rough estimate: ~10 audio files per seed
   return Math.min(100, Math.round((props.stats.audio / (target * 10)) * 100))
 })
@@ -147,7 +147,7 @@ function getSegmentClass(pct) {
 // Derive status from actual stats using correct pipeline logic
 const statusLabel = computed(() => {
   const stats = props.stats || {}
-  const targetSeeds = props.targetSeeds || 260
+  const targetSeeds = props.targetSeeds || 300
   const completedSeeds = stats.completedSeeds || 0
   const legos = stats.legos || 0
   const phrases = stats.phrases || 0

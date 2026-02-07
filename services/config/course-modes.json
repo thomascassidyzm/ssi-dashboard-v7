@@ -24,14 +24,14 @@
 
     "mvp_course": {
       "name": "MVP Course",
-      "description": "Big 10 language pairs - 10x13x2 pattern for granular tracking",
-      "seeds": 260,
+      "description": "Big 10 language pairs - 10x15x2 pattern for granular tracking",
+      "seeds": 300,
       "pattern": {
         "browsers": 10,
-        "agents_per_browser": 13,
+        "agents_per_browser": 15,
         "seeds_per_agent": 2
       },
-      "capacity": 260,
+      "capacity": 300,
       "estimated_time_minutes": 15,
       "use_case": "Production courses for Big 10 language pairs",
       "rationale": "13 agents per master avoids token limits. 2 seeds per agent = granular failures."
@@ -48,8 +48,8 @@
       },
       "capacity": 442,
       "estimated_time_minutes": 25,
-      "use_case": "Extending MVP (260) to full course (668)",
-      "rationale": "13 agents per master avoids token limits. Run after MVP to add remaining ~408 seeds."
+      "use_case": "Extending MVP (300) to full course (668)",
+      "rationale": "13 agents per master avoids token limits. Run after MVP to add remaining ~368 seeds."
     }
   },
 

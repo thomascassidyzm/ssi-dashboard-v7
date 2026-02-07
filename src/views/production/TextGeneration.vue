@@ -478,11 +478,11 @@ const effectiveCourseCode = computed(() => {
 })
 
 // Configuration
-const seedCount = ref(260)
+const seedCount = ref(300)
 const agentEngine = ref('cli')
 
 const courseSizes = [
-  { seeds: 260, label: 'MVP' },
+  { seeds: 300, label: 'MVP' },
   { seeds: 668, label: 'Full' }
 ]
 
@@ -504,7 +504,7 @@ const progress = ref({
 })
 
 // Checkpoint state
-const CHECKPOINT_SEEDS = [10, 50, 150, 260]
+const CHECKPOINT_SEEDS = [10, 50, 150, 300]
 const checkpoints = ref(CHECKPOINT_SEEDS.map(seed => ({
   seed,
   status: 'pending',  // pending, approved, pending_human, rejected
@@ -571,7 +571,7 @@ const statusClass = computed(() => {
 const checkpointProgressPercent = computed(() => {
   const currentSeed = progress.value.currentSeed
   if (currentSeed <= 0) return 0
-  // Map current seed to 0-100% across the checkpoint track (0 to 260)
+  // Map current seed to 0-100% across the checkpoint track (0 to 300)
   const maxSeed = CHECKPOINT_SEEDS[CHECKPOINT_SEEDS.length - 1]
   return Math.min(100, (currentSeed / maxSeed) * 100)
 })
