@@ -83,16 +83,15 @@ const LANG_NAMES = {
 // =============================================================================
 
 // Punctuation to strip when comparing text for audio matching
-const PUNCT_REGEX = /[。？！、，.!?,;:()（）「」『』\[\]…—–\-]+/g
-
 /**
  * Normalize text for audio matching comparison
- * Strips punctuation, lowercases, and trims - used when comparing
- * phrase text against existing audio records
+ * Must match what the linking RPCs use: lower(trim(text))
+ * Do NOT strip punctuation — punctuation affects TTS output and
+ * the linking RPCs match on exact text_normalized (lowercase + trim only)
  */
 function normalizeText(text) {
   if (!text) return ''
-  return text.toLowerCase().replace(PUNCT_REGEX, '').trim()
+  return text.toLowerCase().trim()
 }
 
 /**
@@ -338,6 +337,39 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // GET PLAN - What audio is missing?
 // =============================================================================
 
+// =============================================================================
+// HELPER: Link audio IDs to phrases/legos/seeds
+// =============================================================================
+async function linkAudioIds(courseCode, knownLang, targetLang) {
+  const r = { practice_phrases: {}, legos: {}, seeds: {} }
+
+  const { data: ppK } = await supabase.rpc('link_practice_phrase_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
+  r.practice_phrases.known = ppK || 0
+  const { data: ppT1 } = await supabase.rpc('link_practice_phrase_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.practice_phrases.target1 = ppT1 || 0
+  const { data: ppT2 } = await supabase.rpc('link_practice_phrase_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.practice_phrases.target2 = ppT2 || 0
+
+  const { data: lK } = await supabase.rpc('link_lego_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
+  r.legos.known = lK || 0
+  const { data: lT1 } = await supabase.rpc('link_lego_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.legos.target1 = lT1 || 0
+  const { data: lT2 } = await supabase.rpc('link_lego_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.legos.target2 = lT2 || 0
+
+  const { data: sK } = await supabase.rpc('link_seed_known_audio', { p_course_code: courseCode, p_known_lang: knownLang })
+  r.seeds.known = sK || 0
+  const { data: sT1 } = await supabase.rpc('link_seed_target1_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.seeds.target1 = sT1 || 0
+  const { data: sT2 } = await supabase.rpc('link_seed_target2_audio', { p_course_code: courseCode, p_target_lang: targetLang })
+  r.seeds.target2 = sT2 || 0
+
+  r.total = Object.values(r).reduce((sum, cat) =>
+    typeof cat === 'object' ? sum + Object.values(cat).reduce((s, v) => s + v, 0) : sum, 0)
+
+  return r
+}
+
 // POST /plan - for production-api compatibility (takes courseCode in body)
 app.post('/plan', async (req, res) => {
   const { courseCode } = req.body
@@ -500,7 +532,7 @@ async function planHandler(req, res) {
     // Only include LEGOs up to the release target
     const { data: newLegos, error: legosError } = await supabase
       .from('course_legos')
-      .select('lego_id, seed_number, known_text')
+      .select('lego_id, seed_number, known_text, presentation_audio_id')
       .eq('course_code', courseCode)
       .eq('is_new', true)
       .lte('seed_number', releaseTarget)
@@ -508,43 +540,25 @@ async function planHandler(req, res) {
     if (legosError) throw legosError
 
     // Get existing presentation audio (exclude pending/)
-    // Match by text_normalized since multiple LEGOs can share the same presentation
-    // (e.g., "And then" and "and then" both generate "The Arabic for 'and then', is:")
     const { data: existingPresentations } = await supabase
       .from('course_audio')
-      .select('lego_id, text_normalized')
+      .select('lego_id')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
       .not('s3_key', 'like', 'pending/%')
 
-    // Build set of lego_ids that have presentation audio
+    // Build set of lego_ids that have presentation audio in course_audio
     const legoIdsWithPresentation = new Set(
       (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
     )
 
-    // Also build set of known_texts that have presentation audio
-    // Presentation text format: "The {lang} for '{known}', is:" - extract the known text
-    const knownTextsWithPresentation = new Set()
-    for (const pres of existingPresentations || []) {
-      // Extract known_text from presentation text (case-insensitive)
-      // Format: "The Arabic for 'X', is:" -> X
-      const match = pres.text_normalized?.match(/for '([^']+)',/i)
-      if (match) {
-        knownTextsWithPresentation.add(match[1].toLowerCase().trim())
-      }
-    }
-
-    // Count missing presentations - check BOTH lego_id AND text match
+    // Count missing presentations
     const missingPresentationLegos = []
     for (const lego of newLegos || []) {
-      // Skip if this LEGO already has presentation audio by lego_id
-      if (legoIdsWithPresentation.has(lego.lego_id)) {
-        continue
-      }
-      // Also skip if a presentation exists for this known_text (shared audio)
-      if (knownTextsWithPresentation.has(lego.known_text.toLowerCase().trim())) {
-        continue
-      }
+      // Skip if already bound on the LEGO itself (authoritative)
+      if (lego.presentation_audio_id) continue
+      // Skip if presentation audio exists in course_audio by lego_id (generated but not yet bound)
+      if (legoIdsWithPresentation.has(lego.lego_id)) continue
       missingPresentationLegos.push({
         text: lego.known_text,  // Will be expanded to full presentation text during generation
         language: course.known_lang,
@@ -957,43 +971,28 @@ app.post('/generate/:courseCode', async (req, res) => {
     // This matches the /plan endpoint logic for counting missing presentations
     const { data: newLegos } = await supabase
       .from('course_legos')
-      .select('lego_id, seed_number, known_text')
+      .select('lego_id, seed_number, known_text, presentation_audio_id')
       .eq('course_code', courseCode)
       .eq('is_new', true)
       .lte('seed_number', releaseTarget)
 
     if (newLegos?.length > 0) {
       // Get existing presentation audio (exclude pending/ since we handled those above)
-      // Include text_normalized for text-based matching (multiple LEGOs can share presentation)
       const { data: existingPresentations } = await supabase
         .from('course_audio')
-        .select('lego_id, text_normalized')
+        .select('lego_id')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .not('s3_key', 'like', 'pending/%')
 
-      // Build set of lego_ids that have presentation audio
+      // Build set of lego_ids that have presentation audio in course_audio
       const legoIdsWithPresentation = new Set(
         (existingPresentations || []).map(p => p.lego_id).filter(Boolean)
       )
 
-      // Also build set of known_texts that have presentation audio
-      // Presentation text format: "The {lang} for '{known}', is:" - extract the known text
-      const knownTextsWithPresentation = new Set()
-      for (const pres of existingPresentations || []) {
-        const match = pres.text_normalized?.match(/for '([^']+)',/i)
-        if (match) {
-          knownTextsWithPresentation.add(match[1].toLowerCase().trim())
-        }
-      }
-
-      // Also exclude LEGOs that have pending presentations (already added above)
+      // Exclude LEGOs that have pending presentations (already added above)
       const pendingLegoIds = new Set(
-        (pendingPresentations || []).map(p => {
-          // Extract lego_id from the pending record if available
-          // Pending presentations may have lego_id in their record
-          return p.lego_id
-        }).filter(Boolean)
+        (pendingPresentations || []).map(p => p.lego_id).filter(Boolean)
       )
 
       // Get presentation template for this course
@@ -1022,12 +1021,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Find LEGOs missing presentation audio and generate the text
       let missingPresentationCount = 0
       for (const lego of newLegos) {
-        // Skip if LEGO already has presentation audio by lego_id or pending presentation
+        // Skip if already bound on the LEGO itself (authoritative)
+        if (lego.presentation_audio_id) continue
+        // Skip if presentation audio exists in course_audio by lego_id or is pending
         if (legoIdsWithPresentation.has(lego.lego_id) || pendingLegoIds.has(lego.lego_id)) {
-          continue
-        }
-        // Also skip if presentation exists for this known_text (shared audio)
-        if (knownTextsWithPresentation.has(lego.known_text.toLowerCase().trim())) {
           continue
         }
 
@@ -1219,6 +1216,20 @@ app.post('/generate/:courseCode', async (req, res) => {
     const wasCancelled = currentWork.cancelled
     endWork()
 
+    // Auto-link audio IDs to phrases/legos/seeds after generation
+    let linked = 0
+    if (!wasCancelled) {
+      try {
+        const linkResults = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
+        linked = linkResults.total
+        if (linked > 0) {
+          logger.info(`Auto-linked ${linked} audio IDs for ${courseCode}`)
+        }
+      } catch (linkErr) {
+        logger.error(`Auto-link failed for ${courseCode}: ${linkErr.message}`)
+      }
+    }
+
     res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
@@ -1226,7 +1237,8 @@ app.post('/generate/:courseCode', async (req, res) => {
       success: results.success,
       failed: results.failed,
       cancelled: wasCancelled,
-      errors: results.errors.slice(0, 10)
+      errors: results.errors.slice(0, 10),
+      linked
     })
 
   } catch (error) {
@@ -1970,81 +1982,17 @@ app.post('/link-audio-ids/:courseCode', async (req, res) => {
       })
     }
 
-    // Link practice phrases - known audio
-    const { data: ppKnownResult } = await supabase.rpc('link_practice_phrase_known_audio', {
-      p_course_code: courseCode,
-      p_known_lang: course.known_lang
-    })
-    results.practice_phrases.known = ppKnownResult || 0
+    const linkResults = await linkAudioIds(courseCode, course.known_lang, course.target_lang)
 
-    // Link practice phrases - target1 audio
-    const { data: ppT1Result } = await supabase.rpc('link_practice_phrase_target1_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.practice_phrases.target1 = ppT1Result || 0
-
-    // Link practice phrases - target2 audio
-    const { data: ppT2Result } = await supabase.rpc('link_practice_phrase_target2_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.practice_phrases.target2 = ppT2Result || 0
-
-    // Link legos - known audio
-    const { data: legoKnownResult } = await supabase.rpc('link_lego_known_audio', {
-      p_course_code: courseCode,
-      p_known_lang: course.known_lang
-    })
-    results.legos.known = legoKnownResult || 0
-
-    // Link legos - target1 audio
-    const { data: legoT1Result } = await supabase.rpc('link_lego_target1_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.legos.target1 = legoT1Result || 0
-
-    // Link legos - target2 audio
-    const { data: legoT2Result } = await supabase.rpc('link_lego_target2_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.legos.target2 = legoT2Result || 0
-
-    // Link seeds - known audio
-    const { data: seedKnownResult } = await supabase.rpc('link_seed_known_audio', {
-      p_course_code: courseCode,
-      p_known_lang: course.known_lang
-    })
-    results.seeds.known = seedKnownResult || 0
-
-    // Link seeds - target1 audio
-    const { data: seedT1Result } = await supabase.rpc('link_seed_target1_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.seeds.target1 = seedT1Result || 0
-
-    // Link seeds - target2 audio
-    const { data: seedT2Result } = await supabase.rpc('link_seed_target2_audio', {
-      p_course_code: courseCode,
-      p_target_lang: course.target_lang
-    })
-    results.seeds.target2 = seedT2Result || 0
-
-    const totalLinked = Object.values(results).reduce((sum, cat) =>
-      sum + Object.values(cat).reduce((s, v) => s + v, 0), 0)
-
-    logger.info(`Linked ${totalLinked} audio IDs for ${courseCode}`)
+    logger.info(`Linked ${linkResults.total} audio IDs for ${courseCode}`)
 
     res.json({
       success: true,
       dryRun: false,
       courseCode,
-      results,
-      totalLinked,
-      message: `Linked ${totalLinked} audio IDs`
+      results: linkResults,
+      totalLinked: linkResults.total,
+      message: `Linked ${linkResults.total} audio IDs`
     })
 
   } catch (error) {

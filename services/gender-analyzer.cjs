@@ -1,7 +1,7 @@
 /**
  * Gender Analyzer Service
  *
- * Analyzes text to detect gender-variable words in Spanish, Italian, and French.
+ * Analyzes text to detect gender-variable words in Spanish, Italian, Portuguese, and French.
  * Returns text with gender markers like "cansado(a)" that can be expanded by
  * the gender-expansion-service.
  *
@@ -65,6 +65,31 @@ const GENDER_RULES = {
       'frequente', 'recente', 'seguente', 'corrente',
       'sufficiente', 'insufficiente', 'conveniente', 'sconveniente',
       'indipendente', 'dipendente', 'paziente', 'impaziente'
+    ],
+    markWord: (word) => {
+      return word.slice(0, -1) + 'o(a)';
+    }
+  },
+
+  // Portuguese: -o → -a for adjectives and past participles (same pattern as Spanish/Italian)
+  por: {
+    adjectivePatterns: [
+      // Common adjectives
+      /\b(cansad|ocupad|segur|content|nov|antigu|pequeñ|bonit|sol|únic|primeir|últim|cert|clar|correct|direct|exat|perfeit|complet|quiet|tranquil|satisfeit|preocupad|abert|fechad|sentad|parad|acostumad|dormid|despert|viv|mort|limp|suj|chei|vazi|doent|sã|louc|curad|bêbad|ceg|surd|mud|alt|baix|gord|magr|bonitão|fei|ric|pobr|car|barat|larg|curt|estreit|dur|mol|fri|quent|sec|molhad|cru|cozid|madur|podre|rot|inteir|mei|dobl|tripl|simpl|sincer|honest|modest|generos|sovat|educad|maleducad|trabalhad|preguiços|amargad|apaixonad|ciument|irritad|zangad|aborrecid|divertid|interessad|assuestad|nervos|calm)o\b/gi,
+      // Past participles
+      /\b(chegad|compad|terminad|começad|casad|divorciad|separad|aposentad|empregad|desempregad|preparad|organizad|convidad|sentad|deitad|levantad|vestid|mudad|queimad|cortad|partidv|arranjad|estragad|perdid|encontrad|esquecid|lembrad|usad|gastad|economizad|pagad|cobrad|roubad|emprestad|devolvid|dad|tirad|post|deixad|tomad|pegad|trazid|levad|enviad|recebid|abert|fechad|acendid|apagad|subid|descid|tirad|metid|mostrad|escondid|tapad|destapad|cobert|descobert|molhad|secad|limpad|sujad)o\b/gi
+    ],
+    invariant: [
+      'feliz', 'grande', 'importante', 'difícil', 'fácil', 'útil', 'inútil',
+      'possível', 'impossível', 'provável', 'improvável', 'terrível', 'horrível',
+      'incrível', 'visível', 'invisível', 'responsável', 'irresponsável',
+      'amável', 'agradável', 'desagradável', 'comparável', 'incomparável',
+      'verde', 'azul', 'cinzento', 'castanho', 'laranja', 'rosa', 'violeta',
+      'jovem', 'maior', 'menor', 'melhor', 'pior', 'igual', 'diferente',
+      'inteligente', 'excelente', 'evidente', 'presente', 'ausente',
+      'frequente', 'recente', 'seguinte', 'corrente', 'quente',
+      'suficiente', 'insuficiente', 'conveniente', 'inconveniente',
+      'independente', 'dependente', 'paciente', 'impaciente'
     ],
     markWord: (word) => {
       return word.slice(0, -1) + 'o(a)';
@@ -150,9 +175,9 @@ function isInvariant(word, language) {
 }
 
 /**
- * Analyze text for gender-variable words in Spanish or Italian
+ * Analyze text for gender-variable words in Spanish, Italian, or Portuguese
  * @param {string} text - Text to analyze
- * @param {string} language - Language code (spa or ita)
+ * @param {string} language - Language code (spa, ita, or por)
  * @returns {{ found: boolean, markedText: string, matches: string[] }}
  */
 function analyzeSpanishOrItalian(text, language) {
@@ -271,7 +296,7 @@ function analyzeFrench(text) {
  * Analyze text for gender-variable words and return marked version
  *
  * @param {string} text - Text to analyze
- * @param {string} language - Language code ('spa', 'ita', 'fra')
+ * @param {string} language - Language code ('spa', 'ita', 'por', 'fra')
  * @returns {{
  *   hasGenderVariants: boolean,
  *   markedText: string,
@@ -307,6 +332,8 @@ function analyzeForGender(text, language) {
     result = analyzeSpanishOrItalian(text, 'spa');
   } else if (langCode === 'ita') {
     result = analyzeSpanishOrItalian(text, 'ita');
+  } else if (langCode === 'por') {
+    result = analyzeSpanishOrItalian(text, 'por');
   } else if (langCode === 'fra') {
     result = analyzeFrench(text);
   } else {
@@ -339,7 +366,7 @@ function analyzeForGender(text, language) {
  * Analyze and return the appropriate gender variant for a voice role
  *
  * @param {string} text - Text to analyze
- * @param {string} language - Language code ('spa', 'ita', 'fra')
+ * @param {string} language - Language code ('spa', 'ita', 'por', 'fra')
  * @param {string} role - Voice role ('target1' for female, 'target2' for male)
  * @returns {string} Text expanded for the appropriate gender
  *

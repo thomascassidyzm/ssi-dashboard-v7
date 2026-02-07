@@ -355,8 +355,10 @@ Use your linguistic expertise to:
 **USE phrases** — complete sentences the learner will practise for weeks:
 - Must be **complete, natural sentences** a learner would actually say
 - Go into eternal spaced repetition
-- Scored [5-9] (4 or below = rewrite)
-- Minimum 5 per LEGO (fewer for early seeds when vocab is sparse)
+- Aim for ~12 per LEGO (fewer for early seeds when vocab is sparse)
+- Start with shorter, simpler phrases and build up to longer, more complex ones
+- They don't all have to be long — they just have to be good, natural phrases
+- A separate QA pass will check grammar — focus on writing natural content
 
 ## API: POST /api/seed/complete (MARKDOWN FORMAT)
 
@@ -424,7 +426,7 @@ USE:
 - Headers define LEGOs: \`## L1 [M] "known" → "target"\`
 - M-type LEGOs have Components line
 - **BUILD = new LEGO + previously introduced LEGOs** (shows how the new piece connects)
-- **USE = complete sentences with scores [5-9]** (goes into eternal spaced repetition)
+- **USE = complete natural sentences** (goes into eternal spaced repetition)
 - Early LEGOs have sparse phrases — that's normal, vocabulary builds over time
 - "now" (现在) comes LAST so learner sees word order through many examples
 

@@ -545,6 +545,14 @@
             </button>
           </div>
 
+          <!-- Audio Linking Result -->
+          <div v-if="linkResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-teal-500/30 rounded-xl p-4 flex items-center gap-3">
+            <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+            </svg>
+            <span class="text-teal-300 text-sm">Linked {{ linkResult.linked }} audio IDs to phrases, LEGOs and seeds</span>
+          </div>
+
           <!-- Plan Results Display -->
           <div v-if="showingPlan && planResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-purple-500/30 rounded-xl p-6">
             <div class="flex items-center justify-between mb-4">
@@ -676,6 +684,7 @@ const loadingPlan = ref(false)
 
 // Generation state for immediate button feedback
 const startingGeneration = ref(false)
+const linkResult = ref<{ linked: number } | null>(null)
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
 const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
@@ -793,17 +802,12 @@ const startGeneration = async () => {
       productionStore.updatePipelineStats(planData.total, planData.existing, planData.missing || 0)
     }
 
-    // Check if there's actually work to do
-    if (!planData.missing || planData.missing === 0) {
-      console.log('[AudioPipeline] No audio to generate - all complete')
-      // Show a message to the user
-      planResult.value = planData
-      showingPlan.value = true
-      return
+    // Always call generate - even with 0 missing, it links audio IDs to phrases
+    const result = await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+    if (result?.linked > 0) {
+      linkResult.value = { linked: result.linked }
+      setTimeout(() => { linkResult.value = null }, 10000)
     }
-
-    // Proceed with generation
-    await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
   } catch (err: any) {
     error.value = err.message || 'Failed to start generation'
   } finally {

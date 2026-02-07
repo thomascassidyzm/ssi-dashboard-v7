@@ -156,7 +156,7 @@ const currentEndNum = computed(() => {
   return match ? parseInt(match[1], 10) : PAGE_SIZE;
 });
 
-const maxSeeds = computed(() => props.totalSeeds || 260);
+const maxSeeds = computed(() => props.totalSeeds || 300);
 
 const canGoPrev = computed(() => currentStartNum.value > 1);
 const canGoNext = computed(() => currentEndNum.value < maxSeeds.value);

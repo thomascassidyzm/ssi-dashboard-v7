@@ -167,7 +167,7 @@ function expandForVoice(text, voiceId, role) {
  * 2. Expands to the appropriate gender based on the role
  *
  * @param {string} text - Text to analyze (may or may not have markers)
- * @param {string} language - Language code ('spa', 'ita', 'fra')
+ * @param {string} language - Language code ('spa', 'ita', 'por', 'fra')
  * @param {string} role - Voice role ('target1' = female, 'target2' = male)
  * @returns {{ originalText: string, expandedText: string, wasModified: boolean, hasGenderVariants: boolean }}
  *

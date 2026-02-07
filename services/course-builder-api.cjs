@@ -169,7 +169,7 @@ const courseVocabCache = new Map();  // course_code -> { vocab: Set, lastAccess:
 // Dashboard can poll /api/activity to detect stalled courses and respawn agents
 // =============================================================================
 const STALL_THRESHOLD_MS = 5 * 60 * 1000;  // 5 minutes without submission = stalled
-const BATCH_SIZE = 260;  // Full course in one window (1M context on Pro Max)
+const BATCH_SIZE = 300;  // Full course in one window (1M context on Pro Max)
 const courseActivity = new Map();  // course_code -> { lastSubmission: timestamp, lastSeed: number, seedsThisSession: number, sessionStartSeed: number }
 const agentHeartbeats = new Map();  // course_code -> { lastHeartbeat: timestamp, agentId: string, status: string }
 const HEARTBEAT_TIMEOUT_MS = 3 * 60 * 1000;  // 3 minutes - agent considered dead if no heartbeat
@@ -595,7 +595,7 @@ async function checkForStalledCourses() {
     // Check if course is complete
     try {
       const progress = await getBuildProgress(courseCode);
-      const targetSeeds = job.total_seeds || 260;
+      const targetSeeds = job.total_seeds || 300;
 
       if (progress.completed >= targetSeeds) {
         console.log(`[STALL-WATCHER] ${courseCode}: Course complete (${progress.completed}/${targetSeeds}), marking job complete`);
@@ -689,7 +689,7 @@ const REINFORCEMENT_ZONE = { min: 20, max: 60 };  // Seeds ago when vocab needs 
 // CHECKPOINT SYSTEM - Multiple QA gates during build with drift tracking
 // Config-driven: reads review_mode from course_checkpoint_config table
 // =============================================================================
-const CHECKPOINT_SEEDS = [10, 50, 150, 260];  // QA checkpoints at these seeds (260 = final before audio)
+const CHECKPOINT_SEEDS = [10, 50, 150, 300];  // QA checkpoints at these seeds (300 = final before audio)
 const QA_DRIFT_THRESHOLD = 0.7;  // Auto-approve if |QA_avg - agent_avg| <= 0.7
 
 // Track pending QA jobs: courseCode -> { checkpoint_seed, started_at, pid }
@@ -1103,18 +1103,10 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  // USE phrase score validation - must be 5-9 (quality floor)
-  // Scores <5 should be rewritten, not submitted
-  const missingScores = use.filter(p => typeof p.score !== 'number');
-  if (missingScores.length > 0) {
-    return {
-      valid: false,
-      error: `USE phrases must have scores (5-9). Missing scores on ${missingScores.length} phrase(s)`,
-      details: { missingScores: missingScores.map(p => p.known?.substring(0, 30)) }
-    };
-  }
+  // USE phrase score validation - optional (scores validated if provided, but not required)
+  const scoredPhrases = use.filter(p => typeof p.score === 'number');
 
-  const lowScores = use.filter(p => p.score < 5);
+  const lowScores = scoredPhrases.filter(p => p.score < 5);
   if (lowScores.length > 0) {
     return {
       valid: false,
@@ -1124,7 +1116,7 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  const invalidScores = use.filter(p => p.score > 9);
+  const invalidScores = scoredPhrases.filter(p => p.score > 9);
   if (invalidScores.length > 0) {
     return {
       valid: false,
@@ -1133,26 +1125,17 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     };
   }
 
-  // Calculate average score for reporting
-  const avgScore = use.length > 0 ? (use.reduce((sum, p) => sum + p.score, 0) / use.length).toFixed(1) : 0;
+  // Calculate average score for reporting (only from scored phrases)
+  const avgScore = scoredPhrases.length > 0 ? (scoredPhrases.reduce((sum, p) => sum + p.score, 0) / scoredPhrases.length).toFixed(1) : 0;
 
-  // USE phrases: check average syllable count (ensures substantial sentences)
-  // Estimate syllables from character count using language-specific ratio
-  if (use.length > 0 && seedNumber >= 2) {
+  // USE phrases: estimate syllable count for reporting (no hard gate — Haiku QA pass handles quality)
+  let avgSyllables = 0;
+  if (use.length > 0) {
     const totalSyllables = use.reduce((sum, p) => {
       const chars = (p.target || '').length;
       return sum + Math.round(chars / charsPerSyllable);
     }, 0);
-    const avgSyllables = totalSyllables / use.length;
-
-    if (avgSyllables < minAvgSyllables) {
-      return {
-        valid: false,
-        error: `USE phrases avg ${avgSyllables.toFixed(1)} syllables, need ${minAvgSyllables}+. Add more substantial sentences.`,
-        hint: 'USE phrases should be complete, natural sentences. Short fragments belong in BUILD.',
-        details: { avgSyllables: avgSyllables.toFixed(1), minRequired: minAvgSyllables, charsPerSyllable }
-      };
-    }
+    avgSyllables = totalSyllables / use.length;
   }
 
   return {
@@ -1436,19 +1419,18 @@ async function getBuildProgress(courseCode) {
     .eq('course_code', courseCode)
     .single();
 
-  const totalSeeds = courseData?.seed_count || 260;  // Default to 260 if not set
+  const totalSeeds = courseData?.seed_count || 300;  // Default to 300 if not set
 
-  const { data: legoData } = await supabase
-    .from('course_legos')
-    .select('seed_number')
-    .eq('course_code', courseCode);
-
-  const completedSeeds = new Set(legoData?.map(r => r.seed_number)).size;
+  const { count: completedSeeds } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .not('decomposed_at', 'is', null);
 
   return {
-    completed: completedSeeds,
+    completed: completedSeeds || 0,
     total: totalSeeds,
-    isComplete: completedSeeds >= totalSeeds
+    isComplete: (completedSeeds || 0) >= totalSeeds
   };
 }
 
@@ -2017,7 +1999,7 @@ async function checkBuilds() {
 
     try {
       const progress = await getBuildProgress(courseCode);
-      const targetSeeds = job.total_seeds || 260;
+      const targetSeeds = job.total_seeds || 300;
       const lastHeartbeat = job.last_heartbeat ? new Date(job.last_heartbeat).getTime() : 0;
       const heartbeatAge = now - lastHeartbeat;
       const respawnCount = job.respawn_count || 0;
@@ -2676,7 +2658,11 @@ function extractVocab(text, chinese = false) {
   if (chinese) {
     return [...normalized].filter(c => c.trim() && !c.match(/\s/));
   } else {
-    return normalized.split(/\s+/).filter(w => w);
+    // Split on whitespace AND apostrophes so reflexive/elided forms decompose:
+    // "s'entrainer" → ["s", "entrainer"], "m'entrainer" → ["m", "entrainer"]
+    // "l'homme" → ["l", "homme"], "j'essaie" → ["j", "essaie"]
+    // This lets "entrainer" match regardless of which pronoun precedes it
+    return normalized.split(/[\s']+/).filter(w => w);
   }
 }
 
@@ -2710,6 +2696,17 @@ async function loadCourseVocab(courseCode) {
       for (const comp of lego.components) {
         extractVocab(comp.target, chinese).forEach(v => vocabSet.add(v));
       }
+    }
+  }
+
+  // French/European elision particles — these single-letter forms appear before
+  // apostrophes (j', l', m', t', s', d', n', qu') and are structural, not vocab.
+  // Like Chinese particles, they shouldn't need explicit LEGOs.
+  // e.g., "s'entraîner" is a LEGO but "m'entraîner" uses "m" which is just
+  // the first-person form of the same reflexive pronoun.
+  if (!chinese) {
+    for (const p of ['j', 'l', 'm', 't', 's', 'd', 'n', 'qu', 'c']) {
+      vocabSet.add(p);
     }
   }
 
@@ -4576,6 +4573,7 @@ app.post('/api/seed/complete', async (req, res) => {
         known_text,
         target_text,
         status: 'released',
+        decomposed_at: new Date().toISOString(),
         version: 1
       }, { onConflict: 'course_code,seed_number' });
 
@@ -4747,27 +4745,112 @@ app.post('/api/seed/complete', async (req, res) => {
       console.log(`  ${legoId}: ${lego.known} → ${lego.target} (${allPhraseRows.length} phrases${buildupInfo})`);
     }
 
+    // EMPTY SEED HANDLING: When ALL words in the seed target are already in vocab,
+    // no new LEGOs are needed. Instead, add the seed sentence as a USE phrase to
+    // the LEGO that introduced the "newest" word in the seed (highest-indexed).
+    if (skippedDuplicates === legos.length && skippedDuplicates > 0) {
+      // Get all is_new=true LEGOs from earlier seeds to build word→LEGO map
+      const { data: allNewLegos } = await supabase
+        .from('course_legos')
+        .select('seed_number, lego_index, target_text')
+        .eq('course_code', course_code)
+        .eq('is_new', true)
+        .lt('seed_number', seed_number)
+        .order('seed_number');
+
+      // Build word→introducing LEGO map (first LEGO to contain the word wins)
+      const wordIntroducedBy = {};
+      for (const l of (allNewLegos || [])) {
+        const words = l.target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+        for (const w of words) {
+          if (!wordIntroducedBy[w]) {
+            wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
+          }
+        }
+      }
+
+      // For each word in the seed target, find its introducing LEGO, pick the highest
+      const seedWords = target_text.toLowerCase().replace(/[.,!?;:'"¿¡]/g, '').split(/\s+/).filter(Boolean);
+      let bestSeedNum = -1;
+      let bestLegoIdx = -1;
+      let bestLegoTarget = null;
+
+      for (const w of seedWords) {
+        const intro = wordIntroducedBy[w];
+        if (!intro) continue;
+        if (intro.seed_number > bestSeedNum ||
+            (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
+          bestSeedNum = intro.seed_number;
+          bestLegoIdx = intro.lego_index;
+          bestLegoTarget = intro.target_text;
+        }
+      }
+
+      if (bestSeedNum >= 0) {
+        const bestLegoId = `S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`;
+
+        // Find max position in that LEGO's basket to append after
+        const { data: existingPhrases } = await supabase
+          .from('course_practice_phrases')
+          .select('position')
+          .eq('course_code', course_code)
+          .eq('seed_number', bestSeedNum)
+          .eq('lego_index', bestLegoIdx)
+          .order('position', { ascending: false })
+          .limit(1);
+
+        const maxPos = existingPhrases?.[0]?.position || 0;
+
+        const { error: seedPhraseError } = await supabase
+          .from('course_practice_phrases')
+          .insert({
+            course_code,
+            seed_number: bestSeedNum,
+            lego_index: bestLegoIdx,
+            position: maxPos + 1,
+            known_text: known_text,
+            target_text: target_text,
+            word_count: target_text.length,
+            lego_count: (known_text.match(/\s+/g) || []).length + 1,
+            phrase_role: 'use',
+            connected_lego_ids: [],
+            lego_position: computeLegoPosition(target_text, bestLegoTarget),
+            metadata: {
+              format: 'build_use',
+              source: 'seed_sentence',
+              source_seed: seed_number,
+              score: 8
+            },
+            status: 'draft',
+            version: 1
+          });
+
+        if (seedPhraseError) {
+          console.warn(`  ⚠ Could not add seed as USE phrase: ${seedPhraseError.message}`);
+        } else {
+          totalPhrases++;
+          console.log(`  ✓ Empty seed → USE phrase for ${bestLegoId} (${bestLegoTarget})`);
+        }
+      } else {
+        console.log(`  ⚠ Empty seed but no introducing LEGO found for any word`);
+      }
+    }
+
     console.log(`\n✓ ${seedId} COMPLETE`);
     console.log(`  LEGOs: ${legos.length} (${skippedDuplicates} duplicates)`);
     console.log(`  Phrases: ${totalPhrases} (${totalBuildupPhrases} buildup)`);
     console.log(`${'='.repeat(60)}\n`);
 
     // Find next incomplete seed to guide agent
-    const { data: completedSeeds } = await supabase
-      .from('course_legos')
-      .select('seed_number')
-      .eq('course_code', course_code);
-    const completedSet = new Set(completedSeeds?.map(s => s.seed_number) || []);
-
     const { data: allSeeds } = await supabase
       .from('course_seeds')
-      .select('seed_number, known_text')
+      .select('seed_number, known_text, decomposed_at')
       .eq('course_code', course_code)
       .gt('seed_number', seed_number)
       .order('seed_number')
       .limit(50);
 
-    const nextSeed = allSeeds?.find(s => !completedSet.has(s.seed_number) && s.known_text);
+    const nextSeed = allSeeds?.find(s => !s.decomposed_at && s.known_text);
 
     // Record activity for stall detection
     recordActivity(course_code, seed_number);
@@ -5042,7 +5125,7 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .select('seed_count')
     .eq('course_code', courseCode)
     .single();
-  const totalSeeds = courseData?.seed_count || 260;
+  const totalSeeds = courseData?.seed_count || 300;
 
   // Count completed seeds (those with non-empty target_text)
   const { count: completedSeeds } = await supabase
@@ -5051,12 +5134,12 @@ app.get('/api/stats/:courseCode', async (req, res) => {
     .eq('course_code', courseCode)
     .neq('target_text', '');
 
-  // Count DISTINCT seed numbers from LEGOs (seeds with decomposition done)
-  const { data: seedData } = await supabase
-    .from('course_legos')
-    .select('seed_number')
-    .eq('course_code', courseCode);
-  const seedsWithLegos = new Set(seedData?.map(r => r.seed_number)).size;
+  // Count seeds with decomposition done (includes empty seeds where all LEGOs were duplicates)
+  const { count: seedsWithLegos } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .not('decomposed_at', 'is', null);
 
   // Ratio based on NEW legos only (the meaningful metric)
   const effectiveLegos = newLegos || 0;
@@ -5516,7 +5599,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
     .single();
 
   // Get target seed count (defaults to 260 if not set)
-  const targetSeedCount = courseInfo?.seed_count || 260;
+  const targetSeedCount = courseInfo?.seed_count || 300;
 
   // Get all seeds with their completion status - FILTERED to target range
   const { data: allSeedsRaw } = await supabase
@@ -5528,16 +5611,17 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   // Filter to only seeds within target range (1 to seed_count)
   const allSeeds = allSeedsRaw?.filter(s => s.seed_number <= targetSeedCount) || [];
 
-  // Get seeds that have LEGOs (completed) - also filtered to range
+  // Get seeds that have been decomposed (completed) - also filtered to range
   const { data: completedData } = await supabase
-    .from('course_legos')
-    .select('seed_number')
-    .eq('course_code', courseCode);
+    .from('course_seeds')
+    .select('seed_number, decomposed_at')
+    .eq('course_code', courseCode)
+    .not('decomposed_at', 'is', null);
 
   const completedSeeds = new Set(
     (completedData || [])
-      .filter(l => l.seed_number <= targetSeedCount)
-      .map(l => l.seed_number)
+      .filter(s => s.seed_number <= targetSeedCount)
+      .map(s => s.seed_number)
   );
 
   // Find next incomplete seed
@@ -5586,7 +5670,7 @@ app.get('/api/resume/:courseCode', async (req, res) => {
   // Two-Pass workflow: Calculate pass status
   // Pass 1: Translate all seeds in range (1 to seed_count) + save analysis
   // Pass 2: Decompose all seeds in range into LEGOs
-  // targetSeedCount is defined above from courseInfo?.seed_count || 260
+  // targetSeedCount is defined above from courseInfo?.seed_count || 300
   const seedsInRange = allSeeds.length;  // Seeds 1 to targetSeedCount
   const seedsTranslated = allSeeds.filter(s => s.target_text && s.target_text.trim() !== '').length;
   const seedsDecomposed = completedSeeds.size;
@@ -5817,6 +5901,164 @@ USE:
 });
 
 /**
+ * GET /api/next/:courseCode - API-guided builder endpoint
+ * Returns everything an LLM agent needs to build the next seed:
+ * - The seed to build (known + target text)
+ * - Available vocabulary (all prior LEGOs)
+ * - One golden example showing exact submission format
+ * - A pre-formatted markdown template to fill in
+ * - Exact curl command to submit
+ *
+ * Designed for fast/cheap models (Haiku) that need maximum guidance.
+ */
+app.get('/api/next/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  const targetLangName = getLanguageName(courseCode);
+
+  // Get course info
+  const { data: courseInfo } = await supabase
+    .from('courses')
+    .select('display_name, quality_rules, seed_count')
+    .eq('course_code', courseCode)
+    .single();
+
+  if (!courseInfo) {
+    return res.status(404).json({ error: `Course ${courseCode} not found` });
+  }
+
+  const targetSeedCount = courseInfo?.seed_count || 300;
+
+  // Find next incomplete seed
+  const { data: allSeeds } = await supabase
+    .from('course_seeds')
+    .select('seed_number, known_text, target_text, decomposed_at')
+    .eq('course_code', courseCode)
+    .lte('seed_number', targetSeedCount)
+    .order('seed_number');
+
+  const nextSeed = allSeeds?.find(s =>
+    s.target_text && s.target_text.trim() !== '' && !s.decomposed_at
+  );
+
+  if (!nextSeed) {
+    return res.json({
+      done: true,
+      message: `All ${targetSeedCount} seeds are complete!`,
+      seeds_completed: allSeeds?.filter(s => s.decomposed_at).length || 0
+    });
+  }
+
+  // Get all existing LEGOs (vocabulary available for phrases)
+  const { data: allLegos } = await supabase
+    .from('course_legos')
+    .select('seed_number, lego_index, known_text, target_text, type, components, is_new')
+    .eq('course_code', courseCode)
+    .eq('is_new', true)
+    .order('seed_number')
+    .order('lego_index');
+
+  // Format vocabulary as compact list
+  const vocabList = (allLegos || []).map(l =>
+    `${l.type === 'M' ? '[M]' : '[A]'} "${l.known_text}" → "${l.target_text}"`
+  );
+
+  // Pick a golden example (rotate based on seed number for variety)
+  const golden = courseInfo?.quality_rules?.golden_decompositions || [];
+  const goldenIdx = golden.length > 0 ? (nextSeed.seed_number % golden.length) : 0;
+  const example = golden[goldenIdx];
+
+  // Format the golden example as JSON (matching /api/seed/complete JSON format)
+  let exampleJson = null;
+  if (example) {
+    exampleJson = {
+      course_code: courseCode,
+      seed_number: example.seed_number,
+      known_text: example.known_text,
+      target_text: example.target_text,
+      attestation: { semantic_match_verified: true },
+      legos: example.legos.map((lego, i) => {
+        const obj = {
+          idx: i + 1,
+          type: lego.type,
+          known: lego.known,
+          target: lego.target
+        };
+        if (lego.type === 'M' && lego.components) {
+          obj.components = lego.components.map(c => ({ known: c.known, target: c.target }));
+        }
+        obj.build = (lego.build_phrases || []).map(bp => ({ known: bp.known, target: bp.target }));
+        obj.use = (lego.use_phrases || []).map(up => ({ known: up.known, target: up.target }));
+        return obj;
+      })
+    };
+  }
+
+  // Count completed seeds for progress
+  const completedCount = allSeeds?.filter(s => s.decomposed_at).length || 0;
+
+  // Build the JSON template for this seed (pre-filled with seed info, blanks for LEGOs)
+  const jsonTemplate = {
+    course_code: courseCode,
+    seed_number: nextSeed.seed_number,
+    known_text: nextSeed.known_text,
+    target_text: nextSeed.target_text,
+    attestation: { semantic_match_verified: true },
+    legos: [
+      {
+        idx: 1,
+        type: 'A or M',
+        known: 'english meaning',
+        target: 'target translation',
+        components: [{ known: 'word1', target: 'mot1' }, { known: 'word2', target: 'mot2' }],
+        build: [
+          { known: 'short fragment', target: 'traduction courte' },
+          { known: 'another fragment', target: 'autre traduction' }
+        ],
+        use: [
+          { known: 'Complete sentence a person would say.', target: 'Traduction complète.' },
+          { known: 'Another varied sentence.', target: 'Autre phrase variée.' }
+        ]
+      }
+    ]
+  };
+
+  res.json({
+    seed: {
+      number: nextSeed.seed_number,
+      known: nextSeed.known_text,
+      target: nextSeed.target_text
+    },
+    progress: `${completedCount}/${targetSeedCount} seeds done`,
+    vocabulary: vocabList,
+    vocab_count: vocabList.length,
+    rules: {
+      decomposition: [
+        'Break the seed into 2-4 LEGOs in PEDAGOGICAL order (most combinable first, temporal markers last)',
+        'A-type = single word (e.g., "to speak" → "parler")',
+        'M-type = multi-word chunk (e.g., "I want" → "je veux") — MUST have a components array',
+        'A-type LEGOs: omit the components field entirely',
+        'LEGOs that already exist in vocabulary above will be auto-detected as duplicates — still include them',
+        'The LEGO targets must TILE (cover) the seed target text'
+      ],
+      build_phrases: '3-5 per LEGO. Short-medium fragments. New LEGO + prior vocabulary. Show how it plugs in.',
+      use_phrases: '8-10 per LEGO. Medium-long COMPLETE sentences. Consummate variety — don\'t repeat patterns. Things a real person would say.',
+      critical: 'Phrases can ONLY use vocabulary from the list above + the current seed\'s LEGOs. The API will reject unknown words.'
+    },
+    golden_example: {
+      note: 'This is EXACTLY the JSON format to submit. Follow this structure.',
+      json: exampleJson
+    },
+    submit: {
+      method: 'POST',
+      url: `http://localhost:3471/api/seed/complete`,
+      content_type: 'application/json',
+      template: jsonTemplate
+    },
+    next_action: `After submitting, call GET /api/next/${courseCode} for the next seed.`
+  });
+});
+
+/**
  * GET /api/seeds - Get canonical seeds (668 master English seeds)
  * These have {target} placeholder for the target language name
  */
@@ -5849,7 +6091,7 @@ app.get('/api/seeds', async (req, res) => {
  */
 app.get('/api/seeds/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-  const limit = parseInt(req.query.limit) || 260;
+  const limit = parseInt(req.query.limit) || 300;
   const offset = parseInt(req.query.offset) || 0;
 
   const { data: seeds, error } = await supabase
@@ -5961,7 +6203,7 @@ app.patch('/api/seed/:courseCode/:seedNumber', async (req, res) => {
  */
 app.get('/api/course/:courseCode/translate', async (req, res) => {
   const { courseCode } = req.params;
-  const limit = parseInt(req.query.limit) || 260;  // Default course size
+  const limit = parseInt(req.query.limit) || 300;  // Default course size
   const offset = parseInt(req.query.offset) || 0;
 
   // Parse course type
@@ -7095,13 +7337,12 @@ app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   const checkpoint = await getCheckpointStatus(courseCode);
 
-  // Get completed seeds count
-  const { data: seedData } = await supabase
-    .from('course_legos')
-    .select('seed_number')
-    .eq('course_code', courseCode);
-
-  const completedSeeds = new Set(seedData?.map(r => r.seed_number) || []).size;
+  // Get completed seeds count (decomposed, including empty seeds)
+  const { count: completedSeeds } = await supabase
+    .from('course_seeds')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .not('decomposed_at', 'is', null);
 
   // Get LEGO and phrase counts
   const { count: legoCount } = await supabase
@@ -7163,7 +7404,7 @@ app.get('/api/checkpoint/summary/:courseCode', async (req, res) => {
       calibration_feedback: checkpoint.calibration_feedback
     },
     summary: {
-      seeds_complete: completedSeeds,
+      seeds_complete: completedSeeds || 0,
       total_legos: legoCount || 0,
       total_phrases: phraseCount || 0,
       use_phrases_count: usePhrases?.length || 0,

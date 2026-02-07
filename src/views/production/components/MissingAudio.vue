@@ -364,7 +364,7 @@ const isPlaying = ref({
 
 // Computed properties
 const totalMissing = computed(() => data.value?.totalMissing || 0)
-const releaseTarget = computed(() => data.value?.releaseTarget || 260)
+const releaseTarget = computed(() => data.value?.releaseTarget || 300)
 
 // Phrase missing counts - from phase8 /plan (single source of truth)
 const missingCounts = computed(() => data.value?.missingCounts || {
