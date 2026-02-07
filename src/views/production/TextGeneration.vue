@@ -938,8 +938,10 @@ async function fetchProgress() {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
-          // No active job - use last job's target or course default
-          if (buildData.last_job_target) {
+          // No active job - use course total_seeds from DB, then last job target, then default
+          if (data.total_seeds) {
+            seedCount.value = data.total_seeds
+          } else if (buildData.last_job_target) {
             seedCount.value = buildData.last_job_target
           }
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
