@@ -938,12 +938,7 @@ async function fetchProgress() {
             seedCount.value = buildData.build.total_seeds
           }
         } else {
-          // No active job - use course total_seeds from DB, then last job target, then default
-          if (data.total_seeds) {
-            seedCount.value = data.total_seeds
-          } else if (buildData.last_job_target) {
-            seedCount.value = buildData.last_job_target
-          }
+          // No active job - don't override user's seedCount selection from stale job data
           if (data.seeds_with_legos >= totalSeeds && data.seeds_with_legos > 0) {
             progress.value.status = 'complete'
           } else if (progress.value.status === 'running') {
