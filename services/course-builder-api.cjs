@@ -227,6 +227,33 @@ function normalizePhrase(text) {
   return text.replace(/[.,!?;:]+$/, '').toLowerCase().trim();
 }
 
+/**
+ * Normalize text for LEGO containment checks (phonetic matching for TTS)
+ *
+ * KEEPS (phonetically significant):
+ * - Accents: sì ≠ si, è ≠ e (different words!)
+ * - Contractive punctuation: it's ≠ its, l'homme ≠ le homme (apostrophes mark contractions/elisions)
+ *
+ * REMOVES (cosmetic only):
+ * - Capitalization: Sì = sì (same pronunciation)
+ * - Non-contractive punctuation: sì, è = sì è (comma is just a pause)
+ *
+ * Examples:
+ * - "Sì, è italiano" → "sì è italiano"
+ * - "sì, è" → "sì è"
+ * - "it's good" → "it's good" (apostrophe preserved)
+ */
+function normalizeForContainment(text) {
+  if (!text) return '';
+  return text
+    .toLowerCase()                                      // Remove case differences (Sì → sì)
+    .replace(/[.,!?;:¿¡«»""''。，！？、：；]/g, '')       // Remove non-contractive punctuation
+    // KEEP apostrophes (') for contractions: it's, l'homme, c'est
+    // KEEP accents (è, à, ñ, etc.) - phonetically significant
+    .replace(/\s+/g, ' ')                               // Normalize whitespace
+    .trim();
+}
+
 // =============================================================================
 // MARKDOWN PARSER FOR SEED SUBMISSIONS
 // Agents can submit in markdown format instead of JSON - fewer tokens, more natural
@@ -1086,10 +1113,12 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const buildRaw = lego.build || [];
   const useRaw = lego.use || [];
   const legoTarget = (lego.target || '').trim();
+  const legoTargetNorm = normalizeForContainment(legoTarget);
 
   // Filter out component phrases — real BUILD/USE phrases must contain the entire LEGO target
-  const build = buildRaw.filter(p => (p.target || '').includes(legoTarget));
-  const use = useRaw.filter(p => (p.target || '').includes(legoTarget));
+  // Use phonetic normalization: ignore case & non-contractive punctuation, keep accents & apostrophes
+  const build = buildRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
+  const use = useRaw.filter(p => normalizeForContainment(p.target || '').includes(legoTargetNorm));
   const buildComponents = buildRaw.length - build.length;
   const useComponents = useRaw.length - use.length;
   const componentCount = buildComponents + useComponents;
@@ -2016,9 +2045,21 @@ The LEGO target must be the EXACT form that appears in the seed — NEVER the di
 - If the seed contains "vederti", the LEGO target is "vederti", NOT "vedere"
 - If the seed contains "volevo", the LEGO target is "volevo", NOT "volere"
 - If the seed contains "parlando", the LEGO target is "parlando", NOT "parlare"
-- All BUILD and USE phrases for that LEGO must contain the LEGO target as an EXACT substring
+- All BUILD and USE phrases for that LEGO must contain the LEGO target as a substring
 - You choose phrases where the exact LEGO form works naturally — do NOT conjugate or inflect it
 - If a form doesn't fit a phrase context, don't write that phrase — find one where it does fit
+
+### CRITICAL: No Capitals, No Punctuation (Except Contractions)
+This is an AUDIO program - only phonetic differences matter for TTS:
+- **NEVER use capital letters** in LEGO targets or phrase targets (all lowercase)
+- **NEVER use punctuation** (commas, periods, question marks, etc.) in LEGO targets or phrase targets
+- **EXCEPT apostrophes** for contractions/elisions: "it's", "l'homme", "c'est" (these are phonetically significant)
+- **KEEP accents** - they ARE phonetically significant: "sì" ≠ "si", "è" ≠ "e" (different words!)
+- Examples:
+  - ✅ CORRECT: "sì è italiano" (lowercase, no punctuation except contractive apostrophes)
+  - ❌ WRONG: "Sì, è italiano." (capitals and commas)
+  - ✅ CORRECT: "it's good" (apostrophe marks contraction)
+  - ❌ WRONG: "its good" (missing apostrophe changes meaning)
 
 ### BUILD Phrases (minimum 3 per LEGO)
 Show the new LEGO combining with PREVIOUSLY-INTRODUCED vocabulary.
@@ -4198,10 +4239,10 @@ app.post('/api/lego', async (req, res) => {
 
     // Check phrases for vocab violations (only if not skipping baskets)
     if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
-      // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target as exact substring
-      const legoTargetLower = target.toLowerCase().trim();
+      // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target (phonetic matching)
+      const legoTargetNorm = normalizeForContainment(target);
       const containmentFails = phrases.filter(p =>
-        !p.target.toLowerCase().trim().includes(legoTargetLower)
+        !normalizeForContainment(p.target).includes(legoTargetNorm)
       );
       if (containmentFails.length > 0) {
         console.log(`✗ ${legoId}: REJECTED - ${containmentFails.length} phrases missing LEGO target "${target}"`);
@@ -4931,12 +4972,12 @@ app.post('/api/seed/complete', async (req, res) => {
             });
           }
 
-          // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target as exact substring
+          // LEGO CONTAINMENT: Every phrase target MUST contain the LEGO target (phonetic matching)
           // The learning app uses this for character matching/highlighting
           if (!SKIP_VALIDATION) {
-            const legoTargetLower = lego.target.toLowerCase().trim();
+            const legoTargetNorm = normalizeForContainment(lego.target);
             const containmentFails = allPhrases.filter(p =>
-              !p.target.toLowerCase().trim().includes(legoTargetLower)
+              !normalizeForContainment(p.target).includes(legoTargetNorm)
             );
             if (containmentFails.length > 0) {
               errors.push({
@@ -8189,14 +8230,14 @@ app.post('/api/phrases', async (req, res) => {
   const violations = [];
   const validPhrases = [];
 
-  const legoTargetLower = lego.target_text.toLowerCase().trim();
+  const legoTargetNorm = normalizeForContainment(lego.target_text);
 
   for (const phrase of phrases) {
     const { known, target } = phrase;
     if (!known || !target) continue;
 
-    // LEGO CONTAINMENT: phrase target MUST contain LEGO target as exact substring
-    if (!target.toLowerCase().trim().includes(legoTargetLower)) {
+    // LEGO CONTAINMENT: phrase target MUST contain LEGO target (phonetic matching)
+    if (!normalizeForContainment(target).includes(legoTargetNorm)) {
       violations.push({
         phrase: target,
         unknown: `LEGO target "${lego.target_text}" not found as substring`
