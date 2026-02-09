@@ -1,0 +1,650 @@
+# APML: Parallel Build System
+# Version: 1.0.0 (2026-02-09)
+# Status: Production
+# Type: CORE (build infrastructure)
+#
+# Replaced sequential single-agent builds with a coordinator/sub-agent
+# pattern using draft staging. The most significant architectural
+# addition to the SSi Course Builder in Feb 2026.
+
+core ParallelBuildSystem:
+  name: "Parallel Build System"
+  purpose: "Enable concurrent multi-agent seed decomposition with collision-safe finalization"
+  version: "1.0.0"
+  status: "Production"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  overview:
+    title: "Why Parallel Builds Exist"
+
+    problem: |
+      Sequential builds (one agent, one seed at a time) are slow.
+      A 300-seed course at ~2 minutes per seed takes ~10 hours.
+      A 668-seed course takes over 22 hours.
+      A single agent crash means restarting from the last checkpoint.
+
+    solution: |
+      Parallel builds split the work across multiple sub-agents (up to 10)
+      running concurrently. Each agent works on an independent batch of seeds
+      and submits to a DRAFT staging table rather than directly to live tables.
+      When all drafts are in, a finalization pass processes them in seed order,
+      detecting ZUT collisions between agents and deduplicating LEGOs.
+
+    benefits:
+      - "Speed: 10 agents reduce a 10-hour build to ~1-2 hours"
+      - "Resilience: one agent crash only loses its batch, others continue"
+      - "Collision safety: ZUT conflicts between agents are caught at finalize, not silently introduced"
+      - "Visibility: dashboard shows real-time draft/finalize/collision status per seed"
+      - "Resumability: restart skips seeds that already have valid drafts"
+
+  ## ==========================================================================
+  ## ARCHITECTURE
+  ## ==========================================================================
+
+  architecture:
+    title: "Coordinator / Sub-Agent / Draft Staging / Finalization"
+
+    pattern: |
+      The parallel build uses a three-tier architecture:
+
+      1. COORDINATOR AGENT (Sonnet model)
+         - Spawned by the API via iTerm2 osascript or headless process
+         - Does NOT build seeds itself
+         - Uses Claude Code's Task tool to spawn ~10 background sub-agents
+         - Polls /api/course/:code/drafts every 60s to monitor progress
+         - Calls /api/course/:code/finalize when all drafts are submitted
+         - Handles collision resolution by spawning fix sub-agents
+
+      2. SUB-AGENTS (Sonnet model, ~10 concurrent)
+         - Each receives a batch of seed numbers to decompose
+         - Fetches seeds and vocabulary from the API
+         - Submits each seed via POST /api/seed/complete?draft=true
+         - Runs fully autonomous (no human interaction)
+         - Retries on validation errors without limit
+
+      3. DRAFT STAGING TABLE (course_seed_drafts)
+         - Receives validated submissions from sub-agents
+         - One draft per seed (UNIQUE constraint, upsert replaces)
+         - Tracks validation_status: valid, collision, rework
+         - Isolated from live tables until finalization
+
+      4. FINALIZATION ENDPOINT (/api/course/:code/finalize)
+         - Processes drafts in seed order (ascending)
+         - Deduplicates LEGOs (same known + same target = duplicate)
+         - Detects collisions (same known + different target = ZUT violation)
+         - On collision: aborts, marks affected drafts, reports resolution steps
+         - On clean: writes to live tables, deletes drafts
+
+    diagram: |
+      Dashboard                    Course Builder API (port 3471)
+         |                                    |
+         |  POST /api/build/start/:code       |
+         +----------------------------------->|
+         |                                    |
+         |    Spawns Coordinator Agent         |
+         |    (iTerm2 or headless)             |
+         |                                    |
+         |         Coordinator                 |
+         |            |                        |
+         |            | Task tool (x10)        |
+         |            +----+----+----+         |
+         |            |    |    |    |         |
+         |           SA1  SA2  SA3  ...       |
+         |            |    |    |    |         |
+         |            | POST /api/seed/complete?draft=true
+         |            +----+----+----+-------->|
+         |                                    |
+         |                          course_seed_drafts
+         |                                    |
+         |            Coordinator polls       |
+         |            GET /drafts             |
+         |            <-----------------------|
+         |                                    |
+         |            POST /finalize          |
+         |            +---------------------->|
+         |                                    |
+         |                          course_seeds / course_legos /
+         |                          course_practice_phrases (live)
+
+  ## ==========================================================================
+  ## DATABASE SCHEMA
+  ## ==========================================================================
+
+  database:
+    title: "Draft Staging and Build Job Tracking"
+
+    course_seed_drafts:
+      migration: "database/migrations/20260207_course_seed_drafts.sql"
+      purpose: "Staging table for parallel agent submissions before finalization"
+
+      columns:
+        id:
+          type: "UUID"
+          default: "gen_random_uuid()"
+          note: "Primary key"
+        course_code:
+          type: "TEXT NOT NULL"
+          references: "courses(course_code)"
+        seed_number:
+          type: "INTEGER NOT NULL"
+        known_text:
+          type: "TEXT NOT NULL"
+          note: "English seed sentence"
+        target_text:
+          type: "TEXT NOT NULL"
+          note: "Target language seed sentence"
+        submission_data:
+          type: "JSONB NOT NULL"
+          note: "Full parsed legos array with build/use phrases"
+          structure: |
+            {
+              "legos": [
+                {
+                  "idx": 1, "type": "A",
+                  "known": "...", "target": "...",
+                  "build": [...], "use": [...]
+                },
+                ...
+              ]
+            }
+        validation_status:
+          type: "TEXT"
+          default: "'valid'"
+          check: "IN ('valid', 'collision', 'rework')"
+          note: "Set to 'collision' by finalize when ZUT conflict detected"
+        validation_notes:
+          type: "JSONB"
+          note: "Collision details, validation timestamps, skipped checks"
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique: "UNIQUE(course_code, seed_number) — one draft per seed, upsert replaces"
+
+      indexes:
+        - "idx_course_seed_drafts_course ON (course_code)"
+        - "idx_course_seed_drafts_status ON (course_code, validation_status)"
+
+      rls:
+        service_role: "full access (API server uses service_role key)"
+        authenticated: "read-only (dashboard viewing)"
+
+    build_jobs_build_mode:
+      migration: "database/migrations/20260208_add_build_mode_to_build_jobs.sql"
+      purpose: "Tracks whether a build is sequential or parallel"
+
+      column:
+        name: "build_mode"
+        type: "TEXT"
+        default: "'parallel'"
+        comment: "Build strategy: parallel (coordinator + sub-agents via drafts)"
+        note: "Added to existing build_jobs table. Default is parallel — sequential mode is legacy."
+
+  ## ==========================================================================
+  ## WORKFLOW: BUILD START TO FINALIZATION
+  ## ==========================================================================
+
+  workflow:
+    title: "Step-by-Step Parallel Build Lifecycle"
+
+    step_1:
+      name: "Build Start"
+      trigger: "POST /api/build/start/:courseCode"
+      params:
+        terminal: "'iTerm2' (default) or headless"
+        targetSeeds: "668 (default) — how many seeds to build"
+      actions:
+        - "Check for existing running/stalled build_jobs record for this course"
+        - "If running: reject ('Build already running')"
+        - "If stalled: resume existing job (update status to running)"
+        - "If none: create new build_jobs record with build_mode='parallel'"
+        - "Start the build manager (stall watcher)"
+        - "Call spawnParallelBuildAgent()"
+
+    step_2:
+      name: "Smart Batch Assignment"
+      function: "spawnParallelBuildAgent()"
+      actions:
+        - "Query course_seed_drafts for existing valid drafts"
+        - "Query course_seeds for already-finalized seeds (decomposed_at IS NOT NULL)"
+        - "Build seedsNeeded list: seeds 11..targetSeeds minus drafted minus finalized"
+        - "Split into up to 10 batches (min 20 seeds per batch)"
+        - "Fetch golden decomposition examples from quality_rules"
+        - "Fetch build_lessons for the language family"
+        - "Generate coordinator brief with batch assignments and methodology"
+        - "Write brief to /tmp/claude_parallel_{courseCode}_{timestamp}.txt"
+        - "Spawn coordinator agent (iTerm2 osascript or headless child_process)"
+
+    step_3:
+      name: "Coordinator Spawns Sub-Agents"
+      actor: "Coordinator agent"
+      actions:
+        - "Parse batch assignments from its brief"
+        - "Use Claude Code's Task tool to spawn one background sub-agent per batch"
+        - "All batches launched in parallel (single message with multiple Task calls)"
+        - "Each sub-agent prompt contains: seed list, API endpoints, methodology, golden examples, JSON template"
+
+    step_4:
+      name: "Sub-Agent Decomposition"
+      actor: "Each sub-agent"
+      loop: "For each seed in its assigned batch"
+      actions:
+        - "Fetch seed data from GET /api/seeds/:courseCode"
+        - "Fetch vocabulary from GET /api/vocab/:courseCode"
+        - "Decompose seed into LEGOs (A-type and M-type)"
+        - "Write BUILD phrases (min 3 per LEGO) and USE phrases (min 8 per LEGO)"
+        - "Submit via POST /api/seed/complete?draft=true"
+        - "On validation error: read error, fix, resubmit (no retry limit)"
+        - "On success: proceed to next seed"
+
+    step_5:
+      name: "Draft Validation (Server-Side)"
+      trigger: "POST /api/seed/complete with ?draft=true"
+      validations_run:
+        - "Tiling: seed target constructable from LEGO targets"
+        - "Vocabulary: phrases only use introduced vocabulary (from prior seed translations)"
+        - "Build/Use format: correct phrase structure and counts"
+        - "Phrase counts: minimum BUILD and USE per LEGO"
+        - "Complexity and length ratio checks"
+      validations_skipped:
+        - "ZUT: cannot know what other parallel agents have created (deferred to finalize)"
+        - "Balance: LEGO count balance (advisory only)"
+      on_pass: |
+        Upsert into course_seed_drafts with validation_status='valid'.
+        validation_notes records which checks passed and which were skipped.
+        Returns { status: 'DRAFTED', action: 'PROCEED TO NEXT SEED' }.
+      vocabulary_strategy: |
+        For parallel builds, vocabulary is derived from seed translations (target_text
+        of seeds 1..N-1) rather than from course_legos (which may not exist yet for
+        parallel seeds). This works because LEGOs must tile their seed translation,
+        so word-level vocab from translations equals word-level vocab from LEGOs.
+        Also includes vocab from existing LEGOs in live tables (golden seeds 1-10).
+
+    step_6:
+      name: "Coordinator Monitors Progress"
+      actor: "Coordinator agent"
+      endpoint: "GET /api/course/:code/drafts"
+      actions:
+        - "Poll every 60 seconds via curl"
+        - "Response: { total_drafts, valid, collision, rework, drafts: [...] }"
+        - "When total_drafts >= targetSeeds - 10 (golden seeds excluded), proceed to finalize"
+        - "If progress stalls (no new drafts for 10 minutes), report issue"
+
+    step_7:
+      name: "Dashboard Shows Seed Grid"
+      endpoint: "GET /api/build/seed-grid/:courseCode"
+      ui_component: "TextGeneration.vue"
+      statuses:
+        complete: "green (bg-emerald-500/80) — seed finalized in live tables"
+        drafted: "amber (bg-amber-500/80) — valid draft in staging table"
+        collision: "red (bg-red-500/80) — ZUT collision detected at finalize"
+        rework: "red (bg-red-500/80) — marked for rework"
+        building: "default — has LEGOs but not yet decomposed_at"
+        empty: "grey (bg-slate-700/80) — no content yet"
+      display: |
+        Grid of 5x5px colored cells, one per seed.
+        Header shows: "{finalized}/{total} finalized", "{drafted} drafted", "{collision} collision".
+        Hover tooltip: "S{N}: {status} ({legos}L, {phrases}P)".
+        Legend: Empty | Drafted | Collision | Finalized.
+
+    step_8:
+      name: "Finalization"
+      trigger: "POST /api/course/:code/finalize"
+      steps:
+        step_8a:
+          name: "Load Baseline"
+          action: |
+            Load all existing LEGOs from live tables (course_legos).
+            Build known_text -> { target_text, seed_number, lego_index } map
+            from is_new=true LEGOs. This is the baseline vocabulary from
+            golden seeds (1-10) plus any previously finalized seeds.
+
+        step_8b:
+          name: "Load Drafts"
+          action: |
+            Load all drafts from course_seed_drafts in seed_number order.
+            If no drafts found, return error with hint.
+
+        step_8c:
+          name: "Process Drafts — Dedup + Collision Detection"
+          action: |
+            For each draft in seed order, for each LEGO in the draft:
+            1. Look up LEGO known text in the baseline map
+            2. If found with SAME target: mark as DUPLICATE (dedup)
+            3. If found with DIFFERENT target: mark as COLLISION (ZUT violation)
+            4. If not found: mark as NEW, add to baseline map
+
+            Track dedup counts, collision details, and empty seeds
+            (seeds where all LEGOs are duplicates of earlier vocabulary).
+
+        step_8d:
+          name: "Collision Gate"
+          action: |
+            If any collisions found:
+            - Update colliding drafts in DB to validation_status='collision'
+            - Store collision details in validation_notes
+            - Return HTTP 409 with collisions array and resolution steps
+            - Finalization ABORTED — nothing written to live tables
+
+        step_8e:
+          name: "Write to Live Tables"
+          condition: "Zero collisions"
+          action: |
+            For each draft in seed order:
+            1. Upsert course_seeds with decomposed_at timestamp
+            2. Upsert course_legos (is_new=false for duplicates)
+            3. Generate and insert practice phrases (build-up, BUILD, USE)
+            4. Handle empty seeds: attach seed sentence as USE phrase
+               to the highest-indexed introducing LEGO from earlier seeds
+            After all drafts written:
+            5. Delete all drafts from course_seed_drafts
+            6. Invalidate vocabulary cache
+
+        step_8f:
+          name: "Report"
+          response: |
+            {
+              ok: true,
+              status: 'FINALIZED',
+              seeds_written, legos_introduced, legos_deduplicated,
+              empty_seeds, phrases_written, collisions: 0
+            }
+
+  ## ==========================================================================
+  ## COLLISION RESOLUTION
+  ## ==========================================================================
+
+  collision_resolution:
+    title: "ZUT Conflict Detection and Resolution Between Parallel Agents"
+
+    what_is_a_collision: |
+      A collision occurs when two parallel agents independently choose the
+      same English known text for a LEGO but map it to DIFFERENT target
+      language translations. This violates ZUT (Zero Uncertainty Test):
+      the learner must always know exactly what to produce.
+
+      Example:
+        Agent A (seed 45): "time" -> "temps" (French for weather/time)
+        Agent B (seed 89): "time" -> "fois" (French for occurrence)
+      Both are valid translations, but the learner cannot have two mappings.
+
+    why_parallel_causes_collisions: |
+      In sequential builds, ZUT is checked at submission time against the
+      live LEGO table. Each agent sees all prior LEGOs.
+
+      In parallel builds, ZUT checking at submission time is SKIPPED
+      (isDraft=true bypasses the checkLegoConflict call) because agents
+      cannot see each other's drafts. Collisions are deferred to finalization
+      where all drafts are processed in seed order against a single baseline.
+
+    detection: |
+      During finalization (step_8c), each LEGO's known text is checked
+      against the growing baseline map. If the same known text already
+      exists with a different target_text (case-insensitive comparison),
+      a collision is recorded with:
+        - seed_number, lego_known, lego_target, lego_idx
+        - conflicts_with: { target_text, seed_number, lego_index }
+
+    resolution_workflow: |
+      1. Finalize returns HTTP 409 with collisions array and colliding_seeds
+      2. Coordinator queries GET /api/course/:code/drafts?status=collision
+      3. Coordinator spawns fix sub-agents for colliding seeds
+      4. Fix agents redecompose the seed using bigger M-LEGOs
+         (absorb the ambiguous word into a context phrase so its
+         English known text becomes unique)
+      5. Fix agents resubmit via POST /api/seed/complete?draft=true
+         (upsert replaces old draft)
+      6. Coordinator calls POST /api/course/:code/finalize again
+      7. Repeat until clean
+
+    resolution_strategy: |
+      The fix for a collision is to "upchunk" the ambiguous word into a
+      larger M-LEGO where the English known text is unique:
+
+      Before (collision):
+        "time" -> "temps"     (seed 45)
+        "time" -> "fois"      (seed 89)
+
+      After (resolved):
+        "the time" -> "le temps"       (seed 45, M-LEGO with context)
+        "one time" -> "une fois"       (seed 89, M-LEGO with context)
+
+      The English known texts are now different, so ZUT is satisfied.
+
+  ## ==========================================================================
+  ## STALL DETECTION AND HEARTBEATS
+  ## ==========================================================================
+
+  stall_detection:
+    title: "Monitoring Agent Health During Parallel Builds"
+
+    constants:
+      HEARTBEAT_TIMEOUT_MS: "3 * 60 * 1000 (3 minutes) — agent considered dead if no heartbeat"
+      STALL_THRESHOLD_MS: "5 * 60 * 1000 (5 minutes) — course considered stalled if no submission"
+
+    heartbeat_mechanism: |
+      Agents send heartbeats in two ways:
+      1. AUTO-HEARTBEAT: Every POST /api/seed/complete call automatically
+         updates the agent heartbeat (agentHeartbeats map) with timestamp,
+         current seed number, and status.
+      2. MANUAL HEARTBEAT: POST /api/heartbeat/:courseCode — explicit
+         keepalive with agent_id, status, and current_seed.
+
+    stall_watcher: |
+      The build manager runs a periodic stall watcher that checks build_jobs:
+      1. Find jobs with status 'running' or 'stalled'
+      2. Check last_heartbeat age against HEARTBEAT_TIMEOUT_MS
+      3. If heartbeat fresh: agent alive, skip
+      4. If heartbeat stale (>3 min): mark job as 'stalled'
+
+    dashboard_polling: |
+      GET /api/activity returns activity status for all courses.
+      Includes stalled_count and list of stalled course codes.
+      Dashboard can use this to alert operator or trigger respawn.
+
+    build_status: |
+      GET /api/build/status/:courseCode returns:
+      - is_active (from build_jobs DB record)
+      - build_mode ('parallel')
+      - heartbeat_alive (boolean)
+      - progress (completed, total, percent)
+      - parallel info (total_drafts, valid, collision, rework)
+
+  ## ==========================================================================
+  ## SEED GRID UI
+  ## ==========================================================================
+
+  seed_grid_ui:
+    title: "Visual Build Progress in Dashboard"
+    component: "src/views/production/TextGeneration.vue"
+
+    data_source: |
+      GET /api/build/seed-grid/:courseCode
+      Queries course_seeds (decomposed_at), course_legos (count per seed),
+      course_practice_phrases (count per seed), and course_seed_drafts
+      (validation_status per seed).
+
+    grid_rendering: |
+      A flex-wrapped grid of 5x5px colored cells, one per seed up to
+      the course's seed_count. Each cell's color reflects its status.
+      Hover shows tooltip with seed number, status, LEGO count, and phrase count.
+
+    color_mapping:
+      complete: "bg-emerald-500/80 — decomposed_at is set (live tables)"
+      drafted: "bg-amber-500/80 — valid draft in staging"
+      collision: "bg-red-500/80 — collision or rework status"
+      rework: "bg-red-500/80 — same visual as collision"
+      building: "bg-slate-700/80 — has LEGOs but no decomposed_at (partial)"
+      empty: "bg-slate-700/80 — no content"
+
+    header_counters:
+      - "{finalized}/{total} finalized"
+      - "{drafted} drafted (amber, shown if > 0)"
+      - "{collision} collision (red, shown if > 0)"
+
+    rebuild_controls: |
+      The grid section includes rebuild controls (From/To seed number inputs
+      with a Rebuild button) that wipe LEGOs and phrases for a seed range
+      via POST /api/build/rebuild/:courseCode, enabling targeted re-decomposition.
+
+    polling: |
+      fetchSeedGrid() is called periodically during active builds to show
+      real-time progress as agents submit drafts and finalization occurs.
+
+  ## ==========================================================================
+  ## API ENDPOINTS
+  ## ==========================================================================
+
+  api_endpoints:
+    title: "Parallel Build API Surface"
+
+    build_start:
+      method: "POST"
+      path: "/api/build/start/:courseCode"
+      port: 3471
+      purpose: "Start a parallel build with coordinator agent spawning"
+      body: "{ terminal: 'iTerm2', targetSeeds: 668 }"
+      response: "{ ok, course_code, job_id, progress, build_mode: 'parallel' }"
+
+    build_stop:
+      method: "POST"
+      path: "/api/build/stop/:courseCode"
+      port: 3471
+      purpose: "Stop an active build"
+
+    build_status:
+      method: "GET"
+      path: "/api/build/status/:courseCode"
+      port: 3471
+      purpose: "Get build status including parallel draft progress"
+
+    seed_grid:
+      method: "GET"
+      path: "/api/build/seed-grid/:courseCode"
+      port: 3471
+      purpose: "Seed status grid for dashboard visualization"
+      response: "{ seeds: [{seed, status, legos, phrases}], total, complete, drafted, collision, building, empty }"
+
+    seed_complete_draft:
+      method: "POST"
+      path: "/api/seed/complete?draft=true"
+      port: 3471
+      purpose: "Submit seed decomposition as draft (parallel mode)"
+      note: |
+        Same endpoint as non-draft submission but with ?draft=true query param.
+        Skips ZUT validation (deferred to finalize).
+        Skips checkpoint gate.
+        Uses translation-based vocabulary instead of LEGO-based vocabulary.
+        Upserts into course_seed_drafts instead of live tables.
+
+    drafts:
+      method: "GET"
+      path: "/api/course/:code/drafts"
+      port: 3471
+      purpose: "List draft status summary for coordinator polling"
+      params: "?status=valid|collision|rework (optional filter)"
+      response: "{ course_code, total_drafts, valid, collision, rework, drafts: [...] }"
+
+    finalize:
+      method: "POST"
+      path: "/api/course/:code/finalize"
+      port: 3471
+      purpose: "Process all drafts into live tables with collision detection"
+      response_success: |
+        HTTP 200: { ok: true, status: 'FINALIZED', seeds_written, legos_introduced,
+        legos_deduplicated, empty_seeds, phrases_written, collisions: 0 }
+      response_collision: |
+        HTTP 409: { error: 'COLLISIONS_DETECTED', collisions: [...],
+        colliding_seeds: [...], resolution: { steps: [...] } }
+
+    heartbeat:
+      method: "POST"
+      path: "/api/heartbeat/:courseCode"
+      port: 3471
+      purpose: "Agent heartbeat for stall detection"
+
+    activity:
+      method: "GET"
+      path: "/api/activity"
+      port: 3471
+      purpose: "Activity status for all courses (stall detection)"
+      response: "{ courses: {...}, stalled: [...], stalled_count, threshold_minutes: 5 }"
+
+  ## ==========================================================================
+  ## KEY DESIGN DECISIONS
+  ## ==========================================================================
+
+  design_decisions:
+    title: "Rationale for Architectural Choices"
+
+    draft_table_not_queue: |
+      Drafts use a table with UNIQUE(course_code, seed_number) rather than
+      a queue. This means resubmission (upsert) replaces the previous draft
+      for that seed. There is no draft history — only the latest submission
+      matters. This simplifies collision resolution: fix agents just resubmit,
+      and the old draft is overwritten.
+
+    zut_deferred_not_skipped: |
+      ZUT checking is not removed for parallel builds — it is deferred from
+      submission time to finalization time. At submission, each agent cannot
+      see other agents' drafts, so checking would give false negatives.
+      At finalization, all drafts are processed in seed order against a
+      single growing baseline, giving accurate collision detection.
+
+    seed_order_finalization: |
+      Drafts are processed in seed_number order during finalization.
+      This matters because:
+      1. Lower seeds' LEGOs become baseline for higher seeds' dedup checks
+      2. Empty seed detection depends on knowing all prior vocabulary
+      3. Deterministic results regardless of agent submission order
+
+    translation_based_vocab: |
+      Parallel agents validate phrase vocabulary against seed translations
+      (target_text of seeds 1..N-1) rather than LEGOs. This works because
+      LEGOs must tile their seed translation, so word-level vocabulary is
+      identical. This avoids agents depending on each other's LEGO output.
+
+    coordinator_is_lightweight: |
+      The coordinator agent is an orchestrator, not a builder. It spawns
+      sub-agents, monitors progress, calls finalize, and handles collision
+      resolution. It uses Sonnet model for cost efficiency. Sub-agents
+      also use Sonnet for quality decomposition.
+
+    golden_seeds_excluded: |
+      Seeds 1-10 are golden (hand-verified calibration seeds already in
+      live tables). Parallel builds start from seed 11. The coordinator
+      brief explicitly states "Seeds 1-10 are golden (already done)".
+
+  ## ==========================================================================
+  ## SUMMARY
+  ## ==========================================================================
+
+  summary:
+    principles:
+      - "Parallel builds use a coordinator -> sub-agents -> draft staging -> finalization pattern"
+      - "Drafts are staged in course_seed_drafts, isolated from live tables"
+      - "ZUT collision detection is deferred to finalization, not skipped"
+      - "Finalization processes drafts in seed order for deterministic results"
+      - "Collisions are resolved by upchunking ambiguous words into M-LEGOs"
+      - "Smart batch assignment skips seeds with existing valid drafts or finalized status"
+      - "Dashboard seed grid shows real-time progress with color-coded statuses"
+      - "Heartbeat and stall detection keep builds resilient to agent crashes"
+      - "The coordinator runs unattended — designed for overnight builds"
+
+    key_files:
+      - "services/course-builder-api.cjs — all parallel build logic"
+      - "database/migrations/20260207_course_seed_drafts.sql — draft table schema"
+      - "database/migrations/20260208_add_build_mode_to_build_jobs.sql — build_mode column"
+      - "src/views/production/TextGeneration.vue — seed grid UI component"
+
+## ============================================================================
+## GENERATED: 2026-02-09
+## APML Parallel Build System v1.0.0
+## ============================================================================

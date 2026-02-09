@@ -1,12 +1,12 @@
 # APML: Audio Registry Architecture
-# Version: 13.4.0 (2026-01-29)
+# Version: 13.5.0 (2026-02-09)
 # Status: CANONICAL - This is the source of truth
 # Type: CORE ARCHITECTURE SPECIFICATION
 
 architecture AudioRegistry:
   name: "Course-Owned Audio Architecture"
   purpose: "Simple, course-centric audio ownership with shared audio for reusables"
-  version: "13.4.0"
+  version: "13.5.0"
 
   ## ==========================================================================
   ## BREAKING CHANGE FROM v12
@@ -168,7 +168,7 @@ architecture AudioRegistry:
   ## ==========================================================================
 
   schema:
-    version: "13.4.0"
+    version: "13.5.0"
     database: "supabase"
     compiler_target: "postgresql"
 
@@ -694,6 +694,24 @@ architecture AudioRegistry:
           nullable: true
           description: "Error details if failed"
 
+        machine_name:
+          type: "TEXT"
+          nullable: true
+          description: |
+            Hostname of machine currently running this job.
+            Updated on job creation, resume, and each heartbeat/progress update,
+            so it always reflects the CURRENT machine running the job.
+
+        build_mode:
+          type: "TEXT"
+          nullable: true
+          default: "'parallel'"
+          description: |
+            Build strategy:
+            - parallel: Coordinator + sub-agents via course_seed_drafts staging table
+            Parallel builds submit drafts independently; finalize endpoint
+            processes them in order (dedup, collision detection).
+
         resume_from_seed:
           type: "INTEGER"
           nullable: true
@@ -766,6 +784,247 @@ architecture AudioRegistry:
           using: "true"
           with_check: "true"
           description: "Course-Builder (service role) has full access"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_SEED_DRAFTS TABLE - Parallel build staging
+    ## ------------------------------------------------------------------------
+
+    table course_seed_drafts:
+      description: "Staging table for parallel seed decomposition"
+      purpose: |
+        Parallel build workflow: multiple agents submit drafts independently.
+        The finalize endpoint processes them in order (dedup, collision detection)
+        before promoting to the live course_seeds/course_legos/course_practice_phrases tables.
+
+        One draft per seed per course (upsert replaces on resubmission).
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(course_code)"
+
+        seed_number:
+          type: "INTEGER"
+          nullable: false
+
+        known_text:
+          type: "TEXT"
+          nullable: false
+
+        target_text:
+          type: "TEXT"
+          nullable: false
+
+        submission_data:
+          type: "JSONB"
+          nullable: false
+          description: "Full parsed legos array (with build/use phrases)"
+
+        validation_status:
+          type: "TEXT"
+          default: "'valid'"
+          check: "validation_status IN ('valid', 'collision', 'rework')"
+          description: |
+            Draft validation state:
+            - valid: Ready for finalization
+            - collision: LEGO conflict detected with another draft
+            - rework: Agent needs to resubmit with fixes
+
+        validation_notes:
+          type: "JSONB"
+          nullable: true
+          description: "Details about collisions or rework reasons"
+
+        created_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+        updated_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_draft_per_seed:
+          type: "UNIQUE"
+          columns: ["course_code", "seed_number"]
+          description: "One draft per seed, upsert replaces"
+
+      indexes:
+        idx_course_seed_drafts_course:
+          columns: ["course_code"]
+        idx_course_seed_drafts_status:
+          columns: ["course_code", "validation_status"]
+
+      rls_policies:
+        service_role_full:
+          operation: "ALL"
+          role: "service_role"
+          using: "true"
+          with_check: "true"
+          description: "API server (service role) has full access"
+
+        authenticated_read:
+          operation: "SELECT"
+          role: "authenticated"
+          using: "true"
+          description: "Dashboard can read drafts for monitoring"
+
+    ## ------------------------------------------------------------------------
+    ## COURSE_QA_FLAGS TABLE - QA monitoring infrastructure
+    ## ------------------------------------------------------------------------
+
+    table course_qa_flags:
+      description: "QA issues flagged by monitor agent for human review"
+      purpose: |
+        Async phrase quality monitoring. Monitor agent flags issues here;
+        human reviews at checkpoints.
+
+        Also adds qa_checked TIMESTAMPTZ column to course_practice_phrases
+        to track when each phrase was last checked by the monitor.
+
+      columns:
+        id:
+          type: "UUID"
+          primary_key: true
+          default: "gen_random_uuid()"
+
+        course_code:
+          type: "TEXT"
+          nullable: false
+          references: "courses(course_code)"
+
+        phrase_id:
+          type: "UUID"
+          nullable: true
+          references: "course_practice_phrases(id)"
+          description: "NULL for cross-seed issues like frequency/variety"
+
+        seed_number:
+          type: "INTEGER"
+          nullable: true
+
+        lego_id:
+          type: "TEXT"
+          nullable: true
+
+        check_type:
+          type: "TEXT"
+          nullable: false
+          check: "check_type IN ('grammar', 'semantic', 'naturalness', 'lego_frequency', 'lego_spread', 'variety', 'vocabulary')"
+          description: |
+            Type of check that found the issue:
+            - grammar: Grammar errors (either language)
+            - semantic: Translation meaning issues
+            - naturalness: Unnatural phrasing
+            - lego_frequency: LEGO phrase count issues (per-LEGO)
+            - lego_spread: LEGO usage distribution across course
+            - variety: Pattern repetition issues
+            - vocabulary: Uses words not yet introduced
+
+        severity:
+          type: "TEXT"
+          nullable: false
+          default: "'warning'"
+          check: "severity IN ('error', 'warning', 'info')"
+          description: "error = must fix, warning = should review, info = pattern noticed"
+
+        issue:
+          type: "TEXT"
+          nullable: false
+          description: "Brief description of the problem"
+
+        details:
+          type: "JSONB"
+          default: "'{}'"
+          description: "Additional context (examples, counts, patterns)"
+
+        status:
+          type: "TEXT"
+          nullable: false
+          default: "'open'"
+          check: "status IN ('open', 'resolved', 'ignored', 'false_positive')"
+
+        resolved_at:
+          type: "TIMESTAMPTZ"
+          nullable: true
+
+        resolved_by:
+          type: "TEXT"
+          nullable: true
+
+        resolution_notes:
+          type: "TEXT"
+          nullable: true
+
+        flagged_at:
+          type: "TIMESTAMPTZ"
+          default: "NOW()"
+
+      constraints:
+        unique_phrase_flag:
+          type: "UNIQUE"
+          columns: ["phrase_id", "check_type"]
+          deferrable: "DEFERRABLE INITIALLY DEFERRED"
+          description: "Prevent duplicate flags per phrase/check_type combo"
+
+      indexes:
+        idx_qa_flags_course:
+          columns: ["course_code"]
+        idx_qa_flags_status:
+          columns: ["status"]
+        idx_qa_flags_severity:
+          columns: ["severity"]
+        idx_qa_flags_type:
+          columns: ["check_type"]
+        idx_qa_flags_seed:
+          columns: ["seed_number"]
+        idx_qa_flags_open:
+          columns: ["course_code", "severity"]
+          where: "status = 'open'"
+
+      rls_policies:
+        authenticated_read:
+          operation: "SELECT"
+          role: "authenticated"
+          using: "true"
+          description: "Dashboard can read all flags"
+
+        authenticated_insert:
+          operation: "INSERT"
+          role: "authenticated"
+          with_check: "true"
+          description: "Dashboard can insert flags (manual flagging)"
+
+        authenticated_update:
+          operation: "UPDATE"
+          role: "authenticated"
+          using: "true"
+          with_check: "true"
+          description: "Dashboard can update flags (resolve, ignore, etc.)"
+
+        service_role_full:
+          operation: "ALL"
+          role: "service_role"
+          using: "true"
+          with_check: "true"
+          description: "Monitor agent (service role) has full access"
+
+      helper_functions:
+        get_qa_summary:
+          params: ["p_course_code TEXT"]
+          returns: "TABLE (total_flags, error_count, warning_count, info_count, open_count, resolved_count)"
+          description: "Get QA summary counts for a course"
+
+        get_qa_flags_by_type:
+          params: ["p_course_code TEXT"]
+          returns: "TABLE (check_type, flag_count, open_count)"
+          description: "Get flag counts grouped by check type for a course"
 
     ## ------------------------------------------------------------------------
     ## COURSE_EXPORT_STATES TABLE - 4-step export workflow state
@@ -1116,6 +1375,67 @@ architecture AudioRegistry:
       returns: "TABLE (role, origin, count, voice_count)"
 
   ## ==========================================================================
+  ## AUDIO-NULLING TRIGGERS (Content Tables)
+  ## ==========================================================================
+
+  audio_nulling_triggers:
+    purpose: |
+      When text changes on course_practice_phrases or course_legos, the
+      corresponding audio UUID columns are automatically set to NULL.
+      Phase 8 "Start Generation" then picks up NULLs and regenerates audio.
+
+      This ensures audio always matches the current text without manual
+      intervention. Changed text = stale audio, so NULL it and regenerate.
+
+    trigger course_practice_phrases:
+      name: "trg_null_phrase_audio_on_text_change"
+      timing: "BEFORE UPDATE"
+      for_each: "ROW"
+      function: "null_phrase_audio_on_text_change()"
+      logic: |
+        IF NEW.known_text IS DISTINCT FROM OLD.known_text THEN
+          NEW.known_audio_id := NULL;
+        END IF;
+        IF NEW.target_text IS DISTINCT FROM OLD.target_text THEN
+          NEW.target1_audio_id := NULL;
+          NEW.target2_audio_id := NULL;
+        END IF;
+
+    trigger course_legos:
+      name: "trg_null_lego_audio_on_text_change"
+      timing: "BEFORE UPDATE"
+      for_each: "ROW"
+      function: "null_lego_audio_on_text_change()"
+      logic: |
+        IF NEW.known_text IS DISTINCT FROM OLD.known_text THEN
+          NEW.known_audio_id := NULL;
+          NEW.presentation_audio_id := NULL;
+        END IF;
+        IF NEW.target_text IS DISTINCT FROM OLD.target_text THEN
+          NEW.target1_audio_id := NULL;
+          NEW.target2_audio_id := NULL;
+        END IF;
+
+    related_columns: |
+      These triggers act on the audio ID columns added by migration
+      20260130_add_audio_ids_to_content.sql:
+
+      course_legos:
+        - known_audio_id UUID REFERENCES course_audio(id)
+        - target1_audio_id UUID REFERENCES course_audio(id)
+        - target2_audio_id UUID REFERENCES course_audio(id)
+        - presentation_audio_id (existing column)
+
+      course_practice_phrases:
+        - known_audio_id UUID REFERENCES course_audio(id)
+        - target1_audio_id UUID REFERENCES course_audio(id)
+        - target2_audio_id UUID REFERENCES course_audio(id)
+
+      These columns enable "cycle locking" - storing audio IDs directly
+      instead of text matching at runtime. The nulling triggers ensure
+      stale audio references are cleared when text is edited.
+
+  ## ==========================================================================
   ## MIGRATION FROM v12
   ## ==========================================================================
 
@@ -1150,7 +1470,7 @@ architecture AudioRegistry:
 
 ## ============================================================================
 ## GENERATED: 2026-01-29
-## APML v13.4.0 - Course-Owned Audio Architecture
+## APML v13.5.0 - Course-Owned Audio Architecture
 ## Supersedes: v12.0.0 (texts → audio_files → course_audio)
 ## Changes in v13.1:
 ##   - Added encouragement and instruction roles to course_audio
@@ -1169,4 +1489,10 @@ architecture AudioRegistry:
 ##   - Added quality_rules JSONB column to courses table
 ##   - Captures language-pair specific methodology guidance
 ##   - Populated by /course-methodology-analysis skill
+## Changes in v13.5 (2026-02-09):
+##   - Added course_seed_drafts table for parallel build staging
+##   - Added course_qa_flags table for async QA monitoring
+##   - Added machine_name and build_mode columns to build_jobs table
+##   - Added audio-nulling triggers on course_practice_phrases and course_legos
+##   - Documented audio ID columns (cycle locking) on content tables
 ## ============================================================================

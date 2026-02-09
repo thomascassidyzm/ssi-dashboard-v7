@@ -1,11 +1,11 @@
 # APML Service: Course Builder API
-# Version: 3.0.0 (2026-01-28)
+# Version: 4.0.0 (2026-02-09)
 # Status: Production-ready
 # Server Port: 3471
 
 service CourseBuilderAPI:
   name: "Course Builder API"
-  version: "3.0.0"
+  version: "4.0.0"
   port: 3471
   purpose: "Bulletproof API for LLM agents to insert course content"
 
@@ -20,10 +20,16 @@ service CourseBuilderAPI:
     All content is validated BEFORE insertion using multiple quality gates.
     The API enforces functional determinism (ZUT principle) and proper M-LEGO structure.
 
+    v4.0 adds parallel draft builds (multi-agent seed decomposition with finalization),
+    a full QA workflow (flag/resolve/dismiss lifecycle), QA agent spawning, and
+    cross-course calibration endpoints.
+
   architecture:
-    database: "Supabase (course_seeds, course_legos, course_practice_phrases)"
+    database: "Supabase (course_seeds, course_legos, course_practice_phrases, course_seed_drafts, course_qa_flags)"
     validation: "All validations run BEFORE any database writes"
     atomicity: "Golden path endpoint is all-or-nothing"
+
+  endpoint_count: 71
 
   ## ==========================================================================
   ## GOLDEN PATH: POST /api/seed/complete
@@ -36,10 +42,14 @@ service CourseBuilderAPI:
       Validates everything upfront, inserts all or nothing.
 
       Agent completes one seed at a time:
-      1. Translate the seed (known → target)
+      1. Translate the seed (known -> target)
       2. Decompose into LEGOs
       3. Create practice phrases for each LEGO
       4. Submit everything in one request
+
+      Draft mode: Append ?draft=true to route submissions to course_seed_drafts
+      instead of live tables. Used during parallel builds where multiple agents
+      decompose seeds concurrently and a finalization step resolves collisions.
 
     request_body:
       course_code: "string (e.g., 'zho_for_eng')"
@@ -148,13 +158,17 @@ service CourseBuilderAPI:
       All validations run BEFORE any database writes.
       If ANY validation fails, NOTHING is inserted.
 
-      NOTE: Seed tiling validation was REMOVED because:
-      - LEGOs can be introduced in one seed and reused in later seeds (is_new=false)
-      - LEGOs can overlap to handle different word orders
-      - Seeds are conceptual guides, not real course content
+      Smart vocabulary caching: LRU cache with 30-minute TTL, max 10 courses.
+      loadCourseVocab() loads existing DB vocabulary before tiling check,
+      so agents only need to submit NEW LEGOs -- prior vocabulary is already known.
+
+      Draft mode: When ?draft=true, submissions go to course_seed_drafts
+      instead of live tables. Vocabulary validation still runs against
+      existing live-table LEGOs plus a local vocabSet for the draft session.
+      Collisions are deferred to the finalization step.
 
     ## =========================================================================
-    ## SKILL REFERENCES - Error → Guidance Mapping
+    ## SKILL REFERENCES - Error -> Guidance Mapping
     ## =========================================================================
     ##
     ## When validation fails, error responses include relevant skills for agents
@@ -241,8 +255,8 @@ service CourseBuilderAPI:
               "skills": ["/ssi-decompose-seed", "/ssi-add-overlapping-legos"],
               "suggestions": [
                 "UPCHUNK: Add context to disambiguate (recommended)",
-                "  - 'to learn' → '学' (existing)",
-                "  - '[more specific phrase]' → '学习' (new)",
+                "  - 'to learn' -> '学' (existing)",
+                "  - '[more specific phrase]' -> '学习' (new)",
                 "SYNONYM: Use different known text",
                 "  - Find a synonym or variant for 'to learn'",
                 "Review /ssi-add-overlapping-legos for overlap patterns"
@@ -253,22 +267,25 @@ service CourseBuilderAPI:
         upchunk:
           description: "Add context to disambiguate - creates natural M-LEGO"
           example:
-            before: "'to learn' → '学习' (conflicts with 'to learn' → '学')"
-            after: "'to study formally' → '学习' (no conflict)"
+            before: "'to learn' -> '学习' (conflicts with 'to learn' -> '学')"
+            after: "'to study formally' -> '学习' (no conflict)"
           recommended: true
 
         synonym:
           description: "Use different known text"
           example:
-            before: "'to learn' → '学习'"
-            after: "'to study' → '学习'"
+            before: "'to learn' -> '学习'"
+            after: "'to study' -> '学习'"
           note: "Less elegant but acceptable"
 
     gate_2_vocabulary:
       name: "Vocabulary Validation (ZUT Principle)"
       description: |
         Phrases can only use vocabulary that has been introduced.
-        Per-course vocabulary tracking with LRU cache.
+        Per-course vocabulary tracking with LRU cache (max 10 courses, 30-min TTL).
+
+        loadCourseVocab() loads existing vocabulary from the database before checking,
+        so agents do not need to resubmit already-introduced LEGOs.
 
       what_counts_as_introduced:
         - "A-type LEGO target text (single word)"
@@ -321,7 +338,7 @@ service CourseBuilderAPI:
     gate_4_phrase_tier_distribution:
       name: "Phrase Length Tier Distribution"
       description: |
-        Phrases must have smooth SHORT → MEDIUM → LONG progression.
+        Phrases must have smooth SHORT -> MEDIUM -> LONG progression.
         Common failure: jumping directly from SHORT to LONG, skipping MEDIUM.
 
       tiers:
@@ -446,7 +463,7 @@ service CourseBuilderAPI:
       agent_phrases_start_at: "position 4"
 
   ## ==========================================================================
-  ## OTHER ENDPOINTS
+  ## OTHER CONTENT ENDPOINTS
   ## ==========================================================================
 
   other_endpoints:
@@ -498,25 +515,294 @@ service CourseBuilderAPI:
         }
       critical: "ALWAYS call this after context compaction - do NOT guess seeds"
 
+    get_api_next:
+      path: "GET /api/next/:courseCode"
+      purpose: "Get next incomplete seed with vocabulary context and example decompositions"
+      description: |
+        Returns the next seed that needs decomposition along with:
+        - Full vocabulary list grouped by seed (newest first, starred for recent)
+        - 3 example completed seeds (seed 1, seed 10, previous seed) as templates
+        - Submission template matching the expected shape
+      returns: |
+        {
+          "course_code": "courseCode",
+          "seed": { "seed_number": 42, "known_text": "...", "target_text": "..." },
+          "vocabulary": ["...vocab lines..."],
+          "examples": [...completed seed decompositions...],
+          "template": { ... submission template ... },
+          "next_action": "After submitting, call GET /api/next/:courseCode for the next seed."
+        }
+
     get_api_seeds:
+      path: "GET /api/seeds"
+      purpose: "Get canonical seeds (668 master English seeds with {target} placeholder)"
+      query_params:
+        limit: "integer (default: 668)"
+        offset: "integer (default: 0)"
+      returns: "Array of seed objects from canonical_seeds table"
+
+    get_api_seeds_course:
       path: "GET /api/seeds/:courseCode"
-      purpose: "Get seeds for a course"
-      returns: "Array of seed objects"
+      purpose: "Get course-specific seeds (with translations)"
+      query_params:
+        limit: "integer (default: 300)"
+        offset: "integer (default: 0)"
+      returns: "Array of seed objects with known_text and target_text"
 
     get_api_stats:
       path: "GET /api/stats/:courseCode"
       purpose: "Get course quality metrics"
-      returns: "LEGOs count, phrases count, ratio, vocab size"
+      returns: "LEGOs count, phrases count, ratio, vocab size, draft counts"
 
     get_api_vocab:
       path: "GET /api/vocab/:courseCode"
       purpose: "Get current vocabulary set for a course"
       returns: "Vocabulary list (for debugging)"
 
+    get_api_phrases:
+      path: "GET /api/phrases/:courseCode"
+      purpose: "Get phrases with filters (for QA audit)"
+      query_params:
+        limit: "integer (default: 100, max: 500)"
+        offset: "integer (default: 0)"
+        seed_min: "integer (optional)"
+        seed_max: "integer (optional)"
+        role: "string (optional: 'build', 'use', 'practice', 'component')"
+      returns: "Paginated array of phrase objects"
+
+    patch_api_phrases:
+      path: "PATCH /api/phrases/:id"
+      purpose: "Update a phrase (for Fixer agent)"
+      body:
+        known_text: "string (optional)"
+        target_text: "string (optional)"
+      returns: |
+        {
+          "success": true,
+          "phrase_id": "uuid",
+          "changes": { "known_text": "...", "target_text": "..." },
+          "phrase": { ... updated phrase object ... }
+        }
+
     delete_api_course:
       path: "DELETE /api/course/:courseCode"
       purpose: "Clear all data for a course"
       warning: "Destructive - use with caution"
+
+  ## ==========================================================================
+  ## DRAFT & FINALIZATION ENDPOINTS (Parallel Builds)
+  ## ==========================================================================
+
+  draft_finalization:
+    description: |
+      Parallel build mode allows multiple agents to decompose seeds concurrently.
+      Submissions go to course_seed_drafts (staging table) instead of live tables.
+      After all agents finish, finalization processes drafts in seed order,
+      detects duplicates and collisions, and writes clean data to live tables.
+
+    get_api_course_drafts:
+      path: "GET /api/course/:code/drafts"
+      purpose: "List draft seeds with status summary"
+      query_params:
+        status: "string (optional: 'valid', 'collision', 'rework')"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "total_drafts": 250,
+          "valid": 245,
+          "collision": 3,
+          "rework": 2,
+          "drafts": [
+            {
+              "seed_number": 11,
+              "validation_status": "valid",
+              "validation_notes": null,
+              "created_at": "ISO timestamp",
+              "updated_at": "ISO timestamp"
+            }
+          ]
+        }
+
+    post_api_course_finalize:
+      path: "POST /api/course/:code/finalize"
+      purpose: "Process all drafts into live tables"
+      description: |
+        Steps:
+        1. Load baseline LEGOs from live tables (golden seeds already finalized)
+        2. Load all drafts in seed order
+        3. Process: dedup (same known+target) and detect collisions (same known, different target)
+        4. If collisions found -> report collisions, mark drafts, abort (nothing written)
+        5. If clean -> write to live tables (course_seeds, course_legos, course_practice_phrases),
+           handle empty seeds (all-duplicate LEGOs), cleanup drafts, invalidate vocab cache
+      returns: |
+        {
+          "ok": true,
+          "status": "FINALIZED",
+          "course_code": "courseCode",
+          "seeds_written": 250,
+          "legos_introduced": 180,
+          "legos_deduplicated": 420,
+          "empty_seeds": 15,
+          "empty_seed_numbers": [45, 67, ...],
+          "phrases_written": 4200,
+          "collisions": 0
+        }
+      collision_response: |
+        {
+          "error": "COLLISIONS_DETECTED",
+          "message": "3 LEGO collision(s) found - cannot finalize until resolved",
+          "collisions": [
+            {
+              "seed_number": 55,
+              "lego_known": "to learn",
+              "lego_target": "apprendre",
+              "lego_idx": 2,
+              "conflicts_with": {
+                "target_text": "etudier",
+                "seed_number": 12,
+                "lego_index": 1
+              }
+            }
+          ],
+          "colliding_seeds": [55],
+          "resolution": {
+            "steps": [
+              "1. Query GET /api/course/:code/drafts?status=collision to see affected seeds",
+              "2. Redecompose colliding seeds with bigger chunks (M-LEGOs) to avoid collision",
+              "3. Resubmit via POST /api/seed/complete?draft=true (upsert replaces old draft)",
+              "4. Run POST /api/course/:code/finalize again"
+            ]
+          }
+        }
+
+  ## ==========================================================================
+  ## BUILD MANAGEMENT ENDPOINTS
+  ## ==========================================================================
+
+  build_management:
+    description: |
+      Build management endpoints control the automated course building process.
+      Supports parallel build mode where multiple agents decompose seeds concurrently
+      into the drafts table, followed by a finalization step.
+
+    post_api_build_start:
+      path: "POST /api/build/start/:courseCode"
+      purpose: "Start a parallel build with agent spawning"
+      description: |
+        Spawns a coordinator agent that orchestrates multiple sub-agents for
+        parallel seed decomposition. Submissions go to course_seed_drafts.
+        Build mode is always 'parallel'.
+      body:
+        terminal: "string (default: 'iTerm2') - terminal app to use"
+        targetSeeds: "integer (default: 668) - total seeds to complete"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "status": "started",
+          "build_mode": "parallel",
+          "agent_count": 1,
+          "message": "Build started for courseCode"
+        }
+
+    post_api_build_stop:
+      path: "POST /api/build/stop/:courseCode"
+      purpose: "Stop an active build"
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "status": "stopped",
+          "message": "Build stopped for courseCode"
+        }
+
+    post_api_build_rebuild:
+      path: "POST /api/build/rebuild/:courseCode"
+      purpose: "Wipe and rebuild a seed range"
+      description: |
+        Deletes phrases + LEGOs in the specified range, NULLs decomposed_at,
+        clears vocab cache. Used for pass-2 rebuilds where seed translations
+        already exist. Checks for active build_jobs and rejects if one is running.
+      body:
+        from_seed: "integer (default: 11) - start of range"
+        to_seed: "integer (default: 300) - end of range"
+      returns: |
+        {
+          "ok": true,
+          "seeds_to_build": 290,
+          "phrases_deleted": 5200,
+          "legos_deleted": 780,
+          "seeds_reset": 290
+        }
+
+    get_api_build_status:
+      path: "GET /api/build/status/:courseCode"
+      purpose: "Get build status for a course"
+      description: |
+        Returns build progress including draft counts for parallel builds.
+      returns: |
+        {
+          "course_code": "courseCode",
+          "status": "agent_running",
+          "build_mode": "parallel",
+          "agent_count": 3,
+          "current_seed": 87,
+          "progress": "13%",
+          "last_activity": "ISO timestamp"
+        }
+
+    get_api_build_active:
+      path: "GET /api/build/active"
+      purpose: "List all active builds"
+      description: |
+        Returns builds from three sources:
+        1. Formally registered builds (activeBuilds Map)
+        2. Courses with recent activity (courseActivity Map)
+        3. Courses with active heartbeats
+      returns: |
+        {
+          "active_builds": 2,
+          "builds": [
+            {
+              "course_code": "zho_for_eng",
+              "status": "agent_running",
+              "agent_count": 1,
+              "progress": { "completed": 42, "total": 668, "percent": "6.3%" },
+              "source": "registered"
+            },
+            {
+              "course_code": "jpn_for_eng",
+              "status": "agent_running",
+              "source": "heartbeat",
+              "agent_id": "agent-1",
+              "current_seed": 15,
+              "last_heartbeat": "ISO timestamp"
+            }
+          ]
+        }
+
+    get_api_build_seed_grid:
+      path: "GET /api/build/seed-grid/:courseCode"
+      purpose: "Seed status grid for visualization"
+      description: |
+        Returns status of every seed: complete, drafted, collision, rework, building, or empty.
+        Polled by dashboard to show real-time build progress.
+        Includes draft status from course_seed_drafts for parallel builds.
+      returns: |
+        {
+          "seeds": [
+            { "seed": 1, "status": "complete", "legos": 3, "phrases": 28 },
+            { "seed": 2, "status": "drafted", "legos": 0, "phrases": 0 },
+            { "seed": 3, "status": "collision", "legos": 0, "phrases": 0 },
+            { "seed": 4, "status": "empty", "legos": 0, "phrases": 0 }
+          ],
+          "total": 300,
+          "complete": 10,
+          "drafted": 245,
+          "collision": 3,
+          "building": 0,
+          "empty": 42
+        }
 
   ## ==========================================================================
   ## ACTIVITY TRACKING ENDPOINTS (Stall Detection)
@@ -685,82 +971,404 @@ service CourseBuilderAPI:
         }
 
   ## ==========================================================================
-  ## BUILD MANAGEMENT ENDPOINTS
+  ## QA WORKFLOW ENDPOINTS
   ## ==========================================================================
 
-  build_management:
+  qa_workflow:
     description: |
-      Build management endpoints control the automated course building process.
-      Spawns Claude agents in sequential 30-seed batches.
-      Each agent exits after its batch, and a fresh agent picks up from there.
+      Full QA lifecycle for reviewing course phrases. Supports:
+      - Fetching unchecked phrases and random samples for audit
+      - Flagging issues (grammar, semantic, naturalness, vocabulary, variety)
+      - Bulk operations for efficient agent-driven QA
+      - Resolving/dismissing flags with reasoning
+      - Deleting bad phrases
+      - Summary dashboard with progress tracking
 
-    post_api_build_start:
-      path: "POST /api/build/start/:courseCode"
-      purpose: "Start a build with batch agent spawning"
-      body:
-        terminal: "string (default: 'iTerm2') - terminal app to use"
-        targetSeeds: "integer (default: 668) - total seeds to complete"
-      returns: |
-        {
-          "ok": true,
-          "course_code": "courseCode",
-          "status": "started",
-          "agent_count": 1,
-          "message": "Build started for courseCode"
-        }
-
-    post_api_build_stop:
-      path: "POST /api/build/stop/:courseCode"
-      purpose: "Stop an active build"
-      returns: |
-        {
-          "ok": true,
-          "course_code": "courseCode",
-          "status": "stopped",
-          "message": "Build stopped for courseCode"
-        }
-
-    get_api_build_status:
-      path: "GET /api/build/status/:courseCode"
-      purpose: "Get build status for a course"
-      returns: |
-        {
-          "course_code": "courseCode",
-          "status": "agent_running",
-          "agent_count": 3,
-          "current_seed": 87,
-          "progress": "13%",
-          "last_activity": "ISO timestamp"
-        }
-
-    get_api_build_active:
-      path: "GET /api/build/active"
-      purpose: "List all active builds"
+    post_api_qa_start:
+      path: "POST /api/qa/start/:courseCode"
+      purpose: "Start a parallel QA pass"
       description: |
-        Returns builds from three sources:
-        1. Formally registered builds (activeBuilds Map)
-        2. Courses with recent activity (courseActivity Map)
-        3. Courses with active heartbeats
+        Spawns a coordinator agent which orchestrates ~10 sub-agents
+        to check grammar/naturalness across all unchecked phrases.
+      body:
+        terminal: "string (default: 'iTerm2')"
       returns: |
         {
-          "active_builds": 2,
-          "builds": [
+          "ok": true,
+          "mode": "parallel_qa",
+          "course_code": "courseCode",
+          "batches": 10,
+          "phrases": { "total": 5000, "unchecked": 3200 },
+          "message": "Parallel QA started - coordinator agent spawned with 10 batches"
+        }
+
+    get_api_qa_unchecked:
+      path: "GET /api/qa/unchecked/:courseCode"
+      purpose: "Get unchecked phrases (qa_checked IS NULL)"
+      query_params:
+        limit: "integer (default: 50)"
+        role: "string (optional: 'use', 'practice', 'component')"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "role_filter": "use",
+          "unchecked_count": 50,
+          "phrases": [...]
+        }
+
+    get_api_qa_sample:
+      path: "GET /api/qa/sample/:courseCode"
+      purpose: "Get random sample of phrases for AUDIT mode (any qa_checked status)"
+      query_params:
+        limit: "integer (default: 100, max: 500)"
+        seed_min: "integer (default: 1)"
+        seed_max: "integer (default: 999)"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "sample_size": 100,
+          "seed_range": { "min": 1, "max": 999 },
+          "phrases": [...]
+        }
+
+    post_api_qa_flag:
+      path: "POST /api/qa/flag"
+      purpose: "Insert or update a QA flag for a phrase"
+      body:
+        course_code: "string - required"
+        phrase_id: "uuid (optional)"
+        seed_number: "integer (optional)"
+        lego_id: "string (optional)"
+        check_type: "string - required (grammar|semantic|naturalness|lego_frequency|lego_spread|variety|vocabulary)"
+        severity: "string (optional: error|warning|info, default: warning)"
+        issue: "string - required (description of the issue)"
+        details: "object (optional, additional context)"
+      returns: |
+        {
+          "success": true,
+          "flag": { ... flag object ... }
+        }
+
+    post_api_qa_bulk_flag:
+      path: "POST /api/qa/bulk-flag"
+      purpose: "Insert/upsert multiple QA flags at once"
+      description: "Also marks flagged phrase_ids as qa_checked automatically."
+      body:
+        flags: "array of flag objects (same shape as POST /api/qa/flag body)"
+      returns: |
+        {
+          "success": true,
+          "created": 5,
+          "updated": 2,
+          "total": 7,
+          "phrases_marked_checked": 7
+        }
+
+    post_api_qa_bulk_mark_checked:
+      path: "POST /api/qa/bulk-mark-checked"
+      purpose: "Mark all phrases in a seed range as QA checked"
+      description: "Efficient when agent finishes a batch with no flags."
+      body:
+        course_code: "string - required"
+        seed_min: "integer - required"
+        seed_max: "integer - required"
+      returns: |
+        {
+          "success": true,
+          "course_code": "courseCode",
+          "seed_min": 1,
+          "seed_max": 50,
+          "phrases_checked": 850
+        }
+
+    post_api_qa_mark_checked:
+      path: "POST /api/qa/mark-checked"
+      purpose: "Mark specific phrases as QA checked by ID"
+      body:
+        phrase_ids: "array of uuids - required"
+      returns: |
+        {
+          "success": true,
+          "checked_count": 10
+        }
+
+    get_api_qa_flags_pending:
+      path: "GET /api/qa/flags/:courseCode/pending"
+      purpose: "Get open flags needing review (for Fixer agent)"
+      query_params:
+        limit: "integer (default: 20, max: 100)"
+        severity: "string (optional: error|warning|info)"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "pending_count": 15,
+          "flags": [...]
+        }
+
+    patch_api_qa_flag:
+      path: "PATCH /api/qa/flag/:flagId"
+      purpose: "Update a flag status (resolve, dismiss, etc.)"
+      body:
+        status: "string (open|resolved|ignored|false_positive)"
+        resolution_notes: "string (optional)"
+      returns: |
+        {
+          "success": true,
+          "flag": { ... updated flag object ... }
+        }
+
+    post_api_qa_flag_resolve:
+      path: "POST /api/qa/flag/:id/resolve"
+      purpose: "Mark flag as resolved with fix applied"
+      body:
+        resolution: "string (optional, default: 'fixed')"
+        fix_applied: "string (optional, description of fix)"
+        reasoning: "string (optional)"
+      returns: |
+        {
+          "success": true,
+          "flag": { ... resolved flag with merged details ... }
+        }
+
+    post_api_qa_flag_dismiss:
+      path: "POST /api/qa/flag/:id/dismiss"
+      purpose: "Dismiss flag as false positive"
+      body:
+        reasoning: "string (optional)"
+      returns: |
+        {
+          "success": true,
+          "flag": { ... dismissed flag with status 'false_positive' ... }
+        }
+
+    get_api_qa_flags:
+      path: "GET /api/qa/flags/:courseCode"
+      purpose: "Get all QA flags for a course with summary"
+      query_params:
+        status: "string (default: 'open', use 'all' for everything)"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "total": 25,
+          "by_severity": { "error": 5, "warning": 15, "info": 5 },
+          "by_type": { "grammar": 10, "naturalness": 8, "variety": 7 },
+          "flags": [...]
+        }
+
+    get_api_qa_summary:
+      path: "GET /api/qa/summary/:courseCode"
+      purpose: "QA summary for dashboard"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "phrases": {
+            "total": 5000,
+            "checked": 4200,
+            "unchecked": 800,
+            "progress_percent": 84
+          },
+          "flags": {
+            "total": 30,
+            "open": 12,
+            "errors": 3,
+            "warnings": 7,
+            "info": 2
+          }
+        }
+
+    get_api_qa_flagged_phrases:
+      path: "GET /api/qa/flagged-phrases/:courseCode"
+      purpose: "Get phrases with their flags for UI (paginated, with phrase data merged)"
+      query_params:
+        limit: "integer (default: 50, max: 200)"
+        offset: "integer (default: 0)"
+        severity: "string (optional: error|warning|info)"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "total": 25,
+          "limit": 50,
+          "offset": 0,
+          "has_more": false,
+          "flags": [
             {
-              "course_code": "zho_for_eng",
-              "status": "agent_running",
-              "agent_count": 1,
-              "progress": { "completed": 42, "total": 668, "percent": "6.3%" },
-              "source": "registered"
-            },
-            {
-              "course_code": "jpn_for_eng",
-              "status": "agent_running",
-              "source": "heartbeat",
-              "agent_id": "agent-1",
-              "current_seed": 15,
-              "last_heartbeat": "ISO timestamp"
+              "id": "uuid",
+              "phrase_id": "uuid",
+              "seed_number": 42,
+              "check_type": "grammar",
+              "severity": "error",
+              "issue": "Incorrect verb conjugation",
+              "details": { ... },
+              "flagged_at": "ISO timestamp",
+              "phrase": {
+                "known_text": "I want to learn",
+                "target_text": "je veux apprendre",
+                "seed_number": 42,
+                "phrase_role": "use"
+              }
             }
           ]
+        }
+
+    delete_api_qa_phrase:
+      path: "DELETE /api/qa/phrase/:phraseId"
+      purpose: "Delete a flagged phrase and auto-resolve its flags"
+      returns: |
+        {
+          "success": true,
+          "deleted": "uuid"
+        }
+
+  ## ==========================================================================
+  ## QA SPAWN AGENT ENDPOINTS
+  ## ==========================================================================
+
+  qa_spawn_agents:
+    description: |
+      Endpoints that spawn specialized QA agents in iTerm2.
+      Each agent runs in a new terminal window and works autonomously.
+
+    post_api_qa_spawn_fixer:
+      path: "POST /api/qa/spawn-fixer/:courseCode"
+      purpose: "Spawn Opus phrase fixer agent"
+      description: |
+        Reads pending flags and fixes phrases by updating known_text/target_text,
+        then resolves the corresponding flags.
+      returns: |
+        {
+          "success": true,
+          "message": "Phrase fixer spawning for courseCode",
+          "course_code": "courseCode"
+        }
+
+    post_api_qa_spawn_polisher:
+      path: "POST /api/qa/spawn-polisher/:courseCode"
+      purpose: "Spawn Opus phrase polisher (high-quality pass on first N rounds)"
+      body:
+        round_limit: "integer (default: 50)"
+      returns: |
+        {
+          "success": true,
+          "message": "Opus polisher spawning for courseCode - first 50 rounds",
+          "course_code": "courseCode",
+          "round_limit": 50
+        }
+
+    post_api_qa_spawn_audit:
+      path: "POST /api/qa/spawn-audit/:courseCode"
+      purpose: "Spawn Sonnet phrase auditor agent (random sample)"
+      body:
+        sample_size: "integer (default: 100)"
+      returns: |
+        {
+          "success": true,
+          "message": "Phrase auditor spawning for courseCode",
+          "course_code": "courseCode",
+          "sample_size": 100
+        }
+
+  ## ==========================================================================
+  ## CALIBRATION ENDPOINTS
+  ## ==========================================================================
+
+  calibration:
+    description: |
+      Calibration endpoints manage golden seed decompositions that guide future agents.
+      Golden decompositions are stored in courses.quality_rules.golden_decompositions
+      and serve as calibration metadata (NOT course content visible in Script Viewer).
+
+      Accepts markdown format (Content-Type: text/markdown) or JSON.
+      Golden decompositions merge by seed_number - submit one seed at a time
+      without overwriting others.
+
+    post_api_course_calibration:
+      path: "POST /api/course/:courseCode/calibration"
+      purpose: "Submit golden seed decompositions (markdown or JSON)"
+      content_type: "text/markdown or application/json"
+      description: |
+        Markdown format uses:
+        ## Seed N
+        ### LN [M/A] "known" -> "target"
+        BUILD/USE/Contrastive/Key insight sections
+      returns: |
+        {
+          "ok": true,
+          "course_code": "courseCode",
+          "seeds_submitted": 1,
+          "message": "Calibration data saved"
+        }
+
+    get_api_course_calibration:
+      path: "GET /api/course/:courseCode/calibration"
+      purpose: "Get calibration data for a course"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "golden_decompositions": { ... },
+          "calibration_metadata": { ... }
+        }
+
+    get_api_calibrations_patterns:
+      path: "GET /api/calibrations/patterns"
+      purpose: "Cross-course calibration patterns"
+      description: "Analyzes golden decompositions across all courses to find common patterns."
+      returns: |
+        {
+          "patterns": { ... cross-course analysis ... },
+          "courses_analyzed": 4
+        }
+
+    get_api_calibrations_seed:
+      path: "GET /api/calibrations/seed/:seedNumber"
+      purpose: "Get calibration data for a specific seed across all courses"
+      returns: |
+        {
+          "seed_number": 1,
+          "courses": {
+            "fra_for_eng": { ... decomposition ... },
+            "deu_for_eng": { ... decomposition ... }
+          }
+        }
+
+  ## ==========================================================================
+  ## QUALITY RULES ENDPOINTS
+  ## ==========================================================================
+
+  quality_rules:
+    description: |
+      Quality rules store methodology guidance per course. Includes language-specific
+      analysis, avoid patterns, trust tests, and structural notes.
+      Stored in courses.quality_rules JSONB column.
+
+    post_api_quality_rules:
+      path: "POST /api/course/:courseCode/quality-rules"
+      purpose: "Save methodology guidance for a course"
+      body:
+        quality_rules: |
+          {
+            "analysis_date": "2026-01-29",
+            "known_language": "eng",
+            "target_language": "ara",
+            "known_language_guidance": { "quality_bar": "...", "avoid_patterns": [...] },
+            "target_language_guidance": { "quality_bar": "...", "structural_notes": [...] },
+            "zut_direction": "eng -> ara",
+            "methodology_insights": [...]
+          }
+      returns: |
+        {
+          "success": true,
+          "course_code": "courseCode",
+          "message": "Quality rules saved - methodology guidance now available for future agents"
+        }
+
+    get_api_quality_rules:
+      path: "GET /api/course/:courseCode/quality-rules"
+      purpose: "Retrieve methodology guidance"
+      returns: |
+        {
+          "course_code": "courseCode",
+          "display_name": "Arabic for English Speakers",
+          "quality_rules": { ... }
         }
 
   ## ==========================================================================
@@ -1205,7 +1813,7 @@ service CourseBuilderAPI:
       For testing and edge cases, validation can be bypassed.
       NOT RECOMMENDED for production use.
 
-    how_to_bypass: "Include SKIP_VALIDATION: true in request body"
+    how_to_bypass: "Include SKIP_VALIDATION: true in request body or ?skip_validation=true query param"
 
     example: |
       POST /api/seed/complete
@@ -1224,23 +1832,28 @@ service CourseBuilderAPI:
 
   startup_banner: |
     ╔══════════════════════════════════════════════════════════════╗
-    ║  Course Builder API - Port 3471 (v3.0.0)                     ║
+    ║  Course Builder API - Port 3471 (v4.0.0)                     ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  QUALITY GATES:                                              ║
-    ║  • Phrases per LEGO: min 7, target 10, max 13                ║
-    ║  • Batch ratio: min 7.0 phrases per LEGO                     ║
-    ║  • Vocabulary validation: per-course tracking (ZUT)          ║
-    ║  • M-LEGO build-up: Auto-generated (components→LEGO→phrases) ║
-    ║  • Conflict detection: ZUT reject, duplicates → is_new=false ║
+    ║  * Phrases per LEGO: graduated minimums, target 10, max 13   ║
+    ║  * Vocabulary validation: LRU cache (30-min TTL, 10 courses) ║
+    ║  * M-LEGO build-up: Auto-generated (components->LEGO->USE)   ║
+    ║  * Conflict detection: ZUT reject, duplicates -> is_new=false ║
+    ║  * loadCourseVocab(): DB vocab loaded before tiling check     ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  GOLDEN PATH:                                                ║
     ║  POST /api/seed/complete - Atomic seed+LEGOs+phrases         ║
+    ║  POST /api/seed/complete?draft=true - Draft mode (parallel)   ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Content Endpoints:                                          ║
-    ║  GET  /api/seeds/:code - Canonical seeds from database       ║
+    ║  GET  /api/seeds - Canonical seeds (668 master English)       ║
+    ║  GET  /api/seeds/:code - Course-specific seeds               ║
+    ║  GET  /api/next/:code - Next seed + vocab + examples          ║
     ║  POST /api/lego - Insert single LEGO                         ║
     ║  POST /api/batch - Insert multiple LEGOs                     ║
     ║  POST /api/phrases - Add phrases to existing LEGO            ║
+    ║  GET  /api/phrases/:code - Get phrases with filters           ║
+    ║  PATCH /api/phrases/:id - Update a phrase                     ║
     ║  PATCH /api/seed/:code/:num - Update seed translation        ║
     ║  GET  /api/stats/:code - Quality metrics + vocab size        ║
     ║  GET  /api/vocab/:code - Current vocabulary set              ║
@@ -1248,10 +1861,24 @@ service CourseBuilderAPI:
     ║  DELETE /api/course/:code - Clear course + vocab cache       ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Translation Workflow:                                       ║
-    ║  GET  /api/course/:code/translate - Seeds needing translation║
-    ║  POST /api/course/:code/translate - Submit batch translations║
+    ║  GET  /api/course/:code/translate - Seeds needing translation ║
+    ║  POST /api/course/:code/translate - Submit batch translations ║
     ║  POST /api/course/:code/analysis - Save translation analysis ║
     ║  GET  /api/course/:code/analysis - Retrieve analysis         ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Calibration:                                                ║
+    ║  POST /api/course/:code/calibration - Submit golden seeds    ║
+    ║  GET  /api/course/:code/calibration - Get calibration data   ║
+    ║  GET  /api/calibrations/patterns - Cross-course patterns     ║
+    ║  GET  /api/calibrations/seed/:num - Seed across courses      ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Quality Rules:                                              ║
+    ║  POST /api/course/:code/quality-rules - Save guidance        ║
+    ║  GET  /api/course/:code/quality-rules - Retrieve guidance    ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  Draft & Finalization (Parallel Builds):                     ║
+    ║  GET  /api/course/:code/drafts - Draft status summary        ║
+    ║  POST /api/course/:code/finalize - Finalize drafts to live   ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Activity & Heartbeat:                                       ║
     ║  GET  /api/activity - Stall detection status                 ║
@@ -1268,14 +1895,38 @@ service CourseBuilderAPI:
     ║  DELETE /api/agents/:pid - Kill agent by PID                 ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Build Management:                                           ║
-    ║  POST /api/build/start/:code - Start build                   ║
+    ║  POST /api/build/start/:code - Start parallel build          ║
     ║  POST /api/build/stop/:code - Stop build                     ║
+    ║  POST /api/build/rebuild/:code - Wipe + rebuild seed range   ║
     ║  GET  /api/build/status/:code - Build status                 ║
     ║  GET  /api/build/active - List all active builds             ║
+    ║  GET  /api/build/seed-grid/:code - Seed status grid          ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Quality & Balance:                                          ║
     ║  GET  /api/recency/:code - Pattern/vocab recency analysis    ║
     ║  GET  /api/balance/:code - LEGO balance scores               ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  QA Workflow:                                                ║
+    ║  POST /api/qa/start/:code - Start parallel QA pass           ║
+    ║  GET  /api/qa/unchecked/:code - Unchecked phrases            ║
+    ║  GET  /api/qa/sample/:code - Random phrase sample            ║
+    ║  POST /api/qa/flag - Flag a phrase                           ║
+    ║  POST /api/qa/bulk-flag - Bulk flag phrases                  ║
+    ║  POST /api/qa/mark-checked - Mark phrases checked            ║
+    ║  POST /api/qa/bulk-mark-checked - Bulk mark checked          ║
+    ║  GET  /api/qa/flags/:code/pending - Open flags               ║
+    ║  GET  /api/qa/flags/:code - All flags with summary           ║
+    ║  GET  /api/qa/summary/:code - QA dashboard summary           ║
+    ║  GET  /api/qa/flagged-phrases/:code - Flags+phrases for UI   ║
+    ║  PATCH /api/qa/flag/:id - Update flag status                 ║
+    ║  POST /api/qa/flag/:id/resolve - Resolve flag                ║
+    ║  POST /api/qa/flag/:id/dismiss - Dismiss as false positive   ║
+    ║  DELETE /api/qa/phrase/:id - Delete flagged phrase            ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  QA Spawn Agents:                                            ║
+    ║  POST /api/qa/spawn-fixer/:code - Spawn fixer agent          ║
+    ║  POST /api/qa/spawn-polisher/:code - Spawn polisher agent    ║
+    ║  POST /api/qa/spawn-audit/:code - Spawn audit agent          ║
     ╠══════════════════════════════════════════════════════════════╣
     ║  Checkpoint/QA Workflow:                                     ║
     ║  GET  /api/checkpoint/summary/:code - Checkpoint summary     ║
@@ -1298,11 +1949,11 @@ service CourseBuilderAPI:
     description: "Recommended workflow for LLM agents building a course"
 
     for_each_seed:
-      step_1: "Get the canonical English seed from GET /api/seeds"
+      step_1: "Get the canonical English seed from GET /api/seeds or GET /api/next/:courseCode"
       step_2: "Translate to target language"
       step_3: "Decompose into LEGOs (identify A-type and M-type)"
       step_4: "For each LEGO, generate 10+ practice phrases"
-      step_5: "Submit via POST /api/seed/complete"
+      step_5: "Submit via POST /api/seed/complete (or ?draft=true for parallel builds)"
       step_6: "Handle errors if validation fails, fix and resubmit"
 
     on_zut_violation:
@@ -1324,7 +1975,7 @@ service CourseBuilderAPI:
       For autonomous course building without human intervention.
       Agent processes seeds in batches, continues until complete.
 
-    ## ⚠️ FIRST THING AFTER RESUMING OR COMPACTION ⚠️
+    ## FIRST THING AFTER RESUMING OR COMPACTION
     resume_first: |
       If you're resuming work or your context was compacted:
       IMMEDIATELY call: GET /api/resume/:courseCode
@@ -1333,7 +1984,7 @@ service CourseBuilderAPI:
       Do NOT guess what seed comes next. The API knows the truth.
 
     task: "Build complete course from canonical seeds"
-    batch_size: 30
+    batch_size: 300
 
     quality_bar: |
       - No lazy shortcuts (don't make whole sentence one LEGO)
@@ -1363,3 +2014,35 @@ service CourseBuilderAPI:
       seed text. Do NOT hallucinate seeds based on patterns you remember.
 
     done_when: "All seeds submitted successfully via POST /api/seed/complete"
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v4_0_0:
+      date: "2026-02-09"
+      changes:
+        - "Added parallel draft & finalization endpoints (GET /api/course/:code/drafts, POST /api/course/:code/finalize)"
+        - "Build management now supports parallel mode (build_mode: 'parallel') with coordinator agent"
+        - "Added POST /api/build/rebuild/:courseCode for wipe+rebuild of seed ranges"
+        - "Added GET /api/build/seed-grid/:courseCode with draft/collision/rework status"
+        - "Added full QA workflow: 14 endpoints for flag/resolve/dismiss lifecycle"
+        - "Added QA spawn agents: POST /api/qa/spawn-fixer, spawn-polisher, spawn-audit"
+        - "Added POST /api/qa/start/:courseCode for parallel QA orchestration"
+        - "Added calibration endpoints (POST/GET calibration, cross-course patterns, per-seed)"
+        - "Added quality rules endpoints (POST/GET /api/course/:code/quality-rules)"
+        - "Added GET /api/next/:courseCode with vocab context and example decompositions"
+        - "Added GET /api/seeds (canonical seeds), GET /api/phrases/:code, PATCH /api/phrases/:id"
+        - "Validation gates now document smart vocab caching (LRU, 30-min TTL, max 10 courses)"
+        - "loadCourseVocab() loads existing DB vocabulary -- agents only submit NEW LEGOs"
+        - "Draft mode: ?draft=true routes to course_seed_drafts for parallel builds"
+        - "Endpoint count: 71 (was 42 in v3.0)"
+
+    v3_0_0:
+      date: "2026-01-28"
+      changes:
+        - "Initial comprehensive APML spec with 42 endpoints"
+        - "Golden path, validation gates, M-LEGO build-up, checkpoint system"
+        - "Activity tracking, heartbeat, agent management, build management"
+        - "Translation workflow, recency/balance analysis"

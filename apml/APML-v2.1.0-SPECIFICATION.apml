@@ -1621,7 +1621,163 @@ APMLDocument → Generators → Output Files
 
 ---
 
+## 11. Compilation Roadmap
+
+### 11.1 Current State (February 2026)
+
+APML currently operates as **documentation-first specification** — human-readable files that
+guide development across two repositories sharing a single Supabase database:
+
+```
+ssi-dashboard-v7-clean          ssi-learning-app-v2
+(Content Creation)              (Content Delivery)
+Node.js / Vue 3                 React 19 / Next.js 15
+├── apml/ (20+ files)           ├── apml/ (20+ files)
+└── services/                   └── packages/
+    course-builder-api.cjs          @ssi/core (engine)
+    production-api.cjs              @ssi/hooks
+                                    @ssi/db
+                    ┌─────────┐
+                    │ Supabase│  ← Real contract
+                    │   + S3  │
+                    └─────────┘
+```
+
+**What APML is today:**
+- Free-form markdown with YAML-like structure (NOT the formal grammar defined in Sections 2-8)
+- Documentation that agents and humans read to understand the system
+- Loosely typed — no compilation, no enforcement, no code generation
+- Philosophical backbone via the 12 Directions (see `core/12-directions.apml`)
+
+**What APML is not yet:**
+- A compilable specification language
+- A single source of truth that generates code
+- Enforced by tooling at development time
+
+This is intentional. The system is still evolving rapidly. Premature formalization would
+constrain the organic discovery of what the learning engine needs.
+
+### 11.2 Compilation Targets (Planned)
+
+When the architecture stabilises, APML constructs will compile to concrete artifacts.
+
+#### Tier 1 — Straightforward (Shared Contract Layer)
+
+These constructs have clear, mechanical mappings:
+
+| APML Construct | Compiles To | Consumers |
+|----------------|-------------|-----------|
+| `data` | TypeScript interfaces + Zod schemas + SQL migrations | Both repos |
+| `content` | Typed entity definitions (Seed, LEGO, Phrase) | Both repos |
+| `parameters` | Typed config objects with defaults | Both repos |
+| Variable Registry | Shared enums (`CadenceType`, `LegoType`, `SampleStatus`) | Both repos |
+| `validate` | Zod validators (shared via npm package) | Both repos |
+
+**Why straightforward:** These are data shapes. The mapping from APML → TypeScript is
+mechanical and deterministic. One source of truth, two consumers.
+
+#### Tier 2 — Design Decisions Required
+
+These constructs generate different code per framework:
+
+| APML Construct | Dashboard (Vue 3) | Learning App (React 19) |
+|----------------|-------------------|------------------------|
+| `interface` | Vue SFCs + Pinia stores | React components + hooks |
+| `state_machine` | Pinia state machines | @ssi/core CycleOrchestrator |
+| `realtime` | Socket.IO composables | Supabase Realtime hooks |
+| `optimistic` | Optimistic Pinia actions | React optimistic updates |
+| `navigation` | Vue Router guards | Next.js middleware |
+
+**Why challenging:** Same spec, two rendering targets. The APML compiler needs
+framework-specific backends — like how LLVM has x86 and ARM backends.
+
+#### Tier 3 — Research Required
+
+These constructs encode domain expertise that is hard to formalize:
+
+| APML Construct | Challenge |
+|----------------|-----------|
+| `methodology` | Pedagogical rules → @ssi/core engine logic |
+| `production` | Runtime session assembly (basket ordering, spaced repetition) |
+| `adaptation` | Dynamic difficulty adjustment algorithms |
+| `audio` | TTS provider abstraction + S3 pipeline orchestration |
+
+**Why research:** These encode the "how to teach" knowledge. The gap between spec
+and implementation is semantic, not syntactic.
+
+### 11.3 Architecture of the Compiler
+
+```
+apml/
+├── compiler/
+│   ├── parser.cjs              # APML → AST (exists, schema-only)
+│   ├── backends/
+│   │   ├── typescript.cjs      # AST → TS interfaces + Zod
+│   │   ├── sql.cjs             # AST → Supabase migrations
+│   │   ├── vue.cjs             # AST → Vue 3 SFCs (Tier 2)
+│   │   └── react.cjs           # AST → React components (Tier 2)
+│   └── registry/
+│       └── variables.cjs       # Shared enum generation
+```
+
+**Compilation direction:** APML is the source of truth. Code is the output.
+
+**Escape hatch (D09 Progressive Enhancement):** Any compiled output can be manually
+extended. Generated files include `// APML-GENERATED — do not edit above this line`
+markers, with a human-editable section below.
+
+### 11.4 Strategic Approach
+
+**Phase A — Shared Contract (Tier 1 only)**
+- Compile `data` and `validate` constructs to a shared `@ssi/types` package
+- Both repos import types from this package instead of defining their own
+- Variable Registry becomes the canonical enum source
+- **Trigger:** When ssi-learning-app-v2 reaches production stability
+
+**Phase B — Framework Backends (Tier 2)**
+- Build Vue 3 and React 19 compiler backends
+- Generate scaffold code (not full components — that kills flexibility)
+- Interface specs produce component contracts: props, events, slots/children
+- **Trigger:** When both repos have stable component patterns to extract from
+
+**Phase C — Domain Engine (Tier 3)**
+- Formalise methodology and production constructs
+- Compile to @ssi/core engine configuration
+- This is the most valuable target — and the hardest to get right
+- **Trigger:** When the learning methodology is proven across 5+ languages
+
+### 11.5 Alignment with the 12 Directions
+
+| Direction | How the Compilation Roadmap Aligns |
+|-----------|-----------------------------------|
+| D01 Parameterization | `parameters` construct compiles to typed config with defaults |
+| D02 Separation of Concerns | Compiler backends separate spec from framework-specific output |
+| D03 Immutability of Source | APML files are the immutable source; generated code is derived |
+| D04 Idempotency | Compiling the same APML twice produces identical output |
+| D05 Store Raw, Compute Derived | APML is raw; TS/Vue/React code is computed |
+| D06 Explicit over Implicit | Compilation targets are declared, not inferred |
+| D07 Context-Agnostic | Same APML compiles to Vue OR React via backend selection |
+| D09 Progressive Enhancement | Escape hatches allow manual extension of generated code |
+| D10 Observability | Generated code includes provenance comments (`// from: audio-registry.apml:42`) |
+| D12 Composition | Compiler is composed of independent backends, each handling one target |
+
+### 11.6 Current Stance
+
+**Do not formalise prematurely.** The operational APML files are doing their job as
+human-and-agent-readable specifications. The 12 Directions provide philosophical
+coherence. The compilation roadmap above is the plan for when things stabilise.
+
+The right moment to start compiling is when:
+1. The same data shapes are manually synchronised across both repos (pain signal)
+2. A type mismatch between repos causes a production bug (cost signal)
+3. The learning methodology is stable enough to encode (maturity signal)
+
+Until then, keep APML loose, keep it honest, and let the code teach us what the spec
+should say.
+
+---
+
 **END OF SPECIFICATION**
 
 *APML v2.1.0 - Adaptive Pedagogy Markup Language*
-*© 2025 - Open Specification*
+*© 2025-2026 - Open Specification*
