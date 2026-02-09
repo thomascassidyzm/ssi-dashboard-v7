@@ -2118,11 +2118,13 @@ curl -X POST http://localhost:3471/api/course/${courseCode}/finalize
 Report success and exit.
 
 ### If collisions detected (status: "COLLISIONS_DETECTED"):
-The response includes a list of colliding seeds and LEGO details.
-For each colliding seed:
-1. Spawn a new Task sub-agent to re-decompose that seed with bigger M-LEGOs to avoid the collision
-2. The sub-agent submits via POST /api/seed/complete?course=${courseCode}&draft=true (upsert replaces old draft)
-3. When all collision seeds are re-drafted, call finalize again
+The response JSON contains:
+- \`collisions\`: array of { seed_number, lego_known, lego_target, lego_idx, conflicts_with: { target_text, seed_number, lego_index } }
+- \`colliding_seeds\`: array of affected seed numbers
+
+A collision is a ZUT violation: two agents chose the same English known but different target translations. The fix is to absorb the colliding word into a bigger M-LEGO so its English known text becomes unique.
+
+Spawn fix sub-agents for colliding seeds, passing them the collision details so they know what to avoid. They resubmit as drafts (upsert replaces). Then call finalize again. Repeat until clean.
 
 ## AUTONOMY
 You are running overnight. The human is asleep. NEVER ask questions.
