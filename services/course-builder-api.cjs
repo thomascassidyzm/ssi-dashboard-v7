@@ -6067,38 +6067,10 @@ app.post('/api/build/rebuild/:courseCode', async (req, res) => {
     // 4. Clear vocab cache
     courseVocabCache.delete(courseCode);
 
-    // 5. Create build_jobs record
-    const { data: jobData, error: jobError } = await supabase
-      .from('build_jobs')
-      .insert({
-        course_code: courseCode,
-        pass: 'pass_2',
-        status: 'running',
-        current_seed: from_seed,
-        seeds_completed: from_seed - 1,
-        total_seeds: to_seed,
-        started_at: new Date().toISOString(),
-        last_heartbeat: new Date().toISOString(),
-        requested_by: 'dashboard_rebuild',
-        terminal: 'headless',
-        agent_count: 0,
-        respawn_count: 0,
-        machine_name: MACHINE_NAME,
-        build_mode: 'parallel'
-      })
-      .select('id')
-      .single();
-
-    if (jobError) {
-      console.error('[REBUILD] Failed to create job:', jobError.message);
-      return res.status(500).json({ ok: false, error: 'Failed to create build job' });
-    }
-
-    console.log(`[REBUILD] Created job ${jobData.id} for ${courseCode} seeds ${from_seed}-${to_seed}`);
+    console.log(`[REBUILD] Wiped ${courseCode} seeds ${from_seed}-${to_seed} — use Start Course Builder to launch agents`);
 
     res.json({
       ok: true,
-      job_id: jobData.id,
       seeds_to_build: to_seed - from_seed + 1,
       phrases_deleted: phrasesDeleted || 0,
       legos_deleted: legosDeleted || 0,
