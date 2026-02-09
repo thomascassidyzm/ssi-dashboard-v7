@@ -2083,16 +2083,17 @@ ${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n``
 
 ## Workflow
 For each seed in your range ({START} to {END}):
-1. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your range
-2. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}" — parse comma-separated string
-3. Study the seed's known/target text
-4. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
-5. Write BUILD phrases (min 3): new LEGO + prior vocabulary
-6. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
-7. Verify all phrase targets contain the LEGO target as exact substring
-8. Write JSON to /tmp/seed{N}.json and POST as draft
-9. If rejected, read the error carefully, fix, and retry. There is NO retry limit — keep fixing until it passes.
-10. Move to next seed
+1. Check if seed already has a valid draft: curl -s "http://localhost:3471/api/course/${courseCode}/drafts" — if this seed_number appears with validation_status "valid", SKIP IT and move to the next seed
+2. Fetch your seeds: curl -s "http://localhost:3471/api/seeds/${courseCode}" and find seeds in your range
+3. Fetch vocab: curl -s "http://localhost:3471/api/vocab/${courseCode}" — parse comma-separated string
+4. Study the seed's known/target text
+5. Decompose into overlapping LEGOs (A-LEGOs inside M-LEGOs)
+6. Write BUILD phrases (min 3): new LEGO + prior vocabulary
+7. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
+8. Verify all phrase targets contain the LEGO target as exact substring
+9. Write JSON to /tmp/seed{N}.json and POST as draft
+10. If rejected, read the error carefully, fix, and retry. There is NO retry limit — keep fixing until it passes.
+11. Move to next seed
 
 ## AUTONOMY: You are running unattended. NEVER ask questions. NEVER give up on a seed. NEVER write reports asking the human what to do. Fix errors and continue until every seed in your range is submitted.
 ---END SUB-AGENT PROMPT---
