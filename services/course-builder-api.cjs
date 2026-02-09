@@ -1940,7 +1940,7 @@ end tell`;
  * The coordinator is a lightweight haiku agent that uses Claude Code's Task tool
  * to spawn ~10 background sub-agents, each decomposing a batch of seeds as drafts.
  */
-function generateParallelBrief({ courseCode, batches, goldenExamples, lessons, courseInfo, targetSeeds }) {
+function generateParallelBrief({ courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds }) {
   const batchList = batches.map((b, i) =>
     `Batch ${i + 1}: seeds ${b.start}-${b.end} (${b.end - b.start + 1} seeds)`
   ).join('\n');
@@ -1993,7 +1993,7 @@ You are a world-class language teacher building course content for SSi (SaySomet
 ## API Endpoints
 - Vocab: GET http://localhost:3471/api/vocab/${courseCode} — returns COMMA-SEPARATED STRING, parse with split(",")
 - Seeds: GET http://localhost:3471/api/seeds/${courseCode} — returns {seeds: [...]} with seed_number, known_text, target_text
-- Submit: POST http://localhost:3471/api/seed/complete?course=${courseCode}&draft=true (Content-Type: text/markdown, send body as raw markdown)
+- Submit: POST http://localhost:3471/api/seed/complete?draft=true (Content-Type: application/json)
 
 ## Core Methodology
 
@@ -2032,37 +2032,45 @@ CRITICAL: The /api/vocab endpoint returns a COMMA-SEPARATED STRING. You MUST spl
 ${goldenSection}
 ${lessonsSection}
 
-## Submission Format (markdown)
+## Submission Format (JSON)
 
-Write each seed to /tmp/seed{N}.md then submit with:
-curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}&draft=true" -H "Content-Type: text/markdown" --data-binary @/tmp/seed{N}.md
+Write each seed to /tmp/seed{N}.json then submit with:
+curl -s -X POST "http://localhost:3471/api/seed/complete?draft=true" -H "Content-Type: application/json" --data-binary @/tmp/seed{N}.json
 
-Markdown format:
-\\\`\\\`\\\`
-# Seed N
-Known: English sentence
-Target: Target language sentence
+JSON structure:
+{
+  "course_code": "${courseCode}",
+  "seed_number": N,
+  "target_text": "target language sentence",
+  "legos": [
+    {
+      "idx": 1, "type": "A",
+      "known": "english word", "target": "target word",
+      "build": [
+        {"known": "english phrase", "target": "target phrase"},
+        {"known": "english phrase", "target": "target phrase"},
+        {"known": "english phrase", "target": "target phrase"}
+      ],
+      "use": [
+        {"known": "complete english sentence", "target": "complete target sentence", "score": 7},
+        ... (8+ USE phrases, scores 5-9)
+      ]
+    },
+    {
+      "idx": 2, "type": "M",
+      "known": "english phrase", "target": "target phrase",
+      "components": [{"known": "word1", "target": "mot1"}, {"known": "word2", "target": "mot2"}],
+      "build": [...],
+      "use": [...]
+    }
+  ]
+}
 
-## L1 [A] "known" → "target"
-BUILD:
-- known phrase → target phrase
-- known phrase → target phrase
-- known phrase → target phrase
-USE:
-- known sentence → target sentence [7]
-- known sentence → target sentence [8]
-... (8+ USE phrases)
+${goldenSeedMarkdown && goldenSeedMarkdown.length > 0 ? `## GOLDEN EXAMPLES — Study These Carefully
 
-## L2 [M] "known phrase" → "target phrase"
-Components: comp1_known → comp1_target, comp2_known → comp2_target
-BUILD:
-- known phrase → target phrase
-- known phrase → target phrase
-- known phrase → target phrase
-USE:
-- known sentence → target sentence [8]
-... (8+ USE phrases)
-\\\`\\\`\\\`
+These are real, verified submissions from seeds 1-10. Your output must match this exact JSON structure.
+
+${goldenSeedMarkdown.map(ex => '```json\n' + JSON.stringify(ex, null, 2) + '\n```').join('\n\n')}` : ''}
 
 ## Workflow
 For each seed in your range ({START} to {END}):
@@ -2073,7 +2081,7 @@ For each seed in your range ({START} to {END}):
 5. Write BUILD phrases (min 3): new LEGO + prior vocabulary
 6. Write USE phrases (min 8): complete natural sentences containing exact LEGO target
 7. Verify all phrase targets contain the LEGO target as exact substring
-8. Write to /tmp/seed{N}.md and POST as draft
+8. Write JSON to /tmp/seed{N}.json and POST as draft
 9. If rejected, read the error carefully, fix, and retry (max 3 attempts)
 10. Move to next seed
 
@@ -2353,6 +2361,72 @@ end tell`;
 }
 
 /**
+ * Fetch 2-3 complete golden seed examples from the DB (LEGOs + BUILD/USE phrases)
+ * formatted as the exact JSON agents should submit.
+ */
+async function fetchGoldenSeedExamples(courseCode, seedNumbers = [2, 5, 8]) {
+  const examples = [];
+  for (const seedNum of seedNumbers) {
+    const { data: seed } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .single();
+    if (!seed) continue;
+
+    const { data: legos } = await supabase
+      .from('course_legos')
+      .select('lego_index, type, known_text, target_text, components')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .order('lego_index');
+
+    const { data: phrases } = await supabase
+      .from('course_practice_phrases')
+      .select('lego_index, known_text, target_text, phrase_role, metadata')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .order('lego_index')
+      .order('position');
+
+    if (!legos || legos.length === 0) continue;
+
+    // Format as JSON — the exact structure agents should POST
+    const legoArray = legos.map(lego => {
+      const legoPhrases = (phrases || []).filter(p => p.lego_index === lego.lego_index);
+      const buildPhrases = legoPhrases
+        .filter(p => p.phrase_role === 'build' || p.phrase_role === 'practice')
+        .map(p => ({ known: p.known_text, target: p.target_text }));
+      const usePhrases = legoPhrases
+        .filter(p => p.phrase_role === 'use')
+        .map(p => ({ known: p.known_text, target: p.target_text, score: p.metadata?.score || 7 }));
+
+      const entry = {
+        idx: lego.lego_index,
+        type: lego.type,
+        known: lego.known_text,
+        target: lego.target_text,
+        build: buildPhrases,
+        use: usePhrases
+      };
+      if (lego.components && lego.components.length > 0) {
+        entry.components = lego.components;
+      }
+      return entry;
+    });
+
+    examples.push({
+      course_code: courseCode,
+      seed_number: seedNum,
+      target_text: seed.target_text,
+      legos: legoArray
+    });
+  }
+  return examples;
+}
+
+/**
  * Spawn the parallel build coordinator agent.
  * This is a lightweight haiku agent that orchestrates ~10 sub-agents via Task tool.
  */
@@ -2366,6 +2440,10 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
 
   const goldenExamples = courseInfo?.quality_rules?.golden_decompositions || [];
   const targetSeeds = courseInfo?.seed_count || 300;
+
+  // Fetch complete golden seed examples (with BUILD/USE phrases) from live DB
+  const goldenSeedMarkdown = await fetchGoldenSeedExamples(courseCode, [2, 5, 8]);
+  console.log(`[BUILD] Fetched ${goldenSeedMarkdown.length} golden seed examples for sub-agent brief`);
 
   // Fetch build lessons
   const langCode = courseCode.split('_')[0];
@@ -2406,7 +2484,7 @@ async function spawnParallelBuildAgent(courseCode, agentNumber, terminal = 'iTer
   console.log(`[BUILD] Parallel build for ${courseCode}: ${batches.length} batches, ${totalToBuild} seeds`);
 
   const prompt = generateParallelBrief({
-    courseCode, batches, goldenExamples, lessons, courseInfo, targetSeeds
+    courseCode, batches, goldenExamples, goldenSeedMarkdown, lessons, courseInfo, targetSeeds
   });
 
   // Write prompt to temp file
