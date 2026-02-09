@@ -335,51 +335,6 @@
         </button>
       </section>
 
-      <!-- Event Log -->
-      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
-        <button
-          @click="logExpanded = !logExpanded"
-          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
-        >
-          <div class="flex items-center gap-3">
-            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Event Log</span>
-            <span class="text-xs text-slate-500">{{ events.length }} events</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span
-              v-if="isPolling"
-              class="text-xs text-emerald-500 uppercase tracking-wide flex items-center gap-1.5"
-            >
-              <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-              Live
-            </span>
-            <svg
-              class="w-5 h-5 text-slate-400 transition-transform duration-200"
-              :class="{ 'rotate-180': logExpanded }"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </button>
-
-        <div
-          v-show="logExpanded"
-          class="border-t border-slate-700/50 max-h-64 overflow-y-auto"
-        >
-          <div
-            v-for="event in events"
-            :key="event.id"
-            class="px-6 py-2 border-b border-slate-700/30 last:border-0 flex items-start gap-4 text-sm"
-          >
-            <span class="font-mono text-slate-500 text-xs whitespace-nowrap">{{ event.time }}</span>
-            <span class="text-slate-300">{{ event.message }}</span>
-          </div>
-          <div v-if="events.length === 0" class="px-6 py-8 text-center text-slate-500 text-sm">
-            No events yet
-          </div>
-        </div>
-      </section>
     </div>
   </div>
 </template>
@@ -452,9 +407,7 @@ const agents = ref({
 })
 
 // UI state
-const logExpanded = ref(false)
 const isPolling = ref(false)
-const events = ref([])
 
 // Seed grid state
 const seedGrid = ref([])
@@ -512,14 +465,11 @@ async function executeRebuild() {
 
     const data = await response.json()
     if (data.ok) {
-      addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)
       rebuildConfirming.value = false
       await fetchSeedGrid()
-    } else {
-      addEvent(`Rebuild failed: ${data.error}`)
     }
   } catch (err) {
-    addEvent(`Rebuild error: ${err.message}`)
+    console.error('Rebuild error:', err.message)
   } finally {
     rebuildRunning.value = false
   }
@@ -561,19 +511,6 @@ const statusClass = computed(() => {
 })
 
 // Methods
-function addEvent(message) {
-  const now = new Date()
-  const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-  events.value.unshift({
-    id: Date.now(),
-    time,
-    message
-  })
-  if (events.value.length > 100) {
-    events.value = events.value.slice(0, 100)
-  }
-}
-
 async function fetchProgress() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return  // Skip if no course selected yet
@@ -657,7 +594,7 @@ async function startBuilder() {
 
   // Validate in create mode
   if (isCreateMode.value && !courseCode) {
-    addEvent('Error: Please select both languages')
+    console.error('Please select both languages')
     return
   }
 
@@ -669,8 +606,6 @@ async function startBuilder() {
 
     // If in create mode, create the course first
     if (isCreateMode.value) {
-      addEvent(`Creating course ${courseCode}...`)
-
       const createResponse = await fetch(`${apiBase}/api/courses/create`, {
         method: 'POST',
         headers: {
@@ -690,12 +625,10 @@ async function startBuilder() {
         const err = await createResponse.json()
         // 409 = course already exists, that's fine - just proceed to start builder
         if (createResponse.status === 409) {
-          addEvent(`Course ${courseCode} already exists - starting builder`)
         } else {
           throw new Error(err.error || 'Failed to create course')
         }
       } else {
-        addEvent(`Course ${courseCode} created`)
       }
     }
 
@@ -719,8 +652,6 @@ async function startBuilder() {
     progress.value.status = 'running'
     progress.value.totalSeeds = result.progress?.total || seedCount.value
     progress.value.currentSeed = result.progress?.completed || 0
-    addEvent(`Started Course Builder (${result.progress?.total || seedCount.value} seeds, 30-seed batch agents)`)
-
     // Navigate to the course page if we created a new one
     if (isCreateMode.value) {
       router.push(`/production/${courseCode}/text`)
@@ -728,7 +659,6 @@ async function startBuilder() {
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
-    addEvent(`Error: ${error.message}`)
   }
 }
 
@@ -743,11 +673,9 @@ async function stopBuilder() {
 
     const result = await response.json()
     progress.value.status = 'idle'
-    addEvent(`Course Builder stopped (${result.agents_used || 0} agents used)`)
 
   } catch (error) {
     console.error('Failed to stop builder:', error)
-    addEvent(`Error: ${error.message}`)
   }
 }
 
@@ -762,13 +690,11 @@ function resetBuilder() {
     legosInserted: 0,
     phrasesInserted: 0
   }
-  addEvent('UI reset - Start button unlocked (polling stopped)')
 }
 
 async function forceResetBuilder() {
   // Force reset when build is stuck (running but no agents)
   // Attempts to call stop API but resets UI regardless
-  addEvent('Force resetting stuck build...')
 
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
@@ -792,7 +718,6 @@ async function forceResetBuilder() {
     avgPhraseScore: progress.value.avgPhraseScore,
     scoredPhrases: progress.value.scoredPhrases
   }
-  addEvent('Force reset complete - UI unlocked')
 
   // Restart polling to sync state
   startPolling()
@@ -807,15 +732,13 @@ async function killAgent(pid) {
     })
     const result = await response.json()
     if (result.ok) {
-      addEvent(`Killed agent ${pid}`)
       // Refresh agent list
       fetchProgress()
     } else {
-      addEvent(`Failed to kill agent ${pid}: ${result.error}`)
     }
   } catch (error) {
     console.error('Failed to kill agent:', error)
-    addEvent(`Error killing agent: ${error.message}`)
+    console.error('Failed to kill agent:', error)
   }
 }
 
@@ -868,7 +791,6 @@ async function loadLanguages() {
 // Lifecycle
 onMounted(() => {
   startPolling()
-  addEvent('Text Generation view loaded')
   if (isCreateMode.value) {
     loadLanguages()
   }

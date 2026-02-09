@@ -2004,9 +2004,10 @@ You are coordinating a parallel build for course **${courseCode}**.
 - You call finalize when all drafts are submitted
 
 ## Architecture
-- Each sub-agent submits seeds as DRAFTS via POST /api/seed/complete?course=${courseCode}&draft=true
+- Each sub-agent submits seeds as DRAFTS via POST /api/seed/complete?draft=true (with ?draft=true query param)
 - Drafts go to a staging table, NOT live tables
-- When all drafts are in, you call POST /api/course/${courseCode}/finalize to merge them
+- When all drafts are in, YOU call POST /api/course/${courseCode}/finalize to merge them
+- **CRITICAL: ALL sub-agents MUST use ?draft=true — this includes initial batch agents, fixer agents, recovery agents, collision-fix agents. NEVER spawn a sub-agent that submits without ?draft=true. Submitting without it writes directly to live tables and breaks the finalization flow.**
 
 ## Batch Assignments
 Seeds 1-10 are golden (already done). Remaining seeds split into batches:
@@ -2162,7 +2163,14 @@ Use the Bash tool with curl to poll. Wait 60 seconds between polls (use sleep 60
 
 When total_drafts >= ${targetSeeds - 10}, proceed to Step 3.
 
-If progress stalls (no new drafts for 10 minutes), check sub-agent output files and report the issue.
+### Stall Detection & Recovery
+If no new drafts arrive for 5 minutes:
+1. Query the drafts endpoint to get the list of submitted seed numbers
+2. Compare against the full expected range (11-${targetSeeds}) to find MISSING seed numbers
+3. Group missing seeds into contiguous ranges
+4. Spawn NEW sub-agents for the missing seeds (one agent per range, or split large ranges). Use the SAME sub-agent prompt template above — they MUST submit with ?draft=true.
+5. Continue monitoring — repeat stall detection if needed
+6. NEVER give up. Keep respawning until every seed is drafted.
 
 ## Step 3: Finalize
 
